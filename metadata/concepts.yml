@@ -110,8 +110,13 @@ concepts:
     bookLabels:
       - ch:selection-environment
       - sec:selection-turn-ch34
+      - sec:census-not-ecology-ch34
       - sec:selection-channels-ch34
       - sec:minimal-model-selection-ch34
+      - sec:proxy-throughput-n-proxy-ch34
+      - sec:adversarial-selection-ch34
+      - sec:adversarial-coevolution-ch34
+      - sec:selection-stable-target-hierarchy-ch34
       - sec:safety-sets-bad-sets-basins
     body: bodies/attractor-control.md
     glossaryTerms:
@@ -125,6 +130,14 @@ concepts:
         definition: 'Rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) ("fitness" in formulas only). Not biological fitness; not Demski in-optimizer search. Formal definition: **ch34** (`eq:fitness-ch34`).'
       - term: Preservation conditions
         definition: 'Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive BIQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).'
+      - term: Feedback-horizon exposure
+        definition: 'Proxy-throughput count \(N_{\mathrm{proxy}}\): how many consequential proxy-guided optimization or selection updates occur between independent target-level checks. Not \(K_X\), not deployment leverage \(\mu_E\), not fitness \(\mathrm{Fit}_E\). Formal home: **ch34** (`sec:proxy-throughput-n-proxy-ch34`).'
+      - term: Invasion fitness
+        definition: 'Rare-type deployment growth \(\mathrm{InvFit}_E(a\mid D)\) when variant \(a\) is scarce in resident environment \(D\). Distinct from incumbent \(\mathrm{Fit}_E\); high incumbent fitness does not imply invasion resistance. Slow regime: ecology; fast regime: pre-deploy cert/\(\mathrm{AdvVerif}\). **ch34** (`sec:adversarial-selection-ch34`).'
+      - term: Adversarial regeneration
+        definition: 'Harmful phenotypes recurring after lineages are suppressed; lineage extinction \(\neq\) phenotype elimination. Target is subcritical adversarial mass plus low recreation rate (mutation--selection balance). **ch34** (`sec:adversarial-selection-ch34`).'
+      - term: Ecology size
+        definition: 'Number of strategically independent persistent types in a deployment environment, not vendor count, instance count, or model-card census. Open-weight copies, fine-tunes, and scaffolds are new types only if they change the control locus (agent-discovery / UAD, **ch07**). **ch34** (`sec:census-not-ecology-ch34`); operationalized in **ch35**.'
       - term: Alignment basin
         definition: 'Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety. **ch03** (`sec:safety-sets-bad-sets-basins`).'
   - slug: bearer-map-commutation-failure
@@ -688,6 +701,21 @@ concepts:
     bookLabels:
       - ch:wrong-object
     body: bodies/the-boundary-error.md
+  - slug: unsupervised-agent-discovery
+    kind: concept
+    title: Unsupervised Agent Discovery
+    status: plausible
+    summary: Recover agent-like boundaries from timestamped state-variable traces without pre-labeling which variables belong together — using conditional-independence cuts, lagged memory analysis, and intervention handles when passive statistics are ambiguous.
+    decision: Do not take variable names, vendor rosters, or subsystem maps as the agent census. Run an unsupervised partition on the traces first, then audit the units the method infers.
+    evidence: Partial support from controlled multi-agent simulations and lab substrates with known ground truth; extensive recorded negatives when heuristics suffice, observation channels smooth per-agent signal, or passive clustering merges whole pipelines.
+    bookChapters:
+      - ch07
+      - ch34
+      - ch35
+    bookLabels:
+      - ch:finding-boundary
+      - sec:estimator-feasibility-recovery-ch07
+    body: bodies/unsupervised-agent-discovery.md
   - slug: unit-discovery-stress-test
     kind: concept
     title: Stress-Testing Unit Discovery on Noisy, Multi-Actor Systems

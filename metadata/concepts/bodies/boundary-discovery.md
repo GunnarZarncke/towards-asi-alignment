@@ -9,6 +9,7 @@ related:
   - composite-agency
   - mb1-boundary-estimator-soundness
   - intervention-supported-unit-discovery
+  - unsupervised-agent-discovery
 ---
 
 The deployed agent may not be "the model." It may be a loop: model endpoint, tool runner, memory store, retrieval index, scheduler, dashboard incentives, and human operators who learn to rubber-stamp the queue.

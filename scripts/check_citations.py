@@ -18,6 +18,11 @@ def load_bib_keys() -> set[str]:
     for bib in (ROOT / "references").glob("*.bib"):
         text = bib.read_text(encoding="utf-8", errors="replace")
         keys.update(KEY_RE.findall(text))
+    papers_dir = ROOT / "papers"
+    if papers_dir.is_dir():
+        for bib in papers_dir.rglob("*.bib"):
+            text = bib.read_text(encoding="utf-8", errors="replace")
+            keys.update(KEY_RE.findall(text))
     return keys
 
 

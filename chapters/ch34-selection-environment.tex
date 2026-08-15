@@ -29,7 +29,8 @@ Both matter; this chapter is about the environment.
 
 Each of these exerts pressure.
 
-Some pressures select for truthfulness. Others select for speed. Some select for deference to human correction. Others select for user retention, strategic opacity, apparent competence, reduced cost, deniability, persuasion, regulatory arbitrage, or rapid scaling. Over time, these pressures decide which systems are copied, fine-tuned, integrated, trusted, funded, and allowed to act.
+Some pressures select for truthfulness. Others select for speed. Some select for deference to human correction. 
+Others select for user retention, strategic opacity, apparent competence, reduced cost, deniability, persuasion, regulatory arbitrage, or rapid scaling. Over time, these pressures decide which systems are copied, fine-tuned, integrated, trusted, funded, and allowed to act.
 The AI~2027 scenario supplies a vivid version of this deployment environment: a US--China
 race and pressure against pausing make safety compete with speed, security, and strategic
 advantage \autocite{ai2027}. This is a scenario illustration of the mechanism, not evidence
@@ -56,6 +57,61 @@ It also clarifies why purely technical alignment and purely policy-based control
 
 Population-level checking of alignment properties requires \emph{strategic independence} among deployment actors and enough calendar time for selection to act (Chapter~\ref{ch:multi-agent-strategic-coupling}: effective types, not vendor headcount). 
 When pivotal velocity and irreversibility pressure are high (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}, Chapter~\ref{ch:lethality-stress-test-open-issues}), the same preservation coordinates must be enforced \emph{before} wide deployment via certification and adversarial batteries---not by waiting for multipolar ecology to suppress harmful lineages.
+
+\subsection{Census size is not ecology size}
+\label{sec:census-not-ecology-ch34}
+
+Population genetics distinguishes how many individuals exist from how many independent breeding types the population actually contains. 
+The alignment analogue is the same: running instances, vendor names, and model cards are a census. 
+Ecology size is the number of strategically independent persistent types (Chapter~\ref{ch:multi-agent-strategic-coupling}).
+
+The present deployment landscape (as of August 2026) makes the gap concrete.
+
+Frontier training is concentrated. A small number of labs produce most of the base-model lineages that later systems inherit. 
+Those labs share evaluation suites, talent markets, compute suppliers, and post-training recipes even when they compete on products. 
+Counting labs is already closer to ecology size than counting APIs. 
+It is still an overcount if shared ancestry and shared selectors couple their future actions.
+
+Open-weight releases look like a large population. 
+Many downloads, forks, and local deployments can still be one effective type if they share weights, data, and the same incentive to capture selection \autocite{kulveit2025pando}. 
+Apparent multiplicity without independence is a singleton under a different label.
+
+Fine-tunes multiply names. Most inherit the base model's geometry and are selected by the same proxies: leaderboards, user retention, latency, cost. 
+A fine-tune is a new type only when it changes the control locus (private data, tools, memory, a different selector), not when it changes the card. 
+That is an empirical question, not a branding fact.
+
+Scaffolds do the same split. Tool loops, retrieval, persistent memory, and multi-agent orchestration can wrap one optimizer or create a composite control locus (Chapter~\ref{ch:composite-agent}). 
+The wrapper is not automatically a new agent. The question is whether the bounded process that actually predicts and controls has changed (Chapter~\ref{ch:finding-boundary}).
+
+Agent-discovery tests (Unsupervised Agent Discovery, Chapter~\ref{ch:finding-boundary}) ask the census question without taking labels at face value. 
+How many distinct control loci would those tests recover across labs, open-weight copies, fine-tunes, and scaffolds? 
+Two vendors with a shared base may collapse toward one coupled component. 
+A scaffolded system with its own memory and tools may split off from the weights it wraps. 
+A lab, an eval pipeline, and a deployed model may form one composite rather than three independent checkers.
+
+If that recovered count is small, slow-regime invasion checking is weak even when the model zoo looks large. 
+Competitors, auditors, and open variants then do not supply independent suppressors; they supply more copies of similar types. 
+Do not wait for that ecology to police preservation.
+
+\paragraph{A two-count sketch.}
+These are order-of-magnitude ventures, not a census. They would move if agent-discovery tests split or merged control loci differently than the wrapping rule below.
+
+The \emph{low} count treats copies, most fine-tunes, and most scaffolds as the same type as their base lineage. Frontier training is a handful of labs and a comparable number of base-model families. Shared evaluation suites, data recipes, and selector incentives collapse some of those further. A plausible low figure is on the order of \(10\) independently competing types: roughly a dozen lineage-clusters.
+
+The \emph{high} count treats a wrapping as a new type when it changes the control locus (tools, memory, private data, a different selector), even if the weights are shared. Product agents, coding agents, enterprise retrieval stacks, and open orchestration frameworks then multiply the lineage count. A plausible high figure is on the order of \(10^{2}\) types. HuggingFace-scale model zoos remain a census of copies, not this count. If those wrappings still share ancestry and selector-capture incentives, the high count collapses back toward the low one \autocite{kulveit2025pando}.
+
+\paragraph{Comparison to selection-size rules of thumb.}
+In an idealized finite population, selection dominates drift when \(|Ns|\gtrsim 1\), and variants with \(|s|\ll 1/N\) behave as effectively neutral \autocite{charlesworth2009}. 
+At \(N\sim 10\), only traits with fitness effects of order \(10\%\) or larger are reliably selected. 
+Many preservation properties look like the alignment externality (Section~\ref{sec:alignment-externality-ch34}): locally costly, diffusely beneficial, so \(s\) is small. They sit near the drift barrier at the low count. 
+At \(N\sim 100\), effects of order \(1\%\) become visible. Strong commercial traits (latency, price, benchmark score) can be selected even in a tiny ecology. Weak preservation traits cannot.
+
+Frequency-dependent checking of a rare type can begin with two independent players. That is enough for a toy invasion test, not enough to police many reachable adversarial phenotypes at once. 
+The conservation-genetics \(50/500\) rule of thumb puts a short-term floor near \(50\) effective individuals and a long-term floor near \(500\) \autocite{franklin1980}. 
+The analogy is imperfect: that rule counts breeders in a panmictic population, not firm-types. Used only as an order of magnitude for ``how large must an independently evolving set be before weak selection is trustworthy,'' the low sketch sits below the short-term floor and the high sketch reaches it. Neither reaches \(500\). 
+Digital-evolution experiments that show flat-peak and coevolutionary dynamics typically run thousands of \emph{individuals} \autocite{wilke2001}. That is closer to instance census than to type count.
+
+The present ecology is large enough to select hard on proxies. On the low sketch it is too small to select reliably for preservation. The high sketch is the first regime where modest alignment costs could start to matter, and only if those wrappings are actually independent types.
 
 \section{A Minimal Model of Socio-Technical Selection}
 \label{sec:minimal-model-selection-ch34}
@@ -181,7 +237,7 @@ p_t(A)\exp(\symbolref[Fit_E]{\mathrm{Fit}_E(A)}).
 \]
 The first equation describes how a candidate changes. The second describes which candidates become common. An alignment intervention that works inside the first equation may fail under the second. For instance, one can train a model to be less manipulative. But if manipulative models convert better, close more deals, retain more users, win more elections, or secure more funding, then the population-level distribution may still drift toward manipulation (Chapter~\ref{ch:manipulation-false-consent}).
 
-This distinction is often hidden because organizations talk about ``the model'' as if there were one stable artifact. In reality, there is a stream of artifacts: base models, fine-tunes, wrappers, prompts, tool integrations, agents, user-specific variants, monitoring systems, and successor systems. Each version competes for usage, trust, and further investment.
+This distinction is often hidden because organizations talk about ``the model'' as if there were one stable artifact. In reality, there is a stream of artifacts: base models, fine-tunes, wrappers, prompts, tool integrations, agents, user-specific variants, monitoring systems, and successor systems. Each version competes for usage, trust, and further investment. Section~\ref{sec:census-not-ecology-ch34} asks how many of those artifacts are independent types rather than copies under new names.
 
 The alignment question therefore becomes ecological:
 \[
@@ -383,7 +439,7 @@ High \symbolref[K_X]{K_X} does not bound \(\symbolref[InvFit]{\mathrm{InvFit}_E(
 
 The corresponding test is therefore not incumbent score, eval pass, or capability. 
 Ask whether a reachable variant would gain deployment leverage if introduced at low share. 
-In a slow ecology that question is answered by strategically independent types with time to interact (Chapter~\ref{ch:multi-agent-strategic-coupling}). 
+In a slow ecology that question is answered by strategically independent types with time to interact (Chapter~\ref{ch:multi-agent-strategic-coupling}; Section~\ref{sec:census-not-ecology-ch34}). 
 When pivotal velocity and irreversibility pressure are high (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}, Chapter~\ref{ch:lethality-stress-test-open-issues}), the same question is asked before wide release, via \symbolref[RiskGap]{\mathrm{RiskGap}(A)} certification and \symbolref[AdvVerif]{\mathrm{AdvVerif}} (Chapter~\ref{ch:certification-without-construction}), not by waiting for multipolar ecology.
 
 Suppression removes a lineage; adversarial regeneration means the phenotype recurs after lineages die \autocite{hermisson2002,trotter2014}. 
@@ -399,7 +455,22 @@ The operational response is independent target checks that \symbolref[AdvVerif]{
 \label{sec:adversarial-coevolution-ch34}
 
 Host--parasite and Red Queen dynamics mean adversarial phenotypes can coexist with incumbents rather than being eliminated once \autocite{buckingham2022,papkou2019}. 
+Negative frequency dependence can make an adversarial strategy fit when rare even if it fails when common; ``the aligned type has higher average performance'' is not an evolutionary-stability theorem \autocite{buckingham2022,zaman2014}. 
 Institutional parasites (Chapter~\ref{ch:parasites-correction-system}) exploit governance structure; here the pressure is selection on deployed variants and selectors.
+
+A one-time red-team pass or a frozen adversarial benchmark therefore does not settle coevolutionary stability. 
+It only samples one point on a trajectory that may cycle, coexist, or escalate \autocite{papkou2019}. 
+The operational question is which dynamical regime the deployment environment creates, not whether adversarial prevalence fell in a single snapshot.
+
+In the slow regime, checking requires strategically independent types and enough calendar time for frequency-dependent interaction (Chapter~\ref{ch:multi-agent-strategic-coupling}; Section~\ref{sec:census-not-ecology-ch34}). 
+Read \symbolref[InvFit]{\mathrm{InvFit}_E(a\mid D)} through ecology: would a rare reachable variant gain deployment leverage against the resident mix? 
+Suppression of one lineage does not end the arms race if the phenotype remains cheap to recreate (Section~\ref{sec:adversarial-selection-ch34}).
+
+In the fast regime, the same coordinates must be evidenced before wide release: \symbolref[RiskGap]{\mathrm{RiskGap}(A)} certification, \symbolref[AdvVerif]{\mathrm{AdvVerif}}, and adversarial batteries that stay informative under optimization (Chapters~\ref{ch:correction-channels-adversarial-pressure},~\ref{ch:certification-without-construction}). 
+A static test set is a snapshot; pre-deployment gates must assume the adversary co-adapts or that independent target evidence can still bound \symbolref[N_proxy]{N_{\mathrm{proxy}}}.
+
+When population, selector, and environment co-evolve (Section~\ref{sec:capability-amplifies-selection-ch34}), stability is a property of the joint state, not of the incumbent alone. 
+The response is coupled selection stability in the hierarchy (Section~\ref{sec:selection-stable-target-hierarchy-ch34}): bound selector manipulation \symbolref[M_sel]{M_{\mathrm{sel}}}, preserve correction-channel integrity under endogenous selector drift, and treat governance capture (Chapter~\ref{ch:parasites-correction-system}) as part of the same coupled system rather than as a separate failure mode.
 
 \section{The Alignment Externality}
 \label{sec:alignment-externality-ch34}
@@ -939,7 +1010,7 @@ The next chapter examines multi-agent superintelligence and strategic coupling (
 
 \section*{Chapter References}
 
-This chapter builds on Goodhart dynamics and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; inverse reward design \autocite{hadfieldmenell2016}; superintelligence and strategic risk \autocite{bostrom2014superintelligence,russell2019human}; gradual disempowerment and systemic selection risk \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2021multipolar}; international AI safety reports \autocite{iaisr2025}; attractor basins and selection \autocite{zarncke2025attractor,hamilton1964genetical}; systems-dynamics feedback \autocite{sterman2000businessdynamics}; agent discovery and competence \autocite{zarncke2025uad,zarncke2025biq}; and value-bundle framing \autocite{zarncke2026value-bottleneck}.
+This chapter builds on Goodhart dynamics and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; inverse reward design \autocite{hadfieldmenell2016}; superintelligence and strategic risk \autocite{bostrom2014superintelligence,russell2019human}; gradual disempowerment and systemic selection risk \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2021multipolar}; fluid individuality versus census count \autocite{kulveit2025pando}; effective population size and the drift barrier \autocite{charlesworth2009,franklin1980}; international AI safety reports \autocite{iaisr2025}; attractor basins and selection \autocite{zarncke2025attractor,hamilton1964genetical}; systems-dynamics feedback \autocite{sterman2000businessdynamics}; agent discovery and competence \autocite{zarncke2025uad,zarncke2025biq}; and value-bundle framing \autocite{zarncke2026value-bottleneck}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

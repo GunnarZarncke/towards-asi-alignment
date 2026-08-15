@@ -1,5 +1,7 @@
 # ch34 fast/slow selection regime map
 
+**Status (2026-08-15): integrated into manuscript.** Prose placement below is done in `chapters/ch34-selection-environment.tex` (Selection Turn ecology paragraph, `N_proxy` subsection, adversarial sections, hierarchy, symbolrefs). Retained as author reference only; no further integration planned unless ecology prose expands.
+
 Working note for manuscript integration (2026-08-15). Mirrors the preservation target across deployment regimes without treating fast takeoff as out of scope.
 
 ## Shared preservation target
@@ -35,7 +37,7 @@ Slow and fast regimes differ in **where** and **when** those coordinates must be
 | `N_{\mathrm{proxy}}` | Proxy updates between independent target checks | Lab schedule bind: high `v` while internal `N_{\mathrm{proxy}}` still grows |
 | `M_{\mathrm{sel}}` | Selector manipulation bound | Same coordinate; tighter evidence required |
 
-## Prose placement (ch34)
+## Prose placement (ch34) — done
 
 One paragraph in `\section{The Selection Turn}` after the selection-turn claim: cross-ref ch35 (effective types) and ch38 (`v`, `r`); state population-level checking needs independence + time; fast regime compresses checks into pre-deployment certification.
 
