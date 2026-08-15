@@ -478,7 +478,17 @@
     },
     {
       "name": "AlignmentProofSpine.debate_judge_error_flips_outcome",
-      "gloss": "Debate conditionality: a judge wrong on one atom certifies a false claim -- debate amplifies judge correctness, it cannot create it",
+      "gloss": "Debate conditionality: named witness \u2014 a judge wrong on one atom certifies a false claim",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.debate_exists_claim_judge_differs_from_truth",
+      "gloss": "Debate conditionality: if the judge disagrees with ground truth on any atom, some claim is mis-certified",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.local_truth_capacity_not_correction_preservation",
+      "gloss": "kappa_C capacity toy: local truth capacity can hold while judge correction channel is not preserved (not a DebateGame theorem)",
       "axioms": []
     },
     {

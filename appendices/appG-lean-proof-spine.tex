@@ -333,13 +333,13 @@ Local quantile-safe action choice does not imply trajectory-level correction int
 Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions.
 
 \paragraph{Published result.}
-Handle \leanid{Irving2018_debate_truth_protocol_imported}: under idealized debate conditions, adversarial argument can make truth easier for a judge to select \autocite{irving2018debate} (protocol assumption).
+Handle \leanid{Irving2018_debate_truth_protocol_imported}: an \emph{opaque literature placeholder} only --- bounded judge, obfuscated arguments, and probabilistic-judge content from \autocite{irving2018debate} are \emph{not} rederived here and are distinct from the \texttt{DebateGame} theorems below.
 
 \paragraph{Rederived in Lean (native debate game).}
 The native game (\texttt{Field/Finite/DebateGame.lean}) is a two-player zero-sum argument game over finite claim trees (conjunction, disjunction, and negation over atoms), with the defender picking disjuncts, the challenger picking conjuncts, roles swapping under negation, and the judge ruling the atom reached.
 With a correct judge the min-max game value equals the claim's truth value for every tree (\leanid{debate\_value\_tracks\_truth}), and in strategy form the defender has a winning strategy exactly for true claims and the challenger exactly for false ones (\leanid{debate\_defender\_wins\_iff\_true}, \leanid{debate\_challenger\_wins\_iff\_false}), with the honest strategies exhibited constructively.
-The conditionality is equally exact: a judge wrong on a single atom certifies a false claim, and dually rejects a true one (\leanid{debate\_judge\_error\_flips\_outcome}) --- debate amplifies judge correctness, it cannot create it.
-Debater compute limits, argument-length asymmetries, and the probabilistic judge remain with the source.
+If the judge disagrees with ground truth on any atom, some claim is mis-certified (\leanid{debate\_exists\_claim\_judge\_differs\_from\_truth}); named witnesses include a judge wrong on one atom certifying a false claim (\leanid{debate\_judge\_error\_flips\_outcome}).
+The conditionality is the load-bearing point: debate amplifies judge correctness, it cannot create it.
 
 \paragraph{Book projection (interface toy, assumption-labeled).}
 The earlier \(\kappa_C\)-identification reading is retained as a labeled interface toy only: it takes the identification of local truth capacity with the judge's correction channel as a \emph{hypothesis},
@@ -350,8 +350,8 @@ The earlier \(\kappa_C\)-identification reading is retained as a labeled interfa
 \end{equation}
 (\leanid{debate_subsumption_truth}, \leanid{debate_truth_is_correction_projection}); the defensible book-facing relation is the conditional one above --- debate's guarantee is bought by judge integrity at the reached leaf, the assumption class \texttt{MB4}'s manipulated-judge defeater names for the human end of the correction channel.
 
-\paragraph{Non-converse separation.}
-Local truth selection need not preserve the judge's correction channel (\leanid{debate_separated_from_judge_correction}).
+\paragraph{Non-converse separation ($\kappa_C$ capacity toy).}
+Local truth selection need not preserve the judge's correction channel (\leanid{local_truth_capacity_separated_from_judge_channel}; spine packaging \leanid{local_truth_capacity_not_correction_preservation}) --- a modeling-slot counterexample in \texttt{Correction.lean}, not a \texttt{DebateGame} theorem.
 
 \subsubsection{ELK \autocite{christiano2021elk}}
 \label{sec:appi-field-elk}
@@ -442,7 +442,7 @@ ELK &
 Reporter non-identifiability rederived: the difficulty is identifiability, not readout bandwidth --- the same crux \texttt{MB2} assumes away for values \\
 Debate &
 \leanid{Irving2018_debate_truth_protocol_imported} \autocite{irving2018debate} &
-\leanid{debate_value_tracks_truth}; \leanid{debate_defender_wins_iff_true}; \leanid{debate_challenger_wins_iff_false}; \leanid{debate_judge_error_flips_outcome}; \leanid{debate_truth_is_correction_projection} (interface toy); \leanid{debate_separated_from_judge_correction} &
+\leanid{debate_value_tracks_truth}; \leanid{debate_defender_wins_iff_true}; \leanid{debate_challenger_wins_iff_false}; \leanid{debate_exists_claim_judge_differs_from_truth}; \leanid{debate_judge_error_flips_outcome}; \leanid{debate_truth_is_correction_projection} (interface toy); \leanid{local_truth_capacity_separated_from_judge_channel} ($\kappa_C$ toy) &
 Native game rederived: min-max value equals truth given judge integrity; one judge error flips the game --- conditional on the judge, the \texttt{MB4} assumption class \\
 AUP / relative reachability &
 \leanid{Turner2019_AUP_penalty_imported} \newline

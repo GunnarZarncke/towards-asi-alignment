@@ -5,6 +5,23 @@ Core declarations for the proof spine of *Towards Superintelligence Alignment*.
 
 This module fixes the abstract vocabulary (systems, boundaries, models, graphs,
 correction operators) and the *bridge assumptions* `MB1`–`MB9`.
+
+## How to read `axiom` in this development
+
+Three buckets — inspect any theorem with `#print axioms` before citing it:
+
+1. **Proved theorems** (`theorem` / `def`) — logical or arithmetic conclusions,
+   including finite field rederivations under `Field/Finite/` (often axiom-free
+   aside from `propext` / Mathlib).
+2. **Bridge hypotheses** (`axiom MB*`, plus `MB4a` / `MB10` / `MB11` declared
+   outside `BridgeAssumptions`) — labeled conditional interfaces the book
+   threads through the spine; empirical or philosophical content to check, not
+   lemmas proved here.
+3. **Scaffolding and imports** — abstract carriers (`axiom System`, …),
+   conventions (`S07`, `S10`), and opaque literature placeholders in
+   `Field.Imported` (e.g. `Irving2018_debate_truth_protocol_imported`), distinct
+   from both bridges and from finite rederivations such as `DebateGame.lean`.
+
 Host-capacity aliasing (`P34`) uses Mathlib's finite-cardinality lemmas via
 `AlignmentProofSpine.Mathlib`.
 

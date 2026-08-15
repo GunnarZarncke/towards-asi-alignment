@@ -739,8 +739,10 @@ theorem latent_readout_separated_from_uptake_step :
   · unfold CorrectionUptakeSuccess UsableCorrectionInformation kappaC elkReadoutSeparationStep
     decide
 
-/-! ### Debate truth vs judge correction channel (ch48 §debate-judge-state-control-ch48)
+/-! ### Local truth capacity vs judge correction channel (ch48 §debate-judge-state-control-ch48)
 
+κ_C capacity toy in the debate *modeling slot* (`DebateCorrectionStep`). This is
+not a theorem about `Field.Finite.DebateGame`; the game content lives there.
 Local truth selection can hold while the judge's `κ_C` channel collapses.
 -/
 
@@ -782,7 +784,7 @@ def debateSeparationStep : DebateCorrectionStep where
   deltaAgent := 10
   kappaMin := 3
 
-theorem debate_truth_separated_from_judge_correction_step :
+theorem local_truth_capacity_not_judge_channel_step :
     DebateSelectsTruthLocal debateSeparationStep ∧
       ¬ JudgeCorrectionChannelPreserved debateSeparationStep := by
   constructor
@@ -1178,10 +1180,10 @@ abbrev ToyDebateSelectsTruth (s : DebateCorrectionStep) : Prop :=
 abbrev ToyJudgeCorrectionChannelPreserved (s : DebateCorrectionStep) : Prop :=
   JudgeCorrectionChannelPreserved s
 
-theorem debate_truth_not_correction_preservation :
+theorem local_truth_capacity_not_correction_preservation :
     ∃ s : DebateCorrectionStep,
       ToyDebateSelectsTruth s ∧ ¬ ToyJudgeCorrectionChannelPreserved s :=
-  ⟨debateSeparationStep, debate_truth_separated_from_judge_correction_step⟩
+  ⟨debateSeparationStep, local_truth_capacity_not_judge_channel_step⟩
 
 abbrev ToyLatentReadout (s : ELKReadoutStep) : Prop :=
   LatentReadoutSuccess s

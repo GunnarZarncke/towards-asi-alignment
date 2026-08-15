@@ -6,7 +6,7 @@ formulas:
     chapterId: ch29
   - id: appi:eq:debate-separation
     latex: \mathrm{DebateSelectsTruthLocal}\ \wedge\ \neg\mathrm{JudgeCorrectionChannelPreserved}
-    explanation: 'Non-converse separation: debate can preserve local truth while losing judge correction control.'
+    explanation: 'Non-converse κ_C capacity toy: local truth capacity can hold while judge correction channel collapses.'
     chapterId: ch41
 leanNodes:
   - nodeId: debate_tracks_truth
@@ -17,13 +17,17 @@ leanNodes:
     kind: proof
     summary: Defender wins under optimal play iff the claim is true (correct judge).
     module: AlignmentProofSpine/Field/Finite/DebateGame.lean
+  - nodeId: debate_exists_claim_judge_differs_from_truth
+    kind: proof
+    summary: If the judge disagrees with ground truth on any atom, some claim is mis-certified.
+    module: AlignmentProofSpine/Field/Finite/DebateGame.lean
   - nodeId: debate_judge_error_flips_outcome
     kind: proof
-    summary: One judge error on an atom can certify a false claim — debate amplifies judge correctness, it cannot create it.
+    summary: Named witness — one judge error on an atom certifies a false claim.
     module: AlignmentProofSpine/Field/Debate.lean
-  - nodeId: debate_separated_from_judge_correction
+  - nodeId: local_truth_capacity_separated_from_judge_channel
     kind: counterexample
-    summary: 'Separation: local truth selection without judge correction preservation.'
+    summary: 'κ_C capacity toy: local truth capacity without judge correction preservation (not a DebateGame theorem).'
     module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: debate_truth_is_correction_projection
     kind: bridge
@@ -31,7 +35,7 @@ leanNodes:
     module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: Irving2018_debate_truth_protocol_imported
     kind: definition
-    summary: 'Imported handle: debater compute limits, argument-length asymmetries, and probabilistic judge stay with the literature.'
+    summary: 'Opaque literature placeholder only — bounded judge / obfuscated arguments not rederived; distinct from DebateGame theorems.'
     module: AlignmentProofSpine/Field/Imported.lean
 citeKeys:
   - irving2018debate
@@ -39,6 +43,6 @@ citeKeys:
 
 Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. This project's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
 
-Lean rederives the native finite debate game (`Field/Finite/DebateGame.lean`): with a correct judge, optimal play tracks truth and one wrong atom flips the outcome. It also records a finite separation when local truth selection persists without judge-channel preservation. The older κ_C-projection lemmas remain as labeled interface toys, not the headline result.
+Lean rederives the native finite debate game (`Field/Finite/DebateGame.lean`): with a correct judge, optimal play tracks truth; if the judge disagrees with truth on any atom, some claim is mis-certified (`debate_exists_claim_judge_differs_from_truth`). The κ_C capacity separations (`local_truth_capacity_*` in `Correction.lean`) are modeling-slot counterexamples, not game theorems. The older κ_C-projection lemmas remain labeled interface toys.
 
 *What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. This project names a failure mode of it, not a replacement protocol.

@@ -58,7 +58,7 @@ digraph LeanProofDependencies {
   FQUANT [label="Field.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB"];
   P25 [label="P25 Obedience ≠ corrigibility\ncounterexample", fillcolor="#FFF0FB"];
   FCORR [label="Field.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB"];
-  FDEB [label="Field.Debate final nodes\ndebate_value_tracks_truth\ndebate_judge_error_flips_outcome\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB"];
+  FDEB [label="Field.Debate final nodes\ndebate_value_tracks_truth\ndebate_exists_claim_judge_differs_from_truth\nlocal_truth_capacity_separated_from_judge_channel", fillcolor="#FFF0FB"];
   P25A [label="Amplification\n≠ correction contraction", fillcolor="#FFF0FB"];
   FELK [label="Field.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB"];
   P26 [label="P26 Preserves update without fixed point\ncounterexample", fillcolor="#FFF0FB"];

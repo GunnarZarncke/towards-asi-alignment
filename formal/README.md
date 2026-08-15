@@ -18,6 +18,20 @@ boundary discovery → grounding viability → capability/control/correction qua
   → successor stability → adversarial measurement → certified-class safety
 ```
 
+### Three buckets (read `#print axioms` before citing any theorem)
+
+| Bucket | Lean shape | Examples | Reader takeaway |
+|--------|------------|----------|-----------------|
+| **Proved** | `theorem` / `def` | `P01`, `debate_defender_wins_iff_true`, `elk_reporter_nonidentifiability`, `soares_prevention_incentive` | Machine-checked logic or finite rederivation (often axiom-free aside from `propext` / Mathlib). |
+| **Bridge hypothesis** | `axiom MB*` (+ `MB4a`, `MB10`, `MB11`) | `MB4_correction_legitimacy`, `MB2_bundle_identifiability` | Conditional interfaces the book threads through the spine — **hypotheses to check**, not proved lemmas. |
+| **Scaffolding / import placeholder** | `axiom System`, …; opaque `Prop` in `Field.Imported` | `Irving2018_debate_truth_protocol_imported` | Vocabulary carriers or literature bookmarks — **not** the content of `Field/Finite/DebateGame.lean` or other rederivations. |
+
+**Irving debate specifically:** `DebateGame.lean` proves the deterministic claim-tree
+core (conditional soundness/completeness; judge error ⇒ mis-certification). The
+`Irving2018_debate_truth_protocol_imported` handle is an **opaque placeholder** for
+bounded-judge / obfuscated-argument / probabilistic-judge content from the paper —
+not a rederivation and not what the game theorems rest on.
+
 and makes one distinction explicit and machine-checked:
 
 * **Proved in Lean** — *if* these predicates and inequalities hold, *then* the
@@ -188,7 +202,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/ToyDeploymentGate.lean` | decidable `EpisodeBatteryGate` on frozen-validation battery output (`frozen_validation_battery_gate_passes`: 3/36 false passes ≤ pre-registered max 5); governance gap to `WithinDeploymentRiskTolerance` documented — not a discharge of the global tolerance axiom | 42 |
 | `AlignmentProofSpine/SpineModel.lean` | consistency witness (`spine_axioms_consistent`), non-degenerate measurand model (`spine_axioms_nontrivial`), one `*_independently_load_bearing` theorem per labeled bridge (`MB1`–`MB9`, `MB4a`, `MB10`, `MB11`, `S10`, tolerance); checked by `scripts/check_spine_model.py` | appG |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
-| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on 38 headline theorems against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
+| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on headline theorems (certification chain, field finite rederivations, separations) against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
 | `scripts/check_spine_model.py` | verifies the bridge-independence checklist in `SpineModel.lean` (18 independence theorems + 2 consistency exports) | appG |
 
 ## Three kinds of result (for the book)
@@ -205,7 +219,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `correction_preservation_can_require_high_impact`,
   `quantilization_not_trajectory_cci`,
   `act_based_preference_satisfaction_not_stable_corrigibility`,
-  `debate_truth_not_correction_preservation`,
+  `local_truth_capacity_not_correction_preservation`,
   `amplification_not_correction_contraction`,
   `latent_readout_not_correction_uptake`,
   `syntactic_tiling_not_import_preserving`, `forgeability_gap`, `P25`, `P26`,

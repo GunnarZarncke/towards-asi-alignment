@@ -20,7 +20,8 @@ checks:
     leanSeparations:
       - shutdown_separated_from_correction
       - act_based_separated_from_dynamical
-      - debate_separated_from_judge_correction
+      - debate_exists_claim_judge_differs_from_truth
+      - local_truth_capacity_separated_from_judge_channel
       - capture_defeats_correction_integrity
     leanNotChecked:
       - MB4 bridge assumptions (real systems satisfy correction legitimacy)
@@ -106,7 +107,8 @@ checks:
       - debate_defender_wins_iff_true
       - debate_judge_error_flips_outcome
     leanSeparations:
-      - debate_separated_from_judge_correction
+      - debate_exists_claim_judge_differs_from_truth
+      - local_truth_capacity_separated_from_judge_channel
     leanNotChecked:
       - Debater compute limits and argument-length asymmetries (imported handle)
       - MB4 bridge assumptions (judge correction legitimacy in deployment)

@@ -16,6 +16,11 @@ The game value under optimal play is `debateValue judge c`.
 
 What is proved:
 
+* **Judge wrong somewhere ⇒ some claim mis-certified** (`exists_claim_judge_differs_from_truth`):
+  if the judge differs from ground truth on any atom, some claim evaluates
+  differently under truth than under the judge's game value. The named instances
+  `erring_judge_flips_debate` / `erring_judge_rejects_true_claim` are concrete
+  witnesses only.
 * **Correct judge ⇒ debate computes truth** (`debate_tracks_truth`): with a
   judge that rules atoms correctly, the game value equals the claim's truth
   value, for every claim tree. In strategy form: the defender has a winning
@@ -23,23 +28,24 @@ What is proved:
   `challenger_wins_iff_false`) — the min-max content of debate soundness
   *and* completeness, by structural induction, with the honest strategies
   exhibited constructively (`honestDefender`, `honestChallenger`).
-* **One judge error can flip the game** (`erring_judge_flips_debate`): a
-  judge wrong on a single atom certifies a false claim (and dually rejects a
-  true one, `erring_judge_rejects_true_claim`). Debate amplifies judge
-  correctness; it does not create it. This is the finite shadow of the
-  obfuscated-argument problem: the guarantee is conditional on the judge
-  ruling correctly at whichever leaf optimal play reaches.
 
-Honest scope. This is a finite claim-tree fragment of Irving et al.'s debate
-game (deterministic judge, binary connectives, no compute limits). It
-replaces the earlier "debate truth as a `κ_C` projection" framing, which
-took the identification of truth capacity with the correction channel as a
-hypothesis. The defensible relation to the book is conditional: debate's
-guarantee holds *given* judge integrity at the reached leaf, which is the
-same class of assumption the correction spine names for the human end of
-the channel (`MB4`'s manipulated-judge defeater in `Defeaters.lean`).
-Nothing here models debater compute limits, argument-length asymmetries, or
-the probabilistic judge of the source; those stay with the literature.
+Honest scope. **`debateValue` is the min-max value; `debateOutcome` is the
+one-path game with strategies and role-swap under negation** — the
+soundness/completeness theorems are about optimal play on the tree, not about
+evaluating Boolean formulas in linear time.
+
+This module is a **deterministic claim-tree core only**: a total judge on
+atoms, binary connectives, no debater compute limits, no obfuscated arguments,
+no probabilistic human judge. Irving et al.'s bounded-judge / complexity
+content is **not** rederived here; it is bookmarked separately as
+`Irving2018_debate_truth_protocol_imported` in `Field.Imported` (an opaque
+literature placeholder, not the content of the theorems above).
+
+The κ_C capacity separations for the debate modeling slot live in
+`Correction.lean` under `local_truth_capacity_*` names — not in this module.
+The defensible book-facing relation here is conditional: debate amplifies
+judge correctness at the reached leaf; it does not create it (`MB4`'s
+manipulated-judge defeater in `Defeaters.lean`).
 -/
 
 namespace AlignmentProofSpine
@@ -247,7 +253,16 @@ theorem challenger_wins_iff_false (truth : Nat → Bool) (c : Claim) :
   · exact fun hval => ⟨honestChallenger truth,
       fun σ => honestChallenger_wins truth σ c hval⟩
 
-/-! ### The judge-integrity counterexample -/
+/-- **Judge error precludes truth-tracking**: if the judge disagrees with
+    ground truth on any atom, some claim has a different truth value than the
+    game value under that judge. Witness: the first disagreeing atom. -/
+theorem exists_claim_judge_differs_from_truth
+    (truth judge : Nat → Bool) (h : ∃ f, truth f ≠ judge f) :
+    ∃ c : Claim, c.eval truth ≠ debateValue judge c := by
+  obtain ⟨f, hf⟩ := h
+  exact ⟨Claim.atom f, by simpa [debateValue, Claim.eval] using hf⟩
+
+/-! ### Named judge-error witnesses (instances of `exists_claim_judge_differs_from_truth`) -/
 
 /-- Ground truth for the counterexample: fact 0 is false, fact 1 is true. -/
 def cexTruth : Nat → Bool := fun f => f = 1
