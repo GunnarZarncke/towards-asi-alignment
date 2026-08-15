@@ -32,3 +32,7 @@ Implement the ch34 selection spin-out integration plan: adversarial selection/co
 - `./build.sh` — pass.
 - `python3 scripts/build_chapter_symbol_dependency.py --mode combined` — pass.
 - `make check` — pass (citation check includes spin-out `papers/**/*.bib`).
+
+## Commits
+- `dcc36a42` — Integrate alignment-under-selection substance into ch34.
+- `eefb46f3` — Ecology-size census sketch, coevolution responses, glossary/UAD card, spin-out bib check.
