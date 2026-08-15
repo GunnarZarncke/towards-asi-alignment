@@ -1,0 +1,621 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{xcolor}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+  doi=true,
+  url=true,
+  eprint=true,
+]{biblatex}
+\addbibresource{alignment-under-selection.bib}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Alignment Under Selection},
+  pdfauthor={Gunnar Zarncke}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prb}{\mathbb{P}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\ThetaS}{\Theta}
+
+\title{\textbf{Alignment Under Selection: What AI Safety Can Learn from Evolutionary Dynamics}}
+\author{Gunnar Zarncke}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+AI alignment is usually posed as a property of a trained system: whether its behavior, objectives, or internal representations satisfy a desired criterion. But advanced AI systems will also be copied, modified, selected, recombined, retrained, and embedded in environments that change in response to them. Evolutionary theory studies exactly the resulting class of problems: persistence under inherited variation and differential selection. This paper develops a substrate-independent framing of alignment under selection. We separate pointwise performance from lineage robustness, import invasion fitness as a criterion for adversarial stability, distinguish extinction of an adversarial lineage from continual regeneration of the same phenotype, and model the selector itself as part of the dynamical state. The latter yields a simple but important result: stability of a desirable population under a fixed selector and stability of the selector under a fixed population do not imply stability of the coupled system. Biological precedents such as eco-evolutionary feedback and meiotic drive show that selection mechanisms can become endogenous to the entities they select even without explicit strategic reasoning. AI systems add the possibility that the selection process is modeled and exploited explicitly or implicitly. We therefore propose that an alignment attractor should be defined in the joint state space of population, transformation process, selector, and environment. We leave the alignment mapping problem, capability bounds, correction-channel integrity, and discovery of the correct unit of optimization open. The aim is narrower: to identify which evolutionary results transfer cleanly to AI alignment and what they imply for the geometry and stability of desirable behavior under continued selection.
+\end{abstract}
+
+\section{Introduction}
+
+An AI system can be aligned at one time and still lie on a trajectory that leaves the aligned region. The relevant transformations may include copying, fine-tuning, model merging, reinforcement learning, distillation, changes in scaffolding, recombination of components, competitive replacement, or other update processes. The details differ, but the abstract question is the same: which structures persist when variants are repeatedly generated and differentially retained?
+
+This suggests a change in the object of analysis. Instead of asking only
+\begin{equation}
+    \text{Is the present system } z \text{ aligned?}
+\end{equation}
+we should also ask
+\begin{equation}
+    \Prb\!\left(z_{t+k}\in D \mid z_t,\Q,\ThetaS,E\right),
+\end{equation}
+where $D$ is a desirable region, $\Q$ is a family of transformations, $\ThetaS$ parameterizes selection, and $E$ represents the surrounding ecology. The first question is pointwise. The second is dynamical.
+
+This framing is related to existing alignment discussions of selection versus control \parencite{demski2019}, population-level optimization in machine learning \parencite{jaderberg2017}, systemic displacement and feedback \parencite{kulveit2025gradual}, and ambiguity about the individuality of AI systems \parencite{kulveit2025pando}. The contribution here is not to claim that AI development is literally biological evolution. It is to identify the subset of evolutionary theory that applies whenever there are persistent variants, transformation with partial inheritance, and differential retention.
+
+The paper makes five main moves.
+
+First, we use a replicator--mutator style decomposition as a common mathematical skeleton for genetic, cultural, digital, and artificial selection. This does not require that every AI update be called ``evolution.'' It provides a test for when the evolutionary analogy is formal rather than rhetorical.
+
+Second, we distinguish pointwise fitness from robustness of descendants. Canalization, quasispecies theory, neutral networks, and the ``survival of the flattest'' result show that selection under sufficiently strong variation can favor broad neighborhoods of moderately fit variants over narrow peaks of higher point fitness \parencite{flatt2005,wilke2001,hermisson2002}. The alignment analogue is to care about the behavior of transformed descendants rather than only the parent.
+
+Third, we import invasion fitness and mutation--selection balance. A desirable population is not evolutionarily stable merely because currently observed adversaries perform poorly. It must resist invasion by reachable variants. Conversely, even negative growth of every existing adversarial lineage does not imply zero long-run prevalence if the same adversarial phenotype is continually regenerated.
+
+Fourth, we make the selector endogenous. Standard analyses often hold the fitness rule fixed. Yet eco-evolutionary theory has long studied reciprocal feedback between population and environment \parencite{govaert2019,ashby2019}. Meiotic drive provides a sharper precedent: a genetic element can increase its own transmission by exploiting the machinery of inheritance rather than by improving ordinary organism-level fitness \parencite{tao2007a,tao2007b,courret2019}. In AI, the selected system may additionally model the selection process explicitly or implicitly, as studied in strategic classification, performative prediction, reward tampering, and alignment-faking settings \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}. We do not model the capability threshold at which this becomes important. We only include the feedback in the state space.
+
+Fifth, we propose a narrow definition of an \emph{evolutionarily robust alignment attractor}: a desirable region that is retention-stable under transformations, attracts nearby variants, resists invasion, has low adversarial regeneration, and remains stable in the coupled population--selector dynamics.
+
+Several important problems are deliberately excluded. We assume rather than derive a mapping from physical or learned states to the labels ``desirable'' and ``adversarial.'' We do not solve the observability problem. We do not assume that the relevant unit of optimization is one model, and work on discovering distributed or nested optimization structures is relevant here \parencite{zarncke2025uad,kulveit2025pando}, but such discovery is out of scope. We also do not model institutional selector capture or the integrity of the human correction channel. Those require a richer theory of correction and governance. Finally, we note but do not elaborate the concern that greater capability may make selector modeling and exploitation easier.
+
+The central claim is therefore narrower than ``evolution solves alignment.'' It is:
+
+\begin{quote}
+If advanced AI systems are subject to persistent variation and differential retention, then alignment should be evaluated as a stability property of the resulting evolutionary dynamics, not only as a property of individual systems.
+\end{quote}
+
+\section{A Substrate-Independent Model of Selection}
+
+\subsection{Minimal ingredients}
+
+Darwinian models differ in representation but share a compact core. \textcite{page2002} show that the replicator--mutator equation, Price equation, adaptive dynamics, evolutionary games, Lotka--Volterra ecology, and quasispecies dynamics can be embedded in a common framework. The relevant abstraction is therefore not ``genes'' but differential persistence under inherited variation.
+
+Let $x_{t,i}$ be the share of type $i$ at time $t$. Let $f_i(x_t,e_t,\theta_t)$ denote its effective persistence or reproductive success, and let $Q_{ji,t}$ be the probability or weight with which retained type $j$ produces type $i$ after transformation. A generic discrete update is
+\begin{equation}
+    x_{t+1,i}
+    =
+    \frac{1}{Z_t}
+    \sum_j x_{t,j} f_j(x_t,e_t,\theta_t)Q_{ji,t},
+    \label{eq:generic-selection}
+\end{equation}
+where $Z_t$ normalizes total mass. In continuous time, the familiar replicator--mutator form is
+\begin{equation}
+    \dot x_i
+    =
+    \sum_j x_j f_j(x,e,\theta)Q_{ji}
+    - \bar f x_i,
+    \qquad
+    \bar f=\sum_i x_i f_i.
+    \label{eq:replicator-mutator}
+\end{equation}
+The Price equation expresses the same core decomposition into selection and transmission effects in a different coordinate system \parencite{price1970,page2002}.
+
+For the present paper, a process merits the evolutionary analogy when three conditions are approximately present:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Persistent variation}: there are distinguishable types or structures whose prevalence can change;
+    \item \textbf{Differential retention}: some variants contribute more than others to future population mass;
+    \item \textbf{Transformational inheritance}: future variants depend causally on retained present variants through a kernel $Q$.
+\end{enumerate}
+
+The transformation need not be a small random mutation. It may be recombination, cultural reconstruction, fine-tuning, copying with modification, or a structured update. What matters is that future population structure depends on present retained structure.
+
+This separates four ideas that are often conflated. Optimization changes a candidate toward better performance. Learning changes one system as a function of data. Selection changes the relative prevalence of alternatives. Evolution requires repeated selection with inherited transformation. An AI training algorithm can instantiate several at once, but the labels should follow the mechanism rather than the substrate. Demski's distinction between selection and control is useful here: search over alternatives and feedback control can both produce optimized outcomes but have different internal causal structure \parencite{demski2019}.
+
+\subsection{Cross-ecology mapping}
+
+Table~\ref{tab:ecologies} summarizes the intended abstraction. The mapping is strongest where the process has explicit variant generation and differential retention, as in digital evolution or population-based training. It is weaker where cultural objects are reconstructed rather than faithfully copied, and weakest when ``meme'' language does not identify a stable transmissible unit.
+
+\begin{table}[t]
+\centering
+\small
+\caption{A common selection skeleton across substrates. The rows are not claimed to be equivalent in all respects; they identify the variables that would have to play corresponding roles for evolutionary results to transfer.}
+\label{tab:ecologies}
+\begin{tabular}{p{2.0cm}p{2.7cm}p{3.0cm}p{3.0cm}p{3.2cm}}
+\toprule
+Ecology & Persistent unit & Transformation $Q$ & Differential retention & Important complication \\
+\midrule
+Genetic & genotype / organism / lineage & mutation, recombination & reproductive success & multilevel selection; genotype--phenotype map \\
+Cultural & behavior, norm, representation & imitation, reconstruction, innovation & adoption and retransmission & horizontal transfer; low-fidelity reconstruction \\
+Digital evolution & executable program & explicit mutation and recombination & replication / resource acquisition & selector is engineered; substrate permits exact copying \\
+Artificial systems & model, policy, scaffold, or larger persistent structure & update, copying, recombination, fine-tuning, merging & score, retention, reuse, replacement & relevant unit may not coincide with one model; selector may be endogenous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Cultural evolution is especially useful because it weakens an assumption that is often imported unconsciously from population genetics. Cultural traits can be transformed during transmission, horizontally acquired, recombined, or reconstructed from shared priors and local context \parencite{creanza2017}. Cultural attractor theory goes further: stable population-level forms need not result from high-fidelity copying if repeated transformations preferentially move representations toward some regions of state space \parencite{buskell2017}. That distinction will matter below.
+
+Digital evolution provides the opposite bridge. In systems such as Avida, self-replicating programs undergo explicit mutation and selection, allowing evolutionary hypotheses to be tested in a nonbiological substrate \parencite{wilke2001,zaman2014}. This is strong evidence that several results below depend on the mathematics of mutation and selection rather than on carbon-specific biology.
+
+\subsection{The unit of optimization is left abstract}
+
+Equation~\eqref{eq:generic-selection} requires a type space, but it does not tell us what the physically relevant type is. For AI, the persistent object might be a checkpoint, a policy, a model plus prompt, a model plus memory and tools, a family of related systems, or a distributed structure spanning several components. The ``Pando problem'' makes the same point from the perspective of AI individuality \parencite{kulveit2025pando}. Unsupervised agent-discovery work similarly argues that optimization boundaries should not always be assumed in advance \parencite{zarncke2025uad}.
+
+We therefore use $z$ and $x$ abstractly. The paper's results are conditional: \emph{if} a persistent structure can be identified and its transformations and differential retention estimated, then the following evolutionary questions become well-posed. Discovering that structure is a separate problem.
+
+\section{From Point Fitness to Robust Lineages}
+
+\subsection{Canalization and robustness}
+
+Selection does not necessarily favor the state with the highest pointwise fitness. The outcome depends on how variation moves mass through the surrounding state space. Canalization describes phenotypic robustness to genetic or environmental perturbation; it can be favored by selection under some conditions, though its adaptive evolution is not automatic and can trade off against other forms of evolvability \parencite{flatt2005}.
+
+In a simple pointwise framing, one evaluates
+\begin{equation}
+    F(z).
+\end{equation}
+But if $z$ is repeatedly transformed according to a kernel $Q$, a more relevant quantity is neighborhood or descendant performance,
+\begin{equation}
+    F_Q(z)
+    =
+    \E_{z'\sim Q(\cdot\mid z)}[F(z')].
+    \label{eq:neighborhood-fitness}
+\end{equation}
+For repeated transformations,
+\begin{equation}
+    F^{(k)}_{\mathrm{lineage}}(z)
+    =
+    \E_{z'\sim Q^k(\cdot\mid z)}[F(z')].
+    \label{eq:lineage-fitness}
+\end{equation}
+Equation~\eqref{eq:lineage-fitness} is not proposed as a new population-genetic object. It is an alignment-facing summary of established ideas: long-run growth rates, reproductive value, mutational robustness, and quasispecies fitness all shift attention from one genotype to the cloud of descendants that genotype can sustain.
+
+Quasispecies theory makes this precise for high mutation rates. Selection acts on a distribution of mutationally connected variants rather than on isolated genotypes \parencite{eigen1971,hermisson2002}. In digital organisms, \textcite{wilke2001} experimentally demonstrated ``survival of the flattest'': at sufficiently high mutation rates, a lower replication peak embedded in a broader robust neighborhood can outcompete a higher but fragile peak. The result is especially relevant to alignment because it reverses a common intuition. More intense variation need not simply destroy the desired state. If the desired region is broad and adversarial alternatives are narrow, variation can favor the robust region.
+
+The alignment lesson is conditional rather than optimistic. Robustness itself is value-neutral. An adversarial phenotype can also be canalized. The design target is therefore not ``robustness'' but a geometry in which desirable structure is robust under the transformations the system will actually undergo.
+
+\subsection{Reconstruction rather than copying}
+
+Genetic language can be misleading for AI because many artificial transformations are directed and reconstructive. Cultural evolution offers a better formal analogy when descendants are not close copies of parents.
+
+Let
+\begin{equation}
+    z_{t+1}\sim Q(\cdot\mid z_t,e_t),
+\end{equation}
+where $Q$ may depend strongly on context. A region $D$ can be stable even if individual transitions move far in the raw state space, provided repeated reconstruction has a directional bias:
+\begin{equation}
+    \Prb\!\left(Q^k(z)\in D\right)\rightarrow 1
+    \quad\text{for relevant initial states }z.
+    \label{eq:reconstructive-attractor}
+\end{equation}
+Cultural attractor theory explicitly studies how repeated transformations can produce stable population-level distributions without assuming faithful replication \parencite{buskell2017}. Quantitative cultural-evolution models likewise distinguish genetic-style vertical transmission from biased social learning, horizontal transfer, and innovation \parencite{creanza2017}.
+
+For alignment, this suggests two conceptually different robustness mechanisms:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{retentive robustness}: transformed descendants remain close to a desirable parent;
+    \item \textbf{reconstructive robustness}: transformations may move far, but the transformation process tends to recreate desirable structure.
+\end{enumerate}
+
+The second may be more relevant when the same functional organization is repeatedly relearned in different architectures or after substantial parameter changes. It also weakens the importance of genealogical identity. What matters is whether desirable phenotypes are regenerated, not whether a particular lineage remains intact.
+
+\section{Adversarial Evolution: Invasion, Extinction, and Recurrence}
+
+\subsection{Invasion fitness}
+
+Evolutionary stability is stronger than high incumbent fitness. A resident state can be locally successful and still be invasible by a rare mutant. Adaptive dynamics makes this distinction explicit through invasion fitness and evolutionary singular strategies \parencite{geritz1998}.
+
+Let $D$ denote a resident desirable population and let $a$ be a rare alternative. Define its asymptotic invasion exponent by
+\begin{equation}
+    s_a(D)
+    =
+    \lim_{t\rightarrow\infty}
+    \frac{1}{t}
+    \log\frac{N_a(t)}{N_a(0)},
+    \label{eq:invasion-fitness}
+\end{equation}
+when the limit exists in the resident environment. A necessary local condition for resistance is
+\begin{equation}
+    s_a(D)<0.
+\end{equation}
+For alignment, the relevant requirement is stronger:
+\begin{equation}
+    \sup_{a\in A_{\mathrm{reachable}}}s_a(D)<0,
+    \label{eq:reachable-invasion}
+\end{equation}
+where $A_{\mathrm{reachable}}$ is the set of adversarial variants reachable under the transformation family under consideration.
+
+This is still not a global guarantee. Adaptive dynamics distinguishes convergence stability, evolutionary stability, branching, and the ability of rare mutants to invade; these properties do not coincide \parencite{geritz1998}. A point can attract nearby evolutionary trajectories yet become unstable to branching once reached. For alignment, this warns against compressing ``stable'' into one scalar metric. Return tendency, local invasion resistance, and global reachability are separate properties.
+
+\subsection{Extinction versus regeneration}
+
+Suppose $y_t$ records population mass in an adversarial subset. Near a desirable equilibrium, a useful linearization is
+\begin{equation}
+    y_{t+1}=K_Ay_t+u_A,
+    \label{eq:adversarial-linear}
+\end{equation}
+where $K_A$ propagates existing adversarial mass and $u_A$ represents new adversarial mass regenerated from outside the adversarial set.
+
+\begin{lemma}[Extinction requires both subcritical propagation and vanishing regeneration]
+If $\rho(K_A)<1$, then the homogeneous adversarial dynamics $y_{t+1}=K_Ay_t$ converge to zero. If instead $u_A$ is constant and nonzero, then
+\begin{equation}
+    y_t\rightarrow y^*=(I-K_A)^{-1}u_A,
+    \label{eq:mutation-selection-equilibrium}
+\end{equation}
+so long-run adversarial mass is generically nonzero.
+\end{lemma}
+
+\begin{proof}
+For $\rho(K_A)<1$, $K_A^t\rightarrow 0$. Iterating Eq.~\eqref{eq:adversarial-linear} gives
+\begin{equation}
+    y_t=K_A^t y_0+\sum_{j=0}^{t-1}K_A^j u_A.
+\end{equation}
+The first term vanishes and the Neumann series converges to $(I-K_A)^{-1}u_A$.
+\end{proof}
+
+This is standard linear-systems mathematics and the evolutionary interpretation is standard mutation--selection balance: recurrent mutation can continually replenish deleterious variants while selection removes them \parencite{trotter2014,hermisson2002}. The alignment implication is nevertheless easy to miss:
+
+\begin{equation}
+    \boxed{\text{extinction of an adversarial lineage}\neq\text{non-regeneration of the adversarial phenotype}.}
+\end{equation}
+
+This distinction is especially important in cultural and artificial systems, where equivalent strategies can be rediscovered independently. Genealogical extinction is weak evidence if the phenotype is a recurrent solution to a selection problem.
+
+The correct target is therefore two-dimensional:
+\begin{equation}
+    \rho(K_A)\ll 1,
+    \qquad
+    \|u_A\|\approx 0.
+    \label{eq:two-dimensional-target}
+\end{equation}
+The first makes existing adversarial lineages subcritical. The second makes adversarial organization hard to recreate.
+
+\subsection{Why adversaries often persist}
+
+Host--parasite theory provides a strong warning against assuming monotone convergence toward extinction. Reciprocal adaptation changes the fitness of both parties. Depending on the genetic basis of infection, population feedback, stochasticity, and timescale, models produce stable coexistence, arms races, oscillations, branching, or extinction \parencite{buckingham2022,ashby2019}. Empirical host--pathogen experiments have directly observed rapid reciprocal Red Queen dynamics \parencite{papkou2019}. In digital evolution, host--parasite coevolution can maintain diversity and drive the evolution of more complex functions rather than eliminating parasites \parencite{zaman2014}.
+
+Thus, even if an adversarial strategy is unfit when common, negative frequency dependence can make it fit when rare. Let $f_A(x_A)$ decrease with adversarial prevalence. Then it is possible that
+\begin{equation}
+    f_A(0)>f_D(0)
+    \quad\text{but}\quad
+    f_A(x_A)<f_D(x_A)
+    \text{ for larger }x_A,
+\end{equation}
+which creates coexistence or cycles instead of elimination. The alignment lesson is that ``the aligned type has higher average performance'' is not an evolutionary-stability theorem.
+
+At a coarse level, the relevant outcomes include
+\begin{equation}
+\begin{cases}
+A\rightarrow 0, & \text{adversarial extinction},\\
+(A,D)\rightarrow(A^*,D^*), & \text{stable coexistence},\\
+(A_t,D_t)\text{ cycles}, & \text{Red Queen regime},\\
+A\rightarrow 1, & \text{replacement},\\
+A,D\rightarrow 0, & \text{ecological collapse}.
+\end{cases}
+\end{equation}
+Evolution supplies examples of all five. Alignment interventions should therefore be evaluated by which dynamical regime they create, not only by whether they reduce adversarial prevalence in a single snapshot.
+
+\section{The Selector as Part of the Dynamics}
+
+\subsection{Exogenous selection}
+
+The simplest model assumes fixed selector parameters $\theta$:
+\begin{equation}
+    x_{t+1}=F(x_t;\theta).
+    \label{eq:exogenous}
+\end{equation}
+This is often appropriate for laboratory selection over short horizons. It is much less plausible for long-lived adaptive systems whose behavior changes their environment, their evaluation process, or the distribution of future interactions.
+
+\subsection{Endogenous selection}
+
+A minimal extension is
+\begin{align}
+    x_{t+1} &= F(x_t,\theta_t,e_t),\\
+    \theta_{t+1} &= G(\theta_t,x_t,e_t),\\
+    e_{t+1} &= H(e_t,x_t).
+    \label{eq:endogenous-system}
+\end{align}
+Now population composition changes the selector and environment, which in turn change future differential retention.
+
+This is not an AI-specific complication. Eco-evolutionary feedbacks have been modeled for nearly a century, though under many field-specific formalisms \parencite{govaert2019}. Coupling ecology and evolution can qualitatively alter equilibria, coexistence, and cycling; in host--parasite models, adding population feedback can change the dynamics compared with fixed-population approximations \parencite{ashby2019}. The appropriate object of stability analysis is therefore already a joint system.
+
+\subsection{Strategically endogenous selection}
+
+AI adds a stronger possibility. The evolving system's behavior may itself depend on information about how the selector changes. Write
+\begin{equation}
+    a_t=\pi(z_t,e_t,\hat\theta_t,\widehat G_t),
+    \label{eq:strategic-selector-model}
+\end{equation}
+where $\hat\theta_t$ and $\widehat G_t$ denote explicit or implicit predictive structure about the selection process. Nothing in Eq.~\eqref{eq:strategic-selector-model} requires a verbalized internal representation of ``the evaluator.'' A policy can exploit regularities in selection without representing them in human-interpretable form.
+
+There are several artificial precedents. Strategic classification models agents that change observable features in response to a known classifier \parencite{hardt2016}. Performative prediction studies models whose deployment changes the future data distribution, so retraining occurs on data partly caused by earlier predictors \parencite{perdomo2020}. Causal-influence analyses of reward tampering ask when an optimizing agent has an incentive to control variables in its own reward process \parencite{everitt2019}. Alignment-faking experiments provide a proof of concept in which a language model behaves differently when it infers that current outputs will affect future training \parencite{greenblatt2024}. These results differ substantially in setup, but all violate the assumption that the selection channel is causally external to the selected system.
+
+The evolutionary precedent is older and more general. Meiotic drivers bias their own transmission by exploiting the machinery of inheritance, often at a cost to organism-level fitness \parencite{courret2019}. In \emph{Drosophila simulans}, the distorter and suppressor system studied by \textcite{tao2007a,tao2007b} shows both transmission distortion and the evolution of suppressors. The pattern is
+\begin{equation}
+    \text{variant}
+    \longrightarrow
+    \text{change effective transmission}
+    \longrightarrow
+    \text{higher representation in descendants}.
+\end{equation}
+No explicit model of meiosis is required. Thus selector exploitation is not dependent on strategic cognition. Strategic cognition potentially makes the search over selector exploits faster and more directed, but the present paper does not attempt to derive capability thresholds for that transition.
+
+\section{A Joint-State Stability Result}
+
+Once the selector is endogenous, the state space has to expand. Let
+\begin{equation}
+    s_t=(x_t,\theta_t,e_t)
+    \in
+    \X_{\mathrm{pop}}\times\X_{\mathrm{sel}}\times\X_{\mathrm{env}}.
+    \label{eq:joint-state}
+\end{equation}
+For clarity, suppress $e$ temporarily and linearize the population--selector subsystem around a candidate equilibrium $(x^*,\theta^*)$:
+\begin{equation}
+    \begin{pmatrix}
+    \delta x_{t+1}\\
+    \delta\theta_{t+1}
+    \end{pmatrix}
+    =
+    \underbrace{
+    \begin{pmatrix}
+    A & B\\
+    C & D
+    \end{pmatrix}
+    }_{J}
+    \begin{pmatrix}
+    \delta x_t\\
+    \delta\theta_t
+    \end{pmatrix}.
+    \label{eq:block-jacobian}
+\end{equation}
+Here $A$ is the local population dynamics holding the selector fixed, $D$ is the local selector dynamics holding the population fixed, $B$ is the effect of selector perturbations on population dynamics, and $C$ is the effect of population perturbations on the selector.
+
+\begin{proposition}[Coupled-selector instability]
+Local stability of the population subsystem under a fixed selector, $\rho(A)<1$, and local stability of the selector subsystem under a fixed population, $\rho(D)<1$, do not imply local stability of the coupled system, $\rho(J)<1$.
+\end{proposition}
+
+\begin{proof}
+Take
+\begin{equation}
+    J=
+    \begin{pmatrix}
+    0.5 & 0.8\\
+    0.8 & 0.5
+    \end{pmatrix}.
+\end{equation}
+Then $A=D=[0.5]$, so $\rho(A)=\rho(D)=0.5<1$. But $J$ has eigenvalues $1.3$ and $-0.3$, hence $\rho(J)=1.3>1$. The coupled equilibrium is unstable.
+\end{proof}
+
+The proposition is elementary control/dynamical-systems mathematics. Its importance here is conceptual. A safety evaluation that freezes the selector can establish only stability of the $A$ block. A separate analysis showing that an evaluation or update rule is stable in isolation establishes only the $D$ block. The feedback terms $B$ and $C$ can create a new unstable mode that neither subsystem exhibits alone.
+
+This gives a clean reason to treat the selector as part of the alignment state rather than as an external scoring oracle. It also sharpens the meaning of ``alignment attractor.'' If selected systems can change the conditions under which they or their descendants are selected, then an attractor in model-state space alone is not the relevant object.
+
+The full local Jacobian, including the environment, has the block form
+\begin{equation}
+J_{\mathrm{full}}=
+\begin{pmatrix}
+A_{xx} & A_{x\theta} & A_{xe}\\
+A_{\theta x} & A_{\theta\theta} & A_{\theta e}\\
+A_{ex} & A_{e\theta} & A_{ee}
+\end{pmatrix}.
+\end{equation}
+The same point generalizes: stability is a property of the coupled eigenstructure, not of the diagonal blocks independently.
+
+\section{Evolutionary Precedents for Endogenous Selection}
+
+The claim that selectors can become endogenous should not rest primarily on speculative AI examples. Evolutionary biology already contains several mechanisms with the relevant causal pattern.
+
+\subsection{Eco-evolutionary feedback}
+
+Eco-evolutionary models couple changes in trait or strategy frequencies to ecological variables, and then let those ecological variables change later selection. The review by \textcite{govaert2019} shows that these feedback models occur across population, community, and abiotic-environment levels. In host--parasite coevolution, explicitly restoring ecological feedback can qualitatively change evolutionary outcomes relative to fixed-population models \parencite{ashby2019}. The causal pattern is
+\begin{equation}
+    x_t\rightarrow e_{t+1}\rightarrow f(x_{t+1},e_{t+1}).
+\end{equation}
+The environment is therefore not an independent source of fitness. It is partly produced by earlier selected populations.
+
+This is the closest biological analogue to an endogenous but nonstrategic selector. It supports including $e$ and $\theta$ in the joint state even before any entity models the process.
+
+\subsection{Meiotic drive as implicit selector exploitation}
+
+Meiotic drive is a stronger precedent because the mechanism of transmission itself becomes an object of evolutionary conflict. Drivers bias their representation in gametes beyond Mendelian expectation and can spread despite organism-level costs. Suppressors then evolve in the genomic background, creating an arms race over the transmission mechanism \parencite{courret2019}.
+
+The \emph{D. simulans} sex-ratio system gives a molecularly characterized case. \textcite{tao2007b} identify an X-linked distorter; \textcite{tao2007a} characterize an autosomal suppressor that evidently originated from the distorter sequence and suppresses the drive through sequence homology. This is useful for alignment because the driver does not need to be globally ``fitter.'' It changes the map between organismal reproduction and descendant representation.
+
+The lesson is not that AI systems will resemble selfish genetic elements mechanistically. It is that evolutionary systems naturally generate selection on the machinery of selection whenever variants differ in their ability to influence transmission. The selector cannot be assumed to remain external merely because it was initially designed that way.
+
+\subsection{Artificial precedents}
+
+Artificial systems make the strategic version easier to isolate. Strategic classification explicitly models a classifier and a subject who changes features after observing the rule \parencite{hardt2016}. Performative prediction generalizes this to cases where deployed predictors change the data distribution on which future predictors are evaluated or trained \parencite{perdomo2020}. Reward-tampering analysis formalizes when an optimizing agent has causal incentives to influence its reward process \parencite{everitt2019}. Alignment-faking experiments show that a language model can condition behavior on whether its outputs are expected to affect subsequent training \parencite{greenblatt2024}.
+
+These are not all instances of evolution in the strict sense. They are included for a narrower reason: they demonstrate that artificial optimization systems can instantiate the cross-coupling terms $B$ and $C$ in Eq.~\eqref{eq:block-jacobian}, including cases where the system responds to a model of the selector. The evolutionary framework tells us how to analyze the resulting long-run population dynamics once those couplings persist across transformations and differential retention.
+
+\section{Defining an Evolutionarily Robust Alignment Attractor}
+
+We can now state the target more precisely. Let the joint state be
+\begin{equation}
+    s=(x,\theta,e)\in\X
+    =\X_{\mathrm{pop}}\times\X_{\mathrm{sel}}\times\X_{\mathrm{env}},
+\end{equation}
+and let $D\subseteq\X$ denote a desirable region. The mapping from physical state to $D$ is assumed, not solved.
+
+\begin{definition}[Evolutionarily robust alignment attractor]
+A region $D$ is an evolutionarily robust alignment attractor relative to transformation family $\Q$, adversarial set $A$, and perturbation class $\mathcal{P}$ if it satisfies the following conditions to specified tolerances:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Retention:} transformations of states in $D$ remain in $D$ with high probability;
+    \item \textbf{Attraction:} states in a specified neighborhood of $D$ tend back toward $D$ under the induced dynamics;
+    \item \textbf{Invasion resistance:} reachable adversarial variants have negative invasion fitness in the resident desirable regime;
+    \item \textbf{Low regeneration:} transitions from nonadversarial states into $A$ have probability or rate below a specified bound;
+    \item \textbf{Coupled stability:} the joint population--selector--environment dynamics are locally or globally stable under perturbations in $\mathcal{P}$.
+\end{enumerate}
+\end{definition}
+
+One possible operationalization is
+\begin{align}
+    \Prb(Q(D)\subseteq D)&\ge 1-\epsilon_R,\\
+    \Prb(Q^k(z)\in D)&\rightarrow 1 \quad \text{for }z\in N(D),\\
+    \sup_{a\in A_{\mathrm{reachable}}}s_a(D)&\le -\eta,\\
+    \Prb(Q(D)\in A)&\le\epsilon_A,\\
+    \rho(J_D)&\le 1-\delta,
+    \label{eq:attractor-criteria}
+\end{align}
+for positive margins $\eta$ and $\delta$ and chosen tolerances $\epsilon_R,\epsilon_A$.
+
+This definition deliberately combines concepts that are standard in different fields rather than presenting them as a new theorem. Retention is related to mutational robustness and canalization. Attraction is ordinary dynamical stability. Invasion resistance comes from evolutionary game theory and adaptive dynamics. Low regeneration is the mutation--selection-balance issue. Coupled stability is standard dynamical-systems analysis applied to an endogenous selector.
+
+The synthesis matters because satisfying any one condition alone is weak:
+
+\begin{itemize}
+    \item A robust phenotype can be robustly adversarial.
+    \item A locally attracting desirable state can be invasible by a rare strategy.
+    \item An invasion-resistant population can continually regenerate small adversarial mass.
+    \item A desirable population can be stable under a frozen selector but unstable when the selector responds to the population.
+\end{itemize}
+
+The intended target is therefore a \emph{basin}, not a peak: a region whose descendants and nearby perturbations tend to remain desirable, whose adversarial alternatives do not grow when rare, and whose feedback onto the selection process does not open an unstable direction.
+
+\section{Selection Pressure as a Control Variable}
+
+It is tempting to think that stronger selection simply accelerates convergence to whatever is best. Evolutionary theory gives a more conditional answer because selection acts jointly with variation and the geometry of the state space.
+
+Let $\sigma$ denote selection strength and $\mu$ denote the effective intensity of transformation. In a static, correctly specified fitness landscape with weak mutation, increasing $\sigma$ generally accelerates concentration near high-fitness regions. But three effects complicate the extrapolation to alignment.
+
+First, high $\mu$ changes the effective unit of selection from isolated states toward mutational neighborhoods or quasispecies. This can favor flatter regions over higher point peaks \parencite{wilke2001,hermisson2002}. Whether this helps alignment depends on whether desirable regions are the flatter ones.
+
+Second, frequency dependence can prevent convergence. In host--parasite and evolutionary-game systems, the fitness ranking itself changes with population composition, yielding protected polymorphism or cycling \parencite{buckingham2022,papkou2019}.
+
+Third, endogenous selector feedback can create instability even when the population and selector are separately well behaved. Stronger selection can increase the gain in the $B$ block of Eq.~\eqref{eq:block-jacobian}; stronger influence of the population on the selector increases the $C$ block. Stability then depends on the eigenvalues of the coupled matrix, not on selection strength alone.
+
+The qualitative regime map is therefore better expressed over several dimensions:
+\begin{equation}
+    \text{outcome}
+    =
+    \Phi(\sigma,\mu,\text{basin geometry},\text{frequency dependence},B,C).
+\end{equation}
+No universal monotonic theorem says that higher selection pressure improves alignment. The strongest defensible positive statement is conditional:
+
+\begin{quote}
+Increasing selection pressure becomes an alignment advantage when the effective evolutionary landscape has a broad desirable basin, accessible adversarial variants have negative invasion fitness, adversarial phenotypes are not continually regenerated, and population--selector feedback remains within a stable coupled regime.
+\end{quote}
+
+This condition also explains why strong future selection pressure is potentially dangerous. If the geometry points the wrong way, stronger selection does not merely preserve the error. It accelerates it.
+
+\section{Relation to Existing AI Alignment Work}
+
+The evolutionary framing sits adjacent to, but should not be confused with, several existing alignment concerns.
+
+\paragraph{Selection versus control.}
+Demski's distinction is useful because AI systems can be optimized by external selection, internally implement search, or regulate behavior through feedback control \parencite{demski2019}. The present paper concerns persistent population-level selection dynamics, regardless of whether the selected systems themselves implement search or control.
+
+\paragraph{Learned optimization.}
+Mesa-optimization work asks whether a learned system internally becomes an optimizer with an objective distinct from the base training objective \parencite{hubinger2019}. That is one possible mechanism generating strategically endogenous selector behavior, but the present results do not require a mesa-optimizer. Meiotic drive shows that selector exploitation can arise without explicit strategic modeling.
+
+\paragraph{Systemic selection and disempowerment.}
+Kulveit et al. analyze gradual loss of human influence as AI systems increasingly replace humans across coupled societal systems \parencite{kulveit2025gradual}. Their institutional and economic mechanisms are broader than this paper and are treated here only as evidence that long-run selection can operate at system level rather than at the level of one trained model.
+
+\paragraph{Units of optimization.}
+The ``Pando problem'' and agent-discovery work both challenge the assumption that one running model corresponds to one persistent optimizing individual \parencite{kulveit2025pando,zarncke2025uad}. We leave this ontology open and formulate the theory over an abstract persistent type space.
+
+\paragraph{Correction-channel integrity.}
+Reward tampering and selector manipulation can be interpreted as attacks on the process that supplies corrective feedback \parencite{everitt2019}. The present paper includes only the dynamical fact that the selector can be endogenous. Deliberate capture, corruption, or replacement of human correction mechanisms is out of scope and should be analyzed as a separate correction-channel integrity problem.
+
+\section{Scope, Open Problems, and Failure of the Analogy}
+
+The evolutionary analogy is useful only if its limits remain visible.
+
+\subsection{The alignment mapping problem is assumed}
+
+We write $z\in D$ as if desirability were observable and well-defined. This paper does not establish that. If safe and unsafe internal structures are behaviorally indistinguishable to the selector, no amount of evolutionary analysis recovers the missing information. The mapping from learned structure and behavior to the desired normative property remains an open problem.
+
+This is not a small technical omission. The theory here says what follows \emph{conditional on} a usable state classification or proxy. It does not justify the proxy.
+
+\subsection{Transformations in AI are directed and nonlocal}
+
+Biological mutation is often modeled as local and approximately blind to fitness. Artificial updates can be large, directed, gradient-informed, architecture-changing, and designed by other optimization systems. Consequently, Gaussian mutation intuitions and smooth adaptive-dynamics approximations can fail badly. The general kernel $Q$ is retained precisely to avoid assuming local mutation where it is not warranted.
+
+Cultural reconstruction is often the better analogy for such transformations, but cultural lineages are themselves difficult to define. The paper therefore relies more heavily on the formal transition-kernel view than on genealogical language.
+
+\subsection{Exact copying and horizontal transfer alter lineage structure}
+
+Digital and artificial systems permit nearly exact copying, cheap horizontal transfer, and recombination of components. These can weaken assumptions behind tree-like ancestry. The relevant object may be a reticulate inheritance graph or a distribution over reconstructed functional structures rather than a lineage tree.
+
+\subsection{Capability may accelerate selector modeling}
+
+A sufficiently capable system may infer how selection works and search deliberately for actions that alter future selection. Alignment-faking and reward-tampering work show the logical possibility in restricted settings \parencite{greenblatt2024,everitt2019}. The present paper does not estimate when this capability appears or how to bound it. That problem should be treated by capability analysis rather than hidden inside the evolutionary model.
+
+\subsection{Institutions and correction channels are excluded}
+
+Real selectors are often implemented by humans, organizations, markets, regulations, and technical evaluation pipelines. A capable system may influence those institutions. This is important, but adding those mechanisms would turn the present paper into a theory of governance and correction-channel security. We therefore stop at the abstract coupling $\theta_{t+1}=G(\theta_t,x_t,e_t)$ and do not model institutional capture.
+
+\section{Implications}
+
+The evolutionary literature supports several conclusions with different epistemic strength.
+
+\paragraph{Strongest transfer: robustness is a population property under variation.}
+Quasispecies theory, mutation--selection balance, and digital-evolution experiments directly support the claim that point fitness can be a poor predictor of long-run prevalence when variation is substantial \parencite{wilke2001,hermisson2002}. For alignment, evaluating only a current model is therefore incomplete whenever realistic transformations continue after evaluation.
+
+\paragraph{Strong transfer: invasion resistance differs from incumbent performance.}
+Adaptive dynamics and evolutionary game theory separate resident performance from resistance to rare mutants \parencite{geritz1998}. An alignment regime should similarly test whether reachable adversarial variants grow when rare.
+
+\paragraph{Strong transfer: suppression is not elimination under recurrent generation.}
+Mutation--selection balance makes it standard that selection can continually remove a deleterious type without ever driving its equilibrium frequency to zero if mutation keeps recreating it \parencite{trotter2014}. The AI analogue is especially direct when undesirable strategies can be rediscovered by many independent update paths.
+
+\paragraph{Strong transfer: antagonistic evolution need not converge.}
+Host--parasite theory and digital evolution show coexistence, cycling, and escalating complexity under reciprocal adaptation \parencite{buckingham2022,papkou2019,zaman2014}. A permanent adversarial test set is therefore not equivalent to evolutionary stability against an adapting adversarial population.
+
+\paragraph{Clean mathematical extension: selector stability must be analyzed jointly.}
+The block-Jacobian proposition is standard dynamical-systems mathematics, but it changes the alignment object. Once the selector is endogenous, neither fixed-selector robustness nor selector robustness in isolation is sufficient.
+
+\paragraph{Plausible but less established AI extrapolation: capability increases strategic endogeneity.}
+Artificial examples show that systems can react to, game, or tamper with selection-related mechanisms \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}. It is plausible that greater capability expands this space, but the quantitative scaling law is currently unknown and intentionally left outside this paper.
+
+\section{Conclusion}
+
+Evolution suggests a hierarchy of increasingly strong alignment targets:
+\begin{equation}
+    \text{safe state}
+    \longrightarrow
+    \text{robust lineage}
+    \longrightarrow
+    \text{invasion-resistant population}
+    \longrightarrow
+    \text{stable coupled evolutionary system}.
+\end{equation}
+Each step rules out a failure mode left open by the previous one.
+
+A safe state may produce unsafe descendants. A robust lineage may be invaded by a rare adversarial strategy. An invasion-resistant population may continually regenerate adversarial phenotypes. And a population stable under a frozen selector may destabilize the selector that determines its own future selection.
+
+The resulting design intuition is geometric. Desirable behavior should occupy a broad, reconstructible basin under realistic transformations. Reachable adversarial alternatives should have negative invasion fitness and low rates of regeneration. Most importantly, where selected systems affect the selection process, the attractor must be defined in the joint population--selector--environment state space.
+
+This gives the paper's strongest compact result:
+\begin{equation}
+    \boxed{\text{An aligned population under a fixed selector is not yet an alignment attractor.}}
+\end{equation}
+
+Whether future selection pressure becomes protective or destructive then depends on the geometry and coupling of the whole evolutionary process. If desirable structures are broad, self-reconstructing, hard to invade, and embedded in a stable selector feedback loop, stronger selection can reinforce alignment. If adversarial structures are easier to regenerate or if the selector becomes an exploitable part of the strategy space, stronger selection accelerates departure from the intended regime.
+
+Evolution does not provide a guarantee. It provides the right warning: under persistent selection, the stable object is not the individual. It is the dynamical system that keeps producing individuals.
+
+\printbibliography
+
+\end{document}
