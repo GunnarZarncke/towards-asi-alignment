@@ -25,7 +25,7 @@ digraph Spine05FieldSubsumptions {
   INT [label="Interruptibility\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   CORR [label="Christiano corrigibility\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   ELK [label="ELK\nelk_reporter_nonidentifiability\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  DEB [label="Debate\ndebate_value_tracks_truth\ndebate_judge_error_flips_outcome\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  DEB [label="Debate\ndebate_value_tracks_truth\ndebate_exists_claim_judge_differs_from_truth\nlocal_truth_capacity_separated_from_judge_channel", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   IMPACT [label="AUP / relative reachability\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   QUANT [label="Quantilization\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   EMBED [label="Embedded agency\npositive_margin_implies_epsilon_boundary\ngreen_named_path_with_bypass_not_integrity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
