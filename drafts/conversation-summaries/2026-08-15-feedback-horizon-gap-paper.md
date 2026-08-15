@@ -24,4 +24,4 @@ Convert standalone `papers/feedback_horizon_gap.tex` into the standard spin-out 
 - `papers/feedback-horizon-gap/build.sh`
 
 ## Commits
-- (this session)
+- `80dce484` Add Feedback Horizon Gap paper as a structured spin-out.
