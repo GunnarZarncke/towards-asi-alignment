@@ -57,7 +57,7 @@
 \maketitle
 
 \begin{abstract}
-AI alignment is usually posed as a property of a trained system: whether its behavior, objectives, or internal representations satisfy a desired criterion. But advanced AI systems will also be copied, modified, selected, recombined, retrained, and embedded in environments that change in response to them. Evolutionary theory studies exactly the resulting class of problems: persistence under inherited variation and differential selection. This paper develops a substrate-independent framing of alignment under selection. We separate pointwise performance from lineage robustness, import invasion fitness as a criterion for adversarial stability, distinguish extinction of an adversarial lineage from continual regeneration of the same phenotype, and model the selector itself as part of the dynamical state. The latter yields a simple but important result: stability of a desirable population under a fixed selector and stability of the selector under a fixed population do not imply stability of the coupled system. Biological precedents such as eco-evolutionary feedback and meiotic drive show that selection mechanisms can become endogenous to the entities they select even without explicit strategic reasoning. AI systems add the possibility that the selection process is modeled and exploited explicitly or implicitly. We therefore propose that an alignment attractor should be defined in the joint state space of population, transformation process, selector, and environment. We leave the alignment mapping problem, capability bounds, correction-channel integrity, and discovery of the correct unit of optimization open. The aim is narrower: to identify which evolutionary results transfer cleanly to AI alignment and what they imply for the geometry and stability of desirable behavior under continued selection.
+AI alignment is usually posed as a property of a trained system: whether its behavior, objectives, or internal representations satisfy a desired criterion. But advanced AI systems will also be copied, modified, selected, recombined, retrained, and embedded in environments that change in response to them. Evolutionary theory studies exactly the resulting class of problems: persistence under inherited variation and differential selection. This paper develops a substrate-independent framing of alignment under selection. We separate pointwise performance from lineage robustness, import invasion fitness as a criterion for adversarial stability, distinguish extinction of an adversarial lineage from continual regeneration of the same phenotype, and model the selector itself as part of the dynamical state. The latter yields a simple but important result: stability of a desirable population under a fixed selector and stability of the selector under a fixed population do not imply stability of the coupled system. Biological precedents such as eco-evolutionary feedback and meiotic drive show that selection mechanisms can become endogenous to the entities they select even without explicit strategic reasoning. AI systems add the possibility that the selection process is modeled and exploited explicitly or implicitly. We therefore propose that an alignment attractor should be defined in the joint state space of population, transformation process, selector, and environment. We leave the alignment mapping problem, capability bounds, correction-channel integrity, and discovery of the correct unit of optimization open. The results also presuppose an ecology of independent persistent types; a singleton takeoff requires separate treatment. The aim is narrower: to identify which evolutionary results transfer cleanly to AI alignment and what they imply for the geometry and stability of desirable behavior under continued selection.
 \end{abstract}
 
 \section{Introduction}
@@ -88,7 +88,7 @@ Fourth, we make the selector endogenous. Standard analyses often hold the fitnes
 
 Fifth, we propose a narrow definition of an \emph{evolutionarily robust alignment attractor}: a desirable region that is retention-stable under transformations, attracts nearby variants, resists invasion, has low adversarial regeneration, and remains stable in the coupled population--selector dynamics.
 
-Several important problems are deliberately excluded. We assume rather than derive a mapping from physical or learned states to the labels ``desirable'' and ``adversarial.'' We do not solve the observability problem. We do not assume that the relevant unit of optimization is one model, and work on discovering distributed or nested optimization structures is relevant here \parencite{zarncke2025uad,kulveit2025pando}, but such discovery is out of scope. We also do not model institutional selector capture or the integrity of the human correction channel. Those require a richer theory of correction and governance. Finally, we note but do not elaborate the concern that greater capability may make selector modeling and exploitation easier.
+Several important problems are deliberately excluded. We assume rather than derive a mapping from physical or learned states to the labels ``desirable'' and ``adversarial.'' We do not solve the observability problem. We do not assume that the relevant unit of optimization is one model, and work on discovering distributed or nested optimization structures is relevant here \parencite{zarncke2025uad,kulveit2025pando}, but such discovery is out of scope. We also do not model institutional selector capture or the integrity of the human correction channel. Those require a richer theory of correction and governance. We note but do not elaborate the concern that greater capability may make selector modeling and exploitation easier. And we do not assume that an ecology of independent systems will exist. If a single system or tightly coupled cluster monopolizes selection before independent exemplars can check one another, the population-level results below do not apply.
 
 The central claim is therefore narrower than ``evolution solves alignment.'' It is:
 
@@ -129,6 +129,8 @@ For the present paper, a process merits the evolutionary analogy when three cond
     \item \textbf{Differential retention}: some variants contribute more than others to future population mass;
     \item \textbf{Transformational inheritance}: future variants depend causally on retained present variants through a kernel $Q$.
 \end{enumerate}
+
+These conditions are silent on how many independent types coexist and for how long. A sequence of versions of one system can still satisfy (i)--(iii) at the grain of successive updates. It does not by itself supply the ecological checking discussed later.
 
 The transformation need not be a small random mutation. It may be recombination, cultural reconstruction, fine-tuning, copying with modification, or a structured update. What matters is that future population structure depends on present retained structure.
 
@@ -567,9 +569,29 @@ A sufficiently capable system may infer how selection works and search deliberat
 
 Real selectors are often implemented by humans, organizations, markets, regulations, and technical evaluation pipelines. A capable system may influence those institutions. This is important, but adding those mechanisms would turn the present paper into a theory of governance and correction-channel security. We therefore stop at the abstract coupling $\theta_{t+1}=G(\theta_t,x_t,e_t)$ and do not model institutional capture.
 
+\subsection{Ecological checking requires an independent population}
+
+The replicator--mutator skeleton, invasion fitness, and frequency-dependent suppression all presuppose more than one persistent type that can interact. Several of the constructive implications above depend on that: a desirable resident population that resists invasion, adversarial types that lose when common, and suppressors that can evolve in a background that is not identical to the driver. In short, exemplars have to keep each other in check.
+
+This is a scope condition, not a small caveat. What ``sufficient size'' means is not a census number. Three operational requirements are:
+
+\begin{enumerate}[label=(\roman*)]
+    \item more than one persistent unit that is not merely a copy of a single controller;
+    \item enough independence that one type cannot immediately prevent others from existing;
+    \item enough time for frequency-dependent checking to act before one type monopolizes the selector and the environment.
+\end{enumerate}
+
+A singleton fast takeoff fails all three. Bostrom's singleton is the limiting case: a single decision-making entity at the relevant scale \parencite{bostrom2014}. Fast takeoff, sometimes called an intelligence explosion or ``foom,'' is a dynamical path that can produce that monopoly before an ecology has time to form \parencite{yudkowsky2022}. This paper does not estimate takeoff speed. It only records that if takeoff is fast enough to skip the ecology, the population-level results here do not supply a protective mechanism.
+
+The analogy does not fail uniformly. Within one lineage, successive versions, copies, and reconstructions can still be analyzed with $Q$, neighborhood fitness, and an endogenous selector. A singleton still updates. What fails is the \emph{between-lineage} check. Internal variants of one controller are not a substitute for independent competitors if they share the same incentive to capture selection.
+
+Headcount is also not ecology size. Population genetics distinguishes census size from effective size. The alignment analogue is the number of strategically independent persistent types, not the number of running instances. Many vendors, many fine-tunes, or many copies can still be one effective type if they share ancestry, training pressure, and selector-capture incentives \parencite{kulveit2025pando}. Apparent multiplicity without independence is a singleton under a different label.
+
+The gradual-disempowerment regime is closer to the setting in which the present tools apply \parencite{kulveit2025gradual}. The singleton-fast-takeoff regime is the setting in which they do not. Capability that accelerates selector modeling, already left open above, can make the second regime more likely: a system that models selection may also prevent a checking ecology from forming.
+
 \section{Implications}
 
-The evolutionary literature supports several conclusions with different epistemic strength.
+The evolutionary literature supports several conclusions with different epistemic strength. They are conditional on an ecology of independent persistent types. They do not transfer to a singleton takeoff.
 
 \paragraph{Strongest transfer: robustness is a population property under variation.}
 Quasispecies theory, mutation--selection balance, and digital-evolution experiments directly support the claim that point fitness can be a poor predictor of long-run prevalence when variation is substantial \parencite{wilke2001,hermisson2002}. For alignment, evaluating only a current model is therefore incomplete whenever realistic transformations continue after evaluation.
@@ -601,7 +623,7 @@ Evolution suggests a hierarchy of increasingly strong alignment targets:
     \longrightarrow
     \text{stable coupled evolutionary system}.
 \end{equation}
-Each step rules out a failure mode left open by the previous one.
+Each step rules out a failure mode left open by the previous one. The population-level steps presuppose an ecology of independent persistent types; a singleton fast takeoff falls outside that scope.
 
 A safe state may produce unsafe descendants. A robust lineage may be invaded by a rare adversarial strategy. An invasion-resistant population may continually regenerate adversarial phenotypes. And a population stable under a frozen selector may destabilize the selector that determines its own future selection.
 

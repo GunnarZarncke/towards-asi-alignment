@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-15 (feedback horizon gap paper structure).
+Last updated: 2026-08-15 (verifier-construction paper split).
 
 ---
 
@@ -43,7 +43,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Papers (2026-08-15):** Feedback Horizon Gap spin-out — `papers/feedback-horizon-gap/` with external bib, biblatex build, frozen PDF. Log: `2026-08-15-feedback-horizon-gap-paper.md`.
+- **Papers (2026-08-15):** Feedback horizon gap split into companions — `papers/feedback-horizon-gap/` (`K`, accumulation) and `papers/verifier-construction/` (regimes, table, construction). Log: `2026-08-15-verifier-construction-split.md`. Earlier same-day spin-out: `2026-08-15-feedback-horizon-gap-paper.md`. **Alignment under selection:** ecology/singleton scope limit added (no singleton foom assumption). Log: `2026-08-15-alignment-under-selection-ecology-limit.md`.
 - **Companion site (2026-08-07):** Page notes overlay — ✎ panel + ▦ highlight (in panel); per-note `path`; `#:~:text=` export; mobile overlay teleported to body + visual-viewport layout. Log: `2026-08-07-page-notes-overlay.md`.
 - **Companion site / CI (2026-08-07):** Lean `/lean/` index — inline LaTeX in HTML caused Astro `Invalid Unicode escape sequence` (`\mathrm`, `\vec`, etc.); fixed in `150f406b` via `String.raw` frontmatter strings. Diagnosis-only session; rebuild verified. Log: `2026-08-07-lean-astro-unicode-escape.md`.
 - **Companion site (2026-08-07):** Field news — Black Hat USA talk full kill chain for OpenAI cyber-eval → Hugging Face intrusion; security/IT framing; cross-links July HF card, AISI/METR; MB7a/UAD hooks. Log: `2026-08-07-openai-hf-blackhat-news.md`.
