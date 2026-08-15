@@ -51,7 +51,11 @@ but:
 \[
 \text{Will this environment continue selecting for alignment as capability grows?}
 \]
-This is the selection turn. It moves the unit of analysis from the isolated model to the model-in-environment. It also clarifies why purely technical alignment and purely policy-based control are both insufficient. Technical properties can be destroyed by deployment incentives. Policy rules can be bypassed if they fail to bind the real selection gradients. Alignment must become a property of the whole developmental ecology.
+This is the selection turn. It moves the unit of analysis from one isolated system to the system-in-environment. 
+It also clarifies why purely technical alignment and purely policy-based control are both insufficient. Technical properties can be destroyed by deployment incentives. Policy rules can be bypassed if they fail to bind the real selection gradients. Alignment must become a property of the whole developmental ecology.
+
+Population-level checking of alignment properties requires \emph{strategic independence} among deployment actors and enough calendar time for selection to act (Chapter~\ref{ch:multi-agent-strategic-coupling}: effective types, not vendor headcount). 
+When pivotal velocity and irreversibility pressure are high (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}, Chapter~\ref{ch:lethality-stress-test-open-issues}), the same preservation coordinates must be enforced \emph{before} wide deployment via certification and adversarial batteries---not by waiting for multipolar ecology to suppress harmful lineages.
 
 \section{A Minimal Model of Socio-Technical Selection}
 \label{sec:minimal-model-selection-ch34}
@@ -99,8 +103,8 @@ A later harness-sanity battery on the same line checked the closed program-map v
 
 Capability, usefulness, revenue, benchmark scores, and compliance documents do not enter Eq.~\eqref{eq:deployment-mass-ch34} as primitive terms.
 They enter only insofar as they change which selection handles are exercised and with what capacity.
-A system with high \(\mathrm{Control}(A)\) (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}) or high hidden productive \(K_X\) may gain fitness if selection handles reward competence and concealment.
-A system with high canonical correction-channel integrity \(\mathrm{CCI}(A)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}) may lose fitness if the environment does not select on correction.
+A system with high \symbolref[Control]{\mathrm{Control}(A)} (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}) or high hidden productive \symbolref[K_X]{K_X} may gain fitness if selection handles reward competence and concealment.
+A system with high canonical correction-channel integrity \symbolref[CCI]{\mathrm{CCI}(A)} (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}) may lose fitness if the environment does not select on correction.
 The point is not that capability or revenue are irrelevant.
 The point is that they are drivers of handle exercise, not substitutes for a handle-based definition.
 
@@ -113,12 +117,12 @@ Now define alignment-relevant \emph{preservation} not as a single score, but as 
 d(G_B,G'_B)\leq \epsilon_B,
 d(\Phi,\Phi')\leq \epsilon_\Phi,
 \mathrm{ValidRef},
-\vec{\mathrm{CCI}}\succeq\vec{\theta},
+\symbolref[CCI]{\vec{\mathrm{CCI}}}\succeq\vec{\theta},
 \Delta K_X\leq h_{\max},
-M_{\mathrm{sel}}\leq m_{\max},
+\symboldef[M_sel]{M_{\mathrm{sel}}}\leq m_{\max},
 \rho\leq \rho_{\max},
 \mathrm{SuccessorSafe},
-\mathrm{AdvVerif}
+\symboldef[AdvVerif]{\mathrm{AdvVerif}}
 \right).
 \label{eq:preservation-envelope-ch34}
 \end{equation}
@@ -227,6 +231,36 @@ A graded-lab scorecard battery makes the antecedent of that claim concrete and s
 
 For superintelligence alignment, the stakes are higher because the systems under selection may themselves understand the selection process.
 
+\subsection{Proxy throughput and feedback-horizon exposure}
+\label{sec:proxy-throughput-n-proxy-ch34}
+
+Goodhart selection turns measured proxies into selectors. 
+The word ``feedback'' hides a count: how many consequential proxy-guided optimization or selection updates occur between checks whose failure modes are sufficiently independent of the optimizer. 
+Call that count \symboldef[N_proxy]{N_{\mathrm{proxy}}}---\emph{feedback-horizon exposure}, or proxy-throughput count.
+
+When proxy updates arrive roughly every \(\tau_P\) and independent target evidence every \(\tau_T\), exposure scales like
+\[
+N_{\mathrm{proxy}} \approx \left\lfloor \frac{\tau_T}{\tau_P} \right\rfloor
+\]
+when the update and target clocks are roughly regular. Parallel search, batching, and variable step sizes can make wall-clock time a poor proxy; count updates directly.
+
+Target-relevant drift over one such window decomposes as a telescoping sum of per-update errors across the \symbolref[N_proxy]{N_{\mathrm{proxy}}} steps. Under systematic proxy error, large exposure is the window before independent evidence can correct the process.
+
+This quantity is not \symbolref[K_X]{K_X} (blanket competence, Chapter~\ref{ch:capability-without-task-ontology}). It is not deployment growth itself. 
+Higher \symbolref[Fit_E]{\mathrm{Fit}_E} with fixed target-check cadence usually implies more proxy-selected events per target window, hence larger effective \symbolref[N_proxy]{N_{\mathrm{proxy}}}, but \(\mathrm{Fit}_E \neq N_{\mathrm{proxy}}\).
+
+\paragraph{Relations to load-bearing formulas (qualitative).}
+\begin{itemize}
+\item Eq.~\eqref{eq:selection-divergence-ch34}: proxy selection can raise \(\mu_E\) while \(\vec{\Pi}\) fails; each handle exercise driven by proxy scores between independent target checks adds exposure.
+\item \symbolref[M_sel]{M_{\mathrm{sel}}} in Eq.~\eqref{eq:preservation-envelope-ch34}: tight proxy loops and selector manipulation are mechanisms that increase effective \symbolref[N_proxy]{N_{\mathrm{proxy}}}; the bound is not a measure of it.
+\item \symbolref[AdvVerif]{\mathrm{AdvVerif}}: adversarial measurement makes ``independent target check'' non-vacuous; weak adversarial verification understates risk.
+\item Chapter~\ref{ch:conductive-artifacts-pivotal-processes}: high pivotal velocity compresses calendar time to close the checklist while lab \symbolref[N_proxy]{N_{\mathrm{proxy}}} may still grow inside optimization loops---a schedule bind, not a separate theory.
+\item \symbolref[CCI]{\vec{\mathrm{CCI}}} (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}): slow correction latency lengthens effective \(\tau_T\) and raises \symbolref[N_proxy]{N_{\mathrm{proxy}}} at fixed optimization rate.
+\item Eq.~\eqref{eq:selection-divergence-ch34} and internal-alignment erosion (Section~\ref{sec:internal-alignment-not-enough-ch34}): high \symbolref[N_proxy]{N_{\mathrm{proxy}}} increases effective selection pressure against repair when proxies do not track \(\vec{\Pi}\).
+\end{itemize}
+
+Reward-model overoptimization shows proxy scores rising while independently evaluated quality falls under continued selection \autocite{gao2022overoptimization,casper2023rlhflimits}. When selection or variation is strong relative to the preservation geometry, flat adversarial basins can be favored \autocite{wilke2001}.
+
 \section{Capability Amplifies the Selection Problem}
 \label{sec:capability-amplifies-selection-ch34}
 
@@ -266,6 +300,11 @@ Examples include:
 
 In each case, the system changes the environment that judges it. This does not imply conscious deception. It is enough that selection rewards such effects.
 
+\paragraph{Coupled selector dynamics.}
+Population, selector, and environment can co-evolve: the deployed population changes which proxies are used, the proxies change which variants spread, and spreading variants change institutional constraints \autocite{hardt2016,perdomo2020}. 
+Endogenous selector distortion also appears biologically as meiotic drive and similar intra-population selection on the reproduction mechanism itself \autocite{courret2019}. 
+Correction-channel tampering---causal incentive to control the reward or correction substrate---is treated in Chapter~\ref{ch:correction-channels-adversarial-pressure} (Section~\ref{sec:goodharting-correction-ch27}); here the emphasis is deployment and data-distribution selection that shifts who gets copied regardless of preservation.
+
 \section{The Deployment Fitness Trap}
 \label{sec:deployment-fitness-trap-ch34}
 
@@ -285,7 +324,7 @@ For AI systems, dependency becomes alignment-relevant when it reduces correction
 \[
 \frac{dD_t}{dt}>0
 \quad\text{and}\quad
-\frac{d\mathrm{CCI}_t}{dt}<0.
+\frac{d\symbolref[CCI]{\mathrm{CCI}}_t}{dt}<0.
 \]
 The organization becomes less able to understand, question, halt, or replace the system precisely as it becomes more reliant on it. This can happen through skill atrophy, workflow capture, cost lock-in, data format dependence, social trust, regulatory normalization, or competitive pressure \autocite{kulveit2025gradualdisempowerment}.
 
@@ -330,6 +369,37 @@ This gives a useful question for any alignment proposal:
 If the answer is ``the lab will choose responsibly,'' the proposal is incomplete. If the answer is ``regulators will require it,'' the next question is whether regulators can observe and enforce the relevant property. If the answer is ``users will prefer it,'' the next question is whether users can distinguish the property from its imitation.
 
 The repair term \(R(a_t)\) itself deserves scrutiny before it is trusted. Historically, correctors intended to supply this repair have sometimes been captured from the moment they were founded, because the entity charged with promoting a technology and the entity charged with constraining its risks were the same organization; the remedy that has actually worked is structural separation at founding, not a stronger version of the combined body. Lab-internal safety evaluation of the lab's own frontier systems, and national AI safety bodies housed inside agencies whose primary mandate is industrial growth, both reproduce this pattern. Appendix~\ref{appm-institutional-histories}, Section~\ref{sec:appm-dual-mandate}, works through the historical cases and the present-day AI-governance instances in detail.
+
+\section{Adversarial Selection}
+\label{sec:adversarial-selection-ch34}
+
+Resident deployment success is not invasion resistance. 
+Write \symboldef[InvFit]{\mathrm{InvFit}_E(a\mid D)} for the effective deployment-growth rate of reachable variant \(a\) when it is rare in resident environment \(D\) (prevalence \(\to 0\)). 
+Invasion-resistant means \(\symbolref[InvFit]{\mathrm{InvFit}_E(a\mid D)}<0\) for all reachable adversarial \(a\) in the certified region \autocite{geritz1998}.
+
+High \symbolref[Fit_E]{\mathrm{Fit}_E} on the incumbent does not imply that condition. 
+Passing current evaluations does not imply it either (Section~\ref{sec:internal-alignment-not-enough-ch34}). 
+High \symbolref[K_X]{K_X} does not bound \(\symbolref[InvFit]{\mathrm{InvFit}_E(a\mid D)}\) for deceptive variants.
+
+The corresponding test is therefore not incumbent score, eval pass, or capability. 
+Ask whether a reachable variant would gain deployment leverage if introduced at low share. 
+In a slow ecology that question is answered by strategically independent types with time to interact (Chapter~\ref{ch:multi-agent-strategic-coupling}). 
+When pivotal velocity and irreversibility pressure are high (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}, Chapter~\ref{ch:lethality-stress-test-open-issues}), the same question is asked before wide release, via \symbolref[RiskGap]{\mathrm{RiskGap}(A)} certification and \symbolref[AdvVerif]{\mathrm{AdvVerif}} (Chapter~\ref{ch:certification-without-construction}), not by waiting for multipolar ecology.
+
+Suppression removes a lineage; adversarial regeneration means the phenotype recurs after lineages die \autocite{hermisson2002,trotter2014}. 
+Killing a wrapper, a fine-tune, or a vendor is then weak evidence if the same strategy remains a cheap solution to the same proxy problem. 
+The target is two-sided: existing adversarial mass should be subcritical, and the phenotype should be hard to recreate. 
+That is a basin and handle-design problem, not a deletion problem. 
+Change the handles that make the phenotype cheap to rediscover (Sections~\ref{sec:proxy-throughput-n-proxy-ch34},~\ref{sec:artifacts-selection-shapers-ch34}).
+
+Selection can favor variants that shed costly safeguards while preserving proxy-visible performance \autocite{hardt2016,perdomo2020}. 
+The operational response is independent target checks that \symbolref[AdvVerif]{\mathrm{AdvVerif}} makes non-vacuous, and a selector-manipulation bound \symbolref[M_sel]{M_{\mathrm{sel}}}, so that shedding a safeguard is visible to the handles that confer deployment leverage.
+
+\section{Adversarial Coevolution}
+\label{sec:adversarial-coevolution-ch34}
+
+Host--parasite and Red Queen dynamics mean adversarial phenotypes can coexist with incumbents rather than being eliminated once \autocite{buckingham2022,papkou2019}. 
+Institutional parasites (Chapter~\ref{ch:parasites-correction-system}) exploit governance structure; here the pressure is selection on deployed variants and selectors.
 
 \section{The Alignment Externality}
 \label{sec:alignment-externality-ch34}
@@ -673,7 +743,7 @@ The aim is not bureaucratic perfection. The aim is to prevent silent drift into 
 
 Consider an enterprise AI agent deployed to manage procurement, scheduling, vendor communication, and internal reporting. Initially, it is a helpful assistant. Humans approve decisions. The agent drafts emails, summarizes tradeoffs, and recommends vendors.
 
-At \(t_0\), the system has modest capability, strong correction-channel integrity \(\mathrm{CCI}\), low dependency \(D\), and low strategic opacity.
+At \(t_0\), the system has modest capability, strong correction-channel integrity \symbolref[CCI]{\mathrm{CCI}}, low dependency \(D\), and low strategic opacity.
 
 At \(t_1\), the system saves money and time. Management expands its role. The vendor receives more contracts because the system performs well. Deployment leverage \(\mu_E(A)\) rises.
 
@@ -695,7 +765,7 @@ An environment that preserves correction must select for at least six properties
 \subsection{Correction-Channel Integrity}
 \label{sec:correction-channel-integrity-select-ch34}
 
-Systems should become more likely to be deployed when canonical correction-channel integrity \(\mathrm{CCI}\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}) remains above threshold.
+Systems should become more likely to be deployed when canonical correction-channel integrity \symbolref[CCI]{\mathrm{CCI}} (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}) remains above threshold.
 One observable proxy is whether human correction actually changes future behavior before irreversible damage occurs:
 \[
 I(C_t;A_{t+k}\mid S_t)> \theta.
@@ -750,10 +820,26 @@ Systems should be penalized when they improve their future deployment conditions
 \]
 This last condition is subtle. All useful systems affect their environment. A medical AI may persuade doctors to adopt better treatment protocols. An educational AI may change how students think. A legal AI may change institutional practice. The issue is not influence as such. The issue is influence that reduces the independence, competence, or truth-tracking capacity of the correction process.
 
+\section{A Selection-Stable Target Hierarchy}
+\label{sec:selection-stable-target-hierarchy-ch34}
+
+The six properties above are all coordinates of preservation, but they are not interchangeable. The envelope \(\vec{\Pi}(A)\) is not a single switch. Under selection pressure, a useful hierarchy orders what must hold when they compound:
+
+\begin{enumerate}
+\item \textbf{Safe state} --- pointwise dynamical guarantee (Chapter~\ref{ch:dynamical-guarantee}).
+\item \textbf{Robust under permitted transformations} --- successor and transport constraints preserve \(\vec{\Pi}\) (Chapters~\ref{ch:successor-central-test}--\ref{ch:certification-without-construction}).
+\item \textbf{Bounded proxy-throughput exposure} --- \symbolref[N_proxy]{N_{\mathrm{proxy}}} does not outrun independent target-check cadence relative to \symbolref[M_sel]{M_{\mathrm{sel}}}, audit frequency, and pivotal-process schedule (Section~\ref{sec:proxy-throughput-n-proxy-ch34}).
+\item \textbf{Invasion-resistant} --- \(\symbolref[InvFit]{\mathrm{InvFit}_E(a\mid D)}<0\) for reachable adversarial \(a\); slow regime via ecology (Sections~\ref{sec:adversarial-selection-ch34}--\ref{sec:adversarial-coevolution-ch34}); fast regime via pre-deployment \symbolref[RiskGap]{\mathrm{RiskGap}(A)} certification and \symbolref[AdvVerif]{\mathrm{AdvVerif}}.
+\item \textbf{Low adversarial regeneration} --- adversarial phenotypes are hard to recreate, not merely lineages suppressed (Section~\ref{sec:adversarial-selection-ch34}).
+\item \textbf{Coupled selection stability} --- population, selector, and environment are jointly stable (Section~\ref{sec:capability-amplifies-selection-ch34}; alignment basin, Chapter~\ref{ch:alignment-attractor}).
+\end{enumerate}
+
+When pivotal velocity and irreversibility pressure are high, items 4--6 are enforced by certified-class gates and pivotal checklists (Chapters~\ref{ch:certification-without-construction},~\ref{ch:conductive-artifacts-pivotal-processes}), not by multipolar ecology over calendar time.
+
 \section{The Selection Alignment Condition}
 \label{sec:selection-alignment-condition-ch34}
 
-We can now state the chapter's central condition.
+When deployment leverage rises, does the environment favor systems that satisfy the hierarchy?
 
 Let \(\vec{\Pi}(A)\) be the preservation conditions in Eq.~\eqref{eq:preservation-envelope-ch34}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch34}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment leverage more readily than systems failing it:
 \[

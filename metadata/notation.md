@@ -149,6 +149,10 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\mu_E(A)$ | Deployment leverage in deployment environment $E$ | ch34 |
 | $\mathrm{Fit}_E(A)$ | Deployment growth rate (fitness, for short in formulas); log-rate of $\mu_E$ growth | ch34 |
 | $\vec{\Pi}(A)$ | Preservation conditions (vector-status list) for selection alignment | ch34 |
+| $N_{\mathrm{proxy}}$ | Proxy-throughput count between independent target checks (feedback-horizon exposure) | ch34 |
+| $\mathrm{InvFit}_E(a\mid D)$ | Invasion fitness: rare-type deployment growth in resident environment $D$ | ch34 |
+| $M_{\mathrm{sel}}$ | Selector manipulation bound in $\vec{\Pi}(A)$ | ch34 |
+| $\mathrm{AdvVerif}$ | Adversarial verification meaningful (preservation coordinate) | ch34 |
 | $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch46 |
 
 ### Conventions
@@ -156,6 +160,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | Symbol | Definition | Home |
 |--------|------------|------|
 | $K$ vs $B$ | $K$ = capability; $B$ = value bundle (never swap) | ch11 |
+| $N_{\mathrm{proxy}}$ vs $K_X$ vs $K_{\mathrm{coll}}$ | Proxy-throughput count (ch34) vs blanket competence (ch11) vs collective competence (ch13) | ch34 |
 | $k$ | Bundle dimension count (not $m$) | ch18 |
 | $\Delta L$ sign | Positive gain = richer model earns its complexity cost | ch46 |
 | Bundle catalogue | New bundle dimensions are added in ch16, not locally elsewhere | ch16 |
