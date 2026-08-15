@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-15 | **ET external transfer card** — `/cards/et-external-transfer/` expanded to ET-1–ET-4; status table, evidence notes, plan links. | [2026-08-15-et-external-transfer-card.md](2026-08-15-et-external-transfer-card.md) |
 | 2026-08-15 | **UAD concept card** — `/cards/unsupervised-agent-discovery/`; LW + agency-detect + embedded/lab/graded-lab links; related on boundary-discovery/mb1/inferential-coupling. | [2026-08-15-uad-concept-card.md](2026-08-15-uad-concept-card.md) |
 | 2026-08-15 | **Debate Lean / Harfe response** — `exists_claim_judge_differs_from_truth`; rename `local_truth_capacity_*`; ledger + axiom budget; App G/ch29 leanids. | [2026-08-15-debate-lean-harfe-response.md](2026-08-15-debate-lean-harfe-response.md) |
 | 2026-08-15 | **ch34 selection spin-out integration** — `N_proxy`, InvFit, adversarial sections, hierarchy; papers synced to `N_{\mathrm{proxy}}`; ch27 reward tampering. | [2026-08-15-ch34-selection-spin-out-integration.md](2026-08-15-ch34-selection-spin-out-integration.md) |
