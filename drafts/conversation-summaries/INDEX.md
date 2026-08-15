@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-15 | **ch34 selection spin-out integration** — `N_proxy`, InvFit, adversarial sections, hierarchy; papers synced to `N_{\mathrm{proxy}}`; ch27 reward tampering. | [2026-08-15-ch34-selection-spin-out-integration.md](2026-08-15-ch34-selection-spin-out-integration.md) |
 | 2026-08-15 | **Alignment-under-selection ecology limit** — Scope: evolutionary transfer needs independent ecology, not singleton foom; PDF rebuilt. | [2026-08-15-alignment-under-selection-ecology-limit.md](2026-08-15-alignment-under-selection-ecology-limit.md) |
 | 2026-08-15 | **Verifier construction split** — Horizon-gap paper split into `K` mechanism paper + verifier-construction companion. | [2026-08-15-verifier-construction-split.md](2026-08-15-verifier-construction-split.md) |
 | 2026-08-15 | **Feedback horizon gap paper** — Spin-out folder, external bib, biblatex build, frozen PDF. | [2026-08-15-feedback-horizon-gap-paper.md](2026-08-15-feedback-horizon-gap-paper.md) |

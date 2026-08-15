@@ -26,7 +26,7 @@
 $\tauG$ is candidate-generation latency, $\tauP$ the latency of
 feedback actually used for selection or updating, and $\tauT$ the
 latency until sufficiently independent evidence about the target is
-available.  $K$ is reported only where the notion of repeated
+available.  $\Nproxy$ is reported only where the notion of repeated
 proxy-guided updates before a target check is meaningful.  Platform
 throughput is not silently converted into serial latency.
 Domain-by-domain readings appear in Subsection~\ref{sec:matched-interpretations}.}
@@ -46,7 +46,7 @@ Domain-by-domain readings appear in Subsection~\ref{sec:matched-interpretations}
 &
 \textbf{Limiting cycle}
 &
-\textbf{Approx.\ $K$ / status}
+\textbf{Approx.\ $\Nproxy$ / status}
 \\
 \midrule
 \endfirsthead
@@ -65,7 +65,7 @@ Domain-by-domain readings appear in Subsection~\ref{sec:matched-interpretations}
 &
 \textbf{Limiting cycle}
 &
-\textbf{Approx.\ $K$ / status}
+\textbf{Approx.\ $\Nproxy$ / status}
 \\
 \midrule
 \endhead
@@ -94,8 +94,8 @@ arrives when the proof checker accepts or rejects.
 &
 Proof-checking computation.
 &
-Potentially enormous $K$ of search steps, but effectively
-$K\simeq 1$ relative to formal validity.
+Potentially enormous $\Nproxy$ of search steps, but effectively
+$\Nproxy\simeq 1$ relative to formal validity.
 
 \\[3pt]
 
@@ -159,7 +159,7 @@ expensive and therefore sampled sparsely.
 &
 Program execution on target hardware.
 &
-Very large between direct latency measurements; exact $K$ depends on
+Very large between direct latency measurements; exact $\Nproxy$ depends on
 the training trajectory.
 
 \\[3pt]
@@ -203,7 +203,7 @@ A 6-hour forecast can only be prospectively verified after 6 hours; a
 &
 The physical evolution of the atmosphere.
 &
-Not an optimization $K$ for a fixed forecaster; the generation/target
+Not an optimization $\Nproxy$ for a fixed forecaster; the generation/target
 ratio can nevertheless exceed $10^4$ for a 10-day forecast.
 
 \\[3pt]

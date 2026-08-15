@@ -1,10 +1,8 @@
-\section{Verifier Construction: Moving the Target into the Fast Loop}
+\section{Verifier Construction}
 \label{sec:verifier-construction}
 
-So far we have largely treated the feedback structure as given.  An optimizer receives
-a proxy every \(\tauP\), while more independent target evidence arrives after
-\(\tauT\).  But this assumption hides one of the most important ways that difficult
-problems become tractable: the feedback architecture itself can be changed.
+Treating \(\tauP\) and \(\tauT\) as fixed hides the main historical pattern: the
+feedback architecture can be changed.
 
 A useful intervention is therefore not only
 \[
@@ -100,8 +98,8 @@ earlier observable \(P\):
     \text{fast optimization}.
 \]
 
-This is verifier construction too, but it creates the central risk studied in this
-paper.  A surrogate trades latency for approximation error.
+This is verifier construction too, but it creates the horizon gap.  A surrogate
+trades latency for approximation error.
 
 Clinical medicine makes the trade explicit.  Accelerated approval can rely on
 surrogate endpoints that are expected to predict clinical benefit, allowing decisions
@@ -220,7 +218,7 @@ channel.
 
 \subsection{Verifier construction is the main escape from a growing horizon gap}
 
-If AI reduces \(\tauG\) and \(\tauP\) while \(\tauT\) remains fixed, then \(K\)
+If AI reduces \(\tauG\) and \(\tauP\) while \(\tauT\) remains fixed, then \(\Nproxy\)
 grows.  One response is to slow optimization.  A more powerful response, when
 possible, is to redesign the evidence channel:
 \[
@@ -233,7 +231,7 @@ possible, is to redesign the evidence channel:
 \\[3pt]
 &\Downarrow&
 \\[-2pt]
-&K\uparrow&
+&\Nproxy\uparrow&
 \end{array}
 \]
 versus
@@ -247,7 +245,7 @@ versus
 \\[3pt]
 &\Downarrow&
 \\[-2pt]
-&K\text{ controlled}.&
+&\Nproxy\text{ controlled}.&
 \end{array}
 \]
 

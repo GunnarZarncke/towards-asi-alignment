@@ -3,8 +3,9 @@
 
 The distinction between proxy and target feedback becomes more useful when combined
 with the \emph{kind} of feedback available.  A short feedback horizon is not equally
-valuable in every regime.  What matters is both how rapidly evidence arrives and what
-that evidence establishes.
+valuable in every regime, and the available construction is not the same in every
+regime.  What matters is both how rapidly evidence arrives and what that evidence
+establishes.
 
 We distinguish six broad regimes.  They are not mutually exclusive.  A single system
 can move through several of them as an artifact progresses from simulation to
@@ -128,8 +129,12 @@ the user's ideal preferences or welfare \parencite{khambatta2023ideal}.  More ad
 forms are a central concern in AI alignment, but are not yet supported by a comparably
 clean empirical literature.
 
-The feedback-horizon quantity \(K\) is most informative when read together with this
-classification.  Large \(K\) under exact symbolic feedback can be benign.  Moderate
-\(K\) under a systematically exploitable statistical evaluator can already be
+The feedback-horizon quantity \(\Nproxy\) is most informative when read together with this
+classification.  Large \(\Nproxy\) under exact symbolic feedback can be benign.  Moderate
+\(\Nproxy\) under a systematically exploitable statistical evaluator can already be
 problematic.  Under sparse or endogenous feedback, even defining an independent
 target check may be the hard part.
+
+The same classification constrains construction.  Exact symbolic feedback is already
+constructed.  Sparse and endogenous regimes may require inventing an intermediate
+evidence channel before \(\Nproxy\) is even well defined.

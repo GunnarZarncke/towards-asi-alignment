@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{xltabular}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{caption}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+  doi=true,
+  url=true,
+  eprint=true,
+]{biblatex}
+\addbibresource{verifier-construction.bib}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Verifier Construction: Moving the Target into the Fast Loop},
+  pdfauthor={Gunnar Zarncke}
+}
+
+\newcommand{\tauG}{\tau_{\mathrm{G}}}
+\newcommand{\tauP}{\tau_{\mathrm{P}}}
+\newcommand{\tauT}{\tau_{\mathrm{T}}}
+\newcommand{\tauC}{\tau_{\mathrm{C}}}
+\newcommand{\LT}{L_{\mathrm{T}}}
+\newcommand{\LP}{L_{\mathrm{P}}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Nproxy}{N_{\mathrm{proxy}}}
+
+\title{\textbf{Verifier Construction}\\
+\large Moving the Target into the Fast Loop}
+\author{Gunnar Zarncke}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A companion paper defines the feedback horizon gap \(\Nproxy\): how many proxy-guided optimization updates occur before independent target-level evidence arrives \parencite{zarncke2026feedbackhorizon}. That analysis treats the feedback architecture as given. This paper asks how the architecture can be changed.
+
+Many domains now treated as objectively verifiable became so only after instruments, tests, endpoints, and institutions made previously latent errors observable. Call this \emph{verifier construction}: building checkers, tests, measurements, experiments, surrogates, monitors, or independent audits that move target-relevant information into a shorter loop. Construction can reduce the horizon by earlier observation, cheaper repetition, or decomposition into shorter checkable pieces. Replacing a slow target with a fast surrogate is construction too. It shortens the decision loop while creating residual error that later optimization can exploit.
+
+Which construction is available depends on the kind of feedback a domain can support. We distinguish six regimes, from exact symbolic checks to sparse and endogenous evaluation, and map sixteen AI and human domains onto that geometry. Human learning results caution that faster feedback is not automatically more informative. The AI--human comparison is a comparison of feedback architectures, not a claim that machine learning is accelerated human science.
+
+The test of an evaluation suite is whether target-relevant errors become visible at roughly the rate at which optimization can discover and amplify them.
+\end{abstract}
+
+\section{Introduction}
+
+The feedback horizon gap counts how many proxy-guided updates occur before independent target evidence can correct the process \parencite{zarncke2026feedbackhorizon}. Large \(\Nproxy\) is cheap when the fast evaluator is the target. It is costly when the fast evaluator is an imperfect proxy whose errors stay hidden.
+
+That diagnosis leaves the architecture fixed. An optimizer receives a proxy every \(\tauP\). More independent target evidence arrives after \(\tauT\). If candidate generation and proxy evaluation get cheaper while \(\tauT\) stays put, \(\Nproxy\) grows.
+
+This paper treats the architecture as the intervention. Difficult problems often become tractable not only by searching faster but by making mistakes observable sooner and more faithfully. Formal proof checkers, unit tests, in-situ laboratory measurements, biomarkers, precursor analysis, and independent audits are instances of the same move: constructing an evidence channel.
+
+The question is then not only
+\begin{quote}
+How large is \(\Nproxy\)?
+\end{quote}
+but
+\begin{quote}
+What would have to be built so that target-relevant error appears inside the fast loop?
+\end{quote}
+
+Three distinctions matter immediately. First, a surrogate can shorten latency while losing target information. That is still construction, and it is the dangerous kind. Second, a verifier answers a claim. Lean checks formal validity, not faithful formalization. A unit test checks tested behavior, not security. Third, a verifier validated on randomly sampled candidates need not remain reliable on candidates selected to maximize it.
+
+Section~\ref{sec:horizon-recap} restates \(\Nproxy\) only as far as this argument needs. Section~\ref{sec:verifier-construction} develops construction. Section~\ref{sec:feedback-regimes} classifies six feedback regimes. Section~\ref{sec:matched-horizons} maps sixteen domains. Section~\ref{sec:human-learning} notes that human learning tracks information, not mere speed. Section~\ref{sec:asymmetries} records where the AI--human analogy is asymmetric.
+
+\section{The Horizon Being Closed}
+\label{sec:horizon-recap}
+
+The companion paper defines the gap and the associated accumulation identity \parencite{zarncke2026feedbackhorizon}. This section restates only what the present argument uses.
+
+Let \(\tauP\) be the latency of the feedback actually used for optimization, and \(\tauT\) the latency until informative target-level evidence is available. Let \(\Nproxy\) be the number of proxy-guided updates before the next independent target check. When updates are approximately periodic,
+\[
+\Nproxy \approx \left\lfloor \frac{\tauT}{\tauP} \right\rfloor.
+\]
+Count updates directly when parallelism, batching, or variable step sizes make wall-clock time a poor proxy.
+
+Write \(\LT(\theta)\) for target loss and \(\Delta_i=\LT(\theta_{i+1})-\LT(\theta_i)\) for the target effect of proxy-guided update \(i\). Then exactly
+\[
+\LT(\theta_{\Nproxy})-\LT(\theta_0)=\sum_{i=0}^{\Nproxy-1}\Delta_i.
+\]
+The identity separates how long error can accumulate from whether it does. A perfect evaluator can make large \(\Nproxy\) cheap. An exploitable proxy can make moderate \(\Nproxy\) costly. Systematic per-update drift accumulates in \(\Nproxy\); persistent correlation among proxy errors makes the sum more dangerous than independent noise.
+
+Two further latencies appear in the companion analysis: candidate-generation latency \(\tauG\), and the latency \(\tauC\) until target evidence can materially correct the optimizer or system. Usually \(\tauG\leq\tauP\leq\tauT\leq\tauC\), but not always.
+
+The rest of this paper asks how to change those latencies, especially \(\tauT\), rather than how to interpret a fixed \(\Nproxy\).
+
+\input{section-verifier-construction}
+
+\input{section-feedback-regimes}
+
+\section{Matched Feedback Horizons}
+\label{sec:matched-horizons}
+
+Table~\ref{tab:matched-expanded} compares fast proxy loops, current AI cycles, human or classical cycles, target-evidence latency \(\tauT\), and approximate \(\Nproxy\) across sixteen domains. Bracket tags mark provenance: [M] directly measured or reported in the cited source; [D] simple derivation from reported quantities; [E] order-of-magnitude or workflow estimate; [NQ] not defensibly quantified from available literature; [S] structural analogy rather than direct empirical evidence.
+
+The table is a map of where construction has already placed the target in the fast loop, where it has produced a surrogate, and where an independent target check is still poorly defined. It is not a claim that every row obeys the same quantitative law.
+
+\input{table-matched-expanded}
+
+\input{section-matched-interpretations}
+
+\section{Feedback Timing in Human Learning}
+\label{sec:human-learning}
+
+Verifier construction can look like a recommendation to shorten every loop. Human learning results caution against that reading.
+
+Educational feedback meta-analyses find medium average effects with large heterogeneity; information content strongly moderates benefit, and some feedback forms outperform others \parencite{wisniewski2020feedback}. Meta-analyses of knowledge-of-results timing in motor learning find statistically significant timing effects with comparatively small effect sizes \parencite{travlos1995timing}. Delayed judgments can improve metacognitive accuracy by making long-term memory more diagnostic \parencite{rhodes2011delayed}. Some test-learning experiments find delayed feedback beating immediate feedback \parencite{butler2008feedback}.
+
+\(\tauP\) alone does not predict learning rate. A fast signal with little target information can underperform a slower, more diagnostic one. The human analogue is not ``immediate feedback is good.'' Learning tracks the information carried by feedback, and timing sets how much misleading optimization can run before better information arrives:
+\[
+\text{learning depends on the information carried by feedback,}
+\]
+with timing entering through the exposure window before correction.
+
+The same caution applies to constructed verifiers. Earlier observation helps when the earlier signal is informative about the target. It can hurt when it is a more exploitable surrogate.
+
+\input{section-asymmetries}
+
+\section{Discussion}
+
+The companion paper's operative distinction is whether optimization runs inside a loop whose evaluator is both fast and tied to the target \parencite{zarncke2026feedbackhorizon}. This paper's operative distinction is whether that loop can be rebuilt.
+
+Capability improvements search the solution space faster. Measurement, instrumentation, testing, and experimental design make the consequences of that search legible faster. The two are complements. Fast search with a strong verifier produces the favorable regime of theorem proving and well-tested software. Fast search with a weak but rapidly computed proxy produces the regime of reward-model overoptimization.
+
+The table does not establish a causal law across domains. Reward-model overoptimization is direct evidence for accumulation under proxy selection. Clinical surrogates, rare-event safety, and self-driving laboratories are structural analogues and existence proofs for construction. The alignment row is the motivating application, not independent evidence.
+
+\section{Conclusion}
+
+Verifier construction is the attempt to move target-relevant error into the loop that actually selects updates. It can proceed by earlier observation, cheaper repetition, or decomposition. Replacing a slow target with a fast surrogate is construction too, and it is the move that creates the horizon gap.
+
+Which of those moves is available depends on the feedback regime. Exact symbolic and well-covered executable feedback already place the local target in the fast loop. Repeated empirical feedback can be accelerated by instrumentation, but usually not to zero. Noisy statistical, sparse, and endogenous regimes are where construction is both most needed and most likely to produce a misleading surrogate.
+
+The test of an evaluation architecture is not whether a score exists. It is whether target-relevant errors become visible at roughly the rate at which optimization can discover and amplify them.
+
+\printbibliography
+
+\end{document}

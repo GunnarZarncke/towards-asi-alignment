@@ -1,4 +1,4 @@
-\subsection{The AI--human analogy is structurally asymmetric}
+\section{The AI--human Analogy Is Structurally Asymmetric}
 \label{sec:asymmetries}
 
 The matched examples in this paper should not be read as claiming that AI optimization
@@ -13,7 +13,7 @@ AlphaProof trains on millions of formally checked problems
 \parencite{hubert2025alphaproof}; AlphaDev explored millions of candidate programs
 \parencite{mankowitz2023alphadev}.  Consequently, wall-clock ratios such as
 \(\tauT/\tauP\) can substantially understate the amount of selection occurring
-between target checks.  This is one reason we define \(K\) primarily as the number of
+between target checks.  This is one reason we define \(\Nproxy\) primarily as the number of
 consequential proxy-guided updates, rather than as a time ratio.
 
 \paragraph{AI state can be copied and branched cheaply.}
@@ -29,7 +29,7 @@ Human feedback primarily selects actions, strategies, institutions, or people.
 Machine learning also changes the internal parameters that generate subsequent
 behavior.  Gradient-based optimization can therefore perform many small internal
 updates between externally meaningful decisions.  Whether each gradient step should
-count toward \(K\) depends on the analysis.  For safety questions, the relevant unit
+count toward \(\Nproxy\) depends on the analysis.  For safety questions, the relevant unit
 is normally the smallest update capable of producing a consequential change in the
 system's policy or deployment behavior, not every floating-point parameter update.
 
