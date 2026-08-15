@@ -1,4 +1,4 @@
-# Towards Superintelligence Alignment
+# Towards Superintelligence Alignment (TSA)
 
 **Boundaries, Values, and Correction**
 
