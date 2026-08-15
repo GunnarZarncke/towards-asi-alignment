@@ -1,0 +1,85 @@
+\subsection{The AI--human analogy is structurally asymmetric}
+\label{sec:asymmetries}
+
+The matched examples in this paper should not be read as claiming that AI optimization
+is simply accelerated human problem solving.  The comparison is useful because the
+same feedback structures recur in both cases, but several important mechanisms are
+asymmetric.
+
+\paragraph{AI has much greater parallel search.}
+A human expert normally explores a small number of candidate solutions at once.
+Digital systems can generate, execute, and reject enormous candidate sets in parallel.
+AlphaProof trains on millions of formally checked problems
+\parencite{hubert2025alphaproof}; AlphaDev explored millions of candidate programs
+\parencite{mankowitz2023alphadev}.  Consequently, wall-clock ratios such as
+\(\tauT/\tauP\) can substantially understate the amount of selection occurring
+between target checks.  This is one reason we define \(K\) primarily as the number of
+consequential proxy-guided updates, rather than as a time ratio.
+
+\paragraph{AI state can be copied and branched cheaply.}
+Human learning is transmitted imperfectly through teaching, writing, imitation, and
+institutions.  A trained digital state can instead be copied, checkpointed, branched,
+evaluated, and recombined with comparatively little loss.  A useful update can
+therefore propagate across many simultaneous search processes without requiring each
+process to rediscover it.  There is no close human analogue at the level of individual
+cognition.
+
+\paragraph{AI can be optimized internally.}
+Human feedback primarily selects actions, strategies, institutions, or people.
+Machine learning also changes the internal parameters that generate subsequent
+behavior.  Gradient-based optimization can therefore perform many small internal
+updates between externally meaningful decisions.  Whether each gradient step should
+count toward \(K\) depends on the analysis.  For safety questions, the relevant unit
+is normally the smallest update capable of producing a consequential change in the
+system's policy or deployment behavior, not every floating-point parameter update.
+
+\paragraph{Human progress has stronger examples of verifier invention.}
+The asymmetry also runs in the other direction.  Human scientific progress repeatedly
+changed not only candidate solutions but the \emph{measurement regime}: new
+instruments, standardized measurements, controlled experiments, statistical methods,
+and institutions made previously weakly observable claims testable.  Current AI
+systems can propose experiments and help design measurement procedures, and
+self-driving laboratories automate existing instances
+\parencite{volk2023alphaflow,szymanski2023alab}.  But the historical record contains much
+stronger examples of humans changing what could be observed at all.
+
+\paragraph{Humans can sometimes learn from \(N=1\) events.}
+Wars, accidents, financial crises, constitutional failures, and scientific anomalies
+may occur too rarely for ordinary repeated optimization.  Humans nevertheless build
+causal narratives, compare mechanisms across cases, construct counterfactuals, and
+change institutions after unique events.  These updates can be wrong, but they are not
+well represented as repeated trials from a stationary distribution.  Present AI
+training, by contrast, derives much of its strength from large repeated datasets or
+synthetically generated task families.
+
+\paragraph{Human institutions can deliberately separate evaluators.}
+Science, auditing, courts, safety engineering, and other institutions often create
+partially independent channels of criticism.  Their purpose is not merely to increase
+feedback frequency but to prevent one selection criterion from controlling all
+evidence about itself.  AI evaluation often compresses many judgments into a single
+benchmark or reward model.  Multiple AI critics do not automatically recreate
+institutional independence if they share training data, architecture, prompts, or
+failure modes.
+
+\paragraph{The comparison is therefore conditional.}
+The paper makes a comparison at the level of feedback architecture:
+\[
+    \text{candidate}
+    \rightarrow
+    \text{selection signal}
+    \rightarrow
+    \text{update}
+    \rightarrow
+    \text{later target evidence}.
+\]
+It does not claim equivalence between human cognition, scientific institutions, and
+machine learning.  The important empirical question is narrower: holding the target
+and evaluator structure approximately fixed, what changes when the number of
+proxy-guided selections between independent target checks increases?
+
+This scope restriction matters for interpreting the historical examples.  The human
+record motivates the variables and provides useful analogies, but it does not by
+itself establish a causal law for AI systems.  Conversely, reward-model
+overoptimization provides direct evidence for the accumulation mechanism in AI but
+does not establish that institutional or scientific systems obey the same quantitative
+relationship.

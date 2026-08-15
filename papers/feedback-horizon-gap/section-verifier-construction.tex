@@ -1,0 +1,274 @@
+\section{Verifier Construction: Moving the Target into the Fast Loop}
+\label{sec:verifier-construction}
+
+So far we have largely treated the feedback structure as given.  An optimizer receives
+a proxy every \(\tauP\), while more independent target evidence arrives after
+\(\tauT\).  But this assumption hides one of the most important ways that difficult
+problems become tractable: the feedback architecture itself can be changed.
+
+A useful intervention is therefore not only
+\[
+    \text{generate better candidates},
+\]
+but
+\[
+    \boxed{\text{make mistakes observable sooner and more faithfully}.}
+\]
+
+We call this \emph{verifier construction}.  The term includes formal verifiers, tests,
+instruments, experiments, surrogate measurements, monitoring systems, and
+institutions that move target-relevant information into a shorter feedback loop.
+
+\subsection{Verification is constructed, not merely discovered}
+
+Many domains now treated as ``objectively verifiable'' became so only after substantial
+technical and institutional work.  A physical quantity requires an operational
+measurement procedure.  An experimental result requires controlled comparisons,
+calibration, and a way to distinguish signal from noise.  A software property requires
+a specification and a test or proof obligation.  A clinical claim requires an endpoint
+and a study design.
+
+Thus the apparent binary distinction
+\[
+    \text{verifiable} \quad\text{vs.}\quad \text{unverifiable}
+\]
+is often better represented as
+\[
+    \text{weakly observable}
+    \rightarrow
+    \text{instrumented}
+    \rightarrow
+    \text{repeatably measurable}
+    \rightarrow
+    \text{cheaply testable}.
+\]
+
+Scientific instruments are especially clear examples.  An instrument can turn a
+latent state of the world into a repeatedly accessible signal.  The important
+improvement is not necessarily that the world changes faster.  Instead,
+\[
+    I(F;T)
+\]
+increases, or informative \(F\) becomes available at shorter latency.
+
+The same transformation occurs in engineering when an expensive full-system failure
+is replaced by component tests, simulation, telemetry, or formal invariants.
+
+\subsection{Verifier construction can reduce the feedback horizon in three ways}
+
+The framework separates three distinct improvements.
+
+\paragraph{Earlier observation.}
+A new measurement can reveal a relevant effect before the final outcome occurs.
+Continuous telemetry, biomarkers, in-situ spectroscopy, and precursor events are
+examples.  If the earlier measurement is genuinely informative about the target, this
+reduces effective \(\tauT\).
+
+\paragraph{Cheaper repetition.}
+Automation can make the same target-relevant experiment repeatable at much higher
+throughput.  A-Lab integrates planning, synthesis, and characterization and executed
+353 experiments in 17 days \parencite{szymanski2023alab}.  AlphaFlow similarly couples
+experiment selection with in-situ measurement
+\parencite{volk2023alphaflow}.  Neither system removes chemical or physical latency, but
+both remove substantial human handoff latency and increase the number of
+target-relevant observations per unit time.
+
+\paragraph{Decomposition.}
+A long-horizon target can sometimes be split into shorter independently checkable
+conditions.  Software tests provide a familiar example.  A requirement such as
+``this service remains correct in deployment'' is not directly verifiable in one short
+experiment, but type checks, unit tests, property tests, integration tests, security
+tests, and monitoring each constrain different failure modes.
+
+In the ideal case,
+\[
+    T \approx g(T_1,\ldots,T_m),
+\]
+where each \(T_i\) has a much shorter verification horizon than \(T\).  The value of
+the decomposition depends on whether satisfying the pieces is sufficient for the
+whole.  Missing interactions can recreate the original long-horizon problem.
+
+\subsection{Surrogates are compressed verifiers}
+
+A common way to shorten the feedback horizon is to replace a slow target \(T\) with an
+earlier observable \(P\):
+\[
+    T
+    \longrightarrow
+    P
+    \longrightarrow
+    \text{fast optimization}.
+\]
+
+This is verifier construction too, but it creates the central risk studied in this
+paper.  A surrogate trades latency for approximation error.
+
+Clinical medicine makes the trade explicit.  Accelerated approval can rely on
+surrogate endpoints that are expected to predict clinical benefit, allowing decisions
+before survival or quality-of-life evidence fully matures
+\parencite{gyawali2019accelerated,naci2017accelerated}.  Later studies sometimes fail to
+show corresponding patient-centered benefits
+\parencite{liu2024clinicalbenefit}.  The surrogate has successfully shortened the
+decision loop while imperfectly shortening the \emph{target} loop.
+
+Reward models are the analogous construction in preference optimization.  Expensive
+human judgments are compressed into a model that can be queried at machine speed.
+This creates enormous evaluation throughput but also creates an exploitable residual:
+continued optimization can increase proxy reward while independent evaluation
+degrades \parencite{gao2022overoptimization,rafailov2024direct}.
+
+Verifier construction therefore creates a trade:
+\[
+    \text{latency reduction}
+    \quad\text{versus}\quad
+    \text{loss of target information}.
+\]
+
+\subsection{A verifier is useful only relative to a claim}
+
+There is no universal verifier for an artifact.
+
+Lean verifies formal validity, not that the theorem is the one the human intended.
+A unit test verifies tested behavior, not global program correctness.
+A vulnerability reproduction harness verifies the presence of one exploit, not the
+absence of others.
+A biomarker measures a biological response, not necessarily patient benefit.
+
+We can express this as a chain:
+\[
+\boxed{
+\text{target specification}
+\rightarrow
+\text{observable}
+\rightarrow
+\text{verifier}
+\rightarrow
+\text{optimization}.
+}
+\]
+
+Failure can occur at each arrow.
+
+This also separates \emph{certification} from \emph{construction}.  Given a candidate
+\(x\), an inexpensive verifier may answer whether \(x\) satisfies a criterion without
+providing an efficient method for finding such an \(x\).  Formal theorem proving
+makes the distinction especially clear: proof checking is cheap compared with proof
+search.  Verifier construction improves the selection landscape; it does not by
+itself solve the search problem.
+
+\subsection{Optimization changes the requirements on the verifier}
+
+A verifier that works for randomly sampled candidates need not remain reliable on
+candidates selected specifically to maximize it.  Let \(P_0(x)\) be the distribution on
+which an evaluator was validated and \(P_k(x)\) the distribution after \(k\) rounds of
+optimization.  What matters is not only
+\[
+    \operatorname{Corr}_{P_0}(F,T),
+\]
+but whether the relationship survives the shift
+\[
+    P_0
+    \rightarrow
+    P_1
+    \rightarrow
+    \cdots
+    \rightarrow
+    P_K.
+\]
+
+Reward-model overoptimization provides direct evidence of this problem
+\parencite{gao2022overoptimization}.  Continued policy optimization moves samples into
+regions where the learned evaluator is less reliable.  More generally, optimization
+searches for the residual error of the verifier.
+
+A useful verifier for a powerful optimizer must therefore satisfy a stronger
+criterion than ordinary predictive accuracy:
+\[
+    \text{high fidelity under the distribution induced by optimizing the verifier}.
+\]
+
+This requirement becomes especially difficult when the optimizer can influence the
+measurement process itself.
+
+\subsection{Independent correction is part of verifier design}
+
+Verifier construction should therefore not aim only at making a single evaluator
+faster.  It can also construct \emph{independent} correction channels.
+
+Suppose a fast evaluator \(F_1\) guides most optimization, while evaluators
+\(F_2,\ldots,F_m\) are queried less frequently.  The secondary evaluators are valuable
+when their errors are not strongly correlated:
+\[
+    \Cov
+    \bigl(
+        \epsilon_i,\epsilon_j
+    \bigr)
+    \text{ is small},
+    \qquad
+    \epsilon_i = F_i-T.
+\]
+
+A second evaluator produced from the same data, architecture, and objective may add
+little independent information even if its outputs look different.  Independence is
+therefore a causal property of the evaluation process, not merely an ensemble size.
+
+Human institutions often approximate this architecture through replication,
+independent audits, adversarial review, appeals, and multiple measurement methods.
+These mechanisms are imperfect, but their structural purpose is relevant here: they
+prevent the process being optimized from relying indefinitely on one unchecked error
+channel.
+
+\subsection{Verifier construction is the main escape from a growing horizon gap}
+
+If AI reduces \(\tauG\) and \(\tauP\) while \(\tauT\) remains fixed, then \(K\)
+grows.  One response is to slow optimization.  A more powerful response, when
+possible, is to redesign the evidence channel:
+\[
+\begin{array}{ccc}
+\tauG \downarrow
+&
+\tauP \downarrow
+&
+\tauT \text{ fixed}
+\\[3pt]
+&\Downarrow&
+\\[-2pt]
+&K\uparrow&
+\end{array}
+\]
+versus
+\[
+\begin{array}{ccc}
+\tauG \downarrow
+&
+\tauP \downarrow
+&
+\tauT \downarrow
+\\[3pt]
+&\Downarrow&
+\\[-2pt]
+&K\text{ controlled}.&
+\end{array}
+\]
+
+This gives a different interpretation of scientific and engineering progress.
+Capability improvements search the solution space faster.  Measurement,
+instrumentation, testing, and experimental design make the consequences of that
+search legible faster.
+
+The two are complements.  Fast search with a strong verifier produces the favorable
+regime represented by theorem proving and well-tested software.  Fast search with a
+weak but rapidly computed proxy produces the regime represented by reward-model
+overoptimization.
+
+For AI safety, the practical question is therefore not merely whether an evaluation
+suite exists.  It is:
+
+\begin{quote}
+Does the evaluation architecture make target-relevant errors visible at roughly the
+rate at which optimization can discover and amplify them?
+\end{quote}
+
+If not, increasing evaluator throughput alone may make the proxy loop faster without
+making the correction loop faster.  The feedback horizon has not actually been
+closed.

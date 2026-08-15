@@ -1,0 +1,463 @@
+% Evidence labels used in this table:
+% [M]  directly measured/reported in the cited source
+% [D]  simple derivation from reported quantities
+% [E]  order-of-magnitude/workflow estimate; not directly measured
+% [NQ] not defensibly quantified from the available literature
+% [S]  structural analogy rather than direct empirical evidence
+
+\begin{landscape}
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.18}
+
+\begin{longtable}{
+    @{}
+    p{2.0cm}
+    p{3.0cm}
+    p{2.85cm}
+    p{2.75cm}
+    p{3.05cm}
+    p{2.75cm}
+    p{2.55cm}
+    @{}
+}
+\caption{Matched feedback structures across AI and human systems.
+$\tauG$ is candidate-generation latency, $\tauP$ the latency of
+feedback actually used for selection or updating, and $\tauT$ the
+latency until sufficiently independent evidence about the target is
+available.  $K$ is reported only where the notion of repeated
+proxy-guided updates before a target check is meaningful.  Platform
+throughput is not silently converted into serial latency.
+Domain-by-domain readings appear in Subsection~\ref{sec:matched-interpretations}.}
+\label{tab:matched-expanded}
+\\
+
+\toprule
+\textbf{Domain}
+&
+\textbf{Fast loop / proxy}
+&
+\textbf{Current AI cycle}
+&
+\textbf{Human / classical cycle}
+&
+\textbf{Target-level evidence $\tauT$}
+&
+\textbf{Limiting cycle}
+&
+\textbf{Approx.\ $K$ / status}
+\\
+\midrule
+\endfirsthead
+
+\multicolumn{7}{l}{\textit{Table \thetable\ continued}}\\
+\toprule
+\textbf{Domain}
+&
+\textbf{Fast loop / proxy}
+&
+\textbf{Current AI cycle}
+&
+\textbf{Human / classical cycle}
+&
+\textbf{Target-level evidence $\tauT$}
+&
+\textbf{Limiting cycle}
+&
+\textbf{Approx.\ $K$ / status}
+\\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{7}{r}{\textit{Continued on next page}}\\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+Formal theorem proving
+&
+Formal proof checker, e.g.\ Lean acceptance/rejection.
+&
+Lean verification is inside the search loop.  AlphaProof used millions
+of formally checked problem variants; difficult IMO solutions required
+2--3 days of test-time RL end-to-end [M]
+\parencite{hubert2025alphaproof}.
+&
+Human proof construction and review are typically hours to days for
+nontrivial problems [E]; no matched cycle-time study is available.
+&
+For the target ``valid proof of this formal statement'', target evidence
+arrives when the proof checker accepts or rejects.
+&
+Proof-checking computation.
+&
+Potentially enormous $K$ of search steps, but effectively
+$K\simeq 1$ relative to formal validity.
+
+\\[3pt]
+
+Executable software
+&
+Compilation, execution, unit tests, property tests.
+&
+LLMs can repeatedly execute and self-debug generated programs;
+per-iteration latency is implementation-dependent [NQ]
+\parencite{chen2023selfdebug}.
+&
+In a randomized coding experiment, the control group required
+2\,h\,41\,min on average versus 1\,h\,11\,min with Copilot [M]
+\parencite{peng2023copilot}.
+&
+Seconds or minutes for covered functional properties [E], but security,
+maintainability, performance under real workload, and rare bugs can
+remain latent much longer.
+&
+Execution plus test runtime for covered properties.
+&
+Property-dependent.
+
+\\[3pt]
+
+Rule-complete games
+&
+Exact game rules and terminal win/loss.
+&
+AlphaGo Zero learned entirely from self-play; every completed game
+provides an exact terminal result [M] \parencite{silver2017alphagozero}.
+&
+Humans normally receive a correct game result after each played game;
+wall-clock duration depends on the game and time control [NQ].
+&
+The task-level target, winning under the stated rules, is observed at
+game termination.
+&
+Simulator/game execution.
+&
+Approximately one terminal target check per completed game; many
+internal search steps may occur between them.
+
+\\[3pt]
+
+Low-level algorithm optimization
+&
+Correctness tests plus predicted or measured runtime.
+&
+AlphaDev trained for at most about 2 days in the reported tasks [M],
+explored at most 12 million programs in its worst reported case [M],
+and directly measured actual latency for less than 0.002\% of generated
+programs [M] \parencite{mankowitz2023alphadev}.
+&
+The optimized libc++ subroutines had not been changed for over a
+decade before the reported replacement [M]
+\parencite{mankowitz2023alphadev}.
+&
+Correctness can be tested cheaply; true hardware latency is more
+expensive and therefore sampled sparsely.
+&
+Program execution on target hardware.
+&
+Very large between direct latency measurements; exact $K$ depends on
+the training trajectory.
+
+\\[3pt]
+
+Chip floorplanning
+&
+Estimated wirelength, congestion, power/performance/area surrogates.
+&
+RL-generated floorplans in under 6 hours [M]
+\parencite{mirhoseini2021chip}.
+&
+The source describes conventional floorplanning as requiring months of
+intense effort by physical-design engineers [M]
+\parencite{mirhoseini2021chip}.
+&
+Full downstream place-and-route, timing closure, physical verification,
+fabrication, and silicon performance provide progressively stronger
+checks.
+&
+EDA computation initially; ultimately fabrication and physical
+measurement.
+&
+[NQ]
+
+\\[3pt]
+
+Weather forecasting
+&
+Forecast generation and retrospective scoring against known historical
+weather.
+&
+GraphCast generates a 10-day global forecast in under 60 seconds [M]
+\parencite{lam2023graphcast}.
+&
+The reported HRES numerical forecast requires hours on a
+supercomputer for a comparable 10-day prediction [M]
+\parencite{lam2023graphcast}.
+&
+A 6-hour forecast can only be prospectively verified after 6 hours; a
+10-day forecast after 10 days.
+&
+The physical evolution of the atmosphere.
+&
+Not an optimization $K$ for a fixed forecaster; the generation/target
+ratio can nevertheless exceed $10^4$ for a 10-day forecast.
+
+\\[3pt]
+
+General forecasting
+&
+Brier/log scores once questions resolve; before resolution, forecasters
+can update probabilities from new information.
+&
+ForecastBench starts new rounds every two weeks and samples 1,000
+questions for LLMs and 200 for humans [M]
+\parencite{karger2025forecastbench}.
+&
+Expert human forecasters are evaluated on the same future questions;
+the original study found experts outperforming the top tested LLM
+[M] \parencite{karger2025forecastbench}.
+&
+Questions are explicitly about future events whose answers are unknown
+at submission; resolution is therefore event-limited.
+&
+Occurrence and reliable resolution of the event.
+&
+[NQ]; varies by question horizon.
+
+\\[3pt]
+
+Autonomous materials synthesis
+&
+Synthesis outcome and automated characterization guide the next
+experiment.
+&
+A-Lab executed 353 experiments over 17 days [M], about
+20.8 experiments/day platform throughput [D]
+\parencite{szymanski2023alab}.
+&
+The paper motivates automation partly by the slower conventional
+human-mediated workflow, but does not provide a clean matched
+per-experiment human cycle [NQ].
+&
+X-ray diffraction and other characterization can close the laboratory
+loop after synthesis; broader material performance may require
+additional testing.
+&
+Robotic handling, heating/reaction time, cooling and characterization.
+&
+Approximately one measured laboratory check per experiment for the
+measured property; do not infer serial latency from throughput.
+
+\\[3pt]
+
+Closed-loop chemistry
+&
+In-situ spectroscopy and reaction measurements feed subsequent
+experiment selection.
+&
+AlphaFlow used roughly 700 injection steps per campaign and produced
+more than 9,000 experimental conditions for learning [M]
+\parencite{volk2023alphaflow}.
+&
+Conventional workflows require human transfer between design,
+execution, characterization and next-step selection; a matched
+wall-clock comparison is not reported [NQ].
+&
+The measured chemical state is available after the relevant reaction
+and characterization step.
+&
+Chemical kinetics, fluid handling and measurement.
+&
+Near one for the measured in-situ property; larger for unmeasured
+downstream properties.
+
+\\[3pt]
+
+Drug development and clinical medicine
+&
+Biomarkers, tumor response, progression-free survival and other
+surrogate endpoints can guide decisions earlier than patient-centered
+outcomes.
+&
+AI may accelerate candidate generation, but no general AI
+$\tauP$ is defensibly comparable across drug programs [NQ].
+&
+Accelerated approval explicitly permits earlier decisions using
+surrogate endpoints \parencite{fdaAccelerated,gyawali2019accelerated}.
+&
+Survival, function and quality of life may require years.  In one
+2009--2013 accelerated-approval cohort, half of required postapproval
+studies were completed only after at least 3 years [M]
+\parencite{naci2017accelerated}; later oncology analyses find unresolved
+clinical benefit beyond 5 years in some cases [M]
+\parencite{liu2024clinicalbenefit}.
+&
+Disease progression and sufficiently powered clinical follow-up.
+&
+Potentially very large, but the number of consequential decisions per
+target horizon is program-specific [NQ].
+
+\\[3pt]
+
+Reward-model alignment
+&
+A learned reward model, preference model, or direct preference loss is
+queried at every optimization step.
+&
+Optimization feedback is available every policy update; the useful
+independent axis is optimization budget or KL distance rather than
+wall-clock time [M/NQ]
+\parencite{gao2022overoptimization,rafailov2024direct}.
+&
+Human judgments are sufficiently costly that they are commonly
+distilled into a learned evaluator; no universal annotation latency
+exists [NQ].
+&
+Fresh human judgments or an independently held ``gold'' evaluator.
+&
+Human/evaluator throughput and coverage of the shifted policy
+distribution.
+&
+Directly variable experimentally via optimization strength.
+
+\\[3pt]
+
+Cybersecurity
+&
+Sandbox exploit success, tests, CTF flags, crash/reproduction signals.
+&
+CVE-Bench provides reproducible sandboxed real-world CVEs; the best
+reported agent framework exploited up to 13\% of benchmark
+vulnerabilities [M] \parencite{zhu2025cvebench}.
+&
+Human security researchers also obtain fast reproduction feedback once
+a concrete vulnerability is isolated, but discovery and incident
+response times vary widely [NQ].
+&
+Real-world exploitability, prevalence, attacker adaptation and absence
+of undiscovered attack paths are not fully certified by sandbox success.
+&
+For a known exploit: execution time.  For ``system is secure'': no
+finite exhaustive cycle in general.
+&
+[NQ]
+
+\\[3pt]
+
+Recommendation / engagement optimization
+&
+Clicks, likes, watch time and other engagement responses are available
+almost immediately.
+&
+Recommendation systems can optimize real-time engagement [M]
+\parencite{khambatta2023ideal}.
+&
+Human editors, advertisers and media organizations have analogous
+short-term audience metrics, but no matched cycle estimate is needed
+here [NQ].
+&
+User benefit or ``time well spent'' need not agree with engagement.  In
+a preregistered experiment, actual-preference recommendations obtained
+more clicks (52\% vs.\ 40\%), while ideal-preference recommendations
+improved several measures of perceived user benefit [M]
+\parencite{khambatta2023ideal}.
+&
+Depends on the chosen target; some welfare effects can be measured
+immediately, others only longitudinally.
+&
+Not necessarily large.
+
+\\[3pt]
+
+Public benchmarks and leaderboards
+&
+Benchmark score is available immediately after evaluation.
+&
+Models and prompts can be repeatedly selected against public or
+semi-public benchmark feedback.
+&
+Exams, scientific metrics and industrial KPIs provide analogous
+rapidly scored objectives.
+&
+External validity, contamination resistance and transfer to deployment
+may require held-out evaluation or later real-world evidence.
+&
+Independent held-out tasks or deployment.
+&
+Potentially large but usually not observable from public data.
+
+\\[3pt]
+
+Macroeconomic policy
+&
+Financial conditions, market rates, expectations and monthly/quarterly
+indicators provide relatively fast intermediate signals.
+&
+AI-assisted analysis can be generated much faster than macroeconomic
+effects unfold, but no defensible generic AI policy-update latency
+exists [NQ].
+&
+Central banks update policy and forecasts repeatedly while awaiting
+full transmission.
+&
+Federal Reserve summaries of the literature place maximal effects of a
+monetary-policy shock on activity and inflation at roughly 1--2 years
+[M] \parencite{kugler2025transmission}; the ECB likewise describes long,
+variable and uncertain lags \parencite{ecbTransmission}.
+&
+Adjustment of contracts, borrowing, investment, wages, prices and
+expectations in the real economy.
+&
+[NQ]
+
+\\[3pt]
+
+Rare-event safety
+&
+Near misses, simulations, checklists, component tests and probabilistic
+risk models provide fast proxy evidence.
+&
+AI can run simulations and automated safety checks rapidly, but rare
+real failures remain event-limited [S/NQ].
+&
+A general-aviation accident investigation often requires 12--24 months
+to complete [M] \parencite{ntsbInvestigation}; nuclear regulation explicitly
+supplements sparse operating experience with probabilistic risk
+assessment and precursor analysis
+\parencite{nrcASP,nrcPRA}.
+&
+The strongest evidence may require occurrence of a rare accident,
+followed by causal investigation.
+&
+Event frequency plus investigation latency.
+&
+Potentially enormous or undefined.
+
+\\[3pt]
+
+AI alignment and long-horizon safety
+&
+Behavioral evals, reward models, red-team suites, automated graders and
+held-out benchmarks.
+&
+Individual evals can be cheap and repeated, but no empirical literature
+currently supports a general target-evidence latency for robustness to
+future capability growth, strategic adaptation or deployment shift [NQ].
+&
+The closest human analogues are safety assurance, auditing,
+probabilistic risk assessment and incident investigation.
+&
+The relevant target may only be tested under new capabilities,
+distribution shift, prolonged deployment or strategic pressure.
+&
+Unknown; partly event- and capability-transition-limited.
+&
+\textbf{Not yet empirically quantified.}
+
+\end{longtable}
+\end{center}
+\end{landscape}

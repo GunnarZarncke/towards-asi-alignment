@@ -1,0 +1,135 @@
+\section{Feedback Regimes}
+\label{sec:feedback-regimes}
+
+The distinction between proxy and target feedback becomes more useful when combined
+with the \emph{kind} of feedback available.  A short feedback horizon is not equally
+valuable in every regime.  What matters is both how rapidly evidence arrives and what
+that evidence establishes.
+
+We distinguish six broad regimes.  They are not mutually exclusive.  A single system
+can move through several of them as an artifact progresses from simulation to
+deployment.
+
+\paragraph{Exact symbolic feedback.}
+A candidate is checked against a formally specified criterion, and acceptance or
+rejection follows mechanically.  Formal theorem proving is the clearest example.
+Once a mathematical statement has been faithfully represented in Lean, a proof
+checker provides an unusually tight relationship between the feedback used during
+search and the local target of formal validity
+\parencite{hubert2025alphaproof}.  Rule-complete games have a similar structure at the
+level of terminal outcomes: the rules determine whether a position is legal and who
+won \parencite{silver2017alphagozero}.
+
+This regime can support extremely large search because verification is cheap relative
+to generation.  Its main residual failure lies outside the verifier: the formal
+statement, game objective, or specification may fail to represent what was intended.
+Thus exact verification solves
+\[
+    \text{``Does \(x\) satisfy specification \(S\)?''}
+\]
+without solving
+\[
+    \text{``Is \(S\) the right specification?''}.
+\]
+
+\paragraph{Executable feedback.}
+The candidate is run, and behavior is compared with tests, assertions, constraints, or
+measured performance.  Compilation, unit tests, property tests, exploit reproduction,
+and hardware benchmarks belong here.  Execution feedback enables LLMs to debug
+generated programs iteratively \parencite{chen2023selfdebug}.  Algorithm optimization can
+similarly combine cheap correctness checks with less frequent direct measurements of
+runtime \parencite{mankowitz2023alphadev}.
+
+Executable feedback differs from exact symbolic feedback because the tested behavior
+is normally only a sample of possible behavior.  A program can pass all available
+tests while remaining insecure, brittle, or incorrect outside the tested distribution.
+The feedback horizon is therefore property-specific:
+\[
+    \tauT^{\mathrm{tested\ property}}
+    \ll
+    \tauT^{\mathrm{unobserved\ property}}.
+\]
+There is no single feedback horizon for ``the program.''
+
+\paragraph{Repeated empirical feedback.}
+The system acts on the world and obtains direct measurements sufficiently quickly to
+guide the next action.  Closed-loop chemistry and autonomous materials laboratories
+are increasingly close to this regime.  AlphaFlow uses in-situ measurements to guide
+subsequent experiments \parencite{volk2023alphaflow}, while A-Lab integrates experiment
+selection, robotic execution, synthesis, and characterization in one autonomous loop
+\parencite{szymanski2023alab}.
+
+Here the verifier is not purely computational.  Nature performs part of the
+computation.  The cycle therefore has a physical floor set by manipulation, reaction,
+growth, fabrication, measurement, or other dynamics of the system being studied.
+Automation can remove human handoffs, but it cannot in general make
+\(\tauT\rightarrow0\).
+
+\paragraph{Noisy statistical feedback.}
+Many important outcomes are not determined by one observation.  Evidence accumulates
+over repeated measurements, noisy labels, heterogeneous cases, or stochastic outcomes.
+Preference learning and clinical trials are examples.  A reward model compresses many
+human judgments into a rapidly queried statistical evaluator; clinical surrogate
+endpoints compress later patient outcomes into earlier measurements.
+
+In this regime, a feedback event need not be wrong in isolation.  The problem is that
+its evidential relationship to the target is probabilistic:
+\[
+    P(T\mid F) \neq 0,1.
+\]
+Repeated optimization can therefore exploit stable residual error in the mapping from
+\(F\) to \(T\).  Reward-model overoptimization demonstrates this directly:
+independently evaluated quality can fall while the learned reward continues to rise
+\parencite{gao2022overoptimization,rafailov2024direct}.  Clinical surrogate endpoints show
+the same structural distinction outside AI: an earlier endpoint can be useful while
+remaining an imperfect predictor of survival or quality of life
+\parencite{gyawali2019accelerated,naci2017accelerated,liu2024clinicalbenefit}.
+
+\paragraph{Sparse historical feedback.}
+Some targets are observed only after long delays or rare events.  Examples include
+major accidents, long-horizon institutional outcomes, macroeconomic policy effects,
+and sufficiently rare safety failures.  In such settings it may be impossible to
+generate repeated target-level observations on demand.
+
+The main difficulty is therefore not merely noisy evaluation but low target-observation
+rate.  If catastrophic failures occur once per \(10^6\) system-hours, a million
+hours of safe operation is still only weak evidence about failure probabilities much
+below that scale.  Mature safety fields respond by constructing intermediate evidence:
+near misses, precursor events, stress tests, component reliability estimates,
+simulation, and probabilistic risk models.  These do not eliminate the long target
+horizon.  They attempt to infer the target from more frequent observations.
+
+\paragraph{Endogenous or reflexive feedback.}
+Finally, the system being optimized may influence the process that evaluates it.
+Recommendation algorithms affect the users whose clicks constitute future training
+data.  Economic policy changes the economy from which subsequent measurements are
+taken.  A strategically capable AI may alter, anticipate, select for, or otherwise
+condition on its evaluators.
+
+The distinction is structural.  In the earlier regimes we can approximately write
+\[
+    \theta \longrightarrow \text{outcome}
+    \longrightarrow F,
+\]
+with \(F\) treated as an external observation.  In a reflexive regime,
+\[
+    \theta
+    \longrightarrow
+    \{\text{outcome},\,\text{measurement process},\,\text{future data}\}
+    \longrightarrow F.
+\]
+The evaluator is now part of the environment being optimized.
+
+This is more demanding than ordinary proxy error.  Even an initially high-fidelity
+evaluator can become less informative under optimization because the distribution or
+the measurement process changes.  Real-time engagement optimization provides a mild
+example: clicks can be measured almost instantly, yet optimizing them need not optimize
+the user's ideal preferences or welfare \parencite{khambatta2023ideal}.  More adversarial
+forms are a central concern in AI alignment, but are not yet supported by a comparably
+clean empirical literature.
+
+The feedback-horizon quantity \(K\) is most informative when read together with this
+classification.  Large \(K\) under exact symbolic feedback can be benign.  Moderate
+\(K\) under a systematically exploitable statistical evaluator can already be
+problematic.  Under sparse or endogenous feedback, even defining an independent
+target check may be the hard part.

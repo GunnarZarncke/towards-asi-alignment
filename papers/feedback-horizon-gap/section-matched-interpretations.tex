@@ -1,0 +1,32 @@
+\subsection{Reading the Matched Horizons}
+\label{sec:matched-interpretations}
+
+\small
+Table~\ref{tab:matched-expanded} is easier to read once the domains are grouped by \emph{why} their feedback geometry differs, not only by field name.
+
+\paragraph{Matched verifiers.}
+When the fast loop already checks the target criterion, a very large search or update count is compatible with safety. Formal theorem proving and rule-complete games are the clearest cases: Lean acceptance, terminal win/loss, and similar verifiers make proxy and target coincide, so effective $K\simeq 1$ even when internal search depth is enormous. The separate risk is semantic: a perfect checker on a mis-formalized statement is still the wrong target.
+
+\paragraph{Mixed fidelity inside one artifact.}
+Executable software often combines both regimes in a single codebase: $\tauP\approx\tauT$ for well-covered functional tests, but $\tauP\ll\tauT$ for security, maintainability, performance under real load, and rare bugs. Low-level algorithm optimization and chip floorplanning show a related \emph{proxy hierarchy}: dense feedback from correctness checks, learned value estimates, or placement surrogates, while the stronger target---measured hardware latency, timing closure, silicon performance---is sampled only sparsely or arrives only downstream. AI can shorten construction time without making every downstream property available in the fast reward.
+
+\paragraph{Clocks set by the world.}
+Weather forecasting and general forecasting illustrate a different bottleneck. AI can compress candidate generation dramatically---GraphCast produces a ten-day forecast in under a minute---but prospective target evidence still waits on atmospheric evolution or event resolution. Neither humans nor models can manufacture the answer early; better reasoning can improve forecasts without closing the prospective target loop. This is where $K$ can grow mechanically as optimization improves while $\tauT$ stays fixed.
+
+\paragraph{Shrinking $\tauT$ through automation.}
+Autonomous materials synthesis and closed-loop chemistry show the opposite response to physical delay. Self-driving laboratories do not merely generate hypotheses faster; they move characterization into the loop through robotics, in-situ measurement, and automated next-step selection. The limiting cycle becomes handling, reaction kinetics, and measurement rather than human handoff. Progress here attacks the target-evidence latency itself, not only $\tauG$ or $\tauP$.
+
+\paragraph{Institutional fast-proxy / slow-target structures.}
+Clinical medicine is the strongest real-world example: surrogate endpoints can guide decisions years before survival, function, or quality of life are known, and regulators explicitly treat surrogates as predictors rather than direct measures of benefit. Macroeconomic policy provides a human analogue of acting repeatedly under delayed target effects---central banks revise policy on monthly or quarterly signals while full transmission to activity and inflation may take one to two years---but confounding shocks and a moving environment prevent a clean causal read on $K$.
+
+\paragraph{Where the paper's mechanism shows up directly.}
+Reward-model alignment is the strongest direct AI evidence for accumulation under proxy selection: proxy scores can keep rising after independently evaluated quality has peaked and begun to decline. Public benchmarks add a different lesson: evaluator \emph{independence} matters. A fast public score can lose informativeness once optimization is conditioned on its blind spots; dynamic or held-out evaluation is partly a response to that failure mode. Recommendation and engagement optimization are an important counterexample to a purely temporal theory: proxy failure can occur even when $K$ is not large, because engagement and user benefit diverge immediately.
+
+\paragraph{Local verifiers and open-ended targets.}
+Cybersecurity combines unusually strong local feedback---sandbox reproduction, crash signals, CTF success---with a global target that has no finite exhaustive cycle in general. Demonstrating one exploit is much easier than certifying absence of exploitable paths. Rare-event safety is the limiting case of the horizon problem: because direct target observations are rare, mature fields construct surrogate feedback systems---probabilistic risk assessment, precursor analysis, investigation protocols---rather than waiting for repeated catastrophes.
+
+\paragraph{Alignment as application, not evidence.}
+The alignment row is the motivating application of the paper, not independent evidence for it. Reward-model overoptimization demonstrates the local mechanism; rare-event safety and clinical surrogate endpoints provide institutional analogues. Any stronger alignment extrapolation should remain explicitly conditional until target-evidence latency under capability growth, strategic adaptation, or deployment shift can be measured rather than assumed.
+
+\paragraph{Two acceleration patterns.}
+Two patterns recur across the table. First, AI can shrink both generation and target verification when the target is computationally checkable---formal proof, covered software properties, and terminal game outcomes. Second, AI can shrink generation or proxy evaluation while leaving target evidence nearly unchanged---weather, forecasting, clinical outcomes, and many deployment properties. The second regime is where faster optimization raises exposure unless independent target checks keep pace.
