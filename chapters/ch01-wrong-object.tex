@@ -36,19 +36,22 @@ The standard picture imagines alignment as a simple instruction relation:
 On this picture, the system has an objective and alignment means making it point at human values \autocite{russell2019human}.
 That picture is useful for toy domains---chess engines, recommenders, robot vacuums---but it breaks for superintelligence.
 
-The nature of the underlying optimizer or value-determining process may be opaque (Chapter~\ref{ch:composite-agent}).
-Human values are not a fixed or even always well-defined object (Chapter~\ref{ch:fixed-values-wrong-target}).
-Capability growth, ontology shift, successors, and selection each change what must be preserved (Chapters~\ref{ch:dynamical-guarantee}--\ref{ch:selection-environment}).
+The nature of the underlying optimizer may be opaque: the real agent may not be the model we train.
+Human values are not a fixed or even always well-defined object.
+Capability growth, ontology shift, successors, and selection each change what must be preserved.
 
-What we need is not a snapshot of today's labels but a \emph{dynamical guarantee}: familiar words must keep changing trade-offs, protection, and safety-relevant action as systems grow and transform.
-Chapter~\ref{ch:dynamical-guarantee} states that guarantee formally; Appendix~\ref{appf-glossary} defines the operational vocabulary.
+What we need is not a snapshot of today's labels but a dynamical condition: familiar words must keep changing trade-offs, protection, and safety-relevant action as systems grow and transform.
+Appendix~\ref{appf-glossary} defines the operational vocabulary.
 
 \section{Which Alignment?}
 
 The word \emph{alignment} is singular; the relations it must cover are not---model versus operator, service versus institution, present humanity versus future substrates.
 These relations can conflict.
 Before asking whether a system is aligned, ask aligned \emph{with what}, at which boundary, under which selection pressure, across which transformation, and through which correction channel.
-Chapter~\ref{ch:composite-agent} develops the boundary machinery; Part~V develops goal and bundle inference at the right boundary.
+
+The introduction distinguishes three further questions: what target to track, how to build a system that tracks it, and how to establish that it still does (Section~\ref{sec:three-alignment-questions}).
+All three presuppose that we have identified the relevant process.
+That is this chapter's question.
 
 \section{The First Mistake}
 
