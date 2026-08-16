@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-16 | **Feedback contributors ledger** — `metadata/feedback-contributors.md`; LW links; Hallgren spelling fix in acknowledgements. | [2026-08-16-feedback-contributors-ledger.md](2026-08-16-feedback-contributors-ledger.md) |
 | 2026-08-15 | **zaman2014 site cite** — copied Avida coevolution bib entry into book bibliography so chapter sync resolves ch34. | [2026-08-15-zaman2014-site-cite.md](2026-08-15-zaman2014-site-cite.md) |
 | 2026-08-15 | **ET external transfer card** — `/cards/et-external-transfer/` expanded to ET-1–ET-4; status table, evidence notes, plan links. | [2026-08-15-et-external-transfer-card.md](2026-08-15-et-external-transfer-card.md) |
 | 2026-08-15 | **UAD concept card** — `/cards/unsupervised-agent-discovery/`; LW + agency-detect + embedded/lab/graded-lab links; related on boundary-discovery/mb1/inferential-coupling. | [2026-08-15-uad-concept-card.md](2026-08-15-uad-concept-card.md) |

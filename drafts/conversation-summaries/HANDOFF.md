@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-15 (ET external transfer card).
+Last updated: 2026-08-16 (feedback contributors ledger).
 
 ---
 
@@ -43,6 +43,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Metadata (2026-08-16):** Feedback contributors ledger — `metadata/feedback-contributors.md` (acknowledgements + Harfe / Eric Moore / Krym; LW profile links); Jonas **Hallgren** spelling fix in acknowledgements. Log: `2026-08-16-feedback-contributors-ledger.md`.
 - **Companion site / CI (2026-08-15):** Unresolved `zaman2014` in chapter sync — entry copied from the alignment-under-selection paper bib into `references/manuscript-citations.bib`. Log: `2026-08-15-zaman2014-site-cite.md`.
 - **Companion site (2026-08-15):** **ET external transfer** concept card — `/cards/et-external-transfer/` now covers ET-1 through ET-4 (status table, per-annex narrative, five evidence notes, plan links); metadata source in `metadata/concepts/bodies/et-external-transfer.md`. Log: `2026-08-15-et-external-transfer-card.md`.
 - **Companion site (2026-08-15):** **Unsupervised Agent Discovery** concept card — `/cards/unsupervised-agent-discovery/`; links Boundary Discovery, LW post, agency-detect + embedded/lab/graded-lab experiment lines; bidirectional related on mb1, inferential-coupling, boundary-discovery. Log: `2026-08-15-uad-concept-card.md`.
