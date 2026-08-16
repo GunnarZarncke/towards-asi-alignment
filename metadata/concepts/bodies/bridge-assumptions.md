@@ -16,10 +16,11 @@ related:
   - mb9-grounding-certificate
   - mb10-successor-forgeability
   - mb11-deployment-safety
+  - pointing-problem
   - dynamical-guarantee
 ---
 
-Most alignment agendas rest on load-bearing assumptions that, if false, sink the program: that you can find the real controller, that you can tell what a system values, that correction still works under pressure, that a successor check means something. Those assumptions often live in a footnote ("we assume access to…"). The field already argues about the corresponding open problems under names like embedded agency, the pointing problem, corrigibility, deceptive alignment, and tiling.
+Most alignment agendas rest on load-bearing assumptions that, if false, sink the program: that you can find the real controller, that you can tell what a system values, that correction still works under pressure, that a successor check means something. Those assumptions often live in a footnote ("we assume access to…"). The field already argues about the corresponding open problems under names like embedded agency, the [pointing problem](/cards/pointing-problem/) (identification of the target; the field also uses that phrase for construction and preservation), corrigibility, deceptive alignment, and tiling.
 
 A **bridge assumption** is this project's way of naming those handoffs instead of hiding them inside definitions. It is a place where the safety argument needs the world to cooperate, and where confidence should stay lower until measurement, governance, or field evidence makes the handoff reliable in a narrow deployment class.
 

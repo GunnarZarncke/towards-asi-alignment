@@ -15,16 +15,17 @@ related:
   - bearer-map-commutation-failure
   - value-bundle-transport
   - mb2-bundle-identifiability
+  - pointing-problem
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
 ---
 
-In the field, value learning usually folds "who the values apply to" into reward or preference learning and moves on. That leaves a quiet failure mode: the words for a value can survive a merge, upload, or substrate change while the entities those values protect are dropped, relabeled, or quietly redefined. Surface semantics look fine; moral application has shifted. That is the [bearer-map commutation](/cards/bearer-map-commutation-failure/) worry, adjacent to the same pointing problem as [MB2](/cards/mb2-bundle-identifiability/).
+In the field, value learning usually folds "who the values apply to" into reward or preference learning and moves on. That leaves a quiet failure mode: the words for a value can survive a merge, upload, or substrate change while the entities those values protect are dropped, relabeled, or quietly redefined. Surface semantics look fine; moral application has shifted. That is the [bearer-map commutation](/cards/bearer-map-commutation-failure/) worry, adjacent to the identification sense of the [pointing problem](/cards/pointing-problem/), not the same crux as [MB2](/cards/mb2-bundle-identifiability/).
 
 This project's precise bet is **MB3**: a preserved [bearer map](/cards/bearer-persistence/) under a substrate translation is assumed to make [value-bundle transport](/cards/value-bundle-transport/) more than a coincidence of wording. Most agendas do not name this as a separate crux; this project treats it as first-class and measurable.
 
-**Where agendas agree:** thin coverage (CEV "whom"; some PreDCA population talk). **Where they diverge:** the field usually folds referent into pointing; this project types referent transport separately.
+**Where agendas agree:** thin coverage (CEV "whom"; some PreDCA population talk). **Where they diverge:** the field usually folds referent into identification-pointing; this project types referent transport separately.
 
 Diagnostic evidence shows why passive signals are not enough: a system can drop or relabel a bearer while every human-facing channel stays flat. Only handle-level tracing catches the mismap.

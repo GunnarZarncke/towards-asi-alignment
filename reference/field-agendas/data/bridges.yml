@@ -16,7 +16,7 @@ bridges:
     cruxWording: Evidence identifies a stable intended value/objective structure (not surface training compliance alone).
     leanAxiom: MB2_bundle_identifiability
     cardSlug: mb2-bundle-identifiability
-    fieldAgree: MIRI value learning; CHAI pointing/CIRL; outer alignment “right target.”
+    fieldAgree: MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment “right target.”
     fieldDiffer: ELK = latent-readout slice; PreDCA/QACI = peer outer targets; book splits referent to MB3.
   - key: MB3
     noun: Value Referent
@@ -24,7 +24,7 @@ bridges:
     leanAxiom: MB3_bearer_import
     cardSlug: mb3-bearer-import
     fieldAgree: Thin (CEV “whom”; some PreDCA population talk).
-    fieldDiffer: Field usually folds into pointing; book types referent transport separately.
+    fieldDiffer: Field usually folds into identification-pointing; book types referent transport separately.
   - key: MB4
     noun: Corrigibility
     cruxWording: Correction that holds now continues to preserve the correction process under pressure.

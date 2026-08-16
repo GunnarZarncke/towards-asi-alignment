@@ -29,7 +29,7 @@ bridges:
     kind: bridge
     title: MB2 — Value Learning
     status: bridge
-    summary: "The pointing problem: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims."
+    summary: "Value/bundle identifiability: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims."
     decision: Before claiming two systems share values, ask whether the measurement distinguishes shared bundle geometry from shared surface behavior under a narrow training distribution.
     evidence: Evidence would include held-out distribution shift tests where bundle-equivalent systems keep agreeing and non-equivalent systems come apart.
     bookChapters:
@@ -63,7 +63,7 @@ bridges:
     assumptionIds: [A-001, A-006]
     fieldCrux: "Who or what values apply to survives substrate and representation change."
     owningAgenda: "CIRL / value learning (whom); CEV population questions"
-    bookMove: "Bearer maps as an audited transport layer separate from bundle geometry and scalar pointing"
+    bookMove: "Bearer maps as an audited transport layer separate from bundle geometry and scalar value identifiability"
   - slug: mb4-correction-legitimacy
     kind: bridge
     title: MB4 — Corrigibility

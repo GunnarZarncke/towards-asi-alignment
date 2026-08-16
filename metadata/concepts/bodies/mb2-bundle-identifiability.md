@@ -14,6 +14,7 @@ related:
   - value-bundle-transport
   - correction-channel-integrity
   - mb3-bearer-import
+  - pointing-problem
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
@@ -24,10 +25,10 @@ external:
     url: https://intelligence.org/embedded-agency/
 ---
 
-In the field this is the pointing problem. Inverse reinforcement learning is underdetermined: many reward functions fit the same behavior, and separating values from irrationality is still open in CIRL and assistance-game work. Nearby names for the same wall include ELK (does the system report what it knows, or what a human would want to hear?) and reward misspecification under RLHF. If you cannot tell what a system is optimizing for from the evidence you have, later claims about "aligned values" are guessing.
+This is value/bundle identifiability. In the field it is often called the pointing problem, which also covers construction (how to build a tracker) and preservation (how it keeps tracking); those are not this card. See the [pointing problem](/cards/pointing-problem/) glossary entry. Inverse reinforcement learning is underdetermined: many reward functions fit the same behavior, and separating values from irrationality is still open in CIRL and assistance-game work. Nearby names for the same wall include ELK (does the system report what it knows, or what a human would want to hear?) and reward misspecification under RLHF. If you cannot tell what a system is optimizing for from the evidence you have, later claims about "aligned values" are guessing.
 
 This project's precise bet is **MB2**: behavioral and internal traces are assumed to identify stable [value-bundle](/cards/value-bundle-transport/) geometry well enough to license claims of bundle alignment. The move is not "scalar reward solved," but "replace the flat reward target with measurable bundle geometry." That only helps if the geometry is itself identifiable. Closely related is [bearer import](/cards/mb3-bearer-import/) (MB3), which asks who those values apply to.
 
-**Where agendas agree:** MIRI value learning; CHAI pointing/CIRL; outer alignment "right target." **Where they diverge:** ELK is a latent-readout slice; PreDCA/QACI are peer outer targets; this project splits referent transport to MB3.
+**Where agendas agree:** MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment "right target." **Where they diverge:** ELK is a latent-readout slice; PreDCA/QACI are peer outer targets; this project splits referent transport to MB3.
 
 Diagnostic evidence shows the failure mode under light instrumentation: bundle drift can be invisible to [correction](/cards/correction-channel-integrity/) handles that are not tracing bearer welfare. That is exactly what this bridge would need to rule out before low-cost measurement is trustworthy.

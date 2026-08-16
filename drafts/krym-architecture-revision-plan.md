@@ -7,7 +7,7 @@ Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `
 | Phase | Scope | Status |
 |-------|--------|--------|
 | **1** | Early book scope: three questions in the **introduction**; ch01 keeps a short handoff into the wrong-object argument | **Done** 2026-08-16 (moved out of ch01) |
-| **2** | App E pointing homograph + precise bridge vocabulary | Pending |
+| **2** | App E pointing homograph + precise bridge vocabulary | **Done** 2026-08-16 |
 | **3** | Lean MB2 evidence→identifiability→BundleAligned | Pending |
 | **4** | Lean MB4 correction uptake vs legitimacy | Pending |
 | **5** | Construction Lean model + MB8 gravestone | Pending |

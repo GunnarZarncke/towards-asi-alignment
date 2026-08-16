@@ -54,12 +54,31 @@ A system can keep the value word while changing the bearer map.
 That is not preservation.
 It is relabeling.
 \emph{Example (non-AI):} a hospital keeps the word ``patient'' in its quality metrics while the referent quietly narrows from ``person needing care'' to ``record on this billing list''; the vocabulary survives, the bearer has drifted.
-\emph{Nearest field term:} none clean; the pointing problem in value learning touches it, but standard reward learning folds the bearer into the reward rather than tracking it separately.
+\emph{Nearest field term:} none clean; adjacent to the identification sense of the pointing problem (below), not the same crux; standard reward learning folds the bearer into the reward rather than tracking it separately.
 
 \emph{Transport} is about surviving development: what survives when a system is retrained, rebuilt on a new representation, or replaced by a successor.
 The book separates layers that can each fail independently: \emph{semantic} transport (the words survive), \emph{bundle} transport (the response geometry survives), \emph{bearer} transport (what the values apply to survives), \emph{correction} transport (the human update process survives), and \emph{successor} transport (a created system inherits all of the above).
 Keeping the word while losing the geometry, or the geometry while losing the bearer, is a transport failure even when the surface behavior looks unchanged.
 \emph{Nearest field term:} ontology identification and MIRI successor-trust problems touch individual layers; the book tracks semantic, bundle, bearer, correction, and successor transport separately rather than a single continuity claim.
+
+\label{gloss:pointing-problem}\label{sec:pointing-problem}The field's \emph{pointing problem} is an umbrella, not one technical task.
+It is the family of questions about whether a system is aimed at the right human-relevant target, and whether that aim survives being built and later change.
+The book splits it into three senses that fail independently.
+
+\emph{Identification} asks what the target is: which values, which bearers those values apply to, and which correction process is legitimate.
+The precise book term for the value slice is value/bundle identifiability (MB2; the field matrix noun is Value Learning).
+Bearer maps (MB3) sit next to that slice: they ask who the values apply to, which is adjacent to identification rather than the same crux.
+\emph{Nearest field term:} Wentworth's Pointers Problem is the identification-heavy slice---human values as a function of latent variables inside a human world-model, not a fully specified utility \autocite{wentworth2020pointers}.
+
+\emph{Realization} asks how to build a system that tracks that target.
+The book discusses relevant mechanisms but does not claim a general construction method; that remains an open interface, not a bridge assumption.
+\emph{Nearest field term:} Hubinger's outer-alignment ``pointer'' is a third-party label for a mix of identification and construction; it is not identical to any one of these three senses \autocite{hubinger2019risks}.
+
+\emph{Preservation} asks how the system keeps tracking: whether the correction channel, transport layers, and later certification still bite after capability growth, ontology shift, successors, and selection.
+The precise book terms are the correction channel and its integrity (MB4, MB4a) plus layered certification.
+
+\emph{Example (non-AI):} a hospital can write ``patient welfare'' on its charter (identification), fail to hire or train anyone who can act on it (realization), or keep the charter while quietly optimizing billing codes (preservation).
+Those are three different failures, even though people will call all three ``not pointing at patients.''
 
 \section*{Grounding}
 

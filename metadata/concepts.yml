@@ -602,6 +602,15 @@ concepts:
       - ch:conductive-artifacts-pivotal-processes
       - sec:pivotal-process-ch37
     body: bodies/pivotal-process.md
+  - slug: pointing-problem
+    kind: glossary
+    status: framework
+    term: Pointing problem
+    title: Pointing Problem
+    summary: Field umbrella for three questions that fail independently — what the target is (identification), how to build a system that tracks it (realization), and how it keeps tracking (preservation). Not a synonym for MB2.
+    bookLabels:
+      - sec:pointing-problem
+    body: bodies/pointing-problem.md
   - slug: scaffold-misuse
     kind: concept
     title: Scaffold Misuse
