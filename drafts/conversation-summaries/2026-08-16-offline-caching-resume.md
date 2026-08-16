@@ -20,4 +20,4 @@ User reported offline mode unreliable: interrupted runs restarted from zero; CSS
 - `site/src/components/OfflineButton.astro`
 
 ## Commits
-- `8496861e` — Make offline caching resumable with asset-first priority.
+- `e1d36683` — Make offline caching resumable with asset-first priority.
