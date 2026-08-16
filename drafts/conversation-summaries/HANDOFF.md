@@ -2,11 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-16 (feedback contributors ledger).
+Last updated: 2026-08-16 (offline caching resume + Krym intro).
 
 ---
 
 ## Open work (load-bearing)
+
+- **Krym architecture revision (Phases 2–6)** — Three alignment questions now live in the **introduction**; ch01 is a short handoff into the wrong-object argument. Next: App E pointing homograph (Phase 2), Lean MB2/MB4 (3–4), construction + MB8 retirement (5), contracts + field v1/v2 (6). Plan: `drafts/krym-architecture-revision-plan.md`; thread: `drafts/Krym_conversation.md`. Logs: `2026-08-15-krym-phase1-early-scope.md`, `2026-08-16-krym-intro-three-questions.md`.
 
 - **MB7a–c bridge cards (field nouns)** — Explicit site cards shipped with book terminology; TODO to consider field-standard noun aliases without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
 
@@ -43,7 +45,10 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-16):** Offline PWA caching — resumable asset-first service worker (CSS/fonts before pages); partial progress survives retries and SW updates. Log: `2026-08-16-offline-caching-resume.md`.
 - **Metadata (2026-08-16):** Feedback contributors ledger — `metadata/feedback-contributors.md` (acknowledgements + Harfe / Eric Moore / Krym; LW profile links); Jonas **Hallgren** spelling fix in acknowledgements. Log: `2026-08-16-feedback-contributors-ledger.md`.
+- **Manuscript (2026-08-16):** Three alignment questions moved from ch01 to the **introduction**; ch01 is a short handoff into the wrong-object argument; glossary-level wording. Log: `2026-08-16-krym-intro-three-questions.md`.
+- **Manuscript (2026-08-15):** Krym revision **Phase 1** — early determine / construct / certify scope (later moved to introduction); ch03 legitimacy/authority/uptake preview; ch02/ch33 cross-refs. Log: `2026-08-15-krym-phase1-early-scope.md`.
 - **Companion site / CI (2026-08-15):** Unresolved `zaman2014` in chapter sync — entry copied from the alignment-under-selection paper bib into `references/manuscript-citations.bib`. Log: `2026-08-15-zaman2014-site-cite.md`.
 - **Companion site (2026-08-15):** **ET external transfer** concept card — `/cards/et-external-transfer/` now covers ET-1 through ET-4 (status table, per-annex narrative, five evidence notes, plan links); metadata source in `metadata/concepts/bodies/et-external-transfer.md`. Log: `2026-08-15-et-external-transfer-card.md`.
 - **Companion site (2026-08-15):** **Unsupervised Agent Discovery** concept card — `/cards/unsupervised-agent-discovery/`; links Boundary Discovery, LW post, agency-detect + embedded/lab/graded-lab experiment lines; bidirectional related on mb1, inferential-coupling, boundary-discovery. Log: `2026-08-15-uad-concept-card.md`.

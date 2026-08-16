@@ -7,6 +7,7 @@ Feedback from Florian Dietz: agent-discovery experiments and negative-results le
 ## Shipped
 
 - Two stub items in `metadata/TODO.md` § Outreach & external engagement (details deferred).
+- Commit `7b68f7f0`.
 
 ## Open
 

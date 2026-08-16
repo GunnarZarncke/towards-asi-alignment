@@ -26,4 +26,4 @@ User chose Option 2 from the structure review: split the overloaded feedback-hor
 - `papers/README.md`
 
 ## Commits
-- none (not requested)
+- `581d12c6` Split Feedback Horizon Gap into two companion spin-out papers.

@@ -31,4 +31,4 @@ Add a site-wide notes panel (overlay button beside QR) with localStorage persist
 ## Commits
 - `df0415ca` Add site-wide page notes overlay with localStorage persistence.
 - `e598f675` Extend page notes with paths, highlights, and mobile layout fixes.
-- (this session — mobile visibility + highlight toggle in panel)
+- `e6fc46cb` Fix page notes panel visibility on mobile and move highlight toggle into panel.

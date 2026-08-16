@@ -25,7 +25,7 @@ User asked for a markdown file listing people who provided feedback (cross-refer
 
 ## Commits
 
-- (this session)
+- `73664070` — Add feedback contributors ledger and fix Jonas Hallgren spelling.
 
 ## Not staged (other working-tree drafts)
 

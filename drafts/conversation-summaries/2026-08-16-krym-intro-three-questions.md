@@ -22,4 +22,4 @@ Chapter 1 after Phase 1 felt overloaded. Author chose Option A: put the determin
 - `chapters/ch01-wrong-object.tex`
 
 ## Commits
-- (this session — bundled with offline caching commit)
+- `893d08b8` — Move three alignment questions to the introduction; trim ch01 handoff.
