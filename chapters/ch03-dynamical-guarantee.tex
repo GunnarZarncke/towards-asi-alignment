@@ -116,6 +116,9 @@ It should be treated as a family of invariants that remain preserved inside a ce
 
 \leanspine{proof}{P01}{If a state predicate holds initially and is preserved by every step, it holds after any finite number of iterations.}
 \leanspine{proof}{P30}{The certification spine packages certified/layered evidence with the risk leaf; the numeric risk bound itself follows from \texttt{Control} $\leq$ \texttt{CCI} $+\,\delta$.}
+\begin{leanbox}
+\texttt{P01} is the dynamical-guarantee template: invariants preserved under every step in class \(\mathcal{C}\) hold for finite horizons. \texttt{P30} packages the certification spine's risk leaf separately from the class-preservation lemmas that motivate successor transport.
+\end{leanbox}
 
 \section{Safety Sets, Bad Sets, and Basins}
 \label{sec:safety-sets-bad-sets-basins}

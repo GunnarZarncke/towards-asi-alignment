@@ -365,6 +365,10 @@ The bound is deterministic and sound; it says nothing about typical-case concent
 
 \leanspine{proof}{subsample\_output\_capability\_le\_tight\_optimism}{An \(m\)-row subsample cannot make \(\widehat D_{\mathrm{ctrl}}\) appear larger than \(\lceil\log_2\min(m,|{\mathcal A}|)\rceil\) bits, regardless of blanket channel counts.}
 
+\begin{leanbox}
+\texttt{subsample\_output\_capability\_le\_tight\_optimism} is a deterministic subsample ceiling on apparent control-channel diversity; typical-case concentration and blanket-channel optimism remain bridge records, not proved away.
+\end{leanbox}
+
 Attention weights, per-channel harm, extinction thresholds, and the concentration-bridge upgrade are defined and proved in the same appendix section; they multiply or certify this output bound rather than replacing it.
 
 \section{Competence and Timescale}

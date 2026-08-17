@@ -834,6 +834,10 @@ If the boundary stands out much more strongly than the measurement handle blurs 
 If the blur is as large as the separation, the evaluator is certifying the measurement setup, not the underlying system.
 \leanspine{proof}{P35M}{If boundary separation exceeds measurement distortion and estimation error, positive margin remains.}
 
+\begin{leanbox}
+\texttt{P34A} and \texttt{P34K} encode handle-limited identifiability: access-equivalent models need not agree on goals or boundary features. \texttt{P35M} is the positive margin test. Estimator soundness (\texttt{MB1}) presupposes handles sharp enough to estimate a cut, not a metaphysical unique boundary.
+\end{leanbox}
+
 This motivates \emph{handle forcing}: requiring handles good enough for the safety question.
 A lab, platform, or model service should not be allowed to expose only convenient readouts and then ask for certification.
 It may need to provide logs, perturbation access, delayed-audit traces, reset mechanisms, tool-permission controls, or standardized probes that make the relevant control loop testable.

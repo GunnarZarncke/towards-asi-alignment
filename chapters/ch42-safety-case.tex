@@ -52,7 +52,7 @@ At the root sits a claim such as:
 Below the root are layer claims.
 Each layer claim must be supported by evidence, proof, or an explicit bridge.
 
-For this book, the layers are (see Table~\ref{tab:claim-layer-map} for the mapping to the Introduction's six claims):
+For this book, the layers are (see Table~\ref{tab:claim-layer-map}):
 \begin{enumerate}
   \item the real optimizer has been bounded or discovered;
   \item grounding remains viable: symbols, metrics, monitors, and correction signals stay connected to value-relevant reality;
@@ -87,6 +87,9 @@ The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each 
 \leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
 \leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
 Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, CEV convergence, etc.) remain explicit axioms.
+\begin{leanbox}
+\texttt{P30} derives the numeric risk leaf from \(\mathrm{Control}\leq\mathrm{CCI}+\delta\); \texttt{P40} blocks the safety-case root when any load-bearing leaf is unsupported. The composed package (\texttt{CertifiedSafetyCase}) layers certification, invariants, and bridges \texttt{MB1}--\texttt{MB9}; Lean does not discharge those bridges.
+\end{leanbox}
 
 Let \(A\) be the system or composite system under evaluation.
 Let \(\mathcal{D}\) be the deployment class: the range of tasks, access, scale, autonomy, successor rights, and environmental pressures for which the case is being made.
