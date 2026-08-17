@@ -11,16 +11,6 @@ Both coherent extrapolated volition and Christiano-style corrigibility are live,
 This chapter reframes of corrigibility as a dynamical invariant, a lower bound on usable correction information, and a Lean-proved counterexample but otherwise less confident than in the correction-channel certificate.
 \end{epistemicstatus}
 
-\begin{formalcontract}
-\textbf{Claims.} Extrapolative correction preserves the human update process, not a fixed endpoint volition.
-
-\textbf{Lean.} \texttt{constitutionalTarget}, \texttt{cevConstitution}, \texttt{ValueUpdateEnvelope}; CEV factorizes through \texttt{AlignmentTarget} (no live \texttt{MB8} bridge).
-
-\textbf{Assumes.} MB2--MB4 decomposition for process preservation; constitutional rule parameters.
-
-\textbf{Does not establish.} CEV convergence or fixed-point endpoint; \texttt{MB8\_cev\_process\_convergence} on the live certification path.
-\end{formalcontract}
-
 \begin{refsection}
 
 \epigraph{%
@@ -176,6 +166,10 @@ A correction-channel view says:
 \mathrm{ValueUpdateEnvelope}_t\succeq\vec{\theta}_{\mathrm{upd}}.
 \label{eq:correction-channel-view-ch28}
 \end{equation}
+
+\begin{formalcontract}
+Extrapolative correction preserves a human value-update envelope, not a computed endpoint. Lean factors CEV through \texttt{constitutionalTarget} and \texttt{AlignmentTarget}; legacy \texttt{MB8} is off the live certification path---operational content is MB2--MB4 plus grounding and adversarial evidence.
+\end{formalcontract}
 
 \leanspine{counterexample}{P25}{Obedience to the current command does not imply preserving the correction operator.}
 \leanspine{counterexample}{P26}{Preserving a value-update process does not require knowing a final fixed point of that process.}

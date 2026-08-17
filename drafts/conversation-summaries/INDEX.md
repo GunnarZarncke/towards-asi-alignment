@@ -6,11 +6,13 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Site card notes Phase 4** — ch10 strategic-opacity prose (E1–E2) and cruxes (E3a–c). | [2026-08-17-site-card-notes-phase4-ch10.md](2026-08-17-site-card-notes-phase4-ch10.md) |
 | 2026-08-17 | **Site card notes Phase 3** — ch09 composite-agent readability; ch07 cross-ref; Hanson grabby cite. | [2026-08-17-site-card-notes-phase3-ch09.md](2026-08-17-site-card-notes-phase3-ch09.md) |
 | 2026-08-17 | **Site card notes Phase 2** — frontmatter status, External Doom removal, GI comparison, glossary links. | [2026-08-17-site-card-notes-phase2-frontmatter.md](2026-08-17-site-card-notes-phase2-frontmatter.md) |
 | 2026-08-17 | **Site card notes Phase 0–1** — triage tracker; book/homepage IA; tex-convert hyperref/braces; GitHub source links. | [2026-08-17-site-card-notes-phase0-1.md](2026-08-17-site-card-notes-phase0-1.md) |
 | 2026-08-17 | **Offline caching v10** — origin-safe URLs; partial enable after home+CSS; always-on status. | [2026-08-17-offline-caching-v10.md](2026-08-17-offline-caching-v10.md) |
 | 2026-08-17 | **Six-claims spine Phases 0–2** — claim spine map; intro labels + unfold; part openers; count sync; language pass. | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
+| 2026-08-17 | **Inline Lean contract boxes** — moved from chapter openers to one compact box at symbol introduction (6 chapters). | [2026-08-17-lean-contract-inline.md](2026-08-17-lean-contract-inline.md) |
 | 2026-08-17 | **Krym Phase 6 crux Props + field v2** — `BridgeCruxes.lean`; formal-contract pilot; `/field/v2/` preview. | [2026-08-17-krym-phase6-crux-props-field-v2.md](2026-08-17-krym-phase6-crux-props-field-v2.md) |
 | 2026-08-17 | **Krym Phase 5 construction + MB8 gravestone** — `AlignmentConstruction.lean`; MB8 out of `BridgeAssumptions`; matrix column hidden. | [2026-08-17-krym-phase5-construction-mb8-gravestone.md](2026-08-17-krym-phase5-construction-mb8-gravestone.md) |
 | 2026-08-17 | **Krym Phase 4 MB4 uptake/legitimacy** — path decomposition; `MB4_correction_integrity` rename; `MB4CorrectionIntegrity.lean`. | [2026-08-17-krym-phase4-mb4-uptake-legitimacy.md](2026-08-17-krym-phase4-mb4-uptake-legitimacy.md) |

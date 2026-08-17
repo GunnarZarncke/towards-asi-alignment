@@ -12,16 +12,6 @@ This chapter adds a precise framework for applying these to the evaluation of AI
 The correction channel bound feeding a successor-safe chain, is a proved Lean result, but whether any real certification regime can be made adversarially safe at the scale the chapter requires remains unproven.
 \end{epistemicstatus}
 
-\begin{formalcontract}
-\textbf{Claims.} A certification \emph{class} can suffice without a general construction recipe; certification $\neq$ construction.
-
-\textbf{Lean.} \texttt{CertifiedSafetyCase}, \texttt{LayeredAlignedDef}; \texttt{ConstructionCrux}/\texttt{TargetRealizable} vs \texttt{CertifiedAsRealizing} (\texttt{AlignmentConstruction.lean}).
-
-\textbf{Assumes.} Class definitions, operating envelope, and monitoring regime as stated in prose.
-
-\textbf{Does not establish.} \texttt{TargetRealizable}; a training or design procedure; \texttt{Safe} without \texttt{MB11}.
-\end{formalcontract}
-
 \begin{refsection}
 
 \epigraph{%
@@ -59,6 +49,9 @@ where \(A\) is the system, \(\mathcal{C}_{\text{certified}}\) is a class defined
 This is not a weaker ambition in practice. It may be stronger. A construction method can hide its assumptions inside the construction. A certification method must make the assumptions explicit.
 
 The introduction separates that strategic choice from a field-map claim: certification does not supply a general construction procedure, and how to build aligned systems can remain unsolved even when a certification class is well defined (Section~\ref{sec:three-alignment-questions}).
+\begin{formalcontract}
+Certifying a class is not constructing every aligned system. Lean separates \texttt{CertifiedAsRealizing} (certification claim) from \texttt{ConstructionCrux}/\texttt{TargetRealizable} (open construct crux); \texttt{CertifiedSafetyCase} and \texttt{P30} assemble layers without discharging \texttt{Safe} (\texttt{MB11}).
+\end{formalcontract}
 The construction demand above is about what \emph{this book} must deliver to manage civilizational risk; it does not assert that the field has solved how to build aligned systems.
 
 The question changes from:

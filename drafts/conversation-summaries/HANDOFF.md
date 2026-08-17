@@ -2,13 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (site card notes Phase 3 ch09).
+Last updated: 2026-08-17 (site card notes Phase 4 ch10).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: expand formal contracts to remaining `\leanspine` chapters; v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
+- **Site card notes triage** — Phases 0–4 **done**; next Phase 5 sync/math (B1/B4/B5, A12), Phase 6 mobile (A7–A11). Tracker: `drafts/site-card-notes-triage.md`.
+
+- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: inline **Lean contract** boxes at remaining `\leanspine` sites (one per chapter, at symbol introduction); v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
 
 - **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 
@@ -56,6 +58,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.
+- **Manuscript (2026-08-17):** Site card notes **Phase 4** — ch10 strategic-opacity readability (Hubinger alignment, filter-family gloss, trimmed bundle preview, oversight vs dangerous opacity, correction capacity refs). Log: `2026-08-17-site-card-notes-phase4-ch10.md`.
 - **Manuscript (2026-08-17):** Site card notes **Phase 3** — ch09 composite-agent readability (ch06/ch07 cross-refs, Hanson grabby cite, consolidated disambiguation). Log: `2026-08-17-site-card-notes-phase3-ch09.md`.
 - **Manuscript (2026-08-17):** Site card notes **Phase 2** — frontmatter status copy, removed External Doom exec-overview section, plain-first exec overview lead, GI comparison (ch01 + dynamical-guarantee card), glossary site links. Log: `2026-08-17-site-card-notes-phase2-frontmatter.md`.
 - **Companion site (2026-08-17):** Card notes triage Phase 0–1 — tracker `drafts/site-card-notes-triage.md`; book map IA (front matter first, drop status cols); homepage standalone-claims order; chapter source GitHub links; `tex-convert` hyperref + titlepage brace fix. Log: `2026-08-17-site-card-notes-phase0-1.md`.
