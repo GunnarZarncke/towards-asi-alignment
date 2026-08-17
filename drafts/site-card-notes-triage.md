@@ -1,8 +1,10 @@
 # Site card notes triage
 
-Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` (Aug 15, 2026). Raw export archived; use this file for status.
+**Status: CLOSED** (2026-08-17). Execution phases 0–6 shipped; commits `e91799b2` (Phases 0–3), `ceff7e97` (Phases 4–6).
 
-**Legend:** `resolved` · `open` · `partial` · `deferred` · `phase N` (execution phase from plan)
+Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` (Aug 15, 2026). Raw export archived. **Do not reopen as an active plan** — use `metadata/TODO.md` § Site for deferred follow-ups.
+
+**Legend:** `resolved` · `done` · `deferred` · `phase N` (execution phase, all complete)
 
 ---
 
@@ -12,11 +14,11 @@ Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` 
 |----|--------|-------|------|--------|
 | A1 | **done** | 1 | Book nav before PDF on `/book/` hero | `site/src/pages/book/index.astro` |
 | A2 | **done** | 1 | Remove Status / Formal density columns | `site/src/pages/book/index.astro` |
-| A3 | open | deferred | “Also on the site” follows book material order | `metadata/TODO.md` § Site |
-| A4 | open | deferred | Explicit part hub cards | `metadata/TODO.md` § Site |
+| A3 | deferred | — | “Also on the site” follows book material order | `metadata/TODO.md` § Site |
+| A4 | deferred | — | Explicit part hub cards | `metadata/TODO.md` § Site |
 | A5 | **done** | 1 | Standalone claims below Guided Tour on homepage | `site/src/pages/index.astro` |
 | A6 | deferred | — | Review standalone claims publishability | `metadata/TODO.md` § Site |
-| A7 | **done** | 6 | Chapter figures not cached (cross-origin GitHub raw URLs) | `tex-convert.mjs`, `sw.js` |
+| A7 | **done** | 6 | Chapter figures not cached (cross-origin GitHub raw URLs) | `tex-convert.mjs`, `sw.js`, `site/public/figures/` |
 | A8 | **done** | 6 | Standard icons for page-notes panel | `PageNotes.astro` |
 | A9 | **done** | 6 | Mobile keyboard overlaps panel buttons | `PageNotes.astro` |
 | A10 | **done** | 6 | Highlight marks need tap-to-open on mobile | `PageNotes.astro` |
@@ -47,7 +49,7 @@ Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` 
 | C1b | **done** | 2 | Remove “Many chapters are still first drafts” | `frontmatter/current-status.tex` |
 | C1c | **done** | 2 | Update current-status maturity paragraph | `frontmatter/current-status.tex` |
 | C2a | **done** | 2 | Remove “serious” from exec-overview safety case | `frontmatter/executive-overview.tex` |
-| C2b | open | 2 | Remove fluff / magic-sentence passage | `introduction.tex` (not frontmatter Phase 2 scope) |
+| C2b | deferred | — | Remove fluff / magic-sentence passage | `frontmatter/introduction.tex` (optional editorial) |
 | C2c | **done** | 2 | Remove External Doom Arguments section + preface pointer | `executive-overview.tex`, `preface.tex` |
 | C2d | **done** | 2 | Trim redundancy; general terms in “What This Book Tries to Establish” | `executive-overview.tex` |
 | C2e | **done** | 2 | Related content → Part I (ch01) on frontmatter card | `sync-chapter-cards.mjs` |
@@ -57,13 +59,9 @@ Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` 
 | C5b | **done** | 2 | GI comparison: static alignment breaks before SI | `dynamical-guarantee.md`, ch01 |
 | C5c | deferred | — | CIRIS end-to-end walkthrough | `metadata/TODO.md` Real worked example |
 
-Frontmatter card terminology suggestions (value geometry, correction channels, etc.) — fold into C4 verify pass.
-
 ---
 
 ## Group D — Chapter 9 (`ch09-composite-agent.tex`)
-
-Re-check anchors before editing (Krym / DAG pass may have partially addressed).
 
 | ID | Status | Phase | Note |
 |----|--------|-------|------|
@@ -76,48 +74,29 @@ Re-check anchors before editing (Krym / DAG pass may have partially addressed).
 | D7 | deferred | — | Add site to Substack → `metadata/TODO.md` § Outreach |
 | D8 | deferred | — | Notes submittable → A14 |
 
-Additional ch09 notes: remove fluff (“philosophical subtlety”, “without relying on metaphor”); mobile UX → A9–A10.
-
 ---
 
 ## Group E — Chapter 10 (`ch10-strategic-opacity.tex`)
-
-Re-check anchors before editing.
 
 ### E1 + E2 — Prose and ordering (Phase 4)
 
 | ID | Status | Note |
 |----|--------|------|
-| E1a | **done** | Remove “usually” (bacterium) |
-| E1b | **done** | Remove “serious” (alignment) |
-| E1c | **done** | Remove “Examples help.” |
-| E1d | **done** | Simplify opacity example sentences |
-| E1e | **done** | Predict-O-Matic list wording |
-| E1f | **done** | Inner-alignment-shaped failure readability |
-| E1g | **done** | Add “therefore” after action-channel invariant |
-| E1h | **done** | “Correct decomposition” vs boundary discovery overlap |
-| E2a | **done** | Hubinger decomposition alignment |
-| E2b | **done** | “filter-family coverage” first-use gloss |
-| E2c | **done** | GLI / bundle-map preview length vs ch40 ordering |
+| E1a–E1h | **done** | Prose trims, examples, action-channel invariant, decomposition cross-ref |
+| E2a–E2c | **done** | Hubinger alignment, filter-family gloss, trimmed bundle preview |
 
 ### E3 — Cruxes (Phase 4)
 
 | ID | Status | Note |
 |----|--------|------|
-| E3a | **done** | Oversight vs dangerous opacity — resolve or mark open |
-| E3b | **done** | Correction channel overloaded — tie to correction capacity |
-| E3c | **done** | Soften “We infer” latent continuity |
+| E3a–E3c | **done** | Oversight vs dangerous opacity; correction capacity; soften “We infer” |
 
-### E3 — Deferred TODOs
+### Deferred
 
 | ID | Status | Note |
 |----|--------|------|
-| E3d | deferred | Alignment-faking / sleeper agents experiment line |
-| E3e | deferred | Chapter-end exercises + online quiz |
-
-### E4 — Sync (Phase 5)
-
-See Group B (formula render, three layers block).
+| E3d | deferred | Alignment-faking / sleeper agents experiment line → `metadata/TODO.md` § Site |
+| E3e | deferred | Chapter-end exercises + online quiz → `metadata/TODO.md` § Site |
 
 ---
 
@@ -126,32 +105,27 @@ See Group B (formula render, three layers block).
 | Note | Resolution |
 |------|------------|
 | Page notes overlay | Shipped 2026-08-07 |
-| Offline SW resume | Shipped 2026-08-16 (figures still cross-origin) |
+| Offline SW resume | Shipped 2026-08-16; figures same-origin 2026-08-17 (A7) |
 | Standalone claims hub card | Shipped 2026-07-25 |
 | Concept-card KaTeX | Shipped 2026-07-19 |
 | GitHub link indicators (↗) | Shipped 2026-07-25 |
 | Six claims / bullet order | Krym Phase 1–2 |
-| ch01 “breaks for superintelligence” | Anchor exists; GI clause → C5b |
+| ch01 “breaks for superintelligence” | GI clause → C5b |
+| dynamical-guarantee GI clause | → C5b |
+| ch01 figure caching | → A7 |
 
 ---
 
-## Homepage / concept cards (not frontmatter)
+## Execution phases (all complete)
 
-| Anchor | Status | Phase | Note |
-|--------|--------|-------|------|
-| dynamical-guarantee | open | 2 | “Already breaks for general intelligence” → C5b |
-| ch01 researcher tends | open | 6 | Figure caching → A7 |
+| Phase | Scope | Commit / log |
+|-------|--------|--------------|
+| 0 | Tracker, attic export, `metadata/TODO.md` deferred bullets | `e91799b2` · phase0-1 log |
+| 1 | Book/homepage IA, GitHub source links, tex-convert B2/B3 | `e91799b2` · phase0-1 log |
+| 2 | Frontmatter C1–C2, C4–C5 | `e91799b2` · phase2 log |
+| 3 | ch09 D1–D6 | `e91799b2` · phase3 log |
+| 4 | ch10 E1–E3 cruxes | `ceff7e97` · phase4 log |
+| 5 | B1/B4/B5, A12 sync/math | `ceff7e97` · phase5 log |
+| 6 | A7–A11 mobile UX + local illustrations | `ceff7e97` · phase6 log |
 
----
-
-## Execution phases (remaining)
-
-| Phase | Scope |
-|-------|--------|
-| **0** | **Done** — this tracker, attic export, `metadata/TODO.md` bullets |
-| **1** | **Done** — A1, A2, A5, A13, B2, B3 |
-| **2** | **Done** — frontmatter C1–C2, C4–C5 |
-| **3** | **Done** — ch09 D1–D6 |
-| **4** | **Done** — ch10 E1–E2, E3 cruxes (verify anchors) |
-| **5** | **Done** — B1, B4, B5, A12 (`tex-convert`, mobile math scroll) |
-| **6** | **Done** — A7–A11 mobile UX + local illustration assets |
+**Deferred items** (not part of this plan): `metadata/TODO.md` § Site bullets A3, A4, A6, A14, E3d, E3e; outreach Substack (D7); CIRIS walkthrough (C5c); optional intro fluff pass (C2b).
