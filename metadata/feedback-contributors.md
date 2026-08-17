@@ -24,6 +24,7 @@ People who have shaped the manuscript, formal spine, or field map. Sorted alphab
 | Roland Pihlakas | Informal pressure-testing | Aintelope co-founder. |
 | Ruslan | Informal pressure-testing | Effective-altruism meetup group, Hamburg. |
 | SJ Beard | Philosophical grounding | Parameters of agency; shared project discussions; inspiration on boundaries and bearers. |
-| Stanislav Krym](https://www.lesswrong.com/users/stanislavkrym) | Architecture revision | CEV / “pointing” decomposition; determine / construct / certify distinction; certification ≠ construction; MB2/MB4/MB8 field-map alignment. See [`drafts/Krym_conversation.md`](../drafts/Krym_conversation.md). |
+| Stanislav Krym](https://www.lesswrong.com/users/stanislavkrym) | Architecture revision | CEV / “pointing” decomposition; determine / construct / certify distinction; certification ≠ construction. |
+| Tom M. | Field map | Evidence tags need a directional stance (“sign bit”); suggested lab agenda rows for the coverage matrix. Name as given (long-time lurker). |
 
 **Maintenance:** Add rows when new named feedback arrives; link LW profiles when confirmed.

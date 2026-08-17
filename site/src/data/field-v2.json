@@ -1,10 +1,40 @@
 {
   "_generated": "<!-- GENERATED FILE — do not edit. Regenerate: cd site && npm run sync:field-v2 -->",
   "meta": {
+    "lifecycleIntro": "Each bridge and open crux sits at a stage in the alignment lifecycle — orthogonal to the dependency graph above. The axis asks when a handoff must hold: from stating the target, through building and measuring the system, to certifying and preserving alignment under change.",
+    "lifecycleBridgeAssignmentNote": "Live MB bridges (MB1–MB11) mostly tag identify, certify, and preserve handoffs: whether measurement, oversight, or long-run dynamics support discharge once a target and deployable system are in view. Assignment does not mirror dependency edges — for example MB11 assembles many antecedents in the graph above while sitting in the certify lifecycle role, and MB4 in preserve while MB4a is certify.",
+    "lifecycleGapsNote": "Specify and construct look sparse because those stages were underrepresented in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is retired and factorizes as Alignment Target (specify) plus Target Realization (construct). Open spine interfaces fill those roles; field outer-alignment work often spans specify and identify without mapping to a single MB column.",
     "lifecycleAxis": "specify → construct → identify → certify → preserve",
-    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.",
-    "note": "Preview only — live /field/ uses v1 matrix until author confirms cutover."
+    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.",
+    "note": "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/."
   },
+  "lifecyclePhases": [
+    {
+      "id": "specify",
+      "label": "Specify",
+      "summary": "State the alignment target or constitutional rule the system is supposed to serve — what counts as success before construction or certification arguments apply."
+    },
+    {
+      "id": "construct",
+      "label": "Construct",
+      "summary": "Build (or show buildable) a system that robustly tracks that target. Distinct from identifying what the target is or certifying that evidence licenses tracking."
+    },
+    {
+      "id": "identify",
+      "label": "Identify",
+      "summary": "Measure and identify the real control locus, value structure, and access boundaries — what is actually in the loop, not what the specification claims."
+    },
+    {
+      "id": "certify",
+      "label": "Certify",
+      "summary": "Oversight, audits, and safety-case evidence license that the deployed system meets claimed properties — including resistance to hidden capability and checklist gaming."
+    },
+    {
+      "id": "preserve",
+      "label": "Preserve",
+      "summary": "Maintain correction integrity, value/bearer transport, and basin stability under pressure, substrate change, successor handoffs, and long-run selection."
+    }
+  ],
   "bridges": [
     {
       "key": "MB1",
@@ -206,6 +236,27 @@
     }
   ],
   "openSpineInterfaces": [
+    {
+      "id": "alignment-target",
+      "title": "Alignment Target",
+      "lifecycleRole": "specify",
+      "status": "open",
+      "leanModule": "AlignmentProofSpine/AlignmentConstruction",
+      "leanProp": "AlignmentTarget",
+      "leanDefs": [
+        "ConstitutionalRule",
+        "constitutionalTarget",
+        "cevConstitution"
+      ],
+      "bookChapters": [
+        "ch28",
+        "ch01"
+      ],
+      "conceptCard": "/cards/mb8-cev-process-convergence/",
+      "summary": "State a coherent alignment target (constitutional rule → AlignmentTarget). Open specify-phase crux; not an MB bridge column. Retired MB8 (CEV) factorizes here; outer-alignment, constitutional-AI, and open-world specification debates (GSAI completeness cousins) attach in this neighborhood — distinct from MB2 identification of values in a deployed system.",
+      "dependsOn": [],
+      "notABridge": true
+    },
     {
       "id": "target-realization",
       "title": "Target Realization",

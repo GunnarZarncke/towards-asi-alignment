@@ -47,7 +47,6 @@ digraph MBBridgeDependencies {
   MB2 -> MB3  [label="values transport\n→ referents transport"];
   MB3 -> MB5  [label="referents transport\n→ successor audit"];
 
-  MB1 -> MB3  [label="candidate process\n→ bearer inference"];
   MB1 -> MB7a [label="boundary aligned\n→ access robust"];
 
   MB7a -> MB7b [label="access robust\n→ hidden capability bounded"];

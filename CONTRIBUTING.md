@@ -123,3 +123,11 @@ Other contributions that help the research program reach the right readers:
 - Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document, or [`appendices/appM-institutional-histories.tex`](appendices/appM-institutional-histories.tex) for historical genesis/decay cases (companion-site [overview hub](https://towards-alignment.com/cards/chapters/appm/) for non-technical readers)
 
 When in doubt, open an issue describing the derivative work and which bridges or gems it targets.
+
+---
+
+## Acknowledgements
+
+Named feedback on the manuscript, Lean spine, and field map is tracked in [`metadata/feedback-contributors.md`](metadata/feedback-contributors.md).
+
+Recent field-map input includes **Tom M.** — directional encoding for evidence tags (stance / “sign bit”) and a suggestion to add lab agenda rows to the coverage matrix.

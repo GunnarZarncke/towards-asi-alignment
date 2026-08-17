@@ -12,6 +12,8 @@ src/data/field-projections.json
 src/data/field-projection-gems.json
 src/data/lean-checks.json
 src/data/bridge-graph.json
+src/data/bridge-graph-v1.json
+src/data/bridge-graph-v2.json
 src/data/term-links-reverse.json
 src/data/field-news.json
 src/data/part-gems.json

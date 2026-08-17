@@ -39,12 +39,7 @@ coverageIntro: >-
   - **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B
   crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).
 directionLegend: >-
-  **Stance marks** prefix method tags in the matrix (once rendered on site).
-  Middle dot `·` with **circumflex above** (`·̂` … `·̂̂̂`) = evidence that
-  **advances** bridge discharge; **caron below** (`·̬` … `·̬̬̬`) = evidence that
-  **complicates** it. Diacritic count = editorial weight 1–3. Lone `·` = direction
-  explicitly unclear. Untagged legacy entries show no mark. **Not** statistical
-  significance — see [`data/evidence-stance-rubric.md`](data/evidence-stance-rubric.md).
+  Stance marks prefix tags on a +3 (·̂̂̂, advances discharge) to −3 (·̬̬̬, complicates it) scale, with · when direction is unclear.
 weightRubric: |-
   | Weight | Meaning |
   |---|---|
@@ -99,7 +94,7 @@ kosoyDiagnostic: >-
   is a value-learning cousin — **MB11** stays **—** for Kosoy.
 openSpineInterfaces: >-
   **Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) —
-  construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.
+  construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.
 typeLettersTable: |-
   | Letter | Type |
   |---|---|

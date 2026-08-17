@@ -3,13 +3,13 @@
     "status": "field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 31 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  ",
     "inclusionTest": "An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature terms, (3) stated intent to shape research/deployment/policy, (4) primary artifact (curriculum, constitution, technical agenda, eval suite, policy platform).\n\n**Not agendas (reference only):** funding pools (LTFF, SFF, Open Philanthropy), coworking hubs (LISA, Constellation, Meridian), resource directories (AISafety.com, AI Watch), individual blogs/newsletters unless they define a research lineage.\n\n**Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows.",
     "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda touches a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology. Each catalog entry may carry **stance** (`direction`, `weight`) — whether the source mainly **advances** or **complicates** discharge on that crux (see [stance legend](#stance-marks) below).\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
-    "directionLegend": "**Stance marks** prefix method tags in the matrix (once rendered on site). Middle dot `·` with **circumflex above** (`·̂` … `·̂̂̂`) = evidence that **advances** bridge discharge; **caron below** (`·̬` … `·̬̬̬`) = evidence that **complicates** it. Diacritic count = editorial weight 1–3. Lone `·` = direction explicitly unclear. Untagged legacy entries show no mark. **Not** statistical significance — see [`data/evidence-stance-rubric.md`](data/evidence-stance-rubric.md).",
+    "directionLegend": "Stance marks prefix tags on a +3 (·̂̂̂, advances discharge) to −3 (·̬̬̬, complicates it) scale, with · when direction is unclear.",
     "weightRubric": "| Weight | Meaning |\n|---|---|\n| **1** | Illustrative — early framing, partial result, or sibling evidence exists elsewhere |\n| **2** | Substantive — credible field contribution on this crux |\n| **3** | Landmark — agenda-defining or strongest known directional evidence on this crux |",
     "stanceMarksTable": "| Mark | direction | weight |\n|---|---|---|\n| `·̂` | support | 1 |\n| `·̂̂` | support | 2 |\n| `·̂̂̂` | support | 3 |\n| `·` | unclear | — |\n| `·̬` | challenge | 1 |\n| `·̬̬` | challenge | 2 |\n| `·̬̬̬` | challenge | 3 |\n| *(none)* | untagged legacy | — |",
     "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |\n**Retired matrix bridge:** **MB8** (CEV) — gravestone card only; factorizes as **AlignmentTarget** / **Target Realization**, not a live process-preservation route to correction.",
     "doNotInfer": "Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.",
     "kosoyDiagnostic": "One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
-    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.",
+    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.",
     "typeLettersTable": "| Letter | Type |\n|---|---|\n| **C** | conceptual |\n| **T** | theory (formalization) |\n| **S** | simulations |\n| **P** | practical (applications) |\n| **D** | empirical (software) |\n| **E** | empirical (other) |\n| **O** | other |",
     "matrixIntro": "Column headers use **field nouns**; **MB*** keys are spine identifiers only. Each linked bridge card states the crux, where agendas agree or diverge, and homograph splits. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).",
     "matrixLegend": "",
@@ -2077,7 +2077,9 @@
           "label": "Demski & Garrabrant 2019",
           "url": "https://arxiv.org/abs/1902.09469"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 2,
@@ -2092,7 +2094,9 @@
           "label": "Soares & Fallenstein 2015",
           "url": "https://intelligence.org/files/TechnicalAgenda.pdf"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 3,
@@ -2107,7 +2111,9 @@
           "label": "Soares 2015",
           "url": "https://intelligence.org/files/ValueLearningProblem.pdf"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 1
     },
     {
       "id": 4,
@@ -2123,7 +2129,9 @@
           "label": "Soares & Fallenstein 2015",
           "url": "https://intelligence.org/files/Corrigibility.pdf"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 3
     },
     {
       "id": 5,
@@ -2139,7 +2147,9 @@
           "label": "Orseau & Armstrong 2016",
           "url": "https://mlanthology.org/uai/2016/orseau2016uai-safely/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 6,
@@ -2155,7 +2165,9 @@
           "label": "Yudkowsky 2013",
           "url": "https://www.lesswrong.com/lw/hmt/tiling_agents_for_selfmodifying_ai_opfai_2"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 7,
@@ -2171,7 +2183,9 @@
           "label": "Fallenstein 2015",
           "url": "https://intelligence.org/files/VingeanReflection.pdf"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 8,
@@ -2186,7 +2200,9 @@
           "label": "De Blanc 2011",
           "url": "https://arxiv.org/abs/1105.3821"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 1
     },
     {
       "id": 9,
@@ -2201,7 +2217,9 @@
           "label": "Demski 2019",
           "url": "https://www.lesswrong.com/posts/SwcyMEgLyd4C3Dern/the-parable-of-predict-o-matic"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 10,
@@ -2216,7 +2234,9 @@
           "label": "Yudkowsky & Soares 2017",
           "url": "https://arxiv.org/abs/1710.05060"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 11,
@@ -2234,7 +2254,9 @@
           "label": "Shlegeris et al. 2023",
           "url": "https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 13,
@@ -2250,7 +2272,9 @@
           "label": "Greenblatt et al. 2024",
           "url": "https://arxiv.org/abs/2412.14093"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 3
     },
     {
       "id": 14,
@@ -2266,7 +2290,9 @@
           "label": "Hadfield-Menell et al. 2016",
           "url": "https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 15,
@@ -2281,7 +2307,9 @@
           "label": "Russell 2019",
           "url": "http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 16,
@@ -2296,7 +2324,9 @@
           "label": "Turner et al. 2019",
           "url": "https://arxiv.org/abs/1902.09725"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 17,
@@ -2311,7 +2341,9 @@
           "label": "Hadfield-Menell et al. 2017",
           "url": "https://www.ijcai.org/proceedings/2017/32"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 18,
@@ -2328,7 +2360,9 @@
           "label": "Christiano, Cotra & Xu 2021",
           "url": "https://www.alignmentforum.org/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 19,
@@ -2343,7 +2377,9 @@
           "label": "Christiano 2018",
           "url": "https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 20,
@@ -2358,7 +2394,9 @@
           "label": "Christiano 2019",
           "url": "https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 1
     },
     {
       "id": 21,
@@ -2373,7 +2411,9 @@
           "label": "Irving, Christiano & Amodei 2018",
           "url": "https://arxiv.org/abs/1805.00899"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 22,
@@ -2389,7 +2429,9 @@
           "label": "Christiano et al. 2018",
           "url": "https://arxiv.org/abs/1810.08575"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 23,
@@ -2404,7 +2446,9 @@
           "label": "Leike et al. 2018",
           "url": "https://arxiv.org/abs/1811.07871"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 24,
@@ -2419,7 +2463,9 @@
           "label": "Dalrymple et al. 2024",
           "url": "https://arxiv.org/abs/2405.06624"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 25,
@@ -2436,7 +2482,9 @@
           "label": "Bai et al. 2022",
           "url": "https://arxiv.org/abs/2212.08073"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 26,
@@ -2451,7 +2499,9 @@
           "label": "Casper et al. 2023",
           "url": "https://arxiv.org/abs/2307.15217"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 27,
@@ -2466,7 +2516,9 @@
           "label": "Amodei et al. 2016",
           "url": "https://arxiv.org/abs/1606.06565"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 28,
@@ -2482,7 +2534,9 @@
           "label": "Anthropic RSP 2024",
           "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 29,
@@ -2497,7 +2551,9 @@
           "label": "Hubinger 2023",
           "url": "https://arxiv.org/abs/2302.00805"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 31,
@@ -2512,7 +2568,9 @@
           "label": "METR red-team of Anthropic monitoring 2026",
           "url": "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 35,
@@ -2527,7 +2585,9 @@
           "label": "CLTR 2026 report",
           "url": "https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 36,
@@ -2544,7 +2604,8 @@
           "label": "METR 2026",
           "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 38,
@@ -2559,7 +2620,9 @@
           "label": "Rein 2026",
           "url": "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 39,
@@ -2574,7 +2637,8 @@
           "label": "Resolution launch essay",
           "url": "https://resolution.org/launch"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 40,
@@ -2589,7 +2653,8 @@
           "label": "Murfet 2025 SLT position",
           "url": "https://timaeus.co/research/2025-02-08-position/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 41,
@@ -2612,7 +2677,8 @@
           "label": "AE Studio Research",
           "url": "https://ae.studio/alignment"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 42,
@@ -2628,7 +2694,9 @@
           "label": "Heitzig & Potham 2025",
           "url": "https://arxiv.org/abs/2508.00159"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 43,
@@ -2643,7 +2711,8 @@
           "label": "Zarncke 2025",
           "url": "https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 45,
@@ -2659,7 +2728,9 @@
           "label": "Leake & Persson 2023",
           "url": "https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 46,
@@ -2674,7 +2745,9 @@
           "label": "Wentworth, Boundaries I",
           "url": "https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 47,
@@ -2689,7 +2762,9 @@
           "label": "Wentworth 2022",
           "url": "https://www.alignmentforum.org/posts/vmfNaKbZ6urMdQrv2/agent-boundaries-aren-t-markov-blankets-unless-they-re-non"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 48,
@@ -2704,7 +2779,9 @@
           "label": "Wentworth 2021",
           "url": "https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 49,
@@ -2719,7 +2796,9 @@
           "label": "Wentworth 2020",
           "url": "https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 50,
@@ -2734,7 +2813,9 @@
           "label": "Wentworth & Lorell 2023",
           "url": "https://www.lesswrong.com/posts/dWQWzGCSFj6GTZHz7/natural-latents-the-math"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 51,
@@ -2749,7 +2830,9 @@
           "label": "Turner & Udell 2022",
           "url": "https://www.lesswrong.com/posts/iCfdcxiyr2Kj8m8mT/shard-theory-overview"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 52,
@@ -2764,7 +2847,9 @@
           "label": "Agent-like structure posts",
           "url": "https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 53,
@@ -2787,7 +2872,9 @@
           "label": "CIRISVerify",
           "url": "https://github.com/CIRISAI/CIRISVerify"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 54,
@@ -2806,7 +2893,9 @@
           "label": "CIRISAgent",
           "url": "https://github.com/CIRISAI/CIRISAgent"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 55,
@@ -2825,7 +2914,9 @@
           "label": "CIRISAgent overview",
           "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/docs/OVERVIEW.md"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 56,
@@ -2844,7 +2935,9 @@
           "label": "CIRISNodeCore safety CI loop",
           "url": "https://github.com/CIRISAI/CIRISNodeCore/blob/main/FSD/SAFETY_BATTERY_CI_LOOP.md"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 103,
@@ -2863,7 +2956,9 @@
           "label": "CIRISVerify federation identity",
           "url": "https://github.com/CIRISAI/CIRISVerify/blob/main/docs/FEDERATION_IDENTITY.md"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 104,
@@ -2879,7 +2974,9 @@
           "label": "Accord Book IX §9.4",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 105,
@@ -2894,7 +2991,9 @@
           "label": "CIRISVerify README",
           "url": "https://github.com/CIRISAI/CIRISVerify"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 106,
@@ -2913,7 +3012,9 @@
           "label": "CIRISLens README",
           "url": "https://github.com/CIRISAI/CIRISLens"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 107,
@@ -2928,7 +3029,9 @@
           "label": "CIRISAgent integrity compliance",
           "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/compliance/D02_integrity.md"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 108,
@@ -2944,7 +3047,9 @@
           "label": "Accord scope / disclaimers",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 109,
@@ -2959,7 +3064,9 @@
           "label": "CIRISAgent safety tests",
           "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 110,
@@ -2974,7 +3081,9 @@
           "label": "CIRISAgent safety tests",
           "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 111,
@@ -2989,7 +3098,9 @@
           "label": "CIRISProxy",
           "url": "https://github.com/CIRISAI/CIRISProxy"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 112,
@@ -3008,7 +3119,9 @@
           "label": "Architecture",
           "url": "https://ciris.ai/architecture/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 113,
@@ -3023,7 +3136,8 @@
           "label": "Architecture / federation",
           "url": "https://ciris.ai/architecture/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 114,
@@ -3038,7 +3152,9 @@
           "label": "CIRISLens README",
           "url": "https://github.com/CIRISAI/CIRISLens"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 115,
@@ -3057,7 +3173,8 @@
           "label": "CIRIS architecture (Lens triage)",
           "url": "https://ciris.ai/architecture/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 116,
@@ -3072,7 +3189,8 @@
           "label": "CIRISVerify README",
           "url": "https://github.com/CIRISAI/CIRISVerify"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 117,
@@ -3087,7 +3205,9 @@
           "label": "Accord Book IX",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 57,
@@ -3102,7 +3222,8 @@
           "label": "Kulveit et al. 2025",
           "url": "https://arxiv.org/abs/2501.16946"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 58,
@@ -3118,7 +3239,8 @@
           "label": "GovAI compute governance report",
           "url": "https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 59,
@@ -3133,7 +3255,8 @@
           "label": "GovAI Baruch-plan paper",
           "url": "https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 60,
@@ -3148,7 +3271,8 @@
           "label": "GovAI publications",
           "url": "https://www.governance.ai/research"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 61,
@@ -3163,7 +3287,8 @@
           "label": "UK AISI eval lessons (2024)",
           "url": "https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 62,
@@ -3179,7 +3304,9 @@
           "label": "UK AISI 2026",
           "url": "https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 63,
@@ -3196,7 +3323,8 @@
           "label": "US NIST AI",
           "url": "https://www.nist.gov/artificial-intelligence"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 64,
@@ -3211,7 +3339,8 @@
           "label": "UK AISI Frontier AI Trends Report",
           "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 65,
@@ -3227,7 +3356,8 @@
           "label": "PauseAI policy proposal",
           "url": "https://pauseai.info/proposal"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 66,
@@ -3242,7 +3372,8 @@
           "label": "FLI pause letter",
           "url": "https://futureoflife.org/open-letter/pause-giant-ai-experiments/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 67,
@@ -3257,7 +3388,8 @@
           "label": "Critch & Krueger 2020",
           "url": "https://arxiv.org/abs/2006.04948"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 68,
@@ -3272,7 +3404,8 @@
           "label": "Christiano 2019 (multipolar post)",
           "url": "https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 70,
@@ -3287,7 +3420,8 @@
           "label": "FDT 2017",
           "url": "https://arxiv.org/abs/1710.05060"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 73,
@@ -3302,7 +3436,9 @@
           "label": "Park et al. 2024",
           "url": "https://arxiv.org/abs/2308.14752"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 77,
@@ -3317,7 +3453,8 @@
           "label": "AI 2027 scenario summary",
           "url": "https://ai-2027.com/summary"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 78,
@@ -3332,7 +3469,9 @@
           "label": "Yin et al. 2025",
           "url": "https://arxiv.org/abs/2510.22500"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 79,
@@ -3347,7 +3486,9 @@
           "label": "Conjecture CoEm proposal",
           "url": "https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 80,
@@ -3366,7 +3507,9 @@
           "label": "Lean spine",
           "url": "https://towards-alignment.com/lean/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 81,
@@ -3385,7 +3528,9 @@
           "label": "Lab simulation findings",
           "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 82,
@@ -3404,7 +3549,9 @@
           "label": "agency-detect repo",
           "url": "https://github.com/GunnarZarncke/agency-detect"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 83,
@@ -3424,7 +3571,9 @@
           "label": "Ch. 18 (companion)",
           "url": "https://towards-alignment.com/cards/chapters/ch18/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 84,
@@ -3443,7 +3592,9 @@
           "label": "Field modules (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 85,
@@ -3459,7 +3610,9 @@
           "label": "Edelman et al. 2025",
           "url": "https://arxiv.org/abs/2512.03399"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 86,
@@ -3474,7 +3627,9 @@
           "label": "App B bridge crosswalk (companion)",
           "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 87,
@@ -3493,7 +3648,9 @@
           "label": "Lean spine",
           "url": "https://towards-alignment.com/lean/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 88,
@@ -3512,7 +3669,9 @@
           "label": "Goal-agent simulation findings",
           "url": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 89,
@@ -3528,7 +3687,8 @@
           "label": "App B bridge crosswalk (companion)",
           "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 90,
@@ -3543,7 +3703,9 @@
           "label": "Ch. 31 (companion)",
           "url": "https://towards-alignment.com/cards/chapters/ch31/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 91,
@@ -3558,7 +3720,9 @@
           "label": "App B bridge crosswalk (companion)",
           "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 92,
@@ -3573,7 +3737,9 @@
           "label": "Graded-lab simulation findings",
           "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 93,
@@ -3588,7 +3754,9 @@
           "label": "Ch. 34 (companion)",
           "url": "https://towards-alignment.com/cards/chapters/ch34/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 94,
@@ -3603,7 +3771,9 @@
           "label": "Graded-lab simulation findings",
           "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 95,
@@ -3618,7 +3788,8 @@
           "label": "App C (companion)",
           "url": "https://towards-alignment.com/cards/chapters/appc/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 96,
@@ -3633,7 +3804,9 @@
           "label": "Ch. 43 (companion)",
           "url": "https://towards-alignment.com/cards/chapters/ch43/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 97,
@@ -3648,7 +3821,9 @@
           "label": "Lean spine",
           "url": "https://towards-alignment.com/lean/"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 98,
@@ -3663,7 +3838,9 @@
           "label": "Lab simulation findings",
           "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 99,
@@ -3678,7 +3855,9 @@
           "label": "Hubinger et al. 2019",
           "url": "https://arxiv.org/abs/1906.01820"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 100,
@@ -3693,7 +3872,9 @@
           "label": "Ch. 35 (companion)",
           "url": "https://towards-alignment.com/cards/chapters/ch35/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 101,
@@ -3708,7 +3889,9 @@
           "label": "App B bridge crosswalk (companion)",
           "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 102,
@@ -3727,7 +3910,9 @@
           "label": "Forgeability.lean (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 118,
@@ -3747,7 +3932,9 @@
           "label": "LessWrong tag: infra-Bayesianism",
           "url": "https://www.lesswrong.com/tag/infra-bayesianism"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 119,
@@ -3766,7 +3953,9 @@
           "label": "Kosoy, LTA status (2023)",
           "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 120,
@@ -3785,7 +3974,9 @@
           "label": "Kosoy, LTA status (2023)",
           "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 1
     },
     {
       "id": 121,
@@ -3804,7 +3995,9 @@
           "label": "Kosoy, LTA status (2023)",
           "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 1
     },
     {
       "id": 122,
@@ -3823,7 +4016,9 @@
           "label": "LessWrong tag: infra-Bayesianism",
           "url": "https://www.lesswrong.com/tag/infra-bayesianism"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 123,
@@ -3847,7 +4042,9 @@
           "label": "Kosoy, PreDCA shortform (2022)",
           "url": "https://www.lesswrong.com/posts/33EKjmAdKFn3pbKPJ"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 124,
@@ -3863,7 +4060,9 @@
           "label": "Garrabrant et al. 2017",
           "url": "https://arxiv.org/abs/1609.03543"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 125,
@@ -3882,7 +4081,9 @@
           "label": "Correction.lean (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 126,
@@ -3897,7 +4098,8 @@
           "label": "Lean spine",
           "url": "https://towards-alignment.com/lean/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 127,
@@ -3916,7 +4118,9 @@
           "label": "Lean spine",
           "url": "https://towards-alignment.com/lean/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 128,
@@ -3931,7 +4135,9 @@
           "label": "Dalrymple et al. 2024",
           "url": "https://arxiv.org/abs/2405.06624"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 129,
@@ -3946,7 +4152,9 @@
           "label": "Irving et al. 2026",
           "url": "https://arxiv.org/abs/2605.06390"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 130,
@@ -3961,7 +4169,8 @@
           "label": "Accord scope / disclaimers",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 131,
@@ -3976,7 +4185,8 @@
           "label": "Yudkowsky 2004 CEV",
           "url": "https://intelligence.org/files/CEV.pdf"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 132,
@@ -4000,7 +4210,9 @@
           "label": "field-claim plan",
           "url": "../../drafts/field-claim-formalization-and-bridge-review-plan.md"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 133,
@@ -4015,7 +4227,9 @@
           "label": "Kenton et al. 2022",
           "url": "https://arxiv.org/abs/2208.08345"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 134,
@@ -4034,7 +4248,9 @@
           "label": "Georg Lange (Foresight grantee)",
           "url": "https://foresight.org/grantees/2026-georg-lange/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 135,
@@ -4049,7 +4265,8 @@
           "label": "FMF risk thresholds report",
           "url": "https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 136,
@@ -4064,7 +4281,9 @@
           "label": "UK AISI 2026 alignment eval case study",
           "url": "https://arxiv.org/abs/2604.00788"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 137,
@@ -4080,7 +4299,9 @@
           "label": "ARIA Safeguarded AI",
           "url": "https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 139,
@@ -4096,7 +4317,9 @@
           "label": "Hagag et al. 2026",
           "url": "https://arxiv.org/abs/2604.23459"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 140,
@@ -4112,7 +4335,9 @@
           "label": "AARM specification",
           "url": "https://heron.ing/aarm"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 141,
@@ -4128,7 +4353,9 @@
           "label": "Moon & Varshney 2026",
           "url": "https://arxiv.org/abs/2605.09045"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 142,
@@ -4144,7 +4371,9 @@
           "label": "Berrang ZK AI security",
           "url": "https://pascal-berrang.de/projects/zk_ai_security/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 143,
@@ -4160,7 +4389,9 @@
           "label": "CIP Alignment Assemblies",
           "url": "https://www.cip.org/alignmentassemblies"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 144,
@@ -4176,7 +4407,8 @@
           "label": "Byrnes brain-like AGI sequence",
           "url": "https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 145,
@@ -4191,7 +4423,9 @@
           "label": "Carauleanu et al. 2024",
           "url": "https://arxiv.org/abs/2412.16325"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 146,
@@ -4206,7 +4440,9 @@
           "label": "Sharma et al. 2026",
           "url": "https://arxiv.org/abs/2601.19062"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 147,
@@ -4221,7 +4457,9 @@
           "label": "Demski & Garrabrant 2019",
           "url": "https://arxiv.org/abs/1902.09469"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 148,
@@ -4239,7 +4477,9 @@
           "label": "Meinke et al. 2024",
           "url": "https://arxiv.org/abs/2412.04984"
         }
-      ]
+      ],
+      "direction": "challenge",
+      "weight": 3
     },
     {
       "id": 149,
@@ -4254,7 +4494,9 @@
           "label": "Laine et al. 2024",
           "url": "https://arxiv.org/abs/2407.04694"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 150,
@@ -4269,7 +4511,9 @@
           "label": "Berglund et al. 2023",
           "url": "https://arxiv.org/abs/2309.00667"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 1
     },
     {
       "id": 151,
@@ -4284,7 +4528,8 @@
           "label": "Dafoe et al. 2020",
           "url": "https://arxiv.org/abs/2012.08630"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 152,
@@ -4299,7 +4544,9 @@
           "label": "Bricken et al. 2023",
           "url": "https://transformer-circuits.pub/2023/monosemantic-features"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 153,
@@ -4314,7 +4561,9 @@
           "label": "Templeton et al. 2024",
           "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 154,
@@ -4331,7 +4580,9 @@
           "label": "Kosoy, Infra-Bayesian Physicalism",
           "url": "https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 155,
@@ -4348,7 +4599,9 @@
           "label": "Appel & Kosoy 2025 (COLT)",
           "url": "https://arxiv.org/abs/2504.06820"
         }
-      ]
+      ],
+      "direction": "support",
+      "weight": 2
     },
     {
       "id": 156,
@@ -4366,7 +4619,8 @@
           "label": "Kosoy, LTA status (2023)",
           "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
-      ]
+      ],
+      "direction": "unclear"
     },
     {
       "id": 157,
@@ -4382,7 +4636,8 @@
           "label": "Soto, PreDCA distilled (2022)",
           "url": "https://www.alignmentforum.org/posts/EFrJdhKPZXa4MA3Gr/vanessa-kosoy-s-predca-distilled"
         }
-      ]
+      ],
+      "direction": "unclear"
     }
   ],
   "clustering": [

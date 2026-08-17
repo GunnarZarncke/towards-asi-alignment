@@ -7,9 +7,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import {
+  buildStanceById,
   matrixCellToMarkdown,
   normalizeMatrix,
-  normalizeMatrixCell
+  normalizeMatrixCell,
+  stanceDirectionLabel,
+  stanceMark
 } from "../../reference/field-agendas/scripts/matrix-cell.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -221,7 +224,7 @@ async function loadYaml(name) {
   return yaml.load(await readFile(path.join(dataRoot, name), "utf8"));
 }
 
-function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows) {
+function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows, stanceById) {
   const bridgeMap = bridgeByKey(bridgeRows);
   const matrixColumns = visibleMatrixColumns(matrix, bridgeRows);
   const lines = [];
@@ -304,6 +307,22 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push(meta.typeLettersTable);
   lines.push("");
+  if (meta.directionLegend) {
+    lines.push("### Stance marks {#stance-marks}");
+    lines.push("");
+    lines.push(meta.directionLegend);
+    lines.push("");
+  }
+  if (meta.stanceMarksTable) {
+    lines.push(meta.stanceMarksTable);
+    lines.push("");
+  }
+  if (meta.weightRubric) {
+    lines.push("**Editorial weight:**");
+    lines.push("");
+    lines.push(meta.weightRubric);
+    lines.push("");
+  }
   const columnLabels = matrixColumns.map((col) => {
     const row = bridgeMap[col];
     return row ? `${row.noun} (${col})` : col;
@@ -320,7 +339,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
         : row.agenda;
     const cells = [
       agendaLabel,
-      ...matrixColumns.map((col) => matrixCellToMarkdown(normalizeMatrixCell(row.cells[col])))
+      ...matrixColumns.map((col) => matrixCellToMarkdown(normalizeMatrixCell(row.cells[col]), stanceById))
     ];
     lines.push(`| ${cells.join(" | ")} |`);
   }
@@ -329,11 +348,18 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push("### Coverage evidence catalog {#coverage-evidence-catalog}");
   lines.push("");
-  lines.push("| ID | Agenda | Bridge | Type | Evidence (one line) | Source |");
-  lines.push("|---|---|---|---|---|---|");
+  lines.push("| ID | Agenda | Bridge | Type | Mark | Direction | Weight | Evidence (one line) | Source |");
+  lines.push("|---|---|---|---|---|---|---|---|---|");
   for (const ev of evidence) {
     const src = ev.sources.map((s) => `[${s.label}](${s.url})`).join("; ");
-    lines.push(`| <a id="ev-${ev.id}"></a>${ev.id} | ${ev.agenda} | ${ev.bridges.join(", ")} | ${ev.type} | ${ev.evidence} | ${src} |`);
+    const direction = ev.direction ?? null;
+    const mark = direction ? stanceMark(direction, ev.weight ?? 1) : "—";
+    const directionLabel = stanceDirectionLabel(direction);
+    const weight =
+      direction && direction !== "unclear" ? String(ev.weight ?? 1) : "—";
+    lines.push(
+      `| <a id="ev-${ev.id}"></a>${ev.id} | ${ev.agenda} | ${ev.bridges.join(", ")} | ${ev.type} | ${mark} | ${directionLabel} | ${weight} | ${ev.evidence} | ${src} |`
+    );
   }
   lines.push("");
   lines.push("**Maintenance:** when adding an agenda row or bridge cell, edit YAML under `reference/field-agendas/data/` and run `cd site && npm run sync:field-agendas`. Prefer bibliography keys already in `references/` when citing external work.");
@@ -398,6 +424,8 @@ async function main() {
 
   const matrixForSite = filterMatrixForSite(matrix, bridgeRows);
 
+  const stanceById = buildStanceById(evidence);
+
   const jsonData = {
     meta,
     roster,
@@ -420,7 +448,7 @@ async function main() {
   const jsonContents = JSON.stringify(jsonData, null, 2) + "\n";
   await writeFileCheck(jsonPath, jsonContents, check, mismatches);
 
-  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrixForSite, evidence, clustering, bridgeRows);
+  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrixForSite, evidence, clustering, bridgeRows, stanceById);
   await writeFileCheck(indexPath, indexMd, check, mismatches);
 
   if (check && mismatches.length > 0) {

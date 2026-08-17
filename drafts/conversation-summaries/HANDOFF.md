@@ -2,13 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (consciousness TSA Phase 3 ledgers).
+Last updated: 2026-08-17 (field v2 hub cutover).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Consciousness / bearer-inference (ch18)** — **Phases 1–3 done** (2026-08-17): `sec:recognizing-new-bearers`; bib keys; `ch07 → ch18` DAG; **U-17** + ledger sync. **Next:** Phase 4 field v2. Log: `2026-08-17-consciousness-tsa-phase3-ledgers.md`.
+- **Consciousness / bearer-inference (ch18)** — **Phases 1–3 done** (2026-08-17): `sec:recognizing-new-bearers`; bib keys; `ch07 → ch18` DAG; **U-17** + ledger sync. **Next:** Phase 4 field v2 adjacent-work YAML. Log: `2026-08-17-consciousness-tsa-phase3-ledgers.md`.
+
+- **Field hub v2 cutover** — **Done** (2026-08-17): `/field/` → `/field/v2/`; `/field/v1/` archive + v1 bridge graph; v2 graph with MB1→MB3. Log: `2026-08-17-field-v2-cutover.md`.
 
 - **Krym architecture revision** — **Closed** 2026-08-17 (Phases 1–6 + `{leanbox}` + MB6b∨MB8 retirement). Follow-ups: `metadata/TODO.md` § Krym architecture revision (closed).
 

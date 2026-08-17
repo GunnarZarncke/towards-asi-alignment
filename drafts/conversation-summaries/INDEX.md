@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Field v2 hub cutover** — `/field/` → `/field/v2/`; `/field/v1/` archive; v1/v2 bridge dependency graphs. | [2026-08-17-field-v2-cutover.md](2026-08-17-field-v2-cutover.md) |
 | 2026-08-17 | **Consciousness TSA Phase 3** — U-17 + open-problems/claims/assumptions ledger sync. | [2026-08-17-consciousness-tsa-phase3-ledgers.md](2026-08-17-consciousness-tsa-phase3-ledgers.md) |
 | 2026-08-17 | **Consciousness TSA Phase 2** — `ch07 → ch18` informal edge; graphs + site reading DAG synced. | [2026-08-17-consciousness-tsa-phase2-dag.md](2026-08-17-consciousness-tsa-phase2-dag.md) |
 | 2026-08-17 | **Consciousness TSA Phase 1** — `sec:recognizing-new-bearers` in ch18; bib keys; ch07/ch32/ch47 pointers. | [2026-08-17-consciousness-tsa-phase1.md](2026-08-17-consciousness-tsa-phase1.md) |

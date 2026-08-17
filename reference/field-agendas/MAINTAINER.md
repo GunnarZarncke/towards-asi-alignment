@@ -104,4 +104,5 @@ Quick examples:
    Use `--relink` to strip and re-apply links after dictionary changes; `--check` for CI-style drift.
 3. Run `cd site && npm run sync:field-agendas` (regenerates agenda cards, `field-agendas.json`, and this folder's `field-agenda-index.md`).
 4. After editing evidence stance fields, run `python3 reference/field-agendas/scripts/check-evidence-stance.py` (also in root `make check`).
-5. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).
+5. Stance unit tests (also in `make check`): `node --test reference/field-agendas/scripts/matrix-cell.test.mjs` and `node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts`.
+6. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).

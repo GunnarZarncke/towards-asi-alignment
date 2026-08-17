@@ -1,6 +1,14 @@
 ---
-import SiteLayout from "../../layouts/SiteLayout.astro";
-import fieldV2 from "../../data/field-v2.json";
+import { getEntry, render } from "astro:content";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import FieldAgendaMatrix from "../../../components/FieldAgendaMatrix.astro";
+import FieldEvidenceCatalog from "../../../components/FieldEvidenceCatalog.astro";
+import FieldBridgeGraph from "../../../components/FieldBridgeGraph.astro";
+import fieldV2 from "../../../data/field-v2.json";
+
+const introEntry = await getEntry("field", "intro");
+if (!introEntry) throw new Error("Missing site/src/content/field/intro.md");
+const { Content: IntroContent } = await render(introEntry);
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -8,68 +16,265 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
 const bridgesByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
 for (const b of fieldV2.bridges) {
-  if (b.gravestone) continue;
   const role = b.lifecycleRole ?? "certify";
   if (!bridgesByRole[role]) bridgesByRole[role] = [];
   bridgesByRole[role].push(b);
 }
+
+const openByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+for (const iface of fieldV2.openSpineInterfaces) {
+  const role = iface.lifecycleRole ?? "construct";
+  if (!openByRole[role]) openByRole[role] = [];
+  openByRole[role].push(iface);
+}
+
+const phaseMeta = Object.fromEntries(
+  (fieldV2.lifecyclePhases ?? []).map((p) => [p.id, p])
+);
 ---
 
 <SiteLayout
-  title="Field map v2 (preview)"
-  description="Lifecycle-tagged bridge map and open spine interfaces — preview; not the live field hub."
+  title="Field"
+  description={introEntry.data.description ?? "AI safety field map: agendas, bridge coverage matrix, lifecycle axis, and sourced evidence catalog."}
 >
   <section class="hero">
-    <p class="eyebrow">Field · v2 preview</p>
-    <h1>Lifecycle + open interfaces</h1>
+    <p class="eyebrow">Field</p>
+    <h1>AI safety and alignment</h1>
     <p class="lede">
-      Parallel field map with lifecycle roles and non-MB open cruxes. Live <a href={withBase("/field/")}>/field/</a> stays on v1 until author confirms cutover.
+      A map of research agendas and how they connect to the hard problems of the AI alignment field.
+      {" "}
+      <span class="v1-ref">Archived v1 matrix (no lifecycle or stance marks): <a href={withBase("/field/v1/")}>/field/v1/</a>.</span>
     </p>
   </section>
 
-  <section class="readable">
-    <h2>Lifecycle axis</h2>
-    <p>{fieldV2.meta.lifecycleAxis}</p>
-    {lifecycleOrder.map((role) => (
-      <div class="role-block">
-        <h3>{role}</h3>
-        <ul>
-          {bridgesByRole[role]?.map((b) => (
-            <li>
-              <strong>{b.noun}</strong> ({b.key})
-              {b.cardSlug ? (
-                <>
-                  {" — "}
-                  <a href={withBase(`/cards/${b.cardSlug}/`)}>card</a>
-                </>
-              ) : null}
-              {b.leanCrux ? <span class="lean-crux"> · Lean: <code>{typeof b.leanCrux === "string" ? b.leanCrux : b.leanCrux.join(", ")}</code></span> : null}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
+  <article class="field-intro prose-block">
+    <IntroContent />
+  </article>
+
+  <section id="bridge-dependencies" class="bridge-graph-section readable">
+    <h2>Bridge dependency map</h2>
+    <p class="bridge-graph-lede">
+      How this project's bridge assumptions (MB1–MB11) depend on one another, labeled in field nouns from the coverage matrix below.
+    </p>
+    <p class="bridge-graph-disclaimer side-panel-meta">
+      This map shows logical and safety-case assembly dependencies among named bridge handoffs — not a proof that real systems satisfy them.
+      Lean checks conditional structure when the bridges hold; field evidence, measurement, and deployment class still govern whether each handoff is reliable in practice.
+    </p>
+    <FieldBridgeGraph
+      svgFile="field-graphs/bridge-dependencies-v2.svg"
+      dotFile="field-graphs/bridge-dependencies-v2.dot"
+    />
+    <p class="side-panel-meta">
+      Hub card: <a href={withBase("/cards/bridge-assumptions/")}>Bridge assumptions</a>
+      {" · "}
+      Formal spine: <a href={withBase("/lean/")}>Lean proof spine</a>
+    </p>
   </section>
 
-  <section class="readable">
-    <h2>Open spine interfaces</h2>
-    <p>{fieldV2.meta.openSpineInterfaces}</p>
-    <ul>
-      {fieldV2.openSpineInterfaces.map((iface) => (
-        <li>
-          <strong>{iface.title}</strong> ({iface.lifecycleRole}) —{" "}
-          <a href={withBase(iface.conceptCard)}>concept card</a>
-          <p>{iface.summary}</p>
-        </li>
-      ))}
-    </ul>
+  <section id="lifecycle-axis" class="lifecycle-section readable">
+    <h2>Lifecycle axis</h2>
+    <p class="lifecycle-intro">{fieldV2.meta.lifecycleIntro}</p>
+    {fieldV2.meta.lifecycleBridgeAssignmentNote ? (
+      <p class="lifecycle-note">{fieldV2.meta.lifecycleBridgeAssignmentNote}</p>
+    ) : null}
+    {fieldV2.meta.lifecycleGapsNote ? (
+      <p class="lifecycle-note lifecycle-gaps">{fieldV2.meta.lifecycleGapsNote}</p>
+    ) : null}
+    <p class="lifecycle-axis-line side-panel-meta">
+      <strong>Axis:</strong> {fieldV2.meta.lifecycleAxis}
+    </p>
+    {lifecycleOrder.map((role) => {
+      const phase = phaseMeta[role];
+      const bridges = bridgesByRole[role] ?? [];
+      const openInterfaces = openByRole[role] ?? [];
+      if (!phase && bridges.length === 0 && openInterfaces.length === 0) return null;
+      return (
+        <div class="role-block">
+          <h3>{phase?.label ?? role}</h3>
+          {phase?.summary ? <p class="role-summary">{phase.summary}</p> : null}
+          {bridges.length > 0 ? (
+            <ul class="bridge-list">
+              {bridges.map((b) => (
+                <li class:list={[{ gravestone: b.gravestone }]}>
+                  <strong>{b.noun}</strong> ({b.key})
+                  {b.gravestone ? <span class="gravestone-tag">retired matrix bridge</span> : null}
+                  {b.cardSlug ? (
+                    <>
+                      {" — "}
+                      <a href={withBase(`/cards/${b.cardSlug}/`)}>card</a>
+                    </>
+                  ) : null}
+                  {b.leanCrux ? (
+                    <span class="lean-crux">
+                      {" "}
+                      · Lean: <code>{typeof b.leanCrux === "string" ? b.leanCrux : b.leanCrux.join(", ")}</code>
+                    </span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {openInterfaces.length > 0 ? (
+            <ul class="open-interface-list">
+              {openInterfaces.map((iface) => (
+                <li>
+                  <strong>{iface.title}</strong>
+                  <span class="open-interface-tag">open spine interface</span>
+                  {" — "}
+                  <a href={withBase(iface.conceptCard)}>concept card</a>
+                  {iface.leanProp ? (
+                    <span class="lean-crux">
+                      {" "}
+                      · Lean: <code>{iface.leanProp}</code>
+                    </span>
+                  ) : null}
+                  <p>{iface.summary}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      );
+    })}
   </section>
+
+  <FieldAgendaMatrix base={base} showStance={true} hubPath="/field/v2/" />
+
+  <FieldEvidenceCatalog base={base} showStance={true} />
 </SiteLayout>
 
 <style>
-  .role-block {
-    margin: 1.25rem 0;
+  .v1-ref {
+    color: var(--color-muted, #64748b);
+    font-size: 0.92em;
   }
+
+  .prose-block,
+  .field-intro {
+    margin-top: 2rem;
+    max-width: 48rem;
+  }
+
+  .field-intro :global(h2) {
+    margin-top: 2rem;
+    font-size: 1.35rem;
+  }
+
+  .field-intro :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .field-intro :global(p),
+  .field-intro :global(li) {
+    line-height: 1.6;
+  }
+
+  .field-intro :global(blockquote) {
+    margin: 1.25rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    color: var(--color-muted, #4a5568);
+    font-style: italic;
+  }
+
+  .field-intro :global(ul) {
+    padding-left: 1.25rem;
+  }
+
+  .field-intro :global(a) {
+    color: var(--color-link, #1a5276);
+  }
+
+  .bridge-graph-section {
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .bridge-graph-lede {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .bridge-graph-disclaimer {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .lifecycle-section {
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .lifecycle-intro {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .lifecycle-note {
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.96em;
+  }
+
+  .lifecycle-gaps {
+    padding: 0.65rem 0.85rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .lifecycle-axis-line {
+    margin: 0 0 1.25rem;
+  }
+
+  .role-block {
+    margin: 1.75rem 0;
+  }
+
+  .role-block h3 {
+    margin-bottom: 0.35rem;
+  }
+
+  .role-summary {
+    margin: 0 0 0.65rem;
+    line-height: 1.6;
+    color: var(--color-muted, #4a5568);
+  }
+
+  .bridge-list,
+  .open-interface-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .open-interface-tag {
+    margin-left: 0.35rem;
+    font-size: 0.85em;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
+  }
+
+  .gravestone-tag {
+    margin-left: 0.35rem;
+    font-size: 0.85em;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
+  }
+
+  li.gravestone {
+    color: var(--color-muted, #4a5568);
+  }
+
+  .open-interface-list p {
+    margin: 0.35rem 0 0;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
   .lean-crux code {
     font-size: 0.9em;
   }

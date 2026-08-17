@@ -2,6 +2,29 @@
 # Regenerate: cd site && npm run sync:field-v2
 
 openSpineInterfaces:
+  - id: alignment-target
+    title: Alignment Target
+    lifecycleRole: specify
+    status: open
+    leanModule: AlignmentProofSpine/AlignmentConstruction
+    leanProp: AlignmentTarget
+    leanDefs:
+      - ConstitutionalRule
+      - constitutionalTarget
+      - cevConstitution
+    bookChapters:
+      - ch28
+      - ch01
+    conceptCard: /cards/mb8-cev-process-convergence/
+    summary: >-
+      State a coherent alignment target (constitutional rule → AlignmentTarget).
+      Open specify-phase crux; not an MB bridge column. Retired MB8 (CEV)
+      factorizes here; outer-alignment, constitutional-AI, and open-world
+      specification debates (GSAI completeness cousins) attach in this
+      neighborhood — distinct from MB2 identification of values in a deployed
+      system.
+    dependsOn: []
+    notABridge: true
   - id: target-realization
     title: Target Realization
     lifecycleRole: construct

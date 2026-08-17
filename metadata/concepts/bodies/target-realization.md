@@ -44,4 +44,4 @@ Lean types the separation in `AlignmentConstruction.lean`: `Realizes` vs `Certif
 
 CEV is not a special bridge: `constitutionalTarget` / `cevConstitution` parameterize an `AlignmentTarget` on the same interface (MB8 is a gravestone only).
 
-**Book:** introduction (three questions); ch33 (certification without construction). **Field preview:** `/field/v2/`.
+**Book:** introduction (three questions); ch33 (certification without construction). **Field hub:** `/field/` (→ `/field/v2/#lifecycle-axis`).

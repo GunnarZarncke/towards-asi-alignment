@@ -19,6 +19,9 @@ check: generate
 	python3 scripts/check_citations.py
 	python3 scripts/check_bibliography_summaries.py
 	python3 scripts/check_claim_spine.py
+	python3 reference/field-agendas/scripts/check-evidence-stance.py
+	node --test reference/field-agendas/scripts/matrix-cell.test.mjs
+	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts
 
 wordcount:
 	python3 scripts/wordcount.py

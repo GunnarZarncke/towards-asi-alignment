@@ -47,7 +47,7 @@ Phases 1–6 and post-plan passes (`{leanbox}` reframe, MB6b∨MB8 retirement) s
 
 - [x] **Disjunctive MB6b∨MB8 prose retirement** — live correction path is MB4 + MB6b; CEV as `AlignmentTarget` special case (ch28, App G chokepoint); field index/glossary synced (2026-08-17).
 - [~] **`{leanbox}` at remaining `\leanspine` sites** — ≤1 compact box per chapter at first high-value Lean introduction; **17 chapters done**. Add only where elaboration beats the margin note (~26 chapters still without a box).
-- [ ] **Field v2 hub cutover** — `/field/v2/` preview exists; cut over live `/field/` only after **manual author confirm** (`reference/field-agendas/data/bridges-v2.yml`, `site/scripts/sync-field-v2.mjs`).
+- [x] **Field v2 hub cutover** — `/field/` redirects to `/field/v2/`; archived v1 at `/field/v1/` with frozen v1 dependency graph; v2 graph adds MB1→MB3 bearer-admission edge (2026-08-17).
 - [ ] **Lean Chokepoint identifier rename (optional)** — names like `correction_integrity_disjunctive_tolerance_needs_distinct_instruments` still frame the retired two-route packaging; optional rename for gravestone clarity (API + App G cross-refs; low priority).
 - [ ] **Wire experiment scripts to `BundleEvidenceAdequate`** — empirical MB2 line stays ch15–21 + IRL/ELK cites; no Lean hook from graded-lab / value-detect lines yet (explicitly deferred from Krym plan).
 - [ ] **App G translation spine opener (author)** — mirror site `/lean/` projections table in Appendix G; site companion done; manuscript pass author-owned (also in HANDOFF).

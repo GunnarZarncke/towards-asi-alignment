@@ -1,4 +1,4 @@
-// Generates field-v2.json (lifecycle roles + open spine interfaces) for /field/v2/ preview.
+// Generates field-v2.json (lifecycle roles + open spine interfaces) for /field/v2/ (live field hub).
 // Usage: node scripts/sync-field-v2.mjs [--check]
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -39,6 +39,7 @@ async function main() {
   const { bridges: bridgeRows } = await loadYaml("bridges.yml");
   const { bridges: lifecycleRows } = await loadYaml("bridges-v2.yml");
   const { openSpineInterfaces } = await loadYaml("open-spine-interfaces.yml");
+  const lifecycle = await loadYaml("lifecycle.yml");
 
   const lifecycleByKey = Object.fromEntries(lifecycleRows.map((row) => [row.key, row]));
 
@@ -48,13 +49,24 @@ async function main() {
     leanCrux: lifecycleByKey[row.key]?.leanCrux ?? row.leanAxiom ?? null
   }));
 
+  const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
+  const lifecyclePhases = lifecycleOrder.map((id) => ({
+    id,
+    label: lifecycle.phases[id]?.label ?? id,
+    summary: lifecycle.phases[id]?.summary ?? ""
+  }));
+
   const payload = {
     _generated: generatedBanner(),
     meta: {
-      lifecycleAxis: "specify → construct → identify → certify → preserve",
+      lifecycleIntro: lifecycle.intro,
+      lifecycleBridgeAssignmentNote: lifecycle.bridgeAssignmentNote ?? "",
+      lifecycleGapsNote: lifecycle.gapsNote ?? "",
+      lifecycleAxis: lifecycleOrder.join(" → "),
       openSpineInterfaces: meta.openSpineInterfaces,
-      note: "Preview only — live /field/ uses v1 matrix until author confirms cutover."
+      note: "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/."
     },
+    lifecyclePhases,
     bridges,
     openSpineInterfaces
   };

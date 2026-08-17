@@ -1,16 +1,27 @@
 ---
 import fieldData from "../data/field-agendas.json";
-import { renderMatrixCellHtml } from "../lib/field-matrix-cell";
+import {
+  buildStanceById,
+  renderMatrixCellHtml
+} from "../lib/field-matrix-cell";
 import { cardHref } from "../lib/site-urls";
 
 interface Props {
   base: string;
+  /** When true, prefix tags with stance marks (+3…−3). Live on /field/v2/. */
+  showStance?: boolean;
+  /** Anchor prefix for evidence catalog links (default `/field/`). */
+  hubPath?: string;
 }
 
-const { base } = Astro.props;
+const { base, showStance = false, hubPath = "/field/" } = Astro.props;
 const { matrix, mbBridgeCards, bridges: bridgeRows, agendas: agendaRows } = fieldData;
 const bridgeMap = Object.fromEntries((bridgeRows ?? []).map((row) => [row.key, row]));
 const agendaMetaBySlug = Object.fromEntries((agendaRows ?? []).map((row) => [row.slug, row]));
+const stanceById = showStance ? buildStanceById(fieldData.evidence) : undefined;
+
+const STANCE_LEGEND =
+  "Stance marks prefix tags on a +3 (·̂̂̂, advances discharge) to −3 (·̬̬̬, complicates it) scale, with · when direction is unclear.";
 
 function bridgeHref(mb: string) {
   const slug = mbBridgeCards[mb as keyof typeof mbBridgeCards];
@@ -29,14 +40,16 @@ function agendaHref(slug: string) {
   return cardHref(base, `field-agendas/${slug}`);
 }
 
-const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
+const normalizedHub = hubPath.startsWith("/") ? hubPath : `/${hubPath}`;
+const fieldPrefix = `${base.replace(/\/$/, "")}${normalizedHub.replace(/\/?$/, "/")}`;
 ---
 
-<section id="coverage-matrix" class="field-matrix">
+<section id="coverage-matrix" class:list={["field-matrix", { "field-matrix--stance": showStance }]}>
   <h2>Field coverage</h2>
   <p class="side-panel-meta">
     Tags: C conceptual, T theory, S simulation, P practical, D empirical (SW), E empirical (other), O other — each links to the evidence catalog below.
   </p>
+  {showStance && <p class="side-panel-meta stance-legend">{STANCE_LEGEND}</p>}
   <div class="table-wrap field-matrix-wrap">
     <table>
       <thead>
@@ -75,7 +88,7 @@ const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
             </th>
             {matrix.columns.map((mb) => {
               const groups = row.cells[mb] as import("../lib/field-matrix-cell").MatrixCellGroup[] | undefined;
-              const html = renderMatrixCellHtml(groups, fieldPrefix);
+              const html = renderMatrixCellHtml(groups, fieldPrefix, stanceById);
               return (
                 <td>
                   {!html ? "—" : <span set:html={html} />}
@@ -92,6 +105,10 @@ const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
 <style>
   .field-matrix {
     margin-top: 2.5rem;
+  }
+
+  .stance-legend {
+    max-width: 42rem;
   }
 
   .field-matrix-wrap {
@@ -136,6 +153,24 @@ const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
 
   .field-matrix td :global(.matrix-ev) {
     white-space: nowrap;
+  }
+
+  .field-matrix--stance td :global(.matrix-ev-stance) {
+    font-size: 1.12em;
+    vertical-align: baseline;
+    margin-inline-end: 0.08em;
+  }
+
+  .field-matrix--stance td :global(.matrix-ev-stance-weight-3) {
+    font-size: 0.96em;
+  }
+
+  .field-matrix--stance td :global(.matrix-ev-stance-support) {
+    color: var(--stance-support, #2d6a4f);
+  }
+
+  .field-matrix--stance td :global(.matrix-ev-stance-challenge) {
+    color: var(--stance-challenge, #9b2226);
   }
 
   .field-matrix td :global(a.matrix-ev-id-link) {

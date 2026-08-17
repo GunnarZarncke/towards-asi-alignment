@@ -1,12 +1,14 @@
 ---
 import fieldData from "../data/field-agendas.json";
+import { stanceDirectionLabel, stanceMark } from "../lib/field-matrix-cell";
 import { cardHref } from "../lib/site-urls";
 
 interface Props {
   base: string;
+  showStance?: boolean;
 }
 
-const { base } = Astro.props;
+const { base, showStance = false } = Astro.props;
 const { evidence } = fieldData;
 
 function agendaHref(slug: string) {
@@ -17,9 +19,17 @@ function slugForAgendaName(name: string) {
   const hit = fieldData.agendas.find((a) => a.title === name || a.title.startsWith(name));
   return hit?.slug;
 }
+
+function weightStanceForEntry(entry: (typeof evidence)[number]) {
+  const direction = entry.direction as string | undefined;
+  if (!direction) return "—";
+  if (direction === "unclear") return `— ${stanceMark("unclear")}`;
+  const weight = entry.weight ?? 1;
+  return `${weight} ${stanceMark(direction, weight)}`;
+}
 ---
 
-<section id="coverage-evidence-catalog" class="field-evidence">
+<section id="coverage-evidence-catalog" class:list={["field-evidence", { "field-evidence--stance": showStance }]}>
   <h2>Evidence catalog</h2>
   <p class="side-panel-meta">
     Primary sources behind matrix tags. External links open in a new tab.
@@ -32,6 +42,12 @@ function slugForAgendaName(name: string) {
           <th scope="col">Agenda</th>
           <th scope="col">Bridge</th>
           <th scope="col">Type</th>
+          {showStance && (
+            <>
+              <th scope="col">Direction</th>
+              <th scope="col">Weight</th>
+            </>
+          )}
           <th scope="col">Evidence</th>
           <th scope="col">Source</th>
         </tr>
@@ -47,6 +63,12 @@ function slugForAgendaName(name: string) {
               </td>
               <td>{entry.bridges.join(", ")}</td>
               <td>{entry.type}</td>
+              {showStance && (
+                <>
+                  <td>{stanceDirectionLabel(entry.direction as string | undefined)}</td>
+                  <td class="stance-weight">{weightStanceForEntry(entry)}</td>
+                </>
+              )}
               <td>{entry.evidence}</td>
               <td>
                 {entry.sources.map((s, i) => (
@@ -62,6 +84,12 @@ function slugForAgendaName(name: string) {
       </tbody>
     </table>
   </div>
+  {showStance && (
+    <p class="stance-disclaimer side-panel-meta">
+      Stance direction and weight on catalog entries were classified by AI-assisted review.
+      Treat as editorial heuristics for the field map, not ground-truth verdicts on the sources.
+    </p>
+  )}
 </section>
 
 <style>
@@ -77,5 +105,17 @@ function slugForAgendaName(name: string) {
   .field-evidence th {
     vertical-align: top;
     padding: 0.5rem;
+  }
+
+  .field-evidence--stance .stance-weight {
+    white-space: nowrap;
+    font-size: 1.37rem;
+    line-height: 1.2;
+  }
+
+  .stance-disclaimer {
+    margin: 0.75rem 0 0;
+    max-width: 42rem;
+    line-height: 1.5;
   }
 </style>
