@@ -649,15 +649,20 @@ Field crossroad: acausal/inferential coordination across severed channels.
 Book bridge: Chapter~\ref{ch:multi-agent-strategic-coupling}; \(P_{\text{meta}}\) is audit-side only.
 \end{assumption}
 
-\begin{assumption}[MB8: process convergence]
+\begin{assumption}[MB8: process convergence (legacy / gravestone)]
 \label{appi:ass:mb8}
+\textbf{Retired from the live certification path.} CEV factorizes through \texttt{AlignmentConstruction.lean}: \texttt{constitutionalTarget} yields an \texttt{AlignmentTarget}; realization and certification are separate (\texttt{Realizes} vs \texttt{CertifiedAsRealizing}). The legacy axiom remains for the Chokepoint \texttt{MB6b} vs \texttt{MB8} worked instance only:
 \begin{equation}
 \label{appi:eq:mb8}
 \forall A,U,\ \mathrm{PreservesValueUpdateOperator}(A,U)\Rightarrow \mathrm{CorrectionIntegrity}(A).
 \end{equation}
+Not in \texttt{BridgeAssumptions}. See gravestone card \texttt{mb8-cev-process-convergence}.
 Field crossroad: legacy CEV/process route to correction integrity \autocite{yudkowsky2004cev}.
-Book bridge: Chapter~\ref{ch:extrapolative-correction}, Chapter~\ref{ch:correction-channel-integrity}.
+Book bridge: Chapter~\ref{ch:extrapolative-correction} (CEV decomposed); live path is MB4/MB4a.
 \end{assumption}
+
+\paragraph{Alignment construction (open interface, not an \texttt{MB*} bridge).}
+\texttt{AlignmentConstruction.lean} types \texttt{AlignmentTarget}, \texttt{Realizes}(A,P), \texttt{TargetRealizable}(P) (open --- not axiomatized), and \texttt{CertifiedAsRealizing}(E,A,P) (certification claim, distinct from realization). CEV is \texttt{constitutionalTarget}(\texttt{cevConstitution}). \leanid{fin\_certification\_without\_construction} exhibits that a certification schema can be satisfied while no finite toy realizes the target.
 
 \begin{assumption}[MB9: grounding certificate soundness]
 \label{appi:ass:mb9}

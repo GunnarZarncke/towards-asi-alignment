@@ -240,9 +240,9 @@ bridges:
     bookMove: "Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control"
   - slug: mb8-cev-process-convergence
     kind: bridge
-    title: MB8 — Extrapolated Volition
-    status: bridge
-    summary: "CEV-style process legitimacy: is preserving a value-update process enough without knowing where it converges? Precise bet: an external theory certifying process preservation suffices for correction integrity (legacy secondary route)."
+    title: MB8 — Extrapolated Volition (gravestone)
+    status: gravestone
+    summary: "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction (TargetRealizable) is separate from certification. Legacy MB8 axiom kept for Chokepoint worked instance only."
     decision: Treat this as a legacy or secondary route to correction integrity, not the main path — ask whether a claim actually rests on this bridge before accepting an appeal to eventual convergence.
     evidence: Evidence would include an independently verified account of what the value-update process converges to, and confirmation that preserving the process does not itself get gamed (legitimacy theater).
     bookChapters:

@@ -591,7 +591,6 @@
       "MB6",
       "MB7",
       "MB7d",
-      "MB8",
       "MB9",
       "MB10",
       "MB11"
@@ -670,14 +669,6 @@
               ]
             }
           ],
-          "MB8": [
-            {
-              "type": "C",
-              "ids": [
-                131
-              ]
-            }
-          ],
           "MB9": [],
           "MB10": [
             {
@@ -736,7 +727,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [
             {
@@ -804,7 +794,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -872,7 +861,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [
             {
@@ -919,7 +907,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -938,7 +925,6 @@
           "MB6": [],
           "MB7": [],
           "MB7d": [],
-          "MB8": [],
           "MB9": [
             {
               "type": "T",
@@ -1021,7 +1007,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [
             {
@@ -1069,7 +1054,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1116,7 +1100,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [
             {
@@ -1164,7 +1147,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [
             {
@@ -1204,7 +1186,6 @@
           "MB6": [],
           "MB7": [],
           "MB7d": [],
-          "MB8": [],
           "MB9": [
             {
               "type": "T",
@@ -1283,7 +1264,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1323,7 +1303,6 @@
           "MB6": [],
           "MB7": [],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1372,7 +1351,6 @@
           "MB6": [],
           "MB7": [],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1460,7 +1438,6 @@
               ]
             }
           ],
-          "MB8": [],
           "MB9": [
             {
               "type": "T",
@@ -1587,7 +1564,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [
             {
               "type": "C",
@@ -1666,7 +1642,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [
             {
               "type": "C",
@@ -1719,14 +1694,6 @@
           ],
           "MB7": [],
           "MB7d": [],
-          "MB8": [
-            {
-              "type": "P",
-              "ids": [
-                65
-              ]
-            }
-          ],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1761,7 +1728,6 @@
               ]
             }
           ],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1787,7 +1753,6 @@
           ],
           "MB7": [],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1813,7 +1778,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -1865,7 +1829,6 @@
             }
           ],
           "MB7d": [],
-          "MB8": [],
           "MB9": [
             {
               "type": "T",
@@ -1927,14 +1890,6 @@
           ],
           "MB7": [],
           "MB7d": [],
-          "MB8": [
-            {
-              "type": "P",
-              "ids": [
-                143
-              ]
-            }
-          ],
           "MB9": [],
           "MB10": [],
           "MB11": []
@@ -2072,15 +2027,6 @@
               "type": "T",
               "ids": [
                 100
-              ]
-            }
-          ],
-          "MB8": [
-            {
-              "type": "C",
-              "ids": [
-                89,
-                131
               ]
             }
           ],
@@ -5116,7 +5062,7 @@
       "key": "MB2",
       "noun": "Value Learning",
       "cruxWording": "Evidence identifies a stable intended value/objective structure (not surface training compliance alone).",
-      "leanAxiom": "MB2_bundle_identifiability",
+      "leanAxiom": "MB2Crux",
       "cardSlug": "mb2-bundle-identifiability",
       "fieldAgree": "MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment “right target.”",
       "fieldDiffer": "ELK = latent-readout slice; PreDCA/QACI = peer outer targets; book splits referent to MB3."
@@ -5134,7 +5080,7 @@
       "key": "MB4",
       "noun": "Corrigibility",
       "cruxWording": "Correction that holds now continues to preserve the correction process under pressure.",
-      "leanAxiom": "MB4_correction_legitimacy",
+      "leanAxiom": "MB4_correction_integrity",
       "cardSlug": "mb4-correction-legitimacy",
       "fieldAgree": "Desire to accept/assist correction; Christiano dynamical reading closest to trajectory form.",
       "fieldDiffer": "MIRI/CHAI shutdown-utility homograph; book splits audit-path legitimacy as MB4a.",
@@ -5228,8 +5174,10 @@
       "cruxWording": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
       "leanAxiom": "MB8_cev_process_convergence",
       "cardSlug": "mb8-cev-process-convergence",
-      "fieldAgree": "MIRI CEV process/legitimacy underside.",
-      "fieldDiffer": "Peer outer targets ≠ this bridge; book marks secondary vs MB4/MB4a live path."
+      "matrixColumn": false,
+      "gravestone": true,
+      "fieldAgree": "MIRI CEV process/legitimacy underside — now factorized through AlignmentTarget / MB2–MB4.",
+      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this route; live path is MB4/MB4a."
     },
     {
       "key": "MB9",

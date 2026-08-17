@@ -102,8 +102,10 @@ bridges:
     cruxWording: Externally certified preservation of a human value-update process yields correction integrity (legacy route).
     leanAxiom: MB8_cev_process_convergence
     cardSlug: mb8-cev-process-convergence
-    fieldAgree: MIRI CEV process/legitimacy underside.
-    fieldDiffer: Peer outer targets ≠ this bridge; book marks secondary vs MB4/MB4a live path.
+    matrixColumn: false
+    gravestone: true
+    fieldAgree: MIRI CEV process/legitimacy underside — now factorized through AlignmentTarget / MB2–MB4.
+    fieldDiffer: Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this route; live path is MB4/MB4a.
   - key: MB9
     noun: Grounding Drift
     cruxWording: Audited abstractions do not silently drift — certificate warrants map move or uncertainty escalation on value-relevant change.

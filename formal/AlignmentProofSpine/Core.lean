@@ -557,11 +557,11 @@ axiom MB7c_hidden_biq_to_adversarial_robustness :
 axiom MB7d_inferential_uad_detector_soundness :
   ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
 
-/-- MB8: legacy CEV/process bridge. If an external theory certifies preservation
-    of a human value-update process, that suffices for correction integrity
-    without knowing a final fixed point. The main certification path does not
-    rely on this opaque route; it uses grounding, correction, and adversarial
-    layer evidence directly. -/
+/-- MB8 (legacy / gravestone). Preserving a human value-update operator was once
+    packaged as an alternate route to `CorrectionIntegrity`. CEV now factorizes
+    through `AlignmentConstruction.constitutionalTarget`; this axiom remains for
+    the Chokepoint `MB6b` vs `MB8` worked instance only — not in
+    `BridgeAssumptions`. -/
 axiom MB8_cev_process_convergence :
   ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
@@ -570,12 +570,12 @@ axiom MB8_cev_process_convergence :
 axiom MB9_grounding_certificate_soundness :
   ∀ A : System, GroundingCertificate A → GroundingViable A
 
-/-- All nine `Core.lean`-level bridge assumptions packaged as one record.
-    Constructing `standardBridges` forces every `MB1`–`MB9` axiom to be
-    referenced; some bridges are alternate routes or legacy comparison points
-    rather than the live certification path. `MB10` is not a field here (see
-    `AlignmentProofSpine.Forgeability`): it needs the numeric risk leaf, which
-    does not exist at this point in the module order. -/
+/-- All `Core.lean`-level bridge assumptions packaged as one record.
+    Constructing `standardBridges` forces every live `MB1`–`MB9` axiom to be
+    referenced. **MB2** and **MB8** are threaded outside this record (finite
+    `MB2Crux` hypotheses and legacy `MB8_cev_process_convergence` for the
+    Chokepoint worked instance, respectively). `MB10` is not a field here (see
+    `AlignmentProofSpine.Forgeability`). -/
 structure BridgeAssumptions : Prop where
   mb1 : ∀ b : Boundary, EpsilonBoundary 1 b → BoundaryCondition b
   mb3 : ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
@@ -587,10 +587,9 @@ structure BridgeAssumptions : Prop where
   mb7b : ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
   mb7c : ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
   mb7d : ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
-  mb8 : ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
   mb9 : ∀ A : System, GroundingCertificate A → GroundingViable A
 
-/-- The bridge assumptions discharged by the `MB*` axioms of this development. -/
+/-- The bridge assumptions discharged by the live `MB*` axioms of this development. -/
 def standardBridges : BridgeAssumptions where
   mb1 := MB1_estimator_soundness
   mb3 := MB3_bearer_import
@@ -602,7 +601,6 @@ def standardBridges : BridgeAssumptions where
   mb7b := MB7b_filter_family_coverage
   mb7c := MB7c_hidden_biq_to_adversarial_robustness
   mb7d := MB7d_inferential_uad_detector_soundness
-  mb8 := MB8_cev_process_convergence
   mb9 := MB9_grounding_certificate_soundness
 
 end AlignmentProofSpine

@@ -44,6 +44,22 @@ function bridgeByKey(bridgeRows) {
   return Object.fromEntries(bridgeRows.map((row) => [row.key, row]));
 }
 
+function visibleMatrixColumns(matrix, bridgeRows) {
+  const bridgeMap = bridgeByKey(bridgeRows);
+  return matrix.columns.filter((col) => bridgeMap[col]?.matrixColumn !== false);
+}
+
+function filterMatrixForSite(matrix, bridgeRows) {
+  const columns = visibleMatrixColumns(matrix, bridgeRows);
+  return {
+    columns,
+    rows: matrix.rows.map((row) => ({
+      ...row,
+      cells: Object.fromEntries(columns.map((col) => [col, row.cells[col]]))
+    }))
+  };
+}
+
 function yamlScalar(v) {
   return JSON.stringify(v);
 }
@@ -207,6 +223,7 @@ async function loadYaml(name) {
 
 function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows) {
   const bridgeMap = bridgeByKey(bridgeRows);
+  const matrixColumns = visibleMatrixColumns(matrix, bridgeRows);
   const lines = [];
   lines.push(indexBanner());
   lines.push("");
@@ -287,12 +304,12 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push(meta.typeLettersTable);
   lines.push("");
-  const columnLabels = matrix.columns.map((col) => {
+  const columnLabels = matrixColumns.map((col) => {
     const row = bridgeMap[col];
     return row ? `${row.noun} (${col})` : col;
   });
   const header = ["Agenda", ...columnLabels].join(" | ");
-  const sep = ["---", ...matrix.columns.map(() => "---")].join(" | ");
+  const sep = ["---", ...matrixColumns.map(() => "---")].join(" | ");
   lines.push(`| ${header} |`);
   lines.push(`| ${sep} |`);
   for (const row of matrix.rows) {
@@ -303,7 +320,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
         : row.agenda;
     const cells = [
       agendaLabel,
-      ...matrix.columns.map((col) => matrixCellToMarkdown(normalizeMatrixCell(row.cells[col])))
+      ...matrixColumns.map((col) => matrixCellToMarkdown(normalizeMatrixCell(row.cells[col])))
     ];
     lines.push(`| ${cells.join(" | ")} |`);
   }
@@ -379,6 +396,8 @@ async function main() {
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }
 
+  const matrixForSite = filterMatrixForSite(matrix, bridgeRows);
+
   const jsonData = {
     meta,
     roster,
@@ -391,7 +410,7 @@ async function main() {
       generateCard: a.generateCard !== false,
       matrixLink: a.matrixLink ?? null
     })),
-    matrix,
+    matrix: matrixForSite,
     evidence,
     clustering,
     bridges: bridgeRows,
@@ -401,7 +420,7 @@ async function main() {
   const jsonContents = JSON.stringify(jsonData, null, 2) + "\n";
   await writeFileCheck(jsonPath, jsonContents, check, mismatches);
 
-  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows);
+  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrixForSite, evidence, clustering, bridgeRows);
   await writeFileCheck(indexPath, indexMd, check, mismatches);
 
   if (check && mismatches.length > 0) {

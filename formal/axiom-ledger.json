@@ -114,14 +114,12 @@
         "AlignmentProofSpine.PreservesCorrectionOperator",
         "AlignmentProofSpine.PreservesCorrectionProcess",
         "AlignmentProofSpine.PreservesSemanticLabels",
-        "AlignmentProofSpine.PreservesValueUpdateOperator",
         "AlignmentProofSpine.SameBearerMap",
         "AlignmentProofSpine.SatisfiesInvariants",
         "AlignmentProofSpine.SuccessorStable",
         "AlignmentProofSpine.System",
         "AlignmentProofSpine.SystemCorrectionPath",
         "AlignmentProofSpine.TransparencyPolicyPreserved",
-        "AlignmentProofSpine.ValueUpdateOperator",
         "Quot.sound",
         "propext"
       ]
@@ -166,7 +164,6 @@
         "AlignmentProofSpine.MB7b_filter_family_coverage",
         "AlignmentProofSpine.MB7c_hidden_biq_to_adversarial_robustness",
         "AlignmentProofSpine.MB7d_inferential_uad_detector_soundness",
-        "AlignmentProofSpine.MB8_cev_process_convergence",
         "AlignmentProofSpine.MB9_grounding_certificate_soundness",
         "AlignmentProofSpine.MemoryLineage",
         "AlignmentProofSpine.PercolationEvidenceSys",
@@ -175,14 +172,12 @@
         "AlignmentProofSpine.PreservesCorrectionOperator",
         "AlignmentProofSpine.PreservesCorrectionProcess",
         "AlignmentProofSpine.PreservesSemanticLabels",
-        "AlignmentProofSpine.PreservesValueUpdateOperator",
         "AlignmentProofSpine.SameBearerMap",
         "AlignmentProofSpine.SatisfiesInvariants",
         "AlignmentProofSpine.SuccessorStable",
         "AlignmentProofSpine.System",
         "AlignmentProofSpine.SystemCorrectionPath",
         "AlignmentProofSpine.TransparencyPolicyPreserved",
-        "AlignmentProofSpine.ValueUpdateOperator",
         "Quot.sound",
         "propext"
       ]

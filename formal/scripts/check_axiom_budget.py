@@ -45,7 +45,6 @@ ALL_CORE_BRIDGES = {
     "MB7b_filter_family_coverage",
     "MB7c_hidden_biq_to_adversarial_robustness",
     "MB7d_inferential_uad_detector_soundness",
-    "MB8_cev_process_convergence",
     "MB9_grounding_certificate_soundness",
 }
 # MB10 (`AlignmentProofSpine.Forgeability`) is not a `Core.BridgeAssumptions`
