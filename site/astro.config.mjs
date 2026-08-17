@@ -31,6 +31,7 @@ export default defineConfig({
       [
         rehypeKatex,
         {
+          strict: (errorCode) => (errorCode === "unknownSymbol" ? "ignore" : "warn"),
           macros: {
             "\\MI": "\\mathrm{I}",
             "\\Correctable": "\\mathcal{K}",

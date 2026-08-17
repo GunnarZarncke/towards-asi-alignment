@@ -1,12 +1,13 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { CARD_STATUSES, CARD_TYPES } from "./lib/badges";
 
 const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release", "news", "agenda"]),
-    status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
+    type: z.enum(CARD_TYPES),
+    status: z.enum(CARD_STATUSES).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
     evidence: z.string().optional(),

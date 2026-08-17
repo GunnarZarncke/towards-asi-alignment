@@ -331,6 +331,12 @@ a.badge:hover {
   background: var(--color-negative-bg);
 }
 
+.badge.gravestone {
+  background: var(--color-muted-bg, var(--color-surface));
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
 .badge.gem {
   background: var(--color-warning-bg);
   border-color: var(--color-warning-border);

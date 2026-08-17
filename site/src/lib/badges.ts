@@ -25,7 +25,8 @@ export const CARD_STATUSES = [
   "bridge",
   "open",
   "negative",
-  "reviewed"
+  "reviewed",
+  "gravestone"
 ] as const;
 
 export type CardStatus = (typeof CARD_STATUSES)[number];
@@ -134,6 +135,11 @@ export const STATUS_META: Record<
     title: "Reviewed",
     description:
       "Manuscript unit that has passed a structured review pass — not a claim that every argument is final."
+  },
+  gravestone: {
+    title: "Gravestone",
+    description:
+      "Retired object kept for history and leftover formal uses — not on the live certification or matrix path."
   }
 };
 
