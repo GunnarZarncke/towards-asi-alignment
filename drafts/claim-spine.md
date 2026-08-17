@@ -93,3 +93,22 @@ Maintained manually; update when intro claims, safety-case layers, or ch48 statu
 - `\label{claim:boundary}` … `\label{claim:basin}` on each `introclaim` in `frontmatter/introduction.tex` ✓
 - New subsection `sec:how-claims-unfold` + `tables/claim-spine.tex` in Introduction ✓
 - Part openers (`parts/part01`–`part10`) tag which intro claim(s) each part develops ✓
+
+## Phase 3 safety-case dedup (2026-08-17)
+
+- `tables/claim-layer-map.tex`: canonical map ch03 preview / ch33 nine-claim / ch42 eight-layer ↔ intro claims ✓
+- ch03 §Shape of a Safety Case: grounding definition kept; Claims 1–6 collapsed to table + cross-ref ✓
+- ch33, ch42: pointer to Table~\ref{tab:claim-layer-map} ✓
+
+## Phase 4 chapter claim tags (2026-08-17)
+
+- First chapter of each part: one-line intro-claim tag in `epistemicstatus` (ch01, ch06, ch11, ch15, ch21, ch25, ch30, ch34, ch39, ch45) ✓
+
+## Phase 5 ch48 discharge (2026-08-17)
+
+- `tables/claim-status-ch48.tex` summary table ✓
+- `sec:spine-beyond-intro-ch48`: C-008–C-011 second-tier claims ✓
+
+## Next (Phase 6)
+
+- Optional `scripts/check_claim_spine.py`; site card for six thesis claims

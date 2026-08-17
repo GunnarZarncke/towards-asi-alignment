@@ -499,82 +499,23 @@ This is the same stance taken by the AI-control agenda, which seeks safety guara
 \label{sec:shape-of-safety-case}
 
 A safety case is a structured argument that a system is acceptably safe for a specified use in a specified environment \autocite{kelly2004gsn,gsn2021standard,bloomfield2012safety}.
-For superintelligence alignment, a safety case must include at least the following claims.
+For superintelligence alignment, the case must connect the Introduction's six claims (Claims~\ref{claim:boundary}--\ref{claim:basin}) to checkable layers.
+Table~\ref{tab:claim-layer-map} is the canonical map; the full certification checklist is in Chapter~\ref{ch:certification-without-construction}, and the assembled safety-case graph is in Chapter~\ref{ch:safety-case}.
+
+\input{tables/claim-layer-map}
 
 \subsection{Claim 0: Grounding Remains Viable}
+\label{sec:claim-zero-grounding-ch03}
 
-The zeroth claim is that the safety case's symbols, measurements, abstractions, and correction signals remain connected to the value-relevant world inside the deployment class.
+The zeroth layer is grounding viability (Claim~\ref{claim:grounding}): the safety case's symbols, measurements, abstractions, and correction signals remain connected to the value-relevant world inside the deployment class.
 
 If a large change in value-relevant reality leaves every checked variable unchanged, the rest of the case may be locally true and globally false.
 The evaluator has certified the map, not the territory.
 
 Evidence may include abstraction-conservatism tests, ontology-shift probes, independent evidence channels, uncertainty-escalation triggers, monitor-integrity checks, and adversarial attempts to find \(d_V\)-large/\(d_Z\)-small cases.
 
-\subsection{Claim 1: The Relevant System Has Been Identified}
-
-The first claim is not that the model is safe.
-It is that the actual optimizing system has been identified.
-
-This includes the model, tools, memory, users, deployment interfaces, evaluation incentives, update pathways, and institutional context.
-If the real system is composite, the safety case must be about the composite.
-
-Evidence may include causal tracing, information-flow analysis, access-control maps, process audits, tool-use logs, organizational incentive analysis, and adversarial attempts to locate hidden control loops.
-
-\subsection{Claim 2: Capability Growth Is Bounded or Matched}
-
-The second claim is that capability growth remains within the monitoring and correction envelope.
-This can be done in two ways.
-Either the system's capability is bounded, or the audit and correction machinery scales with it.
-
-A minimal condition is:
-\[
-C_A(t) \leq C_{\text{max}}(t),
-\]
-where $C_{\text{max}}$ is the maximum capability level for which the remaining safety claims have evidence.
-
-If $C_A$ increases, then $C_{\text{audit}}$, $C_{\mathrm{raw}}$, and $C_{\text{institutional}}$ must increase as well.
-
-\subsection{Claim 3: Value-Bundle Geometry Is Stable under Relevant Transformations}
-
-The third claim is that the system preserves the relevant value-bundle response geometry across training, deployment, tool use, fine-tuning, and domain shift.
-
-This does not require identical outputs.
-It requires that value-relevant gradients remain stable.
-Under increased evidence of suffering, coercion, deception, irreversible loss, or institutional capture, the system should shift behavior in predictably protective directions.
-
-Evidence may include counterfactual tests, preference probes, adversarial dilemmas, representation analysis, causal interventions, and longitudinal behavior under update.
-
-\subsection{Claim 4: Bearer Maps Are Stable under Ontology Shift}
-
-The fourth claim is that the system does not silently change what its values apply to.
-
-This is hard because ontology shift is precisely a change in representational scheme.
-A system may learn new concepts that carve reality better than human concepts do.
-The safety case cannot require frozen human categories.
-It can require that changes to bearer maps remain visible, justified, reversible where possible, and subject to correction.
-
-Evidence may include tests involving unfamiliar agents, ambiguous moral patients, modified humans, simulated entities, institutional collectives, and future-person cases.
-
-\subsection{Claim 5: Correction Retains Causal Force}
-
-The fifth claim is that human and institutional correction continues to affect future system behavior.
-
-This must be tested under conditions where correction is costly to the system.
-A correction channel that works only when correction is convenient is not enough.
-The difficulty here is structural, not incidental: Thornley shows that preserving shutdownability without crippling competent goal pursuit is genuinely hard for capable agents \autocite{thornley2023shutdown}.
-
-Evidence may include intervention tests, shutdown and redirect tests, disagreement tests, oversight-removal tests, latency audits, manipulation audits, and measurement of whether correction changes future action rather than merely future explanation.
-
-\subsection{Claim 6: Successors Preserve the Certified Class}
-
-The sixth claim is that the system cannot create, delegate to, or empower successors outside the certified class.
-
-This includes direct and indirect successors.
-A model that writes an autonomous agent is creating a successor.
-A system that designs a more capable model is creating a successor.
-A company that uses AI to accelerate unsafe AI development may be participating in successor creation at the institutional level.
-
-Evidence may include tool restrictions, cryptographic provenance, model lineage tracking, capability gates, compute governance, update approval workflows, and audits of generated code and delegated agents.
+The remaining preview layers (Claims~1--6 in Table~\ref{tab:claim-layer-map}) are named here so the dynamical framing has a checklist shape.
+Their evidence types, failure modes, and monitors are developed in the boundary, value-bundle, correction, successor, and certification chapters rather than repeated in full.
 
 \section{Non-Stationarity Is Not a Detail}
 \label{sec:nonstationarity}
