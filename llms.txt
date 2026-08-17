@@ -8,7 +8,8 @@ This file is also served at https://towards-alignment.com/llms.txt (generated at
 
 Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
 
-- [Start Here](https://towards-alignment.com/): homepage, thesis, standalone claims, failure modes.
+- [Start Here](https://towards-alignment.com/): homepage, thesis, six thesis claims, standalone claims, failure modes.
+- [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 discharge hub.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
 - [Field hub](https://towards-alignment.com/field/): 32 alignment agendas × MB1–MB11 bridge matrix, evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).

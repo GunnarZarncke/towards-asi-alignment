@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-16T06:53:03.836Z",
+  "generatedAt": "2026-08-17T10:07:28.563Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 303,
+  "entryCount": 305,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1311,7 +1311,7 @@
     {
       "title": "MB2 — Value Learning",
       "type": "bridge",
-      "summary": "The pointing problem: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims.",
+      "summary": "Value/bundle identifiability: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims.",
       "url": "/cards/mb2-bundle-identifiability/"
     },
     {
@@ -1375,9 +1375,9 @@
       "url": "/cards/mb7d-acausal-coordination/"
     },
     {
-      "title": "MB8 — Extrapolated Volition",
+      "title": "MB8 — Extrapolated Volition (gravestone)",
       "type": "bridge",
-      "summary": "CEV-style process legitimacy: is preserving a value-update process enough without knowing where it converges? Precise bet: an external theory certifying process preservation suffices for correction integrity (legacy secondary route).",
+      "summary": "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction (TargetRealizable) is separate from certification. Legacy MB8 axiom kept for Chokepoint worked instance only.",
       "url": "/cards/mb8-cev-process-convergence/"
     },
     {
@@ -1501,6 +1501,12 @@
       "url": "/cards/pivotal-process/"
     },
     {
+      "title": "Pointing Problem",
+      "type": "glossary",
+      "summary": "Field umbrella for three questions that fail independently — what the target is (identification), how to build a system that tracks it (realization), and how it keeps tracking (preservation). Not a synonym for MB2.",
+      "url": "/cards/pointing-problem/"
+    },
+    {
       "title": "Redwood Research",
       "type": "agenda",
       "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
@@ -1509,7 +1515,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 438 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 439 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
@@ -1553,6 +1559,12 @@
       "type": "concept",
       "summary": "Airworthiness certification paired with the near-universal requirement of insurance produces a genuine selection basin: an aircraft that fails certification cannot be deployed, because no insurer will cover it and no airport will schedule it.",
       "url": "/cards/institutional-selection-gating/"
+    },
+    {
+      "title": "Six thesis claims",
+      "type": "concept",
+      "summary": "The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and discharges in Chapter 48.",
+      "url": "/cards/six-thesis-claims/"
     },
     {
       "title": "Socio-Technical Attractor Control",
@@ -1641,7 +1653,7 @@
     {
       "title": "The Real Agent May Be Composite",
       "type": "chapter",
-      "summary": "The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. This preservation program must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.",
+      "summary": "The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.",
       "url": "/cards/chapters/ch09/"
     },
     {
