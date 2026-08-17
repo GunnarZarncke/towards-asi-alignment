@@ -64,14 +64,12 @@ Several bridges share enabling predicates.
 Boundary discovery (\texttt{MB1}) supplies the \(\mathrm{BoundaryAligned}\) antecedent that gates the entire access and measurement chain (\texttt{MB7a--c}); bundle identifiability (\texttt{MB2}) feeds bearer import (\texttt{MB3}); grounding viability (\texttt{MB9}; Assumption~A-014, Chapter~\ref{ch:dynamical-guarantee}) keeps the measured quantities tied to value-relevant reality beneath all of them.
 Because discharging one enabling bridge unlocks several dependents at once, the joint plausibility of the program is meaningfully higher than a naive product of per-bridge odds suggests: the bridges are positively correlated through their antecedents.
 
-\paragraph{Disjunctive routes add failure tolerance --- only if the instruments are independent.}
-At least one consequent is reachable by more than one path.
-Correction integrity follows from the socio-technical basin route (\texttt{MB6b}) \emph{or} from the legacy value-process route (\texttt{MB8}).
-Where the structure is disjunctive, only one path need survive, which is robust in a way a pure conjunction is not --- \emph{provided the two paths fail independently}.
-External review (2026-06-30, \texttt{review/adversarial-steerability-correlated-failure-2026-06-30.md}) flags that this provision is exactly what is unestablished here: percolation evidence (feeding \texttt{MB6a}\(\to\)\texttt{MB6b}) and value-update-operator preservation (feeding \texttt{MB8}) are, in a typical deployment, both read off the system's self-reports and externally observable cooperation signals --- the same instrument the system itself can shape.
-If so, the two routes share the adversarial-verifiability chokepoint (Assumption~A-009) rather than failing independently, and the disjunction buys no more tolerance than either route alone.
-Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint} formalizes this precisely: \emph{given} a named hypothesis that both audits share one instrument, steerability of that instrument blocks both routes at once (\leanid{correction\_integrity\_disjunctive\_tolerance\_needs\_distinct\_instruments}); a constructive counterexample (\leanid{independent\_channels\_can\_diverge}) shows what restoring genuine disjunctive tolerance would require --- exhibiting that the two audits are read through demonstrably distinct instruments.
-That demonstration is not yet done; until it is, treat \texttt{MB6b}/\texttt{MB8} as a single point of failure, not two.
+\paragraph{Shared instruments do not multiply certificates.}
+Several load-bearing readings can be taken off one measurement channel.
+If that channel is steerable, every certificate that depends on it fails together: the evaluator has one instrument, not several independent chances (Chapter~\ref{ch:verifiability-ontology}; Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}).
+That is a fact about handles, not a second live path to correction.
+Correction integrity on the certification path is \texttt{MB4} together with the basin obligation \texttt{MB6b}.
+A previously tempting backup --- CEV-process preservation as \texttt{MB8} --- is retired from that path; Chapter~\ref{ch:extrapolative-correction} treats CEV as a special case of \texttt{AlignmentTarget}, not as an independent route.
 
 \paragraph{The conjunctive spine is capped by its weakest necessary link.}
 Where bridges are jointly necessary, the joint guarantee is bounded above by the minimum.
@@ -98,7 +96,7 @@ The per-bridge investigations in Section~\ref{sec:bridge-empirical} are grouped 
   \item[Tier 3 --- socio-technical selection.] \texttt{MB6a} (percolation \(\to\) basin), \texttt{MB6b} (basin \(\to\) correction), and \texttt{MB7d} (inferential coupling). This tier is the book's sharpest departure from the single-system mainstream agendas and simultaneously its least empirically constrained: the value-lock-in objection bites \texttt{MB6b} directly, since a \emph{stable} basin can be a stably bad one, so basin persistence does not by itself imply correction integrity.
 \end{description}
 
-\noindent\texttt{MB8} is a disjunctive backstop for \texttt{MB6b}'s consequent rather than a tier of its own; the main certification path does not rely on it.
+\noindent\texttt{MB8} is a gravestone comparison for CEV, not a tier and not a backup for \texttt{MB6b}; see Chapter~\ref{ch:extrapolative-correction}.
 \texttt{MB10} is a validity condition on \texttt{MB5}'s consequent (successor safety) rather than a tier of its own: it is not part of the packaged \texttt{BridgeAssumptions} that \texttt{P30T} depends on, but it determines whether a successor-safety conclusion means anything against a capable adversarial predecessor (Chapter~\ref{ch:grow-split-merge}, Chapter~\ref{ch:conserved-properties}).
 
 \section{Bridge assumptions requiring empirical support}
@@ -179,10 +177,11 @@ Validate that access-robust UAD plus adequate inferential detector assumptions w
   \item \textbf{Falsify:} inferentially coupled coalitions form while every measured edge reads closed; the measured \(P_{\text{meta}}\) certificate captures only surface similarity; threshold choices cannot be calibrated against adversarial false negatives.
 \end{itemize}
 
-\paragraph{MB8: process convergence (Assumption~\ref{appi:ass:mb8}).}
-Validate that preserving the human value-update operator \(U_H\) sustains correction integrity (Chapter~\ref{ch:extrapolative-correction}, Chapter~\ref{ch:compression-test-intention}).
+\paragraph{MB8 (gravestone): CEV as \texttt{AlignmentTarget} (Assumption~\ref{appi:ass:mb8}).}
+Not a live certification bridge and not a backup for \texttt{MB6b}.
+The remaining question is whether an extrapolative constitutional target is realizable and certifiable through the same construction interface as other procedural targets (Chapter~\ref{ch:extrapolative-correction}).
 \begin{itemize}[nosep]
-  \item \textbf{Validate:} open, plural, reversible correction processes outperform well-audited private extrapolation on long-run endorsed outcomes; \(U_H\)-preserving institutions maintain \(\mathrm{CCI}\) under capability growth.
+  \item \textbf{Validate:} open, plural, reversible correction processes outperform well-audited private extrapolation on long-run endorsed outcomes; institutions that preserve a value-update envelope maintain \(\mathrm{CCI}\) under capability growth.
   \item \textbf{Falsify:} legitimate value change requires no preserved plurality; correction-channel inheritance is impossible across capability jumps; shallow obedience metrics pass while deep correction is ignored (Chapter~\ref{ch:extrapolative-correction}).
 \end{itemize}
 

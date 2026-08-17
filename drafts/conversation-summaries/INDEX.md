@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Consciousness TSA Phase 0** — re-audit insertion points + DAG; overlay constraints (no Rainbow, field v2 only, Lean/MB late). | [2026-08-17-consciousness-tsa-phase0.md](2026-08-17-consciousness-tsa-phase0.md) |
+| 2026-08-17 | **Retire MB6b∨MB8 two-route prose** — live path is MB4+MB6b; CEV/MB8 only as AlignmentTarget special case (ch28, App G). | [2026-08-17-retire-mb6b-mb8-disjunction.md](2026-08-17-retire-mb6b-mb8-disjunction.md) |
 | 2026-08-17 | **Site card notes triage closed** — Phases 0–6 complete; deferred → `metadata/TODO.md` § Site. | [2026-08-17-site-card-notes-close.md](2026-08-17-site-card-notes-close.md) |
 | 2026-08-17 | **Site card notes Phase 6** — illustration local assets; PageNotes icons + mobile UX. | [2026-08-17-site-card-notes-phase6-mobile-ux.md](2026-08-17-site-card-notes-phase6-mobile-ux.md) |
 | 2026-08-17 | **Site card notes Phase 5** — tex-convert symboldef/align; mobile KaTeX scroll; book resync. | [2026-08-17-site-card-notes-phase5-sync-math.md](2026-08-17-site-card-notes-phase5-sync-math.md) |

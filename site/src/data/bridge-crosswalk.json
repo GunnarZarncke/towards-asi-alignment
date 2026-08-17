@@ -122,10 +122,10 @@
   {
     "bridges": ["MB8"],
     "noun": "Extrapolated Volition",
-    "home": "A-002; ch45–ch46",
-    "fieldCrux": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
+    "home": "A-002; ch28",
+    "fieldCrux": "CEV as AlignmentTarget special case",
     "agendas": "MIRI (CEV)",
-    "bookMove": "Legacy secondary route from externally certified value-update preservation to correction integrity; not on the live certification path",
+    "bookMove": "Gravestone: not a live route to correction integrity; CEV factorizes through construction/certification",
     "cards": ["mb8-cev-process-convergence"],
     "chapters": ["ch28", "ch45", "ch46"]
   },

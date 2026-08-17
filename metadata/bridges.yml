@@ -242,8 +242,8 @@ bridges:
     kind: bridge
     title: MB8 — Extrapolated Volition (gravestone)
     status: gravestone
-    summary: "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction (TargetRealizable) is separate from certification. Legacy MB8 axiom kept for Chokepoint worked instance only."
-    decision: Treat this as a legacy or secondary route to correction integrity, not the main path — ask whether a claim actually rests on this bridge before accepting an appeal to eventual convergence.
+    summary: "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction is separate from certification. Not a live backup route to correction."
+    decision: CEV is an AlignmentTarget special case, not a second live route to correction integrity. Do not treat an appeal to process preservation as an independent certificate.
     evidence: Evidence would include an independently verified account of what the value-update process converges to, and confirmation that preserving the process does not itself get gamed (legitimacy theater).
     bookChapters:
       - ch28
@@ -252,9 +252,9 @@ bridges:
     body: bodies/mb8-cev-process-convergence.md
     id: MB8
     assumptionIds: [A-002]
-    fieldCrux: "Externally certified preservation of a human value-update process yields correction integrity (legacy route)."
+    fieldCrux: "CEV as AlignmentTarget special case"
     owningAgenda: "MIRI (CEV)"
-    bookMove: "Legacy secondary route from externally certified value-update preservation to correction integrity; not on the live certification path"
+    bookMove: "Gravestone: not a live route to correction integrity; CEV factorizes through construction/certification"
   - slug: mb9-grounding-certificate
     kind: bridge
     title: MB9 — Grounding Drift

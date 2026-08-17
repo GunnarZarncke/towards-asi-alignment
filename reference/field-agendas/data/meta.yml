@@ -22,9 +22,11 @@ inclusionTest: >-
   are one agenda **type** among others — vocabulary feeds the inter-agenda
   glossary; no per-curriculum index rows.
 coverageIntro: >-
-  The **coverage matrix** catalogs **sourced evidence that an agenda advances a
+  The **coverage matrix** catalogs **sourced evidence that an agenda touches a
   bridge crux**, independent of whether TSA adopts that agenda's constructive
-  bet or ontology.
+  bet or ontology. Each catalog entry may carry **stance** (`direction`,
+  `weight`) — whether the source mainly **advances** or **complicates**
+  discharge on that crux (see [stance legend](#stance-marks) below).
 
 
   - **`Book treatment`** on each [agenda row](#agendas) states how *Towards
@@ -36,6 +38,30 @@ coverageIntro: >-
 
   - **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B
   crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).
+directionLegend: >-
+  **Stance marks** prefix method tags in the matrix (once rendered on site).
+  Middle dot `·` with **circumflex above** (`·̂` … `·̂̂̂`) = evidence that
+  **advances** bridge discharge; **caron below** (`·̬` … `·̬̬̬`) = evidence that
+  **complicates** it. Diacritic count = editorial weight 1–3. Lone `·` = direction
+  explicitly unclear. Untagged legacy entries show no mark. **Not** statistical
+  significance — see [`data/evidence-stance-rubric.md`](data/evidence-stance-rubric.md).
+weightRubric: |-
+  | Weight | Meaning |
+  |---|---|
+  | **1** | Illustrative — early framing, partial result, or sibling evidence exists elsewhere |
+  | **2** | Substantive — credible field contribution on this crux |
+  | **3** | Landmark — agenda-defining or strongest known directional evidence on this crux |
+stanceMarksTable: |-
+  | Mark | direction | weight |
+  |---|---|---|
+  | `·̂` | support | 1 |
+  | `·̂̂` | support | 2 |
+  | `·̂̂̂` | support | 3 |
+  | `·` | unclear | — |
+  | `·̬` | challenge | 1 |
+  | `·̬̬` | challenge | 2 |
+  | `·̬̬̬` | challenge | 3 |
+  | *(none)* | untagged legacy | — |
 spineTranslation: >-
   A filled cell means **field evidence on a crux**, not **automatic discharge to
   `Safe`**. After the 2026-08-02 Lean review
@@ -58,8 +84,9 @@ spineTranslation: >-
   discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`;
   `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |
 
-  **Retired matrix bridge:** **MB8** (CEV process route) — gravestone card only;
-  factorized through **MB2**–**MB4** and **Target Realization** (open interface).
+  **Retired matrix bridge:** **MB8** (CEV) — gravestone card only;
+  factorizes as **AlignmentTarget** / **Target Realization**, not a live
+  process-preservation route to correction.
 doNotInfer: >-
   Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**;
   CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass

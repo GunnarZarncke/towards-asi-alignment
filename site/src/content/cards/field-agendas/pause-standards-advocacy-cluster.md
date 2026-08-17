@@ -43,7 +43,7 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 
 **What they contribute.** Schedule shapes for governance stress tests (Appendix F deferred section).
 
-**How this project treats it.** A pause or standards handle does not discharge the full alignment bridge stack from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Successor Gaming](/cards/mb10-successor-forgeability/); it mainly shapes [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transition conditions, with [Extrapolated Volition](/cards/mb8-cev-process-convergence/) as a secondary route.
+**How this project treats it.** A pause or standards handle does not discharge the full alignment bridge stack from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Successor Gaming](/cards/mb10-successor-forgeability/); it mainly shapes [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transition conditions. [Extrapolated Volition](/cards/mb8-cev-process-convergence/) is a field outer-target cousin (gravestone card), not a second live route to correction.
 
 ## Links
 

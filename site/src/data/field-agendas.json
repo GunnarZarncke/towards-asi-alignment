@@ -2,8 +2,11 @@
   "meta": {
     "status": "field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 31 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  ",
     "inclusionTest": "An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature terms, (3) stated intent to shape research/deployment/policy, (4) primary artifact (curriculum, constitution, technical agenda, eval suite, policy platform).\n\n**Not agendas (reference only):** funding pools (LTFF, SFF, Open Philanthropy), coworking hubs (LISA, Constellation, Meridian), resource directories (AISafety.com, AI Watch), individual blogs/newsletters unless they define a research lineage.\n\n**Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows.",
-    "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
-    "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |\n**Retired matrix bridge:** **MB8** (CEV process route) — gravestone card only; factorized through **MB2**–**MB4** and **Target Realization** (open interface).",
+    "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda touches a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology. Each catalog entry may carry **stance** (`direction`, `weight`) — whether the source mainly **advances** or **complicates** discharge on that crux (see [stance legend](#stance-marks) below).\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
+    "directionLegend": "**Stance marks** prefix method tags in the matrix (once rendered on site). Middle dot `·` with **circumflex above** (`·̂` … `·̂̂̂`) = evidence that **advances** bridge discharge; **caron below** (`·̬` … `·̬̬̬`) = evidence that **complicates** it. Diacritic count = editorial weight 1–3. Lone `·` = direction explicitly unclear. Untagged legacy entries show no mark. **Not** statistical significance — see [`data/evidence-stance-rubric.md`](data/evidence-stance-rubric.md).",
+    "weightRubric": "| Weight | Meaning |\n|---|---|\n| **1** | Illustrative — early framing, partial result, or sibling evidence exists elsewhere |\n| **2** | Substantive — credible field contribution on this crux |\n| **3** | Landmark — agenda-defining or strongest known directional evidence on this crux |",
+    "stanceMarksTable": "| Mark | direction | weight |\n|---|---|---|\n| `·̂` | support | 1 |\n| `·̂̂` | support | 2 |\n| `·̂̂̂` | support | 3 |\n| `·` | unclear | — |\n| `·̬` | challenge | 1 |\n| `·̬̬` | challenge | 2 |\n| `·̬̬̬` | challenge | 3 |\n| *(none)* | untagged legacy | — |",
+    "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |\n**Retired matrix bridge:** **MB8** (CEV) — gravestone card only; factorizes as **AlignmentTarget** / **Target Realization**, not a live process-preservation route to correction.",
     "doNotInfer": "Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.",
     "kosoyDiagnostic": "One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
     "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.",
@@ -3519,7 +3522,7 @@
         "MB8"
       ],
       "type": "C",
-      "evidence": "CEV-process convergence as secondary route (not assumed)",
+      "evidence": "CEV factorizes as AlignmentTarget; not a live certification route (gravestone)",
       "sources": [
         {
           "label": "App B bridge crosswalk (companion)",
@@ -3888,7 +3891,7 @@
         "MB8"
       ],
       "type": "T",
-      "evidence": "MB8 CEV-process convergence (Lean bridge; secondary route)",
+      "evidence": "MB8 gravestone axiom; CEV is AlignmentTarget special case (not in live BridgeAssumptions)",
       "sources": [
         {
           "label": "Lean spine",
@@ -5171,13 +5174,13 @@
     {
       "key": "MB8",
       "noun": "Extrapolated Volition",
-      "cruxWording": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
+      "cruxWording": "CEV factorizes as an AlignmentTarget (constitutional rule); not a live arrow from process preservation to correction integrity.",
       "leanAxiom": "MB8_cev_process_convergence",
       "cardSlug": "mb8-cev-process-convergence",
       "matrixColumn": false,
       "gravestone": true,
       "fieldAgree": "MIRI CEV process/legitimacy underside — now factorized through AlignmentTarget / MB2–MB4.",
-      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this route; live path is MB4/MB4a."
+      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this column; live correction path is MB4/MB4a plus basin support via MB6b."
     },
     {
       "key": "MB9",

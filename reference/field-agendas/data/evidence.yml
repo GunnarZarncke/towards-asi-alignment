@@ -934,7 +934,7 @@ evidence:
       - MB4
       - MB8
     type: C
-    evidence: CEV-process convergence as secondary route (not assumed)
+    evidence: CEV factorizes as AlignmentTarget; not a live certification route (gravestone)
     sources:
       - label: App B bridge crosswalk (companion)
         url: https://towards-alignment.com/cards/chapters/appb/
@@ -1170,7 +1170,7 @@ evidence:
     bridges:
       - MB8
     type: T
-    evidence: MB8 CEV-process convergence (Lean bridge; secondary route)
+    evidence: MB8 gravestone axiom; CEV is AlignmentTarget special case (not in live BridgeAssumptions)
     sources:
       - label: Lean spine
         url: https://towards-alignment.com/lean/

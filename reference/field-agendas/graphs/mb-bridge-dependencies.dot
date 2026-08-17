@@ -39,7 +39,7 @@ digraph MBBridgeDependencies {
   MB7b [label="MB7b\nInner Alignment\n(filter coverage)"];
   MB7c [label="MB7c\nInner Alignment\n(adversarial robustness)"];
   MB7d [label="MB7d\nAcausal Coordination"];
-  MB8  [label="MB8\nExtrapolated Volition"];
+  MB8  [label="MB8\nExtrapolated Volition\n(gravestone)", style="filled,dashed"];
   MB9  [label="MB9\nGrounding Drift"];
   MB10 [label="MB10\nSuccessor Gaming"];
   MB11 [label="MB11\nDeployment Safety"];
@@ -60,9 +60,9 @@ digraph MBBridgeDependencies {
   MB6b -> MB4  [label="correction integrity\n→ preserves correction"];
   MB6b -> MB4a [label="correction integrity\n→ measured path legitimate"];
 
-  MB8 -> MB4  [label="value-update preserved\n→ correction integrity"];
-  MB8 -> MB4a [label="value-update preserved\n→ correction integrity"];
-  MB8 -> MB7c [label="value-update preserved\n→ correction integrity"];
+  MB8 -> MB4  [label="gravestone: not a live\nbackup to correction", style=dashed, color="#888888"];
+  MB8 -> MB4a [label="gravestone", style=dashed, color="#888888"];
+  MB8 -> MB7c [label="gravestone", style=dashed, color="#888888"];
 
   MB5 -> MB10 [label="successor safe\n+ verifiable audit\n→ true harm bound"];
 

@@ -10,13 +10,13 @@ leanNodes:
     module: AlignmentProofSpine/Core.lean
   - nodeId: sharedChokepoint_steerable_blocks_both_routes
     kind: counterexample
-    summary: If MB6b and MB8 route through the same self-report/cooperation-signal instrument, their disjunction buys no independent failure tolerance — a shared, steerable chokepoint blocks both routes at once.
+    summary: "Shared-channel identity: a steerable instrument is one failure point for every certificate that reads it. Not a second live route to correction."
     module: AlignmentProofSpine/Chokepoint.lean
 evidenceNotes:
   - source: embedded-simulation MB coverage
     scenario: selection_basin / basin_lock_in
     finding: open
-    summary: Both scenarios exist in the embedded audit's MB coverage table, but there is no dedicated negative-result entry yet distinguishing a genuinely correction-supporting basin from a stably bad one. Treat the disjunctive MB6b/MB8 route as one point of failure until independence is demonstrated.
+    summary: Both scenarios exist in the embedded audit's MB coverage table, but there is no dedicated negative-result entry yet distinguishing a genuinely correction-supporting basin from a stably bad one.
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md
   - source: lab-simulation architect plan (D3)
     finding: open

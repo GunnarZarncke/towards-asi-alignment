@@ -86,7 +86,7 @@ The safety case forces these layers to appear in one graph.
 The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
 \leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
 \leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
-Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, CEV convergence, etc.) remain explicit axioms.
+Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, etc.) remain explicit axioms.
 \begin{leanbox}
 \texttt{P30} derives the numeric risk leaf from \(\mathrm{Control}\leq\mathrm{CCI}+\delta\); \texttt{P40} blocks the safety-case root when any load-bearing leaf is unsupported. The composed package (\texttt{CertifiedSafetyCase}) layers certification, invariants, and bridges \texttt{MB1}--\texttt{MB9}; Lean does not discharge those bridges.
 \end{leanbox}
@@ -155,7 +155,7 @@ Bundle & Does value-relevant behavior preserve bundle geometry, not only rewards
 \midrule
 Bearer & Do values still apply to the right beings, processes, and situations? & counterexamples plus \texttt{MB3} \\
 \midrule
-Correction & Does human judgment causally reach future system updates through uncaptured handles? & proofs/counterexamples plus \texttt{MB4}, \texttt{MB8} \\
+Correction & Does human judgment causally reach future system updates through uncaptured handles? & proofs/counterexamples plus \texttt{MB4} \\
 \midrule
 Successor & Do successors, copies, delegates, and toolchains inherit the constraints? & proofs plus \texttt{MB5} \\
 \midrule

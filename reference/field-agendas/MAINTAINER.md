@@ -28,7 +28,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 
 ## Coverage vs project treatment
 
-The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.
+The **coverage matrix** catalogs **sourced evidence that an agenda touches a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology. **Stance** (`direction` / `weight` on catalog entries) records whether that evidence mainly **advances** or **complicates** discharge on the crux — see [Evidence stance](#evidence-stance-direction--weight).
 
 - **`Book treatment`** on each agenda row states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).
 - **Empty matrix cells (`—`)** mean no catalog entry in this pass — not "out of book scope" and not a claim the agenda is silent on the crux.
@@ -40,7 +40,7 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 | Mode | Meaning | Examples |
 |---|---|---|
-| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |
+| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |
 | **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |
 | **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |
 
@@ -62,6 +62,40 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 | **E** | empirical (other) |
 | **O** | other |
 
+## Evidence stance (`direction` / `weight`)
+
+On each row in [`data/evidence.yml`](data/evidence.yml) — **not** on `matrix.yml` cells (matrix stays `{ type, ids[] }`; render looks up stance by catalog ID).
+
+```yaml
+- id: 13
+  agenda: Redwood
+  bridges: [MB7, MB10]
+  type: E
+  direction: challenge
+  weight: 2
+  evidence: Alignment faking in LLMs under training/eval pressure
+  sources: [...]
+```
+
+| Field | Values | Meaning |
+|---|---|---|
+| **`direction`** | `support` | Evidence that mainly **advances** discharge / constructive progress on the tagged crux |
+| | `challenge` | Evidence the crux is **harder**, a remedy **fails**, or the **risk is real** |
+| | `unclear` | Direction not judged; explicit tag only |
+| **`weight`** | `1`–`3` | Editorial load-bearing **for that direction** (illustrative → substantive → landmark). Omit when `direction` is absent or `unclear`. Default `1` when direction is set and weight omitted. |
+
+**Defaults:** legacy rows with no `direction` → **no matrix mark** (untagged). `direction: unclear` → lone middle dot `·` in matrix (once render lands).
+
+**Matrix marks** (prefix before type letter): `·̂` / `·̂̂` / `·̂̂̂` (support); `·̬` / `·̬̬` / `·̬̬̬` (challenge). Not +/- — editorial weight, not p-value.
+
+Full adjudication rubric: [`data/evidence-stance-rubric.md`](data/evidence-stance-rubric.md).
+
+Quick examples:
+
+- **support, weight 2:** CIRL assistance games; safely interruptible agents formalization.
+- **challenge, weight 3:** corrigibility impossibility; alignment faking; demonstrated scheming/sleeper failure modes.
+- **unclear:** taxonomy, infrastructure, governance case study without directional upshot on the tagged bridge.
+
 ## Maintenance workflow
 
 1. Edit YAML under `data/` (agenda prose in `data/agendas/`).
@@ -69,4 +103,5 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
    `python3 reference/field-agendas/scripts/link-agenda-terms.py`
    Use `--relink` to strip and re-apply links after dictionary changes; `--check` for CI-style drift.
 3. Run `cd site && npm run sync:field-agendas` (regenerates agenda cards, `field-agendas.json`, and this folder's `field-agenda-index.md`).
-4. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).
+4. After editing evidence stance fields, run `python3 reference/field-agendas/scripts/check-evidence-stance.py` (also in root `make check`).
+5. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).

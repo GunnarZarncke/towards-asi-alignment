@@ -341,7 +341,7 @@
 | **Sources** | MIRI / Yudkowsky (2004 CEV); field outer-alignment family; App B peer row |
 | **Definition** | CEV is the hypothetical outer target: our wish if we knew more, thought faster, were more the people we wished we were, and had grown up farther together—where extrapolations converge rather than diverge. It tries to avoid locking in present confused preferences by pointing the AI at idealized reflective volition, with coherence and option-value when extrapolated wishes spread. It is a target specification philosophy, not an implemented algorithm. |
 | **Not the same as** | **CBV** keeps blending human-guided rather than machine extrapolation. **CIRL inferred reward** is a technical assistance-game object for a user, not humanity’s extrapolated volition. **RLHF averages** fit current preference labels. **EU coherence** is VNM consistency of one agent. **CIRIS M-1 / flourishing** language is a constitutional meta-goal, not CEV machinery. |
-| **Cross-agenda** | CBV, QACI, PreDCA, KANSI — *partial overlap*: sibling outer endpoints. Zarncke — *partial overlap*: decomposes into bundle + bearer + correction process; MB8 CEV-process convergence is a secondary bridge, not assumed. Legitimacy / who holds correction authority — *same crux* underside of CEV (App B MB4/MB8). |
+| **Cross-agenda** | CBV, QACI, PreDCA, KANSI — *partial overlap*: sibling outer endpoints. Zarncke — *partial overlap*: decomposes into bundle + bearer + correction process; CEV factorizes as `AlignmentTarget` (construction), not a live MB8 backup to correction. Legitimacy / who holds correction authority — *same crux* underside of CEV (App B MB4/MB4a; MB8 gravestone). |
 
 #### Coherent Intersection Hypothesis (CIRIS)
 

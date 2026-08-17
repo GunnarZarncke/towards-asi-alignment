@@ -2,13 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (ch21 reward-as-evidence / Byrnes construction fork).
+Last updated: 2026-08-17 (consciousness TSA Phase 0 re-audit).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: `{leanbox}` at remaining `\leanspine` sites when elaboration adds value (≤1 per chapter); v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`, `2026-08-17-leanbox-reframe.md`.
+- **Consciousness / bearer-inference (ch18)** — **Phase 0 done** (2026-08-17 re-audit). Overlay: no Rainbow cites; keep phenomenality ≠ subjecthood; field **v2 only**; Lean/MB3 card late. Next: Phase 1 ch18 section. Plan: `drafts/consciousness-tsa-extension.md` (§28.4). DAG still lacks `ch07 → ch18`. Log: `2026-08-17-consciousness-tsa-phase0.md`.
+
+- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: `{leanbox}` at remaining `\leanspine` sites when elaboration adds value (≤1 per chapter); v2 field hub cutover (manual author confirm). **Disjunctive MB6b∨MB8 prose retired** from live-path surfaces (ch43/ch42/App F/App B); CEV/MB8 kept as AlignmentTarget special case in ch28 + App G chokepoint. Log: `2026-08-17-retire-mb6b-mb8-disjunction.md`.
 
 - **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 
@@ -29,7 +31,7 @@ Last updated: 2026-08-17 (ch21 reward-as-evidence / Byrnes construction fork).
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens green while WA-blind composite fails (named-identity bet). **Phase 1 next:** C2 tool-scout narrative + trace mock + Eric memo; optional sibling sim bite. **Phase 2:** CIRISAgent harness. **Phase 3 deferred:** Lens cohort (≥3×≥10 traces) + Coherence Ratchet battery — not a gate for logical falsifier. Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Pointer: `experiments/TODO.md`. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
-- **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
+- **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent. Manuscript no longer presents MB6b∨MB8 as two live routes; Chokepoint.lean remains the special-case instance. Remaining: per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
 - **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
 - **Presentation / site-first** — de-center PDF as flagship; per-part display renumbering (high risk). Pointer: `metadata/TODO.md` § Presentation.
@@ -47,7 +49,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Manuscript (2026-08-17):** `{leanbox}` reframe — renamed from `{formalcontract}`; 17 chapters with inline Lean spine boxes (Tier 1+2 expansion). Log: `2026-08-17-leanbox-reframe.md`.
+- **Manuscript (2026-08-17):** Retired MB6b∨MB8 two-route language from live-path surfaces; CEV is an `AlignmentTarget` special case (ch28, App G). Log: `2026-08-17-retire-mb6b-mb8-disjunction.md`.
 - **Manuscript (2026-08-17):** ch21 § reward as evidence, not optimization target (Turner); shards out of inference target via ch05/App B internals limit; Byrnes as construction alternative (ch15+ch21); Pihlakas concave/BioBlue. Log: `2026-08-17-reward-not-optimization-target.md`.
 - **Companion site (2026-08-17):** Offline PWA v10 — fix `Failed to construct 'URL'` on relative assets; enable partial offline after home+CSS; always-on status in the footer button. Log: `2026-08-17-offline-caching-v10.md`.
 - **Manuscript + site (2026-08-17):** Six-claims spine **complete** (Phases 0–6) — layer map, ch03 dedup, ch48 status + C-008–C-011; `six-thesis-claims` companion card; homepage/reading-path/FAQ/`llms.txt` links; `scripts/check_claim_spine.py` in `make check`. Plan: `drafts/six-claims-spine-plan.md`. Logs: `2026-08-17-six-claims-spine-phase0-2.md`.

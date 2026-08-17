@@ -2,7 +2,7 @@
 leanNodes:
   - nodeId: MB8_cev_process_convergence
     kind: bridge
-    summary: "Gravestone — retired matrix bridge. CEV factorizes through AlignmentTarget (constituency, extrapolation, aggregation) and the same Realizes/CertifiedAsRealizing interface as other procedural targets. Legacy axiom kept for Chokepoint MB6b vs MB8 worked instance only."
+    summary: "Gravestone — retired matrix bridge. CEV factorizes through AlignmentTarget; not a live route to correction. Legacy axiom kept for the Chokepoint special-case instance only."
     module: AlignmentProofSpine/AlignmentConstruction.lean
   - nodeId: constitutionalTarget
     kind: definition
@@ -14,7 +14,7 @@ leanNodes:
     module: AlignmentProofSpine/AlignmentConstruction.lean
   - nodeId: correction_integrity_disjunctive_tolerance_needs_distinct_instruments
     kind: counterexample
-    summary: Worked instance shows MB6b and legacy MB8 sharing one instrument — disjunction adds no failure tolerance unless instruments are independent.
+    summary: "Gravestone instance: packaging legacy MB8 beside MB6b does not add an independent certificate under a shared instrument. CEV itself is an AlignmentTarget, not that backup arrow."
     module: AlignmentProofSpine/Chokepoint.lean
 evidenceNotes:
   - source: toy-simulation diagnostic (T-6)
@@ -49,7 +49,7 @@ In Lean (`AlignmentConstruction.lean`):
 - `Realizes` / `TargetRealizable` — open **construction** crux (not axiomatized)
 - `CertifiedAsRealizing` — separate **certification** claim
 
-The legacy axiom `MB8_cev_process_convergence` is kept only for the Chokepoint worked instance (`MB6b` vs `MB8` shared instrument). It is **not** in `BridgeAssumptions` or the live certification derive path.
+The legacy axiom `MB8_cev_process_convergence` is kept only for the Chokepoint special-case instance (why a packaged backup arrow is not independent under a shared instrument). It is **not** in `BridgeAssumptions` or the live certification derive path.
 
 **Where agendas agreed:** MIRI CEV process/legitimacy language. **Where this project diverges:** live path is [MB4](/cards/mb4-correction-legitimacy/) + [MB4a](/cards/mb4a-measured-path-legitimacy/); legitimacy theater diagnostics tag capture resistance there, not a separate matrix column.
 

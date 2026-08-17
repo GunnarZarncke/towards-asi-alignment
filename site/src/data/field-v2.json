@@ -160,13 +160,13 @@
     {
       "key": "MB8",
       "noun": "Extrapolated Volition",
-      "cruxWording": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
+      "cruxWording": "CEV factorizes as an AlignmentTarget (constitutional rule); not a live arrow from process preservation to correction integrity.",
       "leanAxiom": "MB8_cev_process_convergence",
       "cardSlug": "mb8-cev-process-convergence",
       "matrixColumn": false,
       "gravestone": true,
       "fieldAgree": "MIRI CEV process/legitimacy underside — now factorized through AlignmentTarget / MB2–MB4.",
-      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this route; live path is MB4/MB4a.",
+      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this column; live correction path is MB4/MB4a plus basin support via MB6b.",
       "lifecycleRole": "specify",
       "leanCrux": "MB8_cev_process_convergence"
     },
@@ -211,7 +211,7 @@
       "title": "Target Realization",
       "lifecycleRole": "construct",
       "status": "open",
-      "leanModule": "AlignmentProofSpine/AlignmentConstruction.lean",
+      "leanModule": "AlignmentProofSpine/AlignmentConstruction",
       "leanProp": "ConstructionCrux",
       "leanDefs": [
         "Realizes",
