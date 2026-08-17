@@ -6,6 +6,7 @@ import AlignmentProofSpine.Forgeability
 import AlignmentProofSpine.Defeaters
 import AlignmentProofSpine.Chokepoint
 import AlignmentProofSpine.ToyDeploymentGate
+import AlignmentProofSpine.MB2Identifiability
 
 /-!
 # AlignmentProofSpine.SpineModel
@@ -107,16 +108,11 @@ theorem MB1_independently_load_bearing :
 
 /-! MB2 -/
 
-structure MB2ToySample where
-  reading : Bool
-
-abbrev MB2ToyGradientEquivalent (_ : MB2ToySample) : Prop := True
-
-abbrev MB2ToyBundleAligned (s : MB2ToySample) : Prop := s.reading
-
 theorem MB2_independently_load_bearing :
-    ∃ s : MB2ToySample, MB2ToyGradientEquivalent s ∧ ¬ MB2ToyBundleAligned s :=
-  ⟨⟨false⟩, trivial, by decide⟩
+    ∃ (audit : FinBundleAudit 2 2 2),
+      FinBundleGradientEquivalent audit ∧
+        ¬ FinBundleCausallyControlsPolicy audit.audited :=
+  fin_gradient_without_causal_control
 
 /-! MB3 -/
 

@@ -33,4 +33,4 @@ Continue Krym architecture revision Phase 3: expose evidence→identifiability�
 
 ## Commits
 
-- (none — user did not request commit)
+- `3f664d28` — Expose MB2 evidence→identifiability chain and de-opaque BundleAligned (Krym Phase 3).

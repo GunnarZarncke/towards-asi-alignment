@@ -36,7 +36,6 @@ CORE_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 BRIDGE_RE = re.compile(rf"^{re.escape(NAMESPACE)}\.MB\d")
 ALL_CORE_BRIDGES = {
     "MB1_estimator_soundness",
-    "MB2_bundle_identifiability",
     "MB3_bearer_import",
     "MB4_correction_legitimacy",
     "MB5_ontology_shift_successor_audit",
@@ -156,7 +155,7 @@ def bridge_list(axioms: list[str]) -> str:
     if bridge_set == ALL_BRIDGES_WITH_MB10:
         return "All \\texttt{MB1}--\\texttt{MB10}"
     if bridge_set == ALL_CORE_BRIDGES:
-        return "All \\texttt{MB1}--\\texttt{MB9}"
+        return "All \\texttt{MB1}, \\texttt{MB3}--\\texttt{MB9}"
     return ", ".join(rf"\leanid{{{b}}}" for b in bridges)
 
 

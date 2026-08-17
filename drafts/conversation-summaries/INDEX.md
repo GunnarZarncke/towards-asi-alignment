@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Six-claims spine Phases 0–2** — `drafts/claim-spine.md`; intro labels + unfold map; part openers; ch48/ch30/exec-overview sync. | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
+| 2026-08-17 | **Krym Phase 3b MB2 checkable** — finite evidence `def`s; `MB2Crux` Props; split MB2c1; removed `MB2_bundle_identifiability` from certification path. | [2026-08-17-krym-phase3b-mb2-checkable.md](2026-08-17-krym-phase3b-mb2-checkable.md) |
 | 2026-08-17 | **Krym Phase 3 MB2 Lean** — MB2a/b/c chain; `BundleAligned` conjunction; finite identifiability counterexample. | [2026-08-17-krym-phase3-mb2-lean.md](2026-08-17-krym-phase3-mb2-lean.md) |
 | 2026-08-16 | **Krym Phase 2 pointing glossary** — App E three-sense headword; MB2 identifiability-first copy; `/cards/pointing-problem/`. | [2026-08-16-krym-phase2-pointing-glossary.md](2026-08-16-krym-phase2-pointing-glossary.md) |
 | 2026-08-16 | **Offline caching resume** — asset-first SW v9; skip cached URLs; partial progress + migrate on update. | [2026-08-16-offline-caching-resume.md](2026-08-16-offline-caching-resume.md) |

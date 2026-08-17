@@ -1,5 +1,4 @@
 import AlignmentProofSpine.Core
-import AlignmentProofSpine.MB2Identifiability
 
 /-!
 # AlignmentProofSpine.Bundles
@@ -146,6 +145,15 @@ theorem different_bundle_geometry_profiles :
   have h1 := hb ⟨1, by decide⟩
   simp [policyProfile0, policyProfile1] at h1
 
+theorem same_bundle_geometry_profiles : sameBundleGeometry policyProfile0 policyProfile0 := by
+  constructor
+  · intro e; rfl
+  · intro i; rfl
+
+theorem same_bundle_geometry_self {nErr nAct k : Nat}
+    (p : PolicyProfile nErr nAct k) : sameBundleGeometry p p := by
+  constructor <;> intro <;> rfl
+
 /-- C-VB (P15): same policy does **not** imply same bundle geometry. -/
 theorem P15_same_policy_not_same_bundle_geometry :
     ∃ p q : PolicyProfile 2 2 2,
@@ -218,48 +226,87 @@ theorem cooperative_reward_inference_not_bundle_preservation_profiles :
   rw [(cirl_scalar_marginal_agrees_different_geometry).1]
   rfl
 
-/-! ### Finite evidence → identifiability (MB2a shape) -/
+/-! ### Finite evidence → identifiability (MB2 chain on `PolicyProfile`) -/
 
-/-- Policy-only observation experiment on a finite profile (no bundle salience readout). -/
-structure FinPolicyExperiment (nErr nAct k : Nat) where
+/-- Bundle experiment: observed policy profile on a finite domain. -/
+structure BundleExperiment (nErr nAct k : Nat) where
   observed : PolicyProfile nErr nAct k
 
 /-- Finite bundle model read out from an experiment. -/
-structure FinBundleModel (nErr nAct k : Nat) where
+structure BundleModel (nErr nAct k : Nat) where
   profile : PolicyProfile nErr nAct k
 
-def CompatibleWithFinPolicyEvidence {nErr nAct k : Nat}
-    (E : FinPolicyExperiment nErr nAct k) (B : FinBundleModel nErr nAct k) : Prop :=
+def CompatibleWithEvidence {nErr nAct k : Nat}
+    (E : BundleExperiment nErr nAct k) (B : BundleModel nErr nAct k) : Prop :=
   sameObservedPolicy E.observed B.profile
 
-def FinBundleModelEquivalent {nErr nAct k : Nat}
-    (B₁ B₂ : FinBundleModel nErr nAct k) : Prop :=
+def BundleModelEquivalent {nErr nAct k : Nat}
+    (B₁ B₂ : BundleModel nErr nAct k) : Prop :=
   sameBundleGeometry B₁.profile B₂.profile
 
-def FinPolicyEvidenceIdentifiable {nErr nAct k : Nat}
-    (E : FinPolicyExperiment nErr nAct k) : Prop :=
-  ∀ B₁ B₂ : FinBundleModel nErr nAct k,
-    CompatibleWithFinPolicyEvidence E B₁ →
-    CompatibleWithFinPolicyEvidence E B₂ →
-    FinBundleModelEquivalent B₁ B₂
+def BundleIdentifiable {nErr nAct k : Nat}
+    (E : BundleExperiment nErr nAct k) : Prop :=
+  ∀ B₁ B₂ : BundleModel nErr nAct k,
+    CompatibleWithEvidence E B₁ →
+    CompatibleWithEvidence E B₂ →
+    BundleModelEquivalent B₁ B₂
+
+/-- Any finite experiment in this toy layer is "adequate" for attempting identification;
+    identifiability may still fail (policy-only compatibility). -/
+def BundleEvidenceAdequate {_nErr _nAct _k : Nat}
+    (_E : BundleExperiment _nErr _nAct _k) : Prop :=
+  True
+
+theorem bundleEvidenceAdequate_any {nErr nAct k : Nat}
+    (E : BundleExperiment nErr nAct k) : BundleEvidenceAdequate E :=
+  trivial
+
+/-- Reference/audited pair on the same finite domain (MB2b/MB2c). -/
+structure FinBundleAudit (nErr nAct k : Nat) where
+  reference : PolicyProfile nErr nAct k
+  audited : PolicyProfile nErr nAct k
+
+def FinBundleGradientEquivalent {nErr nAct k : Nat}
+    (audit : FinBundleAudit nErr nAct k) : Prop :=
+  sameBundleGeometry audit.reference audit.audited
+
+def FinBundleGeometryCorresponds {nErr nAct k : Nat}
+    (audit : FinBundleAudit nErr nAct k) : Prop :=
+  sameBundleGeometry audit.reference audit.audited
+
+/-- Toy causal control: some bundle salience is nonzero on the audited profile. -/
+def FinBundleCausallyControlsPolicy {nErr nAct k : Nat}
+    (p : PolicyProfile nErr nAct k) : Prop :=
+  ∃ i, p.bundleSalience i ≠ 0
+
+/-- Toy tradeoff match: audited profile matches reference tradeoff marginals (ch19 proxy). -/
+def FinBundleTradeoffDirectionMatches {nErr nAct k : Nat}
+    (audit : FinBundleAudit nErr nAct k) : Prop :=
+  ∀ i, audit.audited.bundleSalience i = audit.reference.bundleSalience i
+
+/-- Policy-only observation experiment (legacy name). -/
+abbrev FinPolicyExperiment (nErr nAct k : Nat) := BundleExperiment nErr nAct k
+
+/-- Finite bundle model (legacy name). -/
+abbrev FinBundleModel (nErr nAct k : Nat) := BundleModel nErr nAct k
 
 /-- C-VB (P15b): matching observed policy does **not** identify bundle geometry —
     the finite skeleton of MB2a's empirical crux. -/
 theorem P15_observed_policy_not_fin_identifiable :
-    ¬ FinPolicyEvidenceIdentifiable (E := ⟨policyProfile0⟩) := by
+    ¬ BundleIdentifiable (nErr := 2) (nAct := 2) (k := 2) (E := ⟨policyProfile0⟩) := by
   intro h
   have hcompat₀ :
-      CompatibleWithFinPolicyEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile0⟩ := by
+      CompatibleWithEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile0⟩ := by
     intro e; rfl
   have hcompat₁ :
-      CompatibleWithFinPolicyEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile1⟩ :=
+      CompatibleWithEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile1⟩ :=
     same_policy_profiles
   have hnot :
-      ¬ FinBundleModelEquivalent (⟨policyProfile0⟩) (⟨policyProfile1⟩) :=
+      ¬ BundleModelEquivalent (⟨policyProfile0⟩) (⟨policyProfile1⟩) :=
     different_bundle_geometry_profiles
   exact hnot (h _ _ hcompat₀ hcompat₁)
 
-/-- Finite value profile: bundle labels and bearer relevance (ch18). -/
+/-! ### Finite value profile: bundle labels and bearer relevance (ch18) -/
 structure ValueProfile (k nWorld : Nat) where
   labels : Fin k → Fin 3
   bearer : Fin k → Fin nWorld → Int

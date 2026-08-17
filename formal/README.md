@@ -23,7 +23,7 @@ boundary discovery → grounding viability → capability/control/correction qua
 | Bucket | Lean shape | Examples | Reader takeaway |
 |--------|------------|----------|-----------------|
 | **Proved** | `theorem` / `def` | `P01`, `debate_defender_wins_iff_true`, `elk_reporter_nonidentifiability`, `soares_prevention_incentive` | Machine-checked logic or finite rederivation (often axiom-free aside from `propext` / Mathlib). |
-| **Bridge hypothesis** | `axiom MB*` (+ `MB4a`, `MB10`, `MB11`) | `MB4_correction_legitimacy`, `MB2_bundle_identifiability` | Conditional interfaces the book threads through the spine — **hypotheses to check**, not proved lemmas. |
+| **Bridge hypothesis** | `axiom MB*` (+ `MB4a`, `MB10`, `MB11`) | `MB4_correction_legitimacy`, `MB1_estimator_soundness`, … | Conditional interfaces the book threads through the spine — **hypotheses to check**, not proved lemmas. **MB2** is packaged as checkable `Prop`s in `MB2Identifiability.lean`, not a global `MB2*` axiom. |
 | **Scaffolding / import placeholder** | `axiom System`, …; opaque `Prop` in `Field.Imported` | `Irving2018_debate_truth_protocol_imported` | Vocabulary carriers or literature bookmarks — **not** the content of `Field/Finite/DebateGame.lean` or other rederivations. |
 
 **Irving debate specifically:** `DebateGame.lean` proves the deterministic claim-tree

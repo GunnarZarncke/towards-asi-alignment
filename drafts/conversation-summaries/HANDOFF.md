@@ -2,13 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (Krym Phase 3 MB2 Lean).
+Last updated: 2026-08-17 (Krym Phase 3b MB2 checkable Props).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Krym architecture revision (Phases 4–6)** — Phase 3 shipped: Lean MB2a/b/c chain + de-opaque `BundleAligned`. Next: MB4 uptake vs legitimacy (4), construction + MB8 retirement (5), contracts + field v1/v2 (6). Plan: `drafts/krym-architecture-revision-plan.md`; thread: `drafts/Krym_conversation.md`. Logs: `2026-08-16-krym-phase2-pointing-glossary.md`, `2026-08-17-krym-phase3-mb2-lean.md`.
+- **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
+
+- **Krym architecture revision (Phase 4–6)** — Phase 3b shipped: MB2 as finite `Prop` cruxes (`MB2Crux`), no `BridgeAssumptions.mb2`, certification axiom footprint shrank. **Next: Phase 4** (MB4 uptake vs legitimacy). Plan: `drafts/krym-architecture-revision-plan.md`. Logs: `2026-08-17-krym-phase3b-mb2-checkable.md`, `2026-08-17-krym-phase3-mb2-lean.md`.
 
 - **MB7a–c bridge cards (field nouns)** — Explicit site cards shipped with book terminology; TODO to consider field-standard noun aliases without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
 
@@ -45,7 +47,9 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean`; `BundleAligned` de-opaque; `P15_observed_policy_not_fin_identifiable`. Log: `2026-08-17-krym-phase3-mb2-lean.md`.
+- **Manuscript (2026-08-17):** Intro + part-opener language pass — glossary-first paraphrases; claim labels inside theorems; dropped LHCV / ledger / “discharge” talk from front matter. Same log.
+- **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
+- **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.
 - **Companion site (2026-08-16):** Offline PWA caching — resumable asset-first service worker (CSS/fonts before pages); partial progress survives retries and SW updates. Log: `2026-08-16-offline-caching-resume.md`.
 - **Metadata (2026-08-16):** Feedback contributors ledger — `metadata/feedback-contributors.md` (acknowledgements + Harfe / Eric Moore / Krym; LW profile links); Jonas **Hallgren** spelling fix in acknowledgements. Log: `2026-08-16-feedback-contributors-ledger.md`.

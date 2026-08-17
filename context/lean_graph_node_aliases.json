@@ -10,7 +10,7 @@
   "FINITE": { "kind": "module", "file": "Field/Finite/Basic.lean" },
   "LEDGER": { "kind": "decls", "decls": ["allFieldResultRecords"] },
   "MB1": { "decls": ["MB1_estimator_soundness"] },
-  "MB2": { "decls": ["MB2_bundle_identifiability"] },
+  "MB2": { "decls": ["MB2Crux", "bundle_aligned_from_mb2_chain"] },
   "MB3": { "decls": ["MB3_bearer_import"] },
   "MB4": { "decls": ["MB4_correction_legitimacy"] },
   "MB5": { "decls": ["MB5_ontology_shift_successor_audit"] },

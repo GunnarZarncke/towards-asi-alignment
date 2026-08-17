@@ -1,8 +1,8 @@
 ---
 leanNodes:
-  - nodeId: MB2_bundle_identifiability
+  - nodeId: MB2Crux
     kind: bridge
-    summary: MB2 chain — MB2a evidence→BundleIdentifiable, MB2b identifiability→BundleGradientEquivalent, MB2c gradient→BundleAligned (geometry ∧ causal control ∧ tradeoff direction).
+    summary: MB2 chain on finite PolicyProfiles — MB2aCrux (evidence→BundleIdentifiable), MB2bCrux (identifiability→gradient), MB2c1Crux (gradient→geometry); causal control and tradeoff are separate evidence fields. Consumed by bundle_aligned_from_mb2_chain; not a global axiom.
     module: AlignmentProofSpine/MB2Identifiability.lean
 evidenceNotes:
   - source: toy-simulation diagnostic (T-4)
