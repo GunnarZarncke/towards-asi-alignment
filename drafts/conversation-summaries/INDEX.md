@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Reward as evidence / Byrnes construction** — ch21 Turner critique; shards out of scope (internals); Byrnes rival path; Pihlakas. | [2026-08-17-reward-not-optimization-target.md](2026-08-17-reward-not-optimization-target.md) |
 | 2026-08-17 | **Site card notes Phase 4** — ch10 strategic-opacity prose (E1–E2) and cruxes (E3a–c). | [2026-08-17-site-card-notes-phase4-ch10.md](2026-08-17-site-card-notes-phase4-ch10.md) |
 | 2026-08-17 | **Site card notes Phase 3** — ch09 composite-agent readability; ch07 cross-ref; Hanson grabby cite. | [2026-08-17-site-card-notes-phase3-ch09.md](2026-08-17-site-card-notes-phase3-ch09.md) |
 | 2026-08-17 | **Site card notes Phase 2** — frontmatter status, External Doom removal, GI comparison, glossary links. | [2026-08-17-site-card-notes-phase2-frontmatter.md](2026-08-17-site-card-notes-phase2-frontmatter.md) |

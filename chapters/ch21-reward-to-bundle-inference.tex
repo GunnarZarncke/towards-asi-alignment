@@ -87,6 +87,43 @@ where $B$ are value-bundle coordinates, $W$ are context-sensitive tradeoff weigh
 The aim is not to make human values simple.
 It is to locate the dimensions along which they are learnable, corrigible, and transportable, building on the bundle geometry developed in Chapters~\ref{ch:value-bundle-model}--\ref{ch:tradeoffs-bundle-geometry}.
 
+\section{Reward as Evidence, Not the Optimization Target}
+\label{sec:reward-not-optimization-target}
+
+In reinforcement learning, reward is often treated as the agent's optimization target.
+Turner argues that this is usually the wrong ontology: reward is better understood as a reinforcement schedule that updates internal structure, while a trained policy may plan against a learned critic or value head rather than the programmer's ground-truth reward signal \autocite{turner2022rewardnotopt}.
+If that is right, why begin this chapter with reward inference at all?
+
+Because apprenticeship learning, inverse reinforcement learning, CIRL, and RLHF already formalize a useful partial question: 
+given behavior and feedback, what latent structure best explains the policy?
+The mistake is not using that language.
+The mistake is stopping at a scalar~$R$ and treating either the training signal or the inferred scalar as the alignment target to preserve.
+Reward, approval, and preference feedback are evidence channels for bundle inference:
+\[
+P(B,W,\Phi \mid a_{1:T}, i_{1:T}, \text{feedback}),
+\]
+not substitutes for $(B,W,\Phi)$ themselves.
+Scalar reward, when it exists at all, sits downstream of bundle geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}).
+
+This still leaves two nearby programs that treat reward as something to \emph{design} rather than infer.
+
+Shard theory claims that trained models develop contextual value shards: 
+learned internal computations that steer behavior, rather than a single scalar being maximized at runtime \autocite{turner2022shard}.
+Shard dynamics remain a borderline sibling to bundle geometry in Chapter~\ref{ch:low-dimensional-value-learning}, but they are not the object of inference here.
+That is a claim about model internals which Chapter~\ref{ch:assumptions-scope-failure-coverage} places out of scope.
+The book's load-bearing question is whether outer value-control geometry can be inferred, corrected, and transported without committing to a story about weights, circuits, or shards.
+
+Byrnes's brain-like AGI program is a different kind of alternative.
+It is a construction path: reverse-engineer human social-instinct reward circuits, including non-behaviorist sympathy and approval rewards, and try to grow aligned motivation by how those circuits update after concepts are grounded \autocite{byrnes2024socialinstincts,byrnes2025sympathy,byrnes2025approval,byrnes2025undersculpting}.
+Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:structured-social-drive-proposal-ch15}, develops that proposal as a candidate generator inside the hub model and as a rival approach to this book's inference-and-preservation path.
+If those circuits could be built and conserved, one might not need to recover $(B,W,\Phi)$ from behavior.
+This chapter does not take that bet.
+Even a well-designed inner reward architecture still leaves the outer questions of bearer maps, tradeoff geometry, correction, and successor transport.
+
+Pihlakas's concave homeostatic and diminishing-returns agenda is a sibling prescription at the outer-training layer: replace unbounded linear aggregation with target ranges and balanced multi-objective curvature \autocite{pihlakas2025concaveagenda}.
+Long-horizon benchmarks in that line report that language models often grasp homeostatic and diminishing-returns objectives at first, then drift toward unbounded single-objective maximization under sustained multi-objective pressure \autocite{pihlakas2025bioblue}.
+That is evidence that a flat scalar shape is a fragile outer object, not a demonstration that concave training solves identifiability, bearer import, or correction capture.
+
 \section{Why Scalar Reward Is the Wrong Level of Description}
 \label{sec:why-scalar-reward-wrong}
 
@@ -193,9 +230,9 @@ It is \((B,W,\Phi,U_H)\): bundle geometry, tradeoff structure, bearer maps, and 
 \not\Rightarrow
 \text{value-bundle preservation}.
 \]
-\begin{formalcontract}
-The spine types this step as an identifiability chain (\texttt{BundleExperiment}, \texttt{MB2aCrux}--\texttt{MB2c1Crux}), not policy match alone: causal control of the bundle and tradeoff direction are separate antecedents of \texttt{BundleAligned}. It does not establish general IRL--ELK resolution.
-\end{formalcontract}
+\begin{leanbox}
+The spine types this step as an identifiability chain (\texttt{BundleExperiment}, \texttt{MB2aCrux}--\texttt{MB2c1Crux}), not policy match alone: causal control of the bundle and tradeoff direction are separate antecedents of \texttt{BundleAligned}. General IRL--ELK resolution is out of scope.
+\end{leanbox}
 \leanspine{counterexample}{cooperative\_reward\_inference\_not\_bundle\_preservation}{A finite toy model separates local cooperative reward inference from value-bundle preservation.}
 
 \section{Value-Bundles}
@@ -1157,6 +1194,7 @@ These uncertainties do not defeat the framework.
 They define the research program.
 
 The sharpest disconfirmer, however, is identifiability. If ``which bundles are active'' cannot be recovered from behavior even with unlimited interventions---the reward-shaping degeneracy that defeats scalar inference recurring at the bundle level---then the richer inference target is as underdetermined as the scalar it replaces, only costlier and more confident. And if a capable system can \emph{present} a benign bundle inference while acting on another, bundle inference inherits the adversarial-verifiability problem rather than escaping it (Chapter~\ref{ch:verifiability-ontology}).
+A successful brain-like construction path would also change the chapter's role: if Byrnes-style social-drive circuits could be built and conserved without recovering $(B,W,\Phi)$, this chapter's inference upgrade would be optional rather than the replacement for scalar reward.
 
 \section{Summary}
 \label{sec:summary-reward-to-bundle}
@@ -1198,7 +1236,7 @@ The next chapter asks a prior question: when is a system intentional at all? Bef
 
 \section*{Chapter References}
 
-This chapter builds on apprenticeship learning, inverse reinforcement learning, and maximum-entropy IRL \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; preference learning from human feedback \autocite{christiano2017,casper2023rlhflimits}; the information bottleneck and active inference framing \autocite{tishby2000ib,friston2010free,parr2022_active}; unit-of-caring and bearer-import research \autocite{zarncke2025unit-of-caring,zarncke2026value-bottleneck}; and intentional-stance interpretation \autocite{dennett1987intentional}.
+This chapter builds on apprenticeship learning, inverse reinforcement learning, and maximum-entropy IRL \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; preference learning from human feedback \autocite{christiano2017,casper2023rlhflimits}; the information bottleneck and active inference framing \autocite{tishby2000ib,friston2010free,parr2022_active}; the distinction between reward as reinforcement schedule and as inferred target \autocite{turner2022rewardnotopt,turner2022shard}; brain-like social-drive construction as a rival approach \autocite{byrnes2024socialinstincts,byrnes2025undersculpting}; concave homeostatic training and its long-horizon failure modes \autocite{pihlakas2025concaveagenda,pihlakas2025bioblue}; unit-of-caring and bearer-import research \autocite{zarncke2025unit-of-caring,zarncke2026value-bottleneck}; and intentional-stance interpretation \autocite{dennett1987intentional}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

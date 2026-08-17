@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (site card notes Phase 4 ch10).
+Last updated: 2026-08-17 (ch21 reward-as-evidence / Byrnes construction fork).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-08-17 (site card notes Phase 4 ch10).
 
 - **Site card notes triage** — Phases 0–4 **done**; next Phase 5 sync/math (B1/B4/B5, A12), Phase 6 mobile (A7–A11). Tracker: `drafts/site-card-notes-triage.md`.
 
-- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: inline **Lean contract** boxes at remaining `\leanspine` sites (one per chapter, at symbol introduction); v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
+- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: `{leanbox}` at remaining `\leanspine` sites when elaboration adds value (≤1 per chapter); v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`, `2026-08-17-leanbox-reframe.md`.
 
 - **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 
@@ -49,9 +49,10 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-17):** `{leanbox}` reframe — renamed from `{formalcontract}`; 17 chapters with inline Lean spine boxes (Tier 1+2 expansion). Log: `2026-08-17-leanbox-reframe.md`.
+- **Manuscript (2026-08-17):** ch21 § reward as evidence, not optimization target (Turner); shards out of inference target via ch05/App B internals limit; Byrnes as construction alternative (ch15+ch21); Pihlakas concave/BioBlue. Log: `2026-08-17-reward-not-optimization-target.md`.
 - **Companion site (2026-08-17):** Offline PWA v10 — fix `Failed to construct 'URL'` on relative assets; enable partial offline after home+CSS; always-on status in the footer button. Log: `2026-08-17-offline-caching-v10.md`.
 - **Manuscript + site (2026-08-17):** Six-claims spine **complete** (Phases 0–6) — layer map, ch03 dedup, ch48 status + C-008–C-011; `six-thesis-claims` companion card; homepage/reading-path/FAQ/`llms.txt` links; `scripts/check_claim_spine.py` in `make check`. Plan: `drafts/six-claims-spine-plan.md`. Logs: `2026-08-17-six-claims-spine-phase0-2.md`.
-- **Manuscript (2026-08-17):** Six-claims spine Phases 0–2 — `drafts/claim-spine.md`, `tables/claim-spine.tex`, intro claim labels + unfold map, part openers, ch48/ch30/exec-overview sync, C-044 ledger; glossary-first language pass on intro and part headers. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 6** — `BridgeCruxes.lean`; `*Crux` Props for MB1/MB3/MB5–MB11; formal-contract pilot (ch21/25/26/28/33/43); field v2 preview `/field/v2/`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 5** — `AlignmentConstruction.lean`; MB8 gravestone; `mb8` removed from `BridgeAssumptions`. Log: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 4** — MB4 legitimacy/uptake/persistence decomposition; `MB4_correction_integrity` rename. Log: `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
