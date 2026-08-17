@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Offline caching v10** — origin-safe URLs; partial enable after home+CSS; always-on status. | [2026-08-17-offline-caching-v10.md](2026-08-17-offline-caching-v10.md) |
 | 2026-08-17 | **Six-claims spine Phases 0–2** — claim spine map; intro labels + unfold; part openers; count sync; language pass. | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
 | 2026-08-17 | **Krym Phase 5 construction + MB8 gravestone** — `AlignmentConstruction.lean`; MB8 out of `BridgeAssumptions`; matrix column hidden. | [2026-08-17-krym-phase5-construction-mb8-gravestone.md](2026-08-17-krym-phase5-construction-mb8-gravestone.md) |
 | 2026-08-17 | **Krym Phase 4 MB4 uptake/legitimacy** — path decomposition; `MB4_correction_integrity` rename; `MB4CorrectionIntegrity.lean`. | [2026-08-17-krym-phase4-mb4-uptake-legitimacy.md](2026-08-17-krym-phase4-mb4-uptake-legitimacy.md) |

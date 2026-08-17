@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (six-claims spine complete through Phase 6).
+Last updated: 2026-08-17 (offline caching v10).
 
 ---
 
@@ -53,6 +53,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-17):** Offline PWA v10 — fix `Failed to construct 'URL'` on relative assets; enable partial offline after home+CSS; always-on status in the footer button. Log: `2026-08-17-offline-caching-v10.md`.
 - **Manuscript + site (2026-08-17):** Six-claims spine **complete** (Phases 0–6) — layer map, ch03 dedup, ch48 status + C-008–C-011; `six-thesis-claims` companion card; homepage/reading-path/FAQ/`llms.txt` links; `scripts/check_claim_spine.py` in `make check`. Plan: `drafts/six-claims-spine-plan.md`. Logs: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Manuscript (2026-08-17):** Six-claims spine Phases 0–2 — `drafts/claim-spine.md`, `tables/claim-spine.tex`, intro claim labels + unfold map, part openers, ch48/ch30/exec-overview sync, C-044 ledger; glossary-first language pass on intro and part headers. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 5** — `AlignmentConstruction.lean`; MB8 gravestone; `mb8` removed from `BridgeAssumptions`. Log: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`.

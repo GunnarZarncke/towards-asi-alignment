@@ -6,7 +6,7 @@ const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
   <button type="button" class="button" data-offline-button>
     Make site available offline
   </button>
-  <span class="offline-status" data-offline-status role="status" aria-live="polite"></span>
+  <span class="offline-status" data-offline-status role="status" aria-live="polite">Checking offline status…</span>
 </div>
 
 <script>
@@ -14,20 +14,73 @@ const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
   const button = control?.querySelector<HTMLButtonElement>("[data-offline-button]");
   const status = control?.querySelector<HTMLElement>("[data-offline-status]");
 
-  function formatProgress(phase: string, completed: number, total: number) {
-    const label = phase === "assets" ? "styles and assets" : "pages";
-    return `Caching ${label} (${completed}/${total})…`;
+  type OfflineState = {
+    type?: string;
+    phase?: string;
+    completed?: number;
+    total?: number;
+    enabled?: boolean;
+    error?: string | null;
+    finished?: boolean;
+    caching?: boolean;
+    message?: string;
+  };
+
+  function counts(state: OfflineState) {
+    const completed = state.completed ?? 0;
+    const total = state.total ?? 0;
+    return total > 0 ? `${completed}/${total}` : null;
   }
 
-  function applyOfflineComplete(completed?: number, total?: number) {
+  function applyState(state: OfflineState) {
     if (!button || !status) return;
-    button.disabled = false;
-    button.textContent = "Site available offline";
-    if (completed && total) {
-      status.textContent = `${completed} of ${total} resources cached. PDFs and demos were skipped.`;
-    } else {
-      status.textContent = "PDFs and demos are not cached offline.";
+    const count = counts(state);
+    const caching = Boolean(state.caching);
+    const interrupted = Boolean(state.error) && !caching;
+    const complete = Boolean(state.finished) && !interrupted;
+    const partial = Boolean(state.enabled) && !complete;
+
+    if (complete) {
+      button.disabled = false;
+      button.textContent = "Site available offline";
+      status.textContent = count
+        ? `Offline ready (${count} resources). PDFs and demos were skipped.`
+        : "Offline ready. PDFs and demos were skipped.";
+      return;
     }
+
+    if (caching) {
+      button.disabled = true;
+      button.textContent = partial ? "Caching… (partial offline ready)" : "Caching site…";
+      const label = state.phase === "pages" ? "pages" : "styles and assets";
+      status.textContent = count
+        ? `Caching ${label} (${count})…${partial ? " Cached pages are already usable offline." : ""}`
+        : "Caching styles and assets…";
+      return;
+    }
+
+    if (interrupted) {
+      button.disabled = false;
+      button.textContent = "Continue offline caching";
+      const availability = partial
+        ? "Partial offline is available."
+        : "Partial cache is not yet usable offline.";
+      status.textContent = `Interrupted: ${state.error || state.message || "unknown error"}. ${count ? `(${count}) ` : ""}${availability} Click to resume.`;
+      return;
+    }
+
+    if (partial) {
+      button.disabled = false;
+      button.textContent = "Continue offline caching";
+      status.textContent = count
+        ? `Partial offline ready (${count}). Click to continue.`
+        : "Partial offline ready. Click to continue.";
+      return;
+    }
+
+    button.disabled = false;
+    button.textContent = "Make site available offline";
+    status.textContent = "Not cached for offline use yet.";
   }
 
   if (control && button && status) {
@@ -45,7 +98,10 @@ const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
 
       async function queryOfflineStatus() {
         const registration = await navigator.serviceWorker.ready;
-        if (!registration.active) return;
+        if (!registration.active) {
+          status.textContent = "Waiting for offline support…";
+          return;
+        }
         registration.active.postMessage({ type: "offline-status" });
       }
 
@@ -54,50 +110,26 @@ const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
           const registration = await navigator.serviceWorker.ready;
           if (!registration.active) throw new Error("Service worker is not active yet.");
           button.disabled = true;
-          status.textContent = "Caching styles and assets…";
+          status.textContent = "Starting offline cache…";
           registration.active.postMessage({ type: "cache-site" });
         } catch (error) {
-          button.disabled = false;
-          status.textContent = error instanceof Error ? error.message : "Offline caching could not start.";
+          applyState({
+            error: error instanceof Error ? error.message : "Offline caching could not start.",
+            caching: false
+          });
         }
       });
 
       navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data?.type === "offline-status") {
-          if (event.data.caching && event.data.progress) {
-            button.disabled = true;
-            status.textContent = formatProgress(
-              event.data.progress.phase,
-              event.data.progress.completed,
-              event.data.progress.total
-            );
-          } else if (event.data.progress && event.data.progress.completed < event.data.progress.total) {
-            button.disabled = false;
-            button.textContent = "Continue offline caching";
-            status.textContent = `Partial cache (${event.data.progress.completed}/${event.data.progress.total}). Click to resume.`;
-          } else if (event.data.enabled) {
-            applyOfflineComplete(
-              event.data.progress?.completed,
-              event.data.progress?.total
-            );
-          }
-          return;
-        }
-        if (event.data?.type === "offline-progress") {
-          button.disabled = true;
-          status.textContent = formatProgress(
-            event.data.phase,
-            event.data.completed,
-            event.data.total
-          );
-        }
-        if (event.data?.type === "offline-complete") {
-          applyOfflineComplete(event.data.completed, event.data.total);
-        }
-        if (event.data?.type === "offline-error") {
-          button.disabled = false;
-          button.textContent = "Continue offline caching";
-          status.textContent = `Offline caching interrupted: ${event.data.message}. Click to resume.`;
+        const data = event.data as OfflineState | undefined;
+        if (!data?.type) return;
+        if (
+          data.type === "offline-status" ||
+          data.type === "offline-progress" ||
+          data.type === "offline-complete" ||
+          data.type === "offline-error"
+        ) {
+          applyState(data);
         }
       });
 
