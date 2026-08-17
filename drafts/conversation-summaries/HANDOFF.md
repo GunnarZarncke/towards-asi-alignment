@@ -8,7 +8,7 @@ Last updated: 2026-08-17 (ch21 reward-as-evidence / Byrnes construction fork).
 
 ## Open work (load-bearing)
 
-- **Site card notes triage** — Phases 0–4 **done**; next Phase 5 sync/math (B1/B4/B5, A12), Phase 6 mobile (A7–A11). Tracker: `drafts/site-card-notes-triage.md`.
+- **Site card notes triage** — **Complete** (Phases 0–6). Deferred: A3/A4/A6/A14, exercises/quiz, Substack, etc. Tracker: `drafts/site-card-notes-triage.md`.
 
 - **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: `{leanbox}` at remaining `\leanspine` sites when elaboration adds value (≤1 per chapter); v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`, `2026-08-17-leanbox-reframe.md`.
 
@@ -59,6 +59,8 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.
+- **Companion site (2026-08-17):** Site card notes **Phase 6** — local chapter illustration assets; PageNotes SVG icons; mobile highlight tap, expand, keyboard-safe actions. Log: `2026-08-17-site-card-notes-phase6-mobile-ux.md`.
+- **Companion site (2026-08-17):** Site card notes **Phase 5** — `tex-convert` symboldef/align fixes; mobile KaTeX scroll; book resync. Log: `2026-08-17-site-card-notes-phase5-sync-math.md`.
 - **Manuscript (2026-08-17):** Site card notes **Phase 4** — ch10 strategic-opacity readability (Hubinger alignment, filter-family gloss, trimmed bundle preview, oversight vs dangerous opacity, correction capacity refs). Log: `2026-08-17-site-card-notes-phase4-ch10.md`.
 - **Manuscript (2026-08-17):** Site card notes **Phase 3** — ch09 composite-agent readability (ch06/ch07 cross-refs, Hanson grabby cite, consolidated disambiguation). Log: `2026-08-17-site-card-notes-phase3-ch09.md`.
 - **Manuscript (2026-08-17):** Site card notes **Phase 2** — frontmatter status copy, removed External Doom exec-overview section, plain-first exec overview lead, GI comparison (ch01 + dynamical-guarantee card), glossary site links. Log: `2026-08-17-site-card-notes-phase2-frontmatter.md`.

@@ -4,9 +4,8 @@
 The source PNGs in figures/illustrations/ are full-resolution exports meant
 for print (used directly by \\includegraphics in the chapter .tex files).
 This script derives smaller, compressed JPEGs in figures/illustrations/web/
-for the companion site, which serves images straight from GitHub raw content
-(see site/scripts/lib/tex-convert.mjs FIGURE_BASE) and has no benefit from
-multi-megabyte print-resolution PNGs.
+for the companion site, which copies them into `site/public/` during sync
+(see `site/scripts/sync-chapter-illustrations.mjs`) for same-origin and offline cache.
 
 Usage:
     python3 scripts/generate_web_illustrations.py [--max-width 1600] [--quality 82]

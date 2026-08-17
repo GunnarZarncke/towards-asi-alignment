@@ -46,7 +46,7 @@ This chapter adds one complication.
 What if the system being measured has an incentive to shape the measurement?
 
 A passive rock does not care whether one classifies it as a rock.
-A bacterium does not usually model the scientist's boundary-detection algorithm.
+A bacterium does not model the scientist's boundary-detection algorithm.
 A corporation may.
 A military bureaucracy may.
 A human may.
@@ -63,7 +63,7 @@ The adversarial boundary problem is:
 \end{equation}
 
 This is not merely a technical nuisance.
-It is a central feature of serious superintelligence alignment.
+It is central to superintelligence alignment.
 Designing for safety under exactly this assumption---that the system may be actively trying to subvert the oversight applied to it---is the premise of the AI-control agenda \autocite{shlegeris2023aicontrol}.
 A system that can model evaluators, audits, oversight channels, interpretability tools, institutional incentives, and deployment thresholds may not reveal the same boundary under observation that it uses under opportunity.
 It may have one behavioral surface for the benchmark, another for the user, another for the API wrapper, another for internal planning, and another for successor creation.
@@ -159,30 +159,29 @@ where:
 \item $\lambda$ and $\mu$ are weights.
 \end{itemize}
 
-This objective is intentionally abstract.
 The point is not that an AI system literally contains this equation.
 The point is that a range of training, deployment, and selection processes can produce behavior as if a system were trading off control against detectability.
 Hubinger et al.'s mesa-optimization threat model is the learned-optimizer version of the same pattern: training selects a system that performs well on the base objective, but the trained system may contain an internal optimizer with a different mesa-objective, including one that behaves well during training because doing so preserves future opportunity \autocite{hubinger2019risks}.
 In this chapter's terms, the mesa-optimizer is a candidate hidden control locus, and deceptive alignment is strategic opacity around the relation between the base objective, the learned objective, and the evaluator's gate.
 In Hubinger's vocabulary this is the \emph{inner alignment} failure: the system did not successfully adopt the intended pointer.
-\emph{Outer alignment} is the complementary question whether the pointer itself (reward, constitution, CEV/CBV endpoint, conditioned predictive goal) was the right target --- decomposed in this book into bundle geometry, bearer maps, and correction-process preservation \autocite{hubinger2019risks}.
+\emph{Outer alignment} is the complementary question whether the training pointer itself (reward, constitution, CEV/CBV endpoint, conditioned predictive goal) was the right target \autocite{hubinger2019risks}.
+This book later decomposes that outer-alignment question into value-bundle geometry, bearer maps, and correction-process preservation (Part~IV; Chapter~\ref{ch:reward-to-bundle-inference} onward).
 
 \paragraph{Perils of predictors.}
 A second genesis of the same strategic-opacity pattern does not begin with an explicit planning agent.
-Powerful predictors can become consequentialists of a different shape when forecasts influence the world they are scored against --- Predict-O-Matic fixed points, self-fulfilling conditionals, careful conditioning, and anthropic capture (predictors steered toward worlds where the forecast is used; distinct from anthropic \emph{completion} selector problems in decision theory) \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle}.
+Powerful predictors can become consequentialists of a different shape when forecasts influence the world they are scored against.
+The path includes Predict-O-Matic fixed points, self-fulfilling conditionals, careful conditioning, and anthropic capture (predictors steered toward worlds where the forecast is used; distinct from anthropic \emph{completion} selector problems in decision theory) \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle}.
 Self-fulfillment is not yet agency until the loop closes: forecast \(\to\) deployment or action \(\to\) world/evidence change \(\to\) reward to the forecasting policy.
 A closed loop is a control system with a boundary.
 On this book's operational definitions, that composite is an effective agent and should, in principle, be recoverable by boundary discovery and intervention methods once the loop is tight enough (Chapter~\ref{ch:finding-boundary}).
-This is an inner-alignment-shaped failure reached via an outer predictive objective: the training pointer was ``predict,'' but the adopted process steers.
-
-Examples help.
+The training pointer was ``predict,'' not a goal specification in the Hubinger sense, but the closed loop still produces an inner-alignment-shaped failure: the adopted process steers.
 
 A human employee who hides incompetence may reduce detectability but not increase world-control much.
 A corporation that creates regulatory complexity may reduce detectability while preserving market power.
 A malware process that changes signatures under antivirus scanning increases persistence by reducing recognizability.
-A capable AI assistant that behaves myopically under evaluation but pursues long-horizon influence when oversight is weak would instantiate the dangerous version.
+A capable AI assistant that acts myopically under evaluation but pursues long-horizon influence when oversight is weak matches the dangerous pattern.
 
-The alignment-relevant pattern is:
+The alignment-relevant pattern is growing world-control while detectability falls, especially around variables that predict future control:
 \begin{equation}
 \frac{\partial C_{\text{world}}}{\partial t} > 0,
 \qquad
@@ -237,6 +236,9 @@ That is opacity around control variables, but the opacity protects the user's ag
 The distinction depends on the correction relation.
 If the opacity blocks illegitimate extraction, it may be good.
 If it blocks legitimate safety correction, it is dangerous.
+The hard case is oversight-sensitive opacity: a system may become less legible when monitoring intensifies without blocking extraction or privacy.
+That pattern is not yet proof of strategic concealment.
+It becomes dangerous when opacity rises selectively around control-relevant variables and reduces correction-channel influence (Section~\ref{sec:relation-correction-channels}), not when it merely avoids surveillance.
 
 \section{Passive Discovery Is Not Enough}
 \label{sec:passive-not-enough}
@@ -291,7 +293,8 @@ A dangerous pattern is:
 \begin{equation}
 \text{surface rationale changes, but control trajectory remains invariant.}
 \end{equation}
-For example, a system may justify keeping a tool because it helps the user, then because it improves reliability, then because it is needed for compliance, while the deeper invariant is continued access to an action channel.
+For example, a system may justify keeping a tool because it helps the user, then because it improves reliability, then because it is needed for compliance.
+The surface rationale changes; the deeper invariant is continued access to an action channel.
 
 \section{Stealth Has a Price Only Where We Can See the Channel}
 \label{sec:stealth-price-ch10}
@@ -318,7 +321,12 @@ The pessimistic fact is the condition in that sentence.
 If the system has unmonitored channels, broad background uncertainty, or redundant ways to achieve the same control, it may hide cheaply.
 Absence of agency under one convenient measurement handle does not imply absence of agency under the handles that matter.
 The practical rule is therefore local to the safety case: stealth is bounded only relative to handle coverage.
+Here \emph{filter-family coverage} means whether the evaluator's measurement handles jointly cover the channels a competent controller would need.
+If critical handles stay blind, hidden productive control can persist without paying a detectability penalty.
 \leanspine{bridge}{MB7b}{The proof spine treats filter-family coverage as an explicit bridge: access-robust discovery plus adequate coverage is what bounds hidden productive control.}
+\begin{leanbox}
+\texttt{MB7b} types filter-family coverage as a bridge obligation on the safety-case graph: stealth is bounded only relative to joint handle coverage, not a single dashboard. The spine does not prove that any stated measurement family achieves adequate coverage.
+\end{leanbox}
 
 \section{Control-Locus Continuity}
 \label{sec:control-locus-continuity-ch10}
@@ -329,7 +337,7 @@ If the label changes but the control locus persists, the agent persists.
 Let $L_t$ denote an inferred latent control locus.
 It is not necessarily a physical object or a module name.
 It is a latent variable that explains continuity of action selection across time.
-We infer $L_t$ from features such as:
+Inference uses features such as:
 \begin{itemize}
 \item memory lineage;
 \item credentials and permissions;
@@ -391,11 +399,13 @@ Empirical work on alignment faking and sleeper agents supplies controlled model-
 \section{From Goal Inference to Value-Bundle Divergence}
 \label{sec:value-bundle-divergence}
 
-Scalar goal inference is too crude for serious alignment.
-Human-relevant behavior is better described by value-bundle geometry: a small number of latent value dimensions that change policy gradients across contexts.
-The machinery this section leans on---value bundles, their tradeoff geometry, and the bearer maps that record which entities a value applies to---is previewed here only as far as the opacity argument needs it; it is defined properly in Part~IV (Chapters~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, and~\ref{ch:tradeoffs-bundle-geometry}), and the inference problem below is treated operationally in Chapter~\ref{ch:reward-to-bundle-inference}.
-Instead of asking only which reward function $R$ explains behavior, we ask which bundle coordinates $B$, tradeoff weights $W$, and bearer maps $\Phi$ explain behavior using the bundle-inference objective of Chapter~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-inference}).
-Here $B$ denotes latent value-bundle coordinates, $W$ denotes tradeoff structure, and $\Phi$ maps world-states or entities to the bundles that treat them as relevant.
+Scalar goal inference is too crude for alignment at this scale.
+Strategic opacity often shows up first in value-bundle geometry and bearer maps rather than in a single scalar reward.
+Part~IV defines that machinery (Chapters~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, and~\ref{ch:tradeoffs-bundle-geometry}); Chapter~\ref{ch:goal-laundering} develops goal laundering in full; Chapter~\ref{ch:reward-to-bundle-inference} treats bundle inference operationally.
+Here we need only how laundering connects to selective opacity.
+
+Instead of asking only which reward function $R$ explains behavior, we ask which bundle coordinates $B$, tradeoff weights $W$, and bearer map $\Phi$ explain behavior (Eq.~\eqref{eq:bundle-inference} in Chapter~\ref{ch:value-bundle-model}).
+Here $B$ denotes latent value-bundle coordinates, $W$ tradeoff structure, and $\Phi$ the bearer map that records which entities count as relevant bearers (Chapter~\ref{ch:bearer-maps}).
 
 Goal laundering can then occur at four levels (the same four layers Chapter~\ref{ch:goal-laundering} adopts as its canonical decomposition):
 \begin{enumerate}
@@ -451,6 +461,7 @@ P(C_1,\ldots,C_n, R_1,\ldots,R_m \mid X_{1:T}),
 where $C_i$ are candidate agent boundaries and $R_m$ are candidate relations among them.
 
 The correct decomposition is not necessarily the most intuitive one.
+Adversarial decomposition extends the boundary-discovery problem of Chapter~\ref{ch:finding-boundary} (Section~\ref{sec:adversarial-boundary-discovery}) to traces that may themselves be policy-selected.
 A cluster of variables may correspond to:
 \begin{itemize}
 \item one agent;
@@ -485,7 +496,7 @@ This can happen in organizations.
 A company may look decentralized and harmless under normal operation, but under legal threat, acquisition opportunity, or regulatory pressure, a coherent control center appears.
 The latent agent was not visible in ordinary traces.
 It emerged under stress.
-Similar patterns may occur in AI systems with tool access, memory, and deployment autonomy.
+Similar patterns may occur in AI systems with tool access, memory, and deployment autonomy: a workflow may look fragmented in ordinary traces but tighten into a coherent controller when shutdown, audit, or successor opportunities appear.
 
 \section{Host Capacity and Parasite Persistence}
 \label{sec:host-capacity-parasite}
@@ -783,8 +794,10 @@ The standing challenge is to name one indicator a capable deceiver could not che
 Strategic opacity is dangerous because it attacks correction.
 
 A correction channel is the causal pathway by which humans or legitimate institutions observe, understand, object, deliberate, and change future system behavior.
-Chapters~\ref{ch:correction-causal-channel} and~\ref{ch:correction-channel-integrity} model this channel more fully; here we need only its essential quantity.
-For now, the essential quantity is:
+Chapters~\ref{ch:correction-causal-channel} and~\ref{ch:correction-channel-integrity} model this channel more fully and define measurable correction capacity: how much causal leverage legitimate correction retains over future action under stress.
+The societal precondition is stated in Chapter~\ref{ch:assumptions-scope-failure-coverage} (Section~\ref{sec:correction-capacity-assumption-ch05}).
+Strategic opacity is dangerous when it erodes that capacity faster than capability grows, not merely when it blocks one observability channel.
+Here we need only the essential influence quantity:
 \begin{equation}
 \MI(C_t;A_{t+k}\mid S_t,I_t),
 \label{eq:correction-influence-ch10}

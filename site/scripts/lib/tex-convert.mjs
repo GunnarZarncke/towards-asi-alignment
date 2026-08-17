@@ -175,6 +175,13 @@ export function webIllustrationPath(sourcePath) {
   return `figures/illustrations/web/${match[1]}.jpg`;
 }
 
+/** Same-origin URL for chapter-opening illustrations (offline-cacheable). */
+export function illustrationPublicSrc(sourcePath) {
+  const webPath = webIllustrationPath(sourcePath);
+  if (webPath === sourcePath) return null;
+  return `/${webPath}`;
+}
+
 // Site-only alt text, richer than the title-only PDF caption: read once from
 // the `alt` frontmatter field of site/src/content/illustrations/{chapterId}.md
 // (the canonical source, condensed from each illustration's generation spec).
@@ -199,7 +206,8 @@ function convertFigure(body, ctx) {
   const labelMatch = body.match(/\\label\{([^}]+)\}/);
   if (!imgMatch) return `${body.trim()}\n\n`;
   const illustrationMatch = imgMatch[1].match(ILLUSTRATION_PATH_RE);
-  const src = `${FIGURE_BASE}/${illustrationMatch ? webIllustrationPath(imgMatch[1]) : imgMatch[1]}`;
+  const localSrc = illustrationMatch ? illustrationPublicSrc(imgMatch[1]) : null;
+  const src = localSrc ?? `${FIGURE_BASE}/${imgMatch[1]}`;
   const caption = captionMatch ? captionMatch[1].trim() : "";
   const anchor = labelMatch ? `<span id="${labelMatch[1]}"></span>` : "";
   const alt = illustrationMatch ? ctx.illustrationAlts?.get(illustrationMatch[1].toLowerCase()) || caption : caption;
@@ -264,6 +272,50 @@ function skipBeginArgs(tex, cursor, envName) {
     }
   }
   return cursor;
+}
+
+const MULTILINE_MATH_ENVS = new Set([
+  "align",
+  "align*",
+  "alignat",
+  "alignat*",
+  "gather",
+  "gather*",
+  "multline",
+  "multline*",
+  "split"
+]);
+
+function preprocessMathMacros(body) {
+  return body
+    .replace(/\\symboldef(?:\[[^\]]*\])?\{([^}]*)\}/g, "$1")
+    .replace(/\\symbolref(?:\[[^\]]*\])?\{([^}]*)\}/g, "$1");
+}
+
+function stripMathLabels(body) {
+  const labels = [];
+  const stripped = body.replace(/\\label\{([^}]+)\}/g, (_, label) => {
+    labels.push(label);
+    return "";
+  });
+  return { body: stripped.trim(), labels };
+}
+
+function convertDisplayMath(body, envName = null) {
+  const { body: labelStripped, labels } = stripMathLabels(body);
+  const math = preprocessMathMacros(labelStripped);
+  const anchors = labels.map((id) => `<span id="${id}"></span>`).join("");
+  if (envName && MULTILINE_MATH_ENVS.has(envName)) {
+    return `${anchors}\n$$\n\\begin{${envName}}\n${math}\n\\end{${envName}}\n$$\n\n`;
+  }
+  return `${anchors}\n$$\n${math}\n$$\n\n`;
+}
+
+function convertInlineMath(body) {
+  const { body: labelStripped, labels } = stripMathLabels(body);
+  const math = preprocessMathMacros(labelStripped);
+  const anchors = labels.map((id) => `<span id="${id}"></span>`).join("");
+  return `${anchors}$${math}$`;
 }
 
 function readEnvironment(tex, startIndex) {
@@ -465,6 +517,16 @@ function convertCommand(name, tex, index, ctx) {
       const inner = convertInlineText(readArg() || "", ctx);
       return { output: `\`${inner}\``, index };
     }
+    case "symboldef":
+    case "symbolref": {
+      if (tex[index] === "[") {
+        index = readOptional(tex, index).end;
+      }
+      const arg = readBalanced(tex, index);
+      if (!arg) return { output: "", index };
+      index = arg.end;
+      return { output: `$${arg.content.trim()}$`, index };
+    }
     case "leanspine": {
       const kind = convertInlineText(readArg() || "", ctx);
       const node = convertInlineText(readArg() || "", ctx);
@@ -562,9 +624,7 @@ function skipCommand(name, tex, index) {
 }
 
 function convertMath(body, display = true) {
-  const trimmed = body.trim();
-  if (display) return `\n$$\n${trimmed}\n$$\n\n`;
-  return `$${trimmed}$`;
+  return display ? convertDisplayMath(body) : convertInlineMath(body);
 }
 
 function stripTableDecorations(body) {
@@ -639,7 +699,7 @@ function convertDocument(tex, ctx) {
       i = env.end;
 
       if (MATH_ENVS.has(env.name)) {
-        out += convertMath(env.body, !env.name.endsWith("*") || env.name.startsWith("align"));
+        out += convertDisplayMath(env.body, env.name);
         continue;
       }
 
@@ -668,7 +728,7 @@ function convertDocument(tex, ctx) {
     if (tex.startsWith("\\[", i)) {
       const end = tex.indexOf("\\]", i + 2);
       if (end === -1) break;
-      out += convertMath(tex.slice(i + 2, end), true);
+      out += convertDisplayMath(tex.slice(i + 2, end));
       i = end + 2;
       continue;
     }
@@ -676,7 +736,7 @@ function convertDocument(tex, ctx) {
     if (tex.startsWith("\\(", i)) {
       const end = tex.indexOf("\\)", i + 2);
       if (end === -1) break;
-      out += convertMath(tex.slice(i + 2, end), false);
+      out += convertInlineMath(tex.slice(i + 2, end));
       i = end + 2;
       continue;
     }
@@ -685,13 +745,13 @@ function convertDocument(tex, ctx) {
       if (tex[i + 1] === "$") {
         const end = tex.indexOf("$$", i + 2);
         if (end === -1) break;
-        out += convertMath(tex.slice(i + 2, end), true);
+        out += convertDisplayMath(tex.slice(i + 2, end));
         i = end + 2;
         continue;
       }
       const end = tex.indexOf("$", i + 1);
       if (end === -1) break;
-      out += convertMath(tex.slice(i + 1, end), false);
+      out += convertInlineMath(tex.slice(i + 1, end));
       i = end + 1;
       continue;
     }

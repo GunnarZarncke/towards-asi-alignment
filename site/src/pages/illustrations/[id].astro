@@ -6,9 +6,7 @@
 import { getCollection, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { bookHref } from "../../lib/site-urls";
-import { webIllustrationPath } from "../../../scripts/lib/tex-convert.mjs";
-
-const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
+import { illustrationPublicSrc } from "../../../scripts/lib/tex-convert.mjs";
 
 export async function getStaticPaths() {
   const entries = await getCollection("illustrations");
@@ -21,7 +19,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
-const imageSrc = `${FIGURE_BASE}/${webIllustrationPath(entry.data.image)}`;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const imageSrc = withBase(illustrationPublicSrc(entry.data.image) ?? `/figures/illustrations/web/${entry.data.image.match(/(ch\d+_[^/]+)\.png$/)?.[1]}.jpg`);
 const chapterHref = bookHref(base, entry.data.chapterId);
 ---
 

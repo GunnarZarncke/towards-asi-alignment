@@ -16,12 +16,12 @@ Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` 
 | A4 | open | deferred | Explicit part hub cards | `metadata/TODO.md` § Site |
 | A5 | **done** | 1 | Standalone claims below Guided Tour on homepage | `site/src/pages/index.astro` |
 | A6 | deferred | — | Review standalone claims publishability | `metadata/TODO.md` § Site |
-| A7 | open | 6 | Chapter figures not cached (cross-origin GitHub raw URLs) | `tex-convert.mjs`, `sw.js` |
-| A8 | open | 6 | Standard icons for page-notes panel | `PageNotes.astro` |
-| A9 | partial | 6 | Mobile keyboard overlaps panel buttons | `PageNotes.astro` |
-| A10 | open | 6 | Highlight marks need tap-to-open on mobile | `PageNotes.astro` |
-| A11 | open | 6 | Expand panel weak on mobile | `PageNotes.astro` |
-| A12 | open | 5 | Formulas overflow on narrow mobile | `global.css`, sync pipeline |
+| A7 | **done** | 6 | Chapter figures not cached (cross-origin GitHub raw URLs) | `tex-convert.mjs`, `sw.js` |
+| A8 | **done** | 6 | Standard icons for page-notes panel | `PageNotes.astro` |
+| A9 | **done** | 6 | Mobile keyboard overlaps panel buttons | `PageNotes.astro` |
+| A10 | **done** | 6 | Highlight marks need tap-to-open on mobile | `PageNotes.astro` |
+| A11 | **done** | 6 | Expand panel weak on mobile | `PageNotes.astro` |
+| A12 | **done** | 5 | Formulas overflow on narrow mobile | `global.css`, sync pipeline |
 | A13 | **done** | 1 | Chapter `.tex` source → GitHub blob link | `site/src/pages/cards/[...slug].astro` |
 | A14 | deferred | — | Submit notes to site (beyond localStorage) | `metadata/TODO.md` § Site |
 
@@ -31,11 +31,11 @@ Structured tracker migrated from `drafts/attic/tsa-notes-export-2026-08-15.txt` 
 
 | ID | Status | Phase | Note | Target |
 |----|--------|-------|------|--------|
-| B1 | open | 5 | Raw `\symboldef` / `\symbolref` in synced chapters | `tex-convert.mjs` |
+| B1 | **done** | 5 | Raw `\symboldef` / `\symbolref` in synced chapters | `tex-convert.mjs` |
 | B2 | **done** | 1 | Titlepage `{ Towards Superintelligence Alignment}` literal braces | `tex-convert.mjs` (brace groups) |
 | B3 | **done** | 1 | `\hyperref` → broken “as a for human-correctable” in part roadmap | `tex-convert.mjs` (`hyperref`, `gloss`) |
-| B4 | open | 5 | ch10 “We distinguish three layers” — block below doesn’t render | `tex-convert.mjs` |
-| B5 | open | 5 | ch10 formula label / symboldef leak | B1 + KaTeX |
+| B4 | **done** | 5 | ch10 “We distinguish three layers” — block below doesn’t render | `tex-convert.mjs` |
+| B5 | **done** | 5 | ch10 formula label / symboldef leak | B1 + KaTeX |
 
 ---
 
@@ -88,25 +88,25 @@ Re-check anchors before editing.
 
 | ID | Status | Note |
 |----|--------|------|
-| E1a | open | Remove “usually” (bacterium) |
-| E1b | open | Remove “serious” (alignment) |
-| E1c | open | Remove “Examples help.” |
-| E1d | open | Simplify opacity example sentences |
-| E1e | open | Predict-O-Matic list wording |
-| E1f | open | Inner-alignment-shaped failure readability |
-| E1g | open | Add “therefore” after action-channel invariant |
-| E1h | open | “Correct decomposition” vs boundary discovery overlap |
-| E2a | open | Hubinger decomposition alignment |
-| E2b | open | “filter-family coverage” first-use gloss |
-| E2c | open | GLI / bundle-map preview length vs ch40 ordering |
+| E1a | **done** | Remove “usually” (bacterium) |
+| E1b | **done** | Remove “serious” (alignment) |
+| E1c | **done** | Remove “Examples help.” |
+| E1d | **done** | Simplify opacity example sentences |
+| E1e | **done** | Predict-O-Matic list wording |
+| E1f | **done** | Inner-alignment-shaped failure readability |
+| E1g | **done** | Add “therefore” after action-channel invariant |
+| E1h | **done** | “Correct decomposition” vs boundary discovery overlap |
+| E2a | **done** | Hubinger decomposition alignment |
+| E2b | **done** | “filter-family coverage” first-use gloss |
+| E2c | **done** | GLI / bundle-map preview length vs ch40 ordering |
 
 ### E3 — Cruxes (Phase 4)
 
 | ID | Status | Note |
 |----|--------|------|
-| E3a | open | Oversight vs dangerous opacity — resolve or mark open |
-| E3b | open | Correction channel overloaded — tie to correction capacity |
-| E3c | open | Soften “We infer” latent continuity |
+| E3a | **done** | Oversight vs dangerous opacity — resolve or mark open |
+| E3b | **done** | Correction channel overloaded — tie to correction capacity |
+| E3c | **done** | Soften “We infer” latent continuity |
 
 ### E3 — Deferred TODOs
 
@@ -152,6 +152,6 @@ See Group B (formula render, three layers block).
 | **1** | **Done** — A1, A2, A5, A13, B2, B3 |
 | **2** | **Done** — frontmatter C1–C2, C4–C5 |
 | **3** | **Done** — ch09 D1–D6 |
-| **4** | ch10 E1–E2, E3 cruxes (verify anchors) |
-| **5** | B1, B4, B5, A12 |
-| **6** | A7–A11 mobile + assets |
+| **4** | **Done** — ch10 E1–E2, E3 cruxes (verify anchors) |
+| **5** | **Done** — B1, B4, B5, A12 (`tex-convert`, mobile math scroll) |
+| **6** | **Done** — A7–A11 mobile UX + local illustration assets |
