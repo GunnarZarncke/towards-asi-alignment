@@ -10,6 +10,7 @@ For each chapter under review:
 - [ ] "What would change this view" section present
 - [ ] Summary has 5–8 bullets
 - [ ] Major claims added to `metadata/claims-ledger.md`
+- [ ] Intro-claim tag (`Claim~\ref{claim:…}`) or ledger ID noted in part opener / first chapter of part where applicable
 - [ ] Major assumptions added to `metadata/assumptions-ledger.md`
 - [ ] Claim strength labeled (established / plausible / speculative / limit)
 - [ ] References span at least three categories where relevant

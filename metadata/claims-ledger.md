@@ -2,7 +2,7 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-07-04 — every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml` and against each candidate chapter's `chapterthesis` block and body content (resolves the renumbering caveat below); one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Prior cross-check 2026-07-04 (same day, earlier pass): all `References` fields wired to existing BibTeX keys already cited in each claim's home chapters (previously placeholder `add BibLaTeX keys here`; see `review/strategic-advice-2026-06-28.md` item 6). Prior cross-check 2026-06-27: header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
+**Last cross-check:** 2026-08-17 — Phase 0–1 six-claims spine pass: C-044 updated (ch48 discharges all six intro claims including grounding); spine table in `drafts/claim-spine.md`; executive-overview preservation list aligned to Introduction claim order; ch48 "six opening claims" and ch30 "nine-claim" count fixes. Prior cross-check 2026-07-04: every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml`; one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `drafts/claim-spine.md`, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
 
 **Resolved caveat:** the `Chapter(s)` column previously predated the 2026-06-30 global chapter renumbering (`ch01`–`ch48`, see `INSTRUCTIONS.md` §14). It has now been re-verified content-by-content (not by mechanical offset, since the four inserted chapters — ch20, ch27, ch38, ch43 — do not shift earlier claims uniformly). Numbers below are current as of this pass; re-check after any future chapter split, merge, or renumbering.
 
@@ -294,18 +294,19 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 **Chapter(s):** 48 (conclusion); see also 42, 47
 
-**Status:** needs follow-up after 2026-06-27 grounding integration. ch42 now assembles the conditional safety-case structure with grounding as an eighth layer; ch48 still explicitly revisits the earlier five opening promises and should be updated to discharge the new grounding claim.
+**Status:** discharged at draft level (2026-08-17). ch48 §Opening Claims Revisited restates all six intro claims with status labels, including grounding (paragraph after value-bundle). Executive Overview TL;DR now uses the same six-claim order. Remaining gap is operational follow-through (safety-case template appendix, adversarial-verifiability master disconfirmer), not missing intro-claim prose in ch48.
 
 **Support:**
-- ch48 §Opening Claims Revisited discharges the earlier five intro claims with status labels
-- ch42 safety-case chapter supplies the safety-case graph, now including grounding viability as an eighth layer
+- ch48 §Opening Claims Revisited (`sec:opening-claims-revisited-ch48`) discharges all six intro claims with status labels
+- ch42 safety-case chapter supplies the conditional safety-case graph, including grounding viability as layer 2
 - ch47 supplies the bearer/merger philosophical limit needed for Part X closure
+- `drafts/claim-spine.md` maps intro claims → parts → safety-case layers → ch48 status
 
 **Weakest link:**
-- the conclusion has not yet been revised to revisit the new grounding claim explicitly; the safety-case template appendix is still a follow-through artifact
+- discharge is conditional ("framework / measurement program / open certification"), not proof of safe deployment; ch42 TODO on grounding-layer completeness remains
 
 **What would update against it:**
-- review showing that ch48's opening-promise reconciliation can absorb the grounding claim without new prose, or that ch46's safety-case graph omits a load-bearing artifact
+- review showing ch48 status labels overstate confidence relative to ledger falsifiers, or that ch42/ch33 safety-case layers omit a load-bearing artifact named in the Introduction's "What Counts as Progress" list
 
 **References:**
-- see `review/full-book-continuity-review-2026-06-22.md` §completeness
+- see `review/full-book-continuity-review-2026-06-22.md` §completeness; `drafts/claim-spine.md`

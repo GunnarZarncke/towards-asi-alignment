@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (Krym Phase 3b MB2 checkable Props).
+Last updated: 2026-08-17 (six-claims spine Phases 0–2 + language pass).
 
 ---
 
@@ -47,7 +47,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Manuscript (2026-08-17):** Intro + part-opener language pass — glossary-first paraphrases; claim labels inside theorems; dropped LHCV / ledger / “discharge” talk from front matter. Same log.
+- **Manuscript (2026-08-17):** Six-claims spine Phases 0–2 — `drafts/claim-spine.md`, `tables/claim-spine.tex`, intro claim labels + unfold map, part openers, ch48/ch30/exec-overview sync, C-044 ledger; glossary-first language pass on intro and part headers. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.
