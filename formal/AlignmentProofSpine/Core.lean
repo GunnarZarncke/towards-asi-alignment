@@ -514,9 +514,10 @@ axiom MB1_estimator_soundness :
 axiom MB3_bearer_import :
   ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
 
-/-- MB4: correction legitimacy. Correction-channel integrity requires that the
-    judge is not manipulated in a way that invalidates later endorsement. -/
-axiom MB4_correction_legitimacy :
+/-- **MB4** (correction integrity). Correction-channel integrity requires that
+    the system's future behaviour tracks the correction operator — uptake and
+    persistence, not merely reference legitimacy (MB4a). -/
+axiom MB4_correction_integrity :
   ∀ A : System, CorrectionIntegrity A → PreservesCorrectionOperator A
 
 /-- MB5: ontology-shift successor audit. Full transport plus bearer transport
@@ -593,7 +594,7 @@ structure BridgeAssumptions : Prop where
 def standardBridges : BridgeAssumptions where
   mb1 := MB1_estimator_soundness
   mb3 := MB3_bearer_import
-  mb4 := MB4_correction_legitimacy
+  mb4 := MB4_correction_integrity
   mb5 := MB5_ontology_shift_successor_audit
   mb6a := MB6a_percolation_evidence_to_basin_stability
   mb6b := MB6b_basin_stability_to_correction_integrity

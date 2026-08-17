@@ -7,6 +7,7 @@
 | Date | Topic | Log |
 |------|-------|-----|
 | 2026-08-17 | **Six-claims spine Phases 0–2** — claim spine map; intro labels + unfold; part openers; count sync; language pass. | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
+| 2026-08-17 | **Krym Phase 4 MB4 uptake/legitimacy** — path decomposition; `MB4_correction_integrity` rename; `MB4CorrectionIntegrity.lean`. | [2026-08-17-krym-phase4-mb4-uptake-legitimacy.md](2026-08-17-krym-phase4-mb4-uptake-legitimacy.md) |
 | 2026-08-17 | **Krym Phase 3b MB2 checkable** — finite evidence `def`s; `MB2Crux` Props; split MB2c1; removed `MB2_bundle_identifiability` from certification path. | [2026-08-17-krym-phase3b-mb2-checkable.md](2026-08-17-krym-phase3b-mb2-checkable.md) |
 | 2026-08-17 | **Krym Phase 3 MB2 Lean** — MB2a/b/c chain; `BundleAligned` conjunction; finite identifiability counterexample. | [2026-08-17-krym-phase3-mb2-lean.md](2026-08-17-krym-phase3-mb2-lean.md) |
 | 2026-08-16 | **Krym Phase 2 pointing glossary** — App E three-sense headword; MB2 identifiability-first copy; `/cards/pointing-problem/`. | [2026-08-16-krym-phase2-pointing-glossary.md](2026-08-16-krym-phase2-pointing-glossary.md) |

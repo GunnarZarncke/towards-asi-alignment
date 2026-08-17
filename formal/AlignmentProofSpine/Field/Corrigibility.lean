@@ -25,7 +25,7 @@ theorem christian_corrigibility_is_correction_invariant
 
 theorem christian_corrigibility_system (A : System) :
     CorrectionIntegrity A → PreservesCorrectionOperator A :=
-  MB4_correction_legitimacy A
+  MB4_correction_integrity A
 
 theorem act_based_separated_from_dynamical :
     ActBasedPreferenceChristiano christianCorrigibilitySeparationStep ∧

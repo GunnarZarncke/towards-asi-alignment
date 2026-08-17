@@ -28,7 +28,7 @@ bridges:
   - key: MB4
     noun: Corrigibility
     cruxWording: Correction that holds now continues to preserve the correction process under pressure.
-    leanAxiom: MB4_correction_legitimacy
+    leanAxiom: MB4_correction_integrity
     cardSlug: mb4-correction-legitimacy
     fieldAgree: Desire to accept/assist correction; Christiano dynamical reading closest to trajectory form.
     fieldDiffer: MIRI/CHAI shutdown-utility homograph; book splits audit-path legitimacy as MB4a.

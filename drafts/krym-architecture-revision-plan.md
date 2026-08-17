@@ -10,8 +10,8 @@ Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `
 | **2** | App E pointing homograph + precise bridge vocabulary | **Done** 2026-08-16 |
 | **3** | Lean MB2 names + `BundleAligned` conjunction (`3f664d28`) | **Superseded by 3b** |
 | **3b** | Make Phase 3 non-vacuous (Krym/Harfe review 2026-08-17) | **Done** 2026-08-17 |
-| **4** | Lean MB4 correction uptake vs legitimacy | **Next** |
-| **5** | Construction Lean model + MB8 gravestone | Pending |
+| **4** | Lean MB4 correction uptake vs legitimacy | **Done** 2026-08-17 |
+| **5** | Construction Lean model + MB8 gravestone | **Next** |
 | **6** | Crux Props, formal contracts, field v1/v2 | Pending |
 
 ## Resolved decisions (summary)

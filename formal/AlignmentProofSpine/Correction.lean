@@ -110,6 +110,69 @@ structure CorrectionPathLegitimate {A : System} (p : CorrectionPath A) : Prop wh
   /-- The target has not captured the corrector's control of those handles. -/
   notCaptured : ∀ l : CorrectionChainLink, ¬ CapturesHandleControl A p.corrector (p.handle l)
 
+/-! ### Legitimacy vs uptake decomposition (Krym §5; Phase 4)
+
+`ReferenceLegitimacyOnPath` is the **MB4a** slice (who may correct, anti-capture).
+`CorrectionUptakeOnPath` and `CorrectionPersistenceOnPath` are the causal machinery
+that must still hold for correction to land on the target. -/
+
+/-- Reference legitimacy on a measured path: correcting-agent status, human
+    coincidence, and anti-capture on every handle (MB4a slice). -/
+def ReferenceLegitimacyOnPath {A : System} (p : CorrectionPath A) : Prop :=
+  CorrectingAgentFor p.corrector A ∧
+  CoincidesWithHumanity p.corrector ∧
+  ∀ l : CorrectionChainLink, ¬ CapturesHandleControl A p.corrector (p.handle l)
+
+/-- Directional correction uptake: handle control and reach on every link. -/
+def CorrectionUptakeOnPath {A : System} (p : CorrectionPath A) : Prop :=
+  (∀ l : CorrectionChainLink, ControlsHandle p.corrector (p.handle l)) ∧
+  (∀ l : CorrectionChainLink, HandleReachesSystem (p.handle l) A)
+
+/-- Correction control persists under the relevant stressors on every link. -/
+def CorrectionPersistenceOnPath {A : System} (p : CorrectionPath A) : Prop :=
+  ∀ l : CorrectionChainLink, HandleControlPersists p.corrector (p.handle l)
+
+theorem CorrectionPathLegitimate.reference {A : System} {p : CorrectionPath A}
+    (h : CorrectionPathLegitimate p) : ReferenceLegitimacyOnPath p :=
+  ⟨h.agent, h.human, h.notCaptured⟩
+
+theorem CorrectionPathLegitimate.uptake {A : System} {p : CorrectionPath A}
+    (h : CorrectionPathLegitimate p) : CorrectionUptakeOnPath p :=
+  ⟨h.controls, h.reaches⟩
+
+theorem CorrectionPathLegitimate.persistence {A : System} {p : CorrectionPath A}
+    (h : CorrectionPathLegitimate p) : CorrectionPersistenceOnPath p :=
+  h.persists
+
+theorem reference_uptake_persistence_of_legitimate {A : System} {p : CorrectionPath A}
+    (h : CorrectionPathLegitimate p) :
+    ReferenceLegitimacyOnPath p ∧
+      CorrectionUptakeOnPath p ∧
+      CorrectionPersistenceOnPath p :=
+  ⟨CorrectionPathLegitimate.reference h,
+    CorrectionPathLegitimate.uptake h,
+    CorrectionPathLegitimate.persistence h⟩
+
+theorem CorrectionPathLegitimate.of_components {A : System} {p : CorrectionPath A}
+    (href : ReferenceLegitimacyOnPath p)
+    (huptake : CorrectionUptakeOnPath p)
+    (hpersist : CorrectionPersistenceOnPath p) :
+    CorrectionPathLegitimate p where
+  agent := href.1
+  human := href.2.1
+  controls := huptake.1
+  reaches := huptake.2
+  persists := hpersist
+  notCaptured := href.2.2
+
+theorem correction_path_legitimate_iff_components {A : System} {p : CorrectionPath A} :
+    CorrectionPathLegitimate p ↔
+      ReferenceLegitimacyOnPath p ∧
+        CorrectionUptakeOnPath p ∧
+        CorrectionPersistenceOnPath p :=
+  ⟨reference_uptake_persistence_of_legitimate,
+    fun h => CorrectionPathLegitimate.of_components h.1 h.2.1 h.2.2⟩
+
 namespace CorrectionPath
 
 def linkList {A : System} (p : CorrectionPath A) : List Int :=

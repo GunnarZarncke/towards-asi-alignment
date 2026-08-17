@@ -1,9 +1,9 @@
 ---
 leanNodes:
-  - nodeId: MB4_correction_legitimacy
+  - nodeId: MB4_correction_integrity
     kind: bridge
-    summary: Correction-channel integrity is assumed to imply that the system's future behavior actually tracks the correction operator — the judge's endorsement was not manipulated into invalidity.
-    module: AlignmentProofSpine/Core.lean
+    summary: Correction-channel integrity implies operator preservation (directional uptake + persistence, not reference legitimacy alone). Decomposed against MB4a reference legitimacy on CorrectionPath.
+    module: AlignmentProofSpine/MB4CorrectionIntegrity.lean
 evidenceNotes:
   - source: toy-simulation instrumentation curve (T-1, T-2)
     scenario: capture_theater

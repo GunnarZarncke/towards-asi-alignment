@@ -158,7 +158,7 @@
         "AlignmentProofSpine.InferentialDetectorAdequate",
         "AlignmentProofSpine.MB1_estimator_soundness",
         "AlignmentProofSpine.MB3_bearer_import",
-        "AlignmentProofSpine.MB4_correction_legitimacy",
+        "AlignmentProofSpine.MB4_correction_integrity",
         "AlignmentProofSpine.MB5_ontology_shift_successor_audit",
         "AlignmentProofSpine.MB6a_percolation_evidence_to_basin_stability",
         "AlignmentProofSpine.MB6b_basin_stability_to_correction_integrity",

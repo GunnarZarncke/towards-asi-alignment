@@ -7,6 +7,7 @@ import AlignmentProofSpine.Defeaters
 import AlignmentProofSpine.Chokepoint
 import AlignmentProofSpine.ToyDeploymentGate
 import AlignmentProofSpine.MB2Identifiability
+import AlignmentProofSpine.MB4CorrectionIntegrity
 
 /-!
 # AlignmentProofSpine.SpineModel
@@ -136,6 +137,11 @@ theorem MB4_independently_load_bearing :
       MB4DefeaterToyCorrectionIntegrityReading j ∧
         ¬ MB4DefeaterToyPreservesCorrectionOperator j :=
   MB4_defeater_toy_manipulated_judge
+
+theorem MB4_uptake_separate_from_reference_legitimacy :
+    ∃ w : FinCorrectionPathWitness,
+      FinCorrectionUptake w ∧ ¬ FinReferenceLegitimacy w :=
+  fin_uptake_without_reference_legitimacy
 
 /-! MB4a: measured-path legitimacy vs capture -/
 

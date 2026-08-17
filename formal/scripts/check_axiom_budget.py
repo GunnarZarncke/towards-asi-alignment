@@ -37,7 +37,7 @@ BRIDGE_RE = re.compile(rf"^{re.escape(NAMESPACE)}\.MB\d")
 ALL_CORE_BRIDGES = {
     "MB1_estimator_soundness",
     "MB3_bearer_import",
-    "MB4_correction_legitimacy",
+    "MB4_correction_integrity",
     "MB5_ontology_shift_successor_audit",
     "MB6a_percolation_evidence_to_basin_stability",
     "MB6b_basin_stability_to_correction_integrity",

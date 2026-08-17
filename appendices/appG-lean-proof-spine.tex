@@ -544,12 +544,24 @@ Field crossroad: bearer/import scope is adjacent to the identification sense of 
 Book bridge: Chapter~\ref{ch:bearer-maps}, Chapter~\ref{ch:transport-types} (Eq.~\eqref{eq:bearer-import-map}).
 \end{assumption}
 
-\begin{assumption}[MB4: correction legitimacy]
+\begin{assumption}[MB4: correction integrity]
 \label{appi:ass:mb4}
+On the measured-path layer (\texttt{Correction.lean}), legitimacy and uptake decompose:
+\begin{align}
+\label{appi:eq:mb4a-slice}
+\mathrm{ReferenceLegitimacyOnPath}(p) &:\ \text{correcting agent} \wedge \text{human coincidence} \wedge \neg\text{capture}, \\
+\label{appi:eq:mb4-uptake}
+\mathrm{CorrectionUptakeOnPath}(p) &:\ \text{handle control} \wedge \text{reach on every link}, \\
+\label{appi:eq:mb4-persist}
+\mathrm{CorrectionPersistenceOnPath}(p) &:\ \text{control persists under stressors}.
+\end{align}
+\(\mathrm{CorrectionPathLegitimate}(p)\) is their conjunction (\texttt{correction\_path\_legitimate\_iff\_components}).
+The global bridge is:
 \begin{equation}
 \label{appi:eq:mb4}
 \forall A,\ \mathrm{CorrectionIntegrity}(A)\Rightarrow \mathrm{PreservesCorrectionOperator}(A).
 \end{equation}
+\eqref{appi:eq:mb4a-slice}--\eqref{appi:eq:mb4-persist} are discharged for the designated path via bridge \texttt{MB4a} when \(\mathrm{CorrectionIntegrity}\) holds; \eqref{appi:eq:mb4} is the uptake/operator step (\texttt{preserves\_correction\_from\_mb4\_chain}).
 Field crossroad: corrigibility, off-switch anti-naturality, correction authority \autocite{soares2015corrigibility,orseau2016interruptible}.
 Book bridge: Chapter~\ref{ch:correction-channel-integrity}, Chapter~\ref{ch:manipulation-false-consent}.
 \end{assumption}

@@ -12,7 +12,7 @@
   "MB1": { "decls": ["MB1_estimator_soundness"] },
   "MB2": { "decls": ["MB2Crux", "bundle_aligned_from_mb2_chain"] },
   "MB3": { "decls": ["MB3_bearer_import"] },
-  "MB4": { "decls": ["MB4_correction_legitimacy"] },
+  "MB4": { "decls": ["MB4_correction_integrity", "preserves_correction_from_mb4_chain"] },
   "MB5": { "decls": ["MB5_ontology_shift_successor_audit"] },
   "MB6a": { "decls": ["MB6a_percolation_evidence_to_basin_stability"] },
   "MB6b": { "decls": ["MB6b_basin_stability_to_correction_integrity"] },
