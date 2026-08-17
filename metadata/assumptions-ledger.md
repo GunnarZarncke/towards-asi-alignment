@@ -69,7 +69,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### MB3 — Bearer maps (transport + admission)
 
-**Bridge (Lean):** Bundle transport plus bearer-map agreement implies bearer transport (`ch18`).
+**Bridge (Lean):** Bundle transport plus bearer-map agreement implies bearer transport (`MB3Crux` / `MB3_bearer_import`). Admission sub-obligation typed separately as `ConservativeExclusion` (`Bundles.lean`); named signal `BearerAdmissionMisclassified` (`Defeaters.lean`). Not a new MB\*.
 
 **Open sub-obligation (not a new MB\*):** Given candidate process $z$ from MB1/ch07 and evidence $E(z)$, infer whether bundle $k$ applies, including conservative one-sided exclusion certificates (ch18 §`sec:recognizing-new-bearers`). Three separable uncertainties: boundary ($z$), property/theory ($T$), normative relevance ($N$). Consciousness/sentience theories enter as candidate evidence providers, not as framework axioms. **U-17**.
 

@@ -42,6 +42,7 @@ axioms.
 | `MB1`/`MB9` | `GrainOfTruthViolated` | field misspec row | named (stronger multi-agent closure; toy deferred) |
 | `MB2`  | `GradientEquivalenceEstimationArtifact` | A-001, U-01 | named + finite toy (`P15_observed_policy_not_fin_identifiable`) |
 | `MB3`  | `BearerMapSpoofed` | A-001, A-006, U-02 | named, toy deferred |
+| `MB3` (admission) | `BearerAdmissionMisclassified` | U-17 | named, toy deferred (distinct from transport spoof) |
 | `MB4`  | `JudgeManipulated` | A-002, U-03, U-07 | toy model (`MB4_defeater_toy_manipulated_judge`) |
 | `MB4a` | `MeasuredPathCaptured` | A-002, U-03 | named + toy (`MB4a_defeater_toy_path_captured`) |
 | `MB5`  | `OntologyShiftUnaudited` | A-007, U-04 | named, toy deferred |
@@ -95,6 +96,14 @@ axiom GradientEquivalenceEstimationArtifact : System → System → Prop
     inputs where the two bearer assignments happen to agree, not because the
     assignments genuinely coincide off-sample. -/
 axiom BearerMapSpoofed : System → System → Prop
+
+/-- MB3 admission sub-obligation / U-17: an unfamiliar process was assigned
+    bearer relevance (or treated as safely excluded) under a certificate or
+    inference procedure that is unsound or incomplete for the property at
+    stake — e.g. treating abstention as exclusion, or a false non-bearer
+    certificate. Distinct from `BearerMapSpoofed` (transport under an already
+    fixed map). Vocabulary only; see `Bundles.ConservativeExclusion`. -/
+axiom BearerAdmissionMisclassified : System → Prop
 
 /-- MB5/A-007/U-04: an ontology shift across a successor step changes which
     variables are even nameable, so `FullTransport`/`BearerTransport`

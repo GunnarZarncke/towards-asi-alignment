@@ -30,7 +30,11 @@ external:
     url: "https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/"
   - label: "Lange et al. 2023"
     url: "https://arxiv.org/abs/2311.17030"
-related: []
+related:
+  - "specify-constitutional-ai"
+  - "construct-constitutional-ai"
+  - "alignment-target"
+  - "target-realization"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/anthropic-lab.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -54,6 +58,10 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 **What they contribute.** Industry [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) template, conditioning-predictor failure modes, Goodfire mechanistic-interpretability tooling (Anthropic investment; Apollo and DeepMind [mechanistic interpretability](https://www.anthropic.com/research) lineage on team), and cross-lab Neuronpedia infrastructure.
 
 **How this project treats it.** This project requires [correction-channel integrity](/cards/correction-channel-integrity/) and [adversarial verifiability](/cards/certification-under-manipulation/); a lab [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) is not the same as a preservation-layer certificate ([Deployment Safety](/cards/mb11-deployment-safety/)), and interpretability progress does not by itself resolve [Successor Gaming](/cards/mb10-successor-forgeability/) or full [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk.
+
+## Specify / construct (field v2)
+
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Constitutional AI](/cards/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/construct-constitutional-ai/).
 
 ## Links
 

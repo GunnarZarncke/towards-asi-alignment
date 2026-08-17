@@ -22,7 +22,12 @@ external:
     url: "https://www.alignmentforum.org/w/predca"
   - label: "Vanessa Kosoy"
     url: "https://www.alignmentforum.org/users/vanessa-kosoy"
-related: []
+related:
+  - "alignment-target"
+  - "target-realization"
+  - "pointing-problem"
+  - "mb2-bundle-identifiability"
+  - "mb3-bearer-import"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/kosoy-infra-bayesianism-lta.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -46,6 +51,10 @@ Vanessa Kosoy's [learning-theoretic agenda](https://www.alignmentforum.org/posts
 **What they contribute.** Model-class misspecification and grain-of-truth analysis; regret-bounded agents; inner daemons; [infra-Bayesian physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized) and the bridge transform; [PreDCA](https://www.alignmentforum.org/w/predca) as a sibling outer-alignment endpoint reached through a different formal path than [CIRL](/cards/subsumption-cirl/)-style pointing.
 
 **How this project treats it.** This work does not replace this project's System–bundle–correction ontology; its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Value Referent](/cards/mb3-bearer-import/), [Tiling](/cards/mb5-successor-ontology-shift/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/), with [Acausal Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood cousin. The PreDCA/PSI endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
+
+## Specify / construct (peer outer target)
+
+PreDCA / Physicalist Superimitation is listed on the [field v2 specify/construct table](/field/v2/#specify-construct-instances) as a **peer outer-target** ontology — not a `ConstitutionalRule` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.
 
 ## Links
 

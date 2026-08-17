@@ -18,7 +18,11 @@ external:
     url: "https://www.beneficialaifoundation.org/"
   - label: "LawZero"
     url: "https://lawzero.org/en"
-related: []
+related:
+  - "specify-gsai"
+  - "construct-gsai"
+  - "alignment-target"
+  - "target-realization"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/davidad-guaranteed-safe-ai-gsai.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -42,6 +46,10 @@ related: []
 **What they contribute.** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
 
 **How this project treats it.** This project emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
+
+## Specify / construct (field v2)
+
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [GSAI / Open Agency spec](/cards/specify-gsai/) · [Spec-relative formal builder](/cards/construct-gsai/).
 
 ## Links
 

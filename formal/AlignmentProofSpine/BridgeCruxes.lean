@@ -24,6 +24,9 @@ def MB1Crux : Prop :=
 
 def MB3Crux : Prop :=
   ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
+-- Bearer *admission* (unfamiliar-process → value relevance; ch18
+-- `ConservativeExclusion`) is an open sub-obligation of MB3, not part of this
+-- transport crux and not a `BridgeAssumptions` field. See `Bundles.lean`.
 
 def MB5Crux : Prop :=
   ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B

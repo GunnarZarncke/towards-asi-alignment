@@ -1,0 +1,178 @@
+# Specify / construct instances for field map v2.
+# Schema vs instances: ConstitutionalRule + ConstructionBet in AlignmentConstruction.lean.
+# Specify well-formedness (SpecifyCrux / SpecWellFormedness) is a placeholder — out of scope.
+# Regenerate: cd site && npm run sync:field-v2
+
+intro: >-
+  Field programs below are instantiations of one specify schema
+  (ConstitutionalRule → AlignmentTarget) paired with a construction bet
+  (ConstructionBet). They are not extra MB columns. Specify well-formedness
+  (SpecifyCrux) is an uninterpreted placeholder: this project does not
+  discharge “is this constitution good enough?”
+
+placeholderNote: >-
+  SpecifyCrux / SpecWellFormedness in AlignmentConstruction.lean is never
+  axiomatized. Theorems that need it take an explicit hypothesis (MB2-style).
+
+instances:
+  - id: cev
+    agendaSlugs:
+      - miri
+    schema: constitutional-rule
+    specify:
+      title: CEV (constitutional residue)
+      card: /cards/specify-cev/
+      lean: cevConstitution
+      params:
+        constituency: true
+        extrapolation: true
+        aggregation: true
+        openWorldCoverage: false
+        institutional: false
+    construct:
+      title: CEV construction (underspecified)
+      card: /cards/construct-cev/
+      lean: cevConstructionBet
+      claimsExplicitBuilder: false
+      pair: cevSpecifyConstruct
+    correspondence: >-
+      What remains of CEV after factorizing volition, referent, and correction
+      onto MB2–MB4 is a ConstitutionalRule (constituency + extrapolation +
+      aggregation). There is no associated constructive procedure in the MIRI
+      writeup comparable to RLAIF or a GSAI builder — Lean records
+      claimsExplicitBuilder = false. ConstructionCrux for this target stays
+      open; retired MB8 is not a builder.
+    references:
+      - label: Yudkowsky, CEV (2004)
+        url: https://intelligence.org/files/CEV.pdf
+      - label: MB8 gravestone
+        url: /cards/mb8-cev-process-convergence/
+      - label: App G (Lean spine)
+        url: /cards/chapters/appG/
+
+  - id: constitutional-ai
+    agendaSlugs:
+      - anthropic-lab
+    schema: constitutional-rule
+    specify:
+      title: Constitutional AI
+      card: /cards/specify-constitutional-ai/
+      lean: caiConstitution
+      params:
+        constituency: true
+        extrapolation: true
+        aggregation: true
+        openWorldCoverage: false
+        institutional: false
+    construct:
+      title: RLAIF / principles-as-feedback
+      card: /cards/construct-constitutional-ai/
+      lean: caiConstructionBet
+      claimsExplicitBuilder: true
+      pair: caiSpecifyConstruct
+    correspondence: >-
+      Bai et al. state principles (the constitution) and train with RLAIF so
+      the model tracks those principles. The specify instance is the principle
+      set (operator constituency, iterated/extrapolative feedback, multi-value
+      aggregation). The construction bet is the RLAIF stack — an explicit
+      builder, hence claimsExplicitBuilder = true. That flag is not
+      ConstructionCrux: Lean’s fin_claimed_builder_without_realization
+      separates catalog claims from realization.
+    references:
+      - label: Bai et al. 2022 (Constitutional AI)
+        url: https://arxiv.org/abs/2212.08073
+      - label: Anthropic agenda card
+        url: /cards/field-agendas/anthropic-lab/
+
+  - id: gsai
+    agendaSlugs:
+      - davidad-guaranteed-safe-ai-gsai
+    schema: constitutional-rule
+    specify:
+      title: GSAI / Open Agency spec
+      card: /cards/specify-gsai/
+      lean: gsaiConstitution
+      params:
+        constituency: true
+        extrapolation: false
+        aggregation: true
+        openWorldCoverage: true
+        institutional: false
+    construct:
+      title: Spec-relative formal builder
+      card: /cards/construct-gsai/
+      lean: gsaiConstructionBet
+      claimsExplicitBuilder: true
+      pair: gsaiSpecifyConstruct
+    correspondence: >-
+      GSAI’s specify instance is an explicit world-modelled specification
+      (openWorldCoverage = true), not CEV-style extrapolation
+      (extrapolation = false, so the AlignmentTarget does not demand a
+      correction-channel slot via that flag). The construction bet is the
+      constructivist safety-case / spec-relative builder. Completeness of the
+      spec is a cousin of MB9 conservativity, not the same crux; the builder
+      is a cousin of ConstructionCrux, not a discharge.
+    references:
+      - label: Dalrymple et al. 2024 (GSAI)
+        url: https://arxiv.org/abs/2405.06624
+      - label: GSAI agenda card
+        url: /cards/field-agendas/davidad-guaranteed-safe-ai-gsai/
+      - label: MB9 grounding
+        url: /cards/mb9-grounding-certificate/
+
+  - id: institutional
+    agendaSlugs:
+      - govai
+      - mai-cip-institutional-alignment
+    schema: constitutional-rule
+    specify:
+      title: Institutional / legal constitution
+      card: /cards/specify-institutional/
+      lean: institutionalConstitution
+      params:
+        constituency: true
+        extrapolation: false
+        aggregation: true
+        openWorldCoverage: false
+        institutional: true
+    construct:
+      title: Certified vendor / procurement regime
+      card: /cards/construct-institutional/
+      lean: institutionalConstructionBet
+      claimsExplicitBuilder: true
+      pair: institutionalSpecifyConstruct
+    correspondence: >-
+      Appendix C maps rights/duties and constitutional balancing onto value
+      bundles, and procurement/insurance/licensing onto selection. The specify
+      instance is an institutional ConstitutionalRule (institutional = true;
+      not extrapolative volition). The construction bet is socio-technical:
+      certified vendors, audit packs, and deployment gates that are supposed
+      to realize those constraints. Mapping is illustrative — Lean flags the
+      family, it does not prove isomorphism with ML constitutions.
+    references:
+      - label: Appendix C (institutional translation)
+        url: /cards/chapters/appC/
+      - label: Institutional selection gating
+        url: /cards/institutional-selection-gating/
+
+peerRows:
+  - id: predca
+    agendaSlugs:
+      - kosoy-infra-bayesianism-lta
+    schema: peer-outer-target
+    specifyTitle: PreDCA / Physicalist Superimitation
+    specifyCard: /cards/field-agendas/kosoy-infra-bayesianism-lta/
+    constructTitle: Bridge-transform / precursor-utility agent
+    constructCard: /cards/field-agendas/kosoy-infra-bayesianism-lta/
+    correspondence: >-
+      Not a ConstitutionalRule instance. PreDCA/PSI is a peer outer-target
+      ontology (precursor utilities via the bridge transform). This project
+      tags it on MB2/MB3, not as a specify-schema filling. Listed so the
+      table does not hide a major outer-alignment construction bet.
+    references:
+      - label: Kosoy, LTA status (2023)
+        url: https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
+      - label: PreDCA tag
+        url: https://www.alignmentforum.org/w/predca
+      - label: Kosoy agenda card
+        url: /cards/field-agendas/kosoy-infra-bayesianism-lta/

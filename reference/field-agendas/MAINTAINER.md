@@ -106,3 +106,5 @@ Quick examples:
 4. After editing evidence stance fields, run `python3 reference/field-agendas/scripts/check-evidence-stance.py` (also in root `make check`).
 5. Stance unit tests (also in `make check`): `node --test reference/field-agendas/scripts/matrix-cell.test.mjs` and `node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts`.
 6. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).
+7. **Adjacent work (v2 only):** edit `data/adjacent-work-v2.yml`, then `cd site && npm run sync:field-v2`. Renders on `/field/v2/#adjacent-work`. Not matrix cells — do not add consciousness/welfare items to `evidence.yml` / `matrix.yml` solely because they appear here.
+8. **Specify / construct instances (v2):** edit `data/specify-construct-instances.yml` and Lean names in `formal/AlignmentProofSpine/AlignmentConstruction.lean`; concept cards in `metadata/concepts.yml`. Then `cd site && npm run sync:field-v2` and `npm run sync:concepts`. Validate with `python3 formal/scripts/check_specify_construct_instances.py` (in `make check`). Renders on `/field/v2/#specify-construct-instances`.

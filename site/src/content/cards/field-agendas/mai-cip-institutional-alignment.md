@@ -18,7 +18,11 @@ external:
     url: "https://www.cip.org/"
   - label: "Alignment Assemblies"
     url: "https://www.cip.org/alignmentassemblies"
-related: []
+related:
+  - "specify-institutional"
+  - "construct-institutional"
+  - "alignment-target"
+  - "target-realization"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/mai-cip-institutional-alignment.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -42,6 +46,10 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 **What they contribute.** Institutional amplification as a failure mode; operational deliberative alignment; counterfactual value commitments distinguished from surface preferences.
 
 **How this project treats it.** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
+
+## Specify / construct (field v2)
+
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/).
 
 ## Links
 

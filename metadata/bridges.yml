@@ -53,17 +53,17 @@ bridges:
     kind: bridge
     title: MB3 — Value Referent
     status: bridge
-    summary: "Who do the values apply to after a merge, upload, or substrate change? Precise bet: a preserved bearer map under translation makes value-bundle transport more than surface wording."
-    decision: Before trusting a transport claim across a merge, upload, or substrate change, ask whether the audit checked who or what the values apply to, not only whether the words survived.
-    evidence: Evidence would include an audited bearer map that tracks the same entities across the transition and flags any silently dropped or relabeled bearer.
+    summary: "Who do the values apply to — including unfamiliar processes — and does that survive merge, upload, or substrate change? Precise bet: admission (when a process counts as a bearer at all) plus transport (preserved bearer map under translation)."
+    decision: Before trusting a transport claim, ask whether the audit checked who or what the values apply to — and, for unfamiliar substrates, what evidence admitted those entities as bearers in the first place — not only whether the words survived.
+    evidence: Evidence would include an audited bearer map across transitions, plus (for admission) one-sided exclusion certificates or explicit abstention under uncertain theories — not silent false negatives.
     bookChapters:
       - ch18
     body: bodies/mb3-bearer-import.md
     id: MB3
     assumptionIds: [A-001, A-006]
-    fieldCrux: "Who or what values apply to survives substrate and representation change."
-    owningAgenda: "CIRL / value learning (whom); CEV population questions"
-    bookMove: "Bearer maps as an audited transport layer separate from bundle geometry and scalar value identifiability"
+    fieldCrux: "Who or what values apply to — admission under unfamiliar substrates, and survival under substrate/representation change."
+    owningAgenda: "CIRL / value learning (whom); CEV population questions; nonperson / AI-welfare neighborhood"
+    bookMove: "Bearer maps as an audited layer with admission (ConservativeExclusion) and transport halves; not folded into MB2 identifiability"
   - slug: mb4-correction-legitimacy
     kind: bridge
     title: MB4 — Corrigibility

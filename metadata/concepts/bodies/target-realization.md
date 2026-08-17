@@ -22,6 +22,12 @@ leanNodes:
     module: AlignmentProofSpine/AlignmentConstruction.lean
 related:
   - pointing-problem
+  - alignment-target
+  - specify-cev
+  - specify-constitutional-ai
+  - specify-gsai
+  - construct-constitutional-ai
+  - construct-gsai
   - mb2-bundle-identifiability
   - mb4-correction-legitimacy
   - mb8-cev-process-convergence

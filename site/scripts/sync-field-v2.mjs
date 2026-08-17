@@ -40,6 +40,8 @@ async function main() {
   const { bridges: lifecycleRows } = await loadYaml("bridges-v2.yml");
   const { openSpineInterfaces } = await loadYaml("open-spine-interfaces.yml");
   const lifecycle = await loadYaml("lifecycle.yml");
+  const adjacentWork = await loadYaml("adjacent-work-v2.yml");
+  const specifyConstruct = await loadYaml("specify-construct-instances.yml");
 
   const lifecycleByKey = Object.fromEntries(lifecycleRows.map((row) => [row.key, row]));
 
@@ -64,11 +66,19 @@ async function main() {
       lifecycleGapsNote: lifecycle.gapsNote ?? "",
       lifecycleAxis: lifecycleOrder.join(" → "),
       openSpineInterfaces: meta.openSpineInterfaces,
-      note: "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/."
+      note: "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/.",
+      adjacentWorkIntro: adjacentWork.intro ?? "",
+      adjacentWorkFirewall: adjacentWork.firewall ?? "",
+      adjacentWorkPhenomenalityNote: adjacentWork.phenomenalityNote ?? "",
+      specifyConstructIntro: specifyConstruct.intro ?? "",
+      specifyConstructPlaceholderNote: specifyConstruct.placeholderNote ?? ""
     },
     lifecyclePhases,
     bridges,
-    openSpineInterfaces
+    openSpineInterfaces,
+    adjacentWork: adjacentWork.items ?? [],
+    specifyConstructInstances: specifyConstruct.instances ?? [],
+    specifyConstructPeerRows: specifyConstruct.peerRows ?? []
   };
 
   const contents = JSON.stringify(payload, null, 2) + "\n";

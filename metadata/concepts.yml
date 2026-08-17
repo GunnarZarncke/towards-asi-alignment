@@ -58,6 +58,17 @@ concepts:
     glossaryTerms:
       - term: Adversarial measurement
         definition: Inferring agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.
+  - slug: alignment-target
+    kind: concept
+    status: framework
+    title: Alignment Target
+    summary: Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder.
+    bookChapters:
+      - ch01
+      - ch28
+    bookLabels:
+      - sec:pointing-problem
+    body: bodies/alignment-target.md
   - slug: anti-capture-correction-validity
     kind: standalone-claim
     title: Anti-Capture Validity of Correction
@@ -284,6 +295,38 @@ concepts:
       - sec:moving-boundaries
       - sec:conserved-properties
     body: bodies/conserved-properties-growth-split-merge.md
+  - slug: construct-cev
+    kind: concept
+    status: framework
+    title: Construct — CEV (underspecified)
+    summary: CEV construction bet (cevConstructionBet); claimsExplicitBuilder = false — no named builder in the original writeup.
+    bookChapters:
+      - ch28
+    body: bodies/construct-cev.md
+  - slug: construct-constitutional-ai
+    kind: concept
+    status: framework
+    title: Construct — RLAIF / Constitutional AI
+    summary: RLAIF principles-as-feedback as caiConstructionBet; catalog builder claim ≠ ConstructionCrux discharge.
+    bookChapters:
+      - ch21
+    body: bodies/construct-constitutional-ai.md
+  - slug: construct-gsai
+    kind: concept
+    status: framework
+    title: Construct — GSAI spec-relative builder
+    summary: GSAI constructivist safety-case / spec-relative builder (gsaiConstructionBet).
+    bookChapters:
+      - ch33
+    body: bodies/construct-gsai.md
+  - slug: construct-institutional
+    kind: concept
+    status: framework
+    title: Construct — institutional / procurement regime
+    summary: Certified vendor and procurement-gate regime as institutionalConstructionBet (App C analogue).
+    bookChapters:
+      - appC
+    body: bodies/construct-institutional.md
   - slug: correction-channel-integrity
     kind: concept
     title: Correction-Channel Integrity
@@ -678,6 +721,38 @@ concepts:
       - bearer-map-commutation-failure
       - certification-under-manipulation
       - goodhart-as-selector
+  - slug: specify-cev
+    kind: concept
+    status: framework
+    title: Specify — CEV (constitutional residue)
+    summary: cevConstitution instance — retired MB8 factorizes here; paired with construct-cev.
+    bookChapters:
+      - ch28
+    body: bodies/specify-cev.md
+  - slug: specify-constitutional-ai
+    kind: concept
+    status: framework
+    title: Specify — Constitutional AI
+    summary: caiConstitution instance — principles-as-constitution; paired with RLAIF construction bet.
+    bookChapters:
+      - ch21
+    body: bodies/specify-constitutional-ai.md
+  - slug: specify-gsai
+    kind: concept
+    status: framework
+    title: Specify — GSAI / Open Agency
+    summary: gsaiConstitution instance — openWorldCoverage flag; paired with spec-relative builder.
+    bookChapters:
+      - ch33
+    body: bodies/specify-gsai.md
+  - slug: specify-institutional
+    kind: concept
+    status: framework
+    title: Specify — institutional / legal constitution
+    summary: institutionalConstitution instance — App C rights/duties analogue; paired with procurement regime bet.
+    bookChapters:
+      - appC
+    body: bodies/specify-institutional.md
   - slug: static-target-trap
     kind: objection
     title: The Static Target Trap

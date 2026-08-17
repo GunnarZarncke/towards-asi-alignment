@@ -20,6 +20,9 @@ check: generate
 	python3 scripts/check_bibliography_summaries.py
 	python3 scripts/check_claim_spine.py
 	python3 reference/field-agendas/scripts/check-evidence-stance.py
+	python3 formal/scripts/check_open_spine_interfaces.py
+	python3 formal/scripts/check_specify_construct_instances.py
+	cd site && npm run sync:field-v2 -- --check
 	node --test reference/field-agendas/scripts/matrix-cell.test.mjs
 	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts
 

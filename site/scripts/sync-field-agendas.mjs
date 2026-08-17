@@ -110,11 +110,85 @@ function formatBridgeLinks(bridgeKeys, bridgeRows) {
     .join("; ");
 }
 
+function uniqueStrings(items) {
+  const out = [];
+  for (const item of items) {
+    if (item && !out.includes(item)) out.push(item);
+  }
+  return out;
+}
+
+function cardSlugFromPath(pathOrUrl) {
+  if (!pathOrUrl) return null;
+  const match = String(pathOrUrl).match(/\/cards\/([^/#]+)\/?(?:#|$)/);
+  return match ? match[1] : null;
+}
+
+function buildSpecifyConstructByAgenda(instancesDoc) {
+  const map = {};
+  for (const row of instancesDoc?.instances ?? []) {
+    const specifyCard = cardSlugFromPath(row.specify?.card);
+    const constructCard = cardSlugFromPath(row.construct?.card);
+    const entry = {
+      kind: "instance",
+      instanceId: row.id,
+      specifyCard,
+      constructCard,
+      specifyTitle: row.specify?.title ?? specifyCard,
+      constructTitle: row.construct?.title ?? constructCard,
+      correspondence: row.correspondence ?? "",
+      related: uniqueStrings([specifyCard, constructCard, "alignment-target", "target-realization"])
+    };
+    for (const agendaSlug of row.agendaSlugs ?? []) {
+      map[agendaSlug] = entry;
+    }
+  }
+  for (const row of instancesDoc?.peerRows ?? []) {
+    const entry = {
+      kind: "peer",
+      peerId: row.id,
+      correspondence: row.correspondence ?? "",
+      related: uniqueStrings([
+        "alignment-target",
+        "target-realization",
+        "pointing-problem",
+        "mb2-bundle-identifiability",
+        "mb3-bearer-import"
+      ])
+    };
+    for (const agendaSlug of row.agendaSlugs ?? []) {
+      map[agendaSlug] = entry;
+    }
+  }
+  return map;
+}
+
+function renderSpecifyConstructSection(sc) {
+  if (!sc) return [];
+  const lines = [];
+  if (sc.kind === "instance") {
+    lines.push(`## Specify / construct (field v2)`);
+    lines.push("");
+    lines.push(
+      `This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [${sc.specifyTitle}](/cards/${sc.specifyCard}/) · [${sc.constructTitle}](/cards/${sc.constructCard}/).`
+    );
+    lines.push("");
+  } else if (sc.kind === "peer") {
+    lines.push(`## Specify / construct (peer outer target)`);
+    lines.push("");
+    lines.push(
+      `PreDCA / Physicalist Superimitation is listed on the [field v2 specify/construct table](/field/v2/#specify-construct-instances) as a **peer outer-target** ontology — not a \`ConstitutionalRule\` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.`
+    );
+    lines.push("");
+  }
+  return lines;
+}
+
 function clusteringForSlug(slug, clustering) {
   return clustering.filter((row) => row.rollsUpSlug === slug);
 }
 
-function renderAgendaBody(agenda, clusteringRows, bridgeRows) {
+function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct) {
   const lines = [];
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   lines.push(`## Introduction`);
@@ -160,6 +234,7 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows) {
     lines.push(`**How this project treats it.** ${agenda.bookSeparates}`);
     lines.push("");
   }
+  lines.push(...renderSpecifyConstructSection(specifyConstruct));
   if (agenda.reviewStatus) {
     lines.push(`**Current status.** ${agenda.reviewStatus}`);
     lines.push("");
@@ -188,8 +263,9 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows) {
   return lines.join("\n");
 }
 
-function renderAgendaCard(agenda, clusteringRows, bridgeRows) {
+function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct) {
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
+  const related = uniqueStrings([...(agenda.related ?? []), ...(specifyConstruct?.related ?? [])]);
   const fm = [
     "---",
     `title: ${yamlScalar(agenda.title)}`,
@@ -199,12 +275,12 @@ function renderAgendaCard(agenda, clusteringRows, bridgeRows) {
     `agendaSlug: ${yamlScalar(agenda.slug)}`,
     yamlBlockList("bookBridges", bridgeKeys),
     yamlExternalLinks(agenda.links),
-    "related: []",
+    yamlBlockList("related", related),
     "---",
     "",
     agendaCardBanner(agenda.slug),
     "",
-    renderAgendaBody(agenda, clusteringRows, bridgeRows)
+    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct)
   ].join("\n");
   return fm;
 }
@@ -408,6 +484,9 @@ async function main() {
   const { evidence } = await loadYaml("evidence.yml");
   const { clustering } = await loadYaml("clustering.yml");
   const { bridges: bridgeRows } = await loadYaml("bridges.yml");
+  const specifyConstructByAgenda = buildSpecifyConstructByAgenda(
+    await loadYaml("specify-construct-instances.yml")
+  );
   const mbBridgeCards = buildMbBridgeCards(bridgeRows);
 
   const mismatches = [];
@@ -418,7 +497,7 @@ async function main() {
   for (const agenda of agendas) {
     if (agenda.generateCard === false) continue;
     const clusterRows = clustering.filter((row) => row.rollsUpSlug === agenda.slug);
-    const card = renderAgendaCard(agenda, clusterRows, bridgeRows);
+    const card = renderAgendaCard(agenda, clusterRows, bridgeRows, specifyConstructByAgenda[agenda.slug]);
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }
 

@@ -6,7 +6,12 @@
     "lifecycleGapsNote": "Specify and construct look sparse because those stages were underrepresented in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is retired and factorizes as Alignment Target (specify) plus Target Realization (construct). Open spine interfaces fill those roles; field outer-alignment work often spans specify and identify without mapping to a single MB column.",
     "lifecycleAxis": "specify → construct → identify → certify → preserve",
     "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.",
-    "note": "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/."
+    "note": "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/.",
+    "adjacentWorkIntro": "Candidate theory and policy work relevant to bearer admission (ch18 / MB3 sub-obligation): which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a bundle-specific bearer class. These notes are not coverage-matrix cells. Filling a matrix cell requires a sourced agenda contribution under field-map curation rules; listing here only records neighborhood work the live hub should make visible.",
+    "adjacentWorkFirewall": "MB1 (boundary / candidate process) is an upstream dependency of bearer inference, not a problem these sources solve. Do not read this list as evidence that consciousness or welfare researchers discharge Embedded Agency. Self-modeling, introspection, and global-workspace-like architecture are candidate indicators under some theories — not consciousness tests and not automatic Inner Alignment (MB7) coverage.",
+    "adjacentWorkPhenomenalityNote": "A certified nonperson / non-subjecthood result does not license unconstrained treatment of a process that may still be valenced or otherwise morally relevant under a different property. Phenomenality and subjecthood stay distinct.",
+    "specifyConstructIntro": "Field programs below are instantiations of one specify schema (ConstitutionalRule → AlignmentTarget) paired with a construction bet (ConstructionBet). They are not extra MB columns. Specify well-formedness (SpecifyCrux) is an uninterpreted placeholder: this project does not discharge “is this constitution good enough?”",
+    "specifyConstructPlaceholderNote": "SpecifyCrux / SpecWellFormedness in AlignmentConstruction.lean is never axiomatized. Theorems that need it take an explicit hypothesis (MB2-style)."
   },
   "lifecyclePhases": [
     {
@@ -242,17 +247,22 @@
       "lifecycleRole": "specify",
       "status": "open",
       "leanModule": "AlignmentProofSpine/AlignmentConstruction",
-      "leanProp": "AlignmentTarget",
+      "leanProp": "TargetSpecifiable",
       "leanDefs": [
         "ConstitutionalRule",
         "constitutionalTarget",
-        "cevConstitution"
+        "SpecWellFormedness",
+        "SpecifyCrux",
+        "cevConstitution",
+        "caiConstitution",
+        "gsaiConstitution",
+        "institutionalConstitution"
       ],
       "bookChapters": [
         "ch28",
         "ch01"
       ],
-      "conceptCard": "/cards/mb8-cev-process-convergence/",
+      "conceptCard": "/cards/alignment-target/",
       "summary": "State a coherent alignment target (constitutional rule → AlignmentTarget). Open specify-phase crux; not an MB bridge column. Retired MB8 (CEV) factorizes here; outer-alignment, constitutional-AI, and open-world specification debates (GSAI completeness cousins) attach in this neighborhood — distinct from MB2 identification of values in a deployed system.",
       "dependsOn": [],
       "notABridge": true
@@ -267,7 +277,13 @@
       "leanDefs": [
         "Realizes",
         "TargetRealizable",
-        "CertifiedAsRealizing"
+        "CertifiedAsRealizing",
+        "ConstructionBet",
+        "SpecifyConstructPair",
+        "cevConstructionBet",
+        "caiConstructionBet",
+        "gsaiConstructionBet",
+        "institutionalConstructionBet"
       ],
       "bookChapters": [
         "ch33",
@@ -277,6 +293,287 @@
       "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction).",
       "dependsOn": [],
       "notABridge": true
+    }
+  ],
+  "adjacentWork": [
+    {
+      "id": "nonperson-predicate",
+      "title": "Nonperson predicate",
+      "carrier": "Yudkowsky / MIRI lineage",
+      "bridges": [
+        "MB3"
+      ],
+      "type": "C",
+      "summary": "One-sided, abstaining exclusion certificate for computations outside a morally relevant class (mindcrime / simulated persons). TSA generalizes the form to bundle-specific conservative bearer exclusion; it does not supply a theory of consciousness or moral patienthood, and does not mean MIRI developed TSA's bearer-map framework.",
+      "sources": [
+        {
+          "label": "Nonperson Predicates (LessWrong)",
+          "url": "https://www.lesswrong.com/posts/wqDRRx9RqwKLzWt7R/nonperson-predicates"
+        },
+        {
+          "label": "Nonperson predicate (tag)",
+          "url": "https://www.lesswrong.com/w/nonperson-predicate"
+        }
+      ],
+      "book": "ch18 § recognizing new bearers; bib yudkowsky2008nonperson"
+    },
+    {
+      "id": "butlin-2023-indicators",
+      "title": "Consciousness indicators (theory-derived)",
+      "carrier": "Butlin et al. (2023)",
+      "bridges": [
+        "MB3"
+      ],
+      "type": "T",
+      "summary": "Derives computational indicator properties from several scientific theories of consciousness rather than treating behavioral self-report as sufficient. Candidate evidence providers for bearer inference — not a solved consciousness test.",
+      "sources": [
+        {
+          "label": "arXiv:2308.08708",
+          "url": "https://arxiv.org/abs/2308.08708"
+        }
+      ],
+      "book": "ch18; bib butlin2023consciousnessai"
+    },
+    {
+      "id": "long-2024-ai-welfare",
+      "title": "Taking AI welfare seriously",
+      "carrier": "Long et al. (2024)",
+      "bridges": [
+        "MB3",
+        "MB11"
+      ],
+      "type": "C",
+      "summary": "Assessment and organizational preparation under uncertainty about future AI moral patienthood. MB3 for the bearer-relevance question; MB11 only for the deployment-policy / precaution strand — not a claim that welfare work certifies deployment safety.",
+      "sources": [
+        {
+          "label": "arXiv:2411.00986",
+          "url": "https://arxiv.org/abs/2411.00986"
+        }
+      ],
+      "book": "ch18 short welfare cite list; bib long2024aiwelfare"
+    },
+    {
+      "id": "butlin-2025-responsible",
+      "title": "Principles for responsible AI consciousness research",
+      "carrier": "Butlin & Lappas (2025)",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "C",
+      "summary": "Links uncertain consciousness research to responsible research and deployment practice. Neighborhood of MB11 precaution under moral-status uncertainty; not discharge of deployment safety.",
+      "sources": [
+        {
+          "label": "arXiv:2501.07290",
+          "url": "https://arxiv.org/abs/2501.07290"
+        }
+      ],
+      "book": "bib butlin2025responsibleconsciousness"
+    },
+    {
+      "id": "cimc",
+      "title": "California Institute for Machine Consciousness",
+      "carrier": "CIMC",
+      "bridges": [
+        "MB3"
+      ],
+      "type": "C",
+      "summary": "Independent research agenda on phenomenal consciousness in artificial systems (theoretical + empirical / experimental computational philosophy). Candidate theory neighborhood for bearer-property evidence — not boundary discovery (MB1) and not a TSA framework axiom.",
+      "sources": [
+        {
+          "label": "cimc.ai",
+          "url": "https://cimc.ai/"
+        }
+      ],
+      "book": "field note only; verify claims against CIMC's own pages"
+    },
+    {
+      "id": "anthropic-model-welfare",
+      "title": "Exploring model welfare (short cite)",
+      "carrier": "Anthropic",
+      "bridges": [
+        "MB3",
+        "MB11"
+      ],
+      "type": "P",
+      "summary": "Lab statement treating possible model experience/welfare as an open research question. Short cite only — not an introspection or global-workspace narrative, and not evidence that current models are conscious.",
+      "sources": [
+        {
+          "label": "Exploring Model Welfare",
+          "url": "https://www.anthropic.com/news/exploring-model-welfare"
+        }
+      ],
+      "book": "ch18 short welfare cite list; bib anthropic2025modelwelfare"
+    }
+  ],
+  "specifyConstructInstances": [
+    {
+      "id": "cev",
+      "schema": "constitutional-rule",
+      "specify": {
+        "title": "CEV (constitutional residue)",
+        "card": "/cards/specify-cev/",
+        "lean": "cevConstitution",
+        "params": {
+          "constituency": true,
+          "extrapolation": true,
+          "aggregation": true,
+          "openWorldCoverage": false,
+          "institutional": false
+        }
+      },
+      "construct": {
+        "title": "CEV construction (underspecified)",
+        "card": "/cards/construct-cev/",
+        "lean": "cevConstructionBet",
+        "claimsExplicitBuilder": false,
+        "pair": "cevSpecifyConstruct"
+      },
+      "correspondence": "What remains of CEV after factorizing volition, referent, and correction onto MB2–MB4 is a ConstitutionalRule (constituency + extrapolation + aggregation). There is no associated constructive procedure in the MIRI writeup comparable to RLAIF or a GSAI builder — Lean records claimsExplicitBuilder = false. ConstructionCrux for this target stays open; retired MB8 is not a builder.",
+      "references": [
+        {
+          "label": "Yudkowsky, CEV (2004)",
+          "url": "https://intelligence.org/files/CEV.pdf"
+        },
+        {
+          "label": "MB8 gravestone",
+          "url": "/cards/mb8-cev-process-convergence/"
+        },
+        {
+          "label": "App G (Lean spine)",
+          "url": "/cards/chapters/appG/"
+        }
+      ]
+    },
+    {
+      "id": "constitutional-ai",
+      "schema": "constitutional-rule",
+      "specify": {
+        "title": "Constitutional AI",
+        "card": "/cards/specify-constitutional-ai/",
+        "lean": "caiConstitution",
+        "params": {
+          "constituency": true,
+          "extrapolation": true,
+          "aggregation": true,
+          "openWorldCoverage": false,
+          "institutional": false
+        }
+      },
+      "construct": {
+        "title": "RLAIF / principles-as-feedback",
+        "card": "/cards/construct-constitutional-ai/",
+        "lean": "caiConstructionBet",
+        "claimsExplicitBuilder": true,
+        "pair": "caiSpecifyConstruct"
+      },
+      "correspondence": "Bai et al. state principles (the constitution) and train with RLAIF so the model tracks those principles. The specify instance is the principle set (operator constituency, iterated/extrapolative feedback, multi-value aggregation). The construction bet is the RLAIF stack — an explicit builder, hence claimsExplicitBuilder = true. That flag is not ConstructionCrux: Lean’s fin_claimed_builder_without_realization separates catalog claims from realization.",
+      "references": [
+        {
+          "label": "Bai et al. 2022 (Constitutional AI)",
+          "url": "https://arxiv.org/abs/2212.08073"
+        },
+        {
+          "label": "Anthropic agenda card",
+          "url": "/cards/field-agendas/anthropic-lab/"
+        }
+      ]
+    },
+    {
+      "id": "gsai",
+      "schema": "constitutional-rule",
+      "specify": {
+        "title": "GSAI / Open Agency spec",
+        "card": "/cards/specify-gsai/",
+        "lean": "gsaiConstitution",
+        "params": {
+          "constituency": true,
+          "extrapolation": false,
+          "aggregation": true,
+          "openWorldCoverage": true,
+          "institutional": false
+        }
+      },
+      "construct": {
+        "title": "Spec-relative formal builder",
+        "card": "/cards/construct-gsai/",
+        "lean": "gsaiConstructionBet",
+        "claimsExplicitBuilder": true,
+        "pair": "gsaiSpecifyConstruct"
+      },
+      "correspondence": "GSAI’s specify instance is an explicit world-modelled specification (openWorldCoverage = true), not CEV-style extrapolation (extrapolation = false, so the AlignmentTarget does not demand a correction-channel slot via that flag). The construction bet is the constructivist safety-case / spec-relative builder. Completeness of the spec is a cousin of MB9 conservativity, not the same crux; the builder is a cousin of ConstructionCrux, not a discharge.",
+      "references": [
+        {
+          "label": "Dalrymple et al. 2024 (GSAI)",
+          "url": "https://arxiv.org/abs/2405.06624"
+        },
+        {
+          "label": "GSAI agenda card",
+          "url": "/cards/field-agendas/davidad-guaranteed-safe-ai-gsai/"
+        },
+        {
+          "label": "MB9 grounding",
+          "url": "/cards/mb9-grounding-certificate/"
+        }
+      ]
+    },
+    {
+      "id": "institutional",
+      "schema": "constitutional-rule",
+      "specify": {
+        "title": "Institutional / legal constitution",
+        "card": "/cards/specify-institutional/",
+        "lean": "institutionalConstitution",
+        "params": {
+          "constituency": true,
+          "extrapolation": false,
+          "aggregation": true,
+          "openWorldCoverage": false,
+          "institutional": true
+        }
+      },
+      "construct": {
+        "title": "Certified vendor / procurement regime",
+        "card": "/cards/construct-institutional/",
+        "lean": "institutionalConstructionBet",
+        "claimsExplicitBuilder": true,
+        "pair": "institutionalSpecifyConstruct"
+      },
+      "correspondence": "Appendix C maps rights/duties and constitutional balancing onto value bundles, and procurement/insurance/licensing onto selection. The specify instance is an institutional ConstitutionalRule (institutional = true; not extrapolative volition). The construction bet is socio-technical: certified vendors, audit packs, and deployment gates that are supposed to realize those constraints. Mapping is illustrative — Lean flags the family, it does not prove isomorphism with ML constitutions.",
+      "references": [
+        {
+          "label": "Appendix C (institutional translation)",
+          "url": "/cards/chapters/appC/"
+        },
+        {
+          "label": "Institutional selection gating",
+          "url": "/cards/institutional-selection-gating/"
+        }
+      ]
+    }
+  ],
+  "specifyConstructPeerRows": [
+    {
+      "id": "predca",
+      "schema": "peer-outer-target",
+      "specifyTitle": "PreDCA / Physicalist Superimitation",
+      "specifyCard": "/cards/field-agendas/kosoy-infra-bayesianism-lta/",
+      "constructTitle": "Bridge-transform / precursor-utility agent",
+      "constructCard": "/cards/field-agendas/kosoy-infra-bayesianism-lta/",
+      "correspondence": "Not a ConstitutionalRule instance. PreDCA/PSI is a peer outer-target ontology (precursor utilities via the bridge transform). This project tags it on MB2/MB3, not as a specify-schema filling. Listed so the table does not hide a major outer-alignment construction bet.",
+      "references": [
+        {
+          "label": "Kosoy, LTA status (2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
+        },
+        {
+          "label": "PreDCA tag",
+          "url": "https://www.alignmentforum.org/w/predca"
+        },
+        {
+          "label": "Kosoy agenda card",
+          "url": "/cards/field-agendas/kosoy-infra-bayesianism-lta/"
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,7 @@
 # Task: Integrate AI consciousness, moral-patient detection, and nonperson predicates into TSA
 
+**Status: CLOSED** (2026-08-17). Phases 0–5 shipped; see session logs `2026-08-17-consciousness-tsa-phase*.md` and `metadata/TODO.md`. No further work under this task unless a new extension is opened.
+
 ## Implementation constraints (2026-08-17 overlay)
 
 These override later sections of this task when they conflict. Implementation plan: Cursor plan `consciousness_tsa_extension` / Phase 0 re-audit below in §28.4.
@@ -8,7 +10,7 @@ These override later sections of this task when they conflict. Implementation pl
 - **Re-read current insertion points before each edit.** Many chapter and DAG edits landed after the 2026-08-16 audit in §28.2. Do not apply remembered section titles; use §28.4.
 - **Field map: v2 only.** Do not edit v1 `evidence.yml` / `matrix.yml` / `roster.yml` / `agendas/` or run `sync:field-agendas`. Surface nonperson + consciousness/welfare work only on `/field/v2/`.
 - **Model welfare stays short:** a citation list of existing work, not a research narrative. Do not expand Anthropic introspection or global-workspace papers into chapter argument.
-- **Lean and MB are a late phase.** Do not edit the MB3 concept card, Lean, App G, App B, or `{leanbox}` until that phase. Bearer admission stays inside MB3 (no MB3a, no new open-spine interface in this pass).
+- **Lean and MB are a late phase.** ~~Do not edit the MB3 concept card, Lean, App G, App B, or `{leanbox}` until that phase.~~ **Done Phase 5:** `ConservativeExclusion`, MB3 card, App B/G, ch18 `{leanbox}`. Bearer admission stays inside MB3 (no MB3a, no new open-spine interface).
 
 You are modifying the repository for **Towards Superintelligence Alignment: Boundaries, Values, and Correction (TSA)**:
 
@@ -1381,7 +1383,7 @@ Start-of-work check against **current** files (not the 2026-08-16 snapshot). Com
 | **ch18 outgoing** | YAML: ch18 → ch16, **ch24**, ch31, ch40, ch47. Combined table (transitively thinned): ch18 → ch16, ch31, ch47 only. **ch18 → ch24 is new since 2026-08-16.** | Keep; do not drop ch24/ch40 when adding ch07. |
 | **ch32 firewall** | ch32 has **no** edge to/from ch18. Incoming: ch31 → ch32 (`conserved-properties`); YAML also ch30 → ch32 (`successor-stability`). Outgoing: ch32 → ch33 (`SelfControlGap`, symbol). | Do **not** add ch32 ↔ ch18. Default: no evidence-only edge unless ch18 actually imports ch32 \(d,\tau,\beta\) as candidate indicators. |
 | **Symbol DAG** | ch18 still informal-only. `\Phi`/`\theta` home remains ch16 → ch22. | Prefer no new bridge symbol in ch18. |
-| **Lean / MB3 card** | Unchanged; detection still unnamed. | **Late phase.** |
+| **Lean / MB3 card** | **Phase 5 done** (2026-08-17): `ConservativeExclusion` + one-sidedness lemmas; MB3 card split admission/transport; App B/G; `BearerAdmissionMisclassified`. | Closed. |
 
 ### Chapter insertion points (re-read before Phase 1)
 
@@ -1394,9 +1396,22 @@ Start-of-work check against **current** files (not the 2026-08-16 snapshot). Com
 | [`chapters/ch42-safety-case.tex`](../chapters/ch42-safety-case.tex) | Already lists bearer-map checks (L21, L60, L236, L270). | Optional one-liner only if a natural leaf already lists bearer maps; default skip. |
 | ch15 / ch17 | Superficial bottleneck resemblance is **not** in current prose as a consciousness claim. | **No** Rainbow or consciousness analogy. |
 
-### Field v2 (Phase 4, not v1)
+### Field v2 (Phase 4) — done
 
-Live `/field/` is v1. Preview [`site/src/pages/field/v2/index.astro`](../site/src/pages/field/v2/index.astro) shows lifecycle roles + one open interface (Target Realization). MB3 lifecycle role is currently `preserve` in `bridges-v2.yml` — **leave it** this pass. Adjacent-work list (nonperson, Butlin, Long, CIMC, short Anthropic welfare cites) is a v2 YAML/section, not a matrix row.
+Live hub is `/field/` → `/field/v2/`. Adjacent-work list lives in [`reference/field-agendas/data/adjacent-work-v2.yml`](../reference/field-agendas/data/adjacent-work-v2.yml) at `/field/v2/#adjacent-work` — **not** matrix cells. MB3 lifecycle role stays `preserve` in `bridges-v2.yml`.
+
+## 28.5 Closure (2026-08-17)
+
+| Phase | Deliverable | Log |
+|-------|-------------|-----|
+| 0 | Re-audit + constraint overlay | `2026-08-17-consciousness-tsa-phase0.md` |
+| 1 | ch18 `sec:recognizing-new-bearers`; bib; ch07/ch32/ch47 | `2026-08-17-consciousness-tsa-phase1.md` |
+| 2 | `ch07 → ch18` informal edge; graphs | `2026-08-17-consciousness-tsa-phase2-dag.md` |
+| 3 | U-17 + ledgers | `2026-08-17-consciousness-tsa-phase3-ledgers.md` |
+| 4 | `/field/v2/#adjacent-work` | `2026-08-17-consciousness-tsa-phase4-field-v2.md` |
+| 5 | `ConservativeExclusion`; MB3 card; App B/G | `2026-08-17-consciousness-tsa-phase5-lean-mb3.md` |
+
+**Not in scope (by design):** Rainbow Theory; MB3a; consciousness as Lean axiom; v1 matrix cells for welfare cluster.
 
 ## 28.3 Post-integration checklist
 

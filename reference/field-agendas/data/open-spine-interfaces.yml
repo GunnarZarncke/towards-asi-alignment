@@ -7,15 +7,20 @@ openSpineInterfaces:
     lifecycleRole: specify
     status: open
     leanModule: AlignmentProofSpine/AlignmentConstruction
-    leanProp: AlignmentTarget
+    leanProp: TargetSpecifiable
     leanDefs:
       - ConstitutionalRule
       - constitutionalTarget
+      - SpecWellFormedness
+      - SpecifyCrux
       - cevConstitution
+      - caiConstitution
+      - gsaiConstitution
+      - institutionalConstitution
     bookChapters:
       - ch28
       - ch01
-    conceptCard: /cards/mb8-cev-process-convergence/
+    conceptCard: /cards/alignment-target/
     summary: >-
       State a coherent alignment target (constitutional rule → AlignmentTarget).
       Open specify-phase crux; not an MB bridge column. Retired MB8 (CEV)
@@ -35,6 +40,12 @@ openSpineInterfaces:
       - Realizes
       - TargetRealizable
       - CertifiedAsRealizing
+      - ConstructionBet
+      - SpecifyConstructPair
+      - cevConstructionBet
+      - caiConstructionBet
+      - gsaiConstructionBet
+      - institutionalConstructionBet
     bookChapters:
       - ch33
       - ch01

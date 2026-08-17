@@ -14,7 +14,11 @@ external:
     url: "https://intelligence.org/"
   - label: "AI StopWatch"
     url: "https://aistop.watch/"
-related: []
+related:
+  - "specify-cev"
+  - "construct-cev"
+  - "alignment-target"
+  - "target-realization"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/miri.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -38,6 +42,10 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 **What they contribute.** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
 
 **How this project treats it.** This project treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
+
+## Specify / construct (field v2)
+
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [CEV (constitutional residue)](/cards/specify-cev/) · [CEV construction (underspecified)](/cards/construct-cev/).
 
 ## Links
 

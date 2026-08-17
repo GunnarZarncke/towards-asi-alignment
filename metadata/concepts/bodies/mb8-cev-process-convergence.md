@@ -30,7 +30,9 @@ related:
   - correction-channel-integrity
   - mb4-correction-legitimacy
   - mb4a-measured-path-legitimacy
-  - alignment-construction
+  - specify-cev
+  - construct-cev
+  - alignment-target
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'

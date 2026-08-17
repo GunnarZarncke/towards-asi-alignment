@@ -43,7 +43,7 @@ Alignment*. It re-exports the layered modules:
 | `Boundaries`    | `P05`–`P09`, `P36`, access/K non-identifiability | 6–7, 10, 36   |
 | `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`, hidden-BIQ certificate | 11–14, 33, 36 |
 | `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
-| `Bundles`       | `P14`–`P22`                               | 15–23         |
+| `Bundles`       | `P14`–`P22`; `ConservativeExclusion` (MB3 admission sub-obligation) | 15–23         |
 | `Correction`    | `P23`–`P26`, scalar `CCI`, vector/status `CCICertificate`, handle-controlled paths | 24–27         |
 | `Field`         | finite field-agenda machinery, imported theorem handles, agenda modules; includes `Field/Finite/ShannonMI` (real-valued Shannon entropy/MI, `mutualInformation_le_log_min_card`) | crosswalk     |
 | `Field/Finite/LobTiling` | conditional Löb derivation, self-certifying tiling obstruction, and provability-free successor-audit contrast | 30–31, appG |

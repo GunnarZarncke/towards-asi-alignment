@@ -28,7 +28,11 @@ external:
     url: "https://simoninstitute.ch/"
   - label: "IAPS"
     url: "https://www.iaps.ai/"
-related: []
+related:
+  - "specify-institutional"
+  - "construct-institutional"
+  - "alignment-target"
+  - "target-realization"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/govai.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -52,6 +56,10 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 **What they contribute.** A governance research pipeline; EU and US policy translation; gradual disempowerment framing; institutional evaluation capacity; Resolution and Irving lineage via UK AISI; personnel and advisory overlap between GovAI and AISI.
 
 **How this project treats it.** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
+
+## Specify / construct (field v2)
+
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/).
 
 ## Links
 
