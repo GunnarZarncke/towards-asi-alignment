@@ -2,7 +2,7 @@
 
 Open problems and unresolved uncertainties tracked across the manuscript.
 
-**Last cross-check:** 2026-06-29 — U-05 gloss extended for blanket well-definedness vs recovery hardness (ch06–07). Prior cross-check 2026-06-23 against WWCTV sections, `metadata/open-problems.md`, and the claims/assumptions ledgers.
+**Last cross-check:** 2026-08-17 — U-17 added for bearer admission (ch18 §`sec:recognizing-new-bearers`; three-layer uncertainty). Prior cross-check 2026-06-29 — U-05 gloss extended for blanket well-definedness vs recovery hardness (ch06–07).
 
 | # | Open question | Treated in | Bears on |
 |---|----------------|-----------|----------|
@@ -22,10 +22,12 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 | U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch46, ch47, appG | C-002, C-044 |
 | U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch46, ch46 | A-003, A-005, C-007 |
 | U-16 | Can grounding viability be measured or certified under adversarial optimization, especially when value-relevant variables are not yet nameable in the current ontology? | ch03, ch16, ch46, ch46, ch46, ch47 | A-014, C-004a, C-004, C-005 |
+| U-17 | **Bearer admission under unfamiliar substrates:** given candidate process $z$ and uncertain theories of consciousness, sentience, valence, or personhood, what observations suffice to include $z$ in, or conservatively exclude it from, a bundle-specific bearer class? Separately: (1) boundary — what is $z$? (ch07); (2) property/theory — what organization supports the target property? (3) normative — which property makes $\Phi_k$ high? Do not collapse into one scalar consciousness weight. | ch07, ch18 (`sec:recognizing-new-bearers`), ch47 | MB3 (sub-obligation), C-004, C-004a, C-011 |
 
 ## Notes
 
 - U-12, U-14, and U-16 now have manuscript homes, but remain open as adversarial/empirical questions. appG safety-case template is still pending.
 - U-08 and U-11 are partly philosophical / governance questions and are acknowledged as limits (see C-011, status `limit`).
+- U-17 is distinct from U-02 (bearer-map *transport* across ontology shift): admission/inference for unfamiliar computational processes is the upstream step before transport and persistence (ch47).
 
 See also `metadata/open-problems.md` (research-direction framing) and `metadata/claims-ledger.md` / `metadata/assumptions-ledger.md` for the claims and assumptions each uncertainty threatens.

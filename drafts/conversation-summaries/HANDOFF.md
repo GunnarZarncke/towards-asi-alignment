@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (consciousness TSA Phase 0 re-audit).
+Last updated: 2026-08-17 (consciousness TSA Phase 3 ledgers).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Consciousness / bearer-inference (ch18)** — **Phase 0 done** (2026-08-17 re-audit). Overlay: no Rainbow cites; keep phenomenality ≠ subjecthood; field **v2 only**; Lean/MB3 card late. Next: Phase 1 ch18 section. Plan: `drafts/consciousness-tsa-extension.md` (§28.4). DAG still lacks `ch07 → ch18`. Log: `2026-08-17-consciousness-tsa-phase0.md`.
+- **Consciousness / bearer-inference (ch18)** — **Phases 1–3 done** (2026-08-17): `sec:recognizing-new-bearers`; bib keys; `ch07 → ch18` DAG; **U-17** + ledger sync. **Next:** Phase 4 field v2. Log: `2026-08-17-consciousness-tsa-phase3-ledgers.md`.
 
 - **Krym architecture revision** — **Closed** 2026-08-17 (Phases 1–6 + `{leanbox}` + MB6b∨MB8 retirement). Follow-ups: `metadata/TODO.md` § Krym architecture revision (closed).
 

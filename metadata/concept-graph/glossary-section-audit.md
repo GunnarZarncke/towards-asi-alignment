@@ -9,18 +9,19 @@ site glossary entry (`metadata/concepts.yml`) resolves to a manuscript
 
 | Status | Count |
 |--------|------:|
-| `ok` (explicit `sec:`) | 27 |
+| `ok` (explicit `sec:`) | 32 |
 | `inferred` (eq/definition/ch hint → section) | 7 |
 | `chapter-only` (needs `sec:` in bookLabels) | 2 |
 | `missing` | 0 |
 
-Manuscript: 1336 section labels, 965 sec/ch ref edges, 105 equation ref edges, 0 unresolved `\ref{...}` / `\eqref{...}` targets.
+Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
 
 ## OK — explicit section anchor
 
 | Term | Card | Home | Source |
 |------|------|------|--------|
 | Abstraction-gap exploitation | `grounding-viability` | `sec:grounding-viability-ch03` | sec label |
+| Adversarial regeneration | `attractor-control` | `sec:adversarial-selection-ch34` | sec label |
 | Adversarial verifiability | `certification-under-manipulation` | `sec:certification-under-manipulation-ch43` | sec label |
 | Alignment basin | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Bearer map | `bearer-persistence` | `sec:bearer-maps-sufficient-statistics` | sec label |
@@ -33,6 +34,8 @@ Manuscript: 1336 section labels, 965 sec/ch ref edges, 105 equation ref edges, 0
 | Conserved properties | `successor-stability` | `sec:seven-conserved-properties-ch31` | sec label |
 | Correction-audit evasion | `correction-channel-integrity` | `sec:correction-channel-integrity-def` | sec label |
 | Correction-capacity assumption | `scope-and-correction-capacity` | `sec:correction-capacity-assumption-ch05` | sec label |
+| Ecology size | `attractor-control` | `sec:census-not-ecology-ch34` | sec label |
+| Feedback-horizon exposure | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Goal inference | `goal-inference` | `sec:why-goal-inference-not-enough` | sec label |
 | Goal transport | `value-bundle-transport` | `sec:goal-transport-def` | sec label |
 | Grounded correction | `grounding-viability` | `sec:grounding-viability-ch03` | sec label |
@@ -40,8 +43,10 @@ Manuscript: 1336 section labels, 965 sec/ch ref edges, 105 equation ref edges, 0
 | Hidden productive BIQ bound | `strategic-opacity` | `sec:problem-can-hide` | sec label |
 | Inferential coupling | `inferential-coupling` | `sec:inferential-coupling-acausal-trade-ch35` | sec label |
 | Inferential coupling index (ICI) | `inferential-coupling` | `sec:inferential-coupling-acausal-trade-ch35` | sec label |
+| Invasion fitness | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Pivotal process | `pivotal-process` | `sec:pivotal-process-ch37` | sec label |
 | Point of control over deployment | `attractor-control` | `sec:selection-turn-ch34` | sec label |
+| Pointing problem | `pointing-problem` | `sec:pointing-problem` | sec label |
 | Selection environment | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Strategic opacity | `strategic-opacity` | `sec:problem-can-hide` | sec label |
 | Successor | `successor-stability` | `sec:successor-problem-ch31` | sec label |
@@ -66,6 +71,10 @@ Manuscript: 1336 section labels, 965 sec/ch ref edges, 105 equation ref edges, 0
 |------|------|------|--------|
 | Adversarial measurement | `alignment-as-measurement` | `ch:wrong-object` | chapter label only — no sec: anchor |
 | Paternalism boundary | `paternalism-boundary` | `ch:manipulation-false-consent` | chapter label only — no sec: anchor |
+
+## Unresolved manuscript refs
+
+- `sec:three-alignment-questions`
 
 ## Recommended bookLabels fixes
 

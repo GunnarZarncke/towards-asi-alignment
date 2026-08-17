@@ -6,6 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Consciousness TSA Phase 3** — U-17 + open-problems/claims/assumptions ledger sync. | [2026-08-17-consciousness-tsa-phase3-ledgers.md](2026-08-17-consciousness-tsa-phase3-ledgers.md) |
+| 2026-08-17 | **Consciousness TSA Phase 2** — `ch07 → ch18` informal edge; graphs + site reading DAG synced. | [2026-08-17-consciousness-tsa-phase2-dag.md](2026-08-17-consciousness-tsa-phase2-dag.md) |
+| 2026-08-17 | **Consciousness TSA Phase 1** — `sec:recognizing-new-bearers` in ch18; bib keys; ch07/ch32/ch47 pointers. | [2026-08-17-consciousness-tsa-phase1.md](2026-08-17-consciousness-tsa-phase1.md) |
 | 2026-08-17 | **Consciousness TSA Phase 0** — re-audit insertion points + DAG; overlay constraints (no Rainbow, field v2 only, Lean/MB late). | [2026-08-17-consciousness-tsa-phase0.md](2026-08-17-consciousness-tsa-phase0.md) |
 | 2026-08-17 | **Retire MB6b∨MB8 two-route prose** — live path is MB4+MB6b; CEV/MB8 only as AlignmentTarget special case (ch28, App G). | [2026-08-17-retire-mb6b-mb8-disjunction.md](2026-08-17-retire-mb6b-mb8-disjunction.md) |
 | 2026-08-17 | **Site card notes triage closed** — Phases 0–6 complete; deferred → `metadata/TODO.md` § Site. | [2026-08-17-site-card-notes-close.md](2026-08-17-site-card-notes-close.md) |

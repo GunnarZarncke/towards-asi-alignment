@@ -21,7 +21,7 @@ These chapters do not participate in cross-chapter bridge symbols; informal edge
 - **ch02** (From Artificial Intelligence to Artificial Civilization) → ch30, ch38
 - **ch03** (Alignment as a Dynamical Guarantee) → ch26, ch37
 - **ch04** (Why Fixed Values Are the Wrong Target) → ch19
-- **ch05** (Assumptions, Scope, and Failure Coverage) → ch07, ch48
+- **ch05** (Assumptions, Scope, and Failure Coverage) → ch07
 - **ch06** (What Is an Agent Without Anthropomorphism?) → ch07, ch09
 - **ch15** (Values Are Compressed Control Signals) → ch16, ch17
 - **ch18** (What Values Apply To) → ch16, ch31, ch47
@@ -50,11 +50,11 @@ These chapters do not participate in cross-chapter bridge symbols; informal edge
 
 Each layer can be read in any order internally; read layer *n* before layer *n+1*.
 
-1. **ch01** (The Wrong Object of Alignment); **ch02** (From Artificial Intelligence to Artificial Civilization); **ch03** (Alignment as a Dynamical Guarantee); **ch04** (Why Fixed Values Are the Wrong Target); **ch05** (Assumptions, Scope, and Failure Coverage); **ch06** (What Is an Agent Without Anthropomorphism?); **ch15** (Values Are Compressed Control Signals); **ch18** (What Values Apply To); **ch21** (From Rewards to Values); **ch29** (Manipulation, Domestication, and False Consent); **ch36** (Parasites in the Correction System); **ch39** (Passive Observation Is Not Enough); **ch43** (What Survives an Adversary: Verifiability and Representability); **ch45** (When Value Change Is the Thing at Stake); **ch46** (The End of Unconscious Value Drift)
-2. **ch07** (Finding the Boundary); **ch09** (The Real Agent May Be Composite); **ch19** (Tradeoffs and Bundle Geometry); **ch30** (Successor Creation as the Central Alignment Test); **ch37** (The Alignment Attractor); **ch41** (Checking a System at Every Level); **ch47** (Who Still Counts After Transformation)
-3. **ch08** (Agents That Grow, Split, and Merge); **ch17** (When Low Dimensionality Helps Value Learning); **ch20** (Measuring and Stress-Testing Bundle Geometry); **ch31** (Conserved Properties Across Successors); **ch38** (Conductive Artifacts and Pivotal Processes); **ch48** (Towards Superintelligence Alignment)
-4. **ch10** (Agency Under Strategic Opacity); **ch11** (Measuring Capability Without Task Ontology); **ch32** (Better Self-Modeling Can Be Worse)
-5. **ch12** (Capability Growth Is Boundary Expansion); **ch35** (Multi-Agent Superintelligence and Inferential Coupling)
+1. **ch01** (The Wrong Object of Alignment); **ch02** (From Artificial Intelligence to Artificial Civilization); **ch03** (Alignment as a Dynamical Guarantee); **ch04** (Why Fixed Values Are the Wrong Target); **ch05** (Assumptions, Scope, and Failure Coverage); **ch06** (What Is an Agent Without Anthropomorphism?); **ch15** (Values Are Compressed Control Signals); **ch21** (From Rewards to Values); **ch29** (Manipulation, Domestication, and False Consent); **ch36** (Parasites in the Correction System); **ch39** (Passive Observation Is Not Enough); **ch43** (What Survives an Adversary: Verifiability and Representability); **ch45** (When Value Change Is the Thing at Stake); **ch46** (The End of Unconscious Value Drift)
+2. **ch07** (Finding the Boundary); **ch09** (The Real Agent May Be Composite); **ch19** (Tradeoffs and Bundle Geometry); **ch30** (Successor Creation as the Central Alignment Test); **ch37** (The Alignment Attractor); **ch41** (Checking a System at Every Level)
+3. **ch08** (Agents That Grow, Split, and Merge); **ch17** (When Low Dimensionality Helps Value Learning); **ch18** (What Values Apply To); **ch20** (Measuring and Stress-Testing Bundle Geometry); **ch38** (Conductive Artifacts and Pivotal Processes)
+4. **ch10** (Agency Under Strategic Opacity); **ch11** (Measuring Capability Without Task Ontology); **ch31** (Conserved Properties Across Successors); **ch47** (Who Still Counts After Transformation)
+5. **ch12** (Capability Growth Is Boundary Expansion); **ch32** (Better Self-Modeling Can Be Worse); **ch35** (Multi-Agent Superintelligence and Inferential Coupling); **ch48** (Towards Superintelligence Alignment)
 6. **ch13** (The Coordination Bottleneck)
 7. **ch14** (When Intelligence Deepens Misalignment); **ch16** (The Value-Bundle Model)
 8. **ch22** (The Compression Test for Intention)
@@ -78,11 +78,11 @@ Each layer can be read in any order internally; read layer *n* before layer *n+1
 | ch03 | ch37 | informal | dynamical-guarantee |
 | ch04 | ch19 | informal | static-target-trap |
 | ch05 | ch07 | informal | scope-and-correction-capacity |
-| ch05 | ch48 | informal | what-not-claiming |
 | ch06 | ch07 | informal | agent-without-anthropomorphism, boundary-discovery |
 | ch06 | ch09 | informal | agent-without-anthropomorphism, composite-agency |
 | ch07 | ch08 | symbol | epsilon |
 | ch07 | ch17 | symbol | epsilon |
+| ch07 | ch18 | informal | boundary-before-bearer, candidate-process |
 | ch08 | ch10 | symbol | A_t+k, L_t |
 | ch08 | ch11 | symbol | I_pred |
 | ch09 | ch11 | symbol | mathcal_R_i |

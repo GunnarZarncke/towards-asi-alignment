@@ -84,7 +84,7 @@ Each layer can be read in any order internally; read layer *n* before layer *n+1
 | ch26 | ch33 | CCI | 1 |
 | ch27 | ch28 | Succ | 1 |
 | ch32 | ch33 | SelfControlGap | 2 |
-| ch33 | ch34 | RiskGap | 2 |
+| ch33 | ch34 | RiskGap | 3 |
 | ch33 | ch42 | RiskGap | 1 |
 | ch34 | ch44 | SuccessorSafe | 1 |
 

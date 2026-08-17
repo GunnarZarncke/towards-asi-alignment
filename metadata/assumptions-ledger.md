@@ -65,7 +65,13 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Also stated in:** ch04, ch15–17, ch46 (WWCTV items 1, 4), ch46, ch45–43.
 
-**Failure mode if false:** Proxy preservation instead of values; cheap readout from supplied bundle coordinates but no tractable way to discover the right coordinates. **Lean:** MB2, MB3. **Bears on:** C-004 · **U-01, U-02**
+**Failure mode if false:** Proxy preservation instead of values; cheap readout from supplied bundle coordinates but no tractable way to discover the right coordinates. **Lean:** MB2, MB3. **Bears on:** C-004 · **U-01, U-02, U-17**
+
+### MB3 — Bearer maps (transport + admission)
+
+**Bridge (Lean):** Bundle transport plus bearer-map agreement implies bearer transport (`ch18`).
+
+**Open sub-obligation (not a new MB\*):** Given candidate process $z$ from MB1/ch07 and evidence $E(z)$, infer whether bundle $k$ applies, including conservative one-sided exclusion certificates (ch18 §`sec:recognizing-new-bearers`). Three separable uncertainties: boundary ($z$), property/theory ($T$), normative relevance ($N$). Consciousness/sentience theories enter as candidate evidence providers, not as framework axioms. **U-17**.
 
 ### A-002 — Correction channels as causal chains
 

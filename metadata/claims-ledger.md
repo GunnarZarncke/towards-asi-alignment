@@ -99,6 +99,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 **Weakest link:**
 - the degree of low-dimensionality is unmeasured; the representation map \(g_\psi\) may be expensive or underidentified; bearer maps may not survive radical ontology shift
+- bearer *admission* on unfamiliar substrates (digital minds, simulations) remains open: which evidence, under which theory, licenses $\Phi_k$ for bundle $k$? (ch18 §`sec:recognizing-new-bearers`; **U-17**)
 
 **What would update against it:**
 - evidence that policy-relevant human valuation does not factor through any low-dimensional bottleneck, that the bottleneck cannot be recovered from realistic evidence, or that bundle geometry is not transportable

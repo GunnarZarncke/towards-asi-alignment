@@ -2,7 +2,7 @@
   "sourceDot": "metadata/concept-graph/chapter-reading-dependency.dot",
   "title": "Chapter prerequisites (symbols + informal concepts, vertical)",
   "chapterCount": 48,
-  "edgeCount": 67,
+  "edgeCount": 62,
   "nodes": [
     {
       "id": "unit:ch01",
@@ -495,13 +495,6 @@
       "color": "#16a34a"
     },
     {
-      "from": "unit:ch05",
-      "to": "unit:ch48",
-      "label": "1 concept\nwhat-not-claiming",
-      "dashed": true,
-      "color": "#16a34a"
-    },
-    {
       "from": "unit:ch06",
       "to": "unit:ch07",
       "label": "2 concept\nagent-without-anthropomorphism, boundary-discovery",
@@ -528,6 +521,13 @@
       "label": "1 sym\nepsilon",
       "dashed": false,
       "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch07",
+      "to": "unit:ch18",
+      "label": "2 concept\nboundary-before-bearer, candidate-process",
+      "dashed": true,
+      "color": "#16a34a"
     },
     {
       "from": "unit:ch08",
@@ -617,13 +617,6 @@
       "from": "unit:ch16",
       "to": "unit:ch22",
       "label": "2 sym\nPhi, theta",
-      "dashed": false,
-      "color": "#2563eb"
-    },
-    {
-      "from": "unit:ch16",
-      "to": "unit:ch34",
-      "label": "1 sym\ntheta",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -726,13 +719,6 @@
       "color": "#2563eb"
     },
     {
-      "from": "unit:ch26",
-      "to": "unit:ch44",
-      "label": "1 sym\nCCI",
-      "dashed": false,
-      "color": "#2563eb"
-    },
-    {
       "from": "unit:ch27",
       "to": "unit:ch28",
       "label": "1 sym\nSucc",
@@ -754,22 +740,8 @@
       "color": "#16a34a"
     },
     {
-      "from": "unit:ch30",
-      "to": "unit:ch34",
-      "label": "1 concept\nsuccessor-stability",
-      "dashed": true,
-      "color": "#16a34a"
-    },
-    {
       "from": "unit:ch31",
       "to": "unit:ch32",
-      "label": "1 concept\nconserved-properties",
-      "dashed": true,
-      "color": "#16a34a"
-    },
-    {
-      "from": "unit:ch31",
-      "to": "unit:ch44",
       "label": "1 concept\nconserved-properties",
       "dashed": true,
       "color": "#16a34a"
@@ -778,6 +750,13 @@
       "from": "unit:ch32",
       "to": "unit:ch33",
       "label": "1 sym\nSelfControlGap",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch33",
+      "to": "unit:ch34",
+      "label": "1 sym\nRiskGap",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -813,13 +792,6 @@
       "from": "unit:ch38",
       "to": "unit:ch33",
       "label": "2 concept\ncertified-basin, conductive-artifacts",
-      "dashed": true,
-      "color": "#16a34a"
-    },
-    {
-      "from": "unit:ch38",
-      "to": "unit:ch34",
-      "label": "1 concept\nconductive-artifacts",
       "dashed": true,
       "color": "#16a34a"
     },
@@ -867,13 +839,6 @@
     },
     {
       "from": "unit:ch43",
-      "to": "unit:ch44",
-      "label": "1 concept\ncertification-under-manipulation",
-      "dashed": true,
-      "color": "#16a34a"
-    },
-    {
-      "from": "unit:ch43",
       "to": "unit:ch48",
       "label": "1 concept\ncertification-under-manipulation",
       "dashed": true,
@@ -911,5 +876,5 @@
   "svgFile": "path-graphs/chapter-reading-dependency.svg",
   "dotFile": "path-graphs/chapter-reading-dependency.dot",
   "clickableNodes": 48,
-  "generatedAt": "2026-08-07T13:08:01.115Z"
+  "generatedAt": "2026-08-17T14:56:10.501Z"
 }

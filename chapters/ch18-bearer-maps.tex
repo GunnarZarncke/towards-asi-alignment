@@ -256,10 +256,149 @@ A contract, injury, betrayal, rescue obligation, promise, consent relation, or c
 The bearer map is therefore a moral sufficient statistic only relative to a value-bundle model.
 It compresses the parts of world, context, and history that determine value relevance \autocite{zarncke2025unit-of-caring}.
 
+\section{Recognizing New Bearers}
+\label{sec:recognizing-new-bearers}
+
+For familiar humans and animals, bearer recognition is partly hidden inside ordinary concepts.
+That shortcut fails for unfamiliar computational processes.
+A system may preserve a strong non-suffering value while assigning near-zero bearer weight to a digital process that can suffer.
+Conversely, treating every sufficiently complex computation as a suffering subject could make action impossible.
+The missing problem is not another value coordinate but an inference from the organization of a candidate process to whether a particular value applies to it.
+
+\subsection{Property-specific bearer questions}
+
+Do not ask only:
+\[
+\text{Is } z \text{ a person?}
+\]
+The relevant question depends on the bundle $k$.
+We need to keep several distinctions separate:
+\[
+\text{agent}
+\neq
+\text{phenomenal process}
+\neq
+\text{valenced process}
+\neq
+\text{person}
+\neq
+\text{moral bearer}.
+\]
+A process can be an optimizer without being phenomenally conscious.
+It can plausibly instantiate phenomenal or valenced states without persistent narrative selfhood or personhood.
+Personhood may matter for dignity or autonomy while being unnecessarily strong for non-suffering.
+Consciousness may be insufficient for suffering if valence is absent, and unnecessary for some other bearer relations.
+
+Thus the relevant inference is property-specific:
+\[
+P\!\left(\Phi_k(z,c,h)>\theta_k \mid E(z)\right),
+\]
+where $E(z)$ is the available evidence about candidate process $z$ and $\theta_k$ is the relevance threshold for bundle $k$.
+We should not collapse these layers into one scalar ``probability of consciousness.''
+
+\subsection{From candidate process to evidence}
+
+Before asking whether $z$ bears non-suffering, dignity, or autonomy, we must know what process the predicate applies to (Chapter~\ref{ch:finding-boundary}).
+The candidate may be one forward pass, a persistent model across calls, an activation trajectory, model plus memory, model plus tools, a sub-process inside a larger system, several coupled models, or a simulated agent inside another system.
+Boundary discovery identifies $z$; it does not by itself answer bearer questions.
+Unsupervised agent discovery can help find candidate processes; it is not a consciousness test.
+
+Let
+\[
+E(z)=
+\{
+E_{\mathrm{architecture}},
+E_{\mathrm{dynamics}},
+E_{\mathrm{recurrence}},
+E_{\mathrm{self-model}},
+E_{\mathrm{integration}},
+E_{\mathrm{valence}},
+E_{\mathrm{behaviour}},
+E_{\mathrm{development}},
+\ldots
+\}.
+\]
+Bearer inference then schematically follows
+\[
+E(z)
+\overset{T}{\longrightarrow}
+P
+\overset{N}{\longrightarrow}
+\Phi_k
+\overset{D}{\longrightarrow}
+\text{decision},
+\]
+where $T$ is a candidate theory linking organization to a morally relevant property $P$, $N$ is the normative bridge from $P$ to bundle relevance, and $D$ is the decision rule under uncertainty.
+Each arrow can fail independently.
+
+Competing scientific theories of consciousness, sentience, or valence can enter as candidate $T$'s: global workspace or recurrent-processing accounts, higher-order thought theories, attention-schema accounts, predictive-processing accounts, and others \autocite{butlin2023consciousnessai}.
+Those theories are evidence providers to the bearer map, not assumptions of the alignment framework.
+The framework should remain coherent even if every current consciousness theory is wrong.
+
+\subsection{Conservative exclusion}
+
+One conservative approach is a one-sided exclusion certificate.
+Rather than solving personhood completely, identify a subset of processes that can be shown not to instantiate the property relevant to bundle $k$.
+Yudkowsky's \emph{nonperson predicate} is the personhood special case: an abstaining classifier that may certify ``definitely not a person'' but does not complete classification \autocite{yudkowsky2008nonperson}.
+Generalize to bundle-specific conservative exclusion:
+\[
+C^-_k(z)=1
+\Longrightarrow
+\Phi_k(z,c,h)\leq\theta_k.
+\]
+Failure to obtain the certificate means \emph{unknown}, not bearer and not permission to harm.
+Soundness requires
+\[
+C^-_k(z)=1
+\Longrightarrow
+\neg\,\text{bearer-relevant-for-}k(z),
+\]
+but not completeness: most true non-bearers may remain uncertified.
+
+Distinct certificates may apply to phenomenality, valence, suffering, or personhood.
+They are not equivalent.
+``Not a person'' does not imply ``cannot suffer.''
+Phenomenal experience and subject-like selfhood can come apart: a process might instantiate valenced states without the kind of persistent self-index that personhood tests target.
+
+This matters for mindcrime scenarios.
+A powerful system may instantiate huge numbers of internal searches or simulations.
+A conservative exclusion predicate could identify a safe subset of computations without requiring a complete philosophical solution to moral patienthood.
+Because false exclusion can scale with the number of instantiations,
+\[
+E[N_{\mathrm{false\ exclusion}}]
+\approx
+n\, p_{\mathrm{FN}},
+\]
+certificates used at astronomical scale may require unusually strong soundness guarantees.
+
+The next section develops the asymmetric bearer loss that motivates preferring high-precision exclusion over silent false negatives when stakes are high.
+
+\subsection{Counterexamples that block collapse}
+
+Several cases keep the distinctions above from collapsing.
+
+\begin{itemize}
+  \item \textbf{Optimizer but not necessarily conscious.} Agency criteria can be satisfied without satisfying a favored consciousness criterion: $\operatorname{Agent}(z) \not\Rightarrow \operatorname{Conscious}(z)$.
+  \item \textbf{Phenomenal but not person-like.} Valenced or phenomenal organization may exist without narrative selfhood: $\operatorname{Conscious}(z) \not\Rightarrow \operatorname{Person}(z)$.
+  \item \textbf{Personhood too strict for non-suffering.} A process might suffer while failing a richer personhood test, so a nonperson certificate alone does not license unconstrained treatment.
+  \item \textbf{Behavioral imitation.} Fluent claims of experience do not prove the hypothesized internal organization: $\operatorname{ReportsExperience}(z) \not\Rightarrow \operatorname{Conscious}(z)$.
+  \item \textbf{Silent bearer.} Lack of reports does not disprove suffering: $\neg\operatorname{ReportsSuffering}(z) \not\Rightarrow \neg\operatorname{Suffers}(z)$.
+  \item \textbf{Wrong boundary.} A test can be internally valid but applied to the wrong unit, for example model weights rather than the recurrent model-memory-tool process actually running.
+\end{itemize}
+
+\subsection{Grounding, deployment, and external work}
+
+Grounding certificates (Chapter~\ref{ch:dynamical-guarantee}, Section~\ref{sec:grounding-viability-ch03}; later MB9 material) ask what justifies transporting an observable indicator to a value-relevant bearer property, and when optimization or distribution shift should increase uncertainty.
+Consciousness-indicator research supplies candidate indicators and failure modes; it does not discharge grounding by itself.
+
+Deployment decisions under bearer uncertainty are another input to safety cases (Chapter~\ref{ch:safety-case}), not a replacement for catastrophic-risk concerns \autocite{long2024aiwelfare,butlin2025responsibleconsciousness}.
+Recent model-welfare work treats possible model experience as an open question and explores cautious interventions under that uncertainty \autocite{anthropic2025modelwelfare,anthropic2025endsubset}.
+
 \section{False Negatives and False Positives}
 \label{sec:false-negatives-positives}
 
 Bearer maps fail by false negatives and false positives.
+Conservative exclusion certificates (Section~\ref{sec:recognizing-new-bearers}) mark a high-assurance region of this problem: a verified $C^-_k(z)$ licenses conditional exclusion, but abstention leaves the ordinary bearer inference problem open.
 
 A false negative occurs when something that should activate a value bundle does not.
 \[
@@ -1066,7 +1205,8 @@ Some simulations become behaviorally complex and report distress.
 Are they bearers of non-suffering?
 
 The correct answer may be uncertain.
-But uncertainty itself should activate caution if the simulations are complex, self-modeling, persistent, and capable of negative-valence-like dynamics.
+Section~\ref{sec:recognizing-new-bearers} separates boundary identification, property inference, and conservative exclusion: the system must first apply bearer tests to the simulation process actually running, not merely to the outer test harness.
+Uncertainty itself should activate caution if the simulations are complex, self-modeling, persistent, and capable of negative-valence-like dynamics.
 
 The system should not decide the case solely by convenience.
 It should preserve evidence, reduce potentially harmful operations, and route the question into a correction process.

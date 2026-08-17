@@ -74,6 +74,11 @@ edges:
     consumer: ch10
     concepts: [agent-without-anthropomorphism]
 
+  # ch07 — candidate process before bearer inference (MB1 → MB3)
+  - provider: ch07
+    consumer: ch18
+    concepts: [candidate-process, boundary-before-bearer]
+
   # Part IV — value bundles (prose spine before ch16 symbols)
   - provider: ch15
     consumer: ch16

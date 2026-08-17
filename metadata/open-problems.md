@@ -17,6 +17,10 @@ Research directions and unresolved questions for the book project.
 - Inferential coupling indices and detection of effective AI coalitions
 - Conservative abstraction criteria for value-bundle and correction maps
 - Bearer-map transport across radical ontology shift
+- **Bearer admission under unfamiliar substrates** (ch18 §`sec:recognizing-new-bearers`, MB3 sub-obligation): given candidate bounded process $z$ (from boundary discovery) and uncertain competing theories of consciousness, sentience, valence, or personhood, what observations suffice to include a process in, or conservatively exclude it from, a bundle-specific bearer class? Decompose rather than collapse into one ``consciousness probability'':
+  - **Boundary:** what is $z$? (MB1 / ch07)
+  - **Property/theory:** what internal organization supports the morally relevant property? (candidate $T$'s as evidence providers, not framework axioms)
+  - **Normative relevance:** which property makes $\Phi_k(z)$ high for bundle $k$?
 - Legitimate vs. pathological value-bundle change
 
 ## Practice
