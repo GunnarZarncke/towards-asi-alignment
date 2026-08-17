@@ -38,6 +38,9 @@ def Realizes (A : System) (P : AlignmentTarget) : Prop :=
 def TargetRealizable (P : AlignmentTarget) : Prop :=
   ∃ A : System, Realizes A P
 
+/-- Field-facing alias for the open construction crux (Krym §9; not an `MB*` bridge). -/
+abbrev ConstructionCrux (P : AlignmentTarget) : Prop := TargetRealizable P
+
 /-! ### Certification claim (epistemic; distinct type from `Realizes`) -/
 
 /-- Certification-side evidence shape (book safety-case record abstraction). -/

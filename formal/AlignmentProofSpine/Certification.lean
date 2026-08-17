@@ -1,6 +1,7 @@
 import AlignmentProofSpine.Core
 import AlignmentProofSpine.Capability
 import AlignmentProofSpine.Successors
+import AlignmentProofSpine.BridgeCruxes
 
 /-!
 # AlignmentProofSpine.Certification
@@ -247,6 +248,38 @@ theorem certified_class_safety_from_spine_and_bridges
           percolation := hpercolation }
       numeric := { cci_slack := hcci } }
 
+/-- Same assembly as `certified_class_safety_from_spine_and_bridges`, with core
+    bridge content threaded as explicit `CoreBridgeCruxes` hypotheses. -/
+theorem certified_class_safety_from_core_cruxes
+    (cruxes : CoreBridgeCruxes)
+    (A : System) (δ : Int)
+    (hcert : Certified A)
+    (hinv : SatisfiesInvariants A)
+    (hbound : BoundaryAligned A)
+    (hgroundingCert : GroundingCertificate A)
+    (haccess : AccessModelAdequate A)
+    (hfilters : FilterCoverageAdequate A)
+    (hbundle : BundleTransport A)
+    (hbearer : BearerTransport A)
+    (hsucc : SuccessorStable A)
+    (hpercolation : PercolationEvidenceSys A)
+    (hcci : Control A ≤ CCI A + δ) :
+    CertifiedSafetyCase A δ :=
+  certified_class_safety_from_bridge_record cruxes.toBridgeAssumptions A δ
+    { certified := hcert
+      invariants := hinv
+      direct :=
+        { boundary := hbound
+          bundle := hbundle
+          bearer := hbearer
+          successor := hsucc }
+      bridgeInputs :=
+        { groundingCert := hgroundingCert
+          access := haccess
+          filters := hfilters
+          percolation := hpercolation }
+      numeric := { cci_slack := hcci } }
+
 /-! ### What a safety case buys: `MB11` (safety-case adequacy)
 
 `Safe A` is the abstract deployment-level safety predicate of `Core.lean`. No
@@ -262,6 +295,11 @@ open content sits. -/
     what tolerance is acceptable is a governance input, not a measurand. -/
 axiom WithinDeploymentRiskTolerance : System → Int → Prop
 
+/-- **MB11 crux** (checkable `Prop`; global axiom is the discharge witness). -/
+def MB11Crux : Prop :=
+  ∀ (A : System) (δ : Int),
+    CertifiedSafetyCase A δ → WithinDeploymentRiskTolerance A δ → Safe A
+
 /-- **MB11** (safety-case adequacy). A full certified-class safety case whose
     residual risk is within the deployment tolerance suffices for the abstract
     `Safe` predicate. This is the open research frontier of ch42/ch44: the gap
@@ -272,6 +310,8 @@ axiom WithinDeploymentRiskTolerance : System → Int → Prop
 axiom MB11_safety_case_adequacy :
   ∀ (A : System) (δ : Int),
     CertifiedSafetyCase A δ → WithinDeploymentRiskTolerance A δ → Safe A
+
+theorem mb11_crux_holds : MB11Crux := MB11_safety_case_adequacy
 
 /-- What `P30` assembly buys once `MB11` is granted: the safety-case record
     plus a tolerance judgment yields `Safe`. Every hypothesis of the assembly

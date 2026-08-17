@@ -1,0 +1,60 @@
+# Bridge lifecycle roles for field map v2 (parallel to bridges.yml; not live matrix).
+# lifecycleRole: specify | construct | identify | certify | preserve
+# Regenerate: cd site && npm run sync:field-v2
+
+bridges:
+  - key: MB1
+    lifecycleRole: identify
+    leanCrux: MB1Crux
+  - key: MB2
+    lifecycleRole: identify
+    leanCrux: MB2Crux
+  - key: MB3
+    lifecycleRole: preserve
+    leanCrux: MB3Crux
+  - key: MB4
+    lifecycleRole: preserve
+    leanCrux: MB4Crux
+  - key: MB4a
+    lifecycleRole: certify
+    leanCrux: MB4aReferenceLegitimacyCrux
+  - key: MB5
+    lifecycleRole: preserve
+    leanCrux: MB5Crux
+  - key: MB6
+    lifecycleRole: preserve
+    leanCrux:
+      - MB6aCrux
+      - MB6bCrux
+  - key: MB7
+    lifecycleRole: certify
+    leanCrux:
+      - MB7aCrux
+      - MB7bCrux
+      - MB7cCrux
+      - MB7dCrux
+  - key: MB7a
+    lifecycleRole: identify
+    leanCrux: MB7aCrux
+  - key: MB7b
+    lifecycleRole: certify
+    leanCrux: MB7bCrux
+  - key: MB7c
+    lifecycleRole: certify
+    leanCrux: MB7cCrux
+  - key: MB7d
+    lifecycleRole: certify
+    leanCrux: MB7dCrux
+  - key: MB8
+    lifecycleRole: specify
+    gravestone: true
+    leanCrux: MB8_cev_process_convergence
+  - key: MB9
+    lifecycleRole: certify
+    leanCrux: MB9Crux
+  - key: MB10
+    lifecycleRole: certify
+    leanCrux: MB10Crux
+  - key: MB11
+    lifecycleRole: certify
+    leanCrux: MB11Crux

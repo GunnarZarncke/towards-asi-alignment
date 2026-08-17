@@ -664,6 +664,9 @@ Book bridge: Chapter~\ref{ch:extrapolative-correction} (CEV decomposed); live pa
 \paragraph{Alignment construction (open interface, not an \texttt{MB*} bridge).}
 \texttt{AlignmentConstruction.lean} types \texttt{AlignmentTarget}, \texttt{Realizes}(A,P), \texttt{TargetRealizable}(P) (open --- not axiomatized), and \texttt{CertifiedAsRealizing}(E,A,P) (certification claim, distinct from realization). CEV is \texttt{constitutionalTarget}(\texttt{cevConstitution}). \leanid{fin\_certification\_without\_construction} exhibits that a certification schema can be satisfied while no finite toy realizes the target.
 
+\paragraph{Bridge cruxes as \texttt{Prop}s (Krym \S9; Phase 6).}
+\texttt{BridgeCruxes.lean} packages live \texttt{MB1}/\texttt{MB3}/\texttt{MB5}/\texttt{MB6}/\texttt{MB7}/\texttt{MB9} content as checkable \texttt{Prop}s (\texttt{MB1Crux}, \ldots) with \texttt{CoreBridgeCruxes} threading into \texttt{BridgeAssumptions}. \texttt{MB2Crux} and \texttt{MB4Crux} live in \texttt{MB2Identifiability.lean} and \texttt{MB4CorrectionIntegrity.lean}; \texttt{MB10Crux}/\texttt{MB11Crux} in \texttt{Forgeability.lean}/\texttt{Certification.lean}. \leanid{certified\_class\_safety\_from\_core\_cruxes} consumes explicit crux hypotheses instead of only \texttt{standardBridges}.
+
 \begin{assumption}[MB9: grounding certificate soundness]
 \label{appi:ass:mb9}
 \begin{equation}

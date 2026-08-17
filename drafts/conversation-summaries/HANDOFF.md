@@ -2,21 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (offline caching v10).
+Last updated: 2026-08-17 (site card notes Phase 3 ch09).
 
 ---
 
 ## Open work (load-bearing)
 
-Last updated: 2026-08-17 (Krym Phase 5 construction + MB8 gravestone).
-
----
-
-## Open work (load-bearing)
+- **Krym architecture revision** — **Complete** (Phases 1–6). Optional follow-ups: expand formal contracts to remaining `\leanspine` chapters; v2 field hub cutover (manual author confirm); chokepoint/disjunctive-tolerance prose erasure. Plan: `drafts/krym-architecture-revision-plan.md`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
 
 - **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
-
-- **Krym architecture revision (Phase 6)** — Phase 5 shipped: `AlignmentConstruction.lean`; MB8 gravestone; removed from `BridgeAssumptions` and field matrix column. **Next: Phase 6** (crux Props, formal contracts, field v1/v2). Plan: `drafts/krym-architecture-revision-plan.md`. Logs: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`, `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
 
 - **MB7a–c bridge cards (field nouns)** — Explicit site cards shipped with book terminology; TODO to consider field-standard noun aliases without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
 
@@ -56,11 +50,15 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 - **Companion site (2026-08-17):** Offline PWA v10 — fix `Failed to construct 'URL'` on relative assets; enable partial offline after home+CSS; always-on status in the footer button. Log: `2026-08-17-offline-caching-v10.md`.
 - **Manuscript + site (2026-08-17):** Six-claims spine **complete** (Phases 0–6) — layer map, ch03 dedup, ch48 status + C-008–C-011; `six-thesis-claims` companion card; homepage/reading-path/FAQ/`llms.txt` links; `scripts/check_claim_spine.py` in `make check`. Plan: `drafts/six-claims-spine-plan.md`. Logs: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Manuscript (2026-08-17):** Six-claims spine Phases 0–2 — `drafts/claim-spine.md`, `tables/claim-spine.tex`, intro claim labels + unfold map, part openers, ch48/ch30/exec-overview sync, C-044 ledger; glossary-first language pass on intro and part headers. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
+- **Lean / App G (2026-08-17):** Krym revision **Phase 6** — `BridgeCruxes.lean`; `*Crux` Props for MB1/MB3/MB5–MB11; formal-contract pilot (ch21/25/26/28/33/43); field v2 preview `/field/v2/`. Log: `2026-08-17-krym-phase6-crux-props-field-v2.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 5** — `AlignmentConstruction.lean`; MB8 gravestone; `mb8` removed from `BridgeAssumptions`. Log: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 4** — MB4 legitimacy/uptake/persistence decomposition; `MB4_correction_integrity` rename. Log: `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.
+- **Manuscript (2026-08-17):** Site card notes **Phase 3** — ch09 composite-agent readability (ch06/ch07 cross-refs, Hanson grabby cite, consolidated disambiguation). Log: `2026-08-17-site-card-notes-phase3-ch09.md`.
+- **Manuscript (2026-08-17):** Site card notes **Phase 2** — frontmatter status copy, removed External Doom exec-overview section, plain-first exec overview lead, GI comparison (ch01 + dynamical-guarantee card), glossary site links. Log: `2026-08-17-site-card-notes-phase2-frontmatter.md`.
+- **Companion site (2026-08-17):** Card notes triage Phase 0–1 — tracker `drafts/site-card-notes-triage.md`; book map IA (front matter first, drop status cols); homepage standalone-claims order; chapter source GitHub links; `tex-convert` hyperref + titlepage brace fix. Log: `2026-08-17-site-card-notes-phase0-1.md`.
 - **Companion site (2026-08-16):** Offline PWA caching — resumable asset-first service worker (CSS/fonts before pages); partial progress survives retries and SW updates. Log: `2026-08-16-offline-caching-resume.md`.
 - **Metadata (2026-08-16):** Feedback contributors ledger — `metadata/feedback-contributors.md` (acknowledgements + Harfe / Eric Moore / Krym; LW profile links); Jonas **Hallgren** spelling fix in acknowledgements. Log: `2026-08-16-feedback-contributors-ledger.md`.
 - **Manuscript (2026-08-16):** Three alignment questions moved from ch01 to the **introduction**; ch01 is a short handoff into the wrong-object argument; glossary-level wording. Log: `2026-08-16-krym-intro-three-questions.md`.

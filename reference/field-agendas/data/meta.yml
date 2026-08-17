@@ -48,7 +48,7 @@ spineTranslation: >-
   |---|---|---|
 
   | **Direct bridge** | Field work maps to a numbered bridge the spine consumes
-  | **MB4a**, **MB8**, **MB11** columns |
+  | **MB4a**, **MB11** columns |
 
   | **Ambient cousin** | Evidence on existing columns; validity stays those
   bridges + defeaters | Kosoy misspec on **MB1**/**MB9**
@@ -57,6 +57,9 @@ spineTranslation: >-
   | **Catalog / side channel** | Field crux neighborhood; not a safety-case
   discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`;
   `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |
+
+  **Retired matrix bridge:** **MB8** (CEV process route) — gravestone card only;
+  factorized through **MB2**–**MB4** and **Target Realization** (open interface).
 doNotInfer: >-
   Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**;
   CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass
@@ -67,7 +70,9 @@ kosoyDiagnostic: >-
   agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a
   **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret)
   is a value-learning cousin — **MB11** stays **—** for Kosoy.
-openSpineInterfaces: '---'
+openSpineInterfaces: >-
+  **Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) —
+  construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.
 typeLettersTable: |-
   | Letter | Type |
   |---|---|

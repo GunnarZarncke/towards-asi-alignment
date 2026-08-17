@@ -12,6 +12,16 @@ This chapter adds a precise framework for applying these to the evaluation of AI
 The correction channel bound feeding a successor-safe chain, is a proved Lean result, but whether any real certification regime can be made adversarially safe at the scale the chapter requires remains unproven.
 \end{epistemicstatus}
 
+\begin{formalcontract}
+\textbf{Claims.} A certification \emph{class} can suffice without a general construction recipe; certification $\neq$ construction.
+
+\textbf{Lean.} \texttt{CertifiedSafetyCase}, \texttt{LayeredAlignedDef}; \texttt{ConstructionCrux}/\texttt{TargetRealizable} vs \texttt{CertifiedAsRealizing} (\texttt{AlignmentConstruction.lean}).
+
+\textbf{Assumes.} Class definitions, operating envelope, and monitoring regime as stated in prose.
+
+\textbf{Does not establish.} \texttt{TargetRealizable}; a training or design procedure; \texttt{Safe} without \texttt{MB11}.
+\end{formalcontract}
+
 \begin{refsection}
 
 \epigraph{%

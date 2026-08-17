@@ -22,6 +22,7 @@
     "sync:lean-checks": "node scripts/sync-lean-checks.mjs",
     "sync:term-links": "node scripts/sync-term-links.mjs",
     "sync:field-agendas": "node scripts/sync-field-agendas.mjs",
+    "sync:field-v2": "node scripts/sync-field-v2.mjs",
     "sync:field-news": "node scripts/sync-field-news.mjs",
     "sync:notation": "node scripts/sync-notation.mjs",
     "sync:releases": "node scripts/sync-releases.mjs",

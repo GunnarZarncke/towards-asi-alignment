@@ -1,0 +1,24 @@
+# Open spine interfaces — not MB matrix columns (Krym Phase 6 / field v2).
+# Regenerate: cd site && npm run sync:field-v2
+
+openSpineInterfaces:
+  - id: target-realization
+    title: Target Realization
+    lifecycleRole: construct
+    status: open
+    leanModule: AlignmentProofSpine/AlignmentConstruction
+    leanProp: ConstructionCrux
+    leanDefs:
+      - Realizes
+      - TargetRealizable
+      - CertifiedAsRealizing
+    bookChapters:
+      - ch33
+      - ch01
+    conceptCard: /cards/target-realization/
+    summary: >-
+      Given target P, can we construct a system A that robustly tracks P?
+      Open field crux; not an MB bridge. Certification schemas do not supply
+      construction (see fin_certification_without_construction).
+    dependsOn: []
+    notABridge: true

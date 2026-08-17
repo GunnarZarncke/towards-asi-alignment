@@ -1,0 +1,76 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import fieldV2 from "../../data/field-v2.json";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
+const bridgesByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+for (const b of fieldV2.bridges) {
+  if (b.gravestone) continue;
+  const role = b.lifecycleRole ?? "certify";
+  if (!bridgesByRole[role]) bridgesByRole[role] = [];
+  bridgesByRole[role].push(b);
+}
+---
+
+<SiteLayout
+  title="Field map v2 (preview)"
+  description="Lifecycle-tagged bridge map and open spine interfaces — preview; not the live field hub."
+>
+  <section class="hero">
+    <p class="eyebrow">Field · v2 preview</p>
+    <h1>Lifecycle + open interfaces</h1>
+    <p class="lede">
+      Parallel field map with lifecycle roles and non-MB open cruxes. Live <a href={withBase("/field/")}>/field/</a> stays on v1 until author confirms cutover.
+    </p>
+  </section>
+
+  <section class="readable">
+    <h2>Lifecycle axis</h2>
+    <p>{fieldV2.meta.lifecycleAxis}</p>
+    {lifecycleOrder.map((role) => (
+      <div class="role-block">
+        <h3>{role}</h3>
+        <ul>
+          {bridgesByRole[role]?.map((b) => (
+            <li>
+              <strong>{b.noun}</strong> ({b.key})
+              {b.cardSlug ? (
+                <>
+                  {" — "}
+                  <a href={withBase(`/cards/${b.cardSlug}/`)}>card</a>
+                </>
+              ) : null}
+              {b.leanCrux ? <span class="lean-crux"> · Lean: <code>{typeof b.leanCrux === "string" ? b.leanCrux : b.leanCrux.join(", ")}</code></span> : null}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="readable">
+    <h2>Open spine interfaces</h2>
+    <p>{fieldV2.meta.openSpineInterfaces}</p>
+    <ul>
+      {fieldV2.openSpineInterfaces.map((iface) => (
+        <li>
+          <strong>{iface.title}</strong> ({iface.lifecycleRole}) —{" "}
+          <a href={withBase(iface.conceptCard)}>concept card</a>
+          <p>{iface.summary}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</SiteLayout>
+
+<style>
+  .role-block {
+    margin: 1.25rem 0;
+  }
+  .lean-crux code {
+    font-size: 0.9em;
+  }
+</style>

@@ -611,6 +611,18 @@ concepts:
     bookLabels:
       - sec:pointing-problem
     body: bodies/pointing-problem.md
+  - slug: target-realization
+    kind: concept
+    status: framework
+    term: Target Realization
+    title: Target Realization
+    summary: Open construct-lifecycle crux — given target P, can we build a system that tracks P? Lean model only (ConstructionCrux); not an MB bridge.
+    bookChapters:
+      - ch33
+    bookLabels:
+      - ch:certification-without-construction
+      - sec:construction-demand-ch33
+    body: bodies/target-realization.md
   - slug: scaffold-misuse
     kind: concept
     title: Scaffold Misuse

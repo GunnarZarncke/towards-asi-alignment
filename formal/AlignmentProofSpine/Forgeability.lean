@@ -141,6 +141,13 @@ theorem conserved_property_channel_steerable_blocks_verifiability_up_to
   intro h
   exact hsteer h.1
 
+/-- **MB10 crux** (checkable `Prop`; global axiom is the discharge witness). -/
+def MB10Crux : Prop :=
+  ∀ (A B : System) (δ : Int),
+    SuccessorSafe A B →
+    ConservedPropertySignatureVerifiable A B →
+    RiskGap B ≤ δ → TrueHarm B ≤ δ
+
 /-- **MB10**: conserved-property signature is not (cheaply) forged. A
     successor-safe step with bounded measured risk also bounds true harm,
     but only if the conserved-property audit itself was adversarially
@@ -152,6 +159,8 @@ axiom MB10_conserved_property_signature_not_forged :
     SuccessorSafe A B →
     ConservedPropertySignatureVerifiable A B →
     RiskGap B ≤ δ → TrueHarm B ≤ δ
+
+theorem mb10_crux_holds : MB10Crux := MB10_conserved_property_signature_not_forged
 
 /-- What `MB10` buys on top of the existing spine: combine the successor-safe
     risk-monotonicity theorem (`SuccessorSafe_risk_monotone`, given the ch48

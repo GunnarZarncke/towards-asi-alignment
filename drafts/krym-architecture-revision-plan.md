@@ -12,7 +12,7 @@ Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `
 | **3b** | Make Phase 3 non-vacuous (Krym/Harfe review 2026-08-17) | **Done** 2026-08-17 |
 | **4** | Lean MB4 correction uptake vs legitimacy | **Done** 2026-08-17 |
 | **5** | Construction Lean model + MB8 gravestone | **Done** 2026-08-17 |
-| **6** | Crux Props, formal contracts, field v1/v2 | **Next** |
+| **6** | Crux Props, formal contracts, field v1/v2 | **Done** 2026-08-17 |
 
 ## Resolved decisions (summary)
 

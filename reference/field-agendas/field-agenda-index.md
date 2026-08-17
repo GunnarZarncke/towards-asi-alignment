@@ -514,15 +514,16 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 | Mode | Meaning | Examples |
 |---|---|---|
-| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |
+| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |
 | **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |
 | **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |
+**Retired matrix bridge:** **MB8** (CEV process route) — gravestone card only; factorized through **MB2**–**MB4** and **Target Realization** (open interface).
 
 **Do not infer from cells alone:** Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.
 
 **Kosoy diagnostic:** One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.
 
-**Open spine interfaces** (vocabulary, not matrix columns): ---
+**Open spine interfaces** (vocabulary, not matrix columns): **Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.
 
 ---
 

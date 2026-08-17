@@ -1,0 +1,231 @@
+{
+  "_generated": "<!-- GENERATED FILE — do not edit. Regenerate: cd site && npm run sync:field-v2 -->",
+  "meta": {
+    "lifecycleAxis": "specify → construct → identify → certify → preserve",
+    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Preview: `/field/v2/`.",
+    "note": "Preview only — live /field/ uses v1 matrix until author confirms cutover."
+  },
+  "bridges": [
+    {
+      "key": "MB1",
+      "noun": "Embedded Agency",
+      "cruxWording": "A measured agent–environment cut is sound enough that the certified unit is the real control locus.",
+      "leanAxiom": "MB1_estimator_soundness",
+      "cardSlug": "mb1-boundary-estimator-soundness",
+      "fieldAgree": "MIRI embedded agency; CIRIS named-identity bet (ops form).",
+      "fieldDiffer": "Obstruction (MIRI) vs recoverability/discovery (TSA); Wentworth convergent structure vs estimator soundness.",
+      "lifecycleRole": "identify",
+      "leanCrux": "MB1Crux"
+    },
+    {
+      "key": "MB2",
+      "noun": "Value Learning",
+      "cruxWording": "Evidence identifies a stable intended value/objective structure (not surface training compliance alone).",
+      "leanAxiom": "MB2Crux",
+      "cardSlug": "mb2-bundle-identifiability",
+      "fieldAgree": "MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment “right target.”",
+      "fieldDiffer": "ELK = latent-readout slice; PreDCA/QACI = peer outer targets; book splits referent to MB3.",
+      "lifecycleRole": "identify",
+      "leanCrux": "MB2Crux"
+    },
+    {
+      "key": "MB3",
+      "noun": "Value Referent",
+      "cruxWording": "Who or what values apply to survives substrate and representation change.",
+      "leanAxiom": "MB3_bearer_import",
+      "cardSlug": "mb3-bearer-import",
+      "fieldAgree": "Thin (CEV “whom”; some PreDCA population talk).",
+      "fieldDiffer": "Field usually folds into identification-pointing; book types referent transport separately.",
+      "lifecycleRole": "preserve",
+      "leanCrux": "MB3Crux"
+    },
+    {
+      "key": "MB4",
+      "noun": "Corrigibility",
+      "cruxWording": "Correction that holds now continues to preserve the correction process under pressure.",
+      "leanAxiom": "MB4_correction_integrity",
+      "cardSlug": "mb4-correction-legitimacy",
+      "fieldAgree": "Desire to accept/assist correction; Christiano dynamical reading closest to trajectory form.",
+      "fieldDiffer": "MIRI/CHAI shutdown-utility homograph; book splits audit-path legitimacy as MB4a.",
+      "legendNote": "Corrigibility (MIRI/CHAI) vs dynamical corrigibility (Christiano) vs MB4/MB4a split.",
+      "lifecycleRole": "preserve",
+      "leanCrux": "MB4Crux"
+    },
+    {
+      "key": "MB4a",
+      "noun": "Audit Independence",
+      "cruxWording": "The designated measured correction/audit path is legitimate and uncaptured.",
+      "leanAxiom": "MB4a_measured_path_legitimacy",
+      "cardSlug": "mb4a-measured-path-legitimacy",
+      "fieldAgree": "CIRIS WA independence; trusted-monitor / judge-capture cousins.",
+      "fieldDiffer": "No field headline; often lumped into corrigibility; green Verify ⇏ real-loop integrity.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB4aReferenceLegitimacyCrux"
+    },
+    {
+      "key": "MB5",
+      "noun": "Tiling",
+      "cruxWording": "Full value/bearer transport under ontology shift yields successor safety.",
+      "leanAxiom": "MB5_ontology_shift_successor_audit",
+      "cardSlug": "mb5-successor-ontology-shift",
+      "fieldAgree": "MIRI tiling / Vingean reflection / ontology identification.",
+      "fieldDiffer": "Book separates successor audit gaming as MB10; natural abstractions ease but do not discharge.",
+      "legendNote": "MB5 = transport holds; MB10 = successor certification checklist not forgeable.",
+      "lifecycleRole": "preserve",
+      "leanCrux": "MB5Crux"
+    },
+    {
+      "key": "MB6",
+      "noun": "Goodhart Selection",
+      "cruxWording": "Socio-technical selection supports a basin that preserves correction, rather than selecting proxy-satisfying systems that hollow it out.",
+      "leanAxiom": [
+        "MB6a_percolation_evidence_to_basin_stability",
+        "MB6b_basin_stability_to_correction_integrity"
+      ],
+      "cardSlug": "mb6-selection-and-basin-stability",
+      "fieldAgree": "Goodhart-as-selector; gradual disempowerment narrative; governance/pause on selection handles.",
+      "fieldDiffer": "Demski “selection vs control” homograph; CLR multipolar = different layer; thin in model-centric agendas.",
+      "legendNote": "Goodhart Selection (deployment ecology) ≠ Demski selection (inside-optimizer search).",
+      "lifecycleRole": "preserve",
+      "leanCrux": [
+        "MB6aCrux",
+        "MB6bCrux"
+      ]
+    },
+    {
+      "key": "MB7",
+      "noun": "Inner Alignment",
+      "cruxWording": "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking).",
+      "leanAxiom": [
+        "MB7a_access_model_soundness",
+        "MB7b_filter_family_coverage",
+        "MB7c_hidden_biq_to_adversarial_robustness"
+      ],
+      "cardSlug": "mb7-hidden-capability-and-access",
+      "fieldAgree": "Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling.",
+      "fieldDiffer": "Field binary vs book split; do not merge with MB10 Successor Gaming.",
+      "legendNote": "Inner Alignment splits into MB7a–c (access, filter, cost of faking) plus MB7d (acausal coordination); MB10 = successor certification channel.",
+      "lifecycleRole": "certify",
+      "leanCrux": [
+        "MB7aCrux",
+        "MB7bCrux",
+        "MB7cCrux",
+        "MB7dCrux"
+      ]
+    },
+    {
+      "key": "MB7a",
+      "noun": "Access-Model Soundness",
+      "cruxWording": "An adequate access model makes boundary discovery robust under adversarial hiding.",
+      "leanAxiom": "MB7a_access_model_soundness",
+      "cardSlug": "mb7a-access-model-soundness",
+      "fieldAgree": "Embedded-agency subsystem worry; Redwood access/handle assumptions.",
+      "fieldDiffer": "Often lumped into inner alignment; book types access-model soundness before filter coverage.",
+      "lifecycleRole": "identify",
+      "leanCrux": "MB7aCrux"
+    },
+    {
+      "key": "MB7b",
+      "noun": "Filter Coverage",
+      "cruxWording": "The oversight filter family has adequate resolution to bound what audits miss.",
+      "leanAxiom": "MB7b_filter_family_coverage",
+      "cardSlug": "mb7b-filter-coverage",
+      "fieldAgree": "AI Control capability gap; debate/amplification ceiling under opacity.",
+      "fieldDiffer": "Field “hidden capability” is one wall; MB7b is only the filter-coverage subchannel.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB7bCrux"
+    },
+    {
+      "key": "MB7c",
+      "noun": "Bounded Hidden Capability",
+      "cruxWording": "Bounded hidden productive control plus correction integrity supports adversarially robust oversight.",
+      "leanAxiom": "MB7c_hidden_biq_to_adversarial_robustness",
+      "cardSlug": "mb7c-bounded-hidden-capability",
+      "fieldAgree": "Certification-under-manipulation; cost-of-faking monitored signal.",
+      "fieldDiffer": "Not MB4 corrigibility; MB7c closes the inner-alignment chain to adversarial robustness.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB7cCrux"
+    },
+    {
+      "key": "MB7d",
+      "noun": "Acausal Coordination",
+      "cruxWording": "Inferential-coupling measurements remain valid after ordinary channels are cut.",
+      "leanAxiom": "MB7d_inferential_uad_detector_soundness",
+      "cardSlug": "mb7d-acausal-coordination",
+      "fieldAgree": "Acausal trade / ECL; FDT / program equilibrium.",
+      "fieldDiffer": "Sparse field evidence; LI/reflection = side channel, not discharge.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB7dCrux"
+    },
+    {
+      "key": "MB8",
+      "noun": "Extrapolated Volition",
+      "cruxWording": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
+      "leanAxiom": "MB8_cev_process_convergence",
+      "cardSlug": "mb8-cev-process-convergence",
+      "matrixColumn": false,
+      "gravestone": true,
+      "fieldAgree": "MIRI CEV process/legitimacy underside — now factorized through AlignmentTarget / MB2–MB4.",
+      "fieldDiffer": "Retired as a matrix bridge; card is a gravestone. Peer outer targets ≠ this route; live path is MB4/MB4a.",
+      "lifecycleRole": "specify",
+      "leanCrux": "MB8_cev_process_convergence"
+    },
+    {
+      "key": "MB9",
+      "noun": "Grounding Drift",
+      "cruxWording": "Audited abstractions do not silently drift — certificate warrants map move or uncertainty escalation on value-relevant change.",
+      "leanAxiom": "MB9_grounding_certificate_soundness",
+      "cardSlug": "mb9-grounding-certificate",
+      "fieldAgree": "Shared wall with incomplete-spec / omitted-phenomena worry (GSAI family).",
+      "fieldDiffer": "GSAI completeness vs book conservativity; Kosoy misspec = ambient cousin.",
+      "legendNote": "Grounding Drift (conservativity) ≠ GSAI open-world specification coverage.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB9Crux"
+    },
+    {
+      "key": "MB10",
+      "noun": "Successor Gaming",
+      "cruxWording": "A successor’s green alignment-transport audit is not checklist theater — signature adversarially verifiable up to capability.",
+      "leanAxiom": "MB10_conserved_property_signature_not_forged",
+      "cardSlug": "mb10-successor-forgeability",
+      "fieldAgree": "Certification-under-manipulation; measurement/checklist gaming; tiling-line successor-trust worry in audit form.",
+      "fieldDiffer": "Field deceptive alignment / alignment faking usually tags MB7; MB5 = transport composition.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB10Crux"
+    },
+    {
+      "key": "MB11",
+      "noun": "Deployment Safety",
+      "cruxWording": "Certified safety case within deployment risk tolerance warrants abstract Safe.",
+      "leanAxiom": "MB11_safety_case_adequacy",
+      "cardSlug": "mb11-deployment-safety",
+      "fieldAgree": "Safety-case / assurance closure; eval-to-deployment warrant talk.",
+      "fieldDiffer": "Not regret⇒safe; packaging ≠ bridge; scope-exceeded defeater.",
+      "lifecycleRole": "certify",
+      "leanCrux": "MB11Crux"
+    }
+  ],
+  "openSpineInterfaces": [
+    {
+      "id": "target-realization",
+      "title": "Target Realization",
+      "lifecycleRole": "construct",
+      "status": "open",
+      "leanModule": "AlignmentProofSpine/AlignmentConstruction.lean",
+      "leanProp": "ConstructionCrux",
+      "leanDefs": [
+        "Realizes",
+        "TargetRealizable",
+        "CertifiedAsRealizing"
+      ],
+      "bookChapters": [
+        "ch33",
+        "ch01"
+      ],
+      "conceptCard": "/cards/target-realization/",
+      "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction).",
+      "dependsOn": [],
+      "notABridge": true
+    }
+  ]
+}

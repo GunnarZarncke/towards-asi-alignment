@@ -13,6 +13,16 @@ It proves in Lean that cooperative reward inference does not entail value-bundle
 This part tests value-bundle, correction, and successor preservation jointly through transport (Claims~\ref{claim:value-bundle},~\ref{claim:correction},~\ref{claim:successor}).
 \end{epistemicstatus}
 
+\begin{formalcontract}
+\textbf{Claims.} Observable behavior licenses inference of value-bundle geometry, not merely a scalar reward; identifiability is the open step before alignment.
+
+\textbf{Lean.} \texttt{BundleExperiment}, \texttt{BundleIdentifiable}, \texttt{MB2aCrux}/\texttt{MB2bCrux}/\texttt{MB2Crux}; counterexample \texttt{cooperative\_reward\_inference\_not\_bundle\_preservation}.
+
+\textbf{Assumes.} Adequate bundle evidence identifies geometry (MB2a); gradient equivalence and separate causal-control / tradeoff evidence for \texttt{BundleAligned}.
+
+\textbf{Does not establish.} \texttt{BundleAligned} from policy match alone; general IRL--ELK resolution.
+\end{formalcontract}
+
 \begin{refsection}
 
 \epigraph{%
