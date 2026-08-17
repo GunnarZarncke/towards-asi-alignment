@@ -19,6 +19,5 @@ ch43 `{leanbox}` still read as if there were two live routes to correction. Auth
 - Two-route language stays only at ch28 and App G’s gravestone instance.
 
 ## Open / next
-- Lean theorem *names* still say `disjunctive_tolerance` (API unchanged).
-- Field-agenda index / glossary updated this follow-up.
-- BIG REVIEW WWCTV forward refs still open.
+
+Moved to `metadata/TODO.md` § Krym architecture revision (closed) and BIG REVIEW chokepoint item.

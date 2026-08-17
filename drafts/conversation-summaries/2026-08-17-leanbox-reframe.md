@@ -14,5 +14,4 @@
 
 ## Open
 
-- Remaining `\leanspine` chapters without a box (add only when a box would add value beyond the margin note).
-- Field v2 cutover to live `/field/` (manual author confirm).
+Moved to `metadata/TODO.md` § Krym architecture revision (closed).

@@ -1,5 +1,7 @@
 # Krym architecture revision plan
 
+**Status: CLOSED** (2026-08-17). Phases 1–6 and post-plan prose passes ( `{leanbox}` reframe, MB6b∨MB8 retirement) are shipped. **Open follow-ups:** [`metadata/TODO.md`](../metadata/TODO.md) § Krym architecture revision (closed).
+
 Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `.cursor/plans/krym_architecture_revision_da847df9.plan.md` (Cursor plan file).
 
 ## Phase status
@@ -12,7 +14,8 @@ Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `
 | **3b** | Make Phase 3 non-vacuous (Krym/Harfe review 2026-08-17) | **Done** 2026-08-17 |
 | **4** | Lean MB4 correction uptake vs legitimacy | **Done** 2026-08-17 |
 | **5** | Construction Lean model + MB8 gravestone | **Done** 2026-08-17 |
-| **6** | Crux Props, formal contracts, field v1/v2 | **Done** 2026-08-17 |
+| **6** | Crux Props, `{leanbox}` spine boxes, field v1/v2 preview | **Done** 2026-08-17 |
+| **post** | `{leanbox}` Tier 1+2 expansion; retire MB6b∨MB8 two-route prose + field index/glossary | **Done** 2026-08-17 |
 
 ## Resolved decisions (summary)
 
@@ -20,15 +23,15 @@ Source thread: [Krym_conversation.md](Krym_conversation.md). Full phased plan: `
 - Target Realization: open interface, not `MB*`.
 - MB8: remove from matrix; keep MB8 gravestone card.
 - ev-131 → MB4; no meta-evidence tier.
-- Field v2 cutover: manual author confirm last.
+- Field v2 cutover: manual author confirm last (see `metadata/TODO.md`).
 
-Log: [drafts/conversation-summaries/2026-08-15-krym-phase1-early-scope.md](conversation-summaries/2026-08-15-krym-phase1-early-scope.md).
+Session logs: Phase 1–6 in `drafts/conversation-summaries/2026-08-17-krym-phase*.md`; `{leanbox}` in `2026-08-17-leanbox-reframe.md`; MB6b∨MB8 in `2026-08-17-retire-mb6b-mb8-disjunction.md`.
 
-## Phase 3b — MB2 non-vacuous (before Phase 4)
+## Historical — Phase 3b triage (archived)
 
-Review of `3f664d28`: Phase 3 made Krym’s decomposition *visible*; it did not make the identifiability crux *checkable*. Harfe’s bar is fewer opaque axioms, not more named `True`. Honest status: **the missing MB2 step is named in Lean; it is not yet in the proof.** Do not start Phase 4 until 3b lands.
+Review of `3f664d28`: Phase 3 made Krym’s decomposition *visible*; Phase 3b made the identifiability crux *checkable*. **Done 2026-08-17.**
 
-Success criteria:
+Success criteria (all landed in 3b):
 
 1. `BundleExperiment` / `BundleModel` have concrete fields (or a finite interpretation from `FinPolicyExperiment`). `CompatibleWithEvidence` is a `def`.
 2. No global `axiom MB2a_*` / `MB2b_*`. Those claims are `def … : Prop` hypotheses. Something that currently takes `BundleGradientEquivalent` consumes `hMB2 : MB2Crux` (or the relevant conjuncts). Unused scaffolding is deleted.
