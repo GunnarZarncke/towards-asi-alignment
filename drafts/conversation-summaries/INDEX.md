@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-17 | **Krym Phase 3 MB2 Lean** — MB2a/b/c chain; `BundleAligned` conjunction; finite identifiability counterexample. | [2026-08-17-krym-phase3-mb2-lean.md](2026-08-17-krym-phase3-mb2-lean.md) |
 | 2026-08-16 | **Krym Phase 2 pointing glossary** — App E three-sense headword; MB2 identifiability-first copy; `/cards/pointing-problem/`. | [2026-08-16-krym-phase2-pointing-glossary.md](2026-08-16-krym-phase2-pointing-glossary.md) |
 | 2026-08-16 | **Offline caching resume** — asset-first SW v9; skip cached URLs; partial progress + migrate on update. | [2026-08-16-offline-caching-resume.md](2026-08-16-offline-caching-resume.md) |
 | 2026-08-16 | **Feedback contributors ledger** — `metadata/feedback-contributors.md`; LW links; Hallgren spelling fix in acknowledgements. | [2026-08-16-feedback-contributors-ledger.md](2026-08-16-feedback-contributors-ledger.md) |

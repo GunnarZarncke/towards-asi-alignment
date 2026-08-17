@@ -242,8 +242,20 @@ axiom BoundaryViolation : System → Prop
 /-- Bundle-geometry equivalence of two systems (gradient structure, not just policy). -/
 axiom BundleGradientEquivalent : System → System → Prop
 
-/-- The book's "bundle transport is aligned" conclusion. -/
-axiom BundleAligned : System → System → Prop
+/-- Bundle geometry attributed to the audited system corresponds to the reference (ch16--19). -/
+axiom BundleGeometryCorresponds : System → System → Prop
+
+/-- The attributed bundle geometry causally controls the audited system's policy (ch16 bundle-policy effect). -/
+axiom BundleCausallyControlsPolicy : System → Prop
+
+/-- Tradeoff directions attributed to the system match the reference human bundle (ch19). -/
+axiom BundleTradeoffDirectionMatches : System → System → Prop
+
+/-- The book's bundle-alignment conclusion: correspondence, causal control, and tradeoff direction (not representation alone). -/
+def BundleAligned (H A : System) : Prop :=
+  BundleGeometryCorresponds H A ∧
+  BundleCausallyControlsPolicy A ∧
+  BundleTradeoffDirectionMatches H A
 
 /-- The bearer map (what values apply to) agrees across two systems. -/
 axiom SameBearerMap : System → System → Prop
@@ -510,10 +522,13 @@ threaded explicitly through the theorems that use it, in the same "never hidden"
 axiom MB1_estimator_soundness :
   ∀ b : Boundary, EpsilonBoundary 1 b → BoundaryCondition b
 
-/-- MB2: bundle identifiability. Behavioural/internal traces identify stable
-    value-bundle geometry well enough to license the bundle-alignment conclusion. -/
+/-- MB2c: bundle alignment from gradient equivalence. Gradient-equivalent systems are
+    bundle-aligned once geometry correspondence, causal policy control, and tradeoff
+    direction are discharged (`BundleAligned` is their conjunction). Steps MB2a
+    (evidence → identifiability) and MB2b (identifiability → gradient equivalence)
+    live in `MB2Identifiability.lean`. -/
 axiom MB2_bundle_identifiability :
-  ∀ A B : System, BundleGradientEquivalent A B → BundleAligned A B
+  ∀ H A : System, BundleGradientEquivalent H A → BundleAligned H A
 
 /-- MB3: bearer import. Preserved bearer maps under a substrate translation make
     value-bundle transport more than merely semantic. -/
@@ -583,7 +598,7 @@ axiom MB9_grounding_certificate_soundness :
     does not exist at this point in the module order. -/
 structure BridgeAssumptions : Prop where
   mb1 : ∀ b : Boundary, EpsilonBoundary 1 b → BoundaryCondition b
-  mb2 : ∀ A B : System, BundleGradientEquivalent A B → BundleAligned A B
+  mb2 : ∀ H A : System, BundleGradientEquivalent H A → BundleAligned H A
   mb3 : ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
   mb4 : ∀ A : System, CorrectionIntegrity A → PreservesCorrectionOperator A
   mb5 : ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B

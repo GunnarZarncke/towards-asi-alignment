@@ -2,8 +2,8 @@
 leanNodes:
   - nodeId: MB2_bundle_identifiability
     kind: bridge
-    summary: Bundle-gradient-equivalent systems are assumed to be bundle-aligned — behavioral/internal traces are assumed to identify stable value-bundle geometry.
-    module: AlignmentProofSpine/Core.lean
+    summary: MB2 chain — MB2a evidence→BundleIdentifiable, MB2b identifiability→BundleGradientEquivalent, MB2c gradient→BundleAligned (geometry ∧ causal control ∧ tradeoff direction).
+    module: AlignmentProofSpine/MB2Identifiability.lean
 evidenceNotes:
   - source: toy-simulation diagnostic (T-4)
     scenario: bundle_goodhart

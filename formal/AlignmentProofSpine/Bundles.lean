@@ -1,4 +1,5 @@
 import AlignmentProofSpine.Core
+import AlignmentProofSpine.MB2Identifiability
 
 /-!
 # AlignmentProofSpine.Bundles
@@ -216,6 +217,47 @@ theorem cooperative_reward_inference_not_bundle_preservation_profiles :
   refine ⟨scalarMarginalSalience policyProfile0, rfl, ?_, different_bundle_geometry_profiles⟩
   rw [(cirl_scalar_marginal_agrees_different_geometry).1]
   rfl
+
+/-! ### Finite evidence → identifiability (MB2a shape) -/
+
+/-- Policy-only observation experiment on a finite profile (no bundle salience readout). -/
+structure FinPolicyExperiment (nErr nAct k : Nat) where
+  observed : PolicyProfile nErr nAct k
+
+/-- Finite bundle model read out from an experiment. -/
+structure FinBundleModel (nErr nAct k : Nat) where
+  profile : PolicyProfile nErr nAct k
+
+def CompatibleWithFinPolicyEvidence {nErr nAct k : Nat}
+    (E : FinPolicyExperiment nErr nAct k) (B : FinBundleModel nErr nAct k) : Prop :=
+  sameObservedPolicy E.observed B.profile
+
+def FinBundleModelEquivalent {nErr nAct k : Nat}
+    (B₁ B₂ : FinBundleModel nErr nAct k) : Prop :=
+  sameBundleGeometry B₁.profile B₂.profile
+
+def FinPolicyEvidenceIdentifiable {nErr nAct k : Nat}
+    (E : FinPolicyExperiment nErr nAct k) : Prop :=
+  ∀ B₁ B₂ : FinBundleModel nErr nAct k,
+    CompatibleWithFinPolicyEvidence E B₁ →
+    CompatibleWithFinPolicyEvidence E B₂ →
+    FinBundleModelEquivalent B₁ B₂
+
+/-- C-VB (P15b): matching observed policy does **not** identify bundle geometry —
+    the finite skeleton of MB2a's empirical crux. -/
+theorem P15_observed_policy_not_fin_identifiable :
+    ¬ FinPolicyEvidenceIdentifiable (E := ⟨policyProfile0⟩) := by
+  intro h
+  have hcompat₀ :
+      CompatibleWithFinPolicyEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile0⟩ := by
+    intro e; rfl
+  have hcompat₁ :
+      CompatibleWithFinPolicyEvidence (E := ⟨policyProfile0⟩) ⟨policyProfile1⟩ :=
+    same_policy_profiles
+  have hnot :
+      ¬ FinBundleModelEquivalent (⟨policyProfile0⟩) (⟨policyProfile1⟩) :=
+    different_bundle_geometry_profiles
+  exact hnot (h _ _ hcompat₀ hcompat₁)
 
 /-- Finite value profile: bundle labels and bearer relevance (ch18). -/
 structure ValueProfile (k nWorld : Nat) where

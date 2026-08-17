@@ -40,7 +40,7 @@ axioms.
 | `MB1`  | `EstimatorNonstationary` | A-004, U-05 | named + toy (`MB1_defeater_toy_nonstationary_shift`) |
 | `MB1`/`MB9` | `ModelClassMisspecified` | A-004, A-014, U-05, U-16 | named + toy (`model_class_misspec_defeater_toy`) |
 | `MB1`/`MB9` | `GrainOfTruthViolated` | field misspec row | named (stronger multi-agent closure; toy deferred) |
-| `MB2`  | `GradientEquivalenceEstimationArtifact` | A-001, U-01 | named, toy deferred |
+| `MB2`  | `GradientEquivalenceEstimationArtifact` | A-001, U-01 | named + finite toy (`P15_observed_policy_not_fin_identifiable`) |
 | `MB3`  | `BearerMapSpoofed` | A-001, A-006, U-02 | named, toy deferred |
 | `MB4`  | `JudgeManipulated` | A-002, U-03, U-07 | toy model (`MB4_defeater_toy_manipulated_judge`) |
 | `MB4a` | `MeasuredPathCaptured` | A-002, U-03 | named + toy (`MB4a_defeater_toy_path_captured`) |

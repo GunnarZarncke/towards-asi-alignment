@@ -34,4 +34,4 @@ Continue Krym architecture revision: Phase 2 — stop treating "pointing problem
 
 ## Commits
 
-- `154cdf5f` — Disambiguate pointing problem from MB2 identifiability (Krym Phase 2).
+- `d3cc0622` — Disambiguate pointing problem from MB2 identifiability (Krym Phase 2).

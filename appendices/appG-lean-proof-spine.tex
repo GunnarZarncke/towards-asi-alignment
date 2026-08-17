@@ -517,10 +517,16 @@ Estimator soundness depends on the recovery bridge in Chapter~\ref{ch:finding-bo
 
 \begin{assumption}[MB2: bundle identifiability]
 \label{appi:ass:mb2}
-\begin{equation}
-\label{appi:eq:mb2}
-\forall A,B,\ \mathrm{BundleGradientEquivalent}(A,B)\Rightarrow \mathrm{BundleAligned}(A,B).
-\end{equation}
+\begin{align}
+\label{appi:eq:mb2a}
+\forall E,\ &\mathrm{BundleEvidenceAdequate}(E)\Rightarrow \mathrm{BundleIdentifiable}(E), \\
+\label{appi:eq:mb2b}
+\forall H,A,E,\ &\mathrm{BundleIdentifiable}(E)\Rightarrow \mathrm{BundleGradientEquivalent}(H,A), \\
+\label{appi:eq:mb2c}
+\forall H,A,\ &\mathrm{BundleGradientEquivalent}(H,A)\Rightarrow \mathrm{BundleAligned}(H,A).
+\end{align}
+\(\mathrm{BundleAligned}(H,A)\) is the conjunction of geometry correspondence, causal policy control, and tradeoff-direction match --- not representation alone.
+Steps \eqref{appi:eq:mb2a}--\eqref{appi:eq:mb2b} are the identifiability crux chapters describe before gradient equivalence; \eqref{appi:eq:mb2c} is the bridge packaged in `BridgeAssumptions.mb2`.
 Field crossroad: inverse-RL non-identifiability, ELK, reward misspecification \autocite{ng2000irl,christiano2021elk,casper2023rlhflimits}.
 Book bridge: Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:compression-test-intention}.
 \end{assumption}
