@@ -2,15 +2,21 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (six-claims spine Phases 0–2 + language pass).
+Last updated: 2026-08-17 (six-claims spine complete through Phase 6).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Six-claims spine (Phase 6 optional)** — Phases 0–5 shipped: claim spine + layer map + status table; ch03 dedup; part/chapter tags; ch48 second-tier claims. Optional: `scripts/check_claim_spine.py`, site card. Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
+Last updated: 2026-08-17 (Krym Phase 5 construction + MB8 gravestone).
 
-- **Krym architecture revision (Phase 5–6)** — Phase 4 shipped: MB4 uptake/legitimacy decomposition; `MB4_correction_integrity` rename. **Next: Phase 5** (construction Lean model + MB8 gravestone). Plan: `drafts/krym-architecture-revision-plan.md`. Logs: `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`, `2026-08-17-krym-phase3b-mb2-checkable.md`.
+---
+
+## Open work (load-bearing)
+
+- **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
+
+- **Krym architecture revision (Phase 6)** — Phase 5 shipped: `AlignmentConstruction.lean`; MB8 gravestone; removed from `BridgeAssumptions` and field matrix column. **Next: Phase 6** (crux Props, formal contracts, field v1/v2). Plan: `drafts/krym-architecture-revision-plan.md`. Logs: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`, `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
 
 - **MB7a–c bridge cards (field nouns)** — Explicit site cards shipped with book terminology; TODO to consider field-standard noun aliases without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
 
@@ -47,8 +53,10 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript + site (2026-08-17):** Six-claims spine **complete** (Phases 0–6) — layer map, ch03 dedup, ch48 status + C-008–C-011; `six-thesis-claims` companion card; homepage/reading-path/FAQ/`llms.txt` links; `scripts/check_claim_spine.py` in `make check`. Plan: `drafts/six-claims-spine-plan.md`. Logs: `2026-08-17-six-claims-spine-phase0-2.md`.
 - **Manuscript (2026-08-17):** Six-claims spine Phases 0–2 — `drafts/claim-spine.md`, `tables/claim-spine.tex`, intro claim labels + unfold map, part openers, ch48/ch30/exec-overview sync, C-044 ledger; glossary-first language pass on intro and part headers. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
-- **Lean / App G (2026-08-17):** Krym revision **Phase 4** — MB4 legitimacy/uptake/persistence decomposition; `MB4_correction_integrity` rename; `MB4CorrectionIntegrity.lean`. Log: `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
+- **Lean / App G (2026-08-17):** Krym revision **Phase 5** — `AlignmentConstruction.lean`; MB8 gravestone; `mb8` removed from `BridgeAssumptions`. Log: `2026-08-17-krym-phase5-construction-mb8-gravestone.md`.
+- **Lean / App G (2026-08-17):** Krym revision **Phase 4** — MB4 legitimacy/uptake/persistence decomposition; `MB4_correction_integrity` rename. Log: `2026-08-17-krym-phase4-mb4-uptake-legitimacy.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3b** — MB2 as checkable `Prop`s on finite `PolicyProfile`s; removed `MB2_bundle_identifiability` / `BridgeAssumptions.mb2`; `bundle_aligned_from_mb2_chain`; axiom budget shrank. Log: `2026-08-17-krym-phase3b-mb2-checkable.md`.
 - **Lean / App G (2026-08-17):** Krym revision **Phase 3** — MB2a/b/c chain in `MB2Identifiability.lean` (superseded by 3b). Log: `2026-08-17-krym-phase3-mb2-lean.md`.
 - **Manuscript / metadata (2026-08-16):** Krym revision **Phase 2** — App E pointing-problem headword (identification / realization / preservation); MB2/App B/bridge cards lead with value/bundle identifiability; new `/cards/pointing-problem/` glossary entry. Log: `2026-08-16-krym-phase2-pointing-glossary.md`.

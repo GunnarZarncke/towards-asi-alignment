@@ -637,6 +637,23 @@ concepts:
     glossaryTerms:
       - term: Correction-capacity assumption
         definition: 'Society retains enough institutional, epistemic, and practical capacity at $t_0$ to notice, evaluate, and constrain frontier systems: $C_{\text{corr}}^{\text{society}}(t_0) > \theta$.'
+  - slug: six-thesis-claims
+    kind: concept
+    title: Six thesis claims
+    status: framework
+    summary: The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and discharges in Chapter 48.
+    bookLabels:
+      - sec:how-claims-unfold
+    body: bodies/six-thesis-claims.md
+    related:
+      - boundary-discovery
+      - value-bundle-transport
+      - grounding-viability
+      - correction-channel-integrity
+      - successor-stability
+      - attractor-control
+      - standalone-claims
+      - bridge-assumptions
   - slug: standalone-claims
     kind: concept
     title: Standalone claims
@@ -644,6 +661,7 @@ concepts:
     summary: Four extractable claims from the manuscript — each citable without the full book argument.
     body: bodies/standalone-claims.md
     related:
+      - six-thesis-claims
       - anti-capture-correction-validity
       - bearer-map-commutation-failure
       - certification-under-manipulation

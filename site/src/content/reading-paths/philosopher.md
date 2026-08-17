@@ -18,6 +18,9 @@ steps:
     ref: what-not-claiming
     note: "Framework and conditional spine — not a solved alignment proof."
   - kind: card
+    ref: six-thesis-claims
+    note: "Six intro claims and where the book develops each."
+  - kind: card
     ref: value-change-vs-corruption
     note: "Legitimate moral change vs manipulation — load-bearing distinction."
   - kind: card

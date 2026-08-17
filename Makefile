@@ -18,6 +18,7 @@ check: generate
 	python3 scripts/check_structure.py
 	python3 scripts/check_citations.py
 	python3 scripts/check_bibliography_summaries.py
+	python3 scripts/check_claim_spine.py
 
 wordcount:
 	python3 scripts/wordcount.py

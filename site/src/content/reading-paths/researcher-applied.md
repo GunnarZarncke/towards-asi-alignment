@@ -18,6 +18,9 @@ steps:
     ref: what-not-claiming
     note: "Conditional framework — calibrate before citing."
   - kind: card
+    ref: six-thesis-claims
+    note: "Introduction reader contract — six claims, part map, ch48 discharge."
+  - kind: card
     ref: the-boundary-error
     note: "Local success, global failure when the boundary is wrong."
   - kind: card

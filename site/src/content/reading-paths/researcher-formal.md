@@ -18,6 +18,9 @@ steps:
     ref: overview
     note: "Start here — proof vs bridge vs counterexample map."
   - kind: card
+    ref: six-thesis-claims
+    note: "Introduction reader contract before diving into bridges."
+  - kind: card
     ref: bridge-assumptions
     note: "MB1–MB10 as explicit axioms, not hidden conclusions."
   - kind: card

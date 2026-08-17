@@ -18,6 +18,9 @@ steps:
     ref: what-not-claiming
     note: "Not solved, not deployable certification today."
   - kind: card
+    ref: six-thesis-claims
+    note: "Introduction reader contract — decision relevance without the full PDF first."
+  - kind: card
     ref: scope-and-correction-capacity
     note: "The framework applies only while civilization can still correct."
   - kind: card

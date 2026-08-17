@@ -1,5 +1,6 @@
 ---
 related:
+  - six-thesis-claims
   - anti-capture-correction-validity
   - bearer-map-commutation-failure
   - certification-under-manipulation
@@ -7,6 +8,8 @@ related:
 ---
 
 Four extractable claims from the manuscript — each citable without the full book argument. Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
+
+For the Introduction's six-claim reader contract and Chapter 48 discharge map, see [Six thesis claims](/cards/six-thesis-claims/).
 
 | Claim | Summary |
 |-------|---------|
