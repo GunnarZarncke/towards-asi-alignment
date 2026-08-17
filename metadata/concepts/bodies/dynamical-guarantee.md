@@ -25,7 +25,7 @@ related:
   - mb11-deployment-safety
 ---
 
-A static alignment claim has the form "at time t, system A has property P." That is useful for ordinary software — does a program pass a test suite, respect an access policy, return a correct output — but it breaks for superintelligence, where the system learns, acquires tools, persuades users, and eventually produces successors.
+A static alignment claim has the form "at time t, system A has property P." That is useful for ordinary software — does a program pass a test suite, respect an access policy, return a correct output — but it breaks for superintelligence, where the system learns, acquires tools, persuades users, and eventually produces successors. The same snapshot picture already strains for **general intelligence** once the system is embedded in learning, tools, institutions, and feedback loops.
 
 This project's replacement is a dynamical guarantee: a probabilistic claim that the system remains in, or returns to, an acceptable region of state space over a time horizon, conditional on starting inside a safety basin, the environment staying in a specified class, and the system belonging to a certified class of allowed transformations.
 

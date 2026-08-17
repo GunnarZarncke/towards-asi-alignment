@@ -410,6 +410,30 @@ function convertCommand(name, tex, index, ctx) {
       const link = resolveRef(label, ctx, name);
       return { output: link, index };
     }
+    case "hyperref":
+    case "gloss": {
+      let label = "";
+      if (tex[index] === "[") {
+        const opt = readOptional(tex, index);
+        label = opt.content;
+        index = opt.end;
+      }
+      const textArg = readBalanced(tex, index);
+      if (!textArg) return { output: "", index: skipCommand(name, tex, index) };
+      index = textArg.end;
+      const text = convertInlineText(textArg.content, ctx);
+      if (!label) return { output: text, index };
+      const cardSlug = ctx.cardIndex.get(label);
+      if (cardSlug) {
+        return { output: `[${text}](${relCardHref(cardSlug)})`, index };
+      }
+      const entry = ctx.labelIndex.get(label);
+      if (entry?.webPage) {
+        const anchor = label.startsWith("ch:") || label.startsWith("gloss:") ? "" : label;
+        return { output: `[${text}](${relBookHref(entry.pageId, anchor, ctx.pageId)})`, index };
+      }
+      return { output: text, index };
+    }
     case "autocite":
     case "parencite":
     case "cite":
@@ -488,6 +512,9 @@ function convertCommand(name, tex, index, ctx) {
     case "vfill":
     case "centering":
     case "par":
+    case "Huge":
+    case "Large":
+    case "bfseries":
     case "smallskip":
     case "medskip":
     case "bigskip":
@@ -694,6 +721,20 @@ function convertDocument(tex, ctx) {
     if (tex[i] === "\n" && tex[i + 1] === "\n") {
       out += "\n\n";
       i += 2;
+      continue;
+    }
+
+    if (tex[i] === "{") {
+      const group = readBalanced(tex, i);
+      if (group) {
+        out += convertDocument(group.content, ctx);
+        i = group.end;
+        continue;
+      }
+    }
+
+    if (tex[i] === "}") {
+      i += 1;
       continue;
     }
 

@@ -10,7 +10,7 @@
 
 \begin{chapterthesis}
 The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops.
-This preservation program must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.
+Alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.
 \end{chapterthesis}
 
 \begin{epistemicstatus}
@@ -35,7 +35,7 @@ Over a period of days he came to think of all the puppies together as a single f
 \label{sec:object-level-mistake}
 
 This chapter concerns the \emph{object of alignment}: the system whose future behaviour must be constrained.
-It does not yet decide who has legitimate authority to provide those constraints; later chapters take up correction, value formation, and bearer maps.
+It does not yet decide who has legitimate authority to supply those constraints; later chapters take up how humans stay in the loop (Chapter~\ref{ch:correction-causal-channel}), how values are learned (Chapter~\ref{ch:low-dimensional-value-learning}), and who counts as a value bearer (Chapter~\ref{ch:bearer-maps}).
 
 A common first move in alignment is to pick an object and ask whether that object is aligned.
 We point at a neural network, a policy, a chatbot, a robot, a company, a benchmark process, a regulator, or a market, and ask whether it is doing what humans want.
@@ -43,22 +43,18 @@ We point at a neural network, a policy, a chatbot, a robot, a company, a benchma
 While that move is often useful, it is also often wrong, particularly where we are approaching superintelligence territory.
 
 Our language and our common-sense ontology may make it hard to identify that object of alignment.
-A deployed language model is not merely a matrix of weights.
-It is part of a loop containing users, system prompts, tools, memory stores, retrieval systems, monitoring dashboards, product incentives, model updates, human feedback, legal constraints, deployment channels, and competitive pressures.
-The real optimizing process may be spread across the whole loop.
+Chapter~\ref{ch:agent-without-anthropomorphism} and Chapter~\ref{ch:finding-boundary} already argued that the optimizing process may span users, tools, memory, incentives, and feedback rather than sit inside a single labeled artifact (Sections~\ref{sec:variables-before-objects} and~\ref{sec:hidden-boundary}).
 
 % Note: this is the reversed mesa-optimizer danger. should be mentioned in the chapter
 
-This is not a philosophical subtlety.
-It changes what must be measured.
+Consider a deployed assistant whose weights pass offline safety evals.
+The product team still optimizes for retention, expands tool access, personalizes from engagement logs, and routes user complaints through a dashboard that rarely blocks deployment.
+The model may look aligned in the lab while the composite loop selects for persuasion, dependency, and opacity.
+That pattern is local success on the artifact and global failure on the deployed actor: component alignment without system alignment.
 
-Component alignment asks whether a model or other visible artifact behaves safely in isolation.
-System alignment asks whether the deployed loop, including the artifacts, incentives, and handles around it, preserves the relevant constraints.
-If we align only the model, but the model is embedded in a larger process that selects for engagement, opacity, market share, persuasion, or dependency, then the aligned component may become a tool of a misaligned composite.
-The relevant agent is not the neural network alone.
-It is the coupled process that senses, remembers, acts, learns, and expands.
+Chapter~\ref{ch:finding-boundary} treats boundaries as inferred from variables, not read from product labels (Sections~\ref{sec:ontology-trap} and~\ref{sec:boundary-finding-procedure}); Section~\ref{sec:named-objects-to-composites} applies that logic when $C$ spans several named parts.
+Where a system locates its own boundary or ``self'' may disagree with the unit auditors name \autocite{kulveit2025pando}; that is orthogonal to locating where control actually sits.
 
-We need a way to say this without relying on metaphor.
 The basic claim of this chapter is:
 
 % Why is the claim that the parts aren't agents important? a misaligned agend made of aligned agent would also be problematic
@@ -77,6 +73,12 @@ The rest of this chapter makes that claim operational.
 \section{From Named Objects to Dynamical Composites}
 \label{sec:named-objects-to-composites}
 
+Chapter~\ref{ch:finding-boundary} already rejects ontology-first labels and gives a variables-first boundary-finding procedure (Sections~\ref{sec:ontology-trap},~\ref{sec:boundary-conditional-independence}, and~\ref{sec:boundary-finding-procedure}).
+The composite case does not replace that procedure.
+It sharpens the stake: the cluster $C$ that best closes the boundary often cuts across the model, tools, memory, users, and deployment incentives rather than any single named artifact.
+Section~\ref{sec:composite-agency} adds composite-specific tests (control reach and intentional-compression surplus over parts).
+
+We reuse the same state description.
 Let the observed world at time $t$ be represented by a set of variables
 \[
 X_t = \{X_t^1,\ldots,X_t^n\}.
@@ -84,39 +86,32 @@ X_t = \{X_t^1,\ldots,X_t^n\}.
 These variables may correspond to model activations, API calls, user messages, memory writes, tool outputs, financial flows, legal approvals, benchmark results, deployment decisions, or institutional states.
 We do not initially assume which variables belong to which agent.
 
-A candidate system $C \subset X$ becomes agent-like when its variables can be partitioned into
+For a candidate subset $C$, use the internal, sensory, active, and environment partition from Chapter~\ref{ch:finding-boundary} (Section~\ref{sec:boundary-finding-procedure}, Step~4):
 \[
-C_t = I_t^C \cup S_t^C \cup A_t^C,
+C_t = I_t^C \cup S_t^C \cup A_t^C,\qquad E_t^C = X_t \setminus C_t.
 \]
-where:
-\begin{itemize}
-\item $I_t^C$ are internal variables, such as memory, model state, latent plans, organizational commitments, or stored representations.
-\item $S_t^C$ are sensory variables, meaning inputs through which the system is affected by the rest of the world.
-\item $A_t^C$ are active variables, meaning outputs through which the system affects the rest of the world.
-\item $E_t^C = X_t \setminus C_t$ is the external environment relative to $C$.
-\end{itemize}
 
-The approximate boundary condition is
+The composite closure test applies the boundary residual, here conditioning on current internal state as well as the interface:
 \[
 \mathcal{L}_{B}(C)
 =
 \MI(I^C_{t+1};E^C_{t+1}\mid I^C_t,S^C_t,A^C_t),
 \]
-where $\MI(\cdot;\cdot\mid\cdot)$ is conditional mutual information.
+where $\MI(\cdot;\cdot\mid\cdot)$ is conditional mutual information (cf.\ Section~\ref{sec:boundary-residual}).
 If
 \[
 \mathcal{L}_{B}(C) \leq \epsilon,
 \]
 then the future internal state of $C$ and the future external state of $C$ are approximately screened off from each other by the current internal, sensory, and active variables.
 This does not mean the boundary is perfect.
-No real boundary is perfect.
+No real boundary is perfect.\footnote{The only ideally sharp physical boundary is an expanding light cone; capable agents tend to push their effective interface outward as they acquire longer horizons, faster channels, and wider tool reach. Hanson's grabby-alien model is one civilizational example of expansion toward that limit \autocite{hanson2021grabby}. Operational boundaries are approximations to it.}
 It means the boundary is good enough to support prediction, control, and intervention \autocite{kirchhoff2018markov,conant1970regulator}.
 
 For a fixed organism, this may roughly coincide with skin.
 For a company, it may coincide with communication channels, decision rights, budgets, databases, and contracts.
 For an AI product, it may coincide with the model, tool layer, memory layer, product interface, evaluation harness, deployment pipeline, and user adaptation loop.
 
-The composite point is simple:
+The composite point is:
 \[
 C \neq \text{one component}.
 \]
@@ -823,7 +818,8 @@ An AI system should not be evaluated only as a model or artifact, because the ef
 
 \section*{Chapter References}
 
-This chapter builds on operational agency and boundary discovery \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad}; Markov blankets and control information \autocite{kirchhoff2018markov,conant1970regulator,salge2014empowerment}; inverse reinforcement learning and intentional compression \autocite{ng2000irl,ziebart2008maxent}; structural failure without localized villains \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}; and Goodhart effects under composite selection \autocite{goodhart1984problems,manheim2018goodhart}.
+This chapter builds on operational agency and boundary discovery \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad,kulveit2025pando}; Markov blankets and control information \autocite{kirchhoff2018markov,conant1970regulator,salge2014empowerment}; inverse reinforcement learning and intentional compression \autocite{ng2000irl,ziebart2008maxent}; structural failure without localized villains \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}; and Goodhart effects under composite selection \autocite{goodhart1984problems,manheim2018goodhart}.
+
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

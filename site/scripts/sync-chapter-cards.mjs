@@ -276,7 +276,7 @@ async function main() {
       summary: introBrief || "Preface, introduction, roadmap, and executive overview.",
       bookPageId: "frontmatter",
       bookLabel: "frontmatter",
-      related: []
+      related: ["chapters/ch01"]
     }),
     cardBody({
       title: "Front Matter",

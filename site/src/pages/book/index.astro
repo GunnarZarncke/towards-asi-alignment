@@ -1,6 +1,5 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import Badge from "../../components/Badge.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
 import book from "../../data/book.json";
 import { getCollection } from "astro:content";
@@ -23,8 +22,8 @@ const toCardHref = (id: string) => cardHref(base, id);
       {book.subtitle}. Read chapters on the site or download the PDF for the full manuscript including appendices not yet on the web.
     </p>
     <div class="button-row">
-      <a class="button primary" href={pdfHref(base)}>Download PDF</a>
-      <a class="button" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Start with front matter</a>
+      <a class="button primary" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Start with front matter</a>
+      <a class="button" href={pdfHref(base)}>Download PDF</a>
       <a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment" target="_blank" rel="noopener noreferrer">View source repository<LinkIndicator kind="github" /></a>
     </div>
   </section>
@@ -52,8 +51,6 @@ const toCardHref = (id: string) => cardHref(base, id);
             <tr>
               <th>Chapter</th>
               <th>Title</th>
-              <th>Status</th>
-              <th>Formal density</th>
             </tr>
           </thead>
           <tbody>
@@ -69,8 +66,6 @@ const toCardHref = (id: string) => cardHref(base, id);
                     <span>{chapter.title}</span>
                   )}
                 </td>
-                <td><Badge label={chapter.status} variant={chapter.status} /></td>
-                <td>{chapter.formalDensity}</td>
               </tr>
               );
             })}

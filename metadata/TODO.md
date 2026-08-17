@@ -238,6 +238,16 @@ mutation, V2-5 selection, V2-6 red-team): see
 
 Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map). Local serve: `./serve-site.sh`. Deploy: `.github/workflows/site.yml` → GitHub Pages at **https://towards-alignment.com/**.
 
+Card/site note triage tracker: [`drafts/site-card-notes-triage.md`](site-card-notes-triage.md) (from Aug 2026 export; raw export archived to `drafts/attic/tsa-notes-export-2026-08-15.txt`).
+
+- [ ] **Submit page notes to site** — notes overlay is `localStorage` only; add optional submit/API for author review. Source: card notes triage A14.
+- [ ] **Standalone claims publishability review** — editorial pass on four hub claims for external citation. Source: card notes triage A6; cross-ref strategic-advice TODO.
+- [ ] **Add companion site to Substack** — outreach/distribution. Source: card notes triage (ch09 note).
+- [ ] **Book map: generate “Also on the site” from book order** — replace hardcoded appendix list in `site/src/pages/book/index.astro`. Source: card notes triage A3.
+- [ ] **Part hub cards** — explicit `/cards/` entry points per book part (e.g. Part I reframing). Source: card notes triage A4.
+- [ ] **ch10 alignment-faking experiment line** — experiment using ch10 instruments + alignment-faking/sleeper-agent model organisms. Source: card notes triage E3.
+- [ ] **Chapter-end exercises + online quiz** — optional manuscript exercise blocks + site quiz UX. Source: card notes triage E3/F.
+
 - [x] **Clickable badges with index pages** — **done 2026-07-04:** `/badges/` index plus `/badges/type/{value}/` and `/badges/status/{value}/`; `Badge.astro` links type/status from card pages; nav adds Badges. Semantics in `site/src/lib/badges.ts`, aligned with `site/src/content.config.ts` and manuscript claim-strength language.
 - [x] **Translation spine on-ramp (Phase 1)** — **done 2026-08-04:** question-first `/lean/` hub; `/lean/check/corrigibility/`; 12 projection rows (4 new: embedded-agency, selection-basin, grounding-drift, deployment-gate); graph→card wiring; reverse term-links on projection/check pages. Log: `drafts/conversation-summaries/2026-08-04-translation-spine-on-ramp.md`.
 - [x] **Translation spine (Phase 2)** — **done 2026-08-04:** `/lean/check/cirl/`, `/lean/check/elk/`; `subsumption-hidden-biq`; clickable bridge dependency map on `/field/#bridge-dependencies` (links from bridge-assumptions + MB bridge cards). **Deferred (author):** App G opener mirroring site projections table. **Optional later:** `/glossary/reverse/` hub.

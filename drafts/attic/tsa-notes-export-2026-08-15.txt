@@ -1,0 +1,260 @@
+
+https://towards-alignment.com/#:~:text=but%20it%20breaks%20for%20superintelligence.
+but it breaks for superintelligence.
+It already breaks for general intelligence 
+
+https://towards-alignment.com/book/#:~:text=Move%20the%20book%20nav%20to%20the%20left%20of%20the%20PDF%20nav
+Move the book nav to the left of the PDF nav
+
+https://towards-alignment.com/cards/chapters/ch01/#:~:text=researcher%20tends
+researcher tends
+The chapter images seem not to get cached 
+
+https://towards-alignment.com/cards/chapters/ch01/#:~:text=Use%20standard%20icons%20forvthe%20panel%20symbols
+
+Use standard icons forvthe panel symbols 
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=This%20preservation%20program
+This preservation program
+Strange wording
+
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=The%20keyboard%20*sometimes%20*%20overlaps%20the%20buttons%20on%20mobile
+The keyboard *sometimes * overlaps the buttons on mobile 
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=correction%2C%20value%20formation%2C%20and%20bearer%20maps.
+correction, value formation, and bearer maps.
+Use standard terms for forward reference here 
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=Make%20notes%20submittable%20to%20the%20site
+Make notes submittable to the site
+
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=Add%20site%20to%20Substack
+Add site to Substack
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=The%20real%20optimizing%20process%20may%20be%20spread%20across%20the%20whole%20loop.
+The real optimizing process may be spread across the whole loop.
+Additional disambiguation: what the model thinks it is is a different point still (Kulveit und Zarncke links)
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=Highlights%20need%20a%20marker%20clickable%20for%20mobile
+Highlights need a marker clickable for mobile
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=This%20is%20not%20a%20philosophical%20subtlety.
+This is not a philosophical subtlety.
+Fluff
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=If%20we%20align%20only%20the%20model%2C%20but%20the%20model%20is%20embedded%20in%20a%20larger%20process%20that%20selects%20for%20engagement%2C%20opacity%2C%20market%20s
+If we align only the model, but the model is embedded in a larger process that selects for engagement, opacity, market share, persuasion, or dependency, then the aligned component may become a tool of a misaligned composite.
+Too abstract. We need to lead with an illustrative example. 
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=We%20need%20a%20way%20to%20say%20this%20without%20relying%20on%20metaphor.
+We need a way to say this without relying on metaphor.
+Fluff
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=Let%20the%20observed%20world%20at%20time
+Let the observed world at time 
+𝑡
+t be represented by a set of variables
+This is a clesr mathematical approach to explain the formalism but doesn't provide the intuition behind this approach. We need to motivate or derive informally why this might work 
+
+https://towards-alignment.com/cards/chapters/ch09/#:~:text=No%20real%20boundary%20is%20perfect.
+No real boundary is perfect.
+Footnote about the lightcone as the only true boundary, actually, perfect agents converge toward that (expanding with lightspeed)
+
+https://towards-alignment.com/#:~:text=Standalone%20claims
+Standalone claims
+Move below guided tour
+
+Review how publishable thesexare
+
+https://towards-alignment.com/book/#:~:text=Also%20on%20the%20site
+Also on the site
+Card should follow book material order
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=%7B%20Towards%20Superintelligence%20Alignment%7D
+{ Towards Superintelligence Alignment}
+Formatting on this card is broken 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=value%20geometry
+value geometry
+structure of human values
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=correction%20channels
+correction channels
+How to keep humans in the loop 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Many%20chapters%20are%20still%20drafts%3B%20see%20Current%20Status%20for%20what%20is%20stable%20today.
+Many chapters are still drafts; see Current Status for what is stable today.
+Remove 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=value-bundle%20coordinates
+value-bundle coordinates
+values specifications
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=The%20book%20makes%20six%20connected%20claims
+The book makes six connected claims
+Review against new dependency structure (after Krym update)
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=value-bundle
+value-bundle
+Value retention
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Reframes%20alignment%20as%20a%20for%20human-correctable%20processes.
+Reframes alignment as a for human-correctable processes.
+Grammar 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Appendix%20Operational%20Glossary.
+Appendix Operational Glossary.
+Link
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=end-to-end%20walkthrough
+end-to-end walkthrough
+Can we build a small real case with walk through. Which MB to include? Erics CIRISAgent?
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=a%20magic%20sentence%20that%20makes%20superintelligence%20good.%20It%20is
+a magic sentence that makes superintelligence good. It is
+Remove fluff
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Many%20chapters%20are%20still%20first%20drafts.
+Many chapters are still first drafts.
+Remove 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=At%20the%20time%20of%20writing%2C%20all%20main%20chapters%20have%20first%20drafts%20and%20have%20received%20at%20least%20one%20review%20or%20feedback%20pass.%20Here
+At the time of writing, all main chapters have first drafts and have received at least one review or feedback pass. Here reviewed means feedback has been received and incorporated or logged; it does not mean final, polished, or publication-ready. Some appendices and front-matter pieces remain comparatively less mature.
+Update
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=The%20central%20theory%20tracks%20six%20linked%20preservation%20problems%20as%20systems%20grow%2C%20change%20ontology%2C%20and%20create%20successors%3A
+The central theory tracks six linked preservation problems as systems grow, change ontology, and create successors:
+Review if true. Maybe make more explicit in each chspter. Or remove 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=compressed%20value%20directions
+compressed value directions
+Use a common phrase thst is also in the glossary consistently. There are variations in the front matter at least. Search fir value.
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=TL%3BDR
+TL;DR
+Consider order of bullets
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=serious%20safety
+serious safety
+Remove serious 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Part%20I%20develops%20the%20reframing%3B%20the%20Introduction%20states%20the%20book%E2%80%99s%20six%20connected%20claims%20in%20full.
+Part I develops the reframing; the Introduction states the book’s six connected claims in full.
+The frontmatter has quite a bit of redundancy like this
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=What%20This%20Book%20Tries%20to%20Establish
+What This Book Tries to Establish
+This section should use the general terms, not the specific definitions 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=How%20This%20Book%20Handles%20External%20Doom%20Arguments
+How This Book Handles External Doom Arguments
+Remove this section 
+
+https://towards-alignment.com/cards/chapters/frontmatter/#:~:text=Related%20content
+Related content
+Can link to part 1
+
+https://towards-alignment.com/book/#:~:text=The%20Alignment%20Problem%20Reframed
+The Alignment Problem Reframed
+This is the first part. We may wabt to have explicit part cards.
+
+https://towards-alignment.com/book/#:~:text=Status%09Formal%20density
+Status Formal density
+Remove status columns
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=A%20bacterium%20does%20not%20usually%20model
+A bacterium does not usually model
+Remove usually 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=serious%20superintelligence%20alignment
+serious superintelligence alignment
+Remove serious 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=decomposed%20in%20this%20book%20into%20bundle%20geometry%2C%20bearer%20maps%2C%20and%20correction-process%20preservation
+decomposed in this book into bundle geometry, bearer maps, and correction-process preservation
+This does mot match Hubinger. And the terms have not been introduced yet.
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=This%20is%20an%20inner-alignment-shaped%20failure%20reached%20via%20an%20outer%20predictive%20objective%3A%20the%20training%20pointer%20was%20%E2%80%9Cpredict%2C%E2%80%9D
+This is an inner-alignment-shaped failure reached via an outer predictive objective: the training pointer was “predict,” but the adopted process steers.
+Hard to read
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=Predict-O-Matic%20fixed%20points%2C%20self-fulfilling%20conditionals%2C%20careful%20conditioning%2C%20and%20anthropic%20capture%20(predictors%20stee
+Predict-O-Matic fixed points, self-fulfilling conditionals, careful conditioning, and anthropic capture (predictors steered toward worlds where the forecast is used; distinct from anthropic completion selector problems in decision theory)
+List, no verb?
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=Examples%20help.
+Examples help.
+Superfluous 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=would%20instantiate%20the%20dangerous%20version.
+would instantiate the dangerous version.
+Simplify
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=The%20alignment-relevant%20pattern%20is
+The alignment-relevant pattern is
+Formula needs verbose sentence. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=A%20variable%20class%20is%20control-relevant%20when
+A variable class is control-relevant when
+Formula below doesn't render correctly- label is seen
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=We%20can%20define%20a%20selective%20opacity%20score
+We can define a selective opacity score
+Formula below shows symboldef
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=If%20it%20blocks%20legitimate%20safety%20correction%2C%20it%20is%20dangerous.
+If it blocks legitimate safety correction, it is dangerous.
+It seems the difference is not resolved. Seems like an oversight case?
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=General%20point%3A%20The%20correction%20channel%20may%20be%20overloaded.%20%20Do%20we%20measure%20correction%20*capacity%20*%3F
+General point: The correction channel may be overloaded. Do we measure correction *capacity *?
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=The%20ecpand%20panel%20button%20has%20minimal%20effect%20on%20mobile.
+The ecpand panel button has minimal effect on mobile. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=while%20the%20deeper%20invariant%20is%20continued%20access%20to%20an%20action%20channel.
+while the deeper invariant is continued access to an action channel.
+Yes. But the "therefore " is missing. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=How%C2%A0much%C2%A0unseen%C2%A0productive
+How much unseen productive
+Formulas don't break or scroll, making them hard to read on narrow mobile views. Options?
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=filter-family%20coverage
+filter-family coverage
+First occurrence in this chapter. Needs explanation or general term
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=is%20a%20latent%20variable%20that%20explains%20continuity%20of%20action%20selection%20across%20time.%20We%20infer
+is a latent variable that explains continuity of action selection across time. We infer 
+We don't. At least not in this chapter. We should. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=We%20distinguish%20three%20layers
+We distinguish three layers
+Below doesnt render
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=Empirical%20work%20on%20alignment%20faking%20and%20sleeper%20agents
+Empirical work on alignment faking and sleeper agents
+We need an experiment line thst uses these model organisms and this chapters instruments.
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=Scalar%20goal%20inference%20is%20too%20crude%20for%20serious%20alignment.
+Scalar goal inference is too crude for serious alignment.
+Remove serious 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=maps%20world-states%20or%20entities%20to%20the%20bundles%20that%20treat%20them%20as%20relevant.
+maps world-states or entities to the bundles that treat them as relevant.
+This is quite a lengthy preview. Is the ordering really correct? What are the options? I think the goal laundering should go after values and maybe ch40, leaving only a small preview here. Consider the dependency graph.
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=The%20correct%20decomposition%20is%20not
+The correct decomposition is not
+This seems like a restatement of boundary discovery. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=Similar%20patterns%20may%20occur%20in%20AI%20systems%20with%20tool%20access%2C%20memory%2C%20and%20deployment%20autonomy.
+Similar patterns may occur in AI systems with tool access, memory, and deployment autonomy.
+Left as exercise for the reader.
+We may want to end the chapter cards with exercises and questions for the reader with an online quiz on it. 
+
+https://towards-alignment.com/cards/chapters/ch10/#:~:text=chapters%2Fch10-strategic-opacity.tex
+chapters/ch10-strategic-opacity.tex
+Make the source links point to Github repo

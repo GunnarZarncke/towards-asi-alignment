@@ -222,7 +222,12 @@ const pageDescription = showFullText
               <a class="button" href={cardHref(card.id)}>Case study overview</a>
             </p>
           )}
-          <p class="side-panel-meta">Source: <code>{bookEntry.data.sourceFile}</code></p>
+          <p class="side-panel-meta">
+            Source:{" "}
+            <a href={`${repoBase}/${bookEntry.data.sourceFile}`} target="_blank" rel="noopener noreferrer">
+              <code>{bookEntry.data.sourceFile}</code><LinkIndicator kind="github" />
+            </a>
+          </p>
         </>
       )}
 
