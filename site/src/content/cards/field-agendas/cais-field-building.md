@@ -41,4 +41,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [CAIS](https://safe.ai/), AISES → [CAIS field-building](#cais-field-building)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

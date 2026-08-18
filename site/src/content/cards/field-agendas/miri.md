@@ -45,7 +45,7 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [CEV (constitutional residue)](/cards/specify-cev/) · [CEV construction (underspecified)](/cards/construct-cev/).
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [CEV (constitutional residue)](/cards/specify-cev/) · [CEV construction (underspecified)](/cards/construct-cev/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 
@@ -58,4 +58,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon) → [MIRI](#miri)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

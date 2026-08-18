@@ -1,0 +1,98 @@
+---
+interface NavItem {
+  href: string;
+  title: string;
+  summary: string;
+}
+
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const items: NavItem[] = [
+  {
+    href: withBase("/field/coverage/"),
+    title: "Field coverage",
+    summary: "Agenda × bridge matrix with stance marks and sourced evidence catalog (linked page)."
+  },
+  {
+    href: withBase("/cards/alignment-lifecycle/"),
+    title: "Alignment lifecycle",
+    summary: "When each handoff must hold — specify through preserve; orthogonal to the dependency graph."
+  },
+  {
+    href: withBase("/cards/bridge-assumptions/"),
+    title: "Bridge assumptions",
+    summary: "Named MB1–MB11 cruxes and the bridge dependency map."
+  },
+  {
+    href: withBase("/cards/alignment-target/"),
+    title: "Alignment target",
+    summary: "Outer-alignment programs as specify / construct instance pairs."
+  },
+  {
+    href: withBase("/cards/bearer-admission-adjacent/"),
+    title: "Bearer admission (adjacent)",
+    summary: "Consciousness and welfare neighborhood notes — not matrix cells."
+  },
+  {
+    href: withBase("/badges/type/agenda/"),
+    title: "Agenda index",
+    summary: "One card per research or advocacy program in the field map."
+  }
+];
+---
+
+<section id="field-map" class="field-hub-nav readable">
+  <h2>Field map</h2>
+  <div class="field-hub-grid">
+    {items.map((item) => (
+      <article class="field-hub-card">
+        <h3><a href={item.href}>{item.title}</a></h3>
+        <p>{item.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .field-hub-nav {
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .field-hub-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .field-hub-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .field-hub-card {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: var(--radius-card, 8px);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .field-hub-card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+  }
+
+  .field-hub-card p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95em;
+  }
+</style>

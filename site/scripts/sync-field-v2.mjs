@@ -66,7 +66,7 @@ async function main() {
       lifecycleGapsNote: lifecycle.gapsNote ?? "",
       lifecycleAxis: lifecycleOrder.join(" → "),
       openSpineInterfaces: meta.openSpineInterfaces,
-      note: "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/.",
+      note: "Live field hub at /field/ (redirects to /field/v2/). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
       adjacentWorkIntro: adjacentWork.intro ?? "",
       adjacentWorkFirewall: adjacentWork.firewall ?? "",
       adjacentWorkPhenomenalityNote: adjacentWork.phenomenalityNote ?? "",

@@ -46,8 +46,6 @@ related:
   - "bridge-assumptions"
 ---
 
-# Target Realization
-
 **Lifecycle role:** construct (open spine interface — not an `MB*` matrix column).
 
 Given an alignment target $P$, can we **construct** a system $A$ that robustly tracks $P$? This is distinct from:
@@ -59,4 +57,4 @@ Lean types the separation in `AlignmentConstruction.lean`: `Realizes` vs `Certif
 
 CEV is not a special bridge: `constitutionalTarget` / `cevConstitution` parameterize an `AlignmentTarget` on the same interface (MB8 is a gravestone only).
 
-**Book:** introduction (three questions); ch33 (certification without construction). **Field hub:** `/field/` (→ `/field/v2/#lifecycle-axis`).
+**Book:** introduction (three questions); ch33 (certification without construction). **Lifecycle:** [Alignment lifecycle](/cards/alignment-lifecycle/) (construct phase). **Field evidence:** [/field/coverage/](/field/coverage/).

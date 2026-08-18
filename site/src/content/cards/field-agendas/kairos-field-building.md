@@ -50,4 +50,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), GCP → [Kairos](#kairos-field-building)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

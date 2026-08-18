@@ -1,0 +1,114 @@
+---
+import fieldV2 from "../data/field-v2.json";
+
+interface Props {
+  base: string;
+  headingLevel?: "h2" | "h3";
+}
+
+const { base, headingLevel = "h2" } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const HeadingTag = headingLevel;
+---
+
+<section id="adjacent-work" class="adjacent-section readable">
+  <HeadingTag>Adjacent work: bearer admission</HeadingTag>
+  {fieldV2.meta.adjacentWorkIntro ? (
+    <p class="adjacent-intro">{fieldV2.meta.adjacentWorkIntro}</p>
+  ) : null}
+  {fieldV2.meta.adjacentWorkFirewall ? (
+    <p class="adjacent-note adjacent-firewall">{fieldV2.meta.adjacentWorkFirewall}</p>
+  ) : null}
+  {fieldV2.meta.adjacentWorkPhenomenalityNote ? (
+    <p class="adjacent-note">{fieldV2.meta.adjacentWorkPhenomenalityNote}</p>
+  ) : null}
+  <ul class="adjacent-list">
+    {(fieldV2.adjacentWork ?? []).map((item) => (
+      <li>
+        <strong>{item.title}</strong>
+        {item.carrier ? <span class="adjacent-carrier"> — {item.carrier}</span> : null}
+        {item.bridges?.length ? (
+          <span class="adjacent-bridges">
+            {" "}
+            · crux neighborhood: {item.bridges.join(", ")}
+          </span>
+        ) : null}
+        {item.type ? <span class="adjacent-type"> · {item.type}</span> : null}
+        {item.summary ? <p>{item.summary}</p> : null}
+        {item.sources?.length ? (
+          <p class="adjacent-sources">
+            {item.sources.map((src, i) => (
+              <span>
+                {i > 0 ? " · " : ""}
+                <a href={src.url}>{src.label}</a>
+              </span>
+            ))}
+          </p>
+        ) : null}
+        {item.book ? <p class="adjacent-book side-panel-meta">Book: {item.book}</p> : null}
+      </li>
+    ))}
+  </ul>
+  <p class="side-panel-meta">
+    Not matrix evidence — see <a href={withBase("/field/coverage/")}>field coverage</a> for sourced agenda × bridge tags.
+    {" · "}
+    <a href={withBase("/cards/mb3-bearer-import/")}>MB3 bearer import</a>
+  </p>
+</section>
+
+<style>
+  .adjacent-section {
+    margin-top: 2rem;
+    max-width: 52rem;
+  }
+
+  .adjacent-intro {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .adjacent-note {
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.96em;
+  }
+
+  .adjacent-firewall {
+    padding: 0.65rem 0.85rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .adjacent-list {
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .adjacent-list > li {
+    margin-bottom: 1.25rem;
+  }
+
+  .adjacent-list p {
+    margin: 0.35rem 0 0;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  .adjacent-carrier,
+  .adjacent-bridges,
+  .adjacent-type {
+    color: var(--color-muted, #64748b);
+    font-size: 0.92em;
+  }
+
+  .adjacent-sources {
+    color: var(--color-text, #1a202c) !important;
+  }
+
+  .adjacent-book {
+    margin-top: 0.25rem !important;
+  }
+</style>

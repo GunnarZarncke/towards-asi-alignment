@@ -12,7 +12,7 @@ import {
   normalizeMatrix,
   normalizeMatrixCell,
   stanceDirectionLabel,
-  stanceMark
+  stanceMarkText
 } from "../../reference/field-agendas/scripts/matrix-cell.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -170,14 +170,14 @@ function renderSpecifyConstructSection(sc) {
     lines.push(`## Specify / construct (field v2)`);
     lines.push("");
     lines.push(
-      `This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [${sc.specifyTitle}](/cards/${sc.specifyCard}/) · [${sc.constructTitle}](/cards/${sc.constructCard}/).`
+      `This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [${sc.specifyTitle}](/cards/${sc.specifyCard}/) · [${sc.constructTitle}](/cards/${sc.constructCard}/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.`
     );
     lines.push("");
   } else if (sc.kind === "peer") {
     lines.push(`## Specify / construct (peer outer target)`);
     lines.push("");
     lines.push(
-      `PreDCA / Physicalist Superimitation is listed on the [field v2 specify/construct table](/field/v2/#specify-construct-instances) as a **peer outer-target** ontology — not a \`ConstitutionalRule\` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.`
+      `PreDCA / Physicalist Superimitation is listed on the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table as a **peer outer-target** ontology — not a \`ConstitutionalRule\` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.`
     );
     lines.push("");
   }
@@ -258,7 +258,7 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct) 
     lines.push("");
   }
   lines.push(
-    `See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.`
+    `See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.`
   );
   return lines.join("\n");
 }
@@ -429,7 +429,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   for (const ev of evidence) {
     const src = ev.sources.map((s) => `[${s.label}](${s.url})`).join("; ");
     const direction = ev.direction ?? null;
-    const mark = direction ? stanceMark(direction, ev.weight ?? 1) : "—";
+    const mark = direction ? stanceMarkText(direction, ev.weight ?? 1) : "—";
     const directionLabel = stanceDirectionLabel(direction);
     const weight =
       direction && direction !== "unclear" ? String(ev.weight ?? 1) : "—";

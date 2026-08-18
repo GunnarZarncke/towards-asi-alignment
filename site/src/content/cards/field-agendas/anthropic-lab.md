@@ -61,7 +61,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Constitutional AI](/cards/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/construct-constitutional-ai/).
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Constitutional AI](/cards/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/construct-constitutional-ai/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 
@@ -82,4 +82,4 @@ AISafety.com map listings that roll up to this agenda:
 - [Anthropic](https://www.anthropic.com/), Import AI (newsletter — Jack Clark) → [Anthropic / Goodfire](#anthropic-lab) — newsletter not agenda
 - [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/) → [Anthropic / Goodfire](#anthropic-lab) cluster
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

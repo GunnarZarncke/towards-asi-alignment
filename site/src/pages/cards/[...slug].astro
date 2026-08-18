@@ -13,6 +13,10 @@ import LeanDeclLinks from "../../components/LeanDeclLinks.astro";
 import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
 import LeanTryIt from "../../components/LeanTryIt.astro";
+import FieldLifecycleAxis from "../../components/FieldLifecycleAxis.astro";
+import FieldSpecifyConstructTable from "../../components/FieldSpecifyConstructTable.astro";
+import FieldAdjacentWork from "../../components/FieldAdjacentWork.astro";
+import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.astro";
 import partGems from "../../data/part-gems.json";
 import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
 import references from "../../data/references.json";
@@ -101,7 +105,15 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const projectionGraphUrl = card.data.graphNodeId
   ? withBase("/lean/graph/field-subsumptions/")
   : null;
-const bridgeGraphUrl = withBase("/field/#bridge-dependencies");
+const bridgeGraphUrl = withBase("/cards/bridge-assumptions/#bridge-dependencies");
+/** Cards whose main view is an Astro field embed; page template owns the sole h1 (frontmatter title). */
+const fieldEmbedCardIds = new Set([
+  "alignment-lifecycle",
+  "bridge-assumptions",
+  "alignment-target",
+  "bearer-admission-adjacent"
+]);
+const hasFieldEmbed = fieldEmbedCardIds.has(card.id);
 const cardUrlForTermLinks = `/cards/${card.id}/`;
 const gemHref = badgeGemHref(base);
 const cardHref = (id: string) => buildCardHref(base, id);
@@ -252,7 +264,14 @@ const pageDescription = showFullText
         </section>
       )}
 
-      <Content />
+      <div class:list={[{ "card-body": hasFieldEmbed }]}>
+        <Content />
+      </div>
+
+      {card.id === "alignment-lifecycle" && <FieldLifecycleAxis base={base} />}
+      {card.id === "bridge-assumptions" && <FieldBridgeGraphSection base={base} />}
+      {card.id === "alignment-target" && <FieldSpecifyConstructTable base={base} />}
+      {card.id === "bearer-admission-adjacent" && <FieldAdjacentWork base={base} />}
 
       {isCrosswalkCard && (
         <BridgeCrosswalkTable
@@ -364,8 +383,8 @@ const pageDescription = showFullText
         <>
           <h3>Field hub</h3>
           <ul>
-            <li><a href={withBase("/field/")}>Coverage matrix &amp; evidence catalog</a></li>
-            <li><a href={withBase("/field/#coverage-matrix")}>Matrix row for this agenda</a></li>
+            <li><a href={withBase("/field/coverage/")}>Coverage matrix &amp; evidence catalog</a></li>
+            <li><a href={withBase("/field/coverage/#coverage-matrix")}>Matrix row for this agenda</a></li>
           </ul>
           {card.data.bookBridges.length > 0 && (
             <>
@@ -440,10 +459,16 @@ const pageDescription = showFullText
           <p><a href={projectionGraphUrl}>Open in field projections graph</a></p>
         </>
       )}
-      {(isBridgeCard || card.id === "bridge-assumptions") && (
+      {(isBridgeCard || card.id === "bridge-assumptions") && card.id !== "bridge-assumptions" && (
         <>
           <h3>Related resource</h3>
           <p><a href={bridgeGraphUrl}>Bridge dependency map</a></p>
+        </>
+      )}
+      {(isBridgeCard || card.id === "bridge-assumptions") && card.id === "bridge-assumptions" && (
+        <>
+          <h3>Related resource</h3>
+          <p><a href={withBase("/cards/alignment-lifecycle/")}>Alignment lifecycle</a></p>
         </>
       )}
       {isProjectionCard && (

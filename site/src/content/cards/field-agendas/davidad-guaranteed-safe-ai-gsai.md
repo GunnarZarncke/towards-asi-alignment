@@ -49,7 +49,7 @@ related:
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [GSAI / Open Agency spec](/cards/specify-gsai/) · [Spec-relative formal builder](/cards/construct-gsai/).
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [GSAI / Open Agency spec](/cards/specify-gsai/) · [Spec-relative formal builder](/cards/construct-gsai/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 
@@ -59,4 +59,4 @@ This agenda maps to a **ConstitutionalRule** specify instance paired with a cons
 - [Beneficial AI Foundation](https://www.beneficialaifoundation.org/)
 - [LawZero](https://lawzero.org/en)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

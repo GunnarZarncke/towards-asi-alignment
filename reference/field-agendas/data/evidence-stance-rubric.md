@@ -84,18 +84,18 @@ Same paper can be weight 3 on one bridge and weight 1 on another if tagged to mu
 
 Stance marks live on **catalog entries**, not `matrix.yml` cells. Site and generated index prefix the type letter:
 
-| direction | weight | Mark |
-|---|---|---|
-| support | 1 | `·̂` |
-| support | 2 | `·̂̂` |
-| support | 3 | `·̂̂̂` |
-| challenge | 1 | `·̬` |
-| challenge | 2 | `·̬̬` |
-| challenge | 3 | `·̬̬̬` |
-| unclear | — | `·` |
-| *(untagged)* | — | *(none)* |
+| direction | weight | Mark (text) | Icon |
+|---|---|---|---|
+| support | 1 | `+` | `stance-support-1.svg` |
+| support | 2 | `++` | `stance-support-2.svg` |
+| support | 3 | `+++` | `stance-support-3.svg` |
+| challenge | 1 | `−` | `stance-challenge-1.svg` |
+| challenge | 2 | `−−` | `stance-challenge-2.svg` |
+| challenge | 3 | `−−−` | `stance-challenge-3.svg` |
+| unclear | — | `±` | `stance-unclear.svg` |
+| *(untagged)* | — | *(none)* | — |
 
-Unicode: base `U+00B7`; support diacritic `U+0302` (circumflex above); challenge diacritic `U+032C` (caron below).
+Icons are generated from `reference/field-agendas/scripts/stance-icons.mjs` into `site/public/icons/stance/` (`npm run sync:stance-icons` in `site/`).
 
 ## Worked examples (catalog IDs)
 

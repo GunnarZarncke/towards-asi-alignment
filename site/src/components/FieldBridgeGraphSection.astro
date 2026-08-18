@@ -1,0 +1,57 @@
+---
+import FieldBridgeGraph from "./FieldBridgeGraph.astro";
+
+interface Props {
+  base: string;
+  headingLevel?: "h2" | "h3";
+  svgFile?: string;
+  dotFile?: string;
+}
+
+const {
+  base,
+  headingLevel = "h2",
+  svgFile = "field-graphs/bridge-dependencies-v2.svg",
+  dotFile = "field-graphs/bridge-dependencies-v2.dot"
+} = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const HeadingTag = headingLevel;
+---
+
+<section id="bridge-dependencies" class="bridge-graph-section readable">
+  <HeadingTag>Bridge dependency map</HeadingTag>
+  <p class="bridge-graph-lede">
+    How this project's bridge assumptions (MB1–MB11) depend on one another, labeled in field nouns from the coverage matrix.
+  </p>
+  <p class="bridge-graph-disclaimer side-panel-meta">
+    This map shows logical and safety-case assembly dependencies among named bridge handoffs — not a proof that real systems satisfy them.
+    Lean checks conditional structure when the bridges hold; field evidence, measurement, and deployment class still govern whether each handoff is reliable in practice.
+  </p>
+  <FieldBridgeGraph svgFile={svgFile} dotFile={dotFile} />
+  <p class="side-panel-meta">
+    Lifecycle placement (when each handoff must hold): <a href={withBase("/cards/alignment-lifecycle/")}>Alignment lifecycle</a>
+    {" · "}
+    <a href={withBase("/field/coverage/")}>field coverage matrix</a>
+    {" · "}
+    <a href={withBase("/lean/")}>Lean proof spine</a>
+  </p>
+</section>
+
+<style>
+  .bridge-graph-section {
+    margin-top: 2rem;
+    max-width: 52rem;
+  }
+
+  .bridge-graph-lede {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .bridge-graph-disclaimer {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+</style>

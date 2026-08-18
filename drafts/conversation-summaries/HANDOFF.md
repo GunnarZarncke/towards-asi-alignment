@@ -2,15 +2,19 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-17 (consciousness TSA extension closed).
+Last updated: 2026-08-18 (field stance SVG icons).
 
 ---
 
 ## Open work (load-bearing)
 
+- **Field v2 split + stance icons** — **Done** (2026-08-18): slim `/field/v2/` hub; `/field/coverage/` matrix + catalog; seven SVG stance marks replace Unicode. Log: `2026-08-18-field-stance-icons.md`.
+
 - **Consciousness / bearer-inference (ch18)** — **Closed** 2026-08-17 (Phases 0–5). Plan [`drafts/consciousness-tsa-extension.md`](../../drafts/consciousness-tsa-extension.md) marked **CLOSED**. Logs: `2026-08-17-consciousness-tsa-phase*.md`.
 
-- **Specify / construct instances** — **Done** (2026-08-17): Lean named instances + `/field/v2/#specify-construct-instances` table + 9 concept cards. Log: `2026-08-17-specify-construct-instances.md`.
+- **Field v2 split** — **Done** (2026-08-17): slim `/field/v2/` hub + `/field/coverage/`; lifecycle / graph / specify-construct / adjacent on concept cards. Log: `2026-08-17-field-v2-split.md`.
+
+- **Specify / construct instances** — **Done** (2026-08-17): Lean named instances + alignment-target card table + 9 concept cards. Log: `2026-08-17-specify-construct-instances.md`.
 
 - **Field hub v2 cutover** — **Done** (2026-08-17): `/field/` → `/field/v2/`; `/field/v1/` archive + v1 bridge graph; v2 graph with MB1→MB3. Log: `2026-08-17-field-v2-cutover.md`.
 

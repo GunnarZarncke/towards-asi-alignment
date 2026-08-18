@@ -11,33 +11,15 @@ const SUP_BLOCK_RE = /([A-Z])<sup>([\s\S]*?)<\/sup>/g;
 /** At most this many catalog IDs share one type letter (affects line breaking in the site matrix). */
 export const MAX_IDS_PER_GROUP = 3;
 
-export const STANCE_DOT = "\u00B7";
-export const STANCE_CIRCUMFLEX = "\u0302";
-export const STANCE_CARON_BELOW = "\u032C";
+import { stanceIconId, stanceMarkText } from "./stance-icons.mjs";
+
+export { stanceIconId, stanceMarkText };
 
 export const STANCE_DIRECTIONS = new Set(["support", "challenge", "unclear"]);
 
 /** @typedef {{ type: string, ids: number[] }} MatrixCellGroup */
 /** @typedef {{ direction: string, weight: number | null }} EvidenceStance */
 /** @typedef {{ type: string, ids: number[], direction: string | null, weight: number | null }} StancedMatrixCellGroup */
-
-/**
- * @param {string | null | undefined} direction
- * @param {number | null | undefined} [weight]
- * @returns {string}
- */
-export function stanceMark(direction, weight = 1) {
-  if (direction === "support") {
-    const w = Math.min(3, Math.max(1, Number(weight) || 1));
-    return STANCE_DOT + STANCE_CIRCUMFLEX.repeat(w);
-  }
-  if (direction === "challenge") {
-    const w = Math.min(3, Math.max(1, Number(weight) || 1));
-    return STANCE_DOT + STANCE_CARON_BELOW.repeat(w);
-  }
-  if (direction === "unclear") return STANCE_DOT;
-  return "";
-}
 
 /**
  * @param {string | null | undefined} direction
@@ -217,7 +199,7 @@ export function matrixCellToMarkdown(groups, stanceById) {
     : groups.map(({ type, ids }) => ({ type, ids, direction: null, weight: null }));
   return stanced
     .map(({ type, ids, direction, weight }) => {
-      const mark = direction ? stanceMark(direction, weight ?? 1) : "";
+      const mark = direction ? stanceMarkText(direction, weight ?? 1) : "";
       const links = ids.map((id) => `[${id}](#ev-${id})`).join(",");
       return `${mark}${type}<sup>${links}</sup>`;
     })

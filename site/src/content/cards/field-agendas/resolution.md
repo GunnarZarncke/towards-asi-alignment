@@ -58,4 +58,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/) → [Resolution](#resolution)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

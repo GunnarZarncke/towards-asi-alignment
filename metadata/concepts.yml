@@ -58,6 +58,14 @@ concepts:
     glossaryTerms:
       - term: Adversarial measurement
         definition: Inferring agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.
+  - slug: alignment-lifecycle
+    kind: concept
+    status: framework
+    title: Alignment Lifecycle
+    summary: When each bridge handoff must hold — specify → construct → identify → certify → preserve; orthogonal to the bridge dependency graph.
+    bookChapters:
+      - ch42
+    body: bodies/alignment-lifecycle.md
   - slug: alignment-target
     kind: concept
     status: framework
@@ -186,6 +194,14 @@ concepts:
     glossaryTerms:
       - term: Bearer map
         definition: A mapping specifying what entities, states, or processes a value bundle applies to.
+  - slug: bearer-admission-adjacent
+    kind: concept
+    status: framework
+    title: Bearer Admission (Adjacent)
+    summary: Consciousness and welfare neighborhood notes for MB3 bearer inference — not coverage-matrix cells.
+    bookChapters:
+      - ch18
+    body: bodies/bearer-admission-adjacent.md
   - slug: boundary-discovery
     kind: concept
     title: Boundary Discovery
@@ -412,6 +428,12 @@ concepts:
     summary: 'The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.'
     decision: Before trusting any reported experiment result in this project, check which of these four disciplines it followed — a result reported without them is weaker evidence, whatever the headline number says.
     body: bodies/experiment-methodology.md
+  - slug: field-coverage
+    kind: concept
+    status: framework
+    title: Field Coverage
+    summary: Agenda × bridge matrix and sourced evidence catalog — who published what on which cruxes.
+    body: bodies/field-coverage.md
   - slug: negative-results
     kind: concept
     title: Negative Results Ledgers

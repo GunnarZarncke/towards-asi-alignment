@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-18 | **Field stance SVG icons** — scrap Unicode marks; seven stacked +/−/± icons; `/field/coverage/` polish. | [2026-08-18-field-stance-icons.md](2026-08-18-field-stance-icons.md) |
+| 2026-08-17 | **Field v2 split** — slim hub; `/field/coverage/`; lifecycle/graph/specify/adjacent on cards. | [2026-08-17-field-v2-split.md](2026-08-17-field-v2-split.md) |
 | 2026-08-17 | **Consciousness TSA Phase 5** — `ConservativeExclusion` + one-sidedness; MB3 card; App B/G; U-17 defeater. | [2026-08-17-consciousness-tsa-phase5-lean-mb3.md](2026-08-17-consciousness-tsa-phase5-lean-mb3.md) |
 | 2026-08-17 | **Specify / construct instances** — Lean schema + named instances; field v2 table; 9 concept cards. | [2026-08-17-specify-construct-instances.md](2026-08-17-specify-construct-instances.md) |
 | 2026-08-17 | **Consciousness TSA Phase 4** — v2 adjacent-work YAML + `/field/v2/#adjacent-work` (no matrix cells). | [2026-08-17-consciousness-tsa-phase4-field-v2.md](2026-08-17-consciousness-tsa-phase4-field-v2.md) |

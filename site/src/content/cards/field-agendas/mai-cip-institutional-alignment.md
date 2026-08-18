@@ -49,7 +49,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/).
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 
@@ -64,4 +64,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective Intelligence Project](https://www.cip.org/) → [MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

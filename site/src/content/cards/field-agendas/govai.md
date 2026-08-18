@@ -59,7 +59,7 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet on the [field v2 lifecycle](/field/v2/#specify-construct-instances): [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/).
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 
@@ -80,4 +80,4 @@ AISafety.com map listings that roll up to this agenda:
 - [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI → [GovAI / UK AISI](#govai) cluster
 - [UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA → [GovAI / UK AISI](#govai) cluster
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

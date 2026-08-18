@@ -73,4 +73,4 @@ AISafety.com map listings that roll up to this agenda:
 - [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) → [Neglected approaches portfolio](#neglected-approaches-portfolio)
 - AI Safety Interventions (zarncke post) → **Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

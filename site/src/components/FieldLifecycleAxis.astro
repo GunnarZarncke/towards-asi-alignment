@@ -1,0 +1,226 @@
+---
+import fieldV2 from "../data/field-v2.json";
+
+interface Props {
+  base: string;
+  headingLevel?: "h2" | "h3";
+}
+
+const { base, headingLevel = "h2" } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const HeadingTag = headingLevel;
+
+const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
+const bridgesByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+for (const b of fieldV2.bridges) {
+  const role = b.lifecycleRole ?? "certify";
+  if (!bridgesByRole[role]) bridgesByRole[role] = [];
+  bridgesByRole[role].push(b);
+}
+
+const openByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+for (const iface of fieldV2.openSpineInterfaces) {
+  const role = iface.lifecycleRole ?? "construct";
+  if (!openByRole[role]) openByRole[role] = [];
+  openByRole[role].push(iface);
+}
+
+const phaseMeta = Object.fromEntries(
+  (fieldV2.lifecyclePhases ?? []).map((p) => [p.id, p])
+);
+
+const specifyConstructInstances = fieldV2.specifyConstructInstances ?? [];
+const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
+---
+
+<section id="lifecycle-axis" class="lifecycle-section readable">
+  <HeadingTag>Lifecycle axis</HeadingTag>
+  <p class="lifecycle-intro">{fieldV2.meta.lifecycleIntro}</p>
+  {fieldV2.meta.lifecycleBridgeAssignmentNote ? (
+    <p class="lifecycle-note">{fieldV2.meta.lifecycleBridgeAssignmentNote}</p>
+  ) : null}
+  {fieldV2.meta.lifecycleGapsNote ? (
+    <p class="lifecycle-note lifecycle-gaps">{fieldV2.meta.lifecycleGapsNote}</p>
+  ) : null}
+  <p class="lifecycle-axis-line side-panel-meta">
+    <strong>Axis:</strong> {fieldV2.meta.lifecycleAxis}
+  </p>
+  {lifecycleOrder.map((role) => {
+    const phase = phaseMeta[role];
+    const bridges = bridgesByRole[role] ?? [];
+    const openInterfaces = openByRole[role] ?? [];
+    if (!phase && bridges.length === 0 && openInterfaces.length === 0) return null;
+    return (
+      <div class="role-block">
+        <h3>{phase?.label ?? role}</h3>
+        {phase?.summary ? <p class="role-summary">{phase.summary}</p> : null}
+        {bridges.length > 0 ? (
+          <ul class="bridge-list">
+            {bridges.map((b) => (
+              <li class:list={[{ gravestone: b.gravestone }]}>
+                <strong>{b.noun}</strong> ({b.key})
+                {b.gravestone ? <span class="gravestone-tag">retired matrix bridge</span> : null}
+                {b.cardSlug ? (
+                  <>
+                    {" — "}
+                    <a href={withBase(`/cards/${b.cardSlug}/`)}>card</a>
+                  </>
+                ) : null}
+                {b.leanCrux ? (
+                  <span class="lean-crux">
+                    {" "}
+                    · Lean: <code>{typeof b.leanCrux === "string" ? b.leanCrux : b.leanCrux.join(", ")}</code>
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {openInterfaces.length > 0 ? (
+          <ul class="open-interface-list">
+            {openInterfaces.map((iface) => (
+              <li>
+                <strong>{iface.title}</strong>
+                <span class="open-interface-tag">open spine interface</span>
+                {" — "}
+                <a href={withBase(iface.conceptCard)}>concept card</a>
+                {iface.leanProp ? (
+                  <span class="lean-crux">
+                    {" "}
+                    · Lean: <code>{iface.leanProp}</code>
+                  </span>
+                ) : null}
+                <p>{iface.summary}</p>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {role === "specify" && specifyConstructInstances.length > 0 ? (
+          <ul class="instance-pair-list">
+            {specifyConstructInstances.map((row) => (
+              <li>
+                <a href={withBase(row.specify.card)}>{row.specify.title}</a>
+                <ul>
+                  <li>
+                    <a href={withBase(row.construct.card)}>{row.construct.title}</a>
+                  </li>
+                </ul>
+              </li>
+            ))}
+            {specifyConstructPeerRows.map((row) => (
+              <li class="peer-row">
+                <a href={withBase(row.specifyCard)}>{row.specifyTitle}</a>
+                <ul>
+                  <li>
+                    <a href={withBase(row.constructCard)}>{row.constructTitle}</a>
+                    <span class="peer-tag">peer outer target</span>
+                  </li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    );
+  })}
+  <p class="side-panel-meta">
+    Orthogonal view: <a href={withBase("/cards/bridge-assumptions/#bridge-dependencies")}>bridge dependency map</a>
+    {" · "}
+    <a href={withBase("/field/coverage/")}>field coverage matrix</a>
+  </p>
+</section>
+
+<style>
+  .lifecycle-section {
+    margin-top: 2rem;
+    max-width: 52rem;
+  }
+
+  .lifecycle-intro {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .lifecycle-note {
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.96em;
+  }
+
+  .lifecycle-gaps {
+    padding: 0.65rem 0.85rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .lifecycle-axis-line {
+    margin: 0 0 1.25rem;
+  }
+
+  .role-block {
+    margin: 1.75rem 0;
+  }
+
+  .role-block h3 {
+    margin-bottom: 0.35rem;
+  }
+
+  .role-summary {
+    margin: 0 0 0.65rem;
+    line-height: 1.6;
+    color: var(--color-muted, #4a5568);
+  }
+
+  .bridge-list,
+  .open-interface-list,
+  .instance-pair-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .instance-pair-list {
+    margin-top: 0.75rem;
+  }
+
+  .instance-pair-list ul {
+    margin: 0.25rem 0 0.5rem;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .instance-pair-list > li {
+    margin-bottom: 0.35rem;
+  }
+
+  .peer-tag {
+    margin-left: 0.35rem;
+    font-size: 0.85em;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
+  }
+
+  .open-interface-tag,
+  .gravestone-tag {
+    margin-left: 0.35rem;
+    font-size: 0.85em;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
+  }
+
+  li.gravestone {
+    color: var(--color-muted, #4a5568);
+  }
+
+  .open-interface-list p {
+    margin: 0.35rem 0 0;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  .lean-crux code {
+    font-size: 0.9em;
+  }
+</style>

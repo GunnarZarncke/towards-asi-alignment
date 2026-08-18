@@ -39,7 +39,7 @@ coverageIntro: >-
   - **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B
   crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).
 directionLegend: >-
-  Stance marks prefix tags on a +3 (·̂̂̂, advances discharge) to −3 (·̬̬̬, complicates it) scale, with · when direction is unclear.
+  Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, complicates it) scale, with ± when direction is unclear.
 weightRubric: |-
   | Weight | Meaning |
   |---|---|
@@ -49,13 +49,13 @@ weightRubric: |-
 stanceMarksTable: |-
   | Mark | direction | weight |
   |---|---|---|
-  | `·̂` | support | 1 |
-  | `·̂̂` | support | 2 |
-  | `·̂̂̂` | support | 3 |
-  | `·` | unclear | — |
-  | `·̬` | challenge | 1 |
-  | `·̬̬` | challenge | 2 |
-  | `·̬̬̬` | challenge | 3 |
+  | `+` | support | 1 |
+  | `++` | support | 2 |
+  | `+++` | support | 3 |
+  | `±` | unclear | — |
+  | `−` | challenge | 1 |
+  | `−−` | challenge | 2 |
+  | `−−−` | challenge | 3 |
   | *(none)* | untagged legacy | — |
 spineTranslation: >-
   A filled cell means **field evidence on a crux**, not **automatic discharge to
@@ -94,7 +94,7 @@ kosoyDiagnostic: >-
   is a value-learning cousin — **MB11** stays **—** for Kosoy.
 openSpineInterfaces: >-
   **Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) —
-  construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.
+  construct lifecycle; not an `MB*` column. Live: `/cards/alignment-lifecycle/`.
 typeLettersTable: |-
   | Letter | Type |
   |---|---|

@@ -50,4 +50,4 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 - [Metaculus](https://www.metaculus.com/)
 - [AI Impacts](https://aiimpacts.org/)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

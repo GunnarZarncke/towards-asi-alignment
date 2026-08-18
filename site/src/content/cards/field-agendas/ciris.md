@@ -64,4 +64,4 @@ CIRIS is a cryptographic and procedural accountability stack for autonomous agen
 - [agents.ciris.ai](https://agents.ciris.ai)
 - [AISafety.com map](https://aisafety.com/map)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

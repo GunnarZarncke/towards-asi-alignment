@@ -1,0 +1,196 @@
+---
+import fieldV2 from "../data/field-v2.json";
+
+interface Props {
+  base: string;
+  headingLevel?: "h2" | "h3";
+}
+
+const { base, headingLevel = "h2" } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const HeadingTag = headingLevel;
+---
+
+<section id="specify-construct-instances" class="specify-construct-section readable">
+  <HeadingTag>Specify / construct instances</HeadingTag>
+  {fieldV2.meta.specifyConstructIntro ? (
+    <p class="specify-construct-intro">{fieldV2.meta.specifyConstructIntro}</p>
+  ) : null}
+  {fieldV2.meta.specifyConstructPlaceholderNote ? (
+    <p class="specify-construct-note side-panel-meta">{fieldV2.meta.specifyConstructPlaceholderNote}</p>
+  ) : null}
+  <div class="table-wrap">
+    <table class="specify-construct-table">
+      <thead>
+        <tr>
+          <th scope="col">Specify instance</th>
+          <th scope="col">Lean</th>
+          <th scope="col">Parameters</th>
+          <th scope="col">Construction bet</th>
+          <th scope="col">Lean</th>
+          <th scope="col">Why paired</th>
+          <th scope="col">References</th>
+        </tr>
+      </thead>
+      <tbody>
+        {(fieldV2.specifyConstructInstances ?? []).map((row) => {
+          const p = row.specify?.params ?? {};
+          const paramBits = [
+            p.constituency ? "constituency" : null,
+            p.extrapolation ? "extrapolation" : null,
+            p.aggregation ? "aggregation" : null,
+            p.openWorldCoverage ? "openWorldCoverage" : null,
+            p.institutional ? "institutional" : null
+          ].filter(Boolean);
+          return (
+            <tr>
+              <td>
+                <a href={withBase(row.specify.card)}>{row.specify.title}</a>
+              </td>
+              <td><code>{row.specify.lean}</code></td>
+              <td class="param-cell">
+                {paramBits.length > 0 ? paramBits.join(", ") : "—"}
+              </td>
+              <td>
+                <a href={withBase(row.construct.card)}>{row.construct.title}</a>
+                {row.construct.claimsExplicitBuilder === false ? (
+                  <span class="bet-flag"> · no named builder</span>
+                ) : (
+                  <span class="bet-flag"> · explicit builder claim</span>
+                )}
+              </td>
+              <td>
+                <code>{row.construct.lean}</code>
+                {row.construct.pair ? (
+                  <>
+                    <br />
+                    <code class="pair-code">{row.construct.pair}</code>
+                  </>
+                ) : null}
+              </td>
+              <td class="correspondence-cell">{row.correspondence}</td>
+              <td class="refs-cell">
+                {(row.references ?? []).map((ref, i) => (
+                  <>
+                    {i > 0 ? <br /> : null}
+                    <a href={ref.url.startsWith("http") ? ref.url : withBase(ref.url)}>{ref.label}</a>
+                  </>
+                ))}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+  {(fieldV2.specifyConstructPeerRows ?? []).length > 0 ? (
+    <>
+      <h3>Peer outer targets (not ConstitutionalRule instances)</h3>
+      <div class="table-wrap">
+        <table class="specify-construct-table peer-table">
+          <thead>
+            <tr>
+              <th scope="col">Specify / outer target</th>
+              <th scope="col">Construction bet</th>
+              <th scope="col">Note</th>
+              <th scope="col">References</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fieldV2.specifyConstructPeerRows.map((row) => (
+              <tr>
+                <td><a href={withBase(row.specifyCard)}>{row.specifyTitle}</a></td>
+                <td><a href={withBase(row.constructCard)}>{row.constructTitle}</a></td>
+                <td class="correspondence-cell">{row.correspondence}</td>
+                <td class="refs-cell">
+                  {(row.references ?? []).map((ref, i) => (
+                    <>
+                      {i > 0 ? <br /> : null}
+                      <a href={ref.url.startsWith("http") ? ref.url : withBase(ref.url)}>{ref.label}</a>
+                    </>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  ) : null}
+  <p class="side-panel-meta">
+    Open interfaces: <a href={withBase("/cards/alignment-target/")}>Alignment Target</a>
+    {" · "}
+    <a href={withBase("/cards/target-realization/")}>Target Realization</a>
+    {" · "}
+    <a href={withBase("/cards/alignment-lifecycle/")}>lifecycle axis</a>
+    {" · "}
+    <a href={withBase("/lean/")}>Lean spine</a>
+  </p>
+</section>
+
+<style>
+  .specify-construct-section {
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+
+  .specify-construct-section .table-wrap {
+    overflow-x: auto;
+  }
+
+  .specify-construct-intro {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .specify-construct-note {
+    margin: 0 0 1rem;
+    max-width: 48rem;
+    line-height: 1.5;
+  }
+
+  .specify-construct-table {
+    font-size: 0.84rem;
+    min-width: 64rem;
+  }
+
+  .specify-construct-table th,
+  .specify-construct-table td {
+    vertical-align: top;
+    padding: 0.55rem 0.5rem;
+  }
+
+  .correspondence-cell,
+  .refs-cell {
+    max-width: 18rem;
+    line-height: 1.45;
+    color: var(--color-muted, #4a5568);
+  }
+
+  .param-cell {
+    font-size: 0.82em;
+    white-space: nowrap;
+  }
+
+  .bet-flag {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.85em;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
+  }
+
+  .pair-code {
+    font-size: 0.82em;
+    color: var(--color-muted, #64748b);
+  }
+
+  .peer-table {
+    margin-top: 0.75rem;
+  }
+
+  .specify-construct-section h3 {
+    margin-top: 1.75rem;
+    font-size: 1.1rem;
+  }
+</style>

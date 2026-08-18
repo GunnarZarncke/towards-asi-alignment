@@ -4,7 +4,8 @@ import {
   regroupMatrixCellByStance,
   stanceAriaLabel,
   stanceDirectionLabel,
-  stanceMark
+  stanceIconId,
+  stanceMarkText
 } from "../../../reference/field-agendas/scripts/matrix-cell.mjs";
 
 export type MatrixCellGroup = {
@@ -24,7 +25,33 @@ export type StancedMatrixCellGroup = MatrixCellGroup & {
   weight: number | null;
 };
 
-export { buildStanceById, stanceMark, stanceAriaLabel, stanceDirectionLabel, regroupMatrixCellByStance };
+export {
+  buildStanceById,
+  stanceIconId,
+  stanceMarkText,
+  stanceAriaLabel,
+  stanceDirectionLabel,
+  regroupMatrixCellByStance
+};
+
+function iconSrc(iconBase: string, iconId: string): string {
+  const prefix = iconBase.replace(/\/?$/, "/");
+  return `${prefix}icons/stance/${iconId}.svg`;
+}
+
+/** Render a stance mark as an inline SVG icon (monochrome, no Unicode combining marks). */
+export function renderStanceMarkHtml(
+  direction: string | null,
+  weight: number | null = 1,
+  iconBase = ""
+): string {
+  if (!direction) return "";
+  const id = stanceIconId(direction, weight ?? 1);
+  if (!id) return "";
+  const aria = stanceAriaLabel(direction, weight ?? 1);
+  const src = iconSrc(iconBase, id);
+  return `<img class="stance-mark" src="${src}" alt="" aria-label="${aria}" width="12" height="14" decoding="async" />`;
+}
 
 export function flattenMatrixCell(groups: MatrixCellGroup[]): MatrixEvidenceTag[] {
   const flat: MatrixEvidenceTag[] = [];
@@ -34,26 +61,12 @@ export function flattenMatrixCell(groups: MatrixCellGroup[]): MatrixEvidenceTag[
   return flat;
 }
 
-function stanceMarkHtml(direction: string | null, weight: number | null): string {
-  if (!direction) return "";
-  const mark = stanceMark(direction, weight ?? 1);
-  const aria = stanceAriaLabel(direction, weight ?? 1);
-  const classes = [
-    "matrix-ev-stance",
-    direction === "support" ? "matrix-ev-stance-support" : "",
-    direction === "challenge" ? "matrix-ev-stance-challenge" : "",
-    weight === 3 ? "matrix-ev-stance-weight-3" : ""
-  ]
-    .filter(Boolean)
-    .join(" ");
-  return `<span class="${classes}" aria-label="${aria}">${mark}</span>`;
-}
-
 /** Render normalized cell groups for the Field hub matrix (one type letter per group, ≤3 ids in superscript). */
 export function renderMatrixCellHtml(
   groups: MatrixCellGroup[] | undefined,
   fieldPrefix: string,
-  stanceById?: Map<number, EvidenceStance>
+  stanceById?: Map<number, EvidenceStance>,
+  iconBase = ""
 ): string | null {
   if (!groups?.length) return null;
 
@@ -70,7 +83,7 @@ export function renderMatrixCellHtml(
           return `<a href="${href}" class="matrix-ev-id-link">${id}</a>`;
         })
         .join(",");
-      const markHtml = stanceMarkHtml(direction, weight);
+      const markHtml = direction ? renderStanceMarkHtml(direction, weight, iconBase) : "";
       return `<span class="matrix-ev">${markHtml}<span class="matrix-ev-type">${type}</span><sup class="matrix-ev-id">${idLinks}</sup></span>`;
     });
 

@@ -26,12 +26,10 @@ related:
   - "target-realization"
 ---
 
-# Specify — institutional / legal constitution
-
 **Lean instance:** `institutionalConstitution` — `institutional = true`, rights/duties-style aggregation, no CEV extrapolation flag.
 
 Appendix C maps **constitutional balancing**, rights, and duties onto value-bundle geometry, and procurement/insurance/licensing onto selection. This card is an **illustrative analogue** — Lean flags the family; it does not prove isomorphism with ML constitutions.
 
 **Construction bet:** [certified vendor / procurement regime](/cards/construct-institutional/) — socio-technical realization, not model training.
 
-**Field table:** [/field/v2/#specify-construct-instances](/field/v2/#specify-construct-instances).
+**Instance table:** [/cards/alignment-target/#specify-construct-instances](/cards/alignment-target/#specify-construct-instances).

@@ -21,12 +21,10 @@ related:
   - "mb8-cev-process-convergence"
 ---
 
-# Construct — CEV (underspecified)
-
 **Lean bet:** `cevConstructionBet` paired via `cevSpecifyConstruct`.
 
 MIRI's CEV writeup emphasizes the **constitutional process** more than a named constructive procedure comparable to RLAIF or a GSAI builder. Lean records `claimsExplicitBuilder = false`.
 
 The open question is still `ConstructionCrux (constitutionalTarget cevConstitution)` — whether any system **Realizes** that target — not retired MB8 process preservation.
 
-**Field table:** [/field/v2/#specify-construct-instances](/field/v2/#specify-construct-instances).
+**Instance table:** [/cards/alignment-target/#specify-construct-instances](/cards/alignment-target/#specify-construct-instances).

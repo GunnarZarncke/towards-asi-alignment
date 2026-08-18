@@ -24,12 +24,10 @@ related:
   - "mb11-deployment-safety"
 ---
 
-# Construct — GSAI spec-relative builder
-
 **Lean bet:** `gsaiConstructionBet` with `claimsExplicitBuilder = true`.
 
 GSAI's constructive program: build and certify systems **relative to an explicit spec and world model** (constructivist safety case). That is the associated construction bet for `gsaiConstitution`.
 
 Discharging `ConstructionCrux` still requires showing a real system **Realizes** the target — not merely that a safety-case schema can be written (`fin_certification_without_construction`).
 
-**Field table:** [/field/v2/#specify-construct-instances](/field/v2/#specify-construct-instances).
+**Instance table:** [/cards/alignment-target/#specify-construct-instances](/cards/alignment-target/#specify-construct-instances).

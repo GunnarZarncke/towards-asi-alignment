@@ -66,4 +66,4 @@ AISafety.com map listings that roll up to this agenda:
 - [Apollo Research](https://www.apolloresearch.ai/) → [Apollo / Truthful AI](#apollo-research)
 - [Truthful AI](https://truthful.ai/), Cadenza Labs → [Apollo / Truthful AI](#apollo-research) / deception evals
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

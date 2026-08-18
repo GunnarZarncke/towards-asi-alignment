@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "npm run sync && npm run copy:pdf && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:lean-checks && npm run sync:field-agendas && npm run sync:field-news && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapter-illustrations && npm run sync:chapters && npm run sync:reference-cards && npm run sync:concept-logos && npm run sync:lean-spine && npm run sync:bridge-graph && npm run sync:chapter-reading-graph && npm run sync:term-links && npm run sync:demos && npm run sync:experiment-figures && npm run sync:experiments && npm run build:search-index && npm run build:feed && npm run sync:bot-orientation",
+    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:lean-checks && npm run sync:field-agendas && npm run sync:field-v2 && npm run sync:field-news && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapter-illustrations && npm run sync:chapters && npm run sync:reference-cards && npm run sync:concept-logos && npm run sync:lean-spine && npm run sync:bridge-graph && npm run sync:chapter-reading-graph && npm run sync:term-links && npm run sync:demos && npm run sync:experiment-figures && npm run sync:experiments && npm run build:search-index && npm run build:feed && npm run sync:bot-orientation",
     "sync:chapter-illustrations": "node scripts/sync-chapter-illustrations.mjs",
     "sync:experiment-figures": "node scripts/sync-experiment-figures.mjs",
     "generate:manuscript-tex": "bash ../scripts/generate_manuscript_tex.sh",
@@ -22,7 +22,8 @@
     "sync:projections": "node scripts/sync-projections.mjs",
     "sync:lean-checks": "node scripts/sync-lean-checks.mjs",
     "sync:term-links": "node scripts/sync-term-links.mjs",
-    "sync:field-agendas": "node scripts/sync-field-agendas.mjs",
+    "sync:stance-icons": "node scripts/sync-stance-icons.mjs",
+    "sync:field-agendas": "npm run sync:stance-icons && node scripts/sync-field-agendas.mjs",
     "sync:field-v2": "node scripts/sync-field-v2.mjs",
     "sync:field-news": "node scripts/sync-field-news.mjs",
     "sync:notation": "node scripts/sync-notation.mjs",

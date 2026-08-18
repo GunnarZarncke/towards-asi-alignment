@@ -505,3 +505,12 @@ html.layout-full-width .readable {
   height: 100%;
   display: block;
 }
+
+/* Stance marks: monochrome SVG icons (see site/public/icons/stance/). */
+.stance-mark {
+  display: inline-block;
+  width: 0.85em;
+  height: 1em;
+  vertical-align: -0.15em;
+  margin-inline-end: 0.06em;
+}

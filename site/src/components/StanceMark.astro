@@ -1,0 +1,28 @@
+---
+import { stanceAriaLabel, stanceIconId } from "../lib/field-matrix-cell";
+
+interface Props {
+  direction: string | null | undefined;
+  weight?: number | null;
+  /** Optional path prefix (e.g. import.meta.env.BASE_URL). */
+  base?: string;
+}
+
+const { direction, weight = 1, base = "" } = Astro.props;
+const iconId = direction ? stanceIconId(direction, weight ?? 1) : "";
+const aria = direction ? stanceAriaLabel(direction, weight ?? 1) : "";
+const prefix = base.replace(/\/?$/, "/");
+const src = iconId ? `${prefix}icons/stance/${iconId}.svg` : "";
+---
+
+{iconId && (
+  <img
+    class="stance-mark"
+    src={src}
+    alt=""
+    aria-label={aria}
+    width="12"
+    height="14"
+    decoding="async"
+  />
+)}

@@ -5,8 +5,8 @@
     "lifecycleBridgeAssignmentNote": "Live MB bridges (MB1–MB11) mostly tag identify, certify, and preserve handoffs: whether measurement, oversight, or long-run dynamics support discharge once a target and deployable system are in view. Assignment does not mirror dependency edges — for example MB11 assembles many antecedents in the graph above while sitting in the certify lifecycle role, and MB4 in preserve while MB4a is certify.",
     "lifecycleGapsNote": "Specify and construct look sparse because those stages were underrepresented in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is retired and factorizes as Alignment Target (specify) plus Target Realization (construct). Open spine interfaces fill those roles; field outer-alignment work often spans specify and identify without mapping to a single MB column.",
     "lifecycleAxis": "specify → construct → identify → certify → preserve",
-    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/field/v2/#lifecycle-axis`.",
-    "note": "Live field hub at /field/ (redirects to /field/v2/). Archived v1 at /field/v1/.",
+    "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/cards/alignment-lifecycle/`.",
+    "note": "Live field hub at /field/ (redirects to /field/v2/). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
     "adjacentWorkIntro": "Candidate theory and policy work relevant to bearer admission (ch18 / MB3 sub-obligation): which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a bundle-specific bearer class. These notes are not coverage-matrix cells. Filling a matrix cell requires a sourced agenda contribution under field-map curation rules; listing here only records neighborhood work the live hub should make visible.",
     "adjacentWorkFirewall": "MB1 (boundary / candidate process) is an upstream dependency of bearer inference, not a problem these sources solve. Do not read this list as evidence that consciousness or welfare researchers discharge Embedded Agency. Self-modeling, introspection, and global-workspace-like architecture are candidate indicators under some theories — not consciousness tests and not automatic Inner Alignment (MB7) coverage.",
     "adjacentWorkPhenomenalityNote": "A certified nonperson / non-subjecthood result does not license unconstrained treatment of a process that may still be valenced or otherwise morally relevant under a different property. Phenomenality and subjecthood stay distinct.",
@@ -408,6 +408,9 @@
   "specifyConstructInstances": [
     {
       "id": "cev",
+      "agendaSlugs": [
+        "miri"
+      ],
       "schema": "constitutional-rule",
       "specify": {
         "title": "CEV (constitutional residue)",
@@ -446,6 +449,9 @@
     },
     {
       "id": "constitutional-ai",
+      "agendaSlugs": [
+        "anthropic-lab"
+      ],
       "schema": "constitutional-rule",
       "specify": {
         "title": "Constitutional AI",
@@ -480,6 +486,9 @@
     },
     {
       "id": "gsai",
+      "agendaSlugs": [
+        "davidad-guaranteed-safe-ai-gsai"
+      ],
       "schema": "constitutional-rule",
       "specify": {
         "title": "GSAI / Open Agency spec",
@@ -518,6 +527,10 @@
     },
     {
       "id": "institutional",
+      "agendaSlugs": [
+        "govai",
+        "mai-cip-institutional-alignment"
+      ],
       "schema": "constitutional-rule",
       "specify": {
         "title": "Institutional / legal constitution",
@@ -554,6 +567,9 @@
   "specifyConstructPeerRows": [
     {
       "id": "predca",
+      "agendaSlugs": [
+        "kosoy-infra-bayesianism-lta"
+      ],
       "schema": "peer-outer-target",
       "specifyTitle": "PreDCA / Physicalist Superimitation",
       "specifyCard": "/cards/field-agendas/kosoy-infra-bayesianism-lta/",

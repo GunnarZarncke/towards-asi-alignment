@@ -127,5 +127,17 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     if (index) return index;
   }
 
+  // trailingSlash: "always" — normalize extensionless paths in dev and preview.
+  if (
+    context.request.method === "GET" &&
+    pathname.length > 1 &&
+    !pathname.endsWith("/") &&
+    !pathname.split("/").pop()?.includes(".")
+  ) {
+    const redirectUrl = new URL(context.url);
+    redirectUrl.pathname = `${pathname}/`;
+    return context.redirect(redirectUrl.toString(), 308);
+  }
+
   return next();
 };

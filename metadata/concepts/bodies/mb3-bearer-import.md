@@ -9,7 +9,7 @@ leanNodes:
     summary: One-sided non-bearer certificate soundness (admission sub-obligation); not part of MB3Crux / BridgeAssumptions. Success licenses exclusion; failure abstains; soundness ≠ completeness.
     module: AlignmentProofSpine/Bundles.lean
   - nodeId: BearerAdmissionMisclassified
-    kind: defeater
+    kind: counterexample
     summary: Named U-17 signal for unsound or incomplete bearer admission / exclusion under unfamiliar substrates; distinct from BearerMapSpoofed (transport).
     module: AlignmentProofSpine/Defeaters.lean
 evidenceNotes:
@@ -29,7 +29,7 @@ external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
   - label: Field adjacent work (bearer admission)
-    url: https://towards-alignment.com/field/v2/#adjacent-work
+    url: /cards/bearer-admission-adjacent/
 ---
 
 In the field, value learning usually folds "who the values apply to" into reward or preference learning and moves on. That leaves a quiet failure mode: the words for a value can survive a merge, upload, or substrate change while the entities those values protect are dropped, relabeled, or quietly redefined. Surface semantics look fine; moral application has shifted. That is the [bearer-map commutation](/cards/bearer-map-commutation-failure/) worry, adjacent to the identification sense of the [pointing problem](/cards/pointing-problem/), not the same crux as [MB2](/cards/mb2-bundle-identifiability/).
@@ -39,7 +39,7 @@ This project's precise bet is **MB3**, with two conceptually distinct obligation
 1. **Bearer admission (inference).** When a system encounters a process unlike the examples on which its value concepts were learned — a digital mind, a simulated agent, a hybrid tool-memory loop — what evidence should make that process count as a bearer of bundle $k$ at all? Conservative one-sided exclusion certificates (`ConservativeExclusion` in Lean) may certify "definitely not relevant for $k$" and must abstain otherwise; they do not complete classification. Consciousness, sentience, and valence theories enter as candidate evidence providers, not as the definition of MB3.
 2. **Bearer transport (persistence).** Given an already-recognized bearer map, a preserved map under substrate translation is assumed to make [value-bundle transport](/cards/value-bundle-transport/) more than a coincidence of wording.
 
-The live Lean bridge (`MB3Crux` / `MB3_bearer_import`) types the **transport** half. Admission is an open sub-obligation (ledgers: U-17), not a new `MB*` column and not part of `BridgeAssumptions`. Neighborhood field notes: [adjacent work](/field/v2/#adjacent-work).
+The live Lean bridge (`MB3Crux` / `MB3_bearer_import`) types the **transport** half. Admission is an open sub-obligation (ledgers: U-17), not a new `MB*` column and not part of `BridgeAssumptions`. Neighborhood field notes: [bearer admission (adjacent)](/cards/bearer-admission-adjacent/).
 
 **Where agendas agree:** thin coverage (CEV "whom"; some PreDCA population talk; nonperson-predicate and AI-welfare work as admission neighborhood). **Where they diverge:** the field usually folds referent into identification-pointing; this project types referent transport separately and keeps admission inside MB3 rather than inventing MB3a.
 

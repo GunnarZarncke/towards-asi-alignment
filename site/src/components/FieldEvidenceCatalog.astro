@@ -1,7 +1,8 @@
 ---
 import fieldData from "../data/field-agendas.json";
-import { stanceDirectionLabel, stanceMark } from "../lib/field-matrix-cell";
+import { stanceDirectionLabel } from "../lib/field-matrix-cell";
 import { cardHref } from "../lib/site-urls";
+import StanceMark from "./StanceMark.astro";
 
 interface Props {
   base: string;
@@ -10,6 +11,7 @@ interface Props {
 
 const { base, showStance = false } = Astro.props;
 const { evidence } = fieldData;
+const iconBase = `${base.replace(/\/$/, "")}/`;
 
 function agendaHref(slug: string) {
   return cardHref(base, `field-agendas/${slug}`);
@@ -18,14 +20,6 @@ function agendaHref(slug: string) {
 function slugForAgendaName(name: string) {
   const hit = fieldData.agendas.find((a) => a.title === name || a.title.startsWith(name));
   return hit?.slug;
-}
-
-function weightStanceForEntry(entry: (typeof evidence)[number]) {
-  const direction = entry.direction as string | undefined;
-  if (!direction) return "—";
-  if (direction === "unclear") return `— ${stanceMark("unclear")}`;
-  const weight = entry.weight ?? 1;
-  return `${weight} ${stanceMark(direction, weight)}`;
 }
 ---
 
@@ -55,6 +49,7 @@ function weightStanceForEntry(entry: (typeof evidence)[number]) {
       <tbody>
         {evidence.map((entry) => {
           const slug = slugForAgendaName(entry.agenda);
+          const direction = entry.direction as string | undefined;
           return (
             <tr id={`ev-${entry.id}`}>
               <td>{entry.id}</td>
@@ -65,8 +60,21 @@ function weightStanceForEntry(entry: (typeof evidence)[number]) {
               <td>{entry.type}</td>
               {showStance && (
                 <>
-                  <td>{stanceDirectionLabel(entry.direction as string | undefined)}</td>
-                  <td class="stance-weight">{weightStanceForEntry(entry)}</td>
+                  <td>{stanceDirectionLabel(direction)}</td>
+                  <td class="stance-weight">
+                    {!direction ? (
+                      "—"
+                    ) : direction === "unclear" ? (
+                      <>
+                        — <StanceMark direction="unclear" base={iconBase} />
+                      </>
+                    ) : (
+                      <>
+                        {entry.weight ?? 1}{" "}
+                        <StanceMark direction={direction} weight={entry.weight ?? 1} base={iconBase} />
+                      </>
+                    )}
+                  </td>
                 </>
               )}
               <td>{entry.evidence}</td>
@@ -109,7 +117,6 @@ function weightStanceForEntry(entry: (typeof evidence)[number]) {
 
   .field-evidence--stance .stance-weight {
     white-space: nowrap;
-    font-size: 1.37rem;
     line-height: 1.2;
   }
 

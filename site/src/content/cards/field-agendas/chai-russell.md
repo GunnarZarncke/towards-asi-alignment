@@ -57,4 +57,4 @@ AISafety.com map listings that roll up to this agenda:
 - [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT) → [CHAI / FAR.AI](#chai-russell) cluster
 - [FAR.AI](https://www.far.ai/) → [CHAI / FAR.AI](#chai-russell)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

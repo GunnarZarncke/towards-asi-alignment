@@ -58,6 +58,27 @@ export function normalizeMarkdownMath(text) {
   return out;
 }
 
+function normalizeTitleForCompare(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+/** Card pages render frontmatter title as `<h1>`; drop a matching leading `# Title` from body. */
+export function stripDuplicateTitleHeading(bodyText, title) {
+  if (!bodyText?.trim() || !title) return bodyText ?? "";
+  const lines = bodyText.split("\n");
+  let start = 0;
+  while (start < lines.length && lines[start].trim() === "") start += 1;
+  const match = lines[start]?.match(/^#\s+(.+?)\s*$/);
+  if (!match) return bodyText;
+  if (normalizeTitleForCompare(match[1]) !== normalizeTitleForCompare(title)) return bodyText;
+  start += 1;
+  while (start < lines.length && lines[start].trim() === "") start += 1;
+  return lines.slice(start).join("\n");
+}
+
 /**
  * Build the frontmatter + body text for a generated card from a merged roster
  * row (public fields only) and a parsed body file ({ fm, body }).
@@ -91,7 +112,8 @@ export function renderCard(publicFields, bodyFmFields, bodyText) {
   if (publicFields.overviewOnly) {
     // overview-only chapter/appendix cards omit the summary paragraph (handled by callers).
   }
-  if (bodyText) bodyParts.push(normalizeMarkdownMath(bodyText.trim()));
+  const cleanedBody = stripDuplicateTitleHeading(bodyText, publicFields.title);
+  if (cleanedBody) bodyParts.push(normalizeMarkdownMath(cleanedBody.trim()));
   return lines.join("\n") + "\n" + bodyParts.join("\n\n") + "\n";
 }
 

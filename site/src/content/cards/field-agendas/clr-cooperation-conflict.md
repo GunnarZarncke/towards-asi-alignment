@@ -48,4 +48,4 @@ CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.
 - [Dafoe et al. 2020 — Open Problems in Cooperative AI](https://arxiv.org/abs/2012.08630)
 - [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

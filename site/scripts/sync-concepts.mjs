@@ -58,10 +58,17 @@ async function main() {
   const standaloneClaims = [];
   const glossary = [];
   const missingClaims = [];
+  const bodyHeadingWarnings = [];
 
   for (const row of concepts) {
     if (row.claimId && !ledgerClaimIds.has(row.claimId)) missingClaims.push(`${row.slug} -> ${row.claimId}`);
     const { fm: bodyFm, body } = await loadBody(bodiesDir, row.body);
+    const h1Line = body.split("\n").find((line) => /^#\s+[^#]/.test(line.trim()));
+    if (h1Line) {
+      bodyHeadingWarnings.push(
+        `${row.slug}: remove leading h1 (${h1Line.trim()}) — card page already renders title as h1`
+      );
+    }
     const contents = renderCard(publicFieldsFor(row), bodyFm, body);
     const result = await writeCard(cardsDir, row.slug, contents, { check });
     if (!result.matches) mismatches.push(result.filePath);
@@ -140,6 +147,11 @@ async function main() {
   if (missingClaims.length > 0) {
     console.warn(`sync-concepts: ${missingClaims.length} claimId(s) not found in metadata/claims-ledger.md:`);
     for (const entry of missingClaims) console.warn(`  ${entry}`);
+  }
+
+  if (bodyHeadingWarnings.length > 0) {
+    console.warn(`sync-concepts: ${bodyHeadingWarnings.length} body h1 heading(s) to remove from metadata/concepts/bodies/:`);
+    for (const entry of bodyHeadingWarnings) console.warn(`  ${entry}`);
   }
 
   if (check && mismatches.length > 0) {

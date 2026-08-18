@@ -53,4 +53,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Iliad](https://www.iliad.ac/), [Textbook from the Future](https://textbookfromthefuture.org/), [ILIAD Conference](https://www.iliadconference.com/) → [Iliad / Textbook from the Future](#iliad-textbook-from-the-future)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

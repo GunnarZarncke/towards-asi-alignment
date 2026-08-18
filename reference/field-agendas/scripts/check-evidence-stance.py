@@ -19,18 +19,14 @@ STANCE_REQUIRED_AFTER_ID = 157
 
 VALID_DIRECTIONS = frozenset({"support", "challenge", "unclear"})
 
-DOT = "\u00b7"
-CIRCUMFLEX = "\u0302"
-CARON_BELOW = "\u032c"
-
 EXPECTED_MARKS = {
-    ("support", 1): DOT + CIRCUMFLEX,
-    ("support", 2): DOT + CIRCUMFLEX * 2,
-    ("support", 3): DOT + CIRCUMFLEX * 3,
-    ("challenge", 1): DOT + CARON_BELOW,
-    ("challenge", 2): DOT + CARON_BELOW * 2,
-    ("challenge", 3): DOT + CARON_BELOW * 3,
-    ("unclear", None): DOT,
+    ("support", 1): "+",
+    ("support", 2): "++",
+    ("support", 3): "+++",
+    ("challenge", 1): "−",
+    ("challenge", 2): "−−",
+    ("challenge", 3): "−−−",
+    ("unclear", None): "±",
 }
 
 
@@ -38,11 +34,13 @@ def stance_mark(direction: str | None, weight: int | None = 1) -> str:
     if not direction:
         return ""
     if direction == "support":
-        return DOT + CIRCUMFLEX * int(weight or 1)
+        w = min(3, max(1, int(weight or 1)))
+        return "+" * w
     if direction == "challenge":
-        return DOT + CARON_BELOW * weight
+        w = min(3, max(1, int(weight or 1)))
+        return "−" * w
     if direction == "unclear":
-        return DOT
+        return "±"
     return ""
 
 
@@ -77,7 +75,7 @@ def self_test() -> list[str]:
     if bad.get("direction") is None and bad.get("weight") is not None:
         pass  # rule exercised in main(); self_test documents expectation
 
-    if stance_mark("support", 1) != DOT + CIRCUMFLEX:
+    if stance_mark("support", 1) != "+":
         errors.append("self_test: support mark encoding")
     if stance_mark(None) != "":
         errors.append("self_test: empty direction mark")

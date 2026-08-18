@@ -25,8 +25,6 @@ related:
   - "target-realization"
 ---
 
-# Specify — GSAI / Open Agency
-
 **Lean instance:** `gsaiConstitution` — `openWorldCoverage = true`, `extrapolation = false`, `aggregation = true`.
 
 Guaranteed-Safe AI centers an explicit **specification plus world model** and treats open-world **coverage** as the central wall. Lean flags `openWorldCoverage` to distinguish this family from CEV-style extrapolation (the AlignmentTarget does not require a correction-channel slot via the extrapolation flag).
@@ -35,4 +33,4 @@ Completeness of the spec is a **cousin of MB9** (conservativity vs completeness)
 
 **Construction bet:** [spec-relative formal builder](/cards/construct-gsai/) — `gsaiConstructionBet`.
 
-**Field table:** [/field/v2/#specify-construct-instances](/field/v2/#specify-construct-instances).
+**Instance table:** [/cards/alignment-target/#specify-construct-instances](/cards/alignment-target/#specify-construct-instances).

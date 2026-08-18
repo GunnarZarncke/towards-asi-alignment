@@ -43,8 +43,13 @@ None of these cruxes are solved, but different agendas have made progress to dif
 
 ## What you will find here
 
-1. **Agenda cards** — one page per research or advocacy program. Browse all via the [Field agenda badge](/badges/type/agenda/).
-2. **Coverage matrix** — The main table of agenda ad bridges below. Column headers link to [bridge cards](/badges/type/bridge/); row headers link to agenda cards. Cell tags link to the evidence catalog below.
-3. **Evidence catalog** — citations backing the matrix.
+Use the **Field map** grid on this page, or jump directly:
+
+1. **[Field coverage](/field/coverage/)** — agenda × bridge matrix and evidence catalog (separate page; column headers link to bridge cards, rows to agenda cards).
+2. **[Alignment lifecycle](/cards/alignment-lifecycle/)** — when each handoff must hold (specify → preserve).
+3. **[Bridge assumptions](/cards/bridge-assumptions/)** — MB1–MB11 cruxes and dependency graph.
+4. **[Alignment target](/cards/alignment-target/)** — outer-alignment programs as specify/construct pairs.
+5. **[Bearer admission (adjacent)](/cards/bearer-admission-adjacent/)** — consciousness/welfare neighborhood notes (not matrix cells).
+6. **Agenda cards** — one page per program via the [Field agenda badge](/badges/type/agenda/).
 
 For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/).

@@ -18,12 +18,10 @@ external:
     url: https://arxiv.org/abs/2212.08073
 ---
 
-# Construct — RLAIF / Constitutional AI training
-
 **Lean bet:** `caiConstructionBet` with `claimsExplicitBuilder = true`.
 
 The agenda's constructive hypothesis: train models with **principles-as-feedback** (RLAIF) so the resulting system tracks the stated constitution. That is an explicit builder claim in the catalog sense.
 
 `fin_claimed_builder_without_realization` separates **catalog flags** from **`ConstructionCrux`**: a claimed builder does not discharge the open ∃-system crux.
 
-**Field table:** [/field/v2/#specify-construct-instances](/field/v2/#specify-construct-instances).
+**Instance table:** [/cards/alignment-target/#specify-construct-instances](/cards/alignment-target/#specify-construct-instances).

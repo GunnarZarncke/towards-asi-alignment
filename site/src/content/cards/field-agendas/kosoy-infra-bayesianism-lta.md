@@ -54,7 +54,7 @@ Vanessa Kosoy's [learning-theoretic agenda](https://www.alignmentforum.org/posts
 
 ## Specify / construct (peer outer target)
 
-PreDCA / Physicalist Superimitation is listed on the [field v2 specify/construct table](/field/v2/#specify-construct-instances) as a **peer outer-target** ontology — not a `ConstitutionalRule` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.
+PreDCA / Physicalist Superimitation is listed on the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table as a **peer outer-target** ontology — not a `ConstitutionalRule` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.
 
 ## Links
 
@@ -64,4 +64,4 @@ PreDCA / Physicalist Superimitation is listed on the [field v2 specify/construct
 - [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/w/predca)
 - [Vanessa Kosoy](https://www.alignmentforum.org/users/vanessa-kosoy)
 
-See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

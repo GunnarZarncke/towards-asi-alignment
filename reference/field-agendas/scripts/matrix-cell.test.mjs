@@ -1,47 +1,54 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
-  STANCE_CARON_BELOW,
-  STANCE_CIRCUMFLEX,
-  STANCE_DOT,
   buildStanceById,
   matrixCellToMarkdown,
   normalizeEvidenceStance,
   regroupMatrixCellByStance,
-  stanceMark
+  stanceIconId,
+  stanceMarkText
 } from "./matrix-cell.mjs";
 
 const EXPECTED = {
-  support1: STANCE_DOT + STANCE_CIRCUMFLEX,
-  support2: STANCE_DOT + STANCE_CIRCUMFLEX + STANCE_CIRCUMFLEX,
-  support3: STANCE_DOT + STANCE_CIRCUMFLEX.repeat(3),
-  unclear: STANCE_DOT,
-  challenge1: STANCE_DOT + STANCE_CARON_BELOW,
-  challenge2: STANCE_DOT + STANCE_CARON_BELOW.repeat(2),
-  challenge3: STANCE_DOT + STANCE_CARON_BELOW.repeat(3)
+  support1: "+",
+  support2: "++",
+  support3: "+++",
+  unclear: "±",
+  challenge1: "−",
+  challenge2: "−−",
+  challenge3: "−−−"
 };
 
-describe("stanceMark", () => {
-  it("encodes all seven stance sequences", () => {
-    assert.equal(stanceMark("support", 1), EXPECTED.support1);
-    assert.equal(stanceMark("support", 2), EXPECTED.support2);
-    assert.equal(stanceMark("support", 3), EXPECTED.support3);
-    assert.equal(stanceMark("unclear"), EXPECTED.unclear);
-    assert.equal(stanceMark("challenge", 1), EXPECTED.challenge1);
-    assert.equal(stanceMark("challenge", 2), EXPECTED.challenge2);
-    assert.equal(stanceMark("challenge", 3), EXPECTED.challenge3);
+describe("stanceMarkText", () => {
+  it("encodes all seven stance marks", () => {
+    assert.equal(stanceMarkText("support", 1), EXPECTED.support1);
+    assert.equal(stanceMarkText("support", 2), EXPECTED.support2);
+    assert.equal(stanceMarkText("support", 3), EXPECTED.support3);
+    assert.equal(stanceMarkText("unclear"), EXPECTED.unclear);
+    assert.equal(stanceMarkText("challenge", 1), EXPECTED.challenge1);
+    assert.equal(stanceMarkText("challenge", 2), EXPECTED.challenge2);
+    assert.equal(stanceMarkText("challenge", 3), EXPECTED.challenge3);
   });
 
   it("returns empty string for missing or unknown direction", () => {
-    assert.equal(stanceMark(undefined), "");
-    assert.equal(stanceMark(null), "");
-    assert.equal(stanceMark(""), "");
-    assert.equal(stanceMark("unknown"), "");
+    assert.equal(stanceMarkText(undefined), "");
+    assert.equal(stanceMarkText(null), "");
+    assert.equal(stanceMarkText(""), "");
+    assert.equal(stanceMarkText("unknown"), "");
   });
 
   it("clamps weight to 1..3", () => {
-    assert.equal(stanceMark("support", 0), EXPECTED.support1);
-    assert.equal(stanceMark("challenge", 99), EXPECTED.challenge3);
+    assert.equal(stanceMarkText("support", 0), EXPECTED.support1);
+    assert.equal(stanceMarkText("challenge", 99), EXPECTED.challenge3);
+  });
+});
+
+describe("stanceIconId", () => {
+  it("maps direction and weight to icon ids", () => {
+    assert.equal(stanceIconId("support", 2), "stance-support-2");
+    assert.equal(stanceIconId("challenge", 1), "stance-challenge-1");
+    assert.equal(stanceIconId("unclear"), "stance-unclear");
+    assert.equal(stanceIconId(null), "");
   });
 });
 
