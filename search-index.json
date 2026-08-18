@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-17T10:07:28.563Z",
+  "generatedAt": "2026-08-18T03:59:30.520Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 305,
+  "entryCount": 318,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -655,6 +655,18 @@
       "url": "/cards/chapters/ch34/"
     },
     {
+      "title": "Alignment Lifecycle",
+      "type": "concept",
+      "summary": "When each bridge handoff must hold — specify → construct → identify → certify → preserve; orthogonal to the bridge dependency graph.",
+      "url": "/cards/alignment-lifecycle/"
+    },
+    {
+      "title": "Alignment Target",
+      "type": "concept",
+      "summary": "Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder.",
+      "url": "/cards/alignment-target/"
+    },
+    {
       "title": "An outside test failed to find a hidden team of agents",
       "type": "news",
       "summary": "External Test 2 (ET-2) tested the project's boundary-finding method in an independently built multi-agent commons simulation. Across 150 runs, it did not recover the planted adversarial subgroup. A separate small test found broad spillover from changing one agent, which is not the same as finding a meaningful unit.",
@@ -707,6 +719,12 @@
       "type": "chapter",
       "summary": "The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.",
       "url": "/cards/chapters/ch05/"
+    },
+    {
+      "title": "Bearer Admission (Adjacent)",
+      "type": "concept",
+      "summary": "Consciousness and welfare neighborhood notes for MB3 bearer inference — not coverage-matrix cells.",
+      "url": "/cards/bearer-admission-adjacent/"
     },
     {
       "title": "Bearer Persistence",
@@ -883,6 +901,30 @@
       "url": "/cards/institutional-constraint-inheritance/"
     },
     {
+      "title": "Construct — CEV (underspecified)",
+      "type": "concept",
+      "summary": "CEV construction bet (cevConstructionBet); claimsExplicitBuilder = false — no named builder in the original writeup.",
+      "url": "/cards/construct-cev/"
+    },
+    {
+      "title": "Construct — GSAI spec-relative builder",
+      "type": "concept",
+      "summary": "GSAI constructivist safety-case / spec-relative builder (gsaiConstructionBet).",
+      "url": "/cards/construct-gsai/"
+    },
+    {
+      "title": "Construct — institutional / procurement regime",
+      "type": "concept",
+      "summary": "Certified vendor and procurement-gate regime as institutionalConstructionBet (App C analogue).",
+      "url": "/cards/construct-institutional/"
+    },
+    {
+      "title": "Construct — RLAIF / Constitutional AI",
+      "type": "concept",
+      "summary": "RLAIF principles-as-feedback as caiConstructionBet; catalog builder claim ≠ ConstructionCrux discharge.",
+      "url": "/cards/construct-constitutional-ai/"
+    },
+    {
       "title": "Correction at Civilizational Scale",
       "type": "objection",
       "summary": "A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.",
@@ -1025,6 +1067,12 @@
       "type": "field",
       "summary": "Public map of major agendas, bridge coverage matrix, and field overviews (AISafety.com map, interventions index, surveys).",
       "url": "/field/"
+    },
+    {
+      "title": "Field Coverage",
+      "type": "concept",
+      "summary": "Agenda × bridge matrix and sourced evidence catalog — who published what on which cruxes.",
+      "url": "/cards/field-coverage/"
     },
     {
       "title": "Field projection — AUP / Relative Reachability (Low Impact)",
@@ -1317,7 +1365,7 @@
     {
       "title": "MB3 — Value Referent",
       "type": "bridge",
-      "summary": "Who do the values apply to after a merge, upload, or substrate change? Precise bet: a preserved bearer map under translation makes value-bundle transport more than surface wording.",
+      "summary": "Who do the values apply to — including unfamiliar processes — and does that survive merge, upload, or substrate change? Precise bet: admission (when a process counts as a bearer at all) plus transport (preserved bearer map under translation).",
       "url": "/cards/mb3-bearer-import/"
     },
     {
@@ -1377,7 +1425,7 @@
     {
       "title": "MB8 — Extrapolated Volition (gravestone)",
       "type": "bridge",
-      "summary": "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction (TargetRealizable) is separate from certification. Legacy MB8 axiom kept for Chokepoint worked instance only.",
+      "summary": "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction is separate from certification. Not a live backup route to correction.",
       "url": "/cards/mb8-cev-process-convergence/"
     },
     {
@@ -1515,7 +1563,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 439 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 448 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
@@ -1573,6 +1621,30 @@
       "url": "/cards/attractor-control/"
     },
     {
+      "title": "Specify — CEV (constitutional residue)",
+      "type": "concept",
+      "summary": "cevConstitution instance — retired MB8 factorizes here; paired with construct-cev.",
+      "url": "/cards/specify-cev/"
+    },
+    {
+      "title": "Specify — Constitutional AI",
+      "type": "concept",
+      "summary": "caiConstitution instance — principles-as-constitution; paired with RLAIF construction bet.",
+      "url": "/cards/specify-constitutional-ai/"
+    },
+    {
+      "title": "Specify — GSAI / Open Agency",
+      "type": "concept",
+      "summary": "gsaiConstitution instance — openWorldCoverage flag; paired with spec-relative builder.",
+      "url": "/cards/specify-gsai/"
+    },
+    {
+      "title": "Specify — institutional / legal constitution",
+      "type": "concept",
+      "summary": "institutionalConstitution instance — App C rights/duties analogue; paired with procurement regime bet.",
+      "url": "/cards/specify-institutional/"
+    },
+    {
       "title": "Standalone claims",
       "type": "concept",
       "summary": "Four extractable claims from the manuscript — each citable without the full book argument.",
@@ -1601,6 +1673,12 @@
       "type": "concept",
       "summary": "Delegates, copies, fine-tunes, and successors must inherit the relevant value and correction structure.",
       "url": "/cards/successor-stability/"
+    },
+    {
+      "title": "Target Realization",
+      "type": "concept",
+      "summary": "Open construct-lifecycle crux — given target P, can we build a system that tracks P? Lean model only (ConstructionCrux); not an MB bridge.",
+      "url": "/cards/target-realization/"
     },
     {
       "title": "Testing a secret loyalty inside an AI deployment pipeline",

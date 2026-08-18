@@ -61,11 +61,11 @@ digraph ChapterReadingDependency {
   "unit:ch03" -> "unit:ch37" [label="1 concept\ndynamical-guarantee", color="#16a34a", style=dashed];
   "unit:ch04" -> "unit:ch19" [label="1 concept\nstatic-target-trap", color="#16a34a", style=dashed];
   "unit:ch05" -> "unit:ch07" [label="1 concept\nscope-and-correction-capacity", color="#16a34a", style=dashed];
-  "unit:ch05" -> "unit:ch48" [label="1 concept\nwhat-not-claiming", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch07" [label="2 concept\nagent-without-anthropomorphism, boundary-discovery", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch09" [label="2 concept\nagent-without-anthropomorphism, composite-agency", color="#16a34a", style=dashed];
   "unit:ch07" -> "unit:ch08" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch07" -> "unit:ch17" [label="1 sym\nepsilon", color="#2563eb"];
+  "unit:ch07" -> "unit:ch18" [label="2 concept\nboundary-before-bearer, candidate-process", color="#16a34a", style=dashed];
   "unit:ch08" -> "unit:ch10" [label="2 sym\nA_t+k, L_t", color="#2563eb"];
   "unit:ch08" -> "unit:ch11" [label="1 sym\nI_pred", color="#2563eb"];
   "unit:ch09" -> "unit:ch11" [label="1 sym\nmathcal_R_i", color="#2563eb"];

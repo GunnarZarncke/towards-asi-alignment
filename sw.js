@@ -1,4 +1,4 @@
-const CACHE_NAME = "asi-alignment-site-v10";
+const CACHE_NAME = "asi-alignment-site-v11";
 const CACHE_PREFIX = "asi-alignment-site-";
 const OFFLINE_URL = "/offline/";
 const OFFLINE_STATE = "offline-state";
