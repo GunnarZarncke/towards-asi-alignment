@@ -12,14 +12,16 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 | Item | Status |
 |------|--------|
-| Release | **v1.4.0** (2026-08-02) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
-| Milestone | **Fourth** — field crosswalk hub, legibility pass, external-transfer ET-3/ET-4; all main chapters have first drafts and at least one review pass |
+| Release | **v1.4.0** (2026-08-02) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md); repo has shipped further since (six-claims spine, field hub v2, Krym Lean revision) |
+| Milestone | **Fourth** — field crosswalk hub, legibility pass, external-transfer ET-3/ET-4; six-claims spine in Introduction and executive overview; all main chapters have first drafts and at least one review pass |
 | Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) + 4 unwired appendix stubs on disk |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
 | Bibliography | **~250+ entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
 
-**v1.4.0 themes:** Field agenda crosswalk (`reference/field-agendas/`, companion `/field/`); App B synced to MB1–MB11 incl. MB4a; plain-first terminology demotion + Appendix E ↔ inter-agenda glossary; field-claim Lean (finite defeaters, `FieldInterfaces`); ET-3 closed, ET-4 hackathon paper + replay demo.
+**v1.4.0 themes:** Field agenda crosswalk (`reference/field-agendas/`, companion `/field/` → `/field/v2/`); App B synced to MB1–MB11 incl. MB4a; plain-first terminology demotion + Appendix E ↔ inter-agenda glossary; field-claim Lean (finite defeaters, `FieldInterfaces`, `BridgeCruxes`); ET-3 closed, ET-4 hackathon paper + replay demo.
+
+**Since v1.4.0 (repo, not yet tagged):** Six-claims spine complete (Phases 0–6); Krym architecture revision (MB8 retired from live Lean path; CEV as `AlignmentTarget`); field hub v2 cutover; ch18 bearer-admission / U-17 ledger pass.
 
 **Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, appendix stubs, citation review).
 
@@ -84,16 +86,16 @@ Refresh from source-map sibling repos: `python3 scripts/import_source_map_refs.p
 
 ## Field agenda reference
 
-Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md). **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) — coverage matrix, evidence catalog, 32 agenda cards.
+Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md). **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) (redirects to `/field/v2/`) — coverage matrix, evidence catalog, 29 agenda cards (30 YAML records; TSA matrix-only, no card).
 
 | Path | Role |
 |------|------|
-| [`data/`](../reference/field-agendas/data/) | **Source of truth** — YAML agendas, matrix (MB1–MB11 incl. MB4a), evidence catalog, clustering |
+| [`data/`](../reference/field-agendas/data/) | **Source of truth** — YAML agendas (30 records), matrix (24 rows × MB1–MB11 incl. MB4a), evidence catalog, clustering |
 | [`field-agenda-index.md`](../reference/field-agendas/field-agenda-index.md) | **Generated** agent index (`npm run sync:field-agendas`) |
 | [`inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) | ~152 headwords: Definition / why-not-same / cross-agenda tags |
 | [`anthropic-acausal-taxonomy.md`](../reference/field-agendas/anthropic-acausal-taxonomy.md) | Homograph disambiguation for *anthropic* / acausal loads |
 
-Manuscript bridge map: [`appendices/appB-bridge-crosswalk.tex`](../appendices/appB-bridge-crosswalk.tex) (MB1–MB11 incl. MB4a; intervention coverage map at `sec:intervention-coverage-map`).
+Manuscript bridge map: [`appendices/appB-bridge-crosswalk.tex`](../appendices/appB-bridge-crosswalk.tex) (MB1–MB11 incl. MB4a; **`MB8` retired** from live Lean path — CEV is an `AlignmentTarget` special case; intervention coverage map at `sec:intervention-coverage-map`).
 
 ---
 
