@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-18 (field stance SVG icons).
+Last updated: 2026-08-20 (README accuracy sync).
 
 ---
 
@@ -57,6 +57,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Repo docs (2026-08-20):** README synced to Introduction six claims, current field-agenda counts, MB8 retirement, and post–v1.4.0 status. Log: `2026-08-20-readme-accuracy-sync.md`.
 - **Manuscript (2026-08-17):** Retired MB6b∨MB8 two-route language from live-path surfaces; CEV is an `AlignmentTarget` special case (ch28, App G). Log: `2026-08-17-retire-mb6b-mb8-disjunction.md`.
 - **Manuscript (2026-08-17):** ch21 § reward as evidence, not optimization target (Turner); shards out of inference target via ch05/App B internals limit; Byrnes as construction alternative (ch15+ch21); Pihlakas concave/BioBlue. Log: `2026-08-17-reward-not-optimization-target.md`.
 - **Companion site (2026-08-17):** Offline PWA v10 — fix `Failed to construct 'URL'` on relative assets; enable partial offline after home+CSS; always-on status in the footer button. Log: `2026-08-17-offline-caching-v10.md`.

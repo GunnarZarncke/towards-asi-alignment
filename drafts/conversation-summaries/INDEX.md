@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-20 | **README accuracy sync** — six claims, field counts, MB8, post–v1.4.0 snapshot; typos. | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
 | 2026-08-18 | **Field stance SVG icons** — scrap Unicode marks; seven stacked +/−/± icons; `/field/coverage/` polish. | [2026-08-18-field-stance-icons.md](2026-08-18-field-stance-icons.md) |
 | 2026-08-17 | **Field v2 split** — slim hub; `/field/coverage/`; lifecycle/graph/specify/adjacent on cards. | [2026-08-17-field-v2-split.md](2026-08-17-field-v2-split.md) |
 | 2026-08-17 | **Consciousness TSA Phase 5** — `ConservativeExclusion` + one-sidedness; MB3 card; App B/G; U-17 defeater. | [2026-08-17-consciousness-tsa-phase5-lean-mb3.md](2026-08-17-consciousness-tsa-phase5-lean-mb3.md) |
