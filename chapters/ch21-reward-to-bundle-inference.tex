@@ -92,6 +92,8 @@ It is to locate the dimensions along which they are learnable, corrigible, and t
 
 In reinforcement learning, reward is often treated as the agent's optimization target.
 Turner argues that this is usually the wrong ontology: reward is better understood as a reinforcement schedule that updates internal structure, while a trained policy may plan against a learned critic or value head rather than the programmer's ground-truth reward signal \autocite{turner2022rewardnotopt}.
+He later keeps that as a definitional claim while hedging the empirical prediction: by the time RL starts, pretrained models already have a ``reward'' concept, so a trained system may seek the reinforcement signal as a primary target rather than only as a side effect.\footnote{Alex Turner, shortform comment on LessWrong, \url{https://www.lesswrong.com/posts/dqSwccGTWyBgxrR58/turntrout-s-shortform-feed?commentId=DNvCMjyi6YmMZri9t}. Interim note pending a longer post.}
+% TODO[citation]: replace Turner 2026 Reward≠OT shortform footnote with the full post when published; then add bib + \bibsummary.
 If that is right, why begin this chapter with reward inference at all?
 
 Because apprenticeship learning, inverse reinforcement learning, CIRL, and RLHF already formalize a useful partial question: 

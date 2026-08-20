@@ -2,48 +2,27 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-20 (README accuracy sync).
+Last updated: 2026-08-20 (housekeeping).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Field v2 split + stance icons** — **Done** (2026-08-18): slim `/field/v2/` hub; `/field/coverage/` matrix + catalog; seven SVG stance marks replace Unicode. Log: `2026-08-18-field-stance-icons.md`.
+Closed 2026-08-17–18 work (field v2 + stance icons, consciousness/bearer-inference Phases 0–5, specify/construct instances, Krym Phases 1–6, six-claims Phases 0–6, `{leanbox}` reframe, MB6b∨MB8 retirement) lives under **Recently shipped**. Follow-ups that remain are in `metadata/TODO.md`.
 
-- **Consciousness / bearer-inference (ch18)** — **Closed** 2026-08-17 (Phases 0–5). Plan [`drafts/consciousness-tsa-extension.md`](../../drafts/consciousness-tsa-extension.md) marked **CLOSED**. Logs: `2026-08-17-consciousness-tsa-phase*.md`.
-
-- **Field v2 split** — **Done** (2026-08-17): slim `/field/v2/` hub + `/field/coverage/`; lifecycle / graph / specify-construct / adjacent on concept cards. Log: `2026-08-17-field-v2-split.md`.
-
-- **Specify / construct instances** — **Done** (2026-08-17): Lean named instances + alignment-target card table + 9 concept cards. Log: `2026-08-17-specify-construct-instances.md`.
-
-- **Field hub v2 cutover** — **Done** (2026-08-17): `/field/` → `/field/v2/`; `/field/v1/` archive + v1 bridge graph; v2 graph with MB1→MB3. Log: `2026-08-17-field-v2-cutover.md`.
-
-- **Krym architecture revision** — **Closed** 2026-08-17 (Phases 1–6 + `{leanbox}` + MB6b∨MB8 retirement). Follow-ups: `metadata/TODO.md` § Krym architecture revision (closed).
-
-- **Six-claims spine (Phases 3–6)** — Phases 0–2 shipped: `drafts/claim-spine.md`, intro `\label{claim:…}`, `sec:how-claims-unfold`, part openers, ch48/ch30/exec-overview sync. Next: dedupe ch03/ch33/ch42 enumerations (Phase 3), chapter tagging (4), ch48 table + second-tier subsection (5). Plan: `.cursor/plans/six_claims_spine_d589004e.plan.md`. Log: `2026-08-17-six-claims-spine-phase0-2.md`.
-
-- **MB7a–c bridge cards (field nouns)** — Explicit site cards shipped with book terminology; TODO to consider field-standard noun aliases without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
-
-- **Modular chapter orientation** — The reading-DAG audit found only two unmet prerequisites, now integrated into the prose: ch07 introduces correction capacity as its scope condition, and ch38 names the artificial-civilizational control loop. The separate `readingguide` environment, converter support, and checklist generator were removed because two boxes did not justify the standing infrastructure; the Phase 0–4 bridge-audit snapshots live in `metadata/concept-graph/attic/chapter-reading-checklists/`. ch09 disambiguates the object of alignment from the authority that supplies constraints, and distinguishes component from deployed-system alignment. Treat informal DAG edges (which can run backward in PDF order, e.g. ch38 → ch34) as audit prompts rather than automatic entry prerequisites. Re-audit prose when an opening, prior close, or DAG edge changes. Log: `2026-08-05-chapter-reading-guide-removal.md`.
-
-- **Eq-chain editorial** — island pass + spine connections (2026-08-05): K_coll, ICI→κ̃→κ, ε/UAD screen, SelfControlGap post-def bridge, 𝓡_i/K_X; **2 graph components** (main ~226 + basins). **Chapter reading DAG** — symbol (24 ch) + informal YAML + combined **48/48 ch** (`chapter-reading-dependency.md`). Remaining: **C12 basin operationalization** (ch38 loose set defs); refine `chapter-informal-edges.yml`; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-chapter-informal-reading-dag.md`, `2026-08-05-chapter-symbol-dependency-dag.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
-
-- **`\symbolref` (partial)** — use-site markers shipped for C_t tuple sites; more unlabeled blocks (e.g. RiskGap) still open. Log: `2026-08-05-symboldef-macro.md`.
-
-- **App G translation spine opener (author)** — Mirror site `/lean/` projections table in Appendix G; deferred from translation spine Phase 2 close-out. Site companion done; manuscript pass is author-owned.
-
-- **Field matrix evidence quality** — Homepage prune **complete** (passes 1–3). Kosoy row upgraded 2026-08-05 (merged PreDCA into LTA; primary sources ev 154–157). Log: `2026-08-05-kosoy-evidence-merge.md`.
-- **Field agenda matrix (post-restructure)** — 24 matrix rows / 31 agenda records (2026-08-05; +Iliad/TftF off-matrix). Prior independence merges and neglected-report folds. TSA row links to companion home (no card). App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`, `2026-08-05-kosoy-evidence-merge.md`, `2026-08-05-iliad-textbook-from-the-future-agenda.md`.
-- **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
-- **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
-- **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
-- **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
-- **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens green while WA-blind composite fails (named-identity bet). **Phase 1 next:** C2 tool-scout narrative + trace mock + Eric memo; optional sibling sim bite. **Phase 2:** CIRISAgent harness. **Phase 3 deferred:** Lens cohort (≥3×≥10 traces) + Coherence Ratchet battery — not a gate for logical falsifier. Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Pointer: `experiments/TODO.md`. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
-- **Correlated steerability chokepoint** — MB6b∨MB8 two-route prose retired; Chokepoint.lean gravestone instance remains. Still open: WWCTV forward refs, U-ledger reconciliation (`metadata/TODO.md` BIG REVIEW).
-- **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
-- **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
-- **Presentation / site-first** — de-center PDF as flagship; per-part display renumbering (high risk). Pointer: `metadata/TODO.md` § Presentation.
-- **Outreach (Florian Dietz, 2026-08-08)** — standalone publish for one agent-discovery / negative-results line; pairwise researcher-interest matching (Bubble Connector). Details TBD. Pointer: `metadata/TODO.md` § Outreach. Log: `2026-08-08-florian-dietz-outreach-todos.md`.
+- **MB7a–c field-facing nouns** — Site cards use book terminology; optional later aliases to field-standard labels without collapsing the split. Log: `2026-08-06-mb7a-c-bridge-cards.md`.
+- **Eq-chain leftovers** — C12 basin operationalization (ch38); refine `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta` hub collision. Re-audit chapter openings when DAG edges change. Logs: `2026-08-05-chapter-informal-reading-dag.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
+- **`\symbolref` (partial)** — C_t use-sites marked; unlabeled blocks (e.g. RiskGap) still open. Log: `2026-08-05-symboldef-macro.md`.
+- **App G translation spine opener (author)** — Mirror site `/lean/` projections table; manuscript pass author-owned.
+- **App B vs merged field-agenda row names** — Core MB4a/MB11 sync done; crosswalk not updated for post-restructure merged rows; secondary App B prose deferred. Pointer: `metadata/TODO.md`.
+- **Field crux divergence (Track 2)** — Plan: `drafts/field-crux-divergence-plan.md`. Track 1 (nouns) done.
+- **Terminology demotion leftovers** — `drafts/glossary-prose-pass/THIN.md`; residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
+- **CIRIS composite / boundary_decouple counterexample** — Phase 1 next (C2 tool-scout + trace mock + Eric memo). Charter in sibling `ciris/review/`; `experiments/TODO.md`. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
+- **Correlated steerability chokepoint** — WWCTV forward refs + U-ledger reconciliation still open (`metadata/TODO.md` BIG REVIEW).
+- **Conserved-property forgeability (MB10)** — Non-enumerability across capability jumps; toy red-team of audit forgeability. Pointer: `Forgeability.lean`.
+- **Measurand instantiation table** — Map composite indices to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
+- **Presentation / site-first** — De-center PDF; per-part display renumbering (high risk). `metadata/TODO.md` § Presentation.
+- **Outreach (Florian Dietz)** — Standalone agent-discovery/negatives publish; pairwise researcher matching. `metadata/TODO.md` § Outreach.
 
 ## Compressed history (Jun–Jul 2026)
 
@@ -57,6 +36,9 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-20):** ch21 Reward≠OT hedge — Turner still holds the definitional claim; empirical prediction qualified via shortform footnote (full post TODO). Log: `2026-08-20-turner-reward-hedge.md`.
+- **Repo hygiene (2026-08-20):** Rolled conversation logs to 15 active; slimmed HANDOFF Open work (removed Done/Closed duplicates); deleted `experiments/__MACOSX` zip junk. Log: `2026-08-20-housekeeping.md`.
+- **Companion site (2026-08-19):** Anthropic August 2026 Risk Report field-news card + quote-bridge draft. Log: `2026-08-19-anthropic-risk-report-news.md`.
 - **Repo docs (2026-08-20):** README synced to Introduction six claims, current field-agenda counts, MB8 retirement, and post–v1.4.0 status. Log: `2026-08-20-readme-accuracy-sync.md`.
 - **Manuscript (2026-08-17):** Retired MB6b∨MB8 two-route language from live-path surfaces; CEV is an `AlignmentTarget` special case (ch28, App G). Log: `2026-08-17-retire-mb6b-mb8-disjunction.md`.
 - **Manuscript (2026-08-17):** ch21 § reward as evidence, not optimization target (Turner); shards out of inference target via ch05/App B internals limit; Byrnes as construction alternative (ch15+ch21); Pihlakas concave/BioBlue. Log: `2026-08-17-reward-not-optimization-target.md`.
@@ -161,7 +143,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 | Experiment outcomes | `experiments/*/results/FINDINGS.md`, `NEGATIVE_RESULTS.md` |
 | Field agenda crosswalk | `reference/field-agendas/field-agenda-index.md` |
 | Bridge ↔ field map (manuscript) | `appendices/appB-bridge-crosswalk.tex` |
-| Lean status | `formal/README.md`, Appendix I |
+| Lean status | `formal/README.md`, Appendix G |
 | Field news | `metadata/field-news.yml` |
 | CIRIS cross-review | `~/repos/ciris/review/findings/` |
 
