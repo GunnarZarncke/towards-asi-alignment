@@ -134,7 +134,7 @@ Key distinction:
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
 - Do not skip What Would Change This View sections.
-- Do not miss deep results because they are embedded in a long narrative.
+- Do not miss independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
 
 ## Build
 

@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-21 (Track B §4 separations).
+Last updated: 2026-08-21 (Track B §6–§8 gems, extractable claims, INSTRUCTIONS).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Track B claim-strength voice** — Plan: [`drafts/track-b-claim-strength-voice-plan.md`](../track-b-claim-strength-voice-plan.md). Done: §1, §3, §4 (separations). Deferred: §2 `chapterthesis` boxes. Remaining: §5–§8.
+- **Track B claim-strength voice** — Plan: [`drafts/track-b-claim-strength-voice-plan.md`](../track-b-claim-strength-voice-plan.md). Done: §1, §3, §4, §6, §7, §8. Deferred: §2 `chapterthesis` boxes and §5 progress (Introduction).
 
 Closed 2026-08-17–18 work lives in **Compressed history (Aug 2026)** and `drafts/attic/`. Follow-ups: `metadata/TODO.md`.
 
@@ -49,7 +49,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-21:** Track B §1, §3, §4 — status language; Lean dependency spine; separations. Log: `2026-08-21-track-b-claim-strength-voice.md`.
+- **2026-08-21:** Executive overview rewritten for six-claim / three-question sync; Rejected Simplifications merged into Does Not Claim. Log: `2026-08-21-executive-overview-sync.md`.
+- **2026-08-21:** Track B §1, §3, §4, §6–§8 — status language; dependency spine; separations; gems; extractable claims; INSTRUCTIONS. Deferred §2 boxes and §5 progress. Log: `2026-08-21-track-b-claim-strength-voice.md`.
 - **2026-08-21:** Anthropic Risk Report field news — author/decision-maker pass. Log: `2026-08-19-anthropic-risk-report-news.md`.
 - **2026-08-21:** Construction papers stay spin-outs (reviewer: unearned weight). Track A proposed Expectation 7 (optional). Logs: `2026-08-21-constructing-alignment-attractors.md`, `2026-08-21-construction-manuscript-todo.md`.
 - **2026-08-20:** ch21 Turner Reward≠OT hedge. Log: `2026-08-20-turner-reward-hedge.md`.

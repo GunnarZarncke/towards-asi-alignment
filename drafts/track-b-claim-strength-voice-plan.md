@@ -182,9 +182,9 @@ Mirror one line in [`context/writing-style-gunnar.md`](../context/writing-style-
 - [x] §3 Lean dependency spine naming (repo + site)
 - [x] §4 Separations (README, homepage, INSTRUCTIONS, executive overview)
 - [ ] §5 Progress (introduction + executive overview)
-- [ ] §6 Gems + REVIEWING gem map
-- [ ] §7 Standalone-claims status
-- [ ] §8 INSTRUCTIONS + writing-style pointer
+- [x] §6 Gems + REVIEWING gem map
+- [x] §7 Standalone-claims status
+- [x] §8 INSTRUCTIONS + writing-style pointer
 
 ---
 

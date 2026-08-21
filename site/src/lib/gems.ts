@@ -6,7 +6,7 @@ export const GEM_LABEL = "gem" as const;
 export const GEM_META = {
   title: "Gem",
   description:
-    "Highlighted companion cards — one anchor per book part plus field-projection formula cards in the bridge crosswalk."
+    "Highlighted independent result (separation, counterexample, or operational definition) — not a completeness badge."
 };
 
 /** All card slugs that carry the gem badge (part highlights + field projections). */

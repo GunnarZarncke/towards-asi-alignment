@@ -734,8 +734,8 @@ concepts:
   - slug: standalone-claims
     kind: concept
     title: Standalone claims
-    status: established
-    summary: Four extractable claims from the manuscript — each citable without the full book argument.
+    status: framework
+    summary: Four extractable named problems and non-implications from the manuscript — each citable without the full book argument.
     body: bodies/standalone-claims.md
     related:
       - six-thesis-claims

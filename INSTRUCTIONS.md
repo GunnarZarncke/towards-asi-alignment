@@ -94,7 +94,7 @@ The manuscript uses **two registers** (see `context/writing-style-gunnar.md`):
 | Zone | Voice | Examples |
 |------|-------|----------|
 | **Chapter body** | Inclusive **we** for procedure and joint inquiry | `we need to ask`, `we must define`, `we can test` |
-| **`chapterthesis`** | Impersonal claim | `Alignment is…`, `The certificate is defined here…` --- not `we argue`, not `This chapter argues` |
+| **`chapterthesis`** | Impersonal claim | `Alignment is…`, `The certificate is defined here…` --- not `we argue`, not `This chapter argues`. At most one closing remainder clause when the box states a completed result while a major leaf is unpaid (named `MB*` bridge, unvalidated checklist, toy-only evidence). WWCTV stays the disconfirmer list. |
 | **WWCTV** | **This chapter argues** (standard opener) | One template; do not mix in `we argue` |
 | **Frontmatter / appendices** | **The book** / **this manuscript** for scope and navigation | `the book does not claim…` |
 | **Paratext** | **I** only | Dedication, acknowledgements, preface authorship note |
@@ -152,13 +152,15 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 |-------|-------------|-------------|
 | Operational terms | `metadata/concepts.yml` | Glossary appendix; site `/glossary/` |
 | Symbols and canonical eq homes | `metadata/notation.md` | Notation Index appendix (generated; points to chapters) |
-| Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean Proof Spine appendix |
+| Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean dependency spine appendix |
 
 Edit `metadata/assumptions-ledger.md` for the maintained assumptions record. Edit `metadata/notation.md` only for the Notation Index appendix.
 
 **Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\mathrm{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment leverage in Chapter 34, not revenue or benchmark score as primitive terms.
 
-Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **bridge** (`AGENTS.md`). Do not write that Lean proves ASI alignment.
+Public name: **Lean dependency spine** (conditional skeleton). Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **bridge** (`AGENTS.md`). Do not write that Lean proves ASI alignment.
+
+**Progress** is a refused or unsupported leaf that can change a decision, or a recorded negative that kills a layer. Named audits, dashboards, and safety-case figures are instruments; without a stop condition they are documentation.
 
 ---
 
@@ -167,7 +169,7 @@ Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **
 Every chapter must include:
 
 1. `\chapter{...}` + `\label{ch:...}`.
-2. A `chapterthesis` environment (one paragraph core claim).
+2. A `chapterthesis` environment (one paragraph core claim; at most one remainder clause if a major leaf is unpaid).
 3. Decision relevance early—why the chapter matters for alignment work.
 4. At least one **failure mode / counterexample**.
 5. **`\section{What Would Change This View}`** — skimmable disconfirmers for *this chapter's* central claim (exact title for consistency).
@@ -213,7 +215,7 @@ Track major claims, assumptions, and open problems in:
 * `metadata/uncertainty-ledger.md`
 * `metadata/open-problems.md` (research directions; overlaps Appendix H)
 
-Update ledgers when a chapter adds or changes a load-bearing claim. Mark status: established, plausible, speculative, or open.
+Update ledgers when a chapter adds or changes a load-bearing claim. Mark extractable memos `framework`, `open`, or `limit`; use `established` only for replicated field facts.
 
 ---
 
@@ -278,7 +280,7 @@ See `AGENTS.md` for session logs, git rules, and surgical-edit constraints.
 
 **Chapter:** readable by a smart non-specialist; introduces concepts before use; includes formal object, example, failure mode, weakest link, references; compiles; no unexplained internal project jargon.
 
-**Whole book:** all chapters compile; executive overview and introduction discharge front-matter promises; glossary and notation appendices populated; ledgers and bibliography support technical review; safety-case and closing synthesis chapters complete; established vs plausible vs open claims are marked; `./build.sh` succeeds from a clean checkout.
+**Whole book:** all chapters compile; executive overview and introduction revisit front-matter claims with status; glossary and notation appendices populated; ledgers and bibliography support technical review; safety-case and closing synthesis chapters complete; extractable memos marked `framework` / `open` / `limit` (`established` only for replicated field facts); `./build.sh` succeeds from a clean checkout.
 
 Status and remaining gaps: `metadata/book.yml`, `metadata/TODO.md`, `README.md`.
 

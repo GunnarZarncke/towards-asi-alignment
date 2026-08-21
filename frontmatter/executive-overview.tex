@@ -8,49 +8,48 @@ Only variety can destroy variety.%
 \section*{TL;DR}
 
 \begin{itemize}
-  \item Superintelligence alignment preserves \emph{grounded, human-correctable value-bearing processes} across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure---assuming civilization retains enough correction capacity to participate.
-  \item The Introduction's six connected claims, restated as preservation problems (same order):
+  \item Superintelligence alignment preserves \emph{grounded, human-correctable value-bearing processes} across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, assuming civilization retains enough correction capacity to participate.
+  \item The Introduction's six connected claims as what must be preserved:
   \begin{itemize}
-    \item \textbf{Boundary:} where is the real optimizing system---not merely the visible model?
-    \item \textbf{Value-bundle:} after transformation, do the same compressed value \emph{directions} still shape behaviour, not only the same moral words---and do values still apply to the right \emph{bearers}?
-    \item \textbf{Grounding:} do the symbols, metrics, monitors, and abstractions remain connected to value-relevant reality under optimization pressure?
-    \item \textbf{Correction:} can human observation and objection still \emph{causally change} what the system does before irreversible harm?
-    \item \textbf{Successor:} do systems it creates or empowers inherit that structure, not just the vocabulary?
-    \item \textbf{Basin:} can labs, markets, and institutions be steered toward regimes where correction stays possible rather than selected away?
+    \item \textbf{Boundary:} where is the real optimizing system?
+    \item \textbf{Value-direction:} after change, do the same value \emph{directions} still shape behaviour, and do the values still apply to who counts?
+    \item \textbf{Grounding:} do the symbols, metrics, monitors, and abstractions remain tied to the world they are supposed to measure?
+    \item \textbf{Correction:} can objection still change what the system does before irreversible harm?
+    \item \textbf{Successor:} do created or influenced systems inherit that structure?
+    \item \textbf{Basin:} can labs, markets, and institutions be steered so that correction remains possible rather than selected against?
   \end{itemize}
-  \item Human values are not arbitrary labels over situations. They appear to have compressed, hub-shaped structure: learnable value-bundle directions under a fixed ontology, with the hard failures concentrated in grounding, bearer maps, ontology shift, correction, and successor transport.
-  \item A safety case must track \emph{grounding viability}, \emph{correction channels}, \emph{successor constraints}, and \emph{alignment basins}.
 \end{itemize}
 
 \section*{Thesis}
 
-Superintelligence alignment is the problem of preserving grounded, human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.
+Alignment work is often treated as one task: make the system point at the right thing.
+That hides three questions: what should be tracked, how to build a system that tracks it, and how to tell that a given system still does.
+A method for the third does not answer the second.
+The book develops the first question and a structure for the third.
+It discusses mechanisms relevant to the second, but does not claim a general method for constructing aligned systems.
 
 Operational vocabulary is defined in Appendix~\ref{appf-glossary}.
-
 Load-bearing assumptions are stated in the chapters that need them; Appendix~\ref{appbridge-crosswalk} maps them to the field's standing open problems (value identification, scalable oversight, deceptive alignment, ontology shift, corrigibility, specification coverage) and isolates where the book is most distinctive.
-
-\section*{Rejected Simplifications}
-
-\begin{itemize}
-  \item Fixed utility functions as the sole alignment target.
-  \item Alignment as a one-time training problem rather than a dynamical guarantee.
-  \item Treating the AI model as the only relevant agent boundary.
-\end{itemize}
 
 \section*{What This Book Tries to Establish}
 
-At moderate strength: a credible safety program must make explicit where the real optimizer sits, whether measurements still connect to what matters, whether human objection can still change outcomes, whether successors inherit that structure, and whether deployment incentives keep correction alive.
-The book names these as boundary discovery, grounding viability, value-bundle geometry, bearer maps, correction-channel integrity, successor constraints, and alignment basins---variables a preservation-layer safety case must track explicitly.
-The \emph{factoring}: showing which objects do not imply which others.
-The relevant alternative to scalar reward learning is not unconstrained inference over arbitrary high-dimensional rewards, but constrained inference over compressed bundle-response geometry.
-The book therefore rejects the strong pessimistic claim that useful human value structure is too arbitrary to learn at all, while preserving the weaker and more defensible claim that full human values are not safely identifiable from sparse behavior alone under ontology shift.
+At moderate strength: a credible safety program must make explicit where the real optimizer sits, whether the same value directions still steer behaviour and still apply to who counts, whether measurements still connect to what matters, whether human objection can still change outcomes, whether replacements inherit that structure, and whether deployment incentives keep correction alive.
 
-Progress should look like \emph{artifacts}: boundary audits, grounding audits, bundle evaluations, correction-channel audits, successor certification tests, adversarial measurement suites, and safety cases that list assumptions and failure modes.
+Stronger for the value-learning part: the relevant alternative to learning a single score is learning a few compressed value directions and how they trade off across situations.
+The book rejects the strong pessimistic claim that useful human value structure is too arbitrary to learn at all, while preserving the weaker and more defensible claim that full human values are not safely identifiable from sparse behaviour alone once the system no longer shares our categories.
+
+Progress should look like \emph{artifacts}: audits of where the optimizing process is, checks that metrics still mean what they claim, evaluations of whether the same value directions still steer behaviour, checks that human judgment still changes later behaviour, tests that replacements inherit those properties, measurements that remain informative when the system benefits from confusing them, and safety cases that list assumptions and failure modes.
 The Introduction names these; later chapters and appendices instantiate them.
 
 \section*{What This Book Does Not Claim}
 
-This manuscript lays out ideas, definitions, and formal tools for superintelligence alignment.
+This manuscript lays out ideas, definitions, and a conditional formal structure for superintelligence alignment.
 It is not a claim that the alignment problem is solved.
+It rejects three common simplifications: a fixed utility function as the sole target, alignment as a one-time training problem, and the visible model as the only relevant optimizing process.
+
+Lean checks that structure.
+The advertised safety-case shape follows only if the real optimizer has been located, the metrics still mean what they claim, values and who they apply to survive change, human objection still changes outcomes, replacements inherit that structure, and green readings still mean something when the system has an incentive to fake them.
+That is not a proof that deployed systems are safe.
+Experiments are sanity checks and tests meant to find where the measurement story fails, not validation of frontier systems.
+
 The book distinguishes established claims, plausible hypotheses, speculative extensions, and open research problems (Appendix~\ref{apph-research-program}).

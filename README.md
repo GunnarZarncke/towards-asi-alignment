@@ -12,14 +12,6 @@ A research manuscript on preserving **human-correctable value-bearing processes*
 
 ## What this is (and is not)
 
-**Separations** (A does not imply B):
-
-- Named unit or model ≠ the real optimizer
-- Moral words ≠ bundle, bearer, or correction
-- Green metric ≠ adversarially verifiable
-- Certified class ≠ `Safe` without named bridges
-- Check method ≠ construction method (Introduction three questions)
-
 This repository is a **requirements decomposition** of the alignment problem into independent, in-principle theoretically determinable or empirically estimatable elements. It is a structured map of what would need to be true, measured, and governed for superintelligence to remain aligned and human-correctable under changing values. Lean checks the conditional decomposition structure; experiments are sanity checks with recorded negatives ([`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md)).
 
 ---

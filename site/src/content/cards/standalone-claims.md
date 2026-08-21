@@ -1,8 +1,8 @@
 ---
 title: "Standalone claims"
 type: "concept"
-status: "established"
-summary: "Four extractable claims from the manuscript — each citable without the full book argument."
+status: "framework"
+summary: "Four extractable named problems and non-implications from the manuscript — each citable without the full book argument."
 related:
   - "six-thesis-claims"
   - "anti-capture-correction-validity"
@@ -11,7 +11,7 @@ related:
   - "goodhart-as-selector"
 ---
 
-Four extractable claims from the manuscript — each citable without the full book argument. Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
+Four extractable named problems and non-implications from the manuscript — each citable without the full book argument. They are **framework** claims, not `established` results. Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
 
 For the Introduction's six-claim reader contract and Chapter 48 status map, see [Six thesis claims](/cards/six-thesis-claims/).
 

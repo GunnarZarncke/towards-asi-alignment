@@ -16,7 +16,7 @@ Use **two registers**, not a mix of ``I'', ``we argue'', and ``the book argues''
 
 **Register A --- argument body (default):** inclusive **we** for shared inquiry and procedure (`we need to ask`, `we must define`, `we can test`). Do not use authorial **I** in technical chapters. Avoid `we argue` / `we claim`; state the claim directly or use a question.
 
-**Register B --- meta / navigation:** impersonal third person for `chapterthesis` boxes, scope disclaimers, frontmatter thesis, and appendices (`the book does not claim`, `the certificate is defined here`). **What Would Change This View** sections may open with **This chapter argues** (one template only).
+**Register B --- meta / navigation:** impersonal third person for `chapterthesis` boxes, scope disclaimers, frontmatter thesis, and appendices (`the book does not claim`, `the certificate is defined here`). A `chapterthesis` remainder clause that names an unpaid leaf is load-bearing calibration, not a hedge to strip. **What Would Change This View** sections may open with **This chapter argues** (one template only).
 
 **Register C --- paratext only:** **I** / **my** in dedication, acknowledgements, and preface authorship note only.
 
