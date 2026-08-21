@@ -12,7 +12,7 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.5.0 — 2026-08-22 — Six-claims spine, Krym architecture, and field hub v2
 
-Commit: (pending) · Tag: `v1.5.0`
+Commit: `2863eaa1` · Tag: `v1.5.0`
 
 The **Introduction** carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires **MB8** and treats CEV as an `AlignmentTarget` special case; **field hub v2** adds a lifecycle axis and stance-encoded evidence; **authorship bars** mark AI- vs human-authored sections in the PDF and on chapter pages.
 
