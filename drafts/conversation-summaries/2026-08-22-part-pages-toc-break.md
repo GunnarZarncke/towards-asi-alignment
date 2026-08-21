@@ -19,4 +19,4 @@ User reported a missing page break before Contents, and that part summaries shou
 - `metadata/preamble.tex`
 
 ## Commits
-- none
+- `d8544cae` Put part summaries on the part-title page and start Contents on a new page.
