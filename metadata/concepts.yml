@@ -718,7 +718,7 @@ concepts:
     kind: concept
     title: Six thesis claims
     status: framework
-    summary: The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and discharges in Chapter 48.
+    summary: The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and revisits in Chapter 48.
     bookLabels:
       - sec:how-claims-unfold
     body: bodies/six-thesis-claims.md

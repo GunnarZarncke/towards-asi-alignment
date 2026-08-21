@@ -13,7 +13,7 @@ related:
 
 The Introduction names six load-bearing claims — the reader contract for the full manuscript. Each claim gets a dedicated concept card; Chapter 48 revisits all six with status labels and open gaps. This hub is not a seventh claim: it orients you across the spine.
 
-**Not the same as [Standalone claims](/cards/standalone-claims/):** those four notes are extractable publishable memos. The six thesis claims are the book's opening contract and discharge arc.
+**Not the same as [Standalone claims](/cards/standalone-claims/):** those four notes are extractable publishable memos. The six thesis claims are the book's opening contract and status arc.
 
 | # | Intro claim | Ledger | Concept card | Part(s) |
 |---|-------------|--------|--------------|---------|
@@ -26,4 +26,4 @@ The Introduction names six load-bearing claims — the reader contract for the f
 
 **Second-tier spine claims** (load-bearing but not in the Introduction six): differential growth (C-008), transport/laundering (C-009), adversarial measurement (C-010), civilizational limit (C-011). See Chapter 48 and the [bridge assumptions](/cards/bridge-assumptions/) card for where these bite.
 
-**In the PDF:** Introduction §How these claims unfold; discharge in Chapter 48 §Opening Claims Revisited and the status-at-a-glance table.
+**In the PDF:** Introduction §How these claims unfold; status at book close in Chapter 48 §Opening Claims Revisited and the status-at-a-glance table.

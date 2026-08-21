@@ -13,7 +13,7 @@ related:
 
 Four extractable claims from the manuscript — each citable without the full book argument. Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
 
-For the Introduction's six-claim reader contract and Chapter 48 discharge map, see [Six thesis claims](/cards/six-thesis-claims/).
+For the Introduction's six-claim reader contract and Chapter 48 status map, see [Six thesis claims](/cards/six-thesis-claims/).
 
 | Claim | Summary |
 |-------|---------|

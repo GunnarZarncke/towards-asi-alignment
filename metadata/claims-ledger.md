@@ -2,7 +2,7 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-08-17 — Phase 0–1 six-claims spine pass: C-044 updated (ch48 discharges all six intro claims including grounding); spine table in `drafts/claim-spine.md`; executive-overview preservation list aligned to Introduction claim order; ch48 "six opening claims" and ch30 "nine-claim" count fixes. Prior cross-check 2026-07-04: every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml`; one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `drafts/claim-spine.md`, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
+**Last cross-check:** 2026-08-21 — Track B §1: C-044 tracks status restatement in ch48, not discharge of the six intro claims. Prior 2026-08-17: Phase 0–1 six-claims spine pass (ch48 restates all six intro claims including grounding); spine table in `drafts/claim-spine.md`; executive-overview preservation list aligned to Introduction claim order; ch48 "six opening claims" and ch30 "nine-claim" count fixes. Prior cross-check 2026-07-04: every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml`; one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `drafts/claim-spine.md`, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
 
 **Resolved caveat:** the `Chapter(s)` column previously predated the 2026-06-30 global chapter renumbering (`ch01`–`ch48`, see `INSTRUCTIONS.md` §14). It has now been re-verified content-by-content (not by mechanical offset, since the four inserted chapters — ch20, ch27, ch38, ch43 — do not shift earlier claims uniformly). Numbers below are current as of this pass; re-check after any future chapter split, merge, or renumbering.
 
@@ -10,7 +10,7 @@ Track every major claim with status, support, weakest link, and falsification cr
 
 **Status vocabulary:** `established` (well-supported, near-consensus) · `plausible` (argued, not proven) · `framework` (definitional/structural proposal) · `speculative` (forward-looking) · `limit` (acknowledged boundary of the theory). Per `AGENTS.md`, claim strength is calibrated to the Lean proof spine: the book does **not** assert that ASI alignment is proven.
 
-The six named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-004a (grounding), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their draft-level discharge in the conclusion.
+The six named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-004a (grounding), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their status restatement in the conclusion.
 
 ---
 
@@ -291,20 +291,20 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 ## Claim ID: C-044 (synthesis tracking)
 
-**Claim:** The Introduction's six claims (C-003, C-004, C-004a, C-005, C-006, C-007), the Executive Overview's preservation problems, and the "Practical Hope" regime are gathered and discharged in the conclusion.
+**Claim:** The Introduction's six claims (C-003, C-004, C-004a, C-005, C-006, C-007), the Executive Overview's preservation problems, and the "Practical Hope" regime are gathered and restated with status in the conclusion.
 
 **Chapter(s):** 48 (conclusion); see also 42, 47
 
-**Status:** discharged at draft level (2026-08-17). ch48 §Opening Claims Revisited restates all six intro claims with status labels, including grounding (paragraph after value-bundle). Executive Overview TL;DR now uses the same six-claim order. Remaining gap is operational follow-through (safety-case template appendix, adversarial-verifiability master disconfirmer), not missing intro-claim prose in ch48.
+**Status:** status restatement in ch48 (2026-08-17; wording calibrated 2026-08-21). ch48 §Opening Claims Revisited restates all six intro claims with status labels, including grounding (paragraph after value-bundle). Executive Overview TL;DR now uses the same six-claim order. Remaining gap is operational follow-through (safety-case template appendix, adversarial-verifiability master disconfirmer), not missing intro-claim prose in ch48.
 
 **Support:**
-- ch48 §Opening Claims Revisited (`sec:opening-claims-revisited-ch48`) discharges all six intro claims with status labels
+- ch48 §Opening Claims Revisited (`sec:opening-claims-revisited-ch48`) restates all six intro claims with status labels
 - ch42 safety-case chapter supplies the conditional safety-case graph, including grounding viability as layer 2
 - ch47 supplies the bearer/merger philosophical limit needed for Part X closure
 - `drafts/claim-spine.md` maps intro claims → parts → safety-case layers → ch48 status
 
 **Weakest link:**
-- discharge is conditional ("framework / measurement program / open certification"), not proof of safe deployment; ch42 TODO on grounding-layer completeness remains
+- restatement is conditional ("framework / measurement program / open certification"), not proof of safe deployment; ch42 TODO on grounding-layer completeness remains
 
 **What would update against it:**
 - review showing ch48 status labels overstate confidence relative to ledger falsifiers, or that ch42/ch33 safety-case layers omit a load-bearing artifact named in the Introduction's "What Counts as Progress" list

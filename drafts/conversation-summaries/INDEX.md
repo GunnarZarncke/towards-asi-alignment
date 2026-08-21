@@ -6,7 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-21 | **Constructing alignment attractors paper** — User asked for a critical review of the Gemini `alignment-construction` draft, then to rescue onl... | [2026-08-21-constructing-alignment-attractors.md](2026-08-21-constructing-alignment-attractors.md) |
+| 2026-08-21 | **Track B claim-strength voice (§1)** — User asked to start Track B phase 1 (`drafts/track-b-claim-strength-voice-plan.md` §1: rename six... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
+| 2026-08-21 | **Construction stays out of manuscript** — User forwarded reviewer feedback on the two selection/construction papers (unearned weight: toolk... | [2026-08-21-construction-manuscript-todo.md](2026-08-21-construction-manuscript-todo.md) |
+| 2026-08-21 | **Constructing alignment attractors paper** — User asked for a critical review of a draft, then to extend the symmetry-breaking concept into an... | [2026-08-21-constructing-alignment-attractors.md](2026-08-21-constructing-alignment-attractors.md) |
 | 2026-08-20 | **Turner Reward≠OT shortform hedge** — Review Turner (Turntrout) shortform on shards / reward-as-target (`DNvCMjyi6YmMZri9t`); then add ... | [2026-08-20-turner-reward-hedge.md](2026-08-20-turner-reward-hedge.md) |
 | 2026-08-20 | **README accuracy sync** — User asked whether `README.md` was still accurate after work since its last edit (2026-08-15 titl... | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
 | 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
@@ -19,12 +21,10 @@
 | 2026-08-17 | 2026-08-17-site-card-notes-phase5-sync-math | [2026-08-17-site-card-notes-phase5-sync-math.md](2026-08-17-site-card-notes-phase5-sync-math.md) |
 | 2026-08-17 | 2026-08-17-site-card-notes-phase4-ch10 | [2026-08-17-site-card-notes-phase4-ch10.md](2026-08-17-site-card-notes-phase4-ch10.md) |
 | 2026-08-17 | 2026-08-17-site-card-notes-phase3-ch09 | [2026-08-17-site-card-notes-phase3-ch09.md](2026-08-17-site-card-notes-phase3-ch09.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase2-frontmatter | [2026-08-17-site-card-notes-phase2-frontmatter.md](2026-08-17-site-card-notes-phase2-frontmatter.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase0-1 | [2026-08-17-site-card-notes-phase0-1.md](2026-08-17-site-card-notes-phase0-1.md) |
 
 ## Archive by month
 
-- **2026-08** (105): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (107): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 
