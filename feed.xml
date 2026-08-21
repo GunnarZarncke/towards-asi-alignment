@@ -5,8 +5,24 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 07 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Anthropic’s August 2026 Risk Report: what ‘low’ does not settle</title>
+      <link>https://towards-alignment.com/cards/field-news-anthropic-risk-report-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-anthropic-risk-report-aug-2026/</guid>
+      <pubDate>Wed, 19 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic’s strongest model is already in daily internal use. The public rating is ‘low,’ while several of the tests behind that rating no longer keep up with the models.</description>
+      <category>news</category>
+    </item>
+    <item>
+      <title>[News] OpenAI pauses a frontier run: monitoring is not the target</title>
+      <link>https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/</guid>
+      <pubDate>Tue, 18 Aug 2026 12:00:00 GMT</pubDate>
+      <description>OpenAI halted its largest planned RL run and put a ~20% compute tax on tool-using inference. That is a real delay. It is not a statement of what alignment is.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] Black Hat: kill chain of OpenAI eval agents&apos; cross-org intrusion</title>
       <link>https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/</link>

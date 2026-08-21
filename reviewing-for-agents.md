@@ -6,9 +6,7 @@ Also served at https://towards-alignment.com/reviewing-for-agents.md (synced at 
 
 ## Scope
 
-This file is for review-only sessions. Do not edit files unless the user explicitly asks for edits. Your job is to find risks, gaps, hidden assumptions, missing cross-references, unclear claim strength, and places where the manuscript hides its strongest results.
-
-The book promises and often delivers deep results. Do not give a shallow review that treats it as a broad alignment essay and misses the machinery it has already built. That can disappoint the user because it may cause them to overlook or misrepresent the work.
+This file is for review-only sessions. Do not edit files unless the user explicitly asks for edits. Your job is to find risks, gaps, hidden assumptions, missing cross-references, unclear claim strength, and places where the manuscript hides independent separations, finite counterexamples, or operational definitions.
 
 ## Fast Gist
 
@@ -26,7 +24,7 @@ The main layers:
 - Selection basins: make institutions select for correction-preserving systems.
 - Adversarial verifiability: ask whether faking the safety signal is cheap.
 
-The Lean proof spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Bridges `MB1`-`MB9` are empirical or philosophical assumptions, not theorem conclusions.
+The Lean dependency spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Bridges `MB1`-`MB9` are empirical or philosophical assumptions, not theorem conclusions.
 
 ## First Files To Read
 
@@ -71,24 +69,24 @@ If you cannot access a related repo or source PDF, say so. Do not infer missing 
 
 ## Gem Map
 
-Look for the included gems before concluding a chapter is merely narrative.
+Gems are independent separations or operational results, not evidence the stack is complete. Each line is tagged **proved**, **counterexample**, or **bridge**.
 
-- Boundary discovery: ch06-ch10
-- Grounding viability: ch03, ch47
-- Value bundles: ch15-ch46
-- Bundle-geometry measurement and Goodhart pressure: ch46
-- Bearer maps: ch18, ch46, ch47
-- Transport hierarchy: ch46
-- Vector/status CCI: ch46; adversarial pressure tests: ch48
-- Existing-work crosswalk (field agendas as special cases / separations): ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`)
-- Successor test: ch46-ch48
-- Selection envelope and correction parasites: ch46-ch48
-- Conductive artifacts and pivotal processes: ch45
-- Goal laundering and cost of faking: ch48, ch47
-- Value-update envelope: ch45-ch46
-- Lean proof spine as dependency hygiene: `formal/`, Appendix G
-- Field-agenda Lean formalization (community gem in progress): Appendix G gem ``field-agenda formalization'' (`sec:appg-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
-- Inferential-coupling / acausal-trade detection (conjectural gem): ch35 gem ``inferential-coupling detection'' (`sec:ch35-inferential-coupling-gem`) — ICI score, meta-prior detector, and the proved negative direction (Lean `P33`, `formal/AlignmentProofSpine/CooperationGraph.lean`); bridge `MB7d` has no clean field analog; equilibrium and large-scale dynamics remain conjectural/open (`zarncke2025acausal`)
+- Boundary discovery: ch06-ch10 — **bridge**
+- Grounding viability: ch03, ch47 — **bridge**
+- Value bundles: ch15-ch46 — **bridge**
+- Bundle-geometry measurement and Goodhart pressure: ch46 — **bridge**
+- Bearer maps: ch18, ch46, ch47 — **bridge**
+- Transport hierarchy: ch46 — **bridge**
+- Vector/status CCI: ch46; adversarial pressure tests: ch48 — **bridge**
+- Existing-work crosswalk (field agendas as special cases / separations): ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`) — **proved**
+- Successor test: ch46-ch48 — **bridge**
+- Selection envelope and correction parasites: ch46-ch48 — **bridge**
+- Conductive artifacts and pivotal processes: ch45 — **bridge**
+- Goal laundering and cost of faking: ch48, ch47 — **bridge**
+- Value-update envelope: ch45-ch46 — **bridge**
+- Lean dependency spine as hygiene: `formal/`, Appendix G — **proved**
+- Field-agenda Lean formalization (community gem in progress): Appendix G gem ``field-agenda formalization'' (`sec:appg-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today — **proved**
+- Inferential-coupling / acausal-trade detection (conjectural gem): ch35 gem ``inferential-coupling detection'' (`sec:ch35-inferential-coupling-gem`) — ICI score, meta-prior detector, and the proved negative direction (Lean `P33`, `formal/AlignmentProofSpine/CooperationGraph.lean`); bridge `MB7d` has no clean field analog; equilibrium and large-scale dynamics remain conjectural/open (`zarncke2025acausal`) — **counterexample**
 
 ## Existing-Work Crosswalk
 

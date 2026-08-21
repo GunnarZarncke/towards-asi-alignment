@@ -1,6 +1,6 @@
 # Towards Superintelligence Alignment
 
-> A research manuscript and formal proof-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
+> A research manuscript and Lean dependency-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
 
 This file is also served at https://towards-alignment.com/llms.txt (generated at site build from this repo-root source). A fuller bundle lives at https://towards-alignment.com/llms-full.txt.
 
@@ -9,7 +9,7 @@ This file is also served at https://towards-alignment.com/llms.txt (generated at
 Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
 
 - [Start Here](https://towards-alignment.com/): homepage, thesis, six thesis claims, standalone claims, failure modes.
-- [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 discharge hub.
+- [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 status hub.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
 - [Field hub](https://towards-alignment.com/field/): 32 alignment agendas × MB1–MB11 bridge matrix, evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
@@ -18,7 +18,7 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 - [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
 - [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
 - [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
-- [Lean spine](https://towards-alignment.com/lean/): proof-spine graphs and playgrounds.
+- [Lean spine](https://towards-alignment.com/lean/): dependency-spine graphs and playgrounds.
 - [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
 - [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
 - [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
@@ -37,7 +37,7 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 - `frontmatter/executive-overview.tex` - short executive framing.
 - `tables/part-roadmap.tex` - generated part-by-part roadmap.
 - `metadata/book.yml` - chapter titles, status, reviewer tags, part summaries.
-- `formal/README.md` - Lean proof spine map and interpretation.
+- `formal/README.md` - Lean dependency spine map and interpretation.
 - `metadata/source-canon.md` - source map for project papers, extracts, and sibling repositories.
 
 ## Core Thesis
@@ -134,10 +134,10 @@ Key distinction:
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
 - Do not skip What Would Change This View sections.
-- Do not miss deep results because they are embedded in a long narrative.
+- Do not miss independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
 
 ## Build
 
 - `make check` - structure and citation checks.
 - `./build.sh` - build the PDF at `dist/pdf/towards-superintelligence-alignment.pdf`.
-- `lake -d formal build` - build the Lean proof spine.
+- `lake -d formal build` - build the Lean dependency spine.

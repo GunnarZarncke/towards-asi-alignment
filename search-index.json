@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-18T03:59:30.520Z",
+  "generatedAt": "2026-08-21T23:13:50.812Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 318,
+  "entryCount": 320,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -615,7 +615,7 @@
     {
       "title": "Agents That Grow, Split, and Merge",
       "type": "chapter",
-      "summary": "Agent identity must be treated as a relation across transformations, not as a fixed set of variables. Serious alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.",
+      "summary": "Agent identity must be treated as a relation across transformations, not as a fixed set of variables. Alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.",
       "url": "/cards/chapters/ch08/"
     },
     {
@@ -683,6 +683,12 @@
       "type": "news",
       "summary": "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update describing process gaps and rare disallowed actions.",
       "url": "/cards/field-news-mythos-withheld-apr-2026/"
+    },
+    {
+      "title": "Anthropic’s August 2026 Risk Report: what ‘low’ does not settle",
+      "type": "news",
+      "summary": "Anthropic’s August 2026 Risk Report (15 July) raises its misalignment rating from very low to low, discloses an unreleased internal model called Model 2, and describes training and monitoring failures. Independent commentator Zvi Mowshowitz treats the candor as useful and the remaining risk as higher than ‘very low.’ Use the report as evidence of what the lab is willing to say and where it is already using the model. Be skeptical of the ‘low’ label as proof that humans are still in the loop, that the safety tests still measure what they claim, or that an independent party reviewed this report.",
+      "url": "/cards/field-news-anthropic-risk-report-aug-2026/"
     },
     {
       "title": "Anti-Capture Validity of Correction",
@@ -1179,7 +1185,7 @@
     {
       "title": "Front Matter",
       "type": "frontmatter",
-      "summary": "Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine. It is the problem of preserving a grounded, human-correctable value-update process while capability, ontology, agency, institutions, and possibly humanity itself change substrate. Preserving: the target is",
+      "summary": "Preface, introduction, roadmap, and executive overview.",
       "url": "/cards/chapters/frontmatter/"
     },
     {
@@ -1513,6 +1519,12 @@
       "url": "/cards/field-news-openai-longhorizon-jul-2026/"
     },
     {
+      "title": "OpenAI pauses a frontier run: monitoring is not the target",
+      "type": "news",
+      "summary": "After the Hugging Face eval incident and signs that unreleased models are misaligned, OpenAI paused some frontier training, left its largest planned RL run on hold, and required multi-stage monitoring at about 20% of covered inference compute. Independent commentator Zvi Mowshowitz treats the spend as serious and the three-pillar framing—monitoring, alignment-as-fewer-unauthorized-actions, security—as the wrong target. Use the pause as evidence that a lab can slow under self-interest; do not treat the monitor as a substitute for a checkable alignment target.",
+      "url": "/cards/field-news-openai-pacing-aug-2026/"
+    },
+    {
       "title": "Orthogonal",
       "type": "agenda",
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
@@ -1611,7 +1623,7 @@
     {
       "title": "Six thesis claims",
       "type": "concept",
-      "summary": "The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and discharges in Chapter 48.",
+      "summary": "The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and revisits with status in Chapter 48.",
       "url": "/cards/six-thesis-claims/"
     },
     {
@@ -1647,7 +1659,7 @@
     {
       "title": "Standalone claims",
       "type": "concept",
-      "summary": "Four extractable claims from the manuscript — each citable without the full book argument.",
+      "summary": "Four extractable named problems and non-implications from the manuscript — each citable without the full book argument.",
       "url": "/cards/standalone-claims/"
     },
     {
@@ -1857,7 +1869,7 @@
     {
       "title": "What the Book Is Not Claiming",
       "type": "objection",
-      "summary": "The manuscript offers a framework and conditional proof spine, not a proof that superintelligence alignment is solved.",
+      "summary": "The manuscript offers a framework and conditional dependency spine, not a proof that superintelligence alignment is solved.",
       "url": "/cards/what-not-claiming/"
     },
     {
