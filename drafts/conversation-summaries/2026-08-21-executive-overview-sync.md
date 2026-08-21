@@ -10,7 +10,7 @@ User asked to review `frontmatter/executive-overview.tex` against post–v1.4.0 
 - Follow-up: replaced coined labels in body copy with App E / glossary reader-facing paraphrases; fixed TL;DR punctuation typos before commit.
 
 ## Commits
-- (pending) Executive overview sync + Track B §6–§8 voice packaging.
+- `53cb3776` Sync executive overview with six-claim spine and plain-first voice.
 
 ## Decisions
 - Keep artifact-first progress (Introduction still uses that list).
