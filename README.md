@@ -55,7 +55,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 
 | Item | Detail |
 |------|--------|
-| Release | **v1.4.0** (2026-08-02) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md); repo has shipped further since (six-claims spine, field hub v2, Krym Lean revision) |
+| Release | **v1.5.0** (2026-08-22) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
 | Status | 48 chapters reviewed (not final); six-claims spine in Introduction and executive overview; plain-first legibility pass |
 | Structure | 10 parts, 48 chapters, 9 appendices in the PDF (A–I) |
 | Field crosswalk | 30 agenda records, 24 matrix rows, 29 companion cards (TSA matrix-only); MB1–MB11 incl. MB4a; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |

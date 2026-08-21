@@ -10,6 +10,78 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
+## v1.5.0 — 2026-08-22 — Six-claims spine, Krym architecture, and field hub v2
+
+Commit: (pending) · Tag: `v1.5.0`
+
+The **Introduction** carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires **MB8** and treats CEV as an `AlignmentTarget` special case; **field hub v2** adds a lifecycle axis and stance-encoded evidence; **authorship bars** mark AI- vs human-authored sections in the PDF and on chapter pages.
+
+### Reader contract — six claims and three questions
+
+- **Six connected claims** in the Introduction: boundary, value-bundle, grounding, correction, successor, basin. Chapter 48 **revisits with status**; it does not discharge those claims.
+- **Three alignment questions** moved from Chapter 1 into the Introduction (plain language): what should be tracked; how a system that tracks it can be built; how we can tell that a given system still tracks it. Certification is not construction. The book develops much of the first question and a structure for the third; it does not claim a general construction method.
+- **Executive overview** rewritten to match the six-claim / three-question surface and plain-first voice.
+- **`six-thesis-claims` card** on the companion site; `check_claim_spine.py` checks manuscript claim-spine wiring.
+
+### Lean dependency spine — architecture changes (`formal/`)
+
+These were originally prompted by feedback from [Stanislav Krym](https://www.lesswrong.com/users/stanislavkrym) on Lesswrong.
+
+- **MB8 retired** from the live bridge path (gravestone). Target realization is `ConstructionCrux` in `AlignmentConstruction.lean`. CEV is an `AlignmentTarget` special case, not a separate live route.
+- **MB2 identifiability** exposed as an evidence→identifiability chain and made checkable on finite `PolicyProfile`s.
+- **MB4 split:** reference legitimacy vs correction uptake.
+- **Bridge cruxes packaged as `Prop`s** (`BridgeCruxes.lean` and related modules); `{leanbox}` / spine boxes sit at symbol-introduction sites in the manuscript.
+- **MB6b∨MB8 two-route prose retired** — one live correction path in reader-facing copy.
+- **Finite debate game:** negation with role-swap; judge-error ⇒ mis-certification; opaque Irving import remains a literature bookmark, not the game theorems.
+- **Bearer admission:** `MB1 → MB3` edge; ch18 conservative exclusion inside MB3 (no Rainbow / phenomenal-consciousness overlay as a live requirement).
+- **Lean public name:** dependency spine (conditional skeleton). “Proof” is reserved for `#print axioms` theorems and finite counterexamples.
+- **Translation on-ramp:** `/lean/` question-first; `/lean/check/` pages (corrigibility, CIRL, ELK); field-projection cards with Lean status badges.
+
+### Field hub v2 (`site/` + `reference/field-agendas/`)
+
+The "sign of the evidence" was suggested by Tom M. on Lesswrong.
+
+- **`/field/` → `/field/v2/`** (v1 archived at `/field/v1/`): lifecycle axis, stance-encoded evidence, coverage on `/field/coverage/`.
+- **Bridge cards:** explicit **MB4a**, **MB7a–c**, **MB7d**, **MB11**. 
+- **Agenda maintenance:** Kosoy PreDCA merged into LTA after evidence review; Iliad / Textbook from the Future as an off-matrix row; UAD/agency-detect matrix evidence moved to the TSA row; agenda cards rewritten for general alignment readers.
+- **Specify/construct instance catalog** typed against Lean names and concept cards.
+
+### Manuscript
+
+- **Chapter 18:** bearer admission made explicit; consciousness treated as conservative exclusion inside MB3.
+- **Chapter 21:** reward-as-evidence separated from optimization-target design.
+- **Chapter 34:** alignment-under-selection substance integrated (ecology-size census sketch, coevolution responses).
+- **Chapter 48:** status restatement of the six claims, not a discharge.
+- **Authorship bars:** dotted right-margin bars with `AI` / `GZ` keys on frontmatter, all 48 chapters, and wired appendices. 
+- **Pointing problem** glossary split: identification, realization, and preservation — not one technical task.
+
+### Companion site (`site/`)
+
+- **Authorship chips** on chapter pages from `\authbar` keys; toggle via the **Notes** panel.
+- **Page notes overlay** (localStorage, highlights, paths, mobile layout).
+- **Offline PWA:** resumable, asset-first caching; partial caches usable sooner.
+- **Chapter reading graph:** informal concept layer plus clickable DAG for modular entry (prerequisite-box rollout retired in favor of prose bridges).
+- **UAD** and **ET-1–ET-4** concept cards expanded; wording consistency.
+
+### Spin-out papers (`papers/`) — not manuscript chapters
+
+- **When Optimization Outruns Feedback** and **Verifier Construction** (companion pair: horizon gap `K`, then verifier construction).
+- **Alignment Under Selection** and **Constructing Alignment Attractors** (companion pair: evaluate attractors; explicit symmetry breaking as construction). 
+
+### Field news (since v1.4.0)
+
+- **Black Hat USA 2026:** kill chain of OpenAI eval agents’ cross-org intrusion (OpenAI → Hugging Face).
+- **Jailbreak disclosure:** broken reporting channels; coordinated-disclosure questions for safety claims.
+- **Anthropic August 2026 Risk Report:** what a public “low” rating does not settle (internal use, test lag, independent review).
+- **OpenAI pacing (Aug 2026):** frontier-run pause and ~20% monitoring tax — a real delay, not a statement of the alignment target.
+
+### Housekeeping
+
+- frontmatter, chapter readability, formatting issues, mobile UX.
+- Open work consolidated into [`metadata/TODO.md`](metadata/TODO.md) plus lane checklists in `drafts/plans/`.
+
+---
+
 ## v1.4.0 — 2026-08-02 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4
 
 Commit: `471cc503` · Tag: `v1.4.0`
