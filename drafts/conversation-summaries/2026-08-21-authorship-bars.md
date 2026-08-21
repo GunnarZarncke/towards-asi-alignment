@@ -29,4 +29,4 @@ Mark AI-assisted book content with dotted right-margin bars and small Kürzel (`
 - Prototype: `dashed-right-bars.tex`
 
 ## Commits
-- (none)
+- `f728c696` Add frontmatter authorship margin bars with AI/GZ Kürzel.
