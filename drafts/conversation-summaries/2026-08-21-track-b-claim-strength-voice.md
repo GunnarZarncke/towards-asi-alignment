@@ -23,4 +23,4 @@ User asked to start Track B phase 1 (`drafts/track-b-claim-strength-voice-plan.m
 - `metadata/concepts/bodies/six-thesis-claims.md`
 
 ## Commits
-- this commit (Track B §1: six-claim completion language)
+- `bd8519c3` Call Chapter 48 a status restatement, not a six-claim discharge.

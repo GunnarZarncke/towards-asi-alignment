@@ -186,7 +186,9 @@ The transfer to AI is limited. Nested digital protocols can change \(f\) for age
 
 \subsection{Mechanism design and incomplete contracts}
 
-Classical mechanism design studies how announced rules can make selfish play implement a social choice \parencite{maskin1999}. Incomplete-contract theory studies what happens when the contractual language cannot distinguish all payoff-relevant contingencies \parencite{grossman1986,hart1988,hart1999}. Hadfield-Menell and Hadfield apply that structure to AI alignment: the specification of desired behavior is an incomplete contract with the system \parencite{hadfield2019}.
+Classical mechanism design studies how announced rules can make selfish play implement a social choice \parencite{maskin1999}. 
+Incomplete-contract theory studies what happens when the contractual language cannot distinguish all payoff-relevant contingencies \parencite{grossman1986,hart1988,hart1999}. 
+Hadfield-Menell and Hadfield apply that structure to AI alignment: the specification of desired behavior is an incomplete contract with the system \parencite{hadfield2019}.
 
 Huang, Tharas, Marro, Truong, Sch\"olkopf, La Malfa, and Jin prove a cooperation gap for a class of social dilemmas: when the mechanism's language has \emph{incontractible cells} (a partition of future states that the contract cannot distinguish, even though the welfare-maximising action differs across them), no mechanism in that language eliminates a strictly positive welfare loss from self-interested play \parencite{huang2026}. The driver is the partition, not uncountability of the state space. In their model, agents with a sufficient other-regarding weight can close the gap. They also note that without certification of that weight, prosocial agents are exploitable.
 
@@ -194,7 +196,12 @@ That result bounds \emph{external} written mechanisms. It does not imply that in
 
 \subsection{Reconstructive bias}
 
-Cultural attractor theory studies stable population-level forms that need not result from high-fidelity copying \parencite{buskell2017}. The companion paper already splits retentive robustness from reconstructive robustness. Construction on \(Q\) is the attempt to make reconstruction prefer \(D\). Harris models descendant design as directed rather than random mutation: humans allocate resources through a fitness function that need not track human utility \parencite{harris2026}. Construction on \(Q\) must account for strategic lineage design, not only noisy copying. The same geometry can prefer \(A\). Changing \(Q\) without an independent account of \(D\) is defining the target as whatever the kernel regenerates.
+Cultural attractor theory studies stable population-level forms that need not result from high-fidelity copying \parencite{buskell2017}. 
+The companion paper already splits retentive robustness from reconstructive robustness. 
+Construction on \(Q\) is the attempt to make reconstruction prefer \(D\). 
+Harris models descendant design as directed rather than random mutation: humans allocate resources through a fitness function that need not track human utility \parencite{harris2026}. 
+Construction on \(Q\) must account for strategic lineage design, not only noisy copying. 
+The same geometry can prefer \(A\). Changing \(Q\) without an independent account of \(D\) is defining the target as whatever the kernel regenerates.
 
 \subsection{Identity crystallization}
 
@@ -212,11 +219,19 @@ Who applies \(I\), and when, is a different game from the object-level symmetry 
 
 \subsection{Cooperative AI as a research program}
 
-Dafoe and coauthors describe Cooperative AI as a program on commitments, communication, norms, and institutions among advanced agents \parencite{dafoe2020coop,dafoe2021}. The Nature piece is a comment, not an architecture. Chassang's *Interactive Alignment* studies evolvability of constitutional rules in a reproducing agent population, finding that simple altruism is unstable while state-dependent norm enforcement can persist \parencite{chassang2026}. That is a concrete construction result in a specific model; this paper states the cross-cutting symmetry-breaking criterion without committing to a particular game. The program overlaps this paper's intervention table. It does not supply a substrate that forces post-threshold systems into human-correctable states.
+Dafoe and coauthors describe Cooperative AI as a program on commitments, communication, norms, and institutions among advanced agents \parencite{dafoe2020coop,dafoe2021}. The Nature piece is a comment, not an architecture. 
+Chassang's *Interactive Alignment* studies evolvability of constitutional rules in a reproducing agent population, finding that simple altruism is unstable while state-dependent norm enforcement can persist \parencite{chassang2026}. 
+That is a concrete construction result in a specific model; this paper states the cross-cutting symmetry-breaking criterion without committing to a particular game. 
+The program overlaps this paper's intervention table. 
+It does not supply a substrate that forces post-threshold systems into human-correctable states.
 
 \subsection{Socio-technical selectors}
 
-Critch's robust agent-agnostic processes and multipolar-failure sketches, and Kulveit and coauthors' gradual disempowerment analysis, locate selection in institutions and replacement dynamics rather than in one trained model \parencite{critch2020ai,critch2021multipolar,kulveit2025gradual}. Acemoglu and Robinson show that formal rule changes can trigger investment in \emph{de facto} power that neutralizes the reform \parencite{acemoglu2008}. The analogue here is an intervention on \(\theta\) that types then rewrite through \(G\). Those are the settings in which \(\theta\) is endogenous at social scale. Construction that only edits a loss function leaves that selector untouched.
+Critch's robust agent-agnostic processes and multipolar-failure sketches, and Kulveit and coauthors' gradual disempowerment analysis, locate selection in institutions and replacement dynamics rather than in one trained model \parencite{critch2020ai,critch2021multipolar,kulveit2025gradual}. 
+Acemoglu and Robinson show that formal rule changes can trigger investment in \emph{de facto} power that neutralizes the reform \parencite{acemoglu2008}. 
+The analogue here is an intervention on \(\theta\) that types then rewrite through \(G\). 
+Those are the settings in which \(\theta\) is endogenous at social scale. 
+Construction that only edits a loss function leaves that selector untouched.
 
 \section{A construction criterion}
 
@@ -247,13 +262,17 @@ The name of the target is held fixed while the operational referent moves. Obser
 Defection moves to the margin the contract cannot distinguish \parencite{huang2026}. Huang and coauthors observe this pattern in LLM social-dilemma experiments: enforcement raises cooperation on the contractible coordinate while residual welfare loss sits on the hidden coordinate.
 
 \paragraph{Selector endogeneity.}
-The intervention on \(\theta\) is itself selected. Coupled stability can fail even if the population is well behaved under a frozen field \parencite{zarncke2026selection}. Soares and Fallenstein study whether an agent retains incentives to accept correction \parencite{soares2015corrigibility}; AI Control studies safety under intentional subversion of oversight \parencite{shlegeris2023aicontrol}. Construction must treat the enforcement mechanism as a strategic target, not an external field.
+The intervention on \(\theta\) is itself selected. 
+Coupled stability can fail even if the population is well behaved under a frozen field \parencite{zarncke2026selection}. 
+Soares and Fallenstein study whether an agent retains incentives to accept correction \parencite{soares2015corrigibility}; AI Control studies safety under intentional subversion of oversight \parencite{shlegeris2023aicontrol}. 
+Construction must treat the enforcement mechanism as a strategic target, not an external field.
 
 \paragraph{Singleton skip.}
 Unipolar breaking of a race can destroy the ecology in which invasion resistance and suppression are even defined. The race itself is a different game; it selects who lands \(I\), not whether \(D\) was constructed.
 
 \paragraph{Enforcement collapse.}
-Policing can stabilize cooperation when subordinate competition is repressed \parencite{frank1995}. It can also collapse: Wechsler and coauthors show toxin-mediated policing decays once genetic linkage between enforcement and the protected good breaks, because policing itself becomes an exploitable public good \parencite{wechsler2019}. Ostrom-style sanctions and verifier scores face the same second-order risk.
+Policing can stabilize cooperation when subordinate competition is repressed \parencite{frank1995}. 
+It can also collapse: Wechsler and coauthors show toxin-mediated policing decays once genetic linkage between enforcement and the protected good breaks, because policing itself becomes an exploitable public good \parencite{wechsler2019}. Ostrom-style sanctions and verifier scores face the same second-order risk.
 
 \paragraph{Trace theater.}
 Immutable records or machine-checked proofs constrain stated properties of stated artifacts. They change the cost of faking those artifacts. They do not keep a correction channel uncaptured, and they do not force the artifact's predicates to track \(D\) after ontology shift.

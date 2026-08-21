@@ -23,3 +23,4 @@ User asked for a critical review of a draft, then to extend the symmetry-breakin
 
 ## Commits
 - `cd866f9e` Add identity crystallization to Constructing Alignment Attractors.
+- `898df416` Extend Constructing Alignment Attractors with lit pass and race note.

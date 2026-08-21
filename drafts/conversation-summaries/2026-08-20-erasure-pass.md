@@ -29,4 +29,4 @@ After housekeeping, user said to read the Erasure section, then “Think bigger.
 - `metadata/TODO.md`
 
 ## Commits
-- none
+- `2b07f4ce` Stop spent plans and handoff noise from masquerading as open work.
