@@ -157,6 +157,8 @@ De-center PDF → **Voice**. Card-notes triage **closed** 2026-08-17 — [`draft
 
 ## Housekeeping board
 
+- [ ] **Authorship bars beyond frontmatter (M).** `\authbar` in `metadata/authorship-bars.tex` is on frontmatter only. Roll out per section body (not titles; default `{AI}`; skip epitaphs; do not mark figures; mark image prompts `{AI}`). Companion site still unmarked.
+
 - [ ] **`\symbolref` leftovers (S).** RiskGap and unlabeled blocks. Log: `2026-08-05-symboldef-macro.md`.
 - [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial-guidance-eq-chain-placement.md`.
 - [ ] **Consider claims/assumptions ledger automation (S).** Decide YAML source vs manual.

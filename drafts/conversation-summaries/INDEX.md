@@ -6,11 +6,12 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-21 | **Program map (Voice / Witness / Field)** — One map in `metadata/TODO.md`; plans renamed; Expectation 7 removed; HANDOFF compacted. | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
-| 2026-08-21 | **Executive overview sync** — Review against v1.4.0 + later material; rewrite for six-claim sync, three questions, merged scope section. | [2026-08-21-executive-overview-sync.md](2026-08-21-executive-overview-sync.md) |
-| 2026-08-21 | **Track B claim-strength voice (§1)** — User asked to start Track B phase 1 (`drafts/track-b-claim-strength-voice-plan.md` §1: rename six... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
+| 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
+| 2026-08-21 | Program map (Voice / Witness / Field) | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
+| 2026-08-21 | **Executive overview sync** — User asked to review `frontmatter/executive-overview.tex` against post–v1.4.0 material (last over... | [2026-08-21-executive-overview-sync.md](2026-08-21-executive-overview-sync.md) |
 | 2026-08-21 | **Construction stays out of manuscript** — User forwarded reviewer feedback on the two selection/construction papers (unearned weight: toolk... | [2026-08-21-construction-manuscript-todo.md](2026-08-21-construction-manuscript-todo.md) |
 | 2026-08-21 | **Constructing alignment attractors paper** — User asked for a critical review of a draft, then to extend the symmetry-breaking concept into an... | [2026-08-21-constructing-alignment-attractors.md](2026-08-21-constructing-alignment-attractors.md) |
+| 2026-08-21 | **Authorship bars (frontmatter)** — Mark AI-assisted book content with dotted right-margin bars and small Kürzel (`AI`, `GZ`, combina... | [2026-08-21-authorship-bars.md](2026-08-21-authorship-bars.md) |
 | 2026-08-20 | **Turner Reward≠OT shortform hedge** — Review Turner (Turntrout) shortform on shards / reward-as-target (`DNvCMjyi6YmMZri9t`); then add ... | [2026-08-20-turner-reward-hedge.md](2026-08-20-turner-reward-hedge.md) |
 | 2026-08-20 | **README accuracy sync** — User asked whether `README.md` was still accurate after work since its last edit (2026-08-15 titl... | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
 | 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
@@ -20,13 +21,10 @@
 | 2026-08-17 | **Specify / construct instances (field v2 + Lean)** — Continue prior thread: typed specify/construct instance catalog with Lean names, concept cards, a... | [2026-08-17-specify-construct-instances.md](2026-08-17-specify-construct-instances.md) |
 | 2026-08-17 | 2026-08-17-six-claims-spine-phase0-2 | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
 | 2026-08-17 | 2026-08-17-site-card-notes-phase6-mobile-ux | [2026-08-17-site-card-notes-phase6-mobile-ux.md](2026-08-17-site-card-notes-phase6-mobile-ux.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase5-sync-math | [2026-08-17-site-card-notes-phase5-sync-math.md](2026-08-17-site-card-notes-phase5-sync-math.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase4-ch10 | [2026-08-17-site-card-notes-phase4-ch10.md](2026-08-17-site-card-notes-phase4-ch10.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase3-ch09 | [2026-08-17-site-card-notes-phase3-ch09.md](2026-08-17-site-card-notes-phase3-ch09.md) |
 
 ## Archive by month
 
-- **2026-08** (107): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (110): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

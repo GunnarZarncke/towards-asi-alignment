@@ -42,6 +42,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-21:** Authorship bars — `\authbar` on frontmatter only (dotted right bar + `AI`/`GZ` Kürzel). Log: `2026-08-21-authorship-bars.md`.
 - **2026-08-21:** Program map — plans in `drafts/plans/` (`voice.md`, `witness.md`, `field.md`); Expectation 7 removed from Witness; HANDOFF compacted. Log: `2026-08-21-program-tracks-map.md`.
 - **2026-08-21:** Executive overview rewritten for six-claim / three-question sync. Log: `2026-08-21-executive-overview-sync.md`.
 - **2026-08-21:** Voice §1, §3, §4, §6–§8. Log: `2026-08-21-track-b-claim-strength-voice.md`.

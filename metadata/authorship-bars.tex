@@ -1,0 +1,134 @@
+% Authorship margin bars (AI / human Kürzel).
+% Uses mdframed+TikZ rather than tcolorbox skins (tikzfill.image is not in
+% TeX Live basic, which is what this repo builds with).
+%
+% Usage:
+%   \authbarsection{Title}  % before \begin{authbar}{...}; keeps title with body
+%   \begin{authbar}{AI} ... \end{authbar}      % solid bar
+%   \begin{authbar}{GZ} ... \end{authbar}      % Kürzel only
+%   \begin{authbar}{GZ+AI} ... \end{authbar}    % sparse dotted bar
+% For \label/\phantomsection after the title: \authbarneedspace\section*{...} then label.
+%
+% Line rules: AI-only → solid; AI + human → dotted (1:2 on/off); human-only → no line.
+
+\newlength{\authbargap}
+\setlength{\authbargap}{\dimexpr 1.2mm + 0.5em\relax}
+
+\newlength{\authbarblocksep}
+\setlength{\authbarblocksep}{0.5\baselineskip}
+
+\newcommand{\authbarlinemode}{none}
+\newif\ifauthbarcontinued
+\authbarcontinuedfalse
+
+\newcommand{\authbarneedspace}{%
+  \authbarcontinuedfalse
+  \Needspace{5\baselineskip}%
+}
+\newcommand{\authbarsubneedspace}{%
+  \authbarcontinuedfalse
+  \Needspace{4\baselineskip}%
+}
+\newcommand{\authbarsection}[1]{\authbarneedspace\section*{#1}}
+\newcommand{\authbarsubsection}[1]{\authbarsubneedspace\subsection*{#1}}
+
+\ExplSyntaxOn
+\seq_new:N \g_authbar_keys_seq
+\cs_new_protected:Npn \authbar_store:n #1
+  {
+    \tl_set:Nn \l_tmpa_tl { #1 }
+    \tl_replace_all:Nnn \l_tmpa_tl { + } { , }
+    \seq_set_split:NnV \l_tmpa_seq { , } \l_tmpa_tl
+    \seq_clear:N \g_authbar_keys_seq
+    \seq_map_inline:Nn \l_tmpa_seq
+      {
+        \tl_set:Nn \l_tmpb_tl { ##1 }
+        \tl_trim_spaces:N \l_tmpb_tl
+        \seq_gput_right:NV \g_authbar_keys_seq \l_tmpb_tl
+      }
+    \authbar_set_line_mode:
+  }
+\cs_new_protected:Npn \authbar_set_line_mode:
+  {
+    \bool_set_false:N \l_authbar_has_ai_bool
+    \bool_set_true:N \l_authbar_ai_only_bool
+    \seq_map_inline:Nn \g_authbar_keys_seq
+      {
+        \str_if_eq:nnT { ##1 } { AI }
+          { \bool_set_true:N \l_authbar_has_ai_bool }
+        \str_if_eq:nnF { ##1 } { AI }
+          { \bool_set_false:N \l_authbar_ai_only_bool }
+      }
+    \bool_if:NTF \l_authbar_has_ai_bool
+      {
+        \bool_if:NTF \l_authbar_ai_only_bool
+          { \cs_gset:Npn \authbarlinemode { solid } }
+          { \cs_gset:Npn \authbarlinemode { dotted } }
+      }
+      { \cs_gset:Npn \authbarlinemode { none } }
+  }
+\bool_new:N \l_authbar_has_ai_bool
+\bool_new:N \l_authbar_ai_only_bool
+\cs_new:Npn \authbar_label_text:
+  {
+    \seq_use:Nn \g_authbar_keys_seq { \\ }
+  }
+\NewDocumentCommand{\authbarstore}{m}{\authbar_store:n{#1}}
+\NewExpandableDocumentCommand{\authbarlabeltext}{}{\authbar_label_text:}
+\ExplSyntaxOff
+
+\newcommand{\authbardrawline}{%
+  \ifdefstring{\authbarlinemode}{solid}{%
+    \draw[black, line width=0.9pt, \authbartikz] (P) -- (P|-O);
+  }{%
+    \ifdefstring{\authbarlinemode}{dotted}{%
+      \draw[black, line width=0.9pt, dash pattern=on 0.8pt off 2.4pt, \authbartikz] (P) -- (P|-O);
+    }{}%
+  }%
+}
+
+\newcommand{\authbaroverlay}{%
+  \authbardrawline
+  \node[
+    anchor=north west,
+    align=left,
+    inner sep=0.4pt,
+    font=\tiny\sffamily,
+    text=black!65
+  ] at ([xshift=1.1mm]P) {\authbarlabeltext};}
+
+\newenvironment{authbar}[2][]{%
+  \ifauthbarcontinued
+    \par\vspace{\authbarblocksep}%
+  \fi
+  \authbarcontinuedfalse
+  \def\authbartikz{#1}%
+  \authbarstore{#2}%
+  \par
+  \mdfsetup{%
+    hidealllines=true,
+    linewidth=0pt,
+    backgroundcolor=white,
+    innerleftmargin=0pt,
+    innerrightmargin=\authbargap,
+    innertopmargin=0pt,
+    innerbottommargin=0pt,
+    skipabove=0pt,
+    skipbelow=0pt,
+    needspace=0pt,
+    nobreak=false,
+    leftmargin=0pt,
+    rightmargin=-\authbargap,
+    splittopskip=0pt plus 2pt,
+    splitbottomskip=0pt plus 2pt,
+    singleextra={\authbaroverlay},
+    firstextra={\authbaroverlay},
+    middleextra={\authbaroverlay},
+    secondextra={\authbaroverlay},
+  }%
+  \begin{mdframed}%
+}{%
+  \end{mdframed}%
+  \par
+  \global\authbarcontinuedtrue
+}
