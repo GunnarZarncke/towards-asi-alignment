@@ -22,4 +22,4 @@
 
 ## Commits
 
-- (this session)
+- `10df5ed0` — Add companion site authorship chips synced from LaTeX authbars.
