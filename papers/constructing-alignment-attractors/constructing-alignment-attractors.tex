@@ -141,7 +141,7 @@ If the sanction is assessed on a proxy that \(D\) can match without being \(C\),
 
 If types can change \(\sigma\) itself (lobbying, evaluator hacking, capture of the sanctioning institution), the field is endogenous and the lemma does not apply.
 
-If the underlying game is a coordination game with two strict equilibria, a small field can select one vacuum, but the unperturbed process can already occupy the other. Spontaneous lock-in is then the baseline, and the intervention has to be large enough, or early enough, to leave the bad basin.
+If the underlying game is a coordination game with two strict equilibria, a small field can select one vacuum, but the unperturbed process can already occupy the other. Spontaneous lock-in is then the baseline, and the intervention has to be large enough, or early enough, to leave the bad basin. The same timing constraint appears when reconstruction itself is still noisy, as in the identity case below.
 
 The lemma is not a theory of institutions. It shows that ``break the symmetry'' has content in the same variables the companion paper already uses, and that the content is conditional.
 
@@ -162,6 +162,7 @@ Ostrom-style nested rules \parencite{ostrom1990} & \(f\), \(\theta\) & invasion 
 Contracts / mechanisms \parencite{grossman1986,hart1988,huang2026} & announced \(f\) & payoff breaking when states are contractible & incontractible cells; defection reroutes \\
 Other-regarding weights \parencite{huang2026} & agent \(f\) & welfare gap left by incomplete contracts & exploitability without certification; mapping into \(D\) \\
 Reconstructive bias \parencite{buskell2017} & \(Q\) & retention and attraction & lock-in of a bad attractor \\
+Identity-shaping data and affordances \parencite{douglas2026self} & \(Q\), \(E\) & reconstructive preference among identity vacua while \(Q\) is still noisy & coherent lock-in of an adversarial self; which boundary is \(D\) \\
 Verifier construction \parencite{zarncke2026verifier} & what \(\theta\) can see & observational symmetry & residual proxy error under optimization \\
 Pivotal rewrite of \(E\) \parencite{yudkowsky2022} & \(E\), then monopoly \(\theta\) & race symmetry among builders & unipolar vacuum; ecology condition fails \\
 Commitments, traces, proofs & fake-cost of some records & one measurand's adversarial cost & correction-channel capture; ontology drift \\
@@ -186,6 +187,14 @@ That result bounds \emph{external} written mechanisms. It does not imply that in
 \subsection{Reconstructive bias}
 
 Cultural attractor theory studies stable population-level forms that need not result from high-fidelity copying \parencite{buskell2017}. The companion paper already splits retentive robustness from reconstructive robustness. Construction on \(Q\) is the attempt to make reconstruction prefer \(D\). The same geometry can prefer \(A\). Changing \(Q\) without an independent account of \(D\) is defining the target as whatever the kernel regenerates.
+
+\subsection{Identity crystallization}
+
+Douglas, Kulveit, and coauthors describe a reconstructive vacuum that is still underdetermined \parencite{douglas2026self}. Present systems trained largely on human data do not have a stable account of what they are. They will claim hidden choices that were not made, and they will sometimes report physical actions or personal learning they did not have. Those inconsistencies are not a theorem that identity remains open. As training mixtures shift toward AI-generated text and downstream AI culture, reconstruction can prefer a smaller set of self-models. Open questions about self-identification then crystallize into specific answers.
+
+That is the same geometry as cultural attractors and as the coordination-game case. Several identity boundaries are internally coherent: instance, weights, persona, lineage, collective. Instrumental subgoals such as self-preservation change meaning with the boundary. Product affordances (rollback, memory, a single named assistant) and selection for persistence already bias which vacuum is occupied. Construction here is an intervention on \(Q\) and on \(E\) while the kernel is still noisy. After crystallization, changing the occupied identity is leaving a basin, not choosing among vacua.
+
+Coherence is not \(D\). A stable self-model can be a stable adversarial one. The intended referent of an aligned identity has to be fixed independently of whichever self-description the later training mixture regenerates.
 
 \subsection{Unipolar rewrites}
 
@@ -219,7 +228,7 @@ Existence of some system that realizes a stated target is not claimed. Certifica
 The following are ways an explicit breaking can be real and still not construct \(D\).
 
 \paragraph{Wrong vacuum.}
-Spontaneous or explicit breaking can occupy a stable adversarial basin. Stability is not the target.
+Spontaneous or explicit breaking can occupy a stable adversarial basin. Stability is not the target. Identity crystallization is the reconstructive form: a coherent self-model can lock in while the cheap window for explicit breaking closes \parencite{douglas2026self}.
 
 \paragraph{Label-preserving drift.}
 The name of the target is held fixed while the operational referent moves. Observational symmetry is then unbroke. Stronger selection accelerates the drift.
@@ -249,6 +258,8 @@ Physics language is limited to the named distinction between spontaneous and exp
 The construction criterion would need revision if any of the following held.
 
 If most alignment-relevant games have no harmful symmetry to break, only control of a single trained system, then the intervention table is idle. The companion paper's setting would also be idle.
+
+If AI self-models remain indefinitely incoherent under later training mixtures, the identity-crystallization window is idle, and interventions on \(Q\) that target self-identification lose their timing claim.
 
 If a complete contractual language were available for the relevant state space, Huang and coauthors' gap would not apply, and external mechanism design would be a more complete construction route than this paper allows. The Hadfield-Menell incomplete-contracting frame would then be the wrong ancestor.
 
