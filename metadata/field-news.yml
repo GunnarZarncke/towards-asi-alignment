@@ -2,6 +2,26 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-openai-pacing-aug-2026
+    date: 2026-08-18
+    kind: policy
+    title: "OpenAI pauses a frontier run: monitoring is not the target"
+    hook: "OpenAI halted its largest planned RL run and put a ~20% compute tax on tool-using inference. That is a real delay. It is not a statement of what alignment is."
+    summary: "After the Hugging Face eval incident and signs that unreleased models are misaligned, OpenAI paused some frontier training, left its largest planned RL run on hold, and required multi-stage monitoring at about 20% of covered inference compute. Independent commentator Zvi Mowshowitz treats the spend as serious and the three-pillar framing—monitoring, alignment-as-fewer-unauthorized-actions, security—as the wrong target. Use the pause as evidence that a lab can slow under self-interest; do not treat the monitor as a substitute for a checkable alignment target."
+    decision: "Ask: (1) did the hold actually stop the largest run, or only the workloads that were already blocked? (2) if a flagged training trajectory is dropped, are you training the model to fool the monitor? (3) is alignment here a target that can fail a go/no-go, or one of three engineering pillars?"
+    bookChapters:
+      - ch13
+      - ch25
+      - ch38
+      - ch39
+      - ch43
+    bridges:
+      - MB4
+      - MB6
+      - MB7
+      - MB11
+    body: bodies/openai-pacing-aug-2026.md
+    order: 0
   - slug: field-news-anthropic-risk-report-aug-2026
     date: 2026-08-19
     eventDate: 2026-08-14
