@@ -15,7 +15,7 @@
 | Bridges ↔ field cruxes crosswalk | `appendices/appB-bridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
 | Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
-| Lean predicates and bridges | `formal/README.md`, Lean Proof Spine appendix |
+| Lean predicates and bridges | `formal/README.md`, Lean dependency spine appendix |
 
 ---
 
@@ -31,19 +31,13 @@ The book must be self-contained. It must not assume the reader already knows the
 
 **Organizing frame:**
 
-\[
-\text{superintelligence alignment}
-=
-\text{value-bundle transport}
-+
-\text{bearer persistence}
-+
-\text{correction-channel integrity}
-+
-\text{successor stability}
-+
-\text{socio-technical attractor control}.
-\]
+If any of the following factors fails, the safety case fails. The list is conjunctive, not a construction recipe:
+
+- value-bundle transport
+- bearer persistence
+- correction-channel integrity
+- successor stability
+- socio-technical attractor control
 
 **Guiding principle — works as the system grows:** Treat evidence for an alignment mechanism as insufficient unless its claimed function remains meaningful under the relevant forms of growth: capability growth, ontology shift, successor creation, distribution shift, strategic adaptation, and changing human correction capacity. State which dimensions are tested, which are only argued, and where the mechanism may fail to transfer.
 

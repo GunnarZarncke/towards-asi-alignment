@@ -180,7 +180,7 @@ Mirror one line in [`context/writing-style-gunnar.md`](../context/writing-style-
 - [x] §1 Completion language (2026-08-21; FAQ included as same callout)
 - [ ] §2 All 48 `chapterthesis` audit (deferred: chapterboxes later)
 - [x] §3 Lean dependency spine naming (repo + site)
-- [ ] §4 Separations (README, homepage, INSTRUCTIONS, executive overview)
+- [x] §4 Separations (README, homepage, INSTRUCTIONS, executive overview)
 - [ ] §5 Progress (introduction + executive overview)
 - [ ] §6 Gems + REVIEWING gem map
 - [ ] §7 Standalone-claims status
