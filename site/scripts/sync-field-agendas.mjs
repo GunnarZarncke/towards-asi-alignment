@@ -176,9 +176,10 @@ function renderSpecifyConstructSection(sc) {
   } else if (sc.kind === "peer") {
     lines.push(`## Specify / construct (peer outer target)`);
     lines.push("");
-    lines.push(
-      `PreDCA / Physicalist Superimitation is listed on the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table as a **peer outer-target** ontology — not a \`ConstitutionalRule\` instance. This project tags it on MB2/MB3 rather than as a specify-schema filling.`
-    );
+    const peerBlurb =
+      (sc.correspondence && String(sc.correspondence).trim()) ||
+      `This agenda is listed on the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table as a **peer outer-target** — not a \`ConstitutionalRule\` instance.`;
+    lines.push(peerBlurb);
     lines.push("");
   }
   return lines;

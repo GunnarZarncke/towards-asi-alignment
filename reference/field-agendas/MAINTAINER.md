@@ -46,7 +46,7 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 **Do not infer from cells alone:** Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.
 
-**Kosoy diagnostic:** one Kosoy lineage — LTA foundations plus Physicalist Superimitation / PreDCA as an outer-alignment strand, not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.
+**Kosoy diagnostic:** one Kosoy lineage — LTA (theory of intelligent agents) plus Physicalist Superimitation / PreDCA as an outer-alignment strand, not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy. Do not describe LTA as “grounded in regret, daemons, and nonrealizability” (those are different kinds of object). Do not treat the bridge transform as an outer-alignment gadget or “precursor” as central to later PSI.
 
 **Open spine interfaces** (vocabulary, not matrix columns): `PositiveMeasuredPathCertificate` (CIRIS composite TODO); `SystemRegretSafetyEvidence` (optional harm leaf later); `ConservedPropertySignatureVerifiable_of_chokepoint` (prove or type — `Forgeability.lean`).
 

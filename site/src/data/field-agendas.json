@@ -8,7 +8,7 @@
     "stanceMarksTable": "| Mark | direction | weight |\n|---|---|---|\n| `+` | support | 1 |\n| `++` | support | 2 |\n| `+++` | support | 3 |\n| `±` | unclear | — |\n| `−` | challenge | 1 |\n| `−−` | challenge | 2 |\n| `−−−` | challenge | 3 |\n| *(none)* | untagged legacy | — |",
     "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/attic/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |\n**Retired matrix bridge:** **MB8** (CEV) — gravestone card only; factorizes as **AlignmentTarget** / **Target Realization**, not a live process-preservation route to correction.",
     "doNotInfer": "Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.",
-    "kosoyDiagnostic": "One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
+    "kosoyDiagnostic": "One Kosoy lineage: LTA (mathematical theory of intelligent agents) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
     "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/cards/alignment-lifecycle/`.",
     "typeLettersTable": "| Letter | Type |\n|---|---|\n| **C** | conceptual |\n| **T** | theory (formalization) |\n| **S** | simulations |\n| **P** | practical (applications) |\n| **D** | empirical (software) |\n| **E** | empirical (other) |\n| **O** | other |",
     "matrixIntro": "Column headers use **field nouns**; **MB*** keys are spine identifiers only. Each linked bridge card states the crux, where agendas agree or diverge, and homograph splits. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).",
@@ -406,7 +406,7 @@
     {
       "slug": "kosoy-infra-bayesianism-lta",
       "title": "Kosoy / infra-Bayesianism & LTA",
-      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, recursive self-improvement—and does precursor-utility pointing survive simulation and ontology ambiguity?",
+      "summary": "Can a learning-theoretic theory of intelligent agents be built tightly enough to license alignment claims under stated assumptions, including misspecification, inner daemons, and recursive self-improvement? For Physicalist Superimitation: can agent detection and user identification pick out the intended user (including under simulation hypotheses), and does superimitation of inferred values stay well-defined when the world-model ontology is wrong?",
       "bookBridges": [
         "MB1",
         "MB2",
@@ -4028,7 +4028,7 @@
         "MB3"
       ],
       "type": "T",
-      "evidence": "PreDCA / Physicalist Superimitation: precursor-utility outer-alignment (pointer via causal precursors)",
+      "evidence": "Physicalist Superimitation: hypothesized protocol to learn and act on the user's values (superimitation after agent detection and user identification). PreDCA is the earlier precursor-based formulation; the bridge transform belongs to infra-Bayesian physicalism, not only to the outer-alignment protocol.",
       "sources": [
         {
           "label": "PreDCA tag",

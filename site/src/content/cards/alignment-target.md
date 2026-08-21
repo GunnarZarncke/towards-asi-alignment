@@ -60,7 +60,7 @@ State a coherent **alignment target** by filling a `ConstitutionalRule` and mapp
 **Peer outer target** (not a `ConstitutionalRule` instance):
 
 - [PreDCA / Physicalist Superimitation](/cards/field-agendas/kosoy-infra-bayesianism-lta/)
-  - [Bridge-transform / precursor-utility agent](/cards/field-agendas/kosoy-infra-bayesianism-lta/) (peer outer target; MB2/MB3)
+  - [Superimitation / user-identification protocol](/cards/field-agendas/kosoy-infra-bayesianism-lta/) (peer outer target; MB2/MB3)
 
 **Well-formedness is out of scope here.** `SpecWellFormedness` / `SpecifyCrux` type the missing criteria (non-vacuity, aggregation coherence, legitimacy) as an **uninterpreted placeholder**. Theorems that need it take `hSpec : SpecifyCrux W C` explicitly; this project does not discharge outer-alignment philosophy.
 

@@ -1282,7 +1282,10 @@ evidence:
       - MB3
     type: T
     evidence: >-
-      PreDCA / Physicalist Superimitation: precursor-utility outer-alignment (pointer via causal precursors)
+      Physicalist Superimitation: hypothesized protocol to learn and act on the user's
+      values (superimitation after agent detection and user identification). PreDCA
+      is the earlier precursor-based formulation; the bridge transform belongs to
+      infra-Bayesian physicalism, not only to the outer-alignment protocol.
     sources:
       - label: "PreDCA tag"
         url: https://www.alignmentforum.org/w/predca

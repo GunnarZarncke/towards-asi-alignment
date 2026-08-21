@@ -19,12 +19,13 @@ People who have shaped the manuscript, formal spine, or field map. Sorted alphab
 | [Jobst Heitzig](https://www.lesswrong.com/users/jobst-heitzig) | Draft review; references | Viability theory and related dynamical-systems literature. |
 | Joel Pyykkö | Informal pressure-testing | Aintelope co-founder. |
 | [Jonas Hallgren](https://www.lesswrong.com/users/jonas-hallgren) | Foundational conversations | Agent foundations; unsupervised agent discovery (EAG Bay Area 2025); agency taxonomies; crystal analogies; dynamical systems. |
+| [Vanessa Kosoy](https://www.lesswrong.com/users/vanessa-kosoy) | Field map | Corrected the LTA / Physicalist Superimitation agenda summary: regret vs daemons vs nonrealizability as unlike objects; bridge transform as IBP, not an outer-alignment gadget; precursor not central to later PSI. |
 | [Peter Kuhn](https://www.lesswrong.com/users/peter-kuhn) | Manuscript review | Readability, claims, and research agenda; agent-discovery collaboration with Chris Pang. |
 | Rasmus Herlo | Informal pressure-testing | Aintelope co-founder. |
 | Roland Pihlakas | Informal pressure-testing | Aintelope co-founder. |
 | Ruslan | Informal pressure-testing | Effective-altruism meetup group, Hamburg. |
 | SJ Beard | Philosophical grounding | Parameters of agency; shared project discussions; inspiration on boundaries and bearers. |
-| Stanislav Krym](https://www.lesswrong.com/users/stanislavkrym) | Architecture revision | CEV / “pointing” decomposition; determine / construct / certify distinction; certification ≠ construction. |
+| [Stanislav Krym](https://www.lesswrong.com/users/stanislavkrym) | Architecture revision | CEV / “pointing” decomposition; determine / construct / certify distinction; certification ≠ construction. |
 | Tom M. | Field map | Evidence tags need a directional stance (“sign bit”); suggested lab agenda rows for the coverage matrix. Name as given (long-time lurker). |
 
 **Maintenance:** Add rows when new named feedback arrives; link LW profiles when confirmed.

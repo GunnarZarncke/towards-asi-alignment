@@ -5,44 +5,56 @@ carrier: Vanessa Kosoy (+ Appel; logical-induction neighborhood via Garrabrant)
 overview: >-
   Vanessa Kosoy's [learning-theoretic
   agenda](https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda)
-  (LTA) builds a mathematical theory of intelligence and alignment grounded in regret
-  bounds, daemons, and [nonrealizability](/cards/subsumption-grounding-drift/).
-  [Infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism) and [infra-Bayesian
-  physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized)
-  are major constructive layers—not the whole agenda. The outer-alignment strand
-  [Physicalist
-  Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
-  (formerly [PreDCA](https://www.alignmentforum.org/w/predca)) proposes precursor-utility
-  pointing via the bridge transform. Its walls map onto [Embedded
-  Agency](/cards/mb1-boundary-estimator-soundness/), [Value
-  Learning](/cards/mb2-bundle-identifiability/), [Value
-  Referent](/cards/mb3-bearer-import/), [Inner
-  Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding
-  Drift](/cards/mb9-grounding-certificate/) without replacing this project's
-  System–bundle–correction ontology.
+  (LTA) aims to create a general mathematical theory of intelligent agents, so that
+  alignment claims can be proved or rigorously conjectured relative to stated
+  assumptions. Frequentist guarantees (regret bounds) are a *standard of
+  understanding* in that theory.
+  [Nonrealizability](/cards/subsumption-grounding-drift/) (the true environment is
+  not in the hypothesis class) and inner [daemons](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
+  are among the *problems* the theory is built to treat.
+  [Infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism) is a major
+  constructive layer for deep uncertainty—not the whole agenda.
+  [Infra-Bayesian physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized)
+  (later also Formal Computational Realism) adds a physicalist/computational-realist
+  ontology; the [bridge transform](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized)
+  is a core construction of that layer, with a role independent of outer alignment.
+  [Physicalist Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
+  (PSI; formerly [PreDCA](https://www.alignmentforum.org/w/predca); later also
+  Computational Superimitation) is a hypothesized protocol *on top of* that
+  stack: identify the user as an agent in the physicalist ontology and
+  *superimitate* their values (learn them and pursue them substantially better).
+  The 2022 PreDCA writeup centered a “precursor” pointer; later PSI formulations
+  do not treat precursor as central.
 primaryArtifact: >-
   The [learning-theoretic
   agenda](https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda),
-  the [Infra-Bayesianism sequence](https://www.lesswrong.com/w/infra-bayesianism), and the
-  [Physicalist Superimitation / PreDCA](https://www.alignmentforum.org/w/predca)
-  outer-alignment protocol built on [infra-Bayesian
-  physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized).
+  the [Infra-Bayesianism sequence](https://www.lesswrong.com/w/infra-bayesianism),
+  [infra-Bayesian
+  physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized),
+  and the [Physicalist Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
+  protocol (formerly [PreDCA](https://www.alignmentforum.org/w/predca)).
 signatureVocabulary: >-
-  Key terms include [infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism),
-  the [learning-theoretic
+  Key terms include the [learning-theoretic
   agenda](https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda),
-  [PreDCA](https://www.alignmentforum.org/w/predca) / [Physicalist
-  Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023),
-  imprecise probability, [nonrealizability](/cards/subsumption-grounding-drift/), daemons,
-  and the bridge transform.
+  [infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism),
+  [infra-Bayesian
+  physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized)
+  / Formal Computational Realism, the bridge transform, regret bounds,
+  nonrealizability, daemons, and [Physicalist
+  Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
+  / [PreDCA](https://www.alignmentforum.org/w/predca) / Computational Superimitation.
 statedIntent: >-
-  Build a mathematical theory of intelligence and alignment—regret-bounded agents under
-  deep uncertainty, with a constructive outer-alignment endpoint (precursor-utility
-  assistance).
+  Create a general mathematical theory of intelligent agents, and—as one
+  hypothesized application, not the agenda’s main motivation—a protocol that
+  reliably learns and acts on the user’s values (Physicalist Superimitation).
 primaryCrux: >-
-  Can learning-theoretic and infra-Bayesian frameworks type real alignment
-  failures—misspecification, inner daemons, recursive self-improvement—and does
-  precursor-utility pointing survive simulation and ontology ambiguity?
+  Can a learning-theoretic theory of intelligent agents be built tightly enough
+  to license alignment claims under stated assumptions, including
+  misspecification, inner daemons, and recursive self-improvement? For
+  Physicalist Superimitation: can agent detection and user identification pick
+  out the intended user (including under simulation hypotheses), and does
+  superimitation of inferred values stay well-defined when the world-model
+  ontology is wrong?
 bookBridges:
   - MB1
   - MB2
@@ -51,28 +63,38 @@ bookBridges:
   - MB7
   - MB9
 contributes: >-
-  Model-class misspecification and grain-of-truth analysis; regret-bounded agents; inner
-  daemons; [infra-Bayesian
+  Model-class misspecification and grain-of-truth analysis; regret-bounded
+  agents; inner daemons; [infra-Bayesian
   physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized)
-  and the bridge transform; [PreDCA](https://www.alignmentforum.org/w/predca) as a sibling
-  outer-alignment endpoint reached through a different formal path than
+  and the bridge transform as a physicalist layer; [Physicalist
+  Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023)
+  as a sibling outer-alignment protocol (superimitation after agent detection
+  and user identification), reached through a different formal path than
   [CIRL](/cards/subsumption-cirl/)-style pointing.
 bookSeparates: >-
-  This work does not replace this project's System–bundle–correction ontology; its walls
-  map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value
+  This project maps LTA’s problems onto [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/), [Value
   Learning](/cards/mb2-bundle-identifiability/), [Value
   Referent](/cards/mb3-bearer-import/), [Tiling](/cards/mb5-successor-ontology-shift/),
   [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding
   Drift](/cards/mb9-grounding-certificate/), with [Acausal
-  Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood
-  cousin. The PreDCA/PSI endpoint alone is not sufficient;
-  [value-bundle-transport](/cards/value-bundle-transport/),
-  [bearer-persistence](/cards/bearer-persistence/), and the correction process remain
-  load-bearing.
+  Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction
+  neighborhood cousin—it does not treat LTA as a replacement ontology. On the
+  outer endpoint, PSI is a peer proposal for learning and acting on the user’s
+  values. This project *names separately* three checks it still wants: whether
+  inferred values remain [usable directions of control after
+  transformation](/cards/value-bundle-transport/) (not only preserved labels),
+  whether they keep applying to the [right persons or
+  processes](/cards/bearer-persistence/), and whether a [correction
+  process](/cards/correction-channel-integrity/) stays open. Kosoy’s protocol is
+  meant to address usable control (superimitation of inferred user values).
+  Whether those three remain separately checkable after PSI, or whether the
+  protocol already discharges them, is an open disagreement—not a claim that PSI
+  is missing those pieces in her terms.
 manuscriptHooks:
   - App B intervention map (logical induction / infra-Bayesian cluster)
   - "bib `kosoy2022predca`"
-  - glossary PreDCA row
+  - glossary PreDCA / PSI row
 links:
   - label: "LTA (2018 overview)"
     url: >-
@@ -82,6 +104,9 @@ links:
       https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
   - label: "Infra-Bayesianism (LessWrong)"
     url: https://www.lesswrong.com/w/infra-bayesianism
+  - label: "Infra-Bayesian physicalism"
+    url: >-
+      https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized
   - label: "PreDCA (Alignment Forum tag)"
     url: https://www.alignmentforum.org/w/predca
   - label: "Vanessa Kosoy"

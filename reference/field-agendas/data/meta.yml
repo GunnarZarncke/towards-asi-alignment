@@ -87,11 +87,12 @@ doNotInfer: >-
   CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass
   (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.
 kosoyDiagnostic: >-
-  One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism
-  and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate
-  agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a
-  **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret)
-  is a value-learning cousin — **MB11** stays **—** for Kosoy.
+  One Kosoy lineage: LTA (mathematical theory of intelligent agents) plus
+ infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment
+  strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing
+  **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate
+  bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—**
+  for Kosoy.
 openSpineInterfaces: >-
   **Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) —
   construct lifecycle; not an `MB*` column. Live: `/cards/alignment-lifecycle/`.

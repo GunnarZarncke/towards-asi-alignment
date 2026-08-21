@@ -6,9 +6,11 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-22 | **v1.5.0 release notes (prepare)** — User asked to prepare release notes. | [2026-08-22-v1-5-0-release-notes.md](2026-08-22-v1-5-0-release-notes.md) |
 | 2026-08-22 | **Spine lane + open-work erasure** — User asked what remained open after Aug 16–17 work; whether `drafts/plans/` and `metadata/TODO.md... | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
 | 2026-08-22 | 2026-08-22-site-auth-chips | [2026-08-22-site-auth-chips.md](2026-08-22-site-auth-chips.md) |
 | 2026-08-22 | **OpenAI pacing field news** — User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyond existing news car... | [2026-08-22-openai-pacing-news.md](2026-08-22-openai-pacing-news.md) |
+| 2026-08-22 | **Kosoy LTA card rewrite** — Vanessa Kosoy found the research-agenda summary hard to parse: it phrased LTA through book vocabu... | [2026-08-22-kosoy-lta-card-rewrite.md](2026-08-22-kosoy-lta-card-rewrite.md) |
 | 2026-08-22 | **Authorship bars rollout (chapters + appendices)** — Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/9, Summary/Refere... | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
 | 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
 | 2026-08-21 | Program map (Voice / Witness / Field) | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
@@ -19,12 +21,10 @@
 | 2026-08-20 | **Turner Reward≠OT shortform hedge** — Review Turner (Turntrout) shortform on shards / reward-as-target (`DNvCMjyi6YmMZri9t`); then add ... | [2026-08-20-turner-reward-hedge.md](2026-08-20-turner-reward-hedge.md) |
 | 2026-08-20 | **README accuracy sync** — User asked whether `README.md` was still accurate after work since its last edit (2026-08-15 titl... | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
 | 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
-| 2026-08-20 | **Erasure pass** — After housekeeping, user said to read the Erasure section, then “Think bigger.” | [2026-08-20-erasure-pass.md](2026-08-20-erasure-pass.md) |
-| 2026-08-19 | **Anthropic Risk Report field news** — User asked to read Zvi’s LessWrong post on Anthropic’s August 2026 Risk Report, the referenced re... | [2026-08-19-anthropic-risk-report-news.md](2026-08-19-anthropic-risk-report-news.md) |
 
 ## Archive by month
 
-- **2026-08** (114): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (116): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 
