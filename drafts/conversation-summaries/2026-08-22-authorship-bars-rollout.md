@@ -23,3 +23,4 @@ Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/
 ## Verify
 - `./build.sh` succeeds; PDF ~1440 pages.
 - No empty `\begin{authbar}...\end{authbar}` blocks in chapters/appendices.
+- Commit: `c866af5f`.
