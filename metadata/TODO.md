@@ -1,290 +1,213 @@
 # Project TODO
 
-Cross-cutting manuscript and tooling tasks. **Chapter-local work stays in the `.tex` file** (or `drafts/chapter-notes/` for deferred material).
+Cross-cutting tasks. **Chapter-local work stays in the `.tex` file** (or `drafts/chapter-notes/`).
 
-Run `make todos` to list all inline `[STUB]`, `TODO`, and `FIXME` markers in the repo.
+Run `make todos` for inline `[STUB]`, `TODO`, and `FIXME` markers in chapters.
+
+**Canonical map (this file).** Session handoff: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md) points here — do not maintain a parallel open-work list.
+
+Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
+
+---
+
+## Work map
+
+| Lane / board | Verb or role | Plan | Size | Depends on |
+|--------------|--------------|------|------|------------|
+| **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | L (in progress) | — |
+| **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (not frozen) | Measurand sheet (Phase 0) |
+| **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
+| **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse | *no plan file* | parked | Witness: one real stop (Exp. 4) |
+| **Spine** | Lean follow-through not in `formal/README.md` | — | ongoing | Witness Exp. 2 (fixture only) |
+| **Cite / Wait** | Blocked on external publish or author call | — | S each | — |
+| **Site** | Companion-site chores | — | S–M | De-center PDF → Voice |
+| **Outreach** | External artifacts | — | M+ | optional Witness negatives |
+| **Housekeeping** | Manuscript/tooling hygiene | — | S | — |
+| **Experiments** | Local sim lines | [`experiments/TODO.md`](../experiments/TODO.md) | — | CIRIS Ph.1 = Witness H1 |
+
+**Gates:** Measurand sheet → Witness Phase 0 · Witness real stop → Construct manuscript revisit · Voice does not mention Witness in reader copy.
+
+**Do not centralize here:** chapter `[STUB]`s; appH–K stubs; `% TODO[formalize]:` in chapters; wait-for-external cites.
 
 ---
 
 ## Where TODOs live
 
-| Kind | Location | When to use |
-|------|----------|-------------|
-| **Draft placeholder** | `[STUB]` in chapter `.tex` | Section not yet written; removed when chapter is drafted. |
-| **Per-chapter cite seeds** | `% TODO(deep-research):` in stub `Chapter References` | Primary BibTeX keys to wire when *that* chapter is drafted. See `metadata/source-canon.md`. |
-| **Per-chapter citation gap** | `% TODO[citation]:` in chapter `.tex` | One missing cite for a specific chapter (e.g. ch05 Turchin map, ch48 inferential coupling / acausal trade). |
-| **Per-chapter formalization** | `% TODO[formalize]:` / `% TODO[empirical-test]:` in chapter `.tex` | Math or test design owned by that chapter. |
-| **Chapter-specific open crux** | `% TODO[open-crux]:` in chapter `.tex` | Philosophical or scope crux tied to one chapter (e.g. ch48 delegation). |
-| **Research directions** | `metadata/open-problems.md` | Unresolved *research* questions, not editorial chores. |
-| **Tracked uncertainties** | `metadata/uncertainty-ledger.md` | Book-level open uncertainties (numbered list). |
-| **Cross-cutting chores** | *this file* | Work spanning chapters, build, structure, or citation passes. |
-| **Presentation & legibility** | *this file* § Presentation & external legibility | Site-first positioning, PDF de-emphasis, display renumbering — not claim-strength edits. |
-| **Companion site** | `metadata/TODO.md` § Site + `site/README.md` | Astro site features, content, and deploy; not manuscript prose. |
-| **Deferred chapter drafts** | `drafts/chapter-notes/*.tex` | Superseded or split chapter material; local TODOs stay there until merged or deleted. |
-| **Session handoff** | `drafts/conversation-summaries/` | Historical context only—not an active task list. |
+| Kind | Location |
+|------|----------|
+| **Draft placeholder** | `[STUB]` in chapter `.tex` |
+| **Per-chapter gaps** | `% TODO[citation]:`, `% TODO[formalize]:`, `% TODO[open-crux]:` in chapter `.tex` |
+| **Research directions** | `metadata/open-problems.md` |
+| **Tracked uncertainties** | `metadata/uncertainty-ledger.md` |
+| **Cross-cutting chores** | *this file* |
+| **Experiment lines** | `experiments/*/TODO.md`, `REPRODUCTION.md` |
+| **Session history** | `drafts/conversation-summaries/` (not an active task list) |
 
 ---
 
-## Big reviews (cross-cutting cruxes)
+## Voice (L)
 
-These are substantial review passes, not single edits. Each spans several chapters and should end with either a reconciled claim-strength decision or an explicit downgrade + open-crux entry in `metadata/uncertainty-ledger.md`.
+Plan: [`drafts/plans/voice.md`](../drafts/plans/voice.md). **In progress** — §1, §3, §4, §6–§8 done; §2 `chapterthesis` boxes and §5 progress deferred.
 
-- [~] **BIG REVIEW — Conserved-property transport decoupled from safety (Grow/Split/Merge).** Span: **ch08** (grow/split/merge), **ch30** (successor central test), **ch31** (seven conserved properties). The transport-of-conserved-properties approach is decoupled from safety in *two* directions, and neither is currently bounded:
-  1. **Forgeable.** A capable predecessor can engineer a successor to pass every conserved-property check (boundary closure, memory lineage, value-bundle geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity) while defecting on whatever was *not* conserved. Passing the seven-property score is then evidence of nothing against an adversarial predecessor — the properties become the successor's optimization constraints.
-  2. **Non-enumerable.** Across a real capability jump the *relevant* conserved set changes (new action channels, new self-model), and the now-critical invariant could not have been listed beforehand — the same shape as ch03's unprojectable safe set.
-  Task: decide whether conserved-property transport can be made *adversarially verifiable* via the ch47 cost relation (bound the cost of forging the signature) or must be labelled a comfort metric; add an explicit **forgeability budget** and a **hindsight-completeness caveat** to ch48's score; reconcile claim strength across ch08/ch30/ch31; cross-reference ch47. Owner node: ch31 (the score). Mirror the residue into `metadata/uncertainty-ledger.md`.
-  **Update 2026-07-02:** item 1 (forgeability) is `Forgeability.lean` / **MB10**. **Still open:** non-enumerability of the conserved set across capability jumps; unify `ConservedPropertySignatureVerifiable` with `Chokepoint.AdversariallyVerifiableUpTo`; MB10 defeater toy.
-
-- [~] **BIG REVIEW — Correlated steerability chokepoint (one failure, many WWCTV surfaces).** Span: **ch07** (boundary residual WWCTV), **ch46** (bundle probes / Goodhart WWCTV), **ch46** (successor closure WWCTV), **ch48** (laundering index WWCTV), **ch47** (adversarial verifiability vocabulary), **appB-bridge-crosswalk** takeaway, **appF** §`sec:research-dependency-order`. Reviewer (2026-06-30): each layer's strongest self-objection is measurand steerability under adversarial optimization; the failures are not independent — they share the adversarial-verifiability antecedent. Task: (1) state explicitly that the safety-case graph is conjunctive-through-a-shared-chokepoint, not N independent failure modes; (2) ~~weaken or qualify disjunctive-tolerance prose~~ **MB6b∨MB8 two-route prose retired** (2026-08-17; live path MB4+MB6b; CEV as `AlignmentTarget` in ch28/App G); (3) add a cross-chapter forward reference from each WWCTV to a single named chokepoint section (candidate home: ch47 or crosswalk takeaway); (4) reconcile with U-03/U-05/U-14/U-16. Source: `review/adversarial-steerability-correlated-failure-2026-06-30.md`. **Update 2026-07-02:** (1) and Chokepoint Lean done — `formal/AlignmentProofSpine/Chokepoint.lean`, App G §`appi:sec:chokepoint`, appF/appB/ch43 updated. **Update 2026-08-17:** (2) done for MB6b/MB8 in manuscript + field index/glossary. **Still open:** (3) per-chapter WWCTV forward references; (4) U-ledger reconciliation; empirical question whether any disjunct's instruments are genuinely independent (`SharedInstrumentHypothesis` undischarged).
-
----
-
-## Krym architecture revision (plan closed 2026-08-17)
-
-Phases 1–6 and post-plan passes (`{leanbox}` reframe, MB6b∨MB8 retirement) shipped. Plan archive: [`drafts/attic/krym-architecture-revision-plan.md`](../drafts/attic/krym-architecture-revision-plan.md). Logs: `drafts/conversation-summaries/archive/2026-08/2026-08-17-krym-phase*.md`.
-
-- [~] **`{leanbox}` at remaining `\leanspine` sites** — ≤1 compact box per chapter at first high-value Lean introduction; **17 chapters done**. Add only where elaboration beats the margin note (~26 chapters still without a box).
-- [ ] **Lean Chokepoint identifier rename (optional)** — names like `correction_integrity_disjunctive_tolerance_needs_distinct_instruments` still frame the retired two-route packaging; optional rename for gravestone clarity (API + App G cross-refs; low priority).
-- [ ] **Wire experiment scripts to `BundleEvidenceAdequate`** — empirical MB2 line stays ch15–21 + IRL/ELK cites; no Lean hook from graded-lab / value-detect lines yet (explicitly deferred from Krym plan).
-- [ ] **App G translation spine opener (author)** — mirror site `/lean/` projections table in Appendix G; site companion done; manuscript pass author-owned (also in HANDOFF).
+- [ ] **De-center the book PDF as the flagship artifact (S).** Site first; demote page-count hook. Cross-ref: `hostile-review.md`.
+- [ ] **Separate bridge axioms from book assumptions in reader-facing Lean (M).** Dependency spine naming; bridges are hypotheses to check. Homes: App G, site Lean, `formal/README.md`, `REVIEWING_FOR_AGENTS.md`.
+- [ ] **Claims ledger freshness / numbering / completeness (M).** Status vocabulary, C-044, chapter pointers. `review/claim-checklist.md`.
+- [ ] **Per-chapter WWCTV → chokepoint forward refs (S).** Residue from correlated steerability review; Chokepoint Lean done. Source: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
+- [ ] **U-ledger reconciliation for chokepoint review (S).** U-03/U-05/U-14/U-16 vs shared-instrument hypothesis.
+- [~] **Terminology demotion follow-through (M).** Only if it blocks first-screen honesty; else defer. Inventory: `drafts/glossary-term-audit.md`, `drafts/glossary-prose-pass/THIN.md`.
+- [~] **Narrative voice consistency (S).** Optional body pass; wire `check_voice.py` into `make check` if desired.
 
 ---
 
-## Presentation & external legibility
+## Witness (L)
 
-Planned follow-ups from the v1.1 legibility pass and hostile-review triage. These are **product/presentation** changes, not claim-strength changes.
+Plan: [`drafts/plans/witness.md`](../drafts/plans/witness.md). **Not frozen.** Independent of Voice.
 
-- [ ] **De-center the book PDF as the flagship artifact.** The companion site (guided paths, concept cards, standalone claims, experiments index, Lean spine browser) should be the primary entry point; the full PDF remains available as "the long-form manuscript" but should not lead README/nav/stats (page count, word count) or external pitch. Task: audit README, site homepage, About, executive overview, and any auto-generated stats (`metadata/book-stats.md`, site copy) so **site** metrics and cards surface first; demote or sidebar the PDF link; avoid leading with ">1000 pages" as the hook. Cross-ref: `hostile-review.md`, session logs 2026-07-08 legibility work.
-- [ ] **Per-part chapter renumbering (display only).** Renumber chapters **within each part** for reader orientation (e.g. Part II Chs. 1–5 instead of global 6–10) while keeping global `chNN` filenames, `\label`s, Lean ids, and site slugs stable for links and tooling. Task: decide display convention (part-local number in PDF TOC/headers vs. site chapter cards only); update `scripts/generate_tables.py` / site sync if the printed roadmap should show part-local numbers; document the dual scheme in `INSTRUCTIONS.md` §14. **High risk** — do not rename files or `\label`s without a dedicated migration pass.
-- [ ] **MB7a–c bridge card nouns vs field-standard names.** Cards now use book terminology (Access-Model Soundness, Filter Coverage, Bounded Hidden Capability). Consider whether field-facing nouns should later align with more standard labels (e.g. deceptive alignment / inner alignment / AI Control capability gap) without collapsing the MB7a–c split — see [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) and Track 2 divergence plan.
-- [ ] **Field crux divergence (Track 2).** Agendas often share a matrix noun but not the same formal object (corrigibility MIRI vs Christiano vs MB4/MB4a; Grounding Drift vs GSAI coverage; Successor Gaming vs inner-alignment deceptive alignment; Goodhart Selection vs Demski selection; ELK as MB2 slice). Task: (a) inventory from `bridges.yml` + inter-agenda glossary; (b) where load-bearing, extend field-local Lean under `formal/AlignmentProofSpine/Field/` (interfaces + non-converse — no new `MB*` without distinct conclusion); (c) App B notes + chapter WWCTV pickup so claim strength matches. Plan: [`drafts/field-crux-divergence-plan.md`](../drafts/field-crux-divergence-plan.md). Do not rename spine axioms for synonymy alone.
+Deliverables below live **in the Witness plan**, not as duplicate rows here:
 
-## Outreach & external engagement
+- Phase 0 freeze sheet = measurand table + verifiability labels + scalar residues (GLI, \(\mathcal{K}\))
+- Real worked example (non-fictional); toy/Lean `WorkedInstance` fixture; cornerstone value-bundle test (C-004)
+- CIRIS Phase 1 (H1) + later `PositiveMeasuredPath → CorrectionIntegrity`
+- Expectation 6 standalone-claim replications; hardware `hardware_tag` as candidate C-003 instrument only
 
-Florian Dietz feedback (2026-08-08): agent-discovery experiments and negative-results ledgers are distinctive but buried; consider standalone publication and per-researcher pairwise novelty matching (Bubble Connector–style).
-
-- [ ] **Standalone publish — agent-discovery / negative-results line.** Pull one experiment line out of the book/repo and publish as a standalone artifact (site card, LW post, short paper, or sibling repo README). Candidate homes: UAD / unsupervised agent discovery (`agency-detect`, embedded-simulation, lab-simulation); negative-results ledger as a first-class methodology piece. **Details TBD** (which line, audience, format, claim strength).
-- [ ] **Pairwise researcher-interest matching (Bubble Connector).** For each outreach target, automate discovery of novel pairwise connections between this project's artifacts (experiments, bridges, Lean modules, concept cards, negative-results ledgers) and that person's stated research interests. Intended for agent automation, not manual curation. **Details TBD** (researcher roster / interest corpus, input sources, output format, Bubble Connector integration).
-
-## Manuscript (cross-cutting)
-
-- [ ] **Do not include Construction in the manuscript yet.** Companion papers *Alignment Under Selection* and *Constructing Alignment Attractors* (`papers/alignment-under-selection/`, `papers/constructing-alignment-attractors/`) stay spin-outs. Lean already types the open construct-lifecycle crux (`ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`); the book’s live path is certification/preservation, not attractor construction. Integrating the five-condition attractor definition or the symmetry-breaking criterion into chapters would give the apparatus **unearned weight** relative to what it can do.
-
-  Reviewer feedback (2026-08-21) on the two papers — keep as the integration bar:
-
-  > the formal apparatus (definitions, inequalities, tolerance parameters) currently outruns what it can do. Nothing here is false or fabricated as far as I can check, the author is unusually disciplined about scope, and the math is correct. The main vulnerability is not error but unearned weight — a reader (or the author, over time) could come to feel the five-condition attractor definition or the symmetry-breaking criterion constitute progress toward solving alignment, when what they actually constitute is a well-organized restatement of the difficulty, plus a correct but small formal toolkit for reasoning about coupled instability. That's a real and useful contribution to how people talk about the problem; it is not yet a contribution to solving it, and the papers themselves say this more clearly than most such work does.
-
-  **Revisit only if** a Track A–style host can *fail* a pre-specified construction check (see proposed Expectation 7 in `drafts/track-a-deployment-witness-plan.md`) — not if the papers get denser definitions. Candidate later homes if that bar is met: ch34 selection ecology, ch38 basins, ch48 pivotal-process, App. F research program; do **not** add a sixth intro claim.
-
-- [ ] **Turner Reward≠OT follow-up post** — ch21 currently footnotes an Aug 2026 shortform (comment `DNvCMjyi6YmMZri9t`: definitional claim stands; empirical prediction hedged because pretraining supplies a ``reward'' concept). When the promised full post appears, replace the footnote with a bib entry + `\bibsummary`, and re-read whether the hedge still matches. Marker: `% TODO[citation]:` in `chapters/ch21-reward-to-bundle-inference.tex`.
-- [ ] **MacKinlay *Agency WTF* (unpublished)** — Dan MacKinlay deck (2026-07-13; reviewed from user PDF, not yet public). Taxonomy of "agent" as terminology tarpit: agency as cluster concept; axes (boundary, multi-agent, observer-relativity, boundedness, descriptive vs normative warrant); agency-theatre; gradual disempowerment; moral patienthood of AIs. **Check later** when a published version appears — then decide bib + `\bibsummary`, inter-agenda glossary homograph note under agent/agency, and whether ch01/ch09 need a framing cite. Session map: overlaps MB1, composite agency (ch06–09), field crosswalk, human-power / gradual-disempowerment cousins; project response is operational decomposition not single agency definition.
-- [ ] **Alternative boundary ontology (Chris Pang)** — model agents as processes with increasing self-correlation and increasing environment-correlation over time; boundary as epiphenomenon rather than primary object. Compare to directed $\epsilon$-blanket + MB1 estimator-soundness framing (ch06–07); candidate homes: ch06 exposition, ch07 recovery bridge, `formal/AlignmentProofSpine/Boundaries.lean`, or `metadata/open-problems.md`.
-- [ ] **Wire `zarncke2026embedded-value-formation` (brain-to-values)** — *Viability-Constrained Value Formation in Embedded Agents* added to `metadata/source-canon.md` (2026-07-11). Task: cite in manuscript where viability constraints on learned value bundles matter; candidate homes: ch15 (LHCV / compressed control), ch03/ch33 (viability / safe-set language), embedded-agency material. Paper's Entropic Ecology Transfer Test may later connect to `experiments/graded-lab-simulation/`. **Graded-lab touchpoint:** `experiments/graded-lab-simulation/REPRODUCTION.md` §8.
-- [ ] **Complete citation review** — in-body `\autocite`/`\cite` coverage, missing BibTeX keys, `context/lw-references.md` crosswalk, chapter reference blocks. Part III ch12/ch13 known thin; deferred pending this pass.
-- [~] **Institutional translation appendix bibliography pass** — **partial 2026-06-29:** added 16 entries to `references/governance-institutions.bib`, inline cites throughout `appendices/appC-institutional-translation.tex`, new `\section{Institutional Source Literature}`, and appendix-local `Appendix References` bibliography. **Still open:** deeper sector-specific empirics (consent-decree effectiveness studies, competition-law coordinated-effects empirics, incident-reporting regime comparisons); example-by-example wiring of those sources into the analogies.
-- [~] **External AI-safety report review** — **partial 2026-08-01 (interventions index):** mapped LessWrong AI Safety Interventions clusters onto preservation layers in `appendices/appB-bridge-crosswalk.tex` §`sec:intervention-coverage-map`; archived PDF + extract under `context/`; surgical cites (shard theory, Cartesian frames/CCD, RLAIF/CAI, RSP, logical induction, adversarial-training WWCTV, generalization-control distinction, hardware_tag cross-ref). **Still open:** International AI Safety Report (`https://internationalaisafetyreport.org/`).
-- [~] **Deep citation/source discovery pass** — the generating report was deleted as stale (pre-v1.0 structure; `drafts/attic/repo-cleanup-plan.md` Task 7). **Still open:** import remaining proposed keys from that session's log (`2026-06-30-deep-research-top10-citations.md`) into `.bib` / chapter reference blocks; duplicate check.
-- [ ] **Hardware-backed causal boundaries — no home yet** — hardware-rooted identity/attestation (`handle.hardware_tag` in `appendices/appD-worked-example.tex`) is the only place the manuscript uses hardware as a boundary anchor, and it appears there as a schema field rather than as a treated idea. Open question: is a hardware root of trust a distinct *boundary* instrument (physically bounding which compute a unit can be running on, resisting host-capacity aliasing and relocation) rather than a cyber-hygiene product? Candidate homes: ch07 (boundary instruments, alongside interventional/passive/factorization routes), ch33 (certification evidence), ch39 (what passive observation cannot establish). Do **not** file under governance/App. C — attempted 2026-08-01 and it read as a misfit. Distinct from commercial "AI hardware security" offerings in the intervention index, which stay excluded by reference.
-- [~] **Logical-induction markets research topic** — **partial 2026-08-01:** Ch. 48 WWCTV bullet cites `garrabrant2017logical` as prospective instrument for forecasting detector failure and severed coordination. **Still open:** App. F research-program paragraph; ch46/ch47 cross-refs if load-bearing.
-- [~] **Strategic advice follow-through** — `review/strategic-advice-2026-06-28.md`. Done: toy capture pipeline, Certification-Under-Manipulation (ch43), four standalone claims, authorship note. **Still open:** Lean headline-theorem audit; tiling/mesa objections; falsification ledgers as load-bearing; solicit adversarial review.
-- [~] **Full worked example (toy / Lean pipeline)** — **Still open (Python):** value-bundle signal, safety-case decision layer, richer gridworld or logged LLM/tool trace. Lean half exists: `WorkedInstance.lean` on pinned embedded-sim fixtures (`workedCert_fails` / `honestCert_passes`). Do not re-derive the 2026-07-02 session dump.
-- [ ] **Real worked example (non-fictional).** Appendix D (`appD-worked-example.tex`, BioShield / Harbor Health) is explicitly **fictional but plausible** — useful for composition, not for external credibility. Task: add a second worked example (appendix subsection, site card, or replace appD's primary role) grounded in **real** data: a published incident, a logged eval/red-team trace, an institutional history case from Appendix M, or a pinned `experiments/` fixture with full provenance. Requirements: name the actual actors/systems (or redacted real orgs with permission), show which measurands were **measured** vs **assumed**, report failures/negatives honestly (per `NEGATIVE_RESULTS.md` hygiene), and avoid composite fiction. Candidate homes: extend `appendices/appD-worked-example.tex` with a `\section{Real case: …}` sibling, new `appH` boundary worked example with real UAD/lab-sim trace, or a site-first case-study card linked from ch47/ch46. Distinct from the toy/Lean pipeline item above.
-- [ ] **Measurand instantiation table (operationalization-by-deferral).** Reviewer (2026-06-30): composite indices ($J$, GLI, CCI, conserved-property score, bundle probes) are defined via sub-distances defined in other chapters and bottom out in Lean `Int` proxies / `Toy… := True`; no layer is yet a measured number. Task: one table mapping each composite → sub-component chapters → concrete estimator → dataset or sim scenario → `experiments/toy-simulation/` script (`correction_capture_toy.py`, `mb*_diagnostic.py`, multiresolution audit path). Candidate homes: ch47 (adversarial measurement), appB (boundary worked example), or a new appendix subsection; pair with `formal/README.md` bridge disclaimer. Source: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
-- [~] **Ad-hoc definition audit** — search for scalar scores, hand-chosen weights, opaque operators, or one-off named quantities that import calibration or ontology assumptions without a measurement story. For each, either vectorize/status-certify it, ground it in an existing framework layer, demote it to exposition, or add an explicit uncertainty/assumption entry. **Done, 2026-06-28 (three sessions, retroactively identified as this audit 2026-07-04):**
-  - `drafts/conversation-summaries/archive/2026-06/2026-06-28-update-operator-refactor.md` — \(U_H\) demoted from an unspecified hidden mechanism to schematic notation for an auditable `ValueUpdateEnvelope` (ch36, ch45, `Core.lean`).
-  - `drafts/conversation-summaries/archive/2026-06/2026-06-28-update-operator-cleanup.md` — ch34's scalar preservation score \(P(A)\) (a hand-weighted sum) retired in favor of the vector/status preservation envelope \(\vec{\Pi}(A)\); `V_t` no longer carries raw \(U_H\).
-  - `drafts/conversation-summaries/archive/2026-06/2026-06-28-cci-calibration-vectorization.md` — scalar CCI reframed as a numeric projection leaf only after vector/status `CCICertificate`/`CCIThresholds` pass (ch26, ch42, ch43).
-  - `drafts/conversation-summaries/archive/2026-06/2026-06-30-trace-diversity-honesty.md` — removed the arbitrary ×1000 "millibit" scale from the trace estimator and renamed it `laggedPatternDiversity` with an explicit "not Shannon MI" caveat (ch11, `TraceBIQ.lean`).
-  - **Still open (found during the 2026-07-04 retrospective pass, not yet fixed):** ch40's goal-laundering index \(\mathrm{GLI} = w_B D_{\mathrm{bundle}} + w_\Phi D_{\mathrm{bearer}} + \ldots\) and ch31's composite conservation score \(\mathcal{K}(A,A') = \sum_i w_i \exp(-d_i/\sigma_i) - P_{\mathrm{red}}\) (`sec:composite-conservation-score-ch31`) are both still hand-weighted scalar sums with unset \(w_i\)/\(\sigma_i\)/thresholds — the same pattern already fixed for ch34's \(P(A)\) and ch26's scalar CCI. These two are also flagged as ungrounded composites in the "Measurand instantiation table" item above (`review/adversarial-steerability-correlated-failure-2026-06-30.md`). Candidate fix: same treatment as \(\vec{\Pi}(A)\) — replace with a vector/status object over named sub-thresholds, defer scalar projection to after vector conditions pass.
-- [ ] **Cornerstone empirical value-bundle test** — design and run (or specify tightly enough to run) an empirical test of the value-bundle model: recover low-dimensional bundle structure, test counterfactual transfer, stress it under Goodhart/social-choice pressure, and report failure modes. Candidate homes: ch16/ch17/ch46, appC, and appH. **Graded-lab touchpoint:** `experiments/graded-lab-simulation/REPRODUCTION.md` §8 (distinct line; do not conflate Q1–Q3 FINDINGS).
-- [ ] **Revised terminology consistency pass (v1.1 demotion follow-through).** The 2026-07-08 coined-term demotion (`drafts/conversation-summaries/archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`) established plain-first canonical vocabulary at definitional homes + glossary + notation, with coined shorthands demoted to parenthetical/"for short" uses only. Task: audit the manuscript, appendices, site cards, `metadata/concepts.yml` (glossary terms; `metadata/terminology.md` retired 2026-07-17, see `drafts/conversation-summaries/archive/2026-07/2026-07-17-content-sync-plumbing.md`), `metadata/notation.md`, `INSTRUCTIONS.md`, and experiment docs for drift. **Canonical replacements to check:** deployment/control mass → **deployment leverage** (`μ_E`; "deployment leverage" only as explicit shorthand after first plain definition); selection handle → **point of control over deployment**; fitness → **deployment growth rate** (`Fit_E`; "fitness" only in-formula shorthand); preservation envelope → **preservation conditions** (`\vec{\Pi}(A)`); selection environment → **deployment environment**; correction parasite → **correction-audit evasion** (ch36 metaphor/title kept). **Known gaps (grep starting points):** ch34 still uses "deployment leverage" in running prose after the plain-first definition; appC/appD/appF/appM, ch35/ch37, and lab-sim code/docs retain old headwords; `metadata/terminology.md` may still list pre-demotion entries while `appendices/appE-glossary.tex` was rewritten — reconcile source ↔ generated glossary. Policy: plain-first at first definition + glossary; downstream shorthand acceptable only where already glossed, not as uncoined headwords in new prose. End with a short demotion checklist in `metadata/concepts.yml` or the glossary intro if useful.
-- [~] **Narrative voice consistency** — **2026-06-30:** two-register policy recorded in `INSTRUCTIONS.md` §2 and `context/writing-style-gunnar.md`; `chapterthesis` boxes normalized (impersonal); WWCTV keeps **This chapter argues**; `scripts/check_voice.py` lints chapter bodies. **Open:** optional body pass for stray `this book` in chapters; wire `check_voice.py` into `make check` if desired.
-- [ ] **Review U-shaped coordination claim (conjectural)** — the mid-scale coordination-efficiency U-shape appears in ch11 (forward-ref only) and ch13 (Section~\ref{sec:mid-scale-collapse-ch13}). Treat as conjectural until empirical backing or explicit downgrade; decide claim strength, add uncertainty-ledger entry if needed, and reconcile with `context/extracts/bitwise-iq.md` sampling-bias caveats.
-- [~] **Claims / assumptions ledgers** — `claims-ledger.md` and `assumptions-ledger.md` are manually maintained maintainer ledgers. `assumptions-ledger.md` also generates Appendix E; `claims-ledger.md` is not generated and was header-refreshed 2026-06-26 after `ch47`/main-draft completion. **Done 2026-07-04 (earlier pass):** all 11 `claims-ledger.md` entries that read placeholder "add BibLaTeX keys here" (C-001, C-002, C-003, C-004, C-005, C-006, C-007, C-008, C-009, C-010, C-011) now cite real, verified BibTeX keys already used in each claim's home chapters (C-004a and C-044 already had real references). **Done 2026-07-04 (follow-up pass, `27d0e42`):** every `Chapter(s)` column re-verified content-by-content against current `ch01`–`ch48` numbering/titles; stale in-text pointers fixed (C-005 certified separation → ch29; C-004a/C-044 eighth safety-case layer → ch42). **Ongoing:** when drafting/revising a chapter, keep C-/A-/U- entries in sync. See `review/claim-checklist.md`.
-- [ ] **Claims ledger freshness / numbering / completeness pass** — re-audit `metadata/claims-ledger.md` after the 2026-07-13 epistemic-status notes (reviewed subset: ch01–ch12, ch33, ch34, ch36, ch40; `36bf3c3`). Check: (1) **freshness** — header `Last cross-check` date, status vocabulary, and weakest-link fields still match current chapter prose and epistemic-status boxes; (2) **numbering** — every `Chapter(s)` pointer is current post-`ch01`–`ch48` renumbering (content-by-content, not offset math); spot-check known gaps flagged during epistemic-status drafting (e.g. ch36 has no C- entry; Gem Map / uncertainty-ledger chapter columns may still carry pre-renumbering refs); (3) **completeness** — each major Introduction claim, named gem, and load-bearing bridge assumption in the manuscript has a C- entry or an explicit omission note; no orphan C- IDs; C-004a/C-044 discharge in ch48 still accurate. Use `review/claim-checklist.md`, `metadata/book.yml`, and `REVIEWING_FOR_AGENTS.md` Gem Map as crosswalk inputs.
-- [ ] **Consider claims/assumptions ledger automation** — decide whether to move claims and assumptions to structured metadata (`claims.yml`, `assumptions.yml`, or chapter-local markers) and generate `metadata/claims-ledger.md`, `metadata/assumptions-ledger.md`, Appendix E, and reviewer-facing tables from that source. Goal: reduce drift between chapter prose, WWCTV sections, Lean bridge assumptions, and maintainer ledgers.
-- [ ] **Part-opener illustrations** — the part intro pages have substantial whitespace after the short gem/signpost text. Add one compact illustration or conceptual diagram per part opener, preferably reusing existing framework motifs: dynamical guarantee, boundary discovery, capability expansion, value-bundle/bearer geometry, transport layers, vector CCI/correction channel, successor inheritance, selection basin/correction parasites, adversarial cost-of-faking, and value-update envelope.
-- [ ] **Verifiability-label pass** — for each core measurand (boundary residual, BIQ/boundary information, value-bundle geometry, bearer maps, correction-channel integrity, conserved successor properties, laundering index), label it *observable*, *i.i.d.-robust*, or *adversarially verifiable up to $\kappa$* and propagate the label into the safety case (ch46). Framework + definitions owned by **ch47** (`What Survives an Adversary`). The lethality stress test (ch48) should be cross-referenced as "metrics sorted by adversarial-verifiability failure."
-- [ ] **Grounding/safety-case layer completeness review** — after grounding viability was added as the eighth safety-case layer, decide whether ch46's layer list can be derived from a completeness argument over grounded correction (boundary, grounding, bundle, bearer, correction, successor, basin, adversarial measurement) or whether it should be explicitly framed as a provisional checklist. Mirror the outcome into ch46 and the claims/assumptions ledgers.
-- [ ] **Perturbation-recognition crux** — resolve the open question seeded in ch47/ch46: *name a perturbation a superintelligence cannot recognize as a test.* If none exists, active-measurement remedies (ch46) collapse to the system's chosen story and the cost relation (below) is the only handle. Lives inline as `% TODO[open-crux]` in `ch47`; ch46 now states the blunt challenge in prose — still needs a bounded answer or an explicit downgrade.
-- [~] **ch48 inferential coupling / acausal trade section (`sec:inferential-coupling-acausal-trade-ch48`)** — drafted to manuscript depth 2026-06-26 and retitled 2026-06-27: uses inferential coupling as the umbrella term, separates shared-history/non-message/self-similarity coupling from full decision-theoretic acausal trade, wires \(\widehat{\mathrm{IC}}_{ij}\) / \(\mathrm{ICI}_{ij}\) to \(\tilde{\kappa}_{ij}\), calibrates adversarial evasion through ch47, and resolves remaining `[STUB]`s. Still open as research: large-scale ICI dynamics, noisy-prior mitigations, and adversarially verifiable coalition detection.
-- [ ] **Inferential-coupling threshold calibration** — calibrate \(\tau_{\mathrm{ac}}\) / open-edge thresholds for \(\widehat{\mathrm{IC}}_{ij}\) and \(\tilde{\kappa}_{ij}\) in the adversarial-verifiability and stress-test chapters (ch47/ch48). Treat the current \(\tau_{\mathrm{ac}}\approx0.9\) as an illustrative high-confidence setting inherited from the acausal-trade detector, not a universal constant; specify what evidence, base rates, adversarial costs, common-cause baselines, and acceptable false-positive/false-negative tradeoffs would set the threshold. Consider defensive calibration tools such as prediction markets or Logical-Induction-style forecasting over future causally severed coordination events, probe failures, and detector-evasion discoveries.
-- [ ] **Probe-local inferential coordination** — decide whether one-shot or short-episode inferential coupling can evade cumulative, deployment-graph coalition detection while still producing action-relevant cooperation. Connect ch48's \(\widehat{\mathrm{IC}}_{ij}\) / \(\tilde{\kappa}_{ij}\) graph evidence to ch46's adversarial setup, hidden-randomization, and cumulative-evidence machinery, or explicitly mark the gap as unresolved.
-- [~] **Notation reconciliation** — apply the cross-chapter symbol/formula resolutions in `review/fix-plans-2026-06-22.md` §C, then record canonical forms in `metadata/notation.md` (Appendix A is generated from it).
-  - **Done 2026-06-23 (build verified):** C1 ΔL sign; C2 `g_B`/`H_B`/`G_B`+retire `T_{ij}`; C4/C16 `C_raw`/`CCI`+retire `C_corr` (ch05 `$C_{\text{corr}}^{\text{society}}$` kept); C5 `K` capability in ch11–13; C6 `η_g`/`η_c`+`G_coord`/`Ω_coord`; C7 `U_H`+roman `V_t`; C8 `F`+`k`; C10 `C_X`; C11 `χ_{ij}(a)`; C15 `\MI`; **U_S** (ch46/29/38). See `drafts/conversation-summaries/archive/2026-06/2026-06-23-notation-propagation.md`.
-  - **Remaining:** propagate ⟳ rows in `metadata/notation.md`; **C12 pivotal-process basins:** loose set descriptions in ch38 (`eq:race-certified-basins-ch37`) need operational machinery (percolation/$\tilde{\kappa}$, $\mu_E$, basin-stability predicates, cooperation uptake); formal narrative in ch48 (`sec:pivotal-process-ch48`); Lean `P35` basin narrative still open.
-  - **Confirm with author:** `C_H` vs time-indexed `C^H_t` convention.
-- [~] **Lean spine ↔ notation review** — sync 2026-06-23 (`drafts/conversation-summaries/archive/2026-06/2026-06-23-lean-spine-notation-sync.md`), updated 2026-06-28: `U_H`/`U_S`; scalar `CCI` as the numeric risk leaf plus vector/status `CCICertificate` for manuscript certification (no standalone `C_raw` export); typed `CorrectionPath`; `SuccessorSafeWitness` (`CCIPreserved` + `U_S`); spine citations in ch03/24–26/29/31/39. **Updated 2026-06-29:** field-agenda subsumptions moved into `formal/AlignmentProofSpine/Field/` with finite helpers, imported theorem handles, agenda modules, Appendix I status table, and proof graphs. **Still open:** full bundle geometry in `Bundles.lean`; ch13 `P12`; ch48 basins; remaining non-field `Bool` counterexamples; more chapter-level `\leanspine{}` citations.
-- [~] **Update-operator ontology audit** — review update operators across Lean, notation, and manuscript prose for hidden ontology imports. In particular, check whether value/correction/successor update maps assume a fixed ontology, privileged state variables, or semantic coordinates that should instead be represented through transport, bearer maps, or bridge assumptions; then revise the formal signatures and chapter claims accordingly.
-  - **Partial 2026-06-28:** ch46/ch45 now treat \(U_H\) as schematic notation for a human-correctable update envelope, not a directly certifiable hidden mechanism. `Core.lean` adds `ValueUpdateEnvelope` / `ProcessPreservationOperational` as a conjunction of existing grounding, bundle, bearer, correction, successor, and adversarial layers; MB8 is documented as a legacy/CEV-style alternate bridge rather than the live certification route. Follow-up cleanup propagated the envelope framing through ch46/ch46, retired ch46's scalar preservation score in favor of \(\vec{\Pi}(A)\), and synced notation / assumptions metadata.
+- [ ] **Freeze Witness Phase 0** — charter + pre-register pass/fail/refuse; measurand sheet as the freeze artifact.
 
 ---
 
-## Appendix follow-through
+## Field (M–L)
 
-- [~] **Built in PDF order:** **appA** notation; **appB** bridge crosswalk; **appC** institutional translation; **appM** institutional histories; **appD** worked example; **appE** glossary; **appF** research program; **appG** Lean proof spine; **appN** experimental evidence.
-- [~] **Still `[STUB]` (not yet in `book.tex`):** **appH** boundary worked example, **appI** value-bundle inference, **appJ** correction-channel audit, and **appK** safety-case template.
+Plan: [`drafts/plans/field.md`](../drafts/plans/field.md). Independent of Witness.
+
+- [ ] **Field crux divergence.** Homograph table + App B notes + field-local Lean where load-bearing; no new `MB*`. Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../drafts/attic/field-claim-formalization-and-bridge-review-plan.md).
+- [ ] **MB7a–c field-facing nouns (S).** Optional aliases to field-standard labels without collapsing MB7 split. `reference/field-agendas/inter-agenda-term-glossary.md`.
+- [ ] **App B vs merged field-agenda row names (S).** Secondary App B prose deferred.
+- [~] **External AI-safety report review — IASP cluster (S).** Interventions index done 2026-08-01; still open: International AI Safety Report → Field when read.
 
 ---
 
-## Formalization tracks
+## Construct (parked)
 
-Canonical home is the chapter that *owns* the object; other chapters should reference, not duplicate, inline TODOs.
+**No plan file.** Papers stay spin-outs until Witness records at least one **real stop** (Expectation 4).
 
-| Track | Canonical chapter | Also referenced in |
-|-------|-------------------|-------------------|
-| Grounding viability / conservative abstraction | ch03 | ch16, ch46, ch46, ch46, ch47 |
-| Define $\mathrm{ICI}_{ij}$ (inferential coupling index) | ch48 | ch48 open-problem ledger |
-| Coalition-collapse empirical tests | ch48 | ch48 |
-| Pivotal process $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ conditions | ch48 (`sec:pivotal-process-ch48`) | ch48 |
-| Macro basins $\mathbb{B}_{\mathrm{race}}$ / $\mathbb{B}_{\mathrm{certified}}$ operationalization | ch38 (`eq:race-certified-basins-ch37`) | ch48, ch35, selection-ecology |
-| Transparency ↔ $\kappa_{ij}$ ↔ correction observability | ch48 only | — |
-| Cost-of-opacity / budget verifiability $c_{\mathrm{fake}}(M,\Delta)$ vs affordable surplus | ch47 | ch10, ch11, ch46, ch46, ch45 |
-| Prove/bound measure of decisive-yet-undetectable effective controllers (representability vs detection-latency) | ch47 | ch07, ch09, ch45 |
-| ch48 open cruxes (reflective stability of correction; delegating superhuman plan evaluation) | ch48 only | `metadata/uncertainty-ledger.md` items 7–8 |
+- [ ] **Do not include Construction in the manuscript yet.** Companion papers *Alignment Under Selection* and *Constructing Alignment Attractors* (`papers/`). Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`. Book path = certification/preservation (ch33), not attractor construction.
 
-### Lean proof spine (`formal/`)
+  Reviewer bar (2026-08-21) — integration requires a Witness-style **fail/refuse**, not denser definitions:
 
-**Scope (for critics).** Bridges `MB1`–`MB11` (incl. `MB4a`) and any step that requires substantial empirical
-work (estimator soundness, identifiability under sampling, institutional basin stability,
-adversarial robustness in the wild, CEV convergence evidence, etc.) are **intentionally
-out of scope** for both the book’s proof obligations and Lean. Lean checks the logical
-shape *if* those bridges are granted. The items below are **in scope**: places where a
-**drafted chapter already defines formal objects** but Lean still uses integer proxies,
-axiom lists, `Bool` toys, or definitional stubs instead of that chapter’s structure.
-`MB9` now covers grounding-certificate validity; Lean proves only the structural
-no-silent-gap lemma for conservative abstraction, not that real systems satisfy it.
+  > the formal apparatus … currently outruns what it can do. … The main vulnerability is not error but unearned weight … a well-organized restatement of the difficulty, plus a correct but small formal toolkit … not yet a contribution to solving it.
 
-- [ ] **Separate bridge axioms from book assumptions in reader-facing Lean presentation.** Reviewers read `#print axioms` / the axiom-budget table and infer "everything is axiomatic." Task: (1) **terminology** — in Appendix G, site Lean spine, and `formal/README.md`, consistently distinguish **book assumptions** (`A-001`–`A-014`, manuscript load-bearing bets stated in chapters) from **bridge axioms** (`MB1`–`MB11` incl. `MB4a`, explicit conditional interfaces imported into the proof spine, many discharged only empirically or not at all); (2) **presentation** — lead with what is **proved** (finite counterexamples, separations, rederivations, conditional theorems *given* bridges) before the bridge list; (3) **vocabulary carriers** — label Mathlib/`propext`/abstract-type entries as "vocabulary" or "scaffolding," not as alignment claims; (4) **site/PDF** — add a one-screen "how to read the spine" that states bridges are hypotheses to check, not lemmas the book proved; (5) optional: split the axiom-budget table into bridge vs vocabulary columns more aggressively, or a summary row "headline theorems with zero MB* in antecedent." Goal: avoid the impression that Lean **axioms everything** when most MB* rows are named placeholders for field cruxes. Homes: `appendices/appG-lean-proof-spine.tex` §axiom-budget intro, `appendices/appB-bridge-crosswalk.tex`, site Lean graph chrome, `REVIEWING_FOR_AGENTS.md` Lean posture paragraph.
+  **Later candidates** (after Witness stop; not Witness phases): H5 construction vs certification stop (same episode, two trees); H3/H4 wrong-vacuum / enforcement-collapse protocols. Manuscript homes if bar met: ch34, ch38, ch48, App. F — **not** a sixth intro claim.
 
-- [ ] **Field agenda generated artifacts — build-time only (deferred)** — Once `reference/field-agendas/data/` structure stabilizes: stop committing generated `site/src/content/cards/field-agendas/*.md`, `site/src/data/field-agendas.json`, and/or `field-agenda-index.md`; rely on `sync:field-agendas` in `npm run sync` / CI prebuild instead. Prerequisite: low schema churn; drift detection without committed artifacts.
-- [ ] **App B ↔ field agenda sync (deferred secondary)** — (1) full spine-translation reading-rules table in App B (currently field-index only); (2) optional MB9 antecedent prose split; (3) Kosoy/infra-Bayesianism footnote on intervention map vs ambient MB1/MB9 cousin; (4) International AI Safety Report intervention cluster; (5) field-first pass on MB11-facing `dynamical-guarantee` / MB4a-facing CCI site cards. Homes: App B §intervention-coverage-map, site concept bodies.
-- [ ] **Regret / numeric harm leaf (deferred)** — Phase 3: keep `SystemRegretSafetyEvidence` as **non-consumer side channel** (not `RiskGap`, not `CertifiedSafetyCase`, not `MB11`). If the book later adopts expected-harm language, add a parallel **`DeploymentHarmBounded`** consumer leaf beside `NumericRiskLeaf` — architecture change, not a bridge label. Lean anchor: `FieldInterfaces.lean` §2, `Field/Finite/RegretSafety.lean`.
-- [ ] **Positive measured path → `CorrectionIntegrity` (CIRIS-driven)** — Phase 3: keep `PositiveMeasuredPathCertificate` structure; **no axiom yet**. When CIRIS composite/boundary-decouple consumer is ready: (1) try to derive covers/no-bypass from `MB1`/`MB7a` boundary/access bridges; (2) if derivation fails, consider threaded **MB4b-shaped** axiom `PositiveMeasuredPathCertificate → CorrectionIntegrity` (do **not** reverse/widen `MB4a`). Lean: `FieldInterfaces.lean` §3, `Field/Finite/CompositePathBypass.lean`. Charter: CIRIS key-task composite counterexample in `experiments/TODO.md`.
-- [ ] **MB10 chokepoint interface axiom — prove or type** — `ConservedPropertySignatureVerifiable_of_chokepoint` in `Forgeability.lean` is an unnumbered interface linking `Chokepoint.AdversariallyVerifiableUpTo` to the opaque `MB10` antecedent. Try to: (1) prove from definitional alignment of the two readings; or (2) replace with a typed structure/hypothesis record so the step is explicit rather than a bare axiom; optional axiom-budget headline row.
+---
 
-**Current state:** finite / proxy proofs plus explicit bridges. Field-agenda
-subsumptions now use finite integer/MDP/reachability/weighted/contraction proxies
-and source-cited imported theorem handles; older core spine areas still include
-finite `Bool` counterexamples, definitional restatements, or predicates over abstract
-`axiom` carriers. The spine checks the *logical shape* of the argument; it does not
-yet match full book information-theoretic definitions (CMI blankets, CCI penalties,
-bearer maps on world states, etc.).
+## Spine board
 
-- [~] **Hostile-critique fixes + shutdown/interruptibility rederivations (2026-07-19)** — anti-capture de-fiated: `CorrectionPath` is data-only, legitimacy (incl. `notCaptured`) lives in `CorrectionPathLegitimate` supplied only by new bridge **`MB4a`**; capture now representable and refutes correction integrity by theorem (`capture_defeats_correction_integrity`). Four unlabeled BIQ axioms consolidated into labeled convention **`S10`**. Safety-case record packing labeled as assembly and consumed by new bridge **`MB11`** (`CertifiedSafetyCase` + `WithinDeploymentRiskTolerance` → `Safe`, via `P30_safe_of_case`). New `Field/Finite/{IncompletePreferences,ShutdownIncentives,BellmanQ}.lean` rederive Thornley POST/Timestep-Dominance, Soares et al. button incentives + indifference knife-edge, and Orseau–Armstrong Bellman/schedule-invariance with the stochastic-approximation step as the statement-bearing axiom `OA2016_offpolicy_qlearning_convergence` (old opaque `True`-handles marked legacy). Ledger now 27 headline theorems. **App B validate/falsify paragraphs for `MB4a`/`MB11` done 2026-08-02** (core crosswalk sync). **Still open:** Thornley dynamic-choice/sequential layer (prose only); probabilistic OA model to shrink the convergence axiom; `MB4a`/`MB11`/`S10` nodes in `context/lean_proof_graphs/*.dot`. Log: `drafts/conversation-summaries/archive/2026-07/2026-07-19-lean-spine-hostile-critique-fixes.md`.
-- [~] **Field rederivation batch 2 (2026-07-19)** — ELK/Debate/OffSwitch/Quantilizer/Amplification/DynamicChoice finite modules shipped. **Still open:** sophisticated-choice variant; probabilistic judge/debater-compute debate; ELK training-prior argument; site/graph nodes. Log: `drafts/conversation-summaries/archive/2026-07/2026-07-19-field-rederivation-batch-2.md`.
-- [~] **Strengthen proof spine** — replace toy counterexamples with constructive finite models tied to bundle/bearer geometry; replace definitional theorems with non-trivial lemmas; tighten bridges (probabilistic `MB1`, qualified `MB7`) *only where the book supplies a formal definition, not where the step is empirical*. **Partial 2026-06-29:** field-agenda subsumptions now have finite proxy machinery and imported theorem handles; remaining work is in the core chapter models and non-field counterexamples.
-- [~] **Mathlib field rederivations** — **Partial 2026-06-30:** added `Field/Finite/Probability.lean` (`IntMass`, `expect`, `quantilizerMass`, `AUPOneStep`, `AUPHorizonStep`, `ScalarAssistanceBelief`), `Field/Finite/PMF.lean` (`PMF.ofFintype`, `PMF.filter` quantilizer), and Mathlib-backed theorems: `cirl_defer_optimal_under_reward_uncertainty`, `defer_beats_commits_of_symmetric_flip_cost_unequal_mass`, `scalar_assistance_belief_is_k1_bundle`, `aup_attainable_utility_preserves_optimal_auxiliary`, `aup_horizon_attainable_utility_preserves_previous_value`, `quantilizer_distribution_soundness_transfers`, `quantilizer_base_rate_bound`, and `quantilizerPMF_*` support/soundness. **Still open:** IntMass→PMF normalizer, PMF base-rate theorem matching Taylor more directly, AUP auxiliary-family penalty comparisons, and native Debate/ELK protocol models.
-- [~] **Derive full certification chain** — ~~link BIQ ceiling (`P10`) to control via `Control_le_IctrlSys` / `BIQDerivedCapacitySlack`~~ *(done)*; ~~tie `CCI` to weakest effective handle capacity (`P24` / `CorrectionLinkCapacities`)~~ *(done)*; ~~Propagate bounds along successor-safe chains (`P27`/`SuccessorSafeChain`).~~ *(done)*; ~~make bridge assembly consume explicit `BridgeAssumptions` and replace `P40` axiom carriers with a finite support certificate~~ *(done 2026-06-30)*. **Still open:** adversarial aliasing (`P34`/`MB7` structural layer), richer claim-support graphs beyond finite `Fin n` support, and deeper measured successor links. **Update 2026-07-02:** the two ch48 audit-link axioms (`CCIPreserved_implies_monotone`, `ControlLocusPreserved_implies_control_antitone`) were removed; they are now the explicit hypothesis record `SuccessorAuditLinks`, threaded through all successor-chain theorems, and every safe chain reduces to a numeric `SuccessorMeasurandChain` (`SuccessorSafeChain.toMeasurandChain`).
-- [~] **Trace-derived control appearance (`Field/Finite/TraceBIQ.lean`)** — tight appearance ceiling and N-8 negative are recorded (`NEGATIVE_RESULTS.md`). **Still open:** probabilistic concentration lemma; extinction-bound leaf in `Certification`; wire Shannon MI to the decidable trace pipeline; whether `WorkedInstance.lean` should consume the richer `cci_audit.py` certificate. Logs: 2026-06-30 / 2026-07-02 TraceBIQ sessions.
-- [~] **Wire spine into manuscript** — Ch. 39 safety case / appendix cites each theorem as *proof*, *counterexample*, or *bridge* per `formal/README.md`. **Partial 2026-06-29:** Appendix I now distinguishes finite rederivations, imported field theorem handles, and `MB*` bridges for the field-subsumption claims. Still open: chapter-local `\leanspine{}` citations to the new final theorem handles.
-- [~] **Systematize `MB1`–`MB9` defeaters** — **Done 2026-07-02:** new `formal/AlignmentProofSpine/Defeaters.lean` names an observable failure-mode signal for every bridge (traced to the matching A-ID/U-ID in `metadata/assumptions-ledger.md`/`metadata/uncertainty-ledger.md`), with finite toy models proving the antecedent-signal-not-consequent shape is logically consistent for `MB1` (estimator non-stationarity), `MB4` (manipulated judge), `MB6b` (value lock-in), and `MB8` (legitimacy theater); `MB7b`–`MB7d`'s signal reduces to `Chokepoint.SteerableAt`. Appendix G §`appi:sec:defeaters` and the assumptions ledger cross-link back. **Still open:** toy models for `MB2`, `MB3`, `MB5`, `MB6a`, `MB7a`, `MB9` (named signal only so far); the signals themselves are not claimed to hold of any real system — this is vocabulary, not evidence.
-|------------|------------------|---------------------|------|
-| **Predictor-loop closure → effective `System` / UAD-detectability** (AFFINE perils-of-predictors / Predict-O-Matic genesis). Manuscript claims strong subsumption: closed forecast→action→world→score loops are operational agents recoverable by boundary discovery; no finite Lean witness yet. | **ch10**, **ch02**, **ch44** | New `Field/Finite/PredictorLoop.lean` (or similar); interface to `Boundaries` / `System` | Finite toy: define loop-closure predicate; prove loop-closure ⇒ fragment of discoverable `System` / boundary conditions; optional intervention on loop edge changes unit attribution. Do **not** claim manuscript proof until built. Log: AFFINE field-openness session 2026-08-01. |
-| Grounding viability is structurally represented but not tied to concrete monitors, bundle coordinates, or correction handles | **ch03**, **ch16**, **ch46**, **ch46**, **ch47** | `Core.lean` (`ConservativeAbstraction`, `SilentAbstractionGap`, `GroundingCertificate`, `MB9`), `Certification.lean` | Define deployment-specific grounding certificates and connect them to bundle/bearer/CCI measurands; keep real-world validity in MB9. |
-| ch46/ch48 system correction-update vs human value-update | **ch46**, **ch48** | `Core.lean`, `Correction.lean` | **Partial (2026-06-30):** `U_S` remains schematic notation; successor audit routes update semantics through `CCIPreserved` / vector `CCICertificate` (`rawCapacity`, `ontologyTranslation`), not a separate witness field. Still open: structured `(Θ,Z)` state, finite constructive models. |
-| `CorrectionLinkCapacities` is still an abstract integer profile, though now attached to controlled handles | **ch46**, **ch46** | `Correction.lean` (`P23`, `P24`) | **Partial (2026-06-25):** `CorrectionPath A` now records a correcting agent, access model, controlled handles, reach, persistence, and non-capture. Still: define effective handle capacity \(\kappa_i\) from concrete observation/operation data rather than abstract integers. |
-| Only raw `min` capacity; no CCI penalties `L,M,R,Ω` from ch46 | **ch46** | `Correction.lean` | **Partial (2026-07-02):** `CCI`, `CCIPenaltyTerms`/`CCIPenaltyWeights`, `CCIPenaltiesSys`; ch26 scalar projection `CCICertificate.lambdaProjection` now derived (`lambdaProjection_le_CCI`), and certification primary slack is tied to threshold θ via `CCIThresholds.lambdaFloor` / `CCI_ge_threshold_floor` / `risk_bound_from_threshold_certified_cci` — measurement alignment (`CCICertificateMeasures`) is the remaining bridge-shaped record. |
-| Slack certificates (`BIQDerivedCapacitySlack`, `WeakestLinkDerivedCapacitySlack`) are not tied to chapter measurands | **ch11**, **ch13**, **ch46** | `Capability.lean`, `Certification.lean` | **Partial 2026-06-30:** `NumericRiskLeaf` now has vector-CCI, BIQ-derived, and Markov-blanket/BIQ constructors. Still: map ch13 coordination loss into certificates. |
-| `Control` vs `I_ctrl` / BIQ profile linkage is axiom-only | **ch11**, **ch12** | `Capability.lean` (`P10`, `Control_le_IctrlSys`), `Field/Finite/TraceBIQ.lean` | **Partial 2026-06-30:** `MarkovBlanketBIQProfile`, trace-computed control appearance bound, attended-harm certificates, concentration bridge record. Still: tie `Control A = profile.controlInfo` to concrete blanket IO estimators; instantiate concentration bridge; connect extinction-bound certs to safety-case numeric leaves. |
-| `P12` coordination bottleneck is one line of `omega`; ch13 has richer structure | **ch13** | `Capability.lean` (`P12`) | **Partial (2026-07-02):** ch13 `eq:collective-competence` now a `Finset.sum` model (`weightedCollectiveCompetence`); discrete `∂K_coll/∂K_i ≤ 0` proved (`P12_coordination_bottleneck_partial`), authority disconnection (`P12_disconnected_competence_gain_is_lost`), seven-loss instantiation (`P12_seven_loss_bottleneck`). Still: κ_ij edge/percolation structure beyond `P32`; connect to risk/cooperativity narrative. |
-| Boundary / ε-blanket in ch07 not aligned with `Boundary`/`BoundaryCondition` scaffolding | **ch07** | `Core.lean`, `Boundaries.lean` (`P05`–`P09`) | Align `EpsilonBoundary`, leakage proxy, and blanket predicates with ch07 notation; separate **definition** from `MB1` estimator soundness. |
-| ch46 transport hierarchy vs abstract `SemanticTransport`/`FullTransport` axioms | **ch46** | `Bundles.lean` (`P22a`, `P22b`) | Define transport predicates from ch46’s semantic / bundle / bearer / correction layers; keep separations (`P22b`) off `Bool` toys where possible. |
-| Bundle/bearer/tradeoff separations are partially toy models vs ch15–19 geometry | **ch15**–**ch19**, **ch46** | `Bundles.lean` (`P15`, `P17`, `P18`, `P22b`), `Field/CIRL.lean` | **Partial 2026-06-29:** CIRL/reward-inference subsumption now uses `PolicyProfile` and scalar marginal vs bundle-geometry separation. Still: broader bundle/bearer/tradeoff separations should use finite bundle codes, bearer maps, or tradeoff vectors from ch16–19—not `ToySameMarginals := True`. |
-| `P25`/`P26` obedience vs update-operator toys vs ch46 extrapolative correction | **ch46** | `Correction.lean` (`P25`, `P26`), `Field/Corrigibility.lean` | **Partial 2026-06-29:** Christiano-style corrigibility has a finite dynamical invariant / capacity-floor wrapper plus act-based separation. Still: match ch46’s full extrapolative / process-preserving correction predicates; link to `ValueUpdateEnvelope` / process-preservation structure rather than bare `U_H` or `MB8` evidence. |
-| ch48 manipulation / false consent vs one-line `MB4_correction_legitimacy` | **ch48** | `Core.lean` (`MB4`), `Correction.lean`, `Field/Debate.lean` | **Partial 2026-06-29:** debate local-truth vs judge-correction-channel separation is formalized. Still: add **structural** predicates (legitimate vs manipulated endorsement, domestication) implied by ch48; keep `MB4` as the bridge “real systems satisfy legitimacy,” not as the whole formalization. |
-| ch03 dynamical guarantee / certified class vs `Certified`/`Risk` axioms | **ch03**, **ch04** | `Certification.lean` (`P01`, `P30`) | Connect `Certified`, `Safe`, and certification conclusion to ch03–04 vocabulary; avoid orphan abstract `Certified A` in hypotheses. |
-| ch48 lethality / open issues vs spine taxonomy | **ch48** | `formal/README.md`, all modules | Crosswalk ch48 stress tests to *proof* / *counterexample* / *bridge* labels; flag which open issues are empirical (out of scope) vs formalizable. |
+Canonical follow-through: [`formal/README.md`](../formal/README.md) + chapter `% TODO[formalize]:`. This section lists **only** items not already tracked there.
 
-#### Drafted chapters — Lean spine follow-through
+Krym architecture revision **closed** 2026-08-17 — [`drafts/attic/krym-architecture-revision-plan.md`](../drafts/attic/krym-architecture-revision-plan.md).
 
-| Chapter | Spine module | Follow-through |
-|---------|--------------|----------------|
-| **ch05** | `Certification`, scope | Tie assumption/failure-coverage objects to `SatisfiesInvariants` / scope predicates. |
-| **ch46**–**ch48** | `Successors.lean` (`P27`–`P28`, `SuccessorSafeChain`) | Derive successor audit from ch46–29 prose; tie weakest-link capacity across successors. |
-| **ch46** | `Successors.lean` (`P29`) | Ground `SelfControl` / `CorrectionVisibility` in ch46 self-modeling notation. |
-| **ch48**, **ch46** | `Certification.lean` (`P40`, safety case) | Replace axiom stubs `Claim`/`Supported` with ch46 safety-case graph structure. |
-| **ch46**, **ch48** | `Certification.lean` (`P01`, `P35`, basin) | Basin invariance and attractor narrative vs `BasinStableSys` / `P35`. |
-| **ch48** | `CooperationGraph.lean`, `Capability.lean` (`P33`, `P32`) | UAD audit → causal + inferential pair models → `\tilde{κ}` graph; giant-component thresholds remain `MB6a`/empirical. |
-| **ch46**, **ch46**, **ch48** | `Adversarial.lean` (`P34`, `P37`) | Host-capacity aliasing uses Mathlib pigeonhole (`P34`); goal-laundering detection still toy. |
-| **ch45** | `Boundaries.lean` / `Core` | Multi-scale decomposition vs boundary/graph scaffolding. |
-| **ch45**–**ch48** | `Philosophy.lean` (`P41`–`P45`) | Legitimacy orderings, bearer persistence, closing synthesis vs current `Bool` separations. |
+- [~] **`{leanbox}` at remaining `\leanspine` sites (S).** 17 chapters done; ~26 without box — add only where elaboration beats margin note.
+- [ ] **Lean Chokepoint identifier rename (S, optional).** Gravestone clarity for retired two-route packaging.
+- [ ] **Wire experiment scripts to `BundleEvidenceAdequate` (M).** Deferred from Krym; graded-lab / value-detect hook.
+- [ ] **App G translation spine opener (S, author).** Mirror site `/lean/`; manuscript pass author-owned.
+- [ ] **MB10 non-enumerability across capability jumps (M).** Conserved set may change at capability jump (ch08/ch30/ch31); unify with `Chokepoint.AdversariallyVerifiableUpTo`; toy red-team of audit forgeability. `Forgeability.lean`.
+- [ ] **MB10 chokepoint interface axiom — prove or type (S).** `ConservedPropertySignatureVerifiable_of_chokepoint` in `Forgeability.lean`.
+- [ ] **Positive measured path → `CorrectionIntegrity` (M).** After Witness CIRIS consumer; see `Field/Finite/CompositePathBypass.lean`, `experiments/TODO.md`.
+- [ ] **Field agenda generated artifacts — build-time only (deferred).** `sync:field-agendas` when schema stable.
+- [ ] **App B ↔ field agenda sync — secondary (M).** Spine-translation table, MB9 split, Kosoy footnote, MB11/MB4a site cards.
+- [ ] **Regret / numeric harm leaf (deferred).** Side channel only; see `Field/Finite/RegretSafety.lean`.
+
+Hostile-critique / field rederivation / strengthen-spine / Mathlib batches: **partial** — see git logs 2026-06–07 and App G; no separate umbrella TODO.
+
+---
+
+## Cite / Wait board
+
+One queue; pick up when trigger fires.
+
+- [ ] **Turner Reward≠OT follow-up post** — when full post appears; ch21 `% TODO[citation]:`.
+- [ ] **MacKinlay *Agency WTF*** — when published; bib + glossary homograph.
+- [ ] **Chris Pang boundary ontology** — author call; ch06–07 or `open-problems.md`.
+- [ ] **Wire `zarncke2026embedded-value-formation`** — ch15/ch03/ch33; graded-lab §8 touchpoint.
+- [ ] **Citation review queue** — complete in-body cites; Part III ch12/ch13 thin; leftover keys from `2026-06-30-deep-research-top10-citations.md`; App C sector empirics (consent decrees, coordinated effects, incident reporting).
+- [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open.
+
+---
+
+## Site board
+
+De-center PDF → **Voice**. Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md).
+
+- [ ] **Per-part chapter renumbering (display only) (L, high risk).** Do not rename `chNN` files or `\label`s without migration pass.
+- [ ] **Submit page notes to site (S).**
+- [ ] **Standalone claims publishability review (S).** Cross-ref Outreach.
+- [ ] **Add companion site to Substack (S).**
+- [ ] **Book map: generate “Also on the site” from book order (S).**
+- [ ] **Part hub cards (S).**
+- [ ] **ch10 alignment-faking experiment line (M).**
+- [ ] **Chapter-end exercises + online quiz (M).**
+
+---
+
+## Outreach board
+
+- [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
+- [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
+
+---
+
+## Housekeeping board
+
+- [ ] **`\symbolref` leftovers (S).** RiskGap and unlabeled blocks. Log: `2026-08-05-symboldef-macro.md`.
+- [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial-guidance-eq-chain-placement.md`.
+- [ ] **Consider claims/assumptions ledger automation (S).** Decide YAML source vs manual.
+- [ ] **Review U-shaped coordination claim (S).** ch11/ch13 conjectural until downgrade or evidence.
+- [ ] **Grounding/safety-case layer completeness review (S).** ch46 eighth layer: derived vs provisional checklist.
+- [ ] **Perturbation-recognition crux (S).** ch47 `% TODO[open-crux]:` — bounded answer or downgrade.
+- [~] **ch48 inferential coupling / acausal trade (research).** Drafted; threshold calibration and probe-local coordination open.
+- [ ] **Inferential-coupling threshold calibration (research).** ch47/ch48 \(\tau_{\mathrm{ac}}\).
+- [ ] **Probe-local inferential coordination (research).** ch48 vs ch46 gap or mark unresolved.
+- [~] **Notation reconciliation (S).** ⟳ rows in `metadata/notation.md`; C12 basins; confirm `C_H` vs `C^H_t`.
+- [~] **Lean spine ↔ notation review (M).** Partial 2026-06-29; bundle geometry, ch13 P12, ch48 basins remain.
+- [~] **Update-operator ontology audit (M).** Partial 2026-06-28 envelope refactor.
+- [ ] **Part-opener illustrations (S).**
+- [ ] **Optional: LaTeX PDF CI build test (S).** `.github/workflows/book-pdf.yml`; compile gate only.
+- [x] **Strategic advice follow-through — closed.** Remainders absorbed into Voice / Spine / Outreach (`review/strategic-advice-2026-06-28.md`).
+
+Residues formerly under **BIG REVIEW** headings: MB10 forgeability → Spine; chokepoint WWCTV refs → Voice; forgeability budget / hindsight caveat → ch48 score when author passes ch31.
 
 ---
 
 ## Experiments / demos
 
-Major **graded-lab-simulation** engineering backlog (v3 slices, V2-4
-mutation, V2-5 selection, V2-6 red-team): see
-[`experiments/graded-lab-simulation/REPRODUCTION.md`](../experiments/graded-lab-simulation/REPRODUCTION.md)
-— not tracked here item-by-item.
+Major graded-lab backlog: [`experiments/graded-lab-simulation/REPRODUCTION.md`](../experiments/graded-lab-simulation/REPRODUCTION.md) — not itemized here.
 
-- [ ] **Graded-lab v3 — audit vocabulary drift** — v3 adds closed vocabularies (`objective_metric`, pressure `driver`, `ProgramMap` bins, mechanism kinds) that may not align with frozen v1 referee/UAD/detector vocabulary. Before Q1, evaluate whether drift is benign (disjoint planes), scope-limiting (shared goal-feature coordinates per `PLAN_v3.md` blinding boundary), or requires a post-Q1 `CODE_VERSION` machinery extension — without mid-battery retuning. See `PLAN_v3.md` slice C, slice F, § Blinding boundary.
-- [ ] **Graded-lab v3 — review Q1 failure cascade from v1 freeze** — `PLAN_v2.md` design principle 5 and `PLAN_v3.md` non-goals forbid retuning frozen v1 machinery during Q1; if slice D items 6–7 (detector coverage, `ProgramMap` overlap) or the transfer battery itself null out, Q2/Q3 descope per pre-registered harvest. Task: review whether that cascade is methodologically intended, whether pre-Q1 diagnostics should change go/no-go thresholds, and what manuscript sentences (ch33/ch41/ch42 null rows) the program should commit to if Q1 fails for vocabulary/detector reasons rather than ecology reasons.
-- [ ] **Review SOO relation to book adversarial scenarios** — Self-other overlap fine-tuning ([LW post](https://www.lesswrong.com/posts/jtqcsARGtmgogdcLT/reducing-llm-deception-at-scale-with-self-other-overlap-fine), [arXiv:2412.16325](https://arxiv.org/abs/2412.16325)) already targets deception and alignment faking; draft note `drafts/soo-benchmark-scenarios-from-book.md` lists ~20 other tendencies from manuscript + `experiments/` with implementation status. Task: for each tier-1 candidate (report inflation, shadow routing, correction-capture theater, bearer-map narrowing), specify self/other prompt pairs, expected SOO generalization, and whether this project's bridge crux (MB3/MB4/MB5/MB8) is actually what SOO would be testing; decide if any scenario should be wired into graded-lab or cited in ch29/ch43. Owner: external SOO follow-up (Marc); book-side review when integrating empirical claims. **Graded-lab touchpoint:** `REPRODUCTION.md` §8.
-- [ ] **D3 selection-ecology toy demo (lab-simulation G-36/G-37).** Interactive chapter demo for MB6a/MB6b: animate population mass over pipeline spec × capture × admin configs (D3.1) and endogenous spec weakening + throughput selection (D3.2). Show generation curves for correction-preserving mass, shortcut-spec share, and mass-weighted oracle harm; surface the G-37 negative (shortcut fixation → playbook/DAG mismatch → throughput collapse). Candidate home: `demos/ch08-selection-ecology/` (grow/split/merge / institutional selection) or `demos/ch46-correction-basin/` with a lightweight Python backend replaying pinned `results/d3_population.json` / `d3_spec_evolution.json` fixtures (fast static mode) plus optional live mini-run. Cross-ref: `experiments/lab-simulation/PLAN.md` D3, FINDINGS G-36/G-37.
+- [ ] **Graded-lab v3 — audit vocabulary drift (M).**
+- [ ] **Graded-lab v3 — review Q1 failure cascade from v1 freeze (S).**
+- [ ] **Review SOO relation to book adversarial scenarios (S).** `drafts/soo-benchmark-scenarios-from-book.md`.
+- [ ] **D3 selection-ecology toy demo (M).** lab-sim G-36/G-37; `demos/ch08-selection-ecology/` candidate.
 
----
-
-## Site (`site/`)
-
-Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map). Local serve: `./serve-site.sh`. Deploy: `.github/workflows/site.yml` → GitHub Pages at **https://towards-alignment.com/**.
-
-Card/site note triage — **closed 2026-08-17** (Phases 0–6 shipped). Archive tracker: [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md). Deferred follow-ups below only.
-
-- [ ] **Submit page notes to site** — notes overlay is `localStorage` only; add optional submit/API for author review. Source: card notes triage A14.
-- [ ] **Standalone claims publishability review** — editorial pass on four hub claims for external citation. Source: card notes triage A6; cross-ref strategic-advice TODO.
-- [ ] **Add companion site to Substack** — outreach/distribution. Source: card notes triage (ch09 note).
-- [ ] **Book map: generate “Also on the site” from book order** — replace hardcoded appendix list in `site/src/pages/book/index.astro`. Source: card notes triage A3.
-- [ ] **Part hub cards** — explicit `/cards/` entry points per book part (e.g. Part I reframing). Source: card notes triage A4.
-- [ ] **ch10 alignment-faking experiment line** — experiment using ch10 instruments + alignment-faking/sleeper-agent model organisms. Source: card notes triage E3.
-- [ ] **Chapter-end exercises + online quiz** — optional manuscript exercise blocks + site quiz UX. Source: card notes triage E3/F.
+CIRIS composite / boundary_decouple: **Witness H1** — charter in sibling `ciris/review/`; [`experiments/TODO.md`](../experiments/TODO.md).
 
 ---
 
-## Build / tooling
+## Appendix follow-through
 
-- [ ] **Optional: LaTeX PDF CI build test** — Add a path-filtered workflow (e.g. `.github/workflows/book-pdf.yml`) that runs `./build.sh` when manuscript inputs change. **Compile gate only:** does not publish to the site; site deploy continues to copy/fetch the latest Release PDF via `site/scripts/copy-book-pdf.mjs`. Expect TeX + biber setup, PAR cache (`docs/BUILD.md`), and ~15–30 min per run. Distinct from folding PDF build into `site.yml` (which would ship HEAD on every deploy).
+- [~] **Built in PDF:** appA–G, appM, appD, appE, appF, appN.
+- [~] **Still `[STUB]` (not in `book.tex`):** appH, appI, appJ, appK.
 
 ---
-
 
 ## Closed (one-liners — do not reopen)
 
-Full narratives are in git history and `drafts/conversation-summaries/`. Closed plans: `drafts/attic/`.
+Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
 
-- [x] **BIG REVIEW — Pivotal act / pivotal process (1+3 spectrum).**
-- [x] **Disjunctive MB6b∨MB8 prose retirement**
-- [x] **Field v2 hub cutover**
-- [x] **Field matrix bridge nouns (Track 1, 2026-08-02).**
-- [x] **Consciousness / bearer-inference extension (MB3 sub-obligation)**
-- [x] **Reviewer-suggested references — new angles (2026-07-01)**
-- [x] **Chapter split preference pass**
-- [x] **Chapter numbering cleanup**
-- [x] **Appendix renumbering / filename ↔ letter sync**
-- [x] **Bundle catalogue terminology drift**
-- [x] **Propagate `MB9` into appI / appH / appE**
-- [x] **Add `MB9` to Lean dependency-graph figures**
-- [x] **Hardcoded appendix reference in `tables/assumptions-table.tex`**
-- [x] **§10 structure pass**
-- [x] **Epistemic marker consistency**
-- [x] **ch05 partial draft**
-- [x] **Frontmatter gaps**
-- [x] **Opening-promise reconciliation**
-- [x] **Model-class misspec / nonrealizability bridge decision**
-- [x] **App B ↔ field agenda core sync (2026-08-02)**
-- [x] **Field-agenda subsumption package**
-- [x] **Native Debate and ELK theorem matching**
-- [x] **Guard the axiom budget mechanically and generate the appendix table from it**
-- [x] **Clickable badges with index pages**
-- [x] **Translation spine on-ramp (Phase 1)**
-- [x] **Translation spine (Phase 2)**
-- [x] **Resolve duplicate LaTeX labels: `sec:self-modeling-transparency`, `sec:example-helpful-assistant` — both now carry unique `-chNN` suffixes; no `multiply defined` warnings.**
-- [x] **Fix duplicate hyperref destination `page.i` (title page collided with dedication): switched title page to `titlingpage*` (no page-counter reset).**
+- [x] Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · *(see git for full list)*
+
+---
 
 ## Leave local (do not centralize here)
 
-- Per-chapter `% TODO(deep-research):`, `% TODO[citation]:`, `% TODO[formalize]:`, and `% TODO[open-crux]:` markers in chapter `.tex` files.
-- All `[STUB]` section placeholders until each chapter is integrated.
-- Appendix `[STUB]` markers in `appendices/appH`, `appI`, `appJ`, and `appK` only (appendices A–I are built in the PDF, with source filenames `appM` and `appN` for the later additions).
-- `drafts/chapter-notes/ch48-cooperation-percolation-deferred.tex` and sibling deferred notes.
+- Per-chapter `% TODO(deep-research):`, `% TODO[citation]:`, `% TODO[formalize]:`, `% TODO[open-crux]:` in chapter `.tex`.
+- All `[STUB]` placeholders until chapter integrated.
+- Appendix `[STUB]` in appH–appK only.
+- `drafts/chapter-notes/*.tex` deferred notes.

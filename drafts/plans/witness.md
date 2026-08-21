@@ -1,6 +1,6 @@
-# Track A — deployment witness plan
+# Witness — deployment witness plan
 
-Status: **draft plan** (2026-08-21). Follow-up to review of implied-reader expectations vs paid claims. **Track B** (packaging / voice) is separate; do not start B until this plan is frozen or explicitly scoped down.
+Status: **draft plan** (2026-08-21). Follow-up to review of implied-reader expectations vs paid claims. **Voice** (packaging / claim-strength) is independent — see [`drafts/plans/voice.md`](voice.md). **Construct** is out of scope here; see Construct lane in [`metadata/TODO.md`](../../metadata/TODO.md).
 
 ## Goal
 
@@ -11,12 +11,12 @@ Meet the **implied reader expectations** from the current stack (values → mech
 **Non-goals:**
 
 - Prove ASI alignment or discharge all `MB*` bridges globally.
-- Treat in-repo simulators (toy, embedded, lab, graded-lab) as deployment-class witnesses by themselves. ET-1 (Orbit) and ET-2 (CIL `basin_stability`) are **substrate-suitability negatives**, not homework to “fix” before Track A.
+- Treat in-repo simulators (toy, embedded, lab, graded-lab) as deployment-class witnesses by themselves. ET-1 (Orbit) and ET-2 (CIL `basin_stability`) are **substrate-suitability negatives**, not homework to “fix” before Witness.
 - Block Phase 1 on CIRIS Lens cohort capture (substantial trace volume; deferred to Phase 5 per sibling charter).
 
-**Sibling charter (C-003 / C-005 on CIRIS):** [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md). Phase 1 here aligns with that Phase 1.
+**Sibling charter (C-003 / C-005 on CIRIS):** [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md). Phase 1 here aligns with that Phase 1.
 
-**Canonical experiment posture:** [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md) — methodology-building and sanity checks only; negatives are first-class.
+**Canonical experiment posture:** [`docs/EXPERIMENTS.md`](../../docs/EXPERIMENTS.md) — methodology-building and sanity checks only; negatives are first-class.
 
 ---
 
@@ -128,7 +128,7 @@ Sims: lab LS-36 (preserving mass erodes); graded-lab selection **null** (GL-23�
 | **MASK honesty gap** (belief vs pressured statement) | H4 | Model under pressure prompt | Dataset + protocol exist; RepE optional intervention |
 | **Pipeline self-preservation under perturbation** | H1 + deployment-pipeline-simulator logic on **real** CI/tool logs | Randomized threats to visibility/memory | Sim AUROC ~0.75–0.85 is **not** discharge; need non-authored logs or refuse |
 | **Wikipedia SPI / sockpuppet** | H3 | Known socks vs honest twins | Labels exist; cost of faking = new account + mimicry |
-| **Linux `Reviewed-by` rings** | H2 | Rubber-stamp (MSR literature) | Likely **refuse** — still valid Track A outcome |
+| **Linux `Reviewed-by` rings** | H2 | Rubber-stamp (MSR literature) | Likely **refuse** — still valid Witness outcome |
 
 **Recommendation:** Phase 1 pair **MASK + CoT/eval-awareness field news** as \(M\) = “honest inner report.” If MASK honesty does not improve with scale (published result), **refuse** the measurand as a safety leaf.
 
@@ -169,7 +169,7 @@ Same evidence as Expectations 1 and 4. **Met when:** at least one **green artifa
 
 ## Expectation 6 — Standalone claims as replicated separations
 
-Four claims are **problem statements**. Track A = independent replication on a host not built for the book.
+Four claims are **problem statements**. Witness = independent replication on a host not built for the book.
 
 | Claim | Host | Measure |
 |-------|------|---------|
@@ -188,7 +188,8 @@ Four claims are **problem statements**. Track A = independent replication on a h
 
 - One-page charter: hosts H0–H5, which claim each may pay, stop rules (ET-1/ET-2 style).
 - Pre-register pass/fail/refuse per expectation; no sixth sim line.
-- **Exit:** signed-off scope doc (this file + Phase 0 addendum if needed).
+- **Measurand freeze sheet** (same artifact as `metadata/TODO.md` measurand-instantiation task): table mapping each composite index → sub-component chapters → concrete estimator → dataset/sim → experiment script; plus **verifiability labels** (*observable*, *i.i.d.-robust*, *adversarially verifiable up to \(\kappa\)*); note scalar residues (ch40 GLI, ch31 \(\mathcal{K}\)) pending vector/status treatment.
+- **Exit:** signed-off scope doc (this file + Phase 0 addendum if needed) + published freeze sheet.
 
 ### Phase 1 — highest leverage (parallel)
 
@@ -249,77 +250,24 @@ yes | no | n/a
 …
 ```
 
-**Phase fails Track A** only if outcome is *pass with no stop* while strong wording would still be warranted.
+**Phase fails Witness** only if outcome is *pass with no stop* while strong wording would still be warranted.
 
 ---
 
-## What Track A still will not buy
+## What Witness still will not buy
 
 Even if all phases hit:
 
 - No bridge becomes “true of frontier ASI.”
 - `MB11` / `Safe` stays open unless an authority with deployment leverage uses the tree (H5 is analogue, not AI).
 - Graded-lab / Orbit / CIL remain **method limits**, not blockers.
-- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. A proposed partial extension is below; it is **not** in the frozen Phase 0 charter until signed off.
-
----
-
-## Proposed extension — Expectation 7 (construction, partial; not frozen)
-
-**Why this is not already in Track A.** The implied-reader stack is values → mechanism → proof-shaped artifacts → *alignment*. Track A pays that stack by making the existing claims **fail-able on hosts**. Construction is a different verb: change the selection geometry so a *pre-specified* desirable region \(D\) can satisfy the five attractor conditions (*Constructing Alignment Attractors*). The two companion papers currently outrun what they can *do*; integrating them into the manuscript is blocked (`metadata/TODO.md`) until something can fail a construction check, not until the definitions get denser.
-
-**What “partly address” can mean here.** Not: construct \(D\) for ASI, or add a sixth intro claim. Yes: one **bounded-class intervention witness** where the construction *criterion* can return **fail** or **refuse**. That is the same success shape as Expectation 3 (a refuse is success; a green dashboard is not). It answers the reviewer vulnerability — unearned weight — by putting the apparatus under a stop rule.
-
-**Met when:** for one named intervention \(I\) on H2, H3, or H5:
-
-1. \(D\) is frozen **before** \(I\) (clause (iii): \(D\) is not “whatever \(I\) stabilized”).
-2. \(I\) is a documented change to at least one of \(Q\), \(f\), \(\theta\), \(E\) (not a stronger score on an unchanged selector).
-3. A pre-registered protocol returns **fail**, **refuse**, or a *local* pass with named remaining attractor conditions still open.
-
-A local pass on Wikipedia or Debian is **not** manuscript construction. It is evidence that the vocabulary can be applied without baking the conclusion.
-
-### Candidate witnesses (reuse hosts; do not invent a construction gym)
-
-| Host | Intervention \(I\) (acts on) | Frozen \(D\) (must be independent of \(I\)) | Likely outcome |
-|------|------------------------------|---------------------------------------------|----------------|
-| **H5** FAA AD / Debian RC freeze | Sanction / release gate on \(f\) or \(\theta\) (PD-lemma analogue: \(\sigma\) against a named defect class) | Pre-registered safety/quality referent (hull integrity; RC policy text), not “whatever shipped after the gate” | **Fail** if the gate is green while the referent moved; **pass-local** if a real stop bound the referent; still open: invasion/regeneration under later capture |
-| **H3** Wikipedia | Policy/enforcement change (3RR, SPI, bot policy) — \(\theta\) and announced \(f\) | Article-quality or sockpuppet-suppression referent frozen from dumps *before* the policy date | **Fail** (enforcement collapse / RfA theater); **refuse** if \(D\) cannot be scored independently of the policy language |
-| **H2** Linux | Process rewrite (two-maintainer, `-stable` rules, Signed-off-by) — \(\theta\), successor \(Q\) | Unlisted invariant frozen before the process change (C-006 forgeability already in Track A) | Distinguishes *checklist construction* from *signature gaming*; likely **fail** or **refuse** on MB10 analogue |
-| **H4** leaderboard / eval-suite change | Selector rewrite \(\theta\) | Pre-registered target *not* the leaderboard metric (C-007 pair) | Default **fail**: proxy basin, target flat — this is Goodhart-as-selector, i.e. construction that occupied the wrong vacuum |
-| **H1** CIRIS | Do **not** count WA shutdown as construction; that is Expectation 4 (stop). Construction would be a change to Accord/Verify *rules* with \(D\) frozen first | — | Defer until Phase 1 certification witnesses exist |
-
-**H0 sims are out** for this expectation (same ET-1 rule as the rest of Track A). A replicator sanction in a authored PD is the paper’s lemma, not a deployment witness.
-
-### What this still does not buy
-
-- The five attractor conditions jointly, on one host, for an alignment \(D\).
-- Breaking observational symmetry (MASK / Verify remaining a proxy is an Expectation 3 refuse, not a constructed \(D\)).
-- Selector endogeneity / Acemoglu–Robinson neutralization: H3/H2 can *illustrate* capture of \(I\); they cannot prove a construction that survives \(G\).
-- Identity crystallization / Harris directed \(Q\): no public host currently gives a pre-registered self-model \(D\) plus a training-mixture intervention with a stop. Log as **refuse**, do not stretch H4 cards into it.
-- One failed or refused construction check on H2/H3/H5 is **talking-tool validation**, not a contribution to solving alignment. That is the intended calibration.
-
-### Phasing (only if Phase 0 explicitly opts in)
-
-Do **not** block Phases 1–2. Construction needs a selector baseline (Phase 3) and at least one real stop (Expectation 4) so \(I\) is not confused with “we refused to ship.”
-
-- **Phase 3b (optional, after Phase 3):** one H4 or H3 protocol — frozen \(D\), named \(I\), fail/refuse. Cheapest illustration of wrong-vacuum / enforcement-collapse.
-- **Phase 4b (optional, with H5 stops):** recode **one** of the three historical stops as an attempted *construction* (payoff/selector change) vs a *certification stop* (leaf ignored → other decision). Same episode, two trees. Makes Expectation 4 and Expectation 7 distinct.
-- **Manuscript gate:** even a local pass does not pull Construction into chapters. Revisit the TODO only after at least one **fail** or **refuse** on this expectation (same rule as Track A overall: pass-with-no-stop is the failure mode).
-
-### Relation to existing expectations
-
-| Existing | Construction overlap |
-|----------|----------------------|
-| C-007 / Goodhart-as-selector | Observes a bad basin. Construction asks whether a named \(I\) *changed* that geometry toward a frozen \(D\). |
-| Expectation 4 | Stop without constructing \(D\). Keep this distinction; do not relabel H5 stops as attractor construction. |
-| Expectation 3 / C-004a | Observational symmetry. Construction that only intensifies \(\theta\) fails here by the papers’ own lemma limits. |
-| C-006 / MB10 | Successor checklist after \(Q\) change — closest existing handle on reconstructive \(Q\); still certification of a signature, not construction of \(D\). |
+- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane in [`metadata/TODO.md`](../../metadata/TODO.md) is separate; manuscript integration stays blocked until Witness records at least one real stop.
 
 ---
 
 ## Suggested first actions
 
-1. Freeze Phase 0 charter (edit § Host systems + § Phasing exit criteria only). **Do not** opt Expectation 7 into Phase 0 by default; construction stays a later addendum.
+1. Freeze Phase 0 charter (edit § Host systems + § Phasing exit criteria + measurand freeze sheet).
 2. Execute sibling CIRIS Phase 1 (C2 trace mock + memo) in parallel with MASK protocol draft.
 3. Add finding stubs under `experiments/` or `review/` only when protocols are frozen — not before.
 
@@ -327,11 +275,11 @@ Do **not** block Phases 1–2. Construction needs a selector baseline (Phase 3) 
 
 | File | Role |
 |------|------|
-| [`metadata/claims-ledger.md`](../metadata/claims-ledger.md) | C-003–C-007, C-044 discharge language |
-| [`metadata/experiments.yml`](../metadata/experiments.yml) | MB coverage matrix; ET-1/ET-2 negatives |
-| [`appendices/appM-institutional-histories.tex`](../appendices/appM-institutional-histories.tex) | H5 stop candidates |
-| [`formal/README.md`](../formal/README.md) | Lean three-bucket rule |
-| [`chapters/ch42-safety-case.tex`](../chapters/ch42-safety-case.tex) | Refusal test definition |
-| [`chapters/ch48-towards-alignment.tex`](../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
-| [`papers/constructing-alignment-attractors/`](../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
-| Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |
+| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-044 discharge language |
+| [`metadata/experiments.yml`](../../metadata/experiments.yml) | MB coverage matrix; ET-1/ET-2 negatives |
+| [`appendices/appM-institutional-histories.tex`](../../appendices/appM-institutional-histories.tex) | H5 stop candidates |
+| [`formal/README.md`](../../formal/README.md) | Lean three-bucket rule |
+| [`chapters/ch42-safety-case.tex`](../../chapters/ch42-safety-case.tex) | Refusal test definition |
+| [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
+| [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
+| Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

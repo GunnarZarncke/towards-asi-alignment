@@ -1,6 +1,6 @@
-# Field crux divergence plan
+# Field — crux divergence plan
 
-Status: **Track 2** — follow-up to field matrix noun rename (2026-08-02). Track 1 locked reader-facing nouns in [`reference/field-agendas/data/bridges.yml`](../reference/field-agendas/data/bridges.yml) and [`metadata/bridges.yml`](../metadata/bridges.yml). This plan covers where **agendas share a label but not a formal object**, and what to do about it in Lean + manuscript.
+Status: **Field lane** — follow-up to field matrix noun rename (2026-08-02). Track 1 locked reader-facing nouns in [`reference/field-agendas/data/bridges.yml`](../../reference/field-agendas/data/bridges.yml) and [`metadata/bridges.yml`](../../metadata/bridges.yml). This plan covers where **agendas share a label but not a formal object**, and what to do about it in Lean + manuscript.
 
 ## Goal
 
@@ -12,7 +12,7 @@ For each `MB*` column, make explicit:
 
 **Non-goals:** renaming spine `MB*` axioms for synonymy; collapsing glossary homographs; adding `MB12` without a distinct conclusion not already represented.
 
-Precedent: [`field-claim-formalization-and-bridge-review-plan.md`](field-claim-formalization-and-bridge-review-plan.md) (field-local first, interfaces + defeaters, no `Safe` bypass).
+Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../attic/field-claim-formalization-and-bridge-review-plan.md) (field-local first, interfaces + defeaters, no `Safe` bypass).
 
 ## Priority divergences
 
@@ -104,14 +104,14 @@ Precedent: [`field-claim-formalization-and-bridge-review-plan.md`](field-claim-f
 
 ## Verification
 
-- Matrix legend + [`bridges.yml`](../reference/field-agendas/data/bridges.yml) stay in sync.
+- Matrix legend + [`bridges.yml`](../../reference/field-agendas/data/bridges.yml) stay in sync.
 - App B crosswalk `fieldCrux` matches bridge card `fieldCrux` for MB1–MB10.
 - No prose claims “field X solves MBY” without naming which object X certifies.
 - Lean: new field modules do not add axioms reaching `Safe` without `MB11`.
 
 ## Related artifacts
 
-- [`reference/field-agendas/data/bridges.yml`](../reference/field-agendas/data/bridges.yml) — nouns + crux wording
-- [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) — homograph headwords
-- [`metadata/TODO.md`](../metadata/TODO.md) — **Field crux divergence** item
+- [`reference/field-agendas/data/bridges.yml`](../../reference/field-agendas/data/bridges.yml) — nouns + crux wording
+- [`reference/field-agendas/inter-agenda-term-glossary.md`](../../reference/field-agendas/inter-agenda-term-glossary.md) — homograph headwords
+- [`metadata/TODO.md`](../../metadata/TODO.md) — **Field crux divergence** item
 - [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](attic/field-claim-formalization-and-bridge-review-plan.md)

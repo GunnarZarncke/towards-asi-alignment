@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-21 | **Program map (Voice / Witness / Field)** — One map in `metadata/TODO.md`; plans renamed; Expectation 7 removed; HANDOFF compacted. | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
 | 2026-08-21 | **Executive overview sync** — Review against v1.4.0 + later material; rewrite for six-claim sync, three questions, merged scope section. | [2026-08-21-executive-overview-sync.md](2026-08-21-executive-overview-sync.md) |
 | 2026-08-21 | **Track B claim-strength voice (§1)** — User asked to start Track B phase 1 (`drafts/track-b-claim-strength-voice-plan.md` §1: rename six... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
 | 2026-08-21 | **Construction stays out of manuscript** — User forwarded reviewer feedback on the two selection/construction papers (unearned weight: toolk... | [2026-08-21-construction-manuscript-todo.md](2026-08-21-construction-manuscript-todo.md) |
