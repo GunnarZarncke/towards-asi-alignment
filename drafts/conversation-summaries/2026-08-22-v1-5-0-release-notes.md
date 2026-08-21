@@ -7,7 +7,7 @@ User asked to prepare release notes, reviewed the draft, then asked to perform t
 - **`RELEASE_NOTES.md`:** **v1.5.0 — 2026-08-22** covering work since tagged v1.4.0 (user-edited body kept; one summary paragraph restored for the `/updates/` card parser).
 - **`site/.gitignore`:** generated `release-v1-5-0.md`.
 - **README / `docs/MANUSCRIPT.md`:** Release row → v1.5.0; manuscript milestone Fifth.
-- **Release cut:** `make check`; notes commit + hash-fill commit; annotated tag **`v1.5.0`**; push `main` and tag; GitHub Release.
+- **Release cut:** `make check` passed (fixed `meta.yml` Kosoy diagnostic indent); commits `2863eaa1` (notes) + `d61dea3e` (hash fill); annotated tag **`v1.5.0`** on `d61dea3e`.
 
 ## Decisions
 - **v1.5.0 = MINOR** (new framework objects and site layers; no chapter/appendix renumber).
@@ -22,3 +22,7 @@ User asked to prepare release notes, reviewed the draft, then asked to perform t
 - `README.md`
 - `docs/MANUSCRIPT.md`
 - `site/.gitignore`
+
+## Commits
+- `2863eaa1` Add v1.5.0 release notes.
+- `d61dea3e` Set v1.5.0 release commit hash in release notes.
