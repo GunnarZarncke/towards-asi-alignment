@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[Release] v1.5.0 — Six-claims spine, Krym architecture, and field hub v2</title>
+      <link>https://towards-alignment.com/cards/release-v1-5-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-5-0/</guid>
+      <pubDate>Sat, 22 Aug 2026 12:00:00 GMT</pubDate>
+      <description>The Introduction carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires MB8 and treats CEV as an `AlignmentTarget` special case; field hub v2 adds a lifecycle axis and stance-encoded evidence; authorship bars mark AI- vs human-authored sections in the PDF and on chapter pages.</description>
+      <category>release</category>
+    </item>
     <item>
       <title>[News] Anthropic’s August 2026 Risk Report: what ‘low’ does not settle</title>
       <link>https://towards-alignment.com/cards/field-news-anthropic-risk-report-aug-2026/</link>

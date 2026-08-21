@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-21T23:13:50.812Z",
+  "generatedAt": "2026-08-21T23:39:58.589Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 320,
+  "entryCount": 321,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1305,7 +1305,7 @@
     {
       "title": "Kosoy / infra-Bayesianism & LTA",
       "type": "agenda",
-      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, recursive self-improvement—and does precursor-utility pointing survive simulation and ontology ambiguity?",
+      "summary": "Can a learning-theoretic theory of intelligent agents be built tightly enough to license alignment claims under stated assumptions, including misspecification, inner daemons, and recursive self-improvement? For Physicalist Superimitation: can agent detection and user identification pick out the intended user (including under simulation hypotheses), and does superimitation of inferred values stay well-defined when the world-model ontology is wrong?",
       "url": "/cards/field-agendas/kosoy-infra-bayesianism-lta/"
     },
     {
@@ -1829,6 +1829,12 @@
       "type": "release",
       "summary": "Field agenda crosswalk maps 32 named agendas to MB1–MB11 on a companion Field hub; a plain-first legibility pass retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; external transfer closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and field-claim Lean adds finite defeaters and interface certificates without new bridge numbers.",
       "url": "/cards/release-v1-4-0/"
+    },
+    {
+      "title": "v1.5.0 — Six-claims spine, Krym architecture, and field hub v2",
+      "type": "release",
+      "summary": "The Introduction carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires MB8 and treats CEV as an `AlignmentTarget` special case; field hub v2 adds a lifecycle axis and stance-encoded evidence; authorship bars mark AI- vs human-authored sections in the PDF and on chapter pages.",
+      "url": "/cards/release-v1-5-0/"
     },
     {
       "title": "Value Change vs. Value Corruption",
