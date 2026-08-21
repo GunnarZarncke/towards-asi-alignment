@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-21 | **Constructing alignment attractors paper** — User asked for a critical review of the Gemini `alignment-construction` draft, then to rescue onl... | [2026-08-21-constructing-alignment-attractors.md](2026-08-21-constructing-alignment-attractors.md) |
 | 2026-08-20 | **Turner Reward≠OT shortform hedge** — Review Turner (Turntrout) shortform on shards / reward-as-target (`DNvCMjyi6YmMZri9t`); then add ... | [2026-08-20-turner-reward-hedge.md](2026-08-20-turner-reward-hedge.md) |
 | 2026-08-20 | **README accuracy sync** — User asked whether `README.md` was still accurate after work since its last edit (2026-08-15 titl... | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
 | 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
@@ -20,11 +21,10 @@
 | 2026-08-17 | 2026-08-17-site-card-notes-phase3-ch09 | [2026-08-17-site-card-notes-phase3-ch09.md](2026-08-17-site-card-notes-phase3-ch09.md) |
 | 2026-08-17 | 2026-08-17-site-card-notes-phase2-frontmatter | [2026-08-17-site-card-notes-phase2-frontmatter.md](2026-08-17-site-card-notes-phase2-frontmatter.md) |
 | 2026-08-17 | 2026-08-17-site-card-notes-phase0-1 | [2026-08-17-site-card-notes-phase0-1.md](2026-08-17-site-card-notes-phase0-1.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-close | [2026-08-17-site-card-notes-close.md](2026-08-17-site-card-notes-close.md) |
 
 ## Archive by month
 
-- **2026-08** (104): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (105): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

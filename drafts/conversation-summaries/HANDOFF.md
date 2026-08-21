@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-21 (erasure pass commit).
+Last updated: 2026-08-21 (constructing-alignment-attractors paper; no commit).
 
 ---
 
@@ -43,10 +43,11 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **Reader contract:** six-claims spine Phases 0–6; site `six-thesis-claims` card; `check_claim_spine.py`.
 - **Field hub:** `/field/` → `/field/v2/` + `/field/coverage/`; stance SVG icons; specify/construct instances; MB7a–c cards; agenda merges + Kosoy/Iliad.
 - **Site:** card-notes triage closed; offline PWA v9–v10; translation spine `/lean/`; field news (Black Hat, jailbreak, Anthropic risk report).
-- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration.
+- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB).
 
 ## This week
 
+- **2026-08-21:** Companion paper *Constructing Alignment Attractors*; Gemini `alignment-construction/` deleted. **Uncommitted.** Log: `2026-08-21-constructing-alignment-attractors.md`.
 - **2026-08-20:** ch21 Turner Reward≠OT hedge. Log: `2026-08-20-turner-reward-hedge.md`.
 - **2026-08-20:** README accuracy sync (six claims, field counts, MB8). Log: `2026-08-20-readme-accuracy-sync.md`.
 - **2026-08-20:** Housekeeping + erasure (this log). Log: `2026-08-20-erasure-pass.md`.
