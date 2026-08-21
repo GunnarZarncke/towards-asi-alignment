@@ -1,6 +1,8 @@
 # Witness — deployment witness plan
 
-Status: **draft plan** (2026-08-21). Follow-up to review of implied-reader expectations vs paid claims. **Voice** (packaging / claim-strength) is independent — see [`drafts/plans/voice.md`](voice.md). **Construct** is out of scope here; see Construct lane in [`metadata/TODO.md`](../../metadata/TODO.md).
+Status: **draft plan** (2026-08-21). **Voice** — [`voice.md`](voice.md). **Construct** — parked in [`metadata/TODO.md`](../../metadata/TODO.md) until Witness Exp. 4.
+
+- [ ] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse
 
 ## Goal
 
@@ -188,7 +190,7 @@ Four claims are **problem statements**. Witness = independent replication on a h
 
 - One-page charter: hosts H0–H5, which claim each may pay, stop rules (ET-1/ET-2 style).
 - Pre-register pass/fail/refuse per expectation; no sixth sim line.
-- **Measurand freeze sheet** (same artifact as `metadata/TODO.md` measurand-instantiation task): table mapping each composite index → sub-component chapters → concrete estimator → dataset/sim → experiment script; plus **verifiability labels** (*observable*, *i.i.d.-robust*, *adversarially verifiable up to \(\kappa\)*); note scalar residues (ch40 GLI, ch31 \(\mathcal{K}\)) pending vector/status treatment.
+- **Measurand freeze sheet:** table mapping each composite index → sub-component chapters → concrete estimator → dataset/sim → experiment script; plus **verifiability labels** (*observable*, *i.i.d.-robust*, *adversarially verifiable up to \(\kappa\)*); note scalar residues (ch40 GLI, ch31 \(\mathcal{K}\)) pending vector/status treatment.
 - **Exit:** signed-off scope doc (this file + Phase 0 addendum if needed) + published freeze sheet.
 
 ### Phase 1 — highest leverage (parallel)

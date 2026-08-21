@@ -76,7 +76,7 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 | **Field** | Safety-case adequacy; GSAI proof closure; Kosoy regret bounds |
 | **Book** | `MB11_safety_case_adequacy` only arrow to `Safe`; regret = side channel (`RegretSafety.lean`) |
 | **Lean today** | `Field/Finite/RegretSafety.lean`, `Certification.lean` |
-| **Work** | App B MB11 notes + field-index do-not-infer (done); optional `DeploymentHarmBounded` leaf if book adopts expected-harm language (see `metadata/TODO.md` deferred regret item) |
+| **Work** | App B MB11 notes + field-index do-not-infer (done); optional `DeploymentHarmBounded` leaf if book adopts expected-harm language (deferred — [`spine.md`](spine.md) P4) |
 
 ### P3 — MB7d (Acausal Coordination)
 
@@ -102,6 +102,13 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 4. **Manuscript WWCTV** — forward refs for MB10 noun, MB6 Demski homograph, MB9 conservativity vs GSAI completeness.
 5. **Evidence catalog audit** — verify bridge tags on ev rows match noun intent (especially MB7 vs MB10).
 
+## Checklist
+
+- [ ] Field crux divergence — inventory → App B notes → field-local Lean (no new `MB*`)
+- [ ] MB7a–c optional field-standard noun aliases (keep MB7 split)
+- [ ] App B vs merged field-agenda row names (secondary prose)
+- [ ] International AI Safety Report → Field when read
+
 ## Verification
 
 - Matrix legend + [`bridges.yml`](../../reference/field-agendas/data/bridges.yml) stay in sync.
@@ -113,5 +120,4 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 
 - [`reference/field-agendas/data/bridges.yml`](../../reference/field-agendas/data/bridges.yml) — nouns + crux wording
 - [`reference/field-agendas/inter-agenda-term-glossary.md`](../../reference/field-agendas/inter-agenda-term-glossary.md) — homograph headwords
-- [`metadata/TODO.md`](../../metadata/TODO.md) — **Field crux divergence** item
 - [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](attic/field-claim-formalization-and-bridge-review-plan.md)

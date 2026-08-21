@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-22 (authorship bars: full manuscript rollout).
+Last updated: 2026-08-22 (Spine lane plan; open-work erasure).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-22:** Spine lane — [`drafts/plans/spine.md`](../plans/spine.md); open-work erasure (checklists in plans only). Log: `2026-08-22-spine-lane-erasure.md`.
 - **2026-08-22:** Authorship bars — full rollout (48 chapters + wired appendices); Summary/References `{AI}`, epistemic status `{GZ+AI}`; empty-bar fix; spacing tuned (frontmatter-only Needspace); ~1440 pp. Log: `2026-08-22-authorship-bars-rollout.md`.
 - **2026-08-21:** Authorship bars — `\authbar` on frontmatter only (dotted right bar + `AI`/`GZ` Kürzel). Log: `2026-08-21-authorship-bars.md`.
 - **2026-08-21:** Program map — plans in `drafts/plans/` (`voice.md`, `witness.md`, `field.md`); Expectation 7 removed from Witness; HANDOFF compacted. Log: `2026-08-21-program-tracks-map.md`.

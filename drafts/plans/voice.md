@@ -185,6 +185,11 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 - [x] §6 Gems + REVIEWING gem map
 - [x] §7 Standalone-claims status
 - [x] §8 INSTRUCTIONS + writing-style pointer
+- [ ] De-center PDF as flagship (README, homepage, About, stats)
+- [ ] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`)
+- [ ] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
+- [ ] WWCTV → chokepoint forward refs (per chapter)
+- [ ] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`
 
 ---
 
@@ -195,8 +200,6 @@ cd site && npm run sync:concepts && npm run sync:bot-orientation
 # grep sanity: six-claim "discharge", "Lean proof spine" in site/src/ (not release cards)
 python3 scripts/check_voice.py   # after chapterthesis edits
 ```
-
-Update [`drafts/conversation-summaries/HANDOFF.md`](../conversation-summaries/HANDOFF.md) Open work with a pointer to this file. Session log per [`AGENTS.md`](../../AGENTS.md).
 
 **Do not** commit unless asked.
 
@@ -212,14 +215,4 @@ Update [`drafts/conversation-summaries/HANDOFF.md`](../conversation-summaries/HA
 | [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-044 |
 | [`site/src/content/cards/what-not-claiming.md`](../../site/src/content/cards/what-not-claiming.md) | Scope limits card |
 | [`drafts/plans/witness.md`](witness.md) | Separate empirical program (not a dependency; do not mention in copy) |
-
-```mermaid
-flowchart LR
-  policy[Voice policy]
-  ms[Manuscript frontmatter plus 48 chapterthesis]
-  inst[INSTRUCTIONS AGENTS REVIEWING]
-  site[Homepage Lean cards gems]
-  policy --> ms
-  policy --> inst
-  policy --> site
-```
+| [`drafts/plans/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |

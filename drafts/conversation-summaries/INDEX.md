@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-22 | **Spine lane + open-work erasure** — `spine.md`; lane checklists canonical in plans; TODO/HANDOFF deduped. | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
 | 2026-08-22 | **Authorship bars rollout** — All chapters + wired appendices; key overrides; empty-bar fix; spacing tune; ~1440 pp. | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
 | 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
 | 2026-08-21 | Program map (Voice / Witness / Field) | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
