@@ -24,4 +24,4 @@ User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyon
 - `site/src/content/cards/field-news-openai-pacing-aug-2026.md`
 
 ## Commits
-- (this session)
+- `2a76efb2` Add field news on OpenAI’s frontier-run pause and 20% monitoring tax.
