@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-21 (program map: Voice / Witness / Field lanes).
+Last updated: 2026-08-22 (authorship bars: full manuscript rollout).
 
 ---
 
@@ -10,10 +10,7 @@ Last updated: 2026-08-21 (program map: Voice / Witness / Field lanes).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:**
-
-- **Voice** — [`drafts/plans/voice.md`](../plans/voice.md). §2 `chapterthesis` boxes and §5 progress deferred; §1, §3, §4, §6–§8 done.
-- **Witness** — [`drafts/plans/witness.md`](../plans/witness.md). Not frozen; Phase 0 = measurand freeze sheet + charter.
+**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) — checklists in each file.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -42,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-22:** Authorship bars — full rollout (48 chapters + wired appendices); Summary/References `{AI}`, epistemic status `{GZ+AI}`; empty-bar fix; spacing tuned (frontmatter-only Needspace); ~1440 pp. Log: `2026-08-22-authorship-bars-rollout.md`.
 - **2026-08-21:** Authorship bars — `\authbar` on frontmatter only (dotted right bar + `AI`/`GZ` Kürzel). Log: `2026-08-21-authorship-bars.md`.
 - **2026-08-21:** Program map — plans in `drafts/plans/` (`voice.md`, `witness.md`, `field.md`); Expectation 7 removed from Witness; HANDOFF compacted. Log: `2026-08-21-program-tracks-map.md`.
 - **2026-08-21:** Executive overview rewritten for six-claim / three-question sync. Log: `2026-08-21-executive-overview-sync.md`.
@@ -54,7 +52,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 | Topic | Canonical location |
 |-------|-------------------|
-| Cross-cutting tasks | `metadata/TODO.md` |
+| Cross-cutting tasks | `metadata/TODO.md` (boards + gates) |
+| Lane checklists | `drafts/plans/` |
 | Open uncertainties | `metadata/uncertainty-ledger.md` |
 | Chapter status | `metadata/book.yml` |
 | Experiment outcomes | `experiments/*/results/FINDINGS.md`, `NEGATIVE_RESULTS.md` |

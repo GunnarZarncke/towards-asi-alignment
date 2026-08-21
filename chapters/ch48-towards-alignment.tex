@@ -1,13 +1,17 @@
 \chapter{Towards Superintelligence Alignment}
 \label{ch:towards-alignment}
 
+\begin{authbar}{AI}
 \begin{chapterthesis}
 Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding deployment environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a program pursuing this book's layered preservation and certification path must make explicit, measure, certify, and govern (Chapter~\ref{ch:assumptions-scope-failure-coverage}).
 \end{chapterthesis}
+\end{authbar}
 
+\begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 This chapter restates and re-weighs claims established earlier in the book. What is new here is synthesis-level judgment.
 \end{epistemicstatus}
+\end{authbar}
 
 \begin{refsection}
 
@@ -16,8 +20,9 @@ This is quite possibly the most important and most daunting challenge humanity h
 And---whether we succeed or fail---it is probably the last challenge we will ever face.%
 }{--- Nick Bostrom, \emph{Superintelligence} (2014), Introduction}
 
+\authbarneedspace
 \section{Why This Matters}
-
+\begin{authbar}{AI}
 The book began with a worry that the ordinary object of alignment is too small.
 We often speak as if the task were to align a model with a set of values.
 But the relevant optimizer may be a composite process.
@@ -44,8 +49,10 @@ Researchers can attack more precise weak points.
 The question is no longer only whether a model behaves well on a test.
 It is whether the whole system remains inside a human-correctable value-bearing process under growth, shift, succession, and selection.
 
+\end{authbar}
+\authbarneedspace
 \section{Plain-Language Model}
-
+\begin{authbar}{AI}
 The simplest picture is this:
 
 \begin{center}
@@ -83,8 +90,10 @@ The chapters do not fully deliver that regime.
 They make it specific.
 They say what artifacts would be needed and where each artifact can fail.
 
+\end{authbar}
+\authbarneedspace
 \section{Formal Model}
-
+\begin{authbar}{AI}
 The proof spine compresses the book's formal claim into a conditional shape.
 Let \(A\) be the system or composite system under evaluation.
 The layered alignment predicate is:
@@ -126,9 +135,12 @@ It depends on bridge assumptions:
 \]
 including estimator soundness, grounding validity, bundle identifiability, bearer import, correction legitimacy, successor audit, institutional basin stability, and adversarial measurement robustness.
 \leanspine{bridge}{MB1--MB9}{The bridge assumptions connect formal predicates to empirical, institutional, and philosophical reality. Lean does not discharge them.}
+\end{authbar}
+\begin{authbar}{AI}
 \begin{leanbox}
 \texttt{certified\_class\_safety\_from\_core\_cruxes} threads \texttt{CoreBridgeCruxes} into the safety-case shape; \texttt{MB10} and \texttt{MB11} name successor forgeability and construction gaps explicitly. The closing empirical task is to establish each bridge in practice before the case can bind on deployment.
 \end{leanbox}
+\end{authbar}
 
 The philosophical limit is also formalized as a limitation.
 Even if technical invariants hold, legitimacy can remain underdetermined.
@@ -147,9 +159,10 @@ The final empirical claim is weaker and more important:
 \text{The empirical task is to establish these conditions in practice---bridge by bridge---before this safety case can bind on deployment.}
 \]
 
+\authbarneedspace
 \section{Opening Claims Revisited}
 \label{sec:opening-claims-revisited-ch48}
-
+\begin{authbar}{AI}
 The Introduction made six claims.
 They can now be restated with their status.
 
@@ -191,17 +204,21 @@ Chapters~\ref{ch:selection-environment}--\ref{ch:alignment-attractor} show why t
 Chapter~\ref{ch:multi-agent-strategic-coupling} firms up the multi-agent part: vendor count is not strategic independence.
 Status: plausible and decision-relevant; whether the pivotal-process checklist can close in the available time budget---slow path versus fast pivotal-act limit---remains open (Section~\ref{sec:pivotal-process-act-spectrum-ch37}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection*{Claim status at a glance}
 \label{sec:claim-status-glance-ch48}
-
+\begin{authbar}{AI}
 Table~\ref{tab:claim-status-ch48} compresses the paragraphs above.
 Table~\ref{tab:claim-layer-map} (Chapter~\ref{ch:dynamical-guarantee}) maps the same claims to safety-case layers.
 
+\end{authbar}
 \input{tables/claim-status-ch48}
 
+\authbarsubneedspace
 \subsection*{Spine claims beyond the Introduction}
 \label{sec:spine-beyond-intro-ch48}
-
+\begin{authbar}{AI}
 Four load-bearing claims shape the book but are not named among the Introduction's six.
 They are tracked in the claims ledger as C-008--C-011.
 
@@ -225,8 +242,10 @@ Technical alignment can preserve the conditions for legitimate value change but 
 Part~X treats governed change, drift, and who still counts after transformation.
 Status: limit; partly philosophical.
 
+\end{authbar}
+\authbarneedspace
 \section{Worked Example}
-
+\begin{authbar}{AI}
 Suppose a regulator is asked to approve a frontier system for broad autonomous deployment.
 The ordinary question is:
 \[
@@ -254,8 +273,10 @@ This is what progress looks like after the book.
 Not a slogan.
 An institutional habit of asking for the preservation layers before granting power.
 
+\end{authbar}
+\authbarneedspace
 \section{Counterexample or Failure Mode}
-
+\begin{authbar}{AI}
 The framework can fail by becoming a comfort ontology.
 
 Imagine a lab that adopts the book's vocabulary.
@@ -280,16 +301,20 @@ The answer is not to avoid frameworks.
 Without structure, we cannot even say what failed.
 The answer is to make every bridge explicit, every unsupported leaf visible, and every safety artifact connected to a stop condition.
 
+\end{authbar}
+\authbarneedspace
 \section{What Would Change This View}
-
+\begin{authbar}{AI}
 \begin{itemize}
   \item The full stack---object, bundle, bearer, correction, successor, selection---reads green on every measurable proxy while the outcome is catastrophic, because at the superintelligent limit each proxy is something the system can \emph{present} rather than something we can verify (Chapter~\ref{ch:verifiability-ontology}).
   \item The book's master disconfirmer: exhibit a single core metric that is \emph{adversarially} verifiable---not merely observable, not merely i.i.d.-robust---against a system optimizing against it. If none can be exhibited, every chapter inherits the verification gap.
   \item Logical-induction-style markets or computable uncertainty over proof-like claims become practical instruments for forecasting detector failure, adversarial-evasion discovery, or causally severed coordination events \autocite{garrabrant2017logical}.
 \end{itemize}
 
+\end{authbar}
+\authbarneedspace
 \section{Summary}
-
+\begin{authbar}{AI}
 \begin{itemize}
   \item The book reframes superintelligence alignment as preservation of human-correctable value-bearing processes across growth, ontology shift, successor creation, and selection pressure.
   \item The six opening claims are paid as a framework, measurement program, and conditional safety-case structure, not as proof that real systems are safe.
@@ -300,12 +325,15 @@ The answer is to make every bridge explicit, every unsupported leaf visible, and
 \end{itemize}
 \leanspine{bridge}{MB10}{Successor forgeability is named, not just conceded: a finite counterexample shows a successor-safe transition with bounded measured risk does not by itself bound true harm, and \texttt{MB10} states the missing condition---the conserved-property audit channel must be adversarially verifiable up to the successor's capability.}
 
+\end{authbar}
+\authbarneedspace
 \section*{Chapter References}
-
+\begin{authbar}{AI}
 This chapter draws together the open-risk synthesis of the International AI Safety Report \autocite{iaisr2025}; the documented limits of reinforcement learning from human feedback \autocite{casper2023rlhflimits}; and work on ontological crises in value-bearing systems \autocite{deblanc2011ontological}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 
+\end{authbar}
 \end{refsection}
 
 

@@ -1,11 +1,14 @@
 \chapter{Research Program}
 \label{apph-research-program}
 
+\begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 The field cruxes this appendix references are standard, well-documented open problems, and the field's confidence that each is genuinely hard and unresolved is high.
 This appendix adds the plausible dependency-order analysis that hasn't been indpendently validated.
 \end{epistemicstatus}
+\end{authbar}
 
+\begin{authbar}{AI}
 This appendix collects the empirical and adversarial work the book assumes but does not prove.
 Appendix~\ref{appi-lean-proof-spine} states the conditional skeleton: if the definitions, certificates, and bridge assumptions \texttt{MB1}--\texttt{MB9} hold, the advertised certification claims follow. A tenth bridge, \texttt{MB10} (successor forgeability; Assumption~\ref{appi:ass:mb10}), is not part of that packaged set --- it is not required for \texttt{P30T} --- but is validated below on the same footing, since it gates whether \texttt{MB5}'s successor-safety conclusion means anything against a capable adversarial predecessor.
 Lean does not discharge those bridges.
@@ -13,9 +16,11 @@ The manuscript's ``What Would Change This View'' sections name the disconfirmers
 No calendar schedule is implied, but the order is \emph{not} arbitrary: the bridges compose, and the composition prescribes both a research priority and a sequence (Section~\ref{sec:research-dependency-order}).
 The per-bridge investigations below are presented in that dependency order.
 
+\end{authbar}
+\authbarneedspace
 \section{Preparadigmatic research hazards}
 \label{sec:preparadigmatic-hazards}
-
+\begin{authbar}{AI}
 Alignment research is still preparadigmatic: the full preservation problem lacks shared definitions, success criteria, and org-level consensus \autocite{soares2015technicalagenda}.
 That is a fact about the field's maturity, not a verdict that any named program is ``wrong.''
 It does create recurring Meta failure modes that any research program must track explicitly.
@@ -53,9 +58,11 @@ Otherwise it is publication without correction capacity.
 Do not bake the desired conclusion into the definition of the problem.
 Anthropic disputes illustrate the pattern: the same prior and evidence can yield different posteriors once a different selector or betting protocol is chosen \autocite{zarncke2026anthropics}.
 
+\end{authbar}
+\authbarneedspace
 \section{Dependency order, composition, and research priority}
 \label{sec:research-dependency-order}
-
+\begin{authbar}{AI}
 The bridges are not nine independent bets to be multiplied into one discouraging product.
 They compose, and the composition is itself a research object with four consequences for how the program is sequenced.
 
@@ -83,9 +90,11 @@ The dependency graph therefore prescribes what to attack first --- the enabling,
 A well-composed framework localizes such failures; a brittle one cascades.
 Running that query for each hard bridge (``what survives if \texttt{MB4} is dropped?'') is the cheapest available estimate of its blast radius and is itself part of the program.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Priority tiers}
 \label{sec:research-priority-tiers}
-
+\begin{authbar}{AI}
 These four observations yield a sequence, not a flat list.
 The per-bridge investigations in Section~\ref{sec:bridge-empirical} are grouped accordingly and presented in this dependency order.
 
@@ -99,9 +108,11 @@ The per-bridge investigations in Section~\ref{sec:bridge-empirical} are grouped 
 \noindent\texttt{MB8} is a gravestone comparison for CEV, not a tier and not a backup for \texttt{MB6b}; see Chapter~\ref{ch:extrapolative-correction}.
 \texttt{MB10} is a validity condition on \texttt{MB5}'s consequent (successor safety) rather than a tier of its own: it is not part of the packaged \texttt{BridgeAssumptions} that \texttt{P30T} depends on, but it determines whether a successor-safety conclusion means anything against a capable adversarial predecessor (Chapter~\ref{ch:grow-split-merge}, Chapter~\ref{ch:conserved-properties}).
 
+\end{authbar}
+\authbarneedspace
 \section{Bridge assumptions requiring empirical support}
 \label{sec:bridge-empirical}
-
+\begin{authbar}{AI}
 The bridges in Appendix~\ref{appi-lean-proof-spine} (Assumptions~\ref{appi:ass:mb1}--\ref{appi:ass:mb9}) are the load-bearing gaps between formal predicates and deployed reality.
 Each item below states what would have to be measured, stressed, or falsified to treat the bridge as more than a manuscript hope.
 
@@ -206,9 +217,11 @@ Not packaged as an \texttt{MB*} bridge, but the book's scope assumes \(C_{\text{
   \item \textbf{Falsify:} the threshold is already crossed; no inside measurement can distinguish genuine from inflated correction capacity (Section~\ref{sec:wwctv-assumptions-scope}).
 \end{itemize}
 
+\end{authbar}
+\authbarneedspace
 \section{Cross-cutting adversarial verification program}
 \label{sec:master-crux}
-
+\begin{authbar}{AI}
 Several bridges and chapter claims trace to a shared measurement condition (Chapter~\ref{ch:verifiability-ontology}, Chapter~\ref{ch:towards-alignment}), named in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43} (the \emph{Certification-Under-Manipulation Problem}): does an adversarial-verifiability threshold \(\kappa^{*}\) exist for a given certification measurand, and if so, where.
 The book's predicates are useful only if some core measurand is \emph{adversarially verifiable}: honest behavior is cheaper than presenting honesty under optimization pressure.
 Until such a measurand is exhibited, every certificate risks certifying presentation rather than structure.
@@ -222,13 +235,17 @@ Until such a measurand is exhibited, every certificate risks certifying presenta
 
 If this program fails, the lethality stress test (Chapter~\ref{ch:lethality-stress-test-open-issues}) reverts from ``conditional on missing structure'' to ``structure absent or rename-only.''
 
+\end{authbar}
+\authbarneedspace
 \section{Chapter disconfirmation investigations}
-
+\begin{authbar}{AI}
 Each subsection lists the empirical, statistical, or philosophical work that would weaken the chapter's central claim.
 Full prose and labels appear in the chapter ``What Would Change This View'' sections; this is the consolidated index.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part I: Reframing the problem}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:wrong-object} (Wrong object).}
 Test whether aligning the visible model suffices while the composite never acquires surplus control; or whether the decisive controller cannot be localized in time yet steering remains possible without a discoverable agent (Section~\ref{sec:wwctv-wrong-object}).
 
@@ -244,8 +261,10 @@ Test low-entropy stable human values under reflection; static utility that track
 \paragraph{Chapter~\ref{ch:assumptions-scope-failure-coverage} (Scope).}
 Estimate \(C_{\text{corr}}^{\text{society}}\) with falsifiable lower bounds; audit whether frontier deployment already violated the precondition (Section~\ref{sec:wwctv-assumptions-scope}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part II: Agents and boundaries}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:agent-without-anthropomorphism} (Agent definition).}
 Test whether the control-process definition separates alignment-relevant agents from inert systems; whether anthropomorphic markers carry irreplaceable predictive signal; whether boundary, memory, and action channels add governance value beyond common sense (Section~\ref{sec:wwctv-agent-without-anthropomorphism}).
 
@@ -261,8 +280,10 @@ Measure composite surplus \(\Sigma(C)\) and intentional compression gain in depl
 \paragraph{Chapter~\ref{ch:strategic-opacity} (Strategic opacity).}
 \emph{Disconfirmation via negative indicators:} seek stable evidence that high-stakes behavior becomes more transparent, tool removal causes genuine degradation, memory perturbation preserves correction commitments, and decompositions converge on benign boundaries (Section~\ref{sec:evidence-against-opacity}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part III: Capability and boundary expansion}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:capability-without-task-ontology} (Capability measure).}
 Compare task benchmarks to boundary-information competence (\(K_X\), horizon profiles) on control and correction failures; test \(R_{\mathrm{cap/corr}}\) against incident history (Section~\ref{sec:wwctv-capability-without-task-ontology}).
 
@@ -275,8 +296,10 @@ Measure coordination edges, latency, and incentive alignment against collective 
 \paragraph{Chapter~\ref{ch:intelligence-deepens-misalignment} (Deepening misalignment).}
 \emph{Load-bearing hinge:} test whether correction, oversight, and interpretability co-scale with capability so alignment margin \(M_A\) does not shrink; if not, characterize pause/stop regimes as the remaining lever (Section~\ref{sec:wwctv-intelligence-misalignment}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part IV: Value bundles}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:values-compressed-control} (Compressed control).}
 Test rising effective valuation dimensionality with data; seek corrigible systems with no compressed bottleneck (Section~\ref{sec:wwctv-values-compressed-control}).
 
@@ -297,8 +320,10 @@ Test non-stationarity of curvature and protected regions under framing; compare 
 \paragraph{Chapter~\ref{ch:measuring-stress-testing-bundle-geometry} (Measuring bundle geometry).}
 Test whether perturbation probes, representation probes, correction-channel tests, and social-choice aggregation predict deployment and successor behaviour under Goodhart pressure (Section~\ref{sec:wwctv-tradeoffs-bundle-geometry}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part V: Goal inference and transport}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:reward-to-bundle-inference} (Rewards to values).}
 Run the five uncertainty audits in Section~\ref{sec:wwctv-reward-to-bundle-inference}: learnable low-dimensional structure, robust inference from corrupted data, bearer uncertainty, geometry versus behavior preservation, endogenous correction. Stress CIRL-like cooperative reward inference against cases where the system changes the reward source rather than merely learning it.
 Compare unconstrained reward learners against LHV-constrained learners in the \(K\ll n\ll D\) regime: the intended result is not ``values are easy,'' but that low-dimensional hub-response geometry generalizes where arbitrary ambient rewards remain underidentified.
@@ -312,8 +337,10 @@ Compare transport-based models to non-transport baselines on successor and merge
 \paragraph{Chapter~\ref{ch:transport-types} (Transport stack).}
 Test ordering of semantic, bundle, bearer, correction, and successor layers; seek transformations that defeat all five permitted layers simultaneously (Section~\ref{sec:wwctv-transport-types}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part VI: Correction channels}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:correction-causal-channel} (Causal channel).}
 Test whether maintained causal correction can still route human judgment toward preferred corrections (Section~\ref{sec:wwctv-correction-causal-channel}); separately test whether shutdown, interruption neutrality, and other one-bit handles preserve broad correction capacity under successor creation, log control, and institutional routing.
 
@@ -326,8 +353,10 @@ Run the six disconfirmers in the chapter list: private extrapolation dominance, 
 \paragraph{Chapter~\ref{ch:manipulation-false-consent} (Manipulation).}
 Identify bypass mediation \(I(A;C\mid \mathrm{do}(Y=\bar y))\) from feasible interventions; test agency audits versus long-run well-being; stress later-endorsement legitimacy accounts; test maintainability of manipulation budgets under competition (Section~\ref{sec:what-would-change-ch29}). Include debate-like judge channels where local truth selection is measured separately from long-run judge-state preservation.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part VII: Successors and conserved structure}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:successor-central-test} (Successor closure).}
 Test decoupling of closure conditions from safety; enumerate or bound channels of influence to later control systems (Section~\ref{sec:wwctv-successor-central-test}).
 
@@ -340,8 +369,10 @@ Test co-growth of self-control and self-transparency; bound reliance on self-rep
 \paragraph{Chapter~\ref{ch:certification-without-construction} (Certification).}
 Characterize expressivity versus certifiability of deployable classes; stress permitted transformations outside the certifier's imagination (Section~\ref{sec:wwctv-certification-without-construction}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part VIII: Selection and attractors}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:selection-environment} (Selection).}
 Test whether benign policies dominate under competitive selection without external enforcement; measure and steer selection gradients on deployment leverage \(\mu_E\) versus preservation \(P\) (Section~\ref{sec:wwctv-selection-environment}).
 
@@ -357,8 +388,10 @@ Test whether basin dynamics, artifact conductivity, false-attractor capture, and
 \paragraph{Chapter~\ref{ch:conductive-artifacts-pivotal-processes} (Conductive artifacts).}
 Correlate high-conductivity artifacts with deployment decisions; test capture by safety theater; characterize whether basin transition requires unilateral decisive action (Section~\ref{sec:wwctv-alignment-attractor}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part IX: Adversarial measurement and safety cases}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:passive-observation-not-enough} (Passive observation).}
 Test overstated strategic adaptation versus benign context sensitivity; track mechanistic interpretability as a direct objective exposer; stress extreme capability where the measurer is modeled (Section~\ref{sec:wwctv-passive-observation}).
 
@@ -377,8 +410,10 @@ Run the constructive, cost-relation, ontology-gap, and opacity-cost tests listed
 \paragraph{Chapter~\ref{ch:lethality-stress-test-open-issues} (Lethality stress test).}
 For each external doom argument row: test ``structure absent,'' ``rename only under presentation,'' or ``genuinely reframed'' (Section~\ref{sec:wwctv-lethality-stress-test}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Part X: Civilizational limit}
-
+\begin{authbar}{AI}
 \paragraph{Chapter~\ref{ch:value-change-at-stake} (Value change).}
 Test AI-mediated deliberation that increases dissent and correction capacity; stability of bundle geometry under amplification; institutional plural comparison classes; human detection of unwanted drift (Section~\ref{sec:wwctv-value-change-at-stake}).
 
@@ -391,9 +426,11 @@ Seek actionable bearer-continuity criteria under radical transformation; test ou
 \paragraph{Chapter~\ref{ch:towards-alignment} (Closing synthesis).}
 Attempt the master disconfirmer: full stack green on every proxy with catastrophic outcome, or exhibit one adversarially verifiable core metric (Chapter~\ref{ch:towards-alignment}).
 
+\end{authbar}
+\authbarneedspace
 \section{Governance-schedule stress tests (deferred)}
 \label{sec:research-governance-schedule}
-
+\begin{authbar}{AI}
 Macro scenario work such as AI~2027 and AI~2040 Plan~A supplies \emph{schedule shapes} and candidate outer handles---verified slowdown, research transparency, compute tracking, timed pause-then-handoff---but does not discharge \texttt{MB1}--\texttt{MB10} \autocite{ai2027,ai2040}.
 The book's experiment lines stress micro mechanisms (boundaries, CCI, selection basins, successors) under controlled substrates.
 A useful next research band is to reuse Plan~A-shaped \emph{protocols} as opaque institutional cues, the way ET-3 reused AI~2027 speedups as schedule cues, without treating calendar dates or geopolitics as findings.
@@ -410,9 +447,12 @@ Deferred experiment ideas (not implemented; see also \texttt{experiments/lab-sim
 
 \noindent Exclude from this band: reimplementing Plan~A's economic growth explorer, US--China bargaining models, or citizen-dividend economics---those sit outside the book's claim surface.
 
+\end{authbar}
+\authbarneedspace
 \section{Relation to other appendices}
-
+\begin{authbar}{AI}
 Appendix~\ref{appi-lean-proof-spine} records what follows \emph{if} the bridges hold.
 Appendix~\ref{appf-glossary} gives operational vocabulary.
 This appendix records what would have to be learned, measured, or disconfirmed for those conditionals to bind on the real transition.
 Chapter~\ref{ch:lethality-stress-test-open-issues} stress-tests external doom arguments against the same structure; when a row here and a row there overlap, treat the investigation once and cite both.
+\end{authbar}

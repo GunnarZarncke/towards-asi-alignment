@@ -3,6 +3,7 @@
 
 \begin{refsection}
 
+\begin{authbar}{AI}
 \begin{chapterthesis}
 Appendix~\ref{appj-institutional-translation} maps the book's technical vocabulary onto institutional language.
 This appendix asks a different question: how did any of those institutional correction mechanisms come to exist, what kept them working once they existed, and what specifically broke when they failed?
@@ -10,14 +11,18 @@ The answer is not reassuring by itself, but it is instructive.
 Correction infrastructure is almost never designed from theory in advance.
 It is bootstrapped from catastrophe, from chronic threat, or from money already at risk; it is kept alive by mechanisms that force rare, hard-to-remember hazards back into the attention and incentive horizon of people who did not experience the founding event; and it fails in a small number of recurring ways, several of which---reform decay and dual-mandate genesis in particular---are directly relevant to how AI governance is being built today.
 \end{chapterthesis}
+\end{authbar}
 
+\begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 The historical case material is standard, well-documented institutional and legal history, and its use as an AI-governance analogy source is already established in the cited literature (Anderljung, Zaidi, Law, Miller) rather than original here.
 \end{epistemicstatus}
+\end{authbar}
 
+\authbarneedspace
 \section{Purpose and Method}
 \label{sec:appm-purpose}
-
+\begin{authbar}{AI}
 This appendix is organized by mechanism, not by case.
 Each section names one stage in an institutional correction mechanism's life cycle---how it is founded, how it is kept alive, how it hardens, and how it fails---and illustrates that stage with the historical case where the mechanism is clearest.
 Every case is more than a one-line example: most correction regimes exhibit several of these mechanisms at once, and the sections cross-reference each other rather than pretending the mechanisms are cleanly separable.
@@ -35,9 +40,11 @@ Mining aviation, nuclear, and pharmaceutical regulatory history for AI-governanc
 What this appendix contributes is not the analogies but the frame around them: an organization by life-cycle mechanism rather than by case, and, at each stage, a specific extension---the three-route account of genesis, the decay-and-refresh reading of correction-channel integrity, the successor-inheritance lens on the GPL, and the entrenchment-coordinate response to the corrigibility paradox.
 Each section names, where it matters, which part of its comparison is inherited and which part is being added.
 
+\end{authbar}
+\authbarneedspace
 \section{Genesis from Money Already at Risk}
 \label{sec:appm-genesis-money}
-
+\begin{authbar}{AI}
 The easiest correction mechanism to build is one that a self-interested party would build anyway.
 \emph{Lloyd's Register}, founded in 1760, is the clearest case.
 Marine underwriters needed to know which ships were seaworthy before they would price a policy, and a shipowner with an unclassified vessel found insurance expensive or unavailable.
@@ -51,9 +58,11 @@ The institutional-translation vocabulary of Appendix~\ref{appj-institutional-tra
 The AI-relevant reading is that this genesis route requires an actor whose own money, not the public's, is on the line, and a signal cheap enough to check that faking it costs more than complying honestly (Appendix~\ref{appj-institutional-translation}, Section~\ref{sec:institutional-baselines}, ``cost of fake compliance'').
 Cyber-insurance for model deployment, compute-provider liability for what runs on their infrastructure, and deployment-liability insurance more broadly are candidate levers of exactly this kind, and they do not require prior political consensus to start functioning---only an insurer with the right incentives and a checkable signal.
 
+\end{authbar}
+\authbarneedspace
 \section{Genesis from the Catastrophe Ratchet}
 \label{sec:appm-genesis-catastrophe}
-
+\begin{authbar}{AI}
 Most durable public correction regimes were not designed; they were assembled one body count at a time.
 United States pharmaceutical regulation is the clearest single-lineage case.
 The 1906 Pure Food and Drug Act followed muckraking journalism about contamination, not a single disaster.
@@ -69,9 +78,11 @@ Aviation shows the same pattern at a different timescale: the 1956 Grand Canyon 
 
 The critical limitation, stated as the central disanalogy for the rest of this appendix: \textbf{the catastrophe ratchet requires a catastrophe survivable enough that the polity persists to reform.} Every case in this section is a case where the institution that needed reforming was still there afterward to be reformed. If an AI failure at the relevant capability level is unbounded or irreversible at civilizational scale, this genesis route is unavailable exactly when it would be needed most. Sections~\ref{sec:appm-genesis-money} and~\ref{sec:appm-genesis-chronic} describe the two genesis routes that do not require this precondition.
 
+\end{authbar}
+\authbarneedspace
 \section{Genesis from Chronic, Self-Refreshing Threat}
 \label{sec:appm-genesis-chronic}
-
+\begin{authbar}{AI}
 A third genesis route needs neither a catastrophe nor a counterparty's capital: a threat that never stops recurring.
 The Dutch water boards (\emph{waterschappen}), some tracing to the thirteenth century, are the clearest case.
 Coastal and low-lying Dutch communities faced flooding as a continuous condition, not an occasional event, so the correction infrastructure---levy authority to fund dike maintenance, inspection duties, and enforcement against negligent maintenance---never had the chance to idle between disasters \autocite{tebrake2002tamingwaterwolf}.
@@ -82,9 +93,11 @@ If capability grows relatively continuously, every increment is itself a small, 
 This is a reason to prefer continuous, well-monitored capability growth over discontinuous jumps, independent of the direct safety case for either: the chronic-threat genesis route is only available under the former (Chapter~\ref{ch:selection-environment}).
 Dispute-resolution processes exhibit a related, lower-amplitude version of this route: an AI-harms case law or standing arbitration body converts diffuse, otherwise invisible harms into a steady stream of small, individually survivable disputes, which is exactly the accretive pattern that common-law precedent and the Internet Engineering Task Force's ``rough consensus and running code'' norm also exhibit---correction built one small, unglamorous failure at a time rather than one large one \autocite{russell2014openstandards}.
 
+\end{authbar}
+\authbarneedspace
 \section{Evidence Preservation Before Authority}
 \label{sec:appm-evidence-before-authority}
-
+\begin{authbar}{AI}
 Across every genesis route, one component reliably precedes the strong correction handle: the mechanism that preserves evidence.
 Aviation is the cleanest illustration.
 Flight recorders, and the independent crash-investigation function that reads them, were built up well before the FAA had its full modern enforcement authority, and the investigative function was deliberately separated from the promotional and regulatory function in 1974 when the National Transportation Safety Board became independent of the Federal Aviation Administration---precisely to keep the corrector from being the entity whose decisions it might need to indict.
@@ -94,9 +107,11 @@ Both mechanisms work even while they are weak: a black box that cannot yet compe
 This maps directly onto grounding conservativity (Appendix~\ref{appj-institutional-translation}, Section~\ref{sec:institutional-grounding-conservativity}; Chapter~\ref{ch:dynamical-guarantee}): a weak correction system becomes a stronger one primarily by preserving evidence and widening plurality before it hardens any handle, and the corollary that compliance must be made cheaper than concealment---blameless reporting is a direct purchase of that property.
 For AI, the equivalent bet is that incident-reporting infrastructure, interaction logging, and near-miss taxonomies are worth building well before the enforcement authority to act on them exists, because the evidence base is what makes later authority possible to grant credibly.
 
+\end{authbar}
+\authbarneedspace
 \section{Selection Gating and the Certified Basin}
 \label{sec:appm-selection-gating}
-
+\begin{authbar}{AI}
 Evidence and authority are not enough if uncertified actors can still operate profitably.
 Airworthiness certification, paired with the near-universal requirement of insurance to fly commercially, produces a genuine selection basin: an aircraft that fails certification essentially cannot be deployed, because no insurer will cover it and no airport will schedule it \autocite{herkert2020boeing}.
 The same structure appears in nuclear power, where the Institute of Nuclear Power Operations, founded by the industry itself after the 1979 Three Mile Island accident, imposes peer-inspection standards with real consequences for insurance and licensing standing, and in pharmaceuticals, where an uncertified drug simply cannot be lawfully prescribed.
@@ -107,9 +122,11 @@ This is the deployment-leverage argument of Chapter~\ref{ch:selection-environmen
 The airworthiness directive is the paradigm case of a conductive artifact (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}; Appendix~\ref{appj-institutional-translation}, Section~\ref{sec:institutional-conductive-artifacts}): terse, cross-role, and directly decision-changing, in contrast to a safety report that no procurement officer, insurer, or engineer is obligated to act on.
 The open question for AI is which handles---compute access, cloud-deployment terms, procurement conditions, insurance underwriting---can be assembled into an equivalent basin before uncertified deployment gains irreversible market share, which is precisely the race-basin worry of Chapter~\ref{ch:selection-environment}.
 
+\end{authbar}
+\authbarneedspace
 \section{Constraint Inheritance Across Successors}
 \label{sec:appm-constraint-inheritance}
-
+\begin{authbar}{AI}
 The book's successor test (Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}) asks whether a constraint survives copying, forking, delegation, or merger.
 The GNU General Public License is the clearest existing engineering solution to a narrow version of this problem, and it repays study precisely because it has been tested adversarially for four decades.
 
@@ -121,9 +138,11 @@ First, its central trigger, ``distribution,'' was written for an ontology in whi
 
 The transfer lesson for AI is narrower than it might look, and legal scholarship on AI licensing already supplies the reason why. \textcite{henderson2025mirage} argue in detail that current AI companies likely hold no enforceable copyright in model weights or outputs, which means the GPL's central enforcement lever may simply not be available for the object this book cares about; parallel work on ``contextual copyleft'' and Responsible-AI-License (RAIL) variants for training data and generative outputs reaches a similarly qualified conclusion. That literature is occupied with a different question---whether an AI company can restrict downstream *use*---and does not ask the successor-alignment question this appendix asks: whether a *safety constraint* can be made to travel with a model the way a license travels with code. The overlooked point, not yet made in that literature, is that the GPL's own history of near-misses (the SaaS/distribution loophole, tivoization) is a better-documented, more directly transferable source of failure modes for AI constraint inheritance than the licensing debate itself, precisely because those failures are about a constraint's enforcement handle decoupling from its text, which is exactly the risk facing any successor test. The transferable claim is therefore structural: constraint inheritance across copies works when it rides an existing, strong, distributed enforcement lever; copyright is probably not that lever for AI, and the search for AI's equivalent lever should look at compute access, distribution-platform terms, and insurance rather than at license text alone.
 
+\end{authbar}
+\authbarneedspace
 \section{Memory Refresh Through Succession}
 \label{sec:appm-memory-refresh}
-
+\begin{authbar}{AI}
 Correction capacity that is never exercised tends to atrophy, and few institutions illustrate the alternative as clearly as the Republic of Venice, which lasted roughly a thousand years and fell to external conquest rather than internal capture.
 Two mechanisms did the work. First, the doge's \emph{promissione ducale}, a constraint contract governing the office, was renegotiated at every succession rather than inherited passively; each new promissione incorporated lessons and restrictions drawn from the previous reign's abuses, so the constraint was re-derived by people with a live stake in it rather than remembered by people who were not present at its founding \autocite{lane1973venice}. Second, after the 1310 Tiepolo conspiracy against the state, Venice adopted an elaborate lot-and-vote electoral procedure for choosing the doge and created the Council of Ten, both designed specifically to make office capture computationally and socially impractical \autocite{finlay1980politics}.
 
@@ -137,9 +156,11 @@ This mechanism has a specific failure mode worth naming precisely because it is 
 
 The tension worth stating plainly is that the most direct technical fix for memory decay---an AI system that faithfully preserves rare-event weight inside \(U_H\) rather than letting it decay with disuse---is also exactly the kind of intervention on the update operator that Chapter~\ref{ch:manipulation-false-consent} identifies as the most dangerous point of attack. A system that keeps a hazard salient by intervening in what humans attend to and worry about is doing something structurally identical to a system that manufactures consent by narrowing what humans attend to and worry about. The two are distinguished only by whether the intervention preserves or degrades the legitimation process behind the constraint, which is a question about process, not about outcome, and cannot be certified by the system itself.
 
+\end{authbar}
+\authbarneedspace
 \section{Entrenchment and the Corrigibility Paradox}
 \label{sec:appm-entrenchment}
-
+\begin{authbar}{AI}
 Weimar Germany's 1933 Enabling Act is the sharpest case in this appendix of a correction channel being used, with complete formal validity, to abolish itself \autocite{evans2003comingthirdreich}. Every procedural requirement was satisfied: the Reichstag convened, a required supermajority voted, and the act was published according to law. The valid-reference-process condition---an uncaptured corrector not manufactured by the target (Appendix~\ref{appj-institutional-translation}, Table~\ref{tab:institutional-cci})---failed completely, while every surface procedural coordinate passed. No audit that only checks procedure could have caught this, because the procedure is precisely what was being weaponized.
 
 The postwar Basic Law's response is the institutional resolution of what Chapter~\ref{ch:extrapolative-correction} and the corrigibility literature call the corrigibility paradox \autocite{soares2015corrigibility,christiano2018corrigibility}: a fully correctable system can be corrected into permanent non-correctability, so some coordinate of the system must be placed outside the channel that updates everything else. That literature states the paradox and proposes technical fixes (utility-preservation, indifference, off-switch corrigibility); it does not, to our knowledge, examine a constitutional design that has already had to solve the analogous problem at civilizational scale. Article~79(3) of the Grundgesetz, the so-called \emph{Ewigkeitsklausel} or eternity clause, makes human dignity and the democratic, federal, and rule-of-law core of the constitutional order formally unamendable by any procedure, including the ordinary supermajority amendment process itself \autocite{preuss2011eternity}.
@@ -150,16 +171,20 @@ Second, an eternity clause without an enforcement handle behind it is a ceremoni
 
 A separate and growing literature on ``AI constitutions''---the natural-language documents used to shape frontier-model behavior---raises an adjacent but distinct entrenchment question: who has standing to author or amend the document in the first place \autocite{abiri2025publicconstitutional}. That literature's central worry is legitimacy of authorship; this appendix's question is narrower and orthogonal, which internal coordinate of an already-authored system should be placed outside its own self-modification channel. The Weimar/Basic Law contrast answers the latter question without resolving the former.
 
+\end{authbar}
+\authbarneedspace
 \section{Failure: Reform Decay}
 \label{sec:appm-reform-decay}
-
+\begin{authbar}{AI}
 The mirror image of memory refresh (Section~\ref{sec:appm-memory-refresh}) is what happens in its absence. United States banking regulation after the 1930s shows the pattern cleanly. The Glass-Steagall separation of commercial and investment banking, deposit insurance, and the founding of the Securities and Exchange Commission were catastrophe-driven constraints, built in direct response to the bank runs and speculative collapse of the Depression. Over the following decades, as the generation that had lived through the founding catastrophe left the relevant institutions, the separations were eroded piece by piece through supervisory reinterpretation, exemptions, and eventually outright repeal in 1999 \autocite{kroszner2014regulation}. The 2008 financial crisis then reproduced, in modernized form, several of the exact failure modes the original constraints had targeted, with risk migrating off the regulator's checked balance-sheet abstraction into off-balance-sheet vehicles and unregulated derivatives markets that the correction system could not see \autocite{fcic2011report}, compounded by credit rating agencies whose evidence process was funded by the same issuers they were rating \autocite{white2010ratingagencies}---a grounding-capture failure (Appendix~\ref{appj-institutional-translation}, Section~\ref{sec:institutional-grounding-conservativity}) riding on top of a reform-decay failure.
 
 The mechanism is not mysterious given Section~\ref{sec:appm-memory-refresh}'s framing: a constraint maintained by memory of a specific catastrophe decays on roughly the timescale of a human working generation unless something re-derives it independently of that memory. This gives correction-channel integrity (Chapter~\ref{ch:correction-channel-integrity}) an aspect the book's current formal treatment underweights: CCI is stated as a certificate evaluated at a point in time, but institutional history suggests it needs an explicit decay term or a mandatory re-certification trigger tied to elapsed time since the last exercised correction, rather than treating a passing certificate as a standing property. Concretely useful research directions include estimating empirical decay constants across historical regimes (the interval from the 1999 Glass-Steagall repeal to 2008 was roughly a decade; the interval from the original catastrophe to the repeal was roughly six decades), and designing synthetic-scandal or forced-drill mechanisms that substitute for the generational catastrophe when the correction system cannot afford to wait for a real one.
 
+\end{authbar}
+\authbarneedspace
 \section{Failure: Dual-Mandate Genesis}
 \label{sec:appm-dual-mandate}
-
+\begin{authbar}{AI}
 A second, distinct failure does not require drift at all: some correctors are captured from the moment they are founded, because the same body is charged with both promoting and constraining the thing it oversees. The United States Atomic Energy Commission, created in 1946, combined the mandate to develop nuclear technology with the mandate to regulate its safety in a single agency \autocite{mazuzan1985atom}. The 1974 Energy Reorganization Act split it into the Nuclear Regulatory Commission and the Energy Research and Development Administration specifically because the combined mandate had produced exactly the outcomes one would predict: safety concerns consistently subordinated to development goals inside the same organizational hierarchy. Japan's pre-Fukushima nuclear oversight, often described as a ``nuclear village'' of overlapping utility, regulator, and ministry personnel, repeated the same structural error decades later. Auditor independence failures such as Arthur Andersen's simultaneous audit and lucrative consulting relationship with Enron are the private-sector version of the same pattern, and prompted the creation of the Public Company Accounting Oversight Board as a structurally separated, differently funded corrector rather than a second audit layer inside the same incentive structure \autocite{coffee2006gatekeepers}.
 
 The application of this specific precedent to AI governance is not this appendix's discovery. \textcite{zaidi2021baruch} already read early nuclear-technology governance, including the AEC's combined mandate, for lessons applicable to powerful-technology control generally, and \textcite{law2023dualmandate} explicitly warn that proposals to model international AI governance on the IAEA risk reproducing the AEC's dual-mandate failure rather than the IAEA's occasional successes. What this appendix adds to that warning is the inventory below: a list of the specific present-day locations where the AEC pattern is already instantiated, read against the historical remedy (structural separation at founding) rather than treated as a single abstract risk.
@@ -171,19 +196,24 @@ The 2026 founding of the World Artificial Intelligence Cooperation Organization 
 
 The historically validated remedies are specific rather than generic: structural separation of the promotional and safety functions at founding, independent funding that does not run through the regulated party's fees (the FDA's Prescription Drug User Fee Act, discussed in Section~\ref{sec:appm-genesis-catastrophe}'s source material, illustrates the slower, subtler version of this failure, where a regulator's budget becomes partially dependent on the industry it oversees without any single dramatic capture event), and statutory rather than negotiated evidence access, on the model of subpoena power rather than a memorandum of understanding.
 
+\end{authbar}
+\authbarneedspace
 \section{Failure: Capability Jump Outruns Correction Latency}
 \label{sec:appm-capability-latency}
-
+\begin{authbar}{AI}
 The Roman Republic supplies the sharpest case of a correction system that had worked for centuries being outrun by a discrete jump in what a private actor could cause. The Republic's institutions---annual and collegial magistracies, term limits, the tribunician veto, and a structured career ladder---amounted to a genuinely sophisticated correction architecture, stable for roughly three and a half centuries. The Marian military reforms of 107~BCE, which opened legionary service to the landless poor and left the state without the resources to pension veterans, had the unintended effect of making legions personally loyal to the general who could promise them land and reward, rather than to the Republic itself \autocite{keaveney2007army}. This created a new class of causal power---a private citizen's ability to command an army loyal to him personally---for which no correction channel existed, because none had ever been needed while military loyalty ran to the state. Sulla's march on Rome and, decisively, Caesar's crossing of the Rubicon demonstrated the gap in practice; the Republic's correction mechanisms, built for magistrates operating within civilian constraint, had no answer to a general operating outside it \autocite{gruen1995lastgeneration}.
 
 This is the historical demonstration, at full civilizational scale, of the capability-correction slack argument in Chapter~\ref{ch:capability-growth-boundary-expansion} and Chapter~\ref{ch:selection-environment}: no actor should acquire a new class of irreversible causal reach before the correction channel proportionate to that reach exists, because once acquired, retrofitting the channel requires the cooperation of the very actor the channel is meant to constrain. Large-scale recommender systems demonstrating unprecedented attention-control and behavior-shaping capacity years before any correction infrastructure existed to match that reach are the contemporary echo Appendix~\ref{appj-institutional-translation} already names (Section~\ref{sec:institutional-capability}); the Roman case makes clear that the same pattern, left uncorrected, does not merely produce a policy gap but can end the correction-preserving regime altogether.
 
 Caesar and the Marian legions are not a novel choice of precedent for AI risk; \textcite{miller2025precedents} already catalogs Caesar, alongside Napoleon, Bismarck, and other historically decisive strategists, as an analogy for AI power-concentration and takeover risk, reading the pattern as a story about a capable agent seizing power. The reading here is deliberately narrower and asks a different question of the same material: not why Caesar could act, but why no correction channel existed to stop him once the Marian reforms had created the underlying capability class---a distinction between the capability-seeking narrative and the capability-correction slack diagnosis that matters for what the AI-governance response should be (build the channel before the capability, rather than only try to detect or discourage the seeking of power once it is fungible).
 
+\end{authbar}
+\authbarneedspace
 \section{Lessons and a Research Agenda}
 \label{sec:appm-lessons}
-
+\begin{authbar}{AI}
 \renewcommand{\arraystretch}{1.2}
+\end{authbar}
 \begin{longtable}{@{}p{0.16\textwidth}p{0.19\textwidth}p{0.18\textwidth}p{0.14\textwidth}p{0.22\textwidth}@{}}
 \caption{Mechanism, flagship case, book concept, and AI-governance analogue.}\label{tab:appm-summary}\\
 \toprule
@@ -220,10 +250,12 @@ Three items in this table are not yet first-class in the book's technical treatm
 
 The appendix closes on the same caution it opened with. None of these mechanisms, alone or combined, constitute a solved alignment problem for AI. Several of the strongest historical correction regimes took decades of failure to assemble, depended on catastrophes surviving the polity that suffered them, and are currently subject to the same reform-decay and dual-mandate failures this appendix documents. What history offers is not a template but a set of named failure modes and a small number of genesis routes---money at risk, chronic threat, and, only where a catastrophe is survivable, the catastrophe ratchet---that do not require solving alignment theory first.
 
+\authbarneedspace
 \section*{Appendix References}
-
+\begin{authbar}{AI}
 This appendix draws on institutional-genesis and normal-accident literatures \autocite{vaughan1996challenger,perrow1984normal,reason1997managingrisks}; nuclear and pharmaceutical regulatory history \autocite{mazuzan1985atom,carpenter2010reputation}; aviation certification and safety culture \autocite{herkert2020boeing}; maritime insurance and classification \autocite{kingston2007marine}; financial regulation, capture, and crisis \autocite{kroszner2014regulation,fcic2011report,white2010ratingagencies,coffee2006gatekeepers}; free-software licensing and constraint inheritance \autocite{kelty2008twobits,weber2004successopensource,fsf2007gplv3}, read against legal skepticism that copyright transfers to model weights \autocite{henderson2025mirage}; open-standards governance \autocite{russell2014openstandards}; Venetian, Roman, and monastic institutional history \autocite{lane1973venice,finlay1980politics,keaveney2007army,gruen1995lastgeneration,rost2010benedictine}, alongside prior use of Roman precedents in the AI-risk literature \autocite{miller2025precedents}; Dutch water-management history \autocite{tebrake2002tamingwaterwolf}; constitutional entrenchment and Weimar history \autocite{preuss2011eternity,evans2003comingthirdreich}, the corrigibility-paradox literature this history is read against \autocite{soares2015corrigibility,christiano2018corrigibility}, and the adjacent AI-constitution legitimacy debate \autocite{abiri2025publicconstitutional}; canonization procedure \autocite{woodward1996makingsaints}; tacit-knowledge and knowledge-transmission literature \autocite{polanyi1966tacit,collins1974teaset}, with Burja's adjacent framing of living and dead traditions \autocite{burja2018knowledge}; and prior AI-governance literature that already draws on nuclear- and safety-critical-industry history for licensing, certification, and dual-mandate lessons \autocite{anderljung2023frontier,zaidi2021baruch,law2023dualmandate}, including the 2026 {WAICO} announcement as a live intergovernmental dual-mandate instance \autocite{xi2026waic}.
 
 \printbibliography[heading=subbibliography,title={Appendix References}]
 
+\end{authbar}
 \end{refsection}

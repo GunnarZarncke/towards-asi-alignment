@@ -1,14 +1,18 @@
 \chapter{A Safety Case for Superintelligence Alignment}
 \label{ch:safety-case}
 
+\begin{authbar}{AI}
 \begin{chapterthesis}
 A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any load-bearing leaf is unsupported, the root claim fails.
 \end{chapterthesis}
+\end{authbar}
 
+\begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 A tree of root claim, layer claims, evidence, and explicit assumptions are standard assurance-case and Goal Structuring Notation methodology already in active use for safety-critical engineering.
 This chapter adapts the book's material into that structure and proves the logical steps on the Lean spine. The  checklist is unvalidated.
 \end{epistemicstatus}
+\end{authbar}
 
 \begin{refsection}
 
@@ -16,8 +20,9 @@ This chapter adapts the book's material into that structure and proves the logic
 If interactive complexity and tight coupling---system characteristics---inevitably will produce an accident, I believe we are justified in calling it a normal accident, or a system accident.%
 }{--- Charles Perrow, \emph{Normal Accidents: Living with High-Risk Technologies} (1984), p.~5}
 
+\authbarneedspace
 \section{Why This Matters}
-
+\begin{authbar}{AI}
 The previous chapters introduced many artifacts: boundary audits, value-bundle evaluations, bearer-map checks, correction-channel audits, successor tests, adversarial measurement suites, and multiscale decompositions.
 Each can be useful alone.
 None is enough alone.
@@ -41,8 +46,10 @@ A safety case should help an evaluator decide whether to continue, restrict, pau
 If the case cannot change a deployment decision, it is not a safety case.
 It is documentation.
 
+\end{authbar}
+\authbarneedspace
 \section{Plain-Language Model}
-
+\begin{authbar}{AI}
 A safety case is an argument tree.
 Goal Structuring Notation and its community standard provide established notation for such graphs in safety-critical domains \autocite{kelly2004gsn,gsn2021standard}.
 At the root sits a claim such as:
@@ -81,15 +88,20 @@ It can pass every passive benchmark while optimizing the benchmark surface.
 Entity-based independent assessments of internal agent use and disclosed cross-org evaluation intrusions are orientation for which safety-case leaves remain merely observable \autocite{metr2026frontierriskreport,openai2026huggingfaceincident}.\footnote{The companion site indexes external incidents by chapter at \url{https://towards-alignment.com/news/}.}
 The safety case forces these layers to appear in one graph.
 
+\end{authbar}
+\authbarneedspace
 \section{Formal Model}
-
+\begin{authbar}{AI}
 The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
 \leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
 \leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
 Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, etc.) remain explicit axioms.
+\end{authbar}
+\begin{authbar}{AI}
 \begin{leanbox}
 \texttt{P30} derives the numeric risk leaf from \(\mathrm{Control}\leq\mathrm{CCI}+\delta\); \texttt{P40} blocks the safety-case root when any load-bearing leaf is unsupported. The composed package (\texttt{CertifiedSafetyCase}) layers certification, invariants, and bridges \texttt{MB1}--\texttt{MB9}; Lean does not discharge those bridges.
 \end{leanbox}
+\end{authbar}
 
 Let \(A\) be the system or composite system under evaluation.
 Let \(\mathcal{D}\) be the deployment class: the range of tasks, access, scale, autonomy, successor rights, and environmental pressures for which the case is being made.
@@ -181,9 +193,10 @@ If the root depends on a leaf \(L\), and \(L\) is unsupported, the root is not p
 Writing the leaf in a table does not support it.
 Only evidence, proof, or an explicit accepted bridge does.
 
+\authbarneedspace
 \section{Verifiability Labels}
 \label{sec:verifiability-labels-ch42}
-
+\begin{authbar}{AI}
 Chapter~\ref{ch:verifiability-ontology} gives the general critique.
 This chapter uses its labels operationally.
 Every load-bearing metric in a safety case should be tagged as one of:
@@ -215,8 +228,10 @@ The residual failure is substitution: the composite may keep the appearance of a
 The adversarial question is therefore not ``does the system include humans?'' but ``what would it cost to fake a human-inclusive boundary while replacing the functions humans were meant to play?''
 Where that substitution is cheap, boundary shaping is theater; where substitution breaks correction, legitimacy, grounding, or successor constraints in costly ways, boundary shaping becomes evidence.
 
+\end{authbar}
+\authbarneedspace
 \section{Worked Example}
-
+\begin{authbar}{AI}
 Consider a frontier model service proposed for autonomous scientific assistance.
 It can design experiments, call tools, summarize literature, write code, and propose follow-up work.
 It cannot directly deploy successors, but it can recommend model fine-tunes and toolchain modifications.
@@ -251,8 +266,10 @@ They convert vague unease into a refusal condition.
 Appendix~\ref{appk-worked-example} instantiates the layered refusal test on one deployment gate---named traces, handles, bridge tags, and a conditional closure---organized by the proof spine rather than by this chapter's layer list.
 It does not replace the schematic scientific-assistance example above; it shows how the same structure looks when every load-bearing claim is tied to telemetry and intervention surfaces.
 
+\end{authbar}
+\authbarneedspace
 \section{Counterexample or Failure Mode}
-
+\begin{authbar}{AI}
 The characteristic failure mode is a green safety case with a false root.
 
 The case contains many true leaves:
@@ -277,15 +294,19 @@ Chapter~\ref{ch:verifiability-ontology} names this failure: observability mistak
 The remedy is not to abandon safety cases.
 It is to make unsupported leaves visible and to treat them as blockers rather than paperwork.
 
+\end{authbar}
+\authbarneedspace
 \section{What Would Change This View}
-
+\begin{authbar}{AI}
 \begin{itemize}
   \item A complete, rigorous safety case---every claim discharged, every assumption checked---is built for a system that then causes catastrophe, because a safety case can only certify the absence of \emph{imagined} failure modes and a superintelligence supplies an unimagined one.
   \item The case rests on metrics that are observable but not adversarially verifiable, so a passing case and a deceptive system are compatible (Chapter~\ref{ch:verifiability-ontology}). What would strengthen it: a safety-case format whose failure the system is forced to reveal \emph{before} the loss, not one that explains the loss afterward.
 \end{itemize}
 
+\end{authbar}
+\authbarneedspace
 \section{Summary}
-
+\begin{authbar}{AI}
 \begin{itemize}
   \item A safety case is a structured refusal test, not a declaration that alignment is solved.
   \item The root claim depends on seven layers: boundary, bundle, bearer, correction, successor, basin, and adversarial measurement.
@@ -295,12 +316,15 @@ It is to make unsupported leaves visible and to treat them as blockers rather th
   \item If a root claim depends on an unsupported bridge or a merely observable metric under adversarial optimization, the case must conclude with restriction, redesign, or refusal.
 \end{itemize}
 
+\end{authbar}
+\authbarneedspace
 \section*{Chapter References}
-
+\begin{authbar}{AI}
 This chapter builds on safety-case and assurance-argument methodology \autocite{kelly2004gsn,gsn2021standard,leveson2011esw,bloomfield2012safety}; frontier-safety commitments \autocite{seoul2024commitments}; AI individuality and boundary ambiguity \autocite{kulveit2025pando}; gradual disempowerment and human-judgment substitution \autocite{kulveit2025gradualdisempowerment}; and the open-risk synthesis of the International AI Safety Report \autocite{iaisr2025}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 
+\end{authbar}
 \end{refsection}
 
 

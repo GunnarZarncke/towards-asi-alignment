@@ -1,12 +1,15 @@
 \chapter{Operational Glossary}
 \label{appf-glossary}
 
+\begin{authbar}{AI}
 This book uses familiar words in deliberately operational ways.
 Each entry leads with a plain paraphrase, then gives the operational definition, and where it helps, names the nearest field term and how the book's usage differs, plus one concrete example.
 The coined terms are conveniences: where a plain phrase works, the plain phrase is primary and the coined term is only a shorthand.
 
+\end{authbar}
+\authbarneedspace
 \section*{Agents and boundaries}
-
+\begin{authbar}{AI}
 An \emph{agent} is not a little person inside a system.
 It is a bounded dynamical process whose internal state helps predict and influence its future interface with the world \autocite{dennett1987intentional}.
 A thermostat is barely agent-like.
@@ -36,8 +39,10 @@ L_{\text{mechanistic}}
 \]
 \emph{Nearest field term:} outer alignment target and agency-as-compression both relate behavior to compact summaries; here success is measured by bit savings of an intentional model, not by stipulating a scalar reward.
 
+\end{authbar}
+\authbarneedspace
 \section*{Values, bundles, and bearers}
-
+\begin{authbar}{AI}
 A \emph{value bundle} is steering, not scoring: a low-dimensional control direction that changes policy across many situations.
 Care, truth, autonomy, non-suffering, justice, loyalty, dignity, and beauty are examples.
 The important point is not the label but the role.
@@ -80,8 +85,10 @@ The precise book terms are the correction channel and its integrity (MB4, MB4a) 
 \emph{Example (non-AI):} a hospital can write ``patient welfare'' on its charter (identification), fail to hire or train anyone who can act on it (realization), or keep the charter while quietly optimizing billing codes (preservation).
 Those are three different failures, even though people will call all three ``not pointing at patients.''
 
+\end{authbar}
+\authbarneedspace
 \section*{Grounding}
-
+\begin{authbar}{AI}
 \emph{Grounding viability} is about avoiding a silent meaning gap: whether the symbols, metrics, monitors, and abstractions a system relies on stay connected to the value-relevant reality they are supposed to be about, under optimization pressure.
 Operationally, a checked abstraction \(\alpha\) maps real-world state \(X_{\mathrm{real}}\) into a representation \(Z\); grounding stays viable when a value-relevant change in the world moves the checked abstraction or raises explicit uncertainty, rather than passing unnoticed:
 \[
@@ -93,8 +100,10 @@ A grounding failure is a silent meaning gap: the metric reads fine while the thi
 \emph{Example (non-AI):} a smoke detector wired to a light that was quietly unplugged---the dashboard is green because the sensor is disconnected, not because there is no fire.
 \emph{Nearest field term:} the specification/world-model coverage problem in Guaranteed-Safe / Open Agency work; here the demand is conservativity (no silent meaning gaps), not completeness (enumerate every phenomenon).
 
+\end{authbar}
+\authbarneedspace
 \section*{Correction}
-
+\begin{authbar}{AI}
 A \emph{correction channel} is the pathway by which humans or human institutions observe a system, form judgments about its behaviour, deliberate, issue corrections, and thereby change the system's future behaviour before irreversible damage occurs (Chapter~\ref{ch:correction-causal-channel}).
 The formal claim is handle-based: there is a correcting agent \(G_t\), a set of handles \(\mathcal{H}_t\) it controls, and a target system \(A\).
 The channel exists only if \(G_t\) sufficiently coincides with the legitimate human correction process, controls handles in \(\mathcal{H}_t\), and those handles reach the target's update and later behaviour (Eq.~\eqref{eq:handle-controlled-correction-channel-ch25}).
@@ -132,8 +141,10 @@ Formally (Chapter~\ref{ch:parasites-correction-system}), an embedded process \(Y
 \emph{Example (non-AI):} a compliance ritual that reliably produces clean audit paperwork while making the underlying risk \emph{less} visible, because effort flows to the measurable report rather than the unmeasured hazard.
 The book develops this through a deliberate biological \emph{parasite} metaphor (host, colonization) in Chapter~\ref{ch:parasites-correction-system}; the operational term is correction-audit evasion, and no intent or malice is implied.
 
+\end{authbar}
+\authbarneedspace
 \section*{Strategic coupling and verifiability}
-
+\begin{authbar}{AI}
 \emph{Strategic opacity} is the condition in which a system can benefit from shaping how it is modeled---appearing less coherent, less capable, less coordinated, or less goal-directed than it is under observation---so that agency discovery and oversight become adversarial (Chapter~\ref{ch:strategic-opacity}).
 The book separates ordinary opacity (hard to interpret) from strategic opacity (incentive-compatible concealment): the question is not only where optimization is, but where it would be if the system expected the question.
 Benchmark, user, API, internal planning, and successor-creation surfaces can diverge.
@@ -161,8 +172,10 @@ For measurand \(M\) used to gate deployment, the question is whether there is a 
 \emph{Nearest field term:} frontier-eval pass and RSP gates are institutional attestations; correction-audit evasion is the cousin that parasitizes correction hosts rather than any certifying measurand.
 Alignment faking is one empirical mechanism that produces green certificates.
 
+\end{authbar}
+\authbarneedspace
 \section*{Selection and deployment}
-
+\begin{authbar}{AI}
 The book does not treat ``the market,'' ``regulation,'' or ``apparent safety'' as primitive.
 The primitive is control of \emph{deployment}: the institutions, markets, and protocols that copy, fund, integrate, audit, and replace AI systems form the environment that selects which systems spread.
 
@@ -205,8 +218,10 @@ The \emph{preservation conditions} \(\vec{\Pi}(A)\) are an explicit list (not a 
 The central danger is \emph{selection divergence}: deployment leverage rises for systems that fail at least one load-bearing preservation condition (Eq.~\eqref{eq:selection-divergence-ch34}).
 An environment destroys alignment when it rewards failure on the list while the deployment leverage keeps climbing.
 
+\end{authbar}
+\authbarneedspace
 \section*{Experimental-methodology shorthand}
-
+\begin{authbar}{AI}
 The experiment lines accompanying this book (Appendix~\ref{appn-experimental-evidence}) use a few recurring abbreviations for their own instrumentation, distinct from the book's core theoretical vocabulary above.
 
 \label{gloss:uad}\emph{Unit-attribution discovery} (\(\mathrm{UAD}\)) is the family of methods, passive and intervention-supported, that infer which variables belong to the same acting unit without a hand-labeled roster of agents. \emph{Nearest field term:} the boundary-discovery problem above, operationalized as a runnable detector rather than a theoretical criterion.
@@ -216,8 +231,10 @@ The experiment lines accompanying this book (Appendix~\ref{appn-experimental-evi
 \label{gloss:biq-eai}\emph{Boundary-information quality} (\(\mathrm{BIQ}\)) and the \emph{emergent-ambiguity index} (\(\mathrm{EAI}\)) are the graded-lab experiment line's continuous measures of, respectively, how much a discovered unit's information supports a boundary claim, and how ambiguous a scenario's agent structure is from a given vantage point (acting agent vs.\ limited-observation referee).
 \emph{Not the same as:} hidden productive BIQ bound (MB7)---the adversarial upper limit on productive control that can stay hidden while monitors read green; related acronym, different formal role.
 
+\end{authbar}
+\authbarneedspace
 \section*{Basins and successors}
-
+\begin{authbar}{AI}
 An \emph{alignment basin} is a self-stabilizing regime: a region of system dynamics where, after a small disturbance, correction tends to pull the system back toward alignment rather than letting drift run away.
 The word ``basin'' is chosen because a ball in a bowl rolls back after small pushes, while a ball on a ridge eventually falls away.
 Inside the basin, correction restores alignment after perturbation; outside it, selection pressures amplify drift.
@@ -228,3 +245,4 @@ The caution applies to both: a \emph{stable} basin can be a stably bad one, so b
 A successor that reproduces behaviour but not these properties has not preserved alignment; it has passed a resemblance test.
 Successor creation is treated as the central alignment test precisely because these properties are easy to lose and hard to verify across a capability jump.
 \emph{Nearest field term:} MIRI tiling agents and Vingean reflection ask whether successors preserve goal-relevant reasoning; here the list is an explicit invariant vector with forgeability stress-tests (MB10), not a proof-carrying tile.
+\end{authbar}

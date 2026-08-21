@@ -15,19 +15,29 @@
 \setlength{\authbargap}{\dimexpr 1.2mm + 0.5em\relax}
 
 \newlength{\authbarblocksep}
-\setlength{\authbarblocksep}{0.5\baselineskip}
+\setlength{\authbarblocksep}{0pt}
 
 \newcommand{\authbarlinemode}{none}
 \newif\ifauthbarcontinued
 \authbarcontinuedfalse
 
+% Orphan-title prevention (\Needspace) is for frontmatter \authbarsection only.
+% In main matter (~1700 headings) it forces early page breaks and adds ~7+ pages.
+% Enable with \authbarstrictneedspacetrue before \input{frontmatter/...}; disable at \mainmatter.
+\newif\ifauthbarstrictneedspace
+\authbarstrictneedspacefalse
+
 \newcommand{\authbarneedspace}{%
   \authbarcontinuedfalse
-  \Needspace{5\baselineskip}%
+  \ifauthbarstrictneedspace
+    \Needspace{5\baselineskip}%
+  \fi
 }
 \newcommand{\authbarsubneedspace}{%
   \authbarcontinuedfalse
-  \Needspace{4\baselineskip}%
+  \ifauthbarstrictneedspace
+    \Needspace{4\baselineskip}%
+  \fi
 }
 \newcommand{\authbarsection}[1]{\authbarneedspace\section*{#1}}
 \newcommand{\authbarsubsection}[1]{\authbarsubneedspace\subsection*{#1}}
@@ -119,8 +129,8 @@
     nobreak=false,
     leftmargin=0pt,
     rightmargin=-\authbargap,
-    splittopskip=0pt plus 2pt,
-    splitbottomskip=0pt plus 2pt,
+    splittopskip=0pt,
+    splitbottomskip=0pt,
     singleextra={\authbaroverlay},
     firstextra={\authbaroverlay},
     middleextra={\authbaroverlay},

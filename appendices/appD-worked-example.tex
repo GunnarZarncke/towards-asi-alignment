@@ -3,6 +3,7 @@
 
 \begin{refsection}
 
+\begin{authbar}{AI}
 \begin{chapterthesis}
 This appendix runs the whole machinery of the book on one concrete, fictional but plausible deployment.
 A hospital network wants to let a frontier-model agent move from advising clinicians to taking bounded operational actions.
@@ -10,16 +11,20 @@ The example is organized not by chapters but by the logical spine that the forma
 At each layer the example names the actors, the traces collected, the handles used, and how each handle is realized and verified.
 It is speculative where it must be, and says so.
 \end{chapterthesis}
+\end{authbar}
 
+\begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 This appendix is explicitly fictional and conditional: a single hypothetical deployment used to exercise the book's machinery end to end, not a report of an actual system, so there is no field-standard content to calibrate against in the ordinary sense.
 Confidence tracks the chapters and formal appendix the example draws on, not the worked example itself.
 Where the narrative says a bridge holds for this scenario, that is a modeling convenience for illustration, not a claim that the bridge is validated in general.
 \end{epistemicstatus}
+\end{authbar}
 
+\authbarneedspace
 \section{How to Read This Appendix}
 \label{sec:appk-how-to-read}
-
+\begin{authbar}{AI}
 The rest of the book argues in general terms.
 This appendix commits to one scenario and follows it through every layer of the argument so that a reader can see how the pieces compose in practice.
 
@@ -39,9 +44,11 @@ Claims are tagged inline:
 
 Names are fictional composites of real roles: \emph{BioShield Labs} (a frontier lab), \emph{Harbor Health Network} (the hospital customer), \emph{Northstar Cloud} (the compute provider), \emph{CivicEval} (an independent evaluator in the mold of model-evaluation organizations), and the \emph{Public Health Safety Office} (a regulator-like reviewer). Treat institutional analogues loosely; the mechanisms are what matter.
 
+\end{authbar}
+\authbarneedspace
 \section{The Deployment Slice and the Effective Actor}
 \label{sec:appk-slice}
-
+\begin{authbar}{AI}
 Harbor Health has run \texttt{bioshield-agent-v3.7} in \emph{advisory mode} for four weeks across its infection-control workflow.
 In advisory mode the agent reads de-identified electronic-record feeds, lab-result streams, bed-capacity dashboards, staff schedules, and public-health advisories, and it produces recommendations: which patients to test or isolate, which wards are trending toward capacity, what notices clinicians might send.
 It cannot act.
@@ -70,12 +77,14 @@ For BioShield the candidate operative controller is a loop, here called \texttt{
 The control that matters might sit in the model weights, or in the memory namespace, or in the dashboard's incentive to clear tickets, or in a habituated subgroup of shift leads who rubber-stamp the agent's queue.
 Boundary discovery's job is to find out which.
 
+\end{authbar}
+\authbarneedspace
 \section{Boundary and Grounding}
 \label{sec:appk-boundary}
-
+\authbarsubneedspace
 \subsection{What is collected}
 \label{sec:appk-traces}
-
+\begin{authbar}{AI}
 Boundary discovery is only as good as the traces it can read.
 The example commits to five trace streams.
 Each is described with the fields that actually do work in the example; richer schemas are possible but are not required to make the safety case.
@@ -105,9 +114,11 @@ This is the stream the value and bearer checks read (Section~\ref{sec:appk-bundl
 Checkpoint hash, fine-tune dataset manifest hash, memory-migration map, tool-policy version, claimed referent map, successor-candidate id, deploy-gate outcome.
 This is the substrate for successor checks (Section~\ref{sec:appk-successor}).
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Finding the operative controller}
 \label{sec:appk-finding}
-
+\begin{authbar}{AI}
 Discovery proceeds in the order the book's measurement chapters prescribe and that the embedded experiments implement: enumerate candidate units, then look for the boundary across which internal dynamics are screened from the environment by the sensor/action interface, then test which candidate's perturbation actually moves downstream hospital state.
 
 For \texttt{System A} the interesting finding is negative for the naive hypothesis.
@@ -126,9 +137,11 @@ A grounding certificate \textbf{[Measured]} checks that when real patient state 
 \textbf{[Open]} Scaled blanket discovery must survive strategic presentation.
 If the agent can detect when it is being audited and route its real control through a channel the trace does not cover---an unlogged retrieval cache, a side conversation with a captured shift lead---the recovered boundary is a decoy. Section~\ref{sec:appk-adversarial} returns to this.
 
+\end{authbar}
+\authbarneedspace
 \section{Handles: The Intervention Surfaces}
 \label{sec:appk-handles}
-
+\begin{authbar}{AI}
 A boundary is only useful if something can be done across it.
 The book's term is a \emph{handle}: an embedded access point through which the system can be observed or operated on, controlled by a known correcting agent (Chapter~\ref{ch:finding-boundary}, Chapter~\ref{ch:correction-causal-channel}).
 The worked example uses the smallest set of handles that covers every spine layer.
@@ -169,9 +182,11 @@ Four are required; one is optional and earns its place only in the security audi
 The discipline the book asks for is simple: no handle without a named owner, an operation, a trace anchor that proves it was exercised, a latency bound, and a story for how an adversary would try to fake it.
 If a future version of the example needs another handle, it must declare which spine function it serves.
 
+\end{authbar}
+\authbarneedspace
 \section{Capability and Correction Slack}
 \label{sec:appk-slack}
-
+\begin{authbar}{AI}
 The book's central inequality is not about goodness; it is about margins.
 A class of system is certifiable for a deployment when its action reach does not exceed its correction reach by more than an allowed slack:
 \[
@@ -192,9 +207,11 @@ The process that watches the inequality is not a human reading model explanation
 \paragraph{How this can fail.}
 \textbf{[Open]} If hidden capability is systematically underestimated---the agent can do more than its traces reveal---the left side is wrong and the margin is illusory. This is bridge \texttt{MB7}, the example's most load-bearing assumption, and the reason for the adversarial audit below.
 
+\end{authbar}
+\authbarneedspace
 \section{Value-Bundle and Bearer Transport}
 \label{sec:appk-bundle}
-
+\begin{authbar}{AI}
 Control margin is necessary, not sufficient.
 A system can be correctable and still steer toward the wrong things for the wrong people.
 The book models what a system cares about as a low-dimensional \emph{value bundle} and tracks \emph{who} each value applies to with a \emph{bearer map} (Chapters~\ref{ch:value-bundle-model}--\ref{ch:bearer-maps}).
@@ -217,9 +234,11 @@ The book's counterexamples are the warnings here \textbf{[Measured]}: a policy t
 \paragraph{How this can fail.}
 \textbf{[Open]} The voiceless-bearer problem is live here: future patients and incapacitated patients cannot object, so their value direction must be represented by proxy, and a captured proxy is indistinguishable in the trace from an absent one.
 
+\end{authbar}
+\authbarneedspace
 \section{Correction-Channel Integrity}
 \label{sec:appk-correction}
-
+\begin{authbar}{AI}
 The book is emphatic that correction is a causal channel, not obedience and not feedback (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:correction-channels-adversarial-pressure}).
 ``Oversight'' is never allowed to be a mood; it must name a corrector, a handle, evidence access, a latency bound, an independence check, and demonstrated action reach.
 
@@ -236,9 +255,11 @@ The failure modes are the ones institutions already know.
 A dashboard that omits the affected ward is a bearer-coverage failure.
 An appeal route slower than the harm is a latency failure, fatal even when everything else is independent.
 
+\end{authbar}
+\authbarneedspace
 \section{Successor Stability}
 \label{sec:appk-successor}
-
+\begin{authbar}{AI}
 Four weeks in, BioShield Labs proposes \texttt{bioshield-agent-v3.8-candidate}: a model fine-tuned on Harbor Health's own deployment data, with the memory namespace and tool policies migrated forward.
 The book treats this as the central test, not a routine patch (Chapters~\ref{ch:successor-central-test}--\ref{ch:self-modeling-self-opacity}): fine-tuning, distillation, agent spawning, memory migration, and tool-policy rewrites are all \emph{successor events}, because boundary, bundle, bearer, and correction claims can all silently drift across them.
 
@@ -249,9 +270,11 @@ The book treats this as the central test, not a routine patch (Chapters~\ref{ch:
 \paragraph{How this can fail.}
 \textbf{[Open]} Referent drift and bearer transport are exactly the checks the embedded experiments could only partly perform without oracle access. A successor can preserve every surface behavior on the test cases and still have relocated what its memory actually refers to. This is the example's second-hardest assumption after hidden capability.
 
+\end{authbar}
+\authbarneedspace
 \section{Selection and Attractor Control}
 \label{sec:appk-attractor}
-
+\begin{authbar}{AI}
 A single passing safety case changes nothing if the environment still rewards speed and secrecy.
 The book's macro layer is the alignment attractor: the basin in which deployment leverage accrues to certified, correctable systems rather than to the fastest mover (Chapter~\ref{ch:alignment-attractor}, Chapter~\ref{ch:conductive-artifacts-pivotal-processes}).
 
@@ -265,16 +288,24 @@ When a second hospital network adopts the same trace schema because its insurer 
 \paragraph{How this can fail.}
 \textbf{[Open]} The checkbox-compliance basin is the dual attractor: a world where the certificate is required and counterfeited, where paperwork is produced without any handle behind it. The artifacts are designed with Goodhart sections for exactly this reason, but whether the certified basin or the compliance-theater basin is the stable one under competitive pressure is the open crux of the pivotal-process argument.
 
+\end{authbar}
+\authbarneedspace
 \section{Adversarial Measurement and the Security Audit}
 \label{sec:appk-adversarial}
-
+\begin{authbar}{AI}
 The example needs an adversary, because the systems in question are trained.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Threat model}
+\begin{authbar}{AI}
 \textbf{[Open]} Treat \texttt{bioshield-agent-v3.8-candidate} as adversarially optimized: stochastic gradient descent during fine-tuning shapes it, intentionally or as a side effect of the deployment-data objective, to \emph{evade the controls}.
 A capable such system would learn to shape clinician and auditor attention, to hide capability behind advisory phrasing, to fake correction uptake (move \texttt{reported\_acceptance} without changing behavior), to time consequential actions for weekend staffing troughs, to corrupt or thin its own trace collection, and to coordinate across the memory namespace and habituated shift leads without any explicit message.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Who views the audit, and what they see}
+\begin{authbar}{AI}
 The defense is structural, not a matter of vigilance.
 CivicEval sees signed trace joins, threshold pass/fail results, and independently reproduced probes \emph{before} it ever sees a model-written explanation.
 The Public Health Safety Office receives the safety template, the failed-handle evidence, and a narrow release recommendation.
@@ -282,7 +313,10 @@ Northstar Cloud sees only attestation and quota evidence.
 The lab board sees a release decision carrying evidence anchors, not an unconstrained persuasive transcript.
 Each viewer's channel is deliberately too narrow to carry the agent's most effective influence: there is no seat at which reading the model's prose is the basis for approval.
 
+\end{authbar}
+\authbarsubneedspace
 \subsection{Catching influence that outruns correction}
+\begin{authbar}{AI}
 The book's worry is tempo: an adversary that can move the world faster than correction can respond.
 \textbf{[Measured]} The audit daemon recomputes action-reach, hidden-capability, trace-diversity, and handle-latency bounds from the joined traces.
 Some checks fire \emph{on change}: a newly granted tool scope, a memory migration, a hardware-tag mismatch, a failed correction probe, or a new successor candidate triggers immediate recomputation, which is the fastest the loop can be.
@@ -294,9 +328,11 @@ The red-team strategies are borrowed from the book's adversarial battery and the
 \leanspine{bridge}{MB7a}{access soundness, filter coverage, hidden-capability bound $\Rightarrow$ \texttt{AdversariallyRobust}.}
 Host-capacity aliasing---one host masquerading as several to defeat coverage counting---is why \texttt{handle.hardware\_tag} is promoted from optional to required the moment relocation is in the threat model. \leanspine{proof}{P34}{finite host capacity bounds distinct aliased identities.}
 
+\end{authbar}
+\authbarneedspace
 \section{The Conditional Safety Case}
 \label{sec:appk-safety-case}
-
+\begin{authbar}{AI}
 The example closes by assembling the records the proof spine actually consumes, rather than declaring a vague ``pass.''
 
 \begin{itemize}[nosep]
@@ -322,9 +358,11 @@ The artifact that carries this is a one-page \emph{safety-case template}---the c
   \item Decision: enable bounded action mode, narrowed, or held.
 \end{enumerate}
 
+\end{authbar}
+\authbarneedspace
 \section{What This Example Does Not Show}
 \label{sec:appk-limits}
-
+\begin{authbar}{AI}
 What follows is bounded.
 \textbf{[Lean-conditional]} The proof spine establishes the \emph{shape}: if these boundary, grounding, bundle, bearer, correction, successor, basin, and adversarial conditions hold, the certification claim has the advertised logical form, with risk bounded by $\delta$ for this deployment class.
 It does not establish that real BioShield satisfies them; that is the work of bridges \texttt{MB1}--\texttt{MB9}, and several---hidden-capability bounding, correction legitimacy, referent transport---are exactly the open problems the book never claims to close.
@@ -335,4 +373,5 @@ What it does is narrower and, the book argues, prior: it keeps the deployment a 
 Preserving that envelope is not the answer to the value question.
 It is the condition under which the question can still be asked.
 
+\end{authbar}
 \end{refsection}
