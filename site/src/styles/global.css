@@ -75,6 +75,105 @@ code {
   border-radius: 0.25rem;
 }
 
+/* Field-news quote sources: Anthropic = blue, Zvi = green, this project = black. */
+.src-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1.4rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.92rem;
+}
+
+.src-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+
+.src-legend-swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.15rem;
+  flex-shrink: 0;
+}
+
+.src-legend-item--anthropic,
+.src-quote--anthropic .src-quote-attr,
+.src-quote--anthropic .src-quote-attr a {
+  color: var(--src-anthropic, #1d4ed8);
+}
+
+.src-legend-item--zvi,
+.src-quote--zvi .src-quote-attr,
+.src-quote--zvi .src-quote-attr a {
+  color: var(--src-zvi, #15803d);
+}
+
+.src-legend-item--tsa,
+.src-quote--tsa .src-quote-attr,
+.src-quote--tsa .src-quote-attr a {
+  color: var(--src-tsa, #0f172a);
+}
+
+.src-legend-item--anthropic .src-legend-swatch {
+  background: var(--src-anthropic, #1d4ed8);
+}
+
+.src-quote--anthropic {
+  background: color-mix(in srgb, var(--src-anthropic, #1d4ed8) 9%, var(--color-surface));
+}
+
+.src-legend-item--zvi .src-legend-swatch {
+  background: var(--src-zvi, #15803d);
+}
+
+.src-quote--zvi {
+  background: color-mix(in srgb, var(--src-zvi, #15803d) 9%, var(--color-surface));
+}
+
+.src-legend-item--tsa .src-legend-swatch {
+  background: var(--src-tsa, #0f172a);
+}
+
+.src-quote--tsa {
+  background: color-mix(in srgb, var(--src-tsa, #0f172a) 7%, var(--color-surface));
+}
+
+.src-quote {
+  margin: 0 0 1.15rem;
+  padding: 0.65rem 0.9rem 0.15rem 0.95rem;
+  border-left: 4px solid currentColor;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.src-quote--anthropic {
+  border-left-color: var(--src-anthropic, #1d4ed8);
+}
+
+.src-quote--zvi {
+  border-left-color: var(--src-zvi, #15803d);
+}
+
+.src-quote--tsa {
+  border-left-color: var(--src-tsa, #0f172a);
+}
+
+.src-quote-attr {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.src-quote p:last-child {
+  margin-bottom: 0.7rem;
+}
+
 .site-header {
   --header-bar-height: 3.5rem;
   border-bottom: 1px solid var(--color-header-border);

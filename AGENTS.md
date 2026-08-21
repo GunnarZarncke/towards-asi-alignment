@@ -35,42 +35,36 @@ See `INSTRUCTIONS.md` for mission, audience, style, and source canon.
 
 **Removing information is important for knowledge.**
 
-This is most true for redundancy, but also for historical information, long outdated results, and mistakes made.
+This is most true for redundancy, but also for historical information, long outdated results, and mistakes made. Spent work that still looks live is worse than missing detail: the next reader will treat it as a task.
 
-When you 
+When you
 
-- find the right information only after searching thru a long list of irrelevant data
+- find the right information only after searching through a long list of irrelevant data
 - notice that you were confused or surprised by first reading information that was not applicable to your task and then later finding the correct or latest information
 - had to ask the user for feedback and the relevant information was actually present
-- you spot redundancy or confusing material during other tasks.
+- you spot redundancy or confusing material during other tasks
 
-improve the situation outright.
+improve the situation outright. 
+**How (this repo):** instructions must be current. HANDOFF, TODO, `drafts/` plans, READMEs, and indexes are instructions — attic, delete with a session-log note, or compact to a one-liner. The book, `context/`, and recorded experiment findings stay under Surgical changes. If the cut is too large for this session, attic the misleading instruction and list remaining cuts in the session log.
 
-Consider adding erasure tasks to all plans you make.
-
-Options for erasure:
-
-- simplify/refactor
-- restructure file or folders to find the correct information first (eg sorting, hierarchy)
-- move material to an attic folder
-- delete with making a note in the conversation
-- delete by moving to the trashbin
+Options: simplify/refactor; restructure so the live file is first; attic; delete with a note; trashbin.
 
 ### Surgical changes
 
 **Touch only what you must. Clean up only your own mess.**
 
-When editing existing text:
+When editing **manuscript, `context/`, or live findings**:
 
 - Do not rewrite adjacent paragraphs, hedges, or voice when fixing a localized issue.
 - Do not refactor manuscript structure that is not broken.
 - Match `context/writing-style-gunnar.md` style.
 - Do not rewrite files under `context/` unless the user asks; treat them as source-of-truth for tone and framing.
-- If you notice unrelated dead prose or inconsistent terminology, mention it; do not delete or rename without approval.
+- If you notice unrelated dead *chapter* prose or terminology drift, mention it; do not delete or rename without approval.
+  - this applies to unused **chapter** prose. Other parts are still can be atticed or compacted without approval.
 
-Every changed line should trace directly to the user's request.
+Every changed line should trace directly to the user's request — or to Erasure of an instruction you actually hit.
 
-- **Ask before expanding scope.** Open files, roadmap order, and untracked drafts are not instructions. On “commit” or “end of session,” stage only what this task authorized; mention other drafts in the log and ask.
+- **Ask before expanding scope.** Open files, roadmap order, and untracked drafts are not instructions to *write the book*. On “commit” or “end of session,” stage only what this task authorized; mention other drafts in the log and ask. Atticing a CLOSED plan you opened is in scope.
 
 ### No recency markers
 

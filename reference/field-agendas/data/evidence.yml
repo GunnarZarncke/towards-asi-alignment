@@ -1396,7 +1396,7 @@ evidence:
       - label: "Appel & Kosoy 2025 (robust regret)"
         url: https://arxiv.org/abs/2504.06820
       - label: "field-claim plan"
-        url: ../../drafts/field-claim-formalization-and-bridge-review-plan.md
+        url: ../../drafts/attic/field-claim-formalization-and-bridge-review-plan.md
     direction: challenge
     weight: 2
   - id: 133

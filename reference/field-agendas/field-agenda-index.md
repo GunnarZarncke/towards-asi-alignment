@@ -510,7 +510,7 @@ The **coverage matrix** catalogs **sourced evidence that an agenda touches a bri
 
 ### How to read matrix cells (spine translation) {#spine-translation}
 
-A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:
+A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/attic/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:
 
 | Mode | Meaning | Examples |
 |---|---|---|
@@ -717,7 +717,7 @@ Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, c
 | <a id="ev-129"></a>129 | Resolution | MB11 | O | −− | Complicates | 2 | Automated alignment risks under fuzzy research tasks | [Irving et al. 2026](https://arxiv.org/abs/2605.06390) |
 | <a id="ev-130"></a>130 | CIRIS | MB11 | C | ± | Unclear | — | Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers) | [Accord scope / disclaimers](https://ciris.ai/ciris_accord.txt) |
 | <a id="ev-131"></a>131 | MIRI / Yudkowsky | MB8 | C | ± | Unclear | — | Coherent extrapolated volition (field source for MB8 cousin) | [Yudkowsky 2004 CEV](https://intelligence.org/files/CEV.pdf) |
-| <a id="ev-132"></a>132 | Kosoy / IB & LTA | MB1, MB9 | C | −− | Complicates | 2 | Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean `Nonrealizability.lean`) | [Infra-Bayesianism sequence](https://www.lesswrong.com/tag/infra-bayesianism); [Appel & Kosoy 2025 (robust regret)](https://arxiv.org/abs/2504.06820); [field-claim plan](../../drafts/field-claim-formalization-and-bridge-review-plan.md) |
+| <a id="ev-132"></a>132 | Kosoy / IB & LTA | MB1, MB9 | C | −− | Complicates | 2 | Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean `Nonrealizability.lean`) | [Infra-Bayesianism sequence](https://www.lesswrong.com/tag/infra-bayesianism); [Appel & Kosoy 2025 (robust regret)](https://arxiv.org/abs/2504.06820); [field-claim plan](../../drafts/attic/field-claim-formalization-and-bridge-review-plan.md) |
 | <a id="ev-133"></a>133 | Google DeepMind | MB1 | C | ++ | Advances | 2 | Discovering Agents (causal agent discovery from system dynamics) | [Kenton et al. 2022](https://arxiv.org/abs/2208.08345) |
 | <a id="ev-134"></a>134 | Anthropic / Goodfire | MB7 | E | ++ | Advances | 2 | Causally faithful mechanistic interpretability under intervention | [Lange et al. 2023](https://arxiv.org/abs/2311.17030); [Georg Lange (Foresight grantee)](https://foresight.org/grantees/2026-georg-lange/) |
 | <a id="ev-135"></a>135 | Anthropic / Goodfire (lab) | MB11 | P | ± | Unclear | — | Frontier Model Forum risk taxonomy and capability thresholds | [FMF risk thresholds report](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/) |

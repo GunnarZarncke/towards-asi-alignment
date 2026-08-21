@@ -36,7 +36,7 @@ The **coverage matrix** catalogs **sourced evidence that an agenda touches a bri
 
 ## How to read matrix cells (spine translation)
 
-A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:
+A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/attic/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:
 
 | Mode | Meaning | Examples |
 |---|---|---|

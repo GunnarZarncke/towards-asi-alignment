@@ -71,6 +71,7 @@ experiments/graded-lab-simulation/results/et2_traces/
 # OS
 .DS_Store
 Thumbs.db
+__MACOSX/
 
 # Editor
 *.swp

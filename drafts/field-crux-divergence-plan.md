@@ -114,4 +114,4 @@ Precedent: [`field-claim-formalization-and-bridge-review-plan.md`](field-claim-f
 - [`reference/field-agendas/data/bridges.yml`](../reference/field-agendas/data/bridges.yml) — nouns + crux wording
 - [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) — homograph headwords
 - [`metadata/TODO.md`](../metadata/TODO.md) — **Field crux divergence** item
-- [`drafts/field-claim-formalization-and-bridge-review-plan.md`](field-claim-formalization-and-bridge-review-plan.md)
+- [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](attic/field-claim-formalization-and-bridge-review-plan.md)

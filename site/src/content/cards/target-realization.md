@@ -31,7 +31,7 @@ leanNodes:
     module: "AlignmentProofSpine/AlignmentConstruction.lean"
 external:
   - label: "Krym architecture revision plan (Phase 5–6)"
-    url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/krym-architecture-revision-plan.md"
+    url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/attic/krym-architecture-revision-plan.md"
 related:
   - "pointing-problem"
   - "alignment-target"

@@ -18,6 +18,9 @@
   --color-negative-bg: #f5e8ea;
   --color-established-bg: #e2f0ea;
   --color-framework-bg: #e8edf4;
+  --src-anthropic: #1d4ed8;
+  --src-zvi: #15803d;
+  --src-tsa: #0f172a;
   --shadow-card: 0 12px 35px rgba(15, 23, 42, 0.08);
   --radius-card: 18px;
   --max-readable: 45rem;

@@ -25,4 +25,4 @@ Split `/field/v2/` into a slim hub with coverage on a subpage; fix fragile Unico
 - `reference/field-agendas/scripts/stance-icons.mjs`, `site/src/lib/field-matrix-cell.ts`
 
 ## Commits
-- *(this session)*
+- `e524459d` Split field v2 hub and replace Unicode stance marks with SVG icons.
