@@ -718,7 +718,7 @@ concepts:
     kind: concept
     title: Six thesis claims
     status: framework
-    summary: The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and revisits in Chapter 48.
+    summary: The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and revisits with status in Chapter 48.
     bookLabels:
       - sec:how-claims-unfold
     body: bodies/six-thesis-claims.md
@@ -926,7 +926,7 @@ concepts:
     kind: objection
     title: What the Book Is Not Claiming
     status: open
-    summary: The manuscript offers a framework and conditional proof spine, not a proof that superintelligence alignment is solved.
+    summary: The manuscript offers a framework and conditional dependency spine, not a proof that superintelligence alignment is solved.
     decision: Use the site as a map of cruxes and artifacts, not as a certificate that current systems are safe.
     evidence: The right evidence would discharge bridge assumptions in bounded deployment classes and show where the framework fails.
     bookChapters:

@@ -1,4 +1,4 @@
-# `formal/` — Lean proof spine
+# `formal/` — Lean dependency spine
 
 A compact, **self-contained Lean 4 formalization** of the *logical skeleton* of
 the alignment argument in *Towards Superintelligence Alignment*. It implements

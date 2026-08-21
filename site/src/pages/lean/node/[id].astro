@@ -29,7 +29,7 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
   title={node.label.replace(/\n/g, " ")}
   description={
     node.gloss ||
-    `Lean proof spine node (${node.kind ?? "spine"}): ${node.label.replace(/\n/g, " ")}`
+    `Lean dependency spine node (${node.kind ?? "spine"}): ${node.label.replace(/\n/g, " ")}`
   }
 >
   <article class="two-column">
@@ -37,7 +37,7 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
       <div class="badge-row">
         {node.kind && <Badge label={node.kind} variant={node.kind === "bridge" ? "open" : node.kind === "proof" ? "established" : "framework"} />}
       </div>
-      <p class="eyebrow"><a href={withBase("/lean/")}>Lean proof spine</a></p>
+      <p class="eyebrow"><a href={withBase("/lean/")}>Lean dependency spine</a></p>
       <h1>{node.label.replace(/\n/g, " ")}</h1>
       {node.gloss && <p class="lede">{node.gloss}</p>}
       {node.theorem && (

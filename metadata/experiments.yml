@@ -3,7 +3,7 @@
 
 claimStrength: >
   Methodology-building and sanity checks only. No experiment line validates the full project thesis,
-  proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).
+  proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (MB1–MB10).
 
 negativeResultsFirst: true
 

@@ -1,26 +1,27 @@
-# 2026-08-21 — Track B claim-strength voice (§1)
+# 2026-08-21 — Track B claim-strength voice (§1, §3)
 
 ## Trigger
-User asked to start Track B phase 1 (`drafts/track-b-claim-strength-voice-plan.md` §1: rename six-claim completion language).
+User asked to start Track B phase 1, then §3 (Lean dependency spine). §2 chapterthesis boxes deferred (“chapterboxes later”).
 
 ## Done
-- Replaced reader-facing six-claim “discharge” with “revisit with status” / “status restatement in ch48.”
-- Files: `metadata/concepts.yml`, `metadata/concepts/bodies/six-thesis-claims.md`, `standalone-claims.md` pointer, `metadata/claims-ledger.md` (header + C-044), `site/src/pages/index.astro`, `site/src/pages/faq.astro`.
-- Synced concept cards via `npm run sync:concepts`.
-- Introduction already said “revisits”; no `.tex` change. Left field-hub and Appendix G / MB* “discharge” alone.
+- §1: six-claim “discharge” → status restatement (concepts, C-044, homepage/FAQ).
+- §3: reader-facing default **Lean dependency spine**. Appendix G filename/`\label`/chapter title kept. Check pages still say “what Lean proved.”
+- Synced `sync:concepts`, `sync:experiments`, `sync:bot-orientation`.
 
 ## Decisions
-- Author request waived Track A’s “do not start B” hold for this packaging pass only.
-- FAQ counted as the same six-claim callout as the homepage.
+- §2 skipped this pass.
+- Release cards keep historical “Lean proof spine” headings.
+- Chapter `.tex` “Lean proof spine” mentions left for the chapterbox pass.
 
 ## Open / next
-- Track B §2: audit all 48 `chapterthesis` boxes.
-- §3–§8 still unchecked.
+- §2 `chapterthesis` audit (deferred).
+- §4–§8.
 
 ## Key paths
 - `drafts/track-b-claim-strength-voice-plan.md`
-- `metadata/claims-ledger.md` C-044
-- `metadata/concepts/bodies/six-thesis-claims.md`
+- `formal/README.md`
+- `site/src/pages/lean/index.astro`
 
 ## Commits
 - `bd8519c3` Call Chapter 48 a status restatement, not a six-claim discharge.
+- `14a161d3` Keep construction papers as spin-outs and land leftover 2026-08-21 edits.

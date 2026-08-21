@@ -8,7 +8,7 @@ Track every major claim with status, support, weakest link, and falsification cr
 
 **Maintenance note:** This ledger is not generated. It must be manually updated when chapters, claims, assumptions, uncertainty entries, or proof-spine bridges change. Treat it as a maintainer audit tool rather than an automatically complete public index until the automation TODO in `metadata/TODO.md` is resolved.
 
-**Status vocabulary:** `established` (well-supported, near-consensus) · `plausible` (argued, not proven) · `framework` (definitional/structural proposal) · `speculative` (forward-looking) · `limit` (acknowledged boundary of the theory). Per `AGENTS.md`, claim strength is calibrated to the Lean proof spine: the book does **not** assert that ASI alignment is proven.
+**Status vocabulary:** `established` (well-supported, near-consensus) · `plausible` (argued, not proven) · `framework` (definitional/structural proposal) · `speculative` (forward-looking) · `limit` (acknowledged boundary of the theory). Per `AGENTS.md`, claim strength is calibrated to the Lean dependency spine: the book does **not** assert that ASI alignment is proven.
 
 The six named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-004a (grounding), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their status restatement in the conclusion.
 

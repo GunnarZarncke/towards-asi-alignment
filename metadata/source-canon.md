@@ -15,7 +15,7 @@ source paths. `INSTRUCTIONS.md` §3 summarizes themes; this file holds paths and
 - `context/lean_proof_dependency_graph.dot` / `.png` — full Lean proof dependency DAG (developer reference)
 - `context/lean_proof_graphs/` — four sub-spine diagrams + overview for the book; rendered to `figures/lean_proof/`
 
-## Formal proof spine (`formal/`)
+## Formal dependency spine (`formal/`)
 
 Machine-checked logical skeleton of the alignment argument. Builds with `cd formal && lake exe cache get && lake build` (Lean 4 + Mathlib v4.28.0). See `formal/README.md` for module map and the proof / counterexample / bridge taxonomy.
 

@@ -97,7 +97,7 @@ For multi-step tasks, state a brief plan with verification at each step.
 
 When **drafting, revising, or integrating** a chapter (including Shape B integrated drafts):
 
-1. Read the module map in [`formal/README.md`](formal/README.md) and identify proof-spine nodes for that chapter number.
+1. Read the module map in [`formal/README.md`](formal/README.md) and identify dependency-spine nodes for that chapter number.
 2. Skim the matching `formal/AlignmentProofSpine/*.lean` module(s) for predicates, theorems, and `MB*` bridges the chapter uses or implies.
 3. Calibrate manuscript claim strength to Lean status: **proof**, **counterexample**, or **bridge** — do not say "Lean proves ASI alignment."
 4. If prose and spine diverge, note the gap in the session log and `metadata/TODO.md`; change Lean only when the task explicitly includes formal work.
@@ -170,7 +170,7 @@ make check        # structure + citation + bibliography-summary checks
 
 **Do not** run `npm install` or `npm exec` from repo root — that creates a stray root `node_modules/` that nothing uses.
 
-### Formal proof spine (`formal/`)
+### Formal dependency spine (`formal/`)
 
 Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` in `formal/`). When working on or integrating a chapter, review the matching modules per **Chapter work — Lean spine** above and `formal/README.md`.
 

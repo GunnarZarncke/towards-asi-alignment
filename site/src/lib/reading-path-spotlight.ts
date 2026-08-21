@@ -61,7 +61,7 @@ export function defaultPrimaryLabel(spotlight: ReadingPathSpotlight, ctx: Spotli
       return line ? `Read ${line.title}` : "Open experiment line";
     }
     case "lean":
-      return spotlight.ref === "overview" ? "Open Lean proof spine" : "Open Lean graph";
+      return spotlight.ref === "overview" ? "Open Lean dependency spine" : "Open Lean graph";
     case "card": {
       const card = ctx.cards.find((entry) => entry.id === spotlight.ref);
       return card ? `Read ${card.data.title}` : "Open card";

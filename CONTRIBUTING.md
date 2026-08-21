@@ -10,7 +10,7 @@ Thank you for interest in *Towards Superintelligence Alignment*. This is a resea
 
 ## Improving the Lean proofs of field results
 
-The Lean proof spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Bridges `MB1`–`MB9` stay explicit axioms.
+The Lean dependency spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Bridges `MB1`–`MB9` stay explicit axioms.
 
 High-value work:
 

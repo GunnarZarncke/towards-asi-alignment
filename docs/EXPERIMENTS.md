@@ -2,7 +2,7 @@
 
 > **Structured map:** build order, ledger links, headline findings, and the coverage matrix live in [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
 
-> **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (`MB1`–`MB10`).
+> **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (`MB1`–`MB10`).
 
 > **Finding IDs:** each line uses a unique prefix (`AD-`, `DP-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
 

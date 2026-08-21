@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-21 (Track B §1 claim-strength voice).
+Last updated: 2026-08-21 (Track B §3 Lean dependency spine).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Track B claim-strength voice** — Packaging/voice plan: [`drafts/track-b-claim-strength-voice-plan.md`](../track-b-claim-strength-voice-plan.md). §1 (six-claim “discharge” → “revisit with status”) done 2026-08-21. Remaining: §2–§8. Independent of Track A witnesses; do not mention that program in reader copy.
+- **Track B claim-strength voice** — Plan: [`drafts/track-b-claim-strength-voice-plan.md`](../track-b-claim-strength-voice-plan.md). Done: §1 (six-claim status restatement), §3 (Lean **dependency spine** naming). Deferred: §2 `chapterthesis` boxes. Remaining: §4–§8.
 
 Closed 2026-08-17–18 work lives in **Compressed history (Aug 2026)** and `drafts/attic/`. Follow-ups: `metadata/TODO.md`.
 
@@ -49,7 +49,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-21:** Track B §1 — six-claim completion language. Log: `2026-08-21-track-b-claim-strength-voice.md`.
+- **2026-08-21:** Track B §1 + §3 — six-claim status language; Lean **dependency spine** naming. Log: `2026-08-21-track-b-claim-strength-voice.md`.
 - **2026-08-21:** Anthropic Risk Report field news — author/decision-maker pass. Log: `2026-08-19-anthropic-risk-report-news.md`.
 - **2026-08-21:** Construction papers stay spin-outs (reviewer: unearned weight). Track A proposed Expectation 7 (optional). Logs: `2026-08-21-constructing-alignment-attractors.md`, `2026-08-21-construction-manuscript-todo.md`.
 - **2026-08-20:** ch21 Turner Reward≠OT hedge. Log: `2026-08-20-turner-reward-hedge.md`.

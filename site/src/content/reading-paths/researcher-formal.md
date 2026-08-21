@@ -8,7 +8,7 @@ featuredSpotlight:
   ref: overview
   title: "Conditional proof skeleton"
   blurb: "Machine-checked structure only: which nodes are proofs, finite counterexamples, or explicit bridge axioms — inspect this before trusting manuscript rhetoric."
-  primaryLabel: "Open Lean proof spine"
+  primaryLabel: "Open Lean dependency spine"
   secondary:
     kind: lean
     ref: graph/overview
