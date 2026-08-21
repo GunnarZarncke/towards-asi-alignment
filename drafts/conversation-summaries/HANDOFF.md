@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-21 (constructing-alignment-attractors identity crystallization pass).
+Last updated: 2026-08-21 (Anthropic risk report news — author pass).
 
 ---
 
@@ -47,6 +47,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-21:** Anthropic Risk Report field news — author/decision-maker pass. Log: `2026-08-19-anthropic-risk-report-news.md`.
 - **2026-08-21:** Companion paper *Constructing Alignment Attractors*; identity crystallization pass (Kulveit/Douglas *Artificial Self*). Log: `2026-08-21-constructing-alignment-attractors.md`.
 - **2026-08-20:** ch21 Turner Reward≠OT hedge. Log: `2026-08-20-turner-reward-hedge.md`.
 - **2026-08-20:** README accuracy sync (six claims, field counts, MB8). Log: `2026-08-20-readme-accuracy-sync.md`.

@@ -16,17 +16,11 @@ User asked to read Zvi’s LessWrong post on Anthropic’s August 2026 Risk Repo
 - Zvi: modestly positive *information* update; risk at least medium; attitude about the problem unchanged is the load-bearing worry.
 - GitHub blob URL for the analysis assumes a later commit to `main`.
 - News card copy aimed at decision makers (internal use vs public rating; four go/no-go questions). Quotes and colors unchanged.
+- Author pass on card body (Zvi's View heading, tighter lead, voice edits); synced metadata + site card.
 
 ## Open / next
 - Optional: bibliography key if the Risk Report or Zvi post should appear in the PDF.
 - Optional: cross-link from Mythos-withheld / CoT / METR news bodies.
-- Commit when asked (analysis 404s on GitHub until then).
-
-## Key paths
-- `drafts/anthropic-risk-report-aug-2026-analysis.md`
-- `metadata/field-news/bodies/anthropic-risk-report-aug-2026.md`
-- `metadata/field-news.yml`
-- `site/src/content/cards/field-news-anthropic-risk-report-aug-2026.md`
 
 ## Commits
-- none (not requested)
+- (this session) Anthropic risk report news — author edits + decision-maker pass.

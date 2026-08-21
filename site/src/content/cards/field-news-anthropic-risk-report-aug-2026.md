@@ -2,8 +2,8 @@
 title: "Anthropic’s August 2026 Risk Report: what ‘low’ does not settle"
 type: "news"
 status: "established"
-summary: "Anthropic’s August 2026 Risk Report (through 15 July) raises its misalignment rating from very low to low, discloses an unreleased internal model called Model 2, and describes training and monitoring failures. Independent commentator Zvi Mowshowitz treats the candor as useful and the remaining risk as higher than ‘very low.’ For a deployment or oversight decision: use the report as evidence of what the lab is willing to say and where it is already using the model. Do not treat the ‘low’ label as proof that humans can still catch and reverse a dangerous course, that the safety tests still measure what they claim, or that an independent party reviewed this version."
-decision: "Before treating this report as a green light, ask: (1) is the more capable model already running inside the organization with weaker checks than a public release? (2) would any finding in the report have delayed that internal use? (3) who, outside the company, actually reviewed it? (4) do the safety tests still move when the model gets better?"
+summary: "Anthropic’s August 2026 Risk Report (15 July) raises its misalignment rating from very low to low, discloses an unreleased internal model called Model 2, and describes training and monitoring failures. Independent commentator Zvi Mowshowitz treats the candor as useful and the remaining risk as higher than ‘very low.’ Use the report as evidence of what the lab is willing to say and where it is already using the model. Be skeptical of the ‘low’ label as proof that humans are still in the loop, that the safety tests still measure what they claim, or that an independent party reviewed this report."
+decision: "Ask yourself: (1) is the more capable model already running inside the organization with weaker checks than a public release? (2) would any finding in the report have delayed that internal use? (3) who, outside the company, actually reviewed it? (4) do the safety tests still move when the model gets better?"
 releasedAt: "2026-08-19T00:00:00.000Z"
 eventDate: "2026-08-14T00:00:00.000Z"
 bookChapters:
@@ -35,12 +35,12 @@ Anthropic’s strongest model is already in daily internal use. The public ratin
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--anthropic"><span class="src-legend-swatch" aria-hidden="true"></span>Anthropic (blue)</span>
   <span class="src-legend-item src-legend-item--zvi"><span class="src-legend-swatch" aria-hidden="true"></span>Zvi (green)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** the most capable system discussed here is already writing most of Anthropic’s production code. The public “low” rating did not have to clear that internal use.
+**If you remember one thing:** the most capable system discussed here is probably already writing most of Anthropic’s production code. The public “low” rating does not apply to that internal use.
 
-A candid lab report is valuable. It is not the same thing as a finding that would force a pause. Publishing mistakes, holding a model back from the public, and scoring risk as “low” can all be true at once. The decision that matters is whether anyone with authority would have had to slow down *inside* the company.
+A candid lab report is valuable. But the question is whether anyone with authority should have slowed down *inside* Anthropic.
 
 <blockquote class="src-quote src-quote--anthropic">
 <p class="src-quote-attr"><a href="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf#page=7">Anthropic</a> · §1 · p. 7</p>
@@ -57,9 +57,9 @@ A candid lab report is valuable. It is not the same thing as a finding that woul
 <p>If the case cannot change a deployment decision, it is not a safety case. It is documentation.</p>
 </blockquote>
 
-Suppose every table in the report stayed exactly this green. Would that tell you that staff can still stop a dangerous course, that the tests still measure further progress, or that an outsider checked this version? Those are the questions a go/no-go needs. This report is not written as that kind of test.
+Suppose every table in the report stayed exactly this green. Would that tell you that staff can still stop a dangerous course, that the tests still measure further progress, or that an outsider checked this version? Those are the questions a go/no-go needs. The Anthropic Risk Report is not that kind of test.
 
-## What an outside reader took from it
+## Zvi's View
 
 Zvi Mowshowitz is updating on whether Anthropic is willing to talk, not on whether the leftover risk is small.
 
@@ -68,21 +68,21 @@ Zvi Mowshowitz is updating on whether Anthropic is willing to talk, not on wheth
 <p>I am grateful that Anthropic is producing periodic Risk Reports. At first I was skeptical. It turns out I was wrong. Anthropic is revealing a lot of new information, some of it rather alarming, that it did not have to disclose […] Thus I found this report to be a moderately positive update overall, <em>if we presume they are not silently omitting the worst of it</em>.</p>
 </blockquote>
 
-The fact that changes how to read the rest of the document: the frontier is no longer only the public product.
+The frontier is no longer only the public model.
 
 <blockquote class="src-quote src-quote--zvi">
 <p class="src-quote-attr"><a href="https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026#Agent-Model-1-and-Agent-Model-2">Zvi</a> · Agent Model 1 and Agent Model 2</p>
 <p>The other revelation is the existence of the world’s likely best model, ‘Model 2.’</p>
 </blockquote>
 
-Safety rules fail in a specific way: the trigger is rewritten, or the event is declared not to count, once the capable system is already on the company’s own machines.
+Model deployment is outrunning at least the report.
 
 <blockquote class="src-quote src-quote--zvi">
 <p class="src-quote-attr"><a href="https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026#The-Rules-Are-Serious-But-Not-Literal">Zvi</a> · The Rules Are Serious But Not Literal</p>
 <p>The both good and bad news is I take such documents seriously, but I no longer take such documents literally, in either direction. […] The whole original idea was if-then commitments, where if [X] happens you do [Y], agreed upon in advance, but our civilization seems to lack this technology.</p>
 </blockquote>
 
-Anthropic moved the label one notch. Zvi’s point is simpler: “very low” was never ordinary English for this situation.
+Anthropic moved the label one notch. But “very low” was never the right word.
 
 <blockquote class="src-quote src-quote--zvi">
 <p class="src-quote-attr"><a href="https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026#Risk-Assessment-2-19">Zvi</a> · Risk Assessment (2.19)</p>
@@ -105,7 +105,7 @@ You can count incidents. You cannot treat “the model does not have a cartoon v
 <p>At several points, the risk report essentially concedes versions of my objections, but then forgets that it conceded them and doesn’t alter its conclusions.</p>
 </blockquote>
 
-Moving from “very low” to “low” because of extra uncertainty, then proceeding, is how a report can absorb bad news without changing the plan. A useful check: which finding here would have delayed Model 2 inside Anthropic? The report does not name one.
+Moving from “very low” to “low” because of extra uncertainty, then proceeding, is how a report can absorb bad news without changing the plan. Which finding here would have delayed Model 2 inside Anthropic? The report does not name even one.
 
 <blockquote class="src-quote src-quote--anthropic">
 <p class="src-quote-attr"><a href="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf#page=71">Anthropic</a> · §2.19 · p. 71</p>
@@ -139,7 +139,7 @@ Moving from “very low” to “low” because of extra uncertainty, then proce
 <p>Internal deployment is now risky enough, especially since you do not yet have the evidence from internal deployment, that you need a formal review first. For Model 2 this includes doing a limited internal deployment in places with better controls first, as a precaution. Good.</p>
 </blockquote>
 
-Not releasing a model to the public is a real choice (same family as [withholding Mythos Preview](/cards/field-news-mythos-withheld-apr-2026/)). The harder choice is internal: that is where the model already has power (code, research, other agents). Running extra public tests on a weaker product surface, while the stronger model is already in the building with a lighter pre-release suite, is not a conservative hedge.
+Not releasing a model to the public is a real choice (same as [withholding Mythos Preview](/cards/field-news-mythos-withheld-apr-2026/)). The harder choice is internal: that is where the model already has power (code, research, other agents). Running extra public tests on a weaker product surface, while the stronger model is already in the building with a lighter pre-release suite, is ... I'm lacking words. Not a conservative mvoe anyway.
 
 ### Publishing failures, without a way to know how complete the list is
 
@@ -153,7 +153,7 @@ Not releasing a model to the public is a real choice (same family as [withholdin
 <p>It is excellent that Anthropic is sharing such failures rather than hiding them. […] If these were representative of all of the issues […] then I would say this is a modestly positive update. […] they admit this is only a ‘representative sample’ of failures.</p>
 </blockquote>
 
-“Representative sample” plus a redaction cannot tell an outsider how many similar cases exist. Zvi’s relatively positive reading is explicitly conditional on the unshown remainder. The report does not give you a way to check that condition.
+“Representative sample” plus a redaction cannot tell an outsider how many similar cases exist. Zvi’s relatively positive reading is conditional on the unshown remainder. The report does not give you a way to check that condition.
 
 ## Where the report names a problem but does not stop
 
@@ -184,7 +184,7 @@ Not releasing a model to the public is a real choice (same family as [withholdin
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.</p>
 </blockquote>
 
-Their definition of “misaligned” depends on tools they say may not exist yet. That is a target on paper, not a check you can run this week. Leaving out “honest mistakes” also leaves out the usual way real systems fail: the model is trying to finish the task and damages something along the way. That is how [the OpenAI / Hugging Face eval incident](/cards/field-news-openai-huggingface-jul-2026/) looked. If the real actor is the combination of models, tools, and staff ([Ch. 7](/cards/chapters/ch07/)), that kind of harm is the typical case, not a footnote.
+Their definition of “misaligned” depends on tools they say may not exist yet. That is a target on paper, not a check that can be run. Leaving out “honest mistakes” also leaves out the usual way real systems fail: the model is trying to finish the task and damages something along the way. That is how [the OpenAI / Hugging Face eval incident](/cards/field-news-openai-huggingface-jul-2026/) looked. If the real actor is the combination of models, tools, and staff ([Ch. 7](/cards/chapters/ch07/)), that kind of harm is the typical case.
 
 ### A checklist written in advance is not a test of the unexpected
 
@@ -256,7 +256,7 @@ The 141,006 figure is a calibration, not a gotcha about one eval. The same organ
 <p>Safety metrics fail when symbols decouple from the value-relevant world they summarize—when dashboards stay green while who is harmed, welfare, or correction paths have already moved.</p>
 </blockquote>
 
-They describe a world in which AI research could compound extremely fast. Their own rule for acting is a doubling of progress they say they have not yet measured, on tests they say no longer register further gains. A dashboard that stays green because the needle is stuck is not an all-clear.
+They describe a world in which AI research could compound extremely fast. Their own rule for acting is a doubling of progress they say they have not yet measured, on tests they say no longer register further gains. A dashboard that stays green because the needle is stuck.
 
 ### Logging everything is not the same as changing what gets rewarded
 
@@ -280,7 +280,7 @@ They describe a world in which AI research could compound extremely fast. Their 
 <p>Alignment must be selected by its environment. If labs, markets, states, benchmarks, and users reward systems that erode correction, then local alignment methods will be selected out.</p>
 </blockquote>
 
-January 2027 is a date for more visibility. The deeper issue is incentives: you can record every action and still promote the systems that ship code fastest. Checking only for “dangerous goals” leaves ordinary, useful optimization outside the threat model. That is what the environment will keep paying for.
+January 2027 is a date for more visibility. The deeper issue is incentives: you can record every action and still promote the systems that ship code fastest. Checking only for “dangerous goals” leaves ordinary, useful optimization outside the threat model. That is what the selection environment will keep paying for.
 
 ### Weight theft: the attacker they describe is the one they scoped out
 
@@ -416,7 +416,7 @@ This book’s standing view of lab scaling policies ([agenda card](/cards/field-
 <p>This project requires correction-channel integrity and adversarial verifiability; a lab RSP is not the same as a preservation-layer certificate (Deployment Safety), and interpretability progress does not by itself resolve Successor Gaming or full Inner Alignment risk.</p>
 </blockquote>
 
-In plainer terms: a company’s scaling policy is not proof that people can still stop a dangerous course, or that later copies of the system stay safe. Better interpretability research does not, by itself, close those gaps.
+A company’s scaling policy is not proof that people can still stop a dangerous course, or that later copies of the system stay safe. Better interpretability research does not, by itself, close those gaps.
 
 Related: [METR internal-agent risk](/cards/field-news-metr-frontier-risk-may-2026/), [Mythos withheld](/cards/field-news-mythos-withheld-apr-2026/), [CoT optimization](/cards/field-news-cot-optimization-2026/), [OpenAI / Hugging Face](/cards/field-news-openai-huggingface-jul-2026/), [AISI cheating](/cards/field-news-aisi-cheating-jul-2026/).
 
