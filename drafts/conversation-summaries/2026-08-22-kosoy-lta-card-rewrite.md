@@ -24,4 +24,4 @@ Vanessa Kosoy found the research-agenda summary hard to parse: it phrased LTA th
 - `site/src/content/cards/field-agendas/kosoy-infra-bayesianism-lta.md`
 
 ## Commits
-- (this session; hash filled after commit)
+- `b5bb11f7` Rewrite the Kosoy LTA agenda summary in her terms.
