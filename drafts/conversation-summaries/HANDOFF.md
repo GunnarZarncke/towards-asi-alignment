@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-22:** PDF layout — Contents starts on a new page; part summaries on the part-title page. Log: `2026-08-22-part-pages-toc-break.md`.
 - **2026-08-22:** **v1.5.0 tagged** — six-claims spine, Lean architecture revision, field hub v2, authorship bars. Log: `2026-08-22-v1-5-0-release-notes.md`.
 - **2026-08-22:** Kosoy LTA agenda card rewritten in her terms (PSI ≠ precursor-via-bridge-transform). Log: `2026-08-22-kosoy-lta-card-rewrite.md`.
 - **2026-08-22:** OpenAI pacing field news (pause + 20% monitor; three-voice, short). Log: `2026-08-22-openai-pacing-news.md`.

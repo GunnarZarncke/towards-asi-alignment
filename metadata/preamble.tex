@@ -5,6 +5,11 @@
 \usepackage[framemethod=tikz]{mdframed}
 \input{metadata/authorship-bars.tex}
 
+% Part openers: title at the top, then the part summary on the same page.
+% Memoir's default \afterpartskip is \vfil\newpage (title-only page).
+\renewcommand{\beforepartskip}{\vspace*{2\onelineskip}}
+\renewcommand{\afterpartskip}{\par\nobreak\vskip 2\onelineskip}
+
 % Ragged-right fixed-width columns (longtable / tabularx).
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}p{#1}}
 

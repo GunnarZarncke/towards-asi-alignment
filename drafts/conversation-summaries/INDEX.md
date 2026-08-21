@@ -6,9 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-22 | **v1.5.0 release notes (prepare)** — User asked to prepare release notes. | [2026-08-22-v1-5-0-release-notes.md](2026-08-22-v1-5-0-release-notes.md) |
+| 2026-08-22 | **v1.5.0 release notes and tag** — User asked to prepare release notes, reviewed the draft, then asked to perform the release steps. | [2026-08-22-v1-5-0-release-notes.md](2026-08-22-v1-5-0-release-notes.md) |
 | 2026-08-22 | **Spine lane + open-work erasure** — User asked what remained open after Aug 16–17 work; whether `drafts/plans/` and `metadata/TODO.md... | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
 | 2026-08-22 | 2026-08-22-site-auth-chips | [2026-08-22-site-auth-chips.md](2026-08-22-site-auth-chips.md) |
+| 2026-08-22 | **Part pages and Contents break** — User reported a missing page break before Contents, and that part summaries should sit on the sam... | [2026-08-22-part-pages-toc-break.md](2026-08-22-part-pages-toc-break.md) |
 | 2026-08-22 | **OpenAI pacing field news** — User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyond existing news car... | [2026-08-22-openai-pacing-news.md](2026-08-22-openai-pacing-news.md) |
 | 2026-08-22 | **Kosoy LTA card rewrite** — Vanessa Kosoy found the research-agenda summary hard to parse: it phrased LTA through book vocabu... | [2026-08-22-kosoy-lta-card-rewrite.md](2026-08-22-kosoy-lta-card-rewrite.md) |
 | 2026-08-22 | **Authorship bars rollout (chapters + appendices)** — Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/9, Summary/Refere... | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
@@ -20,11 +21,10 @@
 | 2026-08-21 | **Authorship bars (frontmatter)** — Mark AI-assisted book content with dotted right-margin bars and small Kürzel (`AI`, `GZ`, combina... | [2026-08-21-authorship-bars.md](2026-08-21-authorship-bars.md) |
 | 2026-08-20 | **Turner Reward≠OT shortform hedge** — Review Turner (Turntrout) shortform on shards / reward-as-target (`DNvCMjyi6YmMZri9t`); then add ... | [2026-08-20-turner-reward-hedge.md](2026-08-20-turner-reward-hedge.md) |
 | 2026-08-20 | **README accuracy sync** — User asked whether `README.md` was still accurate after work since its last edit (2026-08-15 titl... | [2026-08-20-readme-accuracy-sync.md](2026-08-20-readme-accuracy-sync.md) |
-| 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
 
 ## Archive by month
 
-- **2026-08** (116): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (117): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 
