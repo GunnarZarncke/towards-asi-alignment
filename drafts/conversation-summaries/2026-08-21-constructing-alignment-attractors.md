@@ -4,10 +4,12 @@
 User asked for a critical review of a draft, then to extend the symmetry-breaking concept into an extension of `alignment-under-selection`. After a structure proposal, they asked to create the new paper in a new folder.
 
 ## Done
-- Wrote `papers/constructing-alignment-attractors/` (tex, bib, `build.sh`); PDF builds (10 pages after identity pass).
+- Wrote `papers/constructing-alignment-attractors/` (tex, bib, `build.sh`); PDF builds (11 pages after lit pass).
 - Indexed in `papers/README.md`. 
 - Companion relation: evaluate attractors (paper 1) vs explicit symmetry-breaking construction (paper 2).
 - Integrated Kulveit/Douglas *Artificial Self* as identity crystallization (reconstructive \(Q\), timing window, coherence ≠ \(D\)).
+- Added constructor-level first-mover/other-modeling as a different, already-studied game (short note under unipolar rewrites; not re-derived).
+- Selected literature pass from `deep-research_constructing_alignment.md`: reworded PD lemma as payoff redesign; added Maskin, Sandholm, Newton–Ma, Chassang, Harris, Blanchini, Soares/AI Control, Frank/Wechsler, Acemoglu–Robinson; new failure mode *Enforcement collapse*.
 
 ## Decisions
 - Construction criterion requires \(D\) fixed independently of the intervention (anti-baked-conclusion).
@@ -20,4 +22,4 @@ User asked for a critical review of a draft, then to extend the symmetry-breakin
 - `papers/alignment-under-selection/alignment-under-selection.tex`
 
 ## Commits
-- (this session) identity crystallization pass on constructing-alignment-attractors
+- `cd866f9e` Add identity crystallization to Constructing Alignment Attractors.

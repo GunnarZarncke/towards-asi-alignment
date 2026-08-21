@@ -48,7 +48,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 ## This week
 
 - **2026-08-21:** Anthropic Risk Report field news — author/decision-maker pass. Log: `2026-08-19-anthropic-risk-report-news.md`.
-- **2026-08-21:** Companion paper *Constructing Alignment Attractors*; identity crystallization pass (Kulveit/Douglas *Artificial Self*). Log: `2026-08-21-constructing-alignment-attractors.md`.
+- **2026-08-21:** Companion paper *Constructing Alignment Attractors*; identity crystallization pass; selected lit additions (Maskin/Sandholm/Chassang/Harris et al.); constructor race shortened to first-mover note. Log: `2026-08-21-constructing-alignment-attractors.md`.
 - **2026-08-20:** ch21 Turner Reward≠OT hedge. Log: `2026-08-20-turner-reward-hedge.md`.
 - **2026-08-20:** README accuracy sync (six claims, field counts, MB8). Log: `2026-08-20-readme-accuracy-sync.md`.
 - **2026-08-20:** Housekeeping + erasure (this log). Log: `2026-08-20-erasure-pass.md`.

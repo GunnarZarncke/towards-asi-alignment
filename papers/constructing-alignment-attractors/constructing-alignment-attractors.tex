@@ -54,8 +54,8 @@
 \maketitle
 
 \begin{abstract}
-A companion paper defines an evolutionarily robust alignment attractor as a desirable region that is retained under transformation, attracting nearby variants, resistant to invasion, low in adversarial regeneration, and stable in the coupled population--selector--environment dynamics \parencite{zarncke2026selection}. That paper evaluates a geometry it takes as given. This paper asks how the geometry can be changed.
-
+Define an evolutionarily robust alignment attractor as a desirable region that is retained under transformation, attracting nearby variants, resistant to invasion, low in adversarial regeneration, and stable in the coupled population--selector--environment dynamics \parencite{zarncke2026selection}. 
+Given such a geometry we ask how the geometry can be changed.
 Many selection processes are symmetric in a way that makes aligned and misaligned configurations interchangeable, or that makes defection the unique equilibrium. Stability in that geometry is not alignment: a basin can lock in the wrong vacuum. Construction is the class of interventions that \emph{explicitly} break a stated harmful symmetry by changing payoffs, transformation kernels, selector rules, or reconstructive biases, so that a pre-specified desirable region can satisfy the attractor conditions. The existence of a system that realizes a stated target remains open. Written mechanisms cannot always complete the job. Formal or cryptographic substrates can change the cost of faking particular measurands; they do not by themselves construct the attractor.
 \end{abstract}
 
@@ -71,13 +71,16 @@ That definition is inherited here. So are the scope fences: the mapping from phy
 
 The companion paper's compact result is that an aligned population under a fixed selector is not yet an alignment attractor. The extra claim here is that even a true attractor can be the wrong one. Construction is directional symmetry breaking, not the mere production of stability.
 
-This paper does not re-derive invasion fitness, mutation--selection balance, or the block-Jacobian coupling of population and selector. It asks which interventions act on \(Q\), \(f\), \(\theta\), and \(E\), and which failure modes those interventions leave open.
+This paper does not re-derive invasion fitness, mutation--selection balance, or the block-Jacobian coupling of population and selector. It asks which interventions act on \(Q\), \(f\), \(\theta\), and \(E\), and which failure modes those interventions leave open. Who applies an intervention, and when, is a different game, already studied; it is noted rather than solved.
 
 \section{From control to construction}
 
 Demski distinguishes search over alternatives from feedback control \parencite{demski2019}. Much of AI alignment is still posed as control of a trained system: install the right objective, then keep it. Under continued copying, fine-tuning, merging, replacement, and evaluation, the object that persists is a process, not a checkpoint.
 
-Control asks whether the present system is in \(D\). Selection asks whether \(D\) remains occupied under \(Q\) and \(\theta\). Construction asks whether we can change \((Q,f,\theta,E)\) so that \(D\) becomes occupyable as an attractor at all.
+Control asks whether the present system is in \(D\). 
+Selection asks whether \(D\) remains occupied under \(Q\) and \(\theta\). 
+Construction asks whether we can change \((Q,f,\theta,E)\) so that \(D\) becomes occupyable as an attractor at all. In control theory, a desired set is often specified as invariant under admissible dynamics \parencite{blanchini1999}. 
+Construction is the stronger move: change the dynamics so the set can become invariant under selection.
 
 The last question is easy to misstate as ``make cooperation the unique global minimum of an energy function.'' That statement collapses three different things: a payoff comparison, a dynamical attractor, and a thermodynamic metaphor that this setting does not support. The useful distinction is older and narrower. Physical laws can be symmetric while a particular history is not. The system then occupies one vacuum among several \parencite{anderson1972}. Evolutionary games show the same split: the stage game can be symmetric while roles, spatial structure, or correlation devices make particular strategies distinguishable and stable \parencite{nowak1992,nowak2006,skyrms2004}.
 
@@ -126,6 +129,7 @@ The replicator is \(\dot x = x(1-x)\bigl(f_C(x)-f_D(x)\bigr)\). An explicit sanc
 \end{equation}
 
 \begin{lemma}[Sufficient sanction in a Prisoner's Dilemma]
+\label{lem:sanction}
 If \(T>R>P>S\) and \(\sigma>\max(T-R,P-S)\), then \(f_C(x)>f_D^\sigma(x)\) for all \(x\in[0,1]\), so \(x=1\) is the unique stable rest point of the replicator.
 \end{lemma}
 
@@ -133,7 +137,11 @@ If \(T>R>P>S\) and \(\sigma>\max(T-R,P-S)\), then \(f_C(x)>f_D^\sigma(x)\) for a
 \(f_C-f_D^\sigma = x(R-T)+(1-x)(S-P)+\sigma\). Both \(R-T\) and \(S-P\) are negative, so the linear function of \(x\) is bounded below by \(\sigma-\max(T-R,P-S)\). The bound is strictly positive by assumption.
 \end{proof}
 
-This is explicit symmetry breaking of the dilemma: the laws no longer treat \(D\) as payoff-dominant. Several limits are immediate.
+This is payoff redesign, not relabeling \(C\leftrightarrow D\): 
+the sanction shifts fitness so cooperation is dominant while the game remains symmetric under agent permutation \parencite{newton2021}. 
+Implementation theory fixes a desirable outcome first and asks which rules implement it in equilibrium \parencite{maskin1999}; evolutionary implementation requires convergence under adjustment dynamics, not static equilibrium alone \parencite{sandholm2002}. 
+The lemma is the minimal one-shot version of that payoff-engineering move. 
+Several limits are immediate.
 
 If \(\sigma\) is smaller than the bound, \(D\) remains the unique ESS. Construction can be attempted and fail.
 
@@ -178,7 +186,7 @@ The transfer to AI is limited. Nested digital protocols can change \(f\) for age
 
 \subsection{Mechanism design and incomplete contracts}
 
-Classical mechanism design studies how announced rules can make selfish play implement a social choice. Incomplete-contract theory studies what happens when the contractual language cannot distinguish all payoff-relevant contingencies \parencite{grossman1986,hart1988,hart1999}. Hadfield-Menell and Hadfield apply that structure to AI alignment: the specification of desired behavior is an incomplete contract with the system \parencite{hadfield2019}.
+Classical mechanism design studies how announced rules can make selfish play implement a social choice \parencite{maskin1999}. Incomplete-contract theory studies what happens when the contractual language cannot distinguish all payoff-relevant contingencies \parencite{grossman1986,hart1988,hart1999}. Hadfield-Menell and Hadfield apply that structure to AI alignment: the specification of desired behavior is an incomplete contract with the system \parencite{hadfield2019}.
 
 Huang, Tharas, Marro, Truong, Sch\"olkopf, La Malfa, and Jin prove a cooperation gap for a class of social dilemmas: when the mechanism's language has \emph{incontractible cells} (a partition of future states that the contract cannot distinguish, even though the welfare-maximising action differs across them), no mechanism in that language eliminates a strictly positive welfare loss from self-interested play \parencite{huang2026}. The driver is the partition, not uncountability of the state space. In their model, agents with a sufficient other-regarding weight can close the gap. They also note that without certification of that weight, prosocial agents are exploitable.
 
@@ -186,7 +194,7 @@ That result bounds \emph{external} written mechanisms. It does not imply that in
 
 \subsection{Reconstructive bias}
 
-Cultural attractor theory studies stable population-level forms that need not result from high-fidelity copying \parencite{buskell2017}. The companion paper already splits retentive robustness from reconstructive robustness. Construction on \(Q\) is the attempt to make reconstruction prefer \(D\). The same geometry can prefer \(A\). Changing \(Q\) without an independent account of \(D\) is defining the target as whatever the kernel regenerates.
+Cultural attractor theory studies stable population-level forms that need not result from high-fidelity copying \parencite{buskell2017}. The companion paper already splits retentive robustness from reconstructive robustness. Construction on \(Q\) is the attempt to make reconstruction prefer \(D\). Harris models descendant design as directed rather than random mutation: humans allocate resources through a fitness function that need not track human utility \parencite{harris2026}. Construction on \(Q\) must account for strategic lineage design, not only noisy copying. The same geometry can prefer \(A\). Changing \(Q\) without an independent account of \(D\) is defining the target as whatever the kernel regenerates.
 
 \subsection{Identity crystallization}
 
@@ -200,13 +208,15 @@ Coherence is not \(D\). A stable self-model can be a stable adversarial one. The
 
 A ``pivotal act'' in the sense used in lethality discussions is an explicit rewrite of \(E\) (and then of who may build successors) intended to end a race among unaligned competitors \parencite{yudkowsky2022}. It breaks a multipolar payoff symmetry. It also tends to produce a singleton selector. The companion paper's between-lineage checks then fail by construction: there is no independent population to invade, suppress, or recapture \(\theta\). The residual risk is lock-in of whatever vacuum the unipolar system occupies, including a misspecified one.
 
+Who applies \(I\), and when, is a different game from the object-level symmetry being broken. First-mover advantage, commitment, and modeling of other constructors are already analyzed as races, Stackelberg moves, and the unilateralist's curse \parencite{schelling1960,armstrong2016,bostrom2014,bostrom2016curse}. This paper does not re-derive them. They select a landing intervention. They do not construct \(D\). Opposing fields can cancel the bound in Lemma~\ref{lem:sanction}.
+
 \subsection{Cooperative AI as a research program}
 
-Dafoe and coauthors describe Cooperative AI as a program on commitments, communication, norms, and institutions among advanced agents \parencite{dafoe2020coop,dafoe2021}. The Nature piece is a comment, not an architecture. The program overlaps this paper's intervention table. It does not supply a substrate that forces post-threshold systems into human-correctable states.
+Dafoe and coauthors describe Cooperative AI as a program on commitments, communication, norms, and institutions among advanced agents \parencite{dafoe2020coop,dafoe2021}. The Nature piece is a comment, not an architecture. Chassang's *Interactive Alignment* studies evolvability of constitutional rules in a reproducing agent population, finding that simple altruism is unstable while state-dependent norm enforcement can persist \parencite{chassang2026}. That is a concrete construction result in a specific model; this paper states the cross-cutting symmetry-breaking criterion without committing to a particular game. The program overlaps this paper's intervention table. It does not supply a substrate that forces post-threshold systems into human-correctable states.
 
 \subsection{Socio-technical selectors}
 
-Critch's robust agent-agnostic processes and multipolar-failure sketches, and Kulveit and coauthors' gradual disempowerment analysis, locate selection in institutions and replacement dynamics rather than in one trained model \parencite{critch2020ai,critch2021multipolar,kulveit2025gradual}. Those are the settings in which \(\theta\) is endogenous at social scale. Construction that only edits a loss function leaves that selector untouched.
+Critch's robust agent-agnostic processes and multipolar-failure sketches, and Kulveit and coauthors' gradual disempowerment analysis, locate selection in institutions and replacement dynamics rather than in one trained model \parencite{critch2020ai,critch2021multipolar,kulveit2025gradual}. Acemoglu and Robinson show that formal rule changes can trigger investment in \emph{de facto} power that neutralizes the reform \parencite{acemoglu2008}. The analogue here is an intervention on \(\theta\) that types then rewrite through \(G\). Those are the settings in which \(\theta\) is endogenous at social scale. Construction that only edits a loss function leaves that selector untouched.
 
 \section{A construction criterion}
 
@@ -237,17 +247,20 @@ The name of the target is held fixed while the operational referent moves. Obser
 Defection moves to the margin the contract cannot distinguish \parencite{huang2026}. Huang and coauthors observe this pattern in LLM social-dilemma experiments: enforcement raises cooperation on the contractible coordinate while residual welfare loss sits on the hidden coordinate.
 
 \paragraph{Selector endogeneity.}
-The intervention on \(\theta\) is itself selected. Coupled stability can fail even if the population is well behaved under a frozen field \parencite{zarncke2026selection}.
+The intervention on \(\theta\) is itself selected. Coupled stability can fail even if the population is well behaved under a frozen field \parencite{zarncke2026selection}. Soares and Fallenstein study whether an agent retains incentives to accept correction \parencite{soares2015corrigibility}; AI Control studies safety under intentional subversion of oversight \parencite{shlegeris2023aicontrol}. Construction must treat the enforcement mechanism as a strategic target, not an external field.
 
 \paragraph{Singleton skip.}
-Unipolar breaking of a race can destroy the ecology in which invasion resistance and suppression are even defined.
+Unipolar breaking of a race can destroy the ecology in which invasion resistance and suppression are even defined. The race itself is a different game; it selects who lands \(I\), not whether \(D\) was constructed.
+
+\paragraph{Enforcement collapse.}
+Policing can stabilize cooperation when subordinate competition is repressed \parencite{frank1995}. It can also collapse: Wechsler and coauthors show toxin-mediated policing decays once genetic linkage between enforcement and the protected good breaks, because policing itself becomes an exploitable public good \parencite{wechsler2019}. Ostrom-style sanctions and verifier scores face the same second-order risk.
 
 \paragraph{Trace theater.}
 Immutable records or machine-checked proofs constrain stated properties of stated artifacts. They change the cost of faking those artifacts. They do not keep a correction channel uncaptured, and they do not force the artifact's predicates to track \(D\) after ontology shift.
 
 \section{Scope and non-claims}
 
-The paper does not estimate takeoff speed, capability thresholds for strategic selector modeling, or the integrity of human correction channels. Those are separate problems. The companion paper already excludes institutional capture beyond the abstract map \(G\). This paper names capture as a construction failure mode without supplying a security theory for it.
+The paper does not estimate takeoff speed, capability thresholds for strategic selector modeling, or the integrity of human correction channels. Those are separate problems. Constructor-level races are the ordinary first-mover and commitment games; they are not re-derived here. The companion paper already excludes institutional capture beyond the abstract map \(G\). This paper names capture as a construction failure mode without supplying a security theory for it.
 
 Formal verification and cryptographic commitments appear in Table~\ref{tab:interventions} as levers on the cost of faking particular measurands. That is the most they are claimed to be. They are not a requirement that alignment ``cannot be achieved on paper,'' and they are not a proof that a post-threshold environment remains mathematically bound to human-correctable states.
 
@@ -265,13 +278,13 @@ If a complete contractual language were available for the relevant state space, 
 
 If observational symmetry were generically cheap to break, verifier construction would collapse into ordinary evaluation design, and clause (iii) would be less important.
 
-If a singleton were the expected regime, between-lineage construction bets (polycentric rules, ecological suppression) would be inapplicable, and the remaining question would be unipolar specification plus correction of one lineage. That is a different paper.
+If a singleton were the expected regime, between-lineage construction bets (polycentric rules, ecological suppression) would be inapplicable, and the remaining question would be unipolar specification plus correction of one lineage. That is a different paper. Who gets to be the singleton remains the ordinary first-mover game.
 
 \section{Conclusion}
 
 Under persistent selection, the stable object is a dynamical system that keeps producing individuals \parencite{zarncke2026selection}. Construction is the attempt to make that system occupy a pre-specified desirable region, by explicitly breaking symmetries that make the region invisible, interchangeable, or payoff-dominated.
 
-The move is real in evolutionary games, in commons governance, and in incomplete-contract models. It is also easy to overstate. Breaking a symmetry produces a vacuum. It does not tell us that the vacuum is \(D\). Written rules run out where the language does. Proofs and commitments constrain traces. None of those facts licenses treating cryptography or proof assistants as the remaining foundational principle.
+The move is real in evolutionary games, in commons governance, and in incomplete-contract models. It is also easy to overstate. Breaking a symmetry produces a vacuum. It does not tell us that the vacuum is \(D\). Who breaks first is a different, well-known game; it does not add that identification. Written rules run out where the language does. Proofs and commitments constrain traces. None of those facts licenses treating cryptography or proof assistants as the remaining foundational principle.
 
 The usable compact statement is:
 
