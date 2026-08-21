@@ -89,6 +89,7 @@ Output: `site/dist/`
 | `scripts/sync-releases.mjs` | Generates release cards + the `/updates/` hub card from `RELEASE_NOTES.md` |
 | `scripts/build-search-index.mjs` | Generates `public/search-index.json` from concepts, chapter/appendix/experiment cards, and notation (excludes the ~380 reference cards) |
 | `scripts/sync-chapter-cards.mjs` | Generates chapter/appendix cards; `overviewOnly` appendices (e.g. `appM`) render as case-study hubs at `/cards/chapters/{id}/` with full synced text at `/full/` |
+| `scripts/sync-chapters.mjs` | Syncs chapter/appendix LaTeX to `src/content/book/` via `scripts/lib/tex-convert.mjs`; `\authbar{…}` keys become optional section/subsection heading chips (Notes panel toggle) |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` (includes lab-sim **Lean leak-proof** link when `leakProofPath` is set). Per-line headline findings are auto-extracted from `**Key finding:**` paragraphs in that line's `results/FINDINGS.md`/`NEGATIVE_RESULTS.md` (one tagged entry per site bullet); the terse full findings history stays in the linked GitHub file, and `headlineFindings:` in `experiments.yml` is only a fallback for lines with no tags yet. |
 | `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |

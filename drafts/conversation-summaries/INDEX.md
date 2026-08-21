@@ -6,8 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-22 | **Spine lane + open-work erasure** — `spine.md`; lane checklists canonical in plans; TODO/HANDOFF deduped. | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
-| 2026-08-22 | **Authorship bars rollout** — All chapters + wired appendices; key overrides; empty-bar fix; spacing tune; ~1440 pp. | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
+| 2026-08-22 | **Spine lane + open-work erasure** — User asked what remained open after Aug 16–17 work; whether `drafts/plans/` and `metadata/TODO.md... | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
+| 2026-08-22 | 2026-08-22-site-auth-chips | [2026-08-22-site-auth-chips.md](2026-08-22-site-auth-chips.md) |
+| 2026-08-22 | **OpenAI pacing field news** — User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyond existing news car... | [2026-08-22-openai-pacing-news.md](2026-08-22-openai-pacing-news.md) |
+| 2026-08-22 | **Authorship bars rollout (chapters + appendices)** — Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/9, Summary/Refere... | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
 | 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
 | 2026-08-21 | Program map (Voice / Witness / Field) | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
 | 2026-08-21 | **Executive overview sync** — User asked to review `frontmatter/executive-overview.tex` against post–v1.4.0 material (last over... | [2026-08-21-executive-overview-sync.md](2026-08-21-executive-overview-sync.md) |
@@ -19,14 +21,10 @@
 | 2026-08-20 | **Housekeeping** — User asked for general housekeeping. | [2026-08-20-housekeeping.md](2026-08-20-housekeeping.md) |
 | 2026-08-20 | **Erasure pass** — After housekeeping, user said to read the Erasure section, then “Think bigger.” | [2026-08-20-erasure-pass.md](2026-08-20-erasure-pass.md) |
 | 2026-08-19 | **Anthropic Risk Report field news** — User asked to read Zvi’s LessWrong post on Anthropic’s August 2026 Risk Report, the referenced re... | [2026-08-19-anthropic-risk-report-news.md](2026-08-19-anthropic-risk-report-news.md) |
-| 2026-08-18 | **Field v2 split + stance SVG icons** — Split `/field/v2/` into a slim hub with coverage on a subpage; fix fragile Unicode stance marks b... | [2026-08-18-field-stance-icons.md](2026-08-18-field-stance-icons.md) |
-| 2026-08-17 | **Specify / construct instances (field v2 + Lean)** — Continue prior thread: typed specify/construct instance catalog with Lean names, concept cards, a... | [2026-08-17-specify-construct-instances.md](2026-08-17-specify-construct-instances.md) |
-| 2026-08-17 | 2026-08-17-six-claims-spine-phase0-2 | [2026-08-17-six-claims-spine-phase0-2.md](2026-08-17-six-claims-spine-phase0-2.md) |
-| 2026-08-17 | 2026-08-17-site-card-notes-phase6-mobile-ux | [2026-08-17-site-card-notes-phase6-mobile-ux.md](2026-08-17-site-card-notes-phase6-mobile-ux.md) |
 
 ## Archive by month
 
-- **2026-08** (110): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (114): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

@@ -16,8 +16,8 @@ Mark AI-assisted book content with dotted right-margin bars and small Kürzel (`
 - **2026-08-21 follow-up:** `\authbarsection` / `\authbarneedspace` (Needspace before titles); consecutive-block `\authbarblocksep`; mdframed `skipabove/below=0` + explicit `\vspace` between back-to-back authbars; `nobreak=false`, tighter split skips.
 
 ## Open / next
-- Roll out to chapters/appendices (default `{AI}`).
-- Companion site marking.
+- Roll out to chapters/appendices (default `{AI}`). **Done 2026-08-22** — see `2026-08-22-authorship-bars-rollout.md`.
+- Companion site marking: **partial 2026-08-22** — section/subsection chips + Notes toggle (`2026-08-22-site-auth-chips.md`); image prompts and legend still open.
 - Optional reader legend (preface authorship note).
 
 ## Session end

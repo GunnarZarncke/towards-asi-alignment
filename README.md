@@ -6,7 +6,7 @@ A research manuscript on preserving **human-correctable value-bearing processes*
 
 > This is work in progress—not a claim that alignment is solved. Claims are marked as established, plausible, or open throughout the ledgers and chapter structure.
 
-**Authorship:** Most manuscript text is AI-drafted under Gunnar Zarncke's direction, with human review, revision priorities, and source canon set by the author. See the [Preface authorship note](frontmatter/preface.tex) and the [companion site About page](https://towards-alignment.com/about/). Reuse passages with attribution.
+**Authorship:** Most manuscript text is AI-drafted under Gunnar Zarncke's direction, with human review, revision priorities, and source canon set by the author. See the [Preface authorship note](frontmatter/preface.tex) and the [companion site About page](https://towards-alignment.com/about/). On chapter pages, optional per-section chips (`AI`, `GZ`, `GZ+AI`) mirror PDF margin-bar keys—toggle via **Notes** on the site. Reuse passages with attribution.
 
 ---
 

@@ -86,6 +86,18 @@
               <path fill="currentColor" d="M1 1h6v6H1V1Zm8 0h6v6H9V1ZM1 9h6v6H1V9Zm8 3.5h2v2.5H9v-2.5h2Zm3 0h2v2.5h-2v-2.5Zm-3 3h2v2.5H9V14.5Zm3 0h2v2.5h-2v-2.5Z" />
             </svg>
           </button>
+          <button
+            type="button"
+            class="page-notes-action page-notes-auth-chips-trigger"
+            data-action="auth-chips"
+            aria-pressed="false"
+            title="Show authorship chips"
+            aria-label="Show authorship chips"
+          >
+            <svg class="page-notes-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 9.5c0-2.2 2.2-3.5 5-3.5s5 1.3 5 3.5V14H3v-3.5ZM13 8.5h2v1.5h-2V8.5Zm-12 0h2v1.5H1V8.5Z" />
+            </svg>
+          </button>
         </div>
       </div>
       <div class="page-notes-select" hidden aria-hidden="true">
@@ -107,7 +119,9 @@
   const STORAGE_KEY = "site-page-notes";
   const EXPANDED_STORAGE_KEY = "site-page-notes-expanded";
   const HIGHLIGHT_STORAGE_KEY = "site-page-notes-highlight-mode";
+  const AUTH_CHIPS_STORAGE_KEY = "site-auth-chips-visible";
   const HIGHLIGHT_CLASS = "page-notes-highlight";
+  const AUTH_CHIPS_CLASS = "auth-chips-on";
   const MAIN_SELECTOR = "main.page";
 
   type SavedNote = { id: string; text: string; path: string };
@@ -256,6 +270,7 @@
 
   const root = document.querySelector<HTMLElement>("[data-page-notes]");
   const highlightTrigger = root?.querySelector<HTMLButtonElement>(".page-notes-highlight-trigger");
+  const authChipsTrigger = root?.querySelector<HTMLButtonElement>(".page-notes-auth-chips-trigger");
   const trigger = root?.querySelector<HTMLButtonElement>(".page-notes-trigger");
   const overlay = root?.querySelector<HTMLElement>(".page-notes-overlay");
   const panel = root?.querySelector<HTMLElement>(".page-notes-panel");
@@ -270,6 +285,7 @@
   if (
     !root ||
     !highlightTrigger ||
+    !authChipsTrigger ||
     !trigger ||
     !overlay ||
     !panel ||
@@ -293,6 +309,36 @@
   let currentNoteId: string | null = null;
   let draftBuffer: string | null = null;
   let highlightMode = loadHighlightMode();
+  let authChipsVisible = loadAuthChipsVisible();
+
+  function loadAuthChipsVisible(): boolean {
+    try {
+      return localStorage.getItem(AUTH_CHIPS_STORAGE_KEY) === "true";
+    } catch {
+      return false;
+    }
+  }
+
+  function setAuthChipsVisible(enabled: boolean) {
+    authChipsVisible = enabled;
+    try {
+      localStorage.setItem(AUTH_CHIPS_STORAGE_KEY, enabled ? "true" : "false");
+    } catch {
+      /* ignore quota / private mode */
+    }
+    syncAuthChipsButton();
+    document.documentElement.classList.toggle(AUTH_CHIPS_CLASS, enabled);
+  }
+
+  function syncAuthChipsButton() {
+    authChipsTrigger.setAttribute("aria-pressed", authChipsVisible ? "true" : "false");
+    authChipsTrigger.setAttribute(
+      "aria-label",
+      authChipsVisible ? "Hide authorship chips on headings" : "Show authorship chips on headings"
+    );
+    authChipsTrigger.title = authChipsVisible ? "Hide authorship chips" : "Show authorship chips";
+    authChipsTrigger.classList.toggle("is-active", authChipsVisible);
+  }
 
   function loadHighlightMode(): boolean {
     try {
@@ -396,6 +442,8 @@
   }
 
   syncHighlightButton();
+  syncAuthChipsButton();
+  document.documentElement.classList.toggle(AUTH_CHIPS_CLASS, authChipsVisible);
   if (highlightMode) applyHighlights();
 
   function persistDraft() {
@@ -671,6 +719,10 @@
         setHighlightMode(!highlightMode);
         return;
       }
+      if (action === "auth-chips") {
+        setAuthChipsVisible(!authChipsVisible);
+        return;
+      }
     });
   });
 
@@ -924,6 +976,12 @@
     background: #fef08a;
     color: #713f12;
     border-color: #eab308;
+  }
+
+  .page-notes-auth-chips-trigger.is-active {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
   }
 
   .page-notes-select {

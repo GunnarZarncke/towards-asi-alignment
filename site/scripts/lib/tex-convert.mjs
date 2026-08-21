@@ -255,15 +255,16 @@ function skipBeginOptional(tex, cursor) {
   return cursor;
 }
 
-const TABLE_ENV_ARG_COUNT = {
+const BEGIN_ENV_ARG_COUNT = {
   longtable: 1,
   tabular: 1,
-  tabularx: 2
+  tabularx: 2,
+  authbar: 1
 };
 
 function skipBeginArgs(tex, cursor, envName) {
   cursor = skipBeginOptional(tex, cursor);
-  const argCount = TABLE_ENV_ARG_COUNT[envName] ?? 0;
+  const argCount = BEGIN_ENV_ARG_COUNT[envName] ?? 0;
   for (let i = 0; i < argCount; i += 1) {
     if (tex[cursor] === "{") {
       const arg = readBalanced(tex, cursor);
@@ -272,6 +273,21 @@ function skipBeginArgs(tex, cursor, envName) {
     }
   }
   return cursor;
+}
+
+function readBeginEnvArgs(tex, cursor, envName) {
+  cursor = skipBeginOptional(tex, cursor);
+  const args = [];
+  const argCount = BEGIN_ENV_ARG_COUNT[envName] ?? 0;
+  for (let i = 0; i < argCount; i += 1) {
+    if (tex[cursor] === "{") {
+      const arg = readBalanced(tex, cursor);
+      if (!arg) break;
+      args.push(arg.content.trim());
+      cursor = arg.end;
+    }
+  }
+  return { args, cursor };
 }
 
 const MULTILINE_MATH_ENVS = new Set([
@@ -322,32 +338,124 @@ function readEnvironment(tex, startIndex) {
   const beginMatch = tex.slice(startIndex).match(/^\\begin\{([^}]+)\}/);
   if (!beginMatch) return null;
   const envName = beginMatch[1];
-  let cursor = skipBeginArgs(tex, startIndex + beginMatch[0].length, envName);
+  const afterBegin = startIndex + beginMatch[0].length;
+  const { args, cursor } = readBeginEnvArgs(tex, afterBegin, envName);
   const bodyStart = cursor;
   let depth = 1;
-  while (cursor < tex.length) {
-    const nextBegin = tex.slice(cursor).match(/^\\begin\{([^}]+)\}/);
-    const nextEnd = tex.slice(cursor).match(/^\\end\{([^}]+)\}/);
+  let cursorWalk = cursor;
+  while (cursorWalk < tex.length) {
+    const nextBegin = tex.slice(cursorWalk).match(/^\\begin\{([^}]+)\}/);
+    const nextEnd = tex.slice(cursorWalk).match(/^\\end\{([^}]+)\}/);
     if (nextBegin) {
       depth += 1;
-      cursor = skipBeginArgs(tex, cursor + nextBegin[0].length, nextBegin[1]);
+      cursorWalk = skipBeginArgs(tex, cursorWalk + nextBegin[0].length, nextBegin[1]);
       continue;
     }
     if (nextEnd) {
       depth -= 1;
-      cursor += nextEnd[0].length;
+      cursorWalk += nextEnd[0].length;
       if (depth === 0) {
         return {
           name: envName,
-          body: tex.slice(bodyStart, cursor - nextEnd[0].length),
-          end: cursor
+          args,
+          body: tex.slice(bodyStart, cursorWalk - nextEnd[0].length),
+          end: cursorWalk
         };
       }
       continue;
     }
-    cursor += 1;
+    cursorWalk += 1;
   }
   return null;
+}
+
+function authKeysToMode(keys) {
+  const parts = keys.split("+").map((part) => part.trim()).filter(Boolean);
+  const hasAI = parts.includes("AI");
+  if (!hasAI) return "none";
+  if (hasAI && parts.length === 1) return "solid";
+  return "dotted";
+}
+
+function formatAuthChip(keys) {
+  const mode = authKeysToMode(keys);
+  const label = keys.replace(/\+/g, "+");
+  const readable = keys.replace(/\+/g, " ");
+  return `<span class="auth-chip" data-auth="${label}" data-auth-mode="${mode}" aria-label="Authorship: ${readable}"><span class="auth-chip-label">${readable}</span></span>`;
+}
+
+function emitHeading(level, title, authKeys) {
+  const chip = authKeys ? ` ${formatAuthChip(authKeys)}` : "";
+  const hashes = "#".repeat(level);
+  return `\n${hashes} ${title}${chip}\n\n`;
+}
+
+const HEADING_CMD_LEVEL = new Map([
+  ["section", 2],
+  ["section*", 2],
+  ["subsection", 3],
+  ["subsection*", 3],
+  ["authbarsection", 2],
+  ["authbarsubsection", 3]
+]);
+
+const AUTHBAR_SKIP_CMDS = new Set([
+  "authbarneedspace",
+  "authbarsubneedspace",
+  "label",
+  "needspace",
+  "Needspace"
+]);
+
+/** Pre-scan: one auth key (or null) per section/subsection, in document order.
+ *  Keys match `\begin{authbar}{…}` in LaTeX; see metadata/authorship-bars.tex and
+ *  the Preface authorship note (PDF bars; site chips via Notes panel). */
+export function scanAuthHeadingKeys(tex) {
+  const keys = [];
+  let pending = null;
+  let i = 0;
+
+  while (i < tex.length) {
+    if (tex.startsWith("\\begin{authbar}", i)) {
+      const env = readEnvironment(tex, i);
+      if (!env) break;
+      if (pending) {
+        keys.push(env.args?.[0] || "AI");
+        pending = null;
+      }
+      i = env.end;
+      continue;
+    }
+
+    if (tex[i] === "\\") {
+      const cmdMatch = tex.slice(i).match(/^\\([A-Za-z@]+)/);
+      if (cmdMatch) {
+        const name = cmdMatch[1];
+        const cursor = i + cmdMatch[0].length;
+        if (HEADING_CMD_LEVEL.has(name)) {
+          if (pending) keys.push(null);
+          const arg = readBalanced(tex, cursor);
+          pending = { level: HEADING_CMD_LEVEL.get(name) };
+          i = arg ? arg.end : cursor;
+          continue;
+        }
+        if (AUTHBAR_SKIP_CMDS.has(name)) {
+          i = skipCommand(name, tex, cursor);
+          continue;
+        }
+      }
+    }
+
+    i += 1;
+  }
+
+  if (pending) keys.push(null);
+  return keys;
+}
+
+function nextAuthHeadingKeys(ctx) {
+  if (!ctx.authHeadingKeys || ctx.authHeadingIndex >= ctx.authHeadingKeys.length) return null;
+  return ctx.authHeadingKeys[ctx.authHeadingIndex++];
 }
 
 function convertInlineText(text, ctx) {
@@ -430,23 +538,34 @@ function convertCommand(name, tex, index, ctx) {
     }
     case "section": {
       const title = convertInlineText(readArg() || "", ctx);
-      return { output: `\n## ${title}\n\n`, index };
+      return { output: emitHeading(2, title, nextAuthHeadingKeys(ctx)), index };
     }
     case "section*": {
       const title = convertInlineText(readArg() || "", ctx);
-      return { output: `\n## ${title}\n\n`, index };
+      return { output: emitHeading(2, title, nextAuthHeadingKeys(ctx)), index };
     }
     case "subsection": {
       const title = convertInlineText(readArg() || "", ctx);
-      return { output: `\n### ${title}\n\n`, index };
+      return { output: emitHeading(3, title, nextAuthHeadingKeys(ctx)), index };
     }
     case "subsection*": {
       const title = convertInlineText(readArg() || "", ctx);
-      return { output: `\n### ${title}\n\n`, index };
+      return { output: emitHeading(3, title, nextAuthHeadingKeys(ctx)), index };
     }
     case "subsubsection": {
       const title = convertInlineText(readArg() || "", ctx);
       return { output: `\n#### ${title}\n\n`, index };
+    }
+    case "authbarneedspace":
+    case "authbarsubneedspace":
+      return { output: "", index: skipCommand(name, tex, index) };
+    case "authbarsection": {
+      const title = convertInlineText(readArg() || "", ctx);
+      return { output: emitHeading(2, title, nextAuthHeadingKeys(ctx)), index };
+    }
+    case "authbarsubsection": {
+      const title = convertInlineText(readArg() || "", ctx);
+      return { output: emitHeading(3, title, nextAuthHeadingKeys(ctx)), index };
     }
     case "paragraph": {
       const title = convertInlineText(readArg() || "", ctx);
@@ -716,6 +835,11 @@ function convertDocument(tex, ctx) {
         continue;
       }
 
+      if (env.name === "authbar") {
+        out += convertDocument(env.body, ctx);
+        continue;
+      }
+
       if (ENV_HANDLERS[env.name]) {
         out += ENV_HANDLERS[env.name](env.body, ctx);
         continue;
@@ -832,6 +956,8 @@ function cleanupMarkdown(text) {
 
 export function convertLatexDocument(tex, ctx) {
   const expanded = expandInputs(stripComments(tex), ctx.repoRoot);
+  ctx.authHeadingKeys = scanAuthHeadingKeys(expanded);
+  ctx.authHeadingIndex = 0;
   return convertDocument(expanded, ctx);
 }
 

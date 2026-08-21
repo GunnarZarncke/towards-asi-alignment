@@ -17,7 +17,7 @@ Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/
 - `\Needspace` only in frontmatter (orphan section titles); main matter uses numbered `\section` without forced pre-breaks.
 
 ## Open / next
-- Companion site authorship marking; image prompts `{AI}`; optional reader legend.
+- Companion site authorship marking (partial): section/subsection chips + Notes toggle — see `2026-08-22-site-auth-chips.md`. Still open: image prompts `{AI}`; optional reader legend.
 - Optional: margin-overlay bars if pagination must return to ~1412 pp.
 
 ## Verify

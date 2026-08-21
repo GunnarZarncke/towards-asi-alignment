@@ -99,7 +99,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Housekeeping board
 
-- [ ] **Authorship bars — companion site (M).** `\authbar` is on frontmatter, all 48 chapters, and wired appendices (default `{AI}`; ch.1/6/7/9 `{GZ+AI}`; section bodies only; epitaphs/figures/tables unmarked). Roll out to companion site; mark image prompts `{AI}`; optional reader legend.
+- [ ] **Authorship bars — companion site (M).** PDF: `\authbar` on frontmatter, all 48 chapters, and wired appendices. **Site (partial):** section/subsection heading chips synced from `\authbar` keys (`AI` / `GZ+AI` / `GZ`); toggled via Notes panel button (`localStorage`). Still open: image prompts `{AI}`; optional reader legend.
 
 - [ ] **Authorship bars — pagination parity (M, optional).** Per-section mdframed wrappers add ~+30 pp vs unmarked build (1412 → ~1442 after tuning `\Needspace` to frontmatter-only). Accept for now; revisit with margin-overlay approach (bars without boxing text) if page count must match baseline.
 

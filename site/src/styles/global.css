@@ -103,8 +103,11 @@ code {
 }
 
 .src-legend-item--anthropic,
+.src-legend-item--openai,
 .src-quote--anthropic .src-quote-attr,
-.src-quote--anthropic .src-quote-attr a {
+.src-quote--anthropic .src-quote-attr a,
+.src-quote--openai .src-quote-attr,
+.src-quote--openai .src-quote-attr a {
   color: var(--src-anthropic, #1d4ed8);
 }
 
@@ -120,11 +123,13 @@ code {
   color: var(--src-tsa, #0f172a);
 }
 
-.src-legend-item--anthropic .src-legend-swatch {
+.src-legend-item--anthropic .src-legend-swatch,
+.src-legend-item--openai .src-legend-swatch {
   background: var(--src-anthropic, #1d4ed8);
 }
 
-.src-quote--anthropic {
+.src-quote--anthropic,
+.src-quote--openai {
   background: color-mix(in srgb, var(--src-anthropic, #1d4ed8) 9%, var(--color-surface));
 }
 
@@ -151,7 +156,8 @@ code {
   border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.src-quote--anthropic {
+.src-quote--anthropic,
+.src-quote--openai {
   border-left-color: var(--src-anthropic, #1d4ed8);
 }
 
@@ -575,6 +581,46 @@ html.layout-full-width .readable {
   right: auto;
   bottom: auto;
   flex-shrink: 0;
+}
+
+/* Authorship chips on book section/subsection headings (synced from LaTeX authbar keys). */
+.auth-chip {
+  display: none;
+  align-items: center;
+  vertical-align: middle;
+  margin-inline-start: 0.45rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+}
+
+html.auth-chips-on .auth-chip {
+  display: inline-flex;
+}
+
+.auth-chip[data-auth-mode="solid"] {
+  border-style: solid;
+}
+
+.auth-chip[data-auth-mode="dotted"] {
+  border-style: dashed;
+}
+
+.auth-chip[data-auth-mode="none"] {
+  border: none;
+  background: transparent;
+  padding-inline: 0.15rem;
+}
+
+.book-page :is(h2, h3) .auth-chip-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
 }
 
 .concept-logo {

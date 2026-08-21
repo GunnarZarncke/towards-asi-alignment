@@ -98,7 +98,7 @@ cd site && npm ci && npm run build
 
 `npm run sync` (and `prebuild`) runs `../scripts/generate_manuscript_tex.sh` first so gitignored build-time `.tex` fragments exist before chapter sync resolves `\label`/`\ref` targets (e.g. `tab:appi-axiom-budget` in Appendix G).
 
-See [`site/README.md`](../site/README.md).
+See [`site/README.md`](../site/README.md). Chapter sync maps `\authbar{…}` keys to optional heading chips (Notes panel toggle; see Preface authorship note).
 
 ## Repository map
 
