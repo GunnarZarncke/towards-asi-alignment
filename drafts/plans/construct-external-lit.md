@@ -2,7 +2,7 @@
 
 Status: **seed** (2026-08-24). Companion to [`construct.md`](construct.md). v1 App C/M already map institutions onto TSA vocabulary; this file asks what those literatures (and crypto / mechanism design) actually **construct**, for TSA 2.0 Parts XI–XII.
 
-Do not treat this seed as the review. The prompt at the bottom is the work product for a later pass.
+**Do not treat this seed as the review.** External FINDINGS: [`../ontology-reviews-2021-2026/construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md). Keep-list + reasoning: [`construct.md`](construct.md) § External lit review.
 
 ---
 

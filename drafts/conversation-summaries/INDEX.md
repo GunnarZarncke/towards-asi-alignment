@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-25 | **Construct lit keep-list** — Usable sources + reasoning from `construct-lit-review-result.md` folded into `construct.md`. | [2026-08-25-construct-lit-keep-list.md](2026-08-25-construct-lit-keep-list.md) |
 | 2026-08-25 | **Harm-path v1 weave** — Implement the agreed plan: weave operational closure into v1 chapters without publishing the nine... | [2026-08-25-harm-path-v1-weave.md](2026-08-25-harm-path-v1-weave.md) |
 | 2026-08-24 | **Construct external literature seed** — User asked what is known about constructing parts of the overall system from beyond TSA chapters ... | [2026-08-24-construct-external-lit.md](2026-08-24-construct-external-lit.md) |
 | 2026-08-24 | **Construct 2.0 plan** — After a review of Ngo’s impact-counterfactual / “differentially advancing alignment” paragraph, t... | [2026-08-24-construct-2-0-plan.md](2026-08-24-construct-2-0-plan.md) |

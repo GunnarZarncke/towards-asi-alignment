@@ -144,11 +144,56 @@ When people/labs/orgs will actually construct rather than pessimize:
 
 **Gates (unchanged from TODO):** Witness real stop → *concrete construction* manuscript revisit. Family D outlining does **not** wait on that gate; Family D *claiming that we can construct* does.
 
+## External lit review — usable list (2026-08-25)
+
+Raw result: [`drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md) (wrong folder; treat as FINDINGS draft). Prompt: [`construct-lit-review-prompt.md`](construct-lit-review-prompt.md). Internal seed: [`construct-external-lit.md`](construct-external-lit.md).
+
+**Verdict:** usable as an XI/XII briefing after stripping Perplexity `turnNsearch` cite junk. Argument matches the construction filter. **Not** a new spine primitive. Do not ingest into v1 chapters.
+
+**Load-bearing line from the review (keep):** construction is strong when \(D\) is coupled to a controllable, distinguishable boundary. If desired and undesired states look the same at that boundary, contracts, coin votes, TEEs, zk proofs, stronger selectors, and verified compilers cannot create the missing distinction.
+
+**Prompt compliance (why keep the file):** claim-strength tags; buckets; “idle for AI if…”; DAO split \(R \neq \theta \neq H \neq S \neq D\); hard fork classified as social layer; contract/verification homographs; amendment table asks handle vs record; GSAI = agenda, CAI = empirical on a proxy, AI Control = testbed \(\theta/H\).
+
+**Disagreement with App M (keep both):** the review puts Glass–Steagall→2008 and Marian/Republic in bucket 5 (analogy, not builder theorems). App M may still use them as genesis/slack *stories*. XI should not load them as construction proofs.
+
+### Already in v1 / papers (do not re-cite as new)
+
+AEC→NRC, Enron/PCAOB, Acemoglu–Robinson 2008, FAA/FDA/Lloyd’s, GPL/tivoization, Maskin 1999, Huang et al. 2026, Grossman–Hart 1986, Ostrom 1990, Anderljung et al. 2023, Dalrymple et al. GSAI 2024, Bai et al. Constitutional AI, Greenblatt/control (field; TSA also has alignment-faking). The review’s *distinction* (deployment filter ≠ constructed target) is the usable bit of the control paper.
+
+### Keep for XI — new or under-cited, with reasoning
+
+| Source | Reasoning |
+|--------|-----------|
+| Cox, Arnold & Villamayor-Tomás 2010 (*Ecology & Society*) | Empirical check of Ostrom principles (91 studies). TSA cites Ostrom 1990, not this meta-analysis. Constructibility: principles are conditions, not a recipe; copyable millisecond AI may fail the monitoring/boundary conditions. |
+| Sandholm 2005 (*RESTUD*, negative externalities / evolutionary implementation) | Stronger than Sandholm 2002 already in the constructing-attractors bib. Shows construction = change payoff *geometry* so dynamics converge, not “more selection pressure.” |
+| Myerson–Satterthwaite 1983; Gibbard 1973 | Prompted; not in constructing bib. Blocks “just VCG” / unrestricted strategy-proof voting. |
+| Klein et al. seL4 (SOSP 2009); CompCert | Best exhibits of verifier-for-*stated*-spec. TSA named the class; these pay the hedge (spec may not be \(D\); hardware/boot assumptions). |
+| Foreshadow (Van Bulck et al. 2018) + AMD/Intel 2025–26 TEE advisories | Concrete “TEE relocates trust” (vendor root, side channel, firmware). |
+| NIST multi-party threshold crypto; OpenZeppelin TimelockController; Maker Emergency Shutdown | Operational handles \(H\). Timelock idle if damage horizon \(< \tau_{\mathrm{detect}}+\tau_{\mathrm{decide}}+\tau_{\mathrm{intervene}}\). |
+| Optimism Token House / Citizens’ House (2023); Arbitrum AIP-1 → AIP-1.1 | Construction of a selector/veto vs fail-and-patch when de facto treasury control diverged from DAO competence. |
+| SEC *DAO Report* (2017) | Primary for 2016: intended \(D\) ≠ Solidity machine; recovery was \(S\). |
+| Trout 2024 arXiv:2409.06673; Stetler 2025 arXiv:2504.02127 | Insurance as *agenda* gate; fail if tail unpriceable or coverage not mandatory. |
+| OMB M-25-22 (2025); BIS advanced-compute / IaaS license rules (2025–26) | Strongest AI-specific *historical* \(\theta/H\) rows (procurement, chip/cloud choke). Idle if copies/compute substitute. |
+| EU AI Liability Directive (proposed 2022, withdrawn 2025) | Failed amendment: not a handle. |
+
+### Abstract-only in the review — do not treat as paid
+
+Hart–Moore 1999; Bergemann–Morris 2005 (robust MD — promising if verified); Sharma et al. 2024 (DAO sample; was in the seed); Pahari et al. 2026 (48 DAOs, concentration). Verify primary before XI cite.
+
+### Prompt gaps (optional later pass)
+
+Hadfield-Menell & Hadfield 2019, Chassang Interactive Alignment, Dafoe Cooperative AI, futarchy, Kleros, MACI, Dutch water boards, Japan nuclear village. Not blocking; the review chose load-bearing cases.
+
+### Do not ingest
+
+Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` discharge; conductivity as construction.
+
 ## Checklist
 
 - [x] Lane plan file exists; TODO work-map node points here
 - [ ] Author decision: 2.0 as Part XI vs XI+XII vs companion volume vs keep papers-only until P3
-- [ ] External construction lit review — attach [`construct-lit-review-prompt.md`](construct-lit-review-prompt.md) to an external agent; findings file TBD
+- [x] External construction lit review received — [`construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md); usable list in this file
+- [ ] Cite-clean FINDINGS + optional move out of `ontology-reviews-2021-2026/`; ingest **keep** rows to constructing-paper / XI bib only when drafting
 - [ ] P1: reverse-crosswalk row for impact-counterfactual cherry-picking ≠ laundering ≠ \(\mathrm{Fit}_E\) ≠ ch25 counterfactuals
 - [ ] Map Family B candidates → current site cards (CEV/CAI/GSAI/institutional) without implying crux discharge
 - [ ] Specify H5 “two trees” protocol (construction vs certification stop, same episode) as Witness *addendum*, not Expectation 7 revival
@@ -162,6 +207,7 @@ When people/labs/orgs will actually construct rather than pessimize:
 - [`witness.md`](witness.md) — Exp. 4 gate; evaluation ≠ changing \((Q,f,\theta,E)\)
 - [`drafts/plans/construct-external-lit.md`](construct-external-lit.md) — internal seed
 - [`drafts/plans/construct-lit-review-prompt.md`](construct-lit-review-prompt.md) — attachable external-agent prompt
+- [`drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md) — external-agent FINDINGS (cite-clean later)
 - [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/)
 - [`formal/AlignmentProofSpine/AlignmentConstruction.lean`](../../formal/AlignmentProofSpine/AlignmentConstruction.lean)
 - [`drafts/ngo-ontology-and-TSA.md`](../ngo-ontology-and-TSA.md)
