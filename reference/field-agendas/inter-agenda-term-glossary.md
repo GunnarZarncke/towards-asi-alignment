@@ -1388,7 +1388,7 @@ Same spelling, different loads: use **separate headwords** with a disambiguator 
 
 ### U
 
-#### UAD (unit-attribution discovery)
+#### UAD (Unsupervised Agent Discovery)
 
 | | |
 |---|---|

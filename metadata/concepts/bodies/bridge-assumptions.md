@@ -58,7 +58,7 @@ The [field coverage matrix](/field/coverage/) columns use field nouns the commun
 | Successor Gaming | MB10 | [MB10](/cards/mb10-successor-forgeability/) |
 | Deployment Safety | MB11 | [MB11](/cards/mb11-deployment-safety/) |
 
-This project does not dissolve any of these walls. The [crosswalk appendix](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex) states what is shared with named field agendas and where the book adds structure rather than re-labeling.
+This project does not dissolve any of these walls. The [crosswalk appendix](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex) states what is shared with named field agendas and where the book adds structure rather than re-labeling. Shared English words are not shared objects: see [Ontology homographs](/full/appB/#sec:ontology-homographs-appb) in the synced Appendix B text.
 
 ## Why the splits
 

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-25 (homograph hygiene).
+Last updated: 2026-08-25 (site glossary + UAD name fix).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-25:** Site glossary sync (13 terms, homograph links on Field hub); UAD name fix (Unit-attribution → Unsupervised Agent Discovery). Log: `2026-08-25-site-glossary-uad.md`.
 - **2026-08-25:** Homograph hygiene (first-use + App E + App B ontology reverse-gaps). Not the Ngo per-agenda reverse column. Log: `2026-08-25-homograph-hygiene.md`.
 - **2026-08-25:** Construct plan: usable-source list + reasoning from external lit review. Log: `2026-08-25-construct-lit-keep-list.md`.
 - **2026-08-25:** Harm-path **v1 weave** (inert writes, envelope recert, Enable, named residuals) in ch05/12/30/33/36/42/44/46 + App F + `open-problems.md`. Nine-axis grammar stays in `drafts/adverse-process-generator/`; parked as 2.0 appendix/chapter in [`construct.md`](../plans/construct.md). Log: `2026-08-25-harm-path-v1-weave.md`.

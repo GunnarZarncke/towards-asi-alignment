@@ -242,7 +242,7 @@
 
 ---
 
-#### UAD (unit-attribution discovery)
+#### UAD (Unsupervised Agent Discovery)
 
 | | |
 |---|---|

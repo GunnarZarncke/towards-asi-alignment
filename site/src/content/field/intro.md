@@ -52,4 +52,4 @@ Use the **Field map** grid on this page, or jump directly:
 5. **[Bearer admission (adjacent)](/cards/bearer-admission-adjacent/)** — consciousness/welfare neighborhood notes (not matrix cells).
 6. **Agenda cards** — one page per program via the [Field agenda badge](/badges/type/agenda/).
 
-For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/).
+For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/) — including [Ontology homographs](/full/appB/#sec:ontology-homographs-appb) where the same English word names different objects.

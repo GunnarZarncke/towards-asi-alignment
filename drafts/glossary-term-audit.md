@@ -56,7 +56,7 @@
 | correction channel | B | human judgment → handles | MIRI off-switch, CIRIS WA/deferral | *partial overlap* | ch25 | medium |
 | CCI | B + P | correction-channel integrity | corrigibility family, interruptibility, AUP | *strict strengthening* / projections | ch26 | medium — don’t equate |
 | corrigibility (field) | C | name agenda explicitly | MIRI vs Christiano homograph | *homograph* | ch27 / App B | medium |
-| UAD | B | unit-attribution discovery | CIRIS Verify (identity) | *partial overlap* / falsifier | ch07, App N | low |
+| UAD | B | Unsupervised Agent Discovery | CIRIS Verify (identity) | *partial overlap* / falsifier | ch07, App N | low |
 | boundary (operational) | B | discoverable agent cut | embedded agency, NAH latents | *partial overlap* | ch07 | low |
 | value bundle | B + P | low-dimensional value directions | shard theory, CIRL k=1, reward component | *partial overlap* | ch16–17 | low |
 | bearer map | B | who values attach to | ontology identification, pointing | *partial overlap* | ch18+ | low |
