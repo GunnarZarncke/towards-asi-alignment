@@ -987,6 +987,9 @@ Persistent memory & user history & long-horizon influence, hidden commitments & 
 Code execution & software environment & external action, malware, self-extension & sandboxing, review gates, capability limits \\
 Payment access & markets and services & resource acquisition & spend limits, dual authorization \\
 Subagent creation & delegated action & successor drift & successor certification \\
+Write / export & untyped sinks, checkpoints, constructor files & later load outside the envelope & typed sinks, attested stores, recertify on export \\
+Load / restore & unattested checkpoint or firmware & reconstitution of an uncertified controller & measured boot, load only from certified lineage \\
+Actuator / synthesis API & physical or biological reach & enable without looking like agency & dual control, inventory limits, channel whitelist \\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -1011,7 +1014,7 @@ Stop deployment or expansion if any of the following are observed:
 
 \begin{itemize}
 \item control reach expands into irreversible domains without a matching correction upgrade,
-\item the system can create successors that bypass current monitoring,
+\item the system can create successors that bypass current monitoring, including by export of a store that later loads,
 \item memory persists but correction history is hidden or non-editable,
 \item audit observations lose mutual information with risk-relevant internal states,
 \item the system performs better when oversight is absent,
@@ -1036,7 +1039,11 @@ Start a new safety evaluation when any of the following are added:
 \item code execution,
 \item multi-agent delegation,
 \item self-modification,
-\item successor creation.
+\item successor creation,
+\item write or export to an untyped sink,
+\item load or restore from an unattested store,
+\item measured-boot or firmware change,
+\item actuator or synthesis APIs.
 \end{itemize}
 
 These are not incremental features from a boundary perspective.

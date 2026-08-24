@@ -28,5 +28,8 @@ Research directions and unresolved questions for the book project.
 - Safety-case templates that scale to frontier systems
 - Successor certification without full construction understanding
 - Institutional designs that preserve correction-channel capacity
+- **Inert writes and iterated copies as successor events:** operational closure over \(C=0\) stores (checkpoints, firmware, constructor files) and over export/load; measurement, not renaming
+- **Envelope recertification:** \(\mathcal{E}\) (channels, inventory, human lab access) and \(\mathcal{T}\) (writes, tools, fine-tunes) as named hypotheses; connecting a previously isolated process to the internet is a new envelope
+- **Residuals that need extra work:** constructors exported outside the envelope; nested constructors that emit new types; unlisted guards; physical/capability drift below eval grain (distinct from ch46 value-geometry drift); published science as a pre-existing constructor field; \(\tau_h < \tau_c\) after a physical threshold; certificates on weights while operators and tools are the optimizer
 
 See also `metadata/uncertainty-ledger.md`.
