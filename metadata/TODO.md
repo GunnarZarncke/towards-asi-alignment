@@ -6,7 +6,7 @@ Run `make todos` for inline `[STUB]`, `TODO`, and `FIXME` markers in chapters.
 
 **Canonical map (this file).** Session handoff: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md) points here — do not maintain a parallel open-work list.
 
-**Lane checklists** live only in [`drafts/plans/`](../drafts/plans/) (`voice`, `witness`, `field`, `spine`). Below: work map, gates, and non-lane boards.
+**Lane checklists** live only in [`drafts/plans/`](../drafts/plans/) (`voice`, `witness`, `field`, `spine`, `construct`). Below: work map, gates, and non-lane boards.
 
 Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
@@ -19,7 +19,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | L (in progress) | — |
 | **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (not frozen) | Measurand sheet (Phase 0) |
 | **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
-| **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse | *no plan file* | parked | Witness: one real stop (Exp. 4) |
+| **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct.md`](../drafts/plans/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Witness Exp. 4. Process-condition outline: not gated |
 | **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine.md`](../drafts/plans/spine.md) | ongoing | Witness Exp. 2 (fixture only) |
 | **Cite / Wait** | Blocked on external publish or author call | — | S each | — |
 | **Site** | Companion-site chores | — | S–M | De-center PDF → Voice |
@@ -27,7 +27,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | **Housekeeping** | Manuscript/tooling hygiene | — | S | — |
 | **Experiments** | Local sim lines | [`experiments/TODO.md`](../experiments/TODO.md) | — | CIRIS Ph.1 = Witness H1 |
 
-**Gates:** Measurand sheet → Witness Phase 0 · Witness real stop → Construct manuscript revisit · Voice does not mention Witness in reader copy.
+**Gates:** Measurand sheet → Witness Phase 0 · Witness real stop → Construct *concrete* manuscript revisit · Construct *plan* / constructibility outline is not gated · Voice does not mention Witness in reader copy.
 
 **Do not centralize here:** chapter `[STUB]`s; appH–K stubs; `% TODO[formalize]:` in chapters; wait-for-external cites.
 
@@ -48,17 +48,17 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 ---
 
-## Construct (parked)
+## Construct (plan open; v1 manuscript parked)
 
-**No plan file.** Papers stay spin-outs until Witness records at least one **real stop** (Expectation 4).
+Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + social/technical **constructibility**). Papers stay spin-outs. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`. v1 book path remains certification/preservation (ch33), not attractor construction.
 
-- [ ] **Do not include Construction in the manuscript yet.** Companion papers *Alignment Under Selection* and *Constructing Alignment Attractors* (`papers/`). Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`. Book path = certification/preservation (ch33), not attractor construction.
+- [ ] **Do not include Construction chapters in the v1 manuscript yet.** Site specify/construct cards and the lifecycle card stay. 2.0 outline may proceed; concrete Family B chapters wait on Witness.
 
-  Reviewer bar (2026-08-21) — integration requires a Witness-style **fail/refuse**, not denser definitions:
+  Reviewer bar (2026-08-21) — *concrete* integration requires a Witness-style **fail/refuse**, not denser definitions:
 
   > the formal apparatus … currently outruns what it can do. … The main vulnerability is not error but unearned weight … a well-organized restatement of the difficulty, plus a correct but small formal toolkit … not yet a contribution to solving it.
 
-  **Later candidates** (after Witness stop; not Witness phases): H5 construction vs certification stop (same episode, two trees); H3/H4 wrong-vacuum / enforcement-collapse protocols. Manuscript homes if bar met: ch34, ch38, ch48, App. F — **not** a sixth intro claim.
+  **Later candidates** (after Witness stop; not Witness phases): H5 construction vs certification stop (same episode, two trees); H3/H4 wrong-vacuum / enforcement-collapse protocols. v1 homes if bar met: ch34, ch38, ch48, App. F — **not** a sixth intro claim. 2.0 homes: Part XI / companion per construct plan (Families A–D).
 
 ---
 

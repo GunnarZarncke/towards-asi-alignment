@@ -1,6 +1,6 @@
 # Witness — deployment witness plan
 
-Status: **draft plan** (2026-08-21). **Voice** — [`voice.md`](voice.md). **Construct** — parked in [`metadata/TODO.md`](../../metadata/TODO.md) until Witness Exp. 4.
+Status: **draft plan** (2026-08-21). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
 
 - [ ] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse
 
@@ -263,7 +263,7 @@ Even if all phases hit:
 - No bridge becomes “true of frontier ASI.”
 - `MB11` / `Safe` stays open unless an authority with deployment leverage uses the tree (H5 is analogue, not AI).
 - Graded-lab / Orbit / CIL remain **method limits**, not blockers.
-- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane in [`metadata/TODO.md`](../../metadata/TODO.md) is separate; manuscript integration stays blocked until Witness records at least one real stop.
+- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane ([`construct.md`](construct.md)) is separate: constructibility outlining is not a Witness phase; *concrete* manuscript chapters stay blocked until Witness records at least one real stop.
 
 ---
 

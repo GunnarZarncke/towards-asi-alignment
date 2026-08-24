@@ -2,7 +2,7 @@
 
 Status: **Spine lane** (2026-08-22). Krym revision **closed** 2026-08-17. Module map + build: [`formal/README.md`](../../formal/README.md). Per-chapter `% TODO[formalize]:` stay local.
 
-**Boundaries:** reader copy + WWCTV refs → [`voice.md`](voice.md); external fixtures → [`witness.md`](witness.md); field homographs → [`field.md`](field.md).
+**Boundaries:** reader copy + WWCTV refs → [`voice.md`](voice.md); external fixtures → [`witness.md`](witness.md); field homographs → [`field.md`](field.md); construction / constructibility → [`construct.md`](construct.md) (not a spine `MB*` column).
 
 ## Goal
 
