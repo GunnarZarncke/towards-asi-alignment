@@ -24,4 +24,4 @@ User: avoid interdisciplinary misapplication of familiar words; implement the ho
 - `drafts/ontology-reviews-2021-2026/_synthesis.md`
 
 ## Commits
-- `707554be` Add homograph disambiguators in glossary, chapters, and App B.
+- `b6486f65` Add homograph disambiguators in glossary, chapters, and App B.
