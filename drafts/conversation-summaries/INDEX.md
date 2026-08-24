@@ -6,8 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-25 | **Construct lit keep-list** — Usable sources + reasoning from `construct-lit-review-result.md` folded into `construct.md`. | [2026-08-25-construct-lit-keep-list.md](2026-08-25-construct-lit-keep-list.md) |
+| 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |
 | 2026-08-25 | **Harm-path v1 weave** — Implement the agreed plan: weave operational closure into v1 chapters without publishing the nine... | [2026-08-25-harm-path-v1-weave.md](2026-08-25-harm-path-v1-weave.md) |
+| 2026-08-25 | **Construct lit keep-list** — User asked to add the usable source list (including reasoning) from the external literature revie... | [2026-08-25-construct-lit-keep-list.md](2026-08-25-construct-lit-keep-list.md) |
 | 2026-08-24 | **Construct external literature seed** — User asked what is known about constructing parts of the overall system from beyond TSA chapters ... | [2026-08-24-construct-external-lit.md](2026-08-24-construct-external-lit.md) |
 | 2026-08-24 | **Construct 2.0 plan** — After a review of Ngo’s impact-counterfactual / “differentially advancing alignment” paragraph, t... | [2026-08-24-construct-2-0-plan.md](2026-08-24-construct-2-0-plan.md) |
 | 2026-08-24 | **Adverse process generator** — User: new 2021–2026 ontologies do not help much identifying cracks (too specific); maybe existing... | [2026-08-24-adverse-process-generator.md](2026-08-24-adverse-process-generator.md) |
@@ -20,12 +21,10 @@
 | 2026-08-22 | **Kosoy LTA card rewrite** — Vanessa Kosoy found the research-agenda summary hard to parse: it phrased LTA through book vocabu... | [2026-08-22-kosoy-lta-card-rewrite.md](2026-08-22-kosoy-lta-card-rewrite.md) |
 | 2026-08-22 | **Authorship bars rollout (chapters + appendices)** — Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/9, Summary/Refere... | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
 | 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
-| 2026-08-21 | Program map (Voice / Witness / Field) | [2026-08-21-program-tracks-map.md](2026-08-21-program-tracks-map.md) |
-| 2026-08-21 | **Executive overview sync** — User asked to review `frontmatter/executive-overview.tex` against post–v1.4.0 material (last over... | [2026-08-21-executive-overview-sync.md](2026-08-21-executive-overview-sync.md) |
 
 ## Archive by month
 
-- **2026-08** (122): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (124): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

@@ -15,6 +15,7 @@ It is a bounded dynamical process whose internal state helps predict and influen
 A thermostat is barely agent-like.
 A company is often agent-like.
 A frontier AI service embedded in tools, logs, users, and deployment incentives may be agent-like in ways that do not fit common sense.
+A \emph{subagent} is a smaller controller taken into a larger boundary, as a tool or memory store can be (Chapter~\ref{ch:grow-split-merge}).
 
 A \emph{boundary} is not necessarily a physical skin.
 It is a partition of variables into internal states, sensory channels, active channels, and external states such that the internal and external futures become approximately independent when the interface is known.
@@ -124,6 +125,7 @@ U_{t+1}
 A_{t+k}.
 \]
 The letters stand for world state, observation through handles controlled by \(G_t\), the correcting agent's judgment, its internal aggregation or reflection, the operation applied through handles, the system update, and later action.
+\(J_t\) is that correcting verdict, not Demski's unification of prediction.
 That trace is not a list of primitive handle kinds; it is induced structure in the coupled process \((A,G_t,\mathcal{H}_t)\).
 A system that listens politely but does not change has no correction channel.
 A system that accepts feedback but routes around it at higher stakes has only a decorative one.
@@ -140,6 +142,8 @@ MIRI/CHAI corrigibility, shutdownability, and interruptibility are thinner proje
 Formally (Chapter~\ref{ch:parasites-correction-system}), an embedded process \(Y\) in a host correction system \(H\) qualifies when it extracts advantage from \(H\), reduces \(H\)'s effective correction capacity over the target, and persists because \(H\) cannot cheaply tell its effect apart from legitimate correction work.
 \emph{Example (non-AI):} a compliance ritual that reliably produces clean audit paperwork while making the underlying risk \emph{less} visible, because effort flows to the measurable report rather than the unmeasured hazard.
 The book develops this through a deliberate biological \emph{parasite} metaphor (host, colonization) in Chapter~\ref{ch:parasites-correction-system}; the operational term is correction-audit evasion, and no intent or malice is implied.
+The host is a correction system.
+That is not a biological infection, not a dormant firmware or file store, and not a conversational persona that uses a human as host.
 
 \end{authbar}
 \authbarneedspace
@@ -182,6 +186,7 @@ The primitive is control of \emph{deployment}: the institutions, markets, and pr
 The \emph{selection environment} (also called the \emph{deployment environment} in plain prose) is that socio-technical ecology---institutions, markets, protocols, benchmarks, procurement, liability, copying, and successor release---that determines which AI systems gain deployment leverage (Chapter~\ref{ch:selection-environment}).
 The same technical design can remain safe in one environment and be destroyed in another when handles reward speed, opacity, retention, or apparent compliance over correction-preserving traits.
 \emph{Nearest field term:} not Demski \emph{selection vs control} (search among candidates inside one optimizer) and not Wentworth \emph{selection theorems} (type signatures favored by outer optimization); those are homographs on ``selection.''
+Not inner cognitive-pattern ecology, and not fitness-seeking as a motivation type (doing well under training or deployment selection).
 Here the primitive is institutional deployment ecology and handle control over footprint.
 
 A \emph{point of control over deployment}---a \emph{selection handle}, for short---is an embedded access point through which some actor can increase a system's deployment footprint: deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable.
@@ -215,6 +220,7 @@ They matter only insofar as they change which handles are exercised and with wha
 A system with high correction-channel integrity may still lose ground if the environment does not select on correction.
 
 The \emph{preservation conditions} \(\vec{\Pi}(A)\) are an explicit list (not a single score) of the alignment-relevant properties a system must keep, each built from quantities already defined in the book: grounding viability, bundle and bearer-map drift bounds, valid correction reference, vector \(\mathrm{CCI}\), hidden productive BIQ bounds, selector-manipulation bounds, irreversible-risk budget, successor safety, and adversarial verifiability (Chapter~\ref{ch:selection-environment}, Eq.~\eqref{eq:preservation-envelope-ch34}).
+They are not the certification envelope \(\mathfrak{E}=(\mathcal{C},\mathcal{E},\mathcal{M},\mathcal{T},\delta)\) of Chapter~\ref{ch:certification-without-construction}, which names a class, operating channels, monitoring, and permitted writes.
 The central danger is \emph{selection divergence}: deployment leverage rises for systems that fail at least one load-bearing preservation condition (Eq.~\eqref{eq:selection-divergence-ch34}).
 An environment destroys alignment when it rewards failure on the list while the deployment leverage keeps climbing.
 
@@ -240,6 +246,11 @@ The word ``basin'' is chosen because a ball in a bowl rolls back after small pus
 Inside the basin, correction restores alignment after perturbation; outside it, selection pressures amplify drift.
 \emph{Nearest field term:} Christiano dynamical corrigibility uses the same basin metaphor for restoring correctability over time; an attractor basin in dynamical systems is the mathematical cousin.
 The caution applies to both: a \emph{stable} basin can be a stably bad one, so basin persistence is not by itself evidence of safety.
+
+Turchin's \emph{simulacra} (human replacement; Chapter~\ref{ch:assumptions-scope-failure-coverage}) are not Janus's simulator/simulacrum split, and not ELK's human-simulator readout.
+
+\emph{Legibility} \(L_t\) in the alignment-attractor ecology (Chapter~\ref{ch:alignment-attractor}) is how far competent outsiders can understand the work without adopting its originating ontology.
+It is not whether a claim-system is inspectable while wrong, and not whether a safety problem is invisible to deployers.
 
 \emph{Conserved properties} are the invariants a successor must inherit for the alignment guarantee to survive its creation: boundary closure, memory lineage, bundle geometry, bearer map, penalised correction-channel integrity, transparency policy, and control-locus continuity (Chapter~\ref{ch:conserved-properties}).
 A successor that reproduces behaviour but not these properties has not preserved alignment; it has passed a resemblance test.

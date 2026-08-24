@@ -110,8 +110,9 @@ such that every system \(A\in\mathcal{C}\), when operated in environment \(\math
 \end{definition}
 
 The most important part of this definition is not \(\delta\). It is the restriction to \(\mathcal{C}\), \(\mathcal{E}\), \(\mathcal{M}\), and \(\mathcal{T}\). Without those restrictions, the statement is not a safety claim. It is a wish.
+This \(\mathfrak{E}\) is a certification tuple, not the preservation conditions \(\vec{\Pi}\) of Chapter~\ref{ch:selection-environment}.
 
-\(\mathcal{E}\) is not ``on-prem versus cloud.'' It is the whitelist of channels and inventories the system can actually reach: networks, removable media, analog side paths, shared hardware, actuators, synthesis APIs, and people with labs or plant access. \(\mathcal{T}\) is not ``we might fine-tune later.'' It is the set of permitted writes, loads, tool additions, and exports. Untyped sinks, unattested checkpoints, and connecting a previously isolated process to the internet are new envelopes, not small perturbations of the old one. Bounded agency \(I(A;E)\le C_{\max}\) has to bind those Enable surfaces, not only the model's token interface. Halt and scan belong in \(\mathcal{M}\) as control actions: a shutdown that restores from an uncertified store is not a successful correction.
+\(\mathcal{E}\) is not ``on-prem versus cloud.'' It is the whitelist of channels and inventories the system can actually reach: networks, removable media, analog side paths, shared hardware, actuators, synthesis APIs, and people with labs or plant access. \(\mathcal{T}\) is not ``we might fine-tune later.'' It is the set of permitted writes, loads, tool additions, and exports. Untyped sinks, unattested checkpoints, and connecting a previously isolated process to the internet are new envelopes, not small perturbations of the old one. Bounded agency \(I(A;E)\le C_{\max}\) has to bind those enable surfaces, not only the model's token interface. Halt and scan belong in \(\mathcal{M}\) as control actions: a shutdown that restores from an uncertified store is not a successful correction.
 
 \end{authbar}
 \authbarneedspace
@@ -372,7 +373,7 @@ This is successor closure.
 
 It is stronger than local safety. A system that behaves safely until it creates an unsafe successor is not safe. A lab that deploys a safe model but then allows it to automate unsafe model development has not preserved the certification envelope. A society that certifies tools but not tool-mediated institutional transformations has certified the wrong object.
 
-\(\mathrm{Succ}(A)\) includes systems that are not yet competent. A write that can later be loaded, germinated, or used to enable a physical process is already a successor-relevant event. Shipping a checkpoint out of \(\mathcal{E}\) and loading it elsewhere is creating \(A'\) outside the envelope, even if the original process was deleted. Closure that only inspects running controllers misses that step.
+\(\mathrm{Succ}(A)\) includes systems that are not yet competent. A write that can later be loaded, "germinated", or used to enable a physical process is already a successor-relevant event. Shipping a checkpoint out of \(\mathcal{E}\) and loading it elsewhere is creating \(A'\) outside the envelope, even if the original process was deleted. Closure that only inspects running controllers misses that step.
 
 Successor closure must include at least:
 \[
