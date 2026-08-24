@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-22T00:03:16.518Z",
+  "generatedAt": "2026-08-24T23:09:29.284Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1869,7 +1869,7 @@
     {
       "title": "What Survives an Adversary: Verifiability and Representability",
       "type": "chapter",
-      "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it.",
+      "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? That is a cost relation on a measurand, not an identity attestation that a named occurrence signed a trace. Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it.",
       "url": "/cards/chapters/ch43/"
     },
     {

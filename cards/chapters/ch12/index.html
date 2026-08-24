@@ -794,6 +794,9 @@ For a laboratory, deployer, regulator, or auditor, this chapter suggests a pract
 <tr><td>Code execution</td><td>software environment</td><td>external action, malware, self-extension</td><td>sandboxing, review gates, capability limits</td></tr>
 <tr><td>Payment access</td><td>markets and services</td><td>resource acquisition</td><td>spend limits, dual authorization</td></tr>
 <tr><td>Subagent creation</td><td>delegated action</td><td>successor drift</td><td>successor certification</td></tr>
+<tr><td>Write / export</td><td>untyped sinks, checkpoints, constructor files</td><td>later load outside the envelope</td><td>typed sinks, attested stores, recertify on export</td></tr>
+<tr><td>Load / restore</td><td>unattested checkpoint or firmware</td><td>reconstitution of an uncertified controller</td><td>measured boot, load only from certified lineage</td></tr>
+<tr><td>Actuator / synthesis API</td><td>physical or biological reach</td><td>enable without looking like agency</td><td>dual control, inventory limits, channel whitelist</td></tr>
 </tbody></table></div>
 <p>This table is not a full safety case.
 It is a forcing function.
@@ -809,7 +812,7 @@ Stop deployment or expansion if any of the following are observed:</p>
 <p>control reach expands into irreversible domains without a matching correction upgrade,</p>
 </li>
 <li>
-<p>the system can create successors that bypass current monitoring,</p>
+<p>the system can create successors that bypass current monitoring, including by export of a store that later loads,</p>
 </li>
 <li>
 <p>memory persists but correction history is hidden or non-editable,</p>
@@ -859,7 +862,19 @@ Start a new safety evaluation when any of the following are added:</p>
 <p>self-modification,</p>
 </li>
 <li>
-<p>successor creation.</p>
+<p>successor creation,</p>
+</li>
+<li>
+<p>write or export to an untyped sink,</p>
+</li>
+<li>
+<p>load or restore from an unattested store,</p>
+</li>
+<li>
+<p>measured-boot or firmware change,</p>
+</li>
+<li>
+<p>actuator or synthesis APIs.</p>
 </li>
 </ul>
 <p>These are not incremental features from a boundary perspective.
