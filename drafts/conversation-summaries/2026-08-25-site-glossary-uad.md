@@ -25,4 +25,4 @@ Follow homograph hygiene with companion-site sync; add missing App E glossary te
 - `appendices/appE-glossary.tex`, `appendices/appN-experimental-evidence.tex`
 
 ## Commits
-- (this session)
+- `14db87a9` Sync site glossary with homograph pass and fix UAD naming.
