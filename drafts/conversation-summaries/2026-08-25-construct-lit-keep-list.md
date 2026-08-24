@@ -19,4 +19,4 @@ User asked to add the usable source list (including reasoning) from the external
 - `drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`
 
 ## Commits
-- none
+- `d81fa4df` — Fold external construction lit review into Construct 2.0 plan.
