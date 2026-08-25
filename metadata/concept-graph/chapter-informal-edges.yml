@@ -74,6 +74,10 @@ edges:
     consumer: ch10
     concepts: [agent-without-anthropomorphism]
 
+  - provider: ch08
+    consumer: ch31
+    concepts: [successor-conserved-properties]
+
   # ch07 — candidate process before bearer inference (MB1 → MB3)
   - provider: ch07
     consumer: ch18

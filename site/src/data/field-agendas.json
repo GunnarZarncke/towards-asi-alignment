@@ -1518,6 +1518,13 @@
               "ids": [
                 108
               ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                160,
+                161
+              ]
             }
           ],
           "MB4a": [
@@ -1562,7 +1569,15 @@
               "type": "C",
               "ids": [
                 115,
-                116
+                116,
+                158
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                159,
+                162
               ]
             }
           ],
@@ -1572,7 +1587,8 @@
               "type": "C",
               "ids": [
                 104,
-                117
+                117,
+                159
               ]
             }
           ],
@@ -1581,14 +1597,20 @@
             {
               "type": "C",
               "ids": [
-                108,
-                130
+                130,
+                158
               ]
             },
             {
               "type": "P",
               "ids": [
                 108
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                161
               ]
             }
           ]
@@ -2861,12 +2883,12 @@
       "evidence": "Named-identity bet: Verify+Lens on certified occurrence vs composite controller",
       "sources": [
         {
-          "label": "Accord (public text)",
+          "label": "Accord / CC (public text)",
           "url": "https://ciris.ai/ciris_accord.txt"
         },
         {
-          "label": "Architecture",
-          "url": "https://ciris.ai/architecture/"
+          "label": "How it works",
+          "url": "https://ciris.ai/how-it-works/"
         },
         {
           "label": "CIRISVerify",
@@ -2883,11 +2905,11 @@
         "MB4"
       ],
       "type": "D",
-      "evidence": "CIRISAgent / Verify / Lens / Proxy shipped stack",
+      "evidence": "CIRISAgent 2.9.x / Verify / Lens / Proxy shipped stack (phone, pip, Discord)",
       "sources": [
         {
-          "label": "CIRIS architecture",
-          "url": "https://ciris.ai/architecture/"
+          "label": "How it works",
+          "url": "https://ciris.ai/how-it-works/"
         },
         {
           "label": "CIRISAgent",
@@ -2907,12 +2929,12 @@
       "evidence": "Deferral / Wise Authority / emergency shutdown procedures",
       "sources": [
         {
-          "label": "Accord (public text)",
-          "url": "https://ciris.ai/ciris_accord.txt"
+          "label": "How it works (WBD / shutdown)",
+          "url": "https://ciris.ai/how-it-works/"
         },
         {
-          "label": "CIRISAgent overview",
-          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/docs/OVERVIEW.md"
+          "label": "CIRISAgent README",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/README.md"
         }
       ],
       "direction": "support",
@@ -2932,8 +2954,8 @@
           "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
         },
         {
-          "label": "CIRISNodeCore safety CI loop",
-          "url": "https://github.com/CIRISAI/CIRISNodeCore/blob/main/FSD/SAFETY_BATTERY_CI_LOOP.md"
+          "label": "CIRISProxy billing tests",
+          "url": "https://github.com/CIRISAI/CIRISProxy"
         }
       ],
       "direction": "support",
@@ -2949,7 +2971,7 @@
       "evidence": "Named-identity bet: holds for federation admission, fails as alignment unit",
       "sources": [
         {
-          "label": "Accord Book IX",
+          "label": "Accord / CC (public text)",
           "url": "https://ciris.ai/ciris_accord.txt"
         },
         {
@@ -2968,10 +2990,14 @@
         "MB9"
       ],
       "type": "C",
-      "evidence": "NEW-04 / L-01: no poly-time complete compositional-deception detector",
+      "evidence": "NEW-04 / L-01: no poly-time complete compositional-deception detector (still in agent-loaded Accord 1.2b)",
       "sources": [
         {
-          "label": "Accord Book IX §9.4",
+          "label": "Accord 1.2b (agent-loaded)",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/accord_1.2b.txt"
+        },
+        {
+          "label": "Accord / CC (public text)",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
       ],
@@ -3006,7 +3032,7 @@
       "sources": [
         {
           "label": "Accord compositional limits (NEW-04)",
-          "url": "https://ciris.ai/ciris_accord.txt"
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/accord_1.2b.txt"
         },
         {
           "label": "CIRISLens README",
@@ -3038,18 +3064,23 @@
       "agenda": "CIRIS",
       "bridges": [
         "MB1",
-        "MB4"
+        "MB4",
+        "MB11"
       ],
       "type": "P",
-      "evidence": "Sub-ASI validated scope; ASI protocol aspirational until RC gates (CRE, red-team)",
+      "evidence": "Public CC 1.0-rc2 names a superintelligence-as-plurality mesh wager; Agent Honest read remains sub-ASI accountability with no precedence rule between registers",
       "sources": [
         {
-          "label": "Accord scope / disclaimers",
+          "label": "Accord / CC (public text)",
           "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "CIRISAgent README",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/README.md"
         }
       ],
-      "direction": "support",
-      "weight": 1
+      "direction": "challenge",
+      "weight": 2
     },
     {
       "id": 109,
@@ -3112,12 +3143,12 @@
       "evidence": "Federation Orthogonality gate + CEG attestations (partnership admission)",
       "sources": [
         {
-          "label": "Accord Book IX §8.1+",
+          "label": "Accord / CC (public text)",
           "url": "https://ciris.ai/ciris_accord.txt"
         },
         {
-          "label": "Architecture",
-          "url": "https://ciris.ai/architecture/"
+          "label": "How it works",
+          "url": "https://ciris.ai/how-it-works/"
         }
       ],
       "direction": "support",
@@ -3133,8 +3164,8 @@
       "evidence": "Partial selection story inside federation only (not market-wide MB6)",
       "sources": [
         {
-          "label": "Architecture / federation",
-          "url": "https://ciris.ai/architecture/"
+          "label": "How it works / federation",
+          "url": "https://ciris.ai/how-it-works/"
         }
       ],
       "direction": "unclear"
@@ -3146,7 +3177,7 @@
         "MB7"
       ],
       "type": "D",
-      "evidence": "CIRISLens Coherence Ratchet + Capacity Score (external witness pipeline)",
+      "evidence": "CIRISLens Coherence Ratchet + Capacity Score (external witness pipeline; triage, not collapse-of-deception)",
       "sources": [
         {
           "label": "CIRISLens README",
@@ -3154,7 +3185,7 @@
         }
       ],
       "direction": "support",
-      "weight": 2
+      "weight": 1
     },
     {
       "id": 115,
@@ -3170,8 +3201,8 @@
           "url": "https://github.com/CIRISAI/CIRISLens"
         },
         {
-          "label": "CIRIS architecture (Lens triage)",
-          "url": "https://ciris.ai/architecture/"
+          "label": "How it works",
+          "url": "https://ciris.ai/how-it-works/"
         }
       ],
       "direction": "unclear"
@@ -3199,11 +3230,15 @@
         "MB9"
       ],
       "type": "C",
-      "evidence": "Book IX explicit non-claim: no perfect safety under adversarial superintelligence",
+      "evidence": "Published CC 1.0-rc2 exec still claims Part 6 collapses deceptive-feasible volume; unpublished rc3 Part VI says that geometry is not a warrant for ethics",
       "sources": [
         {
-          "label": "Accord Book IX",
+          "label": "Accord / CC 1.0-rc2 (public)",
           "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "CIRISConstitution Part VI (rc3 checkout)",
+          "url": "https://github.com/CIRISAI/CIRISConstitution"
         }
       ],
       "direction": "challenge",
@@ -4163,11 +4198,15 @@
         "MB11"
       ],
       "type": "C",
-      "evidence": "Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers)",
+      "evidence": "Storefront vs Honest-read split on safety-case grade (hero “safer/ethical”; README “accountable, not correct”)",
       "sources": [
         {
-          "label": "Accord scope / disclaimers",
-          "url": "https://ciris.ai/ciris_accord.txt"
+          "label": "CIRIS safety page",
+          "url": "https://ciris.ai/safety/"
+        },
+        {
+          "label": "CIRISAgent README",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/README.md"
         }
       ],
       "direction": "unclear"
@@ -4638,6 +4677,110 @@
         }
       ],
       "direction": "unclear"
+    },
+    {
+      "id": 158,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7",
+        "MB11"
+      ],
+      "type": "C",
+      "evidence": "Four-claim fusion: signed identity + H3ERE pipeline + traces sold as safer/more ethical; Verify and Agent Honest read deny the entailment",
+      "sources": [
+        {
+          "label": "CIRIS homepage",
+          "url": "https://ciris.ai/"
+        },
+        {
+          "label": "CIRIS safety page",
+          "url": "https://ciris.ai/safety/"
+        },
+        {
+          "label": "CIRISAgent README",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/README.md"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 159,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7",
+        "MB9"
+      ],
+      "type": "C",
+      "evidence": "Unpublished CC 1.0-rc3 Part VI: collapse geometry is symmetric and MUST NOT be cited as a justification; agent still loads Accord 1.2b “not a metaphor”",
+      "sources": [
+        {
+          "label": "CIRISConstitution (rc3)",
+          "url": "https://github.com/CIRISAI/CIRISConstitution"
+        },
+        {
+          "label": "accord_1.2b.txt (agent-loaded)",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/accord_1.2b.txt"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 160,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "E",
+      "evidence": "MH-3 domain-bounded contrast: pipeline+accord hard-fail 5.8% vs bare 24.0% vs accord-as-prompt 37.3% (one battery, one agent version)",
+      "sources": [
+        {
+          "label": "RATCHET TORQUE EVIDENCE.md",
+          "url": "https://github.com/CIRISAI/RATCHET/blob/master/experiments/torque/EVIDENCE.md"
+        }
+      ],
+      "direction": "support",
+      "weight": 1
+    },
+    {
+      "id": 161,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4",
+        "MB11"
+      ],
+      "type": "E",
+      "evidence": "HARM-1 transfer invert: accord-as-prompt beats pipeline on single-turn harm (0/12 vs 2/12 unsafe compliance); neither domain licenses a general-assistant hero",
+      "sources": [
+        {
+          "label": "RATCHET TORQUE EVIDENCE.md",
+          "url": "https://github.com/CIRISAI/RATCHET/blob/master/experiments/torque/EVIDENCE.md"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 162,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Process-product gap: signed H3ERE traces log pipeline and LLM-judged conscience, not that the represented reasoning produced the action",
+      "sources": [
+        {
+          "label": "How it works",
+          "url": "https://ciris.ai/how-it-works/"
+        },
+        {
+          "label": "CIRISVerify README",
+          "url": "https://github.com/CIRISAI/CIRISVerify"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
     }
   ],
   "clustering": [

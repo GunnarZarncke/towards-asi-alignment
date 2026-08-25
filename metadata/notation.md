@@ -110,10 +110,10 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\mathrm{SelfControlGap}(A)$ | Self-control minus correction demand | ch32 |
 | $L,M,R,O_{\mathrm{trans}}$ | CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss | ch46 |
 | $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights | ch46 |
-| $U_H$ | Schematic human value-update notation; operational certification uses `ValueUpdateEnvelope` / human-correctable update conditions | ch04 |
+| $U_H$ | Human value-update operator ($V_{t+1}=U_H(V_t,E_t,D_t)$; `eq:human-value-update-ch04`) | ch04 |
 | $U_S$ | System correction-update operator | ch46 |
-| $V_t$ | Value-state tuple (full object in ch04; chapters may project) | ch04 |
-| $C_H$ | Human correction capacity (component of $V_t$) | ch04 |
+| $V_t$ | Schematic value state in that update; later chapters introduce projected tuples | ch04 |
+| $C_H$ | Human correction capacity | ch29 |
 
 ### Successors and certification
 

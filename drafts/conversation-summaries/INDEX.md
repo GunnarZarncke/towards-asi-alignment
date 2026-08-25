@@ -6,8 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-26 | **Bot-orientation housekeeping** — Sync `llms.txt`, `REVIEWING_FOR_AGENTS.md`, bridge ranges, README doc links, notation App G pointer, field counts. | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
-| 2026-08-25 | **Site glossary + UAD name fix** — Companion site sync after homograph pass; 13 glossaryTerms; replace hallucinated “Unit-attribution discovery” with Unsupervised Agent Discovery. | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
+| 2026-08-26 | **CIRIS field-overview evidence** — Recheck sibling `repos/ciris/` + ciris.ai; update agenda card, matrix, ev-158–162. | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
+| 2026-08-26 | **Early-chapter preview demotion** — Tuples/covering formulas in ch02–04/ch08 demoted to prose; later eq/section forward refs added at those sites. | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
+| 2026-08-26 | Bot-orientation and entry-doc housekeeping | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
+| 2026-08-25 | **Site glossary sync and UAD name fix** — Follow homograph hygiene with companion-site sync; add missing App E glossary terms; user flagged... | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
 | 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |
 | 2026-08-25 | **Harm-path v1 weave** — Implement the agreed plan: weave operational closure into v1 chapters without publishing the nine... | [2026-08-25-harm-path-v1-weave.md](2026-08-25-harm-path-v1-weave.md) |
 | 2026-08-25 | **Construct lit keep-list** — User asked to add the usable source list (including reasoning) from the external literature revie... | [2026-08-25-construct-lit-keep-list.md](2026-08-25-construct-lit-keep-list.md) |
@@ -20,13 +22,10 @@
 | 2026-08-22 | 2026-08-22-site-auth-chips | [2026-08-22-site-auth-chips.md](2026-08-22-site-auth-chips.md) |
 | 2026-08-22 | **Part pages and Contents break** — User reported a missing page break before Contents, and that part summaries should sit on the sam... | [2026-08-22-part-pages-toc-break.md](2026-08-22-part-pages-toc-break.md) |
 | 2026-08-22 | **OpenAI pacing field news** — User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyond existing news car... | [2026-08-22-openai-pacing-news.md](2026-08-22-openai-pacing-news.md) |
-| 2026-08-22 | **Kosoy LTA card rewrite** — Vanessa Kosoy found the research-agenda summary hard to parse: it phrased LTA through book vocabu... | [2026-08-22-kosoy-lta-card-rewrite.md](2026-08-22-kosoy-lta-card-rewrite.md) |
-| 2026-08-22 | **Authorship bars rollout (chapters + appendices)** — Roll `\authbar` to all chapters and wired appendices; special keys for ch.1/6/7/9, Summary/Refere... | [2026-08-22-authorship-bars-rollout.md](2026-08-22-authorship-bars-rollout.md) |
-| 2026-08-21 | **Track B claim-strength voice (§1, §3, §4, §6–§8)** — User asked for Track B phases including §6 gems, §7 extractable claims, and §8 INSTRUCTIONS. §2 c... | [2026-08-21-track-b-claim-strength-voice.md](2026-08-21-track-b-claim-strength-voice.md) |
 
 ## Archive by month
 
-- **2026-08** (124): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (127): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

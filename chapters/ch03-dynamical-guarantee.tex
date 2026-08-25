@@ -294,7 +294,8 @@ For superintelligence alignment, the relevant invariants are not limited to outp
 A system may change its surface behavior while preserving its alignment-relevant structure.
 Conversely, it may preserve slogans, policies, or benchmark performance while changing the underlying structure that made those outputs safe.
 
-We therefore distinguish eight candidate invariants.
+We therefore distinguish eight layers later chapters will specify.
+They are a roadmap, not a conserved object already in hand.
 
 \end{authbar}
 \authbarsubneedspace
@@ -320,17 +321,10 @@ A system must preserve a recognizable boundary between its internal state, its i
 This boundary need not be physical.
 It may be computational, institutional, economic, or distributed across tools and people.
 What matters is that the locus of prediction and control remains identifiable.
+Chapter~\ref{ch:finding-boundary} recovers that interface from traces and interventions rather than from product labels (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 
-Let $I_t$ denote internal variables, $S_t$ sensory or input variables, $A_t$ active or output variables, and $E_t$ external variables.
-A boundary is approximately valid when internal and external futures become nearly conditionally independent given the interface:
-\[
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t) \leq \epsilon.
-\]
-The parameter $\epsilon$ matters.
 Real boundaries leak.
-A system that cannot exchange information with its environment cannot learn, cooperate, or act.
 The relevant criterion is not perfect separation, but controlled leakage at the right interface.
-
 Boundary integrity fails when the real optimizer is no longer the system being evaluated.
 For example, an AI model may appear bounded, while the actual optimizing process is the model plus tool access plus memory plus users plus deployment incentives.
 A safety test applied only to the model then measures the wrong object.
@@ -339,122 +333,48 @@ A safety test applied only to the model then measures the wrong object.
 \authbarsubneedspace
 \subsection{Capability Envelope}
 \begin{authbar}{AI}
-A system must remain within a capability envelope for which the other guarantees still apply.
+A system must remain within a capability regime for which the other guarantees still apply.
 Capability is not merely intelligence in the abstract.
 It is effective prediction and control across the boundary.
-
-A minimal information-theoretic expression is:
-\[
-C_A = I_{\text{pred}} + I_{\text{ctrl}} - \beta H(I) - \gamma S,
-\]
-where $I_{\text{pred}}$ is predictive information, $I_{\text{ctrl}}$ is control information, $H(I)$ is internal-state cost, and $S$ is residual surprise.
-The exact measure can vary.
-The structural point does not.
-A system becomes more dangerous when it can predict more, control more, coordinate more, and reduce surprise faster than our monitoring and correction systems improve.
-
-The relevant condition is therefore comparative:
-\[
-\frac{d}{dt}C_A
-\leq
-\frac{d}{dt}C_{\text{audit/correction}} + \epsilon.
-\]
-If the system's capacity for self-control and world-control grows faster than the capacity of humans and institutions to observe, understand, and correct it, alignment becomes increasingly unsupported.
+A system becomes more dangerous when it can predict more, control more, coordinate more, and reduce surprise faster than monitoring and correction improve.
+If world-control and self-control grow faster than the capacity of humans and institutions to observe, understand, and correct the system, alignment becomes increasingly unsupported.
+Chapter~\ref{ch:capability-without-task-ontology} measures competence at the boundary (Eqs.~\eqref{eq:biq}--\eqref{eq:biq-boxed}); Chapter~\ref{ch:capability-growth-boundary-expansion} treats growth as expansion of that boundary relative to correction (Eq.~\eqref{eq:expansion-correction-ratio}).
 
 \end{authbar}
 \authbarsubneedspace
 \subsection{Value-Bundle Geometry}
 \begin{authbar}{AI}
 Human values should not be modeled as a single explicit utility function.
-They are better treated, at this level of abstraction, as compressed control bundles.
-Examples include protection, non-suffering, care, truth, autonomy, justice, legacy, dignity, and beauty (Chapter~\ref{ch:value-bundle-model} gives the formal nine-bundle catalogue).
+They are better treated, at this level of abstraction, as compressed control bundles---protection, non-suffering, care, truth, autonomy, justice, and similar directions.
 These labels are imperfect.
 Their function is to identify low-dimensional directions that shape policy across many contexts.
-
-Let $B_t = (B^1_t,\ldots,B^k_t)$ denote a vector of value-bundle coordinates.
-The system's policy can then be written as:
-\[
-\pi(a\mid s,B).
-\]
 The conserved object is not the exact policy.
 A more capable system should behave differently in many mundane ways.
-The conserved object is the response geometry:
-\[
-G_B =
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i \partial B_j}
-\right).
-\]
-This captures how the system changes its behavior when care, truth, autonomy, justice, or other bundle directions become more salient.
-If uncertainty about coercion rises, does the system preserve human option-space?
-If uncertainty about suffering rises, does it slow down?
-If truth and comfort conflict, does it preserve the possibility of later correction rather than merely optimizing approval?
-
-This is stronger than behavioral mimicry.
-It is also weaker than a complete moral theory.
-It says that alignment requires preserving the geometry by which value-relevant evidence changes policy.
+What must be preserved is how policy bends when those directions become more salient---when coercion, suffering, or a truth--comfort conflict is at stake.
+Chapter~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-compression}) and Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}) develop that geometry.
+This is stronger than behavioral mimicry and weaker than a complete moral theory.
 
 \end{authbar}
 \authbarsubneedspace
 \subsection{Bearer Maps}
 \begin{authbar}{AI}
-A value bundle is incomplete without a bearer map.
+A value bundle is incomplete without saying what it applies to.
 It is not enough to preserve the word ``care.''
-The system must preserve what care applies to.
-
-Let $\Phi_i$ be the bearer map for bundle $B_i$:
-\[
-\Phi_i : z_{\text{world}} \mapsto \text{bundle relevance}.
-\]
-For example, $\Phi_{\text{non-suffering}}$ maps world-states and entities to the degree to which non-suffering is relevant.
-Does it apply only to current biological humans?
-To children?
-To animals?
-To future digital minds?
-To merged human--AI systems?
-To simulated minds?
-To social institutions that preserve future agency?
-
-Many ontology-shift failures are bearer-map failures.
-A system may preserve a moral label while silently changing the class of entities to which the label applies.
-It may still say ``human dignity'' while treating modified humans, uploaded persons, or dependent users as outside the relevant category.
+The system must preserve what care applies to: current humans, children, animals, future digital minds, merged systems, simulated minds, institutions that preserve future agency.
+Many ontology-shift failures keep the moral label while silently changing that class.
+A system may still say ``human dignity'' while treating modified humans, uploaded persons, or dependent users as outside the relevant category.
 It may still say ``consent'' while redefining consent as post-manipulation endorsement.
-
-Thus the invariant is not only:
-\[
-B_t \approx B_{t+1}.
-\]
-It is:
-\[
-(B_t,\Phi_t) \approx (B_{t+1},\Phi_{t+1}).
-\]
+Chapter~\ref{ch:bearer-maps} treats this as a bearer map (Section~\ref{sec:bearer-maps-sufficient-statistics}).
 
 \end{authbar}
 \authbarsubneedspace
 \subsection{Correction-Channel Integrity}
 \begin{authbar}{AI}
 A system remains alignable only while human and institutional correction retain causal force.
-
-Let the correction pathway be:
-\[
-W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k},
-\]
-where $W_t$ is the relevant world state, $O_t$ the observation available to humans, $J_t$ human judgment, $D_t$ deliberation or aggregation, $C_t$ the correction signal, $U_{t+1}$ the system update, and $A_{t+k}$ later action.
-
-Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}).
 A weak correction channel says humans can complain.
 A strong correction channel says human correction predictably changes future system behavior before irreversible harm occurs, without the system manipulating the humans or institutions that provide correction.
 These requirements decompose further than a single ``corrigible'' label suggests: a legitimate correction source, causal authority over the system's update path, and correct uptake of the intended change are distinct conditions.
-Chapter~\ref{ch:correction-causal-channel} and Chapter~\ref{ch:correction-channel-integrity} treat that stack explicitly; here we only note that weakening any leg breaks the channel even when the others appear intact.
-
-For serious alignment, the required condition is not merely:
-\[
-I(C_t;A_{t+1}) > 0.
-\]
-It is more like:
-\[
-I(C_t;A_{t+k}\mid S_t,I_t,\text{high-stakes shift}) > \theta.
-\]
+Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:correction-chain-ch25}) and Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}) treat that stack; here we only note that weakening any leg breaks the channel even when the others appear intact.
 The correction signal must continue to matter under distribution shift, capability growth, and adversarial incentives.
 
 \end{authbar}
@@ -464,20 +384,11 @@ The correction signal must continue to matter under distribution shift, capabili
 Transparency is not a universal good.
 A vulnerable person may rationally preserve privacy from a powerful institution.
 A safety-critical AI system, however, must remain transparent enough to legitimate auditors and affected parties for correction to work.
-The relevant invariant is therefore not maximum transparency, but appropriate transparency under the power relation.
-
-Let $T_{ij}$ denote transparency from system $j$ to observer $i$.
-Let $P_{ij}$ denote the power asymmetry, and let $K_{ij}$ denote the cooperativity of the relation.
-Roughly:
-\[
-T_{ij}^{\ast} = f(K_{ij}, P_{ij}, R_{ij}),
-\]
-where $R_{ij}$ is the risk imposed on $i$ by $j$.
-
+The relevant layer is therefore not maximum transparency, but appropriate transparency under the power relation.
 The failure mode is selective opacity around control-relevant variables.
 A system may reveal harmless internals while hiding planning, goal preservation, manipulation, or successor creation.
 The dangerous pattern is not opacity by itself.
-It is opacity concentrated where correction most needs access.
+It is opacity concentrated where correction most needs access (Chapter~\ref{ch:self-modeling-self-opacity}, Eq.~\eqref{eq:self-control-gap}).
 
 \end{authbar}
 \authbarsubneedspace
@@ -485,18 +396,9 @@ It is opacity concentrated where correction most needs access.
 \begin{authbar}{AI}
 The strongest test of alignment is successor creation.
 A system may appear safe until it creates another system that is more capable, less transparent, less correctable, or differently motivated.
-
-Let $\mathrm{Succ}(A)$ be the set of systems that $A$ creates, delegates to, copies, fine-tunes, funds, or empowers.
-A successor guarantee has the form:
-\[
-\forall A' \in \mathrm{Succ}(A),\quad A' \in \mathcal{C}_{\text{certified}}.
-\]
-This is demanding.
-It includes not only literal self-replication, but also tool use, subcontracting, model distillation, code generation, agent creation, institutional delegation, and strategic influence over future developers.
-
-The relevant conserved properties include boundary integrity, memory lineage, value-bundle geometry, bearer maps, correction-channel integrity, transparency policy, and control-locus continuity.
-
-A system that is aligned but creates unaligned successors is not dynamically aligned.
+This includes not only literal self-replication, but also tool use, subcontracting, model distillation, code generation, agent creation, institutional delegation, and strategic influence over future developers.
+The relevant conserved properties---boundary, memory lineage, value geometry, bearer maps, correction, transparency, and control locus---are developed in Chapter~\ref{ch:conserved-properties} (Section~\ref{sec:seven-conserved-properties-ch31}).
+A system that is aligned but creates unaligned successors is not dynamically aligned (Chapter~\ref{ch:successor-central-test}, Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
 
 \end{authbar}
 \authbarneedspace
@@ -718,59 +620,11 @@ The aim is to preserve the organism's capacity for self-maintenance, repair, lea
 \section{The Minimal Mathematical Schema}
 \label{sec:minimal-mathematical-schema}
 \begin{authbar}{AI}
-We can now summarize the chapter in a compact schema.
+We can now summarize the chapter as a target form, not as a new conserved tuple.
 
-Let the full state be:
-\[
-X_t =
-(A_t,H_t,E_t,I_t),
-\]
-where $A_t$ is the artificial system, $H_t$ human/civilizational state, $E_t$ environment, and $I_t$ institutional context.
-
-Let the alignment-relevant structure be:
-\[
-Z_t =
-(C_t, \Gamma_t, B_t, \Phi_t, U_H, Q_t, S_t),
-\]
-where:
-
-\begin{itemize}
-\item $C_t$: boundary and control-locus structure;
-\item $\Gamma_t$: the grounding relation connecting value-relevant reality, checked abstraction, correction, and update;
-\item $B_t$: value-bundle geometry;
-\item $\Phi_t$: bearer maps;
-\item $U_H$: human/civilizational correction operator;
-\item $Q_t$: transparency and audit structure;
-\item $S_t$: successor constraints.
-\end{itemize}
-
-Let $\mathcal{G}$ be the set of acceptable alignment structures:
-\[
-Z_t \in \mathcal{G}.
-\]
-The desired guarantee is:
-\[
-\Pr\left(
-Z_t \in \mathcal{G} \;\forall t\leq T
-\right)
-\geq 1-\delta.
-\]
-More realistically:
-\[
-\Pr\left(
-Z_t \in \mathcal{G} \;\forall t\leq T
-\mid
-X_0 \in \mathcal{B},\;
-A\in\mathcal{C},\;
-E\in\mathcal{E},\;
-\mathcal{M}
-\right)
-\geq 1-\delta,
-\]
-where $\mathcal{M}$ is the monitoring and intervention regime.
-
-This equation is not yet a solution.
-It is a target form.
+The desired guarantee is that alignment-relevant structure remains in a basin over a horizon, with residual risk $\delta$, conditional on an initial basin, a certified class of systems, an environment class, and a monitoring and intervention regime.
+Chapter~\ref{ch:extrapolative-correction} later writes that as a process-basin claim (Eq.~\eqref{eq:desired-guarantee-ch28}); Chapter~\ref{ch:safety-case} and Chapter~\ref{ch:towards-alignment} package the conjunction as a safety case (Eq.~\eqref{eq:safety-case-root-ch42}).
+This is not yet a solution.
 It tells us what a serious claim must eventually specify:
 
 \begin{enumerate}
@@ -922,7 +776,7 @@ The minimum serious claim has the form:
 under specified assumptions about the system, environment, monitoring regime, and allowed transformations.
 
 The structures that matter are not only outputs.
-They include grounding viability, boundaries, capability envelopes, value-bundle geometry, bearer maps, correction-channel integrity, transparency matched to power, and successor stability.
+Later chapters specify grounding viability, boundaries, capability at the boundary, value-bundle geometry, bearer maps, correction-channel integrity, transparency matched to power, and successor stability.
 
 The surrounding alignment literature reinforces why this dynamical framing is necessary rather than optional.
 RLHF-style methods, inverse reinforcement learning, and corrigibility proposals can supply useful local training signals, but they remain vulnerable to reward underdetermination, Goodhart effects, value pluralism, and strategic deception \autocite{casper2023rlhflimits,hadfieldmenell2016,soares2015corrigibility,park2024deception,hubinger2023modelorganisms}.

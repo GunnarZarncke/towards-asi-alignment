@@ -569,6 +569,10 @@ rows:
         - type: P
           ids:
             - 108
+        - type: E
+          ids:
+            - 160
+            - 161
       MB4a:
         - type: C
           ids:
@@ -594,6 +598,11 @@ rows:
           ids:
             - 115
             - 116
+            - 158
+        - type: C
+          ids:
+            - 159
+            - 162
       MB7d: []
       MB8: []
       MB9:
@@ -601,15 +610,19 @@ rows:
           ids:
             - 104
             - 117
+            - 159
       MB10: []
       MB11:
         - type: C
           ids:
-            - 108
             - 130
+            - 158
         - type: P
           ids:
             - 108
+        - type: E
+          ids:
+            - 161
     slug: ciris
   - agenda: GovAI / UK AISI
     cells:

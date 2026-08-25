@@ -131,18 +131,11 @@ Third, values may mean the underlying control structure that makes some states s
 
 This is the meaning we need for superintelligence alignment.
 
-Let $B_t \in \mathbb{R}^k$ denote a vector of latent value-bundle activations.
-These bundles are not necessarily explicit beliefs.
-They are compressed control variables that shape attention, judgment, action, and learning.
-Examples might include protection, non-suffering, care, truth, autonomy, justice, loyalty, dignity, beauty, achievement, purity, and legacy.
+The underlying structure is not necessarily a list of explicit beliefs.
+It is a compressed control interface that shapes attention, judgment, action, and learning---protection, non-suffering, care, truth, autonomy, justice, loyalty, dignity, and similar recurring directions.
 The exact basis is not fixed here.
-The point is that human value appears to pass through a lower-dimensional control interface than the full space of possible world-states.
-
-A policy influenced by value bundles can be written as
-\[
-\pi(a \mid s, B_t, W_t, \Phi_t),
-\]
-where $s$ is the represented situation, $B_t$ is the bundle state, $W_t$ encodes tradeoff weights among bundles, and $\Phi_t$ maps entities and situations in the world onto bundle relevance.
+The point is that human value appears to pass through a lower-dimensional interface than the full space of possible world-states.
+Later chapters treat these as value bundles, tradeoff geometry, and bearer maps (Chapters~\ref{ch:value-bundle-model},~\ref{ch:tradeoffs-bundle-geometry},~\ref{ch:bearer-maps}).
 
 This third layer is the one most relevant to alignment.
 It connects preferences and principles to the machinery that generates them.
@@ -200,7 +193,7 @@ We want to be the kind of beings who can learn that we were wrong.
 
 This means the value process includes an update operator:
 \begin{equation}
-V_{t+1} = U_H(V_t, E_t, D_t),
+V_{t+1} = \symboldef[U_H]{U_H}(V_t, E_t, D_t),
 \label{eq:human-value-update-ch04}
 \end{equation}
 where $V_t$ is the current value state, $E_t$ is evidence, and $D_t$ is deliberation.
@@ -217,13 +210,9 @@ But $U_H$ may be the thing we most need to preserve.
 A value does not matter only by its label.
 It matters by what it applies to.
 
-Let $\Phi_k$ be the bearer map for bundle $B_k$:
-\[
-\Phi_k : z_{\text{world}} \to \mathbb{R},
-\]
-where $z_{\text{world}}$ is a representation of entities, states, and relations in the world.
-$\Phi_k(z)$ says how much the value bundle $B_k$ applies to $z$.
-Defining value over $z_{\text{world}}$ rather than over raw physical states is deliberate: it is Wentworth's pointers problem, the observation that human values are functions of latent variables inside a human world-model, so a system that fixes the values while drifting on the latents has changed what the values mean \autocite{wentworth2020pointers}.
+A system can keep the word ``suffering'' while changing whose states count as suffering.
+Defining value over represented entities and situations rather than over raw physical states is deliberate: it is Wentworth's pointers problem, the observation that human values are functions of latent variables inside a human world-model, so a system that fixes the values while drifting on the latents has changed what the values mean \autocite{wentworth2020pointers}.
+Chapter~\ref{ch:bearer-maps} treats this as a bearer map (Section~\ref{sec:bearer-maps-sufficient-statistics}). The point here is only that a fixed utility can hide that drift.
 
 For example, the non-suffering bundle must answer: whose suffering counts?
 Adult humans?
@@ -255,18 +244,8 @@ Beauty can conflict with utility.
 Some conflicts are shallow and disappear with more information.
 Others are deep.
 
-The relevant object is not merely the value vector $B_t$, but the local response geometry:
-\[
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i \partial B_j}
-\right).
-\]
-The first derivative says how action changes when one bundle becomes salient.
-The second derivative says how bundle interactions change action.
-
+The relevant object is not merely a list of value words, but how action bends when one concern becomes salient and when two concerns interact.
+Chapter~\ref{ch:tradeoffs-bundle-geometry} develops that response geometry (Section~\ref{sec:value-bundle-response-geometry}).
 A system that preserves individual value words but changes this geometry may become alien in exactly the way that matters.
 
 \end{authbar}
@@ -300,26 +279,9 @@ People disagree, but they often disagree by giving different weights or scopes t
 
 This suggests a model.
 
-Let high-dimensional error and need signals be denoted by
-\[
-\epsilon_t \in \mathbb{R}^n.
-\]
-These may include bodily error, social error, prediction error, status error, attachment error, threat error, regret, novelty, pain, uncertainty, and unmet goals.
-A biological or cognitive system cannot route all of this detail into global action selection.
-It compresses.
-
-Let
-\[
-B_t = f_\theta(\epsilon_t, c_t)
-\]
-be a low-dimensional bundle state, with $B_t \in \mathbb{R}^k$ and $k \ll n$.
-The context $c_t$ includes attention, developmental state, culture, language, and current task.
-
-Then action is shaped by
-\[
-\pi(a_t \mid s_t, B_t, W_t, \Phi_t).
-\]
-
+High-dimensional error and need signals---bodily, social, predictive, status, attachment, threat, regret, novelty, pain, uncertainty, unmet goals---cannot all be routed into global action selection.
+A biological or cognitive system compresses them through attention, developmental state, culture, language, and current task into a smaller set of steering variables.
+Chapter~\ref{ch:value-bundle-model} treats that compression as a value-bundle state (Eq.~\eqref{eq:bundle-compression}).
 This is not a claim that human values are simple.
 Each bundle may have high description length.
 ``Justice'' is not a scalar one can communicate to an alien by sending one number.
@@ -352,19 +314,8 @@ R_H=\text{fixed hidden reward variable}.
 \]
 That is a useful idealization for deriving cooperative behavior.
 It is not the full alignment target.
-In this book's terms, the human value source is a bundle process whose ontology, bearer maps, attention, identity, and social context co-evolve:
-\[
-V_H(t)=\{v_1(t),\ldots,v_k(t)\},
-\qquad
-O_H(t),B_H(t),C_H(t)\ \text{co-evolve}.
-\]
-Once the system's action affects both the world and the reward source,
-\[
-a_t\to s_{t+1},
-\qquad
-a_t\to V_H(t+1),
-\]
-the question is underdetermined.
+In this book's terms, the human value source is a process whose ontology, who it applies to, attention, identity, and social context co-evolve.
+Once the system's action affects both the world and that source, the question is underdetermined.
 Is the system learning the reward, eliciting it, stabilizing it, or manufacturing it?
 Cooperative reward inference therefore does not imply value-bundle preservation.
 
@@ -457,24 +408,9 @@ The same surface behavior can arise from different bundle geometries.
 A system may help because it cares about suffering, because it seeks approval, because it wants trust, because helping is instrumentally useful, or because the test environment rewards help.
 These are not equivalent under capability growth.
 
-The object to preserve is not merely
-\[
-s \mapsto \pi(a \mid s).
-\]
-It is the value-bundle response geometry:
-\[
-(s, B, W, \Phi) \mapsto \pi(a \mid s, B, W, \Phi).
-\]
-
-In successor creation, the relevant conservation condition is not
-\[
-\pi_A \approx \pi_{A'},
-\]
-but
-\[
-d_G(G_B^A, G_B^{A'}) < \epsilon,
-\]
-where $G_B^A$ is the bundle response geometry of agent $A$, and $A'$ is a successor.
+The object to preserve is not merely a map from situations to actions.
+It is how action bends when morally relevant latents change---who is affected, which concerns are salient, how they trade off.
+Chapters~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-compression}) and~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}) develop that geometry; successor conservation is taken up in Chapter~\ref{ch:conserved-properties} (Section~\ref{sec:seven-conserved-properties-ch31}).
 
 This means that when morally relevant latent variables change, the successor's policy should bend in recognizably corresponding ways.
 
@@ -595,32 +531,9 @@ Superintelligence breaks that assumption.
 The revised target is not value stasis.
 It is value-process preservation.
 
-Let the human value process at time $t$ be represented by the tuple
-\[
-V_t
-=
-(B_t, W_t, \Phi_t, U_H, C^H_t),
-\]
-where
-\begin{itemize}
-\item $B_t$ is the value-bundle basis and current activation structure,
-\item $W_t$ is the tradeoff geometry among bundles,
-\item $\Phi_t$ is the bearer map from represented entities and states to value relevance,
-\item $U_H$ is the human or civilizational value-update operator,
-\item $C^H_t$ is the correction channel through which humans can notice, object, revise, and redirect.
-\end{itemize}
-
-The alignment condition is not
-\[
-V_t = V_0.
-\]
-It is something closer to
-\[
-V_t \in \mathcal{S}_{\text{human-correctable}}
-\quad
-\forall t,
-\]
-where $\mathcal{S}_{\text{human-correctable}}$ is the region in which value change remains connected to human agency, evidence, deliberation, bearer contestability, and correction.
+The alignment condition is not that today's values equal yesterday's.
+It is that value change remains connected to human agency, evidence, deliberation, contestability of who counts, and correction---the update operator of Equation~\eqref{eq:human-value-update-ch04} stays causally real.
+Later chapters specify the pieces this process depends on: value bundles (Chapter~\ref{ch:value-bundle-model}, Eq.~\eqref{eq:bundle-compression}), bearer maps (Chapter~\ref{ch:bearer-maps}, Section~\ref{sec:bearer-maps-sufficient-statistics}), correction (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:extrapolative-correction}, Eqs.~\eqref{eq:correction-chain-ch25}, \eqref{eq:cci-ch26}, \eqref{eq:desired-guarantee-ch28}), and the civilizational envelope (Chapter~\ref{ch:value-change-at-stake}, Section~\ref{sec:minimal-standard-ch45}).
 
 This is a basin condition, not a point condition.
 
@@ -724,14 +637,8 @@ It is that the system becomes powerful enough to alter the process by which goal
 \subsection{The Guarantee Changes}
 \begin{authbar}{AI}
 A plausible guarantee cannot be a proof that the system maximizes the true human utility function.
-It must be a bounded guarantee that the system remains inside a region where human-correctable value evolution is possible:
-\[
-P\left(
-\forall t \leq T:
-V_t \in \mathcal{S}_{\text{human-correctable}}
-\right)
-\geq 1-\delta.
-\]
+It must be a bounded guarantee that, over a stated horizon and class of transformations, value evolution remains human-correctable: humans can still notice, deliberate, refuse, revise, and redirect.
+Chapter~\ref{ch:dynamical-guarantee} states the basin form (Section~\ref{sec:what-is-dynamical-guarantee}); Chapter~\ref{ch:extrapolative-correction} later writes the process-basin claim (Eq.~\eqref{eq:desired-guarantee-ch28}).
 This guarantee is weaker than a final moral solution.
 It is also more realistic.
 
@@ -781,14 +688,7 @@ Fixed human values are the wrong target because human values are not fixed objec
 They are compressed, socially mediated, biologically grounded, historically changing control structures.
 They include current preferences and verbal principles, but they also include value bundles, bearer maps, tradeoff geometries, and update processes.
 
-The alignment target should therefore shift from preserving a static utility function to preserving a human-correctable value process:
-\[
-V_t
-=
-(B_t, W_t, \Phi_t, U_H, C^H_t)
-\in
-\mathcal{S}_{\text{human-correctable}}.
-\]
+The alignment target should therefore shift from preserving a static utility function to preserving a human-correctable value process: the update operator of Equation~\eqref{eq:human-value-update-ch04} remains connected to evidence, deliberation, and correction, rather than being replaced by a frozen utility or a privately computed future endorsement.
 
 This does not solve moral philosophy.
 It sets a technical and institutional boundary around it.

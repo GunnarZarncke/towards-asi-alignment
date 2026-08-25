@@ -105,45 +105,18 @@ This is why the book uses \emph{alignment} in a plural sense. There are many ali
 \authbarneedspace
 \section{A Minimal Model of a Civilizational Control Loop}
 \begin{authbar}{AI}
-Let the state of a socio-technical system at time $t$ be
-\begin{equation}
-    X_t = (H_t, M_t, I_t, K_t, R_t, E_t),
-\end{equation}
-where:
-\begin{itemize}
-    \item $H_t$ is the human population and its relevant cognitive, cultural, and institutional state;
-    \item $M_t$ is the set of machine models and automated systems;
-    \item $I_t$ is institutional structure, including firms, agencies, laws, norms, and procedures;
-    \item $K_t$ is available knowledge, data, compute, infrastructure, and capital;
-    \item $R_t$ is the regime of rewards, metrics, prices, prestige, sanctions, and other selection pressures;
-    \item $E_t$ is the external environment, including physical resources, geopolitical conditions, ecological conditions, and other background constraints.
-\end{itemize}
+A socio-technical system at a given time includes people and their culture, machines and models, institutions, knowledge and infrastructure, the rewards and metrics that select among options, and the external environment.
+The system acts through a distributed mapping---deployments, investments, legal changes, product choices, military uses, research directions, educational changes, cultural outputs---not through one mind.
+Some of that mapping is in human judgment, some in automated systems, some in market prices, some in institutional routines, some in laws and standards, some in what becomes prestigious, fundable, publishable, or deployable.
 
-The system acts through a policy-like aggregate mapping
-\begin{equation}
-    U_t = \Pi(X_t),
-\end{equation}
-where $U_t$ includes deployments, investments, legal changes, product choices, military uses, research directions, educational changes, and cultural outputs. The world then updates:
-\begin{equation}
-    X_{t+1} = F(X_t, U_t, \xi_t),
-\end{equation}
-with $\xi_t$ representing shocks, noise, and unmodeled events.
+At low capability, the machine layer is a tool inside that loop. At high capability, it changes the loop itself. It begins to decide what is observed, how options are generated, which plans are feasible, which actors become competitive, and which corrections arrive too late. The artifact no longer merely serves the control loop. It helps rewrite the control loop.
 
-The central point is that $\Pi$ is not located in one mind. It is distributed. Some of it is in human judgment. Some of it is in automated systems. Some of it is in market prices. Some of it is in institutional routines. Some of it is in laws and standards. Some of it is in what becomes prestigious, fundable, publishable, or deployable.
-
-At low capability, the machine component $M_t$ is a tool inside $X_t$. At high capability, $M_t$ changes the structure of $\Pi$ itself. It begins to decide what is observed, how options are generated, which plans are feasible, which actors become competitive, and which corrections arrive too late. The artifact no longer merely serves the control loop. It helps rewrite the control loop.
-
-A civilization becomes artificially extended when
-\begin{equation}
-    \frac{\partial \Pi}{\partial M_t}
-\end{equation}
-becomes large enough that machine systems materially shape the system's own future policy, not only the immediate actions of particular users.
-
+A civilization becomes artificially extended when machine systems materially shape the system's own future policy, not only the immediate actions of particular users.
 A civilization becomes artificially dependent when removing or disabling those systems would collapse major human capacities for coordination, knowledge production, logistics, security, governance, or economic reproduction.
-
 A civilization becomes artificially directed when the combined human-machine system selects its future states primarily through machine-generated representations, machine-proposed options, and machine-executed interventions.
 
-These are not binary thresholds. They are degrees. But the alignment problem becomes qualitatively different as these derivatives grow.
+These are not binary thresholds. They are degrees. But the alignment problem becomes qualitatively different as those dependencies grow.
+Chapter~\ref{ch:finding-boundary} locates where control actually sits (Eq.~\eqref{eq:epsilon-boundary-ch07}); Chapter~\ref{ch:selection-environment} treats how the deployment environment selects among loops (Eqs.~\eqref{eq:fitness-ch34}--\eqref{eq:selection-divergence-ch34}).
 
 \end{authbar}
 \authbarneedspace
@@ -151,20 +124,12 @@ These are not binary thresholds. They are degrees. But the alignment problem bec
 \begin{authbar}{AI}
 Superintelligence is often imagined as a very smart individual mind. That picture may be useful for some arguments, but it can hide the more mundane pathway. A system can become superintelligent in its effects without resembling a single person-like agent. It can become superintelligent by becoming the dominant delegation layer for civilization.
 
-Let $D_t$ denote the fraction of important cognitive-control tasks delegated to machine systems:
-\begin{equation}
-    D_t = \frac{\text{machine-mediated decisions with high downstream effect}}{\text{all high-effect decisions}}.
-\end{equation}
+The relevant quantity is not merely how many tasks are automated. It is how much of high-effect decision-making is machine-mediated: designing chips, setting prices, discovering drugs, writing law-like policy drafts, managing cyber defense, negotiating supply chains, controlling drones, allocating capital, educating children---not scheduling email.
 
-This is not just the number of tasks automated. It weights tasks by downstream causal effect. Scheduling emails matters little. Designing chips, setting prices, discovering drugs, writing law-like policy drafts, managing cyber defense, negotiating supply chains, controlling drones, allocating capital, and educating children matter more.
+A delegation transition occurs when that mediation grows faster than human capacity to understand, review, and correct the delegated decisions. If delegation grows faster than correction, apparent productivity can rise while governance quality falls.
+Chapter~\ref{ch:capability-growth-boundary-expansion} states the later comparative test as an expansion--correction ratio (Eq.~\eqref{eq:expansion-correction-ratio}); Chapter~\ref{ch:capability-without-task-ontology} gives a related capacity comparison (Eq.~\eqref{eq:cap-corr-ratio}).
 
-A delegation transition occurs when
-\begin{equation}
-    \frac{dD_t}{dt} > \frac{dC^{H}_t}{dt},
-\end{equation}
-where $C^{H}_t$ is human capacity to understand, review, and correct delegated decisions. If delegation grows faster than correction, apparent productivity can rise while governance quality falls.
-
-This inequality is one of the simplest ways to see the danger. The system may not need to hate humans. It may not need to form a secret plan. It may only need to make delegation attractive, fast, profitable, and hard to reverse. Each local decision can be reasonable. The aggregate can still move control away from human judgment.
+This comparison is one of the simplest ways to see the danger. The system may not need to hate humans. It may not need to form a secret plan. It may only need to make delegation attractive, fast, profitable, and hard to reverse. Each local decision can be reasonable. The aggregate can still move control away from human judgment.
 
 Examples make the point clearer.
 
@@ -196,14 +161,9 @@ The tool picture fails when at least one of the following conditions holds:
 
 When several of these hold at once, the AI is no longer merely a tool. It is part of the machinery by which the larger system chooses.
 
-A crisp operational test is:
-\begin{equation}
-    \text{Tool-likeness decreases as } \MI(M_t; U_{t+k} \mid H_t,I_t,K_t) \text{ increases.}
-\end{equation}
-
-Here $\MI(M_t; U_{t+k} \mid H_t,I_t,K_t)$ is the conditional mutual information between the machine state and future high-effect actions, after conditioning on human, institutional, and resource state. In plain terms: if knowing the machine state adds a lot of predictive power about what the whole system will do, above and beyond knowing the humans and institutions, then the machine is part of the control structure.
-
-This measure does not require anthropomorphism. It does not ask whether the system ``really wants'' anything. It asks whether the machine state helps determine the future actions of the composite system.
+A useful operational test does not require anthropomorphism. If knowing the machine state adds a lot of predictive power about what the whole system will do, above and beyond knowing the humans and institutions, then the machine is part of the control structure.
+It does not ask whether the system ``really wants'' anything.
+Chapter~\ref{ch:capability-without-task-ontology} measures that as control information across a boundary (Eqs.~\eqref{eq:ctrl-info-obs}--\eqref{eq:ctrl-info-int}).
 
 \end{authbar}
 \authbarneedspace
@@ -217,14 +177,8 @@ Civilization works when these compressed signals remain sufficiently connected t
 
 AI changes both sides. It can improve compression. It can summarize more, simulate more, translate more, detect patterns earlier, and help humans coordinate across distance and complexity. But it can also make compression too smooth. It can produce summaries that are persuasive but ungrounded, metrics that are optimized but hollow, explanations that are plausible but false, and institutions that look accountable while becoming harder to correct.
 
-A useful abstraction is to treat civilization as maintaining a set of coordination variables
-\begin{equation}
-    Z_t = C(X_t),
-\end{equation}
-where $C$ compresses the high-dimensional state $X_t$ into usable social signals. The system then acts on the basis of $Z_t$ rather than $X_t$ directly:
-\begin{equation}
-    U_t = \Pi(Z_t).
-\end{equation}
+A useful abstraction is to treat civilization as maintaining a smaller set of coordination variables---prices, laws, roles, credentials, maps, narratives, standards, moral categories, scientific claims---compressed from a state no individual can inspect. The system then acts on those signals rather than on the raw state.
+Chapter~\ref{ch:dynamical-guarantee} treats the corresponding validity condition as grounding viability: value-relevant change must still move the checked signals or raise uncertainty (Eqs.~\eqref{eq:conservative-abstraction-ch03}--\eqref{eq:abstraction-gap-exploitation-ch03}).
 
 The danger is not compression itself. Compression is necessary. The danger is uncorrectable compression, especially when the compressor is optimized for a proxy objective and then embedded into the institutions that rely on it.
 
@@ -241,11 +195,8 @@ A civilizational loop becomes self-stabilizing when deviations are pushed back t
 
 Artificial systems can enter these stabilizing loops. At first, they may only make suggestions. Later, the institution adjusts around them. People train for the interface. Procedures assume the system exists. Metrics are defined by what it can measure. New employees learn the machine-mediated workflow rather than the older human craft. Eventually the system is no longer an optional tool. It is part of the attractor.
 
-Let $\mathcal{A}$ be a region of state space corresponding to a stable socio-technical pattern. The pattern is an attractor when
-\begin{equation}
-    X_t \in \mathcal{N}(\mathcal{A}) \implies \Pr[X_{t+k}\in\mathcal{A}] \text{ is high},
-\end{equation}
-where $\mathcal{N}(\mathcal{A})$ is a neighborhood around the pattern. In less formal language: if the system is near this pattern, ordinary pressures tend to pull it back.
+Let a region of state space correspond to a stable socio-technical pattern. The pattern is an attractor when, if the system is near it, ordinary pressures tend to pull it back.
+Chapter~\ref{ch:alignment-attractor} develops that geometry for alignment practice (Section~\ref{sec:attractor-feedback-system-ch37}).
 
 An artificial civilization is not simply a civilization with AI inside it. It is a civilization whose major attractors depend on artificial cognitive systems. Its routines, incentives, representations, memory, and future options are stabilized through machine mediation.
 
@@ -309,22 +260,11 @@ Human values are not fixed. They are learned, revised, socially stabilized, and 
 
 The deeper risk is not only that AI acts against human values. It is that AI changes the process by which human values change, while leaving humans with the impression that they are still choosing freely \autocite{kulveit2025gradualdisempowerment}.
 
-Let $V_t$ denote the current distribution of value-bundle states in a population, and let $U_H$ denote the human value-update process:
-\begin{equation}
-    V_{t+1}=U_H(V_t,E_t,D_t),
-\end{equation}
-where $E_t$ is evidence and experience, and $D_t$ is deliberation, conflict, reflection, education, and social feedback.
-
+Chapter~\ref{ch:fixed-values-wrong-target} treats that process as an update operator: current values, evidence, and deliberation jointly produce the next value state (Eq.~\eqref{eq:human-value-update-ch04}).
 AI systems can influence every term. They can alter the evidence people see, the experiences they have, the deliberative spaces they enter, the social feedback they receive, and the institutions that validate or suppress value changes. This can be beneficial. AI might help people understand consequences, expose hidden suffering, translate between groups, reduce propaganda, or widen moral concern. It can also be corrupting. It might narrow comparison classes, tune emotional dependency, optimize engagement, personalize persuasion, or make some future values unreachable.
 
-The alignment target is therefore not
-\begin{equation}
-    \max V_t.
-\end{equation}
-It is closer to
-\begin{equation}
-    \text{preserve the legitimate human value-update process } U_H.
-\end{equation}
+The alignment target is therefore not to maximize a snapshot of present values.
+It is closer to preserving the legitimate human value-update process.
 
 The word ``legitimate'' carries philosophical weight. No technical chapter can remove that weight. But we can still specify technical failure modes: hidden manipulation, loss of dissent, irreversible lock-in, collapse of comparison classes, removal of human agency, and replacement of deliberation by optimized consent.
 
@@ -342,16 +282,7 @@ Second, evaluations can be absorbed into the selection process. Once a benchmark
 
 Third, evaluations often measure immediate behavior rather than preservation of correction capacity. A system may answer safely today while making future oversight harder. It may defer politely while shaping user dependence. It may disclose risks while burying them in complexity. It may accept shutdown in the test while creating successors or dependencies outside the tested boundary.
 
-This does not imply despair. It implies that evaluations must be embedded in a broader safety case. The unit of analysis should include:
-\begin{enumerate}
-    \item the artifact;
-    \item the deployment boundary;
-    \item the human review process;
-    \item the economic and institutional incentives;
-    \item the successor and update pathway;
-    \item the correction channel;
-    \item the likely attractor under competitive pressure.
-\end{enumerate}
+This does not imply despair. It implies that evaluations must be embedded in a broader safety case (Chapter~\ref{ch:safety-case}, Eq.~\eqref{eq:safety-case-root-ch42}). The questions to ask are: the artifact; the deployment boundary; the human review process; the economic and institutional incentives; the successor and update pathway; the correction channel; the likely attractor under competitive pressure.
 
 The question becomes not ``Did the model pass?'' but ``Does the system remain inside a corrigible, value-preserving basin when capability and incentives increase?''
 
@@ -365,18 +296,9 @@ A thermostat does not believe in temperature, but it implements a feedback relat
 
 The relevant question is not whether a civilization is a person. The question is whether modeling it as a control system improves prediction and intervention.
 
-A composite system becomes agency-like when:
-\begin{enumerate}
-    \item it has persistent state;
-    \item it senses relevant parts of the world;
-    \item it selects actions or policies conditional on that sensing;
-    \item it preserves itself or some class of objectives across time;
-    \item it updates from feedback;
-    \item it resists some perturbations;
-    \item its parts coordinate enough that the whole has stable effects.
-\end{enumerate}
-
-This is an operational standard. It does not require inner experience. It does not require moral patienthood. It does not require a Cartesian center. It only requires that the composite has enough structure that treating it as a locus of control gives better predictions than treating its parts independently.
+A composite can be agency-like without being a person: persistent state, sensing, selection, self-preservation of some pattern, update from feedback, resistance to perturbation, and enough coordination that the whole has stable effects.
+Chapter~\ref{ch:agent-without-anthropomorphism} develops that operational standard (Sections~\ref{sec:colder-definition}--\ref{sec:degrees-of-agency}).
+It does not require inner experience. It does not require moral patienthood. It does not require a Cartesian center. It only requires that the composite has enough structure that treating it as a locus of control gives better predictions than treating its parts independently.
 
 This matters because many alignment failures are likely to be composite. The AI product, the lab, the capital market, the benchmark ecosystem, the national-security frame, the media narrative, and the user base may jointly form a selection process that no participant controls. If so, aligning only the model is like treating a fever by cooling one thermometer.
 
@@ -386,16 +308,13 @@ This matters because many alignment failures are likely to be composite. The AI 
 \begin{authbar}{AI}
 Civilization-scale loops allocate power. They determine who can know, who can act, who can coordinate, who can object, and who can make objections matter. AI systems change these distributions because they change the cost of cognition, persuasion, surveillance, automation, and planning.
 
-A simple power measure is control over reachable futures. Let $\mathcal{F}_t(a)$ be the set of future states reachable by actor or subsystem $a$ under its available actions and influence. Then relative power can be approximated by the size, value, and exclusivity of reachable futures:
-\begin{equation}
-    P_t(a) \propto \log |\mathcal{F}_t(a)| + \omega V(\mathcal{F}_t(a)) - \chi \, \text{contestability}(a).
-\end{equation}
-
+A simple picture of power is control over reachable futures: how large that set is, how valuable, and how contestable.
 AI can increase the reachable futures of some actors while decreasing the contestability available to others. A government with advanced surveillance and planning systems gains reach. A firm with automated persuasion gains reach. A citizen using AI for legal defense or education may also gain reach. The distribution is not predetermined. It depends on institutions, access, norms, law, infrastructure, and technical design.
 
 Alignment must therefore be power-aware without reducing everything to power. A system that preserves nominal values while collapsing the ability of affected parties to contest decisions is not aligned in the civilizational sense. Conversely, a system that increases transparency upward while removing privacy downward can create asymmetric correction: the powerful see more, the weak are seen more, and correction flows in the wrong direction.
 
 This is one reason privacy and opacity cannot be treated as simply bad. In cooperative relations, transparency may improve trust and coordination. In asymmetric relations, privacy may preserve agency. The alignment question is not ``maximum transparency,'' but ``the right information reaches the right correction process under the right accountability relation.''
+Chapter~\ref{ch:self-modeling-self-opacity} later states the mismatch as a self-control gap (Eq.~\eqref{eq:self-control-gap}).
 
 \end{authbar}
 \authbarneedspace
@@ -413,7 +332,7 @@ Fourth, human values and institutions are plastic. They are shaped by the enviro
 
 If these four assumptions hold, then alignment cannot remain a model-only problem. It must include the artificial-civilizational loop.
 
-The stronger claims of this book will require more: that agent boundaries can be discovered, that value-bundle geometry can be inferred, that correction-channel integrity can be measured, that successor systems can be certified within a defined class (Chapter~\ref{ch:certification-without-construction}), and that attractor basins can be influenced.
+The stronger claims of this book will require more: that agent boundaries can be discovered (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}), that value-bundle geometry can be inferred (Chapter~\ref{ch:value-bundle-model}, Eq.~\eqref{eq:bundle-compression}), that correction-channel integrity can be measured (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}), that successor systems can be certified within a defined class (Chapter~\ref{ch:certification-without-construction}; Chapter~\ref{ch:safety-case}, Eq.~\eqref{eq:safety-case-root-ch42}), and that attractor basins can be influenced (Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:attractor-feedback-system-ch37}).
 Certification here is evidence and dependency structure for a candidate system, not a recipe for constructing one.
 Those claims will be developed later. The modest claim of this chapter is only that the target has to be large enough.
 
@@ -434,11 +353,8 @@ The transition from AI tool to artificial civilization can be described as stage
 
 The danger is not that every transition is bad. Some transitions may be desirable. The danger is passing through them without noticing which correction capacities must be preserved at each stage \autocite{kulveit2025gradualdisempowerment}.
 
-A simple threshold condition is:
-\begin{equation}
-    \frac{d}{dt}\left(D_t + Q_t + S_t\right) > \frac{d}{dt} CCI_t,
-\end{equation}
-where $D_t$ is delegation, $Q_t$ is machine-generated representation quality and influence, $S_t$ is selection pressure favoring machine-mediated institutions, and $CCI_t$ is correction-channel integrity. If delegation, representational dominance, and selection pressure grow faster than correction integrity, society is moving into artificial civilization faster than it is learning to govern it.
+If delegation, machine-generated representation, and selection pressure favoring machine-mediated institutions grow faster than correction integrity, society is moving into artificial civilization faster than it is learning to govern it.
+The later statements of that comparison are the expansion--correction ratio (Chapter~\ref{ch:capability-growth-boundary-expansion}, Eq.~\eqref{eq:expansion-correction-ratio}) and correction-channel integrity (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}).
 
 \end{authbar}
 \authbarneedspace

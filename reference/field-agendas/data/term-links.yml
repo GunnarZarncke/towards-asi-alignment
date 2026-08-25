@@ -206,12 +206,13 @@ terms:
   - { phrase: Vingean, url: https://intelligence.org/files/VingeanReflection.pdf, fields: signature }
 
   # --- Agenda-scoped short tokens ---
-  - { phrase: Wise Authority, url: https://ciris.ai/architecture/, fields: all, agendas: [ciris] }
-  - { phrase: Verify, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
-  - { phrase: Lens, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
-  - { phrase: Coherence Ratchet, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
-  - { phrase: CIRISAgent, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
-  - { phrase: Proxy, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: Wise Authority, url: https://ciris.ai/how-it-works/, fields: all, agendas: [ciris] }
+  - { phrase: Verify, url: https://github.com/CIRISAI/CIRISVerify, fields: signature, agendas: [ciris] }
+  - { phrase: Lens, url: https://github.com/CIRISAI/CIRISLens, fields: signature, agendas: [ciris] }
+  - { phrase: H3ERE, url: https://ciris.ai/how-it-works/, fields: signature, agendas: [ciris] }
+  - { phrase: Coherence Ratchet, url: https://ciris.ai/constitution/, fields: signature, agendas: [ciris] }
+  - { phrase: CIRISAgent, url: https://github.com/CIRISAI/CIRISAgent, fields: signature, agendas: [ciris] }
+  - { phrase: Proxy, url: https://github.com/CIRISAI/CIRISProxy, fields: signature, agendas: [ciris] }
   - { phrase: Accord, url: https://ciris.ai/ciris_accord.txt, fields: signature, agendas: [ciris] }
   - { phrase: Timaeus, url: https://www.timaeus.ai/, fields: all, agendas: [resolution] }
   - { phrase: pause, url: https://pauseai.info/, fields: signature, agendas: [pause-standards-advocacy-cluster, miri] }

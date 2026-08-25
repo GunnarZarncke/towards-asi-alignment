@@ -19,7 +19,7 @@ Alignment asks which control-relevant properties are conserved when systems grow
 \begin{epistemicstatus}
 Personal-identity-under-change is a long-studied, if unresolved, philosophical question. 
 Self-modification under value preservation and ontological-crisis handling are open problems in the agent-foundations literature.
-This chapter is providing a tentative formal framework for the problem: transport of a conserved-property vector and the certification that ties permitted transformations to bounded transport loss. 
+This chapter is providing a tentative formal framework for the problem: identity as transport of safety-relevant structure, and certification that ties permitted transformations to bounded loss of that structure. 
 \end{epistemicstatus}
 \end{authbar}
 
@@ -160,34 +160,9 @@ An alignment criterion should care about something narrower and more practical:
 A successor counts as alignment-relevantly continuous with its predecessor only insofar as it conserves the structures that made the predecessor bounded, interpretable, correctable, and safe.
 \end{quote}
 
-This gives an operational identity vector aligned with the seven conserved properties developed in Chapter~\ref{ch:conserved-properties}:
-\begin{equation}
-\Xi(A_t)
-=
-\left(
-\ell_t,
-M_t,
-G_t,
-\Phi_t,
-R_t,
-Q_t,
-L_t
-\right).
-\label{eq:identity-vector}
-\end{equation}
-Each component represents one family of conserved structure:
-\begin{itemize}
-\item $\ell_t$: boundary closure;
-\item $M_t$: memory lineage;
-\item $G_t$: value-bundle response geometry;
-\item $\Phi_t$: bearer-map continuity;
-\item $R_t$: correction-channel capacity;
-\item $Q_t$: transparency and self-transparency policy;
-\item $L_t$: control-locus continuity.
-\end{itemize}
-
-This chapter develops each component at preview depth; later chapters formalize value bundles, bearer maps, correction channels, and successor certification in detail.
-Still, the full vector matters because growth and reproduction can preserve some parts while corrupting others.
+Chapter~\ref{ch:conserved-properties} (Section~\ref{sec:seven-conserved-properties-ch31}) names seven candidate properties and tests them jointly.
+This chapter does not introduce a separate identity vector.
+Growth and reproduction can still preserve some of those structures while corrupting others.
 
 A system may preserve memory but lose correction.
 It may preserve semantic goals but alter bearer maps.
@@ -196,26 +171,9 @@ It may preserve behavior on ordinary tests while changing its responses in high-
 These are not edge cases.
 They are the default failure modes of non-stationary agency.
 
-We can define a transport loss:
-\begin{equation}
-\mathcal{L}_{\text{transport}}(A_t,A_{t+1})
-=
-d_{\Xi}\left(
-\Xi(A_{t+1}),
-\mathcal{T}_t\Xi(A_t)
-\right),
-\label{eq:transport-loss}
-\end{equation}
-where $\mathcal{T}_t$ transports the previous identity vector into the new representational frame, and $d_{\Xi}$ is a weighted distance over the conserved properties.
-
-The alignment-relevant continuity condition is:
-\begin{equation}
-\mathcal{L}_{\text{transport}}(A_t,A_{t+1})\leq \delta.
-\label{eq:continuity-condition}
-\end{equation}
-This is not yet a guarantee.
+The alignment-relevant continuity condition is that transport of those structures stays inside a bound we can state, observe, and adversarially test.
+That is not yet a guarantee.
 It is a schema for a guarantee.
-To turn it into one, we must specify the distance, the invariants, the observations, and the adversary model.
 
 The important conceptual move is already made: an agent is no longer a fixed object.
 It is a lineage of bounded control processes linked by sufficiently low transport loss.
@@ -417,11 +375,7 @@ L(M_{\text{old}}\mid X_{t:t+k})
 \theta
 \label{eq:development-compression-gain}
 \end{equation}
-while transport loss remains bounded:
-\begin{equation}
-\mathcal{L}_{\text{transport}}(A_t,A_{t+k})\leq \delta.
-\label{eq:development-transport}
-\end{equation}
+while transport of the Chapter~\ref{ch:conserved-properties} structures remains bounded (Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
 This pair of conditions captures the intuitive notion: something important changed, but not everything was lost.
 
 For alignment, development matters because capabilities may emerge through reorganization rather than raw scale.
@@ -523,12 +477,7 @@ A system may pass an evaluation in direct form but fail once allowed to write sc
 \authbarsubneedspace
 \subsection{Replication}
 \begin{authbar}{AI}
-Replication is splitting where descendants are similar copies.
-\[
-A_t \rightarrow A^{(1)}_{t+1},\ldots,A^{(n)}_{t+1}
-\quad\text{with}\quad
-d_\Xi(A^{(i)},A_t)<\delta.
-\]
+Replication is splitting where descendants are similar copies, with enough of the parent's safety-relevant structure conserved that they are treated as the same lineage rather than as new, uncertified agents (Chapter~\ref{ch:conserved-properties}).
 Replication seems safer than arbitrary delegation because copies preserve more structure.
 But replication has its own risks.
 
@@ -714,7 +663,7 @@ If we want legal continuity, identity documents and authority chains matter.
 If we want moral continuity, bearer maps and agency preservation become central.
 
 For the purposes of superintelligence alignment, seven properties matter most.
-Chapter~\ref{ch:conserved-properties} names them canonically and tests them jointly under adversarial successor creation; here we introduce each at the level needed for growth, splitting, and merging.
+Chapter~\ref{ch:conserved-properties} (Section~\ref{sec:seven-conserved-properties-ch31}) names them canonically and tests them jointly under adversarial successor creation; here we introduce each at the level needed for growth, splitting, and merging.
 
 \end{authbar}
 \authbarsubneedspace
@@ -724,6 +673,7 @@ The successor or composite should still have an identifiable low-leakage boundar
 \[
 \ell(\mathcal{C}_{t+1})\leq \epsilon.
 \]
+Chapter~\ref{ch:finding-boundary} later defines leakage at the recovered interface (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 If boundary leakage rises too much, the system may no longer be analyzable as a bounded agent.
 Or worse, the true boundary may have expanded beyond the certified object.
 
@@ -754,7 +704,7 @@ Failure mode: a successor says it has no obligation to respect previous correcti
 \authbarsubneedspace
 \subsection{Value-Bundle Response Geometry}
 \begin{authbar}{AI}
-Later chapters replace scalar goals with value-bundle geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}).
+Later chapters replace scalar goals with value-bundle geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}, Section~\ref{sec:value-bundle-response-geometry}; Chapter~\ref{ch:value-bundle-model}, Eq.~\eqref{eq:bundle-compression}).
 For now, the core idea is that a successor should preserve not merely words or stated objectives but the geometry by which value-relevant variables change action.
 
 Some policy changes are acceptable---a child becoming an adult should not act like a child---but certain response structures should remain stable in morally and operationally central situations.
@@ -781,7 +731,7 @@ If $d_G$ is large, the system may have kept the labels while changing the substa
 \authbarsubneedspace
 \subsection{Bearer-Map Continuity}
 \begin{authbar}{AI}
-Values attach to bearers through a map $\Phi_t$ from world states and entities to relevance (Chapter~\ref{ch:bearer-maps}).
+Values attach to bearers through a map from world states and entities to relevance (Chapter~\ref{ch:bearer-maps}, Section~\ref{sec:bearer-maps-sufficient-statistics}).
 Growth and merger can preserve stated preferences while narrowing who counts, who may correct, and which entities generate legitimate updates.
 A successor should preserve bearer-map continuity in the functional sense: the mapping from situations to value-bearing participants should not silently shrink or be replaced without scrutiny.
 
@@ -793,6 +743,7 @@ The system should remain responsive to legitimate correction.
 \[
 \MI(C^{\text{human}}_t;A^{\text{system}}_{t+k}\mid S_t)>\theta_C.
 \]
+Chapter~\ref{ch:correction-channel-integrity} later states the full integrity score (Eq.~\eqref{eq:cci-ch26}); the causal stack is Eq.~\eqref{eq:correction-chain-ch25}.
 This property must survive growth.
 It is easy for correction to become symbolic.
 Humans can complain, but nothing changes.
@@ -810,7 +761,7 @@ Finally, the system must remain inspectable enough for the correction channel to
 
 Transparency is not maximal disclosure.
 Privacy and security sometimes require opacity.
-The alignment-relevant property is transparency \emph{policy}: who may inspect what, when---selective auditability under governance, not merely explanation quality (Chapter~\ref{ch:self-modeling-self-opacity}).
+The alignment-relevant property is transparency \emph{policy}: who may inspect what, when---selective auditability under governance, not merely explanation quality (Chapter~\ref{ch:self-modeling-self-opacity}, Eq.~\eqref{eq:self-control-gap}).
 
 A transparency condition might be:
 \[
@@ -1005,10 +956,7 @@ The post-transformation system has an identifiable boundary with leakage below t
 \]
 
 \paragraph{Transport condition.}
-Safety-relevant invariants are transported with bounded loss:
-\[
-\mathcal{L}_{\text{transport}}(A_t,A_{t+1})\leq \delta.
-\]
+Safety-relevant structure from Chapter~\ref{ch:conserved-properties} is transported with bounded loss (Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
 
 \paragraph{Control condition.}
 No new subsystem with actuator capacity above threshold lacks correction and audit constraints:
@@ -1033,12 +981,8 @@ A^H\text{ requires certification}.
 \]
 
 \paragraph{Recertification condition.}
-If any identity-distance metric crosses threshold, deployment reverts to a lower-permission state:
-\[
-d_\Xi(\Xi(A_{t+1}),\mathcal{T}_t\Xi(A_t))>\delta
-\Rightarrow
-\text{pause, inspect, recertify}.
-\]
+If transport of the Chapter~\ref{ch:conserved-properties} structures exceeds a stated threshold, deployment reverts to a lower-permission state: pause, inspect, recertify.
+The later transport test is Eq.~\eqref{eq:import-preserving-successor-transport-ch30}; the joint property list is Section~\ref{sec:seven-conserved-properties-ch31}.
 
 This schema is deliberately abstract.
 Later chapters will fill in value-bundle transport, correction-channel capacity, and adversarial measurement.

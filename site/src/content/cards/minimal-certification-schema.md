@@ -15,8 +15,8 @@ formulas:
     explanation: "The population condition: if a transformation generates multiple descendants, the selection process that produces them must itself be certified — each descendant lands in the safe set with high probability, not merely the average descendant."
     chapterId: "ch08"
   - id: "eq:recertification-trigger"
-    latex: "d_\\Xi(\\Xi(A_{t+1}), \\mathcal{T}_t\\Xi(A_t)) > \\delta \\;\\Rightarrow\\; \\text{pause, inspect, recertify}"
-    explanation: "The recertification condition: if an identity-distance metric between the expected and actual post-transformation state crosses a threshold, deployment must revert to a lower-permission state rather than continue on the old certificate."
+    latex: "\\text{transport of conserved structure exceeds threshold} \\;\\Rightarrow\\; \\text{pause, inspect, recertify}"
+    explanation: "The recertification condition: if transport of the Chapter 31 conserved properties exceeds a stated threshold, deployment must revert to a lower-permission state rather than continue on the old certificate."
     chapterId: "ch08"
 related: ["conserved-properties-growth-split-merge", "deployment-gate", "mb10-successor-forgeability"]
 ---

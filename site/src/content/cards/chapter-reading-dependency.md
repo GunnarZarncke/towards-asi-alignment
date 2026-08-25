@@ -16,7 +16,7 @@ external:
 The manuscript has three overlapping navigation aids:
 
 1. **PDF order (ch01→ch48)** — narrative arc; tolerates forward pointers.
-2. **Symbol layers** — minimize undefined bridge symbols in display math (24 chapters participate).
+2. **Symbol layers** — minimize undefined bridge symbols in display math (25 chapters participate).
 3. **Informal concept edges** — prose concepts introduced in no-symbol chapters that later chapters assume (curated YAML).
 
 The **combined reading graph** merges (2) and (3), transitively thins redundant edges, and includes all **48 chapters** as nodes. Orange boxes participate in cross-chapter symbol bridges; light-blue boxes rely on informal prerequisites only.
