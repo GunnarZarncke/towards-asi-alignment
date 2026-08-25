@@ -51,3 +51,4 @@ No later-home `\symbolref` in these chapters.
 ## Commits
 - `b0572027` — Demote early preview formulas and refresh CIRIS field evidence.
 - `ec149d92` — Demote remaining preview formulas and point at later equation homes.
+- `64643e11` — Keep Part I free of later-home equation numbers.
