@@ -1,6 +1,6 @@
 # Reviewing For Agents
 
-Fast orientation for AI/coding agents asked to review or critique this manuscript without editing it. Strongly consier reading all 137 lines.
+Fast orientation for AI/coding agents asked to review or critique this manuscript without editing it. Strongly consider reading the full file.
 
 Also served at https://towards-alignment.com/reviewing-for-agents.md (synced at site build). Entry index: https://towards-alignment.com/llms.txt and repo-root `llms.txt`.
 
@@ -24,7 +24,7 @@ The main layers:
 - Selection basins: make institutions select for correction-preserving systems.
 - Adversarial verifiability: ask whether faking the safety signal is cheap.
 
-The Lean dependency spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Bridges `MB1`-`MB9` are empirical or philosophical assumptions, not theorem conclusions.
+The Lean dependency spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Live bridges are **`MB1`–`MB11` incl. `MB4a`** in the field matrix and crosswalk; **`MB8` retired** from the live path (gravestone). **`MB1`–`MB9`** are packaged in `BridgeAssumptions`; **`MB4a`**, **`MB10`**, and **`MB11`** are threaded explicitly. These are empirical or philosophical assumptions, not theorem conclusions.
 
 ## First Files To Read
 
@@ -47,6 +47,9 @@ Do not judge empirical support only from the manuscript prose. The book is a syn
 
 Start with:
 
+- `docs/EXPERIMENTS.md` for the in-repo experiment narrative and external-transfer lines.
+- `experiments/` for sanity-check codebases; honor negatives in each line's `results/FINDINGS.md` or `NEGATIVE_RESULTS.md`.
+- [Negative results hub](https://towards-alignment.com/cards/negative-results/) on the companion site.
 - `metadata/source-canon.md` for the source map.
 - `context/extracts/` for local markdown extracts of source PDFs.
 - `references/internal-project-sources.bib` for cited project sources.
@@ -90,7 +93,7 @@ Gems are independent separations or operational results, not evidence the stack 
 
 ## Existing-Work Crosswalk
 
-For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appB-bridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB9`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
+For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appB-bridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB11` incl. `MB4a`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
 
 The book relates familiar proposals to its invariants as projections, special cases, or separable subchannels — with the residue (what each agenda offers that the book does not replace) stated explicitly. This is a directional, conditional mapping, not a claim to have absorbed or solved those agendas. Do not miss these as throwaway comparisons, and do not overstate them as conquest.
 
@@ -131,8 +134,9 @@ Use this structure unless the user asks for another format:
 - Do not treat CEV, corrigibility, ELK, debate, quantilization, low impact, shutdownability, or reward learning as identical to the book's invariants.
 - Do not treat reviewer confusion as proof that the concept is empty; first check whether the relevant gem is under-signposted.
 - Do not add speculative terminology.
-- Do not skip the WWCTV sections; they often contain the claim-strength boundary.
-- Do not overlook deep results just because they are embedded in a long narrative. The user expects reviewers to find the machinery, not only the surface thesis.
+- Do not rewrite source-canon files under `context/`.
+- Do not skip What Would Change This View (WWCTV) sections; they often contain the claim-strength boundary.
+- Do not overlook deep results, independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
 
 ## After the review
 
