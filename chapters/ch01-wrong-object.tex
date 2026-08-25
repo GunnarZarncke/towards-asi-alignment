@@ -183,7 +183,7 @@ A useful boundary is one where internal and external futures are approximately s
 If this quantity is small, then knowing the sensory and active interface explains much of the coupling between inside and outside.
 The boundary is not perfect.
 It is good enough for prediction and control.
-Treating this interface---rather than any given physical object---as the alignment-relevant boundary follows Critch's argument that such boundaries are a primitive missing from utility theory \autocite{critch2022boundaries}; Chapter~\ref{ch:finding-boundary} makes the construction precise (Eq.~\eqref{eq:epsilon-boundary-ch07}).
+Treating this interface---rather than any given physical object---as the alignment-relevant boundary follows Critch's argument that such boundaries are a primitive missing from utility theory \autocite{critch2022boundaries}; Chapter~\ref{ch:finding-boundary} makes the construction precise.
 
 A second test asks whether modeling the process as goal-directed compresses behavior \autocite{dennett1987intentional,shalizi2001computational}:
 \[
@@ -197,7 +197,7 @@ L_{\text{intentional}}
 \]
 Here $L_{\text{intentional}}$ is the evidence or compression score of a model that includes latent objectives, $L_{\text{mechanistic}}$ is the corresponding score for a non-intentional dynamics model, and $\DL(R)$ penalizes the description length of the inferred objective structure.
 If $\Delta L>0$, the goal-directed model explains more than it costs.
-Chapter~\ref{ch:agent-without-anthropomorphism} operationalizes the same compression test; Chapter~\ref{ch:compression-test-intention} scores it as intentional gain (Eq.~\eqref{eq:intentional-gain-simple}).
+Chapter~\ref{ch:agent-without-anthropomorphism} operationalizes the same compression test; Chapter~\ref{ch:compression-test-intention} later scores it as intentional gain.
 
 This does not prove that the system has beliefs or desires in the human sense.
 It says that goal-like modeling is useful for this process at this boundary.
@@ -480,8 +480,7 @@ Given traces $X_{1:T}$, the evaluator should search for candidate systems $C$ th
 \begin{enumerate}
   \item \textbf{Boundary condition:}
   \[
-  \MI(I^C_{t+1};E^C_{t+1}\mid S^C_t,A^C_t)\leq \epsilon
-  \qquad\text{(Eq.~\eqref{eq:epsilon-boundary-ch07}).}
+  \MI(I^C_{t+1};E^C_{t+1}\mid S^C_t,A^C_t)\leq \epsilon.
   \]
   \item \textbf{Memory condition:}
   some internal variables carry unique predictive information from past to future:

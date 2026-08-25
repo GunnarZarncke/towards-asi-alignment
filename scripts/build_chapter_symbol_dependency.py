@@ -382,6 +382,7 @@ def build_dependency_md(
             [
                 "- **Symbol edge** `A → B`: chapter **B** uses a bridge symbol whose home is **A**.",
                 "- Forward symbol refs (use before def in PDF order) are excluded.",
+                "- Part I (ch01–ch05) must not `\\eqref` later-home equations (`check_structure.py`); chapter/section `\\ref` is the allowed forward pointer.",
             ]
         )
     if mode in ("informal", "combined"):

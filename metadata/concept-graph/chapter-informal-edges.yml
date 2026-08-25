@@ -9,7 +9,7 @@
 version: 1
 
 edges:
-  # Part I — reframe alignment object
+  # Part I — reframe alignment object (ch01–ch05). No \\eqref to eqs defined after ch05.
   - provider: ch01
     consumer: ch07
     concepts: [alignment-as-measurement, the-boundary-error]

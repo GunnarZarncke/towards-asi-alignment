@@ -25,8 +25,7 @@ Section/chapter cite graphs: `scripts/build_section_reference_graph.py`. Chapter
 **Where does the manuscript cite itself at section or chapter granularity?** (Not: which
 symbol is defined where — that is `equation-chain-graph.dot` in symbol-census.)
 
-Prose almost always says `\ref{ch:…}` or `\ref{sec:…}`; individual `\eqref{eq:…}` cites are
-rare (~70 book-wide). This graph makes the dominant citation style visible.
+Prose usually says `\ref{ch:…}` or `\ref{sec:…}`. **Part I (ch01–ch05) must not `\eqref` equations defined after ch05**, so a first reader can finish the reframe without later numbered formulas. Later parts may `\eqref` freely. The combined reading DAG keeps Part I in an early layer because forward symbol uses are excluded; the Part I eqref rule keeps the *manuscript* aligned with that DAG.
 
 ### Nodes
 

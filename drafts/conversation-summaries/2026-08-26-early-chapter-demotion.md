@@ -40,7 +40,7 @@ No later-home `\symbolref` in these chapters.
 - ch08 seven-property *subsections* kept as preview depth; unlabeled covering displays later dropped in the same-day follow-on.
 
 ## Open / next
-- **DAG vs `\eqref`:** Combined reading DAG still keeps Part I in layer 1 (forward symbol uses excluded; no later-home `\symbolref`). Section graph now has ~174 eq edges (~72 forward); ch02 is the densest `\eqref` chapter. Pointers and the reading DAG disagree: either drop equation numbers in early chapters or add a forward-cite layer (Part I would leave layer 1). Catalog line that `\eqref` is rare is stale.
+- **DAG vs `\eqref`:** Part I (ch01–ch05) may `\eqref` only Part I equations; later homes use `\ref{ch:…}` / `\ref{sec:…}`. Enforced by `check_structure.py`. Combined reading DAG still keeps Part I early because forward symbol uses are excluded.
 - Optional PDF compile to confirm `\symboldef[U_H]` inside `eq:human-value-update-ch04` typesets.
 - Later `V_t` arities (ch26/ch45/ch46/ch47) still differ; out of this pass.
 
