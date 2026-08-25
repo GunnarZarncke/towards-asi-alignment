@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-25T22:12:41.444Z",
+  "generatedAt": "2026-08-25T22:55:47.113Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -315,8 +315,8 @@
     {
       "title": "$C_H$",
       "type": "notation",
-      "summary": "Human correction capacity (component of $V_t$)",
-      "url": "/cards/chapters/ch04/"
+      "summary": "Human correction capacity",
+      "url": "/cards/chapters/ch29/"
     },
     {
       "title": "$C_X$",
@@ -519,7 +519,7 @@
     {
       "title": "$U_H$",
       "type": "notation",
-      "summary": "Schematic human value-update notation; operational certification uses `ValueUpdateEnvelope` / human-correctable update conditions",
+      "summary": "Human value-update operator ($V_{t+1}=U_H(V_t,E_t,D_t)$; `eq:human-value-update-ch04`)",
       "url": "/cards/chapters/ch04/"
     },
     {
@@ -531,7 +531,7 @@
     {
       "title": "$V_t$",
       "type": "notation",
-      "summary": "Value-state tuple (full object in ch04; chapters may project)",
+      "summary": "Schematic value state in that update; later chapters introduce projected tuples",
       "url": "/cards/chapters/ch04/"
     },
     {
