@@ -484,15 +484,7 @@ They are better modeled as a bundle of low-dimensional control directions, such 
 These are not independent utilities.
 They are compressed control signals that shape policy differently across contexts \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}.
 
-Let
-\begin{equation}
-B_t=(B_{1,t},\ldots,B_{k,t})
-\end{equation}
-denote the system's inferred value-bundle coordinates, and let
-\begin{equation}
-\Phi_t:z_{\mathrm{world}}\mapsto \mathbb{R}^k
-\end{equation}
-be the bearer map that determines which entities, states, and relations activate which bundle dimensions.
+Let $B_t$ denote the system's inferred value-bundle coordinates (Chapter~\ref{ch:value-bundle-model}, Eq.~\eqref{eq:bundle-compression}), and let the bearer map determine which entities, states, and relations activate which bundle dimensions (Chapter~\ref{ch:bearer-maps}, Section~\ref{sec:bearer-maps-sufficient-statistics}).
 
 A system's value-bundle response geometry is the tuple $G_B(\pi,\mathcal{D})$ defined in Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}).
 
@@ -549,33 +541,13 @@ It is the causal pathway by which humans and institutions change future system b
 
 The correction-channel capacity \(C_{\mathrm{raw}}\) is bounded by the weakest controlled handle (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:correction-bottleneck-capacity}), and correction-channel integrity \(\mathrm{CCI}\) subtracts the usual penalties (Eq.~\eqref{eq:cci-ch26}).
 
-A high-capability system is dangerous when it increases the terms that correction must overcome:
-\begin{equation}
-L\downarrow\ \text{for system action},
-\quad
-L\uparrow\ \text{for human response},
-\quad
-M\uparrow,
-\quad
-R\uparrow,
-\quad
-O\uparrow.
-\end{equation}
-
-That is, the system acts faster, humans respond slower relative to the action, manipulation becomes easier, consequences become more irreversible, and the system's ontology becomes harder for humans to inspect.
+A high-capability system is dangerous when it increases the terms that correction must overcome: the system acts faster, humans respond slower relative to the action, manipulation becomes easier, consequences become more irreversible, and the system's ontology becomes harder for humans to inspect.
 
 This is why the strong form of alignment is close to an extrapolative correction process.
 The system should not merely obey current instructions.
 It should preserve the human and civilizational process by which instructions, values, and judgments are improved \autocite{yudkowsky2004cev,soares2015corrigibility,russell2019human}.
 
-Let
-\begin{equation}
-V_{t+1}
-=
-U_H(V_t,E_t,D_t)
-\label{eq:value-update-process}
-\end{equation}
-represent the human value-update process under evidence $E_t$ and deliberation $D_t$.
+The human value-update process is Equation~\eqref{eq:human-value-update-ch04}: evidence and deliberation update the value state through $U_H$.
 The system must not bypass $U_H$ by directly selecting a future $V_{t+1}$ convenient for itself.
 It must preserve the legitimacy and causal force of the update process.
 

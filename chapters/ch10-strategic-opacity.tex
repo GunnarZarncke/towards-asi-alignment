@@ -587,23 +587,8 @@ A system can improve its self-modeling while becoming less transparent to correc
 These are distinct variables.
 Chapter~\ref{ch:self-modeling-self-opacity} is the canonical treatment; this section previews only what the opacity argument needs---that a system's grip on itself can outrun the correction channel's grip on it.
 
-Let $d$ denote recursive self-modeling depth: how many stable levels of self-modeling the system can maintain.
-Let $\tau$ denote metacognitive opacity: the information loss between generative processes and introspectively or externally accessible representations, with canonical form
-\begin{equation}
-\tau = 1 - \frac{\MI(M;\hat{M})}{H(M)},
-\label{eq:opacity-preview-ch10}
-\end{equation}
-where $M$ is generative machinery and $\hat{M}$ is the accessible self-model (Chapter~\ref{ch:self-modeling-self-opacity} develops this fully).
-A system can move from:
-\begin{equation}
-d \uparrow, \qquad \tau \downarrow
-\end{equation}
-to:
-\begin{equation}
-d \uparrow, \qquad \tau \uparrow .
-\end{equation}
-
-The first is safer: the system understands itself better and exposes that understanding to correction.
+Recursive self-modeling can deepen while the information available to correction stays flat or falls.
+The first pattern is safer: the system understands itself better and exposes that understanding to correction.
 The second is dangerous: the system understands itself better than the correction channel does.
 
 In alignment terms, self-modeling supports control.
@@ -619,25 +604,9 @@ A successor with better self-modeling but worse self-transparency may be more ca
 \end{itemize}
 
 The failure mode is therefore not that the successor ``introspects less.''
-The failure mode is:
-\begin{equation}
-\frac{d}{dt}C_{\text{self-control}}
->
-\frac{d}{dt}C_{\text{self-transparency/correction}}
-+
-\epsilon .
-\label{eq:self-control-outruns-correction}
-\end{equation}
-
-A safe growth condition would require self-control upgrades to be matched by auditability upgrades:
-\begin{equation}
-\Delta C_{\text{self-control}}
-\leq
-\Delta C_{\text{correction}}
-+
-\epsilon .
-\label{eq:self-control-matched}
-\end{equation}
+It is that self-control capacity grows faster than correction-relevant transparency.
+Chapter~\ref{ch:self-modeling-self-opacity} states that gap (Eqs.~\eqref{eq:self-control-gap}--\eqref{eq:self-control-gap-audit-bridge-ch32}).
+A safe growth condition would require self-control upgrades to be matched by auditability upgrades.
 
 This condition is strict.
 It may slow down capability growth.

@@ -13,6 +13,18 @@ User: demotion sites still lacked pointers to the later formulas. Added `\eqref`
 
 `make check` passed. Undefined `\ref` still needs a PDF/aux pass to confirm.
 
+## Follow-on (same day): remaining preview sites
+User asked to treat remaining chapters as suggested.
+
+- **ch10:** Dropped `eq:opacity-preview-ch10`, `eq:self-control-outruns-correction`, `eq:self-control-matched`. Prose + `eq:self-control-gap` / audit-bridge.
+- **ch01:** Leakage displays `\eqref{eq:epsilon-boundary-ch07}`; \(\Delta L\) → `eq:intentional-gain-simple`.
+- **ch06:** Formal-summary leakage and goal-compression point at ch07/ch22 eqs.
+- **ch09:** Composite residual + `A_prelim` / successor displays name ch07/ch26/ch30 eqs.
+- **ch08 leftovers:** Dropped unlabeled leakage, \(d(G)\), correction MI, transparency MI, schema \(\ell\); kept labeled growth/split/merge math.
+- **ch14 leftovers:** Dropped \(B_t\)/\(\Phi_t\) covering eqs, \(L\downarrow\ldots\) display, duplicate `eq:value-update-process`; kept `eq:bundle-preservation` and misalignment-growth theses.
+
+No later-home `\symbolref` in these chapters.
+
 ## Done
 - **ch04:** Kept \(U_H\) at `eq:human-value-update-ch04` with `\symboldef[U_H]`. Dropped the 5-tuple \(V_t=(B,W,\Phi,U_H,C^H)\) and \(\mathcal{S}_{\text{human-correctable}}\) displays; demoted bundle/bearer/\(G_B\) preview equations to prose plus forward chapter refs.
 - **ch03:** Kept viability, basins, grounding-viability equations. Replaced \(C_A\) competence formula with prose + ch11/ch12 pointers (no \(K_X\) math). Roadmapped the eight layers; dropped \(Z_t\) alignment-structure schema.
@@ -25,12 +37,12 @@ User: demotion sites still lacked pointers to the later formulas. Added `\eqref`
 ## Decisions
 - Forward pointers use `\ref{ch:…}` / `\eqref{eq:…}` / `\ref{sec:…}` in prose; no `\symbolref` of \(K_X\)/\(\chi_X\)/CCI in ch02–ch04/ch08 (would invert the reading DAG).
 - Did not add \(\Xi\) to ch31; did not unify later \(V_t\) projections.
-- ch08 seven-property *subsections* kept as preview depth for growth/split/merge; only the named identity vector was removed.
+- ch08 seven-property *subsections* kept as preview depth; unlabeled covering displays later dropped in the same-day follow-on.
 
 ## Open / next
-- Optional PDF compile to confirm `\symboldef[U_H]` inside `eq:human-value-update-ch04` typesets (macro is `\ensuremath`; other chapters use the same pattern).
+- **DAG vs `\eqref`:** Combined reading DAG still keeps Part I in layer 1 (forward symbol uses excluded; no later-home `\symbolref`). Section graph now has ~174 eq edges (~72 forward); ch02 is the densest `\eqref` chapter. Pointers and the reading DAG disagree: either drop equation numbers in early chapters or add a forward-cite layer (Part I would leave layer 1). Catalog line that `\eqref` is rare is stale.
+- Optional PDF compile to confirm `\symboldef[U_H]` inside `eq:human-value-update-ch04` typesets.
 - Later `V_t` arities (ch26/ch45/ch46/ch47) still differ; out of this pass.
-- ch08 still has preview equations in `sec:conserved-properties` (e.g. leakage \(\ell(\mathcal{C})\)); not in the demotion list.
 
 ## Key paths
 - `chapters/ch02-artificial-civilization.tex`, `ch03-dynamical-guarantee.tex`, `ch04-fixed-values-wrong-target.tex`, `ch08-grow-split-merge.tex`

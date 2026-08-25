@@ -39,7 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-26:** Early-chapter preview demotion — ch02/ch03/ch04/ch08 tuples and covering formulas → prose; then equation/section forward refs at demotion sites (still no later-home `\symbolref`). Log: `2026-08-26-early-chapter-demotion.md`.
+- **2026-08-26:** Early-chapter preview demotion — ch02–04/ch08, then ch10/ch01/ch06/ch09/ch14; `\eqref` vs reading DAG (Part I still layer 1) left open. Log: `2026-08-26-early-chapter-demotion.md`.
 - **2026-08-26:** CIRIS field overview reevaluated against `~/repos/ciris/` + ciris.ai (CC 1.0-rc2 public vs rc3 checkout; four-claim fusion; MH-3 / HARM-1). Log: `2026-08-26-ciris-field-evidence.md`.
 - **2026-08-26:** Bot-orientation housekeeping — `llms.txt`, `REVIEWING_FOR_AGENTS.md`, bridge ranges in `AGENTS.md`/`CONTRIBUTING.md`, README doc links, `notation.md` App G pointer, field-agenda `meta.yml` counts (24/30). Log: `2026-08-26-bot-orientation-housekeeping.md`.
 - **2026-08-25:** Site glossary sync (13 terms, homograph links on Field hub); UAD name fix (Unit-attribution → Unsupervised Agent Discovery). Log: `2026-08-25-site-glossary-uad.md`.

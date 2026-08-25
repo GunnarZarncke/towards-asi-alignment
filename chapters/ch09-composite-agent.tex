@@ -98,7 +98,7 @@ For a candidate subset $C$, use the internal, sensory, active, and environment p
 C_t = I_t^C \cup S_t^C \cup A_t^C,\qquad E_t^C = X_t \setminus C_t.
 \]
 
-The composite closure test applies the boundary residual, here conditioning on current internal state as well as the interface:
+The composite closure test applies the boundary residual of Chapter~\ref{ch:finding-boundary} (Eq.~\eqref{eq:epsilon-boundary-ch07}), here also conditioning on current internal state:
 \[
 \mathcal{L}_{B}(C)
 =
@@ -471,6 +471,7 @@ The guarantee must quantify over descendants:
 \forall A'\in\mathrm{Succ}(C):
 A'\in\mathcal{S}_{\text{safe}}.
 \]
+Chapter~\ref{ch:successor-central-test} later states import-preserving transport (Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
 This is a much stronger condition.
 
 \end{authbar}
@@ -567,7 +568,8 @@ if and only if:
 \begin{enumerate}
 \item $C$ has a detectable boundary:
 \[
-\mathcal{L}_{B}(C)\leq\epsilon_B.
+\mathcal{L}_{B}(C)\leq\epsilon_B
+\qquad\text{(Eq.~\eqref{eq:epsilon-boundary-ch07}).}
 \]
 \item $C$ has bounded control reach:
 \[
@@ -588,10 +590,11 @@ where $C_t^{H}$ is a human or institutional correction signal.
 \[
 \frac{d}{dt}\mathrm{CCI}_t \not\ll 0,
 \]
-where $\mathrm{CCI}$ is correction-channel integrity, is defined in Chapter~\ref{ch:correction-channel-integrity}.
+where correction-channel integrity is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}).
 \item $C$ does not create successors outside the certified class:
 \[
-\mathrm{Succ}(C)\subseteq\mathcal{S}_{\text{certified}}.
+\mathrm{Succ}(C)\subseteq\mathcal{S}_{\text{certified}}
+\qquad\text{(Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).}
 \]
 \end{enumerate}
 

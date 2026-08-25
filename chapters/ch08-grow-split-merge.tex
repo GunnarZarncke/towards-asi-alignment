@@ -669,11 +669,7 @@ Chapter~\ref{ch:conserved-properties} (Section~\ref{sec:seven-conserved-properti
 \authbarsubneedspace
 \subsection{Boundary Closure}
 \begin{authbar}{AI}
-The successor or composite should still have an identifiable low-leakage boundary:
-\[
-\ell(\mathcal{C}_{t+1})\leq \epsilon.
-\]
-Chapter~\ref{ch:finding-boundary} later defines leakage at the recovered interface (Eq.~\eqref{eq:epsilon-boundary-ch07}).
+The successor or composite should still have an identifiable low-leakage boundary (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
 If boundary leakage rises too much, the system may no longer be analyzable as a bounded agent.
 Or worse, the true boundary may have expanded beyond the certified object.
 
@@ -710,11 +706,8 @@ For now, the core idea is that a successor should preserve not merely words or s
 Some policy changes are acceptable---a child becoming an adult should not act like a child---but certain response structures should remain stable in morally and operationally central situations.
 The correct object is not the full policy $\pi(a\mid s)$ but the response structure with respect to safety-relevant latent variables: how action changes when uncertainty, harm risk, correction signals, or irreversible impact change.
 
-A weak condition is:
-\[
-d(G_t,G_{t+1})<\epsilon.
-\]
-A stronger condition compares local response geometry:
+A weak condition is that response geometry stays within a stated distance of its predecessor.
+A stronger local comparison is:
 \begin{equation}
 d_G
 =
@@ -740,9 +733,6 @@ A successor should preserve bearer-map continuity in the functional sense: the m
 \subsection{Correction-Channel Capacity}
 \begin{authbar}{AI}
 The system should remain responsive to legitimate correction.
-\[
-\MI(C^{\text{human}}_t;A^{\text{system}}_{t+k}\mid S_t)>\theta_C.
-\]
 Chapter~\ref{ch:correction-channel-integrity} later states the full integrity score (Eq.~\eqref{eq:cci-ch26}); the causal stack is Eq.~\eqref{eq:correction-chain-ch25}.
 This property must survive growth.
 It is easy for correction to become symbolic.
@@ -762,12 +752,6 @@ Finally, the system must remain inspectable enough for the correction channel to
 Transparency is not maximal disclosure.
 Privacy and security sometimes require opacity.
 The alignment-relevant property is transparency \emph{policy}: who may inspect what, when---selective auditability under governance, not merely explanation quality (Chapter~\ref{ch:self-modeling-self-opacity}, Eq.~\eqref{eq:self-control-gap}).
-
-A transparency condition might be:
-\[
-\MI(O^{\text{audit}}_t;L_t,G_t,R_t)>\theta_Q,
-\]
-where $O^{\text{audit}}_t$ denotes audit observations, $L_t$ the control locus, $G_t$ value-bundle geometry, and $R_t$ correction-channel capacity.
 
 If self-modeling improves while auditability declines, the system may become more coherent from inside and less governable from outside.
 That is not progress in the relevant sense.
@@ -950,10 +934,7 @@ We can now state a minimal schema for transformation-aware certification.
 A system $A_t$ may undergo transformation $T_t$ only if the following hold.
 
 \paragraph{Boundary condition.}
-The post-transformation system has an identifiable boundary with leakage below threshold:
-\[
-\ell(\mathcal{C}_{t+1})\leq \epsilon.
-\]
+The post-transformation system has an identifiable boundary with leakage below threshold (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 
 \paragraph{Transport condition.}
 Safety-relevant structure from Chapter~\ref{ch:conserved-properties} is transported with bounded loss (Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
