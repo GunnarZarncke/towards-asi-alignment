@@ -37,4 +37,4 @@ User: demotion sites still lacked pointers to the later formulas. Added `\eqref`
 - `metadata/concept-graph/chapter-reading-dependency.md`, `chapter-informal-edges.yml`
 
 ## Commits
-- none
+- `b0572027` — Demote early preview formulas and refresh CIRIS field evidence.

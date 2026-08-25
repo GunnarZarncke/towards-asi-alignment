@@ -23,4 +23,4 @@ Reevaluate CIRIS evidence in the field overview using `~/repos/ciris/` checkouts
 - `~/repos/ciris/review/findings/2026-08-25-four-claims-rc3.md`
 
 ## Commits
-- none
+- `b0572027` — Demote early preview formulas and refresh CIRIS field evidence.
