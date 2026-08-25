@@ -59,15 +59,15 @@ digraph ChapterReadingDependency {
   "unit:ch02" -> "unit:ch38" [label="1 concept\nartificial-civilization", color="#16a34a", style=dashed];
   "unit:ch03" -> "unit:ch26" [label="1 concept\ndynamical-guarantee", color="#16a34a", style=dashed];
   "unit:ch03" -> "unit:ch37" [label="1 concept\ndynamical-guarantee", color="#16a34a", style=dashed];
-  "unit:ch04" -> "unit:ch14" [label="1 sym\nU_H", color="#2563eb"];
   "unit:ch04" -> "unit:ch19" [label="1 concept\nstatic-target-trap", color="#16a34a", style=dashed];
   "unit:ch05" -> "unit:ch07" [label="1 concept\nscope-and-correction-capacity", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch07" [label="2 concept\nagent-without-anthropomorphism, boundary-discovery", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch09" [label="2 concept\nagent-without-anthropomorphism, composite-agency", color="#16a34a", style=dashed];
+  "unit:ch06" -> "unit:ch10" [label="1 concept\nagent-without-anthropomorphism", color="#16a34a", style=dashed];
   "unit:ch07" -> "unit:ch08" [label="1 sym\nepsilon", color="#2563eb"];
-  "unit:ch07" -> "unit:ch10" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch07" -> "unit:ch17" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch07" -> "unit:ch18" [label="2 concept\nboundary-before-bearer, candidate-process", color="#16a34a", style=dashed];
+  "unit:ch07" -> "unit:ch35" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch08" -> "unit:ch11" [label="1 sym\nI_pred", color="#2563eb"];
   "unit:ch08" -> "unit:ch31" [label="1 concept\nsuccessor-conserved-properties", color="#16a34a", style=dashed];
   "unit:ch09" -> "unit:ch11" [label="1 sym\nmathcal_R_i", color="#2563eb"];
@@ -118,5 +118,5 @@ digraph ChapterReadingDependency {
   "unit:ch47" -> "unit:ch24" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
   "unit:ch47" -> "unit:ch48" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
 
-  // (48 chapters, 64 edges: 26 symbol, 38 informal, 0 mixed)
+  // (48 chapters, 64 edges: 25 symbol, 39 informal, 0 mixed)
 }

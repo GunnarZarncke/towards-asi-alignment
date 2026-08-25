@@ -198,7 +198,7 @@ People disagree, but they often disagree by giving different weights or scopes t
 <p>This suggests a model.</p>
 <p>High-dimensional error and need signals—bodily, social, predictive, status, attachment, threat, regret, novelty, pain, uncertainty, unmet goals—cannot all be routed into global action selection.
 A biological or cognitive system compresses them through attention, developmental state, culture, language, and current task into a smaller set of steering variables.
-Chapter <a href="../ch16/">The Value-Bundle Model</a> treats that compression as a value-bundle state (Eq. <a href="../ch16/#eq:bundle-compression">The Value-Bundle Model</a>).
+Chapter <a href="../ch16/">The Value-Bundle Model</a> treats that compression as a value-bundle state.
 This is not a claim that human values are simple.
 Each bundle may have high description length.
 “Justice” is not a scalar one can communicate to an alien by sending one number.
@@ -213,7 +213,7 @@ Not because values are merely subjective colors, but because bounded agents must
 <p><span id="sec:sample-complexity"></span>
 The low-dimensional hypothesis matters because it changes what value learning could mean.</p>
 <p>In apprenticeship learning and inverse reinforcement learning, the number of demonstrations required often scales with the number of relevant features.
-The schematic sample-complexity bound and its dependence on effective dimension <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> are developed in Chapter <a href="../ch17/">When Low Dimensionality Helps Value Learning</a> (Equation <a href="../ch17/#eq:sample-complexity-ch17">When Low Dimensionality Helps Value Learning</a>).
+The schematic sample-complexity bound and its dependence on effective dimension <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> are developed in Chapter <a href="../ch17/">When Low Dimensionality Helps Value Learning</a>.
 The qualitative point is enough here: if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> is large, learning becomes much harder; if the effective value dimension is small, learning becomes less impossible.</p>
 <p>Separate identifiability and sample-complexity results warn that many reward functions can explain the same behavior, and that inverse reinforcement learning in finite settings is not cheap <a href="../../references/komanduru2019irlcomplexity/">Komanduru, 2019</a>, <a href="../../references/ng2000irl/">Ng, 2000</a>, <a href="../../references/ramachandran2007bayesianirl/">Ramachandran, 2007</a>.
 Cooperative inverse reinforcement learning reframes alignment as a game in which the human knows the reward and the system is uncertain, which can encourage inquiry and shutdown tolerance under idealized assumptions <a href="../../references/hadfieldmenell2016/">Hadfield-Menell, 2016</a>, but surveys of RLHF-style deployment find persistent limits under model error, pluralism, and strategic pressure <a href="../../references/casper2023rlhflimits/">Casper, 2023</a>.
@@ -288,7 +288,7 @@ A system may help because it cares about suffering, because it seeks approval, b
 These are not equivalent under capability growth.</p>
 <p>The object to preserve is not merely a map from situations to actions.
 It is how action bends when morally relevant latents change—who is affected, which concerns are salient, how they trade off.
-Chapters <a href="../ch16/">The Value-Bundle Model</a> (Eq. <a href="../ch16/#eq:bundle-compression">The Value-Bundle Model</a>) and <a href="../ch19/">Tradeoffs and Bundle Geometry</a> (Section <a href="../ch19/#sec:value-bundle-response-geometry">Tradeoffs and Bundle Geometry</a>) develop that geometry; successor conservation is taken up in Chapter <a href="../ch31/">Conserved Properties Across Successors</a> (Section <a href="../../successor-stability/">Conserved Properties Across Successors <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+Chapters <a href="../ch16/">The Value-Bundle Model</a> and <a href="../ch19/">Tradeoffs and Bundle Geometry</a> (Section <a href="../ch19/#sec:value-bundle-response-geometry">Tradeoffs and Bundle Geometry</a>) develop that geometry; successor conservation is taken up in Chapter <a href="../ch31/">Conserved Properties Across Successors</a> (Section <a href="../../successor-stability/">Conserved Properties Across Successors <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
@@ -374,7 +374,7 @@ The revised target is not value stasis.
 It is value-process preservation.</p>
 <p>The alignment condition is not that today’s values equal yesterday’s.
 It is that value change remains connected to human agency, evidence, deliberation, contestability of who counts, and correction—the update operator of Equation <a href="#eq:human-value-update-ch04">Why Fixed Values Are the Wrong Target</a> stays causally real.
-Later chapters specify the pieces this process depends on: value bundles (Chapter <a href="../ch16/">The Value-Bundle Model</a>, Eq. <a href="../ch16/#eq:bundle-compression">The Value-Bundle Model</a>), bearer maps (Chapter <a href="../ch18/">What Values Apply To</a>, Section <a href="../../bearer-persistence/">What Values Apply To <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+Later chapters specify the pieces this process depends on: value bundles (Chapter <a href="../ch16/">The Value-Bundle Model</a>), bearer maps (Chapter <a href="../ch18/">What Values Apply To</a>, Section <a href="../../bearer-persistence/">What Values Apply To <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
@@ -384,7 +384,7 @@ Later chapters specify the pieces this process depends on: value bundles (Chapte
 <path d="M 161.5,100.0 L 148.2,121.1 L 131.3,141.2 L 100.0,143.1 L 69.6,140.0 L 53.3,120.5 L 40.3,100.0 L 51.3,78.7 L 69.0,59.2 L 100.0,58.2 L 129.6,61.1 L 147.2,79.3 L 161.5,100.0 Z"></path>
 <circle cx="100" cy="100" r="7" fill="currentColor" stroke="none"></circle>
   </g>
-</svg></span></a>), correction (Chapters <a href="../ch25/">Correction Is a Causal Channel</a>—<a href="../ch28/">Beyond Following Instruction</a>, Eqs. <a href="../ch25/#eq:correction-chain-ch25">Correction Is a Causal Channel</a>, <a href="../ch26/#eq:cci-ch26">Correction-Channel Integrity</a>, <a href="../ch28/#eq:desired-guarantee-ch28">Beyond Following Instruction</a>), and the civilizational envelope (Chapter <a href="../ch45/">When Value Change Is the Thing at Stake</a>, Section <a href="../ch45/#sec:minimal-standard-ch45">When Value Change Is the Thing at Stake</a>).</p>
+</svg></span></a>), correction (Chapters <a href="../ch25/">Correction Is a Causal Channel</a>—<a href="../ch28/">Beyond Following Instruction</a>), and the civilizational envelope (Chapter <a href="../ch45/">When Value Change Is the Thing at Stake</a>, Section <a href="../ch45/#sec:minimal-standard-ch45">When Value Change Is the Thing at Stake</a>).</p>
 <p>This is a basin condition, not a point condition.</p>
 <p>The system may help values change.
 It may help humans become wiser, calmer, more informed, less cruel, and less self-deceived.
@@ -440,7 +440,7 @@ Chapter <a href="../ch03/">Alignment as a Dynamical Guarantee</a> states the bas
 <line x1="25" y1="145" x2="175" y2="145"></line>
 <path d="M 35,120 C 65,60 95,150 125,70 C 145,30 160,90 170,100"></path>
   </g>
-</svg></span></a>); Chapter <a href="../ch28/">Beyond Following Instruction</a> later writes the process-basin claim (Eq. <a href="../ch28/#eq:desired-guarantee-ch28">Beyond Following Instruction</a>).
+</svg></span></a>); Chapter <a href="../ch28/">Beyond Following Instruction</a> later writes the process-basin claim.
 This guarantee is weaker than a final moral solution.
 It is also more realistic.</p>
 <h2 id="a-note-on-plural-alignments-ai">A Note on Plural Alignments <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
