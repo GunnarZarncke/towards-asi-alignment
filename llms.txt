@@ -11,15 +11,18 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 - [Start Here](https://towards-alignment.com/): homepage, thesis, six thesis claims, standalone claims, failure modes.
 - [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 status hub.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
-- [Field hub](https://towards-alignment.com/field/): 32 alignment agendas × MB1–MB11 bridge matrix, evidence catalog.
+- [Field hub](https://towards-alignment.com/field/): field hub v2 — lifecycle axis, stance-encoded evidence; 30 agenda records, 24 matrix rows, MB1–MB11 incl. MB4a (matrix and crosswalk; MB8 retired from live Lean path).
+- [Field coverage](https://towards-alignment.com/field/coverage/): agenda × bridge matrix and evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
 - [Field news](https://towards-alignment.com/news/): 2026 alignment incidents tied to manuscript chapters.
-- [Updates](https://towards-alignment.com/updates/): versioned release notes.
+- [Updates](https://towards-alignment.com/updates/): versioned release notes (current: v1.5.0).
 - [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
 - [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
+- [About](https://towards-alignment.com/about/): authorship and reuse.
 - [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
-- [Lean spine](https://towards-alignment.com/lean/): dependency-spine graphs and playgrounds.
+- [Lean dependency spine](https://towards-alignment.com/lean/): dependency-spine graphs and playgrounds.
 - [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
+- [Negative results](https://towards-alignment.com/cards/negative-results/): curated failures and ledger links.
 - [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
 - [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
 - [Search index (JSON)](https://towards-alignment.com/search-index.json): flat title/type/summary/url index for programmatic lookup; docs at [/search-index/](https://towards-alignment.com/search-index/).
@@ -30,14 +33,17 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 ## Repository (clone / deep review)
 
 - `README.md` - project overview, repository map, build commands.
-- `RELEASE_NOTES.md` - versioned release history (current: v1.4.0).
-- `reference/field-agendas/` - field agenda index, inter-agenda glossary, MB coverage matrix (not manuscript canon).
+- `RELEASE_NOTES.md` - versioned release history (current: v1.5.0).
 - `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents (also at https://towards-alignment.com/reviewing-for-agents.md).
+- `reference/field-agendas/` - field agenda index, inter-agenda glossary, MB coverage matrix (not manuscript canon).
+- `appendices/appB-bridge-crosswalk.tex` - bridges and the field: canonical crosswalk map.
 - `frontmatter/introduction.tex` - thesis, six claims, how to read the book.
 - `frontmatter/executive-overview.tex` - short executive framing.
 - `tables/part-roadmap.tex` - generated part-by-part roadmap.
 - `metadata/book.yml` - chapter titles, status, reviewer tags, part summaries.
 - `formal/README.md` - Lean dependency spine map and interpretation.
+- `docs/EXPERIMENTS.md` - in-repo experiment lines, external transfer, negative ledgers.
+- `papers/README.md` - spin-out papers (not manuscript chapters).
 - `metadata/source-canon.md` - source map for project papers, extracts, and sibling repositories.
 
 ## Core Thesis
@@ -49,6 +55,8 @@ Superintelligence alignment is the problem of preserving grounded, human-correct
 - successor creation,
 - strategic multi-agent selection pressure,
 - and possible changes in the human / institutional substrate carrying value.
+
+The Introduction's six connected claims: boundary, value-bundle, grounding, correction, successor, and basin. Load-bearing assumptions are explicit bridges (`A-001`–`A-014`; formal `MB1`–`MB11` incl. `MB4a` — `MB8` retired from the live Lean path; CEV is an `AlignmentTarget` special case).
 
 ## Main Concepts
 
@@ -96,6 +104,9 @@ This project often treats familiar proposals as projections, special cases, or s
 
 Do not judge empirical support only from manuscript prose. This project is a synthesis over related project work and mirrored context extracts; empirical validation is work in progress. Check source maps and related work:
 
+- `docs/EXPERIMENTS.md` — narrative map for in-repo lines (toy → graded-lab) and external transfer ET-1–ET-4.
+- `experiments/` — five in-repo sanity-check lines; honor recorded negatives in each line's `results/FINDINGS.md` or `NEGATIVE_RESULTS.md`.
+- [Negative results hub](https://towards-alignment.com/cards/negative-results/) — curated failures on the companion site.
 - `metadata/source-canon.md`
 - `context/extracts/`
 - `references/internal-project-sources.bib`
@@ -120,6 +131,8 @@ If a related repository, PDF, or context extract is unavailable, say so instead 
 
 The Lean code in `formal/` is dependency hygiene. It checks logical/arithmetic steps and finite separations. It does not prove that deployed systems satisfy the empirical bridge assumptions.
 
+Live bridges: **`MB1`–`MB11` incl. `MB4a`** in the field matrix and crosswalk. **`MB8` retired** from the live path (gravestone); CEV is an `AlignmentTarget` special case, not a separate live route. **`MB1`–`MB9`** are packaged in `BridgeAssumptions`; **`MB4a`**, **`MB10`**, and **`MB11`** are threaded explicitly where their statements need later definitions. Target realization is `ConstructionCrux` (`AlignmentConstruction.lean`), not an `MB*` column.
+
 Key distinction:
 
 - proof: a checked logical/arithmetic theorem;
@@ -131,10 +144,11 @@ Key distinction:
 - Do not flatten this project into standard alignment categories.
 - Do not treat Lean as proving deployed safety.
 - Do not treat CEV, corrigibility, ELK, debate, quantilization, low impact, shutdownability, or reward learning as identical to this project's invariants.
+- Do not treat reviewer confusion as proof that the concept is empty; first check whether the relevant gem is under-signposted.
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
-- Do not skip What Would Change This View sections.
-- Do not miss independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
+- Do not skip What Would Change This View (WWCTV) sections; they often contain the claim-strength boundary.
+- Do not overlook deep results, independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
 
 ## Build
 

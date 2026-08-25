@@ -2,7 +2,7 @@
 
 Single source for Appendix A (notation index). Regenerate the typeset index with `python3 scripts/generate_notation_appendix.py` (also run from `./build.sh`).
 
-Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predicates: `formal/README.md`, Appendix I. Operational terms (not symbols): `metadata/concepts.yml`, Appendix F.
+Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predicates: `formal/README.md`, `appendices/appG-lean-proof-spine.tex` (Lean dependency spine appendix). Operational terms (not symbols): `metadata/concepts.yml`, Appendix F.
 
 ## Maintainer notes
 

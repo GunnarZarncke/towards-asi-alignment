@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-26 | **Bot-orientation housekeeping** — Sync `llms.txt`, `REVIEWING_FOR_AGENTS.md`, bridge ranges, README doc links, notation App G pointer, field counts. | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
 | 2026-08-25 | **Site glossary + UAD name fix** — Companion site sync after homograph pass; 13 glossaryTerms; replace hallucinated “Unit-attribution discovery” with Unsupervised Agent Discovery. | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
 | 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |
 | 2026-08-25 | **Harm-path v1 weave** — Implement the agreed plan: weave operational closure into v1 chapters without publishing the nine... | [2026-08-25-harm-path-v1-weave.md](2026-08-25-harm-path-v1-weave.md) |

@@ -81,6 +81,8 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute (Lean, sims, writing) |
 | [`INSTRUCTIONS.md`](INSTRUCTIONS.md) | Editorial mission and style |
 | [`AGENTS.md`](AGENTS.md) | Agent handoff rules |
+| [`REVIEWING_FOR_AGENTS.md`](REVIEWING_FOR_AGENTS.md) | Read-only review guide for AI/coding agents |
+| [`llms.txt`](llms.txt) | Bot / LLM orientation index (synced to the companion site at build) |
 
 ---
 

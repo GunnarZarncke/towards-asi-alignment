@@ -10,7 +10,7 @@ Thank you for interest in *Towards Superintelligence Alignment*. This is a resea
 
 ## Improving the Lean proofs of field results
 
-The Lean dependency spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Bridges `MB1`–`MB9` stay explicit axioms.
+The Lean dependency spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Live bridges are **`MB1`–`MB11` incl. `MB4a`** (`MB8` retired from the live path); **`MB1`–`MB9`** stay packaged in `BridgeAssumptions`, with **`MB4a`**, **`MB10`**, and **`MB11`** threaded explicitly.
 
 High-value work:
 
@@ -65,7 +65,7 @@ Structured open directions:
 - [`metadata/TODO.md`](metadata/TODO.md) — editorial and cross-chapter chores
 - [`metadata/claims-ledger.md`](metadata/claims-ledger.md) and [`metadata/assumptions-ledger.md`](metadata/assumptions-ledger.md) — calibrate claim strength
 
-Proposals that sharpen a crux, add a falsifiable test, or map a field agenda to a bridge (`A-001`–`A-014` / `MB1`–`MB9`) are especially useful.
+Proposals that sharpen a crux, add a falsifiable test, or map a field agenda to a bridge (`A-001`–`A-014` / `MB1`–`MB11` incl. `MB4a`) are especially useful.
 
 ---
 
