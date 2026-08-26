@@ -54,3 +54,4 @@ No later-home `\symbolref` in these chapters.
 - `b0572027` — Demote early preview formulas and refresh CIRIS field evidence.
 - `ec149d92` — Demote remaining preview formulas and point at later equation homes.
 - `64643e11` — Keep Part I free of later-home equation numbers.
+- `55dc46da` — Park the E/G formulation audit for a 2.0 rerun and close the v1 demotion.
