@@ -7,7 +7,7 @@
 | Date | Topic | Log |
 |------|-------|-----|
 | 2026-08-26 | **CIRIS field-overview evidence** — Recheck sibling `repos/ciris/` + ciris.ai; update agenda card, matrix, ev-158–162. | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
-| 2026-08-26 | **Early-chapter preview demotion** — Tuples/covering formulas in ch02–04/ch08, then ch10/ch01/ch06/ch09/ch14 leftover sites. | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
+| 2026-08-26 | **Early-chapter preview demotion (closed)** — E/G audit FINDINGS in `review/chapter-formulation-groundedness.md`; 2.0 rerun on Construct P4. | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
 | 2026-08-26 | Bot-orientation and entry-doc housekeeping | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
 | 2026-08-25 | **Site glossary sync and UAD name fix** — Follow homograph hygiene with companion-site sync; add missing App E glossary terms; user flagged... | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
 | 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |

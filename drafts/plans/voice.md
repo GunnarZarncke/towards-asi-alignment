@@ -216,3 +216,4 @@ python3 scripts/check_voice.py   # after chapterthesis edits
 | [`site/src/content/cards/what-not-claiming.md`](../../site/src/content/cards/what-not-claiming.md) | Scope limits card |
 | [`drafts/plans/witness.md`](witness.md) | Separate empirical program (not a dependency; do not mention in copy) |
 | [`drafts/plans/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |
+| [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md) | E/G snapshot; 2.0 rerun lives on Construct P4 |

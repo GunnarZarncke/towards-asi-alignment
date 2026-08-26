@@ -1,5 +1,7 @@
 # 2026-08-26 — Early-chapter preview demotion
 
+**Status: closed** (v1). Durable method and scores: [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md). 2.0 rerun is a Construct-lane checklist item, not this plan.
+
 ## Trigger
 User asked to implement the plan: demote premature tuples and covering-inventory equations in ch02, ch03, ch04, and ch08 so first readers meet theses in prose; follow through on notation, site cards, `\symboldef`/`\symbolref`, and dependency graphs.
 

@@ -265,7 +265,7 @@ For each new or revised chapter:
 
 1. Read `metadata/book.yml` entry and dependent prior chapters.
 2. Outline concepts that must be introduced before use.
-3. Draft plain language, then formalism where needed.
+3. Draft plain language, then formalism where needed. Do **not** introduce covering \(n\)-tuples or preview inventories as if they were derived objects; later chapters own the real formulas (see [`review/chapter-formulation-groundedness.md`](review/chapter-formulation-groundedness.md)). Part I (ch01–ch05) must not `\eqref` equations defined after ch05.
 4. Review Lean spine module (`formal/README.md`); calibrate claim strength.
 5. Add worked example and counterexample.
 6. Add `\section{What Would Change This View}`.

@@ -140,7 +140,7 @@ When people/labs/orgs will actually construct rather than pessimize:
 | **P1** | After author OK | One Family D note (App B reverse column or field-hub “constructor-side”) — still not v1 chapters |
 | **P2** | Witness Exp. 4 | Revisit manuscript: Family A paragraphs in ch33/intro only if they do not claim Q2 solved |
 | **P3** | Per-part fail/refuse | Open Family B chapters one at a time; H3/H4 wrong-vacuum / enforcement-collapse only after bar |
-| **P4** | TSA 2.0 | Part XI (or companion): Families A–D; decide whether a seventh claim exists |
+| **P4** | TSA 2.0 | Part XI (or companion): Families A–D; decide whether a seventh claim exists; **rerun** the 48-chapter formulation-groundedness (G) pass on the 2.0 map before treating new covering formalisms as settled ([`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md)) |
 
 **Gates (unchanged from TODO):** Witness real stop → *concrete construction* manuscript revisit. Family D outlining does **not** wait on that gate; Family D *claiming that we can construct* does.
 
@@ -200,6 +200,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [ ] ch37: one 2.0 paragraph (when drafting) that conductivity ≠ construction; false attractor = constructibility failure
 - [ ] ch40: one 2.0 sentence that humans also launder *motives* via unused counterfactuals; v1 detector does not cover that
 - [ ] Do not open chapter `.tex` files in this lane until P2/P3
+- [ ] **Rerun formulation-groundedness (G)** on the 2.0 chapter map (same process as the 2026-08 v1 pass: one read-only reader per chapter, F1–F5, do not raise G by inventing early tuples). Method and v1 snapshot: [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md). Do not reuse v1 scores after 2.0 drafting.
 
 ## Related
 
@@ -210,5 +211,5 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [`drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md) — external-agent FINDINGS (cite-clean later)
 - [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/)
 - [`formal/AlignmentProofSpine/AlignmentConstruction.lean`](../../formal/AlignmentProofSpine/AlignmentConstruction.lean)
-- [`drafts/ngo-ontology-and-TSA.md`](../ngo-ontology-and-TSA.md)
+- [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md) — v1 E/G snapshot; **rerun G at 2.0**
 - Session: Ngo paragraph review (2026-08-24, this conversation)

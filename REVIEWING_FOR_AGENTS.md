@@ -136,7 +136,7 @@ Use this structure unless the user asks for another format:
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
 - Do not skip What Would Change This View (WWCTV) sections; they often contain the claim-strength boundary.
-- Do not overlook deep results, independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
+- Do not treat an early covering tuple or n-item inventory as a derived result; the home chapter of the formula is later (`review/chapter-formulation-groundedness.md`).
 
 ## After the review
 
