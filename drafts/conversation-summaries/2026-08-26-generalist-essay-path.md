@@ -27,4 +27,4 @@ User asked for a Paul Graham-style general-audience start: catch, essay spine, o
 
 ## Commits
 - `ca5c9026` — Add general-audience essay spine with Start Here teaser.
-- (read next — this session)
+- `e241017a` — Add Guided Tour read next from last book chapter.
