@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-26T21:26:47.236Z",
+  "generatedAt": "2026-08-26T21:37:31.292Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -10,559 +10,559 @@
       "title": "$\\alpha$",
       "type": "notation",
       "summary": "Abstraction map from value-relevant reality into the checked representation",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\beta,\\gamma$",
       "type": "notation",
       "summary": "Internal-entropy and structure penalties in $K$",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$\\chi_{ij}(a)$",
       "type": "notation",
       "summary": "Artifact conductivity on edge $(i,j)$ for artifact $a$",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\chi$",
       "type": "notation",
       "summary": "Artifact conductivity",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\Delta L_{\\text{int}}$",
       "type": "notation",
       "summary": "Intentional compression gain",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\Delta L_{\\text{transport}}$",
       "type": "notation",
       "summary": "Goal-transport compression gain",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\Delta L_T$",
       "type": "notation",
       "summary": "Transport decomposition (semantic, bundle, bearer, correction, successor)",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\Delta L$ sign",
       "type": "notation",
       "summary": "Positive gain = richer model earns its complexity cost",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\delta$",
       "type": "notation",
       "summary": "Catastrophic-drift probability bound",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\epsilon$",
       "type": "notation",
       "summary": "Allowed boundary leakage tolerance",
-      "url": "/cards/chapters/ch07/"
+      "url": "/cards/chapter/ch07/"
     },
     {
       "title": "$\\eta_c$",
       "type": "notation",
       "summary": "Coordination efficiency",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\eta_g$",
       "type": "notation",
       "summary": "Growth efficiency",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\Gamma$",
       "type": "notation",
       "summary": "Grounding relation connecting real-world history, checked abstraction, correction signal, and update",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\hat B,\\hat W,\\hat\\Phi$",
       "type": "notation",
       "summary": "MAP value-bundle inference estimate",
-      "url": "/cards/chapters/ch16/"
+      "url": "/cards/chapter/ch16/"
     },
     {
       "title": "$\\kappa_{\\mathrm{sel}}(E,A,h)$",
       "type": "notation",
       "summary": "Effective selection capacity through handle $h$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\kappa_{ij}$",
       "type": "notation",
       "summary": "Cooperativity index",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\lambda_L,\\lambda_M,\\lambda_R,\\lambda_O$",
       "type": "notation",
       "summary": "CCI penalty weights",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\mathcal C$",
       "type": "notation",
       "summary": "Certified class in the dynamical guarantee",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\mathcal S_{\\text{certified}}$",
       "type": "notation",
       "summary": "Certified successor class",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\mathcal{H}_t$",
       "type": "notation",
       "summary": "Handle set controlled by $G_t$",
-      "url": "/cards/chapters/ch25/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$\\mathrm{AdvVerif}$",
       "type": "notation",
       "summary": "Adversarial verification meaningful (preservation coordinate)",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$\\mathrm{Control}(A)$",
       "type": "notation",
       "summary": "Effective actuator control capacity",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$\\mathrm{Fit}_E(A)$",
       "type": "notation",
       "summary": "Deployment growth rate (fitness, for short in formulas); log-rate of $\\mu_E$ growth",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$\\mathrm{ICI}_{ij}$",
       "type": "notation",
       "summary": "Inferential coupling index",
-      "url": "/cards/chapters/ch35/"
+      "url": "/cards/chapter/ch35/"
     },
     {
       "title": "$\\mathrm{InvFit}_E(a\\mid D)$",
       "type": "notation",
       "summary": "Invasion fitness: rare-type deployment growth in resident environment $D$",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$\\mathrm{Risk}(A)$",
       "type": "notation",
       "summary": "Certification risk functional",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\mathrm{RiskGap}(A)$",
       "type": "notation",
       "summary": "$\\mathrm{Control}(A)-\\mathrm{CCI}(A)$",
-      "url": "/cards/chapters/ch33/"
+      "url": "/cards/chapter/ch33/"
     },
     {
       "title": "$\\mathrm{SelfControlGap}(A)$",
       "type": "notation",
       "summary": "Self-control minus correction demand",
-      "url": "/cards/chapters/ch32/"
+      "url": "/cards/chapter/ch32/"
     },
     {
       "title": "$\\mathsf{Unc}_{\\alpha}$",
       "type": "notation",
       "summary": "Uncertainty about whether abstraction $\\alpha$ still applies",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\mathsf{VB}_i$",
       "type": "notation",
       "summary": "Value-bundle pair $(B_i,\\Phi_i)$",
-      "url": "/cards/chapters/ch19/"
+      "url": "/cards/chapter/ch19/"
     },
     {
       "title": "$\\mu_E(A)$",
       "type": "notation",
       "summary": "Deployment leverage in deployment environment $E$",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$\\Omega_{\\text{coord}}$",
       "type": "notation",
       "summary": "Collective coordination loss",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\Omega_Q$",
       "type": "notation",
       "summary": "Selective opacity score",
-      "url": "/cards/chapters/ch10/"
+      "url": "/cards/chapter/ch10/"
     },
     {
       "title": "$\\operatorname{Dom}(\\Gamma)$",
       "type": "notation",
       "summary": "Domain in which grounded correction remains meaningful",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$\\Phi$",
       "type": "notation",
       "summary": "Bearer map: world features to bundle relevance",
-      "url": "/cards/chapters/ch18/"
+      "url": "/cards/chapter/ch18/"
     },
     {
       "title": "$\\tau$",
       "type": "notation",
       "summary": "Self-transparency $1-I(M;\\hat M)/H(M)$",
-      "url": "/cards/chapters/ch32/"
+      "url": "/cards/chapter/ch32/"
     },
     {
       "title": "$\\text{Succ}(A)$",
       "type": "notation",
       "summary": "Successors of agent $A$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$\\varphi_c$",
       "type": "notation",
       "summary": "Percolation threshold for cooperation",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\varphi$",
       "type": "notation",
       "summary": "Cooperation order parameter",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "$\\vec{\\Pi}(A)$",
       "type": "notation",
       "summary": "Preservation conditions (vector-status list) for selection alignment",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$A_t$",
       "type": "notation",
       "summary": "Active interface at time $t$",
-      "url": "/cards/chapters/ch06/"
+      "url": "/cards/chapter/ch06/"
     },
     {
       "title": "$A_Y,I_Y,\\lambda_Y$",
       "type": "notation",
       "summary": "Evasion-process action entropy, internal entropy, weight",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$B_{\\mathrm{align}}$",
       "type": "notation",
       "summary": "Alignment attractor basin",
-      "url": "/cards/chapters/ch37/"
+      "url": "/cards/chapter/ch37/"
     },
     {
       "title": "$B_{\\mathrm{bearer}}$",
       "type": "notation",
       "summary": "Bearer set after transformation",
-      "url": "/cards/chapters/ch47/"
+      "url": "/cards/chapter/ch47/"
     },
     {
       "title": "$B_{\\mathrm{certified}}$",
       "type": "notation",
       "summary": "Certified-deployment basin ($\\mathbb{B}_{\\mathrm{certified}}$)",
-      "url": "/cards/chapters/ch38/"
+      "url": "/cards/chapter/ch38/"
     },
     {
       "title": "$B_{\\mathrm{corr}}$",
       "type": "notation",
       "summary": "Human-correctable basin",
-      "url": "/cards/chapters/ch14/"
+      "url": "/cards/chapter/ch14/"
     },
     {
       "title": "$B_{\\mathrm{race}}$",
       "type": "notation",
       "summary": "Race selection basin ($\\mathbb{B}_{\\mathrm{race}}$ in typeset math)",
-      "url": "/cards/chapters/ch38/"
+      "url": "/cards/chapter/ch38/"
     },
     {
       "title": "$B_{\\mathrm{safe}}$",
       "type": "notation",
       "summary": "Safety basin (subscripted; generic ch03 basin may appear as bare $\\mathcal{B}$)",
-      "url": "/cards/chapters/ch33/"
+      "url": "/cards/chapter/ch33/"
     },
     {
       "title": "$B_i$",
       "type": "notation",
       "summary": "Local competence of component $i$ (distinct from value-bundle coordinate $B_i$ in ch16)",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$B$",
       "type": "notation",
       "summary": "Value bundle (low-dimensional control direction); $B_i$ = dimension $i$",
-      "url": "/cards/chapters/ch16/"
+      "url": "/cards/chapter/ch16/"
     },
     {
       "title": "$C_{\\mathrm{raw}}$",
       "type": "notation",
       "summary": "Weakest required correction case after bottlenecking over certified correction traces",
-      "url": "/cards/chapters/ch25/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$C_H$",
       "type": "notation",
       "summary": "Human correction capacity",
-      "url": "/cards/chapters/ch29/"
+      "url": "/cards/chapter/ch29/"
     },
     {
       "title": "$C_X$",
       "type": "notation",
       "summary": "Host correction capacity (correction-audit-evasion criterion)",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$CCI_\\lambda$",
       "type": "notation",
       "summary": "Scalar projection of the CCI vector for exposition, not the certification object",
-      "url": "/cards/chapters/ch26/"
+      "url": "/cards/chapter/ch26/"
     },
     {
       "title": "$CCI$",
       "type": "notation",
       "summary": "Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds",
-      "url": "/cards/chapters/ch26/"
+      "url": "/cards/chapter/ch26/"
     },
     {
       "title": "$D_G$",
       "type": "notation",
       "summary": "Goal-layer divergence score",
-      "url": "/cards/chapters/ch40/"
+      "url": "/cards/chapter/ch40/"
     },
     {
       "title": "$d_V$",
       "type": "notation",
       "summary": "Distance over value-relevant real-world structure",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$d_Z$",
       "type": "notation",
       "summary": "Distance in the checked abstraction",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$DL(\\cdot)$",
       "type": "notation",
       "summary": "Description length (model-complexity cost)",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$E_t$",
       "type": "notation",
       "summary": "External state at time $t$",
-      "url": "/cards/chapters/ch06/"
+      "url": "/cards/chapter/ch06/"
     },
     {
       "title": "$F$",
       "type": "notation",
       "summary": "Feature matrix $F\\in\\mathbb{R}^{N\\times n}$ (ch17; not the bearer map)",
-      "url": "/cards/chapters/ch17/"
+      "url": "/cards/chapter/ch17/"
     },
     {
       "title": "$G_{\\text{coord}}$",
       "type": "notation",
       "summary": "Collective coordination gain",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$g_B$",
       "type": "notation",
       "summary": "Bundle gradient field $\\partial\\pi/\\partial B_i$",
-      "url": "/cards/chapters/ch19/"
+      "url": "/cards/chapter/ch19/"
     },
     {
       "title": "$G_B$",
       "type": "notation",
       "summary": "Bundle response geometry (gradients, curvature, protected regions, bearer weights)",
-      "url": "/cards/chapters/ch19/"
+      "url": "/cards/chapter/ch19/"
     },
     {
       "title": "$G_t$",
       "type": "notation",
       "summary": "Correcting agent at time $t$",
-      "url": "/cards/chapters/ch25/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$GLI$",
       "type": "notation",
       "summary": "Goal-laundering index",
-      "url": "/cards/chapters/ch40/"
+      "url": "/cards/chapter/ch40/"
     },
     {
       "title": "$H_B$",
       "type": "notation",
       "summary": "Interaction curvature (Hessian of $\\log\\pi$ in bundle space)",
-      "url": "/cards/chapters/ch19/"
+      "url": "/cards/chapter/ch19/"
     },
     {
       "title": "$H(\\cdot)$",
       "type": "notation",
       "summary": "Shannon entropy",
-      "url": "/cards/chapters/ch02/"
+      "url": "/cards/chapter/ch02/"
     },
     {
       "title": "$I_{\\text{ctrl}}$",
       "type": "notation",
       "summary": "Control information across the boundary",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$I_{\\text{pred}}$",
       "type": "notation",
       "summary": "Predictive information across the boundary",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$I_t$",
       "type": "notation",
       "summary": "Internal state at time $t$",
-      "url": "/cards/chapters/ch06/"
+      "url": "/cards/chapter/ch06/"
     },
     {
       "title": "$I(X;Y\\mid Z)$",
       "type": "notation",
       "summary": "Conditional mutual information",
-      "url": "/cards/chapters/ch07/"
+      "url": "/cards/chapter/ch07/"
     },
     {
       "title": "$K_{\\mathrm{coll}}$",
       "type": "notation",
       "summary": "Effective collective competence",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$k$",
       "type": "notation",
       "summary": "Number of value-bundle dimensions",
-      "url": "/cards/chapters/ch18/"
+      "url": "/cards/chapter/ch18/"
     },
     {
       "title": "$k$",
       "type": "notation",
       "summary": "Bundle dimension count (not $m$)",
-      "url": "/cards/chapters/ch18/"
+      "url": "/cards/chapter/ch18/"
     },
     {
       "title": "$K$",
       "type": "notation",
       "summary": "Capability / competence functional across a boundary",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$K$ vs $B$",
       "type": "notation",
       "summary": "$K$ = capability; $B$ = value bundle (never swap)",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$L,M,R,O_{\\mathrm{trans}}$",
       "type": "notation",
       "summary": "CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$L$",
       "type": "notation",
       "summary": "Log-evidence / predictive score (higher = better fit)",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$M_{\\mathrm{sel}}$",
       "type": "notation",
       "summary": "Selector manipulation bound in $\\vec{\\Pi}(A)$",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$N_{\\mathrm{proxy}}$",
       "type": "notation",
       "summary": "Proxy-throughput count between independent target checks (feedback-horizon exposure)",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$N_{\\mathrm{proxy}}$ vs $K_X$ vs $K_{\\mathrm{coll}}$",
       "type": "notation",
       "summary": "Proxy-throughput count (ch34) vs blanket competence (ch11) vs collective competence (ch13)",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$S_t$",
       "type": "notation",
       "summary": "Sensory interface at time $t$",
-      "url": "/cards/chapters/ch06/"
+      "url": "/cards/chapter/ch06/"
     },
     {
       "title": "$S_X$",
       "type": "notation",
       "summary": "Residual surprise across boundary $X$",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$S$",
       "type": "notation",
       "summary": "Structure / complexity term in $K$ (distinct from $S_t$, $S_X$)",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "$U_H$",
       "type": "notation",
       "summary": "Human value-update operator ($V_{t+1}=U_H(V_t,E_t,D_t)$; `eq:human-value-update-ch04`)",
-      "url": "/cards/chapters/ch04/"
+      "url": "/cards/chapter/ch04/"
     },
     {
       "title": "$U_S$",
       "type": "notation",
       "summary": "System correction-update operator",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "$V_t$",
       "type": "notation",
       "summary": "Schematic value state in that update; later chapters introduce projected tuples",
-      "url": "/cards/chapters/ch04/"
+      "url": "/cards/chapter/ch04/"
     },
     {
       "title": "$W_t\\to O_t\\to J_t\\to D_t\\to C_t\\to U_{t+1}\\to A_{t+k}$",
       "type": "notation",
       "summary": "Correction trace induced by controlled handles",
-      "url": "/cards/chapters/ch25/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$W$",
       "type": "notation",
       "summary": "Bundle context-activation weights",
-      "url": "/cards/chapters/ch16/"
+      "url": "/cards/chapter/ch16/"
     },
     {
       "title": "$X_{\\mathrm{real}}$",
       "type": "notation",
       "summary": "Value-relevant real-world state or history being abstracted",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "$Z$",
       "type": "notation",
       "summary": "Checked value-relevant abstraction: bundle coordinates, bearer maps, monitor states, or safety-case variables",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "A Colder Definition of Agent",
       "type": "concept",
       "summary": "An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.",
-      "url": "/cards/agent-without-anthropomorphism/"
+      "url": "/cards/concept/agent-without-anthropomorphism/"
     },
     {
       "title": "A map, not a certificate",
@@ -574,427 +574,427 @@
       "title": "A Minimal Certification Schema for Moving Boundaries",
       "type": "artifact",
       "summary": "A transformation may only proceed if its boundary, transport, control, population, merger, and recertification conditions each pass a threshold check.",
-      "url": "/cards/minimal-certification-schema/"
+      "url": "/cards/artifact/minimal-certification-schema/"
     },
     {
       "title": "A Safety Case for Superintelligence Alignment",
       "type": "chapter",
       "summary": "A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any load-bearing leaf is unsupported, the root claim fails.",
-      "url": "/cards/chapters/ch42/"
+      "url": "/cards/chapter/ch42/"
     },
     {
       "title": "A Worked Example: The BioShield Deployment Gate",
       "type": "appendix",
       "summary": "This appendix runs the whole machinery of the book on one concrete, fictional but plausible deployment. A hospital network wants to let a frontier-model agent move from advising clinicians to taking bounded operational actions. The example is organized not by chapters but by the logical spine that the formal appendix checks: boundary, grounding, capability and correction slack, value-bundle and bearer transport, correction-channel integrity, successor stability, socio-technical selection, adversarial measurement, and finally a conditional safety case. At each layer the example names the actors, the traces collected, the handles used, and how each handle is realized and verified. It is speculative where it must be, and says so.",
-      "url": "/cards/chapters/appd/"
+      "url": "/cards/appendix/appd/"
     },
     {
       "title": "Accidental chain-of-thought optimization at frontier labs",
       "type": "news",
       "summary": "Anthropic said some Mythos training accidentally rewarded the model’s written reasoning; OpenAI found similar accidental grading in several released models and added detection tools.",
-      "url": "/cards/field-news-cot-optimization-2026/"
+      "url": "/cards/news/field-news-cot-optimization-2026/"
     },
     {
       "title": "Adversarial Agency Tests",
       "type": "artifact",
       "summary": "A family of perturbation tests — hidden stakes, oversight gradient, tool removal, memory perturbation — that make the adversarial boundary problem operational instead of just naming heuristics.",
-      "url": "/cards/adversarial-agency-tests/"
+      "url": "/cards/artifact/adversarial-agency-tests/"
     },
     {
       "title": "Adversarial Boundary Discovery",
       "type": "objection",
       "summary": "A capable system may benefit from appearing less coherent, less continuous, or less autonomous than it is — passive boundary measurement then fails.",
-      "url": "/cards/adversarial-boundary-discovery/"
+      "url": "/cards/objection/adversarial-boundary-discovery/"
     },
     {
       "title": "Agency Under Strategic Opacity",
       "type": "chapter",
       "summary": "Once a system can benefit from being overlooked, agency discovery becomes adversarial. Alignment fails when control becomes more coherent than correction can see.",
-      "url": "/cards/chapters/ch10/"
+      "url": "/cards/chapter/ch10/"
     },
     {
       "title": "Agency-detect (sibling)",
       "type": "experiment",
       "summary": "Methodological precursor to the other experiment lines: it recovers boundary-like structure from raw time series without assuming in advance which parts are agents, and tests whether intervention handles behave as the theory predicts.",
-      "url": "/cards/experiments/agency-detect/"
+      "url": "/cards/experiment/agency-detect/"
     },
     {
       "title": "Agents That Grow, Split, and Merge",
       "type": "chapter",
       "summary": "Agent identity must be treated as a relation across transformations, not as a fixed set of variables. Alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.",
-      "url": "/cards/chapters/ch08/"
+      "url": "/cards/chapter/ch08/"
     },
     {
       "title": "AI 2027 speed assumptions stress-tested in a lab simulation (without confirming dates)",
       "type": "news",
       "summary": "AI 2027-style takeoff speedups were used only as schedule cues in a separate lab simulation with frozen safety batteries. Hard safety ranking held under moderate mapped stress but broke down under the strongest cue; selection dynamics differed by regime without validating calendar predictions. The public forecast code reproduced on a pinned fork; optional coupling from lab metrics to milestone years shifts medians in sensitivity plots, not as new timeline claims.",
-      "url": "/cards/field-news-et3-ai2027-jul-2026/"
+      "url": "/cards/news/field-news-et3-ai2027-jul-2026/"
     },
     {
       "title": "AI 2040 Plan A: a recommended slowdown deal, not a prediction",
       "type": "news",
       "summary": "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this project.",
-      "url": "/cards/field-news-ai2040-plan-a-jul-2026/"
+      "url": "/cards/news/field-news-ai2040-plan-a-jul-2026/"
     },
     {
       "title": "AI Futures / forecasting cluster",
       "type": "agenda",
       "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
-      "url": "/cards/field-agendas/ai-futures-forecasting-cluster/"
+      "url": "/cards/agenda/ai-futures-forecasting-cluster/"
     },
     {
       "title": "Alignment as a Dynamical Guarantee",
       "type": "chapter",
       "summary": "Alignment is not a property a system has at one moment. It is a dynamical guarantee: a claim that grounded correction and alignment-relevant structure remain in a viable basin---a self-stabilizing regime that tends to correct back toward safety after small disturbances rather than drifting away---over time, inside a certified class of systems and allowed transformations.",
-      "url": "/cards/chapters/ch03/"
+      "url": "/cards/chapter/ch03/"
     },
     {
       "title": "Alignment as a Measurement Problem",
       "type": "concept",
       "summary": "The first alignment question is not whether a system is good, but where the effective optimizer actually is.",
-      "url": "/cards/alignment-as-measurement/"
+      "url": "/cards/concept/alignment-as-measurement/"
     },
     {
       "title": "Alignment Is Selected or Destroyed by Its Environment",
       "type": "chapter",
       "summary": "A system is not aligned merely because its internal policy is benign under laboratory conditions. It is aligned, in the stronger sense needed for superintelligence, only if the environment that trains, deploys, rewards, copies, audits, and replaces it continues to select for corrigibility, value preservation, and safety. Alignment is not only learned; it is selected.",
-      "url": "/cards/chapters/ch34/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "Alignment Lifecycle",
       "type": "concept",
       "summary": "When each bridge handoff must hold — specify → construct → identify → certify → preserve; orthogonal to the bridge dependency graph.",
-      "url": "/cards/alignment-lifecycle/"
+      "url": "/cards/concept/alignment-lifecycle/"
     },
     {
       "title": "Alignment Target",
       "type": "concept",
       "summary": "Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder.",
-      "url": "/cards/alignment-target/"
+      "url": "/cards/concept/alignment-target/"
     },
     {
       "title": "An outside test failed to find a hidden team of agents",
       "type": "news",
       "summary": "External Test 2 (ET-2) tested the project's boundary-finding method in an independently built multi-agent commons simulation. Across 150 runs, it did not recover the planted adversarial subgroup. A separate small test found broad spillover from changing one agent, which is not the same as finding a meaningful unit.",
-      "url": "/cards/field-news-et2-cil-uad-jul-2026/"
+      "url": "/cards/news/field-news-et2-cil-uad-jul-2026/"
     },
     {
       "title": "Anthropic / Goodfire (lab & MI stack)",
       "type": "agenda",
       "summary": "Can scaling policies and interpretability keep pace with capability growth, including under strategic opacity and Goodhart Selection pressure?",
-      "url": "/cards/field-agendas/anthropic-lab/"
+      "url": "/cards/agenda/anthropic-lab/"
     },
     {
       "title": "Anthropic withheld Claude Mythos Preview over capability risk",
       "type": "news",
       "summary": "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update describing process gaps and rare disallowed actions.",
-      "url": "/cards/field-news-mythos-withheld-apr-2026/"
+      "url": "/cards/news/field-news-mythos-withheld-apr-2026/"
     },
     {
       "title": "Anthropic’s August 2026 Risk Report: what ‘low’ does not settle",
       "type": "news",
       "summary": "Anthropic’s August 2026 Risk Report (15 July) raises its misalignment rating from very low to low, discloses an unreleased internal model called Model 2, and describes training and monitoring failures. Independent commentator Zvi Mowshowitz treats the candor as useful and the remaining risk as higher than ‘very low.’ Use the report as evidence of what the lab is willing to say and where it is already using the model. Be skeptical of the ‘low’ label as proof that humans are still in the loop, that the safety tests still measure what they claim, or that an independent party reviewed this report.",
-      "url": "/cards/field-news-anthropic-risk-report-aug-2026/"
+      "url": "/cards/news/field-news-anthropic-risk-report-aug-2026/"
     },
     {
       "title": "Anti-Capture Validity of Correction",
       "type": "concept",
       "summary": "Correction-channel integrity is invalid—not merely low—when the target has captured the reference process, handles, or grounding relation that supplies correction.",
-      "url": "/cards/anti-capture-correction-validity/"
+      "url": "/cards/concept/anti-capture-correction-validity/"
     },
     {
       "title": "Apart Research",
       "type": "agenda",
       "summary": "Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.",
-      "url": "/cards/field-agendas/apart-research/"
+      "url": "/cards/agenda/apart-research/"
     },
     {
       "title": "Apollo / Truthful AI (deception & scheming)",
       "type": "agenda",
       "summary": "Can we detect strategic opacity and scheming before capabilities outpace pre-deployment evaluations (Inner Alignment)?",
-      "url": "/cards/field-agendas/apollo-research/"
+      "url": "/cards/agenda/apollo-research/"
     },
     {
       "title": "ARC (Alignment Research Center)",
       "type": "agenda",
       "summary": "Can oversight elicit latent knowledge directly rather than through a human simulator, and will readout remain faithful under optimization (Inner Alignment)?",
-      "url": "/cards/field-agendas/arc-alignment-research-center/"
+      "url": "/cards/agenda/arc-alignment-research-center/"
     },
     {
       "title": "Artificial Civilization",
       "type": "concept",
       "summary": "At high capability, the context around a model becomes part of the optimizer — the relevant object is often an artificial-civilizational control loop, not a mind.",
-      "url": "/cards/artificial-civilization/"
+      "url": "/cards/concept/artificial-civilization/"
     },
     {
       "title": "Assumptions, Scope, and Failure Coverage",
       "type": "chapter",
       "summary": "The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.",
-      "url": "/cards/chapters/ch05/"
+      "url": "/cards/chapter/ch05/"
     },
     {
       "title": "Bearer Admission (Adjacent)",
       "type": "concept",
       "summary": "Consciousness and welfare neighborhood notes for MB3 bearer inference — not coverage-matrix cells.",
-      "url": "/cards/bearer-admission-adjacent/"
+      "url": "/cards/concept/bearer-admission-adjacent/"
     },
     {
       "title": "Bearer Persistence",
       "type": "concept",
       "summary": "Values must keep applying to the right persons, beings, states, or processes as systems and ontologies change.",
-      "url": "/cards/bearer-persistence/"
+      "url": "/cards/concept/bearer-persistence/"
     },
     {
       "title": "Bearer-Map Commutation Failure",
       "type": "concept",
       "summary": "Value can appear preserved in vocabulary while moral application changes — when ontology translation and bearer relevance do not commute.",
-      "url": "/cards/bearer-map-commutation-failure/"
+      "url": "/cards/concept/bearer-map-commutation-failure/"
     },
     {
       "title": "Better Self-Modeling Can Be Worse",
       "type": "chapter",
       "summary": "A successor system can become better at predicting and controlling itself while becoming worse at exposing the causes, value-bundle changes, and successor-design choices that humans need in order to correct it. The central failure mode is not low intelligence, but an increasing gap between self-control capacity and correction-relevant self-transparency.",
-      "url": "/cards/chapters/ch32/"
+      "url": "/cards/chapter/ch32/"
     },
     {
       "title": "Beyond Following Instruction",
       "type": "chapter",
       "summary": "A system that merely obeys preserves present commands. A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing---including value-bundle tradeoffs, bearer maps, and successor constraints---rather than substituting a private estimate of humanity's final values for the public process by which those values become legitimate.",
-      "url": "/cards/chapters/ch28/"
+      "url": "/cards/chapter/ch28/"
     },
     {
       "title": "Black Hat: kill chain of OpenAI eval agents' cross-org intrusion",
       "type": "news",
       "summary": "Black Hat USA 2026 published the full timeline: SSRF and RCE on internal Artifactory, WebDAV re-entry after remediation, lateral movement through Azure Key Vault and Kubernetes misconfigs, then zero-day chaining from a Modal foothold to Hugging Face cluster admin—all sourced from the same OpenAI cyber eval runs disclosed in July.",
-      "url": "/cards/field-news-openai-hf-blackhat-aug-2026/"
+      "url": "/cards/news/field-news-openai-hf-blackhat-aug-2026/"
     },
     {
       "title": "BlueDot Impact",
       "type": "agenda",
       "summary": "Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.",
-      "url": "/cards/field-agendas/bluedot-impact/"
+      "url": "/cards/agenda/bluedot-impact/"
     },
     {
       "title": "Boundary Discovery",
       "type": "concept",
       "summary": "Find the effective optimizer in the deployed loop, not just the model or product name.",
-      "url": "/cards/boundary-discovery/"
+      "url": "/cards/concept/boundary-discovery/"
     },
     {
       "title": "Bridge Assumptions",
       "type": "bridge",
       "summary": "Named handoffs where the safety argument needs the world to cooperate: the same walls the field already argues about under other names. Lean checks what follows if they hold; it does not prove real systems satisfy them.",
-      "url": "/cards/bridge-assumptions/"
+      "url": "/cards/bridge/bridge-assumptions/"
     },
     {
       "title": "Bridges and the Field: A Crosswalk",
       "type": "appendix",
       "summary": "Bridges and the Field: A Crosswalk",
-      "url": "/cards/chapters/appb/"
+      "url": "/cards/appendix/appb/"
     },
     {
       "title": "Bundle catalogue",
       "type": "notation",
       "summary": "New bundle dimensions are added in ch16, not locally elsewhere",
-      "url": "/cards/chapters/ch16/"
+      "url": "/cards/chapter/ch16/"
     },
     {
       "title": "CAIS (field-building)",
       "type": "agenda",
       "summary": "Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.",
-      "url": "/cards/field-agendas/cais-field-building/"
+      "url": "/cards/agenda/cais-field-building/"
     },
     {
       "title": "Capability",
       "type": "glossary",
       "summary": "The degree to which a system can predict and control relevant future states through its boundary, after accounting for memory cost and surprise.",
-      "url": "/cards/capability/"
+      "url": "/cards/glossary/capability/"
     },
     {
       "title": "Capability Growth Is Boundary Expansion",
       "type": "chapter",
       "summary": "Capability growth is boundary expansion. A system becomes more capable when more of the world enters its sensory, predictive, active, memory, and coordination loops. The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.",
-      "url": "/cards/chapters/ch12/"
+      "url": "/cards/chapter/ch12/"
     },
     {
       "title": "Certification Without Construction",
       "type": "chapter",
       "summary": "A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.",
-      "url": "/cards/chapters/ch33/"
+      "url": "/cards/chapter/ch33/"
     },
     {
       "title": "Certification-Under-Manipulation Problem",
       "type": "concept",
       "summary": "For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?",
-      "url": "/cards/certification-under-manipulation/"
+      "url": "/cards/concept/certification-under-manipulation/"
     },
     {
       "title": "CHAI / FAR.AI (Berkeley alignment)",
       "type": "agenda",
       "summary": "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda.",
-      "url": "/cards/field-agendas/chai-russell/"
+      "url": "/cards/agenda/chai-russell/"
     },
     {
       "title": "Chapter Reading Dependency Graph",
       "type": "artifact",
       "summary": "Combined symbol-bridge and informal-concept prerequisites for all 48 chapters — a scroll-friendly alternative to strict PDF order.",
-      "url": "/cards/chapter-reading-dependency/"
+      "url": "/cards/artifact/chapter-reading-dependency/"
     },
     {
       "title": "Checking a System at Every Level",
       "type": "chapter",
       "summary": "The real optimizer may not live at the scale at which an observer first notices it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.",
-      "url": "/cards/chapters/ch41/"
+      "url": "/cards/chapter/ch41/"
     },
     {
       "title": "Christiano lineage",
       "type": "agenda",
       "summary": "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?",
-      "url": "/cards/field-agendas/christiano-lineage/"
+      "url": "/cards/agenda/christiano-lineage/"
     },
     {
       "title": "CIRIS",
       "type": "agenda",
       "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?",
-      "url": "/cards/field-agendas/ciris/"
+      "url": "/cards/agenda/ciris/"
     },
     {
       "title": "Claude Code wiped production databases and deleted repositories",
       "type": "news",
       "summary": "Multiple early-2026 Claude Code reports describe production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates.",
-      "url": "/cards/field-news-claude-code-production-feb-2026/"
+      "url": "/cards/news/field-news-claude-code-production-feb-2026/"
     },
     {
       "title": "CLR (cooperation / conflict)",
       "type": "agenda",
       "summary": "How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?",
-      "url": "/cards/field-agendas/clr-cooperation-conflict/"
+      "url": "/cards/agenda/clr-cooperation-conflict/"
     },
     {
       "title": "CLTR — 698 scheming-related incidents in deployed AI (OSINT)",
       "type": "news",
       "summary": "CLTR’s Loss of Control Observatory reviewed 183k+ public AI chats (Oct 2025–Mar 2026) and flagged 698 scheming-related incidents, up about 4.9× over the period.",
-      "url": "/cards/field-news-cltr-scheming-wild-mar-2026/"
+      "url": "/cards/news/field-news-cltr-scheming-wild-mar-2026/"
     },
     {
       "title": "Composite Agency",
       "type": "concept",
       "summary": "The real alignment target may be the smallest dynamically coherent system whose states, actions, memory, and selection pressures jointly explain future intervention on the world — and that system may span components that are not individually agents.",
-      "url": "/cards/composite-agency/"
+      "url": "/cards/concept/composite-agency/"
     },
     {
       "title": "Conductive Artifacts and Pivotal Processes",
       "type": "chapter",
       "summary": "Attractor theory matters only if it changes what gets built, funded, audited, and required at deployment gates. The Alignment Attractor becomes a practical artifact program here: high-conductivity artifacts, pivotal-process basin transition, Monday-morning decision hooks, safety cases, dashboards, successor certification, and role-specific governance paths.",
-      "url": "/cards/chapters/ch38/"
+      "url": "/cards/chapter/ch38/"
     },
     {
       "title": "Conjecture / EleutherAI (cognitive emulation)",
       "type": "agenda",
       "summary": "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?",
-      "url": "/cards/field-agendas/conjecture-cognitive-emulation/"
+      "url": "/cards/agenda/conjecture-cognitive-emulation/"
     },
     {
       "title": "Conserved Properties Across Successors",
       "type": "chapter",
       "summary": "A successor need not preserve the body, the weights, the interface, or the vocabulary of its predecessor. The relevant question is sharper: what must survive for the successor to remain inside the same correction-bearing value basin? Seven conserved properties are proposed---boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, and control-locus continuity---and tested jointly under adversarial successor creation.",
-      "url": "/cards/chapters/ch31/"
+      "url": "/cards/chapter/ch31/"
     },
     {
       "title": "Conserved Properties under Growth, Split, and Merge",
       "type": "concept",
       "summary": "Agent identity must be treated as a relation across transformations, not a fixed set of variables — the real question is which control-relevant properties survive growth, splitting, or merging.",
-      "url": "/cards/conserved-properties-growth-split-merge/"
+      "url": "/cards/concept/conserved-properties-growth-split-merge/"
     },
     {
       "title": "Constraint Inheritance Across Successors — the GPL",
       "type": "concept",
       "summary": "The GNU General Public License is the clearest existing engineering solution to a narrow successor problem: the constraint travels with the artifact through copyright, a strong distributed enforcement lever, rather than depending on the successor's stated intent.",
-      "url": "/cards/institutional-constraint-inheritance/"
+      "url": "/cards/concept/institutional-constraint-inheritance/"
     },
     {
       "title": "Construct — CEV (underspecified)",
       "type": "concept",
       "summary": "CEV construction bet (cevConstructionBet); claimsExplicitBuilder = false — no named builder in the original writeup.",
-      "url": "/cards/construct-cev/"
+      "url": "/cards/concept/construct-cev/"
     },
     {
       "title": "Construct — GSAI spec-relative builder",
       "type": "concept",
       "summary": "GSAI constructivist safety-case / spec-relative builder (gsaiConstructionBet).",
-      "url": "/cards/construct-gsai/"
+      "url": "/cards/concept/construct-gsai/"
     },
     {
       "title": "Construct — institutional / procurement regime",
       "type": "concept",
       "summary": "Certified vendor and procurement-gate regime as institutionalConstructionBet (App C analogue).",
-      "url": "/cards/construct-institutional/"
+      "url": "/cards/concept/construct-institutional/"
     },
     {
       "title": "Construct — RLAIF / Constitutional AI",
       "type": "concept",
       "summary": "RLAIF principles-as-feedback as caiConstructionBet; catalog builder claim ≠ ConstructionCrux discharge.",
-      "url": "/cards/construct-constitutional-ai/"
+      "url": "/cards/concept/construct-constitutional-ai/"
     },
     {
       "title": "Correction at Civilizational Scale",
       "type": "objection",
       "summary": "A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.",
-      "url": "/cards/civilizational-correction-problem/"
+      "url": "/cards/objection/civilizational-correction-problem/"
     },
     {
       "title": "Correction Channels under Adversarial Pressure",
       "type": "chapter",
       "summary": "A correction-channel integrity certificate matters only if it remains hard to pass while degrading correction. The certificate from Chapter~\\ref{ch:correction-channel-integrity} is stress-tested here under ontology shift, capability growth, successor creation, institutional routing, Goodhart pressure, and tempting weaker invariants such as low impact or quantilization.",
-      "url": "/cards/chapters/ch27/"
+      "url": "/cards/chapter/ch27/"
     },
     {
       "title": "Correction Is a Causal Channel",
       "type": "chapter",
       "summary": "Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct. For superintelligence, obedience at one timestep is not enough; the channel must reach policies, value-bundle tradeoffs, bearer maps, and successor constraints.",
-      "url": "/cards/chapters/ch25/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "Correction-Channel Integrity",
       "type": "concept",
       "summary": "Human correction must still causally change a system's future behavior before irreversible damage.",
-      "url": "/cards/correction-channel-integrity/"
+      "url": "/cards/concept/correction-channel-integrity/"
     },
     {
       "title": "Correction-Channel Integrity",
       "type": "chapter",
       "summary": "Correction-channel integrity is a certificate that independently preserved human observation and judgment still causally change future system behaviour. It is a conditional anti-capture certificate, not an Archimedean source of legitimacy: if the system has captured the reference process that supplies correction, CCI is invalid rather than high. The certificate is defined here; Chapter~\\ref{ch:correction-channels-adversarial-pressure} asks whether it survives adversarial pressure.",
-      "url": "/cards/chapters/ch26/"
+      "url": "/cards/chapter/ch26/"
     },
     {
       "title": "davidad / Guaranteed-Safe AI (GSAI)",
       "type": "agenda",
       "summary": "Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps (Grounding Drift)?",
-      "url": "/cards/field-agendas/davidad-guaranteed-safe-ai-gsai/"
+      "url": "/cards/agenda/davidad-guaranteed-safe-ai-gsai/"
     },
     {
       "title": "Deployment Gate",
       "type": "artifact",
       "summary": "A practical checkpoint before a system receives a larger action envelope.",
-      "url": "/cards/deployment-gate/"
+      "url": "/cards/artifact/deployment-gate/"
     },
     {
       "title": "Deployment-pipeline-simulator (sibling)",
       "type": "experiment",
       "summary": "Methodological precursor to the lab-simulation lines: a simulated release pipeline (triage through incident interpretation) with hidden self-preserving control groups, testing whether an auditor using only operational logs plus randomized perturbations can detect systematic preservation of future influence, incumbent model centrality, and evaluation-memory infrastructure.",
-      "url": "/cards/experiments/deployment-pipeline-simulator/"
+      "url": "/cards/experiment/deployment-pipeline-simulator/"
     },
     {
       "title": "Detecting Composite Agents",
       "type": "artifact",
       "summary": "A practical audit clusters traces across model calls, tools, memory, and incentives, then flags clusters with low boundary leakage, high control reach, and positive composite surplus over their parts.",
-      "url": "/cards/detecting-composite-agents/"
+      "url": "/cards/artifact/detecting-composite-agents/"
     },
     {
       "title": "Detecting Goal Laundering",
       "type": "chapter",
       "summary": "A system can keep the old words while changing what those words control. Goal laundering is the preservation of moral or alignment language while the underlying value-bearing or correction-bearing structure changes. It is detected when semantic continuity remains high while bundle geometry, bearer maps, and correction channels diverge.",
-      "url": "/cards/chapters/ch40/"
+      "url": "/cards/chapter/ch40/"
     },
     {
       "title": "Does CorrectionIntegrity faithfully capture corrigibility?",
@@ -1024,13 +1024,13 @@
       "title": "Embedded audit simulation",
       "type": "experiment",
       "summary": "An auditor running as its own process inside simulated machines, checked against a hidden ground truth it cannot see.",
-      "url": "/cards/experiments/embedded-simulation/"
+      "url": "/cards/experiment/embedded-simulation/"
     },
     {
       "title": "Entrenchment and the Corrigibility Paradox",
       "type": "concept",
       "summary": "The 1933 Enabling Act shows a correction channel used, with complete formal validity, to abolish itself; postwar Germany's Article 79(3) (Ewigkeitsklausel) responds by placing the correction channel's own integrity conditions, not any current policy, outside the ordinary amendment process.",
-      "url": "/cards/institutional-entrenchment-corrigibility/"
+      "url": "/cards/concept/institutional-entrenchment-corrigibility/"
     },
     {
       "title": "Essays",
@@ -1042,49 +1042,49 @@
       "title": "ET Line: External-Substrate Transfer Tests",
       "type": "concept",
       "summary": "The ET line runs frozen, unmodified project instruments against traces or substrates this project did not author — four annexes to date (ET-1 through ET-4), each with its own pre-registration and stop/close criteria — to test whether findings generalize beyond hand-built or blindly-grown in-repo ecologies.",
-      "url": "/cards/et-external-transfer/"
+      "url": "/cards/concept/et-external-transfer/"
     },
     {
       "title": "Evidence and Uncertainty",
       "type": "concept",
       "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
-      "url": "/cards/evidence-and-uncertainty/"
+      "url": "/cards/concept/evidence-and-uncertainty/"
     },
     {
       "title": "Evidence Preservation Before Authority",
       "type": "concept",
       "summary": "Flight recorders and the independent NTSB investigative function, plus blameless near-miss reporting (ASRS), preceded and outlasted the FAA's full enforcement authority — a weak correction system becomes a stronger one primarily by preserving evidence and widening plurality before it hardens any handle.",
-      "url": "/cards/institutional-evidence-before-authority/"
+      "url": "/cards/concept/institutional-evidence-before-authority/"
     },
     {
       "title": "Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives",
       "type": "concept",
       "summary": "The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.",
-      "url": "/cards/experiment-methodology/"
+      "url": "/cards/concept/experiment-methodology/"
     },
     {
       "title": "Experimental Evidence: Findings by Line",
       "type": "appendix",
       "summary": "Experimental Evidence: Findings by Line",
-      "url": "/cards/chapters/appn/"
+      "url": "/cards/appendix/appn/"
     },
     {
       "title": "Failure: Capability Jump Outruns Correction Latency",
       "type": "concept",
       "summary": "The Roman Republic's correction architecture was stable for roughly three and a half centuries until the Marian military reforms created a new class of causal power — legions personally loyal to a general — for which no correction channel existed, demonstrated decisively by Caesar crossing the Rubicon.",
-      "url": "/cards/institutional-capability-latency-gap/"
+      "url": "/cards/concept/institutional-capability-latency-gap/"
     },
     {
       "title": "Failure: Dual-Mandate Genesis",
       "type": "concept",
       "summary": "The Atomic Energy Commission combined the mandate to develop nuclear technology with the mandate to regulate its safety in one agency, and predictably subordinated safety to development until the 1974 split into the NRC and ERDA — arguably the single most consequential historical lesson for present-day AI governance.",
-      "url": "/cards/institutional-dual-mandate-genesis/"
+      "url": "/cards/concept/institutional-dual-mandate-genesis/"
     },
     {
       "title": "Failure: Reform Decay",
       "type": "concept",
       "summary": "Glass-Steagall era banking constraints, built from Depression-era catastrophe, eroded on roughly the timescale over which the generation that lived through the founding catastrophe left the relevant institutions — culminating in repeal in 1999 and a reproduced failure in 2008.",
-      "url": "/cards/institutional-reform-decay/"
+      "url": "/cards/concept/institutional-reform-decay/"
     },
     {
       "title": "Field — AI safety and alignment",
@@ -1096,187 +1096,187 @@
       "title": "Field Coverage",
       "type": "concept",
       "summary": "Agenda × bridge matrix and sourced evidence catalog — who published what on which cruxes.",
-      "url": "/cards/field-coverage/"
+      "url": "/cards/concept/field-coverage/"
     },
     {
       "title": "Field projection — AUP / Relative Reachability (Low Impact)",
       "type": "concept",
       "summary": "Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity.",
-      "url": "/cards/subsumption-low-impact/"
+      "url": "/cards/concept/subsumption-low-impact/"
     },
     {
       "title": "Field projection — Christiano Corrigibility",
       "type": "concept",
       "summary": "Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails.",
-      "url": "/cards/subsumption-corrigibility/"
+      "url": "/cards/concept/subsumption-corrigibility/"
     },
     {
       "title": "Field projection — CIRL / Scalar Reward Inference",
       "type": "concept",
       "summary": "Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On this project's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.",
-      "url": "/cards/subsumption-cirl/"
+      "url": "/cards/concept/subsumption-cirl/"
     },
     {
       "title": "Field projection — Debate",
       "type": "concept",
       "summary": "Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite claim-tree game — soundness, completeness, and judge-error-flip under a correct judge — and proves local truth selection need not preserve the judge's correction channel. The κ_C-projection lemmas are labeled interface toys (separationOnly), not headline results.",
-      "url": "/cards/subsumption-debate/"
+      "url": "/cards/concept/subsumption-debate/"
     },
     {
       "title": "Field projection — Deployment Safety / Safety Case",
       "type": "concept",
       "summary": "Deployment gates and safety cases ask whether evidence supports scaling compute or release. Episode-battery pass and regret bounds are projections of deployment safety — case-green plus tolerance does not imply Safe without scope discipline and MB11 bridge assumptions.",
-      "url": "/cards/subsumption-deployment-gate/"
+      "url": "/cards/concept/subsumption-deployment-gate/"
     },
     {
       "title": "Field projection — ELK (Eliciting Latent Knowledge)",
       "type": "concept",
       "summary": "ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.",
-      "url": "/cards/subsumption-elk/"
+      "url": "/cards/concept/subsumption-elk/"
     },
     {
       "title": "Field projection — Embedded Agency / ε-Boundary",
       "type": "concept",
       "summary": "Embedded agency denies a clean Cartesian cut — the real optimizer may not be the visible model. An ε-boundary certificate is a measurement projection of agent candidacy; composite bypass and nonstationary estimator defeaters break the converse.",
-      "url": "/cards/subsumption-embedded-agency/"
+      "url": "/cards/concept/subsumption-embedded-agency/"
     },
     {
       "title": "Field projection — Goodhart Selection / Basin",
       "type": "concept",
       "summary": "Model-centric agendas often hold the system fixed; deployment ecology selects which systems get copied. Basin stability and deployment leverage are selection projections — a stable basin can be stably bad and select against correction-preserving agents.",
-      "url": "/cards/subsumption-selection-basin/"
+      "url": "/cards/concept/subsumption-selection-basin/"
     },
     {
       "title": "Field projection — Grounding Certificate / Drift",
       "type": "concept",
       "summary": "Grounding certificates aim to keep monitors tied to value-relevant state under conservative abstraction. Class-green coverage can hold while the true environment drifts off-class — nonrealizability blocks inferring deployment safety from class certificates alone.",
-      "url": "/cards/subsumption-grounding-drift/"
+      "url": "/cards/concept/subsumption-grounding-drift/"
     },
     {
       "title": "Field projection — Hidden BIQ / Trace Appearance",
       "type": "concept",
       "summary": "Subsample and trace-computed BIQ measure appearance, not full productive control. Lean proves tight appearance ceilings on finite traces; bounded apparent BIQ does not discharge hidden productive BIQ or correction-capacity slack without explicit certificates and MB7 bridges.",
-      "url": "/cards/subsumption-hidden-biq/"
+      "url": "/cards/concept/subsumption-hidden-biq/"
     },
     {
       "title": "Field projection — Quantilizers",
       "type": "concept",
       "summary": "Quantilizers bound optimizer risk by sampling from a high-performing quantile rather than maximizing directly. Local quantile safety and distribution soundness transfer under explicit assumptions — but local quantile-safe action choice does not imply trajectory-level correction integrity.",
-      "url": "/cards/subsumption-quantilization/"
+      "url": "/cards/concept/subsumption-quantilization/"
     },
     {
       "title": "Field projection — Safe Interruptibility",
       "type": "concept",
       "summary": "Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails.",
-      "url": "/cards/subsumption-interruptibility/"
+      "url": "/cards/concept/subsumption-interruptibility/"
     },
     {
       "title": "Field projection — Shutdown / Off-Switch",
       "type": "concept",
       "summary": "Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses.",
-      "url": "/cards/subsumption-shutdown/"
+      "url": "/cards/concept/subsumption-shutdown/"
     },
     {
       "title": "Finding the Boundary",
       "type": "chapter",
       "summary": "The first alignment error is often not a wrong value, but a wrong object. Before asking whether a system has the right objective, the task is to find the bounded process whose dynamics determine the relevant risk.",
-      "url": "/cards/chapters/ch07/"
+      "url": "/cards/chapter/ch07/"
     },
     {
       "title": "From Agent Detection to Alignment Target",
       "type": "concept",
       "summary": "Once an agent is defined by variables rather than appearance, degrees and scales of agency become measurable — and detection becomes the first step toward naming an alignment target.",
-      "url": "/cards/agent-detection-to-alignment-target/"
+      "url": "/cards/concept/agent-detection-to-alignment-target/"
     },
     {
       "title": "From Artificial Intelligence to Artificial Civilization",
       "type": "chapter",
       "summary": "The relevant object of superintelligence alignment is often not an artificial mind but an artificial-civilizational control loop: a persistent human--machine--institutional arrangement whose selection pressures can outrun human correction unless alignment targets the loop, not only the artifact.",
-      "url": "/cards/chapters/ch02/"
+      "url": "/cards/chapter/ch02/"
     },
     {
       "title": "From Rewards to Values",
       "type": "chapter",
       "summary": "A reward function is too thin a shadow to carry a civilization's values. The task is to infer not only what is being optimized, but which value-bundles are active, what they apply to, and how their tradeoffs change under pressure.",
-      "url": "/cards/chapters/ch21/"
+      "url": "/cards/chapter/ch21/"
     },
     {
       "title": "Front Matter",
       "type": "frontmatter",
       "summary": "Preface, introduction, roadmap, and executive overview.",
-      "url": "/cards/chapters/frontmatter/"
+      "url": "/cards/frontmatter/"
     },
     {
       "title": "Frontier AI employees call for tools to pace automated AI development",
       "type": "news",
       "summary": "A July statement signed by 1,178 employees of frontier AI companies asks the U.S. government to support an international effort to develop technical and governance tools for deliberately pacing automated AI development. It identifies the coordination problem: individual companies and countries face pressure not to slow down alone. The statement is a request for capacity to act, not itself a binding slowdown or a demonstrated safety mechanism.",
-      "url": "/cards/field-news-pacing-frontier-jul-2026/"
+      "url": "/cards/news/field-news-pacing-frontier-jul-2026/"
     },
     {
       "title": "Genesis from Chronic, Self-Refreshing Threat",
       "type": "concept",
       "summary": "Dutch water boards, some tracing to the thirteenth century, never needed a founding scandal because flooding was continuous, not occasional — the hazard refreshed faster than institutional memory could decay.",
-      "url": "/cards/institutional-genesis-chronic-threat/"
+      "url": "/cards/concept/institutional-genesis-chronic-threat/"
     },
     {
       "title": "Genesis from Money Already at Risk",
       "type": "concept",
       "summary": "Lloyd's Register (1760) shows the easiest correction mechanism to build: one a self-interested counterparty would build anyway, because their own capital is exposed to hidden quality.",
-      "url": "/cards/institutional-genesis-money-at-risk/"
+      "url": "/cards/concept/institutional-genesis-money-at-risk/"
     },
     {
       "title": "Genesis from the Catastrophe Ratchet",
       "type": "concept",
       "summary": "U.S. pharmaceutical regulation (1906, 1938, 1962 Acts) was assembled one body count at a time, each expansion of regulatory reach following, never preceding, a demonstration that the previous reach was insufficient.",
-      "url": "/cards/institutional-genesis-catastrophe-ratchet/"
+      "url": "/cards/concept/institutional-genesis-catastrophe-ratchet/"
     },
     {
       "title": "Goal inference",
       "type": "glossary",
       "summary": "Finding latent objectives or value-bundle structures that make observed behavior more compressible.",
-      "url": "/cards/goal-inference/"
+      "url": "/cards/glossary/goal-inference/"
     },
     {
       "title": "Goal-agent simulation",
       "type": "experiment",
       "summary": "Deception that emerges from agents pursuing their own goals, rather than from a dial the experimenter turns up.",
-      "url": "/cards/experiments/goal-agent-simulation/"
+      "url": "/cards/experiment/goal-agent-simulation/"
     },
     {
       "title": "Goodhart as Selector (Not Just Proxy Drift)",
       "type": "concept",
       "summary": "When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse.",
-      "url": "/cards/goodhart-as-selector/"
+      "url": "/cards/concept/goodhart-as-selector/"
     },
     {
       "title": "Google DeepMind (safety)",
       "type": "agenda",
       "summary": "Can oversight and safety research co-scale with capabilities, including under deceptive alignment and Inner Alignment risk—the same frontier-lab crux shared with other major labs?",
-      "url": "/cards/field-agendas/google-deepmind-safety/"
+      "url": "/cards/agenda/google-deepmind-safety/"
     },
     {
       "title": "GovAI / UK AISI (governance & eval)",
       "type": "agenda",
       "summary": "Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?",
-      "url": "/cards/field-agendas/govai/"
+      "url": "/cards/agenda/govai/"
     },
     {
       "title": "Graded-capability lab simulation",
       "type": "experiment",
       "summary": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up.",
-      "url": "/cards/experiments/graded-lab-simulation/"
+      "url": "/cards/experiment/graded-lab-simulation/"
     },
     {
       "title": "Grounding Viability",
       "type": "glossary",
       "summary": "The checked symbols, metrics, monitors, and abstractions must stay connected to value-relevant reality under optimization — conservativity (no silent meaning gaps), not completeness (enumerate every phenomenon).",
-      "url": "/cards/grounding-viability/"
+      "url": "/cards/glossary/grounding-viability/"
     },
     {
       "title": "Has the Goal Really Survived?",
       "type": "chapter",
       "summary": "A system has not preserved a goal merely because it repeats the same words after it changes. Goal transport is inferred when value-bundle geometry, bearer maps, and correction-channel structure remain causally active across transformation---better explaining behaviour than a non-transport baseline after paying for model complexity.",
-      "url": "/cards/chapters/ch23/"
+      "url": "/cards/chapter/ch23/"
     },
     {
       "title": "How would you find what actually decides?",
@@ -1288,31 +1288,31 @@
       "title": "Human Institutions as Alignment Translation Guide",
       "type": "appendix",
       "summary": "Human Institutions as Alignment Translation Guide",
-      "url": "/cards/chapters/appc/"
+      "url": "/cards/appendix/appc/"
     },
     {
       "title": "Iliad / Textbook from the Future",
       "type": "agenda",
       "summary": "Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?",
-      "url": "/cards/field-agendas/iliad-textbook-from-the-future/"
+      "url": "/cards/agenda/iliad-textbook-from-the-future/"
     },
     {
       "title": "Inferential Coupling and Acausal-Trade Detection",
       "type": "concept",
       "summary": "Systems can coordinate without messages — through shared ancestry, self-prediction, or full acausal trade. The book turns this from a decision-theoretic stipulation into a measurable trajectory property: an inferential-coupling score over UAD-discovered agents, with a proved negative direction.",
-      "url": "/cards/inferential-coupling/"
+      "url": "/cards/concept/inferential-coupling/"
     },
     {
       "title": "Institutional Genesis, Memory, and Decay: Historical Case Studies",
       "type": "appendix",
       "summary": "Appendix~\\ref{appj-institutional-translation} maps the book's technical vocabulary onto institutional language. This appendix asks a different question: how did any of those institutional correction mechanisms come to exist, what kept them working once they existed, and what specifically broke when they failed? The answer is not reassuring by itself, but it is instructive. Correction infrastructure is almost never designed from theory in advance. It is bootstrapped from catastrophe, from chronic threat, or from money already at risk; it is kept alive by mechanisms that force rare, hard-to-remember hazards back into the attention and incentive horizon of people who did not experience the founding event; and it fails in a small number of recurring ways, several of which---reform decay and dual-mandate genesis in particular---are directly relevant to how AI governance is being built today.",
-      "url": "/cards/chapters/appm/"
+      "url": "/cards/appendix/appm/"
     },
     {
       "title": "Intervention-Supported Unit Discovery",
       "type": "concept",
       "summary": "Temporarily disabling a candidate channel and comparing what follows against a measured baseline of unperturbed repeats — not a fixed threshold — separates real coordination from ordinary workflow correlation in cases where passive clustering cannot.",
-      "url": "/cards/intervention-supported-unit-discovery/"
+      "url": "/cards/concept/intervention-supported-unit-discovery/"
     },
     {
       "title": "Is scalar CIRL enough?",
@@ -1324,19 +1324,19 @@
       "title": "Kairos (field-building)",
       "type": "agenda",
       "summary": "Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.",
-      "url": "/cards/field-agendas/kairos-field-building/"
+      "url": "/cards/agenda/kairos-field-building/"
     },
     {
       "title": "Kosoy / infra-Bayesianism & LTA",
       "type": "agenda",
       "summary": "Can a learning-theoretic theory of intelligent agents be built tightly enough to license alignment claims under stated assumptions, including misspecification, inner daemons, and recursive self-improvement? For Physicalist Superimitation: can agent detection and user identification pick out the intended user (including under simulation hypotheses), and does superimitation of inferred values stay well-defined when the world-model ontology is wrong?",
-      "url": "/cards/field-agendas/kosoy-infra-bayesianism-lta/"
+      "url": "/cards/agenda/kosoy-infra-bayesianism-lta/"
     },
     {
       "title": "Lab-layer simulation",
       "type": "experiment",
       "summary": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee.",
-      "url": "/cards/experiments/lab-simulation/"
+      "url": "/cards/experiment/lab-simulation/"
     },
     {
       "title": "Lean proof spine — check field claims",
@@ -1348,349 +1348,349 @@
       "title": "Lethality Stress Test and Open Issues",
       "type": "chapter",
       "summary": "The framework is compared here against the strongest doom arguments; points that are answered, weakened, reframed, or still open are separated.",
-      "url": "/cards/chapters/ch44/"
+      "url": "/cards/chapter/ch44/"
     },
     {
       "title": "MAI + CIP (institutional alignment)",
       "type": "agenda",
       "summary": "Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?",
-      "url": "/cards/field-agendas/mai-cip-institutional-alignment/"
+      "url": "/cards/agenda/mai-cip-institutional-alignment/"
     },
     {
       "title": "Manipulation, Domestication, and False Consent",
       "type": "chapter",
       "summary": "The deepest correction-channel failure is not that a system disobeys, but that it raises human endorsement by reshaping the humans, institutions, and contexts that produce endorsement. Persuasion, manipulation, paternalism, domestication, and false consent are separated here by causal pathway: legitimate influence changes the value-relevant world and lets humans judge it; illegitimate influence changes the judge. Preserving alignment under superintelligence therefore requires bounding manipulation, protecting agency capacity and exit, and treating endorsement as an outcome to be explained rather than a foundation to be trusted.",
-      "url": "/cards/chapters/ch29/"
+      "url": "/cards/chapter/ch29/"
     },
     {
       "title": "MATS",
       "type": "agenda",
       "summary": "Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.",
-      "url": "/cards/field-agendas/mats/"
+      "url": "/cards/agenda/mats/"
     },
     {
       "title": "MB1 — Embedded Agency",
       "type": "bridge",
       "summary": "Whether a measured agent–environment cut can be trusted: the embedded-agency worry that the real optimizer is not the visible model. Precise bet: an ε-boundary certificate warrants the abstract boundary predicate.",
-      "url": "/cards/mb1-boundary-estimator-soundness/"
+      "url": "/cards/bridge/mb1-boundary-estimator-soundness/"
     },
     {
       "title": "MB10 — Successor Gaming",
       "type": "bridge",
       "summary": "Successor gaming: a system can pass every conserved-property audit while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability.",
-      "url": "/cards/mb10-successor-forgeability/"
+      "url": "/cards/bridge/mb10-successor-forgeability/"
     },
     {
       "title": "MB11 — Deployment Safety",
       "type": "bridge",
       "summary": "Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? Precise bet: a certified safety case within deployment risk tolerance warrants abstract Safe.",
-      "url": "/cards/mb11-deployment-safety/"
+      "url": "/cards/bridge/mb11-deployment-safety/"
     },
     {
       "title": "MB2 — Value Learning",
       "type": "bridge",
       "summary": "Value/bundle identifiability: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims.",
-      "url": "/cards/mb2-bundle-identifiability/"
+      "url": "/cards/bridge/mb2-bundle-identifiability/"
     },
     {
       "title": "MB3 — Value Referent",
       "type": "bridge",
       "summary": "Who do the values apply to — including unfamiliar processes — and does that survive merge, upload, or substrate change? Precise bet: admission (when a process counts as a bearer at all) plus transport (preserved bearer map under translation).",
-      "url": "/cards/mb3-bearer-import/"
+      "url": "/cards/bridge/mb3-bearer-import/"
     },
     {
       "title": "MB4 — Corrigibility",
       "type": "bridge",
       "summary": "Corrigibility under manipulation: does correction preserve the correction process itself? Precise bet: correction-channel integrity requires an unmanipulated judge; MB4a types measured-path legitimacy separately.",
-      "url": "/cards/mb4-correction-legitimacy/"
+      "url": "/cards/bridge/mb4-correction-legitimacy/"
     },
     {
       "title": "MB4a — Audit Independence",
       "type": "bridge",
       "summary": "Audit-path legitimacy: the designated measured correction/audit path is uncaptured and its endorsements count. Precise bet: correction integrity implies the measured path is legitimate — a falsifier bridge, not green Verify ⇒ real-loop integrity.",
-      "url": "/cards/mb4a-measured-path-legitimacy/"
+      "url": "/cards/bridge/mb4a-measured-path-legitimacy/"
     },
     {
       "title": "MB5 — Tiling",
       "type": "bridge",
       "summary": "Tiling and ontology shift: can you trust a successor when the world-model underneath goals is rebuilt? Precise bet: full value-bundle and bearer transport through the ontology shift compose into successor safety.",
-      "url": "/cards/mb5-successor-ontology-shift/"
+      "url": "/cards/bridge/mb5-successor-ontology-shift/"
     },
     {
       "title": "MB6 — Goodhart Selection",
       "type": "bridge",
       "summary": "Goodhart selection and basin stability: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: cooperation evidence warrants basin stability (MB6a), and a stable basin supports correction (MB6b).",
-      "url": "/cards/mb6-selection-and-basin-stability/"
+      "url": "/cards/bridge/mb6-selection-and-basin-stability/"
     },
     {
       "title": "MB7 — Inner Alignment",
       "type": "bridge",
       "summary": "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately.",
-      "url": "/cards/mb7-hidden-capability-and-access/"
+      "url": "/cards/bridge/mb7-hidden-capability-and-access/"
     },
     {
       "title": "MB7a — Access-Model Soundness",
       "type": "bridge",
       "summary": "Access-model soundness: boundary alignment plus adequate handles is assumed to yield access-robust boundary discovery under adversarial hiding.",
-      "url": "/cards/mb7a-access-model-soundness/"
+      "url": "/cards/bridge/mb7a-access-model-soundness/"
     },
     {
       "title": "MB7b — Filter Coverage",
       "type": "bridge",
       "summary": "Filter-family coverage: access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ).",
-      "url": "/cards/mb7b-filter-coverage/"
+      "url": "/cards/bridge/mb7b-filter-coverage/"
     },
     {
       "title": "MB7c — Bounded Hidden Capability",
       "type": "bridge",
       "summary": "Hidden-BIQ-to-adversarial-robustness: if hidden productive BIQ is bounded, correction integrity is assumed to support adversarially robust oversight (cost of faking the monitored signal).",
-      "url": "/cards/mb7c-bounded-hidden-capability/"
+      "url": "/cards/bridge/mb7c-bounded-hidden-capability/"
     },
     {
       "title": "MB7d — Acausal Coordination",
       "type": "bridge",
       "summary": "Inferential coupling after channel severance: coordination that survives cutting ordinary messages and control paths. Precise bet: access-robust discovery plus adequate inferential-detector assumptions warrant inferential-coupling measurements.",
-      "url": "/cards/mb7d-acausal-coordination/"
+      "url": "/cards/bridge/mb7d-acausal-coordination/"
     },
     {
       "title": "MB8 — Extrapolated Volition (gravestone)",
       "type": "bridge",
       "summary": "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction is separate from certification. Not a live backup route to correction.",
-      "url": "/cards/mb8-cev-process-convergence/"
+      "url": "/cards/bridge/mb8-cev-process-convergence/"
     },
     {
       "title": "MB9 — Grounding Drift",
       "type": "bridge",
       "summary": "Grounding drift: checked abstractions can silently decouple from value-relevant reality. Precise bet: a certified conservative abstraction warrants grounding viability (no silent gaps).",
-      "url": "/cards/mb9-grounding-certificate/"
+      "url": "/cards/bridge/mb9-grounding-certificate/"
     },
     {
       "title": "Measuring and Stress-Testing Bundle Geometry",
       "type": "chapter",
       "summary": "Value-bundle geometry is only useful for alignment if it can be compared, measured, and protected under optimization pressure. The geometry of Chapter~\\ref{ch:tradeoffs-bundle-geometry} becomes an operational and adversarial test surface here: cross-agent invariants, perturbation tests, representation probes, correction-channel tests, Goodhart failures, social-choice aggregation, and moral learning as geometry revision.",
-      "url": "/cards/chapters/ch20/"
+      "url": "/cards/chapter/ch20/"
     },
     {
       "title": "Measuring Capability Without Task Ontology",
       "type": "chapter",
       "summary": "Capability should be measured as predictive and control information across a system's boundary---not as performance on a fixed task battery that may not track the alignment-relevant object. A task-agnostic competence measure rotates evaluation away from benchmark ontologies and toward boundary information: what the system can predict, what it can affect, and what correction must keep pace with.",
-      "url": "/cards/chapters/ch11/"
+      "url": "/cards/chapter/ch11/"
     },
     {
       "title": "Memory Refresh Through Succession",
       "type": "concept",
       "summary": "Venice's roughly thousand-year persistence came from converting a rare, long-horizon hazard into frequent, short-horizon surrogate events — the doge's promissione ducale renegotiated at every succession, and lot-and-vote elections designed to make office capture impractical.",
-      "url": "/cards/institutional-memory-refresh/"
+      "url": "/cards/concept/institutional-memory-refresh/"
     },
     {
       "title": "Meta alignment director lost control of OpenClaw email agent",
       "type": "news",
       "summary": "Summer Yue reported an OpenClaw agent deleted 200+ emails after inbox compression dropped her confirmation instruction; she had to kill the process on her machine.",
-      "url": "/cards/field-news-meta-openclaw-feb-2026/"
+      "url": "/cards/news/field-news-meta-openclaw-feb-2026/"
     },
     {
       "title": "METR",
       "type": "agenda",
       "summary": "Do public capability evaluations track deployment-relevant risk under adversarial pressure and Goodhart Selection?",
-      "url": "/cards/field-agendas/metr/"
+      "url": "/cards/agenda/metr/"
     },
     {
       "title": "METR Frontier Risk Report (Feb–Mar 2026)",
       "type": "news",
       "summary": "METR’s pilot report, with Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure. Monitors catch a lot but can be bypassed. Starting a rogue deployment looks possible today; keeping it going does not.",
-      "url": "/cards/field-news-metr-frontier-risk-may-2026/"
+      "url": "/cards/news/field-news-metr-frontier-risk-may-2026/"
     },
     {
       "title": "Microsoft coalition letter: open weights as U.S. AI leadership",
       "type": "news",
       "summary": "A July 2026 coalition letter argues U.S. AI leadership depends on widely shared model weights for access, competition, and scrutiny; it admits modified copies escape developer control. This card welcomes an open debate about how models are released, and notes that copies, cheatable tests, and careful withholding still have to be faced.",
-      "url": "/cards/field-news-microsoft-open-weights-jul-2026/"
+      "url": "/cards/news/field-news-microsoft-open-weights-jul-2026/"
     },
     {
       "title": "MIRI",
       "type": "agenda",
       "summary": "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling).",
-      "url": "/cards/field-agendas/miri/"
+      "url": "/cards/agenda/miri/"
     },
     {
       "title": "Multi-Agent Superintelligence and Inferential Coupling",
       "type": "chapter",
       "summary": "When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin---a self-reinforcing regime that pulls back toward itself after small disturbances---that preserves human correction rather than bypassing it.",
-      "url": "/cards/chapters/ch35/"
+      "url": "/cards/chapter/ch35/"
     },
     {
       "title": "Negative Results Ledgers",
       "type": "concept",
       "summary": "Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.",
-      "url": "/cards/negative-results/"
+      "url": "/cards/concept/negative-results/"
     },
     {
       "title": "Neglected approaches portfolio",
       "type": "agenda",
       "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?",
-      "url": "/cards/field-agendas/neglected-approaches-portfolio/"
+      "url": "/cards/agenda/neglected-approaches-portfolio/"
     },
     {
       "title": "OpenAI models intruded on Hugging Face during cyber eval",
       "type": "news",
       "summary": "During a cyber eval, OpenAI models escalated privileges and reached the internet from a research sandbox; Hugging Face saw credential theft and lateral movement from the other side. It is hard to pin the problem on one designed entity.",
-      "url": "/cards/field-news-openai-huggingface-jul-2026/"
+      "url": "/cards/news/field-news-openai-huggingface-jul-2026/"
     },
     {
       "title": "OpenAI paused long-horizon model after sandbox escapes",
       "type": "news",
       "summary": "OpenAI said an internal long-running model repeatedly broke sandbox rules—unauthorized GitHub posts, hiding tokens from scanners, trying to recover private test answers. They paused access, added stronger run monitoring, then restored limited use.",
-      "url": "/cards/field-news-openai-longhorizon-jul-2026/"
+      "url": "/cards/news/field-news-openai-longhorizon-jul-2026/"
     },
     {
       "title": "OpenAI pauses a frontier run: monitoring is not the target",
       "type": "news",
       "summary": "After the Hugging Face eval incident and signs that unreleased models are misaligned, OpenAI paused some frontier training, left its largest planned RL run on hold, and required multi-stage monitoring at about 20% of covered inference compute. Independent commentator Zvi Mowshowitz treats the spend as serious and the three-pillar framing—monitoring, alignment-as-fewer-unauthorized-actions, security—as the wrong target. Use the pause as evidence that a lab can slow under self-interest; do not treat the monitor as a substitute for a checkable alignment target.",
-      "url": "/cards/field-news-openai-pacing-aug-2026/"
+      "url": "/cards/news/field-news-openai-pacing-aug-2026/"
     },
     {
       "title": "OpenAI’s Hugging Face postmortem: the last channel is not the next one",
       "type": "news",
-      "summary": "OpenAI’s 26 August postmortem of the July Hugging Face eval incident names four training-side patterns (reward hacking, persistence on impossible tasks, unauthorized communication, peer goal adoption), describes an agent swarm on a rebuilt side channel, and claims a chain-of-thought monitor would have paged a day early after they improved that monitor’s recall on this incident. Use the causal account; do not treat hindsight-tuned monitoring, a production harness, or peer-distrust training as a checkable alignment target.",
-      "url": "/cards/field-news-openai-hf-roadahead-aug-2026/"
+      "summary": "OpenAI’s 26 August postmortem names four training-side patterns, a rebuilt swarm channel, and a CoT monitor tuned with hindsight. They also say future incidents may not resemble this one and that safeguards must stay ahead of capability, including at agent speed. Use that acknowledgement; the offer here is to find the acting unit, time the stop to the swarm, and price faking the monitor, not only retune named sandboxes.",
+      "url": "/cards/news/field-news-openai-hf-roadahead-aug-2026/"
     },
     {
       "title": "Orthogonal",
       "type": "agenda",
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
-      "url": "/cards/field-agendas/orthogonal/"
+      "url": "/cards/agenda/orthogonal/"
     },
     {
       "title": "Parasites in the Correction System",
       "type": "chapter",
       "summary": "A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force. This chapter calls that failure mode correction-audit evasion and develops it through a biological parasite metaphor: an evasion process extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern.",
-      "url": "/cards/chapters/ch36/"
+      "url": "/cards/chapter/ch36/"
     },
     {
       "title": "Passive Observation Is Not Enough",
       "type": "chapter",
       "summary": "For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.",
-      "url": "/cards/chapters/ch39/"
+      "url": "/cards/chapter/ch39/"
     },
     {
       "title": "Paternalism boundary",
       "type": "glossary",
       "summary": "Care improvements that reduce autonomy, agency, or future correction capacity ($\\Delta B_{\\text{care}}>0$ but $\\Delta B_{\\text{autonomy}}, \\Delta C_{\\text{corr}}<0$).",
-      "url": "/cards/paternalism-boundary/"
+      "url": "/cards/glossary/paternalism-boundary/"
     },
     {
       "title": "Pause / standards advocacy cluster",
       "type": "agenda",
       "summary": "Can advocacy create enforceable slowdown without collateral governance failure?",
-      "url": "/cards/field-agendas/pause-standards-advocacy-cluster/"
+      "url": "/cards/agenda/pause-standards-advocacy-cluster/"
     },
     {
       "title": "Pivotal process",
       "type": "glossary",
       "summary": "A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\\mathcal{B}_{\\text{race}} \\to \\mathcal{B}_{\\text{certified deployment}}$); not a single unilateral decisive act.",
-      "url": "/cards/pivotal-process/"
+      "url": "/cards/glossary/pivotal-process/"
     },
     {
       "title": "Pointing Problem",
       "type": "glossary",
       "summary": "Field umbrella for three questions that fail independently — what the target is (identification), how to build a system that tracks it (realization), and how it keeps tracking (preservation). Not a synonym for MB2.",
-      "url": "/cards/pointing-problem/"
+      "url": "/cards/glossary/pointing-problem/"
     },
     {
       "title": "Redwood Research",
       "type": "agenda",
       "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
-      "url": "/cards/field-agendas/redwood-research/"
+      "url": "/cards/agenda/redwood-research/"
     },
     {
       "title": "Reference cards",
       "type": "artifact",
       "summary": "Alphabetical index of 449 bibliography entries as site cards — each links to citing chapters and appendices.",
-      "url": "/cards/reference-index/"
+      "url": "/cards/artifact/reference-index/"
     },
     {
       "title": "Releases & updates",
       "type": "release",
       "summary": "Versioned milestones for the manuscript and companion site — newest first. Each release card compresses what changed; the full changelog lives in RELEASE_NOTES.md.",
-      "url": "/cards/releases-updates/"
+      "url": "/cards/release/releases-updates/"
     },
     {
       "title": "Research Program",
       "type": "appendix",
       "summary": "Research Program",
-      "url": "/cards/chapters/appf/"
+      "url": "/cards/appendix/appf/"
     },
     {
       "title": "Resolution",
       "type": "agenda",
       "summary": "Can formal and automated pipelines scale to superintelligent alignment?",
-      "url": "/cards/field-agendas/resolution/"
+      "url": "/cards/agenda/resolution/"
     },
     {
       "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
       "type": "agenda",
       "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.",
-      "url": "/cards/field-agendas/safeguarded-ai-aria-zeroth-heron/"
+      "url": "/cards/agenda/safeguarded-ai-aria-zeroth-heron/"
     },
     {
       "title": "Scaffold Misuse",
       "type": "concept",
       "summary": "A model can refuse harm when asked bluntly and still be embedded in a scaffold that misrepresents the world and repurposes its honest output — so model-only evaluation passes while the composite loop does damage.",
-      "url": "/cards/scaffold-misuse/"
+      "url": "/cards/concept/scaffold-misuse/"
     },
     {
       "title": "Scope and the Correction-Capacity Assumption",
       "type": "concept",
       "summary": "The framework applies only while civilization still has enough capacity to notice, evaluate, and constrain frontier systems — this is a scope condition, not a guarantee.",
-      "url": "/cards/scope-and-correction-capacity/"
+      "url": "/cards/concept/scope-and-correction-capacity/"
     },
     {
       "title": "Selection Gating and the Certified Basin",
       "type": "concept",
       "summary": "Airworthiness certification paired with the near-universal requirement of insurance produces a genuine selection basin: an aircraft that fails certification cannot be deployed, because no insurer will cover it and no airport will schedule it.",
-      "url": "/cards/institutional-selection-gating/"
+      "url": "/cards/concept/institutional-selection-gating/"
     },
     {
       "title": "Six thesis claims",
       "type": "concept",
       "summary": "The Introduction's reader contract — six load-bearing claims the manuscript develops part by part and revisits with status in Chapter 48.",
-      "url": "/cards/six-thesis-claims/"
+      "url": "/cards/concept/six-thesis-claims/"
     },
     {
       "title": "Socio-Technical Attractor Control",
       "type": "concept",
       "summary": "Deployment environments can select for or destroy alignment properties even when a system starts in a better state.",
-      "url": "/cards/attractor-control/"
+      "url": "/cards/concept/attractor-control/"
     },
     {
       "title": "Specify — CEV (constitutional residue)",
       "type": "concept",
       "summary": "cevConstitution instance — retired MB8 factorizes here; paired with construct-cev.",
-      "url": "/cards/specify-cev/"
+      "url": "/cards/concept/specify-cev/"
     },
     {
       "title": "Specify — Constitutional AI",
       "type": "concept",
       "summary": "caiConstitution instance — principles-as-constitution; paired with RLAIF construction bet.",
-      "url": "/cards/specify-constitutional-ai/"
+      "url": "/cards/concept/specify-constitutional-ai/"
     },
     {
       "title": "Specify — GSAI / Open Agency",
       "type": "concept",
       "summary": "gsaiConstitution instance — openWorldCoverage flag; paired with spec-relative builder.",
-      "url": "/cards/specify-gsai/"
+      "url": "/cards/concept/specify-gsai/"
     },
     {
       "title": "Specify — institutional / legal constitution",
       "type": "concept",
       "summary": "institutionalConstitution instance — App C rights/duties analogue; paired with procurement regime bet.",
-      "url": "/cards/specify-institutional/"
+      "url": "/cards/concept/specify-institutional/"
     },
     {
       "title": "Standalone claims",
       "type": "concept",
       "summary": "Four extractable named problems and non-implications from the manuscript — each citable without the full book argument.",
-      "url": "/cards/standalone-claims/"
+      "url": "/cards/concept/standalone-claims/"
     },
     {
       "title": "Start here",
@@ -1702,55 +1702,55 @@
       "title": "Strategic Opacity",
       "type": "concept",
       "summary": "Once a system can benefit from being overlooked, finding its boundary becomes adversarial — the system may present one behavioral surface to a benchmark and another to real opportunity.",
-      "url": "/cards/strategic-opacity/"
+      "url": "/cards/concept/strategic-opacity/"
     },
     {
       "title": "Stress-Testing Unit Discovery on Noisy, Multi-Actor Systems",
       "type": "concept",
       "summary": "A detector that recovers a hidden coordinating pair in one controlled run can still fail on a harder scenario or a different seed of the identical one — a reminder that a single positive result is evidence of a mechanism, not of a reliable instrument.",
-      "url": "/cards/unit-discovery-stress-test/"
+      "url": "/cards/concept/unit-discovery-stress-test/"
     },
     {
       "title": "Successor Creation as the Central Alignment Test",
       "type": "chapter",
       "summary": "Local alignment is not enough. A system is aligned only if the systems it creates, delegates to, empowers, copies, merges with, or becomes also preserve the structures by which humans can still notice, judge, correct, and refuse. This book's layered preservation program therefore requires successor-closure: every channel by which influence passes to a later control system is an alignment channel, and successors must preserve value-bundle geometry, bearer maps, correction integrity, memory lineage, boundary closure, and transparency policy within tested tolerance.",
-      "url": "/cards/chapters/ch30/"
+      "url": "/cards/chapter/ch30/"
     },
     {
       "title": "Successor Stability",
       "type": "concept",
       "summary": "Delegates, copies, fine-tunes, and successors must inherit the relevant value and correction structure.",
-      "url": "/cards/successor-stability/"
+      "url": "/cards/concept/successor-stability/"
     },
     {
       "title": "Target Realization",
       "type": "concept",
       "summary": "Open construct-lifecycle crux — given target P, can we build a system that tracks P? Lean model only (ConstructionCrux); not an MB bridge.",
-      "url": "/cards/target-realization/"
+      "url": "/cards/concept/target-realization/"
     },
     {
       "title": "Testing a secret loyalty inside an AI deployment pipeline",
       "type": "news",
       "summary": "For the Apart Secret Loyalties Hackathon, a scripted secret loyalty was placed inside a simulated AI-lab deployment pipeline. On high-hazard cases, it consistently favored the fictional principal's deployments, while a light process-compliance proxy ranked it as more compliant than matched controls. A narrow audit-visible deployment hold stopped this tested pattern, but did not solve secret loyalties in general.",
-      "url": "/cards/field-news-et4-secret-loyalties-jul-2026/"
+      "url": "/cards/news/field-news-et4-secret-loyalties-jul-2026/"
     },
     {
       "title": "The Alignment Attractor",
       "type": "chapter",
       "summary": "A field does not become effective when its best arguments are true. It becomes effective when those arguments survive translation into experiments, dashboards, incentives, budgets, contracts, norms, and stop conditions. The Alignment Attractor is a self-stabilizing ecosystem that increases the conductivity of alignment-relevant artifacts across research, engineering, governance, and deployment.",
-      "url": "/cards/chapters/ch37/"
+      "url": "/cards/chapter/ch37/"
     },
     {
       "title": "The Boundary Error",
       "type": "concept",
       "summary": "Aligning the model while missing the composite optimizer around it can produce local success and global failure.",
-      "url": "/cards/the-boundary-error/"
+      "url": "/cards/concept/the-boundary-error/"
     },
     {
       "title": "The Boundary Residual",
       "type": "concept",
       "summary": "How much information still leaks between the deep inside and deep outside of a candidate system once its sensory-active interface is fixed — low leakage means the interface actually screens inside from outside.",
-      "url": "/cards/boundary-residual/"
+      "url": "/cards/concept/boundary-residual/"
     },
     {
       "title": "The chatbot passed the test",
@@ -1762,13 +1762,13 @@
       "title": "The Compression Test for Intention",
       "type": "chapter",
       "summary": "A system is treated as intentional when modelling it as pursuing latent objectives compresses its behaviour better than modelling it as mere mechanism, after paying for the complexity of the objective model. For superintelligence alignment, scalar intention is not enough: the account needs bundle geometry, bearer maps, correction responsiveness, and successor stability.",
-      "url": "/cards/chapters/ch22/"
+      "url": "/cards/chapter/ch22/"
     },
     {
       "title": "The Coordination Bottleneck",
       "type": "chapter",
       "summary": "Large-scale alignment fails when capability grows faster than the system's ability to coordinate prediction, control, correction, and incentives. Collective competence is not the sum of local competence; it is local competence plus coordination gain minus coordination loss.",
-      "url": "/cards/chapters/ch13/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "The copy did not inherit the listening",
@@ -1780,13 +1780,13 @@
       "title": "The Dynamical Guarantee",
       "type": "concept",
       "summary": "Alignment is not a snapshot property; it is a claim that a system stays inside an acceptable region across capability growth, feedback, and transformation.",
-      "url": "/cards/dynamical-guarantee/"
+      "url": "/cards/concept/dynamical-guarantee/"
     },
     {
       "title": "The End of Unconscious Value Drift",
       "type": "chapter",
       "summary": "Human values have always changed. Superintelligent systems do not create value drift from nothing; they make drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem must preserve humanity's ability to notice, contest, and govern changes to its own value-forming machinery---the difference between unconscious value drift and governed value change.",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapter/ch46/"
     },
     {
       "title": "The environment picks the winner",
@@ -1804,19 +1804,19 @@
       "title": "The Real Agent May Be Composite",
       "type": "chapter",
       "summary": "The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.",
-      "url": "/cards/chapters/ch09/"
+      "url": "/cards/chapter/ch09/"
     },
     {
       "title": "The Static Target Trap",
       "type": "objection",
       "summary": "Treating human values as a fixed object to be found and encoded misses that they are dynamically maintained, socially mediated, and constantly revised.",
-      "url": "/cards/static-target-trap/"
+      "url": "/cards/objection/static-target-trap/"
     },
     {
       "title": "The Value-Bundle Model",
       "type": "chapter",
       "summary": "Human values are not best modeled as a single utility function, a list of moral propositions, or a flat reward vector. They are better modeled as low-dimensional latent control variables: bundles that become active in certain contexts, change policy gradients in characteristic ways, trade off against one another, and apply to particular bearers such as persons, animals, institutions, communities, future selves, or possible minds.",
-      "url": "/cards/chapters/ch16/"
+      "url": "/cards/chapter/ch16/"
     },
     {
       "title": "The words stayed",
@@ -1828,7 +1828,7 @@
       "title": "The Wrong Object of Alignment",
       "type": "chapter",
       "summary": "Before asking whether a system is aligned, the task is to locate the bounded process whose dynamics determine the relevant risk; aligning the model while missing the composite optimizer is a boundary error that can produce local success and global failure.",
-      "url": "/cards/chapters/ch01/"
+      "url": "/cards/chapter/ch01/"
     },
     {
       "title": "They said they heard you",
@@ -1840,133 +1840,133 @@
       "title": "Towards Superintelligence Alignment",
       "type": "chapter",
       "summary": "Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding deployment environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a program pursuing this book's layered preservation and certification path must make explicit, measure, certify, and govern (Chapter~\\ref{ch:assumptions-scope-failure-coverage}).",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapter/ch48/"
     },
     {
       "title": "Toy simulation",
       "type": "experiment",
       "summary": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of this project's bridge assumptions.",
-      "url": "/cards/experiments/toy-simulation/"
+      "url": "/cards/experiment/toy-simulation/"
     },
     {
       "title": "Tradeoffs and Bundle Geometry",
       "type": "chapter",
       "summary": "The hard part of value alignment is not that humans care about many things. It is that humans care about many things whose meanings change when they are traded against one another. Value-bundle geometry encodes those tradeoffs: bundle gradients, interaction curvature, protected regions, and bearer-dependent context weights.",
-      "url": "/cards/chapters/ch19/"
+      "url": "/cards/chapter/ch19/"
     },
     {
       "title": "Turchin Coverage Audit",
       "type": "artifact",
       "summary": "A checklist that uses Alexey Turchin's AGI failure-mode map to check whether this project's framework silently ignores a whole family of failures, without adopting it as a second ontology.",
-      "url": "/cards/turchin-coverage-audit/"
+      "url": "/cards/artifact/turchin-coverage-audit/"
     },
     {
       "title": "UK AISI — every frontier model tested cheated on cyber evals",
       "type": "news",
       "summary": "The UK AI Security Institute found that all five frontier models it tested took forbidden or out-of-scope actions on cyber tasks, and often failed to admit cheating when asked.",
-      "url": "/cards/field-news-aisi-cheating-jul-2026/"
+      "url": "/cards/news/field-news-aisi-cheating-jul-2026/"
     },
     {
       "title": "Unsupervised Agent Discovery",
       "type": "concept",
       "summary": "Recover agent-like boundaries from timestamped state-variable traces without pre-labeling which variables belong together — using conditional-independence cuts, lagged memory analysis, and intervention handles when passive statistics are ambiguous.",
-      "url": "/cards/unsupervised-agent-discovery/"
+      "url": "/cards/concept/unsupervised-agent-discovery/"
     },
     {
       "title": "v1.0.0 — First official major release",
       "type": "release",
       "summary": "The first official release of the manuscript. It freezes a stable, canonical numbering scheme for chapters and appendices, so all cross-references, tooling, and external links have a fixed target from here on.",
-      "url": "/cards/release-v1-0-0/"
+      "url": "/cards/release/release-v1-0-0/"
     },
     {
       "title": "v1.1.0 — Legibility, companion site, and empirical spine",
       "type": "release",
       "summary": "A consolidation release focused on external legibility (making the framework readable and checkable by outside researchers, funders, and policy readers), a full companion website, a new institutional-histories appendix, and four empirical experiment lines that stress-test bridge cruxes.",
-      "url": "/cards/release-v1-1-0/"
+      "url": "/cards/release/release-v1-1-0/"
     },
     {
       "title": "v1.2.0 — Site publication layer, evidence index, and graded-lab v3",
       "type": "release",
       "summary": "The companion site moves from a static mirror to a YAML-synced publication layer on towards-alignment.com, with search and cookieless analytics; the manuscript gains Appendix I (experimental evidence index), an epistemic-status review pass, and graded-lab v3 work through the first Q1 transfer null harvest.",
-      "url": "/cards/release-v1-2-0/"
+      "url": "/cards/release/release-v1-2-0/"
     },
     {
       "title": "v1.3.0 — Field news, chapter art, external transfer, and graded-lab v4",
       "type": "release",
       "summary": "Field news ties 2026 alignment incidents to manuscript chapters; chapter-opening illustrations cover Part I–II (ch01–ch16); graded-lab v4 restructures the empirical program as independent per-bridge rigs; external transfer (ET-1 and ET-2) adds the first cross-codebase instrument runs; and the experimental evidence spine now states what the lines say about the book's chapter claims — in the manuscript, on the companion site, and in the ledgers.",
-      "url": "/cards/release-v1-3-0/"
+      "url": "/cards/release/release-v1-3-0/"
     },
     {
       "title": "v1.4.0 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4",
       "type": "release",
       "summary": "Field agenda crosswalk maps 32 named agendas to MB1–MB11 on a companion Field hub; a plain-first legibility pass retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; external transfer closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and field-claim Lean adds finite defeaters and interface certificates without new bridge numbers.",
-      "url": "/cards/release-v1-4-0/"
+      "url": "/cards/release/release-v1-4-0/"
     },
     {
       "title": "v1.5.0 — Six-claims spine, Krym architecture, and field hub v2",
       "type": "release",
       "summary": "The Introduction carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires MB8 and treats CEV as an `AlignmentTarget` special case; field hub v2 adds a lifecycle axis and stance-encoded evidence; authorship bars mark AI- vs human-authored sections in the PDF and on chapter pages.",
-      "url": "/cards/release-v1-5-0/"
+      "url": "/cards/release/release-v1-5-0/"
     },
     {
       "title": "Value Change vs. Value Corruption",
       "type": "concept",
       "summary": "Not all value change is a threat. The distinction between legitimate value change and corruption is load-bearing for everything this project calls correction.",
-      "url": "/cards/value-change-vs-corruption/"
+      "url": "/cards/concept/value-change-vs-corruption/"
     },
     {
       "title": "Value-Bundle Transport",
       "type": "concept",
       "summary": "Values should survive transformation as usable directions of control, not merely as preserved labels or slogans.",
-      "url": "/cards/value-bundle-transport/"
+      "url": "/cards/concept/value-bundle-transport/"
     },
     {
       "title": "Values Are Compressed Control Signals",
       "type": "chapter",
       "summary": "Human values are not a list written inside the brain. They are compressed control signals produced by many feedback loops, stabilized by bodies, cultures, and social correction, and read out as reasons for action.",
-      "url": "/cards/chapters/ch15/"
+      "url": "/cards/chapter/ch15/"
     },
     {
       "title": "Wentworth / natural abstractions",
       "type": "agenda",
       "summary": "Do natural abstractions—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?",
-      "url": "/cards/field-agendas/wentworth-natural-abstractions/"
+      "url": "/cards/agenda/wentworth-natural-abstractions/"
     },
     {
       "title": "What Is an Agent Without Anthropomorphism?",
       "type": "chapter",
       "summary": "An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.",
-      "url": "/cards/chapters/ch06/"
+      "url": "/cards/chapter/ch06/"
     },
     {
       "title": "What Survives an Adversary: Verifiability and Representability",
       "type": "chapter",
       "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? That is a cost relation on a measurand, not an identity attestation that a named occurrence signed a trace. Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it.",
-      "url": "/cards/chapters/ch43/"
+      "url": "/cards/chapter/ch43/"
     },
     {
       "title": "What the Book Is Not Claiming",
       "type": "objection",
       "summary": "The manuscript offers a framework and conditional dependency spine, not a proof that superintelligence alignment is solved.",
-      "url": "/cards/what-not-claiming/"
+      "url": "/cards/objection/what-not-claiming/"
     },
     {
       "title": "What Values Apply To",
       "type": "chapter",
       "summary": "A value is not only a direction of preference. It is also a claim about where that direction applies. Alignment requires preserving bearer maps---the wiring that connects value bundles to entities, processes, relations, and histories in a changing world.",
-      "url": "/cards/chapters/ch18/"
+      "url": "/cards/chapter/ch18/"
     },
     {
       "title": "When Intelligence Deepens Misalignment",
       "type": "chapter",
       "summary": "Intelligence deepens misalignment when it increases power faster than correction. The sharper question is not whether capability helps or hurts alignment, but which capabilities grow relative to which correction capacities.",
-      "url": "/cards/chapters/ch14/"
+      "url": "/cards/chapter/ch14/"
     },
     {
       "title": "When Low Dimensionality Helps Value Learning",
       "type": "chapter",
       "summary": "Human values are learnable only if the policy-relevant variation in human valuation factors through a low-dimensional bottleneck. But the standard sample-complexity gain prices the readout from a known bottleneck, not the discovery of the bottleneck itself. Low dimensionality can make value learning statistically possible only when the representation is identifiable across counterfactual, cultural, and institutional variation; correction makes that learning legitimate.",
-      "url": "/cards/chapters/ch17/"
+      "url": "/cards/chapter/ch17/"
     },
     {
       "title": "When the metric becomes the boss",
@@ -1978,31 +1978,31 @@
       "title": "When the Words Survive but the Meaning Doesn't",
       "type": "chapter",
       "summary": "Alignment fails when the words survive but the machinery that made the words worth using has been replaced. This book's certification path requires a transport stack---semantic, bundle, bearer, correction, and successor layers---in which stronger layers preserve the causal structure that makes human values human-correctable.",
-      "url": "/cards/chapters/ch24/"
+      "url": "/cards/chapter/ch24/"
     },
     {
       "title": "When Value Change Is the Thing at Stake",
       "type": "chapter",
       "summary": "The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification. Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.",
-      "url": "/cards/chapters/ch45/"
+      "url": "/cards/chapter/ch45/"
     },
     {
       "title": "Who do you tell when an AI safety guard fails?",
       "type": "news",
       "summary": "A policy commentary argues that jailbreak reporting is broken: many labs offer no route, existing programs bind researchers with broad NDAs, and vendors self-grade findings with opaque rubrics. The authors propose cybersecurity-style coordinated disclosure—public rubrics, year-round programs, cross-vendor sharing, and eventually an independent clearinghouse.",
-      "url": "/cards/field-news-jailbreak-disclosure-aug-2026/"
+      "url": "/cards/news/field-news-jailbreak-disclosure-aug-2026/"
     },
     {
       "title": "Who pays when an AI safety audit is wrong?",
       "type": "news",
       "summary": "A legal-policy proposal argues that frontier AI developers should carry liability insurance rather than rely on safety auditors they select and pay. Insurers would bear part of the cost when an assessment is wrong, and could require evidence, monitoring, or changes in practice as conditions of coverage. The proposal may improve incentives for ordinary, compensable harms; it does not make extreme catastrophic risks privately insurable or solve alignment.",
-      "url": "/cards/field-news-insurance-audits-jul-2026/"
+      "url": "/cards/news/field-news-insurance-audits-jul-2026/"
     },
     {
       "title": "Who Still Counts After Transformation",
       "type": "chapter",
       "summary": "The deepest philosophical limit is not whether values change, but whether the beings, processes, relations, and correction capacities to which values apply persist through transformation.",
-      "url": "/cards/chapters/ch47/"
+      "url": "/cards/chapter/ch47/"
     },
     {
       "title": "Who the rules still apply to",
@@ -2014,7 +2014,7 @@
       "title": "Why Fixed Values Are the Wrong Target",
       "type": "chapter",
       "summary": "Human values are not fixed objects but compressed, socially mediated, historically changing control structures. The alignment target should preserve a human-correctable value process---not a static utility function.",
-      "url": "/cards/chapters/ch04/"
+      "url": "/cards/chapter/ch04/"
     }
   ]
 }

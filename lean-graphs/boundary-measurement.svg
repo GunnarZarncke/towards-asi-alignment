@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-586.91 1175.08,-586.91 1175.08,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="585.54" y="-569.01" font-family="Helvetica,sans-Serif" font-size="11.00">Spine I: Boundary discovery and adversarial measurement</text>
 <!-- P05 -->
-<a xlink:href="../../cards/boundary-residual/" class="lean-graph-node"><g id="node1" class="node"><title>P05</title>
+<a xlink:href="../../cards/bridge/boundary-residual/" class="lean-graph-node"><g id="node1" class="node"><title>P05</title>
 <path fill="#eaf3ff" stroke="#444444" d="M774.31,-415.71C774.31,-415.71 685.74,-415.71 685.74,-415.71 679.74,-415.71 673.74,-409.71 673.74,-403.71 673.74,-403.71 673.74,-391.71 673.74,-391.71 673.74,-385.71 679.74,-379.71 685.74,-379.71 685.74,-379.71 774.31,-379.71 774.31,-379.71 780.31,-379.71 786.31,-385.71 786.31,-391.71 786.31,-391.71 786.31,-403.71 786.31,-403.71 786.31,-409.71 780.31,-415.71 774.31,-415.71"/>
 <text xml:space="preserve" text-anchor="middle" x="730.03" y="-395.01" font-family="Helvetica,sans-Serif" font-size="9.00">P05 Boundary predicate</text>
 </g></a>
@@ -49,7 +49,7 @@
 <polygon fill="#555555" stroke="#555555" points="732.48,-316.56 730.03,-309.56 727.58,-316.56 732.48,-316.56"/>
 </g>
 <!-- MB7a -->
-<a xlink:href="../../cards/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
+<a xlink:href="../../cards/bridge/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M486.16,-305.92C486.16,-305.92 390.03,-291.49 390.03,-291.49 384.1,-290.6 384.1,-288.81 390.03,-287.92 390.03,-287.92 486.16,-273.49 486.16,-273.49 492.09,-272.6 503.96,-272.6 509.89,-273.49 509.89,-273.49 606.02,-287.92 606.02,-287.92 611.96,-288.81 611.96,-290.6 606.02,-291.49 606.02,-291.49 509.89,-305.92 509.89,-305.92 503.96,-306.81 492.09,-306.81 486.16,-305.92"/>
 <text xml:space="preserve" text-anchor="middle" x="498.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">MB7a Access&#45;model soundness</text>
 </g></a>
@@ -154,7 +154,7 @@
 <polygon fill="#555555" stroke="#555555" points="161.74,-313.6 155.63,-309.4 157.79,-316.49 161.74,-313.6"/>
 </g>
 <!-- MB7b -->
-<a xlink:href="../../cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
+<a xlink:href="../../cards/bridge/mb7b-filter-coverage/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M200.2,-186.1C200.2,-186.1 117.7,-172.11 117.7,-172.11 111.78,-171.11 111.78,-169.1 117.7,-168.1 117.7,-168.1 200.2,-154.11 200.2,-154.11 206.11,-153.11 217.94,-153.11 223.86,-154.11 223.86,-154.11 306.35,-168.1 306.35,-168.1 312.27,-169.1 312.27,-171.11 306.35,-172.11 306.35,-172.11 223.86,-186.1 223.86,-186.1 217.94,-187.1 206.11,-187.1 200.2,-186.1"/>
 <text xml:space="preserve" text-anchor="middle" x="212.03" y="-167.41" font-family="Helvetica,sans-Serif" font-size="9.00">MB7b Filter&#45;family coverage</text>
 </g></a>
@@ -224,7 +224,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="230.6,-191.59 224.43,-187.49 226.7,-194.55 230.6,-191.59"/>
 </g>
 <!-- MB1 -->
-<a xlink:href="../../cards/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node15" class="node"><title>MB1</title>
+<a xlink:href="../../cards/bridge/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node15" class="node"><title>MB1</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M243.22,-559.59C243.22,-559.59 166.47,-545.82 166.47,-545.82 160.57,-544.76 160.57,-542.65 166.47,-541.59 166.47,-541.59 243.22,-527.82 243.22,-527.82 249.12,-526.76 260.93,-526.76 266.84,-527.82 266.84,-527.82 343.58,-541.59 343.58,-541.59 349.49,-542.65 349.49,-544.76 343.58,-545.82 343.58,-545.82 266.84,-559.59 266.84,-559.59 260.93,-560.65 249.12,-560.65 243.22,-559.59"/>
 <text xml:space="preserve" text-anchor="middle" x="255.03" y="-541.01" font-family="Helvetica,sans-Serif" font-size="9.00">MB1 Estimator soundness</text>
 </g></a>
@@ -249,7 +249,7 @@
 <text xml:space="preserve" text-anchor="middle" x="424.42" y="-233.31" font-family="Helvetica,sans-Serif" font-size="8.00">MB7 chain</text>
 </g>
 <!-- MB7d_IN -->
-<a xlink:href="../../cards/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
+<a xlink:href="../../cards/bridge/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" stroke-dasharray="5,2" points="457.03,-199.71 336.47,-170.11 457.03,-140.51 577.58,-170.11 457.03,-199.71"/>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-172.81" font-family="Helvetica,sans-Serif" font-size="9.00">To MB7d</text>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-162.01" font-family="Helvetica,sans-Serif" font-size="9.00">Inferential detector validity</text>
@@ -274,7 +274,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="525.08,-102.44 528.2,-95.71 521.57,-99.03 525.08,-102.44"/>
 </g>
 <!-- MB9 -->
-<a xlink:href="../../cards/mb9-grounding-certificate/" class="lean-graph-node"><g id="node19" class="node"><title>MB9</title>
+<a xlink:href="../../cards/bridge/mb9-grounding-certificate/" class="lean-graph-node"><g id="node19" class="node"><title>MB9</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M1039.38,-196.83C1039.38,-196.83 942.63,-172.98 942.63,-172.98 936.8,-171.54 936.8,-168.67 942.63,-167.23 942.63,-167.23 1039.38,-143.38 1039.38,-143.38 1045.2,-141.94 1056.85,-141.94 1062.68,-143.38 1062.68,-143.38 1159.42,-167.23 1159.42,-167.23 1165.25,-168.67 1165.25,-171.54 1159.42,-172.98 1159.42,-172.98 1062.68,-196.83 1062.68,-196.83 1056.85,-198.27 1045.2,-198.27 1039.38,-196.83"/>
 <text xml:space="preserve" text-anchor="middle" x="1051.03" y="-172.81" font-family="Helvetica,sans-Serif" font-size="9.00">MB9 Grounding certificate</text>
 <text xml:space="preserve" text-anchor="middle" x="1051.03" y="-162.01" font-family="Helvetica,sans-Serif" font-size="9.00">soundness</text>

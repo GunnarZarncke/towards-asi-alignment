@@ -191,7 +191,7 @@
 <polygon fill="#555555" stroke="#555555" points="609.14,-390.83 606.02,-384.1 604.26,-391.3 609.14,-390.83"/>
 </g>
 <!-- MB8 -->
-<a xlink:href="../../cards/mb8-cev-process-convergence/" class="lean-graph-node"><g id="node23" class="node"><title>MB8</title>
+<a xlink:href="../../cards/bridge/mb8-cev-process-convergence/" class="lean-graph-node"><g id="node23" class="node"><title>MB8</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M1039.68,-172.04C1039.68,-172.04 940.25,-157.51 940.25,-157.51 934.31,-156.64 934.31,-154.91 940.25,-154.04 940.25,-154.04 1039.68,-139.51 1039.68,-139.51 1045.62,-138.64 1057.49,-138.64 1063.43,-139.51 1063.43,-139.51 1162.86,-154.04 1162.86,-154.04 1168.8,-154.91 1168.8,-156.64 1162.86,-157.51 1162.86,-157.51 1063.43,-172.04 1063.43,-172.04 1057.49,-172.91 1045.62,-172.91 1039.68,-172.04"/>
 <text xml:space="preserve" text-anchor="middle" x="1051.55" y="-153.07" font-family="Helvetica,sans-Serif" font-size="9.00">MB8 CEV / process convergence</text>
 </g></a>
@@ -279,7 +279,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1449.72" y="-359.57" font-family="Helvetica,sans-Serif" font-size="8.00">motivates gate</text>
 </g>
 <!-- MB10 -->
-<a xlink:href="../../cards/mb10-successor-forgeability/" class="lean-graph-node"><g id="node24" class="node"><title>MB10</title>
+<a xlink:href="../../cards/bridge/mb10-successor-forgeability/" class="lean-graph-node"><g id="node24" class="node"><title>MB10</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" stroke-dasharray="5,2" points="1365.55,-196.17 1230.49,-155.77 1365.55,-115.37 1500.61,-155.77 1365.55,-196.17"/>
 <text xml:space="preserve" text-anchor="middle" x="1365.55" y="-163.87" font-family="Helvetica,sans-Serif" font-size="9.00">MB10</text>
 <text xml:space="preserve" text-anchor="middle" x="1365.55" y="-153.07" font-family="Helvetica,sans-Serif" font-size="9.00">Conserved&#45;property signature</text>
@@ -322,7 +322,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1446.88" y="-237.37" font-family="Helvetica,sans-Serif" font-size="8.00">closes gap</text>
 </g>
 <!-- MB4 -->
-<a xlink:href="../../cards/mb4-correction-legitimacy/" class="lean-graph-node"><g id="node19" class="node"><title>MB4</title>
+<a xlink:href="../../cards/bridge/mb4-correction-legitimacy/" class="lean-graph-node"><g id="node19" class="node"><title>MB4</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M1053.74,-648.62C1053.74,-648.62 977.01,-634.86 977.01,-634.86 971.1,-633.8 971.1,-631.68 977.01,-630.62 977.01,-630.62 1053.74,-616.86 1053.74,-616.86 1059.65,-615.8 1071.46,-615.8 1077.36,-616.86 1077.36,-616.86 1154.1,-630.62 1154.1,-630.62 1160,-631.68 1160,-633.8 1154.1,-634.86 1154.1,-634.86 1077.36,-648.62 1077.36,-648.62 1071.46,-649.68 1059.65,-649.68 1053.74,-648.62"/>
 <text xml:space="preserve" text-anchor="middle" x="1065.55" y="-630.04" font-family="Helvetica,sans-Serif" font-size="9.00">MB4 Correction legitimacy</text>
 </g></a>
@@ -339,7 +339,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="1114.74,-452.12 1114.12,-444.73 1109.99,-450.89 1114.74,-452.12"/>
 </g>
 <!-- MB5 -->
-<a xlink:href="../../cards/mb5-successor-ontology-shift/" class="lean-graph-node"><g id="node20" class="node"><title>MB5</title>
+<a xlink:href="../../cards/bridge/mb5-successor-ontology-shift/" class="lean-graph-node"><g id="node20" class="node"><title>MB5</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M1214.82,-562.96C1214.82,-562.96 1154.51,-550 1154.51,-550 1148.64,-548.74 1148.64,-546.22 1154.51,-544.96 1154.51,-544.96 1214.82,-532 1214.82,-532 1220.69,-530.74 1232.42,-530.74 1238.28,-532 1238.28,-532 1298.6,-544.96 1298.6,-544.96 1304.46,-546.22 1304.46,-548.74 1298.6,-550 1298.6,-550 1238.28,-562.96 1238.28,-562.96 1232.42,-564.22 1220.69,-564.22 1214.82,-562.96"/>
 <text xml:space="preserve" text-anchor="middle" x="1226.55" y="-544.78" font-family="Helvetica,sans-Serif" font-size="9.00">MB5 Successor audit</text>
 </g></a>
@@ -356,12 +356,12 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="1256.68,-330.65 1255.14,-323.39 1251.82,-330.02 1256.68,-330.65"/>
 </g>
 <!-- MB7b -->
-<a xlink:href="../../cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node21" class="node"><title>MB7b</title>
+<a xlink:href="../../cards/bridge/mb7b-filter-coverage/" class="lean-graph-node"><g id="node21" class="node"><title>MB7b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M657.85,-318.94C657.85,-318.94 601.23,-306.21 601.23,-306.21 595.37,-304.89 595.37,-302.26 601.23,-300.94 601.23,-300.94 657.85,-288.21 657.85,-288.21 663.7,-286.89 675.41,-286.89 681.26,-288.21 681.26,-288.21 737.88,-300.94 737.88,-300.94 743.73,-302.26 743.73,-304.89 737.88,-306.21 737.88,-306.21 681.26,-318.94 681.26,-318.94 675.41,-320.26 663.7,-320.26 657.85,-318.94"/>
 <text xml:space="preserve" text-anchor="middle" x="669.55" y="-300.87" font-family="Helvetica,sans-Serif" font-size="9.00">MB7b (from Spine I)</text>
 </g></a>
 <!-- MB7c -->
-<a xlink:href="../../cards/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node22" class="node"><title>MB7c</title>
+<a xlink:href="../../cards/bridge/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node22" class="node"><title>MB7c</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M670.71,-171.84C670.71,-171.84 584.08,-157.71 584.08,-157.71 578.16,-156.74 578.16,-154.81 584.08,-153.84 584.08,-153.84 670.71,-139.71 670.71,-139.71 676.63,-138.74 688.47,-138.74 694.4,-139.71 694.4,-139.71 781.03,-153.84 781.03,-153.84 786.95,-154.81 786.95,-156.74 781.03,-157.71 781.03,-157.71 694.4,-171.84 694.4,-171.84 688.47,-172.81 676.63,-172.81 670.71,-171.84"/>
 <text xml:space="preserve" text-anchor="middle" x="682.55" y="-153.07" font-family="Helvetica,sans-Serif" font-size="9.00">MB7c Adversarial robustness</text>
 </g></a>

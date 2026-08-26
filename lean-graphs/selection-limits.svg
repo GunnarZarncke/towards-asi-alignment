@@ -27,7 +27,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="75.25,-374.86 72.8,-367.86 70.35,-374.86 75.25,-374.86"/>
 </g>
 <!-- MB6a -->
-<a xlink:href="../../cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node12" class="node"><title>MB6a</title>
+<a xlink:href="../../cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node12" class="node"><title>MB6a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M314.91,-282.89C314.91,-282.89 206.37,-268.12 206.37,-268.12 200.42,-267.31 200.42,-265.7 206.37,-264.89 206.37,-264.89 314.91,-250.12 314.91,-250.12 320.85,-249.31 332.74,-249.31 338.69,-250.12 338.69,-250.12 447.22,-264.89 447.22,-264.89 453.17,-265.7 453.17,-267.31 447.22,-268.12 447.22,-268.12 338.69,-282.89 338.69,-282.89 332.74,-283.7 320.85,-283.7 314.91,-282.89"/>
 <text xml:space="preserve" text-anchor="middle" x="326.8" y="-263.81" font-family="Helvetica,sans-Serif" font-size="9.00">MB6a Percolation evidence ⇒ basin</text>
 </g></a>
@@ -55,7 +55,7 @@
 <polygon fill="#555555" stroke="#555555" points="409.25,-456.25 406.8,-449.25 404.35,-456.25 409.25,-456.25"/>
 </g>
 <!-- P33 -->
-<a xlink:href="../../cards/inferential-coupling/" class="lean-graph-node"><g id="node5" class="node"><title>P33</title>
+<a xlink:href="../../cards/bridge/inferential-coupling/" class="lean-graph-node"><g id="node5" class="node"><title>P33</title>
 <path fill="#fff0ec" stroke="#444444" d="M545.58,-366.11C545.58,-366.11 474.02,-366.11 474.02,-366.11 468.02,-366.11 462.02,-360.11 462.02,-354.11 462.02,-354.11 462.02,-342.11 462.02,-342.11 462.02,-336.11 468.02,-330.11 474.02,-330.11 474.02,-330.11 545.58,-330.11 545.58,-330.11 551.58,-330.11 557.58,-336.11 557.58,-342.11 557.58,-342.11 557.58,-354.11 557.58,-354.11 557.58,-360.11 551.58,-366.11 545.58,-366.11"/>
 <text xml:space="preserve" text-anchor="middle" x="509.8" y="-345.41" font-family="Helvetica,sans-Serif" font-size="9.00">P33 No open edges</text>
 </g></a>
@@ -66,7 +66,7 @@
 <polygon fill="#555555" stroke="#555555" points="482.01,-373.68 486.05,-367.46 479.01,-369.8 482.01,-373.68"/>
 </g>
 <!-- MB7d -->
-<a xlink:href="../../cards/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node14" class="node"><title>MB7d</title>
+<a xlink:href="../../cards/bridge/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node14" class="node"><title>MB7d</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M291.9,-364.57C291.9,-364.57 175.93,-349.64 175.93,-349.64 169.98,-348.87 169.98,-347.34 175.93,-346.57 175.93,-346.57 291.9,-331.64 291.9,-331.64 297.85,-330.87 309.75,-330.87 315.7,-331.64 315.7,-331.64 431.66,-346.57 431.66,-346.57 437.61,-347.34 437.61,-348.87 431.66,-349.64 431.66,-349.64 315.7,-364.57 315.7,-364.57 309.75,-365.34 297.85,-365.34 291.9,-364.57"/>
 <text xml:space="preserve" text-anchor="middle" x="303.8" y="-345.41" font-family="Helvetica,sans-Serif" font-size="9.00">MB7d Inferential&#45;UAD detector validity</text>
 </g></a>
@@ -168,7 +168,7 @@
 <text xml:space="preserve" text-anchor="middle" x="701.79" y="-115.31" font-family="Helvetica,sans-Serif" font-size="8.00">limits layered alignment</text>
 </g>
 <!-- MB6b -->
-<a xlink:href="../../cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node13" class="node"><title>MB6b</title>
+<a xlink:href="../../cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node13" class="node"><title>MB6b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M347,-174.31C347,-174.31 273.96,-160.7 273.96,-160.7 268.06,-159.6 268.06,-157.41 273.96,-156.31 273.96,-156.31 347,-142.7 347,-142.7 352.9,-141.6 364.7,-141.6 370.59,-142.7 370.59,-142.7 443.63,-156.31 443.63,-156.31 449.53,-157.41 449.53,-159.6 443.63,-160.7 443.63,-160.7 370.59,-174.31 370.59,-174.31 364.7,-175.41 352.9,-175.41 347,-174.31"/>
 <text xml:space="preserve" text-anchor="middle" x="358.8" y="-155.81" font-family="Helvetica,sans-Serif" font-size="9.00">MB6b Basin ⇒ correction</text>
 </g></a>

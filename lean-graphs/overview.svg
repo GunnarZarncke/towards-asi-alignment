@@ -65,7 +65,7 @@
 <text xml:space="preserve" text-anchor="middle" x="654.46" y="-540.04" font-family="Helvetica,sans-Serif" font-size="8.00">boundary layer</text>
 </g>
 <!-- MB7 -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node11" class="node"><title>MB7</title>
+<a xlink:href="../../cards/bridge/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node11" class="node"><title>MB7</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M800.18,-754.97C800.18,-754.97 655,-729.51 655,-729.51 649.09,-728.48 649.09,-726.41 655,-725.37 655,-725.37 800.18,-699.91 800.18,-699.91 806.09,-698.88 817.91,-698.88 823.82,-699.91 823.82,-699.91 969,-725.37 969,-725.37 974.91,-726.41 974.91,-728.48 969,-729.51 969,-729.51 823.82,-754.97 823.82,-754.97 817.91,-756.01 806.09,-756.01 800.18,-754.97"/>
 <text xml:space="preserve" text-anchor="middle" x="812" y="-730.14" font-family="Helvetica,sans-Serif" font-size="9.00">MB7a→b→c→d</text>
 <text xml:space="preserve" text-anchor="middle" x="812" y="-719.34" font-family="Helvetica,sans-Serif" font-size="9.00">(adversarial + inferential UAD bridges)</text>
@@ -118,7 +118,7 @@
 <text xml:space="preserve" text-anchor="middle" x="507.79" y="-419.44" font-family="Helvetica,sans-Serif" font-size="8.00">successor layers</text>
 </g>
 <!-- P30 -->
-<a xlink:href="../../cards/dynamical-guarantee/" class="lean-graph-node"><g id="node8" class="node"><title>P30</title>
+<a xlink:href="../../cards/bridge/dynamical-guarantee/" class="lean-graph-node"><g id="node8" class="node"><title>P30</title>
 <path fill="#f2f2f2" stroke="#444444" stroke-width="2" d="M393.89,-142.84C393.89,-142.84 282.11,-142.84 282.11,-142.84 276.11,-142.84 270.11,-136.84 270.11,-130.84 270.11,-130.84 270.11,-118.84 270.11,-118.84 270.11,-112.84 276.11,-106.84 282.11,-106.84 282.11,-106.84 393.89,-106.84 393.89,-106.84 399.89,-106.84 405.89,-112.84 405.89,-118.84 405.89,-118.84 405.89,-130.84 405.89,-130.84 405.89,-136.84 399.89,-142.84 393.89,-142.84"/>
 <text xml:space="preserve" text-anchor="middle" x="338" y="-127.54" font-family="Helvetica,sans-Serif" font-size="9.00">P30 Certified&#45;class safety</text>
 <text xml:space="preserve" text-anchor="middle" x="338" y="-116.74" font-family="Helvetica,sans-Serif" font-size="9.00">Control ≤ CCI + δ ⇒ Risk ≤ δ</text>
@@ -149,7 +149,7 @@
 <polygon fill="#555555" stroke="#555555" points="94.86,-450.06 88.01,-446.03 90.86,-453.45 94.86,-450.06"/>
 </g>
 <!-- MB6a -->
-<a xlink:href="../../cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node12" class="node"><title>MB6a</title>
+<a xlink:href="../../cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node12" class="node"><title>MB6a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M296.28,-453.65C296.28,-453.65 186.14,-429.24 186.14,-429.24 180.29,-427.94 180.29,-425.34 186.14,-424.05 186.14,-424.05 296.28,-399.64 296.28,-399.64 302.14,-398.34 313.86,-398.34 319.72,-399.64 319.72,-399.64 429.86,-424.05 429.86,-424.05 435.71,-425.34 435.71,-427.94 429.86,-429.24 429.86,-429.24 319.72,-453.65 319.72,-453.65 313.86,-454.94 302.14,-454.94 296.28,-453.65"/>
 <text xml:space="preserve" text-anchor="middle" x="308" y="-429.34" font-family="Helvetica,sans-Serif" font-size="9.00">MB6a</text>
 <text xml:space="preserve" text-anchor="middle" x="308" y="-418.54" font-family="Helvetica,sans-Serif" font-size="9.00">Percolation evidence ⇒ basin</text>
@@ -167,7 +167,7 @@
 <polygon fill="#555555" stroke="#555555" points="374.35,-146.46 366.63,-144.55 371.47,-150.85 374.35,-146.46"/>
 </g>
 <!-- P01 -->
-<a xlink:href="../../cards/dynamical-guarantee/" class="lean-graph-node"><g id="node7" class="node"><title>P01</title>
+<a xlink:href="../../cards/bridge/dynamical-guarantee/" class="lean-graph-node"><g id="node7" class="node"><title>P01</title>
 <path fill="#f2f2f2" stroke="#444444" d="M113.77,-274.24C113.77,-274.24 44.23,-274.24 44.23,-274.24 38.23,-274.24 32.23,-268.24 32.23,-262.24 32.23,-262.24 32.23,-250.24 32.23,-250.24 32.23,-244.24 38.23,-238.24 44.23,-238.24 44.23,-238.24 113.77,-238.24 113.77,-238.24 119.77,-238.24 125.77,-244.24 125.77,-250.24 125.77,-250.24 125.77,-262.24 125.77,-262.24 125.77,-268.24 119.77,-274.24 113.77,-274.24"/>
 <text xml:space="preserve" text-anchor="middle" x="79" y="-253.54" font-family="Helvetica,sans-Serif" font-size="9.00">P01 Basin invariant</text>
 </g></a>
@@ -216,7 +216,7 @@
 <text xml:space="preserve" text-anchor="middle" x="805.35" y="-481.44" font-family="Helvetica,sans-Serif" font-size="8.00">AdversariallyRobust layer</text>
 </g>
 <!-- MB6b -->
-<a xlink:href="../../cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node13" class="node"><title>MB6b</title>
+<a xlink:href="../../cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node13" class="node"><title>MB6b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M334.59,-347.71C334.59,-347.71 266.87,-325.57 266.87,-325.57 261.17,-323.71 261.17,-319.98 266.87,-318.11 266.87,-318.11 334.59,-295.97 334.59,-295.97 340.3,-294.11 351.7,-294.11 357.41,-295.97 357.41,-295.97 425.13,-318.11 425.13,-318.11 430.83,-319.98 430.83,-323.71 425.13,-325.57 425.13,-325.57 357.41,-347.71 357.41,-347.71 351.7,-349.58 340.3,-349.58 334.59,-347.71"/>
 <text xml:space="preserve" text-anchor="middle" x="346" y="-324.54" font-family="Helvetica,sans-Serif" font-size="9.00">MB6b</text>
 <text xml:space="preserve" text-anchor="middle" x="346" y="-313.74" font-family="Helvetica,sans-Serif" font-size="9.00">Basin ⇒ correction</text>

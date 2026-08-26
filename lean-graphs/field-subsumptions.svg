@@ -19,7 +19,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1525.31" y="-185.81" font-family="Helvetica,sans-Serif" font-size="9.00">SeparatedFrom</text>
 </g></a>
 <!-- CIRL -->
-<a xlink:href="../../cards/subsumption-cirl/" class="lean-graph-node"><g id="node5" class="node"><title>CIRL</title>
+<a xlink:href="../../cards/bridge/subsumption-cirl/" class="lean-graph-node"><g id="node5" class="node"><title>CIRL</title>
 <path fill="#effbea" stroke="#1f77b4" stroke-width="2.2" d="M188.62,-128.11C188.62,-128.11 12,-128.11 12,-128.11 6,-128.11 0,-122.11 0,-116.11 0,-116.11 0,-99.71 0,-99.71 0,-93.71 6,-87.71 12,-87.71 12,-87.71 188.62,-87.71 188.62,-87.71 194.62,-87.71 200.62,-93.71 200.62,-99.71 200.62,-99.71 200.62,-116.11 200.62,-116.11 200.62,-122.11 194.62,-128.11 188.62,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="100.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">CIRL</text>
 <text xml:space="preserve" text-anchor="middle" x="100.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">scalar_assistance_game_is_bundle_game_k1</text>
@@ -32,7 +32,7 @@
 <polygon fill="#555555" stroke="#555555" points="192.79,-128.35 185.46,-129.47 191.89,-133.16 192.79,-128.35"/>
 </g>
 <!-- SHUT -->
-<a xlink:href="../../cards/subsumption-shutdown/" class="lean-graph-node"><g id="node6" class="node"><title>SHUT</title>
+<a xlink:href="../../cards/bridge/subsumption-shutdown/" class="lean-graph-node"><g id="node6" class="node"><title>SHUT</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M415.87,-128.11C415.87,-128.11 230.75,-128.11 230.75,-128.11 224.75,-128.11 218.75,-122.11 218.75,-116.11 218.75,-116.11 218.75,-99.71 218.75,-99.71 218.75,-93.71 224.75,-87.71 230.75,-87.71 230.75,-87.71 415.87,-87.71 415.87,-87.71 421.87,-87.71 427.87,-93.71 427.87,-99.71 427.87,-99.71 427.87,-116.11 427.87,-116.11 427.87,-122.11 421.87,-128.11 415.87,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="323.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Shutdown</text>
 <text xml:space="preserve" text-anchor="middle" x="323.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">shutdown_optimal_under_correction_preference</text>
@@ -45,7 +45,7 @@
 <polygon fill="#555555" stroke="#555555" points="419.19,-128.3 411.86,-129.46 418.31,-133.12 419.19,-128.3"/>
 </g>
 <!-- INT -->
-<a xlink:href="../../cards/subsumption-interruptibility/" class="lean-graph-node"><g id="node7" class="node"><title>INT</title>
+<a xlink:href="../../cards/bridge/subsumption-interruptibility/" class="lean-graph-node"><g id="node7" class="node"><title>INT</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M656.86,-128.11C656.86,-128.11 457.76,-128.11 457.76,-128.11 451.76,-128.11 445.76,-122.11 445.76,-116.11 445.76,-116.11 445.76,-99.71 445.76,-99.71 445.76,-93.71 451.76,-87.71 457.76,-87.71 457.76,-87.71 656.86,-87.71 656.86,-87.71 662.86,-87.71 668.86,-93.71 668.86,-99.71 668.86,-99.71 668.86,-116.11 668.86,-116.11 668.86,-122.11 662.86,-128.11 656.86,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="557.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Interruptibility</text>
 <text xml:space="preserve" text-anchor="middle" x="557.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">interrupt_policy_invariant_from_correction_interface</text>
@@ -58,7 +58,7 @@
 <polygon fill="#555555" stroke="#555555" points="659.61,-128.23 652.29,-129.43 658.77,-133.06 659.61,-128.23"/>
 </g>
 <!-- CORR -->
-<a xlink:href="../../cards/subsumption-corrigibility/" class="lean-graph-node"><g id="node8" class="node"><title>CORR</title>
+<a xlink:href="../../cards/bridge/subsumption-corrigibility/" class="lean-graph-node"><g id="node8" class="node"><title>CORR</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M1018.35,-128.11C1018.35,-128.11 850.27,-128.11 850.27,-128.11 844.27,-128.11 838.27,-122.11 838.27,-116.11 838.27,-116.11 838.27,-99.71 838.27,-99.71 838.27,-93.71 844.27,-87.71 850.27,-87.71 850.27,-87.71 1018.35,-87.71 1018.35,-87.71 1024.35,-87.71 1030.35,-93.71 1030.35,-99.71 1030.35,-99.71 1030.35,-116.11 1030.35,-116.11 1030.35,-122.11 1024.35,-128.11 1018.35,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="934.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Christiano corrigibility</text>
 <text xml:space="preserve" text-anchor="middle" x="934.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">christian_corrigibility_is_correction_invariant</text>
@@ -71,7 +71,7 @@
 <polygon fill="#555555" stroke="#555555" points="1024.9,-128.42 1017.55,-129.45 1023.94,-133.23 1024.9,-128.42"/>
 </g>
 <!-- ELK -->
-<a xlink:href="../../cards/subsumption-elk/" class="lean-graph-node"><g id="node9" class="node"><title>ELK</title>
+<a xlink:href="../../cards/bridge/subsumption-elk/" class="lean-graph-node"><g id="node9" class="node"><title>ELK</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M807.84,-128.11C807.84,-128.11 698.77,-128.11 698.77,-128.11 692.77,-128.11 686.77,-122.11 686.77,-116.11 686.77,-116.11 686.77,-99.71 686.77,-99.71 686.77,-93.71 692.77,-87.71 698.77,-87.71 698.77,-87.71 807.84,-87.71 807.84,-87.71 813.84,-87.71 819.84,-93.71 819.84,-99.71 819.84,-99.71 819.84,-116.11 819.84,-116.11 819.84,-122.11 813.84,-128.11 807.84,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="753.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">ELK</text>
 <text xml:space="preserve" text-anchor="middle" x="753.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">elk_reporter_nonidentifiability</text>
@@ -84,7 +84,7 @@
 <polygon fill="#555555" stroke="#555555" points="819.88,-128.93 812.49,-129.55 818.65,-133.67 819.88,-128.93"/>
 </g>
 <!-- DEB -->
-<a xlink:href="../../cards/subsumption-debate/" class="lean-graph-node"><g id="node10" class="node"><title>DEB</title>
+<a xlink:href="../../cards/bridge/subsumption-debate/" class="lean-graph-node"><g id="node10" class="node"><title>DEB</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M1520.88,-133.51C1520.88,-133.51 1317.74,-133.51 1317.74,-133.51 1311.74,-133.51 1305.74,-127.51 1305.74,-121.51 1305.74,-121.51 1305.74,-94.31 1305.74,-94.31 1305.74,-88.31 1311.74,-82.31 1317.74,-82.31 1317.74,-82.31 1520.88,-82.31 1520.88,-82.31 1526.88,-82.31 1532.88,-88.31 1532.88,-94.31 1532.88,-94.31 1532.88,-121.51 1532.88,-121.51 1532.88,-127.51 1526.88,-133.51 1520.88,-133.51"/>
 <text xml:space="preserve" text-anchor="middle" x="1419.31" y="-121.41" font-family="Helvetica,sans-Serif" font-size="9.00">Debate</text>
 <text xml:space="preserve" text-anchor="middle" x="1419.31" y="-110.61" font-family="Helvetica,sans-Serif" font-size="9.00">debate_value_tracks_truth</text>
@@ -98,7 +98,7 @@
 <polygon fill="#555555" stroke="#555555" points="1499.96,-137.39 1492.83,-135.36 1497.13,-141.4 1499.96,-137.39"/>
 </g>
 <!-- IMPACT -->
-<a xlink:href="../../cards/subsumption-low-impact/" class="lean-graph-node"><g id="node11" class="node"><title>IMPACT</title>
+<a xlink:href="../../cards/bridge/subsumption-low-impact/" class="lean-graph-node"><g id="node11" class="node"><title>IMPACT</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M1275.86,-128.11C1275.86,-128.11 1060.75,-128.11 1060.75,-128.11 1054.75,-128.11 1048.75,-122.11 1048.75,-116.11 1048.75,-116.11 1048.75,-99.71 1048.75,-99.71 1048.75,-93.71 1054.75,-87.71 1060.75,-87.71 1060.75,-87.71 1275.86,-87.71 1275.86,-87.71 1281.86,-87.71 1287.86,-93.71 1287.86,-99.71 1287.86,-99.71 1287.86,-116.11 1287.86,-116.11 1287.86,-122.11 1281.86,-128.11 1275.86,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="1168.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">AUP / relative reachability</text>
 <text xml:space="preserve" text-anchor="middle" x="1168.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">auxiliary_reachability_preserves_correction_reachability</text>
@@ -111,7 +111,7 @@
 <polygon fill="#555555" stroke="#555555" points="1282.76,-128.45 1275.41,-129.48 1281.8,-133.26 1282.76,-128.45"/>
 </g>
 <!-- QUANT -->
-<a xlink:href="../../cards/subsumption-quantilization/" class="lean-graph-node"><g id="node12" class="node"><title>QUANT</title>
+<a xlink:href="../../cards/bridge/subsumption-quantilization/" class="lean-graph-node"><g id="node12" class="node"><title>QUANT</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M1737.61,-128.11C1737.61,-128.11 1563.01,-128.11 1563.01,-128.11 1557.01,-128.11 1551.01,-122.11 1551.01,-116.11 1551.01,-116.11 1551.01,-99.71 1551.01,-99.71 1551.01,-93.71 1557.01,-87.71 1563.01,-87.71 1563.01,-87.71 1737.61,-87.71 1737.61,-87.71 1743.61,-87.71 1749.61,-93.71 1749.61,-99.71 1749.61,-99.71 1749.61,-116.11 1749.61,-116.11 1749.61,-122.11 1743.61,-128.11 1737.61,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="1650.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Quantilization</text>
 <text xml:space="preserve" text-anchor="middle" x="1650.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">quantile_soundness_preserves_trajectory_cci</text>
@@ -124,7 +124,7 @@
 <polygon fill="#555555" stroke="#555555" points="1633.41,-137.43 1635.72,-130.38 1629.52,-134.45 1633.41,-137.43"/>
 </g>
 <!-- EMBED -->
-<a xlink:href="../../cards/subsumption-embedded-agency/" class="lean-graph-node"><g id="node13" class="node"><title>EMBED</title>
+<a xlink:href="../../cards/bridge/subsumption-embedded-agency/" class="lean-graph-node"><g id="node13" class="node"><title>EMBED</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M2370.62,-128.11C2370.62,-128.11 2191.99,-128.11 2191.99,-128.11 2185.99,-128.11 2179.99,-122.11 2179.99,-116.11 2179.99,-116.11 2179.99,-99.71 2179.99,-99.71 2179.99,-93.71 2185.99,-87.71 2191.99,-87.71 2191.99,-87.71 2370.62,-87.71 2370.62,-87.71 2376.62,-87.71 2382.62,-93.71 2382.62,-99.71 2382.62,-99.71 2382.62,-116.11 2382.62,-116.11 2382.62,-122.11 2376.62,-128.11 2370.62,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="2281.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Embedded agency</text>
 <text xml:space="preserve" text-anchor="middle" x="2281.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">positive_margin_implies_epsilon_boundary</text>
@@ -137,7 +137,7 @@
 <polygon fill="#555555" stroke="#555555" points="2183.5,-133.4 2189.82,-129.51 2182.46,-128.61 2183.5,-133.4"/>
 </g>
 <!-- BASIN -->
-<a xlink:href="../../cards/subsumption-selection-basin/" class="lean-graph-node"><g id="node14" class="node"><title>BASIN</title>
+<a xlink:href="../../cards/bridge/subsumption-selection-basin/" class="lean-graph-node"><g id="node14" class="node"><title>BASIN</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M2728.36,-128.11C2728.36,-128.11 2598.25,-128.11 2598.25,-128.11 2592.25,-128.11 2586.25,-122.11 2586.25,-116.11 2586.25,-116.11 2586.25,-99.71 2586.25,-99.71 2586.25,-93.71 2592.25,-87.71 2598.25,-87.71 2598.25,-87.71 2728.36,-87.71 2728.36,-87.71 2734.36,-87.71 2740.36,-93.71 2740.36,-99.71 2740.36,-99.71 2740.36,-116.11 2740.36,-116.11 2740.36,-122.11 2734.36,-128.11 2728.36,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="2663.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Selection / basin</text>
 <text xml:space="preserve" text-anchor="middle" x="2663.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">MB6b_defeater_toy_lock_in</text>
@@ -150,7 +150,7 @@
 <polygon fill="#555555" stroke="#555555" points="2587.29,-133.61 2593.47,-129.5 2586.08,-128.86 2587.29,-133.61"/>
 </g>
 <!-- GROUND -->
-<a xlink:href="../../cards/subsumption-grounding-drift/" class="lean-graph-node"><g id="node15" class="node"><title>GROUND</title>
+<a xlink:href="../../cards/bridge/subsumption-grounding-drift/" class="lean-graph-node"><g id="node15" class="node"><title>GROUND</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M2150.36,-125.91C2150.36,-125.91 1996.26,-125.91 1996.26,-125.91 1990.26,-125.91 1984.26,-119.91 1984.26,-113.91 1984.26,-113.91 1984.26,-101.91 1984.26,-101.91 1984.26,-95.91 1990.26,-89.91 1996.26,-89.91 1996.26,-89.91 2150.36,-89.91 2150.36,-89.91 2156.36,-89.91 2162.36,-95.91 2162.36,-101.91 2162.36,-101.91 2162.36,-113.91 2162.36,-113.91 2162.36,-119.91 2156.36,-125.91 2150.36,-125.91"/>
 <text xml:space="preserve" text-anchor="middle" x="2073.31" y="-110.61" font-family="Helvetica,sans-Serif" font-size="9.00">Grounding drift</text>
 <text xml:space="preserve" text-anchor="middle" x="2073.31" y="-99.81" font-family="Helvetica,sans-Serif" font-size="9.00">class_certificate_not_deployment_safety</text>
@@ -162,7 +162,7 @@
 <polygon fill="#555555" stroke="#555555" points="2054.08,-134.77 2057.18,-128.04 2050.55,-131.37 2054.08,-134.77"/>
 </g>
 <!-- DEPLOY -->
-<a xlink:href="../../cards/subsumption-deployment-gate/" class="lean-graph-node"><g id="node16" class="node"><title>DEPLOY</title>
+<a xlink:href="../../cards/bridge/subsumption-deployment-gate/" class="lean-graph-node"><g id="node16" class="node"><title>DEPLOY</title>
 <path fill="#fff0fb" stroke="#1f77b4" stroke-width="2.2" d="M2556.11,-128.11C2556.11,-128.11 2412.5,-128.11 2412.5,-128.11 2406.5,-128.11 2400.5,-122.11 2400.5,-116.11 2400.5,-116.11 2400.5,-99.71 2400.5,-99.71 2400.5,-93.71 2406.5,-87.71 2412.5,-87.71 2412.5,-87.71 2556.11,-87.71 2556.11,-87.71 2562.11,-87.71 2568.11,-93.71 2568.11,-99.71 2568.11,-99.71 2568.11,-116.11 2568.11,-116.11 2568.11,-122.11 2562.11,-128.11 2556.11,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="2484.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Deployment gate</text>
 <text xml:space="preserve" text-anchor="middle" x="2484.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">MB11_defeater_toy_scope_exceeded</text>
@@ -175,7 +175,7 @@
 <polygon fill="#555555" stroke="#555555" points="2405.06,-133.66 2411.22,-129.53 2403.83,-128.92 2405.06,-133.66"/>
 </g>
 <!-- BIQ -->
-<a xlink:href="../../cards/subsumption-hidden-biq/" class="lean-graph-node"><g id="node17" class="node"><title>BIQ</title>
+<a xlink:href="../../cards/bridge/subsumption-hidden-biq/" class="lean-graph-node"><g id="node17" class="node"><title>BIQ</title>
 <path fill="#eaf3ff" stroke="#1f77b4" stroke-width="2.2" d="M1954.63,-128.11C1954.63,-128.11 1779.99,-128.11 1779.99,-128.11 1773.99,-128.11 1767.99,-122.11 1767.99,-116.11 1767.99,-116.11 1767.99,-99.71 1767.99,-99.71 1767.99,-93.71 1773.99,-87.71 1779.99,-87.71 1779.99,-87.71 1954.63,-87.71 1954.63,-87.71 1960.63,-87.71 1966.63,-93.71 1966.63,-99.71 1966.63,-99.71 1966.63,-116.11 1966.63,-116.11 1966.63,-122.11 1960.63,-128.11 1954.63,-128.11"/>
 <text xml:space="preserve" text-anchor="middle" x="1867.31" y="-116.01" font-family="Helvetica,sans-Serif" font-size="9.00">Hidden BIQ / trace appearance</text>
 <text xml:space="preserve" text-anchor="middle" x="1867.31" y="-105.21" font-family="Helvetica,sans-Serif" font-size="9.00">subsample_biq_le_tight_optimism</text>

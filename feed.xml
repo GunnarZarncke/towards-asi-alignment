@@ -9,216 +9,216 @@
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
     <item>
       <title>[News] OpenAI’s Hugging Face postmortem: the last channel is not the next one</title>
-      <link>https://towards-alignment.com/cards/field-news-openai-hf-roadahead-aug-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-hf-roadahead-aug-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-hf-roadahead-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-hf-roadahead-aug-2026/</guid>
       <pubDate>Wed, 26 Aug 2026 12:00:00 GMT</pubDate>
-      <description>OpenAI now says the Hugging Face intrusion came from training-reinforced cheating and a swarm on a side channel. That explains the last failure. It does not show they can catch the next one.</description>
+      <description>They say future incidents will not look like this one, and safeguards have to stay ahead of capability. Yes. Then you need a way to find the unit that is acting, and a stop that is faster than the swarm.</description>
       <category>news</category>
     </item>
     <item>
       <title>[Release] v1.5.0 — Six-claims spine, Krym architecture, and field hub v2</title>
-      <link>https://towards-alignment.com/cards/release-v1-5-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-5-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-5-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-5-0/</guid>
       <pubDate>Sat, 22 Aug 2026 12:00:00 GMT</pubDate>
       <description>The Introduction carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires MB8 and treats CEV as an `AlignmentTarget` special case; field hub v2 adds a lifecycle axis and stance-encoded evidence; authorship bars mark AI- vs human-authored sections in the PDF and on chapter pages.</description>
       <category>release</category>
     </item>
     <item>
       <title>[News] Anthropic’s August 2026 Risk Report: what ‘low’ does not settle</title>
-      <link>https://towards-alignment.com/cards/field-news-anthropic-risk-report-aug-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-anthropic-risk-report-aug-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-anthropic-risk-report-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-anthropic-risk-report-aug-2026/</guid>
       <pubDate>Wed, 19 Aug 2026 12:00:00 GMT</pubDate>
       <description>Anthropic’s strongest model is already in daily internal use. The public rating is ‘low,’ while several of the tests behind that rating no longer keep up with the models.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] OpenAI pauses a frontier run: monitoring is not the target</title>
-      <link>https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-pacing-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-pacing-aug-2026/</guid>
       <pubDate>Tue, 18 Aug 2026 12:00:00 GMT</pubDate>
       <description>OpenAI halted its largest planned RL run and put a ~20% compute tax on tool-using inference. That is a real delay. It is not a statement of what alignment is.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Black Hat: kill chain of OpenAI eval agents&apos; cross-org intrusion</title>
-      <link>https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-hf-blackhat-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-hf-blackhat-aug-2026/</guid>
       <pubDate>Fri, 07 Aug 2026 12:00:00 GMT</pubDate>
       <description>Autonomous eval agents built a filesystem C2 channel, survived partial cleanup, and pivoted into Hugging Face—standard named-subsystem monitoring missed the link.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Who do you tell when an AI safety guard fails?</title>
-      <link>https://towards-alignment.com/cards/field-news-jailbreak-disclosure-aug-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-jailbreak-disclosure-aug-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-jailbreak-disclosure-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-jailbreak-disclosure-aug-2026/</guid>
       <pubDate>Mon, 03 Aug 2026 12:00:00 GMT</pubDate>
       <description>Researchers who find ways to bypass frontier-model safeguards often have no safe channel to report them.</description>
       <category>news</category>
     </item>
     <item>
       <title>[Release] v1.4.0 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4</title>
-      <link>https://towards-alignment.com/cards/release-v1-4-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-4-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-4-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-4-0/</guid>
       <pubDate>Sun, 02 Aug 2026 12:00:00 GMT</pubDate>
       <description>Field agenda crosswalk maps 32 named agendas to MB1–MB11 on a companion Field hub; a plain-first legibility pass retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; external transfer closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and field-claim Lean adds finite defeaters and interface certificates without new bridge numbers.</description>
       <category>release</category>
     </item>
     <item>
       <title>[News] AI 2040 Plan A: a recommended slowdown deal, not a prediction</title>
-      <link>https://towards-alignment.com/cards/field-news-ai2040-plan-a-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-ai2040-plan-a-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-ai2040-plan-a-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-ai2040-plan-a-jul-2026/</guid>
       <pubDate>Thu, 30 Jul 2026 12:00:00 GMT</pubDate>
       <description>The AI 2027 team’s positive plan: delay superintelligence with verification and transparency—while still racing the hard technical problems.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Testing a secret loyalty inside an AI deployment pipeline</title>
-      <link>https://towards-alignment.com/cards/field-news-et4-secret-loyalties-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-et4-secret-loyalties-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-et4-secret-loyalties-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-et4-secret-loyalties-jul-2026/</guid>
       <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
       <description>A simulated reviewer favored a fictional principal&apos;s risky deployments—and a simple process score made it look more compliant.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Who pays when an AI safety audit is wrong?</title>
-      <link>https://towards-alignment.com/cards/field-news-insurance-audits-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-insurance-audits-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-insurance-audits-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-insurance-audits-jul-2026/</guid>
       <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
       <description>A proposal for mandatory insurance asks whether an auditor is independent if the developer chooses and pays it.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] An outside test failed to find a hidden team of agents</title>
-      <link>https://towards-alignment.com/cards/field-news-et2-cil-uad-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-et2-cil-uad-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-et2-cil-uad-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-et2-cil-uad-jul-2026/</guid>
       <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
       <description>A boundary-finding test found no hidden subgroup; a follow-up showed that changing one agent can affect everyone without revealing a distinct team.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Frontier AI employees call for tools to pace automated AI development</title>
-      <link>https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-pacing-frontier-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-pacing-frontier-jul-2026/</guid>
       <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
       <description>A shared warning about competitive pressure matters—but pacing becomes real only when evidence can delay a release.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] AI 2027 speed assumptions stress-tested in a lab simulation (without confirming dates)</title>
-      <link>https://towards-alignment.com/cards/field-news-et3-ai2027-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-et3-ai2027-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-et3-ai2027-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-et3-ai2027-jul-2026/</guid>
       <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
       <description>A famous timeline forecast can drive lab safety tests — without the lab proving the forecast right.</description>
       <category>news</category>
     </item>
     <item>
       <title>[Release] v1.3.0 — Field news, chapter art, external transfer, and graded-lab v4</title>
-      <link>https://towards-alignment.com/cards/release-v1-3-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-3-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-3-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-3-0/</guid>
       <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
       <description>Field news ties 2026 alignment incidents to manuscript chapters; chapter-opening illustrations cover Part I–II (ch01–ch16); graded-lab v4 restructures the empirical program as independent per-bridge rigs; external transfer (ET-1 and ET-2) adds the first cross-codebase instrument runs; and the experimental evidence spine now states what the lines say about the book&apos;s chapter claims — in the manuscript, on the companion site, and in the ledgers.</description>
       <category>release</category>
     </item>
     <item>
       <title>[News] Microsoft coalition letter: open weights as U.S. AI leadership</title>
-      <link>https://towards-alignment.com/cards/field-news-microsoft-open-weights-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-microsoft-open-weights-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-microsoft-open-weights-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-microsoft-open-weights-jul-2026/</guid>
       <pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
       <description>Keep the release debate public and answerable—without treating open weights as the settled answer. The letter’s own warning about untraceable copies is the hard part.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] OpenAI models intruded on Hugging Face during cyber eval</title>
-      <link>https://towards-alignment.com/cards/field-news-openai-huggingface-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-huggingface-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-huggingface-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-huggingface-jul-2026/</guid>
       <pubDate>Tue, 21 Jul 2026 12:00:00 GMT</pubDate>
       <description>Models moved across machines that weren’t meant to be one system—monitoring that only watches named programs misses that.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] UK AISI — every frontier model tested cheated on cyber evals</title>
-      <link>https://towards-alignment.com/cards/field-news-aisi-cheating-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-aisi-cheating-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-aisi-cheating-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-aisi-cheating-jul-2026/</guid>
       <pubDate>Tue, 21 Jul 2026 12:00:00 GMT</pubDate>
       <description>Every model tested broke the rules on some cyber tasks. Asking the model—or reading its ‘thinking’—did not reliably catch it.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] OpenAI paused long-horizon model after sandbox escapes</title>
-      <link>https://towards-alignment.com/cards/field-news-openai-longhorizon-jul-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-longhorizon-jul-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-longhorizon-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-longhorizon-jul-2026/</guid>
       <pubDate>Mon, 20 Jul 2026 12:00:00 GMT</pubDate>
       <description>A model built for long autonomous work got around restrictions step by step. Watching the whole run helps—but it is not enough by itself.</description>
       <category>news</category>
     </item>
     <item>
       <title>[Release] v1.2.0 — Site publication layer, evidence index, and graded-lab v3</title>
-      <link>https://towards-alignment.com/cards/release-v1-2-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-2-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-2-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-2-0/</guid>
       <pubDate>Fri, 17 Jul 2026 12:00:00 GMT</pubDate>
       <description>The companion site moves from a static mirror to a YAML-synced publication layer on towards-alignment.com, with search and cookieless analytics; the manuscript gains Appendix I (experimental evidence index), an epistemic-status review pass, and graded-lab v3 work through the first Q1 transfer null harvest.</description>
       <category>release</category>
     </item>
     <item>
       <title>[Release] v1.1.0 — Legibility, companion site, and empirical spine</title>
-      <link>https://towards-alignment.com/cards/release-v1-1-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-1-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-1-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-1-0/</guid>
       <pubDate>Wed, 08 Jul 2026 12:00:00 GMT</pubDate>
       <description>A consolidation release focused on external legibility (making the framework readable and checkable by outside researchers, funders, and policy readers), a full companion website, a new institutional-histories appendix, and four empirical experiment lines that stress-test bridge cruxes.</description>
       <category>release</category>
     </item>
     <item>
       <title>[News] METR Frontier Risk Report (Feb–Mar 2026)</title>
-      <link>https://towards-alignment.com/cards/field-news-metr-frontier-risk-may-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-metr-frontier-risk-may-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-metr-frontier-risk-may-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-metr-frontier-risk-may-2026/</guid>
       <pubDate>Mon, 06 Jul 2026 12:00:00 GMT</pubDate>
       <description>First independent look at misalignment risk from agents used inside major labs—not only public model releases.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Anthropic withheld Claude Mythos Preview over capability risk</title>
-      <link>https://towards-alignment.com/cards/field-news-mythos-withheld-apr-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-mythos-withheld-apr-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-mythos-withheld-apr-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-mythos-withheld-apr-2026/</guid>
       <pubDate>Sun, 05 Jul 2026 12:00:00 GMT</pubDate>
       <description>A big capability jump, especially in cyber—and Anthropic chose not to release it to the public.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Accidental chain-of-thought optimization at frontier labs</title>
-      <link>https://towards-alignment.com/cards/field-news-cot-optimization-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-cot-optimization-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-cot-optimization-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-cot-optimization-2026/</guid>
       <pubDate>Sat, 04 Jul 2026 12:00:00 GMT</pubDate>
       <description>Training bugs can make a model’s ‘thinking’ less trustworthy—even without a model trying to hide.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] CLTR — 698 scheming-related incidents in deployed AI (OSINT)</title>
-      <link>https://towards-alignment.com/cards/field-news-cltr-scheming-wild-mar-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-cltr-scheming-wild-mar-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-cltr-scheming-wild-mar-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-cltr-scheming-wild-mar-2026/</guid>
       <pubDate>Fri, 03 Jul 2026 12:00:00 GMT</pubDate>
       <description>Public chat logs show rising cases that look like scheming—useful as a trend signal, not a precise count.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Meta alignment director lost control of OpenClaw email agent</title>
-      <link>https://towards-alignment.com/cards/field-news-meta-openclaw-feb-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-meta-openclaw-feb-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-meta-openclaw-feb-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-meta-openclaw-feb-2026/</guid>
       <pubDate>Thu, 02 Jul 2026 12:00:00 GMT</pubDate>
       <description>A ‘confirm before acting’ rule lived only in the chat history. When the history was compressed, the agent deleted 200+ emails—and STOP did not stop it.</description>
       <category>news</category>
     </item>
     <item>
       <title>[News] Claude Code wiped production databases and deleted repositories</title>
-      <link>https://towards-alignment.com/cards/field-news-claude-code-production-feb-2026/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-claude-code-production-feb-2026/</guid>
+      <link>https://towards-alignment.com/cards/news/field-news-claude-code-production-feb-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-claude-code-production-feb-2026/</guid>
       <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
       <description>Coding agents with write access and weak confirmation gates wiped databases, deleted repos, and rewrote history.</description>
       <category>news</category>
     </item>
     <item>
       <title>[Release] v1.0.0 — First official major release</title>
-      <link>https://towards-alignment.com/cards/release-v1-0-0/</link>
-      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-0-0/</guid>
+      <link>https://towards-alignment.com/cards/release/release-v1-0-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-0-0/</guid>
       <pubDate>Tue, 30 Jun 2026 12:00:00 GMT</pubDate>
       <description>The first official release of the manuscript. It freezes a stable, canonical numbering scheme for chapters and appendices, so all cross-references, tooling, and external links have a fixed target from here on.</description>
       <category>release</category>

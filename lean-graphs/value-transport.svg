@@ -49,7 +49,7 @@
 <polygon fill="#555555" stroke="#555555" points="421.01,-298.67 419.88,-291.34 416.19,-297.77 421.01,-298.67"/>
 </g>
 <!-- MB2 -->
-<a xlink:href="../../cards/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node13" class="node"><title>MB2</title>
+<a xlink:href="../../cards/bridge/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node13" class="node"><title>MB2</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M527.2,-545.64C527.2,-545.64 454.16,-532.04 454.16,-532.04 448.26,-530.94 448.26,-528.74 454.16,-527.64 454.16,-527.64 527.2,-514.04 527.2,-514.04 533.1,-512.94 544.9,-512.94 550.8,-514.04 550.8,-514.04 623.84,-527.64 623.84,-527.64 629.74,-528.74 629.74,-530.94 623.84,-532.04 623.84,-532.04 550.8,-545.64 550.8,-545.64 544.9,-546.74 533.1,-546.74 527.2,-545.64"/>
 <text xml:space="preserve" text-anchor="middle" x="539" y="-527.14" font-family="Helvetica,sans-Serif" font-size="9.00">MB2 Bundle identifiability</text>
 </g></a>
@@ -213,7 +213,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="203.52,-355.86 196.17,-356.81 202.51,-360.65 203.52,-355.86"/>
 </g>
 <!-- MB3 -->
-<a xlink:href="../../cards/mb3-bearer-import/" class="lean-graph-node"><g id="node14" class="node"><title>MB3</title>
+<a xlink:href="../../cards/bridge/mb3-bearer-import/" class="lean-graph-node"><g id="node14" class="node"><title>MB3</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M298.32,-359.67C298.32,-359.67 245.79,-347.21 245.79,-347.21 239.95,-345.83 239.95,-343.06 245.79,-341.67 245.79,-341.67 298.32,-329.21 298.32,-329.21 304.16,-327.83 315.84,-327.83 321.68,-329.21 321.68,-329.21 374.21,-341.67 374.21,-341.67 380.05,-343.06 380.05,-345.83 374.21,-347.21 374.21,-347.21 321.68,-359.67 321.68,-359.67 315.84,-361.06 304.16,-361.06 298.32,-359.67"/>
 <text xml:space="preserve" text-anchor="middle" x="310" y="-341.74" font-family="Helvetica,sans-Serif" font-size="9.00">MB3 Bearer import</text>
 </g></a>

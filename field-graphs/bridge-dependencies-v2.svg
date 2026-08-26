@@ -11,13 +11,13 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1389.2 1473.01,-1389.2 1473.01,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="734.51" y="-1370.4" font-family="Helvetica,sans-Serif" font-size="12.00">field crux dependencies</text>
 <!-- MB1 -->
-<a xlink:href="/cards/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node1" class="node"><title>MB1</title>
+<a xlink:href="/cards/bridge/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node1" class="node"><title>MB1</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="603.48,-1362.8 502.98,-1330.8 603.48,-1298.8 703.98,-1330.8 603.48,-1362.8"/>
 <text xml:space="preserve" text-anchor="middle" x="603.48" y="-1333.8" font-family="Helvetica,sans-Serif" font-size="10.00">MB1</text>
 <text xml:space="preserve" text-anchor="middle" x="603.48" y="-1321.8" font-family="Helvetica,sans-Serif" font-size="10.00">Embedded Agency</text>
 </g></a>
 <!-- MB3 -->
-<a xlink:href="/cards/mb3-bearer-import/" class="lean-graph-node"><g id="node3" class="node"><title>MB3</title>
+<a xlink:href="/cards/bridge/mb3-bearer-import/" class="lean-graph-node"><g id="node3" class="node"><title>MB3</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="249.48,-486 166.77,-454 249.48,-422 332.19,-454 249.48,-486"/>
 <text xml:space="preserve" text-anchor="middle" x="249.48" y="-457" font-family="Helvetica,sans-Serif" font-size="10.00">MB3</text>
 <text xml:space="preserve" text-anchor="middle" x="249.48" y="-445" font-family="Helvetica,sans-Serif" font-size="10.00">Value Referent</text>
@@ -31,7 +31,7 @@
 <text xml:space="preserve" text-anchor="middle" x="273.25" y="-923.5" font-family="Helvetica,sans-Serif" font-size="9.00">→ bearer inference</text>
 </g>
 <!-- MB7a -->
-<a xlink:href="/cards/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node9" class="node"><title>MB7a</title>
+<a xlink:href="/cards/bridge/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node9" class="node"><title>MB7a</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="603.48,-1175.2 498,-1131.2 603.48,-1087.2 708.96,-1131.2 603.48,-1175.2"/>
 <text xml:space="preserve" text-anchor="middle" x="603.48" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="10.00">MB7a</text>
 <text xml:space="preserve" text-anchor="middle" x="603.48" y="-1128.2" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
@@ -46,7 +46,7 @@
 <text xml:space="preserve" text-anchor="middle" x="638.01" y="-1228.9" font-family="Helvetica,sans-Serif" font-size="9.00">→ access robust</text>
 </g>
 <!-- MB11 -->
-<a xlink:href="/cards/mb11-deployment-safety/" class="lean-graph-node"><g id="node16" class="node"><title>MB11</title>
+<a xlink:href="/cards/bridge/mb11-deployment-safety/" class="lean-graph-node"><g id="node16" class="node"><title>MB11</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="827.48,-64 726.99,-32 827.48,0 927.96,-32 827.48,-64"/>
 <text xml:space="preserve" text-anchor="middle" x="827.48" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">MB11</text>
 <text xml:space="preserve" text-anchor="middle" x="827.48" y="-23" font-family="Helvetica,sans-Serif" font-size="10.00">Deployment Safety</text>
@@ -59,7 +59,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1439.25" y="-662.9" font-family="Helvetica,sans-Serif" font-size="9.00">boundary layer</text>
 </g>
 <!-- MB2 -->
-<a xlink:href="/cards/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node2" class="node"><title>MB2</title>
+<a xlink:href="/cards/bridge/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node2" class="node"><title>MB2</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="384.48,-697.6 301.2,-665.6 384.48,-633.6 467.75,-665.6 384.48,-697.6"/>
 <text xml:space="preserve" text-anchor="middle" x="384.48" y="-668.6" font-family="Helvetica,sans-Serif" font-size="10.00">MB2</text>
 <text xml:space="preserve" text-anchor="middle" x="384.48" y="-656.6" font-family="Helvetica,sans-Serif" font-size="10.00">Value Learning</text>
@@ -80,7 +80,7 @@
 <text xml:space="preserve" text-anchor="middle" x="415.72" y="-345.5" font-family="Helvetica,sans-Serif" font-size="9.00">bundle layer</text>
 </g>
 <!-- MB5 -->
-<a xlink:href="/cards/mb5-successor-ontology-shift/" class="lean-graph-node"><g id="node6" class="node"><title>MB5</title>
+<a xlink:href="/cards/bridge/mb5-successor-ontology-shift/" class="lean-graph-node"><g id="node6" class="node"><title>MB5</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="194.48,-274.4 154.58,-242.4 194.48,-210.4 234.37,-242.4 194.48,-274.4"/>
 <text xml:space="preserve" text-anchor="middle" x="194.48" y="-245.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB5</text>
 <text xml:space="preserve" text-anchor="middle" x="194.48" y="-233.4" font-family="Helvetica,sans-Serif" font-size="10.00">Tiling</text>
@@ -101,7 +101,7 @@
 <text xml:space="preserve" text-anchor="middle" x="329.28" y="-239.7" font-family="Helvetica,sans-Serif" font-size="9.00">bearer layer</text>
 </g>
 <!-- MB4 -->
-<a xlink:href="/cards/mb4-correction-legitimacy/" class="lean-graph-node"><g id="node4" class="node"><title>MB4</title>
+<a xlink:href="/cards/bridge/mb4-correction-legitimacy/" class="lean-graph-node"><g id="node4" class="node"><title>MB4</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="1029.48,-274.4 964.02,-242.4 1029.48,-210.4 1094.93,-242.4 1029.48,-274.4"/>
 <text xml:space="preserve" text-anchor="middle" x="1029.48" y="-245.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB4</text>
 <text xml:space="preserve" text-anchor="middle" x="1029.48" y="-233.4" font-family="Helvetica,sans-Serif" font-size="10.00">Corrigibility</text>
@@ -114,7 +114,7 @@
 <text xml:space="preserve" text-anchor="middle" x="972.3" y="-128.5" font-family="Helvetica,sans-Serif" font-size="9.00">correction operator</text>
 </g>
 <!-- MB4a -->
-<a xlink:href="/cards/mb4a-measured-path-legitimacy/" class="lean-graph-node"><g id="node5" class="node"><title>MB4a</title>
+<a xlink:href="/cards/bridge/mb4a-measured-path-legitimacy/" class="lean-graph-node"><g id="node5" class="node"><title>MB4a</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="827.48,-274.4 722.51,-242.4 827.48,-210.4 932.44,-242.4 827.48,-274.4"/>
 <text xml:space="preserve" text-anchor="middle" x="827.48" y="-245.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB4a</text>
 <text xml:space="preserve" text-anchor="middle" x="827.48" y="-233.4" font-family="Helvetica,sans-Serif" font-size="10.00">Audit Independence</text>
@@ -127,7 +127,7 @@
 <text xml:space="preserve" text-anchor="middle" x="847.24" y="-128.5" font-family="Helvetica,sans-Serif" font-size="9.00">audit path</text>
 </g>
 <!-- MB10 -->
-<a xlink:href="/cards/mb10-successor-forgeability/" class="lean-graph-node"><g id="node15" class="node"><title>MB10</title>
+<a xlink:href="/cards/bridge/mb10-successor-forgeability/" class="lean-graph-node"><g id="node15" class="node"><title>MB10</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="100.48,-64 0,-32 100.48,0 200.96,-32 100.48,-64"/>
 <text xml:space="preserve" text-anchor="middle" x="100.48" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">MB10</text>
 <text xml:space="preserve" text-anchor="middle" x="100.48" y="-23" font-family="Helvetica,sans-Serif" font-size="10.00">Successor Gaming</text>
@@ -149,14 +149,14 @@
 <text xml:space="preserve" text-anchor="middle" x="242.22" y="-128.5" font-family="Helvetica,sans-Serif" font-size="9.00">successor layer</text>
 </g>
 <!-- MB6a -->
-<a xlink:href="/cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node7" class="node"><title>MB6a</title>
+<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node7" class="node"><title>MB6a</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="688.48,-709.6 579.1,-665.6 688.48,-621.6 797.86,-665.6 688.48,-709.6"/>
 <text xml:space="preserve" text-anchor="middle" x="688.48" y="-674.6" font-family="Helvetica,sans-Serif" font-size="10.00">MB6a</text>
 <text xml:space="preserve" text-anchor="middle" x="688.48" y="-662.6" font-family="Helvetica,sans-Serif" font-size="10.00">Goodhart Selection</text>
 <text xml:space="preserve" text-anchor="middle" x="688.48" y="-650.6" font-family="Helvetica,sans-Serif" font-size="10.00">(percolation → basin)</text>
 </g></a>
 <!-- MB6b -->
-<a xlink:href="/cards/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node8" class="node"><title>MB6b</title>
+<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node8" class="node"><title>MB6b</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="688.48,-498 584.11,-454 688.48,-410 792.84,-454 688.48,-498"/>
 <text xml:space="preserve" text-anchor="middle" x="688.48" y="-463" font-family="Helvetica,sans-Serif" font-size="10.00">MB6b</text>
 <text xml:space="preserve" text-anchor="middle" x="688.48" y="-451" font-family="Helvetica,sans-Serif" font-size="10.00">Goodhart Selection</text>
@@ -194,7 +194,7 @@
 <text xml:space="preserve" text-anchor="middle" x="740.95" y="-340.1" font-family="Helvetica,sans-Serif" font-size="9.00">→ measured path legitimate</text>
 </g>
 <!-- MB7c -->
-<a xlink:href="/cards/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node11" class="node"><title>MB7c</title>
+<a xlink:href="/cards/bridge/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node11" class="node"><title>MB7c</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="567.48,-286.4 444.21,-242.4 567.48,-198.4 690.74,-242.4 567.48,-286.4"/>
 <text xml:space="preserve" text-anchor="middle" x="567.48" y="-251.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB7c</text>
 <text xml:space="preserve" text-anchor="middle" x="567.48" y="-239.4" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
@@ -208,7 +208,7 @@
 <text xml:space="preserve" text-anchor="middle" x="611.71" y="-345.5" font-family="Helvetica,sans-Serif" font-size="9.00">correction integrity</text>
 </g>
 <!-- MB7b -->
-<a xlink:href="/cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node10" class="node"><title>MB7b</title>
+<a xlink:href="/cards/bridge/mb7b-filter-coverage/" class="lean-graph-node"><g id="node10" class="node"><title>MB7b</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="523.48,-848.6 437.44,-804.6 523.48,-760.6 609.52,-804.6 523.48,-848.6"/>
 <text xml:space="preserve" text-anchor="middle" x="523.48" y="-813.6" font-family="Helvetica,sans-Serif" font-size="10.00">MB7b</text>
 <text xml:space="preserve" text-anchor="middle" x="523.48" y="-801.6" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
@@ -223,7 +223,7 @@
 <text xml:space="preserve" text-anchor="middle" x="578.18" y="-1017.3" font-family="Helvetica,sans-Serif" font-size="9.00">→ hidden capability bounded</text>
 </g>
 <!-- MB7d -->
-<a xlink:href="/cards/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node12" class="node"><title>MB7d</title>
+<a xlink:href="/cards/bridge/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node12" class="node"><title>MB7d</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="685.48,-963.6 574.42,-931.6 685.48,-899.6 796.54,-931.6 685.48,-963.6"/>
 <text xml:space="preserve" text-anchor="middle" x="685.48" y="-934.6" font-family="Helvetica,sans-Serif" font-size="10.00">MB7d</text>
 <text xml:space="preserve" text-anchor="middle" x="685.48" y="-922.6" font-family="Helvetica,sans-Serif" font-size="10.00">Acausal Coordination</text>
@@ -259,7 +259,7 @@
 <text xml:space="preserve" text-anchor="middle" x="726.11" y="-796.5" font-family="Helvetica,sans-Serif" font-size="9.00">→ basin stability</text>
 </g>
 <!-- MB8 -->
-<a xlink:href="/cards/mb8-cev-process-convergence/" class="lean-graph-node"><g id="node13" class="node"><title>MB8</title>
+<a xlink:href="/cards/bridge/mb8-cev-process-convergence/" class="lean-graph-node"><g id="node13" class="node"><title>MB8</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" stroke-dasharray="5,2" points="1047.48,-498 939.75,-454 1047.48,-410 1155.2,-454 1047.48,-498"/>
 <text xml:space="preserve" text-anchor="middle" x="1047.48" y="-463" font-family="Helvetica,sans-Serif" font-size="10.00">MB8</text>
 <text xml:space="preserve" text-anchor="middle" x="1047.48" y="-451" font-family="Helvetica,sans-Serif" font-size="10.00">Extrapolated Volition</text>
@@ -288,7 +288,7 @@
 <text xml:space="preserve" text-anchor="middle" x="852.21" y="-345.5" font-family="Helvetica,sans-Serif" font-size="9.00">gravestone</text>
 </g>
 <!-- MB9 -->
-<a xlink:href="/cards/mb9-grounding-certificate/" class="lean-graph-node"><g id="node14" class="node"><title>MB9</title>
+<a xlink:href="/cards/bridge/mb9-grounding-certificate/" class="lean-graph-node"><g id="node14" class="node"><title>MB9</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="1210.48,-274.4 1126.67,-242.4 1210.48,-210.4 1294.29,-242.4 1210.48,-274.4"/>
 <text xml:space="preserve" text-anchor="middle" x="1210.48" y="-245.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB9</text>
 <text xml:space="preserve" text-anchor="middle" x="1210.48" y="-233.4" font-family="Helvetica,sans-Serif" font-size="10.00">Grounding Drift</text>
