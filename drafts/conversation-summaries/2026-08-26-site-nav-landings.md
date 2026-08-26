@@ -24,4 +24,4 @@ Plan steps 3–5: slim Cards/Book/News/Paths/Lean/Experiments/Demos; dual-unfold
 - `site/src/lib/visit-history.ts`
 
 ## Commits
-- none (not requested)
+- `3e648a95` Fold the companion-site header and land Field and Home on simpler pages.
