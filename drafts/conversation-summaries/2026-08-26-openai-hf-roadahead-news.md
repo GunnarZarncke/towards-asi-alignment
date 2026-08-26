@@ -30,3 +30,4 @@ User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face p
 
 ## Commits
 - `67bed526` Add field news on OpenAI’s Hugging Face postmortem.
+- `b925e0f3` Yes-and the Hugging Face postmortem card.
