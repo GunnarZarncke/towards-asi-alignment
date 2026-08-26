@@ -23,4 +23,4 @@ User asked for the Book page to match PDF structure and to restore appendices (A
 - `metadata/concept-graph/chapter-reading-dependency.md`
 
 ## Commits
-- (pending)
+- `3b101201` Put full PDF-order contents on Book and slim experiment coverage hub.
