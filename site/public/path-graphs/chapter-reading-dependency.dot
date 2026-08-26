@@ -7,7 +7,7 @@ digraph ChapterReadingDependency {
   "unit:ch01" [label="Ch 01\nThe Wrong Object of Alignment", fillcolor="#bfdbfe", color="#1d4ed8"];
   "unit:ch02" [label="Ch 02\nFrom Artificial Intelligence to Arti…", fillcolor="#bfdbfe", color="#1d4ed8"];
   "unit:ch03" [label="Ch 03\nAlignment as a Dynamical Guarantee", fillcolor="#bfdbfe", color="#1d4ed8"];
-  "unit:ch04" [label="Ch 04\nWhy Fixed Values Are the Wrong Targe…", fillcolor="#bfdbfe", color="#1d4ed8"];
+  "unit:ch04" [label="Ch 04\nWhy Fixed Values Are the Wrong Targe…", fillcolor="#fed7aa", color="#92400e"];
   "unit:ch05" [label="Ch 05\nAssumptions, Scope, and Failure Cove…", fillcolor="#bfdbfe", color="#1d4ed8"];
   "unit:ch06" [label="Ch 06\nWhat Is an Agent Without Anthropomor…", fillcolor="#bfdbfe", color="#1d4ed8"];
   "unit:ch07" [label="Ch 07\nFinding the Boundary", fillcolor="#fed7aa", color="#92400e"];
@@ -63,11 +63,13 @@ digraph ChapterReadingDependency {
   "unit:ch05" -> "unit:ch07" [label="1 concept\nscope-and-correction-capacity", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch07" [label="2 concept\nagent-without-anthropomorphism, boundary-discovery", color="#16a34a", style=dashed];
   "unit:ch06" -> "unit:ch09" [label="2 concept\nagent-without-anthropomorphism, composite-agency", color="#16a34a", style=dashed];
+  "unit:ch06" -> "unit:ch10" [label="1 concept\nagent-without-anthropomorphism", color="#16a34a", style=dashed];
   "unit:ch07" -> "unit:ch08" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch07" -> "unit:ch17" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch07" -> "unit:ch18" [label="2 concept\nboundary-before-bearer, candidate-process", color="#16a34a", style=dashed];
-  "unit:ch08" -> "unit:ch10" [label="2 sym\nA_t+k, L_t", color="#2563eb"];
+  "unit:ch07" -> "unit:ch35" [label="1 sym\nepsilon", color="#2563eb"];
   "unit:ch08" -> "unit:ch11" [label="1 sym\nI_pred", color="#2563eb"];
+  "unit:ch08" -> "unit:ch31" [label="1 concept\nsuccessor-conserved-properties", color="#16a34a", style=dashed];
   "unit:ch09" -> "unit:ch11" [label="1 sym\nmathcal_R_i", color="#2563eb"];
   "unit:ch10" -> "unit:ch22" [label="1 sym\nX_1:T", color="#2563eb"];
   "unit:ch10" -> "unit:ch35" [label="1 sym\nkappa_ij", color="#2563eb"];
@@ -90,7 +92,7 @@ digraph ChapterReadingDependency {
   "unit:ch22" -> "unit:ch40" [label="1 sym\nbearer", color="#2563eb"];
   "unit:ch23" -> "unit:ch24" [label="5 sym\nB^{A}, Delta_L_{correction}, Delta_L_{semantic}, L_correction, +1", color="#2563eb"];
   "unit:ch24" -> "unit:ch25" [label="1 sym\npi", color="#2563eb"];
-  "unit:ch25" -> "unit:ch26" [label="1 sym\nC_t", color="#2563eb"];
+  "unit:ch25" -> "unit:ch26" [label="2 sym\nC_t, G_t", color="#2563eb"];
   "unit:ch26" -> "unit:ch27" [label="1 sym\nCCI", color="#2563eb"];
   "unit:ch26" -> "unit:ch33" [label="1 sym\nCCI", color="#2563eb"];
   "unit:ch27" -> "unit:ch28" [label="1 sym\nSucc", color="#2563eb"];
@@ -116,5 +118,5 @@ digraph ChapterReadingDependency {
   "unit:ch47" -> "unit:ch24" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
   "unit:ch47" -> "unit:ch48" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
 
-  // (48 chapters, 62 edges: 25 symbol, 37 informal, 0 mixed)
+  // (48 chapters, 64 edges: 25 symbol, 39 informal, 0 mixed)
 }

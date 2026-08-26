@@ -2,38 +2,140 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import book from "../../data/book.json";
 import { getCollection } from "astro:content";
-import { cardHref, pdfHref } from "../../lib/site-urls";
+import { cardHref, chapterCardFor, pdfHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 const cards = await getCollection("cards");
-const chapterCardFor = (chapterId: string) =>
-  cards.find((card) => card.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(card.data.type));
+const chapterCardForId = (chapterId: string) => chapterCardFor(cards, chapterId);
 const toCardHref = (id: string) => cardHref(base, id);
+
+const partNumber = (id: string) => Number(id.replace(/\D/g, "")) || 0;
+const appendixLetter = (id: string) => id.replace(/^app/i, "").toUpperCase();
+
+/** Same order as `book.tex` `\frontmatter` inputs, then TOC/lists. */
+const FRONT_MATTER_LINKED = [
+  "Title page",
+  "Dedication",
+  "Acknowledgements",
+  "Preface",
+  "Introduction",
+  "Executive overview",
+  "Current status"
+];
+const FRONT_MATTER_LISTS = ["Table of contents", "List of figures", "List of tables"];
+
+const APPENDIX_ORDER = ["appA", "appB", "appC", "appM", "appD", "appE", "appF", "appG", "appN"] as const;
+
+const APPENDIX_SITE_PAGES: Record<string, { title: string; path: string }> = {
+  appA: { title: "Notation Index", path: "/notation/" },
+  appE: { title: "Operational Glossary", path: "/glossary/" },
+  appG: { title: "Lean Proof Spine in Mathematical Form", path: "/lean/" }
+};
+
+const frontmatterCard = chapterCardForId("frontmatter");
+const appendices = APPENDIX_ORDER.map((id) => {
+  const card = chapterCardForId(id);
+  const fallback = APPENDIX_SITE_PAGES[id];
+  return {
+    id,
+    letter: appendixLetter(id),
+    title: card?.data.title ?? fallback?.title ?? id,
+    href: card ? toCardHref(card.id) : fallback ? withBase(fallback.path) : null
+  };
+});
 ---
 
-<SiteLayout title="Book" description="Download the manuscript PDF and browse parts.">
+<SiteLayout title="Book" description="Download the manuscript PDF and browse front matter, parts, chapters, and appendices.">
   <section class="hero book-landing-hero">
     <p class="eyebrow">Book</p>
     <h1>{book.title}</h1>
     <p class="lede">{book.subtitle}</p>
     <div class="button-row">
       <a class="button primary" href={pdfHref(base)}>Download PDF</a>
-      <a class="button" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Front matter</a>
-      <a class="button" href={withBase("/references/")}>References</a>
-      <a class="button" href={withBase("/book/map/")}>All chapters</a>
     </div>
   </section>
 
-  <ol class="book-parts">
+  <section class="book-map" aria-labelledby="book-map-heading">
+    <h2 id="book-map-heading">Contents</h2>
+    <p class="side-panel-meta">Same order as the PDF: front matter, ten parts, appendices, bibliography.</p>
+
+    <section class="book-part" id="front-matter">
+      <p class="eyebrow">Front matter</p>
+      <ol class="book-chapter-list">
+        {FRONT_MATTER_LINKED.map((title) => (
+          <li>
+            <span class="book-chapter-num"></span>
+            {frontmatterCard ? (
+              <a href={toCardHref(frontmatterCard.id)}>{title}</a>
+            ) : (
+              <span>{title}</span>
+            )}
+          </li>
+        ))}
+        {FRONT_MATTER_LISTS.map((title) => (
+          <li>
+            <span class="book-chapter-num"></span>
+            <span>{title}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     {book.parts.map((part) => (
-      <li>
-        <h2><a href={withBase(`/book/map/#${part.id}`)}>{part.title}</a></h2>
-        {part.summary && <p>{part.summary}</p>}
-      </li>
+      <section class="book-part" id={part.id}>
+        <p class="eyebrow">Part {partNumber(part.id)} · chapters {part.range}</p>
+        <h3>{part.title}</h3>
+        {part.summary && <p class="book-part-summary">{part.summary}</p>}
+        <ol class="book-chapter-list">
+          {part.chapters.map((chapter) => {
+            const chapterCard = chapterCardForId(chapter.id);
+            return (
+              <li>
+                <span class="book-chapter-num">{chapter.number}</span>
+                {chapterCard ? (
+                  <a href={toCardHref(chapterCard.id)}>{chapter.title}</a>
+                ) : (
+                  <span>{chapter.title}</span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </section>
     ))}
-  </ol>
+
+    <section class="book-part" id="appendices">
+      <p class="eyebrow">Appendices</p>
+      <ol class="book-chapter-list">
+        {appendices.map((appendix) => (
+          <li>
+            <span class="book-chapter-num">{appendix.letter}</span>
+            {appendix.href ? (
+              <a href={appendix.href}>{appendix.title}</a>
+            ) : (
+              <span>{appendix.title}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="book-part" id="back-matter">
+      <p class="eyebrow">Back matter</p>
+      <ol class="book-chapter-list">
+        <li>
+          <span class="book-chapter-num"></span>
+          <a href={withBase("/references/")}>Bibliography</a>
+        </li>
+        <li>
+          <span class="book-chapter-num"></span>
+          <span>Index</span>
+        </li>
+      </ol>
+    </section>
+  </section>
 </SiteLayout>
 
 <style>
@@ -42,26 +144,54 @@ const toCardHref = (id: string) => cardHref(base, id);
     padding-bottom: 1.25rem;
   }
 
-  .book-parts {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .book-map {
     max-width: var(--max-readable);
   }
 
-  .book-parts li + li {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border, #c8d4e0);
+  .book-map > h2 {
+    margin-top: 0;
+    font-size: 1.35rem;
   }
 
-  .book-parts h2 {
-    margin: 0 0 0.25rem;
+  .book-part {
+    margin: 1.75rem 0 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: var(--radius-card, 8px);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .book-part .eyebrow {
+    margin: 0 0 0.35rem;
+  }
+
+  .book-part h3 {
+    margin: 0 0 0.4rem;
     font-size: 1.15rem;
   }
 
-  .book-parts p {
-    margin: 0;
+  .book-part-summary {
+    margin: 0 0 0.85rem;
     color: var(--color-muted);
+  }
+
+  .book-chapter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .book-chapter-list li {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.5rem;
+    margin: 0.2rem 0;
+    align-items: baseline;
+  }
+
+  .book-chapter-num {
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.92rem;
   }
 </style>

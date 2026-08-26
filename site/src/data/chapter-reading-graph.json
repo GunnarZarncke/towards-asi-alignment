@@ -2,7 +2,7 @@
   "sourceDot": "metadata/concept-graph/chapter-reading-dependency.dot",
   "title": "Chapter prerequisites (symbols + informal concepts, vertical)",
   "chapterCount": 48,
-  "edgeCount": 62,
+  "edgeCount": 64,
   "nodes": [
     {
       "id": "unit:ch01",
@@ -35,7 +35,7 @@
       "id": "unit:ch04",
       "label": "Ch 04\nWhy Fixed Values Are the Wrong Targe…",
       "shape": "box",
-      "fillcolor": "#bfdbfe",
+      "fillcolor": "#fed7aa",
       "style": "",
       "penwidth": "",
       "chapterId": "ch04"
@@ -509,6 +509,13 @@
       "color": "#16a34a"
     },
     {
+      "from": "unit:ch06",
+      "to": "unit:ch10",
+      "label": "1 concept\nagent-without-anthropomorphism",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
       "from": "unit:ch07",
       "to": "unit:ch08",
       "label": "1 sym\nepsilon",
@@ -530,9 +537,9 @@
       "color": "#16a34a"
     },
     {
-      "from": "unit:ch08",
-      "to": "unit:ch10",
-      "label": "2 sym\nA_t+k, L_t",
+      "from": "unit:ch07",
+      "to": "unit:ch35",
+      "label": "1 sym\nepsilon",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -542,6 +549,13 @@
       "label": "1 sym\nI_pred",
       "dashed": false,
       "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch08",
+      "to": "unit:ch31",
+      "label": "1 concept\nsuccessor-conserved-properties",
+      "dashed": true,
+      "color": "#16a34a"
     },
     {
       "from": "unit:ch09",
@@ -700,7 +714,7 @@
     {
       "from": "unit:ch25",
       "to": "unit:ch26",
-      "label": "1 sym\nC_t",
+      "label": "2 sym\nC_t, G_t",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -876,5 +890,5 @@
   "svgFile": "path-graphs/chapter-reading-dependency.svg",
   "dotFile": "path-graphs/chapter-reading-dependency.dot",
   "clickableNodes": 48,
-  "generatedAt": "2026-08-21T15:51:19.814Z"
+  "generatedAt": "2026-08-26T19:57:58.609Z"
 }
