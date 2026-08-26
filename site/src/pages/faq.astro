@@ -1,66 +1,14 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import LinkIndicator from "../components/LinkIndicator.astro";
-import { pdfHref } from "../lib/site-urls";
-
-const base = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-
-const items = [
-  ["What is this site?", "A static companion site for this project. It helps readers find the core ideas, choose a fixed path, and reach the PDF."],
-  ["Is this a new knowledge platform?", "No. It is an authored reference layer for one framework. Discussion and contributions can happen elsewhere."],
-  ["What is the central thesis?", "Alignment means preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and selection pressure."],
-  ["What are the six thesis claims?", "The Introduction's reader contract: boundary, value-bundle, grounding, correction, successor, and basin/selection. The companion hub card links each claim to concept cards and Chapter 48 status labels and open gaps."],
-  ["What is correction-channel integrity?", "It is the condition that legitimate human correction still causally changes future system behavior before irreversible damage."],
-  ["What is a value bundle?", "A compressed direction of control that changes behavior across contexts. The framework cares whether this structure survives transformation."],
-  ["Why start with boundary discovery?", "Because the deployed actor may be a loop of model, memory, tools, dashboards, and people. Auditing only the model can miss the real controller."],
-  ["Does Lean prove alignment?", "No. Lean checks conditional structure. It does not prove that real systems satisfy the bridge assumptions."],
-  ["Do the experiments validate the thesis?", "No. They are methodology-building and sanity checks. Negative results bound what the manuscript may claim."],
-  ["Where are the experiment lines documented?", "The companion site Experiments page summarizes build order, negative ledgers, and bridge coverage. Full narrative prose lives in docs/EXPERIMENTS.md in the repository."],
-  ["Where should safety engineers start?", "Use the engineer/evals path, then read the correction-channel integrity and deployment-gate cards."],
-  ["Where should policy readers start?", "Use the funder/policy path. It emphasizes decision triggers, scope assumptions, artifacts, and uncertainty."],
-  ["Where is the full book?", "The PDF is bundled with this site — use PDF in the nav or the Download PDF button on Start Here and the book map. It opens directly in the browser without GitHub login."],
-  ["Will there be translations?", "Later, after the English card structure stabilizes."]
-];
+import FaqList from "../components/FaqList.astro";
 ---
 
-<SiteLayout title="FAQ" description="Frequently asked questions about the companion site and framework.">
+<SiteLayout title="FAQ" description="Frequently asked questions about the book and this site.">
   <section class="hero">
     <p class="eyebrow">FAQ</p>
     <h1>Questions first</h1>
-    <p class="lede">
-      Start with a question. Each answer links to the card or path that goes deeper.
-    </p>
+    <p class="lede">Start with a question. Each answer links to the card or path that goes deeper.</p>
   </section>
 
-  <section class="readable">
-    {items.map(([question, answer]) => (
-      <details class="card">
-        <summary><strong>{question}</strong></summary>
-        <p>
-          {question === "Where are the experiment lines documented?" ? (
-            <>
-              The companion site <a href={withBase("/experiments/")}>Experiments page</a> summarizes build order,
-              negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
-              <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md<LinkIndicator kind="github" /></a>{" "}
-              in the repository.
-            </>
-          ) : question === "Where is the full book?" ? (
-            <>
-              The PDF is bundled with this site — use <a href={pdfHref(base)}>PDF in the nav</a> or the Download PDF button on{" "}
-              <a href={withBase("/")}>Start Here</a> and the <a href={withBase("/book/")}>book map</a>.
-              It opens directly in the browser without GitHub login. GitHub Releases remains an alternate download channel.
-            </>
-          ) : question === "What are the six thesis claims?" ? (
-            <>
-              The Introduction's reader contract: boundary, value-bundle, grounding, correction, successor, and basin/selection.
-              See the <a href={withBase("/cards/six-thesis-claims/")}>six thesis claims hub</a> for concept-card links and Chapter 48 status labels and open gaps.
-            </>
-          ) : (
-            answer
-          )}
-        </p>
-      </details>
-    ))}
-  </section>
+  <FaqList />
 </SiteLayout>

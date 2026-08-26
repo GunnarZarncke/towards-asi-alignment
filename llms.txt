@@ -8,18 +8,19 @@ This file is also served at https://towards-alignment.com/llms.txt (generated at
 
 Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
 
-- [Start Here](https://towards-alignment.com/): homepage, thesis, six thesis claims, standalone claims, failure modes.
+- [Home](https://towards-alignment.com/): capability/correction question, value tiles, continue reading.
+- [Start Here](https://towards-alignment.com/start/): slower introduction, three ways in, FAQ.
 - [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 status hub.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
-- [Field hub](https://towards-alignment.com/field/): field hub v2 — lifecycle axis, stance-encoded evidence; 30 agenda records, 24 matrix rows, MB1–MB11 incl. MB4a (matrix and crosswalk; MB8 retired from live Lean path).
+- [Field hub](https://towards-alignment.com/field/): six preview panels (coverage, dependency graph, lifecycle, programs). Longer briefing at [/field/v2/](https://towards-alignment.com/field/v2/).
 - [Field coverage](https://towards-alignment.com/field/coverage/): agenda × bridge matrix and evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
 - [Field news](https://towards-alignment.com/news/): 2026 alignment incidents tied to manuscript chapters.
 - [Updates](https://towards-alignment.com/updates/): versioned release notes (current: v1.5.0).
 - [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
-- [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
+- [FAQ](https://towards-alignment.com/faq/): same questions as Start Here.
 - [About](https://towards-alignment.com/about/): authorship and reuse.
-- [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
+- [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts; PDF download.
 - [Lean dependency spine](https://towards-alignment.com/lean/): dependency-spine graphs and playgrounds.
 - [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
 - [Negative results](https://towards-alignment.com/cards/negative-results/): curated failures and ledger links.

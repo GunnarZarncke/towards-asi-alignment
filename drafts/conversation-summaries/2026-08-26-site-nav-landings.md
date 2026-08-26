@@ -8,7 +8,7 @@ Implement the first two steps of the nav-landing plan: fold/reorder the header, 
 - `/start/` is the slower on-ramp (stake, three ways in, shared FAQ). `/faq/` uses the same `FaqList`.
 - Visit history: last 100 paths in `localStorage` (`VisitRecorder` + `visit-history.ts`). Homepage Continue reading shows the last other page and More-per-type.
 - `/` is the public homepage: capability lede, Start here + gems links, value tiles.
-- Field preview panels: fill the card (flex + equal rows); matrix/graph stretch to the box; lifecycle, specify/construct, bearer, and agendas are compact lists that occupy the panel instead of a tiny clipped thumbnail.
+- Field preview height capped (now 20.25rem after a too-tall `1fr` stretch, then +50%).
 - Footer no longer says “companion site.” `llms.txt` nav pointers updated.
 
 ## Decisions

@@ -1,0 +1,40 @@
+---
+import { FAQ_ITEMS } from "../lib/faq-items";
+import LinkIndicator from "./LinkIndicator.astro";
+import { pdfHref } from "../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+---
+
+<section class="readable">
+  {FAQ_ITEMS.map((item) => (
+    <details class="card">
+      <summary><strong>{item.question}</strong></summary>
+      <p>
+        {item.answer === "experiments" ? (
+          <>
+            The <a href={withBase("/experiments/")}>Experiments page</a> summarizes build order,
+            negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md<LinkIndicator kind="github" /></a>{" "}
+            in the repository.
+          </>
+        ) : item.answer === "book" ? (
+          <>
+            The PDF is bundled with this site — use <a href={pdfHref(base)}>Download PDF</a> on the{" "}
+            <a href={withBase("/book/")}>book page</a> or <a href={withBase("/start/")}>Start Here</a>.
+            It opens in the browser without GitHub login.
+          </>
+        ) : item.question === "What are the six thesis claims?" ? (
+          <>
+            {item.answer} See the{" "}
+            <a href={withBase("/cards/six-thesis-claims/")}>six thesis claims hub</a> for concept-card links
+            and Chapter 48 status labels and open gaps.
+          </>
+        ) : (
+          item.answer
+        )}
+      </p>
+    </details>
+  ))}
+</section>

@@ -94,8 +94,15 @@ async function buildEntries() {
   entries.push({
     title: "Field — AI safety and alignment",
     type: "field",
-    summary: "Public map of major agendas, bridge coverage matrix, and field overviews (AISafety.com map, interventions index, surveys).",
+    summary: "Preview hub: coverage matrix, problem-dependency graph, lifecycle, programs.",
     url: "/field/"
+  });
+
+  entries.push({
+    title: "Start here",
+    type: "page",
+    summary: "Slower introduction, three ways in, and common questions.",
+    url: "/start/"
   });
 
   let leanChecks = { checks: [] };

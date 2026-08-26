@@ -2,7 +2,7 @@ export const SITE_NAME = "Towards Superintelligence Alignment";
 export const DEFAULT_DESCRIPTION =
   "Companion site for the Towards Superintelligence Alignment project — guided paths, concept cards, Lean spine, and experiments.";
 export const HOME_DESCRIPTION =
-  "Start here: guided reading paths, concept cards, Lean dependency spine, and experiment lines for Towards Superintelligence Alignment — preserving human-correctable value as capability grows.";
+  "As AI gets more capable, can people still change what it does when it is wrong? The book Towards Superintelligence Alignment, plus a field map, experiments, and news.";
 export const SITE_ORIGIN = "https://towards-alignment.com";
 export const AUTHOR_NAME = "Gunnar Zarncke";
 export const OG_IMAGE_PATH = "/og-image.png";

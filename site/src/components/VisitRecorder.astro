@@ -1,0 +1,29 @@
+<script>
+  import { SITE_NAME } from "../lib/seo";
+  import {
+    VISIT_HISTORY_KEY,
+    normalizePath,
+    parseVisitHistory,
+    prependVisit,
+    shouldSkipPath,
+    stripSiteTitle,
+    visitTypeForPath
+  } from "../lib/visit-history";
+
+  const siteName = SITE_NAME;
+  try {
+    const path = normalizePath(window.location.pathname);
+    if (!shouldSkipPath(path)) {
+      const history = parseVisitHistory(localStorage.getItem(VISIT_HISTORY_KEY));
+      const next = prependVisit(history, {
+        path,
+        title: stripSiteTitle(document.title, siteName),
+        type: visitTypeForPath(path),
+        t: Date.now()
+      });
+      localStorage.setItem(VISIT_HISTORY_KEY, JSON.stringify(next));
+    }
+  } catch {
+    // private mode / blocked storage
+  }
+</script>

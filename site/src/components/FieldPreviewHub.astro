@@ -1,0 +1,274 @@
+---
+import FieldAgendaMatrix from "./FieldAgendaMatrix.astro";
+import FieldBridgeGraph from "./FieldBridgeGraph.astro";
+import fieldData from "../data/field-agendas.json";
+import fieldV2 from "../data/field-v2.json";
+import { cardHref } from "../lib/site-urls";
+
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const agendas = fieldData.roster.filter((row) => row.inMatrix).slice(0, 16);
+const phases = fieldV2.lifecyclePhases ?? [];
+const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
+---
+
+<section class="field-preview-hub" aria-label="Field map">
+  <article class="field-preview-panel">
+    <h2>Who published what on which problems</h2>
+    <div class="field-preview-clip field-preview-clip--matrix" aria-hidden="true">
+      <FieldAgendaMatrix base={base} showStance={true} hubPath="/field/coverage/" />
+    </div>
+    <a class="field-preview-cover" href={withBase("/field/coverage/")}><span class="visually-hidden">Who published what on which problems</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>Which problems depend on which</h2>
+    <div class="field-preview-clip field-preview-clip--graph" aria-hidden="true">
+      <FieldBridgeGraph />
+    </div>
+    <a class="field-preview-cover" href={cardHref(base, "bridge-assumptions")}><span class="visually-hidden">Which problems depend on which</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>When each handoff must hold</h2>
+    <ol class="field-preview-phases">
+      {phases.map((phase) => (
+        <li>
+          <strong>{phase.label}</strong>
+          <span>{phase.summary}</span>
+        </li>
+      ))}
+    </ol>
+    <a class="field-preview-cover" href={cardHref(base, "alignment-lifecycle")}><span class="visually-hidden">When each handoff must hold</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>What “aligned to” is supposed to mean</h2>
+    <ul class="field-preview-instances">
+      {instances.map((row) => (
+        <li>
+          <strong>{row.specify.title}</strong>
+          <span>{row.construct.title}</span>
+        </li>
+      ))}
+    </ul>
+    <a class="field-preview-cover" href={cardHref(base, "alignment-target")}><span class="visually-hidden">What aligned to is supposed to mean</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>Consciousness and welfare neighborhood</h2>
+    <div class="field-preview-excerpt">
+      <p>
+        Which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a
+        bundle-specific bearer class.
+      </p>
+      <p>
+        These notes are not coverage-matrix cells. Filling a matrix cell needs a sourced agenda
+        contribution; this list only records neighborhood work the hub should make visible.
+      </p>
+    </div>
+    <a class="field-preview-cover" href={cardHref(base, "bearer-admission-adjacent")}><span class="visually-hidden">Consciousness and welfare neighborhood</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>The research programs</h2>
+    <ul class="field-preview-agendas">
+      {agendas.map((agenda) => (
+        <li>{agenda.title}</li>
+      ))}
+    </ul>
+    <a class="field-preview-cover" href={withBase("/badges/type/agenda/")}><span class="visually-hidden">The research programs</span></a>
+  </article>
+</section>
+
+<style>
+  .field-preview-hub {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 720px) {
+    .field-preview-hub {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .field-preview-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 20.25rem;
+    max-height: 20.25rem;
+    padding: 0.85rem 1rem 0.7rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: var(--radius-card, 8px);
+    background: var(--color-surface, #fafbfc);
+    overflow: hidden;
+  }
+
+  .field-preview-panel:has(.field-preview-cover:hover),
+  .field-preview-panel:has(.field-preview-cover:focus-visible) {
+    border-color: var(--color-accent-strong, #1a5276);
+  }
+
+  .field-preview-cover {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .field-preview-panel h2 {
+    margin: 0 0 0.65rem;
+    font-size: 1.05rem;
+    flex: 0 0 auto;
+  }
+
+  .field-preview-clip,
+  .field-preview-phases,
+  .field-preview-instances,
+  .field-preview-excerpt,
+  .field-preview-agendas {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .field-preview-clip {
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .field-preview-clip::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1.75rem;
+    background: linear-gradient(transparent, var(--color-surface, #fafbfc));
+    pointer-events: none;
+  }
+
+  .field-preview-clip--matrix :global(.field-matrix) {
+    margin: 0;
+    height: 100%;
+  }
+
+  .field-preview-clip--matrix :global(h2),
+  .field-preview-clip--matrix :global(.side-panel-meta),
+  .field-preview-clip--graph :global(.field-bridge-graph-hint),
+  .field-preview-clip--graph :global(.field-bridge-graph-wrap) {
+    margin: 0;
+  }
+
+  .field-preview-clip--matrix :global(h2),
+  .field-preview-clip--matrix :global(.side-panel-meta),
+  .field-preview-clip--graph :global(.field-bridge-graph-hint) {
+    display: none;
+  }
+
+  .field-preview-clip--matrix :global(.field-matrix-wrap) {
+    overflow: hidden;
+    max-width: none;
+    height: 100%;
+  }
+
+  .field-preview-clip--matrix :global(table) {
+    min-width: 0 !important;
+    width: 100%;
+    font-size: 0.62rem;
+  }
+
+  .field-preview-clip--graph :global(.field-bridge-graph-wrap) {
+    border: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .field-preview-clip--graph :global(.field-bridge-graph-svg),
+  .field-preview-clip--graph :global(svg) {
+    display: block;
+    min-width: 0 !important;
+    width: 100%;
+    height: 100%;
+  }
+
+  .field-preview-phases,
+  .field-preview-instances {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    overflow: hidden;
+  }
+
+  .field-preview-phases li,
+  .field-preview-instances li {
+    display: grid;
+    gap: 0.1rem;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    color: var(--color-muted, #4a5568);
+  }
+
+  .field-preview-phases strong,
+  .field-preview-instances strong {
+    color: var(--color-text, #1a1a1a);
+  }
+
+  .field-preview-phases span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .field-preview-excerpt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .field-preview-excerpt p {
+    margin: 0;
+  }
+
+  .field-preview-agendas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 0.2rem;
+    padding-left: 1.1rem;
+    overflow: hidden;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="continue-reading" hidden data-continue-reading data-base={base}>
+  <h2>Continue reading</h2>
+  <p class="continue-latest">
+    <a data-continue-latest href="#"></a>
+  </p>
+  <details class="continue-more">
+    <summary>More</summary>
+    <ul data-continue-by-type></ul>
+  </details>
+</section>
+
+<script>
+  import {
+    VISIT_HISTORY_KEY,
+    continueTarget,
+    latestByType,
+    normalizePath,
+    parseVisitHistory,
+    typeLabel
+  } from "../lib/visit-history";
+
+  const root = document.querySelector("[data-continue-reading]");
+  if (root instanceof HTMLElement) {
+    try {
+      const base = root.dataset.base ?? "/";
+      const withBase = (path: string) => {
+        const prefix = base.endsWith("/") ? base : `${base}/`;
+        return `${prefix}${path.replace(/^\/+/, "")}`;
+      };
+      const history = parseVisitHistory(localStorage.getItem(VISIT_HISTORY_KEY));
+      const current = normalizePath(window.location.pathname);
+      const latest = continueTarget(history, current);
+      if (latest) {
+        const latestLink = root.querySelector("[data-continue-latest]");
+        if (latestLink instanceof HTMLAnchorElement) {
+          latestLink.href = withBase(latest.path);
+          latestLink.textContent = latest.title || latest.path;
+        }
+        const byType = latestByType(history, current);
+        const list = root.querySelector("[data-continue-by-type]");
+        const more = root.querySelector(".continue-more");
+        if (list && more instanceof HTMLDetailsElement) {
+          if (byType.length === 0) {
+            more.hidden = true;
+          } else {
+            list.replaceChildren(
+              ...byType.map(({ type, entry }) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = withBase(entry.path);
+                a.textContent = `${typeLabel(type)}: ${entry.title || entry.path}`;
+                li.append(a);
+                return li;
+              })
+            );
+          }
+        }
+        root.hidden = false;
+      }
+    } catch {
+      // ignore
+    }
+  }
+</script>
+
+<style>
+  .continue-reading {
+    margin: 1.5rem 0 0;
+    max-width: 49rem;
+  }
+
+  .continue-reading h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .continue-latest {
+    margin: 0;
+  }
+
+  .continue-more {
+    margin-top: 0.5rem;
+  }
+
+  .continue-more ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.2rem;
+  }
+</style>

@@ -1,107 +1,52 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import ConceptCardLink from "../components/ConceptCardLink.astro";
-import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
-import { pathHref, pdfHref } from "../lib/site-urls";
+import ContinueReading from "../components/ContinueReading.astro";
 import { HOME_DESCRIPTION } from "../lib/seo";
-import { getReadingPaths } from "../lib/reading-paths";
+
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const paths = getReadingPaths();
-const failureModes = [
-  { title: "Wrong object", text: "Auditing the visible model while the real deployed actor is a larger loop.", card: "the-boundary-error" },
-  { title: "Label preservation", text: "Keeping value words while the underlying tradeoffs drift.", card: "value-change-vs-corruption" },
-  { title: "Correction theater", text: "Accepting feedback in form while future behavior does not change.", card: "correction-channel-integrity" },
-  { title: "Successor drift", text: "Delegates or copies inherit syntax but not the safety-relevant structure.", card: "successor-stability" },
-  { title: "Selection pressure", text: "Deployment incentives reward systems that become harder to correct.", card: "attractor-control" }
+
+const tiles = [
+  { href: "/book/", title: "Read or download the book" },
+  { href: "/cards/", title: "Knowledge cards grouped by topic" },
+  { href: "/field/", title: "Map of alignment research" },
+  { href: "/paths/chapter-reading-graph/", title: "How the chapters connect" },
+  { href: "/experiments/", title: "Experiments we ran" },
+  { href: "/news/", title: "What just happened in the field" }
 ];
 ---
 
 <SiteLayout description={HOME_DESCRIPTION}>
   <section class="hero">
-    <p class="eyebrow">Companion site</p>
     <h1>Towards Superintelligence Alignment</h1>
-    <p class="lede">
-      Alignment is the problem of preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and selection pressure intensifies.
+    <p class="lede">As AI gets more capable, can people still change what it does when it is wrong?</p>
+    <p class="side-panel-meta">
+      <a href={withBase("/start/")}>Start here — a slower introduction and common questions</a>
+      {" · "}
+      <a href={withBase("/badges/gem/")}>Highlights (gems)</a>
     </p>
-    <div class="button-row">
-      <a class="button primary" href={withBase("/paths/")}>Guided tour — start here</a>
-      <a class="button" href={pdfHref(base)}>Download PDF</a>
-      <a class="button" href={withBase("/faq/")}>FAQ</a>
-    </div>
   </section>
 
-  <section class="callout readable">
-    <p class="eyebrow">Reader contract</p>
-    <h2>Six thesis claims</h2>
-    <p>
-      The Introduction names six load-bearing claims the manuscript develops part by part and revisits in Chapter&nbsp;48.
-      Use this hub to see how they map to concept cards, parts, and status labels and open gaps.
-    </p>
-    <p><a class="button primary" href={withBase("/cards/six-thesis-claims/")}>Open six-claim spine</a></p>
-  </section>
+  <ContinueReading />
 
-  <section class="readable">
-    <h2>Guided Tour</h2>
-    <p>Pick the path closest to your role — each links to an ordered reading list (cards, toys, experiments, chapters).</p>
-    <PathRelationshipDiagram paths={paths} base={base} />
-    <div class="grid path-grid">
-      {paths.map((path) => (
-        <article class="card">
-          <h3><a href={pathHref(base, path.id)}>{path.title}</a></h3>
-          <p class="side-panel-meta"><strong>{path.audience}</strong></p>
-          <p>{path.summary}</p>
-        </article>
-      ))}
-    </div>
-    <p><a href={withBase("/paths/")}>Full guided tour page</a></p>
-  </section>
-
-  <section class="callout readable">
-    <p class="eyebrow">Publishable notes</p>
-    <h2>Standalone claims</h2>
-    <p>
-      Four extractable claims from the manuscript — each citable without the full book argument.
-      Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
-    </p>
-    <p><a class="button" href={withBase("/cards/standalone-claims/")}>Browse standalone claims</a></p>
-  </section>
-
-  <section>
-    <h2>Five Failure Modes</h2>
+  <section class="home-tiles">
     <div class="grid">
-      {failureModes.map(({ title, text, card }) => (
+      {tiles.map((tile) => (
         <article class="card">
-          <h3>
-            <ConceptCardLink href={withBase(`/cards/${card}/`)} slug={card} logoSize={40}>
-              {title}
-            </ConceptCardLink>
-          </h3>
-          <p>{text}</p>
+          <h2><a href={withBase(tile.href)}>{tile.title}</a></h2>
         </article>
       ))}
     </div>
-  </section>
-
-  <section class="callout warning readable">
-    <h2>What this site is not claiming</h2>
-    <p>
-      This project does not claim that alignment is solved. Lean checks conditional structure, not real-world bridge satisfaction. Experiments are sanity checks and falsification harnesses, not frontier-system validation. The PDF remains the canonical long-form artifact.
-    </p>
-    <p>
-      <ConceptCardLink href={withBase("/cards/what-not-claiming/")} slug="what-not-claiming">
-        Read the caveat card
-      </ConceptCardLink> ·
-      <ConceptCardLink href={withBase("/cards/negative-results/")} slug="negative-results">
-        Negative results ledgers
-      </ConceptCardLink> ·
-      <a href={withBase("/experiments/")}>Experiment lines and coverage matrix</a>
-    </p>
   </section>
 </SiteLayout>
 
 <style>
-  .path-grid {
-    margin-top: 1.25rem;
+  .home-tiles {
+    margin-top: 2rem;
+  }
+
+  .home-tiles h2 {
+    margin: 0;
+    font-size: 1.15rem;
   }
 </style>

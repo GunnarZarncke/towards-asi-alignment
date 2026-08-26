@@ -9,7 +9,7 @@ import PageNotes from "../components/PageNotes.astro";
 import PageQrCode from "../components/PageQrCode.astro";
 import PageWidthToggle from "../components/PageWidthToggle.astro";
 import SiteSearch from "../components/SiteSearch.astro";
-import { pdfHref } from "../lib/site-urls";
+import VisitRecorder from "../components/VisitRecorder.astro";
 import {
   AUTHOR_NAME,
   DEFAULT_DESCRIPTION,
@@ -48,7 +48,6 @@ const siteOrigin = Astro.site?.origin ?? "https://towards-alignment.com";
 const pageTitle = buildPageTitle(title);
 const canonicalUrl = absoluteSiteUrl(Astro.url.pathname, siteOrigin);
 const metaDescription = truncateDescription(description);
-const pdfUrl = pdfHref(base);
 const robots = noindex ? "noindex, follow" : "index, follow";
 const websiteJsonLd = {
   "@context": "https://schema.org",
@@ -110,22 +109,16 @@ const websiteJsonLd = {
             <span class="brand-text">{SITE_NAME}</span>
           </a>
           <nav class="nav" aria-label="Primary navigation">
-            <a href={withBase("/")}>Start Here</a>
+            <a href={withBase("/start/")}>Start Here</a>
             <a href={withBase("/paths/")}>Guided Tour</a>
-            <a href={withBase("/field/")}>Field</a>
-            <a href={withBase("/cards/")}>Cards</a>
-            <a href={withBase("/badges/")}>Badges</a>
             <a href={withBase("/book/")}>Book</a>
-            <a href={withBase("/faq/")}>FAQ</a>
+            <a href={withBase("/cards/")}>Cards</a>
+            <a href={withBase("/field/")}>Field</a>
             <a href={withBase("/experiments/")}>Experiments</a>
-            <a href={withBase("/lean/")}>Lean</a>
             <a href={withBase("/demos/")}>Demos</a>
-            <a href={withBase("/references/")}>References</a>
-            <a href={withBase("/updates/")}>Updates</a>
+            <a href={withBase("/lean/")}>Lean</a>
             <a href={withBase("/news/")}>News</a>
             <a href={withBase("/about/")}>About</a>
-            <a href={pdfUrl}>PDF</a>
-            <a href={withBase("/glossary/")}>Glossary</a>
             <SiteSearch />
           </nav>
         </div>
@@ -136,7 +129,7 @@ const websiteJsonLd = {
       <footer class="site-footer">
         <div class="site-footer-inner">
           <p>
-            A static companion site for an authored research manuscript.
+            The book, a map of alignment research, and the tests behind the claims.
           </p>
           <p>
             <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<LinkIndicator kind="github" /></a> ·
@@ -157,6 +150,7 @@ const websiteJsonLd = {
       <PageQrCode url={canonicalUrl} />
       <PageNotes />
     </div>
+    <VisitRecorder />
     <BenchmarkCanary />
     <CloudflareWebAnalytics />
   </body>
