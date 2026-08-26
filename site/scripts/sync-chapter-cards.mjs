@@ -49,6 +49,7 @@ async function listConceptCards(cardsDir) {
     if (!entry.isFile() || !entry.name.endsWith(".md")) continue;
     const text = await readFile(path.join(cardsDir, entry.name), "utf8");
     const fm = text.match(/^---\n([\s\S]*?)\n---/)?.[1] || "";
+    if (/^type:\s*essay\s*$/m.test(fm)) continue;
     const slug = entry.name.replace(/\.md$/, "");
     const chapters = [];
     const inline = fm.match(/^bookChapters:\s*\[(.+?)\]/m);

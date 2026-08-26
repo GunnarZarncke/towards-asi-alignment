@@ -2,7 +2,7 @@ import type { CollectionEntry } from "astro:content";
 import demosIndex from "../data/demos.json";
 import experimentsIndex from "../data/experiments.json";
 import bookIndex from "../data/book.json";
-import { bookHref, cardHref, chapterCardFor } from "./site-urls";
+import { bookHref, cardHref, chapterCardFor, essayHref } from "./site-urls";
 import type { ReadingPathSpotlight, ReadingPathSpotlightLink } from "./reading-paths";
 
 type CardEntry = CollectionEntry<"cards">;
@@ -37,8 +37,11 @@ export function resolveSpotlightTarget(
       return cardHref(base, `experiments/${link.ref}`);
     case "lean":
       return withBase(`/lean/${link.ref === "overview" ? "" : `${link.ref}/`}`);
-    case "card":
-      return cardHref(base, link.ref);
+    case "card": {
+      const card = ctx.cards.find((entry) => entry.id === link.ref);
+      if (card?.data.type === "essay") return essayHref(ctx.base, card.id);
+      return cardHref(ctx.base, link.ref);
+    }
     default:
       return withBase("/");
   }

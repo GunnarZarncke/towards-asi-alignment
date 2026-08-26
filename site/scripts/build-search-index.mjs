@@ -53,11 +53,12 @@ async function buildEntries() {
 
   const rootCards = await loadCards(cardsDir);
   for (const { id, fm } of rootCards) {
+    const url = fm.type === "essay" ? `/essay/${id}/` : cardHref(id);
     entries.push({
       title: fm.title,
       type: fm.type,
       summary: fm.summary ?? "",
-      url: cardHref(id)
+      url
     });
   }
 
@@ -101,8 +102,15 @@ async function buildEntries() {
   entries.push({
     title: "Start here",
     type: "page",
-    summary: "Slower introduction, three ways in, and common questions.",
+    summary: "Slower introduction, essays as the primary door, and common questions.",
     url: "/start/"
+  });
+
+  entries.push({
+    title: "Essays",
+    type: "page",
+    summary: "Story-shaped general-audience spine: one idea per essay, optional tangents.",
+    url: "/essay/the-chatbot-passed-the-test/"
   });
 
   let leanChecks = { checks: [] };

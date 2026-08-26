@@ -1,15 +1,25 @@
 ---
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import FaqList from "../../components/FaqList.astro";
-import { pdfHref } from "../../lib/site-urls";
+import { firstEssayHref, pdfHref } from "../../lib/site-urls";
+import { essayTeaserMarkdown, findEssay, spineAndCloser } from "../../lib/essays";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const cards = await getCollection("cards");
+const firstEssay = spineAndCloser(cards)[0] ?? findEssay(cards, "the-chatbot-passed-the-test");
+const teaserMd = firstEssay ? essayTeaserMarkdown(firstEssay.body, 2) : "";
+const markdown = await createMarkdownProcessor();
+const { code: teaserHtml } = teaserMd ? await markdown.render(teaserMd) : { code: "" };
+const essayUrl = firstEssayHref(base);
 ---
 
 <SiteLayout
   title="Start here"
-  description="A slower introduction to Towards Superintelligence Alignment: reading path, book, field map, and common questions."
+  description="A slower introduction: short essays, role-based tour, book, and common questions."
 >
   <section class="hero">
     <h1>Start here</h1>
@@ -17,20 +27,49 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
       A powerful AI can seem helpful in a chat and still be the wrong thing to trust with real decisions.
       The question is whether people can still change its course when it goes wrong — not only whether it sounds nice today.
     </p>
-    <div class="button-row">
-      <a class="button primary" href={withBase("/paths/")}>Guided Tour</a>
+    <p class="button-row">
+      <a class="button" href={withBase("/paths/")}>Guided Tour</a>
       <a class="button" href={withBase("/book/")}>The book (PDF)</a>
-      <a class="button" href={withBase("/field/")}>Who works on which problems</a>
-    </div>
+    </p>
+    <p class="side-panel-meta">
+      Guided Tour splits by role. The book is the long form.
+    </p>
     <p class="side-panel-meta">
       This project does not claim the problem is solved.
       {" "}
       <a href={withBase("/cards/what-not-claiming/")}>What we are not claiming</a>
       {" · "}
       <a href={pdfHref(base)}>Download PDF</a>
+      {" · "}
+      <a href={withBase("/field/")}>Who works on which problems</a>
     </p>
   </section>
+
+  {firstEssay && (
+    <section class="essay-teaser readable">
+      <p class="eyebrow">Start reading</p>
+      <h2>{firstEssay.data.title}</h2>
+      <div class="content-card" set:html={teaserHtml} />
+      <p>
+        <a class="button primary" href={essayUrl}>Continue reading</a>
+      </p>
+    </section>
+  )}
 
   <h2>Questions</h2>
   <FaqList />
 </SiteLayout>
+
+<style>
+  .essay-teaser {
+    margin: 2rem 0 2.5rem;
+  }
+
+  .essay-teaser h2 {
+    margin-top: 0.35rem;
+  }
+
+  .essay-teaser .content-card {
+    margin-bottom: 1rem;
+  }
+</style>

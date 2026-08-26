@@ -11,7 +11,8 @@ export type VisitType =
   | "demos"
   | "news"
   | "about"
-  | "start";
+  | "start"
+  | "essay";
 
 export type VisitEntry = {
   path: string;
@@ -30,7 +31,8 @@ const TYPE_LABELS: Record<VisitType, string> = {
   demos: "Demos",
   news: "News",
   about: "About",
-  start: "Start Here"
+  start: "Start Here",
+  essay: "Essays"
 };
 
 const SKIP_PREFIXES = ["/offline", "/search-index", "/impressum", "/feed.xml"];
@@ -58,6 +60,7 @@ export function visitTypeForPath(pathname: string): VisitType | null {
   if (first === "news" || first === "updates") return "news";
   if (first === "about") return "about";
   if (first === "start" || first === "faq") return "start";
+  if (first === "essay") return "essay";
   return null;
 }
 

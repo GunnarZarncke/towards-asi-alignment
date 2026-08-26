@@ -2,17 +2,19 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import ContinueReading from "../components/ContinueReading.astro";
 import { HOME_DESCRIPTION } from "../lib/seo";
+import { firstEssayHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 const tiles = [
-  { href: "/book/", title: "Read or download the book" },
-  { href: "/cards/", title: "Knowledge cards grouped by topic" },
-  { href: "/field/", title: "Map of alignment research" },
-  { href: "/paths/chapter-reading-graph/", title: "How the chapters connect" },
-  { href: "/experiments/", title: "Experiments we ran" },
-  { href: "/news/", title: "What just happened in the field" }
+  { href: firstEssayHref(base), title: "Short essays: start with a story" },
+  { href: withBase("/book/"), title: "Read or download the book" },
+  { href: withBase("/cards/"), title: "Knowledge cards grouped by topic" },
+  { href: withBase("/field/"), title: "Map of alignment research" },
+  { href: withBase("/paths/chapter-reading-graph/"), title: "How the chapters connect" },
+  { href: withBase("/experiments/"), title: "Experiments we ran" },
+  { href: withBase("/news/"), title: "What just happened in the field" }
 ];
 ---
 
@@ -22,6 +24,8 @@ const tiles = [
     <p class="lede">As AI gets more capable, can people still change what it does when it is wrong?</p>
     <p class="side-panel-meta">
       <a href={withBase("/start/")}>Start here — a slower introduction and common questions</a>
+      {" · "}
+      <a href={firstEssayHref(base)}>Short essays</a>
       {" · "}
       <a href={withBase("/badges/gem/")}>Highlights (gems)</a>
     </p>
@@ -33,7 +37,7 @@ const tiles = [
     <div class="grid">
       {tiles.map((tile) => (
         <article class="card">
-          <h2><a href={withBase(tile.href)}>{tile.title}</a></h2>
+          <h2><a href={tile.href}>{tile.title}</a></h2>
         </article>
       ))}
     </div>

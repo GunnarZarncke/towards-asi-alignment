@@ -1,0 +1,5 @@
+---
+import { firstEssayHref } from "../../lib/site-urls";
+
+return Astro.redirect(firstEssayHref(import.meta.env.BASE_URL), 301);
+---

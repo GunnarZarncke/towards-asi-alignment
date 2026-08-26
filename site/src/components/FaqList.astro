@@ -14,11 +14,9 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
       <p>
         {item.answer === "essays" ? (
           <>
-            Start with the{" "}
-            <a href={withBase("/essay/")}>essays</a>
-            {" "}(story-shaped, one idea at a time), from{" "}
+            Open{" "}
             <a href={withBase("/start/")}>Start Here</a>
-            . If you already know your role, use the{" "}
+            . The first essay begins on that page. If you already know your role, use the{" "}
             <a href={withBase("/paths/")}>Guided Tour</a>.
           </>
         ) : item.answer === "experiments" ? (

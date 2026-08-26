@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-26 | **Generalist essay path** — `/essay/` spine + tangents; Start Here / home / tour links; nav unchanged. | [2026-08-26-generalist-essay-path.md](2026-08-26-generalist-essay-path.md) |
 | 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |
 | 2026-08-26 | **Site nav landings remainder** — Finish the remaining nav landing splits after header/home/Field (Cards, Book, News, Tour, Lean, E... | [2026-08-26-site-nav-landings-remainder.md](2026-08-26-site-nav-landings-remainder.md) |
 | 2026-08-26 | **OpenAI HF road-ahead field news** — User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face postmortem, in the s... | [2026-08-26-openai-hf-roadahead-news.md](2026-08-26-openai-hf-roadahead-news.md) |

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { pathHref } from "../../lib/site-urls";
+import { firstEssayHref, pathHref } from "../../lib/site-urls";
 import { getReadingPaths, type ReadingPathStep } from "../../lib/reading-paths";
 import { resolveSpotlightTarget } from "../../lib/reading-path-spotlight";
 import LinkIndicator from "../../components/LinkIndicator.astro";
@@ -44,7 +44,7 @@ const stepSummary = (steps: ReadingPathStep[]) => {
       Role paths stay for researchers, engineers, funders, and philosophers.
     </p>
     <p class="button-row">
-      <a class="button primary" href={withBase("/essay/")}>Story-shaped start</a>
+      <a class="button primary" href={firstEssayHref(base)}>Story-shaped start</a>
       <a class="button" href={withBase("/paths/chapter-reading-graph/")}>Chapter graph</a>
     </p>
   </section>

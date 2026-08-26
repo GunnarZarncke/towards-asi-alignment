@@ -66,6 +66,21 @@ const card = defineCollection({
     external: z.array(z.object({
       label: z.string(),
       url: z.string()
+    })).default([]),
+    /** Essay cards only: spine order, closer, or optional tangent. */
+    essayRole: z.enum(["spine", "branch", "closer"]).optional(),
+    essayOrder: z.number().optional(),
+    essayNext: z.string().optional(),
+    essayParent: z.string().optional(),
+    minutes: z.number().optional(),
+    essayAsides: z.array(z.object({
+      id: z.string(),
+      title: z.string()
+    })).default([]),
+    essayBranches: z.array(z.object({
+      id: z.string(),
+      slug: z.string(),
+      tease: z.string()
     })).default([])
   })
 });

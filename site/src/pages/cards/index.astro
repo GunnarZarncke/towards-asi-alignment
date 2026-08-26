@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CardTopicList from "../../components/CardTopicList.astro";
-import { cardHref as buildCardHref } from "../../lib/site-urls";
+import { cardHref as buildCardHref, firstEssayHref } from "../../lib/site-urls";
 import { cardCatalogSections, highlightEntries } from "../../lib/card-catalog";
 import fieldProjectionGems from "../../data/field-projection-gems.json";
 import experimentsData from "../../data/experiments.json";
@@ -24,7 +24,7 @@ const sections = cardCatalogSections(cards, fieldProjectionGems, experimentsData
       <a class="button" href={withBase("/glossary/")}>Glossary</a>
       <a class="button" href={withBase("/badges/")}>Badge index</a>
       <a class="button" href={withBase("/badges/gem/")}>Highlights</a>
-      <a class="button" href={withBase("/essay/")}>Essays</a>
+      <a class="button" href={firstEssayHref(base)}>Essays</a>
     </p>
   </section>
 

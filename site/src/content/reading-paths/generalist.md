@@ -1,76 +1,53 @@
 ---
 title: "Generalist Path"
 audience: "Capable generalists"
-summary: "A short route through the core idea without requiring prior alignment jargon."
+summary: "A story-shaped route: short essays first, then the precise cards if you want them."
 featuredSpotlight:
-  eyebrow: "Appendix D · start here for concreteness"
-  kind: book
-  ref: appD
-  title: "BioShield worked example"
-  blurb: "The deployment gate is not abstract checklist prose. Appendix D walks a fictional hospital network through boundary, grounding, correction handles, bearer maps, successors, selection pressure, and a conditional safety case."
-  primaryLabel: "Read Appendix D"
+  eyebrow: "Essays · start here"
+  kind: card
+  ref: the-chatbot-passed-the-test
+  title: "The chatbot passed the test"
+  blurb: "The model that passes the eval is often not the thing that acts. Seven short essays, with optional tangents."
+  primaryLabel: "Read the first essay"
   secondary:
-    kind: card
-    ref: deployment-gate
-    label: "Deployment gate card"
+    kind: book
+    ref: appD
+    label: "Appendix D after essay 2"
 steps:
   - kind: card
-    ref: what-not-claiming
-    note: "Claim strength — what this project does and does not prove."
-  - kind: book
-    ref: frontmatter
-    note: "Executive overview — scope and the six preservation problems."
+    ref: the-chatbot-passed-the-test
+    note: "The visible model is often the wrong object."
   - kind: card
-    ref: chapters/ch01
-    note: "Why aligning the model weights is often the wrong object."
+    ref: the-hospital-is-the-ai
+    note: "A deployed tool is the institution plus the model."
   - kind: card
-    ref: boundary-discovery
-    note: "Find the effective optimizer in the deployed loop."
+    ref: they-said-they-heard-you
+    note: "Acknowledgement is not the same as changing tomorrow."
   - kind: card
-    ref: value-bundle-transport
-    note: "Values as tradeoff directions, not slogans."
-  - kind: demo
-    ref: ch16-value-bundle-simulator
-    note: "Interactive sketch — how environment shapes a value bundle."
+    ref: the-words-stayed
+    note: "Slogans can survive while tradeoffs reverse."
   - kind: card
-    ref: correction-channel-integrity
-    note: "Human correction must causally change future behavior."
+    ref: the-copy-did-not-inherit-the-listening
+    note: "A successor can keep the words and drop the handles."
   - kind: card
-    ref: successor-stability
-    note: "Copies and successors must inherit correction structure."
+    ref: the-environment-picks-the-winner
+    note: "Deployment pressure can select against correctability."
   - kind: card
-    ref: attractor-control
-    note: "Deployment environments select for or against alignment."
-  - kind: card
-    ref: deployment-gate
-    note: "A checkpoint with teeth before a larger action envelope."
-  - kind: book
-    ref: appD
-    note: "BioShield hospital network — end-to-end gate walkthrough."
-  - kind: card
-    ref: evidence-and-uncertainty
-    note: "How to read claim labels and negative results."
-  - kind: card
-    ref: negative-results
-    note: "Curated key findings on-site; full ledgers linked from the negative-results hub."
-  - kind: experiment
-    ref: toy-simulation
-    note: "Fastest capture-theater demo — why correction metrics can lie."
+    ref: a-map-not-a-certificate
+    note: "Names the problem, and what this project does not claim."
 ---
 
 ## What this path is for
 
-You have not followed alignment Twitter, MIRI archives, or this project's prior papers. You still want a clear map of what superintelligence alignment *could* mean as a research program.
+You have not followed the research literature. You still want a clear way in, in ordinary language.
 
 **You will leave knowing:**
 
-- The preservation problems this project treats as load-bearing (boundary, bundles, bearers, correction, successors, selection).
-- Why "align the model weights" is often the **wrong object**.
-- What would count as **evidence** here — and what this project explicitly does **not** claim.
-- Where to go next if you want formal detail, eval artifacts, or policy translation.
+- Why a green eval on the visible model can miss the thing that actually acts.
+- Why objection has to change later behavior, not only the transcript.
+- Why copies, slogans, and markets can undo local care.
+- Where the precise cards and the book pick up after the stories.
 
-**Time:** about 2–3 hours following the ordered list above.
+**Time:** about an hour for the essay thread. Optional tangents open from marked points.
 
-## PDF companion (optional)
-
-Executive Overview → Introduction → Part I (Chapters 1–5). Stop when the map feels stable; the list above is the site spine.
+The essays begin at [/essay/the-chatbot-passed-the-test/](/essay/the-chatbot-passed-the-test/). Appendix D (the fictional hospital gate) is a pointer from the second essay, not the first thing to open.

@@ -17,6 +17,18 @@ export function cardHref(base: string, cardId: string) {
   return `${base}${`cards/${path}/`.replace(/^\/+/, "")}`;
 }
 
+export const FIRST_ESSAY_ID = "the-chatbot-passed-the-test";
+
+export function essayHref(base: string, slug: string) {
+  const id = slug.split("/").pop() ?? slug;
+  const normalized = base.endsWith("/") ? base : `${base}/`;
+  return `${normalized}essay/${encodeURIComponent(routeSlug(id))}/`;
+}
+
+export function firstEssayHref(base: string) {
+  return essayHref(base, FIRST_ESSAY_ID);
+}
+
 export function normalizeCardId(id: string) {
   return id.split("/").map(routeSlug).join("/");
 }

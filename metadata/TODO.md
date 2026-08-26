@@ -79,6 +79,7 @@ One queue; pick up when trigger fires.
 
 Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md).
 
+- [ ] **Guided Tour “read next” from last book page (M).** `/paths/` should offer a continue target from the last visited book chapter (visit history already tracks `book`). Map onto the chosen path or chapter-reading graph. Do not implement in the essay-path slice.
 - [ ] **Per-part chapter renumbering (display only) (L, high risk).** Do not rename `chNN` files or `\label`s without migration pass.
 - [ ] **Submit page notes to site (S).**
 - [ ] **Standalone claims publishability review (S).** Cross-ref Outreach.

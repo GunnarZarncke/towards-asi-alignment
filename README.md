@@ -23,7 +23,7 @@ This repository is a **requirements decomposition** of the alignment problem int
 | **Companion website** | **[towards-alignment.com](https://towards-alignment.com/)** — [Field hub](https://towards-alignment.com/field/), guided paths, concept/bridge cards, [field news](https://towards-alignment.com/news/), [releases](https://towards-alignment.com/updates/), chapter pages, Lean playgrounds, and demos 
 | **PDF** | [Read in browser](https://towards-alignment.com/towards-superintelligence-alignment.pdf) · [GitHub release](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: [`docs/BUILD.md`](docs/BUILD.md) |
 
-**New reader?** Open the [**Guided tour**](https://towards-alignment.com/paths/) on the companion site. Pick a path (generalist, researcher, engineer, funder, philosopher); each lists what you will learn, in what order, and why—without assuming you already know the book's vocabulary.
+**New reader?** Open [**Start Here**](https://towards-alignment.com/start/). The first essay begins on that page. If you already know your role, the [**Guided tour**](https://towards-alignment.com/paths/) lists researcher, engineer, funder, and philosopher paths.
 
 ---
 

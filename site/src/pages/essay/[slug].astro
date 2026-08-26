@@ -1,0 +1,202 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ParentCrumb from "../../components/ParentCrumb.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
+import { bookHref, cardHref, essayHref, resolveCard } from "../../lib/site-urls";
+import { findEssay } from "../../lib/essays";
+import demosIndex from "../../data/demos.json";
+import experimentsIndex from "../../data/experiments.json";
+
+export async function getStaticPaths() {
+  const cards = await getCollection("cards");
+  return cards
+    .filter((card) => card.data.type === "essay")
+    .map((card) => ({
+      params: { slug: card.id },
+      props: { slug: card.id }
+    }));
+}
+
+const { slug } = Astro.props;
+const cards = await getCollection("cards");
+const essay = findEssay(cards, slug);
+if (!essay) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}essay/`);
+}
+
+const { Content } = await render(essay);
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const nextEssay = essay.data.essayNext ? findEssay(cards, essay.data.essayNext) : undefined;
+const parentEssay = essay.data.essayParent ? findEssay(cards, essay.data.essayParent) : undefined;
+const relatedCards = (essay.data.related ?? [])
+  .map((id) => resolveCard(cards, id))
+  .filter((card): card is NonNullable<typeof card> => Boolean(card) && card.data.type !== "essay");
+
+const bookLinks = (essay.data.bookChapters ?? []).map((chapterId) => {
+  const chapterCard = cards.find(
+    (card) => card.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(card.data.type)
+  );
+  return {
+    href: bookHref(base, chapterId),
+    title: chapterCard?.data.title ?? chapterId
+  };
+});
+
+const demoLinks = (essay.data.demos ?? [])
+  .map((entry) => {
+    const demo = demosIndex.demos.find((item) => item.id === entry.demoId);
+    if (!demo) return null;
+    return { href: withBase(demo.sitePath), title: demo.title, summary: entry.summary, newTab: true };
+  })
+  .filter((item): item is NonNullable<typeof item> => item !== null);
+
+const experimentLineId = essay.data.experimentLineId;
+const experimentLine = experimentLineId
+  ? experimentsIndex.lines.find((line) => line.id === experimentLineId)
+  : undefined;
+---
+
+<SiteLayout title={essay.data.title} description={essay.data.summary} ogType="article">
+  <article class="essay-page">
+    <section class="hero">
+      <ParentCrumb parentHref={withBase("/start/")} parentLabel="Start Here" />
+      <p class="eyebrow">{essay.data.essayRole === "branch" ? "Optional tangent" : "Essay"}</p>
+      <h1>{essay.data.title}</h1>
+      <p class="lede">{essay.data.summary}</p>
+      <p class="side-panel-meta">{essay.data.minutes ?? 8} min</p>
+    </section>
+
+    <section class="readable essay-body content-card">
+      <Content />
+    </section>
+
+    <nav class="essay-nav readable" aria-label="Essay navigation">
+      <p class="button-row">
+        {parentEssay && (
+          <a class="button" href={essayHref(base, parentEssay.id)}>Back to {parentEssay.data.title}</a>
+        )}
+        {nextEssay && (
+          <a class="button primary" href={essayHref(base, nextEssay.id)}>
+            {essay.data.essayRole === "branch" ? "Continue the main thread" : "Next"}: {nextEssay.data.title}
+          </a>
+        )}
+        {!nextEssay && essay.data.essayRole === "closer" && (
+          <a class="button primary" href={withBase("/paths/")}>Choose a role path</a>
+        )}
+      </p>
+    </nav>
+
+    <section class="essay-footer readable">
+      <h2>Precise version</h2>
+      <p class="side-panel-meta">
+        The essays stay in ordinary language. These pages are the operational versions.
+      </p>
+      <ul>
+        {relatedCards.map((card) => (
+          <li>
+            <ConceptCardLink href={cardHref(base, card.id)} slug={card.id}>
+              {card.data.title}
+            </ConceptCardLink>
+            <span class="side-panel-meta"> · {card.data.summary}</span>
+          </li>
+        ))}
+        {bookLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.title}</a>
+            <span class="side-panel-meta"> · in the book</span>
+          </li>
+        ))}
+        {demoLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.title}</a>
+            <span class="side-panel-meta"> · {link.summary}</span>
+          </li>
+        ))}
+        {experimentLine && (
+          <li>
+            <a href={cardHref(base, `experiments/${experimentLine.id}`)}>{experimentLine.title}</a>
+            <span class="side-panel-meta"> · sanity check, not a proof</span>
+          </li>
+        )}
+      </ul>
+    </section>
+  </article>
+</SiteLayout>
+
+<style>
+  .essay-body {
+    position: relative;
+  }
+
+  .essay-body :global(.essay-figure) {
+    margin: 1.5rem 0;
+  }
+
+  .essay-body :global(.essay-figure img) {
+    width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+  }
+
+  .essay-body :global(.essay-figure figcaption) {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    margin-top: 0.4rem;
+  }
+
+  .essay-body :global(.essay-aside) {
+    margin: 1.25rem 0;
+    padding: 0.65rem 0.85rem;
+    border-left: 3px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .essay-body :global(.essay-aside-title) {
+    margin: 0 0 0.35rem;
+    font-weight: 600;
+    color: inherit;
+    font-size: 0.9rem;
+  }
+
+  .essay-body :global(.essay-branch) {
+    display: inline-block;
+    margin: 0.35rem 0 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .essay-nav {
+    margin-top: 2rem;
+  }
+
+  .essay-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .essay-footer ul {
+    padding-left: 1.2rem;
+  }
+
+  .essay-footer li + li {
+    margin-top: 0.45rem;
+  }
+
+  @media (min-width: 80rem) {
+    .essay-body {
+      margin-right: 15rem;
+    }
+
+    .essay-body :global(.essay-aside) {
+      float: right;
+      clear: right;
+      width: 13.5rem;
+      margin: 0.25rem -15rem 1rem 1.5rem;
+      font-size: 0.88rem;
+    }
+  }
+</style>

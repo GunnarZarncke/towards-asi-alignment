@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-26 (site nav landings remainder; OpenAI HF postmortem field news).
+Last updated: 2026-08-26 (essay door: Start Here teaser; `/essay/` redirects to first essay).
 
 ---
 
@@ -39,8 +39,9 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-26:** Generalist **essay path** — `/essay/` → first essay; Start Here teaser; 11 essay cards; generalist path spine. Nav unchanged. Log: `2026-08-26-generalist-essay-path.md`.
 - **2026-08-26:** OpenAI Hugging Face postmortem field news (`field-news-openai-hf-roadahead-aug-2026`). Log: `2026-08-26-openai-hf-roadahead-news.md`.
-- **2026-08-26:** Site nav landings **remainder** — slim Cards/Book/News/Tour/Lean/Experiments/Demos + child routes + crumbs. Log: `2026-08-26-site-nav-landings-remainder.md`. Unstaged leftover: chapter-reading-graph sync; in-progress essay entry (`/essay/`).
+- **2026-08-26:** Site nav landings **remainder** — slim Cards/Book/News/Tour/Lean/Experiments/Demos + child routes + crumbs. Log: `2026-08-26-site-nav-landings-remainder.md`.
 - **2026-08-26:** Site nav landings **steps 1–2** — 10-item header; `/start/`; homepage tiles + localStorage continue-reading; `/field/` six-panel hub (v2 briefing kept). Log: `2026-08-26-site-nav-landings.md`.
 - **2026-08-26:** Early-chapter preview demotion **closed**. Durable E/G method + scores: [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md). 2.0 G-rerun on Construct P4. Session: `2026-08-26-early-chapter-demotion.md`.
 - **2026-08-26:** CIRIS field overview reevaluated against `~/repos/ciris/` + ciris.ai (CC 1.0-rc2 public vs rc3 checkout; four-claim fusion; MH-3 / HARM-1). Log: `2026-08-26-ciris-field-evidence.md`.

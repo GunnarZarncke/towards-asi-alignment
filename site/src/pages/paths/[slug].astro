@@ -10,6 +10,7 @@ import {
   bookHref,
   cardHref,
   chapterCardFor,
+  essayHref,
   pathHref,
   resolveCard
 } from "../../lib/site-urls";
@@ -63,7 +64,7 @@ const resolveStep = (step: ReadingPathStep) => {
       const card = resolveCard(cards, step.ref) ?? cardById.get(step.ref);
       if (!card) return null;
       return {
-        href: cardHref(base, card.id),
+        href: card.data.type === "essay" ? essayHref(base, card.id) : cardHref(base, card.id),
         cardSlug: card.id,
         title: card.data.title,
         summary: step.note ?? card.data.summary,

@@ -5,9 +5,13 @@ export type FaqItem = {
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
+    question: "Where should a new reader start?",
+    answer: "essays"
+  },
+  {
     question: "What is this site?",
     answer:
-      "A site for the book Towards Superintelligence Alignment. It helps you find the core ideas, pick a reading path, and open the PDF."
+      "A site for the book Towards Superintelligence Alignment. It helps you find the core ideas, pick a reading path, and open the PDF. New readers can start with the essays."
   },
   {
     question: "Is this a new knowledge platform?",
