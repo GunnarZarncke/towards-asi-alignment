@@ -27,4 +27,4 @@ User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face p
 - `references/manuscript-citations.bib`
 
 ## Commits
-- (included in the end-of-session commit)
+- `67bed526` Add field news on OpenAI’s Hugging Face postmortem.
