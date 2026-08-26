@@ -26,4 +26,4 @@ User asked for a Paul Graham-style general-audience start: catch, essay spine, o
 - `site/src/pages/start/index.astro`
 
 ## Commits
-- (this session)
+- `ca5c9026` — Add general-audience essay spine with Start Here teaser.
