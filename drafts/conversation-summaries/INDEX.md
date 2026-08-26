@@ -6,8 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-26 | **CIRIS field-overview evidence** — Recheck sibling `repos/ciris/` + ciris.ai; update agenda card, matrix, ev-158–162. | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
-| 2026-08-26 | **Early-chapter preview demotion (closed)** — E/G audit FINDINGS in `review/chapter-formulation-groundedness.md`; 2.0 rerun on Construct P4. | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
+| 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |
+| 2026-08-26 | **OpenAI HF road-ahead field news** — User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face postmortem, in the s... | [2026-08-26-openai-hf-roadahead-news.md](2026-08-26-openai-hf-roadahead-news.md) |
+| 2026-08-26 | **Early-chapter preview demotion** — User asked to implement the plan: demote premature tuples and covering-inventory equations in ch0... | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
+| 2026-08-26 | **CIRIS field-overview evidence reevaluation** — Reevaluate CIRIS evidence in the field overview using `~/repos/ciris/` checkouts and the live cir... | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
 | 2026-08-26 | Bot-orientation and entry-doc housekeeping | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
 | 2026-08-25 | **Site glossary sync and UAD name fix** — Follow homograph hygiene with companion-site sync; add missing App E glossary terms; user flagged... | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
 | 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |
@@ -19,13 +21,10 @@
 | 2026-08-23 | **Ontology reviews 2021–2026** — User asked for one Grok 4.6 (non-fast, low-effort) subagent per entry in `drafts/new_ontologies_2... | [2026-08-23-ontology-reviews.md](2026-08-23-ontology-reviews.md) |
 | 2026-08-22 | **v1.5.0 release notes and tag** — User asked to prepare release notes, reviewed the draft, then asked to perform the release steps. | [2026-08-22-v1-5-0-release-notes.md](2026-08-22-v1-5-0-release-notes.md) |
 | 2026-08-22 | **Spine lane + open-work erasure** — User asked what remained open after Aug 16–17 work; whether `drafts/plans/` and `metadata/TODO.md... | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
-| 2026-08-22 | 2026-08-22-site-auth-chips | [2026-08-22-site-auth-chips.md](2026-08-22-site-auth-chips.md) |
-| 2026-08-22 | **Part pages and Contents break** — User reported a missing page break before Contents, and that part summaries should sit on the sam... | [2026-08-22-part-pages-toc-break.md](2026-08-22-part-pages-toc-break.md) |
-| 2026-08-22 | **OpenAI pacing field news** — User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyond existing news car... | [2026-08-22-openai-pacing-news.md](2026-08-22-openai-pacing-news.md) |
 
 ## Archive by month
 
-- **2026-08** (127): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (130): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 
