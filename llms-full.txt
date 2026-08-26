@@ -8,20 +8,23 @@ This file is also served at https://towards-alignment.com/llms.txt (generated at
 
 Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
 
-- [Start Here](https://towards-alignment.com/): homepage, thesis, six thesis claims, standalone claims, failure modes.
+- [Home](https://towards-alignment.com/): capability/correction question, value tiles, continue reading.
+- [Start Here](https://towards-alignment.com/start/): slower introduction; essays are the primary door; FAQ.
+- [Essays](https://towards-alignment.com/essay/the-chatbot-passed-the-test/): general-audience narrative spine (one idea per essay, optional tangents). `/essay/` redirects here. Not synced from the PDF.
 - [Six thesis claims](https://towards-alignment.com/cards/six-thesis-claims/): Introduction reader contract and Chapter 48 status hub.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
-- [Field hub](https://towards-alignment.com/field/): field hub v2 — lifecycle axis, stance-encoded evidence; 30 agenda records, 24 matrix rows, MB1–MB11 incl. MB4a (matrix and crosswalk; MB8 retired from live Lean path).
+- [Field hub](https://towards-alignment.com/field/): six preview panels (coverage, dependency graph, lifecycle, programs). Longer briefing at [/field/v2/](https://towards-alignment.com/field/v2/).
 - [Field coverage](https://towards-alignment.com/field/coverage/): agenda × bridge matrix and evidence catalog.
-- [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
-- [Field news](https://towards-alignment.com/news/): 2026 alignment incidents tied to manuscript chapters.
+- [Concept cards](https://towards-alignment.com/cards/): topic groups with Highlights first; full inventory at [/cards/browse/](https://towards-alignment.com/cards/browse/).
+- [Field news](https://towards-alignment.com/news/): field incidents and manuscript releases (unfolds).
 - [Updates](https://towards-alignment.com/updates/): versioned release notes (current: v1.5.0).
 - [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
-- [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
+- [FAQ](https://towards-alignment.com/faq/): same questions as Start Here.
 - [About](https://towards-alignment.com/about/): authorship and reuse.
-- [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
-- [Lean dependency spine](https://towards-alignment.com/lean/): dependency-spine graphs and playgrounds.
-- [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
+- [Book](https://towards-alignment.com/book/): PDF and contents in book order (front matter, parts, appendices, bibliography).
+- [Lean](https://towards-alignment.com/lean/): questions Lean checked; graphs and modules at [/lean/spine/](https://towards-alignment.com/lean/spine/).
+- [Experiments](https://towards-alignment.com/experiments/): in-repo lines and negatives; coverage matrix at [/experiments/coverage/](https://towards-alignment.com/experiments/coverage/).
+- [Demos](https://towards-alignment.com/demos/): featured chapter toy; inventory at [/demos/all/](https://towards-alignment.com/demos/all/).
 - [Negative results](https://towards-alignment.com/cards/negative-results/): curated failures and ledger links.
 - [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
 - [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
@@ -296,7 +299,7 @@ Use this structure unless the user asks for another format:
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
 - Do not skip What Would Change This View (WWCTV) sections; they often contain the claim-strength boundary.
-- Do not overlook deep results, independent separations, finite counterexamples, or operational definitions because they are embedded in a long narrative.
+- Do not treat an early covering tuple or n-item inventory as a derived result; the home chapter of the formula is later (`review/chapter-formulation-groundedness.md`).
 
 ## After the review
 

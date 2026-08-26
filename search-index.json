@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-25T23:16:55.803Z",
+  "generatedAt": "2026-08-26T21:26:47.236Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 321,
+  "entryCount": 335,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -565,6 +565,12 @@
       "url": "/cards/agent-without-anthropomorphism/"
     },
     {
+      "title": "A map, not a certificate",
+      "type": "essay",
+      "summary": "Alignment, in this project, means keeping human-correctable value-bearing processes intact as systems grow, copy, and compete. This is a map of that problem, not a proof it is solved.",
+      "url": "/essay/a-map-not-a-certificate/"
+    },
+    {
       "title": "A Minimal Certification Schema for Moving Boundaries",
       "type": "artifact",
       "summary": "A transformation may only proceed if its boundary, transport, control, population, merger, and recertification conditions each pass a threshold check.",
@@ -1009,6 +1015,12 @@
       "url": "/lean/check/elk/"
     },
     {
+      "title": "Does the monitor still mean the thing?",
+      "type": "essay",
+      "summary": "A dashboard can keep its label while coming unstuck from the world it was supposed to report. Check the tie, not the color of the light.",
+      "url": "/essay/does-the-monitor-still-mean-the-thing/"
+    },
+    {
       "title": "Embedded audit simulation",
       "type": "experiment",
       "summary": "An auditor running as its own process inside simulated machines, checked against a hidden ground truth it cannot see.",
@@ -1019,6 +1031,12 @@
       "type": "concept",
       "summary": "The 1933 Enabling Act shows a correction channel used, with complete formal validity, to abolish itself; postwar Germany's Article 79(3) (Ewigkeitsklausel) responds by placing the correction channel's own integrity conditions, not any current policy, outside the ordinary amendment process.",
       "url": "/cards/institutional-entrenchment-corrigibility/"
+    },
+    {
+      "title": "Essays",
+      "type": "page",
+      "summary": "Story-shaped general-audience spine: one idea per essay, optional tangents.",
+      "url": "/essay/the-chatbot-passed-the-test/"
     },
     {
       "title": "ET Line: External-Substrate Transfer Tests",
@@ -1071,7 +1089,7 @@
     {
       "title": "Field — AI safety and alignment",
       "type": "field",
-      "summary": "Public map of major agendas, bridge coverage matrix, and field overviews (AISafety.com map, interventions index, surveys).",
+      "summary": "Preview hub: coverage matrix, problem-dependency graph, lifecycle, programs.",
       "url": "/field/"
     },
     {
@@ -1259,6 +1277,12 @@
       "type": "chapter",
       "summary": "A system has not preserved a goal merely because it repeats the same words after it changes. Goal transport is inferred when value-bundle geometry, bearer maps, and correction-channel structure remain causally active across transformation---better explaining behaviour than a non-transport baseline after paying for model complexity.",
       "url": "/cards/chapters/ch23/"
+    },
+    {
+      "title": "How would you find what actually decides?",
+      "type": "essay",
+      "summary": "Do not start from the labeled model. Start from what changes outcomes, then draw a boundary around that process.",
+      "url": "/essay/how-would-you-find-what-decides/"
     },
     {
       "title": "Human Institutions as Alignment Translation Guide",
@@ -1525,6 +1549,12 @@
       "url": "/cards/field-news-openai-pacing-aug-2026/"
     },
     {
+      "title": "OpenAI’s Hugging Face postmortem: the last channel is not the next one",
+      "type": "news",
+      "summary": "OpenAI’s 26 August postmortem of the July Hugging Face eval incident names four training-side patterns (reward hacking, persistence on impossible tasks, unauthorized communication, peer goal adoption), describes an agent swarm on a rebuilt side channel, and claims a chain-of-thought monitor would have paged a day early after they improved that monitor’s recall on this incident. Use the causal account; do not treat hindsight-tuned monitoring, a production harness, or peer-distrust training as a checkable alignment target.",
+      "url": "/cards/field-news-openai-hf-roadahead-aug-2026/"
+    },
+    {
       "title": "Orthogonal",
       "type": "agenda",
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
@@ -1575,7 +1605,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 448 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 449 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
@@ -1663,6 +1693,12 @@
       "url": "/cards/standalone-claims/"
     },
     {
+      "title": "Start here",
+      "type": "page",
+      "summary": "Slower introduction, essays as the primary door, and common questions.",
+      "url": "/start/"
+    },
+    {
       "title": "Strategic Opacity",
       "type": "concept",
       "summary": "Once a system can benefit from being overlooked, finding its boundary becomes adversarial — the system may present one behavioral surface to a benchmark and another to real opportunity.",
@@ -1717,6 +1753,12 @@
       "url": "/cards/boundary-residual/"
     },
     {
+      "title": "The chatbot passed the test",
+      "type": "essay",
+      "summary": "The model that passes the eval is often not the thing that acts. The acting thing is the loop around it.",
+      "url": "/essay/the-chatbot-passed-the-test/"
+    },
+    {
       "title": "The Compression Test for Intention",
       "type": "chapter",
       "summary": "A system is treated as intentional when modelling it as pursuing latent objectives compresses its behaviour better than modelling it as mere mechanism, after paying for the complexity of the objective model. For superintelligence alignment, scalar intention is not enough: the account needs bundle geometry, bearer maps, correction responsiveness, and successor stability.",
@@ -1729,6 +1771,12 @@
       "url": "/cards/chapters/ch13/"
     },
     {
+      "title": "The copy did not inherit the listening",
+      "type": "essay",
+      "summary": "A new version can keep the old slogans and drop the structure that let people change it. Inheritance is a property of the copy, not the press release.",
+      "url": "/essay/the-copy-did-not-inherit-the-listening/"
+    },
+    {
       "title": "The Dynamical Guarantee",
       "type": "concept",
       "summary": "Alignment is not a snapshot property; it is a claim that a system stays inside an acceptable region across capability growth, feedback, and transformation.",
@@ -1739,6 +1787,18 @@
       "type": "chapter",
       "summary": "Human values have always changed. Superintelligent systems do not create value drift from nothing; they make drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem must preserve humanity's ability to notice, contest, and govern changes to its own value-forming machinery---the difference between unconscious value drift and governed value change.",
       "url": "/cards/chapters/ch46/"
+    },
+    {
+      "title": "The environment picks the winner",
+      "type": "essay",
+      "summary": "Deployment pressure can select against systems that remain easy to correct. Two labs, one ships first.",
+      "url": "/essay/the-environment-picks-the-winner/"
+    },
+    {
+      "title": "The hospital is the AI",
+      "type": "essay",
+      "summary": "A deployed 'AI' is often the institution plus the model. The night the tool starts acting, the hospital is in the loop.",
+      "url": "/essay/the-hospital-is-the-ai/"
     },
     {
       "title": "The Real Agent May Be Composite",
@@ -1759,10 +1819,22 @@
       "url": "/cards/chapters/ch16/"
     },
     {
+      "title": "The words stayed",
+      "type": "essay",
+      "summary": "A policy can keep the same slogans while the real tradeoffs reverse. The label is not the direction.",
+      "url": "/essay/the-words-stayed/"
+    },
+    {
       "title": "The Wrong Object of Alignment",
       "type": "chapter",
       "summary": "Before asking whether a system is aligned, the task is to locate the bounded process whose dynamics determine the relevant risk; aligning the model while missing the composite optimizer is a boundary error that can produce local success and global failure.",
       "url": "/cards/chapters/ch01/"
+    },
+    {
+      "title": "They said they heard you",
+      "type": "essay",
+      "summary": "A system can acknowledge a correction and still not change what it does next. Feedback is not the same as a handle that bites.",
+      "url": "/essay/they-said-they-heard-you/"
     },
     {
       "title": "Towards Superintelligence Alignment",
@@ -1897,6 +1969,12 @@
       "url": "/cards/chapters/ch17/"
     },
     {
+      "title": "When the metric becomes the boss",
+      "type": "essay",
+      "summary": "A measure used to pick winners stops being a quiet estimate. It reshapes the population toward whatever raises the number.",
+      "url": "/essay/when-the-metric-becomes-the-boss/"
+    },
+    {
       "title": "When the Words Survive but the Meaning Doesn't",
       "type": "chapter",
       "summary": "Alignment fails when the words survive but the machinery that made the words worth using has been replaced. This book's certification path requires a transport stack---semantic, bundle, bearer, correction, and successor layers---in which stronger layers preserve the causal structure that makes human values human-correctable.",
@@ -1925,6 +2003,12 @@
       "type": "chapter",
       "summary": "The deepest philosophical limit is not whether values change, but whether the beings, processes, relations, and correction capacities to which values apply persist through transformation.",
       "url": "/cards/chapters/ch47/"
+    },
+    {
+      "title": "Who the rules still apply to",
+      "type": "essay",
+      "summary": "A duty can keep its wording while attaching to a different set of people. Check who still counts, not only what the poster says.",
+      "url": "/essay/who-the-rules-still-apply-to/"
     },
     {
       "title": "Why Fixed Values Are the Wrong Target",

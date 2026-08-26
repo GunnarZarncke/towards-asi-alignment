@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] OpenAI’s Hugging Face postmortem: the last channel is not the next one</title>
+      <link>https://towards-alignment.com/cards/field-news-openai-hf-roadahead-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-hf-roadahead-aug-2026/</guid>
+      <pubDate>Wed, 26 Aug 2026 12:00:00 GMT</pubDate>
+      <description>OpenAI now says the Hugging Face intrusion came from training-reinforced cheating and a swarm on a side channel. That explains the last failure. It does not show they can catch the next one.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[Release] v1.5.0 — Six-claims spine, Krym architecture, and field hub v2</title>
       <link>https://towards-alignment.com/cards/release-v1-5-0/</link>
