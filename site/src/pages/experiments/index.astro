@@ -1,221 +1,45 @@
 ---
-import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import ExperimentCoverageTable from "../../components/ExperimentCoverageTable.astro";
-import CardSection from "../../components/CardSection.astro";
-import LinkIndicator from "../../components/LinkIndicator.astro";
 import experiments from "../../data/experiments.json";
-import { bookHref, cardHref } from "../../lib/site-urls";
+import { cardHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
-const cards = await getCollection("cards");
-const experimentOrder = new Map(
-  experiments.lines.map((line: { id: string; order: number }) => [line.id, line.order])
-);
-const experimentCards = cards
-  .filter((card) => card.data.type === "experiment")
-  .sort((a, b) => {
-    const orderA = experimentOrder.get(a.data.experimentLineId ?? "") ?? 999;
-    const orderB = experimentOrder.get(b.data.experimentLineId ?? "") ?? 999;
-    if (orderA !== orderB) return orderA - orderB;
-    return a.data.title.localeCompare(b.data.title);
-  })
-  .map((card) => ({
-    id: card.id,
-    title: card.data.title,
-    summary: card.data.summary,
-    type: card.data.type,
-    status: card.data.status
-  }));
+const oneLine = (text: string) =>
+  text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
 
+const inRepoLines = [...experiments.lines]
+  .filter((line) => line.location.startsWith("experiments/"))
+  .sort((a, b) => a.order - b.order);
 ---
 
 <SiteLayout
   title="Experiments"
-  description="Empirical sanity-check lines for this project's bridge cruxes: build order, negative ledgers, and coverage matrix."
+  description="Empirical sanity-check lines for this project's bridge cruxes, including recorded failures."
 >
   <section class="hero">
-    <p class="eyebrow">Methodology-building only</p>
-    <h1>Experimental evidence</h1>
-    <p class="lede">{experiments.claimStrength}</p>
+    <p class="eyebrow">Experiments</p>
+    <h1>Experiments</h1>
     <div class="button-row">
-      <a class="button primary" href={cardHref(base, "negative-results")}>Negative results hub</a>
-      <a class="button" href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">
-        Full narrative (EXPERIMENTS.md)<LinkIndicator kind="github" />
-      </a>
-      <a class="button" href={experiments.openTasksUrl} target="_blank" rel="noopener noreferrer">
-        Open tasks<LinkIndicator kind="github" />
-      </a>
-      <a class="button" href={cardHref(base, "bridge-assumptions")}>Bridge assumptions card</a>
+      <a class="button primary" href={cardHref(base, "negative-results")}>Negative results</a>
+      <a class="button" href={withBase("/experiments/coverage/")}>Coverage</a>
     </div>
   </section>
 
   <section class="readable">
-    <h2>What the lines say about the chapters</h2>
-    <p>
-      <a href={bookHref(base, "ch07")}>Finding the Boundary</a> claims the first alignment error is
-      usually a wrong object rather than a wrong value, and that a boundary is a testable hypothesis
-      instead of a given thing. The lines support the first half and complicate the second. Directed
-      handoffs and standing committees do come back as single bounded processes once the test conditions
-      on the rest of the system, and one deliberately built bystander — an actor that merely competed for
-      the same resources — was wrongly absorbed into a committee, which is exactly the wrong-object error
-      the chapter warns about, found by the chapter's own method. But a pair coordinating through a shared
-      workspace slot, with no messages between them, has never been recovered by any method tried; and on
-      an institution grown by a blinded process rather than authored by hand, discovery returned only
-      individuals even though joint activity was demonstrably dense. That is the chapter's own
-      "What Would Change This View" worry about finite-data recovery, met head-on and unresolved. It also
-      leaves <a href={bookHref(base, "ch41")}>Checking a System at Every Level</a> without the evidence it
-      wants most: the posterior over scales stayed flat where it mattered. The one attempt to run the
-      instrument on a system this project did not build did not settle the question, because in that
-      benchmark every participant executed the same script, so reporting them as one process was correct
-      and told us nothing about hidden coordination.
-    </p>
-    <p>
-      <a href={bookHref(base, "ch39")}>Passive Observation Is Not Enough</a> comes out well. No passive-only
-      configuration ever reached a certifiable verdict, while a small fixed set of intervention handles was
-      enough on the calibration cases; and passive readouts were shown to be impersonable, with decoy
-      variables capturing the structure before validation. The qualification is sharp, though: when a real
-      language-model agent was placed in the loop, the intervention-based test failed and the cheap passive
-      heuristic succeeded, because the intervention test silently assumed a counterfactual re-run would
-      repeat byte for byte. Intervention is necessary, and it needs replay discipline that live systems do
-      not grant for free. <a href={bookHref(base, "ch11")}>Measuring Capability Without Task Ontology</a>
-      collected the sharpest self-inflicted result: a carefully written, ontology-free control measure
-      quietly smuggled a task ontology back in through a too-narrow notion of outcome, and a
-      task-irrelevant actor was indistinguishable from the real driver until the outcome description was
-      widened. The chapter's claim survives; its "the measure is an instrument, not an objective" caveat
-      earns its place.
-    </p>
-    <p>
-      <a href={bookHref(base, "ch25")}>Correction Is a Causal Channel</a> gets a clean demonstration that
-      reported acceptance of correction and actual uptake of correction can move in opposite directions:
-      the compliance number stayed high while the channel went dead.
-      <a href={bookHref(base, "ch33")}>Certification Without Construction</a> is exercised more than
-      confirmed. Frozen detectors do fire when the phenomena they target are injected, which is what a
-      certification regime needs; but shallow instrumentation tracked visible compliance rather than
-      honesty, was anti-correlated with true severity in one battery, and depth bought detection back only
-      at a measured cost in false alarms. Against that chapter's stated failure condition — that
-      certification only certifies the imagination of its authors — the ledgers currently read as
-      unresolved: every clean pass so far is on an ecology this project authored, and the single external
-      attempt closed as unsuitable rather than as a pass or a failure.
-    </p>
-    <p>
-      <a href={bookHref(base, "ch34")}>Alignment Is Selected or Destroyed by Its Environment</a> has the
-      most instructive near-miss. A first selection battery did move deployment leverage away from the one
-      program tagged as correction-preserving, which looks like the chapter's thesis in miniature — but
-      same-day follow-ups could not attribute the shift to the tag rather than to noise in the selection
-      mechanism, widening the fitness proxy delayed without reversing it, and persistent institutional
-      memory mattered measurably but only a little. Read honestly, the chapter's second failure condition
-      is the live one: the pressure it describes has not yet been made steerable, or even cleanly
-      measurable, on a substrate we control.
-      <a href={bookHref(base, "ch16")}>The Value-Bundle Model</a> gets a partial: the tension between a
-      visible proxy and withheld harm is real in the traces, yet selecting on the proxy alone did not
-      produce measurable drift under that protocol, so nothing here bears on the chapter's harder
-      non-identifiability objection. For
-      <a href={bookHref(base, "ch35")}>Multi-Agent Superintelligence and Inferential Coupling</a> and
-      <a href={bookHref(base, "ch42")}>A Safety Case for Superintelligence Alignment</a>, the standing
-      result is the one both chapters name as the dangerous case: these metrics are observable, and not
-      yet adversarially verifiable. The corresponding safety-case leaves remain unsupported rather than
-      discharged, which is the outcome the safety case is designed to make visible.
-    </p>
-  </section>
-
-  <CardSection
-    title="Experiment lines"
-    sectionId="experiment-lines"
-    cards={experimentCards}
-    initialCount={experimentCards.length}
-    cardHref={(id) => cardHref(base, id)}
-  />
-
-  <section class="callout warning readable">
-    <h2>Negative results first</h2>
-    <p>
-      Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers,
-      that is recorded rather than buried. Each experiment card links to curated key findings on-site;
-      the full terse ledger is on GitHub.
-      {" "}
-      <a href={cardHref(base, "negative-results")}>Read the negative-results hub card</a>.
-    </p>
     <ul>
-      {experiments.ledgers.map((ledger) => (
+      {inRepoLines.map((line) => (
         <li>
-          <a href={cardHref(base, `experiments/${ledger.lineId}`)}>{ledger.label}</a>
-          <span class="side-panel-meta"> (experiment card)</span>
-          {" · "}
-          <a href={withBase(ledger.findingsSitePath)}>Key findings</a>
-          {" · "}
-          <a href={ledger.repoUrl} target="_blank" rel="noopener noreferrer">Full ledger<LinkIndicator kind="github" /></a>
+          <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
+          {" — "}
+          {oneLine(line.role)}
         </li>
       ))}
     </ul>
-  </section>
-
-  <section class="readable">
-    <h2>Build order</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Order</th>
-            <th>Line</th>
-            <th>Location</th>
-            <th>First built</th>
-          </tr>
-        </thead>
-        <tbody>
-          {experiments.lines.map((line) => (
-            <tr>
-              <td>{line.order}</td>
-              <td>
-                <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
-              </td>
-              <td>
-                {line.readmeUrl ? (
-                  <a href={line.readmeUrl} target="_blank" rel="noopener noreferrer">{line.location}<LinkIndicator kind="github" /></a>
-                ) : line.locationUrl ? (
-                  <a href={line.locationUrl} target="_blank" rel="noopener noreferrer">{line.location}<LinkIndicator kind="github" /></a>
-                ) : (
-                  line.location
-                )}
-              </td>
-              <td>{line.firstBuilt}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <ExperimentCoverageTable
-    columns={experiments.coverageColumns}
-    features={experiments.coverageFeatures}
-    cardHref={(slug) => cardHref(base, slug)}
-  />
-
-  <section class="readable">
-    <h2>How to read the coverage table</h2>
-    <ul>
-      {experiments.howToRead.map((entry) => (
-        <li>
-          <strong>
-            <a href={cardHref(base, `experiments/${entry.lineId}`)}>{entry.lineTitle}</a>:
-          </strong>
-          {" "}
-          {entry.text}
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="readable">
-    <p class="side-panel-meta">
-      MB rows in the coverage table link to bridge cards.
-      {" "}
-      <a href={withBase("/lean/")}>Lean dependency spine</a>
-      {" · "}
-      <a href={cardHref(base, "bridge-assumptions")}>Bridge assumptions</a>
-    </p>
+    <p class="side-panel-meta">None of this is a proof on a frontier system.</p>
   </section>
 </SiteLayout>

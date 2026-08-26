@@ -12,10 +12,20 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     <details class="card">
       <summary><strong>{item.question}</strong></summary>
       <p>
-        {item.answer === "experiments" ? (
+        {item.answer === "essays" ? (
           <>
-            The <a href={withBase("/experiments/")}>Experiments page</a> summarizes build order,
-            negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
+            Start with the{" "}
+            <a href={withBase("/essay/")}>essays</a>
+            {" "}(story-shaped, one idea at a time), from{" "}
+            <a href={withBase("/start/")}>Start Here</a>
+            . If you already know your role, use the{" "}
+            <a href={withBase("/paths/")}>Guided Tour</a>.
+          </>
+        ) : item.answer === "experiments" ? (
+          <>
+            The <a href={withBase("/experiments/")}>Experiments page</a> lists the in-repo lines.
+            Coverage, negative ledgers, and the matrix live on
+            <a href={withBase("/experiments/coverage/")}>experiment coverage</a>. Full narrative prose lives in{" "}
             <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md<LinkIndicator kind="github" /></a>{" "}
             in the repository.
           </>

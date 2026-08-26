@@ -2,6 +2,7 @@
 import { getEntry, render } from "astro:content";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import FieldHubNav from "../../../components/FieldHubNav.astro";
+import ParentCrumb from "../../../components/ParentCrumb.astro";
 
 const introEntry = await getEntry("field", "intro");
 if (!introEntry) throw new Error("Missing site/src/content/field/intro.md");
@@ -16,6 +17,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
   description={introEntry.data.description ?? "AI safety field map: agendas, bridge coverage matrix, lifecycle axis, and sourced evidence catalog."}
 >
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/field/")} parentLabel="Field" />
     <p class="eyebrow">Field</p>
     <h1>AI safety and alignment</h1>
     <p class="lede">

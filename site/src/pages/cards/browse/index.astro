@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import ParentCrumb from "../../../components/ParentCrumb.astro";
+import CardSection from "../../../components/CardSection.astro";
+import { cardHref as buildCardHref } from "../../../lib/site-urls";
+import { cardCatalogSections } from "../../../lib/card-catalog";
+import fieldProjectionGems from "../../../data/field-projection-gems.json";
+import experimentsData from "../../../data/experiments.json";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+
+const cards = await getCollection("cards");
+const sections = cardCatalogSections(cards, fieldProjectionGems, experimentsData);
+---
+
+<SiteLayout title="All cards" description="Full inventory of concept, chapter, bridge, and glossary cards.">
+  <section class="hero">
+    <ParentCrumb parentHref={withBase("/cards/")} parentLabel="Cards" />
+    <p class="eyebrow">Cards</p>
+    <h1>All cards</h1>
+  </section>
+
+  {sections.map((section) => (
+    <>
+      {section.id === "glossary" && (
+        <p class="side-panel-meta">
+          <a href={withBase("/glossary/")}>Browse the full glossary</a> — includes terms defined inside
+          concept and bridge cards, not only the {section.cards.length} dedicated glossary cards below.
+        </p>
+      )}
+      <CardSection
+        title={section.title}
+        sectionId={section.id}
+        cards={section.cards}
+        cardHref={cardHref}
+        gemIds={section.id === "field-projections" ? fieldProjectionGems : []}
+      />
+    </>
+  ))}
+</SiteLayout>

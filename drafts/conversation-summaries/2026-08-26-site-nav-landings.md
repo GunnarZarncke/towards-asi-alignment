@@ -16,7 +16,7 @@ Implement the first two steps of the nav-landing plan: fold/reorder the header, 
 - Continue reading runs in the page body before the recorder at the end of `body`, so this visit to `/` is not treated as the continue target.
 
 ## Open / next
-Plan steps 3–5: slim Cards/Book/News/Paths/Lean/Experiments/Demos; dual-unfold News+Releases; do not rewrite About.
+Remainder shipped in `2026-08-26-site-nav-landings-remainder.md`. Not committed.
 
 ## Key paths
 - `site/src/layouts/SiteLayout.astro`

@@ -1,0 +1,84 @@
+---
+interface Entry {
+  id: string;
+  title: string;
+  summary: string;
+}
+
+interface Props {
+  title: string;
+  sectionId: string;
+  cards: Entry[];
+  cardHref: (id: string) => string;
+  moreHref?: string;
+  showSummaries?: boolean;
+  previewCount?: number;
+  foldRest?: boolean;
+}
+
+const {
+  title,
+  sectionId,
+  cards,
+  cardHref,
+  moreHref,
+  showSummaries = false,
+  previewCount,
+  foldRest = false
+} = Astro.props;
+
+const visible = previewCount == null ? cards : cards.slice(0, previewCount);
+const rest = previewCount == null ? [] : cards.slice(previewCount);
+const hidden = rest.length;
+---
+
+<section id={sectionId} class="readable card-topic">
+  <h2>{title}</h2>
+  <ul class="card-topic-list">
+    {visible.map((card) => (
+      <li>
+        <a href={cardHref(card.id)}>{card.title}</a>
+        {showSummaries && card.summary && <span class="side-panel-meta"> — {card.summary}</span>}
+      </li>
+    ))}
+  </ul>
+  {foldRest && hidden > 0 && (
+    <details class="card-topic-more">
+      <summary>{hidden} more</summary>
+      <ul class="card-topic-list">
+        {rest.map((card) => (
+          <li>
+            <a href={cardHref(card.id)}>{card.title}</a>
+            {showSummaries && card.summary && <span class="side-panel-meta"> — {card.summary}</span>}
+          </li>
+        ))}
+      </ul>
+      {moreHref && (
+        <p class="side-panel-meta"><a href={moreHref}>All {title.toLowerCase()}</a></p>
+      )}
+    </details>
+  )}
+  {!foldRest && hidden > 0 && moreHref && (
+    <p class="side-panel-meta"><a href={moreHref}>{hidden} more</a></p>
+  )}
+</section>
+
+<style>
+  .card-topic-list {
+    margin: 0.35rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .card-topic-list li {
+    margin: 0.25rem 0;
+  }
+
+  .card-topic-more {
+    margin-top: 0.5rem;
+  }
+
+  .card-topic-more summary {
+    cursor: pointer;
+    color: var(--color-muted);
+  }
+</style>

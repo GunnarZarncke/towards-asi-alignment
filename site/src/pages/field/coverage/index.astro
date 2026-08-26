@@ -2,6 +2,7 @@
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import FieldAgendaMatrix from "../../../components/FieldAgendaMatrix.astro";
 import FieldEvidenceCatalog from "../../../components/FieldEvidenceCatalog.astro";
+import ParentCrumb from "../../../components/ParentCrumb.astro";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -12,6 +13,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
   description="Agenda × bridge coverage matrix with stance marks and sourced evidence catalog for the AI alignment field map."
 >
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/field/")} parentLabel="Field" />
     <p class="eyebrow">Field</p>
     <h1>Field coverage</h1>
     <p class="lede">

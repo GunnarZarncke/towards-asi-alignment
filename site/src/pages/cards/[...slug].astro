@@ -508,7 +508,7 @@ const pageDescription = showFullText
                       </>
                     )}
                     {" · "}
-                    <a href={withBase(`/demos/#${demo.demoId}`)}>Inventory</a>
+                    <a href={withBase(`/demos/all/#${demo.demoId}`)}>Inventory</a>
                   </>
                 ) : (
                   <a href={href} target="_blank" rel="noopener noreferrer">{demo.demoId}<LinkIndicator kind="github" /></a>
@@ -518,7 +518,7 @@ const pageDescription = showFullText
               );
             })}
           </ul>
-          <p class="side-panel-meta"><a href={withBase("/demos/")}>All chapter demos</a></p>
+          <p class="side-panel-meta"><a href={withBase("/demos/")}>Chapter demos</a></p>
         </>
       )}
       {isCrosswalkCard && (

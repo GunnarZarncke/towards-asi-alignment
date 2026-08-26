@@ -11,6 +11,7 @@ import {
   badgeTypeHref
 } from "../../lib/badges";
 import { ALL_GEM_SLUGS, GEM_LABEL, GEM_META, badgeGemHref } from "../../lib/gems";
+import ParentCrumb from "../../components/ParentCrumb.astro";
 
 const cards = await getCollection("cards");
 const base = import.meta.env.BASE_URL;
@@ -30,6 +31,7 @@ const gemCount = cards.filter((card) => gemSlugSet.has(card.id)).length;
 
 <SiteLayout title="Badge index" description="Browse concept cards by type and status badge.">
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/cards/")} parentLabel="Cards" />
     <p class="eyebrow">Card index</p>
     <h1>Badge index</h1>
     <p class="lede">
@@ -86,7 +88,7 @@ const gemCount = cards.filter((card) => gemSlugSet.has(card.id)).length;
   </section>
 
   <section>
-    <p><a href={withBase("/cards/")}>Browse all cards</a></p>
+    <p><a href={withBase("/badges/")}>All badges</a> · <a href={withBase("/cards/browse/")}>All cards</a></p>
   </section>
 </SiteLayout>
 

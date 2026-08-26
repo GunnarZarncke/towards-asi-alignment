@@ -1,0 +1,10 @@
+---
+interface Props {
+  parentHref: string;
+  parentLabel: string;
+}
+
+const { parentHref, parentLabel } = Astro.props;
+---
+
+<p class="side-panel-meta">You are in <a href={parentHref}>{parentLabel}</a></p>

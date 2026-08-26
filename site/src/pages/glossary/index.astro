@@ -3,8 +3,10 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
 import glossary from "../../data/glossary.json";
+import ParentCrumb from "../../components/ParentCrumb.astro";
 
 const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const cardHref = (id: string) => buildCardHref(base, id);
 ---
 
@@ -13,6 +15,7 @@ const cardHref = (id: string) => buildCardHref(base, id);
   description="Operational definitions for this project's core terms, each linked to its home concept card."
 >
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/cards/")} parentLabel="Cards" />
     <p class="eyebrow">Glossary</p>
     <h1>Terms</h1>
     <p class="lede">

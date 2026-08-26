@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import fieldNewsIndex from "../../data/field-news.json";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
@@ -9,6 +10,13 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const cardHref = (id: string) => buildCardHref(base, id);
 
 const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
+const [newestNews, ...olderNews] = items;
+
+const cards = await getCollection("cards");
+const versions = cards
+  .filter((card) => card.data.type === "release" && card.id !== "releases-updates" && card.data.releasedAt)
+  .sort((a, b) => (b.data.releasedAt ?? "").localeCompare(a.data.releasedAt ?? ""));
+const [newestRelease, ...olderReleases] = versions;
 
 const kindLabel: Record<string, string> = {
   incident: "Incident",
@@ -20,90 +28,122 @@ const kindLabel: Record<string, string> = {
 ---
 
 <SiteLayout
-  title="Related AI News"
-  description="External AI safety incidents and evaluation results mapped to book chapters — orientation only, not manuscript canon."
+  title="News"
+  description="Field incidents and manuscript releases — orientation only, not manuscript canon."
 >
   <section class="hero">
-    <p class="eyebrow">Field index</p>
-    <h1>Related AI News</h1>
-    <p class="lede">
-      AI incidents, lab disclosures, and independent evaluations with a relation to this project.
-    </p>
-    <p class="rss-cta">
-      <a href={withBase("/feed.xml")}>Add the RSS feed</a><LinkIndicator kind="rss" /> to your reader for new entries as they are posted.
+    <p class="eyebrow">News</p>
+    <h1>News</h1>
+    <p class="side-panel-meta">
+      Not part of the book.
+      {" "}
+      <a href={withBase("/feed.xml")}>RSS</a><LinkIndicator kind="rss" />
     </p>
   </section>
 
-  <section class="readable">
-    <ul class="news-list">
-      {items.map((item) => (
-        <li class="news-item">
+  <div class="news-unfolds">
+    <details open class="news-unfold">
+      <summary>Field news</summary>
+      {newestNews && (
+        <article class="news-item">
           <p class="news-meta">
-            <time datetime={item.eventDate ?? item.date}>{item.eventDate ?? item.date}</time>
-            {item.eventDate && item.eventDate !== item.date && (
-              <>
-                {" · posted "}
-                <time datetime={item.date}>{item.date}</time>
-              </>
-            )}
+            <time datetime={newestNews.eventDate ?? newestNews.date}>{newestNews.eventDate ?? newestNews.date}</time>
             {" · "}
-            <span>{kindLabel[item.kind] ?? item.kind}</span>
+            <span>{kindLabel[newestNews.kind] ?? newestNews.kind}</span>
           </p>
-          <h2>
-            <a href={cardHref(item.card)}>{item.title}</a>
-          </h2>
-          <p>{item.hook}</p>
-          {item.chapterRefs?.length > 0 && (
-            <p class="side-panel-meta">
-              Read more in:{" "}
-              {item.chapterRefs.map((ref, i) => (
-                <>
-                  {i > 0 &&
-                    (i === item.chapterRefs.length - 1 ? "; and " : "; ")}
-                  <a href={cardHref(`chapters/${ref.id}`)}>
-                    {ref.prefix}, <em>{ref.title}</em>
-                  </a>
-                </>
-              ))}
-              .
-            </p>
-          )}
-        </li>
-      ))}
-    </ul>
-    <p>
-      Primary sources and fuller context live on each{" "}
-      <a href={withBase("/cards/")}>news card</a>. To suggest an entry, open a{" "}
-      <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues" target="_blank" rel="noopener noreferrer">
-        GitHub issue<LinkIndicator kind="github" />
-      </a>.
-    </p>
-  </section>
+          <h2><a href={cardHref(newestNews.card)}>{newestNews.title}</a></h2>
+          <p>{newestNews.hook}</p>
+        </article>
+      )}
+      {olderNews.length > 0 && (
+        <details>
+          <summary>More field news</summary>
+          <ul class="news-list">
+            {olderNews.map((item) => (
+              <li class="news-item">
+                <p class="news-meta">
+                  <time datetime={item.eventDate ?? item.date}>{item.eventDate ?? item.date}</time>
+                  {" · "}
+                  <span>{kindLabel[item.kind] ?? item.kind}</span>
+                </p>
+                <h2><a href={cardHref(item.card)}>{item.title}</a></h2>
+                <p>{item.hook}</p>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </details>
+
+    <details open class="news-unfold" id="releases">
+      <summary>Releases</summary>
+      {newestRelease && (
+        <article class="news-item">
+          <h2><a href={cardHref(newestRelease.id)}>{newestRelease.data.title}</a></h2>
+          <p>{newestRelease.data.summary}</p>
+        </article>
+      )}
+      {olderReleases.length > 0 && (
+        <details>
+          <summary>Older releases</summary>
+          <ul class="news-list">
+            {olderReleases.map((card) => (
+              <li class="news-item">
+                <h2><a href={cardHref(card.id)}>{card.data.title}</a></h2>
+                <p>{card.data.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+      <p class="side-panel-meta"><a href={withBase("/updates/")}>Full release list</a></p>
+    </details>
+  </div>
 </SiteLayout>
 
 <style>
+  .news-unfolds {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 720px) {
+    .news-unfolds {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .news-unfold {
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+
+  .news-unfold > summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
   .news-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 2rem;
+    margin: 0;
   }
+
   .news-item {
-    padding: 1.25rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--border-subtle, #e5e5e5);
   }
+
   .news-item h2 {
-    font-size: 1.15rem;
-    margin: 0.35rem 0 0.5rem;
+    font-size: 1.05rem;
+    margin: 0.25rem 0 0.4rem;
   }
+
   .news-meta {
     font-size: 0.85rem;
     opacity: 0.85;
     margin: 0;
-  }
-  .rss-cta {
-    font-size: 0.95rem;
-    color: var(--color-muted);
-    max-width: 49rem;
-    margin: 0.75rem 0 0;
   }
 </style>

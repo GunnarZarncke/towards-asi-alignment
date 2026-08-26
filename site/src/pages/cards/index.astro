@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import CardSection from "../../components/CardSection.astro";
+import CardTopicList from "../../components/CardTopicList.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
+import { cardCatalogSections, highlightEntries } from "../../lib/card-catalog";
 import fieldProjectionGems from "../../data/field-projection-gems.json";
 import experimentsData from "../../data/experiments.json";
 
@@ -11,136 +12,43 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const cardHref = (id: string) => buildCardHref(base, id);
 
 const cards = await getCollection("cards");
-
-const toEntry = (card: (typeof cards)[number]) => ({
-  id: card.id,
-  title: card.data.title,
-  summary: card.data.summary,
-  type: card.data.type,
-  status: card.data.status
-});
-
-const chapterRank = (card: (typeof cards)[number]) =>
-  Number(card.data.bookPageId?.replace("ch", "") || 0);
-
-const appendixRank = (card: (typeof cards)[number]) => {
-  if (card.data.type === "frontmatter") return 0;
-  return 1 + (card.data.bookPageId || "").charCodeAt(3);
-};
-
-const chapters = cards
-  .filter((card) => card.data.type === "chapter")
-  .sort((a, b) => chapterRank(a) - chapterRank(b))
-  .map(toEntry);
-
-const appendices = cards
-  .filter((card) => ["appendix", "frontmatter"].includes(card.data.type))
-  .sort((a, b) => appendixRank(a) - appendixRank(b))
-  .map(toEntry);
-
-const byType = (type: string) =>
-  cards
-    .filter((card) => card.data.type === type)
-    .sort((a, b) => a.data.title.localeCompare(b.data.title))
-    .map(toEntry);
-
-const concepts = byType("concept").filter((card) => !fieldProjectionGems.includes(card.id));
-const referenceIndexCard = cards.find((card) => card.id === "reference-index");
-const referenceCards = cards
-  .filter((card) => card.data.type === "reference")
-  .sort((a, b) => a.data.title.localeCompare(b.data.title))
-  .map(toEntry);
-const referencesSection = [
-  ...(referenceIndexCard ? [toEntry(referenceIndexCard)] : []),
-  ...referenceCards
-];
-const experimentOrder = new Map(
-  experimentsData.lines.map((line: { id: string; order: number }) => [line.id, line.order])
-);
-const experiments = cards
-  .filter((card) => card.data.type === "experiment")
-  .sort((a, b) => {
-    const orderA = experimentOrder.get(a.data.experimentLineId ?? "") ?? 999;
-    const orderB = experimentOrder.get(b.data.experimentLineId ?? "") ?? 999;
-    if (orderA !== orderB) return orderA - orderB;
-    return a.data.title.localeCompare(b.data.title);
-  })
-  .map(toEntry);
-const fieldProjections = cards
-  .filter((card) => fieldProjectionGems.includes(card.id))
-  .sort((a, b) => fieldProjectionGems.indexOf(a.id) - fieldProjectionGems.indexOf(b.id))
-  .map(toEntry);
-const bridges = byType("bridge");
-const agendas = cards
-  .filter((card) => card.data.type === "agenda")
-  .sort((a, b) => a.data.title.localeCompare(b.data.title))
-  .map(toEntry);
-const artifacts = byType("artifact");
-const objections = byType("objection");
-const glossary = byType("glossary");
-const releaseVersions = cards
-  .filter((card) => card.data.type === "release" && card.id !== "releases-updates")
-  .sort((a, b) => (b.data.releasedAt ?? "").localeCompare(a.data.releasedAt ?? ""))
-  .map(toEntry);
-const releases = releaseVersions;
-
-const sections = [
-  { title: "Chapters", id: "chapters", cards: chapters },
-  { title: "Appendices & front matter", id: "appendices", cards: appendices },
-  { title: "Experiments", id: "experiments", cards: experiments },
-  { title: "Releases & updates", id: "releases", cards: releases },
-  { title: "Reference cards", id: "references", cards: referencesSection },
-  { title: "Field projections", id: "field-projections", cards: fieldProjections },
-  { title: "Concepts", id: "concepts", cards: concepts },
-  { title: "Field agendas", id: "field-agendas", cards: agendas },
-  { title: "Bridges", id: "bridges", cards: bridges },
-  { title: "Artifacts", id: "artifacts", cards: artifacts },
-  { title: "Objections & caveats", id: "objections", cards: objections },
-  { title: "Glossary", id: "glossary", cards: glossary }
-];
-
-const totalCards = sections.reduce((sum, section) => sum + section.cards.length, 0);
+const highlights = highlightEntries(cards);
+const sections = cardCatalogSections(cards, fieldProjectionGems, experimentsData);
 ---
 
-<SiteLayout title="Cards" description="Short concept, bridge, objection, artifact, and glossary cards.">
+<SiteLayout title="Cards" description="Short concept, chapter, bridge, and glossary cards grouped by topic.">
   <section class="hero">
     <p class="eyebrow">Cards</p>
-    <h1>Short canonical artifacts</h1>
-    <p class="lede">
-      {totalCards} cards across chapters, appendices, experiments, releases, references, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
-    </p>
-    <p class="side-panel-meta">
-      <a href={withBase("/updates/")}>Releases &amp; updates</a>
-      {" · "}
-      <a href={withBase("/references/")}>Chapter-grouped bibliography</a>
-      {" · "}
-      <a href={withBase("/experiments/")}>Experiment lines</a>
-      {" · "}
-      <a href={withBase("/glossary/")}>Glossary</a>
-      {" · "}
-      <a href={withBase("/notation/")}>Notation index</a>
-      {" · "}
-      <a href={withBase("/field/")}>Field hub</a>
-      {" · "}
-      <a href={withBase("/paths/")}>Prefer a guided tour?</a>
+    <h1>Cards</h1>
+    <p class="button-row">
+      <a class="button" href={withBase("/glossary/")}>Glossary</a>
+      <a class="button" href={withBase("/badges/")}>Badge index</a>
+      <a class="button" href={withBase("/badges/gem/")}>Highlights</a>
+      <a class="button" href={withBase("/essay/")}>Essays</a>
     </p>
   </section>
 
+  <CardTopicList
+    title="Highlights"
+    sectionId="highlights"
+    cards={highlights}
+    cardHref={cardHref}
+    moreHref={withBase("/badges/gem/")}
+    showSummaries={true}
+    previewCount={3}
+    foldRest={true}
+  />
+
   {sections.map((section) => (
-    <>
-      {section.id === "glossary" && (
-        <p class="side-panel-meta">
-          <a href={withBase("/glossary/")}>Browse the full glossary</a> — includes terms defined inside
-          concept and bridge cards, not only the {section.cards.length} dedicated glossary cards below.
-        </p>
-      )}
-      <CardSection
-        title={section.title}
-        sectionId={section.id}
-        cards={section.cards}
-        cardHref={cardHref}
-        gemIds={section.id === "field-projections" ? fieldProjectionGems : []}
-      />
-    </>
+    <CardTopicList
+      title={section.title}
+      sectionId={section.id}
+      cards={section.cards}
+      cardHref={cardHref}
+      moreHref={withBase(`/cards/browse/#${section.id}`)}
+      previewCount={8}
+    />
   ))}
+
+  <p class="side-panel-meta"><a href={withBase("/cards/browse/")}>All cards</a></p>
 </SiteLayout>

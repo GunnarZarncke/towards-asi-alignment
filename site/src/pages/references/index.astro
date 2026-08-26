@@ -4,14 +4,17 @@ import ReferencesByChapter from "../../components/ReferencesByChapter.astro";
 import references from "../../data/references.json";
 import bibliography from "../../data/references-bibliography.json";
 import { cardHref } from "../../lib/site-urls";
+import ParentCrumb from "../../components/ParentCrumb.astro";
 
 const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const toCardHref = (id: string) => cardHref(base, id);
 const unitHref = (id: string) => toCardHref(`chapters/${id}`);
 ---
 
 <SiteLayout title="References" description="Bibliography for Towards Superintelligence Alignment, grouped by chapter.">
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/book/")} parentLabel="Book" />
     <p class="eyebrow">Bibliography</p>
     <h1>References</h1>
     <p class="lede">

@@ -4,6 +4,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import CardSection from "../../components/CardSection.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
+import ParentCrumb from "../../components/ParentCrumb.astro";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -33,6 +34,7 @@ const githubReleasesUrl = "https://github.com/GunnarZarncke/towards-asi-alignmen
   description="Manuscript and companion-site release notes — newest first."
 >
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/news/")} parentLabel="News" />
     <p class="eyebrow">Changelog</p>
     <h1>Releases &amp; updates</h1>
     <p class="lede">

@@ -1,10 +1,15 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ParentCrumb from "../components/ParentCrumb.astro";
 import FaqList from "../components/FaqList.astro";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 ---
 
 <SiteLayout title="FAQ" description="Frequently asked questions about the book and this site.">
   <section class="hero">
+    <ParentCrumb parentHref={withBase("/start/")} parentLabel="Start Here" />
     <p class="eyebrow">FAQ</p>
     <h1>Questions first</h1>
     <p class="lede">Start with a question. Each answer links to the card or path that goes deeper.</p>

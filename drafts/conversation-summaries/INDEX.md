@@ -7,6 +7,7 @@
 | Date | Topic | Log |
 |------|-------|-----|
 | 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |
+| 2026-08-26 | **Site nav landings remainder** — Finish the remaining nav landing splits after header/home/Field (Cards, Book, News, Tour, Lean, E... | [2026-08-26-site-nav-landings-remainder.md](2026-08-26-site-nav-landings-remainder.md) |
 | 2026-08-26 | **OpenAI HF road-ahead field news** — User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face postmortem, in the s... | [2026-08-26-openai-hf-roadahead-news.md](2026-08-26-openai-hf-roadahead-news.md) |
 | 2026-08-26 | **Early-chapter preview demotion** — User asked to implement the plan: demote premature tuples and covering-inventory equations in ch0... | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
 | 2026-08-26 | **CIRIS field-overview evidence reevaluation** — Reevaluate CIRIS evidence in the field overview using `~/repos/ciris/` checkouts and the live cir... | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
@@ -20,11 +21,10 @@
 | 2026-08-24 | **Adverse process generator** — User: new 2021–2026 ontologies do not help much identifying cracks (too specific); maybe existing... | [2026-08-24-adverse-process-generator.md](2026-08-24-adverse-process-generator.md) |
 | 2026-08-23 | **Ontology reviews 2021–2026** — User asked for one Grok 4.6 (non-fast, low-effort) subagent per entry in `drafts/new_ontologies_2... | [2026-08-23-ontology-reviews.md](2026-08-23-ontology-reviews.md) |
 | 2026-08-22 | **v1.5.0 release notes and tag** — User asked to prepare release notes, reviewed the draft, then asked to perform the release steps. | [2026-08-22-v1-5-0-release-notes.md](2026-08-22-v1-5-0-release-notes.md) |
-| 2026-08-22 | **Spine lane + open-work erasure** — User asked what remained open after Aug 16–17 work; whether `drafts/plans/` and `metadata/TODO.md... | [2026-08-22-spine-lane-erasure.md](2026-08-22-spine-lane-erasure.md) |
 
 ## Archive by month
 
-- **2026-08** (130): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (131): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

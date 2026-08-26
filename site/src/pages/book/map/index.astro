@@ -1,0 +1,62 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import ParentCrumb from "../../../components/ParentCrumb.astro";
+import LinkIndicator from "../../../components/LinkIndicator.astro";
+import book from "../../../data/book.json";
+import { getCollection } from "astro:content";
+import { cardHref, pdfHref } from "../../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const cards = await getCollection("cards");
+const chapterCardFor = (chapterId: string) =>
+  cards.find((card) => card.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(card.data.type));
+const toCardHref = (id: string) => cardHref(base, id);
+---
+
+<SiteLayout title="Book map" description="Chapter tables for Towards Superintelligence Alignment.">
+  <section class="hero">
+    <ParentCrumb parentHref={withBase("/book/")} parentLabel="Book" />
+    <p class="eyebrow">Book</p>
+    <h1>All chapters</h1>
+    <div class="button-row">
+      <a class="button" href={pdfHref(base)}>Download PDF</a>
+      <a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment" target="_blank" rel="noopener noreferrer">View source repository<LinkIndicator kind="github" /></a>
+    </div>
+  </section>
+
+  {book.parts.map((part) => (
+    <section id={part.id}>
+      <h2>{part.title}</h2>
+      <p>{part.summary}</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Chapter</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            {part.chapters.map((chapter) => {
+              const chapterCard = chapterCardFor(chapter.id);
+              return (
+              <tr>
+                <td>{chapter.id}</td>
+                <td>
+                  {chapterCard ? (
+                    <a href={toCardHref(chapterCard.id)}>{chapter.title}</a>
+                  ) : (
+                    <span>{chapter.title}</span>
+                  )}
+                </td>
+              </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+</SiteLayout>

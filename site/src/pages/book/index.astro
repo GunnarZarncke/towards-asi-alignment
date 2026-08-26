@@ -1,6 +1,5 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import LinkIndicator from "../../components/LinkIndicator.astro";
 import book from "../../data/book.json";
 import { getCollection } from "astro:content";
 import { cardHref, pdfHref } from "../../lib/site-urls";
@@ -14,64 +13,55 @@ const chapterCardFor = (chapterId: string) =>
 const toCardHref = (id: string) => cardHref(base, id);
 ---
 
-<SiteLayout title="Book Map" description="Compact map of the canonical PDF manuscript.">
-  <section class="hero">
-    <p class="eyebrow">Canonical long-form</p>
+<SiteLayout title="Book" description="Download the manuscript PDF and browse parts.">
+  <section class="hero book-landing-hero">
+    <p class="eyebrow">Book</p>
     <h1>{book.title}</h1>
-    <p class="lede">
-      {book.subtitle}. Read chapters on the site or download the PDF for the full manuscript including appendices not yet on the web.
-    </p>
+    <p class="lede">{book.subtitle}</p>
     <div class="button-row">
-      <a class="button primary" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Start with front matter</a>
-      <a class="button" href={pdfHref(base)}>Download PDF</a>
-      <a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment" target="_blank" rel="noopener noreferrer">View source repository<LinkIndicator kind="github" /></a>
+      <a class="button primary" href={pdfHref(base)}>Download PDF</a>
+      <a class="button" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Front matter</a>
+      <a class="button" href={withBase("/references/")}>References</a>
+      <a class="button" href={withBase("/book/map/")}>All chapters</a>
     </div>
   </section>
 
-  <section class="readable">
-    <h2>Also on the site</h2>
-    <ul>
-      <li><a href={toCardHref(chapterCardFor("frontmatter")!.id)}>Front matter</a></li>
-      <li><a href={toCardHref(chapterCardFor("appB")!.id)}>Bridge crosswalk (Appendix B)</a></li>
-      <li><a href={toCardHref(chapterCardFor("appC")!.id)}>Institutional translation (Appendix C)</a></li>
-      <li><a href={toCardHref(chapterCardFor("appM")!.id)}>Institutional histories (Appendix M)</a></li>
-      <li><a href={toCardHref(chapterCardFor("appD")!.id)}>Worked example (Appendix D)</a></li>
-      <li><a href={toCardHref(chapterCardFor("appF")!.id)}>Research program (Appendix F)</a></li>
-      <li><a href={withBase("/references/")}>References</a></li>
-    </ul>
-  </section>
-
-  {book.parts.map((part) => (
-    <section>
-      <h2>{part.title}</h2>
-      <p>{part.summary}</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Chapter</th>
-              <th>Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {part.chapters.map((chapter) => {
-              const chapterCard = chapterCardFor(chapter.id);
-              return (
-              <tr>
-                <td>{chapter.id}</td>
-                <td>
-                  {chapterCard ? (
-                    <a href={toCardHref(chapterCard.id)}>{chapter.title}</a>
-                  ) : (
-                    <span>{chapter.title}</span>
-                  )}
-                </td>
-              </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  ))}
+  <ol class="book-parts">
+    {book.parts.map((part) => (
+      <li>
+        <h2><a href={withBase(`/book/map/#${part.id}`)}>{part.title}</a></h2>
+        {part.summary && <p>{part.summary}</p>}
+      </li>
+    ))}
+  </ol>
 </SiteLayout>
+
+<style>
+  .book-landing-hero {
+    padding-top: 0;
+    padding-bottom: 1.25rem;
+  }
+
+  .book-parts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: var(--max-readable);
+  }
+
+  .book-parts li + li {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border, #c8d4e0);
+  }
+
+  .book-parts h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+  }
+
+  .book-parts p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+</style>
