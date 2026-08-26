@@ -17,10 +17,10 @@ const base = import.meta.env.BASE_URL;
   import {
     VISIT_HISTORY_KEY,
     continueTarget,
-    latestByType,
+    kindLabel,
+    latestByKind,
     normalizePath,
-    parseVisitHistory,
-    typeLabel
+    parseVisitHistory
   } from "../lib/visit-history";
 
   const root = document.querySelector("[data-continue-reading]");
@@ -40,19 +40,19 @@ const base = import.meta.env.BASE_URL;
           latestLink.href = withBase(latest.path);
           latestLink.textContent = latest.title || latest.path;
         }
-        const byType = latestByType(history, current);
+        const byKind = latestByKind(history, current);
         const list = root.querySelector("[data-continue-by-type]");
         const more = root.querySelector(".continue-more");
         if (list && more instanceof HTMLDetailsElement) {
-          if (byType.length === 0) {
+          if (byKind.length === 0) {
             more.hidden = true;
           } else {
             list.replaceChildren(
-              ...byType.map(({ type, entry }) => {
+              ...byKind.map(({ kind, entry }) => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");
                 a.href = withBase(entry.path);
-                a.textContent = `${typeLabel(type)}: ${entry.title || entry.path}`;
+                a.textContent = `${kindLabel(kind)}: ${entry.title || entry.path}`;
                 li.append(a);
                 return li;
               })

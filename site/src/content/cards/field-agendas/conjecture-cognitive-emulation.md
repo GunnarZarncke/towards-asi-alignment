@@ -32,7 +32,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 
 **Key terms.** Key terms include [cognitive emulation](https://www.conjecture.dev/), controllable LLMs, emulation versus alignment, EleutherAI, and open models.
 
-**Related field cruxes.** [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent prosaic alignment spirit.
 

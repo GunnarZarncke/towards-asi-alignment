@@ -1,8 +1,8 @@
 {
   "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full project thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (MB1–MB10).",
   "negativeResultsFirst": true,
-  "negativeResultsCardPath": "/cards/negative-results/",
-  "negativeResultsCardUrl": "https://towards-alignment.com/cards/negative-results/",
+  "negativeResultsCardPath": "/cards/concept/negative-results/",
+  "negativeResultsCardUrl": "https://towards-alignment.com/cards/concept/negative-results/",
   "canonicalDocPath": "docs/EXPERIMENTS.md",
   "canonicalDocUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md",
   "openTasksUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/TODO.md",
@@ -67,8 +67,8 @@
           "url": "https://github.com/GunnarZarncke/agency-detect"
         }
       ],
-      "cardPath": "/cards/experiments/agency-detect/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/agency-detect/",
+      "cardPath": "/cards/experiment/agency-detect/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/agency-detect/",
       "findingsSitePath": "/experiments/findings/agency-detect/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/agency-detect/",
       "locationUrl": "https://github.com/GunnarZarncke/agency-detect",
@@ -101,8 +101,8 @@
           "url": "https://github.com/GunnarZarncke/deployment-pipeline-simulator"
         }
       ],
-      "cardPath": "/cards/experiments/deployment-pipeline-simulator/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/deployment-pipeline-simulator/",
+      "cardPath": "/cards/experiment/deployment-pipeline-simulator/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/deployment-pipeline-simulator/",
       "findingsSitePath": "/experiments/findings/deployment-pipeline-simulator/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/deployment-pipeline-simulator/",
       "locationUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
@@ -138,8 +138,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/FINDINGS.md"
         }
       ],
-      "cardPath": "/cards/experiments/toy-simulation/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/toy-simulation/",
+      "cardPath": "/cards/experiment/toy-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/toy-simulation/",
       "findingsSitePath": "/experiments/findings/toy-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/toy-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/",
@@ -175,8 +175,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
         }
       ],
-      "cardPath": "/cards/experiments/embedded-simulation/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/embedded-simulation/",
+      "cardPath": "/cards/experiment/embedded-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/embedded-simulation/",
       "findingsSitePath": "/experiments/findings/embedded-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/embedded-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/",
@@ -212,8 +212,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
         }
       ],
-      "cardPath": "/cards/experiments/goal-agent-simulation/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/goal-agent-simulation/",
+      "cardPath": "/cards/experiment/goal-agent-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/goal-agent-simulation/",
       "findingsSitePath": "/experiments/findings/goal-agent-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/",
@@ -292,8 +292,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/leak-proof/README.md"
         }
       ],
-      "cardPath": "/cards/experiments/lab-simulation/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/lab-simulation/",
+      "cardPath": "/cards/experiment/lab-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/lab-simulation/",
       "findingsSitePath": "/experiments/findings/lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/lab-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/",
@@ -345,8 +345,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
         }
       ],
-      "cardPath": "/cards/experiments/graded-lab-simulation/",
-      "cardUrl": "https://towards-alignment.com/cards/experiments/graded-lab-simulation/",
+      "cardPath": "/cards/experiment/graded-lab-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/graded-lab-simulation/",
       "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/",

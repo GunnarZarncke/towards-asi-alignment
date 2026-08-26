@@ -25,4 +25,4 @@ The practical lesson is a limitation of the current form of Unsupervised Agent D
 
 Technical artifacts: [`PLAN_ET2.md`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md), [`results/et2a_uad_battery.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/et2a_uad_battery.json), and the [graded-lab findings ledger](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md).
 
-**Read more in:** [Ch. 7, *Finding the Boundary*](/cards/chapters/ch07/); [Ch. 34, *Alignment Is Selected or Destroyed by Its Environment*](/cards/chapters/ch34/); and [Appendix N, *Experimental Evidence: Findings by Line*](/cards/chapters/appN/).
+**Read more in:** [Ch. 7, *Finding the Boundary*](/cards/chapter/ch07/); [Ch. 34, *Alignment Is Selected or Destroyed by Its Environment*](/cards/chapter/ch34/); and [Appendix N, *Experimental Evidence: Findings by Line*](/cards/appendix/appn/).

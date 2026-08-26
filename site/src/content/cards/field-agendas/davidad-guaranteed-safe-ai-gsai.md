@@ -41,7 +41,7 @@ related:
 
 **Key terms.** Key terms include [guaranteed safe](https://arxiv.org/abs/2405.06624), [open agency](https://arxiv.org/abs/2405.06624), [world model](https://arxiv.org/abs/2405.06624), [specification coverage](https://arxiv.org/abs/2405.06624), and [Scientist AI](https://lawzero.org/en).
 
-**Related field cruxes.** [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
+**Related field cruxes.** [Grounding Drift](/cards/bridge/mb9-grounding-certificate/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
 **What they contribute.** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
 
@@ -49,7 +49,7 @@ related:
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [GSAI / Open Agency spec](/cards/specify-gsai/) · [Spec-relative formal builder](/cards/construct-gsai/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [GSAI / Open Agency spec](/cards/concept/specify-gsai/) · [Spec-relative formal builder](/cards/concept/construct-gsai/). See the [alignment target](/cards/concept/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 

@@ -32,7 +32,7 @@ Redwood Research makes safety-under-subversion research legible to labs and gove
 
 **Key terms.** Key terms include [AI control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion), [alignment faking](/cards/strategic-opacity/), [control evals](https://www.redwoodresearch.org/), [capability gap](https://www.redwoodresearch.org/), and [intentional subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion).
 
-**Related field cruxes.** [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** Makes the capability-gap assumption explicit and runs empirical control evaluations under intentional subversion.
 

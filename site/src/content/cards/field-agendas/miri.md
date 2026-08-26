@@ -37,7 +37,7 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 
 **Key terms.** Core terms include [embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), [tiling](/cards/mb5-successor-ontology-shift/), [Vingean reflection](https://intelligence.org/files/VingeanReflection.pdf), [value learning](/cards/mb2-bundle-identifiability/), [hard pause](https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/), and [off-switch](/cards/subsumption-shutdown/).
 
-**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Tiling](/cards/mb5-successor-ontology-shift/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/); [Tiling](/cards/bridge/mb5-successor-ontology-shift/); [Extrapolated Volition](/cards/bridge/mb8-cev-process-convergence/)
 
 **What they contribute.** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
 
@@ -45,7 +45,7 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [CEV (constitutional residue)](/cards/specify-cev/) · [CEV construction (underspecified)](/cards/construct-cev/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [CEV (constitutional residue)](/cards/concept/specify-cev/) · [CEV construction (underspecified)](/cards/concept/construct-cev/). See the [alignment target](/cards/concept/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 

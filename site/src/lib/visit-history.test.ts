@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
+  cardTypeFromPath,
   continueTarget,
+  latestByKind,
   latestByType,
   normalizePath,
   prependVisit,
@@ -10,13 +12,22 @@ import {
 
 describe("visitTypeForPath", () => {
   it("maps prefixes to nav types", () => {
-    assert.equal(visitTypeForPath("/cards/foo/"), "cards");
+    assert.equal(visitTypeForPath("/cards/concept/foo/"), "cards");
     assert.equal(visitTypeForPath("/glossary/"), "cards");
     assert.equal(visitTypeForPath("/references/"), "book");
     assert.equal(visitTypeForPath("/chapter-demos/x/"), "demos");
     assert.equal(visitTypeForPath("/faq/"), "start");
     assert.equal(visitTypeForPath("/essay/the-chatbot-passed-the-test/"), "essay");
     assert.equal(visitTypeForPath("/"), null);
+  });
+});
+
+describe("cardTypeFromPath", () => {
+  it("reads card content type from typed slugs", () => {
+    assert.equal(cardTypeFromPath("/cards/chapter/ch07/"), "chapter");
+    assert.equal(cardTypeFromPath("/cards/bridge/mb1-boundary-estimator-soundness/"), "bridge");
+    assert.equal(cardTypeFromPath("/cards/concept/boundary-discovery/"), "concept");
+    assert.equal(cardTypeFromPath("/cards/frontmatter/"), "frontmatter");
   });
 });
 
@@ -35,6 +46,26 @@ describe("prependVisit", () => {
     const a = { path: "/book/", title: "Book", type: "book" as const, t: 1 };
     const next = prependVisit([a], { ...a, t: 2 });
     assert.equal(next.length, 1);
+  });
+});
+
+describe("latestByKind", () => {
+  it("returns one row per card kind and skips nav landings", () => {
+    const history = [
+      { path: "/", title: "Home", type: null, t: 5 },
+      { path: "/cards/chapter/ch07/", title: "Finding the Boundary", type: "cards" as const, t: 4 },
+      { path: "/cards/concept/boundary-discovery/", title: "Finding the Boundary", type: "cards" as const, t: 3 },
+      { path: "/book/", title: "Book", type: "book" as const, t: 2 },
+      { path: "/cards/chapter/ch01/", title: "Ch 1", type: "cards" as const, t: 1 }
+    ];
+    const rows = latestByKind(history, "/");
+    assert.deepEqual(
+      rows.map((row) => [row.kind, row.entry.path]),
+      [
+        ["chapter", "/cards/chapter/ch07/"],
+        ["concept", "/cards/concept/boundary-discovery/"]
+      ]
+    );
   });
 });
 

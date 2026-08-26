@@ -53,7 +53,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 
 **Key terms.** Recurring terms include [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy), [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback), [mechanistic interpretability](https://www.anthropic.com/research), [circuits](https://transformer-circuits.pub/2023/monosemantic-features), [features](https://transformer-circuits.pub/2023/monosemantic-features), [steering](https://www.goodfire.com/), [capability thresholds](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/), and [causal faithfulness](https://arxiv.org/abs/2311.17030).
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/); [Successor Gaming](/cards/mb10-successor-forgeability/); [Deployment Safety](/cards/mb11-deployment-safety/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Value Referent](/cards/bridge/mb3-bearer-import/); [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/); [Successor Gaming](/cards/bridge/mb10-successor-forgeability/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
 **What they contribute.** Industry [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) template, conditioning-predictor failure modes, Goodfire mechanistic-interpretability tooling (Anthropic investment; Apollo and DeepMind [mechanistic interpretability](https://www.anthropic.com/research) lineage on team), and cross-lab Neuronpedia infrastructure.
 
@@ -61,7 +61,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Constitutional AI](/cards/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/construct-constitutional-ai/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Constitutional AI](/cards/concept/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/concept/construct-constitutional-ai/). See the [alignment target](/cards/concept/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 

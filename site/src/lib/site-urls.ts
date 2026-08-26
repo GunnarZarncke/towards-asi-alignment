@@ -1,20 +1,46 @@
 /** Astro static routes lower-case path segments; canonical ids may use mixed case (e.g. appD). */
 
-export function routeSlug(segment: string) {
-  return segment.toLowerCase();
-}
+import type { CardType } from "./badges";
+import {
+  bookFullPublicHref,
+  bookPublicHref,
+  cardPublicHref,
+  cardPublicPath,
+  cardRouteSlug,
+  cardTypeFromPath,
+  inferTypeFromCardId,
+  legacyCardRedirectPath,
+  legacyCardRouteSlug,
+  resolveCardFromRoute,
+  routeSlug
+} from "../../scripts/lib/card-urls.mjs";
+
+export {
+  cardPublicPath,
+  cardRouteSlug,
+  cardTypeFromPath,
+  inferTypeFromCardId,
+  legacyCardRedirectPath,
+  legacyCardRouteSlug,
+  resolveCardFromRoute,
+  routeSlug
+};
 
 export function bookHref(base: string, chapterId: string) {
-  return cardHref(base, `chapters/${chapterId}`);
+  return bookPublicHref(base, chapterId);
 }
 
 export function bookFullHref(base: string, chapterId: string) {
-  return cardHref(base, `chapters/${chapterId}/full`);
+  return bookFullPublicHref(base, chapterId);
 }
 
-export function cardHref(base: string, cardId: string) {
-  const path = cardId.split("/").map((part) => encodeURIComponent(routeSlug(part))).join("/");
-  return `${base}${`cards/${path}/`.replace(/^\/+/, "")}`;
+/** Canonical card URL from collection id + optional type (type required for flat ids). */
+export function cardHref(base: string, cardId: string, type?: CardType | null) {
+  return cardPublicHref(base, { id: cardId, type: type ?? undefined });
+}
+
+export function cardHrefForCard(base: string, card: { id: string; data: { type: CardType } }) {
+  return cardPublicHref(base, { id: card.id, type: card.data.type });
 }
 
 export const FIRST_ESSAY_ID = "the-chatbot-passed-the-test";

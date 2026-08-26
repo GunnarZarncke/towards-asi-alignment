@@ -42,7 +42,7 @@ The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and conta
 
 **Key terms.** Core terms include [safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [proof certificates](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [containment verification](https://arxiv.org/abs/2605.09045), [AARM](https://heron.ing/aarm) runtime action control, [zero-knowledge attestation](https://pascal-berrang.de/projects/zk_ai_security/), and architecture-level multi-agent security.
 
-**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Audit Independence](/cards/mb4a-measured-path-legitimacy/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/); [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/); [Grounding Drift](/cards/bridge/mb9-grounding-certificate/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
 **What they contribute.** Whole-system formal assurance for agentic deployments; cryptographic attestations of runtime behavior; explicit agentic action boundaries; and architecture-level multi-agent security analysis—directly engaging [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Audit Independence](/cards/mb4a-measured-path-legitimacy/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), [Grounding Drift](/cards/mb9-grounding-certificate/), and [Deployment Safety](/cards/mb11-deployment-safety/).
 

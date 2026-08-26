@@ -182,7 +182,7 @@ const hubItems = [
       Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers,
       that is recorded rather than buried.
       {" "}
-      <a href={cardHref(base, "negative-results")}>Negative-results hub</a>.
+      <a href={cardHref(base, "negative-results", "concept")}>Negative-results hub</a>.
     </p>
     <ul>
       {experiments.ledgers.map((ledger) => (
@@ -257,7 +257,7 @@ const hubItems = [
       {" "}
       <a href={withBase("/lean/")}>Lean</a>
       {" · "}
-      <a href={cardHref(base, "bridge-assumptions")}>Bridge assumptions</a>
+      <a href={cardHref(base, "bridge-assumptions", "concept")}>Bridge assumptions</a>
       {" · "}
       <a href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">EXPERIMENTS.md<LinkIndicator kind="github" /></a>
       {" · "}

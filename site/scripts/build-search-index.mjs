@@ -11,20 +11,19 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { bookPublicHref, cardPublicPath } from "./lib/card-urls.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
 const cardsDir = path.join(siteRoot, "src", "content", "cards");
 
-// Mirrors src/lib/site-urls.ts (cardHref/bookHref); root-relative since the
-// index is a static asset fetched at runtime, and the site has no base path.
-function cardHref(cardId) {
-  const routePath = cardId.split("/").map((part) => encodeURIComponent(part.toLowerCase())).join("/");
-  return `/cards/${routePath}/`;
+// Mirrors src/lib/site-urls.ts; root-relative since the index is a static asset.
+function cardHref(cardId, type) {
+  return cardPublicPath({ id: cardId, type });
 }
 
 function bookHref(chapterId) {
-  return cardHref(`chapters/${chapterId}`);
+  return bookPublicHref("", chapterId).replace(/^\/+/, "/");
 }
 
 function parseFrontmatter(text) {
@@ -53,7 +52,7 @@ async function buildEntries() {
 
   const rootCards = await loadCards(cardsDir);
   for (const { id, fm } of rootCards) {
-    const url = fm.type === "essay" ? `/essay/${id}/` : cardHref(id);
+    const url = fm.type === "essay" ? `/essay/${id}/` : cardHref(id, fm.type);
     entries.push({
       title: fm.title,
       type: fm.type,
@@ -68,7 +67,7 @@ async function buildEntries() {
       title: fm.title,
       type: fm.type,
       summary: fm.summary ?? "",
-      url: cardHref(`chapters/${id}`)
+      url: cardHref(`chapters/${id}`, fm.type)
     });
   }
 
@@ -78,7 +77,7 @@ async function buildEntries() {
       title: fm.title,
       type: fm.type,
       summary: fm.summary ?? "",
-      url: cardHref(`experiments/${id}`)
+      url: cardHref(`experiments/${id}`, "experiment")
     });
   }
 
@@ -88,7 +87,7 @@ async function buildEntries() {
       title: fm.title,
       type: fm.type,
       summary: fm.summary ?? "",
-      url: cardHref(`field-agendas/${id}`)
+      url: cardHref(`field-agendas/${id}`, "agenda")
     });
   }
 

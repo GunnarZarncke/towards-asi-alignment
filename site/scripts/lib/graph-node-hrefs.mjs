@@ -10,7 +10,7 @@ const SUB_SPINE_GRAPHS = {
 export function nodeHrefFromGraphPage(nodeId, { cardSlug = null } = {}) {
   const sub = SUB_SPINE_GRAPHS[nodeId];
   if (sub) return `../../graph/${sub}/`;
-  if (cardSlug) return `../../cards/${cardSlug}/`;
+  if (cardSlug) return `../../cards/bridge/${cardSlug.toLowerCase()}/`;
   return `../../node/${encodeURIComponent(nodeId)}/`;
 }
 

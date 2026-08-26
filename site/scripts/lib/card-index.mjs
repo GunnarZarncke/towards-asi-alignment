@@ -46,7 +46,8 @@ function cardType(fm) {
 }
 
 export function buildCardIndex(cardsDir) {
-  const labelToSlug = new Map();
+  /** @type {Map<string, { slug: string, type: string }>} */
+  const labelToCard = new Map();
   const files = walkMdFiles(cardsDir).sort((a, b) => {
     const aChapter = a.includes("/chapters/") ? 0 : 1;
     const bChapter = b.includes("/chapters/") ? 0 : 1;
@@ -61,16 +62,17 @@ export function buildCardIndex(cardsDir) {
     const fm = fmMatch[1];
     const type = cardType(fm);
     const isChapterCard = type === "chapter" || type === "appendix" || type === "frontmatter";
+    const entry = { slug, type };
 
     for (const label of parseSimpleYamlList(fm, "bookLabels")) {
-      if (!isChapterCard && label.startsWith("ch:") && labelToSlug.has(label)) continue;
-      labelToSlug.set(label, slug);
+      if (!isChapterCard && label.startsWith("ch:") && labelToCard.has(label)) continue;
+      labelToCard.set(label, entry);
     }
     if (fm.includes("formulas:")) {
-      for (const id of parseFormulas(fm)) labelToSlug.set(id, slug);
+      for (const id of parseFormulas(fm)) labelToCard.set(id, entry);
     }
   }
-  return labelToSlug;
+  return labelToCard;
 }
 
 export function validateCardLabels(cardsDir, labelIndex) {

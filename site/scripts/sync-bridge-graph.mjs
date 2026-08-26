@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { bridgeCardSlug } from "./lib/bridge-card-slug.mjs";
+import { cardPublicPath } from "./lib/card-urls.mjs";
 import { parseDot } from "./lib/dot-parse.mjs";
 import { renderDotToSvg } from "./lib/render-graphviz.mjs";
 
@@ -34,7 +35,7 @@ function buildFieldHrefMap(nodes) {
   const hrefMap = {};
   for (const node of nodes) {
     const slug = bridgeCardSlug(node.id);
-    if (slug) hrefMap[node.id] = `/cards/${slug}/`;
+    if (slug) hrefMap[node.id] = cardPublicPath({ id: slug, type: "bridge" });
   }
   return hrefMap;
 }

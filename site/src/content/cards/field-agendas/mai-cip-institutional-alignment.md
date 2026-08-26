@@ -41,7 +41,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 
 **Key terms.** Key terms include full-stack alignment, thick values, alignment assemblies, deliberative alignment, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback).
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Audit Independence](/cards/mb4a-measured-path-legitimacy/); [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/); [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Extrapolated Volition](/cards/bridge/mb8-cev-process-convergence/)
 
 **What they contribute.** Institutional amplification as a failure mode; operational deliberative alignment; counterfactual value commitments distinguished from surface preferences.
 
@@ -49,7 +49,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 
 ## Specify / construct (field v2)
 
-This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Institutional / legal constitution](/cards/specify-institutional/) · [Certified vendor / procurement regime](/cards/construct-institutional/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.
+This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Institutional / legal constitution](/cards/concept/specify-institutional/) · [Certified vendor / procurement regime](/cards/concept/construct-institutional/). See the [alignment target](/cards/concept/alignment-target/#specify-construct-instances) instance table.
 
 ## Links
 

@@ -35,7 +35,7 @@ CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.
 
 **Key terms.** Key terms include cooperation, conflict, [s-risks](https://longtermrisk.org/), [multipolar](https://arxiv.org/abs/2006.04948) failure, and [CAIF](https://www.cooperativeai.com/) ([Cooperative AI Foundation](https://www.cooperativeai.com/)).
 
-**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Acausal Coordination](/cards/mb7d-acausal-coordination/)
+**Related field cruxes.** [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Acausal Coordination](/cards/bridge/mb7d-acausal-coordination/)
 
 **What they contribute.** Conflict-and-cooperation framing for alignment research, plus [Cooperative AI Foundation](https://www.cooperativeai.com/) work on building cooperative AI under competitive pressure.
 

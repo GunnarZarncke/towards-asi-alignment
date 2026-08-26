@@ -25,4 +25,4 @@ The relevant question from [Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/cha
 
 [Appendix C](/cards/chapters/appC/) gives the institutional translation: procurement, insurance, licensing, liability, compute access, and release rules can change what receives deployment leverage. The hard test is whether they give an uncaptured corrector a timely handle when a dangerous capability or weak safety case appears.
 
-**Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapters/ch13/); [Ch. 37, *The Alignment Attractor*](/cards/chapters/ch37/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapters/ch38/); and [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/chapters/appC/).
+**Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapter/ch13/); [Ch. 37, *The Alignment Attractor*](/cards/chapter/ch37/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapter/ch38/); and [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/appendix/appc/).

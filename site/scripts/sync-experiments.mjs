@@ -2,6 +2,7 @@ import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { cardPublicPath } from "./lib/card-urls.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -61,7 +62,7 @@ async function extractKeyFindings(findingsPath) {
 }
 
 function experimentCardPath(lineId) {
-  return `/cards/experiments/${lineId}/`;
+  return cardPublicPath({ id: `experiments/${lineId}`, type: "experiment" });
 }
 
 function experimentCardUrl(lineId) {
@@ -192,8 +193,8 @@ const ledgers = raw.ledgers.map((ledger) => ({
 const payload = {
   claimStrength: raw.claimStrength.trim(),
   negativeResultsFirst: raw.negativeResultsFirst,
-  negativeResultsCardPath: "/cards/negative-results/",
-  negativeResultsCardUrl: `${SITE_ORIGIN}/cards/negative-results/`,
+  negativeResultsCardPath: cardPublicPath({ id: "negative-results", type: "concept" }),
+  negativeResultsCardUrl: `${SITE_ORIGIN}${cardPublicPath({ id: "negative-results", type: "concept" })}`,
   canonicalDocPath: raw.canonicalDoc,
   canonicalDocUrl: repoUrl(raw.canonicalDoc),
   openTasksUrl: repoUrl(raw.openTasksPath),

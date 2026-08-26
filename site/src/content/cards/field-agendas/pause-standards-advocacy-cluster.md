@@ -39,7 +39,7 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 
 **Key terms.** Key terms include [pause](https://pauseai.info/), [moratorium](https://futureoflife.org/open-letter/pause-giant-ai-experiments/), standards, [off-switch](/cards/subsumption-shutdown/) priority, and verified slowdown.
 
-**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
+**Related field cruxes.** [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Extrapolated Volition](/cards/bridge/mb8-cev-process-convergence/)
 
 **What they contribute.** Schedule shapes for governance stress tests (Appendix F deferred section).
 

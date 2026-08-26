@@ -1,3 +1,5 @@
+import { cardTypeFromPath } from "../../scripts/lib/card-urls.mjs";
+
 export const VISIT_HISTORY_KEY = "tsa-visit-history-v1";
 export const VISIT_HISTORY_MAX = 100;
 
@@ -35,10 +37,47 @@ const TYPE_LABELS: Record<VisitType, string> = {
   essay: "Essays"
 };
 
+const CARD_KIND_LABELS: Record<string, string> = {
+  concept: "Concept",
+  bridge: "Bridge",
+  objection: "Objection",
+  artifact: "Artifact",
+  glossary: "Glossary",
+  chapter: "Chapter",
+  appendix: "Appendix",
+  frontmatter: "Front matter",
+  reference: "Reference",
+  experiment: "Experiment",
+  release: "Release",
+  news: "News",
+  agenda: "Field agenda"
+};
+
+const NAV_LANDING_PATHS = new Set([
+  "/book/",
+  "/cards/",
+  "/field/",
+  "/paths/",
+  "/experiments/",
+  "/lean/",
+  "/demos/",
+  "/news/",
+  "/about/",
+  "/start/",
+  "/essay/",
+  "/glossary/",
+  "/references/",
+  "/notation/"
+]);
+
 const SKIP_PREFIXES = ["/offline", "/search-index", "/impressum", "/feed.xml"];
 
 export function typeLabel(type: VisitType): string {
   return TYPE_LABELS[type];
+}
+
+export function kindLabel(kind: string): string {
+  return CARD_KIND_LABELS[kind] ?? TYPE_LABELS[kind as VisitType] ?? kind;
 }
 
 export function normalizePath(pathname: string): string {
@@ -46,6 +85,8 @@ export function normalizePath(pathname: string): string {
   if (trimmed === "/") return "/";
   return trimmed.endsWith("/") ? trimmed : `${trimmed}/`;
 }
+
+export { cardTypeFromPath };
 
 export function visitTypeForPath(pathname: string): VisitType | null {
   const path = normalizePath(pathname);
@@ -62,6 +103,10 @@ export function visitTypeForPath(pathname: string): VisitType | null {
   if (first === "start" || first === "faq") return "start";
   if (first === "essay") return "essay";
   return null;
+}
+
+export function visitKindForEntry(entry: VisitEntry): string | null {
+  return cardTypeFromPath(entry.path) ?? entry.type;
 }
 
 export function shouldSkipPath(pathname: string): boolean {
@@ -112,6 +157,24 @@ export function latestByType(history: VisitEntry[], currentPath: string): { type
     if (seen.has(entry.type)) continue;
     seen.add(entry.type);
     out.push({ type: entry.type, entry });
+  }
+  return out;
+}
+
+/** One recent visit per card kind (chapter, concept, bridge, …) or nav area. */
+export function latestByKind(history: VisitEntry[], currentPath: string): { kind: string; entry: VisitEntry }[] {
+  const current = normalizePath(currentPath);
+  const seen = new Set<string>();
+  const out: { kind: string; entry: VisitEntry }[] = [];
+  for (const entry of history) {
+    const path = normalizePath(entry.path);
+    if (path === current) continue;
+    if (NAV_LANDING_PATHS.has(path)) continue;
+    const kind = visitKindForEntry(entry);
+    if (!kind) continue;
+    if (seen.has(kind)) continue;
+    seen.add(kind);
+    out.push({ kind, entry });
   }
   return out;
 }

@@ -35,7 +35,7 @@ Google DeepMind integrates safety research into a large capabilities org, produc
 
 **Key terms.** Key terms include [scalable alignment](/cards/subsumption-debate/), safety research, evaluation, Gemini deployment, [discovering agents](https://arxiv.org/abs/2208.08345), and [causal agent discovery](https://arxiv.org/abs/2208.08345).
 
-**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** Large-scale empirical alignment research capacity and causal agent discovery methods that infer agents from system dynamics.
 

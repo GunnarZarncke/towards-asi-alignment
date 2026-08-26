@@ -30,7 +30,7 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 
 **Key terms.** Signature terms include [natural abstractions](https://www.alignmentforum.org/users/John+Wentworth), [selection theorems](https://www.alignmentforum.org/users/John+Wentworth), [natural latents](https://www.alignmentforum.org/users/John+Wentworth), and agency as compression—the idea that useful macro-variables emerge reliably from messy micro-dynamics.
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Embedded Agency](/cards/mb1-boundary-estimator-soundness/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Value Referent](/cards/bridge/mb3-bearer-import/); [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/)
 
 **What they contribute.** The [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth) acts as a falsifier for low-dimensional value stories: if the wrong latents are natural, naive [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) targets may misfire even when surface training looks successful (see ch17 WWCTV).
 

@@ -43,7 +43,7 @@ Apollo and Truthful AI focus on deception, [scheming](https://www.apolloresearch
 
 **Key terms.** Recurring terms include [scheming](https://www.apolloresearch.ai/), pre-deployment evals, [situational awareness](https://arxiv.org/abs/2309.00667), agent governance, deception, [hidden reasoning](https://www.apolloresearch.ai/research), and lie detection.
 
-**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/); [Successor Gaming](/cards/mb10-successor-forgeability/); [Deployment Safety](/cards/mb11-deployment-safety/)
+**Related field cruxes.** [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/); [Successor Gaming](/cards/bridge/mb10-successor-forgeability/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
 **What they contribute.** Scheming as a named empirical program; TruthfulQA and SAD lineage; Evans mentee network overlaps Apollo, UK and US AISI, and Anthropic.
 

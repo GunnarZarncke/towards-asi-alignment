@@ -467,17 +467,60 @@ function relBookHref(pageId, anchor, fromPageId) {
   if (pageId === fromPageId) {
     return anchor ? `#${anchor}` : "./";
   }
-  // Book pages are served at /cards/chapters/{id}/ — sibling chapters are one level up.
-  return `../${slug}/${anchor ? `#${anchor}` : ""}`;
+  const segment = /^app/i.test(pageId)
+    ? "appendix"
+    : pageId === "frontmatter"
+      ? "frontmatter"
+      : "chapter";
+  const fromSegment = /^app/i.test(fromPageId)
+    ? "appendix"
+    : fromPageId === "frontmatter"
+      ? "frontmatter"
+      : "chapter";
+  if (segment === fromSegment) {
+    if (segment === "frontmatter") return anchor ? `./#${anchor}` : "./";
+    return `../${slug}/${anchor ? `#${anchor}` : ""}`;
+  }
+  if (segment === "frontmatter") return `../../frontmatter/${anchor ? `#${anchor}` : ""}`;
+  return `../../${segment}/${slug}/${anchor ? `#${anchor}` : ""}`;
 }
 
-function relCardHref(cardSlug) {
+function relCardHref(cardSlug, cardType) {
   if (cardSlug.startsWith("chapters/")) {
     const chapterId = cardSlug.slice("chapters/".length).toLowerCase();
-    return `../${chapterId}/`;
+    const segment = /^app/i.test(chapterId)
+      ? "appendix"
+      : chapterId === "frontmatter"
+        ? "frontmatter"
+        : "chapter";
+    if (segment === "frontmatter") return "../../frontmatter/";
+    return `../../${segment}/${chapterId}/`;
   }
-  // Concept, reference, and experiment cards live under /cards/{slug}/.
-  return `../../${cardSlug}/`;
+  if (cardSlug.startsWith("experiments/")) {
+    return `../../experiment/${cardSlug.slice("experiments/".length).toLowerCase()}/`;
+  }
+  if (cardSlug.startsWith("references/")) {
+    return `../../reference/${cardSlug.slice("references/".length).toLowerCase()}/`;
+  }
+  if (cardSlug.startsWith("field-agendas/")) {
+    return `../../agenda/${cardSlug.slice("field-agendas/".length).toLowerCase()}/`;
+  }
+  const segment =
+    cardType === "bridge"
+      ? "bridge"
+      : cardType === "glossary"
+        ? "glossary"
+        : cardType === "objection"
+          ? "objection"
+          : cardType === "artifact"
+            ? "artifact"
+            : cardType === "news"
+              ? "news"
+              : cardType === "release"
+                ? "release"
+                : "concept";
+  const local = cardSlug.includes("/") ? cardSlug.split("/").pop() : cardSlug;
+  return `../../${segment}/${String(local).toLowerCase()}/`;
 }
 
 function relReferencesHref(key) {
@@ -491,11 +534,11 @@ function resolveRef(label, ctx, kind = "ref") {
     return `[missing: ${label}]`;
   }
 
-  const cardSlug = ctx.cardIndex.get(label);
+  const card = ctx.cardIndex.get(label);
   const text = entry.title || label;
 
-  if (cardSlug) {
-    return `[${text}](${relCardHref(cardSlug)})`;
+  if (card) {
+    return `[${text}](${relCardHref(card.slug, card.type)})`;
   }
 
   if (!entry.webPage) {
@@ -594,9 +637,9 @@ function convertCommand(name, tex, index, ctx) {
       index = textArg.end;
       const text = convertInlineText(textArg.content, ctx);
       if (!label) return { output: text, index };
-      const cardSlug = ctx.cardIndex.get(label);
-      if (cardSlug) {
-        return { output: `[${text}](${relCardHref(cardSlug)})`, index };
+      const card = ctx.cardIndex.get(label);
+      if (card) {
+        return { output: `[${text}](${relCardHref(card.slug, card.type)})`, index };
       }
       const entry = ctx.labelIndex.get(label);
       if (entry?.webPage) {

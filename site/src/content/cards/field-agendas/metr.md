@@ -39,7 +39,7 @@ METR measures dangerous autonomous and AI R&D capabilities at the frontier, prod
 
 **Key terms.** Key terms include autonomous capabilities, [AI R&D evals](https://metr.org/), eval-driven forecasting, and [entity-based assessment](https://metr.org/).
 
-**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** Empirical capability measurement at the frontier, including autonomy and AI R&D evaluations that shape lab and policy timelines.
 

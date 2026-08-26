@@ -6,6 +6,7 @@ import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { cardPublicPath } from "./lib/card-urls.mjs";
 import {
   buildStanceById,
   matrixCellToMarkdown,
@@ -104,7 +105,7 @@ function formatBridgeLinks(bridgeKeys, bridgeRows) {
     .map((key) => {
       const row = byKey[key];
       if (!row?.cardSlug) return null;
-      return `[${row.noun}](/cards/${row.cardSlug}/)`;
+      return `[${row.noun}](${cardPublicPath({ id: row.cardSlug, type: "bridge" })})`;
     })
     .filter(Boolean)
     .join("; ");
@@ -170,7 +171,7 @@ function renderSpecifyConstructSection(sc) {
     lines.push(`## Specify / construct (field v2)`);
     lines.push("");
     lines.push(
-      `This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [${sc.specifyTitle}](/cards/${sc.specifyCard}/) · [${sc.constructTitle}](/cards/${sc.constructCard}/). See the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table.`
+      `This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [${sc.specifyTitle}](${cardPublicPath({ id: sc.specifyCard, type: "concept" })}) · [${sc.constructTitle}](${cardPublicPath({ id: sc.constructCard, type: "concept" })}). See the [alignment target](${cardPublicPath({ id: "alignment-target", type: "concept" })}#specify-construct-instances) instance table.`
     );
     lines.push("");
   } else if (sc.kind === "peer") {
@@ -178,7 +179,7 @@ function renderSpecifyConstructSection(sc) {
     lines.push("");
     const peerBlurb =
       (sc.correspondence && String(sc.correspondence).trim()) ||
-      `This agenda is listed on the [alignment target](/cards/alignment-target/#specify-construct-instances) instance table as a **peer outer-target** — not a \`ConstitutionalRule\` instance.`;
+      `This agenda is listed on the [alignment target](${cardPublicPath({ id: "alignment-target", type: "concept" })}#specify-construct-instances) instance table as a **peer outer-target** — not a \`ConstitutionalRule\` instance.`;
     lines.push(peerBlurb);
     lines.push("");
   }
@@ -311,7 +312,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push(`**Status:** ${meta.status}`);
   lines.push(`**Term glossary:** [\`inter-agenda-term-glossary.md\`](inter-agenda-term-glossary.md) (alphabetical; TSA integration deferred)`);
-  lines.push(`**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [\`appendices/appB-bridge-crosswalk.tex\`](../../appendices/appB-bridge-crosswalk.tex)`);
+  lines.push(`**Bridge map:** [App B (companion)](https://towards-alignment.com${cardPublicPath({ id: "chapters/appB", type: "appendix" })}) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [\`appendices/appB-bridge-crosswalk.tex\`](../../appendices/appB-bridge-crosswalk.tex)`);
   lines.push(`**Field hub (companion):** [towards-alignment.com/field/](https://towards-alignment.com/field/)`);
   lines.push("");
   lines.push("## Inclusion test");

@@ -6,6 +6,7 @@ import LeanTryIt from "../../../components/LeanTryIt.astro";
 import LeanCodeBlock from "../../../components/LeanCodeBlock.astro";
 import LeanSpineSource from "../../../components/LeanSpineSource.astro";
 import leanSpine from "../../../data/lean-spine.json";
+import { cardHref } from "../../../lib/site-urls";
 
 export function getStaticPaths() {
   return Object.keys(leanSpine.nodes).map((id) => ({
@@ -84,7 +85,7 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
       {node.cardSlug && (
         <>
           <h3>Concept card</h3>
-          <p><a href={withBase(`/cards/${node.cardSlug}/`)}>Open card</a></p>
+          <p><a href={cardHref(base, node.cardSlug, "bridge")}>Open card</a></p>
         </>
       )}
       {graphsWithNode.length > 0 && (

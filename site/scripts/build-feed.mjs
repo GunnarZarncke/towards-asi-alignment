@@ -6,6 +6,7 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { cardPublicPath } from "./lib/card-urls.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -19,9 +20,8 @@ const FEED_DESCRIPTION =
   "Manuscript releases and external AI safety incidents mapped to the companion site.";
 const MAX_ITEMS = 50;
 
-function cardHref(cardId) {
-  const routePath = cardId.split("/").map((part) => encodeURIComponent(part.toLowerCase())).join("/");
-  return `${SITE_ORIGIN}/cards/${routePath}/`;
+function cardHref(cardId, type) {
+  return `${SITE_ORIGIN}${cardPublicPath({ id: cardId, type })}`;
 }
 
 function parseFrontmatter(text) {
@@ -70,7 +70,7 @@ async function loadReleaseItems() {
       slug,
       title: `[Release] ${fm.title}`,
       summary: fm.summary ?? "",
-      url: cardHref(slug)
+      url: cardHref(slug, "release")
     });
   }
   return items;
@@ -94,7 +94,7 @@ async function loadNewsItems() {
         slug: row.slug,
         title: `[News] ${row.title}`,
         summary: row.hook ?? row.summary ?? "",
-        url: cardHref(row.slug)
+        url: cardHref(row.slug, "news")
       };
     })
     .filter(Boolean);

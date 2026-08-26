@@ -33,7 +33,7 @@ Orthogonal is an agent-foundations research community advancing formal alignment
 
 **Key terms.** Key terms include [agent foundations](https://intelligence.org/), formal alignment, and embedded agents.
 
-**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/mb4-correction-legitimacy/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/)
 
 **What they contribute.** An active agent-foundations research community working on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/).
 

@@ -38,7 +38,7 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 
 **Key terms.** Key terms include automation, formal alignment, higher-confidence alignment, and [singular learning](https://www.timaeus.ai/) ([Timaeus](https://www.timaeus.ai/)).
 
-**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Grounding Drift](/cards/bridge/mb9-grounding-certificate/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
 **What they contribute.** An automation-first philosophy; UK AISI lineage via Irving. [Iliad](#iliad-textbook-from-the-future) (which helped found Timaeus) runs the overlapping Textbook from the Future synthesis megaproject.
 

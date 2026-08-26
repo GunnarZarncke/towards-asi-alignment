@@ -80,7 +80,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
               {demo.cards.map((card, i) => (
                 <>
                   {i > 0 && ", "}
-                  <a href={withBase(`/cards/${card.slug}/`)}>{card.title}</a>
+                  <a href={cardHref(base, card.slug, "concept")}>{card.title}</a>
                 </>
               ))}
             </p>

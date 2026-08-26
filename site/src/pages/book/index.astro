@@ -12,7 +12,6 @@ const chapterCardForId = (chapterId: string) => chapterCardFor(cards, chapterId)
 const toCardHref = (id: string) => cardHref(base, id);
 
 const partNumber = (id: string) => Number(id.replace(/\D/g, "")) || 0;
-const appendixLetter = (id: string) => id.replace(/^app/i, "").toUpperCase();
 
 /** Same order as `book.tex` `\frontmatter` inputs, then TOC/lists. */
 const FRONT_MATTER_LINKED = [
@@ -40,7 +39,6 @@ const appendices = APPENDIX_ORDER.map((id) => {
   const fallback = APPENDIX_SITE_PAGES[id];
   return {
     id,
-    letter: appendixLetter(id),
     title: card?.data.title ?? fallback?.title ?? id,
     href: card ? toCardHref(card.id) : fallback ? withBase(fallback.path) : null
   };
@@ -111,7 +109,7 @@ const appendices = APPENDIX_ORDER.map((id) => {
       <ol class="book-chapter-list">
         {appendices.map((appendix) => (
           <li>
-            <span class="book-chapter-num">{appendix.letter}</span>
+            <span class="book-chapter-num"></span>
             {appendix.href ? (
               <a href={appendix.href}>{appendix.title}</a>
             ) : (

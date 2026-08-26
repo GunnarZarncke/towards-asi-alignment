@@ -1,5 +1,6 @@
 ---
 import fieldV2 from "../data/field-v2.json";
+import { cardHref } from "../lib/site-urls";
 
 interface Props {
   base: string;
@@ -63,7 +64,7 @@ const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
                 {b.cardSlug ? (
                   <>
                     {" — "}
-                    <a href={withBase(`/cards/${b.cardSlug}/`)}>card</a>
+                    <a href={cardHref(base, b.cardSlug, "bridge")}>card</a>
                   </>
                 ) : null}
                 {b.leanCrux ? (

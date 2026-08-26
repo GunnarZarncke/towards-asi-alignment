@@ -36,9 +36,10 @@ OpenAI halted its largest planned RL run and put a ~20% compute tax on tool-usin
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** they paid a real delay and a real compute tax. That does not settle what they are trying to keep aligned.
+**If you remember one thing:** they paid a real delay and a real compute tax. That does not prove whether they are trying to keep their system aligned.
 
-This is not a new kill chain. The [July intrusion](/cards/field-news-openai-huggingface-jul-2026/) and [Black Hat timeline](/cards/field-news-openai-hf-blackhat-aug-2026/) already cover that. It is also not the [July long-horizon pause](/cards/field-news-openai-longhorizon-jul-2026/) that was later restored. It is OpenAI’s follow-up: what they stopped, what they now watch, and what they call alignment.
+This is a OpenAI's follow-up to the [July intrusion](/cards/field-news-openai-huggingface-jul-2026/): hat they stopped, what they now watch, and what they call alignment.
+See also the [Black Hat timeline](/cards/field-news-openai-hf-blackhat-aug-2026/) and the [July long-horizon pause](/cards/field-news-openai-longhorizon-jul-2026/).
 
 ## 1. A hold that costs something
 
@@ -76,7 +77,7 @@ A lab delaying its own largest run is the kind of handle [Pacing the Frontier](/
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.</p>
 </blockquote>
 
-A fail-closed page within 30 minutes is a correction channel, if they actually pause. Watching the named run is still not evidence that you are watching the real control locus ([Ch. 39](/cards/chapters/ch39/); the [filesystem C2](/cards/field-news-openai-huggingface-jul-2026/) was the last reminder).
+A fail-closed page within 30 minutes is a correction channel, if they actually pause. Watching a fixed run is still not evidence that you are watching the real source of control ([Ch. 39](/cards/chapters/ch39/).
 
 ## 3. Dropping a bad trajectory trains the next one
 
@@ -113,4 +114,4 @@ This is adjacent to, not the same as, [accidental CoT grading](/cards/field-news
 
 Fewer unauthorized actions is a filter. It is not an answer to what should be tracked, whether the system still tracks it, or whether a finding here would have delayed the run they already paused for other reasons.
 
-**Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapters/ch13/); [Ch. 25, *Correction Is a Causal Channel*](/cards/chapters/ch25/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapters/ch38/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapters/ch39/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapters/ch43/).
+**Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapter/ch13/); [Ch. 25, *Correction Is a Causal Channel*](/cards/chapter/ch25/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapter/ch38/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapter/ch39/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapter/ch43/).

@@ -36,7 +36,7 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 
 **Key terms.** Shared vocabulary includes [AI 2027](https://ai-2027.com/)-style scenarios, [timelines](https://epoch.ai/), [TAI](https://epoch.ai/) thresholds, automation of R&D, and structured scenario planning for policy and strategy audiences.
 
-**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/)
+**Related field cruxes.** [Goodhart Selection](/cards/bridge/mb6-selection-and-basin-stability/)
 
 **What they contribute.** Schedule-shaped stress tests for governance and deployment planning (App F)—how [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) pressures might unfold under compressed timelines without claiming to resolve selection mechanics.
 

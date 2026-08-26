@@ -30,7 +30,7 @@ ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
 
 **Key terms.** Key terms include [ELK](/cards/subsumption-elk/), [Eliciting Latent Knowledge](/cards/subsumption-elk/), [human simulator](/cards/subsumption-elk/), and [direct translator](/cards/subsumption-elk/).
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Value Referent](/cards/bridge/mb3-bearer-import/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** [ELK](/cards/subsumption-elk/) as the canonical naming of the latent readout problem in [scalable oversight](/cards/subsumption-debate/).
 

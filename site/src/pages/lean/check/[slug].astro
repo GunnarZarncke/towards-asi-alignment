@@ -18,7 +18,7 @@ export function getStaticPaths() {
 const { check } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const toCardHref = (slug: string) => cardHref(base, slug);
+const toCardHref = (slug: string) => cardHref(base, slug, "bridge");
 const declIndex = leanSpine.declIndex ?? {};
 
 const bridgeCardSlug: Record<string, string> = {
@@ -45,7 +45,7 @@ function leanDeclLink(decl: string, moduleGuess = "Correction.lean") {
   return resolveLeanDeclLinks(decl, `AlignmentProofSpine/${moduleGuess}`, declIndex, base);
 }
 
-const cardUrlForReverse = (slug: string) => `/cards/${slug}/`;
+const cardUrlForReverse = (slug: string) => cardHref(base, slug, "bridge");
 ---
 
 <SiteLayout title={check.question} description={check.summary || check.question}>

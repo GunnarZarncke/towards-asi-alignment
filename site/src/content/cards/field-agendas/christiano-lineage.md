@@ -33,7 +33,7 @@ Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-deba
 
 **Key terms.** Signature concepts include [debate](/cards/subsumption-debate/), [amplification](/cards/subsumption-debate/), [ELK](/cards/subsumption-elk/), [recursive reward modeling](/cards/subsumption-debate/), [corrigibility](/cards/mb4-correction-legitimacy/) (understood dynamically), and [scalable oversight](/cards/subsumption-debate/).
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Value Referent](/cards/bridge/mb3-bearer-import/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** The scalable-oversight protocol family (debate, amplification) and the [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent readout.
 

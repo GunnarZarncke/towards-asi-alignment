@@ -52,7 +52,8 @@ export function formatReadMoreMarkdown(chapterIds, titles) {
   if (!chapterIds?.length) return "";
   const links = chapterIds.map((id) => {
     const { prefix, title } = chapterLabel(id, titles);
-    return `[${prefix}, *${title}*](/cards/chapters/${id}/)`;
+    const segment = /^app/i.test(id) ? "appendix" : "chapter";
+    return `[${prefix}, *${title}*](/cards/${segment}/${id.toLowerCase()}/)`;
   });
   return `**Read more in:** ${joinReadMoreLinks(links)}.`;
 }
@@ -61,7 +62,8 @@ export function formatReadMoreMarkdown(chapterIds, titles) {
 export function buildChapterRefs(chapterIds, titles) {
   return (chapterIds ?? []).map((id) => {
     const { prefix, title } = chapterLabel(id, titles);
-    return { id, prefix, title, href: `/cards/chapters/${id}/` };
+    const segment = /^app/i.test(id) ? "appendix" : "chapter";
+    return { id, prefix, title, href: `/cards/${segment}/${id.toLowerCase()}/` };
   });
 }
 

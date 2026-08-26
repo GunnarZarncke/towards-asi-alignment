@@ -26,7 +26,7 @@ import crosswalkRows from "../../data/bridge-crosswalk.json";
 import fieldNewsIndex from "../../data/field-news.json";
 import fieldAgendasData from "../../data/field-agendas.json";
 import leanSpine from "../../data/lean-spine.json";
-import { bookFullHref, bookHref, cardHref as buildCardHref, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
+import { bookFullHref, bookHref, cardHref as buildCardHref, cardHrefForCard, cardRouteSlug, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { hasConceptLogo } from "../../lib/concept-logos";
 import { referenceLinksFor } from "../../lib/reference-links";
@@ -34,14 +34,16 @@ import { referenceLinksFor } from "../../lib/reference-links";
 export async function getStaticPaths() {
   const cards = await getCollection("cards");
   return [
-    ...cards.map((card) => ({
-      params: { slug: card.id },
-      props: { card, showFullText: false as const }
-    })),
     ...cards
-      .filter((card) => card.data.overviewOnly && card.data.bookPageId)
+      .filter((card) => card.data.type !== "essay")
       .map((card) => ({
-        params: { slug: `${card.id}/full` },
+        params: { slug: cardRouteSlug({ id: card.id, type: card.data.type }) },
+        props: { card, showFullText: false as const }
+      })),
+    ...cards
+      .filter((card) => card.data.overviewOnly && card.data.bookPageId && card.data.type !== "essay")
+      .map((card) => ({
+        params: { slug: `${cardRouteSlug({ id: card.id, type: card.data.type })}/full` },
         props: { card, showFullText: true as const }
       }))
   ];
@@ -109,7 +111,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const projectionGraphUrl = card.data.graphNodeId
   ? withBase("/lean/graph/field-subsumptions/")
   : null;
-const bridgeGraphUrl = withBase("/cards/bridge-assumptions/#bridge-dependencies");
+const bridgeGraphUrl = withBase("/cards/concept/bridge-assumptions/#bridge-dependencies");
 /** Cards whose main view is an Astro field embed; page template owns the sole h1 (frontmatter title). */
 const fieldEmbedCardIds = new Set([
   "alignment-lifecycle",
@@ -118,10 +120,13 @@ const fieldEmbedCardIds = new Set([
   "bearer-admission-adjacent"
 ]);
 const hasFieldEmbed = fieldEmbedCardIds.has(card.id);
-const cardUrlForTermLinks = `/cards/${card.id}/`;
+const cardUrlForTermLinks = cardHrefForCard(base, card);
 const gemHref = badgeGemHref(base);
-const cardHref = (id: string) => buildCardHref(base, id);
-const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`);
+const cardHref = (id: string) => {
+  const target = resolveCard(allCards, id) ?? allCards.find((entry) => entry.id === id);
+  return target ? cardHrefForCard(base, target) : buildCardHref(base, id);
+};
+const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`, "reference");
 const toBookHref = (chapterId: string) => bookHref(base, chapterId);
 const titleForChapter = (chapterId: string) =>
   bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ??

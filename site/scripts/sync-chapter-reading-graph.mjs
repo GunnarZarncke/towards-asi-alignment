@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { cardPublicPath, inferTypeFromCardId } from "./lib/card-urls.mjs";
 import { parseDot } from "./lib/dot-parse.mjs";
 import { renderDotToSvg } from "./lib/render-graphviz.mjs";
 
@@ -16,12 +17,14 @@ const OUT_JSON = path.join(siteRoot, "src/data/chapter-reading-graph.json");
 const OUT_SVG = path.join(OUT_DIR, "chapter-reading-dependency.svg");
 const OUT_DOT = path.join(OUT_DIR, "chapter-reading-dependency.dot");
 
-/** Root-relative chapter card URLs (site has no base path prefix). */
 function buildChapterHrefMap(dot) {
   const hrefMap = {};
   for (const match of dot.matchAll(/"unit:(ch\d+)"/g)) {
     const chapterId = match[1];
-    hrefMap[`unit:${chapterId}`] = `/cards/chapters/${chapterId.toLowerCase()}/`;
+    hrefMap[`unit:${chapterId}`] = cardPublicPath({
+      id: `chapters/${chapterId}`,
+      type: inferTypeFromCardId(`chapters/${chapterId}`, "chapter")
+    });
   }
   return hrefMap;
 }

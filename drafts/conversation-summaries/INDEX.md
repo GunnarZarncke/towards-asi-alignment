@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-26 | **Card slug migration** — Type-prefixed card URLs, legacy redirects, continue-reading by card kind, path read-next. | [2026-08-26-card-slug-migration.md](2026-08-26-card-slug-migration.md) |
 | 2026-08-26 | **Book contents + experiment coverage** — Full PDF-order contents on `/book/` (appendices A–N, back matter); `/book/map/` redirect; coverage hub jump cards; chapter-reading graph sync. | [2026-08-26-book-contents-coverage.md](2026-08-26-book-contents-coverage.md) |
 | 2026-08-26 | **Generalist essay path** — `/essay/` spine + tangents; Start Here / home / tour links; nav unchanged. | [2026-08-26-generalist-essay-path.md](2026-08-26-generalist-essay-path.md) |
 | 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |

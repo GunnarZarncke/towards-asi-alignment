@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeConceptLinkLogos from "./scripts/lib/rehype-concept-link-logos.mjs";
+import cardRedirects from "./src/data/card-redirects.json";
 
 const site = "https://towards-alignment.com";
 
@@ -17,6 +18,7 @@ const botOrientationPages = [
 export default defineConfig({
   site,
   trailingSlash: "always",
+  redirects: cardRedirects,
   integrations: [
     sitemap({
       // Illustration-prompt pages are unlisted and noindex; keep them out of

@@ -37,7 +37,7 @@ The Berkeley cluster reorients AI research toward beneficial systems under prefe
 
 **Key terms.** Recurring terms include [CIRL](/cards/subsumption-cirl/), [inverse reward design](/cards/subsumption-cirl/), [assistance games](/cards/subsumption-cirl/), [beneficial AI](https://humancompatible.ai/), [FAR.Lab](https://www.far.ai/), [value learning](/cards/mb2-bundle-identifiability/), and scalable-oversight cousins.
 
-**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+**Related field cruxes.** [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Value Referent](/cards/bridge/mb3-bearer-import/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/); [Inner Alignment](/cards/bridge/mb7-hidden-capability-and-access/)
 
 **What they contribute.** Formal assistance-game framing, the [off-switch](/cards/subsumption-shutdown/) game lineage, and FAR as an incubation hub (Gleave CHAI PhD; METR board overlap).
 

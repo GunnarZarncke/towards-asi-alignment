@@ -4,6 +4,11 @@ export function conceptSlugFromHref(href) {
 
   const path = href.split(/[#?]/)[0];
 
+  const typedMatch = path.match(/\/cards\/(?:concept|bridge|glossary|objection|artifact|news|release|agenda)\/([^/]+)\/?$/);
+  if (typedMatch) {
+    return decodeURIComponent(typedMatch[1]);
+  }
+
   const cardsMatch = path.match(/\/cards\/([^/]+)\/?$/);
   if (cardsMatch) {
     return decodeURIComponent(cardsMatch[1]);
