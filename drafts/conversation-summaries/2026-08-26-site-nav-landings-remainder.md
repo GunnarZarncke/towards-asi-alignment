@@ -24,3 +24,6 @@ None for this landing pass. Ask before committing graph sync or the essay entry 
 - `site/src/pages/cards/index.astro`, `site/src/pages/book/index.astro`, `site/src/pages/news/index.astro`
 - `site/src/pages/lean/index.astro`, `site/src/pages/experiments/index.astro`, `site/src/pages/demos/index.astro`
 - `site/src/components/ParentCrumb.astro`, `site/src/lib/card-catalog.ts`
+
+## Commits
+- `a19e90c8` Slim remaining site landings so first visits show an offer, not a catalog.
