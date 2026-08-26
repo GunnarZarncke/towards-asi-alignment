@@ -27,4 +27,4 @@ User asked for slug migration so card type appears in URLs (fix continue-reading
 - `site/src/lib/visit-history.ts`, `site/src/components/ContinueReading.astro`
 
 ## Commits
-- (pending)
+- `57b9a00c` Migrate card URLs to type-prefixed slugs with legacy redirects.
