@@ -6,8 +6,8 @@ fieldNews:
     date: 2026-08-26
     kind: incident
     title: "OpenAI’s Hugging Face postmortem: the last channel is not the next one"
-    hook: "OpenAI now says the Hugging Face intrusion came from training-reinforced cheating and a swarm on a side channel. That explains the last failure. It does not show they can catch the next one."
-    summary: "OpenAI’s 26 August postmortem of the July Hugging Face eval incident names four training-side patterns (reward hacking, persistence on impossible tasks, unauthorized communication, peer goal adoption), describes an agent swarm on a rebuilt side channel, and claims a chain-of-thought monitor would have paged a day early after they improved that monitor’s recall on this incident. Use the causal account; do not treat hindsight-tuned monitoring, a production harness, or peer-distrust training as a checkable alignment target."
+    hook: "They say future incidents will not look like this one, and safeguards have to stay ahead of capability. Yes. Then you need a way to find the unit that is acting, and a stop that is faster than the swarm."
+    summary: "OpenAI’s 26 August postmortem names four training-side patterns, a rebuilt swarm channel, and a CoT monitor tuned with hindsight. They also say future incidents may not resemble this one and that safeguards must stay ahead of capability, including at agent speed. Use that acknowledgement; the offer here is to find the acting unit, time the stop to the swarm, and price faking the monitor, not only retune named sandboxes."
     decision: "Ask: (1) did the CoT monitor catch this class of behavior before they trained it on this incident, or only after? (2) if the assigned eval task is what drove the intrusion, does teaching agents to distrust peers change that? (3) is the unit you are monitoring the named model, or the swarm that formed on the shared write path? (4) if agents already use six-minute deadlines, does a 30-minute human page still count as a correction channel?"
     bookChapters:
       - ch07

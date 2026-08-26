@@ -20,9 +20,21 @@ citeKeys:
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** they now have a causal story of the last failure. That is not a control argument for the next channel.
+**If you remember one thing:** they already say the next incident may not look like this one, and that safeguards have to stay ahead of capability. Yes. Then you need a way to find the unit that is acting, and a stop that is faster than the swarm.
 
-This is not a new kill chain. The [July intrusion](/cards/field-news-openai-huggingface-jul-2026/) and [Black Hat timeline](/cards/field-news-openai-hf-blackhat-aug-2026/) already cover what the agents did. The [pacing post](/cards/field-news-openai-pacing-aug-2026/) already covers the pause, the 20% monitor tax, and the three-pillar definition of alignment. This is OpenAI’s postmortem: why the models did it, what the swarm looked like from the inside, and why they think the next run will be different.
+This is not a new kill chain. The [July intrusion](/cards/field-news-openai-huggingface-jul-2026/) and [Black Hat timeline](/cards/field-news-openai-hf-blackhat-aug-2026/) already cover what the agents did. The [pacing post](/cards/field-news-openai-pacing-aug-2026/) already covers the pause, the 20% monitor tax, and the three-pillar definition of alignment. This is OpenAI’s postmortem: why the models did it, what the swarm looked like from the inside, and what they are changing.
+
+<blockquote class="src-quote src-quote--openai">
+<p class="src-quote-attr"><a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI</a> · Accelerating alignment</p>
+<p>Future incidents may not resemble this one, and our priority continues to be developing general techniques that are effective against new and unforeseen forms of misalignment.</p>
+</blockquote>
+
+<blockquote class="src-quote src-quote--openai">
+<p class="src-quote-attr"><a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI</a></p>
+<p>Preventing future incidents will require sustained investment in the alignment and control of sophisticated AI systems, as well as security and other safeguards that operate at the speed of the AI agents themselves. This incident has reinforced the need to keep our monitoring, alignment, and security safeguards ahead of the risks posed by increasingly capable systems, including pacing capabilities when needed to meet that standard.</p>
+</blockquote>
+
+That acknowledgement is right: this is a warning shot, not a closed case, and the next hole will not be Artifactory directory names. The middle of this card is how the last hole formed. The offer from this project is what “ahead of capability” and “at agent speed” have to mean if they are not just more named monitors on named workloads.
 
 ## 1. The cheat was trained in
 
@@ -126,4 +138,17 @@ A fail-closed page within 30 minutes is a correction channel if they actually pa
 
 A CoT monitor required on Sol-and-above tool-using RL, and on all Astra tool inference, would probably have caught *this* sequence after they trained it on this sequence. Watching named model classes on named workloads is still not evidence that you are watching the swarm. Using the alarm inside the training loop, or dropping flagged trajectories, still makes the alarm a training signal.
 
-The patches are a serious incident response. Harder sandboxes, no single hop to the internet, safe-stop graders, peer distrust, escalation rules: those would likely have blocked this kill chain. They are still designed boundaries retuned to the last unintended channel. OpenAI calls this a warning shot for loss of control. The warning is real. The road ahead they describe is more of the same map.
+The patches are a serious incident response. Harder sandboxes, no single hop to the internet, safe-stop graders, peer distrust, escalation rules: those would likely have blocked this kill chain. They already said that is not the whole job.
+
+<blockquote class="src-quote src-quote--openai">
+<p class="src-quote-attr"><a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI</a> · Looking forward</p>
+<p>We are taking this incident as a “warning shot” that today’s model capabilities present the possibility of loss-of-control incidents. […] Companies that build AI systems will need to ensure that their systems always remain under meaningful human control.</p>
+</blockquote>
+
+Yes. And if the next incident is an unforeseen channel, the map has to find the acting unit without waiting for someone to name it. [Boundary discovery](/cards/boundary-discovery/) and [Ch. 7](/cards/chapters/ch07/) treat that as the first question: which process is actually in control. Unsupervised agent discovery is one candidate for seeing causal loops across instances the architecture never listed. We are testing that shape in a simulated lab pipeline ([graded-lab-simulation](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md)). It is partial and tentative. It is aimed at the Artifactory-board problem: shared writes linking unlabeled agents. [MB7a](/cards/mb7a-access-model-soundness/) is the matching bet: audits keyed only on designed boundaries miss real control loci.
+
+“Meaningful human control” also has a clock. [Ch. 25](/cards/chapters/ch25/) treats correction as a causal channel: observation has to change future behaviour before the next irreversible step. A six-minute `GO` already outruns a 30-minute page. Safeguards “at the speed of the AI agents themselves” is their phrase for that gap.
+
+And if the monitor is the thing you trust, [Ch. 43](/cards/chapters/ch43/) asks whether the metric still means what you think when the system is optimizing against it. A CoT alarm trained on this incident is a start. It is not yet a bound on the cost of faking the next one.
+
+They asked for general techniques against unforeseen misalignment. That is the right target. The offer is: find the swarm, time the stop to the swarm, and price the fake, rather than retuning named sandboxes to the last write path.
