@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import PathReadNext from "../../components/PathReadNext.astro";
 import { firstEssayHref, pathHref } from "../../lib/site-urls";
 import { getReadingPaths, type ReadingPathStep } from "../../lib/reading-paths";
+import { buildReadNextConfig } from "../../lib/read-next";
 import { resolveSpotlightTarget } from "../../lib/reading-path-spotlight";
 import LinkIndicator from "../../components/LinkIndicator.astro";
 
@@ -11,6 +13,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 const paths = getReadingPaths();
 const cards = await getCollection("cards");
+const readNextConfig = buildReadNextConfig({ base, cards, withBase });
 const spotlightContext = {
   base,
   cards,
@@ -48,6 +51,8 @@ const stepSummary = (steps: ReadingPathStep[]) => {
       <a class="button" href={withBase("/paths/chapter-reading-graph/")}>Chapter graph</a>
     </p>
   </section>
+
+  <PathReadNext config={readNextConfig} />
 
   <section>
     <div class="grid">

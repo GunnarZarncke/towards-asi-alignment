@@ -24,7 +24,7 @@ check: generate
 	python3 formal/scripts/check_specify_construct_instances.py
 	cd site && npm run sync:field-v2 -- --check
 	node --test reference/field-agendas/scripts/matrix-cell.test.mjs
-	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts site/src/lib/visit-history.test.ts
+	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts site/src/lib/visit-history.test.ts site/src/lib/read-next.test.ts
 
 wordcount:
 	python3 scripts/wordcount.py

@@ -1,0 +1,84 @@
+---
+import type { ReadNextConfig } from "../lib/read-next";
+
+type Props = {
+  config: ReadNextConfig;
+  preferredPathId?: string;
+};
+
+const { config, preferredPathId } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="path-read-next" hidden data-path-read-next data-base={base} data-config={JSON.stringify(config)} data-preferred-path={preferredPathId ?? ""}>
+  <h2>Read next</h2>
+  <p class="path-read-next-lead">
+    <a data-read-next-href href="#"><span data-read-next-title></span></a>
+  </p>
+  <p class="path-read-next-meta side-panel-meta" data-read-next-meta></p>
+</section>
+
+<script>
+  import {
+    VISIT_HISTORY_KEY,
+    parseVisitHistory
+  } from "../lib/visit-history";
+  import {
+    readNextSourceLabel,
+    resolveReadNext,
+    type ReadNextConfig
+  } from "../lib/read-next-core";
+
+  const root = document.querySelector("[data-path-read-next]");
+  if (root instanceof HTMLElement) {
+    try {
+      const base = root.dataset.base ?? "/";
+      const preferredPathId = root.dataset.preferredPath || undefined;
+      const config = JSON.parse(root.dataset.config ?? "{}") as ReadNextConfig;
+      const withBase = (path: string) => {
+        const prefix = base.endsWith("/") ? base : `${base}/`;
+        return `${prefix}${path.replace(/^\/+/, "")}`;
+      };
+      const history = parseVisitHistory(localStorage.getItem(VISIT_HISTORY_KEY));
+      const next = resolveReadNext(config, history, preferredPathId ? { preferredPathId } : undefined);
+      if (next) {
+        const href = root.querySelector("[data-read-next-href]");
+        const title = root.querySelector("[data-read-next-title]");
+        const meta = root.querySelector("[data-read-next-meta]");
+        if (href instanceof HTMLAnchorElement && title && meta) {
+          href.href = withBase(next.href);
+          title.textContent = next.title;
+          meta.textContent = `After ${next.afterChapterTitle} · ${readNextSourceLabel(next)}`;
+          root.hidden = false;
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }
+</script>
+
+<style>
+  .path-read-next {
+    margin: 0 0 2rem;
+    max-width: 49rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, var(--color-accent) 8%);
+  }
+
+  .path-read-next h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .path-read-next-lead {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .path-read-next-meta {
+    margin: 0.35rem 0 0;
+  }
+</style>

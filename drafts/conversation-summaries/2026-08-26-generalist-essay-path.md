@@ -9,6 +9,7 @@ User asked for a Paul Graham-style general-audience start: catch, essay spine, o
 - `/essay/` 301s to the first essay (no hub hop). **Start Here** prints the opening paragraphs plus **Continue reading**.
 - Homepage, Guided Tour, generalist path, FAQ, search index script, README, `llms.txt`, About; visit-history `essay` type. Main nav unchanged.
 - Parked on Site board: Guided Tour continue from last book page.
+- **Read next (follow-up):** `/paths/` and role path pages show continue from last chapter card URL; maps path step → chapter graph → manuscript order.
 - Late pass: unpacked the helper-email paragraph in *The copy did not inherit the listening*.
 
 ## Decisions
@@ -17,7 +18,6 @@ User asked for a Paul Graham-style general-audience start: catch, essay spine, o
 - Chapter-card related lists skip essay `bookChapters` so sync does not churn chapter cards.
 
 ## Open / next
-- Guided Tour “read next” from last visited book page (TODO Site board). Do not build yet.
 - Essay prose can be revised for voice; first pass is site paratext, not PDF canon.
 
 ## Key paths
@@ -27,3 +27,4 @@ User asked for a Paul Graham-style general-audience start: catch, essay spine, o
 
 ## Commits
 - `ca5c9026` — Add general-audience essay spine with Start Here teaser.
+- (read next — this session)

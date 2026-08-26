@@ -5,23 +5,18 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
-import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
-import {
-  bookHref,
-  cardHref,
-  chapterCardFor,
-  essayHref,
-  pathHref,
-  resolveCard
-} from "../../lib/site-urls";
+import PathReadNext from "../../components/PathReadNext.astro";
+import { pathHref } from "../../lib/site-urls";
 import { getReadingPath, readingPathIds, type ReadingPathStep } from "../../lib/reading-paths";
+import {
+  resolveReadingPathStep,
+  type ResolvedReadingPathStep
+} from "../../lib/reading-path-steps";
+import { buildReadNextConfig } from "../../lib/read-next";
 import {
   defaultPrimaryLabel,
   resolveSpotlightTarget
 } from "../../lib/reading-path-spotlight";
-import demosIndex from "../../data/demos.json";
-import experimentsIndex from "../../data/experiments.json";
-import bookIndex from "../../data/book.json";
 
 export async function getStaticPaths() {
   return readingPathIds().map((slug) => ({
@@ -40,127 +35,14 @@ const markdown = await createMarkdownProcessor();
 const { code: bodyHtml } = await markdown.render(path.body);
 
 const cards = await getCollection("cards");
-const cardById = new Map(cards.map((card) => [card.id, card]));
 const base = import.meta.env.BASE_URL;
 const withBase = (route: string) => `${base}${route.replace(/^\/+/, "")}`;
+const stepContext = { base, cards, withBase };
+const readNextConfig = buildReadNextConfig(stepContext);
 const spotlightContext = { base, cards, withBase };
 
-type StepBadge = {
-  label: string;
-  variant?: string;
-  href?: string;
-};
-
-const bookTitleFor = (chapterId: string) => {
-  const chapter = bookIndex.chapters.find((entry) => entry.id === chapterId);
-  if (chapter) return chapter.title;
-  if (chapterId === "frontmatter") return "Executive Overview";
-  return chapterId;
-};
-
-const resolveStep = (step: ReadingPathStep) => {
-  switch (step.kind) {
-    case "card": {
-      const card = resolveCard(cards, step.ref) ?? cardById.get(step.ref);
-      if (!card) return null;
-      return {
-        href: card.data.type === "essay" ? essayHref(base, card.id) : cardHref(base, card.id),
-        cardSlug: card.id,
-        title: card.data.title,
-        summary: step.note ?? card.data.summary,
-        badges: [
-          { label: card.data.type, href: badgeTypeHref(base, card.data.type) },
-          {
-            label: card.data.status,
-            variant: card.data.status,
-            href: badgeStatusHref(base, card.data.status)
-          }
-        ] satisfies StepBadge[]
-      };
-    }
-    case "demo": {
-      const demo = demosIndex.demos.find((entry) => entry.id === step.ref);
-      if (!demo) return null;
-      const badges: StepBadge[] = [
-        { label: "demo", variant: "framework", href: withBase("/demos/") }
-      ];
-      if (demo.chapterId) {
-        badges.push({ label: demo.chapterId, variant: "framework" });
-      }
-      badges.push({ label: demo.kind.replace(/-/g, " ") });
-      return {
-        href: withBase(demo.sitePath),
-        title: demo.title,
-        summary: step.note ?? demo.summary,
-        badges,
-        newTab: true
-      };
-    }
-    case "experiment": {
-      const line = experimentsIndex.lines.find((entry) => entry.id === step.ref);
-      if (!line) return null;
-      return {
-        href: cardHref(base, `experiments/${line.id}`),
-        title: line.title,
-        summary: step.note ?? line.role.trim(),
-        badges: [
-          { label: "experiment", variant: "open", href: withBase("/experiments/") },
-          { label: "sanity check", variant: "open" },
-          { label: `line ${line.order}`, variant: "framework" }
-        ] satisfies StepBadge[]
-      };
-    }
-    case "book": {
-      const chapterCard = chapterCardFor(cards, step.ref);
-      const title = chapterCard?.data.title ?? bookTitleFor(step.ref);
-      const summary =
-        step.note ??
-        chapterCard?.data.summary ??
-        "Read on the site.";
-      const bookType = chapterCard?.data.type ?? (step.ref === "frontmatter" ? "frontmatter" : "chapter");
-      const bookStatus = chapterCard?.data.status ?? "reviewed";
-      return {
-        href: bookHref(base, step.ref),
-        title,
-        summary,
-        badges: [
-          { label: bookType, href: badgeTypeHref(base, bookType) },
-          {
-            label: bookStatus,
-            variant: bookStatus,
-            href: badgeStatusHref(base, bookStatus)
-          },
-          { label: step.ref, variant: "framework" }
-        ] satisfies StepBadge[]
-      };
-    }
-    case "lean": {
-      const leanRoutes: Record<string, { title: string; summary: string }> = {
-        overview: {
-          title: "Lean dependency spine",
-          summary: "Machine-checked conditional skeleton — proofs, bridges, counterexamples."
-        },
-        "graph/overview": {
-          title: "Overview dependency graph",
-          summary: "Visual map of what the formal spine checks."
-        }
-      };
-      const entry = leanRoutes[step.ref];
-      if (!entry) return null;
-      return {
-        href: withBase(`/lean/${step.ref === "overview" ? "" : step.ref + "/"}`),
-        title: entry.title,
-        summary: step.note ?? entry.summary,
-        badges: [
-          { label: "lean", variant: "framework", href: withBase("/lean/") },
-          { label: step.ref.replace("/", " · "), variant: "plausible" }
-        ] satisfies StepBadge[]
-      };
-    }
-    default:
-      return null;
-  }
-};
+const resolveStep = (step: ReadingPathStep): ResolvedReadingPathStep | null =>
+  resolveReadingPathStep(step, stepContext);
 
 const resolvedSteps = path.steps
   .map((step) => ({ step, resolved: resolveStep(step) }))
@@ -175,6 +57,8 @@ const resolvedSteps = path.steps
     <h1>{path.title}</h1>
     <p class="lede">{path.summary}</p>
   </section>
+
+  <PathReadNext config={readNextConfig} preferredPathId={path.id} />
 
   {path.featuredSpotlight && (
     <section class="callout worked-example readable">
