@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-27 (Eckersley impossibility citation in ch. 4).
+Last updated: 2026-08-27 (Voice §2 chapterthesis audit closed).
 
 ---
 
@@ -39,7 +39,13 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-27:** **Blind quiz protocol** — solver chooses without keys; superagent scores. Full bank 211/211 (easy distractors). Log: `2026-08-27-quiz-blind-eval.md`.
+- **2026-08-27:** Voice §2 **chapterthesis audit closed** — remainders ch20, ch27, ch31, ch33, ch38, ch42, ch43; rest skip. Log: `2026-08-27-voice-chapterthesis-ch21-48.md`.
+- **2026-08-27:** Voice §2 **ch11–ch20 thesis audit** — ch20 remainder (toy-only tests); ch11–ch19 skip. Log: `2026-08-27-voice-chapterthesis-ch11-20.md`.
+- **2026-08-27:** Voice §2 **ch01–ch10 thesis audit** — all skip (framing/necessity; no remainder clauses). Next: ch11. Log: `2026-08-27-voice-chapterthesis-ch01-10.md`.
+- **2026-08-27:** **Scaling Trust** — *Without Intermediaries* noted on Construct v2 (not news). Log: `2026-08-27-scaling-trust-construct-note.md`.
 - **2026-08-27:** **Eckersley citation** — arXiv:1901.00064 (`eckersley2019impossibility`) in ch. 4 fixed-utility + CIRL paragraphs. Log: `2026-08-27-eckersley-citation.md`.
+- **2026-08-27:** **Quiz from news takeaways** — 21 manuscript claims from field news, on chapter quiz blocks only. Log: `2026-08-27-quiz-news-takeaways.md`.
 - **2026-08-27:** **Site quiz Phase 2** — 131-question bank (essays, ch01–48, 15 agendas); draft merge + `check_quiz_bank.py`. Log: `2026-08-27-quiz-phase-2.md`.
 - **2026-08-27:** **Site quiz Phase 1** — `/quiz/` stack player, retake-all, 2 MB1 questions. Log: `2026-08-27-quiz-phase-1.md`.
 - **2026-08-26:** **FAQ rewrite** — answers match essays / Start Here / typed cards / on-site PDF / Field; translations hedge removed. Log: `2026-08-26-faq-update.md`.

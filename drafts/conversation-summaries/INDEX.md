@@ -6,6 +6,12 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-27 | **Blind quiz solver protocol** — Solver picks without keys; superagent scores. Full bank 211/211 after opaque ids. | [2026-08-27-quiz-blind-eval.md](2026-08-27-quiz-blind-eval.md) |
+| 2026-08-27 | **Voice §2 ch21–ch48 thesis audit** — Remainders ch27, ch31, ch33, ch38, ch42, ch43; §2 closed. | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
+| 2026-08-27 | **Quiz from news takeaways** — Manuscript claims from field-news decisions in the bank; appear on chapter quiz blocks, not news cards. | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |
+| 2026-08-27 | **Voice §2 ch11–ch20 thesis audit** — ch20 remainder (toy-only); ch11–ch19 skip; next ch21. | [2026-08-27-voice-chapterthesis-ch11-20.md](2026-08-27-voice-chapterthesis-ch11-20.md) |
+| 2026-08-27 | **Voice §2 ch01–ch10 thesis audit** — All skip (framing/necessity); no remainder clauses; next ch11. | [2026-08-27-voice-chapterthesis-ch01-10.md](2026-08-27-voice-chapterthesis-ch01-10.md) |
+| 2026-08-27 | **Scaling Trust / Construct note** — Obadia *Without Intermediaries* is constructibility-adjacent, not field news; note on Construct v2. | [2026-08-27-scaling-trust-construct-note.md](2026-08-27-scaling-trust-construct-note.md) |
 | 2026-08-27 | **Eckersley impossibility citation** — User asked whether arXiv:1901.00064 is cited; recommended ch. 4 placement; applied bib + two cites. | [2026-08-27-eckersley-citation.md](2026-08-27-eckersley-citation.md) |
 | 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |
 | 2026-08-26 | **Site nav landings remainder** — Finish the remaining nav landing splits after header/home/Field (Cards, Book, News, Tour, Lean, E... | [2026-08-26-site-nav-landings-remainder.md](2026-08-26-site-nav-landings-remainder.md) |
