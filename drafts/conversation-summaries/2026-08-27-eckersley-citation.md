@@ -24,4 +24,4 @@ User asked whether arXiv:1901.00064 (Eckersley, *Impossibility and Uncertainty T
 - `references/external-alignment.bib` (`eckersley2019impossibility`)
 
 ## Commits
-- (pending)
+- `0eee483e` Cite Eckersley impossibility theorems in ch. 4 fixed-utility critique.
