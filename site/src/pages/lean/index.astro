@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import leanChecks from "../../data/lean-checks.json";
+import { bookHref, cardHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -21,6 +22,12 @@ const firstCheck = leanChecks.checks[0];
   </section>
 
   <section class="readable">
+    <p>
+      Lean checks what follows <em>if</em> named hypotheses hold. Those hypotheses are bridge axioms in the dependency spine: inputs, not theorems.
+      The book assumes we can find the real optimizer's boundary. Lean's matching hypothesis is that a named estimator of that boundary is sound.
+      A green estimator with the real controller elsewhere falsifies the Lean hypothesis without making the search problem meaningless.
+      A different book assumption never becomes a Lean input: that civilization still has enough correction capacity to participate.
+    </p>
     <ul>
       {leanChecks.checks.map((check) => (
         <li>
@@ -28,6 +35,13 @@ const firstCheck = leanChecks.checks[0];
         </li>
       ))}
     </ul>
-    <p class="side-panel-meta">These checks do not prove real systems are aligned.</p>
+    <p class="side-panel-meta">
+      <a href={bookHref(base, "appG")}>Appendix G</a> translates the spine.
+      {" "}
+      <a href={bookHref(base, "appB")}>Appendix B</a> maps chapter assumptions to field cruxes and to Lean bridges.
+      {" "}
+      See also the <a href={cardHref(base, "bridge-assumptions")}>bridge assumptions</a> card.
+      These checks do not prove real systems are aligned.
+    </p>
   </section>
 </SiteLayout>

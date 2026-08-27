@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-27 (Quiz multi-correct floor).
+Last updated: 2026-08-27 (Voice: Lean axioms vs chapter assumptions).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.
 - **2026-08-27:** **Quiz multi-correct** — split bundled keys; ≥5% floor in `check_quiz_bank.py` (12/211). Log: `2026-08-27-quiz-multi-correct.md`.
 - **2026-08-27:** **Quiz length tell implemented** — `make check` runs `check_quiz_length_tell.py`; 0% margin-fail. Log: `2026-08-27-quiz-length-tell.md`.
 - **2026-08-27:** **Blind quiz protocol** — solver chooses without keys; superagent scores. Full bank 211/211 (easy distractors). Log: `2026-08-27-quiz-blind-eval.md`.

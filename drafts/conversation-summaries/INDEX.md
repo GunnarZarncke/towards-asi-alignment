@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-27 | **Voice Lean axioms vs chapter assumptions** — App G intro and `/lean/` split A-rows from MB axioms. | [2026-08-27-voice-lean-axioms.md](2026-08-27-voice-lean-axioms.md) |
 | 2026-08-27 | **Quiz multi-correct floor** — Split bundled coauthor/taxonomy keys; bank check ≥5% (12/211). | [2026-08-27-quiz-multi-correct.md](2026-08-27-quiz-multi-correct.md) |
 | 2026-08-27 | **Quiz length tell (essays + ch01–ch24)** — Same-frame, band ≤12 rewrites in the takeaway generator; ch25–ch48 left to the sibling pass. | [2026-08-27-quiz-length-tell-essays-ch01-24.md](2026-08-27-quiz-length-tell-essays-ch01-24.md) |
 | 2026-08-27 | **Voice §5 progress wording** — Introduction + executive overview: refused required evidence leads; artifacts are instruments. | [2026-08-27-voice-progress.md](2026-08-27-voice-progress.md) |

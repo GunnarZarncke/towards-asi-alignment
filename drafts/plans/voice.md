@@ -259,7 +259,7 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 - [x] §7 Standalone-claims status
 - [x] §8 INSTRUCTIONS + writing-style pointer
 - [ ] De-center PDF as flagship (README, homepage, About, stats)
-- [ ] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`)
+- [x] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`; 2026-08-27)
 - [ ] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
 - [ ] WWCTV → chokepoint forward refs (per chapter)
 - [ ] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`

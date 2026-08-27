@@ -16,6 +16,14 @@ This appendix translates the Lean dependency spine into ordinary mathematical la
 It is not a claim that Lean proves the empirical assumptions of the book.
 Lean proves the conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold, then the advertised certification claims follow.
 
+Two records share the word ``assumption,'' and they are not interchangeable.
+Chapter~\ref{ch:finding-boundary} assumes that the real optimizer's boundary can be found (assumption \(\text{A-004}\)).
+Lean's matching hypothesis \(\text{MB1}\) is narrower: that a named estimator of that boundary is sound.
+A green estimator while the real controller sits elsewhere falsifies \(\text{MB1}\) without making the search problem meaningless.
+A different chapter assumption never becomes a Lean input: that civilization still has enough correction capacity to participate (\(\text{A-003}\), Chapter~\ref{ch:assumptions-scope-failure-coverage}).
+That is a scope condition for the book, not a hypothesis the checked theorems consume.
+Appendix~\ref{appbridge-crosswalk} maps the two lists.
+
 The appendix is organized in four parts:
 \begin{enumerate}
 \item \textbf{Field results rederived and mapped} --- external alignment agendas (CIRL, AUP, quantilization, shutdown, and related proposals) with source-cited published results and the book's projection/separation theorems.
@@ -28,12 +36,12 @@ Four kinds of evidence appear throughout:
 \begin{description}
 \item[Local proof or counterexample] A direct Lean theorem or finite separation (labels \texttt{P01}--\texttt{P45} and named counterexamples).
 \item[Imported field result] A source-cited external theorem or protocol handle under its own assumptions; Lean does \emph{not} re-render the published proof.
-\item[Book bridge] An empirical, statistical, philosophical, or governance assumption (\texttt{MB1}--\texttt{MB10}) connecting measured systems to book predicates.
+\item[Book bridge] A Lean hypothesis (\texttt{MB1}--\texttt{MB11}) connecting measured systems to book predicates. These are not the chapter assumption list \(\text{A-001}\)--\(\text{A-014}\).
 \item[Background convention] Logic, arithmetic, graph, or Mathlib scaffolding (\(S01\)--\(S10\); only \(S07\) (MDL ordering) and \(S10\) (blanket-measurand coherence) are Lean axioms).
 \end{description}
 
 Definitions fix quantities used by later results.
-Assumptions mark imported conventions, empirical bridges, or philosophical premises.
+Assumptions mark Lean hypotheses, imported conventions, or philosophical premises. They are not automatically the chapter \(\text{A-*}\) list.
 Lemmas are local algebraic or logical facts.
 Theorems correspond to named Lean proof nodes.
 Corollaries are assembled certification consequences.
