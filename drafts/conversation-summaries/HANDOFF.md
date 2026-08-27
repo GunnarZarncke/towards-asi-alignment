@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (project identity: knowledge base and roadmap, not manuscript-first).
+Last updated: 2026-08-28 (shipping benchmark).
 
 ---
 
@@ -39,6 +39,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.
+- **2026-08-28:** **Alignment Crux Map** — grantmaking.ai listing in [`drafts/alignment-crux-map.md`](../alignment-crux-map.md) ($50k/$90k; funders + researchers + entrants; toy homograph pack, not Lean). Log: `2026-08-28-alignment-crux-map.md`.
 - **2026-08-28:** **Project identity** — README no longer leads with “research manuscript.” `INSTRUCTIONS.md` scoped to the book; PDF Current Status companion-site sentence is project-level. Log: `2026-08-28-project-not-manuscript.md`.
 - **2026-08-27:** **A-* in home chapters** — named `assumption` boxes; `\akey{A-00x}` links; no App B lookup table. Log: `2026-08-27-manuscript-a-keys.md`.
 - **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.
