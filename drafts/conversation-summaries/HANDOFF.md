@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-26 (card URL type-prefix migration + continue-reading by kind).
+Last updated: 2026-08-26 (FAQ rewrite for current site doors and typed card URLs).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-26:** **FAQ rewrite** — answers match essays / Start Here / typed cards / on-site PDF / Field; translations hedge removed. Log: `2026-08-26-faq-update.md`.
 - **2026-08-26:** **Card slug migration** — type-prefixed `/cards/{type}/…` URLs, 684 legacy redirects, continue-reading by card kind, path read-next on typed chapter URLs. Log: `2026-08-26-card-slug-migration.md`.
 - **2026-08-26:** **Book contents + experiment coverage** — `/book/` full PDF-order map; `/book/map/` redirect; coverage hub jump cards. Log: `2026-08-26-book-contents-coverage.md`.
 - **2026-08-26:** Generalist **essay path** — `/essay/` → first essay; Start Here teaser; 11 essay cards; generalist path spine. Nav unchanged. **Guided Tour read next** from last book chapter (path → graph → manuscript). Log: `2026-08-26-generalist-essay-path.md`.

@@ -1,10 +1,27 @@
 ---
-import { FAQ_ITEMS } from "../lib/faq-items";
+import { FAQ_ITEMS, type FaqHref } from "../lib/faq-items";
 import LinkIndicator from "./LinkIndicator.astro";
-import { pdfHref } from "../lib/site-urls";
+import { cardHref, firstEssayHref, pathHref, pdfHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+function hrefFor(target: FaqHref): string {
+  switch (target.kind) {
+    case "route":
+      return withBase(target.path);
+    case "card":
+      return cardHref(base, target.id, target.type);
+    case "path":
+      return pathHref(base, target.id);
+    case "pdf":
+      return pdfHref(base);
+    case "essay":
+      return firstEssayHref(base);
+    case "external":
+      return target.url;
+  }
+}
 ---
 
 <section class="readable">
@@ -12,35 +29,17 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     <details class="card">
       <summary><strong>{item.question}</strong></summary>
       <p>
-        {item.answer === "essays" ? (
-          <>
-            Open{" "}
-            <a href={withBase("/start/")}>Start Here</a>
-            . The first essay begins on that page. If you already know your role, use the{" "}
-            <a href={withBase("/paths/")}>Guided Tour</a>.
-          </>
-        ) : item.answer === "experiments" ? (
-          <>
-            The <a href={withBase("/experiments/")}>Experiments page</a> lists the in-repo lines.
-            Coverage, negative ledgers, and the matrix live on
-            <a href={withBase("/experiments/coverage/")}>experiment coverage</a>. Full narrative prose lives in{" "}
-            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md<LinkIndicator kind="github" /></a>{" "}
-            in the repository.
-          </>
-        ) : item.answer === "book" ? (
-          <>
-            The PDF is bundled with this site — use <a href={pdfHref(base)}>Download PDF</a> on the{" "}
-            <a href={withBase("/book/")}>book page</a> or <a href={withBase("/start/")}>Start Here</a>.
-            It opens in the browser without GitHub login.
-          </>
-        ) : item.question === "What are the six thesis claims?" ? (
-          <>
-            {item.answer} See the{" "}
-            <a href={withBase("/cards/six-thesis-claims/")}>six thesis claims hub</a> for concept-card links
-            and Chapter 48 status labels and open gaps.
-          </>
-        ) : (
-          item.answer
+        {item.answer.map((part) =>
+          typeof part === "string" ? (
+            part
+          ) : part.href.kind === "external" ? (
+            <a href={hrefFor(part.href)} target="_blank" rel="noopener noreferrer">
+              {part.label}
+              {part.href.indicator && <LinkIndicator kind={part.href.indicator} />}
+            </a>
+          ) : (
+            <a href={hrefFor(part.href)}>{part.label}</a>
+          )
         )}
       </p>
     </details>

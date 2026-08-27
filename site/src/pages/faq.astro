@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 ---
 
-<SiteLayout title="FAQ" description="Frequently asked questions about the book and this site.">
+<SiteLayout title="FAQ" description="Frequently asked questions about this project, the book, and this site.">
   <section class="hero">
     <ParentCrumb parentHref={withBase("/start/")} parentLabel="Start Here" />
     <p class="eyebrow">FAQ</p>
