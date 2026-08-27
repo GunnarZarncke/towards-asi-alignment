@@ -25,4 +25,4 @@ User: README still leads with “research manuscript”; the project is no longe
 - `frontmatter/preface.tex` (source of the knowledge-base framing)
 
 ## Commits
-- none
+- `6af8c1ff` Present TSA as a knowledge base and roadmap, not a manuscript-first project.
