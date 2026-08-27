@@ -20,4 +20,4 @@ User: implement the length-tell check/fix.
 - `site/src/content/quiz/LENGTH_TELL.md`
 
 ## Commits
-- none
+- `bfaa4ceb` Ship the companion-site field quiz with a 5% multi-correct floor.

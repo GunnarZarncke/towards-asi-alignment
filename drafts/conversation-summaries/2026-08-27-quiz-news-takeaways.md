@@ -27,4 +27,4 @@ User: news takeaways usually refer to the manuscript; add matching quiz inventor
 - `scripts/check_quiz_bank.py`
 
 ## Commits
-- none
+- `bfaa4ceb` Ship the companion-site field quiz with a 5% multi-correct floor.

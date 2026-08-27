@@ -21,4 +21,4 @@ User: prior “blind” check was not blinded. Solver must **choose** answers wi
 - `site/src/content/quiz/BLIND_EVAL.md`
 
 ## Commits
-- none
+- `bfaa4ceb` Ship the companion-site field quiz with a 5% multi-correct floor.

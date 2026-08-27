@@ -18,4 +18,4 @@ Harder distractors / re-blind still on the site board.
 - `scripts/check_quiz_bank.py`
 
 ## Commits
-- (pending)
+- `bfaa4ceb` Ship the companion-site field quiz with a 5% multi-correct floor.
