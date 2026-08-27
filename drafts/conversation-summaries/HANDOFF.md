@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-26 (FAQ rewrite for current site doors and typed card URLs).
+Last updated: 2026-08-27 (Eckersley impossibility citation in ch. 4).
 
 ---
 
@@ -39,6 +39,9 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-27:** **Eckersley citation** — arXiv:1901.00064 (`eckersley2019impossibility`) in ch. 4 fixed-utility + CIRL paragraphs. Log: `2026-08-27-eckersley-citation.md`.
+- **2026-08-27:** **Site quiz Phase 2** — 131-question bank (essays, ch01–48, 15 agendas); draft merge + `check_quiz_bank.py`. Log: `2026-08-27-quiz-phase-2.md`.
+- **2026-08-27:** **Site quiz Phase 1** — `/quiz/` stack player, retake-all, 2 MB1 questions. Log: `2026-08-27-quiz-phase-1.md`.
 - **2026-08-26:** **FAQ rewrite** — answers match essays / Start Here / typed cards / on-site PDF / Field; translations hedge removed. Log: `2026-08-26-faq-update.md`.
 - **2026-08-26:** **Card slug migration** — type-prefixed `/cards/{type}/…` URLs, 684 legacy redirects, continue-reading by card kind, path read-next on typed chapter URLs. Log: `2026-08-26-card-slug-migration.md`.
 - **2026-08-26:** **Book contents + experiment coverage** — `/book/` full PDF-order map; `/book/map/` redirect; coverage hub jump cards. Log: `2026-08-26-book-contents-coverage.md`.
