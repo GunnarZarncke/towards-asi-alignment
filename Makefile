@@ -23,8 +23,10 @@ check: generate
 	python3 formal/scripts/check_open_spine_interfaces.py
 	python3 formal/scripts/check_specify_construct_instances.py
 	cd site && npm run sync:field-v2 -- --check
+	python3 scripts/check_quiz_bank.py
+	python3 scripts/check_quiz_length_tell.py
 	node --test reference/field-agendas/scripts/matrix-cell.test.mjs
-	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts site/src/lib/visit-history.test.ts site/src/lib/read-next.test.ts
+	node --test --experimental-strip-types site/src/lib/field-matrix-cell.test.ts site/src/lib/visit-history.test.ts site/src/lib/read-next.test.ts site/src/lib/quiz/quiz.test.ts
 
 wordcount:
 	python3 scripts/wordcount.py

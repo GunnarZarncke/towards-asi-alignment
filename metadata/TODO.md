@@ -88,6 +88,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Part hub cards (S).**
 - [ ] **ch10 alignment-faking experiment line (M).**
 - [ ] **Chapter-end exercises + online quiz (M).**
+- [ ] **Quiz distractors too easy (M).** Many wrong options remain near-jokes or obvious misses even after the length-tell pass. Later: rewrite as concept near-misses, then re-run the blind solver protocol (`site/src/content/quiz/BLIND_EVAL.md`) and the length gate. Do not treat the current 211/211 solve as a difficulty certificate.
 
 ---
 

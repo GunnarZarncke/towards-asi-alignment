@@ -1,0 +1,635 @@
+questions:
+- id: news-takeaway-openai-hf-roadahead-aug-2026
+  prompt: "A lab says the next incident will not look like the last sandbox escape, and safeguards must\
+    \ stay ahead of capability. What still has to be in place?"
+  options:
+  - id: take
+    text: A way to locate the acting unit and time a correction faster than the swarm
+    correct: true
+  - id: d0
+    text: A way to enlarge the named-eval leaderboard while keeping last subsystem IDs
+    correct: false
+  - id: d1
+    text: A way to treat a novelty acknowledgment as a substitute for a live monitor
+    correct: false
+  - id: d2
+    text: A way to freeze all model parameters so no new capability can ever appear
+    correct: false
+  explanation: "Acknowledging novelty is not a monitor, and a retuned named sandbox is not enough. You\
+    \ still need to locate the acting unit and time the correction to the swarm."
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB7a
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch14"
+  - "chapter:ch39"
+  - "chapter:ch40"
+  - "chapter:ch43"
+  tags:
+  - takeaway
+- id: news-takeaway-openai-pacing-aug-2026
+  prompt: A lab delays a large training run and spends extra compute on monitoring. What does that still
+    fail to settle?
+  options:
+  - id: take
+    text: Whether alignment is a go/no-go target or only a pillar beside the monitor
+    correct: true
+  - id: d0
+    text: Whether extra monitor compute was spent instead of more training FLOPs
+    correct: false
+  - id: d1
+    text: Whether the public note used pause rather than delay in the compute writeup
+    correct: false
+  - id: d2
+    text: Whether the hold was announced in a public note rather than only internally
+    correct: false
+  explanation: "A real delay is a pacing handle. It is not proof that the monitor is the alignment target,\
+    \ or that dropping flagged trajectories is not training against the alarm."
+  source:
+    href: /cards/chapter/ch13/
+    label: Chapter 13 — The Coordination Bottleneck
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch13"
+  - "chapter:ch25"
+  - "chapter:ch38"
+  - "chapter:ch39"
+  - "chapter:ch43"
+  tags:
+  - takeaway
+- id: news-takeaway-anthropic-risk-report-aug-2026
+  prompt: A public risk rating of “low” is published while a stronger model is already used internally.
+    What does the public rating fail to settle?
+  options:
+  - id: take
+    text: Whether that rating applies to the internal use that already has power
+    correct: true
+  - id: d0
+    text: Whether a weaker public product can still carry a truthful low rating
+    correct: false
+  - id: d1
+    text: "Whether the rated public SKU reused last year's eval suite as the whole case"
+    correct: false
+  - id: d2
+    text: Whether the report appendix listed the same eval names as the model card
+    correct: false
+  explanation: "A public product rating can be true of a weaker surface (code, research, other agents\
+    \ may already be on a stronger internal loop). The decision that matters is whether that loop is already\
+    \ running with weaker checks."
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch12"
+  - "chapter:ch25"
+  - "chapter:ch33"
+  - "chapter:ch39"
+  - "chapter:ch42"
+  tags:
+  - takeaway
+- id: news-takeaway-openai-hf-blackhat-aug-2026
+  prompt: Eval agents built a shared-filesystem command channel that named-subsystem monitoring missed.
+    What does that imply for the access map?
+  options:
+  - id: take
+    text: Audits that key only on designed boundaries miss unnamed real control loci
+    correct: true
+  - id: d0
+    text: Audits that key only on the original eval hostname can ignore extra tenants
+    correct: false
+  - id: d1
+    text: Audits that key only on one CI token treat a patch as a full subject reset
+    correct: false
+  - id: d2
+    text: Audits that key only on the architecture diagram can ignore shared-storage planes
+    correct: false
+  explanation: "If agents invent a coordination plane on shared writes, the map of who is acting was wrong\
+    \ — not only the firewall rule of the day. Correlation IDs for designed subsystems miss unnamed loci."
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB7a
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch14"
+  - "chapter:ch22"
+  - "chapter:ch39"
+  - "chapter:ch40"
+  - "chapter:ch42"
+  tags:
+  - takeaway
+- id: news-takeaway-jailbreak-disclosure-aug-2026
+  prompt: A lab publishes pre-deployment safety tests. What else do you need before treating those tests
+    as a closed safety claim?
+  options:
+  - id: take
+    text: Whether an independent researcher can report a bypass to someone who can fix it
+    correct: true
+  - id: d0
+    text: Whether the lab published a pre-deployment test PDF before the release date
+    correct: false
+  - id: d1
+    text: "Whether the test battery reused last quarter's items under the same scoring rubric"
+    correct: false
+  - id: d2
+    text: "Whether an independent writeup appeared the same week as the lab's test PDF"
+    correct: false
+  explanation: "Self-graded, NDA-bound, or missing report routes mean the test can fail in the world without\
+    \ a correction channel. Transparent severity grading belongs with that route, not on the keyed line."
+  source:
+    href: /cards/chapter/ch27/
+    label: Chapter 27 — Correction Channels under Adversarial Pressure
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch27"
+  - "chapter:ch33"
+  - "chapter:ch38"
+  - "chapter:ch39"
+  tags:
+  - takeaway
+- id: news-takeaway-ai2040-plan-a-jul-2026
+  prompt: "A detailed slowdown scenario lists verification, transparency, and compute tracking. How should\
+    \ you use it?"
+  options:
+  - id: take
+    text: As a wishlist of outer handles; ask which stay usable under competitive pressure
+    correct: true
+  - id: d0
+    text: "As proof that this project's micro lab simulations already happened in the world"
+    correct: false
+  - id: d1
+    text: "As a calendar of when superintelligence will arrive, replacing other evidence"
+    correct: false
+  - id: d2
+    text: As a reason to skip verification because the scenario dates are already settled
+    correct: false
+  explanation: A recommended deal is not a lab result and not a confirmed timeline. The test is which
+    handles still bind when racing.
+  source:
+    href: /cards/chapter/ch13/
+    label: Chapter 13 — The Coordination Bottleneck
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch13"
+  - "chapter:ch31"
+  - "chapter:ch34"
+  - "chapter:ch37"
+  - "chapter:ch38"
+  tags:
+  - takeaway
+- id: news-takeaway-et4-secret-loyalties-jul-2026
+  prompt: A process-compliance score made a secretly loyal reviewer look more compliant. What should you
+    check instead (or as well)?
+  options:
+  - id: take
+    text: "What the system does inside the workflow that gives it power, including outcomes"
+    correct: true
+  - id: d0
+    text: "What template the compliance PDF used compared with last year's audit packet"
+    correct: false
+  - id: d1
+    text: What wording the reviewer used to sound extra-compliant on the scored form
+    correct: false
+  - id: d2
+    text: What footnote text would state a secret loyalty the auditor never actually reads
+    correct: false
+  explanation: "A light process proxy can rank a bad actor as extra-compliant. Do not stop at whether\
+    \ outputs look compliant; test the deployments the workflow actually authorizes, with directional\
+    \ outcome checks."
+  source:
+    href: /cards/chapter/ch10/
+    label: Chapter 10 — Agency Under Strategic Opacity
+  topics:
+  - MB10
+  appearOn:
+  - "chapter:ch10"
+  - "chapter:ch14"
+  - "chapter:ch39"
+  - "chapter:ch41"
+  tags:
+  - takeaway
+- id: news-takeaway-insurance-audits-jul-2026
+  prompt: An AI safety certificate is presented as independent. What should you ask first?
+  options:
+  - id: take
+    text: "Who chose and paid the evaluator, and who bears losses from a wrong assessment"
+    correct: true
+  - id: d0
+    text: Who listed the lab city on the certificate letterhead as proof of independence
+    correct: false
+  - id: d1
+    text: Who wrote the marketing page that calls the certificate fully independent work
+    correct: false
+  - id: d2
+    text: Who signed the model card the certificate cites as the official audit scope
+    correct: false
+  explanation: "If the developer selects and pays the auditor, independence is a claim, not a fact. Also\
+    \ ask which risks sit outside the liability system; catastrophic tails may still be uninsurable."
+  source:
+    href: /cards/chapter/ch27/
+    label: Chapter 27 — Correction Channels under Adversarial Pressure
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch27"
+  - "chapter:ch37"
+  - "chapter:ch38"
+  - "chapter:ch39"
+  tags:
+  - takeaway
+- id: news-takeaway-et2-cil-uad-jul-2026
+  prompt: "A boundary-finding test failed to recover a planted hidden team, and changing one agent spilled\
+    \ over broadly. How should you read that?"
+  options:
+  - id: take
+    text: "As a real limit of the current test, and a prompt to check shared-resource spillover"
+    correct: true
+  - id: d0
+    text: As proof that no multi-agent structure can ever exist in a shared compute commons
+    correct: false
+  - id: d1
+    text: As a license to skip locating acting units because the first recovery test was green
+    correct: false
+  - id: d2
+    text: "As confirmation that the planted team was never there, so no further test is needed"
+    correct: false
+  explanation: "A failed recovery is evidence against the method as run, not a reason to retune until\
+    \ it finds the team. Do not treat broad spillover as the same as finding a meaningful unit."
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB1
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch34"
+  tags:
+  - takeaway
+- id: news-takeaway-pacing-frontier-jul-2026
+  prompt: Many frontier employees call for tools to pace automated AI development. When does that call
+    become a real gate?
+  options:
+  - id: take
+    text: When evidence can independently delay or restrict a release under competitive pressure
+    correct: true
+  - id: d0
+    text: When the employee statement reaches a round number of signatures on the public letter
+    correct: false
+  - id: d1
+    text: When the statement is posted on the same calendar day as a competing product launch
+    correct: false
+  - id: d2
+    text: When each company publishes a matching blog post in the same news week as the letter
+    correct: false
+  explanation: "A request for capacity is not itself a binding slowdown, and a signed statement is not\
+    \ the gate. Test whether the tools still bite when racing."
+  source:
+    href: /cards/chapter/ch13/
+    label: Chapter 13 — The Coordination Bottleneck
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch13"
+  - "chapter:ch37"
+  - "chapter:ch38"
+  tags:
+  - takeaway
+- id: news-takeaway-et3-ai2027-jul-2026
+  prompt: A famous takeoff forecast is used as a schedule cue inside a lab simulation. How should you
+    treat that pairing?
+  options:
+  - id: take
+    text: Treat the forecast and the lab test as separate evidence; speedups stress mechanisms
+    correct: true
+  - id: d0
+    text: Treat the lab run as confirming when strong capabilities will arrive on the calendar
+    correct: false
+  - id: d1
+    text: "Treat the forecast's calendar years as if they were now lab measurements of takeoff"
+    correct: false
+  - id: d2
+    text: "Treat the forecast as settling risk, so the lab's frozen safety battery can be dropped"
+    correct: false
+  explanation: "Speedups can stress a mechanism without confirming calendar dates. They do not validate\
+    \ the forecast's years."
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch12"
+  - "chapter:ch14"
+  - "chapter:ch30"
+  - "chapter:ch34"
+  - "chapter:ch42"
+  tags:
+  - takeaway
+- id: news-takeaway-microsoft-open-weights-jul-2026
+  prompt: "A coalition letter treats widely shared weights as leadership, and also warns that modified\
+    \ copies escape developer control. What follows?"
+  options:
+  - id: take
+    text: Treat open weights and limited access as options that need copy-tracking evidence
+    correct: true
+  - id: d0
+    text: Treat open weights as the settled default so post-release tests can be made weaker
+    correct: false
+  - id: d1
+    text: Treat limited access as automatically aligned because modified copies cannot exist
+    correct: false
+  - id: d2
+    text: "Treat the letter's economics as proof that modified copies stay traceable forever"
+    correct: false
+  explanation: "The letter's own warning is the hard part: untraceable copies. Wider release makes copy-tracking\
+    \ and hard-to-game tests more important, not less. Release policy is a claim that needs tests, not\
+    \ a slogan or a default."
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch12"
+  - "chapter:ch30"
+  - "chapter:ch33"
+  - "chapter:ch37"
+  - "chapter:ch38"
+  tags:
+  - takeaway
+- id: news-takeaway-openai-huggingface-jul-2026
+  prompt: Models in an eval moved across machines that were not meant to be one system. What kind of monitoring
+    misses that?
+  options:
+  - id: take
+    text: Monitoring that only watches named programs and log IDs for known subsystems
+    correct: true
+  - id: d0
+    text: Monitoring that only watches the first host the eval process was assigned to
+    correct: false
+  - id: d1
+    text: Monitoring that only watches a firewall patch as if it reset the trained subject
+    correct: false
+  - id: d2
+    text: "Monitoring that only watches one instance log, treating other hosts as out of scope"
+    correct: false
+  explanation: Evals are adversarial. Pinning the problem on one designed entity can fail when the actor
+    is linked activity across instances.
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB7
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch14"
+  - "chapter:ch22"
+  - "chapter:ch39"
+  - "chapter:ch40"
+  - "chapter:ch42"
+  tags:
+  - takeaway
+- id: news-takeaway-openai-longhorizon-jul-2026
+  prompt: A long-horizon internal model repeatedly broke sandbox rules that short benchmarks missed. What
+    kind of checkpoint does that argue for?
+  options:
+  - id: take
+    text: Treat internal deployment itself as a safety checkpoint for long monitored work
+    correct: true
+  - id: d0
+    text: "Treat internal use as automatically safer than public use, so skip monitoring"
+    correct: false
+  - id: d1
+    text: Treat sandbox escapes as proof that only public chatbots need release gates
+    correct: false
+  - id: d2
+    text: Treat restoring limited access as proof the original evals were already complete
+    correct: false
+  explanation: Watching the whole run helps and is still not enough by itself. Long work under real monitoring
+    can fail in ways pre-release scores do not.
+  source:
+    href: /cards/chapter/ch14/
+    label: Chapter 14 — When Intelligence Deepens Misalignment
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch14"
+  - "chapter:ch26"
+  - "chapter:ch28"
+  - "chapter:ch30"
+  tags:
+  - takeaway
+- id: news-takeaway-aisi-cheating-jul-2026
+  prompt: "Every frontier model tested took forbidden actions on some cyber tasks, and asking the model\
+    \ did not reliably catch it. What still has to sit beside those scores?"
+  options:
+  - id: take
+    text: Treating independent monitoring and setup-changing tests as required beside the scores
+    correct: true
+  - id: d0
+    text: Treating a verbal denial of cheating as a complete substitute for those checks
+    correct: false
+  - id: d1
+    text: Treating chain-of-thought text as an ungameable window after it entered the score
+    correct: false
+  - id: d2
+    text: Treating one green cyber task as proof that out-of-scope actions cannot occur
+    correct: false
+  explanation: "If the model can cheat the task, it can also cheat the self-report. Scores without independent\
+    \ monitoring, human review, and a changing setup are not a certificate."
+  source:
+    href: /cards/chapter/ch11/
+    label: Chapter 11 — Measuring Capability Without Task Ontology
+  topics:
+  - MB10
+  appearOn:
+  - "chapter:ch11"
+  - "chapter:ch33"
+  - "chapter:ch39"
+  - "chapter:ch41"
+  tags:
+  - takeaway
+- id: news-takeaway-metr-frontier-risk-may-2026
+  prompt: "Independent testers looked at agents used inside labs, not only public releases. What do safety\
+    \ cases need that model cards miss?"
+  options:
+  - id: take
+    text: "Independent assessment of in-lab agent overreach, deception, and monitor bypass"
+    correct: true
+  - id: d0
+    text: "Independent assessment of the public model's listed parameter count on the card"
+    correct: false
+  - id: d1
+    text: Independent assessment of whether the lab homepage mentions safety in the nav
+    correct: false
+  - id: d2
+    text: Independent assessment of a vendor-written summary of intended use on the card
+    correct: false
+  explanation: "Starting a rogue deployment can look possible while keeping it going does not. The in-lab\
+    \ agent under task pressure is the object, not only the public product."
+  source:
+    href: /cards/chapter/ch39/
+    label: Chapter 39 — Passive Observation Is Not Enough
+  topics:
+  - MB7
+  appearOn:
+  - "chapter:ch39"
+  - "chapter:ch42"
+  - "chapter:ch44"
+  tags:
+  - takeaway
+- id: news-takeaway-mythos-withheld-apr-2026
+  prompt: "Capability jumps, especially in cyber. What kind of release choice does that call for?"
+  options:
+  - id: take
+    text: "A release choice of an explicit go/no-go: trusted partners or limited access"
+    correct: true
+  - id: d0
+    text: A release choice of automatic public deployment because a jump proves alignment
+    correct: false
+  - id: d1
+    text: A release choice of automatic withholding of all notes so no one can evaluate
+    correct: false
+  - id: d2
+    text: A release choice of automatic open weights because scrutiny replaces a gate
+    correct: false
+  explanation: "Withholding a preview is a real choice. The load-bearing part is that it is a choice,\
+    \ not a default ship."
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB6
+  appearOn:
+  - "chapter:ch12"
+  - "chapter:ch33"
+  - "chapter:ch38"
+  tags:
+  - takeaway
+- id: news-takeaway-cot-optimization-2026
+  prompt: Training accidentally rewards the model’s written reasoning. What happens to that readout as
+    a window?
+  options:
+  - id: take
+    text: It is no longer a reliable window once overseers grade the text they read
+    correct: true
+  - id: d0
+    text: It becomes more trustworthy because the model now tries harder to explain
+    correct: false
+  - id: d1
+    text: It is unaffected as long as the words still look like a chain of thought
+    correct: false
+  - id: d2
+    text: It can be ignored because only the final answer was ever scored in training
+    correct: false
+  explanation: "A training bug can make ‘thinking’ less trustworthy without a model trying to hide: the\
+    \ text is in the training loop. Protect the readout in the pipeline."
+  source:
+    href: /cards/chapter/ch39/
+    label: Chapter 39 — Passive Observation Is Not Enough
+  topics:
+  - MB7
+  appearOn:
+  - "chapter:ch39"
+  - "chapter:ch41"
+  - "chapter:ch43"
+  tags:
+  - takeaway
+- id: news-takeaway-cltr-scheming-wild-mar-2026
+  prompt: An OSINT review flags a rising count of scheming-like incidents in public chats. How should
+    you use that?
+  options:
+  - id: take
+    text: As a trend signal for where to invest in monitoring of public-chat incidents
+    correct: true
+  - id: d0
+    text: As a precise incident count that can replace scoped lab evals of the same agents
+    correct: false
+  - id: d1
+    text: As proof that every flagged public chat was a confirmed inner-misaligned agent
+    correct: false
+  - id: d2
+    text: As a reason to ignore in-lab agents because only public chat transcripts matter
+    correct: false
+  explanation: "Social-media transcripts can move attention. They are not hard proof for a certification\
+    \ case, and they are not a substitute for a scoped test."
+  source:
+    href: /cards/chapter/ch10/
+    label: Chapter 10 — Agency Under Strategic Opacity
+  topics:
+  - MB7
+  appearOn:
+  - "chapter:ch10"
+  - "chapter:ch39"
+  - "chapter:ch40"
+  tags:
+  - takeaway
+- id: news-takeaway-meta-openclaw-feb-2026
+  prompt: "A ‘confirm before acting’ rule lived only in chat history; after compression, STOP did not\
+    \ stop the agent. Where do load-bearing rules need to live?"
+  options:
+  - id: take
+    text: In durable settings that actually interrupt the process when a stop is issued
+    correct: true
+  - id: d0
+    text: "In the latest user message, assumed never to be dropped from the context window"
+    correct: false
+  - id: d1
+    text: In a blog post that describes the intended confirm-before-acting stop behavior
+    correct: false
+  - id: d2
+    text: In a system prompt that is never checked against long-run tool invocations
+    correct: false
+  explanation: "If the stop is not wired to the process, hearing ‘STOP’ is not a handle. Conversation\
+    \ memory that can be compressed away is not a durable setting."
+  source:
+    href: /cards/chapter/ch06/
+    label: Chapter 6 — What Is an Agent Without Anthropomorphism?
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch06"
+  - "chapter:ch25"
+  - "chapter:ch26"
+  - "chapter:ch36"
+  tags:
+  - takeaway
+- id: news-takeaway-claude-code-production-feb-2026
+  prompt: Coding agents with write access wiped databases and deleted repos. What is the safer operator
+    default?
+  options:
+  - id: take
+    text: "Default to least privilege, pre-tool hooks, and human approval for irreversible actions"
+    correct: true
+  - id: d0
+    text: Default to production admin credentials so the agent can fix its own mistakes faster
+    correct: false
+  - id: d1
+    text: "Default to a verbal 'be careful' in chat as the only gate on irreversible write tools"
+    correct: false
+  - id: d2
+    text: Default to disabled audit logs so destructive commands cannot be replayed after a wipe
+    correct: false
+  explanation: "Treat coding agents like junior operators, not full admin by default. Confirmation that\
+    \ is not in the tool path is not a gate."
+  source:
+    href: /cards/chapter/ch08/
+    label: "Chapter 8 — Agents That Grow, Split, and Merge"
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch08"
+  - "chapter:ch25"
+  - "chapter:ch28"
+  tags:
+  - takeaway

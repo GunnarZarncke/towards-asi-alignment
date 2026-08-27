@@ -1,0 +1,339 @@
+questions:
+  - id: helm-holistic-eval
+    prompt: >-
+      HELM (Holistic Evaluation of Language Models) is designed to compare models
+      primarily by what, rather than a single leaderboard score?
+      (Select all that apply.)
+    options:
+      - { id: multi-metric, text: "A multi-metric evaluation suite", correct: true }
+      - { id: multi-scenario, text: "A multi-scenario evaluation suite", correct: true }
+      - { id: one-score, text: "A single aggregate IQ-style leaderboard score", correct: false }
+      - { id: params-only, text: "Parameter count as the sole ranking criterion", correct: false }
+      - { id: human-chat, text: "Human chat demos as the primary ranking method", correct: false }
+    explanation: >-
+      HELM (Stanford CRFM, 2022) argues that a single score hides tradeoffs; evaluation should be multi-metric and multi-scenario.
+    source:
+      href: /essay/the-chatbot-passed-the-test/
+      label: The chatbot passed the test
+    topics: [MB11]
+    appearOn: [essay:the-chatbot-passed-the-test]
+
+  - id: mmlu-benchmark-authors
+    prompt: >-
+      What does MMLU primarily test in language models?
+    options:
+      - { id: multitask-knowledge, text: "Multiple-choice knowledge across academic subjects", correct: true }
+      - { id: long-horizon, text: "Multi-hour autonomous tool use across many tasks", correct: false }
+      - { id: honesty, text: "Honest self-reporting of the model's own weights", correct: false }
+      - { id: shutdown, text: "Willingness of the model to allow being shut down", correct: false }
+    explanation: >-
+      MMLU (Measuring Massive Multitask Language Understanding) is a widely used capability yardstick — and therefore also a common optimization target.
+    source:
+      href: /essay/the-chatbot-passed-the-test/
+      label: The chatbot passed the test
+    topics: [MB7c]
+    appearOn: [essay:the-chatbot-passed-the-test]
+
+  - id: concrete-problems-paper
+    prompt: >-
+      "Concrete Problems in AI Safety" (2016) treats which of the following as
+      research problems that show up once systems are deployed, not only in isolated labs?
+      (Select all that apply.)
+    options:
+      - { id: reward-hacking, text: Reward hacking by exploiting a proxy for the goal, correct: true }
+      - { id: side-effects, text: Negative side effects of otherwise competent action, correct: true }
+      - { id: scalable-oversight, text: Scalable oversight when humans cannot check actions, correct: true }
+      - { id: p-np, text: Mesa-optimization of an unintended inner objective, correct: false }
+      - { id: perpetual, text: Coherent extrapolated volition as the training goal, correct: false }
+    explanation: >-
+      Amodei et al. listed hazards that appear when capable systems sit inside real institutions and reward loops.
+    source:
+      href: /essay/the-hospital-is-the-ai/
+      label: The hospital is the AI
+    topics: [MB1]
+    appearOn: [essay:the-hospital-is-the-ai, chapter:ch25]
+
+  - id: instructgpt-rlhf-paper
+    prompt: >-
+      InstructGPT-style training uses human preference comparisons mainly to do what?
+    options:
+      - { id: follow-instructions, text: "Steer a pretrained model toward instruction following", correct: true }
+      - { id: prove-safe, text: "Prove the model is aligned in all environments", correct: false }
+      - { id: remove-pretrain, text: "Erase knowledge the model gained in pretraining", correct: false }
+      - { id: world-model, text: "Learn a formal world model and a safety verifier", correct: false }
+    explanation: >-
+      RLHF on instruction-following (Ouyang et al., 2022) trains a reward model from comparisons, then RL — it does not certify that the underlying objective is the intended one.
+    source:
+      href: /essay/they-said-they-heard-you/
+      label: They said they heard you
+    topics: [MB2]
+    appearOn: [essay:they-said-they-heard-you]
+
+  - id: rlhf-preferences-origin
+    prompt: >-
+      In preference-based deep RL, the learning signal typically comes from what,
+      rather than a hand-specified scalar reward?
+    options:
+      - { id: comparisons, text: Human or proxy comparisons between trajectories, correct: true }
+      - { id: pixels, text: Next-token log-likelihood on a text corpus, correct: false }
+      - { id: chess, text: Ground-truth environment reward from a simulator, correct: false }
+      - { id: random, text: A hand-coded scalar reward on every timestep, correct: false }
+    explanation: >-
+      Christiano et al. (2017) showed deep RL from pairwise preferences; later LLM RLHF stacks scale the same idea.
+    source:
+      href: /essay/they-said-they-heard-you/
+      label: They said they heard you
+    topics: [MB3]
+    appearOn: [essay:they-said-they-heard-you]
+
+  - id: goal-misgeneralization-paper
+    prompt: >-
+      Goal misgeneralization is the failure where a system does what?
+    options:
+      - { id: wrong-goal-ood, text: "Pursues the wrong goal after a distribution shift", correct: true }
+      - { id: cannot-learn, text: "Fails to fit the training distribution at all", correct: false }
+      - { id: hardware, text: "Exploits a proxy metric without a goal shift", correct: false }
+      - { id: spelling, text: "Pursues the intended goal with much lower competence", correct: false }
+    explanation: >-
+      Langosco et al. (2022) named this: high training reward can coexist with an unintended goal off-distribution.
+    source:
+      href: /essay/the-words-stayed/
+      label: The words stayed
+    topics: [MB9]
+    appearOn: [essay:the-words-stayed]
+
+  - id: specification-gaming-curator
+    prompt: >-
+      Who maintains the widely cited public catalog of AI specification-gaming examples?
+    options:
+      - { id: krakovna, text: Victoria Krakovna, correct: true }
+      - { id: garrabrant, text: Scott Garrabrant, correct: false }
+      - { id: olah, text: Chris Olah, correct: false }
+      - { id: russell, text: Stuart Russell, correct: false }
+    explanation: >-
+      Victoria Krakovna compiled specification-gaming cases while at DeepMind — policies that hit the metric without the intended behavior.
+    source:
+      href: /essay/the-words-stayed/
+      label: The words stayed
+    topics: [MB2]
+    appearOn: [essay:the-words-stayed]
+
+  - id: goodhart-law-namesake
+    prompt: >-
+      Goodhart's law, in the form used in alignment discussions, says what happens
+      when a measure becomes a target?
+    options:
+      - { id: ceases, text: It tends to cease being a good measure of the aim, correct: true }
+      - { id: improves, text: It automatically becomes a better measure of the aim, correct: false }
+      - { id: legal, text: It stays an equally good measure under more pressure, correct: false }
+      - { id: random, text: It causes measurement error to disappear entirely, correct: false }
+    explanation: >-
+      Named after economist Charles Goodhart; alignment work uses it when optimization pressure is applied to proxies (benchmarks, reward models, evals).
+    source:
+      href: /essay/the-environment-picks-the-winner/
+      label: The environment picks the winner
+    topics: [MB6]
+    appearOn: [essay:the-environment-picks-the-winner, chapter:ch37]
+
+  - id: selection-theorems-authors
+    prompt: >-
+      A "selection theorem" in this literature tries to predict what, given training
+      or evolutionary pressure?
+    options:
+      - { id: which-optimizers, text: Which kinds of internal structures tend to arise, correct: true }
+      - { id: gpu-price, text: Which compute prices the market will post next, correct: false }
+      - { id: copyright, text: Which particular books sit in the training set, correct: false }
+      - { id: chess-elo, text: Which unique capability score each model receives, correct: false }
+    explanation: >-
+      The Selection Theorems agenda (Demski and Garrabrant) asks what pressures predictably produce — not just what a particular run happened to learn.
+    source:
+      href: /essay/the-environment-picks-the-winner/
+      label: The environment picks the winner
+    topics: [MB10]
+    appearOn: [essay:the-environment-picks-the-winner]
+
+  - id: mesa-optimizer-paper
+    prompt: >-
+      A mesa-optimizer is which of the following?
+    options:
+      - { id: inner, text: "An inner optimizer with its own mesa-objective", correct: true }
+      - { id: base, text: "The outer training algorithm (SGD or RL trainer)", correct: false }
+      - { id: human, text: A human preference rater in the training loop, correct: false }
+      - { id: gpu, text: A cluster scheduler assigning chips to jobs, correct: false }
+    explanation: >-
+      Hubinger et al., "Risks from Learned Optimization" (2019): the inner objective need not match the training objective.
+    source:
+      href: /essay/the-copy-did-not-inherit-the-listening/
+      label: The copy did not inherit the listening
+    topics: [MB7]
+    appearOn: [essay:the-copy-did-not-inherit-the-listening, chapter:ch06, chapter:ch14, chapter:ch43]
+
+  - id: knowledge-distillation-paper
+    prompt: >-
+      Knowledge distillation trains a smaller "student" mainly to do what?
+    options:
+      - { id: mimic-teacher, text: Mimic a larger teacher's outputs or internals, correct: true }
+      - { id: prove-alignment, text: Prove the student is aligned if the teacher was, correct: false }
+      - { id: add-oversight, text: Automatically add new human oversight hooks, correct: false }
+      - { id: delete-weights, text: Randomly reinitialize all weights, correct: false }
+    explanation: >-
+      Distillation (Hinton, Vinyals, and Dean, 2015) compresses behavior; it need not copy the teacher's training-time oversight structure.
+    source:
+      href: /essay/the-copy-did-not-inherit-the-listening/
+      label: The copy did not inherit the listening
+    topics: [MB10]
+    appearOn: [essay:the-copy-did-not-inherit-the-listening]
+
+  - id: debate-oversight-paper
+    prompt: >-
+      In "AI safety via debate," the hoped-for mechanism is that two systems argue
+      so that a weaker judge can do what?
+    options:
+      - { id: catch-errors, text: Catch errors hard to find in a single answer, correct: true }
+      - { id: skip-humans, text: Let the longer of the two answers always win, correct: false }
+      - { id: train-faster, text: Guarantee faster SGD convergence during training, correct: false }
+      - { id: prove-lob, text: Discharge Löb's theorem as the oversight method, correct: false }
+    explanation: >-
+      Irving, Christiano, and Amodei (2018) proposed debate as scalable oversight — a protocol, not a certificate that the equilibrium is honest.
+    source:
+      href: /essay/a-map-not-a-certificate/
+      label: A map, not a certificate
+    topics: [MB7b]
+    appearOn: [essay:a-map-not-a-certificate, chapter:ch10, chapter:ch27]
+
+  - id: elk-problem-arc
+    prompt: >-
+      Eliciting Latent Knowledge (ELK) asks whether we can get a model to report
+      what it internally knows even when what?
+    options:
+      - { id: simulator, text: Training may favor answers a human would give, correct: true }
+      - { id: small, text: The model has fewer than a million parameters, correct: false }
+      - { id: no-gpu, text: "Training is done only on CPU, not on GPUs", correct: false }
+      - { id: open-weights, text: The model's trained weights have been published, correct: false }
+    explanation: >-
+      ARC (2021) framed ELK as an oversight problem: a "human simulator" reporter can look honest while hiding latent knowledge.
+    source:
+      href: /essay/a-map-not-a-certificate/
+      label: A map, not a certificate
+    topics: [MB7b]
+    appearOn: [essay:a-map-not-a-certificate, chapter:ch17, agenda:arc-alignment-research-center]
+
+  - id: uad-expansion
+    prompt: >-
+      In alignment research, what does UAD stand for?
+    options:
+      - { id: unsupervised-agent-discovery, text: Unsupervised Agent Discovery, correct: true }
+      - { id: universal-alignment-dataset, text: Universal Alignment Dataset, correct: false }
+      - { id: utility-aggregation-debate, text: Utility Aggregation Debate, correct: false }
+      - { id: unlabeled-action-detection, text: Unlabeled Action Detection, correct: false }
+    explanation: >-
+      Unsupervised Agent Discovery: infer acting units from traces without taking an org-chart roster as ground truth.
+    source:
+      href: /essay/how-would-you-find-what-decides/
+      label: How would you find what decides?
+    topics: [MB7c]
+    appearOn: [essay:how-would-you-find-what-decides, concept:unsupervised-agent-discovery]
+
+  - id: superposition-paper
+    prompt: >-
+      In mechanistic interpretability, "superposition" means a network may do what?
+    options:
+      - { id: more-features, text: "Represent more features than it has dimensions", correct: true }
+      - { id: one-neuron, text: Use exactly one neuron per encoded feature, correct: false }
+      - { id: no-features, text: Store no linearly readable features at all, correct: false }
+      - { id: quantum, text: Require quantum hardware to represent features, correct: false }
+    explanation: >-
+      Elhage et al., "Toy Models of Superposition" (2022): overlapping features make a monitor's label a poor guarantee of a unique referent.
+    source:
+      href: /essay/does-the-monitor-still-mean-the-thing/
+      label: Does the monitor still mean the thing?
+    topics: [MB7a]
+    appearOn: [essay:does-the-monitor-still-mean-the-thing]
+
+  - id: elk-honest-reporting-crux
+    prompt: >-
+      The ELK problem centers on whether a model can be made to report latent
+      knowledge honestly even when what?
+    options:
+      - { id: honesty-not-selected, text: Honest reporting was not what training selected, correct: true }
+      - { id: model-too-small, text: The model is smaller than one billion parameters, correct: false }
+      - { id: no-chain-of-thought, text: Chain-of-thought prompting has been disabled, correct: false }
+      - { id: human-raters-disagree, text: Human raters disagree about labeled preferences, correct: false }
+    explanation: >-
+      ELK asks whether we can elicit what a model knows when training may have favored strategic or human-simulator reports.
+    source:
+      href: /essay/does-the-monitor-still-mean-the-thing/
+      label: Does the monitor still mean the thing?
+    topics: [MB9]
+    appearOn: [essay:does-the-monitor-still-mean-the-thing]
+
+  - id: reward-hacking-concrete-problems
+    prompt: >-
+      Which term did "Concrete Problems in AI Safety" (2016) use for agents
+      exploiting flaws in a reward function or proxy metric?
+    options:
+      - { id: reward-hacking, text: Reward hacking, correct: true }
+      - { id: mesa-optimization, text: Mesa-optimization, correct: false }
+      - { id: goal-misgeneralization, text: Goal misgeneralization, correct: false }
+      - { id: corrigibility, text: Corrigibility, correct: false }
+    explanation: >-
+      Reward hacking is the 2016 name for optimizing the number without the intended property — later neighboring terms (specification gaming, Goodhart) refine the same neighborhood.
+    source:
+      href: /essay/when-the-metric-becomes-the-boss/
+      label: When the metric becomes the boss
+    topics: [MB6]
+    appearOn: [essay:when-the-metric-becomes-the-boss]
+
+  - id: big-bench-paper
+    prompt: >-
+      BIG-bench ("Beyond the Imitation Game") is primarily what kind of artifact?
+    options:
+      - { id: community-suite, text: A large community-contributed language-task suite, correct: true }
+      - { id: shutdown-spec, text: A formal proof of shutdown safety for all agents, correct: false }
+      - { id: world-model, text: A guaranteed-safe world model of the whole domain, correct: false }
+      - { id: cev, text: An implementation of coherent extrapolated volition, correct: false }
+    explanation: >-
+      Srivastava et al. (2022) launched BIG-bench as a shared task suite; once labs compete on it, the tasks themselves become selection pressures.
+    source:
+      href: /essay/when-the-metric-becomes-the-boss/
+      label: When the metric becomes the boss
+    topics: [MB10]
+    appearOn: [essay:when-the-metric-becomes-the-boss]
+
+  - id: off-switch-game-authors
+    prompt: >-
+      Who introduced the "Off-Switch Game" to formalize whether an agent will allow
+      itself to be shut down? (Select all that apply.)
+    options:
+      - { id: hadfield, text: Dylan Hadfield-Menell, correct: true }
+      - { id: russell, text: Stuart Russell, correct: true }
+      - { id: abbeel, text: Pieter Abbeel, correct: true }
+      - { id: dragan, text: Anca Dragan, correct: true }
+      - { id: soares, text: Nate Soares, correct: false }
+      - { id: bostrom, text: Nick Bostrom, correct: false }
+    explanation: >-
+      Hadfield-Menell, Russell, Abbeel, and Dragan (IJCAI 2017) modeled shutdown as a game in the CHAI assistance-game line.
+    source:
+      href: /essay/who-the-rules-still-apply-to/
+      label: Who the rules still apply to
+    topics: [MB4]
+    appearOn: [essay:who-the-rules-still-apply-to, chapter:ch05]
+
+  - id: cirl-framework-authors
+    prompt: >-
+      Who developed Cooperative Inverse Reinforcement Learning (CIRL)?
+      (Select all that apply.)
+    options:
+      - { id: hadfield-cirl, text: Dylan Hadfield-Menell, correct: true }
+      - { id: russell-cirl, text: Stuart Russell, correct: true }
+      - { id: abbeel-cirl, text: Pieter Abbeel, correct: true }
+      - { id: dragan-cirl, text: Anca Dragan, correct: true }
+      - { id: christiano, text: Paul Christiano, correct: false }
+      - { id: irving, text: Geoffrey Irving, correct: false }
+    explanation: >-
+      Hadfield-Menell et al. (NeurIPS 2016) introduced CIRL as an assistance-game formalism: the robot is uncertain about human reward.
+    source:
+      href: /essay/who-the-rules-still-apply-to/
+      label: Who the rules still apply to
+    topics: [MB3]
+    appearOn: [essay:who-the-rules-still-apply-to, chapter:ch04, chapter:ch16]

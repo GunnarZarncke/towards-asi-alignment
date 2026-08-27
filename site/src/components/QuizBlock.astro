@@ -1,0 +1,47 @@
+---
+import { loadQuizBank, questionsForAppearOn } from "../lib/quiz/load";
+import { quizClientPayload } from "../lib/quiz/client-payload";
+
+interface Props {
+  appearOn: string;
+  base: string;
+}
+
+const { appearOn, base } = Astro.props;
+const bank = loadQuizBank();
+const questions = questionsForAppearOn(bank, appearOn);
+if (questions.length === 0) {
+  return null;
+}
+const payload = quizClientPayload(bank);
+const withBase = (path: string) => `${base.replace(/\/?$/, "/")}${path.replace(/^\/+/, "")}`;
+---
+
+<section class="quiz-block readable" data-quiz-block data-appear-on={appearOn} data-base={base}>
+  <h2>Check your knowledge</h2>
+  <p class="side-panel-meta">
+    Select all that apply — none, one, or several may be correct. Facts from the field, not opinions.
+  </p>
+  <script type="application/json" data-quiz-payload set:html={JSON.stringify(payload)} />
+  <div data-quiz-block-list></div>
+  <p class="button-row">
+    <a class="button" href={withBase("/quiz/")}>Continue on the quiz</a>
+  </p>
+</section>
+
+<script>
+  import { initQuizUi } from "../lib/quiz/ui.ts";
+  import type { QuizClientPayload } from "../lib/quiz/client-payload.ts";
+
+  const roots = document.querySelectorAll("[data-quiz-block]");
+  roots.forEach((root) => {
+    if (!(root instanceof HTMLElement)) return;
+    const payloadEl = root.querySelector("[data-quiz-payload]");
+    const base = root.dataset.base ?? "/";
+    const appearOn = root.dataset.appearOn ?? "";
+    if (payloadEl?.textContent) {
+      const payload = JSON.parse(payloadEl.textContent) as QuizClientPayload;
+      initQuizUi(root, { base, payload, mode: "block", appearOn });
+    }
+  });
+</script>

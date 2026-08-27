@@ -1,0 +1,65 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["quiz-progress readable", className]} data-quiz-progress>
+  <ul class="quiz-progress-grid">
+    <li><span class="quiz-progress-label">Answered</span> <strong data-quiz-answered>0 / 0</strong></li>
+    <li><span class="quiz-progress-label">Complete</span> <strong data-quiz-percent>0%</strong></li>
+    <li><span class="quiz-progress-label">Score</span> <strong data-quiz-score>0 / 0</strong></li>
+    <li><span class="quiz-progress-label">Exact</span> <strong data-quiz-exact>0 exact</strong></li>
+  </ul>
+  <p class="button-row quiz-retake-row">
+    <button type="button" class="button" data-quiz-retake hidden>Retake all questions</button>
+  </p>
+  <p class="side-panel-meta quiz-retake-note" data-quiz-retake-note hidden></p>
+  <div class="quiz-locked" data-quiz-locked>
+    <p class="side-panel-meta">
+      Keep answering until a researcher match unlocks.
+      That match names who has written about what you got right — not who you should agree with.
+    </p>
+  </div>
+  <section class="quiz-result" data-quiz-result hidden></section>
+</div>
+
+<style>
+  .quiz-progress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 0.75rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .quiz-progress-label {
+    display: block;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .quiz-locked,
+  .quiz-result {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.65rem;
+    background: var(--color-surface, rgba(255, 255, 255, 0.02));
+  }
+
+  .quiz-result-lead {
+    margin-top: 0;
+  }
+
+  .quiz-retake-row {
+    margin: 0 0 0.75rem;
+  }
+
+  .quiz-retake-note {
+    margin: 0 0 1rem;
+  }
+</style>

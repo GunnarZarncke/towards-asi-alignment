@@ -86,3 +86,6 @@ dist/pdf/*.pdf
 .env.*.local
 !.env_sample
 *.key
+drafts/quiz-blind-packets/.keys.json
+drafts/quiz-blind-packets/last-score.json
+drafts/quiz-blind-packets/answers-*.json

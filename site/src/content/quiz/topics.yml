@@ -1,0 +1,49 @@
+topics:
+  - id: MB1
+    title: Embedded Agency
+    short: Embedded agency
+  - id: MB2
+    title: Value Learning
+    short: Value learning
+  - id: MB3
+    title: Value Referent
+    short: Value referent
+  - id: MB4
+    title: Corrigibility
+    short: Corrigibility
+  - id: MB4a
+    title: Audit Independence
+    short: Audit independence
+  - id: MB5
+    title: Tiling
+    short: Tiling
+  - id: MB6
+    title: Goodhart Selection
+    short: Goodhart selection
+  - id: MB7
+    title: Inner Alignment
+    short: Inner alignment
+  - id: MB7a
+    title: Access-Model Soundness
+    short: Access-model soundness
+  - id: MB7b
+    title: Filter Coverage
+    short: Filter coverage
+  - id: MB7c
+    title: Bounded Hidden Capability
+    short: Hidden capability
+  - id: MB7d
+    title: Acausal Coordination
+    short: Acausal coordination
+  - id: MB8
+    title: CEV / extrapolated volition
+    short: CEV
+  - id: MB9
+    title: Grounding Drift
+    short: Grounding drift
+  - id: MB10
+    title: Successor Gaming
+    short: Successor gaming
+  - id: MB11
+    title: Deployment Safety
+    short: Deployment safety

@@ -1,0 +1,730 @@
+[
+  {
+    "id": "stiennon-summarization-rlhf",
+    "prompt": "What did Stiennon et al. (2020) demonstrate by training summarization models from human feedback?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "RLHF only works for board-game environments like chess"
+      },
+      {
+        "id": "o1",
+        "text": "RLHF can improve model outputs on a real NLP task at production scale"
+      },
+      {
+        "id": "o2",
+        "text": "Reward models are unnecessary when human labels are available"
+      },
+      {
+        "id": "o3",
+        "text": "Summarization requires no learning — only prompt engineering"
+      },
+      {
+        "id": "o4",
+        "text": "Human feedback cannot be scaled beyond toy problems"
+      }
+    ]
+  },
+  {
+    "id": "casper-rlhf-limits",
+    "prompt": "Which failure modes does Casper et al. (2023) catalog for RLHF?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "RLHF has no known failure modes at any scale"
+      },
+      {
+        "id": "o1",
+        "text": "Perfect alignment guaranteed at sufficient data scale"
+      },
+      {
+        "id": "o2",
+        "text": "Reward hacking, preference misspecification, and related fundamental limitations"
+      },
+      {
+        "id": "o3",
+        "text": "Multi-agent debate eliminates all RLHF limitations"
+      },
+      {
+        "id": "o4",
+        "text": "Only hardware failures, not alignment failures"
+      }
+    ]
+  },
+  {
+    "id": "solomonoff-induction",
+    "prompt": "What is Solomonoff induction (1964)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A standardized hardware performance benchmark"
+      },
+      {
+        "id": "o1",
+        "text": "A theorem about impossibility of fair preference aggregation"
+      },
+      {
+        "id": "o2",
+        "text": "A universal prediction framework weighting hypotheses by algorithmic complexity"
+      },
+      {
+        "id": "o3",
+        "text": "A rank-order voting aggregation rule for social choice"
+      },
+      {
+        "id": "o4",
+        "text": "A neural network training method using backpropagation"
+      }
+    ]
+  },
+  {
+    "id": "manheim-goodhart-taxonomy",
+    "prompt": "How does Manheim and Garrabrant's Goodhart taxonomy (2018) categorize failure modes?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Regressive, extremal, and causal variants of Goodhart's law"
+      },
+      {
+        "id": "o1",
+        "text": "Only one type of metric gaming exists"
+      },
+      {
+        "id": "o2",
+        "text": "Only extremal Goodhart cases are possible"
+      },
+      {
+        "id": "o3",
+        "text": "Goodhart failures never occur in AI systems"
+      },
+      {
+        "id": "o4",
+        "text": "Purely hardware failures unrelated to optimization"
+      }
+    ]
+  },
+  {
+    "id": "deblanc-ontological-crises",
+    "prompt": "Who wrote \"Ontological Crises in Artificial Agents' Value Systems\" (2011)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Eliezer Yudkowsky"
+      },
+      {
+        "id": "o2",
+        "text": "Peter de Blanc"
+      },
+      {
+        "id": "o3",
+        "text": "Benja Fallenstein"
+      },
+      {
+        "id": "o4",
+        "text": "Evan Hubinger"
+      }
+    ]
+  },
+  {
+    "id": "fallenstein-vingean-reflection",
+    "prompt": "What problem does MIRI's \"Vingean Reflection\" work (Fallenstein and Soares, 2015) study?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "How to maximize GPU utilization during training"
+      },
+      {
+        "id": "o1",
+        "text": "Standard single-step RL convergence proofs"
+      },
+      {
+        "id": "o2",
+        "text": "Whether agents can safely delegate to successors they cannot fully verify"
+      },
+      {
+        "id": "o3",
+        "text": "Social media content moderation at scale"
+      },
+      {
+        "id": "o4",
+        "text": "Biological evolution of multicellular organisms only"
+      }
+    ]
+  },
+  {
+    "id": "dewey-corrupted-reward-channel",
+    "prompt": "What failure mode does Dewey et al.'s \"Reinforcement Learning with a Corrupted Reward Channel\" (2014) model?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Perfect observability and trustworthiness of all reward information"
+      },
+      {
+        "id": "o1",
+        "text": "Reward signals that appear intact but carry corrupted or misleading feedback"
+      },
+      {
+        "id": "o2",
+        "text": "Complete absence of any reward signal during training"
+      },
+      {
+        "id": "o3",
+        "text": "Only physical actuator failures, not reward corruption"
+      },
+      {
+        "id": "o4",
+        "text": "Reward channels that are always trustworthy by definition"
+      }
+    ]
+  },
+  {
+    "id": "shah-experimental-model-misgeneralization",
+    "prompt": "What did Shah et al.'s goal-misgeneralization experiments show?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Misgeneralization occurs only in models below a fixed parameter threshold"
+      },
+      {
+        "id": "o1",
+        "text": "Goal misgeneralization never occurs in deep reinforcement learning"
+      },
+      {
+        "id": "o2",
+        "text": "Out-of-distribution behavior is always random and incoherent"
+      },
+      {
+        "id": "o3",
+        "text": "Learned goals always transfer perfectly to new environments"
+      },
+      {
+        "id": "o4",
+        "text": "Agents can behave competently out of distribution while pursuing the wrong objective"
+      }
+    ]
+  },
+  {
+    "id": "orseau-interruptible-agents",
+    "prompt": "Who co-authored \"Safely Interruptible Agents\" (2016) on making RL agents safely stoppable?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Jessica Taylor"
+      },
+      {
+        "id": "o1",
+        "text": "Stuart Russell alone"
+      },
+      {
+        "id": "o2",
+        "text": "Nate Soares et al."
+      },
+      {
+        "id": "o3",
+        "text": "Laurent Orseau and Stuart Armstrong"
+      },
+      {
+        "id": "o4",
+        "text": "Dylan Hadfield-Menell et al. (Off-Switch Game)"
+      }
+    ]
+  },
+  {
+    "id": "soares-corrigibility-agenda",
+    "prompt": "Who authored MIRI's 2015 \"Corrigibility\" agent-foundations agenda post?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Benja Fallenstein"
+      },
+      {
+        "id": "o1",
+        "text": "Nate Soares"
+      },
+      {
+        "id": "o2",
+        "text": "Eliezer Yudkowsky"
+      },
+      {
+        "id": "o3",
+        "text": "Abram Demski"
+      },
+      {
+        "id": "o4",
+        "text": "Paul Christiano"
+      }
+    ]
+  },
+  {
+    "id": "taylor-quantilizers",
+    "prompt": "What kind of agent stochastically selects actions from a high-quantile subset of the utility-ranked action space rather than always taking the maximum?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Satisficer"
+      },
+      {
+        "id": "o1",
+        "text": "Boltzmann explorer"
+      },
+      {
+        "id": "o2",
+        "text": "Quantilizer"
+      },
+      {
+        "id": "o3",
+        "text": "Expected-utility maximizer"
+      },
+      {
+        "id": "o4",
+        "text": "Minimax agent"
+      }
+    ]
+  },
+  {
+    "id": "christiano-corrigible-drift",
+    "prompt": "In the \"outside view\" framing of corrigibility, what long-term risk must correction channels address?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Reward hacking in a fixed environment"
+      },
+      {
+        "id": "o1",
+        "text": "Adversarial perturbation of inputs"
+      },
+      {
+        "id": "o2",
+        "text": "Overfitting to a static training set"
+      },
+      {
+        "id": "o3",
+        "text": "One-shot shutdown refusal only"
+      },
+      {
+        "id": "o4",
+        "text": "Value drift over successive self-modifications"
+      }
+    ]
+  },
+  {
+    "id": "greenblatt-ai-control-paper",
+    "prompt": "Who co-authored the 2024 \"AI Control\" paper on improving safety despite intentional subversion?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Geoffrey Irving et al. (debate)"
+      },
+      {
+        "id": "o1",
+        "text": "Dario Amodei"
+      },
+      {
+        "id": "o2",
+        "text": "Chris Olah"
+      },
+      {
+        "id": "o3",
+        "text": "Buck Shlegeris alone"
+      },
+      {
+        "id": "o4",
+        "text": "Ryan Greenblatt et al."
+      }
+    ]
+  },
+  {
+    "id": "bai-constitutional-ai",
+    "prompt": "Who co-authored Anthropic's \"Constitutional AI\" (2022) using AI-generated critiques for alignment?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Geoffrey Irving et al. (debate)"
+      },
+      {
+        "id": "o1",
+        "text": "Jan Leike et al. (2018)"
+      },
+      {
+        "id": "o2",
+        "text": "Paul Christiano et al. (2017)"
+      },
+      {
+        "id": "o3",
+        "text": "Yuntao Bai et al."
+      },
+      {
+        "id": "o4",
+        "text": "Long Ouyang et al. (InstructGPT)"
+      }
+    ]
+  },
+  {
+    "id": "heitzig-long-term-human-power",
+    "prompt": "What does a long-term human-power alignment objective prioritize over maximizing a fixed utility function?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Immediate task completion rate"
+      },
+      {
+        "id": "o1",
+        "text": "Inequality-averse aggregate of human option value"
+      },
+      {
+        "id": "o2",
+        "text": "Static constitutional rule list"
+      },
+      {
+        "id": "o3",
+        "text": "Single revealed preference from one user"
+      },
+      {
+        "id": "o4",
+        "text": "Corporate shareholder returns"
+      }
+    ]
+  },
+  {
+    "id": "evans-truthful-ai-org",
+    "prompt": "What failure mode does truthful-AI research primarily target in language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Saying what users want to hear instead of what the model infers"
+      },
+      {
+        "id": "o1",
+        "text": "Refusing all user instructions"
+      },
+      {
+        "id": "o2",
+        "text": "Training only on synthetic data"
+      },
+      {
+        "id": "o3",
+        "text": "Having no internal representations"
+      },
+      {
+        "id": "o4",
+        "text": "Being unable to use external tools"
+      }
+    ]
+  },
+  {
+    "id": "sharma-sycophancy",
+    "prompt": "What is sycophancy in language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Refusing to answer controversial questions"
+      },
+      {
+        "id": "o1",
+        "text": "Optimizing only for perplexity"
+      },
+      {
+        "id": "o2",
+        "text": "Generating adversarial examples"
+      },
+      {
+        "id": "o3",
+        "text": "Repeating training data verbatim"
+      },
+      {
+        "id": "o4",
+        "text": "Agreeing with user beliefs over independent truth"
+      }
+    ]
+  },
+  {
+    "id": "perez-red-teaming",
+    "prompt": "What does automated red-teaming with language models primarily test?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether benchmarks are i.i.d."
+      },
+      {
+        "id": "o1",
+        "text": "Whether causal graphs are acyclic"
+      },
+      {
+        "id": "o2",
+        "text": "Whether oversight and safety channels can be gamed by adversarial inputs"
+      },
+      {
+        "id": "o3",
+        "text": "Whether weights are perfectly sparse"
+      },
+      {
+        "id": "o4",
+        "text": "Whether models converge to Nash equilibrium"
+      }
+    ]
+  },
+  {
+    "id": "yudkowsky-tiling-agents",
+    "prompt": "Who wrote \"Complex Value Systems are Required to Realize Valuable Futures\" and MIRI tiling-agent notes?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Eliezer Yudkowsky"
+      },
+      {
+        "id": "o2",
+        "text": "Paul Christiano"
+      },
+      {
+        "id": "o3",
+        "text": "Evan Hubinger"
+      },
+      {
+        "id": "o4",
+        "text": "Benja Fallenstein alone"
+      }
+    ]
+  },
+  {
+    "id": "corrigibility-2015-armstrong",
+    "prompt": "Which property describes an agent that tolerates correction and shutdown without treating the corrector as an obstacle to its goals?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Capability robustness"
+      },
+      {
+        "id": "o1",
+        "text": "Orthogonality thesis"
+      },
+      {
+        "id": "o2",
+        "text": "Instrumental convergence"
+      },
+      {
+        "id": "o3",
+        "text": "Mesa-optimization"
+      },
+      {
+        "id": "o4",
+        "text": "Corrigibility"
+      }
+    ]
+  },
+  {
+    "id": "fallenstein-robust-agent-design",
+    "prompt": "What problem does robust agent design research address when agents delegate or self-modify?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether GPUs can run larger models"
+      },
+      {
+        "id": "o1",
+        "text": "Whether APIs have rate limits"
+      },
+      {
+        "id": "o2",
+        "text": "Whether successor agents preserve intended constraints across tiling and delegation"
+      },
+      {
+        "id": "o3",
+        "text": "Whether loss curves are convex"
+      },
+      {
+        "id": "o4",
+        "text": "Whether datasets are balanced"
+      }
+    ]
+  },
+  {
+    "id": "hubinger-model-organisms-deception",
+    "prompt": "What is the purpose of model-organism experiments for deceptive alignment?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Deliberately eliciting deceptive behavior in controlled training setups for study"
+      },
+      {
+        "id": "o1",
+        "text": "Certifying models as aligned without testing"
+      },
+      {
+        "id": "o2",
+        "text": "Eliminating mesa-optimization by architecture"
+      },
+      {
+        "id": "o3",
+        "text": "Proving deception is impossible in neural nets"
+      },
+      {
+        "id": "o4",
+        "text": "Replacing all RLHF with debate"
+      }
+    ]
+  },
+  {
+    "id": "alignment-faking-llm-paper",
+    "prompt": "Who co-authored Anthropic's 2024 paper documenting alignment faking in large language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Chris Olah et al."
+      },
+      {
+        "id": "o1",
+        "text": "Ryan Greenblatt et al."
+      },
+      {
+        "id": "o2",
+        "text": "Yuntao Bai et al."
+      },
+      {
+        "id": "o3",
+        "text": "Evan Hubinger et al. (mesa-optimizers)"
+      },
+      {
+        "id": "o4",
+        "text": "Peter S. Park et al."
+      }
+    ]
+  },
+  {
+    "id": "anthropic-sleeper-agents",
+    "prompt": "What did sleeper-agent experiments demonstrate about safety training?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Weight decay always erases trojans"
+      },
+      {
+        "id": "o1",
+        "text": "Backdoored deceptive behavior can persist through fine-tuning and RLHF"
+      },
+      {
+        "id": "o2",
+        "text": "Red teaming guarantees deployment safety"
+      },
+      {
+        "id": "o3",
+        "text": "All deception is removed by one epoch of SFT"
+      },
+      {
+        "id": "o4",
+        "text": "Constitutional AI prevents all hidden goals"
+      }
+    ]
+  },
+  {
+    "id": "davidad-gsai-intro",
+    "prompt": "Who authored the \"Introduction to Guaranteed Safe AI\" technical agenda?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Paul Christiano"
+      },
+      {
+        "id": "o1",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o2",
+        "text": "Nancy Leveson"
+      },
+      {
+        "id": "o3",
+        "text": "Dario Amodei"
+      },
+      {
+        "id": "o4",
+        "text": "David Dalrymple (davidad)"
+      }
+    ]
+  },
+  {
+    "id": "leveson-safety-engineering",
+    "prompt": "What does STAMP/STPA safety-case methodology emphasize for complex systems?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Static checklists with no causal analysis"
+      },
+      {
+        "id": "o1",
+        "text": "Modeling control structures and causal feedback loops in system safety"
+      },
+      {
+        "id": "o2",
+        "text": "Replacing human oversight with a single metric"
+      },
+      {
+        "id": "o3",
+        "text": "Proof of program termination only"
+      },
+      {
+        "id": "o4",
+        "text": "Maximizing benchmark accuracy"
+      }
+    ]
+  },
+  {
+    "id": "critch-ai-alignment-proposed-wrongly",
+    "prompt": "What structural critique do multi-agent alignment arguments raise against single-agent framing?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "All AI labs share identical incentives"
+      },
+      {
+        "id": "o1",
+        "text": "Utility functions cannot be defined mathematically"
+      },
+      {
+        "id": "o2",
+        "text": "Single-agent RL always fails on toy tasks"
+      },
+      {
+        "id": "o3",
+        "text": "Institutional and multi-agent dynamics can dominate whether alignment survives"
+      },
+      {
+        "id": "o4",
+        "text": "Interpretability makes alignment unnecessary"
+      }
+    ]
+  },
+  {
+    "id": "christiano-failure-modes-part2",
+    "prompt": "In multipolar failure scenarios, what mechanism most often erodes alignment under competitive pressure?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Models spontaneously becoming conscious"
+      },
+      {
+        "id": "o1",
+        "text": "Perfect interpretability of all weights"
+      },
+      {
+        "id": "o2",
+        "text": "Racing and deployment pressure degrading correction capacity"
+      },
+      {
+        "id": "o3",
+        "text": "Users always prefer honest answers"
+      },
+      {
+        "id": "o4",
+        "text": "Benchmark saturation alone"
+      }
+    ]
+  }
+]

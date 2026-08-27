@@ -1,0 +1,32 @@
+---
+import QuizProgress from "./QuizProgress.astro";
+import { loadQuizBank } from "../lib/quiz/load";
+import { quizClientPayload } from "../lib/quiz/client-payload";
+
+const base = import.meta.env.BASE_URL;
+const bank = loadQuizBank();
+const payload = quizClientPayload(bank);
+---
+
+<section class="quiz-shell readable" data-quiz-player data-base={base}>
+  <script type="application/json" data-quiz-payload set:html={JSON.stringify(payload)} />
+
+  <QuizProgress />
+
+  <div class="quiz-stack" data-quiz-stack></div>
+</section>
+
+<script>
+  import { initQuizUi } from "../lib/quiz/ui.ts";
+  import type { QuizClientPayload } from "../lib/quiz/client-payload.ts";
+
+  const root = document.querySelector("[data-quiz-player]");
+  if (root instanceof HTMLElement) {
+    const payloadEl = root.querySelector("[data-quiz-payload]");
+    const base = root.dataset.base ?? "/";
+    if (payloadEl?.textContent) {
+      const payload = JSON.parse(payloadEl.textContent) as QuizClientPayload;
+      initQuizUi(root, { base, payload, mode: "player" });
+    }
+  }
+</script>

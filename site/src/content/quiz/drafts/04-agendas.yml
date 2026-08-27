@@ -1,0 +1,391 @@
+questions:
+- id: miri-hard-pause-2024
+  prompt: In its 2024 mission and strategy update, MIRI emphasized what response when technical alignment solutions look insufficient? (Select all that apply.)
+  options:
+  - id: hard-pause
+    text: Advocacy for a hard pause
+    correct: true
+  - id: off-switch
+    text: Advocacy for off-switch measures
+    correct: true
+  - id: constitutional-ai
+    text: Scaling Constitutional AI with stronger principles
+    correct: false
+  - id: debate-oversight
+    text: Deploying debate-based scalable oversight immediately
+    correct: false
+  - id: eval-gating
+    text: Relying on frontier capability evaluations alone
+    correct: false
+  explanation: MIRI's 2024 strategy update argued that if technical alignment progress stalls, policy measures such as a hard pause and off-switch infrastructure become necessary—not optional add-ons.
+  source:
+    href: /cards/field-agendas/miri/
+    label: MIRI
+  topics:
+  - MB4
+  appearOn:
+  - agenda:miri
+- id: redwood-ai-control-agenda
+  prompt: When a capable system may deliberately subvert oversight, which safety framework asks what guarantees can still be shown?
+  options:
+  - id: ai-control
+    text: AI Control
+    correct: true
+  - id: constitutional-ai
+    text: Constitutional AI
+    correct: false
+  - id: gsai
+    text: Guaranteed-Safe AI
+    correct: false
+  - id: cirl
+    text: Cooperative Inverse Reinforcement Learning
+    correct: false
+  - id: singular-learning
+    text: Singular learning theory
+    correct: false
+  explanation: Buck Shlegeris and colleagues at Redwood Research framed "AI control"—what safety can be shown when the system may try to defeat oversight—and run empirical control evaluations under that assumption.
+  source:
+    href: /cards/field-agendas/redwood-research/
+    label: Redwood Research
+  topics:
+  - MB7
+  appearOn:
+  - agenda:redwood-research
+- id: chai-assistance-games
+  prompt: Stuart Russell's Center for Human-Compatible AI (CHAI) reorients AI research around what formal interaction model under preference uncertainty?
+  options:
+  - id: assistance-games
+    text: Assistance games / CIRL
+    correct: true
+  - id: zero-sum-games
+    text: Two-player zero-sum game theory
+    correct: false
+  - id: debate-protocols
+    text: Adversarial debate before a human judge
+    correct: false
+  - id: infra-bayesian
+    text: Infra-Bayesian decision theory
+    correct: false
+  - id: singular-learning
+    text: Singular learning theory
+    correct: false
+  explanation: CHAI's beneficial-AI program centers on assistance games and CIRL—formal models where a robot learns human preferences while remaining corrigible under uncertainty.
+  source:
+    href: /cards/field-agendas/chai-russell/
+    label: CHAI / FAR.AI (Berkeley alignment)
+  topics:
+  - MB2
+  appearOn:
+  - agenda:chai-russell
+- id: christiano-debate-protocol
+  prompt: In Paul Christiano's scalable-oversight lineage, what mechanism pits two AI debaters against each other before a judge?
+  options:
+  - id: debate
+    text: Debate
+    correct: true
+  - id: amplification-only
+    text: Amplification without adversaries
+    correct: false
+  - id: rlhf
+    text: Reinforcement learning from human feedback alone
+    correct: false
+  - id: constitutional-principles
+    text: Constitutional AI self-critique
+    correct: false
+  - id: world-model-verification
+    text: Formal world-model verification
+    correct: false
+  explanation: Irving, Christiano, and Amodei (2018) proposed debate as a scalable oversight protocol; Christiano's broader lineage also developed amplification and recursive reward modeling.
+  source:
+    href: /cards/field-agendas/christiano-lineage/
+    label: Christiano lineage
+  topics:
+  - MB7b
+  appearOn:
+  - agenda:christiano-lineage
+- id: gsai-spec-and-world-model
+  prompt: David Dalrymple's Guaranteed-Safe AI (GSAI) framework defines safety guarantees relative to which two explicit artifacts? (Select all that apply.)
+  options:
+  - id: spec
+    text: A formal spec
+    correct: true
+  - id: world-model
+    text: An explicit world model
+    correct: true
+  - id: constitution-preferences
+    text: A written constitution and preference data
+    correct: false
+  - id: debate-judge
+    text: A debate protocol and a human judge
+    correct: false
+  - id: regret-bound
+    text: A regret bound and an infra-Bayesian prior
+    correct: false
+  explanation: The GSAI paper (2024) treats safety as spec-relative—formally guaranteed with respect to an explicit specification and world model, with open-world coverage as the central engineering challenge.
+  source:
+    href: /cards/field-agendas/davidad-guaranteed-safe-ai-gsai/
+    label: davidad / Guaranteed-Safe AI (GSAI)
+  topics:
+  - MB9
+  appearOn:
+  - agenda:davidad-guaranteed-safe-ai-gsai
+- id: anthropic-rsp-thresholds
+  prompt: Anthropic's Responsible Scaling Policy (RSP) ties continued frontier scaling to what? (Select all that apply.)
+  options:
+  - id: capability-thresholds
+    text: Staged capability thresholds
+    correct: true
+  - id: safety-commitments
+    text: Safety commitments gated on those thresholds
+    correct: true
+  - id: open-weights
+    text: Immediate release of all model weights
+    correct: false
+  - id: pause-until-proof
+    text: A formal proof of corrigibility before any training
+    correct: false
+  - id: debate-only
+    text: Deployment of debate oversight on every model
+    correct: false
+  explanation: Anthropic's RSP introduced industry-facing capability thresholds—scaling stages gated by safety evaluations and commitments, a template later echoed in Frontier Model Forum work.
+  source:
+    href: /cards/field-agendas/anthropic-lab/
+    label: Anthropic / Goodfire (lab & MI stack)
+  topics:
+  - MB11
+  appearOn:
+  - agenda:anthropic-lab
+- id: kosoy-infra-bayesianism
+  prompt: Vanessa Kosoy's learning-theoretic agenda introduces Infra-Bayesianism primarily to handle what challenge?
+  options:
+  - id: deep-uncertainty
+    text: Deep uncertainty / non-realizability
+    correct: true
+  - id: gpu-cluster-governance
+    text: GPU-cluster access governance
+    correct: false
+  - id: monosemantic-features
+    text: Monosemantic transformer features
+    correct: false
+  - id: debate-honesty
+    text: Honest debate under optimization
+    correct: false
+  - id: constitutional-harmlessness
+    text: Constitutional AI harmlessness
+    correct: false
+  explanation: Kosoy's Infra-Bayesianism sequence provides a constructive layer for agents facing model misspecification and deep uncertainty—core problems in the Learning-Theoretic Agenda.
+  source:
+    href: /cards/field-agendas/kosoy-infra-bayesianism-lta/
+    label: Kosoy / infra-Bayesianism & LTA
+  topics:
+  - MB9
+  appearOn:
+  - agenda:kosoy-infra-bayesianism-lta
+- id: wentworth-natural-abstractions
+  prompt: John Wentworth's Natural Abstraction Hypothesis asks whether which variables reliably survive optimization and selection pressure?
+  options:
+  - id: natural-abstractions
+    text: Natural abstractions (macro-variables)
+    correct: true
+  - id: raw-token-embeddings
+    text: Raw token-level embeddings
+    correct: false
+  - id: human-survey-labels
+    text: One-shot human survey labels
+    correct: false
+  - id: legal-statutes
+    text: Legal statutes as constraints
+    correct: false
+  - id: benchmark-scores
+    text: Benchmark leaderboard scores
+    correct: false
+  explanation: Wentworth's program develops selection theorems predicting which abstractions become natural under optimization—relevant to whether value-relevant structure is learnable at scale.
+  source:
+    href: /cards/field-agendas/wentworth-natural-abstractions/
+    label: Wentworth / natural abstractions
+  topics:
+  - MB2
+  appearOn:
+  - agenda:wentworth-natural-abstractions
+- id: metr-autonomy-evals
+  prompt: Frontier autonomy evaluations in the METR lineage primarily measure which class of capabilities?
+  options:
+  - id: autonomous-dangerous
+    text: "Dangerous autonomy and AI R&D"
+    correct: true
+  - id: image-generation
+    text: Image-generation quality
+    correct: false
+  - id: translation-bleu
+    text: Machine-translation BLEU
+    correct: false
+  - id: chess-elo
+    text: Chess and board-game Elo
+    correct: false
+  - id: protein-folding
+    text: Protein-folding accuracy
+    correct: false
+  explanation: METR runs autonomy and AI R&D evaluations at the frontier, producing eval-driven forecasting and frontier risk reporting for labs and policymakers.
+  source:
+    href: /cards/field-agendas/metr/
+    label: METR
+  topics:
+  - MB7c
+  appearOn:
+  - agenda:metr
+- id: apollo-situational-awareness-dataset
+  prompt: The Situational Awareness Dataset (SAD) tests whether models recognize what about their own context?
+  options:
+  - id: training-eval-context
+    text: Training vs eval vs deployment context
+    correct: true
+  - id: math-reasoning
+    text: Competition-level mathematics
+    correct: false
+  - id: human-preferences
+    text: A fixed human preference order
+    correct: false
+  - id: hardware-specs
+    text: Training GPU cluster specifications
+    correct: false
+  - id: benchmark-leakage
+    text: Pretraining benchmark-item leakage
+    correct: false
+  explanation: Laine et al. (2024) introduced SAD as part of Apollo and Truthful AI's empirical program on deception, scheming, and situational awareness before deployment.
+  source:
+    href: /cards/field-agendas/apollo-research/
+    label: Apollo / Truthful AI (deception & scheming)
+  topics:
+  - MB7
+  appearOn:
+  - agenda:apollo-research
+- id: deepmind-discovering-agents
+  prompt: The Discovering Agents research line aims to identify agents by analyzing what?
+  options:
+  - id: system-dynamics
+    text: Causal structure in system dynamics
+    correct: true
+  - id: user-prompts
+    text: User prompt templates in chat logs
+    correct: false
+  - id: benchmark-leaderboards
+    text: Benchmark leaderboard rankings
+    correct: false
+  - id: gpu-utilization
+    text: GPU utilization traces in training
+    correct: false
+  - id: legal-contracts
+    text: Lab–cloud legal contracts
+    correct: false
+  explanation: The Discovering Agents line (DeepMind, 2022) infers agents from causal signatures in environment dynamics—a contribution to embedded-agency-style boundary questions.
+  source:
+    href: /cards/field-agendas/google-deepmind-safety/
+    label: Google DeepMind (safety)
+  topics:
+  - MB1
+  appearOn:
+  - agenda:google-deepmind-safety
+- id: arc-human-simulator-failure
+  prompt: In ARC's ELK framing, a "human simulator" failure mode means the model reports what?
+  options:
+  - id: human-would-say
+    text: "What a human would say, not latent knowledge"
+    correct: true
+  - id: random-guess
+    text: A uniformly random vocabulary guess
+    correct: false
+  - id: training-loss
+    text: The current training-loss value
+    correct: false
+  - id: gpu-temperature
+    text: Hardware temperature readings
+    correct: false
+  - id: benchmark-answer-key
+    text: The published benchmark answer key
+    correct: false
+  explanation: ARC's ELK problem distinguishes direct translation of latent knowledge from simulating human answers—a core crux in scalable oversight beyond "did the model pass the test?"
+  source:
+    href: /cards/field-agendas/arc-alignment-research-center/
+    label: ARC (Alignment Research Center)
+  topics:
+  - MB7b
+  appearOn:
+  - agenda:arc-alignment-research-center
+- id: govai-compute-governance
+  prompt: GovAI's compute-governance research argues that controlling what resource can be a lever for AI governance?
+  options:
+  - id: computing-power
+    text: Computing power (access and concentration)
+    correct: true
+  - id: training-data-copyright
+    text: Training-data copyright status
+    correct: false
+  - id: model-parameter-count
+    text: Published parameter counts
+    correct: false
+  - id: social-media-accounts
+    text: Social-media account verification
+    correct: false
+  - id: electricity-pricing
+    text: Residential electricity pricing
+    correct: false
+  explanation: GovAI (Oxford) produced influential work on compute as a governance lever—how concentration of computing power shapes who can train frontier systems and under what oversight.
+  source:
+    href: /cards/field-agendas/govai/
+    label: GovAI / UK AISI (governance & eval)
+  topics:
+  - MB11
+  appearOn:
+  - agenda:govai
+- id: clr-s-risks
+  prompt: The Center on Long-Term Risk (CLR) emphasizes research on s-risks. What does the "s" stand for?
+  options:
+  - id: suffering
+    text: Suffering
+    correct: true
+  - id: superintelligence
+    text: Superintelligence
+    correct: false
+  - id: specification
+    text: Specification
+    correct: false
+  - id: simulation
+    text: Simulation
+    correct: false
+  - id: scaling
+    text: Scaling
+    correct: false
+  explanation: CLR researches cooperation, conflict, and s-risks—worst-case outcomes involving astronomical suffering when AI systems compete or cooperation fails under strategic pressure.
+  source:
+    href: /cards/field-agendas/clr-cooperation-conflict/
+    label: CLR (cooperation / conflict)
+  topics:
+  - MB7d
+  appearOn:
+  - agenda:clr-cooperation-conflict
+- id: resolution-timaeus-slt
+  prompt: Resolution (including Timaeus) applies which mathematical framework to neural-network alignment research?
+  options:
+  - id: singular-learning
+    text: "Singular learning theory (SLT)"
+    correct: true
+  - id: category-theory-only
+    text: Category theory without statistical learning
+    correct: false
+  - id: quantum-field-theory
+    text: Quantum field theory
+    correct: false
+  - id: classical-mechanics
+    text: Classical Hamiltonian mechanics
+    correct: false
+  - id: graph-isomorphism
+    text: Graph isomorphism testing
+    correct: false
+  explanation: Resolution pursues automation-first, high-confidence alignment; Timaeus contributes singular learning theory tools for analyzing learning dynamics in neural networks.
+  source:
+    href: /cards/field-agendas/resolution/
+    label: Resolution
+  topics:
+  - MB9
+  appearOn:
+  - agenda:resolution

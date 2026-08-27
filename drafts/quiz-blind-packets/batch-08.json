@@ -1,0 +1,392 @@
+[
+  {
+    "id": "miri-hard-pause-2024",
+    "prompt": "In its 2024 mission and strategy update, MIRI emphasized what response when technical alignment solutions look insufficient?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Scaling Constitutional AI with stronger principles"
+      },
+      {
+        "id": "o1",
+        "text": "Relying on frontier capability evaluations alone"
+      },
+      {
+        "id": "o2",
+        "text": "Deploying debate-based scalable oversight immediately"
+      },
+      {
+        "id": "o3",
+        "text": "Mandating Guaranteed-Safe AI formal verification"
+      },
+      {
+        "id": "o4",
+        "text": "Advocacy for a hard pause and off-switch measures"
+      }
+    ]
+  },
+  {
+    "id": "redwood-ai-control-agenda",
+    "prompt": "When a capable system may deliberately subvert oversight, which safety framework asks what guarantees can still be shown?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "AI Control (safety despite intentional subversion)"
+      },
+      {
+        "id": "o1",
+        "text": "Guaranteed-Safe AI"
+      },
+      {
+        "id": "o2",
+        "text": "Cooperative Inverse Reinforcement Learning"
+      },
+      {
+        "id": "o3",
+        "text": "Constitutional AI"
+      },
+      {
+        "id": "o4",
+        "text": "Singular learning theory for alignment"
+      }
+    ]
+  },
+  {
+    "id": "chai-assistance-games",
+    "prompt": "Stuart Russell's Center for Human-Compatible AI (CHAI) reorients AI research around what formal interaction model under preference uncertainty?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Singular learning theory"
+      },
+      {
+        "id": "o1",
+        "text": "Adversarial debate before a human judge"
+      },
+      {
+        "id": "o2",
+        "text": "Two-player zero-sum game theory"
+      },
+      {
+        "id": "o3",
+        "text": "Assistance games / cooperative inverse reinforcement learning"
+      },
+      {
+        "id": "o4",
+        "text": "Infra-Bayesian decision theory"
+      }
+    ]
+  },
+  {
+    "id": "christiano-debate-protocol",
+    "prompt": "In Paul Christiano's scalable-oversight lineage, what mechanism pits two AI debaters against each other before a judge?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Formal world-model verification"
+      },
+      {
+        "id": "o1",
+        "text": "Amplification without adversaries"
+      },
+      {
+        "id": "o2",
+        "text": "Constitutional AI self-critique"
+      },
+      {
+        "id": "o3",
+        "text": "Reinforcement learning from human feedback alone"
+      },
+      {
+        "id": "o4",
+        "text": "Debate"
+      }
+    ]
+  },
+  {
+    "id": "gsai-spec-and-world-model",
+    "prompt": "David Dalrymple's Guaranteed-Safe AI (GSAI) framework defines safety guarantees relative to which two explicit artifacts?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A capability threshold and a red-team report"
+      },
+      {
+        "id": "o1",
+        "text": "A written constitution and human preference data"
+      },
+      {
+        "id": "o2",
+        "text": "A formal specification and an explicit world model"
+      },
+      {
+        "id": "o3",
+        "text": "A regret bound and an infra-Bayesian prior"
+      },
+      {
+        "id": "o4",
+        "text": "A debate protocol and a human judge"
+      }
+    ]
+  },
+  {
+    "id": "anthropic-rsp-thresholds",
+    "prompt": "Anthropic's Responsible Scaling Policy (RSP) ties continued frontier scaling to what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Deployment of debate oversight on every model"
+      },
+      {
+        "id": "o1",
+        "text": "A formal proof of corrigibility before any training"
+      },
+      {
+        "id": "o2",
+        "text": "Staged capability thresholds and safety commitments"
+      },
+      {
+        "id": "o3",
+        "text": "Exemption from external evaluation requirements"
+      },
+      {
+        "id": "o4",
+        "text": "Immediate release of all model weights"
+      }
+    ]
+  },
+  {
+    "id": "kosoy-infra-bayesianism",
+    "prompt": "Vanessa Kosoy's learning-theoretic agenda introduces Infra-Bayesianism primarily to handle what challenge?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Finding monosemantic features in transformers"
+      },
+      {
+        "id": "o1",
+        "text": "Reasoning and learning under deep uncertainty (non-realizable environments)"
+      },
+      {
+        "id": "o2",
+        "text": "Governing access to GPU compute clusters"
+      },
+      {
+        "id": "o3",
+        "text": "Ensuring debaters remain honest under optimization"
+      },
+      {
+        "id": "o4",
+        "text": "Training harmless models from AI-written principles"
+      }
+    ]
+  },
+  {
+    "id": "wentworth-natural-abstractions",
+    "prompt": "John Wentworth's Natural Abstraction Hypothesis asks whether which variables reliably survive optimization and selection pressure?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Legal statutes encoded as hard constraints"
+      },
+      {
+        "id": "o1",
+        "text": "Benchmark leaderboard scores"
+      },
+      {
+        "id": "o2",
+        "text": "Raw token-level embeddings in the base model"
+      },
+      {
+        "id": "o3",
+        "text": "Human survey labels collected once at deployment"
+      },
+      {
+        "id": "o4",
+        "text": "Natural abstractions—macro-variables that compress messy micro-dynamics"
+      }
+    ]
+  },
+  {
+    "id": "metr-autonomy-evals",
+    "prompt": "Frontier autonomy evaluations in the METR lineage primarily measure which class of capabilities?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Machine-translation BLEU scores"
+      },
+      {
+        "id": "o1",
+        "text": "Protein-folding accuracy alone"
+      },
+      {
+        "id": "o2",
+        "text": "Image-generation aesthetic quality"
+      },
+      {
+        "id": "o3",
+        "text": "Dangerous autonomous capabilities and AI R&D capabilities"
+      },
+      {
+        "id": "o4",
+        "text": "Chess and board-game Elo ratings"
+      }
+    ]
+  },
+  {
+    "id": "apollo-situational-awareness-dataset",
+    "prompt": "The Situational Awareness Dataset (SAD) tests whether models recognize what about their own context?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether they are in training, evaluation, or deployment (situational awareness)"
+      },
+      {
+        "id": "o1",
+        "text": "A single fixed human preference ordering"
+      },
+      {
+        "id": "o2",
+        "text": "Whether they can solve competition-level mathematics"
+      },
+      {
+        "id": "o3",
+        "text": "Which benchmark items appeared in pretraining data"
+      },
+      {
+        "id": "o4",
+        "text": "The GPU cluster specifications used during training"
+      }
+    ]
+  },
+  {
+    "id": "deepmind-discovering-agents",
+    "prompt": "The Discovering Agents research line aims to identify agents by analyzing what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Benchmark leaderboard rankings"
+      },
+      {
+        "id": "o1",
+        "text": "Legal contracts between labs and cloud providers"
+      },
+      {
+        "id": "o2",
+        "text": "GPU utilization traces during training"
+      },
+      {
+        "id": "o3",
+        "text": "Causal structure in system dynamics (without presupposing agent boundaries)"
+      },
+      {
+        "id": "o4",
+        "text": "User prompt templates in chat logs"
+      }
+    ]
+  },
+  {
+    "id": "arc-human-simulator-failure",
+    "prompt": "In ARC's ELK framing, a \"human simulator\" failure mode means the model reports what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A uniformly random guess from the vocabulary"
+      },
+      {
+        "id": "o1",
+        "text": "Hardware temperature readings"
+      },
+      {
+        "id": "o2",
+        "text": "The current training loss value"
+      },
+      {
+        "id": "o3",
+        "text": "What a human would say, rather than its own latent knowledge"
+      },
+      {
+        "id": "o4",
+        "text": "The published benchmark answer key"
+      }
+    ]
+  },
+  {
+    "id": "govai-compute-governance",
+    "prompt": "GovAI's compute-governance research argues that controlling what resource can be a lever for AI governance?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Social-media account verification"
+      },
+      {
+        "id": "o1",
+        "text": "Published parameter counts alone"
+      },
+      {
+        "id": "o2",
+        "text": "Copyright status of training data only"
+      },
+      {
+        "id": "o3",
+        "text": "Computing power (compute access and concentration)"
+      },
+      {
+        "id": "o4",
+        "text": "Residential electricity pricing"
+      }
+    ]
+  },
+  {
+    "id": "clr-s-risks",
+    "prompt": "The Center on Long-Term Risk (CLR) emphasizes research on s-risks. What does the \"s\" stand for?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Superintelligence"
+      },
+      {
+        "id": "o1",
+        "text": "Suffering (worst-case suffering risks in multipolar scenarios)"
+      },
+      {
+        "id": "o2",
+        "text": "Simulation"
+      },
+      {
+        "id": "o3",
+        "text": "Scaling"
+      },
+      {
+        "id": "o4",
+        "text": "Specification"
+      }
+    ]
+  },
+  {
+    "id": "resolution-timaeus-slt",
+    "prompt": "Resolution (including Timaeus) applies which mathematical framework to neural-network alignment research?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Graph isomorphism testing"
+      },
+      {
+        "id": "o1",
+        "text": "Category theory without statistical learning"
+      },
+      {
+        "id": "o2",
+        "text": "Classical Hamiltonian mechanics"
+      },
+      {
+        "id": "o3",
+        "text": "Singular learning theory (SLT)"
+      },
+      {
+        "id": "o4",
+        "text": "Quantum field theory"
+      }
+    ]
+  }
+]

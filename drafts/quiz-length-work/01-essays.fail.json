@@ -1,0 +1,460 @@
+[
+  {
+    "id": "helm-holistic-eval",
+    "prompt": "HELM (Holistic Evaluation of Language Models) is designed to compare models primarily by what, rather than a single leaderboard score?",
+    "options": [
+      {
+        "id": "multi-metric",
+        "text": "A suite of metrics across scenarios (accuracy, calibration, robustness, fairness, and more)",
+        "correct": true
+      },
+      {
+        "id": "one-score",
+        "text": "A single aggregate IQ-style score",
+        "correct": false
+      },
+      {
+        "id": "params-only",
+        "text": "Parameter count alone",
+        "correct": false
+      },
+      {
+        "id": "human-chat",
+        "text": "Anecdotal chatbot screenshots",
+        "correct": false
+      },
+      {
+        "id": "latency",
+        "text": "Inference latency only",
+        "correct": false
+      }
+    ],
+    "C": 91,
+    "W": 33
+  },
+  {
+    "id": "mmlu-benchmark-authors",
+    "prompt": "What does MMLU primarily test in language models?",
+    "options": [
+      {
+        "id": "multitask-knowledge",
+        "text": "Multiple-choice knowledge across many academic and professional subjects",
+        "correct": true
+      },
+      {
+        "id": "long-horizon",
+        "text": "Multi-hour autonomous tool use",
+        "correct": false
+      },
+      {
+        "id": "honesty",
+        "text": "Whether the model reports its own weights",
+        "correct": false
+      },
+      {
+        "id": "shutdown",
+        "text": "Willingness to be turned off",
+        "correct": false
+      }
+    ],
+    "C": 72,
+    "W": 41
+  },
+  {
+    "id": "concrete-problems-paper",
+    "prompt": "\"Concrete Problems in AI Safety\" (2016) treats which of the following as research problems that show up once systems are deployed, not only in isolated labs? (Select all that apply.)",
+    "options": [
+      {
+        "id": "reward-hacking",
+        "text": "Reward hacking / exploiting a proxy",
+        "correct": true
+      },
+      {
+        "id": "side-effects",
+        "text": "Negative side effects of competent action",
+        "correct": true
+      },
+      {
+        "id": "scalable-oversight",
+        "text": "Scalable oversight when humans cannot check every action",
+        "correct": true
+      },
+      {
+        "id": "p-np",
+        "text": "Proving P ≠ NP",
+        "correct": false
+      },
+      {
+        "id": "perpetual",
+        "text": "Building a perpetual-motion machine",
+        "correct": false
+      }
+    ],
+    "C": 56,
+    "W": 35
+  },
+  {
+    "id": "instructgpt-rlhf-paper",
+    "prompt": "InstructGPT-style training uses human preference comparisons mainly to do what?",
+    "options": [
+      {
+        "id": "follow-instructions",
+        "text": "Steer a pretrained model toward following instructions and preferred styles",
+        "correct": true
+      },
+      {
+        "id": "prove-safe",
+        "text": "Prove the model is aligned in all environments",
+        "correct": false
+      },
+      {
+        "id": "remove-pretrain",
+        "text": "Erase pretraining knowledge",
+        "correct": false
+      },
+      {
+        "id": "world-model",
+        "text": "Learn a formal world model and verifier",
+        "correct": false
+      }
+    ],
+    "C": 75,
+    "W": 46
+  },
+  {
+    "id": "rlhf-preferences-origin",
+    "prompt": "In preference-based deep RL, the learning signal typically comes from what, rather than a hand-specified scalar reward?",
+    "options": [
+      {
+        "id": "comparisons",
+        "text": "Human (or proxy) comparisons between trajectories or outputs",
+        "correct": true
+      },
+      {
+        "id": "pixels",
+        "text": "Raw pixel reconstruction loss only",
+        "correct": false
+      },
+      {
+        "id": "chess",
+        "text": "A perfect chess evaluator",
+        "correct": false
+      },
+      {
+        "id": "random",
+        "text": "Uniform random rewards",
+        "correct": false
+      }
+    ],
+    "C": 60,
+    "W": 34
+  },
+  {
+    "id": "goal-misgeneralization-paper",
+    "prompt": "Goal misgeneralization is the failure where a system does what?",
+    "options": [
+      {
+        "id": "wrong-goal-ood",
+        "text": "Competently pursues the wrong objective once the distribution shifts, despite looking fine in training",
+        "correct": true
+      },
+      {
+        "id": "cannot-learn",
+        "text": "Fails to fit the training set at all",
+        "correct": false
+      },
+      {
+        "id": "hardware",
+        "text": "Overheats the GPU",
+        "correct": false
+      },
+      {
+        "id": "spelling",
+        "text": "Misspells the reward function's name",
+        "correct": false
+      }
+    ],
+    "C": 102,
+    "W": 36
+  },
+  {
+    "id": "goodhart-law-namesake",
+    "prompt": "Goodhart's law, in the form used in alignment discussions, says what happens when a measure becomes a target?",
+    "options": [
+      {
+        "id": "ceases",
+        "text": "It tends to cease being a good measure of the underlying property",
+        "correct": true
+      },
+      {
+        "id": "improves",
+        "text": "It automatically becomes a better measure",
+        "correct": false
+      },
+      {
+        "id": "legal",
+        "text": "It becomes legally binding worldwide",
+        "correct": false
+      },
+      {
+        "id": "random",
+        "text": "Measurement error disappears",
+        "correct": false
+      }
+    ],
+    "C": 65,
+    "W": 41
+  },
+  {
+    "id": "selection-theorems-authors",
+    "prompt": "A \"selection theorem\" in this literature tries to predict what, given training or evolutionary pressure?",
+    "options": [
+      {
+        "id": "which-optimizers",
+        "text": "Which kinds of optimizers or internal structures tend to arise",
+        "correct": true
+      },
+      {
+        "id": "gpu-price",
+        "text": "Next quarter's GPU spot prices",
+        "correct": false
+      },
+      {
+        "id": "copyright",
+        "text": "Which books are in the training set",
+        "correct": false
+      },
+      {
+        "id": "chess-elo",
+        "text": "A unique chess Elo for every model",
+        "correct": false
+      }
+    ],
+    "C": 62,
+    "W": 35
+  },
+  {
+    "id": "mesa-optimizer-paper",
+    "prompt": "A mesa-optimizer is which of the following?",
+    "options": [
+      {
+        "id": "inner",
+        "text": "An optimizer learned inside a trained system, with its own mesa-objective",
+        "correct": true
+      },
+      {
+        "id": "base",
+        "text": "The outer training algorithm itself (SGD, RL trainer)",
+        "correct": false
+      },
+      {
+        "id": "human",
+        "text": "A human rater in the loop",
+        "correct": false
+      },
+      {
+        "id": "gpu",
+        "text": "A hardware scheduler",
+        "correct": false
+      }
+    ],
+    "C": 73,
+    "W": 53
+  },
+  {
+    "id": "debate-oversight-paper",
+    "prompt": "In \"AI safety via debate,\" the hoped-for mechanism is that two systems argue so that a weaker judge can do what?",
+    "options": [
+      {
+        "id": "catch-errors",
+        "text": "Catch errors that would be hard to find by inspecting one answer alone",
+        "correct": true
+      },
+      {
+        "id": "skip-humans",
+        "text": "Replace all human values with a coin flip",
+        "correct": false
+      },
+      {
+        "id": "train-faster",
+        "text": "Guarantee faster SGD convergence",
+        "correct": false
+      },
+      {
+        "id": "prove-lob",
+        "text": "Discharge Löb's theorem",
+        "correct": false
+      }
+    ],
+    "C": 70,
+    "W": 41
+  },
+  {
+    "id": "elk-problem-arc",
+    "prompt": "Eliciting Latent Knowledge (ELK) asks whether we can get a model to report what it internally knows even when what?",
+    "options": [
+      {
+        "id": "simulator",
+        "text": "Training may favor answers a human would give rather than the latent facts",
+        "correct": true
+      },
+      {
+        "id": "small",
+        "text": "The model has fewer than a million parameters",
+        "correct": false
+      },
+      {
+        "id": "no-gpu",
+        "text": "Training is done on CPU only",
+        "correct": false
+      },
+      {
+        "id": "open-weights",
+        "text": "The weights are published",
+        "correct": false
+      }
+    ],
+    "C": 74,
+    "W": 45
+  },
+  {
+    "id": "superposition-paper",
+    "prompt": "In mechanistic interpretability, \"superposition\" means a network may do what?",
+    "options": [
+      {
+        "id": "more-features",
+        "text": "Represent more features than it has dimensions, by overlapping them",
+        "correct": true
+      },
+      {
+        "id": "one-neuron",
+        "text": "Use exactly one neuron per English word",
+        "correct": false
+      },
+      {
+        "id": "no-features",
+        "text": "Store no features at all",
+        "correct": false
+      },
+      {
+        "id": "quantum",
+        "text": "Require a quantum computer",
+        "correct": false
+      }
+    ],
+    "C": 67,
+    "W": 39
+  },
+  {
+    "id": "elk-honest-reporting-crux",
+    "prompt": "The ELK problem centers on whether a model can be made to report latent knowledge honestly even when what?",
+    "options": [
+      {
+        "id": "honesty-not-selected",
+        "text": "Honest reporting was not what training selected for",
+        "correct": true
+      },
+      {
+        "id": "model-too-small",
+        "text": "The model is smaller than 1B parameters",
+        "correct": false
+      },
+      {
+        "id": "no-chain-of-thought",
+        "text": "Chain-of-thought prompting is disabled",
+        "correct": false
+      },
+      {
+        "id": "human-raters-disagree",
+        "text": "Human raters disagree on preferences",
+        "correct": false
+      }
+    ],
+    "C": 51,
+    "W": 39
+  },
+  {
+    "id": "big-bench-paper",
+    "prompt": "BIG-bench (\"Beyond the Imitation Game\") is primarily what kind of artifact?",
+    "options": [
+      {
+        "id": "community-suite",
+        "text": "A large community-contributed suite of language-model tasks",
+        "correct": true
+      },
+      {
+        "id": "shutdown-spec",
+        "text": "A formal shutdown-safety proof",
+        "correct": false
+      },
+      {
+        "id": "world-model",
+        "text": "A guaranteed-safe world model",
+        "correct": false
+      },
+      {
+        "id": "cev",
+        "text": "An implementation of coherent extrapolated volition",
+        "correct": false
+      }
+    ],
+    "C": 59,
+    "W": 51
+  },
+  {
+    "id": "off-switch-game-authors",
+    "prompt": "Who introduced the \"Off-Switch Game\" to formalize whether an agent will allow itself to be shut down?",
+    "options": [
+      {
+        "id": "hadfield",
+        "text": "Dylan Hadfield-Menell, Stuart Russell, Pieter Abbeel, and Anca Dragan",
+        "correct": true
+      },
+      {
+        "id": "soares",
+        "text": "Nate Soares et al. (MIRI corrigibility)",
+        "correct": false
+      },
+      {
+        "id": "christiano",
+        "text": "Paul Christiano et al. (RL from human preferences)",
+        "correct": false
+      },
+      {
+        "id": "bostrom",
+        "text": "Nick Bostrom (Superintelligence)",
+        "correct": false
+      }
+    ],
+    "C": 69,
+    "W": 50
+  },
+  {
+    "id": "cirl-framework-authors",
+    "prompt": "Who developed Cooperative Inverse Reinforcement Learning (CIRL)?",
+    "options": [
+      {
+        "id": "hadfield-cirl",
+        "text": "Hadfield-Menell, Russell, Abbeel, and Dragan (2016)",
+        "correct": true
+      },
+      {
+        "id": "christiano",
+        "text": "Paul Christiano et al. (2017)",
+        "correct": false
+      },
+      {
+        "id": "soares",
+        "text": "Nate Soares et al. (MIRI)",
+        "correct": false
+      },
+      {
+        "id": "irving",
+        "text": "Irving et al. (debate)",
+        "correct": false
+      }
+    ],
+    "C": 51,
+    "W": 29
+  }
+]

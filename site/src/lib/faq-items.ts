@@ -200,6 +200,14 @@ export const FAQ_ITEMS: FaqItem[] = [
     ]
   },
   {
+    question: "What is the quiz?",
+    answer: [
+      "A field-knowledge quiz. Select all that apply; get immediate feedback. After enough answers, it names ",
+      { label: "which researcher knows most about what you already know", href: { kind: "route", path: "/quiz/" } },
+      " — coverage, not agreement."
+    ]
+  },
+  {
     question: "Will there be translations?",
     answer: [
       "Not yet. English is the working language of the book and this site. Other-language editions are not in progress."

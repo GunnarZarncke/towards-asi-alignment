@@ -1,0 +1,365 @@
+[
+  {
+    "id": "redwood-ai-control-agenda",
+    "prompt": "When a capable system may deliberately subvert oversight, which safety framework asks what guarantees can still be shown?",
+    "options": [
+      {
+        "id": "ai-control",
+        "text": "AI Control (safety despite intentional subversion)",
+        "correct": true
+      },
+      {
+        "id": "constitutional-ai",
+        "text": "Constitutional AI",
+        "correct": false
+      },
+      {
+        "id": "gsai",
+        "text": "Guaranteed-Safe AI",
+        "correct": false
+      },
+      {
+        "id": "cirl",
+        "text": "Cooperative Inverse Reinforcement Learning",
+        "correct": false
+      },
+      {
+        "id": "singular-learning",
+        "text": "Singular learning theory for alignment",
+        "correct": false
+      }
+    ],
+    "C": 50,
+    "W": 42
+  },
+  {
+    "id": "chai-assistance-games",
+    "prompt": "Stuart Russell's Center for Human-Compatible AI (CHAI) reorients AI research around what formal interaction model under preference uncertainty?",
+    "options": [
+      {
+        "id": "assistance-games",
+        "text": "Assistance games / cooperative inverse reinforcement learning",
+        "correct": true
+      },
+      {
+        "id": "zero-sum-games",
+        "text": "Two-player zero-sum game theory",
+        "correct": false
+      },
+      {
+        "id": "debate-protocols",
+        "text": "Adversarial debate before a human judge",
+        "correct": false
+      },
+      {
+        "id": "infra-bayesian",
+        "text": "Infra-Bayesian decision theory",
+        "correct": false
+      },
+      {
+        "id": "singular-learning",
+        "text": "Singular learning theory",
+        "correct": false
+      }
+    ],
+    "C": 61,
+    "W": 39
+  },
+  {
+    "id": "gsai-spec-and-world-model",
+    "prompt": "David Dalrymple's Guaranteed-Safe AI (GSAI) framework defines safety guarantees relative to which two explicit artifacts?",
+    "options": [
+      {
+        "id": "spec-world-model",
+        "text": "A formal specification and an explicit world model",
+        "correct": true
+      },
+      {
+        "id": "constitution-preferences",
+        "text": "A written constitution and human preference data",
+        "correct": false
+      },
+      {
+        "id": "debate-judge",
+        "text": "A debate protocol and a human judge",
+        "correct": false
+      },
+      {
+        "id": "regret-bound",
+        "text": "A regret bound and an infra-Bayesian prior",
+        "correct": false
+      },
+      {
+        "id": "eval-threshold",
+        "text": "A capability threshold and a red-team report",
+        "correct": false
+      }
+    ],
+    "C": 50,
+    "W": 48
+  },
+  {
+    "id": "kosoy-infra-bayesianism",
+    "prompt": "Vanessa Kosoy's learning-theoretic agenda introduces Infra-Bayesianism primarily to handle what challenge?",
+    "options": [
+      {
+        "id": "deep-uncertainty",
+        "text": "Reasoning and learning under deep uncertainty (non-realizable environments)",
+        "correct": true
+      },
+      {
+        "id": "gpu-cluster-governance",
+        "text": "Governing access to GPU compute clusters",
+        "correct": false
+      },
+      {
+        "id": "monosemantic-features",
+        "text": "Finding monosemantic features in transformers",
+        "correct": false
+      },
+      {
+        "id": "debate-honesty",
+        "text": "Ensuring debaters remain honest under optimization",
+        "correct": false
+      },
+      {
+        "id": "constitutional-harmlessness",
+        "text": "Training harmless models from AI-written principles",
+        "correct": false
+      }
+    ],
+    "C": 75,
+    "W": 51
+  },
+  {
+    "id": "wentworth-natural-abstractions",
+    "prompt": "John Wentworth's Natural Abstraction Hypothesis asks whether which variables reliably survive optimization and selection pressure?",
+    "options": [
+      {
+        "id": "natural-abstractions",
+        "text": "Natural abstractions—macro-variables that compress messy micro-dynamics",
+        "correct": true
+      },
+      {
+        "id": "raw-token-embeddings",
+        "text": "Raw token-level embeddings in the base model",
+        "correct": false
+      },
+      {
+        "id": "human-survey-labels",
+        "text": "Human survey labels collected once at deployment",
+        "correct": false
+      },
+      {
+        "id": "legal-statutes",
+        "text": "Legal statutes encoded as hard constraints",
+        "correct": false
+      },
+      {
+        "id": "benchmark-scores",
+        "text": "Benchmark leaderboard scores",
+        "correct": false
+      }
+    ],
+    "C": 71,
+    "W": 48
+  },
+  {
+    "id": "metr-autonomy-evals",
+    "prompt": "Frontier autonomy evaluations in the METR lineage primarily measure which class of capabilities?",
+    "options": [
+      {
+        "id": "autonomous-dangerous",
+        "text": "Dangerous autonomous capabilities and AI R&D capabilities",
+        "correct": true
+      },
+      {
+        "id": "image-generation",
+        "text": "Image-generation aesthetic quality",
+        "correct": false
+      },
+      {
+        "id": "translation-bleu",
+        "text": "Machine-translation BLEU scores",
+        "correct": false
+      },
+      {
+        "id": "chess-elo",
+        "text": "Chess and board-game Elo ratings",
+        "correct": false
+      },
+      {
+        "id": "protein-folding",
+        "text": "Protein-folding accuracy alone",
+        "correct": false
+      }
+    ],
+    "C": 57,
+    "W": 34
+  },
+  {
+    "id": "apollo-situational-awareness-dataset",
+    "prompt": "The Situational Awareness Dataset (SAD) tests whether models recognize what about their own context?",
+    "options": [
+      {
+        "id": "training-eval-context",
+        "text": "Whether they are in training, evaluation, or deployment (situational awareness)",
+        "correct": true
+      },
+      {
+        "id": "math-reasoning",
+        "text": "Whether they can solve competition-level mathematics",
+        "correct": false
+      },
+      {
+        "id": "human-preferences",
+        "text": "A single fixed human preference ordering",
+        "correct": false
+      },
+      {
+        "id": "hardware-specs",
+        "text": "The GPU cluster specifications used during training",
+        "correct": false
+      },
+      {
+        "id": "benchmark-leakage",
+        "text": "Which benchmark items appeared in pretraining data",
+        "correct": false
+      }
+    ],
+    "C": 79,
+    "W": 52
+  },
+  {
+    "id": "deepmind-discovering-agents",
+    "prompt": "The Discovering Agents research line aims to identify agents by analyzing what?",
+    "options": [
+      {
+        "id": "system-dynamics",
+        "text": "Causal structure in system dynamics (without presupposing agent boundaries)",
+        "correct": true
+      },
+      {
+        "id": "user-prompts",
+        "text": "User prompt templates in chat logs",
+        "correct": false
+      },
+      {
+        "id": "benchmark-leaderboards",
+        "text": "Benchmark leaderboard rankings",
+        "correct": false
+      },
+      {
+        "id": "gpu-utilization",
+        "text": "GPU utilization traces during training",
+        "correct": false
+      },
+      {
+        "id": "legal-contracts",
+        "text": "Legal contracts between labs and cloud providers",
+        "correct": false
+      }
+    ],
+    "C": 75,
+    "W": 48
+  },
+  {
+    "id": "arc-human-simulator-failure",
+    "prompt": "In ARC's ELK framing, a \"human simulator\" failure mode means the model reports what?",
+    "options": [
+      {
+        "id": "human-would-say",
+        "text": "What a human would say, rather than its own latent knowledge",
+        "correct": true
+      },
+      {
+        "id": "random-guess",
+        "text": "A uniformly random guess from the vocabulary",
+        "correct": false
+      },
+      {
+        "id": "training-loss",
+        "text": "The current training loss value",
+        "correct": false
+      },
+      {
+        "id": "gpu-temperature",
+        "text": "Hardware temperature readings",
+        "correct": false
+      },
+      {
+        "id": "benchmark-answer-key",
+        "text": "The published benchmark answer key",
+        "correct": false
+      }
+    ],
+    "C": 60,
+    "W": 44
+  },
+  {
+    "id": "govai-compute-governance",
+    "prompt": "GovAI's compute-governance research argues that controlling what resource can be a lever for AI governance?",
+    "options": [
+      {
+        "id": "computing-power",
+        "text": "Computing power (compute access and concentration)",
+        "correct": true
+      },
+      {
+        "id": "training-data-copyright",
+        "text": "Copyright status of training data only",
+        "correct": false
+      },
+      {
+        "id": "model-parameter-count",
+        "text": "Published parameter counts alone",
+        "correct": false
+      },
+      {
+        "id": "social-media-accounts",
+        "text": "Social-media account verification",
+        "correct": false
+      },
+      {
+        "id": "electricity-pricing",
+        "text": "Residential electricity pricing",
+        "correct": false
+      }
+    ],
+    "C": 50,
+    "W": 38
+  },
+  {
+    "id": "clr-s-risks",
+    "prompt": "The Center on Long-Term Risk (CLR) emphasizes research on s-risks. What does the \"s\" stand for?",
+    "options": [
+      {
+        "id": "suffering",
+        "text": "Suffering (worst-case suffering risks in multipolar scenarios)",
+        "correct": true
+      },
+      {
+        "id": "superintelligence",
+        "text": "Superintelligence",
+        "correct": false
+      },
+      {
+        "id": "specification",
+        "text": "Specification",
+        "correct": false
+      },
+      {
+        "id": "simulation",
+        "text": "Simulation",
+        "correct": false
+      },
+      {
+        "id": "scaling",
+        "text": "Scaling",
+        "correct": false
+      }
+    ],
+    "C": 62,
+    "W": 17
+  }
+]

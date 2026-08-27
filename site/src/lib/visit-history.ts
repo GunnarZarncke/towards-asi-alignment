@@ -14,7 +14,8 @@ export type VisitType =
   | "news"
   | "about"
   | "start"
-  | "essay";
+  | "essay"
+  | "quiz";
 
 export type VisitEntry = {
   path: string;
@@ -34,7 +35,8 @@ const TYPE_LABELS: Record<VisitType, string> = {
   news: "News",
   about: "About",
   start: "Start Here",
-  essay: "Essays"
+  essay: "Essays",
+  quiz: "Quiz"
 };
 
 const CARD_KIND_LABELS: Record<string, string> = {
@@ -102,6 +104,7 @@ export function visitTypeForPath(pathname: string): VisitType | null {
   if (first === "about") return "about";
   if (first === "start" || first === "faq") return "start";
   if (first === "essay") return "essay";
+  if (first === "quiz") return "quiz";
   return null;
 }
 

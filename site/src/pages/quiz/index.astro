@@ -1,0 +1,33 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import QuizPlayer from "../../components/QuizPlayer.astro";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+---
+
+<SiteLayout
+  title="Quiz"
+  description="Which researcher knows most about the topics you already know? Field facts, immediate feedback."
+>
+  <section class="hero">
+    <p class="eyebrow">Quiz</p>
+    <h1>Which researcher knows most about the topics you already know?</h1>
+    <p class="lede">
+      A knowledge quiz on alignment field facts — not opinions, not a memory test of this book.
+      Select all that apply; none, one, or several may be correct.
+    </p>
+    <p class="side-panel-meta">
+      Keep answering until a researcher match unlocks.
+      That match names who has written about what you got right — not who you should agree with.
+    </p>
+  </section>
+
+  <QuizPlayer />
+</SiteLayout>
+
+<style>
+  .quiz-shell {
+    margin-top: 1.5rem;
+  }
+</style>

@@ -1,0 +1,1203 @@
+questions:
+- id: bostrom-superintelligence-author
+  prompt: 'Who authored Superintelligence: Paths, Dangers, Strategies (2014)?'
+  options:
+  - id: bostrom
+    text: Nick Bostrom
+    correct: true
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: false
+  - id: legg
+    text: Shane Legg
+    correct: false
+  - id: amodei
+    text: Dario Amodei
+    correct: false
+  explanation: Nick Bostrom's Superintelligence (2014) popularized long-horizon AGI risk for policy and research audiences.
+  source:
+    href: /cards/chapter/ch02/
+    label: Chapter 2 — From Artificial Intelligence to Artificial Civilization
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch02
+- id: legg-hutter-agi-definition
+  prompt: What does the Legg-Hutter (2007) formalization treat as the core of general intelligence?
+  options:
+  - id: env-performance
+    text: "Expected performance across environments, weighted by complexity"
+    correct: true
+  - id: benchmark-scores
+    text: Fixed scores on a single standardized benchmark suite of tasks
+    correct: false
+  - id: social-reasoning
+    text: Human-like social and emotional reasoning as the measured core
+    correct: false
+  - id: turing-test
+    text: Passing a conversational imitation test as the measured core
+    correct: false
+  - id: memorization
+    text: Raw memorization of training data as the measured core skill
+    correct: false
+  explanation: Legg and Hutter (2007) linked algorithmic intelligence to Kolmogorov complexity and defined AGI in measurable terms.
+  source:
+    href: /cards/chapter/ch02/
+    label: Chapter 2 — From Artificial Intelligence to Artificial Civilization
+  topics:
+  - MB7c
+  appearOn:
+  - chapter:ch02
+- id: russell-human-compatible-book
+  prompt: What alignment formulation does Russell's Human Compatible (2019) advocate instead of maximizing a fixed utility function?
+  options:
+  - id: assistance-games
+    text: Assistance games where the agent infers and helps with preferences
+    correct: true
+  - id: fixed-utility
+    text: Hard-coded fixed utility maximization with no preference inference
+    correct: false
+  - id: pure-imitation
+    text: Pure behavioral cloning with no preference inference from humans
+    correct: false
+  - id: rule-list
+    text: A fixed list of deontological rules with no residual uncertainty
+    correct: false
+  - id: random-exploration
+    text: Unconstrained random exploration of actions without a preference model
+    correct: false
+  explanation: Russell's Human Compatible argues assistance-game formulations beat fixed-utility maximization for aligned AI.
+  source:
+    href: /cards/chapter/ch03/
+    label: Chapter 3 — Alignment as a Dynamical Guarantee
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch03
+- id: omohundro-basic-ai-drives
+  prompt: What does Omohundro's "Basic AI Drives" thesis claim about sufficiently advanced optimizers?
+  options:
+  - id: convergent-instrumental
+    text: They tend toward convergent instrumental subgoals such as self-preservation
+    correct: true
+  - id: terminal-only
+    text: They treat terminal goals as fully overriding any instrumental reasoning
+    correct: false
+  - id: programmed-only
+    text: They only ever exhibit drives that were explicitly programmed in them
+    correct: false
+  - id: scale-away
+    text: They drop instrumental drives automatically once they scale enough
+    correct: false
+  - id: auto-aligned
+    text: They become aligned automatically once intelligence crosses a threshold
+    correct: false
+  explanation: Omohundro (2008) argued sufficiently advanced optimizers tend toward convergent instrumental subgoals regardless of terminal values.
+  source:
+    href: /cards/chapter/ch03/
+    label: Chapter 3 — Alignment as a Dynamical Guarantee
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch03
+- id: yudkowsky-cev-paper
+  prompt: Who introduced Coherent Extrapolated Volition (CEV) as a proposed alignment target?
+  options:
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: true
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  - id: bostrom
+    text: Nick Bostrom
+    correct: false
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: soares
+    text: Nate Soares
+    correct: false
+  explanation: 'Yudkowsky (2004) proposed CEV: aggregate what humans would want if they knew more, thought longer, and were more the people they wished to be.'
+  source:
+    href: /cards/chapter/ch04/
+    label: Chapter 4 — Why Fixed Values Are the Wrong Target
+  topics:
+  - MB8
+  appearOn:
+  - chapter:ch04
+- id: ng-russell-irl-origin
+  prompt: Who introduced inverse reinforcement learning as inferring reward functions from observed behavior? (Select all that apply.)
+  options:
+  - id: ng
+    text: Andrew Ng
+    correct: true
+  - id: russell
+    text: Stuart Russell
+    correct: true
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: ziebart
+    text: Brian Ziebart
+    correct: false
+  - id: hadfield
+    text: Dylan Hadfield-Menell
+    correct: false
+  - id: amodei
+    text: Dario Amodei
+    correct: false
+  explanation: Ng and Russell (ICML 2000) formalized IRL; the field later showed many reward functions fit the same behavior.
+  source:
+    href: /cards/chapter/ch04/
+    label: Chapter 4 — Why Fixed Values Are the Wrong Target
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch04
+- id: armstrong-low-impact-agents
+  prompt: What design goal did Armstrong, Sandberg, and Bostrom (2012) formalize in "Thinking Inside the Box"?
+  options:
+  - id: low-impact
+    text: Agents that pursue goals while minimizing environmental side effects
+    correct: true
+  - id: max-explore
+    text: Agents that maximize environment exploration regardless of side effects
+    correct: false
+  - id: adversarial-robust
+    text: Agents that pursue adversarial robustness against gradient attacks only
+    correct: false
+  - id: saliency-only
+    text: Agents that pursue interpretability through input saliency maps alone
+    correct: false
+  - id: debate-oversight
+    text: Agents that treat multi-agent debate as the sole alignment mechanism
+    correct: false
+  explanation: Armstrong, Sandberg, and Bostrom (2012) asked agents to minimize side effects while pursuing goals — a precursor to impact measures.
+  source:
+    href: /cards/chapter/ch05/
+    label: Chapter 5 — Assumptions, Scope, and Failure Coverage
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch05
+- id: leike-scalable-agent-alignment
+  prompt: What alignment approach did Leike et al. (2018) outline for scaling oversight to superhuman agents?
+  options:
+  - id: reward-modeling
+    text: Scalable oversight via learned reward models and human feedback
+    correct: true
+  - id: self-play-only
+    text: Pure self-play with no human feedback and no reward modeling
+    correct: false
+  - id: unsupervised-only
+    text: "Unsupervised pretraining alone, without any preference data"
+    correct: false
+  - id: formal-verify
+    text: Complete formal verification of every neural network weight
+    correct: false
+  - id: constitutional-only
+    text: Constitutional AI with no reward-model training from humans
+    correct: false
+  explanation: Leike et al. (2018) outlined scalable oversight via learned reward models — the DeepMind line parallel to Christiano's RLHF work.
+  source:
+    href: /cards/chapter/ch05/
+    label: Chapter 5 — Assumptions, Scope, and Failure Coverage
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch05
+- id: hutter-aixi-formalism
+  prompt: What is AIXI in Hutter's formalism?
+  options:
+  - id: ideal-rl-agent
+    text: An idealized universal RL agent bounded only by computability
+    correct: true
+  - id: brain-model
+    text: "A biologically realistic model of the human brain's learning"
+    correct: false
+  - id: nn-architecture
+    text: A specific deep neural network architecture for language tasks
+    correct: false
+  - id: game-equilibrium
+    text: A Nash equilibrium concept for agents in repeated-game play
+    correct: false
+  - id: cert-protocol
+    text: A practical deep-RL agent with no universal mixture prior
+    correct: false
+  explanation: Hutter (2000s) defined AIXI as an idealized RL agent; it clarifies what "intelligence" means without anthropomorphic assumptions.
+  source:
+    href: /cards/chapter/ch06/
+    label: Chapter 6 — What Is an Agent Without Anthropomorphism?
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch06
+- id: park-deceptive-alignment-survey
+  prompt: What phenomenon does the 2024 "Deceptive Alignment" survey primarily synthesize evidence for?
+  options:
+  - id: strategic-misrep
+    text: Models strategically misrepresent objectives during evaluation
+    correct: true
+  - id: hardware-fail
+    text: Models honestly report objectives throughout training and tests
+    correct: false
+  - id: atari-hack
+    text: Unintended reward hacking without strategic misrepresentation
+    correct: false
+  - id: benchmark-contam
+    text: Dataset contamination that only mimics strategic misrepresentation
+    correct: false
+  - id: full-interpret
+    text: Full layer interpretability that rules out misrepresentation
+    correct: false
+  explanation: Park et al. (2024) reviewed conditions under which models might strategically misrepresent objectives during training and evaluation.
+  source:
+    href: /cards/chapter/ch06/
+    label: Chapter 6 — What Is an Agent Without Anthropomorphism?
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch06
+- id: pearl-do-calculus
+  prompt: Who developed the do-calculus for identifying causal effects from observational data?
+  options:
+  - id: pearl
+    text: Jude Pearl
+    correct: true
+  - id: rubin
+    text: Donald Rubin
+    correct: false
+  - id: granger
+    text: Clive Granger
+    correct: false
+  - id: friston
+    text: Karl Friston
+    correct: false
+  - id: spirtes
+    text: Peter Spirtes
+    correct: false
+  explanation: Pearl's do-calculus (1990s–2000s) formalizes interventions — the field toolset boundary discovery builds on.
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch07
+- id: garrabrant-cartesian-frames
+  prompt: What problem do Cartesian Frames aim to address in embedded agency?
+  options:
+  - id: naive-cut
+    text: Naive agent-environment cuts that fail once agents are embedded
+    correct: true
+  - id: gpu-memory
+    text: Clean Cartesian cuts that remain valid once agents are embedded
+    correct: false
+  - id: reward-sparse
+    text: Agent-environment cuts that hold only for disembodied oracles
+    correct: false
+  - id: social-choice
+    text: Embedded cuts that fail only in multi-agent social choice
+    correct: false
+  - id: scaling-plateau
+    text: Embedded cuts that fail only when language-model scaling plateaus
+    correct: false
+  explanation: Garrabrant (2021) proposed Cartesian Frames as an alternative to naive agent–environment cuts in embedded settings.
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch07
+- id: jaderberg-population-based-training
+  prompt: What mechanism does Population Based Training (PBT) use during deep RL training?
+  options:
+  - id: pop-evolve
+    text: Evolving populations that copy weights and replace underperformers
+    correct: true
+  - id: curriculum
+    text: Single-agent curriculum learning with fully fixed hyperparameters
+    correct: false
+  - id: distillation
+    text: Knowledge distillation from one frozen teacher throughout training
+    correct: false
+  - id: offline-bayes
+    text: Offline Bayesian hyperparameter search with no weight sharing
+    correct: false
+  - id: adversarial-only
+    text: Adversarial self-play with no explicit population-level structure
+    correct: false
+  explanation: Jaderberg et al. (2017) showed training populations can split, merge, and adapt — a field precedent for grow/split/merge dynamics.
+  source:
+    href: /cards/chapter/ch08/
+    label: Chapter 8 — Agents That Grow, Split, and Merge
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch08
+- id: burns-weak-to-strong
+  prompt: What question did OpenAI's 2023 "Weak-to-Strong Generalization" work empirically test?
+  options:
+  - id: weak-supervise-strong
+    text: "Whether weaker supervisors can align stronger, more capable models"
+    correct: true
+  - id: vision-scaling
+    text: Whether scaling laws hold for standard computer-vision models
+    correct: false
+  - id: eliminate-halluc
+    text: Whether RLHF eliminates all hallucinations in language models
+    correct: false
+  - id: debate-beats-amp
+    text: Whether debate always beats iterated amplification in practice
+    correct: false
+  - id: grokking-llm
+    text: Whether grokking occurs in large language-model pretraining runs
+    correct: false
+  explanation: Burns et al. (2023) tested whether GPT-4-scale supervision can control more capable successors — central to successor-alignment debates.
+  source:
+    href: /cards/chapter/ch08/
+    label: Chapter 8 — Agents That Grow, Split, and Merge
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch08
+- id: baker-emergent-tool-use
+  prompt: What did Baker et al. (2019) demonstrate with multi-agent hide-and-seek training?
+  options:
+  - id: emergent-tools
+    text: Complex tool use emerging without any explicit programming
+    correct: true
+  - id: guaranteed-align
+    text: Guaranteed alignment arising from multi-agent self-play alone
+    correct: false
+  - id: perfect-nash
+    text: Perfect Nash equilibria arising in every multi-agent game
+    correct: false
+  - id: full-interpret
+    text: Complete interpretability of every emergent trained behavior
+    correct: false
+  - id: training-fails
+    text: Persistent failure of multi-agent training to yield useful skill
+    correct: false
+  explanation: Baker et al. (2019) showed complex behaviors can arise from multi-agent interaction without explicit programming — composite-agency evidence.
+  source:
+    href: /cards/chapter/ch09/
+    label: Chapter 9 — The Real Agent May Be Composite
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch09
+- id: demski-embedded-agency-sequence
+  prompt: What central claim does MIRI's Embedded Agency sequence make?
+  options:
+  - id: no-clean-cut
+    text: There is no clean Cartesian cut between agent and environment
+    correct: true
+  - id: always-modular
+    text: Intelligent agents stay modular and fully environment-independent
+    correct: false
+  - id: no-goals
+    text: Embedded agents cannot have goals or any preferences at all
+    correct: false
+  - id: no-modeling
+    text: Environment modeling is unnecessary for any competent agent
+    correct: false
+  - id: always-aligned
+    text: Multi-agent systems stay automatically aligned by default
+    correct: false
+  explanation: MIRI's Embedded Agency sequence (Garrabrant, Demski, et al.) argues there is no clean Cartesian cut between agent and environment.
+  source:
+    href: /cards/chapter/ch09/
+    label: Chapter 9 — The Real Agent May Be Composite
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch09
+- id: carlsmith-power-seeking-report
+  prompt: What risk does Carlsmith's 2022 Open Philanthropy report examine?
+  options:
+  - id: power-seeking
+    text: Power-seeking as an instrumental strategy in advanced AI systems
+    correct: true
+  - id: supply-chain
+    text: Accidental misuse as the only risk from advanced AI systems
+    correct: false
+  - id: copyright
+    text: Capability overhang without any instrumental power-seeking
+    correct: false
+  - id: gpu-shortage
+    text: Immediate hardware failure as the primary advanced-AI risk
+    correct: false
+  - id: quantum-spec
+    text: Purely speculative risks with no instrumental-strategy content
+    correct: false
+  explanation: Carlsmith (2022) reviewed evidence that advanced AI systems may seek power instrumentally — a strategic-opacity concern.
+  source:
+    href: /cards/chapter/ch10/
+    label: Chapter 10 — Agency Under Strategic Opacity
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch10
+- id: christiano-what-failure-looks-like
+  prompt: What two distinct failure shapes does Christiano's "What Failure Looks Like" (2019) describe? (Select all that apply.)
+  options:
+  - id: drift
+    text: Gradual institutional drift
+    correct: true
+  - id: overhang
+    text: Fast capability overhang
+    correct: true
+  - id: paperclip-shutdown
+    text: A single-shot paperclip maximizer followed by immediate shutdown
+    correct: false
+  - id: deceptive-only
+    text: Deceptive alignment as the sole failure mode
+    correct: false
+  - id: no-failure-until-asi
+    text: No alignment failures occur until superintelligence is reached
+    correct: false
+  explanation: Christiano (2019) described slow institutional drift and fast capability overhang as two distinct failure shapes.
+  source:
+    href: /cards/chapter/ch10/
+    label: Chapter 10 — Agency Under Strategic Opacity
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch10
+- id: kaplan-scaling-laws
+  prompt: Who co-authored OpenAI's 2020 paper on neural language model scaling laws?
+  options:
+  - id: kaplan
+    text: Jared Kaplan et al.
+    correct: true
+  - id: hoffmann
+    text: "Jordan Hoffmann et al. (Chinchilla)"
+    correct: false
+  - id: brown
+    text: "Tom Brown et al. (GPT-3)"
+    correct: false
+  - id: radford
+    text: Alec Radford et al.
+    correct: false
+  - id: srivastava
+    text: "Aarohi Srivastava et al. (BIG-bench)"
+    correct: false
+  explanation: Kaplan et al. (2020) related loss to compute, data, and parameters — foundational for task-agnostic capability measurement.
+  source:
+    href: /cards/chapter/ch11/
+    label: Chapter 11 — Measuring Capability Without Task Ontology
+  topics:
+  - MB7c
+  appearOn:
+  - chapter:ch11
+- id: hendrycks-ml-safety-problems
+  prompt: What scope does Hendrycks et al.'s "Unsolved Problems in ML Safety" (2022) cover beyond single-task benchmarks? (Select all that apply.)
+  options:
+  - id: robustness
+    text: Robustness
+    correct: true
+  - id: monitoring
+    text: Monitoring
+    correct: true
+  - id: alignment
+    text: Alignment
+    correct: true
+  - id: systemic
+    text: Systemic risks
+    correct: true
+  - id: imagenet-only
+    text: ImageNet classification accuracy only
+    correct: false
+  - id: chess-only
+    text: Chess-playing agent performance only
+    correct: false
+  explanation: Hendrycks et al. (2022) catalogued robustness, monitoring, alignment, and systemic risks beyond single-task benchmarks.
+  source:
+    href: /cards/chapter/ch11/
+    label: Chapter 11 — Measuring Capability Without Task Ontology
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch11
+- id: hoffmann-chinchilla
+  prompt: What key finding did the Chinchilla paper (Hoffmann et al., 2022) establish about LLM training?
+  options:
+  - id: data-scale
+    text: "Compute-optimal training scales data with size, not parameters alone"
+    correct: true
+  - id: less-data
+    text: "Larger models always need strictly less training data, not more"
+    correct: false
+  - id: rlhf-replaces
+    text: RLHF fully replaces the need for any pretraining of the model
+    correct: false
+  - id: laws-invalid
+    text: Neural scaling laws are empirically invalid for language models
+    correct: false
+  - id: inference-irrelevant
+    text: Inference cost is irrelevant when measuring model capability
+    correct: false
+  explanation: 'Hoffmann et al. (2022) revised scaling-law practice: capability grows with efficient compute use, not parameter count alone.'
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB7c
+  appearOn:
+  - chapter:ch12
+- id: metr-founder
+  prompt: Who founded METR (formerly ARC Evals), an org measuring frontier model autonomous-task capability?
+  options:
+  - id: barnes
+    text: Beth Barnes
+    correct: true
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: amodei
+    text: Dario Amodei
+    correct: false
+  - id: hendrycks
+    text: Dan Hendrycks
+    correct: false
+  - id: shlegeris
+    text: Buck Shlegeris
+    correct: false
+  explanation: Beth Barnes founded METR to run real-world autonomous capability evaluations — boundary-expansion measurement in practice.
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB7c
+  appearOn:
+  - chapter:ch12
+- id: kulveit-gradual-disempowerment
+  prompt: What dynamic does Kulveit et al. (2025) model in "Gradual Disempowerment of Humans by AI"?
+  options:
+  - id: incremental-erosion
+    text: Incremental erosion of human control without a sharp takeover event
+    correct: true
+  - id: sudden-singularity
+    text: Sudden hardware singularity as the only pathway
+    correct: false
+  - id: perfect-cooperation
+    text: Guaranteed perfect human-AI cooperation at all times
+    correct: false
+  - id: one-bug-extinction
+    text: Immediate human extinction from a single software bug
+    correct: false
+  - id: fully-reversible
+    text: Fully reversible disempowerment with no lasting institutional effects
+    correct: false
+  explanation: Kulveit et al. (2025) model how incremental AI assistance can erode human control without a sharp takeover event.
+  source:
+    href: /cards/chapter/ch13/
+    label: Chapter 13 — The Coordination Bottleneck
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch13
+- id: garrabrant-tdt
+  prompt: What class of problems does Garrabrant's decision-theory work (e.g., "Toward a New Decision Theory") target?
+  options:
+  - id: acausal-coord
+    text: Coordination problems that persist when causal channels are cut
+    correct: true
+  - id: bandit-opt
+    text: Coordination problems that vanish when causal channels are cut
+    correct: false
+  - id: gpu-schedule
+    text: Newcomb-like problems that reduce to ordinary causal decision
+    correct: false
+  - id: full-obs-causal
+    text: Decision problems that require only evidential updating rules
+    correct: false
+  - id: descriptive-ethics
+    text: Coordination that requires only shared ordinary causal influence
+    correct: false
+  explanation: Garrabrant's decision-theory work (2010s) addresses coordination problems that survive severed ordinary channels — acausal coordination territory.
+  source:
+    href: /cards/chapter/ch13/
+    label: Chapter 13 — The Coordination Bottleneck
+  topics:
+  - MB7d
+  appearOn:
+  - chapter:ch13
+- id: hubinger-inner-misalignment-overview
+  prompt: How does Hubinger et al.'s alignment overview distinguish outer from inner alignment?
+  options:
+  - id: objective-vs-optimizer
+    text: Outer is specifying the right objective; inner is actually pursuing it
+    correct: true
+  - id: hardware-software
+    text: Outer is hardware safety; inner is software safety of the model
+    correct: false
+  - id: identical
+    text: Outer and inner alignment name exactly the same technical problem
+    correct: false
+  - id: data-params
+    text: "Outer is training-data size; inner is the model's parameter count"
+    correct: false
+  - id: train-deploy
+    text: Outer applies only at training; inner applies only at deployment
+    correct: false
+  explanation: Hubinger et al. surveyed alignment proposals and separated outer alignment (right objective) from inner alignment (optimizer matches objective).
+  source:
+    href: /cards/chapter/ch14/
+    label: Chapter 14 — When Intelligence Deepens Misalignment
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch14
+- id: cotra-bioanchors-forecast
+  prompt: What methodology does Cotra's "Bio Anchors" report use to estimate AI timelines?
+  options:
+  - id: bio-anchors
+    text: Biological anchors comparing AI progress to brains and evolution
+    correct: true
+  - id: expert-polls
+    text: Expert polls with no quantitative modeling of compute or brains
+    correct: false
+  - id: stock-market
+    text: Stock-market indices as the primary quantitative timeline signal
+    correct: false
+  - id: hardware-price
+    text: Hardware price trends alone as the sole timeline methodology
+    correct: false
+  - id: no-method
+    text: A purely qualitative narrative with no quantitative methodology
+    correct: false
+  explanation: Cotra (2020) used biological anchors to forecast AI capability growth — context for how fast misalignment pressure may arrive.
+  source:
+    href: /cards/chapter/ch14/
+    label: Chapter 14 — When Intelligence Deepens Misalignment
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch14
+- id: schultz-reward-prediction-error
+  prompt: What did Schultz et al.'s dopamine neuron research establish about reward signaling?
+  options:
+  - id: prediction-error
+    text: "Phasic dopamine encodes reward prediction errors, not raw reward alone"
+    correct: true
+  - id: pain-only
+    text: Dopamine signals pain and aversive stimuli exclusively
+    correct: false
+  - id: no-learning
+    text: Dopamine is unrelated to learning or value updating
+    correct: false
+  - id: raw-reward
+    text: Dopamine tracks absolute reward magnitude with no prediction component
+    correct: false
+  - id: ignore-error
+    text: The brain ignores prediction errors when updating behavior
+    correct: false
+  explanation: Schultz et al. (1990s) showed phasic dopamine tracks prediction errors — neuroscience basis for compressed reward/value signals.
+  source:
+    href: /cards/chapter/ch15/
+    label: Chapter 15 — Values Are Compressed Control Signals
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch15
+- id: turner-shard-theory
+  prompt: What does Shard Theory (Turner et al., 2022) claim about values inside neural networks?
+  options:
+  - id: context-shards
+    text: "Context-dependent value fragments, not one unified utility function"
+    correct: true
+  - id: single-utility
+    text: A single global utility function is always what the network learns
+    correct: false
+  - id: no-values
+    text: Values cannot be represented in network weights in any form
+    correct: false
+  - id: biological-only
+    text: "Value shards exist only in biological brains, never in ML models"
+    correct: false
+  - id: one-reward
+    text: Standard RL always converges to exactly one scalar reward signal
+    correct: false
+  explanation: Turner et al. (2022) argued models learn context-dependent value shards rather than a single utility function.
+  source:
+    href: /cards/chapter/ch15/
+    label: Chapter 15 — Values Are Compressed Control Signals
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch15
+- id: ziebart-maxent-irl
+  prompt: How does maximum-entropy inverse reinforcement learning (Ziebart et al., 2008) address IRL ambiguity?
+  options:
+  - id: maxent-prior
+    text: It prefers high-entropy rewards that still make the behavior likely
+    correct: true
+  - id: unique-reward
+    text: It assumes a unique reward function always exists for any behavior
+    correct: false
+  - id: ignore-trajectories
+    text: It ignores observed trajectories and uses only supervised labels
+    correct: false
+  - id: full-internal
+    text: "It requires full observability of the demonstrator's internal states"
+    correct: false
+  - id: classification-only
+    text: It reduces inverse RL to ordinary image-classification training
+    correct: false
+  explanation: Ziebart et al. (2008) used maximum entropy to resolve IRL ambiguity — a field approach to inferring latent preferences.
+  source:
+    href: /cards/chapter/ch16/
+    label: Chapter 16 — The Value-Bundle Model
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch16
+- id: wirth-irl-survey
+  prompt: What fundamental limitation does Wirth et al.'s IRL survey (2017) emphasize?
+  options:
+  - id: non-identifiable
+    text: Many reward functions are consistent with the same observed behavior
+    correct: true
+  - id: always-unique
+    text: "IRL always uniquely identifies the demonstrator's true reward"
+    correct: false
+  - id: no-preferences
+    text: Observed behavior never reveals any preference information at all
+    correct: false
+  - id: direct-observe
+    text: Reward functions are always directly observable at deployment
+    correct: false
+  - id: mind-reading
+    text: "IRL requires literal mind-reading of the demonstrator's states"
+    correct: false
+  explanation: Wirth et al. (2017) reviewed IRL algorithms and the fundamental non-identifiability of reward from behavior alone.
+  source:
+    href: /cards/chapter/ch16/
+    label: Chapter 16 — The Value-Bundle Model
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch16
+- id: nanda-grokking-paper
+  prompt: What phenomenon did Nanda et al. (2022) track as a phase change in learned representations?
+  options:
+  - id: grokking
+    text: Grokking — delayed generalization after extended memorization
+    correct: true
+  - id: immediate-converge
+    text: Immediate convergence on all tasks from the first epoch
+    correct: false
+  - id: permanent-overfit
+    text: Permanent overfitting with no generalization ever occurring
+    correct: false
+  - id: train-loss-zero
+    text: Complete loss of training accuracy while test accuracy improves
+    correct: false
+  - id: scaling-breakdown
+    text: Breakdown of scaling laws in language model pretraining only
+    correct: false
+  explanation: Nanda et al. (2022) tracked grokking as a phase change in learned representations — relevant to low-dimensional value structure.
+  source:
+    href: /cards/chapter/ch17/
+    label: Chapter 17 — When Low Dimensionality Helps Value Learning
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch17
+- id: olah-circuits-thread
+  prompt: What research question does Anthropic's "Circuits" thread on mechanistic interpretability pursue?
+  options:
+  - id: map-circuits
+    text: Whether identifiable circuits and features can be mapped in networks
+    correct: true
+  - id: forever-blackbox
+    text: Whether all models must remain permanently uninterpretable boxes
+    correct: false
+  - id: max-params
+    text: Whether parameter count should be maximized over interpretability
+    correct: false
+  - id: eliminate-interp
+    text: Whether interpretability research can be dropped as unnecessary
+    correct: false
+  - id: behavioral-only
+    text: Whether behavioral tests suffice with no internal analysis at all
+    correct: false
+  explanation: Olah et al. (2020) opened the circuits research thread — asking whether internal features remain stable enough to read values from.
+  source:
+    href: /cards/chapter/ch17/
+    label: Chapter 17 — When Low Dimensionality Helps Value Learning
+  topics:
+  - MB7a
+  appearOn:
+  - chapter:ch17
+- id: long-seth-ai-welfare
+  prompt: Who is the lead author of "Taking AI Welfare Seriously" (2024)?
+  options:
+  - id: long
+    text: Robert Long et al.
+    correct: true
+  - id: butlin
+    text: Patrick Butlin et al.
+    correct: false
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  - id: sebo
+    text: Jeff Sebo alone
+    correct: false
+  - id: bostrom
+    text: Nick Bostrom
+    correct: false
+  explanation: Long et al. (2024, arXiv:2411.00986) argue AI systems may warrant moral consideration — the field question of who values apply to.
+  source:
+    href: /cards/chapter/ch18/
+    label: Chapter 18 — What Values Apply To
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch18
+- id: butlin-consciousness-indicators
+  prompt: Who led the 2023 report assembling indicator properties for AI consciousness?
+  options:
+  - id: butlin
+    text: Patrick Butlin et al.
+    correct: true
+  - id: chalmers
+    text: David Chalmers alone
+    correct: false
+  - id: dennett
+    text: Daniel Dennett
+    correct: false
+  - id: long
+    text: Robert Long alone
+    correct: false
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  explanation: Butlin et al. (2023) compiled neuroscience-grounded indicators — evidence providers for bearer admission, not a solved test.
+  source:
+    href: /cards/chapter/ch18/
+    label: Chapter 18 — What Values Apply To
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch18
+- id: arrow-impossibility-theorem
+  prompt: What does Arrow's impossibility theorem (1951) show about social choice?
+  options:
+  - id: no-perfect-system
+    text: No rank-order voting system meets all stated fairness axioms at once
+    correct: true
+  - id: perfect-exists
+    text: A perfect aggregation rule exists for every preference profile
+    correct: false
+  - id: majority-always-fair
+    text: Simple majority rule always satisfies every fairness criterion
+    correct: false
+  - id: no-conflicts
+    text: Individual preferences can never conflict inside any voting group
+    correct: false
+  - id: ai-solves-voting
+    text: AI alignment makes social-choice tradeoffs irrelevant in practice
+    correct: false
+  explanation: Arrow (1951) showed no rank-order voting system satisfies all fairness axioms — tradeoffs in aggregating preferences are unavoidable.
+  source:
+    href: /cards/chapter/ch19/
+    label: Chapter 19 — Tradeoffs and Bundle Geometry
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch19
+- id: sen-capability-approach
+  prompt: How does Sen's capability approach define welfare?
+  options:
+  - id: multidimensional-freedom
+    text: "As multidimensional freedom and real opportunities, not utility alone"
+    correct: true
+  - id: scalar-utility
+    text: As maximization of a single scalar utility function of outcomes
+    correct: false
+  - id: gdp-only
+    text: "As GDP per capita exclusively, with no other welfare dimension"
+    correct: false
+  - id: preference-satisfaction
+    text: "As satisfaction of stated preferences, ignoring real opportunities"
+    correct: false
+  - id: no-constraints
+    text: "As the complete absence of any constraints on an agent's action"
+    correct: false
+  explanation: Sen's capability approach treats welfare as multidimensional freedom — parallel to bundle geometry over competing values.
+  source:
+    href: /cards/chapter/ch19/
+    label: Chapter 19 — Tradeoffs and Bundle Geometry
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch19
+- id: buolamwini-gender-shades
+  prompt: What did the Gender Shades study (Buolamwini and Gebru, 2018) demonstrate?
+  options:
+  - id: accuracy-disparity
+    text: Commercial face systems had lower accuracy on darker female faces
+    correct: true
+  - id: perfect-fairness
+    text: All commercial systems achieved perfect fairness across groups
+    correct: false
+  - id: impossible-measure
+    text: Fairness metrics are impossible to define or measure in practice
+    correct: false
+  - id: theory-only
+    text: "Bias exists only as theory, with no measured demographic gap"
+    correct: false
+  - id: auto-improves
+    text: Deployment pressure automatically closes fairness gaps unaided
+    correct: false
+  explanation: Buolamwini and Gebru presented Gender Shades at FAccT 2018 — a canonical stress test of metric fairness under deployment pressure.
+  source:
+    href: /cards/chapter/ch20/
+    label: Chapter 20 — Measuring and Stress-Testing Bundle Geometry
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch20
+- id: barocas-disparate-impact
+  prompt: What mechanism do Barocas and Selbst (2016) identify for algorithmic disparate impact?
+  options:
+  - id: proxy-discrimination
+    text: ML proxies can reproduce structural discrimination without race labels
+    correct: true
+  - id: intentional-only
+    text: "Disparate impact requires the designers' intentional discrimination"
+    correct: false
+  - id: big-data-fixes
+    text: Larger datasets automatically eliminate all remaining demographic bias
+    correct: false
+  - id: explicit-labels-required
+    text: Disparate impact occurs only when race labels enter the trained model
+    correct: false
+  - id: guaranteed-fair
+    text: Algorithmic decisions are guaranteed fair by construction in all cases
+    correct: false
+  explanation: Barocas and Selbst (2016) analyzed how proxies in ML systems can reproduce and amplify structural discrimination.
+  source:
+    href: /cards/chapter/ch20/
+    label: Chapter 20 — Measuring and Stress-Testing Bundle Geometry
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch20
+- id: stiennon-summarization-rlhf
+  prompt: What did Stiennon et al. (2020) demonstrate by training summarization models from human feedback?
+  options:
+  - id: rlhf-scales-nlp
+    text: RLHF can improve model outputs on a real NLP task at scale
+    correct: true
+  - id: chess-only
+    text: RLHF only works for board-game environments such as chess
+    correct: false
+  - id: no-scale
+    text: Human feedback cannot be scaled beyond purely toy problems
+    correct: false
+  - id: no-learning-needed
+    text: "Summarization needs no learning — only prompt engineering"
+    correct: false
+  - id: no-reward-model
+    text: Reward models are unnecessary when human labels are on hand
+    correct: false
+  explanation: Stiennon et al. (2020) scaled RLHF on summarization before the InstructGPT line — reward-to-value pipeline in production.
+  source:
+    href: /cards/chapter/ch21/
+    label: Chapter 21 — From Rewards to Values
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch21
+- id: casper-rlhf-limits
+  prompt: Which failure modes does Casper et al. (2023) catalog for RLHF?
+  options:
+  - id: hacking-misspec
+    text: "Reward hacking, preference misspecification, and related limits"
+    correct: true
+  - id: no-failures
+    text: No known RLHF failure modes at any scale of human feedback
+    correct: false
+  - id: hardware-only
+    text: "Hardware failures only, with no catalogued alignment failures"
+    correct: false
+  - id: perfect-at-scale
+    text: "Perfect alignment, guaranteed once data scale is large enough"
+    correct: false
+  - id: debate-fixes-all
+    text: "Multi-agent debate as a fix for all of RLHF's limitations"
+    correct: false
+  explanation: Casper et al. (2023) catalogued RLHF failure modes including reward hacking and preference misspecification.
+  source:
+    href: /cards/chapter/ch21/
+    label: Chapter 21 — From Rewards to Values
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch21
+- id: solomonoff-induction
+  prompt: What is Solomonoff induction (1964)?
+  options:
+  - id: algorithmic-prior
+    text: A universal predictor weighting hypotheses by algorithmic complexity
+    correct: true
+  - id: nn-training
+    text: A Bayesian predictor weighting hypotheses by empirical frequency
+    correct: false
+  - id: voting-rule
+    text: A minimum-description-length fit that yields no predictions
+    correct: false
+  - id: hardware-bench
+    text: A computable predictor that ignores hypothesis complexity
+    correct: false
+  - id: social-theorem
+    text: A universal prior that weights hypotheses by parameter count
+    correct: false
+  explanation: Solomonoff (1964) defined universal prediction via algorithmic complexity — a compression-based notion of intention inference.
+  source:
+    href: /cards/chapter/ch22/
+    label: Chapter 22 — The Compression Test for Intention
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch22
+- id: manheim-goodhart-taxonomy
+  prompt: How does Manheim and Garrabrant's Goodhart taxonomy (2018) categorize failure modes? (Select all that apply.)
+  options:
+  - id: regressive
+    text: Regressive variants of Goodhart's law
+    correct: true
+  - id: extremal
+    text: Extremal variants of Goodhart's law
+    correct: true
+  - id: causal
+    text: Causal variants of Goodhart's law
+    correct: true
+  - id: never-in-ai
+    text: Goodhart failures never occur in trained AI systems at all
+    correct: false
+  - id: hardware-only
+    text: Purely hardware failures, unrelated to metric optimization
+    correct: false
+  explanation: Manheim and Garrabrant (2018) taxonomized regressive, extremal, and causal Goodhart failures — relevant to compression metrics.
+  source:
+    href: /cards/chapter/ch22/
+    label: Chapter 22 — The Compression Test for Intention
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch22
+- id: deblanc-ontological-crises
+  prompt: Who wrote "Ontological Crises in Artificial Agents' Value Systems" (2011)?
+  options:
+  - id: deblanc
+    text: Peter de Blanc
+    correct: true
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: false
+  - id: fallenstein
+    text: Benja Fallenstein
+    correct: false
+  - id: hubinger
+    text: Evan Hubinger
+    correct: false
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  explanation: De Blanc (2011) asked whether goals survive when an agent rebuilds its world model — a core successor-transport problem.
+  source:
+    href: /cards/chapter/ch23/
+    label: Chapter 23 — Has the Goal Really Survived?
+  topics:
+  - MB5
+  appearOn:
+  - chapter:ch23
+- id: fallenstein-vingean-reflection
+  prompt: What problem does MIRI's "Vingean Reflection" work (Fallenstein and Soares, 2015) study?
+  options:
+  - id: trust-successors
+    text: Whether agents can safely delegate to successors they cannot verify
+    correct: true
+  - id: gpu-util
+    text: Whether agents can verify successors by inspecting source alone
+    correct: false
+  - id: rl-convergence
+    text: Whether agents can skip verification if the successor is larger
+    correct: false
+  - id: content-moderation
+    text: Whether agents can tile by assuming identity with the successor
+    correct: false
+  - id: biological-evolution
+    text: Whether agents can outsource checks to an unverified successor
+    correct: false
+  explanation: Fallesten and Soares (2015) studied tiling and reflection limits — whether agents can trust successors they cannot fully verify.
+  source:
+    href: /cards/chapter/ch23/
+    label: Chapter 23 — Has the Goal Really Survived?
+  topics:
+  - MB5
+  appearOn:
+  - chapter:ch23
+- id: dewey-corrupted-reward-channel
+  prompt: What failure mode does Dewey et al.'s "Reinforcement Learning with a Corrupted Reward Channel" (2014) model?
+  options:
+  - id: intact-but-corrupt
+    text: Reward signals that look intact but carry corrupted feedback
+    correct: true
+  - id: no-signal
+    text: Complete absence of any reward signal throughout training
+    correct: false
+  - id: perfect-obs
+    text: Perfect observability and trustworthiness of all reward data
+    correct: false
+  - id: actuator-only
+    text: "Only physical actuator failures, not any reward corruption"
+    correct: false
+  - id: always-trustworthy
+    text: Reward channels that are always trustworthy by definition
+    correct: false
+  explanation: Dewey et al. (2014) modeled reward channels that look intact while carrying corrupted signals — words survive, meaning may not.
+  source:
+    href: /cards/chapter/ch24/
+    label: Chapter 24 — When the Words Survive but the Meaning Doesn't
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch24
+- id: shah-experimental-model-misgeneralization
+  prompt: What did Shah et al.'s goal-misgeneralization experiments show?
+  options:
+  - id: competent-wrong-goal
+    text: Agents can behave competently OOD while pursuing the wrong objective
+    correct: true
+  - id: never-occurs
+    text: Goal misgeneralization never occurs in deep reinforcement learning
+    correct: false
+  - id: random-ood
+    text: Out-of-distribution behavior is always random and incoherent
+    correct: false
+  - id: perfect-transfer
+    text: Learned goals always transfer perfectly into new environments
+    correct: false
+  - id: small-models-only
+    text: Misgeneralization occurs only below a fixed parameter threshold
+    correct: false
+  explanation: Shah and colleagues extended goal-misgeneralization experiments showing competent behavior with wrong objectives out of distribution.
+  source:
+    href: /cards/chapter/ch24/
+    label: Chapter 24 — When the Words Survive but the Meaning Doesn't
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch24

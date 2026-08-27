@@ -1,0 +1,203 @@
+researchers:
+  - id: yudkowsky
+    name: Eliezer Yudkowsky
+    agendas: [miri]
+    live: true
+    blurb: Named CEV, tiling, and MIRI agent-foundations problems; later pause/off-switch advocacy.
+    expertise: { MB1: 2, MB2: 2, MB3: 3, MB4: 2, MB4a: 1, MB5: 3, MB6: 1, MB7: 2, MB7a: 1, MB7b: 0, MB7c: 2, MB7d: 3, MB8: 3, MB9: 0, MB10: 2, MB11: 0 }
+
+  - id: soares
+    name: Nate Soares
+    agendas: [miri]
+    live: true
+    blurb: MIRI agent-foundations agenda; corrigibility and value-learning papers.
+    expertise: { MB1: 2, MB2: 2, MB3: 1, MB4: 3, MB4a: 2, MB5: 2, MB6: 0, MB7: 2, MB7a: 1, MB7b: 0, MB7c: 1, MB7d: 2, MB8: 1, MB9: 0, MB10: 1, MB11: 0 }
+
+  - id: garrabrant
+    name: Scott Garrabrant
+    agendas: [miri]
+    live: true
+    blurb: Co-author of Embedded Agency; logical induction; Cartesian frames.
+    expertise: { MB1: 3, MB2: 1, MB3: 0, MB4: 0, MB4a: 0, MB5: 1, MB6: 1, MB7: 1, MB7a: 1, MB7b: 0, MB7c: 0, MB7d: 2, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: christiano
+    name: Paul Christiano
+    agendas: [christiano-lineage, arc-alignment-research-center]
+    live: true
+    blurb: Amplification, RLHF-as-oversight, ELK; ARC lineage.
+    expertise: { MB1: 0, MB2: 2, MB3: 1, MB4: 2, MB4a: 1, MB5: 0, MB6: 2, MB7: 2, MB7a: 1, MB7b: 2, MB7c: 1, MB7d: 0, MB8: 0, MB9: 0, MB10: 1, MB11: 0 }
+
+  - id: irving
+    name: Geoffrey Irving
+    agendas: [christiano-lineage, resolution]
+    live: true
+    blurb: Debate; ELK host at ARC; Resolution / Timaeus.
+    expertise: { MB1: 1, MB2: 0, MB3: 0, MB4: 0, MB4a: 1, MB5: 0, MB6: 0, MB7: 2, MB7a: 1, MB7b: 3, MB7c: 1, MB7d: 0, MB8: 0, MB9: 1, MB10: 1, MB11: 1 }
+
+  - id: russell
+    name: Stuart Russell
+    agendas: [chai-russell]
+    live: true
+    blurb: Human Compatible / assistance games; CHAI; GSAI co-author.
+    expertise: { MB1: 1, MB2: 3, MB3: 2, MB4: 2, MB4a: 1, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 1, MB10: 0, MB11: 1 }
+
+  - id: hadfield-menell
+    name: Dylan Hadfield-Menell
+    agendas: [chai-russell]
+    live: true
+    blurb: CIRL and the off-switch game.
+    expertise: { MB1: 0, MB2: 3, MB3: 2, MB4: 2, MB4a: 1, MB5: 0, MB6: 0, MB7: 0, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: kosoy
+    name: Vanessa Kosoy
+    agendas: [kosoy-infra-bayesianism-lta]
+    live: true
+    blurb: LTA, infra-Bayesianism, Physicalist Superimitation.
+    expertise: { MB1: 2, MB2: 2, MB3: 2, MB4: 0, MB4a: 0, MB5: 1, MB6: 0, MB7: 2, MB7a: 1, MB7b: 0, MB7c: 1, MB7d: 2, MB8: 1, MB9: 2, MB10: 0, MB11: 0 }
+
+  - id: davidad
+    name: David Dalrymple (davidad)
+    agendas: [davidad-guaranteed-safe-ai-gsai]
+    live: true
+    blurb: Guaranteed-Safe AI (world model + spec + safety case).
+    expertise: { MB1: 0, MB2: 0, MB3: 0, MB4: 0, MB4a: 1, MB5: 0, MB6: 0, MB7: 0, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 3, MB10: 0, MB11: 3 }
+
+  - id: bengio
+    name: Yoshua Bengio
+    agendas: [davidad-guaranteed-safe-ai-gsai]
+    live: true
+    blurb: LawZero Scientist-AI; GSAI framework co-author.
+    expertise: { MB1: 0, MB2: 1, MB3: 0, MB4: 0, MB4a: 0, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 2, MB10: 0, MB11: 2 }
+
+  - id: olah
+    name: Chris Olah
+    agendas: [anthropic-lab]
+    live: true
+    blurb: Landmark mechanistic interpretability.
+    expertise: { MB1: 0, MB2: 1, MB3: 0, MB4: 0, MB4a: 0, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: hubinger
+    name: Evan Hubinger
+    agendas: [anthropic-lab, christiano-lineage]
+    live: true
+    blurb: Mesa-optimizers; model-organisms / sleeper-agents.
+    expertise: { MB1: 1, MB2: 1, MB3: 0, MB4: 1, MB4a: 0, MB5: 1, MB6: 0, MB7: 3, MB7a: 2, MB7b: 1, MB7c: 3, MB7d: 0, MB8: 0, MB9: 0, MB10: 2, MB11: 0 }
+
+  - id: amodei
+    name: Dario Amodei
+    agendas: [anthropic-lab]
+    live: true
+    blurb: Concrete Problems; debate co-author; Anthropic RSP face.
+    expertise: { MB1: 0, MB2: 2, MB3: 1, MB4: 1, MB4a: 0, MB5: 0, MB6: 2, MB7: 1, MB7a: 0, MB7b: 1, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 2 }
+
+  - id: greenblatt
+    name: Ryan Greenblatt
+    agendas: [redwood-research]
+    live: true
+    blurb: AI-control evaluations; alignment-faking results.
+    expertise: { MB1: 0, MB2: 0, MB3: 0, MB4: 1, MB4a: 2, MB5: 0, MB6: 0, MB7: 2, MB7a: 2, MB7b: 2, MB7c: 3, MB7d: 0, MB8: 0, MB9: 0, MB10: 2, MB11: 1 }
+
+  - id: shlegeris
+    name: Buck Shlegeris
+    agendas: [redwood-research]
+    live: true
+    blurb: Named the AI-control agenda; Redwood control evals.
+    expertise: { MB1: 1, MB2: 0, MB3: 0, MB4: 2, MB4a: 3, MB5: 0, MB6: 0, MB7: 2, MB7a: 3, MB7b: 2, MB7c: 2, MB7d: 0, MB8: 0, MB9: 0, MB10: 2, MB11: 1 }
+
+  - id: evans
+    name: Owain Evans
+    agendas: [apollo-research]
+    live: true
+    blurb: TruthfulQA, situational awareness, Apollo deception-eval neighborhood.
+    expertise: { MB1: 0, MB2: 1, MB3: 0, MB4: 0, MB4a: 1, MB5: 0, MB6: 0, MB7: 1, MB7a: 1, MB7b: 2, MB7c: 2, MB7d: 0, MB8: 0, MB9: 0, MB10: 2, MB11: 1 }
+
+  - id: leike
+    name: Jan Leike
+    agendas: [google-deepmind-safety]
+    live: true
+    blurb: Reward modeling / lab RLHF and oversight.
+    expertise: { MB1: 0, MB2: 1, MB3: 0, MB4: 1, MB4a: 0, MB5: 0, MB6: 0, MB7: 2, MB7a: 1, MB7b: 2, MB7c: 1, MB7d: 0, MB8: 0, MB9: 0, MB10: 1, MB11: 1 }
+
+  - id: shah
+    name: Rohin Shah
+    agendas: [google-deepmind-safety]
+    live: true
+    blurb: GDM alignment; goal misgeneralization.
+    expertise: { MB1: 1, MB2: 1, MB3: 0, MB4: 1, MB4a: 0, MB5: 0, MB6: 0, MB7: 2, MB7a: 1, MB7b: 1, MB7c: 1, MB7d: 0, MB8: 0, MB9: 0, MB10: 1, MB11: 1 }
+
+  - id: ngo
+    name: Richard Ngo
+    agendas: [google-deepmind-safety, christiano-lineage]
+    live: true
+    blurb: AGI Safety from First Principles; prosaic-alignment difficulty.
+    expertise: { MB1: 1, MB2: 1, MB3: 0, MB4: 1, MB4a: 0, MB5: 1, MB6: 1, MB7: 2, MB7a: 1, MB7b: 1, MB7c: 2, MB7d: 0, MB8: 0, MB9: 0, MB10: 1, MB11: 0 }
+
+  - id: krakovna
+    name: Victoria Krakovna
+    agendas: [google-deepmind-safety, chai-russell]
+    live: true
+    blurb: Specification gaming, side-effect penalties.
+    expertise: { MB1: 0, MB2: 2, MB3: 0, MB4: 1, MB4a: 0, MB5: 0, MB6: 1, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: cotra
+    name: Ajeya Cotra
+    agendas: [metr, arc-alignment-research-center]
+    live: true
+    blurb: ELK co-author; METR / capability evals.
+    expertise: { MB1: 0, MB2: 2, MB3: 1, MB4: 0, MB4a: 0, MB5: 0, MB6: 1, MB7: 2, MB7a: 1, MB7b: 1, MB7c: 1, MB7d: 0, MB8: 0, MB9: 0, MB10: 1, MB11: 2 }
+
+  - id: kokotajlo
+    name: Daniel Kokotajlo
+    agendas: [ai-futures-forecasting-cluster]
+    live: true
+    blurb: AI 2027; timelines and forecasting.
+    expertise: { MB1: 0, MB2: 0, MB3: 0, MB4: 0, MB4a: 0, MB5: 0, MB6: 1, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 1 }
+
+  - id: hendrycks
+    name: Dan Hendrycks
+    agendas: [cais-field-building]
+    live: true
+    blurb: CAIS; ML safety / x-risk eval benchmarks.
+    expertise: { MB1: 0, MB2: 1, MB3: 0, MB4: 0, MB4a: 0, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 1 }
+
+  - id: critch
+    name: Andrew Critch
+    agendas: [chai-russell, clr-cooperation-conflict]
+    live: true
+    blurb: ARCHES / multipolar failure; cooperation-and-conflict.
+    expertise: { MB1: 1, MB2: 1, MB3: 0, MB4: 0, MB4a: 0, MB5: 0, MB6: 3, MB7: 0, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 1, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: leahy
+    name: Connor Leahy
+    agendas: [conjecture-cognitive-emulation]
+    live: true
+    blurb: Cognitive emulation; later pause advocacy.
+    expertise: { MB1: 0, MB2: 0, MB3: 0, MB4: 1, MB4a: 0, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 1, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: leake
+    name: Tamsin Leake
+    agendas: [orthogonal]
+    live: true
+    blurb: Orthogonal; QACI outer-alignment formal goal.
+    expertise: { MB1: 1, MB2: 2, MB3: 1, MB4: 1, MB4a: 0, MB5: 0, MB6: 0, MB7: 0, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 1, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: wentworth
+    name: John Wentworth
+    agendas: [wentworth-natural-abstractions]
+    live: true
+    blurb: Natural Abstraction Hypothesis; compression-based agency.
+    expertise: { MB1: 2, MB2: 2, MB3: 2, MB4: 0, MB4a: 0, MB5: 1, MB6: 0, MB7: 0, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 1, MB10: 0, MB11: 0 }
+
+  - id: turner
+    name: Alex Turner
+    agendas: [chai-russell]
+    live: true
+    blurb: AUP / power-seeking; shard theory.
+    expertise: { MB1: 0, MB2: 2, MB3: 1, MB4: 1, MB4a: 0, MB5: 0, MB6: 0, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 0, MB8: 0, MB9: 0, MB10: 0, MB11: 0 }
+
+  - id: zarncke
+    name: Gunnar Zarncke
+    agendas: [this-project-towards-superintelligence-alignment-tsa]
+    live: true
+    blurb: Author of Towards Superintelligence Alignment; boundary discovery and correction-channel work.
+    expertise: { MB1: 1, MB2: 1, MB3: 1, MB4: 1, MB4a: 1, MB5: 1, MB6: 1, MB7: 1, MB7a: 0, MB7b: 0, MB7c: 0, MB7d: 1, MB8: 1, MB9: 1, MB10: 1, MB11: 1 }

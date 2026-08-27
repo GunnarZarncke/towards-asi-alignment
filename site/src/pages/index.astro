@@ -9,6 +9,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 const tiles = [
   { href: firstEssayHref(base), title: "Short essays: start with a story" },
+  { href: withBase("/quiz/"), title: "Quiz: which researcher knows what you know?" },
   { href: withBase("/book/"), title: "Read or download the book" },
   { href: withBase("/cards/"), title: "Knowledge cards grouped by topic" },
   { href: withBase("/field/"), title: "Map of alignment research" },
@@ -24,6 +25,8 @@ const tiles = [
     <p class="lede">As AI gets more capable, can people still change what it does when it is wrong?</p>
     <p class="side-panel-meta">
       <a href={withBase("/start/")}>Start here — a slower introduction and common questions</a>
+      {" · "}
+      <a href={withBase("/quiz/")}>Field knowledge quiz</a>
       {" · "}
       <a href={firstEssayHref(base)}>Short essays</a>
       {" · "}

@@ -17,6 +17,7 @@ import FieldLifecycleAxis from "../../components/FieldLifecycleAxis.astro";
 import FieldSpecifyConstructTable from "../../components/FieldSpecifyConstructTable.astro";
 import FieldAdjacentWork from "../../components/FieldAdjacentWork.astro";
 import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.astro";
+import QuizBlock from "../../components/QuizBlock.astro";
 import partGems from "../../data/part-gems.json";
 import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
 import references from "../../data/references.json";
@@ -374,6 +375,10 @@ const pageDescription = showFullText
         <p class="button-row">
           <a class="button" href={pdfHref(base)}>Read in PDF</a>
         </p>
+      )}
+
+      {bookEntry && card.data.bookPageId && !isNewsCard && (
+        <QuizBlock appearOn={`chapter:${card.data.bookPageId}`} base={base} />
       )}
 
     </div>

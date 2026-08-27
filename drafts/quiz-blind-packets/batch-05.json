@@ -1,0 +1,730 @@
+[
+  {
+    "id": "pearl-do-calculus",
+    "prompt": "Who developed the do-calculus for identifying causal effects from observational data?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Karl Friston"
+      },
+      {
+        "id": "o1",
+        "text": "Clive Granger"
+      },
+      {
+        "id": "o2",
+        "text": "Peter Spirtes"
+      },
+      {
+        "id": "o3",
+        "text": "Jude Pearl"
+      },
+      {
+        "id": "o4",
+        "text": "Donald Rubin"
+      }
+    ]
+  },
+  {
+    "id": "garrabrant-cartesian-frames",
+    "prompt": "What problem do Cartesian Frames aim to address in embedded agency?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Naive agent–environment factorizations that break in embedded settings"
+      },
+      {
+        "id": "o1",
+        "text": "Impossibility theorems in social choice theory"
+      },
+      {
+        "id": "o2",
+        "text": "Plateaus in neural language model scaling laws"
+      },
+      {
+        "id": "o3",
+        "text": "Reward sparsity in standard reinforcement learning"
+      },
+      {
+        "id": "o4",
+        "text": "GPU memory limits during large-scale training"
+      }
+    ]
+  },
+  {
+    "id": "jaderberg-population-based-training",
+    "prompt": "What mechanism does Population Based Training (PBT) use during deep RL training?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Knowledge distillation from a fixed teacher model"
+      },
+      {
+        "id": "o1",
+        "text": "Single-agent curriculum learning with fixed hyperparameters"
+      },
+      {
+        "id": "o2",
+        "text": "Adversarial self-play without population structure"
+      },
+      {
+        "id": "o3",
+        "text": "Evolving populations that copy weights, explore hyperparameters, and replace underperformers"
+      },
+      {
+        "id": "o4",
+        "text": "Offline Bayesian search with no weight sharing"
+      }
+    ]
+  },
+  {
+    "id": "burns-weak-to-strong",
+    "prompt": "What question did OpenAI's 2023 \"Weak-to-Strong Generalization\" work empirically test?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether scaling laws hold for computer vision models"
+      },
+      {
+        "id": "o1",
+        "text": "Whether grokking occurs in large language model pretraining"
+      },
+      {
+        "id": "o2",
+        "text": "Whether debate always beats iterated amplification"
+      },
+      {
+        "id": "o3",
+        "text": "Whether RLHF eliminates all hallucinations in language models"
+      },
+      {
+        "id": "o4",
+        "text": "Whether weaker supervisors can align stronger, more capable models"
+      }
+    ]
+  },
+  {
+    "id": "baker-emergent-tool-use",
+    "prompt": "What did Baker et al. (2019) demonstrate with multi-agent hide-and-seek training?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Guaranteed alignment from multi-agent self-play alone"
+      },
+      {
+        "id": "o1",
+        "text": "That multi-agent training always fails to produce useful behavior"
+      },
+      {
+        "id": "o2",
+        "text": "Complex tool use and strategies emerging without explicit programming"
+      },
+      {
+        "id": "o3",
+        "text": "Perfect Nash equilibria in all multi-agent games"
+      },
+      {
+        "id": "o4",
+        "text": "Complete interpretability of all emergent behaviors"
+      }
+    ]
+  },
+  {
+    "id": "demski-embedded-agency-sequence",
+    "prompt": "What central claim does MIRI's Embedded Agency sequence make?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Environment modeling is unnecessary for competent agents"
+      },
+      {
+        "id": "o1",
+        "text": "Multi-agent systems are automatically aligned by default"
+      },
+      {
+        "id": "o2",
+        "text": "Intelligent agents are always modular and fully independent of their environment"
+      },
+      {
+        "id": "o3",
+        "text": "Embedded agents cannot have goals or preferences"
+      },
+      {
+        "id": "o4",
+        "text": "There is no clean Cartesian separation between agent and environment in real systems"
+      }
+    ]
+  },
+  {
+    "id": "carlsmith-power-seeking-report",
+    "prompt": "What risk does Carlsmith's 2022 Open Philanthropy report examine?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Lack of GPU availability slowing research"
+      },
+      {
+        "id": "o1",
+        "text": "Power-seeking behavior as an instrumental strategy in advanced AI systems"
+      },
+      {
+        "id": "o2",
+        "text": "Immediate hardware supply chain failures"
+      },
+      {
+        "id": "o3",
+        "text": "Copyright infringement by large language models"
+      },
+      {
+        "id": "o4",
+        "text": "Purely speculative risks from quantum computing alone"
+      }
+    ]
+  },
+  {
+    "id": "christiano-what-failure-looks-like",
+    "prompt": "What two distinct failure shapes does Christiano's \"What Failure Looks Like\" (2019) describe?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Gradual institutional drift and fast capability overhang"
+      },
+      {
+        "id": "o1",
+        "text": "No alignment failures occur until superintelligence is reached"
+      },
+      {
+        "id": "o2",
+        "text": "A single-shot paperclip maximizer followed by immediate shutdown"
+      },
+      {
+        "id": "o3",
+        "text": "Only hardware failures and only data poisoning attacks"
+      },
+      {
+        "id": "o4",
+        "text": "Deceptive alignment as the sole failure mode"
+      }
+    ]
+  },
+  {
+    "id": "kaplan-scaling-laws",
+    "prompt": "Who co-authored OpenAI's 2020 paper on neural language model scaling laws?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Tom Brown et al. (GPT-3)"
+      },
+      {
+        "id": "o1",
+        "text": "Jordan Hoffmann et al. (Chinchilla)"
+      },
+      {
+        "id": "o2",
+        "text": "Aarohi Srivastava et al. (BIG-bench)"
+      },
+      {
+        "id": "o3",
+        "text": "Jared Kaplan et al."
+      },
+      {
+        "id": "o4",
+        "text": "Alec Radford et al."
+      }
+    ]
+  },
+  {
+    "id": "hendrycks-ml-safety-problems",
+    "prompt": "What scope does Hendrycks et al.'s \"Unsolved Problems in ML Safety\" (2022) cover beyond single-task benchmarks?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "ImageNet classification accuracy only"
+      },
+      {
+        "id": "o1",
+        "text": "Robustness, monitoring, alignment, and systemic risks"
+      },
+      {
+        "id": "o2",
+        "text": "Chess-playing agent performance only"
+      },
+      {
+        "id": "o3",
+        "text": "Data center cooling and hardware efficiency"
+      },
+      {
+        "id": "o4",
+        "text": "Purely theoretical cryptography with no ML connection"
+      }
+    ]
+  },
+  {
+    "id": "hoffmann-chinchilla",
+    "prompt": "What key finding did the Chinchilla paper (Hoffmann et al., 2022) establish about LLM training?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Neural scaling laws are empirically invalid"
+      },
+      {
+        "id": "o1",
+        "text": "Compute-optimal training requires scaling data with model size, not parameters alone"
+      },
+      {
+        "id": "o2",
+        "text": "Larger models always need less training data"
+      },
+      {
+        "id": "o3",
+        "text": "Inference cost is irrelevant to capability measurement"
+      },
+      {
+        "id": "o4",
+        "text": "RLHF fully replaces the need for pretraining"
+      }
+    ]
+  },
+  {
+    "id": "metr-founder",
+    "prompt": "Who founded METR (formerly ARC Evals), an org measuring frontier model autonomous-task capability?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Dario Amodei"
+      },
+      {
+        "id": "o1",
+        "text": "Beth Barnes"
+      },
+      {
+        "id": "o2",
+        "text": "Buck Shlegeris"
+      },
+      {
+        "id": "o3",
+        "text": "Dan Hendrycks"
+      },
+      {
+        "id": "o4",
+        "text": "Paul Christiano"
+      }
+    ]
+  },
+  {
+    "id": "kulveit-gradual-disempowerment",
+    "prompt": "What dynamic does Kulveit et al. (2025) model in \"Gradual Disempowerment of Humans by AI\"?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Fully reversible disempowerment with no lasting institutional effects"
+      },
+      {
+        "id": "o1",
+        "text": "Guaranteed perfect human-AI cooperation at all times"
+      },
+      {
+        "id": "o2",
+        "text": "Sudden hardware singularity as the only pathway"
+      },
+      {
+        "id": "o3",
+        "text": "Incremental erosion of human control without a sharp takeover event"
+      },
+      {
+        "id": "o4",
+        "text": "Immediate human extinction from a single software bug"
+      }
+    ]
+  },
+  {
+    "id": "garrabrant-tdt",
+    "prompt": "What class of problems does Garrabrant's decision-theory work (e.g., \"Toward a New Decision Theory\") target?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Coordination problems that persist when ordinary causal channels are severed"
+      },
+      {
+        "id": "o1",
+        "text": "GPU scheduling and cluster management"
+      },
+      {
+        "id": "o2",
+        "text": "Standard single-agent bandit optimization"
+      },
+      {
+        "id": "o3",
+        "text": "Purely descriptive ethics with no decision-theoretic content"
+      },
+      {
+        "id": "o4",
+        "text": "Standard causal inference with full observability of all variables"
+      }
+    ]
+  },
+  {
+    "id": "hubinger-inner-misalignment-overview",
+    "prompt": "How does Hubinger et al.'s alignment overview distinguish outer from inner alignment?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Outer alignment applies only at training time; inner only at deployment"
+      },
+      {
+        "id": "o1",
+        "text": "Outer alignment is training data size; inner alignment is parameter count"
+      },
+      {
+        "id": "o2",
+        "text": "Outer alignment is specifying the right objective; inner alignment is the optimizer actually pursuing it"
+      },
+      {
+        "id": "o3",
+        "text": "The two terms describe exactly the same problem"
+      },
+      {
+        "id": "o4",
+        "text": "Outer alignment is hardware safety; inner alignment is software safety"
+      }
+    ]
+  },
+  {
+    "id": "cotra-bioanchors-forecast",
+    "prompt": "What methodology does Cotra's \"Bio Anchors\" report use to estimate AI timelines?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "No quantitative methodology — purely qualitative narrative"
+      },
+      {
+        "id": "o1",
+        "text": "Hardware price trends alone"
+      },
+      {
+        "id": "o2",
+        "text": "Stock market indices as the primary signal"
+      },
+      {
+        "id": "o3",
+        "text": "Biological anchors comparing AI progress to evolution and brain computation"
+      },
+      {
+        "id": "o4",
+        "text": "Expert polls with no quantitative modeling"
+      }
+    ]
+  },
+  {
+    "id": "schultz-reward-prediction-error",
+    "prompt": "What did Schultz et al.'s dopamine neuron research establish about reward signaling?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Dopamine signals pain and aversive stimuli exclusively"
+      },
+      {
+        "id": "o1",
+        "text": "Dopamine tracks absolute reward magnitude with no prediction component"
+      },
+      {
+        "id": "o2",
+        "text": "The brain ignores prediction errors when updating behavior"
+      },
+      {
+        "id": "o3",
+        "text": "Phasic dopamine encodes reward prediction errors, not raw reward alone"
+      },
+      {
+        "id": "o4",
+        "text": "Dopamine is unrelated to learning or value updating"
+      }
+    ]
+  },
+  {
+    "id": "turner-shard-theory",
+    "prompt": "What does Shard Theory (Turner et al., 2022) claim about values inside neural networks?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Context-dependent value fragments rather than one unified utility function"
+      },
+      {
+        "id": "o1",
+        "text": "A single global utility function is always learned"
+      },
+      {
+        "id": "o2",
+        "text": "Values cannot be represented in network weights at all"
+      },
+      {
+        "id": "o3",
+        "text": "Value shards exist only in biological brains, not in ML models"
+      },
+      {
+        "id": "o4",
+        "text": "Standard RL always converges to exactly one scalar reward"
+      }
+    ]
+  },
+  {
+    "id": "ziebart-maxent-irl",
+    "prompt": "How does maximum-entropy inverse reinforcement learning (Ziebart et al., 2008) address IRL ambiguity?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "It ignores observed trajectories and uses only supervised labels"
+      },
+      {
+        "id": "o1",
+        "text": "It requires full observability of the demonstrator's internal states"
+      },
+      {
+        "id": "o2",
+        "text": "It reduces IRL to standard image classification"
+      },
+      {
+        "id": "o3",
+        "text": "It prefers reward functions that maximize entropy while making observed behavior likely"
+      },
+      {
+        "id": "o4",
+        "text": "It assumes a unique reward function always exists for any behavior"
+      }
+    ]
+  },
+  {
+    "id": "wirth-irl-survey",
+    "prompt": "What fundamental limitation does Wirth et al.'s IRL survey (2017) emphasize?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Observed behavior never reveals any preference information"
+      },
+      {
+        "id": "o1",
+        "text": "Many reward functions are consistent with the same observed behavior"
+      },
+      {
+        "id": "o2",
+        "text": "IRL always uniquely identifies the true reward function"
+      },
+      {
+        "id": "o3",
+        "text": "Reward functions are always directly observable in deployment"
+      },
+      {
+        "id": "o4",
+        "text": "IRL requires literal mind reading of the demonstrator"
+      }
+    ]
+  },
+  {
+    "id": "nanda-grokking-paper",
+    "prompt": "What phenomenon did Nanda et al. (2022) track as a phase change in learned representations?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Grokking — delayed generalization after extended memorization"
+      },
+      {
+        "id": "o1",
+        "text": "Immediate convergence on all tasks from the first epoch"
+      },
+      {
+        "id": "o2",
+        "text": "Breakdown of scaling laws in language model pretraining only"
+      },
+      {
+        "id": "o3",
+        "text": "Complete loss of training accuracy while test accuracy improves"
+      },
+      {
+        "id": "o4",
+        "text": "Permanent overfitting with no generalization ever occurring"
+      }
+    ]
+  },
+  {
+    "id": "olah-circuits-thread",
+    "prompt": "What research question does Anthropic's \"Circuits\" thread on mechanistic interpretability pursue?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "How to eliminate the need for any interpretability research"
+      },
+      {
+        "id": "o1",
+        "text": "Whether identifiable internal circuits and features can be mapped in neural networks"
+      },
+      {
+        "id": "o2",
+        "text": "Whether all models must remain permanently uninterpretable black boxes"
+      },
+      {
+        "id": "o3",
+        "text": "How to maximize parameter count regardless of interpretability"
+      },
+      {
+        "id": "o4",
+        "text": "Whether behavioral testing alone suffices with no internal analysis"
+      }
+    ]
+  },
+  {
+    "id": "long-seth-ai-welfare",
+    "prompt": "Who is the lead author of \"Taking AI Welfare Seriously\" (2024)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Nick Bostrom"
+      },
+      {
+        "id": "o2",
+        "text": "Robert Long et al."
+      },
+      {
+        "id": "o3",
+        "text": "Patrick Butlin et al."
+      },
+      {
+        "id": "o4",
+        "text": "Jeff Sebo alone"
+      }
+    ]
+  },
+  {
+    "id": "butlin-consciousness-indicators",
+    "prompt": "Who led the 2023 report assembling indicator properties for AI consciousness?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Patrick Butlin et al."
+      },
+      {
+        "id": "o1",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o2",
+        "text": "Daniel Dennett"
+      },
+      {
+        "id": "o3",
+        "text": "Robert Long alone"
+      },
+      {
+        "id": "o4",
+        "text": "David Chalmers alone"
+      }
+    ]
+  },
+  {
+    "id": "arrow-impossibility-theorem",
+    "prompt": "What does Arrow's impossibility theorem (1951) show about social choice?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Individual preferences can never conflict in groups"
+      },
+      {
+        "id": "o1",
+        "text": "No rank-order voting system satisfies all stated fairness axioms simultaneously"
+      },
+      {
+        "id": "o2",
+        "text": "AI alignment makes social choice tradeoffs irrelevant"
+      },
+      {
+        "id": "o3",
+        "text": "A perfect aggregation rule exists for all preference profiles"
+      },
+      {
+        "id": "o4",
+        "text": "Simple majority rule always satisfies every fairness criterion"
+      }
+    ]
+  },
+  {
+    "id": "sen-capability-approach",
+    "prompt": "How does Sen's capability approach define welfare?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As GDP per capita exclusively"
+      },
+      {
+        "id": "o1",
+        "text": "As maximization of a single scalar utility function"
+      },
+      {
+        "id": "o2",
+        "text": "As the complete absence of any constraints on action"
+      },
+      {
+        "id": "o3",
+        "text": "As satisfaction of stated preferences with no regard for opportunities"
+      },
+      {
+        "id": "o4",
+        "text": "As multidimensional freedom and real opportunities, not income or utility alone"
+      }
+    ]
+  },
+  {
+    "id": "buolamwini-gender-shades",
+    "prompt": "What did the Gender Shades study (Buolamwini and Gebru, 2018) demonstrate?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Fairness metrics are impossible to define or measure"
+      },
+      {
+        "id": "o1",
+        "text": "All commercial systems achieved perfect fairness across demographics"
+      },
+      {
+        "id": "o2",
+        "text": "Commercial face-analysis systems had significantly lower accuracy on darker-skinned and female faces"
+      },
+      {
+        "id": "o3",
+        "text": "Bias exists only as a theoretical concern with no empirical evidence"
+      },
+      {
+        "id": "o4",
+        "text": "Deployment pressure automatically improves fairness without intervention"
+      }
+    ]
+  },
+  {
+    "id": "barocas-disparate-impact",
+    "prompt": "What mechanism do Barocas and Selbst (2016) identify for algorithmic disparate impact?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Disparate impact can only occur when race labels are included in the model"
+      },
+      {
+        "id": "o1",
+        "text": "Disparate impact requires intentional discrimination by model designers"
+      },
+      {
+        "id": "o2",
+        "text": "ML proxies can reproduce and amplify structural discrimination without explicit protected attributes"
+      },
+      {
+        "id": "o3",
+        "text": "Larger datasets automatically eliminate all bias"
+      },
+      {
+        "id": "o4",
+        "text": "Algorithmic decision-making is guaranteed fair by construction"
+      }
+    ]
+  }
+]

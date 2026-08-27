@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import ParentCrumb from "../../components/ParentCrumb.astro";
 import ConceptCardLink from "../../components/ConceptCardLink.astro";
+import QuizBlock from "../../components/QuizBlock.astro";
 import { bookHref, cardHref, essayHref, resolveCard } from "../../lib/site-urls";
 import { findEssay } from "../../lib/essays";
 import demosIndex from "../../data/demos.json";
@@ -72,6 +73,8 @@ const experimentLine = experimentLineId
     <section class="readable essay-body content-card">
       <Content />
     </section>
+
+    <QuizBlock appearOn={`essay:${essay.id}`} base={base} />
 
     <nav class="essay-nav readable" aria-label="Essay navigation">
       <p class="button-row">

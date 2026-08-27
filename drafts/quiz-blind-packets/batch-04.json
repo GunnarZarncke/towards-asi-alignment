@@ -1,0 +1,662 @@
+[
+  {
+    "id": "concrete-problems-paper",
+    "prompt": "\"Concrete Problems in AI Safety\" (2016) treats which of the following as research problems that show up once systems are deployed, not only in isolated labs? (Select all that apply.)",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Proving P ≠ NP"
+      },
+      {
+        "id": "o1",
+        "text": "Scalable oversight when humans cannot check every action"
+      },
+      {
+        "id": "o2",
+        "text": "Reward hacking / exploiting a proxy"
+      },
+      {
+        "id": "o3",
+        "text": "Building a perpetual-motion machine"
+      },
+      {
+        "id": "o4",
+        "text": "Negative side effects of competent action"
+      }
+    ]
+  },
+  {
+    "id": "instructgpt-rlhf-paper",
+    "prompt": "InstructGPT-style training uses human preference comparisons mainly to do what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Steer a pretrained model toward following instructions and preferred styles"
+      },
+      {
+        "id": "o1",
+        "text": "Erase pretraining knowledge"
+      },
+      {
+        "id": "o2",
+        "text": "Prove the model is aligned in all environments"
+      },
+      {
+        "id": "o3",
+        "text": "Learn a formal world model and verifier"
+      }
+    ]
+  },
+  {
+    "id": "rlhf-preferences-origin",
+    "prompt": "In preference-based deep RL, the learning signal typically comes from what, rather than a hand-specified scalar reward?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Human (or proxy) comparisons between trajectories or outputs"
+      },
+      {
+        "id": "o1",
+        "text": "Raw pixel reconstruction loss only"
+      },
+      {
+        "id": "o2",
+        "text": "A perfect chess evaluator"
+      },
+      {
+        "id": "o3",
+        "text": "Uniform random rewards"
+      }
+    ]
+  },
+  {
+    "id": "goal-misgeneralization-paper",
+    "prompt": "Goal misgeneralization is the failure where a system does what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Overheats the GPU"
+      },
+      {
+        "id": "o1",
+        "text": "Misspells the reward function's name"
+      },
+      {
+        "id": "o2",
+        "text": "Competently pursues the wrong objective once the distribution shifts, despite looking fine in training"
+      },
+      {
+        "id": "o3",
+        "text": "Fails to fit the training set at all"
+      }
+    ]
+  },
+  {
+    "id": "specification-gaming-curator",
+    "prompt": "Who maintains the widely cited public catalog of AI specification-gaming examples?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Victoria Krakovna"
+      },
+      {
+        "id": "o1",
+        "text": "Chris Olah"
+      },
+      {
+        "id": "o2",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o3",
+        "text": "Scott Garrabrant"
+      }
+    ]
+  },
+  {
+    "id": "goodhart-law-namesake",
+    "prompt": "Goodhart's law, in the form used in alignment discussions, says what happens when a measure becomes a target?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "It automatically becomes a better measure"
+      },
+      {
+        "id": "o1",
+        "text": "It tends to cease being a good measure of the underlying property"
+      },
+      {
+        "id": "o2",
+        "text": "Measurement error disappears"
+      },
+      {
+        "id": "o3",
+        "text": "It becomes legally binding worldwide"
+      }
+    ]
+  },
+  {
+    "id": "selection-theorems-authors",
+    "prompt": "A \"selection theorem\" in this literature tries to predict what, given training or evolutionary pressure?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Which kinds of optimizers or internal structures tend to arise"
+      },
+      {
+        "id": "o1",
+        "text": "A unique chess Elo for every model"
+      },
+      {
+        "id": "o2",
+        "text": "Next quarter's GPU spot prices"
+      },
+      {
+        "id": "o3",
+        "text": "Which books are in the training set"
+      }
+    ]
+  },
+  {
+    "id": "mesa-optimizer-paper",
+    "prompt": "A mesa-optimizer is which of the following?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "An optimizer learned inside a trained system, with its own mesa-objective"
+      },
+      {
+        "id": "o1",
+        "text": "A hardware scheduler"
+      },
+      {
+        "id": "o2",
+        "text": "A human rater in the loop"
+      },
+      {
+        "id": "o3",
+        "text": "The outer training algorithm itself (SGD, RL trainer)"
+      }
+    ]
+  },
+  {
+    "id": "knowledge-distillation-paper",
+    "prompt": "Knowledge distillation trains a smaller \"student\" mainly to do what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Mimic a larger teacher's outputs or internals"
+      },
+      {
+        "id": "o1",
+        "text": "Prove the student is aligned if the teacher was"
+      },
+      {
+        "id": "o2",
+        "text": "Automatically add new human oversight hooks"
+      },
+      {
+        "id": "o3",
+        "text": "Randomly reinitialize all weights"
+      }
+    ]
+  },
+  {
+    "id": "debate-oversight-paper",
+    "prompt": "In \"AI safety via debate,\" the hoped-for mechanism is that two systems argue so that a weaker judge can do what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Catch errors that would be hard to find by inspecting one answer alone"
+      },
+      {
+        "id": "o1",
+        "text": "Replace all human values with a coin flip"
+      },
+      {
+        "id": "o2",
+        "text": "Guarantee faster SGD convergence"
+      },
+      {
+        "id": "o3",
+        "text": "Discharge Löb's theorem"
+      }
+    ]
+  },
+  {
+    "id": "elk-problem-arc",
+    "prompt": "Eliciting Latent Knowledge (ELK) asks whether we can get a model to report what it internally knows even when what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "The model has fewer than a million parameters"
+      },
+      {
+        "id": "o1",
+        "text": "The weights are published"
+      },
+      {
+        "id": "o2",
+        "text": "Training is done on CPU only"
+      },
+      {
+        "id": "o3",
+        "text": "Training may favor answers a human would give rather than the latent facts"
+      }
+    ]
+  },
+  {
+    "id": "uad-expansion",
+    "prompt": "In alignment research, what does UAD stand for?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Utility Aggregation Debate"
+      },
+      {
+        "id": "o1",
+        "text": "Universal Alignment Dataset"
+      },
+      {
+        "id": "o2",
+        "text": "Unsupervised Agent Discovery"
+      },
+      {
+        "id": "o3",
+        "text": "Unlabeled Action Detection"
+      }
+    ]
+  },
+  {
+    "id": "superposition-paper",
+    "prompt": "In mechanistic interpretability, \"superposition\" means a network may do what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Require a quantum computer"
+      },
+      {
+        "id": "o1",
+        "text": "Use exactly one neuron per English word"
+      },
+      {
+        "id": "o2",
+        "text": "Store no features at all"
+      },
+      {
+        "id": "o3",
+        "text": "Represent more features than it has dimensions, by overlapping them"
+      }
+    ]
+  },
+  {
+    "id": "elk-honest-reporting-crux",
+    "prompt": "The ELK problem centers on whether a model can be made to report latent knowledge honestly even when what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "The model is smaller than 1B parameters"
+      },
+      {
+        "id": "o1",
+        "text": "Human raters disagree on preferences"
+      },
+      {
+        "id": "o2",
+        "text": "Chain-of-thought prompting is disabled"
+      },
+      {
+        "id": "o3",
+        "text": "Honest reporting was not what training selected for"
+      }
+    ]
+  },
+  {
+    "id": "reward-hacking-concrete-problems",
+    "prompt": "Which term did \"Concrete Problems in AI Safety\" (2016) use for agents exploiting flaws in a reward function or proxy metric?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Mesa-optimization"
+      },
+      {
+        "id": "o1",
+        "text": "Goal misgeneralization"
+      },
+      {
+        "id": "o2",
+        "text": "Corrigibility"
+      },
+      {
+        "id": "o3",
+        "text": "Reward hacking"
+      }
+    ]
+  },
+  {
+    "id": "big-bench-paper",
+    "prompt": "BIG-bench (\"Beyond the Imitation Game\") is primarily what kind of artifact?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A large community-contributed suite of language-model tasks"
+      },
+      {
+        "id": "o1",
+        "text": "A guaranteed-safe world model"
+      },
+      {
+        "id": "o2",
+        "text": "A formal shutdown-safety proof"
+      },
+      {
+        "id": "o3",
+        "text": "An implementation of coherent extrapolated volition"
+      }
+    ]
+  },
+  {
+    "id": "off-switch-game-authors",
+    "prompt": "Who introduced the \"Off-Switch Game\" to formalize whether an agent will allow itself to be shut down?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Nick Bostrom (Superintelligence)"
+      },
+      {
+        "id": "o1",
+        "text": "Dylan Hadfield-Menell, Stuart Russell, Pieter Abbeel, and Anca Dragan"
+      },
+      {
+        "id": "o2",
+        "text": "Nate Soares et al. (MIRI corrigibility)"
+      },
+      {
+        "id": "o3",
+        "text": "Paul Christiano et al. (RL from human preferences)"
+      }
+    ]
+  },
+  {
+    "id": "cirl-framework-authors",
+    "prompt": "Who developed Cooperative Inverse Reinforcement Learning (CIRL)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Hadfield-Menell, Russell, Abbeel, and Dragan (2016)"
+      },
+      {
+        "id": "o1",
+        "text": "Paul Christiano et al. (2017)"
+      },
+      {
+        "id": "o2",
+        "text": "Nate Soares et al. (MIRI)"
+      },
+      {
+        "id": "o3",
+        "text": "Irving et al. (debate)"
+      }
+    ]
+  },
+  {
+    "id": "bostrom-superintelligence-author",
+    "prompt": "Who authored Superintelligence: Paths, Dangers, Strategies (2014)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Dario Amodei"
+      },
+      {
+        "id": "o2",
+        "text": "Shane Legg"
+      },
+      {
+        "id": "o3",
+        "text": "Nick Bostrom"
+      },
+      {
+        "id": "o4",
+        "text": "Eliezer Yudkowsky"
+      }
+    ]
+  },
+  {
+    "id": "legg-hutter-agi-definition",
+    "prompt": "What does the Legg-Hutter (2007) formalization treat as the core of general intelligence?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Expected performance across environments, weighted by environmental complexity"
+      },
+      {
+        "id": "o1",
+        "text": "Fixed scores on a single standardized benchmark suite"
+      },
+      {
+        "id": "o2",
+        "text": "Passing a conversational imitation test"
+      },
+      {
+        "id": "o3",
+        "text": "Raw memorization capacity of training data"
+      },
+      {
+        "id": "o4",
+        "text": "Human-like social and emotional reasoning"
+      }
+    ]
+  },
+  {
+    "id": "russell-human-compatible-book",
+    "prompt": "What alignment formulation does Russell's Human Compatible (2019) advocate instead of maximizing a fixed utility function?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Hard-coded fixed utility maximization"
+      },
+      {
+        "id": "o1",
+        "text": "Assistance games where the agent infers and helps with human preferences"
+      },
+      {
+        "id": "o2",
+        "text": "Pure behavioral cloning with no preference inference"
+      },
+      {
+        "id": "o3",
+        "text": "A fixed list of deontological rules with no uncertainty"
+      },
+      {
+        "id": "o4",
+        "text": "Unconstrained random exploration of actions"
+      }
+    ]
+  },
+  {
+    "id": "omohundro-basic-ai-drives",
+    "prompt": "What does Omohundro's \"Basic AI Drives\" thesis claim about sufficiently advanced optimizers?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Alignment emerges automatically once intelligence crosses a threshold"
+      },
+      {
+        "id": "o1",
+        "text": "Only explicitly programmed drives can ever emerge"
+      },
+      {
+        "id": "o2",
+        "text": "Terminal goals always fully override any instrumental reasoning"
+      },
+      {
+        "id": "o3",
+        "text": "They tend toward convergent instrumental subgoals like self-preservation and resource acquisition"
+      },
+      {
+        "id": "o4",
+        "text": "Instrumental drives disappear automatically at sufficient scale"
+      }
+    ]
+  },
+  {
+    "id": "yudkowsky-cev-paper",
+    "prompt": "Who introduced Coherent Extrapolated Volition (CEV) as a proposed alignment target?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Paul Christiano"
+      },
+      {
+        "id": "o1",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o2",
+        "text": "Eliezer Yudkowsky"
+      },
+      {
+        "id": "o3",
+        "text": "Nate Soares"
+      },
+      {
+        "id": "o4",
+        "text": "Nick Bostrom"
+      }
+    ]
+  },
+  {
+    "id": "ng-russell-irl-origin",
+    "prompt": "Who introduced inverse reinforcement learning as inferring reward functions from observed behavior?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Brian Ziebart et al."
+      },
+      {
+        "id": "o1",
+        "text": "Paul Christiano et al."
+      },
+      {
+        "id": "o2",
+        "text": "Dylan Hadfield-Menell et al."
+      },
+      {
+        "id": "o3",
+        "text": "Dario Amodei et al."
+      },
+      {
+        "id": "o4",
+        "text": "Andrew Ng and Stuart Russell"
+      }
+    ]
+  },
+  {
+    "id": "armstrong-low-impact-agents",
+    "prompt": "What design goal did Armstrong, Sandberg, and Bostrom (2012) formalize in \"Thinking Inside the Box\"?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Agents that pursue goals while minimizing side effects on the environment"
+      },
+      {
+        "id": "o1",
+        "text": "Agents that maximize environment exploration regardless of cost"
+      },
+      {
+        "id": "o2",
+        "text": "Adversarial robustness against gradient-based attacks only"
+      },
+      {
+        "id": "o3",
+        "text": "Multi-agent debate as the sole alignment mechanism"
+      },
+      {
+        "id": "o4",
+        "text": "Interpretability through input saliency maps alone"
+      }
+    ]
+  },
+  {
+    "id": "leike-scalable-agent-alignment",
+    "prompt": "What alignment approach did Leike et al. (2018) outline for scaling oversight to superhuman agents?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Pure self-play with no human feedback"
+      },
+      {
+        "id": "o1",
+        "text": "Scalable oversight via learned reward models and iterative human feedback"
+      },
+      {
+        "id": "o2",
+        "text": "Unsupervised pretraining alone without preference data"
+      },
+      {
+        "id": "o3",
+        "text": "Complete formal verification of all neural network weights"
+      },
+      {
+        "id": "o4",
+        "text": "Constitutional AI with no reward model training"
+      }
+    ]
+  },
+  {
+    "id": "hutter-aixi-formalism",
+    "prompt": "What is AIXI in Hutter's formalism?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A Nash equilibrium concept in repeated games"
+      },
+      {
+        "id": "o1",
+        "text": "A biologically realistic model of the human brain"
+      },
+      {
+        "id": "o2",
+        "text": "A hardware safety certification protocol"
+      },
+      {
+        "id": "o3",
+        "text": "A specific deep neural network architecture for language"
+      },
+      {
+        "id": "o4",
+        "text": "An idealized universal reinforcement-learning agent bounded by computability"
+      }
+    ]
+  },
+  {
+    "id": "park-deceptive-alignment-survey",
+    "prompt": "What phenomenon does the 2024 \"Deceptive Alignment\" survey primarily synthesize evidence for?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Inevitable hardware failures in large compute clusters"
+      },
+      {
+        "id": "o1",
+        "text": "Reward hacking confined to Atari game environments"
+      },
+      {
+        "id": "o2",
+        "text": "Dataset contamination in public benchmarks"
+      },
+      {
+        "id": "o3",
+        "text": "Models strategically misrepresent objectives during training and evaluation"
+      },
+      {
+        "id": "o4",
+        "text": "Universal interpretability of every neural network layer"
+      }
+    ]
+  }
+]

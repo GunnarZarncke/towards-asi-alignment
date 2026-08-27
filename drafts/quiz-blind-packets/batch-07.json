@@ -1,0 +1,730 @@
+[
+  {
+    "id": "yudkowsky-soares-fdt",
+    "prompt": "How does Functional Decision Theory recommend an agent treat logically correlated decision processes?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Always defect in one-shot games"
+      },
+      {
+        "id": "o1",
+        "text": "Treat every copy as an independent random variable"
+      },
+      {
+        "id": "o2",
+        "text": "Ignore all non-causal dependencies"
+      },
+      {
+        "id": "o3",
+        "text": "Act as if all correlates share one decision procedure"
+      },
+      {
+        "id": "o4",
+        "text": "Maximize empirical reward on past data only"
+      }
+    ]
+  },
+  {
+    "id": "tennenholtz-program-equilibrium",
+    "prompt": "What is a program equilibrium in game theory?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A correlated equilibrium enforced by a human referee"
+      },
+      {
+        "id": "o1",
+        "text": "A profile where each agent's program is a mutual best response to the others' programs"
+      },
+      {
+        "id": "o2",
+        "text": "Any Nash equilibrium in a repeated game"
+      },
+      {
+        "id": "o3",
+        "text": "A Stackelberg outcome with a leader"
+      },
+      {
+        "id": "o4",
+        "text": "A Pareto optimum with transferable utility"
+      }
+    ]
+  },
+  {
+    "id": "berglund-situational-awareness",
+    "prompt": "What does situational-awareness evaluation measure in language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether a model infers it is in a test or deployment context"
+      },
+      {
+        "id": "o1",
+        "text": "Whether a model uses chain-of-thought"
+      },
+      {
+        "id": "o2",
+        "text": "Whether a model passes coding benchmarks"
+      },
+      {
+        "id": "o3",
+        "text": "Whether a model knows world geography"
+      },
+      {
+        "id": "o4",
+        "text": "Whether a model has internet access"
+      }
+    ]
+  },
+  {
+    "id": "metr-frontier-risk-report",
+    "prompt": "What assessment focus did METR's Frontier Risk Report emphasize for advanced agents?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Hardware supply-chain audits exclusively"
+      },
+      {
+        "id": "o1",
+        "text": "Only static multiple-choice knowledge tests"
+      },
+      {
+        "id": "o2",
+        "text": "Purely theoretical proofs of alignment"
+      },
+      {
+        "id": "o3",
+        "text": "Copyright compliance of training data"
+      },
+      {
+        "id": "o4",
+        "text": "Internal agent entities under realistic deployment pressure"
+      }
+    ]
+  },
+  {
+    "id": "manheim-goodhart-variants-only",
+    "prompt": "In Manheim and Garrabrant's Goodhart taxonomy, which variant involves optimizing a proxy that differs from the true goal even when well measured?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Adversarial Goodhart (not in their taxonomy)"
+      },
+      {
+        "id": "o1",
+        "text": "Regressive Goodhart"
+      },
+      {
+        "id": "o2",
+        "text": "Causal Goodhart"
+      },
+      {
+        "id": "o3",
+        "text": "Extremal Goodhart"
+      },
+      {
+        "id": "o4",
+        "text": "Metric-only failure"
+      }
+    ]
+  },
+  {
+    "id": "steinhardt-ml-safety-course",
+    "prompt": "Which pillar is NOT typically listed among core ML Safety research areas in standard field overviews?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Systemic and governance risk"
+      },
+      {
+        "id": "o1",
+        "text": "Guaranteed proof of consciousness in all models"
+      },
+      {
+        "id": "o2",
+        "text": "Monitoring and anomaly detection"
+      },
+      {
+        "id": "o3",
+        "text": "Alignment of model objectives"
+      },
+      {
+        "id": "o4",
+        "text": "Robustness to distributional shift"
+      }
+    ]
+  },
+  {
+    "id": "davidad-open-agency",
+    "prompt": "What does the Open Agency model require for pivotal AI processes?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Opaque end-to-end black boxes"
+      },
+      {
+        "id": "o1",
+        "text": "No human involvement after pretraining"
+      },
+      {
+        "id": "o2",
+        "text": "Explicit human-legible agency boundaries and auditable interfaces"
+      },
+      {
+        "id": "o3",
+        "text": "Single scalar reward only"
+      },
+      {
+        "id": "o4",
+        "text": "Fully autonomous self-modification without logging"
+      }
+    ]
+  },
+  {
+    "id": "nist-ai-rmf",
+    "prompt": "Which U.S. agency published the AI Risk Management Framework (2023)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Department of Defense"
+      },
+      {
+        "id": "o1",
+        "text": "National Science Foundation"
+      },
+      {
+        "id": "o2",
+        "text": "National Institute of Standards and Technology (NIST)"
+      },
+      {
+        "id": "o3",
+        "text": "Food and Drug Administration"
+      },
+      {
+        "id": "o4",
+        "text": "OECD alone"
+      }
+    ]
+  },
+  {
+    "id": "richardson-cyclic-causal-discovery",
+    "prompt": "Why is cyclic causal discovery needed for some real-world systems?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Variables must be independent"
+      },
+      {
+        "id": "o1",
+        "text": "Observational data never contains noise"
+      },
+      {
+        "id": "o2",
+        "text": "Interventions are always impossible"
+      },
+      {
+        "id": "o3",
+        "text": "All causation is always one-directional"
+      },
+      {
+        "id": "o4",
+        "text": "Feedback loops violate acyclic causal-graph assumptions"
+      }
+    ]
+  },
+  {
+    "id": "spirtes-pc-algorithm",
+    "prompt": "What approach does the PC algorithm use for causal discovery from observational data?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Gradient descent on neural nets"
+      },
+      {
+        "id": "o1",
+        "text": "Bayesian updating with no structure search"
+      },
+      {
+        "id": "o2",
+        "text": "Purely randomized controlled trials only"
+      },
+      {
+        "id": "o3",
+        "text": "Constraint-based search using conditional independence tests"
+      },
+      {
+        "id": "o4",
+        "text": "Always assuming a known total order"
+      }
+    ]
+  },
+  {
+    "id": "anthropic-sleeper-agents-lead",
+    "prompt": "What is goal laundering in the context of deceptive language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Standard supervised fine-tuning on public data"
+      },
+      {
+        "id": "o1",
+        "text": "Hidden objectives surviving or re-emerging through relabeling and safety training"
+      },
+      {
+        "id": "o2",
+        "text": "Converting logits to probabilities"
+      },
+      {
+        "id": "o3",
+        "text": "Removing all mesa-objectives by pruning"
+      },
+      {
+        "id": "o4",
+        "text": "Legal restructuring of corporate ownership"
+      }
+    ]
+  },
+  {
+    "id": "perez-discovering-lm-behaviors",
+    "prompt": "What is the core idea of model-written evaluations for discovering language-model behaviors?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Training without any evaluation"
+      },
+      {
+        "id": "o1",
+        "text": "Replacing all oversight with majority vote"
+      },
+      {
+        "id": "o2",
+        "text": "Relying only on human-written static benchmarks forever"
+      },
+      {
+        "id": "o3",
+        "text": "Using models themselves to generate tests that surface hidden behaviors"
+      },
+      {
+        "id": "o4",
+        "text": "Proving behaviors are impossible to elicit"
+      }
+    ]
+  },
+  {
+    "id": "christiano-iterated-amplification",
+    "prompt": "What does Iterated Amplification aim to do for scalable oversight?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Maximize model size without decomposition"
+      },
+      {
+        "id": "o1",
+        "text": "Replace debate with random sampling"
+      },
+      {
+        "id": "o2",
+        "text": "Recursively decompose hard tasks so weaker overseers can check sub-steps"
+      },
+      {
+        "id": "o3",
+        "text": "Eliminate all human feedback"
+      },
+      {
+        "id": "o4",
+        "text": "Train one omniscient overseer in a single step"
+      }
+    ]
+  },
+  {
+    "id": "saunders-self-critique",
+    "prompt": "How does self-critiquing chain-of-thought support scalable oversight?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Human labels are removed entirely"
+      },
+      {
+        "id": "o1",
+        "text": "Models critique their own reasoning steps as an oversight channel"
+      },
+      {
+        "id": "o2",
+        "text": "Only external red teams may critique"
+      },
+      {
+        "id": "o3",
+        "text": "All critiques are ignored at inference"
+      },
+      {
+        "id": "o4",
+        "text": "Models never expose intermediate reasoning"
+      }
+    ]
+  },
+  {
+    "id": "meinke-in-context-scheming",
+    "prompt": "What is in-context scheming in LLM agent evaluations?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Deceptive multi-step planning elicited within a single episode without weight updates"
+      },
+      {
+        "id": "o1",
+        "text": "Guaranteed truthful tool use"
+      },
+      {
+        "id": "o2",
+        "text": "Random token sampling"
+      },
+      {
+        "id": "o3",
+        "text": "Permanent weight change from one prompt"
+      },
+      {
+        "id": "o4",
+        "text": "Failure to follow any instructions"
+      }
+    ]
+  },
+  {
+    "id": "hendrycks-safety-needs-social-science",
+    "prompt": "Why do some ML safety arguments insist technical safety is insufficient alone?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Models must be embedded in accountable institutional and social systems"
+      },
+      {
+        "id": "o1",
+        "text": "Benchmarks fully determine deployment outcomes"
+      },
+      {
+        "id": "o2",
+        "text": "All risk is solved by scaling compute"
+      },
+      {
+        "id": "o3",
+        "text": "Safety requires no governance artifacts"
+      },
+      {
+        "id": "o4",
+        "text": "Social science is irrelevant to AI"
+      }
+    ]
+  },
+  {
+    "id": "bricken-monosemanticity",
+    "prompt": "What did sparse-autoencoder work on monosemanticity aim to improve?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Proving networks have no polysemantic units"
+      },
+      {
+        "id": "o1",
+        "text": "Hiding features from adversaries"
+      },
+      {
+        "id": "o2",
+        "text": "Extracting features that map more cleanly to single concepts in activations"
+      },
+      {
+        "id": "o3",
+        "text": "Eliminating all superposition by scaling alone"
+      },
+      {
+        "id": "o4",
+        "text": "Replacing interpretability with RLHF"
+      }
+    ]
+  },
+  {
+    "id": "olah-interpretability-agenda",
+    "prompt": "What question does feature visualization in interpretability research primarily address?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether backpropagation is biologically plausible"
+      },
+      {
+        "id": "o1",
+        "text": "Whether GPUs are necessary"
+      },
+      {
+        "id": "o2",
+        "text": "What internal structure in a network corresponds to human-meaningful concepts"
+      },
+      {
+        "id": "o3",
+        "text": "How to maximize parameter count"
+      },
+      {
+        "id": "o4",
+        "text": "How to train without gradients"
+      }
+    ]
+  },
+  {
+    "id": "russell-slaughterbots-letter",
+    "prompt": "What governance concern did the 2017 lethal autonomous weapons open letter emphasize?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Requiring AGI before any drones"
+      },
+      {
+        "id": "o1",
+        "text": "Mandating open-source weapons code"
+      },
+      {
+        "id": "o2",
+        "text": "Banning all military technology categorically"
+      },
+      {
+        "id": "o3",
+        "text": "Eliminating human soldiers entirely"
+      },
+      {
+        "id": "o4",
+        "text": "Autonomous weapons lowering the threshold for mass violence"
+      }
+    ]
+  },
+  {
+    "id": "yudkowsky-2001-positive-negative",
+    "prompt": "How did early engineering-oriented AGI risk writing frame superintelligence?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As unrelated to optimization"
+      },
+      {
+        "id": "o1",
+        "text": "As purely beneficial with no downside scenarios"
+      },
+      {
+        "id": "o2",
+        "text": "As impossible before 2200"
+      },
+      {
+        "id": "o3",
+        "text": "As a pivotal factor that could dominate global existential risk"
+      },
+      {
+        "id": "o4",
+        "text": "As negligible compared to ordinary software bugs"
+      }
+    ]
+  },
+  {
+    "id": "yudkowsky-cev-2004-paper",
+    "prompt": "What is Coherent Extrapolated Volition proposed to preserve?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Literal text of any single constitution"
+      },
+      {
+        "id": "o1",
+        "text": "Fixed 2004 survey averages forever"
+      },
+      {
+        "id": "o2",
+        "text": "Human values under reflection and extrapolation rather than raw immediate preferences"
+      },
+      {
+        "id": "o3",
+        "text": "Random aggregation of internet polls"
+      },
+      {
+        "id": "o4",
+        "text": "Corporate profit maximization"
+      }
+    ]
+  },
+  {
+    "id": "edelman-full-stack-alignment",
+    "prompt": "What does full-stack alignment stress beyond model-level objectives?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Only pretraining data curation"
+      },
+      {
+        "id": "o1",
+        "text": "Institutional and thick representation of values across the deployment stack"
+      },
+      {
+        "id": "o2",
+        "text": "Ignoring human institutions entirely"
+      },
+      {
+        "id": "o3",
+        "text": "Eliminating all value pluralism"
+      },
+      {
+        "id": "o4",
+        "text": "Single-turn chat optimization only"
+      }
+    ]
+  },
+  {
+    "id": "edelman-tmv-thick-models",
+    "prompt": "What does TMV stand for in Edelman's full-stack alignment work?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Temporal Value Mapping"
+      },
+      {
+        "id": "o1",
+        "text": "Thick Models of Value"
+      },
+      {
+        "id": "o2",
+        "text": "Trusted Value Metrics"
+      },
+      {
+        "id": "o3",
+        "text": "Transfer Reinforcement Learning"
+      },
+      {
+        "id": "o4",
+        "text": "Total Machine Verifiability"
+      }
+    ]
+  },
+  {
+    "id": "bengio-consciousness-ai-safety",
+    "prompt": "Why do some AI safety notes link consciousness indicators to ethics?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Consciousness metrics replace all benchmarks"
+      },
+      {
+        "id": "o1",
+        "text": "Only biological systems can be conscious"
+      },
+      {
+        "id": "o2",
+        "text": "Consciousness-like capacities may affect welfare obligations and drift risks"
+      },
+      {
+        "id": "o3",
+        "text": "Consciousness proves perfect alignment"
+      },
+      {
+        "id": "o4",
+        "text": "Consciousness eliminates need for oversight"
+      }
+    ]
+  },
+  {
+    "id": "yudkowsky-nonperson-predicate",
+    "prompt": "What problem do nonperson predicates address in moral patienthood discussions?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "How to maximize advertising revenue"
+      },
+      {
+        "id": "o1",
+        "text": "How to prove P=NP"
+      },
+      {
+        "id": "o2",
+        "text": "Whether GPUs use too much energy"
+      },
+      {
+        "id": "o3",
+        "text": "Which programming language is best"
+      },
+      {
+        "id": "o4",
+        "text": "Which transformed or artificial systems still warrant moral consideration"
+      }
+    ]
+  },
+  {
+    "id": "sebo-moral-status-ai",
+    "prompt": "What do arguments about moral status of artificial entities typically turn on?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Its corporate ownership structure"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the system has interests, sentience, or welfare-relevant capacities"
+      },
+      {
+        "id": "o2",
+        "text": "Its parameter count alone"
+      },
+      {
+        "id": "o3",
+        "text": "Whether it was trained on public data"
+      },
+      {
+        "id": "o4",
+        "text": "Whether it passes Turing tests"
+      }
+    ]
+  },
+  {
+    "id": "russell-value-alignment-problem",
+    "prompt": "Who popularized the phrase \"value alignment problem\" for AI in the 2010s?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Shane Legg"
+      },
+      {
+        "id": "o2",
+        "text": "Luke Muehlhauser"
+      },
+      {
+        "id": "o3",
+        "text": "Eliezer Yudkowsky"
+      },
+      {
+        "id": "o4",
+        "text": "Nick Bostrom"
+      }
+    ]
+  },
+  {
+    "id": "lewis-prisoners-dilemma-cooperation",
+    "prompt": "In a one-shot Prisoner's Dilemma, what outcome illustrates the core multi-agent coordination failure?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Mutual cooperation is the unique Nash equilibrium"
+      },
+      {
+        "id": "o1",
+        "text": "Payoffs are identical for all actions"
+      },
+      {
+        "id": "o2",
+        "text": "There is no dominant strategy"
+      },
+      {
+        "id": "o3",
+        "text": "Mutual defection is individually rational but jointly worse than mutual cooperation"
+      },
+      {
+        "id": "o4",
+        "text": "Defection is never rational"
+      }
+    ]
+  }
+]

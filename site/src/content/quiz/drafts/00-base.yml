@@ -1,0 +1,41 @@
+questions:
+  - id: wiener-coupled-agencies
+    prompt: >-
+      Who first wrote: "Disastrous results are to be expected … wherever two
+      agencies essentially foreign to each other are coupled in the attempt to
+      achieve a common purpose."?
+    options:
+      - { id: wiener, text: Norbert Wiener, correct: true }
+      - { id: turing, text: Alan Turing, correct: false }
+      - { id: shannon, text: Claude Shannon, correct: false }
+      - { id: vonneumann, text: John von Neumann, correct: false }
+      - { id: russell, text: Stuart Russell, correct: false }
+    explanation: >-
+      Norbert Wiener, "Some Moral and Technical Consequences of Automation,"
+      Science (1960). The quote appears as the Chapter 1 epigraph on this site;
+      you do not need to have read the chapter to answer.
+    source:
+      href: /cards/chapter/ch01/
+      label: Chapter 1 — The Wrong Object of Alignment
+    topics: [MB1]
+    appearOn: [chapter:ch01]
+
+  - id: embedded-agency-lead-author
+    prompt: >-
+      Who is the lead author of the Embedded Agency sequence that frames the
+      problem of no clean cut between an optimizer and its environment?
+    options:
+      - { id: garrabrant, text: Scott Garrabrant, correct: true }
+      - { id: russell, text: Stuart Russell, correct: false }
+      - { id: christiano, text: Paul Christiano, correct: false }
+      - { id: olah, text: Chris Olah, correct: false }
+      - { id: wiener, text: Norbert Wiener, correct: false }
+    explanation: >-
+      Scott Garrabrant is the lead author of the Embedded Agency sequence
+      (with Abram Demski and others at MIRI). It names the embedded-agency
+      problem that motivates boundary-finding work in the field.
+    source:
+      href: /cards/chapter/ch01/
+      label: Chapter 1 — The Wrong Object of Alignment
+    topics: [MB1]
+    appearOn: [chapter:ch01, chapter:ch06]

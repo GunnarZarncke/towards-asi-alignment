@@ -6,7 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-27 | **Quiz multi-correct floor** — Split bundled coauthor/taxonomy keys; bank check ≥5% (12/211). | [2026-08-27-quiz-multi-correct.md](2026-08-27-quiz-multi-correct.md) |
+| 2026-08-27 | **Quiz length tell (essays + ch01–ch24)** — Same-frame, band ≤12 rewrites in the takeaway generator; ch25–ch48 left to the sibling pass. | [2026-08-27-quiz-length-tell-essays-ch01-24.md](2026-08-27-quiz-length-tell-essays-ch01-24.md) |
 | 2026-08-27 | **Voice §5 progress wording** — Introduction + executive overview: refused required evidence leads; artifacts are instruments. | [2026-08-27-voice-progress.md](2026-08-27-voice-progress.md) |
+| 2026-08-27 | **Quiz length tell implemented** — Sentence items in 12-char option band; gate in `make check`. | [2026-08-27-quiz-length-tell.md](2026-08-27-quiz-length-tell.md) |
 | 2026-08-27 | **Blind quiz solver protocol** — Solver picks without keys; superagent scores. Full bank 211/211 after opaque ids. | [2026-08-27-quiz-blind-eval.md](2026-08-27-quiz-blind-eval.md) |
 | 2026-08-27 | **Voice §2 ch21–ch48 thesis audit** — Remainders ch27, ch31, ch33, ch38, ch42, ch43; §2 closed. | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
 | 2026-08-27 | **Quiz from news takeaways** — Manuscript claims from field-news decisions in the bank; appear on chapter quiz blocks, not news cards. | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |

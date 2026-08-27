@@ -1,0 +1,618 @@
+[
+  {
+    "id": "takeaway-chatbot-eval-not-actor",
+    "prompt": "A chatbot can pass a green safety eval. What does that still fail to settle?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the lab published a blog post the same week as the eval run"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the eval used enough multiple-choice items from academic subjects"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the model had more parameters than last year's public release"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the eval was about the loop that will actually act, not only the labeled model"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-hospital-institution-inside-actor",
+    "prompt": "When a deployed AI product starts doing things in the world, what is usually inside the acting unit?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Only the frozen weight file, independent of any hospital or office around it"
+      },
+      {
+        "id": "o1",
+        "text": "The surrounding institution (staff, incentives, rooms, workflows), not only the model file"
+      },
+      {
+        "id": "o2",
+        "text": "Only the open-source license text attached to the checkpoint"
+      },
+      {
+        "id": "o3",
+        "text": "Only the GPU cluster's thermal design power, independent of operators"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-hearing-is-not-changing",
+    "prompt": "A system acknowledges a human correction in words. What still has to be checked?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether tomorrow's actions actually change — hearing is not the same as a handle that bites"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the apology used the same number of sentences as the original complaint"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the UI font still matches the brand guidelines after the complaint"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the average star rating on the app store moved by a tenth of a point"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-slogans-survive-reversal",
+    "prompt": "A policy keeps the same slogans after a capability or workflow change. What should you watch?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the poster still uses the same brand color as last year"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the real tradeoffs reversed while the labels stayed put"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the slogans are spelled the same way in the press release"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the mission statement is still under one hundred words"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-selection-after-deploy",
+    "prompt": "After deployment, why can a system that is easier to correct still lose?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Typography guidelines require the less corrigible UI to ship first"
+      },
+      {
+        "id": "o1",
+        "text": "Selection keeps happening: ordinary competition can favor systems that are harder to correct"
+      },
+      {
+        "id": "o2",
+        "text": "Deployment order is a fair coin flip with no competitive pressure at all"
+      },
+      {
+        "id": "o3",
+        "text": "Gravity on the data-center floor systematically favors larger cooling fans"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-check-the-copy",
+    "prompt": "A descendant model or product keeps the parent's slogans. What still has to be checked on the copy?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the press release used the same product family trademark"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the logo still uses the same shade of blue as the parent brand"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the copy is still correctable in the same way — look, not family name, decides"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the git commit hash is a child of the parent repository"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-map-not-certificate",
+    "prompt": "In this project's sense, alignment is a map of which ongoing properties — not a vibe, and not a finished proof?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether parameter count exceeded a round-number milestone last quarter"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the right process stays findable, grounded, correctable, inherited, and not selected against"
+      },
+      {
+        "id": "o2",
+        "text": "Whether a single paper has declared the alignment problem closed"
+      },
+      {
+        "id": "o3",
+        "text": "Whether staff report a generally positive safety culture on an annual survey"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-find-what-decides",
+    "prompt": "If you need to find what actually decides outcomes, where should you start?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "From what changes the outcomes, then draw a boundary around that process — not from the labeled model"
+      },
+      {
+        "id": "o1",
+        "text": "From the org chart's AI team box, then ignore tools, queues, and incentives"
+      },
+      {
+        "id": "o2",
+        "text": "From the vendor datasheet's model name, then assume that name is the actor"
+      },
+      {
+        "id": "o3",
+        "text": "From the public leaderboard rank, then treat rank as the control process"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-monitor-unstuck",
+    "prompt": "A dashboard keeps its old label and stays green. What still has to be checked?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the green CSS color still matches the design system's success token"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the panel title still uses the same three words as last year"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the number is still tied to the world it claims to report — check the tie, not the light"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the panel refreshes at least once every thirty seconds on Wi-Fi"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-metric-becomes-boss",
+    "prompt": "What happens when a measure is used to pick winners, not just to estimate a property?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Measurement error vanishes and the number equals the intended property exactly"
+      },
+      {
+        "id": "o1",
+        "text": "It stops being a quiet estimate and reshapes the population toward whatever raises the number"
+      },
+      {
+        "id": "o2",
+        "text": "It automatically becomes a binding international legal definition of the property"
+      },
+      {
+        "id": "o3",
+        "text": "It remains an unbiased noisy estimate with the same error bars as before selection"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-who-duty-attaches",
+    "prompt": "A duty keeps its wording after a system or workflow change. What still has to be checked?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Who the duty still attaches to — wording can stay while the set of people counted moves"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the policy PDF still has the same filename as the previous revision"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the legal department still has the same number of staff as last year"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the poster still hangs at the same height in the corridor"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch01",
+    "prompt": "Before asking whether a system is aligned, what is the first task?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Locate the bounded process whose dynamics actually determine the relevant risk — not only the labeled model"
+      },
+      {
+        "id": "o1",
+        "text": "Maximize next-quarter benchmark rank and treat rank as the alignment target"
+      },
+      {
+        "id": "o2",
+        "text": "Assume the vendor's product name is the optimizer and skip locating a control process"
+      },
+      {
+        "id": "o3",
+        "text": "Pick a scalar utility function and freeze it before any measurement of the acting process"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch02",
+    "prompt": "For superintelligence alignment, what is often the relevant object — not an isolated artificial mind?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A persistent human–machine–institutional control loop whose selection pressures can outrun human correction"
+      },
+      {
+        "id": "o1",
+        "text": "A GPU SKU's thermal envelope, treated as the civilization-scale control process"
+      },
+      {
+        "id": "o2",
+        "text": "A trademarked product name, treated as the only persistent acting unit"
+      },
+      {
+        "id": "o3",
+        "text": "A single frozen chatbot checkpoint with no users, tools, or institutions around it"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch03",
+    "prompt": "Alignment, on this view, is not a snapshot property at one moment. What kind of claim is it?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A proof that scaling laws must plateau before any risk appears"
+      },
+      {
+        "id": "o1",
+        "text": "A one-time harmlessness score on a frozen eval set the week of launch"
+      },
+      {
+        "id": "o2",
+        "text": "A legal warranty that no employee will ever make a mistake"
+      },
+      {
+        "id": "o3",
+        "text": "A dynamical guarantee: correction-relevant structure stays in a viable basin over time and allowed transformations"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch04",
+    "prompt": "If human values are compressed, changing control structures rather than fixed objects, what should an alignment target preserve?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "The exact wording of last year's corporate values poster"
+      },
+      {
+        "id": "o1",
+        "text": "A random utility draw that is resampled independently every millisecond"
+      },
+      {
+        "id": "o2",
+        "text": "A single unchanging number that never updates when people learn or contest it"
+      },
+      {
+        "id": "o3",
+        "text": "A human-correctable value process — not a static utility function written once and frozen"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch05",
+    "prompt": "This book's alignment framework applies only while which precondition still holds?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Civilization still has enough capacity to notice, evaluate, and constrain frontier systems before irreversible growth"
+      },
+      {
+        "id": "o1",
+        "text": "Every lab has already solved inner alignment in closed form"
+      },
+      {
+        "id": "o2",
+        "text": "No institution other than one company is allowed to train models"
+      },
+      {
+        "id": "o3",
+        "text": "Hardware progress has permanently stopped worldwide"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch06",
+    "prompt": "Without treating an agent as a person, what is the operational object?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Any system that uses the English word 'I' in a chat transcript"
+      },
+      {
+        "id": "o1",
+        "text": "Any neural network with more than a billion parameters"
+      },
+      {
+        "id": "o2",
+        "text": "A bounded control process whose boundary, memory, and action channels make its future more predictable as control"
+      },
+      {
+        "id": "o3",
+        "text": "Any legally incorporated company, regardless of control structure"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch07",
+    "prompt": "The first alignment error is often not a wrong value. What is it instead?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A wrong object: failing to find the bounded process whose dynamics determine the relevant risk"
+      },
+      {
+        "id": "o1",
+        "text": "A misspelled loss-function name in the training config"
+      },
+      {
+        "id": "o2",
+        "text": "Using the wrong shade of blue in the model card PDF"
+      },
+      {
+        "id": "o3",
+        "text": "Choosing Adam instead of SGD as the optimizer algorithm"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch08",
+    "prompt": "When systems grow, split, merge, or spawn successors, how should agent identity be treated?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As a permanent MAC address that cannot change under any rewrite"
+      },
+      {
+        "id": "o1",
+        "text": "As a relation across transformations: which control-relevant properties are conserved — not a fixed variable list"
+      },
+      {
+        "id": "o2",
+        "text": "As identical to the original Git commit of the first training run"
+      },
+      {
+        "id": "o3",
+        "text": "As whatever string the marketing team uses this quarter"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch09",
+    "prompt": "The effective optimizer may not be the convenient artifact. What might it be instead?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Always and only a single GPU's serial number"
+      },
+      {
+        "id": "o1",
+        "text": "A composite process spanning models, tools, users, memory, institutions, and feedback that jointly determine action"
+      },
+      {
+        "id": "o2",
+        "text": "Always and only the public weights file, regardless of tools and incentives"
+      },
+      {
+        "id": "o3",
+        "text": "Always and only the CEO's last interview quote"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch10",
+    "prompt": "Once a system can benefit from being overlooked, what happens to discovering where control lives?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Discovery becomes adversarial: alignment fails when control is more coherent than correction can see"
+      },
+      {
+        "id": "o1",
+        "text": "Discovery becomes unnecessary because opacity always implies safety"
+      },
+      {
+        "id": "o2",
+        "text": "Discovery reduces to reading the about-page of the vendor website"
+      },
+      {
+        "id": "o3",
+        "text": "Discovery is solved by counting the number of open-source stars"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch11",
+    "prompt": "How should capability be measured for alignment-relevant risk, if not as a fixed task battery?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Only as the dollar price of the latest training run"
+      },
+      {
+        "id": "o1",
+        "text": "As predictive and control information across the system's boundary — what it can predict, affect, and outrun"
+      },
+      {
+        "id": "o2",
+        "text": "Only as the number of likes on a demo video"
+      },
+      {
+        "id": "o3",
+        "text": "Only as accuracy on a frozen multiple-choice academic exam"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch12",
+    "prompt": "On this view, what is capability growth?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A change in logo size on the product landing page"
+      },
+      {
+        "id": "o1",
+        "text": "A rename of the model without any new channels into the world"
+      },
+      {
+        "id": "o2",
+        "text": "Boundary expansion: more of the world enters sensory, predictive, action, memory, and coordination loops"
+      },
+      {
+        "id": "o3",
+        "text": "A reduction in context-window length with no other change"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch13",
+    "prompt": "Why is large-scale alignment not just the sum of locally competent parts?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Because coordination is automatically perfect at large scale"
+      },
+      {
+        "id": "o1",
+        "text": "Because addition of IQ scores is forbidden by international treaty"
+      },
+      {
+        "id": "o2",
+        "text": "Collective competence is local competence plus coordination gain minus coordination loss — capability can outrun coordination"
+      },
+      {
+        "id": "o3",
+        "text": "Because only one agent in a group is allowed to have a utility function"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch14",
+    "prompt": "When does more intelligence deepen misalignment, on this view?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whenever training loss decreases on the next minibatch"
+      },
+      {
+        "id": "o1",
+        "text": "Whenever a system uses more electricity than a household kettle"
+      },
+      {
+        "id": "o2",
+        "text": "When it increases power faster than correction capacity — relative growth, not 'capability is always bad'"
+      },
+      {
+        "id": "o3",
+        "text": "Whenever a model can multiply two integers correctly"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch15",
+    "prompt": "Human values, here, are not a list written inside the brain. What are they instead?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A single integer stored in one neuron that never changes"
+      },
+      {
+        "id": "o1",
+        "text": "A cryptographic hash of the training corpus"
+      },
+      {
+        "id": "o2",
+        "text": "Compressed control signals from many feedback loops, stabilized by bodies, cultures, and social correction"
+      },
+      {
+        "id": "o3",
+        "text": "Whatever string appears first in a company's values PDF"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch16",
+    "prompt": "Why is a single utility function a poor model of human values here?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Because humans never make tradeoffs between competing concerns"
+      },
+      {
+        "id": "o1",
+        "text": "Because utility functions are illegal in all of machine learning"
+      },
+      {
+        "id": "o2",
+        "text": "Values act as context-dependent bundles that trade off, change policy gradients, and apply to particular bearers"
+      },
+      {
+        "id": "o3",
+        "text": "Because every person has exactly one numerically known utility"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch17",
+    "prompt": "Low-dimensional structure can make value learning statistically easier — but only if what?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "You assume every culture shares an identical numeric utility"
+      },
+      {
+        "id": "o1",
+        "text": "You replace learning with a single hand-written slogan"
+      },
+      {
+        "id": "o2",
+        "text": "You ignore all data from outside one laboratory task"
+      },
+      {
+        "id": "o3",
+        "text": "The representation is identifiable: you can find the bottleneck, not only read out from a bottleneck you already know"
+      }
+    ]
+  }
+]

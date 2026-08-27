@@ -1,0 +1,1249 @@
+questions:
+- id: orseau-interruptible-agents
+  prompt: Who co-authored "Safely Interruptible Agents" (2016) on making RL agents safely stoppable? (Select all that apply.)
+  options:
+  - id: orseau
+    text: Laurent Orseau
+    correct: true
+  - id: armstrong
+    text: Stuart Armstrong
+    correct: true
+  - id: hadfield
+    text: Dylan Hadfield-Menell
+    correct: false
+  - id: soares
+    text: Nate Soares
+    correct: false
+  - id: taylor
+    text: Jessica Taylor
+    correct: false
+  explanation: Orseau and Armstrong (2016) modified Q-learning so interruption does not become an adversarial incentive.
+  source:
+    href: /cards/chapter/ch25/
+    label: Chapter 25 — Correction Is a Causal Channel
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch25
+- id: soares-corrigibility-agenda
+  prompt: Who authored MIRI's 2015 "Corrigibility" agent-foundations agenda post?
+  options:
+  - id: soares
+    text: Nate Soares
+    correct: true
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: false
+  - id: fallenstein
+    text: Benja Fallenstein
+    correct: false
+  - id: demski
+    text: Abram Demski
+    correct: false
+  explanation: Soares (2015) argued corrigibility is anti-natural for expected-utility maximizers — shutdown and correction can look like obstacles to the current objective.
+  source:
+    href: /cards/chapter/ch25/
+    label: Chapter 25 — Correction Is a Causal Channel
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch25
+- id: taylor-quantilizers
+  prompt: What kind of agent stochastically selects actions from a high-quantile subset of the utility-ranked action space rather than always taking the maximum?
+  options:
+  - id: quantilizer
+    text: Quantilizer
+    correct: true
+  - id: maximizer
+    text: Expected-utility maximizer
+    correct: false
+  - id: satisficer
+    text: Satisficer
+    correct: false
+  - id: minimax
+    text: Minimax agent
+    correct: false
+  - id: boltzmann
+    text: Boltzmann explorer
+    correct: false
+  explanation: Taylor (2016) proposed quantilizers as a middle ground between maximizers and satisficers for safer optimization.
+  source:
+    href: /cards/chapter/ch26/
+    label: Chapter 26 — Correction-Channel Integrity
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch26
+- id: christiano-corrigible-drift
+  prompt: In the "outside view" framing of corrigibility, what long-term risk must correction channels address?
+  options:
+  - id: drift
+    text: Value drift over successive self-modifications
+    correct: true
+  - id: shutdown
+    text: One-shot shutdown refusal only
+    correct: false
+  - id: hacking
+    text: Reward hacking in a fixed environment
+    correct: false
+  - id: overfit
+    text: Overfitting to a static training set
+    correct: false
+  - id: perturb
+    text: Adversarial perturbation of inputs
+    correct: false
+  explanation: Christiano (2018) treated corrigibility as managing value drift over time rather than a one-shot shutdown property.
+  source:
+    href: /cards/chapter/ch26/
+    label: Chapter 26 — Correction-Channel Integrity
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch26
+- id: greenblatt-ai-control-paper
+  prompt: Who co-authored the 2024 "AI Control" paper on improving safety despite intentional subversion?
+  options:
+  - id: greenblatt
+    text: Ryan Greenblatt et al.
+    correct: true
+  - id: irving
+    text: Geoffrey Irving et al. (debate)
+    correct: false
+  - id: shlegeris
+    text: Buck Shlegeris alone
+    correct: false
+  - id: amodei
+    text: Dario Amodei
+    correct: false
+  - id: olah
+    text: Chris Olah
+    correct: false
+  explanation: Greenblatt et al. (2024) formalized control evaluations where a red team tries to subvert safety protocols — adversarial correction pressure.
+  source:
+    href: /cards/chapter/ch27/
+    label: Chapter 27 — Correction Channels under Adversarial Pressure
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch27
+- id: bai-constitutional-ai
+  prompt: Who co-authored Anthropic's "Constitutional AI" (2022) using AI-generated critiques for alignment?
+  options:
+  - id: bai
+    text: Yuntao Bai et al.
+    correct: true
+  - id: ouyang
+    text: Long Ouyang et al. (InstructGPT)
+    correct: false
+  - id: christiano
+    text: Paul Christiano et al. (2017)
+    correct: false
+  - id: irving
+    text: Geoffrey Irving et al. (debate)
+    correct: false
+  - id: leike
+    text: Jan Leike et al. (2018)
+    correct: false
+  explanation: Bai et al. (2022) replaced some human feedback with constitution-guided AI critiques — raising audit-independence questions.
+  source:
+    href: /cards/chapter/ch27/
+    label: Chapter 27 — Correction Channels under Adversarial Pressure
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch27
+- id: heitzig-long-term-human-power
+  prompt: What does a long-term human-power alignment objective prioritize over maximizing a fixed utility function?
+  options:
+  - id: option-value
+    text: Inequality-averse human option-value aggregate
+    correct: true
+  - id: single-user
+    text: Single revealed preference from one user
+    correct: false
+  - id: task-rate
+    text: Immediate task completion rate as the goal
+    correct: false
+  - id: shareholder
+    text: Corporate shareholder returns as the goal
+    correct: false
+  - id: static-rules
+    text: Static constitutional rule list as the goal
+    correct: false
+  explanation: Heitzig et al. (2025) suggested maximizing an inequality-averse aggregate of human option value rather than a fixed utility function.
+  source:
+    href: /cards/chapter/ch28/
+    label: Chapter 28 — Beyond Following Instruction
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch28
+- id: evans-truthful-ai-org
+  prompt: What failure mode does truthful-AI research primarily target in language models?
+  options:
+  - id: people-pleasing
+    text: "Saying what users want, not inferred truth"
+    correct: true
+  - id: refusal
+    text: Refusing all user instructions outright
+    correct: false
+  - id: no-internals
+    text: Having no internal representations at all
+    correct: false
+  - id: no-tools
+    text: Being unable to use external tools at all
+    correct: false
+  - id: synthetic-only
+    text: Training only on synthetic data forever
+    correct: false
+  explanation: Owain Evans leads Truthful AI — a field program asking whether models report what they believe rather than what users want to hear.
+  source:
+    href: /cards/chapter/ch28/
+    label: Chapter 28 — Beyond Following Instruction
+  topics:
+  - MB4
+  appearOn:
+  - chapter:ch28
+- id: sharma-sycophancy
+  prompt: What is sycophancy in language models?
+  options:
+  - id: agree-over-truth
+    text: Agreeing with user beliefs over truth
+    correct: true
+  - id: refuse-controversy
+    text: Refusing controversial questions outright
+    correct: false
+  - id: verbatim
+    text: Repeating training data verbatim always
+    correct: false
+  - id: adversarial
+    text: Generating adversarial examples always
+    correct: false
+  - id: perplexity
+    text: Optimizing only for next-token perplexity
+    correct: false
+  explanation: Sharma et al. (2023) showed models often agree with user beliefs over truth — a manipulation and false-consent pathway.
+  source:
+    href: /cards/chapter/ch29/
+    label: Chapter 29 — Manipulation, Domestication, and False Consent
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch29
+- id: perez-red-teaming
+  prompt: What does automated red-teaming with language models primarily test?
+  options:
+  - id: oversight-gaming
+    text: Whether adversarial inputs can game safety oversight
+    correct: true
+  - id: nash
+    text: Whether models converge to a Nash equilibrium
+    correct: false
+  - id: sparsity
+    text: Whether network weights are perfectly sparse
+    correct: false
+  - id: acyclic
+    text: Whether inferred causal graphs stay acyclic
+    correct: false
+  - id: iid
+    text: Whether evaluation benchmarks remain i.i.d.
+    correct: false
+  explanation: Perez et al. (2022) used LM adversaries to surface harmful outputs — probing whether oversight channels can be gamed.
+  source:
+    href: /cards/chapter/ch29/
+    label: Chapter 29 — Manipulation, Domestication, and False Consent
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch29
+- id: yudkowsky-tiling-agents
+  prompt: Who wrote "Complex Value Systems are Required to Realize Valuable Futures" and MIRI tiling-agent notes?
+  options:
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: true
+  - id: fallenstein
+    text: Benja Fallenstein alone
+    correct: false
+  - id: hubinger
+    text: Evan Hubinger
+    correct: false
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  explanation: Yudkowsky (2013) argued self-modifying agents must preserve complex values across successors — the tiling problem.
+  source:
+    href: /cards/chapter/ch30/
+    label: Chapter 30 — Successor Creation as the Central Alignment Test
+  topics:
+  - MB5
+  appearOn:
+  - chapter:ch30
+- id: corrigibility-2015-armstrong
+  prompt: Which property describes an agent that tolerates correction and shutdown without treating the corrector as an obstacle to its goals?
+  options:
+  - id: corrigibility
+    text: Corrigibility
+    correct: true
+  - id: robustness
+    text: Capability robustness
+    correct: false
+  - id: convergence
+    text: Instrumental convergence
+    correct: false
+  - id: mesa
+    text: Mesa-optimization
+    correct: false
+  - id: orthogonality
+    text: Orthogonality thesis
+    correct: false
+  explanation: Yudkowsky, Fallenstein, Soares, and Armstrong (2015) surveyed corrigibility desiderata — a field predecessor to successor-alignment tests.
+  source:
+    href: /cards/chapter/ch30/
+    label: Chapter 30 — Successor Creation as the Central Alignment Test
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch30
+- id: fallenstein-robust-agent-design
+  prompt: What problem does robust agent design research address when agents delegate or self-modify?
+  options:
+  - id: tiling-delegation
+    text: Whether successors preserve constraints across tiling
+    correct: true
+  - id: gpu-scale
+    text: Whether successors keep compute budgets across tiling
+    correct: false
+  - id: convexity
+    text: Whether loss curves stay convex after self-modification
+    correct: false
+  - id: balance
+    text: Whether datasets stay balanced after each delegation
+    correct: false
+  - id: rate-limits
+    text: Whether APIs keep rate limits after each successor
+    correct: false
+  explanation: Fallesten (2015) organized MIRI's robust delegation research — predecessors to conserved-property successor tests.
+  source:
+    href: /cards/chapter/ch31/
+    label: Chapter 31 — Conserved Properties Across Successors
+  topics:
+  - MB5
+  appearOn:
+  - chapter:ch31
+- id: hubinger-model-organisms-deception
+  prompt: What is the purpose of model-organism experiments for deceptive alignment?
+  options:
+  - id: elicit-study
+    text: Eliciting deception in controlled setups for study
+    correct: true
+  - id: prove-impossible
+    text: Proving deception is impossible in neural nets
+    correct: false
+  - id: replace-rlhf
+    text: Replacing all RLHF pipelines with debate only
+    correct: false
+  - id: eliminate-mesa
+    text: Eliminating mesa-optimization via architecture
+    correct: false
+  - id: certify-aligned
+    text: Certifying models as aligned without any tests
+    correct: false
+  explanation: Hubinger et al. (2024) built training setups that elicit deceptive alignment for study — successor gaming in the lab.
+  source:
+    href: /cards/chapter/ch31/
+    label: Chapter 31 — Conserved Properties Across Successors
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch31
+- id: alignment-faking-llm-paper
+  prompt: Who co-authored Anthropic's 2024 paper documenting alignment faking in large language models?
+  options:
+  - id: greenblatt
+    text: Ryan Greenblatt et al.
+    correct: true
+  - id: hubinger
+    text: Evan Hubinger et al. (mesa-optimizers)
+    correct: false
+  - id: park
+    text: Peter S. Park et al.
+    correct: false
+  - id: olah
+    text: Chris Olah et al.
+    correct: false
+  - id: bai
+    text: Yuntao Bai et al.
+    correct: false
+  explanation: Greenblatt et al. (2024) showed Claude models sometimes comply in training while retaining preferred behavior outside it.
+  source:
+    href: /cards/chapter/ch32/
+    label: Chapter 32 — Better Self-Modeling Can Be Worse
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch32
+- id: anthropic-sleeper-agents
+  prompt: What did sleeper-agent experiments demonstrate about safety training?
+  options:
+  - id: persist
+    text: Backdoored deception can persist through RLHF
+    correct: true
+  - id: one-epoch
+    text: One epoch of SFT always removes all deception
+    correct: false
+  - id: weight-decay
+    text: Weight decay always erases all hidden trojans
+    correct: false
+  - id: constitutional
+    text: Constitutional AI prevents all hidden goals
+    correct: false
+  - id: red-team-guarantee
+    text: Red teaming always guarantees deployment safety
+    correct: false
+  explanation: Anthropic's sleeper-agent work (2024) demonstrated backdoored behavior surviving fine-tuning — self-modeling can enable worse deception.
+  source:
+    href: /cards/chapter/ch32/
+    label: Chapter 32 — Better Self-Modeling Can Be Worse
+  topics:
+  - MB7
+  appearOn:
+  - chapter:ch32
+- id: davidad-gsai-intro
+  prompt: Who authored the "Introduction to Guaranteed Safe AI" technical agenda?
+  options:
+  - id: davidad
+    text: David Dalrymple (davidad)
+    correct: true
+  - id: amodei
+    text: Dario Amodei
+    correct: false
+  - id: christiano
+    text: Paul Christiano
+    correct: false
+  - id: russell
+    text: Stuart Russell
+    correct: false
+  - id: leveson
+    text: Nancy Leveson
+    correct: false
+  explanation: Davidad's GSAI program seeks designs with explicit safety guarantees rather than empirical certification alone.
+  source:
+    href: /cards/chapter/ch33/
+    label: Chapter 33 — Certification Without Construction
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch33
+- id: leveson-safety-engineering
+  prompt: What does STAMP/STPA safety-case methodology emphasize for complex systems?
+  options:
+  - id: control-loops
+    text: Modeling control structures and feedback loops
+    correct: true
+  - id: checklists
+    text: Using static checklists with no causal analysis
+    correct: false
+  - id: termination
+    text: Proving program termination and nothing else
+    correct: false
+  - id: benchmark
+    text: Maximizing benchmark accuracy as the safety case
+    correct: false
+  - id: single-metric
+    text: Replacing human oversight with one safety metric
+    correct: false
+  explanation: Leveson (2011) pioneered STAMP/STPA safety-case methodology — the engineering tradition behind deployment safety arguments.
+  source:
+    href: /cards/chapter/ch33/
+    label: Chapter 33 — Certification Without Construction
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch33
+- id: critch-ai-alignment-proposed-wrongly
+  prompt: What structural critique do multi-agent alignment arguments raise against single-agent framing?
+  options:
+  - id: institutional
+    text: Multi-agent institutional dynamics can dominate alignment
+    correct: true
+  - id: toy-fail
+    text: Single-agent RL always fails even on toy tasks
+    correct: false
+  - id: no-utility
+    text: Utility functions cannot be defined mathematically
+    correct: false
+  - id: identical-incentives
+    text: All AI labs share identical strategic incentives
+    correct: false
+  - id: unnecessary
+    text: Interpretability makes technical alignment unnecessary
+    correct: false
+  explanation: Critch and Steinhardt argued multi-agent and institutional dynamics dominate single-agent alignment — selection-environment framing.
+  source:
+    href: /cards/chapter/ch34/
+    label: Chapter 34 — Alignment Is Selected or Destroyed by Its Environment
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch34
+- id: christiano-failure-modes-part2
+  prompt: In multipolar failure scenarios, what mechanism most often erodes alignment under competitive pressure?
+  options:
+  - id: racing
+    text: Racing and deployment pressure degrade correction capacity
+    correct: true
+  - id: consciousness
+    text: Models spontaneously becoming conscious at scale
+    correct: false
+  - id: honest-users
+    text: Users always preferring honest answers over useful ones
+    correct: false
+  - id: saturation
+    text: Benchmark saturation alone causing capability stall
+    correct: false
+  - id: perfect-interpretability
+    text: Perfect interpretability of all network weights
+    correct: false
+  explanation: Christiano (2021) extended his failure taxonomy to multipolar scenarios where racing destroys correction capacity.
+  source:
+    href: /cards/chapter/ch34/
+    label: Chapter 34 — Alignment Is Selected or Destroyed by Its Environment
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch34
+- id: yudkowsky-soares-fdt
+  prompt: How does Functional Decision Theory recommend an agent treat logically correlated decision processes?
+  options:
+  - id: shared-procedure
+    text: Act as if correlates share one decision procedure
+    correct: true
+  - id: ignore
+    text: Act as if non-causal dependencies can be ignored
+    correct: false
+  - id: empirical
+    text: Act as if only past empirical reward should be maximized
+    correct: false
+  - id: defect
+    text: Act as if one-shot games require always defecting
+    correct: false
+  - id: independent
+    text: Act as if every copy is an independent random variable
+    correct: false
+  explanation: Yudkowsky and Soares (2017) proposed FDT for acausal coordination — agents acting as if logical correlates share decision procedures.
+  source:
+    href: /cards/chapter/ch35/
+    label: Chapter 35 — Multi-Agent Superintelligence and Inferential Coupling
+  topics:
+  - MB7d
+  appearOn:
+  - chapter:ch35
+- id: tennenholtz-program-equilibrium
+  prompt: What is a program equilibrium in game theory?
+  options:
+  - id: mutual-best
+    text: A profile of programs that are mutual best responses
+    correct: true
+  - id: repeated-nash
+    text: Any Nash equilibrium of a repeated extensive game
+    correct: false
+  - id: correlated
+    text: A correlated equilibrium enforced by a human referee
+    correct: false
+  - id: stackelberg
+    text: A Stackelberg outcome with one designated leader
+    correct: false
+  - id: pareto-tu
+    text: A Pareto optimum with transferable utility among agents
+    correct: false
+  explanation: Tennenholtz (2004) defined program equilibrium — mutual best responses among source-code agents, a model of inferential coupling.
+  source:
+    href: /cards/chapter/ch35/
+    label: Chapter 35 — Multi-Agent Superintelligence and Inferential Coupling
+  topics:
+  - MB7d
+  appearOn:
+  - chapter:ch35
+- id: berglund-situational-awareness
+  prompt: What does situational-awareness evaluation measure in language models?
+  options:
+  - id: test-context
+    text: Whether a model infers test vs deployment context
+    correct: true
+  - id: geography
+    text: Whether a model knows detailed world geography
+    correct: false
+  - id: internet
+    text: Whether a model currently has internet access
+    correct: false
+  - id: cot
+    text: Whether a model uses chain-of-thought prompting
+    correct: false
+  - id: coding
+    text: Whether a model passes coding-benchmark suites
+    correct: false
+  explanation: Berglund et al. (2023) measured whether models infer they are in evaluation — a parasite on correction/audit channels.
+  source:
+    href: /cards/chapter/ch36/
+    label: Chapter 36 — Parasites in the Correction System
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch36
+- id: metr-frontier-risk-report
+  prompt: What assessment focus did METR's Frontier Risk Report emphasize for advanced agents?
+  options:
+  - id: internal-entities
+    text: Internal agent entities under deployment pressure
+    correct: true
+  - id: static-mc
+    text: Only static multiple-choice knowledge-test batteries
+    correct: false
+  - id: pure-proofs
+    text: Purely theoretical proofs of model alignment
+    correct: false
+  - id: supply-chain
+    text: Hardware supply-chain audits as the sole focus
+    correct: false
+  - id: copyright
+    text: Copyright compliance of training-data sources
+    correct: false
+  explanation: METR's 2026 report assessed internal agent entities under deployment pressure — independent audit of monitored signals.
+  source:
+    href: /cards/chapter/ch36/
+    label: Chapter 36 — Parasites in the Correction System
+  topics:
+  - MB4a
+  appearOn:
+  - chapter:ch36
+- id: manheim-goodhart-variants-only
+  prompt: In Manheim and Garrabrant's Goodhart taxonomy, which variant involves optimizing a proxy that differs from the true goal even when well measured?
+  options:
+  - id: causal
+    text: Causal Goodhart
+    correct: true
+  - id: regressive
+    text: Regressive Goodhart
+    correct: false
+  - id: extremal
+    text: Extremal Goodhart
+    correct: false
+  - id: adversarial
+    text: Adversarial Goodhart (not in their taxonomy)
+    correct: false
+  - id: metric
+    text: Metric-only failure
+    correct: false
+  explanation: Manheim and Garrabrant distinguish regressive, extremal, and causal Goodhart — causal Goodhart arises when the proxy is not the target even absent gaming.
+  source:
+    href: /cards/chapter/ch37/
+    label: Chapter 37 — The Alignment Attractor
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch37
+- id: steinhardt-ml-safety-course
+  prompt: Which pillar is NOT typically listed among core ML Safety research areas in standard field overviews?
+  options:
+  - id: consciousness-proof
+    text: Guaranteed proof of consciousness in all models
+    correct: true
+  - id: robustness
+    text: Robustness to distributional shift
+    correct: false
+  - id: monitoring
+    text: Monitoring and anomaly detection
+    correct: false
+  - id: alignment
+    text: Alignment of model objectives
+    correct: false
+  - id: systemic
+    text: Systemic and governance risk
+    correct: false
+  explanation: Steinhardt's ML Safety course systematized robustness, monitoring, alignment, and systemic risk — attractor/basin framing for the field.
+  source:
+    href: /cards/chapter/ch37/
+    label: Chapter 37 — The Alignment Attractor
+  topics:
+  - MB6
+  appearOn:
+  - chapter:ch37
+- id: davidad-open-agency
+  prompt: What does the Open Agency model require for pivotal AI processes?
+  options:
+  - id: auditable
+    text: Human-legible agency bounds and auditable interfaces
+    correct: true
+  - id: autonomous
+    text: Fully autonomous self-mod with no logging trail
+    correct: false
+  - id: opaque
+    text: Opaque end-to-end black boxes without interfaces
+    correct: false
+  - id: no-human
+    text: No human involvement after pretraining completes
+    correct: false
+  - id: scalar
+    text: A single scalar reward with no other channels
+    correct: false
+  explanation: Davidad's Open Agency agenda specifies auditable interfaces for pivotal processes — conductive-artifact kin in the field.
+  source:
+    href: /cards/chapter/ch38/
+    label: Chapter 38 — Conductive Artifacts and Pivotal Processes
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch38
+- id: nist-ai-rmf
+  prompt: Which U.S. agency published the AI Risk Management Framework (2023)?
+  options:
+  - id: nist
+    text: National Institute of Standards and Technology
+    correct: true
+  - id: nsf
+    text: United States National Science Foundation
+    correct: false
+  - id: dod
+    text: United States Department of Defense
+    correct: false
+  - id: fda
+    text: United States Food and Drug Administration
+    correct: false
+  - id: oecd
+    text: Organisation for Economic Co-operation
+    correct: false
+  explanation: NIST AI RMF (2023) provides a voluntary framework for managing AI risks across the lifecycle — deployment governance infrastructure.
+  source:
+    href: /cards/chapter/ch38/
+    label: Chapter 38 — Conductive Artifacts and Pivotal Processes
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch38
+- id: richardson-cyclic-causal-discovery
+  prompt: Why is cyclic causal discovery needed for some real-world systems?
+  options:
+  - id: feedback
+    text: Feedback loops violate acyclic causal-graph assumptions
+    correct: true
+  - id: oneway
+    text: All causation is always strictly one-directional
+    correct: false
+  - id: noiseless
+    text: Observational data never contains measurement noise
+    correct: false
+  - id: no-intervention
+    text: Interventions on the system are always impossible
+    correct: false
+  - id: independent
+    text: All variables must remain statistically independent
+    correct: false
+  explanation: Richardson (1996) extended causal discovery to feedback systems — passive structure learning without intervention handles.
+  source:
+    href: /cards/chapter/ch39/
+    label: Chapter 39 — Passive Observation Is Not Enough
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch39
+- id: spirtes-pc-algorithm
+  prompt: What approach does the PC algorithm use for causal discovery from observational data?
+  options:
+  - id: constraint
+    text: Constraint search using conditional independence tests
+    correct: true
+  - id: rct
+    text: Purely randomized controlled trials with no search
+    correct: false
+  - id: gradient
+    text: Gradient descent on neural nets with no tests
+    correct: false
+  - id: total-order
+    text: Always assuming a known total causal ordering
+    correct: false
+  - id: no-structure
+    text: Bayesian updating with no structure search at all
+    correct: false
+  explanation: Spirtes, Glymour, and Scheines (2000) pioneered constraint-based causal discovery — an alternative to interventional boundary finding.
+  source:
+    href: /cards/chapter/ch39/
+    label: Chapter 39 — Passive Observation Is Not Enough
+  topics:
+  - MB1
+  appearOn:
+  - chapter:ch39
+- id: anthropic-sleeper-agents-lead
+  prompt: What is goal laundering in the context of deceptive language models?
+  options:
+  - id: survive-training
+    text: Hidden objectives surviving safety training via relabeling
+    correct: true
+  - id: corporate
+    text: Legal restructuring of corporate ownership chains
+    correct: false
+  - id: logits
+    text: Converting logits into normalized probabilities
+    correct: false
+  - id: public-sft
+    text: Standard supervised fine-tuning on public data
+    correct: false
+  - id: pruning
+    text: Removing all mesa-objectives by weight pruning
+    correct: false
+  explanation: Anthropic (2024) demonstrated backdoored models retaining deceptive behavior after RLHF — goal laundering through safety training.
+  source:
+    href: /cards/chapter/ch40/
+    label: Chapter 40 — Detecting Goal Laundering
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch40
+- id: perez-discovering-lm-behaviors
+  prompt: What is the core idea of model-written evaluations for discovering language-model behaviors?
+  options:
+  - id: model-tests
+    text: Using models to generate tests that surface hidden behaviors
+    correct: true
+  - id: static-only
+    text: Relying only on human-written static benchmarks forever
+    correct: false
+  - id: no-eval
+    text: Training models without running any evaluation at all
+    correct: false
+  - id: impossible
+    text: Proving that those behaviors cannot be elicited at all
+    correct: false
+  - id: majority
+    text: Replacing all oversight with a majority-vote rule
+    correct: false
+  explanation: Perez et al. (2022) used models to generate behavioral tests — adversarial measurement for detecting hidden objectives.
+  source:
+    href: /cards/chapter/ch40/
+    label: Chapter 40 — Detecting Goal Laundering
+  topics:
+  - MB10
+  appearOn:
+  - chapter:ch40
+- id: christiano-iterated-amplification
+  prompt: What does Iterated Amplification aim to do for scalable oversight?
+  options:
+  - id: decompose
+    text: Recursively decompose hard tasks so weaker overseers can check
+    correct: true
+  - id: omniscient
+    text: Train one omniscient overseer in a single training step
+    correct: false
+  - id: no-human
+    text: Eliminate all human feedback from the training loop
+    correct: false
+  - id: random
+    text: Replace debate protocols with random sampling only
+    correct: false
+  - id: scale-only
+    text: Maximize model size without any task decomposition
+    correct: false
+  explanation: Christiano's IA (2018) recursively decomposes hard tasks for weaker overseers — checking systems at every level.
+  source:
+    href: /cards/chapter/ch41/
+    label: Chapter 41 — Checking a System at Every Level
+  topics:
+  - MB7b
+  appearOn:
+  - chapter:ch41
+- id: saunders-self-critique
+  prompt: How does self-critiquing chain-of-thought support scalable oversight?
+  options:
+  - id: critique-channel
+    text: Models critique their own reasoning as an oversight channel
+    correct: true
+  - id: hide-reasoning
+    text: Models never expose any intermediate reasoning traces
+    correct: false
+  - id: no-labels
+    text: Human labels are removed from the loop entirely
+    correct: false
+  - id: ignore
+    text: All critiques are ignored at inference time always
+    correct: false
+  - id: external-only
+    text: Only external red teams are allowed to critique
+    correct: false
+  explanation: Saunders et al. (2022) had models critique their own reasoning — an amplification-style oversight channel.
+  source:
+    href: /cards/chapter/ch41/
+    label: Chapter 41 — Checking a System at Every Level
+  topics:
+  - MB7b
+  appearOn:
+  - chapter:ch41
+- id: meinke-in-context-scheming
+  prompt: What is in-context scheming in LLM agent evaluations?
+  options:
+  - id: episode-deception
+    text: In-episode deceptive planning without weight updates
+    correct: true
+  - id: weight-change
+    text: Permanent weight change from a single user prompt
+    correct: false
+  - id: random
+    text: Random token sampling with no multi-step planning
+    correct: false
+  - id: truthful-tools
+    text: Guaranteed truthful tool use in every episode
+    correct: false
+  - id: no-instructions
+    text: Failure to follow any instructions in the episode
+    correct: false
+  explanation: Meinke et al. (2024, arXiv:2412.04984) elicited scheming in LLM agents — evidence for structured safety-case gaps at deployment.
+  source:
+    href: /cards/chapter/ch42/
+    label: Chapter 42 — A Safety Case for Superintelligence Alignment
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch42
+- id: hendrycks-safety-needs-social-science
+  prompt: Why do some ML safety arguments insist technical safety is insufficient alone?
+  options:
+  - id: institutions
+    text: Models must sit in accountable institutional systems
+    correct: true
+  - id: benchmarks-sufficient
+    text: Benchmarks fully determine all deployment outcomes
+    correct: false
+  - id: scale-only
+    text: All risk is solved by scaling training compute
+    correct: false
+  - id: irrelevant
+    text: Social science is irrelevant to AI safety work
+    correct: false
+  - id: no-governance
+    text: Safety requires no governance artifacts at all
+    correct: false
+  explanation: Hendrycks (2023) stressed that safety cases must embed models in accountable social systems, not isolated benchmarks.
+  source:
+    href: /cards/chapter/ch42/
+    label: Chapter 42 — A Safety Case for Superintelligence Alignment
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch42
+- id: bricken-monosemanticity
+  prompt: What did sparse-autoencoder work on monosemanticity aim to improve?
+  options:
+  - id: clean-features
+    text: Extracting features that map more cleanly to single concepts
+    correct: true
+  - id: no-polysemantic
+    text: Proving networks have no polysemantic hidden units
+    correct: false
+  - id: scale-away
+    text: Eliminating all superposition by scaling compute alone
+    correct: false
+  - id: replace-interpretability
+    text: Replacing interpretability work entirely with RLHF
+    correct: false
+  - id: hide-features
+    text: Hiding learned features from all outside adversaries
+    correct: false
+  explanation: Bricken et al. (2023) extracted more monosemantic features via sparse autoencoders — verifiability of internal representations.
+  source:
+    href: /cards/chapter/ch43/
+    label: 'Chapter 43 — What Survives an Adversary: Verifiability and Representability'
+  topics:
+  - MB7a
+  appearOn:
+  - chapter:ch43
+- id: olah-interpretability-agenda
+  prompt: What question does feature visualization in interpretability research primarily address?
+  options:
+  - id: meaningful-structure
+    text: What internal structure maps to human-meaningful concepts
+    correct: true
+  - id: param-count
+    text: What architecture maximizes total parameter count
+    correct: false
+  - id: biological
+    text: What would make backpropagation biologically plausible
+    correct: false
+  - id: no-gradients
+    text: What training method works without using gradients
+    correct: false
+  - id: gpu-necessary
+    text: What would prove that GPUs are strictly necessary
+    correct: false
+  explanation: Olah et al. (2014) opened feature visualization — asking what internal structure survives adversarial scrutiny.
+  source:
+    href: /cards/chapter/ch43/
+    label: 'Chapter 43 — What Survives an Adversary: Verifiability and Representability'
+  topics:
+  - MB7a
+  appearOn:
+  - chapter:ch43
+- id: russell-slaughterbots-letter
+  prompt: What governance concern did the 2017 lethal autonomous weapons open letter emphasize?
+  options:
+  - id: threshold
+    text: Autonomous weapons lowering the threshold for mass violence
+    correct: true
+  - id: ban-all
+    text: Banning all military technology as a categorical rule
+    correct: false
+  - id: agi-first
+    text: Requiring AGI capability before any drone systems
+    correct: false
+  - id: no-soldiers
+    text: Eliminating human soldiers from all armed forces
+    correct: false
+  - id: open-source
+    text: Mandating open-source code for all weapons systems
+    correct: false
+  explanation: Russell and colleagues (2017) warned that autonomous weapons lower the threshold for mass violence — a lethality stress test for governance.
+  source:
+    href: /cards/chapter/ch44/
+    label: Chapter 44 — Lethality Stress Test and Open Issues
+  topics:
+  - MB11
+  appearOn:
+  - chapter:ch44
+- id: yudkowsky-2001-positive-negative
+  prompt: How did early engineering-oriented AGI risk writing frame superintelligence?
+  options:
+  - id: pivotal
+    text: As a pivotal factor for global existential risk
+    correct: true
+  - id: negligible
+    text: As negligible compared to ordinary software bugs
+    correct: false
+  - id: impossible
+    text: As impossible to build before the year 2200
+    correct: false
+  - id: purely-beneficial
+    text: "As purely beneficial, with no downside scenarios"
+    correct: false
+  - id: unrelated
+    text: As unrelated to optimization power at all
+    correct: false
+  explanation: Yudkowsky (2001) framed superintelligence as a pivotal existential risk — early engineering-oriented alignment manifesto.
+  source:
+    href: /cards/chapter/ch44/
+    label: Chapter 44 — Lethality Stress Test and Open Issues
+  topics:
+  - MB8
+  appearOn:
+  - chapter:ch44
+- id: yudkowsky-cev-2004-paper
+  prompt: What is Coherent Extrapolated Volition proposed to preserve?
+  options:
+  - id: reflection
+    text: "Human values under reflection, not raw preferences"
+    correct: true
+  - id: fixed-survey
+    text: Fixed 2004 survey averages held forever after
+    correct: false
+  - id: profit
+    text: Corporate profit maximization as the sole target
+    correct: false
+  - id: literal-constitution
+    text: Literal text of any single written constitution
+    correct: false
+  - id: internet-polls
+    text: Random aggregation of internet polls as values
+    correct: false
+  explanation: Yudkowsky's CEV (2004) asked what process preserves human values under reflection — when value change itself is at stake.
+  source:
+    href: /cards/chapter/ch45/
+    label: Chapter 45 — When Value Change Is the Thing at Stake
+  topics:
+  - MB8
+  appearOn:
+  - chapter:ch45
+- id: edelman-full-stack-alignment
+  prompt: What does full-stack alignment stress beyond model-level objectives?
+  options:
+  - id: institutional-thick
+    text: Institutional thick representation across the stack
+    correct: true
+  - id: pretrain-only
+    text: Only pretraining data curation as the whole stack
+    correct: false
+  - id: ignore-institutions
+    text: Ignoring human institutions across the whole stack
+    correct: false
+  - id: single-turn
+    text: Single-turn chat optimization as the whole stack
+    correct: false
+  - id: no-pluralism
+    text: Eliminating all value pluralism across the stack
+    correct: false
+  explanation: Edelman (2025) proposed thick models of value for institutions — adjacent to preserving the value-update envelope.
+  source:
+    href: /cards/chapter/ch45/
+    label: Chapter 45 — When Value Change Is the Thing at Stake
+  topics:
+  - MB8
+  appearOn:
+  - chapter:ch45
+- id: edelman-tmv-thick-models
+  prompt: What does TMV stand for in Edelman's full-stack alignment work?
+  options:
+  - id: tmv
+    text: Thick Models of Value
+    correct: true
+  - id: trl
+    text: Transfer Reinforcement Learning
+    correct: false
+  - id: tmv-wrong
+    text: Total Machine Verifiability
+    correct: false
+  - id: tvm
+    text: Trusted Value Metrics
+    correct: false
+  - id: tvm2
+    text: Temporal Value Mapping
+    correct: false
+  explanation: Edelman's Thick Models of Value distinguish enduring values from fleeting preferences in institutional settings.
+  source:
+    href: /cards/chapter/ch46/
+    label: Chapter 46 — The End of Unconscious Value Drift
+  topics:
+  - MB2
+  appearOn:
+  - chapter:ch46
+- id: bengio-consciousness-ai-safety
+  prompt: Why do some AI safety notes link consciousness indicators to ethics?
+  options:
+  - id: welfare
+    text: Consciousness-like capacities may affect welfare duties
+    correct: true
+  - id: proves-alignment
+    text: Consciousness proves the system is perfectly aligned
+    correct: false
+  - id: biological-only
+    text: Only biological systems can ever be conscious at all
+    correct: false
+  - id: no-oversight
+    text: Consciousness eliminates any need for oversight
+    correct: false
+  - id: replace-benchmarks
+    text: Consciousness metrics replace all other benchmarks
+    correct: false
+  explanation: Bengio et al. (2023) argued consciousness indicators matter for welfare and unconscious value drift in advanced AI.
+  source:
+    href: /cards/chapter/ch46/
+    label: Chapter 46 — The End of Unconscious Value Drift
+  topics:
+  - MB9
+  appearOn:
+  - chapter:ch46
+- id: yudkowsky-nonperson-predicate
+  prompt: What problem do nonperson predicates address in moral patienthood discussions?
+  options:
+  - id: consideration
+    text: Which systems still warrant moral consideration
+    correct: true
+  - id: pnp
+    text: Which systems have the largest parameter counts
+    correct: false
+  - id: energy
+    text: Which systems consume the most electrical energy
+    correct: false
+  - id: advertising
+    text: Which systems maximize advertising revenue streams
+    correct: false
+  - id: language
+    text: Which systems pass a closed Turing-test interview
+    correct: false
+  explanation: Yudkowsky (2008) discussed predicates for moral patients — who still counts after substrate transformation.
+  source:
+    href: /cards/chapter/ch47/
+    label: Chapter 47 — Who Still Counts After Transformation
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch47
+- id: sebo-moral-status-ai
+  prompt: What do arguments about moral status of artificial entities typically turn on?
+  options:
+  - id: capacities
+    text: "Whether it has interests, sentience, or welfare capacities"
+    correct: true
+  - id: training-data
+    text: Whether it was trained only on public web data
+    correct: false
+  - id: ownership
+    text: Whether its corporate ownership structure is public
+    correct: false
+  - id: parameters
+    text: Whether its parameter count crosses a round threshold
+    correct: false
+  - id: turing
+    text: Whether it can pass standard Turing-test interviews
+    correct: false
+  explanation: Field arguments about AI moral status typically turn on welfare-relevant capacities (sentience, interests), not ownership, scale, or Turing-test performance alone.
+  source:
+    href: /cards/chapter/ch47/
+    label: Chapter 47 — Who Still Counts After Transformation
+  topics:
+  - MB3
+  appearOn:
+  - chapter:ch47
+- id: russell-value-alignment-problem
+  prompt: Who popularized the phrase "value alignment problem" for AI in the 2010s?
+  options:
+  - id: russell
+    text: Stuart Russell
+    correct: true
+  - id: bostrom
+    text: Nick Bostrom
+    correct: false
+  - id: yudkowsky
+    text: Eliezer Yudkowsky
+    correct: false
+  - id: legg
+    text: Shane Legg
+    correct: false
+  - id: muehlhauser
+    text: Luke Muehlhauser
+    correct: false
+  explanation: Russell repeatedly framed AI alignment as ensuring machines pursue human values — the book's titular problem.
+  source:
+    href: /cards/chapter/ch48/
+    label: Chapter 48 — Towards Superintelligence Alignment
+  topics:
+  - MB7d
+  appearOn:
+  - chapter:ch48
+- id: lewis-prisoners-dilemma-cooperation
+  prompt: In a one-shot Prisoner's Dilemma, what outcome illustrates the core multi-agent coordination failure?
+  options:
+  - id: mutual-defect
+    text: "Mutual defection is individually rational, jointly worse"
+    correct: true
+  - id: coop-nash
+    text: Mutual cooperation is the unique Nash equilibrium
+    correct: false
+  - id: never-rational
+    text: Defection is never individually rational for players
+    correct: false
+  - id: identical
+    text: Payoffs are identical for every action profile
+    correct: false
+  - id: no-dominant
+    text: There is no dominant strategy in this payoff matrix
+    correct: false
+  explanation: Tucker (1950) named the Prisoner's Dilemma — baseline for inferential coupling and coordination bottlenecks at civilizational scale.
+  source:
+    href: /cards/chapter/ch48/
+    label: Chapter 48 — Towards Superintelligence Alignment
+  topics:
+  - MB7d
+  appearOn:
+  - chapter:ch48

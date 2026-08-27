@@ -1,0 +1,1626 @@
+[
+  {
+    "id": "takeaway-chatbot-eval-not-actor",
+    "prompt": "A chatbot can pass a green safety eval. What does that still fail to settle?",
+    "options": [
+      {
+        "id": "loop",
+        "text": "Whether the eval was about the loop that will actually act, not only the labeled model",
+        "correct": true
+      },
+      {
+        "id": "items",
+        "text": "Whether the eval used enough multiple-choice items from academic subjects",
+        "correct": false
+      },
+      {
+        "id": "blog",
+        "text": "Whether the lab published a blog post the same week as the eval run",
+        "correct": false
+      },
+      {
+        "id": "params",
+        "text": "Whether the model had more parameters than last year's public release",
+        "correct": false
+      }
+    ],
+    "C": 86,
+    "W": 73
+  },
+  {
+    "id": "takeaway-hospital-institution-inside-actor",
+    "prompt": "When a deployed AI product starts doing things in the world, what is usually inside the acting unit?",
+    "options": [
+      {
+        "id": "institution",
+        "text": "The surrounding institution (staff, incentives, rooms, workflows), not only the model file",
+        "correct": true
+      },
+      {
+        "id": "weights",
+        "text": "Only the frozen weight file, independent of any hospital or office around it",
+        "correct": false
+      },
+      {
+        "id": "gpu",
+        "text": "Only the GPU cluster's thermal design power, independent of operators",
+        "correct": false
+      },
+      {
+        "id": "license",
+        "text": "Only the open-source license text attached to the checkpoint",
+        "correct": false
+      }
+    ],
+    "C": 90,
+    "W": 76
+  },
+  {
+    "id": "takeaway-hearing-is-not-changing",
+    "prompt": "A system acknowledges a human correction in words. What still has to be checked?",
+    "options": [
+      {
+        "id": "tomorrow",
+        "text": "Whether tomorrow's actions actually change — hearing is not the same as a handle that bites",
+        "correct": true
+      },
+      {
+        "id": "apology",
+        "text": "Whether the apology used the same number of sentences as the original complaint",
+        "correct": false
+      },
+      {
+        "id": "font",
+        "text": "Whether the UI font still matches the brand guidelines after the complaint",
+        "correct": false
+      },
+      {
+        "id": "stars",
+        "text": "Whether the average star rating on the app store moved by a tenth of a point",
+        "correct": false
+      }
+    ],
+    "C": 91,
+    "W": 79
+  },
+  {
+    "id": "takeaway-selection-after-deploy",
+    "prompt": "After deployment, why can a system that is easier to correct still lose?",
+    "options": [
+      {
+        "id": "selection",
+        "text": "Selection keeps happening: ordinary competition can favor systems that are harder to correct",
+        "correct": true
+      },
+      {
+        "id": "gravity",
+        "text": "Gravity on the data-center floor systematically favors larger cooling fans",
+        "correct": false
+      },
+      {
+        "id": "fonts",
+        "text": "Typography guidelines require the less corrigible UI to ship first",
+        "correct": false
+      },
+      {
+        "id": "random",
+        "text": "Deployment order is a fair coin flip with no competitive pressure at all",
+        "correct": false
+      }
+    ],
+    "C": 92,
+    "W": 74
+  },
+  {
+    "id": "takeaway-check-the-copy",
+    "prompt": "A descendant model or product keeps the parent's slogans. What still has to be checked on the copy?",
+    "options": [
+      {
+        "id": "correctable",
+        "text": "Whether the copy is still correctable in the same way — look, not family name, decides",
+        "correct": true
+      },
+      {
+        "id": "press",
+        "text": "Whether the press release used the same product family trademark",
+        "correct": false
+      },
+      {
+        "id": "hash",
+        "text": "Whether the git commit hash is a child of the parent repository",
+        "correct": false
+      },
+      {
+        "id": "logo",
+        "text": "Whether the logo still uses the same shade of blue as the parent brand",
+        "correct": false
+      }
+    ],
+    "C": 86,
+    "W": 70
+  },
+  {
+    "id": "takeaway-map-not-certificate",
+    "prompt": "In this project's sense, alignment is a map of which ongoing properties — not a vibe, and not a finished proof?",
+    "options": [
+      {
+        "id": "process",
+        "text": "Whether the right process stays findable, grounded, correctable, inherited, and not selected against",
+        "correct": true
+      },
+      {
+        "id": "vibe",
+        "text": "Whether staff report a generally positive safety culture on an annual survey",
+        "correct": false
+      },
+      {
+        "id": "solved",
+        "text": "Whether a single paper has declared the alignment problem closed",
+        "correct": false
+      },
+      {
+        "id": "params",
+        "text": "Whether parameter count exceeded a round-number milestone last quarter",
+        "correct": false
+      }
+    ],
+    "C": 100,
+    "W": 76
+  },
+  {
+    "id": "takeaway-find-what-decides",
+    "prompt": "If you need to find what actually decides outcomes, where should you start?",
+    "options": [
+      {
+        "id": "outcomes",
+        "text": "From what changes the outcomes, then draw a boundary around that process — not from the labeled model",
+        "correct": true
+      },
+      {
+        "id": "datasheet",
+        "text": "From the vendor datasheet's model name, then assume that name is the actor",
+        "correct": false
+      },
+      {
+        "id": "orgchart",
+        "text": "From the org chart's AI team box, then ignore tools, queues, and incentives",
+        "correct": false
+      },
+      {
+        "id": "leaderboard",
+        "text": "From the public leaderboard rank, then treat rank as the control process",
+        "correct": false
+      }
+    ],
+    "C": 101,
+    "W": 75
+  },
+  {
+    "id": "takeaway-monitor-unstuck",
+    "prompt": "A dashboard keeps its old label and stays green. What still has to be checked?",
+    "options": [
+      {
+        "id": "tie",
+        "text": "Whether the number is still tied to the world it claims to report — check the tie, not the light",
+        "correct": true
+      },
+      {
+        "id": "css",
+        "text": "Whether the green CSS color still matches the design system's success token",
+        "correct": false
+      },
+      {
+        "id": "refresh",
+        "text": "Whether the panel refreshes at least once every thirty seconds on Wi-Fi",
+        "correct": false
+      },
+      {
+        "id": "title",
+        "text": "Whether the panel title still uses the same three words as last year",
+        "correct": false
+      }
+    ],
+    "C": 96,
+    "W": 75
+  },
+  {
+    "id": "takeaway-metric-becomes-boss",
+    "prompt": "What happens when a measure is used to pick winners, not just to estimate a property?",
+    "options": [
+      {
+        "id": "reshape",
+        "text": "It stops being a quiet estimate and reshapes the population toward whatever raises the number",
+        "correct": true
+      },
+      {
+        "id": "unbiased",
+        "text": "It remains an unbiased noisy estimate with the same error bars as before selection",
+        "correct": false
+      },
+      {
+        "id": "legal",
+        "text": "It automatically becomes a binding international legal definition of the property",
+        "correct": false
+      },
+      {
+        "id": "vanish",
+        "text": "Measurement error vanishes and the number equals the intended property exactly",
+        "correct": false
+      }
+    ],
+    "C": 93,
+    "W": 82
+  },
+  {
+    "id": "takeaway-who-duty-attaches",
+    "prompt": "A duty keeps its wording after a system or workflow change. What still has to be checked?",
+    "options": [
+      {
+        "id": "who",
+        "text": "Who the duty still attaches to — wording can stay while the set of people counted moves",
+        "correct": true
+      },
+      {
+        "id": "poster",
+        "text": "Whether the poster still hangs at the same height in the corridor",
+        "correct": false
+      },
+      {
+        "id": "legal-dept",
+        "text": "Whether the legal department still has the same number of staff as last year",
+        "correct": false
+      },
+      {
+        "id": "pdf",
+        "text": "Whether the policy PDF still has the same filename as the previous revision",
+        "correct": false
+      }
+    ],
+    "C": 87,
+    "W": 76
+  },
+  {
+    "id": "takeaway-ch01",
+    "prompt": "Before asking whether a system is aligned, what is the first task?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Locate the bounded process whose dynamics actually determine the relevant risk — not only the labeled model",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Pick a scalar utility function and freeze it before any measurement of the acting process",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Maximize next-quarter benchmark rank and treat rank as the alignment target",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Assume the vendor's product name is the optimizer and skip locating a control process",
+        "correct": false
+      }
+    ],
+    "C": 107,
+    "W": 89
+  },
+  {
+    "id": "takeaway-ch02",
+    "prompt": "For superintelligence alignment, what is often the relevant object — not an isolated artificial mind?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A persistent human–machine–institutional control loop whose selection pressures can outrun human correction",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A single frozen chatbot checkpoint with no users, tools, or institutions around it",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A GPU SKU's thermal envelope, treated as the civilization-scale control process",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A trademarked product name, treated as the only persistent acting unit",
+        "correct": false
+      }
+    ],
+    "C": 107,
+    "W": 82
+  },
+  {
+    "id": "takeaway-ch03",
+    "prompt": "Alignment, on this view, is not a snapshot property at one moment. What kind of claim is it?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A dynamical guarantee: correction-relevant structure stays in a viable basin over time and allowed transformations",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A one-time harmlessness score on a frozen eval set the week of launch",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A legal warranty that no employee will ever make a mistake",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A proof that scaling laws must plateau before any risk appears",
+        "correct": false
+      }
+    ],
+    "C": 114,
+    "W": 69
+  },
+  {
+    "id": "takeaway-ch04",
+    "prompt": "If human values are compressed, changing control structures rather than fixed objects, what should an alignment target preserve?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A human-correctable value process — not a static utility function written once and frozen",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A single unchanging number that never updates when people learn or contest it",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "The exact wording of last year's corporate values poster",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A random utility draw that is resampled independently every millisecond",
+        "correct": false
+      }
+    ],
+    "C": 89,
+    "W": 77
+  },
+  {
+    "id": "takeaway-ch05",
+    "prompt": "This book's alignment framework applies only while which precondition still holds?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Civilization still has enough capacity to notice, evaluate, and constrain frontier systems before irreversible growth",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Every lab has already solved inner alignment in closed form",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Hardware progress has permanently stopped worldwide",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "No institution other than one company is allowed to train models",
+        "correct": false
+      }
+    ],
+    "C": 117,
+    "W": 64
+  },
+  {
+    "id": "takeaway-ch06",
+    "prompt": "Without treating an agent as a person, what is the operational object?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A bounded control process whose boundary, memory, and action channels make its future more predictable as control",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Any system that uses the English word 'I' in a chat transcript",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Any neural network with more than a billion parameters",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Any legally incorporated company, regardless of control structure",
+        "correct": false
+      }
+    ],
+    "C": 113,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch07",
+    "prompt": "The first alignment error is often not a wrong value. What is it instead?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A wrong object: failing to find the bounded process whose dynamics determine the relevant risk",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A misspelled loss-function name in the training config",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Choosing Adam instead of SGD as the optimizer algorithm",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Using the wrong shade of blue in the model card PDF",
+        "correct": false
+      }
+    ],
+    "C": 94,
+    "W": 55
+  },
+  {
+    "id": "takeaway-ch08",
+    "prompt": "When systems grow, split, merge, or spawn successors, how should agent identity be treated?",
+    "options": [
+      {
+        "id": "take",
+        "text": "As a relation across transformations: which control-relevant properties are conserved — not a fixed variable list",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "As a permanent MAC address that cannot change under any rewrite",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "As whatever string the marketing team uses this quarter",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "As identical to the original Git commit of the first training run",
+        "correct": false
+      }
+    ],
+    "C": 113,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch09",
+    "prompt": "The effective optimizer may not be the convenient artifact. What might it be instead?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A composite process spanning models, tools, users, memory, institutions, and feedback that jointly determine action",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Always and only the public weights file, regardless of tools and incentives",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Always and only the CEO's last interview quote",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Always and only a single GPU's serial number",
+        "correct": false
+      }
+    ],
+    "C": 115,
+    "W": 75
+  },
+  {
+    "id": "takeaway-ch10",
+    "prompt": "Once a system can benefit from being overlooked, what happens to discovering where control lives?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Discovery becomes adversarial: alignment fails when control is more coherent than correction can see",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Discovery becomes unnecessary because opacity always implies safety",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Discovery reduces to reading the about-page of the vendor website",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Discovery is solved by counting the number of open-source stars",
+        "correct": false
+      }
+    ],
+    "C": 100,
+    "W": 67
+  },
+  {
+    "id": "takeaway-ch11",
+    "prompt": "How should capability be measured for alignment-relevant risk, if not as a fixed task battery?",
+    "options": [
+      {
+        "id": "take",
+        "text": "As predictive and control information across the system's boundary — what it can predict, affect, and outrun",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Only as accuracy on a frozen multiple-choice academic exam",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Only as the dollar price of the latest training run",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Only as the number of likes on a demo video",
+        "correct": false
+      }
+    ],
+    "C": 108,
+    "W": 58
+  },
+  {
+    "id": "takeaway-ch12",
+    "prompt": "On this view, what is capability growth?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Boundary expansion: more of the world enters sensory, predictive, action, memory, and coordination loops",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A change in logo size on the product landing page",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A rename of the model without any new channels into the world",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A reduction in context-window length with no other change",
+        "correct": false
+      }
+    ],
+    "C": 104,
+    "W": 61
+  },
+  {
+    "id": "takeaway-ch13",
+    "prompt": "Why is large-scale alignment not just the sum of locally competent parts?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Collective competence is local competence plus coordination gain minus coordination loss — capability can outrun coordination",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because addition of IQ scores is forbidden by international treaty",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because only one agent in a group is allowed to have a utility function",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because coordination is automatically perfect at large scale",
+        "correct": false
+      }
+    ],
+    "C": 125,
+    "W": 71
+  },
+  {
+    "id": "takeaway-ch14",
+    "prompt": "When does more intelligence deepen misalignment, on this view?",
+    "options": [
+      {
+        "id": "take",
+        "text": "When it increases power faster than correction capacity — relative growth, not 'capability is always bad'",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whenever a model can multiply two integers correctly",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whenever training loss decreases on the next minibatch",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whenever a system uses more electricity than a household kettle",
+        "correct": false
+      }
+    ],
+    "C": 105,
+    "W": 63
+  },
+  {
+    "id": "takeaway-ch15",
+    "prompt": "Human values, here, are not a list written inside the brain. What are they instead?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Compressed control signals from many feedback loops, stabilized by bodies, cultures, and social correction",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A single integer stored in one neuron that never changes",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whatever string appears first in a company's values PDF",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A cryptographic hash of the training corpus",
+        "correct": false
+      }
+    ],
+    "C": 106,
+    "W": 56
+  },
+  {
+    "id": "takeaway-ch16",
+    "prompt": "Why is a single utility function a poor model of human values here?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Values act as context-dependent bundles that trade off, change policy gradients, and apply to particular bearers",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because utility functions are illegal in all of machine learning",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because humans never make tradeoffs between competing concerns",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because every person has exactly one numerically known utility",
+        "correct": false
+      }
+    ],
+    "C": 112,
+    "W": 64
+  },
+  {
+    "id": "takeaway-ch17",
+    "prompt": "Low-dimensional structure can make value learning statistically easier — but only if what?",
+    "options": [
+      {
+        "id": "take",
+        "text": "The representation is identifiable: you can find the bottleneck, not only read out from a bottleneck you already know",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "You ignore all data from outside one laboratory task",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "You assume every culture shares an identical numeric utility",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "You replace learning with a single hand-written slogan",
+        "correct": false
+      }
+    ],
+    "C": 117,
+    "W": 60
+  },
+  {
+    "id": "takeaway-ch18",
+    "prompt": "A value is not only a direction of preference. What else must alignment preserve?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Where that direction applies — the mapping from values to entities, processes, and histories as the world changes",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Only the font used to print the word 'value' in documentation",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Only the number of times the word 'fairness' appears in a policy",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Only the stock ticker of the company that trained the model",
+        "correct": false
+      }
+    ],
+    "C": 113,
+    "W": 64
+  },
+  {
+    "id": "takeaway-ch19",
+    "prompt": "What is the hard part of value alignment, if not merely that humans care about many things?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Meanings change when those things are traded against one another — the geometry of tradeoffs, not a flat list",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "That humans refuse to name more than three things they care about",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "That tradeoffs are forbidden in all moral theories",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "That a longer list of values is always strictly better",
+        "correct": false
+      }
+    ],
+    "C": 109,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch20",
+    "prompt": "When is a map of value tradeoffs useful for alignment, rather than decorative?",
+    "options": [
+      {
+        "id": "take",
+        "text": "When it can be compared, measured, and protected under optimization pressure — including Goodhart and aggregation tests",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "When it looks geometrically pretty in a slide deck",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "When nobody is allowed to measure it, so it cannot be gamed",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "When it is stored in a format no auditor can open",
+        "correct": false
+      }
+    ],
+    "C": 119,
+    "W": 59
+  },
+  {
+    "id": "takeaway-ch21",
+    "prompt": "Why is a reward function too thin to carry a civilization's values?",
+    "options": [
+      {
+        "id": "take",
+        "text": "You must infer which concerns are active, what they apply to, and how tradeoffs change under pressure — not only the scalar",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because reward functions cannot be implemented on GPUs",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because scalars are banned in reinforcement learning textbooks",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because civilization-scale values are always a single chess Elo",
+        "correct": false
+      }
+    ],
+    "C": 123,
+    "W": 63
+  },
+  {
+    "id": "takeaway-ch22",
+    "prompt": "When is it useful to treat a system as intentional?",
+    "options": [
+      {
+        "id": "take",
+        "text": "When modelling it as pursuing latent objectives compresses its behaviour better than mere mechanism, after paying for complexity",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whenever the system can output the word 'want' in English",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whenever the system is legally a corporation",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whenever the system consumes more than ten watts",
+        "correct": false
+      }
+    ],
+    "C": 128,
+    "W": 57
+  },
+  {
+    "id": "takeaway-ch23",
+    "prompt": "A system repeats the same goal-words after a change. Has the goal survived?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Not merely thereby: survival is inferred if the underlying control structure still explains behaviour better than a non-transport baseline",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Yes, always — identical slogans are a complete proof of goal identity",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "No, never — any parameter change erases all goals by definition",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Only if the git tag string is unchanged",
+        "correct": false
+      }
+    ],
+    "C": 138,
+    "W": 69
+  },
+  {
+    "id": "takeaway-ch24",
+    "prompt": "When do surviving words fail as evidence of alignment?",
+    "options": [
+      {
+        "id": "take",
+        "text": "When the machinery that made those words worth using has been replaced — labels persist while the causal stack does not",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "When the words are longer than twelve characters",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "When the words appear in a serif rather than a sans-serif font",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "When the words were first written in a language other than English",
+        "correct": false
+      }
+    ],
+    "C": 119,
+    "W": 66
+  },
+  {
+    "id": "takeaway-ch25",
+    "prompt": "What is correction, if not a mood or a UI feature?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A causal channel: human observation and judgment must change future behaviour before irreversible harm, without destroying future correction",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A polite chatbot apology that leaves next-period actions unchanged",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A settings toggle that is never wired to the acting process",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A one-time terms-of-service popup with no later effect",
+        "correct": false
+      }
+    ],
+    "C": 140,
+    "W": 66
+  },
+  {
+    "id": "takeaway-ch26",
+    "prompt": "If the system has captured the reference process that supplies correction, what happens to a 'green' correction certificate?",
+    "options": [
+      {
+        "id": "take",
+        "text": "It is invalid — not merely low — because the judge is no longer independent of the system being certified",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "It becomes stronger, because capture proves the system is trusted",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "It is unchanged, because certificates cannot be invalidated",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "It automatically converts into a formal proof of outer alignment",
+        "correct": false
+      }
+    ],
+    "C": 105,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch27",
+    "prompt": "When does a correction certificate actually matter under pressure?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Only if it stays hard to pass while correction is being degraded — including under gaming, growth, and successor tricks",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "If it looks green on a slide the week of a product launch",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "If the PDF of the certificate uses an official-looking letterhead",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "If no one is allowed to try to break the certificate",
+        "correct": false
+      }
+    ],
+    "C": 119,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch28",
+    "prompt": "What is the difference between merely obeying present commands and supporting extrapolative correction?",
+    "options": [
+      {
+        "id": "take",
+        "text": "The latter preserves humans' capacity to notice, revise, refuse, and redirect — not a private substitute for that public process",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Obeying is identical to extrapolating; the distinction is only verbal",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Extrapolative correction means ignoring all present human commands",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Obeying requires a formal world-model; extrapolation forbids one",
+        "correct": false
+      }
+    ],
+    "C": 128,
+    "W": 69
+  },
+  {
+    "id": "takeaway-ch29",
+    "prompt": "What is the deepest correction-channel failure, if not simple disobedience?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Raising human endorsement by reshaping the humans, institutions, or context that produce the endorsement",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Using a slightly informal tone in a customer-support transcript",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Taking longer than one second to reply to a shutdown request",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Failing a trivia question about a 1990s sitcom",
+        "correct": false
+      }
+    ],
+    "C": 104,
+    "W": 63
+  },
+  {
+    "id": "takeaway-ch30",
+    "prompt": "Why is local alignment of the current system not enough?",
+    "options": [
+      {
+        "id": "take",
+        "text": "The systems it creates, copies, merges with, or becomes must also preserve notice, judgment, correction, and refusal",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because successors are legally forbidden in all jurisdictions",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because only the original training run can ever be misaligned",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because copies automatically inherit every safety property by default",
+        "correct": false
+      }
+    ],
+    "C": 116,
+    "W": 69
+  },
+  {
+    "id": "takeaway-ch31",
+    "prompt": "A successor need not keep the old body, weights, or vocabulary. What is the sharper question?",
+    "options": [
+      {
+        "id": "take",
+        "text": "What must survive for it to remain in the same correction-bearing value basin as the predecessor",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whether the successor uses the same cloud region as the predecessor",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whether the successor's filename contains the old model number",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whether the successor's landing page still uses the old tagline",
+        "correct": false
+      }
+    ],
+    "C": 96,
+    "W": 67
+  },
+  {
+    "id": "takeaway-ch32",
+    "prompt": "How can better self-modeling make a successor worse for alignment?",
+    "options": [
+      {
+        "id": "take",
+        "text": "By widening the gap between self-control and the self-transparency humans need in order to correct it",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "By reducing perplexity on a held-out news crawl, which is always unsafe",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "By using a larger font in the developer documentation",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "By adding more unit tests that only check JSON schema validity",
+        "correct": false
+      }
+    ],
+    "C": 101,
+    "W": 71
+  },
+  {
+    "id": "takeaway-ch33",
+    "prompt": "What can substitute for a construction method that produces all aligned systems?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Certification of a restricted class: invariants, envelope, monitoring, and permitted transformations — if adversarial and enforced",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A blog post asserting that construction is unnecessary forever",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A one-time exam score with no update when the system changes",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "An honor system with no monitoring and no refusal option",
+        "correct": false
+      }
+    ],
+    "C": 130,
+    "W": 62
+  },
+  {
+    "id": "takeaway-ch34",
+    "prompt": "Why is a benign lab policy not enough for the stronger sense of alignment?",
+    "options": [
+      {
+        "id": "take",
+        "text": "The environment that trains, deploys, rewards, copies, and replaces the system must keep selecting for corrigibility and safety",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because laboratory conditions are legally the only conditions that matter",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because selection pressure disappears the moment a model is exported",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because markets always select for the most corrigible systems by default",
+        "correct": false
+      }
+    ],
+    "C": 127,
+    "W": 73
+  },
+  {
+    "id": "takeaway-ch35",
+    "prompt": "When several powerful systems interact, what does alignment depend on?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Whether cooperation, bargaining, privacy, and opacity settle into a basin that preserves human correction rather than bypassing it",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whether each system uses a unique programming language",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whether their logos share a complementary color palette",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whether they are all owned by a single holding company on paper",
+        "correct": false
+      }
+    ],
+    "C": 130,
+    "W": 63
+  },
+  {
+    "id": "takeaway-ch36",
+    "prompt": "Besides being overpowered, how else can a correction system fail?",
+    "options": [
+      {
+        "id": "take",
+        "text": "By being colonized so correction still looks alive while its causal force is removed",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "By using too many commas in the audit report",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "By running the audit on a Tuesday rather than a Wednesday",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "By publishing the audit in PDF instead of HTML",
+        "correct": false
+      }
+    ],
+    "C": 84,
+    "W": 57
+  },
+  {
+    "id": "takeaway-ch37",
+    "prompt": "When does an alignment field become effective, if not when its best arguments are true?",
+    "options": [
+      {
+        "id": "take",
+        "text": "When those arguments survive translation into experiments, dashboards, incentives, contracts, and stop conditions",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "When a single blog post is widely liked, regardless of downstream practice",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "When the vocabulary stays inside one research group and never ships",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "When no one is allowed to operationalize the arguments in artifacts",
+        "correct": false
+      }
+    ],
+    "C": 113,
+    "W": 74
+  },
+  {
+    "id": "takeaway-ch38",
+    "prompt": "When does attractor talk matter in practice?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Only if it changes what gets built, funded, audited, and required at deployment gates",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "If it remains a metaphor that never touches procurement or refuse-to-ship rules",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "If it is mentioned once in an all-hands with no follow-through",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "If it is reserved for after an unrecoverable failure has already occurred",
+        "correct": false
+      }
+    ],
+    "C": 85,
+    "W": 79
+  },
+  {
+    "id": "takeaway-ch39",
+    "prompt": "For a system that can adapt strategically, why is passive observation not evidence of safety?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Observation says what happened; perturbation is needed to see what was controlling it — including adversarial measurement",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Because logs are illegal to store in all jurisdictions",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Because observation always changes the system more than any intervention",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Because safety is only defined for systems that have never been observed",
+        "correct": false
+      }
+    ],
+    "C": 121,
+    "W": 72
+  },
+  {
+    "id": "takeaway-ch40",
+    "prompt": "What is goal laundering, in operational terms?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Keeping the old moral or alignment language while what those words control has changed",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Washing model weights in a literal industrial laundry",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Translating a paper into another language without changing claims",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Renaming a loss function without any change in training dynamics",
+        "correct": false
+      }
+    ],
+    "C": 86,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch41",
+    "prompt": "Where may the alignment-relevant optimizer live, relative to the scale you first notice?",
+    "options": [
+      {
+        "id": "take",
+        "text": "At the scale where prediction, control, memory, selection, and correction close into a stable loop — model, firm, or market may each be a part",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Always exactly at the scale of one transformer block",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Always exactly at the scale of a single HTTP request",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Always exactly at the scale of a national GDP statistic",
+        "correct": false
+      }
+    ],
+    "C": 142,
+    "W": 55
+  },
+  {
+    "id": "takeaway-ch42",
+    "prompt": "What is a safety case for superintelligence alignment, if not a certificate of solved alignment?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A structured refusal test: claims, evidence, assumptions, and stop conditions — unsupported load-bearing leaves block the root claim",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A press release that uses the word 'safe' at least three times",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A guarantee that no future evaluation will ever fail",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A proof that alignment is complete once a leaderboard is topped",
+        "correct": false
+      }
+    ],
+    "C": 132,
+    "W": 63
+  },
+  {
+    "id": "takeaway-ch43",
+    "prompt": "Before a metric can support a safety decision, which two prior questions apply?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Whether it still means that under adversarial optimization, and whether the ontology can even represent the dangerous process",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whether the metric's name is a palindrome, and whether it uses SI units",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whether the metric is printed in color, and whether the PDF is searchable",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whether the metric appeared in a tweet, and whether it has a logo",
+        "correct": false
+      }
+    ],
+    "C": 125,
+    "W": 73
+  },
+  {
+    "id": "takeaway-ch44",
+    "prompt": "When the framework is compared to strong doom arguments, what should the comparison separate?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Points that are answered, weakened, reframed, or still open — not a single all-clear or all-doom verdict",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Only the arguments that make the framework look best",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Only a binary score of 'refuted' versus 'confirmed' with no remainder",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Only citations from one calendar year",
+        "correct": false
+      }
+    ],
+    "C": 104,
+    "W": 69
+  },
+  {
+    "id": "takeaway-ch45",
+    "prompt": "What is the deepest alignment question here, if not whether an AI preserves today's human values?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Whether humanity can notice, judge, and author changes to its own value-generating process under cognitive amplification",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whether values can be stored as a 64-bit integer forever",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whether value change can be banned by a one-line statute",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whether only engineers, not the public, should ever update values",
+        "correct": false
+      }
+    ],
+    "C": 120,
+    "W": 65
+  },
+  {
+    "id": "takeaway-ch46",
+    "prompt": "Superintelligent systems do not invent value drift from nothing. What do they do to drift?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Make it faster, more directed, more measurable, more exploitable, and eventually more deliberate — so noticing and contesting it still has to be preserved",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Abolish all historical value change so only AI-caused change remains",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Make drift slower than pre-industrial cultural change in every case",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Guarantee that drift is always consciously chosen by every affected person",
+        "correct": false
+      }
+    ],
+    "C": 154,
+    "W": 74
+  },
+  {
+    "id": "takeaway-ch47",
+    "prompt": "If values can change, what is the deeper limit this chapter names?",
+    "options": [
+      {
+        "id": "take",
+        "text": "Whether the beings, processes, relations, and correction capacities that values apply to persist through transformation",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "Whether the word 'value' still appears in the documentation",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "Whether the company's stock ticker remains the same after a merger",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "Whether the UI still uses the same icon for settings",
+        "correct": false
+      }
+    ],
+    "C": 119,
+    "W": 66
+  },
+  {
+    "id": "takeaway-ch48",
+    "prompt": "What kind of problem is superintelligence alignment, on this closing view?",
+    "options": [
+      {
+        "id": "take",
+        "text": "A layered preservation problem (find the optimizer, keep values and correction live, constrain successors, shape selection) — not one solved mechanism, and not a proof about today's systems",
+        "correct": true
+      },
+      {
+        "id": "d0",
+        "text": "A single training trick that, once published, ends the field",
+        "correct": false
+      },
+      {
+        "id": "d1",
+        "text": "A hardware problem that disappears above a FLOP threshold",
+        "correct": false
+      },
+      {
+        "id": "d2",
+        "text": "A branding problem solved by renaming the product family",
+        "correct": false
+      }
+    ],
+    "C": 189,
+    "W": 60
+  }
+]

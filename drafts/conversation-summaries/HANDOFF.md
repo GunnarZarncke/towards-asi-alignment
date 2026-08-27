@@ -39,8 +39,10 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-27:** Voice §5 **progress wording** — introduction + executive overview: refused/unsupported required evidence (or recorded negative) leads; artifacts are instruments. Log: `2026-08-27-voice-progress.md`.
+- **2026-08-27:** **Quiz multi-correct** — split bundled keys; ≥5% floor in `check_quiz_bank.py` (12/211). Log: `2026-08-27-quiz-multi-correct.md`.
+- **2026-08-27:** **Quiz length tell implemented** — `make check` runs `check_quiz_length_tell.py`; 0% margin-fail. Log: `2026-08-27-quiz-length-tell.md`.
 - **2026-08-27:** **Blind quiz protocol** — solver chooses without keys; superagent scores. Full bank 211/211 (easy distractors). Log: `2026-08-27-quiz-blind-eval.md`.
+- **2026-08-27:** Voice §5 **progress wording** — introduction + executive overview: refused/unsupported required evidence (or recorded negative) leads; artifacts are instruments. Log: `2026-08-27-voice-progress.md`.
 - **2026-08-27:** Voice §2 **chapterthesis audit closed** — remainders ch20, ch27, ch31, ch33, ch38, ch42, ch43; rest skip. Log: `2026-08-27-voice-chapterthesis-ch21-48.md`.
 - **2026-08-27:** Voice §2 **ch11–ch20 thesis audit** — ch20 remainder (toy-only tests); ch11–ch19 skip. Log: `2026-08-27-voice-chapterthesis-ch11-20.md`.
 - **2026-08-27:** Voice §2 **ch01–ch10 thesis audit** — all skip (framing/necessity; no remainder clauses). Next: ch11. Log: `2026-08-27-voice-chapterthesis-ch01-10.md`.

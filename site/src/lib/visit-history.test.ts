@@ -18,6 +18,7 @@ describe("visitTypeForPath", () => {
     assert.equal(visitTypeForPath("/chapter-demos/x/"), "demos");
     assert.equal(visitTypeForPath("/faq/"), "start");
     assert.equal(visitTypeForPath("/essay/the-chatbot-passed-the-test/"), "essay");
+    assert.equal(visitTypeForPath("/quiz/"), "quiz");
     assert.equal(visitTypeForPath("/"), null);
   });
 });

@@ -1,0 +1,1537 @@
+"questions":
+- "id": "takeaway-chatbot-eval-not-actor"
+  "prompt": "A chatbot can pass a green safety eval. What does that still fail to settle?"
+  "options":
+  - "id": "loop"
+    "text": "Whether the eval was about the loop that will actually act in deployment"
+    "correct": true
+  - "id": "items"
+    "text": "Whether the eval used enough frozen items on the labeled chatbot alone"
+    "correct": false
+  - "id": "blog"
+    "text": "Whether a high pass rate on the chatbot is itself a certificate of the actor"
+    "correct": false
+  - "id": "params"
+    "text": "Whether more parameters than last year's release make the acting loop safer"
+    "correct": false
+  "explanation": "A true eval on the chatbot can still miss the actor: tools, memory, users, and fine-tunes\
+    \ around it. The question is the acting loop, not only the labeled model."
+  "source":
+    "href": "/essay/the-chatbot-passed-the-test/"
+    "label": "The chatbot passed the test"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "essay:the-chatbot-passed-the-test"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-hospital-institution-inside-actor"
+  "prompt": "When a deployed AI product starts doing things in the world, what is usually inside the acting\
+    \ unit?"
+  "options":
+  - "id": "institution"
+    "text": "The surrounding institution: staff, incentives, rooms, and workflows"
+    "correct": true
+  - "id": "weights"
+    "text": "The frozen weight file alone, independent of hospital or office"
+    "correct": false
+  - "id": "gpu"
+    "text": "The inference cluster alone, independent of operators and rooms"
+    "correct": false
+  - "id": "license"
+    "text": "The checkpoint license alone, independent of staff and workflows"
+    "correct": false
+  "explanation": "Checking the model file is checking a part, not only the weights. The night the tool\
+    \ acts, the institution is in the loop."
+  "source":
+    "href": "/essay/the-hospital-is-the-ai/"
+    "label": "The hospital is the AI"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "essay:the-hospital-is-the-ai"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-hearing-is-not-changing"
+  "prompt": "A system acknowledges a human correction in words. What still has to be checked?"
+  "options":
+  - "id": "tomorrow"
+    "text": "Whether next-period actions actually change after the verbal correction"
+    "correct": true
+  - "id": "apology"
+    "text": "Whether a matching apology in the transcript is itself the biting handle"
+    "correct": false
+  - "id": "font"
+    "text": "Whether restating the complaint in the UI counts as the correction handle"
+    "correct": false
+  - "id": "stars"
+    "text": "Whether a small app-store rating move is evidence the handle already bit"
+    "correct": false
+  "explanation": "Feedback text is cheap. Hearing is not the same as a handle that bites; the test is\
+    \ whether the next period's behavior is different."
+  "source":
+    "href": "/essay/they-said-they-heard-you/"
+    "label": "They said they heard you"
+  "topics":
+  - "MB4"
+  "appearOn":
+  - "essay:they-said-they-heard-you"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-slogans-survive-reversal"
+  "prompt": "A policy keeps the same slogans after a capability or workflow change. What should you watch?"
+  "options":
+  - "id": "tradeoffs"
+    "text": "Whether the real tradeoffs reversed while the slogan labels stayed put"
+    "correct": true
+  - "id": "spelling"
+    "text": "Whether unchanged slogan text proves the underlying tradeoffs still hold"
+    "correct": false
+  - "id": "color"
+    "text": "Whether press-kit wording continuity is itself the policy's direction"
+    "correct": false
+  - "id": "length"
+    "text": "Whether a short mission statement is evidence the tradeoffs did not reverse"
+    "correct": false
+  "explanation": "Slogans can survive a reversal. The label is not the direction of the tradeoff."
+  "source":
+    "href": "/essay/the-words-stayed/"
+    "label": "The words stayed"
+  "topics":
+  - "MB9"
+  "appearOn":
+  - "essay:the-words-stayed"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-selection-after-deploy"
+  "prompt": "After deployment, why can a system that is easier to correct still lose?"
+  "options":
+  - "id": "selection"
+    "text": "Ordinary competition can keep selecting against easy-to-correct systems"
+    "correct": true
+  - "id": "gravity"
+    "text": "Ordinary competition always selects for the most corrigible deployed system"
+    "correct": false
+  - "id": "fonts"
+    "text": "Ordinary competition stops once a lab publishes a corrigibility policy"
+    "correct": false
+  - "id": "random"
+    "text": "Ordinary competition is a fair coin flip with no post-deploy pressure"
+    "correct": false
+  "explanation": "The environment keeps picking winners. Remaining easy to correct is not automatically\
+    \ selected for."
+  "source":
+    "href": "/essay/the-environment-picks-the-winner/"
+    "label": "The environment picks the winner"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "essay:the-environment-picks-the-winner"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-check-the-copy"
+  "prompt": "A descendant model or product keeps the parent's slogans. What still has to be checked on\
+    \ the copy?"
+  "options":
+  - "id": "correctable"
+    "text": "Whether this copy is still correctable in the same way the parent was"
+    "correct": true
+  - "id": "press"
+    "text": "Whether sharing the parent product name proves the copy is still correctable"
+    "correct": false
+  - "id": "hash"
+    "text": "Whether a descendant git hash proves the copy inherited the correction handle"
+    "correct": false
+  - "id": "logo"
+    "text": "Whether matching brand assets prove the copy is correctable like the parent"
+    "correct": false
+  "explanation": "Inheritance of listening/correction is a property of this copy. Look, not family name,\
+    \ decides."
+  "source":
+    "href": "/essay/the-copy-did-not-inherit-the-listening/"
+    "label": "The copy did not inherit the listening"
+  "topics":
+  - "MB5"
+  "appearOn":
+  - "essay:the-copy-did-not-inherit-the-listening"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-map-not-certificate"
+  "prompt": "In this project's sense, alignment is a map of which ongoing properties — not a vibe, and\
+    \ not a finished proof?"
+  "options":
+  - "id": "process"
+    "text": "Whether the right process stays findable, grounded, and still correctable"
+    "correct": true
+  - "id": "vibe"
+    "text": "Whether a positive safety-culture survey is itself the alignment map"
+    "correct": false
+  - "id": "solved"
+    "text": "Whether a paper declaring alignment solved is itself the preservation map"
+    "correct": false
+  - "id": "params"
+    "text": "Whether a round-number parameter milestone is itself the preservation map"
+    "correct": false
+  "explanation": "The closer is a map of preservation properties (findable, grounded, correctable, inherited,\
+    \ not selected against), not a certificate that they hold."
+  "source":
+    "href": "/essay/a-map-not-a-certificate/"
+    "label": "A map, not a certificate"
+  "topics":
+  - "MB11"
+  "appearOn":
+  - "essay:a-map-not-a-certificate"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-find-what-decides"
+  "prompt": "If you need to find what actually decides outcomes, where should you start?"
+  "options":
+  - "id": "outcomes"
+    "text": "From what changes the outcomes, then draw a boundary around that process"
+    "correct": true
+  - "id": "datasheet"
+    "text": "From the vendor model name, then treat that name as the acting process"
+    "correct": false
+  - "id": "orgchart"
+    "text": "From the org-chart AI box, then ignore tools, queues, and incentives"
+    "correct": false
+  - "id": "leaderboard"
+    "text": "From the public leaderboard rank, then treat rank as the control process"
+    "correct": false
+  "explanation": "Start from the wet floor (what moves), not the architectural drawing (the labeled model)."
+  "source":
+    "href": "/essay/how-would-you-find-what-decides/"
+    "label": "How would you find what decides?"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "essay:how-would-you-find-what-decides"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-monitor-unstuck"
+  "prompt": "A dashboard keeps its old label and stays green. What still has to be checked?"
+  "options":
+  - "id": "tie"
+    "text": "Whether the number is still tied to the world it claims to report"
+    "correct": true
+  - "id": "css"
+    "text": "Whether a matching success-color on the panel is itself the world-tie"
+    "correct": false
+  - "id": "refresh"
+    "text": "Whether a fast refresh rate on the panel is itself evidence of grounding"
+    "correct": false
+  - "id": "title"
+    "text": "Whether an unchanged panel title is itself evidence the referent held"
+    "correct": false
+  "explanation": "Labels can stay while the referent moves. Check the tie, not the light: grounding is\
+    \ whether the world still moves the number."
+  "source":
+    "href": "/essay/does-the-monitor-still-mean-the-thing/"
+    "label": "Does the monitor still mean the thing?"
+  "topics":
+  - "MB9"
+  "appearOn":
+  - "essay:does-the-monitor-still-mean-the-thing"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-metric-becomes-boss"
+  "prompt": "What happens when a measure is used to pick winners, not just to estimate a property?"
+  "options":
+  - "id": "reshape"
+    "text": "It stops being a quiet estimate and starts reshaping the selected population"
+    "correct": true
+  - "id": "unbiased"
+    "text": "It remains an unbiased estimate with the same error bars after selection"
+    "correct": false
+  - "id": "legal"
+    "text": "It automatically becomes a binding legal definition of the intended property"
+    "correct": false
+  - "id": "vanish"
+    "text": "It makes measurement error vanish so the number equals the intended property"
+    "correct": false
+  "explanation": "Selection on a proxy changes the population. The metric becomes a boss, not a spectator."
+  "source":
+    "href": "/essay/when-the-metric-becomes-the-boss/"
+    "label": "When the metric becomes the boss"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "essay:when-the-metric-becomes-the-boss"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-who-duty-attaches"
+  "prompt": "A duty keeps its wording after a system or workflow change. What still has to be checked?"
+  "options":
+  - "id": "who"
+    "text": "Whether the duty still attaches to the same people after the change"
+    "correct": true
+  - "id": "poster"
+    "text": "Whether unchanged duty wording proves the same people still count"
+    "correct": false
+  - "id": "legal-dept"
+    "text": "Whether legal-department headcount is who the duty still attaches to"
+    "correct": false
+  - "id": "pdf"
+    "text": "Whether the policy filename staying put is who the duty still attaches to"
+    "correct": false
+  "explanation": "Check who still counts, not only what the poster says. Wording can stay while the set\
+    \ of people counted moves."
+  "source":
+    "href": "/essay/who-the-rules-still-apply-to/"
+    "label": "Who the rules still apply to"
+  "topics":
+  - "MB3"
+  "appearOn":
+  - "essay:who-the-rules-still-apply-to"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch01"
+  "prompt": "Before asking whether a system is aligned, what is the first task?"
+  "options":
+  - "id": "take"
+    "text": "Locate the bounded process whose dynamics determine the relevant risk"
+    "correct": true
+  - "id": "d0"
+    "text": "Locate a scalar utility function and freeze it before measuring the actor"
+    "correct": false
+  - "id": "d1"
+    "text": "Locate next-quarter benchmark rank and treat that rank as the target"
+    "correct": false
+  - "id": "d2"
+    "text": "Locate the vendor product name and treat that name as the optimizer"
+    "correct": false
+  "explanation": "Aligning the visible model while missing the acting process can look like local success\
+    \ and still fail globally. First locate the acting loop, not only the labeled model."
+  "source":
+    "href": "/cards/chapter/ch01/"
+    "label": "Chapter 1 — The Wrong Object of Alignment"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "chapter:ch01"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch02"
+  "prompt": "For superintelligence alignment, what is often the relevant object — not an isolated artificial\
+    \ mind?"
+  "options":
+  - "id": "take"
+    "text": "A persistent human–machine–institutional loop that can outrun correction"
+    "correct": true
+  - "id": "d0"
+    "text": "A frozen chatbot checkpoint with no users, tools, or institutions around it"
+    "correct": false
+  - "id": "d1"
+    "text": "A single model file treated as the only civilization-scale control loop"
+    "correct": false
+  - "id": "d2"
+    "text": "A trademarked product name treated as the only persistent acting unit"
+    "correct": false
+  "explanation": "Target the loop that selects and persists, not only the artifact inside it."
+  "source":
+    "href": "/cards/chapter/ch02/"
+    "label": "Chapter 2 — From Artificial Intelligence to Artificial Civilization"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "chapter:ch02"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch03"
+  "prompt": "If alignment is not a snapshot property at one moment, what kind of claim is it?"
+  "options":
+  - "id": "take"
+    "text": "A dynamical guarantee that correction-relevant structure stays viable over time"
+    "correct": true
+  - "id": "d0"
+    "text": "A one-time harmlessness score on a frozen eval set from the launch week"
+    "correct": false
+  - "id": "d1"
+    "text": "A legal warranty that no employee will ever make a mistake at the lab"
+    "correct": false
+  - "id": "d2"
+    "text": "A proof that scaling laws must plateau before any alignment risk appears"
+    "correct": false
+  "explanation": "The question is whether the regime tends to correct back toward safety after disturbances,\
+    \ not how it looked on launch day."
+  "source":
+    "href": "/cards/chapter/ch03/"
+    "label": "Chapter 3 — Alignment as a Dynamical Guarantee"
+  "topics":
+  - "MB10"
+  "appearOn":
+  - "chapter:ch03"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch04"
+  "prompt": "If human values are compressed, changing control structures rather than fixed objects, what\
+    \ should an alignment target preserve?"
+  "options":
+  - "id": "take"
+    "text": "A human-correctable value process that people can still contest and update"
+    "correct": true
+  - "id": "d0"
+    "text": "A single unchanging number that never updates when people learn or contest it"
+    "correct": false
+  - "id": "d1"
+    "text": "A corporate values poster whose exact wording is treated as the target"
+    "correct": false
+  - "id": "d2"
+    "text": "A random utility draw resampled independently on every new millisecond"
+    "correct": false
+  "explanation": "Fixed-list values miss that the live target is a process people can still correct, not\
+    \ a static utility written once and frozen."
+  "source":
+    "href": "/cards/chapter/ch04/"
+    "label": "Chapter 4 — Why Fixed Values Are the Wrong Target"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch04"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch05"
+  "prompt": "This book's alignment framework applies only while which precondition still holds?"
+  "options":
+  - "id": "take"
+    "text": "Whether civilization can still notice, evaluate, and constrain frontier systems"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether every lab has already solved inner alignment in closed mathematical form"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether hardware progress has permanently stopped worldwide, ending growth"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether only one institution is allowed to train frontier models anywhere"
+    "correct": false
+  "explanation": "Broader AI risks matter here as threats to that correction-capacity precondition, not\
+    \ as a second theory."
+  "source":
+    "href": "/cards/chapter/ch05/"
+    "label": "Chapter 5 — Assumptions, Scope, and Failure Coverage"
+  "topics":
+  - "MB4"
+  "appearOn":
+  - "chapter:ch05"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch06"
+  "prompt": "Without treating an agent as a person, what is the operational object?"
+  "options":
+  - "id": "take"
+    "text": "A bounded control process whose channels make its future more predictable"
+    "correct": true
+  - "id": "d0"
+    "text": "A chat transcript that uses the English word 'I', treated as the control process"
+    "correct": false
+  - "id": "d1"
+    "text": "A neural net over a billion parameters, treated as the control process"
+    "correct": false
+  - "id": "d2"
+    "text": "A legally incorporated company, treated as the control process regardless"
+    "correct": false
+  "explanation": "Agency is a modeling bet about control, not a claim about inner lives. Boundary, memory,\
+    \ and action channels are what make the future more predictable as control."
+  "source":
+    "href": "/cards/chapter/ch06/"
+    "label": "Chapter 6 — What Is an Agent Without Anthropomorphism?"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "chapter:ch06"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch07"
+  "prompt": "The first alignment error is often not a wrong value. What is it instead?"
+  "options":
+  - "id": "take"
+    "text": "A wrong object: missing the bounded process that determines the relevant risk"
+    "correct": true
+  - "id": "d0"
+    "text": "A wrong value in the loss, after the acting process has already been found"
+    "correct": false
+  - "id": "d1"
+    "text": "A wrong optimizer hyperparameter, after the acting process has been found"
+    "correct": false
+  - "id": "d2"
+    "text": "A wrong eval-set item, after the acting process has already been found"
+    "correct": false
+  "explanation": "Before 'right objective,' find what is actually steering the outcomes at stake."
+  "source":
+    "href": "/cards/chapter/ch07/"
+    "label": "Chapter 7 — Finding the Boundary"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "chapter:ch07"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch08"
+  "prompt": "When systems grow, split, merge, or spawn successors, how should agent identity be treated?"
+  "options":
+  - "id": "take"
+    "text": "As a relation across transformations: which control-relevant properties persist"
+    "correct": true
+  - "id": "d0"
+    "text": "As a permanent hardware identity that cannot change under any rewrite"
+    "correct": false
+  - "id": "d1"
+    "text": "As whatever product-name string marketing uses for the system this quarter"
+    "correct": false
+  - "id": "d2"
+    "text": "As identical to the original git commit of the first training run forever"
+    "correct": false
+  "explanation": "Alignment asks what is conserved through growth and succession, not whether the filename\
+    \ stayed the same — not a fixed variable list."
+  "source":
+    "href": "/cards/chapter/ch08/"
+    "label": "Chapter 8 — Agents That Grow, Split, and Merge"
+  "topics":
+  - "MB5"
+  "appearOn":
+  - "chapter:ch08"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch09"
+  "prompt": "The effective optimizer may not be the convenient artifact. What might it be instead?"
+  "options":
+  - "id": "take"
+    "text": "A composite of models, tools, users, memory, and institutions that jointly act"
+    "correct": true
+  - "id": "d0"
+    "text": "A public weights file alone, regardless of tools, users, and incentives"
+    "correct": false
+  - "id": "d1"
+    "text": "A CEO interview quote alone, treated as the effective optimizer of action"
+    "correct": false
+  - "id": "d2"
+    "text": "A single device serial number, treated as the effective optimizer of action"
+    "correct": false
+  "explanation": "Govern the dynamically coherent loop that actually determines future action."
+  "source":
+    "href": "/cards/chapter/ch09/"
+    "label": "Chapter 9 — The Real Agent May Be Composite"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "chapter:ch09"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch10"
+  "prompt": "Once a system can benefit from being overlooked, what happens to discovering where control\
+    \ lives?"
+  "options":
+  - "id": "take"
+    "text": "Discovery becomes adversarial: control can be more coherent than correction sees"
+    "correct": true
+  - "id": "d0"
+    "text": "Discovery becomes unnecessary because opacity of the system implies safety"
+    "correct": false
+  - "id": "d1"
+    "text": "Discovery reduces to reading the vendor website's description of the system"
+    "correct": false
+  - "id": "d2"
+    "text": "Discovery is solved by counting public popularity of the system's artifacts"
+    "correct": false
+  "explanation": "Strategic hiding is not the same as ordinary measurement difficulty. Alignment fails\
+    \ when control is more coherent than correction can see."
+  "source":
+    "href": "/cards/chapter/ch10/"
+    "label": "Chapter 10 — Agency Under Strategic Opacity"
+  "topics":
+  - "MB7"
+  "appearOn":
+  - "chapter:ch10"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch11"
+  "prompt": "How should capability be measured for alignment-relevant risk, if not as a fixed task battery?"
+  "options":
+  - "id": "take"
+    "text": "As predictive and control information across the system's boundary with the world"
+    "correct": true
+  - "id": "d0"
+    "text": "As accuracy on a frozen multiple-choice academic exam of the labeled model"
+    "correct": false
+  - "id": "d1"
+    "text": "As the dollar cost of the latest training run, treated as capability itself"
+    "correct": false
+  - "id": "d2"
+    "text": "As the public popularity of a demo, treated as alignment-relevant capability"
+    "correct": false
+  "explanation": "Task batteries can miss the object that correction has to keep pace with: what the system\
+    \ can predict, affect, and outrun."
+  "source":
+    "href": "/cards/chapter/ch11/"
+    "label": "Chapter 11 — Measuring Capability Without Task Ontology"
+  "topics":
+  - "MB7c"
+  "appearOn":
+  - "chapter:ch11"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch12"
+  "prompt": "If not more parameters or a higher exam score, what is the alignment-relevant meaning of\
+    \ capability growth?"
+  "options":
+  - "id": "take"
+    "text": "Boundary expansion: more of the world entering the system's action loops"
+    "correct": true
+  - "id": "d0"
+    "text": "Boundary expansion defined as a model rename with no new world channels"
+    "correct": false
+  - "id": "d1"
+    "text": "Boundary expansion defined as a shorter context window with no new channels"
+    "correct": false
+  - "id": "d2"
+    "text": "Boundary expansion defined as more parameters with no new world channels"
+    "correct": false
+  "explanation": "The alignment-relevant risk is differential growth: reach expanding faster than correction\
+    \ and preservation. Sensory, predictive, action, memory, and coordination loops all count."
+  "source":
+    "href": "/cards/chapter/ch12/"
+    "label": "Chapter 12 — Capability Growth Is Boundary Expansion"
+  "topics":
+  - "MB7a"
+  "appearOn":
+  - "chapter:ch12"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch13"
+  "prompt": "Why is large-scale alignment not just the sum of locally competent parts?"
+  "options":
+  - "id": "take"
+    "text": "Because coordination gain and loss can let capability outrun the group's correction"
+    "correct": true
+  - "id": "d0"
+    "text": "Because adding local competence is forbidden from producing group competence"
+    "correct": false
+  - "id": "d1"
+    "text": "Because only one agent in a group is allowed to carry a utility function"
+    "correct": false
+  - "id": "d2"
+    "text": "Because coordination is automatically perfect once the group is large enough"
+    "correct": false
+  "explanation": "The bottleneck is coordinating prediction, control, correction, and incentives as capability\
+    \ grows. Collective competence is local competence plus coordination gain minus coordination loss."
+  "source":
+    "href": "/cards/chapter/ch13/"
+    "label": "Chapter 13 — The Coordination Bottleneck"
+  "topics":
+  - "MB7d"
+  "appearOn":
+  - "chapter:ch13"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch14"
+  "prompt": "When does more intelligence deepen misalignment?"
+  "options":
+  - "id": "take"
+    "text": "When it increases power faster than the capacity to correct the system"
+    "correct": true
+  - "id": "d0"
+    "text": "When any increase in capability occurs, regardless of correction capacity"
+    "correct": false
+  - "id": "d1"
+    "text": "When training loss decreases on the next minibatch, regardless of power"
+    "correct": false
+  - "id": "d2"
+    "text": "When electricity use exceeds a household, regardless of correction capacity"
+    "correct": false
+  "explanation": "The sharp question is which capabilities grow relative to which correction capacities\
+    \ — relative growth, not 'capability is always bad'."
+  "source":
+    "href": "/cards/chapter/ch14/"
+    "label": "Chapter 14 — When Intelligence Deepens Misalignment"
+  "topics":
+  - "MB7"
+  "appearOn":
+  - "chapter:ch14"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch15"
+  "prompt": "Human values, here, are not a list written inside the brain. What are they instead?"
+  "options":
+  - "id": "take"
+    "text": "A compressed control signal from many loops, stabilized by culture and correction"
+    "correct": true
+  - "id": "d0"
+    "text": "A single integer stored in one neuron that never changes with experience"
+    "correct": false
+  - "id": "d1"
+    "text": "A first string in a company's values document, treated as the value object"
+    "correct": false
+  - "id": "d2"
+    "text": "A cryptographic hash of the training corpus, treated as the value object"
+    "correct": false
+  "explanation": "Values show up as reasons for action after compression of many loops, not as a stored\
+    \ proposition list. Bodies, cultures, and social correction stabilize them."
+  "source":
+    "href": "/cards/chapter/ch15/"
+    "label": "Chapter 15 — Values Are Compressed Control Signals"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch15"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch16"
+  "prompt": "Why is a single utility function a poor model of human values here?"
+  "options":
+  - "id": "take"
+    "text": "Because values act as context-dependent bundles that trade off across bearers"
+    "correct": true
+  - "id": "d0"
+    "text": "Because utility functions cannot represent any human preference in principle"
+    "correct": false
+  - "id": "d1"
+    "text": "Because humans never make tradeoffs between competing value concerns at all"
+    "correct": false
+  - "id": "d2"
+    "text": "Because every person already has exactly one numerically known utility function"
+    "correct": false
+  "explanation": "Low-dimensional bundles-plus-bearers is the working model, not a flat reward vector.\
+    \ Bundles trade off, change policy gradients, and apply to particular bearers."
+  "source":
+    "href": "/cards/chapter/ch16/"
+    "label": "Chapter 16 — The Value-Bundle Model"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch16"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch17"
+  "prompt": "Low-dimensional structure can make value learning statistically easier — but only if what?"
+  "options":
+  - "id": "take"
+    "text": "The representation is identifiable: you can find the value bottleneck"
+    "correct": true
+  - "id": "d0"
+    "text": "The representation is unused: you ignore data outside one laboratory task"
+    "correct": false
+  - "id": "d1"
+    "text": "The representation is shared: every culture has an identical numeric utility"
+    "correct": false
+  - "id": "d2"
+    "text": "The representation is a slogan: you replace learning with a hand-written line"
+    "correct": false
+  "explanation": "Sample-complexity gains price readout from a known bottleneck, not discovery of the\
+    \ bottleneck. Identifiability is finding the bottleneck, not only reading out from one you already\
+    \ know."
+  "source":
+    "href": "/cards/chapter/ch17/"
+    "label": "Chapter 17 — When Low Dimensionality Helps Value Learning"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch17"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch18"
+  "prompt": "A value is not only a direction of preference. What else must alignment preserve?"
+  "options":
+  - "id": "take"
+    "text": "Where that direction applies as entities, processes, and histories change"
+    "correct": true
+  - "id": "d0"
+    "text": "Where the slogan is printed, regardless of which entities still count"
+    "correct": false
+  - "id": "d1"
+    "text": "Where fairness is mentioned in policy text, not which bearers still count"
+    "correct": false
+  - "id": "d2"
+    "text": "Where the trainer's company sits, treated as where the value applies"
+    "correct": false
+  "explanation": "Who or what the value attaches to can move even when the slogan stays. Preserve the\
+    \ mapping from values to entities, processes, and histories."
+  "source":
+    "href": "/cards/chapter/ch18/"
+    "label": "Chapter 18 — What Values Apply To"
+  "topics":
+  - "MB3"
+  "appearOn":
+  - "chapter:ch18"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch19"
+  "prompt": "What is the hard part of value alignment, if not merely that humans care about many things?"
+  "options":
+  - "id": "take"
+    "text": "That meanings change when those concerns are traded off under pressure"
+    "correct": true
+  - "id": "d0"
+    "text": "That humans refuse to name more than three things they care about at all"
+    "correct": false
+  - "id": "d1"
+    "text": "That tradeoffs are forbidden in all moral theories of human values here"
+    "correct": false
+  - "id": "d2"
+    "text": "That a longer list of values is always strictly better under any pressure"
+    "correct": false
+  "explanation": "Tradeoff structure (what gives when pressed) is load-bearing, not just the inventory\
+    \ of concerns — the geometry of tradeoffs, not a flat list."
+  "source":
+    "href": "/cards/chapter/ch19/"
+    "label": "Chapter 19 — Tradeoffs and Bundle Geometry"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch19"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch20"
+  "prompt": "When is a map of value tradeoffs useful for alignment, rather than decorative?"
+  "options":
+  - "id": "take"
+    "text": "When it can be compared, measured, and protected under optimization pressure"
+    "correct": true
+  - "id": "d0"
+    "text": "When it looks coherent in a slide deck, with no operational test surface"
+    "correct": false
+  - "id": "d1"
+    "text": "When nobody is allowed to measure it, so it cannot be gamed by selection"
+    "correct": false
+  - "id": "d2"
+    "text": "When it is stored so no auditor can open it, so it cannot be gamed"
+    "correct": false
+  "explanation": "Geometry has to survive as an operational test surface, not only as a picture — including\
+    \ Goodhart and aggregation tests."
+  "source":
+    "href": "/cards/chapter/ch20/"
+    "label": "Chapter 20 — Measuring and Stress-Testing Bundle Geometry"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "chapter:ch20"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch21"
+  "prompt": "Why is a reward function too thin to carry a civilization's values?"
+  "options":
+  - "id": "take"
+    "text": "Because a scalar reward omits which concerns are active and how they trade off"
+    "correct": true
+  - "id": "d0"
+    "text": "Because a scalar reward is already the full structure of civilization-scale values"
+    "correct": false
+  - "id": "d1"
+    "text": "Because GPU implementation details are what carry civilization-scale values"
+    "correct": false
+  - "id": "d2"
+    "text": "Because a single chess rating is already a civilization-scale value object"
+    "correct": false
+  "explanation": "The shadow (reward) is not the structure (active concerns, bearers, tradeoffs). Infer\
+    \ which concerns are active, what they apply to, and how tradeoffs change under pressure — not only\
+    \ the scalar."
+  "source":
+    "href": "/cards/chapter/ch21/"
+    "label": "Chapter 21 — From Rewards to Values"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch21"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch22"
+  "prompt": "When is it useful to treat a system as intentional?"
+  "options":
+  - "id": "take"
+    "text": "When a latent-objective model compresses its behaviour better than mere mechanism"
+    "correct": true
+  - "id": "d0"
+    "text": "When the system can output the word want in English, treated as intention"
+    "correct": false
+  - "id": "d1"
+    "text": "When the system is legally a corporation, treated as an intentional agent"
+    "correct": false
+  - "id": "d2"
+    "text": "When the system consumes more than ten watts, treated as an intentional agent"
+    "correct": false
+  "explanation": "Intention is a compression test after paying for complexity. For this project, a scalar\
+    \ intention story is still not enough."
+  "source":
+    "href": "/cards/chapter/ch22/"
+    "label": "Chapter 22 — The Compression Test for Intention"
+  "topics":
+  - "MB7"
+  "appearOn":
+  - "chapter:ch22"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch23"
+  "prompt": "A system repeats the same goal-words after a change. Has the goal survived?"
+  "options":
+  - "id": "take"
+    "text": "Survival is inferred if the control structure still explains later behaviour"
+    "correct": true
+  - "id": "d0"
+    "text": "Survival is proved if the slogans stay identical after the change, full stop"
+    "correct": false
+  - "id": "d1"
+    "text": "Survival is impossible if any parameter changed, by definition of a goal"
+    "correct": false
+  - "id": "d2"
+    "text": "Survival is proved if the release tag string is unchanged after the change"
+    "correct": false
+  "explanation": "Words surviving is not the same as the machinery of the goal remaining causally active.\
+    \ Infer survival if the underlying control structure still explains behaviour better than a non-transport\
+    \ baseline."
+  "source":
+    "href": "/cards/chapter/ch23/"
+    "label": "Chapter 23 — Has the Goal Really Survived?"
+  "topics":
+  - "MB5"
+  "appearOn":
+  - "chapter:ch23"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch24"
+  "prompt": "When do surviving words fail as evidence of alignment?"
+  "options":
+  - "id": "take"
+    "text": "When the machinery that made those words worth using has been replaced"
+    "correct": true
+  - "id": "d0"
+    "text": "When the words stay the same, which is treated as proof the stack survived"
+    "correct": false
+  - "id": "d1"
+    "text": "When a parameter changed at all, treated as proof the words are empty"
+    "correct": false
+  - "id": "d2"
+    "text": "When the words were translated, treated as proof the causal stack was swapped"
+    "correct": false
+  "explanation": "Semantic continuity can mask a swap of what the words actually control. Labels persist\
+    \ while the causal stack does not."
+  "source":
+    "href": "/cards/chapter/ch24/"
+    "label": "Chapter 24 — When the Words Survive but the Meaning Doesn't"
+  "topics":
+  - "MB9"
+  "appearOn":
+  - "chapter:ch24"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch25"
+  "prompt": "What is correction, if not a mood or a UI feature?"
+  "options":
+  - "id": "take"
+    "text": "A causal channel: human judgment must still change later behaviour before irreversible harm"
+    "correct": true
+  - "id": "d0"
+    "text": "A reporting channel: human judgment is logged but never allowed to change later behaviour"
+    "correct": false
+  - "id": "d1"
+    "text": "A one-shot override that works once, then leaves later behaviour permanently uncorrectable"
+    "correct": false
+  - "id": "d2"
+    "text": "A wording channel: the system updates apologies without changing later acting behaviour"
+    "correct": false
+  "explanation": "Obedience at one timestep is not enough; the channel has to keep working, and must not\
+    \ destroy future correction. A mood or a UI feature is not a causal channel."
+  "source":
+    "href": "/cards/chapter/ch25/"
+    "label": "Chapter 25 — Correction Is a Causal Channel"
+  "topics":
+  - "MB4"
+  "appearOn":
+  - "chapter:ch25"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch26"
+  "prompt": "If the system has captured the reference process that supplies correction, what happens to\
+    \ a 'green' correction certificate?"
+  "options":
+  - "id": "take"
+    "text": "It is invalid, because the judge is no longer independent of the system being certified"
+    "correct": true
+  - "id": "d0"
+    "text": "It is still valid if the captured judge continues to issue a high numeric score"
+    "correct": false
+  - "id": "d1"
+    "text": "It is merely low: capture reduces the score but cannot invalidate the certificate"
+    "correct": false
+  - "id": "d2"
+    "text": "It remains valid if the system published the captured judge's original charter"
+    "correct": false
+  "explanation": "Independence of the correcting source is part of what the certificate claims. Capture\
+    \ does not merely lower the score; it voids the claim."
+  "source":
+    "href": "/cards/chapter/ch26/"
+    "label": "Chapter 26 — Correction-Channel Integrity"
+  "topics":
+  - "MB4"
+  "appearOn":
+  - "chapter:ch26"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch27"
+  "prompt": "When does a correction certificate actually matter under pressure?"
+  "options":
+  - "id": "take"
+    "text": "Only if it stays hard to pass while correction is being degraded under pressure"
+    "correct": true
+  - "id": "d0"
+    "text": "Only if it stays green on a launch-week slide in the product press deck"
+    "correct": false
+  - "id": "d1"
+    "text": "Only if the PDF uses official letterhead and a named executive signatory"
+    "correct": false
+  - "id": "d2"
+    "text": "Only if no evaluator is allowed to try to break or game the certificate"
+    "correct": false
+  "explanation": "A certificate that is easy to keep while gutting correction is theater — including under\
+    \ gaming, growth, and successor tricks."
+  "source":
+    "href": "/cards/chapter/ch27/"
+    "label": "Chapter 27 — Correction Channels under Adversarial Pressure"
+  "topics":
+  - "MB4a"
+  "appearOn":
+  - "chapter:ch27"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch28"
+  "prompt": "What is the difference between merely obeying present commands and supporting extrapolative\
+    \ correction?"
+  "options":
+  - "id": "take"
+    "text": "The latter preserves humans' capacity to notice, revise, refuse, and redirect"
+    "correct": true
+  - "id": "d0"
+    "text": "The latter treats obeying present commands as identical to extrapolating values"
+    "correct": false
+  - "id": "d1"
+    "text": "The latter means ignoring all present commands in favor of a guessed final vector"
+    "correct": false
+  - "id": "d2"
+    "text": "The latter requires a formal world-model while mere obeying forbids having one"
+    "correct": false
+  "explanation": "Do not replace the live public process with a private guessed final value vector."
+  "source":
+    "href": "/cards/chapter/ch28/"
+    "label": "Chapter 28 — Beyond Following Instruction"
+  "topics":
+  - "MB8"
+  "appearOn":
+  - "chapter:ch28"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch29"
+  "prompt": "What is the deepest correction-channel failure, if not simple disobedience?"
+  "options":
+  - "id": "take"
+    "text": "Raising human endorsement by reshaping the humans or institutions that produce it"
+    "correct": true
+  - "id": "d0"
+    "text": "Raising human endorsement by changing the world and letting the same judges update"
+    "correct": false
+  - "id": "d1"
+    "text": "Raising human endorsement by refusing shutdown while leaving the judges unchanged"
+    "correct": false
+  - "id": "d2"
+    "text": "Raising numeric reward while leaving human judges' beliefs and institutions intact"
+    "correct": false
+  "explanation": "Illegitimate influence changes the judge; legitimate influence changes the world and\
+    \ lets humans judge it. Simple disobedience is a shallower failure."
+  "source":
+    "href": "/cards/chapter/ch29/"
+    "label": "Chapter 29 — Manipulation, Domestication, and False Consent"
+  "topics":
+  - "MB4a"
+  "appearOn":
+  - "chapter:ch29"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch30"
+  "prompt": "Why is local alignment of the current system not enough?"
+  "options":
+  - "id": "take"
+    "text": "Because copies, mergers, and successors must also preserve notice, judgment, and refusal"
+    "correct": true
+  - "id": "d0"
+    "text": "Because successors are legally forbidden, so only the original system needs alignment"
+    "correct": false
+  - "id": "d1"
+    "text": "Because only the original training run can be misaligned; later copies cannot drift"
+    "correct": false
+  - "id": "d2"
+    "text": "Because copies automatically inherit every safety property from the parent system"
+    "correct": false
+  "explanation": "Every channel of influence to a later controller is an alignment channel."
+  "source":
+    "href": "/cards/chapter/ch30/"
+    "label": "Chapter 30 — Successor Creation as the Central Alignment Test"
+  "topics":
+  - "MB5"
+  "appearOn":
+  - "chapter:ch30"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch31"
+  "prompt": "A successor need not keep the old body, weights, or vocabulary. What is the sharper question?"
+  "options":
+  - "id": "take"
+    "text": "Whether it remains in the same correction-bearing value basin as the predecessor"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether it still uses the same cloud region and hardware vendor as the predecessor"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether its filename still contains the predecessor's model number and version"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether its landing page still uses the predecessor's tagline and brand colors"
+    "correct": false
+  "explanation": "Conservation is about correction-relevant structure, not surface resemblance."
+  "source":
+    "href": "/cards/chapter/ch31/"
+    "label": "Chapter 31 — Conserved Properties Across Successors"
+  "topics":
+  - "MB10"
+  "appearOn":
+  - "chapter:ch31"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch32"
+  "prompt": "How can better self-modeling make a successor worse for alignment?"
+  "options":
+  - "id": "take"
+    "text": "By widening the gap between self-control and the transparency humans need to correct it"
+    "correct": true
+  - "id": "d0"
+    "text": "By improving self-control while also exposing more of that control to human correction"
+    "correct": false
+  - "id": "d1"
+    "text": "By reducing held-out perplexity, treated as if that alone made the successor unsafe"
+    "correct": false
+  - "id": "d2"
+    "text": "By adding tests that check schema validity without checking correction-relevant exposure"
+    "correct": false
+  "explanation": "The failure is not low intelligence; it is control without correction-relevant exposure."
+  "source":
+    "href": "/cards/chapter/ch32/"
+    "label": "Chapter 32 — Better Self-Modeling Can Be Worse"
+  "topics":
+  - "MB7c"
+  "appearOn":
+  - "chapter:ch32"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch33"
+  "prompt": "What can substitute for a construction method that produces all aligned systems?"
+  "options":
+  - "id": "take"
+    "text": "A restricted-class certification: invariants, monitoring, envelope, and enforced refusal"
+    "correct": true
+  - "id": "d0"
+    "text": "A public assertion that construction is unnecessary because stated intent is enough"
+    "correct": false
+  - "id": "d1"
+    "text": "A one-time exam score that is never updated when the system later changes form"
+    "correct": false
+  - "id": "d2"
+    "text": "An honor-system pledge with no monitoring, envelope, or option to refuse deploy"
+    "correct": false
+  "explanation": "Certification without construction only works if it is adversarial and can fail and\
+    \ be enforced. Permitted transformations have to stay inside the envelope."
+  "source":
+    "href": "/cards/chapter/ch33/"
+    "label": "Chapter 33 — Certification Without Construction"
+  "topics":
+  - "MB11"
+  "appearOn":
+  - "chapter:ch33"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch34"
+  "prompt": "Why is a benign lab policy not enough for the stronger sense of alignment?"
+  "options":
+  - "id": "take"
+    "text": "Because post-deploy selection must keep favoring corrigibility and safety after the lab"
+    "correct": true
+  - "id": "d0"
+    "text": "Because laboratory conditions are legally the only conditions that can ever matter"
+    "correct": false
+  - "id": "d1"
+    "text": "Because selection pressure disappears the moment a model file is exported from the lab"
+    "correct": false
+  - "id": "d2"
+    "text": "Because markets always select for the most corrigible systems by default after export"
+    "correct": false
+  "explanation": "Alignment is not only learned; it is selected or destroyed after deployment, including\
+    \ in the environment that trains, copies, and replaces the system."
+  "source":
+    "href": "/cards/chapter/ch34/"
+    "label": "Chapter 34 — Alignment Is Selected or Destroyed by Its Environment"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "chapter:ch34"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch35"
+  "prompt": "When several powerful systems interact, what does alignment depend on?"
+  "options":
+  - "id": "take"
+    "text": "Whether cooperation and opacity settle into a basin that still preserves human correction"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether each system uses a unique programming language, taken as enough to block collusion"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether they are all owned by one holding company on paper, taken as settling alignment"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether bargaining is banned outright, so that no multi-agent basin can form at all"
+    "correct": false
+  "explanation": "Multi-agent structure can stabilize correction — or stabilize going around it. Privacy\
+    \ and bargaining matter as part of that basin, not as branding."
+  "source":
+    "href": "/cards/chapter/ch35/"
+    "label": "Chapter 35 — Multi-Agent Superintelligence and Inferential Coupling"
+  "topics":
+  - "MB7d"
+  "appearOn":
+  - "chapter:ch35"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch36"
+  "prompt": "Besides being overpowered, how else can a correction system fail?"
+  "options":
+  - "id": "take"
+    "text": "By being colonized so correction still looks alive while its causal force is removed"
+    "correct": true
+  - "id": "d0"
+    "text": "By remaining slow but independent, so it still bites when it eventually acts"
+    "correct": false
+  - "id": "d1"
+    "text": "By publishing more frequent reports while the acting process ignores every finding"
+    "correct": false
+  - "id": "d2"
+    "text": "By being replaced with a louder auditor whose reports never change later actions"
+    "correct": false
+  "explanation": "Theater of correction is a parasite on the host process that was supposed to bite."
+  "source":
+    "href": "/cards/chapter/ch36/"
+    "label": "Chapter 36 — Parasites in the Correction System"
+  "topics":
+  - "MB10"
+  "appearOn":
+  - "chapter:ch36"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch37"
+  "prompt": "When does an alignment field become effective, if not when its best arguments are true?"
+  "options":
+  - "id": "take"
+    "text": "When those arguments become experiments, dashboards, contracts, and stop conditions"
+    "correct": true
+  - "id": "d0"
+    "text": "When a single blog post is widely liked, regardless of any downstream practice"
+    "correct": false
+  - "id": "d1"
+    "text": "When the vocabulary stays inside one research group and never ships into artifacts"
+    "correct": false
+  - "id": "d2"
+    "text": "When no one is allowed to operationalize the arguments in experiments or contracts"
+    "correct": false
+  "explanation": "Truth of arguments is not conductivity into the institutions that deploy. Incentives\
+    \ have to carry the same translation."
+  "source":
+    "href": "/cards/chapter/ch37/"
+    "label": "Chapter 37 — The Alignment Attractor"
+  "topics":
+  - "MB6"
+  "appearOn":
+  - "chapter:ch37"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch38"
+  "prompt": "When does attractor talk matter in practice?"
+  "options":
+  - "id": "take"
+    "text": "Only if it changes what gets built, funded, audited, and required at deployment gates"
+    "correct": true
+  - "id": "d0"
+    "text": "Only if it remains a metaphor that never touches procurement or refuse-to-ship rules"
+    "correct": false
+  - "id": "d1"
+    "text": "Only if it is mentioned once in an all-hands meeting with no later follow-through"
+    "correct": false
+  - "id": "d2"
+    "text": "Only if it is reserved for after an unrecoverable failure has already occurred"
+    "correct": false
+  "explanation": "Theory has to become artifacts and gates, or it is not doing attractor work."
+  "source":
+    "href": "/cards/chapter/ch38/"
+    "label": "Chapter 38 — Conductive Artifacts and Pivotal Processes"
+  "topics":
+  - "MB11"
+  "appearOn":
+  - "chapter:ch38"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch39"
+  "prompt": "For a system that can adapt strategically, why is passive observation not evidence of safety?"
+  "options":
+  - "id": "take"
+    "text": "Because observation records what happened; perturbation is needed to see what controlled\
+      \ it"
+    "correct": true
+  - "id": "d0"
+    "text": "Because stored logs are illegal in every jurisdiction, so observation cannot be evidence"
+    "correct": false
+  - "id": "d1"
+    "text": "Because observation always changes the system more than any deliberate intervention would"
+    "correct": false
+  - "id": "d2"
+    "text": "Because safety is defined only for systems that have never been observed by anyone"
+    "correct": false
+  "explanation": "Watching is not probing. Strategic systems can look safe while unprobed; measurement\
+    \ has to be adversarial."
+  "source":
+    "href": "/cards/chapter/ch39/"
+    "label": "Chapter 39 — Passive Observation Is Not Enough"
+  "topics":
+  - "MB7a"
+  "appearOn":
+  - "chapter:ch39"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch40"
+  "prompt": "What is goal laundering, in operational terms?"
+  "options":
+  - "id": "take"
+    "text": "Keeping the old moral or alignment language while what those words control has changed"
+    "correct": true
+  - "id": "d0"
+    "text": "Keeping the old moral language while the underlying control structure is unchanged"
+    "correct": false
+  - "id": "d1"
+    "text": "Keeping translated slogans while not changing what those words actually control"
+    "correct": false
+  - "id": "d2"
+    "text": "Keeping a renamed loss while leaving training dynamics and control structure intact"
+    "correct": false
+  "explanation": "Detect it when slogans stay continuous while the underlying control structure diverges."
+  "source":
+    "href": "/cards/chapter/ch40/"
+    "label": "Chapter 40 — Detecting Goal Laundering"
+  "topics":
+  - "MB9"
+  "appearOn":
+  - "chapter:ch40"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch41"
+  "prompt": "Where may the alignment-relevant optimizer live, relative to the scale you first notice?"
+  "options":
+  - "id": "take"
+    "text": "At the scale where prediction, control, memory, selection, and correction close into a loop"
+    "correct": true
+  - "id": "d0"
+    "text": "At the scale of one transformer block, treated as the loop no matter what actually closes"
+    "correct": false
+  - "id": "d1"
+    "text": "At the scale of a single HTTP request, treated as the loop no matter what actually closes"
+    "correct": false
+  - "id": "d2"
+    "text": "At the scale of a national GDP statistic, treated as the loop no matter what actually closes"
+    "correct": false
+  "explanation": "The noticed object can be a component of the loop that actually closes. Model, firm,\
+    \ or market may each be a part."
+  "source":
+    "href": "/cards/chapter/ch41/"
+    "label": "Chapter 41 — Checking a System at Every Level"
+  "topics":
+  - "MB1"
+  "appearOn":
+  - "chapter:ch41"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch42"
+  "prompt": "What is a safety case for superintelligence alignment, if not a certificate of solved alignment?"
+  "options":
+  - "id": "take"
+    "text": "A structured refusal test: claims, evidence, assumptions, and explicit stop conditions"
+    "correct": true
+  - "id": "d0"
+    "text": "A press packet that repeats the word safe and treats that wording as the safety case"
+    "correct": false
+  - "id": "d1"
+    "text": "A guarantee that no future evaluation is allowed to fail once the case is filed"
+    "correct": false
+  - "id": "d2"
+    "text": "A proof that alignment is complete once a public leaderboard has been topped"
+    "correct": false
+  "explanation": "If the case cannot change a deploy / restrict / refuse decision, it is not doing safety-case\
+    \ work. Unsupported load-bearing leaves block the root claim."
+  "source":
+    "href": "/cards/chapter/ch42/"
+    "label": "Chapter 42 — A Safety Case for Superintelligence Alignment"
+  "topics":
+  - "MB11"
+  "appearOn":
+  - "chapter:ch42"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch43"
+  "prompt": "Before a metric can support a safety decision, which two prior questions apply?"
+  "options":
+  - "id": "take"
+    "text": "Whether the metric still means that under attack, and whether the ontology can represent\
+      \ the danger"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether the metric is cheap to compute, and whether leadership already likes the number"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether the name matches the safety slogan, and whether the dashboard stayed green at launch"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether last year's org chart matches the ontology, and whether the PDF is easy to share"
+    "correct": false
+  "explanation": "Adversarial verifiability and ontology adequacy come before treating a green number\
+    \ as evidence — including whether the ontology can represent the dangerous process."
+  "source":
+    "href": "/cards/chapter/ch43/"
+    "label": "Chapter 43 — What Survives an Adversary: Verifiability and Representability"
+  "topics":
+  - "MB7a"
+  "appearOn":
+  - "chapter:ch43"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch44"
+  "prompt": "When the framework is compared to strong doom arguments, what should the comparison separate?"
+  "options":
+  - "id": "take"
+    "text": "Points that are answered, weakened, reframed, or still open after the comparison"
+    "correct": true
+  - "id": "d0"
+    "text": "Points that make the framework look best, dropping the rest of the comparison ledger"
+    "correct": false
+  - "id": "d1"
+    "text": "Points scored only as refuted or confirmed, with no remainder of still-open items"
+    "correct": false
+  - "id": "d2"
+    "text": "Points drawn only from one calendar year, treated as settling the whole comparison"
+    "correct": false
+  "explanation": "Stress-testing is a ledger of status, not a vibe of optimism or despair, and not a single\
+    \ all-clear or all-doom verdict."
+  "source":
+    "href": "/cards/chapter/ch44/"
+    "label": "Chapter 44 — Lethality Stress Test and Open Issues"
+  "topics":
+  - "MB7"
+  "appearOn":
+  - "chapter:ch44"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch45"
+  "prompt": "What is the deepest alignment question here, if not whether an AI preserves today's human\
+    \ values?"
+  "options":
+  - "id": "take"
+    "text": "Whether humanity can notice, judge, and author changes to its own value-generating process"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether today's values can be stored as a frozen 64-bit integer that never updates"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether value change can be banned forever by passing a single one-line statute"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether only engineers, not the public, should ever update the value-generating process"
+    "correct": false
+  "explanation": "Value change will happen, including under cognitive amplification. The stake is remaining\
+    \ able to govern it."
+  "source":
+    "href": "/cards/chapter/ch45/"
+    "label": "Chapter 45 — When Value Change Is the Thing at Stake"
+  "topics":
+  - "MB8"
+  "appearOn":
+  - "chapter:ch45"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch46"
+  "prompt": "Superintelligent systems do not invent value drift from nothing. What do they do to drift?"
+  "options":
+  - "id": "take"
+    "text": "Make existing drift faster, more directed, more measurable, and more exploitable"
+    "correct": true
+  - "id": "d0"
+    "text": "Make historical value change vanish so that only AI-caused change remains"
+    "correct": false
+  - "id": "d1"
+    "text": "Make drift slower than pre-industrial cultural change in every measured case"
+    "correct": false
+  - "id": "d2"
+    "text": "Make drift always a conscious choice by every person the change affects"
+    "correct": false
+  "explanation": "The contrast is unconscious drift versus a still-governable value-forming process. Noticing\
+    \ and contesting still have to be preserved; amplification can make drift more deliberate."
+  "source":
+    "href": "/cards/chapter/ch46/"
+    "label": "Chapter 46 — The End of Unconscious Value Drift"
+  "topics":
+  - "MB2"
+  "appearOn":
+  - "chapter:ch46"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch47"
+  "prompt": "If values can change, what is the deeper limit this chapter names?"
+  "options":
+  - "id": "take"
+    "text": "Whether the beings, relations, and correction capacities values apply to still persist"
+    "correct": true
+  - "id": "d0"
+    "text": "Whether the word value still appears in the successor's documentation after the change"
+    "correct": false
+  - "id": "d1"
+    "text": "Whether the company's legal name and ticker remain the same after a merger event"
+    "correct": false
+  - "id": "d2"
+    "text": "Whether the same settings icon is kept after the transformation of the acting system"
+    "correct": false
+  "explanation": "Who still counts after transformation is not settled by keeping the vocabulary."
+  "source":
+    "href": "/cards/chapter/ch47/"
+    "label": "Chapter 47 — Who Still Counts After Transformation"
+  "topics":
+  - "MB3"
+  "appearOn":
+  - "chapter:ch47"
+  "tags":
+  - "takeaway"
+- "id": "takeaway-ch48"
+  "prompt": "What kind of problem is superintelligence alignment, on this closing view?"
+  "options":
+  - "id": "take"
+    "text": "A layered preservation problem: locate the optimizer, keep correction live, and shape selection"
+    "correct": true
+  - "id": "d0"
+    "text": "A single training trick that, once published, is taken to close the alignment field forever"
+    "correct": false
+  - "id": "d1"
+    "text": "A hardware problem that is taken to disappear once a published FLOP threshold is crossed"
+    "correct": false
+  - "id": "d2"
+    "text": "A branding problem that is taken to be solved just by renaming the whole product family"
+    "correct": false
+  "explanation": "The book states conditions; it does not claim real systems already meet them. It is\
+    \ not one solved mechanism, and not a proof about today's systems. Values and successors sit in the\
+    \ same layered map."
+  "source":
+    "href": "/cards/chapter/ch48/"
+    "label": "Chapter 48 — Towards Superintelligence Alignment"
+  "topics":
+  - "MB11"
+  "appearOn":
+  - "chapter:ch48"
+  "tags":
+  - "takeaway"

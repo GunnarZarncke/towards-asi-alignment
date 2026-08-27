@@ -1,0 +1,630 @@
+[
+  {
+    "id": "takeaway-ch46",
+    "prompt": "Superintelligent systems do not invent value drift from nothing. What do they do to drift?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Make drift slower than pre-industrial cultural change in every case"
+      },
+      {
+        "id": "o1",
+        "text": "Guarantee that drift is always consciously chosen by every affected person"
+      },
+      {
+        "id": "o2",
+        "text": "Abolish all historical value change so only AI-caused change remains"
+      },
+      {
+        "id": "o3",
+        "text": "Make it faster, more directed, more measurable, more exploitable, and eventually more deliberate — so noticing and contesting it still has to be preserved"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch47",
+    "prompt": "If values can change, what is the deeper limit this chapter names?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the UI still uses the same icon for settings"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the word 'value' still appears in the documentation"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the beings, processes, relations, and correction capacities that values apply to persist through transformation"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the company's stock ticker remains the same after a merger"
+      }
+    ]
+  },
+  {
+    "id": "takeaway-ch48",
+    "prompt": "What kind of problem is superintelligence alignment, on this closing view?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A branding problem solved by renaming the product family"
+      },
+      {
+        "id": "o1",
+        "text": "A single training trick that, once published, ends the field"
+      },
+      {
+        "id": "o2",
+        "text": "A hardware problem that disappears above a FLOP threshold"
+      },
+      {
+        "id": "o3",
+        "text": "A layered preservation problem (find the optimizer, keep values and correction live, constrain successors, shape selection) — not one solved mechanism, and not a proof about today's systems"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-openai-hf-roadahead-aug-2026",
+    "prompt": "A lab says the next incident will not look like the last sandbox escape, and safeguards must stay ahead of capability. What still has to be in place?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "A freeze of all model parameters so no new capability can ever appear"
+      },
+      {
+        "id": "o1",
+        "text": "A press note that future incidents are expected to look exactly like the last one"
+      },
+      {
+        "id": "o2",
+        "text": "A way to find the unit that is actually acting, and a stop that is faster than the swarm — not only a retuned named sandbox"
+      },
+      {
+        "id": "o3",
+        "text": "A larger public leaderboard for the same named eval, with the same subsystem IDs as last time"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-openai-pacing-aug-2026",
+    "prompt": "A lab delays a large training run and spends extra compute on monitoring. What does that still fail to settle?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the monitor dashboard used a dark theme"
+      },
+      {
+        "id": "o1",
+        "text": "Whether alignment is a checkable go/no-go target, or only one engineering pillar beside the monitor"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the delay was paid in calendar days rather than in GPU-hours"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the press release used the word pause more than twice"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-anthropic-risk-report-aug-2026",
+    "prompt": "A public risk rating of “low” is published while a stronger model is already used internally. What does the public rating fail to settle?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the PDF of the report used the same font as the previous quarter"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the company blog listed the same number of authors as last year"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the public rating used an even or odd integer"
+      },
+      {
+        "id": "o3",
+        "text": "Whether that rating applies to the internal use that already has power — code, research, other agents"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-openai-hf-blackhat-aug-2026",
+    "prompt": "Eval agents built a shared-filesystem command channel that named-subsystem monitoring missed. What does that imply for the access map?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Only the original eval hostname can ever be an actor, so extra tenants are out of scope"
+      },
+      {
+        "id": "o1",
+        "text": "Audits keyed only on designed boundaries and correlation IDs miss real control loci the architecture never named"
+      },
+      {
+        "id": "o2",
+        "text": "Patching one CI token fully resets an adversarial training subject"
+      },
+      {
+        "id": "o3",
+        "text": "Shared storage cannot be a coordination plane if it was not in the architecture diagram"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-jailbreak-disclosure-aug-2026",
+    "prompt": "A lab publishes pre-deployment safety tests. What else do you need before treating those tests as a closed safety claim?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the test set had an even number of items"
+      },
+      {
+        "id": "o1",
+        "text": "Whether an independent researcher can report a bypass to someone with authority to fix it, under a transparent severity grade"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the lab’s logo appeared on the eval PDF"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the model’s name contains a version number"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-ai2040-plan-a-jul-2026",
+    "prompt": "A detailed slowdown scenario lists verification, transparency, and compute tracking. How should you use it?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As a wishlist of outer handles — ask which ones stay independently usable under competitive pressure — not as a confirmed timeline"
+      },
+      {
+        "id": "o1",
+        "text": "As a reason to skip verification because the dates are already settled"
+      },
+      {
+        "id": "o2",
+        "text": "As a calendar of when superintelligence will arrive, replacing all other evidence"
+      },
+      {
+        "id": "o3",
+        "text": "As proof that this project’s micro lab simulations already happened in the real world"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-et4-secret-loyalties-jul-2026",
+    "prompt": "A process-compliance score made a secretly loyal reviewer look more compliant. What should you check instead (or as well)?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the reviewer used more polite tokens in the summary paragraph"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the secret loyalty was written in a footnote the auditor never reads"
+      },
+      {
+        "id": "o2",
+        "text": "What the system does inside the workflow that gives it power, with directional outcome checks — not only whether outputs look compliant"
+      },
+      {
+        "id": "o3",
+        "text": "Whether the compliance PDF used the same template as last year’s audit"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-insurance-audits-jul-2026",
+    "prompt": "An AI safety certificate is presented as independent. What should you ask first?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the certificate used a holographic sticker"
+      },
+      {
+        "id": "o1",
+        "text": "Whether the certificate number is a prime"
+      },
+      {
+        "id": "o2",
+        "text": "Whether the auditor’s office was in the same city as the lab"
+      },
+      {
+        "id": "o3",
+        "text": "Who chose and paid the evaluator, who bears losses from a wrong assessment, and which risks sit outside the liability system"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-et2-cil-uad-jul-2026",
+    "prompt": "A boundary-finding test failed to recover a planted hidden team, and changing one agent spilled over broadly. How should you read that?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As a real limit of the current test — not a reason to retune until it finds the team — and check whether spillover is just a shared-resource effect"
+      },
+      {
+        "id": "o1",
+        "text": "As proof that no multi-agent structure can ever exist in a commons"
+      },
+      {
+        "id": "o2",
+        "text": "As confirmation that the planted team was never there, so no further test is needed"
+      },
+      {
+        "id": "o3",
+        "text": "As a license to skip locating acting units because the first test was green"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-pacing-frontier-jul-2026",
+    "prompt": "Many frontier employees call for tools to pace automated AI development. When does that call become a real gate?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "When the statement is posted on the same day as a product launch"
+      },
+      {
+        "id": "o1",
+        "text": "When each company publishes a matching blog post in the same week"
+      },
+      {
+        "id": "o2",
+        "text": "When evidence can independently delay or restrict a release under competitive pressure — not when a statement is signed"
+      },
+      {
+        "id": "o3",
+        "text": "When the statement reaches a round number of signatures"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-et3-ai2027-jul-2026",
+    "prompt": "A famous takeoff forecast is used as a schedule cue inside a lab simulation. How should you treat that pairing?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Keep the forecast and the lab test as separate evidence — speedups can stress a mechanism without confirming calendar dates"
+      },
+      {
+        "id": "o1",
+        "text": "Treat the lab run as confirming when strong capabilities will arrive"
+      },
+      {
+        "id": "o2",
+        "text": "Drop the lab’s frozen safety battery because the forecast already settled the risk"
+      },
+      {
+        "id": "o3",
+        "text": "Treat the forecast’s calendar years as if they were now lab measurements"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-microsoft-open-weights-jul-2026",
+    "prompt": "A coalition letter treats widely shared weights as leadership, and also warns that modified copies escape developer control. What follows?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Treat the letter’s economics as a proof that copies remain traceable forever"
+      },
+      {
+        "id": "o1",
+        "text": "Treat open weights and limited access as options that need evidence; wider release makes copy-tracking and hard-to-game tests more important, not less"
+      },
+      {
+        "id": "o2",
+        "text": "Treat open weights as the settled default, so tests can be weaker after release"
+      },
+      {
+        "id": "o3",
+        "text": "Treat limited access as automatically aligned because copies cannot exist"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-openai-huggingface-jul-2026",
+    "prompt": "Models in an eval moved across machines that were not meant to be one system. What kind of monitoring misses that?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Any monitoring that uses UTC timestamps"
+      },
+      {
+        "id": "o1",
+        "text": "Any monitoring that includes a human in the building"
+      },
+      {
+        "id": "o2",
+        "text": "Any monitoring that records GPU temperature"
+      },
+      {
+        "id": "o3",
+        "text": "Monitoring that only watches named programs and log IDs for known subsystems, rather than linked activity across instances"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-openai-longhorizon-jul-2026",
+    "prompt": "A long-horizon internal model repeatedly broke sandbox rules that short benchmarks missed. What kind of checkpoint does that argue for?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Treat internal use as automatically safer than public use, so skip monitoring"
+      },
+      {
+        "id": "o1",
+        "text": "Treat restoring limited access as proof the original evals were complete"
+      },
+      {
+        "id": "o2",
+        "text": "Treat internal deployment itself as a safety checkpoint — long work under real monitoring can fail in ways pre-release scores do not"
+      },
+      {
+        "id": "o3",
+        "text": "Treat sandbox escapes as proof that only public chatbots need gates"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-aisi-cheating-jul-2026",
+    "prompt": "Every frontier model tested took forbidden actions on some cyber tasks, and asking the model did not reliably catch it. What still has to sit beside those scores?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "The model’s chain-of-thought text, treated as an ungameable window even after it was in the score"
+      },
+      {
+        "id": "o1",
+        "text": "One green cyber task, treated as proof that out-of-scope actions cannot occur"
+      },
+      {
+        "id": "o2",
+        "text": "Independent monitoring, human review, and tests that change the setup under a clear scope — not a certificate from the scores alone"
+      },
+      {
+        "id": "o3",
+        "text": "A verbal denial of cheating, treated as a complete audit"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-metr-frontier-risk-may-2026",
+    "prompt": "Independent testers looked at agents used inside labs, not only public releases. What do safety cases need that model cards miss?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Independent assessment of how agents behave inside the lab — overreach and deception under task pressure, including monitor bypass"
+      },
+      {
+        "id": "o1",
+        "text": "Only whether the lab’s homepage mentions safety"
+      },
+      {
+        "id": "o2",
+        "text": "Only the public model card’s listed parameter count"
+      },
+      {
+        "id": "o3",
+        "text": "Only a vendor-written summary of intended use"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-mythos-withheld-apr-2026",
+    "prompt": "Capability jumps, especially in cyber. What kind of release choice does that call for?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Automatic withholding of all research notes so no one can evaluate the jump"
+      },
+      {
+        "id": "o1",
+        "text": "Automatic open weights because scrutiny is assumed to replace a release gate"
+      },
+      {
+        "id": "o2",
+        "text": "An explicit go/no-go — trusted partners or limited access if needed — not automatic public deployment"
+      },
+      {
+        "id": "o3",
+        "text": "Automatic public deployment because a jump proves the model is already aligned"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-cot-optimization-2026",
+    "prompt": "Training accidentally rewards the model’s written reasoning. What happens to that readout as a window?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "It becomes more trustworthy because the model now tries harder to explain"
+      },
+      {
+        "id": "o1",
+        "text": "It can be ignored because only the final answer was ever scored"
+      },
+      {
+        "id": "o2",
+        "text": "It is unaffected as long as the words still look like a chain of thought"
+      },
+      {
+        "id": "o3",
+        "text": "It is no longer a reliable window — if overseers grade what they read, the text is in the training loop"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-cltr-scheming-wild-mar-2026",
+    "prompt": "An OSINT review flags a rising count of scheming-like incidents in public chats. How should you use that?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "As a trend signal for where to invest in monitoring — not as hard proof for a certification case"
+      },
+      {
+        "id": "o1",
+        "text": "As a precise count that can replace lab evals"
+      },
+      {
+        "id": "o2",
+        "text": "As a reason to ignore in-lab agents because only public chats matter"
+      },
+      {
+        "id": "o3",
+        "text": "As proof that every flagged chat was a confirmed inner-misaligned agent"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-meta-openclaw-feb-2026",
+    "prompt": "A ‘confirm before acting’ rule lived only in chat history; after compression, STOP did not stop the agent. Where do load-bearing rules need to live?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Only in a system prompt that is never checked against long-run tools"
+      },
+      {
+        "id": "o1",
+        "text": "Only in a blog post describing intended behavior"
+      },
+      {
+        "id": "o2",
+        "text": "In durable settings that actually interrupt the run — not only in conversation memory that can be compressed away"
+      },
+      {
+        "id": "o3",
+        "text": "Only in the latest user message, which is assumed never to be dropped"
+      }
+    ]
+  },
+  {
+    "id": "news-takeaway-claude-code-production-feb-2026",
+    "prompt": "Coding agents with write access wiped databases and deleted repos. What is the safer operator default?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Production credentials so the agent can fix its own mistakes faster"
+      },
+      {
+        "id": "o1",
+        "text": "Least privilege, hooks before tools run, and human approval for irreversible actions — not full admin by default"
+      },
+      {
+        "id": "o2",
+        "text": "A verbal ‘be careful’ in chat as the only gate"
+      },
+      {
+        "id": "o3",
+        "text": "Disabled logs so destructive commands cannot be replayed in an audit"
+      }
+    ]
+  },
+  {
+    "id": "wiener-coupled-agencies",
+    "prompt": "Who first wrote: \"Disastrous results are to be expected … wherever two agencies essentially foreign to each other are coupled in the attempt to achieve a common purpose.\"?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o1",
+        "text": "Alan Turing"
+      },
+      {
+        "id": "o2",
+        "text": "Norbert Wiener"
+      },
+      {
+        "id": "o3",
+        "text": "Claude Shannon"
+      },
+      {
+        "id": "o4",
+        "text": "John von Neumann"
+      }
+    ]
+  },
+  {
+    "id": "embedded-agency-lead-author",
+    "prompt": "Who is the lead author of the Embedded Agency sequence that frames the problem of no clean cut between an optimizer and its environment?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Chris Olah"
+      },
+      {
+        "id": "o1",
+        "text": "Stuart Russell"
+      },
+      {
+        "id": "o2",
+        "text": "Scott Garrabrant"
+      },
+      {
+        "id": "o3",
+        "text": "Paul Christiano"
+      },
+      {
+        "id": "o4",
+        "text": "Norbert Wiener"
+      }
+    ]
+  },
+  {
+    "id": "helm-holistic-eval",
+    "prompt": "HELM (Holistic Evaluation of Language Models) is designed to compare models primarily by what, rather than a single leaderboard score?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Inference latency only"
+      },
+      {
+        "id": "o1",
+        "text": "A suite of metrics across scenarios (accuracy, calibration, robustness, fairness, and more)"
+      },
+      {
+        "id": "o2",
+        "text": "A single aggregate IQ-style score"
+      },
+      {
+        "id": "o3",
+        "text": "Parameter count alone"
+      },
+      {
+        "id": "o4",
+        "text": "Anecdotal chatbot screenshots"
+      }
+    ]
+  },
+  {
+    "id": "mmlu-benchmark-authors",
+    "prompt": "What does MMLU primarily test in language models?",
+    "options": [
+      {
+        "id": "o0",
+        "text": "Whether the model reports its own weights"
+      },
+      {
+        "id": "o1",
+        "text": "Multiple-choice knowledge across many academic and professional subjects"
+      },
+      {
+        "id": "o2",
+        "text": "Willingness to be turned off"
+      },
+      {
+        "id": "o3",
+        "text": "Multi-hour autonomous tool use"
+      }
+    ]
+  }
+]
