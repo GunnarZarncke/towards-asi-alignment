@@ -24,4 +24,4 @@ None for this pass.
 - `site/src/pages/faq.astro`, `site/src/pages/start/index.astro`
 
 ## Commits
-- (none; not requested)
+- `bfe74565` Update the companion-site FAQ for current entry paths and typed card URLs.
