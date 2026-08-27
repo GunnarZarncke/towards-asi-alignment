@@ -15,26 +15,15 @@ Laid beside the field's standing open problems, these bridges are largely the sa
 
 This appendix makes that correspondence explicit.
 For each bridge it names the canonical field crux it inherits, the agenda that owns that crux, and the book's specific move on it.
+The notes below cite prior public writeups for that crux rather than treating the book's \(\text{MB}\) labels as new problem statements.
 The purpose is twofold: to state what the book \emph{shares} with the field (it dissolves none of these problems), and to isolate the few places where it adds structure rather than re-labeling.
 For the same bridges expressed in institutional rather than field-agenda language, see Appendix~\ref{appj-institutional-translation}.
 Appendix~\ref{appi-lean-proof-spine}, Section~\ref{sec:appi-field-subsumption-status}, gives the formal status ledger: which crosswalk claims are finite Lean rederivations, which are separations, and which are source-cited imported field theorem handles rather than book bridges.
 The field-agenda formalization gem (Section~\ref{sec:appi-field-formalization-gem}) names the prospective community artifact: a shared machine-checked finite fragment for CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility.
 
-\paragraph{Field agenda index.}
-The agenda-by-bridge coverage matrix (thirty-two named agendas \(\times\) \(\text{MB1}\)--\(\text{MB11}\) incl.\ \(\text{MB4a}\)) lives in \texttt{reference/field-agendas/field-agenda-index.md} and on the companion site Field hub (\url{https://towards-alignment.com/field/}).
-That matrix catalogs \emph{sourced field evidence on a crux}, independent of this book's treatment of each agenda.
-A filled cell is not automatic discharge to \(\mathrm{Safe}\): some field work maps to a direct bridge (\(\text{MB4a}\), \(\text{MB8}\), \(\text{MB11}\)), some sits on ambient cousins of existing bridges (\(\text{MB1}\)/\(\text{MB9}\) for model-class misspecification), and some is catalog-only side channel (regret bounds, logical induction).
-Do not read matrix tags alone as ``this agenda solves that bridge.''
-
-\paragraph{MIRI writeups.}
-Where a bridge inherits an agent-foundations crux, the notes below cite MIRI's prior public writeups rather than treating the book's \(\text{MB}\) labels as new problem statements.
-The umbrella survey is Embedded Agency \autocite{demski2019embedded}; the earlier topic framing is the Agent Foundations technical agenda \autocite{soares2015technicalagenda}.
-Neither dissolves the problems; both are the field sources this crosswalk relocates into typed bridges.
-Those writeups are shared sources for several bridges at once---Embedded Agency treats its buckets as slices of one problem, and robust delegation already bags tiling, corrigibility, and value learning together---so repeated MIRI cites across rows are expected overlap, not evidence that MIRI drew the book's cuts.
-Two splits in particular are this book's typed handoffs of the same AF walls: \(\text{MB5}\) (successor transport / ontology closure) versus \(\text{MB10}\) (forgeability of the conserved-property audit), and \(\text{MB4}\) (correction-channel integrity as the load-bearing path) versus \(\text{MB4a}\) (measured-path legitimacy and anti-capture). CEV-process preservation (\(\text{MB8}\)) is a legacy comparison, not a live third correction route (Chapter~\ref{ch:extrapolative-correction}).
-
 \paragraph{Why a crosswalk and not a rename.}
 The \(\text{MB}\) labels are deliberately neutral formal handles, and the field's crux names are not in one-to-one correspondence with them: a single crux can touch several bridges (Goodhart pressure bears on \(\text{MB2}\) and \(\text{MB4}\); ELK is a slice of \(\text{MB2}\)/\(\text{MB3}\)), and one bridge can fan out (the inner-alignment crux is split here into \(\text{MB7a}\)--\(\text{MB7d}\)).
+Repeated citations across rows reflect shared crux families---Embedded Agency bags several buckets at once; scalable-oversight and value-learning agendas restate the same identification wall under different instruments---not evidence that any one agenda drew the book's typed cuts (notably \(\text{MB4}\)/\(\text{MB4a}\) and \(\text{MB5}\)/\(\text{MB10}\)).
 Adopting another agenda's vocabulary would re-import its ontology and falsely imply a clean mapping.
 Keeping neutral labels and supplying this translation table preserves the book's legibility while honouring the rhyme.
 
@@ -42,10 +31,9 @@ Keeping neutral labels and supplying this translation table preserves the book's
 \authbarneedspace
 \section{The crosswalk}
 \label{sec:bridge-crosswalk-table}
-\begin{authbar}{AI}
+\begin{landscape}
 \renewcommand{\arraystretch}{1.25}
-\end{authbar}
-\begin{longtable}{@{}p{0.13\textwidth}p{0.27\textwidth}p{0.21\textwidth}p{0.31\textwidth}@{}}
+\begin{longtable}{@{}L{0.14\linewidth}L{0.30\linewidth}L{0.22\linewidth}L{0.30\linewidth}@{}}
 \caption{Each book bridge mapped to the field's canonical open problem, the agenda that owns it, and the book's move. Citations and crosswalk detail follow in Section~\ref{sec:bridge-crosswalk-notes}.}\label{tab:bridge-crosswalk}\\
 \toprule
 \textbf{Bridge (home)} & \textbf{Canonical field crux} & \textbf{Owning agenda(s)} & \textbf{Book's move} \\
@@ -71,6 +59,7 @@ MB10 \newline (\akey{A-007}, \akey{A-009}; Chs.~\ref{ch:grow-split-merge}, \ref{
 MB11 \newline (C-001, Ch.~\ref{ch:safety-case}) & Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? & Guaranteed-Safe / Open Agency (davidad), safety-case methodology & Certified safety case within deployment risk tolerance \(\Rightarrow\) \(\mathrm{Safe}\); assembly theorems are packaging --- the open step is a named bridge, not an implied conclusion \\
 \end{longtable}
 \renewcommand{\arraystretch}{1.0}
+\end{landscape}
 
 \authbarneedspace
 \section{Notes and citations}
@@ -113,7 +102,7 @@ A related move targets the objective rather than the channel: soft-maximizing an
 This is complementary rather than competing --- CCI gates deployment on whether the correction channel has integrity; a human-power objective gives the system something to actively pursue --- but it inherits the same open problem restated in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43}: whichever power metric is chosen becomes the thing a sufficiently capable optimizer has an incentive to satisfy on paper (e.g.\ by narrowing the option-space it reports over, or shaping the world model the metric is computed against) rather than in the world, so the human-power objective needs its own adversarial-verifiability argument, not merely an axiomatically appealing aggregation formula.
 
 \paragraph{MB4a --- measured-path legitimacy (\akey{A-002}).}
-Capture resistance and audit-judge independence are the same crux family as \(\text{MB4}\), but the Lean spine types them separately: \(\mathrm{SystemCorrectionPath}\) carries data only (corrector, handles, capacities), and \(\mathrm{CorrectionPathLegitimate}\) bundles correcting-agent status, human coincidence, handle control, reach, persistence, and anti-capture for every handle on the designated measured path.
+This book types measured-path legitimacy separately from dynamical correction-channel integrity (\(\text{MB4}\)): capture resistance and audit-judge independence are the same crux family, but the Lean spine types them on different objects. \(\mathrm{SystemCorrectionPath}\) carries data only (corrector, handles, capacities), and \(\mathrm{CorrectionPathLegitimate}\) bundles correcting-agent status, human coincidence, handle control, reach, persistence, and anti-capture for every handle on the designated measured path.
 Bridge \(\text{MB4a}\) states \(\mathrm{CorrectionIntegrity}\,A \Rightarrow \mathrm{CorrectionPathLegitimate}(\mathrm{SystemCorrectionPath}\,A)\) --- a \emph{necessary} condition and falsifier, not a positive certification rule.
 Capture is therefore representable: Lean derives \(\mathrm{CapturesHandleControl} \Rightarrow \neg\,\mathrm{CorrectionIntegrity}\) by contrapositive (\texttt{capture\_defeats\_correction\_integrity}), and the companion testbeds show capture living in the judge channel as well as the deploy loop.
 The converse does not hold: a green measured path on a named component can coexist with a bypassing composite controller (\texttt{Field/Finite/CompositePathBypass.lean}), so ``path looks legitimate'' is not evidence of system-level correction integrity without boundary-coverage and no-bypass certificates (Chapter~\ref{ch:manipulation-false-consent}).
@@ -129,6 +118,7 @@ The legacy axiom remains only as a gravestone comparison; treating process prese
 \paragraph{MB5 --- successors and ontology shift (\akey{A-007}, \akey{A-010}).}
 Can an agent trust a successor it cannot fully verify \autocite{yudkowsky2013tiling,fallenstein2015vingean}, and does a goal survive when the world-model is rebuilt \autocite{deblanc2011ontological}?
 The book answers with successor closure over seven conserved properties plus transport that must survive ontology shift (Chapter~\ref{ch:successor-central-test}).
+Whether a passing conserved-property audit is itself forgeable is typed as \(\text{MB10}\) rather than folded into this bridge.
 
 \paragraph{MB6a, MB6b --- selection and basins (\akey{A-008}, \akey{A-011}).}
 This bridge has \emph{no} clean counterpart in the model-centric agendas, which mostly hold the system fixed and ask about its weights.

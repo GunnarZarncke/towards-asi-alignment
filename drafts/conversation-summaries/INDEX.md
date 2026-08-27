@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-28 | **Assumption key-only boxes + App B** — A-* boxes show key only (no chapter counter); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. | [2026-08-28-assumption-boxes-appb-cleanup.md](2026-08-28-assumption-boxes-appb-cleanup.md) |
 | 2026-08-28 | **TSA shipping benchmark** — User asked for a benchmark of how quickly TSA content ships: investigate GitHub history, cross-in... | [2026-08-28-shipping-benchmark.md](2026-08-28-shipping-benchmark.md) |
 | 2026-08-28 | **Project identity, not manuscript-first** — User: README still leads with “research manuscript”; the project is no longer only or primarily a... | [2026-08-28-project-not-manuscript.md](2026-08-28-project-not-manuscript.md) |
 | 2026-08-28 | **Alignment Crux Map grant draft** — User asked for a grantmaking.ai project listing for TSA mapping work, then for a <$100k rewrite (... | [2026-08-28-alignment-crux-map.md](2026-08-28-alignment-crux-map.md) |

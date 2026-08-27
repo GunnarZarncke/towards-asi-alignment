@@ -20,6 +20,18 @@
 % Manuscript assumption keys link to the boxed definition (`\label{ass:A-00x}`).
 \newcommand{\akey}[1]{\hyperref[ass:#1]{#1}}
 
+% A-* assumptions: key-only heading (no chapter counter). Numbered `assumption` stays for App~G bridges.
+\makeatletter
+\newtheoremstyle{bookassumptionstyle}%
+  {3pt}{3pt}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  { }%
+  {\thmname{Assumption}\ \thmnote{#3}}%
+\makeatother
+\theoremstyle{bookassumptionstyle}
+\newtheorem*{bookassumption}{Assumption}
+
 \newtcolorbox{chapterthesis}{
   colback=blue!5!white,
   colframe=blue!50!black,

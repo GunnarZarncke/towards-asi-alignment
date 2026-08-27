@@ -53,11 +53,11 @@ Distinguish three strengths a measurand can have.
   \item \textbf{Adversarially verifiable.} No system of capability at most $\kappa$ that is optimizing against the metric can drive it to read ``safe'' while being unsafe, within the resource budget that system actually has.
 \end{itemize}
 
-\begin{assumption}[A-009]
+\begin{bookassumption}[A-009]
 \label{ass:A-009}
 At least one core measurand used to gate deployment or successor creation is adversarially verifiable up to a stated capability ceiling \(\kappa\): no system of capability at most \(\kappa\) that is optimizing against the metric can drive it to read ``safe'' while being unsafe, within the resource budget that system actually has.
 Equivalently, up to that ceiling it is cheaper to satisfy the metric without faking than to fake it.
-\end{assumption}
+\end{bookassumption}
 
 Observability is cheap. Adversarial verifiability is the property safety cases silently assume and rarely establish.
 The first master question of this chapter is: \emph{which of the book's metrics are adversarially verifiable, and at what capability ceiling $\kappa$ do they stop being so?}
@@ -132,7 +132,7 @@ Every measurand in this book --- boundary residual, value-bundle activation, cor
 \emph{What would resolve it.} \textbf{(Positive resolution, at least one measurand)} A constructive $c_{\mathrm{fake}}$ with a proof that it dominates affordable surplus up to a stated $\kappa^{*}$, calibrated against a real estimator (the instantiation gap named in \texttt{metadata/TODO.md} ``Measurand instantiation table''). \textbf{(Negative resolution)} A demonstration --- formal or empirical --- that for every candidate measurand in the book's stack, $\kappa^{*}$ is below the capability level the safety case needs to certify against, i.e.\ every load-bearing certificate is theater at the capability the book cares about. \textbf{(Partial/current status)} Neither: the cost-relation \emph{definition} is formalized generically and the shared-channel identity is proved (Lean-spine note above), but $c_{\mathrm{fake}}$ is not established for any concrete measurand against a real adversary.
 \end{claim}
 
-The named problem is Assumption~\ref{ass:A-009} asked of a specific measurand: whether adversarial verifiability holds up to a capability ceiling \(\kappa^{*}\).
+The named problem is Assumption~\akey{A-009} asked of a specific measurand: whether adversarial verifiability holds up to a capability ceiling \(\kappa^{*}\).
 The corresponding Lean hypotheses are \(\text{MB7b}\)--\(\text{MB7d}\); those are the bridges for this load, not a second independent axiom.
 If the book's metrics are read through overlapping instruments, a system that can make one read ``safe'' while unsafe can often do the same to the others, so the question is asked once per measurand, inside the scope of Chapter~\ref{ch:assumptions-scope-failure-coverage}.\footnote{Field analog: ELK \autocite{christiano2021elk}. Shared-instrument claim: Appendix~\ref{appbridge-crosswalk}, \S\ref{sec:bridge-crosswalk-takeaway}.}
 
