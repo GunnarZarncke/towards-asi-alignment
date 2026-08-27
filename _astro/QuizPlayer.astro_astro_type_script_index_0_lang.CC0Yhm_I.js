@@ -1,0 +1,1 @@
+import{t as e}from"./ui.BpQAagWy.js";var t=document.querySelector(`[data-quiz-player]`);if(t instanceof HTMLElement){let n=t.querySelector(`[data-quiz-payload]`),r=t.dataset.base??`/`;n?.textContent&&e(t,{base:r,payload:JSON.parse(n.textContent),mode:`player`})}

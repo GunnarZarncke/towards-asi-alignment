@@ -1,0 +1,1 @@
+import{t as e}from"./ui.BpQAagWy.js";document.querySelectorAll(`[data-quiz-block]`).forEach(t=>{if(!(t instanceof HTMLElement))return;let n=t.querySelector(`[data-quiz-payload]`),r=t.dataset.base??`/`,i=t.dataset.appearOn??``;n?.textContent&&e(t,{base:r,payload:JSON.parse(n.textContent),mode:`block`,appearOn:i})});

@@ -1,6 +1,6 @@
 # Towards Superintelligence Alignment
 
-> A research manuscript and Lean dependency-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
+> A knowledge base and roadmap — book, Lean spine, experiments, field map, and companion site — about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
 
 This file is also served at https://towards-alignment.com/llms.txt (generated at site build from this repo-root source). A fuller bundle lives at https://towards-alignment.com/llms-full.txt.
 

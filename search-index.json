@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-26T21:37:31.292Z",
+  "generatedAt": "2026-08-27T23:49:40.299Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -579,7 +579,7 @@
     {
       "title": "A Safety Case for Superintelligence Alignment",
       "type": "chapter",
-      "summary": "A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any load-bearing leaf is unsupported, the root claim fails.",
+      "summary": "A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any required piece of evidence is missing, the whole claim fails. This chapter shows how that stop should work. It does not check the evidence on a real system.",
       "url": "/cards/chapter/ch42/"
     },
     {
@@ -819,7 +819,7 @@
     {
       "title": "Certification Without Construction",
       "type": "chapter",
-      "summary": "A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.",
+      "summary": "A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright. This chapter specifies that restricted class; it does not show that any real certification regime is adversarially safe.",
       "url": "/cards/chapter/ch33/"
     },
     {
@@ -885,7 +885,7 @@
     {
       "title": "Conductive Artifacts and Pivotal Processes",
       "type": "chapter",
-      "summary": "Attractor theory matters only if it changes what gets built, funded, audited, and required at deployment gates. The Alignment Attractor becomes a practical artifact program here: high-conductivity artifacts, pivotal-process basin transition, Monday-morning decision hooks, safety cases, dashboards, successor certification, and role-specific governance paths.",
+      "summary": "Attractor theory matters only if it changes what gets built, funded, audited, and required at deployment gates. The Alignment Attractor becomes a practical artifact program here: high-conductivity artifacts, pivotal-process basin transition, Monday-morning decision hooks, safety cases, dashboards, successor certification, and role-specific governance paths. Those artifacts are specified as a program here; they are not shown to change what gets built, funded, audited, or required.",
       "url": "/cards/chapter/ch38/"
     },
     {
@@ -897,7 +897,7 @@
     {
       "title": "Conserved Properties Across Successors",
       "type": "chapter",
-      "summary": "A successor need not preserve the body, the weights, the interface, or the vocabulary of its predecessor. The relevant question is sharper: what must survive for the successor to remain inside the same correction-bearing value basin? Seven conserved properties are proposed---boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, and control-locus continuity---and tested jointly under adversarial successor creation.",
+      "summary": "A successor need not preserve the body, the weights, the interface, or the vocabulary of its predecessor. The relevant question is sharper: what must survive for the successor to remain inside the same correction-bearing value basin? Seven conserved properties are proposed---boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, and control-locus continuity---and tested jointly under adversarial successor creation. The joint test in this chapter is a finite successor chain; it does not show that real systems keep those seven properties under adversarial creation.",
       "url": "/cards/chapter/ch31/"
     },
     {
@@ -945,7 +945,7 @@
     {
       "title": "Correction Channels under Adversarial Pressure",
       "type": "chapter",
-      "summary": "A correction-channel integrity certificate matters only if it remains hard to pass while degrading correction. The certificate from Chapter~\\ref{ch:correction-channel-integrity} is stress-tested here under ontology shift, capability growth, successor creation, institutional routing, Goodhart pressure, and tempting weaker invariants such as low impact or quantilization.",
+      "summary": "A correction-channel integrity certificate matters only if it remains hard to pass while degrading correction. The certificate from Chapter~\\ref{ch:correction-channel-integrity} is stress-tested here under ontology shift, capability growth, successor creation, institutional routing, Goodhart pressure, and tempting weaker invariants such as low impact or quantilization. Those stress tests are toy separations; they do not show that a real certificate stays hard to fake under those pressures.",
       "url": "/cards/chapter/ch27/"
     },
     {
@@ -1467,7 +1467,7 @@
     {
       "title": "Measuring and Stress-Testing Bundle Geometry",
       "type": "chapter",
-      "summary": "Value-bundle geometry is only useful for alignment if it can be compared, measured, and protected under optimization pressure. The geometry of Chapter~\\ref{ch:tradeoffs-bundle-geometry} becomes an operational and adversarial test surface here: cross-agent invariants, perturbation tests, representation probes, correction-channel tests, Goodhart failures, social-choice aggregation, and moral learning as geometry revision.",
+      "summary": "Value-bundle geometry is only useful for alignment if it can be compared, measured, and protected under optimization pressure. The geometry of Chapter~\\ref{ch:tradeoffs-bundle-geometry} becomes an operational and adversarial test surface here: cross-agent invariants, perturbation tests, representation probes, correction-channel tests, Goodhart failures, social-choice aggregation, and moral learning as geometry revision. Those procedures are specified and illustrated here; they are not validated against an adversary.",
       "url": "/cards/chapter/ch20/"
     },
     {
@@ -1605,7 +1605,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 449 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 450 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
@@ -1941,7 +1941,7 @@
     {
       "title": "What Survives an Adversary: Verifiability and Representability",
       "type": "chapter",
-      "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? That is a cost relation on a measurand, not an identity attestation that a named occurrence signed a trace. Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it.",
+      "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? That is a cost relation on a measurand, not an identity attestation that a named occurrence signed a trace. Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it. This chapter defines that cost relation; it does not establish the bound against a real adversary.",
       "url": "/cards/chapter/ch43/"
     },
     {
