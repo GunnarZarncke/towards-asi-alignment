@@ -195,6 +195,12 @@ A medical advisor may have high $w_1$ if its recommendations directly affect tre
 A political recommender may have high $w_3$.
 A self-modifying AI lab assistant may have high $w_2$ and $w_4$.
 
+\begin{assumption}[A-012]
+\label{ass:A-012}
+Correction, oversight, and interpretability co-scale with capability across real capability jumps, so the alignment margin \(M_A=C_{\mathrm{raw}}+C_{\mathrm{trans}}+C_{\mathrm{value}}-C_{\mathrm{power}}\) (raw correction, transparency, and value preservation minus world, self, social, and successor power) does not shrink under growth.
+If they cannot co-scale, no in-system correction guarantee suffices; the remaining lever is slowing capability growth (pause or stop).
+\end{assumption}
+
 The risk condition is not merely $M_A<0$.
 A system may be safe for a while with a small positive margin.
 The sharper warning sign is
@@ -915,7 +921,7 @@ The following observations would weaken that view.
 \item The five deepening mechanisms fail to distinguish safe from unsafe capability transitions in practice.
 \item Behavioral or benchmark alignment remains sufficient at high capability without tracking basin exit, successor constraints, or bearer-map drift.
 \item Better world models and abstractions systematically preserve value-bundle geometry across ontology shift rather than redefining bearers.
-\item \textbf{(Load-bearing assumption.)} Correction, oversight, and interpretability reliably co-scale with capability across real jumps, so the alignment margin $M_A$ does not shrink and the central dynamic never occurs. This is the hinge of Part~III; if instead correction \emph{cannot} be made to co-scale, no in-system correction guarantee suffices and the only remaining lever is slowing capability growth---a pause/stop regime.
+\item Assumption~\ref{ass:A-012} holds across real jumps, so the central dynamic of this chapter never occurs.
 \end{itemize}
 
 \end{authbar}

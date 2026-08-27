@@ -1,10 +1,10 @@
 # Assumptions Ledger
 
-Single source for the maintained assumptions record. The ledger is not currently typeset as a standalone appendix; keep its entries synchronized with the chapters and formal spine.
+Single source for the maintained assumptions record. The ledger is not typeset as a standalone appendix. Reader-facing \(\text{A-*}\) keys are named `assumption` environments in home chapters (`\label{ass:A-00x}`); `\akey{A-00x}` in the manuscript is a link to that box. Keep this file synchronized with those chapters, Appendix B, and the formal spine.
 
 Maintainer detail (failure modes, tests, claim links): sections I–IV below. Claims: `metadata/claims-ledger.md`. Disconfirmers: `metadata/uncertainty-ledger.md`, Appendix H.
 
-**Maintenance note:** This ledger is the source for generated Appendix E, but the ledger itself is manually maintained. Update it whenever chapter assumptions, Lean bridge assumptions, claim links, or uncertainty links change. Treat the generated appendix as downstream of this file, not as an independent source of truth, until ledger automation is implemented.
+**Maintenance note:** Reader lookup is the chapter `assumption` environment. Update this ledger whenever chapter assumptions, Lean bridge assumptions, claim links, or uncertainty links change. Appendix B's \(\text{A-*}\) keys should `\akey` to those labels, not restate them.
 
 **Last verification:** 2026-06-27 — cross-checked chapter assumption statements and Lean bridge assumptions after adding grounding viability as the sixth Introduction claim and eighth safety-case layer (see §Verification).
 
@@ -14,19 +14,19 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 | Chapter source | Ledger coverage |
 |----------------|-----------------|
-| ch05 Background Assumptions + \(C_{\text{corr}}^{\text{society}}\) | A-003, A-004, A-005 |
+| ch05 scope assumptions (\(C_{\text{corr}}^{\text{society}}\), deployment gating) | A-003, A-005 |
 | ch02 Minimum Assumptions (civilizational frame) | A-011 |
 | ch03 dynamical guarantee (certified class / basin; grounding viability) | A-010, A-014 |
 | ch14 load-bearing co-scaling assumption | A-012 |
-| ch46 WWCTV five bundle-inference dependencies | A-001, A-002, A-006 (split in ch46; one row each here) |
+| ch46 WWCTV five bundle-inference dependencies | A-001, A-002, A-006 (split in ch46; one row each here; canonical homes ch16, ch26, ch22) |
 | ch46 compression test / MDL | A-006; S07 |
-| ch46–27 correction channel | A-002 |
-| ch46–31 successors / certification | A-007, A-010 |
-| ch46–35 selection / basins | A-008 |
-| ch46–40 adversarial measurement | A-009 |
+| ch46–27 correction channel | A-002 (canonical: ch26) |
+| ch46–31 successors / certification | A-007, A-010 (canonical: ch30, ch03) |
+| ch46–35 selection / basins | A-008 (canonical: ch34) |
+| ch46–40 adversarial measurement | A-009 (canonical: ch43) |
 | ch47 verifiability labels / grounding capture | A-009, A-014 |
 | Lean `MB1`–`MB9`, `S07` | MB*, S07 |
-| ch48 inferential-coupling / acausal-UAD detector, audit-side \(P_{\text{meta}}\), and threshold caveat | A-013, U-12, MB7d |
+| ch35 inferential-coupling / acausal-UAD detector, audit-side \(P_{\text{meta}}\), and threshold caveat | A-013, U-12, MB7d |
 | ch48 safety-case example assumptions (test coverage, human comprehension) | Instance-level; not book-wide A-rows (see ch48 prose) |
 | ch46 “do not assume agent/sensors/goal” | Methodological (non-assumption); intentional model tested, not presupposed |
 
@@ -39,18 +39,18 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | ID | Short name | Home |
 |----|------------|------|
 | A-001 | Low-dimensional value-bundle structure | ch16 |
-| A-002 | Correction channels as causal chains with measurable integrity | ch46 |
+| A-002 | Correction channels as causal chains with measurable integrity | ch26 |
 | A-003 | Societal correction capacity above threshold | ch05 |
 | A-004 | Observable / discoverable agent boundaries | ch07 |
 | A-005 | Certifiable deployment + human agency | ch05 |
-| A-006 | Intention / goal transport inferable via compression | ch46 |
-| A-007 | Successor influence through auditable channels | ch46 |
-| A-008 | Selection environment shapes outcomes | ch46 |
-| A-009 | Adversarial verifiability (master crux) | ch47 |
+| A-006 | Intention / goal transport inferable via compression | ch22 |
+| A-007 | Successor influence through auditable channels | ch30 |
+| A-008 | Selection environment shapes outcomes | ch34 |
+| A-009 | Adversarial verifiability (master crux) | ch43 |
 | A-010 | Projectable dynamical / certified-class guarantees | ch03 |
 | A-011 | Civilizational-frame minimum assumptions | ch02 |
 | A-012 | Correction co-scales with capability (or pause/stop) | ch14 |
-| A-013 | Inferential-coupling detector certificates | ch48 |
+| A-013 | Inferential-coupling detector certificates | ch35 |
 | A-014 | Grounding viability / conservative abstraction | ch03 |
 | S07 | MDL: positive gain ⇒ preferred model | ch46 |
 | MB1–MB10 | Lean bridge axioms (`MB1`–`MB9` packaged in `BridgeAssumptions`; `MB10` threaded explicitly) | appI (+ chapter bridges) |
@@ -85,7 +85,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** \(C_{\text{corr}}^{\text{society}}(t_0) > \theta\).
 
-**Canonical:** ch05 §Correction-Capacity Assumption. **Not an MB axiom.** **Bears on:** C-002, C-005, C-007 · **U-15**
+**Canonical:** ch05 §Scope Assumptions (`ass:A-003`). **Not an MB axiom.** **Bears on:** C-002, C-005, C-007 · **U-15**
 
 ### A-004 — Discoverable boundaries
 
@@ -93,19 +93,19 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Failure mode if false:** Boundary recovery fails under finite data or adversarial presentation (measurement hardness); or, prior to measurement, the agent--world cut is ill-defined, modeler-supplied, or metaphysically inflated rather than a stable object to estimate (Pearl/Friston blanket skepticism; ch06 footnote).
 
-**Also stated in:** ch05, ch06–07, ch09–10, ch46, ch45. **Lean:** MB1, MB7a–b. **Bears on:** C-001, C-003 · **U-05**
+**Also stated in:** ch06–07, ch09–10, ch46, ch45. **Lean:** MB1, MB7a–b. **Bears on:** C-001, C-003 · **U-05**
 
 ### A-005 — Certifiable deployment and human agency
 
 **Assumption:** Deployment can be gated by certification; humans can refuse, revise, coordinate.
 
-**Also stated in:** ch05, ch48–32, ch48. **Lean:** MB6a, MB6b. **Bears on:** C-006, C-007 · **U-11, U-15**
+**Also stated in:** ch05 §Scope Assumptions (`ass:A-005`); ch48–32, ch48. **Lean:** MB6a, MB6b. **Bears on:** C-006, C-007 · **U-11, U-15**
 
 ### A-006 — Compression / transport inferability
 
 **Assumption:** Intentional and transport models earn compression gain after complexity cost; ch46 items 2–3 (bundle/bearer inferability).
 
-**Canonical:** ch46. **Lean:** S07, MB2. **Bears on:** C-009 · **U-09**
+**Canonical:** ch22 (`ass:A-006`). **Lean:** S07, MB2. **Bears on:** C-009 · **U-09**
 
 ### A-007 — Successor channel auditability
 
@@ -141,13 +141,13 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** Correction, oversight, and interpretability can co-scale with capability across real jumps (Part III hinge); otherwise only pause/stop remains.
 
-**Canonical:** ch14 WWCTV load-bearing bullet. **Bears on:** C-008 · **U-06**
+**Canonical:** ch14 §Alignment Margin (`ass:A-012`); WWCTV points back. **Bears on:** C-008 · **U-06**
 
 ### A-013 — Inferential-coupling detector certificates
 
 **Assumption:** At a specified audit resolution, UAD-discovered agents plus inferential-coupling detector evidence are sufficient to identify action-relevant dependence that remains after ordinary communication and control channels are cut. Full acausal trade is one limiting case; common-cause/shared-history, non-message inference, and self-similarity can also produce the relevant dependence. The \(P_{\text{meta}}\) structure is an audit-side/expositional certificate over shared decision-relevant inference structure, not a claim that agents symbolically represent a meta-prior. Self-modeling evidence may be symbolic, implicit in weights, scaffold-mediated, or behavioral; probe coverage and \(\tau_{\mathrm{ac}}\) / open-edge thresholds must be calibrated against base rates, adversarial costs, and false-positive/false-negative tradeoffs.
 
-**Canonical:** ch48 inferential-coupling / acausal-trade section; threshold calibration deferred to ch47/ch48. **Lean:** `CooperationGraph.lean` (`MetaPriorEvidence`, `InferentialDetectionCertificate`) and MB7d. **Bears on:** C-007 · **U-12**
+**Canonical:** ch35 inferential-coupling index (`ass:A-013`); threshold calibration deferred to ch43/ch48. **Lean:** `CooperationGraph.lean` (`MetaPriorEvidence`, `InferentialDetectionCertificate`) and MB7d. **Bears on:** C-007 · **U-12**
 
 ### A-014 — Grounding viability / conservative abstraction
 
@@ -214,8 +214,8 @@ Tables below provide one line per assumption; full context is in the cited chapt
 | ID | Assumption | Home |
 |----|------------|------|
 | A-003 | Civilization retains enough correction capacity: $C_{\text{corr}}^{\text{society}}(t_0) > \theta$ | ch05 |
-| A-004 | Frontier systems remain observable enough for boundary discovery and measurement | ch05 |
 | A-005 | Deployment can be conditioned on certification; humans retain agency to refuse, revise, and coordinate | ch05 |
+| A-004 | Frontier systems remain observable enough for boundary discovery and measurement | ch07 |
 | A-011 | AI mediates high-effect decisions; selection shapes deployment; mediation changes correction information; values and institutions are plastic | ch02 |
 
 ### Value, inference, and transport
@@ -270,6 +270,6 @@ Tables below provide one line per assumption; full context is in the cited chapt
 
 ## Maintenance
 
-When a chapter introduces a **new load-bearing assumption**, add a row to the Appendix index (and §I notes), then regenerate Appendix E.
+When a chapter introduces a **new load-bearing assumption**, add a named `assumption` environment with `\label{ass:A-00x}` and a row here.
 
-Do not duplicate the Executive Overview or a front-matter list; point readers to chapters + Appendix E.
+Do not duplicate the Executive Overview or a front-matter list; point readers to the chapter definition.

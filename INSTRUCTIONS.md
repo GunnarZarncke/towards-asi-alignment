@@ -152,6 +152,7 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 |-------|-------------|-------------|
 | Operational terms | `metadata/concepts.yml` | Glossary appendix; site `/glossary/` |
 | Symbols and canonical eq homes | `metadata/notation.md` | Notation Index appendix (generated; points to chapters) |
+| Manuscript assumption keys (`A-*`) | `metadata/assumptions-ledger.md` | Named `assumption` boxes in home chapters; keys hyperlink to those boxes |
 | Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean dependency spine appendix |
 
 Edit `metadata/assumptions-ledger.md` for the maintained assumptions record. Edit `metadata/notation.md` only for the Notation Index appendix.

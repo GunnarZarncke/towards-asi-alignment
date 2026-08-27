@@ -76,12 +76,14 @@ L(M_{\mathrm{mech}}\mid X_{1:T})
 \end{equation}
 Here $M_{\mathrm{int}}$ is an intentional model, $M_{\mathrm{mech}}$ is a mechanistic baseline, $DL(G)$ is the description length of the inferred goal structure, and $\lambda$ determines how strongly we penalize complexity.
 
-If
-\begin{equation}
-\Delta L_{\mathrm{int}}>0,
-\end{equation}
-then the intentional model earns its keep.
-If not, intention may still be a convenient story, but it has not yet paid rent in prediction.
+\begin{assumption}[A-006]
+\label{ass:A-006}
+Intention and goal-structure are attributed to an observed trajectory \(X_{1:T}\) only when
+\(\Delta L_{\mathrm{int}}=L(M_{\mathrm{int}}\mid X_{1:T})-L(M_{\mathrm{mech}}\mid X_{1:T})-\lambda\,DL(G)\)
+is strictly positive, with \(M_{\mathrm{int}}\) an intentional model, \(M_{\mathrm{mech}}\) a mechanistic baseline, \(DL(G)\) the description length of the inferred goal structure, and \(\lambda\) the complexity penalty.
+The same payment test applies to a model that claims to transport intention across a change of substrate or representation.
+\end{assumption}
+If \(\Delta L_{\mathrm{int}}\) is not positive, intention may still be a convenient story, but it has not yet paid rent in prediction.
 
 This is not a definition of consciousness, personhood, moral patienthood, or blame.
 It is a measurement principle.

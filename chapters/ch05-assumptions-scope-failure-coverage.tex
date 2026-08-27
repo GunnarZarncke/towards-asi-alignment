@@ -84,24 +84,6 @@ If selection pressure rewards opacity, speed, or dependence, local alignment met
 
 \end{authbar}
 \authbarsubneedspace
-\subsection{Background Assumptions}
-\begin{authbar}{AI}
-\begin{itemize}
-  \item civilization has not already lost correction capacity
-  \item frontier systems remain observable enough for measurement
-  \item deployment can still be conditioned on certification
-  \item humans retain enough agency to refuse, revise, and coordinate
-\end{itemize}
-
-These are not decorative assumptions.
-They are load-bearing.
-The later chapters try to make each assumption more measurable, but they do not make the assumptions vanish.
-If frontier systems are no longer observable enough to audit, Chapter~\ref{ch:finding-boundary} has no handle.
-If deployment cannot be conditioned on certification, Chapter~\ref{ch:safety-case} becomes advice without authority.
-If humans cannot refuse, revise, or coordinate, correction has become a story told after the fact.
-
-\end{authbar}
-\authbarsubneedspace
 \subsection{Out of Scope}
 \begin{authbar}{AI}
 \begin{itemize}
@@ -130,19 +112,25 @@ It enters when it changes selection pressure, accelerates irreversible deploymen
 
 \end{authbar}
 \authbarneedspace
-\section{Correction-Capacity Assumption}
+\section{Scope Assumptions}
 \label{sec:correction-capacity-assumption-ch05}
 \begin{authbar}{AI}
-Let $C_{\text{corr}}^{\text{society}}(t_0)$ denote society's institutional, epistemic, and practical capacity to notice, evaluate, and constrain frontier systems at time $t_0$.
-The theory assumes
+This chapter states two scope assumptions: society still has correction capacity, and deployment can still be gated while humans retain independent agency.
+The later chapters try to make each assumption more measurable, but they do not make the assumptions vanish.
+
+\begin{assumption}[A-003]
+\label{ass:A-003}
+Let \(C_{\text{corr}}^{\text{society}}(t_0)\) denote society's institutional, epistemic, and practical capacity, at time \(t_0\), to notice, evaluate, and constrain frontier systems.
+The framework of this book applies only while
 \[
 C_{\text{corr}}^{\text{society}}(t_0) > \theta
 \]
-for some threshold $\theta$.
+for some threshold \(\theta\): below it, the work is emergency governance or loss mitigation rather than the theory developed here.
+\end{assumption}
 
 This is not the same as public concern, regulation on paper, or the number of safety researchers.
 It is an effective capacity.
-It includes at least five abilities:
+It includes abilities like these:
 \begin{enumerate}
   \item \textbf{Notice:} relevant changes in capability, agency boundary, value influence, and successor creation become visible soon enough.
   \item \textbf{Interpret:} competent people and institutions can tell what the evidence means.
@@ -154,7 +142,15 @@ It includes at least five abilities:
 The threshold $\theta$ is unknown.
 That is part of the problem.
 The book does not claim to measure it precisely.
-It treats the threshold as a scope condition: below it, alignment work becomes emergency governance or loss mitigation rather than the framework developed here.
+
+\begin{assumption}[A-005]
+\label{ass:A-005}
+Frontier deployment can be gated on certification evidence: access, compute, replication, and successor creation can be withheld when the required certificates are missing or fail.
+Humans retain enough independent agency to refuse, revise, and coordinate on that evidence.
+\end{assumption}
+
+If deployment cannot be conditioned on certification, Chapter~\ref{ch:safety-case} becomes advice without authority.
+If humans cannot refuse, revise, or coordinate, correction has become a story told after the fact.
 
 \end{authbar}
 \authbarneedspace

@@ -17,6 +17,9 @@
 \newcommand{\leanid}[1]{%
   \begingroup\small\urlstyle{tt}\nolinkurl{#1}\endgroup}
 
+% Manuscript assumption keys link to the boxed definition (`\label{ass:A-00x}`).
+\newcommand{\akey}[1]{\hyperref[ass:#1]{#1}}
+
 \newtcolorbox{chapterthesis}{
   colback=blue!5!white,
   colframe=blue!50!black,

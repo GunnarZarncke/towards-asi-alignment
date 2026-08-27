@@ -118,8 +118,11 @@ The statement
 may be possible if $\mathcal{C}$ is narrow enough, testable enough, and institutionally enforced.
 
 This is the first major reframing of the book.
-Alignment should not be treated as an essence installed into a machine.
-It should be treated as a family of invariants that remain preserved inside a certified class of transformations \autocite{leveson2011esw}.
+\begin{assumption}[A-010]
+\label{ass:A-010}
+An alignment claim is a dynamical guarantee: specified invariants remain preserved, over a stated horizon, for every system in a certified class of systems and allowed transformations, not a static essence installed in a machine at one time \autocite{leveson2011esw}.
+The certified class is defined by observable, testable, and enforceable constraints.
+\end{assumption}
 
 \leanspine{proof}{P01}{If a state predicate holds initially and is preserved by every step, it holds after any finite number of iterations.}
 \leanspine{proof}{P30}{The certification spine packages certified/layered evidence with the risk leaf; the numeric risk bound itself follows from \texttt{Control} $\leq$ \texttt{CCI} $+\,\delta$.}
@@ -190,9 +193,12 @@ The ontology changes.
 Humans learn, disagree, repair, and revise.
 Some future value-relevant variables are not nameable in the ontology available when the safety case is written.
 
-The stronger and more operational object is not a fully specified safe set.
-It is a condition under which the maps used by the safety case remain connected to the value-relevant world.
-Call this \emph{the viability of the value-correction grounding relation}, or, after this definition, \emph{grounding viability}.
+\begin{assumption}[A-014]
+\label{ass:A-014}
+\emph{Grounding viability} is the condition that the safety case's maps from the value-relevant world into checked abstractions, correction signals, and uncertainty remain connected.
+A value-relevant real-world change either moves the checked representation or raises uncertainty before irreversible loss.
+The object of the guarantee is this viability condition, not a fully specified safe set of states.
+\end{assumption}
 The move from a fully specified safe set to a viability condition on the correction-grounding relation parallels viability-theory treatments of constraint satisfaction under evolving dynamics \autocite{aubin1991viability,aubin2011viability}.
 
 Let \(X_{\mathrm{real},t}\) denote the value-relevant part of the real world at time \(t\).
@@ -428,7 +434,6 @@ But there is no free lunch.
 The certified class $\mathcal{C}_{\text{certified}}$ must be defined by observable, testable, and enforceable constraints.
 In practice, these constraints become indirect construction requirements.
 If a system cannot demonstrate boundary integrity, value-bundle stability, correction-channel capacity, and successor control, it does not belong to the certified class.
-
 Thus ``no constructive approach required'' does not mean ``anything goes.''
 It means the burden moves from construction to certification.
 This is the same stance taken by the AI-control agenda, which seeks safety guarantees that hold even when the certified system may be actively trying to subvert the oversight that certifies it \autocite{shlegeris2023aicontrol}.

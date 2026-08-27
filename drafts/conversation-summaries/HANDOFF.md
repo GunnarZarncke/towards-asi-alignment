@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-27 (Voice: Lean axioms vs chapter assumptions).
+Last updated: 2026-08-28 (A-* boxed in chapters; ch05 scope assumptions only).
 
 ---
 
@@ -39,6 +39,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-28:** **Project identity** — README (and CONTRIBUTING / `llms.txt` / AGENTS.md) no longer lead with “research manuscript.” Preface phrase: knowledge base and roadmap; book is one artifact. Log: `2026-08-28-project-not-manuscript.md`.
+- **2026-08-27:** **A-* in home chapters** — named `assumption` boxes; `\akey{A-00x}` links; no App B lookup table. Log: `2026-08-27-manuscript-a-keys.md`.
 - **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.
 - **2026-08-27:** **Quiz multi-correct** — split bundled keys; ≥5% floor in `check_quiz_bank.py` (12/211). Log: `2026-08-27-quiz-multi-correct.md`.
 - **2026-08-27:** **Quiz length tell implemented** — `make check` runs `check_quiz_length_tell.py`; 0% margin-fail. Log: `2026-08-27-quiz-length-tell.md`.
