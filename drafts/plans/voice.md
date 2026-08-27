@@ -199,7 +199,7 @@ with a **necessary-factor list**: if any factor fails, the safety case fails. Sa
 
 [`frontmatter/introduction.tex`](../../frontmatter/introduction.tex) § What Counts as Progress and [`frontmatter/executive-overview.tex`](../../frontmatter/executive-overview.tex) “Progress should look like artifacts”:
 
-**New lead:** progress is a **refused or unsupported leaf** that can change a decision, or a recorded **negative** that kills a layer. Named audits, dashboards, and safety-case figures are **instruments**; without a stop condition they are documentation (align with ch42).
+**New lead:** progress is a **required piece of evidence that can fail or be refused**, in a way that changes a decision, or a recorded **negative** that kills a layer. Named audits, dashboards, and safety-case figures are **instruments**; without a condition that forces a stop they are documentation (align with ch42). Reader copy: do not say ``leaf''.
 
 Keep the artifact list as *what those instruments are*, after the refusal test.
 
@@ -254,7 +254,7 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 - [x] §2 All 48 `chapterthesis` audit (2026-08-27; remainders ch20, ch27, ch31, ch33, ch38, ch42, ch43)
 - [x] §3 Lean dependency spine naming (repo + site)
 - [x] §4 Separations (README, homepage, INSTRUCTIONS, executive overview)
-- [ ] §5 Progress (introduction + executive overview)
+- [x] §5 Progress (introduction + executive overview; 2026-08-27)
 - [x] §6 Gems + REVIEWING gem map
 - [x] §7 Standalone-claims status
 - [x] §8 INSTRUCTIONS + writing-style pointer

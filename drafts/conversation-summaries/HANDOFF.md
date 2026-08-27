@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-27 (Voice §2 chapterthesis audit closed).
+Last updated: 2026-08-27 (Quiz multi-correct floor).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-27:** Voice §5 **progress wording** — introduction + executive overview: refused/unsupported required evidence (or recorded negative) leads; artifacts are instruments. Log: `2026-08-27-voice-progress.md`.
 - **2026-08-27:** **Blind quiz protocol** — solver chooses without keys; superagent scores. Full bank 211/211 (easy distractors). Log: `2026-08-27-quiz-blind-eval.md`.
 - **2026-08-27:** Voice §2 **chapterthesis audit closed** — remainders ch20, ch27, ch31, ch33, ch38, ch42, ch43; rest skip. Log: `2026-08-27-voice-chapterthesis-ch21-48.md`.
 - **2026-08-27:** Voice §2 **ch11–ch20 thesis audit** — ch20 remainder (toy-only tests); ch11–ch19 skip. Log: `2026-08-27-voice-chapterthesis-ch11-20.md`.
