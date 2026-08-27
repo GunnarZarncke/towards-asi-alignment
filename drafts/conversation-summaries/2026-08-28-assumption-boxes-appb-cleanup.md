@@ -20,4 +20,4 @@ Continue A-* assumption work: Option 1 (key-only box headings, no chapter counte
 - Uncommitted: `drafts/plans/construct.md`, `site/src/data/chapter-reading-graph.json`, `drafts/alignment-crux-map.md`.
 
 ## Commit
-(filled after commit)
+`8912c222` — Use key-only assumption headings and slim App B crosswalk opener.
