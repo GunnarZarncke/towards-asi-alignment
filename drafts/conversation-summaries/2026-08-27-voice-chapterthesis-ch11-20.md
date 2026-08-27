@@ -27,4 +27,4 @@ Continue Voice §2 `chapterthesis` audits after ch01–ch10.
 
 ## Commits
 
-- none
+- `d76d5355` Close Voice §2 chapterthesis audit with reader-facing remainder clauses.

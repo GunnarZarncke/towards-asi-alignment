@@ -6,37 +6,25 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-27 | **Voice Lean axioms vs chapter assumptions** — App G intro and `/lean/` split A-rows from MB axioms. | [2026-08-27-voice-lean-axioms.md](2026-08-27-voice-lean-axioms.md) |
-| 2026-08-27 | **Quiz multi-correct floor** — Split bundled coauthor/taxonomy keys; bank check ≥5% (12/211). | [2026-08-27-quiz-multi-correct.md](2026-08-27-quiz-multi-correct.md) |
-| 2026-08-27 | **Quiz length tell (essays + ch01–ch24)** — Same-frame, band ≤12 rewrites in the takeaway generator; ch25–ch48 left to the sibling pass. | [2026-08-27-quiz-length-tell-essays-ch01-24.md](2026-08-27-quiz-length-tell-essays-ch01-24.md) |
-| 2026-08-27 | **Voice §5 progress wording** — Introduction + executive overview: refused required evidence leads; artifacts are instruments. | [2026-08-27-voice-progress.md](2026-08-27-voice-progress.md) |
-| 2026-08-27 | **Quiz length tell implemented** — Sentence items in 12-char option band; gate in `make check`. | [2026-08-27-quiz-length-tell.md](2026-08-27-quiz-length-tell.md) |
-| 2026-08-27 | **Blind quiz solver protocol** — Solver picks without keys; superagent scores. Full bank 211/211 after opaque ids. | [2026-08-27-quiz-blind-eval.md](2026-08-27-quiz-blind-eval.md) |
-| 2026-08-27 | **Voice §2 ch21–ch48 thesis audit** — Remainders ch27, ch31, ch33, ch38, ch42, ch43; §2 closed. | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
-| 2026-08-27 | **Quiz from news takeaways** — Manuscript claims from field-news decisions in the bank; appear on chapter quiz blocks, not news cards. | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |
-| 2026-08-27 | **Voice §2 ch11–ch20 thesis audit** — ch20 remainder (toy-only); ch11–ch19 skip; next ch21. | [2026-08-27-voice-chapterthesis-ch11-20.md](2026-08-27-voice-chapterthesis-ch11-20.md) |
-| 2026-08-27 | **Voice §2 ch01–ch10 thesis audit** — All skip (framing/necessity); no remainder clauses; next ch11. | [2026-08-27-voice-chapterthesis-ch01-10.md](2026-08-27-voice-chapterthesis-ch01-10.md) |
-| 2026-08-27 | **Scaling Trust / Construct note** — Obadia *Without Intermediaries* is constructibility-adjacent, not field news; note on Construct v2. | [2026-08-27-scaling-trust-construct-note.md](2026-08-27-scaling-trust-construct-note.md) |
-| 2026-08-27 | **Eckersley impossibility citation** — User asked whether arXiv:1901.00064 is cited; recommended ch. 4 placement; applied bib + two cites. | [2026-08-27-eckersley-citation.md](2026-08-27-eckersley-citation.md) |
-| 2026-08-26 | **Site nav landings steps 1–2** — Implement the first two steps of the nav-landing plan: fold/reorder the header, split `/` vs `/st... | [2026-08-26-site-nav-landings.md](2026-08-26-site-nav-landings.md) |
-| 2026-08-26 | **Site nav landings remainder** — Finish the remaining nav landing splits after header/home/Field (Cards, Book, News, Tour, Lean, E... | [2026-08-26-site-nav-landings-remainder.md](2026-08-26-site-nav-landings-remainder.md) |
-| 2026-08-26 | **OpenAI HF road-ahead field news** — User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face postmortem, in the s... | [2026-08-26-openai-hf-roadahead-news.md](2026-08-26-openai-hf-roadahead-news.md) |
-| 2026-08-26 | **Generalist essay path** — User asked for a Paul Graham-style general-audience start: catch, essay spine, optional tangents;... | [2026-08-26-generalist-essay-path.md](2026-08-26-generalist-essay-path.md) |
-| 2026-08-26 | **FAQ update for current site** — User: the FAQ is outdated; update it. | [2026-08-26-faq-update.md](2026-08-26-faq-update.md) |
-| 2026-08-26 | **Early-chapter preview demotion** — User asked to implement the plan: demote premature tuples and covering-inventory equations in ch0... | [2026-08-26-early-chapter-demotion.md](2026-08-26-early-chapter-demotion.md) |
-| 2026-08-26 | **CIRIS field-overview evidence reevaluation** — Reevaluate CIRIS evidence in the field overview using `~/repos/ciris/` checkouts and the live cir... | [2026-08-26-ciris-field-evidence.md](2026-08-26-ciris-field-evidence.md) |
-| 2026-08-26 | **Card slug migration** — User asked for slug migration so card type appears in URLs (fix continue-reading grouping and mak... | [2026-08-26-card-slug-migration.md](2026-08-26-card-slug-migration.md) |
-| 2026-08-26 | Bot-orientation and entry-doc housekeeping | [2026-08-26-bot-orientation-housekeeping.md](2026-08-26-bot-orientation-housekeeping.md) |
-| 2026-08-26 | **Book contents and experiment coverage** — User asked for the Book page to match PDF structure and to restore appendices (A/E/G had no chapt... | [2026-08-26-book-contents-coverage.md](2026-08-26-book-contents-coverage.md) |
-| 2026-08-25 | **Site glossary sync and UAD name fix** — Follow homograph hygiene with companion-site sync; add missing App E glossary terms; user flagged... | [2026-08-25-site-glossary-uad.md](2026-08-25-site-glossary-uad.md) |
-| 2026-08-25 | **Homograph hygiene pass** — User: avoid interdisciplinary misapplication of familiar words; implement the homograph plan (fir... | [2026-08-25-homograph-hygiene.md](2026-08-25-homograph-hygiene.md) |
-| 2026-08-25 | **Harm-path v1 weave** — Implement the agreed plan: weave operational closure into v1 chapters without publishing the nine... | [2026-08-25-harm-path-v1-weave.md](2026-08-25-harm-path-v1-weave.md) |
-| 2026-08-25 | **Construct lit keep-list** — User asked to add the usable source list (including reasoning) from the external literature revie... | [2026-08-25-construct-lit-keep-list.md](2026-08-25-construct-lit-keep-list.md) |
-| 2026-08-24 | **Construct external literature seed** — User asked what is known about constructing parts of the overall system from beyond TSA chapters ... | [2026-08-24-construct-external-lit.md](2026-08-24-construct-external-lit.md) |
+| 2026-08-28 | **Project identity, not manuscript-first** — User: README still leads with “research manuscript”; the project is no longer only or primarily a... | [2026-08-28-project-not-manuscript.md](2026-08-28-project-not-manuscript.md) |
+| 2026-08-27 | **Voice §5 progress wording** — User asked to do “what counts as progress” from the Voice plan. | [2026-08-27-voice-progress.md](2026-08-27-voice-progress.md) |
+| 2026-08-27 | **Voice Lean axioms vs chapter assumptions** — User asked for the Voice checklist item: bridge axioms vs book assumptions, reader pass (App G in... | [2026-08-27-voice-lean-axioms.md](2026-08-27-voice-lean-axioms.md) |
+| 2026-08-27 | **Voice chapterthesis ch21–ch48** — Continue Voice §2 for all remaining chapters (ch21–ch48), with remainder clauses resolvable from ... | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
+| 2026-08-27 | **Voice chapterthesis ch11–ch20** — Continue Voice §2 `chapterthesis` audits after ch01–ch10. | [2026-08-27-voice-chapterthesis-ch11-20.md](2026-08-27-voice-chapterthesis-ch11-20.md) |
+| 2026-08-27 | **Voice chapterthesis ch01–ch10** — User asked to do the first ten `chapterthesis` audits of the Voice plan sequentially. | [2026-08-27-voice-chapterthesis-ch01-10.md](2026-08-27-voice-chapterthesis-ch01-10.md) |
+| 2026-08-27 | **Scaling Trust note on Construct v2** — User asked whether Obadia’s *Without Intermediaries* (Scaling Trust) is relevant to TSA and wheth... | [2026-08-27-scaling-trust-construct-note.md](2026-08-27-scaling-trust-construct-note.md) |
+| 2026-08-27 | 2026-08-27-quiz-phase-2 | [2026-08-27-quiz-phase-2.md](2026-08-27-quiz-phase-2.md) |
+| 2026-08-27 | 2026-08-27-quiz-phase-1 | [2026-08-27-quiz-phase-1.md](2026-08-27-quiz-phase-1.md) |
+| 2026-08-27 | **Quiz items from news takeaways** — User: news takeaways usually refer to the manuscript; add matching quiz inventory if missing, but... | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |
+| 2026-08-27 | **Quiz multi-correct floor** — The bank keyed lists of people as a single option; readers never saw more than one correct checkb... | [2026-08-27-quiz-multi-correct.md](2026-08-27-quiz-multi-correct.md) |
+| 2026-08-27 | **Quiz length-tell implementation** — User: implement the length-tell check/fix. | [2026-08-27-quiz-length-tell.md](2026-08-27-quiz-length-tell.md) |
+| 2026-08-27 | **Quiz length tell (essays + ch01–ch24)** — Length-tell fix for essay takeaways and `chapter()` entries ch01–ch24 only. Do not change ch25–ch... | [2026-08-27-quiz-length-tell-essays-ch01-24.md](2026-08-27-quiz-length-tell-essays-ch01-24.md) |
+| 2026-08-27 | **Blind quiz solver protocol** — User: prior “blind” check was not blinded. Solver must **choose** answers without knowing the key... | [2026-08-27-quiz-blind-eval.md](2026-08-27-quiz-blind-eval.md) |
+| 2026-08-27 | **Manuscript A-* definitions in home chapters** — User: App B one-line names were too compact. Put the actual definition (or a tighter existing sta... | [2026-08-27-manuscript-a-keys.md](2026-08-27-manuscript-a-keys.md) |
 
 ## Archive by month
 
-- **2026-08** (135): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (151): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

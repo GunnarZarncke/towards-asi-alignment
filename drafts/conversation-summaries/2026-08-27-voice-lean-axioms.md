@@ -28,4 +28,4 @@ User asked for the Voice checklist item: bridge axioms vs book assumptions, read
 
 ## Commits
 
-- none
+- `5c04b9d2` Show that Lean bridge axioms are not the chapter assumption list.

@@ -30,6 +30,8 @@ Continue Voice §2 for all remaining chapters (ch21–ch48), with remainder clau
 - `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - `drafts/plans/voice.md`
 
+- ch42 closing clause revised for general audience (required evidence, not “leaves”).
+
 ## Commits
 
-- none
+- `d76d5355` Close Voice §2 chapterthesis audit with reader-facing remainder clauses.

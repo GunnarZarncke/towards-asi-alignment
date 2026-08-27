@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for interest in *Towards Superintelligence Alignment*. This is a research manuscript in progress; contributions of many kinds are welcome.
+Thank you for interest in *Towards Superintelligence Alignment*. This is a research project in progress — book, Lean spine, experiments, field map, and companion site; contributions of many kinds are welcome.
 
 **Before large edits:** read [`INSTRUCTIONS.md`](INSTRUCTIONS.md) (editorial mission and style), [`AGENTS.md`](AGENTS.md) (agent handoff rules), and the relevant chapter or module. For manuscript changes, match voice in [`context/writing-style-gunnar.md`](context/writing-style-gunnar.md).
 

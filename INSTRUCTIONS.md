@@ -2,13 +2,13 @@
 
 *Towards Superintelligence Alignment: Boundaries, Values, and Correction*
 
-**Role of this file:** Mission, audience, source canon, and editorial rules. 
+**Role of this file:** Mission, audience, source canon, and editorial rules **for the book**. The project is a knowledge base and roadmap of which the book is the long-form argument; see `README.md`.
 
 | Need | Canonical home |
 |------|----------------|
 | Chapter list, status, word targets | `metadata/book.yml` |
 | Build, layout, agent handoff | `AGENTS.md` |
-| Reader-facing status and quick start | `README.md` |
+| Project identity and quick start | `README.md` |
 | Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
 | Assumptions ledger | `metadata/assumptions-ledger.md` |
 | Operational terms | `metadata/concepts.yml` (`kind: glossary` + attached `glossaryTerms`) → Glossary appendix and site `/glossary/` |
@@ -22,6 +22,8 @@
 ## 0. Mission
 
 Write a full book-length manuscript titled **Towards Superintelligence Alignment: Boundaries, Values, and Correction**.
+
+This file governs that book. Do not treat the book as the whole project: Lean spine, experiments, field map, papers, demos, and companion site are first-class artifacts of the same knowledge base (see `README.md`).
 
 The book must be self-contained. It must not assume the reader already knows the author's previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained sufficiently for the intended audience to follow, including key formulas where needed (derivations optional).
 

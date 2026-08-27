@@ -8,7 +8,7 @@ export const AUTHOR_NAME = "Gunnar Zarncke";
 export const OG_IMAGE_PATH = "/og-image.png";
 export const OG_IMAGE_URL = `${SITE_ORIGIN}${OG_IMAGE_PATH}`;
 export const OG_IMAGE_ALT =
-  "Towards Superintelligence Alignment — companion site for the research manuscript";
+  "Towards Superintelligence Alignment — companion site for the research project";
 export const LLMS_TXT_PATH = "/llms.txt";
 export const LLMS_TXT_URL = `${SITE_ORIGIN}${LLMS_TXT_PATH}`;
 export const SEARCH_INDEX_JSON_PATH = "/search-index.json";

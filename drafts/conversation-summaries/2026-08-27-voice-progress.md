@@ -27,4 +27,4 @@ User asked to do “what counts as progress” from the Voice plan.
 
 ## Commits
 
-- none
+- `07f08a08` Define progress as a check that can fail, not as named artifacts.

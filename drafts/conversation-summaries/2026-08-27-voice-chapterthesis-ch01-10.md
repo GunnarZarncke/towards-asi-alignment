@@ -28,4 +28,4 @@ User asked to do the first ten `chapterthesis` audits of the Voice plan sequenti
 
 ## Commits
 
-- none
+- `d76d5355` Close Voice §2 chapterthesis audit with reader-facing remainder clauses.

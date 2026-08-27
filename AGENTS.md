@@ -1,7 +1,7 @@
 # AGENTS.md
 
 Guidance for AI agents working in **towards-asi-alignment**:
-a book on steps toward aligning superintelligence based on the works of Gunnar Zarncke and others.
+a knowledge base and roadmap toward aligning superintelligence (book, Lean spine, experiments, field map, companion site), based on the works of Gunnar Zarncke and others.
 
 ## Agent behavior
 

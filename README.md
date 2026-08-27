@@ -2,7 +2,9 @@
 
 **Boundaries, Values, and Correction**
 
-A research manuscript on preserving **human-correctable value-bearing processes** as capability grows, ontologies shift, successors are created, and multi-agent selection pressure intensifies.
+A knowledge base and roadmap for preserving **human-correctable value-bearing processes** as capability grows, ontologies shift, successors are created, and multi-agent selection pressure intensifies.
+
+The book is the long-form argument. This repository also holds a Lean dependency spine, sanity-check experiments, a field-agenda crosswalk, spin-out papers, chapter demos, and a companion site built from and around that material.
 
 > This is work in progress—not a claim that alignment is solved. Claims are marked as established, plausible, or open throughout the ledgers and chapter structure.
 
@@ -51,7 +53,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 
 ---
 
-## Manuscript at a glance
+## Project at a glance
 
 | Item | Detail |
 |------|--------|
