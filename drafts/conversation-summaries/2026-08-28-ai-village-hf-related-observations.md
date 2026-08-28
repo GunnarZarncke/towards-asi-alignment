@@ -20,4 +20,4 @@ User asked whether Tekofsky’s LessWrong post comparing AI Village to the OpenA
 - `site/src/content/cards/field-news-openai-hf-roadahead-aug-2026.md`
 
 ## Commits
-- (this session)
+- `8d90a3a9` Fold AI Village HF comparison into the OpenAI postmortem news card.
