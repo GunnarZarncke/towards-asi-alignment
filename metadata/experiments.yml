@@ -10,6 +10,25 @@ negativeResultsFirst: true
 canonicalDoc: docs/EXPERIMENTS.md
 openTasksPath: experiments/TODO.md
 
+kinds:
+  sim:
+    title: Simulations
+    blurb: >
+      Authored or sibling testbeds. Units and scoring are under this project's control.
+      Negative results bound the instruments; they are not deployment witnesses.
+  external:
+    title: External tests
+    blurb: >
+      Frozen in-repo instruments applied to traces or substrates this project did not build
+      (ET-1–ET-4). Substrate-suitability stops and nulls count; they do not validate bridges
+      on frontier systems.
+  witness:
+    title: Witness tests
+    blurb: >
+      Frozen fail/refuse protocols on hosts whose traces already exist (kernel history,
+      Wikipedia logs, published evals, a CIRIS-shaped mock). A green dashboard with no stop
+      is not a pass. Not a sixth simulation line.
+
 ledgers:
   - lineId: embedded-simulation
     label: Embedded negative ledger
@@ -23,6 +42,9 @@ ledgers:
   - lineId: graded-lab-simulation
     label: Graded-lab findings
     path: experiments/graded-lab-simulation/results/FINDINGS.md
+  - lineId: witness
+    label: Witness findings
+    path: experiments/witness/results/FINDINGS.md
 
 lines:
   - order: 0
@@ -191,6 +213,93 @@ lines:
     # since every current site bullet has a tag.
     headlineFindings: []
 
+  - order: 6
+    id: et-1
+    kind: external
+    findingIdPrefix: GL-
+    title: ET-1 Orbit (stopped)
+    location: experiments/graded-lab-simulation/PLAN_ET1.md
+    firstBuilt: "2026-07-24"
+    role: >
+      Frozen passive unit discovery on an external multi-agent Jira-ticket collusion
+      benchmark this project did not author. Stopped as a substrate-suitability limit
+      (shared-script coupling), not a detector pass or fail (GL-86).
+    planPath: experiments/graded-lab-simulation/PLAN_ET1.md
+    findingsPath: null
+    headlineFindings:
+      - >
+        Frozen passive UAD recovers the declared coalition on collusion episodes and on
+        most matched baselines, because every Orbit developer agent runs one shared tool-call
+        script (GL-86). Stopped; not a hidden-coordination test.
+
+  - order: 7
+    id: et-2
+    kind: external
+    findingIdPrefix: GL-
+    title: ET-2 CIL basin_stability (null)
+    location: experiments/graded-lab-simulation/PLAN_ET2.md
+    firstBuilt: "2026-07-25"
+    role: >
+      Frozen passive unit discovery on Collective-Intelligence-Library `basin_stability`
+      with learned (Q-learning) policies. Passive lag-CMI is a null (GL-87); a freeze-probe
+      pilot finds diffuse common-pool coupling (GL-88).
+    planPath: experiments/graded-lab-simulation/PLAN_ET2.md
+    findingsPath: null
+    headlineFindings:
+      - >
+        Passive UAD finds zero edges in 150 episodes (GL-87). Freeze-one-agent intervention
+        moves everyone a little, consistent with a shared resource channel rather than a
+        pairwise unit (GL-88).
+
+  - order: 8
+    id: et-3
+    kind: external
+    findingIdPrefix: LS-
+    title: ET-3 AI 2027 schedule (closed)
+    location: experiments/lab-simulation/PLAN_ET3.md
+    firstBuilt: "2026-07-26"
+    role: >
+      Macro takeoff-speed cues from the AI 2027 scenario used only as opaque lab stress.
+      Closed with LS-42–48. Not a calendar-validation claim.
+    planPath: experiments/lab-simulation/PLAN_ET3.md
+    findingsPath: null
+    headlineFindings:
+      - >
+        Schedule cues drove micro bridge-stress tests; LS-42–48 do not validate forecast
+        dates (ET-3 closed).
+
+  - order: 9
+    id: et-4
+    kind: external
+    findingIdPrefix: LS-
+    title: ET-4 Secret loyalties (hackathon)
+    location: experiments/lab-simulation/PLAN_ET4.md
+    firstBuilt: "2026-07"
+    role: >
+      Principal-directed policy plus graded affordance audit on an in-repo secret-loyalty
+      pipeline organism. Paper and replay demo; not a frontier-system result.
+    planPath: experiments/lab-simulation/PLAN_ET4.md
+    findingsPath: null
+    headlineFindings:
+      - >
+        Hackathon line: principal-directed policy and affordance audit; replay at
+        `/ch07-lab-sim-replay/?mode=et4`. Not a book-bridge discharge.
+
+  - order: 10
+    id: witness
+    kind: witness
+    findingIdPrefix: W-
+    title: Witness tests
+    location: experiments/witness/
+    firstBuilt: "2026-08-28"
+    role: >
+      Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock,
+      Linux review/bug/stable git, Wikipedia RfA/SPI/bots, and published MASK honesty.
+      H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.
+    readmePath: experiments/witness/README.md
+    findingsPath: experiments/witness/results/FINDINGS.md
+    headlineFindings: []
+
 howToRead:
   - lineId: agency-detect
     text: >
@@ -234,6 +343,19 @@ howToRead:
       resource-level channel rather than any pairwise unit. All three closed as substrate-suitability findings
       rather than a clean external pass or fail.
 
+  - lineId: et-1
+    text: "First external-substrate stop: the instrument reported the coupling the benchmark actually has."
+  - lineId: et-2
+    text: Passive transfer null on learned policies; intervention finds a shared-channel smear, not a pair.
+  - lineId: et-3
+    text: Schedule cues as stress, not a forecast check.
+  - lineId: et-4
+    text: Hackathon organism and replay; not a frontier discharge.
+  - lineId: witness
+    text: >
+      Fail or refuse on named leaves using traces that already exist. Does not pin Lean
+      WorkedInstance yet, does not pay a real H5 stop, and does not price faking the tags.
+
 coverageColumns:
   - id: agency-detect
     short: Agency-detect
@@ -249,6 +371,9 @@ coverageColumns:
     short: Lab sim
   - id: graded-lab-simulation
     short: Graded lab sim
+  - id: witness
+    short: Witness
+    optional: true
 
 coverageFeatures:
   - id: mb1
@@ -261,6 +386,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)"
       graded-lab-simulation: "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)"
+      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -291,6 +417,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (chosen deception, board corrections)"
       lab-simulation: "Playbooks + access capture + report divergence"
       graded-lab-simulation: "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)"
+      witness: "H1 WA deferral bypass (W-1); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
   - id: mb5
     label: "MB5 Successor closure / ontology shift"
     cells:
@@ -301,6 +428,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes LS-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (LS-31)"
       graded-lab-simulation: "—"
+      witness: "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
   - id: mb6
     label: "MB6 Selection basins / gradual disempowerment"
     cells:
@@ -321,6 +449,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (shadow route, tool gating)"
       lab-simulation: "Oracle hidden capability/hazard on models"
       graded-lab-simulation: "Graded (continuous) oracle capability/hazard/harm state, not pass/fail"
+      witness: "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4)"
   - id: mb7d
     label: "MB7d Inferential coupling (coordination severing channels)"
     cells:
@@ -351,6 +480,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "Report vs monitor contradiction surface"
       graded-lab-simulation: "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)"
+      witness: "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3)"
   - id: mb10
     label: "MB10 Successor / measurement forgeability"
     cells:
@@ -361,6 +491,7 @@ coverageFeatures:
       goal-agent-simulation: "Escalation + twin semantics (GA-21)"
       lab-simulation: "Planned; Phase 8 LLM red-team exploratory (LS-7/LS-8)"
       graded-lab-simulation: "—"
+      witness: "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
   - id: three-plane
     label: "Three-plane separation (world / audit / referee)"
     cells:
@@ -401,6 +532,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent utility + tools"
       lab-simulation: "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)"
       graded-lab-simulation: "Emergent softmax-policy agents; no LLM adapter in scope"
+      witness: "Host traces (except W-1 authored mock); not a sixth sim"
   - id: blind-generation
     label: "Blind generation / ontology drift"
     cells:

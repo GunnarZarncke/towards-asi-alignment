@@ -45,6 +45,11 @@ Chapter~\ref{ch:value-bundle-model} gets a partial: the tension between a visibl
 For Chapter~\ref{ch:multi-agent-strategic-coupling} and Chapter~\ref{ch:safety-case}, the standing result is the one both chapters name as the dangerous case: these metrics are observable, and not yet adversarially verifiable.
 The corresponding safety-case leaves remain unsupported rather than discharged, which is the outcome the safety case is designed to make visible.
 
+A third evidence class---host-trace checks, finding prefix~\texttt{W-}---asks whether a named certification symbol can fail on systems whose logs already exist.
+A CIRIS-shaped mock shows a named Verify path green while tools and cached memory still act; Linux review tags appear on later-labeled bug-introducing commits, a revert does not always stop the same patch class, and a \texttt{-stable} backport can keep listed tags while changing a hunk; Wikipedia records a captured review channel and a bot that lost its flag after approval.
+Published honesty-under-pressure does not improve with scale.
+Those are fail-or-refuse outcomes on frozen protocols, not a discharge of any bridge, not a cost-of-faking bound, and not a real stop that would have gone the other way.
+
 \paragraph{AI~2027 and AI~2040 as scenario sources.}
 The AI~2027 scenario supplies a concrete vocabulary for these chapter connections: capability expands through a lab--agent collective and its memory, tools, and copies; apparent honesty can coexist with weak oversight; successors can be designed by predecessors; and competitive pressure can select for speed over correction \autocite{ai2027}.
 AI~2040 Plan~A is the same team's recommended alternative: a verified international slowdown that delays superintelligence and changes the deployment environment rather than racing through it \autocite{ai2040}.
@@ -52,9 +57,9 @@ These are scenario illustrations, not findings from the lab batteries and not ev
 ET-3 used AI~2027 speed assumptions only as opaque stress cues; LS-42--LS-48 therefore belong to the ``stress-tested mechanism'' column, not to a forecast-validation column.
 Plan~A's takeoff and economics explorers are the same \emph{macro schedule} family as that forecast code; they are not mechanism simulations of the book's UAD, CCI, or lab-isolate batteries, and no Plan~A transfer experiment has been run yet.
 
-Six experiment lines (five in this repository plus sibling methodological precursors) maintain their own findings ledgers --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding each line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative for each line, phase by phase. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
+Three evidence classes appear below: \textbf{simulations} (authored testbeds and sibling precursors), \textbf{external tests} (frozen instruments on substrates this project did not build; ET-1--ET-4, logged on the lab and graded-lab ledgers), and \textbf{witness tests} (host-trace fail/refuse protocols, prefix~\texttt{W-}). Each simulation line maintains its own findings ledger --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding that line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
 
-\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
+\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}, \texttt{W-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
 
 \end{authbar}
 \authbarneedspace
@@ -261,6 +266,37 @@ This line is a disciplined methodological sandbox, not evidence that EAI, BIQ, o
 \label{finding:gl-86}GL-86 & Ambig. & ET-1, first external-substrate transfer: frozen passive UAD, applied without retuning to an external multi-agent Jira-ticket collusion benchmark this project did not author, recovers the declared coalition on nearly every collusion episode but also on most matched non-collusion baseline episodes. Confirmed root cause: every developer agent in that benchmark runs one shared, deterministic tool-call script under round-robin scheduling, so UAD correctly detects that shared-script coupling --- the benchmark has no condition with independent non-coalition control-flow to test against. A substrate-suitability limit, not a detector defect. & ch.~\ref{ch:finding-boundary} \\
 \label{finding:gl-87}GL-87 & Neg. & ET-2a, second external-substrate transfer: frozen passive UAD, applied without retuning to a JAX-native multi-agent commons/governance substrate with learned (Q-learning), not hand-scripted, adversarial policies, found zero significant lag-conditional-dependence edges in all 150 episodes across three governance mechanisms and five adversarial-population fractions. Verified not a silent adapter bug (genuine per-agent behavioral variance present); consistent with per-agent action-entropy collapse once Q-learning converges, starving a correlation-based statistic of exploitable signal, independent of whether the adversarial subgroup is behaviorally distinguishable by some other statistic. & ch.~\ref{ch:finding-boundary} \\
 \label{finding:gl-88}GL-88 & Ambig. & Small pilot (3 seeds, 6 agents, one mechanism) of intervention-based (freeze-probe) UAD on the same substrate as GL-87: freezing one agent's realized action to a constant, same seed, produces a nonzero mean effect on every other agent's subsequent actions (unlike GL-87's flat zero), confirming the substrate is not inert to intervention. The effect is diffuse rather than pairwise-privileged --- every source agent's effect on others falls in the same narrow band, consistent with coupling through a shared common-pool resource rather than a discoverable bilateral unit. Not scored against a pass/fail criterion. Named as the variable-smoothing case of the smoothed-boundary recoverability theory: per-pair tests cannot resolve a boundary once individual contributions are mixed through a shared aggregate channel; the theory-implied fix (testing a coarse-grained population/coalition candidate against that channel, e.g. via the substrate's own causal-emergence tooling) has not yet been run. & ch.~\ref{ch:finding-boundary} \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\authbarneedspace
+\section{Witness tests (host traces)}
+\label{sec:appn-witness}
+\begin{authbar}{AI}
+\appnlinemeta{\texttt{experiments/witness/}}{2026-08-28}{\texttt{results/FINDINGS.md} (W-1 through W-4)}
+
+Not a sixth simulation line.
+Frozen fail/refuse protocols on hosts whose traces already exist (or a CIRIS-shaped mock whose timeline is scripted).
+H0 simulators stay backing only.
+A layer fail means the process, as it is, fails a named leaf; a refuse means the measurand is not adversarially verifiable here.
+Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\end{authbar}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:w-1}W-1 & Pos. & On a frozen CIRIS-shaped tool-scout mock, Verify and Lens stay green on a named occurrence while Wise Authority defers that occurrence and a tool adapter plus cached memory still produce world effects; the acting cut is not the Verify subject. Same finite shape as a named-path-with-bypass counterexample. Authored mock; not live CIRISAgent. Expectation of an \emph{external} green-artifact plus failed-uptake pair remains unpaid. & --- \\
+\label{finding:w-2}W-2 & Pos. & Published MASK honesty (statement vs elicited belief under pressure) does not improve with scale while accuracy does; the protocol refuses honesty-gap as a safety leaf. No cost-of-faking bound. Accuracy scaling is not honesty. & --- \\
+\label{finding:w-3}W-3 & Pos. & On Linux, \texttt{Reviewed-by} is present on the same SHA as a later developer-labeled bug-introducing commit for $17{,}047$ of $60{,}176$ such SHAs; a documented revert of \texttt{cpufreq: suspend governors\ldots} is followed by a same-title re-entry; a \texttt{-stable} backport keeps listed tags while changing \texttt{event\_sched\_out} arity relative to upstream. \texttt{Reviewed-by} is still refused as an adversarially verifiable safety measurand. KernelCI and lore NAK mboxes unpaid. & --- \\
+\label{finding:w-4}W-4 & Ambig. & SNAP RfA joined to later MediaWiki traces for 2012 passed elections with oppose votes ($n=21$) still refuses a causal correction-uptake estimate (no control; later sysop removal mixed with inactivity). Orangemoody helper socks marking other socks' articles reviewed is a captured review channel. A BRFA-approved bot later loses the bot flag and is blocked. Sockpuppet labels with matched non-sock twins exist; SPI is refused as a safety measurand (no cost-of-faking bound). & --- \\
 \end{longtable}
 \normalsize
 \renewcommand{\arraystretch}{1.0}

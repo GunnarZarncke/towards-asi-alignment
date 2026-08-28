@@ -106,6 +106,7 @@ function enrichLine(line) {
 
   return {
     ...line,
+    kind: line.kind ?? "sim",
     links,
     cardPath: experimentCardPath(line.id),
     cardUrl: experimentCardUrl(line.id),
@@ -193,6 +194,7 @@ const ledgers = raw.ledgers.map((ledger) => ({
 const payload = {
   claimStrength: raw.claimStrength.trim(),
   negativeResultsFirst: raw.negativeResultsFirst,
+  kinds: raw.kinds,
   negativeResultsCardPath: cardPublicPath({ id: "negative-results", type: "concept" }),
   negativeResultsCardUrl: `${SITE_ORIGIN}${cardPublicPath({ id: "negative-results", type: "concept" })}`,
   canonicalDocPath: raw.canonicalDoc,

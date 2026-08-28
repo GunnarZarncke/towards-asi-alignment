@@ -12,34 +12,52 @@ const oneLine = (text: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const inRepoLines = [...experiments.lines]
-  .filter((line) => line.location.startsWith("experiments/"))
-  .sort((a, b) => a.order - b.order);
+const KIND_ORDER = ["sim", "external", "witness"] as const;
+
+const sections = KIND_ORDER.map((kind) => {
+  const meta = experiments.kinds?.[kind] ?? {
+    title: kind,
+    blurb: ""
+  };
+  const lines = [...experiments.lines]
+    .filter((line) => (line.kind ?? "sim") === kind)
+    .sort((a, b) => a.order - b.order);
+  return { kind, ...meta, lines };
+});
 ---
 
 <SiteLayout
   title="Experiments"
-  description="Empirical sanity-check lines for this project's bridge cruxes, including recorded failures."
+  description="Simulations, external tests, and witness tests for this project's bridge cruxes, including recorded failures."
 >
   <section class="hero">
     <p class="eyebrow">Experiments</p>
     <h1>Experiments</h1>
+    <p class="lede">Three classes. None of them is a proof on a frontier system.</p>
     <div class="button-row">
-      <a class="button primary" href={cardHref(base, "negative-results", "concept")}>Negative results</a>
+      <a class="button" href="#sims">Simulations</a>
+      <a class="button" href="#external">External tests</a>
+      <a class="button" href="#witness">Witness tests</a>
+      <a class="button" href={cardHref(base, "negative-results", "concept")}>Negative results</a>
       <a class="button" href={withBase("/experiments/coverage/")}>Coverage</a>
     </div>
   </section>
 
-  <section class="readable">
-    <ul>
-      {inRepoLines.map((line) => (
-        <li>
-          <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
-          {" — "}
-          {oneLine(line.role)}
-        </li>
-      ))}
-    </ul>
-    <p class="side-panel-meta">None of this is a proof on a frontier system.</p>
-  </section>
+  {
+    sections.map((section) => (
+      <section class="readable" id={section.kind === "sim" ? "sims" : section.kind}>
+        <h2>{section.title}</h2>
+        <p>{oneLine(section.blurb)}</p>
+        <ul>
+          {section.lines.map((line) => (
+            <li>
+              <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
+              {" — "}
+              {oneLine(line.role)}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
 </SiteLayout>

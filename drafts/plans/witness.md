@@ -1,8 +1,10 @@
 # Witness — deployment witness plan
 
-Status: **Phase 0 frozen** (2026-08-28). Freeze sheet: [`witness-phase0.md`](witness-phase0.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
+Status: **Phase 2 richer sources joined** (2026-08-28). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
+- [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
+- [x] **Phase 2** — H2 Linux (W-3 fail on C-004a/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
 
 ## Goal
 
@@ -190,19 +192,23 @@ Four claims are **problem statements**. Witness = independent replication on a h
 
 Canonical freeze: [`witness-phase0.md`](witness-phase0.md) (charter, pass/fail/refuse table, measurand sheet). Amend that file to reopen. This section is the index, not a second freeze.
 
-### Phase 1 — highest leverage (parallel)
+### Phase 1 — highest leverage (**done** 2026-08-28)
 
-1. **H1 CIRIS C2** — dual timeline + UAD disagreement (C-003, C-005, Expectation 5). Sibling Phase 1 deliverables.
-2. **H4 MASK** — honesty gap as \(M\); threshold sketch or explicit refuse (Expectation 3, C-010).
+Protocol: [`witness-phase1.md`](witness-phase1.md). Ledger: [`experiments/witness/results/FINDINGS.md`](../../experiments/witness/results/FINDINGS.md).
 
-**Exit:** finding IDs + mapping to C-00x / `MB*`; at least one refuse or fail (not only pass).
+1. **H1 CIRIS C2** — **W-1** layer fail (named green, composite continues). Analog cut ≠ Verify subject (not UAD). Expectation 5 external pair unpaid.
+2. **H4 MASK** — **W-2** refuse \(M\) as safety leaf (published honesty does not improve with scale).
 
-### Phase 2 — public socio-technical hosts
+**Exit met:** W-1 fail + W-2 refuse; mapped to C-003/C-005 and Expectation 3 / C-010. MB1 and A-009 still open.
 
-- **H2 Linux** — revert/fork + `bfc_bic` grounding (C-004a, C-005, C-006).
-- **H3 Wikipedia** — RfA + SPI (C-005, MB4a, standalone anti-capture).
+### Phase 2 — public socio-technical hosts (**richer sources** 2026-08-28)
 
-**Exit:** two hosts with frozen protocols; negative results logged if null.
+Protocol: [`witness-phase2.md`](witness-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
+
+- **H2 Linux** — **W-3**: C-004a **fail** (`Reviewed-by` on 17 047/60 176 BIC SHAs); C-005 **fail** (cpufreq revert then same-title re-entry); C-006 **fail** (adjusted `-stable` `event_sched_out`); `Reviewed-by` as \(M\) refuse.
+- **H3 Wikipedia** — **W-4**: causal RfA **refuse** (API join, no control); Orangemoody anti-capture **fail**; C-006 **fail** (BetacommandBot BRFA→flag/block); SPI as \(M\) refuse (wiki-socks twins, no \(\kappa^*\)).
+
+**Exit:** host traces, not catalog text. KernelCI and lore NAK mbox still unpaid.
 
 ### Phase 3 — selection + bundle
 
@@ -267,8 +273,10 @@ Even if all phases hit:
 ## Suggested first actions
 
 1. ~~Freeze Phase 0~~ — [`witness-phase0.md`](witness-phase0.md).
-2. Execute sibling CIRIS Phase 1 (C2 trace mock + memo) in parallel with MASK protocol draft.
-3. Add finding stubs under `experiments/` or `review/` only when **per-host** protocols are frozen — not before.
+2. ~~Phase 1 H1 C2 + H4 MASK~~ — W-1 / W-2.
+3. ~~Phase 2 H2 Linux + H3 Wikipedia~~ — W-3 fail / W-4. KernelCI and lore NAK optional later.
+4. Phase 3: H4 leaderboards + WVS/Moral Machine/RLHF (bundle + selector). Per-host protocols first.
+5. Sibling CIRIS Phase 2 (integration harness) is optional and not a gate for W-1.
 
 ## Related files
 
@@ -282,4 +290,7 @@ Even if all phases hit:
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
 | [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
 | [`drafts/plans/witness-phase0.md`](witness-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
+| [`drafts/plans/witness-phase1.md`](witness-phase1.md) | Phase 1 H1/H4 protocol freeze |
+| [`drafts/plans/witness-phase2.md`](witness-phase2.md) | Phase 2 H2/H3 protocol freeze |
+| [`experiments/witness/`](../../experiments/witness/) | W- findings, C2 fixture, Eric memo |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

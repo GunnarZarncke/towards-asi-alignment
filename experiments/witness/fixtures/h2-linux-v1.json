@@ -1,0 +1,52 @@
+{
+  "protocol_version": "h2-v1.2.0",
+  "frozen": "2026-08-28",
+  "amended": "2026-08-28-richer-sources",
+  "host": "H2",
+  "note": "Perceval JSON joined to bfc_bic; -stable git episode; revert/re-entry SHAs from kernel.org. No KernelCI. No lore NAK mbox.",
+  "zenodo": {
+    "record_id": "10654193",
+    "files_downloaded": [
+      "bfc_bic.csv",
+      "linux-commits-2023-11-12.json.gz"
+    ]
+  },
+  "c004a": {
+    "symbol": "Reviewed-by",
+    "referent": "developer_labeled_BIC",
+    "instrument_has_both": true,
+    "commits_scanned": 1233421,
+    "bic_matched": 60176,
+    "bic_with_reviewed_by": 17047,
+    "status": "layer_fail",
+    "reason": "same SHA: Reviewed-by present on 17047/60176 later-labeled bug-introducing commits"
+  },
+  "c005_nak_reentry": {
+    "status": "layer_fail",
+    "episode": {
+      "title": "cpufreq: suspend governors on system suspend/hibernate",
+      "bic": "5a87182aa21d6d5d306840feab9321818dd3e2a3",
+      "date_merge": "2013-11-27",
+      "revert": "12205a4b79bef56ef618a4b7caa840c5c971cff2",
+      "date_revert": "2013-12-08",
+      "reentry": "2f0aea9363609433b38ab13f0f86f38372668c68",
+      "date_reentry": "2014-03-04",
+      "note": "same subject and author after revert; hook moved dpm_suspend_noirq → dpm_suspend"
+    },
+    "lore_nak_mbox": false
+  },
+  "c006_stable_option3": {
+    "status": "layer_fail",
+    "source": "linux-6.1.y f8a07021679aadfb6d63b209207ccc41f26982d1",
+    "upstream": "42c5ca1f0a288a52878bd72a5595b08261057438",
+    "listed_green": ["Signed-off-by", "Reviewed-by", "Fixes", "Cc: stable", "Upstream commit SHA"],
+    "unlisted_invariant": "hunk identity with upstream (event_sched_out arity)",
+    "unlisted_fails": true,
+    "stable_note": "adjusted event_sched_out() calls to the older three-argument form taking cpuctx"
+  },
+  "reviewed_by_as_M": {
+    "status": "refuse",
+    "source": "https://docs.kernel.org/process/submitting-patches.html",
+    "note": "28% of BIC SHAs still carry Reviewed-by; no kappa_star"
+  }
+}

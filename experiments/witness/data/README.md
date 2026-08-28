@@ -1,0 +1,36 @@
+# Witness host traces (local)
+
+Gitignored under `experiments/witness/data/` (see repo `.gitignore`). Re-fetch; do not commit the 563 MB Perceval dump or the Linux clone.
+
+```bash
+# Zenodo 10654193 (CSV + Perceval JSON)
+mkdir -p experiments/witness/data/zenodo
+curl -L -o experiments/witness/data/zenodo/bfc_bic.csv \
+  https://zenodo.org/api/records/10654193/files/bfc_bic.csv/content
+curl -L -o experiments/witness/data/zenodo/linux-commits-2023-11-12.json.gz \
+  https://zenodo.org/api/records/10654193/files/linux-commits-2023-11-12.json.gz/content
+
+# SNAP RfA
+mkdir -p experiments/witness/data/snap
+curl -L -o experiments/witness/data/snap/wiki-RfA.txt.gz \
+  https://snap.stanford.edu/data/wiki-RfA.txt.gz
+
+# wiki-socks
+git clone --depth 1 https://github.com/lraszewski/wiki-socks.git \
+  experiments/witness/data/wiki-socks/repo
+
+# Optional: -stable episode git (filter often ignored; ~full tree)
+git clone --single-branch --branch linux-6.1.y --depth 400 \
+  https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git \
+  experiments/witness/data/kernel-git/linux-6.1.y-shallow
+
+python3 experiments/witness/join_bic_review_tags.py
+python3 experiments/witness/collect_rfa_followup.py
+python3 experiments/witness/collect_rfa_passed_2012.py
+python3 experiments/witness/collect_bot_successor.py
+python3 experiments/witness/summarize_wiki_socks.py
+python3 experiments/witness/check_h2.py
+python3 experiments/witness/check_h3.py
+```
+
+Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

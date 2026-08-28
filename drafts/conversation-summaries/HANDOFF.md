@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (Witness Phase 0 freeze).
+Last updated: 2026-08-28 (Witness results on book/site; experiments hub split).
 
 ---
 
@@ -39,7 +39,9 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-28:** **Witness Phase 0 frozen** — charter, pass/fail/refuse table, measurand sheet. [`drafts/plans/witness-phase0.md`](../plans/witness-phase0.md). Next: Phase 1 (CIRIS C2 + MASK). Log: `2026-08-28-witness-phase0.md`.
+- **2026-08-28:** **Witness in book/site** — App I W-1–W-4; `/experiments/` and homepage split sims / external tests / witness tests. Log: `2026-08-28-witness-book-site.md`.
+- **2026-08-28:** **Witness Phase 2 richer sources** — Perceval×BIC; cpufreq revert re-entry; `-stable` hunks; SNAP+API; BetacommandBot; wiki-socks. W-3 fails C-004a/C-005/C-006; W-4 C-006 fail, causal RfA still refuse. Log: `2026-08-28-witness-phase2.md`.
+- **2026-08-28:** **Witness Phase 0 frozen** — charter, pass/fail/refuse table, measurand sheet. [`drafts/plans/witness-phase0.md`](../plans/witness-phase0.md). Log: `2026-08-28-witness-phase0.md`.
 - **2026-08-28:** **AI Village HF related observations** — no standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card (setup contrast, poverty/no-despair). Log: `2026-08-28-ai-village-hf-related-observations.md`.
 - **2026-08-28:** **Assumption key-only boxes + App B** — `bookassumption` (A-* key in heading); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. Log: `2026-08-28-assumption-boxes-appb-cleanup.md`.
 - **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.

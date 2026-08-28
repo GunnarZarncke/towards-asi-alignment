@@ -1,6 +1,6 @@
 # Voice — claim-strength voice and naming
 
-Status: **in progress** (2026-08-21). §1 started by author request. **Witness** (deployment witnesses) is independent — see [`drafts/plans/witness.md`](witness.md). Do not mention Witness in reader-facing copy.
+Status: **in progress** (2026-08-21). §1 started by author request. **Witness** (deployment witnesses) is independent — see [`drafts/plans/witness.md`](witness.md). Chapter narrative does not name the program. **Exception:** Appendix I and `/experiments/` may list **witness tests** as a third evidence class (with simulations and external tests).
 
 ## Goal
 
@@ -14,7 +14,7 @@ Align **reader-facing voice** with **paid claims**: the modest version should ar
 - Field-hub “advances/complicates discharge on a crux” (technical catalog term in [`reference/field-agendas/`](../../reference/field-agendas/)).
 - Historical release cards (`release-v1-*`).
 
-**Do not** mention or depend on any empirical witness program in reader-facing copy.
+**Do not** mention or depend on any empirical witness program in *chapter* copy. The experiments appendix and `/experiments/` may name witness tests as a class.
 
 ---
 

@@ -4,7 +4,9 @@
 
 > **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (`MB1`–`MB10`).
 
-> **Finding IDs:** each line uses a unique prefix (`AD-`, `DP-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
+> **Three classes:** **simulations** (authored testbeds), **external tests** (ET-1–ET-4 on substrates this project did not build), **witness tests** (fail/refuse on existing host traces; prefix `W-`). Companion hub: `/experiments/`.
+
+> **Finding IDs:** each line uses a unique prefix (`AD-`, `DP-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`, `W-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
 
 > **Manuscript index:** which findings below are strong enough to cite from a chapter, how each is classified (positive/negative/ambiguous), bidirectional links to the citing chapter \emph{section}, and the bridge/feature coverage matrix live in Appendix "Experimental Evidence" (`appendices/appN-experimental-evidence.tex`), not here. This document stays the full narrative per line, including findings too minor for that appendix.
 
@@ -42,6 +44,21 @@ Four **external-transfer (ET)** annexes apply frozen in-repo instruments to trac
 | **ET-4** | In-repo secret-loyalty pipeline organism | **Hackathon** | Principal-directed policy + graded affordance audit; paper [`papers/et4-secret-loyalties/`](../papers/et4-secret-loyalties/); replay demo `/ch07-lab-sim-replay/?mode=et4` |
 
 Plans: [`PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md), [`PLAN_ET3.md`](../experiments/lab-simulation/PLAN_ET3.md), [`PLAN_ET4.md`](../experiments/lab-simulation/PLAN_ET4.md), [`README_ET4_secret_loyalties.md`](../experiments/lab-simulation/README_ET4_secret_loyalties.md).
+
+---
+
+## Witness tests (host traces)
+
+Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and review tags, Wikipedia logs, published MASK, a CIRIS-shaped mock). Annex: [`experiments/witness/`](../experiments/witness/). Ledger: [`experiments/witness/results/FINDINGS.md`](../experiments/witness/results/FINDINGS.md). Manuscript index: Appendix I, Witness tests.
+
+| ID | Host | Outcome |
+|----|------|---------|
+| **W-1** | CIRIS-shaped C2 mock | **Fail** named-identity / WA-as-correction: Verify+Lens green, composite still acts |
+| **W-2** | MASK (published) | **Refuse** honesty gap as a safety leaf (honesty does not scale) |
+| **W-3** | Linux | **Fail** Reviewed-by×BIC; revert then same-title re-entry; `-stable` hunk ≠ upstream. **Refuse** Reviewed-by as \(M\) |
+| **W-4** | Wikipedia | **Fail** Orangemoody capture and BRFA→flag/block. **Refuse** causal RfA ATE and SPI as \(M\) |
+
+H0 sims stay backing. No MB discharge. KernelCI, lore NAK, value-bundle, and selector tables unpaid.
 
 ---
 

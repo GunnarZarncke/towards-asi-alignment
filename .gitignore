@@ -68,6 +68,10 @@ experiments/graded-lab-simulation/external/cil/*
 !experiments/graded-lab-simulation/external/cil/README.md
 experiments/graded-lab-simulation/results/et2_traces/
 
+# Witness host traces (regenerate locally; keep derived JSON in fixtures/)
+experiments/witness/data/*
+!experiments/witness/data/README.md
+
 # OS
 .DS_Store
 Thumbs.db

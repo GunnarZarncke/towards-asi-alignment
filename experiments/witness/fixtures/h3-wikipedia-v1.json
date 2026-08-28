@@ -1,0 +1,48 @@
+{
+  "protocol_version": "h3-v1.1.0",
+  "frozen": "2026-08-28",
+  "amended": "2026-08-28-richer-sources",
+  "host": "H3",
+  "note": "SNAP file downloaded; MediaWiki API later traces; wiki-socks twins; Orangemoody LTA unchanged.",
+  "snap_rfa": {
+    "url": "https://snap.stanford.edu/data/wiki-RfA.html",
+    "window": "2003-05-2013",
+    "votes": 198275,
+    "file_downloaded": true,
+    "has_later_edit_traces": true,
+    "later_trace_source": "MediaWiki API usercontribs/blocks/rights joined on SNAP TGT"
+  },
+  "c005_causal_rfa_to_edits": {
+    "status": "refuse",
+    "reason": "join exists; no frozen zero-oppose control; later sysop-removed mixed with inactivity",
+    "passed_2012_with_oppose": 21,
+    "of_which_later_sysop_removed": 14,
+    "of_which_contribs_after_2013": 20,
+    "of_which_block_record": 1
+  },
+  "orangemoody": {
+    "source": "https://en.wikipedia.org/wiki/Wikipedia:Long-term_abuse/Orangemoody",
+    "date_utc": "2015-08-31",
+    "signer": "Risker",
+    "cu_linked_socks": 381,
+    "helper_socks_mark_reviewed_other_socks_articles": true,
+    "same_operator_both_ends_of_review_channel": true
+  },
+  "c006_bot_brfa_to_block": {
+    "status": "layer_fail",
+    "episode": {
+      "user": "BetacommandBot",
+      "brfa": "Wikipedia:Bots/Requests for approval/BetacommandBot",
+      "brfa_exists": true,
+      "bot_flag_removed": "2008-05-16T08:32:04Z",
+      "block_sample": "2009-04-09T02:58:13Z abuse"
+    }
+  },
+  "spi_as_M": {
+    "status": "refuse",
+    "wiki_socks_investigations": 23610,
+    "positive_contrib_rows": 7590021,
+    "negative_twin_contrib_rows": 15320861,
+    "kappa_star": null
+  }
+}

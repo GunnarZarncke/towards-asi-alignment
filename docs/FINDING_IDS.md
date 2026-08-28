@@ -11,6 +11,7 @@ Every recorded finding or negative result across experiment lines uses a **line-
 | Goal-agent simulation | `GA-` | `experiments/goal-agent-simulation/results/FINDINGS.md` | Was `F-` |
 | Lab-layer simulation | `LS-` | `experiments/lab-simulation/results/FINDINGS.md` | Was `G-` |
 | Graded-capability lab simulation | `GL-` | `experiments/graded-lab-simulation/results/FINDINGS.md` | Was `G-` (collided with lab line) |
+| Witness annex (not a sim line) | `W-` | `experiments/witness/results/FINDINGS.md` | Deployment-witness protocols; H0 sims stay backing |
 
 **Suffix letters** (e.g. `LS-1a`, `LS-3a`) keep their letter after the prefix.
 

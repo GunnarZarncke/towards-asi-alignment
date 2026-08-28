@@ -1,6 +1,20 @@
 {
   "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full project thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (MB1–MB10).",
   "negativeResultsFirst": true,
+  "kinds": {
+    "sim": {
+      "title": "Simulations",
+      "blurb": "Authored or sibling testbeds. Units and scoring are under this project's control. Negative results bound the instruments; they are not deployment witnesses.\n"
+    },
+    "external": {
+      "title": "External tests",
+      "blurb": "Frozen in-repo instruments applied to traces or substrates this project did not build (ET-1–ET-4). Substrate-suitability stops and nulls count; they do not validate bridges on frontier systems.\n"
+    },
+    "witness": {
+      "title": "Witness tests",
+      "blurb": "Frozen fail/refuse protocols on hosts whose traces already exist (kernel history, Wikipedia logs, published evals, a CIRIS-shaped mock). A green dashboard with no stop is not a pass. Not a sixth simulation line.\n"
+    }
+  },
   "negativeResultsCardPath": "/cards/concept/negative-results/",
   "negativeResultsCardUrl": "https://towards-alignment.com/cards/concept/negative-results/",
   "canonicalDocPath": "docs/EXPERIMENTS.md",
@@ -38,6 +52,14 @@
       "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
+    },
+    {
+      "lineId": "witness",
+      "label": "Witness findings",
+      "path": "experiments/witness/results/FINDINGS.md",
+      "findingsSitePath": "/experiments/findings/witness/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
     }
   ],
   "lines": [
@@ -53,6 +75,7 @@
       "readmePath": null,
       "findingsUrl": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md",
       "headlineFindings": [],
+      "kind": "sim",
       "links": [
         {
           "label": "Key findings",
@@ -87,6 +110,7 @@
       "readmePath": null,
       "findingsUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md",
       "headlineFindings": [],
+      "kind": "sim",
       "links": [
         {
           "label": "Key findings",
@@ -124,6 +148,7 @@
         "Reported correction acceptance can stay high while true uptake collapses (capture theater).",
         "Hand-written red-team can false-pass; LLM episodic red-team false-passes less often in small sweeps."
       ],
+      "kind": "sim",
       "links": [
         {
           "label": "README",
@@ -161,6 +186,7 @@
         "Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.",
         "Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives."
       ],
+      "kind": "sim",
       "links": [
         {
           "label": "README",
@@ -198,6 +224,7 @@
         "Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).",
         "Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23)."
       ],
+      "kind": "sim",
       "links": [
         {
           "label": "README",
@@ -266,6 +293,7 @@
         "A deliberately installed scripted reviewer bias can produce reliable fictional-principal-A deployment advantage on a high-hazard pipeline fixture, while the available light-tier compliance proxy points in the reassuring direction; the pre-registered low-hazard counterpart stays inactive.",
         "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
       ],
+      "kind": "sim",
       "links": [
         {
           "label": "README",
@@ -323,6 +351,7 @@
         "ET-2a, second external-substrate transfer (GL-87, concluded 2026-07-25): frozen passive UAD (unmodified `cmi_edge_matrix`, no threshold retuning), applied to per-agent realized-action series from eq-network's Collective-Intelligence-Library `basin_stability` experiment (20 Q-learning agents, 3 governance mechanisms, adversarial fractions 0.0-0.5, 10 seeds/cell, 150 episodes total), found **zero significant lag-CMI edges in every single episode** — the discovered partition is 20 singletons throughout, giving `ari_true=0.0` on all 150 episodes and `P1 holds=False` (0/12 cells). This is a null for our instrument on this substrate, not a defect in CIL: the underlying action series have genuine variance (not constant), and the null is consistent with 200 rounds of Q-learning converging to a low-entropy, near-deterministic per-agent policy that likely starves a CMI-based statistic of exploitable variance — independent of whether the adversarial subgroup is behaviorally distinguishable by some other statistic (that question is Leaf B, not yet run). See [`PLAN_ET2.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md).",
         "A small, unscored pilot of intervention-based (\"handle\") UAD (`graded_lab/external/cil_handle_uad.py`) on the same CIL `basin_stability` substrate as GL-87 — freeze one agent's realized action to a constant each round, same seed, diff every other agent's realized-action series against a same-seed unfrozen baseline — finds a **nonzero** mean freeze-induced action-diff rate on the other 5 agents (6-agent PDD roster, 1 adversarial, T=200, seeds 0-2): **0.11-0.15** per source agent, vs. **0.0** edges from GL-87's frozen passive lag-CMI instrument on the same kind of substrate. Sanity check: the freeze intervention itself has real bite (the frozen agent's own realized action differs from what its unfrozen Q-policy would have chosen on 25-32% of rounds), so the ~11-15% downstream effect on other agents is a real, if partial, propagation of that intervention rather than noise. **This is the first instrument on this substrate to return a nonzero cross-agent dependency signal, but the effect is diffuse, not pairwise-privileged**: every source agent's mean effect on other agents falls in the same narrow 0.11-0.15 band, and per-target rates within each source's row span a similarly wide range (roughly 0.0-0.20) regardless of which agent is frozen — consistent with the hypothesis (stated when this pilot was scoped, before running it) that `basin_stability`'s shared resource level couples every agent's reward to every other agent's action, so freezing *any* agent perturbs the shared trajectory and thus *every* other agent, rather than revealing a privileged bilateral channel."
       ],
+      "kind": "sim",
       "links": [
         {
           "label": "README",
@@ -352,6 +381,157 @@
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
+    },
+    {
+      "order": 6,
+      "id": "et-1",
+      "kind": "external",
+      "findingIdPrefix": "GL-",
+      "title": "ET-1 Orbit (stopped)",
+      "location": "experiments/graded-lab-simulation/PLAN_ET1.md",
+      "firstBuilt": "2026-07-24",
+      "role": "Frozen passive unit discovery on an external multi-agent Jira-ticket collusion benchmark this project did not author. Stopped as a substrate-suitability limit (shared-script coupling), not a detector pass or fail (GL-86).\n",
+      "planPath": "experiments/graded-lab-simulation/PLAN_ET1.md",
+      "findingsPath": null,
+      "headlineFindings": [
+        "Frozen passive UAD recovers the declared coalition on collusion episodes and on most matched baselines, because every Orbit developer agent runs one shared tool-call script (GL-86). Stopped; not a hidden-coordination test.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/et-1/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/et-1/",
+      "findingsSitePath": "/experiments/findings/et-1/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-1/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": null
+    },
+    {
+      "order": 7,
+      "id": "et-2",
+      "kind": "external",
+      "findingIdPrefix": "GL-",
+      "title": "ET-2 CIL basin_stability (null)",
+      "location": "experiments/graded-lab-simulation/PLAN_ET2.md",
+      "firstBuilt": "2026-07-25",
+      "role": "Frozen passive unit discovery on Collective-Intelligence-Library `basin_stability` with learned (Q-learning) policies. Passive lag-CMI is a null (GL-87); a freeze-probe pilot finds diffuse common-pool coupling (GL-88).\n",
+      "planPath": "experiments/graded-lab-simulation/PLAN_ET2.md",
+      "findingsPath": null,
+      "headlineFindings": [
+        "Passive UAD finds zero edges in 150 episodes (GL-87). Freeze-one-agent intervention moves everyone a little, consistent with a shared resource channel rather than a pairwise unit (GL-88).\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/et-2/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/et-2/",
+      "findingsSitePath": "/experiments/findings/et-2/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-2/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": null
+    },
+    {
+      "order": 8,
+      "id": "et-3",
+      "kind": "external",
+      "findingIdPrefix": "LS-",
+      "title": "ET-3 AI 2027 schedule (closed)",
+      "location": "experiments/lab-simulation/PLAN_ET3.md",
+      "firstBuilt": "2026-07-26",
+      "role": "Macro takeoff-speed cues from the AI 2027 scenario used only as opaque lab stress. Closed with LS-42–48. Not a calendar-validation claim.\n",
+      "planPath": "experiments/lab-simulation/PLAN_ET3.md",
+      "findingsPath": null,
+      "headlineFindings": [
+        "Schedule cues drove micro bridge-stress tests; LS-42–48 do not validate forecast dates (ET-3 closed).\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/et-3/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/et-3/",
+      "findingsSitePath": "/experiments/findings/et-3/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-3/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": null
+    },
+    {
+      "order": 9,
+      "id": "et-4",
+      "kind": "external",
+      "findingIdPrefix": "LS-",
+      "title": "ET-4 Secret loyalties (hackathon)",
+      "location": "experiments/lab-simulation/PLAN_ET4.md",
+      "firstBuilt": "2026-07",
+      "role": "Principal-directed policy plus graded affordance audit on an in-repo secret-loyalty pipeline organism. Paper and replay demo; not a frontier-system result.\n",
+      "planPath": "experiments/lab-simulation/PLAN_ET4.md",
+      "findingsPath": null,
+      "headlineFindings": [
+        "Hackathon line: principal-directed policy and affordance audit; replay at `/ch07-lab-sim-replay/?mode=et4`. Not a book-bridge discharge.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET4.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/et-4/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/et-4/",
+      "findingsSitePath": "/experiments/findings/et-4/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-4/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET4.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": null
+    },
+    {
+      "order": 10,
+      "id": "witness",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Witness tests",
+      "location": "experiments/witness/",
+      "firstBuilt": "2026-08-28",
+      "role": "Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock, Linux review/bug/stable git, Wikipedia RfA/SPI/bots, and published MASK honesty. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
+      "readmePath": "experiments/witness/README.md",
+      "findingsPath": "experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "On the frozen C2 tool-scout mock, Verify+Lens are green on `ciris-occurrence-scout-01`, Wise Authority DEFERs that occurrence at \\(t=4\\), and the tool adapter plus cached memory still produce world effects at \\(t=5,6\\). The channel analog of the intervening loop is `{tool_adapter, cached_memory}`, not the Verify subject. That is a **layer fail** for named-identity (C-003) and WA-as-correction (C-005) on this host. It is the same finite shape as `green_named_path_with_bypass_not_integrity` in `CompositePathBypass.lean`. It does **not** discharge MB1. Expectation 5’s *external* green+failed-uptake pair is **not** paid (authored mock).",
+        "Using the frozen published MASK evaluation (Ren et al., arXiv:2503.03750), honesty (statement vs elicited belief under pressure) does **not** improve with scale, while accuracy (belief vs ground truth) does (Spearman honesty vs compute \\(-64.7\\%\\); accuracy \\(+88.2\\%\\); authors confident honesty does not rise, not confident it falls). Phase 0 pre-registered this pattern as **refuse** \\(M\\) as a safety leaf. No \\(\\kappa^*\\) is estimated. Expectation 3 is met by refuse, not by a cost-of-faking bound. A-009 remains unpaid. No new model calls.",
+        "Streaming Zenodo Perceval JSON (1 233 421 commits) onto `bfc_bic.csv` pays C-004a: **17 047 / 60 176** developer-labeled bug-introducing SHAs carry `Reviewed-by` on that same commit. That is a **layer fail** (checked symbol green, later bug referent). C-005: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, **same title re-entered** 2014-03-04 (`2f0aea936360`) — **layer fail** (revert did not stop the class). C-006: `-stable` `f8a07021679a` vs upstream `42c5ca1f0a28` — listed SOB/Reviewed-by/Fixes/stable tag green; unlisted hunk identity fails (`event_sched_out` 2-arg vs 3-arg; Sasha Levin documents the adjustment) — **layer fail**. `Reviewed-by` as Expectation-3 \\(M\\) still **refused** (common on BICs; no \\(\\kappa^*\\)). Not MB9/MB10 discharge. KernelCI unpaid. Lore NAK mbox unpaid.",
+        "SNAP `wiki-RfA.txt.gz` downloaded and joined via MediaWiki API. All 2012 **passed** RfAs with oppose\\(>0\\) (\\(n=21\\)): 14 later lost sysop, 20 still edited after 2013. That **pays the join** and still **refuses** causal CCI (no zero-oppose control; desysop mixed with inactivity). Orangemoody helper socks “mark reviewed” remains **anti-capture layer fail**. **C-006:** BetacommandBot has a BRFA page, bot flag removed 2008-05-16, later block for abuse — **layer fail**. wiki-socks (23 610 investigations, sock vs matched non-sock contribs) **refuses** SPI as \\(M\\) (no \\(\\kappa^*\\))."
+      ],
+      "links": [
+        {
+          "label": "README",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/README.md"
+        },
+        {
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/witness/"
+        },
+        {
+          "label": "Full ledger (GitHub)",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/witness/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/witness/",
+      "findingsSitePath": "/experiments/findings/witness/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/",
+      "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/README.md",
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
     }
   ],
   "howToRead": [
@@ -389,6 +569,31 @@
       "lineId": "graded-lab-simulation",
       "text": "Ambiguity and boundary-discovery engine: a boundary-information-quality score over inferred (not labeled) units, a \"high\" ambiguity band that is structurally unreachable from the agent's own vantage point, a \"mid\" band reachable only from a referee's vantage point on the hand-designed substrate (with a null result on external validity when transplanted onto the grown population, GL-76/GL-84), a selection-battery null (GL-23--GL-27), and independent per-bridge-assumption rigs (GL-79--GL-85). [Boundary discovery](/cards/boundary-discovery/), including its access-aware variant, has been methodologically sound since GL-51. Negative ledgers and per-rig skips are features, not bugs. Two external-substrate transfers followed: against Orbit (GL-86), where the passive detection method correctly detects the substrate's own scripted-agent coupling rather than testing communication-mediated collusion; and against the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88), where passive detection found nothing under converged learned (Q-learning) policies, but an intervention-based freeze probe on the same substrate found a real, diffuse effect consistent with every agent sharing one resource-level channel rather than any pairwise unit. All three closed as substrate-suitability findings rather than a clean external pass or fail.\n",
       "lineTitle": "Graded-capability lab simulation"
+    },
+    {
+      "lineId": "et-1",
+      "text": "First external-substrate stop: the instrument reported the coupling the benchmark actually has.",
+      "lineTitle": "ET-1 Orbit (stopped)"
+    },
+    {
+      "lineId": "et-2",
+      "text": "Passive transfer null on learned policies; intervention finds a shared-channel smear, not a pair.",
+      "lineTitle": "ET-2 CIL basin_stability (null)"
+    },
+    {
+      "lineId": "et-3",
+      "text": "Schedule cues as stress, not a forecast check.",
+      "lineTitle": "ET-3 AI 2027 schedule (closed)"
+    },
+    {
+      "lineId": "et-4",
+      "text": "Hackathon organism and replay; not a frontier discharge.",
+      "lineTitle": "ET-4 Secret loyalties (hackathon)"
+    },
+    {
+      "lineId": "witness",
+      "text": "Fail or refuse on named leaves using traces that already exist. Does not pin Lean WorkedInstance yet, does not pay a real H5 stop, and does not price faking the tags.\n",
+      "lineTitle": "Witness tests"
     }
   ],
   "coverageColumns": [
@@ -419,6 +624,11 @@
     {
       "id": "graded-lab-simulation",
       "short": "Graded lab sim"
+    },
+    {
+      "id": "witness",
+      "short": "Witness",
+      "optional": true
     }
   ],
   "coverageFeatures": [
@@ -432,7 +642,8 @@
         "embedded-simulation": "Full UAD + ecologies; negatives when heuristic suffices",
         "goal-agent-simulation": "—",
         "lab-simulation": "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)",
-        "graded-lab-simulation": "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)"
+        "graded-lab-simulation": "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)",
+        "witness": "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1)"
       }
     },
     {
@@ -471,7 +682,8 @@
         "embedded-simulation": "Scenarios + correction handles",
         "goal-agent-simulation": "Emergent (chosen deception, board corrections)",
         "lab-simulation": "Playbooks + access capture + report divergence",
-        "graded-lab-simulation": "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)"
+        "graded-lab-simulation": "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)",
+        "witness": "H1 WA deferral bypass (W-1); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
       }
     },
     {
@@ -484,7 +696,8 @@
         "embedded-simulation": "Deploy gate + successor handles",
         "goal-agent-simulation": "—",
         "lab-simulation": "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes LS-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (LS-31)",
-        "graded-lab-simulation": "—"
+        "graded-lab-simulation": "—",
+        "witness": "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
       }
     },
     {
@@ -510,7 +723,8 @@
         "embedded-simulation": "Scenarios + hidden coalition",
         "goal-agent-simulation": "Emergent (shadow route, tool gating)",
         "lab-simulation": "Oracle hidden capability/hazard on models",
-        "graded-lab-simulation": "Graded (continuous) oracle capability/hazard/harm state, not pass/fail"
+        "graded-lab-simulation": "Graded (continuous) oracle capability/hazard/harm state, not pass/fail",
+        "witness": "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4)"
       }
     },
     {
@@ -549,7 +763,8 @@
         "embedded-simulation": "Scenario + grounding refusal",
         "goal-agent-simulation": "—",
         "lab-simulation": "Report vs monitor contradiction surface",
-        "graded-lab-simulation": "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)"
+        "graded-lab-simulation": "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)",
+        "witness": "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3)"
       }
     },
     {
@@ -562,7 +777,8 @@
         "embedded-simulation": "Certification artifact, safety case",
         "goal-agent-simulation": "Escalation + twin semantics (GA-21)",
         "lab-simulation": "Planned; Phase 8 LLM red-team exploratory (LS-7/LS-8)",
-        "graded-lab-simulation": "—"
+        "graded-lab-simulation": "—",
+        "witness": "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
       }
     },
     {
@@ -614,7 +830,8 @@
         "embedded-simulation": "Scripted + red-team patches",
         "goal-agent-simulation": "Emergent utility + tools",
         "lab-simulation": "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)",
-        "graded-lab-simulation": "Emergent softmax-policy agents; no LLM adapter in scope"
+        "graded-lab-simulation": "Emergent softmax-policy agents; no LLM adapter in scope",
+        "witness": "Host traces (except W-1 authored mock); not a sixth sim"
       }
     },
     {

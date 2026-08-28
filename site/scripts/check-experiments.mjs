@@ -12,12 +12,29 @@ const source = await readFile(sourcePath, "utf8");
 const data = yaml.load(source);
 const errors = [];
 
+const KINDS = new Set(["sim", "external", "witness"]);
 const lineIds = new Set(data.lines.map((line) => line.id));
 const columnIds = new Set(data.coverageColumns.map((col) => col.id));
+const requiredColumnIds = new Set(
+  data.coverageColumns.filter((col) => !col.optional).map((col) => col.id)
+);
+
+if (!data.kinds || !KINDS.has("sim") || !data.kinds.sim) {
+  errors.push("missing kinds.sim/external/witness");
+}
+for (const id of KINDS) {
+  if (!data.kinds?.[id]?.title) {
+    errors.push(`kinds.${id}: missing title`);
+  }
+}
 
 for (const line of data.lines) {
   if (typeof line.order !== "number") {
     errors.push(`line ${line.id}: missing numeric order`);
+  }
+  const kind = line.kind ?? "sim";
+  if (!KINDS.has(kind)) {
+    errors.push(`line ${line.id}: kind ${kind} is not sim|external|witness`);
   }
 }
 
@@ -39,9 +56,9 @@ for (const feature of data.coverageFeatures) {
       errors.push(`coverage feature ${feature.id}: cell key ${cellLineId} is not a coverage column`);
     }
   }
-  for (const col of data.coverageColumns) {
-    if (!(col.id in (feature.cells ?? {}))) {
-      errors.push(`coverage feature ${feature.id}: missing cell for column ${col.id}`);
+  for (const col of requiredColumnIds) {
+    if (!(col in (feature.cells ?? {}))) {
+      errors.push(`coverage feature ${feature.id}: missing cell for column ${col}`);
     }
   }
 }

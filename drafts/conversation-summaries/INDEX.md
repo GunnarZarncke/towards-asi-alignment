@@ -6,7 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-28 | **Witness Phase 2** — User asked to continue Phase 2, then pushed back that catalogs lacked parent-plan fields, then: *... | [2026-08-28-witness-phase2.md](2026-08-28-witness-phase2.md) |
+| 2026-08-28 | **Witness Phase 1** — User asked to continue with Witness Phase 1 after the Phase 0 freeze. | [2026-08-28-witness-phase1.md](2026-08-28-witness-phase1.md) |
 | 2026-08-28 | **Witness Phase 0 freeze** — User asked to start Phase 0 of `drafts/plans/witness.md` (charter, measurand sheet, pre-register ... | [2026-08-28-witness-phase0.md](2026-08-28-witness-phase0.md) |
+| 2026-08-28 | **Witness results in book and site** — User asked to document Witness experimental results in the book and site, and to split the landin... | [2026-08-28-witness-book-site.md](2026-08-28-witness-book-site.md) |
 | 2026-08-28 | **TSA shipping benchmark** — User asked for a benchmark of how quickly TSA content ships: investigate GitHub history, cross-in... | [2026-08-28-shipping-benchmark.md](2026-08-28-shipping-benchmark.md) |
 | 2026-08-28 | **Project identity, not manuscript-first** — User: README still leads with “research manuscript”; the project is no longer only or primarily a... | [2026-08-28-project-not-manuscript.md](2026-08-28-project-not-manuscript.md) |
 | 2026-08-28 | **Assumption key-only boxes and App B cleanup** — Continue A-* assumption work: Option 1 (key-only box headings, no chapter counter); App B MIRI/fi... | [2026-08-28-assumption-boxes-appb-cleanup.md](2026-08-28-assumption-boxes-appb-cleanup.md) |
@@ -18,13 +21,10 @@
 | 2026-08-27 | **Voice chapterthesis ch11–ch20** — Continue Voice §2 `chapterthesis` audits after ch01–ch10. | [2026-08-27-voice-chapterthesis-ch11-20.md](2026-08-27-voice-chapterthesis-ch11-20.md) |
 | 2026-08-27 | **Voice chapterthesis ch01–ch10** — User asked to do the first ten `chapterthesis` audits of the Voice plan sequentially. | [2026-08-27-voice-chapterthesis-ch01-10.md](2026-08-27-voice-chapterthesis-ch01-10.md) |
 | 2026-08-27 | **Scaling Trust note on Construct v2** — User asked whether Obadia’s *Without Intermediaries* (Scaling Trust) is relevant to TSA and wheth... | [2026-08-27-scaling-trust-construct-note.md](2026-08-27-scaling-trust-construct-note.md) |
-| 2026-08-27 | 2026-08-27-quiz-phase-2 | [2026-08-27-quiz-phase-2.md](2026-08-27-quiz-phase-2.md) |
-| 2026-08-27 | 2026-08-27-quiz-phase-1 | [2026-08-27-quiz-phase-1.md](2026-08-27-quiz-phase-1.md) |
-| 2026-08-27 | **Quiz items from news takeaways** — User: news takeaways usually refer to the manuscript; add matching quiz inventory if missing, but... | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |
 
 ## Archive by month
 
-- **2026-08** (156): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (159): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

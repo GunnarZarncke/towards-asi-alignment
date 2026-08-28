@@ -40,7 +40,7 @@ const hubItems = [
   {
     href: "#experiment-lines",
     title: "Experiment lines",
-    summary: "Cards for each line, including sibling precursors."
+    summary: "Cards for simulations, external tests, and witness tests."
   },
   {
     href: "#negative-results",
@@ -204,6 +204,7 @@ const hubItems = [
         <thead>
           <tr>
             <th>Order</th>
+            <th>Class</th>
             <th>Line</th>
             <th>Location</th>
             <th>First built</th>
@@ -213,6 +214,7 @@ const hubItems = [
           {experiments.lines.map((line) => (
             <tr>
               <td>{line.order}</td>
+              <td>{line.kind ?? "sim"}</td>
               <td>
                 <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
               </td>

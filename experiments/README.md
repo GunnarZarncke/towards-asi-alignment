@@ -23,6 +23,8 @@ Open tasks: [`TODO.md`](TODO.md).
 
 Sibling precursors (not in-repo): [agency-detect](https://github.com/GunnarZarncke/agency-detect), [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator).
 
+**Witness annex** (not line 6): [`witness/`](witness/) — frozen host protocols and `W-` findings. Do not treat as a new simulation substrate.
+
 Unindexed local trees `value-detect-v1-master/` and `value-detect-v2-master/` are unzipped agency-detect companions (directional value signature). They are **not** lines 1–5 and are not in `metadata/experiments.yml`. Do not treat them as the empirical map until indexed.
 
 ## README convention
