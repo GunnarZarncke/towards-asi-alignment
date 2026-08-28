@@ -19,4 +19,4 @@ User: coverage page too crowded; experiment-line cards duplicate `/experiments/`
 - `site/src/components/ExperimentCoverageTable.astro`
 
 ## Commits
-- `968e2653` Slim experiment coverage hub so the matrix stays the focus.
+- `422deb1c` Slim experiment coverage hub so the matrix stays the focus.
