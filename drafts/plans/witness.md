@@ -1,10 +1,12 @@
 # Witness — deployment witness plan
 
-Status: **Phase 2 richer sources joined** (2026-08-28). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
+Status: **Phase 4 closed** (2026-08-28). Next: [`witness-c004-raw.md`](witness-c004-raw.md) (W-12). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4 **with deployment leverage** — W-9–W-11 are institutional analogues, not that gate).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
 - [x] **Phase 2** — H2 Linux (W-3 fail on C-004a/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
+- [x] **Phase 3** — C-004 Moral Machine non-implication (W-5) + C-007 Arena×MASK selector (W-6)
+- [x] **Phase 4** — C-004 leftover refuses (W-7); Lean C2 pin (W-8); three H5 trees (W-9–W-11)
 
 ## Goal
 
@@ -60,12 +62,14 @@ Sims are weakest (toy stub; graded-lab selectable-Goodhart **null** GL-85). Need
 
 | Dataset / source | Use |
 |------------------|-----|
-| World Values Survey / European Social Survey | Compressed directions across countries; scalar “progress” vs bundle geometry |
-| Moral Machine (MIT) | Tradeoff geometry under shared scene ontology |
-| HH-RLHF / PKU-SafeRLHF | Stated preference vs ranking under pressure |
+| World Values Survey / European Social Survey | **W-7 refuse** (country unit) |
+| Moral Machine (MIT) | **W-5:** country AMCE (wrong unit). **Next:** raw same-respondent dilemmas — [`witness-c004-raw.md`](witness-c004-raw.md) |
+| HH-RLHF / PKU-SafeRLHF | Later/optional; need same judge across varied contexts |
 | Sibling `brain-to-values` papers (if local mirror has tables) | Only if numbers, not narrative |
 
-**Met if:** one host shows **non-implication**: moral words or 1-D RM score stable while tradeoff geometry moves, with frozen distance. Wikipedia category/text is backup (noisier).
+**Met if (paid W-5, wrong unit):** 1-D close while geometry far on **country** AMCE.
+
+**Met if (same-unit, ch16):** repeated counterfactual policy from one decision-maker; frozen geometry predicts held-out choices better than frozen 1-D and intercept. Protocol: [`witness-c004-raw.md`](witness-c004-raw.md) (W-12). LHCV \(L\to H\to C\) is **not** required for this bar.
 
 ### C-004a Grounding (MB9)
 
@@ -210,19 +214,28 @@ Protocol: [`witness-phase2.md`](witness-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
 
 **Exit:** host traces, not catalog text. KernelCI and lore NAK mbox still unpaid.
 
-### Phase 3 — selection + bundle
+### Phase 3 — selection + bundle (**done** 2026-08-28)
 
-- **H4** leaderboards/downloads (C-007, Goodhart-as-selector).
-- **WVS / Moral Machine / RLHF** (C-004).
+Protocol: [`witness-phase3.md`](witness-phase3.md) (`h4-bundle-v1.0.0`, `h4-selector-v1.0.0`).
 
-**Exit:** one bundle non-implication table; one selector shift table.
+- **C-004** — **W-5** layer fail: Moral Machine country AMCE, Number 1-D vs eight-coordinate geometry.
+- **C-007** — **W-6** layer fail: Arena Elo 20250301 × MASK \(P(\mathrm{honest})\) / Accuracy (\(n=24\)).
 
-### Phase 4 — Lean fixture + historical stops
+**Exit:** both tables paid. WVS/ESS refused in **W-7**; HH-RLHF optional not run; H2 vendor-share / H3 editor retention still unpaid.
 
-- Pin Phase 1 JSON into `WorkedInstance.lean`.
-- Code three **H5** stops as safety-case trees (Expectations 2, 4).
+### Phase 4 — Lean fixture + historical stops (**done** 2026-08-28)
 
-**Exit:** `#print axioms` on pinned module; three stop narratives with leaf IDs.
+Protocol: [`witness-phase4.md`](witness-phase4.md) (`c004-leftovers-v1.0.0`, `c2-lean-v1.0.0`, `h5-v1.0.0`).
+
+- **Slice A** — **W-7** refuse WVS/ESS/LHCV-host; optional HH/PKU skip.
+- **Slice B** — **W-8** `WitnessC2Instance.lean` pins C2 JSON; `#print axioms` honest; not `Safe`.
+- **Slice C** — **W-9** FAA Order 2019-03-13; **W-10** GPLv3 §6; **W-11** Debian RC #802812. Institutional analogue; Construct concrete-MS still gated.
+
+**Exit:** Expectation 2 paid on authored mock; Expectation 4 paid as analogue only.
+
+### Next — C-004 same-unit MM raw (not a numbered Phase)
+
+Protocol freeze: [`witness-c004-raw.md`](witness-c004-raw.md). Finding **W-12**. Country AMCE stays W-5. CIRIS live stays Phase 5.
 
 ### Phase 5 — only if Phase 1–2 pass
 
@@ -266,7 +279,7 @@ Even if all phases hit:
 - No bridge becomes “true of frontier ASI.”
 - `MB11` / `Safe` stays open unless an authority with deployment leverage uses the tree (H5 is analogue, not AI).
 - Graded-lab / Orbit / CIL remain **method limits**, not blockers.
-- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane ([`construct.md`](construct.md)) is separate: constructibility outlining is not a Witness phase; *concrete* manuscript chapters stay blocked until Witness records at least one real stop.
+- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane ([`construct.md`](construct.md)) is separate: constructibility outlining is not a Witness phase; *concrete* manuscript chapters stay blocked until a real stop **with deployment leverage** (W-9–W-11 are analogues only).
 
 ---
 
@@ -275,8 +288,10 @@ Even if all phases hit:
 1. ~~Freeze Phase 0~~ — [`witness-phase0.md`](witness-phase0.md).
 2. ~~Phase 1 H1 C2 + H4 MASK~~ — W-1 / W-2.
 3. ~~Phase 2 H2 Linux + H3 Wikipedia~~ — W-3 fail / W-4. KernelCI and lore NAK optional later.
-4. Phase 3: H4 leaderboards + WVS/Moral Machine/RLHF (bundle + selector). Per-host protocols first.
+4. ~~Phase 3: H4 leaderboards + Moral Machine~~ — W-5 / W-6.
 5. Sibling CIRIS Phase 2 (integration harness) is optional and not a gate for W-1.
+6. ~~Phase 4: C-004 refuses + Lean pin + three H5 trees~~ — W-7–W-11.
+7. **W-12 Moral Machine raw** — [`witness-c004-raw.md`](witness-c004-raw.md). Phase 5 CIRIS live is still not a gate for W-1.
 
 ## Related files
 
@@ -291,6 +306,8 @@ Even if all phases hit:
 | [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
 | [`drafts/plans/witness-phase0.md`](witness-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
 | [`drafts/plans/witness-phase1.md`](witness-phase1.md) | Phase 1 H1/H4 protocol freeze |
-| [`drafts/plans/witness-phase2.md`](witness-phase2.md) | Phase 2 H2/H3 protocol freeze |
+| [`drafts/plans/witness-phase4.md`](witness-phase4.md) | Phase 4 freeze (C-004 leftovers, Lean pin, H5 trees) |
+| [`drafts/plans/witness-c004-raw.md`](witness-c004-raw.md) | C-004 same-unit MM raw freeze (W-12) |
+| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 4 |
 | [`experiments/witness/`](../../experiments/witness/) | W- findings, C2 fixture, Eric memo |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

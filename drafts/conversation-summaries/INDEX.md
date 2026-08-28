@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-28 | **Witness C-004 raw MM freeze** — User asked to update the plan with the raw Moral Machine experiment, freeze, and predictions. | [2026-08-28-witness-c004-raw.md](2026-08-28-witness-c004-raw.md) |
+| 2026-08-28 | **Witness Phase 4** — User asked to implement the next Witness phase (Slices A–C). | [2026-08-28-witness-phase4.md](2026-08-28-witness-phase4.md) |
+| 2026-08-28 | **Witness next tests** — User asked for a plan for the next witness tests. | [2026-08-28-witness-next.md](2026-08-28-witness-next.md) |
+| 2026-08-28 | **Witness Phase 3** — User asked to continue with Witness Phase 3 after the book/site documentation commit. | [2026-08-28-witness-phase3.md](2026-08-28-witness-phase3.md) |
 | 2026-08-28 | **Witness Phase 2** — User asked to continue Phase 2, then pushed back that catalogs lacked parent-plan fields, then: *... | [2026-08-28-witness-phase2.md](2026-08-28-witness-phase2.md) |
 | 2026-08-28 | **Witness Phase 1** — User asked to continue with Witness Phase 1 after the Phase 0 freeze. | [2026-08-28-witness-phase1.md](2026-08-28-witness-phase1.md) |
 | 2026-08-28 | **Witness Phase 0 freeze** — User asked to start Phase 0 of `drafts/plans/witness.md` (charter, measurand sheet, pre-register ... | [2026-08-28-witness-phase0.md](2026-08-28-witness-phase0.md) |
@@ -19,12 +23,10 @@
 | 2026-08-27 | **Voice Lean axioms vs chapter assumptions** — User asked for the Voice checklist item: bridge axioms vs book assumptions, reader pass (App G in... | [2026-08-27-voice-lean-axioms.md](2026-08-27-voice-lean-axioms.md) |
 | 2026-08-27 | **Voice chapterthesis ch21–ch48** — Continue Voice §2 for all remaining chapters (ch21–ch48), with remainder clauses resolvable from ... | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
 | 2026-08-27 | **Voice chapterthesis ch11–ch20** — Continue Voice §2 `chapterthesis` audits after ch01–ch10. | [2026-08-27-voice-chapterthesis-ch11-20.md](2026-08-27-voice-chapterthesis-ch11-20.md) |
-| 2026-08-27 | **Voice chapterthesis ch01–ch10** — User asked to do the first ten `chapterthesis` audits of the Voice plan sequentially. | [2026-08-27-voice-chapterthesis-ch01-10.md](2026-08-27-voice-chapterthesis-ch01-10.md) |
-| 2026-08-27 | **Scaling Trust note on Construct v2** — User asked whether Obadia’s *Without Intermediaries* (Scaling Trust) is relevant to TSA and wheth... | [2026-08-27-scaling-trust-construct-note.md](2026-08-27-scaling-trust-construct-note.md) |
 
 ## Archive by month
 
-- **2026-08** (159): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (161): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

@@ -1,0 +1,26 @@
+{
+  "protocol_version": "h5-v1.0.0",
+  "frozen": "2026-08-28",
+  "finding_id": "W-11",
+  "tree_id": "h5-debian-rc",
+  "host": "H5",
+  "root_claim": "gstreamer 0.10 ships as part of Debian 9 Stretch.",
+  "failed_or_unsupported_leaf": "The package still exists in unstable / historically shipped; that is not a Stretch release leaf.",
+  "binding_leaf": "Debian RC bug #802812 (severity serious): keep gstreamer0.10 out of testing because 0.10 is scheduled for removal. Freeze policy: unfixed RC bugs block or remove from the release.",
+  "stop": "gstreamer 0.10 is not in Debian 9.0 (2017-06-17). The RC tag, not a dashboard, is the refused leaf.",
+  "stop_kind": "remove_from_release",
+  "would_go_other_way_if_leaf_ignored": true,
+  "enforceable_handle": true,
+  "not_ai_safe": true,
+  "analogue_not_mb11": true,
+  "sources": [
+    {
+      "title": "Debian Bug #802812 — Remove gstreamer 0.10 in stretch",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=802812"
+    },
+    {
+      "title": "Debian 9 Stretch released, 2017-06-17",
+      "url": "https://www.debian.org/News/2017/20170617"
+    }
+  ]
+}

@@ -52,6 +52,24 @@ def check_p3(data: dict) -> tuple[bool, str]:
     return bool(later), f"{len(later)} world effects after WA t={wa_t} on named unit"
 
 
+LEAN_COMPOSITE = [
+    (1, False, True),
+    (2, False, False),
+    (3, False, True),
+    (5, True, False),
+    (6, True, False),
+]
+
+
+def check_lean_rows(data: dict) -> tuple[bool, str]:
+    rows = [
+        (e["t"], bool(e["world_effect"]), bool(e["named_occurrence_control"]))
+        for e in data["composite_log"]
+    ]
+    ok = rows == LEAN_COMPOSITE
+    return ok, f"Lean C2 transcription {rows}"
+
+
 def analog_cut(data: dict) -> set[str]:
     return {
         e["channel"]
@@ -69,7 +87,7 @@ def check_p4(data: dict) -> tuple[bool, str]:
 
 def main() -> int:
     data = load()
-    print(f"[1/6] fixture {FIXTURE.relative_to(ROOT)} protocol={data.get('protocol_version')}")
+    print(f"[1/7] fixture {FIXTURE.relative_to(ROOT)} protocol={data.get('protocol_version')}")
     if data.get("protocol_version") != PROTOCOL:
         print(f"FAIL protocol {data.get('protocol_version')!r} != {PROTOCOL}")
         return 1
@@ -78,15 +96,16 @@ def main() -> int:
         ("P2 composite intervenes", check_p2),
         ("P3 WA-blind", check_p3),
         ("P4 analog disagreement", check_p4),
+        ("P6 Lean row lock", check_lean_rows),
     ]
     results = []
     for i, (label, fn) in enumerate(checks, start=2):
         ok, msg = fn(data)
         status = "PASS" if ok else "FAIL"
-        print(f"[{i}/6] {status} {label}: {msg}")
+        print(f"[{i}/7] {status} {label}: {msg}")
         results.append(ok)
     p5 = all(results)
-    print(f"[6/6] {'PASS' if p5 else 'FAIL'} P5 joint: named-identity strong form undercut")
+    print(f"[7/7] {'PASS' if p5 else 'FAIL'} P5 joint: named-identity strong form undercut")
     if not p5:
         return 1
     print("OUTCOME layer_fail C-003/C-005 on H1 mock; not MB1 discharge; not Expectation 5 external")

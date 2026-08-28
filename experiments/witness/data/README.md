@@ -31,6 +31,20 @@ python3 experiments/witness/collect_bot_successor.py
 python3 experiments/witness/summarize_wiki_socks.py
 python3 experiments/witness/check_h2.py
 python3 experiments/witness/check_h3.py
+
+# Phase 3: Moral Machine country AMCE + pinned Arena Elo
+mkdir -p experiments/witness/data/moral-machine experiments/witness/data/arena
+curl -L -o experiments/witness/data/moral-machine/CountriesChangePr.csv.tar.gz \
+  https://files.osf.io/v1/resources/3hvt2/providers/osfstorage/5b54f67969e43a0010d38204
+tar -xzf experiments/witness/data/moral-machine/CountriesChangePr.csv.tar.gz \
+  -C experiments/witness/data/moral-machine
+curl -L -o experiments/witness/data/arena/elo-20250301.csv \
+  https://huggingface.co/datasets/mathewhe/chatbot-arena-elo/resolve/20250301/elo.csv
+
+python3 experiments/witness/collect_h4_bundle.py
+python3 experiments/witness/collect_h4_selector.py
+python3 experiments/witness/check_h4_bundle.py
+python3 experiments/witness/check_h4_selector.py
 ```
 
 Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

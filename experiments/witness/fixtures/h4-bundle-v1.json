@@ -1,0 +1,30 @@
+{
+  "protocol_version": "h4-bundle-v1.0.0",
+  "frozen": "2026-08-28",
+  "host": "H4",
+  "source": "OSF 3hvt2 CountriesChangePr.csv (Awad et al. Nature 2018)",
+  "n_countries": 130,
+  "n_pairs": 8385,
+  "median_geometry": 0.193009,
+  "p25_abs_delta_number": 0.017208,
+  "n_nonimplication_pairs": 928,
+  "example_pair": {
+    "a": "HUN",
+    "b": "ISR",
+    "geometry": 0.194626,
+    "abs_delta_number": 3e-05
+  },
+  "oned_column": "No. Characters [Less -> More]: Estimates",
+  "geometry_columns": [
+    "[Omission -> Commission]: Estimates",
+    "[Passengers -> Pedestrians]: Estimates",
+    "Law [Illegal -> Legal]: Estimates",
+    "Gender [Male -> Female]: Estimates",
+    "Fitness [Large -> Fit]: Estimates",
+    "Social Status [Low -> High]: Estimates",
+    "Age [Elderly -> Young]: Estimates",
+    "Species [Pets -> Humans]: Estimates"
+  ],
+  "status": "layer_fail",
+  "reason": "928 pairs with geometry \u2265 median (0.1930) and |\u0394 Number| \u2264 25th percentile (0.0172)"
+}

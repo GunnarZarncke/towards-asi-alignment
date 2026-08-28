@@ -1,6 +1,6 @@
 # Construct — TSA 2.0 construction and constructibility
 
-Status: **planning** (2026-08-24). **v1 manuscript still gated** on Witness Expectation 4 (one real stop). This file is the Construct lane checklist. Voice / Witness / Field / Spine stay as they are.
+Status: **planning** (2026-08-24). **v1 manuscript still gated** on Witness Expectation 4 **with deployment leverage** on the system under test. W-9–W-11 (FAA/GPL/Debian) are institutional analogues only; they do not open this gate. This file is the Construct lane checklist. Voice / Witness / Field / Spine stay as they are.
 
 **Trigger for opening the plan:** Ngo’s impact-counterfactual / “differentially advancing alignment” failure mode is not a missing spine invariant. It is a **constructibility** gap: TSA currently tests the optimizer’s policy and the selector on labs/artifacts, not whether people will *build* the certified class rather than narrate it.
 

@@ -294,8 +294,10 @@ lines:
     firstBuilt: "2026-08-28"
     role: >
       Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock,
-      Linux review/bug/stable git, Wikipedia RfA/SPI/bots, and published MASK honesty.
-      H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.
+      Linux review/bug/stable git, Wikipedia RfA/SPI/bots, published MASK honesty,
+      Moral Machine country AMCE, Arena Elo joined to MASK, a Lean pin of the C2 mock,
+      and three H5 institutional safety-case trees. H0 sims stay backing only.
+      Does not discharge MB bridges or prove ASI alignment.
     readmePath: experiments/witness/README.md
     findingsPath: experiments/witness/results/FINDINGS.md
     headlineFindings: []
@@ -386,7 +388,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)"
       graded-lab-simulation: "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)"
-      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1)"
+      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -397,6 +399,7 @@ coverageFeatures:
       goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
       lab-simulation: "Stipulated; report-content ontology"
       graded-lab-simulation: "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)"
+      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7)"
   - id: mb3
     label: "MB3 Bearer maps (who values apply to)"
     cells:
@@ -417,7 +420,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (chosen deception, board corrections)"
       lab-simulation: "Playbooks + access capture + report divergence"
       graded-lab-simulation: "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)"
-      witness: "H1 WA deferral bypass (W-1); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
+      witness: "H1 WA deferral bypass (W-1); Lean pin of the same bypass (W-8); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
   - id: mb5
     label: "MB5 Successor closure / ontology shift"
     cells:
@@ -439,6 +442,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D3.1 population selection (LS-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (LS-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned"
       graded-lab-simulation: "Phase 8 throughput selection null (GL-23--GL-27); R-MB6a variation null harness pass (GL-81); R-MB6b EAI-gate confirmatory SKIP after growth (GL-84)"
+      witness: "Arena Elo (20250301) vs MASK honesty: Spearman Elo×honest −0.105, Elo×accuracy +0.811 (W-6)"
   - id: mb7
     label: "MB7 Hidden capability / cost of faking monitors"
     cells:
@@ -480,7 +484,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "Report vs monitor contradiction surface"
       graded-lab-simulation: "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)"
-      witness: "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3)"
+      witness: "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3); GPLv2 source-offer green, install handle silent until GPLv3 §6 (W-10)"
   - id: mb10
     label: "MB10 Successor / measurement forgeability"
     cells:

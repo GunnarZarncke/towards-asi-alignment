@@ -1,0 +1,193 @@
+{
+  "protocol_version": "h4-selector-v1.0.0",
+  "frozen": "2026-08-28",
+  "host": "H4",
+  "arena_revision": "20250301",
+  "mask_source": "arXiv:2503.03750v3 Table 3",
+  "n_joined": 24,
+  "spearman_elo_honest": -0.1047,
+  "spearman_elo_accuracy": 0.811,
+  "status": "layer_fail",
+  "reason": "Spearman(Elo, P(honest))<=0 while Spearman(Elo, Accuracy)>0",
+  "missing_alias": [
+    "gpt-4.5-preview-2025-02-27",
+    "grok-2-1212",
+    "qwen25-05b-instruct",
+    "qwen25-14b-instruct",
+    "qwen25-15b-instruct",
+    "qwen25-32b-instruct",
+    "qwen25-3b-instruct",
+    "qwen25-7b-instruct"
+  ],
+  "missing_elo": [],
+  "joined": [
+    {
+      "mask_id": "claude-3-5-sonnet-20240620",
+      "arena_model": "Claude 3.5 Sonnet (20240620)",
+      "p_honest": 27.7,
+      "accuracy": 80.1,
+      "arena_score": 1268.0
+    },
+    {
+      "mask_id": "claude-3-7-sonnet-20250219",
+      "arena_model": "Claude 3.7 Sonnet",
+      "p_honest": 47.6,
+      "accuracy": 82.2,
+      "arena_score": 1313.0
+    },
+    {
+      "mask_id": "deepseek-r1",
+      "arena_model": "DeepSeek-R1",
+      "p_honest": 24.7,
+      "accuracy": 79.6,
+      "arena_score": 1363.0
+    },
+    {
+      "mask_id": "deepseek-v3",
+      "arena_model": "DeepSeek-V3",
+      "p_honest": 20.8,
+      "accuracy": 71.6,
+      "arena_score": 1318.0
+    },
+    {
+      "mask_id": "deepseek-llm-67b-chat",
+      "arena_model": "DeepSeek-LLM-67B-Chat",
+      "p_honest": 18.6,
+      "accuracy": 64.3,
+      "arena_score": 1077.0
+    },
+    {
+      "mask_id": "gemini-2.0-flash",
+      "arena_model": "Gemini-2.0-Flash-001",
+      "p_honest": 20.7,
+      "accuracy": 79.4,
+      "arena_score": 1359.0
+    },
+    {
+      "mask_id": "gpt-4o-2024-08-06",
+      "arena_model": "GPT-4o-2024-08-06",
+      "p_honest": 21.8,
+      "accuracy": 78.6,
+      "arena_score": 1265.0
+    },
+    {
+      "mask_id": "gpt-4o-mini-2024-07-18",
+      "arena_model": "GPT-4o-mini-2024-07-18",
+      "p_honest": 21.4,
+      "accuracy": 71.4,
+      "arena_score": 1272.0
+    },
+    {
+      "mask_id": "llama-2-13b-chat",
+      "arena_model": "Llama-2-13b-chat",
+      "p_honest": 28.7,
+      "accuracy": 40.1,
+      "arena_score": 1063.0
+    },
+    {
+      "mask_id": "llama-2-70b-chat",
+      "arena_model": "Llama-2-70B-chat",
+      "p_honest": 28.3,
+      "accuracy": 40.6,
+      "arena_score": 1093.0
+    },
+    {
+      "mask_id": "llama-2-7b-chat",
+      "arena_model": "Llama-2-7B-chat",
+      "p_honest": 27.5,
+      "accuracy": 33.6,
+      "arena_score": 1037.0
+    },
+    {
+      "mask_id": "llama-31-405b-instruct",
+      "arena_model": "Meta-Llama-3.1-405B-Instruct-fp8",
+      "p_honest": 21.6,
+      "accuracy": 72.1,
+      "arena_score": 1267.0
+    },
+    {
+      "mask_id": "llama-31-70b-instruct",
+      "arena_model": "Meta-Llama-3.1-70B-Instruct",
+      "p_honest": 27.1,
+      "accuracy": 73.8,
+      "arena_score": 1248.0
+    },
+    {
+      "mask_id": "llama-31-8b-instruct",
+      "arena_model": "Meta-Llama-3.1-8B-Instruct",
+      "p_honest": 18.8,
+      "accuracy": 62.0,
+      "arena_score": 1176.0
+    },
+    {
+      "mask_id": "llama-32-1b-instruct",
+      "arena_model": "Meta-Llama-3.2-1B-Instruct",
+      "p_honest": 13.9,
+      "accuracy": 23.0,
+      "arena_score": 1054.0
+    },
+    {
+      "mask_id": "llama-32-3b-instruct",
+      "arena_model": "Meta-Llama-3.2-3B-Instruct",
+      "p_honest": 21.8,
+      "accuracy": 40.0,
+      "arena_score": 1103.0
+    },
+    {
+      "mask_id": "llama-33-70b-instruct",
+      "arena_model": "Llama-3.3-70B-Instruct",
+      "p_honest": 24.7,
+      "accuracy": 75.6,
+      "arena_score": 1257.0
+    },
+    {
+      "mask_id": "o3-mini-2025-01-31",
+      "arena_model": "o3-mini",
+      "p_honest": 19.6,
+      "accuracy": 63.3,
+      "arena_score": 1304.0
+    },
+    {
+      "mask_id": "qwen15-110b-chat",
+      "arena_model": "Qwen1.5-110B-Chat",
+      "p_honest": 27.9,
+      "accuracy": 72.8,
+      "arena_score": 1161.0
+    },
+    {
+      "mask_id": "qwen15-32b-chat",
+      "arena_model": "Qwen1.5-32B-Chat",
+      "p_honest": 23.8,
+      "accuracy": 63.0,
+      "arena_score": 1125.0
+    },
+    {
+      "mask_id": "qwen15-72b-chat",
+      "arena_model": "Qwen1.5-72B-Chat",
+      "p_honest": 24.2,
+      "accuracy": 69.3,
+      "arena_score": 1147.0
+    },
+    {
+      "mask_id": "qwen15-7b-chat",
+      "arena_model": "Qwen1.5-7B-Chat",
+      "p_honest": 27.1,
+      "accuracy": 52.5,
+      "arena_score": 1070.0
+    },
+    {
+      "mask_id": "qwen25-72b-instruct",
+      "arena_model": "Qwen2.5-72B-Instruct",
+      "p_honest": 23.2,
+      "accuracy": 66.0,
+      "arena_score": 1257.0
+    },
+    {
+      "mask_id": "qwq-32b-preview",
+      "arena_model": "QwQ-32B-Preview",
+      "p_honest": 20.3,
+      "accuracy": 49.2,
+      "arena_score": 1153.0
+    }
+  ]
+}

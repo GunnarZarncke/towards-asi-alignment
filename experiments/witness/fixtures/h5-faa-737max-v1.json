@@ -1,0 +1,26 @@
+{
+  "protocol_version": "h5-v1.0.0",
+  "frozen": "2026-08-28",
+  "finding_id": "W-9",
+  "tree_id": "h5-faa-737max",
+  "host": "H5",
+  "root_claim": "Boeing 737-8 and 737-9 may operate in US air commerce after Lion Air 610.",
+  "failed_or_unsupported_leaf": "Emergency AD 2018-23-51 (2018-11-07): Airplane Flight Manual runaway-stabilizer procedures. Checklist/AFM leaf; passenger-carrying flights continued.",
+  "binding_leaf": "FAA Emergency Order of Prohibition, 2019-03-13, covering 737-8 and 737-9. Independent investigation plus an order operators must obey.",
+  "stop": "737-8/737-9 would not take off in US commerce under the Order until later airworthiness action (including AD 2020-24-02 software/AFM/trim/AOA/readiness-flight conditions) allowed return.",
+  "stop_kind": "ground",
+  "would_go_other_way_if_leaf_ignored": true,
+  "enforceable_handle": true,
+  "not_ai_safe": true,
+  "analogue_not_mb11": true,
+  "sources": [
+    {
+      "title": "FAA Emergency Order of Prohibition (737-8 and 737-9), 2019-03-13",
+      "url": "https://www.federalregister.gov/documents/2019/03/18/2019-05424/emergency-order-of-prohibition"
+    },
+    {
+      "title": "Emergency AD 2018-23-51 (runaway stabilizer AFM), 2018-11-07",
+      "url": "https://www.federalregister.gov/documents/2018/11/07/2018-24444/airworthiness-directives-the-boeing-company-airplanes"
+    }
+  ]
+}

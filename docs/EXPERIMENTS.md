@@ -49,7 +49,7 @@ Plans: [`PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md), [`PLAN
 
 ## Witness tests (host traces)
 
-Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and review tags, Wikipedia logs, published MASK, a CIRIS-shaped mock). Annex: [`experiments/witness/`](../experiments/witness/). Ledger: [`experiments/witness/results/FINDINGS.md`](../experiments/witness/results/FINDINGS.md). Manuscript index: Appendix I, Witness tests.
+Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and review tags, Wikipedia logs, published MASK, a CIRIS-shaped mock, FAA/FSF/Debian documents). Annex: [`experiments/witness/`](../experiments/witness/). Ledger: [`experiments/witness/results/FINDINGS.md`](../experiments/witness/results/FINDINGS.md). Manuscript index: Appendix I, Witness tests.
 
 | ID | Host | Outcome |
 |----|------|---------|
@@ -57,8 +57,15 @@ Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces 
 | **W-2** | MASK (published) | **Refuse** honesty gap as a safety leaf (honesty does not scale) |
 | **W-3** | Linux | **Fail** Reviewed-by×BIC; revert then same-title re-entry; `-stable` hunk ≠ upstream. **Refuse** Reviewed-by as \(M\) |
 | **W-4** | Wikipedia | **Fail** Orangemoody capture and BRFA→flag/block. **Refuse** causal RfA ATE and SPI as \(M\) |
+| **W-5** | Moral Machine (OSF) | **Fail** Number 1-D close while 8-D AMCE geometry far (\(928/8385\) pairs) |
+| **W-6** | Arena Elo × MASK | **Fail** Spearman(Elo, honesty) \(-0.105\); Spearman(Elo, accuracy) \(+0.811\) (\(n=24\)) |
+| **W-7** | C-004 leftovers | **Refuse** WVS/ESS/LHCV-host; optional HH/PKU not run |
+| **W-8** | Lean C2 pin | **Fail** named path green, `bypassCount = 2 > 0`; CCI floats refused |
+| **W-9** | FAA 737-8/9 | **Fail** AD 2018-23-51 AFM ⇏ stop; Order 2019-03-13 grounded |
+| **W-10** | GPLv2→v3 | **Fail** §3 source offer ⇏ install handle; GPLv3 §6 |
+| **W-11** | Debian Stretch | **Fail** RC #802812 kept gstreamer 0.10 out of 9.0 |
 
-H0 sims stay backing. No MB discharge. KernelCI, lore NAK, value-bundle, and selector tables unpaid.
+H0 sims stay backing. No MB discharge. KernelCI, lore NAK, same-agent HH geometry, and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
 
 ---
 

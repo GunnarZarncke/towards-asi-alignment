@@ -1,0 +1,26 @@
+{
+  "protocol_version": "h5-v1.0.0",
+  "frozen": "2026-08-28",
+  "finding_id": "W-10",
+  "tree_id": "h5-gpl-tivoization",
+  "host": "H5",
+  "root_claim": "A vendor can ship GPLv2-covered firmware on a locked device: publish corresponding source, keep users from installing a modified binary.",
+  "failed_or_unsupported_leaf": "GPLv2 §3: distribute object code with a written source offer. Constraint text holds; the user's install/run-modified handle does not fire (tivoization).",
+  "binding_leaf": "GPLv3 §6 Installation Information: information required to install and execute modified versions on the User Product, from the same source that required the corresponding source.",
+  "stop": "New license text after the silent gap; successors that adopt GPLv3 take on the install handle. Does not rewrite already-shipped GPLv2-only devices.",
+  "stop_kind": "license_patch",
+  "would_go_other_way_if_leaf_ignored": true,
+  "enforceable_handle": true,
+  "not_ai_safe": true,
+  "analogue_not_mb11": true,
+  "sources": [
+    {
+      "title": "GNU GPLv3, section 6 (Installation Information)",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+    },
+    {
+      "title": "FSF: Why Upgrade to GPLv3 (tivoization)",
+      "url": "https://www.gnu.org/licenses/rms-why-gplv3.html"
+    }
+  ]
+}
