@@ -6,11 +6,12 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-28 | **AI Village HF related observations** — No standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card. | [2026-08-28-ai-village-hf-related-observations.md](2026-08-28-ai-village-hf-related-observations.md) |
-| 2026-08-28 | **Assumption key-only boxes + App B** — A-* boxes show key only (no chapter counter); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. | [2026-08-28-assumption-boxes-appb-cleanup.md](2026-08-28-assumption-boxes-appb-cleanup.md) |
+| 2026-08-28 | **Witness Phase 0 freeze** — User asked to start Phase 0 of `drafts/plans/witness.md` (charter, measurand sheet, pre-register ... | [2026-08-28-witness-phase0.md](2026-08-28-witness-phase0.md) |
 | 2026-08-28 | **TSA shipping benchmark** — User asked for a benchmark of how quickly TSA content ships: investigate GitHub history, cross-in... | [2026-08-28-shipping-benchmark.md](2026-08-28-shipping-benchmark.md) |
 | 2026-08-28 | **Project identity, not manuscript-first** — User: README still leads with “research manuscript”; the project is no longer only or primarily a... | [2026-08-28-project-not-manuscript.md](2026-08-28-project-not-manuscript.md) |
-| 2026-08-28 | **Alignment Crux Map grant draft** — User asked for a grantmaking.ai project listing for TSA mapping work, then for a <$100k rewrite (... | [2026-08-28-alignment-crux-map.md](2026-08-28-alignment-crux-map.md) |
+| 2026-08-28 | **Assumption key-only boxes and App B cleanup** — Continue A-* assumption work: Option 1 (key-only box headings, no chapter counter); App B MIRI/fi... | [2026-08-28-assumption-boxes-appb-cleanup.md](2026-08-28-assumption-boxes-appb-cleanup.md) |
+| 2026-08-28 | **Alignment Crux Map grant draft** — Grantmaking.ai listing; then funder-facing language (no TSA/Lean vocabulary required). | [2026-08-28-alignment-crux-map.md](2026-08-28-alignment-crux-map.md) |
+| 2026-08-28 | **AI Village HF related observations** — User asked whether Tekofsky’s LessWrong post comparing AI Village to the OpenAI Hugging Face post... | [2026-08-28-ai-village-hf-related-observations.md](2026-08-28-ai-village-hf-related-observations.md) |
 | 2026-08-27 | **Voice §5 progress wording** — User asked to do “what counts as progress” from the Voice plan. | [2026-08-27-voice-progress.md](2026-08-27-voice-progress.md) |
 | 2026-08-27 | **Voice Lean axioms vs chapter assumptions** — User asked for the Voice checklist item: bridge axioms vs book assumptions, reader pass (App G in... | [2026-08-27-voice-lean-axioms.md](2026-08-27-voice-lean-axioms.md) |
 | 2026-08-27 | **Voice chapterthesis ch21–ch48** — Continue Voice §2 for all remaining chapters (ch21–ch48), with remainder clauses resolvable from ... | [2026-08-27-voice-chapterthesis-ch21-48.md](2026-08-27-voice-chapterthesis-ch21-48.md) |
@@ -20,13 +21,10 @@
 | 2026-08-27 | 2026-08-27-quiz-phase-2 | [2026-08-27-quiz-phase-2.md](2026-08-27-quiz-phase-2.md) |
 | 2026-08-27 | 2026-08-27-quiz-phase-1 | [2026-08-27-quiz-phase-1.md](2026-08-27-quiz-phase-1.md) |
 | 2026-08-27 | **Quiz items from news takeaways** — User: news takeaways usually refer to the manuscript; add matching quiz inventory if missing, but... | [2026-08-27-quiz-news-takeaways.md](2026-08-27-quiz-news-takeaways.md) |
-| 2026-08-27 | **Quiz multi-correct floor** — The bank keyed lists of people as a single option; readers never saw more than one correct checkb... | [2026-08-27-quiz-multi-correct.md](2026-08-27-quiz-multi-correct.md) |
-| 2026-08-27 | **Quiz length-tell implementation** — User: implement the length-tell check/fix. | [2026-08-27-quiz-length-tell.md](2026-08-27-quiz-length-tell.md) |
-| 2026-08-27 | **Quiz length tell (essays + ch01–ch24)** — Length-tell fix for essay takeaways and `chapter()` entries ch01–ch24 only. Do not change ch25–ch... | [2026-08-27-quiz-length-tell-essays-ch01-24.md](2026-08-27-quiz-length-tell-essays-ch01-24.md) |
 
 ## Archive by month
 
-- **2026-08** (153): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (156): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

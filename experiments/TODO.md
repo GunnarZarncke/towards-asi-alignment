@@ -9,6 +9,7 @@ experiment folder.
   Eric Moore ask on named-identity vs real intervening unit. Charter and phased
   plan (updated 2026-08-04):
   [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
+  Witness Phase 0 frozen 2026-08-28: [`drafts/plans/witness-phase0.md`](../drafts/plans/witness-phase0.md).
   **Phase 1 (now):** narrative + trace mock (C2 tool-scout), Eric memo;
   optional sibling sim bite. **Phase 2:** CIRISAgent integration harness.
   **Phase 3 (deferred):** Lens cohort + Coherence Ratchet battery (≥3 agents

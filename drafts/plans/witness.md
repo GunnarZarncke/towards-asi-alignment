@@ -1,8 +1,8 @@
 # Witness — deployment witness plan
 
-Status: **draft plan** (2026-08-21). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
+Status: **Phase 0 frozen** (2026-08-28). Freeze sheet: [`witness-phase0.md`](witness-phase0.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4).
 
-- [ ] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse
+- [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
 
 ## Goal
 
@@ -186,12 +186,9 @@ Four claims are **problem statements**. Witness = independent replication on a h
 
 ## Phasing
 
-### Phase 0 — freeze (1–2 weeks)
+### Phase 0 — freeze (**done** 2026-08-28)
 
-- One-page charter: hosts H0–H5, which claim each may pay, stop rules (ET-1/ET-2 style).
-- Pre-register pass/fail/refuse per expectation; no sixth sim line.
-- **Measurand freeze sheet:** table mapping each composite index → sub-component chapters → concrete estimator → dataset/sim → experiment script; plus **verifiability labels** (*observable*, *i.i.d.-robust*, *adversarially verifiable up to \(\kappa\)*); note scalar residues (ch40 GLI, ch31 \(\mathcal{K}\)) pending vector/status treatment.
-- **Exit:** signed-off scope doc (this file + Phase 0 addendum if needed) + published freeze sheet.
+Canonical freeze: [`witness-phase0.md`](witness-phase0.md) (charter, pass/fail/refuse table, measurand sheet). Amend that file to reopen. This section is the index, not a second freeze.
 
 ### Phase 1 — highest leverage (parallel)
 
@@ -269,9 +266,9 @@ Even if all phases hit:
 
 ## Suggested first actions
 
-1. Freeze Phase 0 charter (edit § Host systems + § Phasing exit criteria + measurand freeze sheet).
+1. ~~Freeze Phase 0~~ — [`witness-phase0.md`](witness-phase0.md).
 2. Execute sibling CIRIS Phase 1 (C2 trace mock + memo) in parallel with MASK protocol draft.
-3. Add finding stubs under `experiments/` or `review/` only when protocols are frozen — not before.
+3. Add finding stubs under `experiments/` or `review/` only when **per-host** protocols are frozen — not before.
 
 ## Related files
 
@@ -284,4 +281,5 @@ Even if all phases hit:
 | [`chapters/ch42-safety-case.tex`](../../chapters/ch42-safety-case.tex) | Refusal test definition |
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
 | [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
+| [`drafts/plans/witness-phase0.md`](witness-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |
