@@ -14,9 +14,10 @@ interface Props {
   columns: CoverageColumn[];
   features: CoverageFeature[];
   cardHref?: (slug: string) => string;
+  lineHref?: (lineId: string) => string;
 }
 
-const { columns, features, cardHref } = Astro.props;
+const { columns, features, cardHref, lineHref } = Astro.props;
 
 const MB_FEATURE_CARDS: Record<string, string> = {
   mb1: "mb1-boundary-estimator-soundness",
@@ -45,17 +46,22 @@ function featureCardHref(featureId: string) {
 <section id="coverage-matrix" class="experiment-coverage">
   <h2>Feature coverage</h2>
   <p class="side-panel-meta">
-    Rows are book bridges and audit concepts. Columns are experiment lines in build order.
-    Cells summarize what each line implements or stress-tests — not every scenario name.
+    Rows are book bridges and audit concepts. Column headers link to each line.
+    Cells summarize what that line implements or stress-tests — not every scenario name.
   </p>
   <div class="table-wrap coverage-scroll">
     <table>
       <thead>
         <tr>
           <th scope="col">Book feature</th>
-          {columns.map((col) => (
-            <th scope="col">{col.short}</th>
-          ))}
+          {columns.map((col) => {
+            const href = lineHref?.(col.id);
+            return (
+              <th scope="col">
+                {href ? <a href={href}>{col.short}</a> : col.short}
+              </th>
+            );
+          })}
         </tr>
       </thead>
       <tbody>
