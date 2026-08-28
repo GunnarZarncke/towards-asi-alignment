@@ -28,4 +28,4 @@ User asked to implement the next Witness phase (`witness-next.md` Slices A–C).
 - `formal/AlignmentProofSpine/WitnessC2Instance.lean`
 
 ## Commits
-- (none unless requested)
+- `6c7396f1` Record Witness W-5–W-11 and freeze the same-unit Moral Machine protocol.

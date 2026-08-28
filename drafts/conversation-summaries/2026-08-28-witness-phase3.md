@@ -27,4 +27,4 @@ User asked to continue with Witness Phase 3 after the book/site documentation co
 - `experiments/witness/fixtures/h4-selector-v1.json`
 
 ## Commits
-- none
+- `6c7396f1` Record Witness W-5–W-11 and freeze the same-unit Moral Machine protocol.

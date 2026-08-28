@@ -19,4 +19,4 @@ User asked for a plan for the next witness tests (after MM/LHCV discussion).
 - `drafts/plans/witness-next.md`
 
 ## Commits
-- none
+- `6c7396f1` Record Witness W-5–W-11 and freeze the same-unit Moral Machine protocol.
