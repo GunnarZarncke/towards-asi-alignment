@@ -27,4 +27,4 @@ User asked to document Witness experimental results in the book and site, and to
 - `metadata/experiments.yml`
 
 ## Commits
-- pending (end of session)
+- `8354d489` Index witness W-1–W-4 in Appendix I and split experiments into three classes.
