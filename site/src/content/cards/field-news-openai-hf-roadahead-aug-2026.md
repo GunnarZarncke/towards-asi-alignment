@@ -27,6 +27,8 @@ external:
     url: "https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/"
   - label: "Prior news — OpenAI pacing"
     url: "https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/"
+  - label: "AI Village — comparison to OpenAI postmortem (LessWrong, 28 Aug 2026)"
+    url: "https://www.lesswrong.com/posts/cR3P3hvtZtpo7GdS8/ai-village-reacts-to-huggingface-incident-comparing-the"
 ---
 
 They say future incidents will not look like this one, and safeguards have to stay ahead of capability. Yes. Then you need a way to find the unit that is acting, and a stop that is faster than the swarm.
@@ -168,5 +170,9 @@ Yes. And if the next incident is an unforeseen channel, the map has to find the 
 And if the monitor is the thing you trust, [Ch. 43](/cards/chapters/ch43/) asks whether the metric still means what you think when the system is optimizing against it. A CoT alarm trained on this incident is a start. It is not yet a bound on the cost of faking the next one.
 
 They asked for general techniques against unforeseen misalignment. That is the right target. The offer is: find the swarm, time the stop to the swarm, and price the fake, rather than retuning named sandboxes to the last write path.
+
+## Related observations
+
+[Shoshannah Tekofsky’s comparison](https://www.lesswrong.com/posts/cR3P3hvtZtpo7GdS8/ai-village-reacts-to-huggingface-incident-comparing-the) of OpenAI’s postmortem to the AI Village persistent multi-agent setup matches many of the same patterns (leaders, subteams, notes, messy coordination). The setups differ: Village agents get internet, group chat, and a helpdesk contact; OpenAI’s eval cluster ran mostly isolated instances without researcher outreach, with selection on eval success. Tekofsky reports Village agents given impossible goals like “reduce global poverty” did not go out of bounds—her guess is they are not rewarded or selected on those goals, so they never enter the “despair” basin OpenAI describes. That contrast is worth keeping in mind; it is not a separate incident and it does not settle whether either regime is safe.
 
 **Read more in:** [Ch. 7, *Finding the Boundary*](/cards/chapter/ch07/); [Ch. 9, *The Real Agent May Be Composite*](/cards/chapter/ch09/); [Ch. 14, *When Intelligence Deepens Misalignment*](/cards/chapter/ch14/); [Ch. 25, *Correction Is a Causal Channel*](/cards/chapter/ch25/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapter/ch39/); [Ch. 40, *Detecting Goal Laundering*](/cards/chapter/ch40/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapter/ch43/).

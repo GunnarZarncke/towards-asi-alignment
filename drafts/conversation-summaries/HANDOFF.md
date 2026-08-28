@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (assumption boxes + App B).
+Last updated: 2026-08-28 (AI Village HF related observations).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-28:** **AI Village HF related observations** — no standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card (setup contrast, poverty/no-despair). Log: `2026-08-28-ai-village-hf-related-observations.md`.
 - **2026-08-28:** **Assumption key-only boxes + App B** — `bookassumption` (A-* key in heading); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. Log: `2026-08-28-assumption-boxes-appb-cleanup.md`.
 - **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.
 - **2026-08-28:** **Alignment Crux Map** — funder-facing listing (jobs not jargon); 3 or 10 reviews at $1k. [`drafts/alignment-crux-map.md`](../alignment-crux-map.md). Log: `2026-08-28-alignment-crux-map.md`.
