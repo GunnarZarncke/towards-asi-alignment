@@ -1,6 +1,6 @@
 # Experimental evidence
 
-> **Structured map:** build order, ledger links, headline findings, and the coverage matrix live in [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
+> **Methodology (canonical):** [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) — freeze, preregistration, blind generation, Witness failure conditions. **Structured map:** [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
 
 > **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (`MB1`–`MB10`).
 

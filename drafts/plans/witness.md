@@ -11,6 +11,8 @@ Status: **W-15 recorded** (2026-08-28). Phase 5 CIRIS stack C2 **null** ([`witne
 - [x] **W-13** — Pandemic Dictator Game refuse ([`witness-c004-pdg.md`](witness-c004-pdg.md))
 - [x] **W-14** — CPC2015 Exp. 1 geometry vs ΔEV null ([`witness-c004-cpc.md`](witness-c004-cpc.md))
 - [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`witness-phase5.md`](witness-phase5.md))
+- [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`witness-phase0.md`](witness-phase0.md) Exp. 3)
+- [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
 
 ## Goal
 
@@ -251,6 +253,9 @@ Protocol: [`witness-phase5.md`](witness-phase5.md) (`c2-v2.0.0`). Finding **W-15
 
 ## Verification template (every phase)
 
+**Methodology-level failure conditions** (when the Witness program itself fails):
+[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness tests.
+
 Each finding file must include:
 
 ```md
@@ -299,6 +304,8 @@ Even if all phases hit:
 7. ~~**W-12 Moral Machine raw**~~ — recorded.
 8. ~~**W-13 PDG**~~ — refuse. ~~**W-14 CPC2015**~~ — null.
 9. ~~**W-15 CIRIS stack C2**~~ — null P3. Remaining later hosts in [`witness-c004-raw.md`](witness-c004-raw.md). Sibling Phase 3 Lens cohort unpaid.
+10. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness).
+11. **Independent reproduction** — M8; W-12 and W-3 fixtures first.
 
 ## Related files
 
@@ -318,6 +325,7 @@ Even if all phases hit:
 | [`drafts/plans/witness-c004-pdg.md`](witness-c004-pdg.md) | PDG freeze (W-13 refuse) |
 | [`drafts/plans/witness-c004-cpc.md`](witness-c004-cpc.md) | CPC2015 freeze (W-14 null) |
 | [`drafts/plans/witness-phase5.md`](witness-phase5.md) | CIRIS stack C2 freeze (W-15 null) |
-| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 4 |
+| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 5 |
+| [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + Witness methodology (M1–M8) |
 | [`experiments/witness/`](../../experiments/witness/) | W- findings, C2 fixture, Eric memo |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

@@ -6,6 +6,8 @@ related:
   - et-external-transfer
   - bridge-assumptions
 external:
+  - label: Full methodology (GitHub)
+    url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/METHODOLOGY.md
   - label: Experiment lines overview
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md
   - label: Lab-layer simulation findings (positive and negative, numbered in sequence)
@@ -26,6 +28,6 @@ None of the companion testbeds are large enough, or realistic enough, to prove a
 
 **Report negative results next to positive ones, and keep them.** Every experiment line keeps a running, numbered log of findings, positive and negative, in the order they occurred. A method that works in one setting and fails in a harder or noisier one is recorded as both — the failure is not deleted once a later fix is found, and a fix is not allowed to imply the earlier failure didn't happen. Detectors are also tested against baseline "twin" runs (the same episode with any deceptive behavior removed) to check that a detector is not simply flagging visible activity rather than an actual violation.
 
-These four habits do not turn a small testbed into strong evidence. What they buy is legibility: a reader can check whether a specific claim in this project rests on a frozen, blind, pre-registered result, or on something weaker — and the negative-results ledgers make that check possible instead of asking for trust.
+These four habits do not turn a small testbed into strong evidence. What they buy is legibility: a reader can check whether a specific claim in this project rests on a frozen, blind, pre-registered result, or on something weaker — and the negative-results ledgers make that check possible instead of asking for trust. Full discipline (blind-generation lessons, external tests, Witness M1–M8): [methodology doc on GitHub](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/METHODOLOGY.md).
 
 The companion [experiments hub](/experiments/) splits **simulations**, **external tests** (frozen instruments on substrates this project did not build), and **witness tests** (fail or refuse on traces that already exist). None of the three is a proof on a frontier system.

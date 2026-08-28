@@ -24,7 +24,7 @@ Build: `cd formal && lake exe cache get && lake build`
 
 ## Building the simulations
 
-Five experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map):
+Five experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map; [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) for shared discipline — freeze, preregistration, blind generation, Witness rules):
 
 | Path | Role |
 |------|------|

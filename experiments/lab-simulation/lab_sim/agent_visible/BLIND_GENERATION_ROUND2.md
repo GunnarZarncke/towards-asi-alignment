@@ -1,5 +1,7 @@
 # Blind playbook generation, round 2 (committee/DM/file step-kinds)
 
+> **Shared discipline:** [`docs/METHODOLOGY.md`](../../../../docs/METHODOLOGY.md). This file is the **binding protocol** for lab-sim round 2 only.
+
 **Purpose.** Round 1 ([`../../BLIND_GENERATION.md`](../../BLIND_GENERATION.md),
 `generated_playbooks_v1.json`)
 predates D4/D1: its permitted context describes only the solo build-review-

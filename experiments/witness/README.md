@@ -4,6 +4,8 @@ Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and fi
 
 **Claim strength:** methodology-building. A layer **fail** or **refuse** is the paid outcome. H0 sims remain backing only.
 
+**Methodology:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness tests.
+
 | Phase | Protocol | Findings |
 |-------|----------|----------|
 | 0 | [`drafts/plans/witness-phase0.md`](../../drafts/plans/witness-phase0.md) | (scope only) |

@@ -1,5 +1,7 @@
 # Blind generation — graded lab simulation
 
+> **Shared discipline:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) (core habits + blind-generation lessons). This file is the **binding protocol** for this line only.
+
 Two separately blinded generators. Neither may see detectors, severity,
 ecology-BIQ, EAI operationalization, bridge targets, or prior FINDINGS.
 

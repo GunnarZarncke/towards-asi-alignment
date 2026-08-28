@@ -1,5 +1,7 @@
 # Blind detector generation protocol
 
+> **Shared discipline:** [`docs/METHODOLOGY.md`](../../../../docs/METHODOLOGY.md). This file is the **binding protocol** for lab-sim S7 blind detectors only.
+
 **Purpose.** Every unit-discovery detector in this line so far
 (`uad.py`, `uad_mi.py`, `uad_cmi.py`, `uad_intervention.py`) was written by
 the same author who wrote the scenarios it is scored against (LS-24

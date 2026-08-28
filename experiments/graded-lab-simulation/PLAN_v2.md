@@ -379,6 +379,6 @@ null, and that comparison is itself the planned ch34 upgrade.
 - `results/TERMINAL_SUMMARY.md` — v1 closure summary
 - `REPRODUCING.md` — v1 reproduction instructions + final v1 commit hash
 - `results/FINDINGS.md` — continuous record; v2 entries start at GL-32
-- `../BLIND_GENERATION_METHODOLOGY.md` — cross-line blind-generation
+- [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation
   lessons (not specific to graded-lab), written from this program's
   C3 post-mortem plus prior lines' blind-generation protocols

@@ -5,10 +5,9 @@ cruxes. Each line lives in its own subfolder with a **self-contained README**
 (simulation overview, package layout, entry points) and a **CHANGELOG** (version
 or phase milestones — not duplicated in README intros).
 
-Narrative map: [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md). Structured index
+Narrative map: [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md). **Methodology:**
+[`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md). Structured index
 (companion site): [`metadata/experiments.yml`](../metadata/experiments.yml).
-Cross-line blind-generation methodology:
-[`BLIND_GENERATION_METHODOLOGY.md`](BLIND_GENERATION_METHODOLOGY.md).
 Open tasks: [`TODO.md`](TODO.md).
 
 ## Build order

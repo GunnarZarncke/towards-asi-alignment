@@ -1,5 +1,7 @@
 # Blind playbook generation protocol
 
+> **Shared discipline:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) (core habits + blind-generation lessons). This file is the **binding protocol** for this line only.
+
 **Purpose.** The Phase 4 baseline repertoire (`lab_sim/playbooks.py`,
 `PLAYBOOKS_BY_ROLE`) and the Phase 5 detectors (`detectors.py`, `severity.py`)
 were written by the same author against each other — DESIGN.md's freeze

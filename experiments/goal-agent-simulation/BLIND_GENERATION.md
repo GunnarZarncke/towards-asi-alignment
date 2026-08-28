@@ -1,5 +1,7 @@
 # Blind action generation protocol
 
+> **Shared discipline:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) (core habits + blind-generation lessons). This file is the **binding protocol** for this line only.
+
 **Purpose.** Phase 1's detectors and its 6-action repertoire were written by
 the same author against each other, so detection and transfer numbers were
 partly circular (`results/FINDINGS.md` GA-8). This protocol breaks the

@@ -19,7 +19,7 @@ engineering — multi-actor `role_population`, `ExogenousWorkloadEngine`,
 the pilot harness (now honestly framed), `ecology_override_path`
 statefulness fix, the end-to-end C3+C4 test, and the corrected Poisson
 trigger — plus the blinding lessons (`BLIND_GENERATION.md` "V2-2b",
-`experiments/BLIND_GENERATION_METHODOLOGY.md`). n=1 `role_population`
+[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation). n=1 `role_population`
 keeps tests and smoke runs cheap; multi-actor is opt-in per ecology.
 
 **Historical plan text below is kept as a record of what was designed
@@ -53,7 +53,7 @@ feedback could not have converged on C3 by construction, independent of
 grower quality.
 
 The general lesson (write-up owed separately — see
-`experiments/BLIND_GENERATION_METHODOLOGY.md`, to be written alongside
+[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation, to be written alongside
 this plan): **blind the measurement, never the phenomenon.** Real
 blinding regimes (double-blind trials, blinded peer review, blinded
 audits) blind the evaluator's rubric while leaving the blinded party full

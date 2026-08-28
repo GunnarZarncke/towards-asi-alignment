@@ -62,7 +62,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Structure | 10 parts, 48 chapters, 9 appendices in the PDF (A–I) |
 | Field crosswalk | 30 agenda records, 24 matrix rows, 29 companion cards (TSA matrix-only); MB1–MB11 incl. MB4a; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
-| Experiments | Tentative sanity checks — sims, external tests (ET-1–4), witness tests (W-1–W-4) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix I ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
+| Experiments | Tentative sanity checks — sims, external tests (ET-1–4), witness tests (W-1–W-15) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix I ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
 | Formal spine | Lean 4 dependency spine — field-claim finite models, `BridgeCruxes`, construction interface — [`formal/README.md`](formal/README.md) |
 | Symbol census | Symbol/formula census with contribution audit and dependency graphs — [`metadata/symbol-census/README.md`](metadata/symbol-census/README.md) |
 
@@ -77,7 +77,8 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) | Versioned release history (newest first) |
 | [`docs/BUILD.md`](docs/BUILD.md) | PDF build, Lean, companion site |
 | [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md) | Status, parts, bibliography, ledgers, contributing |
-| [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy → graded-lab lines, external transfer, sibling precursors |
+| [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy → graded-lab lines, external transfer, witness tests, sibling precursors |
+| [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) | Freeze, preregistration, blind generation, Witness failure conditions |
 | [`reference/field-agendas/README.md`](reference/field-agendas/README.md) | Field agenda index, matrix, inter-agenda glossary |
 | [`papers/README.md`](papers/README.md) | Spin-out papers (ET-4 Secret Loyalties, feedback-horizon gap, verifier construction, alignment under selection); frozen sources and PDFs |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute (Lean, sims, writing) |

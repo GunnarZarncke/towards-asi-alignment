@@ -2419,7 +2419,7 @@ real-world analog and is the structural reason the one emergent,
 run-only-observable criterion could not converge regardless of grower
 quality or round count. Written up in full, with a lesson catalogue and
 a pre-registration checklist for future criteria, in the new
-`experiments/BLIND_GENERATION_METHODOLOGY.md` (cross-line, not specific
+`docs/METHODOLOGY.md` (cross-line, not specific
 to graded-lab).
 
 **Plan (not started).** `PLAN_V2_2B.md` (new file, this session):

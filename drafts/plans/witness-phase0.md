@@ -1,5 +1,7 @@
 # Witness Phase 0 — freeze
 
+**Shared methodology:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness tests (M1–M8, finding shape). This file is the **charter freeze** only.
+
 **Frozen:** 2026-08-28. Reopen only by editing this file (named amendment). Parent: [`witness.md`](witness.md).
 
 This is a **scope freeze**, not a finding. No host protocol has been executed under this charter. Finding files wait until a per-host protocol is frozen (parent plan: suggested first actions).

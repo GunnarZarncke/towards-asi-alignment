@@ -17,7 +17,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | Lane / board | Verb or role | Plan | Size | Depends on |
 |--------------|--------------|------|------|------------|
 | **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | L (in progress) | — |
-| **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (W-1–W-15) | Next: SCOTUS / BBQ / HH in [`witness-c004-raw.md`](../drafts/plans/witness-c004-raw.md). Sibling Phase 3 Lens unpaid; Construct still needs a stop with deployment leverage |
+| **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (W-1–W-15) | **Open:** adversarial \(M\) (Exp. 3) or named closure; independent reproduction (M8, W-12/W-3 first). Later hosts: SCOTUS / BBQ / HH in [`witness-c004-raw.md`](../drafts/plans/witness-c004-raw.md). Lens unpaid; Construct needs stop with deployment leverage |
 | **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
 | **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct.md`](../drafts/plans/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Witness Exp. 4. Process-condition outline: not gated |
 | **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine.md`](../drafts/plans/spine.md) | ongoing | Witness Exp. 2 (fixture only) |
@@ -42,6 +42,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | **Research directions** | `metadata/open-problems.md` |
 | **Tracked uncertainties** | `metadata/uncertainty-ledger.md` |
 | **Cross-cutting chores** | *this file* (boards only) |
+| **Experiment methodology** | [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) |
 | **Lane plans (checklists)** | `drafts/plans/*.md` |
 | **Experiment lines** | `experiments/*/TODO.md`, `REPRODUCTION.md` |
 | **Session history** | `drafts/conversation-summaries/` (not an active task list) |
