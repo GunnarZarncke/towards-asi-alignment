@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (Witness W-1–W-15 site synthesis and commit).
+Last updated: 2026-08-29 (methodology consolidated to `docs/METHODOLOGY.md`).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-29:** **Methodology consolidation** — `docs/METHODOLOGY.md` (shared discipline + Witness M1–M8); deleted scattered copies; adversarial \(M\) + repro TODOs. Log: `2026-08-29-methodology-consolidation.md`.
 - **2026-08-28:** **Witness site synthesis** — W-1–W-15 on `/experiments/#witness` and `/experiments/findings/witness/`; bounded sprint summary in `experiments.yml` and `docs/EXPERIMENTS.md`. Log: `2026-08-28-witness-site-end.md`.
 - **2026-08-28:** **Witness W-15 CIRIS stack C2** — mock-LLM harness null P3 (stub 0 hits). [`witness-phase5.md`](../plans/witness-phase5.md). Log: `2026-08-28-witness-phase5-ciris.md`.
 - **2026-08-28:** **Witness W-13 / W-14** — PDG refuse (no eligible adult table; 2020 adolescent SPSS not scored); CPC2015 Exp. 1 geometry acc 0.435 vs ΔEV 0.542 vs intercept 0.545 (null). [`witness-c004-pdg.md`](../plans/witness-c004-pdg.md), [`witness-c004-cpc.md`](../plans/witness-c004-cpc.md). Log: `2026-08-28-witness-w13-w14.md`.

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-29 | **Methodology consolidation** — `docs/METHODOLOGY.md`; Witness M1–M8; adversarial \(M\) + repro TODOs; deleted redirect stubs. | [2026-08-29-methodology-consolidation.md](2026-08-29-methodology-consolidation.md) |
 | 2026-08-28 | **Witness site synthesis (W-1–W-15)** — User asked to document Witness on the site, end session, and commit. | [2026-08-28-witness-site-end.md](2026-08-28-witness-site-end.md) |
 | 2026-08-28 | **Witness W-13 PDG refuse and W-14 CPC2015 null** — User asked to continue with the Witness plan after W-12. Written next line is later C-004 hosts (... | [2026-08-28-witness-w13-w14.md](2026-08-28-witness-w13-w14.md) |
 | 2026-08-28 | **Witness W-12 raw Moral Machine** — User asked to run the frozen raw Moral Machine protocol (`h4-mm-raw-v1.0.0`), then a small valida... | [2026-08-28-witness-w12.md](2026-08-28-witness-w12.md) |

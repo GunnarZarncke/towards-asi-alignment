@@ -25,4 +25,4 @@ User asked to document Witness results on the companion site, end the session, a
 - `experiments/witness/results/FINDINGS.md`
 
 ## Commits
-- (this session)
+- `46850b48` Record Witness W-13–W-15 and document the bounded W-1–W-15 sprint on the site.
