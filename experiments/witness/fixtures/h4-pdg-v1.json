@@ -1,0 +1,42 @@
+{
+  "protocol_version": "h4-pdg-v1.0.0",
+  "frozen": "2026-08-28",
+  "host": "H4",
+  "status": "refuse",
+  "reason": "Source 1 (Urban Rotterdam longitudinal PDG on OSF h5x2a/x69t7 and EUR 10.25397/eur.14916531) has no public person\u00d7wave\u00d7target table (prereg PDFs and/or missing Dataverse records). Source 2 (van de Groep et al. 2020, doi:10.34894/c81eja) lists unrestricted SPSS files including Brainlinks_Covid19_Giving_time_target_GEE.sav, but that dump is the PLOS ONE daily-diary cohort ages 10\u201320. Protocol refuses scoring that microdata. Do not substitute Moral Machine or paper bar charts.",
+  "osf_notes": [
+    "osf h5x2a files: ['Second Addendum Preregistration_Urban Wellbeing_20210519.pdf', 'Addendum_Preregistration_Urban Wellbeing during COVID-19.docx', 'Preregistration_Urban Wellbeing_18062020.pdf']",
+    "osf x69t7 files: ['Preregistration_Dubois_etal_ProsocialGivingCOVID-19.pdf']"
+  ],
+  "osf_tabular_listed": false,
+  "dataverse_other_notes": [
+    "doi:10.25397/eur.14916531: fetch error HTTP Error 404: Not Found",
+    "doi:10.25397/eur.c.5809043: fetch error HTTP Error 404: Not Found",
+    "doi:10.25397/eur.12783161: fetch error HTTP Error 404: Not Found"
+  ],
+  "dataverse_c81eja_note": "doi:10.34894/c81eja: JSON ok",
+  "dataverse_c81eja_files": [
+    "Brainlinks_Covid19_Altruistic_SD_GEE.sav",
+    "Brainlinks_Covid19_DIRE_GEE.sav",
+    "Brainlinks_Covid19_Dire_SD_GEE.sav",
+    "Brainlinks_Covid19_Empathicconcern_GEE.sav",
+    "Brainlinks_Covid19_GCS_GEE.sav",
+    "Brainlinks_Covid19_Giving__targets_GEE.sav",
+    "Brainlinks_Covid19_Giving_time_target_GEE.sav",
+    "Brainlinks_Covid19_Merged_English_Complete.sav",
+    "Brainlinks_Covid19_Merged_English_shortened.sav",
+    "Brainlinks_Covid19_OPA_GEE.sav",
+    "Brainlinks_Covid19_OPA_SD_GEE.sav",
+    "Brainlinks_Covid19_PT_GEE.sav",
+    "Brainlinks_Covid19_PTM_Altruistic_GEE.sav",
+    "Brainlinks_Covid19_SVO_GEE.sav",
+    "Brainlinks_Covid19_Tension_GEE.sav",
+    "Brainlinks_Covid19_tension_SD_GEE.sav",
+    "Brainlinks_Covid19_Vigor_GEE.sav",
+    "Brainlinks_Covid19_vigor_SD_GEE.sav",
+    "README File_DailyDiaryStudy.docx"
+  ],
+  "n_units_included": 0,
+  "unit_key": null,
+  "scored": false
+}

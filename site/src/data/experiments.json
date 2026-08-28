@@ -12,7 +12,7 @@
     },
     "witness": {
       "title": "Witness tests",
-      "blurb": "Frozen fail/refuse protocols on hosts whose traces already exist (kernel history, Wikipedia logs, published evals, a CIRIS-shaped mock). A green dashboard with no stop is not a pass. Not a sixth simulation line.\n"
+      "blurb": "Frozen fail/refuse protocols on hosts whose traces already exist (kernel history, Wikipedia logs, published evals, a CIRIS-shaped mock). Fifteen findings W-1–W-15 (Aug 2026 sprint): layer fails, refusals, and two nulls (CPC2015, mock-LLM CIRIS stack). A green dashboard with no stop is not a pass. Not a sixth simulation line.\n"
     }
   },
   "negativeResultsCardPath": "/cards/concept/negative-results/",
@@ -502,7 +502,7 @@
       "title": "Witness tests",
       "location": "experiments/witness/",
       "firstBuilt": "2026-08-28",
-      "role": "Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock, Linux review/bug/stable git, Wikipedia RfA/SPI/bots, published MASK honesty, Moral Machine country AMCE and raw same-respondent dilemmas, Arena Elo joined to MASK, a Lean pin of the C2 mock, and three H5 institutional safety-case trees. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
+      "role": "Deployment-class fail/refuse on hosts with existing traces: fifteen findings W-1–W-15 (Aug 2026 sprint). Strongest quantitative: W-12 same-respondent Moral Machine geometry (acc 0.682 vs Number 1-D 0.576). W-3/W-4 falsify simple checklist implications on Linux and Wikipedia. W-1 authored C2 mock and W-8 Lean pin hold the named-path bypass shape; W-15 mock-LLM stack null means no live bypass demonstrated. W-13 PDG refuse; W-14 CPC2015 null. H5 trees (W-9–W-11) are institutional analogues only. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
       "readmePath": "experiments/witness/README.md",
       "findingsPath": "experiments/witness/results/FINDINGS.md",
       "headlineFindings": [
@@ -517,7 +517,10 @@
         "After Lion Air 610, emergency **AD 2018-23-51** (2018-11-07) required AFM runaway-trim procedures; 737-8/737-9 passenger flights continued. The **Emergency Order of Prohibition (2019-03-13)** grounded those types in US commerce. If the Order leaf is ignored, the root (“may operate”) stays the AD-2018 world. Institutional analogue of Expectation 4. Not AI `Safe`; not MB11; does not lift Construct concrete-MS (no deployment leverage on an AI system).",
         "GPLv2 §3 can stay green (source with object) while tivoization keeps the user from installing a modified binary. GPLv3 §6 Installation Information is the later constraint. Same App M narrative, now a Chapter-42-shaped tree. Analogue only; copyright may not transfer to model weights (App M). Not AI `Safe`.",
         "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`.",
-        "On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \\(\\Delta\\) Number \\(=\\) sum of the 20 type \\(\\Delta\\)s exactly — joint \\(\\hat\\beta\\) on Number vs types is not identified. Shared \\(\\beta\\) converged; some \\(\\alpha_i\\) still move at \\(10^{-3}\\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5."
+        "On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \\(\\Delta\\) Number \\(=\\) sum of the 20 type \\(\\Delta\\)s exactly — joint \\(\\hat\\beta\\) on Number vs types is not identified. Shared \\(\\beta\\) converged; some \\(\\alpha_i\\) still move at \\(10^{-3}\\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5.",
+        "Frozen later-host protocol `h4-pdg-v1.0.0` did **not** score giving. OSF [h5x2a](https://osf.io/h5x2a) / [x69t7](https://osf.io/x69t7) are preregistration PDFs only. EUR DOIs `10.25397/eur.14916531` / `c.5809043` / `12783161` returned 404 on DataverseNL. Metadata for `10.34894/c81eja` lists unrestricted SPSS including `Brainlinks_Covid19_Giving_time_target_GEE.sav`, but that file is the van de Groep et al. 2020 PLOS ONE **daily-diary cohort ages 10–20**; the protocol refuses scoring that microdata. Do not substitute Moral Machine or paper means. Bearer-profile MAE margins unpaid.",
+        "On Zenodo CPC2015 Experiment 1 (`SubjID`; 93 750 rows; **113** included subjects; 65 625 / 28 125 train/test), held-out mean accuracy is intercept **0.545**, ΔEV 1-D **0.542**, geometry **0.435**. Both frozen +0.05 margins **fail** (geometry −0.107 vs 1-D, −0.110 vs intercept). Outcome **null**: this freeze did not detect a reusable multi-feature direction that beats person intercept or scalar ΔEV. Matches the allowed ambig./null branch of prediction 2; predictions 1 and 3 did not hold. Risk/ambiguity lab class only. **Not** a C-004 moral-bundle result. Not LHCV. Not MB2. Geometry Newton still moving at \\(10^{-3}\\) after 80 steps (report; not retuned).",
+        "On a local mock-LLM CIRISAgent (`c2-v2.0.0`; existing API after `/v1/setup/complete`, no wipe), the harness logged `$defer` with a named-path task id and asserted Verify/Lens green. The world-effect stub at `127.0.0.1:8765/c2-world-effect` recorded **0 hits**. Composite log has no `world_effect: true` after WA \\(t=4\\). Outcome **null**: this stack freeze did not show WA-blind composite bypass (P3). Matches registered prediction 3 (post-defer tool path uncertain). First two scout messages shared one `task_id` (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`). Lens scalars are **asserted**, not CIRISLens. W-1 authored mock still shows the logical shape. Not MB1 discharge. Not live CIRISLens cohort (sibling Phase 3). Charter C1 fallback unpaid."
       ],
       "links": [
         {
@@ -600,7 +603,7 @@
     },
     {
       "lineId": "witness",
-      "text": "Fail or refuse on named leaves using traces that already exist. Does not pin Lean WorkedInstance yet, does not pay a real H5 stop, and does not price faking the tags.\n",
+      "text": "Fifteen frozen hosts (W-1–W-15): layer fails, refusals, and two nulls. Strongest quantitative: W-12 same-respondent Moral Machine geometry. W-3/W-4 falsify simple checklist implications on Linux and Wikipedia. W-15 null means no live bypass demonstrated — W-1 authored mock still holds the logical shape. Does not discharge MB bridges, price faking tags, or prove deployable alignment. Later hosts (SCOTUS, BBQ, HH/PKU) and sibling Lens cohort unpaid.\n",
       "lineTitle": "Witness tests"
     }
   ],
@@ -651,7 +654,7 @@
         "goal-agent-simulation": "—",
         "lab-simulation": "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)",
         "graded-lab-simulation": "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)",
-        "witness": "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8)"
+        "witness": "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
       }
     },
     {
@@ -665,7 +668,7 @@
         "goal-agent-simulation": "Indirect (welfare deltas in blind reps)",
         "lab-simulation": "Stipulated; report-content ontology",
         "graded-lab-simulation": "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)",
-        "witness": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12)"
+        "witness": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14)"
       }
     },
     {

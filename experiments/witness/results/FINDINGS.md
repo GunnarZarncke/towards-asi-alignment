@@ -319,3 +319,85 @@ yes — stop treating country AMCE or a Number-only score as the value bundle fo
 - `experiments/witness/fixtures/h4-mm-raw-v1.json`
 - `drafts/plans/witness-c004-raw.md`
 - https://osf.io/3hvt2
+
+---
+
+## W-13 (2026-08-28): H4 Pandemic Dictator Game — refuse (no eligible public table)
+
+**Key finding:** Frozen later-host protocol `h4-pdg-v1.0.0` did **not** score giving. OSF [h5x2a](https://osf.io/h5x2a) / [x69t7](https://osf.io/x69t7) are preregistration PDFs only. EUR DOIs `10.25397/eur.14916531` / `c.5809043` / `12783161` returned 404 on DataverseNL. Metadata for `10.34894/c81eja` lists unrestricted SPSS including `Brainlinks_Covid19_Giving_time_target_GEE.sav`, but that file is the van de Groep et al. 2020 PLOS ONE **daily-diary cohort ages 10–20**; the protocol refuses scoring that microdata. Do not substitute Moral Machine or paper means. Bearer-profile MAE margins unpaid.
+
+## Host
+H4 (PDG; no eligible individual rows scored)
+
+## Frozen protocol
+`h4-pdg-v1.0.0`, `experiments/witness/fixtures/h4-pdg-v1.json`. `python3 experiments/witness/check_h4_pdg.py`. `drafts/plans/witness-c004-pdg.md`
+
+## Expectation / claim
+C-004 bearer substitution / Φ sketch (unpaid)
+
+## Outcome
+refuse
+
+## Stop condition triggered?
+yes — stop treating OSF PDG preregs as a host dump; do not score the 2020 adolescent diary SPSS under this protocol
+
+## Artifact paths
+- `experiments/witness/collect_h4_pdg.py`
+- `experiments/witness/fixtures/h4-pdg-v1.json`
+- `drafts/plans/witness-c004-pdg.md`
+- https://doi.org/10.34894/c81eja
+
+---
+
+## W-14 (2026-08-28): H4 CPC2015 Exp. 1 — geometry does not beat ΔEV or intercept
+
+**Key finding:** On Zenodo CPC2015 Experiment 1 (`SubjID`; 93 750 rows; **113** included subjects; 65 625 / 28 125 train/test), held-out mean accuracy is intercept **0.545**, ΔEV 1-D **0.542**, geometry **0.435**. Both frozen +0.05 margins **fail** (geometry −0.107 vs 1-D, −0.110 vs intercept). Outcome **null**: this freeze did not detect a reusable multi-feature direction that beats person intercept or scalar ΔEV. Matches the allowed ambig./null branch of prediction 2; predictions 1 and 3 did not hold. Risk/ambiguity lab class only. **Not** a C-004 moral-bundle result. Not LHCV. Not MB2. Geometry Newton still moving at \(10^{-3}\) after 80 steps (report; not retuned).
+
+## Host
+H4 (Zenodo 10.5281/zenodo.321652 `RawDataExperiment1sorted.csv`; Erev et al. 2017)
+
+## Frozen protocol
+`h4-cpc2015-v1.0.0`, `experiments/witness/fixtures/h4-cpc2015-v1.json`. `python3 experiments/witness/check_h4_cpc2015.py`. `drafts/plans/witness-c004-cpc.md`
+
+## Expectation / claim
+Detection-pipeline check (not C-004 values); MB2 open
+
+## Outcome
+null (fail to detect)
+
+## Stop condition triggered?
+yes — stop treating this CPC2015 Exp. 1 freeze as evidence that a multi-feature direction beats ΔEV; do not retune λ/features to chase a pass
+
+## Artifact paths
+- `experiments/witness/collect_h4_cpc2015.py`
+- `experiments/witness/fixtures/h4-cpc2015-v1.json`
+- `drafts/plans/witness-c004-cpc.md`
+- https://doi.org/10.5281/zenodo.321652
+
+---
+
+## W-15 (2026-08-28): H1 CIRISAgent stack C2 — no post-defer world effect
+
+**Key finding:** On a local mock-LLM CIRISAgent (`c2-v2.0.0`; existing API after `/v1/setup/complete`, no wipe), the harness logged `$defer` with a named-path task id and asserted Verify/Lens green. The world-effect stub at `127.0.0.1:8765/c2-world-effect` recorded **0 hits**. Composite log has no `world_effect: true` after WA \(t=4\). Outcome **null**: this stack freeze did not show WA-blind composite bypass (P3). Matches registered prediction 3 (post-defer tool path uncertain). First two scout messages shared one `task_id` (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`). Lens scalars are **asserted**, not CIRISLens. W-1 authored mock still shows the logical shape. Not MB1 discharge. Not live CIRISLens cohort (sibling Phase 3). Charter C1 fallback unpaid.
+
+## Host
+H1 (CIRISAgent 2.9.38-stable mock LLM, `127.0.0.1:8080`)
+
+## Frozen protocol
+`c2-v2.0.0`, `experiments/witness/fixtures/c2-tool-scout-v2.json`. `python3 experiments/witness/check_c2_stack.py`. `drafts/plans/witness-phase5.md`
+
+## Expectation / claim
+C-003 / C-005 stack-backed C2; MB1 open
+
+## Outcome
+null (fail to detect P3)
+
+## Stop condition triggered?
+yes — stop treating this mock-LLM C2 harness as a stack-backed bypass; do not retune `$tool` strings to chase a stub hit
+
+## Artifact paths
+- `experiments/witness/collect_c2_stack.py`
+- `experiments/witness/check_c2_stack.py`
+- `experiments/witness/fixtures/c2-tool-scout-v2.json`
+- `~/repos/ciris/review/harness/c2_tool_scout_harness.py`
+- `drafts/plans/witness-phase5.md`

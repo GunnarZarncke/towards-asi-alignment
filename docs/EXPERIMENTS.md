@@ -65,8 +65,13 @@ Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces 
 | **W-10** | GPLv2→v3 | **Fail** §3 source offer ⇏ install handle; GPLv3 §6 |
 | **W-11** | Debian Stretch | **Fail** RC #802812 kept gstreamer 0.10 out of 9.0 |
 | **W-12** | Moral Machine raw | **Fail** Number 1-D as same-unit policy; **pass** geometry detection (acc 0.682 vs 0.576 vs 0.529; \(n=20{,}000\) UserIDs). Bootstrap margins stay ≥0.05; Number collinear with type counts |
+| **W-13** | Pandemic Dictator Game | **Refuse** (no eligible public adult table; 2020 adolescent SPSS not scored) |
+| **W-14** | CPC2015 Exp. 1 | **Null** geometry vs ΔEV/intercept (acc 0.435 vs 0.542 vs 0.545; \(n=113\)) |
+| **W-15** | CIRISAgent stack C2 | **Null** P3: mock-LLM `$defer` recorded; world-effect stub 0 hits |
 
-H0 sims stay backing. No MB discharge. KernelCI, lore NAK, later C-004 hosts, and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
+H0 sims stay backing. No MB discharge. KernelCI, lore NAK, remaining later C-004 hosts (SCOTUS/BBQ/HH), and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
+
+**Sprint synthesis (W-1–W-15).** The Witness lane demonstrates that frozen fail/refuse protocols can return concrete counterexamples, nulls, and justified refusals instead of automatically green dashboards. That is useful epistemic discipline; it is not evidence that the book's proposed measurements reliably identify aligned systems. Strongest paid results: W-3/W-4 (external socio-technical records falsify simple checklist implications), W-12 (same-respondent geometry beats Number-only on held-out Moral Machine choices), W-2/W-7/W-13 (refusal when data or units are wrong). W-14 and W-15 were recorded as nulls without retuning. W-15 does not show deferral stopped a previously working bypass — only that no post-defer world effect was demonstrated on this mock-LLM stack freeze. Companion site: `/experiments/#witness`, key findings at `/experiments/findings/witness/`.
 
 ---
 

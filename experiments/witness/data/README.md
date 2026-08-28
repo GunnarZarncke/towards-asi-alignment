@@ -51,6 +51,15 @@ curl -L -o experiments/witness/data/moral-machine/SharedResponses.csv.tar.gz \
   https://files.osf.io/v1/resources/3hvt2/providers/osfstorage/5b54f679c86a8c0010444782
 python3 experiments/witness/collect_h4_mm_raw.py
 python3 experiments/witness/check_h4_mm_raw.py
+
+# W-13: PDG — metadata probe only (do not download adolescent SPSS)
+python3 experiments/witness/collect_h4_pdg.py
+python3 experiments/witness/check_h4_pdg.py
+
+# W-14: CPC2015 Experiment 1
+mkdir -p experiments/witness/data/cpc2015
+python3 experiments/witness/collect_h4_cpc2015.py
+python3 experiments/witness/check_h4_cpc2015.py
 ```
 
 Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

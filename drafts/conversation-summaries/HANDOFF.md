@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (Witness W-12 validation rerun).
+Last updated: 2026-08-28 (Witness W-1–W-15 site synthesis and commit).
 
 ---
 
@@ -39,6 +39,9 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-28:** **Witness site synthesis** — W-1–W-15 on `/experiments/#witness` and `/experiments/findings/witness/`; bounded sprint summary in `experiments.yml` and `docs/EXPERIMENTS.md`. Log: `2026-08-28-witness-site-end.md`.
+- **2026-08-28:** **Witness W-15 CIRIS stack C2** — mock-LLM harness null P3 (stub 0 hits). [`witness-phase5.md`](../plans/witness-phase5.md). Log: `2026-08-28-witness-phase5-ciris.md`.
+- **2026-08-28:** **Witness W-13 / W-14** — PDG refuse (no eligible adult table; 2020 adolescent SPSS not scored); CPC2015 Exp. 1 geometry acc 0.435 vs ΔEV 0.542 vs intercept 0.545 (null). [`witness-c004-pdg.md`](../plans/witness-c004-pdg.md), [`witness-c004-cpc.md`](../plans/witness-c004-cpc.md). Log: `2026-08-28-witness-w13-w14.md`.
 - **2026-08-28:** **Witness W-12 raw MM + validation** — same-unit geometry acc 0.682 vs Number 0.576 vs intercept 0.529; bootstrap margins stay ≥0.05; Number collinear with type counts. [`witness-c004-raw.md`](../plans/witness-c004-raw.md). Log: `2026-08-28-witness-w12.md`.
 - **2026-08-28:** **Coverage page slim** — experiment-line cards off `/experiments/coverage/` (hub link to `/experiments/`); build order folded; matrix column headers link to line cards; Witness stays a matrix column. Log: `2026-08-28-coverage-page-slim.md`.
 - **2026-08-28:** **Witness C-004 raw MM freeze** — W-12 same-unit policy-effect protocol + predictions; dictator/CPC/SCOTUS/BBQ later. [`witness-c004-raw.md`](../plans/witness-c004-raw.md). Log: `2026-08-28-witness-c004-raw.md`.
@@ -51,7 +54,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **2026-08-28:** **AI Village HF related observations** — no standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card (setup contrast, poverty/no-despair). Log: `2026-08-28-ai-village-hf-related-observations.md`.
 - **2026-08-28:** **Assumption key-only boxes + App B** — `bookassumption` (A-* key in heading); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. Log: `2026-08-28-assumption-boxes-appb-cleanup.md`.
 - **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.
-- **2026-08-28:** **Alignment Crux Map** — funder-facing listing (jobs not jargon); 3 or 10 reviews at $1k. [`drafts/alignment-crux-map.md`](../alignment-crux-map.md). Log: `2026-08-28-alignment-crux-map.md`.
+- **2026-08-28:** **Alignment Crux Map** — listing + S-process $50k / 15 steps; Redwood immediately after correctable-AI lab. [`drafts/alignment-crux-map/`](../alignment-crux-map/). Log: `2026-08-28-alignment-crux-map.md`.
 - **2026-08-28:** **Project identity** — README no longer leads with “research manuscript.” `INSTRUCTIONS.md` scoped to the book; PDF Current Status companion-site sentence is project-level. Log: `2026-08-28-project-not-manuscript.md`.
 - **2026-08-27:** **A-* in home chapters** — named `assumption` boxes; `\akey{A-00x}` links; no App B lookup table. Log: `2026-08-27-manuscript-a-keys.md`.
 - **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.

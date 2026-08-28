@@ -26,8 +26,9 @@ kinds:
     title: Witness tests
     blurb: >
       Frozen fail/refuse protocols on hosts whose traces already exist (kernel history,
-      Wikipedia logs, published evals, a CIRIS-shaped mock). A green dashboard with no stop
-      is not a pass. Not a sixth simulation line.
+      Wikipedia logs, published evals, a CIRIS-shaped mock). Fifteen findings W-1–W-15 (Aug 2026
+      sprint): layer fails, refusals, and two nulls (CPC2015, mock-LLM CIRIS stack). A green
+      dashboard with no stop is not a pass. Not a sixth simulation line.
 
 ledgers:
   - lineId: embedded-simulation
@@ -293,10 +294,12 @@ lines:
     location: experiments/witness/
     firstBuilt: "2026-08-28"
     role: >
-      Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock,
-      Linux review/bug/stable git, Wikipedia RfA/SPI/bots, published MASK honesty,
-      Moral Machine country AMCE and raw same-respondent dilemmas, Arena Elo joined to MASK, a Lean pin of the C2 mock,
-      and three H5 institutional safety-case trees. H0 sims stay backing only.
+      Deployment-class fail/refuse on hosts with existing traces: fifteen findings W-1–W-15
+      (Aug 2026 sprint). Strongest quantitative: W-12 same-respondent Moral Machine geometry
+      (acc 0.682 vs Number 1-D 0.576). W-3/W-4 falsify simple checklist implications on Linux
+      and Wikipedia. W-1 authored C2 mock and W-8 Lean pin hold the named-path bypass shape;
+      W-15 mock-LLM stack null means no live bypass demonstrated. W-13 PDG refuse; W-14 CPC2015
+      null. H5 trees (W-9–W-11) are institutional analogues only. H0 sims stay backing only.
       Does not discharge MB bridges or prove ASI alignment.
     readmePath: experiments/witness/README.md
     findingsPath: experiments/witness/results/FINDINGS.md
@@ -355,8 +358,12 @@ howToRead:
     text: Hackathon organism and replay; not a frontier discharge.
   - lineId: witness
     text: >
-      Fail or refuse on named leaves using traces that already exist. Does not pin Lean
-      WorkedInstance yet, does not pay a real H5 stop, and does not price faking the tags.
+      Fifteen frozen hosts (W-1–W-15): layer fails, refusals, and two nulls. Strongest
+      quantitative: W-12 same-respondent Moral Machine geometry. W-3/W-4 falsify simple
+      checklist implications on Linux and Wikipedia. W-15 null means no live bypass
+      demonstrated — W-1 authored mock still holds the logical shape. Does not discharge MB
+      bridges, price faking tags, or prove deployable alignment. Later hosts (SCOTUS, BBQ,
+      HH/PKU) and sibling Lens cohort unpaid.
 
 coverageColumns:
   - id: agency-detect
@@ -388,7 +395,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)"
       graded-lab-simulation: "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)"
-      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8)"
+      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -399,7 +406,7 @@ coverageFeatures:
       goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
       lab-simulation: "Stipulated; report-content ontology"
       graded-lab-simulation: "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)"
-      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12)"
+      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14)"
   - id: mb3
     label: "MB3 Bearer maps (who values apply to)"
     cells:

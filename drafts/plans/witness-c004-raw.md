@@ -98,12 +98,12 @@ If (1) fails and (2) holds: ambig. or null as the table says. If pairing/IDs fai
 
 ## Later / alternative hosts (not this freeze)
 
-Do not fetch these until needed; **W-12 is recorded**.
+Do not fetch these until needed; **W-12–W-14 are recorded**.
 
 | Host | Why later | What it could pay |
 |------|-----------|-------------------|
-| Pandemic Dictator Game (longitudinal, multiple targets) | Bearer substitution + stability; little tradeoff diversity | Care/giving direction + \(\Phi\) sketch |
-| CPC2015/CPC18 raw (`SubjID`, repeated gambles) | Method check (held-out latent direction); not moral bundles | Detection pipeline, not C-004 values |
+| Pandemic Dictator Game | **W-13 refuse** ([`witness-c004-pdg.md`](witness-c004-pdg.md)) | Care/giving + \(\Phi\) sketch (unpaid) |
+| CPC2015/CPC18 raw (`SubjID`, repeated gambles) | **W-14 null** Exp. 1 ([`witness-c004-cpc.md`](witness-c004-cpc.md)); CPC18 unpaid | Detection pipeline, not C-004 values |
 | Supreme Court Database (justice-centered) | Observational; doctrine/coalition confound | Institutional reusable policy directions |
 | BBQ published per-example logits | Bearer/identity policy effect in a **model**; bias more than bundles | Artificial-system \(\Phi\)-like test |
 | HH-RLHF / PKU-SafeRLHF dual labels | Still optional; need same judge/policy across varied contexts | Same-unit 1-D vs harm axis |

@@ -1,0 +1,48 @@
+{
+  "protocol_version": "h4-cpc2015-v1.0.0",
+  "frozen": "2026-08-28",
+  "host": "H4",
+  "source": "Zenodo 10.5281/zenodo.321652 RawDataExperiment1sorted.csv",
+  "source_fetch": "https://zenodo.org/api/records/321652/files/RawDataExperiment1sorted.csv/content",
+  "unit_key": "SubjID",
+  "n_csv_rows": 93750,
+  "n_skip": 0,
+  "n_units_included": 113,
+  "n_train_obs": 65625,
+  "n_test_obs": 28125,
+  "dropped_geom_columns": [],
+  "feature_names": [
+    "delta_ev",
+    "Amb",
+    "LotNum",
+    "Corr",
+    "pHa",
+    "pHb"
+  ],
+  "heldout_accuracy": {
+    "intercept": 0.54531,
+    "oned_delta_ev": 0.542439,
+    "geometry": 0.435379
+  },
+  "heldout_logloss": {
+    "intercept": 0.706929,
+    "oned_delta_ev": 0.71097,
+    "geometry": 0.829255
+  },
+  "margin_geometry_minus_oned": -0.10706,
+  "margin_geometry_minus_intercept": -0.109931,
+  "beta_oned": [
+    0.113241
+  ],
+  "beta_geometry": [
+    0.111585,
+    -0.388601,
+    0.014588,
+    -1.437247,
+    -1.289117,
+    -0.771674
+  ],
+  "status": "null",
+  "lambda": 1.0,
+  "margin": 0.05
+}
