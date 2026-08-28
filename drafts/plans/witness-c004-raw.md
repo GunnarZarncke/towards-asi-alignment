@@ -104,7 +104,7 @@ Do not fetch these until needed; **W-12–W-14 are recorded**.
 |------|-----------|-------------------|
 | Pandemic Dictator Game | **W-13 refuse** ([`witness-c004-pdg.md`](witness-c004-pdg.md)) | Care/giving + \(\Phi\) sketch (unpaid) |
 | CPC2015/CPC18 raw (`SubjID`, repeated gambles) | **W-14 null** Exp. 1 ([`witness-c004-cpc.md`](witness-c004-cpc.md)); CPC18 unpaid | Detection pipeline, not C-004 values |
-| Supreme Court Database (justice-centered) | Observational; doctrine/coalition confound | Institutional reusable policy directions |
+| Supreme Court Database (justice-centered) | **W-16 pass** ([`witness-c004-scotus.md`](witness-c004-scotus.md)); observational; doctrine/coalition confound | Institutional reusable policy directions (detection pipeline; not v2 CCI) |
 | BBQ published per-example logits | Bearer/identity policy effect in a **model**; bias more than bundles | Artificial-system \(\Phi\)-like test |
 | HH-RLHF / PKU-SafeRLHF dual labels | Still optional; need same judge/policy across varied contexts | Same-unit 1-D vs harm axis |
 | Wikipedia admin/RfA repeated acts | Heavy feature reconstruction | Institutional C-004 analogue |

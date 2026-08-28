@@ -29,6 +29,7 @@ did (prompts, schemas, frozen JSON, checkers).
 | **Site / coverage matrix** | [`metadata/experiments.yml`](../metadata/experiments.yml) |
 | **Witness charter + Exp. 1–6 pass/fail/refuse** | [`drafts/plans/witness-phase0.md`](../drafts/plans/witness-phase0.md) |
 | **Witness phase index + finding template** | [`drafts/plans/witness.md`](../drafts/plans/witness.md) |
+| **Witness v2 (plan only)** | [`drafts/plans/witness-v2.md`](../drafts/plans/witness-v2.md) — institutional CCI + unpaid MBs; SCOTUS stays v1 |
 | **Witness per-host freezes** | `drafts/plans/witness-phase*.md`, `witness-c004-*.md` |
 | **Witness ledger + checkers** | [`experiments/witness/`](../experiments/witness/) |
 | **Sim blind-generation (binding)** | [`goal-agent-simulation/BLIND_GENERATION.md`](../experiments/goal-agent-simulation/BLIND_GENERATION.md), [`lab-simulation/BLIND_GENERATION.md`](../experiments/lab-simulation/BLIND_GENERATION.md), [`lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](../experiments/lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md), [`lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](../experiments/lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md), [`graded-lab-simulation/BLIND_GENERATION.md`](../experiments/graded-lab-simulation/BLIND_GENERATION.md) |

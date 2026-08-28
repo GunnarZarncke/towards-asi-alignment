@@ -16,6 +16,7 @@ Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and fi
 | C-004 raw | [`drafts/plans/witness-c004-raw.md`](../../drafts/plans/witness-c004-raw.md) | W-12 Moral Machine raw same-unit geometry |
 | C-004 PDG | [`drafts/plans/witness-c004-pdg.md`](../../drafts/plans/witness-c004-pdg.md) | W-13 PDG refuse |
 | C-004 CPC | [`drafts/plans/witness-c004-cpc.md`](../../drafts/plans/witness-c004-cpc.md) | W-14 CPC2015 Exp. 1 null |
+| C-004 SCOTUS | [`drafts/plans/witness-c004-scotus.md`](../../drafts/plans/witness-c004-scotus.md) | W-16 SCDB justice geometry pass |
 | Phase 5 | [`drafts/plans/witness-phase5.md`](../../drafts/plans/witness-phase5.md) | W-15 CIRIS stack C2 null P3 |
 
 ```bash
@@ -28,6 +29,8 @@ python3 experiments/witness/check_h5_trees.py
 python3 experiments/witness/check_h4_mm_raw.py
 python3 experiments/witness/check_h4_pdg.py
 python3 experiments/witness/check_h4_cpc2015.py
+python3 experiments/witness/collect_h4_scotus.py
+python3 experiments/witness/check_h4_scotus.py
 python3 experiments/witness/collect_c2_stack.py
 python3 experiments/witness/check_c2_stack.py
 ```

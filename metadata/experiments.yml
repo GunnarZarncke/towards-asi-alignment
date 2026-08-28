@@ -26,8 +26,9 @@ kinds:
     title: Witness tests
     blurb: >
       Frozen fail/refuse protocols on hosts whose traces already exist (kernel history,
-      Wikipedia logs, published evals, a CIRIS-shaped mock). Fifteen findings W-1–W-15 (Aug 2026
-      sprint): layer fails, refusals, and two nulls (CPC2015, mock-LLM CIRIS stack). A green
+      Wikipedia logs, published evals, a CIRIS-shaped mock, SCDB votes). Sixteen findings
+      W-1–W-16: layer fails, refusals, and two nulls (CPC2015, mock-LLM CIRIS stack).
+      Strongest quantitative: W-12 Moral Machine and W-16 SCDB same-unit geometry. A green
       dashboard with no stop is not a pass. Not a sixth simulation line.
 
 ledgers:
@@ -294,9 +295,10 @@ lines:
     location: experiments/witness/
     firstBuilt: "2026-08-28"
     role: >
-      Deployment-class fail/refuse on hosts with existing traces: fifteen findings W-1–W-15
-      (Aug 2026 sprint). Strongest quantitative: W-12 same-respondent Moral Machine geometry
-      (acc 0.682 vs Number 1-D 0.576). W-3/W-4 falsify simple checklist implications on Linux
+      Deployment-class fail/refuse on hosts with existing traces: sixteen findings W-1–W-16.
+      Strongest quantitative: W-12 same-respondent Moral Machine geometry
+      (acc 0.682 vs Number 1-D 0.576) and W-16 SCDB justice geometry
+      (acc 0.814 vs issueArea 1-D 0.623). W-3/W-4 falsify simple checklist implications on Linux
       and Wikipedia. W-1 authored C2 mock and W-8 Lean pin hold the named-path bypass shape;
       W-15 mock-LLM stack null means no live bypass demonstrated. W-13 PDG refuse; W-14 CPC2015
       null. H5 trees (W-9–W-11) are institutional analogues only. H0 sims stay backing only.
@@ -358,12 +360,12 @@ howToRead:
     text: Hackathon organism and replay; not a frontier discharge.
   - lineId: witness
     text: >
-      Fifteen frozen hosts (W-1–W-15): layer fails, refusals, and two nulls. Strongest
-      quantitative: W-12 same-respondent Moral Machine geometry. W-3/W-4 falsify simple
-      checklist implications on Linux and Wikipedia. W-15 null means no live bypass
-      demonstrated — W-1 authored mock still holds the logical shape. Does not discharge MB
-      bridges, price faking tags, or prove deployable alignment. Later hosts (SCOTUS, BBQ,
-      HH/PKU) and sibling Lens cohort unpaid.
+      Sixteen frozen hosts (W-1–W-16): layer fails, refusals, and two nulls. Strongest
+      quantitative: W-12 same-respondent Moral Machine geometry and W-16 SCDB justice geometry.
+      W-3/W-4 falsify simple checklist implications on Linux and Wikipedia. W-15 null means no
+      live bypass demonstrated — W-1 authored mock still holds the logical shape. Does not
+      discharge MB bridges, price faking tags, or prove deployable alignment. Optional v1
+      leftovers (BBQ, HH/PKU) and sibling Lens cohort unpaid.
 
 coverageColumns:
   - id: agency-detect
@@ -406,7 +408,7 @@ coverageFeatures:
       goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
       lab-simulation: "Stipulated; report-content ontology"
       graded-lab-simulation: "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)"
-      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14)"
+      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14); SCDB justice geometry beats issueArea 1-D (W-16)"
   - id: mb3
     label: "MB3 Bearer maps (who values apply to)"
     cells:

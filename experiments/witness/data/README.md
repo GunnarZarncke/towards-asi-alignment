@@ -60,6 +60,11 @@ python3 experiments/witness/check_h4_pdg.py
 mkdir -p experiments/witness/data/cpc2015
 python3 experiments/witness/collect_h4_cpc2015.py
 python3 experiments/witness/check_h4_cpc2015.py
+
+# W-16: SCDB justice-centered
+mkdir -p experiments/witness/data/scotus
+python3 experiments/witness/collect_h4_scotus.py
+python3 experiments/witness/check_h4_scotus.py
 ```
 
 Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

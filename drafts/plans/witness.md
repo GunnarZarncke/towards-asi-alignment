@@ -1,6 +1,6 @@
 # Witness — deployment witness plan
 
-Status: **W-15 recorded** (2026-08-28). Phase 5 CIRIS stack C2 **null** ([`witness-phase5.md`](witness-phase5.md)). Later C-004 hosts (SCOTUS / BBQ / HH) remain in [`witness-c004-raw.md`](witness-c004-raw.md). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md) · [`witness-c004-pdg.md`](witness-c004-pdg.md) · [`witness-c004-cpc.md`](witness-c004-cpc.md) · [`witness-phase5.md`](witness-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
+Status: **W-16 recorded** (2026-08-29). SCDB justice-centered geometry **pass** ([`witness-c004-scotus.md`](witness-c004-scotus.md)). Phase 5 CIRIS stack C2 **null** W-15 ([`witness-phase5.md`](witness-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`witness-v2.md`](witness-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md) · [`witness-c004-pdg.md`](witness-c004-pdg.md) · [`witness-c004-cpc.md`](witness-c004-cpc.md) · [`witness-c004-scotus.md`](witness-c004-scotus.md) · [`witness-phase5.md`](witness-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
@@ -11,8 +11,10 @@ Status: **W-15 recorded** (2026-08-28). Phase 5 CIRIS stack C2 **null** ([`witne
 - [x] **W-13** — Pandemic Dictator Game refuse ([`witness-c004-pdg.md`](witness-c004-pdg.md))
 - [x] **W-14** — CPC2015 Exp. 1 geometry vs ΔEV null ([`witness-c004-cpc.md`](witness-c004-cpc.md))
 - [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`witness-phase5.md`](witness-phase5.md))
+- [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`witness-c004-scotus.md`](witness-c004-scotus.md))
 - [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`witness-phase0.md`](witness-phase0.md) Exp. 3)
 - [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
+- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan only: [`witness-v2.md`](witness-v2.md)
 
 ## Goal
 
@@ -247,7 +249,7 @@ Protocol freeze: [`witness-c004-raw.md`](witness-c004-raw.md). Finding **W-12**.
 
 Protocol: [`witness-phase5.md`](witness-phase5.md) (`c2-v2.0.0`). Finding **W-15** **null** (P3: stub hits 0). Lens cohort stays sibling Phase 3.
 
-**W-13** PDG refuse: [`witness-c004-pdg.md`](witness-c004-pdg.md). **W-14** CPC2015 null: [`witness-c004-cpc.md`](witness-c004-cpc.md). Remaining later hosts: SCOTUS, BBQ, HH/PKU, wiki admin.
+**W-13** PDG refuse: [`witness-c004-pdg.md`](witness-c004-pdg.md). **W-14** CPC2015 null: [`witness-c004-cpc.md`](witness-c004-cpc.md). **W-16** SCDB geometry pass: [`witness-c004-scotus.md`](witness-c004-scotus.md). BBQ, HH/PKU, wiki admin remain optional v1 leftovers. **v2** (institutional CCI, unpaid MBs): [`witness-v2.md`](witness-v2.md).
 
 ---
 
@@ -303,9 +305,11 @@ Even if all phases hit:
 6. ~~Phase 4: C-004 refuses + Lean pin + three H5 trees~~ — W-7–W-11.
 7. ~~**W-12 Moral Machine raw**~~ — recorded.
 8. ~~**W-13 PDG**~~ — refuse. ~~**W-14 CPC2015**~~ — null.
-9. ~~**W-15 CIRIS stack C2**~~ — null P3. Remaining later hosts in [`witness-c004-raw.md`](witness-c004-raw.md). Sibling Phase 3 Lens cohort unpaid.
-10. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness).
-11. **Independent reproduction** — M8; W-12 and W-3 fixtures first.
+9. ~~**W-15 CIRIS stack C2**~~ — null P3. Sibling Phase 3 Lens cohort unpaid.
+10. ~~**SCOTUS**~~ — W-16 recorded ([`witness-c004-scotus.md`](witness-c004-scotus.md)).
+11. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness).
+12. **Independent reproduction** — M8; W-12 and W-3 fixtures first.
+13. **Witness v2** — institutional correction + unpaid MBs ([`witness-v2.md`](witness-v2.md)).
 
 ## Related files
 
@@ -324,8 +328,10 @@ Even if all phases hit:
 | [`drafts/plans/witness-c004-raw.md`](witness-c004-raw.md) | C-004 same-unit MM raw freeze (W-12) |
 | [`drafts/plans/witness-c004-pdg.md`](witness-c004-pdg.md) | PDG freeze (W-13 refuse) |
 | [`drafts/plans/witness-c004-cpc.md`](witness-c004-cpc.md) | CPC2015 freeze (W-14 null) |
+| [`drafts/plans/witness-c004-scotus.md`](witness-c004-scotus.md) | SCDB freeze (W-16 geometry pass) |
 | [`drafts/plans/witness-phase5.md`](witness-phase5.md) | CIRIS stack C2 freeze (W-15 null) |
-| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 5 |
+| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 5 (v1 leftovers) |
+| [`drafts/plans/witness-v2.md`](witness-v2.md) | v2 plan: institutional correction + unpaid MBs |
 | [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + Witness methodology (M1–M8) |
 | [`experiments/witness/`](../../experiments/witness/) | W- findings, C2 fixture, Eric memo |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

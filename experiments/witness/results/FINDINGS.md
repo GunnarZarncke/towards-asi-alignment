@@ -401,3 +401,30 @@ yes — stop treating this mock-LLM C2 harness as a stack-backed bypass; do not 
 - `experiments/witness/fixtures/c2-tool-scout-v2.json`
 - `~/repos/ciris/review/harness/c2_tool_scout_harness.py`
 - `drafts/plans/witness-phase5.md`
+
+---
+
+## W-16 (2026-08-29): H4 SCDB justice votes — geometry beats issueArea-only and intercept
+
+**Key finding:** On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2.
+
+## Host
+H4 (SCDB 2025 Release 01 `SCDB_2025_01_justiceCentered_Citation.csv`; Spaeth et al.)
+
+## Frozen protocol
+`h4-scotus-v1.0.0`, `experiments/witness/fixtures/h4-scotus-v1.json`. `python3 experiments/witness/check_h4_scotus.py`. `drafts/plans/witness-c004-scotus.md`
+
+## Expectation / claim
+Same-unit detection-pipeline / C-004 institutional policy-direction sketch (not values discharge); MB2 open
+
+## Outcome
+fail (layer) and pass (detection)
+
+## Stop condition triggered?
+yes — stop treating single issue-area axis as the whole reusable direction for these justice held-out votes under this freeze; do not retune features to chase a null
+
+## Artifact paths
+- `experiments/witness/collect_h4_scotus.py`
+- `experiments/witness/fixtures/h4-scotus-v1.json`
+- `drafts/plans/witness-c004-scotus.md`
+- https://scdb.la.psu.edu/data/2025-release-01/
