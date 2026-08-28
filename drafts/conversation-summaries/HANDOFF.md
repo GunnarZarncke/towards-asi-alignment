@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-28 (Experiment coverage page slimmed).
+Last updated: 2026-08-28 (Witness W-12 validation rerun).
 
 ---
 
@@ -39,10 +39,11 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-28:** **Witness W-12 raw MM + validation** — same-unit geometry acc 0.682 vs Number 0.576 vs intercept 0.529; bootstrap margins stay ≥0.05; Number collinear with type counts. [`witness-c004-raw.md`](../plans/witness-c004-raw.md). Log: `2026-08-28-witness-w12.md`.
 - **2026-08-28:** **Coverage page slim** — experiment-line cards off `/experiments/coverage/` (hub link to `/experiments/`); build order folded; matrix column headers link to line cards; Witness stays a matrix column. Log: `2026-08-28-coverage-page-slim.md`.
 - **2026-08-28:** **Witness C-004 raw MM freeze** — W-12 same-unit policy-effect protocol + predictions; dictator/CPC/SCOTUS/BBQ later. [`witness-c004-raw.md`](../plans/witness-c004-raw.md). Log: `2026-08-28-witness-c004-raw.md`.
 - **2026-08-28:** **Witness Phase 4** — W-7 C-004 leftover refuses + HH skip; W-8 Lean C2 pin; W-9–W-11 H5 trees (FAA/GPL/Debian). Analogues do not lift Construct. Log: `2026-08-28-witness-phase4.md`.
-- **2026-08-28:** **Witness next tests (plan)** — after Phase 3: Slices A–C; executed as Phase 4. Next: W-12. Log: `2026-08-28-witness-next.md`.
+- **2026-08-28:** **Witness next tests (plan)** — after Phase 3: Slices A–C; executed as Phase 4. W-12 recorded. Log: `2026-08-28-witness-next.md`.
 - **2026-08-28:** **Witness Phase 3** — C-004 Moral Machine non-implication (W-5); C-007 Arena Elo×MASK honesty (W-6). Log: `2026-08-28-witness-phase3.md`.
 - **2026-08-28:** **Witness in book/site** — App I W-1–W-4; `/experiments/` and homepage split sims / external tests / witness tests. Log: `2026-08-28-witness-book-site.md`.
 - **2026-08-28:** **Witness Phase 2 richer sources** — Perceval×BIC; cpufreq revert re-entry; `-stable` hunks; SNAP+API; BetacommandBot; wiki-socks. W-3 fails C-004a/C-005/C-006; W-4 C-006 fail, causal RfA still refuse. Log: `2026-08-28-witness-phase2.md`.

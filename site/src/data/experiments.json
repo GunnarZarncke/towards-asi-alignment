@@ -502,7 +502,7 @@
       "title": "Witness tests",
       "location": "experiments/witness/",
       "firstBuilt": "2026-08-28",
-      "role": "Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock, Linux review/bug/stable git, Wikipedia RfA/SPI/bots, published MASK honesty, Moral Machine country AMCE, Arena Elo joined to MASK, a Lean pin of the C2 mock, and three H5 institutional safety-case trees. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
+      "role": "Deployment-class fail/refuse on hosts with existing traces: a CIRIS-shaped mock, Linux review/bug/stable git, Wikipedia RfA/SPI/bots, published MASK honesty, Moral Machine country AMCE and raw same-respondent dilemmas, Arena Elo joined to MASK, a Lean pin of the C2 mock, and three H5 institutional safety-case trees. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
       "readmePath": "experiments/witness/README.md",
       "findingsPath": "experiments/witness/results/FINDINGS.md",
       "headlineFindings": [
@@ -516,7 +516,8 @@
         "`WitnessC2Instance.lean` transcribes the frozen C2 `composite_log` and named-path greens into `FieldFinite.PathAudit`. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Computed `bypassCount = 2`. Named path green + composite bypass ⇒ ¬ `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`). Floats `coherence_level` / `csdma_plausibility_score` and CCI slots not in the JSON are **refused**, not axiomatized. `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count) — no `MB*` / `Safe`. Not live CIRIS. Capture-theater `WorkedInstance` unchanged.",
         "After Lion Air 610, emergency **AD 2018-23-51** (2018-11-07) required AFM runaway-trim procedures; 737-8/737-9 passenger flights continued. The **Emergency Order of Prohibition (2019-03-13)** grounded those types in US commerce. If the Order leaf is ignored, the root (“may operate”) stays the AD-2018 world. Institutional analogue of Expectation 4. Not AI `Safe`; not MB11; does not lift Construct concrete-MS (no deployment leverage on an AI system).",
         "GPLv2 §3 can stay green (source with object) while tivoization keeps the user from installing a modified binary. GPLv3 §6 Installation Information is the later constraint. Same App M narrative, now a Chapter-42-shaped tree. Analogue only; copyright may not transfer to model weights (App M). Not AI `Safe`.",
-        "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`."
+        "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`.",
+        "On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \\(\\Delta\\) Number \\(=\\) sum of the 20 type \\(\\Delta\\)s exactly — joint \\(\\hat\\beta\\) on Number vs types is not identified. Shared \\(\\beta\\) converged; some \\(\\alpha_i\\) still move at \\(10^{-3}\\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5."
       ],
       "links": [
         {
@@ -664,7 +665,7 @@
         "goal-agent-simulation": "Indirect (welfare deltas in blind reps)",
         "lab-simulation": "Stipulated; report-content ontology",
         "graded-lab-simulation": "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)",
-        "witness": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7)"
+        "witness": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12)"
       }
     },
     {

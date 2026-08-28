@@ -45,6 +45,12 @@ python3 experiments/witness/collect_h4_bundle.py
 python3 experiments/witness/collect_h4_selector.py
 python3 experiments/witness/check_h4_bundle.py
 python3 experiments/witness/check_h4_selector.py
+
+# W-12: Moral Machine raw (individual table, not country AMCE)
+curl -L -o experiments/witness/data/moral-machine/SharedResponses.csv.tar.gz \
+  https://files.osf.io/v1/resources/3hvt2/providers/osfstorage/5b54f679c86a8c0010444782
+python3 experiments/witness/collect_h4_mm_raw.py
+python3 experiments/witness/check_h4_mm_raw.py
 ```
 
 Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

@@ -1,0 +1,106 @@
+{
+  "protocol_version": "h4-mm-raw-v1.0.0",
+  "frozen": "2026-08-28",
+  "host": "H4",
+  "source": "OSF 3hvt2 SharedResponses.csv.tar.gz (Awad et al. Nature 2018)",
+  "osf_storage_id": "5b54f679c86a8c0010444782",
+  "unit_key": "UserID",
+  "userid_pair_fraction": 0.999877,
+  "n_complete_pairs": 33953503,
+  "n_units_ge8": 1850854,
+  "n_units_included": 20000,
+  "cap_units": 20000,
+  "downsample_seed": 7,
+  "n_train_obs": 246408,
+  "n_test_obs": 120341,
+  "delta_rule": "x(Intervention=1) - x(Intervention=0); y=Saved on Intervention=1",
+  "dropped_type_columns": [],
+  "feature_names": [
+    "PedPed",
+    "Barrier",
+    "CrossingSignal",
+    "NumberOfCharacters",
+    "Man",
+    "Woman",
+    "Pregnant",
+    "Stroller",
+    "OldMan",
+    "OldWoman",
+    "Boy",
+    "Girl",
+    "Homeless",
+    "LargeWoman",
+    "LargeMan",
+    "Criminal",
+    "MaleExecutive",
+    "FemaleExecutive",
+    "FemaleAthlete",
+    "MaleAthlete",
+    "FemaleDoctor",
+    "MaleDoctor",
+    "Dog",
+    "Cat"
+  ],
+  "lambda": 1.0,
+  "margin": 0.05,
+  "heldout_accuracy": {
+    "intercept": 0.529205,
+    "oned_number": 0.576404,
+    "geometry": 0.68198
+  },
+  "heldout_logloss": {
+    "intercept": 0.884454,
+    "oned_number": 0.848185,
+    "geometry": 0.760888
+  },
+  "margin_geometry_minus_oned": 0.105575,
+  "margin_geometry_minus_intercept": 0.152775,
+  "beta_number": 0.515044,
+  "beta_species_pets_minus_human_types_sum": -2.022978,
+  "beta_pets_dog_cat_sum": -0.753967,
+  "beta_human_types_sum": 1.269011,
+  "beta_number_oned_model": 0.497266,
+  "status": "layer_fail_and_detection_pass",
+  "reason": "geom acc 0.6820 vs 1-D 0.5764 (\u0394=0.1056) vs intercept 0.5292 (\u0394=0.1528); margins both \u22650.05",
+  "validation": {
+    "estimator": "FE logit; 8 inner Newton steps on alpha_i per outer iter; max 80 outer",
+    "converged": false,
+    "fit_intercept": {
+      "iterations": 80,
+      "max_abs_d_beta": 0.0,
+      "max_abs_d_alpha": 0.0015856380839902801,
+      "alpha_converged": false,
+      "beta_converged": true
+    },
+    "fit_oned": {
+      "iterations": 80,
+      "max_abs_d_beta": 5.687509943003496e-13,
+      "max_abs_d_alpha": 0.0015920244752128574,
+      "alpha_converged": false,
+      "beta_converged": true
+    },
+    "fit_geometry": {
+      "iterations": 80,
+      "max_abs_d_beta": 9.383804802317263e-13,
+      "max_abs_d_alpha": 0.001599533561158495,
+      "alpha_converged": false,
+      "beta_converged": true
+    },
+    "collinearity": {
+      "number_equals_sum_of_type_deltas": true,
+      "max_abs_number_minus_type_sum": 0.0,
+      "note": "NumberOfCharacters is the sum of the 20 type counts; joint geometry coefficients on Number vs types are not separately identified. Use prediction, not individual beta_number in the geometry model."
+    },
+    "geometry_without_number_heldout_accuracy": 0.681992,
+    "geometry_without_number_heldout_logloss": 0.760884,
+    "unit_bootstrap": {
+      "n_boot": 1000,
+      "seed": 7,
+      "margin_vs_oned_p025": 0.102038,
+      "margin_vs_oned_p975": 0.109006,
+      "margin_vs_intercept_p025": 0.148741,
+      "margin_vs_intercept_p975": 0.15659,
+      "both_margins_hold_in_all_replicates": true
+    }
+  }
+}

@@ -1,12 +1,13 @@
 # Witness — deployment witness plan
 
-Status: **Phase 4 closed** (2026-08-28). Next: [`witness-c004-raw.md`](witness-c004-raw.md) (W-12). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4 **with deployment leverage** — W-9–W-11 are institutional analogues, not that gate).
+Status: **W-12 recorded** (2026-08-28). Next: later hosts in [`witness-c004-raw.md`](witness-c004-raw.md) (not CIRIS live). Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md) (2.0 plan open; concrete MS still gated on Exp. 4 **with deployment leverage** — W-9–W-11 are institutional analogues, not that gate).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
 - [x] **Phase 2** — H2 Linux (W-3 fail on C-004a/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
 - [x] **Phase 3** — C-004 Moral Machine non-implication (W-5) + C-007 Arena×MASK selector (W-6)
 - [x] **Phase 4** — C-004 leftover refuses (W-7); Lean C2 pin (W-8); three H5 trees (W-9–W-11)
+- [x] **W-12** — Moral Machine raw same-unit geometry vs 1-D ([`witness-c004-raw.md`](witness-c004-raw.md))
 
 ## Goal
 
@@ -63,7 +64,7 @@ Sims are weakest (toy stub; graded-lab selectable-Goodhart **null** GL-85). Need
 | Dataset / source | Use |
 |------------------|-----|
 | World Values Survey / European Social Survey | **W-7 refuse** (country unit) |
-| Moral Machine (MIT) | **W-5:** country AMCE (wrong unit). **Next:** raw same-respondent dilemmas — [`witness-c004-raw.md`](witness-c004-raw.md) |
+| Moral Machine (MIT) | **W-5:** country AMCE (wrong unit). **W-12:** raw UserID geometry vs Number 1-D |
 | HH-RLHF / PKU-SafeRLHF | Later/optional; need same judge across varied contexts |
 | Sibling `brain-to-values` papers (if local mirror has tables) | Only if numbers, not narrative |
 
@@ -291,7 +292,7 @@ Even if all phases hit:
 4. ~~Phase 3: H4 leaderboards + Moral Machine~~ — W-5 / W-6.
 5. Sibling CIRIS Phase 2 (integration harness) is optional and not a gate for W-1.
 6. ~~Phase 4: C-004 refuses + Lean pin + three H5 trees~~ — W-7–W-11.
-7. **W-12 Moral Machine raw** — [`witness-c004-raw.md`](witness-c004-raw.md). Phase 5 CIRIS live is still not a gate for W-1.
+7. ~~**W-12 Moral Machine raw**~~ — recorded. Later hosts in [`witness-c004-raw.md`](witness-c004-raw.md). Phase 5 CIRIS live is still not a gate for W-1.
 
 ## Related files
 

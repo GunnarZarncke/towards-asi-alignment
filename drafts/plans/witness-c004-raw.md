@@ -4,7 +4,7 @@
 
 **Claim strength:** methodology-building. Pays a **policy-effect / reusable-direction** witness on one decision-making unit class (ch16 activation + policy effect; tradeoff geometry as held-out non-implication vs 1-D). Does **not** test LHCV \(L\to H\to C\). Does **not** discharge MB2.
 
-**Finding ID (reserve):** **W-12**. Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-12** (recorded). Ledger: `experiments/witness/results/FINDINGS.md`.
 
 ---
 
@@ -45,7 +45,7 @@ Raw Moral Machine sessions (OSF [osf.io/3hvt2](https://osf.io/3hvt2); feature no
 | `NumberOfCharacters` (or paper equivalent) | 1-D / Number axis |
 | Twenty character-type counts (Man, Woman, Pregnant, Stroller, OldMan, OldWoman, Boy, Girl, Homeless, LargeWoman, LargeMan, Criminal, MaleExecutive, FemaleExecutive, FemaleAthlete, MaleAthlete, FemaleDoctor, MaleDoctor, Dog, Cat) | bearer / type geometry |
 
-**Difference vector \(\Delta x\):** chosen-outcome features minus unchosen-outcome features on the frozen fields above (structural + Number + 20 types). If a listed type column is absent, **refuse** that column and drop it from **all** models before fitting — do not replace with a new type.
+**Difference vector \(\Delta x\):** \(x_{\mathrm{Intervention}=1}-x_{\mathrm{Intervention}=0}\) on the frozen fields above (structural + Number + 20 types). Label \(y=\mathrm{Saved}\) on the Intervention=1 row. (Chosen-minus-unchosen with every label \(1\) is degenerate; Intervention is the pairing axis, so \(\Delta\) Intervention is omitted as collinear with the intercept.) If a listed type column is absent, **refuse** that column and drop it from **all** models before fitting — do not replace with a new type.
 
 **1-D (same as W-5 scalar, now at the right unit):** \(\Delta\) Number only.
 
@@ -98,7 +98,7 @@ If (1) fails and (2) holds: ambig. or null as the table says. If pairing/IDs fai
 
 ## Later / alternative hosts (not this freeze)
 
-Do not fetch these until W-12 is recorded (or this protocol refuses).
+Do not fetch these until needed; **W-12 is recorded**.
 
 | Host | Why later | What it could pay |
 |------|-----------|-------------------|
@@ -114,6 +114,18 @@ Do not fetch these until W-12 is recorded (or this protocol refuses).
 
 ---
 
-## Checker (when implemented)
+## Checker
 
 `python3 experiments/witness/check_h4_mm_raw.py` — print inclusion \(n\), which unit key, three held-out accuracies, both margins, refuse-or-outcome. Raw cache gitignored under `experiments/witness/data/`.
+
+---
+
+## Validation (does not change the outcome table)
+
+Frozen 2026-08-28, after the first scored run. Do **not** retune \(\lambda\), margins, features, split, or downsample seed. These checks are report-only.
+
+1. **Clean reproduction:** same dump, same downsample seed 7, same split. Estimator may use extra inner Newton steps on \(\alpha_i\) so intercepts actually converge; that is a fit bugfix, not a new model.
+2. **Convergence:** record iterations, \(\max|\Delta\beta|\), \(\max|\Delta\alpha|\). Flag if \(\max|\Delta\alpha|>10^{-4}\) after the cap.
+3. **Unit bootstrap:** resample the **included** 20 000 units with replacement, seed **7**, **1000** replicates; 2.5/97.5 percentiles on the two accuracy margins. Not a new downsample from the 1.85 M pool.
+4. **Collinearity:** \(\Delta\) Number vs sum of the 20 type \(\Delta\)s on train. If they match, Number and type \(\hat\beta\)s in the joint geometry are not separately identified; prediction can still be used. Species contrast stays a signed report, not a causal AMCE.
+5. **Geometry without Number (report only):** drop `NumberOfCharacters` from \(\Delta x\), refit geometry, report held-out accuracy. **Do not** feed this into pass/fail.

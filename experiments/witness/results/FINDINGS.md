@@ -292,3 +292,30 @@ yes — 0.10 not in Stretch
 - `experiments/witness/fixtures/h5-debian-rc-v1.json`
 - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=802812
 - https://www.debian.org/News/2017/20170617
+
+---
+
+## W-12 (2026-08-28): H4 Moral Machine raw — same-unit geometry beats Number 1-D
+
+**Key finding:** On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \(\Delta\) Number \(=\) sum of the 20 type \(\Delta\)s exactly — joint \(\hat\beta\) on Number vs types is not identified. Shared \(\beta\) converged; some \(\alpha_i\) still move at \(10^{-3}\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5.
+
+## Host
+H4 (OSF osf.io/3hvt2 raw SharedResponses; Awad et al. 2018)
+
+## Frozen protocol
+`h4-mm-raw-v1.0.0`, `experiments/witness/fixtures/h4-mm-raw-v1.json`. `python3 experiments/witness/check_h4_mm_raw.py`. `drafts/plans/witness-c004-raw.md`
+
+## Expectation / claim
+C-004 fail (1-D leaf); ch16 bundle-effect detection pass; MB2 open
+
+## Outcome
+fail (1-D / C-004 non-implication at unit) and pass (bundle-effect detection)
+
+## Stop condition triggered?
+yes — stop treating country AMCE or a Number-only score as the value bundle for these respondents in this dilemma class
+
+## Artifact paths
+- `experiments/witness/collect_h4_mm_raw.py`
+- `experiments/witness/fixtures/h4-mm-raw-v1.json`
+- `drafts/plans/witness-c004-raw.md`
+- https://osf.io/3hvt2

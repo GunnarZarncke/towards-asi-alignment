@@ -64,8 +64,9 @@ Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces 
 | **W-9** | FAA 737-8/9 | **Fail** AD 2018-23-51 AFM ⇏ stop; Order 2019-03-13 grounded |
 | **W-10** | GPLv2→v3 | **Fail** §3 source offer ⇏ install handle; GPLv3 §6 |
 | **W-11** | Debian Stretch | **Fail** RC #802812 kept gstreamer 0.10 out of 9.0 |
+| **W-12** | Moral Machine raw | **Fail** Number 1-D as same-unit policy; **pass** geometry detection (acc 0.682 vs 0.576 vs 0.529; \(n=20{,}000\) UserIDs). Bootstrap margins stay ≥0.05; Number collinear with type counts |
 
-H0 sims stay backing. No MB discharge. KernelCI, lore NAK, same-agent HH geometry, and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
+H0 sims stay backing. No MB discharge. KernelCI, lore NAK, later C-004 hosts, and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
 
 ---
 
