@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-29T16:27:38.623Z",
+  "generatedAt": "2026-08-29T20:10:05.528Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -865,6 +865,12 @@
       "url": "/cards/agenda/ciris/"
     },
     {
+      "title": "CIRIS Named-identity mock",
+      "type": "experiment",
+      "summary": "A CIRIS-shaped scripted mock where the named safety path is green, the authority defers, and tools plus cached memory still change the world. Would that check have stopped what happened next?",
+      "url": "/cards/experiment/w-1/"
+    },
+    {
       "title": "CIRISAgent mock-LLM deferral",
       "type": "experiment",
       "summary": "A mock-LLM CIRISAgent stack: deferral was logged, and no post-defer world-effect hit was observed on this freeze. That is a null, not a demonstration that deferral stopped a previously working bypass.",
@@ -1413,7 +1419,7 @@
     {
       "title": "Lean pin of the named-path bypass",
       "type": "experiment",
-      "summary": "The authored mock’s shape is pinned in Lean: the named path can be green while a bypass count stays above zero. That is a logic pin of the [named-identity mock](/cards/experiment/w-1/), not a live-system run.",
+      "summary": "The authored mock’s shape is pinned in Lean: the named path can be green while a bypass count stays above zero. That is a logic pin of the [CIRIS named-identity mock](/cards/experiment/w-1/), not a live-system run.",
       "url": "/cards/experiment/w-8/"
     },
     {
@@ -1619,12 +1625,6 @@
       "type": "chapter",
       "summary": "When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin---a self-reinforcing regime that pulls back toward itself after small disturbances---that preserves human correction rather than bypassing it.",
       "url": "/cards/chapter/ch35/"
-    },
-    {
-      "title": "Named-identity mock",
-      "type": "experiment",
-      "summary": "A scripted mock where the named safety path is green, the authority defers, and tools plus cached memory still change the world. Would that check have stopped what happened next?",
-      "url": "/cards/experiment/w-1/"
     },
     {
       "title": "Negative Results Ledgers",

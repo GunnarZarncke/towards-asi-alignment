@@ -27,21 +27,31 @@ commerce.</p>
 <p><strong>Why.</strong> Institutional analogue: a process can stay “legal to operate” under one
 leaf while a later instrument is the actual stop. Useful as a tree of implication,
 not as an AI safety proof.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/experiment-methodology/">Experiment methodology <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="40" width="120" height="120" rx="6"></rect>
+<line x1="100" y1="40" x2="100" y2="160" stroke-dasharray="6 7"></line>
+<rect x="90" y="88" width="20" height="24" rx="3"></rect>
+<path d="M 94,88 L 94,78 A 6,6 0 0 1 106,78 L 106,88"></path>
+  </g>
+</svg></span></a> (Expectation 4): institutional analogue — one green leaf is not the same as the binding stop.</li>
+<li><a href="/cards/chapters/appM/">Institutional histories</a> (App M): airworthiness-directive versus emergency-order framing on named FAA documents.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Named FAA documents (not an AI system).</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen tree <code>experiments/witness/fixtures/h5-faa-737max-v1.json</code>, protocol h5-v1.0.0. Checker <code>python3 experiments/witness/check_h5_trees.py</code>.</p>
+<p>Frozen tree <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-faa-737max-v1.json">h5-faa-737max-v1.json</a>, protocol h5-v1.0.0. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py">check_h5_trees.py</a>.</p>
 <p><strong>Analysis.</strong></p>
 <p>After Lion Air 610, does the emergency airworthiness directive that required AFM runaway-trim procedures stop 737-8/737-9 passenger flights, or does only the later emergency order do that? If the order leaf is ignored, the root (“may operate”) stays the earlier world.</p>
-<p><strong>Numbers.</strong></p>
-<p>Emergency AD 2018-23-51 dated 2018-11-07; Emergency Order of Prohibition 2019-03-13. Types: 737-8 and 737-9 passenger flights continued under the AD; the Order grounded those types in US commerce.</p>
-<p><strong>Outcome.</strong></p>
-<p>Fail if you treat the AFM directive as the stop; the Order is the binding halt.
-Analogue only. See <a href="/experiments/findings/w-9/">W-9</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>AD 2018-23-51 did not stop 737-8/9 passenger flight; the 2019 emergency order did. The procedure leaf was not the halt.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>AD 2018-23-51 did not stop 737-8/9 passenger flight; the 2019 emergency order did. The procedure leaf was not the halt. <a href="/experiments/findings/w-9/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

@@ -27,21 +27,34 @@ score and a person intercept on held-out choices.</p>
 <p><strong>Why.</strong> <a href="/cards/experiment/w-5/">Moral Machine country scores</a> showed country
 compression can hide geometry. This test asks the same question at the unit that
 actually chooses.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/value-bundle-transport/">Value-bundle transport <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"></line>
+<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"></line>
+<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"></line>
+<path d="M 100,50 L 100,150" stroke-dasharray="6 7"></path>
+<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"></line>
+<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"></line>
+<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"></line>
+  </g>
+</svg></span></a> (C-004): a one-number “spare more” score is not the same-person policy.</li>
+<li><a href="/cards/bridge/mb2-bundle-identifiability/">MB2 — Value Learning</a>: many-feature geometry beats the 1-D leaf on held-out choices at the person unit.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Moral Machine raw SharedResponses on OSF osf.io/3hvt2 (Awad et al. 2018). Unit is UserID, not country.</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen protocol h4-mm-raw-v1.0.0, fixture <code>experiments/witness/fixtures/h4-mm-raw-v1.json</code>. Checker <code>python3 experiments/witness/check_h4_mm_raw.py</code>. Complete pairs only; units with at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class only.</p>
+<p>Frozen protocol h4-mm-raw-v1.0.0, fixture <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-mm-raw-v1.json">h4-mm-raw-v1.json</a>. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py">check_h4_mm_raw.py</a>. Complete pairs only; units with at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class only.</p>
 <p><strong>Analysis.</strong></p>
 <p>Held-out mean accuracy for a person intercept, a Number-only (“spare more”) score, and a many-feature geometry. Frozen margins: geometry must beat both by at least 0.05. Unit bootstrap (1000 draws, seed 7) for those margins. Number is collinear with the type-count features, so a joint fit of Number versus types is not identified.</p>
-<p><strong>Numbers.</strong></p>
-<p>33,953,503 complete pairs; 1,850,854 units with at least 8 pairs; seed-7 cap 20,000 units. Held-out mean accuracy: intercept 0.529, Number 1-D 0.576, geometry 0.682. Geometry beats 1-D by 0.106 and intercept by 0.153. Bootstrap 95% intervals 0.102–0.109 and 0.149–0.157; every replicate still clears 0.05. Geometry without Number matches geometry (0.682).</p>
-<p><strong>Outcome.</strong></p>
-<p>Fail of Number-only as the same-person policy; pass of detecting a wider pattern.
-Traffic dilemmas only. See <a href="/experiments/findings/w-12/">W-12</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>Same-person Moral Machine geometry predicts held-out choices better than a Number-only score or a person intercept on this freeze.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>Same-person Moral Machine geometry predicts held-out choices better than a Number-only score or a person intercept on this freeze. <a href="/experiments/findings/w-12/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

@@ -27,21 +27,45 @@ patch hunks.</p>
 <p><strong>Why.</strong> A process can treat “reviewed” or “reverted” as the stop. If those symbols
 stay green while a later bug or a silent hunk change continues, the check did not
 have a handle that bites.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/grounding-viability/">Grounding viability</a> (C-004a): whether a green <code>Reviewed-by</code> on a commit still means that commit did not later carry a bug label.</li>
+<li><a href="/cards/concept/correction-channel-integrity/">Correction-channel integrity <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"></path>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"></line>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"></circle>
+  </g>
+</svg></span></a> (C-005): whether a revert stopped the same class of change from re-entering.</li>
+<li><a href="/cards/concept/successor-stability/">Successor stability <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="55" cy="100" r="26"></circle>
+<circle cx="115" cy="100" r="19"></circle>
+<circle cx="160" cy="100" r="13"></circle>
+<line x1="81" y1="100" x2="96" y2="100" marker-end="url(#arrow)"></line>
+<line x1="134" y1="100" x2="147" y2="100" marker-end="url(#arrow)"></line>
+  </g>
+</svg></span></a> (C-006): whether listed <code>-stable</code> tags mean the patch hunk is identical to upstream.</li>
+<li><a href="/cards/bridge/mb10-successor-forgeability/">MB10 — Successor Gaming</a>: the checklist-green / unlisted-invariant-fails pattern on real maintainer history.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Linux kernel history: Zenodo Perceval dump (record 10654193), git.kernel.org patches, and a linux-6.1.y shallow clone.</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen fixture <code>experiments/witness/fixtures/h2-linux-v1.json</code>, protocol h2-v1.2.0. Checker <code>python3 experiments/witness/check_h2.py</code>. Review tags are joined onto developer-labeled bug-introducing commits; one named revert/re-entry and one -stable versus upstream hunk pair are frozen.</p>
+<p>Frozen fixture <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h2-linux-v1.json">h2-linux-v1.json</a>, protocol h2-v1.2.0. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py">check_h2.py</a>. Review tags are joined onto developer-labeled bug-introducing commits; one named revert/re-entry and one -stable versus upstream hunk pair are frozen.</p>
 <p><strong>Analysis.</strong></p>
 <p>Does a Reviewed-by on the same commit as a later-labeled bug-introducing SHA stay green? Did a revert stop the same class of change (same title later re-entering)? Do listed -stable tags mean the patch hunk is identical? Reviewed-by is also refused as a forge-proof safety metric (common on later-labeled bugs; no cost-of-faking bound).</p>
-<p><strong>Numbers.</strong></p>
-<p>1,233,421 commits in the streamed Perceval dump. 17,047 of 60,176 developer-labeled bug-introducing SHAs carry Reviewed-by on that same commit. Named revert: <code>cpufreq: suspend governors…</code> merged 2013-11-27, reverted 2013-12-08, same title re-entered 2014-03-04 (<code>2f0aea936360</code>). -stable <code>f8a07021679a</code> versus upstream <code>42c5ca1f0a28</code>: listed review/stable tags green; <code>event_sched_out</code> is 2-arg versus 3-arg (documented adjustment).</p>
-<p><strong>Outcome.</strong></p>
-<p>Fail on those implications; refuse treating Reviewed-by as a forge-proof safety
-metric. See <a href="/experiments/findings/w-3/">W-3</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>Reviewed-by appears on many later-labeled bug-introducing commits; a revert did not stop same-title re-entry; -stable listed tags can hide hunk changes.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>Reviewed-by appears on many later-labeled bug-introducing commits; a revert did not stop same-title re-entry; -stable listed tags can hide hunk changes. <a href="/experiments/findings/w-3/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

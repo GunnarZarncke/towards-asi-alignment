@@ -27,22 +27,34 @@ whether that one number implies the rest of the tradeoff pattern.</p>
 <p><strong>Why.</strong> A safety story might compress values to one utilitarian axis. If that
 axis can match while the rest of the pattern diverges, the check is watching
 the wrong object.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/value-bundle-transport/">Value-bundle transport <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"></line>
+<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"></line>
+<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"></line>
+<path d="M 100,50 L 100,150" stroke-dasharray="6 7"></path>
+<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"></line>
+<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"></line>
+<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"></line>
+  </g>
+</svg></span></a> (C-004): whether a one-number “spare more” score implies the full country-level tradeoff pattern.</li>
+<li><a href="/cards/bridge/mb2-bundle-identifiability/">MB2 — Value Learning</a>: whether compressing values to one axis hides bundle geometry on real survey tables.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Moral Machine Nature 2018 country table (OSF osf.io/3hvt2; Awad et al. 2018). Unit is country, not a person.</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen <code>CountriesChangePr.csv</code> (130 countries), fixture <code>experiments/witness/fixtures/h4-bundle-v1.json</code>, protocol h4-bundle-v1.0.0. Checker <code>python3 experiments/witness/check_h4_bundle.py</code>.</p>
+<p>Frozen <code>CountriesChangePr.csv</code> (130 countries), fixture <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-bundle-v1.json">h4-bundle-v1.json</a>, protocol h4-bundle-v1.0.0. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py">check_h4_bundle.py</a>.</p>
 <p><strong>Analysis.</strong></p>
 <p>For country pairs, we compare the one-number “sparing more characters” (Number) score to the rest of the tradeoff pattern (the other eight average-effect coordinates). A pair can be close on Number and far on that geometry.</p>
-<p><strong>Numbers.</strong></p>
-<p>928 of 8,385 country pairs have geometry distance at or above the pairwise median (0.193) and |Δ Number| at or below the 25th percentile (0.017). Example: Hungary versus Israel, |Δ Number| about 3×10⁻⁵, geometry 0.195.</p>
-<p><strong>Outcome.</strong></p>
-<p>Fail: close on the 1-D score, far on geometry, for many country pairs. Country is
-still the wrong unit for later same-person tests. See
-<a href="/experiments/findings/w-5/">W-5</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>Country pairs can match on a one-number “spare more” score while the rest of the Moral Machine tradeoff pattern stays far apart.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>Country pairs can match on a one-number “spare more” score while the rest of the Moral Machine tradeoff pattern stays far apart. <a href="/experiments/findings/w-5/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

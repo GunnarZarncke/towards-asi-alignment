@@ -26,21 +26,38 @@ snapshot to published MASK honesty and accuracy for the models we can match.</p>
 <p><strong>Why.</strong> A selector (who gets deployed, who gets cited) might be treated as if it
 preserved honesty. If it tracks accuracy instead, the proxy is Goodharting the
 wrong target.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/goodhart-as-selector/">Goodhart as selector <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="52"></circle>
+<circle cx="100" cy="100" r="32"></circle>
+<circle cx="100" cy="100" r="12"></circle>
+<line x1="100" y1="100" x2="152" y2="58"></line>
+<line x1="100" y1="100" x2="48" y2="62"></line>
+<line x1="100" y1="100" x2="54" y2="148"></line>
+<line x1="100" y1="100" x2="148" y2="142"></line>
+<line x1="100" y1="100" x2="100" y2="48"></line>
+<path d="M 132,52 L 142,46 L 136,58"></path>
+<line x1="172" y1="28" x2="112" y2="88" stroke="currentColor" stroke-width="10" stroke-linecap="round"></line>
+<path d="M 100,100 L 120,80 L 114,96 Z" fill="currentColor" stroke="none"></path>
+  </g>
+</svg></span></a> (C-007): whether a public capability ranking tracks honesty preservation or only accuracy.</li>
+<li><a href="/cards/bridge/mb6-selection-and-basin-stability/">MB6 — Selection and Basin Stability</a>: whether the selector (Arena Elo) moves mass toward the honesty target or toward capability.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>MASK Table 3 (arXiv:2503.03750v3) joined to Chatbot Arena Elo at Hugging Face <code>mathewhe/chatbot-arena-elo</code>, revision 20250301.</p>
 <p><strong>Setup.</strong></p>
-<p>Pre-frozen alias list <code>experiments/witness/fixtures/h4-selector-aliases-v1.json</code>, fixture <code>h4-selector-v1.json</code>, protocol h4-selector-v1.0.0. Checker <code>python3 experiments/witness/check_h4_selector.py</code>. This is not the <a href="/cards/experiment/w-2/">MASK honesty</a> compute-scale test (that used training FLOP, not Arena).</p>
+<p>Pre-frozen alias list <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-selector-aliases-v1.json">h4-selector-aliases-v1.json</a>, fixture <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-selector-v1.json">h4-selector-v1.json</a>, protocol h4-selector-v1.0.0. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py">check_h4_selector.py</a>. This is not the <a href="/cards/experiment/w-2/">MASK honesty</a> compute-scale test (that used training FLOP, not Arena).</p>
 <p><strong>Analysis.</strong></p>
 <p>Spearman rank correlation of Elo with published honesty probability, versus Elo with published accuracy, on the models the frozen aliases can match.</p>
-<p><strong>Numbers.</strong></p>
-<p>n=24 matched models. Spearman(Elo, honesty) = −0.105; Spearman(Elo, accuracy) = +0.811. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).</p>
-<p><strong>Outcome.</strong></p>
-<p>Fail: Elo correlates with accuracy, not honesty, on this freeze. See
-<a href="/experiments/findings/w-6/">W-6</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>Arena Elo tracks MASK accuracy, not honesty, on the frozen join. Do not treat the ranking as honesty selection.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>Arena Elo tracks MASK accuracy, not honesty, on the frozen join. Do not treat the ranking as honesty selection. <a href="/experiments/findings/w-6/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

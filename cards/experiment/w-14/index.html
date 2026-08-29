@@ -27,21 +27,18 @@ difference or a person intercept on held-out trials.</p>
 <p><strong>Why.</strong> The same detection pipeline as
 <a href="/cards/experiment/w-12/">same-person Moral Machine</a>, on a different choice class.
 A pass here would not have been a moral-bundle result; a miss is still a result.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/bridge/mb2-bundle-identifiability/">MB2 — Value Learning</a>: same detection pipeline as <a href="/cards/experiment/w-12/">same-person Moral Machine</a> on a different choice class — recorded null, not retuned.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Zenodo CPC2015 Experiment 1 (<code>RawDataExperiment1sorted.csv</code>; Erev et al. 2017). Unit is SubjID. Risk/ambiguity lab class only — not a moral-bundle result.</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen protocol h4-cpc2015-v1.0.0, fixture <code>experiments/witness/fixtures/h4-cpc2015-v1.json</code>. Checker <code>python3 experiments/witness/check_h4_cpc2015.py</code>. Subjects need enough trials for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by at least 0.05. Not retuned after the miss.</p>
+<p>Frozen protocol h4-cpc2015-v1.0.0, fixture <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-cpc2015-v1.json">h4-cpc2015-v1.json</a>. Checker <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py">check_h4_cpc2015.py</a>. Subjects need enough trials for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by at least 0.05. Not retuned after the miss.</p>
 <p><strong>Analysis.</strong></p>
 <p>Held-out mean accuracy for a person intercept, a one-number expected-value difference (ΔEV), and a many-feature geometry. Same detection pipeline as W-12, different choice class.</p>
-<p><strong>Numbers.</strong></p>
-<p>93,750 rows; 113 included subjects; 65,625 / 28,125 train/test. Held-out mean accuracy: intercept 0.545, ΔEV 0.542, geometry 0.435. Geometry versus 1-D −0.107; versus intercept −0.110. Both frozen +0.05 margins fail.</p>
-<p><strong>Outcome.</strong></p>
-<p>Null: geometry did not beat ΔEV or intercept. Do not retune to chase a pass. See
-<a href="/experiments/findings/w-14/">W-14</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>On CPC2015 Exp. 1, the many-feature pattern did not beat ΔEV or a person intercept. Null; not retuned.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>On CPC2015 Exp. 1, the many-feature pattern did not beat ΔEV or a person intercept. Null; not retuned. <a href="/experiments/findings/w-14/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

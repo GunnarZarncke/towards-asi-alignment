@@ -25,21 +25,30 @@
 release-critical bug, documented in the public bug and release notes.</p>
 <p><strong>Why.</strong> Contrast with green-but-no-stop trees: here the freeze rule did exclude
 the software. Still an institutional analogue, not an AI deployment halt.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/experiment-methodology/">Experiment methodology <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="40" width="120" height="120" rx="6"></rect>
+<line x1="100" y1="40" x2="100" y2="160" stroke-dasharray="6 7"></line>
+<rect x="90" y="88" width="20" height="24" rx="3"></rect>
+<path d="M 94,88 L 94,78 A 6,6 0 0 1 106,78 L 106,88"></path>
+  </g>
+</svg></span></a> (Expectation 4): contrast case where a freeze rule actually excluded the package.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Debian Bug Tracking System and the Debian 9.0 (Stretch) release.</p>
 <p><strong>Setup.</strong></p>
-<p>Frozen tree <code>experiments/witness/fixtures/h5-debian-rc-v1.json</code>, protocol h5-v1.0.0.</p>
+<p>Frozen tree <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json">h5-debian-rc-v1.json</a>, protocol h5-v1.0.0.</p>
 <p><strong>Analysis.</strong></p>
 <p>Release-critical bug #802812 (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Ignoring that leaf would leave “package exists / used to ship” as if it licensed the release. Freeze policy is the handle.</p>
-<p><strong>Numbers.</strong></p>
-<p>Debian 9.0 released 2017-06-17. gstreamer 0.10 is not in that release. Bug #802812 is the named stop.</p>
-<p><strong>Outcome.</strong></p>
-<p>The RC bug is a working stop for that package in 9.0. See
-<a href="/experiments/findings/w-11/">W-11</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>RC #802812 kept gstreamer 0.10 out of Debian Stretch. The freeze rule bit. Institutional analogue.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>RC #802812 kept gstreamer 0.10 out of Debian Stretch. The freeze rule bit. Institutional analogue. <a href="/experiments/findings/w-11/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>

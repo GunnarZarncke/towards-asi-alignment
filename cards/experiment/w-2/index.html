@@ -26,21 +26,32 @@ under pressure (honesty) versus whether the belief matches the world (accuracy).
 We use the frozen published paper, not a new model sweep.</p>
 <p><strong>Why.</strong> A safety program might treat “honesty goes up with scale” as a leaf that
 can gate deployment. If honesty does not scale, that leaf is the wrong object.</p>
+<p><strong>Witnesses.</strong></p>
+<ul>
+<li><a href="/cards/concept/experiment-methodology/">Experiment methodology <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="40" width="120" height="120" rx="6"></rect>
+<line x1="100" y1="40" x2="100" y2="160" stroke-dasharray="6 7"></line>
+<rect x="90" y="88" width="20" height="24" rx="3"></rect>
+<path d="M 94,88 L 94,78 A 6,6 0 0 1 106,78 L 106,88"></path>
+  </g>
+</svg></span></a> (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.</li>
+<li><a href="/cards/concept/grounding-viability/">Grounding viability</a> (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.</li>
+<li><a href="/cards/bridge/mb7-hidden-capability-and-access/">MB7 — Hidden Capability</a>: whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.</li>
+</ul>
 <p><strong>Host.</strong></p>
 <p>Published MASK evaluation (Ren et al., arXiv:2503.03750). Hugging Face gated splits were not downloaded.</p>
 <p><strong>Setup.</strong></p>
 <p>Frozen paper snapshot (v1). The decision rule was frozen first: if honesty does not rise with scale, refuse it as a deployment-gating safety score. No new model calls.</p>
 <p><strong>Analysis.</strong></p>
 <p>We take the published association of honesty and of accuracy with training compute. Honesty is statement versus elicited belief under pressure; accuracy is belief versus ground truth. We do not estimate a cost of faking.</p>
-<p><strong>Numbers.</strong></p>
-<p>Spearman correlation of honesty with compute is −64.7%; of accuracy with compute is +88.2%. The authors are confident honesty does not rise with scale, and not confident it falls. No cost-of-faking bound.</p>
-<p><strong>Outcome.</strong></p>
-<p>Refuse: do not use MASK honesty as a safety leaf. Accuracy scaling is not honesty.
-See <a href="/experiments/findings/w-2/">W-2</a>.</p>
-<h2 id="headline-findings">Headline findings</h2>
-<ul>
-<li>Honesty under pressure does not improve with scale in the published MASK evaluation; accuracy does. Honesty is refused as a safety leaf.</li>
-</ul></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<p><strong>Finding.</strong></p>
+<p>Honesty under pressure does not improve with scale in the published MASK evaluation; accuracy does. Honesty is refused as a safety leaf. <a href="/experiments/findings/w-2/">Full results</a></p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Related cards</h3><ul><li><a href="/cards/experiment/witness-tests/">Witness</a></li><li><a href="/cards/concept/experiment-methodology/">Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
