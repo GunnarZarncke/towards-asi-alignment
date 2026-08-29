@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T23:49:40.299Z",
+  "generatedAt": "2026-08-29T11:08:46.229Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 335,
+  "entryCount": 340,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1045,6 +1045,30 @@
       "url": "/cards/concept/et-external-transfer/"
     },
     {
+      "title": "ET-1 Orbit (stopped)",
+      "type": "experiment",
+      "summary": "Frozen passive unit discovery on an external multi-agent Jira-ticket collusion benchmark this project did not author.",
+      "url": "/cards/experiment/et-1/"
+    },
+    {
+      "title": "ET-2 CIL basin_stability (null)",
+      "type": "experiment",
+      "summary": "Frozen passive unit discovery on Collective-Intelligence-Library `basin_stability` with learned (Q-learning) policies.",
+      "url": "/cards/experiment/et-2/"
+    },
+    {
+      "title": "ET-3 AI 2027 schedule (closed)",
+      "type": "experiment",
+      "summary": "Macro takeoff-speed cues from the AI 2027 scenario used only as opaque lab stress.",
+      "url": "/cards/experiment/et-3/"
+    },
+    {
+      "title": "ET-4 Secret loyalties (hackathon)",
+      "type": "experiment",
+      "summary": "Principal-directed policy plus graded affordance audit on an in-repo secret-loyalty pipeline organism.",
+      "url": "/cards/experiment/et-4/"
+    },
+    {
       "title": "Evidence and Uncertainty",
       "type": "concept",
       "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
@@ -2015,6 +2039,12 @@
       "type": "chapter",
       "summary": "Human values are not fixed objects but compressed, socially mediated, historically changing control structures. The alignment target should preserve a human-correctable value process---not a static utility function.",
       "url": "/cards/chapter/ch04/"
+    },
+    {
+      "title": "Witness tests",
+      "type": "experiment",
+      "summary": "Deployment-class fail/refuse on hosts with existing traces: sixteen findings W-1–W-16.",
+      "url": "/cards/experiment/witness/"
     }
   ]
 }
