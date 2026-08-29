@@ -12,6 +12,7 @@ User asked that every specific experiment card have a marked GitHub source link 
 - One card per Witness test (`w-1`–`w-16`) listed on the Witness overview; combined `/cards/experiment/witness/` redirects to the overview. Folder-per-test under `experiments/witness-<name>/` deferred (shared dumps).
 - Per-test cards: Host / Setup / Analysis / Numbers / Outcome (numbers last) from FINDINGS.
 - Negative-results hub (`/cards/concept/negative-results/`) lists simulations, external tests, and Witness tests via `ExperimentLedgersTable` (line title links to card). Coverage page links to that card instead of duplicating the table. Toy-simulation added to `ledgers`.
+- Findings pages render markdown (Witness Host/Setup/Analysis/Numbers/Outcome on `/experiments/findings/{id}/`).
 
 ## Decisions
 - Three class overviews, not one card per W-id. Numbered witness findings stay on the battery card and ledger, linked from the witness overview.
@@ -27,7 +28,8 @@ User asked that every specific experiment card have a marked GitHub source link 
 - `site/src/components/ExperimentLedgersTable.astro`
 - `metadata/concepts/bodies/negative-results.md`
 - `site/src/pages/experiments/index.astro`
-- `site/src/pages/cards/[...slug].astro`
+- `site/src/pages/experiments/findings/[id].astro`
+- `site/src/lib/render-markdown.ts`
 
 ## Commits
-- none (not requested)
+- `361626b1` Add per-test Witness cards and a unified negative-results ledger hub.

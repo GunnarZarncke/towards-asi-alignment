@@ -3,6 +3,7 @@ import SiteLayout from "../../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../../components/LinkIndicator.astro";
 import experiments from "../../../data/experiments.json";
 import { cardHref } from "../../../lib/site-urls";
+import { renderMarkdown, renderMarkdownList, witnessFindingsMarkdown } from "../../../lib/render-markdown";
 
 export async function getStaticPaths() {
   const fromLines = experiments.lines
@@ -38,6 +39,11 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const findings = line.headlineFindings ?? [];
 const figures = line.findingsFigures ?? [];
 const fullLedgerUrl = line.findingsUrlResolved;
+
+const summaryMarkdown =
+  line.kind === "witness" ? witnessFindingsMarkdown(line) : (line.role?.trim() ?? "");
+const summaryHtml = summaryMarkdown ? await renderMarkdown(summaryMarkdown) : "";
+const findingHtml = findings.length > 0 ? await renderMarkdownList(findings) : [];
 ---
 
 <SiteLayout
@@ -51,7 +57,7 @@ const fullLedgerUrl = line.findingsUrlResolved;
       <a href={cardHref(base, "negative-results", "concept")}>Negative results</a>
     </p>
     <h1>{line.title}</h1>
-    <p class="lede">{line.role.trim()}</p>
+    {summaryHtml ? <div class="lede readable" set:html={summaryHtml} /> : null}
 
     <p class="button-row">
       <a class="button primary" href={cardHref(base, `experiments/${line.cardId ?? line.id}`)}>Experiment card</a>
@@ -75,8 +81,8 @@ const fullLedgerUrl = line.findingsUrlResolved;
           Curated summaries extracted from the line's findings ledger. Bug fixes, superseded runs, and process detail are in the full ledger on GitHub.
         </p>
         <ul>
-          {findings.map((finding) => (
-            <li>{finding}</li>
+          {findingHtml.map((html) => (
+            <li set:html={html} />
           ))}
         </ul>
       </>

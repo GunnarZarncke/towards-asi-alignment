@@ -39,8 +39,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-29:** **Experiment site cards** — class overviews; W-1–W-16 cards (Host/Setup/Analysis/Numbers/Outcome); negative-results hub lists all lines; coverage links to hub. Log: `2026-08-29-experiment-site-cards.md`.
-- **2026-08-29:** **Continuity & drift study** — more packets frozen (6.1b, 6.3b, lister, inspection offices); first incomplete enumeration pass. Log: `2026-08-29-continuity-drift-orchestrator.md`.
+- **2026-08-29:** **Experiment site cards** — class overviews; W-1–W-16 cards; negative-results hub; findings pages render markdown. Log: `2026-08-29-experiment-site-cards.md`.
+- **2026-08-29:** **Continuity & drift study** — union precision **366/366** (`results.tsv`; usable **260**). Log: `2026-08-29-continuity-drift-precision.md`. Earlier: packets frozen + first enumeration. Log: `2026-08-29-continuity-drift-orchestrator.md`.
 - **2026-08-29:** **Witness W-16 SCDB** — justice-centered geometry acc 0.814 vs issueArea 0.623 vs intercept 0.616 (40 justices). [`witness-c004-scotus.md`](../plans/witness-c004-scotus.md). Log: `2026-08-29-witness-w16-scotus.md`.
 - **2026-08-29:** **Methodology consolidation** — `docs/METHODOLOGY.md` (shared discipline + Witness M1–M8); deleted scattered copies; adversarial \(M\) + repro TODOs. Log: `2026-08-29-methodology-consolidation.md`.
 - **2026-08-28:** **Witness site synthesis** — W-1–W-15 on `/experiments/#witness` and `/experiments/findings/witness/`; bounded sprint summary in `experiments.yml` and `docs/EXPERIMENTS.md`. Log: `2026-08-28-witness-site-end.md`.
