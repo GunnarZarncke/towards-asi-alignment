@@ -25,4 +25,4 @@ BBQ, HH/PKU, wiki admin in [`witness-c004-raw.md`](witness-c004-raw.md). KernelC
 
 ## Witness v2 (separate program)
 
-Institutional correction channels (joinable handle→act on transparent public institutions) and unpaid-MB host hunt, with **multi-step blinding** so criteria are not coded to the test. Plan: [`witness-v2.md`](witness-v2.md). SCOTUS v1 freeze is done (W-16); v2 CCI is a different claim.
+Institutional correction channels (joinable handle→act on transparent public institutions) and unpaid-MB host hunt, with **multi-step blinding** so criteria are not coded to the test. Plan: [`witness-v2.md`](witness-v2.md). **Phase 1:** Moltbook Step 0 inventory done ([`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md)); Track A legislatures parallel.

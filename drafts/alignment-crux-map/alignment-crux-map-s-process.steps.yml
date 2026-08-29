@@ -1,0 +1,72 @@
+# Editable S-process steps for Alignment Crux Map.
+# Edit dollars / marginal_u / reviews here, then:
+#   python3 drafts/alignment-crux-map/plot_alignment_crux_map_s_process.py
+# Outputs: drafts/alignment-crux-map/alignment-crux-map-s-process-curve.png (+ .svg)
+#
+# `reviews`: what the contractor (or lead, for non-contract steps) is checking.
+# Only crowded labels as words. No Apollo. MATS + BlueDot are use tests.
+# CHAI is the default second lab; Christiano if CHAI cannot run.
+
+cap_dollars: 50000
+minimum_step: 2  # cumulative stop: correctable-AI lab + Redwood
+
+steps:
+  - item: Correctable-AI lab + LLM
+    dollars: 10000
+    marginal_u: 24
+    reviews: Corrigibility, shutdown, deception, evals on one workplace (hold vs rater; honor-hold vs fake ticket).
+
+  - item: Redwood review of correctable-AI lab
+    dollars: 5500
+    marginal_u: 16
+    reviews: Correctable-AI lab — deception and evals columns; their control or alignment-faking setup on frozen traces.
+
+  - item: MATS use test
+    dollars: 2500
+    marginal_u: 8
+    reviews: Corrigibility table on one real scholar abstract (documented sitting).
+
+  - item: BlueDot use test
+    dollars: 3400
+    marginal_u: 11
+    reviews: Same artifact as MATS — corrigibility table on one real abstract in the BlueDot pipeline.
+
+  - item: CHAI or Christiano on correctable-AI lab
+    dollars: 5500
+    marginal_u: 14
+    reviews: Correctable-AI lab — shutdown vs corrigibility (CHAI/Russell off-switch vs still-correctable; or Christiano dynamical corrigibility vs hold).
+
+  - item: Tiling
+    dollars: 2500
+    marginal_u: 6
+    reviews: Tiling lab frozen — successor lineage vs still bound (paperwork inherited vs rules still followed).
+
+  - item: Inner alignment
+    dollars: 2500
+    marginal_u: 6
+    reviews: Inner-alignment lab frozen — cheap compliance score vs hidden hazard.
+
+  - item: Missed-lines + refile
+    dollars: 4000
+    marginal_u: 10
+    reviews: Draft “what this map misses” notes for eight groups; no coverage/selection/oversight as funded words.
+
+  - item: Wentworth
+    dollars: 3500
+    marginal_u: 7
+    reviews: Missed-line — pointing and selection theorems are not inner alignment; no selection lab in this grant.
+
+  - item: Garrabrant
+    dollars: 4000
+    marginal_u: 5
+    reviews: Correctable-AI hold vs fake-ticket; tiling lineage vs still-bound — table check or short lab run if wiring fits.
+
+  - item: Kosoy
+    dollars: 3000
+    marginal_u: 4
+    reviews: Missed-line — do not file LTA, nonrealizability, or daemons as the correctable-AI lab or “safety case done.”
+
+  - item: Upkeep
+    dollars: 3600
+    marginal_u: 2
+    reviews: Catalog and map maintenance (~1 day/month).

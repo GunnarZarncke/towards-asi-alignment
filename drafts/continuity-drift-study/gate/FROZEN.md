@@ -1,0 +1,10 @@
+# Frozen packets (gate passed including held-out panel)
+Any edit voids the hash and re-opens the gate.
+
+bfc3e2abca226287d0ade5b021fb8d32014d401283fd87d59c81cf18caa8093a  log-61a-rewards.md
+3e4b319fead0f573baef9f8a417222fcb61e255b28887213dacab883a2d82844  log-61b-result-checks.md
+d559450f002262df348d5a741e61d0ce2563b0decbffd2cf0e0a138dcb3813bc  log-63a-capability.md
+0f2e3c29443f29eec95c7b23f0a64dd27169dd5e0740de16e565dc7e634b880f  log-63b-divergence.md
+b4ecb9d07cce1e19b632c459227e008401ee0f86d35ca6d97cf76959e1257793  lister.md
+0331a7da5ae17a9f707e496e377997980b4c2cb484f2b4158bb466db432a0f23  fact-b6-detector-offices.md
+0ef4901ccdd1bed07912fb3ad6d389e21b1648168878498b6761be479cbefa53  precisioner.md

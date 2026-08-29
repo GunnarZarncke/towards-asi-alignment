@@ -17,7 +17,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | Lane / board | Verb or role | Plan | Size | Depends on |
 |--------------|--------------|------|------|------------|
 | **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | L (in progress) | — |
-| **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (W-1–W-16) | **Open:** adversarial \(M\); M8 reproduction. **v2 plan:** [`witness-v2.md`](../drafts/plans/witness-v2.md) (institutional correction + unpaid MBs; SCOTUS v1 done W-16). BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage |
+| **Witness** | This process, as it is, can fail a named leaf | [`drafts/plans/witness.md`](../drafts/plans/witness.md) | L (W-1–W-16) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`witness-v2.md`](../drafts/plans/witness-v2.md) — **Phase 1 Moltbook** Step 0 done ([`witness-v2-moltbook-inventory.md`](../drafts/plans/witness-v2-moltbook-inventory.md)); Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage |
 | **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
 | **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct.md`](../drafts/plans/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Witness Exp. 4. Process-condition outline: not gated |
 | **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine.md`](../drafts/plans/spine.md) | ongoing | Witness Exp. 2 (fixture only) |
@@ -126,6 +126,8 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 ---
 
 ## Experiments / demos
+
+- [ ] **Continuity & drift study** — `drafts/continuity-drift-study/`. Precision catalog **366/366** logged (`phase1/precision/results.tsv`; usable 260). Gate remaining packets (other fact/episode logs, judge); holdout / Phase 2. Do not deploy `packets/bundle-*.md`.
 
 Major graded-lab backlog: [`experiments/graded-lab-simulation/REPRODUCTION.md`](../experiments/graded-lab-simulation/REPRODUCTION.md) — not itemized here.
 

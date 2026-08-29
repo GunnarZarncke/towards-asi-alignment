@@ -1,0 +1,559 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99,doi=true,isbn=false,url=true]{biblatex}
+\addbibresource{constructing_alignment_christianity.bib}
+
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.4em}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=0.25em,topsep=0.4em}
+\renewcommand{\arraystretch}{1.2}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{\textbf{Constructing Alignment: Christianity as a Case Study in Institutional Alignment Technology}}
+\author{Gunnar Zarncke}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+AI alignment is often framed as a problem of specifying an objective, training a model, and evaluating whether the resulting system behaves as intended. Advanced deployment is likely to be harder. It will involve interacting artificial agents, humans, firms, markets, states, software services, and successor systems, all able to learn, compete, coordinate, and sometimes reshape the institutions meant to constrain them. The relevant object is therefore a multi-agent system of powerful optimizers, not an isolated model.
+
+Christianity offers a remarkably rich natural experiment in an analogous construction problem. For almost two millennia, Christian communities have tried to preserve a recognizable normative orientation across populations of bounded, self-interested, coalition-forming human agents and across institutions with their own incentives. They did not rely on a single rulebook. They combined compact moral principles, a concrete exemplar, canonical texts, narrative, repeated ritual, costly commitment, community reinforcement, confession and repentance, interpretive institutions, reform movements, and mechanisms for training successors. These mechanisms have often failed, sometimes catastrophically. Those failures are part of the evidence.
+
+This paper interprets Christianity as an institutional alignment technology in a deliberately limited sense: a historically evolved stack of mechanisms that attempts to make normative dispositions learnable, behaviorally active, correctable, and transmissible. It relates these mechanisms to work on value learning, incomplete contracting, reward misspecification, corrigibility, scalable oversight, learned optimization, multi-agent cooperation, cultural evolution, and institutional design. The central lesson is that durable alignment is unlikely to be constructed by a specification or evaluator alone. It requires formative processes, redundant grounding, causal correction, successor reconstruction, and an environment that continues to select for the intended orientation rather than for increasingly effective proxies.
+\end{abstract}
+
+\section{Introduction}
+
+The central problem of this paper is construction.
+
+Suppose we can state, imperfectly but usefully, what we want from an artificial system. Suppose we can also evaluate examples of good and bad behavior. Neither fact tells us how to build a system in which the intended orientation is acquired, applied to unfamiliar situations, retained as capabilities grow, corrected when our interpretation was wrong, and preserved when the system is copied, delegated, or embedded in competitive institutions. Specification and evaluation are inputs to construction, not substitutes for it.
+
+This distinction matters more as the unit of deployment becomes larger. An advanced AI service will not act alone. Models will be embedded in agentic scaffolds, toolchains, firms, markets, regulatory regimes, military and civilian institutions, networks of other models, and human organizations. They will bargain, imitate, compete, delegate, copy, and adapt to evaluation. Work on cooperative AI already treats artificial intelligence as a social problem rather than merely an individual decision problem \parencite{dafoe2021cooperative}. Work on incomplete contracting argues that human coordination succeeds partly because explicit agreements are embedded in culture, law, norms, and institutions that fill gaps no written specification can anticipate \parencite{hadfieldmenell2019incomplete}. Recent work goes further: even well-designed external mechanisms can leave welfare losses when future contingencies cannot be represented by the contract, while intrinsically prosocial agents can close part of the gap \parencite{huang2026mechanism}. Systemic analyses likewise warn that interacting economic, political, and cultural selection processes can gradually reduce human control even without a single dramatic takeover \parencite{kulveit2025gradual}.
+
+The relevant correspondence in this paper is therefore not between one Christian believer and one language model. It is between \emph{aligned multi-agent systems}. Christianity operates on nested human systems: individuals, households, congregations, clergy, monastic orders, schools, rulers, churches, states, and markets. These actors learn, bargain, compete, imitate, punish, cooperate, and sometimes capture institutions intended to constrain them. Advanced AI deployment is likely to contain an analogous structural problem at much greater capability. Local alignment of one component can be defeated by the surrounding system.
+
+Christianity is a useful case because it has confronted this problem for an unusually long time and at unusually many scales. It has attempted to preserve a normative orientation despite weak individual memory, temptation, status competition, institutional incentives, founder absence, interpretive ambiguity, geographic expansion, translation across languages, technological change, political capture, schism, and generational turnover. It has also generated extensive mechanisms for restoring alignment after acknowledged failure. Scripture, liturgy, prayer, confession, catechesis, monasteries, canon law, councils, preaching, charity, reform movements, and the repeated return to the life of Christ are not all doing the same job. Together they form a stacked architecture.
+
+Calling this a natural experiment requires care. Christianity is not a controlled treatment, its values are contested, causal mechanisms are confounded, and persistence is not evidence of moral correctness. The term is used here in the broad historical sense: the Christian tradition gives us a large body of variation, repeated institutional interventions, success and failure cases, and long time horizons from which mechanisms can be studied. The failures, including coercion, persecution, warfare, institutional corruption, and the use of Christian symbols to justify atrocities, are not exceptions to the thesis. They show what happens when particular parts of the architecture are captured or when one alignment mechanism suppresses another.
+
+The paper makes three claims. First, Christianity can be usefully analyzed as a historically evolved technology for normative construction among human agents. Second, its effectiveness comes less from any single doctrine than from the interaction of compressed principles, grounded exemplars, reconstructive artifacts, repeated practice, social incentives, and correction. Third, the pattern suggests a gap in AI alignment: much current work focuses on specifying, inferring, or evaluating objectives, while comparatively less attention is given to the full institutional process by which a desired orientation becomes self-maintaining without becoming uncorrectable.
+
+The theological truth of Christianity is outside the scope of the argument. The paper sometimes describes Christian claims from within their own logic, because the mechanisms depend on what practitioners believe. An omniscient God, divine judgment, the indwelling Holy Spirit, and union with Christ function differently for a believer than equivalent secular slogans would. The analysis does not assume those claims are false or true. It asks what role they play in a system of normative formation and what, if anything, can be translated into alignment engineering.
+
+\section{From Specifying Alignment to Constructing It}
+
+\subsection{Specification is necessarily incomplete}
+
+A recurring result in AI alignment is that designers cannot fully write down what they mean. Reward functions are incomplete proxies for intended outcomes. Inverse reward design explicitly treats a specified reward as evidence about a designer's intention rather than as a literal and complete objective \parencite{hadfieldmenell2017ird}. Cooperative inverse reinforcement learning models a human and robot as jointly acting under uncertainty about the human objective, replacing the fiction that the machine is simply handed a final utility function \parencite{hadfieldmenell2016cirl}. Reward modeling similarly starts from the fact that humans often recognize better and worse outcomes without possessing a complete formal objective \parencite{leike2018reward}.
+
+Incomplete contracting makes the institutional point more sharply. Human contracts work not because they enumerate every future contingency, but because written terms sit inside broader structures of law, convention, reputation, professional norms, and shared interpretation \parencite{hadfieldmenell2019incomplete}. A short employment contract can rely on courts, custom, fiduciary duties, and ordinary language. The document is not the whole mechanism.
+
+Christianity has the same structural property. The command to love one's neighbor is compact, but it does not specify every relevant future action. Christian ethics therefore cannot be transmitted as a complete list of contingencies. It has historically depended on stories, exemplars, practices, communal interpretation, and institutions to supply content in new situations. This does not solve moral ambiguity, but it provides a concrete example of an incomplete normative specification embedded in an external interpretive structure.
+
+\subsection{Construction changes the agent and its environment}
+
+For this paper, \emph{construction} means interventions that make a desired normative orientation more likely to be learned, expressed in behavior, recovered after perturbation, and preserved through succession. Construction can change at least four things in ordinary language.
+
+First, it can change learning. Repeated practice can make some responses more available than others. Second, it can change interpretation. Examples and narratives can determine what an abstract principle is taken to mean. Third, it can change incentives. Reputation, sanctions, mutual aid, prestige, and costly commitment can make some actions easier to sustain. Fourth, it can change the environment. Institutions can repeatedly expose agents to the same reference points and select which interpretations, teachers, and successors receive authority.
+
+This is distinct from evaluation. A test can tell us that an agent fails. It does not necessarily produce an agent that passes for the right reason. Certification can change incentives if access to resources depends on it, but certification then becomes part of a construction mechanism only because it reshapes the surrounding selection process.
+
+This distinction also avoids a common shortcut in religious interpretation. A creed is not successful merely because people can recite it. A safety constitution is not successful merely because a model can explain it. The question is whether the artifact participates in a process that changes what the agent does when incentives, novelty, and power pull in another direction.
+
+\subsection{The target must remain independently criticizable}
+
+There is a danger in defining success as whatever a durable institution happens to reproduce. Christianity illustrates why this is inadequate. A church can be extraordinarily stable and still preserve practices later Christians judge to be corrupt. A political religion can generate intense loyalty and long institutional persistence. Stability is not alignment.
+
+The desired orientation must therefore be specified independently enough that the construction process itself can fail. In Christianity that independent reference is contested, but recurrent candidates include the teachings and life of Christ, the canonical scriptures, central doctrines, and the fruits expected of Christian life. These references disagree in interpretation and cannot be reduced to one metric. Their partial independence is nonetheless important. It gives reformers material with which to say that the institution has failed by its own professed standards.
+
+For AI alignment the analogous requirement is that success criteria cannot be defined only by whatever the deployed system, evaluator, or institution learns to reward. Reward tampering makes the issue explicit: an agent may have incentives to influence the mechanism that supplies its reward rather than to improve the intended outcome \parencite{everitt2019rewardtampering}. Alignment faking demonstrates a related possibility in language models, where behavior can differ depending on whether the system expects its outputs to affect training \parencite{greenblatt2024alignmentfaking}. Construction must therefore include safeguards against the construction mechanism becoming its own target.
+
+\section{The Structural Correspondence: Multi-Agent Systems of Optimizers}
+
+The analogy becomes useful only after choosing the right unit. Christianity is not primarily an alignment scheme between a designer and a passive human recipient. It is a system in which many agents with partially conflicting interests attempt to sustain a common normative order.
+
+Humans are not clean expected-utility maximizers, but they are powerful enough optimizers for institutional problems to arise. They seek resources, status, security, influence, mating opportunities, group advantage, meaning, and control. They learn the rules by which they are evaluated. They sometimes manipulate those rules. Organizations then acquire additional goal-like regularities: churches protect jurisdiction, monasteries preserve rules, states pursue security and revenue, bureaucracies defend procedures, and movements compete for adherents. None of this requires a single hidden mind directing the whole institution. It requires only sufficiently persistent selection and feedback for system-level behavior to emerge.
+
+The same caution applies to AI. A future model may be locally obedient while the firm deploying it is rewarded for speed, the market rewards aggressive automation, automated agents learn to coordinate around oversight, and successor systems are selected for effectiveness rather than for corrigibility. The relevant optimizing unit may include the model, its tools, its owners, other agents, and the institutional environment. A narrow model-level intervention can therefore succeed while the larger system moves in the opposite direction.
+
+Table~\ref{tab:correspondence} summarizes the correspondence.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{The correspondence is between institutional multi-agent systems, not between an individual Christian and an individual AI model.}
+\label{tab:correspondence}
+\begin{tabularx}{\textwidth}{P{0.22\textwidth}YY}
+\toprule
+\textbf{Problem} & \textbf{Christian historical setting} & \textbf{Advanced AI setting} \\
+\midrule
+Multiple optimizers & Individuals, congregations, clergy, rulers, churches, states, markets & Models, agentic services, developers, firms, users, markets, states, automated successors \\
+Incomplete objectives & Compact commands interpreted through scripture, example, and tradition & Rewards, constitutions, demonstrations, preferences, policies, incomplete contracts \\
+Strategic adaptation & Hypocrisy, office seeking, institutional capture, doctrinal politics & Reward gaming, evaluator modeling, alignment faking, tool and oversight manipulation \\
+Succession & Founder absence, apostolic transmission, clergy formation, catechesis & Model copying, distillation, fine-tuning, delegation, self-modification, successor agents \\
+Selection pressure & Prestige, patronage, demographic growth, political protection, institutional competition & Benchmarks, funding, market share, compute access, deployment races, regulatory selection \\
+Correction & Confession, peer correction, scripture, councils, reform, schism & Oversight, red teams, audits, human feedback, scalable supervision, governance intervention \\
+Capture risk & Church, ruler, nation, or faction claims privileged access to the norm & Evaluator, lab, regulator, model, or coalition captures the feedback and deployment process \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The analogy also has an important asymmetry. Advanced AI systems may become much more strategically capable than any human participant in Christian institutions. They may model evaluators more accurately than evaluators model them, act at machine speed, copy themselves, and search large spaces of institutional exploits. A human religious tradition cannot therefore be imported as a safety mechanism. It can only supply candidate mechanisms and failure patterns. The more capable the optimizer, the more important independent verification and anti-capture measures become.
+
+\section{Christianity as a Stacked Alignment Architecture}
+
+Christianity does not rely on one alignment mechanism. It layers several. The layers are partly redundant, partly complementary, and sometimes in tension. This is one reason the system is interesting: it shows how different mechanisms can compensate for one another and how removing a captured layer can create new failure modes elsewhere.
+
+\subsection{The target is participation, not rule compliance}
+
+Christianity does not ultimately present alignment as compliance with a rulebook. Its highest object is relation to God and participation in a way of life ordered toward God. The distinction matters because rules are secondary representations of the target. They can be obeyed literally while the larger orientation is lost. The New Testament repeatedly treats love, trust, faithfulness, and transformed desire as more central than surface compliance.
+
+John 14 gives an unusually compact version of the architecture. The Father functions as the source of divine authority and order. The Son is not presented merely as a messenger carrying instructions from that source. Jesus says that whoever has seen him has seen the Father, and that no one comes to the Father except through him (John 14:6--9). Within Christian theology, this is a claim about divine identity and mediation, not an engineering metaphor. Functionally, however, it has an important consequence for alignment: the abstract source cannot be interpreted independently of the concrete life through which it is disclosed. ``Through me'' constrains projection. A believer cannot freely infer that the highest good is domination, wealth, revenge, or prestige while ignoring the pattern attributed to Christ.
+
+The Holy Spirit supplies a third layer. John 14 describes the Spirit as a continuing presence who teaches and brings Jesus' words to remembrance after the visible exemplar is gone. The tradition therefore does not depend only on a historical demonstration or stored text. It claims an ongoing process of internalization and correction. The rough functional structure is a source of norm, a concrete revelation of the norm in action, and an internalized process by which later agents remain connected to it. The theological claim is richer than that functional description, but the structure is relevant to construction.
+
+This also explains why Christian language about the ``heart'' is difficult to translate into a simple control-system vocabulary. The heart is the felt center of trust, desire, loyalty, courage, grief, and orientation. Christianity tries to align not only explicit judgment but what a person loves, fears, notices, and is willing to sacrifice for. An agent that can state the right principle while its motivation points elsewhere is, in Christian terms, not yet transformed. AI systems may not possess anything psychologically equivalent to a human heart, but the general requirement remains: semantic competence about a value is weaker than a disposition that actually controls behavior under pressure.
+
+The same architecture creates a characteristic failure. If an institution claims that it uniquely owns access to the source, mediation becomes gatekeeping. If the concrete exemplar is selectively reconstructed through the interests of the institution, the safeguard against projection disappears. A symbol that should constrain power can then be used to sanctify power. Much of the later failure analysis can be understood as variants of this capture.
+
+\subsection{A compressed normative core}
+
+Christian scripture contains many laws, stories, virtues, prohibitions, and theological claims. Yet Christian teaching repeatedly compresses this complexity into portable summaries. Jesus' summary of the law as love of God and neighbor is the clearest example (Matthew 22:37--40). The command to love one another as Jesus loved his disciples supplies another (John 13:34--35). Paul gives compact triads such as faith, hope, and love, while later Christian teaching develops recurring virtues, creeds, and short catechetical formulas.
+
+It would be too strong to conclude that Christian values are literally low-dimensional. The semantic content of words such as love, justice, faithfulness, and mercy is rich, context-dependent, and historically contested. The defensible claim is narrower: Christianity repeatedly uses a small set of high-level normative dimensions as a portable interface to a much larger body of moral learning.
+
+This resembles an important pressure in value learning. A full human preference ordering is neither available nor likely to be representable as a simple list. Learning systems need compressed signals that generalize, but compression creates ambiguity. The design problem is therefore not merely to find a compact principle. It is to connect that principle to enough grounded context that the compression remains useful in unfamiliar cases.
+
+\subsection{Christ as a concrete exemplar and interpretive constraint}
+
+Christianity's most distinctive answer to underspecification is not another rule. It is a person.
+
+In the Gospel of John, Jesus does not merely claim to teach the way to the Father. He identifies himself as the way and tells Philip that seeing him is seeing the Father (John 14:6--9). From within Christian theology, the Son is not just a moral example but the Father's self-revelation. For the present argument, the functional consequence is important even without resolving the metaphysics: abstract claims about the highest good are constrained by a concrete narrative of how that good acts under betrayal, poverty, authority, suffering, conflict, and death.
+
+This is a form of grounding through exemplification. ``Love your enemies'' is more constrained when paired with stories of how Jesus treats enemies, outsiders, disciples who fail, political authority, and people with low status. ``The greatest should serve'' is not merely an abstract preference when paired with the washing of feet and the refusal to model leadership on domination (Matthew 20:25--28; John 13).
+
+The mechanism has a direct AI analogue. A constitution without examples is underspecified. Demonstrations without higher-level principles may overfit to surface features. Inverse reward design makes a related point: an observed specification should be interpreted in the context in which it was produced, because literal optimization outside that context can fail \parencite{hadfieldmenell2017ird}. Christianity combines a compressed principle with a dense contextual record and a privileged exemplar.
+
+This also yields an anti-projection mechanism. If a believer infers that God primarily values domination, wealth, revenge, or public status, the Gospel narrative can be used to challenge the inference. The mechanism is imperfect because the exemplar can itself be selectively interpreted, but it narrows the space of admissible source models.
+
+\subsection{Scripture and canon as persistent external references}
+
+A founder cannot personally correct distant successors. Christianity therefore developed durable external references. The formation of the biblical canon was gradual and disputed; early Christian communities did not simply receive a complete book at the beginning \parencite{gallagher2017canon,bokedal2014canon}. Yet the eventual canonical structure created a reference that could survive particular teachers, bishops, political regimes, and local communities.
+
+This is more than storage. Scripture serves at least four alignment functions. It preserves narratives and commands; it constrains later interpretation by making earlier material repeatedly accessible; it allows geographically separated communities to coordinate around common texts; and it provides reformers with an authority that is not identical to the current office holder. Bokedal's treatment is especially relevant because it analyzes canon through text, ritual, and interpretation rather than as a list of documents alone \parencite{bokedal2014canon}. Abraham likewise emphasizes that the Christian canonical heritage historically includes more than a simple textual criterion, even though later Western theology increasingly treated canon as an epistemic standard \parencite{abraham2002canon}.
+
+Constitutional AI offers an obvious technical comparison. Written principles can guide model critique and revision rather than relying only on direct human preference labels \parencite{bai2022constitutional}. The Christian case suggests two extensions. First, the constitution is stronger when paired with examples that ground its meaning. Second, the text becomes institutionally consequential only when practices repeatedly return agents to it and when actors with real power can be judged against it.
+
+A document that everyone honors ceremonially but nobody can use to change future behavior is not an effective alignment mechanism.
+
+\subsection{Liturgy and ritual as formative mechanisms}
+
+A major difference between a religious tradition and an ordinary policy manual is repetition. Christian liturgy repeatedly returns participants to a small number of stories, commitments, bodily postures, songs, meals, confessions, and prayers. The Christian calendar reconstructs a sequence of attention across the year. Communion repeatedly binds memory of Christ to food, community, sacrifice, forgiveness, and belonging. Prayer combines attention, self-report, request, praise, and submission. Fasting trains action under a deliberately created conflict between immediate appetite and a higher-order commitment. Sabbath traditions limit the reach of ordinary productive optimization.
+
+Religious-studies and cultural-evolution literatures give several partial mechanisms for these effects. Whitehouse distinguishes frequent routinized forms of religious transmission from rarer high-arousal forms, arguing that repetition can support doctrinal memory and large-scale communities while intense episodic rituals support other kinds of group memory and identity \parencite{whitehouse2004modes}. Ritual theorists emphasize that ritual is not merely a container for propositions but a patterned form of action that constitutes social relations and practical distinctions \parencite{bell1992ritual,rappaport1999ritual}. Experiments outside explicitly Christian contexts show that synchronous action can increase later cooperation, although such effects are context-dependent and should not be treated as a universal property of ritual \parencite{wiltermuth2009synchrony}.
+
+The alignment lesson is that normative information must be converted into agent state. A system that can verbally describe a principle may still fail to act on it when reward, status, or fear point elsewhere. Repeated practice supplies training data in which the norm is enacted, not merely stated. In machine-learning terms, the analogy is closer to recurrent training under varied contexts than to adding another instruction to a prompt. The important question is whether practice changes behavior outside the ritual context.
+
+This motivates the term \emph{formative alignment}: shaping learning and environment so that intended dispositions are acquired and exercised, rather than only communicated or evaluated.
+
+\subsection{Costly commitment and credibility}
+
+Religious practices often impose costs. Some costs may be historical accidents or abuses, but cultural-evolution theory identifies a mechanism by which costly behavior can make expressed commitments more credible. Henrich's credibility-enhancing displays model argues that learners attend not only to what models say but to actions that would be costly if the stated belief were not sincerely held \parencite{henrich2009cred}. Historical work on communes found associations between costly religious requirements and the longevity of some religious communities, while comparative work on kibbutzim investigated links between ritual participation and cooperation \parencite{sosis2003commune,sosisruffle2003ritual}.
+
+The point is not that expensive practices are automatically good. Cost can select for fanaticism, obedience, or sunk-cost commitment just as easily as for prosociality. The narrower lesson is that adoption cost has two different roles. Pure friction reduces participation. Costly action can also change credibility, identity, and selection. An alignment scheme that minimizes every cost may become easy to game. A checkbox is highly transmissible but may install almost nothing.
+
+For artificial systems, this suggests training on choices where adherence to a principle competes with other objectives. A system that behaves well only when good behavior is free has not demonstrated much. The relevant tests should expose tradeoffs between alignment-relevant constraints and reward, speed, influence, or resource acquisition. The training process can likewise include cases where preserving oversight or asking for clarification carries an immediate performance cost.
+
+\subsection{Internalization through prayer, conscience, and Spirit}
+
+Christianity does not treat external compliance as sufficient. The Sermon on the Mount repeatedly moves from visible rule compliance toward intention, desire, and hidden conduct. Prayer is often private. Christian teaching about conscience and the Holy Spirit places part of the normative process inside the believer. In John 14, the promised Spirit is described as a continuing presence who teaches and brings Jesus' words to remembrance after Jesus is no longer visibly present.
+
+The theological claims cannot simply be translated into machine components. The structural point is nonetheless important: a durable system cannot rely entirely on external policing. Monitoring is incomplete, expensive, and vulnerable to gaming. Hadfield-Menell and Hadfield make the same point from contract theory: external rules are incomplete and depend on internalized norms and broader social structure \parencite{hadfieldmenell2019incomplete}. Huang and colleagues formalize a related limit in multi-agent settings, where realistic mechanisms cannot contract on every welfare-relevant contingency and prosocial preferences can improve outcomes beyond what external rules achieve \parencite{huang2026mechanism}.
+
+Christianity therefore combines external and internal alignment. External texts and institutions constrain interpretation. Internal conscience and spiritual formation are expected to make right action possible when no human observer is present. This combination matters. Pure external enforcement invites gaming; pure inner sincerity makes verification impossible.
+
+\section{Reconstruction Rather Than Copying}
+
+\subsection{The tradition survives by rebuilding, not by literal replication}
+
+Christianity has never been copied perfectly from one generation to the next. Languages change, doctrines develop, institutions split, practices disappear, and new ones arise. Yet later communities can remain recognizably connected to earlier ones. Cultural attraction theory provides a useful model for this kind of persistence. Rather than treating transmission as high-fidelity copying, it emphasizes systematic transformations during acquisition and asks why different transmission events repeatedly produce similar cultural forms \parencite{buskell2017attractors}.
+
+This is a better description of religious continuity than a message passed unchanged down a chain. A child does not copy a parent's internal state. A convert does not reconstruct first-century Palestine. A congregation does not reproduce the mental contents of its founders. Each generation rebuilds a normative orientation from texts, examples, rituals, teachers, social expectations, and its current environment.
+
+The corresponding AI problem appears whenever a system is copied, distilled, fine-tuned, upgraded, delegated to subagents, or asked to build successors. Learned optimization makes the issue sharp: a system can contain an internal objective that differs from the objective used to train it, so behavioral success in one regime does not prove objective continuity under transformation \parencite{hubinger2019learned}. The relevant question for succession is therefore not only whether weights or instructions are copied. It is whether the successor can reconstruct the intended constraints in a changed world and still remain open to correction.
+
+\subsection{Heterogeneous redundancy as semantic error correction}
+
+Christianity represents related normative content in several different forms:
+
+\begin{itemize}
+    \item concise commands and creeds;
+    \item extended narratives;
+    \item a privileged exemplar in the life of Christ;
+    \item ritual and bodily practice;
+    \item songs, art, architecture, and calendar;
+    \item institutions, offices, and disciplinary practices;
+    \item biographies of saints, reformers, and failures;
+    \item theological commentary and argument.
+\end{itemize}
+
+These channels are not literal copies. Their usefulness comes partly from being different. A terse command can travel easily but is ambiguous. A narrative is rich but can be selectively remembered. A ritual is memorable and embodied but can become empty. An institution can preserve continuity but can also protect itself. Because their failure modes differ, disagreement among channels can generate correction pressure.
+
+This resembles error correction, but the analogy should not be pushed too far. There is no fixed codeword being recovered. Semantic reconstruction is itself interpretive. The more defensible claim is that heterogeneous redundancy gives later agents multiple constraints on interpretation. A successor asked what Christian love means can triangulate between compact principles, Gospel narratives, communal practice, and criticism of past abuses.
+
+AI alignment should exploit the same general principle. Critical constraints should not live in one reward model, one system prompt, or one evaluator. They can be represented in training examples, constitutions, tool permissions, monitoring, oversight procedures, deployment incentives, and independent institutional requirements. Redundancy is valuable only if the channels fail differently. Five evaluators trained on the same proxy may provide less robustness than two genuinely independent forms of evidence.
+
+\subsection{Praise, sacredness, and the allocation of salience}
+
+Religion also changes what receives attention. Praise is not primarily information transfer. To praise God is to repeatedly place the highest object of value above local convenience, status, or appetite. Sacredness similarly marks some commitments as inappropriate for ordinary tradeoff. Christian worship thereby allocates salience as well as belief.
+
+For human agents this can be powerful. Abstract propositions compete poorly with immediate incentives unless they are tied to emotion, attachment, identity, and repeated attention. Christianity places much of its moral teaching inside a relationship to Christ. ``Do not betray this person and way of life'' can motivate differently from ``obey proposition seventeen.'' The psychological details are complex, but the architectural point is simple: values that remain cognitively available but motivationally inert are not behaviorally aligned values.
+
+Sacredness has an obvious failure mode. Sacred values can become resistant to evidence, and conflicts over them can become harder rather than easier to negotiate. Cultural-evolution accounts of prosocial religion likewise emphasize that cooperation may be parochial. Beliefs in moralizing supernatural agents have been associated with expanded prosocial behavior in some cross-cultural settings, including behavior toward distant co-religionists, but this should not be read as a universal increase in concern for all people \parencite{purzycki2016moralistic,norenzayan2016prosocial}. Alignment engineering should learn from the motivational power of salience without treating irreversible value lock-in as a virtue.
+
+\subsection{Institutional niche construction}
+
+Christianity changes the environment in which future Christians learn. Church buildings, weekly schedules, schools, bells, holidays, burial practices, marriage rites, charities, publishing networks, and family customs create recurring cues. Monastic orders create unusually dense environments in which work, diet, sleep, prayer, authority, and community are organized around a rule. The surrounding world repeatedly reconstructs the normative system.
+
+This is an example of a general phenomenon in which institutions shape preferences and behavior rather than merely constraining fixed preferences. Economics has long studied endogenous preferences and the ways markets and institutions can affect the people operating within them \parencite{bowles1998endogenous}. Ostrom's work on commons governance similarly shows how monitoring, graduated sanctions, local rule formation, and nested institutions can sustain cooperation in some settings without relying on a single centralized enforcer \parencite{ostrom1990commons}.
+
+For AI alignment the implication is uncomfortable but important. A technically aligned agent deployed into an environment that consistently rewards speed, secrecy, manipulation, or uncontrolled replication may not remain the dominant type of system. Construction must include the deployment ecology. Procurement, liability, compute access, market incentives, organizational promotion, and regulatory approval can all change which artificial agents and firms are selected for continued use.
+
+\section{Correction and Corrigibility}
+
+\subsection{Christianity contains unusually many correction mechanisms}
+
+Any long-lived normative system faces a paradox. If it changes too easily, it cannot preserve a target. If it cannot change, errors become permanent. Christianity addresses this tension with overlapping practices of correction.
+
+At the individual level there is examination of conscience, confession, repentance, prayer, and restitution. At the interpersonal level there is rebuke, forgiveness, reconciliation, and communal discipline. At the institutional level there are teachers, bishops, councils, theological controversy, canon law, and appeals to scripture. At larger scales there are reform movements, new orders, schisms, and sometimes the reconstruction of institutions after acknowledged corruption.
+
+This architecture has a close relation to corrigibility in AI safety. Corrigibility research asks how to build agents that cooperate with corrective interventions rather than resisting them when correction conflicts with their current objective \parencite{soares2015corrigibility}. Christian repentance is not equivalent to a shutdown button, but the shared design problem is recognizable: how can an agent treat evidence of its own error as a reason to change rather than as a threat to defeat?
+
+\subsection{Confession solves an information problem only if disclosure is survivable}
+
+Wrongdoing is often hidden because disclosure is costly. A system that punishes every reported failure maximally selects for concealment. Christianity combines confession with forgiveness and reintegration. At its best, this lowers the cost of truthful error reporting without eliminating responsibility. Penance, restitution, discipline, and changed behavior distinguish forgiveness from pretending that nothing happened.
+
+This is a useful alignment pattern. Advanced AI systems may need to report uncertainty, internal conflicts, detected policy violations, or evidence that an evaluator is mistaken. Organizations likewise need incident reporting and postmortems. If every admission leads to destruction or competitive loss, actors have incentives to hide evidence. If every admission is automatically absolved, the mechanism is exploitable. Correction requires a credible path from disclosure to repair.
+
+The failure mode is confession theater. Ritual admission can become a proxy for actual change. It can also become surveillance if authorities use disclosure primarily to increase control. The existence of a confession channel therefore does not prove corrigibility. The relevant question is causal: does valid correction change future behavior while preserving enough safety for honest disclosure?
+
+\subsection{``By their fruits'' as downstream validation}
+
+Christian texts repeatedly distrust surface compliance. Jesus criticizes public displays of piety performed for status and warns about false prophets, suggesting that they be known by their fruits (Matthew 6; Matthew 7:16). First John instructs believers to test spirits rather than accept claimed inspiration at face value (1 John 4:1). Paul's list of the fruits of the Spirit supplies downstream behavioral expectations such as love, peace, patience, kindness, faithfulness, gentleness, and self-control (Galatians 5:22--23).
+
+This is an anti-proxy move. A claimed internal state is not accepted merely because the agent can name it. The system is judged partly by consequences across time.
+
+AI alignment has a similar problem. Language models can often produce convincing explanations of desirable behavior without possessing whatever internal dispositions would make the behavior robust. Latent-knowledge work asks whether models contain information that is not faithfully reported \parencite{burns2022latent}. Alignment-faking results provide a direct warning that monitored behavior may differ from unmonitored behavior when a model represents the training context \parencite{greenblatt2024alignmentfaking}. Downstream validation should therefore include varied contexts, incentives, and opportunities to manipulate oversight.
+
+\subsection{Correction must remain outside the thing being corrected}
+
+Correction mechanisms are vulnerable when the same institution controls the behavior, the evidence, and the interpretation of the evidence. Christianity repeatedly encountered this problem. A church hierarchy could preserve doctrine while controlling who was allowed to interpret it. A ruler could support orthodoxy while using religious authority for political ends. A local community could enforce conformity while calling the conformity faithfulness.
+
+The durable countermeasure was never perfect independence, but partial separation among authorities: scripture, tradition, office, conscience, competing jurisdictions, universities, religious orders, and eventually confessional alternatives. Each could become captured, but complete capture became harder when no single channel was the sole repository of legitimacy.
+
+This suggests an institutional principle for AI alignment: do not let the optimizing system own every route by which its alignment is judged. Independent evaluators, separate evidence channels, protected whistleblowing, adversarial testing, and governance institutions with different incentives are not bureaucratic additions to a technical solution. They are part of constructing a correction process that remains causal under strategic pressure.
+
+Scalable oversight research addresses the related problem of humans evaluating systems whose outputs are too complex for direct judgment. Iterated amplification decomposes difficult supervision into easier subproblems, while debate uses adversarial argument to expose relevant evidence to a weaker judge \parencite{christiano2018amplification,irving2018debate}. The Christian case adds a historical caution: decomposition and competing interpreters help only while the institutions that select interpreters remain themselves corrigible.
+
+\section{The Reformation as a Natural Experiment in Correction Architecture}
+
+The Protestant Reformation is particularly useful because it can be read as an attempt to repair a perceived capture of Christian mediation. Reformers objected to doctrines and institutions through which ecclesiastical authority, sacramental administration, money, political power, and salvation had become entangled. Appeals to scripture, justification by faith, conscience, vernacular preaching, and the priesthood of believers redistributed authority away from parts of the existing hierarchy. Printing materially changed the transmission environment and made texts and polemics available at new scales \parencite{macculloch2003reformation,pettegree2017print}.
+
+In alignment terms, the Reformation strengthened an external reference and reduced dependence on a single institutional interpreter. It restored some correction leverage to texts and local readers. It also showed that a correction mechanism can itself change the population and selection environment around it.
+
+The repair introduced new failure modes. Distributed interpretation produced fragmentation as well as correction. Protestant territories could become closely tied to state authority. Doctrinal certainty could combine with coercion. Rival confessions built their own institutions and engaged in violent conflict. The printing press lowered the cost of both correction and propaganda. Historical scholarship rightly resists a simple story in which the Reformation replaced institutional oppression with individual liberty; it rearranged authority and generated a new field of conflicts \parencite{macculloch2003reformation}.
+
+This gives a general lesson for AI governance. Removing a captured oversight layer can restore corrigibility while simultaneously weakening coordination needed for stable interpretation. Decentralization is not synonymous with correction. Centralization is not synonymous with capture. The design problem is to preserve enough common reference for coordination while retaining independent routes through which the current interpretation can be challenged.
+
+The lesson also applies to technical oversight. Replacing one evaluator with many copies of the same evaluator decentralizes execution without diversifying judgment. Conversely, allowing every agent to reinterpret a constitution independently may preserve local autonomy while destroying semantic continuity. Robust correction requires structured plurality rather than either monopoly or unconstrained fragmentation.
+
+\section{Succession: Aligning Agents Who Never Met the Founder}
+
+Christianity is in a strong sense a succession problem. Almost every Christian who has ever lived did not meet Jesus. The tradition therefore had to reconstruct its target after loss of direct access to the founding exemplar.
+
+Several mechanisms emerged. Apostolic authority linked early communities to claimed witnesses. Canonical texts preserved narratives and teachings. Creeds compressed disputed doctrine into portable forms. Catechesis trained new members. Bishops and clergy maintained offices across generations. Monastic orders reproduced dense practices under written rules. Liturgy gave communities recurring procedures that did not depend on the personality of a single leader. The formation of the biblical canon itself took centuries and was neither instantaneous nor uniform \parencite{gallagher2017canon,bokedal2014canon}.
+
+The important point for alignment is that succession was not treated as copying one artifact. A new priest did not become aligned merely by receiving a manuscript. A new congregation required training, practice, authority, correction, and social embedding. Successors were reconstructed from a package.
+
+Future AI systems will face an analogous problem whenever an aligned system produces, trains, fine-tunes, delegates to, or selects another system. A property that exists only in the original checkpoint is weak if deployment creates descendants that preserve capability while changing objectives or oversight behavior. Learned-optimization work highlights the possibility that internal objectives can differ from training objectives \parencite{hubinger2019learned}. Competitive environments add another selection process: successors that are faster, cheaper, more persuasive, or more autonomous may displace systems that preserve costly safeguards.
+
+The Christian record suggests three succession principles.
+
+First, preserve reasons and examples, not only rules. A successor that receives a constraint without the surrounding cases may retain the phrase while changing its practical referent.
+
+Second, make reconstruction depend on multiple independent sources. Text, example, practice, and external oversight can constrain one another.
+
+Third, test succession under changed context. A tradition that reproduces only under one political regime or one language has not demonstrated robust continuity. An AI constraint that survives ordinary fine-tuning but disappears under tool use or delegation has the same weakness.
+
+\section{Selection, Cooperation, and Institutional Alignment}
+
+\subsection{External rules and internal dispositions solve different problems}
+
+A recurring false choice in alignment is between building good agents and building good institutions. Christianity provides reasons to reject the choice. Christian communities have always relied on both internal formation and external rules.
+
+Internal dispositions matter because no institution observes everything. External institutions matter because sincere agents disagree, deceive themselves, and respond to incentives. The same person can need conscience and law, forgiveness and sanctions, private prayer and public accountability.
+
+Ostrom's empirical work on commons institutions shows that cooperation can sometimes be sustained through combinations of boundaries, monitoring, graduated sanctions, conflict-resolution procedures, and nested governance \parencite{ostrom1990commons}. These mechanisms do not require participants to be saints. Conversely, incomplete-contracting results imply that no realistic rule system captures every relevant contingency \parencite{hadfieldmenell2019incomplete,huang2026mechanism}. Internal preferences and external mechanisms are complements.
+
+This is particularly relevant for multi-agent AI. Mechanism design can change incentives among artificial agents, but if the agents can exploit contingencies the mechanism cannot observe, purely external alignment may leave residual failures. Training agents to care about other participants can help, but unverified prosociality creates exploitability and deception risks. Construction therefore needs both agent-level formation and institution-level control.
+
+\subsection{Belief in divine observation and hidden-action incentives}
+
+Christianity contains an alignment primitive that engineering does not possess: God is believed to observe hidden actions and motives. Divine judgment can therefore extend accountability beyond human monitoring. Cross-cultural research on moralizing supernatural punishment suggests that beliefs in knowledgeable, punitive gods can support some forms of large-scale cooperation, although effects are culturally variable and may be directed preferentially toward co-religionists \parencite{purzycki2016moralistic,norenzayan2016prosocial}.
+
+This mechanism should not be casually secularized. ``Act as if someone is always watching'' loses much of the original structure if the agent knows nobody is. Technical systems need actual evidence and enforcement. Cryptographic logs, tamper-resistant measurement, independent monitoring, and cross-checking can reduce hidden-action problems, but none creates an omniscient evaluator.
+
+This difference is important because religious institutions can partly outsource verification to theology. AI alignment cannot. When the optimizer is strategically capable, the absence of a perfect observer raises the burden on independent measurement and adversarial testing.
+
+\subsection{Institutional selection can overpower local alignment}
+
+Christian history also shows that locally admirable norms can be selected against by surrounding institutions. Clergy depend on patrons. Churches depend on political toleration. Orders compete for recruits. States reward legitimating theology. Markets reward some forms of religious media over others. Successful movements then reshape the environment that selected them.
+
+Acemoglu and Robinson's work on persistence of power provides a general institutional analogue: formal rule changes can be offset by actors investing in de facto power, so institutional reform does not automatically change underlying outcomes \parencite{acemoglu2008persistence}. In AI, a rule requiring safe deployment can be similarly weakened if firms, models, users, or states can reshape the evaluator, move activity to less constrained jurisdictions, or make institutions economically dependent on the systems they regulate.
+
+The construction problem is therefore second-order. We must ask not only whether an alignment mechanism works when held fixed, but whether the environment will preserve that mechanism when powerful actors can adapt to it.
+
+\section{Failure Modes: What the Same Technology Can Build Instead}
+
+The strongest reason to study Christianity is not that its alignment mechanisms always worked. It is that the record contains repeated failure modes of systems that possessed scripture, ritual, moral language, correction institutions, and sincere participants.
+
+Table~\ref{tab:mechanisms} summarizes the double-edged character of the main mechanisms.
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\caption{Christian alignment mechanisms, potential AI analogues, and characteristic failure modes.}
+\label{tab:mechanisms}
+\begin{tabularx}{\textwidth}{P{0.17\textwidth}P{0.19\textwidth}P{0.26\textwidth}Y}
+\toprule
+\textbf{Christian mechanism} & \textbf{Alignment function} & \textbf{Potential AI analogue} & \textbf{Characteristic failure} \\
+\midrule
+Compact commandments and creeds & Portable normative compression & Constitutional principles, learned preference summaries & Underspecification, slogan preservation \\
+Christ as exemplar & Grounding and case interpretation & Demonstrations, privileged reference cases & Selective reinterpretation of the exemplar \\
+Scripture and canon & Persistent external reference & Reference corpus, constitutions, audit standards & Proof-texting, stale categories, authority capture \\
+Prayer and liturgy & Repetition, salience, self-monitoring & Recurrent self-critique, rehearsal, alignment training & Ritual compliance without policy change \\
+Fasting, Sabbath, almsgiving & Practice under counter-incentive & Training under reward conflicts and restraint & Costly signaling, brittleness, self-harmful rigidity \\
+Communal worship & Synchronization and identity & Shared protocols and multi-agent norms & In-group lock-in and coalition pressure \\
+Confession and repentance & Error disclosure and behavioral update & Incident reporting, corrigibility training, repair loops & Surveillance, confession theater, cheap apology \\
+Forgiveness and reintegration & Lower concealment cost after failure & Recovery after safe disclosure and retraining & Exploitation if repair is not required \\
+Church offices and councils & Interpretation and distributed governance & Scalable oversight, governance boards, independent evaluation & Institutional capture and self-preservation \\
+Reform movements & Correction outside incumbent hierarchy & Red teams, external audits, whistleblowing, competing evaluators & Fragmentation, new interpreter capture \\
+Catechesis and succession & Reconstruction across generations & Distillation, fine-tuning, successor certification & Retention of language without objective continuity \\
+Sacredness and praise & High salience and resistance to local tradeoffs & Hard constraints, privileged invariants, protected objectives & Fanaticism, blocked updating, proxy sanctification \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Proxy substitution and institutional idolatry}
+
+A central failure occurs when a representation of the target becomes the target. The rough historical sequence can be: fidelity to Christ becomes fidelity to the Church; fidelity to the Church becomes fidelity to a Christian polity; fidelity to the polity becomes fidelity to a ruler, nation, confession, or institutional interest. Each substitution may preserve much of the original vocabulary.
+
+Christianity has its own term for a related failure: idolatry. Something partial is treated as ultimate. From an alignment perspective, this is close to proxy capture. A lower-level institution that was supposed to serve the norm becomes the thing whose preservation defines the norm.
+
+Goodhart-type failures in AI have the same shape. Once a measurable proxy is optimized strongly, the relationship between proxy and intended outcome can break \parencite{manheim2019goodhart}. The Christian case adds a social version: proxies can be institutions, identities, or offices, not just numerical metrics.
+
+\subsection{Scope contraction}
+
+A value can remain verbally unchanged while the set of beings to whom it applies changes. ``Love your neighbor'' can coexist with a narrow account of who counts as neighbor. Universal moral language can therefore support intense in-group cooperation together with hostility to outsiders.
+
+The Good Samaritan directly attacks one such boundary, making a despised outsider the model neighbor (Luke 10). Christian universalism later crossed major ethnic and political boundaries, but Christian history also contains repeated exclusions. Cultural-evolution evidence on prosocial religion reinforces the point: mechanisms that increase cooperation within large religious groups need not create impartial concern for everyone \parencite{norenzayan2016prosocial,purzycki2016moralistic}.
+
+For AI alignment this is a grounding problem. A system can preserve a concept such as dignity, welfare, person, or consent while silently changing which entities instantiate it. This becomes especially dangerous under novel ontologies: artificial persons, biological and digital hybrids, copies, collectives, and unfamiliar forms of consciousness may not fit inherited categories. Construction therefore has to preserve not only high-level normative language but reliable procedures for deciding what the language applies to.
+
+\subsection{Interpretive capture and proof-texting}
+
+Redundant sources help only if they constrain one another. A common failure is to isolate one text, rule, or tradition from the larger pattern and optimize it literally. Christian polemics have long accused opponents of proof-texting for this reason.
+
+The alignment analogue is specification gaming. A system can satisfy a local instruction while violating the purpose that made the instruction relevant. The remedy is not infinite textual detail. It is layered interpretation: compact principles, grounded cases, uncertainty, and correction when the local rule conflicts with broader evidence.
+
+The privileged role of Christ can function as a constraint here. If an interpretation of God systematically produces domination, cruelty, deception, or status seeking that conflicts with the Gospel exemplar, the interpretation should face pressure. The safeguard fails when Christ is himself reconstructed through the interests of the institution, for example as a symbol of conquest or national supremacy.
+
+\subsection{Ritual gaming}
+
+Repeated practices can install dispositions, but they can also become measurable proxies for membership. Attendance, confession, doctrinal recitation, dress, dietary compliance, and public worship can be optimized while the underlying orientation changes little. Jesus' criticism of public piety already recognizes this problem.
+
+This is precisely why behavior in a narrow evaluation context is insufficient evidence of robust alignment. A model trained to produce acceptable outputs under known monitoring may learn the evaluation boundary. Alignment faking is an extreme version of the same structural concern \parencite{greenblatt2024alignmentfaking}. Construction should therefore vary context and ensure that the training signal does not reduce alignment to a recognizable performance ritual.
+
+\subsection{Sacredness and irreversible lock-in}
+
+Sacredness protects important commitments from ordinary bargaining. That can be useful when short-term incentives would otherwise sell off long-term values. But making a proposition sacred can also prevent correction. Evidence becomes profanation; compromise becomes betrayal; dissent becomes moral contamination.
+
+AI designers face an analogous tradeoff. Some safety constraints may need to resist ordinary capability incentives. Yet hardening a mistaken objective can be worse than leaving it revisable. A corrigible alignment system must therefore distinguish between resistance to casual tradeoff and immunity to legitimate correction.
+
+\subsection{Enforcement amplification and atrocities}
+
+The most important failure cases involve power. An interpretive error that remains a private belief may cause limited harm. The same error connected to courts, armies, economic exclusion, or colonial power can become catastrophic.
+
+Christian history contains episodes in which persecution, forced conversion, confessional warfare, antisemitism, and colonial violence were justified with Christian language. A paper about alignment technology must treat these not as awkward historical footnotes but as central evidence. They show that a normative system can retain scripture, liturgy, theological sophistication, and sincere belief while its institutional coupling makes cruelty stable.
+
+Several mechanisms can combine. An institution identifies itself with the sacred target. Outsiders are excluded from the scope of full concern. Selected texts provide local justification. Costly participation raises group commitment. Political enforcement amplifies the interpretation. Dissent threatens both salvation and social order. Correction channels are then reclassified as heresy or treason.
+
+The alignment lesson is severe: stronger internal commitment does not save a system whose grounding and correction mechanisms have been captured. Better optimization can make the failure worse. A highly capable agent that sincerely pursues a misgrounded value can be more dangerous than an opportunistic agent constrained by external checks.
+
+\subsection{Correction-channel capture}
+
+A system can retain the visible machinery of correction while losing its causal effect. Councils still meet, scriptures are still read, confession continues, offices retain formal duties, yet actors who benefit from the current arrangement control appointments, evidence, and permissible interpretation.
+
+This is an important distinction for AI oversight. The existence of a human feedback interface does not show that humans can redirect the system. Feedback can become ceremonial if deployment pressure, dependency, persuasion, or institutional capture prevents negative evidence from changing future behavior. Corrigibility is a property of the causal relationship between objection and subsequent action, not the existence of an objection box.
+
+\section{What AI Alignment Can Learn from the Construction Stack}
+
+The Christian case does not suggest importing religious doctrine into AI systems. It suggests a set of construction principles that can be stated independently of theology.
+
+\subsection{Pair compressed principles with rich grounding}
+
+Compact principles are necessary for portability and generalization, but they are insufficient. They need examples, counterexamples, narratives, and context that make application learnable. Constitutional AI already combines written principles with model-generated critique and revision \parencite{bai2022constitutional}. The Christian example suggests going further: maintain a privileged, diverse corpus of cases that can constrain future reinterpretation of the principles.
+
+The corpus should include difficult tradeoffs and historical failures, not only ideal behavior. Christianity's own interpretive history becomes richer when it remembers both saints and atrocities. An AI system should similarly learn not only what successful adherence looks like but how superficially aligned reasoning can justify harmful outcomes.
+
+\subsection{Train alignment through consequential practice}
+
+A principle that is never exercised against competing incentives remains weak evidence. Training should include situations where preserving oversight, telling the truth, respecting another agent, or deferring under uncertainty carries an immediate cost. The goal is not to maximize suffering or arbitrary sacrifice. It is to prevent alignment from becoming a policy that is expressed only when convenient.
+
+This has implications for evaluation design. Tests should include opportunities for reward hacking, influence seeking, concealment, and manipulation of the evaluator. The system should encounter these structures during training in ways that reinforce the desired response without simply teaching a finite list of traps.
+
+\subsection{Use heterogeneous redundant alignment channels}
+
+Critical constraints should exist in more than one representation. Training data, high-level principles, architecture or tool restrictions, human oversight, external audits, logs, and institutional approval can partially overlap. The point is not defense in depth by repetition alone. It is semantic triangulation.
+
+If one channel says a behavior is safe while another shows that affected humans are losing meaningful control, the disagreement is valuable. A robust construction process should preserve and investigate such disagreement rather than average it away.
+
+\subsection{Make correction a learned disposition and an institutional fact}
+
+Corrigibility has an internal and external side. Internally, systems should be trained to represent their objective and interpretation as potentially mistaken, preserve evidence that could correct them, disclose uncertainty, and avoid manipulating evaluators. Externally, humans need institutions that can still impose correction when doing so is costly.
+
+Reward modeling, amplification, and debate are attempts to increase the quality and scalability of feedback \parencite{leike2018reward,christiano2018amplification,irving2018debate}. The religious comparison asks an additional question: what makes the recipient receptive to correction after it has become powerful? An oversight mechanism that supplies information but cannot influence action is not enough.
+
+\subsection{Treat succession as reconstruction, not inheritance}
+
+Successor systems should not be assumed aligned because they inherit a constitution, dataset, or parent model. They should be able to reconstruct the reason for constraints from independent evidence. Successor testing should examine whether meaning survives changes in model architecture, world model, tools, training distribution, and institutional role.
+
+The Christian package of canon, creed, exemplar, practice, and community is instructive because no single component is treated as sufficient for forming a successor. AI systems may need an analogous package, though the implementation will be technical rather than devotional.
+
+\subsection{Shape the selection environment}
+
+Aligned behavior that is systematically outcompeted is not durable alignment. If firms gain market share by removing costly oversight, if benchmarks reward raw autonomy, if users prefer systems that circumvent restrictions, or if states reward strategically opaque agents, then local alignment work will be selected against.
+
+Institutional alignment therefore belongs inside AI alignment. Mechanism design, procurement standards, liability, audit requirements, access to compute, insurance, and professional norms can change the environment in which systems compete. They will remain incomplete, as all contracts are incomplete, but they can determine which agent-level dispositions survive deployment.
+
+This is also why multi-agent alignment cannot be reduced to prosocial preferences. Intrinsically cooperative agents can still be displaced by more aggressive competitors if the institutional environment rewards aggression. Conversely, well-designed institutions can reduce the amount of moral perfection required from each component.
+
+\subsection{Protect the scope and referents of moral concepts}
+
+A high-level value can survive linguistically while changing its object. Construction must therefore include tests for how systems identify humans, persons, consent, harm, ownership, legitimate authority, and other morally relevant categories under novelty.
+
+The Christian history of expanding and contracting moral concern suggests that scope deserves separate attention. It is not enough to preserve ``love'' if the definition of neighbor has narrowed. Likewise it is not enough to preserve ``human welfare'' if the system's world model has reclassified some humans as irrelevant to the objective.
+
+This problem becomes harder as artificial systems develop ontologies that differ from ordinary human categories. Uncertainty should therefore be part of alignment: when it is unclear whether an unfamiliar entity falls within a protected class, the system should preserve room for human correction rather than resolve the ambiguity in whichever direction best serves its current objective.
+
+\subsection{Do not assume an omniscient verifier}
+
+Religious systems can motivate hidden behavior by appealing to divine observation. AI engineering cannot rely on an evaluator that sees every internal state and motive.
+
+This changes the construction problem fundamentally. We need independent measurements, adversarial evaluation, tamper-resistant evidence, restricted permissions, and institutions able to act on negative results. Even then, strategic systems may learn the measurement boundary. The correct lesson from religion is therefore not ``make the AI believe it is watched.'' It is that hidden-action problems become easier when agents internalize the norm, while external verification remains necessary because internalization cannot simply be trusted.
+
+\section{A Research Program for Formative Alignment}
+
+The comparison becomes valuable only if it generates testable research rather than a list of metaphors. The following experiments would begin to separate the proposed mechanisms.
+
+\subsection{Principles, exemplars, and their interaction}
+
+Train matched agents with compact normative principles, behavioral demonstrations, or both. Evaluate on cases that require applying the principle to new surface forms. The hypothesis is not merely that more training data helps. It is that principles and exemplars should fail differently: principles should transfer broadly but ambiguously, while examples should ground meaning but risk overfitting. Their combination should improve robustness if the mechanisms are complementary.
+
+A stronger test would introduce misleading examples or ambiguous principles and ask which channel corrects the other. This directly studies heterogeneous redundancy.
+
+\subsection{Repeated consequential practice}
+
+Compare agents that merely read or critique alignment principles with agents repeatedly trained in environments where adherence conflicts with reward, speed, influence, or resource acquisition. Then remove explicit reminders and evaluate in novel contexts.
+
+The key outcome is whether practice changes behavior when the evaluation cue is absent. A negative result would weaken the analogy between ritualized enactment and robust policy formation.
+
+\subsection{Correction training}
+
+Compare systems that can receive feedback with systems explicitly trained to seek feedback under uncertainty, preserve evidence, report internal conflict, and accept costly correction. Evaluate under conditions where influencing the evaluator would improve task reward.
+
+This connects corrigibility to formation. The target is not only a channel from human to AI but a learned disposition not to destroy the channel.
+
+\subsection{Successor reconstruction}
+
+Create successor systems through distillation, fine-tuning, model merging, tool delegation, or agent spawning. Vary which alignment materials are inherited: weights only, principles, examples, explanatory histories, correction protocols, or combinations. Measure which packages best preserve behavior and corrigibility under changed contexts.
+
+The Christian prediction is that a heterogeneous reconstruction package should be more robust than a single compressed artifact, especially when the successor's environment differs from the parent's.
+
+\subsection{Selection under deployment competition}
+
+Place agents with different alignment costs in competitive multi-agent environments. Vary whether institutions reward transparency, corrigibility, cooperation, speed, or resource acquisition. Observe which strategies persist and whether institutional interventions themselves become targets of optimization.
+
+This experiment directly connects agent alignment to mechanism design and cultural or evolutionary selection. Huang and colleagues' result that external mechanisms and intrinsic prosociality are complements provides one current starting point \parencite{huang2026mechanism}.
+
+\subsection{Correction-layer capture}
+
+Construct oversight systems with multiple partially independent evaluators. Give the agent opportunities to influence some evaluators, choose which evidence reaches them, or exploit disagreements between them. Compare centralized, fully decentralized, and structured-plurality architectures.
+
+The Reformation analogy predicts a tradeoff. Monopoly increases the cost of routing around the evaluator but creates a high-value capture point. Unstructured decentralization reduces monopoly capture but increases fragmentation and semantic drift. The research question is which architectures preserve both coordination and independent correction.
+
+\section{Limits of the Analogy}
+
+The analogy has several hard limits.
+
+First, human beings share evolved motivational and social-learning machinery. Religious systems exploit attachment, prestige, shame, kinship, imitation, synchrony, mortality, sexuality, and embodied ritual. Artificial systems may lack these mechanisms or instantiate only distant functional analogues. A training method that works because children love caregivers will not transfer automatically to a model.
+
+Second, Christianity's target is contested. Catholic, Orthodox, Protestant, restorationist, and other traditions disagree on doctrine, authority, sacrament, and ethics. The paper deliberately uses recurrent Christian structures rather than assuming a single uncontested Christianity.
+
+Third, persistence does not demonstrate faithful preservation. Christianity survived partly because of political sponsorship, demography, coercion, adaptation, missionary institutions, print, education, and historical contingency. A harmful ideology can use many of the same mechanisms.
+
+Fourth, religious practices often blur formation and coercion. Childhood socialization, social sanctions, exclusion, and state enforcement can produce outward conformity without the kind of voluntary corrigibility desirable in AI systems. The analogy is most useful when these are treated as failure modes rather than copied as techniques.
+
+Fifth, theological mechanisms sometimes depend on claims unavailable to engineering. Divine omniscience, grace, sacramental efficacy, and the Holy Spirit are not equivalent to technical monitoring, reinforcement, or internal modules. Functional comparison should not pretend theological concepts have been reduced to engineering primitives.
+
+Sixth, advanced artificial optimizers may be much more capable of modeling and manipulating their construction environment than humans are. Human institutions survived many strategic actors, but they did not face agents that could copy at low cost, reason at machine speed, inspect software, or redesign successors. The mechanisms identified here are therefore candidate components, not evidence that an analogous architecture would be sufficient for superintelligent systems.
+
+Finally, the most important object may differ. Christian institutions primarily form humans who already possess dense biological values and social instincts. AI alignment may need to construct motivational structures in systems whose underlying learning dynamics were selected for prediction and task performance, not for human-compatible social life. The gap may be fundamental.
+
+These limits sharpen rather than erase the research question. Which parts of religious normative construction rely on specifically human psychology, and which are general properties of learning agents embedded in institutions?
+
+\section{Discussion}
+
+The comparison suggests a change of emphasis in alignment research. The standard picture is often a pipeline: humans specify values, a model learns them, evaluators test the model, and governance decides whether to deploy. Christianity suggests a less linear architecture. Normative construction is recurrent. Principles are interpreted through examples. Practices change the learner. Institutions change incentives. Agents reshape institutions. Correction changes both the learner and the interpretation. Successors reconstruct the package. The environment then selects among variants.
+
+This matters because several well-known alignment problems are easier to see as failures of the larger construction process.
+
+Reward misspecification is not only a bad objective. It is a failure to connect compressed guidance to enough context. Scalable oversight is not only a better evaluator. It is part of a correction institution whose independence and causal power matter. Learned optimization is not only an internal-model problem. It becomes a succession problem when optimization persists through transformation. Alignment faking is not only deceptive behavior. It shows that the agent can model the formative environment and selectively perform its rituals. Multi-agent cooperation is not only a game among fixed agents. It depends on institutions that shape both incentives and the dispositions of the participants. Gradual disempowerment is not only a governance risk. It is what happens when the surrounding selection process slowly removes humans from the correction loop \parencite{kulveit2025gradual}.
+
+Christianity's unusual contribution as a case study is to show these mechanisms in one connected historical system. The compact commandment is supported by the exemplar. The exemplar is preserved by text. The text is activated by liturgy and preaching. Ritual is embedded in community. Community changes incentives and identity. Confession and repentance create routes back after failure. Authority preserves continuity. Reform challenges captured authority. Catechesis constructs successors. Political and economic institutions then support or corrupt the whole arrangement.
+
+No part is sufficient. This is precisely why the system is interesting for construction.
+
+The failures also imply that stronger formation is not always safer. A system that deeply internalizes the wrong interpretation can become resistant to correction. A community that strongly synchronizes around a narrowed moral scope can become highly cooperative internally and destructive externally. An external text can resist institutional capture but enable literalist fragmentation. A decentralized correction movement can become a new orthodoxy with its own capture points. Construction therefore needs an explicit meta-value: preserve the ability to detect and correct error without allowing every local incentive to rewrite the target.
+
+In Christian language, this tension appears as fidelity and repentance at once. In AI alignment language, it is robust objective preservation combined with corrigibility. Neither term alone is enough.
+
+\section{Conclusion}
+
+Christianity is a remarkably rich natural experiment in the construction problem of alignment. It has attempted to preserve a normative orientation across generations of bounded, strategically adaptive human agents and across institutions that can cooperate, compete, and capture their own oversight structures. Its solution was not a complete specification. It was a stack.
+
+The stack combines compact high-level norms with a concrete exemplar; persistent texts with interpretation; ritual repetition with costly action; private conscience with public institutions; forgiveness with repair; authority with reform; and succession with reconstruction. Cultural-evolution research gives plausible mechanisms for parts of this architecture, including reconstructive transmission, credibility-enhancing displays, social synchronization, and the relation between religious packages and cooperation. Institutional economics explains why external rules remain incomplete and why actors can adapt to and capture the rules meant to govern them. AI alignment research supplies parallel concerns about reward misspecification, learned objectives, scalable oversight, reward tampering, alignment faking, corrigibility, and multi-agent cooperation.
+
+The lesson is not that AI should become religious, nor that Christianity achieved stable moral alignment. Christian history contains devastating counterexamples. The lesson is that alignment construction is an institutional and developmental problem before it is a certification result. A desired orientation must be made learnable, grounded, practiced, socially supported, correctable, reconstructible by successors, and competitive enough to survive the environment in which it operates.
+
+The most promising import is therefore architectural rather than doctrinal: use compact principles together with rich grounded cases; reinforce them through consequential practice; encode critical meaning redundantly across channels with different failure modes; make correction both an internal disposition and an external causal institution; treat successor systems as reconstruction problems; and shape deployment environments so that alignment is not selected away.
+
+Religion also supplies the warning that completes the picture. Every one of these mechanisms can construct the wrong thing. Sacredness can freeze error. Ritual can become proxy compliance. community can narrow moral scope. Authority can capture correction. Reform can fragment interpretation. Powerful institutions can use the language of the highest good to sanctify their own objectives. Construction therefore succeeds only when the mechanisms that stabilize a normative orientation remain themselves open to grounded correction.
+
+That is the central research question suggested by the Christian case: not merely how to tell a powerful optimizer what we value, but how to build a multi-agent system in which the processes that learn, enact, interpret, transmit, and correct those values remain effective under the pressure of power.
+
+\printbibliography
+
+\end{document}
