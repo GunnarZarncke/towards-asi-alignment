@@ -127,7 +127,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: [
       "No. They are methodology-building and sanity checks. Negative results bound what the manuscript may claim. The ",
       { label: "Experiments page", href: { kind: "route", path: "/experiments/" } },
-      " splits simulations, external tests, and witness tests; ",
+      " splits simulations, external tests, and Witness (stop-checks on records we did not write); ",
       { label: "coverage", href: { kind: "route", path: "/experiments/coverage/" } },
       " and ",
       {

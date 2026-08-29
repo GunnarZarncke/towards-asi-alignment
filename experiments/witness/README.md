@@ -2,6 +2,10 @@
 
 Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and findings for the Witness lane ([`drafts/plans/witness.md`](../../drafts/plans/witness.md)).
 
+**Companion site:** one card per test under `/cards/experiment/w-1/` … `/w-16/`, listed from [Witness](https://towards-alignment.com/cards/experiment/witness-tests/). Combined ledger: [`results/FINDINGS.md`](results/FINDINGS.md).
+
+**Layout.** Code, fixtures, and large host dumps currently share [`experiments/witness/`](.). Splitting into `experiments/witness-<name>/` per test is deferred: the kernel clone, OSF dumps, and shared `check_h5_trees.py` fixtures are not worth duplicating until a test needs its own pin.
+
 **Claim strength:** methodology-building. A layer **fail** or **refuse** is the paid outcome. H0 sims remain backing only.
 
 **Methodology:** [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness tests.

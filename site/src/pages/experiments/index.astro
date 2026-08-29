@@ -17,47 +17,86 @@ const KIND_ORDER = ["sim", "external", "witness"] as const;
 const sections = KIND_ORDER.map((kind) => {
   const meta = experiments.kinds?.[kind] ?? {
     title: kind,
-    blurb: ""
+    blurb: "",
+    cardId: kind
   };
-  const lines = [...experiments.lines]
-    .filter((line) => (line.kind ?? "sim") === kind)
-    .sort((a, b) => a.order - b.order);
-  return { kind, ...meta, lines };
+  return { kind, ...meta };
 });
+
+const purpose = oneLine(experiments.purpose ?? "");
 ---
 
 <SiteLayout
   title="Experiments"
-  description="Simulations, external tests, and witness tests for this project's bridge cruxes, including recorded failures."
+  description={purpose || "Simulations, external tests, and Witness — methodology checks with recorded failures."}
 >
   <section class="hero">
     <p class="eyebrow">Experiments</p>
     <h1>Experiments</h1>
-    <p class="lede">Three classes. None of them is a proof on a frontier system.</p>
+    <p class="lede">{purpose}</p>
     <div class="button-row">
-      <a class="button" href="#sims">Simulations</a>
-      <a class="button" href="#external">External tests</a>
-      <a class="button" href="#witness">Witness tests</a>
       <a class="button" href={cardHref(base, "negative-results", "concept")}>Negative results</a>
       <a class="button" href={withBase("/experiments/coverage/")}>Coverage</a>
+      <a class="button" href={cardHref(base, "experiment-methodology", "concept")}>Methodology</a>
     </div>
   </section>
 
-  {
-    sections.map((section) => (
-      <section class="readable" id={section.kind === "sim" ? "sims" : section.kind}>
-        <h2>{section.title}</h2>
-        <p>{oneLine(section.blurb)}</p>
-        <ul>
-          {section.lines.map((line) => (
-            <li>
-              <a href={cardHref(base, `experiments/${line.id}`)}>{line.title}</a>
-              {" — "}
-              {oneLine(line.role)}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))
-  }
+  <section class="experiment-hub-nav readable" aria-label="Experiment classes">
+    <div class="experiment-hub-grid">
+      {
+        sections.map((section) => (
+          <article class="experiment-hub-card" id={section.kind === "sim" ? "sims" : section.kind}>
+            <h2>
+              <a href={cardHref(base, `experiments/${section.cardId}`)}>{section.title}</a>
+            </h2>
+            <p>{oneLine(section.blurb)}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>
+
+<style>
+  .experiment-hub-nav {
+    margin: 0 0 2.5rem;
+    max-width: 52rem;
+  }
+
+  .experiment-hub-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .experiment-hub-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .experiment-hub-card {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: var(--radius-card, 8px);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .experiment-hub-card h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+  }
+
+  .experiment-hub-card p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color-muted, #4a5568);
+    font-size: 0.95em;
+  }
+
+  #sims,
+  #external,
+  #witness {
+    scroll-margin-top: 4.5rem;
+  }
+</style>

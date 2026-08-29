@@ -25,6 +25,26 @@ function repoUrl(relativePath) {
   return `${REPO}/blob/main/${relativePath.replace(/^\/+/, "")}`;
 }
 
+function repoTreeUrl(relativePath) {
+  if (!relativePath) return null;
+  return `${REPO}/tree/main/${relativePath.replace(/^\/+|\/$/g, "")}`;
+}
+
+function sourceUrlForLine(line) {
+  if (line.repoUrl) return line.repoUrl;
+  const location = line.location?.replace(/^\.\.\//, "") ?? "";
+  if (/\.(py|json|lean|md)$/i.test(location)) return repoUrl(location);
+  if (location.startsWith("experiments/") && location.endsWith(".md")) {
+    return repoUrl(location);
+  }
+  if (location.startsWith("experiments/")) {
+    return repoTreeUrl(location);
+  }
+  if (line.readmePath) return repoUrl(line.readmePath);
+  if (line.planPath) return repoUrl(line.planPath);
+  return null;
+}
+
 function firstSentence(text) {
   const trimmed = text.trim().replace(/\s+/g, " ");
   const match = trimmed.match(/^[^.!?]+[.!?]/);
@@ -78,43 +98,38 @@ function findingsSiteUrl(lineId) {
 }
 
 // Site shows curated key findings; GitHub holds the full terse ledger.
+// Source and results are first-class fields for the card chrome; `links` are extras.
 function enrichLine(line) {
+  const kind = line.kind ?? "sim";
+  const sourceUrl = sourceUrlForLine(line);
+  const findingsUrlResolved = line.findingsUrl ?? repoUrl(line.findingsPath);
   const links = [];
-  if (line.readmePath) {
-    links.push({ label: "README", url: repoUrl(line.readmePath) });
-  }
   if (line.designPath) {
     links.push({ label: "Design", url: repoUrl(line.designPath) });
   }
-  if (line.planPath) {
+  if (line.planPath && sourceUrl !== repoUrl(line.planPath)) {
     links.push({ label: "Plan", url: repoUrl(line.planPath) });
   }
-  if (line.findingsPath || line.findingsUrl) {
-    links.push({ label: "Key findings", url: findingsSiteUrl(line.id) });
-    if (line.findingsPath) {
-      links.push({ label: "Full ledger (GitHub)", url: repoUrl(line.findingsPath) });
-    } else if (line.findingsUrl) {
-      links.push({ label: "Full ledger (GitHub)", url: line.findingsUrl });
-    }
+  if (line.readmePath && sourceUrl !== repoUrl(line.readmePath) && sourceUrl !== line.repoUrl) {
+    links.push({ label: "README", url: repoUrl(line.readmePath) });
   }
   if (line.leakProofPath) {
     links.push({ label: "Lean leak-proof", url: repoUrl(line.leakProofPath) });
   }
-  if (line.repoUrl && !line.readmePath) {
-    links.push({ label: "Repository", url: line.repoUrl });
-  }
 
   return {
     ...line,
-    kind: line.kind ?? "sim",
+    kind,
+    summary: line.summary?.trim() ?? line.summary,
     links,
     cardPath: experimentCardPath(line.id),
     cardUrl: experimentCardUrl(line.id),
+    sourceUrl,
     findingsSitePath: findingsSitePath(line.id),
     findingsSiteUrl: findingsSiteUrl(line.id),
-    locationUrl: line.repoUrl ?? repoUrl(line.location?.replace(/^\.\.\//, "")),
+    locationUrl: sourceUrl,
     readmeUrl: repoUrl(line.readmePath),
-    findingsUrlResolved: line.findingsUrl ?? repoUrl(line.findingsPath)
+    findingsUrlResolved
   };
 }
 
@@ -127,10 +142,34 @@ function bodyWithoutDuplicateSummary(role, summary) {
   return trimmedRole;
 }
 
+function relatedForKind(kind) {
+  const overviewId =
+    kind === "external" ? "experiments/external-tests" : kind === "witness" ? "experiments/witness-tests" : "experiments/simulations";
+  const related = [overviewId, "experiment-methodology", "negative-results"];
+  if (kind === "external") related.push("et-external-transfer");
+  return related;
+}
+
+function formatRelatedYaml(ids) {
+  return ["related:", ...ids.map((id) => `  - ${yamlString(id)}`)].join("\n");
+}
+
+function labeledSection(label, text) {
+  if (!text?.trim()) return [];
+  return ["", `**${label}.**`, "", text.trim()];
+}
+
 function experimentCardMarkdown(line, howToReadEntry) {
-  const summary = firstSentence(line.role);
+  const summary = (line.summary ?? firstSentence(line.role)).trim().replace(/\s+/g, " ");
   const findings = line.headlineFindings ?? [];
-  const bodyParts = [bodyWithoutDuplicateSummary(line.role, summary)];
+  const bodyParts = [
+    bodyWithoutDuplicateSummary(line.role, summary),
+    ...labeledSection("Host", line.host),
+    ...labeledSection("Setup", line.setup),
+    ...labeledSection("Analysis", line.analysis),
+    ...labeledSection("Numbers", line.numbers),
+    ...labeledSection("Outcome", line.outcome)
+  ];
 
   if (findings.length > 0) {
     bodyParts.push("", "## Headline findings", "", ...findings.map((item) => `- ${item}`));
@@ -149,7 +188,8 @@ function experimentCardMarkdown(line, howToReadEntry) {
     `status: "open"`,
     `summary: ${yamlString(summary)}`,
     `experimentLineId: ${yamlString(line.id)}`,
-    "related: []",
+    `experimentKind: ${yamlString(line.kind)}`,
+    formatRelatedYaml(relatedForKind(line.kind)),
     formatExternalLinksYaml(line.links),
     "---",
     "",
@@ -157,8 +197,45 @@ function experimentCardMarkdown(line, howToReadEntry) {
   ].join("\n");
 }
 
+function overviewCardMarkdown(kindId, kind, lines) {
+  const related =
+    kindId === "external"
+      ? ["experiment-methodology", "negative-results", "et-external-transfer"]
+      : ["experiment-methodology", "negative-results"];
+  const list = lines.map((line) => {
+    const blurb = (line.summary ?? firstSentence(line.role)).trim().replace(/\s+/g, " ");
+    return `- [${line.title}](${line.cardPath}) — ${blurb}`;
+  });
+  const extraLinks = [
+    { label: "Experiments hub", url: `${SITE_ORIGIN}/experiments/` },
+    { label: "Narrative on GitHub", url: repoUrl("docs/EXPERIMENTS.md") }
+  ];
+  return [
+    "---",
+    `title: ${yamlString(kind.title)}`,
+    `type: "experiment"`,
+    `status: "framework"`,
+    `summary: ${yamlString(kind.blurb.trim().replace(/\s+/g, " "))}`,
+    "experimentOverview: true",
+    `experimentKind: ${yamlString(kindId)}`,
+    formatRelatedYaml(related),
+    formatExternalLinksYaml(extraLinks),
+    "---",
+    "",
+    kind.overview.trim(),
+    "",
+    "## Experiments in this class",
+    "",
+    ...list,
+    ""
+  ].join("\n");
+}
+
 const source = await readFile(sourcePath, "utf8");
 const raw = yaml.load(source);
+const witnessTestsPath = path.join(repoRoot, "metadata", "experiments-witness-tests.yml");
+const witnessTests = yaml.load(await readFile(witnessTestsPath, "utf8"));
+raw.lines = [...raw.lines, ...(witnessTests.lines ?? [])];
 
 const lines = await Promise.all(
   [...raw.lines]
@@ -177,24 +254,48 @@ const howToReadByLineId = new Map(raw.howToRead.map((entry) => [entry.lineId, en
 
 const howToRead = raw.howToRead.map((entry) => {
   const line = lines.find((item) => item.id === entry.lineId);
+  const kindTitle = Object.values(raw.kinds).find((k) => k.cardId === entry.lineId)?.title;
   return {
     ...entry,
-    lineTitle: line?.title ?? entry.lineId
+    lineTitle: line?.title ?? kindTitle ?? entry.lineId
   };
 });
 
 // Negative-results ledgers: curated key findings on-site, full record on GitHub.
-const ledgers = raw.ledgers.map((ledger) => ({
-  ...ledger,
-  findingsSitePath: findingsSitePath(ledger.lineId),
-  findingsSiteUrl: findingsSiteUrl(ledger.lineId),
-  repoUrl: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null
-}));
+const ledgers = await Promise.all(
+  raw.ledgers.map(async (ledger) => ({
+    ...ledger,
+    overviewCardId: ledger.overviewCardId ?? ledger.lineId,
+    headlineFindings: ledger.path ? await extractKeyFindings(ledger.path) : [],
+    findingsSitePath: findingsSitePath(ledger.lineId),
+    findingsSiteUrl: findingsSiteUrl(ledger.lineId),
+    repoUrl: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null
+  }))
+);
+
+const KIND_ORDER = ["sim", "external", "witness"];
+
+const kinds = Object.fromEntries(
+  KIND_ORDER.map((kindId) => {
+    const kind = raw.kinds[kindId];
+    const cardId = kind.cardId;
+    return [
+      kindId,
+      {
+        ...kind,
+        cardId,
+        cardPath: experimentCardPath(cardId),
+        cardUrl: experimentCardUrl(cardId)
+      }
+    ];
+  })
+);
 
 const payload = {
   claimStrength: raw.claimStrength.trim(),
+  purpose: raw.purpose.trim(),
   negativeResultsFirst: raw.negativeResultsFirst,
-  kinds: raw.kinds,
+  kinds,
   negativeResultsCardPath: cardPublicPath({ id: "negative-results", type: "concept" }),
   negativeResultsCardUrl: `${SITE_ORIGIN}${cardPublicPath({ id: "negative-results", type: "concept" })}`,
   canonicalDocPath: raw.canonicalDoc,
@@ -222,5 +323,14 @@ for (const line of lines) {
   );
 }
 
+for (const kindId of KIND_ORDER) {
+  const kind = kinds[kindId];
+  const classLines = lines.filter((line) => line.kind === kindId);
+  const cardPath = path.join(experimentCardsDir, `${kind.cardId}.md`);
+  await writeFile(cardPath, overviewCardMarkdown(kindId, kind, classLines), "utf8");
+}
+
 console.log(`Wrote ${path.relative(siteRoot, outputPath)} from metadata/experiments.yml`);
-console.log(`Wrote ${lines.length} experiment cards to src/content/cards/experiments/`);
+console.log(
+  `Wrote ${lines.length} line cards and ${KIND_ORDER.length} overview cards to src/content/cards/experiments/`
+);

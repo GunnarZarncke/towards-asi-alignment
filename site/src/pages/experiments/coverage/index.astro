@@ -21,7 +21,7 @@ const hubItems = [
     summary: "Simulations, external tests, and witness tests."
   },
   {
-    href: "#negative-results",
+    href: cardHref(base, "negative-results", "concept"),
     title: "Negative ledgers",
     summary: "Failures and qualifiers, not a highlight reel."
   },
@@ -150,21 +150,10 @@ const hubItems = [
     <h2>Negative ledgers</h2>
     <p>
       Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers,
-      that is recorded rather than buried.
-      {" "}
-      <a href={cardHref(base, "negative-results", "concept")}>Negative-results hub</a>.
+      that is recorded rather than buried. The full index — simulations, external tests, and Witness tests —
+      is on the{" "}
+      <a href={cardHref(base, "negative-results", "concept")}>negative-results ledger card</a>.
     </p>
-    <ul>
-      {experiments.ledgers.map((ledger) => (
-        <li>
-          <a href={cardHref(base, `experiments/${ledger.lineId}`)}>{ledger.label}</a>
-          {" · "}
-          <a href={withBase(ledger.findingsSitePath)}>Key findings</a>
-          {" · "}
-          <a href={ledger.repoUrl} target="_blank" rel="noopener noreferrer">Full ledger<LinkIndicator kind="github" /></a>
-        </li>
-      ))}
-    </ul>
   </section>
 
   <section id="build-order" class="readable">
@@ -212,7 +201,10 @@ const hubItems = [
     columns={experiments.coverageColumns}
     features={experiments.coverageFeatures}
     cardHref={(slug) => cardHref(base, slug)}
-    lineHref={(id) => cardHref(base, `experiments/${id}`)}
+    lineHref={(id) => {
+      const col = experiments.coverageColumns.find((c) => c.id === id);
+      return cardHref(base, `experiments/${col?.overviewCardId ?? id}`);
+    }}
   />
 
   <section id="how-to-read" class="readable">

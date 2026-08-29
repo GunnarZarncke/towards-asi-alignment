@@ -5,12 +5,31 @@ import experiments from "../../../data/experiments.json";
 import { cardHref } from "../../../lib/site-urls";
 
 export async function getStaticPaths() {
-  return experiments.lines
+  const fromLines = experiments.lines
     .filter((line) => (line.headlineFindings?.length ?? 0) > 0 || line.findingsPath || line.findingsUrl)
     .map((line) => ({
       params: { id: line.id },
       props: { line }
     }));
+  const fromLedgers = (experiments.ledgers ?? [])
+    .filter((ledger) => !experiments.lines.some((line) => line.id === ledger.lineId))
+    .filter((ledger) => (ledger.headlineFindings?.length ?? 0) > 0 || ledger.path)
+    .map((ledger) => ({
+      params: { id: ledger.lineId },
+      props: {
+        line: {
+          id: ledger.lineId,
+          title: ledger.label,
+          role: experiments.kinds?.witness?.blurb ?? ledger.label,
+          headlineFindings: ledger.headlineFindings ?? [],
+          findingsUrlResolved: ledger.repoUrl,
+          sourceUrl: "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/witness",
+          findingsSitePath: ledger.findingsSitePath,
+          cardId: ledger.overviewCardId ?? ledger.lineId
+        }
+      }
+    }));
+  return [...fromLines, ...fromLedgers];
 }
 
 const { line } = Astro.props;
@@ -35,10 +54,15 @@ const fullLedgerUrl = line.findingsUrlResolved;
     <p class="lede">{line.role.trim()}</p>
 
     <p class="button-row">
-      <a class="button primary" href={cardHref(base, `experiments/${line.id}`)}>Experiment card</a>
+      <a class="button primary" href={cardHref(base, `experiments/${line.cardId ?? line.id}`)}>Experiment card</a>
+      {line.sourceUrl && (
+        <a class="button" href={line.sourceUrl} target="_blank" rel="noopener noreferrer">
+          Source on GitHub<LinkIndicator kind="github" />
+        </a>
+      )}
       {fullLedgerUrl && (
         <a class="button" href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">
-          Full ledger<LinkIndicator kind="github" />
+          Results ledger<LinkIndicator kind="github" />
         </a>
       )}
       <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
@@ -65,7 +89,7 @@ const fullLedgerUrl = line.findingsUrlResolved;
           ) : (
             "full ledger"
           )}
-          {" "}or the <a href={cardHref(base, `experiments/${line.id}`)}>experiment card</a>.
+          {" "}or the <a href={cardHref(base, `experiments/${line.cardId ?? line.id}`)}>experiment card</a>.
         </p>
       </section>
     )}

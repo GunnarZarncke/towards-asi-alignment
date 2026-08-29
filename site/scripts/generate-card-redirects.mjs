@@ -42,6 +42,8 @@ async function loadCardsInDir(dir, prefix = "") {
 async function main() {
   const cards = await loadCardsInDir(cardsDir);
   const redirects = buildCardRedirects(cards);
+  redirects["/cards/experiment/witness/"] = "/cards/experiment/witness-tests/";
+  redirects["/cards/experiments/witness/"] = "/cards/experiment/witness-tests/";
   await mkdir(path.dirname(outPath), { recursive: true });
   await writeFile(outPath, `${JSON.stringify(redirects, null, 2)}\n`, "utf8");
   console.log(`Wrote ${Object.keys(redirects).length} card redirects → ${outPath}`);

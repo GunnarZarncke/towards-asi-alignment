@@ -455,7 +455,7 @@ concepts:
     status: framework
     summary: Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.
     decision: Before trusting a manuscript experiment citation, open the matching key-findings page (or full ledger on GitHub) and check whether the cited finding survived harder ecologies, seeds, or adversaries.
-    evidence: Each in-repo simulation line maintains a running findings or negative-results file on GitHub; the companion site shows curated key findings at /experiments/findings/{line}/ and links to the full file.
+    evidence: Each experiment line — simulations, external tests, and Witness tests — has an on-site key-findings page at /experiments/findings/{line}/ and a GitHub findings or negative-results file. The hub lists every line, not only the in-repo simulators.
     body: bodies/negative-results.md
   - slug: goal-inference
     kind: glossary

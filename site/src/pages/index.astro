@@ -2,7 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import ContinueReading from "../components/ContinueReading.astro";
 import { HOME_DESCRIPTION } from "../lib/seo";
-import { firstEssayHref } from "../lib/site-urls";
+import { firstEssayHref, cardHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -14,9 +14,9 @@ const tiles = [
   { href: withBase("/cards/"), title: "Knowledge cards grouped by topic" },
   { href: withBase("/field/"), title: "Map of alignment research" },
   { href: withBase("/paths/chapter-reading-graph/"), title: "How the chapters connect" },
-  { href: withBase("/experiments/#sims"), title: "Simulations we ran" },
-  { href: withBase("/experiments/#external"), title: "External tests" },
-  { href: withBase("/experiments/#witness"), title: "Witness tests" },
+  { href: cardHref(base, "experiments/simulations"), title: "Simulations we ran" },
+  { href: cardHref(base, "experiments/external-tests"), title: "External tests" },
+  { href: cardHref(base, "experiments/witness-tests"), title: "Witness: would the check have stopped what happened?" },
   { href: withBase("/news/"), title: "What just happened in the field" }
 ];
 ---

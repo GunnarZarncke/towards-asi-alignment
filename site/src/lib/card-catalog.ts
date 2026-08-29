@@ -9,6 +9,7 @@ export type CatalogCard = {
     status: string;
     bookPageId?: string;
     experimentLineId?: string;
+    experimentOverview?: boolean;
     releasedAt?: string;
   };
 };
@@ -78,6 +79,9 @@ export function cardCatalogSections(
   const experiments = cards
     .filter((card) => card.data.type === "experiment")
     .sort((a, b) => {
+      const aOverview = a.data.experimentOverview === true;
+      const bOverview = b.data.experimentOverview === true;
+      if (aOverview !== bOverview) return aOverview ? -1 : 1;
       const orderA = experimentOrder.get(a.data.experimentLineId ?? "") ?? 999;
       const orderB = experimentOrder.get(b.data.experimentLineId ?? "") ?? 999;
       if (orderA !== orderB) return orderA - orderB;

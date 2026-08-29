@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-29 (Witness W-16 SCDB).
+Last updated: 2026-08-29 (experiment site cards).
 
 ---
 
@@ -39,6 +39,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-29:** **Experiment site cards** — class overviews; W-1–W-16 cards (Host/Setup/Analysis/Numbers/Outcome); negative-results hub lists all lines; coverage links to hub. Log: `2026-08-29-experiment-site-cards.md`.
+- **2026-08-29:** **Continuity & drift study** — more packets frozen (6.1b, 6.3b, lister, inspection offices); first incomplete enumeration pass. Log: `2026-08-29-continuity-drift-orchestrator.md`.
 - **2026-08-29:** **Witness W-16 SCDB** — justice-centered geometry acc 0.814 vs issueArea 0.623 vs intercept 0.616 (40 justices). [`witness-c004-scotus.md`](../plans/witness-c004-scotus.md). Log: `2026-08-29-witness-w16-scotus.md`.
 - **2026-08-29:** **Methodology consolidation** — `docs/METHODOLOGY.md` (shared discipline + Witness M1–M8); deleted scattered copies; adversarial \(M\) + repro TODOs. Log: `2026-08-29-methodology-consolidation.md`.
 - **2026-08-28:** **Witness site synthesis** — W-1–W-15 on `/experiments/#witness` and `/experiments/findings/witness/`; bounded sprint summary in `experiments.yml` and `docs/EXPERIMENTS.md`. Log: `2026-08-28-witness-site-end.md`.
@@ -56,7 +58,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **2026-08-28:** **AI Village HF related observations** — no standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card (setup contrast, poverty/no-despair). Log: `2026-08-28-ai-village-hf-related-observations.md`.
 - **2026-08-28:** **Assumption key-only boxes + App B** — `bookassumption` (A-* key in heading); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. Log: `2026-08-28-assumption-boxes-appb-cleanup.md`.
 - **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.
-- **2026-08-28:** **Alignment Crux Map** — listing + S-process **$39k / 10 steps**; six crowded words (corrigibility, shutdown, deception, evals, tiling, inner alignment). [`drafts/alignment-crux-map/`](../alignment-crux-map/). Log: `2026-08-28-alignment-crux-map.md`.
+- **2026-08-28:** **Alignment Crux Map** — six crowded words; full **$50k** / 12 steps; MATS + BlueDot use tests + CHAI or Christiano; contractor `reviews` in YAML. [`drafts/alignment-crux-map/`](../alignment-crux-map/). Log: `2026-08-28-alignment-crux-map.md`.
 - **2026-08-28:** **Project identity** — README no longer leads with “research manuscript.” `INSTRUCTIONS.md` scoped to the book; PDF Current Status companion-site sentence is project-level. Log: `2026-08-28-project-not-manuscript.md`.
 - **2026-08-27:** **A-* in home chapters** — named `assumption` boxes; `\akey{A-00x}` links; no App B lookup table. Log: `2026-08-27-manuscript-a-keys.md`.
 - **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.

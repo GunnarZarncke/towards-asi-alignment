@@ -1,0 +1,147 @@
+---
+import LinkIndicator from "./LinkIndicator.astro";
+import experiments from "../data/experiments.json";
+import { cardHref } from "../lib/site-urls";
+
+interface Line {
+  id: string;
+  kind?: string;
+  title: string;
+  headlineFindings?: string[];
+  findingsPath?: string | null;
+  findingsUrl?: string | null;
+  findingsUrlResolved?: string | null;
+  findingsSitePath: string;
+  cardPath: string;
+}
+
+interface Ledger {
+  lineId: string;
+  label: string;
+  overviewCardId?: string;
+  findingsSitePath: string;
+  repoUrl?: string | null;
+}
+
+interface KindMeta {
+  title: string;
+  cardId: string;
+}
+
+interface Props {
+  base: string;
+  showHeadings?: boolean;
+}
+
+const { base, showHeadings = true } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const KIND_ORDER = ["sim", "external", "witness"] as const;
+
+function hasResults(line: Line) {
+  return (
+    (line.headlineFindings?.length ?? 0) > 0 ||
+    Boolean(line.findingsPath) ||
+    Boolean(line.findingsUrl) ||
+    Boolean(line.findingsUrlResolved)
+  );
+}
+
+function githubUrl(line: Line) {
+  return line.findingsUrlResolved ?? line.findingsUrl ?? null;
+}
+
+const kinds = experiments.kinds as Record<(typeof KIND_ORDER)[number], KindMeta>;
+const lines = (experiments.lines as Line[]).filter(hasResults);
+const witnessLedger = (experiments.ledgers as Ledger[]).find((ledger) => ledger.lineId === "witness");
+---
+
+{
+  showHeadings && (
+    <>
+      <h2>Key findings by line</h2>
+      <p>
+        Each row links to a curated on-site summary. The full terse ledger — including bug
+        fixes, superseded runs, and process detail — is on GitHub. External tests share a parent
+        findings file with the lab or graded-lab line that hosted them. Witness tests share one
+        GitHub file, with a combined on-site page plus one page per test.
+      </p>
+    </>
+  )
+}
+
+{
+  KIND_ORDER.map((kindId) => {
+    const kind = kinds[kindId];
+    const rows = lines.filter((line) => (line.kind ?? "sim") === kindId);
+    if (rows.length === 0) return null;
+    return (
+      <section class="experiment-ledgers-group">
+        <h3>
+          <a href={cardHref(base, `experiments/${kind.cardId}`, "experiment")}>{kind.title}</a>
+        </h3>
+        {kindId === "witness" && witnessLedger && (
+          <p class="side-panel-meta">
+            Combined Witness ledger:{" "}
+            <a href={withBase(witnessLedger.findingsSitePath)}>key findings</a>
+            {" · "}
+            {witnessLedger.repoUrl && (
+              <a href={witnessLedger.repoUrl} target="_blank" rel="noopener noreferrer">
+                full ledger on GitHub<LinkIndicator kind="github" />
+              </a>
+            )}
+            . Individual tests follow.
+          </p>
+        )}
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Key findings</th>
+                <th>Full ledger (GitHub)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((line) => {
+                const git = githubUrl(line);
+                return (
+                  <tr>
+                    <td>
+                      <a href={cardHref(base, `experiments/${line.id}`, "experiment")}>{line.title}</a>
+                    </td>
+                    <td>
+                      <a href={withBase(line.findingsSitePath)}>Key findings</a>
+                    </td>
+                    <td>
+                      {git ? (
+                        <a href={git} target="_blank" rel="noopener noreferrer">
+                          Full ledger<LinkIndicator kind="github" />
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    );
+  })
+}
+
+{
+  showHeadings && (
+    <p>
+      Start with the{" "}
+      <a href={cardHref(base, "experiments/embedded-simulation", "experiment")}>
+        embedded simulation card
+      </a>{" "}
+      if you want the richest set of recorded simulation failures (UAD defaults, red-team
+      limits, channel MI, and related negatives).
+    </p>
+  )
+}

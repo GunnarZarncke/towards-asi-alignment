@@ -30,4 +30,4 @@ None of the companion testbeds are large enough, or realistic enough, to prove a
 
 These four habits do not turn a small testbed into strong evidence. What they buy is legibility: a reader can check whether a specific claim in this project rests on a frozen, blind, pre-registered result, or on something weaker — and the negative-results ledgers make that check possible instead of asking for trust. Full discipline (blind-generation lessons, external tests, Witness M1–M8): [methodology doc on GitHub](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/METHODOLOGY.md).
 
-The companion [experiments hub](/experiments/) splits **simulations**, **external tests** (frozen instruments on substrates this project did not build), and **witness tests** (fail or refuse on traces that already exist). None of the three is a proof on a frontier system.
+The companion [experiments hub](/experiments/) links to three class cards: [simulations](/cards/experiment/simulations/), [external tests](/cards/experiment/external-tests/), and [Witness](/cards/experiment/witness-tests/). None of the three is a proof on a frontier system.

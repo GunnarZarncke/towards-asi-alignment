@@ -17,6 +17,7 @@ import FieldLifecycleAxis from "../../components/FieldLifecycleAxis.astro";
 import FieldSpecifyConstructTable from "../../components/FieldSpecifyConstructTable.astro";
 import FieldAdjacentWork from "../../components/FieldAdjacentWork.astro";
 import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.astro";
+import ExperimentLedgersTable from "../../components/ExperimentLedgersTable.astro";
 import QuizBlock from "../../components/QuizBlock.astro";
 import partGems from "../../data/part-gems.json";
 import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
@@ -27,6 +28,7 @@ import crosswalkRows from "../../data/bridge-crosswalk.json";
 import fieldNewsIndex from "../../data/field-news.json";
 import fieldAgendasData from "../../data/field-agendas.json";
 import leanSpine from "../../data/lean-spine.json";
+import experiments from "../../data/experiments.json";
 import { bookFullHref, bookHref, cardHref as buildCardHref, cardHrefForCard, cardRouteSlug, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { hasConceptLogo } from "../../lib/concept-logos";
@@ -75,6 +77,14 @@ const isCrosswalkCard = card.id === "chapters/appb";
 const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
+const experimentLine =
+  isExperimentCard && card.data.experimentLineId
+    ? experiments.lines.find((line) => line.id === card.data.experimentLineId)
+    : null;
+const experimentKindMeta =
+  isExperimentCard && card.data.experimentKind
+    ? experiments.kinds?.[card.data.experimentKind as "sim" | "external" | "witness"]
+    : null;
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
@@ -219,11 +229,60 @@ const pageDescription = showFullText
               <a class="button primary" href={bookFullHref(base, card.data.bookPageId)}>Read full appendix on site</a>
             </p>
           )}
-          {isExperimentCard && card.data.experimentLineId && (
+          {isExperimentCard && (
             <p class="side-panel-meta">
-              <a href={withBase("/experiments/")}>All experiment lines</a>
-              {" · "}
-              <a href={withBase(`/experiments/findings/${card.data.experimentLineId}/`)}>Key findings</a>
+              <a href={withBase("/experiments/")}>Experiments</a>
+              {experimentKindMeta?.cardId && (
+                <>
+                  {" · "}
+                  <a href={cardHref(`experiments/${experimentKindMeta.cardId}`)}>{experimentKindMeta.title}</a>
+                </>
+              )}
+              {experimentLine && (
+                <>
+                  {" · "}
+                  <a href={withBase(experimentLine.findingsSitePath)}>Results</a>
+                </>
+              )}
+            </p>
+          )}
+          {isExperimentCard && experimentLine && (
+            <p class="button-row">
+              {experimentLine.sourceUrl && (
+                <a
+                  class="button primary"
+                  href={experimentLine.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Source on GitHub<LinkIndicator kind="github" />
+                </a>
+              )}
+              <a class="button" href={withBase(experimentLine.findingsSitePath)}>
+                Results
+              </a>
+              {experimentLine.findingsUrlResolved && (
+                <a
+                  class="button"
+                  href={experimentLine.findingsUrlResolved}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Results ledger<LinkIndicator kind="github" />
+                </a>
+              )}
+            </p>
+          )}
+          {isExperimentCard && card.data.experimentOverview && experiments.canonicalDocUrl && (
+            <p class="button-row">
+              <a
+                class="button"
+                href={experiments.canonicalDocUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Narrative on GitHub<LinkIndicator kind="github" />
+              </a>
             </p>
           )}
           {isReleaseCard && (
@@ -282,6 +341,7 @@ const pageDescription = showFullText
       {card.id === "bridge-assumptions" && <FieldBridgeGraphSection base={base} />}
       {card.id === "alignment-target" && <FieldSpecifyConstructTable base={base} />}
       {card.id === "bearer-admission-adjacent" && <FieldAdjacentWork base={base} />}
+      {card.id === "negative-results" && <ExperimentLedgersTable base={base} />}
 
       {isCrosswalkCard && (
         <BridgeCrosswalkTable

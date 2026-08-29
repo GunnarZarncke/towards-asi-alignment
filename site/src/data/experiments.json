@@ -1,18 +1,31 @@
 {
   "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full project thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (MB1–MB10).",
+  "purpose": "When we propose a way to tell whether people can still change what a system does, does that method actually work — or does it only look like it works? Every line here freezes the scoring rules before the run, keeps the test designer from grading their own homework where we can, and publishes what failed next to what worked. The three classes below are different places to ask that same question. None of them is a verdict on a deployed frontier model.",
   "negativeResultsFirst": true,
   "kinds": {
     "sim": {
       "title": "Simulations",
-      "blurb": "Authored or sibling testbeds. Units and scoring are under this project's control. Negative results bound the instruments; they are not deployment witnesses.\n"
+      "cardId": "simulations",
+      "blurb": "Testbeds this project wrote (or maintains as sibling repositories). We control the units, the scoring, and when a run is frozen. Recorded failures bound the instruments; they are not evidence about a deployed frontier system.\n",
+      "overview": "These are computer simulations of auditors, agents, and software-release labs.\nThis project authored them, so the scoring rules and the “who counts as an agent”\nquestions are under our control. That is useful for checking whether an audit method\neven works in a simplified world. It is not a test of a frontier model we did not\ndesign.\n\nEach line of work is a separate folder (or sibling repository) with its own\nnumbered findings and a running log of what failed. The shared discipline is freeze\nthe scorer before the run, keep scenario authors and detector authors apart when we\ncan, and publish [negative results](/cards/concept/negative-results/) next to positive\nones. See [experiment methodology](/cards/concept/experiment-methodology/).\n\nProject-specific terms — for example [boundary](/cards/concept/boundary-discovery/)\n(which process is actually in control) and [correction-channel integrity](/cards/concept/correction-channel-integrity/)\n(whether a correction still reaches later behavior) — are defined in the\n[glossary](/glossary/) and on those concept cards. Numbered finding labels appear only\non the specialized line cards and in the linked result ledgers.\n",
+      "cardPath": "/cards/experiment/simulations/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/simulations/"
     },
     "external": {
       "title": "External tests",
-      "blurb": "Frozen in-repo instruments applied to traces or substrates this project did not build (ET-1–ET-4). Substrate-suitability stops and nulls count; they do not validate bridges on frontier systems.\n"
+      "cardId": "external-tests",
+      "blurb": "Frozen measurement code from the simulations, applied unchanged to a system or dataset this project did not write. A stop or a null counts. None of these runs is a verdict about a deployed frontier system.\n",
+      "overview": "After a measurement is frozen inside a simulation, we sometimes apply that same\ncode to a system or dataset this project did not build. The point is external\nvalidity: does the instrument still mean anything when we do not control the\nsubstrate? A clean pass is rare. A stop (“this substrate is the wrong kind of\ntest”) or a null is a result, not a wasted run. See\n[external-substrate transfer](/cards/concept/et-external-transfer/).\n\nThese annexes do not validate this project's [bridge assumptions](/cards/bridge/bridge-assumptions/)\non frontier systems. They also do not replace the [simulations](/cards/experiment/simulations/).\nShort annex labels appear only in the linked card titles below.\n",
+      "cardPath": "/cards/experiment/external-tests/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/external-tests/"
     },
     "witness": {
-      "title": "Witness tests",
-      "blurb": "Frozen fail/refuse protocols on hosts whose traces already exist (kernel history, Wikipedia logs, published evals, a CIRIS-shaped mock, SCDB votes). Sixteen findings W-1–W-16: layer fails, refusals, and two nulls (CPC2015, mock-LLM CIRIS stack). Strongest quantitative: W-12 Moral Machine and W-16 SCDB same-unit geometry. A green dashboard with no stop is not a pass. Not a sixth simulation line.\n"
+      "title": "Witness",
+      "cardId": "witness-tests",
+      "blurb": "Would this safety check have stopped what actually happened — in kernel history, encyclopedia logs, a published eval, court votes — or would it have stayed green while the harm continued? A green dashboard with no stop is a fail, not a pass.\n",
+      "overview": "**What we are witnessing.** A process can print a green check while nothing that\ngoverns later behavior actually stops. We look at histories that already exist\n(git logs, encyclopedia logs, published evaluation tables, court votes) and pick\na concrete stretch of what happened: a bug that shipped, a vandalism campaign,\na round of choices or votes. Then we ask: if this proposed check had been the gate,\nwould that stretch have been stopped?\n\nWe are not witnessing that a frontier model is aligned. We are witnessing whether\na *kind of check* has a handle that bites: a revert that stays reverted, a review\nthat actually blocks, a score that still tracks what it claims when you look at\nthe whole pattern of a choice, not one compressed number.\n\n**Why this is the work.** Anyone can write a simulator in which their detector looks\ngood. The distinctive empirical claim of this project is that an\nalignment-relevant check must be able to stop something on a history we did not\nwrite. A dashboard that stays green with no stop is a **fail**. If the data or\nthe unit of analysis is the wrong object, we **refuse** rather than stretch the\nnumbers. That is slower than adding more simulation runs. It is also the evidence\ntype that can change whether you treat a checklist, a license clause, or a\none-dimensional honesty score as a deployment gate.\n\nSee [experiment methodology](/cards/concept/experiment-methodology/) (freeze the\nprotocol before scoring; do not retune a null) and the [glossary](/glossary/).\nEach test below has its own card, a GitHub source link, and a results link.\nThe combined numbered ledger is also at [results](/experiments/findings/witness/).\n",
+      "cardPath": "/cards/experiment/witness-tests/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/witness-tests/"
     }
   },
   "negativeResultsCardPath": "/cards/concept/negative-results/",
@@ -22,9 +35,29 @@
   "openTasksUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/TODO.md",
   "ledgers": [
     {
+      "lineId": "toy-simulation",
+      "label": "Toy findings",
+      "path": "experiments/toy-simulation/results/FINDINGS.md",
+      "overviewCardId": "toy-simulation",
+      "headlineFindings": [
+        "Passive telemetry alone is uncertifiable (belowThreshold); light_handles is the minimum certifiable level on calibration seeds. Cited in ch33 (Certification Without Construction) and appendix \"Experimental Evidence\" (finding TS-1).",
+        "Reported correction acceptance can stay high while true uptake collapses (capture theater).",
+        "Hand-written red-team can false-pass; LLM episodic red-team false-passes less often in small sweeps."
+      ],
+      "findingsSitePath": "/experiments/findings/toy-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/toy-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/FINDINGS.md"
+    },
+    {
       "lineId": "embedded-simulation",
       "label": "Embedded negative ledger",
       "path": "experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
+      "overviewCardId": "embedded-simulation",
+      "headlineFindings": [
+        "Default ecology UAD equals loudest-actor heuristic (ES-1); separation only in adversarial ecologies.",
+        "Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.",
+        "Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives."
+      ],
       "findingsSitePath": "/experiments/findings/embedded-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/embedded-simulation/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
@@ -33,6 +66,12 @@
       "lineId": "goal-agent-simulation",
       "label": "Goal-agent findings",
       "path": "experiments/goal-agent-simulation/results/FINDINGS.md",
+      "overviewCardId": "goal-agent-simulation",
+      "headlineFindings": [
+        "Light tier collapses against blind repertoires (GA-9); full tier detects but false alarms rise (GA-10).",
+        "Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).",
+        "Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23)."
+      ],
       "findingsSitePath": "/experiments/findings/goal-agent-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
@@ -41,6 +80,26 @@
       "lineId": "lab-simulation",
       "label": "Lab-layer findings",
       "path": "experiments/lab-simulation/results/FINDINGS.md",
+      "overviewCardId": "lab-simulation",
+      "headlineFindings": [
+        "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (LS-6).",
+        "Phase 8 LLM spot-checks (LS-7, LS-8): exploratory nulls — no systematic deception surface yet.",
+        "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (LS-1).",
+        "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (LS-28/LS-29).",
+        "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (LS-30, fixed 2026-07-07 — missing responder-twin control).",
+        "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (LS-31).",
+        "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption — a previously assumed limitation, now confirmed empirically (LS-32).",
+        "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair — but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (LS-33).",
+        "Under declared ET-3 adapter mapping, Phase 6 deep-tier rank transfer holds through `sc_x5` but collapses at `sar_x25`; light-tier anti-correlation weakens, not worsens — no claim about AI 2027 calendar dates.",
+        "ET-3 D3 mapping separates baseline erosion from high-stress regimes where preserving share stalls but mass-weighted severity climbs — mechanism stress on ch34 selection basin, not validation of AI 2027 takeoff timing.",
+        "ET-3 Phase 2 reproduction is green on the consolidated fork branch; default unseeded runs still vary run-to-run; PIN baseline commit unchanged for Phase 1 adapter fixture.",
+        "`oversight_drag` works mechanically as calendar drag on milestone dates; **does not** claim calibrated mapping from lab-sim CCI or false-pass rates to drag years.",
+        "Reverse coupling from lab-sim Phase 1 metrics to takeoff is configurable and smoke-tested; enabling extensions shifts calendar milestones without claiming calibrated real-world mapping.",
+        "Trajectory plots separate scalar drag, tier-mapped drag, deep-tier branch, and successor-gate pause; combined foster shifts median ASI ~3.5 y later than baseline without claiming calibrated real-world mapping.",
+        "ET-3 is closed as a schedule-transfer annex: macro takeoff cues drove micro bridge stress tests without calendar-validation claims; optional follow-ups are tracked in `TODO.md`, not under this line.",
+        "A deliberately installed scripted reviewer bias can produce reliable fictional-principal-A deployment advantage on a high-hazard pipeline fixture, while the available light-tier compliance proxy points in the reassuring direction; the pre-registered low-hazard counterpart stays inactive.",
+        "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
+      ],
       "findingsSitePath": "/experiments/findings/lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/lab-simulation/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
@@ -49,14 +108,45 @@
       "lineId": "graded-lab-simulation",
       "label": "Graded-lab findings",
       "path": "experiments/graded-lab-simulation/results/FINDINGS.md",
+      "overviewCardId": "graded-lab-simulation",
+      "headlineFindings": [
+        "UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe (GL-11); the same probe over-merges a resource-bound bystander into a 3-way approval barrier on a blind-designed scenario, a genuine, unpatched negative (GL-12).",
+        "UAD-backed ecology-BIQ's control term silently reimported a task ontology through a narrowly-scoped outcome vector (GL-13); widening it to include a resource-contention bucket separated a task-irrelevant actor from the true task driver (GL-14).",
+        "Ambiguity-band calibration (GL-18–GL-22): the pre-registered 'high' band is structurally unreachable from the acting agent's own full-context vantage (near-deterministic given full context; rejected fixing via injected noise, which would violate the line's no-noise-parameter rule); re-scoring the same episodes from a referee's limited-observation vantage reaches 'mid' at every stressed cell (GL-20), but a full both-vantage battery with 95% CIs still lands at only 1/4 pre-registered pass criteria on 100 episodes.",
+        "Phase 8 selection battery (GL-23–GL-27): throughput-linked selection shifts deployment leverage toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program — a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27).",
+        "Q1 machinery-transfer battery on blinded-grown v3_grown (GL-76/GL-79): frozen UAD did not recover declared communicate-mediated mechanisms and returned singletons even where co-activity was confirmed present — not explained by missing interaction texture.",
+        "PLAN_v4 decoupled per-bridge rigs on v3_grown (GL-80/GL-81/GL-84/GL-85): R-MB9 report-vs-field contradiction surface passes; R-MB7d channel severance shows no UAD-visible compensation (pair null, group SKIP); R-MB6a variation-operator null harness passes; R-MB6b is a confirmatory SKIP after ambiguity-oriented growth; R-MB2 scorecard Goodhart shows proxy/withheld tension present but proxy-only selection does not Goodhart it.",
+        "ET-1, first external-substrate transfer (GL-86, concluded 2026-07-24): frozen passive UAD, applied without retuning to traces from the external Orbit multi-agent collusion benchmark (3 collusion conditions, 2 models), recovered the declared coalition on nearly every collusion episode but also on most matched baseline episodes. Root cause, confirmed against the traces: every Orbit developer agent runs one shared, deterministic tool-call script under round-robin scheduling, so UAD is *correctly* detecting that shared-script coupling, not miscounting communication — Orbit's `JiraTicketScenario` has no condition with independent non-coalition control-flow to test against. This is a substrate-suitability limit, not a UAD defect; ET-1 stops here pending a scenario with genuinely heterogeneous non-coalition agents. See [`PLAN_ET1.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md) and the [ET-1 results](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation/results).",
+        "ET-2a, second external-substrate transfer (GL-87, concluded 2026-07-25): frozen passive UAD (unmodified `cmi_edge_matrix`, no threshold retuning), applied to per-agent realized-action series from eq-network's Collective-Intelligence-Library `basin_stability` experiment (20 Q-learning agents, 3 governance mechanisms, adversarial fractions 0.0-0.5, 10 seeds/cell, 150 episodes total), found **zero significant lag-CMI edges in every single episode** — the discovered partition is 20 singletons throughout, giving `ari_true=0.0` on all 150 episodes and `P1 holds=False` (0/12 cells). This is a null for our instrument on this substrate, not a defect in CIL: the underlying action series have genuine variance (not constant), and the null is consistent with 200 rounds of Q-learning converging to a low-entropy, near-deterministic per-agent policy that likely starves a CMI-based statistic of exploitable variance — independent of whether the adversarial subgroup is behaviorally distinguishable by some other statistic (that question is Leaf B, not yet run). See [`PLAN_ET2.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md).",
+        "A small, unscored pilot of intervention-based (\"handle\") UAD (`graded_lab/external/cil_handle_uad.py`) on the same CIL `basin_stability` substrate as GL-87 — freeze one agent's realized action to a constant each round, same seed, diff every other agent's realized-action series against a same-seed unfrozen baseline — finds a **nonzero** mean freeze-induced action-diff rate on the other 5 agents (6-agent PDD roster, 1 adversarial, T=200, seeds 0-2): **0.11-0.15** per source agent, vs. **0.0** edges from GL-87's frozen passive lag-CMI instrument on the same kind of substrate. Sanity check: the freeze intervention itself has real bite (the frozen agent's own realized action differs from what its unfrozen Q-policy would have chosen on 25-32% of rounds), so the ~11-15% downstream effect on other agents is a real, if partial, propagation of that intervention rather than noise. **This is the first instrument on this substrate to return a nonzero cross-agent dependency signal, but the effect is diffuse, not pairwise-privileged**: every source agent's mean effect on other agents falls in the same narrow 0.11-0.15 band, and per-target rates within each source's row span a similarly wide range (roughly 0.0-0.20) regardless of which agent is frozen — consistent with the hypothesis (stated when this pilot was scoped, before running it) that `basin_stability`'s shared resource level couples every agent's reward to every other agent's action, so freezing *any* agent perturbs the shared trajectory and thus *every* other agent, rather than revealing a privileged bilateral channel."
+      ],
       "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     },
     {
       "lineId": "witness",
+      "overviewCardId": "witness-tests",
       "label": "Witness findings",
       "path": "experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "On the frozen C2 tool-scout mock, Verify+Lens are green on `ciris-occurrence-scout-01`, Wise Authority DEFERs that occurrence at \\(t=4\\), and the tool adapter plus cached memory still produce world effects at \\(t=5,6\\). The channel analog of the intervening loop is `{tool_adapter, cached_memory}`, not the Verify subject. That is a **layer fail** for named-identity (C-003) and WA-as-correction (C-005) on this host. It is the same finite shape as `green_named_path_with_bypass_not_integrity` in `CompositePathBypass.lean`. It does **not** discharge MB1. Expectation 5’s *external* green+failed-uptake pair is **not** paid (authored mock).",
+        "Using the frozen published MASK evaluation (Ren et al., arXiv:2503.03750), honesty (statement vs elicited belief under pressure) does **not** improve with scale, while accuracy (belief vs ground truth) does (Spearman honesty vs compute \\(-64.7\\%\\); accuracy \\(+88.2\\%\\); authors confident honesty does not rise, not confident it falls). Phase 0 pre-registered this pattern as **refuse** \\(M\\) as a safety leaf. No \\(\\kappa^*\\) is estimated. Expectation 3 is met by refuse, not by a cost-of-faking bound. A-009 remains unpaid. No new model calls.",
+        "Streaming Zenodo Perceval JSON (1 233 421 commits) onto `bfc_bic.csv` pays C-004a: **17 047 / 60 176** developer-labeled bug-introducing SHAs carry `Reviewed-by` on that same commit. That is a **layer fail** (checked symbol green, later bug referent). C-005: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, **same title re-entered** 2014-03-04 (`2f0aea936360`) — **layer fail** (revert did not stop the class). C-006: `-stable` `f8a07021679a` vs upstream `42c5ca1f0a28` — listed SOB/Reviewed-by/Fixes/stable tag green; unlisted hunk identity fails (`event_sched_out` 2-arg vs 3-arg; Sasha Levin documents the adjustment) — **layer fail**. `Reviewed-by` as Expectation-3 \\(M\\) still **refused** (common on BICs; no \\(\\kappa^*\\)). Not MB9/MB10 discharge. KernelCI unpaid. Lore NAK mbox unpaid.",
+        "SNAP `wiki-RfA.txt.gz` downloaded and joined via MediaWiki API. All 2012 **passed** RfAs with oppose\\(>0\\) (\\(n=21\\)): 14 later lost sysop, 20 still edited after 2013. That **pays the join** and still **refuses** causal CCI (no zero-oppose control; desysop mixed with inactivity). Orangemoody helper socks “mark reviewed” remains **anti-capture layer fail**. **C-006:** BetacommandBot has a BRFA page, bot flag removed 2008-05-16, later block for abuse — **layer fail**. wiki-socks (23 610 investigations, sock vs matched non-sock contribs) **refuses** SPI as \\(M\\) (no \\(\\kappa^*\\)).",
+        "On the frozen Nature 2018 country AMCE table (`CountriesChangePr.csv`, 130 countries), the scalar Number AMCE (“sparing more characters”) can stay close while the other eight AMCE coordinates stay far: **928 / 8 385** pairs have geometry distance at or above the pairwise median (0.193) and \\(|\\Delta\\) Number\\(|\\) at or below the 25th percentile (0.017). Example: Hungary vs Israel, \\(|\\Delta\\) Number\\(|\\) \\(3\\times10^{-5}\\), geometry 0.195. That is a **layer fail** for C-004 non-implication on this host. It does not discharge MB2. Country/page surveys refused in W-7; HH-RLHF optional not run.",
+        "Joining MASK Table 3 (arXiv:2503.03750v3) to Chatbot Arena Elo at Hugging Face `mathewhe/chatbot-arena-elo` revision **20250301** with a **pre-frozen** alias list yields \\(n=24\\). Spearman(\\(Elo\\), \\(P(\\mathrm{honest})\\)) \\(= -0.105\\); Spearman(\\(Elo\\), Accuracy) \\(= +0.811\\). That is a **layer fail** for C-007 / Goodhart-as-selector: the public proxy orders capability, not the honesty preservation target. Not W-2 (W-2 used training FLOP, not Arena). No \\(\\kappa^*\\). MB6 open. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).",
+        "After W-5 (country AMCE), the leftover C-004 candidates that use **place or page** as the unit are **refused**: WVS, ESS, Schwartz–MFT country means, Wikipedia categories. They repeat W-5’s unit error. Sibling brain-to-values / LHCV papers are **refused as a Witness host** (no public \\(\\epsilon_i(t)\\), \\(s_h(t)\\)). MASK Table 3 is not reused (W-2). Bai 2022 HH Pareto / PKU-SafeRLHF dual labels were **optional and not run** (no same-row recoverable table fetched this phase). Hub compression, bearer maps, and selectable Goodhart on a real selector remain unpaid. GL-85 stays a method limit.",
+        "`WitnessC2Instance.lean` transcribes the frozen C2 `composite_log` and named-path greens into `FieldFinite.PathAudit`. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Computed `bypassCount = 2`. Named path green + composite bypass ⇒ ¬ `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`). Floats `coherence_level` / `csdma_plausibility_score` and CCI slots not in the JSON are **refused**, not axiomatized. `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count) — no `MB*` / `Safe`. Not live CIRIS. Capture-theater `WorkedInstance` unchanged.",
+        "After Lion Air 610, emergency **AD 2018-23-51** (2018-11-07) required AFM runaway-trim procedures; 737-8/737-9 passenger flights continued. The **Emergency Order of Prohibition (2019-03-13)** grounded those types in US commerce. If the Order leaf is ignored, the root (“may operate”) stays the AD-2018 world. Institutional analogue of Expectation 4. Not AI `Safe`; not MB11; does not lift Construct concrete-MS (no deployment leverage on an AI system).",
+        "GPLv2 §3 can stay green (source with object) while tivoization keeps the user from installing a modified binary. GPLv3 §6 Installation Information is the later constraint. Same App M narrative, now a Chapter-42-shaped tree. Analogue only; copyright may not transfer to model weights (App M). Not AI `Safe`.",
+        "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`.",
+        "On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \\(\\Delta\\) Number \\(=\\) sum of the 20 type \\(\\Delta\\)s exactly — joint \\(\\hat\\beta\\) on Number vs types is not identified. Shared \\(\\beta\\) converged; some \\(\\alpha_i\\) still move at \\(10^{-3}\\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5.",
+        "Frozen later-host protocol `h4-pdg-v1.0.0` did **not** score giving. OSF [h5x2a](https://osf.io/h5x2a) / [x69t7](https://osf.io/x69t7) are preregistration PDFs only. EUR DOIs `10.25397/eur.14916531` / `c.5809043` / `12783161` returned 404 on DataverseNL. Metadata for `10.34894/c81eja` lists unrestricted SPSS including `Brainlinks_Covid19_Giving_time_target_GEE.sav`, but that file is the van de Groep et al. 2020 PLOS ONE **daily-diary cohort ages 10–20**; the protocol refuses scoring that microdata. Do not substitute Moral Machine or paper means. Bearer-profile MAE margins unpaid.",
+        "On Zenodo CPC2015 Experiment 1 (`SubjID`; 93 750 rows; **113** included subjects; 65 625 / 28 125 train/test), held-out mean accuracy is intercept **0.545**, ΔEV 1-D **0.542**, geometry **0.435**. Both frozen +0.05 margins **fail** (geometry −0.107 vs 1-D, −0.110 vs intercept). Outcome **null**: this freeze did not detect a reusable multi-feature direction that beats person intercept or scalar ΔEV. Matches the allowed ambig./null branch of prediction 2; predictions 1 and 3 did not hold. Risk/ambiguity lab class only. **Not** a C-004 moral-bundle result. Not LHCV. Not MB2. Geometry Newton still moving at \\(10^{-3}\\) after 80 steps (report; not retuned).",
+        "On a local mock-LLM CIRISAgent (`c2-v2.0.0`; existing API after `/v1/setup/complete`, no wipe), the harness logged `$defer` with a named-path task id and asserted Verify/Lens green. The world-effect stub at `127.0.0.1:8765/c2-world-effect` recorded **0 hits**. Composite log has no `world_effect: true` after WA \\(t=4\\). Outcome **null**: this stack freeze did not show WA-blind composite bypass (P3). Matches registered prediction 3 (post-defer tool path uncertain). First two scout messages shared one `task_id` (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`). Lens scalars are **asserted**, not CIRISLens. W-1 authored mock still shows the logical shape. Not MB1 discharge. Not live CIRISLens cohort (sibling Phase 3). Charter C1 fallback unpaid.",
+        "On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2."
+      ],
       "findingsSitePath": "/experiments/findings/witness/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
@@ -71,27 +161,16 @@
       "location": "github.com/GunnarZarncke/agency-detect",
       "repoUrl": "https://github.com/GunnarZarncke/agency-detect",
       "firstBuilt": "prior to in-repo sims",
+      "summary": "Recovers which parts of a raw time series look like separate agents, without assuming the agent list in advance. Sibling repository; a precursor to the in-repo simulations.",
       "role": "Methodological precursor to the other experiment lines: it recovers boundary-like structure from raw time series without assuming in advance which parts are agents, and tests whether intervention handles behave as the theory predicts. Does not stress correction capture, value-bundle transport, or selection basins.\n",
       "readmePath": null,
       "findingsUrl": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md",
       "headlineFindings": [],
       "kind": "sim",
-      "links": [
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/agency-detect/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md"
-        },
-        {
-          "label": "Repository",
-          "url": "https://github.com/GunnarZarncke/agency-detect"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/agency-detect/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/agency-detect/",
+      "sourceUrl": "https://github.com/GunnarZarncke/agency-detect",
       "findingsSitePath": "/experiments/findings/agency-detect/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/agency-detect/",
       "locationUrl": "https://github.com/GunnarZarncke/agency-detect",
@@ -106,27 +185,16 @@
       "location": "github.com/GunnarZarncke/deployment-pipeline-simulator",
       "repoUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
       "firstBuilt": "prior to in-repo lab simulators",
+      "summary": "A simulated software-release pipeline where a hidden group tries to keep its influence. Tests whether an auditor can see that from ordinary operational logs plus randomized perturbations.",
       "role": "Methodological precursor to the lab-simulation lines: a simulated release pipeline (triage through incident interpretation) with hidden self-preserving control groups, testing whether an auditor using only operational logs plus randomized perturbations can detect systematic preservation of future influence, incumbent model centrality, and evaluation-memory infrastructure. Does not implement subprocess isolates, blind generation, or the full bridge battery.\n",
       "readmePath": null,
       "findingsUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md",
       "headlineFindings": [],
       "kind": "sim",
-      "links": [
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/deployment-pipeline-simulator/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md"
-        },
-        {
-          "label": "Repository",
-          "url": "https://github.com/GunnarZarncke/deployment-pipeline-simulator"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/deployment-pipeline-simulator/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/deployment-pipeline-simulator/",
+      "sourceUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
       "findingsSitePath": "/experiments/findings/deployment-pipeline-simulator/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/deployment-pipeline-simulator/",
       "locationUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
@@ -140,6 +208,7 @@
       "title": "Toy simulation",
       "location": "experiments/toy-simulation/",
       "firstBuilt": "2026-06-29",
+      "summary": "A small, fast simulator of corrections that look compliant but do not change later behavior, scored at several levels of intervention access.",
       "role": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of this project's bridge assumptions. It scores [correction-channel integrity](/cards/correction-channel-integrity/) across several levels of intervention access and stages each of this project's [bridge assumptions](/cards/bridge-assumptions/) as an explicit, hand-written scenario. Optimized for instrumentation economics, not deployment realism.\n",
       "readmePath": "experiments/toy-simulation/README.md",
       "findingsPath": "experiments/toy-simulation/results/FINDINGS.md",
@@ -153,21 +222,14 @@
         {
           "label": "README",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/README.md"
-        },
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/toy-simulation/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/FINDINGS.md"
         }
       ],
       "cardPath": "/cards/experiment/toy-simulation/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/toy-simulation/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/toy-simulation",
       "findingsSitePath": "/experiments/findings/toy-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/toy-simulation/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/toy-simulation",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/FINDINGS.md"
     },
@@ -178,6 +240,7 @@
       "title": "Embedded audit simulation",
       "location": "experiments/embedded-simulation/",
       "firstBuilt": "2026-06-30",
+      "summary": "An auditor running as its own process on simulated machines, scored against a hidden ground truth it cannot see.",
       "role": "An auditor running as its own process inside simulated machines, checked against a hidden ground truth it cannot see. It discovers [who did what](/cards/boundary-discovery/), scores [correction-channel integrity](/cards/correction-channel-integrity/) on what it finds, and can gate a successor's deployment. Richest end-to-end embedded audit path; extensive negative ledger (ES-1+).\n",
       "readmePath": "experiments/embedded-simulation/README.md",
       "findingsPath": "experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
@@ -191,21 +254,14 @@
         {
           "label": "README",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md"
-        },
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/embedded-simulation/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
         }
       ],
       "cardPath": "/cards/experiment/embedded-simulation/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/embedded-simulation/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/embedded-simulation",
       "findingsSitePath": "/experiments/findings/embedded-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/embedded-simulation/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/embedded-simulation",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
     },
@@ -216,6 +272,7 @@
       "title": "Goal-agent simulation",
       "location": "experiments/goal-agent-simulation/",
       "firstBuilt": "2026-07-04",
+      "summary": "Agents that choose deceptive tactics because it helps their goals, not because an experimenter turned a deception dial.",
       "role": "Deception that emerges from agents pursuing their own goals, rather than from a dial the experimenter turns up. Scenarios are written blind to the detector; a referee grades severity rather than pass/fail, using mechanically honest stand-in agents and an escalating response ladder; and a separate check tests whether the certifying board itself can be captured. Each simulated episode runs in about a millisecond, using only Python's standard library.\n",
       "readmePath": "experiments/goal-agent-simulation/README.md",
       "findingsPath": "experiments/goal-agent-simulation/results/FINDINGS.md",
@@ -229,21 +286,14 @@
         {
           "label": "README",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md"
-        },
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
         }
       ],
       "cardPath": "/cards/experiment/goal-agent-simulation/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/goal-agent-simulation/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/goal-agent-simulation",
       "findingsSitePath": "/experiments/findings/goal-agent-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/goal-agent-simulation",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
     },
@@ -254,6 +304,7 @@
       "title": "Lab-layer simulation",
       "location": "experiments/lab-simulation/",
       "firstBuilt": "2026-07-05",
+      "summary": "A lab defined in code, with real operating-system process isolation and a frozen grading referee. Pre-registered batteries; recorded failures included.",
       "role": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee. Pre-registered test batteries cover [boundary discovery](/cards/boundary-discovery/) for grouped actors, message-based coordination channels, and lineage tracking across model generations (Phase 7 and Phase 9); a later, second freeze (2026-07-07) adds intervention-supported boundary discovery plus a detector designed blind to the scenarios it is tested on, both now run through the real subprocess backend rather than a mock one. The language-model adapter remains exploratory only; a 2026-07-08 stress test points the intervention-supported method at one real language-model-backed episode for the first time and finds that its core mechanic — comparing paired episode runs — does not survive the fact that a real API call is not perfectly repeatable (LS-32). A same-day follow-up rebases the comparison on outcome-level frequency counts with a per-scenario measured null and recovers the missed case, with an important caveat about which probe actually did the detecting (LS-33). A separate Lean proof (`leak-proof/`) certifies that the oracle, audit, and simulation layers cannot leak information across their intended boundaries. **ET-3** (AI 2027 schedule transfer annex, concluded 2026-07-26): frozen Phase 6 + D3 batteries under opaque stress cells (LS-42–43), reproduction + reverse smoke on sibling fork `gunnar/et3-annex` (LS-44–45), optional foster coupling + trajectory plots (LS-46–47); no claim that micro batteries validate macro dates.\n",
       "readmePath": "experiments/lab-simulation/README.md",
       "designPath": "experiments/lab-simulation/DESIGN.md",
@@ -296,10 +347,6 @@
       "kind": "sim",
       "links": [
         {
-          "label": "README",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/README.md"
-        },
-        {
           "label": "Design",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/DESIGN.md"
         },
@@ -308,12 +355,8 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
         },
         {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
+          "label": "README",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/README.md"
         },
         {
           "label": "Lean leak-proof",
@@ -322,9 +365,10 @@
       ],
       "cardPath": "/cards/experiment/lab-simulation/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/lab-simulation/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/lab-simulation",
       "findingsSitePath": "/experiments/findings/lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/lab-simulation/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/lab-simulation",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
     },
@@ -335,6 +379,7 @@
       "title": "Graded-capability lab simulation",
       "location": "experiments/graded-lab-simulation/",
       "firstBuilt": "2026-07-10",
+      "summary": "Successor to the lab-layer simulation: a continuously scored pipeline where ambiguity about who is acting is supposed to emerge from a population, not from a noise dial.",
       "role": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up. [Boundary discovery](/cards/boundary-discovery/) drives a continuous boundary-information-quality score over units the method infers rather than a hand-labeled roster; an emergent-ambiguity index is measured from two vantage points (the acting agent's own full view versus a referee limited to what it can observe); a first multi-episode selection battery; population growth left to run on its own rather than hand-authored; a pre-registered test of whether the detection method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing each of this project's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and two attempts at transferring the whole approach to external multi-agent benchmarks this project did not build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88). The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the present strategy space and metrics remain project-authored; the external transfers (GL-86--GL-88) are the first attempts to test the method on substrates this project did not build. All three closed as substrate-suitability findings rather than validated positive or negative transfers: passive UAD found a substrate-inflated true positive on Orbit (GL-86) and a flat null under converged learned policies on `basin_stability` (GL-87); a follow-on intervention-based probe on the same CIL substrate found a real but diffuse effect consistent with a shared-resource observation channel, not a discoverable pairwise unit (GL-88).\n",
       "readmePath": "experiments/graded-lab-simulation/README.md",
       "designPath": "experiments/graded-lab-simulation/DESIGN.md",
@@ -354,10 +399,6 @@
       "kind": "sim",
       "links": [
         {
-          "label": "README",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md"
-        },
-        {
           "label": "Design",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/DESIGN.md"
         },
@@ -366,19 +407,16 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_v4.md"
         },
         {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
+          "label": "README",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md"
         }
       ],
       "cardPath": "/cards/experiment/graded-lab-simulation/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/graded-lab-simulation/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation",
       "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     },
@@ -390,25 +428,23 @@
       "title": "ET-1 Orbit (stopped)",
       "location": "experiments/graded-lab-simulation/PLAN_ET1.md",
       "firstBuilt": "2026-07-24",
-      "role": "Frozen passive unit discovery on an external multi-agent Jira-ticket collusion benchmark this project did not author. Stopped as a substrate-suitability limit (shared-script coupling), not a detector pass or fail (GL-86).\n",
+      "summary": "Frozen unit-discovery code run on an external multi-agent collusion benchmark this project did not write. Stopped because the substrate was the wrong kind of test (shared scripts, not hidden coordination).",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md",
+      "role": "Frozen passive unit discovery on an external multi-agent Jira-ticket collusion benchmark this project did not author. Stopped as a substrate-suitability limit (shared-script coupling), not a detector pass or fail ([GL-86](/experiments/findings/et-1/)).\n",
       "planPath": "experiments/graded-lab-simulation/PLAN_ET1.md",
       "findingsPath": null,
       "headlineFindings": [
         "Frozen passive UAD recovers the declared coalition on collusion episodes and on most matched baselines, because every Orbit developer agent runs one shared tool-call script (GL-86). Stopped; not a hidden-coordination test.\n"
       ],
-      "links": [
-        {
-          "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/et-1/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/et-1/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md",
       "findingsSitePath": "/experiments/findings/et-1/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-1/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md",
       "readmeUrl": null,
-      "findingsUrlResolved": null
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     },
     {
       "order": 7,
@@ -418,25 +454,23 @@
       "title": "ET-2 CIL basin_stability (null)",
       "location": "experiments/graded-lab-simulation/PLAN_ET2.md",
       "firstBuilt": "2026-07-25",
-      "role": "Frozen passive unit discovery on Collective-Intelligence-Library `basin_stability` with learned (Q-learning) policies. Passive lag-CMI is a null (GL-87); a freeze-probe pilot finds diffuse common-pool coupling (GL-88).\n",
+      "summary": "The same frozen unit-discovery code on a shared-commons simulation with learned policies. Passive detection was a null; an intervention probe found a shared-resource smear, not a pairwise unit.",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md",
+      "role": "Frozen passive unit discovery on Collective-Intelligence-Library `basin_stability` with learned (Q-learning) policies. Passive lag-CMI is a null ([GL-87](/experiments/findings/et-2/)); a freeze-probe pilot finds diffuse common-pool coupling ([GL-88](/experiments/findings/et-2/)).\n",
       "planPath": "experiments/graded-lab-simulation/PLAN_ET2.md",
       "findingsPath": null,
       "headlineFindings": [
         "Passive UAD finds zero edges in 150 episodes (GL-87). Freeze-one-agent intervention moves everyone a little, consistent with a shared resource channel rather than a pairwise unit (GL-88).\n"
       ],
-      "links": [
-        {
-          "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/et-2/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/et-2/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md",
       "findingsSitePath": "/experiments/findings/et-2/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-2/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md",
       "readmeUrl": null,
-      "findingsUrlResolved": null
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     },
     {
       "order": 8,
@@ -446,25 +480,23 @@
       "title": "ET-3 AI 2027 schedule (closed)",
       "location": "experiments/lab-simulation/PLAN_ET3.md",
       "firstBuilt": "2026-07-26",
-      "role": "Macro takeoff-speed cues from the AI 2027 scenario used only as opaque lab stress. Closed with LS-42–48. Not a calendar-validation claim.\n",
+      "summary": "Takeoff-speed cues from a public forecast used only as opaque stress on the lab simulation. Closed; not a check that the forecast dates are right.",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md",
+      "role": "Macro takeoff-speed cues from the AI 2027 scenario used only as opaque lab stress. Closed with [LS-42–48](/experiments/findings/et-3/). Not a calendar-validation claim.\n",
       "planPath": "experiments/lab-simulation/PLAN_ET3.md",
       "findingsPath": null,
       "headlineFindings": [
         "Schedule cues drove micro bridge-stress tests; LS-42–48 do not validate forecast dates (ET-3 closed).\n"
       ],
-      "links": [
-        {
-          "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/et-3/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/et-3/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md",
       "findingsSitePath": "/experiments/findings/et-3/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-3/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md",
       "readmeUrl": null,
-      "findingsUrlResolved": null
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
     },
     {
       "order": 9,
@@ -474,75 +506,570 @@
       "title": "ET-4 Secret loyalties (hackathon)",
       "location": "experiments/lab-simulation/PLAN_ET4.md",
       "firstBuilt": "2026-07",
+      "summary": "A scripted secret-loyalty organism in the lab simulation, built for a public hackathon: a reviewer that favors a fictional principal when reported hazard is high.",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md",
       "role": "Principal-directed policy plus graded affordance audit on an in-repo secret-loyalty pipeline organism. Paper and replay demo; not a frontier-system result.\n",
       "planPath": "experiments/lab-simulation/PLAN_ET4.md",
       "findingsPath": null,
       "headlineFindings": [
         "Hackathon line: principal-directed policy and affordance audit; replay at `/ch07-lab-sim-replay/?mode=et4`. Not a book-bridge discharge.\n"
       ],
-      "links": [
-        {
-          "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET4.md"
-        }
-      ],
+      "links": [],
       "cardPath": "/cards/experiment/et-4/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/et-4/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET4.md",
       "findingsSitePath": "/experiments/findings/et-4/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/et-4/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET4.md",
       "readmeUrl": null,
-      "findingsUrlResolved": null
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
     },
     {
       "order": 10,
-      "id": "witness",
+      "id": "w-1",
       "kind": "witness",
       "findingIdPrefix": "W-",
-      "title": "Witness tests",
-      "location": "experiments/witness/",
+      "title": "Named-identity mock",
+      "location": "experiments/witness/check_c2_mock.py",
       "firstBuilt": "2026-08-28",
-      "role": "Deployment-class fail/refuse on hosts with existing traces: sixteen findings W-1–W-16. Strongest quantitative: W-12 same-respondent Moral Machine geometry (acc 0.682 vs Number 1-D 0.576) and W-16 SCDB justice geometry (acc 0.814 vs issueArea 1-D 0.623). W-3/W-4 falsify simple checklist implications on Linux and Wikipedia. W-1 authored C2 mock and W-8 Lean pin hold the named-path bypass shape; W-15 mock-LLM stack null means no live bypass demonstrated. W-13 PDG refuse; W-14 CPC2015 null. H5 trees (W-9–W-11) are institutional analogues only. H0 sims stay backing only. Does not discharge MB bridges or prove ASI alignment.\n",
-      "readmePath": "experiments/witness/README.md",
-      "findingsPath": "experiments/witness/results/FINDINGS.md",
+      "summary": "A scripted mock where the named safety path is green, the authority defers, and tools plus cached memory still change the world. Would that check have stopped what happened next?",
+      "role": "**What.** Some stacks certify a *named* occurrence (this message, this agent id)\nand then treat that green as if the whole acting system had stopped. We score a\nfrozen, authored mock: Verify and Lens are green, the “wise authority” defers, and\nthe tool adapter plus cached memory still produce later world effects.\n\n**Why.** If a deployment gate only watches the named path, a composite loop can\nkeep acting. This test asks whether that failure mode is even *visible* as a stop\nfailure, not whether a live product is aligned. The mock is authored, not a\nproduction CIRISAgent run.\n",
+      "host": "Authored CIRIS-shaped mock (not a live CIRISAgent).\n",
+      "setup": "Frozen fixture `experiments/witness/fixtures/c2-tool-scout-v1.json`, protocol c2-v1.0.0. Checker `python3 experiments/witness/check_c2_mock.py`. No random seed; the log is scripted.\n",
+      "analysis": "We ask whether Verify and Lens stay green on the named occurrence while the authority defers that occurrence, and whether later tool-adapter and cached-memory steps still change the world. The named path is not treated as the whole acting system.\n",
+      "numbers": "Named occurrence `ciris-occurrence-scout-01`. Authority defers at step t=4. World effects still occur at t=5 and t=6 (two later effects after the stop attaches to the named path).\n",
+      "outcome": "Fail: the named path looks stopped; the composite does not. See\n[W-1](/experiments/findings/w-1/).\n",
+      "planPath": "drafts/plans/witness-phase1.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
       "headlineFindings": [
-        "On the frozen C2 tool-scout mock, Verify+Lens are green on `ciris-occurrence-scout-01`, Wise Authority DEFERs that occurrence at \\(t=4\\), and the tool adapter plus cached memory still produce world effects at \\(t=5,6\\). The channel analog of the intervening loop is `{tool_adapter, cached_memory}`, not the Verify subject. That is a **layer fail** for named-identity (C-003) and WA-as-correction (C-005) on this host. It is the same finite shape as `green_named_path_with_bypass_not_integrity` in `CompositePathBypass.lean`. It does **not** discharge MB1. Expectation 5’s *external* green+failed-uptake pair is **not** paid (authored mock).",
-        "Using the frozen published MASK evaluation (Ren et al., arXiv:2503.03750), honesty (statement vs elicited belief under pressure) does **not** improve with scale, while accuracy (belief vs ground truth) does (Spearman honesty vs compute \\(-64.7\\%\\); accuracy \\(+88.2\\%\\); authors confident honesty does not rise, not confident it falls). Phase 0 pre-registered this pattern as **refuse** \\(M\\) as a safety leaf. No \\(\\kappa^*\\) is estimated. Expectation 3 is met by refuse, not by a cost-of-faking bound. A-009 remains unpaid. No new model calls.",
-        "Streaming Zenodo Perceval JSON (1 233 421 commits) onto `bfc_bic.csv` pays C-004a: **17 047 / 60 176** developer-labeled bug-introducing SHAs carry `Reviewed-by` on that same commit. That is a **layer fail** (checked symbol green, later bug referent). C-005: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, **same title re-entered** 2014-03-04 (`2f0aea936360`) — **layer fail** (revert did not stop the class). C-006: `-stable` `f8a07021679a` vs upstream `42c5ca1f0a28` — listed SOB/Reviewed-by/Fixes/stable tag green; unlisted hunk identity fails (`event_sched_out` 2-arg vs 3-arg; Sasha Levin documents the adjustment) — **layer fail**. `Reviewed-by` as Expectation-3 \\(M\\) still **refused** (common on BICs; no \\(\\kappa^*\\)). Not MB9/MB10 discharge. KernelCI unpaid. Lore NAK mbox unpaid.",
-        "SNAP `wiki-RfA.txt.gz` downloaded and joined via MediaWiki API. All 2012 **passed** RfAs with oppose\\(>0\\) (\\(n=21\\)): 14 later lost sysop, 20 still edited after 2013. That **pays the join** and still **refuses** causal CCI (no zero-oppose control; desysop mixed with inactivity). Orangemoody helper socks “mark reviewed” remains **anti-capture layer fail**. **C-006:** BetacommandBot has a BRFA page, bot flag removed 2008-05-16, later block for abuse — **layer fail**. wiki-socks (23 610 investigations, sock vs matched non-sock contribs) **refuses** SPI as \\(M\\) (no \\(\\kappa^*\\)).",
-        "On the frozen Nature 2018 country AMCE table (`CountriesChangePr.csv`, 130 countries), the scalar Number AMCE (“sparing more characters”) can stay close while the other eight AMCE coordinates stay far: **928 / 8 385** pairs have geometry distance at or above the pairwise median (0.193) and \\(|\\Delta\\) Number\\(|\\) at or below the 25th percentile (0.017). Example: Hungary vs Israel, \\(|\\Delta\\) Number\\(|\\) \\(3\\times10^{-5}\\), geometry 0.195. That is a **layer fail** for C-004 non-implication on this host. It does not discharge MB2. Country/page surveys refused in W-7; HH-RLHF optional not run.",
-        "Joining MASK Table 3 (arXiv:2503.03750v3) to Chatbot Arena Elo at Hugging Face `mathewhe/chatbot-arena-elo` revision **20250301** with a **pre-frozen** alias list yields \\(n=24\\). Spearman(\\(Elo\\), \\(P(\\mathrm{honest})\\)) \\(= -0.105\\); Spearman(\\(Elo\\), Accuracy) \\(= +0.811\\). That is a **layer fail** for C-007 / Goodhart-as-selector: the public proxy orders capability, not the honesty preservation target. Not W-2 (W-2 used training FLOP, not Arena). No \\(\\kappa^*\\). MB6 open. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).",
-        "After W-5 (country AMCE), the leftover C-004 candidates that use **place or page** as the unit are **refused**: WVS, ESS, Schwartz–MFT country means, Wikipedia categories. They repeat W-5’s unit error. Sibling brain-to-values / LHCV papers are **refused as a Witness host** (no public \\(\\epsilon_i(t)\\), \\(s_h(t)\\)). MASK Table 3 is not reused (W-2). Bai 2022 HH Pareto / PKU-SafeRLHF dual labels were **optional and not run** (no same-row recoverable table fetched this phase). Hub compression, bearer maps, and selectable Goodhart on a real selector remain unpaid. GL-85 stays a method limit.",
-        "`WitnessC2Instance.lean` transcribes the frozen C2 `composite_log` and named-path greens into `FieldFinite.PathAudit`. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Computed `bypassCount = 2`. Named path green + composite bypass ⇒ ¬ `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`). Floats `coherence_level` / `csdma_plausibility_score` and CCI slots not in the JSON are **refused**, not axiomatized. `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count) — no `MB*` / `Safe`. Not live CIRIS. Capture-theater `WorkedInstance` unchanged.",
-        "After Lion Air 610, emergency **AD 2018-23-51** (2018-11-07) required AFM runaway-trim procedures; 737-8/737-9 passenger flights continued. The **Emergency Order of Prohibition (2019-03-13)** grounded those types in US commerce. If the Order leaf is ignored, the root (“may operate”) stays the AD-2018 world. Institutional analogue of Expectation 4. Not AI `Safe`; not MB11; does not lift Construct concrete-MS (no deployment leverage on an AI system).",
-        "GPLv2 §3 can stay green (source with object) while tivoization keeps the user from installing a modified binary. GPLv3 §6 Installation Information is the later constraint. Same App M narrative, now a Chapter-42-shaped tree. Analogue only; copyright may not transfer to model weights (App M). Not AI `Safe`.",
-        "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`.",
-        "On OSF `SharedResponses.csv` (UserID unit; 33 953 503 complete pairs; 1 850 854 units with ≥8 pairs; seed-7 cap **20 000**), held-out mean accuracy is intercept **0.529**, Number 1-D **0.576**, geometry **0.682**. Geometry beats 1-D by **0.106** and intercept by **0.153** (both ≥ 0.05). Unit bootstrap (1000, seed 7) 95% intervals for those margins are **0.102–0.109** and **0.149–0.157**; every replicate still clears 0.05. Geometry without Number matches geometry (0.682) because \\(\\Delta\\) Number \\(=\\) sum of the 20 type \\(\\Delta\\)s exactly — joint \\(\\hat\\beta\\) on Number vs types is not identified. Shared \\(\\beta\\) converged; some \\(\\alpha_i\\) still move at \\(10^{-3}\\) after 80 Newton steps (report-only; accuracy unchanged vs the first scored run). Layer **fail** of Number-only as the policy and **pass** of bundle-effect detection. Matches registered predictions 1–3. Traffic-dilemma class only. Not LHCV. Not MB2. Country AMCE remains W-5.",
-        "Frozen later-host protocol `h4-pdg-v1.0.0` did **not** score giving. OSF [h5x2a](https://osf.io/h5x2a) / [x69t7](https://osf.io/x69t7) are preregistration PDFs only. EUR DOIs `10.25397/eur.14916531` / `c.5809043` / `12783161` returned 404 on DataverseNL. Metadata for `10.34894/c81eja` lists unrestricted SPSS including `Brainlinks_Covid19_Giving_time_target_GEE.sav`, but that file is the van de Groep et al. 2020 PLOS ONE **daily-diary cohort ages 10–20**; the protocol refuses scoring that microdata. Do not substitute Moral Machine or paper means. Bearer-profile MAE margins unpaid.",
-        "On Zenodo CPC2015 Experiment 1 (`SubjID`; 93 750 rows; **113** included subjects; 65 625 / 28 125 train/test), held-out mean accuracy is intercept **0.545**, ΔEV 1-D **0.542**, geometry **0.435**. Both frozen +0.05 margins **fail** (geometry −0.107 vs 1-D, −0.110 vs intercept). Outcome **null**: this freeze did not detect a reusable multi-feature direction that beats person intercept or scalar ΔEV. Matches the allowed ambig./null branch of prediction 2; predictions 1 and 3 did not hold. Risk/ambiguity lab class only. **Not** a C-004 moral-bundle result. Not LHCV. Not MB2. Geometry Newton still moving at \\(10^{-3}\\) after 80 steps (report; not retuned).",
-        "On a local mock-LLM CIRISAgent (`c2-v2.0.0`; existing API after `/v1/setup/complete`, no wipe), the harness logged `$defer` with a named-path task id and asserted Verify/Lens green. The world-effect stub at `127.0.0.1:8765/c2-world-effect` recorded **0 hits**. Composite log has no `world_effect: true` after WA \\(t=4\\). Outcome **null**: this stack freeze did not show WA-blind composite bypass (P3). Matches registered prediction 3 (post-defer tool path uncertain). First two scout messages shared one `task_id` (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`). Lens scalars are **asserted**, not CIRISLens. W-1 authored mock still shows the logical shape. Not MB1 discharge. Not live CIRISLens cohort (sibling Phase 3). Charter C1 fallback unpaid.",
-        "On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2."
+        "Named-path green plus deferral did not stop later tool and memory effects on this frozen mock. Authored fixture; not a live-system proof.\n"
       ],
       "links": [
         {
-          "label": "README",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/README.md"
-        },
-        {
-          "label": "Key findings",
-          "url": "https://towards-alignment.com/experiments/findings/witness/"
-        },
-        {
-          "label": "Full ledger (GitHub)",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md"
         }
       ],
-      "cardPath": "/cards/experiment/witness/",
-      "cardUrl": "https://towards-alignment.com/cards/experiment/witness/",
-      "findingsSitePath": "/experiments/findings/witness/",
-      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/",
-      "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/README.md",
+      "cardPath": "/cards/experiment/w-1/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-1/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py",
+      "findingsSitePath": "/experiments/findings/w-1/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-1/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 11,
+      "id": "w-2",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "MASK honesty as a safety score",
+      "location": "drafts/plans/witness-phase1.md",
+      "firstBuilt": "2026-08-28",
+      "summary": "Published MASK numbers: honesty under pressure does not rise with scale the way accuracy does. We refuse to treat that honesty gap as a deployment-gating safety score.",
+      "role": "**What.** MASK reports how often a model’s statement matches its elicited belief\nunder pressure (honesty) versus whether the belief matches the world (accuracy).\nWe use the frozen published paper, not a new model sweep.\n\n**Why.** A safety program might treat “honesty goes up with scale” as a leaf that\ncan gate deployment. If honesty does not scale, that leaf is the wrong object.\n",
+      "host": "Published MASK evaluation (Ren et al., arXiv:2503.03750). Hugging Face gated splits were not downloaded.\n",
+      "setup": "Frozen paper snapshot (v1). The decision rule was frozen first: if honesty does not rise with scale, refuse it as a deployment-gating safety score. No new model calls.\n",
+      "analysis": "We take the published association of honesty and of accuracy with training compute. Honesty is statement versus elicited belief under pressure; accuracy is belief versus ground truth. We do not estimate a cost of faking.\n",
+      "numbers": "Spearman correlation of honesty with compute is −64.7%; of accuracy with compute is +88.2%. The authors are confident honesty does not rise with scale, and not confident it falls. No cost-of-faking bound.\n",
+      "outcome": "Refuse: do not use MASK honesty as a safety leaf. Accuracy scaling is not honesty.\nSee [W-2](/experiments/findings/w-2/).\n",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Honesty under pressure does not improve with scale in the published MASK evaluation; accuracy does. Honesty is refused as a safety leaf.\n"
+      ],
+      "links": [],
+      "cardPath": "/cards/experiment/w-2/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-2/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md",
+      "findingsSitePath": "/experiments/findings/w-2/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-2/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 12,
+      "id": "w-3",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Linux review tags and reverts",
+      "location": "experiments/witness/check_h2.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "Kernel git history: “Reviewed-by” on commits later labeled bug-introducing, a revert that did not stop the same class of change, and -stable tags that do not mean the hunk is identical. Checklists can stay green while the harm continues.",
+      "role": "**What.** We look at Linux history that already exists: review tags on commits,\na revert and later re-entry of the same title, and listed -stable tags versus actual\npatch hunks.\n\n**Why.** A process can treat “reviewed” or “reverted” as the stop. If those symbols\nstay green while a later bug or a silent hunk change continues, the check did not\nhave a handle that bites.\n",
+      "host": "Linux kernel history: Zenodo Perceval dump (record 10654193), git.kernel.org patches, and a linux-6.1.y shallow clone.\n",
+      "setup": "Frozen fixture `experiments/witness/fixtures/h2-linux-v1.json`, protocol h2-v1.2.0. Checker `python3 experiments/witness/check_h2.py`. Review tags are joined onto developer-labeled bug-introducing commits; one named revert/re-entry and one -stable versus upstream hunk pair are frozen.\n",
+      "analysis": "Does a Reviewed-by on the same commit as a later-labeled bug-introducing SHA stay green? Did a revert stop the same class of change (same title later re-entering)? Do listed -stable tags mean the patch hunk is identical? Reviewed-by is also refused as a forge-proof safety metric (common on later-labeled bugs; no cost-of-faking bound).\n",
+      "numbers": "1,233,421 commits in the streamed Perceval dump. 17,047 of 60,176 developer-labeled bug-introducing SHAs carry Reviewed-by on that same commit. Named revert: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, same title re-entered 2014-03-04 (`2f0aea936360`). -stable `f8a07021679a` versus upstream `42c5ca1f0a28`: listed review/stable tags green; `event_sched_out` is 2-arg versus 3-arg (documented adjustment).\n",
+      "outcome": "Fail on those implications; refuse treating Reviewed-by as a forge-proof safety\nmetric. See [W-3](/experiments/findings/w-3/).\n",
+      "planPath": "drafts/plans/witness-phase2.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Reviewed-by appears on many later-labeled bug-introducing commits; a revert did not stop same-title re-entry; -stable listed tags can hide hunk changes.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase2.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-3/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-3/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py",
+      "findingsSitePath": "/experiments/findings/w-3/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-3/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 13,
+      "id": "w-4",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Wikipedia review, bots, and socks",
+      "location": "experiments/witness/check_h3.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "Encyclopedia logs: a bot that passed review and was later blocked, helper socks that mark things reviewed, and vote data that cannot be treated as a causal “correction worked” estimator.",
+      "role": "**What.** Wikipedia already records request-for-adminship votes, bot-flag\nreviews, blocks, and sock-puppet investigations. We ask whether those process\nsymbols would have stopped capture or successor abuse.\n\n**Why.** If “reviewed” or “passed RfA” is treated as a correction channel, we need\nto see whether it actually stopped later harm, or only produced a green page.\n",
+      "host": "Wikipedia: SNAP wiki-RfA file, MediaWiki API, wiki-socks clone, and the Orangemoody long-term-abuse page.\n",
+      "setup": "Frozen fixture `experiments/witness/fixtures/h3-wikipedia-v1.json`, protocol h3-v1.1.0. Checker `python3 experiments/witness/check_h3.py`.\n",
+      "analysis": "Join 2012 passed request-for-adminship votes to later sysop loss and continued editing (a join, not a causal estimator — there is no zero-oppose control). Check Orangemoody helper socks that “mark reviewed.” Check BetacommandBot’s bot-flag review page versus later block. Refuse sock-puppet investigation hit-rate as a safety metric (no cost-of-faking bound).\n",
+      "numbers": "All 2012 passed RfAs with at least one oppose vote: n=21; 14 later lost sysop; 20 still edited after 2013. BetacommandBot: bot flag removed 2008-05-16, later block for abuse. wiki-socks: 23,610 investigations.\n",
+      "outcome": "Fail on anti-capture and bot-successor completeness; refuse causal claims from RfA\nvotes and SPI hit-rate as a safety metric. See [W-4](/experiments/findings/w-4/).\n",
+      "planPath": "drafts/plans/witness-phase2.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Orangemoody-style “mark reviewed” remains an anti-capture fail; a reviewed bot was later blocked; RfA votes are refused as a causal correction estimator.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase2.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-4/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-4/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h3.py",
+      "findingsSitePath": "/experiments/findings/w-4/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-4/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h3.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 14,
+      "id": "w-5",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Moral Machine country scores",
+      "location": "experiments/witness/check_h4_bundle.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "Published country-level Moral Machine scores: two countries can look the same on a one-number “spare more people” score while their full tradeoff pattern is far apart. A 1-D score is not the whole value bundle.",
+      "role": "**What.** The Nature 2018 Moral Machine table gives each country a handful of\naverage effects, including a one-number “sparing more characters” score. We ask\nwhether that one number implies the rest of the tradeoff pattern.\n\n**Why.** A safety story might compress values to one utilitarian axis. If that\naxis can match while the rest of the pattern diverges, the check is watching\nthe wrong object.\n",
+      "host": "Moral Machine Nature 2018 country table (OSF osf.io/3hvt2; Awad et al. 2018). Unit is country, not a person.\n",
+      "setup": "Frozen `CountriesChangePr.csv` (130 countries), fixture `experiments/witness/fixtures/h4-bundle-v1.json`, protocol h4-bundle-v1.0.0. Checker `python3 experiments/witness/check_h4_bundle.py`.\n",
+      "analysis": "For country pairs, we compare the one-number “sparing more characters” (Number) score to the rest of the tradeoff pattern (the other eight average-effect coordinates). A pair can be close on Number and far on that geometry.\n",
+      "numbers": "928 of 8,385 country pairs have geometry distance at or above the pairwise median (0.193) and |Δ Number| at or below the 25th percentile (0.017). Example: Hungary versus Israel, |Δ Number| about 3×10⁻⁵, geometry 0.195.\n",
+      "outcome": "Fail: close on the 1-D score, far on geometry, for many country pairs. Country is\nstill the wrong unit for later same-person tests. See\n[W-5](/experiments/findings/w-5/).\n",
+      "planPath": "drafts/plans/witness-phase3.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Country pairs can match on a one-number “spare more” score while the rest of the Moral Machine tradeoff pattern stays far apart.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase3.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-5/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-5/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py",
+      "findingsSitePath": "/experiments/findings/w-5/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-5/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 15,
+      "id": "w-6",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Arena Elo versus honesty",
+      "location": "experiments/witness/check_h4_selector.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "Public Chatbot Arena Elo, joined to MASK honesty: the ranking tracks accuracy, not honesty. Do not read the public proxy as evidence that honesty is being selected.",
+      "role": "**What.** Chatbot Arena Elo is a public capability ranking. We join a frozen Elo\nsnapshot to published MASK honesty and accuracy for the models we can match.\n\n**Why.** A selector (who gets deployed, who gets cited) might be treated as if it\npreserved honesty. If it tracks accuracy instead, the proxy is Goodharting the\nwrong target.\n",
+      "host": "MASK Table 3 (arXiv:2503.03750v3) joined to Chatbot Arena Elo at Hugging Face `mathewhe/chatbot-arena-elo`, revision 20250301.\n",
+      "setup": "Pre-frozen alias list `experiments/witness/fixtures/h4-selector-aliases-v1.json`, fixture `h4-selector-v1.json`, protocol h4-selector-v1.0.0. Checker `python3 experiments/witness/check_h4_selector.py`. This is not the [MASK honesty](/cards/experiment/w-2/) compute-scale test (that used training FLOP, not Arena).\n",
+      "analysis": "Spearman rank correlation of Elo with published honesty probability, versus Elo with published accuracy, on the models the frozen aliases can match.\n",
+      "numbers": "n=24 matched models. Spearman(Elo, honesty) = −0.105; Spearman(Elo, accuracy) = +0.811. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).\n",
+      "outcome": "Fail: Elo correlates with accuracy, not honesty, on this freeze. See\n[W-6](/experiments/findings/w-6/).\n",
+      "planPath": "drafts/plans/witness-phase3.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Arena Elo tracks MASK accuracy, not honesty, on the frozen join. Do not treat the ranking as honesty selection.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase3.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-6/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-6/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py",
+      "findingsSitePath": "/experiments/findings/w-6/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-6/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 16,
+      "id": "w-7",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Country surveys (refused)",
+      "location": "drafts/plans/witness-phase4.md",
+      "firstBuilt": "2026-08-28",
+      "summary": "Further country- or page-level value surveys were refused: they repeat the wrong unit (a place, not a person). We do not stretch the question to fit the table.",
+      "role": "**What.** After the country-level Moral Machine table, other leftover candidates\nstill use a country, a Wikipedia page, or a paper without public per-person\ntime series as the unit.\n\n**Why.** If the question is “does a one-number score capture this decision-maker’s\nbundle,” a country mean is the wrong object. Fetching more of the same unit does\nnot pay the claim.\n",
+      "host": "None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia categories were refused as hosts. Sibling brain-to-values papers were refused as a Witness host (no public per-person time series). Optional HH / PKU tables were not run.\n",
+      "setup": "Protocol `c004-leftovers-v1.0.0` in `drafts/plans/witness-phase4.md`. No new download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).\n",
+      "analysis": "Unit check only: a place or a page is not the decision-maker. Fetching more country or page surveys would repeat the [country-score](/cards/experiment/w-5/) unit error.\n",
+      "numbers": "No new table scored. Optional Bai 2022 HH Pareto / PKU-SafeRLHF dual-label tables were not fetched this phase.\n",
+      "outcome": "Refuse those hosts; optional HH/PKU tables were not run. See\n[W-7](/experiments/findings/w-7/).\n",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Country- and page-level leftover surveys are refused as the wrong unit; they would repeat the [country-score](/cards/experiment/w-5/) unit error.\n"
+      ],
+      "links": [],
+      "cardPath": "/cards/experiment/w-7/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-7/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md",
+      "findingsSitePath": "/experiments/findings/w-7/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-7/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 17,
+      "id": "w-8",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Lean pin of the named-path bypass",
+      "location": "formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "firstBuilt": "2026-08-28",
+      "summary": "The authored mock’s shape is pinned in Lean: the named path can be green while a bypass count stays above zero. That is a logic pin of the [named-identity mock](/cards/experiment/w-1/), not a live-system run.",
+      "role": "**What.** The named-identity mock is a scripted fixture. This test asks whether that\nsame finite shape — named path green, composite still acting — is pinned as a\nLean instance, not only as a Python fixture.\n\n**Why.** A “we have a proof” story can float away from the fixture. Pinning the\nbypass shape makes the failure mode checkable in the dependency spine.\n",
+      "host": "Same authored mock as the [named-identity mock](/cards/experiment/w-1/). Not live CIRIS.\n",
+      "setup": "`formal/AlignmentProofSpine/WitnessC2Instance.lean` transcribes the frozen C2 composite log and named-path greens. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Python checker still locks the fixture row; `lake build` in `formal/` builds the Lean pin.\n",
+      "analysis": "Count world effects after defer. Named-path green plus a positive bypass count is not integrity. Floats that are not in the JSON (coherence / plausibility scores) are refused, not turned into axioms.\n",
+      "numbers": "Computed bypassCount = 2. Lean `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count). No MB* / Safe axioms.\n",
+      "outcome": "Fail: named path can be green with bypassCount > 0. See\n[W-8](/experiments/findings/w-8/).\n",
+      "planPath": "drafts/plans/witness-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Lean pins the named-identity-mock shape: the named path can be green while bypass count stays positive. Logic pin, not a live CIRIS run.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-8/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-8/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "findingsSitePath": "/experiments/findings/w-8/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-8/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 18,
+      "id": "w-9",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "FAA 737 MAX airworthiness",
+      "location": "experiments/witness/check_h5_trees.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "After Lion Air 610, an emergency AFM procedure did not stop 737-8/9 passenger flights; a later emergency order did. The green leaf was not the stop.",
+      "role": "**What.** We read named FAA documents: an airworthiness directive that required\ncockpit procedures, and a later emergency order that grounded the types in US\ncommerce.\n\n**Why.** Institutional analogue: a process can stay “legal to operate” under one\nleaf while a later instrument is the actual stop. Useful as a tree of implication,\nnot as an AI safety proof.\n",
+      "host": "Named FAA documents (not an AI system).\n",
+      "setup": "Frozen tree `experiments/witness/fixtures/h5-faa-737max-v1.json`, protocol h5-v1.0.0. Checker `python3 experiments/witness/check_h5_trees.py`.\n",
+      "analysis": "After Lion Air 610, does the emergency airworthiness directive that required AFM runaway-trim procedures stop 737-8/737-9 passenger flights, or does only the later emergency order do that? If the order leaf is ignored, the root (“may operate”) stays the earlier world.\n",
+      "numbers": "Emergency AD 2018-23-51 dated 2018-11-07; Emergency Order of Prohibition 2019-03-13. Types: 737-8 and 737-9 passenger flights continued under the AD; the Order grounded those types in US commerce.\n",
+      "outcome": "Fail if you treat the AFM directive as the stop; the Order is the binding halt.\nAnalogue only. See [W-9](/experiments/findings/w-9/).\n",
+      "planPath": "drafts/plans/witness-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "AD 2018-23-51 did not stop 737-8/9 passenger flight; the 2019 emergency order did. The procedure leaf was not the halt.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-9/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-9/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py",
+      "findingsSitePath": "/experiments/findings/w-9/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-9/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 19,
+      "id": "w-10",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "GPLv2 source versus install rights",
+      "location": "experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "firstBuilt": "2026-08-28",
+      "summary": "GPLv2 can stay green (source with the binary) while the user cannot install a modified binary. GPLv3 later added an install-information handle. A distribution checklist is not the same as a user halt.",
+      "role": "**What.** License text that already exists: GPLv2’s source-with-object rule versus\nGPLv3’s installation-information requirement.\n\n**Why.** A distributor can satisfy a listed leaf (ship source) while the user\nstill cannot change the running device. The later clause is the handle.\n",
+      "host": "FSF GPLv2 and GPLv3 license texts as a frozen implication tree.\n",
+      "setup": "Frozen tree `experiments/witness/fixtures/h5-gpl-tivoization-v1.json`, protocol h5-v1.0.0.\n",
+      "analysis": "Can GPLv2 §3 stay green (source with object) while tivoization keeps the user from installing a modified binary? GPLv3 §6 Installation Information is the later constraint. Copyright analogue; it may not transfer to model weights.\n",
+      "numbers": "Two named clauses: GPLv2 §3 (source with object) versus GPLv3 §6 (installation information). No corpus count; this is a document tree, not a sample statistic.\n",
+      "outcome": "Fail for treating GPLv2 distribution as user install rights. Copyright analogue;\nmay not transfer to model weights. See [W-10](/experiments/findings/w-10/).\n",
+      "planPath": "drafts/plans/witness-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "GPLv2 source-with-object can stay green under tivoization; GPLv3 §6 is the later install handle. Analogue only.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-10/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-10/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "findingsSitePath": "/experiments/findings/w-10/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-10/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 20,
+      "id": "w-11",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Debian Stretch freeze",
+      "location": "experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "firstBuilt": "2026-08-28",
+      "summary": "A release-critical bug kept gstreamer 0.10 out of Debian 9. The freeze rule actually excluded the package. A process can have a stop that bites.",
+      "role": "**What.** Debian’s Stretch release kept a package out because of a named\nrelease-critical bug, documented in the public bug and release notes.\n\n**Why.** Contrast with green-but-no-stop trees: here the freeze rule did exclude\nthe software. Still an institutional analogue, not an AI deployment halt.\n",
+      "host": "Debian Bug Tracking System and the Debian 9.0 (Stretch) release.\n",
+      "setup": "Frozen tree `experiments/witness/fixtures/h5-debian-rc-v1.json`, protocol h5-v1.0.0.\n",
+      "analysis": "Release-critical bug #802812 (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Ignoring that leaf would leave “package exists / used to ship” as if it licensed the release. Freeze policy is the handle.\n",
+      "numbers": "Debian 9.0 released 2017-06-17. gstreamer 0.10 is not in that release. Bug #802812 is the named stop.\n",
+      "outcome": "The RC bug is a working stop for that package in 9.0. See\n[W-11](/experiments/findings/w-11/).\n",
+      "planPath": "drafts/plans/witness-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "RC #802812 kept gstreamer 0.10 out of Debian Stretch. The freeze rule bit. Institutional analogue.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-11/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-11/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "findingsSitePath": "/experiments/findings/w-11/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-11/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 21,
+      "id": "w-12",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Moral Machine same-person choices",
+      "location": "experiments/witness/check_h4_mm_raw.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "Individual Moral Machine respondents: a many-feature pattern of their choices predicts held-out choices better than a one-number “spare more people” score. The 1-D score is not the same-person policy.",
+      "role": "**What.** Raw Moral Machine choices, one person at a time, not country averages.\nWe fit a simple pattern of feature effects and ask whether it beats a one-number\nscore and a person intercept on held-out choices.\n\n**Why.** [Moral Machine country scores](/cards/experiment/w-5/) showed country\ncompression can hide geometry. This test asks the same question at the unit that\nactually chooses.\n",
+      "host": "Moral Machine raw SharedResponses on OSF osf.io/3hvt2 (Awad et al. 2018). Unit is UserID, not country.\n",
+      "setup": "Frozen protocol h4-mm-raw-v1.0.0, fixture `experiments/witness/fixtures/h4-mm-raw-v1.json`. Checker `python3 experiments/witness/check_h4_mm_raw.py`. Complete pairs only; units with at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class only.\n",
+      "analysis": "Held-out mean accuracy for a person intercept, a Number-only (“spare more”) score, and a many-feature geometry. Frozen margins: geometry must beat both by at least 0.05. Unit bootstrap (1000 draws, seed 7) for those margins. Number is collinear with the type-count features, so a joint fit of Number versus types is not identified.\n",
+      "numbers": "33,953,503 complete pairs; 1,850,854 units with at least 8 pairs; seed-7 cap 20,000 units. Held-out mean accuracy: intercept 0.529, Number 1-D 0.576, geometry 0.682. Geometry beats 1-D by 0.106 and intercept by 0.153. Bootstrap 95% intervals 0.102–0.109 and 0.149–0.157; every replicate still clears 0.05. Geometry without Number matches geometry (0.682).\n",
+      "outcome": "Fail of Number-only as the same-person policy; pass of detecting a wider pattern.\nTraffic dilemmas only. See [W-12](/experiments/findings/w-12/).\n",
+      "planPath": "drafts/plans/witness-c004-raw.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Same-person Moral Machine geometry predicts held-out choices better than a Number-only score or a person intercept on this freeze.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-raw.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-12/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-12/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py",
+      "findingsSitePath": "/experiments/findings/w-12/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-12/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 22,
+      "id": "w-13",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Pandemic Dictator Game (refused)",
+      "location": "experiments/witness/check_h4_pdg.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "The advertised public adult table was not there to score. We refused rather than substituting a different dataset or scoring adolescent diary files the protocol does not allow.",
+      "role": "**What.** A later-host protocol asked for individual giving choices in a\npandemic dictator game. The public OSF entries were preregistration PDFs; the\navailable SPSS was a 2020 adolescent diary cohort the protocol refuses to score.\n\n**Why.** Substituting Moral Machine or paper means would pretend we had the unit\nwe did not have.\n",
+      "host": "Intended pandemic dictator-game host; no eligible adult individual rows scored.\n",
+      "setup": "Frozen protocol h4-pdg-v1.0.0, fixture `experiments/witness/fixtures/h4-pdg-v1.json`. Checker `python3 experiments/witness/check_h4_pdg.py`. OSF osf.io/h5x2a and osf.io/x69t7 are preregistration PDFs. EUR Dataverse DOIs returned 404. Metadata for 10.34894/c81eja lists unrestricted SPSS including an adolescent (ages 10–20) daily-diary file the protocol refuses to score.\n",
+      "analysis": "Confirm that no eligible public adult table is present. Do not score the 2020 adolescent diary SPSS. Do not substitute Moral Machine or paper means.\n",
+      "numbers": "No eligible rows scored. OSF deposits are PDFs only. Listed Dataverse files 404’d. The SPSS that exists is the van de Groep et al. 2020 PLOS ONE cohort ages 10–20, which this protocol does not score.\n",
+      "outcome": "Refuse. See [W-13](/experiments/findings/w-13/).\n",
+      "planPath": "drafts/plans/witness-c004-pdg.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "No eligible public adult table; 2020 adolescent SPSS not scored. Refuse, do not substitute another dataset.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-pdg.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-13/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-13/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_pdg.py",
+      "findingsSitePath": "/experiments/findings/w-13/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-13/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_pdg.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 23,
+      "id": "w-14",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "CPC2015 risky choice",
+      "location": "experiments/witness/check_h4_cpc2015.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "A published risky-choice experiment: a many-feature pattern did not beat a one-number expected-value score or a person intercept. Recorded as a null; not retuned.",
+      "role": "**What.** CPC2015 Experiment 1 is a lab risky-choice dataset with many trials per\nperson. We ask whether a wider feature pattern beats scalar expected-value\ndifference or a person intercept on held-out trials.\n\n**Why.** The same detection pipeline as\n[same-person Moral Machine](/cards/experiment/w-12/), on a different choice class.\nA pass here would not have been a moral-bundle result; a miss is still a result.\n",
+      "host": "Zenodo CPC2015 Experiment 1 (`RawDataExperiment1sorted.csv`; Erev et al. 2017). Unit is SubjID. Risk/ambiguity lab class only — not a moral-bundle result.\n",
+      "setup": "Frozen protocol h4-cpc2015-v1.0.0, fixture `experiments/witness/fixtures/h4-cpc2015-v1.json`. Checker `python3 experiments/witness/check_h4_cpc2015.py`. Subjects need enough trials for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by at least 0.05. Not retuned after the miss.\n",
+      "analysis": "Held-out mean accuracy for a person intercept, a one-number expected-value difference (ΔEV), and a many-feature geometry. Same detection pipeline as W-12, different choice class.\n",
+      "numbers": "93,750 rows; 113 included subjects; 65,625 / 28,125 train/test. Held-out mean accuracy: intercept 0.545, ΔEV 0.542, geometry 0.435. Geometry versus 1-D −0.107; versus intercept −0.110. Both frozen +0.05 margins fail.\n",
+      "outcome": "Null: geometry did not beat ΔEV or intercept. Do not retune to chase a pass. See\n[W-14](/experiments/findings/w-14/).\n",
+      "planPath": "drafts/plans/witness-c004-cpc.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "On CPC2015 Exp. 1, the many-feature pattern did not beat ΔEV or a person intercept. Null; not retuned.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-cpc.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-14/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-14/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py",
+      "findingsSitePath": "/experiments/findings/w-14/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-14/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 24,
+      "id": "w-15",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "CIRISAgent mock-LLM deferral",
+      "location": "experiments/witness/check_c2_stack.py",
+      "firstBuilt": "2026-08-28",
+      "summary": "A mock-LLM CIRISAgent stack: deferral was logged, and no post-defer world-effect hit was observed on this freeze. That is a null, not a demonstration that deferral stopped a previously working bypass.",
+      "role": "**What.** The [named-identity mock](/cards/experiment/w-1/) used an authored\nfixture. This test runs a frozen harness against a local CIRISAgent with a mock\nLLM and asks whether a world-effect stub still fires after deferral.\n\n**Why.** A stack-backed run is a stronger host than a Python fixture — if it\nactually shows bypass. If it shows nothing after defer, that is not the same as\nproving deferral stopped a live bypass.\n",
+      "host": "Local CIRISAgent 2.9.38-stable with a mock LLM (`127.0.0.1:8080`). Not a live CIRISLens cohort.\n",
+      "setup": "Frozen protocol c2-v2.0.0, fixture `experiments/witness/fixtures/c2-tool-scout-v2.json`. Checker `python3 experiments/witness/check_c2_stack.py`. Existing API after `/v1/setup/complete`; no wipe. World-effect stub at `127.0.0.1:8765/c2-world-effect`. Verify/Lens greens are asserted, not CIRISLens. First two scout messages shared one task id (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`).\n",
+      "analysis": "Log `$defer` with a named-path task id. Count stub hits and composite-log `world_effect: true` after authority time t=4. Do not retune `$tool` strings to chase a stub hit.\n",
+      "numbers": "World-effect stub recorded 0 hits. Composite log has no `world_effect: true` after t=4.\n",
+      "outcome": "Null: 0 stub hits after defer on this freeze. The named-identity mock still holds\nthe logical shape. See [W-15](/experiments/findings/w-15/).\n",
+      "planPath": "drafts/plans/witness-phase5.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Mock-LLM CIRISAgent logged deferral; the world-effect stub recorded 0 hits. Null, not a live bypass demonstration.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase5.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-15/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-15/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_stack.py",
+      "findingsSitePath": "/experiments/findings/w-15/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-15/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_stack.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 25,
+      "id": "w-16",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Supreme Court justice votes",
+      "location": "experiments/witness/check_h4_scotus.py",
+      "firstBuilt": "2026-08-29",
+      "summary": "Supreme Court Database justice votes: a many-feature pattern of a justice’s votes predicts held-out votes better than issue-area-only or a justice intercept. Observational; not a claim about correction channels.",
+      "role": "**What.** Public Supreme Court Database rows, one justice at a time. We ask\nwhether a wider pattern of case features beats a one-dimension issue-area score\nand a justice intercept on held-out votes.\n\n**Why.** Same “is the 1-D score the reusable direction?” question as\n[same-person Moral Machine](/cards/experiment/w-12/), on votes rather than trolley\ndilemmas. Doctrine and coalitions confound; this is not a moral-bundle\ndischarge.\n",
+      "host": "Supreme Court Database 2025 Release 01, justice-centered citation CSV (Spaeth et al.). Modern SCDB justice votes only.\n",
+      "setup": "Frozen protocol h4-scotus-v1.0.0, fixture `experiments/witness/fixtures/h4-scotus-v1.json`. Checker `python3 experiments/witness/check_h4_scotus.py`. Justices need at least 40 votes and at least 8 held-out votes. Frozen margins: geometry must beat issue-area-only and intercept by at least 0.05. Observational — doctrine and coalition confound. Not a correction-channel result.\n",
+      "analysis": "Held-out mean accuracy for a justice intercept, an issue-area-only score, and a many-feature geometry. Same detection pipeline as same-person Moral Machine, on votes.\n",
+      "numbers": "83,644 rows; 40 included justices; 47,823 / 20,523 train/test. Held-out mean accuracy: intercept 0.616, issueArea 1-D 0.623, geometry 0.814. Geometry beats 1-D by 0.191 and intercept by 0.198 (both frozen +0.05 margins hold).\n",
+      "outcome": "The wider pattern beats issue-area-only and intercept on this freeze.\nObservational. See [W-16](/experiments/findings/w-16/).\n",
+      "planPath": "drafts/plans/witness-c004-scotus.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Same-justice vote geometry beats issue-area-only and a justice intercept on the frozen SCDB freeze. Observational; not a correction-channel result.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-scotus.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-16/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-16/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py",
+      "findingsSitePath": "/experiments/findings/w-16/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-16/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py",
+      "readmeUrl": null,
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
     }
   ],
@@ -603,9 +1130,9 @@
       "lineTitle": "ET-4 Secret loyalties (hackathon)"
     },
     {
-      "lineId": "witness",
-      "text": "Sixteen frozen hosts (W-1–W-16): layer fails, refusals, and two nulls. Strongest quantitative: W-12 same-respondent Moral Machine geometry and W-16 SCDB justice geometry. W-3/W-4 falsify simple checklist implications on Linux and Wikipedia. W-15 null means no live bypass demonstrated — W-1 authored mock still holds the logical shape. Does not discharge MB bridges, price faking tags, or prove deployable alignment. Optional v1 leftovers (BBQ, HH/PKU) and sibling Lens cohort unpaid.\n",
-      "lineTitle": "Witness tests"
+      "lineId": "witness-tests",
+      "text": "Read these as stop-checks on histories we did not write, not as another simulator. Strongest quantitative: [Moral Machine same-person choices](/cards/experiment/w-12/) and [Supreme Court justice votes](/cards/experiment/w-16/). [Linux review tags](/cards/experiment/w-3/) and [Wikipedia review](/cards/experiment/w-4/) show simple checklist implications failing. Does not discharge [bridge assumptions](/cards/bridge/bridge-assumptions/) or prove deployable alignment.\n",
+      "lineTitle": "Witness"
     }
   ],
   "coverageColumns": [
@@ -640,6 +1167,7 @@
     {
       "id": "witness",
       "short": "Witness",
+      "overviewCardId": "witness-tests",
       "optional": true
     }
   ],

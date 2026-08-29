@@ -15,6 +15,10 @@ const card = defineCollection({
     overviewOnly: z.boolean().optional(),
     bibKey: z.string().optional(),
     experimentLineId: z.string().optional(),
+    /** Class overview card (simulations / external tests / witness tests). */
+    experimentOverview: z.boolean().optional(),
+    /** sim | external | witness; set on generated experiment cards. */
+    experimentKind: z.enum(["sim", "external", "witness"]).optional(),
     /** Optional link to a metadata/claims-ledger.md entry (e.g. "C-004a"). */
     claimId: z.string().optional(),
     /** ISO date (YYYY-MM-DD) for release cards; omit on the hub card. */
