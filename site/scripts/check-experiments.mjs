@@ -58,7 +58,7 @@ for (const line of data.lines) {
     errors.push(`line ${line.id}: missing public summary`);
   }
   if (kind === "witness") {
-    for (const field of ["host", "setup", "analysis", "numbers", "outcome"]) {
+    for (const field of ["witnesses", "host", "setup", "analysis", "numbers", "outcome"]) {
       if (!line[field]?.trim()) {
         errors.push(`line ${line.id}: missing ${field}`);
       }

@@ -2,45 +2,58 @@
 # site/scripts/sync-experiments.mjs. Shared code still lives under experiments/witness/
 # (kernel clone, OSF dumps, and fixtures are too large to split per test yet).
 #
-# Card body order: What / Why (role), then Host, Setup, Analysis, Numbers, Outcome.
+# Card body order: What / Why (role), Witnesses, Host, Setup, Analysis, one-line Finding.
+# Numbers and Outcome render on /experiments/findings/{id}/ only.
 
 lines:
   - order: 10
     id: w-1
     kind: witness
     findingIdPrefix: W-
-    title: Named-identity mock
+    title: CIRIS Named-identity mock
     location: experiments/witness/check_c2_mock.py
     firstBuilt: "2026-08-28"
     summary: >
-      A scripted mock where the named safety path is green, the authority defers, and
-      tools plus cached memory still change the world. Would that check have stopped
-      what happened next?
+      A CIRIS-shaped scripted mock where the named safety path is green, the authority
+      defers, and tools plus cached memory still change the world. Would that check have
+      stopped what happened next?
     role: |
       **What.** Some stacks certify a *named* occurrence (this message, this agent id)
       and then treat that green as if the whole acting system had stopped. We score a
-      frozen, authored mock: Verify and Lens are green, the “wise authority” defers, and
-      the tool adapter plus cached memory still produce later world effects.
+      frozen, authored mock: [Verify](https://github.com/CIRISAI/CIRISVerify) and
+      [Lens](https://github.com/CIRISAI/CIRISLens) are green, [Wise
+      Authority](https://ciris.ai/how-it-works/) defers, and the tool adapter plus cached
+      memory still produce later world effects.
 
       **Why.** If a deployment gate only watches the named path, a composite loop can
       keep acting. This test asks whether that failure mode is even *visible* as a stop
       failure, not whether a live product is aligned. The mock is authored, not a
-      production CIRISAgent run.
+      production [CIRISAgent](https://github.com/CIRISAI/CIRISAgent) run.
+    witnesses: |
+      - [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): whether a green check on the *named* occurrence is the same as stopping the whole acting loop.
+      - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether deferral on that occurrence stopped later tool and memory effects.
+      - [MB4a — Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/): whether green Verify/Lens on the named path rules out bypass through tools and cache.
     host: >
-      Authored CIRIS-shaped mock (not a live CIRISAgent).
+      Authored CIRIS-shaped mock (not a live
+      [CIRISAgent](https://github.com/CIRISAI/CIRISAgent)).
     setup: >
-      Frozen fixture `experiments/witness/fixtures/c2-tool-scout-v1.json`, protocol
-      c2-v1.0.0. Checker `python3 experiments/witness/check_c2_mock.py`. No random seed;
-      the log is scripted.
+      Frozen fixture
+      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json),
+      protocol c2-v1.0.0. Checker
+      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py).
+      No random seed; the log is scripted.
     analysis: >
-      We ask whether Verify and Lens stay green on the named occurrence while the
-      authority defers that occurrence, and whether later tool-adapter and cached-memory
-      steps still change the world. The named path is not treated as the whole acting
-      system.
+      We ask whether [Verify](https://github.com/CIRISAI/CIRISVerify) and
+      [Lens](https://github.com/CIRISAI/CIRISLens) stay green on the named occurrence
+      while [Wise Authority](https://ciris.ai/how-it-works/) defers that occurrence,
+      and whether later tool-adapter and cached-memory steps still change the world. The
+      named path is not treated as the whole acting system.
     numbers: >
-      Named occurrence `ciris-occurrence-scout-01`. Authority defers at step t=4. World
-      effects still occur at t=5 and t=6 (two later effects after the stop attaches to
-      the named path).
+      Named occurrence `ciris-occurrence-scout-01` (in the
+      [fixture](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json)).
+      [Wise Authority](https://ciris.ai/how-it-works/) defers at step t=4. World effects
+      still occur at t=5 and t=6 (two later effects after the stop attaches to the named
+      path).
     outcome: |
       Fail: the named path looks stopped; the composite does not. See
       [W-1](/experiments/findings/w-1/).
@@ -68,6 +81,10 @@ lines:
 
       **Why.** A safety program might treat “honesty goes up with scale” as a leaf that
       can gate deployment. If honesty does not scale, that leaf is the wrong object.
+    witnesses: |
+      - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.
+      - [MB7 — Hidden Capability](/cards/bridge/mb7-hidden-capability-and-access/): whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.
     host: >
       Published MASK evaluation (Ren et al., arXiv:2503.03750). Hugging Face gated
       splits were not downloaded.
@@ -111,6 +128,11 @@ lines:
       **Why.** A process can treat “reviewed” or “reverted” as the stop. If those symbols
       stay green while a later bug or a silent hunk change continues, the check did not
       have a handle that bites.
+    witnesses: |
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.
+      - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether a revert stopped the same class of change from re-entering.
+      - [Successor stability](/cards/concept/successor-stability/) (C-006): whether listed `-stable` tags mean the patch hunk is identical to upstream.
+      - [MB10 — Successor Gaming](/cards/bridge/mb10-successor-forgeability/): the checklist-green / unlisted-invariant-fails pattern on real maintainer history.
     host: >
       Linux kernel history: Zenodo Perceval dump (record 10654193), git.kernel.org
       patches, and a linux-6.1.y shallow clone.
@@ -160,6 +182,11 @@ lines:
 
       **Why.** If “reviewed” or “passed RfA” is treated as a correction channel, we need
       to see whether it actually stopped later harm, or only produced a green page.
+    witnesses: |
+      - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether passed admin votes predict later correction uptake (refused as causal here).
+      - [Anti-capture correction validity](/cards/concept/anti-capture-correction-validity/): whether “mark reviewed” on helper socks stopped capture.
+      - [Successor stability](/cards/concept/successor-stability/) (C-006): whether bot review completeness implies later bot safety.
+      - [Goodhart as selector](/cards/concept/goodhart-as-selector/) (Expectation 6): whether SPI hit-rate is a reusable safety leaf.
     host: >
       Wikipedia: SNAP wiki-RfA file, MediaWiki API, wiki-socks clone, and the
       Orangemoody long-term-abuse page.
@@ -205,6 +232,9 @@ lines:
       **Why.** A safety story might compress values to one utilitarian axis. If that
       axis can match while the rest of the pattern diverges, the check is watching
       the wrong object.
+    witnesses: |
+      - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): whether a one-number “spare more” score implies the full country-level tradeoff pattern.
+      - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): whether compressing values to one axis hides bundle geometry on real survey tables.
     host: >
       Moral Machine Nature 2018 country table (OSF osf.io/3hvt2; Awad et al. 2018).
       Unit is country, not a person.
@@ -248,12 +278,15 @@ lines:
       **Why.** A selector (who gets deployed, who gets cited) might be treated as if it
       preserved honesty. If it tracks accuracy instead, the proxy is Goodharting the
       wrong target.
+    witnesses: |
+      - [Goodhart as selector](/cards/concept/goodhart-as-selector/) (C-007): whether a public capability ranking tracks honesty preservation or only accuracy.
+      - [MB6 — Selection and Basin Stability](/cards/bridge/mb6-selection-and-basin-stability/): whether the selector (Arena Elo) moves mass toward the honesty target or toward capability.
     host: >
       MASK Table 3 (arXiv:2503.03750v3) joined to Chatbot Arena Elo at Hugging Face
       `mathewhe/chatbot-arena-elo`, revision 20250301.
     setup: >
       Pre-frozen alias list `experiments/witness/fixtures/h4-selector-aliases-v1.json`,
-      fixture `h4-selector-v1.json`, protocol h4-selector-v1.0.0. Checker
+      fixture `experiments/witness/fixtures/h4-selector-v1.json`, protocol h4-selector-v1.0.0. Checker
       `python3 experiments/witness/check_h4_selector.py`. This is not the
       [MASK honesty](/cards/experiment/w-2/) compute-scale test (that used training
       FLOP, not Arena).
@@ -291,6 +324,9 @@ lines:
       **Why.** If the question is “does a one-number score capture this decision-maker’s
       bundle,” a country mean is the wrong object. Fetching more of the same unit does
       not pay the claim.
+    witnesses: |
+      - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): country or page means are the wrong unit for “same decision-maker bundle.”
+      - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): leftover hosts would not pay the same-agent 1-D versus geometry question.
     host: >
       None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia
       categories were refused as hosts. Sibling brain-to-values papers were refused as
@@ -325,22 +361,29 @@ lines:
     summary: >
       The authored mock’s shape is pinned in Lean: the named path can be green while
       a bypass count stays above zero. That is a logic pin of the
-      [named-identity mock](/cards/experiment/w-1/), not a live-system run.
+      [CIRIS named-identity mock](/cards/experiment/w-1/), not a live-system run.
     role: |
-      **What.** The named-identity mock is a scripted fixture. This test asks whether that
-      same finite shape — named path green, composite still acting — is pinned as a
-      Lean instance, not only as a Python fixture.
+      **What.** The [CIRIS named-identity mock](/cards/experiment/w-1/) is a scripted
+      fixture. This test asks whether that same finite shape — named path green,
+      composite still acting — is pinned as a Lean instance, not only as a Python
+      fixture.
 
       **Why.** A “we have a proof” story can float away from the fixture. Pinning the
       bypass shape makes the failure mode checkable in the dependency spine.
+    witnesses: |
+      - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 2): whether the finite bypass shape is pinned in the dependency spine, not only in Python.
+      - [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): named-path green with positive bypass count is not integrity.
+      - [`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean) (Lean pin): same authored shape as the [CIRIS named-identity mock](/cards/experiment/w-1/).
     host: >
-      Same authored mock as the [named-identity mock](/cards/experiment/w-1/). Not live
-      CIRIS.
+      Same authored mock as the [CIRIS named-identity mock](/cards/experiment/w-1/). Not
+      live CIRIS.
     setup: >
-      `formal/AlignmentProofSpine/WitnessC2Instance.lean` transcribes the frozen C2
-      composite log and named-path greens. Threshold `maxWorldEffectsAfterDefer = 0` is
-      fixed first. Python checker still locks the fixture row;
-      `lake build` in `formal/` builds the Lean pin.
+      [`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean)
+      transcribes the frozen C2 composite log and named-path greens from
+      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json).
+      Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Python checker
+      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py)
+      still locks the fixture row; `lake build` in `formal/` builds the Lean pin.
     analysis: >
       Count world effects after defer. Named-path green plus a positive bypass count is
       not integrity. Floats that are not in the JSON (coherence / plausibility scores)
@@ -376,6 +419,9 @@ lines:
       **Why.** Institutional analogue: a process can stay “legal to operate” under one
       leaf while a later instrument is the actual stop. Useful as a tree of implication,
       not as an AI safety proof.
+    witnesses: |
+      - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): institutional analogue — one green leaf is not the same as the binding stop.
+      - [Institutional histories](/cards/chapters/appM/) (App M): airworthiness-directive versus emergency-order framing on named FAA documents.
     host: >
       Named FAA documents (not an AI system).
     setup: >
@@ -417,6 +463,9 @@ lines:
 
       **Why.** A distributor can satisfy a listed leaf (ship source) while the user
       still cannot change the running device. The later clause is the handle.
+    witnesses: |
+      - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): distributor checklist green is not user install rights.
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): GPLv2 source-with-object can stay green while the user halt is missing.
     host: >
       FSF GPLv2 and GPLv3 license texts as a frozen implication tree.
     setup: >
@@ -455,6 +504,8 @@ lines:
 
       **Why.** Contrast with green-but-no-stop trees: here the freeze rule did exclude
       the software. Still an institutional analogue, not an AI deployment halt.
+    witnesses: |
+      - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): contrast case where a freeze rule actually excluded the package.
     host: >
       Debian Bug Tracking System and the Debian 9.0 (Stretch) release.
     setup: >
@@ -495,6 +546,9 @@ lines:
       **Why.** [Moral Machine country scores](/cards/experiment/w-5/) showed country
       compression can hide geometry. This test asks the same question at the unit that
       actually chooses.
+    witnesses: |
+      - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): a one-number “spare more” score is not the same-person policy.
+      - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats the 1-D leaf on held-out choices at the person unit.
     host: >
       Moral Machine raw SharedResponses on OSF osf.io/3hvt2 (Awad et al. 2018). Unit is
       UserID, not country.
@@ -544,6 +598,8 @@ lines:
 
       **Why.** Substituting Moral Machine or paper means would pretend we had the unit
       we did not have.
+    witnesses: |
+      - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): bearer substitution — refuse when the advertised adult table is not public, do not swap in another dataset.
     host: >
       Intended pandemic dictator-game host; no eligible adult individual rows scored.
     setup: >
@@ -588,6 +644,8 @@ lines:
       **Why.** The same detection pipeline as
       [same-person Moral Machine](/cards/experiment/w-12/), on a different choice class.
       A pass here would not have been a moral-bundle result; a miss is still a result.
+    witnesses: |
+      - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): same detection pipeline as [same-person Moral Machine](/cards/experiment/w-12/) on a different choice class — recorded null, not retuned.
     host: >
       Zenodo CPC2015 Experiment 1 (`RawDataExperiment1sorted.csv`; Erev et al. 2017).
       Unit is SubjID. Risk/ambiguity lab class only — not a moral-bundle result.
@@ -627,13 +685,18 @@ lines:
       hit was observed on this freeze. That is a null, not a demonstration that deferral
       stopped a previously working bypass.
     role: |
-      **What.** The [named-identity mock](/cards/experiment/w-1/) used an authored
-      fixture. This test runs a frozen harness against a local CIRISAgent with a mock
-      LLM and asks whether a world-effect stub still fires after deferral.
+      **What.** The [CIRIS named-identity mock](/cards/experiment/w-1/) used an authored
+      fixture. This test runs a frozen harness against a local
+      [CIRISAgent](https://github.com/CIRISAI/CIRISAgent) with a mock LLM and asks
+      whether a world-effect stub still fires after deferral.
 
       **Why.** A stack-backed run is a stronger host than a Python fixture — if it
       actually shows bypass. If it shows nothing after defer, that is not the same as
       proving deferral stopped a live bypass.
+    witnesses: |
+      - [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): stack-backed run — does deferral stop post-defer world effects in a mock-LLM CIRISAgent harness?
+      - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): logged deferral with zero stub hits is a null, not proof deferral stopped a working bypass.
+      - [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): the [CIRIS named-identity mock](/cards/experiment/w-1/) logical shape still holds.
     host: >
       Local CIRISAgent 2.9.38-stable with a mock LLM (`127.0.0.1:8080`). Not a live
       CIRISLens cohort.
@@ -653,8 +716,8 @@ lines:
       World-effect stub recorded 0 hits. Composite log has no `world_effect: true` after
       t=4.
     outcome: |
-      Null: 0 stub hits after defer on this freeze. The named-identity mock still holds
-      the logical shape. See [W-15](/experiments/findings/w-15/).
+      Null: 0 stub hits after defer on this freeze. The CIRIS named-identity mock still
+      holds the logical shape. See [W-15](/experiments/findings/w-15/).
     planPath: drafts/plans/witness-phase5.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
     headlineFindings:
@@ -682,6 +745,9 @@ lines:
       [same-person Moral Machine](/cards/experiment/w-12/), on votes rather than trolley
       dilemmas. Doctrine and coalitions confound; this is not a moral-bundle
       discharge.
+    witnesses: |
+      - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): same-unit detection — is issue-area-only the reusable vote direction?
+      - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats 1-D on held-out votes; observational, not a correction-channel result.
     host: >
       Supreme Court Database 2025 Release 01, justice-centered citation CSV (Spaeth
       et al.). Modern SCDB justice votes only.

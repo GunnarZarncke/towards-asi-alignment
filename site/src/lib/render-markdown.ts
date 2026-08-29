@@ -21,12 +21,8 @@ export async function renderMarkdownList(sources: string[]): Promise<string[]> {
   return Promise.all(sources.map((source) => renderMarkdown(source)));
 }
 
-interface WitnessDetailLine {
+interface FindingsDetailLine {
   kind?: string;
-  role?: string;
-  host?: string;
-  setup?: string;
-  analysis?: string;
   numbers?: string;
   outcome?: string;
 }
@@ -37,15 +33,12 @@ function labeledBlock(label: string, text?: string) {
   return `**${label}.**\n\n${trimmed}`;
 }
 
-export function witnessFindingsMarkdown(line: WitnessDetailLine): string {
-  return [
-    line.role?.trim(),
-    labeledBlock("Host", line.host),
-    labeledBlock("Setup", line.setup),
-    labeledBlock("Analysis", line.analysis),
-    labeledBlock("Numbers", line.numbers),
-    labeledBlock("Outcome", line.outcome)
-  ]
+/** Body for /experiments/findings/{id}/ — verdict and stats, not experiment setup. */
+export function experimentFindingsBodyMarkdown(line: FindingsDetailLine): string {
+  if (line.kind !== "witness") {
+    return "";
+  }
+  return [labeledBlock("Numbers", line.numbers), labeledBlock("Outcome", line.outcome)]
     .filter(Boolean)
     .join("\n\n");
 }

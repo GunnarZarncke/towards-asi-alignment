@@ -30,6 +30,75 @@ function repoTreeUrl(relativePath) {
   return `${REPO}/tree/main/${relativePath.replace(/^\/+|\/$/g, "")}`;
 }
 
+function githubUrlForExperimentPath(relativePath) {
+  const clean = relativePath.replace(/[.,;:)\]'"]+$/, "").replace(/\/+$/, "");
+  const lastSegment = clean.split("/").pop() ?? "";
+  const looksLikeFile = /\.\w+$/.test(lastSegment);
+  return looksLikeFile ? repoUrl(clean) : repoTreeUrl(clean);
+}
+
+function linkLabelForExperimentPath(relativePath) {
+  const clean = relativePath.replace(/[.,;:)\]'"]+$/, "");
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || clean;
+}
+
+/** Turn bare `experiments/...` paths in card copy into GitHub links at sync time. */
+function linkifyExperimentPaths(text) {
+  if (!text?.trim()) return text;
+
+  let out = text.replace(
+    /(?<!\[)`(experiments\/[^`\n]+)`(?!\()/g,
+    (_, path) => `[${linkLabelForExperimentPath(path)}](${githubUrlForExperimentPath(path)})`
+  );
+
+  out = out.replace(
+    /`?python3 (experiments\/[\w./-]+(?:\.\w+)?)`?/g,
+    (_, path) => `[${linkLabelForExperimentPath(path)}](${githubUrlForExperimentPath(path)})`
+  );
+
+  out = out.replace(
+    /(?<![\[`(:/\w-])(experiments\/[\w./-]+(?:\.\w+)?)/g,
+    (match, path, offset, whole) => {
+      const before = whole.slice(0, offset);
+      const openLink = before.lastIndexOf("](");
+      const closeLink = before.lastIndexOf(")");
+      if (openLink > closeLink) return match;
+      if (/https?:\/\/[^\s]*$/.test(before)) return match;
+
+      const trailing = match.slice(path.length);
+      const punct = trailing.match(/^[.,;:]+/)?.[0] ?? "";
+      return `[${linkLabelForExperimentPath(path)}](${githubUrlForExperimentPath(path)})${punct}`;
+    }
+  );
+
+  return out;
+}
+
+const LINKIFY_LINE_FIELDS = [
+  "summary",
+  "role",
+  "witnesses",
+  "host",
+  "setup",
+  "analysis",
+  "numbers",
+  "outcome"
+];
+
+function linkifyLineFields(line) {
+  const out = { ...line };
+  for (const field of LINKIFY_LINE_FIELDS) {
+    if (typeof out[field] === "string") {
+      out[field] = linkifyExperimentPaths(out[field]);
+    }
+  }
+  if (Array.isArray(out.headlineFindings)) {
+    out.headlineFindings = out.headlineFindings.map((entry) => linkifyExperimentPaths(entry));
+  }
+  return out;
+}
+
 function sourceUrlForLine(line) {
   if (line.repoUrl) return line.repoUrl;
   const location = line.location?.replace(/^\.\.\//, "") ?? "";
@@ -161,18 +230,18 @@ function labeledSection(label, text) {
 
 function experimentCardMarkdown(line, howToReadEntry) {
   const summary = (line.summary ?? firstSentence(line.role)).trim().replace(/\s+/g, " ");
-  const findings = line.headlineFindings ?? [];
   const bodyParts = [
     bodyWithoutDuplicateSummary(line.role, summary),
+    ...labeledSection("Witnesses", line.witnesses),
     ...labeledSection("Host", line.host),
     ...labeledSection("Setup", line.setup),
-    ...labeledSection("Analysis", line.analysis),
-    ...labeledSection("Numbers", line.numbers),
-    ...labeledSection("Outcome", line.outcome)
+    ...labeledSection("Analysis", line.analysis)
   ];
 
-  if (findings.length > 0) {
-    bodyParts.push("", "## Headline findings", "", ...findings.map((item) => `- ${item}`));
+  const firstFinding = (line.headlineFindings ?? [])[0]?.trim();
+  if (firstFinding) {
+    const findingText = `${firstFinding} [Full results](${findingsSitePath(line.id)})`;
+    bodyParts.push(...labeledSection("Finding", findingText));
   }
 
   if (howToReadEntry?.text) {
@@ -222,7 +291,7 @@ function overviewCardMarkdown(kindId, kind, lines) {
     formatExternalLinksYaml(extraLinks),
     "---",
     "",
-    kind.overview.trim(),
+    linkifyExperimentPaths(kind.overview.trim()),
     "",
     "## Experiments in this class",
     "",
@@ -241,7 +310,7 @@ const lines = await Promise.all(
   [...raw.lines]
     .sort((a, b) => a.order - b.order)
     .map(async (line) => {
-      const enriched = enrichLine(line);
+      const enriched = linkifyLineFields(enrichLine(line));
       const keyFindings = await extractKeyFindings(line.findingsPath);
       return {
         ...enriched,
@@ -257,6 +326,7 @@ const howToRead = raw.howToRead.map((entry) => {
   const kindTitle = Object.values(raw.kinds).find((k) => k.cardId === entry.lineId)?.title;
   return {
     ...entry,
+    text: entry.text ? linkifyExperimentPaths(entry.text) : entry.text,
     lineTitle: line?.title ?? kindTitle ?? entry.lineId
   };
 });

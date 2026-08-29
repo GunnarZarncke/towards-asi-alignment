@@ -3,7 +3,11 @@ import SiteLayout from "../../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../../components/LinkIndicator.astro";
 import experiments from "../../../data/experiments.json";
 import { cardHref } from "../../../lib/site-urls";
-import { renderMarkdown, renderMarkdownList, witnessFindingsMarkdown } from "../../../lib/render-markdown";
+import {
+  experimentFindingsBodyMarkdown,
+  renderMarkdown,
+  renderMarkdownList
+} from "../../../lib/render-markdown";
 
 export async function getStaticPaths() {
   const fromLines = experiments.lines
@@ -21,7 +25,6 @@ export async function getStaticPaths() {
         line: {
           id: ledger.lineId,
           title: ledger.label,
-          role: experiments.kinds?.witness?.blurb ?? ledger.label,
           headlineFindings: ledger.headlineFindings ?? [],
           findingsUrlResolved: ledger.repoUrl,
           sourceUrl: "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/witness",
@@ -39,10 +42,10 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const findings = line.headlineFindings ?? [];
 const figures = line.findingsFigures ?? [];
 const fullLedgerUrl = line.findingsUrlResolved;
+const experimentCardUrl = cardHref(base, `experiments/${line.cardId ?? line.id}`, "experiment");
 
-const summaryMarkdown =
-  line.kind === "witness" ? witnessFindingsMarkdown(line) : (line.role?.trim() ?? "");
-const summaryHtml = summaryMarkdown ? await renderMarkdown(summaryMarkdown) : "";
+const findingsBodyMarkdown = experimentFindingsBodyMarkdown(line);
+const findingsBodyHtml = findingsBodyMarkdown ? await renderMarkdown(findingsBodyMarkdown) : "";
 const findingHtml = findings.length > 0 ? await renderMarkdownList(findings) : [];
 ---
 
@@ -57,10 +60,12 @@ const findingHtml = findings.length > 0 ? await renderMarkdownList(findings) : [
       <a href={cardHref(base, "negative-results", "concept")}>Negative results</a>
     </p>
     <h1>{line.title}</h1>
-    {summaryHtml ? <div class="lede readable" set:html={summaryHtml} /> : null}
+    <p class="lede">
+      Setup and what was tested: <a href={experimentCardUrl}>experiment card</a>.
+    </p>
 
     <p class="button-row">
-      <a class="button primary" href={cardHref(base, `experiments/${line.cardId ?? line.id}`)}>Experiment card</a>
+      <a class="button primary" href={experimentCardUrl}>Experiment card</a>
       {line.sourceUrl && (
         <a class="button" href={line.sourceUrl} target="_blank" rel="noopener noreferrer">
           Source on GitHub<LinkIndicator kind="github" />
@@ -73,6 +78,8 @@ const findingHtml = findings.length > 0 ? await renderMarkdownList(findings) : [
       )}
       <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
     </p>
+
+    {findingsBodyHtml ? <div class="readable" set:html={findingsBodyHtml} /> : null}
 
     {findings.length > 0 ? (
       <>
@@ -95,7 +102,7 @@ const findingHtml = findings.length > 0 ? await renderMarkdownList(findings) : [
           ) : (
             "full ledger"
           )}
-          {" "}or the <a href={cardHref(base, `experiments/${line.cardId ?? line.id}`)}>experiment card</a>.
+          {" "}or the <a href={experimentCardUrl}>experiment card</a>.
         </p>
       </section>
     )}

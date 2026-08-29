@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-29 (experiment site cards).
+Last updated: 2026-08-29 (Witness card bridge links).
 
 ---
 
@@ -39,6 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-29:** **Witness card bridge links** — W-1–W-16 `witnesses` sections; GitHub path linkify on experiment cards; W-1 CIRIS rename; memo removed; findings page split from experiment card. Log: `2026-08-29-witness-card-bridge-links.md`.
 - **2026-08-29:** **Experiment site cards** — class overviews; W-1–W-16 cards; negative-results hub; findings pages render markdown. Log: `2026-08-29-experiment-site-cards.md`.
 - **2026-08-29:** **Continuity & drift study** — union precision **366/366** (`results.tsv`; usable **260**). Log: `2026-08-29-continuity-drift-precision.md`. Earlier: packets frozen + first enumeration. Log: `2026-08-29-continuity-drift-orchestrator.md`.
 - **2026-08-29:** **Witness W-16 SCDB** — justice-centered geometry acc 0.814 vs issueArea 0.623 vs intercept 0.616 (40 justices). [`witness-c004-scotus.md`](../plans/witness-c004-scotus.md). Log: `2026-08-29-witness-w16-scotus.md`.

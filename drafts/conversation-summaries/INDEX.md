@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-29 | Witness card bridge links + GitHub path linkify | [2026-08-29-witness-card-bridge-links.md](2026-08-29-witness-card-bridge-links.md) |
 | 2026-08-29 | Witness W-16 SCDB justice geometry pass | [2026-08-29-witness-w16-scotus.md](2026-08-29-witness-w16-scotus.md) |
 | 2026-08-29 | Witness W-16 site sync and session end | [2026-08-29-witness-site-w16-end.md](2026-08-29-witness-site-w16-end.md) |
 | 2026-08-29 | **Methodology consolidation + Witness depth gates** — User asked for explicit Witness methodology failure conditions; then to consolidate scattered met... | [2026-08-29-methodology-consolidation.md](2026-08-29-methodology-consolidation.md) |

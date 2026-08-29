@@ -26,7 +26,6 @@ yes — WA stop attaches to the named occurrence; composite policy continues
 ## Artifact paths
 - `experiments/witness/fixtures/c2-tool-scout-v1.json`
 - `experiments/witness/check_c2_mock.py`
-- `experiments/witness/memo-eric-named-identity.md`
 - Sibling charter `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`
 - H0 backing (not this finding): toy T-9 `boundary_decouple`; lab LS-28
 
