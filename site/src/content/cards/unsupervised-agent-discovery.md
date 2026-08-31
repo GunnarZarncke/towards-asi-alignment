@@ -45,6 +45,8 @@ external:
     url: "https://github.com/GunnarZarncke/agency-detect"
   - label: "Foundations of Unsupervised Agent Discovery (TechRxiv)"
     url: "https://doi.org/10.36227/techrxiv.175751274.45253943/v1"
+  - label: "TimesFM-3 (Google Research blog, Aug 2026) — TODO relevance check"
+    url: "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/"
 related:
   - "boundary-discovery"
   - "mb1-boundary-estimator-soundness"
@@ -74,3 +76,5 @@ Claim strength is deliberately mixed. Controlled simulations recover known parti
 | Graded-capability lab | [Experiment card](/cards/experiments/graded-lab-simulation/) | [Findings](/experiments/findings/graded-lab-simulation/) |
 
 Start with [agency-detect](/cards/experiments/agency-detect/) for the original prototype, or [embedded simulation](/cards/experiments/embedded-simulation/) for the richest end-to-end negative ledger (ES-1: UAD equals loudest-actor heuristic in the default ecology).
+
+**Open direction (TODO):** [TimesFM-3](https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/) may be relevant as a pretrained backbone for a general agent-discovery model — multivariate traces, cross-series attention, zero-shot transfer — but it targets forecasting, not boundary certificates; see [`metadata/open-problems.md`](../../../metadata/open-problems.md).

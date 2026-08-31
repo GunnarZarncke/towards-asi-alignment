@@ -175,8 +175,8 @@ Not releasing a model to the public is a real choice (same as [withholding Mytho
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, three questions</p>
-<p>Alignment work is often described as one task: make the system point at the right thing. That description hides three different questions. (1) What should be tracked? […] (2) How can a system be built that tracks that target? (3) How can we tell that a given system still tracks it?</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, four questions</p>
+<p>Alignment work is often described as one task: make the system point at the right thing. That description hides four different questions. (1) What should be tracked? […] (2) How can a system be built that tracks that target? (3) How can we tell that a given system still tracks it? (4) If tracking fails, can recovery still land?</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">

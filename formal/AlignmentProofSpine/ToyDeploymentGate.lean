@@ -50,7 +50,10 @@ theorem frozen_validation_battery_gate_passes :
   decide
 
 /-- Composition pattern: a full safety case plus tolerance judgment reaches
-    `Safe` only through `MB11` — the battery gate alone does not. -/
+    `Safe` only through `MB11` — the battery gate alone does not.
+    A passing gate is a candidate filling of `WithinDeploymentRiskTolerance`
+    (the certify disjunct of `AlignmentDeployment`), not of `DeploymentOk`
+    (pause / recovery-viable). See `safe_of_alignment_deployment_certify`. -/
 theorem safe_from_case_requires_mb11
     {A : System} {δ : Int}
     (hcase : CertifiedSafetyCase A δ)

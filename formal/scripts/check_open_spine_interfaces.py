@@ -38,7 +38,10 @@ def main() -> int:
         for name in [iface.get("leanProp"), *iface.get("leanDefs", [])]:
             if not name:
                 continue
-            if not re.search(rf"\b(def|abbrev|structure|theorem|axiom)\s+{re.escape(name)}\b", text):
+            if not re.search(
+                rf"\b(def|abbrev|structure|theorem|axiom|inductive)\s+{re.escape(name)}\b",
+                text,
+            ):
                 errors.append(f"{iid}: `{name}` not found in {lean_path.name}")
     if errors:
         print("check_open_spine_interfaces: FAIL", file=sys.stderr)

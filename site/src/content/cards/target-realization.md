@@ -29,6 +29,18 @@ leanNodes:
     kind: "counterexample"
     summary: "Finite witness — certification schema can hold while no toy realizes the target."
     module: "AlignmentProofSpine/AlignmentConstruction.lean"
+  - nodeId: "DeploymentOk"
+    kind: "definition"
+    summary: "Uninterpreted pause ∨ recovery-on-distinct-instrument. Not an MB; no arrow to Safe."
+    module: "AlignmentProofSpine/AlignmentRegime.lean"
+  - nodeId: "AlignmentDeployment"
+    kind: "definition"
+    summary: "DeploymentOk ∨ (certified case ∧ tolerance). Only the certify disjunct feeds MB11 / Safe."
+    module: "AlignmentProofSpine/Certification.lean"
+  - nodeId: "fin_pause_ok_not_certified"
+    kind: "counterexample"
+    summary: "Finite flags — pause can hold while a toy certify flag is false. Abstract Safe is an axiom, so the split is not stated on System."
+    module: "AlignmentProofSpine/AlignmentRegime.lean"
 external:
   - label: "Krym architecture revision plan (Phase 5–6)"
     url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/attic/krym-architecture-revision-plan.md"
@@ -57,4 +69,6 @@ Lean types the separation in `AlignmentConstruction.lean`: `Realizes` vs `Certif
 
 CEV is not a special bridge: `constitutionalTarget` / `cevConstitution` parameterize an `AlignmentTarget` on the same interface (MB8 is a gravestone only).
 
-**Book:** introduction (three questions); ch33 (certification without construction). **Lifecycle:** [Alignment lifecycle](/cards/alignment-lifecycle/) (construct phase). **Field evidence:** [/field/coverage/](/field/coverage/).
+Pause and recovery-viable (`DeploymentOk`) are a **regime** on whether certification must be a pre-deployment case. `AlignmentDeployment` in `Certification.lean` is that disjunction or a certified case within tolerance; only the certify disjunct is consumed by `MB11`. `fin_pause_ok_not_certified` exhibits pause without a toy certify flag. They are not a construction method and not an arrow to `Safe`.
+
+**Book:** introduction (four questions); ch33 (certification without construction); ch05 Recover; ch14 pause/stop. **Lifecycle:** [Alignment lifecycle](/cards/alignment-lifecycle/) (construct phase). **Field evidence:** [/field/coverage/](/field/coverage/).

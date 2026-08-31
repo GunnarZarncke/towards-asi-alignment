@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-08-31 (ch17 site math render fix).
+Last updated: 2026-09-01 (AlignmentRegime wired into Certification).
 
 ---
 
@@ -39,6 +39,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-09-01:** **AlignmentRegime consumers** — `AlignmentDeployment` in `Certification.lean`; ch05 footnote + accessible shift prose; ch33 CEV dunk shortened to ch28. Log: `2026-09-01-alignment-regime-wire.md`.
+- **2026-08-31:** **Problem-axis through scope** — layer vs mechanism; object sort; four intro questions; Verify-oracle bag; pause/recovery-viable regime (no `Safe` arrow); Goodhart problem node; train/deploy scope classes. Dormancy and App F OR paragraph not in this pass. Log: `2026-08-31-problem-axis-through-scope.md`.
 - **2026-08-31:** **Ch17 site math render** — `stripComments` no longer treats escaped `\%` as a comment; fixes truncated “At 80%…” and downstream unrendered formulas on ch17 (also ch02, ch34, appN). Log: `2026-08-31-ch17-site-math-render.md`.
 - **2026-08-29:** **Epistemic status site box** — `\begin{epistemicstatus}` converts to a lighter callout on book pages (neutral gray vs chapter-thesis accent). Log: `2026-08-29-epistemic-status-site-box.md`.
 - **2026-08-29:** **Witness card bridge links** — W-1–W-16 `witnesses` sections; GitHub path linkify on experiment cards; W-1 CIRIS rename; memo removed; findings page split from experiment card. Log: `2026-08-29-witness-card-bridge-links.md`.

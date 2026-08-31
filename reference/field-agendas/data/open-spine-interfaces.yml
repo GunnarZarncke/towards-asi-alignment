@@ -13,6 +13,7 @@ openSpineInterfaces:
       - constitutionalTarget
       - SpecWellFormedness
       - SpecifyCrux
+      - TargetSort
       - cevConstitution
       - caiConstitution
       - gsaiConstitution
@@ -53,6 +54,8 @@ openSpineInterfaces:
     summary: >-
       Given target P, can we construct a system A that robustly tracks P?
       Open field crux; not an MB bridge. Certification schemas do not supply
-      construction (see fin_certification_without_construction).
+      construction (see fin_certification_without_construction). Pause/recover
+      (`DeploymentOk`) is a regime on certification timing, not a construct method.
+
     dependsOn: []
     notABridge: true

@@ -2,6 +2,7 @@ import AlignmentProofSpine.Core
 import AlignmentProofSpine.MB2Identifiability
 import AlignmentProofSpine.MB4CorrectionIntegrity
 import AlignmentProofSpine.AlignmentConstruction
+import AlignmentProofSpine.AlignmentRegime
 import AlignmentProofSpine.BridgeCruxes
 import AlignmentProofSpine.Chokepoint
 import AlignmentProofSpine.Defeaters
@@ -34,7 +35,8 @@ Alignment*. It re-exports the layered modules:
 | `MB2Identifiability` | MB2a/MB2b evidence→identifiability→gradient; `MB2Crux` packaging | 15–21 |
 | `MB4CorrectionIntegrity` | MB4 reference legitimacy vs uptake/persistence; `MB4Crux` packaging | 25–26 |
 | `BridgeCruxes`  | `MB1`/`MB3`/`MB5`/`MB6`/`MB7`/`MB9` as `Prop` cruxes; `CoreBridgeCruxes` → `BridgeAssumptions` | crosswalk |
-| `AlignmentConstruction` | `AlignmentTarget`, `Realizes`, `TargetRealizable`, `ConstructionCrux`, `CertifiedAsRealizing`; CEV factorization (no `MB8` bridge) | intro, 25–27 |
+| `AlignmentConstruction` | `AlignmentTarget`, `TargetSort`, `Realizes`, `TargetRealizable`, `ConstructionCrux`, `CertifiedAsRealizing`; CEV factorization (no `MB8` bridge) | intro, 4, 33 |
+| `AlignmentRegime` | uninterpreted `DeploymentOk`; `Certification.AlignmentDeployment` consumes it (pause-or-recover ∨ certify+tolerance); `fin_pause_ok_not_certified`; no arrow to `Safe` | intro, 5, 14 |
 | `Chokepoint`    | ch43 adversarial-verifiability-up-to-κ definition; shared-chokepoint disjunctive-tolerance collapse theorem; worked `MB6a`/`MB6b` vs `MB8` instance | 43, 46 |
 | `Defeaters`     | systematic per-bridge defeater ledger for `MB1`–`MB11` (incl. `MB4a`) and misspec neighborhood signals; finite toys for nonstationary/`ModelClassMisspecified`/`MB4`/`MB4a`/`MB6b`/`MB8`/`MB10`/`MB11` | (crosswalk to `metadata/assumptions-ledger.md`) |
 | `Field/Finite/Nonrealizability` | off-class safety counterexample; ambiguity-set transfer; class certificate ⇏ deployment safety (no new `MB*`) | field misspec candidate |

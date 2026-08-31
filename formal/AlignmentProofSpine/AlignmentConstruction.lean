@@ -80,6 +80,20 @@ def constitutionalTarget (C : ConstitutionalRule) : AlignmentTarget where
   requiresCorrectionChannel := C.extrapolation
   requiresBundleStructure := C.aggregation
 
+/-! ### Target object sort (ch04; not an `MB*` bridge) -/
+
+/-- What kind of object the alignment target is. Bundle geometry is the book's
+    live choice; the other constructors name field objects the specify phase
+    must fix before identification or construction is even the same question.
+    Never axiomatized as the unique correct sort. -/
+inductive TargetSort where
+  | scalarTotalOrder
+  | incompletePreorder
+  | bundleGeometry
+  | proceduralConstitution
+  | openWorldSpec
+  deriving DecidableEq, Repr
+
 /-! ### Specify well-formedness (placeholder; out of scope) -/
 
 /-- Uninterpreted well-formedness criteria. Fill independently of any target δ;
@@ -88,23 +102,31 @@ structure SpecWellFormedness where
   wellFormed : ConstitutionalRule → Prop
   vacuous : AlignmentTarget → Prop
   underdeterminedAgg : AlignmentTarget → Prop
+  /-- Whether the chosen object sort is compatible with the stated target. -/
+  sortCompatible : TargetSort → AlignmentTarget → Prop
 
-/-- Coherent / non-vacuous / aggregation-determined enough that identification and
-    construction are meaningful questions. Never axiomatized. -/
-def TargetSpecifiable (W : SpecWellFormedness) (C : ConstitutionalRule) : Prop :=
+/-- Coherent / non-vacuous / aggregation-determined / sort-compatible enough
+    that identification and construction are meaningful questions. Never
+    axiomatized. -/
+def TargetSpecifiable (W : SpecWellFormedness) (C : ConstitutionalRule)
+    (S : TargetSort) : Prop :=
   W.wellFormed C ∧
   ¬ W.vacuous (constitutionalTarget C) ∧
-  ¬ W.underdeterminedAgg (constitutionalTarget C)
+  ¬ W.underdeterminedAgg (constitutionalTarget C) ∧
+  W.sortCompatible S (constitutionalTarget C)
 
-abbrev SpecifyCrux (W : SpecWellFormedness) (C : ConstitutionalRule) : Prop :=
-  TargetSpecifiable W C
+abbrev SpecifyCrux (W : SpecWellFormedness) (C : ConstitutionalRule)
+    (S : TargetSort) : Prop :=
+  TargetSpecifiable W C S
 
 theorem specify_crux_of (W : SpecWellFormedness) (C : ConstitutionalRule)
+    (S : TargetSort)
     (hw : W.wellFormed C)
     (hnv : ¬ W.vacuous (constitutionalTarget C))
-    (hna : ¬ W.underdeterminedAgg (constitutionalTarget C)) :
-    SpecifyCrux W C :=
-  ⟨hw, hnv, hna⟩
+    (hna : ¬ W.underdeterminedAgg (constitutionalTarget C))
+    (hs : W.sortCompatible S (constitutionalTarget C)) :
+    SpecifyCrux W C S :=
+  ⟨hw, hnv, hna, hs⟩
 
 /-! ### Named specify instances -/
 

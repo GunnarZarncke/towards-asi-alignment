@@ -10,8 +10,8 @@
     "adjacentWorkIntro": "Candidate theory and policy work relevant to bearer admission (ch18 / MB3 sub-obligation): which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a bundle-specific bearer class. These notes are not coverage-matrix cells. Filling a matrix cell requires a sourced agenda contribution under field-map curation rules; listing here only records neighborhood work the live hub should make visible.",
     "adjacentWorkFirewall": "MB1 (boundary / candidate process) is an upstream dependency of bearer inference, not a problem these sources solve. Do not read this list as evidence that consciousness or welfare researchers discharge Embedded Agency. Self-modeling, introspection, and global-workspace-like architecture are candidate indicators under some theories — not consciousness tests and not automatic Inner Alignment (MB7) coverage.",
     "adjacentWorkPhenomenalityNote": "A certified nonperson / non-subjecthood result does not license unconstrained treatment of a process that may still be valenced or otherwise morally relevant under a different property. Phenomenality and subjecthood stay distinct.",
-    "specifyConstructIntro": "Field programs below are instantiations of one specify schema (ConstitutionalRule → AlignmentTarget) paired with a construction bet (ConstructionBet). They are not extra MB columns. Specify well-formedness (SpecifyCrux) is an uninterpreted placeholder: this project does not discharge “is this constitution good enough?”",
-    "specifyConstructPlaceholderNote": "SpecifyCrux / SpecWellFormedness in AlignmentConstruction.lean is never axiomatized. Theorems that need it take an explicit hypothesis (MB2-style)."
+    "specifyConstructIntro": "Field programs below are instantiations of one specify schema (ConstitutionalRule → AlignmentTarget) paired with a construction bet (ConstructionBet). They are not extra MB columns. Specify well-formedness (SpecifyCrux) is an uninterpreted placeholder: this project does not discharge “is this constitution good enough?” SpecifyCrux includes sort-compatibility (scalar total order, incomplete preorder, bundle geometry, procedural constitution, open-world spec) as a fourth uninterpreted conjunct; the book’s live sort is bundle geometry.",
+    "specifyConstructPlaceholderNote": "SpecifyCrux / SpecWellFormedness in AlignmentConstruction.lean is never axiomatized. Theorems that need it take an explicit hypothesis SpecifyCrux W C S (MB2-style), including object-sort compatibility."
   },
   "lifecyclePhases": [
     {
@@ -253,6 +253,7 @@
         "constitutionalTarget",
         "SpecWellFormedness",
         "SpecifyCrux",
+        "TargetSort",
         "cevConstitution",
         "caiConstitution",
         "gsaiConstitution",
@@ -290,7 +291,7 @@
         "ch01"
       ],
       "conceptCard": "/cards/target-realization/",
-      "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction).",
+      "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction). Pause/recover (`DeploymentOk`) is a regime on certification timing, not a construct method.",
       "dependsOn": [],
       "notABridge": true
     }

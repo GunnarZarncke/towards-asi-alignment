@@ -8,11 +8,15 @@ intro: >-
   (ConstitutionalRule → AlignmentTarget) paired with a construction bet
   (ConstructionBet). They are not extra MB columns. Specify well-formedness
   (SpecifyCrux) is an uninterpreted placeholder: this project does not
-  discharge “is this constitution good enough?”
+  discharge “is this constitution good enough?” SpecifyCrux includes
+  sort-compatibility (scalar total order, incomplete preorder, bundle
+  geometry, procedural constitution, open-world spec) as a fourth
+  uninterpreted conjunct; the book’s live sort is bundle geometry.
 
 placeholderNote: >-
   SpecifyCrux / SpecWellFormedness in AlignmentConstruction.lean is never
-  axiomatized. Theorems that need it take an explicit hypothesis (MB2-style).
+  axiomatized. Theorems that need it take an explicit hypothesis
+  SpecifyCrux W C S (MB2-style), including object-sort compatibility.
 
 instances:
   - id: cev

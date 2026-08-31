@@ -72,7 +72,7 @@ concepts:
     kind: concept
     status: framework
     title: Alignment Target
-    summary: Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder.
+    summary: Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder including object-sort compatibility.
     bookChapters:
       - ch01
       - ch28

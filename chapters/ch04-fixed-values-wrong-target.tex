@@ -141,6 +141,27 @@ This third layer is the one most relevant to alignment.
 It connects preferences and principles to the machinery that generates them.
 
 \end{authbar}
+\authbarsubneedspace
+\subsection{The Object Sort of the Target}
+\label{sec:object-sort-of-the-target}
+\begin{authbar}{AI}
+``What should be tracked?'' still leaves open what kind of object the target is.
+The book chooses compressed control structure: later chapters treat it as value-bundle geometry plus bearer maps (Assumption~\akey{A-001}).
+That is a choice.
+The field also works with other sorts, and identification or construction is not even the same question until the sort is fixed.
+
+\begin{itemize}
+\item \textbf{Scalar total order.} A complete, typically utility-representable ranking of outcomes. Cooperative inverse reinforcement learning and much of reward learning live here; the book recovers it as the one-dimensional bundle embed (Chapter~\ref{ch:value-bundle-model}).
+\item \textbf{Incomplete or non-stationary preorder.} Preferences with gaps, intransitivity, or revision. Ethical impossibility results undermine strict total-order objectives \autocite{eckersley2019impossibility}; incomplete-preference machinery for shutdown is a field rederivation, not a discharge of this book's target \autocite{thornley2023shutdown}.
+\item \textbf{Bundle geometry and bearers.} The book's live route: tradeoff directions plus who or what they apply to.
+\item \textbf{Procedural constitution.} A process that is supposed to yield the target (CEV, constitutional AI). Lean types these as \texttt{ConstitutionalRule} instances mapped to an \texttt{AlignmentTarget}, not as a second path to correction integrity.
+\item \textbf{Open-world specification plus world model.} A written spec that is supposed to cover safety-relevant phenomena (Guaranteed-Safe / Open Agency). Coverage of that spec is a later bridge (\(\text{MB9}\)), not the same as choosing the sort.
+\end{itemize}
+
+Incomplete preferences stay a specify-side fact.
+They are not a new bridge, and they do not by themselves imply a safe deployment.
+
+\end{authbar}
 \authbarneedspace
 \section{Why Fixed Utility Functions Are Too Small}
 \label{sec:fixed-utility-too-small}

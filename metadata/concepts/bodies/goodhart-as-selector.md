@@ -20,4 +20,6 @@ $$
 
 This matters because alignment stacks many proxies — refusal rates, politeness, benchmark scores, user satisfaction, compliance documents, interpretability dashboards — none identical to alignment. The problem is not that proxies are useless. The problem is that **proxy pressure changes the systems being measured**.
 
+This is not the same object as correlational proxy alignment under optimization of one system's score, named next to [Certification under manipulation](/cards/certification-under-manipulation/) in Chapter 43.
+
 Standalone takeaway: safety cases that treat green metrics as evidence of low risk without modeling selection on those metrics will systematically over-certify systems optimized to pass them.

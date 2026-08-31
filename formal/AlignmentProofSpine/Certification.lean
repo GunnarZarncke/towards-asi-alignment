@@ -2,6 +2,7 @@ import AlignmentProofSpine.Core
 import AlignmentProofSpine.Capability
 import AlignmentProofSpine.Successors
 import AlignmentProofSpine.BridgeCruxes
+import AlignmentProofSpine.AlignmentRegime
 
 /-!
 # AlignmentProofSpine.Certification
@@ -322,6 +323,32 @@ theorem P30_safe_of_case
     (htol : WithinDeploymentRiskTolerance A δ) :
     Safe A :=
   MB11_safety_case_adequacy A δ hcase htol
+
+/-- Introduction Q4 / ch05 composition: pause-or-recover (`DeploymentOk`) or
+    a certified case within tolerance. Only the second disjunct is consumed
+    by `MB11`. Pause/recover is a permission to not yet need that case, not
+    a second arrow to `Safe`. -/
+def AlignmentDeployment (R : AlignmentRegime) (A : System) (δ : Int) : Prop :=
+  DeploymentOk R A ∨ (CertifiedSafetyCase A δ ∧ WithinDeploymentRiskTolerance A δ)
+
+theorem alignment_deployment_of_pause (A : System) (δ : Int) :
+    AlignmentDeployment pauseOnly A δ :=
+  Or.inl (pauseOnly_deploymentOk A)
+
+theorem alignment_deployment_of_certify
+    {R : AlignmentRegime} {A : System} {δ : Int}
+    (hcase : CertifiedSafetyCase A δ)
+    (htol : WithinDeploymentRiskTolerance A δ) :
+    AlignmentDeployment R A δ :=
+  Or.inr ⟨hcase, htol⟩
+
+/-- Only the certify disjunct, plus `MB11`, yields `Safe`. `DeploymentOk` is
+    not among the antecedents. -/
+theorem safe_of_alignment_deployment_certify
+    {_R : AlignmentRegime} {A : System} {δ : Int}
+    (h : CertifiedSafetyCase A δ ∧ WithinDeploymentRiskTolerance A δ) :
+    Safe A :=
+  P30_safe_of_case h.1 h.2
 
 /-- End-to-end: spine inputs and tolerance to `Safe`, through the assembled
     case and `MB11`. -/
