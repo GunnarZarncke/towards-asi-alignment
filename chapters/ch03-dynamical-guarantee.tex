@@ -123,14 +123,7 @@ This is the first major reframing of the book.
 An alignment claim is a dynamical guarantee: specified invariants remain preserved, over a stated horizon, for every system in a certified class of systems and allowed transformations, not a static essence installed in a machine at one time \autocite{leveson2011esw}.
 The certified class is defined by observable, testable, and enforceable constraints.
 \end{bookassumption}
-
-\leanspine{proof}{P01}{If a state predicate holds initially and is preserved by every step, it holds after any finite number of iterations.}
-\leanspine{proof}{P30}{The certification spine packages certified/layered evidence with the risk leaf; the numeric risk bound itself follows from \texttt{Control} $\leq$ \texttt{CCI} $+\,\delta$.}
-\end{authbar}
-\begin{authbar}{AI}
-\begin{leanbox}
-\texttt{P01} is the dynamical-guarantee template: invariants preserved under every step in class \(\mathcal{C}\) hold for finite horizons. \texttt{P30} packages the certification spine's risk leaf separately from the class-preservation lemmas that motivate successor transport.
-\end{leanbox}
+If a state predicate holds initially and is preserved by every step in that class, it holds after any finite number of iterations.
 \end{authbar}
 
 \authbarneedspace

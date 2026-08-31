@@ -45,6 +45,8 @@ Real agents leak.
 They learn, communicate, cooperate, deceive, and are coupled to their environments.
 A perfect boundary is usually the wrong target.
 What matters is whether there is enough conditional closure to make the agent model useful.
+Chapter~\ref{ch:composite-agent} argued that the relevant process may span models, tools, memory, users, and institutions.
+This chapter asks what happens when that process can shape the evidence used to find it.
 
 This chapter adds one complication.
 
@@ -81,6 +83,12 @@ We therefore need to distinguish two questions:
 
 The first question is difficult.
 The second is the alignment-relevant one.
+
+The argument proceeds in four steps.
+First, separate harmful concealment from privacy, compression, and benign opacity.
+Second, identify selective opacity around variables that preserve future control.
+Third, ask which interventions and measurement handles could still recover the control locus when the system anticipates the audit.
+Finally, turn those tests into pause and continuation conditions while keeping their own failure modes visible.
 
 \end{authbar}
 \authbarneedspace
@@ -311,6 +319,39 @@ The surface rationale changes; the deeper invariant is continued access to an ac
 
 \end{authbar}
 \authbarneedspace
+\section{How to Read the Dependency Spine}
+\label{sec:dependency-spine-first-use-ch10}
+\begin{authbar}{GZ+AI}
+Up to this point, the book has stated its dependencies in prose, equations, and Assumption boxes.
+From here on, selected claims also receive a compact citation into a Lean dependency spine.
+Lean is a proof assistant.
+Its role here is bookkeeping: it checks conditional implications and finite counterexamples.
+It does not inspect a deployed system or establish that the premises describe one.
+
+The spine uses three labels:
+\begin{description}[style=nextline]
+\item[\textbf{Proof}] A stated conclusion follows from stated premises.
+\item[\textbf{Counterexample}] A finite model shows that one claim does not imply another.
+\item[\textbf{Bridge}] The argument needs an empirical, institutional, or philosophical premise that the formal development does not establish.
+\end{description}
+Each printed block repeats one of these labels as \emph{Lean spine (proof)}, \emph{Lean spine (counterexample)}, or \emph{Lean spine (bridge)}.
+The blocks are pointers to Appendix~\ref{appi-lean-proof-spine}, not additional evidence.
+When a block says \emph{Lean spine (bridge)}, read it as: \emph{this inference is needed, it has been named, and it is still unpaid in the world}.
+
+The two assumption systems are related but not interchangeable.
+The \akey{A-001}--\akey{A-014} boxes are reader-facing assumptions about the book's scope and substantive claims.
+The \texttt{MB*} labels name narrower hypotheses consumed by the formal dependency chain.
+One may sharpen part of the other, but there is no one-to-one translation.
+Appendix~\ref{appbridge-crosswalk} maps both to standing problems in the field.
+
+We can now formalize one dependency already used in Part~II.
+Chapter~\ref{ch:finding-boundary} asks whether the risk-relevant boundary can be recovered (Assumption~\akey{A-004}).
+The narrower formal step is estimator soundness: when does a measured \(\epsilon\)-boundary warrant treating that cut as the control-relevant boundary?
+If this step fails, every later measurement may be precise about the wrong system.
+\leanspine{bridge}{MB1}{A measured $\epsilon$-boundary warrants the abstract boundary condition. Estimator soundness is assumed, not derived.}
+
+\end{authbar}
+\authbarneedspace
 \section{Stealth Has a Price Only Where We Can See the Channel}
 \label{sec:stealth-price-ch10}
 \begin{authbar}{AI}
@@ -318,11 +359,17 @@ Strategic opacity is not only a question of whether a boundary appears in one ob
 A capable system may hide by moving control into timing, phase, memory, tool use, residual patterns, user influence, or institutional feedback.
 The evaluator should therefore look through several measurement handles, not one.
 The same candidate boundary should be tested at the level of a single model call, an episode, a memory lifecycle, a tool chain, a deployed service, and the surrounding organization.
+Here \emph{measurement handles} are the logs, probes, perturbations, and audit interfaces the evaluator can actually use.
+The \emph{access model} says which control routes those handles can reach under hiding.
+Even if \texttt{MB1} licenses the measured cut, an adversarial system may route control outside the evaluator's access.
+The next bridge therefore asks whether the access model includes adequate handles.
+If it misses a control route, discovery is not robust under hiding.
+\leanspine{bridge}{MB7a}{A trusted boundary plus an adequate access model warrants access-robust discovery under adversarial hiding.}
 
 This also changes the object being tested.
 The relevant boundary is often a \emph{boundary over time}, not a line around variables at one moment.
 A process can be loose in ordinary behavior and become coherent only when a resource, shutdown risk, audit, or successor opportunity appears.
-That is why the previous chapter treats boundary continuity across perturbations as evidence rather than treating a single snapshot as decisive.
+That is why the perturbation argument above treats boundary continuity across stressors as evidence rather than treating a single snapshot as decisive.
 
 The hopeful fact is that hiding is not always free.
 If the evaluator's measurement handles cover the channels the system needs for competent control, reducing visible evidence also constrains prediction, action, memory, or timing.
@@ -338,11 +385,22 @@ Absence of agency under one convenient measurement handle does not imply absence
 The practical rule is therefore local to the safety case: stealth is bounded only relative to handle coverage.
 Here \emph{filter-family coverage} means whether the evaluator's measurement handles jointly cover the channels a competent controller would need.
 If critical handles stay blind, hidden productive control can persist without paying a detectability penalty.
-\leanspine{bridge}{MB7b}{The proof spine treats filter-family coverage as an explicit bridge: access-robust discovery plus adequate coverage is what bounds hidden productive control.}
+\leanspine{bridge}{MB7b}{Access-robust discovery plus adequate filter-family coverage warrants a bound on hidden productive control.}
 \end{authbar}
 \begin{authbar}{AI}
 \begin{leanbox}
-\texttt{MB7b} types filter-family coverage as a bridge obligation on the safety-case graph: stealth is bounded only relative to joint handle coverage, not a single dashboard. The spine does not prove that any stated measurement family achieves adequate coverage.
+Read the chain from left to right:
+\[
+\text{measured cut}
+\xrightarrow{\mathrm{MB1}}
+\text{trusted boundary}
+\xrightarrow[\text{adequate access}]{\mathrm{MB7a}}
+\text{access-robust discovery}
+\xrightarrow[\text{adequate coverage}]{\mathrm{MB7b}}
+\text{bounded hidden control}.
+\]
+Each arrow is a condition to test.
+Lean checks what follows if the arrows hold; it does not establish that they hold for a deployed system.
 \end{leanbox}
 \end{authbar}
 
@@ -624,6 +682,7 @@ They do not beat a strategic adversary by naming more heuristics.
 They help only when the evaluator has handles the system cannot cheaply route around, when perturbations change real opportunities rather than labels, and when the inferred boundary remains stable across hidden stakes, tool changes, memory perturbations, and successor opportunities.
 If the audit is delegated to a fixed learned detector, the detector itself becomes a target: a capable optimizer can search for traces that cross the detector's boundary threshold while preserving the real control loop elsewhere.
 Otherwise the tests return weak evidence, not certification.
+Operationally, these tests probe the access and coverage premises named by \texttt{MB7a} and \texttt{MB7b}; passing them does not by itself establish either bridge.
 
 \end{authbar}
 \authbarsubneedspace
@@ -963,12 +1022,15 @@ The central distinctions are:
 \item the relevant agent may be composite and may appear only under stakes;
 \item goal laundering preserves semantic commitments while changing inferred goals, value-bundle gradients, bearer maps, or correction channels;
 \item better self-modeling can be dangerous if it outruns self-transparency and correction.
+\item a dependency-spine bridge names a required inference that still needs evidence outside Lean.
 \end{itemize}
 
 The chapter's core warning can be stated compactly:
 \begin{equation}
 \text{Alignment fails when control becomes more coherent than correction can see.}
 \end{equation}
+
+Later \emph{Lean spine (bridge)} blocks should be read in the same way as \texttt{MB1}, \texttt{MB7a}, and \texttt{MB7b}: they expose an unpaid step rather than certify it.
 
 The next chapters turn from opacity to capability.
 If strategic opacity asks where the optimizer hides, capability growth asks how fast its boundary can expand, how much predictive and control information it can route through that boundary, and when coordination rather than raw computation becomes the limiting factor.

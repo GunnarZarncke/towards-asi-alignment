@@ -260,6 +260,7 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 - [x] §8 INSTRUCTIONS + writing-style pointer
 - [ ] De-center PDF as flagship (README, homepage, About, stats)
 - [x] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`; 2026-08-27)
+- [x] Bridge first-use in the manuscript: genus at Ch. 10; no technical *bridge* / Lean / `MB*` before ([`bridge-first-use.md`](bridge-first-use.md); 2026-09-01)
 - [ ] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
 - [ ] WWCTV → chokepoint forward refs (per chapter)
 - [ ] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`

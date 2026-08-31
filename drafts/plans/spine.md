@@ -2,7 +2,7 @@
 
 Status: **Spine lane** (2026-08-22). Krym revision **closed** 2026-08-17. Module map + build: [`formal/README.md`](../../formal/README.md). Per-chapter `% TODO[formalize]:` stay local.
 
-**Boundaries:** reader copy + WWCTV refs → [`voice.md`](voice.md); external fixtures → [`witness.md`](witness.md); field homographs → [`field.md`](field.md); construction / constructibility → [`construct.md`](construct.md) (not a spine `MB*` column).
+**Boundaries:** reader copy + WWCTV refs → [`voice.md`](voice.md); **bridge first-use / home `\leanspine`** → [`bridge-first-use.md`](bridge-first-use.md); external fixtures → [`witness.md`](witness.md); field homographs → [`field.md`](field.md); construction / constructibility → [`construct.md`](construct.md) (not a spine `MB*` column).
 
 ## Goal
 
@@ -21,7 +21,8 @@ Align **drafted chapter formalism** with the **Lean dependency spine**: finite m
 - [ ] **P2** — `PositiveMeasuredPath → CorrectionIntegrity` after Witness H1 (`CompositePathBypass.lean`; sibling CIRIS charter)
 - [ ] **P3** — Trace ↔ Shannon MI on pinned fixture; `WorkedInstance` vs rich `cci_audit` scoping
 - [ ] **P3** — `{leanbox}` on remaining high-value chapters (~26 without)
-- [ ] **P3** — Chapter ↔ Lean gaps opportunistically: `Bundles.lean`, ch13 `P12`, ch07 boundaries, ch48 basins, ch42 `P40`, more `\leanspine{}`
+- [x] **P3** — Bridge first-use: Ch. 10 genus + home-chapter `\leanspine{bridge}` only ([`bridge-first-use.md`](bridge-first-use.md)); freeze Lean/`MB*` before Ch. 10 (2026-09-01)
+- [ ] **P3** — Chapter ↔ Lean gaps opportunistically: `Bundles.lean`, ch13 `P12`, ch07 boundaries, ch48 basins, ch42 `P40` (do not scatter extra `{bridge}` tags; see first-use plan)
 - [ ] **P3** — App G translation spine opener (**author**); wire `BundleEvidenceAdequate` to experiments
 - [ ] **P4** — App B secondary sync (overlaps Field); regret leaf; field-agenda build-time codegen; axiom budget in `make check`; Debate site prose grep
 
