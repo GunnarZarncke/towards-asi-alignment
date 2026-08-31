@@ -12,3 +12,5 @@ It is not claiming that Lean proves real systems are safe. Lean checks a conditi
 It is not claiming that toy experiments validate frontier deployment. The experiments are sanity checks and falsification harnesses. Negative results matter because they show where the measurement story is still weak.
 
 It is not claiming that a website can replace the book. The PDF remains the long-form text; this site only summarizes it and points back to it.
+
+It is not claiming that a quiet evaluation at low capability certifies the same layers after a capability jump. Absence of a precondition makes a failure mode quieter; it does not discharge the layer.

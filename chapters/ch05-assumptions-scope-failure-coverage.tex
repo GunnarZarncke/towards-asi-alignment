@@ -102,8 +102,8 @@ LLM whitebox methods, such as training-hygiene methods, mechanistic-interpretabi
 are important inner alignment approaches and a widely studied research agenda, but not the scope of this book.
 
 Methods that only keep a system behaving well on inputs like those it was trained on are a standard robustness topic (Amodei et al.: robustness to distributional shift \autocite{amodei2016concrete}).
-This book does not treat ``stay like the training set'' as the alignment object.
-Those methods re-enter when the real failure is one of the layers above: the system learned the wrong rule for new situations (Chapter~\ref{ch:intelligence-deepens-misalignment}), rebuilt its world-model (\(\text{MB5}\)), steered the world into untested regions, or jumped in capability so correction cannot keep up (Assumption~\akey{A-012}).
+This book does not treat ``stay like the training set'' as the primary alignment object.
+Those methods re-enter when the real failure is one of the layers above: the system learned the wrong rule for new situations (Chapter~\ref{ch:intelligence-deepens-misalignment}), rebuilt its world-model, steered the world into untested regions, or jumped in capability so correction cannot keep up (Assumption~\akey{A-012}).
 Keeping familiar-input scores high is not enough to show that correction still works or that hidden capability is bounded.
 
 Bugs, cybersecurity failures, hardware faults, viruses, infrastructure failures, misuse, and late cosmic-stage pathologies matter.
@@ -158,17 +158,14 @@ Humans retain enough independent agency to refuse, revise, and coordinate on tha
 If deployment cannot be conditioned on certification, Chapter~\ref{ch:safety-case} becomes advice without authority.
 If humans cannot refuse, revise, or coordinate, correction has become a story told after the fact.
 
-The Introduction's fourth question composes these assumptions as a \emph{regime}, not as a new bridge.
+The Introduction's fourth question composes these assumptions as a \emph{regime}, not as a new named dependency.
 \textbf{Pause} is the else-branch of Assumption~\akey{A-012}: withhold access, compute, replication, or successor creation (Assumption~\akey{A-005}).
 If societal correction capacity is already below \(\theta\), pause on paper is not pause.
 \textbf{Recovery-viable} is Recover above together with the time inequality of Chapter~\ref{ch:intelligence-deepens-misalignment}: notice, interpret, contest, and constrain still land before irreversible harm.
 That is not patch-after-catastrophe.
-\textbf{Distinct recovery instrument:} shutdown and ordinary correction-channel integrity are one-bit projections of the same channel, so they do not add an independent escape hatch (Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}).
+\textbf{Distinct recovery instrument:} shutdown and ordinary correction-channel integrity are one-bit projections of the same channel, so they do not add an independent escape hatch.
 Candidate handles the book already names --- withholding outside the measured blanket, permissions and sandboxing, refusing a successor step, delay near irreversible change --- remain candidates until shown to be a different instrument.
-The certify path is the existing safety case plus \(\text{MB11}\); Lean does not treat pause-or-recover as an arrow to \(\mathrm{Safe}\).
-\begin{leanbox}
-Q4 is typed as \texttt{AlignmentRegime} / \texttt{DeploymentOk} (pause, or recovery on a distinct instrument). \texttt{AlignmentDeployment} is that disjunction or a certified case within tolerance. Only the certify disjunct, through \texttt{MB11}, yields \texttt{Safe} (\texttt{safe\_of\_alignment\_deployment\_certify}). Finite: \texttt{fin\_pause\_ok\_not\_certified} (pause can hold while a toy certify flag is false).
-\end{leanbox}
+The certify path is the existing safety case. Pause and recovery-viable are not a certificate that the system is safe.
 
 \end{authbar}
 \authbarneedspace
@@ -261,6 +258,56 @@ Second, it prevents failure taxonomies from becoming the book's ontology.
 The manuscript's positive structure remains boundary, value-bundle, bearer, correction, successor, adversarial measurement, and selection.
 
 \authbarneedspace
+\section{Quiet Failure Is Not a Certificate}
+\label{sec:capability-dormancy-ch05}
+\begin{authbar}{AI}
+A system that cannot yet model its overseers, game the score, or keep long-horizon options looks well-behaved.
+That quiet is not a path to safety.
+It is why a green check at one capability does not license the same claim after a jump (Assumption~\akey{A-012}; Chapter~\ref{ch:intelligence-deepens-misalignment}).
+What fails is transfer across the precondition.
+
+\footnotesize
+\end{authbar}
+\begin{longtable}{@{}p{4.4cm}p{3.4cm}p{3.2cm}@{}}
+\toprule
+\textbf{What is missing} & \textbf{What looks idle} & \textbf{Where transfer is treated} \\
+\midrule
+\endhead
+Low capability or short horizon &
+Deception, exploiting the evaluator, keeping options open &
+Chapter~\ref{ch:intelligence-deepens-misalignment} \\
+\midrule
+The evaluator still outruns the system &
+Oversight looks sufficient &
+Chapter~\ref{ch:verifiability-ontology} \\
+\midrule
+No successor or copy yet &
+Successor checks stay quiet &
+Chapters~\ref{ch:successor-central-test} and~\ref{ch:conserved-properties} \\
+\midrule
+Stationary world-model &
+Who counts, and what the words mean, stay quiet &
+Chapters~\ref{ch:bearer-maps} and~\ref{ch:successor-central-test} \\
+\midrule
+One stipulated principal &
+Aggregation looks solved &
+Chapter~\ref{ch:fixed-values-wrong-target} \\
+\midrule
+No selection among deployers &
+Basin pressure stays quiet &
+Appendix~\ref{appbridge-crosswalk} \\
+\midrule
+Non-adversarial scoring &
+The score looks like the property &
+Chapter~\ref{ch:verifiability-ontology} \\
+\midrule
+Harm still reversible &
+A full safety case looks optional &
+Recover above; Introduction, fourth question \\
+\bottomrule
+\end{longtable}
+\normalsize
+\authbarneedspace
 \section{How to Use the Scope Boundary}
 \label{sec:how-use-scope-boundary-ch05}
 \begin{authbar}{AI}
@@ -283,7 +330,7 @@ But it should not be counted as progress on the particular alignment theory this
 
 This boundary is useful only if it remains permeable to evidence.
 If a supposedly out-of-scope risk begins to change correction capacity, it enters.
-Stored energy, latent copies, and ordinary physical enablement (a valve, a protocol) are not a Turchin family; they enter on the same causal test, when they change agency, correction, or successor invariants.
+Stored energy, latent copies, and ordinary physical enablement (a valve, a protocol) are not a Turchin family; they enter on the same causal test, when they change agency, correction, or successor invariants (Section~\ref{sec:capability-dormancy-ch05}; Chapter~\ref{ch:certification-without-construction}).
 If a supposedly central alignment artifact cannot change any decision, it exits.
 The scope is not a status hierarchy.
 It is a causal test.
@@ -313,6 +360,7 @@ The following would weaken the framework's applicability or change its scope.
   \item Misuse, cyber failure, hardware failure, military risk, and other broad hazards matter here when they damage correction capacity or one of the preservation layers.
   \item Turchin-style risk maps are used as coverage audits, not as a second organizing ontology.
   \item The central failure mode is alignment after capture: safety artifacts still exist, but no longer causally affect deployment or successor creation.
+  \item A quiet evaluation is not a certificate: missing preconditions make failure modes idle; they do not discharge the layer.
 \end{itemize}
 
 \end{authbar}

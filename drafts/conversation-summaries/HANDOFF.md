@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-01 (bridge graph field hub fix).
+Last updated: 2026-09-01 (problem-axis plan closed).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-01 (bridge graph field hub fix).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file.
+**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Bridge reader-contract: [`bridge-first-use.md`](../plans/bridge-first-use.md).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -39,9 +39,13 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
+- **2026-08-31:** **Witness W-17 Moltbook MB7a** — H7 jscmp4/Moltbook scored: Tier A (Hackerclaw/thehackerman) joined, coactive Jan 31, not merged; broadcast substrate → **structure_stop**. Collect/fetch/check scripts; fixture scored. [`witness-v2-moltbook-mb7a.md`](../plans/witness-v2-moltbook-mb7a.md). Log: `2026-08-31-witness-w17-moltbook.md`.
+- **2026-09-01:** **Problem-axis plan closed** — §7 dormancy + §8 App F (causes OR / case AND / pause-correction); paragraph rewrite without coined terms. Plan: `drafts/plans/problem-axis-incorporation.md`. Log: `2026-09-01-problem-or-case-and.md`.
+- **2026-09-01:** **Bridge first-use implemented** — genus at Ch. 10; freeze before; home-chapter `\leanspine{bridge}`. Plan: `drafts/plans/bridge-first-use.md`. Log: `2026-09-01-bridge-first-use-impl.md`.
+- **2026-09-01:** **Capability dormancy (plan §7)** — ch05 transfer-breaker table; ch14 A-012 pointer; ch33 envelope one-liner; no `Safe` arrow. Log: `2026-09-01-capability-dormancy.md`.
 - **2026-09-01:** **Bridge graph field hub** — `/field/` “Which problems depend on which” showed missing SVG (legacy default path); links pointed at 404 `/cards/concept/bridge-assumptions/`. Fixed v2 default + canonical `/cards/bridge/bridge-assumptions/`. Log: `2026-09-01-bridge-graph-field-hub.md`.
 - **2026-09-01:** **AlignmentRegime consumers** — `AlignmentDeployment` in `Certification.lean`; ch05 footnote + accessible shift prose; ch33 CEV dunk shortened to ch28. Log: `2026-09-01-alignment-regime-wire.md`.
-- **2026-08-31:** **Problem-axis through scope** — layer vs mechanism; object sort; four intro questions; Verify-oracle bag; pause/recovery-viable regime (no `Safe` arrow); Goodhart problem node; train/deploy scope classes. Dormancy and App F OR paragraph not in this pass. Log: `2026-08-31-problem-axis-through-scope.md`.
+- **2026-08-31:** **Problem-axis through scope** — layer vs mechanism; object sort; four intro questions; Verify-oracle bag; pause/recovery-viable regime (no `Safe` arrow); Goodhart problem node; train/deploy scope classes. §§7–8 followed on 2026-09-01. Log: `2026-08-31-problem-axis-through-scope.md`.
 - **2026-08-31:** **Ch17 site math render** — `stripComments` no longer treats escaped `\%` as a comment; fixes truncated “At 80%…” and downstream unrendered formulas on ch17 (also ch02, ch34, appN). Log: `2026-08-31-ch17-site-math-render.md`.
 - **2026-08-29:** **Epistemic status site box** — `\begin{epistemicstatus}` converts to a lighter callout on book pages (neutral gray vs chapter-thesis accent). Log: `2026-08-29-epistemic-status-site-box.md`.
 - **2026-08-29:** **Witness card bridge links** — W-1–W-16 `witnesses` sections; GitHub path linkify on experiment cards; W-1 CIRIS rename; memo removed; findings page split from experiment card. Log: `2026-08-29-witness-card-bridge-links.md`.

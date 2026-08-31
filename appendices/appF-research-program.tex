@@ -66,7 +66,7 @@ Anthropic disputes illustrate the pattern: the same prior and evidence can yield
 \label{sec:research-dependency-order}
 \begin{authbar}{AI}
 The bridges are not nine independent bets to be multiplied into one discouraging product.
-They compose, and the composition is itself a research object with four consequences for how the program is sequenced.
+They compose, and the composition is itself a research object with five consequences for how the program is sequenced.
 
 \paragraph{Shared antecedents couple the bridges.}
 Several bridges share enabling predicates.
@@ -87,6 +87,18 @@ The hard bridges --- correction legitimacy (\texttt{MB4}) and hidden-capability 
 Correlation raises the floor; the weakest necessary bridge sets the ceiling.
 This is the master-crux observation (Section~\ref{sec:master-crux}) restated structurally: adversarial verifiability (A-009) is the chokepoint the conjunction routes through.
 
+\paragraph{Do not confuse causes, certificate requirements, and possible responses.}
+\label{par:problem-or-case-and}
+A wrong object-sort, abstraction-gap Goodhart, identifiability failure, deception, captured correction, successor forgeability, or a bad basin can each cause misalignment.
+These mechanisms therefore form an \emph{or}: any one may be enough.
+A safety case asks a different question: have all required preservation and measurement layers been established?
+Those requirements form an \emph{and}, capped by the weakest necessary layer.
+A third question arises when a failure is found: can deployment still be paused or corrected before irreversible harm?
+Answering ``no'' requires ruling out pause, trustworthy detection tied to a deployment gate, a verified causal constraint on the failure, and recovery through a distinct channel.
+If one of these responses remains available, correction may still be possible; safety does not follow from that fact.
+A layer that is quiet because a precondition is absent (low capability, no successor yet, still-reversible harm) is not a discharged link (Chapter~\ref{ch:assumptions-scope-failure-coverage}, Section~\ref{sec:capability-dormancy-ch05}).
+A certificate need not classify every failure mechanism by name, but it cannot skip \texttt{MB4}, \texttt{MB7}, or another necessary layer.
+
 \paragraph{Composition prescribes an order and a blast-radius query.}
 You cannot measure access robustness (\texttt{MB7}) before a boundary exists to define access (\texttt{MB1}); you cannot test bearer import (\texttt{MB3}) before bundle geometry is identifiable (\texttt{MB2}).
 The dependency graph therefore prescribes what to attack first --- the enabling, measurement-prerequisite bridges --- and it turns the Lean spine (Appendix~\ref{appi-lean-proof-spine}) into a failure-propagation analyzer: deleting a bridge axiom and rebuilding shows exactly which conclusions go grey.
@@ -98,7 +110,7 @@ Running that query for each hard bridge (``what survives if \texttt{MB4} is drop
 \subsection{Priority tiers}
 \label{sec:research-priority-tiers}
 \begin{authbar}{AI}
-These four observations yield a sequence, not a flat list.
+These five observations yield a sequence, not a flat list.
 The per-bridge investigations in Section~\ref{sec:bridge-empirical} are grouped accordingly and presented in this dependency order.
 
 \begin{description}[nosep,style=nextline]

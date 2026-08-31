@@ -736,6 +736,7 @@ concepts:
     bookLabels:
       - ch:assumptions-scope-failure-coverage
       - sec:correction-capacity-assumption-ch05
+      - sec:capability-dormancy-ch05
     body: bodies/scope-and-correction-capacity.md
     glossaryTerms:
       - term: Correction-capacity assumption
