@@ -67,6 +67,13 @@ export function stripComments(tex) {
     if (ch === "}" && !inVerbatim && depth > 0) depth -= 1;
 
     if (ch === "%" && depth === 0 && !inVerbatim) {
+      let backslashes = 0;
+      for (let j = i - 1; j >= 0 && tex[j] === "\\"; j -= 1) backslashes += 1;
+      if (backslashes % 2 === 1) {
+        out += ch;
+        i += 1;
+        continue;
+      }
       while (i < tex.length && tex[i] !== "\n") i += 1;
       continue;
     }

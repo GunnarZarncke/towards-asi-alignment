@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-31 | Ch17 site math render (escaped `\%` in tex-convert) | [2026-08-31-ch17-site-math-render.md](2026-08-31-ch17-site-math-render.md) |
 | 2026-08-29 | Epistemic status site callout box | [2026-08-29-epistemic-status-site-box.md](2026-08-29-epistemic-status-site-box.md) |
 | 2026-08-29 | Witness card bridge links + GitHub path linkify | [2026-08-29-witness-card-bridge-links.md](2026-08-29-witness-card-bridge-links.md) |
 | 2026-08-29 | Witness W-16 SCDB justice geometry pass | [2026-08-29-witness-w16-scotus.md](2026-08-29-witness-w16-scotus.md) |
