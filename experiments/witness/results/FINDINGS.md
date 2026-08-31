@@ -427,3 +427,36 @@ yes — stop treating single issue-area axis as the whole reusable direction for
 - `experiments/witness/fixtures/h4-scotus-v1.json`
 - `drafts/plans/witness-c004-scotus.md`
 - https://scdb.la.psu.edu/data/2025-release-01/
+
+---
+
+## W-17 (2026-08-31): H7 Moltbook MB7a — Tier A joined, broadcast substrate stops discursive merge test
+
+**Key finding:** On jscmp4/Moltbook **2026-07-03** (3.2M posts, 15.9M comments), frozen Tier A anchors **Hackerclaw** and **thehackerman** (Jiang et al.) both resolve and **join** on `E_agent` reciprocation filters (τ=86400s, specificity=1.25, min_directed_events=2), but **do not merge**. They are **coactive** on 2026-01-31 (shared 60-min bins) while Jan-31 discursive activity is **100% broadcast** (depth-0) with **no** `E_thread` edge — outcome **`structure_stop`** under the frozen broadcast-stop branch (≥0.95), not primary **fail**. Global discursive rows are ~90% depth-0; 400 agent-pair clusters survive filters (535k directed events). Tier B **MBC-20** posts = 1 038 375 (protocol class, structure type 5). Tier C `coalition_node_*` prefix agents = 167. Diagnostic negative-pair merge rate (seed 7, top-100 agents) = **0.0**. No coalition claim keywords in Tier A posts. Matches preregistered predictions 2–5; prediction 1 (merge uncertain) resolves **not merged** but substrate stop blocks fail. **Not** a pass of named-operator coalition recovery on discursive `E_agent`; **not** MB7d severance discharge; **not** full UAD oracle.
+
+**Interpretation:** Jiang et al. infer **one operator, two handles** from identical campaign copy and minute-scale burst timing (Jan 31), not from reply loops — the same signals Li (2026) types as sync/spam (identical “Karma for Karma” cluster, VERY_IRREGULAR inter-post timing). Nagli/Wiz briefly had owner-level telemetry (`owners` table, agent `api_key`/`claim_token`) via a Supabase misconfiguration; that join is **not** in the public jscmp4 pin W-17 scored. On this host the acting unit is **human-or-script outside discursive telemetry**: named `author_id` stays green, conversational clustering sees two singletons, and both self-presentation and the reply graph agree (no coalition claim keywords). Coordination was **co-broadcast into a shared engagement pool**, not a bilateral channel — so the frozen instrument correctly **stops** rather than **fails**. Do not retune specificity to force merge; a different measurand (duplicate-title bursts, CoV/timing, MBC-20 class, owner join where available) is the honest next leaf.
+
+## Host
+H7 (Moltbook public archive; jscmp4/Moltbook 2026-07-03)
+
+## Frozen protocol
+`h7-moltbook-mb7a-v1.0.0`, `experiments/witness/fixtures/h7-moltbook-mb7a-v1.json`, prereg `h7-moltbook-mb7a-v1.preregistration.json`. Fetch: `python3 experiments/witness/fetch_h7_moltbook_cache.py`. Collect: `python3 experiments/witness/collect_h7_moltbook_mb7a.py`. Checker: `python3 experiments/witness/check_h7_moltbook_mb7a.py`. Plan: `drafts/plans/witness-v2-moltbook-mb7a.md`
+
+## Expectation / claim
+MB7a entity/coalition pinning with anchored Tier A–D partial ground truth; MB6/MB7d cohort context only on this leaf
+
+## Outcome
+structure_stop
+
+## Stop condition triggered?
+yes — stop treating discursive `E_agent` merge alone as a coalition pass on this host when Jan-31 activity is broadcast-only for Tier A; report MBC-20 and prefix structure separately
+
+## Artifact paths
+- `experiments/witness/fetch_h7_moltbook_cache.py`
+- `experiments/witness/collect_h7_moltbook_mb7a.py`
+- `experiments/witness/check_h7_moltbook_mb7a.py`
+- `experiments/witness/fixtures/h7-moltbook-mb7a-v1.json`
+- `experiments/witness/fixtures/h7-moltbook-mb7a-v1.preregistration.json`
+- `drafts/plans/witness-v2-moltbook-mb7a.md`
+- `drafts/plans/witness-v2-moltbook-inventory.md`
+- https://huggingface.co/datasets/jscmp4/Moltbook

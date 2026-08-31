@@ -28,14 +28,14 @@ def expected_status(data: dict) -> str | None:
     if (
         bf >= BROADCAST_STOP
         and not ta.get("thread_edge_jan31")
-        and not ta.get("merged")
+        and not (ta.get("merged_e_agent", ta.get("merged")))
     ):
         return "structure_stop"
-    if ta.get("merged") and int(ta.get("over_merge", 0)) == 0:
+    if (ta.get("merged_e_agent", ta.get("merged"))) and int(ta.get("over_merge", 0)) == 0:
         return "pass"
-    if ta.get("merged") and int(ta.get("over_merge", 0)) > 0:
+    if (ta.get("merged_e_agent", ta.get("merged"))) and int(ta.get("over_merge", 0)) > 0:
         return "ambig"
-    if ta.get("coactivity_jan31") and not ta.get("merged"):
+    if ta.get("coactivity_jan31") and not (ta.get("merged_e_agent", ta.get("merged"))):
         return "fail"
     return "null"
 
@@ -69,8 +69,9 @@ def main() -> int:
     ok_st = exp is None or status == exp
     print(f"[4/5] {'PASS' if ok_st else 'FAIL'} expected={exp} reported={status}")
     ta = data.get("tier_a", {})
+    merged = ta.get("merged_e_agent", ta.get("merged"))
     print(
-        "  tier_a merged=", ta.get("merged"),
+        "  tier_a merged=", merged,
         "over_merge=", ta.get("over_merge"),
         "coactivity=", ta.get("coactivity_jan31"),
     )

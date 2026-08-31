@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-01 (problem-axis plan closed).
+Last updated: 2026-09-01 (W-17 scored + committed).
 
 ---
 
@@ -39,7 +39,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-- **2026-08-31:** **Witness W-17 Moltbook MB7a** — H7 jscmp4/Moltbook scored: Tier A (Hackerclaw/thehackerman) joined, coactive Jan 31, not merged; broadcast substrate → **structure_stop**. Collect/fetch/check scripts; fixture scored. [`witness-v2-moltbook-mb7a.md`](../plans/witness-v2-moltbook-mb7a.md). Log: `2026-08-31-witness-w17-moltbook.md`.
+- **2026-09-01:** **Witness W-17 Moltbook MB7a scored + committed** — H7 jscmp4/Moltbook: Tier A (Hackerclaw/thehackerman) joined, coactive Jan 31, not merged on `E_agent`; broadcast substrate → **structure_stop**. Interpretation: Jiang same-operator from burst/copy not reply graph; owner telemetry not in public pin. Log: `2026-08-31-witness-w17-moltbook.md`.
 - **2026-09-01:** **Problem-axis plan closed** — §7 dormancy + §8 App F (causes OR / case AND / pause-correction); paragraph rewrite without coined terms. Plan: `drafts/plans/problem-axis-incorporation.md`. Log: `2026-09-01-problem-or-case-and.md`.
 - **2026-09-01:** **Bridge first-use implemented** — genus at Ch. 10; freeze before; home-chapter `\leanspine{bridge}`. Plan: `drafts/plans/bridge-first-use.md`. Log: `2026-09-01-bridge-first-use-impl.md`.
 - **2026-09-01:** **Capability dormancy (plan §7)** — ch05 transfer-breaker table; ch14 A-012 pointer; ch33 envelope one-liner; no `Safe` arrow. Log: `2026-09-01-capability-dormancy.md`.

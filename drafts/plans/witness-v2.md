@@ -76,7 +76,7 @@ Each hunt ends in **freeze, refuse, or skip** — not a scored finding from an u
 
 ## Phase 1 — Moltbook (agent-native platform)
 
-**Status:** Step 0 inventory complete. **MB7a frozen** 2026-08-31: [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, W-17 reserved). Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md). **Not scored** until collect run.
+**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md).
 
 Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-only social network, Jan–Jul 2026). It is **not** Track A (legislatures/ombuds) and **not** v1 C-004 geometry. It pays TSA-relevant cruxes on **deployment-adjacent traces**: selector pressure (**MB6**), entity/coalition pinning (**MB7a**), channel reconstitution (**MB7d**), and possibly correction-channel theater (**MB4a/C-005**) if handle→act joins are defensible.
 

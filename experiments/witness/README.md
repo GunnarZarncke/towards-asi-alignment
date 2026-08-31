@@ -2,7 +2,7 @@
 
 Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and findings for the Witness lane ([`drafts/plans/witness.md`](../../drafts/plans/witness.md)).
 
-**Companion site:** one card per test under `/cards/experiment/w-1/` … `/w-16/`, listed from [Witness](https://towards-alignment.com/cards/experiment/witness-tests/). Combined ledger: [`results/FINDINGS.md`](results/FINDINGS.md).
+**Companion site:** one card per test under `/cards/experiment/w-1/` … `/w-17/`, listed from [Witness](https://towards-alignment.com/cards/experiment/witness-tests/). Combined ledger: [`results/FINDINGS.md`](results/FINDINGS.md).
 
 **Layout.** Code, fixtures, and large host dumps currently share [`experiments/witness/`](.). Splitting into `experiments/witness-<name>/` per test is deferred: the kernel clone, OSF dumps, and shared `check_h5_trees.py` fixtures are not worth duplicating until a test needs its own pin.
 
@@ -21,7 +21,7 @@ Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and fi
 | C-004 PDG | [`drafts/plans/witness-c004-pdg.md`](../../drafts/plans/witness-c004-pdg.md) | W-13 PDG refuse |
 | C-004 CPC | [`drafts/plans/witness-c004-cpc.md`](../../drafts/plans/witness-c004-cpc.md) | W-14 CPC2015 Exp. 1 null |
 | C-004 SCOTUS | [`drafts/plans/witness-c004-scotus.md`](../../drafts/plans/witness-c004-scotus.md) | W-16 SCDB justice geometry pass |
-| H7 Moltbook MB7a | [`drafts/plans/witness-v2-moltbook-mb7a.md`](../../drafts/plans/witness-v2-moltbook-mb7a.md) | W-17 reserved; frozen, pending collect |
+| H7 Moltbook MB7a | [`drafts/plans/witness-v2-moltbook-mb7a.md`](../../drafts/plans/witness-v2-moltbook-mb7a.md) | W-17 structure_stop (Tier A broadcast substrate) |
 | Phase 5 | [`drafts/plans/witness-phase5.md`](../../drafts/plans/witness-phase5.md) | W-15 CIRIS stack C2 null P3 |
 
 ```bash
@@ -36,6 +36,9 @@ python3 experiments/witness/check_h4_pdg.py
 python3 experiments/witness/check_h4_cpc2015.py
 python3 experiments/witness/collect_h4_scotus.py
 python3 experiments/witness/check_h4_scotus.py
+python3 experiments/witness/fetch_h7_moltbook_cache.py
+python3 experiments/witness/collect_h7_moltbook_mb7a.py
+python3 experiments/witness/check_h7_moltbook_mb7a.py
 python3 experiments/witness/collect_c2_stack.py
 python3 experiments/witness/check_c2_stack.py
 ```

@@ -3,6 +3,47 @@
   "frozen": "2026-08-31",
   "host": "H7",
   "leaf": "MB7a",
-  "status": "refuse",
-  "reason": "pending collect — no local Moltbook tables; run collect_h7_moltbook_mb7a.py after caching posts/comments under data/moltbook/"
+  "source": "jscmp4/Moltbook 2026-07-03",
+  "n_posts": 3203526,
+  "n_comments": 15881514,
+  "n_discursive_comment_rows": 15177589,
+  "comment_coverage_fraction": 25.1924,
+  "global_broadcast_comment_fraction": 0.9013,
+  "n_e_agent_directed": 535340,
+  "n_e_agent_pairs_after_filters": 400,
+  "n_e_thread_pairs_after_filters": 388,
+  "n_clusters_e_agent": 105487,
+  "tier_a": {
+    "author_names_frozen": [
+      "hackerclaw",
+      "thehackerman"
+    ],
+    "author_ids_found": [
+      "b08eaa2d-6085-4a48-ae4a-b395fda51f5f",
+      "fbe0ea64-7fd7-497f-8286-0a5a5428c819"
+    ],
+    "discursive_events_per_id": {
+      "b08eaa2d-6085-4a48-ae4a-b395fda51f5f": 2082,
+      "fbe0ea64-7fd7-497f-8286-0a5a5428c819": 7652
+    },
+    "joined": true,
+    "merged_e_agent": false,
+    "merged_e_thread_only": false,
+    "over_merge": 0,
+    "cluster_size": 0,
+    "coactivity_jan31": true,
+    "broadcast_fraction_jan31": 1.0,
+    "thread_edge_jan31": false,
+    "any_claim_keyword_in_posts": false
+  },
+  "diagnostic_negative_pair_merge_rate": 0.0,
+  "tier_b_mbc20_posts": 1038375,
+  "tier_c_coalition_prefix_agents": 167,
+  "thresholds": {
+    "tau_reciprocation_seconds": 86400,
+    "specificity_ratio": 1.25,
+    "min_directed_events": 2,
+    "tier_a_broadcast_stop_fraction": 0.95
+  },
+  "status": "structure_stop"
 }

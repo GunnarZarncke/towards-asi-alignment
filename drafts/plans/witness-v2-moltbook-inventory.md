@@ -1,6 +1,6 @@
 # Witness v2 — Step 0 inventory: Moltbook public traces
 
-**Status:** inventory + **MB7a protocol frozen** 2026-08-31 — see [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md). Parent: [`witness-v2.md`](witness-v2.md). No scores until collect.
+**Status:** inventory + **MB7a scored** 2026-08-31 (W-17 structure_stop) — see [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md). Parent: [`witness-v2.md`](witness-v2.md).
 
 **Claim strength:** data-availability and join-feasibility only. Does not discharge any `MB*` bridge.
 
@@ -246,7 +246,7 @@ Optional **ET-5** annex (not Witness W-number by default): apply **frozen** pass
 0. ~~**Step 0b:** structure taxonomy~~ → in [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md).
 0c. **Step 0c:** anchor join at collect time (Tier A names frozen; C1/C5 in collector).
 1. ~~**Step 1 / Step 2 freeze**~~ → **`h7-moltbook-mb7a-v1.0.0`** (2026-08-31).
-2. **Score:** cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record **W-17**.
+2. ~~**Score:** cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record **W-17**~~ → **W-17 structure_stop** (2026-08-31).
 3. **Optional:** MB6 second leaf; ET-5 UAD annex; field-news card.
 
 ---

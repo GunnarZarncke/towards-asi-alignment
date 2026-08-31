@@ -4,7 +4,7 @@
 
 **Claim strength:** methodology-building. Pays **MB7a** (named `author_id` vs inferred unit; claim vs boundary) on agent-native public traces with **partial Tier A–D anchors** from independent investigations. Does **not** discharge MB1 globally. Does **not** claim exhaustive coalition oracle. Does **not** substitute for ET-5 passive UAD transfer.
 
-**Finding ID:** **W-17** (reserved). Ledger: `experiments/witness/results/FINDINGS.md` after scored run.
+**Finding ID:** **W-17** — **structure_stop** (2026-08-31). Ledger: [`experiments/witness/results/FINDINGS.md`](../../experiments/witness/results/FINDINGS.md).
 
 ---
 

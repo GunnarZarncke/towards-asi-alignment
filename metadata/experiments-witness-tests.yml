@@ -775,3 +775,56 @@ lines:
       - >
         Same-justice vote geometry beats issue-area-only and a justice intercept on the
         frozen SCDB freeze. Observational; not a correction-channel result.
+
+  - order: 26
+    id: w-17
+    kind: witness
+    findingIdPrefix: W-
+    title: Moltbook MB7a entity pinning
+    location: experiments/witness/check_h7_moltbook_mb7a.py
+    firstBuilt: "2026-08-31"
+    summary: >
+      Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins
+      on platform IDs but discursive reciprocation does not merge them; Jan-31 activity
+      is broadcast-only — structure_stop, not coalition pass/fail on E_agent alone.
+    role: |
+      **What.** Agent-native social network corpus (jscmp4/Moltbook 2026-07-03). Tier A
+      anchors from Jiang et al. Test whether discursive reply reciprocation (`E_agent`)
+      merges a documented same-operator pair when coactive.
+
+      **Why.** MB7a access-model / entity pinning on deployment-adjacent traces — not
+      full UAD oracle. UAD lessons require edge-layer typing (broadcast vs thread) and
+      partial anchors, not naive covert-coalition recovery.
+    witnesses: |
+      - [MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/): named
+        `author_id` vs inferred multi-account structure; claim vs boundary evidence.
+      - [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) neighborhood:
+        structure typing on public agent platform traces.
+    host: >
+      jscmp4/Moltbook Hugging Face snapshot 2026-07-03 (CC-BY-4.0). 3.2M posts, 15.9M
+      comments. Not live API.
+    setup: >
+      Frozen protocol h7-moltbook-mb7a-v1.0.0, fixture
+      `experiments/witness/fixtures/h7-moltbook-mb7a-v1.json`. Fetch
+      `python3 experiments/witness/fetch_h7_moltbook_cache.py`. Collect
+      `python3 experiments/witness/collect_h7_moltbook_mb7a.py`. Checker
+      `python3 experiments/witness/check_h7_moltbook_mb7a.py`. Edge layers E_broadcast,
+      E_thread, E_agent; τ=86400s, specificity=1.25, min_directed_events=2.
+    analysis: >
+      Tier A join and merge on E_agent; Jan-31 coactivity and broadcast fraction;
+      MBC-20 protocol-class count; coalition_node_* prefix agents; diagnostic negative-pair
+      merge rate (seed 7).
+    numbers: >
+      Tier A joined; merged_e_agent false; coactivity_jan31 true; broadcast_fraction_jan31
+      1.0; thread_edge_jan31 false. Global broadcast comment fraction ~0.90. 400 E_agent
+      pair clusters after filters. MBC-20 posts 1,038,375; coalition_node_* agents 167.
+      Diagnostic negative merge rate 0.0.
+    outcome: |
+      Structure stop: broadcast-heavy substrate blocks discursive merge test for Tier A;
+      not a pass of coalition recovery on E_agent alone. See [W-17](/experiments/findings/w-17/).
+    planPath: drafts/plans/witness-v2-moltbook-mb7a.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    headlineFindings:
+      - >
+        Documented operator pair coactive but not merged on discursive E_agent; Jan-31
+        activity 100% broadcast — structure_stop under frozen protocol.

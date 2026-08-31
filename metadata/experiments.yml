@@ -557,7 +557,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (shadow route, tool gating)"
       lab-simulation: "Oracle hidden capability/hazard on models"
       graded-lab-simulation: "Graded (continuous) oracle capability/hazard/harm state, not pass/fail"
-      witness: "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4)"
+      witness: "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
   - id: mb7d
     label: "MB7d Inferential coupling (coordination severing channels)"
     cells:

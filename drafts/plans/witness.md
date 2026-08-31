@@ -1,6 +1,6 @@
 # Witness — deployment witness plan
 
-Status: **W-16 recorded** (2026-08-29). SCDB justice-centered geometry **pass** ([`witness-c004-scotus.md`](witness-c004-scotus.md)). Phase 5 CIRIS stack C2 **null** W-15 ([`witness-phase5.md`](witness-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`witness-v2.md`](witness-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md) · [`witness-c004-pdg.md`](witness-c004-pdg.md) · [`witness-c004-cpc.md`](witness-c004-cpc.md) · [`witness-c004-scotus.md`](witness-c004-scotus.md) · [`witness-phase5.md`](witness-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
+Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md)). **W-16** SCDB justice-centered geometry **pass** (2026-08-29). Phase 5 CIRIS stack C2 **null** W-15 ([`witness-phase5.md`](witness-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`witness-v2.md`](witness-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md) · [`witness-c004-pdg.md`](witness-c004-pdg.md) · [`witness-c004-cpc.md`](witness-c004-cpc.md) · [`witness-c004-scotus.md`](witness-c004-scotus.md) · [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) · [`witness-phase5.md`](witness-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
@@ -12,9 +12,10 @@ Status: **W-16 recorded** (2026-08-29). SCDB justice-centered geometry **pass** 
 - [x] **W-14** — CPC2015 Exp. 1 geometry vs ΔEV null ([`witness-c004-cpc.md`](witness-c004-cpc.md))
 - [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`witness-phase5.md`](witness-phase5.md))
 - [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`witness-c004-scotus.md`](witness-c004-scotus.md))
+- [x] **W-17** — H7 Moltbook MB7a Tier A structure_stop ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md))
 - [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`witness-phase0.md`](witness-phase0.md) Exp. 3)
 - [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
-- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`witness-v2.md`](witness-v2.md); **H7 MB7a frozen** [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (W-17 pending collect)
+- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`witness-v2.md`](witness-v2.md); **H7 MB7a scored** W-17 ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md)); optional MB6 leaf / ET-5 annex
 
 ## Goal
 
