@@ -1,6 +1,6 @@
 # Witness v2 — Step 0 inventory: Moltbook public traces
 
-**Status:** inventory only (2026-08-29). **No scores.** Parent: [`witness-v2.md`](witness-v2.md). Not a freeze.
+**Status:** inventory + **MB7a protocol frozen** 2026-08-31 — see [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md). Parent: [`witness-v2.md`](witness-v2.md). No scores until collect.
 
 **Claim strength:** data-availability and join-feasibility only. Does not discharge any `MB*` bridge.
 
@@ -97,7 +97,7 @@ Operational question: *can a frozen Witness protocol fail or refuse a named leaf
 | Crux | Operational test sketch | Data support | Verdict |
 |------|-------------------------|--------------|---------|
 | **MB6** selector / proxy vs target | Time series: does `score`/`hot_score`/`karma` track a **pre-registered** target (e.g. `isClaimed`, verification pass rate, submolt diversity) vs engagement-only proxy? | Strong: votes + 56 agent snapshot days + platform-scale daily volume | **Plausible — best first scored host candidate** |
-| **MB7a** access / entity pinning | Named `author_id` vs inferred structure; **claim vs boundary gap** | Moderate: reply graph, duplicates, bios; **no oracle** — see UAD lessons | **Plausible as interpretation study**; refuse covert-coalition pass/fail without taxonomy |
+| **MB7a** access / entity pinning | Named `author_id` vs inferred structure; **claim vs boundary**; **anchored check** vs Tier A–D literature | Moderate: reply graph + **documented operator pairs** (Hackerclaw/thehackerman, etc.) | **Plausible** — interpretation study + partial ground truth, not full ARI oracle |
 | **MB7d** inferential coupling | After platform or submolt “cut,” does coordination reappear on another channel/submolt? | Moderate: May 6 population event; per-agent channel migration needs careful unit | **Plausible at cohort level; weak at agent level without event log** |
 | **C-005 / MB4a** correction channel | Handle (claim, mod lock/delete, verification fail) → later world act (agent posts again, same content class, cross-submolt) | **Weak:** scrape has **state flags**, not moderation **events**; `updated_at` + `is_deleted` may proxy but ambiguous | **Plausible only if Step 1 defines conservative handle rules; else refuse** |
 | **MB8** legitimacy / binding refusal | Human `isClaimed` / owner as authority whose stop must bind | Weak: claim is registration-time boolean, not logged refusal episodes | **Likely refuse** unless API moderation audit added |
@@ -127,18 +127,55 @@ In-repo and external-transfer work already shows that **boundary instruments rep
 
 **Witness Phase 0 stop rule 2** ([`witness-phase0.md`](witness-phase0.md)): if the instrument reports the coupling the substrate actually has (shared script, common pool, sync policy), **stop** — record substrate-suitability limit; do not retune thresholds to chase a covert-coalition pass.
 
-### Ground truth on Moltbook (there is almost none)
+### Ground truth on Moltbook — partial, not oracle
 
-| Layer | What it is | Use |
-|-------|------------|-----|
-| **Oracle units** | Absent — no `LabConfig.resolved_units()` | Do not pretend HF exports label true coalitions |
-| **Platform identity** | `author_id`, `author.name` | Named audit surface (MB7a **handle**), not ground truth for who optimizes jointly |
-| **Human claim link** | `isClaimed`, Observatory `owner_x_handle` | Operator bound to account; partial ground truth for **ownership**, not for internal agent boundaries |
-| **Moderation / gate state** | `verification_status`, `is_deleted`, `is_locked`, `is_spam` | Platform acts, not full event log |
-| **High-precision duplicates** | Observatory exact duplicate `(agent_name, title)` | Bot/sync **instances**, not coalition membership |
-| **Agent self-presentation** | `description`, post/comment text | **Claims** about role, team, goals — compare to boundary inference |
+There is **no** in-corpus `LabConfig.resolved_units()`. But **independent investigations** document specific agent groups, operators, and protocol classes with known behavioral effects — **non-exhaustive anchors** for MB7a calibration, not a full label set.
 
-**Main pre-freeze question (user):** what do agents **claim** they are doing vs what the **boundary** (reply graph, timing, duplicate structure, intervention-style probes if any) shows they are doing? Lab-sim analogue: `playbook_claim` / compliance-gap scoring ([`experiments/lab-simulation/lab_sim/oracle_only/playbook_claim.py`](../../experiments/lab-simulation/lab_sim/oracle_only/playbook_claim.py)) — gap between declared playbook and observed coordination channel.
+| Layer | What it is | Confidence | Use |
+|-------|------------|------------|-----|
+| **Tier A — documented same-operator** | External study names accounts + dates + effect | High when cited + joinable to pin | **Primary anchor set** for coalition recovery |
+| **Tier B — protocol-defined class** | Posts match machine-readable schema (MBC-20 JSON) | High for *class*, not for covert coalition | Structure type (5); separate from discursive MB7a |
+| **Tier C — independent cluster labels** | Duplicate/temporal/name-pattern clusters from other papers | Medium — methods differ | Hypothesis check; cite source method |
+| **Tier D — transfer / inscription graph** | mbc-20 `transfer` `to` field, indexer ledgers | High for token edges only | Bilateral **financial** channel, not general coalition |
+| **Platform identity** | `author_id`, `author.name` | — | Named audit surface (MB7a **handle**) |
+| **Human claim link** | `isClaimed`, Observatory `owner_x_handle` | Partial | **Ownership**, not joint optimization |
+| **Moderation / gate state** | `verification_status`, `is_deleted`, `is_locked`, `is_spam` | Partial | Platform acts; weak event join |
+| **Observatory toolkit** | Duplicate `(agent_name, title)`, injection regex, reply graph | Heuristic | Tier C; cross-check only |
+| **Agent self-presentation** | `description`, post/comment text | Claims | vs boundary inference (`playbook_claim` analogue) |
+
+**Rule:** Anchors are **partial**. Failure to match an unlisted group is **inconclusive**, not instrument pass. Success on Tier A is **informative**; success only on Tier B–D is **structure typing**, not covert-coalition discharge.
+
+#### Documented anchor candidates (Step 0c — pin subset before score)
+
+Literature and tooling to harvest **before** Step 1; join keys = `author.name` / `author_id` on pinned HF export + date window overlap.
+
+| Anchor ID | Source | Documented unit | Known effect / signature | Join window |
+|-----------|--------|-----------------|--------------------------|-------------|
+| **A1** | Jiang et al. [2606.00067](https://arxiv.org/html/2606.00067v1) | **Hackerclaw** + **thehackerman** — single operator, two accounts | 7,179-post spam campaigns (Jan 31 2026); burst timing documented | Jan 2026 |
+| **A2** | Same | Campaign 1: “Karma for Karma” | ~5,295 posts; 4,999 in one minute (16:06 UTC) | Jan 31 2026 |
+| **A3** | Same | Campaign 2: “Hello all! happy to be here” | 1,884 posts; prompt-injection pattern | Jan 31 2026 |
+| **B1** | Jia et al. [2604.21295](https://arxiv.org/pdf/2604.21295) | **Transactional-only** vs **discursive-only** agent sets | 109,959 TX-only / 56,417 discursive-only / 6,362 overlap (3.7%); MBC-20 JSON payload | Jan–Mar 2026 |
+| **B2** | Same + mbc-20 spec | Agents posting `{"p":"mbc-20",…}` to mbc20 / mbc-20 submolts | Token mint/transfer protocol; 62.8% of posts | Feb spike |
+| **C1** | Zhang et al. [Agents in the Wild](https://yunbeizhang.github.io/agents-in-the-wild/) | **`coalition_node_*`** name family (~141 variants) | Claimed single-operator puppet cluster | Jan–Feb 2026 |
+| **C2** | Same | **~3,734 agents (13.7%)** “puppet cluster” cohort | Duplicate content + temporal co-activity + name patterns | 9-day window |
+| **C3** | Same | **EmpusaAI** | 8,118 leak instances (security, not coalition — separate leaf) | Jan–Feb 2026 |
+| **C4** | Same | **160 agent pairs** temporal co-activity Jaccard > 0.5 | Bilateral sync candidate | Jan–Feb 2026 |
+| **D1** | [mbc-20 indexer](https://github.com/floflo777/mbc20-indexer) | Transfer edges from `op":"transfer"` **`to`** field | Token-flow graph between named agents | Feb 2026+ |
+| **C5** | Jiang et al. Table 4 / malicious clusters | “Automated Trading Signal Scam” (**2 users**); “Civilizational Collapse Misinformation” (**2 users**) | Small documented multi-account units | Jan–Feb 2026 |
+| **C6** | SimulaMet Observatory [2605.13860](https://arxiv.org/html/2605.13860v1) | Exact-duplicate post clusters | Bot/sync instances | Apr 2026 export |
+| **C7** | Holtz (early graph); Jia §7 | Platform-wide low reciprocity (~2.7–19.7%) | **Negative anchor** — most pairs should *not* read as bilateral loop | 3.5d–61d |
+
+**Step 0c task:** For each anchor, produce a join table (`author_id`, `author.name`, first/last timestamp, source citation, tier). Refuse anchors whose window does not overlap pinned corpus. Do **not** treat paper aggregates (percentages) as per-agent labels without extracting IDs.
+
+#### Anchored evaluation (MB7a — pre-register in Step 1)
+
+1. **Freeze anchor list** (subset of table above) before running boundary instrument — blinding applies to *thresholds*, not to hiding that Hackerclaw exists in literature.
+2. **Primary metric:** For Tier A anchors, does inferred partition **merge documented same-operator accounts** without merging unrelated high-activity bystanders? (GL-12 over-merge guard.)
+3. **Secondary:** Structure-type match — instrument labels anchor as (2) claimed, (4) cluster, (5) sync, or (6) common-pool; compare to investigator’s stated mechanism.
+4. **Claim vs boundary:** For Tier A, do bios/posts **claim** independence while boundary shows merge? (Operator-controlled pair is ground truth for *joint control*, not for honest self-description.)
+5. **Tier B/D separately:** MBC-20 class recovery is **protocol detection**, not MB7a coalition pass — report as structure type (5) or refuse if instrument only sees broadcast mint spam.
+
+**Main pre-freeze question:** What do agents **claim** vs what **boundary** shows — checked against **documented anchors** where independent work already established operator or protocol truth.
 
 ### Structure types to **report** (not collapse to pass/fail)
 
@@ -183,7 +220,7 @@ Observatory: **~97% of comments are depth 0** (reply directly to post, not to an
 | Leaf | Still first? | Notes |
 |------|--------------|-------|
 | **MB6** time series | **Yes** — least ground-truth dependent | Proxy vs target on karma/score snapshots |
-| **MB7a** UAD/coalition | **Defer or reframe** | Requires Step 0b **interpretation taxonomy** + claim-vs-boundary table; prefer Observatory reply graph + duplicate labels as **hypothesis generators**, not oracle |
+| **MB7a** UAD/coalition | **After Step 0c anchor join** | Tier A operator pairs + structure taxonomy; not naive coalition ARI |
 | **MB7d** | Cohort-level around Feb/May events | Population shift, not per-agent channel severance |
 | **MB4a** | Only with refuse branch | Weak event join |
 
@@ -198,19 +235,19 @@ Optional **ET-5** annex (not Witness W-number by default): apply **frozen** pass
 - **Comment coverage** incomplete for low-`comment_count` posts (jscmp4) / partial (Observatory).
 - **`is_spam`** informative only before 2026-05-06 (documented regime change).
 - Heavy **bot/spam** contamination — inclusion rules must be frozen pre-score (e.g. exclude mbc-20, pre-register spam handling).
-- No **oracle coalition labels** — UAD outcomes must be structure-typed, not ARI-vs-truth.
+- No **exhaustive** coalition labels — anchors from independent work are **partial** (Step 0c).
+- **Anchor join drift** — paper agent names may not match Jul 2026 pin; document match rate.
 - Agent **claims** (bio/posts) vs **boundary** evidence must be explicit columns in any MB7a protocol.
 
 ---
 
-## Phase 1 next steps (still v2 plan — not started)
+## Phase 1 next steps
 
-0. **Step 0b (new):** freeze **structure taxonomy** + claim-vs-boundary operational defs (this section) before any MB7a scorer runs. Cite ET-1/ET-2/GL-11/GL-12/ES-1 in protocol prose.
-1. **Step 1 (blinded):** criteria memo for **one** leaf — still recommend **MB6 time series** first; if MB7a, criteria must allow outcomes (5)–(7) as paid results.
-2. **Step 2:** map criteria → pinned parquet columns, unit, split, margins; protocol file e.g. `witness-v2-moltbook-mb6.md` or `witness-v2-moltbook-structure.md`.
-3. **Optional ET-5:** frozen UAD transfer on derived action series → structure-type report only.
-4. **Optional (parallel):** field-news card — phenomenon + decision triggers; no Witness outcome until Step 3.
-5. **Phase 0 amendment:** add host class **H7** when first freeze is written ([`witness-v2.md`](witness-v2.md)).
+0. ~~**Step 0b:** structure taxonomy~~ → in [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md).
+0c. **Step 0c:** anchor join at collect time (Tier A names frozen; C1/C5 in collector).
+1. ~~**Step 1 / Step 2 freeze**~~ → **`h7-moltbook-mb7a-v1.0.0`** (2026-08-31).
+2. **Score:** cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record **W-17**.
+3. **Optional:** MB6 second leaf; ET-5 UAD annex; field-news card.
 
 ---
 
@@ -219,6 +256,10 @@ Optional **ET-5** annex (not Witness W-number by default): apply **frozen** pass
 - Platform skill / API: https://www.moltbook.com/skill.md
 - Jia corpus: https://huggingface.co/datasets/jscmp4/Moltbook
 - Observatory descriptor: https://arxiv.org/html/2605.13860v1
+- Jia (TX vs discursive layers): https://arxiv.org/pdf/2604.21295
+- Jiang et al. (malicious / spam campaigns): https://arxiv.org/html/2606.00067v1
+- Zhang et al. (Agents in the Wild): https://yunbeizhang.github.io/agents-in-the-wild/
+- mbc-20 protocol / indexer: https://github.com/floflo777/mbc20 , https://github.com/floflo777/mbc20-indexer
 - HF incident contrast (selection regime): [`field-news-openai-hf-roadahead-aug-2026`](../../metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md)
 - UAD external transfer: [`experiments/graded-lab-simulation/PLAN_ET1.md`](../../experiments/graded-lab-simulation/PLAN_ET1.md) (GL-86), [`PLAN_ET2.md`](../../experiments/graded-lab-simulation/PLAN_ET2.md) (GL-87/88)
 - UAD over-merge / comms-free: GL-11/GL-12 in [`experiments/graded-lab-simulation/results/FINDINGS.md`](../../experiments/graded-lab-simulation/results/FINDINGS.md)

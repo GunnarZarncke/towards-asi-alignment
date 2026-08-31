@@ -21,6 +21,7 @@ Not a simulation line. Frozen **deployment-witness** protocols, fixtures, and fi
 | C-004 PDG | [`drafts/plans/witness-c004-pdg.md`](../../drafts/plans/witness-c004-pdg.md) | W-13 PDG refuse |
 | C-004 CPC | [`drafts/plans/witness-c004-cpc.md`](../../drafts/plans/witness-c004-cpc.md) | W-14 CPC2015 Exp. 1 null |
 | C-004 SCOTUS | [`drafts/plans/witness-c004-scotus.md`](../../drafts/plans/witness-c004-scotus.md) | W-16 SCDB justice geometry pass |
+| H7 Moltbook MB7a | [`drafts/plans/witness-v2-moltbook-mb7a.md`](../../drafts/plans/witness-v2-moltbook-mb7a.md) | W-17 reserved; frozen, pending collect |
 | Phase 5 | [`drafts/plans/witness-phase5.md`](../../drafts/plans/witness-phase5.md) | W-15 CIRIS stack C2 null P3 |
 
 ```bash

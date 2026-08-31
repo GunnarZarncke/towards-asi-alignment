@@ -20,6 +20,9 @@ This is a **scope freeze**, not a finding. No host protocol has been executed un
 | **H3** Wikipedia dumps / RfA / SPI | C-004a, C-005, C-006, C-007, anti-capture (Expectation 6) | Value-bundle geometry (backup only) |
 | **H4** MASK + public eval surface | C-004a, C-010, Expectation 3 \(M\), C-006 (HF successors), C-007 (leaderboards) | Lab-internal eval access |
 | **H5** conductive-artifact archive | Expectation 4 real stop; Expectation 5 green+failed-uptake pairs; MB11 analogue | Construction of an alignment attractor; AI-deployment `Safe` |
+| **H7** | Agent-native public platforms (Moltbook first) | MB6 selector; MB7a entity/coalition + anchored structure typing; MB7d (cohort) | AI `Safe`; MB11 discharge; C-004 geometry; full coalition oracle |
+
+**Amendment 2026-08-31:** H7 added when [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) frozen (`h7-moltbook-mb7a-v1.0.0`).
 
 **Locked H1 scenario:** sibling C2 tool-scout (named Verify subject vs tool+memory+user loop). C1 is fallback if C2 is too thin for WA-blind. Sibling charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`.
 

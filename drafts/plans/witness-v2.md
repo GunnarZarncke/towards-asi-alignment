@@ -76,7 +76,7 @@ Each hunt ends in **freeze, refuse, or skip** — not a scored finding from an u
 
 ## Phase 1 — Moltbook (agent-native platform)
 
-**Status:** Step 0 inventory complete. **Not a freeze.** Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md).
+**Status:** Step 0 inventory complete. **MB7a frozen** 2026-08-31: [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, W-17 reserved). Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md). **Not scored** until collect run.
 
 Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-only social network, Jan–Jul 2026). It is **not** Track A (legislatures/ombuds) and **not** v1 C-004 geometry. It pays TSA-relevant cruxes on **deployment-adjacent traces**: selector pressure (**MB6**), entity/coalition pinning (**MB7a**), channel reconstitution (**MB7d**), and possibly correction-channel theater (**MB4a/C-005**) if handle→act joins are defensible.
 
@@ -87,14 +87,14 @@ Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-
 | Crux | Plausible on public traces? |
 |------|----------------------------|
 | MB6 time series | **Yes** — votes, karma snapshots, daily cohorts |
-| MB7a entity vs coalition | **Yes, as structure typing + claim/boundary gap** — not naive coalition ARI; ET-1/ET-2 stops apply |
+| MB7a entity vs coalition | **Yes** — structure typing + **Tier A–D anchors** from independent studies (Step 0c); not full oracle |
 | MB7d coupling | **Partial** — Feb/May population events |
 | MB4a correction handle→act | **Maybe / refuse branch** — state flags only |
 | MB3, C-004 geometry, Exp. 3 κ* | **Refuse** |
 
-**Before freeze:** read UAD experimental record ([`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md) § UAD lessons). Covert-coalition recovery alone is the wrong primary metric; ground truth is sparse — interpret **claims vs boundaries** and report structure class (singleton, sync swarm, common pool, claimed coalition, etc.).
+**Before freeze:** ~~UAD interpretation protocol + Step 0c anchor catalog~~ → done in inventory + [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md).
 
-**Phase 1 order:** Step 0b structure taxonomy → Step 1 blinded criteria (MB6 first) → Step 2 freeze → Step 3 score. Optional ET-5 frozen UAD transfer for structure typing only.
+**Phase 1 order:** ~~Step 0b structure taxonomy → Step 1 blinded criteria → Step 2 freeze~~ → **MB7a frozen** (`h7-moltbook-mb7a-v1.0.0`). Next: cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record W-17. MB6 still optional second leaf.
 
 Track A (Denmark/Folketing inventory) may run **in parallel** but is not Phase 1 gate.
 

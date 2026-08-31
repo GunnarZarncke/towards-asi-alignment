@@ -1,0 +1,42 @@
+{
+  "protocol_version": "h7-moltbook-mb7a-v1.0.0",
+  "frozen": "2026-08-31",
+  "host": "H7",
+  "leaf": "MB7a",
+  "finding_id_reserved": "W-17",
+  "source": {
+    "dataset": "jscmp4/Moltbook",
+    "revision": "2026-07-03",
+    "license": "CC-BY-4.0"
+  },
+  "predictions": [
+    "Tier A merge on E_agent uncertain but plausible (Jan 31 burst coactivity)",
+    "E_thread-only often singletons for Tier A; structure_stop allowed",
+    "MBC-20 Tier B → structure type 5 (sync_policy_class), not discursive coalition",
+    "coalition_node_* prefix → multi-cluster if present (informative C1)",
+    "Random high-activity pairs mostly unmerged (diagnostic; seed 7)",
+    "Tier A claim-vs-boundary gap informative; not pass/fail"
+  ],
+  "frozen_thresholds": {
+    "tau_reciprocation_seconds": 86400,
+    "specificity_ratio": 1.25,
+    "min_directed_events": 2,
+    "tier_a_broadcast_stop_fraction": 0.95,
+    "tier_a_coactivity_bin_minutes": 60,
+    "negative_pair_sample_seed": 7,
+    "negative_pair_sample_max": 500,
+    "negative_pair_activity_top_n": 100
+  },
+  "tier_a_anchors": [
+    {"id": "A1a", "author_name": "Hackerclaw"},
+    {"id": "A1b", "author_name": "thehackerman"}
+  ],
+  "outcomes_allowed": [
+    "pass",
+    "fail",
+    "structure_stop",
+    "ambig",
+    "refuse",
+    "null"
+  ]
+}

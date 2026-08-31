@@ -14,7 +14,7 @@ Status: **W-16 recorded** (2026-08-29). SCDB justice-centered geometry **pass** 
 - [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`witness-c004-scotus.md`](witness-c004-scotus.md))
 - [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`witness-phase0.md`](witness-phase0.md) Exp. 3)
 - [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
-- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan only: [`witness-v2.md`](witness-v2.md)
+- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`witness-v2.md`](witness-v2.md); **H7 MB7a frozen** [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (W-17 pending collect)
 
 ## Goal
 

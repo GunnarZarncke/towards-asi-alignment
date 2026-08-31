@@ -65,6 +65,12 @@ python3 experiments/witness/check_h4_cpc2015.py
 mkdir -p experiments/witness/data/scotus
 python3 experiments/witness/collect_h4_scotus.py
 python3 experiments/witness/check_h4_scotus.py
+
+# W-17: Moltbook MB7a (H7) — export jscmp4/Moltbook 2026-07-03 posts + comments
+mkdir -p experiments/witness/data/moltbook
+# Place posts.parquet and comments.parquet (or .jsonl / .csv) from HF pin under data/moltbook/
+python3 experiments/witness/collect_h7_moltbook_mb7a.py
+python3 experiments/witness/check_h7_moltbook_mb7a.py
 ```
 
 Derived counts used by the freeze live in `fixtures/` (committed). This directory is a cache.

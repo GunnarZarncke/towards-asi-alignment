@@ -1,0 +1,8 @@
+{
+  "protocol_version": "h7-moltbook-mb7a-v1.0.0",
+  "frozen": "2026-08-31",
+  "host": "H7",
+  "leaf": "MB7a",
+  "status": "refuse",
+  "reason": "pending collect — no local Moltbook tables; run collect_h7_moltbook_mb7a.py after caching posts/comments under data/moltbook/"
+}
