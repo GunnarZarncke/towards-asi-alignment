@@ -68,7 +68,7 @@ This is not intended for conventional press publication.</p>
 <dt>Two pages: thesis, what the book tries to establish, and what it does not claim.</dt><dd></dd>
 <dt>Orientation to the argument: six connected claims, what would count as progress, the ten-part roadmap, and the practical hope.</dt><dd></dd>
 <dt>Reframing: wrong object, civilizational loop, dynamical guarantee, fixed values, scope and assumptions (Chapter [Assumptions, Scope, and Failure Coverage](../../chapter/ch05/)).</dt><dd></dd>
-<dt>Operational glossary (Appendix Operational Glossary), notation index (Appendix Notation Index), research program (Appendix [Research Program](../../appendix/appf/)), the bridge--field crosswalk (Appendix [Bridges and the Field: A Crosswalk](../../appendix/appb/)), the institutional translation guide (Appendix [Human Institutions as Alignment Translation Guide](../../appendix/appc/)), and institutional genesis/memory/decay case studies (Appendix [Institutional Genesis, Memory, and Decay: Historical Case Studies](../../appendix/appm/)) for policy-adjacent, historical, and social-science readers.</dt><dd></dd>
+<dt>Operational glossary (Appendix Operational Glossary), notation index (Appendix Notation Index), research program (Appendix [Research Program](../../appendix/appf/)), the field crosswalk (Appendix [Bridges and the Field: A Crosswalk](../../appendix/appb/)), the institutional translation guide (Appendix [Human Institutions as Alignment Translation Guide](../../appendix/appc/)), and institutional genesis/memory/decay case studies (Appendix [Institutional Genesis, Memory, and Decay: Historical Case Studies](../../appendix/appm/)) for policy-adjacent, historical, and social-science readers.</dt><dd></dd>
 </dl>
 <p>Load-bearing assumptions appear as keyed Assumption boxes in the chapters that need them; Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a> maps each to the canonical open problem of the field it inherits.
 The recurring decision question is: <em>what would we audit, measure, or stop if this model is true?</em></p>
@@ -94,13 +94,14 @@ They are produced by biological needs, social practices, reflection, trauma, law
 <p>The problem is not only that a superintelligence might disobey.
 The deeper problem is that it may preserve the words while changing the machinery that makes the words matter.</p>
 <h2 id="gz-ai"><span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
-<p>*Three Alignment Questions</p>
-<p><span id="sec:three-alignment-questions"></span></p>
+<p>*Four Alignment Questions</p>
+<p><span id="sec:three-alignment-questions"></span>
+<span id="sec:four-alignment-questions"></span></p>
 <p>Alignment work is often described as one task: make the system point at the right thing.
-That description hides three different questions.</p>
+That description hides four different questions.</p>
 <ol>
 <li>
-<p><strong>What should be tracked?</strong> Which values, which bearers those values apply to, and which human correction process is legitimate.</p>
+<p><strong>What should be tracked?</strong> Which values, which bearers those values apply to, and which human correction process is legitimate — and <em>what sort of object</em> that target is (a scalar total order, an incomplete preorder, bundle geometry, a procedural constitution, or an open-world specification).</p>
 </li>
 <li>
 <p><strong>How can a system be built that tracks that target?</strong></p>
@@ -108,14 +109,19 @@ That description hides three different questions.</p>
 <li>
 <p><strong>How can we tell that a given system still tracks it?</strong> That is, how can we measure or certify that values, bearers, grounding, and the correction channel survive capability growth, ontology shift, successors, and selection.</p>
 </li>
+<li>
+<p><strong>If tracking fails, can recovery still land?</strong> Can objection still change what the system does before irreversible harm, on handles that are not the certificate’s own channel?</p>
+</li>
 </ol>
 <p>A method for answering the third question does not, by itself, answer the second.
-Showing what must be measured or proved does not tell us how to train or design a system that satisfies those conditions.</p>
+Showing what must be measured or proved does not tell us how to train or design a system that satisfies those conditions.
+The fourth question is a regime on the third: if recovery is still viable on a distinct instrument, a pre-deployment safety case is not the only remaining lever; if it is not, certification (or pause) has to do the work.</p>
 <p>The book develops much of the first question, especially values, bearers, grounding, and correction.
 It develops a structure for the third: what must remain true, and how that can be checked, once a candidate system exists.
 It discusses mechanisms relevant to the second, but does not claim a general method for constructing aligned systems.
-How to build such systems remains an open problem for the field.</p>
-<p>The field sometimes folds all three questions into a single “pointing problem.”
+How to build such systems remains an open problem for the field.
+The fourth is already boxed as Recover (Assumption ) and as pause-or-stop if correction cannot co-scale (Assumption ); this introduction names it as a question so it is not silently folded into certification.</p>
+<p>The field sometimes folds the first three questions into a single “pointing problem.”
 Appendix Operational Glossary treats that phrase as an umbrella, not as one technical task (identification, realization, and preservation).</p>
 <p>Before any of these questions can be answered, we have to locate the process whose dynamics actually determine the risk.
 That is the first chapter’s job.</p>
@@ -191,7 +197,7 @@ A safety case should make explicit which assumptions, thresholds, and failure mo
 <p>These instruments do not solve moral philosophy.
 They preserve the conditions under which moral philosophy, democratic deliberation, science, law, and human refusal still matter.</p>
 <p>Where the argument remains uncertain, each chapter ends with a <em>What Would Change This View</em> section naming observations that would weaken its central claim.</p>
-<h2 id="how-to-read-this-book-ai">How to Read This Book <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="how-to-read-this-book-ai-gz">How to Read This Book <span class="auth-chip" data-auth="AI+GZ" data-auth-mode="dotted" aria-label="Authorship: AI GZ"><span class="auth-chip-label">AI GZ</span></span></h2>
 <p>The book proceeds in ten parts.</p>
 <dl class="description-list">
 <dt>Chs. 1--5. Reframes alignment as a [dynamical guarantee](../../concept/dynamical-guarantee/) for human-correctable processes.</dt><dd></dd>
@@ -206,15 +212,14 @@ They preserve the conditions under which moral philosophy, democratic deliberati
 <dt>Chs. 45--48. Reaches the civilizational limit: preserve the [value-update envelope](../../chapter/ch45/#sec:role-technical-alignment-ch45), not a final answer.</dt><dd></dd>
 </dl>
 <p>The intended reader need not adopt every formalism.
-The first use of each concept is operational; see Appendix Operational Glossary.
-Load-bearing assumptions appear as Assumption boxes keyed —; later uses of a key, including in Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>, are links to that box.
-They are not Lean axioms; those are the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB</mtext></mrow><annotation encoding="application/x-tex">\text{MB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB</span></span></span></span></span> list in Appendix Lean Proof Spine in Mathematical Form.
+Each concept is explained where it first appears; Appendix Operational Glossary collects those definitions.
+Load-bearing assumptions appear as Assumption boxes.
 Chapters re-introduce their load-bearing prerequisites in their openings or the preceding chapter’s closing, so readers entering from a citation or the companion site can orient without a separate reading guide.
 Readers from policy, regulation, funding, or the social sciences may prefer Appendix <a href="../../appendix/appc/">Human Institutions as Alignment Translation Guide</a>, which translates the book’s technical concepts into institutional language without making the main argument depend on that translation.
 Readers who want one end-to-end walkthrough—a single deployment gate with traces and a conditional safety case—should start with Appendix <a href="../../appendix/appd/">A Worked Example: The BioShield Deployment Gate</a>.
 The mathematics is used as compression, not ornament.
 Where the equations are shaky, the text says so.
-The companion site maps how the formal symbols chain through the manuscript; see Appendix Lean Proof Spine in Mathematical Form for the related proof map.</p>
+The companion site maps how the formal symbols chain through the manuscript.</p>
 <p>The book asks a recurring question:</p>
 <p><em>What decision changes if this model is true?</em></p>
 <p>If the answer is “none,” the model is not yet useful enough.
@@ -257,11 +262,11 @@ Superintelligence alignment will likely need the same stack, except the bridge c
 <p>This manuscript is <strong>work in progress</strong>.
 Claims, equations, citations, and cross-references will change as the argument is tested, reviewed, and revised.
 Do not treat the PDF as a finished book.</p>
-<p>At the time of writing, all forty-eight main chapters have integrated first-draft prose and have received at least one review or feedback pass; several cross-cutting passes (notation, epistemic status, bridge crosswalk, reading-order audits) are in progress or recently landed.
+<p>At the time of writing, all forty-eight main chapters have integrated first-draft prose and have received at least one review or feedback pass; several cross-cutting passes (notation, epistemic status, field crosswalk, reading-order audits) are in progress or recently landed.
 Here <em>reviewed</em> means feedback has been received and incorporated or logged; it does not mean final, polished, or publication-ready.
 Some appendices and front-matter pieces remain comparatively less mature.</p>
 <h2 id="companion-website-ai">Companion Website <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
-<p>The companion website is the live orientation layer for the project—essays, field map, experiments, Lean checks, and the book: <code>https://towards-alignment.com/</code>.
+<p>The companion website is the live orientation layer for the project—essays, field map, experiments, companion-site checks, and the book: <code>https://towards-alignment.com/</code>.
 Chapter pages can show optional per-section authorship chips (the same <code>AI</code>/<code>GZ</code> keys as the PDF margin bars); use the <strong>Notes</strong> panel to toggle them.</p>
 <h1 id="-5"></h1>
 <p>*Executive Overview</p>
@@ -296,8 +301,9 @@ Only variety can destroy variety.%</p><footer>— W.\ Ross Ashby, <em>An Introdu
 </ul>
 <h2 id="thesis-ai-gz">Thesis <span class="auth-chip" data-auth="AI+GZ" data-auth-mode="dotted" aria-label="Authorship: AI GZ"><span class="auth-chip-label">AI GZ</span></span></h2>
 <p>Alignment work is often treated as one task: make the system point at the right thing.
-That hides three questions: what should be tracked, how to build a system that tracks it, and how to tell that a given system still does.
+That hides four questions: what should be tracked (including what sort of object the target is), how to build a system that tracks it, how to tell that a given system still does, and whether recovery can still land before irreversible harm on a channel that is not the certificate itself.
 A method for the third does not answer the second.
+The fourth is a regime on the third: if recovery is gone, certification or pause has to do the work.
 The book develops the first question and a structure for the third.
 It discusses mechanisms relevant to the second, but does not claim a general method for constructing aligned systems.</p>
 <p>Operational vocabulary is defined in Appendix Operational Glossary.
@@ -314,8 +320,7 @@ The Introduction names these; later chapters and appendices instantiate them.</p
 <p>This manuscript lays out ideas, definitions, and a conditional formal structure for superintelligence alignment.
 It is not a claim that the alignment problem is solved.
 It rejects three common simplifications: a fixed utility function as the sole target, alignment as a one-time training problem, and the visible model as the only relevant optimizing process.</p>
-<p>Lean checks that structure.
-The advertised safety-case shape follows only if the real optimizer has been located, the metrics still mean what they claim, values and who they apply to survive change, human objection still changes outcomes, replacements inherit that structure, and green readings still mean something when the system has an incentive to fake them.
+<p>The advertised safety-case shape follows only if the real optimizer has been located, the metrics still mean what they claim, values and who they apply to survive change, human objection still changes outcomes, replacements inherit that structure, and green readings still mean something when the system has an incentive to fake them.
 That is not a proof that deployed systems are safe.
 Experiments are sanity checks and tests meant to find where the measurement story fails, not validation of frontier systems.</p>
 <p>The book distinguishes established claims, plausible hypotheses, speculative extensions, and open research problems (Appendix <a href="../../appendix/appf/">Research Program</a>).</p></div><p class="button-row"><a class="button" href="/towards-superintelligence-alignment.pdf">Read in PDF</a></p></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Concept cards in this chapter</h3><ul><li><a href="/cards/chapter/ch01/">The Wrong Object of Alignment</a></li></ul></aside></article></main><footer class="site-footer"><div class="site-footer-inner"><p>The book, a map of alignment research, and the tests behind the claims.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38

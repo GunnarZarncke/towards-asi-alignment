@@ -95,6 +95,26 @@
 <li><strong>Corrigibility → MB4 + MB4a.</strong> A protocol can track truth locally while the judge’s correction channel is compromised. Scalable oversight (debate, amplification, constitutional AI) needs a human or monitor whose endorsements actually reach the deployed loop. <a href="/cards/mb4-correction-legitimacy/">MB4</a> is correction-channel integrity under pressure; <a href="/cards/mb4a-measured-path-legitimacy/">MB4a</a> is whether the designated measured audit path is legitimate and uncaptured.</li>
 <li><strong>Inner Alignment → MB7a–c + MB7d.</strong> The deceptive-alignment wall splits into access-model soundness, filter coverage, bounded hidden capability (pricing the cost of faking the monitored signal), and separately <a href="/cards/mb7d-acausal-coordination/">acausal coordination</a> when ordinary channels are cut.</li>
 </ul>
+<p><strong>Layers versus mechanisms.</strong> Bridges type preservation layers and measurement soundness. Field work also factors mechanisms (how failure is produced). Deception and an evaluator-capability gap are different jobs that both sit in MB7a–c; Goodhart on a scored metric is not <a href="/cards/goodhart-as-selector/">Goodhart Selection <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="52"></circle>
+<circle cx="100" cy="100" r="32"></circle>
+<circle cx="100" cy="100" r="12"></circle>
+<line x1="100" y1="100" x2="152" y2="58"></line>
+<line x1="100" y1="100" x2="48" y2="62"></line>
+<line x1="100" y1="100" x2="54" y2="148"></line>
+<line x1="100" y1="100" x2="148" y2="142"></line>
+<line x1="100" y1="100" x2="100" y2="48"></line>
+<path d="M 132,52 L 142,46 L 136,58"></path>
+<line x1="172" y1="28" x2="112" y2="88" stroke="currentColor" stroke-width="10" stroke-linecap="round"></line>
+<path d="M 100,100 L 120,80 L 114,96 Z" fill="currentColor" stroke="none"></path>
+  </g>
+</svg></span></a>. Many-to-many maps are expected; they are not a reason to merge or split bridges. Keep three questions separate: which mechanisms can cause failure, which layers a safety case must establish, and whether pause or correction remains possible after a failure is found. See Appendix B and the research-program appendix.</p>
 <p>Counterexamples motivate each split. The finite debate model in the Lean spine is one illustration (not a rederivation of Irving’s obfuscated-arguments result): with a correct judge at the reached leaf, optimal play recovers the claim value, but one judge error can certify a false claim, and “debate selects truth” can hold while the judge correction channel is not preserved. That is enough to refute unconditional “debate certifies alignment” and to motivate typing judge integrity as its own bridge.</p>
 <h2 id="coverage-gaps-and-evidence-types">Coverage, gaps, and evidence types</h2>
 <p>The <a href="/field/coverage/">field coverage matrix</a> catalogs sourced field evidence on each crux across named agendas. Matrix cells use evidence tags (conceptual, theory, simulation, practical, empirical software, empirical other). Patterns in the table are informative but not self-interpreting: empty cells can mean neglect, dissolved load-bearing risk, hard matching under divergent terminology, or simply missing catalog entries. A filled cell is not automatic discharge; it marks evidence an agenda offers on a crux, not proof that the bridge holds in deployment.</p>

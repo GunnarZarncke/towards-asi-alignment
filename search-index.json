@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T21:07:51.894Z",
+  "generatedAt": "2026-08-31T23:40:48.488Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -669,7 +669,7 @@
     {
       "title": "Alignment Target",
       "type": "concept",
-      "summary": "Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder.",
+      "summary": "Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder including object-sort compatibility.",
       "url": "/cards/concept/alignment-target/"
     },
     {

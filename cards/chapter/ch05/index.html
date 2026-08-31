@@ -72,13 +72,16 @@ It is the preservation of the processes through which humans, institutions, and 
 <p>socio-technical attractor basins</p>
 </li>
 </ul>
-<p>These are in scope because each can break the same object.
+<p>These are in scope because each can break the same object.<sup class="footnote"><a href="#fn-0">1</a></sup>
 If the real optimizer is misidentified, the wrong system is aligned.
 If value-bundle geometry is lost, moral words can survive while practical values change.
 If bearer maps fail, the system can preserve “care” or “dignity” while changing who or what counts.
 If correction-channel integrity collapses, human judgment no longer reaches future behavior.
 If successor invariants fail, alignment disappears at the first delegated or copied system.
 If selection pressure rewards opacity, speed, or dependence, local alignment methods are selected away.</p>
+<div class="footnotes">
+<p id="fn-1"><sup>1</sup> The list is a <em>layer</em> cut (wrong boundary, captured correction, and so on). Other work often factors <em>mechanisms</em>: how a failure is produced. One mechanism can hit several layers; one layer can fail in several ways. Appendix [Bridges and the Field: A Crosswalk](../../appendix/appb/) keeps those two axes apart.</p>
+</div>
 <h3 id="out-of-scope-ai">Out of Scope <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h3>
 <ul>
 <li>
@@ -102,10 +105,17 @@ If selection pressure rewards opacity, speed, or dependence, local alignment met
 <li>
 <p>AI halting except as a successor-certification footnote</p>
 </li>
+<li>
+<p>train/deploy distributional-shift products as such</p>
+</li>
 </ul>
 <p>LLM whitebox methods, such as training-hygiene methods, mechanistic-interpretability tool stacks, and formal-verification construction programs
 (see Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>, Section <a href="../../appendix/appb/#sec:intervention-coverage-map">Bridges and the Field: A Crosswalk</a>, and the external intervention index <a href="../../references/zarncke2025interventions/">Zarncke, 2025</a>)
 are important inner alignment approaches and a widely studied research agenda, but not the scope of this book.</p>
+<p>Methods that only keep a system behaving well on inputs like those it was trained on are a standard robustness topic (Amodei et al.: robustness to distributional shift <a href="../../references/amodei2016concrete/">Amodei, 2016</a>).
+This book does not treat “stay like the training set” as the primary alignment object.
+Those methods re-enter when the real failure is one of the layers above: the system learned the wrong rule for new situations (Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a>), rebuilt its world-model, steered the world into untested regions, or jumped in capability so correction cannot keep up (Assumption ).
+Keeping familiar-input scores high is not enough to show that correction still works or that hidden capability is bounded.</p>
 <p>Bugs, cybersecurity failures, hardware faults, viruses, infrastructure failures, misuse, and late cosmic-stage pathologies matter.
 They are not dismissed.
 They become central when they alter agency boundaries, successor stability, value-bundle transport, correction-channel integrity, or the social capacity to act on evidence.
@@ -151,6 +161,14 @@ Frontier deployment can be gated on certification evidence: access, compute, rep
 Humans retain enough independent agency to refuse, revise, and coordinate on that evidence.</p>
 <p>If deployment cannot be conditioned on certification, Chapter <a href="../../chapter/ch42/">A Safety Case for Superintelligence Alignment</a> becomes advice without authority.
 If humans cannot refuse, revise, or coordinate, correction has become a story told after the fact.</p>
+<p>The Introduction’s fourth question composes these assumptions as a <em>regime</em>, not as a new named dependency.
+<strong>Pause</strong> is the else-branch of Assumption : withhold access, compute, replication, or successor creation (Assumption ).
+If societal correction capacity is already below <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span>, pause on paper is not pause.
+<strong>Recovery-viable</strong> is Recover above together with the time inequality of Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a>: notice, interpret, contest, and constrain still land before irreversible harm.
+That is not patch-after-catastrophe.
+<strong>Distinct recovery instrument:</strong> shutdown and ordinary correction-channel integrity are one-bit projections of the same channel, so they do not add an independent escape hatch.
+Candidate handles the book already names — withholding outside the measured blanket, permissions and sandboxing, refusing a successor step, delay near irreversible change — remain candidates until shown to be a different instrument.
+The certify path is the existing safety case. Pause and recovery-viable are not a certificate that the system is safe.</p>
 <h2 id="a-failure-mode-alignment-after-capture-ai">A Failure Mode: Alignment After Capture <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:alignment-after-capture-ch05"></span>
 The central counterexample to this chapter is a world in which the book’s later tools are developed, but only after the correction-capacity assumption has failed.</p>
@@ -193,17 +211,35 @@ A failure is in scope when it damages the preservation target: boundary, bundle,
 <tr><td>Indifferent or unfriendly optimization</td><td>Value-bundle and bearer-map failure</td></tr>
 <tr><td>Bargaining, blackmail, coercion</td><td>Correction-channel pathology (Chapter <a href="../../chapter/ch26/">Correction-Channel Integrity</a>)</td></tr>
 <tr><td>Paternalistic safety or human-potential suppression</td><td>Value-bundle tradeoff failure (Chapter <a href="../../chapter/ch19/">Tradeoffs and Bundle Geometry</a>)</td></tr>
-<tr><td>Human replacement or simulacra<sup class="footnote"><a href="#fn-0">1</a></sup>
+<tr><td>Human replacement or simulacra<sup class="footnote"><a href="#fn-1">2</a></sup>
 <div class="footnotes">
 <p id="fn-1"><sup>1</sup> Turchin's replacement sense, not Janus's simulator/simulacrum split and not ELK's human-simulator readout (Appendix Operational Glossary).</p>
 </div></td><td>Bearer persistence and philosophical limit (Chapter <a href="../../chapter/ch47/">Who Still Counts After Transformation</a>)</td></tr>
 <tr><td>Bugs, viruses, ordinary technical failures</td><td>Out of scope except where they alter agency, correction, or successor invariants</td></tr>
+<tr><td>Distributional shift / on-training-distribution guarantees</td><td>Out of scope as objects; goal misgeneralization and ontology shift retyped as layer failures (Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a>)</td></tr>
 <tr><td>Late cosmic failures, AI halting, simulated action over reality</td><td>Mostly out of scope; brief notes only where relevant</td></tr>
 </tbody></table></div>
 <p>The audit has two uses.
 First, it prevents the framework from mistaking a narrow formal object for full coverage.
 Second, it prevents failure taxonomies from becoming the book’s ontology.
 The manuscript’s positive structure remains boundary, value-bundle, bearer, correction, successor, adversarial measurement, and selection.</p>
+<h2 id="quiet-failure-is-not-a-certificate-ai">Quiet Failure Is Not a Certificate <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<p><span id="sec:capability-dormancy-ch05"></span>
+A system that cannot yet model its overseers, game the score, or keep long-horizon options looks well-behaved.
+That quiet is not a path to safety.
+It is why a green check at one capability does not license the same claim after a jump (Assumption ; Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a>).
+What fails is transfer across the precondition.</p>
+<div class="table-wrap"><table class="book-table">
+<tbody><tr><th><strong>What is missing</strong></th><th><strong>What looks idle</strong></th><th><strong>Where transfer is treated</strong></th></tr>
+<tr><td>Low capability or short horizon</td><td>Deception, exploiting the evaluator, keeping options open</td><td>Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a></td></tr>
+<tr><td>The evaluator still outruns the system</td><td>Oversight looks sufficient</td><td>Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability and Representability</a></td></tr>
+<tr><td>No successor or copy yet</td><td>Successor checks stay quiet</td><td>Chapters <a href="../../chapter/ch30/">Successor Creation as the Central Alignment Test</a> and <a href="../../chapter/ch31/">Conserved Properties Across Successors</a></td></tr>
+<tr><td>Stationary world-model</td><td>Who counts, and what the words mean, stay quiet</td><td>Chapters <a href="../../chapter/ch18/">What Values Apply To</a> and <a href="../../chapter/ch30/">Successor Creation as the Central Alignment Test</a></td></tr>
+<tr><td>One stipulated principal</td><td>Aggregation looks solved</td><td>Chapter <a href="../../chapter/ch04/">Why Fixed Values Are the Wrong Target</a></td></tr>
+<tr><td>No selection among deployers</td><td>Basin pressure stays quiet</td><td>Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a></td></tr>
+<tr><td>Non-adversarial scoring</td><td>The score looks like the property</td><td>Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability and Representability</a></td></tr>
+<tr><td>Harm still reversible</td><td>A full safety case looks optional</td><td>Recover above; Introduction, fourth question</td></tr>
+</tbody></table></div>
 <h2 id="how-to-use-the-scope-boundary-ai">How to Use the Scope Boundary <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:how-use-scope-boundary-ch05"></span>
 For a lab, regulator, funder, or research program, the chapter implies a simple discipline.
@@ -234,7 +270,7 @@ It may address cybersecurity, misuse, public education, labor disruption, or ins
 But it should not be counted as progress on the particular alignment theory this book develops.</p>
 <p>This boundary is useful only if it remains permeable to evidence.
 If a supposedly out-of-scope risk begins to change correction capacity, it enters.
-Stored energy, latent copies, and ordinary physical enablement (a valve, a protocol) are not a Turchin family; they enter on the same causal test, when they change agency, correction, or successor invariants.
+Stored energy, latent copies, and ordinary physical enablement (a valve, a protocol) are not a Turchin family; they enter on the same causal test, when they change agency, correction, or successor invariants (Section <a href="../../concept/scope-and-correction-capacity/">Assumptions, Scope, and Failure Coverage</a>; Chapter <a href="../../chapter/ch33/">Certification Without Construction</a>).
 If a supposedly central alignment artifact cannot change any decision, it exits.
 The scope is not a status hierarchy.
 It is a causal test.</p>
@@ -272,6 +308,9 @@ The following would weaken the framework’s applicability or change its scope.<
 </li>
 <li>
 <p>The central failure mode is alignment after capture: safety artifacts still exist, but no longer causally affect deployment or successor creation.</p>
+</li>
+<li>
+<p>A quiet evaluation is not a certificate: missing preconditions make failure modes idle; they do not discharge the layer.</p>
 </li>
 </ul>
 <h2 id="ai"><span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
