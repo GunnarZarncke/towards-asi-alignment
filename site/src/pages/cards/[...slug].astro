@@ -122,7 +122,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const projectionGraphUrl = card.data.graphNodeId
   ? withBase("/lean/graph/field-subsumptions/")
   : null;
-const bridgeGraphUrl = withBase("/cards/concept/bridge-assumptions/#bridge-dependencies");
+const bridgeGraphUrl = withBase("/cards/bridge/bridge-assumptions/#bridge-dependencies");
 /** Cards whose main view is an Astro field embed; page template owns the sole h1 (frontmatter title). */
 const fieldEmbedCardIds = new Set([
   "alignment-lifecycle",
