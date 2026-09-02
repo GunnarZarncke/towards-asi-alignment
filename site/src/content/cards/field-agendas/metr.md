@@ -61,3 +61,5 @@ AISafety.com map listings that roll up to this agenda:
 - [METR](https://metr.org/), [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/) → [METR](#metr) / forecasting adjacent
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-metr) for what this program ships relative to others.

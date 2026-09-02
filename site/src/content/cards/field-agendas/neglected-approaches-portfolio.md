@@ -74,3 +74,5 @@ AISafety.com map listings that roll up to this agenda:
 - AI Safety Interventions (zarncke post) → **Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-neglected-approaches-portfolio) for what this program ships relative to others.

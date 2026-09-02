@@ -190,7 +190,7 @@ function clusteringForSlug(slug, clustering) {
   return clustering.filter((row) => row.rollsUpSlug === slug);
 }
 
-function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct) {
+function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs) {
   const lines = [];
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   lines.push(`## Introduction`);
@@ -262,10 +262,16 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct) 
   lines.push(
     `See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.`
   );
+  if (specSheetSlugs?.has(agenda.slug)) {
+    lines.push("");
+    lines.push(
+      `See the [spec sheet](/start/spec-sheet/#col-${agenda.slug}) for what this program ships relative to others.`
+    );
+  }
   return lines.join("\n");
 }
 
-function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct) {
+function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs) {
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   const related = uniqueStrings([...(agenda.related ?? []), ...(specifyConstruct?.related ?? [])]);
   const fm = [
@@ -282,7 +288,7 @@ function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct) 
     "",
     agendaCardBanner(agenda.slug),
     "",
-    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct)
+    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs)
   ].join("\n");
   return fm;
 }
@@ -491,6 +497,14 @@ async function main() {
   );
   const mbBridgeCards = buildMbBridgeCards(bridgeRows);
 
+  let specSheetSlugs = new Set();
+  try {
+    const productComparison = await loadYaml("product-comparison.yml");
+    specSheetSlugs = new Set(Object.keys(productComparison.columns ?? {}));
+  } catch {
+    // product-comparison.yml optional until first sync
+  }
+
   const mismatches = [];
   const matrixPath = path.join(dataRoot, "matrix.yml");
 
@@ -499,7 +513,13 @@ async function main() {
   for (const agenda of agendas) {
     if (agenda.generateCard === false) continue;
     const clusterRows = clustering.filter((row) => row.rollsUpSlug === agenda.slug);
-    const card = renderAgendaCard(agenda, clusterRows, bridgeRows, specifyConstructByAgenda[agenda.slug]);
+    const card = renderAgendaCard(
+      agenda,
+      clusterRows,
+      bridgeRows,
+      specifyConstructByAgenda[agenda.slug],
+      specSheetSlugs
+    );
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }
 

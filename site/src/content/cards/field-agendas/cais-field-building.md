@@ -8,6 +8,8 @@ bookBridges: []
 external:
   - label: "CAIS"
     url: "https://safe.ai/"
+  - label: "AI Safety, Ethics, and Society (textbook)"
+    url: "https://www.aisafetybook.com/textbook"
 related: []
 ---
 
@@ -34,6 +36,7 @@ CAIS publishes coordinated risk statements, runs the AISES course, and organizes
 ## Links
 
 - [CAIS](https://safe.ai/)
+- [AI Safety, Ethics, and Society (textbook)](https://www.aisafetybook.com/textbook)
 
 ## Map clustering
 

@@ -4785,7 +4785,7 @@
   ],
   "clustering": [
     {
-      "listings": "[MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon)",
+      "listings": "[MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon; now [LessWrong wiki](https://www.lesswrong.com/w))",
       "listingLinks": [
         {
           "label": "MIRI",
@@ -4794,6 +4794,10 @@
         {
           "label": "AI StopWatch",
           "url": "https://aistop.watch/"
+        },
+        {
+          "label": "LessWrong wiki",
+          "url": "https://www.lesswrong.com/w"
         }
       ],
       "rollsUpTo": "[MIRI](#miri)",

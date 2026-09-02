@@ -129,7 +129,7 @@ CAIS publishes coordinated risk statements, runs the AISES course, and organizes
 - **Contributes:** Legitimacy for AI safety as a research area and a steady pipeline of newcomers entering technical and policy work—meta-infrastructure rather than bridge discharge.
 - **Project separates:** This project's measurement spine is independent of CAIS framing; public statements and standards advocacy do not substitute for typed bridge arguments.
 - **Manuscript hooks:** minimal
-- **Links:** [CAIS](https://safe.ai/)
+- **Links:** [CAIS](https://safe.ai/); [AI Safety, Ethics, and Society (textbook)](https://www.aisafetybook.com/textbook)
 
 ### CHAI / FAR.AI (Berkeley alignment)
 
@@ -358,19 +358,19 @@ METR measures dangerous autonomous and AI R&D capabilities at the frontier, prod
 
 ### MIRI
 
-MIRI studies [agent foundations](https://intelligence.org/)—the theoretical problems that arise when building highly capable AI—and has increasingly emphasized policy advocacy for pause and [off-switch](/cards/subsumption-shutdown/) measures when technical solutions look insufficient.
+MIRI studies [agent foundations](https://intelligence.org/)—the theoretical problems that arise when building highly capable AI—and has increasingly emphasized policy advocacy for pause and [off-switch](/cards/subsumption-shutdown/) measures when technical solutions look insufficient. The living explainer layer for that technical canon is no longer a MIRI-owned site: [Arbital](https://www.lesswrong.com/posts/fwSnz5oNnq8HxQjTL/arbital-has-been-imported-to-lesswrong) (MIRI-commissioned, ~2016) was folded into the [LessWrong wiki / Concepts tags](https://www.lesswrong.com/w). In that product sense the LW wiki is a cousin of TSA's companion site and part of MIRI's agenda lineage — not because MIRI controls LW today, but because that is where the Arbital canon actually lives, alongside the [Alignment Forum](https://www.alignmentforum.org/) (successor to MIRI's Intelligent Agent Foundations Forum).
 
 - **Type:** Research org / advocacy
 - **Carrier:** Machine Intelligence Research Institute
-- **Primary artifact:** The [Agent Foundations](https://intelligence.org/) technical agenda (including [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) work) and policy or pause outreach, notably the 2024 strategy update.
+- **Primary artifact:** The [Agent Foundations](https://intelligence.org/) technical agenda (including [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) work); the [LessWrong wiki](https://www.lesswrong.com/w) as the surviving Arbital explainer layer; and policy or pause outreach, notably the 2024 strategy update.
 - **Signature vocabulary:** Core terms include [embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), [tiling](/cards/mb5-successor-ontology-shift/), [Vingean reflection](https://intelligence.org/files/VingeanReflection.pdf), [value learning](/cards/mb2-bundle-identifiability/), [hard pause](https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/), and [off-switch](/cards/subsumption-shutdown/).
 - **Stated intent:** Steer transformative AI away from extinction risk by framing alignment as an agent-foundations problem and prioritizing policy measures such as pause and [off-switch](/cards/subsumption-shutdown/) when technical progress stalls.
 - **Primary crux:** There may be no clean cut between an AI and its environment ([Embedded Agency](/cards/mb1-boundary-estimator-soundness/)); [corrigibility](/cards/mb4-correction-legitimacy/) may be anti-natural; and successor systems may not inherit trust under ontology change ([Tiling](/cards/mb5-successor-ontology-shift/)).
 - **Field cruxes:** Embedded Agency (MB1); Corrigibility (MB4); Tiling (MB5); Extrapolated Volition (MB8)
-- **Contributes:** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
+- **Contributes:** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), a decision-theoretic lineage that shaped much of the field's early vocabulary, and the Arbital→LW-wiki explainer layer that still hosts those terms as communal tags.
 - **Project separates:** This project treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
 - **Manuscript hooks:** App B MB1/MB4/MB5 notes; ch07, ch25, ch28
-- **Links:** [MIRI](https://intelligence.org/); [AI StopWatch](https://aistop.watch/)
+- **Links:** [MIRI](https://intelligence.org/); [LessWrong wiki / Concepts](https://www.lesswrong.com/w); [Arbital import to LessWrong](https://www.lesswrong.com/posts/fwSnz5oNnq8HxQjTL/arbital-has-been-imported-to-lesswrong); [Alignment Forum](https://www.alignmentforum.org/); [AI StopWatch](https://aistop.watch/)
 
 ### Neglected approaches portfolio
 
@@ -756,7 +756,7 @@ Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, c
 
 | Map listing(s) | Rolls up to agenda |
 |---|---|
-| [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon) | [MIRI](#miri) |
+| [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon; now [LessWrong wiki](https://www.lesswrong.com/w)) | [MIRI](#miri) |
 | [Redwood Research](https://www.redwoodresearch.org/) | [Redwood Research](#redwood-research) |
 | [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT) | [CHAI / FAR.AI](#chai-russell) cluster |
 | [ARC](https://www.alignment.org/), [Paul Christiano's Blog](https://www.alignmentforum.org/users/paulfchristiano) | [Christiano lineage](#christiano-lineage) |

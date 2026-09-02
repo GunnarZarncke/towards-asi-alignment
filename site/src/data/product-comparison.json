@@ -1,0 +1,1753 @@
+{
+  "_generated": "<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/product-comparison.yml. Regenerate: cd site && npm run sync:product-comparison -->",
+  "intro": "Aligned ASI is not a product anyone ships. Some programs do ship something you can use.",
+  "caption": "Judgments, not a ranking. A usable product is not an aligned one. For bridge-level evidence, use the coverage matrix; for crux wording, see Appendix B.",
+  "features": [
+    {
+      "id": "breadth",
+      "label": "Breadth",
+      "gloss": "One artifact covers many agendas or problem clusters, not one lineage."
+    },
+    {
+      "id": "long-form-argument",
+      "label": "Long-form argument",
+      "gloss": "A readable through-line (book, sequence, survey) with a thesis."
+    },
+    {
+      "id": "formalization",
+      "label": "Formalization",
+      "gloss": "Mathematical or machine-checked structure for claims or specs.",
+      "deepLink": "/lean/"
+    },
+    {
+      "id": "translation",
+      "label": "Translation",
+      "gloss": "Maps other field programs into its terms without pretending to absorb them.",
+      "deepLink": "/cards/chapters/appB/"
+    },
+    {
+      "id": "public-knowledge-site",
+      "label": "Public knowledge site",
+      "gloss": "A maintained web layer (wiki, cards, paths), not only PDFs and posts."
+    },
+    {
+      "id": "constructive-theory",
+      "label": "Constructive theory",
+      "gloss": "A way to build or guarantee — agent theory, training recipe, or spec stack."
+    },
+    {
+      "id": "ships-usable-product",
+      "label": "Ships a usable product",
+      "gloss": "Something a user or lab can run or buy today, even if alignment is unsolved."
+    },
+    {
+      "id": "living-communal-canon",
+      "label": "Communal",
+      "gloss": "A skeleton others are invited to fill; authorship is not one lab."
+    }
+  ],
+  "columns": [
+    {
+      "slug": "this-project-towards-superintelligence-alignment-tsa",
+      "title": "This project - Towards Superintelligence Alignment (TSA)",
+      "shortName": "TSA",
+      "bestFor": "Seeing which unsolved handoff you are on and how programs differ in what they ship.",
+      "skipIf": "You wanted a training recipe or a guaranteed-safe builder.",
+      "inMatrix": true,
+      "generateCard": false,
+      "matrixLink": "https://towards-alignment.com/",
+      "defaultVisible": true,
+      "isTsa": true
+    },
+    {
+      "slug": "miri",
+      "title": "MIRI",
+      "shortName": "MIRI",
+      "bestFor": "Agent-foundations problem statements and the LW/AF explainer canon.",
+      "skipIf": "You need a shipped AI product or a constructive training recipe.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "redwood-research",
+      "title": "Redwood Research",
+      "shortName": "Redwood",
+      "bestFor": "Control and intentional-subversion evals under deployment pressure.",
+      "skipIf": "You wanted a general theory of values or institutions.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "chai-russell",
+      "title": "CHAI / FAR.AI (Berkeley alignment)",
+      "shortName": "CHAI",
+      "bestFor": "Assistance games, beneficial-AI framing, and Berkeley alignment hub.",
+      "skipIf": "You need bundle geometry or selection as a load-bearing layer.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "christiano-lineage",
+      "title": "Christiano lineage",
+      "shortName": "Christiano",
+      "bestFor": "Scalable oversight protocols (debate, amplification) and ELK framing.",
+      "skipIf": "You treat readout as correction uptake without a separate check.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "davidad-guaranteed-safe-ai-gsai",
+      "title": "davidad / Guaranteed-Safe AI (GSAI)",
+      "shortName": "GSAI",
+      "bestFor": "Open-world specification coverage and guaranteed-safe formalism.",
+      "skipIf": "You want conservative grounding instead of completeness claims.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "anthropic-lab",
+      "title": "Anthropic / Goodfire (lab & MI stack)",
+      "shortName": "Anthropic",
+      "bestFor": "Frontier models under RSP, constitutional AI, and MI tooling (Goodfire stack).",
+      "skipIf": "You need a preservation-layer certificate, not a lab scaling policy.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "google-deepmind-safety",
+      "title": "Google DeepMind (safety)",
+      "shortName": "DeepMind",
+      "bestFor": "Frontier models plus DeepMind safety research and eval infrastructure.",
+      "skipIf": "You wanted a single-author theory manuscript.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "apollo-research",
+      "title": "Apollo / Truthful AI (deception & scheming)",
+      "shortName": "Apollo",
+      "bestFor": "Scheming and deception evals before deployment.",
+      "skipIf": "You need correction-channel integrity certified, not detected opacity.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "metr",
+      "title": "METR",
+      "shortName": "METR",
+      "bestFor": "Capability evals and frontier risk reporting for labs.",
+      "skipIf": "You need a constructive alignment theory or value transport story.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "resolution",
+      "title": "Resolution",
+      "shortName": "Resolution",
+      "bestFor": "Automation-first high-confidence alignment research (Timaeus line).",
+      "skipIf": "You need adversarial verifiability priced before automation claims land.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "neglected-approaches-portfolio",
+      "title": "Neglected approaches portfolio",
+      "shortName": "Neglected",
+      "bestFor": "Cataloguing underexplored intervention routes across the field.",
+      "skipIf": "You want one coherent constructive bet.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "orthogonal",
+      "title": "Orthogonal",
+      "shortName": "Orthogonal",
+      "bestFor": "Community agent-foundations research (embedded agency, corrigibility).",
+      "skipIf": "You need lab-scale eval infrastructure or a book-length spine.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "wentworth-natural-abstractions",
+      "title": "Wentworth / natural abstractions",
+      "shortName": "Wentworth",
+      "bestFor": "Natural abstractions, selection theorems, and compression-based agency.",
+      "skipIf": "You need bearer maps or institutional selection typed separately.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "kosoy-infra-bayesianism-lta",
+      "title": "Kosoy / infra-Bayesianism & LTA",
+      "shortName": "Kosoy",
+      "bestFor": "Learning-theoretic agent theory and infra-Bayesian constructive layers.",
+      "skipIf": "You want bundle transport and correction channel as separately checkable.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "ciris",
+      "title": "CIRIS",
+      "shortName": "CIRIS",
+      "bestFor": "Shipped accountability stack with signed traces and fail-closed ops layers.",
+      "skipIf": "You need composite-agency boundary coverage, not named-identity attestation.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "govai",
+      "title": "GovAI / UK AISI (governance & eval)",
+      "shortName": "GovAI",
+      "bestFor": "Governance research, AISI-adjacent eval institutes, and policy translation.",
+      "skipIf": "You need a technical constructive alignment recipe.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "pause-standards-advocacy-cluster",
+      "title": "Pause / standards advocacy cluster",
+      "shortName": "Pause",
+      "bestFor": "Moratorium and standards advocacy when mechanism progress stalls.",
+      "skipIf": "You wanted a measurement decomposition or training method.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "arc-alignment-research-center",
+      "title": "ARC (Alignment Research Center)",
+      "shortName": "ARC",
+      "bestFor": "ELK and formal scalable-oversight research hosted at ARC.",
+      "skipIf": "You treat latent readout as full inner-alignment discharge.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "clr-cooperation-conflict",
+      "title": "CLR (cooperation / conflict)",
+      "shortName": "CLR",
+      "bestFor": "Cooperation under competition, s-risks, and multipolar structural risk.",
+      "skipIf": "You need typed deployment-leverage measurement, not narrative multipolar stories.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "ai-futures-forecasting-cluster",
+      "title": "AI Futures / forecasting cluster",
+      "shortName": "Forecast",
+      "bestFor": "Scenario timelines and shared prediction infrastructure for urgency.",
+      "skipIf": "You need mechanism-level bridge discharge, not schedule cues.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "conjecture-cognitive-emulation",
+      "title": "Conjecture / cognitive emulation",
+      "shortName": "Conjecture",
+      "bestFor": "Cognitive-emulation controllability framing (historical CoEm line).",
+      "skipIf": "You need a live product line — Conjecture is winding down.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "safeguarded-ai-aria-zeroth-heron",
+      "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
+      "shortName": "Safeguarded",
+      "bestFor": "Whole-system formal assurance, proof certificates, and runtime action control.",
+      "skipIf": "You need correction uptake on the live loop, not a green certificate.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "mai-cip-institutional-alignment",
+      "title": "MAI + CIP (institutional alignment)",
+      "shortName": "MAI/CIP",
+      "bestFor": "Thick values, assemblies, and institutional full-stack alignment design.",
+      "skipIf": "You need adversarial verifiability under optimization on the measured object.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
+      "slug": "iliad-textbook-from-the-future",
+      "title": "Iliad / Textbook from the Future",
+      "shortName": "Iliad",
+      "bestFor": "Joining a communal theory TOC and field-building megaproject.",
+      "skipIf": "You need a closed single-author argument today.",
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    }
+  ],
+  "cells": [
+    {
+      "feature": "breadth",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Field hub maps ~30 agendas against bridge cruxes."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Book manuscript with six-claim spine."
+    },
+    {
+      "feature": "formalization",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Lean dependency spine and conditional bridge structure."
+    },
+    {
+      "feature": "translation",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "App B crosswalk and field matrix as explicit translation layer."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "towards-alignment.com companion site."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "dash",
+      "display": "No",
+      "because": "Requirements decomposition — not a general builder recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "some",
+      "display": "Some",
+      "because": "Toy simulations"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "this-project-towards-superintelligence-alignment-tsa",
+      "mark": "dash",
+      "display": "No",
+      "because": "One project's publication layer — not communal wiki."
+    },
+    {
+      "feature": "breadth",
+      "column": "miri",
+      "mark": "some",
+      "display": "Some",
+      "because": "Sequences span many cruxes but do not catalog the whole field."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "miri",
+      "mark": "some",
+      "display": "Some",
+      "because": "Historical sequences and AF writeups; intelligence.org is now advocacy-first."
+    },
+    {
+      "feature": "formalization",
+      "column": "miri",
+      "mark": "some",
+      "display": "Some",
+      "because": "Agent-foundations theory; not a machine-checked deployment spine."
+    },
+    {
+      "feature": "translation",
+      "column": "miri",
+      "mark": "some",
+      "display": "Some",
+      "because": "Canonical problem names; does not map other agendas systematically."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "miri",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "LW wiki (Arbital import)"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "miri",
+      "mark": "some",
+      "display": "Some",
+      "because": "AF theory agenda; not a shipped builder or lab recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "miri",
+      "mark": "dash",
+      "display": "No",
+      "because": "Pause advocacy and canon — not a shipped AI product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "miri",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Arbital canon lives on the LessWrong wiki and Alignment Forum."
+    },
+    {
+      "feature": "breadth",
+      "column": "redwood-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Focused on control under subversion."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "redwood-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "AI Control agenda and eval writeups."
+    },
+    {
+      "feature": "formalization",
+      "column": "redwood-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Explicit capability-gap assumptions; empirical formalism more than proof spine."
+    },
+    {
+      "feature": "translation",
+      "column": "redwood-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not re-express other agendas in one map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "redwood-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Site and publications; not a wiki-scale canon."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "redwood-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Control protocols — not a full alignment construction."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "redwood-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Control eval tooling and published eval protocols — not frontier models."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "redwood-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research org output"
+    },
+    {
+      "feature": "breadth",
+      "column": "chai-russell",
+      "mark": "some",
+      "display": "Some",
+      "because": "Berkeley cluster spans value learning and oversight cousins."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "chai-russell",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Human Compatible book lineage and assistance-game formalism."
+    },
+    {
+      "feature": "formalization",
+      "column": "chai-russell",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "CIRL / assistance games as formal constructive layer."
+    },
+    {
+      "feature": "translation",
+      "column": "chai-russell",
+      "mark": "some",
+      "display": "Some",
+      "because": "Maps value learning; does not absorb selection or bearer transport."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "chai-russell",
+      "mark": "some",
+      "display": "Some",
+      "because": "humancompatible.ai and FAR.AI — org sites"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "chai-russell",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Assistance-game constructive recipe is load-bearing."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "chai-russell",
+      "mark": "some",
+      "display": "Some",
+      "because": "FAR tooling and research hub; not a flagship model product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "chai-russell",
+      "mark": "dash",
+      "display": "No",
+      "because": "Academic hub"
+    },
+    {
+      "feature": "breadth",
+      "column": "christiano-lineage",
+      "mark": "some",
+      "display": "Some",
+      "because": "Debate"
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "christiano-lineage",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Foundational scalable-oversight posts and ELK problem statement."
+    },
+    {
+      "feature": "formalization",
+      "column": "christiano-lineage",
+      "mark": "some",
+      "display": "Some",
+      "because": "Protocol formalism; not a full safety-case spine."
+    },
+    {
+      "feature": "translation",
+      "column": "christiano-lineage",
+      "mark": "some",
+      "display": "Some",
+      "because": "ELK/debate as projections; readout separated from correction elsewhere."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "christiano-lineage",
+      "mark": "some",
+      "display": "Some",
+      "because": "AF/LW archive of posts; no dedicated companion site."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "christiano-lineage",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Debate/amplification as constructive oversight recipes."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "christiano-lineage",
+      "mark": "dash",
+      "display": "No",
+      "because": "Oversight protocols as research"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "christiano-lineage",
+      "mark": "dash",
+      "display": "No",
+      "because": "Distributed lineage"
+    },
+    {
+      "feature": "breadth",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Single assurance-form program."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "some",
+      "display": "Some",
+      "because": "GSAI paper and Open Agency specifications."
+    },
+    {
+      "feature": "formalization",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Formal spec + world model + safety-case methodology."
+    },
+    {
+      "feature": "translation",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not systematically map other field agendas."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "some",
+      "display": "Some",
+      "because": "Papers"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Guaranteed-safe / open-agency constructive stack."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research program — not a shipped guaranteed-safe system."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "davidad-guaranteed-safe-ai-gsai",
+      "mark": "dash",
+      "display": "No",
+      "because": "One person's plan lineage (contrast Iliad communal TOC)."
+    },
+    {
+      "feature": "breadth",
+      "column": "anthropic-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "Lab RSP + MI stack cluster; not a field-wide map."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "anthropic-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "RSP"
+    },
+    {
+      "feature": "formalization",
+      "column": "anthropic-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "Scaling policies and interpretability science; not a unified proof spine."
+    },
+    {
+      "feature": "translation",
+      "column": "anthropic-lab",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not crosswalk the field in neutral bridge terms."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "anthropic-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Research index"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "anthropic-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Constitutional AI / RLAIF as constructive training recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "anthropic-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Frontier Claude models; Goodfire SAE/Ember as MI product line."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "anthropic-lab",
+      "mark": "dash",
+      "display": "No",
+      "because": "Corporate lab artifacts."
+    },
+    {
+      "feature": "breadth",
+      "column": "google-deepmind-safety",
+      "mark": "some",
+      "display": "Some",
+      "because": "Lab safety research across several crux neighborhoods."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "google-deepmind-safety",
+      "mark": "some",
+      "display": "Some",
+      "because": "Research papers and safety blog — not one authored book spine."
+    },
+    {
+      "feature": "formalization",
+      "column": "google-deepmind-safety",
+      "mark": "some",
+      "display": "Some",
+      "because": "Formal methods pockets; not one public claim spine like TSA Lean."
+    },
+    {
+      "feature": "translation",
+      "column": "google-deepmind-safety",
+      "mark": "dash",
+      "display": "No",
+      "because": "Internal crosswalk not published as field map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "google-deepmind-safety",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "deepmind.google research and safety publications."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "google-deepmind-safety",
+      "mark": "some",
+      "display": "Some",
+      "because": "RLHF/safety training stacks — lab recipes"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "google-deepmind-safety",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Frontier Gemini models with safety team and eval stack."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "google-deepmind-safety",
+      "mark": "dash",
+      "display": "No",
+      "because": "Lab output."
+    },
+    {
+      "feature": "breadth",
+      "column": "apollo-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Deception/scheming focus."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "apollo-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Scheming science papers and eval frameworks."
+    },
+    {
+      "feature": "formalization",
+      "column": "apollo-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Empirical eval formalism."
+    },
+    {
+      "feature": "translation",
+      "column": "apollo-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not map full field."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "apollo-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "apolloresearch.ai publications."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "apollo-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Pre-deployment eval recipe — not full alignment construction."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "apollo-research",
+      "mark": "some",
+      "display": "Some",
+      "because": "Scheming eval suites and agent-security tooling."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "apollo-research",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research org."
+    },
+    {
+      "feature": "breadth",
+      "column": "metr",
+      "mark": "dash",
+      "display": "No",
+      "because": "Capability/eval focus."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "metr",
+      "mark": "some",
+      "display": "Some",
+      "because": "Eval methodology writeups."
+    },
+    {
+      "feature": "formalization",
+      "column": "metr",
+      "mark": "some",
+      "display": "Some",
+      "because": "Rigorous eval design; not alignment proof spine."
+    },
+    {
+      "feature": "translation",
+      "column": "metr",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not translate other agendas."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "metr",
+      "mark": "some",
+      "display": "Some",
+      "because": "metr.org and public reports."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "metr",
+      "mark": "dash",
+      "display": "No",
+      "because": "Measurement"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "metr",
+      "mark": "some",
+      "display": "Some",
+      "because": "Eval protocols and frontier risk reports used by labs."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "metr",
+      "mark": "dash",
+      "display": "No",
+      "because": "Single research org."
+    },
+    {
+      "feature": "breadth",
+      "column": "resolution",
+      "mark": "dash",
+      "display": "No",
+      "because": "Automation-first alignment theory line."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "resolution",
+      "mark": "some",
+      "display": "Some",
+      "because": "Launch essay and Timaeus/SLT research program."
+    },
+    {
+      "feature": "formalization",
+      "column": "resolution",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Singular learning / formal automation ambitions."
+    },
+    {
+      "feature": "translation",
+      "column": "resolution",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not publish a field crosswalk."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "resolution",
+      "mark": "some",
+      "display": "Some",
+      "because": "resolution.org and papers."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "resolution",
+      "mark": "some",
+      "display": "Some",
+      "because": "Constructive automation bet — not yet a shipped builder."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "resolution",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research org — automation tools in progress."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "resolution",
+      "mark": "dash",
+      "display": "No",
+      "because": "Org output; overlaps Iliad/Timaeus ecosystem."
+    },
+    {
+      "feature": "breadth",
+      "column": "neglected-approaches-portfolio",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Explicit cross-intervention catalog (AI Safety Interventions lineage)."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "neglected-approaches-portfolio",
+      "mark": "some",
+      "display": "Some",
+      "because": "Intervention index and extended PDF."
+    },
+    {
+      "feature": "formalization",
+      "column": "neglected-approaches-portfolio",
+      "mark": "dash",
+      "display": "No",
+      "because": "Conceptual inventory."
+    },
+    {
+      "feature": "translation",
+      "column": "neglected-approaches-portfolio",
+      "mark": "some",
+      "display": "Some",
+      "because": "Names many routes; does not type bridges formally."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "neglected-approaches-portfolio",
+      "mark": "some",
+      "display": "Some",
+      "because": "LessWrong index and GitHub PDF."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "neglected-approaches-portfolio",
+      "mark": "dash",
+      "display": "No",
+      "because": "Maps interventions"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "neglected-approaches-portfolio",
+      "mark": "dash",
+      "display": "No",
+      "because": "Portfolio catalog — not a product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "neglected-approaches-portfolio",
+      "mark": "dash",
+      "display": "No",
+      "because": "Catalog"
+    },
+    {
+      "feature": "breadth",
+      "column": "orthogonal",
+      "mark": "dash",
+      "display": "No",
+      "because": "Agent-foundations focus."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "orthogonal",
+      "mark": "some",
+      "display": "Some",
+      "because": "Papers on embedded agency and corrigibility."
+    },
+    {
+      "feature": "formalization",
+      "column": "orthogonal",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Formal agent-foundations alignment work."
+    },
+    {
+      "feature": "translation",
+      "column": "orthogonal",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not map other agendas."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "orthogonal",
+      "mark": "some",
+      "display": "Some",
+      "because": "orxl.org and paper archive."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "orthogonal",
+      "mark": "some",
+      "display": "Some",
+      "because": "Formal AF constructive research — not a lab recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "orthogonal",
+      "mark": "dash",
+      "display": "No",
+      "because": "Community research — papers and Discord"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "orthogonal",
+      "mark": "some",
+      "display": "Some",
+      "because": "Community-organized research — partial communal layer."
+    },
+    {
+      "feature": "breadth",
+      "column": "wentworth-natural-abstractions",
+      "mark": "dash",
+      "display": "No",
+      "because": "Abstractions/agency theory line."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "wentworth-natural-abstractions",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "NAH sequence and selection-theorem program."
+    },
+    {
+      "feature": "formalization",
+      "column": "wentworth-natural-abstractions",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Mathematical theory of abstractions and agency."
+    },
+    {
+      "feature": "translation",
+      "column": "wentworth-natural-abstractions",
+      "mark": "some",
+      "display": "Some",
+      "because": "Falsifier for low-dimensional value stories; not full field map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "wentworth-natural-abstractions",
+      "mark": "some",
+      "display": "Some",
+      "because": "LessWrong archive — no standalone companion site."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "wentworth-natural-abstractions",
+      "mark": "some",
+      "display": "Some",
+      "because": "Theory of learnable targets — not a deployment builder."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "wentworth-natural-abstractions",
+      "mark": "dash",
+      "display": "No",
+      "because": "Theory lineage — not a shipped system."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "wentworth-natural-abstractions",
+      "mark": "dash",
+      "display": "No",
+      "because": "Researcher lineage on LW/AF."
+    },
+    {
+      "feature": "breadth",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "dash",
+      "display": "No",
+      "because": "LTA + infra-Bayesianism stack."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "LTA overview and infra-Bayesianism sequences."
+    },
+    {
+      "feature": "formalization",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Constructive learning-theoretic and infra-Bayesian formalism."
+    },
+    {
+      "feature": "translation",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "dash",
+      "display": "No",
+      "because": "Own ontology; TSA maps it"
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "some",
+      "display": "Some",
+      "because": "Alignment Forum and LessWrong sequences."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "PSI/PreDCA as hypothesized outer-alignment protocol."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "dash",
+      "display": "No",
+      "because": "Theory program — not a shipped agent product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "kosoy-infra-bayesianism-lta",
+      "mark": "dash",
+      "display": "No",
+      "because": "Researcher lineage."
+    },
+    {
+      "feature": "breadth",
+      "column": "ciris",
+      "mark": "dash",
+      "display": "No",
+      "because": "Accountability ops stack for agents."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "ciris",
+      "mark": "some",
+      "display": "Some",
+      "because": "Constitution and Accord — procedural"
+    },
+    {
+      "feature": "formalization",
+      "column": "ciris",
+      "mark": "some",
+      "display": "Some",
+      "because": "Protocol + unit-tested layers; not Lean claim spine."
+    },
+    {
+      "feature": "translation",
+      "column": "ciris",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not crosswalk field agendas."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "ciris",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "ciris.ai"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "ciris",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Constructive constitutional ops stack and builder."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "ciris",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Shipped CIRISAgent"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "ciris",
+      "mark": "dash",
+      "display": "No",
+      "because": "Named product with signed identity — not communal TOC."
+    },
+    {
+      "feature": "breadth",
+      "column": "govai",
+      "mark": "some",
+      "display": "Some",
+      "because": "Governance + eval institute cluster."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "govai",
+      "mark": "some",
+      "display": "Some",
+      "because": "Policy and governance research reports."
+    },
+    {
+      "feature": "formalization",
+      "column": "govai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Policy analysis more than formal alignment spine."
+    },
+    {
+      "feature": "translation",
+      "column": "govai",
+      "mark": "some",
+      "display": "Some",
+      "because": "Translates technical cruxes for policy — partial field map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "govai",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "governance.ai and institute publications."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "govai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Institutional design"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "govai",
+      "mark": "some",
+      "display": "Some",
+      "because": "Governance research outputs and AISI-adjacent eval influence — not models."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "govai",
+      "mark": "dash",
+      "display": "No",
+      "because": "Think-tank / institute outputs."
+    },
+    {
+      "feature": "breadth",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "some",
+      "display": "Some",
+      "because": "Many orgs under pause/standards umbrella."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "some",
+      "display": "Some",
+      "because": "Policy statements and advocacy framing."
+    },
+    {
+      "feature": "formalization",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Political/programmatic"
+    },
+    {
+      "feature": "translation",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not type technical bridges."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "some",
+      "display": "Some",
+      "because": "Org sites (PauseAI"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Moratorium advocacy"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Advocacy coalition — not a technical product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "pause-standards-advocacy-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Coalition"
+    },
+    {
+      "feature": "breadth",
+      "column": "arc-alignment-research-center",
+      "mark": "dash",
+      "display": "No",
+      "because": "Oversight / ELK focus."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "arc-alignment-research-center",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "ELK report and oversight research program."
+    },
+    {
+      "feature": "formalization",
+      "column": "arc-alignment-research-center",
+      "mark": "some",
+      "display": "Some",
+      "because": "Formal oversight research."
+    },
+    {
+      "feature": "translation",
+      "column": "arc-alignment-research-center",
+      "mark": "some",
+      "display": "Some",
+      "because": "ELK as canonical readout subchannel naming."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "arc-alignment-research-center",
+      "mark": "some",
+      "display": "Some",
+      "because": "alignment.org."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "arc-alignment-research-center",
+      "mark": "some",
+      "display": "Some",
+      "because": "Oversight protocols as constructive research direction."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "arc-alignment-research-center",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research org — ELK as problem framing"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "arc-alignment-research-center",
+      "mark": "dash",
+      "display": "No",
+      "because": "Org-hosted research."
+    },
+    {
+      "feature": "breadth",
+      "column": "clr-cooperation-conflict",
+      "mark": "some",
+      "display": "Some",
+      "because": "Cooperation/conflict/multipolar framing."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "clr-cooperation-conflict",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "ARCHES and cooperative AI open problems."
+    },
+    {
+      "feature": "formalization",
+      "column": "clr-cooperation-conflict",
+      "mark": "some",
+      "display": "Some",
+      "because": "Game-theoretic and structural formalism."
+    },
+    {
+      "feature": "translation",
+      "column": "clr-cooperation-conflict",
+      "mark": "some",
+      "display": "Some",
+      "because": "Multipolar cousin to selection bridges — narrative not typed map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "clr-cooperation-conflict",
+      "mark": "some",
+      "display": "Some",
+      "because": "longtermrisk.org publications."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "clr-cooperation-conflict",
+      "mark": "dash",
+      "display": "No",
+      "because": "Structural risk analysis"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "clr-cooperation-conflict",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research and grantmaking — not a product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "clr-cooperation-conflict",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research org."
+    },
+    {
+      "feature": "breadth",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "some",
+      "display": "Some",
+      "because": "Scenario and timeline cluster."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "AI 2027-style scenarios and forecasting reports."
+    },
+    {
+      "feature": "formalization",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Scenario models"
+    },
+    {
+      "feature": "translation",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Schedule cues for governance — not mechanism map."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "ai-2027.com"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Forecasting"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "some",
+      "display": "Some",
+      "because": "Prediction infrastructure (Metaculus"
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "ai-futures-forecasting-cluster",
+      "mark": "dash",
+      "display": "No",
+      "because": "Forecasting community"
+    },
+    {
+      "feature": "breadth",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "dash",
+      "display": "No",
+      "because": "Controllability framing."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "some",
+      "display": "Some",
+      "because": "Cognitive emulation proposal."
+    },
+    {
+      "feature": "formalization",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "dash",
+      "display": "No",
+      "because": "Engineering framing more than formal spine."
+    },
+    {
+      "feature": "translation",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not map field."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "some",
+      "display": "Some",
+      "because": "conjecture.dev archive."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "some",
+      "display": "Some",
+      "because": "Emulation as constructive controllability bet."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "some",
+      "display": "Some",
+      "because": "Historical CoEm / controllable LLM stack (org winding down)."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "conjecture-cognitive-emulation",
+      "mark": "dash",
+      "display": "No",
+      "because": "Startup lineage."
+    },
+    {
+      "feature": "breadth",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "dash",
+      "display": "No",
+      "because": "Formal assurance cluster."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "some",
+      "display": "Some",
+      "because": "Safeguarded AI programme documents."
+    },
+    {
+      "feature": "formalization",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Proof certificates"
+    },
+    {
+      "feature": "translation",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "dash",
+      "display": "No",
+      "because": "Cousin to GSAI — does not absorb other agendas."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "some",
+      "display": "Some",
+      "because": "ARIA"
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "End-to-end safeguarded-AI constructive stack."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "some",
+      "display": "Some",
+      "because": "Runtime control (AARM) and attestation tooling in development."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "safeguarded-ai-aria-zeroth-heron",
+      "mark": "dash",
+      "display": "No",
+      "because": "Programme cluster"
+    },
+    {
+      "feature": "breadth",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "some",
+      "display": "Some",
+      "because": "Institutional full-stack alignment framing."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Full-Stack Alignment paper and assembly programmes."
+    },
+    {
+      "feature": "formalization",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "some",
+      "display": "Some",
+      "because": "Thick-value formal design — not Lean spine."
+    },
+    {
+      "feature": "translation",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "some",
+      "display": "Some",
+      "because": "Institutional layer cousin to bundle/bearer — one level up."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "meaningalignment.org and cip.org."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Deliberative / assembly constructive institutional recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "dash",
+      "display": "No",
+      "because": "Research and assemblies — not a model product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "mai-cip-institutional-alignment",
+      "mark": "dash",
+      "display": "No",
+      "because": "Org-led institutional design."
+    },
+    {
+      "feature": "breadth",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Selective synthesis across theory-driven agendas."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "some",
+      "display": "Some",
+      "because": "FAQ and project briefs; chapters still emerging."
+    },
+    {
+      "feature": "formalization",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "some",
+      "display": "Some",
+      "because": "Theory megaproject; Lean/ATP deferred per their FAQ."
+    },
+    {
+      "feature": "translation",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Catalogues major theory lines in one TOC skeleton."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "some",
+      "display": "Some",
+      "because": "textbookfromthefuture.org + iliad.ac — not a filled corpus yet."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "dash",
+      "display": "No",
+      "because": "Coordination instrument — not one constructive recipe."
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "dash",
+      "display": "No",
+      "because": "TOC + projects list — not a filled textbook or product."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "iliad-textbook-from-the-future",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Explicit communal textbook / Stacks-style megaproject bet."
+    }
+  ]
+}

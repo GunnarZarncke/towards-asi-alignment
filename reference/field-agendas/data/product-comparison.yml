@@ -1,0 +1,391 @@
+# Spec sheet source — regenerate: cd site && npm run sync:product-comparison
+# Columns are roster slugs; marks: yes | some | dash
+
+intro: >-
+  Aligned ASI is not a product anyone ships. Some programs do ship something you can use.
+
+caption: >-
+  Judgments, not a ranking. A usable product is not an aligned one. For bridge-level
+  evidence, use the coverage matrix; for crux wording, see Appendix B.
+
+features:
+  - id: ships-usable-product
+    label: Ships a usable product
+    gloss: Something a user or lab can run or buy today, even if alignment is unsolved.
+  - id: breadth
+    label: Breadth
+    gloss: One artifact covers many agendas or problem clusters, not one lineage.
+  - id: long-form-argument
+    label: Long-form argument
+    gloss: A readable through-line (book, sequence, survey) with a thesis.
+  - id: living-communal-canon
+    label: Communal
+    gloss: A skeleton others are invited to fill; authorship is not one lab.
+  - id: formalization
+    label: Formalization
+    gloss: Mathematical or machine-checked structure for claims or specs.
+    deepLink: /lean/
+  - id: translation
+    label: Translation
+    gloss: Maps other field programs into its terms without pretending to absorb them.
+    deepLink: /cards/chapters/appB/
+  - id: public-knowledge-site
+    label: Public knowledge site
+    gloss: A maintained web layer (wiki, cards, paths), not only PDFs and posts.
+  - id: constructive-theory
+    label: Constructive theory
+    gloss: A way to build or guarantee — agent theory, training recipe, or spec stack.
+
+columns:
+  miri:
+    shortName: MIRI
+    bestFor: Agent-foundations problem statements and the LW/AF explainer canon.
+    skipIf: You need a shipped AI product or a constructive training recipe.
+  redwood-research:
+    shortName: Redwood
+    bestFor: Control and intentional-subversion evals under deployment pressure.
+    skipIf: You wanted a general theory of values or institutions.
+  chai-russell:
+    shortName: CHAI
+    bestFor: Assistance games, beneficial-AI framing, and Berkeley alignment hub.
+    skipIf: You need bundle geometry or selection as a load-bearing layer.
+  christiano-lineage:
+    shortName: Christiano
+    bestFor: Scalable oversight protocols (debate, amplification) and ELK framing.
+    skipIf: You treat readout as correction uptake without a separate check.
+  davidad-guaranteed-safe-ai-gsai:
+    shortName: GSAI
+    bestFor: Open-world specification coverage and guaranteed-safe formalism.
+    skipIf: You want conservative grounding instead of completeness claims.
+  anthropic-lab:
+    shortName: Anthropic
+    bestFor: Frontier models under RSP, constitutional AI, and MI tooling (Goodfire stack).
+    skipIf: You need a preservation-layer certificate, not a lab scaling policy.
+  google-deepmind-safety:
+    shortName: DeepMind
+    bestFor: Frontier models plus DeepMind safety research and eval infrastructure.
+    skipIf: You wanted a single-author theory manuscript.
+  apollo-research:
+    shortName: Apollo
+    bestFor: Scheming and deception evals before deployment.
+    skipIf: You need correction-channel integrity certified, not detected opacity.
+  metr:
+    shortName: METR
+    bestFor: Capability evals and frontier risk reporting for labs.
+    skipIf: You need a constructive alignment theory or value transport story.
+  resolution:
+    shortName: Resolution
+    bestFor: Automation-first high-confidence alignment research (Timaeus line).
+    skipIf: You need adversarial verifiability priced before automation claims land.
+  neglected-approaches-portfolio:
+    shortName: Neglected
+    bestFor: Cataloguing underexplored intervention routes across the field.
+    skipIf: You want one coherent constructive bet.
+  orthogonal:
+    shortName: Orthogonal
+    bestFor: Community agent-foundations research (embedded agency, corrigibility).
+    skipIf: You need lab-scale eval infrastructure or a book-length spine.
+  wentworth-natural-abstractions:
+    shortName: Wentworth
+    bestFor: Natural abstractions, selection theorems, and compression-based agency.
+    skipIf: You need bearer maps or institutional selection typed separately.
+  kosoy-infra-bayesianism-lta:
+    shortName: Kosoy
+    bestFor: Learning-theoretic agent theory and infra-Bayesian constructive layers.
+    skipIf: You want bundle transport and correction channel as separately checkable.
+  ciris:
+    shortName: CIRIS
+    bestFor: Shipped accountability stack with signed traces and fail-closed ops layers.
+    skipIf: You need composite-agency boundary coverage, not named-identity attestation.
+  govai:
+    shortName: GovAI
+    bestFor: Governance research, AISI-adjacent eval institutes, and policy translation.
+    skipIf: You need a technical constructive alignment recipe.
+  pause-standards-advocacy-cluster:
+    shortName: Pause
+    bestFor: Moratorium and standards advocacy when mechanism progress stalls.
+    skipIf: You wanted a measurement decomposition or training method.
+  arc-alignment-research-center:
+    shortName: ARC
+    bestFor: ELK and formal scalable-oversight research hosted at ARC.
+    skipIf: You treat latent readout as full inner-alignment discharge.
+  clr-cooperation-conflict:
+    shortName: CLR
+    bestFor: Cooperation under competition, s-risks, and multipolar structural risk.
+    skipIf: You need typed deployment-leverage measurement, not narrative multipolar stories.
+  ai-futures-forecasting-cluster:
+    shortName: Forecast
+    bestFor: Scenario timelines and shared prediction infrastructure for urgency.
+    skipIf: You need mechanism-level bridge discharge, not schedule cues.
+  conjecture-cognitive-emulation:
+    shortName: Conjecture
+    bestFor: Cognitive-emulation controllability framing (historical CoEm line).
+    skipIf: You need a live product line — Conjecture is winding down.
+  safeguarded-ai-aria-zeroth-heron:
+    shortName: Safeguarded
+    bestFor: Whole-system formal assurance, proof certificates, and runtime action control.
+    skipIf: You need correction uptake on the live loop, not a green certificate.
+  mai-cip-institutional-alignment:
+    shortName: MAI/CIP
+    bestFor: Thick values, assemblies, and institutional full-stack alignment design.
+    skipIf: You need adversarial verifiability under optimization on the measured object.
+  this-project-towards-superintelligence-alignment-tsa:
+    shortName: TSA
+    bestFor: Seeing which unsolved handoff you are on and how programs differ in what they ship.
+    skipIf: You wanted a training recipe or a guaranteed-safe builder.
+  iliad-textbook-from-the-future:
+    shortName: Iliad
+    defaultVisible: true
+    bestFor: Joining a communal theory TOC and field-building megaproject.
+    skipIf: You need a closed single-author argument today.
+
+cells:
+  miri:
+    ships-usable-product: { mark: dash, because: Pause advocacy and canon — not a shipped AI product. }
+    breadth: { mark: some, because: Sequences span many cruxes but do not catalog the whole field. }
+    long-form-argument: { mark: some, because: Historical sequences and AF writeups; intelligence.org is now advocacy-first. }
+    living-communal-canon: { mark: yes, because: Arbital canon lives on the LessWrong wiki and Alignment Forum. }
+    formalization: { mark: some, because: Agent-foundations theory; not a machine-checked deployment spine. }
+    translation: { mark: some, because: Canonical problem names; does not map other agendas systematically. }
+    public-knowledge-site: { mark: yes, because: LW wiki (Arbital import), AF, and sequences — not only intelligence.org. }
+    constructive-theory: { mark: some, because: AF theory agenda; not a shipped builder or lab recipe. }
+
+  redwood-research:
+    ships-usable-product: { mark: some, because: Control eval tooling and published eval protocols — not frontier models. }
+    breadth: { mark: dash, because: Focused on control under subversion. }
+    long-form-argument: { mark: some, because: AI Control agenda and eval writeups. }
+    living-communal-canon: { mark: dash, because: Research org output, not a communal TOC. }
+    formalization: { mark: some, because: Explicit capability-gap assumptions; empirical formalism more than proof spine. }
+    translation: { mark: dash, because: Does not re-express other agendas in one map. }
+    public-knowledge-site: { mark: some, because: Site and publications; not a wiki-scale canon. }
+    constructive-theory: { mark: some, because: Control protocols — not a full alignment construction. }
+
+  chai-russell:
+    ships-usable-product: { mark: some, because: FAR tooling and research hub; not a flagship model product. }
+    breadth: { mark: some, because: Berkeley cluster spans value learning and oversight cousins. }
+    long-form-argument: { mark: yes, because: Human Compatible book lineage and assistance-game formalism. }
+    living-communal-canon: { mark: dash, because: Academic hub, not a communal textbook skeleton. }
+    formalization: { mark: yes, because: CIRL / assistance games as formal constructive layer. }
+    translation: { mark: some, because: Maps value learning; does not absorb selection or bearer transport. }
+    public-knowledge-site: { mark: some, because: humancompatible.ai and FAR.AI — org sites, not a companion spine. }
+    constructive-theory: { mark: yes, because: Assistance-game constructive recipe is load-bearing. }
+
+  christiano-lineage:
+    ships-usable-product: { mark: dash, because: Oversight protocols as research, not a shipped product. }
+    breadth: { mark: some, because: Debate, amplification, ELK — one oversight family. }
+    long-form-argument: { mark: yes, because: Foundational scalable-oversight posts and ELK problem statement. }
+    living-communal-canon: { mark: dash, because: Distributed lineage, not a communal TOC project. }
+    formalization: { mark: some, because: Protocol formalism; not a full safety-case spine. }
+    translation: { mark: some, because: ELK/debate as projections; readout separated from correction elsewhere. }
+    public-knowledge-site: { mark: some, because: AF/LW archive of posts; no dedicated companion site. }
+    constructive-theory: { mark: yes, because: Debate/amplification as constructive oversight recipes. }
+
+  davidad-guaranteed-safe-ai-gsai:
+    ships-usable-product: { mark: dash, because: Research program — not a shipped guaranteed-safe system. }
+    breadth: { mark: dash, because: Single assurance-form program. }
+    long-form-argument: { mark: some, because: GSAI paper and Open Agency specifications. }
+    living-communal-canon: { mark: dash, because: One person's plan lineage (contrast Iliad communal TOC). }
+    formalization: { mark: yes, because: Formal spec + world model + safety-case methodology. }
+    translation: { mark: dash, because: Does not systematically map other field agendas. }
+    public-knowledge-site: { mark: some, because: Papers, mailing list, LawZero adjacent — partial web layer. }
+    constructive-theory: { mark: yes, because: Guaranteed-safe / open-agency constructive stack. }
+
+  anthropic-lab:
+    ships-usable-product: { mark: yes, because: Frontier Claude models; Goodfire SAE/Ember as MI product line. }
+    breadth: { mark: some, because: Lab RSP + MI stack cluster; not a field-wide map. }
+    long-form-argument: { mark: some, because: RSP, constitutional AI, and circuit research — not one book thesis. }
+    living-communal-canon: { mark: dash, because: Corporate lab artifacts. }
+    formalization: { mark: some, because: Scaling policies and interpretability science; not a unified proof spine. }
+    translation: { mark: dash, because: Does not crosswalk the field in neutral bridge terms. }
+    public-knowledge-site: { mark: yes, because: Research index, Transformer Circuits, Goodfire/Neuronpedia infra. }
+    constructive-theory: { mark: yes, because: Constitutional AI / RLAIF as constructive training recipe. }
+
+  google-deepmind-safety:
+    ships-usable-product: { mark: yes, because: Frontier Gemini models with safety team and eval stack. }
+    breadth: { mark: some, because: Lab safety research across several crux neighborhoods. }
+    long-form-argument: { mark: some, because: Research papers and safety blog — not one authored book spine. }
+    living-communal-canon: { mark: dash, because: Lab output. }
+    formalization: { mark: some, because: Formal methods pockets; not one public claim spine like TSA Lean. }
+    translation: { mark: dash, because: Internal crosswalk not published as field map. }
+    public-knowledge-site: { mark: yes, because: deepmind.google research and safety publications. }
+    constructive-theory: { mark: some, because: RLHF/safety training stacks — lab recipes, not open theory megaproject. }
+
+  apollo-research:
+    ships-usable-product: { mark: some, because: Scheming eval suites and agent-security tooling. }
+    breadth: { mark: dash, because: Deception/scheming focus. }
+    long-form-argument: { mark: some, because: Scheming science papers and eval frameworks. }
+    living-communal-canon: { mark: dash, because: Research org. }
+    formalization: { mark: some, because: Empirical eval formalism. }
+    translation: { mark: dash, because: Does not map full field. }
+    public-knowledge-site: { mark: some, because: apolloresearch.ai publications. }
+    constructive-theory: { mark: some, because: Pre-deployment eval recipe — not full alignment construction. }
+
+  metr:
+    ships-usable-product: { mark: some, because: Eval protocols and frontier risk reports used by labs. }
+    breadth: { mark: dash, because: Capability/eval focus. }
+    long-form-argument: { mark: some, because: Eval methodology writeups. }
+    living-communal-canon: { mark: dash, because: Single research org. }
+    formalization: { mark: some, because: Rigorous eval design; not alignment proof spine. }
+    translation: { mark: dash, because: Does not translate other agendas. }
+    public-knowledge-site: { mark: some, because: metr.org and public reports. }
+    constructive-theory: { mark: dash, because: Measurement, not construction. }
+
+  resolution:
+    ships-usable-product: { mark: dash, because: Research org — automation tools in progress. }
+    breadth: { mark: dash, because: Automation-first alignment theory line. }
+    long-form-argument: { mark: some, because: Launch essay and Timaeus/SLT research program. }
+    living-communal-canon: { mark: dash, because: Org output; overlaps Iliad/Timaeus ecosystem. }
+    formalization: { mark: yes, because: Singular learning / formal automation ambitions. }
+    translation: { mark: dash, because: Does not publish a field crosswalk. }
+    public-knowledge-site: { mark: some, because: resolution.org and papers. }
+    constructive-theory: { mark: some, because: Constructive automation bet — not yet a shipped builder. }
+
+  neglected-approaches-portfolio:
+    ships-usable-product: { mark: dash, because: Portfolio catalog — not a product. }
+    breadth: { mark: yes, because: Explicit cross-intervention catalog (AI Safety Interventions lineage). }
+    long-form-argument: { mark: some, because: Intervention index and extended PDF. }
+    living-communal-canon: { mark: dash, because: Catalog, not editable communal textbook. }
+    formalization: { mark: dash, because: Conceptual inventory. }
+    translation: { mark: some, because: Names many routes; does not type bridges formally. }
+    public-knowledge-site: { mark: some, because: LessWrong index and GitHub PDF. }
+    constructive-theory: { mark: dash, because: Maps interventions, not one builder. }
+
+  orthogonal:
+    ships-usable-product: { mark: dash, because: Community research — papers and Discord, not a product. }
+    breadth: { mark: dash, because: Agent-foundations focus. }
+    long-form-argument: { mark: some, because: Papers on embedded agency and corrigibility. }
+    living-communal-canon: { mark: some, because: Community-organized research — partial communal layer. }
+    formalization: { mark: yes, because: Formal agent-foundations alignment work. }
+    translation: { mark: dash, because: Does not map other agendas. }
+    public-knowledge-site: { mark: some, because: orxl.org and paper archive. }
+    constructive-theory: { mark: some, because: Formal AF constructive research — not a lab recipe. }
+
+  wentworth-natural-abstractions:
+    ships-usable-product: { mark: dash, because: Theory lineage — not a shipped system. }
+    breadth: { mark: dash, because: Abstractions/agency theory line. }
+    long-form-argument: { mark: yes, because: NAH sequence and selection-theorem program. }
+    living-communal-canon: { mark: dash, because: Researcher lineage on LW/AF. }
+    formalization: { mark: yes, because: Mathematical theory of abstractions and agency. }
+    translation: { mark: some, because: Falsifier for low-dimensional value stories; not full field map. }
+    public-knowledge-site: { mark: some, because: LessWrong archive — no standalone companion site. }
+    constructive-theory: { mark: some, because: Theory of learnable targets — not a deployment builder. }
+
+  kosoy-infra-bayesianism-lta:
+    ships-usable-product: { mark: dash, because: Theory program — not a shipped agent product. }
+    breadth: { mark: dash, because: LTA + infra-Bayesianism stack. }
+    long-form-argument: { mark: yes, because: LTA overview and infra-Bayesianism sequences. }
+    living-communal-canon: { mark: dash, because: Researcher lineage. }
+    formalization: { mark: yes, because: Constructive learning-theoretic and infra-Bayesian formalism. }
+    translation: { mark: dash, because: Own ontology; TSA maps it, not vice versa as primary artifact. }
+    public-knowledge-site: { mark: some, because: Alignment Forum and LessWrong sequences. }
+    constructive-theory: { mark: yes, because: PSI/PreDCA as hypothesized outer-alignment protocol. }
+
+  ciris:
+    ships-usable-product: { mark: yes, because: Shipped CIRISAgent, Verify, Lens, Proxy stack. }
+    breadth: { mark: dash, because: Accountability ops stack for agents. }
+    long-form-argument: { mark: some, because: Constitution and Accord — procedural, not book-length thesis. }
+    living-communal-canon: { mark: dash, because: Named product with signed identity — not communal TOC. }
+    formalization: { mark: some, because: Protocol + unit-tested layers; not Lean claim spine. }
+    translation: { mark: dash, because: Does not crosswalk field agendas. }
+    public-knowledge-site: { mark: yes, because: ciris.ai, GitHub org, agents.ciris.ai. }
+    constructive-theory: { mark: yes, because: Constructive constitutional ops stack and builder. }
+
+  govai:
+    ships-usable-product: { mark: some, because: Governance research outputs and AISI-adjacent eval influence — not models. }
+    breadth: { mark: some, because: Governance + eval institute cluster. }
+    long-form-argument: { mark: some, because: Policy and governance research reports. }
+    living-communal-canon: { mark: dash, because: Think-tank / institute outputs. }
+    formalization: { mark: dash, because: Policy analysis more than formal alignment spine. }
+    translation: { mark: some, because: Translates technical cruxes for policy — partial field map. }
+    public-knowledge-site: { mark: yes, because: governance.ai and institute publications. }
+    constructive-theory: { mark: dash, because: Institutional design, not AI construction recipe. }
+
+  pause-standards-advocacy-cluster:
+    ships-usable-product: { mark: dash, because: Advocacy coalition — not a technical product. }
+    breadth: { mark: some, because: Many orgs under pause/standards umbrella. }
+    long-form-argument: { mark: some, because: Policy statements and advocacy framing. }
+    living-communal-canon: { mark: dash, because: Coalition, not shared textbook. }
+    formalization: { mark: dash, because: Political/programmatic, not formal methods. }
+    translation: { mark: dash, because: Does not type technical bridges. }
+    public-knowledge-site: { mark: some, because: Org sites (PauseAI, FLI, etc.). }
+    constructive-theory: { mark: dash, because: Moratorium advocacy, not constructive alignment. }
+
+  arc-alignment-research-center:
+    ships-usable-product: { mark: dash, because: Research org — ELK as problem framing, not product. }
+    breadth: { mark: dash, because: Oversight / ELK focus. }
+    long-form-argument: { mark: yes, because: ELK report and oversight research program. }
+    living-communal-canon: { mark: dash, because: Org-hosted research. }
+    formalization: { mark: some, because: Formal oversight research. }
+    translation: { mark: some, because: ELK as canonical readout subchannel naming. }
+    public-knowledge-site: { mark: some, because: alignment.org. }
+    constructive-theory: { mark: some, because: Oversight protocols as constructive research direction. }
+
+  clr-cooperation-conflict:
+    ships-usable-product: { mark: dash, because: Research and grantmaking — not a product. }
+    breadth: { mark: some, because: Cooperation/conflict/multipolar framing. }
+    long-form-argument: { mark: yes, because: ARCHES and cooperative AI open problems. }
+    living-communal-canon: { mark: dash, because: Research org. }
+    formalization: { mark: some, because: Game-theoretic and structural formalism. }
+    translation: { mark: some, because: Multipolar cousin to selection bridges — narrative not typed map. }
+    public-knowledge-site: { mark: some, because: longtermrisk.org publications. }
+    constructive-theory: { mark: dash, because: Structural risk analysis, not AI builder. }
+
+  ai-futures-forecasting-cluster:
+    ships-usable-product: { mark: some, because: Prediction infrastructure (Metaculus, Epoch) — not alignment products. }
+    breadth: { mark: some, because: Scenario and timeline cluster. }
+    long-form-argument: { mark: yes, because: AI 2027-style scenarios and forecasting reports. }
+    living-communal-canon: { mark: dash, because: Forecasting community, not alignment textbook. }
+    formalization: { mark: dash, because: Scenario models, not alignment proof spine. }
+    translation: { mark: dash, because: Schedule cues for governance — not mechanism map. }
+    public-knowledge-site: { mark: yes, because: ai-2027.com, epoch.ai, Metaculus. }
+    constructive-theory: { mark: dash, because: Forecasting, not construction. }
+
+  conjecture-cognitive-emulation:
+    ships-usable-product: { mark: some, because: Historical CoEm / controllable LLM stack (org winding down). }
+    breadth: { mark: dash, because: Controllability framing. }
+    long-form-argument: { mark: some, because: Cognitive emulation proposal. }
+    living-communal-canon: { mark: dash, because: Startup lineage. }
+    formalization: { mark: dash, because: Engineering framing more than formal spine. }
+    translation: { mark: dash, because: Does not map field. }
+    public-knowledge-site: { mark: some, because: conjecture.dev archive. }
+    constructive-theory: { mark: some, because: Emulation as constructive controllability bet. }
+
+  safeguarded-ai-aria-zeroth-heron:
+    ships-usable-product: { mark: some, because: Runtime control (AARM) and attestation tooling in development. }
+    breadth: { mark: dash, because: Formal assurance cluster. }
+    long-form-argument: { mark: some, because: Safeguarded AI programme documents. }
+    living-communal-canon: { mark: dash, because: Programme cluster, not communal TOC. }
+    formalization: { mark: yes, because: Proof certificates, containment verification, ZK attestation. }
+    translation: { mark: dash, because: Cousin to GSAI — does not absorb other agendas. }
+    public-knowledge-site: { mark: some, because: ARIA, Zeroth, Heron programme sites. }
+    constructive-theory: { mark: yes, because: End-to-end safeguarded-AI constructive stack. }
+
+  mai-cip-institutional-alignment:
+    ships-usable-product: { mark: dash, because: Research and assemblies — not a model product. }
+    breadth: { mark: some, because: Institutional full-stack alignment framing. }
+    long-form-argument: { mark: yes, because: Full-Stack Alignment paper and assembly programmes. }
+    living-communal-canon: { mark: dash, because: Org-led institutional design. }
+    formalization: { mark: some, because: Thick-value formal design — not Lean spine. }
+    translation: { mark: some, because: Institutional layer cousin to bundle/bearer — one level up. }
+    public-knowledge-site: { mark: yes, because: meaningalignment.org and cip.org. }
+    constructive-theory: { mark: yes, because: Deliberative / assembly constructive institutional recipe. }
+
+  this-project-towards-superintelligence-alignment-tsa:
+    ships-usable-product: { mark: some, because: Toy simulations, chapter demos, and experiment harnesses — not aligned AI or the companion site alone. }
+    breadth: { mark: yes, because: Field hub maps ~30 agendas against bridge cruxes. }
+    long-form-argument: { mark: yes, because: Book manuscript with six-claim spine. }
+    living-communal-canon: { mark: dash, because: One project's publication layer — not communal wiki. }
+    formalization: { mark: yes, because: Lean dependency spine and conditional bridge structure. }
+    translation: { mark: yes, because: App B crosswalk and field matrix as explicit translation layer. }
+    public-knowledge-site: { mark: yes, because: towards-alignment.com companion site. }
+    constructive-theory: { mark: dash, because: Requirements decomposition — not a general builder recipe. }
+
+  iliad-textbook-from-the-future:
+    ships-usable-product: { mark: dash, because: TOC + projects list — not a filled textbook or product. }
+    breadth: { mark: yes, because: Selective synthesis across theory-driven agendas. }
+    long-form-argument: { mark: some, because: FAQ and project briefs; chapters still emerging. }
+    living-communal-canon: { mark: yes, because: Explicit communal textbook / Stacks-style megaproject bet. }
+    formalization: { mark: some, because: Theory megaproject; Lean/ATP deferred per their FAQ. }
+    translation: { mark: yes, because: Catalogues major theory lines in one TOC skeleton. }
+    public-knowledge-site: { mark: some, because: textbookfromthefuture.org + iliad.ac — not a filled corpus yet. }
+    constructive-theory: { mark: dash, because: Coordination instrument — not one constructive recipe. }

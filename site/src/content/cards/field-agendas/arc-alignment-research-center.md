@@ -41,3 +41,5 @@ ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
 - [ARC](https://www.alignment.org/)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-arc-alignment-research-center) for what this program ships relative to others.

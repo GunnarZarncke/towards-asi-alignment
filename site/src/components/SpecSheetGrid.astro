@@ -1,0 +1,685 @@
+---
+import data from "../data/product-comparison.json";
+import { cardHref } from "../lib/site-urls";
+
+interface Props {
+  base: string;
+}
+
+const TSA_SLUG = "this-project-towards-superintelligence-alignment-tsa";
+const BOTTOM_FEATURES = new Set(["ships-usable-product", "living-communal-canon"]);
+
+const { base } = Astro.props;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const cellMap = new Map(data.cells.map((c) => [`${c.feature}:${c.column}`, c]));
+
+function agendaHref(slug: string, matrixLink: string | null) {
+  if (matrixLink) return matrixLink;
+  return cardHref(base, `field-agendas/${slug}`);
+}
+
+function cellAt(featureId: string, columnSlug: string) {
+  return cellMap.get(`${featureId}:${columnSlug}`);
+}
+
+function glossHref(glossLink: string | undefined) {
+  if (!glossLink) return undefined;
+  return glossLink.startsWith("http") ? glossLink : withBase(glossLink);
+}
+
+function markLabel(mark: string) {
+  if (mark === "yes") return "Yes";
+  if (mark === "some") return "Partial";
+  return "No";
+}
+
+function isBottomFeature(featureId: string, index: number) {
+  if (!BOTTOM_FEATURES.has(featureId)) return false;
+  const prev = data.features[index - 1];
+  return !prev || !BOTTOM_FEATURES.has(prev.id);
+}
+---
+
+<section class="spec-sheet" aria-labelledby="spec-sheet-heading">
+  <div class="spec-scroll-shell">
+    <button type="button" class="spec-scroll-btn spec-scroll-btn--left" aria-label="Scroll left">
+      ‹
+    </button>
+    <div class="spec-scroll-viewport" tabindex="0" aria-label="Spec sheet grid — drag or scroll horizontally">
+      <table class="spec-sheet-table">
+        <thead>
+          <tr class="spec-agenda-row">
+            <th scope="col" class="spec-corner-col">Agenda</th>
+            {data.columns.map((col) => (
+              <th
+                scope="col"
+                class:list={["spec-col", "spec-agenda-cell", { "spec-col--tsa": col.slug === TSA_SLUG }]}
+                id={`col-${col.slug}`}
+              >
+                <a
+                  href={agendaHref(col.slug, col.matrixLink)}
+                  class="spec-col-link"
+                  title={col.skipIf ? `Skip if: ${col.skipIf}` : undefined}
+                >
+                  <span class="spec-col-name">{col.shortName}</span>
+                </a>
+              </th>
+            ))}
+          </tr>
+          <tr class="spec-bestfor-row">
+            <th scope="col" class="spec-corner-col">Best for</th>
+            {data.columns.map((col) => (
+              <th
+                scope="col"
+                class:list={["spec-col", "spec-bestfor-cell", { "spec-col--tsa": col.slug === TSA_SLUG }]}
+              >
+                {col.bestFor ? <span class="spec-bestfor-text">{col.bestFor}</span> : "—"}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="spec-feature-header-row">
+            <th scope="col" class="spec-corner-col">Feature</th>
+            {data.columns.map((col) => (
+              <td class:list={["spec-cell", "spec-feature-header-cell", { "spec-col--tsa": col.slug === TSA_SLUG }]} />
+            ))}
+          </tr>
+          {data.features.map((feature, index) => (
+            <tr class:list={[{ "spec-feature-divider": isBottomFeature(feature.id, index) }]}>
+              <th scope="row" class="spec-corner-col spec-feature-name">
+                <span class="spec-feature-label" title={feature.gloss}>
+                  {feature.label}
+                  {feature.gloss && (
+                    <button
+                      type="button"
+                      class="spec-feature-tip"
+                      aria-label={`About ${feature.label}`}
+                      data-tip={feature.gloss}
+                      data-tip-link={glossHref(feature.deepLink) ?? ""}
+                    >
+                      ?
+                    </button>
+                  )}
+                </span>
+              </th>
+              {data.columns.map((col) => {
+                const cell = cellAt(feature.id, col.slug);
+                const mark = cell?.mark ?? "dash";
+                const because = cell?.because ?? "";
+                const tip = because ? `${markLabel(mark)} — ${because}` : markLabel(mark);
+                return (
+                  <td class:list={["spec-cell", { "spec-col--tsa": col.slug === TSA_SLUG }]}>
+                    <button
+                      type="button"
+                      class:list={["spec-check", `spec-check--${mark}`]}
+                      aria-label={`${col.shortName}, ${feature.label}: ${markLabel(mark)}`}
+                      data-tip={tip}
+                    >
+                      <span class="spec-check-icon" aria-hidden="true"></span>
+                    </button>
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="spec-scroll-btn spec-scroll-btn--right" aria-label="Scroll right">
+      ›
+    </button>
+  </div>
+
+  <div class="spec-scroll-bar-wrap" aria-hidden="true">
+    <div class="spec-scroll-bar-track">
+      <div class="spec-scroll-bar-thumb"></div>
+    </div>
+  </div>
+
+  {data.caption && <p class="spec-sheet-caption side-panel-meta">{data.caption}</p>}
+
+  <p class="spec-sheet-footer side-panel-meta">
+    <a href={withBase("/field/")}>Field overview</a>
+    {" · "}
+    <a href={withBase("/field/coverage/")}>Coverage matrix</a>
+    {" · "}
+    <a href={cardHref(base, "chapters/appB", "appendix")}>Appendix B (bridges)</a>
+  </p>
+
+  <footer class="spec-sheet-chrome">
+    <p class="spec-sheet-kicker">Manual comparison</p>
+    <p class="spec-sheet-meta">Judgments · not a ranking · no purchase implied</p>
+  </footer>
+
+  <div class="spec-tip" role="tooltip" hidden></div>
+</section>
+
+<script>
+  const shell = document.querySelector(".spec-scroll-shell");
+  const viewport = shell?.querySelector(".spec-scroll-viewport");
+  const leftBtn = shell?.querySelector(".spec-scroll-btn--left");
+  const rightBtn = shell?.querySelector(".spec-scroll-btn--right");
+  const barWrap = document.querySelector(".spec-scroll-bar-wrap");
+  const barTrack = barWrap?.querySelector(".spec-scroll-bar-track");
+  const barThumb = barWrap?.querySelector(".spec-scroll-bar-thumb");
+  const tipEl = document.querySelector(".spec-tip");
+
+  const SCROLL_STEP = 220;
+
+  function updateScrollUi() {
+    if (!viewport || !barThumb || !barTrack || !leftBtn || !rightBtn) return;
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    const canScroll = max > 4;
+    barWrap?.classList.toggle("is-active", canScroll);
+    leftBtn.toggleAttribute("disabled", viewport.scrollLeft <= 2);
+    rightBtn.toggleAttribute("disabled", viewport.scrollLeft >= max - 2);
+    if (!canScroll) return;
+    const ratio = viewport.clientWidth / viewport.scrollWidth;
+    const thumbWidth = Math.max(48, barTrack.clientWidth * ratio);
+    const travel = barTrack.clientWidth - thumbWidth;
+    const offset = max > 0 ? (viewport.scrollLeft / max) * travel : 0;
+    barThumb.style.width = `${thumbWidth}px`;
+    barThumb.style.transform = `translateX(${offset}px)`;
+  }
+
+  function scrollBy(dx) {
+    viewport?.scrollBy({ left: dx, behavior: "smooth" });
+  }
+
+  leftBtn?.addEventListener("click", () => scrollBy(-SCROLL_STEP));
+  rightBtn?.addEventListener("click", () => scrollBy(SCROLL_STEP));
+
+  viewport?.addEventListener("scroll", updateScrollUi, { passive: true });
+  window.addEventListener("resize", updateScrollUi);
+
+  viewport?.addEventListener(
+    "wheel",
+    (e) => {
+      if (!viewport) return;
+      const max = viewport.scrollWidth - viewport.clientWidth;
+      if (max <= 0) return;
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta === 0) return;
+      e.preventDefault();
+      viewport.scrollLeft += delta;
+    },
+    { passive: false }
+  );
+
+  let dragging = false;
+  let dragStartX = 0;
+  let dragScrollLeft = 0;
+
+  viewport?.addEventListener("mousedown", (e) => {
+    if (!viewport || e.button !== 0) return;
+    const target = e.target;
+    if (target instanceof Element && target.closest("a, button")) return;
+    dragging = true;
+    dragStartX = e.pageX;
+    dragScrollLeft = viewport.scrollLeft;
+    viewport.classList.add("is-dragging");
+    e.preventDefault();
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!dragging || !viewport) return;
+    viewport.scrollLeft = dragScrollLeft - (e.pageX - dragStartX);
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!dragging || !viewport) return;
+    dragging = false;
+    viewport.classList.remove("is-dragging");
+  });
+
+  let barDragging = false;
+  let barDragStartX = 0;
+  let barDragStartScroll = 0;
+
+  barTrack?.addEventListener("mousedown", (e) => {
+    if (!viewport || !barTrack || !barThumb) return;
+    if (e.target === barThumb) {
+      barDragging = true;
+      barDragStartX = e.pageX;
+      barDragStartScroll = viewport.scrollLeft;
+      e.preventDefault();
+      return;
+    }
+    const rect = barTrack.getBoundingClientRect();
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    const ratio = (e.clientX - rect.left) / rect.width;
+    viewport.scrollLeft = ratio * max;
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!barDragging || !viewport || !barTrack || !barThumb) return;
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    const travel = barTrack.clientWidth - barThumb.clientWidth;
+    if (travel <= 0) return;
+    const dx = e.pageX - barDragStartX;
+    viewport.scrollLeft = barDragStartScroll + (dx / travel) * max;
+  });
+
+  window.addEventListener("mouseup", () => {
+    barDragging = false;
+  });
+
+  let tipTarget = null;
+
+  function showTip(text, anchor, link) {
+    if (!tipEl || !text) return;
+    tipEl.hidden = false;
+    tipEl.innerHTML = link
+      ? `${text} <a href="${link}">More</a>`
+      : text;
+    const rect = anchor.getBoundingClientRect();
+    tipEl.style.left = `${Math.min(window.innerWidth - 280, Math.max(8, rect.left))}px`;
+    tipEl.style.top = `${rect.bottom + 6}px`;
+    tipTarget = anchor;
+  }
+
+  function hideTip() {
+    tipEl?.setAttribute("hidden", "");
+    tipTarget = null;
+  }
+
+  document.querySelectorAll("[data-tip]").forEach((el) => {
+    const text = el.getAttribute("data-tip") ?? "";
+    const link = el.getAttribute("data-tip-link") || "";
+    el.addEventListener("mouseenter", () => showTip(text, el, link));
+    el.addEventListener("mouseleave", () => {
+      if (tipTarget === el) hideTip();
+    });
+    el.addEventListener("focus", () => showTip(text, el, link));
+    el.addEventListener("blur", hideTip);
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (tipTarget === el && !tipEl?.hidden) hideTip();
+      else showTip(text, el, link);
+    });
+  });
+
+  document.addEventListener("click", () => hideTip());
+  updateScrollUi();
+</script>
+
+<style>
+  .spec-sheet {
+    margin: 1rem 0 2rem;
+  }
+
+  .spec-scroll-shell {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: stretch;
+    gap: 0.35rem;
+    border: 1px solid var(--border, #e2e2e2);
+    border-radius: 8px;
+    background: var(--bg, #fff);
+    padding: 0.35rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .spec-scroll-btn {
+    align-self: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    min-height: 5rem;
+    border: 1px solid var(--border, #ddd);
+    background: #fafafa;
+    color: #444;
+    font-size: 1.85rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  .spec-scroll-btn:hover:not(:disabled) {
+    background: #f0f0f0;
+  }
+
+  .spec-scroll-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .spec-scroll-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: #aaa transparent;
+    padding: 0.25rem 0;
+  }
+
+  .spec-scroll-viewport.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .spec-scroll-viewport::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .spec-scroll-viewport::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 4px;
+  }
+
+  .spec-scroll-bar-wrap {
+    display: none;
+    margin-top: 0.65rem;
+    padding: 0 2.75rem;
+  }
+
+  .spec-scroll-bar-wrap.is-active {
+    display: block;
+  }
+
+  .spec-scroll-bar-track {
+    position: relative;
+    height: 12px;
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .spec-scroll-bar-thumb {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 8px;
+    min-width: 48px;
+    background: #888;
+    border-radius: 4px;
+    cursor: grab;
+  }
+
+  .spec-sheet-table {
+    width: max-content;
+    border-collapse: separate;
+    border-spacing: 6px 0;
+    font-size: 0.86rem;
+  }
+
+  .spec-sheet-table th,
+  .spec-sheet-table td {
+    border: none;
+    padding: 0.55rem 0.45rem;
+    vertical-align: middle;
+  }
+
+  .spec-corner-col {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--bg, #fff);
+    min-width: 13.5rem;
+    max-width: 16rem;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.04);
+    text-align: left;
+  }
+
+  .spec-agenda-row .spec-corner-col {
+    background: #fafafa;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    padding-top: 0.85rem !important;
+    padding-bottom: 0.5rem !important;
+    border-radius: 8px 0 0 0;
+  }
+
+  .spec-bestfor-row .spec-corner-col {
+    background: #fafafa;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #888;
+    padding-top: 0 !important;
+    padding-bottom: 0.65rem !important;
+    vertical-align: top;
+  }
+
+  .spec-feature-header-row .spec-corner-col {
+    background: #fff;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.45rem !important;
+    border-top: 2px solid #e8e8e8;
+  }
+
+  .spec-feature-name {
+    background: #fff;
+    font-weight: 600;
+  }
+
+  .spec-bestfor-cell {
+    padding-top: 0 !important;
+    padding-bottom: 0.75rem !important;
+    vertical-align: top;
+    border-radius: 0;
+    border-top: none;
+  }
+
+  .spec-bestfor-text {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: #555;
+    text-align: left;
+    hyphens: auto;
+  }
+
+  .spec-col {
+    width: 7rem;
+    min-width: 7rem;
+    max-width: 7rem;
+    text-align: center;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 0;
+    padding: 0.75rem 0.35rem !important;
+  }
+
+  .spec-agenda-row .spec-col {
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+    padding-bottom: 0.35rem !important;
+  }
+
+  .spec-bestfor-row .spec-col {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .spec-feature-header-cell {
+    border-top: 2px solid #e8e8e8;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    background: #fff;
+  }
+
+  .spec-feature-header-cell.spec-col--tsa {
+    background: #fff;
+  }
+
+  .spec-col--tsa {
+    background: #f4f4f4;
+    border-color: #d8d8d8;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+
+  .spec-cell {
+    text-align: center;
+    background: #fafafa;
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    padding: 0.65rem 0.35rem !important;
+  }
+
+  .spec-cell.spec-col--tsa {
+    background: #f4f4f4;
+    border-color: #d8d8d8;
+  }
+
+  tbody tr:last-child .spec-cell {
+    border-radius: 0 0 8px 8px;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 0.85rem !important;
+  }
+
+  tbody tr:last-child .spec-cell.spec-col--tsa {
+    border-bottom-color: #d8d8d8;
+  }
+
+  .spec-feature-divider .spec-corner-col,
+  .spec-feature-divider .spec-cell {
+    border-top: 2px solid #e8e8e8;
+    padding-top: 0.85rem !important;
+  }
+
+  .spec-col-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    text-decoration: none;
+  }
+
+  .spec-col-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: inherit;
+  }
+
+  .spec-feature-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .spec-feature-tip {
+    flex-shrink: 0;
+    width: 1.15rem;
+    height: 1.15rem;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f8f8f8;
+    color: #666;
+    font-size: 0.68rem;
+    line-height: 1;
+    cursor: help;
+  }
+
+  .spec-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: help;
+  }
+
+  .spec-check-icon {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+    border: 2px solid #c8c8c8;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .spec-check--yes .spec-check-icon {
+    border-color: #333;
+  }
+
+  .spec-check--yes .spec-check-icon::after {
+    content: "";
+    position: absolute;
+    left: 0.32rem;
+    top: 0.14rem;
+    width: 0.32rem;
+    height: 0.58rem;
+    border: solid #333;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .spec-check--some .spec-check-icon {
+    border-color: #666;
+    background: linear-gradient(90deg, #666 0 50%, #fff 50% 100%);
+  }
+
+  .spec-check--dash .spec-check-icon {
+    border-color: #ddd;
+    background: #fff;
+  }
+
+  .spec-tip {
+    position: fixed;
+    z-index: 100;
+    max-width: 280px;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    background: #222;
+    color: #f5f5f5;
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+  }
+
+  .spec-tip a {
+    color: #9cf;
+    pointer-events: auto;
+  }
+
+  .spec-sheet-caption,
+  .spec-sheet-footer {
+    margin-top: 1rem;
+  }
+
+  .spec-sheet-chrome {
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border, #e0e0e0);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  .spec-sheet-kicker {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .spec-sheet-meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.72rem;
+  }
+</style>

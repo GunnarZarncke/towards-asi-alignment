@@ -64,3 +64,5 @@ AISafety.com map listings that roll up to this agenda:
 - [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [Zeroth Research](https://www.zeroth.org/), [Heron AI Security](https://www.heronsec.ai/) → [Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-safeguarded-ai-aria-zeroth-heron) for what this program ships relative to others.

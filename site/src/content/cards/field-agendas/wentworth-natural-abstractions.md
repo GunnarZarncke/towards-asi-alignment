@@ -41,3 +41,5 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 - [John Wentworth](https://www.lesswrong.com/users/johnswentworth)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-wentworth-natural-abstractions) for what this program ships relative to others.

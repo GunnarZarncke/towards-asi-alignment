@@ -65,6 +65,14 @@ export const FAQ_ITEMS: FaqItem[] = [
     ]
   },
   {
+    question: "Is this a product comparison?",
+    answer: [
+      "No aligned ASI product exists. Some research programs do ship usable tools or models anyway. The ",
+      { label: "spec sheet", href: { kind: "route", path: "/start/spec-sheet/" } },
+      " scores what each program ships — manuals and artifacts, not a ranking or a purchase guide."
+    ]
+  },
+  {
     question: "What is the central thesis?",
     answer: [
       "Alignment means preserving grounded, human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and selection pressure — while civilization can still correct."

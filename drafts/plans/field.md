@@ -119,6 +119,10 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 
 ## Related artifacts
 
+- [`cousin-product-comparison.md`](cousin-product-comparison.md) — spec sheet for what programs *ship* (Start Here, not Field hub)
+- [`iliad-communal-canon.md`](iliad-communal-canon.md) — Iliad lessons (concept)
+- [`lw-wiki-tags.md`](lw-wiki-tags.md) — offer TSA object-splits to the LW wiki (Arbital fold-in)
+
 - [`reference/field-agendas/data/bridges.yml`](../../reference/field-agendas/data/bridges.yml) — nouns + crux wording
 - [`reference/field-agendas/inter-agenda-term-glossary.md`](../../reference/field-agendas/inter-agenda-term-glossary.md) — homograph headwords
 - [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](attic/field-claim-formalization-and-bridge-review-plan.md)

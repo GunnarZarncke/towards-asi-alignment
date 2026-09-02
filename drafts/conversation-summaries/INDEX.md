@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-02 | **Cousin spec-sheet shipped** — `/start/spec-sheet/`; YAML + sync; Start Here + FAQ; agenda footers. | [2026-09-02-cousin-product-comparison.md](2026-09-02-cousin-product-comparison.md) |
 | 2026-09-01 | **App F problem-OR vs case-AND (plan §8)** — Continue the open remainder of the problem-axis incorporation plan: §8. | [2026-09-01-problem-or-case-and.md](2026-09-01-problem-or-case-and.md) |
 | 2026-09-01 | **Capability dormancy (plan §7)** — Implement plan §7 Dormancy (Lane A: capability/transfer-breakers; one Lane B pointer). | [2026-09-01-capability-dormancy.md](2026-09-01-capability-dormancy.md) |
 | 2026-09-01 | **Bridge graph field hub fix** — User reported `/cards/concept/bridge-assumptions/` (field hub panel “Which problems depend on whi... | [2026-09-01-bridge-graph-field-hub.md](2026-09-01-bridge-graph-field-hub.md) |

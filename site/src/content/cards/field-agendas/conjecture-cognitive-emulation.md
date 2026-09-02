@@ -45,3 +45,5 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 - [EleutherAI](https://www.eleuther.ai/)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-conjecture-cognitive-emulation) for what this program ships relative to others.

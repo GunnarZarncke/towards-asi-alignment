@@ -55,3 +55,5 @@ AISafety.com map listings that roll up to this agenda:
 - [Google DeepMind](https://deepmind.google/), DeepMind Safety Research → [Google DeepMind safety](#google-deepmind-safety)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-google-deepmind-safety) for what this program ships relative to others.

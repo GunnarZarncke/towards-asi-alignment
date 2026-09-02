@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-01 (W-17 scored + committed).
+Last updated: 2026-09-02 (cousin spec-sheet shipped).
 
 ---
 
@@ -13,6 +13,8 @@ Last updated: 2026-09-01 (W-17 scored + committed).
 **Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Bridge reader-contract: [`bridge-first-use.md`](../plans/bridge-first-use.md).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
+
+**Field spec sheet:** marks in `product-comparison.yml` are a first pass — Gunnar may edit scores/`because` lines; regenerate with `cd site && npm run sync:product-comparison`.
 
 ---
 
@@ -38,6 +40,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct.md`](../plans/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Witness real stop.
 
 ## This week
+
+- **2026-09-02:** **Cousin spec-sheet shipped** — `/start/spec-sheet/` from `product-comparison.yml`; Start Here link + FAQ; agenda-card footers; MIRI/LW wiki on card. Plans: `cousin-product-comparison.md` (implemented), `iliad-communal-canon.md`, `lw-wiki-tags.md`. Log: `2026-09-02-cousin-product-comparison.md`.
 
 - **2026-09-01:** **Witness W-17 Moltbook MB7a scored + committed** — H7 jscmp4/Moltbook: Tier A (Hackerclaw/thehackerman) joined, coactive Jan 31, not merged on `E_agent`; broadcast substrate → **structure_stop**. Interpretation: Jiang same-operator from burst/copy not reply graph; owner telemetry not in public pin. Log: `2026-08-31-witness-w17-moltbook.md`.
 - **2026-09-01:** **Problem-axis plan closed** — §7 dormancy + §8 App F (causes OR / case AND / pause-correction); paragraph rewrite without coined terms. Plan: `drafts/plans/problem-axis-incorporation.md`. Log: `2026-09-01-problem-or-case-and.md`.

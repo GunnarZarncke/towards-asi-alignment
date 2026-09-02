@@ -1,0 +1,24 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import SpecSheetGrid from "../../../components/SpecSheetGrid.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<SiteLayout
+  title="Spec sheet"
+  description="What alignment research programs ship — manuals compared, not products ranked."
+>
+  <section class="hero">
+    <p class="eyebrow">Start here</p>
+    <h1>Spec sheet</h1>
+  </section>
+
+  <SpecSheetGrid base={base} />
+</SiteLayout>
+
+<style>
+  .hero {
+    margin-bottom: 0.5rem;
+  }
+</style>

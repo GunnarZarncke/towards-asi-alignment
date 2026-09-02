@@ -51,3 +51,5 @@ AISafety.com map listings that roll up to this agenda:
 - [Redwood Research](https://www.redwoodresearch.org/) → [Redwood Research](#redwood-research)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-redwood-research) for what this program ships relative to others.

@@ -68,3 +68,5 @@ Not a ConstitutionalRule instance. PSI is a peer outer-target: identify the user
 - [Vanessa Kosoy](https://www.alignmentforum.org/users/vanessa-kosoy)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-kosoy-infra-bayesianism-lta) for what this program ships relative to others.

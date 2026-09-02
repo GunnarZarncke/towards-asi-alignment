@@ -51,3 +51,5 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 - [AI Impacts](https://aiimpacts.org/)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-ai-futures-forecasting-cluster) for what this program ships relative to others.

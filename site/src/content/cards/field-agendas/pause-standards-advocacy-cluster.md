@@ -55,3 +55,5 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 - [Global AI Moratorium (FLI)](https://futureoflife.org/open-letter/pause-giant-ai-experiments/)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-pause-standards-advocacy-cluster) for what this program ships relative to others.

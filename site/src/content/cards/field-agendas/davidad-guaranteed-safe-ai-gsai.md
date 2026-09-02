@@ -60,3 +60,5 @@ This agenda maps to a **ConstitutionalRule** specify instance paired with a cons
 - [LawZero](https://lawzero.org/en)
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
+
+See the [spec sheet](/start/spec-sheet/#col-davidad-guaranteed-safe-ai-gsai) for what this program ships relative to others.
