@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T23:40:48.488Z",
+  "generatedAt": "2026-09-02T21:08:33.057Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 358,
+  "entryCount": 359,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1607,6 +1607,12 @@
       "type": "agenda",
       "summary": "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling).",
       "url": "/cards/agenda/miri/"
+    },
+    {
+      "title": "Moltbook MB7a entity pinning",
+      "type": "experiment",
+      "summary": "Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins on platform IDs but discursive reciprocation does not merge them; Jan-31 activity is broadcast-only — structure_stop, not coalition pass/fail on E_agent alone.",
+      "url": "/cards/experiment/w-17/"
     },
     {
       "title": "Moral Machine country scores",
