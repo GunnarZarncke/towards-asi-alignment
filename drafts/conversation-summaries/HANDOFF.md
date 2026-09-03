@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-02 (cousin spec-sheet shipped).
+Last updated: 2026-09-04 (Bergemann–Koh–Morris plugged in as field implementation).
 
 ---
 
@@ -40,6 +40,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct.md`](../plans/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Witness real stop.
 
 ## This week
+
+- **2026-09-04:** **Bergemann–Koh–Morris as field implementation** — arXiv:2609.01595 plugged into ch10 (verification order + honesty/obedience), ch11 (RSP-as-mechanism / monotone caps), ch14 (capability–misalignment covariance). ch35: peer scoring as possibility result; unbounded free rewards ⇒ benchmark not protocol. Construct keep-row. Log: `2026-09-04-bergemann-mechanism-plug.md`.
 
 - **2026-09-02:** **Cousin spec-sheet shipped** — `/start/spec-sheet/` from `product-comparison.yml`; Start Here link + FAQ; agenda-card footers; MIRI/LW wiki on card. Plans: `cousin-product-comparison.md` (implemented), `iliad-communal-canon.md`, `lw-wiki-tags.md`. Log: `2026-09-02-cousin-product-comparison.md`.
 

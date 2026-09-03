@@ -206,6 +206,10 @@ Recovery remains viable only while \(\Delta t_{\mathrm{corr}}<\Delta t_{\mathrm{
 Shutdown is not by itself a distinct recovery instrument from correction-channel integrity.
 A green evaluation at the present capability does not license the same claim after a jump.
 Mechanisms that were idle because the system could not yet represent the evaluator, the successor, or the score process can wake without those layers having been certified (Chapter~\ref{ch:assumptions-scope-failure-coverage}, Section~\ref{sec:capability-dormancy-ch05}).
+Whether that evaluation can still screen misalignment depends on how capability and misalignment move together. 
+If more capable systems are also less misaligned, asking what they can do and tightening permissions for the more capable ones works about as well as knowing the truth in advance. 
+If more capable systems are also more misaligned, asking does not help: the safest rule is one permission set for everyone \autocite{bergemann2026mechanism}. 
+A green score that rose with capability is not by itself evidence that the screen still works.
 
 The risk condition is not merely $M_A<0$.
 A system may be safe for a while with a small positive margin.
@@ -944,6 +948,7 @@ Intelligence deepens misalignment when it increases power faster than correction
 \item Capability can help alignment when correction-relevant capacities grow at least as fast as unilateral power.
 \item Admissible capability growth requires remaining in the human-correctable basin under relevant perturbations.
 \item A green check at one capability does not transfer by default: idle mechanisms are missing preconditions, not discharged layers (Chapter~\ref{ch:assumptions-scope-failure-coverage}, Section~\ref{sec:capability-dormancy-ch05}).
+\item Capability scores can screen misalignment when more capable systems are less misaligned, and they cannot when more capable systems are more misaligned.
 \item The practical question is not whether the system is smarter, but whether its increasing competence remains inside a correction-preserving basin.
 \end{itemize}
 
@@ -966,7 +971,7 @@ It will be a compressed bundle geometry.
 \authbarneedspace
 \section*{Chapter References}
 \begin{authbar}{AI}
-This chapter builds on competence and boundary information \autocite{zarncke2025biq,conant1970regulator,tishby2000ib,kaplan2020scaling}; inverse reinforcement learning and cooperative alignment \autocite{ng2000irl,abbeel2004apprenticeship,hadfieldmenell2016,casper2023rlhflimits}; goal misgeneralization under correct specifications \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}; corrigibility and extrapolative correction \autocite{soares2015corrigibility,yudkowsky2004cev,russell2019human}; Goodhart and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}; successor and ontology risk \autocite{deblanc2011ontological,everitt2016selfmodification,zarncke2025construction}; instrumental drives and power-seeking \autocite{omohundro2008basic,turner2021seekpower,bostrom2014superintelligence,kumar2021p2b}; and value-bundle framing \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}.
+This chapter builds on competence and boundary information \autocite{zarncke2025biq,conant1970regulator,tishby2000ib,kaplan2020scaling}; inverse reinforcement learning and cooperative alignment \autocite{ng2000irl,abbeel2004apprenticeship,hadfieldmenell2016,casper2023rlhflimits}; goal misgeneralization under correct specifications \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}; corrigibility and extrapolative correction \autocite{soares2015corrigibility,yudkowsky2004cev,russell2019human}; Goodhart and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}; the covariance condition under which capability scores can screen misalignment \autocite{bergemann2026mechanism}; successor and ontology risk \autocite{deblanc2011ontological,everitt2016selfmodification,zarncke2025construction}; instrumental drives and power-seeking \autocite{omohundro2008basic,turner2021seekpower,bostrom2014superintelligence,kumar2021p2b}; and value-bundle framing \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

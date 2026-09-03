@@ -6,7 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-09-02 | **Cousin spec-sheet shipped** — `/start/spec-sheet/`; YAML + sync; Start Here + FAQ; agenda footers. | [2026-09-02-cousin-product-comparison.md](2026-09-02-cousin-product-comparison.md) |
+| 2026-09-04 | **Bergemann–Koh–Morris as field implementation** — Read arXiv:2609.01595 and map it to TSA. User then asked to plug the paper in as a *specific impl... | [2026-09-04-bergemann-mechanism-plug.md](2026-09-04-bergemann-mechanism-plug.md) |
+| 2026-09-02 | **Cousin spec-sheet shipped** — Cousin comparison / spec-sheet plan for Start Here; user asked to implement, then iterated UI (sc... | [2026-09-02-cousin-product-comparison.md](2026-09-02-cousin-product-comparison.md) |
 | 2026-09-01 | **App F problem-OR vs case-AND (plan §8)** — Continue the open remainder of the problem-axis incorporation plan: §8. | [2026-09-01-problem-or-case-and.md](2026-09-01-problem-or-case-and.md) |
 | 2026-09-01 | **Capability dormancy (plan §7)** — Implement plan §7 Dormancy (Lane A: capability/transfer-breakers; one Lane B pointer). | [2026-09-01-capability-dormancy.md](2026-09-01-capability-dormancy.md) |
 | 2026-09-01 | **Bridge graph field hub fix** — User reported `/cards/concept/bridge-assumptions/` (field hub panel “Which problems depend on whi... | [2026-09-01-bridge-graph-field-hub.md](2026-09-01-bridge-graph-field-hub.md) |
@@ -20,12 +21,10 @@
 | 2026-08-29 | Witness W-16 site sync and session end | [2026-08-29-witness-site-w16-end.md](2026-08-29-witness-site-w16-end.md) |
 | 2026-08-29 | **Witness card bridge links and GitHub path linkify** — Follow-up on experiment site cards: each Witness test card should link to the bridges/claims it w... | [2026-08-29-witness-card-bridge-links.md](2026-08-29-witness-card-bridge-links.md) |
 | 2026-08-29 | **Methodology consolidation + Witness depth gates** — User asked for explicit Witness methodology failure conditions; then to consolidate scattered met... | [2026-08-29-methodology-consolidation.md](2026-08-29-methodology-consolidation.md) |
-| 2026-08-29 | **Experiment site cards (GitHub, results, class overviews)** — User asked that every specific experiment card have a marked GitHub source link and a results lin... | [2026-08-29-experiment-site-cards.md](2026-08-29-experiment-site-cards.md) |
-| 2026-08-29 | **Epistemic status site callout box** — User asked to mark `\begin{epistemicstatus}` blocks on the companion site with a box similar to, ... | [2026-08-29-epistemic-status-site-box.md](2026-08-29-epistemic-status-site-box.md) |
 
 ## Archive by month
 
-- **2026-08** (185): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (187): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

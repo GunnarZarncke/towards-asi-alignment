@@ -18,6 +18,7 @@ Alignment fails when control becomes more coherent than correction can see.
 \begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 This chapter's description of how an adversarial system can shape its own evaluation is a standard result.
+The incentive form used here is the field's: a system can withhold evidence of capability but cannot forge it, and a successful cheat can combine a false evaluation with a later disobedient action.
 That capable learned systems can contain misaligned mesa-objectives is an actively researched but unresolved concern, and 
 building safety arguments that hold under intentional subversion is an acknowledged open problem.
 
@@ -83,6 +84,13 @@ We therefore need to distinguish two questions:
 
 The first question is difficult.
 The second is the alignment-relevant one.
+
+Once a system can benefit from appearing less capable or less coherent than it is, concealment is one-sided. 
+A more capable system can pass every test a weaker system can pass. A weaker system cannot fake a harder test. 
+Evidence can be withheld but not forged \autocite{bergemann2026mechanism}. 
+The incentive problem is then not only whether the evaluation looks honest. After the evaluation the system still acts. 
+A profitable cheat can be two steps: look weaker in the test, then use the extra room that looking weaker bought. 
+Catching only the lie, or only the later action, is not enough. The tests below ask where that two-step cheat still preserves control.
 
 The argument proceeds in four steps.
 First, separate harmful concealment from privacy, compression, and benign opacity.
@@ -1022,6 +1030,7 @@ The central distinctions are:
 \item the relevant agent may be composite and may appear only under stakes;
 \item goal laundering preserves semantic commitments while changing inferred goals, value-bundle gradients, bearer maps, or correction channels;
 \item better self-modeling can be dangerous if it outruns self-transparency and correction.
+\item capability can be hidden but not faked; a system can both understate what it can do and then use the extra room that understatement bought;
 \item a dependency-spine bridge names a required inference that still needs evidence outside Lean.
 \end{itemize}
 
@@ -1039,7 +1048,7 @@ If strategic opacity asks where the optimizer hides, capability growth asks how 
 \authbarneedspace
 \section*{Chapter References}
 \begin{authbar}{AI}
-This chapter draws on Markov blankets and active inference \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; embedded agency \autocite{demski2019embedded,critch2020ai,dennett1987intentional}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; information bottlenecks \autocite{tishby2000ib}; cooperation and relatedness \autocite{hamilton1964genetical}; adversarial machine learning \autocite{goodfellow2015explaining}; AI deception and mesa-optimization \autocite{hubinger2019risks,park2024deception}; and predictor-to-consequentialist genesis paths \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle}. It also engages the AI-control framing of safety under intentional subversion \autocite{shlegeris2023aicontrol} and the model-organisms-of-misalignment agenda for studying deceptive alignment empirically \autocite{hubinger2023modelorganisms}.
+This chapter draws on Markov blankets and active inference \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; embedded agency \autocite{demski2019embedded,critch2020ai,dennett1987intentional}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; information bottlenecks \autocite{tishby2000ib}; cooperation and relatedness \autocite{hamilton1964genetical}; adversarial machine learning \autocite{goodfellow2015explaining}; AI deception and mesa-optimization \autocite{hubinger2019risks,park2024deception}; and predictor-to-consequentialist genesis paths \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle}. It also engages the AI-control framing of safety under intentional subversion \autocite{shlegeris2023aicontrol}; the incentive implementation of one-sided concealment and honesty-plus-obedience \autocite{bergemann2026mechanism}; and the model-organisms-of-misalignment agenda for studying deceptive alignment empirically \autocite{hubinger2023modelorganisms}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 
