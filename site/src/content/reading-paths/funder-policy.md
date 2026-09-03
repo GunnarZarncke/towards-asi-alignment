@@ -2,6 +2,9 @@
 title: "Funder / Policy Path"
 audience: "Funders and policy-adjacent readers"
 summary: "A route through decision relevance, institutional artifacts, and what this framework is not claiming."
+companionLink:
+  href: /funding/
+  label: Funding opportunities
 featuredSpotlight:
   eyebrow: "Appendix C · start here for decision relevance"
   kind: book
@@ -53,6 +56,9 @@ steps:
   - kind: card
     ref: evidence-and-uncertainty
     note: "Claim labels and what would change a funding decision."
+  - kind: card
+    ref: funding/unsupervised-agent-discovery
+    note: "Example partial grant — see all open asks on the funding overview."
   - kind: experiment
     ref: toy-simulation
     note: "Why green dashboards can coexist with capture theater."
@@ -70,5 +76,7 @@ You need to know **what decisions change** if this framework is directionally ri
 - Why **attractor / selection** matters for institutions, not only labs.
 
 **Time:** ~1–2 hours following the ordered list above.
+
+**Funding:** See the [funding opportunities overview](/funding/) for open asks, granted amounts, and dependency diagram (no raw applications linked).
 
 **PDF companion:** Executive Overview → Appendix C (institutional translation) → Chapters 2, 5, and safety-case chapters as needed.

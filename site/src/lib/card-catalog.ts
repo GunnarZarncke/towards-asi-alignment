@@ -104,6 +104,7 @@ export function cardCatalogSections(
     { title: "Bridges", id: "bridges", cards: byType("bridge") },
     { title: "Field projections", id: "field-projections", cards: fieldProjections },
     { title: "Field agendas", id: "field-agendas", cards: byType("agenda") },
+    { title: "Funding opportunities", id: "funding", cards: byType("funding") },
     { title: "Experiments", id: "experiments", cards: experiments },
     { title: "Objections & caveats", id: "objections", cards: byType("objection") },
     { title: "Artifacts", id: "artifacts", cards: byType("artifact") },

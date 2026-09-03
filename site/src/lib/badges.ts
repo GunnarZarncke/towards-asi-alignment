@@ -14,7 +14,8 @@ export const CARD_TYPES = [
   "release",
   "news",
   "agenda",
-  "essay"
+  "essay",
+  "funding"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -100,6 +101,11 @@ export const TYPE_META: Record<
     title: "Essay",
     description:
       "Guided narrative entry for a general audience — one idea with a scene, not a definition card."
+  },
+  funding: {
+    title: "Funding opportunity",
+    description:
+      "Open or past funding asks scoped to this research program — decision relevance without application form chrome."
   }
 };
 

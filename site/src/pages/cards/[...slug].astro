@@ -19,6 +19,7 @@ import FieldAdjacentWork from "../../components/FieldAdjacentWork.astro";
 import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.astro";
 import ExperimentLedgersTable from "../../components/ExperimentLedgersTable.astro";
 import QuizBlock from "../../components/QuizBlock.astro";
+import FundingCardChrome from "../../components/FundingCardChrome.astro";
 import partGems from "../../data/part-gems.json";
 import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
 import references from "../../data/references.json";
@@ -88,6 +89,7 @@ const experimentKindMeta =
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
+const isFundingCard = card.data.type === "funding";
 const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
@@ -224,6 +226,18 @@ const pageDescription = showFullText
             <h1>{card.data.title}</h1>
           )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
+          {isFundingCard && (
+            <FundingCardChrome
+              fundingState={card.data.fundingState}
+              doneState={card.data.doneState}
+              costUsd={card.data.costUsd}
+              costUsdMax={card.data.costUsdMax}
+              remainingUsd={card.data.remainingUsd}
+              fundedUsd={card.data.fundedUsd}
+              costLabel={card.data.costLabel}
+              durationMonths={card.data.durationMonths}
+            />
+          )}
           {isOverviewHub && card.data.bookPageId && (
             <p class="button-row">
               <a class="button primary" href={bookFullHref(base, card.data.bookPageId)}>Read full appendix on site</a>
@@ -293,6 +307,11 @@ const pageDescription = showFullText
           {isNewsCard && (
             <p class="side-panel-meta">
               <a href={withBase("/news/")}>All related news</a>
+            </p>
+          )}
+          {isFundingCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/funding/")}>All funding opportunities</a>
             </p>
           )}
         </>
@@ -481,6 +500,31 @@ const pageDescription = showFullText
               </ul>
             </>
           )}
+        </>
+      )}
+      {isFundingCard && card.data.roles.length > 0 && (
+        <>
+          <h3>Roles</h3>
+          <ul>
+            {card.data.roles.map((role) => (
+              <li>{role}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {isFundingCard && card.data.dependsOn.length > 0 && (
+        <>
+          <h3>Depends on</h3>
+          <ul>
+            {card.data.dependsOn.map((depId) => {
+              const dep = resolveCard(allCards, depId) ?? allCards.find((entry) => entry.id === depId);
+              return (
+                <li>
+                  {dep ? <a href={cardHrefForCard(base, dep)}>{dep.data.title}</a> : depId}
+                </li>
+              );
+            })}
+          </ul>
         </>
       )}
       {!isBookUnit && !isReferenceCard && !isAgendaCard && card.data.bookChapters.length > 0 && (

@@ -40,6 +40,13 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
       Enable with <strong>Notes</strong> (bottom corner).
     </p>
 
+    <h2>Funding opportunities</h2>
+    <p>
+      Open and past funding asks scoped to this research program —
+      <a href={withBase("/funding/")}>funding opportunities overview</a> with dependency diagram and nine project cards.
+      Condensed from real applications; no funder names or personal names on the public cards.
+    </p>
+
     <h2>Links</h2>
     <ul class="link-list">
       {profile.links.map((link) => (

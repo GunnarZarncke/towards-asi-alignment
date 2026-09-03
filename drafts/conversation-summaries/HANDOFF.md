@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-04 (Bergemann–Koh–Morris plugged in as field implementation).
+Last updated: 2026-09-04 (funding opportunities site offer).
 
 ---
 
@@ -17,6 +17,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 **Field spec sheet:** marks in `product-comparison.yml` are a first pass — Gunnar may edit scores/`because` lines; regenerate with `cd site && npm run sync:product-comparison`.
 
 ---
+
+## Recently shipped
+
+- **2026-09-04:** **Funding opportunities on companion site** — new `funding` card type; nine cards at `/cards/funding/<slug>/`; overview `/funding/` with dual-state icons and HTML dependency diagram; About + funder-policy + Guided Tour funder card links. Source applications stay unpublished. Log: `2026-09-04-funding-offers-site.md`.
 
 ## Compressed history (Jun–Jul 2026)
 
@@ -74,7 +78,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **2026-08-28:** **AI Village HF related observations** — no standalone news card; fold Tekofsky LessWrong comparison onto OpenAI HF postmortem card (setup contrast, poverty/no-despair). Log: `2026-08-28-ai-village-hf-related-observations.md`.
 - **2026-08-28:** **Assumption key-only boxes + App B** — `bookassumption` (A-* key in heading); App B drops field-index/MIRI meta, landscape crosswalk; companion URLs frontmatter-only. Log: `2026-08-28-assumption-boxes-appb-cleanup.md`.
 - **2026-08-28:** **Shipping benchmark** — git + 633 session logs → 62 work days / 496h, release velocity, 54 deliverables, parallel burst calendar. [`drafts/tsa-shipping-benchmark.md`](../tsa-shipping-benchmark.md). Log: `2026-08-28-shipping-benchmark.md`.
-- **2026-08-28:** **Alignment Crux Map** — six crowded words; full **$50k** / 12 steps; MATS + BlueDot use tests + CHAI or Christiano; contractor `reviews` in YAML. [`drafts/alignment-crux-map/`](../alignment-crux-map/). Log: `2026-08-28-alignment-crux-map.md`.
+- **2026-08-28:** **Alignment Crux Map** — six crowded words; full **$50k** / 12 steps; MATS + BlueDot use tests + CHAI or Christiano; contractor `reviews` in YAML. Plan: [`drafts/plans/alignment-crux-map.md`](../plans/alignment-crux-map.md). [`drafts/alignment-crux-map/`](../alignment-crux-map/). Log: `2026-08-28-alignment-crux-map.md`.
 - **2026-08-28:** **Project identity** — README no longer leads with “research manuscript.” `INSTRUCTIONS.md` scoped to the book; PDF Current Status companion-site sentence is project-level. Log: `2026-08-28-project-not-manuscript.md`.
 - **2026-08-27:** **A-* in home chapters** — named `assumption` boxes; `\akey{A-00x}` links; no App B lookup table. Log: `2026-08-27-manuscript-a-keys.md`.
 - **2026-08-27:** Voice **bridge axioms vs book assumptions** — App G intro + `/lean/` + `/lean/spine/`: chapter A-rows ≠ Lean MB axioms. Log: `2026-08-27-voice-lean-axioms.md`.

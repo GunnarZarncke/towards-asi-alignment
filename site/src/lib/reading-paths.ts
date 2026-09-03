@@ -23,6 +23,12 @@ export type ReadingPathSpotlight = {
   secondary?: ReadingPathSpotlightLink;
 };
 
+/** Optional site page linked from the path card on /paths/ (not a reading step). */
+export type ReadingPathCompanionLink = {
+  href: string;
+  label: string;
+};
+
 export type ReadingPathRecord = {
   id: string;
   title: string;
@@ -30,6 +36,7 @@ export type ReadingPathRecord = {
   summary: string;
   steps: ReadingPathStep[];
   featuredSpotlight?: ReadingPathSpotlight;
+  companionLink?: ReadingPathCompanionLink;
   body: string;
 };
 

@@ -1,0 +1,139 @@
+---
+import FundingStateIcon from "./FundingStateIcon.astro";
+import {
+  DONE_STATE_LABEL,
+  FUNDING_STATE_LABEL,
+  formatUsd,
+  type DoneState,
+  type FundingState
+} from "../lib/funding-state";
+
+type Props = {
+  fundingState?: FundingState;
+  doneState?: DoneState;
+  costUsd?: number;
+  costUsdMax?: number;
+  remainingUsd?: number;
+  fundedUsd?: number;
+  costLabel?: string;
+  durationMonths?: number;
+};
+
+const {
+  fundingState,
+  doneState,
+  costUsd,
+  costUsdMax,
+  remainingUsd,
+  fundedUsd,
+  costLabel,
+  durationMonths
+} = Astro.props;
+
+const askParts: string[] = [];
+if (costLabel) askParts.push(costLabel);
+else if (costUsd != null) {
+  askParts.push(formatUsd(costUsd));
+  if (costUsdMax != null && costUsdMax !== costUsd) {
+    askParts.push(`up to ${formatUsd(costUsdMax)}`);
+  }
+}
+---
+
+<section class="funding-chrome">
+  {(fundingState || doneState) && (
+    <dl class="funding-status-row">
+      {fundingState && (
+        <div>
+          <dt>Funding</dt>
+          <dd>
+            <FundingStateIcon axis="funding" state={fundingState} />
+            {FUNDING_STATE_LABEL[fundingState]}
+          </dd>
+        </div>
+      )}
+      {doneState && (
+        <div>
+          <dt>Implementation</dt>
+          <dd>
+            <FundingStateIcon axis="done" state={doneState} />
+            {DONE_STATE_LABEL[doneState]}
+          </dd>
+        </div>
+      )}
+    </dl>
+  )}
+  <dl class="funding-meta">
+    {askParts.length > 0 && (
+      <div>
+        <dt>Ask</dt>
+        <dd>{askParts.join(" · ")}</dd>
+      </div>
+    )}
+    {fundedUsd != null && (
+      <div>
+        <dt>Granted</dt>
+        <dd>{formatUsd(fundedUsd)}</dd>
+      </div>
+    )}
+    {remainingUsd != null && (
+      <div>
+        <dt>Remaining to finish</dt>
+        <dd>{formatUsd(remainingUsd)}</dd>
+      </div>
+    )}
+    {durationMonths != null && (
+      <div>
+        <dt>Duration</dt>
+        <dd>{durationMonths} {durationMonths === 1 ? "month" : "months"}</dd>
+      </div>
+    )}
+  </dl>
+</section>
+
+<style>
+  .funding-chrome {
+    margin: 1rem 0 1.25rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 8px;
+    background: var(--color-surface-muted, rgba(0, 0, 0, 0.02));
+  }
+
+  .funding-status-row,
+  .funding-meta {
+    display: grid;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .funding-status-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .funding-meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 0.75rem;
+    }
+  }
+
+  .funding-status-row div,
+  .funding-meta div {
+    margin: 0;
+  }
+
+  dt {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+    margin: 0 0 0.15rem;
+  }
+
+  dd {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+</style>

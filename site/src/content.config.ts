@@ -85,7 +85,20 @@ const card = defineCollection({
       id: z.string(),
       slug: z.string(),
       tease: z.string()
-    })).default([])
+    })).default([]),
+    /** Funding cards only — money axis (separate from doneState). */
+    fundingState: z.enum(["open", "unfunded", "partial", "funded"]).optional(),
+    /** Funding cards only — implementation axis. */
+    doneState: z.enum(["not_started", "partial", "done"]).optional(),
+    costUsd: z.number().optional(),
+    costUsdMax: z.number().optional(),
+    remainingUsd: z.number().optional(),
+    fundedUsd: z.number().optional(),
+    /** Display when ask is not USD-only (e.g. euro band). */
+    costLabel: z.string().optional(),
+    durationMonths: z.number().optional(),
+    dependsOn: z.array(z.string()).default([]),
+    roles: z.array(z.string()).default([])
   })
 });
 

@@ -1,0 +1,98 @@
+---
+import type { DoneState, FundingState } from "../lib/funding-state";
+
+type Props = {
+  axis: "funding" | "done";
+  state: FundingState | DoneState;
+  title?: string;
+};
+
+const { axis, state, title } = Astro.props;
+---
+
+<span class:list={["funding-icon", axis, state]} title={title} aria-hidden="true">
+  {axis === "funding" ? (
+    <>
+      {state === "open" && <span class="funding-circle open" />}
+      {state === "unfunded" && <span class="funding-circle unfunded"><span class="slash" /></span>}
+      {state === "partial" && <span class="funding-circle partial" />}
+      {state === "funded" && <span class="funding-circle funded">✓</span>}
+    </>
+  ) : (
+    <>
+      {state === "not_started" && <span class="done-box not_started" />}
+      {state === "partial" && <span class="done-box partial" />}
+      {state === "done" && <span class="done-box done">✓</span>}
+    </>
+  )}
+</span>
+
+<style>
+  .funding-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    vertical-align: middle;
+  }
+
+  .funding-circle {
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    position: relative;
+    line-height: 1;
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  .funding-circle.partial {
+    background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  }
+
+  .funding-circle.funded {
+    background: currentColor;
+    color: var(--color-bg, #fff);
+    font-weight: 700;
+  }
+
+  .funding-circle.unfunded .slash {
+    position: absolute;
+    inset: 0;
+    transform: rotate(-45deg);
+  }
+
+  .funding-circle.unfunded .slash::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: currentColor;
+    transform: translateY(-50%);
+  }
+
+  .done-box {
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.85rem;
+    border: 2px solid currentColor;
+    line-height: 1;
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  .done-box.partial {
+    background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  }
+
+  .done-box.done {
+    background: currentColor;
+    color: var(--color-bg, #fff);
+    font-weight: 700;
+  }
+</style>

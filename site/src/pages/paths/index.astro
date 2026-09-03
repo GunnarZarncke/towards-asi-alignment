@@ -62,6 +62,11 @@ const stepSummary = (steps: ReadingPathStep[]) => {
           <p><strong>{path.audience}</strong></p>
           <p>{path.summary}</p>
           <p class="side-panel-meta">{path.steps.length} steps · {stepSummary(path.steps)}</p>
+          {path.companionLink && (
+            <p class="side-panel-meta">
+              <a href={withBase(path.companionLink.href)}>{path.companionLink.label}</a>
+            </p>
+          )}
           {path.featuredSpotlight && (
             <p class="side-panel-meta">
               <a
