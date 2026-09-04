@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-04 (spec sheet footer trim).
+Last updated: 2026-09-04 (crux map card voice).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-04:** **Crux map card voice** — funding card body follows the grant listing, not the generated expansion. Log: `2026-09-04-crux-map-card-voice.md`.
 - **2026-09-04:** **Spec sheet footer trim** — one caption line with links; dropped redundant footer blocks. Log: `2026-09-04-spec-sheet-footer.md`.
 - **2026-09-04:** **Funding page polish** — Cytoscape+dagre dependency graph; compact legend under graph; hero CTA; team FTE + roles on cards/list; 2-sig-fig asks; fixed funded/done icon fill; TSA $10k + site summary. Log: `2026-09-04-funding-offers-site.md`.
 - **2026-09-04:** **Funding opportunities on companion site** (initial) — `funding` card type; nine cards; `/funding/`; About + funder-policy + Guided Tour links. Commit `512f2280`.
