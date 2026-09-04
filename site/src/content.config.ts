@@ -97,6 +97,9 @@ const card = defineCollection({
     /** Display when ask is not USD-only (e.g. euro band). */
     costLabel: z.string().optional(),
     durationMonths: z.number().optional(),
+    /** Headcount at ask (full-time equivalents or team size). */
+    fte: z.number().optional(),
+    fteMax: z.number().optional(),
     dependsOn: z.array(z.string()).default([]),
     roles: z.array(z.string()).default([])
   })

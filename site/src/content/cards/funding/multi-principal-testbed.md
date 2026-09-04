@@ -5,8 +5,9 @@ status: framework
 summary: "Simulate a model-release process in software: a lab proposes a release, a release authority can approve or block it, and an independent evaluator can inspect and hold it. Three fixed-script roles enable clean questions about coordination, misleading reports, and which audit logs actually matter."
 fundingState: open
 doneState: not_started
-costUsd: 292442
+costUsd: 290000
 durationMonths: 18
+fte: 5
 dependsOn:
   - funding/tsa-writing
 bookChapters: ["ch09", "ch10", "ch39", "ch40", "ch41"]

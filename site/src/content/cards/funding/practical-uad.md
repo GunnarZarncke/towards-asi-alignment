@@ -7,6 +7,8 @@ fundingState: open
 doneState: not_started
 costUsd: 8000
 durationMonths: 2
+fte: 1
+fteMax: 4
 dependsOn:
   - funding/unsupervised-agent-discovery
 bookChapters: ["ch07", "ch09", "ch39"]

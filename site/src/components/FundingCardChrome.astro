@@ -4,6 +4,7 @@ import {
   DONE_STATE_LABEL,
   FUNDING_STATE_LABEL,
   formatUsd,
+  formatFte,
   type DoneState,
   type FundingState
 } from "../lib/funding-state";
@@ -17,6 +18,9 @@ type Props = {
   fundedUsd?: number;
   costLabel?: string;
   durationMonths?: number;
+  fte?: number;
+  fteMax?: number;
+  roles?: string[];
 };
 
 const {
@@ -27,8 +31,13 @@ const {
   remainingUsd,
   fundedUsd,
   costLabel,
-  durationMonths
+  durationMonths,
+  fte,
+  fteMax,
+  roles = []
 } = Astro.props;
+
+const teamSize = formatFte(fte, fteMax);
 
 const askParts: string[] = [];
 if (costLabel) askParts.push(costLabel);
@@ -88,7 +97,19 @@ else if (costUsd != null) {
         <dd>{durationMonths} {durationMonths === 1 ? "month" : "months"}</dd>
       </div>
     )}
+    {teamSize && (
+      <div>
+        <dt>Team</dt>
+        <dd>{teamSize}</dd>
+      </div>
+    )}
   </dl>
+  {roles.length > 0 && (
+    <dl class="funding-roles">
+      <dt>Roles</dt>
+      <dd>{roles.join(" · ")}</dd>
+    </dl>
+  )}
 </section>
 
 <style>
@@ -135,5 +156,16 @@ else if (costUsd != null) {
     display: flex;
     align-items: center;
     gap: 0.35rem;
+  }
+
+  .funding-roles {
+    margin: 0.75rem 0 0;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--color-border, #c8d4e0);
+  }
+
+  .funding-roles dd {
+    display: block;
+    line-height: 1.45;
   }
 </style>

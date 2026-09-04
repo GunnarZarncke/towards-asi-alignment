@@ -6,9 +6,11 @@ summary: "A practice hub for multi-agent AI-safety research: demonstrations, pro
 fundingState: open
 doneState: not_started
 costLabel: "€150k–215k / 18 mo (pilot €60k–90k / 12 mo)"
-costUsd: 165000
-costUsdMax: 237000
+costUsd: 170000
+costUsdMax: 240000
 durationMonths: 18
+fte: 2
+fteMax: 5
 dependsOn:
   - funding/unsupervised-agent-discovery
   - funding/tsa-writing

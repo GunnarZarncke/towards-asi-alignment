@@ -7,6 +7,7 @@ fundingState: open
 doneState: not_started
 costUsd: 270000
 durationMonths: 9
+fte: 4
 dependsOn:
   - funding/tsa-writing
   - funding/unsupervised-agent-discovery

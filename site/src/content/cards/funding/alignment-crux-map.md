@@ -5,9 +5,12 @@ status: framework
 summary: "A public, object-level map of AI-safety work so funders, researchers, and people entering the field can see which real problems are actually being worked on, and which only share a name."
 fundingState: open
 doneState: not_started
-costUsd: 15500
+costUsd: 16000
 costUsdMax: 50000
 durationMonths: 9
+fte: 1
+dependsOn:
+  - funding/tsa-writing
 bookChapters: ["ch05", "appB"]
 roles:
   - Lead investigator
@@ -55,7 +58,7 @@ Most of it is the lead's time, LLM assistants used to draft under human review, 
 | | Minimum | Ideal |
 |---|---------|-------|
 | **What you get** | Correctable-AI lab + Redwood run | MATS + BlueDot use, CHAI or Christiano, tiling, inner alignment, missed-lines, Wentworth/Garrabrant/Kosoy, upkeep |
-| **Total** | **$15,500** | **$50,000** |
+| **Total** | **$16,000** | **$50,000** |
 
 ## If it works
 

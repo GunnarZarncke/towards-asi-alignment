@@ -5,8 +5,9 @@ status: framework
 summary: "Build a sandbox in which at least three laboratories compete under deployment-like selection pressure, then test whether safeguards against collusion, misleading success metrics, provenance failures, cascades, and treatment erosion survive selection."
 fundingState: open
 doneState: not_started
-costUsd: 917150
+costUsd: 920000
 durationMonths: 18
+fte: 6
 dependsOn:
   - funding/tsa-writing
 bookChapters: ["ch34", "ch35", "ch36", "ch37"]

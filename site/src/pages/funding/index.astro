@@ -2,17 +2,20 @@
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import FundingStateIcon from "../../components/FundingStateIcon.astro";
+import FundingDependencyGraph from "../../components/FundingDependencyGraph.astro";
 import { cardHrefForCard } from "../../lib/site-urls";
 import {
-  DONE_STATE_LABEL,
-  FUNDING_STATE_LABEL,
   formatUsd,
-  type DoneState,
-  type FundingState
+  formatFte
 } from "../../lib/funding-state";
+import {
+  buildFundingGraphPayload,
+  fundingNodeLabel
+} from "../../lib/funding-graph/build-payload";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const scheduleCallUrl = "https://calendly.com/g-zarncke";
 
 const allCards = await getCollection("cards");
 const fundingCards = allCards
@@ -23,23 +26,35 @@ const bySlug = new Map(
   fundingCards.map((c) => [c.id.replace(/^funding\//, ""), c])
 );
 
-type NodeDef = {
-  slug: string;
-  label: string;
-  gridArea: string;
-};
+const graphPayload = buildFundingGraphPayload(base, fundingCards);
 
-const diagramNodes: NodeDef[] = [
-  { slug: "unsupervised-agent-discovery", label: "UAD", gridArea: "uad" },
-  { slug: "tsa-writing", label: "TSA", gridArea: "tsa" },
-  { slug: "practical-uad", label: "Practical UAD", gridArea: "practical" },
-  { slug: "alignment-observability-platform", label: "Observability", gridArea: "platform" },
-  { slug: "alignment-attractor-hub", label: "Attractor hub", gridArea: "hub" },
-  { slug: "corrigibility-measurement", label: "Corrigibility", gridArea: "corr" },
-  { slug: "multi-principal-testbed", label: "Multi-principal testbed", gridArea: "tier1" },
-  { slug: "competitive-lab-selection", label: "Competitive labs", gridArea: "tier2" },
-  { slug: "alignment-crux-map", label: "Crux Map", gridArea: "crux" }
-];
+function resolveDepCard(depId: string) {
+  const slug = depId.replace(/^funding\//, "");
+  return bySlug.get(slug) ?? allCards.find((entry) => entry.id === depId || entry.id === `funding/${slug}`);
+}
+
+const dependencyRows = fundingCards
+  .filter((card) => card.data.dependsOn.length > 0)
+  .sort((a, b) =>
+    fundingNodeLabel(a.id.replace(/^funding\//, "")).localeCompare(
+      fundingNodeLabel(b.id.replace(/^funding\//, ""))
+    )
+  )
+  .map((card) => {
+    const slug = card.id.replace(/^funding\//, "");
+    return {
+      slug,
+      href: cardHrefForCard(base, card),
+      deps: card.data.dependsOn
+        .map((depId) => resolveDepCard(depId))
+        .filter(Boolean)
+        .map((dep) => ({
+          slug: dep!.id.replace(/^funding\//, ""),
+          href: cardHrefForCard(base, dep!),
+          label: fundingNodeLabel(dep!.id.replace(/^funding\//, ""))
+        }))
+    };
+  });
 
 function costLine(card: (typeof fundingCards)[number]) {
   if (card.data.costLabel) return card.data.costLabel;
@@ -53,95 +68,39 @@ function costLine(card: (typeof fundingCards)[number]) {
 
 <SiteLayout
   title="Funding opportunities"
-  description="Open and past funding asks scoped to Towards Superintelligence Alignment — decision relevance without application form chrome."
+  description="Open funding asks for agent discovery, oversight testbeds, corrigibility measurement, observability infrastructure, and alignment field maps."
 >
   <section class="hero">
     <p class="eyebrow">Funding</p>
     <h1>Funding opportunities</h1>
     <p class="lede">
-      Condensed from real project applications. No funder names, no budget breakdowns, no personal names —
-      roles and totals only. Money state and implementation state are independent axes.
+      These funds buy agent discovery in real traces, reproducible multi-principal and competitive-lab testbeds,
+      corrigibility measurement on deployment-shaped systems, shared observability infrastructure, and field maps
+      that name which alignment job a dollar is purchasing.
     </p>
-  </section>
-
-  <section class="legend content-card">
-    <h2>Legend</h2>
-    <div class="legend-rows">
-      <div>
-        <h3>Funding</h3>
-        <ul class="legend-list">
-          {(Object.keys(FUNDING_STATE_LABEL) as FundingState[]).map((state) => (
-            <li>
-              <FundingStateIcon axis="funding" state={state} />
-              {FUNDING_STATE_LABEL[state]}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h3>Implementation</h3>
-        <ul class="legend-list">
-          {(Object.keys(DONE_STATE_LABEL) as DoneState[]).map((state) => (
-            <li>
-              <FundingStateIcon axis="done" state={state} />
-              {DONE_STATE_LABEL[state]}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <p class="button-row">
+      <a class="button primary" href="#all-opportunities">Compare project cards</a>
+      <a class="button" href={scheduleCallUrl} target="_blank" rel="noopener noreferrer">Schedule a call</a>
+      <a class="button" href={withBase("/paths/funder-policy/")}>Funder reading path</a>
+    </p>
   </section>
 
   <section class="diagram-section content-card">
     <h2>Dependencies</h2>
-    <p class="side-panel-meta">Solid arrows: scientific or artifact dependencies. Parallel projects share no staffing constraint on this diagram.</p>
-    <div class="funding-diagram">
-      {diagramNodes.map(({ slug, label, gridArea }) => {
-        const card = bySlug.get(slug);
-        if (!card) return null;
-        const href = cardHrefForCard(base, card);
-        return (
-          <a class="diagram-node" style={`grid-area: ${gridArea}`} href={href}>
-            <span class="diagram-label">{label}</span>
-            <span class="diagram-icons">
-              {card.data.fundingState && (
-                <FundingStateIcon axis="funding" state={card.data.fundingState} title={FUNDING_STATE_LABEL[card.data.fundingState]} />
-              )}
-              {card.data.doneState && (
-                <FundingStateIcon axis="done" state={card.data.doneState} title={DONE_STATE_LABEL[card.data.doneState]} />
-              )}
-            </span>
-          </a>
-        );
-      })}
-      <svg class="diagram-edges" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <polygon points="0 0, 6 3, 0 6" fill="currentColor" />
-          </marker>
-        </defs>
-        {/* UAD → row below */}
-        <line x1="50" y1="14" x2="50" y2="22" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="14" x2="18" y2="22" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="14" x2="82" y2="22" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="14" x2="82" y2="38" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="14" x2="18" y2="54" marker-end="url(#arrowhead)" />
-        {/* TSA → row below */}
-        <line x1="50" y1="30" x2="82" y2="38" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="30" x2="18" y2="54" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="30" x2="38" y2="54" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="30" x2="62" y2="54" marker-end="url(#arrowhead)" />
-        <line x1="50" y1="30" x2="82" y2="54" marker-end="url(#arrowhead)" />
-      </svg>
-    </div>
+    <p class="side-panel-meta">
+      Block graph from each card’s <code>dependsOn</code> field — arrows run from dependency to dependent project.
+      Parallel projects share no staffing constraint.
+    </p>
+    <FundingDependencyGraph payload={graphPayload} dependencyRows={dependencyRows} />
   </section>
 
-  <section class="card-list">
+  <section class="card-list" id="all-opportunities">
     <h2>All opportunities</h2>
     <ul class="funding-list">
       {fundingCards.map((card) => {
         const href = cardHrefForCard(base, card);
         const cost = costLine(card);
+        const team = formatFte(card.data.fte, card.data.fteMax);
         return (
           <li class="funding-list-item content-card">
             <div class="funding-list-head">
@@ -167,7 +126,11 @@ function costLine(card: (typeof fundingCards)[number]) {
               {card.data.remainingUsd != null && (
                 <span> · ~{formatUsd(card.data.remainingUsd)} to finish</span>
               )}
+              {team && <span> · {team}</span>}
             </p>
+            {card.data.roles.length > 0 && (
+              <p class="funding-list-roles side-panel-meta">Roles: {card.data.roles.join(" · ")}</p>
+            )}
           </li>
         );
       })}
@@ -176,82 +139,6 @@ function costLine(card: (typeof fundingCards)[number]) {
 </SiteLayout>
 
 <style>
-  .legend-rows {
-    display: grid;
-    gap: 1.25rem;
-  }
-
-  @media (min-width: 640px) {
-    .legend-rows {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  .legend-list {
-    list-style: none;
-    padding: 0;
-    margin: 0.35rem 0 0;
-    display: grid;
-    gap: 0.35rem;
-  }
-
-  .legend-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-
-  .funding-diagram {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      ". uad uad ."
-      "practical tsa platform hub"
-      "corr tier1 tier2 crux";
-    gap: 0.75rem;
-    margin-top: 1rem;
-    min-height: 14rem;
-  }
-
-  .diagram-edges {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--color-border-strong, #8899aa);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .diagram-node {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    padding: 0.65rem 0.5rem;
-    border: 1px solid var(--color-border, #c8d4e0);
-    border-radius: 8px;
-    background: var(--color-bg, #fff);
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    font-size: 0.88rem;
-  }
-
-  .diagram-node:hover {
-    border-color: var(--color-accent, #336699);
-  }
-
-  .diagram-label {
-    font-weight: 600;
-    line-height: 1.2;
-  }
-
   .diagram-icons {
     display: inline-flex;
     gap: 0.25rem;
@@ -280,5 +167,10 @@ function costLine(card: (typeof fundingCards)[number]) {
 
   .funding-list-item p {
     margin: 0.25rem 0 0;
+  }
+
+  .funding-list-roles {
+    margin-top: 0.35rem;
+    line-height: 1.45;
   }
 </style>

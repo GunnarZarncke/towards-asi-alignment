@@ -236,6 +236,9 @@ const pageDescription = showFullText
               fundedUsd={card.data.fundedUsd}
               costLabel={card.data.costLabel}
               durationMonths={card.data.durationMonths}
+              fte={card.data.fte}
+              fteMax={card.data.fteMax}
+              roles={card.data.roles}
             />
           )}
           {isOverviewHub && card.data.bookPageId && (
@@ -500,16 +503,6 @@ const pageDescription = showFullText
               </ul>
             </>
           )}
-        </>
-      )}
-      {isFundingCard && card.data.roles.length > 0 && (
-        <>
-          <h3>Roles</h3>
-          <ul>
-            {card.data.roles.map((role) => (
-              <li>{role}</li>
-            ))}
-          </ul>
         </>
       )}
       {isFundingCard && card.data.dependsOn.length > 0 && (

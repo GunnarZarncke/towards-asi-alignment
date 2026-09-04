@@ -1,0 +1,183 @@
+---
+import type { FundingGraphPayload } from "../lib/funding-graph/build-payload";
+import { fundingNodeLabel } from "../lib/funding-graph/build-payload";
+import FundingGraphLegend from "./FundingGraphLegend.astro";
+
+type Props = {
+  payload: FundingGraphPayload;
+  dependencyRows: {
+    slug: string;
+    href: string;
+    deps: { slug: string; href: string; label: string }[];
+  }[];
+};
+
+const { payload, dependencyRows } = Astro.props;
+---
+
+<div class="dep-graph-wrap" data-funding-dep-graph>
+  <script type="application/json" data-funding-graph-payload set:html={JSON.stringify(payload)} />
+
+  <div
+    class="dep-graph-cy"
+    data-funding-graph-cy
+    role="img"
+    aria-label="Interactive funding project dependency diagram. Arrows point from dependency to dependent project."
+  ></div>
+
+  <div class="dep-graph-footer">
+    <FundingGraphLegend />
+    <p class="dep-graph-hint side-panel-meta">
+      Click a block to open the project card. Drag to pan; scroll or pinch to zoom.
+    </p>
+  </div>
+
+  <details class="dep-table-fallback">
+    <summary>Dependency list (no JavaScript / accessible list)</summary>
+    <table class="dep-table">
+      <caption class="visually-hidden">Project dependency detail</caption>
+      <thead>
+        <tr>
+          <th scope="col">Project</th>
+          <th scope="col">Depends on</th>
+        </tr>
+      </thead>
+      <tbody>
+        {dependencyRows.map((row) => (
+          <tr>
+            <th scope="row">
+              <a href={row.href}>{fundingNodeLabel(row.slug)}</a>
+            </th>
+            <td>
+              <ul class="dep-targets">
+                {row.deps.map((dep) => (
+                  <li>
+                    <a href={dep.href}>{dep.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</div>
+
+<script>
+  import { initFundingDependencyGraph } from "../lib/funding-graph/init.ts";
+  import type { FundingGraphPayload } from "../lib/funding-graph/build-payload.ts";
+
+  const root = document.querySelector("[data-funding-dep-graph]");
+  if (root instanceof HTMLElement) {
+    const payloadEl = root.querySelector("[data-funding-graph-payload]");
+    if (payloadEl?.textContent) {
+      const payload = JSON.parse(payloadEl.textContent) as FundingGraphPayload;
+      initFundingDependencyGraph(root, payload);
+    }
+  }
+</script>
+
+<style>
+  .dep-graph-wrap {
+    margin-top: 1rem;
+  }
+
+  .dep-graph-cy {
+    width: 100%;
+    min-height: 28rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 8px;
+    background: var(--color-surface-muted, rgba(0, 0, 0, 0.02));
+  }
+
+  .dep-graph-wrap[data-graph-ready="true"] .dep-graph-cy {
+    min-height: 32rem;
+  }
+
+  .dep-graph-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .dep-graph-hint {
+    margin: 0;
+    flex: 1 1 12rem;
+    font-size: 0.72rem;
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .dep-graph-hint {
+      text-align: left;
+    }
+  }
+
+  .dep-table-fallback {
+    margin-top: 0.85rem;
+  }
+
+  .dep-graph-wrap[data-graph-ready="true"] .dep-table-fallback {
+    margin-top: 1rem;
+  }
+
+  .dep-table-fallback summary {
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--color-accent, #336699);
+  }
+
+  .dep-table {
+    width: 100%;
+    margin-top: 0.65rem;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .dep-table th,
+  .dep-table td {
+    border-top: 1px solid var(--color-border, #c8d4e0);
+    padding: 0.55rem 0.35rem;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .dep-table thead th {
+    border-top: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+  }
+
+  .dep-table th[scope="row"] {
+    font-weight: 600;
+    white-space: nowrap;
+    padding-right: 0.75rem;
+  }
+
+  .dep-targets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

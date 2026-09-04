@@ -14,12 +14,31 @@ export const DONE_STATE_LABEL: Record<DoneState, string> = {
   done: "Done"
 };
 
+/** Public funding display: two significant figures (no budget-line false precision). */
+export function roundFundingAmount(amount: number, significantDigits = 2): number {
+  if (!Number.isFinite(amount) || amount === 0) return amount;
+  const sign = Math.sign(amount);
+  const abs = Math.abs(amount);
+  const power = Math.floor(Math.log10(abs));
+  const scale = 10 ** (power - significantDigits + 1);
+  return sign * Math.round(abs / scale) * scale;
+}
+
 export function formatUsd(amount: number) {
+  const rounded = roundFundingAmount(amount);
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 0
-  }).format(amount);
+  }).format(rounded);
+}
+
+export function formatFte(fte?: number, fteMax?: number): string | null {
+  if (fte == null) return null;
+  if (fteMax != null && fteMax !== fte) {
+    return `${fte}–${fteMax} people`;
+  }
+  return fte === 1 ? "1 person" : `${fte} people`;
 }
 
 export function fundingCardRef(id: string) {

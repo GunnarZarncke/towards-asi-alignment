@@ -9,6 +9,7 @@ costUsd: 60000
 fundedUsd: 10000
 remainingUsd: 30000
 durationMonths: 5
+fte: 1
 bookChapters: ["ch06", "ch07", "ch08", "ch09", "ch11", "ch12", "appI"]
 roles:
   - Lead investigator
