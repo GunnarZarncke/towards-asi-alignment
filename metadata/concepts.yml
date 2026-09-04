@@ -203,8 +203,8 @@ concepts:
   - slug: bearer-admission-adjacent
     kind: concept
     status: framework
-    title: Bearer Admission (Adjacent)
-    summary: Consciousness and welfare neighborhood notes for MB3 bearer inference — not coverage-matrix cells.
+    title: Consciousness and Who Counts
+    summary: AI consciousness, sentience, and welfare work near who values apply to.
     bookChapters:
       - ch18
     body: bodies/bearer-admission-adjacent.md

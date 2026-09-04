@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-05 | **Field overview adjacent voice** — Plain-language consciousness/welfare panel on `/field/`; research-programs tile moved to position 3; concept card + v2 adjacent copy aligned. | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
 | 2026-09-04 | **Spec sheet footer trim** — User: redundant caption + link row + “Manual comparison” footer on `/start/spec-sheet/`. | [2026-09-04-spec-sheet-footer.md](2026-09-04-spec-sheet-footer.md) |
 | 2026-09-04 | **Funding opportunities site offer** — Implement the TSA funding-opportunity plan: nine public funding cards from existing application w... | [2026-09-04-funding-offers-site.md](2026-09-04-funding-offers-site.md) |
 | 2026-09-04 | **Crux map card uses listing voice** — The public Alignment Crux Map card was mostly generated prose. Replace it with the grant listing ... | [2026-09-04-crux-map-card-voice.md](2026-09-04-crux-map-card-voice.md) |

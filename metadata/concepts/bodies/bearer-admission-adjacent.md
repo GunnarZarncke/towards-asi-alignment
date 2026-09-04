@@ -8,10 +8,10 @@ external:
     url: /field/v2/
 ---
 
-Candidate theory and policy work relevant to **bearer admission** (ch18 / MB3 sub-obligation): which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a bundle-specific bearer class.
+Candidate theory and policy work on **AI consciousness, sentience, and welfare** — near the question of **who values apply to** when systems or substrates change (ch18; see [glossary](/glossary/)). When a process is digital, simulated, or otherwise unfamiliar: who might still deserve moral consideration, and what can we conservatively rule out?
 
-These notes are **not coverage-matrix cells**. Filling a matrix cell requires a sourced agenda contribution under field-map curation rules; listing here only records neighborhood work the hub should make visible.
+These notes are **not** entries in the [field coverage](/field/coverage/) matrix. That grid needs a sourced contribution from a named alignment research program; listing here only makes related neighborhood work visible on the hub.
 
 **Field coverage** (sourced agenda evidence): [/field/coverage/](/field/coverage/).
 
-The list and firewall notes follow below.
+

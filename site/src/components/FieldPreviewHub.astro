@@ -34,6 +34,16 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
   </article>
 
   <article class="field-preview-panel">
+    <h2>The research programs</h2>
+    <ul class="field-preview-agendas">
+      {agendas.map((agenda) => (
+        <li>{agenda.title}</li>
+      ))}
+    </ul>
+    <a class="field-preview-cover" href={withBase("/badges/type/agenda/")}><span class="visually-hidden">The research programs</span></a>
+  </article>
+
+  <article class="field-preview-panel">
     <h2>When each handoff must hold</h2>
     <ol class="field-preview-phases">
       {phases.map((phase) => (
@@ -60,28 +70,19 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
   </article>
 
   <article class="field-preview-panel">
-    <h2>Consciousness and welfare neighborhood</h2>
+    <h2>Consciousness, welfare, and who counts</h2>
     <div class="field-preview-excerpt">
       <p>
-        Which unfamiliar processes may be conservatively excluded from, or remain unresolved for, a
-        bundle-specific bearer class.
+        When a system is digital, simulated, or otherwise unfamiliar: who might still deserve moral
+        consideration, and what can we conservatively rule out?
       </p>
       <p>
-        These notes are not coverage-matrix cells. Filling a matrix cell needs a sourced agenda
-        contribution; this list only records neighborhood work the hub should make visible.
+        Related consciousness and welfare research is listed here for visibility. It is not part of
+        the “who published what” grid — that needs sourced contributions from named alignment
+        programs.
       </p>
     </div>
-    <a class="field-preview-cover" href={cardHref(base, "bearer-admission-adjacent", "concept")}><span class="visually-hidden">Consciousness and welfare neighborhood</span></a>
-  </article>
-
-  <article class="field-preview-panel">
-    <h2>The research programs</h2>
-    <ul class="field-preview-agendas">
-      {agendas.map((agenda) => (
-        <li>{agenda.title}</li>
-      ))}
-    </ul>
-    <a class="field-preview-cover" href={withBase("/badges/type/agenda/")}><span class="visually-hidden">The research programs</span></a>
+    <a class="field-preview-cover" href={cardHref(base, "bearer-admission-adjacent", "concept")}><span class="visually-hidden">Consciousness, welfare, and who counts</span></a>
   </article>
 </section>
 
