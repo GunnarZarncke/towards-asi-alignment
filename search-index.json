@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-04T22:01:48.147Z",
+  "generatedAt": "2026-09-04T23:56:03.618Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 359,
+  "entryCount": 360,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -565,6 +565,12 @@
       "url": "/cards/concept/agent-without-anthropomorphism/"
     },
     {
+      "title": "A Map of the Field",
+      "type": "concept",
+      "summary": "External maps, surveys, and indexes for orienting to AI safety and alignment research.",
+      "url": "/cards/concept/field-map-starting-points/"
+    },
+    {
       "title": "A map, not a certificate",
       "type": "essay",
       "summary": "Alignment, in this project, means keeping human-correctable value-bearing processes intact as systems grow, copy, and compete. This is a map of that problem, not a proof it is solved.",
@@ -669,7 +675,7 @@
     {
       "title": "Alignment Target",
       "type": "concept",
-      "summary": "Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder including object-sort compatibility.",
+      "summary": "What “aligned to” is supposed to mean — preferences, constitutions, and other field programs as instances of one specify-stage question.",
       "url": "/cards/concept/alignment-target/"
     },
     {
@@ -739,12 +745,6 @@
       "url": "/cards/chapter/ch05/"
     },
     {
-      "title": "Bearer Admission (Adjacent)",
-      "type": "concept",
-      "summary": "Consciousness and welfare neighborhood notes for MB3 bearer inference — not coverage-matrix cells.",
-      "url": "/cards/concept/bearer-admission-adjacent/"
-    },
-    {
       "title": "Bearer Persistence",
       "type": "concept",
       "summary": "Values must keep applying to the right persons, beings, states, or processes as systems and ontologies change.",
@@ -789,7 +789,7 @@
     {
       "title": "Bridge Assumptions",
       "type": "bridge",
-      "summary": "Named handoffs where the safety argument needs the world to cooperate: the same walls the field already argues about under other names. Lean checks what follows if they hold; it does not prove real systems satisfy them.",
+      "summary": "Named handoffs where a safety argument needs the world to cooperate — embedded agency, value identification, corrigibility under pressure, and the rest. Typed as MB1–MB11 plus open specify/construct interfaces.",
       "url": "/cards/bridge/bridge-assumptions/"
     },
     {
@@ -911,6 +911,12 @@
       "type": "agenda",
       "summary": "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?",
       "url": "/cards/agenda/conjecture-cognitive-emulation/"
+    },
+    {
+      "title": "Consciousness and Who Counts",
+      "type": "concept",
+      "summary": "AI consciousness, sentience, and welfare work near who values apply to.",
+      "url": "/cards/concept/bearer-admission-adjacent/"
     },
     {
       "title": "Conserved Properties Across Successors",
