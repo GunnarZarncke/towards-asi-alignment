@@ -12,7 +12,7 @@ const repoRoot = path.resolve(siteRoot, "..");
 
 const OUT_DIR = path.join(siteRoot, "public/field-graphs");
 
-/** v1 frozen at field cutover; v2 is live on /field/v2/ (and /field/ redirect). */
+/** v1 frozen at field cutover; live hub at /field/v2/ (/field/ redirects). */
 const GRAPHS = [
   {
     version: "v1",

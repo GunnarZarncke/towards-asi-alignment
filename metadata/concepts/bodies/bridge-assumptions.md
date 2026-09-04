@@ -42,21 +42,21 @@ A **bridge assumption** is this project's way of naming those handoffs instead o
 
 The [field coverage matrix](/field/coverage/) columns use field nouns the community already argues about. Each column header names both that open problem and the matching bridge proposition an agenda must make hold. The individual cards spell out the precise bet:
 
-| Field open problem | Bridge | Card |
-| --- | --- | --- |
-| Embedded Agency | MB1 | [MB1](/cards/mb1-boundary-estimator-soundness/) |
-| Value Learning | MB2 | [MB2](/cards/mb2-bundle-identifiability/) |
-| Value Referent | MB3 | [MB3](/cards/mb3-bearer-import/) |
-| Corrigibility | MB4 | [MB4](/cards/mb4-correction-legitimacy/) |
-| Audit Independence | MB4a | [MB4a](/cards/mb4a-measured-path-legitimacy/) |
-| Tiling | MB5 | [MB5](/cards/mb5-successor-ontology-shift/) |
-| Goodhart Selection | MB6 | [MB6](/cards/mb6-selection-and-basin-stability/) |
-| Inner Alignment | MB7a–c | [MB7](/cards/mb7-hidden-capability-and-access/) ([MB7a](/cards/mb7a-access-model-soundness/)–[MB7c](/cards/mb7c-bounded-hidden-capability/)) |
-| Acausal Coordination | MB7d | [MB7d](/cards/mb7d-acausal-coordination/) |
-| Extrapolated Volition | MB8 | [MB8](/cards/mb8-cev-process-convergence/) (gravestone) |
-| Grounding Drift | MB9 | [MB9](/cards/mb9-grounding-certificate/) |
-| Successor Gaming | MB10 | [MB10](/cards/mb10-successor-forgeability/) |
-| Deployment Safety | MB11 | [MB11](/cards/mb11-deployment-safety/) |
+| Field open problem | Bridge |
+| --- | --- |
+| Embedded Agency | [MB1](/cards/mb1-boundary-estimator-soundness/) |
+| Value Learning | [MB2](/cards/mb2-bundle-identifiability/) |
+| Value Referent | [MB3](/cards/mb3-bearer-import/) |
+| Corrigibility | [MB4](/cards/mb4-correction-legitimacy/) |
+| Audit Independence | [MB4a](/cards/mb4a-measured-path-legitimacy/) |
+| Tiling | [MB5](/cards/mb5-successor-ontology-shift/) |
+| Goodhart Selection | [MB6](/cards/mb6-selection-and-basin-stability/) |
+| Inner Alignment | [MB7](/cards/mb7-hidden-capability-and-access/) ([MB7a](/cards/mb7a-access-model-soundness/)–[MB7c](/cards/mb7c-bounded-hidden-capability/)) |
+| Acausal Coordination | [MB7d](/cards/mb7d-acausal-coordination/) |
+| Extrapolated Volition | [MB8](/cards/mb8-cev-process-convergence/) (gravestone) |
+| Grounding Drift | [MB9](/cards/mb9-grounding-certificate/) |
+| Successor Gaming | [MB10](/cards/mb10-successor-forgeability/) |
+| Deployment Safety | [MB11](/cards/mb11-deployment-safety/) |
 
 This project does not dissolve any of these walls. The [crosswalk appendix](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex) states what is shared with named field agendas and where the book adds structure rather than re-labeling. Shared English words are not shared objects: see [Ontology homographs](/full/appB/#sec:ontology-homographs-appb) in the synced Appendix B text.
 

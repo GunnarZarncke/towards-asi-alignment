@@ -14,6 +14,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const agendas = fieldData.roster.filter((row) => row.inMatrix).slice(0, 16);
 const phases = fieldV2.lifecyclePhases ?? [];
 const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
+const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
 ---
 
 <section class="field-preview-hub" aria-label="Field map">
@@ -30,7 +31,7 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
     <div class="field-preview-clip field-preview-clip--graph" aria-hidden="true">
       <FieldBridgeGraph />
     </div>
-    <a class="field-preview-cover" href={cardHref(base, "bridge-assumptions", "bridge")}><span class="visually-hidden">Which problems depend on which</span></a>
+    <a class="field-preview-cover" href={bridgeAssumptionsHref}><span class="visually-hidden">Which problems depend on which</span></a>
   </article>
 
   <article class="field-preview-panel">
@@ -41,6 +42,22 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
       ))}
     </ul>
     <a class="field-preview-cover" href={withBase("/badges/type/agenda/")}><span class="visually-hidden">The research programs</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>
+      <a class="field-preview-title-link" href={bridgeAssumptionsHref}>Bridge assumptions</a>
+    </h2>
+    <div class="field-preview-excerpt">
+      <p>
+        Named handoffs where a safety argument needs the world to cooperate — embedded agency, value
+        identification, corrigibility under pressure, and the rest. Typed as MB1–MB11 on this site.
+      </p>
+      <p class="field-preview-card-link">
+        <a href={bridgeAssumptionsHref}>Open bridge assumptions card</a>
+      </p>
+    </div>
+    <a class="field-preview-cover" href={bridgeAssumptionsHref}><span class="visually-hidden">Bridge assumptions</span></a>
   </article>
 
   <article class="field-preview-panel">
@@ -83,6 +100,21 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
       </p>
     </div>
     <a class="field-preview-cover" href={cardHref(base, "bearer-admission-adjacent", "concept")}><span class="visually-hidden">Consciousness, welfare, and who counts</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>A map of the field</h2>
+    <div class="field-preview-excerpt">
+      <p>
+        External maps and surveys — AISafety.com, the Alignment Survey, CAIS, LessWrong, and more —
+        for orienting to the research landscape.
+      </p>
+      <p>
+        This site adds who the major agendas are, which bridge cruxes they touch, and what
+        evidence each has published.
+      </p>
+    </div>
+    <a class="field-preview-cover" href={cardHref(base, "field-map-starting-points", "concept")}><span class="visually-hidden">A map of the field</span></a>
   </article>
 </section>
 
@@ -141,6 +173,28 @@ const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
     margin: 0 0 0.65rem;
     font-size: 1.05rem;
     flex: 0 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .field-preview-title-link,
+  .field-preview-card-link a {
+    color: var(--color-link, #1a5276);
+    text-decoration: none;
+  }
+
+  .field-preview-title-link:hover,
+  .field-preview-title-link:focus-visible,
+  .field-preview-card-link a:hover,
+  .field-preview-card-link a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .field-preview-card-link {
+    margin: 0;
+    font-size: 0.92rem;
+    position: relative;
+    z-index: 2;
   }
 
   .field-preview-clip,

@@ -189,10 +189,12 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "What is the Field page?",
     answer: [
       "A map of who in alignment research works on which problems, relative to this project's bridges. Start at ",
-      { label: "Field", href: { kind: "route", path: "/field/" } },
-      ". The ",
-      { label: "longer briefing", href: { kind: "route", path: "/field/v2/" } },
-      " is one click further."
+      { label: "Field", href: { kind: "route", path: "/field/v2/" } },
+      " — intro, preview panels, and links to ",
+      { label: "field coverage", href: { kind: "route", path: "/field/coverage/" } },
+      " and ",
+      { label: "external field maps", href: { kind: "card", id: "field-map-starting-points", type: "concept" } },
+      "."
     ]
   },
   {

@@ -72,7 +72,7 @@ concepts:
     kind: concept
     status: framework
     title: Alignment Target
-    summary: Open specify-lifecycle interface — ConstitutionalRule → AlignmentTarget; field programs are instances, not extra MB columns. SpecifyCrux is a placeholder including object-sort compatibility.
+    summary: What “aligned to” is supposed to mean — preferences, constitutions, and other field programs as instances of one specify-stage question.
     bookChapters:
       - ch01
       - ch28
@@ -449,6 +449,12 @@ concepts:
     title: Field Coverage
     summary: Agenda × bridge matrix and sourced evidence catalog — who published what on which cruxes.
     body: bodies/field-coverage.md
+  - slug: field-map-starting-points
+    kind: concept
+    status: framework
+    title: A Map of the Field
+    summary: External maps, surveys, and indexes for orienting to AI safety and alignment research.
+    body: bodies/field-map-starting-points.md
   - slug: negative-results
     kind: concept
     title: Negative Results Ledgers

@@ -1,7 +1,7 @@
 ---
 import { getEntry, render } from "astro:content";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
-import FieldHubNav from "../../../components/FieldHubNav.astro";
+import FieldPreviewHub from "../../../components/FieldPreviewHub.astro";
 import ParentCrumb from "../../../components/ParentCrumb.astro";
 
 const introEntry = await getEntry("field", "intro");
@@ -14,58 +14,37 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 <SiteLayout
   title="Field"
-  description={introEntry.data.description ?? "AI safety field map: agendas, bridge coverage matrix, lifecycle axis, and sourced evidence catalog."}
+  description={introEntry.data.description ?? "AI safety and alignment: who published what, which problems depend on which, and the research programs."}
 >
   <section class="hero">
     <ParentCrumb parentHref={withBase("/field/")} parentLabel="Field" />
     <p class="eyebrow">Field</p>
     <h1>AI safety and alignment</h1>
-    <p class="lede">
-      A map of research agendas and how they connect to the hard problems of the AI alignment field.
-      {" "}
-      <a href={withBase("/field/")}>Field landing</a> (preview panels).
-      {" "}
-      <span class="v1-ref">Archived v1 matrix: <a href={withBase("/field/v1/")}>/field/v1/</a>.</span>
-    </p>
+    <p class="lede">Labs disagree on methods. They still share unsolved handoffs.</p>
   </section>
 
-  <article class="field-intro prose-block">
+  <article class="field-intro prose-block readable">
     <IntroContent />
   </article>
 
-  <section class="bridge-paragraph readable">
-    <p>
-      A <strong>bridge assumption</strong> is a named handoff where the safety argument needs the world to cooperate —
-      embedded agency, value identification, corrigibility under pressure, and the rest.
-      This project types them as MB1–MB11 (plus open specify/construct interfaces).
-      Lean checks what follows <em>if</em> the bridges hold; field evidence governs whether each handoff is reliable in practice.
-      Start with the <a href={withBase("/cards/bridge-assumptions/")}>bridge assumptions</a> card and the
-      <a href={withBase("/cards/alignment-lifecycle/")}>lifecycle axis</a> for when each handoff must hold.
-    </p>
-  </section>
+  <FieldPreviewHub base={base} />
 
-  <FieldHubNav base={base} />
+  <p class="field-footer readable">
+    <a href={withBase("/glossary/")}>Glossary</a>
+    {" · "}
+    <a href={withBase("/field/v1/")}>Archived v1 matrix</a>
+  </p>
 </SiteLayout>
 
 <style>
-  .v1-ref {
-    color: var(--color-muted, #64748b);
-    font-size: 0.92em;
-  }
-
-  .prose-block,
   .field-intro {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     max-width: 48rem;
   }
 
   .field-intro :global(h2) {
     margin-top: 2rem;
     font-size: 1.35rem;
-  }
-
-  .field-intro :global(h2:first-child) {
-    margin-top: 0;
   }
 
   .field-intro :global(p),
@@ -81,17 +60,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     font-style: italic;
   }
 
-  .field-intro :global(ul) {
-    padding-left: 1.25rem;
-  }
-
-  .field-intro :global(a) {
-    color: var(--color-link, #1a5276);
-  }
-
-  .bridge-paragraph {
-    margin-top: 2rem;
-    max-width: 48rem;
-    line-height: 1.6;
+  .field-footer {
+    margin-top: 1.75rem;
   }
 </style>

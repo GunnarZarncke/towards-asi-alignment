@@ -312,7 +312,7 @@ index:
   kind: bridge
   title: Bridge Assumptions
   status: bridge
-  summary: "Named handoffs where the safety argument needs the world to cooperate: the same walls the field already argues about under other names. Lean checks what follows if they hold; it does not prove real systems satisfy them."
+  summary: "Named handoffs where a safety argument needs the world to cooperate — embedded agency, value identification, corrigibility under pressure, and the rest. Typed as MB1–MB11 plus open specify/construct interfaces."
   decision: When reading a claim, ask whether it is a proof step, a counterexample, or a bridge to real systems.
   evidence: A bridge becomes stronger when a measurement procedure, governance mechanism, or field result makes the handoff reliable in a narrow deployment class.
   bookChapters:

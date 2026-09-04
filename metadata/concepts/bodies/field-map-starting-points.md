@@ -1,0 +1,26 @@
+---
+related:
+  - field-coverage
+  - bridge-assumptions
+  - alignment-lifecycle
+external:
+  - label: Field hub
+    url: /field/v2/
+---
+
+Useful **starting points** for orienting to AI safety and alignment research:
+
+- **[AISafety.com map](https://www.aisafety.com/map)** — ecosystem map of organizations, programs, and resources (the clustering on this site rolls up map listings into coherent **agenda** rows).
+- **[AI Safety Interventions](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions)** — index of roughly ninety named interventions across foundational theory, oversight, control, interpretability, governance, and underexplored routes; [extended PDF](https://github.com/GunnarZarncke/ai-safety-interventions/blob/master/ai_safety_interventions.pdf).
+- **[AI Alignment: A Comprehensive Survey](https://alignmentsurvey.com/)** (Ji et al., 2023) — academic survey of alignment problems and methods.
+- **[Foundational challenges in assuring alignment and safety of LLMs](https://arxiv.org/abs/2404.09932)** (Ganguli et al., 2024) — Anthropic's framing of eighteen foundational challenges.
+- **[Open Problems in Technical AI Governance](https://arxiv.org/abs/2407.14981)** (Reuel et al., 2024) — policy and institutions adjacent to technical work.
+- **[Center for AI Safety](https://www.safe.ai/)** — field-building, statements, and course material.
+- **[AI Alignment Forum](https://www.alignmentforum.org/)** / [LessWrong](https://www.lesswrong.com/) — long-form research discourse and tag-based archives.
+- **[Human Compatible](https://humancompatible.ai/)** (Russell, 2019) — assistance-games framing of beneficial AI under preference uncertainty.
+- **[International AI Safety Report](https://internationalaisafetyreport.org/)** — periodic synthesis for policymakers (complementary to researcher-native maps).
+- **[Textbook from the Future](https://textbookfromthefuture.org/)** (Iliad) — theory megaproject and coordination instrument sketching a communal table of contents for foundational alignment; [agenda card](/cards/field-agendas/iliad-textbook-from-the-future/).
+
+**This site** adds an overview of who the major agendas are, the cruxes of the field, and what evidence each has published on the cruxes. The cruxes are presented as **[bridge assumptions](/cards/bridge/bridge-assumptions/)** — named conditional handoffs between open problems and overall alignment. For example, [Embedded Agency / MB1](/cards/mb1-boundary-estimator-soundness/) asks whether an agent–environment boundary is sound enough to trust — the missing clear cut between “the model” and “the optimizer.” None of these cruxes are solved, but different agendas have made progress to different degrees on each.
+
+For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/) — including [Ontology homographs](/full/appB/#sec:ontology-homographs-appb) where the same English word names different objects.

@@ -7,7 +7,7 @@
 | [`mb-bridge-dependencies.dot`](mb-bridge-dependencies.dot) | Canonical copy of v2 (regenerate PNG from this or v2) |
 | [`mb-bridge-dependencies.png`](mb-bridge-dependencies.png) | Rendered PNG (regenerate from repo root) |
 
-Companion site: clickable SVGs via `site/scripts/sync-bridge-graph.mjs` (run `npm run sync:bridge-graph` in `site/`). `/field/` redirects to `/field/v2/`.
+Companion site: clickable SVGs via `site/scripts/sync-bridge-graph.mjs` (run `npm run sync:bridge-graph` in `site/`). Live hub at `/field/v2/`; `/field/` redirects there.
 
 ```bash
 dot -Tpng -o reference/field-agendas/graphs/mb-bridge-dependencies.png \

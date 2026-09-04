@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-05 (field overview adjacent voice).
+Last updated: 2026-09-05 (field hub v2 consolidation).
 
 ---
 
@@ -20,7 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-05:** **Field overview adjacent voice** — plain-language consciousness/welfare panel on `/field/`; research-programs panel moved to #3; aligned concept card + v2 adjacent-work copy. Log: `2026-09-05-field-overview-adjacent-voice.md`.
+- **2026-09-05:** **Field hub v2 consolidation** — `/field/` redirects to v2; preview-panel hub (coverage, bridge graph, programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps); `field-map-starting-points` card; plain Alignment Target intro; bridge-assumptions table links in Bridge column only. Log: `2026-09-05-field-hub-v2-consolidation.md`.
+- **2026-09-05:** **Field overview adjacent voice** — plain-language consciousness/welfare panel; research-programs panel moved to #3; concept card + v2 adjacent-work copy. Log: `2026-09-05-field-overview-adjacent-voice.md`.
 - **2026-09-04:** **Crux map card voice** — funding card body follows the grant listing, not the generated expansion. Log: `2026-09-04-crux-map-card-voice.md`.
 - **2026-09-04:** **Spec sheet footer trim** — one caption line with links; dropped redundant footer blocks. Log: `2026-09-04-spec-sheet-footer.md`.
 - **2026-09-04:** **Funding page polish** — Cytoscape+dagre dependency graph; compact legend under graph; hero CTA; team FTE + roles on cards/list; 2-sig-fig asks; fixed funded/done icon fill; TSA $10k + site summary. Log: `2026-09-04-funding-offers-site.md`.

@@ -13,7 +13,7 @@ describe("renderMatrixCellHtml", () => {
     const stanceById = buildStanceById([{ id: 13, direction: "challenge", weight: 3 }]);
     const html = renderMatrixCellHtml(
       [{ type: "E", ids: [13] }],
-      "/field/v2/",
+      "/field/",
       stanceById,
       "/"
     );
@@ -30,7 +30,7 @@ describe("renderMatrixCellHtml", () => {
     ]);
     const html = renderMatrixCellHtml(
       [{ type: "T", ids: [4, 5] }],
-      "/field/v2/",
+      "/field/",
       stanceById,
       "/"
     );
@@ -49,7 +49,7 @@ describe("renderMatrixCellHtml", () => {
     ]);
     const html = renderMatrixCellHtml(
       [{ type: "C", ids: [1, 2, 3, 4] }],
-      "/field/v2/",
+      "/field/",
       stanceById,
       "/"
     );

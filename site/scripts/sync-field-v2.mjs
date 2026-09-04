@@ -1,4 +1,4 @@
-// Generates field-v2.json (lifecycle roles + open spine interfaces) for /field/v2/ (live field hub).
+// Generates field-v2.json (lifecycle roles + open spine interfaces) for /field/ preview panels and cards.
 // Usage: node scripts/sync-field-v2.mjs [--check]
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -66,7 +66,7 @@ async function main() {
       lifecycleGapsNote: lifecycle.gapsNote ?? "",
       lifecycleAxis: lifecycleOrder.join(" → "),
       openSpineInterfaces: meta.openSpineInterfaces,
-      note: "Live field hub at /field/ (redirects to /field/v2/). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
+      note: "Live field hub at /field/v2/ (/field/ redirects here). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
       adjacentWorkIntro: adjacentWork.intro ?? "",
       adjacentWorkFirewall: adjacentWork.firewall ?? "",
       adjacentWorkPhenomenalityNote: adjacentWork.phenomenalityNote ?? "",

@@ -6,7 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-09-05 | **Field overview adjacent voice** — Plain-language consciousness/welfare panel on `/field/`; research-programs tile moved to position 3; concept card + v2 adjacent copy aligned. | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
+| 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
+| 2026-09-05 | **Field hub v2 consolidation + bridge card table** — Continuation after adjacent-voice commit: consolidate `/field/` on v2 preview panels, split exter... | [2026-09-05-field-hub-v2-consolidation.md](2026-09-05-field-hub-v2-consolidation.md) |
 | 2026-09-04 | **Spec sheet footer trim** — User: redundant caption + link row + “Manual comparison” footer on `/start/spec-sheet/`. | [2026-09-04-spec-sheet-footer.md](2026-09-04-spec-sheet-footer.md) |
 | 2026-09-04 | **Funding opportunities site offer** — Implement the TSA funding-opportunity plan: nine public funding cards from existing application w... | [2026-09-04-funding-offers-site.md](2026-09-04-funding-offers-site.md) |
 | 2026-09-04 | **Crux map card uses listing voice** — The public Alignment Crux Map card was mostly generated prose. Replace it with the grant listing ... | [2026-09-04-crux-map-card-voice.md](2026-09-04-crux-map-card-voice.md) |
@@ -20,12 +21,10 @@
 | 2026-09-01 | **AlignmentRegime consumers + ch05/ch33 prose** — `AlignmentRegime` was unused; delete or wire it. Layer-cut in ch05 too technical; train/deploy pa... | [2026-09-01-alignment-regime-wire.md](2026-09-01-alignment-regime-wire.md) |
 | 2026-08-31 | 2026-08-31-witness-w17-moltbook | [2026-08-31-witness-w17-moltbook.md](2026-08-31-witness-w17-moltbook.md) |
 | 2026-08-31 | **Problem-axis through scope (plan §§1–6)** — Implement the problem-axis incorporation plan through §6 Scope (not dormancy, not App F problem-s... | [2026-08-31-problem-axis-through-scope.md](2026-08-31-problem-axis-through-scope.md) |
-| 2026-08-31 | **Ch17 site math render fix** — User reported chapter 17 not rendering properly on the companion site: `$g_\psi$` literal, trunca... | [2026-08-31-ch17-site-math-render.md](2026-08-31-ch17-site-math-render.md) |
-| 2026-08-29 | Witness W-16 SCDB justice geometry pass | [2026-08-29-witness-w16-scotus.md](2026-08-29-witness-w16-scotus.md) |
 
 ## Archive by month
 
-- **2026-08** (190): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
+- **2026-08** (192): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
 

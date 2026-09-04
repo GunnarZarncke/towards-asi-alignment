@@ -86,7 +86,7 @@ Refresh from source-map sibling repos: `python3 scripts/import_source_map_refs.p
 
 ## Field agenda reference
 
-Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md). **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) (redirects to `/field/v2/`) — coverage matrix, evidence catalog, 29 agenda cards (30 YAML records; TSA matrix-only, no card).
+Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md). **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) (redirects to `/field/v2/`) — intro, preview panels, coverage matrix, evidence catalog, 29 agenda cards (30 YAML records; TSA matrix-only, no card).
 
 | Path | Role |
 |------|------|
