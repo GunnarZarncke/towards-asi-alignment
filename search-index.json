@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-02T21:08:33.057Z",
+  "generatedAt": "2026-09-04T00:16:09.283Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1725,7 +1725,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 450 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 451 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
