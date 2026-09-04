@@ -84,6 +84,9 @@ __MACOSX/
 # Dist outputs (regenerate with build.sh)
 dist/pdf/*.pdf
 
+# Original funding applications (local only)
+funding-applications/
+
 # Secrets / local env — copy .env_sample → .env (never commit .env)
 .env
 .env.local
