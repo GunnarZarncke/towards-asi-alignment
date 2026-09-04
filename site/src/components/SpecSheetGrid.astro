@@ -138,20 +138,11 @@ function isBottomFeature(featureId: string, index: number) {
     </div>
   </div>
 
-  {data.caption && <p class="spec-sheet-caption side-panel-meta">{data.caption}</p>}
-
-  <p class="spec-sheet-footer side-panel-meta">
-    <a href={withBase("/field/")}>Field overview</a>
-    {" · "}
-    <a href={withBase("/field/coverage/")}>Coverage matrix</a>
-    {" · "}
-    <a href={cardHref(base, "chapters/appB", "appendix")}>Appendix B (bridges)</a>
+  <p class="spec-sheet-caption side-panel-meta">
+    Judgments, not a ranking. A usable product is not an aligned one. For bridge-level evidence, see the{" "}
+    <a href={withBase("/field/coverage/")}>coverage matrix</a>; for crux wording, see{" "}
+    <a href={cardHref(base, "chapters/appB", "appendix")}>Appendix B</a>.
   </p>
-
-  <footer class="spec-sheet-chrome">
-    <p class="spec-sheet-kicker">Manual comparison</p>
-    <p class="spec-sheet-meta">Judgments · not a ranking · no purchase implied</p>
-  </footer>
 
   <div class="spec-tip" role="tooltip" hidden></div>
 </section>
@@ -658,28 +649,7 @@ function isBottomFeature(featureId: string, index: number) {
     pointer-events: auto;
   }
 
-  .spec-sheet-caption,
-  .spec-sheet-footer {
+  .spec-sheet-caption {
     margin-top: 1rem;
-  }
-
-  .spec-sheet-chrome {
-    margin-top: 1.75rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border, #e0e0e0);
-    font-size: 0.78rem;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #777;
-  }
-
-  .spec-sheet-kicker {
-    margin: 0;
-    font-weight: 600;
-  }
-
-  .spec-sheet-meta {
-    margin: 0.2rem 0 0;
-    font-size: 0.72rem;
   }
 </style>

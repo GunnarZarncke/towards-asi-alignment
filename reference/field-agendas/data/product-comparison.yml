@@ -4,10 +4,6 @@
 intro: >-
   Aligned ASI is not a product anyone ships. Some programs do ship something you can use.
 
-caption: >-
-  Judgments, not a ranking. A usable product is not an aligned one. For bridge-level
-  evidence, use the coverage matrix; for crux wording, see Appendix B.
-
 features:
   - id: ships-usable-product
     label: Ships a usable product

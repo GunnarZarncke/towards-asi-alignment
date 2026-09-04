@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-04 | **Spec sheet footer trim** — Single caption with inline links; drop redundant footers. | [2026-09-04-spec-sheet-footer.md](2026-09-04-spec-sheet-footer.md) |
 | 2026-09-04 | **Funding opportunities site offer** — Nine funding cards, `/funding/` overview with dependency diagram, About + funder-policy + Guided Tour links. | [2026-09-04-funding-offers-site.md](2026-09-04-funding-offers-site.md) |
 | 2026-09-04 | **Bergemann–Koh–Morris as field implementation** — Read arXiv:2609.01595 and map it to TSA. User then asked to plug the paper in as a *specific impl... | [2026-09-04-bergemann-mechanism-plug.md](2026-09-04-bergemann-mechanism-plug.md) |
 | 2026-09-02 | **Cousin spec-sheet shipped** — Cousin comparison / spec-sheet plan for Start Here; user asked to implement, then iterated UI (sc... | [2026-09-02-cousin-product-comparison.md](2026-09-02-cousin-product-comparison.md) |
