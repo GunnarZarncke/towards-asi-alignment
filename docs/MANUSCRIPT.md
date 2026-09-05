@@ -12,12 +12,14 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 | Item | Status |
 |------|--------|
-| Release | **v1.5.0** (2026-08-22) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
-| Milestone | **Fifth** — six-claims spine, Lean architecture revision (MB8 retired), field hub v2, authorship bars; all main chapters have first drafts and at least one review pass |
+| Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
+| Milestone | **Sixth** — Witness tests, problem-axis reader contract, bridge first-use at Ch. 10, companion-site product layers; all main chapters have first drafts and at least one review pass |
 | Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) + 4 unwired appendix stubs on disk |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
 | Bibliography | **~250+ entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
+
+**v1.6.0 themes:** Witness tests (W-1–W-17) and shared [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md); four alignment questions and problem-axis (layer vs mechanism, capability dormancy, App F composition); bridge first-use at Ch. 10; Bergemann–Koh–Morris as field incentive implementation; companion-site product (essays, quiz, spec sheet, funding, Field hub v2 default).
 
 **v1.5.0 themes:** Six-claims spine and three alignment questions in the Introduction and executive overview; Lean architecture revision (MB8 retired from the live path; CEV as `AlignmentTarget`; `{leanbox}` / crux Props); field hub v2 (lifecycle axis, stance-encoded evidence); authorship bars in the PDF and chapter-page chips; spin-out papers remain outside the manuscript.
 

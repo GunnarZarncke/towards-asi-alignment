@@ -10,6 +10,78 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
+## v1.6.0 — 2026-09-05 — Witness tests, problem-axis, and companion-site product
+
+Commit: TBD · Tag: `v1.6.0`
+
+**Witness tests** (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the **Introduction** now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the **companion site** becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.
+
+### Witness tests (`experiments/witness/`)
+
+A third experiment class beside simulations and external-transfer (ET) lines. Not a sixth simulation: protocols freeze before scoring, then return **fail**, **refuse**, or **null** on hosts whose traces already exist. Analogues do not lift Construct; no MB is discharged.
+
+- **W-1–W-4** indexed in Appendix I: CIRIS-shaped C2 mock (named path green, composite still acts); MASK honesty refused as a safety leaf; Linux Reviewed-by×BIC and revert/re-entry; Wikipedia Orangemoody / BRFA.
+- **W-5–W-11:** Moral Machine country AMCE (Number 1-D close, 8-D geometry far); Arena Elo × MASK honesty (Spearman −0.105 vs accuracy +0.811); leftover C-004 hosts refused; Lean C2 pin of the W-1 bypass; H5 trees (FAA AD ⇏ stop; GPLv2 source offer ⇏ install handle; Debian RC held gstreamer 0.10 out of 9.0).
+- **W-12 / W-16:** same-unit geometry beats 1-D compression (Moral Machine raw UserIDs acc 0.682 vs Number 0.576; SCDB justices acc 0.814 vs issueArea 0.623). Observational; not v2 CCI.
+- **W-13–W-15:** PDG refuse (no eligible adult table); CPC2015 Exp. 1 null vs ΔEV/intercept; CIRISAgent stack C2 mock-LLM null (stub 0 hits). Recorded without retuning.
+- **W-17** Moltbook MB7a: Tier A joined and coactive, not merged on `E_agent`; broadcast substrate → **structure_stop**. Reply-graph merge is the wrong access model for that coordination class.
+- **Methodology:** [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) is the shared discipline (freeze, preregistration, refuse/null first-class, Witness M1–M8). Companion hub: `/experiments/#witness` and per-test cards.
+
+### Problem-axis and reader contract
+
+- **Four alignment questions** in the Introduction (label kept): what to track; how a system that tracks it can be built; how we can tell it still tracks it; **whether pause or recovery remains possible after a detected failure**. Possibility of response is not safety.
+- **Layer vs mechanism** named in App B and Ch. 5 (deception vs grader-gap, MB4 vs MB4a, misspec vs misgeneralization, scored Goodhart vs selection). Ch. 4 adds an object-sort subsection: five field objects; bundle geometry is this book's live choice.
+- **Capability dormancy** (Ch. 5, pointer in Ch. 14): quiet failure is not a certificate; eval-at-present-capability does not license the jump. No `CapabilityBelow → Safe`.
+- **App F composition:** failure causes (OR), safety-case requirements (AND), and whether pause/correction remains possible. Pause/recovery is not a second CCI route.
+- **Bridge first-use at Chapter 10:** earlier chapters keep A-\* assumptions only; Ch. 10 introduces the genus, the A-\* vs MB distinction, and the first `Lean spine (bridge)` block. Home-chapter `{bridge}` tags sit at symbol-introduction sites. A bridge block names an unpaid inference; it is not additional evidence.
+- **A-\* in home chapters:** named assumption boxes with `\akey{A-00x}` links. Lean MB axioms are not the chapter assumption list (App G + `/lean/`).
+- **Progress wording:** refused or unsupported required evidence (or a recorded negative) leads; artifacts are instruments.
+
+### Manuscript
+
+- **Bergemann–Koh–Morris** (arXiv:2609.01595) as the field incentive implementation — not an alternative frame — in Ch. 10 (verification order; honesty/obedience), Ch. 11 (RSP/eval→permission; IC iff monotone caps), Ch. 14 (capability–misalignment covariance). Ch. 35: peer scoring as a possibility result; unbounded free rewards ⇒ benchmark, not protocol.
+- **Harm-path v1 weave** in Ch. 5/12/30/33/36/42/44/46 + App F: inert writes, envelope recertification, Enable surfaces, named residuals. The nine-axis grammar stays a 2.0 draft.
+- **Voice §2 chapterthesis audit** closed: remainder clauses on Ch. 20, 27, 31, 33, 38, 42, 43; framing/necessity chapters skip.
+- **Early-chapter preview demotion** closed for v1 (later-home equation numbers stay out of Part I).
+- **Eckersley** impossibility theorems cited in Ch. 4 fixed-utility / CIRL paragraphs.
+- **Homograph hygiene** in first-use, Appendix E, and App B reverse-gaps.
+- **Assumption boxes** are key-only in the heading; App B drops field-index/MIRI meta from the opener.
+- **PDF layout:** Contents starts on a new page; part summaries sit on the part-title page.
+
+### Lean dependency spine (`formal/`)
+
+- **`AlignmentRegime`:** `DeploymentOk` / `AlignmentDeployment` consumed in `Certification.lean`. Pause does not imply toy certify; no `DeploymentOk → Safe`.
+- **`TargetSort`** plus a fourth `SpecifyCrux` conjunct. Axiom budget unchanged (40 theorems).
+
+### Companion site (`site/`)
+
+- **Entry paths:** 10-item header; `/start/` on-ramp; homepage tiles and Continue reading; landings slimmed so a first visit shows an offer, not a catalog.
+- **Generalist essay spine:** 11 essays; `/essay/` opens the first; Start Here prints the opening paragraphs.
+- **Type-prefixed card URLs** (`/cards/{type}/…`) with legacy redirects; `/book/` is the full PDF-order map.
+- **Field quiz** at `/quiz/`: 211-question bank (essays, Ch. 1–48, 15 agendas, news takeaways); ≥5% multi-correct floor and a length-tell gate in `make check`. Blind-solver pass is a key-soundness check, not a claim that distractors are hard.
+- **Spec sheet** at `/start/spec-sheet/`: 8 features × 25 roster columns (what agendas ship — not a ranking).
+- **Funding offers** at `/funding/`: nine public cards, dependency graph, team FTE + roles, rounded asks.
+- **Field hub:** `/field/` redirects to v2 preview panels (coverage, bridge graph, research programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps). `field-map-starting-points` card holds the external-survey list.
+- **Experiment cards:** class overviews, W-1–W-17 cards, negative-results hub, findings pages render markdown; Witness cards link to bridges and GitHub paths.
+- **Epistemic-status callouts** on book pages (lighter than chapter-thesis accent). FAQ rewritten for current entry paths.
+
+### Field news (since v1.5.0)
+
+- **OpenAI Hugging Face postmortem** (Aug 2026): stay-ahead acknowledgement kept; what this project offers named on the same card. AI Village comparison folded in (setup contrast), not a standalone card.
+
+### Not in the manuscript
+
+- **Construct 2.0** (construction + constructibility) remains a plan in [`drafts/plans/construct.md`](drafts/plans/construct.md). Concrete chapters stay gated on Witness real stop. Spin-out papers from v1.5.0 are still companions, not chapters.
+- **Project identity:** README and Current Status present TSA as a knowledge base and roadmap; the book is the long-form argument among Lean, experiments, field map, papers, demos, and site.
+
+### Housekeeping
+
+- Site glossary sync and UAD name fix (Unsupervised Agent Discovery).
+- Ch. 17 (and Ch. 2, 34, App N) math render: escaped `\%` no longer truncated as a comment.
+- Open work stays in [`metadata/TODO.md`](metadata/TODO.md) plus lane checklists in `drafts/plans/`.
+
+---
+
 ## v1.5.0 — 2026-08-22 — Six-claims spine, Krym architecture, and field hub v2
 
 Commit: `2863eaa1` · Tag: `v1.5.0`

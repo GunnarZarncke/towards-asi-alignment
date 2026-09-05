@@ -20,7 +20,7 @@ describe("renderMatrixCellHtml", () => {
     assert.match(html ?? "", /class="stance-mark"/);
     assert.match(html ?? "", /icons\/stance\/stance-challenge-3\.svg/);
     assert.match(html ?? "", /aria-label="complicates, weight 3"/);
-    assert.match(html ?? "", /href="\/field\/v2\/#ev-13"/);
+    assert.match(html ?? "", /href="\/field\/#ev-13"/);
   });
 
   it("splits mixed stances in one cell into separate tag groups", () => {

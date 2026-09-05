@@ -57,12 +57,12 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 
 | Item | Detail |
 |------|--------|
-| Release | **v1.5.0** (2026-08-22) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
-| Status | 48 chapters reviewed (not final); six-claims spine in Introduction and executive overview; plain-first legibility pass |
+| Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
+| Status | 48 chapters reviewed (not final); four alignment questions; Witness tests W-1–W-17; plain-first legibility pass |
 | Structure | 10 parts, 48 chapters, 9 appendices in the PDF (A–I) |
 | Field crosswalk | 30 agenda records, 24 matrix rows, 29 companion cards (TSA matrix-only); MB1–MB11 incl. MB4a; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
-| Experiments | Tentative sanity checks — sims, external tests (ET-1–4), witness tests (W-1–W-15) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix I ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
+| Experiments | Tentative sanity checks — sims, external tests (ET-1–4), witness tests (W-1–W-17) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix I ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
 | Formal spine | Lean 4 dependency spine — field-claim finite models, `BridgeCruxes`, construction interface — [`formal/README.md`](formal/README.md) |
 | Symbol census | Symbol/formula census with contribution audit and dependency graphs — [`metadata/symbol-census/README.md`](metadata/symbol-census/README.md) |
 
