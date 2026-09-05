@@ -12,13 +12,13 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.6.0 — 2026-09-05 — Witness tests, problem-axis, and companion-site product
 
-Commit: TBD · Tag: `v1.6.0`
+Commit: `c6713029` · Tag: `v1.6.0`
 
 **Witness tests** (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the **Introduction** now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the **companion site** becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.
 
 ### Witness tests (`experiments/witness/`)
 
-A third experiment class beside simulations and external-transfer (ET) lines. Not a sixth simulation: protocols freeze before scoring, then return **fail**, **refuse**, or **null** on hosts whose traces already exist. Analogues do not lift Construct; no MB is discharged.
+A third experiment class beside simulations and external-transfer (ET) lines. Not a sixth simulation: protocols freeze before scoring, then return **fail**, **refuse**, or **null** on hosts whose traces already exist. 
 
 - **W-1–W-4** indexed in Appendix I: CIRIS-shaped C2 mock (named path green, composite still acts); MASK honesty refused as a safety leaf; Linux Reviewed-by×BIC and revert/re-entry; Wikipedia Orangemoody / BRFA.
 - **W-5–W-11:** Moral Machine country AMCE (Number 1-D close, 8-D geometry far); Arena Elo × MASK honesty (Spearman −0.105 vs accuracy +0.811); leftover C-004 hosts refused; Lean C2 pin of the W-1 bypass; H5 trees (FAA AD ⇏ stop; GPLv2 source offer ⇏ install handle; Debian RC held gstreamer 0.10 out of 9.0).
@@ -35,18 +35,14 @@ A third experiment class beside simulations and external-transfer (ET) lines. No
 - **App F composition:** failure causes (OR), safety-case requirements (AND), and whether pause/correction remains possible. Pause/recovery is not a second CCI route.
 - **Bridge first-use at Chapter 10:** earlier chapters keep A-\* assumptions only; Ch. 10 introduces the genus, the A-\* vs MB distinction, and the first `Lean spine (bridge)` block. Home-chapter `{bridge}` tags sit at symbol-introduction sites. A bridge block names an unpaid inference; it is not additional evidence.
 - **A-\* in home chapters:** named assumption boxes with `\akey{A-00x}` links. Lean MB axioms are not the chapter assumption list (App G + `/lean/`).
-- **Progress wording:** refused or unsupported required evidence (or a recorded negative) leads; artifacts are instruments.
 
 ### Manuscript
 
 - **Bergemann–Koh–Morris** (arXiv:2609.01595) as the field incentive implementation — not an alternative frame — in Ch. 10 (verification order; honesty/obedience), Ch. 11 (RSP/eval→permission; IC iff monotone caps), Ch. 14 (capability–misalignment covariance). Ch. 35: peer scoring as a possibility result; unbounded free rewards ⇒ benchmark, not protocol.
 - **Harm-path v1 weave** in Ch. 5/12/30/33/36/42/44/46 + App F: inert writes, envelope recertification, Enable surfaces, named residuals. The nine-axis grammar stays a 2.0 draft.
-- **Voice §2 chapterthesis audit** closed: remainder clauses on Ch. 20, 27, 31, 33, 38, 42, 43; framing/necessity chapters skip.
-- **Early-chapter preview demotion** closed for v1 (later-home equation numbers stay out of Part I).
+- **Voice §2 chapterthesis audit** closed: remainder clauses on Ch. 20, 27, 31, 33, 38, 42, 43
 - **Eckersley** impossibility theorems cited in Ch. 4 fixed-utility / CIRL paragraphs.
 - **Homograph hygiene** in first-use, Appendix E, and App B reverse-gaps.
-- **Assumption boxes** are key-only in the heading; App B drops field-index/MIRI meta from the opener.
-- **PDF layout:** Contents starts on a new page; part summaries sit on the part-title page.
 
 ### Lean dependency spine (`formal/`)
 
@@ -68,17 +64,6 @@ A third experiment class beside simulations and external-transfer (ET) lines. No
 ### Field news (since v1.5.0)
 
 - **OpenAI Hugging Face postmortem** (Aug 2026): stay-ahead acknowledgement kept; what this project offers named on the same card. AI Village comparison folded in (setup contrast), not a standalone card.
-
-### Not in the manuscript
-
-- **Construct 2.0** (construction + constructibility) remains a plan in [`drafts/plans/construct.md`](drafts/plans/construct.md). Concrete chapters stay gated on Witness real stop. Spin-out papers from v1.5.0 are still companions, not chapters.
-- **Project identity:** README and Current Status present TSA as a knowledge base and roadmap; the book is the long-form argument among Lean, experiments, field map, papers, demos, and site.
-
-### Housekeeping
-
-- Site glossary sync and UAD name fix (Unsupervised Agent Discovery).
-- Ch. 17 (and Ch. 2, 34, App N) math render: escaped `\%` no longer truncated as a comment.
-- Open work stays in [`metadata/TODO.md`](metadata/TODO.md) plus lane checklists in `drafts/plans/`.
 
 ---
 
