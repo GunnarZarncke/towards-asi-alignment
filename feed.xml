@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 26 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[Release] v1.6.0 — Witness tests, problem-axis, and companion-site product</title>
+      <link>https://towards-alignment.com/cards/release/release-v1-6-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release/release-v1-6-0/</guid>
+      <pubDate>Sat, 05 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Witness tests (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the Introduction now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the companion site becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.</description>
+      <category>release</category>
+    </item>
     <item>
       <title>[News] OpenAI’s Hugging Face postmortem: the last channel is not the next one</title>
       <link>https://towards-alignment.com/cards/news/field-news-openai-hf-roadahead-aug-2026/</link>

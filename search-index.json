@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-04T23:56:03.618Z",
+  "generatedAt": "2026-09-05T00:03:38.326Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 360,
+  "entryCount": 361,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -2045,6 +2045,12 @@
       "type": "release",
       "summary": "The Introduction carries a six-claim reader contract and three alignment questions; the Lean dependency spine retires MB8 and treats CEV as an `AlignmentTarget` special case; field hub v2 adds a lifecycle axis and stance-encoded evidence; authorship bars mark AI- vs human-authored sections in the PDF and on chapter pages.",
       "url": "/cards/release/release-v1-5-0/"
+    },
+    {
+      "title": "v1.6.0 — Witness tests, problem-axis, and companion-site product",
+      "type": "release",
+      "summary": "Witness tests (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the Introduction now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the companion site becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.",
+      "url": "/cards/release/release-v1-6-0/"
     },
     {
       "title": "Value Change vs. Value Corruption",
