@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-05 | **Appendix B ontology-homograph link** — User reported a broken “Ontology homographs” link on `/cards/bridge/bridge-assumptions/` (`/full/... | [2026-09-05-appb-homograph-link.md](2026-09-05-appb-homograph-link.md) |
 | 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
 | 2026-09-05 | **Field hub v2 consolidation + bridge card table** — Continuation after adjacent-voice commit: consolidate `/field/` on v2 preview panels, split exter... | [2026-09-05-field-hub-v2-consolidation.md](2026-09-05-field-hub-v2-consolidation.md) |
 | 2026-09-04 | **Spec sheet footer trim** — User: redundant caption + link row + “Manual comparison” footer on `/start/spec-sheet/`. | [2026-09-04-spec-sheet-footer.md](2026-09-04-spec-sheet-footer.md) |

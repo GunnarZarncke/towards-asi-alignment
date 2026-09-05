@@ -669,6 +669,7 @@
   "/cards/release-v1-3-0/": "/cards/release/release-v1-3-0/",
   "/cards/release-v1-4-0/": "/cards/release/release-v1-4-0/",
   "/cards/release-v1-5-0/": "/cards/release/release-v1-5-0/",
+  "/cards/release-v1-6-0/": "/cards/release/release-v1-6-0/",
   "/cards/releases-updates/": "/cards/release/releases-updates/",
   "/cards/scaffold-misuse/": "/cards/concept/scaffold-misuse/",
   "/cards/scope-and-correction-capacity/": "/cards/concept/scope-and-correction-capacity/",
@@ -711,5 +712,7 @@
   "/cards/when-the-metric-becomes-the-boss/": "/essay/when-the-metric-becomes-the-boss/",
   "/cards/who-the-rules-still-apply-to/": "/essay/who-the-rules-still-apply-to/",
   "/cards/experiment/witness/": "/cards/experiment/witness-tests/",
-  "/cards/experiments/witness/": "/cards/experiment/witness-tests/"
+  "/cards/experiments/witness/": "/cards/experiment/witness-tests/",
+  "/full/appb/": "/cards/appendix/appb/",
+  "/full/appB/": "/cards/appendix/appb/"
 }

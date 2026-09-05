@@ -44,6 +44,9 @@ async function main() {
   const redirects = buildCardRedirects(cards);
   redirects["/cards/experiment/witness/"] = "/cards/experiment/witness-tests/";
   redirects["/cards/experiments/witness/"] = "/cards/experiment/witness-tests/";
+  // Pre-typed-slug deep links used `/full/{id}/` (never a real route).
+  redirects["/full/appb/"] = "/cards/appendix/appb/";
+  redirects["/full/appB/"] = "/cards/appendix/appb/";
   await mkdir(path.dirname(outPath), { recursive: true });
   await writeFile(outPath, `${JSON.stringify(redirects, null, 2)}\n`, "utf8");
   console.log(`Wrote ${Object.keys(redirects).length} card redirects → ${outPath}`);

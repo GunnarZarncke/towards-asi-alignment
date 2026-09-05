@@ -180,7 +180,7 @@ Empirical sanity-check codebases that stress-test bridge cruxes. Five in-repo li
 
 ### Companion site (`site/`)
 
-Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build from repo root with `./serve-site.sh` (preferred) or from `site/` with `npm run build`. Full path map: [`docs/BUILD.md`](docs/BUILD.md). Some appendices use an **overview hub** on the site (case-study cards at `/cards/chapters/{id}/`, full synced text at `/full/` — see `appM` institutional histories).
+Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build from repo root with `./serve-site.sh` (preferred) or from `site/` with `npm run build`. Full path map: [`docs/BUILD.md`](docs/BUILD.md). Some appendices use an **overview hub** on the site (case-study cards at `/cards/appendix/{id}/`, full synced text at `/cards/appendix/{id}/full/` — see `appM` institutional histories).
 
 ### Chapter demos (`demos/`)
 
