@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-05 | **Audit telemetry draft (v2 rec seed)** — Summarize W-17 + sim audit-layer comparison as a report; not v1 manuscript. | [2026-09-05-audit-telemetry-draft.md](2026-09-05-audit-telemetry-draft.md) |
 | 2026-09-05 | **Appendix B ontology-homograph link** — User reported a broken “Ontology homographs” link on `/cards/bridge/bridge-assumptions/` (`/full/... | [2026-09-05-appb-homograph-link.md](2026-09-05-appb-homograph-link.md) |
 | 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
 | 2026-09-05 | **Field hub v2 consolidation + bridge card table** — Continuation after adjacent-voice commit: consolidate `/field/` on v2 preview panels, split exter... | [2026-09-05-field-hub-v2-consolidation.md](2026-09-05-field-hub-v2-consolidation.md) |

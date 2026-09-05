@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-05 (App B homograph link fix).
+Last updated: 2026-09-05 (audit-telemetry draft).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-05:** **Audit telemetry draft** — W-17 + sim audit-layer comparison as a v2-facing recording rec (not v1 MS). [`audit-telemetry.md`](../plans/audit-telemetry.md). Log: `2026-09-05-audit-telemetry-draft.md`.
 - **2026-09-05:** **App B ontology-homograph link** — `/full/appB/` was not a route; cards now use `/cards/appendix/appb/#sec:ontology-homographs-appb` plus a `/full/appB/` redirect. Log: `2026-09-05-appb-homograph-link.md`.
 - **2026-09-05:** **Field hub v2 consolidation** — `/field/` redirects to v2; preview-panel hub (coverage, bridge graph, programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps); `field-map-starting-points` card; plain Alignment Target intro; bridge-assumptions table links in Bridge column only. Log: `2026-09-05-field-hub-v2-consolidation.md`.
 - **2026-09-05:** **Field overview adjacent voice** — plain-language consciousness/welfare panel; research-programs panel moved to #3; concept card + v2 adjacent-work copy. Log: `2026-09-05-field-overview-adjacent-voice.md`.

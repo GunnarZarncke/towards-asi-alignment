@@ -119,6 +119,7 @@ Conditions on the *construction process*, not on the finished ASI:
 - Fail/refuse is a success of the *method*; green dashboard without a stop is not.
 - Construction vs certification trees on the **same episode** (TODO: H5 two trees).
 - Distinguishing optimizer-policy counterfactuals (ch16/ch25/ch39) from **intervention-impact** counterfactuals.
+- **Audit telemetry (draft, not v1):** what agent projects should record so a later audit can fail — [`audit-telemetry.md`](audit-telemetry.md). Candidate Family C note / recommendation; not a chapter.
 
 ### Family D — Social process conditions (the Ngo-shaped gap; outline now)
 
