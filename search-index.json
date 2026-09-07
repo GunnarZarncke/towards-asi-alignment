@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-07T16:28:24.004Z",
+  "generatedAt": "2026-09-07T20:18:59.783Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -743,6 +743,12 @@
       "type": "chapter",
       "summary": "The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.",
       "url": "/cards/chapter/ch05/"
+    },
+    {
+      "title": "Backtests",
+      "type": "experiment",
+      "summary": "A backtest here is a frozen safety check run on a history we did not write — kernel git, encyclopedia logs, published evals, court votes. Would the check have stayed green while the harm continued? On Linux, Reviewed-by sat on 17,047 of 60,176 later-labeled bug-introducing commits. That is a result, not a broken test.",
+      "url": "/cards/experiment/backtests/"
     },
     {
       "title": "Bearer Persistence",
@@ -2165,12 +2171,6 @@
       "type": "experiment",
       "summary": "Encyclopedia logs: a bot that passed review and was later blocked, helper socks that mark things reviewed, and vote data that cannot be treated as a causal “correction worked” estimator.",
       "url": "/cards/experiment/w-4/"
-    },
-    {
-      "title": "Witness",
-      "type": "experiment",
-      "summary": "Would this safety check have stopped what actually happened — in kernel history, encyclopedia logs, a published eval, court votes — or would it have stayed green while the harm continued? A green dashboard with no stop is a fail, not a pass.",
-      "url": "/cards/experiment/witness-tests/"
     }
   ]
 }
