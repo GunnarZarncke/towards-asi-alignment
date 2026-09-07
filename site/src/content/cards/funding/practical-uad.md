@@ -48,8 +48,8 @@ AI use is strongly encouraged in this project.
 - Weekly check-in calls and incremental demo calls (success at running the example, research results, good or bad results from LLM chats, conceptual progress, code samples, paper drafts, or anything demoable).
 - Final demo and paper preparation (8-week mentored window).
 
-**Effort estimate:** mentor 1 day/week × 8 weeks (64 h); mentee 20 h/week × 8 weeks (160 h) ≈ **$8,000** total at UAD PI-rate equivalents.
+**Effort estimate:** mentor 1 day/week × 8 weeks (64 h); mentee 20 h/week × 8 weeks (160 h) ≈ **$8,000** total at lead-investigator rate equivalents.
 
 ## If it works
 
-A mentored pipeline from synthetic toy worlds to real multi-agent trace data, with a visualization layer and a paper — a practical on-ramp for researchers entering unsupervised agent discovery without closing the original UAD Month 5 benchmarks.
+A mentored pipeline from synthetic toy worlds to real multi-agent trace data, with a visualization layer and a paper — a practical on-ramp for researchers entering unsupervised agent discovery without closing the original Month 5 benchmarks on the main agent-discovery grant.

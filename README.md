@@ -33,9 +33,7 @@ This repository is a **requirements decomposition** of the alignment problem int
 
 Superintelligence alignment is the problem of preserving grounded, human-correctable value update across capability growth, ontology shift, successor creation, and strategic selection pressure—under the assumption that civilization still has enough **correction capacity** to participate.
 
-The Introduction's six connected claims: **boundary** (where is the real optimizer?), **value-bundle** (compressed values, bearers, and correction survive change), **grounding** (symbols stay tied to value-relevant reality), **correction** (human value-update stays causally effective), **successor** (constraints inherit to successors), and **basin** (deployment environment selects for preservation). Load-bearing assumptions are explicit **bridges** (`A-001`–`A-014`; formal **`MB1`–`MB11`** incl. **`MB4a`** in the field matrix and crosswalk — **`MB8` retired** from the live Lean path; CEV is an `AlignmentTarget` special case), mapped to field cruxes in [Appendix B (bridge crosswalk)](appendices/appB-bridge-crosswalk.tex) and the companion [Field hub](https://towards-alignment.com/field/) ([`reference/field-agendas/`](reference/field-agendas/README.md)).
-
-External doom taxonomies appear late as adversarial checklists (Chapter 44), not as a second organizing ontology.
+The Introduction's six connected claims: **boundary** (where is the real optimizer?), **value-bundle** (compressed values, who they apply to, and correction survive change), **grounding** (symbols stay tied to value-relevant reality), **correction** (human value-change stays causally effective), **successor** (successor systems inherit constraints), and **basin** (deployment environment selects for preservation). The argument maps these to field cruxes in [Appendix B (bridge crosswalk)](appendices/appB-bridge-crosswalk.tex) and the companion site [Field hub](https://towards-alignment.com/field/) ([`reference/field-agendas/`](reference/field-agendas/README.md)).
 
 ---
 
@@ -60,7 +58,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
 | Status | 48 chapters reviewed (not final); four alignment questions; Witness tests W-1–W-17; plain-first legibility pass |
 | Structure | 10 parts, 48 chapters, 9 appendices in the PDF (A–I) |
-| Field crosswalk | 30 agenda records, 24 matrix rows, 29 companion cards (TSA matrix-only); MB1–MB11 incl. MB4a; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |
+| Field crosswalk | agenda records, concept cards; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
 | Experiments | Tentative sanity checks — sims, external tests (ET-1–4), witness tests (W-1–W-17) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix I ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
 | Formal spine | Lean 4 dependency spine — field-claim finite models, `BridgeCruxes`, construction interface — [`formal/README.md`](formal/README.md) |

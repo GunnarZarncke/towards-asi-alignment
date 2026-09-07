@@ -20,9 +20,9 @@ export type FundingGraphPayload = {
 };
 
 const SHORT_LABEL: Record<string, string> = {
-  "unsupervised-agent-discovery": "UAD",
+  "unsupervised-agent-discovery": "Agent discovery",
   "tsa-writing": "TSA",
-  "practical-uad": "Practical UAD",
+  "practical-uad": "Practical agent discovery",
   "alignment-observability-platform": "Observability",
   "alignment-attractor-hub": "Attractor hub",
   "corrigibility-measurement": "Corrigibility",

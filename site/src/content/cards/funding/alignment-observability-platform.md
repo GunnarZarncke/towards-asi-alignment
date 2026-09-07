@@ -75,7 +75,7 @@ Focus: move from tool to shared infrastructure.
 
 ## Milestones
 
-- Core platform: trace schema, ingestion, plugin runner, baseline UAD analysis, external user demo.
+- Core platform: trace schema, ingestion, plugin runner, baseline agent-discovery analysis, external user demo.
 - MVP: multiple analyses and trace sources, pilot partners, case studies, publications.
 - Network: production API, plugin ecosystem, regulator-facing instrumentation.
 

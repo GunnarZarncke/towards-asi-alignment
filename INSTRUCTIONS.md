@@ -27,8 +27,6 @@ This file governs that book. Do not treat the book as the whole project: Lean sp
 
 The book must be self-contained. It must not assume the reader already knows the author's previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained sufficiently for the intended audience to follow, including key formulas where needed (derivations optional).
 
-**Front-door vocabulary:** First-contact surfaces (README thesis, Introduction, site Start Here / Field hub / Guided Tour / funding listings) use plain English only — no catalog IDs (`MB*`, `A-00x`), no acronyms (CCI, UAD), no coined geometry in a first-page list. Middle nouns (bearer maps, bundle geometry) appear after a picture; back-office IDs appear where the reader already has a job for them. Policy and surface list: [`drafts/plans/front-door-vocab.md`](drafts/plans/front-door-vocab.md).
-
 **Central thesis:**
 
 > Superintelligence alignment is the problem of preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.

@@ -7,7 +7,7 @@ featuredSpotlight:
   kind: experiment
   ref: toy-simulation
   title: "Toy simulation — capture theater"
-  blurb: "The fastest map from bridge name to CCI refusal signal and minimum handle level — including the case where reported correction acceptance stays high while true uptake collapses."
+  blurb: "The fastest map from a named check to a refusal signal and minimum handle level — including the case where reported correction acceptance stays high while true uptake collapses."
   primaryLabel: "Read toy simulation"
   secondary:
     kind: card
@@ -61,10 +61,10 @@ steps:
     note: "Which MB bridges your eval must discharge or bound."
   - kind: experiment
     ref: toy-simulation
-    note: "CCI refusal semantics and minimum handle level."
+    note: "Refusal semantics and minimum handle level."
   - kind: experiment
     ref: embedded-simulation
-    note: "UAD + scoped CCI + deploy gate — negative ledger first."
+    note: "Agent discovery + scoped correction audit + deploy gate — negative ledger first."
   - kind: experiment
     ref: goal-agent-simulation
     note: "Light tier collapse, honest twins, escalation ladder."

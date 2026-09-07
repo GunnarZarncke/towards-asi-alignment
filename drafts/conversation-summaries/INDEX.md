@@ -7,7 +7,7 @@
 | Date | Topic | Log |
 |------|-------|-----|
 | 2026-09-07 | **Appendix stubs + App N readings** — Delete unused H–K stubs; App N protocol note and host-trace safety-case readings; ch42 leaf-separation prose. | [2026-09-07-appendix-stubs-appn-readings.md](2026-09-07-appendix-stubs-appn-readings.md) |
-| 2026-09-07 | **Front-door vocabulary** — Plain English on README thesis, Intro Q1, Field hub panel, Tour blurbs, funding graph labels; policy in `front-door-vocab.md`. | [2026-09-07-front-door-vocab.md](2026-09-07-front-door-vocab.md) |
+| 2026-09-07 | **Front-door vocabulary** — Plain English on first-contact surfaces; policy in `voice.md` §9. | [2026-09-07-front-door-vocab.md](2026-09-07-front-door-vocab.md) |
 | 2026-09-07 | **make check CI** — Separate Actions job (`Check`) running `scripts/check.sh`; not Lean or Astro. | [2026-09-07-check-ci.md](2026-09-07-check-ci.md) |
 | 2026-09-07 | **Lean CI via shared check.sh** — Path-filtered `lake build` workflow; local/`make lean` and CI share `formal/check.sh` (axiom budget + spine model). | [2026-09-07-lean-ci.md](2026-09-07-lean-ci.md) |
 | 2026-09-07 | **Restore real v1 bridge graph** — Field v1 map had MB8 as gravestone; freeze `c15ad815` live-MB8 DOT, re-render, link commit on `/field/v1/`. | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |

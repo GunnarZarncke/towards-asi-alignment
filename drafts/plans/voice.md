@@ -28,6 +28,7 @@ Align **reader-facing voice** with **paid claims**: the modest version should ar
 | **Progress** | A **refused leaf** or a **named unpaid remainder**, not a named artifact alone. |
 | **Gems** | Highlighted *independent* results (separation, counterexample, or operational definition), each tagged **proved / counterexample / bridge**. |
 | **Extractable claims** | **Named cruxes / problems**, not `established` results. |
+| **Front-door vocabulary** | First-contact copy retells the thesis in plain English; defer internal IDs and acronyms until the reader has a job for them. Picture before coined noun. |
 
 ---
 
@@ -248,6 +249,16 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 
 ---
 
+## 9. Front-door vocabulary
+
+Applies to README, frontmatter, site entry paths, and other skimmable packaging — same voice lane as claim-strength edits, not a manuscript rename pass.
+
+**Rule:** a new reader should be able to restate what the project claims without decoding project shorthand. Catalog keys, acronyms, and coined formal names belong where the reader already knows why they need them (Lean playground, field matrix, glossary, home-chapter definitions). Coined middle nouns may stay once a concrete example is in place; do not stack several undefined labels on the first screen.
+
+**Maintain on edit:** when touching a front door, grep for obvious internal shorthand and replace with the English the Introduction already uses.
+
+---
+
 ## Execution checklist
 
 - [x] §1 Completion language (2026-08-21; FAQ included as same callout)
@@ -261,6 +272,7 @@ Mirror one line in [`context/writing-style-gunnar.md`](../../context/writing-sty
 - [ ] De-center PDF as flagship (README, homepage, About, stats)
 - [x] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`; 2026-08-27)
 - [x] Bridge first-use in the manuscript: genus at Ch. 10; no technical *bridge* / Lean / `MB*` before ([`bridge-first-use.md`](bridge-first-use.md); 2026-09-01)
+- [x] Front-door vocabulary on first-contact surfaces (§9; 2026-09-07)
 - [ ] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
 - [ ] WWCTV → chokepoint forward refs (per chapter)
 - [ ] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`
