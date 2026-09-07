@@ -9,12 +9,12 @@ This repo has **separate build roots**. There is **no** root `package.json`; npm
 | What | Working directory | Command | Output |
 |------|-------------------|---------|--------|
 | **PDF (manuscript)** | repo root | `./build.sh` or `make pdf` | `dist/pdf/towards-superintelligence-alignment.pdf` |
-| **Manuscript checks** | repo root | `make check` | (stdout) |
+| **Manuscript checks** | repo root | `make check` / `./scripts/check.sh` | (stdout; CI job Summary) |
 | **Companion site** | repo root *or* `site/` | `./serve-site.sh` (dev) · `./serve-site.sh --preview` (prod-like) | `site/dist/` |
 | **Site build only** | `site/` | `npm ci && npm run build` | `site/dist/` |
 | **Chapter demos** | repo root *or* `demos/` | `./serve-demos.sh` | static server on `:8765` |
 | **Demo TS rebuild** | `demos/` | `npm ci && npm run build` | `demos/chNN-*/` compiled `.js` |
-| **Lean spine** | `formal/` | `lake exe cache get && lake build` | `.lake/` build cache |
+| **Lean spine** | repo root *or* `formal/` | `make lean` / `./formal/check.sh` | `.lake/` build cache |
 
 **`node_modules` locations (gitignored, never committed):**
 
@@ -37,7 +37,7 @@ make generate       # emit build-time .tex fragments (not in git)
 ./build.sh          # or: make pdf  (generate + full latexmk build)
 make biber          # regenerate fragments + pdflatex → biber → pdflatex ×2
 ./clean.sh          # or: make clean
-make check          # generate + structure + citation + bibliography-summary checks
+make check          # generate + structure/citation/quiz/field gates (CI: .github/workflows/check.yml)
 make wordcount      # approximate chapter word counts
 make bookstats      # markdown report → metadata/book-stats.md
 make todos          # list [STUB] / TODO markers
@@ -75,9 +75,13 @@ For diagnosis only: `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" biber book` (afte
 
 ## Lean proof spine
 
+Same command locally and on GitHub Actions (`.github/workflows/lean.yml`):
+
 ```bash
-cd formal && lake exe cache get && lake build
+make lean                 # or: ./formal/check.sh
 ```
+
+That is `lake exe cache get && lake build`, then `formal/scripts/check_axiom_budget.py` and `check_spine_model.py`. CI runs `leanprover/lean-action` for the toolchain and `lake build`, then `./formal/check.sh --no-build` so the Python guards are not duplicated. The script prints a short report (and writes the Actions job Summary). `make check` still uses `check_axiom_budget.py --no-lean` only to regenerate the Appendix G table from the checked-in ledger.
 
 See [`formal/README.md`](../formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](../formal/LeanProofSpineImplementationBrief.md).
 

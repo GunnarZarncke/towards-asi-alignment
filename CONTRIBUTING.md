@@ -18,7 +18,7 @@ High-value work:
 - **Field-agenda formalization** — shared finite fragment in `formal/AlignmentProofSpine/Field/` linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions (see Appendix G gem on field formalization)
 - Closing chapter ↔ Lean mapping gaps listed in `metadata/TODO.md` (§ Lean proof spine)
 
-Build: `cd formal && lake exe cache get && lake build`
+Build/check: `make lean` (same as `./formal/check.sh`; CI uses `--no-build` after `lake build`)
 
 ---
 

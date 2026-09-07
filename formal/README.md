@@ -84,10 +84,11 @@ field-agenda rederivations. First build downloads Mathlib; use `lake exe cache g
 in `formal/` for precompiled oleans when online.
 
 ```bash
-cd formal
-lake exe cache get   # first time / after Mathlib update (needs network)
-lake build
+make lean                 # from repo root: cache + lake build + python guards
+# or: ./formal/check.sh
 ```
+
+First time / after a Mathlib pin change, `check.sh` runs `lake exe cache get` (needs network) then `lake build`. GitHub Actions uses the same script after `lean-action` (`./formal/check.sh --no-build`).
 
 Inspect what a theorem ultimately rests on (proofs vs. bridges):
 
@@ -106,11 +107,9 @@ and regenerates the Appendix G table (`metadata/axiom-budget-index.tex`,
 `appi:sec:axiom-budget`) from it:
 
 ```bash
-cd formal
-lake build                              # after any spine change
-python3 scripts/check_axiom_budget.py   # fails (exit 1) if a theorem's axiom
-                                         # footprint drifted from the ledger
-python3 scripts/check_axiom_budget.py --update   # accept an intentional drift
+./formal/check.sh                       # after any spine change (includes lake build)
+./formal/check.sh --no-build            # already built
+python3 formal/scripts/check_axiom_budget.py --update   # accept an intentional drift
 ```
 
 This catches, mechanically, exactly the failure mode the "never hidden" claim

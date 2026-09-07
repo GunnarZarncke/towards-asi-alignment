@@ -1,0 +1,73 @@
+name: Lean
+
+# Always start the workflow so a required check on `main` is reported.
+# The expensive lake build still runs only when formal/ or this file changed.
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean:
+    name: Lean
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Detect formal changes
+        id: filter
+        run: |
+          set -euo pipefail
+          skip=true
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            skip=false
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            if git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" \
+              | grep -Eq '^(formal/|\.github/workflows/lean\.yml)'; then
+              skip=false
+            fi
+          else
+            before="${{ github.event.before }}"
+            if [[ -z "$before" || "$before" == "0000000000000000000000000000000000000000" ]]; then
+              skip=false
+            elif git diff --name-only "$before" "${{ github.sha }}" \
+              | grep -Eq '^(formal/|\.github/workflows/lean\.yml)'; then
+              skip=false
+            fi
+          fi
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
+          echo "skip=$skip"
+
+      - name: Lean toolchain and lake build
+        if: steps.filter.outputs.skip != 'true'
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Axiom budget and spine model
+        if: steps.filter.outputs.skip != 'true'
+        run: ./formal/check.sh --no-build
+
+      - name: Skip report
+        if: steps.filter.outputs.skip == 'true'
+        run: |
+          {
+            echo "## Lean spine — skipped"
+            echo
+            echo "No changes under \`formal/\` or \`.github/workflows/lean.yml\`."
+            echo "Required check still reports success so other PRs are not blocked."
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
