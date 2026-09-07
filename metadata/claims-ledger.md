@@ -295,7 +295,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 **Chapter(s):** 48 (conclusion); see also 42, 47
 
-**Status:** status restatement in ch48 (2026-08-17; wording calibrated 2026-08-21). ch48 §Opening Claims Revisited restates all six intro claims with status labels, including grounding (paragraph after value-bundle). Executive Overview TL;DR now uses the same six-claim order. Remaining gap is operational follow-through (safety-case template appendix, adversarial-verifiability master disconfirmer), not missing intro-claim prose in ch48.
+**Status:** status restatement in ch48 (2026-08-17; wording calibrated 2026-08-21). ch48 §Opening Claims Revisited restates all six intro claims with status labels, including grounding (paragraph after value-bundle). Executive Overview TL;DR now uses the same six-claim order. Remaining gap is operational follow-through (adversarial-verifiability master disconfirmer; host-trace safety-case readings in Appendix~\ref{appn-experimental-evidence}), not missing intro-claim prose in ch48 or a separate safety-case template appendix (ch42 + BioShield already supply the form).
 
 **Support:**
 - ch48 §Opening Claims Revisited (`sec:opening-claims-revisited-ch48`) restates all six intro claims with status labels

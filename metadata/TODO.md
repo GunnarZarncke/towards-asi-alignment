@@ -29,7 +29,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 **Gates:** Witness Phase 0 frozen ([`drafts/plans/witness-phase0.md`](../drafts/plans/witness-phase0.md)) · Witness real stop → Construct *concrete* manuscript revisit · Construct *plan* / constructibility outline is not gated · Voice does not mention Witness in reader copy.
 
-**Do not centralize here:** chapter `[STUB]`s; appH–K stubs; `% TODO[formalize]:` in chapters; wait-for-external cites.
+**Do not centralize here:** chapter `[STUB]`s; `% TODO[formalize]:` in chapters; wait-for-external cites.
 
 ---
 
@@ -140,13 +140,6 @@ CIRIS composite / boundary_decouple: **Witness H1** — charter in sibling `ciri
 
 ---
 
-## Appendix follow-through
-
-- [~] **Built in PDF:** appA–G, appM, appD, appE, appF, appN.
-- [~] **Still `[STUB]` (not in `book.tex`):** appH, appI, appJ, appK.
-
----
-
 ## Closed (one-liners — do not reopen)
 
 Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
@@ -159,5 +152,4 @@ Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
 
 - Per-chapter `% TODO(deep-research):`, `% TODO[citation]:`, `% TODO[formalize]:`, `% TODO[open-crux]:` in chapter `.tex`.
 - All `[STUB]` placeholders until chapter integrated.
-- Appendix `[STUB]` in appH–appK only.
 - `drafts/chapter-notes/*.tex` deferred notes.

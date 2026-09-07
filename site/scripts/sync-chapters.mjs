@@ -161,10 +161,6 @@ async function main() {
     "appendices/appA-notation.tex",
     "appendices/appE-glossary.tex",
     "appendices/appG-lean-proof-spine.tex",
-    "appendices/appH-boundary-worked-example.tex",
-    "appendices/appI-value-bundle-inference.tex",
-    "appendices/appJ-correction-channel-audit.tex",
-    "appendices/appK-safety-case-template.tex",
     "appendices/appN-experimental-evidence.tex"
   ];
 

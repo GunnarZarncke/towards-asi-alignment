@@ -27,6 +27,8 @@ This file governs that book. Do not treat the book as the whole project: Lean sp
 
 The book must be self-contained. It must not assume the reader already knows the author's previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained sufficiently for the intended audience to follow, including key formulas where needed (derivations optional).
 
+**Front-door vocabulary:** First-contact surfaces (README thesis, Introduction, site Start Here / Field hub / Guided Tour / funding listings) use plain English only — no catalog IDs (`MB*`, `A-00x`), no acronyms (CCI, UAD), no coined geometry in a first-page list. Middle nouns (bearer maps, bundle geometry) appear after a picture; back-office IDs appear where the reader already has a job for them. Policy and surface list: [`drafts/plans/front-door-vocab.md`](drafts/plans/front-door-vocab.md).
+
 **Central thesis:**
 
 > Superintelligence alignment is the problem of preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.
@@ -310,8 +312,21 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 | **Generated tables** | `scripts/generate_tables.py` uses `entry.order` (1–48), not the YAML key parse | `tables/part-roadmap.tex` shows manuscript-order ranges |
 | **Semantic labels** | `\label{ch:<slug>}` stays slug-based; do not renumber when `chNN` changes | `\label{ch:correction-channel-integrity}` |
 | **Section labels** | Prefer `-chNN` suffix matching the hosting file's print number | `\label{sec:certificate-under-pressure-ch27}` in ch27 |
-| **Built appendices** | `appendices/app<Letter>-<slug>.tex` matches PDF letter in `book.tex` include order | `appB-bridge-crosswalk.tex` → Appendix B |
-| **Stub appendices** | Letters H–L reserved for not-yet-included appendices | `appH-boundary-worked-example.tex` |
+| **Appendix source files** | `appendices/app<Token>-<slug>.tex`; token is **not always** the printed letter | `appM-institutional-histories.tex` prints as Appendix D |
+
+**Printed appendix letters vs source files** (nine appendices in the PDF; `\label{…}` names are historical and load-bearing):
+
+| Print | Source file | Main `\label` |
+|-------|-------------|---------------|
+| A | `appA-notation.tex` | `appa-notation` |
+| B | `appB-bridge-crosswalk.tex` | `appbridge-crosswalk` |
+| C | `appC-institutional-translation.tex` | `appj-institutional-translation` |
+| D | `appM-institutional-histories.tex` | `appm-institutional-histories` |
+| E | `appD-worked-example.tex` | `appk-worked-example` |
+| F | `appE-glossary.tex` | `appf-glossary` |
+| G | `appF-research-program.tex` | `apph-research-program` |
+| H | `appG-lean-proof-spine.tex` | `appi-lean-proof-spine` |
+| I | `appN-experimental-evidence.tex` | `appn-experimental-evidence` |
 
 **Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → M Institutional histories → D Worked example → E Glossary → F Research program → G Lean proof spine → N Experimental evidence.
 

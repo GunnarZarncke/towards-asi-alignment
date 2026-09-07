@@ -14,7 +14,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 |------|--------|
 | Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
 | Milestone | **Sixth** — Witness tests, problem-axis reader contract, bridge first-use at Ch. 10, companion-site product layers; all main chapters have first drafts and at least one review pass |
-| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) + 4 unwired appendix stubs on disk |
+| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
 | Bibliography | **~250+ entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
@@ -25,7 +25,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **v1.4.0 themes:** Field agenda crosswalk (`reference/field-agendas/`); App B synced to MB1–MB11 incl. MB4a; plain-first terminology demotion + Appendix E ↔ inter-agenda glossary; field-claim Lean (finite defeaters, `FieldInterfaces`, `BridgeCruxes`); ET-3 closed, ET-4 hackathon paper + replay demo.
 
-**Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, appendix stubs, citation review).
+**Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, citation review).
 
 For agent session continuity: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md).
 

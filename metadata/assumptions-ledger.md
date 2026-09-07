@@ -53,7 +53,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | A-013 | Inferential-coupling detector certificates | ch35 |
 | A-014 | Grounding viability / conservative abstraction | ch03 |
 | S07 | MDL: positive gain ⇒ preferred model | ch46 |
-| MB1–MB10 | Lean bridge axioms (`MB1`–`MB9` packaged in `BridgeAssumptions`; `MB10` threaded explicitly) | appI (+ chapter bridges) |
+| MB1–MB10 | Lean bridge axioms (`MB1`–`MB9` packaged in `BridgeAssumptions`; `MB10` threaded explicitly) | appG (+ chapter bridges) |
 
 ---
 

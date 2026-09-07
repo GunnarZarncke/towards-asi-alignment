@@ -25,7 +25,7 @@ REQUIRED = [
 
 PARTS = [f"parts/part{i:02d}-" for i in range(1, 11)]
 CHAPTER_COUNT = 48
-APPENDIX_COUNT = 13
+APPENDIX_COUNT = 9
 PART_I = {f"ch{i:02d}" for i in range(1, 6)}
 EQREF = re.compile(r"\\(?:eqref|ref)\{(eq:[^}]+)\}")
 LABEL_EQ = re.compile(r"\\label\{(eq:[^}]+)\}")

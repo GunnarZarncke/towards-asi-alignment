@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-07 (Lean + Check required on `main`).
+Last updated: 2026-09-07 (appendix stubs retired; App N host-trace readings).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-07 (Lean + Check required on `main`).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Bridge reader-contract: [`bridge-first-use.md`](../plans/bridge-first-use.md).
+**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · [`front-door-vocab.md`](../plans/front-door-vocab.md).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-07:** **Appendix stubs retired + App N readings** — Deleted unused appH–K stubs; print-letter table in `INSTRUCTIONS.md` §14. App N: protocol note + host-trace safety-case readings (W-9, W-3/W-4, W-10, W-11, W-1/W-8). Plan: [`appendix-stubs.md`](../plans/appendix-stubs.md). Log: `2026-09-07-appendix-stubs-appn-readings.md`.
+- **2026-09-07:** **Front-door vocabulary** — No catalog IDs / acronyms on README thesis, Introduction Q1, Field hub first screen, Guided Tour blurbs, funding listings. Plan: [`front-door-vocab.md`](../plans/front-door-vocab.md). Log: `2026-09-07-front-door-vocab.md`.
 - **2026-09-07:** **Check + Lean required on `main`** — GitHub ruleset requires job names **Check** and **Lean**. Workflows: `check.yml`, `lean.yml`. Logs: `2026-09-07-check-ci.md`, `2026-09-07-lean-ci.md`.
 - **2026-09-07:** **Real v1 bridge graph** — `/field/v1/` now uses the live-MB8 diagram from `c15ad815` (not the 2026-08-17 gravestone copy). Log: `2026-09-07-v1-bridge-graph.md`.
 - **2026-09-05:** **Audit telemetry draft** — W-17 + sim audit-layer comparison as a v2-facing recording rec (not v1 MS). [`audit-telemetry.md`](../plans/audit-telemetry.md). Log: `2026-09-05-audit-telemetry-draft.md`.

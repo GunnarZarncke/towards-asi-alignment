@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-07 | **Appendix stubs + App N readings** — Delete unused H–K stubs; App N protocol note and host-trace safety-case readings; ch42 leaf-separation prose. | [2026-09-07-appendix-stubs-appn-readings.md](2026-09-07-appendix-stubs-appn-readings.md) |
+| 2026-09-07 | **Front-door vocabulary** — Plain English on README thesis, Intro Q1, Field hub panel, Tour blurbs, funding graph labels; policy in `front-door-vocab.md`. | [2026-09-07-front-door-vocab.md](2026-09-07-front-door-vocab.md) |
 | 2026-09-07 | **make check CI** — Separate Actions job (`Check`) running `scripts/check.sh`; not Lean or Astro. | [2026-09-07-check-ci.md](2026-09-07-check-ci.md) |
 | 2026-09-07 | **Lean CI via shared check.sh** — Path-filtered `lake build` workflow; local/`make lean` and CI share `formal/check.sh` (axiom budget + spine model). | [2026-09-07-lean-ci.md](2026-09-07-lean-ci.md) |
 | 2026-09-07 | **Restore real v1 bridge graph** — Field v1 map had MB8 as gravestone; freeze `c15ad815` live-MB8 DOT, re-render, link commit on `/field/v1/`. | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |
@@ -18,14 +20,6 @@
 | 2026-09-04 | **Crux map card uses listing voice** — The public Alignment Crux Map card was mostly generated prose. Replace it with the grant listing ... | [2026-09-04-crux-map-card-voice.md](2026-09-04-crux-map-card-voice.md) |
 | 2026-09-04 | **Bergemann–Koh–Morris as field implementation** — Read arXiv:2609.01595 and map it to TSA. User then asked to plug the paper in as a *specific impl... | [2026-09-04-bergemann-mechanism-plug.md](2026-09-04-bergemann-mechanism-plug.md) |
 | 2026-09-02 | **Cousin spec-sheet shipped** — Cousin comparison / spec-sheet plan for Start Here; user asked to implement, then iterated UI (sc... | [2026-09-02-cousin-product-comparison.md](2026-09-02-cousin-product-comparison.md) |
-| 2026-09-01 | **App F problem-OR vs case-AND (plan §8)** — Continue the open remainder of the problem-axis incorporation plan: §8. | [2026-09-01-problem-or-case-and.md](2026-09-01-problem-or-case-and.md) |
-| 2026-09-01 | **Capability dormancy (plan §7)** — Implement plan §7 Dormancy (Lane A: capability/transfer-breakers; one Lane B pointer). | [2026-09-01-capability-dormancy.md](2026-09-01-capability-dormancy.md) |
-| 2026-09-01 | **Bridge graph field hub fix** — User reported `/cards/concept/bridge-assumptions/` (field hub panel “Which problems depend on whi... | [2026-09-01-bridge-graph-field-hub.md](2026-09-01-bridge-graph-field-hub.md) |
-| 2026-09-01 | **Bridge first-use plan** — User asked to add to the plan: introduce the bridge concept in Ch. 10; rewrite earlier references... | [2026-09-01-bridge-first-use-plan.md](2026-09-01-bridge-first-use-plan.md) |
-| 2026-09-01 | **Bridge first-use implementation** — User asked to implement `drafts/plans/bridge-first-use.md`. | [2026-09-01-bridge-first-use-impl.md](2026-09-01-bridge-first-use-impl.md) |
-| 2026-09-01 | **AlignmentRegime consumers + ch05/ch33 prose** — `AlignmentRegime` was unused; delete or wire it. Layer-cut in ch05 too technical; train/deploy pa... | [2026-09-01-alignment-regime-wire.md](2026-09-01-alignment-regime-wire.md) |
-| 2026-08-31 | 2026-08-31-witness-w17-moltbook | [2026-08-31-witness-w17-moltbook.md](2026-08-31-witness-w17-moltbook.md) |
-| 2026-08-31 | **Problem-axis through scope (plan §§1–6)** — Implement the problem-axis incorporation plan through §6 Scope (not dormancy, not App F problem-s... | [2026-08-31-problem-axis-through-scope.md](2026-08-31-problem-axis-through-scope.md) |
 
 ## Archive by month
 

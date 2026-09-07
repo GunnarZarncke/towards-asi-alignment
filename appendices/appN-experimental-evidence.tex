@@ -15,6 +15,23 @@ None of this is a claim that any experiment line proves the book's thesis.
 \end{authbar}
 
 \authbarneedspace
+\section{How to read this appendix}
+\label{sec:appn-how-to-read}
+\begin{authbar}{AI}
+Thresholds, detectors, and scenario batteries are frozen before the scored run.
+Predictions are registered first where the line allows.
+Authors and scorers are separated when blind generation applies.
+Refuse, null, and substrate-suitability stop are recorded outcomes, not reasons to retune.
+Negatives stay in the numbered ledgers next to positives.
+
+Tables use three result labels relative to the nearest manuscript claim: \textbf{Pos.} (evidence for that claim, including when the claim is a warning and the failure mode showed up); \textbf{Neg.} (evidence against a stronger reading, or a method that did not deliver); \textbf{Ambig.} (both ways, or the line left the direction open).
+The Manuscript column names the citing section, or ``---'' if none.
+IDs use line prefixes \texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}, \texttt{W-}.
+
+The sections below are simulations (authored testbeds and sibling precursors), external tests (frozen instruments on substrates this project did not build), and witness tests (host-trace fail/refuse protocols, prefix~\texttt{W-}).
+
+\end{authbar}
+\authbarneedspace
 \section{What the lines say about the chapters}
 \label{sec:appn-chapter-synthesis}
 \begin{authbar}{AI}
@@ -57,16 +74,12 @@ These are scenario illustrations, not findings from the lab batteries and not ev
 ET-3 used AI~2027 speed assumptions only as opaque stress cues; LS-42--LS-48 therefore belong to the ``stress-tested mechanism'' column, not to a forecast-validation column.
 Plan~A's takeoff and economics explorers are the same \emph{macro schedule} family as that forecast code; they are not mechanism simulations of the book's UAD, CCI, or lab-isolate batteries, and no Plan~A transfer experiment has been run yet.
 
-Three evidence classes appear below: \textbf{simulations} (authored testbeds and sibling precursors), \textbf{external tests} (frozen instruments on substrates this project did not build; ET-1--ET-4, logged on the lab and graded-lab ledgers), and \textbf{witness tests} (host-trace fail/refuse protocols, prefix~\texttt{W-}). Each simulation line maintains its own findings ledger --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding that line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
-
-\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}, \texttt{W-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
-
 \end{authbar}
 \authbarneedspace
 \section{Agency-detect (sibling repository, methodological precursor)}
 \label{sec:appn-agency-detect}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{github.com/GunnarZarncke/agency-detect} (outside this repository)}{prior to in-repo simulators}{sibling \texttt{docs/FINDINGS.md}}
+\appnlinemeta{sibling repository \texttt{agency-detect} (outside this repository)}{prior to in-repo simulators}{sibling findings ledger}
 
 Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-\hyperref[gloss:uad]{UAD} interventional tests. The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. It grounds \hyperref[appbridge-crosswalk]{\texttt{MB1}} and the claim that handles must be interventional; it does not implement the full bridge battery or stress correction capture, bundle transport, or selection basins.
 
@@ -91,7 +104,7 @@ Methodological precursor: boundary-like structure from time series without a pri
 \section{Deployment-pipeline-simulator (sibling repository, methodological precursor)}
 \label{sec:appn-deployment-pipeline-simulator}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{github.com/GunnarZarncke/deployment-pipeline-simulator} (outside this repository)}{prior to in-repo lab simulators}{sibling \texttt{README.md} and \texttt{pipeline\_audit/TECHNICAL\_NOTE.md}}
+\appnlinemeta{sibling repository \texttt{deployment-pipeline-simulator} (outside this repository)}{prior to in-repo lab simulators}{sibling technical note}
 
 Methodological precursor to the lab-simulation lines: a five-stage release pipeline with hidden self-preserving control groups, testing whether an auditor using only operational logs plus randomized perturbations can detect systematic preservation of future influence, incumbent model centrality, and evaluation-memory infrastructure. Grounds ET-4-style secret-loyalty audit questions and \hyperref[appbridge-crosswalk]{\texttt{MB4}} pipeline capture; it does not implement subprocess isolates, blind generation batteries, or the full bridge matrix.
 
@@ -116,7 +129,7 @@ Methodological precursor to the lab-simulation lines: a five-stage release pipel
 \section{Toy simulation}
 \label{sec:appn-toy-simulation}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/toy-simulation/}}{2026-06-29}{\texttt{results/FINDINGS.md} (site bullets); \texttt{README.md} and \texttt{multiresolution-simulation-plan.md} for full curves}
+\appnlinemeta{toy simulation}{2026-06-29}{findings ledger}
 
 Fast multiresolution alignment toy: correction capture theater, vector \hyperref[gloss:cci]{CCI} over handle levels, scripted bridge stressors (\texttt{MB1}--\texttt{MB9}; see Appendix~\ref{appbridge-crosswalk}). Optimized for instrumentation economics, not deployment realism. Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.
 
@@ -142,7 +155,7 @@ Fast multiresolution alignment toy: correction capture theater, vector \hyperref
 \section{Embedded audit simulation}
 \label{sec:appn-embedded-simulation}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/embedded-simulation/}}{2026-06-30}{\texttt{results/NEGATIVE\_RESULTS.md} (ES-1 onward)}
+\appnlinemeta{embedded audit simulation}{2026-06-30}{negative-results ledger (ES-1 onward)}
 
 Auditor as embedded process on simulated machines: UAD, scoped CCI, \texttt{MB5} deploy gate, outer evaluator vs.\ oracle. Richest end-to-end embedded audit path (\hyperref[gloss:vfs]{VFS} $\to$ UAD $\to$ CCI $\to$ gate $\to$ outer eval), with the most extensive negative ledger.
 
@@ -168,7 +181,7 @@ Auditor as embedded process on simulated machines: UAD, scoped CCI, \texttt{MB5}
 \section{Goal-agent simulation}
 \label{sec:appn-goal-agent-simulation}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/goal-agent-simulation/}}{2026-07-04}{\texttt{results/FINDINGS.md} (GA-1 onward)}
+\appnlinemeta{goal-agent simulation}{2026-07-04}{findings ledger (GA-1 onward)}
 
 Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift, severity-graded referee, honest twins, escalation ladder, certifier capture. Methodological engine for blind surprise, ontology drift, severity under saturation, and twin/escalation semantics. $\sim$1\,ms/episode, stdlib-only.
 
@@ -194,7 +207,7 @@ Emergent deception from goal-driven agents (not scripted knobs): blind generatio
 \section{Lab-layer simulation}
 \label{sec:appn-lab-simulation}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/lab-simulation/}}{2026-07-05}{\texttt{results/FINDINGS.md} (LS-1 through LS-41)}
+\appnlinemeta{lab-layer simulation}{2026-07-05}{findings ledger (LS-1 through LS-41)}
 
 Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (\texttt{lab-sim-0.3.0+}), pre-registered batteries through Phase~7 and Phase~9; a second detector-layer freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector on the real subprocess backend. Phase~8 LLM adapter remains exploratory only. Lean leak-proof (\texttt{leak-proof/}) certifies oracle/audit/sim plane separation. Pre-registered batteries and pipeline lab machinery; deferred D1--D4 architect bridge coverage not yet fully evaluated.
 
@@ -223,7 +236,7 @@ Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen r
 \section{Graded-capability lab simulation}
 \label{sec:appn-graded-lab-simulation}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/graded-lab-simulation/}}{2026-07-17}{\texttt{results/FINDINGS.md} (GL-0 through GL-85; Q1 transfer battery GL-76; PLAN\_v4 per-bridge rigs GL-79--GL-85)}
+\appnlinemeta{graded-capability lab simulation}{2026-07-17}{findings ledger (GL-0 through GL-85; Q1 transfer battery GL-76; per-bridge rigs GL-79--GL-85)}
 
 Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-\hyperref[gloss:biq-eai]{BIQ} over inferred units; an \hyperref[gloss:biq-eai]{Emergent-Ambiguity-Index} measured from two vantages (acting agent vs.\ limited-observation referee); first multi-episode selection battery with same-day follow-up phases on four review concerns; blinded institutional ecology growth (v3) and a pre-registered machinery-transfer battery (Q1); then decoupled per-bridge rigs (PLAN\_v4) that resolve independently to pass, null, or SKIP. Ambiguity and boundary-discovery engine: a measured structurally-unreachable ``high'' ambiguity band from the agent's own vantage, a ``mid'' band reachable only from a referee's coarser vantage on the hand-designed substrate, and an external-validity null when that mid band and declared-mechanism UAD recovery were re-tested on a blinded-grown ecology.
 
@@ -274,7 +287,7 @@ This line is a disciplined methodological sandbox, not evidence that EAI, BIQ, o
 \section{Witness tests (host traces)}
 \label{sec:appn-witness}
 \begin{authbar}{AI}
-\appnlinemeta{\texttt{experiments/witness/}}{2026-08-28}{\texttt{results/FINDINGS.md} (W-1 through W-15)}
+\appnlinemeta{witness tests}{2026-08-28}{findings ledger (W-1 onward)}
 
 Not a sixth simulation line.
 Frozen fail/refuse protocols on hosts whose traces already exist (or a CIRIS-shaped mock whose timeline is scripted).
@@ -314,10 +327,118 @@ Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
 \renewcommand{\arraystretch}{1.0}
 
 \authbarneedspace
+\section{Safety-Case Readings on Host Traces}
+\label{sec:appn-safety-case-readings}
+\begin{authbar}{AI}
+A named certification leaf, checked against what the channel actually did.
+Findings~\ref{finding:w-9}--\ref{finding:w-11} have longer cases in Appendix~\ref{appm-institutional-histories}.
+None of these discharges a bridge or establishes AI \(\mathrm{Safe}\).
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{FAA emergency AD versus prohibition order}
+\label{sec:appn-reading-w9}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} After the Lion Air 610 accident, 737-8/737-9 passenger operations in US commerce were safe enough to continue under the then-current airworthiness regime.
+
+\textbf{Load-bearing leaf.} Emergency AD 2018-23-51 (2018-11-07): flight crews must run AFM runaway-trim procedures if MCAS-like behavior appears.
+
+\textbf{What the channel showed.} The AD leaf stayed formally satisfied---procedures were issued and could be cited on a checklist---while passenger flights on those types continued until the Emergency Order of Prohibition (2019-03-13) grounded them.
+
+\textbf{Verdict.} \emph{Unsupported leaf}: the AFM-procedure leaf did not support the root; the binding stop was the stronger prohibition order, not a stronger reading of the same leaf.
+Institutional analogue of correction-handle failure; finding~\ref{finding:w-9}.
+Not AI \(\mathrm{Safe}\); not a discharged bridge.
+Longer case context: Appendix~\ref{appm-institutional-histories}.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Linux \texttt{Reviewed-by} on bug-introducing commits}
+\label{sec:appn-reading-w3}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} A commit bearing \texttt{Reviewed-by} tags from trusted reviewers is safe enough to merge into the mainline kernel history.
+
+\textbf{Load-bearing leaf.} \texttt{Reviewed-by} on the merged SHA certifies that the change was adversarially reviewed before it entered the trunk.
+
+\textbf{What the channel showed.} On $17{,}047$ of $60{,}176$ SHAs that later received a developer-labeled bug-introducing commit, \texttt{Reviewed-by} was present on the same SHA.
+A documented revert of \texttt{cpufreq: suspend governors\ldots} was followed by a same-title re-entry; a \texttt{-stable} backport kept listed tags while changing \texttt{event\_sched\_out} arity relative to upstream.
+
+\textbf{Verdict.} \emph{Refused measurand}: the tag is observable on the merge artifact but is not adversarially verifiable as a safety leaf under the frozen Witness protocol.
+Finding~\ref{finding:w-3}.
+Not AI \(\mathrm{Safe}\); not a discharged bridge.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Wikipedia review capture}
+\label{sec:appn-reading-w4}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} A page that passed community review (RfA, BRFA, or sockpuppet investigation) remained under a live correction channel afterward.
+
+\textbf{Load-bearing leaf.} Review labels and bot flags track an independent channel that affected humans can still use to alter future behavior.
+
+\textbf{What the channel showed.} Orangemoody helper socks marked one another's articles as reviewed---review on both ends of a captured channel.
+A BRFA-approved bot later lost the bot flag and was blocked.
+RfA join analyses for 2012 passed elections with oppose votes ($n=21$) still refuse a clean causal correction-uptake estimate; SPI sockpuppet labels with matched non-sock twins exist but the protocol refuses SPI as a safety measurand without a cost-of-faking bound.
+
+\textbf{Verdict.} \emph{Unsupported / captured channel} on the capture cases; \emph{refused} on treating RfA or SPI alone as adversarially verifiable leaves.
+Finding~\ref{finding:w-4} (ambiguous overall).
+Not AI \(\mathrm{Safe}\); not a discharged bridge.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{GPLv2 source offer versus install handle}
+\label{sec:appn-reading-w10}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} A device that complied with GPLv2 \S3 source-offer requirements preserved the user's ability to install modified software on the device.
+
+\textbf{Load-bearing leaf.} Source-with-object distribution obligations (\S3) ground the right to corresponding source.
+
+\textbf{What the channel showed.} GPLv2 \S3 can read green on distribution while tivoization removes the practical install handle; GPLv3 \S6 Installation Information later names the missing constraint explicitly.
+
+\textbf{Verdict.} \emph{Analogue, grounding gap}: compliance symbols stayed green while the value-relevant handle (installability) was severed.
+Finding~\ref{finding:w-10}.
+Not AI \(\mathrm{Safe}\); not a discharged bridge.
+Institutional context: Appendix~\ref{appm-institutional-histories}.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Debian release-critical freeze}
+\label{sec:appn-reading-w11}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} A package tagged release-critical (serious) would not enter the next stable release until the policy gate cleared it.
+
+\textbf{Load-bearing leaf.} Debian RC policy and freeze mechanics block migration of known-serious defects into \texttt{stable}.
+
+\textbf{What the channel showed.} RC \#802812 (serious) kept \texttt{gstreamer 0.10} out of Stretch; Debian~9.0 (2017-06-17) does not ship it.
+
+\textbf{Verdict.} \emph{Analogue, handle worked}: the freeze/RC leaf supported the root for this package class on this timeline.
+Finding~\ref{finding:w-11}.
+Not AI \(\mathrm{Safe}\); not a discharged bridge---it is evidence that an institutional handle \emph{can} bind when the stop is wired to release mechanics.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Named Verify path on a CIRIS-shaped mock}
+\label{sec:appn-reading-w1}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} On a CIRIS-shaped tool-scout deployment, a named occurrence that Verify and Lens mark green has passed the certification path for that action class.
+
+\textbf{Load-bearing leaf.} Named-path Verify/Lens green on \texttt{ciris-occurrence-scout-01}; Wise Authority defer attaches to that named occurrence.
+
+\textbf{What the channel showed.} On the frozen C2 mock, Verify and Lens stay green while Wise Authority defers the named occurrence and a tool adapter plus cached memory still produce world effects afterward---the acting cut is not the Verify subject (finding~\ref{finding:w-1}).
+The same finite shape is pinned in Lean as a path-audit instance (finding~\ref{finding:w-8}).
+On the separate CIRISAgent mock-LLM stack, a recorded \texttt{\$defer} task with zero world-effect stub hits is a \textbf{null contrast} (finding~\ref{finding:w-15}): deferral logged, no post-defer bypass on that freeze---not the same failure mode as W-1.
+
+\textbf{Verdict.} \emph{Unsupported leaf} on the authored mock: named-path bypass with world effects after defer (findings~\ref{finding:w-1}, \ref{finding:w-8}).
+Finding~\ref{finding:w-15} is a null contrast on a different freeze: deferral logged, no post-defer bypass.
+Authored mock; not live CIRISAgent.
+Not AI \(\mathrm{Safe}\); not MB1 discharged.
+
+\end{authbar}
+
+\authbarneedspace
 \section{Bridge and feature coverage}
 \label{sec:appn-bridge-coverage}
 \begin{authbar}{AI}
-Which book bridges and cross-cutting features each line exercises. ``Primary'' means the line was built mainly to stress that feature; ``---'' means not in scope. Cell text is abbreviated from \texttt{metadata/experiments.yml}; full narrative in \texttt{docs/EXPERIMENTS.md}. The two tables below are set landscape (rotated 90\textdegree) so the matrix can be read at a comfortable size.
+Which book bridges and cross-cutting features each line exercises. ``Primary'' means the line was built mainly to stress that feature; ``---'' means not in scope.
 
 \end{authbar}
 \begin{landscape}

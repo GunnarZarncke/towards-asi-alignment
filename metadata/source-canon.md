@@ -137,9 +137,9 @@ Import or verify before drafting stubs above. Keys are suggested slugs.
 
 | Work | Suggested key | Target chapters |
 |------|---------------|-----------------|
-| Biehl, Pollock & Kanai (2021) — FEP/blanket critique | `biehl2020fepcritique` | ch06, ch07, appBridge, appH |
-| Bruineberg et al. (2021) — Pearl vs Friston blankets | `bruineberg2021emperor` | ch06, ch07, appBridge, appH |
-| Btesh, Bramley & Lagnado (2022) — boundary-relativity commentary | `btesh2022redressing` | ch06, ch07, appBridge, appH |
+| Biehl, Pollock & Kanai (2021) — FEP/blanket critique | `biehl2020fepcritique` | ch06, ch07, appBridge |
+| Bruineberg et al. (2021) — Pearl vs Friston blankets | `bruineberg2021emperor` | ch06, ch07, appBridge |
+| Btesh, Bramley & Lagnado (2022) — boundary-relativity commentary | `btesh2022redressing` | ch06, ch07, appBridge |
 | Demski (2023) — agent boundaries vs Markov blankets (AF) | `demski2023agentboundaries` | ch06 |
 | Friston, Da Costa & Parr (2021) — FEP response to Biehl et al. | `friston2021fepresponse` | ch06 |
 | Schölkopf et al. (2021) — causal representations | `scholkopf2021causalreps` | ch07, ch46 |

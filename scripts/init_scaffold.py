@@ -82,15 +82,12 @@ APPENDICES = [
     ("appA-notation", "Notation Reference"),
     ("appB-bridge-crosswalk", "Bridges and the Field: A Crosswalk"),
     ("appC-institutional-translation", "Institutional Translation Guide"),
+    ("appM-institutional-histories", "Institutional Genesis, Memory, and Decay"),
     ("appD-worked-example", "Worked Example: BioShield"),
     ("appE-glossary", "Glossary"),
     ("appF-research-program", "Research Program"),
     ("appG-lean-proof-spine", "Lean Proof Spine"),
-    ("appH-boundary-worked-example", "Worked Example: Agent Boundary"),
-    ("appI-value-bundle-inference", "Value-Bundle Inference"),
-    ("appJ-correction-channel-audit", "Correction-Channel Audit"),
-    ("appK-safety-case-template", "Safety-Case Template"),
-    ("appL-assumptions", "Assumptions Index"),
+    ("appN-experimental-evidence", "Experimental Evidence: Findings by Line"),
 ]
 
 
