@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-07 | **Restore real v1 bridge graph** — Field v1 map had MB8 as gravestone; freeze `c15ad815` live-MB8 DOT, re-render, link commit on `/field/v1/`. | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |
 | 2026-09-05 | **Audit telemetry draft (v2 rec seed)** — Summarize W-17 + sim audit-layer comparison as a report; not v1 manuscript. | [2026-09-05-audit-telemetry-draft.md](2026-09-05-audit-telemetry-draft.md) |
 | 2026-09-05 | **Appendix B ontology-homograph link** — User reported a broken “Ontology homographs” link on `/cards/bridge/bridge-assumptions/` (`/full/... | [2026-09-05-appb-homograph-link.md](2026-09-05-appb-homograph-link.md) |
 | 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |

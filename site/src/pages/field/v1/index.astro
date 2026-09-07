@@ -21,8 +21,11 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     <h1>AI safety and alignment</h1>
     <p class="lede">
       Archived field map (pre–lifecycle axis, pre–stance marks, v1 bridge dependency graph).
+      Graph frozen at{" "}
+      <a href="https://github.com/GunnarZarncke/towards-asi-alignment/commit/c15ad8156ebeb5d3c852df5e69da6226262a594c"><code>c15ad815</code></a>
+      {" "}(2026-08-03; live MB8 backup route).
       {" "}
-      <a href={withBase("/field/v2/")}>Live field map</a> at <code>/field/v2/</code> (<code>/field/</code> redirects here).
+      <a href={withBase("/field/v2/")}>Live field map</a> at <code>/field/v2/</code> (<code>/field/</code> redirects there).
     </p>
   </section>
 
@@ -34,7 +37,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     <h2>Bridge dependency map (v1)</h2>
     <p class="bridge-graph-lede">
       How this project's bridge assumptions (MB1–MB11) depend on one another, labeled in field nouns from the coverage matrix below.
-      This is the graph frozen at v1 cutover — without the MB1→MB3 bearer-admission edge on the live map.
+      This is the graph as introduced on the Field hub (<a href="https://github.com/GunnarZarncke/towards-asi-alignment/commit/c15ad8156ebeb5d3c852df5e69da6226262a594c"><code>c15ad815</code></a>): live MB8 as a backup route to correction, no MB1→MB3 bearer-admission edge, and no gravestone styling. The 2026-08-17 v2 cutover had copied an intermediate gravestone diagram; that is not v1.
     </p>
     <p class="bridge-graph-disclaimer side-panel-meta">
       This map shows logical and safety-case assembly dependencies among named bridge handoffs — not a proof that real systems satisfy them.

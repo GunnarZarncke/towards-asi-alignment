@@ -3,7 +3,7 @@
 | File | Content |
 |------|---------|
 | [`mb-bridge-dependencies-v2.dot`](mb-bridge-dependencies-v2.dot) | **Live** MB1–MB11 bridge dependency graph (field nouns from [`data/bridges.yml`](../data/bridges.yml)); includes MB1→MB3 bearer-admission edge; synced to `/cards/bridge-assumptions/#bridge-dependencies` |
-| [`mb-bridge-dependencies-v1.dot`](mb-bridge-dependencies-v1.dot) | **Archived** graph frozen at v1 cutover (no MB1→MB3 edge); synced to `/field/v1/#bridge-dependencies` |
+| [`mb-bridge-dependencies-v1.dot`](mb-bridge-dependencies-v1.dot) | **Archived** graph as of [`c15ad815`](https://github.com/GunnarZarncke/towards-asi-alignment/commit/c15ad8156ebeb5d3c852df5e69da6226262a594c) (live MB8 backup route; no MB1→MB3; no gravestone); synced to `/field/v1/#bridge-dependencies` |
 | [`mb-bridge-dependencies.dot`](mb-bridge-dependencies.dot) | Canonical copy of v2 (regenerate PNG from this or v2) |
 | [`mb-bridge-dependencies.png`](mb-bridge-dependencies.png) | Rendered PNG (regenerate from repo root) |
 
