@@ -28,4 +28,4 @@ Follow-up on experiment site cards: each Witness test card should link to the br
 - `site/src/pages/experiments/findings/[id].astro`
 
 ## Commits
-- (this session)
+- `cc3f914e` Link Witness cards to bridges and GitHub experiment paths.

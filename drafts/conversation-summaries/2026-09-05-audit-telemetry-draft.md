@@ -1,7 +1,7 @@
-# Session log — Audit telemetry draft
+# 2026-09-05 — Audit telemetry draft (v2 rec seed)
 
-**Date:** 2026-09-05  
-**Scope:** Summarize telemetry lessons (Witness + sims) and audit-layer comparison into a report that can become a later recommendation. Not v1 manuscript.
+## Trigger
+Summarize telemetry lessons (Witness + sims) and audit-layer comparison into a report that can become a later recommendation. Not v1 manuscript.
 
 ## Done
 

@@ -23,4 +23,4 @@ The public Alignment Crux Map card was mostly generated prose. Replace it with t
 - [`drafts/plans/alignment-crux-map.md`](../plans/alignment-crux-map.md)
 
 ## Commits
-- (this session)
+- `f8a60138` Rewrite Alignment Crux Map funding card in listing voice.

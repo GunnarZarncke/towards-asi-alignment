@@ -15,7 +15,9 @@ User approved plan: delete obsolete appendix stubs H–K; expand App N with meth
 
 ## Open / next
 - Optional full PDF build (`./build.sh`).
-- Left unstaged (other sessions / not this task): front-door vocab, conversation-log archive moves, field/voice plans, other funding cards.
+
+## Commits
+- `42525ed8` Retire unused appendix stubs and add App N host-trace readings.
 
 ## Key paths
 - `appendices/appN-experimental-evidence.tex`

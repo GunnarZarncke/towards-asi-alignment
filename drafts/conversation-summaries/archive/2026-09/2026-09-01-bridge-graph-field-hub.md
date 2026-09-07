@@ -21,4 +21,4 @@ User reported `/cards/concept/bridge-assumptions/` (field hub panel “Which pro
 - `site/public/field-graphs/` (gitignored; generated at build)
 
 ## Commits
-- (this session)
+- `104dcc8a` Fix field hub bridge dependency graph and canonical card URLs.

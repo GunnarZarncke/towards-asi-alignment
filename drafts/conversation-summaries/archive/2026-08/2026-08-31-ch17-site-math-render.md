@@ -20,4 +20,4 @@ User reported chapter 17 not rendering properly on the companion site: `$g_\psi$
 - `chapters/ch17-low-dimensional-value-learning.tex` — line with `\(80\%\)` (unchanged)
 
 ## Commits
-- (pending) Fix escaped percent in tex-convert comment stripping.
+- `a19fc851` Fix site math rendering when LaTeX uses escaped percent signs.

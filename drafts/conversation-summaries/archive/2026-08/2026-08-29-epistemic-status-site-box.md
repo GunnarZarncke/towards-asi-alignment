@@ -21,4 +21,4 @@ User asked to mark `\begin{epistemicstatus}` blocks on the companion site with a
 - `metadata/preamble.tex` (PDF box colors for reference)
 
 ## Commits
-- `6b6f7122` Style epistemic status blocks as lighter callouts on book pages.
+- `4cc22435` Style epistemic status blocks as lighter callouts on book pages.

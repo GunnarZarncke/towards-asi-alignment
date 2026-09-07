@@ -25,4 +25,4 @@ User reported a broken “Ontology homographs” link on `/cards/bridge/bridge-a
 - `site/scripts/generate-card-redirects.mjs`
 
 ## Commits
-- (none)
+- `2382b0a3` Fix broken Appendix B ontology-homograph links on the site.

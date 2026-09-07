@@ -145,7 +145,8 @@
         "Frozen later-host protocol `h4-pdg-v1.0.0` did **not** score giving. OSF [h5x2a](https://osf.io/h5x2a) / [x69t7](https://osf.io/x69t7) are preregistration PDFs only. EUR DOIs `10.25397/eur.14916531` / `c.5809043` / `12783161` returned 404 on DataverseNL. Metadata for `10.34894/c81eja` lists unrestricted SPSS including `Brainlinks_Covid19_Giving_time_target_GEE.sav`, but that file is the van de Groep et al. 2020 PLOS ONE **daily-diary cohort ages 10–20**; the protocol refuses scoring that microdata. Do not substitute Moral Machine or paper means. Bearer-profile MAE margins unpaid.",
         "On Zenodo CPC2015 Experiment 1 (`SubjID`; 93 750 rows; **113** included subjects; 65 625 / 28 125 train/test), held-out mean accuracy is intercept **0.545**, ΔEV 1-D **0.542**, geometry **0.435**. Both frozen +0.05 margins **fail** (geometry −0.107 vs 1-D, −0.110 vs intercept). Outcome **null**: this freeze did not detect a reusable multi-feature direction that beats person intercept or scalar ΔEV. Matches the allowed ambig./null branch of prediction 2; predictions 1 and 3 did not hold. Risk/ambiguity lab class only. **Not** a C-004 moral-bundle result. Not LHCV. Not MB2. Geometry Newton still moving at \\(10^{-3}\\) after 80 steps (report; not retuned).",
         "On a local mock-LLM CIRISAgent (`c2-v2.0.0`; existing API after `/v1/setup/complete`, no wipe), the harness logged `$defer` with a named-path task id and asserted Verify/Lens green. The world-effect stub at `127.0.0.1:8765/c2-world-effect` recorded **0 hits**. Composite log has no `world_effect: true` after WA \\(t=4\\). Outcome **null**: this stack freeze did not show WA-blind composite bypass (P3). Matches registered prediction 3 (post-defer tool path uncertain). First two scout messages shared one `task_id` (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`). Lens scalars are **asserted**, not CIRISLens. W-1 authored mock still shows the logical shape. Not MB1 discharge. Not live CIRISLens cohort (sibling Phase 3). Charter C1 fallback unpaid.",
-        "On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2."
+        "On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2.",
+        "On jscmp4/Moltbook **2026-07-03** (3.2M posts, 15.9M comments), frozen Tier A anchors **Hackerclaw** and **thehackerman** (Jiang et al.) both resolve and **join** on `E_agent` reciprocation filters (τ=86400s, specificity=1.25, min_directed_events=2), but **do not merge**. They are **coactive** on 2026-01-31 (shared 60-min bins) while Jan-31 discursive activity is **100% broadcast** (depth-0) with **no** `E_thread` edge — outcome **`structure_stop`** under the frozen broadcast-stop branch (≥0.95), not primary **fail**. Global discursive rows are ~90% depth-0; 400 agent-pair clusters survive filters (535k directed events). Tier B **MBC-20** posts = 1 038 375 (protocol class, structure type 5). Tier C `coalition_node_*` prefix agents = 167. Diagnostic negative-pair merge rate (seed 7, top-100 agents) = **0.0**. No coalition claim keywords in Tier A posts. Matches preregistered predictions 2–5; prediction 1 (merge uncertain) resolves **not merged** but substrate stop blocks fail. **Not** a pass of named-operator coalition recovery on discursive `E_agent`; **not** MB7d severance discharge; **not** full UAD oracle."
       ],
       "findingsSitePath": "/experiments/findings/witness/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
@@ -1087,6 +1088,42 @@
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py",
       "readmeUrl": null,
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+    },
+    {
+      "order": 26,
+      "id": "w-17",
+      "kind": "witness",
+      "findingIdPrefix": "W-",
+      "title": "Moltbook MB7a entity pinning",
+      "location": "experiments/witness/check_h7_moltbook_mb7a.py",
+      "firstBuilt": "2026-08-31",
+      "summary": "Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins on platform IDs but discursive reciprocation does not merge them; Jan-31 activity is broadcast-only — structure_stop, not coalition pass/fail on E_agent alone.",
+      "role": "**What.** Agent-native social network corpus (jscmp4/Moltbook 2026-07-03). Tier A\nanchors from Jiang et al. Test whether discursive reply reciprocation (`E_agent`)\nmerges a documented same-operator pair when coactive.\n\n**Why.** MB7a access-model / entity pinning on deployment-adjacent traces — not\nfull UAD oracle. UAD lessons require edge-layer typing (broadcast vs thread) and\npartial anchors, not naive covert-coalition recovery.\n",
+      "witnesses": "- [MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/): named\n  `author_id` vs inferred multi-account structure; claim vs boundary evidence.\n- [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) neighborhood:\n  structure typing on public agent platform traces.\n",
+      "host": "jscmp4/Moltbook Hugging Face snapshot 2026-07-03 (CC-BY-4.0). 3.2M posts, 15.9M comments. Not live API.\n",
+      "setup": "Frozen protocol h7-moltbook-mb7a-v1.0.0, fixture [h7-moltbook-mb7a-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h7-moltbook-mb7a-v1.json). Fetch [fetch_h7_moltbook_cache.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fetch_h7_moltbook_cache.py). Collect [collect_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/collect_h7_moltbook_mb7a.py). Checker [check_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py). Edge layers E_broadcast, E_thread, E_agent; τ=86400s, specificity=1.25, min_directed_events=2.\n",
+      "analysis": "Tier A join and merge on E_agent; Jan-31 coactivity and broadcast fraction; MBC-20 protocol-class count; coalition_node_* prefix agents; diagnostic negative-pair merge rate (seed 7).\n",
+      "numbers": "Tier A joined; merged_e_agent false; coactivity_jan31 true; broadcast_fraction_jan31 1.0; thread_edge_jan31 false. Global broadcast comment fraction ~0.90. 400 E_agent pair clusters after filters. MBC-20 posts 1,038,375; coalition_node_* agents 167. Diagnostic negative merge rate 0.0.\n",
+      "outcome": "Structure stop: broadcast-heavy substrate blocks discursive merge test for Tier A;\nnot a pass of coalition recovery on E_agent alone. See [W-17](/experiments/findings/w-17/).\n",
+      "planPath": "drafts/plans/witness-v2-moltbook-mb7a.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "headlineFindings": [
+        "Documented operator pair coactive but not merged on discursive E_agent; Jan-31 activity 100% broadcast — structure_stop under frozen protocol.\n"
+      ],
+      "links": [
+        {
+          "label": "Plan",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-v2-moltbook-mb7a.md"
+        }
+      ],
+      "cardPath": "/cards/experiment/w-17/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/w-17/",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py",
+      "findingsSitePath": "/experiments/findings/w-17/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-17/",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
     }
   ],
   "howToRead": [
@@ -1282,7 +1319,7 @@
         "goal-agent-simulation": "Emergent (shadow route, tool gating)",
         "lab-simulation": "Oracle hidden capability/hazard on models",
         "graded-lab-simulation": "Graded (continuous) oracle capability/hazard/harm state, not pass/fail",
-        "witness": "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4)"
+        "witness": "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
       }
     },
     {

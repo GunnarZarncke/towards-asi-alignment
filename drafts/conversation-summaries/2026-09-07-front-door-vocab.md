@@ -21,6 +21,5 @@ Feedback that TSA front doors use heavy private vocabulary; implement plan to de
 
 - Grep front doors when editing README, intro, site entry paths, funding summaries.
 
-## Not in commit
-
-- Other working-tree changes (appendix archive, appN, unrelated session logs) left unstaged.
+## Commits
+- `cda6b15a` Use plain English on first-contact surfaces so skimmers need no project shorthand.

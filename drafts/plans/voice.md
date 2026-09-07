@@ -82,68 +82,7 @@ Replace reader-facing “discharge” of the **six thesis claims** with “revis
 | ch11–ch20 | 2026-08-27 | ch20 remainder (toy-only); ch11–ch19 skip. |
 | ch21–ch48 | 2026-08-27 | Remainders: ch27, ch31, ch33, ch38, ch42, ch43. Rest skip. |
 
-Per chapter (ch01–ch10):
-
-| Ch | Verdict | Why |
-|----|---------|-----|
-| 01 | skip | Task/framing: locate the bounded process; boundary error named, method not paid |
-| 02 | skip | Object-of-alignment framing (`often not` a mind) |
-| 03 | skip | Defines the *type* of claim (dynamical guarantee / certified class), does not assert the guarantee is paid |
-| 04 | skip | Normative target (`should preserve` a process), not a completed extraction |
-| 05 | skip | Scope contract (correction-capacity precondition) |
-| 06 | skip | Operational definition of agent; method bet is ch07 |
-| 07 | skip | Task/framing; epistemic status already marks the method unvalidated |
-| 08 | skip | Framing (`must be treated` / `asks which properties`); conservation not claimed paid |
-| 09 | skip | Possibility + duty (`may be` composite; `must identify`) |
-| 10 | skip | Necessity (discovery is adversarial; alignment fails when control outruns seeing); instrumentation not claimed calibrated |
-
-Per chapter (ch11–ch20):
-
-| Ch | Verdict | Why |
-|----|---------|-----|
-| 11 | skip | Normative measurement frame (`should be measured`); proposed rotation, not a paid measurand |
-| 12 | skip | Definition + diagnostic (differential growth), taxonomy not claimed paid |
-| 13 | skip | Necessity + accounting identity; empirical thresholds not in the box |
-| 14 | skip | Necessity (`when` power outruns correction); question, not a paid deepening result |
-| 15 | skip | Model of values as compressed control; speculative, not a completed extraction |
-| 16 | skip | Comparative modeling (`better modeled as` bundles), not identifiability paid |
-| 17 | skip | Necessity plus named identifiability/correction conditions (remainder already in the claim) |
-| 18 | skip | Necessity: preserve bearer maps; audit protocol not claimed validated |
-| 19 | skip | Framing the hard part; geometry introduced as encoding, estimation not claimed |
-| 20 | remainder | Box presents an operational/adversarial test surface; clause now: those named procedures are specified and illustrated, not adversary-validated |
-
-Per chapter (ch21–ch48):
-
-| Ch | Verdict | Why |
-|----|---------|-----|
-| 21 | skip | Task framing (infer bundles, not only reward) |
-| 22 | skip | Operational definition of intention; needs-list is framing |
-| 23 | skip | Inference criterion for goal transport, not a paid empirical test |
-| 24 | skip | Necessity plus required transport stack |
-| 25 | skip | Definition of correction as causal channel |
-| 26 | skip | Remainder already named (certificate defined here; ch27 tests survival) |
-| 27 | remainder | Stress tests named as if paid; clause: finite toy separations, not a real-certificate result |
-| 28 | skip | Target contrast (obey vs extrapolative correction) |
-| 29 | skip | Failure-mode distinction plus necessity |
-| 30 | skip | Necessity (successor-closure as program requirement) |
-| 31 | remainder | “Tested jointly under adversarial successor creation”; clause: finite chain, not real systems |
-| 32 | skip | Failure-mode framing (self-control vs transparency gap) |
-| 33 | remainder | Restricted class listed as the method that may suffice; clause: specifies the class, not a real regime |
-| 34 | skip | Necessity (alignment selected, not only learned) |
-| 35 | skip | Depends-on framing; detector not claimed paid |
-| 36 | skip | Names the failure mode; audit battery not in the box |
-| 37 | skip | Introduces the attractor construct |
-| 38 | remainder | “Becomes a practical artifact program”; clause: specified, not shown to change gates |
-| 39 | skip | Necessity (passive observation not evidence unless perturbation regime) |
-| 40 | skip | Detection rule for goal laundering |
-| 41 | skip | Scale-of-optimizer framing |
-| 42 | remainder | Refusal graph stated; clause: missing required evidence should fail the whole claim; does not check that evidence on a real system |
-| 43 | remainder | Cost-bound stated as the escape; clause: defines the relation, not a real-adversary bound |
-| 44 | skip | Scope: separate answered vs still open |
-| 45 | skip | Philosophical question framing |
-| 46 | skip | Necessity (govern value-forming machinery) |
-| 47 | skip | Philosophical limit framing |
-| 48 | skip | Remainder already named (does not prove real systems satisfy the conditions) |
+Per-chapter skip/remainder reasons: git history of this file at 2026-08-27.
 
 **INSTRUCTIONS** [`INSTRUCTIONS.md`](../../INSTRUCTIONS.md) §2 `chapterthesis` row: allow one remainder clause; WWCTV stays the disconfirmer list.
 
