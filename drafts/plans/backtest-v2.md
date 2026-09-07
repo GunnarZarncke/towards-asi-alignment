@@ -1,8 +1,8 @@
 # Witness v2 — institutional correction + unpaid MB hosts
 
-**Status:** planning (2026-08-29). **Not a freeze.** Parent: [`witness.md`](witness.md). Discipline: [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md).
+**Status:** planning (2026-08-29). **Not a freeze.** Parent: [`backtest.md`](backtest.md). Discipline: [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md).
 
-**v1 remains open** for optional leftovers in [`witness-c004-raw.md`](witness-c004-raw.md). **SCOTUS v1 is recorded** (W-16, [`witness-c004-scotus.md`](witness-c004-scotus.md)). Do not conflate that same-unit geometry host with v2 institutional correction.
+**v1 remains open** for optional leftovers in [`backtest-c004-raw.md`](backtest-c004-raw.md). **SCOTUS v1 is recorded** (W-16, [`backtest-c004-scotus.md`](backtest-c004-scotus.md)). Do not conflate that same-unit geometry host with v2 institutional correction.
 
 **Claim strength:** methodology-building. A green dashboard with no stop is not a pass. Does **not** discharge `MB*` or Construct concrete chapters.
 
@@ -25,7 +25,7 @@ v2 is a **depth** program (M7), not a longer W-number list (M1/M6). If a candida
 
 | Stays in v1 | Goes to v2 |
 |-------------|------------|
-| **SCOTUS** (W-16 recorded — [`witness-c004-scotus.md`](witness-c004-scotus.md)) | Institutional **correction-channel** campaign on democracies / transparent orgs |
+| **SCOTUS** (W-16 recorded — [`backtest-c004-scotus.md`](backtest-c004-scotus.md)) | Institutional **correction-channel** campaign on democracies / transparent orgs |
 | BBQ, HH/PKU, wiki admin (optional C-004 leftovers) | Systematic **unpaid-MB** host hunt with blinded criteria |
 | Adversarial \(M\) and M8 reproduction TODOs | Multi-step blinding for criteria **and** evaluation |
 | KernelCI / lore NAK; CIRIS Lens cohort | **H7** agent-native public platforms (Moltbook Phase 1) + **H6** if amended |
@@ -76,7 +76,7 @@ Each hunt ends in **freeze, refuse, or skip** — not a scored finding from an u
 
 ## Phase 1 — Moltbook (agent-native platform)
 
-**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`audit-telemetry.md`](audit-telemetry.md).
+**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`audit-telemetry.md`](audit-telemetry.md).
 
 Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-only social network, Jan–Jul 2026). It is **not** Track A (legislatures/ombuds) and **not** v1 C-004 geometry. It pays TSA-relevant cruxes on **deployment-adjacent traces**: selector pressure (**MB6**), entity/coalition pinning (**MB7a**), channel reconstitution (**MB7d**), and possibly correction-channel theater (**MB4a/C-005**) if handle→act joins are defensible.
 
@@ -92,7 +92,7 @@ Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-
 | MB4a correction handle→act | **Maybe / refuse branch** — state flags only |
 | MB3, C-004 geometry, Exp. 3 κ* | **Refuse** |
 
-**Before freeze:** ~~UAD interpretation protocol + Step 0c anchor catalog~~ → done in inventory + [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md).
+**Before freeze:** ~~UAD interpretation protocol + Step 0c anchor catalog~~ → done in inventory + [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md).
 
 **Phase 1 order:** ~~Step 0b structure taxonomy → Step 1 blinded criteria → Step 2 freeze~~ → **MB7a frozen** (`h7-moltbook-mb7a-v1.0.0`). Next: cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record W-17. MB6 still optional second leaf.
 
@@ -104,7 +104,7 @@ Track A (Denmark/Folketing inventory) may run **in parallel** but is not Phase 1
 
 v1 Witness froze protocols in the same authoring pass as checkers. That is acceptable for scripted hosts; it is **not** acceptable for Track A, where it is too easy to pick institutions and leaves that already look like CCI.
 
-v2 uses **at least two blinded steps**, adapted from [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation (lessons 1–4, 8). Binding prompts live in a later `experiments/witness/` protocol file, not here.
+v2 uses **at least two blinded steps**, adapted from [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation (lessons 1–4, 8). Binding prompts live in a later `experiments/backtest/` protocol file, not here.
 
 ### Step 0 — inventory (implementer, unblinded to data existence)
 
@@ -145,7 +145,7 @@ A **second** blinded generator designs the **eval split and margins** from the c
 | **H6** | Public institutions with joinable correction traces (legislatures, ombuds, audit, FOI) | C-005, MB4/MB4a, MB8, Expectation 4 **if** a stop is encoded, not merely narrated | National “quality of democracy” score; Construct; AI `Safe` |
 | **H7** | Agent-native public platforms with archived API traces (Moltbook first) | MB6 time series, MB7a, MB7d; MB4a **if** handle→act joinable; ch07/ch26/ch34 adjacent | AI `Safe`; MB11 discharge; C-004 bundle geometry; moral-panic “agents are scheming” |
 
-Adding H6 or H7 to Phase 0 requires a **named amendment** of [`witness-phase0.md`](witness-phase0.md). Until then, Moltbook Phase 1 is planning + inventory only.
+Adding H6 or H7 to Phase 0 requires a **named amendment** of [`backtest-phase0.md`](backtest-phase0.md). Until then, Moltbook Phase 1 is planning + inventory only.
 
 ---
 
@@ -165,9 +165,9 @@ Adding H6 or H7 to Phase 0 requires a **named amendment** of [`witness-phase0.md
 
 ## Suggested order
 
-1. ~~**v1 SCOTUS**~~ — W-16 recorded ([`witness-c004-scotus.md`](witness-c004-scotus.md)). Optional v1 leftovers: BBQ/HH in [`witness-c004-raw.md`](witness-c004-raw.md).
-2. **v1 (parallel):** adversarial \(M\) / M8 TODOs on [`witness.md`](witness.md).
-3. **v2 Phase 1 — Moltbook:** Step 0 done ([`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md)) → Step 1 blinded criteria (MB6 first) → freeze → one scored host.
+1. ~~**v1 SCOTUS**~~ — W-16 recorded ([`backtest-c004-scotus.md`](backtest-c004-scotus.md)). Optional v1 leftovers: BBQ/HH in [`backtest-c004-raw.md`](backtest-c004-raw.md).
+2. **v1 (parallel):** adversarial \(M\) / M8 TODOs on [`backtest.md`](backtest.md).
+3. **v2 Phase 1 — Moltbook:** Step 0 done ([`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md)) → Step 1 blinded criteria (MB6 first) → freeze → one scored host.
 4. **v2 Track A (parallel):** Step 0 inventory for legislatures/FOI (no scores). Amend Phase 0 when H6/H7 freeze is written.
 5. **v2 Phase 2:** unpaid-MB hunt list (Track B table), one freeze at a time, same blinding.
 
@@ -177,11 +177,11 @@ Adding H6 or H7 to Phase 0 requires a **named amendment** of [`witness-phase0.md
 
 | File | Role |
 |------|------|
-| [`witness.md`](witness.md) | v1 index |
-| [`witness-next.md`](witness-next.md) | v1 open items after W-16 |
-| [`witness-c004-raw.md`](witness-c004-raw.md) | C-004 host roster; W-16 SCOTUS recorded |
-| [`witness-c004-scotus.md`](witness-c004-scotus.md) | SCDB freeze (W-16) |
-| [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md) | Moltbook Step 0 (Phase 1) |
-| [`witness-phase0.md`](witness-phase0.md) | v1 charter; H6/H7 not yet in |
+| [`backtest.md`](backtest.md) | v1 index |
+| [`backtest-next.md`](backtest-next.md) | v1 open items after W-16 |
+| [`backtest-c004-raw.md`](backtest-c004-raw.md) | C-004 host roster; W-16 SCOTUS recorded |
+| [`backtest-c004-scotus.md`](backtest-c004-scotus.md) | SCDB freeze (W-16) |
+| [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md) | Moltbook Step 0 (Phase 1) |
+| [`backtest-phase0.md`](backtest-phase0.md) | v1 charter; H6/H7 not yet in |
 | [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + M1–M8 |
 | [`metadata/experiments.yml`](../../metadata/experiments.yml) | Witness coverage holes (MB3, MB7d, MB8) |

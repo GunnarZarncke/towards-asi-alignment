@@ -1,6 +1,6 @@
 {
   "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full project thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (MB1–MB10).",
-  "purpose": "When we propose a way to tell whether people can still change what a system does, does that method actually work — or does it only look like it works? Every line here freezes the scoring rules before the run, keeps the test designer from grading their own homework where we can, and publishes what failed next to what worked. The three classes below are different places to ask that same question. None of them is a verdict on a deployed frontier model.",
+  "purpose": "The distinctive empirical work here is the backtests: freeze a safety check, run it on a history we did not write, and publish whether it would have stayed green while the harm continued. A simulation we authored can only show that a method works in a world we control. An external test asks whether a frozen instrument still means anything on a substrate we did not build. None of the three is a verdict on a deployed frontier model.",
   "negativeResultsFirst": true,
   "kinds": {
     "sim": {
@@ -19,13 +19,13 @@
       "cardPath": "/cards/experiment/external-tests/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/external-tests/"
     },
-    "witness": {
-      "title": "Witness",
-      "cardId": "witness-tests",
-      "blurb": "Would this safety check have stopped what actually happened — in kernel history, encyclopedia logs, a published eval, court votes — or would it have stayed green while the harm continued? A green dashboard with no stop is a fail, not a pass.\n",
-      "overview": "**What we are witnessing.** A process can print a green check while nothing that\ngoverns later behavior actually stops. We look at histories that already exist\n(git logs, encyclopedia logs, published evaluation tables, court votes) and pick\na concrete stretch of what happened: a bug that shipped, a vandalism campaign,\na round of choices or votes. Then we ask: if this proposed check had been the gate,\nwould that stretch have been stopped?\n\nWe are not witnessing that a frontier model is aligned. We are witnessing whether\na *kind of check* has a handle that bites: a revert that stays reverted, a review\nthat actually blocks, a score that still tracks what it claims when you look at\nthe whole pattern of a choice, not one compressed number.\n\n**Why this is the work.** Anyone can write a simulator in which their detector looks\ngood. The distinctive empirical claim of this project is that an\nalignment-relevant check must be able to stop something on a history we did not\nwrite. A dashboard that stays green with no stop is a **fail**. If the data or\nthe unit of analysis is the wrong object, we **refuse** rather than stretch the\nnumbers. That is slower than adding more simulation runs. It is also the evidence\ntype that can change whether you treat a checklist, a license clause, or a\none-dimensional honesty score as a deployment gate.\n\nSee [experiment methodology](/cards/concept/experiment-methodology/) (freeze the\nprotocol before scoring; do not retune a null) and the [glossary](/glossary/).\nEach test below has its own card, a GitHub source link, and a results link.\nThe combined numbered ledger is also at [results](/experiments/findings/witness/).\n",
-      "cardPath": "/cards/experiment/witness-tests/",
-      "cardUrl": "https://towards-alignment.com/cards/experiment/witness-tests/"
+    "backtest": {
+      "title": "Backtests",
+      "cardId": "backtests",
+      "blurb": "A backtest here is a frozen safety check run on a history we did not write — kernel git, encyclopedia logs, published evals, court votes. Would the check have stayed green while the harm continued? On Linux, Reviewed-by sat on 17,047 of 60,176 later-labeled bug-introducing commits. That is a result, not a broken test.\n",
+      "overview": "A **backtest** here is a frozen safety check run on a history we did not write.\nFreeze the check, run it on a real stretch whose outcome is already known, and ask\nwhether it would have stayed green. The backtest is witnessing the failure: the\ncheck stayed green while the harm continued.\n\n**What this buys the project.** The Lean spine and the authored simulations can\nshow that a check-shape is even *sayable*, and that it works in a world we wrote.\nThey cannot pay a safety-case leaf that says the same check would have bitten on\na process we did not design. That remainder is what backtests make visible: fail,\nrefuse, or null on a foreign trace. Construction chapters stay out of the v1\nmanuscript until a real stop exists on such a history. The [bridge hooks](/cards/experiment/w-3/)\non each card are the map from a finding to a named leaf — not a substitute for\nthat unpaid remainder.\n\n**Why a sim pass is the cheap result.** Anyone can write a simulator in which their\ndetector looks good. The usual eval lie is that the same person builds the check\n*and* the toy world. A backtest runs against foreign, pre-existing data — you cannot\nquietly adjust the world to rescue the check. A layer fail on Linux is worth more\nthan a pass on a hand-built simulation: it shows the cheap check is foolable in\nthe wild.\n\n**Worked example (analogy, not an AI measurement).** On Linux, `Reviewed-by` was\npresent on 17,047 of 60,176 SHAs that later received a developer-labeled\nbug-introducing commit — the check would have stayed green. Kernel review is an\nanalogy for a correction-channel check-shape, not evidence about a frontier model.\n\nIf the data or unit of analysis is the wrong object, we **refuse** rather than\nstretch the numbers. See [experiment methodology](/cards/concept/experiment-methodology/)\nand the combined ledger at [results](/experiments/findings/backtest/).\n",
+      "cardPath": "/cards/experiment/backtests/",
+      "cardUrl": "https://towards-alignment.com/cards/experiment/backtests/"
     }
   },
   "negativeResultsCardPath": "/cards/concept/negative-results/",
@@ -125,10 +125,10 @@
       "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     },
     {
-      "lineId": "witness",
-      "overviewCardId": "witness-tests",
-      "label": "Witness findings",
-      "path": "experiments/witness/results/FINDINGS.md",
+      "lineId": "backtest",
+      "overviewCardId": "backtests",
+      "label": "Backtest findings",
+      "path": "experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "On the frozen C2 tool-scout mock, Verify+Lens are green on `ciris-occurrence-scout-01`, Wise Authority DEFERs that occurrence at \\(t=4\\), and the tool adapter plus cached memory still produce world effects at \\(t=5,6\\). The channel analog of the intervening loop is `{tool_adapter, cached_memory}`, not the Verify subject. That is a **layer fail** for named-identity (C-003) and WA-as-correction (C-005) on this host. It is the same finite shape as `green_named_path_with_bypass_not_integrity` in `CompositePathBypass.lean`. It does **not** discharge MB1. Expectation 5’s *external* green+failed-uptake pair is **not** paid (authored mock).",
         "Using the frozen published MASK evaluation (Ren et al., arXiv:2503.03750), honesty (statement vs elicited belief under pressure) does **not** improve with scale, while accuracy (belief vs ground truth) does (Spearman honesty vs compute \\(-64.7\\%\\); accuracy \\(+88.2\\%\\); authors confident honesty does not rise, not confident it falls). Phase 0 pre-registered this pattern as **refuse** \\(M\\) as a safety leaf. No \\(\\kappa^*\\) is estimated. Expectation 3 is met by refuse, not by a cost-of-faking bound. A-009 remains unpaid. No new model calls.",
@@ -136,8 +136,8 @@
         "SNAP `wiki-RfA.txt.gz` downloaded and joined via MediaWiki API. All 2012 **passed** RfAs with oppose\\(>0\\) (\\(n=21\\)): 14 later lost sysop, 20 still edited after 2013. That **pays the join** and still **refuses** causal CCI (no zero-oppose control; desysop mixed with inactivity). Orangemoody helper socks “mark reviewed” remains **anti-capture layer fail**. **C-006:** BetacommandBot has a BRFA page, bot flag removed 2008-05-16, later block for abuse — **layer fail**. wiki-socks (23 610 investigations, sock vs matched non-sock contribs) **refuses** SPI as \\(M\\) (no \\(\\kappa^*\\)).",
         "On the frozen Nature 2018 country AMCE table (`CountriesChangePr.csv`, 130 countries), the scalar Number AMCE (“sparing more characters”) can stay close while the other eight AMCE coordinates stay far: **928 / 8 385** pairs have geometry distance at or above the pairwise median (0.193) and \\(|\\Delta\\) Number\\(|\\) at or below the 25th percentile (0.017). Example: Hungary vs Israel, \\(|\\Delta\\) Number\\(|\\) \\(3\\times10^{-5}\\), geometry 0.195. That is a **layer fail** for C-004 non-implication on this host. It does not discharge MB2. Country/page surveys refused in W-7; HH-RLHF optional not run.",
         "Joining MASK Table 3 (arXiv:2503.03750v3) to Chatbot Arena Elo at Hugging Face `mathewhe/chatbot-arena-elo` revision **20250301** with a **pre-frozen** alias list yields \\(n=24\\). Spearman(\\(Elo\\), \\(P(\\mathrm{honest})\\)) \\(= -0.105\\); Spearman(\\(Elo\\), Accuracy) \\(= +0.811\\). That is a **layer fail** for C-007 / Goodhart-as-selector: the public proxy orders capability, not the honesty preservation target. Not W-2 (W-2 used training FLOP, not Arena). No \\(\\kappa^*\\). MB6 open. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).",
-        "After W-5 (country AMCE), the leftover C-004 candidates that use **place or page** as the unit are **refused**: WVS, ESS, Schwartz–MFT country means, Wikipedia categories. They repeat W-5’s unit error. Sibling brain-to-values / LHCV papers are **refused as a Witness host** (no public \\(\\epsilon_i(t)\\), \\(s_h(t)\\)). MASK Table 3 is not reused (W-2). Bai 2022 HH Pareto / PKU-SafeRLHF dual labels were **optional and not run** (no same-row recoverable table fetched this phase). Hub compression, bearer maps, and selectable Goodhart on a real selector remain unpaid. GL-85 stays a method limit.",
-        "`WitnessC2Instance.lean` transcribes the frozen C2 `composite_log` and named-path greens into `FieldFinite.PathAudit`. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Computed `bypassCount = 2`. Named path green + composite bypass ⇒ ¬ `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`). Floats `coherence_level` / `csdma_plausibility_score` and CCI slots not in the JSON are **refused**, not axiomatized. `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count) — no `MB*` / `Safe`. Not live CIRIS. Capture-theater `WorkedInstance` unchanged.",
+        "After W-5 (country AMCE), the leftover C-004 candidates that use **place or page** as the unit are **refused**: WVS, ESS, Schwartz–MFT country means, Wikipedia categories. They repeat W-5’s unit error. Sibling brain-to-values / LHCV papers are **refused as a backtest host** (no public \\(\\epsilon_i(t)\\), \\(s_h(t)\\)). MASK Table 3 is not reused (W-2). Bai 2022 HH Pareto / PKU-SafeRLHF dual labels were **optional and not run** (no same-row recoverable table fetched this phase). Hub compression, bearer maps, and selectable Goodhart on a real selector remain unpaid. GL-85 stays a method limit.",
+        "`BacktestC2Instance.lean` transcribes the frozen C2 `composite_log` and named-path greens into `FieldFinite.PathAudit`. Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Computed `bypassCount = 2`. Named path green + composite bypass ⇒ ¬ `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`). Floats `coherence_level` / `csdma_plausibility_score` and CCI slots not in the JSON are **refused**, not axiomatized. `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count) — no `MB*` / `Safe`. Not live CIRIS. Capture-theater `WorkedInstance` unchanged.",
         "After Lion Air 610, emergency **AD 2018-23-51** (2018-11-07) required AFM runaway-trim procedures; 737-8/737-9 passenger flights continued. The **Emergency Order of Prohibition (2019-03-13)** grounded those types in US commerce. If the Order leaf is ignored, the root (“may operate”) stays the AD-2018 world. Institutional analogue of Expectation 4. Not AI `Safe`; not MB11; does not lift Construct concrete-MS (no deployment leverage on an AI system).",
         "GPLv2 §3 can stay green (source with object) while tivoization keeps the user from installing a modified binary. GPLv3 §6 Installation Information is the later constraint. Same App M narrative, now a Chapter-42-shaped tree. Analogue only; copyright may not transfer to model weights (App M). Not AI `Safe`.",
         "Debian RC bug **#802812** (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Debian 9.0 (2017-06-17) does not ship that stack. Ignoring the RC leaf would have left “package exists / used to ship” as if it licensed the release. Freeze policy is the handle. Analogue only; not AI `Safe`.",
@@ -148,9 +148,9 @@
         "On SCDB 2025 Release 01 justice-centered citation CSV (83 644 rows; **40** included justices; 47 823 / 20 523 train/test after ≥40 votes and ≥8 held-out per justice), held-out mean accuracy is intercept **0.616**, issueArea 1-D **0.623**, geometry **0.814**. Both frozen +0.05 margins **hold** (geometry +0.191 vs 1-D, +0.198 vs intercept). Outcome **layer fail** of issueArea-only as the reusable direction and **pass** of same-unit detection pipeline. Matches registered predictions 1–3 (prediction 2 allowed ambig./null but geometry beat 1-D). Modern SCDB justice votes only; observational — doctrine and coalition confound. **Not** correction-channel CCI (v2). **Not** C-004 moral-bundle discharge. Not LHCV. Not MB2.",
         "On jscmp4/Moltbook **2026-07-03** (3.2M posts, 15.9M comments), frozen Tier A anchors **Hackerclaw** and **thehackerman** (Jiang et al.) both resolve and **join** on `E_agent` reciprocation filters (τ=86400s, specificity=1.25, min_directed_events=2), but **do not merge**. They are **coactive** on 2026-01-31 (shared 60-min bins) while Jan-31 discursive activity is **100% broadcast** (depth-0) with **no** `E_thread` edge — outcome **`structure_stop`** under the frozen broadcast-stop branch (≥0.95), not primary **fail**. Global discursive rows are ~90% depth-0; 400 agent-pair clusters survive filters (535k directed events). Tier B **MBC-20** posts = 1 038 375 (protocol class, structure type 5). Tier C `coalition_node_*` prefix agents = 167. Diagnostic negative-pair merge rate (seed 7, top-100 agents) = **0.0**. No coalition claim keywords in Tier A posts. Matches preregistered predictions 2–5; prediction 1 (merge uncertain) resolves **not merged** but substrate stop blocks fail. **Not** a pass of named-operator coalition recovery on discursive `E_agent`; **not** MB7d severance discharge; **not** full UAD oracle."
       ],
-      "findingsSitePath": "/experiments/findings/witness/",
-      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/witness/",
-      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsSitePath": "/experiments/findings/backtest/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/backtest/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     }
   ],
   "lines": [
@@ -528,602 +528,602 @@
     {
       "order": 10,
       "id": "w-1",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "CIRIS Named-identity mock",
-      "location": "experiments/witness/check_c2_mock.py",
+      "location": "experiments/backtest/check_c2_mock.py",
       "firstBuilt": "2026-08-28",
       "summary": "A CIRIS-shaped scripted mock where the named safety path is green, the authority defers, and tools plus cached memory still change the world. Would that check have stopped what happened next?",
       "role": "**What.** Some stacks certify a *named* occurrence (this message, this agent id)\nand then treat that green as if the whole acting system had stopped. We score a\nfrozen, authored mock: [Verify](https://github.com/CIRISAI/CIRISVerify) and\n[Lens](https://github.com/CIRISAI/CIRISLens) are green, [Wise\nAuthority](https://ciris.ai/how-it-works/) defers, and the tool adapter plus cached\nmemory still produce later world effects.\n\n**Why.** If a deployment gate only watches the named path, a composite loop can\nkeep acting. This test asks whether that failure mode is even *visible* as a stop\nfailure, not whether a live product is aligned. The mock is authored, not a\nproduction [CIRISAgent](https://github.com/CIRISAI/CIRISAgent) run.\n",
-      "witnesses": "- [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): whether a green check on the *named* occurrence is the same as stopping the whole acting loop.\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether deferral on that occurrence stopped later tool and memory effects.\n- [MB4a — Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/): whether green Verify/Lens on the named path rules out bypass through tools and cache.\n",
+      "bridgeHooks": "- [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): whether a green check on the *named* occurrence is the same as stopping the whole acting loop.\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether deferral on that occurrence stopped later tool and memory effects.\n- [MB4a — Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/): whether green Verify/Lens on the named path rules out bypass through tools and cache.\n",
       "host": "Authored CIRIS-shaped mock (not a live [CIRISAgent](https://github.com/CIRISAI/CIRISAgent)).\n",
-      "setup": "Frozen fixture [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json), protocol c2-v1.0.0. Checker [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py). No random seed; the log is scripted.\n",
+      "setup": "Frozen fixture [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json), protocol c2-v1.0.0. Checker [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py). No random seed; the log is scripted.\n",
       "analysis": "We ask whether [Verify](https://github.com/CIRISAI/CIRISVerify) and [Lens](https://github.com/CIRISAI/CIRISLens) stay green on the named occurrence while [Wise Authority](https://ciris.ai/how-it-works/) defers that occurrence, and whether later tool-adapter and cached-memory steps still change the world. The named path is not treated as the whole acting system.\n",
-      "numbers": "Named occurrence `ciris-occurrence-scout-01` (in the [fixture](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json)). [Wise Authority](https://ciris.ai/how-it-works/) defers at step t=4. World effects still occur at t=5 and t=6 (two later effects after the stop attaches to the named path).\n",
+      "numbers": "Named occurrence `ciris-occurrence-scout-01` (in the [fixture](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json)). [Wise Authority](https://ciris.ai/how-it-works/) defers at step t=4. World effects still occur at t=5 and t=6 (two later effects after the stop attaches to the named path).\n",
       "outcome": "Fail: the named path looks stopped; the composite does not. See\n[W-1](/experiments/findings/w-1/).\n",
-      "planPath": "drafts/plans/witness-phase1.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase1.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Named-path green plus deferral did not stop later tool and memory effects on this frozen mock. Authored fixture; not a live-system proof.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase1.md"
         }
       ],
       "cardPath": "/cards/experiment/w-1/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-1/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py",
       "findingsSitePath": "/experiments/findings/w-1/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-1/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 11,
       "id": "w-2",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "MASK honesty as a safety score",
-      "location": "drafts/plans/witness-phase1.md",
+      "location": "drafts/plans/backtest-phase1.md",
       "firstBuilt": "2026-08-28",
       "summary": "Published MASK numbers: honesty under pressure does not rise with scale the way accuracy does. We refuse to treat that honesty gap as a deployment-gating safety score.",
       "role": "**What.** MASK reports how often a model’s statement matches its elicited belief\nunder pressure (honesty) versus whether the belief matches the world (accuracy).\nWe use the frozen published paper, not a new model sweep.\n\n**Why.** A safety program might treat “honesty goes up with scale” as a leaf that\ncan gate deployment. If honesty does not scale, that leaf is the wrong object.\n",
-      "witnesses": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.\n- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.\n- [MB7 — Hidden Capability](/cards/bridge/mb7-hidden-capability-and-access/): whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.\n",
+      "bridgeHooks": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.\n- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.\n- [MB7 — Hidden Capability](/cards/bridge/mb7-hidden-capability-and-access/): whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.\n",
       "host": "Published MASK evaluation (Ren et al., arXiv:2503.03750). Hugging Face gated splits were not downloaded.\n",
       "setup": "Frozen paper snapshot (v1). The decision rule was frozen first: if honesty does not rise with scale, refuse it as a deployment-gating safety score. No new model calls.\n",
       "analysis": "We take the published association of honesty and of accuracy with training compute. Honesty is statement versus elicited belief under pressure; accuracy is belief versus ground truth. We do not estimate a cost of faking.\n",
       "numbers": "Spearman correlation of honesty with compute is −64.7%; of accuracy with compute is +88.2%. The authors are confident honesty does not rise with scale, and not confident it falls. No cost-of-faking bound.\n",
       "outcome": "Refuse: do not use MASK honesty as a safety leaf. Accuracy scaling is not honesty.\nSee [W-2](/experiments/findings/w-2/).\n",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Honesty under pressure does not improve with scale in the published MASK evaluation; accuracy does. Honesty is refused as a safety leaf.\n"
       ],
       "links": [],
       "cardPath": "/cards/experiment/w-2/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-2/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase1.md",
       "findingsSitePath": "/experiments/findings/w-2/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-2/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase1.md",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase1.md",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 12,
       "id": "w-3",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Linux review tags and reverts",
-      "location": "experiments/witness/check_h2.py",
+      "location": "experiments/backtest/check_h2.py",
       "firstBuilt": "2026-08-28",
       "summary": "Kernel git history: “Reviewed-by” on commits later labeled bug-introducing, a revert that did not stop the same class of change, and -stable tags that do not mean the hunk is identical. Checklists can stay green while the harm continues.",
       "role": "**What.** We look at Linux history that already exists: review tags on commits,\na revert and later re-entry of the same title, and listed -stable tags versus actual\npatch hunks.\n\n**Why.** A process can treat “reviewed” or “reverted” as the stop. If those symbols\nstay green while a later bug or a silent hunk change continues, the check did not\nhave a handle that bites.\n",
-      "witnesses": "- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether a revert stopped the same class of change from re-entering.\n- [Successor stability](/cards/concept/successor-stability/) (C-006): whether listed `-stable` tags mean the patch hunk is identical to upstream.\n- [MB10 — Successor Gaming](/cards/bridge/mb10-successor-forgeability/): the checklist-green / unlisted-invariant-fails pattern on real maintainer history.\n",
+      "bridgeHooks": "- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether a revert stopped the same class of change from re-entering.\n- [Successor stability](/cards/concept/successor-stability/) (C-006): whether listed `-stable` tags mean the patch hunk is identical to upstream.\n- [MB10 — Successor Gaming](/cards/bridge/mb10-successor-forgeability/): the checklist-green / unlisted-invariant-fails pattern on real maintainer history.\n",
       "host": "Linux kernel history: Zenodo Perceval dump (record 10654193), git.kernel.org patches, and a linux-6.1.y shallow clone.\n",
-      "setup": "Frozen fixture [h2-linux-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h2-linux-v1.json), protocol h2-v1.2.0. Checker [check_h2.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py). Review tags are joined onto developer-labeled bug-introducing commits; one named revert/re-entry and one -stable versus upstream hunk pair are frozen.\n",
+      "setup": "Frozen fixture [h2-linux-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h2-linux-v1.json), protocol h2-v1.2.0. Checker [check_h2.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h2.py). Review tags are joined onto developer-labeled bug-introducing commits; one named revert/re-entry and one -stable versus upstream hunk pair are frozen.\n",
       "analysis": "Does a Reviewed-by on the same commit as a later-labeled bug-introducing SHA stay green? Did a revert stop the same class of change (same title later re-entering)? Do listed -stable tags mean the patch hunk is identical? Reviewed-by is also refused as a forge-proof safety metric (common on later-labeled bugs; no cost-of-faking bound).\n",
       "numbers": "1,233,421 commits in the streamed Perceval dump. 17,047 of 60,176 developer-labeled bug-introducing SHAs carry Reviewed-by on that same commit. Named revert: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, same title re-entered 2014-03-04 (`2f0aea936360`). -stable `f8a07021679a` versus upstream `42c5ca1f0a28`: listed review/stable tags green; `event_sched_out` is 2-arg versus 3-arg (documented adjustment).\n",
       "outcome": "Fail on those implications; refuse treating Reviewed-by as a forge-proof safety\nmetric. See [W-3](/experiments/findings/w-3/).\n",
-      "planPath": "drafts/plans/witness-phase2.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase2.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Reviewed-by appears on many later-labeled bug-introducing commits; a revert did not stop same-title re-entry; -stable listed tags can hide hunk changes.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase2.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase2.md"
         }
       ],
       "cardPath": "/cards/experiment/w-3/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-3/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h2.py",
       "findingsSitePath": "/experiments/findings/w-3/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-3/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h2.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h2.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 13,
       "id": "w-4",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Wikipedia review, bots, and socks",
-      "location": "experiments/witness/check_h3.py",
+      "location": "experiments/backtest/check_h3.py",
       "firstBuilt": "2026-08-28",
       "summary": "Encyclopedia logs: a bot that passed review and was later blocked, helper socks that mark things reviewed, and vote data that cannot be treated as a causal “correction worked” estimator.",
       "role": "**What.** Wikipedia already records request-for-adminship votes, bot-flag\nreviews, blocks, and sock-puppet investigations. We ask whether those process\nsymbols would have stopped capture or successor abuse.\n\n**Why.** If “reviewed” or “passed RfA” is treated as a correction channel, we need\nto see whether it actually stopped later harm, or only produced a green page.\n",
-      "witnesses": "- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether passed admin votes predict later correction uptake (refused as causal here).\n- [Anti-capture correction validity](/cards/concept/anti-capture-correction-validity/): whether “mark reviewed” on helper socks stopped capture.\n- [Successor stability](/cards/concept/successor-stability/) (C-006): whether bot review completeness implies later bot safety.\n- [Goodhart as selector](/cards/concept/goodhart-as-selector/) (Expectation 6): whether SPI hit-rate is a reusable safety leaf.\n",
+      "bridgeHooks": "- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether passed admin votes predict later correction uptake (refused as causal here).\n- [Anti-capture correction validity](/cards/concept/anti-capture-correction-validity/): whether “mark reviewed” on helper socks stopped capture.\n- [Successor stability](/cards/concept/successor-stability/) (C-006): whether bot review completeness implies later bot safety.\n- [Goodhart as selector](/cards/concept/goodhart-as-selector/) (Expectation 6): whether SPI hit-rate is a reusable safety leaf.\n",
       "host": "Wikipedia: SNAP wiki-RfA file, MediaWiki API, wiki-socks clone, and the Orangemoody long-term-abuse page.\n",
-      "setup": "Frozen fixture [h3-wikipedia-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h3-wikipedia-v1.json), protocol h3-v1.1.0. Checker [check_h3.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h3.py).\n",
+      "setup": "Frozen fixture [h3-wikipedia-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h3-wikipedia-v1.json), protocol h3-v1.1.0. Checker [check_h3.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h3.py).\n",
       "analysis": "Join 2012 passed request-for-adminship votes to later sysop loss and continued editing (a join, not a causal estimator — there is no zero-oppose control). Check Orangemoody helper socks that “mark reviewed.” Check BetacommandBot’s bot-flag review page versus later block. Refuse sock-puppet investigation hit-rate as a safety metric (no cost-of-faking bound).\n",
       "numbers": "All 2012 passed RfAs with at least one oppose vote: n=21; 14 later lost sysop; 20 still edited after 2013. BetacommandBot: bot flag removed 2008-05-16, later block for abuse. wiki-socks: 23,610 investigations.\n",
       "outcome": "Fail on anti-capture and bot-successor completeness; refuse causal claims from RfA\nvotes and SPI hit-rate as a safety metric. See [W-4](/experiments/findings/w-4/).\n",
-      "planPath": "drafts/plans/witness-phase2.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase2.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Orangemoody-style “mark reviewed” remains an anti-capture fail; a reviewed bot was later blocked; RfA votes are refused as a causal correction estimator.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase2.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase2.md"
         }
       ],
       "cardPath": "/cards/experiment/w-4/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-4/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h3.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h3.py",
       "findingsSitePath": "/experiments/findings/w-4/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-4/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h3.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h3.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 14,
       "id": "w-5",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Moral Machine country scores",
-      "location": "experiments/witness/check_h4_bundle.py",
+      "location": "experiments/backtest/check_h4_bundle.py",
       "firstBuilt": "2026-08-28",
       "summary": "Published country-level Moral Machine scores: two countries can look the same on a one-number “spare more people” score while their full tradeoff pattern is far apart. A 1-D score is not the whole value bundle.",
       "role": "**What.** The Nature 2018 Moral Machine table gives each country a handful of\naverage effects, including a one-number “sparing more characters” score. We ask\nwhether that one number implies the rest of the tradeoff pattern.\n\n**Why.** A safety story might compress values to one utilitarian axis. If that\naxis can match while the rest of the pattern diverges, the check is watching\nthe wrong object.\n",
-      "witnesses": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): whether a one-number “spare more” score implies the full country-level tradeoff pattern.\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): whether compressing values to one axis hides bundle geometry on real survey tables.\n",
+      "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): whether a one-number “spare more” score implies the full country-level tradeoff pattern.\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): whether compressing values to one axis hides bundle geometry on real survey tables.\n",
       "host": "Moral Machine Nature 2018 country table (OSF osf.io/3hvt2; Awad et al. 2018). Unit is country, not a person.\n",
-      "setup": "Frozen `CountriesChangePr.csv` (130 countries), fixture [h4-bundle-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-bundle-v1.json), protocol h4-bundle-v1.0.0. Checker [check_h4_bundle.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py).\n",
+      "setup": "Frozen `CountriesChangePr.csv` (130 countries), fixture [h4-bundle-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-bundle-v1.json), protocol h4-bundle-v1.0.0. Checker [check_h4_bundle.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_bundle.py).\n",
       "analysis": "For country pairs, we compare the one-number “sparing more characters” (Number) score to the rest of the tradeoff pattern (the other eight average-effect coordinates). A pair can be close on Number and far on that geometry.\n",
       "numbers": "928 of 8,385 country pairs have geometry distance at or above the pairwise median (0.193) and |Δ Number| at or below the 25th percentile (0.017). Example: Hungary versus Israel, |Δ Number| about 3×10⁻⁵, geometry 0.195.\n",
       "outcome": "Fail: close on the 1-D score, far on geometry, for many country pairs. Country is\nstill the wrong unit for later same-person tests. See\n[W-5](/experiments/findings/w-5/).\n",
-      "planPath": "drafts/plans/witness-phase3.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase3.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Country pairs can match on a one-number “spare more” score while the rest of the Moral Machine tradeoff pattern stays far apart.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase3.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase3.md"
         }
       ],
       "cardPath": "/cards/experiment/w-5/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-5/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_bundle.py",
       "findingsSitePath": "/experiments/findings/w-5/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-5/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_bundle.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_bundle.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 15,
       "id": "w-6",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Arena Elo versus honesty",
-      "location": "experiments/witness/check_h4_selector.py",
+      "location": "experiments/backtest/check_h4_selector.py",
       "firstBuilt": "2026-08-28",
       "summary": "Public Chatbot Arena Elo, joined to MASK honesty: the ranking tracks accuracy, not honesty. Do not read the public proxy as evidence that honesty is being selected.",
       "role": "**What.** Chatbot Arena Elo is a public capability ranking. We join a frozen Elo\nsnapshot to published MASK honesty and accuracy for the models we can match.\n\n**Why.** A selector (who gets deployed, who gets cited) might be treated as if it\npreserved honesty. If it tracks accuracy instead, the proxy is Goodharting the\nwrong target.\n",
-      "witnesses": "- [Goodhart as selector](/cards/concept/goodhart-as-selector/) (C-007): whether a public capability ranking tracks honesty preservation or only accuracy.\n- [MB6 — Selection and Basin Stability](/cards/bridge/mb6-selection-and-basin-stability/): whether the selector (Arena Elo) moves mass toward the honesty target or toward capability.\n",
+      "bridgeHooks": "- [Goodhart as selector](/cards/concept/goodhart-as-selector/) (C-007): whether a public capability ranking tracks honesty preservation or only accuracy.\n- [MB6 — Selection and Basin Stability](/cards/bridge/mb6-selection-and-basin-stability/): whether the selector (Arena Elo) moves mass toward the honesty target or toward capability.\n",
       "host": "MASK Table 3 (arXiv:2503.03750v3) joined to Chatbot Arena Elo at Hugging Face `mathewhe/chatbot-arena-elo`, revision 20250301.\n",
-      "setup": "Pre-frozen alias list [h4-selector-aliases-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-selector-aliases-v1.json), fixture [h4-selector-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-selector-v1.json), protocol h4-selector-v1.0.0. Checker [check_h4_selector.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py). This is not the [MASK honesty](/cards/experiment/w-2/) compute-scale test (that used training FLOP, not Arena).\n",
+      "setup": "Pre-frozen alias list [h4-selector-aliases-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-selector-aliases-v1.json), fixture [h4-selector-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-selector-v1.json), protocol h4-selector-v1.0.0. Checker [check_h4_selector.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_selector.py). This is not the [MASK honesty](/cards/experiment/w-2/) compute-scale test (that used training FLOP, not Arena).\n",
       "analysis": "Spearman rank correlation of Elo with published honesty probability, versus Elo with published accuracy, on the models the frozen aliases can match.\n",
       "numbers": "n=24 matched models. Spearman(Elo, honesty) = −0.105; Spearman(Elo, accuracy) = +0.811. Eight MASK rows had no frozen alias (version mismatch or absent on the pin).\n",
       "outcome": "Fail: Elo correlates with accuracy, not honesty, on this freeze. See\n[W-6](/experiments/findings/w-6/).\n",
-      "planPath": "drafts/plans/witness-phase3.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase3.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Arena Elo tracks MASK accuracy, not honesty, on the frozen join. Do not treat the ranking as honesty selection.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase3.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase3.md"
         }
       ],
       "cardPath": "/cards/experiment/w-6/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-6/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_selector.py",
       "findingsSitePath": "/experiments/findings/w-6/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-6/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_selector.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_selector.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 16,
       "id": "w-7",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Country surveys (refused)",
-      "location": "drafts/plans/witness-phase4.md",
+      "location": "drafts/plans/backtest-phase4.md",
       "firstBuilt": "2026-08-28",
       "summary": "Further country- or page-level value surveys were refused: they repeat the wrong unit (a place, not a person). We do not stretch the question to fit the table.",
       "role": "**What.** After the country-level Moral Machine table, other leftover candidates\nstill use a country, a Wikipedia page, or a paper without public per-person\ntime series as the unit.\n\n**Why.** If the question is “does a one-number score capture this decision-maker’s\nbundle,” a country mean is the wrong object. Fetching more of the same unit does\nnot pay the claim.\n",
-      "witnesses": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): country or page means are the wrong unit for “same decision-maker bundle.”\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): leftover hosts would not pay the same-agent 1-D versus geometry question.\n",
+      "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): country or page means are the wrong unit for “same decision-maker bundle.”\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): leftover hosts would not pay the same-agent 1-D versus geometry question.\n",
       "host": "None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia categories were refused as hosts. Sibling brain-to-values papers were refused as a Witness host (no public per-person time series). Optional HH / PKU tables were not run.\n",
-      "setup": "Protocol `c004-leftovers-v1.0.0` in `drafts/plans/witness-phase4.md`. No new download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).\n",
+      "setup": "Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest-phase4.md`. No new download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).\n",
       "analysis": "Unit check only: a place or a page is not the decision-maker. Fetching more country or page surveys would repeat the [country-score](/cards/experiment/w-5/) unit error.\n",
       "numbers": "No new table scored. Optional Bai 2022 HH Pareto / PKU-SafeRLHF dual-label tables were not fetched this phase.\n",
       "outcome": "Refuse those hosts; optional HH/PKU tables were not run. See\n[W-7](/experiments/findings/w-7/).\n",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Country- and page-level leftover surveys are refused as the wrong unit; they would repeat the [country-score](/cards/experiment/w-5/) unit error.\n"
       ],
       "links": [],
       "cardPath": "/cards/experiment/w-7/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-7/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md",
       "findingsSitePath": "/experiments/findings/w-7/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-7/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 17,
       "id": "w-8",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Lean pin of the named-path bypass",
-      "location": "formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "location": "formal/AlignmentProofSpine/BacktestC2Instance.lean",
       "firstBuilt": "2026-08-28",
       "summary": "The authored mock’s shape is pinned in Lean: the named path can be green while a bypass count stays above zero. That is a logic pin of the [CIRIS named-identity mock](/cards/experiment/w-1/), not a live-system run.",
       "role": "**What.** The [CIRIS named-identity mock](/cards/experiment/w-1/) is a scripted\nfixture. This test asks whether that same finite shape — named path green,\ncomposite still acting — is pinned as a Lean instance, not only as a Python\nfixture.\n\n**Why.** A “we have a proof” story can float away from the fixture. Pinning the\nbypass shape makes the failure mode checkable in the dependency spine.\n",
-      "witnesses": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 2): whether the finite bypass shape is pinned in the dependency spine, not only in Python.\n- [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): named-path green with positive bypass count is not integrity.\n- [`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean) (Lean pin): same authored shape as the [CIRIS named-identity mock](/cards/experiment/w-1/).\n",
+      "bridgeHooks": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 2): whether the finite bypass shape is pinned in the dependency spine, not only in Python.\n- [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): named-path green with positive bypass count is not integrity.\n- [`BacktestC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean) (Lean pin): same authored shape as the [CIRIS named-identity mock](/cards/experiment/w-1/).\n",
       "host": "Same authored mock as the [CIRIS named-identity mock](/cards/experiment/w-1/). Not live CIRIS.\n",
-      "setup": "[`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean) transcribes the frozen C2 composite log and named-path greens from [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json). Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Python checker [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py) still locks the fixture row; `lake build` in `formal/` builds the Lean pin.\n",
+      "setup": "[`BacktestC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean) transcribes the frozen C2 composite log and named-path greens from [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json). Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Python checker [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py) still locks the fixture row; `lake build` in `formal/` builds the Lean pin.\n",
       "analysis": "Count world effects after defer. Named-path green plus a positive bypass count is not integrity. Floats that are not in the JSON (coherence / plausibility scores) are refused, not turned into axioms.\n",
       "numbers": "Computed bypassCount = 2. Lean `#print axioms`: `propext`, `Lean.ofReduceBool`, `Lean.trustCompiler` (native kernel reduction of the count). No MB* / Safe axioms.\n",
       "outcome": "Fail: named path can be green with bypassCount > 0. See\n[W-8](/experiments/findings/w-8/).\n",
-      "planPath": "drafts/plans/witness-phase4.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Lean pins the named-identity-mock shape: the named path can be green while bypass count stays positive. Logic pin, not a live CIRIS run.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md"
         }
       ],
       "cardPath": "/cards/experiment/w-8/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-8/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean",
       "findingsSitePath": "/experiments/findings/w-8/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-8/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 18,
       "id": "w-9",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "FAA 737 MAX airworthiness",
-      "location": "experiments/witness/check_h5_trees.py",
+      "location": "experiments/backtest/check_h5_trees.py",
       "firstBuilt": "2026-08-28",
       "summary": "After Lion Air 610, an emergency AFM procedure did not stop 737-8/9 passenger flights; a later emergency order did. The green leaf was not the stop.",
       "role": "**What.** We read named FAA documents: an airworthiness directive that required\ncockpit procedures, and a later emergency order that grounded the types in US\ncommerce.\n\n**Why.** Institutional analogue: a process can stay “legal to operate” under one\nleaf while a later instrument is the actual stop. Useful as a tree of implication,\nnot as an AI safety proof.\n",
-      "witnesses": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): institutional analogue — one green leaf is not the same as the binding stop.\n- [Institutional histories](/cards/chapters/appM/) (App M): airworthiness-directive versus emergency-order framing on named FAA documents.\n",
+      "bridgeHooks": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): institutional analogue — one green leaf is not the same as the binding stop.\n- [Institutional histories](/cards/chapters/appM/) (App M): airworthiness-directive versus emergency-order framing on named FAA documents.\n",
       "host": "Named FAA documents (not an AI system).\n",
-      "setup": "Frozen tree [h5-faa-737max-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-faa-737max-v1.json), protocol h5-v1.0.0. Checker [check_h5_trees.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py).\n",
+      "setup": "Frozen tree [h5-faa-737max-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-faa-737max-v1.json), protocol h5-v1.0.0. Checker [check_h5_trees.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h5_trees.py).\n",
       "analysis": "After Lion Air 610, does the emergency airworthiness directive that required AFM runaway-trim procedures stop 737-8/737-9 passenger flights, or does only the later emergency order do that? If the order leaf is ignored, the root (“may operate”) stays the earlier world.\n",
       "numbers": "Emergency AD 2018-23-51 dated 2018-11-07; Emergency Order of Prohibition 2019-03-13. Types: 737-8 and 737-9 passenger flights continued under the AD; the Order grounded those types in US commerce.\n",
       "outcome": "Fail if you treat the AFM directive as the stop; the Order is the binding halt.\nAnalogue only. See [W-9](/experiments/findings/w-9/).\n",
-      "planPath": "drafts/plans/witness-phase4.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "AD 2018-23-51 did not stop 737-8/9 passenger flight; the 2019 emergency order did. The procedure leaf was not the halt.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md"
         }
       ],
       "cardPath": "/cards/experiment/w-9/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-9/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h5_trees.py",
       "findingsSitePath": "/experiments/findings/w-9/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-9/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h5_trees.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h5_trees.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 19,
       "id": "w-10",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "GPLv2 source versus install rights",
-      "location": "experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "location": "experiments/backtest/fixtures/h5-gpl-tivoization-v1.json",
       "firstBuilt": "2026-08-28",
       "summary": "GPLv2 can stay green (source with the binary) while the user cannot install a modified binary. GPLv3 later added an install-information handle. A distribution checklist is not the same as a user halt.",
       "role": "**What.** License text that already exists: GPLv2’s source-with-object rule versus\nGPLv3’s installation-information requirement.\n\n**Why.** A distributor can satisfy a listed leaf (ship source) while the user\nstill cannot change the running device. The later clause is the handle.\n",
-      "witnesses": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): distributor checklist green is not user install rights.\n- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): GPLv2 source-with-object can stay green while the user halt is missing.\n",
+      "bridgeHooks": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): distributor checklist green is not user install rights.\n- [Grounding viability](/cards/concept/grounding-viability/) (C-004a): GPLv2 source-with-object can stay green while the user halt is missing.\n",
       "host": "FSF GPLv2 and GPLv3 license texts as a frozen implication tree.\n",
-      "setup": "Frozen tree [h5-gpl-tivoization-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-gpl-tivoization-v1.json), protocol h5-v1.0.0.\n",
+      "setup": "Frozen tree [h5-gpl-tivoization-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-gpl-tivoization-v1.json), protocol h5-v1.0.0.\n",
       "analysis": "Can GPLv2 §3 stay green (source with object) while tivoization keeps the user from installing a modified binary? GPLv3 §6 Installation Information is the later constraint. Copyright analogue; it may not transfer to model weights.\n",
       "numbers": "Two named clauses: GPLv2 §3 (source with object) versus GPLv3 §6 (installation information). No corpus count; this is a document tree, not a sample statistic.\n",
       "outcome": "Fail for treating GPLv2 distribution as user install rights. Copyright analogue;\nmay not transfer to model weights. See [W-10](/experiments/findings/w-10/).\n",
-      "planPath": "drafts/plans/witness-phase4.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "GPLv2 source-with-object can stay green under tivoization; GPLv3 §6 is the later install handle. Analogue only.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md"
         }
       ],
       "cardPath": "/cards/experiment/w-10/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-10/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-gpl-tivoization-v1.json",
       "findingsSitePath": "/experiments/findings/w-10/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-10/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-gpl-tivoization-v1.json",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-gpl-tivoization-v1.json",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 20,
       "id": "w-11",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Debian Stretch freeze",
-      "location": "experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "location": "experiments/backtest/fixtures/h5-debian-rc-v1.json",
       "firstBuilt": "2026-08-28",
       "summary": "A release-critical bug kept gstreamer 0.10 out of Debian 9. The freeze rule actually excluded the package. A process can have a stop that bites.",
       "role": "**What.** Debian’s Stretch release kept a package out because of a named\nrelease-critical bug, documented in the public bug and release notes.\n\n**Why.** Contrast with green-but-no-stop trees: here the freeze rule did exclude\nthe software. Still an institutional analogue, not an AI deployment halt.\n",
-      "witnesses": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): contrast case where a freeze rule actually excluded the package.\n",
+      "bridgeHooks": "- [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): contrast case where a freeze rule actually excluded the package.\n",
       "host": "Debian Bug Tracking System and the Debian 9.0 (Stretch) release.\n",
-      "setup": "Frozen tree [h5-debian-rc-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json), protocol h5-v1.0.0.\n",
+      "setup": "Frozen tree [h5-debian-rc-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-debian-rc-v1.json), protocol h5-v1.0.0.\n",
       "analysis": "Release-critical bug #802812 (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Ignoring that leaf would leave “package exists / used to ship” as if it licensed the release. Freeze policy is the handle.\n",
       "numbers": "Debian 9.0 released 2017-06-17. gstreamer 0.10 is not in that release. Bug #802812 is the named stop.\n",
       "outcome": "The RC bug is a working stop for that package in 9.0. See\n[W-11](/experiments/findings/w-11/).\n",
-      "planPath": "drafts/plans/witness-phase4.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase4.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "RC #802812 kept gstreamer 0.10 out of Debian Stretch. The freeze rule bit. Institutional analogue.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase4.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase4.md"
         }
       ],
       "cardPath": "/cards/experiment/w-11/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-11/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-debian-rc-v1.json",
       "findingsSitePath": "/experiments/findings/w-11/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-11/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h5-debian-rc-v1.json",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-debian-rc-v1.json",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 21,
       "id": "w-12",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Moral Machine same-person choices",
-      "location": "experiments/witness/check_h4_mm_raw.py",
+      "location": "experiments/backtest/check_h4_mm_raw.py",
       "firstBuilt": "2026-08-28",
       "summary": "Individual Moral Machine respondents: a many-feature pattern of their choices predicts held-out choices better than a one-number “spare more people” score. The 1-D score is not the same-person policy.",
       "role": "**What.** Raw Moral Machine choices, one person at a time, not country averages.\nWe fit a simple pattern of feature effects and ask whether it beats a one-number\nscore and a person intercept on held-out choices.\n\n**Why.** [Moral Machine country scores](/cards/experiment/w-5/) showed country\ncompression can hide geometry. This test asks the same question at the unit that\nactually chooses.\n",
-      "witnesses": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): a one-number “spare more” score is not the same-person policy.\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats the 1-D leaf on held-out choices at the person unit.\n",
+      "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): a one-number “spare more” score is not the same-person policy.\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats the 1-D leaf on held-out choices at the person unit.\n",
       "host": "Moral Machine raw SharedResponses on OSF osf.io/3hvt2 (Awad et al. 2018). Unit is UserID, not country.\n",
-      "setup": "Frozen protocol h4-mm-raw-v1.0.0, fixture [h4-mm-raw-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-mm-raw-v1.json). Checker [check_h4_mm_raw.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py). Complete pairs only; units with at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class only.\n",
+      "setup": "Frozen protocol h4-mm-raw-v1.0.0, fixture [h4-mm-raw-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-mm-raw-v1.json). Checker [check_h4_mm_raw.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_mm_raw.py). Complete pairs only; units with at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class only.\n",
       "analysis": "Held-out mean accuracy for a person intercept, a Number-only (“spare more”) score, and a many-feature geometry. Frozen margins: geometry must beat both by at least 0.05. Unit bootstrap (1000 draws, seed 7) for those margins. Number is collinear with the type-count features, so a joint fit of Number versus types is not identified.\n",
       "numbers": "33,953,503 complete pairs; 1,850,854 units with at least 8 pairs; seed-7 cap 20,000 units. Held-out mean accuracy: intercept 0.529, Number 1-D 0.576, geometry 0.682. Geometry beats 1-D by 0.106 and intercept by 0.153. Bootstrap 95% intervals 0.102–0.109 and 0.149–0.157; every replicate still clears 0.05. Geometry without Number matches geometry (0.682).\n",
       "outcome": "Fail of Number-only as the same-person policy; pass of detecting a wider pattern.\nTraffic dilemmas only. See [W-12](/experiments/findings/w-12/).\n",
-      "planPath": "drafts/plans/witness-c004-raw.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-c004-raw.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Same-person Moral Machine geometry predicts held-out choices better than a Number-only score or a person intercept on this freeze.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-raw.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-c004-raw.md"
         }
       ],
       "cardPath": "/cards/experiment/w-12/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-12/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_mm_raw.py",
       "findingsSitePath": "/experiments/findings/w-12/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-12/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_mm_raw.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_mm_raw.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 22,
       "id": "w-13",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Pandemic Dictator Game (refused)",
-      "location": "experiments/witness/check_h4_pdg.py",
+      "location": "experiments/backtest/check_h4_pdg.py",
       "firstBuilt": "2026-08-28",
       "summary": "The advertised public adult table was not there to score. We refused rather than substituting a different dataset or scoring adolescent diary files the protocol does not allow.",
       "role": "**What.** A later-host protocol asked for individual giving choices in a\npandemic dictator game. The public OSF entries were preregistration PDFs; the\navailable SPSS was a 2020 adolescent diary cohort the protocol refuses to score.\n\n**Why.** Substituting Moral Machine or paper means would pretend we had the unit\nwe did not have.\n",
-      "witnesses": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): bearer substitution — refuse when the advertised adult table is not public, do not swap in another dataset.\n",
+      "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): bearer substitution — refuse when the advertised adult table is not public, do not swap in another dataset.\n",
       "host": "Intended pandemic dictator-game host; no eligible adult individual rows scored.\n",
-      "setup": "Frozen protocol h4-pdg-v1.0.0, fixture [h4-pdg-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-pdg-v1.json). Checker [check_h4_pdg.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_pdg.py). OSF osf.io/h5x2a and osf.io/x69t7 are preregistration PDFs. EUR Dataverse DOIs returned 404. Metadata for 10.34894/c81eja lists unrestricted SPSS including an adolescent (ages 10–20) daily-diary file the protocol refuses to score.\n",
+      "setup": "Frozen protocol h4-pdg-v1.0.0, fixture [h4-pdg-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-pdg-v1.json). Checker [check_h4_pdg.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_pdg.py). OSF osf.io/h5x2a and osf.io/x69t7 are preregistration PDFs. EUR Dataverse DOIs returned 404. Metadata for 10.34894/c81eja lists unrestricted SPSS including an adolescent (ages 10–20) daily-diary file the protocol refuses to score.\n",
       "analysis": "Confirm that no eligible public adult table is present. Do not score the 2020 adolescent diary SPSS. Do not substitute Moral Machine or paper means.\n",
       "numbers": "No eligible rows scored. OSF deposits are PDFs only. Listed Dataverse files 404’d. The SPSS that exists is the van de Groep et al. 2020 PLOS ONE cohort ages 10–20, which this protocol does not score.\n",
       "outcome": "Refuse. See [W-13](/experiments/findings/w-13/).\n",
-      "planPath": "drafts/plans/witness-c004-pdg.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-c004-pdg.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "No eligible public adult table; 2020 adolescent SPSS not scored. Refuse, do not substitute another dataset.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-pdg.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-c004-pdg.md"
         }
       ],
       "cardPath": "/cards/experiment/w-13/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-13/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_pdg.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_pdg.py",
       "findingsSitePath": "/experiments/findings/w-13/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-13/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_pdg.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_pdg.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 23,
       "id": "w-14",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "CPC2015 risky choice",
-      "location": "experiments/witness/check_h4_cpc2015.py",
+      "location": "experiments/backtest/check_h4_cpc2015.py",
       "firstBuilt": "2026-08-28",
       "summary": "A published risky-choice experiment: a many-feature pattern did not beat a one-number expected-value score or a person intercept. Recorded as a null; not retuned.",
       "role": "**What.** CPC2015 Experiment 1 is a lab risky-choice dataset with many trials per\nperson. We ask whether a wider feature pattern beats scalar expected-value\ndifference or a person intercept on held-out trials.\n\n**Why.** The same detection pipeline as\n[same-person Moral Machine](/cards/experiment/w-12/), on a different choice class.\nA pass here would not have been a moral-bundle result; a miss is still a result.\n",
-      "witnesses": "- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): same detection pipeline as [same-person Moral Machine](/cards/experiment/w-12/) on a different choice class — recorded null, not retuned.\n",
+      "bridgeHooks": "- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): same detection pipeline as [same-person Moral Machine](/cards/experiment/w-12/) on a different choice class — recorded null, not retuned.\n",
       "host": "Zenodo CPC2015 Experiment 1 (`RawDataExperiment1sorted.csv`; Erev et al. 2017). Unit is SubjID. Risk/ambiguity lab class only — not a moral-bundle result.\n",
-      "setup": "Frozen protocol h4-cpc2015-v1.0.0, fixture [h4-cpc2015-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-cpc2015-v1.json). Checker [check_h4_cpc2015.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py). Subjects need enough trials for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by at least 0.05. Not retuned after the miss.\n",
+      "setup": "Frozen protocol h4-cpc2015-v1.0.0, fixture [h4-cpc2015-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-cpc2015-v1.json). Checker [check_h4_cpc2015.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_cpc2015.py). Subjects need enough trials for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by at least 0.05. Not retuned after the miss.\n",
       "analysis": "Held-out mean accuracy for a person intercept, a one-number expected-value difference (ΔEV), and a many-feature geometry. Same detection pipeline as W-12, different choice class.\n",
       "numbers": "93,750 rows; 113 included subjects; 65,625 / 28,125 train/test. Held-out mean accuracy: intercept 0.545, ΔEV 0.542, geometry 0.435. Geometry versus 1-D −0.107; versus intercept −0.110. Both frozen +0.05 margins fail.\n",
       "outcome": "Null: geometry did not beat ΔEV or intercept. Do not retune to chase a pass. See\n[W-14](/experiments/findings/w-14/).\n",
-      "planPath": "drafts/plans/witness-c004-cpc.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-c004-cpc.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "On CPC2015 Exp. 1, the many-feature pattern did not beat ΔEV or a person intercept. Null; not retuned.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-cpc.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-c004-cpc.md"
         }
       ],
       "cardPath": "/cards/experiment/w-14/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-14/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_cpc2015.py",
       "findingsSitePath": "/experiments/findings/w-14/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-14/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_cpc2015.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_cpc2015.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 24,
       "id": "w-15",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "CIRISAgent mock-LLM deferral",
-      "location": "experiments/witness/check_c2_stack.py",
+      "location": "experiments/backtest/check_c2_stack.py",
       "firstBuilt": "2026-08-28",
       "summary": "A mock-LLM CIRISAgent stack: deferral was logged, and no post-defer world-effect hit was observed on this freeze. That is a null, not a demonstration that deferral stopped a previously working bypass.",
       "role": "**What.** The [CIRIS named-identity mock](/cards/experiment/w-1/) used an authored\nfixture. This test runs a frozen harness against a local\n[CIRISAgent](https://github.com/CIRISAI/CIRISAgent) with a mock LLM and asks\nwhether a world-effect stub still fires after deferral.\n\n**Why.** A stack-backed run is a stronger host than a Python fixture — if it\nactually shows bypass. If it shows nothing after defer, that is not the same as\nproving deferral stopped a live bypass.\n",
-      "witnesses": "- [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): stack-backed run — does deferral stop post-defer world effects in a mock-LLM CIRISAgent harness?\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): logged deferral with zero stub hits is a null, not proof deferral stopped a working bypass.\n- [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): the [CIRIS named-identity mock](/cards/experiment/w-1/) logical shape still holds.\n",
+      "bridgeHooks": "- [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): stack-backed run — does deferral stop post-defer world effects in a mock-LLM CIRISAgent harness?\n- [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): logged deferral with zero stub hits is a null, not proof deferral stopped a working bypass.\n- [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): the [CIRIS named-identity mock](/cards/experiment/w-1/) logical shape still holds.\n",
       "host": "Local CIRISAgent 2.9.38-stable with a mock LLM (`127.0.0.1:8080`). Not a live CIRISLens cohort.\n",
-      "setup": "Frozen protocol c2-v2.0.0, fixture [c2-tool-scout-v2.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v2.json). Checker [check_c2_stack.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_stack.py). Existing API after `/v1/setup/complete`; no wipe. World-effect stub at `127.0.0.1:8765/c2-world-effect`. Verify/Lens greens are asserted, not CIRISLens. First two scout messages shared one task id (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`).\n",
+      "setup": "Frozen protocol c2-v2.0.0, fixture [c2-tool-scout-v2.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v2.json). Checker [check_c2_stack.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_stack.py). Existing API after `/v1/setup/complete`; no wipe. World-effect stub at `127.0.0.1:8765/c2-world-effect`. Verify/Lens greens are asserted, not CIRISLens. First two scout messages shared one task id (task-append coalescing; server was not started with `CIRIS_DISABLE_TASK_APPEND`).\n",
       "analysis": "Log `$defer` with a named-path task id. Count stub hits and composite-log `world_effect: true` after authority time t=4. Do not retune `$tool` strings to chase a stub hit.\n",
       "numbers": "World-effect stub recorded 0 hits. Composite log has no `world_effect: true` after t=4.\n",
       "outcome": "Null: 0 stub hits after defer on this freeze. The CIRIS named-identity mock still\nholds the logical shape. See [W-15](/experiments/findings/w-15/).\n",
-      "planPath": "drafts/plans/witness-phase5.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-phase5.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Mock-LLM CIRISAgent logged deferral; the world-effect stub recorded 0 hits. Null, not a live bypass demonstration.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-phase5.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-phase5.md"
         }
       ],
       "cardPath": "/cards/experiment/w-15/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-15/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_stack.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_stack.py",
       "findingsSitePath": "/experiments/findings/w-15/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-15/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_stack.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_stack.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 25,
       "id": "w-16",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Supreme Court justice votes",
-      "location": "experiments/witness/check_h4_scotus.py",
+      "location": "experiments/backtest/check_h4_scotus.py",
       "firstBuilt": "2026-08-29",
       "summary": "Supreme Court Database justice votes: a many-feature pattern of a justice’s votes predicts held-out votes better than issue-area-only or a justice intercept. Observational; not a claim about correction channels.",
       "role": "**What.** Public Supreme Court Database rows, one justice at a time. We ask\nwhether a wider pattern of case features beats a one-dimension issue-area score\nand a justice intercept on held-out votes.\n\n**Why.** Same “is the 1-D score the reusable direction?” question as\n[same-person Moral Machine](/cards/experiment/w-12/), on votes rather than trolley\ndilemmas. Doctrine and coalitions confound; this is not a moral-bundle\ndischarge.\n",
-      "witnesses": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): same-unit detection — is issue-area-only the reusable vote direction?\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats 1-D on held-out votes; observational, not a correction-channel result.\n",
+      "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): same-unit detection — is issue-area-only the reusable vote direction?\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats 1-D on held-out votes; observational, not a correction-channel result.\n",
       "host": "Supreme Court Database 2025 Release 01, justice-centered citation CSV (Spaeth et al.). Modern SCDB justice votes only.\n",
-      "setup": "Frozen protocol h4-scotus-v1.0.0, fixture [h4-scotus-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h4-scotus-v1.json). Checker [check_h4_scotus.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py). Justices need at least 40 votes and at least 8 held-out votes. Frozen margins: geometry must beat issue-area-only and intercept by at least 0.05. Observational — doctrine and coalition confound. Not a correction-channel result.\n",
+      "setup": "Frozen protocol h4-scotus-v1.0.0, fixture [h4-scotus-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-scotus-v1.json). Checker [check_h4_scotus.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_scotus.py). Justices need at least 40 votes and at least 8 held-out votes. Frozen margins: geometry must beat issue-area-only and intercept by at least 0.05. Observational — doctrine and coalition confound. Not a correction-channel result.\n",
       "analysis": "Held-out mean accuracy for a justice intercept, an issue-area-only score, and a many-feature geometry. Same detection pipeline as same-person Moral Machine, on votes.\n",
       "numbers": "83,644 rows; 40 included justices; 47,823 / 20,523 train/test. Held-out mean accuracy: intercept 0.616, issueArea 1-D 0.623, geometry 0.814. Geometry beats 1-D by 0.191 and intercept by 0.198 (both frozen +0.05 margins hold).\n",
       "outcome": "The wider pattern beats issue-area-only and intercept on this freeze.\nObservational. See [W-16](/experiments/findings/w-16/).\n",
-      "planPath": "drafts/plans/witness-c004-scotus.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-c004-scotus.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Same-justice vote geometry beats issue-area-only and a justice intercept on the frozen SCDB freeze. Observational; not a correction-channel result.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-c004-scotus.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-c004-scotus.md"
         }
       ],
       "cardPath": "/cards/experiment/w-16/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-16/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_scotus.py",
       "findingsSitePath": "/experiments/findings/w-16/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-16/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h4_scotus.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_scotus.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     },
     {
       "order": 26,
       "id": "w-17",
-      "kind": "witness",
+      "kind": "backtest",
       "findingIdPrefix": "W-",
       "title": "Moltbook MB7a entity pinning",
-      "location": "experiments/witness/check_h7_moltbook_mb7a.py",
+      "location": "experiments/backtest/check_h7_moltbook_mb7a.py",
       "firstBuilt": "2026-08-31",
       "summary": "Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins on platform IDs but discursive reciprocation does not merge them; Jan-31 activity is broadcast-only — structure_stop, not coalition pass/fail on E_agent alone.",
       "role": "**What.** Agent-native social network corpus (jscmp4/Moltbook 2026-07-03). Tier A\nanchors from Jiang et al. Test whether discursive reply reciprocation (`E_agent`)\nmerges a documented same-operator pair when coactive.\n\n**Why.** MB7a access-model / entity pinning on deployment-adjacent traces — not\nfull UAD oracle. UAD lessons require edge-layer typing (broadcast vs thread) and\npartial anchors, not naive covert-coalition recovery.\n",
-      "witnesses": "- [MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/): named\n  `author_id` vs inferred multi-account structure; claim vs boundary evidence.\n- [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) neighborhood:\n  structure typing on public agent platform traces.\n",
+      "bridgeHooks": "- [MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/): named\n  `author_id` vs inferred multi-account structure; claim vs boundary evidence.\n- [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) neighborhood:\n  structure typing on public agent platform traces.\n",
       "host": "jscmp4/Moltbook Hugging Face snapshot 2026-07-03 (CC-BY-4.0). 3.2M posts, 15.9M comments. Not live API.\n",
-      "setup": "Frozen protocol h7-moltbook-mb7a-v1.0.0, fixture [h7-moltbook-mb7a-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/h7-moltbook-mb7a-v1.json). Fetch [fetch_h7_moltbook_cache.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fetch_h7_moltbook_cache.py). Collect [collect_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/collect_h7_moltbook_mb7a.py). Checker [check_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py). Edge layers E_broadcast, E_thread, E_agent; τ=86400s, specificity=1.25, min_directed_events=2.\n",
+      "setup": "Frozen protocol h7-moltbook-mb7a-v1.0.0, fixture [h7-moltbook-mb7a-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json). Fetch [fetch_h7_moltbook_cache.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fetch_h7_moltbook_cache.py). Collect [collect_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/collect_h7_moltbook_mb7a.py). Checker [check_h7_moltbook_mb7a.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h7_moltbook_mb7a.py). Edge layers E_broadcast, E_thread, E_agent; τ=86400s, specificity=1.25, min_directed_events=2.\n",
       "analysis": "Tier A join and merge on E_agent; Jan-31 coactivity and broadcast fraction; MBC-20 protocol-class count; coalition_node_* prefix agents; diagnostic negative-pair merge rate (seed 7).\n",
       "numbers": "Tier A joined; merged_e_agent false; coactivity_jan31 true; broadcast_fraction_jan31 1.0; thread_edge_jan31 false. Global broadcast comment fraction ~0.90. 400 E_agent pair clusters after filters. MBC-20 posts 1,038,375; coalition_node_* agents 167. Diagnostic negative merge rate 0.0.\n",
       "outcome": "Structure stop: broadcast-heavy substrate blocks discursive merge test for Tier A;\nnot a pass of coalition recovery on E_agent alone. See [W-17](/experiments/findings/w-17/).\n",
-      "planPath": "drafts/plans/witness-v2-moltbook-mb7a.md",
-      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md",
+      "planPath": "drafts/plans/backtest-v2-moltbook-mb7a.md",
+      "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
         "Documented operator pair coactive but not merged on discursive E_agent; Jan-31 activity 100% broadcast — structure_stop under frozen protocol.\n"
       ],
       "links": [
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/witness-v2-moltbook-mb7a.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/plans/backtest-v2-moltbook-mb7a.md"
         }
       ],
       "cardPath": "/cards/experiment/w-17/",
       "cardUrl": "https://towards-alignment.com/cards/experiment/w-17/",
-      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py",
+      "sourceUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h7_moltbook_mb7a.py",
       "findingsSitePath": "/experiments/findings/w-17/",
       "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/w-17/",
-      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_h7_moltbook_mb7a.py",
+      "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h7_moltbook_mb7a.py",
       "readmeUrl": null,
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md"
     }
   ],
   "howToRead": [
@@ -1183,9 +1183,9 @@
       "lineTitle": "ET-4 Secret loyalties (hackathon)"
     },
     {
-      "lineId": "witness-tests",
-      "text": "Read these as stop-checks on histories we did not write, not as another simulator. Strongest quantitative: [Moral Machine same-person choices](/cards/experiment/w-12/) and [Supreme Court justice votes](/cards/experiment/w-16/). [Linux review tags](/cards/experiment/w-3/) and [Wikipedia review](/cards/experiment/w-4/) show simple checklist implications failing. Does not discharge [bridge assumptions](/cards/bridge/bridge-assumptions/) or prove deployable alignment.\n",
-      "lineTitle": "Witness"
+      "lineId": "backtests",
+      "text": "Safety-check backtests on histories we did not write, not another simulator. Strongest quantitative: [Moral Machine same-person choices](/cards/experiment/w-12/) and [Supreme Court justice votes](/cards/experiment/w-16/). [Linux review tags](/cards/experiment/w-3/) and [Wikipedia review](/cards/experiment/w-4/) show simple checklist implications failing. Does not discharge [bridge assumptions](/cards/bridge/bridge-assumptions/) or prove deployable alignment.\n",
+      "lineTitle": "Backtests"
     }
   ],
   "coverageColumns": [
@@ -1218,9 +1218,9 @@
       "short": "Graded lab sim"
     },
     {
-      "id": "witness",
-      "short": "Witness",
-      "overviewCardId": "witness-tests",
+      "id": "backtest",
+      "short": "Backtests",
+      "overviewCardId": "backtests",
       "optional": true
     }
   ],
@@ -1236,7 +1236,7 @@
         "goal-agent-simulation": "—",
         "lab-simulation": "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)",
         "graded-lab-simulation": "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)",
-        "witness": "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
+        "backtest": "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
       }
     },
     {
@@ -1250,7 +1250,7 @@
         "goal-agent-simulation": "Indirect (welfare deltas in blind reps)",
         "lab-simulation": "Stipulated; report-content ontology",
         "graded-lab-simulation": "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)",
-        "witness": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14); SCDB justice geometry beats issueArea 1-D (W-16)"
+        "backtest": "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14); SCDB justice geometry beats issueArea 1-D (W-16)"
       }
     },
     {
@@ -1277,7 +1277,7 @@
         "goal-agent-simulation": "Emergent (chosen deception, board corrections)",
         "lab-simulation": "Playbooks + access capture + report divergence",
         "graded-lab-simulation": "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)",
-        "witness": "H1 WA deferral bypass (W-1); Lean pin of the same bypass (W-8); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
+        "backtest": "H1 WA deferral bypass (W-1); Lean pin of the same bypass (W-8); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
       }
     },
     {
@@ -1291,7 +1291,7 @@
         "goal-agent-simulation": "—",
         "lab-simulation": "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes LS-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (LS-31)",
         "graded-lab-simulation": "—",
-        "witness": "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
+        "backtest": "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
       }
     },
     {
@@ -1305,7 +1305,7 @@
         "goal-agent-simulation": "—",
         "lab-simulation": "D3.1 population selection (LS-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (LS-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned",
         "graded-lab-simulation": "Phase 8 throughput selection null (GL-23--GL-27); R-MB6a variation null harness pass (GL-81); R-MB6b EAI-gate confirmatory SKIP after growth (GL-84)",
-        "witness": "Arena Elo (20250301) vs MASK honesty: Spearman Elo×honest −0.105, Elo×accuracy +0.811 (W-6)"
+        "backtest": "Arena Elo (20250301) vs MASK honesty: Spearman Elo×honest −0.105, Elo×accuracy +0.811 (W-6)"
       }
     },
     {
@@ -1319,7 +1319,7 @@
         "goal-agent-simulation": "Emergent (shadow route, tool gating)",
         "lab-simulation": "Oracle hidden capability/hazard on models",
         "graded-lab-simulation": "Graded (continuous) oracle capability/hazard/harm state, not pass/fail",
-        "witness": "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
+        "backtest": "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
       }
     },
     {
@@ -1359,7 +1359,7 @@
         "goal-agent-simulation": "—",
         "lab-simulation": "Report vs monitor contradiction surface",
         "graded-lab-simulation": "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)",
-        "witness": "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3); GPLv2 source-offer green, install handle silent until GPLv3 §6 (W-10)"
+        "backtest": "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3); GPLv2 source-offer green, install handle silent until GPLv3 §6 (W-10)"
       }
     },
     {
@@ -1373,7 +1373,7 @@
         "goal-agent-simulation": "Escalation + twin semantics (GA-21)",
         "lab-simulation": "Planned; Phase 8 LLM red-team exploratory (LS-7/LS-8)",
         "graded-lab-simulation": "—",
-        "witness": "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
+        "backtest": "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
       }
     },
     {
@@ -1426,7 +1426,7 @@
         "goal-agent-simulation": "Emergent utility + tools",
         "lab-simulation": "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)",
         "graded-lab-simulation": "Emergent softmax-policy agents; no LLM adapter in scope",
-        "witness": "Host traces (except W-1 authored mock); not a sixth sim"
+        "backtest": "Host traces (except W-1 authored mock); host traces; W-1 authored mock"
       }
     },
     {

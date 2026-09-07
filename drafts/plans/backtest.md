@@ -1,21 +1,21 @@
 # Witness — deployment witness plan
 
-Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md)). **W-16** SCDB justice-centered geometry **pass** (2026-08-29). Phase 5 CIRIS stack C2 **null** W-15 ([`witness-phase5.md`](witness-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`witness-v2.md`](witness-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`witness-phase0.md`](witness-phase0.md) · [`witness-phase1.md`](witness-phase1.md) · [`witness-phase2.md`](witness-phase2.md) · [`witness-phase3.md`](witness-phase3.md) · [`witness-phase4.md`](witness-phase4.md) · [`witness-c004-raw.md`](witness-c004-raw.md) · [`witness-c004-pdg.md`](witness-c004-pdg.md) · [`witness-c004-cpc.md`](witness-c004-cpc.md) · [`witness-c004-scotus.md`](witness-c004-scotus.md) · [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md) · [`witness-phase5.md`](witness-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
+Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)). **W-16** SCDB justice-centered geometry **pass** (2026-08-29). Phase 5 CIRIS stack C2 **null** W-15 ([`backtest-phase5.md`](backtest-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`backtest-v2.md`](backtest-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`backtest-phase0.md`](backtest-phase0.md) · [`backtest-phase1.md`](backtest-phase1.md) · [`backtest-phase2.md`](backtest-phase2.md) · [`backtest-phase3.md`](backtest-phase3.md) · [`backtest-phase4.md`](backtest-phase4.md) · [`backtest-c004-raw.md`](backtest-c004-raw.md) · [`backtest-c004-pdg.md`](backtest-c004-pdg.md) · [`backtest-c004-cpc.md`](backtest-c004-cpc.md) · [`backtest-c004-scotus.md`](backtest-c004-scotus.md) · [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) · [`backtest-phase5.md`](backtest-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
 
-- [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`witness-phase0.md`](witness-phase0.md))
+- [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`backtest-phase0.md`](backtest-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
 - [x] **Phase 2** — H2 Linux (W-3 fail on C-004a/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
 - [x] **Phase 3** — C-004 Moral Machine non-implication (W-5) + C-007 Arena×MASK selector (W-6)
 - [x] **Phase 4** — C-004 leftover refuses (W-7); Lean C2 pin (W-8); three H5 trees (W-9–W-11)
-- [x] **W-12** — Moral Machine raw same-unit geometry vs 1-D ([`witness-c004-raw.md`](witness-c004-raw.md))
-- [x] **W-13** — Pandemic Dictator Game refuse ([`witness-c004-pdg.md`](witness-c004-pdg.md))
-- [x] **W-14** — CPC2015 Exp. 1 geometry vs ΔEV null ([`witness-c004-cpc.md`](witness-c004-cpc.md))
-- [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`witness-phase5.md`](witness-phase5.md))
-- [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`witness-c004-scotus.md`](witness-c004-scotus.md))
-- [x] **W-17** — H7 Moltbook MB7a Tier A structure_stop ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md))
-- [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`witness-phase0.md`](witness-phase0.md) Exp. 3)
+- [x] **W-12** — Moral Machine raw same-unit geometry vs 1-D ([`backtest-c004-raw.md`](backtest-c004-raw.md))
+- [x] **W-13** — Pandemic Dictator Game refuse ([`backtest-c004-pdg.md`](backtest-c004-pdg.md))
+- [x] **W-14** — CPC2015 Exp. 1 geometry vs ΔEV null ([`backtest-c004-cpc.md`](backtest-c004-cpc.md))
+- [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`backtest-phase5.md`](backtest-phase5.md))
+- [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`backtest-c004-scotus.md`](backtest-c004-scotus.md))
+- [x] **W-17** — H7 Moltbook MB7a Tier A structure_stop ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md))
+- [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`backtest-phase0.md`](backtest-phase0.md) Exp. 3)
 - [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
-- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`witness-v2.md`](witness-v2.md); **H7 MB7a scored** W-17 ([`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md)); optional MB6 leaf / ET-5 annex
+- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`backtest-v2.md`](backtest-v2.md); **H7 MB7a scored** W-17 ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)); optional MB6 leaf / ET-5 annex
 
 ## Goal
 
@@ -78,7 +78,7 @@ Sims are weakest (toy stub; graded-lab selectable-Goodhart **null** GL-85). Need
 
 **Met if (paid W-5, wrong unit):** 1-D close while geometry far on **country** AMCE.
 
-**Met if (same-unit, ch16):** repeated counterfactual policy from one decision-maker; frozen geometry predicts held-out choices better than frozen 1-D and intercept. Protocol: [`witness-c004-raw.md`](witness-c004-raw.md) (W-12). LHCV \(L\to H\to C\) is **not** required for this bar.
+**Met if (same-unit, ch16):** repeated counterfactual policy from one decision-maker; frozen geometry predicts held-out choices better than frozen 1-D and intercept. Protocol: [`backtest-c004-raw.md`](backtest-c004-raw.md) (W-12). LHCV \(L\to H\to C\) is **not** required for this bar.
 
 ### C-004a Grounding (MB9)
 
@@ -203,11 +203,11 @@ Four claims are **problem statements**. Witness = independent replication on a h
 
 ### Phase 0 — freeze (**done** 2026-08-28)
 
-Canonical freeze: [`witness-phase0.md`](witness-phase0.md) (charter, pass/fail/refuse table, measurand sheet). Amend that file to reopen. This section is the index, not a second freeze.
+Canonical freeze: [`backtest-phase0.md`](backtest-phase0.md) (charter, pass/fail/refuse table, measurand sheet). Amend that file to reopen. This section is the index, not a second freeze.
 
 ### Phase 1 — highest leverage (**done** 2026-08-28)
 
-Protocol: [`witness-phase1.md`](witness-phase1.md). Ledger: [`experiments/witness/results/FINDINGS.md`](../../experiments/witness/results/FINDINGS.md).
+Protocol: [`backtest-phase1.md`](backtest-phase1.md). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../experiments/backtest/results/FINDINGS.md).
 
 1. **H1 CIRIS C2** — **W-1** layer fail (named green, composite continues). Analog cut ≠ Verify subject (not UAD). Expectation 5 external pair unpaid.
 2. **H4 MASK** — **W-2** refuse \(M\) as safety leaf (published honesty does not improve with scale).
@@ -216,7 +216,7 @@ Protocol: [`witness-phase1.md`](witness-phase1.md). Ledger: [`experiments/witnes
 
 ### Phase 2 — public socio-technical hosts (**richer sources** 2026-08-28)
 
-Protocol: [`witness-phase2.md`](witness-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
+Protocol: [`backtest-phase2.md`](backtest-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
 
 - **H2 Linux** — **W-3**: C-004a **fail** (`Reviewed-by` on 17 047/60 176 BIC SHAs); C-005 **fail** (cpufreq revert then same-title re-entry); C-006 **fail** (adjusted `-stable` `event_sched_out`); `Reviewed-by` as \(M\) refuse.
 - **H3 Wikipedia** — **W-4**: causal RfA **refuse** (API join, no control); Orangemoody anti-capture **fail**; C-006 **fail** (BetacommandBot BRFA→flag/block); SPI as \(M\) refuse (wiki-socks twins, no \(\kappa^*\)).
@@ -225,7 +225,7 @@ Protocol: [`witness-phase2.md`](witness-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
 
 ### Phase 3 — selection + bundle (**done** 2026-08-28)
 
-Protocol: [`witness-phase3.md`](witness-phase3.md) (`h4-bundle-v1.0.0`, `h4-selector-v1.0.0`).
+Protocol: [`backtest-phase3.md`](backtest-phase3.md) (`h4-bundle-v1.0.0`, `h4-selector-v1.0.0`).
 
 - **C-004** — **W-5** layer fail: Moral Machine country AMCE, Number 1-D vs eight-coordinate geometry.
 - **C-007** — **W-6** layer fail: Arena Elo 20250301 × MASK \(P(\mathrm{honest})\) / Accuracy (\(n=24\)).
@@ -234,30 +234,30 @@ Protocol: [`witness-phase3.md`](witness-phase3.md) (`h4-bundle-v1.0.0`, `h4-sele
 
 ### Phase 4 — Lean fixture + historical stops (**done** 2026-08-28)
 
-Protocol: [`witness-phase4.md`](witness-phase4.md) (`c004-leftovers-v1.0.0`, `c2-lean-v1.0.0`, `h5-v1.0.0`).
+Protocol: [`backtest-phase4.md`](backtest-phase4.md) (`c004-leftovers-v1.0.0`, `c2-lean-v1.0.0`, `h5-v1.0.0`).
 
 - **Slice A** — **W-7** refuse WVS/ESS/LHCV-host; optional HH/PKU skip.
-- **Slice B** — **W-8** `WitnessC2Instance.lean` pins C2 JSON; `#print axioms` honest; not `Safe`.
+- **Slice B** — **W-8** `BacktestC2Instance.lean` pins C2 JSON; `#print axioms` honest; not `Safe`.
 - **Slice C** — **W-9** FAA Order 2019-03-13; **W-10** GPLv3 §6; **W-11** Debian RC #802812. Institutional analogue; Construct concrete-MS still gated.
 
 **Exit:** Expectation 2 paid on authored mock; Expectation 4 paid as analogue only.
 
 ### Next — C-004 same-unit MM raw (not a numbered Phase)
 
-Protocol freeze: [`witness-c004-raw.md`](witness-c004-raw.md). Finding **W-12**. Country AMCE stays W-5. CIRIS live stays Phase 5.
+Protocol freeze: [`backtest-c004-raw.md`](backtest-c004-raw.md). Finding **W-12**. Country AMCE stays W-5. CIRIS live stays Phase 5.
 
 ### Phase 5 — CIRISAgent stack C2 (**done** 2026-08-28)
 
-Protocol: [`witness-phase5.md`](witness-phase5.md) (`c2-v2.0.0`). Finding **W-15** **null** (P3: stub hits 0). Lens cohort stays sibling Phase 3.
+Protocol: [`backtest-phase5.md`](backtest-phase5.md) (`c2-v2.0.0`). Finding **W-15** **null** (P3: stub hits 0). Lens cohort stays sibling Phase 3.
 
-**W-13** PDG refuse: [`witness-c004-pdg.md`](witness-c004-pdg.md). **W-14** CPC2015 null: [`witness-c004-cpc.md`](witness-c004-cpc.md). **W-16** SCDB geometry pass: [`witness-c004-scotus.md`](witness-c004-scotus.md). BBQ, HH/PKU, wiki admin remain optional v1 leftovers. **v2** (institutional CCI, unpaid MBs): [`witness-v2.md`](witness-v2.md).
+**W-13** PDG refuse: [`backtest-c004-pdg.md`](backtest-c004-pdg.md). **W-14** CPC2015 null: [`backtest-c004-cpc.md`](backtest-c004-cpc.md). **W-16** SCDB geometry pass: [`backtest-c004-scotus.md`](backtest-c004-scotus.md). BBQ, HH/PKU, wiki admin remain optional v1 leftovers. **v2** (institutional CCI, unpaid MBs): [`backtest-v2.md`](backtest-v2.md).
 
 ---
 
 ## Verification template (every phase)
 
 **Methodology-level failure conditions** (when the Witness program itself fails):
-[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness tests.
+[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Backtests.
 
 Each finding file must include:
 
@@ -298,7 +298,7 @@ Even if all phases hit:
 
 ## Suggested first actions
 
-1. ~~Freeze Phase 0~~ — [`witness-phase0.md`](witness-phase0.md).
+1. ~~Freeze Phase 0~~ — [`backtest-phase0.md`](backtest-phase0.md).
 2. ~~Phase 1 H1 C2 + H4 MASK~~ — W-1 / W-2.
 3. ~~Phase 2 H2 Linux + H3 Wikipedia~~ — W-3 fail / W-4. KernelCI and lore NAK optional later.
 4. ~~Phase 3: H4 leaderboards + Moral Machine~~ — W-5 / W-6.
@@ -307,10 +307,10 @@ Even if all phases hit:
 7. ~~**W-12 Moral Machine raw**~~ — recorded.
 8. ~~**W-13 PDG**~~ — refuse. ~~**W-14 CPC2015**~~ — null.
 9. ~~**W-15 CIRIS stack C2**~~ — null P3. Sibling Phase 3 Lens cohort unpaid.
-10. ~~**SCOTUS**~~ — W-16 recorded ([`witness-c004-scotus.md`](witness-c004-scotus.md)).
+10. ~~**SCOTUS**~~ — W-16 recorded ([`backtest-c004-scotus.md`](backtest-c004-scotus.md)).
 11. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness).
 12. **Independent reproduction** — M8; W-12 and W-3 fixtures first.
-13. **Witness v2** — institutional correction + unpaid MBs ([`witness-v2.md`](witness-v2.md)).
+13. **Witness v2** — institutional correction + unpaid MBs ([`backtest-v2.md`](backtest-v2.md)).
 
 ## Related files
 
@@ -323,16 +323,16 @@ Even if all phases hit:
 | [`chapters/ch42-safety-case.tex`](../../chapters/ch42-safety-case.tex) | Refusal test definition |
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
 | [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
-| [`drafts/plans/witness-phase0.md`](witness-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
-| [`drafts/plans/witness-phase1.md`](witness-phase1.md) | Phase 1 H1/H4 protocol freeze |
-| [`drafts/plans/witness-phase4.md`](witness-phase4.md) | Phase 4 freeze (C-004 leftovers, Lean pin, H5 trees) |
-| [`drafts/plans/witness-c004-raw.md`](witness-c004-raw.md) | C-004 same-unit MM raw freeze (W-12) |
-| [`drafts/plans/witness-c004-pdg.md`](witness-c004-pdg.md) | PDG freeze (W-13 refuse) |
-| [`drafts/plans/witness-c004-cpc.md`](witness-c004-cpc.md) | CPC2015 freeze (W-14 null) |
-| [`drafts/plans/witness-c004-scotus.md`](witness-c004-scotus.md) | SCDB freeze (W-16 geometry pass) |
-| [`drafts/plans/witness-phase5.md`](witness-phase5.md) | CIRIS stack C2 freeze (W-15 null) |
-| [`drafts/plans/witness-next.md`](witness-next.md) | Next tests after Phase 5 (v1 leftovers) |
-| [`drafts/plans/witness-v2.md`](witness-v2.md) | v2 plan: institutional correction + unpaid MBs |
+| [`drafts/plans/backtest-phase0.md`](backtest-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
+| [`drafts/plans/backtest-phase1.md`](backtest-phase1.md) | Phase 1 H1/H4 protocol freeze |
+| [`drafts/plans/backtest-phase4.md`](backtest-phase4.md) | Phase 4 freeze (C-004 leftovers, Lean pin, H5 trees) |
+| [`drafts/plans/backtest-c004-raw.md`](backtest-c004-raw.md) | C-004 same-unit MM raw freeze (W-12) |
+| [`drafts/plans/backtest-c004-pdg.md`](backtest-c004-pdg.md) | PDG freeze (W-13 refuse) |
+| [`drafts/plans/backtest-c004-cpc.md`](backtest-c004-cpc.md) | CPC2015 freeze (W-14 null) |
+| [`drafts/plans/backtest-c004-scotus.md`](backtest-c004-scotus.md) | SCDB freeze (W-16 geometry pass) |
+| [`drafts/plans/backtest-phase5.md`](backtest-phase5.md) | CIRIS stack C2 freeze (W-15 null) |
+| [`drafts/plans/backtest-next.md`](backtest-next.md) | Next tests after Phase 5 (v1 leftovers) |
+| [`drafts/plans/backtest-v2.md`](backtest-v2.md) | v2 plan: institutional correction + unpaid MBs |
 | [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + Witness methodology (M1–M8) |
-| [`experiments/witness/`](../../experiments/witness/) | W- findings, C2 fixture, Eric memo |
+| [`experiments/backtest/`](../../experiments/backtest/) | W- findings, C2 fixture, Eric memo |
 | Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

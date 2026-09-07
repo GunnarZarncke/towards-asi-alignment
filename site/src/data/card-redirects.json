@@ -120,7 +120,6 @@
   "/cards/experiments/w-7/": "/cards/experiment/w-7/",
   "/cards/experiments/w-8/": "/cards/experiment/w-8/",
   "/cards/experiments/w-9/": "/cards/experiment/w-9/",
-  "/cards/experiments/witness-tests/": "/cards/experiment/witness-tests/",
   "/cards/field-agendas/ai-futures-forecasting-cluster/": "/cards/agenda/ai-futures-forecasting-cluster/",
   "/cards/field-agendas/anthropic-lab/": "/cards/agenda/anthropic-lab/",
   "/cards/field-agendas/apart-research/": "/cards/agenda/apart-research/",
@@ -711,8 +710,6 @@
   "/cards/what-not-claiming/": "/cards/objection/what-not-claiming/",
   "/cards/when-the-metric-becomes-the-boss/": "/essay/when-the-metric-becomes-the-boss/",
   "/cards/who-the-rules-still-apply-to/": "/essay/who-the-rules-still-apply-to/",
-  "/cards/experiment/witness/": "/cards/experiment/witness-tests/",
-  "/cards/experiments/witness/": "/cards/experiment/witness-tests/",
   "/full/appb/": "/cards/appendix/appb/",
   "/full/appB/": "/cards/appendix/appb/"
 }

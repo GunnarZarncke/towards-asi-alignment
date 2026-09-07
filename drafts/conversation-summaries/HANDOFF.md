@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-07 (housekeeping: HANDOFF compact, closed-plan stubs, log archive).
+Last updated: 2026-09-07 (backtest rename: Witness → Backtests class name).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-07 (housekeeping: HANDOFF compact, closed-plan stubs, log 
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`voice.md`](../plans/voice.md) · [`witness.md`](../plans/witness.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary in [`voice.md`](../plans/voice.md) §9.
+**Active lanes:** [`voice.md`](../plans/voice.md) · [`backtest.md`](../plans/backtest.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary in [`voice.md`](../plans/voice.md) §9.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,12 +20,13 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-07:** **Witness → Backtest rename** — Third experiment class is **Backtests** (`experiments/backtest/`, `/cards/experiment/backtests/`, `/experiments/findings/backtest/`). YAML `bridgeHooks`; App N + site copy rewritten; no old URL redirects. Log: `2026-09-07-backtest-rename.md`.
 - **2026-09-07:** **Appendix stubs retired + App N readings** — Deleted unused appH–K stubs; print-letter table in `INSTRUCTIONS.md` §14. App N: protocol note + host-trace safety-case readings (W-9, W-3/W-4, W-10, W-11, W-1/W-8). Plan: [`appendix-stubs.md`](../plans/appendix-stubs.md). Log: `2026-09-07-appendix-stubs-appn-readings.md`.
 - **2026-09-07:** **Front-door vocabulary** — Plain English on first-contact surfaces; policy in [`voice.md`](../plans/voice.md) §9. Log: `2026-09-07-front-door-vocab.md`.
 - **2026-09-07:** **Check + Lean required on `main`** — GitHub ruleset requires job names **Check** and **Lean**. Workflows: `check.yml`, `lean.yml`. Logs: `2026-09-07-check-ci.md`, `2026-09-07-lean-ci.md`.
 - **2026-09-07:** **Real v1 bridge graph** — `/field/v1/` now uses the live-MB8 diagram from `c15ad815` (not the 2026-08-17 gravestone copy). Log: `2026-09-07-v1-bridge-graph.md`.
 - **2026-09-07:** **Alignment Attractor Season draft** — Node-tempo audit (not a hub grant); not a site card yet. [`drafts/funding/alignment-attractor-season.md`](../funding/alignment-attractor-season.md). Log: `2026-09-05-attractor-season-draft.md`.
-- **2026-09-05:** **v1.6.0 tagged** — Witness W-1–W-17, problem-axis / four questions / bridge first-use, site product layers. Log: `2026-09-05-v1-6-0-release-notes.md`.
+- **2026-09-05:** **v1.6.0 tagged** — Backtests W-1–W-17, problem-axis / four questions / bridge first-use, site product layers. Log: `2026-09-05-v1-6-0-release-notes.md`.
 - **2026-09-05:** **Audit telemetry draft** — W-17 + sim audit-layer comparison as a v2-facing recording rec (not v1 MS). [`audit-telemetry.md`](../plans/audit-telemetry.md). Log: `2026-09-05-audit-telemetry-draft.md`.
 - **2026-09-05:** **App B ontology-homograph link** — `/full/appB/` was not a route; cards now use `/cards/appendix/appb/#sec:ontology-homographs-appb` plus a `/full/appB/` redirect. Log: `2026-09-05-appb-homograph-link.md`.
 - **2026-09-05:** **Field hub v2 consolidation** — `/field/` redirects to v2; preview-panel hub (coverage, bridge graph, programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps); `field-map-starting-points` card; plain Alignment Target intro; bridge-assumptions table links in Bridge column only. Log: `2026-09-05-field-hub-v2-consolidation.md`.
@@ -54,8 +55,8 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **Reader contract:** six-claims spine Phases 0–6; site `six-thesis-claims` card; `check_claim_spine.py`.
 - **Field hub:** `/field/` → `/field/v2/` + `/field/coverage/`; stance SVG icons; specify/construct instances; MB7a–c cards; agenda merges + Kosoy/Iliad.
 - **Site:** card-notes triage closed; offline PWA v9–v10; translation spine `/lean/`; field news (Black Hat, jailbreak, Anthropic risk report).
-- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct.md`](../plans/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Witness real stop.
-- **Witness / methodology:** W-1–W-16 scored (CIRIS, MM, SCDB, host traces); `docs/METHODOLOGY.md` (M1–M8). W-17 Moltbook **structure_stop** scored 2026-09-01.
+- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct.md`](../plans/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Backtest real stop.
+- **Backtest / methodology:** W-1–W-16 scored (CIRIS, MM, SCDB, host traces); `docs/METHODOLOGY.md` (M1–M8). W-17 Moltbook **structure_stop** scored 2026-09-01.
 - **Problem axis:** layer vs mechanism, four intro questions, `AlignmentRegime` — closed 2026-09-01.
 
 ## This week

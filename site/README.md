@@ -91,7 +91,7 @@ Output: `site/dist/`
 | `scripts/sync-chapter-cards.mjs` | Generates chapter/appendix cards; `overviewOnly` appendices (e.g. `appM`) render as case-study hubs at `/cards/appendix/{id}/` with full synced text at `/cards/appendix/{id}/full/` |
 | `scripts/sync-chapters.mjs` | Syncs chapter/appendix LaTeX to `src/content/book/` via `scripts/lib/tex-convert.mjs`; `\authbar{…}` keys become optional section/subsection heading chips (Notes panel toggle) |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
-| `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` plus `metadata/experiments-witness-tests.yml` (one card per Witness test). Writes three class overview cards plus one card per line, with GitHub source and results URLs. |
+| `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` plus `metadata/experiments-backtests.yml` (one card per Witness test). Writes three class overview cards plus one card per line, with GitHub source and results URLs. |
 | `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |
 | `public/robots.txt` | Crawler rules, sitemap index URL, pointer to `llms.txt` |
 | `public/llms.txt` | Bot / LLM orientation (synced from repo-root `llms.txt` via `sync-bot-orientation.mjs`) |

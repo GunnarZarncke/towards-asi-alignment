@@ -78,7 +78,7 @@ function linkifyExperimentPaths(text) {
 const LINKIFY_LINE_FIELDS = [
   "summary",
   "role",
-  "witnesses",
+  "bridgeHooks",
   "host",
   "setup",
   "analysis",
@@ -213,7 +213,7 @@ function bodyWithoutDuplicateSummary(role, summary) {
 
 function relatedForKind(kind) {
   const overviewId =
-    kind === "external" ? "experiments/external-tests" : kind === "witness" ? "experiments/witness-tests" : "experiments/simulations";
+    kind === "external" ? "experiments/external-tests" : kind === "backtest" ? "experiments/backtests" : "experiments/simulations";
   const related = [overviewId, "experiment-methodology", "negative-results"];
   if (kind === "external") related.push("et-external-transfer");
   return related;
@@ -232,7 +232,7 @@ function experimentCardMarkdown(line, howToReadEntry) {
   const summary = (line.summary ?? firstSentence(line.role)).trim().replace(/\s+/g, " ");
   const bodyParts = [
     bodyWithoutDuplicateSummary(line.role, summary),
-    ...labeledSection("Witnesses", line.witnesses),
+    ...labeledSection("Bridge hooks", line.bridgeHooks),
     ...labeledSection("Host", line.host),
     ...labeledSection("Setup", line.setup),
     ...labeledSection("Analysis", line.analysis)
@@ -302,9 +302,9 @@ function overviewCardMarkdown(kindId, kind, lines) {
 
 const source = await readFile(sourcePath, "utf8");
 const raw = yaml.load(source);
-const witnessTestsPath = path.join(repoRoot, "metadata", "experiments-witness-tests.yml");
-const witnessTests = yaml.load(await readFile(witnessTestsPath, "utf8"));
-raw.lines = [...raw.lines, ...(witnessTests.lines ?? [])];
+const backtestsPath = path.join(repoRoot, "metadata", "experiments-backtests.yml");
+const backtestsYaml = yaml.load(await readFile(backtestsPath, "utf8"));
+raw.lines = [...raw.lines, ...(backtestsYaml.lines ?? [])];
 
 const lines = await Promise.all(
   [...raw.lines]
@@ -343,7 +343,7 @@ const ledgers = await Promise.all(
   }))
 );
 
-const KIND_ORDER = ["sim", "external", "witness"];
+const KIND_ORDER = ["sim", "external", "backtest"];
 
 const kinds = Object.fromEntries(
   KIND_ORDER.map((kindId) => {

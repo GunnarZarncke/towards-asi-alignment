@@ -35,7 +35,7 @@ function labeledBlock(label: string, text?: string) {
 
 /** Body for /experiments/findings/{id}/ — verdict and stats, not experiment setup. */
 export function experimentFindingsBodyMarkdown(line: FindingsDetailLine): string {
-  if (line.kind !== "witness") {
+  if (line.kind !== "backtest") {
     return "";
   }
   return [labeledBlock("Numbers", line.numbers), labeledBlock("Outcome", line.outcome)]

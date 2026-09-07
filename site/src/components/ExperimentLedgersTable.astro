@@ -36,7 +36,7 @@ interface Props {
 const { base, showHeadings = true } = Astro.props;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
-const KIND_ORDER = ["sim", "external", "witness"] as const;
+const KIND_ORDER = ["backtest", "sim", "external"] as const;
 
 function hasResults(line: Line) {
   return (
@@ -53,7 +53,7 @@ function githubUrl(line: Line) {
 
 const kinds = experiments.kinds as Record<(typeof KIND_ORDER)[number], KindMeta>;
 const lines = (experiments.lines as Line[]).filter(hasResults);
-const witnessLedger = (experiments.ledgers as Ledger[]).find((ledger) => ledger.lineId === "witness");
+const backtestLedger = (experiments.ledgers as Ledger[]).find((ledger) => ledger.lineId === "backtest");
 ---
 
 {
@@ -63,7 +63,7 @@ const witnessLedger = (experiments.ledgers as Ledger[]).find((ledger) => ledger.
       <p>
         Each row links to a curated on-site summary. The full terse ledger — including bug
         fixes, superseded runs, and process detail — is on GitHub. External tests share a parent
-        findings file with the lab or graded-lab line that hosted them. Witness tests share one
+        findings file with the lab or graded-lab line that hosted them. Backtests share one
         GitHub file, with a combined on-site page plus one page per test.
       </p>
     </>
@@ -80,13 +80,13 @@ const witnessLedger = (experiments.ledgers as Ledger[]).find((ledger) => ledger.
         <h3>
           <a href={cardHref(base, `experiments/${kind.cardId}`, "experiment")}>{kind.title}</a>
         </h3>
-        {kindId === "witness" && witnessLedger && (
+        {kindId === "backtest" && backtestLedger && (
           <p class="side-panel-meta">
-            Combined Witness ledger:{" "}
-            <a href={withBase(witnessLedger.findingsSitePath)}>key findings</a>
+            Combined backtest ledger:{" "}
+            <a href={withBase(backtestLedger.findingsSitePath)}>key findings</a>
             {" · "}
-            {witnessLedger.repoUrl && (
-              <a href={witnessLedger.repoUrl} target="_blank" rel="noopener noreferrer">
+            {backtestLedger.repoUrl && (
+              <a href={backtestLedger.repoUrl} target="_blank" rel="noopener noreferrer">
                 full ledger on GitHub<LinkIndicator kind="github" />
               </a>
             )}

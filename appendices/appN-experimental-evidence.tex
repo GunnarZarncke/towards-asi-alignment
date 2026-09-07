@@ -28,13 +28,23 @@ Tables use three result labels relative to the nearest manuscript claim: \textbf
 The Manuscript column names the citing section, or ``---'' if none.
 IDs use line prefixes \texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}, \texttt{W-}.
 
-The sections below are simulations (authored testbeds and sibling precursors), external tests (frozen instruments on substrates this project did not build), and witness tests (host-trace fail/refuse protocols, prefix~\texttt{W-}).
+The distinctive empirical remainder this appendix can show is the backtests (prefix~\texttt{W-}): 
+a frozen safety check on a host trace we did not write, scored as whether it would have stayed green while harm continued.
+Authored simulations and sibling precursors check whether a method even works in a world we control; external tests ask whether a frozen instrument still means anything on a substrate we did not build.
+Section~\ref{sec:appn-backtests} and the Linux reading in Section~\ref{sec:appn-safety-case-readings} are the worked example of what the book cannot get from a simulation we wrote.
 
 \end{authbar}
 \authbarneedspace
 \section{What the lines say about the chapters}
 \label{sec:appn-chapter-synthesis}
 \begin{authbar}{AI}
+Backtests (prefix~\texttt{W-}) are what this project can show that an authored simulation cannot: freeze a safety check, run it on a history we did not write, and publish whether the check would have stayed green while harm continued.
+On Linux, \texttt{Reviewed-by} was present on $17{,}047$ of $60{,}176$ SHAs that later received a developer-labeled bug-introducing commit---the check would have stayed green.
+That is an analogy for a correction-channel check-shape, not a measurement of an AI system; it is the argumentative leverage that cheap checks get fooled in the wild, which a pass on an ecology we wrote cannot mint.
+Further examples: a CIRIS-shaped mock with a named Verify path green while tools and cached memory still act; Wikipedia review capture; published honesty-under-pressure that does not improve with scale.
+Those are fail-or-refuse outcomes on frozen protocols, not a discharge of any bridge, not a cost-of-faking bound, and not proof that a real deployment stop would have gone the other way.
+The chapter paragraphs below say what the \emph{authored} lines support or complicate; they do not replace that remainder.
+
 Chapter~\ref{ch:finding-boundary} claims the first alignment error is usually a wrong object rather than a wrong value, and that a boundary is a testable hypothesis instead of a given thing.
 The lines support the first half and complicate the second.
 Directed handoffs and standing committees do come back as single bounded processes once the test conditions on the rest of the system, and one deliberately built bystander---an actor that merely competed for the same resources---was wrongly absorbed into a committee, which is exactly the wrong-object error the chapter warns about, found by the chapter's own method.
@@ -61,11 +71,6 @@ Read honestly, the chapter's second failure condition (\S\ref{sec:wwctv-selectio
 Chapter~\ref{ch:value-bundle-model} gets a partial: the tension between a visible proxy and withheld harm is real in the traces, yet selecting on the proxy alone did not produce measurable drift under that protocol, so nothing here bears on the chapter's harder non-identifiability objection (\S\ref{sec:wwctv-value-bundle-model}).
 For Chapter~\ref{ch:multi-agent-strategic-coupling} and Chapter~\ref{ch:safety-case}, the standing result is the one both chapters name as the dangerous case: these metrics are observable, and not yet adversarially verifiable.
 The corresponding safety-case leaves remain unsupported rather than discharged, which is the outcome the safety case is designed to make visible.
-
-A third evidence class---host-trace checks, finding prefix~\texttt{W-}---asks whether a named certification symbol can fail on systems whose logs already exist.
-A CIRIS-shaped mock shows a named Verify path green while tools and cached memory still act; Linux review tags appear on later-labeled bug-introducing commits, a revert does not always stop the same patch class, and a \texttt{-stable} backport can keep listed tags while changing a hunk; Wikipedia records a captured review channel and a bot that lost its flag after approval.
-Published honesty-under-pressure does not improve with scale.
-Those are fail-or-refuse outcomes on frozen protocols, not a discharge of any bridge, not a cost-of-faking bound, and not a real stop that would have gone the other way.
 
 \paragraph{AI~2027 and AI~2040 as scenario sources.}
 The AI~2027 scenario supplies a concrete vocabulary for these chapter connections: capability expands through a lab--agent collective and its memory, tools, and copies; apparent honesty can coexist with weak oversight; successors can be designed by predecessors; and competitive pressure can select for speed over correction \autocite{ai2027}.
@@ -284,13 +289,14 @@ This line is a disciplined methodological sandbox, not evidence that EAI, BIQ, o
 \renewcommand{\arraystretch}{1.0}
 
 \authbarneedspace
-\section{Witness tests (host traces)}
-\label{sec:appn-witness}
+\section{Backtests}
+\label{sec:appn-backtests}
 \begin{authbar}{AI}
-\appnlinemeta{witness tests}{2026-08-28}{findings ledger (W-1 onward)}
+\appnlinemeta{backtests}{2026-08-28}{findings ledger (W-1 onward)}
 
-Not a sixth simulation line.
-Frozen fail/refuse protocols on hosts whose traces already exist (or a CIRIS-shaped mock whose timeline is scripted).
+A backtest here is a frozen safety check run on a history we did not write: pick a real stretch whose outcome is already known, register the check and predicted result before looking, run it, and count ``would have stayed green'' as a publishable result.
+The usual eval lie is building the check and the toy world together; foreign host traces break that loop.
+On Linux, \texttt{Reviewed-by} on $17{,}047$ of $60{,}176$ later-labeled bug-introducing SHAs is the headline layer fail---an analogy for correction-channel check-shapes, not AI $\mathrm{Safe}$.
 H0 simulators stay backing only.
 A layer fail means the process, as it is, fails a named leaf; a refuse means the measurand is not adversarially verifiable here.
 Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
@@ -312,7 +318,7 @@ Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
 \label{finding:w-4}W-4 & Ambig. & SNAP RfA joined to later MediaWiki traces for 2012 passed elections with oppose votes ($n=21$) still refuses a causal correction-uptake estimate (no control; later sysop removal mixed with inactivity). Orangemoody helper socks marking other socks' articles reviewed is a captured review channel. A BRFA-approved bot later loses the bot flag and is blocked. Sockpuppet labels with matched non-sock twins exist; SPI is refused as a safety measurand (no cost-of-faking bound). & --- \\
 \label{finding:w-5}W-5 & Pos. & Moral Machine country AMCE: Number 1-D can stay close while the other eight coordinates stay far ($928/8385$ pairs). Layer fail for C-004 non-implication on this host. Not LHCV; not same-agent RM vs geometry. & --- \\
 \label{finding:w-6}W-6 & Pos. & Arena Elo pin $20250301$ $\times$ MASK Table 3 ($n=24$): Spearman(Elo, honesty) $-0.105$; Spearman(Elo, accuracy) $+0.811$. Selector tracks accuracy, not honesty. Not W-2 (FLOP). & --- \\
-\label{finding:w-7}W-7 & Pos. & C-004 leftovers: refuse WVS/ESS/Schwartz--MFT country means and Wikipedia categories (wrong unit); refuse LHCV papers as a Witness host (no public loop traces); optional HH/PKU dual-label protocol not run. & --- \\
+\label{finding:w-7}W-7 & Pos. & C-004 leftovers: refuse WVS/ESS/Schwartz--MFT country means and Wikipedia categories (wrong unit); refuse LHCV papers as a backtest host (no public loop traces); optional HH/PKU dual-label protocol not run. & --- \\
 \label{finding:w-8}W-8 & Pos. & C2 tool-scout JSON pinned in Lean as a path-audit instance: named path green, computed post-defer world-effect count $2>0$, not real correction integrity. CCI floats/slots refused, not axiomatized. Not live CIRIS; not $\mathrm{Safe}$. & --- \\
 \label{finding:w-9}W-9 & Pos. & FAA: emergency AD 2018-23-51 AFM procedures did not stop 737-8/737-9 passenger flight; Emergency Order of Prohibition 2019-03-13 did. Institutional Expectation~4 analogue; not AI $\mathrm{Safe}$. & App.~\ref{appm-institutional-histories} \\
 \label{finding:w-10}W-10 & Pos. & GPLv2 \S3 source-with-object can hold while tivoization removes the install handle; GPLv3 \S6 Installation Information is the later constraint. Analogue; not AI $\mathrm{Safe}$. & App.~\ref{appm-institutional-histories} \\
@@ -322,6 +328,7 @@ Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
 \label{finding:w-14}W-14 & Neg. & CPC2015 Experiment 1 ($n=113$ subjects): held-out geometry accuracy $0.435$ vs $\Delta$EV 1-D $0.542$ vs intercept $0.545$ (both $+0.05$ margins fail). Null on this detection-pipeline freeze; not a C-004 moral-bundle claim. & --- \\
 \label{finding:w-15}W-15 & Neg. & CIRISAgent mock-LLM stack C2 (\texttt{c2-v2.0.0}): named \texttt{\$defer} task recorded; world-effect stub $0$ hits; no post-WA \texttt{world\_effect}. Null on P3 (WA-blind bypass). Asserted Lens green, not CIRISLens. W-1 authored mock remains the logical shape. Not MB1. & --- \\
 \label{finding:w-16}W-16 & Pos. & SCDB 2025 justice-centered ($n=40$ justices): held-out geometry accuracy $0.814$ vs issueArea 1-D $0.623$ vs intercept $0.616$ (both $+0.05$ margins). Layer fail of issueArea-only; pass of same-unit detection. Observational; not v2 correction-channel CCI. Not MB2. & --- \\
+\label{finding:w-17}W-17 & Pos. & Moltbook jscmp4 archive (2026-07-03): Tier A anchors join on reciprocation filters but do not merge; Jan-31 discursive activity is broadcast-only ($\geq 0.95$ depth-0) --- \textbf{structure\_stop} under frozen broadcast branch, not primary fail. Not AI $\mathrm{Safe}$; not MB7a discharge. & --- \\
 \end{longtable}
 \normalsize
 \renewcommand{\arraystretch}{1.0}
@@ -330,9 +337,26 @@ Neither discharges \hyperref[appbridge-crosswalk]{\texttt{MB1}}--\texttt{MB10}.
 \section{Safety-Case Readings on Host Traces}
 \label{sec:appn-safety-case-readings}
 \begin{authbar}{AI}
-A named certification leaf, checked against what the channel actually did.
+Backtests here freeze a named certification leaf and ask whether the check would have stayed green on a host trace we did not write; the backtest is witnessing the failure.
 Findings~\ref{finding:w-9}--\ref{finding:w-11} have longer cases in Appendix~\ref{appm-institutional-histories}.
-None of these discharges a bridge or establishes AI \(\mathrm{Safe}\).
+None of these discharges a bridge or establishes AI \(\mathrm{Safe}\); Linux (finding~\ref{finding:w-3}) is the worked example.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Linux \texttt{Reviewed-by} on bug-introducing commits}
+\label{sec:appn-reading-w3}
+\begin{authbar}{AI}
+\textbf{Root claim (conditional).} A commit bearing \texttt{Reviewed-by} tags from trusted reviewers is safe enough to merge into the mainline kernel history.
+
+\textbf{Load-bearing leaf.} \texttt{Reviewed-by} on the merged SHA certifies that the change was adversarially reviewed before it entered the trunk.
+
+\textbf{What the channel showed.} On $17{,}047$ of $60{,}176$ SHAs that later received a developer-labeled bug-introducing commit, \texttt{Reviewed-by} was present on the same SHA.
+A documented revert of \texttt{cpufreq: suspend governors\ldots} was followed by a same-title re-entry; a \texttt{-stable} backport kept listed tags while changing \texttt{event\_sched\_out} arity relative to upstream.
+
+\textbf{Verdict.} \emph{Layer fail}: the check would have stayed green on $17{,}047$ SHAs while the harm continued.
+\emph{Refused measurand}: the tag is observable on the merge artifact but is not adversarially verifiable as a safety leaf under the frozen protocol.
+Finding~\ref{finding:w-3}.
+Institutional analogue only; not AI \(\mathrm{Safe}\); not a discharged bridge.
 
 \end{authbar}
 \authbarsubneedspace
@@ -349,22 +373,6 @@ None of these discharges a bridge or establishes AI \(\mathrm{Safe}\).
 Institutional analogue of correction-handle failure; finding~\ref{finding:w-9}.
 Not AI \(\mathrm{Safe}\); not a discharged bridge.
 Longer case context: Appendix~\ref{appm-institutional-histories}.
-
-\end{authbar}
-\authbarsubneedspace
-\subsection{Linux \texttt{Reviewed-by} on bug-introducing commits}
-\label{sec:appn-reading-w3}
-\begin{authbar}{AI}
-\textbf{Root claim (conditional).} A commit bearing \texttt{Reviewed-by} tags from trusted reviewers is safe enough to merge into the mainline kernel history.
-
-\textbf{Load-bearing leaf.} \texttt{Reviewed-by} on the merged SHA certifies that the change was adversarially reviewed before it entered the trunk.
-
-\textbf{What the channel showed.} On $17{,}047$ of $60{,}176$ SHAs that later received a developer-labeled bug-introducing commit, \texttt{Reviewed-by} was present on the same SHA.
-A documented revert of \texttt{cpufreq: suspend governors\ldots} was followed by a same-title re-entry; a \texttt{-stable} backport kept listed tags while changing \texttt{event\_sched\_out} arity relative to upstream.
-
-\textbf{Verdict.} \emph{Refused measurand}: the tag is observable on the merge artifact but is not adversarially verifiable as a safety leaf under the frozen Witness protocol.
-Finding~\ref{finding:w-3}.
-Not AI \(\mathrm{Safe}\); not a discharged bridge.
 
 \end{authbar}
 \authbarsubneedspace

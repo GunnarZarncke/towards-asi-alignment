@@ -1,16 +1,16 @@
 # Witness — C-004 later host: CPC2015 raw (held-out latent direction)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). After [`witness-c004-pdg.md`](witness-c004-pdg.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). After [`backtest-c004-pdg.md`](backtest-c004-pdg.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **same-unit detection-pipeline** check on repeated risky choice (not a moral bundle). Does **not** discharge MB2. Does **not** transfer W-12.
 
-**Finding ID:** **W-14**. Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-14**. Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
 ## Why this
 
-[`witness-c004-raw.md`](witness-c004-raw.md) lists CPC2015/CPC18 as the method check after dictator games: `SubjID`, repeated gambles, held-out latent direction. Public CSV on Zenodo.
+[`backtest-c004-raw.md`](backtest-c004-raw.md) lists CPC2015/CPC18 as the method check after dictator games: `SubjID`, repeated gambles, held-out latent direction. Public CSV on Zenodo.
 
 ---
 
@@ -79,4 +79,4 @@ Written 2026-08-28. Do not edit to match scores.
 
 ## Checker
 
-`python3 experiments/witness/check_h4_cpc2015.py`. Cache gitignored under `experiments/witness/data/cpc2015/`.
+`python3 experiments/backtest/check_h4_cpc2015.py`. Cache gitignored under `experiments/backtest/data/cpc2015/`.

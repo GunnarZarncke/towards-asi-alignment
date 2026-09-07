@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "fixtures" / "h4-pdg-v1.json"
 PROTOCOL = "h4-pdg-v1.0.0"
-UA = {"User-Agent": "towards-asi-alignment-witness/1.0"}
+UA = {"User-Agent": "towards-asi-alignment-backtest/1.0"}
 
 OSF_NODES = ("h5x2a", "x69t7")
 # Source 2 metadata only (do not download microdata in this collector).

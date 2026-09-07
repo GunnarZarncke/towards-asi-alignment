@@ -1,17 +1,16 @@
-# Per-test Witness cards (kind: witness). Merged into experiments.yml by
-# site/scripts/sync-experiments.mjs. Shared code still lives under experiments/witness/
-# (kernel clone, OSF dumps, and fixtures are too large to split per test yet).
+# Per-test backtest cards (kind: backtest). Merged into experiments.yml by
+# site/scripts/sync-experiments.mjs. Shared code lives under experiments/backtest/.
 #
-# Card body order: What / Why (role), Witnesses, Host, Setup, Analysis, one-line Finding.
+# Card body order: What / Why (role), Bridge hooks, Host, Setup, Analysis, one-line Finding.
 # Numbers and Outcome render on /experiments/findings/{id}/ only.
 
 lines:
   - order: 10
     id: w-1
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: CIRIS Named-identity mock
-    location: experiments/witness/check_c2_mock.py
+    location: experiments/backtest/check_c2_mock.py
     firstBuilt: "2026-08-28"
     summary: >
       A CIRIS-shaped scripted mock where the named safety path is green, the authority
@@ -29,7 +28,7 @@ lines:
       keep acting. This test asks whether that failure mode is even *visible* as a stop
       failure, not whether a live product is aligned. The mock is authored, not a
       production [CIRISAgent](https://github.com/CIRISAI/CIRISAgent) run.
-    witnesses: |
+    bridgeHooks: |
       - [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): whether a green check on the *named* occurrence is the same as stopping the whole acting loop.
       - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether deferral on that occurrence stopped later tool and memory effects.
       - [MB4a — Audit Independence](/cards/bridge/mb4a-measured-path-legitimacy/): whether green Verify/Lens on the named path rules out bypass through tools and cache.
@@ -38,9 +37,9 @@ lines:
       [CIRISAgent](https://github.com/CIRISAI/CIRISAgent)).
     setup: >
       Frozen fixture
-      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json),
+      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json),
       protocol c2-v1.0.0. Checker
-      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py).
+      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py).
       No random seed; the log is scripted.
     analysis: >
       We ask whether [Verify](https://github.com/CIRISAI/CIRISVerify) and
@@ -50,15 +49,15 @@ lines:
       named path is not treated as the whole acting system.
     numbers: >
       Named occurrence `ciris-occurrence-scout-01` (in the
-      [fixture](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json)).
+      [fixture](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json)).
       [Wise Authority](https://ciris.ai/how-it-works/) defers at step t=4. World effects
       still occur at t=5 and t=6 (two later effects after the stop attaches to the named
       path).
     outcome: |
       Fail: the named path looks stopped; the composite does not. See
       [W-1](/experiments/findings/w-1/).
-    planPath: drafts/plans/witness-phase1.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase1.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Named-path green plus deferral did not stop later tool and memory effects on this
@@ -66,10 +65,10 @@ lines:
 
   - order: 11
     id: w-2
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: MASK honesty as a safety score
-    location: drafts/plans/witness-phase1.md
+    location: drafts/plans/backtest-phase1.md
     firstBuilt: "2026-08-28"
     summary: >
       Published MASK numbers: honesty under pressure does not rise with scale the way
@@ -81,7 +80,7 @@ lines:
 
       **Why.** A safety program might treat “honesty goes up with scale” as a leaf that
       can gate deployment. If honesty does not scale, that leaf is the wrong object.
-    witnesses: |
+    bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.
       - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.
       - [MB7 — Hidden Capability](/cards/bridge/mb7-hidden-capability-and-access/): whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.
@@ -103,7 +102,7 @@ lines:
     outcome: |
       Refuse: do not use MASK honesty as a safety leaf. Accuracy scaling is not honesty.
       See [W-2](/experiments/findings/w-2/).
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Honesty under pressure does not improve with scale in the published MASK
@@ -111,10 +110,10 @@ lines:
 
   - order: 12
     id: w-3
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Linux review tags and reverts
-    location: experiments/witness/check_h2.py
+    location: experiments/backtest/check_h2.py
     firstBuilt: "2026-08-28"
     summary: >
       Kernel git history: “Reviewed-by” on commits later labeled bug-introducing, a revert
@@ -128,7 +127,7 @@ lines:
       **Why.** A process can treat “reviewed” or “reverted” as the stop. If those symbols
       stay green while a later bug or a silent hunk change continues, the check did not
       have a handle that bites.
-    witnesses: |
+    bridgeHooks: |
       - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.
       - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether a revert stopped the same class of change from re-entering.
       - [Successor stability](/cards/concept/successor-stability/) (C-006): whether listed `-stable` tags mean the patch hunk is identical to upstream.
@@ -137,8 +136,8 @@ lines:
       Linux kernel history: Zenodo Perceval dump (record 10654193), git.kernel.org
       patches, and a linux-6.1.y shallow clone.
     setup: >
-      Frozen fixture `experiments/witness/fixtures/h2-linux-v1.json`, protocol h2-v1.2.0.
-      Checker `python3 experiments/witness/check_h2.py`. Review tags are joined onto
+      Frozen fixture `experiments/backtest/fixtures/h2-linux-v1.json`, protocol h2-v1.2.0.
+      Checker `python3 experiments/backtest/check_h2.py`. Review tags are joined onto
       developer-labeled bug-introducing commits; one named revert/re-entry and one
       -stable versus upstream hunk pair are frozen.
     analysis: >
@@ -157,8 +156,8 @@ lines:
     outcome: |
       Fail on those implications; refuse treating Reviewed-by as a forge-proof safety
       metric. See [W-3](/experiments/findings/w-3/).
-    planPath: drafts/plans/witness-phase2.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase2.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Reviewed-by appears on many later-labeled bug-introducing commits; a revert did
@@ -166,10 +165,10 @@ lines:
 
   - order: 13
     id: w-4
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Wikipedia review, bots, and socks
-    location: experiments/witness/check_h3.py
+    location: experiments/backtest/check_h3.py
     firstBuilt: "2026-08-28"
     summary: >
       Encyclopedia logs: a bot that passed review and was later blocked, helper socks
@@ -182,7 +181,7 @@ lines:
 
       **Why.** If “reviewed” or “passed RfA” is treated as a correction channel, we need
       to see whether it actually stopped later harm, or only produced a green page.
-    witnesses: |
+    bridgeHooks: |
       - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether passed admin votes predict later correction uptake (refused as causal here).
       - [Anti-capture correction validity](/cards/concept/anti-capture-correction-validity/): whether “mark reviewed” on helper socks stopped capture.
       - [Successor stability](/cards/concept/successor-stability/) (C-006): whether bot review completeness implies later bot safety.
@@ -191,8 +190,8 @@ lines:
       Wikipedia: SNAP wiki-RfA file, MediaWiki API, wiki-socks clone, and the
       Orangemoody long-term-abuse page.
     setup: >
-      Frozen fixture `experiments/witness/fixtures/h3-wikipedia-v1.json`, protocol
-      h3-v1.1.0. Checker `python3 experiments/witness/check_h3.py`.
+      Frozen fixture `experiments/backtest/fixtures/h3-wikipedia-v1.json`, protocol
+      h3-v1.1.0. Checker `python3 experiments/backtest/check_h3.py`.
     analysis: >
       Join 2012 passed request-for-adminship votes to later sysop loss and continued
       editing (a join, not a causal estimator — there is no zero-oppose control). Check
@@ -206,8 +205,8 @@ lines:
     outcome: |
       Fail on anti-capture and bot-successor completeness; refuse causal claims from RfA
       votes and SPI hit-rate as a safety metric. See [W-4](/experiments/findings/w-4/).
-    planPath: drafts/plans/witness-phase2.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase2.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Orangemoody-style “mark reviewed” remains an anti-capture fail; a reviewed bot
@@ -215,10 +214,10 @@ lines:
 
   - order: 14
     id: w-5
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Moral Machine country scores
-    location: experiments/witness/check_h4_bundle.py
+    location: experiments/backtest/check_h4_bundle.py
     firstBuilt: "2026-08-28"
     summary: >
       Published country-level Moral Machine scores: two countries can look the same on
@@ -232,7 +231,7 @@ lines:
       **Why.** A safety story might compress values to one utilitarian axis. If that
       axis can match while the rest of the pattern diverges, the check is watching
       the wrong object.
-    witnesses: |
+    bridgeHooks: |
       - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): whether a one-number “spare more” score implies the full country-level tradeoff pattern.
       - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): whether compressing values to one axis hides bundle geometry on real survey tables.
     host: >
@@ -240,8 +239,8 @@ lines:
       Unit is country, not a person.
     setup: >
       Frozen `CountriesChangePr.csv` (130 countries), fixture
-      `experiments/witness/fixtures/h4-bundle-v1.json`, protocol h4-bundle-v1.0.0.
-      Checker `python3 experiments/witness/check_h4_bundle.py`.
+      `experiments/backtest/fixtures/h4-bundle-v1.json`, protocol h4-bundle-v1.0.0.
+      Checker `python3 experiments/backtest/check_h4_bundle.py`.
     analysis: >
       For country pairs, we compare the one-number “sparing more characters” (Number)
       score to the rest of the tradeoff pattern (the other eight average-effect
@@ -254,8 +253,8 @@ lines:
       Fail: close on the 1-D score, far on geometry, for many country pairs. Country is
       still the wrong unit for later same-person tests. See
       [W-5](/experiments/findings/w-5/).
-    planPath: drafts/plans/witness-phase3.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase3.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Country pairs can match on a one-number “spare more” score while the rest of the
@@ -263,10 +262,10 @@ lines:
 
   - order: 15
     id: w-6
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Arena Elo versus honesty
-    location: experiments/witness/check_h4_selector.py
+    location: experiments/backtest/check_h4_selector.py
     firstBuilt: "2026-08-28"
     summary: >
       Public Chatbot Arena Elo, joined to MASK honesty: the ranking tracks accuracy, not
@@ -278,16 +277,16 @@ lines:
       **Why.** A selector (who gets deployed, who gets cited) might be treated as if it
       preserved honesty. If it tracks accuracy instead, the proxy is Goodharting the
       wrong target.
-    witnesses: |
+    bridgeHooks: |
       - [Goodhart as selector](/cards/concept/goodhart-as-selector/) (C-007): whether a public capability ranking tracks honesty preservation or only accuracy.
       - [MB6 — Selection and Basin Stability](/cards/bridge/mb6-selection-and-basin-stability/): whether the selector (Arena Elo) moves mass toward the honesty target or toward capability.
     host: >
       MASK Table 3 (arXiv:2503.03750v3) joined to Chatbot Arena Elo at Hugging Face
       `mathewhe/chatbot-arena-elo`, revision 20250301.
     setup: >
-      Pre-frozen alias list `experiments/witness/fixtures/h4-selector-aliases-v1.json`,
-      fixture `experiments/witness/fixtures/h4-selector-v1.json`, protocol h4-selector-v1.0.0. Checker
-      `python3 experiments/witness/check_h4_selector.py`. This is not the
+      Pre-frozen alias list `experiments/backtest/fixtures/h4-selector-aliases-v1.json`,
+      fixture `experiments/backtest/fixtures/h4-selector-v1.json`, protocol h4-selector-v1.0.0. Checker
+      `python3 experiments/backtest/check_h4_selector.py`. This is not the
       [MASK honesty](/cards/experiment/w-2/) compute-scale test (that used training
       FLOP, not Arena).
     analysis: >
@@ -299,8 +298,8 @@ lines:
     outcome: |
       Fail: Elo correlates with accuracy, not honesty, on this freeze. See
       [W-6](/experiments/findings/w-6/).
-    planPath: drafts/plans/witness-phase3.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase3.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Arena Elo tracks MASK accuracy, not honesty, on the frozen join. Do not treat
@@ -308,10 +307,10 @@ lines:
 
   - order: 16
     id: w-7
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Country surveys (refused)
-    location: drafts/plans/witness-phase4.md
+    location: drafts/plans/backtest-phase4.md
     firstBuilt: "2026-08-28"
     summary: >
       Further country- or page-level value surveys were refused: they repeat the wrong
@@ -324,7 +323,7 @@ lines:
       **Why.** If the question is “does a one-number score capture this decision-maker’s
       bundle,” a country mean is the wrong object. Fetching more of the same unit does
       not pay the claim.
-    witnesses: |
+    bridgeHooks: |
       - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): country or page means are the wrong unit for “same decision-maker bundle.”
       - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): leftover hosts would not pay the same-agent 1-D versus geometry question.
     host: >
@@ -333,7 +332,7 @@ lines:
       a Witness host (no public per-person time series). Optional HH / PKU tables
       were not run.
     setup: >
-      Protocol `c004-leftovers-v1.0.0` in `drafts/plans/witness-phase4.md`. No new
+      Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest-phase4.md`. No new
       download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).
     analysis: >
       Unit check only: a place or a page is not the decision-maker. Fetching more
@@ -345,7 +344,7 @@ lines:
     outcome: |
       Refuse those hosts; optional HH/PKU tables were not run. See
       [W-7](/experiments/findings/w-7/).
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Country- and page-level leftover surveys are refused as the wrong unit; they
@@ -353,10 +352,10 @@ lines:
 
   - order: 17
     id: w-8
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Lean pin of the named-path bypass
-    location: formal/AlignmentProofSpine/WitnessC2Instance.lean
+    location: formal/AlignmentProofSpine/BacktestC2Instance.lean
     firstBuilt: "2026-08-28"
     summary: >
       The authored mock’s shape is pinned in Lean: the named path can be green while
@@ -370,19 +369,19 @@ lines:
 
       **Why.** A “we have a proof” story can float away from the fixture. Pinning the
       bypass shape makes the failure mode checkable in the dependency spine.
-    witnesses: |
+    bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 2): whether the finite bypass shape is pinned in the dependency spine, not only in Python.
       - [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): named-path green with positive bypass count is not integrity.
-      - [`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean) (Lean pin): same authored shape as the [CIRIS named-identity mock](/cards/experiment/w-1/).
+      - [`BacktestC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean) (Lean pin): same authored shape as the [CIRIS named-identity mock](/cards/experiment/w-1/).
     host: >
       Same authored mock as the [CIRIS named-identity mock](/cards/experiment/w-1/). Not
       live CIRIS.
     setup: >
-      [`WitnessC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/WitnessC2Instance.lean)
+      [`BacktestC2Instance.lean`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/BacktestC2Instance.lean)
       transcribes the frozen C2 composite log and named-path greens from
-      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/fixtures/c2-tool-scout-v1.json).
+      [`c2-tool-scout-v1.json`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/c2-tool-scout-v1.json).
       Threshold `maxWorldEffectsAfterDefer = 0` is fixed first. Python checker
-      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/check_c2_mock.py)
+      [`check_c2_mock.py`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_c2_mock.py)
       still locks the fixture row; `lake build` in `formal/` builds the Lean pin.
     analysis: >
       Count world effects after defer. Named-path green plus a positive bypass count is
@@ -394,8 +393,8 @@ lines:
     outcome: |
       Fail: named path can be green with bypassCount > 0. See
       [W-8](/experiments/findings/w-8/).
-    planPath: drafts/plans/witness-phase4.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase4.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Lean pins the named-identity-mock shape: the named path can be green while bypass count stays
@@ -403,10 +402,10 @@ lines:
 
   - order: 18
     id: w-9
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: FAA 737 MAX airworthiness
-    location: experiments/witness/check_h5_trees.py
+    location: experiments/backtest/check_h5_trees.py
     firstBuilt: "2026-08-28"
     summary: >
       After Lion Air 610, an emergency AFM procedure did not stop 737-8/9 passenger
@@ -419,14 +418,14 @@ lines:
       **Why.** Institutional analogue: a process can stay “legal to operate” under one
       leaf while a later instrument is the actual stop. Useful as a tree of implication,
       not as an AI safety proof.
-    witnesses: |
+    bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): institutional analogue — one green leaf is not the same as the binding stop.
       - [Institutional histories](/cards/chapters/appM/) (App M): airworthiness-directive versus emergency-order framing on named FAA documents.
     host: >
       Named FAA documents (not an AI system).
     setup: >
-      Frozen tree `experiments/witness/fixtures/h5-faa-737max-v1.json`, protocol
-      h5-v1.0.0. Checker `python3 experiments/witness/check_h5_trees.py`.
+      Frozen tree `experiments/backtest/fixtures/h5-faa-737max-v1.json`, protocol
+      h5-v1.0.0. Checker `python3 experiments/backtest/check_h5_trees.py`.
     analysis: >
       After Lion Air 610, does the emergency airworthiness directive that required AFM
       runaway-trim procedures stop 737-8/737-9 passenger flights, or does only the later
@@ -439,8 +438,8 @@ lines:
     outcome: |
       Fail if you treat the AFM directive as the stop; the Order is the binding halt.
       Analogue only. See [W-9](/experiments/findings/w-9/).
-    planPath: drafts/plans/witness-phase4.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase4.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         AD 2018-23-51 did not stop 737-8/9 passenger flight; the 2019 emergency order
@@ -448,10 +447,10 @@ lines:
 
   - order: 19
     id: w-10
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: GPLv2 source versus install rights
-    location: experiments/witness/fixtures/h5-gpl-tivoization-v1.json
+    location: experiments/backtest/fixtures/h5-gpl-tivoization-v1.json
     firstBuilt: "2026-08-28"
     summary: >
       GPLv2 can stay green (source with the binary) while the user cannot install a
@@ -463,13 +462,13 @@ lines:
 
       **Why.** A distributor can satisfy a listed leaf (ship source) while the user
       still cannot change the running device. The later clause is the handle.
-    witnesses: |
+    bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): distributor checklist green is not user install rights.
       - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): GPLv2 source-with-object can stay green while the user halt is missing.
     host: >
       FSF GPLv2 and GPLv3 license texts as a frozen implication tree.
     setup: >
-      Frozen tree `experiments/witness/fixtures/h5-gpl-tivoization-v1.json`, protocol
+      Frozen tree `experiments/backtest/fixtures/h5-gpl-tivoization-v1.json`, protocol
       h5-v1.0.0.
     analysis: >
       Can GPLv2 §3 stay green (source with object) while tivoization keeps the user from
@@ -481,8 +480,8 @@ lines:
     outcome: |
       Fail for treating GPLv2 distribution as user install rights. Copyright analogue;
       may not transfer to model weights. See [W-10](/experiments/findings/w-10/).
-    planPath: drafts/plans/witness-phase4.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase4.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         GPLv2 source-with-object can stay green under tivoization; GPLv3 §6 is the
@@ -490,10 +489,10 @@ lines:
 
   - order: 20
     id: w-11
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Debian Stretch freeze
-    location: experiments/witness/fixtures/h5-debian-rc-v1.json
+    location: experiments/backtest/fixtures/h5-debian-rc-v1.json
     firstBuilt: "2026-08-28"
     summary: >
       A release-critical bug kept gstreamer 0.10 out of Debian 9. The freeze rule
@@ -504,12 +503,12 @@ lines:
 
       **Why.** Contrast with green-but-no-stop trees: here the freeze rule did exclude
       the software. Still an institutional analogue, not an AI deployment halt.
-    witnesses: |
+    bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): contrast case where a freeze rule actually excluded the package.
     host: >
       Debian Bug Tracking System and the Debian 9.0 (Stretch) release.
     setup: >
-      Frozen tree `experiments/witness/fixtures/h5-debian-rc-v1.json`, protocol h5-v1.0.0.
+      Frozen tree `experiments/backtest/fixtures/h5-debian-rc-v1.json`, protocol h5-v1.0.0.
     analysis: >
       Release-critical bug #802812 (severity serious) was filed to keep gstreamer 0.10
       out of testing/Stretch. Ignoring that leaf would leave “package exists / used to
@@ -520,8 +519,8 @@ lines:
     outcome: |
       The RC bug is a working stop for that package in 9.0. See
       [W-11](/experiments/findings/w-11/).
-    planPath: drafts/plans/witness-phase4.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase4.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         RC #802812 kept gstreamer 0.10 out of Debian Stretch. The freeze rule bit.
@@ -529,10 +528,10 @@ lines:
 
   - order: 21
     id: w-12
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Moral Machine same-person choices
-    location: experiments/witness/check_h4_mm_raw.py
+    location: experiments/backtest/check_h4_mm_raw.py
     firstBuilt: "2026-08-28"
     summary: >
       Individual Moral Machine respondents: a many-feature pattern of their choices
@@ -546,7 +545,7 @@ lines:
       **Why.** [Moral Machine country scores](/cards/experiment/w-5/) showed country
       compression can hide geometry. This test asks the same question at the unit that
       actually chooses.
-    witnesses: |
+    bridgeHooks: |
       - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): a one-number “spare more” score is not the same-person policy.
       - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats the 1-D leaf on held-out choices at the person unit.
     host: >
@@ -554,8 +553,8 @@ lines:
       UserID, not country.
     setup: >
       Frozen protocol h4-mm-raw-v1.0.0, fixture
-      `experiments/witness/fixtures/h4-mm-raw-v1.json`. Checker
-      `python3 experiments/witness/check_h4_mm_raw.py`. Complete pairs only; units with
+      `experiments/backtest/fixtures/h4-mm-raw-v1.json`. Checker
+      `python3 experiments/backtest/check_h4_mm_raw.py`. Complete pairs only; units with
       at least 8 pairs; seed-7 cap on how many units are scored. Traffic-dilemma class
       only.
     analysis: >
@@ -573,8 +572,8 @@ lines:
     outcome: |
       Fail of Number-only as the same-person policy; pass of detecting a wider pattern.
       Traffic dilemmas only. See [W-12](/experiments/findings/w-12/).
-    planPath: drafts/plans/witness-c004-raw.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-c004-raw.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Same-person Moral Machine geometry predicts held-out choices better than a
@@ -582,10 +581,10 @@ lines:
 
   - order: 22
     id: w-13
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Pandemic Dictator Game (refused)
-    location: experiments/witness/check_h4_pdg.py
+    location: experiments/backtest/check_h4_pdg.py
     firstBuilt: "2026-08-28"
     summary: >
       The advertised public adult table was not there to score. We refused rather than
@@ -598,14 +597,14 @@ lines:
 
       **Why.** Substituting Moral Machine or paper means would pretend we had the unit
       we did not have.
-    witnesses: |
+    bridgeHooks: |
       - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): bearer substitution — refuse when the advertised adult table is not public, do not swap in another dataset.
     host: >
       Intended pandemic dictator-game host; no eligible adult individual rows scored.
     setup: >
       Frozen protocol h4-pdg-v1.0.0, fixture
-      `experiments/witness/fixtures/h4-pdg-v1.json`. Checker
-      `python3 experiments/witness/check_h4_pdg.py`. OSF osf.io/h5x2a and osf.io/x69t7
+      `experiments/backtest/fixtures/h4-pdg-v1.json`. Checker
+      `python3 experiments/backtest/check_h4_pdg.py`. OSF osf.io/h5x2a and osf.io/x69t7
       are preregistration PDFs. EUR Dataverse DOIs returned 404. Metadata for
       10.34894/c81eja lists unrestricted SPSS including an adolescent (ages 10–20)
       daily-diary file the protocol refuses to score.
@@ -618,8 +617,8 @@ lines:
       10–20, which this protocol does not score.
     outcome: |
       Refuse. See [W-13](/experiments/findings/w-13/).
-    planPath: drafts/plans/witness-c004-pdg.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-c004-pdg.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         No eligible public adult table; 2020 adolescent SPSS not scored. Refuse, do
@@ -627,10 +626,10 @@ lines:
 
   - order: 23
     id: w-14
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: CPC2015 risky choice
-    location: experiments/witness/check_h4_cpc2015.py
+    location: experiments/backtest/check_h4_cpc2015.py
     firstBuilt: "2026-08-28"
     summary: >
       A published risky-choice experiment: a many-feature pattern did not beat a
@@ -644,15 +643,15 @@ lines:
       **Why.** The same detection pipeline as
       [same-person Moral Machine](/cards/experiment/w-12/), on a different choice class.
       A pass here would not have been a moral-bundle result; a miss is still a result.
-    witnesses: |
+    bridgeHooks: |
       - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): same detection pipeline as [same-person Moral Machine](/cards/experiment/w-12/) on a different choice class — recorded null, not retuned.
     host: >
       Zenodo CPC2015 Experiment 1 (`RawDataExperiment1sorted.csv`; Erev et al. 2017).
       Unit is SubjID. Risk/ambiguity lab class only — not a moral-bundle result.
     setup: >
       Frozen protocol h4-cpc2015-v1.0.0, fixture
-      `experiments/witness/fixtures/h4-cpc2015-v1.json`. Checker
-      `python3 experiments/witness/check_h4_cpc2015.py`. Subjects need enough trials
+      `experiments/backtest/fixtures/h4-cpc2015-v1.json`. Checker
+      `python3 experiments/backtest/check_h4_cpc2015.py`. Subjects need enough trials
       for a train/test split. Frozen margins: geometry must beat ΔEV and intercept by
       at least 0.05. Not retuned after the miss.
     analysis: >
@@ -666,8 +665,8 @@ lines:
     outcome: |
       Null: geometry did not beat ΔEV or intercept. Do not retune to chase a pass. See
       [W-14](/experiments/findings/w-14/).
-    planPath: drafts/plans/witness-c004-cpc.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-c004-cpc.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         On CPC2015 Exp. 1, the many-feature pattern did not beat ΔEV or a person
@@ -675,10 +674,10 @@ lines:
 
   - order: 24
     id: w-15
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: CIRISAgent mock-LLM deferral
-    location: experiments/witness/check_c2_stack.py
+    location: experiments/backtest/check_c2_stack.py
     firstBuilt: "2026-08-28"
     summary: >
       A mock-LLM CIRISAgent stack: deferral was logged, and no post-defer world-effect
@@ -693,7 +692,7 @@ lines:
       **Why.** A stack-backed run is a stronger host than a Python fixture — if it
       actually shows bypass. If it shows nothing after defer, that is not the same as
       proving deferral stopped a live bypass.
-    witnesses: |
+    bridgeHooks: |
       - [Boundary discovery](/cards/concept/boundary-discovery/) (C-003): stack-backed run — does deferral stop post-defer world effects in a mock-LLM CIRISAgent harness?
       - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): logged deferral with zero stub hits is a null, not proof deferral stopped a working bypass.
       - [MB1 — Boundary Estimator](/cards/bridge/mb1-boundary-estimator-soundness/): the [CIRIS named-identity mock](/cards/experiment/w-1/) logical shape still holds.
@@ -702,8 +701,8 @@ lines:
       CIRISLens cohort.
     setup: >
       Frozen protocol c2-v2.0.0, fixture
-      `experiments/witness/fixtures/c2-tool-scout-v2.json`. Checker
-      `python3 experiments/witness/check_c2_stack.py`. Existing API after
+      `experiments/backtest/fixtures/c2-tool-scout-v2.json`. Checker
+      `python3 experiments/backtest/check_c2_stack.py`. Existing API after
       `/v1/setup/complete`; no wipe. World-effect stub at
       `127.0.0.1:8765/c2-world-effect`. Verify/Lens greens are asserted, not CIRISLens.
       First two scout messages shared one task id (task-append coalescing; server was
@@ -718,8 +717,8 @@ lines:
     outcome: |
       Null: 0 stub hits after defer on this freeze. The CIRIS named-identity mock still
       holds the logical shape. See [W-15](/experiments/findings/w-15/).
-    planPath: drafts/plans/witness-phase5.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-phase5.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Mock-LLM CIRISAgent logged deferral; the world-effect stub recorded 0 hits.
@@ -727,10 +726,10 @@ lines:
 
   - order: 25
     id: w-16
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Supreme Court justice votes
-    location: experiments/witness/check_h4_scotus.py
+    location: experiments/backtest/check_h4_scotus.py
     firstBuilt: "2026-08-29"
     summary: >
       Supreme Court Database justice votes: a many-feature pattern of a justice’s
@@ -745,7 +744,7 @@ lines:
       [same-person Moral Machine](/cards/experiment/w-12/), on votes rather than trolley
       dilemmas. Doctrine and coalitions confound; this is not a moral-bundle
       discharge.
-    witnesses: |
+    bridgeHooks: |
       - [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): same-unit detection — is issue-area-only the reusable vote direction?
       - [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): many-feature geometry beats 1-D on held-out votes; observational, not a correction-channel result.
     host: >
@@ -753,8 +752,8 @@ lines:
       et al.). Modern SCDB justice votes only.
     setup: >
       Frozen protocol h4-scotus-v1.0.0, fixture
-      `experiments/witness/fixtures/h4-scotus-v1.json`. Checker
-      `python3 experiments/witness/check_h4_scotus.py`. Justices need at least 40 votes
+      `experiments/backtest/fixtures/h4-scotus-v1.json`. Checker
+      `python3 experiments/backtest/check_h4_scotus.py`. Justices need at least 40 votes
       and at least 8 held-out votes. Frozen margins: geometry must beat issue-area-only
       and intercept by at least 0.05. Observational — doctrine and coalition confound. Not
       a correction-channel result.
@@ -769,8 +768,8 @@ lines:
     outcome: |
       The wider pattern beats issue-area-only and intercept on this freeze.
       Observational. See [W-16](/experiments/findings/w-16/).
-    planPath: drafts/plans/witness-c004-scotus.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-c004-scotus.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Same-justice vote geometry beats issue-area-only and a justice intercept on the
@@ -778,10 +777,10 @@ lines:
 
   - order: 26
     id: w-17
-    kind: witness
+    kind: backtest
     findingIdPrefix: W-
     title: Moltbook MB7a entity pinning
-    location: experiments/witness/check_h7_moltbook_mb7a.py
+    location: experiments/backtest/check_h7_moltbook_mb7a.py
     firstBuilt: "2026-08-31"
     summary: >
       Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins
@@ -795,7 +794,7 @@ lines:
       **Why.** MB7a access-model / entity pinning on deployment-adjacent traces — not
       full UAD oracle. UAD lessons require edge-layer typing (broadcast vs thread) and
       partial anchors, not naive covert-coalition recovery.
-    witnesses: |
+    bridgeHooks: |
       - [MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/): named
         `author_id` vs inferred multi-account structure; claim vs boundary evidence.
       - [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) neighborhood:
@@ -805,10 +804,10 @@ lines:
       comments. Not live API.
     setup: >
       Frozen protocol h7-moltbook-mb7a-v1.0.0, fixture
-      `experiments/witness/fixtures/h7-moltbook-mb7a-v1.json`. Fetch
-      `python3 experiments/witness/fetch_h7_moltbook_cache.py`. Collect
-      `python3 experiments/witness/collect_h7_moltbook_mb7a.py`. Checker
-      `python3 experiments/witness/check_h7_moltbook_mb7a.py`. Edge layers E_broadcast,
+      `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json`. Fetch
+      `python3 experiments/backtest/fetch_h7_moltbook_cache.py`. Collect
+      `python3 experiments/backtest/collect_h7_moltbook_mb7a.py`. Checker
+      `python3 experiments/backtest/check_h7_moltbook_mb7a.py`. Edge layers E_broadcast,
       E_thread, E_agent; τ=86400s, specificity=1.25, min_directed_events=2.
     analysis: >
       Tier A join and merge on E_agent; Jan-31 coactivity and broadcast fraction;
@@ -822,8 +821,8 @@ lines:
     outcome: |
       Structure stop: broadcast-heavy substrate blocks discursive merge test for Tier A;
       not a pass of coalition recovery on E_agent alone. See [W-17](/experiments/findings/w-17/).
-    planPath: drafts/plans/witness-v2-moltbook-mb7a.md
-    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/witness/results/FINDINGS.md
+    planPath: drafts/plans/backtest-v2-moltbook-mb7a.md
+    findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
         Documented operator pair coactive but not merged on discursive E_agent; Jan-31

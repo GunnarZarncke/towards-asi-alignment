@@ -24,14 +24,14 @@ did (prompts, schemas, frozen JSON, checkers).
 
 | What | Location |
 |------|----------|
-| **This file** | `docs/METHODOLOGY.md` — shared habits, blind-generation lessons, Witness failure conditions |
+| **This file** | `docs/METHODOLOGY.md` — shared habits, blind-generation lessons, backtest failure conditions |
 | **Experiment narrative + finding tables** | [`docs/EXPERIMENTS.md`](EXPERIMENTS.md) |
 | **Site / coverage matrix** | [`metadata/experiments.yml`](../metadata/experiments.yml) |
-| **Witness charter + Exp. 1–6 pass/fail/refuse** | [`drafts/plans/witness-phase0.md`](../drafts/plans/witness-phase0.md) |
-| **Witness phase index + finding template** | [`drafts/plans/witness.md`](../drafts/plans/witness.md) |
-| **Witness v2 (plan only)** | [`drafts/plans/witness-v2.md`](../drafts/plans/witness-v2.md) — Phase 1 Moltbook; [`witness-v2-moltbook-inventory.md`](../drafts/plans/witness-v2-moltbook-inventory.md); **MB7a freeze** [`witness-v2-moltbook-mb7a.md`](../drafts/plans/witness-v2-moltbook-mb7a.md) |
-| **Witness per-host freezes** | `drafts/plans/witness-phase*.md`, `witness-c004-*.md`, `witness-v2-moltbook-mb7a.md` |
-| **Witness ledger + checkers** | [`experiments/witness/`](../experiments/witness/) |
+| **Backtest charter + Exp. 1–6 pass/fail/refuse** | [`drafts/plans/backtest-phase0.md`](../drafts/plans/backtest-phase0.md) |
+| **Backtest phase index + finding template** | [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) |
+| **Backtest v2 (plan only)** | [`drafts/plans/backtest-v2.md`](../drafts/plans/backtest-v2.md) — Phase 1 Moltbook; [`backtest-v2-moltbook-inventory.md`](../drafts/plans/backtest-v2-moltbook-inventory.md); **MB7a freeze** [`backtest-v2-moltbook-mb7a.md`](../drafts/plans/backtest-v2-moltbook-mb7a.md) |
+| **Backtest per-host freezes** | `drafts/plans/backtest-phase*.md`, `backtest-c004-*.md`, `backtest-v2-moltbook-mb7a.md` |
+| **Backtest ledger + checkers** | [`experiments/backtest/`](../experiments/backtest/) |
 | **Sim blind-generation (binding)** | [`goal-agent-simulation/BLIND_GENERATION.md`](../experiments/goal-agent-simulation/BLIND_GENERATION.md), [`lab-simulation/BLIND_GENERATION.md`](../experiments/lab-simulation/BLIND_GENERATION.md), [`lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](../experiments/lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md), [`lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](../experiments/lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md), [`graded-lab-simulation/BLIND_GENERATION.md`](../experiments/graded-lab-simulation/BLIND_GENERATION.md) |
 | **External-test preregistration** | e.g. `experiments/lab-simulation/runners/et4_secret_loyalties/*_preregistration.json`, [`graded-lab-simulation/PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md) |
 | **Embedded audit-plane projection** | [`embedded-simulation/embedded_sim/audit_projection.py`](../experiments/embedded-simulation/embedded_sim/audit_projection.py) (sensor-plausible fields for the auditor) |
@@ -44,7 +44,7 @@ did (prompts, schemas, frozen JSON, checkers).
 |-------|----------|-------------------|
 | **Simulations** | toy, embedded, goal-agent, lab, graded-lab | Blind generation where applicable; three-plane separation; twin baselines; numbered findings ledgers |
 | **External tests** | ET-1–ET-4 | Frozen instrument on foreign substrate; **substrate-suitability stop**; JSON/plan preregistration before scored run |
-| **Witness tests** | W-1–W-15 | Per-host protocol freeze before fixture; fail / refuse / null; no sixth sim; H0 not deployment witness |
+| **Backtests** | W-1–W-17 | Per-host protocol freeze before fixture; fail / refuse / null; H0 sims stay backing only |
 
 None of the three is proof on a frontier system.
 
@@ -59,18 +59,18 @@ None of the three is proof on a frontier system.
 
 2. **Register predictions before results.** Expected outcomes (pass band, layer
    fail, refuse branch) are written down before the scored run. Sim lines use
-   blind-generation rounds or plan-section preregistrations; Witness uses
+   blind-generation rounds or plan-section preregistrations; backtests use
    per-host protocol files; ET lines use `*_preregistration.json` or frozen
    plan slices.
 
 3. **Separate author from scorer where possible.** Blind generation breaks
-   generator/detector co-design loops (see § Blind generation). Witness has no
-   authored-world generator but still separates protocol author from scorer via
+   generator/detector co-design loops (see § Blind generation). Backtests have no
+   authored-world generator but still separate protocol author from scorer via
    frozen checkers.
 
 4. **Refuse and null are first-class.** Weak hosts, wrong units, and
    non-adversarial measurands → **refuse**. Frozen pipelines that miss
-   pre-registered margins → **null**, not retune (Witness W-14, W-15; graded-lab
+   pre-registered margins → **null**, not retune (W-14, W-15; graded-lab
    GL-85 method limit).
 
 5. **Substrate-suitability stop.** If the instrument reports the coupling the
@@ -172,15 +172,15 @@ Before freezing in `DESIGN.md` / `PLAN.md`:
 
 ---
 
-## Witness tests
+## backtests
 
-Witness applies the core habits to **existing traces** (Linux git, Wikipedia,
+Backtests apply the core habits to **existing traces** (Linux git, Wikipedia,
 published evals, CIRIS-shaped mock, institutional documents). It does **not**
 use sim-style blind generation.
 
-**Charter and Exp. 1–6 tables:** [`witness-phase0.md`](../drafts/plans/witness-phase0.md).
-**Phase index:** [`witness.md`](../drafts/plans/witness.md).
-**Ledger:** [`experiments/witness/results/FINDINGS.md`](../experiments/witness/results/FINDINGS.md).
+**Charter and Exp. 1–6 tables:** [`backtest-phase0.md`](../drafts/plans/backtest-phase0.md).
+**Phase index:** [`backtest.md`](../drafts/plans/backtest.md).
+**Ledger:** [`experiments/backtest/results/FINDINGS.md`](../experiments/backtest/results/FINDINGS.md).
 
 ### Finding shape
 
@@ -191,9 +191,9 @@ preregistration record — committed with or before the first scored fixture.
 
 ### Host-level failure (Expectations 1–6)
 
-Summary of Phase 0 “Fail (Witness unmet)” — full table in `witness-phase0.md`:
+Summary of Phase 0 “Fail (backtest unmet)” — full table in `backtest-phase0.md`:
 
-| Exp. | Witness **unmet** when |
+| Exp. | Backtest **unmet** when |
 |------|------------------------|
 | **1** | Any C-003–C-007 has only H0 backing or only green with no disagreement on H1–H5 |
 | **2** | Still only embedded `honestCert` / authored JSON; no pinned H1–H4 Lean fixture |
@@ -207,7 +207,7 @@ the leaf as safe.
 
 ### Methodology failure conditions (M1–M8)
 
-If any trigger, the **Witness program** fails its epistemic bar — not merely a
+If any trigger, the **backtest program** fails its epistemic bar — not merely a
 host leaf.
 
 | ID | Fail if | Remedy |
@@ -215,7 +215,7 @@ host leaf.
 | **M1** | No pre-registered condition to stop adding hosts or declare the lane unsuccessful; every outcome narrated only as “payment” | Sprint boundaries + success/failure gates before next block |
 | **M2** | Protocol freeze post-dates scored fixture, or margins chosen after held-out inspection | Git-order freeze; checker reads frozen fields only |
 | **M3** | `pass` without stop while deployment/bridge wording still strong | Reclassify; add stop language |
-| **M4** | H0/authored mock cited as H1–H5 witness without tag | W-1 / W-8 / W-15 tagging template |
+| **M4** | H0/authored mock cited as H1–H5 backtest without tag | W-1 / W-8 / W-15 tagging template |
 | **M5** | Null followed by silent retune without new protocol version + finding ID | Version bump (`h4-cpc2015-v2.0.0`), not v1 edit |
 | **M6** | New host repeats refused unit error or substitute data | Refuse fast (W-7, W-13 pattern) |
 | **M7** | Next block only increases W-count without depth objective | Name expectation or M-gap addressed |
@@ -226,7 +226,7 @@ adversarial \(M\) at \(\kappa^*\); no live CIRIS bypass demo.
 
 ### Open depth gates (canonical TODOs)
 
-Tracked in [`drafts/plans/witness.md`](../drafts/plans/witness.md) and
+Tracked in [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) and
 [`metadata/TODO.md`](../metadata/TODO.md):
 
 - [ ] **Adversarial \(M\)** (Expectation 3): stated \(\kappa^*\) + cost-of-faking
@@ -236,7 +236,7 @@ Tracked in [`drafts/plans/witness.md`](../drafts/plans/witness.md) and
   first targets W-12 (`check_h4_mm_raw.py`), W-3 (`check_h2.py`); log before
   load-bearing cites.
 
-Before a new Witness block: state which expectation or M-gap it addresses; for
+Before a new backtest block: state which expectation or M-gap it addresses; for
 CIRIS work include a **pre-defer positive-control** arm.
 
 ---
@@ -258,7 +258,7 @@ build. Discipline:
 
 - **Shared rule?** Add or amend **this file** only.
 - **Line-specific prompt, schema, or frozen artifact?** That line's
-  `BLIND_GENERATION.md`, `PLAN*.md`, or Witness per-host freeze — not here.
+  `BLIND_GENERATION.md`, `PLAN*.md`, or Backtest per-host freeze — not here.
 - **New finding?** Ledger + optional Appendix I; do not duplicate outcome prose
   here.
 - **Site card** [`experiment-methodology.md`](../metadata/concepts/bodies/experiment-methodology.md):

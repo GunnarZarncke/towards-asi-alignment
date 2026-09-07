@@ -1,16 +1,16 @@
 # Witness — C-004 later host: SCDB justice votes (held-out policy direction)
 
-**Frozen:** 2026-08-29. Reopen only by amending this file. Parent: [`witness.md`](witness.md). After [`witness-c004-cpc.md`](witness-c004-cpc.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
+**Frozen:** 2026-08-29. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). After [`backtest-c004-cpc.md`](backtest-c004-cpc.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **same-unit detection-pipeline** check on institutional vote direction (justice-centered, not correction-channel CCI). Observational; doctrine and coalition confound. Does **not** discharge MB2. Does **not** transfer W-12 or W-14.
 
-**Finding ID:** **W-16**. Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-16**. Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
 ## Why this
 
-[`witness-c004-raw.md`](witness-c004-raw.md) lists the Supreme Court Database as the next v1 C-004 later host: stable justice IDs, repeated votes, public case codings. v2 institutional correction (handle→act) is a **different** claim — see [`witness-v2.md`](witness-v2.md).
+[`backtest-c004-raw.md`](backtest-c004-raw.md) lists the Supreme Court Database as the next v1 C-004 later host: stable justice IDs, repeated votes, public case codings. v2 institutional correction (handle→act) is a **different** claim — see [`backtest-v2.md`](backtest-v2.md).
 
 ---
 
@@ -81,4 +81,4 @@ Written 2026-08-29. Do not edit to match scores.
 
 ## Checker
 
-`python3 experiments/witness/check_h4_scotus.py`. Cache gitignored under `experiments/witness/data/scotus/`.
+`python3 experiments/backtest/check_h4_scotus.py`. Cache gitignored under `experiments/backtest/data/scotus/`.

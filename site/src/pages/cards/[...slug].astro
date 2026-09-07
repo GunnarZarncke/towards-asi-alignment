@@ -84,7 +84,7 @@ const experimentLine =
     : null;
 const experimentKindMeta =
   isExperimentCard && card.data.experimentKind
-    ? experiments.kinds?.[card.data.experimentKind as "sim" | "external" | "witness"]
+    ? experiments.kinds?.[card.data.experimentKind as "sim" | "external" | "backtest"]
     : null;
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";

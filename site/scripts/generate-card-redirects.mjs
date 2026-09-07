@@ -42,8 +42,6 @@ async function loadCardsInDir(dir, prefix = "") {
 async function main() {
   const cards = await loadCardsInDir(cardsDir);
   const redirects = buildCardRedirects(cards);
-  redirects["/cards/experiment/witness/"] = "/cards/experiment/witness-tests/";
-  redirects["/cards/experiments/witness/"] = "/cards/experiment/witness-tests/";
   // Pre-typed-slug deep links used `/full/{id}/` (never a real route).
   redirects["/full/appb/"] = "/cards/appendix/appb/";
   redirects["/full/appB/"] = "/cards/appendix/appb/";

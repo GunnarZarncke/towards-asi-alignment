@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "data" / "mediawiki" / "bot_successor_v1.json"
-UA = "towards-asi-alignment-witness/1.0 (https://github.com/GunnarZarncke/towards-asi-alignment; research)"
+UA = "towards-asi-alignment-backtest/1.0 (https://github.com/GunnarZarncke/towards-asi-alignment; research)"
 API = "https://en.wikipedia.org/w/api.php"
 
 # Frozen candidates: historically flagged bots with public BRFA pages.

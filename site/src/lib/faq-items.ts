@@ -135,7 +135,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: [
       "No. They are methodology-building and sanity checks. Negative results bound what the manuscript may claim. The ",
       { label: "Experiments page", href: { kind: "route", path: "/experiments/" } },
-      " splits simulations, external tests, and Witness (stop-checks on records we did not write); ",
+      " leads with backtests (frozen safety checks on a history we did not write — the remainder a simulation we authored cannot pay), then simulations and external tests; ",
       { label: "coverage", href: { kind: "route", path: "/experiments/coverage/" } },
       " and ",
       {

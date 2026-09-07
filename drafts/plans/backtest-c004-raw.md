@@ -1,10 +1,10 @@
 # Witness — C-004 same-unit bundle effect (Moral Machine raw)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Not Phase 5 (that remains CIRIS live). Not a sixth sim. Do **not** retune features, split, seed, or margins after seeing held-out scores.
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Not Phase 5 (that remains CIRIS live). Not a sixth sim. Do **not** retune features, split, seed, or margins after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **policy-effect / reusable-direction** witness on one decision-making unit class (ch16 activation + policy effect; tradeoff geometry as held-out non-implication vs 1-D). Does **not** test LHCV \(L\to H\to C\). Does **not** discharge MB2.
 
-**Finding ID:** **W-12** (recorded). Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-12** (recorded). Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
@@ -102,9 +102,9 @@ Do not fetch these until needed; **W-12–W-14 are recorded**.
 
 | Host | Why later | What it could pay |
 |------|-----------|-------------------|
-| Pandemic Dictator Game | **W-13 refuse** ([`witness-c004-pdg.md`](witness-c004-pdg.md)) | Care/giving + \(\Phi\) sketch (unpaid) |
-| CPC2015/CPC18 raw (`SubjID`, repeated gambles) | **W-14 null** Exp. 1 ([`witness-c004-cpc.md`](witness-c004-cpc.md)); CPC18 unpaid | Detection pipeline, not C-004 values |
-| Supreme Court Database (justice-centered) | **W-16 pass** ([`witness-c004-scotus.md`](witness-c004-scotus.md)); observational; doctrine/coalition confound | Institutional reusable policy directions (detection pipeline; not v2 CCI) |
+| Pandemic Dictator Game | **W-13 refuse** ([`backtest-c004-pdg.md`](backtest-c004-pdg.md)) | Care/giving + \(\Phi\) sketch (unpaid) |
+| CPC2015/CPC18 raw (`SubjID`, repeated gambles) | **W-14 null** Exp. 1 ([`backtest-c004-cpc.md`](backtest-c004-cpc.md)); CPC18 unpaid | Detection pipeline, not C-004 values |
+| Supreme Court Database (justice-centered) | **W-16 pass** ([`backtest-c004-scotus.md`](backtest-c004-scotus.md)); observational; doctrine/coalition confound | Institutional reusable policy directions (detection pipeline; not v2 CCI) |
 | BBQ published per-example logits | Bearer/identity policy effect in a **model**; bias more than bundles | Artificial-system \(\Phi\)-like test |
 | HH-RLHF / PKU-SafeRLHF dual labels | Still optional; need same judge/policy across varied contexts | Same-unit 1-D vs harm axis |
 | Wikipedia admin/RfA repeated acts | Heavy feature reconstruction | Institutional C-004 analogue |
@@ -116,7 +116,7 @@ Do not fetch these until needed; **W-12–W-14 are recorded**.
 
 ## Checker
 
-`python3 experiments/witness/check_h4_mm_raw.py` — print inclusion \(n\), which unit key, three held-out accuracies, both margins, refuse-or-outcome. Raw cache gitignored under `experiments/witness/data/`.
+`python3 experiments/backtest/check_h4_mm_raw.py` — print inclusion \(n\), which unit key, three held-out accuracies, both margins, refuse-or-outcome. Raw cache gitignored under `experiments/backtest/data/`.
 
 ---
 

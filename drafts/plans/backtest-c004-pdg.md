@@ -1,16 +1,16 @@
 # Witness — C-004 later host: Pandemic Dictator Game (same-unit giving)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Prior freeze: [`witness-c004-raw.md`](witness-c004-raw.md) (W-12). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Prior freeze: [`backtest-c004-raw.md`](backtest-c004-raw.md) (W-12). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays **bearer substitution + within-person giving stability** (care/giving class; a \(\Phi\)-sketch only). Does **not** test LHCV. Does **not** discharge MB2. Does **not** transfer Moral Machine geometry.
 
-**Finding ID:** **W-13**. Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-13**. Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
 ## Why this, not MM again
 
-W-12 is traffic-dilemma policy effect. The next row in [`witness-c004-raw.md`](witness-c004-raw.md) is a longitudinal dictator game with **multiple targets for the same person**: friend, unknown peer, doctor, COVID patient, poor immune system (van de Groep / Sweijen / Dubois Urban Rotterdam PDG). That is bearer substitution, not trolley Number vs types.
+W-12 is traffic-dilemma policy effect. The next row in [`backtest-c004-raw.md`](backtest-c004-raw.md) is a longitudinal dictator game with **multiple targets for the same person**: friend, unknown peer, doctor, COVID patient, poor immune system (van de Groep / Sweijen / Dubois Urban Rotterdam PDG). That is bearer substitution, not trolley Number vs types.
 
 ---
 
@@ -86,4 +86,4 @@ If the dump is missing **or** only the 2020 adolescent diary SPSS is public: **r
 
 ## Checker
 
-`python3 experiments/witness/check_h4_pdg.py` — print source used, \(n\), three MAEs, both margins, refuse-or-outcome. Raw cache gitignored under `experiments/witness/data/pdg/`.
+`python3 experiments/backtest/check_h4_pdg.py` — print source used, \(n\), three MAEs, both margins, refuse-or-outcome. Raw cache gitignored under `experiments/backtest/data/pdg/`.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """SCDB justice-centered same-unit geometry vs issueArea; write h4-scotus fixture.
 
-Protocol: drafts/plans/witness-c004-scotus.md (h4-scotus-v1.0.0).
+Protocol: drafts/plans/backtest-c004-scotus.md (h4-scotus-v1.0.0).
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ CSV_PATH = CACHE / "SCDB_2025_01_justiceCentered_Citation.csv"
 OUT = ROOT / "fixtures" / "h4-scotus-v1.json"
 PROTOCOL = "h4-scotus-v1.0.0"
 SCDB_ZIP = "https://scdb.la.psu.edu/?jet_download=d9fd858d0211fe70abbe33bf7cd7ec832f3a2313"
-UA = {"User-Agent": "towards-asi-alignment-witness/1.0"}
+UA = {"User-Agent": "towards-asi-alignment-backtest/1.0"}
 MIN_ROWS = 40
 MIN_TEST = 8
 MIN_INCLUDED = 9

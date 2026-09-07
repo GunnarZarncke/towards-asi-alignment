@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Moltbook MB7a anchored structure typing; write h7-moltbook-mb7a fixture.
 
-Protocol: drafts/plans/witness-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
+Protocol: drafts/plans/backtest-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ def _require_pandas():
     try:
         import pandas as pd  # noqa: F401
     except ImportError as exc:
-        raise SystemExit("pip install pandas pyarrow (see experiments/witness/.venv)") from exc
+        raise SystemExit("pip install pandas pyarrow (see experiments/backtest/.venv)") from exc
 
 
 def _parse_ts(val) -> datetime | None:

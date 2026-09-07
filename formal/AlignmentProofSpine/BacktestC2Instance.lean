@@ -1,7 +1,7 @@
 import AlignmentProofSpine.Field.Finite.CompositePathBypass
 
 /-!
-# AlignmentProofSpine.WitnessC2Instance
+# AlignmentProofSpine.BacktestC2Instance
 
 Pinned **host** instance of the CIRIS-neighborhood path-audit toy
 (`Field/Finite/CompositePathBypass.lean`) on the committed C2 tool-scout
@@ -10,7 +10,7 @@ fixture, not on `sample_capture_theater.jsonl`.
 ## Data
 
 Rows are the five `composite_log` events in
-`experiments/witness/fixtures/c2-tool-scout-v1.json` (`c2-v1.0.0`, W-1).
+`experiments/backtest/fixtures/c2-tool-scout-v1.json` (`c2-v1.0.0`, W-1).
 Only integer/enum fields that JSON actually has are transcribed:
 
 * `t`, `world_effect`, `named_occurrence_control`
@@ -26,7 +26,7 @@ not filled with placeholder axioms.
 
 `maxWorldEffectsAfterDefer = 0`: any world effect after WA DEFER that is
 not under named-occurrence control is a composite bypass. Same P3 rule as
-`experiments/witness/check_c2_mock.py`. Not solved backward for `Safe`.
+`experiments/backtest/check_c2_mock.py`. Not solved backward for `Safe`.
 
 ## What this does not prove
 

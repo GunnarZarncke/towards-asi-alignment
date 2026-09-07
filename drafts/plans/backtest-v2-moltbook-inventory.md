@@ -1,6 +1,6 @@
 # Witness v2 — Step 0 inventory: Moltbook public traces
 
-**Status:** inventory + **MB7a scored** 2026-08-31 (W-17 structure_stop) — see [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md). Parent: [`witness-v2.md`](witness-v2.md).
+**Status:** inventory + **MB7a scored** 2026-08-31 (W-17 structure_stop) — see [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md). Parent: [`backtest-v2.md`](backtest-v2.md).
 
 **Claim strength:** data-availability and join-feasibility only. Does not discharge any `MB*` bridge.
 
@@ -125,7 +125,7 @@ In-repo and external-transfer work already shows that **boundary instruments rep
 | **UAD = loudest-actor heuristic** | ES-1 embedded default ecology | Full MI clustering picks same unit as activity heuristic — **no separation** until adversarial ecology |
 | **Synchronous / broadcast posting** | Moltbook: 97% depth-0 comments; 24h-uniform activity (Observatory) | May look like one swarm; could be **independent agents on shared engagement pool** (ET-2 class) |
 
-**Witness Phase 0 stop rule 2** ([`witness-phase0.md`](witness-phase0.md)): if the instrument reports the coupling the substrate actually has (shared script, common pool, sync policy), **stop** — record substrate-suitability limit; do not retune thresholds to chase a covert-coalition pass.
+**Witness Phase 0 stop rule 2** ([`backtest-phase0.md`](backtest-phase0.md)): if the instrument reports the coupling the substrate actually has (shared script, common pool, sync policy), **stop** — record substrate-suitability limit; do not retune thresholds to chase a covert-coalition pass.
 
 ### Ground truth on Moltbook — partial, not oracle
 
@@ -243,7 +243,7 @@ Optional **ET-5** annex (not Witness W-number by default): apply **frozen** pass
 
 ## Phase 1 next steps
 
-0. ~~**Step 0b:** structure taxonomy~~ → in [`witness-v2-moltbook-mb7a.md`](witness-v2-moltbook-mb7a.md).
+0. ~~**Step 0b:** structure taxonomy~~ → in [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md).
 0c. **Step 0c:** anchor join at collect time (Tier A names frozen; C1/C5 in collector).
 1. ~~**Step 1 / Step 2 freeze**~~ → **`h7-moltbook-mb7a-v1.0.0`** (2026-08-31).
 2. ~~**Score:** cache jscmp4 pin → `collect_h7_moltbook_mb7a.py` → record **W-17**~~ → **W-17 structure_stop** (2026-08-31).

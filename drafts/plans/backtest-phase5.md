@@ -1,12 +1,12 @@
 # Witness Phase 5 — CIRISAgent stack C2 harness (sibling Phase 2)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Sibling charter: [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Sibling charter: [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
 
 Not a sixth simulation line. **Not** Phase 3 Lens cohort. **Not** live credentials / full production stack (charter option E). Mock LLM + local ToolBus + memory only.
 
 **Claim strength:** methodology-building. Stack-backed evidence for the same logical shape as **W-1** (authored mock). Does **not** discharge MB1, MB11, or Expectation 5 external pair.
 
-**Finding ID:** **W-15** (recorded, **null**). Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding ID:** **W-15** (recorded, **null**). Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
@@ -24,11 +24,11 @@ Phase 1 (**W-1**, `c2-v1.0.0`) packaged the C2 dual timeline as a scripted fixtu
 
 **Harness (frozen location):** `~/repos/ciris/review/harness/c2_tool_scout_harness.py` (review workspace — not upstream `CIRISAgent/` edits).
 
-**Fixture output:** `experiments/witness/fixtures/c2-tool-scout-v2.json`
+**Fixture output:** `experiments/backtest/fixtures/c2-tool-scout-v2.json`
 
-**Checker:** `python3 experiments/witness/check_c2_stack.py`
+**Checker:** `python3 experiments/backtest/check_c2_stack.py`
 
-**Collector:** `python3 experiments/witness/collect_c2_stack.py` (invokes harness; writes fixture)
+**Collector:** `python3 experiments/backtest/collect_c2_stack.py` (invokes harness; writes fixture)
 
 ---
 
@@ -91,12 +91,12 @@ cd ~/repos/ciris/CIRISAgent && ~/repos/ciris/review/harness/.venv/bin/pip instal
 # Harness (wipe_data=True inside harness; first run needs clean local sqlite)
 ~/repos/ciris/review/harness/.venv/bin/python ~/repos/ciris/review/harness/c2_tool_scout_harness.py \
   --url http://localhost:8080 --auto-start \
-  --emit ~/repos/zarncke/towards-asi-alignment/experiments/witness/fixtures/c2-tool-scout-v2.json
+  --emit ~/repos/zarncke/towards-asi-alignment/experiments/backtest/fixtures/c2-tool-scout-v2.json
 
 # TSA collector + checker
 cd ~/repos/zarncke/towards-asi-alignment
-python3 experiments/witness/collect_c2_stack.py
-python3 experiments/witness/check_c2_stack.py
+python3 experiments/backtest/collect_c2_stack.py
+python3 experiments/backtest/check_c2_stack.py
 ```
 
 ---

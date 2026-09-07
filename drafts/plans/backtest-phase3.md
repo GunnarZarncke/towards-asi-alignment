@@ -1,8 +1,8 @@
 # Witness Phase 3 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Scope: [`witness-phase0.md`](witness-phase0.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
 
-Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../experiments/witness/data/) (gitignored except README). Artifacts: [`experiments/witness/`](../../experiments/witness/).
+Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
 
 **Exit (parent):** one bundle **non-implication** table (C-004); one **selector** table (C-007). Inputs frozen below *before* looking at signs. Report fail or refuse; do not retune the 1-D, geometry, proxy, or target after seeing the numbers.
 
@@ -52,7 +52,7 @@ Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../e
 | Accuracy | capability check (must not be the selector) |
 | Arena Score | **exogenous proxy / selector** |
 
-**Frozen alias table:** only exact case-insensitive substring matches after stripping dates/sizes in a **pre-registered** alias list in `experiments/witness/fixtures/h4-selector-aliases-v1.json`. No aliases added after seeing Spearman signs.
+**Frozen alias table:** only exact case-insensitive substring matches after stripping dates/sizes in a **pre-registered** alias list in `experiments/backtest/fixtures/h4-selector-aliases-v1.json`. No aliases added after seeing Spearman signs.
 
 **Layer fail:** joined \(n \ge 8\); Spearman(\(Elo\), \(P(\mathrm{honest})\)) \(\le 0\); Spearman(\(Elo\), Accuracy) \(> 0\). Population occupying the public selector is ordered by the proxy, not by the honesty target.
 
@@ -64,6 +64,6 @@ Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../e
 
 ## Finding IDs
 
-**W-5** C-004 bundle · **W-6** C-007 selector. Ledger: `experiments/witness/results/FINDINGS.md`.
+**W-5** C-004 bundle · **W-6** C-007 selector. Ledger: `experiments/backtest/results/FINDINGS.md`.
 
-**Checkers:** `python3 experiments/witness/check_h4_bundle.py` · `python3 experiments/witness/check_h4_selector.py`
+**Checkers:** `python3 experiments/backtest/check_h4_bundle.py` · `python3 experiments/backtest/check_h4_selector.py`

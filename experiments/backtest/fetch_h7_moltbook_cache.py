@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Download jscmp4/Moltbook 2026-07-03 parquet pin into data/moltbook/.
 
-Protocol: drafts/plans/witness-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
+Protocol: drafts/plans/backtest-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
 Writes merged posts.parquet and comments.parquet for collect_h7_moltbook_mb7a.py.
 """
 

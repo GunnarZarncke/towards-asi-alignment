@@ -2,15 +2,15 @@
 
 **Frozen:** 2026-08-28. **Amended 2026-08-28 (richer sources):** H2 C-004a/C-005/C-006 are **layer fail** on joined traces. H3 C-006 is **layer fail** (BetacommandBot). H3 causal RfA remains **refuse** (join, no control). Reopen only by amending this file.
 
-Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../experiments/witness/data/) (gitignored except README). Artifacts: [`experiments/witness/`](../../experiments/witness/).
+Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
 
 ---
 
 ## H2 — Linux kernel (Perceval × BIC + git.kernel.org + -stable)
 
 **Protocol version:** `h2-v1.2.0`  
-**Fixture:** `experiments/witness/fixtures/h2-linux-v1.json`  
-**Checker:** `python3 experiments/witness/check_h2.py`
+**Fixture:** `experiments/backtest/fixtures/h2-linux-v1.json`  
+**Checker:** `python3 experiments/backtest/check_h2.py`
 
 | Leaf | Instrument (this freeze) | Honest outcome |
 |------|--------------------------|----------------|
@@ -26,8 +26,8 @@ Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../e
 ## H3 — Wikipedia (SNAP file + MediaWiki API + wiki-socks)
 
 **Protocol version:** `h3-v1.1.0`  
-**Fixture:** `experiments/witness/fixtures/h3-wikipedia-v1.json`  
-**Checker:** `python3 experiments/witness/check_h3.py`
+**Fixture:** `experiments/backtest/fixtures/h3-wikipedia-v1.json`  
+**Checker:** `python3 experiments/backtest/check_h3.py`
 
 | Leaf | Instrument (frozen) | Pre-registered outcome |
 |------|---------------------|------------------------|
@@ -40,7 +40,7 @@ Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../e
 
 ---
 
-**Finding IDs:** **W-3** H2 · **W-4** H3. Ledger: `experiments/witness/results/FINDINGS.md`.
+**Finding IDs:** **W-3** H2 · **W-4** H3. Ledger: `experiments/backtest/results/FINDINGS.md`.
 
 ---
 
@@ -56,4 +56,4 @@ Not a sixth simulation line. Raw caches in [`experiments/witness/data/`](../../e
 | H3 C-006 bots | BRFA **and** later flag/block | **Paid** BetacommandBot. |
 | H3 SPI as \(M\) | Socks vs twins **and** \(\kappa^*\) | Twins **paid**; \(\kappa^*\) **refuse**. |
 
-Collectors: `join_bic_review_tags.py`, `collect_rfa_*.py`, `collect_bot_successor.py`, `summarize_wiki_socks.py`. Re-fetch: `experiments/witness/data/README.md`.
+Collectors: `join_bic_review_tags.py`, `collect_rfa_*.py`, `collect_bot_successor.py`, `summarize_wiki_socks.py`. Re-fetch: `experiments/backtest/data/README.md`.

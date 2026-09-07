@@ -10,12 +10,12 @@ const sourcePath = path.join(repoRoot, "metadata", "experiments.yml");
 
 const source = await readFile(sourcePath, "utf8");
 const data = yaml.load(source);
-const witnessTestsPath = path.join(repoRoot, "metadata", "experiments-witness-tests.yml");
+const witnessTestsPath = path.join(repoRoot, "metadata", "experiments-backtests.yml");
 const witnessTests = yaml.load(await readFile(witnessTestsPath, "utf8"));
 data.lines = [...data.lines, ...(witnessTests.lines ?? [])];
 const errors = [];
 
-const KINDS = new Set(["sim", "external", "witness"]);
+const KINDS = new Set(["sim", "external", "backtest"]);
 const lineIds = new Set(data.lines.map((line) => line.id));
 const columnIds = new Set(data.coverageColumns.map((col) => col.id));
 const requiredColumnIds = new Set(
@@ -26,7 +26,7 @@ if (!data.purpose) {
   errors.push("missing purpose (overall experiments hub copy)");
 }
 if (!data.kinds || !KINDS.has("sim") || !data.kinds.sim) {
-  errors.push("missing kinds.sim/external/witness");
+  errors.push("missing kinds.sim/external/backtest");
 }
 for (const id of KINDS) {
   if (!data.kinds?.[id]?.title) {
@@ -46,7 +46,7 @@ for (const line of data.lines) {
   }
   const kind = line.kind ?? "sim";
   if (!KINDS.has(kind)) {
-    errors.push(`line ${line.id}: kind ${kind} is not sim|external|witness`);
+    errors.push(`line ${line.id}: kind ${kind} is not sim|external|backtest`);
   }
   if (!line.repoUrl && !line.location && !line.readmePath && !line.planPath) {
     errors.push(`line ${line.id}: missing source (repoUrl, location, readmePath, or planPath)`);
@@ -57,8 +57,8 @@ for (const line of data.lines) {
   if (!line.summary) {
     errors.push(`line ${line.id}: missing public summary`);
   }
-  if (kind === "witness") {
-    for (const field of ["witnesses", "host", "setup", "analysis", "numbers", "outcome"]) {
+  if (kind === "backtest") {
+    for (const field of ["bridgeHooks", "host", "setup", "analysis", "numbers", "outcome"]) {
       if (!line[field]?.trim()) {
         errors.push(`line ${line.id}: missing ${field}`);
       }

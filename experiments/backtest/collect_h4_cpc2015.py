@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CPC2015 Experiment 1 same-unit geometry vs ΔEV; write h4-cpc2015 fixture.
 
-Protocol: drafts/plans/witness-c004-cpc.md (h4-cpc2015-v1.0.0).
+Protocol: drafts/plans/backtest-c004-cpc.md (h4-cpc2015-v1.0.0).
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ CSV_PATH = CACHE / "RawDataExperiment1sorted.csv"
 OUT = ROOT / "fixtures" / "h4-cpc2015-v1.json"
 PROTOCOL = "h4-cpc2015-v1.0.0"
 ZENODO = "https://zenodo.org/api/records/321652"
-UA = {"User-Agent": "towards-asi-alignment-witness/1.0"}
+UA = {"User-Agent": "towards-asi-alignment-backtest/1.0"}
 MIN_ROWS = 40
 MIN_TEST = 8
 MIN_INCLUDED = 40

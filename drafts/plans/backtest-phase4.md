@@ -1,6 +1,6 @@
 # Witness Phase 4 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Scope: [`witness-phase0.md`](witness-phase0.md). Prior plan (not a freeze): [`witness-next.md`](witness-next.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md). Prior plan (not a freeze): [`backtest-next.md`](backtest-next.md).
 
 Not a sixth simulation line. No live CIRIS. No `Safe` / `MB11` lemmas. Thresholds and refuse lists below are fixed *before* looking at Lean `#print axioms` or tree checker output.
 
@@ -30,8 +30,8 @@ Not a sixth simulation line. No live CIRIS. No `Safe` / `MB11` lemmas. Threshold
 
 **Protocol version:** `c2-lean-v1.0.0`  
 **Finding ID:** **W-8**  
-**Fixture:** `experiments/witness/fixtures/c2-tool-scout-v1.json` (`c2-v1.0.0`).  
-**Module:** `formal/AlignmentProofSpine/WitnessC2Instance.lean` (successor to pinning inside `WorkedInstance.lean`; capture-theater instance stays there).
+**Fixture:** `experiments/backtest/fixtures/c2-tool-scout-v1.json` (`c2-v1.0.0`).  
+**Module:** `formal/AlignmentProofSpine/BacktestC2Instance.lean` (successor to pinning inside `WorkedInstance.lean`; capture-theater instance stays there).
 
 **Integer/enum columns used (transcribed, not invented):**
 
@@ -57,9 +57,9 @@ Not a sixth simulation line. No live CIRIS. No `Safe` / `MB11` lemmas. Threshold
 
 **Protocol version:** `h5-v1.0.0`  
 **Finding IDs:** **W-9**, **W-10**, **W-11**  
-**Checker:** `python3 experiments/witness/check_h5_trees.py`
+**Checker:** `python3 experiments/backtest/check_h5_trees.py`
 
-Each tree is JSON under `experiments/witness/fixtures/`. Required fields: `root_claim`, `binding_leaf`, `failed_or_unsupported_leaf`, `stop`, `stop_kind`, `sources`, `would_go_other_way_if_leaf_ignored`, `enforceable_handle`.
+Each tree is JSON under `experiments/backtest/fixtures/`. Required fields: `root_claim`, `binding_leaf`, `failed_or_unsupported_leaf`, `stop`, `stop_kind`, `sources`, `would_go_other_way_if_leaf_ignored`, `enforceable_handle`.
 
 **Refuse** an episode with no enforceable handle. Do not reuse W-4 BetacommandBot. CIRIS WA on the authored mock is not H5.
 
@@ -75,4 +75,4 @@ Each tree is JSON under `experiments/witness/fixtures/`. Required fields: `root_
 
 ## Finding IDs
 
-**W-7** Slice A · **W-8** Lean pin · **W-9..W-11** H5 trees. Ledger: `experiments/witness/results/FINDINGS.md`.
+**W-7** Slice A · **W-8** Lean pin · **W-9..W-11** H5 trees. Ledger: `experiments/backtest/results/FINDINGS.md`.

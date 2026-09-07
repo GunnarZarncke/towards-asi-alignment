@@ -1,10 +1,10 @@
 # Witness v2 — H7 Moltbook MB7a: entity pinning + anchored structure typing
 
-**Frozen:** 2026-08-31. Reopen only by amending this file. Parent: [`witness-v2.md`](witness-v2.md). Inventory: [`witness-v2-moltbook-inventory.md`](witness-v2-moltbook-inventory.md). Do **not** retune thresholds after seeing fixture scores.
+**Frozen:** 2026-08-31. Reopen only by amending this file. Parent: [`backtest-v2.md`](backtest-v2.md). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). Do **not** retune thresholds after seeing fixture scores.
 
 **Claim strength:** methodology-building. Pays **MB7a** (named `author_id` vs inferred unit; claim vs boundary) on agent-native public traces with **partial Tier A–D anchors** from independent investigations. Does **not** discharge MB1 globally. Does **not** claim exhaustive coalition oracle. Does **not** substitute for ET-5 passive UAD transfer.
 
-**Finding ID:** **W-17** — **structure_stop** (2026-08-31). Ledger: [`experiments/witness/results/FINDINGS.md`](../../experiments/witness/results/FINDINGS.md).
+**Finding ID:** **W-17** — **structure_stop** (2026-08-31). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../experiments/backtest/results/FINDINGS.md).
 
 ---
 
@@ -166,16 +166,16 @@ Let `C` be the `E_agent` cluster containing A1a and A1b (if both exist in corpus
 ## Checker
 
 ```bash
-python3 experiments/witness/collect_h7_moltbook_mb7a.py   # fetch/cache → fixture
-python3 experiments/witness/check_h7_moltbook_mb7a.py
+python3 experiments/backtest/collect_h7_moltbook_mb7a.py   # fetch/cache → fixture
+python3 experiments/backtest/check_h7_moltbook_mb7a.py
 ```
 
-Cache gitignored under `experiments/witness/data/moltbook/`. Fixture: `experiments/witness/fixtures/h7-moltbook-mb7a-v1.json`.
+Cache gitignored under `experiments/backtest/data/moltbook/`. Fixture: `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json`.
 
-Preregistration copy: `experiments/witness/fixtures/h7-moltbook-mb7a-v1.preregistration.json`.
+Preregistration copy: `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.preregistration.json`.
 
 ---
 
 ## Phase 0 amendment
 
-**H7** added to host roster when this freeze lands. See [`witness-phase0.md`](witness-phase0.md) amendment note.
+**H7** added to host roster when this freeze lands. See [`backtest-phase0.md`](backtest-phase0.md) amendment note.

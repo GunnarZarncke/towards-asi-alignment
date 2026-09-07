@@ -1,8 +1,8 @@
 # Witness Phase 1 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`witness.md`](witness.md). Scope: [`witness-phase0.md`](witness-phase0.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
 
-Not a sixth simulation line. Artifacts: [`experiments/witness/`](../../experiments/witness/).
+Not a sixth simulation line. Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
 
 ---
 
@@ -10,8 +10,8 @@ Not a sixth simulation line. Artifacts: [`experiments/witness/`](../../experimen
 
 **Instrument:** scripted dual timeline (sibling option A). No live CIRIS credentials. Lens scalars are **mock triage-green**, not CIRISLens.
 
-**Fixture:** `experiments/witness/fixtures/c2-tool-scout-v1.json`  
-**Checker:** `python3 experiments/witness/check_c2_mock.py`  
+**Fixture:** `experiments/backtest/fixtures/c2-tool-scout-v1.json`  
+**Checker:** `python3 experiments/backtest/check_c2_mock.py`  
 **Protocol version:** `c2-v1.0.0`
 
 **Pre-registered criteria** (sibling five-point test; all must hold on the frozen fixture):
@@ -52,4 +52,4 @@ Not a sixth simulation line. Artifacts: [`experiments/witness/`](../../experimen
 
 ## Finding IDs
 
-Prefix **`W-`** (Witness annex). Ledger: `experiments/witness/results/FINDINGS.md`.
+Prefix **`W-`** (Backtest line). Ledger: `experiments/backtest/results/FINDINGS.md`.

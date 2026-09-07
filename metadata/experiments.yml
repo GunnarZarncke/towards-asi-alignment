@@ -1,6 +1,6 @@
 # Structured experiment map for the companion site (sync → site/src/data/experiments.json).
 # Canonical long-form narrative: docs/EXPERIMENTS.md — update this file when tables, links, or headline findings change.
-# Per-test Witness cards: metadata/experiments-witness-tests.yml (merged at sync).
+# Per-test backtest cards: metadata/experiments-backtests.yml (merged at sync).
 
 claimStrength: >
   Methodology-building and sanity checks only. No experiment line validates the full project thesis,
@@ -9,12 +9,12 @@ claimStrength: >
 negativeResultsFirst: true
 
 purpose: >
-  When we propose a way to tell whether people can still change what a system does,
-  does that method actually work — or does it only look like it works? Every line
-  here freezes the scoring rules before the run, keeps the test designer from grading
-  their own homework where we can, and publishes what failed next to what worked.
-  The three classes below are different places to ask that same question. None of them
-  is a verdict on a deployed frontier model.
+  The distinctive empirical work here is the backtests: freeze a safety check, run
+  it on a history we did not write, and publish whether it would have stayed green
+  while the harm continued. A simulation we authored can only show that a method
+  works in a world we control. An external test asks whether a frozen instrument
+  still means anything on a substrate we did not build. None of the three is a
+  verdict on a deployed frontier model.
 
 canonicalDoc: docs/EXPERIMENTS.md
 openTasksPath: experiments/TODO.md
@@ -63,39 +63,44 @@ kinds:
       These annexes do not validate this project's [bridge assumptions](/cards/bridge/bridge-assumptions/)
       on frontier systems. They also do not replace the [simulations](/cards/experiment/simulations/).
       Short annex labels appear only in the linked card titles below.
-  witness:
-    title: Witness
-    cardId: witness-tests
+  backtest:
+    title: Backtests
+    cardId: backtests
     blurb: >
-      Would this safety check have stopped what actually happened — in kernel history,
-      encyclopedia logs, a published eval, court votes — or would it have stayed green
-      while the harm continued? A green dashboard with no stop is a fail, not a pass.
+      A backtest here is a frozen safety check run on a history we did not write — kernel
+      git, encyclopedia logs, published evals, court votes. Would the check have stayed
+      green while the harm continued? On Linux, Reviewed-by sat on 17,047 of 60,176
+      later-labeled bug-introducing commits. That is a result, not a broken test.
     overview: |
-      **What we are witnessing.** A process can print a green check while nothing that
-      governs later behavior actually stops. We look at histories that already exist
-      (git logs, encyclopedia logs, published evaluation tables, court votes) and pick
-      a concrete stretch of what happened: a bug that shipped, a vandalism campaign,
-      a round of choices or votes. Then we ask: if this proposed check had been the gate,
-      would that stretch have been stopped?
+      A **backtest** here is a frozen safety check run on a history we did not write.
+      Freeze the check, run it on a real stretch whose outcome is already known, and ask
+      whether it would have stayed green. The backtest is witnessing the failure: the
+      check stayed green while the harm continued.
 
-      We are not witnessing that a frontier model is aligned. We are witnessing whether
-      a *kind of check* has a handle that bites: a revert that stays reverted, a review
-      that actually blocks, a score that still tracks what it claims when you look at
-      the whole pattern of a choice, not one compressed number.
+      **What this buys the project.** The Lean spine and the authored simulations can
+      show that a check-shape is even *sayable*, and that it works in a world we wrote.
+      They cannot pay a safety-case leaf that says the same check would have bitten on
+      a process we did not design. That remainder is what backtests make visible: fail,
+      refuse, or null on a foreign trace. Construction chapters stay out of the v1
+      manuscript until a real stop exists on such a history. The [bridge hooks](/cards/experiment/w-3/)
+      on each card are the map from a finding to a named leaf — not a substitute for
+      that unpaid remainder.
 
-      **Why this is the work.** Anyone can write a simulator in which their detector looks
-      good. The distinctive empirical claim of this project is that an
-      alignment-relevant check must be able to stop something on a history we did not
-      write. A dashboard that stays green with no stop is a **fail**. If the data or
-      the unit of analysis is the wrong object, we **refuse** rather than stretch the
-      numbers. That is slower than adding more simulation runs. It is also the evidence
-      type that can change whether you treat a checklist, a license clause, or a
-      one-dimensional honesty score as a deployment gate.
+      **Why a sim pass is the cheap result.** Anyone can write a simulator in which their
+      detector looks good. The usual eval lie is that the same person builds the check
+      *and* the toy world. A backtest runs against foreign, pre-existing data — you cannot
+      quietly adjust the world to rescue the check. A layer fail on Linux is worth more
+      than a pass on a hand-built simulation: it shows the cheap check is foolable in
+      the wild.
 
-      See [experiment methodology](/cards/concept/experiment-methodology/) (freeze the
-      protocol before scoring; do not retune a null) and the [glossary](/glossary/).
-      Each test below has its own card, a GitHub source link, and a results link.
-      The combined numbered ledger is also at [results](/experiments/findings/witness/).
+      **Worked example (analogy, not an AI measurement).** On Linux, `Reviewed-by` was
+      present on 17,047 of 60,176 SHAs that later received a developer-labeled
+      bug-introducing commit — the check would have stayed green. Kernel review is an
+      analogy for a correction-channel check-shape, not evidence about a frontier model.
+
+      If the data or unit of analysis is the wrong object, we **refuse** rather than
+      stretch the numbers. See [experiment methodology](/cards/concept/experiment-methodology/)
+      and the combined ledger at [results](/experiments/findings/backtest/).
 
 ledgers:
   - lineId: toy-simulation
@@ -113,10 +118,10 @@ ledgers:
   - lineId: graded-lab-simulation
     label: Graded-lab findings
     path: experiments/graded-lab-simulation/results/FINDINGS.md
-  - lineId: witness
-    overviewCardId: witness-tests
-    label: Witness findings
-    path: experiments/witness/results/FINDINGS.md
+  - lineId: backtest
+    overviewCardId: backtests
+    label: Backtest findings
+    path: experiments/backtest/results/FINDINGS.md
 
 lines:
   - order: 0
@@ -451,9 +456,9 @@ howToRead:
     text: Schedule cues as stress, not a forecast check.
   - lineId: et-4
     text: Hackathon organism and replay; not a frontier discharge.
-  - lineId: witness-tests
+  - lineId: backtests
     text: >
-      Read these as stop-checks on histories we did not write, not as another simulator.
+      Safety-check backtests on histories we did not write, not another simulator.
       Strongest quantitative: [Moral Machine same-person choices](/cards/experiment/w-12/)
       and [Supreme Court justice votes](/cards/experiment/w-16/).
       [Linux review tags](/cards/experiment/w-3/) and [Wikipedia review](/cards/experiment/w-4/)
@@ -476,9 +481,9 @@ coverageColumns:
     short: Lab sim
   - id: graded-lab-simulation
     short: Graded lab sim
-  - id: witness
-    short: Witness
-    overviewCardId: witness-tests
+  - id: backtest
+    short: Backtests
+    overviewCardId: backtests
     optional: true
 
 coverageFeatures:
@@ -492,7 +497,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)"
       graded-lab-simulation: "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12; ET-1 external transfer to Orbit closed as a substrate-suitability limit, not a clean pass/fail (GL-86)"
-      witness: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
+      backtest: "H1 C2 mock: named Verify/Lens green, tool+memory still act (W-1); Lean pin of the same fixture (W-8); stack C2 mock-LLM P3 null, stub 0 hits (W-15)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -503,7 +508,7 @@ coverageFeatures:
       goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
       lab-simulation: "Stipulated; report-content ontology"
       graded-lab-simulation: "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)"
-      witness: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14); SCDB justice geometry beats issueArea 1-D (W-16)"
+      backtest: "Moral Machine country AMCE: Number 1-D close while 8-D geometry far (W-5); WVS/ESS/LHCV-host refused (W-7); raw UserID geometry beats Number 1-D on held-out choices (W-12); PDG dump refused (W-13); CPC2015 geometry does not beat ΔEV/intercept (W-14); SCDB justice geometry beats issueArea 1-D (W-16)"
   - id: mb3
     label: "MB3 Bearer maps (who values apply to)"
     cells:
@@ -524,7 +529,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (chosen deception, board corrections)"
       lab-simulation: "Playbooks + access capture + report divergence"
       graded-lab-simulation: "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)"
-      witness: "H1 WA deferral bypass (W-1); Lean pin of the same bypass (W-8); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
+      backtest: "H1 WA deferral bypass (W-1); Lean pin of the same bypass (W-8); H2 revert then same-title re-entry (W-3); H3 Orangemoody both ends of review (W-4)"
   - id: mb5
     label: "MB5 Successor closure / ontology shift"
     cells:
@@ -535,7 +540,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes LS-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (LS-31)"
       graded-lab-simulation: "—"
-      witness: "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
+      backtest: "H2 -stable listed tags green, hunk identity fails (W-3); H3 BRFA then bot-flag/block (W-4)"
   - id: mb6
     label: "MB6 Selection basins / gradual disempowerment"
     cells:
@@ -546,7 +551,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "D3.1 population selection (LS-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (LS-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned"
       graded-lab-simulation: "Phase 8 throughput selection null (GL-23--GL-27); R-MB6a variation null harness pass (GL-81); R-MB6b EAI-gate confirmatory SKIP after growth (GL-84)"
-      witness: "Arena Elo (20250301) vs MASK honesty: Spearman Elo×honest −0.105, Elo×accuracy +0.811 (W-6)"
+      backtest: "Arena Elo (20250301) vs MASK honesty: Spearman Elo×honest −0.105, Elo×accuracy +0.811 (W-6)"
   - id: mb7
     label: "MB7 Hidden capability / cost of faking monitors"
     cells:
@@ -557,7 +562,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent (shadow route, tool gating)"
       lab-simulation: "Oracle hidden capability/hazard on models"
       graded-lab-simulation: "Graded (continuous) oracle capability/hazard/harm state, not pass/fail"
-      witness: "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
+      backtest: "MASK honesty does not scale → refuse as safety leaf (W-2); Reviewed-by and SPI refused as M (W-3/W-4); Moltbook MB7a Tier A broadcast substrate stops discursive merge test (W-17 structure_stop)"
   - id: mb7d
     label: "MB7d Inferential coupling (coordination severing channels)"
     cells:
@@ -588,7 +593,7 @@ coverageFeatures:
       goal-agent-simulation: "—"
       lab-simulation: "Report vs monitor contradiction surface"
       graded-lab-simulation: "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)"
-      witness: "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3); GPLv2 source-offer green, install handle silent until GPLv3 §6 (W-10)"
+      backtest: "Reviewed-by on 17047/60176 later-labeled bug-introducing SHAs (W-3); GPLv2 source-offer green, install handle silent until GPLv3 §6 (W-10)"
   - id: mb10
     label: "MB10 Successor / measurement forgeability"
     cells:
@@ -599,7 +604,7 @@ coverageFeatures:
       goal-agent-simulation: "Escalation + twin semantics (GA-21)"
       lab-simulation: "Planned; Phase 8 LLM red-team exploratory (LS-7/LS-8)"
       graded-lab-simulation: "—"
-      witness: "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
+      backtest: "Same host episodes as MB5: listed checklist green, unlisted invariant fails (W-3/W-4)"
   - id: three-plane
     label: "Three-plane separation (world / audit / referee)"
     cells:
@@ -640,7 +645,7 @@ coverageFeatures:
       goal-agent-simulation: "Emergent utility + tools"
       lab-simulation: "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)"
       graded-lab-simulation: "Emergent softmax-policy agents; no LLM adapter in scope"
-      witness: "Host traces (except W-1 authored mock); not a sixth sim"
+      backtest: "Host traces (except W-1 authored mock); host traces; W-1 authored mock"
   - id: blind-generation
     label: "Blind generation / ontology drift"
     cells:

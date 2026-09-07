@@ -1,10 +1,10 @@
 # Audit telemetry for AI agent projects
 
-**Status:** draft report (2026-09-05). **Not a freeze. Not v1 manuscript.** Candidate later for an audit recommendation (Witness v2 / Construct 2.0 Family C). Parent lanes: [`witness-v2.md`](witness-v2.md), [`construct.md`](construct.md). Empirical sources: in-repo simulations, ET-1/ET-2, Witness W-1–W-17 (esp. W-17 Moltbook MB7a).
+**Status:** draft report (2026-09-05). **Not a freeze. Not v1 manuscript.** Candidate later for an audit recommendation (backtest v2 / Construct 2.0 Family C). Parent lanes: [`backtest-v2.md`](backtest-v2.md), [`construct.md`](construct.md). Empirical sources: in-repo simulations, ET-1/ET-2, backtests W-1–W-17 (esp. W-17 Moltbook MB7a).
 
 **Claim strength:** methodology-building. This is a **recording recommendation**, not a claim that logging discharges `MB*` or that frontier systems are auditable. A green dashboard on the wrong layer is not a pass.
 
-**Placement (undecided):** do **not** add a v1 chapter. Possible 2.0 homes: Construct Family C (process conditions on builders); Witness v2 (what hosts must export); `docs/METHODOLOGY.md` instrumentation note; or a short App N / research-program paragraph. Decide when promoting to a recommendation.
+**Placement (undecided):** do **not** add a v1 chapter. Possible 2.0 homes: Construct Family C (process conditions on builders); backtest v2 (what hosts must export); `docs/METHODOLOGY.md` instrumentation note; or a short App N / research-program paragraph. Decide when promoting to a recommendation.
 
 ---
 
@@ -211,7 +211,7 @@ If telemetry is discursive-only, entity pinning stays green while humans or scri
 
 ## Promotion checklist (when this becomes a recommendation)
 
-- [ ] Author decision: Construct 2.0 Family C vs Witness v2 vs Methodology vs appendix
+- [ ] Author decision: Construct 2.0 Family C vs backtest v2 vs Methodology vs appendix
 - [ ] Freeze a **minimum schema** (field names, tiers) separate from sim internals
 - [ ] Do not retune W-17 thresholds to force owner recovery; owner join is a **new measurand**
 - [ ] Optional sim tickets: channel enum, fingerprints, fictional `owner_id` fixture

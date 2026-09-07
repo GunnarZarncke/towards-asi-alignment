@@ -1,6 +1,6 @@
 # Voice — claim-strength voice and naming
 
-Status: **in progress** (2026-08-21). §1 started by author request. **Witness** (deployment witnesses) is independent — see [`drafts/plans/witness.md`](witness.md). Chapter narrative does not name the program. **Exception:** Appendix I and `/experiments/` may list **witness tests** as a third evidence class (with simulations and external tests).
+Status: **in progress** (2026-08-21). §1 started by author request. **Backtests** (safety-check backtests) are independent — see [`backtest.md`](backtest.md). Chapter narrative does not name the program. **Exception:** Appendix N and `/experiments/` may name **backtests** as the distinctive empirical class (authored simulations and external tests stay supporting).
 
 ## Goal
 
@@ -14,7 +14,7 @@ Align **reader-facing voice** with **paid claims**: the modest version should ar
 - Field-hub “advances/complicates discharge on a crux” (technical catalog term in [`reference/field-agendas/`](../../reference/field-agendas/)).
 - Historical release cards (`release-v1-*`).
 
-**Do not** mention or depend on any empirical witness program in *chapter* copy. The experiments appendix and `/experiments/` may name witness tests as a class.
+**Do not** mention or depend on any empirical backtest program in *chapter* copy. The experiments appendix and `/experiments/` may name backtests as a class.
 
 ---
 
@@ -239,6 +239,6 @@ python3 scripts/check_voice.py   # after chapterthesis edits
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
 | [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-044 |
 | [`site/src/content/cards/what-not-claiming.md`](../../site/src/content/cards/what-not-claiming.md) | Scope limits card |
-| [`drafts/plans/witness.md`](witness.md) | Separate empirical program (not a dependency; do not mention in copy) |
+| [`drafts/plans/backtest.md`](backtest.md) | Separate empirical program (not a dependency; do not name in chapter copy) |
 | [`drafts/plans/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |
 | [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md) | E/G snapshot; 2.0 rerun lives on Construct P4 |

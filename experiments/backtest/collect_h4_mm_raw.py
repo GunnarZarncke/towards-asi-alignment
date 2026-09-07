@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Moral Machine raw same-unit bundle effect; write h4-mm-raw fixture.
 
-Protocol: drafts/plans/witness-c004-raw.md (h4-mm-raw-v1.0.0).
+Protocol: drafts/plans/backtest-c004-raw.md (h4-mm-raw-v1.0.0).
 Streams SharedResponses.csv.tar.gz; does not extract the CSV to disk.
 """
 

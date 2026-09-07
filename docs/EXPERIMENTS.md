@@ -1,16 +1,16 @@
 # Experimental evidence
 
-> **Methodology (canonical):** [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) — freeze, preregistration, blind generation, Witness failure conditions. **Structured map:** [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
+> **Methodology (canonical):** [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) — freeze, preregistration, blind generation, backtest failure conditions. **Structured map:** [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
 
 > **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean dependency spine's explicit bridge axioms (`MB1`–`MB10`).
 
-> **Three classes:** **simulations** (authored testbeds), **external tests** (ET-1–ET-4 on substrates this project did not build), **witness tests** (fail/refuse on existing host traces; prefix `W-`). Companion hub: `/experiments/`.
+> **Distinctive class:** **backtests** (fail/refuse on a history we did not write; prefix `W-`) are what this project can show that an authored simulation cannot. **Simulations** (authored testbeds) and **external tests** (ET-1–ET-4) ask whether a method works in a world we control, then whether a frozen instrument still means anything off that world. Companion hub: `/experiments/`.
 
 > **Finding IDs:** each line uses a unique prefix (`AD-`, `DP-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`, `W-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
 
 > **Manuscript index:** which findings below are strong enough to cite from a chapter, how each is classified (positive/negative/ambiguous), bidirectional links to the citing chapter \emph{section}, and the bridge/feature coverage matrix live in Appendix "Experimental Evidence" (`appendices/appN-experimental-evidence.tex`), not here. This document stays the full narrative per line, including findings too minor for that appendix.
 
-The manuscript's load-bearing bridges are mostly open problems. What follows is a chronological account of how empirical artifacts were built—each line learning from the last—and a high-level map of which book features each line actually exercises. Prose below is deliberately one "page" per line: enough to orient a reader who has the book's vocabulary but not the repo.
+The manuscript's load-bearing bridges are mostly open problems. Backtests are the class that can make a proposed gate fail on a process this project did not write; the simulation lines below are the chronology of how the instruments were built. Prose is deliberately one "page" per line: enough to orient a reader who has the book's vocabulary but not the repo.
 
 **Negative results are first-class.** Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers, that is recorded rather than buried. The embedded line maintains a canonical ledger in [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md); the goal-agent line uses [`experiments/goal-agent-simulation/results/FINDINGS.md`](../experiments/goal-agent-simulation/results/FINDINGS.md); the lab line uses [`experiments/lab-simulation/results/FINDINGS.md`](../experiments/lab-simulation/results/FINDINGS.md) (LS-1 through LS-33, including Phase 8 exploratory LLM nulls, the S6/S7 `shared_slot` comms-free detection gap, S6's real-LLM non-determinism miss, and the untargeted-probe caveat on its noise-tolerant follow-up); the graded-lab line uses [`experiments/graded-lab-simulation/results/FINDINGS.md`](../experiments/graded-lab-simulation/results/FINDINGS.md) (GL-0 through GL-53, including the structurally-unreachable "high" ambiguity band from the agent's own vantage, the roster-scope reason a calibration battery's separation criterion still fails under either vantage, a first Phase 8 selection battery reviewed and flagged with four open concerns, three same-day follow-up phases whose results sharpen those concerns further rather than resolving them in the battery's favor — most notably a selection-mechanism-noise reading of the original result — and the v3 institutional-runtime program through slice D criteria freeze GL-53: integrated reference fixture with proper UAD GL-51, host channel coupling GL-52, and `V3_REFERENCE_T=200` after affordable-set starvation GL-50). These negatives bound the claims the manuscript may make.
 
@@ -34,7 +34,7 @@ Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 
 ## External transfer (cross-codebase)
 
-Four **external-transfer (ET)** annexes apply frozen in-repo instruments to traces or substrates this project did not build. Each has its own pre-registration, finding-ID prefix, and explicit stop/close criteria. They do **not** validate book bridges on real frontier systems.
+Four **external-transfer (ET)** annexes apply frozen in-repo instruments to traces or substrates this project did not build. Each has its own pre-registration, finding-ID prefix, and explicit stop/close criteria. They do **not** validate book bridges on real frontier systems. They also do not replace the backtests: ET asks whether *our* frozen instrument still means anything off-substrate; a backtest asks whether a *proposed gate* would have stayed green on a history we did not write.
 
 | Line | Substrate | Status | Key finding |
 |------|-----------|--------|-------------|
@@ -47,9 +47,11 @@ Plans: [`PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md), [`PLAN
 
 ---
 
-## Witness tests (host traces)
+## Backtests
 
-Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and review tags, Wikipedia logs, published MASK, a CIRIS-shaped mock, FAA/FSF/Debian documents). Annex: [`experiments/witness/`](../experiments/witness/). Ledger: [`experiments/witness/results/FINDINGS.md`](../experiments/witness/results/FINDINGS.md). Manuscript index: Appendix I, Witness tests.
+A backtest here is a frozen safety check run on a history we did not write. That is the remainder an authored simulation cannot pay: whether the same check-shape would have stayed green on a process we did not design. On Linux, `Reviewed-by` was present on 17,047 of 60,176 later-labeled bug-introducing commits — the check would have stayed green. That is an analogy for correction-channel check-shapes, not AI measurement. Construction chapters stay out of the v1 manuscript until a real stop exists on such a history.
+
+Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and review tags, Wikipedia logs, published MASK, a CIRIS-shaped mock, FAA/FSF/Debian documents). Code: [`experiments/backtest/`](../experiments/backtest/). Ledger: [`experiments/backtest/results/FINDINGS.md`](../experiments/backtest/results/FINDINGS.md). Manuscript index: Appendix N, Backtests.
 
 | ID | Host | Outcome |
 |----|------|---------|
@@ -69,10 +71,11 @@ Not a sixth simulation line. Frozen fail/refuse protocols on hosts whose traces 
 | **W-14** | CPC2015 Exp. 1 | **Null** geometry vs ΔEV/intercept (acc 0.435 vs 0.542 vs 0.545; \(n=113\)) |
 | **W-15** | CIRISAgent stack C2 | **Null** P3: mock-LLM `$defer` recorded; world-effect stub 0 hits |
 | **W-16** | SCDB justice votes | **Fail** issueArea 1-D as same-unit policy; **pass** geometry detection (acc 0.814 vs 0.623 vs 0.616; \(n=40\) justices). Observational; not v2 CCI |
+| **W-17** | Moltbook MB7a | **structure_stop** Tier A anchors join but do not merge; Jan-31 discursive activity broadcast-only |
 
 H0 sims stay backing. No MB discharge. KernelCI, lore NAK, remaining optional C-004 hosts (BBQ/HH), and Construct *concrete* chapters unpaid (H5 is analogue, not an AI stop with deployment leverage).
 
-**Sprint synthesis (W-1–W-16).** The Witness lane demonstrates that frozen fail/refuse protocols can return concrete counterexamples, nulls, and justified refusals instead of automatically green dashboards. That is useful epistemic discipline; it is not evidence that the book's proposed measurements reliably identify aligned systems. Strongest paid results: W-3/W-4 (external socio-technical records falsify simple checklist implications), W-12 and W-16 (same-unit geometry beats 1-D compression on held-out choices/votes), W-2/W-7/W-13 (refusal when data or units are wrong). W-14 and W-15 were recorded as nulls without retuning. W-15 does not show deferral stopped a previously working bypass — only that no post-defer world effect was demonstrated on this mock-LLM stack freeze. Companion site: `/experiments/#witness`, key findings at `/experiments/findings/witness/`.
+**Sprint synthesis (W-1–W-17).** The backtest lane demonstrates that frozen fail/refuse protocols can return concrete counterexamples, nulls, and justified refusals instead of automatically green dashboards. That is useful epistemic discipline; it is not evidence that the book's proposed measurements reliably identify aligned systems. Strongest paid results: W-3/W-4 (external socio-technical records falsify simple checklist implications), W-12 and W-16 (same-unit geometry beats 1-D compression on held-out choices/votes), W-2/W-7/W-13 (refusal when data or units are wrong). W-14 and W-15 were recorded as nulls without retuning. W-15 does not show deferral stopped a previously working bypass — only that no post-defer world effect was demonstrated on this mock-LLM stack freeze. Companion site: `/experiments/#backtest`, key findings at `/experiments/findings/backtest/`.
 
 ---
 
