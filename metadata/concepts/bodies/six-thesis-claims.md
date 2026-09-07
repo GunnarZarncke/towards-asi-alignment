@@ -19,7 +19,7 @@ The Introduction names six load-bearing claims — the reader contract for the f
 |---|-------------|--------|--------------|---------|
 | 1 | Boundary | C-003 | [Boundary discovery](/cards/boundary-discovery/) | I (preview), II |
 | 2 | Value-bundle | C-004 | [Value-bundle transport](/cards/value-bundle-transport/) | IV–V |
-| 3 | Grounding | C-004a | [Grounding viability](/cards/grounding-viability/) | I, IV, VI, IX, X |
+| 3 | Grounding | C-012 | [Grounding viability](/cards/grounding-viability/) | I, IV, VI, IX, X |
 | 4 | Correction | C-005 | [Correction-channel integrity](/cards/correction-channel-integrity/) | VI |
 | 5 | Successor | C-006 | [Successor stability](/cards/successor-stability/) | VII–VIII |
 | 6 | Basin / selection | C-007 | [Attractor control](/cards/attractor-control/) | VIII |

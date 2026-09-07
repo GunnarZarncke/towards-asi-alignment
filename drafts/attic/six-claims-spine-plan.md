@@ -11,7 +11,7 @@ Keep the Introduction's six thesis claims as the reader contract; align safety-c
 | Phase | Description | Status |
 |-------|-------------|--------|
 | **0** | Audit artifact (`drafts/claim-spine.md`) | Done |
-| **1** | Consistency fixes (ch48 six, C-044, ch30 count, executive-overview order) | Done |
+| **1** | Consistency fixes (ch48 six, C-013, ch30 count, executive-overview order) | Done |
 | **2** | Navigational spine (intro labels, `sec:how-claims-unfold`, `tables/claim-spine.tex`) | Done |
 | **3** | Dedupe safety-case enumerations (`claim-layer-map.tex`, ch03 shorten) | Done |
 | **4** | Part openers + first-chapter epistemic tags | Done |

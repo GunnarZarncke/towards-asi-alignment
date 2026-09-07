@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-07 (backtest rename: Witness → Backtests class name).
+Last updated: 2026-09-07 (Voice lane closed; claim ID renumber).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-07 (backtest rename: Witness → Backtests class name).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`voice.md`](../plans/voice.md) · [`backtest.md`](../plans/backtest.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary in [`voice.md`](../plans/voice.md) §9.
+**Active lanes:** [`backtest.md`](../plans/backtest.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-07:** **Voice lane closed** — ledgers fresh; C-012/C-013 renumber; WWCTV→chokepoint moved to optional TODO. Log: `2026-09-07-claim-id-renumber.md`.
+- **2026-09-07:** **Claim ID renumber + ledger freshness** — `C-004a`→`C-012`, `C-044`→`C-013`; W-* bullets on claims ledger; U-ledger chokepoint note. Log: `2026-09-07-claim-id-renumber.md`.
 - **2026-09-07:** **Witness → Backtest rename** — Third experiment class is **Backtests** (`experiments/backtest/`, `/cards/experiment/backtests/`, `/experiments/findings/backtest/`). YAML `bridgeHooks`; App N + site copy rewritten; no old URL redirects. Log: `2026-09-07-backtest-rename.md`.
 - **2026-09-07:** **Appendix stubs retired + App N readings** — Deleted unused appH–K stubs; print-letter table in `INSTRUCTIONS.md` §14. App N: protocol note + host-trace safety-case readings (W-9, W-3/W-4, W-10, W-11, W-1/W-8). Plan: [`appendix-stubs.md`](../plans/appendix-stubs.md). Log: `2026-09-07-appendix-stubs-appn-readings.md`.
 - **2026-09-07:** **Front-door vocabulary** — Plain English on first-contact surfaces; policy in [`voice.md`](../plans/voice.md) §9. Log: `2026-09-07-front-door-vocab.md`.

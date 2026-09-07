@@ -82,7 +82,7 @@ lines:
       can gate deployment. If honesty does not scale, that leaf is the wrong object.
     bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 3): whether published honesty under pressure is an adversarially verifiable safety metric.
-      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-012): the silent-gap shape — a green honesty score is not the same object as ground-truth accuracy scaling.
       - [MB7 — Hidden Capability](/cards/bridge/mb7-hidden-capability-and-access/): whether a capability proxy (honesty gap) can gate deployment without a cost-of-faking bound.
     host: >
       Published MASK evaluation (Ren et al., arXiv:2503.03750). Hugging Face gated
@@ -128,7 +128,7 @@ lines:
       stay green while a later bug or a silent hunk change continues, the check did not
       have a handle that bites.
     bridgeHooks: |
-      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-012): whether a green `Reviewed-by` on a commit still means that commit did not later carry a bug label.
       - [Correction-channel integrity](/cards/concept/correction-channel-integrity/) (C-005): whether a revert stopped the same class of change from re-entering.
       - [Successor stability](/cards/concept/successor-stability/) (C-006): whether listed `-stable` tags mean the patch hunk is identical to upstream.
       - [MB10 — Successor Gaming](/cards/bridge/mb10-successor-forgeability/): the checklist-green / unlisted-invariant-fails pattern on real maintainer history.
@@ -464,7 +464,7 @@ lines:
       still cannot change the running device. The later clause is the handle.
     bridgeHooks: |
       - [Experiment methodology](/cards/concept/experiment-methodology/) (Expectation 4): distributor checklist green is not user install rights.
-      - [Grounding viability](/cards/concept/grounding-viability/) (C-004a): GPLv2 source-with-object can stay green while the user halt is missing.
+      - [Grounding viability](/cards/concept/grounding-viability/) (C-012): GPLv2 source-with-object can stay green while the user halt is missing.
     host: >
       FSF GPLv2 and GPLv3 license texts as a frozen implication tree.
     setup: >

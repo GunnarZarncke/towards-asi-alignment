@@ -5,7 +5,7 @@ Maintained manually; update when intro claims, safety-case layers, or ch48 statu
 
 **Last cross-check:** 2026-08-17 (Phase 0–1 of six-claims spine plan).
 
-**Ledger IDs:** C-003 (boundary), C-004 (value-bundle), C-004a (grounding), C-005 (correction), C-006 (successor), C-007 (basin). Synthesis: C-044 → ch48 §Opening Claims Revisited.
+**Ledger IDs:** C-003 (boundary), C-004 (value-bundle), C-012 (grounding), C-005 (correction), C-006 (successor), C-007 (basin). Synthesis: C-013 → ch48 §Opening Claims Revisited.
 
 **Second-tier spine claims** (load-bearing but not in the Introduction six): C-002 (value-update thesis), C-008 (differential growth), C-009 (transport/laundering), C-010 (adversarial measurement), C-011 (civilizational limit).
 
@@ -18,7 +18,7 @@ Maintained manually; update when intro claims, safety-case layers, or ch48 statu
 | **Boundary** | C-003 | I (preview), II, IX | ch01, ch06–10, ch41 | ch07, ch09, ch10 | ch03 Claim 1; ch33 boundary | Strong framing; empirical recovery open | Estimator soundness (MB1); UAD transfer nulls (GL-76/79); task-ontology leakage in \(I_{\mathrm{ctrl}}\) (GL-13) |
 | **Value-bundle** | C-004 | IV–V | ch15–20, ch21–24 | ch16, ch19, ch20 | ch03 Claim 3; ch33 bundle | More confident under fixed ontology; transport conditional | Low-dimensionality unmeasured (A-001); bearer/ontology shift; tradeoff curvature estimation |
 | *(bearer sub-layer)* | part of C-004 | IV, X | ch18, ch47 | ch18, ch47 | ch03 Claim 4; ch33 bearer | Folded into value-bundle discharge; ch47 philosophical limit | Bearer-map commutation; merger/substrate cases |
-| **Grounding** | C-004a | I, IV, VI, IX, X | ch03, ch16, ch24, ch42, ch46–47 | ch03, ch46 | ch03 Claim 0; ch42 layer 2 | Strong necessary condition; deployment-grade certification open | \(d_V\)/\(d_Z\) domain-specific; abstraction-gap exploitation; conservative-abstraction bridges |
+| **Grounding** | C-012 | I, IV, VI, IX, X | ch03, ch16, ch24, ch42, ch46–47 | ch03, ch46 | ch03 Claim 0; ch42 layer 2 | Strong necessary condition; deployment-grade certification open | \(d_V\)/\(d_Z\) domain-specific; abstraction-gap exploitation; conservative-abstraction bridges |
 | **Correction** | C-005 (+ C-002 thesis) | I (ch04), VI, X | ch25–29, ch45–46 | ch25, ch26, ch29 | ch03 Claim 5; ch33 correction | Strong necessary condition; sufficiency conditional | CCI capture/domestication; adversarial verifiability (MB7); legitimacy bridges |
 | **Successor** | C-006 | VII–VIII (ch08 preview) | ch08, ch30–33 | ch30, ch31 | ch03 Claim 6; ch33 successor | Strong necessity; certification method open | MB10 forgeability; passive-only audit null (TS-1); conserved-property set completeness |
 | **Basin / selection** | C-007 | VIII | ch34–38 | ch34, ch37, ch38 | ch42 layer 7; ch33 implicit | Plausible; pivotal-process time budget open | Coalition detection; slow vs fast path (ch37); Goodhart under pressure (GL-85 null) |
@@ -64,7 +64,7 @@ Maintained manually; update when intro claims, safety-case layers, or ch48 statu
 | VII | 30–33 | **Successor**; certification checklist |
 | VIII | 34–38 | **Basin** / selection |
 | IX | 39–44 | Adversarial measurement (C-010); safety case assembly |
-| X | 45–48 | Civilizational limit (C-011); **C-044 discharge** (ch48) |
+| X | 45–48 | Civilizational limit (C-011); **C-013 discharge** (ch48) |
 
 ---
 
@@ -85,7 +85,7 @@ Maintained manually; update when intro claims, safety-case layers, or ch48 statu
 
 - ch48 summary: "five opening claims" → "six opening claims" ✓
 - ch30: "ten-claim" → "nine-claim" (matches ch33 enumeration) ✓
-- `metadata/claims-ledger.md` C-044: grounding discharge noted; stale "five promises" text removed ✓
+- `metadata/claims-ledger.md` C-013: grounding discharge noted; stale "five promises" text removed ✓
 - `frontmatter/executive-overview.tex`: six preservation problems reordered to match Introduction claim order; boundary added as first item ✓
 
 ## Phase 2 navigational spine applied (2026-08-17)

@@ -19,7 +19,7 @@ const card = defineCollection({
     experimentOverview: z.boolean().optional(),
     /** sim | external | backtest; set on generated experiment cards. */
     experimentKind: z.enum(["sim", "external", "backtest"]).optional(),
-    /** Optional link to a metadata/claims-ledger.md entry (e.g. "C-004a"). */
+    /** Optional link to a metadata/claims-ledger.md entry (e.g. "C-012"). */
     claimId: z.string().optional(),
     /** ISO date (YYYY-MM-DD) for release cards; omit on the hub card. */
     releasedAt: z.string().optional(),

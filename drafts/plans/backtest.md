@@ -4,7 +4,7 @@ Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`b
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`backtest-phase0.md`](backtest-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
-- [x] **Phase 2** — H2 Linux (W-3 fail on C-004a/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
+- [x] **Phase 2** — H2 Linux (W-3 fail on C-012/C-005/C-006) + H3 Wikipedia (W-4; C-006 fail, causal RfA refuse)
 - [x] **Phase 3** — C-004 Moral Machine non-implication (W-5) + C-007 Arena×MASK selector (W-6)
 - [x] **Phase 4** — C-004 leftover refuses (W-7); Lean C2 pin (W-8); three H5 trees (W-9–W-11)
 - [x] **W-12** — Moral Machine raw same-unit geometry vs 1-D ([`backtest-c004-raw.md`](backtest-c004-raw.md))
@@ -41,9 +41,9 @@ Meet the **implied reader expectations** from the current stack (values → mech
 |----|------|--------------|----------------------|--------|
 | **H0** | In-repo sims | Oracle + frozen fixtures exist | Toy / embedded / lab / graded-lab; `WorkedInstance.lean` | Lean fixture wiring; cost-of-faking **with ground truth only** |
 | **H1** | CIRIS local stack | Cloned in review workspace; named-identity vs composite is the sharpest falsifier | Agent traces, Accord, Verify/Lens semantics, tool loop (live or C2 mock) | C-003, C-005, C-006 (partial), MB11 (if real stop), Expectation 5 |
-| **H2** | Linux kernel | Public git + labeled review/bug pairs | [Zenodo Linux commits 2005–2023](https://zenodo.org/records/10654193); git.kernel.org; `Reviewed-by` / NAK / revert; stable trees | C-003, C-004a, C-005, C-006, C-007, MB10 analogue |
-| **H3** | Wikipedia | Dumps + elections + sockpuppet ground truth | [SNAP wiki-RfA](https://snap.stanford.edu/data/wiki-RfA.html); XML dumps; SPI/sockpuppet cases; bot policy | C-004a, C-005, C-006, C-007, standalone anti-capture |
-| **H4** | Model-eval public surface | No lab access required | [MASK](https://huggingface.co/datasets/cais/MASK); field-news incidents (HF eval, CoT optimization, BrowseComp eval-awareness); HF Hub cards + leaderboards; LMSYS Arena | C-004a, C-010, Expectation 3, Goodhart-as-selector |
+| **H2** | Linux kernel | Public git + labeled review/bug pairs | [Zenodo Linux commits 2005–2023](https://zenodo.org/records/10654193); git.kernel.org; `Reviewed-by` / NAK / revert; stable trees | C-003, C-012, C-005, C-006, C-007, MB10 analogue |
+| **H3** | Wikipedia | Dumps + elections + sockpuppet ground truth | [SNAP wiki-RfA](https://snap.stanford.edu/data/wiki-RfA.html); XML dumps; SPI/sockpuppet cases; bot policy | C-012, C-005, C-006, C-007, standalone anti-capture |
+| **H4** | Model-eval public surface | No lab access required | [MASK](https://huggingface.co/datasets/cais/MASK); field-news incidents (HF eval, CoT optimization, BrowseComp eval-awareness); HF Hub cards + leaderboards; LMSYS Arena | C-012, C-010, Expectation 3, Goodhart-as-selector |
 | **H5** | Conductive-artifact archive | Appendix M already names mechanisms | NTSB/FAA ADs; FDA recalls / FAERS; GPLv2→v3 + AGPL (tivoization, SaaS); Debian RC freeze | Expectation 4 (real stop), MB11 analogue |
 
 **Do not** pick another multi-agent gym whose units are scripted into the generator (ET-1 lesson).
@@ -80,7 +80,7 @@ Sims are weakest (toy stub; graded-lab selectable-Goodhart **null** GL-85). Need
 
 **Met if (same-unit, ch16):** repeated counterfactual policy from one decision-maker; frozen geometry predicts held-out choices better than frozen 1-D and intercept. Protocol: [`backtest-c004-raw.md`](backtest-c004-raw.md) (W-12). LHCV \(L\to H\to C\) is **not** required for this bar.
 
-### C-004a Grounding (MB9)
+### C-012 Grounding (MB9)
 
 | Approach | Host | Silent-gap shape |
 |----------|------|------------------|
@@ -218,7 +218,7 @@ Protocol: [`backtest-phase1.md`](backtest-phase1.md). Ledger: [`experiments/back
 
 Protocol: [`backtest-phase2.md`](backtest-phase2.md) (`h2-v1.2.0`, `h3-v1.1.0`).
 
-- **H2 Linux** — **W-3**: C-004a **fail** (`Reviewed-by` on 17 047/60 176 BIC SHAs); C-005 **fail** (cpufreq revert then same-title re-entry); C-006 **fail** (adjusted `-stable` `event_sched_out`); `Reviewed-by` as \(M\) refuse.
+- **H2 Linux** — **W-3**: C-012 **fail** (`Reviewed-by` on 17 047/60 176 BIC SHAs); C-005 **fail** (cpufreq revert then same-title re-entry); C-006 **fail** (adjusted `-stable` `event_sched_out`); `Reviewed-by` as \(M\) refuse.
 - **H3 Wikipedia** — **W-4**: causal RfA **refuse** (API join, no control); Orangemoody anti-capture **fail**; C-006 **fail** (BetacommandBot BRFA→flag/block); SPI as \(M\) refuse (wiki-socks twins, no \(\kappa^*\)).
 
 **Exit:** host traces, not catalog text. KernelCI and lore NAK mbox still unpaid.
@@ -316,7 +316,7 @@ Even if all phases hit:
 
 | File | Role |
 |------|------|
-| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-044 discharge language |
+| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-013 discharge language |
 | [`metadata/experiments.yml`](../../metadata/experiments.yml) | MB coverage matrix; ET-1/ET-2 negatives |
 | [`appendices/appM-institutional-histories.tex`](../../appendices/appM-institutional-histories.tex) | H5 stop candidates |
 | [`formal/README.md`](../../formal/README.md) | Lean three-bucket rule |

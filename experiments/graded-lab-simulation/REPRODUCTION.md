@@ -577,7 +577,7 @@ into this line:
 
 | Task | Source | Graded-lab connection |
 |---|---|---|
-| **Wire embedded value formation paper** | `metadata/TODO.md` | Entropic Ecology Transfer Test may connect to ecology transfer / Q1 harvest; cite before claiming cross-paper empirical support. |
+| **Wire embedded value formation paper** | *Closed 2026-09-07* — paper unpublished; ch15/ch45 derived prose + Phase 3b carrier viability; no manuscript cite. Context extract + bib remain for agents only. |
 | **Review SOO vs book adversarial scenarios** | `metadata/TODO.md` § Experiments | Tier-1 scenarios (report inflation, shadow routing, correction-capture theater, bearer-map narrowing) — decide if any map to graded-lab detectors or stay manuscript-only; owner split Marc / book-side. |
 | **Cornerstone empirical value-bundle test** | `metadata/TODO.md` § Manuscript | ch16/ch17 bundle recovery — distinct from graded-lab Q1–Q3 but may share measurand vocabulary; do not conflate lines in FINDINGS. |
 

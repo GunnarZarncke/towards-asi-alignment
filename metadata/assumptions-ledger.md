@@ -123,13 +123,13 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** At least one core measurand is cheaper to satisfy without faking than to fake under optimization pressure.
 
-**Also stated in:** ch48, ch46, ch46–39b, ch48. **Lean:** MB7b, MB7c, MB7d. **Bears on:** C-005, C-007, C-010, C-044 · **U-03, U-12, U-14**
+**Also stated in:** ch48, ch46, ch46–39b, ch48. **Lean:** MB7b, MB7c, MB7d. **Bears on:** C-005, C-007, C-010, C-013 · **U-03, U-12, U-14**
 
 ### A-010 — Dynamical guarantees
 
 **Assumption:** Alignment expressed as certified-class / basin invariants over time, not static \(P(A_t)\).
 
-**Also stated in:** ch48, ch46. **Lean:** certification scaffolding + MB5, MB6a, MB6b. **Bears on:** C-002, C-006, C-044 · **U-04, U-13**
+**Also stated in:** ch48, ch46. **Lean:** certification scaffolding + MB5, MB6a, MB6b. **Bears on:** C-002, C-006, C-013 · **U-04, U-13**
 
 ### A-011 — Civilizational-frame minimum assumptions
 
@@ -153,7 +153,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** The deployment class admits checked abstractions whose grounding relation is conservative enough that value-relevant real-world changes either move the checked representation or raise uncertainty before irreversible loss. Formally, the safety case needs a defensible domain for \(\Gamma\) where \(d_V(x,x')>\epsilon\) implies \(d_Z(\alpha(x),\alpha(x'))>\delta\) or \(\mathsf{Unc}_{\alpha}(x,x')\uparrow\).
 
-**Canonical:** ch03 grounding viability; propagated through ch16/ch46 value-bundle validity, ch46 correction validity, ch46 safety-case layer, and ch47 adversarial verifiability. **Lean:** MB9 plus structural grounding predicates. **Bears on:** C-004a, C-004, C-005, C-044 · **U-16**
+**Canonical:** ch03 grounding viability; propagated through ch16/ch46 value-bundle validity, ch46 correction validity, ch46 safety-case layer, and ch47 adversarial verifiability. **Lean:** MB9 plus structural grounding predicates. **Bears on:** C-012, C-004, C-005, C-013 · **U-16**
 
 ---
 

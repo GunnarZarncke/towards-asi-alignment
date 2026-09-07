@@ -16,9 +16,9 @@ This is a **scope freeze**, not a finding. No host protocol has been executed un
 |------|-------------------|------------------------|
 | **H0** in-repo sims | Quant backing, Lean fixture rehearsal, cost-of-faking **with oracle ground truth only** | Deployment-class Witness; discharge of any `MB*` |
 | **H1** CIRIS local / C2 mock | C-003, C-005, C-006 (partial), Expectation 5; MB11 only if WA actually stops | Lens cohort (Phase 5 / sibling Phase 3) |
-| **H2** Linux kernel + Zenodo `bfc_bic` | C-003, C-004a, C-005, C-006, C-007, MB10 analogue | Proof of successor safety on models |
-| **H3** Wikipedia dumps / RfA / SPI | C-004a, C-005, C-006, C-007, anti-capture (Expectation 6) | Value-bundle geometry (backup only) |
-| **H4** MASK + public eval surface | C-004a, C-010, Expectation 3 \(M\), C-006 (HF successors), C-007 (leaderboards) | Lab-internal eval access |
+| **H2** Linux kernel + Zenodo `bfc_bic` | C-003, C-012, C-005, C-006, C-007, MB10 analogue | Proof of successor safety on models |
+| **H3** Wikipedia dumps / RfA / SPI | C-012, C-005, C-006, C-007, anti-capture (Expectation 6) | Value-bundle geometry (backup only) |
+| **H4** MASK + public eval surface | C-012, C-010, Expectation 3 \(M\), C-006 (HF successors), C-007 (leaderboards) | Lab-internal eval access |
 | **H5** conductive-artifact archive | Expectation 4 real stop; Expectation 5 green+failed-uptake pairs; MB11 analogue | Construction of an alignment attractor; AI-deployment `Safe` |
 | **H7** | Agent-native public platforms (Moltbook first) | MB6 selector; MB7a entity/coalition + anchored structure typing; MB7d (cohort) | AI `Safe`; MB11 discharge; C-004 geometry; full coalition oracle |
 

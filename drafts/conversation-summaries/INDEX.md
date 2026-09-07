@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-07 | **Claim ID renumber + ledger freshness** — C-004a→C-012, C-044→C-013; W-* on claims ledger; U-ledger SharedInstrumentHypothesis note. | [2026-09-07-claim-id-renumber.md](2026-09-07-claim-id-renumber.md) |
 | 2026-09-07 | **Witness → Backtest rename** — Uniform class rename (folders, URLs, YAML, App N, site); keep W-* IDs; no redirects. | [2026-09-07-backtest-rename.md](2026-09-07-backtest-rename.md) |
 | 2026-09-07 | **Restore real v1 bridge graph** — User noticed `/field/v1/` used an intermediate diagram where MB8 was already a gravestone. Asked ... | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |
 | 2026-09-07 | **Lean CI via shared check.sh** — Add GitHub CI for Lean (not the full book/site build) with little duplication vs the local gate, ... | [2026-09-07-lean-ci.md](2026-09-07-lean-ci.md) |

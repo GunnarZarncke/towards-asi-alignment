@@ -1,6 +1,6 @@
 # Voice — claim-strength voice and naming
 
-Status: **in progress** (2026-08-21). §1 started by author request. **Backtests** (safety-check backtests) are independent — see [`backtest.md`](backtest.md). Chapter narrative does not name the program. **Exception:** Appendix N and `/experiments/` may name **backtests** as the distinctive empirical class (authored simulations and external tests stay supporting).
+Status: **closed** (2026-09-07). Policy and execution checklist below remain the reference; active tracking moved to [`metadata/TODO.md`](../../metadata/TODO.md). §1 started by author request. **Backtests** (safety-check backtests) are independent — see [`backtest.md`](backtest.md). Chapter narrative does not name the program. **Exception:** Appendix N and `/experiments/` may name **backtests** as the distinctive empirical class (authored simulations and external tests stay supporting).
 
 ## Goal
 
@@ -43,7 +43,7 @@ Replace reader-facing “discharge” of the **six thesis claims** with “revis
 | [`metadata/concepts.yml`](../../metadata/concepts.yml) | `six-thesis-claims` summary |
 | [`metadata/concepts/bodies/six-thesis-claims.md`](../../metadata/concepts/bodies/six-thesis-claims.md) | body + “discharge arc” → “status arc” |
 | [`site/src/content/cards/six-thesis-claims.md`](../../site/src/content/cards/six-thesis-claims.md) | regenerate via `npm run sync:concepts` |
-| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | header and C-044 (“draft-level discharge” → “status restatement in ch48”) |
+| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | header and C-013 (“draft-level discharge” → “status restatement in ch48”) |
 | [`site/src/pages/index.astro`](../../site/src/pages/index.astro) | six-claim callout (“discharge status” → “status labels and open gaps”) |
 | [`frontmatter/introduction.tex`](../../frontmatter/introduction.tex) | already says “revisits”; grep any remaining six-claim “discharge” |
 
@@ -208,13 +208,14 @@ Applies to README, frontmatter, site entry paths, and other skimmable packaging 
 - [x] §6 Gems + REVIEWING gem map
 - [x] §7 Standalone-claims status
 - [x] §8 INSTRUCTIONS + writing-style pointer
-- [ ] De-center PDF as flagship (README, homepage, About, stats)
+- [x] De-center PDF as flagship (README, homepage, About, stats) — partial 2026-09-07: companion site is the primary front door; impressum no longer calls PDF maßgeblich; footer describes site + book + tests. `metadata/book-stats.md` stays maintainer-only.
 - [x] Bridge axioms vs book assumptions — reader pass (App G intro, site `/lean/`; 2026-08-27)
 - [x] Bridge first-use in the manuscript: genus at Ch. 10; no technical *bridge* / Lean / `MB*` before ([`bridge-first-use.md`](bridge-first-use.md); 2026-09-01)
 - [x] Front-door vocabulary on first-contact surfaces (§9; 2026-09-07)
-- [ ] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
-- [ ] WWCTV → chokepoint forward refs (per chapter)
-- [ ] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`
+- [x] Claims ledger freshness / numbering / completeness (`review/claim-checklist.md`)
+- [x] U-ledger reconciliation — U-03/U-05/U-14/U-16 vs `SharedInstrumentHypothesis`
+
+**Moved out:** WWCTV → chokepoint forward refs (per chapter) — optional; may drop. Track in [`metadata/TODO.md`](../../metadata/TODO.md) Housekeeping only.
 
 ---
 
@@ -237,7 +238,7 @@ python3 scripts/check_voice.py   # after chapterthesis edits
 | [`frontmatter/introduction.tex`](../../frontmatter/introduction.tex) | Three questions; progress section |
 | [`chapters/ch42-safety-case.tex`](../../chapters/ch42-safety-case.tex) | Refusal test definition |
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
-| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-044 |
+| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-013 |
 | [`site/src/content/cards/what-not-claiming.md`](../../site/src/content/cards/what-not-claiming.md) | Scope limits card |
 | [`drafts/plans/backtest.md`](backtest.md) | Separate empirical program (not a dependency; do not name in chapter copy) |
 | [`drafts/plans/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |

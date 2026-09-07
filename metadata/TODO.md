@@ -16,13 +16,13 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 | Lane / board | Verb or role | Plan | Size | Depends on |
 |--------------|--------------|------|------|------------|
-| **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | L (in progress) | — |
+| **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | **closed** (2026-09-07) | — |
 | **Backtest** | This process, as it is, can fail a named leaf | [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) | L (W-1–W-17) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`backtest-v2.md`](../drafts/plans/backtest-v2.md) — **Phase 1 Moltbook** W-17 structure_stop scored; optional MB6 leaf / ET-5. Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage. Draft recording rec: [`audit-telemetry.md`](../drafts/plans/audit-telemetry.md) (not v1 MS) |
 | **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
 | **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct.md`](../drafts/plans/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Backtest Exp. 4. Process-condition outline: not gated |
 | **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine.md`](../drafts/plans/spine.md) · first-use [`bridge-first-use.md`](../drafts/plans/bridge-first-use.md) | ongoing | Backtest Exp. 2 (fixture only) |
 | **Cite / Wait** | Blocked on external publish or author call | — | S each | — |
-| **Site** | Companion-site chores | — | S–M | De-center PDF → Voice |
+| **Site** | Companion-site chores | — | S–M | — |
 | **Outreach** | External artifacts | — | M+ | optional backtest negatives |
 | **Housekeeping** | Manuscript/tooling hygiene | — | S | — |
 | **Experiments** | Local sim lines | [`experiments/TODO.md`](../experiments/TODO.md) | — | CIRIS Ph.1 = Backtest H1 |
@@ -70,7 +70,6 @@ One queue; pick up when trigger fires.
 - [ ] **Turner Reward≠OT follow-up post** — when full post appears; ch21 `% TODO[citation]:`.
 - [ ] **MacKinlay *Agency WTF*** — when published; bib + glossary homograph.
 - [ ] **Chris Pang boundary ontology** — author call; ch06–07 or `open-problems.md`.
-- [ ] **Wire `zarncke2026embedded-value-formation`** — ch15/ch03/ch33; graded-lab §8 touchpoint.
 - [ ] **Citation review queue** — complete in-body cites; Part III ch12/ch13 thin; leftover keys from `2026-06-30-deep-research-top10-citations.md`; App C sector empirics (consent decrees, coordinated effects, incident reporting).
 - [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open.
 
@@ -102,6 +101,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Housekeeping board
 
+- [ ] **WWCTV → chokepoint forward refs (S, optional — may drop).** Per-chapter WWCTV boxes could forward-link to `SharedInstrumentHypothesis` / measurability steerability chokepoint ([`formal/AlignmentProofSpine/Chokepoint.lean`](../formal/AlignmentProofSpine/Chokepoint.lean)). Was Voice checklist item; not required for v1.
 - [ ] **Authorship bars — companion site (M).** PDF: `\authbar` on frontmatter, all 48 chapters, and wired appendices. **Site (partial):** section/subsection heading chips synced from `\authbar` keys (`AI` / `GZ+AI` / `GZ`); toggled via Notes panel button (`localStorage`). Still open: image prompts `{AI}`; optional reader legend.
 
 - [ ] **Authorship bars — pagination parity (M, optional).** Per-section mdframed wrappers add ~+30 pp vs unmarked build (1412 → ~1442 after tuning `\Needspace` to frontmatter-only). Accept for now; revisit with margin-overlay approach (bars without boxing text) if page count must match baseline.
@@ -121,7 +121,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [~] **Narrative voice consistency (S).** Optional; wire `check_voice.py` into `make check` if desired.
 - [ ] **Part-opener illustrations (S).**
 - [ ] **Optional: LaTeX PDF CI build test (S).** `.github/workflows/book-pdf.yml`; compile gate only.
-- [x] **Strategic advice follow-through — closed.** Remainders in lane plans (`review/strategic-advice-2026-06-28.md`).
+- [x] **Voice lane** — claim-strength voice, ledgers, front-door vocab, PDF de-center (partial). Plan closed 2026-09-07: [`drafts/plans/voice.md`](../drafts/plans/voice.md).
 
 ---
 
@@ -144,7 +144,7 @@ CIRIS composite / boundary_decouple: **Backtest H1** — charter in sibling `cir
 
 Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
 
-- [x] Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · *(see git for full list)*
+- [x] Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · **`zarncke2026embedded-value-formation` manuscript wiring** — closed 2026-09-07: paper stays unpublished; ch15/ch45 project-derived prose + graded-lab Phase 3b suffice; no `\autocite` · *(see git for full list)*
 
 ---
 

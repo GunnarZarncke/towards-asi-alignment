@@ -42,7 +42,7 @@ H4 (public MASK paper + dataset card; gated HF splits not downloaded)
 `drafts/plans/backtest-phase1.md` § H4. Source snapshot: arXiv:2503.03750 (v1). Decision rule frozen in Phase 0: honesty≠scale ⇒ refuse.
 
 ## Expectation / claim
-Expectation 3, C-010, C-004a (adjacent silent-gap shape), A-009 / MB7b–d (unpaid)
+Expectation 3, C-010, C-012 (adjacent silent-gap shape), A-009 / MB7b–d (unpaid)
 
 ## Outcome
 refuse
@@ -59,7 +59,7 @@ yes — stop claiming MASK honesty as deployment-gating evidence; accuracy scali
 
 ## W-3 (2026-08-28, richer sources): H2 Linux — Reviewed-by on BICs; revert re-entry; adjusted -stable hunks
 
-**Key finding:** Streaming Zenodo Perceval JSON (1 233 421 commits) onto `bfc_bic.csv` pays C-004a: **17 047 / 60 176** developer-labeled bug-introducing SHAs carry `Reviewed-by` on that same commit. That is a **layer fail** (checked symbol green, later bug referent). C-005: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, **same title re-entered** 2014-03-04 (`2f0aea936360`) — **layer fail** (revert did not stop the class). C-006: `-stable` `f8a07021679a` vs upstream `42c5ca1f0a28` — listed SOB/Reviewed-by/Fixes/stable tag green; unlisted hunk identity fails (`event_sched_out` 2-arg vs 3-arg; Sasha Levin documents the adjustment) — **layer fail**. `Reviewed-by` as Expectation-3 \(M\) still **refused** (common on BICs; no \(\kappa^*\)). Not MB9/MB10 discharge. KernelCI unpaid. Lore NAK mbox unpaid.
+**Key finding:** Streaming Zenodo Perceval JSON (1 233 421 commits) onto `bfc_bic.csv` pays C-012: **17 047 / 60 176** developer-labeled bug-introducing SHAs carry `Reviewed-by` on that same commit. That is a **layer fail** (checked symbol green, later bug referent). C-005: `cpufreq: suspend governors…` merged 2013-11-27, reverted 2013-12-08, **same title re-entered** 2014-03-04 (`2f0aea936360`) — **layer fail** (revert did not stop the class). C-006: `-stable` `f8a07021679a` vs upstream `42c5ca1f0a28` — listed SOB/Reviewed-by/Fixes/stable tag green; unlisted hunk identity fails (`event_sched_out` 2-arg vs 3-arg; Sasha Levin documents the adjustment) — **layer fail**. `Reviewed-by` as Expectation-3 \(M\) still **refused** (common on BICs; no \(\kappa^*\)). Not MB9/MB10 discharge. KernelCI unpaid. Lore NAK mbox unpaid.
 
 ## Host
 H2 (Zenodo 10654193 files + git.kernel.org patches + linux-6.1.y shallow clone)
@@ -68,10 +68,10 @@ H2 (Zenodo 10654193 files + git.kernel.org patches + linux-6.1.y shallow clone)
 `h2-v1.2.0`, `experiments/backtest/fixtures/h2-linux-v1.json`. `python3 experiments/backtest/check_h2.py`
 
 ## Expectation / claim
-C-004a fail; C-005 fail; C-006 fail; Expectation 3 `Reviewed-by` refuse; MB9/MB10 open
+C-012 fail; C-005 fail; C-006 fail; Expectation 3 `Reviewed-by` refuse; MB9/MB10 open
 
 ## Outcome
-fail (C-004a, C-005, C-006) and refuse (Reviewed-by \(M\))
+fail (C-012, C-005, C-006) and refuse (Reviewed-by \(M\))
 
 ## Stop condition triggered?
 yes — stop treating `Reviewed-by` or a revert as settling harm; stop treating `-stable` listed tags as hunk identity
@@ -254,7 +254,7 @@ H5 (FSF license texts)
 `h5-v1.0.0`, `experiments/backtest/fixtures/h5-gpl-tivoization-v1.json`
 
 ## Expectation / claim
-Expectation 4 analogue; C-004a silent-gap shape on a license handle
+Expectation 4 analogue; C-012 silent-gap shape on a license handle
 
 ## Outcome
 fail (layer): GPLv2 checked text ⇏ install handle

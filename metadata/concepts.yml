@@ -501,7 +501,7 @@ concepts:
       - sec:grounding-viability-ch03
     featured: true
     part: part09
-    claimId: C-004a
+    claimId: C-012
     body: bodies/grounding-viability.md
     glossaryTerms:
       - term: Grounded correction

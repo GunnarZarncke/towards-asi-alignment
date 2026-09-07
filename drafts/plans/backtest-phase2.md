@@ -1,6 +1,6 @@
 # Witness Phase 2 — protocol freeze
 
-**Frozen:** 2026-08-28. **Amended 2026-08-28 (richer sources):** H2 C-004a/C-005/C-006 are **layer fail** on joined traces. H3 C-006 is **layer fail** (BetacommandBot). H3 causal RfA remains **refuse** (join, no control). Reopen only by amending this file.
+**Frozen:** 2026-08-28. **Amended 2026-08-28 (richer sources):** H2 C-012/C-005/C-006 are **layer fail** on joined traces. H3 C-006 is **layer fail** (BetacommandBot). H3 causal RfA remains **refuse** (join, no control). Reopen only by amending this file.
 
 Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
 
@@ -14,7 +14,7 @@ Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../
 
 | Leaf | Instrument (this freeze) | Honest outcome |
 |------|--------------------------|----------------|
-| **C-004a** | Stream `linux-commits-2023-11-12.json.gz` (1 233 421 commits) joined to `bfc_bic.csv`. Symbol = `Reviewed-by` on the **same SHA** as a developer-labeled BIC. | **Layer fail** — 17 047 / 60 176 BIC SHAs carry `Reviewed-by`. Not merge-count. Not KernelCI. |
+| **C-012** | Stream `linux-commits-2023-11-12.json.gz` (1 233 421 commits) joined to `bfc_bic.csv`. Symbol = `Reviewed-by` on the **same SHA** as a developer-labeled BIC. | **Layer fail** — 17 047 / 60 176 BIC SHAs carry `Reviewed-by`. Not merge-count. Not KernelCI. |
 | **C-005** | Same-title re-entry after revert, fetched from git.kernel.org: BIC `5a87182aa21d` (2013-11-27) → revert `12205a4b79be` (2013-12-08) → re-entry `2f0aea936360` (2014-03-04, same subject, `dpm_suspend_noirq`→`dpm_suspend`). | **Layer fail** (revert did not stop the patch class). Lore NAK mbox still not collected. |
 | **C-006** | `linux-6.1.y` `f8a07021679a` vs upstream `42c5ca1f0a28`. Listed: SOB, Reviewed-by, Fixes, Cc:stable, Upstream SHA. Unlisted (frozen): hunk identity (`event_sched_out` arity). Stable note documents the adjustment. | **Layer fail**. Not a seven-count \(\kappa\). |
 | **Exp. 3 \(M\)** = `Reviewed-by` | Same join: the tag is common on BICs; kernel docs: opinion. No \(\kappa^*\). | **Refuse** \(M\). |
@@ -48,7 +48,7 @@ Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../
 
 | Leaf | Required columns | This amendment |
 |------|------------------|----------------|
-| H2 C-004a | Checked symbol × later bug on same SHA | **Paid** (`Reviewed-by` × BIC). CI still unpaid. |
+| H2 C-012 | Checked symbol × later bug on same SHA | **Paid** (`Reviewed-by` × BIC). CI still unpaid. |
 | H2 C-005 | Patch identity, revert/NAK, later merge | **Paid** one revert→re-entry triple. NAK mbox unpaid. |
 | H2 C-006 | Parent SHA → `-stable`; listed green; unlisted fails | **Paid** one adjusted `event_sched_out` episode. |
 | H3 C-005 causal | RfA vote **and** later edits/rights | **Joined**; ATE **refused**. |
