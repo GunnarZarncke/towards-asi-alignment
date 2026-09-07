@@ -81,7 +81,7 @@ Same command locally and on GitHub Actions (`.github/workflows/lean.yml`):
 make lean                 # or: ./formal/check.sh
 ```
 
-That is `lake exe cache get && lake build`, then `formal/scripts/check_axiom_budget.py` and `check_spine_model.py`. CI runs `leanprover/lean-action` for the toolchain and `lake build`, then `./formal/check.sh --no-build` so the Python guards are not duplicated. The script prints a short report (and writes the Actions job Summary). `make check` still uses `check_axiom_budget.py --no-lean` only to regenerate the Appendix G table from the checked-in ledger.
+That is `lake exe cache get && lake build`, then `formal/scripts/check_axiom_budget.py` and `check_spine_model.py`. CI runs `leanprover/lean-action` for the toolchain and `lake build`, then `./formal/check.sh --no-build` so the Python guards are not duplicated. The script prints a short report (and writes the Actions job Summary). `make check` still uses `check_axiom_budget.py --no-lean` only to regenerate the Appendix G table from the checked-in ledger. On `main`, GitHub requires the **Lean** and **Check** jobs (not the Site/Pages build).
 
 See [`formal/README.md`](../formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](../formal/LeanProofSpineImplementationBrief.md).
 

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-07 (v1 bridge graph freeze).
+Last updated: 2026-09-07 (Lean + Check required on `main`).
 
 ---
 
@@ -20,8 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-07:** **Check CI** — `.github/workflows/check.yml` runs `./scripts/check.sh` (`make check`). Parallel to Lean and Site. Log: `2026-09-07-check-ci.md`.
-- **2026-09-07:** **Lean CI** — `.github/workflows/lean.yml` runs `formal/` via `lean-action` then `./formal/check.sh --no-build`. Local: `make lean`. Log: `2026-09-07-lean-ci.md`.
+- **2026-09-07:** **Check + Lean required on `main`** — GitHub ruleset requires job names **Check** and **Lean**. Workflows: `check.yml`, `lean.yml`. Logs: `2026-09-07-check-ci.md`, `2026-09-07-lean-ci.md`.
 - **2026-09-07:** **Real v1 bridge graph** — `/field/v1/` now uses the live-MB8 diagram from `c15ad815` (not the 2026-08-17 gravestone copy). Log: `2026-09-07-v1-bridge-graph.md`.
 - **2026-09-05:** **Audit telemetry draft** — W-17 + sim audit-layer comparison as a v2-facing recording rec (not v1 MS). [`audit-telemetry.md`](../plans/audit-telemetry.md). Log: `2026-09-05-audit-telemetry-draft.md`.
 - **2026-09-05:** **App B ontology-homograph link** — `/full/appB/` was not a route; cards now use `/cards/appendix/appb/#sec:ontology-homographs-appb` plus a `/full/appB/` redirect. Log: `2026-09-05-appb-homograph-link.md`.
