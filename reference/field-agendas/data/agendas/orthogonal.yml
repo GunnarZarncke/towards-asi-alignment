@@ -24,14 +24,20 @@ primaryCrux: >-
   [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions?
 bookBridges:
   - MB1
+  - MB2
   - MB4
 contributes: >-
-  An active agent-foundations research community working on [Embedded
-  Agency](/cards/mb1-boundary-estimator-soundness/) and
-  [Corrigibility](/cards/mb4-correction-legitimacy/).
+  An active agent-foundations research community working on the Embedded Agency
+  cut and MIRI/CHAI corrigibility as walls to close, plus QACI as a proposed
+  formal goal.
 bookSeparates: >-
-  A typed bridge stack and measurement program distinct from narrative community alignment
-  talk.
+  [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) is the same cut
+  problem Orthogonal inherits from MIRI; this map bets a measured cut can be
+  sound, they bet the formal obstruction must be closed.
+  [Corrigibility](/cards/mb4-correction-legitimacy/) here is whether the
+  correction process stays intact; Orthogonal's wall is MIRI/CHAI type-signature
+  corrigibility. QACI is a peer outer target ([Value
+  Learning](/cards/mb2-bundle-identifiability/)), not a corrigibility result.
 manuscriptHooks:
   - sparse
 links:

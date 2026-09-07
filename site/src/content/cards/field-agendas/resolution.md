@@ -6,6 +6,7 @@ summary: "Can formal and automated pipelines scale to superintelligent alignment
 agendaSlug: "resolution"
 bookBridges:
   - "MB1"
+  - "MB5"
   - "MB9"
   - "MB11"
 external:
@@ -38,11 +39,11 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 
 **Key terms.** Key terms include automation, formal alignment, higher-confidence alignment, and [singular learning](https://www.timaeus.ai/) ([Timaeus](https://www.timaeus.ai/)).
 
-**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Grounding Drift](/cards/bridge/mb9-grounding-certificate/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Tiling](/cards/bridge/mb5-successor-ontology-shift/); [Grounding Drift](/cards/bridge/mb9-grounding-certificate/); [Deployment Safety](/cards/bridge/mb11-deployment-safety/)
 
-**What they contribute.** An automation-first philosophy; UK AISI lineage via Irving. [Iliad](#iliad-textbook-from-the-future) (which helped found Timaeus) runs the overlapping Textbook from the Future synthesis megaproject.
+**What they contribute.** An automation-first philosophy; UK AISI lineage via Irving. [Iliad](#iliad-textbook-from-the-future) (which helped found Timaeus) runs the overlapping Textbook from the Future synthesis megaproject. Automating alignment research is a capability gain and produces successor research processes.
 
-**How this project treats it.** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
+**How this project treats it.** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/), [Tiling](/cards/mb5-successor-ontology-shift/) / successor safety, and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits. A more capable automated research process does not, by itself, keep successors safe.
 
 ## Links
 

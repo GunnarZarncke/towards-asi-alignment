@@ -6,6 +6,7 @@ summary: "Can a community-organized research program discharge the same formal w
 agendaSlug: "orthogonal"
 bookBridges:
   - "MB1"
+  - "MB2"
   - "MB4"
 external:
   - label: "Orthogonal"
@@ -33,11 +34,11 @@ Orthogonal is an agent-foundations research community advancing formal alignment
 
 **Key terms.** Key terms include [agent foundations](https://intelligence.org/), formal alignment, and embedded agents.
 
-**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/)
+**Related field cruxes.** [Embedded Agency](/cards/bridge/mb1-boundary-estimator-soundness/); [Value Learning](/cards/bridge/mb2-bundle-identifiability/); [Corrigibility](/cards/bridge/mb4-correction-legitimacy/)
 
-**What they contribute.** An active agent-foundations research community working on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/).
+**What they contribute.** An active agent-foundations research community working on the Embedded Agency cut and MIRI/CHAI corrigibility as walls to close, plus QACI as a proposed formal goal.
 
-**How this project treats it.** A typed bridge stack and measurement program distinct from narrative community alignment talk.
+**How this project treats it.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) is the same cut problem Orthogonal inherits from MIRI; this map bets a measured cut can be sound, they bet the formal obstruction must be closed. [Corrigibility](/cards/mb4-correction-legitimacy/) here is whether the correction process stays intact; Orthogonal's wall is MIRI/CHAI type-signature corrigibility. QACI is a peer outer target ([Value Learning](/cards/mb2-bundle-identifiability/)), not a corrigibility result.
 
 ## Links
 

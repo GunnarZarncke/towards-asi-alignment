@@ -8,6 +8,7 @@ external:
     url: "/field/v2/"
 related:
   - "field-coverage"
+  - "what-tsa-fails-to-represent"
   - "bridge-assumptions"
   - "alignment-lifecycle"
 ---
@@ -27,4 +28,4 @@ Useful **starting points** for orienting to AI safety and alignment research:
 
 **This site** adds an overview of who the major agendas are, the cruxes of the field, and what evidence each has published on the cruxes. The cruxes are presented as **[bridge assumptions](/cards/bridge/bridge-assumptions/)** — named conditional handoffs between open problems and overall alignment. For example, [Embedded Agency / MB1](/cards/mb1-boundary-estimator-soundness/) asks whether an agent–environment boundary is sound enough to trust — the missing clear cut between “the model” and “the optimizer.” None of these cruxes are solved, but different agendas have made progress to different degrees on each.
 
-For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/appendix/appb/) — including [Ontology homographs](/cards/appendix/appb/#sec:ontology-homographs-appb) where the same English word names different objects.
+For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/appendix/appb/) — including [Ontology homographs](/cards/appendix/appb/#sec:ontology-homographs-appb) where the same English word names different objects. For the reverse question — what each agenda’s crux this map fails to represent — see [What this map misses](/cards/concept/what-tsa-fails-to-represent/).

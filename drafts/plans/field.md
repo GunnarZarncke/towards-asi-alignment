@@ -105,7 +105,7 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 ## Checklist
 
 - [ ] Field crux divergence — inventory → App B notes → field-local Lean (no new `MB*`)
-- [ ] Ngo reverse column (parked): one “what TSA fails to represent of *their* crux” line per agenda YAML; App B disclaimer that the crosswalk is translation, not completeness. Not the 2026-08-25 ontology-homograph section.
+- [x] Ngo reverse column — site card [What this map misses](../../site/src/content/cards/what-tsa-fails-to-represent.md) (2026-09-08): grant-then-residual, two paragraphs per agenda. YAML-per-agenda field and App B disclaimer still optional; not the 2026-08-25 ontology-homograph section.
 - [ ] MB7a–c optional field-standard noun aliases (keep MB7 split)
 - [ ] App B vs merged field-agenda row names (secondary prose)
 - [ ] International AI Safety Report → Field when read

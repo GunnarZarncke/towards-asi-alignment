@@ -489,6 +489,7 @@
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
       "bookBridges": [
         "MB1",
+        "MB2",
         "MB4"
       ],
       "inMatrix": true,
@@ -524,6 +525,7 @@
       "summary": "Can formal and automated pipelines scale to superintelligent alignment?",
       "bookBridges": [
         "MB1",
+        "MB5",
         "MB9",
         "MB11"
       ],
@@ -1185,7 +1187,14 @@
           "MB3": [],
           "MB4": [],
           "MB4a": [],
-          "MB5": [],
+          "MB5": [
+            {
+              "type": "O",
+              "ids": [
+                39
+              ]
+            }
+          ],
           "MB6": [],
           "MB7": [],
           "MB7d": [],
@@ -1297,7 +1306,7 @@
             {
               "type": "T",
               "ids": [
-                45
+                163
               ]
             }
           ],
@@ -2650,10 +2659,11 @@
       "id": 39,
       "agenda": "Resolution",
       "bridges": [
-        "MB1"
+        "MB1",
+        "MB5"
       ],
       "type": "O",
-      "evidence": "Automation-first alignment research strategy",
+      "evidence": "Automation-first alignment research: the research process itself becomes a more capable successor",
       "sources": [
         {
           "label": "Resolution launch essay",
@@ -2740,11 +2750,10 @@
       "id": 45,
       "agenda": "Orthogonal",
       "bridges": [
-        "MB2",
-        "MB4"
+        "MB2"
       ],
       "type": "T",
-      "evidence": "QACI formal outer-alignment goal line",
+      "evidence": "QACI as a proposed formal outer-alignment goal (peer target; not a corrigibility result)",
       "sources": [
         {
           "label": "Leake & Persson 2023",
@@ -4490,15 +4499,18 @@
         "MB1"
       ],
       "type": "C",
-      "evidence": "Embedded agency formalism (agent-foundations community lineage)",
+      "evidence": "Orthogonal inherits the Embedded Agency cut (no free agent–environment split) as a wall to close. Same problem family as MB1; their bet is formal obstruction discharge, not a measured-cut certificate. (Demski & Garrabrant 2019 is the wall they inherit, already catalogued as MIRI ev-1.)",
       "sources": [
+        {
+          "label": "Orthogonal",
+          "url": "https://orxl.org/"
+        },
         {
           "label": "Demski & Garrabrant 2019",
           "url": "https://arxiv.org/abs/1902.09469"
         }
       ],
-      "direction": "support",
-      "weight": 1
+      "direction": "unclear"
     },
     {
       "id": 148,
@@ -4781,6 +4793,22 @@
       ],
       "direction": "challenge",
       "weight": 2
+    },
+    {
+      "id": 163,
+      "agenda": "Orthogonal",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "T",
+      "evidence": "Orthogonal names MIRI/CHAI corrigibility (a utility that accepts correction) as a wall to close. Same word as this column; that wall is the type-signature problem, not whether the correction process stays intact.",
+      "sources": [
+        {
+          "label": "Orthogonal",
+          "url": "https://orxl.org/"
+        }
+      ],
+      "direction": "unclear"
     }
   ],
   "clustering": [

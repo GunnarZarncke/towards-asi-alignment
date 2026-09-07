@@ -455,6 +455,14 @@ concepts:
     title: A Map of the Field
     summary: External maps, surveys, and indexes for orienting to AI safety and alignment research.
     body: bodies/field-map-starting-points.md
+  - slug: what-tsa-fails-to-represent
+    kind: concept
+    status: open
+    title: What This Map Misses
+    summary: "The field matrix asks how other agendas touch this project's questions. This card asks the reverse: what object of theirs those questions do not represent."
+    decision: When an agenda looks covered, read the matching section here before treating the objects as the same.
+    evidence: For each agenda, say what this map already covers, then name what they still need. A nearby noun is not coverage.
+    body: bodies/what-tsa-fails-to-represent.md
   - slug: negative-results
     kind: concept
     title: Negative Results Ledgers
