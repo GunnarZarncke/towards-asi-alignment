@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-07T20:18:59.783Z",
+  "generatedAt": "2026-09-10T19:53:00.999Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 361,
+  "entryCount": 362,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -2099,6 +2099,12 @@
       "type": "objection",
       "summary": "The manuscript offers a framework and conditional dependency spine, not a proof that superintelligence alignment is solved.",
       "url": "/cards/objection/what-not-claiming/"
+    },
+    {
+      "title": "What This Map Misses",
+      "type": "concept",
+      "summary": "The field matrix asks how other agendas touch this project's questions. This card asks the reverse: what object of theirs those questions do not represent.",
+      "url": "/cards/concept/what-tsa-fails-to-represent/"
     },
     {
       "title": "What Values Apply To",

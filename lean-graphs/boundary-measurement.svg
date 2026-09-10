@@ -11,12 +11,12 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-586.91 1175.08,-586.91 1175.08,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="585.54" y="-569.01" font-family="Helvetica,sans-Serif" font-size="11.00">Spine I: Boundary discovery and adversarial measurement</text>
 <!-- P05 -->
-<a xlink:href="../../cards/bridge/boundary-residual/" class="lean-graph-node"><g id="node1" class="node"><title>P05</title>
+<a xlink:href="/cards/bridge/boundary-residual/" class="lean-graph-node"><g id="node1" class="node"><title>P05</title>
 <path fill="#eaf3ff" stroke="#444444" d="M774.31,-415.71C774.31,-415.71 685.74,-415.71 685.74,-415.71 679.74,-415.71 673.74,-409.71 673.74,-403.71 673.74,-403.71 673.74,-391.71 673.74,-391.71 673.74,-385.71 679.74,-379.71 685.74,-379.71 685.74,-379.71 774.31,-379.71 774.31,-379.71 780.31,-379.71 786.31,-385.71 786.31,-391.71 786.31,-391.71 786.31,-403.71 786.31,-403.71 786.31,-409.71 780.31,-415.71 774.31,-415.71"/>
 <text xml:space="preserve" text-anchor="middle" x="730.03" y="-395.01" font-family="Helvetica,sans-Serif" font-size="9.00">P05 Boundary predicate</text>
 </g></a>
 <!-- P06 -->
-<a xlink:href="../../node/P06/" class="lean-graph-node"><g id="node2" class="node"><title>P06</title>
+<a xlink:href="/lean/node/P06/" class="lean-graph-node"><g id="node2" class="node"><title>P06</title>
 <path fill="#eaf3ff" stroke="#444444" d="M912.06,-307.71C912.06,-307.71 811.99,-307.71 811.99,-307.71 805.99,-307.71 799.99,-301.71 799.99,-295.71 799.99,-295.71 799.99,-283.71 799.99,-283.71 799.99,-277.71 805.99,-271.71 811.99,-271.71 811.99,-271.71 912.06,-271.71 912.06,-271.71 918.06,-271.71 924.06,-277.71 924.06,-283.71 924.06,-283.71 924.06,-295.71 924.06,-295.71 924.06,-301.71 918.06,-307.71 912.06,-307.71"/>
 <text xml:space="preserve" text-anchor="middle" x="862.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P06 Blanket / no extra gain</text>
 </g></a>
@@ -27,7 +27,7 @@
 <polygon fill="#555555" stroke="#555555" points="835.43,-315.21 839.35,-308.91 832.36,-311.39 835.43,-315.21"/>
 </g>
 <!-- P08 -->
-<a xlink:href="../../node/P08/" class="lean-graph-node"><g id="node4" class="node"><title>P08</title>
+<a xlink:href="/lean/node/P08/" class="lean-graph-node"><g id="node4" class="node"><title>P08</title>
 <path fill="#eaf3ff" stroke="#444444" d="M1068.32,-307.71C1068.32,-307.71 953.74,-307.71 953.74,-307.71 947.74,-307.71 941.74,-301.71 941.74,-295.71 941.74,-295.71 941.74,-283.71 941.74,-283.71 941.74,-277.71 947.74,-271.71 953.74,-271.71 953.74,-271.71 1068.32,-271.71 1068.32,-271.71 1074.32,-271.71 1080.32,-277.71 1080.32,-283.71 1080.32,-283.71 1080.32,-295.71 1080.32,-295.71 1080.32,-301.71 1074.32,-307.71 1068.32,-307.71"/>
 <text xml:space="preserve" text-anchor="middle" x="1011.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P08 Violation blocks candidate</text>
 </g></a>
@@ -38,7 +38,7 @@
 <polygon fill="#555555" stroke="#555555" points="957.81,-313.4 963.5,-308.63 956.08,-308.81 957.81,-313.4"/>
 </g>
 <!-- P10 -->
-<a xlink:href="../../node/P10/" class="lean-graph-node"><g id="node11" class="node"><title>P10</title>
+<a xlink:href="/lean/node/P10/" class="lean-graph-node"><g id="node11" class="node"><title>P10</title>
 <path fill="#eaf3ff" stroke="#444444" d="M769.56,-307.71C769.56,-307.71 690.49,-307.71 690.49,-307.71 684.49,-307.71 678.49,-301.71 678.49,-295.71 678.49,-295.71 678.49,-283.71 678.49,-283.71 678.49,-277.71 684.49,-271.71 690.49,-271.71 690.49,-271.71 769.56,-271.71 769.56,-271.71 775.56,-271.71 781.56,-277.71 781.56,-283.71 781.56,-283.71 781.56,-295.71 781.56,-295.71 781.56,-301.71 775.56,-307.71 769.56,-307.71"/>
 <text xml:space="preserve" text-anchor="middle" x="730.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P10 BIQ upper bound</text>
 </g></a>
@@ -49,7 +49,7 @@
 <polygon fill="#555555" stroke="#555555" points="732.48,-316.56 730.03,-309.56 727.58,-316.56 732.48,-316.56"/>
 </g>
 <!-- MB7a -->
-<a xlink:href="../../cards/bridge/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
+<a xlink:href="/cards/bridge/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M486.16,-305.92C486.16,-305.92 390.03,-291.49 390.03,-291.49 384.1,-290.6 384.1,-288.81 390.03,-287.92 390.03,-287.92 486.16,-273.49 486.16,-273.49 492.09,-272.6 503.96,-272.6 509.89,-273.49 509.89,-273.49 606.02,-287.92 606.02,-287.92 611.96,-288.81 611.96,-290.6 606.02,-291.49 606.02,-291.49 509.89,-305.92 509.89,-305.92 503.96,-306.81 492.09,-306.81 486.16,-305.92"/>
 <text xml:space="preserve" text-anchor="middle" x="498.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">MB7a Access&#45;model soundness</text>
 </g></a>
@@ -60,7 +60,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="535.34,-305.06 527.95,-304.38 533.3,-309.52 535.34,-305.06"/>
 </g>
 <!-- P07 -->
-<a xlink:href="../../node/P07/" class="lean-graph-node"><g id="node3" class="node"><title>P07</title>
+<a xlink:href="/lean/node/P07/" class="lean-graph-node"><g id="node3" class="node"><title>P07</title>
 <path fill="#eaf3ff" stroke="#444444" d="M900.55,-188.11C900.55,-188.11 827.5,-188.11 827.5,-188.11 821.5,-188.11 815.5,-182.11 815.5,-176.11 815.5,-176.11 815.5,-164.11 815.5,-164.11 815.5,-158.11 821.5,-152.11 827.5,-152.11 827.5,-152.11 900.55,-152.11 900.55,-152.11 906.55,-152.11 912.55,-158.11 912.55,-164.11 912.55,-164.11 912.55,-176.11 912.55,-176.11 912.55,-182.11 906.55,-188.11 900.55,-188.11"/>
 <text xml:space="preserve" text-anchor="middle" x="864.03" y="-167.41" font-family="Helvetica,sans-Serif" font-size="9.00">P07 Exact boundary</text>
 </g></a>
@@ -71,12 +71,12 @@
 <polygon fill="#555555" stroke="#555555" points="866.04,-197.08 863.7,-190.04 861.14,-197 866.04,-197.08"/>
 </g>
 <!-- P09 -->
-<a xlink:href="../../node/P09/" class="lean-graph-node"><g id="node5" class="node"><title>P09</title>
+<a xlink:href="/lean/node/P09/" class="lean-graph-node"><g id="node5" class="node"><title>P09</title>
 <path fill="#eaf3ff" stroke="#444444" d="M254.06,-488.71C254.06,-488.71 158,-488.71 158,-488.71 152,-488.71 146,-482.71 146,-476.71 146,-476.71 146,-464.71 146,-464.71 146,-458.71 152,-452.71 158,-452.71 158,-452.71 254.06,-452.71 254.06,-452.71 260.06,-452.71 266.06,-458.71 266.06,-464.71 266.06,-464.71 266.06,-476.71 266.06,-476.71 266.06,-482.71 260.06,-488.71 254.06,-488.71"/>
 <text xml:space="preserve" text-anchor="middle" x="206.03" y="-468.01" font-family="Helvetica,sans-Serif" font-size="9.00">P09 Observational non&#45;id.</text>
 </g></a>
 <!-- P09A -->
-<a xlink:href="../../node/P09A/" class="lean-graph-node"><g id="node6" class="node"><title>P09A</title>
+<a xlink:href="/lean/node/P09A/" class="lean-graph-node"><g id="node6" class="node"><title>P09A</title>
 <path fill="#eaf3ff" stroke="#444444" d="M523.54,-415.71C523.54,-415.71 472.51,-415.71 472.51,-415.71 466.51,-415.71 460.51,-409.71 460.51,-403.71 460.51,-403.71 460.51,-391.71 460.51,-391.71 460.51,-385.71 466.51,-379.71 472.51,-379.71 472.51,-379.71 523.54,-379.71 523.54,-379.71 529.54,-379.71 535.54,-385.71 535.54,-391.71 535.54,-391.71 535.54,-403.71 535.54,-403.71 535.54,-409.71 529.54,-415.71 523.54,-415.71"/>
 <text xml:space="preserve" text-anchor="middle" x="498.03" y="-395.01" font-family="Helvetica,sans-Serif" font-size="9.00">Access non&#45;id.</text>
 </g></a>
@@ -87,7 +87,7 @@
 <polygon fill="#555555" stroke="#555555" points="452.61,-412.27 458.83,-408.24 451.45,-407.51 452.61,-412.27"/>
 </g>
 <!-- PCID -->
-<a xlink:href="../../node/PCID/" class="lean-graph-node"><g id="node7" class="node"><title>PCID</title>
+<a xlink:href="/lean/node/PCID/" class="lean-graph-node"><g id="node7" class="node"><title>PCID</title>
 <path fill="#eaf3ff" stroke="#444444" d="M153.05,-361.71C153.05,-361.71 65,-361.71 65,-361.71 59,-361.71 53,-355.71 53,-349.71 53,-349.71 53,-337.71 53,-337.71 53,-331.71 59,-325.71 65,-325.71 65,-325.71 153.05,-325.71 153.05,-325.71 159.05,-325.71 165.05,-331.71 165.05,-337.71 165.05,-337.71 165.05,-349.71 165.05,-349.71 165.05,-355.71 159.05,-361.71 153.05,-361.71"/>
 <text xml:space="preserve" text-anchor="middle" x="109.03" y="-346.41" font-family="Helvetica,sans-Serif" font-size="9.00">CID incentives</text>
 <text xml:space="preserve" text-anchor="middle" x="109.03" y="-335.61" font-family="Helvetica,sans-Serif" font-size="9.00">not abstraction&#45;invariant</text>
@@ -99,7 +99,7 @@
 <polygon fill="#555555" stroke="#555555" points="123.86,-368.51 118.41,-363.48 119.54,-370.81 123.86,-368.51"/>
 </g>
 <!-- P09K -->
-<a xlink:href="../../node/P09K/" class="lean-graph-node"><g id="node8" class="node"><title>P09K</title>
+<a xlink:href="/lean/node/P09K/" class="lean-graph-node"><g id="node8" class="node"><title>P09K</title>
 <path fill="#eaf3ff" stroke="#444444" d="M239.79,-415.71C239.79,-415.71 172.26,-415.71 172.26,-415.71 166.26,-415.71 160.26,-409.71 160.26,-403.71 160.26,-403.71 160.26,-391.71 160.26,-391.71 160.26,-385.71 166.26,-379.71 172.26,-379.71 172.26,-379.71 239.79,-379.71 239.79,-379.71 245.79,-379.71 251.79,-385.71 251.79,-391.71 251.79,-391.71 251.79,-403.71 251.79,-403.71 251.79,-409.71 245.79,-415.71 239.79,-415.71"/>
 <text xml:space="preserve" text-anchor="middle" x="206.03" y="-395.01" font-family="Helvetica,sans-Serif" font-size="9.00">K&#45;equivalence limit</text>
 </g></a>
@@ -110,7 +110,7 @@
 <polygon fill="#555555" stroke="#555555" points="208.48,-424.25 206.03,-417.25 203.58,-424.25 208.48,-424.25"/>
 </g>
 <!-- P36 -->
-<a xlink:href="../../node/P36/" class="lean-graph-node"><g id="node9" class="node"><title>P36</title>
+<a xlink:href="/lean/node/P36/" class="lean-graph-node"><g id="node9" class="node"><title>P36</title>
 <path fill="#eaf3ff" stroke="#444444" d="M676.56,-253.71C676.56,-253.71 581.49,-253.71 581.49,-253.71 575.49,-253.71 569.49,-247.71 569.49,-241.71 569.49,-241.71 569.49,-229.71 569.49,-229.71 569.49,-223.71 575.49,-217.71 581.49,-217.71 581.49,-217.71 676.56,-217.71 676.56,-217.71 682.56,-217.71 688.56,-223.71 688.56,-229.71 688.56,-229.71 688.56,-241.71 688.56,-241.71 688.56,-247.71 682.56,-253.71 676.56,-253.71"/>
 <text xml:space="preserve" text-anchor="middle" x="629.03" y="-233.01" font-family="Helvetica,sans-Serif" font-size="9.00">P36 Handle&#45;operation ref.</text>
 </g></a>
@@ -127,7 +127,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="500.48,-316.56 498.03,-309.56 495.58,-316.56 500.48,-316.56"/>
 </g>
 <!-- OUT -->
-<a xlink:href="../../node/OUT/" class="lean-graph-node"><g id="node20" class="node"><title>OUT</title>
+<a xlink:href="/lean/node/OUT/" class="lean-graph-node"><g id="node20" class="node"><title>OUT</title>
 <polygon fill="#ddeeff" stroke="#336699" points="679.29,-27.8 679.29,-67.11 617.63,-94.91 530.42,-94.91 468.76,-67.11 468.76,-27.8 530.42,0 617.63,0 679.29,-27.8"/>
 <text xml:space="preserve" text-anchor="middle" x="574.03" y="-66.35" font-family="Helvetica,sans-Serif" font-size="9.00">Exports to later spines:</text>
 <text xml:space="preserve" text-anchor="middle" x="574.03" y="-55.55" font-family="Helvetica,sans-Serif" font-size="9.00">BoundaryAligned, BIQ ceiling,</text>
@@ -143,7 +143,7 @@
 <text xml:space="preserve" text-anchor="middle" x="106.97" y="-233.31" font-family="Helvetica,sans-Serif" font-size="8.00">variable ontology</text>
 </g>
 <!-- P36M -->
-<a xlink:href="../../node/P36M/" class="lean-graph-node"><g id="node10" class="node"><title>P36M</title>
+<a xlink:href="/lean/node/P36M/" class="lean-graph-node"><g id="node10" class="node"><title>P36M</title>
 <path fill="#eaf3ff" stroke="#444444" d="M173.55,-307.71C173.55,-307.71 108.51,-307.71 108.51,-307.71 102.51,-307.71 96.51,-301.71 96.51,-295.71 96.51,-295.71 96.51,-283.71 96.51,-283.71 96.51,-277.71 102.51,-271.71 108.51,-271.71 108.51,-271.71 173.55,-271.71 173.55,-271.71 179.55,-271.71 185.55,-277.71 185.55,-283.71 185.55,-283.71 185.55,-295.71 185.55,-295.71 185.55,-301.71 179.55,-307.71 173.55,-307.71"/>
 <text xml:space="preserve" text-anchor="middle" x="141.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">Smoothing margin</text>
 </g></a>
@@ -154,7 +154,7 @@
 <polygon fill="#555555" stroke="#555555" points="161.74,-313.6 155.63,-309.4 157.79,-316.49 161.74,-313.6"/>
 </g>
 <!-- MB7b -->
-<a xlink:href="../../cards/bridge/mb7b-filter-coverage/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
+<a xlink:href="/cards/bridge/mb7b-filter-coverage/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M200.2,-186.1C200.2,-186.1 117.7,-172.11 117.7,-172.11 111.78,-171.11 111.78,-169.1 117.7,-168.1 117.7,-168.1 200.2,-154.11 200.2,-154.11 206.11,-153.11 217.94,-153.11 223.86,-154.11 223.86,-154.11 306.35,-168.1 306.35,-168.1 312.27,-169.1 312.27,-171.11 306.35,-172.11 306.35,-172.11 223.86,-186.1 223.86,-186.1 217.94,-187.1 206.11,-187.1 200.2,-186.1"/>
 <text xml:space="preserve" text-anchor="middle" x="212.03" y="-167.41" font-family="Helvetica,sans-Serif" font-size="9.00">MB7b Filter&#45;family coverage</text>
 </g></a>
@@ -178,7 +178,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="200.34,-195.2 201.86,-187.95 196.14,-192.67 200.34,-195.2"/>
 </g>
 <!-- P11 -->
-<a xlink:href="../../node/P11/" class="lean-graph-node"><g id="node12" class="node"><title>P11</title>
+<a xlink:href="/lean/node/P11/" class="lean-graph-node"><g id="node12" class="node"><title>P11</title>
 <path fill="#eaf3ff" stroke="#444444" d="M785.3,-188.11C785.3,-188.11 686.75,-188.11 686.75,-188.11 680.75,-188.11 674.75,-182.11 674.75,-176.11 674.75,-176.11 674.75,-164.11 674.75,-164.11 674.75,-158.11 680.75,-152.11 686.75,-152.11 686.75,-152.11 785.3,-152.11 785.3,-152.11 791.3,-152.11 797.3,-158.11 797.3,-164.11 797.3,-164.11 797.3,-176.11 797.3,-176.11 797.3,-182.11 791.3,-188.11 785.3,-188.11"/>
 <text xml:space="preserve" text-anchor="middle" x="736.03" y="-167.41" font-family="Helvetica,sans-Serif" font-size="9.00">P11 Capacity monotonicity</text>
 </g></a>
@@ -196,7 +196,7 @@
 <text xml:space="preserve" text-anchor="middle" x="690.88" y="-115.31" font-family="Helvetica,sans-Serif" font-size="8.00">Control side</text>
 </g>
 <!-- P34 -->
-<a xlink:href="../../node/P34/" class="lean-graph-node"><g id="node13" class="node"><title>P34</title>
+<a xlink:href="/lean/node/P34/" class="lean-graph-node"><g id="node13" class="node"><title>P34</title>
 <path fill="#eaf3ff" stroke="#444444" d="M110.05,-561.71C110.05,-561.71 12,-561.71 12,-561.71 6,-561.71 0,-555.71 0,-549.71 0,-549.71 0,-537.71 0,-537.71 0,-531.71 6,-525.71 12,-525.71 12,-525.71 110.05,-525.71 110.05,-525.71 116.05,-525.71 122.05,-531.71 122.05,-537.71 122.05,-537.71 122.05,-549.71 122.05,-549.71 122.05,-555.71 116.05,-561.71 110.05,-561.71"/>
 <text xml:space="preserve" text-anchor="middle" x="61.03" y="-541.01" font-family="Helvetica,sans-Serif" font-size="9.00">P34 Host&#45;capacity aliasing</text>
 </g></a>
@@ -213,7 +213,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="150.31,-183.8 156.53,-179.76 149.15,-179.04 150.31,-183.8"/>
 </g>
 <!-- P43H -->
-<a xlink:href="../../node/P43H/" class="lean-graph-node"><g id="node14" class="node"><title>P43H</title>
+<a xlink:href="/lean/node/P43H/" class="lean-graph-node"><g id="node14" class="node"><title>P43H</title>
 <path fill="#eaf3ff" stroke="#444444" d="M348.3,-307.71C348.3,-307.71 253.75,-307.71 253.75,-307.71 247.75,-307.71 241.75,-301.71 241.75,-295.71 241.75,-295.71 241.75,-283.71 241.75,-283.71 241.75,-277.71 247.75,-271.71 253.75,-271.71 253.75,-271.71 348.3,-271.71 348.3,-271.71 354.3,-271.71 360.3,-277.71 360.3,-283.71 360.3,-283.71 360.3,-295.71 360.3,-295.71 360.3,-301.71 354.3,-307.71 348.3,-307.71"/>
 <text xml:space="preserve" text-anchor="middle" x="301.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">Hidden&#45;rate accumulation</text>
 </g></a>
@@ -224,7 +224,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="230.6,-191.59 224.43,-187.49 226.7,-194.55 230.6,-191.59"/>
 </g>
 <!-- MB1 -->
-<a xlink:href="../../cards/bridge/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node15" class="node"><title>MB1</title>
+<a xlink:href="/cards/bridge/mb1-boundary-estimator-soundness/" class="lean-graph-node"><g id="node15" class="node"><title>MB1</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M243.22,-559.59C243.22,-559.59 166.47,-545.82 166.47,-545.82 160.57,-544.76 160.57,-542.65 166.47,-541.59 166.47,-541.59 243.22,-527.82 243.22,-527.82 249.12,-526.76 260.93,-526.76 266.84,-527.82 266.84,-527.82 343.58,-541.59 343.58,-541.59 349.49,-542.65 349.49,-544.76 343.58,-545.82 343.58,-545.82 266.84,-559.59 266.84,-559.59 260.93,-560.65 249.12,-560.65 243.22,-559.59"/>
 <text xml:space="preserve" text-anchor="middle" x="255.03" y="-541.01" font-family="Helvetica,sans-Serif" font-size="9.00">MB1 Estimator soundness</text>
 </g></a>
@@ -249,7 +249,7 @@
 <text xml:space="preserve" text-anchor="middle" x="424.42" y="-233.31" font-family="Helvetica,sans-Serif" font-size="8.00">MB7 chain</text>
 </g>
 <!-- MB7d_IN -->
-<a xlink:href="../../cards/bridge/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
+<a xlink:href="/cards/bridge/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" stroke-dasharray="5,2" points="457.03,-199.71 336.47,-170.11 457.03,-140.51 577.58,-170.11 457.03,-199.71"/>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-172.81" font-family="Helvetica,sans-Serif" font-size="9.00">To MB7d</text>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-162.01" font-family="Helvetica,sans-Serif" font-size="9.00">Inferential detector validity</text>
@@ -274,7 +274,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="525.08,-102.44 528.2,-95.71 521.57,-99.03 525.08,-102.44"/>
 </g>
 <!-- MB9 -->
-<a xlink:href="../../cards/bridge/mb9-grounding-certificate/" class="lean-graph-node"><g id="node19" class="node"><title>MB9</title>
+<a xlink:href="/cards/bridge/mb9-grounding-certificate/" class="lean-graph-node"><g id="node19" class="node"><title>MB9</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M1039.38,-196.83C1039.38,-196.83 942.63,-172.98 942.63,-172.98 936.8,-171.54 936.8,-168.67 942.63,-167.23 942.63,-167.23 1039.38,-143.38 1039.38,-143.38 1045.2,-141.94 1056.85,-141.94 1062.68,-143.38 1062.68,-143.38 1159.42,-167.23 1159.42,-167.23 1165.25,-168.67 1165.25,-171.54 1159.42,-172.98 1159.42,-172.98 1062.68,-196.83 1062.68,-196.83 1056.85,-198.27 1045.2,-198.27 1039.38,-196.83"/>
 <text xml:space="preserve" text-anchor="middle" x="1051.03" y="-172.81" font-family="Helvetica,sans-Serif" font-size="9.00">MB9 Grounding certificate</text>
 <text xml:space="preserve" text-anchor="middle" x="1051.03" y="-162.01" font-family="Helvetica,sans-Serif" font-size="9.00">soundness</text>

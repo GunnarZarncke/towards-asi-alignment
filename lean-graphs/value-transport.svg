@@ -11,12 +11,12 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-719.04 654.97,-719.04 654.97,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="325.48" y="-701.14" font-family="Helvetica,sans-Serif" font-size="11.00">Spine II: Value bundles and goal transport</text>
 <!-- P14 -->
-<a xlink:href="../../node/P14/" class="lean-graph-node"><g id="node1" class="node"><title>P14</title>
+<a xlink:href="/lean/node/P14/" class="lean-graph-node"><g id="node1" class="node"><title>P14</title>
 <path fill="#effbea" stroke="#444444" d="M520.78,-693.84C520.78,-693.84 431.22,-693.84 431.22,-693.84 425.22,-693.84 419.22,-687.84 419.22,-681.84 419.22,-681.84 419.22,-669.84 419.22,-669.84 419.22,-663.84 425.22,-657.84 431.22,-657.84 431.22,-657.84 520.78,-657.84 520.78,-657.84 526.78,-657.84 532.78,-663.84 532.78,-669.84 532.78,-669.84 532.78,-681.84 532.78,-681.84 532.78,-687.84 526.78,-693.84 520.78,-693.84"/>
 <text xml:space="preserve" text-anchor="middle" x="476" y="-673.14" font-family="Helvetica,sans-Serif" font-size="9.00">P14 Bundle factorization</text>
 </g></a>
 <!-- P15 -->
-<a xlink:href="../../node/P15/" class="lean-graph-node"><g id="node2" class="node"><title>P15</title>
+<a xlink:href="/lean/node/P15/" class="lean-graph-node"><g id="node2" class="node"><title>P15</title>
 <path fill="#effbea" stroke="#444444" d="M581.27,-474.84C581.27,-474.84 496.73,-474.84 496.73,-474.84 490.73,-474.84 484.73,-468.84 484.73,-462.84 484.73,-462.84 484.73,-450.84 484.73,-450.84 484.73,-444.84 490.73,-438.84 496.73,-438.84 496.73,-438.84 581.27,-438.84 581.27,-438.84 587.27,-438.84 593.27,-444.84 593.27,-450.84 593.27,-450.84 593.27,-462.84 593.27,-462.84 593.27,-468.84 587.27,-474.84 581.27,-474.84"/>
 <text xml:space="preserve" text-anchor="middle" x="539" y="-454.14" font-family="Helvetica,sans-Serif" font-size="9.00">P15 Policy ≠ geometry</text>
 </g></a>
@@ -27,7 +27,7 @@
 <polygon fill="#555555" stroke="#555555" points="602.52,-473.73 595.13,-473.12 600.53,-478.2 602.52,-473.73"/>
 </g>
 <!-- P16 -->
-<a xlink:href="../../node/P16/" class="lean-graph-node"><g id="node3" class="node"><title>P16</title>
+<a xlink:href="/lean/node/P16/" class="lean-graph-node"><g id="node3" class="node"><title>P16</title>
 <path fill="#effbea" stroke="#444444" d="M374.03,-620.84C374.03,-620.84 281.97,-620.84 281.97,-620.84 275.97,-620.84 269.97,-614.84 269.97,-608.84 269.97,-608.84 269.97,-596.84 269.97,-596.84 269.97,-590.84 275.97,-584.84 281.97,-584.84 281.97,-584.84 374.03,-584.84 374.03,-584.84 380.03,-584.84 386.03,-590.84 386.03,-596.84 386.03,-596.84 386.03,-608.84 386.03,-608.84 386.03,-614.84 380.03,-620.84 374.03,-620.84"/>
 <text xml:space="preserve" text-anchor="middle" x="328" y="-600.14" font-family="Helvetica,sans-Serif" font-size="9.00">P16 LHV sample window</text>
 </g></a>
@@ -38,7 +38,7 @@
 <polygon fill="#555555" stroke="#555555" points="371.03,-622.9 363.67,-621.96 368.83,-627.28 371.03,-622.9"/>
 </g>
 <!-- P17 -->
-<a xlink:href="../../node/P17/" class="lean-graph-node"><g id="node4" class="node"><title>P17</title>
+<a xlink:href="/lean/node/P17/" class="lean-graph-node"><g id="node4" class="node"><title>P17</title>
 <path fill="#effbea" stroke="#444444" d="M471.78,-289.44C471.78,-289.44 376.22,-289.44 376.22,-289.44 370.22,-289.44 364.22,-283.44 364.22,-277.44 364.22,-277.44 364.22,-265.44 364.22,-265.44 364.22,-259.44 370.22,-253.44 376.22,-253.44 376.22,-253.44 471.78,-253.44 471.78,-253.44 477.78,-253.44 483.78,-259.44 483.78,-265.44 483.78,-265.44 483.78,-277.44 483.78,-277.44 483.78,-283.44 477.78,-289.44 471.78,-289.44"/>
 <text xml:space="preserve" text-anchor="middle" x="424" y="-268.74" font-family="Helvetica,sans-Serif" font-size="9.00">P17 Labels ≠ bearer map</text>
 </g></a>
@@ -49,7 +49,7 @@
 <polygon fill="#555555" stroke="#555555" points="421.01,-298.67 419.88,-291.34 416.19,-297.77 421.01,-298.67"/>
 </g>
 <!-- MB2 -->
-<a xlink:href="../../cards/bridge/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node13" class="node"><title>MB2</title>
+<a xlink:href="/cards/bridge/mb2-bundle-identifiability/" class="lean-graph-node"><g id="node13" class="node"><title>MB2</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M527.2,-545.64C527.2,-545.64 454.16,-532.04 454.16,-532.04 448.26,-530.94 448.26,-528.74 454.16,-527.64 454.16,-527.64 527.2,-514.04 527.2,-514.04 533.1,-512.94 544.9,-512.94 550.8,-514.04 550.8,-514.04 623.84,-527.64 623.84,-527.64 629.74,-528.74 629.74,-530.94 623.84,-532.04 623.84,-532.04 550.8,-545.64 550.8,-545.64 544.9,-546.74 533.1,-546.74 527.2,-545.64"/>
 <text xml:space="preserve" text-anchor="middle" x="539" y="-527.14" font-family="Helvetica,sans-Serif" font-size="9.00">MB2 Bundle identifiability</text>
 </g></a>
@@ -60,7 +60,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="530.79,-555.73 531.35,-548.33 526.3,-553.76 530.79,-555.73"/>
 </g>
 <!-- P37 -->
-<a xlink:href="../../node/P37/" class="lean-graph-node"><g id="node12" class="node"><title>P37</title>
+<a xlink:href="/lean/node/P37/" class="lean-graph-node"><g id="node12" class="node"><title>P37</title>
 <path fill="#effbea" stroke="#444444" d="M451.03,-143.44C451.03,-143.44 376.97,-143.44 376.97,-143.44 370.97,-143.44 364.97,-137.44 364.97,-131.44 364.97,-131.44 364.97,-119.44 364.97,-119.44 364.97,-113.44 370.97,-107.44 376.97,-107.44 376.97,-107.44 451.03,-107.44 451.03,-107.44 457.03,-107.44 463.03,-113.44 463.03,-119.44 463.03,-119.44 463.03,-131.44 463.03,-131.44 463.03,-137.44 457.03,-143.44 451.03,-143.44"/>
 <text xml:space="preserve" text-anchor="middle" x="414" y="-122.74" font-family="Helvetica,sans-Serif" font-size="9.00">P37 Goal laundering</text>
 </g></a>
@@ -71,7 +71,7 @@
 <polygon fill="#555555" stroke="#555555" points="472.05,-136.69 464.63,-136.86 470.54,-141.35 472.05,-136.69"/>
 </g>
 <!-- P19 -->
-<a xlink:href="../../node/P19/" class="lean-graph-node"><g id="node6" class="node"><title>P19</title>
+<a xlink:href="/lean/node/P19/" class="lean-graph-node"><g id="node6" class="node"><title>P19</title>
 <path fill="#effbea" stroke="#2e7d32" stroke-width="2.2" d="M316.78,-547.84C316.78,-547.84 209.22,-547.84 209.22,-547.84 203.22,-547.84 197.22,-541.84 197.22,-535.84 197.22,-535.84 197.22,-523.84 197.22,-523.84 197.22,-517.84 203.22,-511.84 209.22,-511.84 209.22,-511.84 316.78,-511.84 316.78,-511.84 322.78,-511.84 328.78,-517.84 328.78,-523.84 328.78,-523.84 328.78,-535.84 328.78,-535.84 328.78,-541.84 322.78,-547.84 316.78,-547.84"/>
 <text xml:space="preserve" text-anchor="middle" x="263" y="-532.54" font-family="Helvetica,sans-Serif" font-size="9.00">[PROJECTED]</text>
 <text xml:space="preserve" text-anchor="middle" x="263" y="-521.74" font-family="Helvetica,sans-Serif" font-size="9.00">P19 Scalar reward as bundle</text>
@@ -89,7 +89,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="498.47,-547.06 504.33,-542.51 496.91,-542.42 498.47,-547.06"/>
 </g>
 <!-- P22b -->
-<a xlink:href="../../node/P22b/" class="lean-graph-node"><g id="node11" class="node"><title>P22b</title>
+<a xlink:href="/lean/node/P22b/" class="lean-graph-node"><g id="node11" class="node"><title>P22b</title>
 <path fill="#effbea" stroke="#444444" d="M383.53,-216.44C383.53,-216.44 268.47,-216.44 268.47,-216.44 262.47,-216.44 256.47,-210.44 256.47,-204.44 256.47,-204.44 256.47,-192.44 256.47,-192.44 256.47,-186.44 262.47,-180.44 268.47,-180.44 268.47,-180.44 383.53,-180.44 383.53,-180.44 389.53,-180.44 395.53,-186.44 395.53,-192.44 395.53,-192.44 395.53,-204.44 395.53,-204.44 395.53,-210.44 389.53,-216.44 383.53,-216.44"/>
 <text xml:space="preserve" text-anchor="middle" x="326" y="-195.74" font-family="Helvetica,sans-Serif" font-size="9.00">P22b Semantic ≠ full transport</text>
 </g></a>
@@ -106,7 +106,7 @@
 <polygon fill="#555555" stroke="#555555" points="418.24,-152.2 415.32,-145.38 413.36,-152.54 418.24,-152.2"/>
 </g>
 <!-- P18 -->
-<a xlink:href="../../node/P18/" class="lean-graph-node"><g id="node5" class="node"><title>P18</title>
+<a xlink:href="/lean/node/P18/" class="lean-graph-node"><g id="node5" class="node"><title>P18</title>
 <path fill="#effbea" stroke="#444444" d="M295.53,-289.44C295.53,-289.44 198.47,-289.44 198.47,-289.44 192.47,-289.44 186.47,-283.44 186.47,-277.44 186.47,-277.44 186.47,-265.44 186.47,-265.44 186.47,-259.44 192.47,-253.44 198.47,-253.44 198.47,-253.44 295.53,-253.44 295.53,-253.44 301.53,-253.44 307.53,-259.44 307.53,-265.44 307.53,-265.44 307.53,-277.44 307.53,-277.44 307.53,-283.44 301.53,-289.44 295.53,-289.44"/>
 <text xml:space="preserve" text-anchor="middle" x="247" y="-268.74" font-family="Helvetica,sans-Serif" font-size="9.00">P18 Marginals ≠ tradeoffs</text>
 </g></a>
@@ -117,7 +117,7 @@
 <polygon fill="#555555" stroke="#555555" points="302.08,-224.23 305.65,-217.73 298.81,-220.59 302.08,-224.23"/>
 </g>
 <!-- FCIRL -->
-<a xlink:href="../../node/FCIRL/" class="lean-graph-node"><g id="node7" class="node"><title>FCIRL</title>
+<a xlink:href="/lean/node/FCIRL/" class="lean-graph-node"><g id="node7" class="node"><title>FCIRL</title>
 <path fill="#effbea" stroke="#444444" d="M351.31,-420.84C351.31,-420.84 174.69,-420.84 174.69,-420.84 168.69,-420.84 162.69,-414.84 162.69,-408.84 162.69,-408.84 162.69,-392.44 162.69,-392.44 162.69,-386.44 168.69,-380.44 174.69,-380.44 174.69,-380.44 351.31,-380.44 351.31,-380.44 357.31,-380.44 363.31,-386.44 363.31,-392.44 363.31,-392.44 363.31,-408.84 363.31,-408.84 363.31,-414.84 357.31,-420.84 351.31,-420.84"/>
 <text xml:space="preserve" text-anchor="middle" x="263" y="-408.74" font-family="Helvetica,sans-Serif" font-size="9.00">Field.CIRL final nodes</text>
 <text xml:space="preserve" text-anchor="middle" x="263" y="-397.94" font-family="Helvetica,sans-Serif" font-size="9.00">scalar_assistance_game_is_bundle_game_k1</text>
@@ -130,7 +130,7 @@
 <polygon fill="#555555" stroke="#555555" points="265.45,-429.69 263,-422.69 260.55,-429.69 265.45,-429.69"/>
 </g>
 <!-- P20 -->
-<a xlink:href="../../node/P20/" class="lean-graph-node"><g id="node8" class="node"><title>P20</title>
+<a xlink:href="/lean/node/P20/" class="lean-graph-node"><g id="node8" class="node"><title>P20</title>
 <path fill="#effbea" stroke="#444444" d="M208.53,-474.84C208.53,-474.84 115.47,-474.84 115.47,-474.84 109.47,-474.84 103.47,-468.84 103.47,-462.84 103.47,-462.84 103.47,-450.84 103.47,-450.84 103.47,-444.84 109.47,-438.84 115.47,-438.84 115.47,-438.84 208.53,-438.84 208.53,-438.84 214.53,-438.84 220.53,-444.84 220.53,-450.84 220.53,-450.84 220.53,-462.84 220.53,-462.84 220.53,-468.84 214.53,-474.84 208.53,-474.84"/>
 <text xml:space="preserve" text-anchor="middle" x="162" y="-454.14" font-family="Helvetica,sans-Serif" font-size="9.00">P20 Intentional MDL gain</text>
 </g></a>
@@ -141,7 +141,7 @@
 <polygon fill="#555555" stroke="#555555" points="195.15,-478.15 188.02,-476.13 192.34,-482.16 195.15,-478.15"/>
 </g>
 <!-- OUT -->
-<a xlink:href="../../node/OUT/" class="lean-graph-node"><g id="node15" class="node"><title>OUT</title>
+<a xlink:href="/lean/node/OUT/" class="lean-graph-node"><g id="node15" class="node"><title>OUT</title>
 <polygon fill="#e8f8e8" stroke="#336633" points="457.71,-18.11 457.71,-43.73 380.56,-61.84 271.44,-61.84 194.29,-43.73 194.29,-18.11 271.44,0 380.56,0 457.71,-18.11"/>
 <text xml:space="preserve" text-anchor="middle" x="326" y="-39.02" font-family="Helvetica,sans-Serif" font-size="9.00">Exports:</text>
 <text xml:space="preserve" text-anchor="middle" x="326" y="-28.22" font-family="Helvetica,sans-Serif" font-size="9.00">BundleTransport, BearerTransport,</text>
@@ -154,7 +154,7 @@
 <polygon fill="#555555" stroke="#555555" points="188.61,-48.4 195.19,-44.98 187.91,-43.55 188.61,-48.4"/>
 </g>
 <!-- P21 -->
-<a xlink:href="../../node/P21/" class="lean-graph-node"><g id="node9" class="node"><title>P21</title>
+<a xlink:href="/lean/node/P21/" class="lean-graph-node"><g id="node9" class="node"><title>P21</title>
 <path fill="#effbea" stroke="#444444" d="M182.27,-362.44C182.27,-362.44 113.73,-362.44 113.73,-362.44 107.73,-362.44 101.73,-356.44 101.73,-350.44 101.73,-350.44 101.73,-338.44 101.73,-338.44 101.73,-332.44 107.73,-326.44 113.73,-326.44 113.73,-326.44 182.27,-326.44 182.27,-326.44 188.27,-326.44 194.27,-332.44 194.27,-338.44 194.27,-338.44 194.27,-350.44 194.27,-350.44 194.27,-356.44 188.27,-362.44 182.27,-362.44"/>
 <text xml:space="preserve" text-anchor="middle" x="148" y="-341.74" font-family="Helvetica,sans-Serif" font-size="9.00">P21 Transport gain</text>
 </g></a>
@@ -165,7 +165,7 @@
 <polygon fill="#555555" stroke="#555555" points="153.72,-371.07 150.41,-364.44 148.86,-371.69 153.72,-371.07"/>
 </g>
 <!-- P22a -->
-<a xlink:href="../../node/P22a/" class="lean-graph-node"><g id="node10" class="node"><title>P22a</title>
+<a xlink:href="/lean/node/P22a/" class="lean-graph-node"><g id="node10" class="node"><title>P22a</title>
 <path fill="#effbea" stroke="#444444" d="M156.28,-289.44C156.28,-289.44 39.72,-289.44 39.72,-289.44 33.72,-289.44 27.72,-283.44 27.72,-277.44 27.72,-277.44 27.72,-265.44 27.72,-265.44 27.72,-259.44 33.72,-253.44 39.72,-253.44 39.72,-253.44 156.28,-253.44 156.28,-253.44 162.28,-253.44 168.28,-259.44 168.28,-265.44 168.28,-265.44 168.28,-277.44 168.28,-277.44 168.28,-283.44 162.28,-289.44 156.28,-289.44"/>
 <text xml:space="preserve" text-anchor="middle" x="98" y="-268.74" font-family="Helvetica,sans-Serif" font-size="9.00">P22a Full ⇒ semantic transport</text>
 </g></a>
@@ -213,7 +213,7 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="203.52,-355.86 196.17,-356.81 202.51,-360.65 203.52,-355.86"/>
 </g>
 <!-- MB3 -->
-<a xlink:href="../../cards/bridge/mb3-bearer-import/" class="lean-graph-node"><g id="node14" class="node"><title>MB3</title>
+<a xlink:href="/cards/bridge/mb3-bearer-import/" class="lean-graph-node"><g id="node14" class="node"><title>MB3</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M298.32,-359.67C298.32,-359.67 245.79,-347.21 245.79,-347.21 239.95,-345.83 239.95,-343.06 245.79,-341.67 245.79,-341.67 298.32,-329.21 298.32,-329.21 304.16,-327.83 315.84,-327.83 321.68,-329.21 321.68,-329.21 374.21,-341.67 374.21,-341.67 380.05,-343.06 380.05,-345.83 374.21,-347.21 374.21,-347.21 321.68,-359.67 321.68,-359.67 315.84,-361.06 304.16,-361.06 298.32,-359.67"/>
 <text xml:space="preserve" text-anchor="middle" x="310" y="-341.74" font-family="Helvetica,sans-Serif" font-size="9.00">MB3 Bearer import</text>
 </g></a>
