@@ -1,6 +1,7 @@
 ---
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { fixGraphSvgHrefs } from "../lib/fix-graph-svg-hrefs";
 
 interface Props {
   graphId: string;
@@ -15,7 +16,7 @@ const withBase = (assetPath: string) => `${base}${assetPath.replace(/^\/+/, "")}
 
 let svgHtml = "";
 try {
-  svgHtml = readFileSync(path.join(process.cwd(), "public", svgFile), "utf8");
+  svgHtml = fixGraphSvgHrefs(readFileSync(path.join(process.cwd(), "public", svgFile), "utf8"), base);
 } catch {
   svgHtml =
     '<p class="lean-graph-missing">Graph SVG not found. Run <code>npm run sync</code> in <code>site/</code>.</p>';

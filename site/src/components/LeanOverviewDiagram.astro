@@ -17,7 +17,7 @@ let svgHtml = "";
 try {
   svgHtml = fixGraphSvgHrefs(
     readFileSync(path.join(process.cwd(), "public", "lean-graphs/overview.svg"), "utf8"),
-    "lean-index"
+    base
   );
 } catch {
   svgHtml = "";

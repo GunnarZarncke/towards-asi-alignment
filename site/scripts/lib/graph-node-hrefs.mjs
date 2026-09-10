@@ -1,4 +1,6 @@
-/** Relative links from `/lean/graph/{slug}/` pages (work with any Astro base). */
+/** Site-root hrefs (leading `/`) so inlined SVGs resolve on any page. */
+
+import { cardPublicPath } from "./card-urls.mjs";
 
 const SUB_SPINE_GRAPHS = {
   S1: "boundary-measurement",
@@ -9,9 +11,9 @@ const SUB_SPINE_GRAPHS = {
 
 export function nodeHrefFromGraphPage(nodeId, { cardSlug = null } = {}) {
   const sub = SUB_SPINE_GRAPHS[nodeId];
-  if (sub) return `../../graph/${sub}/`;
-  if (cardSlug) return `../../cards/bridge/${cardSlug.toLowerCase()}/`;
-  return `../../node/${encodeURIComponent(nodeId)}/`;
+  if (sub) return `/lean/graph/${sub}/`;
+  if (cardSlug) return cardPublicPath({ id: cardSlug, type: "bridge" });
+  return `/lean/node/${encodeURIComponent(nodeId)}/`;
 }
 
 export function buildGraphHrefMap(nodes) {

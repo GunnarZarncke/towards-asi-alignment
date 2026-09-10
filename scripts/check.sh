@@ -74,7 +74,8 @@ add_check "site lib tests" node --test --experimental-strip-types \
   site/src/lib/field-matrix-cell.test.ts \
   site/src/lib/visit-history.test.ts \
   site/src/lib/read-next.test.ts \
-  site/src/lib/quiz/quiz.test.ts
+  site/src/lib/quiz/quiz.test.ts \
+  site/src/lib/fix-graph-svg-hrefs.test.ts
 
 if [[ "$STATUS" -eq 0 ]]; then
   OVERALL="pass"
