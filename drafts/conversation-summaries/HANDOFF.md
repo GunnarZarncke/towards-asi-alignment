@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-08 (What this map misses card).
+Last updated: 2026-09-10 (Crux map S-curve on funding card).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-10:** **Crux map S-curve** — Alignment Crux Map funding card now shows the original S-process U vs $ chart. Log: `2026-09-10-crux-map-s-curve.md`.
+- **2026-09-10:** **Containment verification news** — GSAI-call card on Moon & Varshney (arXiv:2605.09045): proved whitelist on PocketFlow; world-state/sequence specs as residual; unbounded world ends the guarantee. Log: `2026-09-10-containment-verification-news.md`.
 - **2026-09-08:** **What this map misses** — reverse-column card at `/cards/concept/what-tsa-fails-to-represent/`; front-door terms; Orthogonal/Resolution evidence remap; CIRIS leftover is construction. Log: `2026-09-08-what-tsa-fails-to-represent.md`.
 - **2026-09-07:** **Voice lane closed** — ledgers fresh; C-012/C-013 renumber; WWCTV→chokepoint moved to optional TODO. Log: `2026-09-07-claim-id-renumber.md`.
 - **2026-09-07:** **Claim ID renumber + ledger freshness** — `C-004a`→`C-012`, `C-044`→`C-013`; W-* bullets on claims ledger; U-ledger chokepoint note. Log: `2026-09-07-claim-id-renumber.md`.

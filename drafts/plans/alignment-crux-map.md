@@ -34,7 +34,7 @@ Publish a **job-level** map for six crowded labels funders and newcomers actuall
 
 Cap table, utilities, durations, and contractor `reviews`: `funding-applications/alignment-crux-map/alignment-crux-map-s-process.md` (local; gitignored). Editable steps + chart: `funding-applications/alignment-crux-map/alignment-crux-map-s-process.steps.yml`, `plot_alignment_crux_map_s_process.py`.
 
-Grant listing (paste-ready): `funding-applications/alignment-crux-map/alignment-crux-map.md`. Public card: [`site/src/content/cards/funding/alignment-crux-map.md`](../../site/src/content/cards/funding/alignment-crux-map.md).
+Grant listing (paste-ready): `funding-applications/alignment-crux-map/alignment-crux-map.md`. Public card: [`site/src/content/cards/funding/alignment-crux-map.md`](../../site/src/content/cards/funding/alignment-crux-map.md) (includes the S-process curve).
 
 ---
 

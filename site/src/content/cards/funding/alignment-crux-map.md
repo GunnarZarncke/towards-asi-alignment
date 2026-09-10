@@ -66,6 +66,11 @@ Also includes the minimum package, plus:
 |---|---------|-------|
 | **Ask** | **$16,000** | **$50,000** |
 
+<figure class="book-figure">
+<img src="/funding/alignment-crux-map-s-process-curve.png" alt="S-process curve of cumulative estimated usefulness versus spend, with the minimum package marked at $15,500 and the cap at $50,000" />
+<figcaption>How estimated usefulness grows with spend. Orange is the minimum package (lab plus one outsider evaluation). Green is the $50,000 cap. 1 U is one avoided year of a capable person, or one funding decision, aimed at the wrong job under a crowded word.</figcaption>
+</figure>
+
 ## If it works
 
 This project succeeds if funders direct money more efficiently toward researchers working on the problem where they have most impact. It fails if the material is not used, even if the disambiguation is correct.
