@@ -20,4 +20,4 @@ Add the S-curve map from the original Alignment Crux Map application to the publ
 - `funding-applications/alignment-crux-map/` (local; gitignored)
 
 ## Commits
-- none
+- `4afc17b4` Add S-process curve to Alignment Crux Map funding card.

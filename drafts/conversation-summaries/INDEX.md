@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-13 | **Path construction spin-out** — A conversation questioned the v2 unification of CEV with outer alignment: the CEV principal is fu... | [2026-09-13-path-construction-paper.md](2026-09-13-path-construction-paper.md) |
+| 2026-09-11 | **Agency-detect maintained-blanket import** — User asked to check sibling `agency-detect` for new papers, add them to `context/`, and check whe... | [2026-09-11-agency-detect-maintained-blanket.md](2026-09-11-agency-detect-maintained-blanket.md) |
 | 2026-09-10 | **Crux map S-curve on funding card** — Add the S-curve map from the original Alignment Crux Map application to the public Alignment Crux... | [2026-09-10-crux-map-s-curve.md](2026-09-10-crux-map-s-curve.md) |
 | 2026-09-10 | **Containment verification news card** — User attended Orpheus Lummis’s GSAI sequence with Royce Moon on Moon & Varshney (arXiv:2605.09045... | [2026-09-10-containment-verification-news.md](2026-09-10-containment-verification-news.md) |
 | 2026-09-08 | **What this map misses** — User asked for one “what TSA fails to represent of their crux” line per field agenda as a new sit... | [2026-09-08-what-tsa-fails-to-represent.md](2026-09-08-what-tsa-fails-to-represent.md) |
@@ -19,12 +21,10 @@
 | 2026-09-07 | **Appendix stub retirement + App N readings** — User approved plan: delete obsolete appendix stubs H–K; expand App N with methodology note and ho... | [2026-09-07-appendix-stubs-appn-readings.md](2026-09-07-appendix-stubs-appn-readings.md) |
 | 2026-09-05 | **v1.6.0 release notes and tag** — User asked for the next minor release notes, then when authorship bars entered the PDF, then to c... | [2026-09-05-v1-6-0-release-notes.md](2026-09-05-v1-6-0-release-notes.md) |
 | 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
-| 2026-09-05 | **Field hub v2 consolidation + bridge card table** — Continuation after adjacent-voice commit: consolidate `/field/` on v2 preview panels, split exter... | [2026-09-05-field-hub-v2-consolidation.md](2026-09-05-field-hub-v2-consolidation.md) |
-| 2026-09-05 | **Audit telemetry draft (v2 rec seed)** — Summarize telemetry lessons (Witness + sims) and audit-layer comparison into a report that can be... | [2026-09-05-audit-telemetry-draft.md](2026-09-05-audit-telemetry-draft.md) |
 
 ## Archive by month
 
-- **2026-09** (13): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (15): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

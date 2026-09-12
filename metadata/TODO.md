@@ -51,7 +51,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 ## Construct (plan open; v1 manuscript parked)
 
-Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + social/technical **constructibility**). Papers stay spin-outs. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`. v1 book path remains certification/preservation (ch33), not attractor construction.
+Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + **path construction** + social/technical **constructibility**). Papers stay spin-outs. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`; do **not** add `PathRealizable` in v1. v1 book path remains certification/preservation (ch33), not attractor or path construction. Family E briefing: [`papers/path-construction/`](../papers/path-construction/).
 
 - [ ] **Do not include Construction chapters in the v1 manuscript yet.** Site specify/construct cards and the lifecycle card stay. 2.0 outline may proceed; concrete Family B chapters wait on Backtest.
 

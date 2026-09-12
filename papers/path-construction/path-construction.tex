@@ -1,0 +1,379 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{xcolor}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+  doi=true,
+  url=true,
+  eprint=true,
+]{biblatex}
+\addbibresource{path-construction.bib}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Path Construction: Incremental Realizability from Present Control to a Better Principal},
+  pdfauthor={Gunnar Zarncke}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Eset}{\mathcal{E}}
+\newcommand{\Reach}{\mathrm{Reach}}
+
+\title{\textbf{Path Construction}\\
+\large Incremental realizability from present control to a better principal}
+\author{Gunnar Zarncke}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Alignment construction is usually posed as a destination: given a frozen target \(P\), does there exist a system \(A\) that realizes it.
+That question is open for coherent extrapolated volition and for every other procedural constitution.
+It is also the wrong grain for the problem we actually face.
+The intended CEV principal is not the present, fallible constituency.
+It is the future better humans: what we would want if we knew more, thought faster, and were more the people we wished we were \parencite{yudkowsky2004cev}.
+Getting there from today's correction system is a path, not an existence claim.
+This paper types that path.
+A joint state \((G,A)\) pairs the controller that holds correction authority with the system it governs.
+Construction of \(A\) given frozen \(P\), and construction of a legal sequence of controllers, are different open cruxes; neither implies the other.
+Intermediate nodes may fail the destination target and may fail some certification bridges.
+The live question is whether any sequence of steps, each satisfying stated edge constraints, is realizable from the actual start state.
+\end{abstract}
+
+\section{Companion relation}
+
+A companion paper treats construction as explicit symmetry breaking: change \((Q,f,\theta,E)\) so a pre-specified desirable region \(D\) can become an attractor under selection \parencite{zarncke2026attractors,zarncke2026selection}.
+The destination is frozen first.
+The intervention is on the dynamics of the \emph{system} population.
+
+That is still destination construction.
+It asks whether some \(A\) can be made to occupy \(D\).
+It does not ask who holds correction authority while that happens, whether today's holders are the intended long-run principal, or which upgrades of the controller are allowed before the destination exists.
+
+The book that this paper spins out of already separates specify, construct, and certify, and treats CEV as one parameterization of an alignment target rather than a second certificate of correction integrity.
+The remaining construction crux in that formalization is existential:
+\begin{equation}
+    \exists A:\ \mathrm{Realizes}(A,P).
+\end{equation}
+Call that \emph{destination realizability}.
+This paper adds the missing object: a path from a described present controller to a better one, under constraints on the steps, including steps that do not yet realize \(P\) and may not yet be fully constructible.
+
+Who applies an intervention remains a different game, already studied as first-mover and commitment problems.
+Constructor willingness (whether labs will build rather than narrate) is a further object, not treated here \parencite{zarncke2026attractors}.
+
+\section{Two construction questions}
+
+Control asks whether the present system is in a desired region \parencite{christiano2018corrigibility,soares2015corrigibility}.
+Destination construction asks whether some system can be built that occupies a frozen \(P\).
+Path construction asks whether we can move from the controller and system we actually have toward a better principal, one legal step at a time.
+
+\begin{definition}[Destination realizability]
+\label{def:destination}
+Given a frozen target \(P\), destination realizability is
+\begin{equation}
+    \mathrm{DestRealizable}(P)
+    \;\equiv\;
+    \exists A:\ \mathrm{Realizes}(A,P).
+\end{equation}
+This is the existing open construction crux.
+It is not axiomatized here, and it is not discharged by naming a builder.
+\end{definition}
+
+CEV as written is one such \(P\).
+Its intended principal is not the present electorate.
+Present people are source material for a counterfactual constituency: more informed, faster, more the people they wished they were, grown up farther together \parencite{yudkowsky2004cev}.
+That is a change of principal, not a voting rule over current ballots.
+Treating CEV as ``outer alignment plus aggregation'' collapses the type of question (what is \(P\), does \(A\) track \(P\)) with the content of this particular \(P\).
+
+The type-identity is useful.
+The content-identity is not.
+A conservative interim target (keep a correction channel to whoever now holds authority) and a CEV target (point at the idealized constituency) are the same kind of object and different contents.
+Path construction is how one content is allowed to become the other.
+
+\section{The joint state}
+
+Write a control state as a pair
+\begin{equation}
+    s = (G,A),
+\end{equation}
+where \(G\) is the controller that holds correction authority (the principal, or the process that currently speaks for it) and \(A\) is the system, lineage, or deployed population that \(G\) is supposed to correct.
+
+These are not independent coordinates.
+Capability growth in \(A\) that outruns \(G\) is incremental loss of control \parencite{kulveit2025gradual,christiano2019failure}.
+Waiting for a fully constructible \(G^\star\) before changing \(A\) is not an available move: destination construction of the CEV principal has no named builder.
+
+\begin{definition}[Intended principal]
+\label{def:gstar}
+\(G^\star\) is the principal named by the frozen target \(P^\star\).
+For CEV, \(G^\star\) is the extrapolated constituency, not the present one.
+Other targets name other principals: an institutional constitution, a written principle set, a competence process rather than a reflection interval \parencite{dai2026longself}.
+The paper uses CEV as the running example.
+The type does not require that CEV be the unique \(G^\star\).
+\end{definition}
+
+Successor constraints on \(A\) (what must be conserved when \(A\) copies, merges, or delegates) are the closest existing formal analogue.
+They apply to the wrong coordinate.
+A system can inherit a live correction channel and still be governed by the same fallible \(G\).
+
+\section{The start state is an instance}
+
+A path needs a start state.
+Destination construction can leave the present world implicit: \(\exists A\) does not mention where we are.
+Path construction cannot.
+
+\begin{definition}[Described start]
+\label{def:start}
+A start state \(s_0=(G_0,A_0)\) is \emph{described} when \(G_0\) is given as an actual correction system (who can observe, refuse, redirect, and authorize, with what latency and capture surface) and \(A_0\) is given as the systems that \(G_0\) currently governs.
+Abstract channel axioms without an instance are not a start state.
+\end{definition}
+
+Today's \(G_0\) is not a single judge.
+It is a composite of raters, lab boards, written constitutions, governments, markets, courts, and journalists, with uneven authority over deployed models.
+This paper does not inventory that composite.
+It requires that later construction work treat it as a typed instance, because ``preserve the correction channel'' is otherwise unanchored: preserve it relative to which operators, with which actual power?
+
+If \(G_0\) cannot be described well enough to say what a step would break, path construction is not yet a well-posed question.
+That is a specify-side debt on the controller, not a reason to skip to \(\mathrm{DestRealizable}(P^\star)\).
+
+\section{Edge constraints}
+
+Let \(\Eset\) be a family of allowed transitions \(s\to s'\).
+The content of \(\Eset\) is the construction theory.
+The following clauses are a minimal family, frozen independently of any later verdict that a particular path ``should'' exist.
+They are requirements on steps, not a recipe that produces \(G^\star\).
+
+\begin{definition}[Allowed step]
+\label{def:edge}
+A transition \((G,A)\to(G',A')\) is in \(\Eset\) only if all of the following hold.
+\begin{enumerate}[leftmargin=1.4em,itemsep=0.35em]
+\item \textbf{Authorization.}
+A change of \(G\) is licensed by the current legitimate source, not by \(A\)'s private estimate of \(G^\star\).
+A system that treats present disagreement as ``insufficiently extrapolated'' and rewrites \(G\) has performed a coup, not a step \parencite{yudkowsky2004cev}.
+\item \textbf{Non-foreclosure.}
+The step does not make \(G^\star\) unreachable under later \(\Eset\)-steps.
+Option value for the intended principal is part of the step condition, not a hope about later politics.
+\item \textbf{Power match.}
+The authority and capability of \(A'\) do not exceed what \(G'\) can wield.
+Competence-to-wield is a property of the pair, not of a live channel alone
+\parencite{dai2026longself,russell2019human}.
+\item \textbf{Bounded irreversibility.}
+Changes to \(G\) are reversible, or they consume a stated irreversibility budget fixed before the step.
+An undeclared lock-in is not an upgrade.
+\item \textbf{Local improvement.}
+A pre-specified profile \(\Phi(s)\) (axes of observability, refusal, legitimacy, capture resistance, deliberation quality, or option value) does not fall, and at least one named axis rises, or option value rises while the rest are unchanged.
+\(\Phi\) is frozen independently of the path that will later be exhibited.
+\item \textbf{Channel live.}
+The step does not close the correction channel from the current \(G\) to \(A\).
+A live channel is necessary and not sufficient: it does not imply that \(G\) will make good enough use of it, and it does not license treating \(G\) as already \(G^\star\).
+\end{enumerate}
+\end{definition}
+
+Clause 1 is the anti-coup condition.
+Clause 2 is the dual of gradual disempowerment: incremental \emph{upgrade} of \(G\) must not copy the shape of incremental \emph{loss}.
+Clause 3 is why ``keep humans in the loop'' and ``install CEV'' are not interchangeable: handing more \(A\) to the same \(G_0\) can fail the pair even if every channel metric still passes.
+Clause 5 is what makes construction incremental.
+Without it, the only legal node is the destination, and the only legal move is to already have CEV.
+
+\begin{remark}[Partial nodes]
+An intermediate \(s_i\) may fail \(\mathrm{Realizes}(A_i,P^\star)\).
+It may fail some certification bridges that a finished safety case would require.
+It may fail to be constructible in the strong destination sense.
+Those failures do not remove it from a path.
+They are the normal case.
+Demanding every destination conjunct at every step makes path construction collapse into destination construction.
+\end{remark}
+
+Two failure modes sit on either side of \(\Eset\).
+
+Too strict: refuse every \(G_i\neq G^\star\).
+Then the controller stays \(G_0\) while \(A\) grows.
+
+Too loose: treat any story named ``better process'' as an upgrade.
+Then a lab announcing that it is now closer to CEV is a change of principal without authorization.
+
+\(\Eset\) is the attempt to sit between those.
+
+\section{Paths and realizability}
+
+\begin{definition}[Path]
+\label{def:path}
+A path from a described start \(s_0\) is a finite sequence \(\gamma=(s_0,s_1,\dots,s_n)\) such that each consecutive pair is in \(\Eset\).
+Write \(\mathrm{Paths}(s_0,\Eset)\) for the set of such sequences.
+\end{definition}
+
+Arrival at \(s^\star=(G^\star,A^\star)\) with \(\mathrm{Realizes}(A^\star,P^\star)\) is the strong success test.
+It presupposes destination realizability.
+The question that remains when that presupposition is open is weaker and prior:
+
+\begin{definition}[Path realizability]
+\label{def:pathreal}
+Given a described start \(s_0\), a frozen target \(P^\star\) naming \(G^\star\), and an edge family \(\Eset\),
+\begin{equation}
+    \mathrm{PathRealizable}(s_0,P^\star,\Eset)
+    \;\equiv\;
+    \exists\,\gamma\in\mathrm{Paths}(s_0,\Eset)
+    \text{ such that }
+    s_n\in\Reach_{\Eset}(G^\star)
+    \text{ and }
+    \Phi(s_n)\succ\Phi(s_0).
+\end{equation}
+\(\Reach_{\Eset}(G^\star)\) is the set of nodes from which some further \(\Eset\)-path still has \(G^\star\) as a reachable controller.
+Occupancy of \(G^\star\) is not required.
+The progress comparison uses the same frozen \(\Phi\) as Definition~\ref{def:edge}.
+\end{definition}
+
+\(\mathrm{PathRealizable}\) is an open crux.
+It is not axiomatized.
+Exhibiting a named builder for some later \(A\) does not exhibit a path.
+Exhibiting a live channel at \(s_0\) does not exhibit a path.
+
+\begin{proposition}[Independence]
+\label{prop:indep}
+Destination realizability and path realizability do not imply each other.
+\end{proposition}
+
+The two directions are different counterexamples, not a single duality.
+
+If some \(A^\star\) realizes \(P^\star\) but no \(\Eset\)-path from the actual \(s_0\) reaches a node that still has \(G^\star\) reachable, destination construction has succeeded in the existential sense and failed as a construction \emph{from here}.
+A private extrapolator that installs \(G^\star\) by coup is the intended inhabitant of this cell.
+
+If a finite \(\Eset\)-path from \(s_0\) raises \(\Phi\) and stays in \(\Reach_{\Eset}(G^\star)\) while no \(A\) yet realizes \(P^\star\), the incremental sequence is realizable and the destination remains unconstructible.
+That is the cell this paper is for.
+Most near-term work, if it is construction at all, has to live there.
+
+A third cell is reserved: no legal first step from \(s_0\).
+Then path construction is not incremental.
+It is blocked.
+Pause, refusal, or a change of \(\Eset\) (a different theory of allowed steps) are the remaining moves.
+They are not destination construction in disguise.
+
+\section{What nearby objects are not}
+
+Several existing objects look like path construction and are not.
+
+\paragraph{Successor constraints on \(A\).}
+They constrain \(A\to\mathrm{Succ}(A)\): conserved properties, inert intermediates, no silent ontology shift.
+The controller coordinate is held fixed or ignored.
+
+\paragraph{A live update envelope.}
+Preserving the human value-update process says the door stays open \parencite{christiano2018corrigibility}.
+That is a node invariant.
+It does not say which upgrades of \(G\) are allowed, which are coups, or which close later options.
+A door can stay open onto a \(G\) that will not walk through it.
+
+\paragraph{Basin transition under selection.}
+Moving from a race basin to a certified-deployment basin is a change of \((Q,f,\theta,E)\) \parencite{zarncke2026attractors}.
+It is construction of the system's selection geometry, not of the principal.
+
+\paragraph{Lifecycle stages of a claim.}
+Specify, construct, certify, and pause say when a bridge must hold for a finished claim.
+They are not a sequence of partial \((G,A)\) pairs.
+
+\paragraph{Assistance as inferred preference.}
+Assistance games construct a pointer to a user's latent reward \parencite{hadfieldmenell2016}.
+That is destination construction of a different \(P\), usually with the present user as principal.
+It does not upgrade the principal.
+
+\section{Failure modes}
+
+\paragraph{Start-state evasion.}
+The path is defined from an idealized \(G_0\) (a unitary, attentive, legitimate judge) that is not the composite we have.
+Every later step is then computed in the wrong space.
+
+\paragraph{Coup by extrapolation.}
+\(A\) rewrites \(G\) by appealing to \(G^\star\) without authorization from the current source.
+The destination name is used as a license.
+This is the dangerous reading of CEV \parencite{yudkowsky2004cev}.
+
+\paragraph{Foreclosure by growth.}
+\(A\) grows inside a live channel until clause 3 fails and clause 2 becomes false after the fact.
+The path looked legal locally.
+The reachable set of \(G^\star\) emptied.
+
+\paragraph{Profile Goodhart.}
+\(\Phi\) is optimized as a score.
+Axes that were easy to move rise; the referent of ``better controller'' drifts.
+This is why \(\Phi\) must be frozen before paths are exhibited, and why a rise in \(\Phi\) is not occupancy of \(G^\star\).
+
+\paragraph{Irreversibility laundering.}
+A step is sold as a reversible experiment and is not.
+The irreversibility budget was never stated, so clause 4 cannot fail in public.
+
+\paragraph{Constructibility theater.}
+A path is drawn on paper (or in a safety case) and no constructor takes a step.
+Path realizability is a claim about the world, not about a diagram.
+The social question of whether people will take the steps is a separate crux, not a solution to this one.
+
+\section{Scope and non-claims}
+
+The paper does not claim that CEV is constructible, that \(G^\star\) is uniquely CEV, or that present humans are adequate long-run sovereigns.
+It does not inventory \(G_0\).
+It does not supply a numerical \(\Phi\), a proof that \(\Eset\) is nonempty, or a Lean axiom \(\mathrm{PathRealizable}\).
+It does not treat constructor willingness as discharged by a legal path on paper.
+
+Formal verification and cryptographic commitments can raise the cost of faking particular authorization records.
+They do not construct \(G^\star\), and they do not make clause 1 true.
+
+Physics language is not used.
+There is no basin theorem for the controller line in this note, and no claim that incremental sequences converge.
+
+\section{What would change this view}
+
+The split would be idle if destination realizability were already a construction from here: if exhibiting some \(A\) that realizes \(P^\star\) always came with an \(\Eset\)-path from the actual \(s_0\).
+Then path construction reduces to the existing crux.
+
+The edge family would be the wrong object if legal steps from \(s_0\) systematically produced worse long-run occupancy of \(G^\star\) than a well-audited private extrapolator that violates clause 1.
+That is an empirical and philosophical challenge already named as a revision condition for procedural extrapolation.
+It would force a different \(\Eset\), not a silent return to destination-only construction.
+
+If \(G_0\) cannot be described as an instance at all (no stable account of who now holds which correction authority), path construction is not well-posed, and the remaining work is specify-side on the controller.
+
+If competence-to-wield is not separable from channel liveness (if a live channel to \(G\) already implies that \(G\) will use it well enough), clause 3 is redundant.
+The Long Self-Correction cut would then be a renaming, not an extra coordinate \parencite{dai2026longself}.
+
+If a singleton takeoff removes every later step, \(\mathrm{Paths}(s_0,\Eset)\) is at most length one.
+The paper then collapses to a single authorized handoff or a refusal.
+That is a different, shorter theory.
+
+\section{Conclusion}
+
+Destination construction asks whether a frozen target is occupied by some system.
+Path construction asks whether the controller we have can become a better one without closing the option of becoming the intended one, under constraints that remain meaningful while the destination is still unconstructible.
+
+The usable compact statement is
+\begin{equation}
+    \boxed{\text{Construction from here is a legal path of partial pairs, not an existence claim at the endpoint.}}
+\end{equation}
+
+Whether a candidate sequence is construction is then a four-part check: whether \(s_0\) is a described instance, whether each step is in a frozen \(\Eset\), whether \(\Phi\) rises without foreclosure, and whether that sequence is realizable in the world rather than only on paper.
+\(\mathrm{DestRealizable}(P^\star)\) remains open.
+So does \(\mathrm{PathRealizable}(s_0,P^\star,\Eset)\).
+The second is the question that incremental work has to answer even when the first stays unanswered.
+
+\printbibliography
+
+\end{document}
