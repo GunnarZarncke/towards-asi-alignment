@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-18 | **Anthropic pace-measurements field news** — User asked to ingest Anthropic Institute *Measurements for understanding the pace of AI developme... | [2026-09-18-anthropic-pace-measurements.md](2026-09-18-anthropic-pace-measurements.md) |
+| 2026-09-18 | **Anthropic constitution field news** — User parked the Goldstein “thousand constitutions” talk as adjacent, not news. Then asked whether... | [2026-09-18-anthropic-constitution-news.md](2026-09-18-anthropic-constitution-news.md) |
+| 2026-09-17 | **Bridge prediction markets** — User asked to read `drafts/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`, create a pla... | [2026-09-17-bridge-prediction-markets.md](2026-09-17-bridge-prediction-markets.md) |
+| 2026-09-16 | **Embedded V2 extensions** — User asked to review `drafts/Proposed V2 Extensions_ Embedded Construction, Field Dynamics, and B... | [2026-09-16-embedded-v2-extensions.md](2026-09-16-embedded-v2-extensions.md) |
 | 2026-09-13 | **Path construction spin-out** — A conversation questioned the v2 unification of CEV with outer alignment: the CEV principal is fu... | [2026-09-13-path-construction-paper.md](2026-09-13-path-construction-paper.md) |
 | 2026-09-11 | **Agency-detect maintained-blanket import** — User asked to check sibling `agency-detect` for new papers, add them to `context/`, and check whe... | [2026-09-11-agency-detect-maintained-blanket.md](2026-09-11-agency-detect-maintained-blanket.md) |
 | 2026-09-10 | **Crux map S-curve on funding card** — Add the S-curve map from the original Alignment Crux Map application to the public Alignment Crux... | [2026-09-10-crux-map-s-curve.md](2026-09-10-crux-map-s-curve.md) |
@@ -17,14 +21,10 @@
 | 2026-09-07 | **Front-door vocabulary** — Feedback that TSA front doors use heavy private vocabulary; implement plan to defer catalog IDs a... | [2026-09-07-front-door-vocab.md](2026-09-07-front-door-vocab.md) |
 | 2026-09-07 | Claim ID renumber + ledger freshness | [2026-09-07-claim-id-renumber.md](2026-09-07-claim-id-renumber.md) |
 | 2026-09-07 | **make check CI** — Add a separate GitHub Actions job for `make check`, not combined with Lean or the site build. | [2026-09-07-check-ci.md](2026-09-07-check-ci.md) |
-| 2026-09-07 | **Witness → Backtest uniform rename** — User feedback that the third experiment class was structurally buried and misnamed; approved plan... | [2026-09-07-backtest-rename.md](2026-09-07-backtest-rename.md) |
-| 2026-09-07 | **Appendix stub retirement + App N readings** — User approved plan: delete obsolete appendix stubs H–K; expand App N with methodology note and ho... | [2026-09-07-appendix-stubs-appn-readings.md](2026-09-07-appendix-stubs-appn-readings.md) |
-| 2026-09-05 | **v1.6.0 release notes and tag** — User asked for the next minor release notes, then when authorship bars entered the PDF, then to c... | [2026-09-05-v1-6-0-release-notes.md](2026-09-05-v1-6-0-release-notes.md) |
-| 2026-09-05 | **Field overview adjacent-work voice + panel order** — User traced the “Consciousness and welfare neighborhood” block on `/field/`, then asked to rewrit... | [2026-09-05-field-overview-adjacent-voice.md](2026-09-05-field-overview-adjacent-voice.md) |
 
 ## Archive by month
 
-- **2026-09** (15): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (19): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

@@ -2,6 +2,64 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-anthropic-pace-measurements-sep-2026
+    date: 2026-09-18
+    eventDate: 2026-09-17
+    kind: policy
+    title: "Anthropic’s pace measurements: seeing the race is not winning it"
+    hook: "Claude now leads a quarter of Anthropic’s model R&D. Humans get a week to review a blocked action. Those numbers describe the race. They do not show that correction is keeping up."
+    summary: "Anthropic’s Institute post publishes three production-process metrics: an R&D automation index (Claude “leads” 26% as of August 2026, up from under 1% in February), oversight coverage and latency on one internal agent platform (~30,000 concurrent agents; blocked actions reviewed by humans within a week), and a one-week snapshot of safety compute share (~6% of AI R&D; ~12% of AI-driven AI R&D). They frame these as public instruments for pacing, and as possible future triggers. This book’s cut is the same as for the August risk report: a dashboard of how models are built is not a showing that human judgment still changes the next model before irreversible harm."
+    decision: "Ask: (1) if the automation index rises, does that delay the next model’s use for further AI R&D, or only update a chart? (2) is “oversight keeping pace” coverage and flag rate, or a human judgment that changed later training, tools, or successor constraints? (3) does a week-scale human review still count when agents act in seconds? (4) when Claude scores Claude, what independent check would have counted as the index being wrong?"
+    bookChapters:
+      - ch11
+      - ch12
+      - ch25
+      - ch39
+      - ch42
+      - ch43
+    bridges:
+      - MB4
+      - MB7
+      - MB7a
+      - MB11
+    body: bodies/anthropic-pace-measurements-sep-2026.md
+    order: 0
+  - slug: field-news-anthropic-constitution-jan-2026
+    date: 2026-09-18
+    eventDate: 2026-01-21
+    kind: policy
+    title: "Anthropic’s constitution: the vision is not the construction"
+    hook: "The preface says training is hard and behavior might not match. The same page says the text directly shapes Claude. Those are different claims. Only the first one is shown."
+    summary: "Anthropic’s January 2026 constitution is a specify document: intentions, priorities, hard constraints. The preface also says its content “directly shapes Claude’s behavior” and is the “final authority” on their vision. The modest reading (training is hard; system cards will report gaps; perpetual work in progress) does not prove the causal reading. Honesty is not a hard constraint, but they want it to function like one. This book’s cut is the same as for Constitutional AI generally: a written constitution is not a builder, and a claimed builder is not realization."
+    decision: "Ask: (1) is “directly shapes” measured on cases chosen before seeing the model’s answers, or is the document itself the evidence? (2) is “final authority” a statement of intent, or a behavior guarantee? (3) is honesty in the hard-constraint suite, or only described as similar to one? (4) when a system card reports a gap, does training or deployment change, or only the modest preface get cited?"
+    bookChapters:
+      - ch16
+      - ch40
+      - ch42
+    bridges:
+      - MB2
+      - MB11
+    body: bodies/anthropic-constitution-jan-2026.md
+    order: 0
+  - slug: field-news-containment-verification-sep-2026
+    date: 2026-09-10
+    kind: research
+    title: "Containment verification: a proved whitelist, and where the world starts"
+    hook: "A machine-checked gate can forbid named actions inside a closed runtime. If those actions reach the unbounded world, there is no guarantee left."
+    summary: "Royce Moon presented Containment Verification (Moon & Varshney, arXiv:2605.09045) in Orpheus Lummis’s GSAI sequence. The paper deductively checks PocketFlow’s dispatch so an unconstrained model cannot emit out-of-policy boundary events. The published examples are a whitelist on a tiny action set. The call treated world-state bounds and action sequences as the interesting, spec-expressible next step. This book’s cut remains: a universal claim needs a closed effect envelope; past that cut you refuse or recertify, you do not still have a guarantee."
+    decision: "Ask: (1) does the policy constrain world state the actions change, or only the runtime’s own registers? (2) is every effect that can matter inside the typed action set, including humans and tool arguments? (3) can innocent traces compose into harm the spec never named? (4) if the allowlist later grows, is that update itself in the proof?"
+    bookChapters:
+      - ch01
+      - ch07
+      - ch33
+      - ch42
+      - ch43
+    bridges:
+      - MB1
+      - MB9
+      - MB11
+    body: bodies/containment-verification-sep-2026.md
+    order: 0
   - slug: field-news-openai-hf-roadahead-aug-2026
     date: 2026-08-26
     kind: incident

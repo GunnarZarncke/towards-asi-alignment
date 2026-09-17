@@ -14,14 +14,17 @@ related:
   - field-agendas/anthropic-lab
   - mb2-bundle-identifiability
   - target-realization
+  - field-news-anthropic-constitution-jan-2026
 external:
   - label: Bai et al. 2022 (Constitutional AI)
     url: https://arxiv.org/abs/2212.08073
+  - label: Claude’s Constitution (Jan 2026)
+    url: https://www.anthropic.com/constitution
 ---
 
 **Lean instance:** `caiConstitution` (constituency, extrapolation, aggregation all true).
 
-Anthropic's Constitutional AI states **principles** (the constitution) and iterates training with AI-generated feedback (RLAIF). The specify-side content is the principle set and who they apply to; extrapolation and multi-value structure are flagged true in Lean to match the correction-channel and bundle slots on the resulting `AlignmentTarget`.
+Anthropic's Constitutional AI states **principles** (the constitution) and iterates training with AI-generated feedback (RLAIF). The specify-side content is the principle set and who they apply to; extrapolation and multi-value structure are flagged true in Lean to match the correction-channel and bundle slots on the resulting `AlignmentTarget`. The public [January 2026 constitution](https://www.anthropic.com/constitution) is the current specify text. Claiming that the text “directly shapes Claude” is the construction bet, not a discharge of it ([field news](/cards/news/field-news-anthropic-constitution-jan-2026/)).
 
 **Construction bet:** [RLAIF stack](/cards/construct-constitutional-ai/) — `caiConstructionBet` with `claimsExplicitBuilder = true`.
 

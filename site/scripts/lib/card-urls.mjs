@@ -27,6 +27,7 @@ export const TYPE_URL_SEGMENT = {
  */
 export function inferTypeFromCardId(id, type) {
   if (type && type !== "essay") return type;
+  if (id.startsWith("field-news-") || id.startsWith("field-news/")) return "news";
   if (id.startsWith("chapters/")) {
     const local = id.slice("chapters/".length);
     if (local === "frontmatter") return "frontmatter";

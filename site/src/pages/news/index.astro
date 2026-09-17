@@ -3,11 +3,11 @@ import { getCollection } from "astro:content";
 import fieldNewsIndex from "../../data/field-news.json";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
-import { cardHref as buildCardHref } from "../../lib/site-urls";
+import { cardHref as buildCardHref, cardHrefForCard } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const cardHref = (id: string) => buildCardHref(base, id);
+const newsHref = (id: string) => buildCardHref(base, id, "news");
 
 const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
 const [newestNews, ...olderNews] = items;
@@ -51,7 +51,7 @@ const kindLabel: Record<string, string> = {
             {" · "}
             <span>{kindLabel[newestNews.kind] ?? newestNews.kind}</span>
           </p>
-          <h2><a href={cardHref(newestNews.card)}>{newestNews.title}</a></h2>
+          <h2><a href={newsHref(newestNews.card)}>{newestNews.title}</a></h2>
           <p>{newestNews.hook}</p>
         </article>
       )}
@@ -66,7 +66,7 @@ const kindLabel: Record<string, string> = {
                   {" · "}
                   <span>{kindLabel[item.kind] ?? item.kind}</span>
                 </p>
-                <h2><a href={cardHref(item.card)}>{item.title}</a></h2>
+                <h2><a href={newsHref(item.card)}>{item.title}</a></h2>
                 <p>{item.hook}</p>
               </li>
             ))}
@@ -79,7 +79,7 @@ const kindLabel: Record<string, string> = {
       <summary>Releases</summary>
       {newestRelease && (
         <article class="news-item">
-          <h2><a href={cardHref(newestRelease.id)}>{newestRelease.data.title}</a></h2>
+          <h2><a href={cardHrefForCard(base, newestRelease)}>{newestRelease.data.title}</a></h2>
           <p>{newestRelease.data.summary}</p>
         </article>
       )}
@@ -89,7 +89,7 @@ const kindLabel: Record<string, string> = {
           <ul class="news-list">
             {olderReleases.map((card) => (
               <li class="news-item">
-                <h2><a href={cardHref(card.id)}>{card.data.title}</a></h2>
+                <h2><a href={cardHrefForCard(base, card)}>{card.data.title}</a></h2>
                 <p>{card.data.summary}</p>
               </li>
             ))}

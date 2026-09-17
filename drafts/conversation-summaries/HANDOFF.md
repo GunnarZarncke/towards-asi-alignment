@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-13 (path-construction spin-out).
+Last updated: 2026-09-18 (Anthropic pace-measurements field news).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-13 (path-construction spin-out).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9.
+**Active lanes:** [`backtest.md`](../plans/backtest.md) · [`field.md`](../plans/field.md) · [`spine.md`](../plans/spine.md) · [`construct.md`](../plans/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets (criteria draft, not listed): [`bridge-prediction-markets.md`](../plans/bridge-prediction-markets.md).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-18:** **Anthropic pace-measurements field news** — Institute post on R&D automation, agent oversight, and safety compute share: public race metrics, not a showing that correction binds. Log: `2026-09-18-anthropic-pace-measurements.md`.
+- **2026-09-18:** **Anthropic constitution field news** — January 2026 public constitution as specify text; “directly shapes Claude” is a construction claim, not shown. Goldstein “thousand constitutions” talk parked (adjacent Specify, not news). Log: `2026-09-18-anthropic-constitution-news.md`.
 - **2026-09-13:** **Path construction paper** — spin-out on incremental realizability from a described present controller to a better principal; destination \(\neq\) path; Construct 2.0 Family E. Log: `2026-09-13-path-construction-paper.md`.
 - **2026-09-11:** **Maintained-blanket paper** — imported *Discovering Maintained Agent Boundaries* from sibling `agency-detect` into `context/`. User correction: self-repair is selected, not definitional; wording pass on “maintain” (ch01/ch06/ch08) not drafted. Log: `2026-09-11-agency-detect-maintained-blanket.md`.
 - **2026-09-10:** **Crux map S-curve** — Alignment Crux Map funding card now shows the original S-process U vs $ chart. Log: `2026-09-10-crux-map-s-curve.md`.
