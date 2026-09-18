@@ -34,6 +34,7 @@ for (const { infile, outfile, label } of entries) {
   await build({
     entryPoints: [infile],
     outfile,
+    bundle: true,
     format: "esm",
     target: "es2020",
     logLevel: "info",

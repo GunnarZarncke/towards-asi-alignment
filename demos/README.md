@@ -77,3 +77,4 @@ explicitly requested later.
 | `ch16-value-bundle-simulator/` | 16 — The Value-Bundle Model | Ecology sliders → top value salience |
 | `ch17-lhv-learnability/` | 17 — When Low Dimensionality Helps Value Learning | Synthetic hub structure → dimension recovery and held-out prediction |
 | `ch35-kappa-percolation/` | 35 — Multi-Agent Superintelligence and Inferential Coupling | Community graph + κ sliders → cooperative vs. social giant-component comparison |
+| `ch05-field-spring-map/` | Field hub (not ch05 prose) | AISafety.com orgs + bridge-crux weights → spring layout (modes A/B/C) |

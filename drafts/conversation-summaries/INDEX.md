@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-18 | **Field spring-map ship** — Committed demo: layout polish, curated listing weights, TSA/Byrnes clustering, bridge hover UI. | [2026-09-18-field-spring-map-ship.md](2026-09-18-field-spring-map-ship.md) |
+| 2026-09-18 | **Spring-map matching + evidence audit** — Token match; `--` slug collapse; remapped snapshot; matrix-only evidence tags in panel. | [2026-09-18-field-spring-map-matching.md](2026-09-18-field-spring-map-matching.md) |
+| 2026-09-18 | **Field spring-map layout tune** — MB6–MB10 co-occurrence mostly ARC/`research` fuzzy inherit; springs vary stiffness more than rest length. | [2026-09-18-field-spring-map-tune.md](2026-09-18-field-spring-map-tune.md) |
+| 2026-09-18 | **Field crux spring-map demo** — Build prototype: AISafety.com listings, MB bridge weights, spring layout modes A/B/C. | [2026-09-18-field-spring-map-demo.md](2026-09-18-field-spring-map-demo.md) |
 | 2026-09-18 | **V2 cut persistence / named restorer** — User asked to review the v2 plan for whether maintaining boundaries matters for construction and ... | [2026-09-18-v2-boundary-restorer.md](2026-09-18-v2-boundary-restorer.md) |
 | 2026-09-18 | **MB6 Lean rewrite** — User asked to do the Lean rewrite of the MB6 object: unsigned `PercolationEvidence → BasinStable ... | [2026-09-18-mb6-lean-rewrite.md](2026-09-18-mb6-lean-rewrite.md) |
 | 2026-09-18 | **Embedded V2 decisions** — User locked remaining V2 questions: 2.0 intro claim OK; keep \(P\) and \(D_{\mathrm{joint}}\) sep... | [2026-09-18-embedded-v2-decisions.md](2026-09-18-embedded-v2-decisions.md) |
