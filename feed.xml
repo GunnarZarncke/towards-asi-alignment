@@ -5,8 +5,32 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Anthropic’s pace measurements: seeing the race is not winning it</title>
+      <link>https://towards-alignment.com/cards/news/field-news-anthropic-pace-measurements-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-anthropic-pace-measurements-sep-2026/</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Claude now leads a quarter of Anthropic’s model R&amp;D. Humans get a week to review a blocked action. Those numbers describe the race. They do not show that correction is keeping up.</description>
+      <category>news</category>
+    </item>
+    <item>
+      <title>[News] Anthropic’s constitution: the vision is not the construction</title>
+      <link>https://towards-alignment.com/cards/news/field-news-anthropic-constitution-jan-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-anthropic-constitution-jan-2026/</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>The preface says training is hard and behavior might not match. The same page says the text directly shapes Claude. Those are different claims. Only the first one is shown.</description>
+      <category>news</category>
+    </item>
+    <item>
+      <title>[News] Containment verification: a proved whitelist, and where the world starts</title>
+      <link>https://towards-alignment.com/cards/news/field-news-containment-verification-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-containment-verification-sep-2026/</guid>
+      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A machine-checked gate can forbid named actions inside a closed runtime. If those actions reach the unbounded world, there is no guarantee left.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[Release] v1.6.0 — Witness tests, problem-axis, and companion-site product</title>
       <link>https://towards-alignment.com/cards/release/release-v1-6-0/</link>

@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-10T19:53:00.999Z",
+  "generatedAt": "2026-09-18T15:57:42.322Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 362,
+  "entryCount": 365,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -669,7 +669,7 @@
     {
       "title": "Alignment Lifecycle",
       "type": "concept",
-      "summary": "When each bridge handoff must hold — specify → construct → identify → certify → preserve; orthogonal to the bridge dependency graph.",
+      "summary": "Specify → construct → identify → certify → act/refuse; preserve is the property of repeating that cycle, not a fifth stage.",
       "url": "/cards/concept/alignment-lifecycle/"
     },
     {
@@ -701,6 +701,18 @@
       "type": "news",
       "summary": "Anthropic’s August 2026 Risk Report (15 July) raises its misalignment rating from very low to low, discloses an unreleased internal model called Model 2, and describes training and monitoring failures. Independent commentator Zvi Mowshowitz treats the candor as useful and the remaining risk as higher than ‘very low.’ Use the report as evidence of what the lab is willing to say and where it is already using the model. Be skeptical of the ‘low’ label as proof that humans are still in the loop, that the safety tests still measure what they claim, or that an independent party reviewed this report.",
       "url": "/cards/news/field-news-anthropic-risk-report-aug-2026/"
+    },
+    {
+      "title": "Anthropic’s constitution: the vision is not the construction",
+      "type": "news",
+      "summary": "Anthropic’s January 2026 constitution is a specify document: intentions, priorities, hard constraints. The preface also says its content “directly shapes Claude’s behavior” and is the “final authority” on their vision. The modest reading (training is hard; system cards will report gaps; perpetual work in progress) does not prove the causal reading. Honesty is not a hard constraint, but they want it to function like one. This book’s cut is the same as for Constitutional AI generally: a written constitution is not a builder, and a claimed builder is not realization.",
+      "url": "/cards/news/field-news-anthropic-constitution-jan-2026/"
+    },
+    {
+      "title": "Anthropic’s pace measurements: seeing the race is not winning it",
+      "type": "news",
+      "summary": "Anthropic’s Institute post publishes three production-process metrics: an R&D automation index (Claude “leads” 26% as of August 2026, up from under 1% in February), oversight coverage and latency on one internal agent platform (~30,000 concurrent agents; blocked actions reviewed by humans within a week), and a one-week snapshot of safety compute share (~6% of AI R&D; ~12% of AI-driven AI R&D). They frame these as public instruments for pacing, and as possible future triggers. This book’s cut is the same as for the August risk report: a dashboard of how models are built is not a showing that human judgment still changes the next model before irreversible harm.",
+      "url": "/cards/news/field-news-anthropic-pace-measurements-sep-2026/"
     },
     {
       "title": "Anti-Capture Validity of Correction",
@@ -965,6 +977,12 @@
       "type": "concept",
       "summary": "RLAIF principles-as-feedback as caiConstructionBet; catalog builder claim ≠ ConstructionCrux discharge.",
       "url": "/cards/concept/construct-constitutional-ai/"
+    },
+    {
+      "title": "Containment verification: a proved whitelist, and where the world starts",
+      "type": "news",
+      "summary": "Royce Moon presented Containment Verification (Moon & Varshney, arXiv:2605.09045) in Orpheus Lummis’s GSAI sequence. The paper deductively checks PocketFlow’s dispatch so an unconstrained model cannot emit out-of-policy boundary events. The published examples are a whitelist on a tiny action set. The call treated world-state bounds and action sequences as the interesting, spec-expressible next step. This book’s cut remains: a universal claim needs a closed effect envelope; past that cut you refuse or recertify, you do not still have a guarantee.",
+      "url": "/cards/news/field-news-containment-verification-sep-2026/"
     },
     {
       "title": "Correction at Civilizational Scale",
@@ -1527,7 +1545,7 @@
     {
       "title": "MB6 — Goodhart Selection",
       "type": "bridge",
-      "summary": "Goodhart selection and basin stability: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: cooperation evidence warrants basin stability (MB6a), and a stable basin supports correction (MB6b).",
+      "summary": "Goodhart selection: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: evidence identifies a correction-selection gradient (MB6a); a shock-robust basin with a frozen non-negative-enough gradient supports correction (MB6b). Unsigned stability is not the object.",
       "url": "/cards/bridge/mb6-selection-and-basin-stability/"
     },
     {
@@ -1737,7 +1755,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 451 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 452 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
