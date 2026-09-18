@@ -90,6 +90,19 @@ Lean order: **MB6** (`Environment` / joint \(z\)) then **MB11** (`SafeIn C A`). 
 | Capacity change in \(h\) | Both \(P\) and \(D_{\mathrm{joint}}\) |
 | \(D_{\mathrm{joint}}\) | `PathRealizable` (good institutions, no legal first step) |
 | `ConstructionCrux` for \(P\) | \(D_{\mathrm{joint}}\) (realizing \(A\), process cannot refuse) |
+| Snapshot \(\varepsilon\)-cut at Identify | Named restorer still paying after \(T\) (physics / operator / institution / selected self-repair of \(A\)) |
+
+## Cut persistence (not autopoiesis)
+
+Identify, Construct, and Preserve all talk about a boundary. They are not the same object. \(A\) need not try to repair “its” cut; self-repair is selected or not.
+
+| Object | Stage | Question |
+|--------|-------|----------|
+| Snapshot \(\varepsilon\)-cut | Identify | Is there a distinguishable, handle-backed partition *now*? |
+| Named restorer | Construct (Family C) | After damage, *who pays* to keep that cut? Physics, operator stack, institution, or a policy selected to restore it. |
+| Ecology repair of \(z\) | Preserve | Does the *cycle* stay in / converge back to \(D_{\mathrm{joint}}\) (live correction, independent eval, refuse)? That “converges back” is repair of \(z\), not of \(A\). |
+
+Unsigned “the cut came back” is the same failure mode as unsigned basin. Fail if the restorer is only the operator stack (cut dies when ops stops paying) or only selected self-repair of \(A\) (can fight correction). Do not bake restorer into `AgentCandidate` / `BoundaryCondition`. MB1’s silently fixed context is who restores the recovered cut.
 
 ## Lifecycle ↔ grains
 
@@ -98,11 +111,11 @@ Cycle: specify → construct → identify → certify → act/refuse ↻
 | Stage | Primary grain | Notes |
 |-------|---------------|-------|
 | Specify | Ecology + episode \(P\) | Target sort; legitimate \(P_{t+1}\) process separate |
-| Construct | Ecology + attractor \(I\) | Which coordinates of \((Q,f,\theta,E)\) or \(z\) does \(I\) move? |
-| Identify | Path + ecology | Measurement of \(A\) and access; may force respecify |
+| Construct | Ecology + attractor \(I\) | Which coordinates of \((Q,f,\theta,E)\) or \(z\) does \(I\) move? Named restorer of the construction cut (Family C) |
+| Identify | Path + ecology | Snapshot cut of \(A\) and access; may force respecify. Silent about who pays after damage unless restorer is named |
 | Certify | Ecology + bridges | MB7/MB10/MB11 cuts; green dashboard ≠ act |
 | Act/Refuse | Path + ecology | Backtest Exp. 4; `DeploymentOk` neighborhood |
-| Preserve | Ecology (\(D_{\mathrm{joint}}\)) | **Not a stage** — MB3/MB4/MB5/MB6 are cycle-property constraints |
+| Preserve | Ecology (\(D_{\mathrm{joint}}\)) | **Not a stage** — MB3/MB4/MB5/MB6 are cycle-property constraints. “Converges back” = ecology-grain repair of \(z\) |
 
 ## Related
 

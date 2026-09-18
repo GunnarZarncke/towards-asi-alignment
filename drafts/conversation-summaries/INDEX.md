@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-18 | **V2 cut persistence / named restorer** — User asked to review the v2 plan for whether maintaining boundaries matters for construction and ... | [2026-09-18-v2-boundary-restorer.md](2026-09-18-v2-boundary-restorer.md) |
 | 2026-09-18 | **MB6 Lean rewrite** — User asked to do the Lean rewrite of the MB6 object: unsigned `PercolationEvidence → BasinStable ... | [2026-09-18-mb6-lean-rewrite.md](2026-09-18-mb6-lean-rewrite.md) |
 | 2026-09-18 | **Embedded V2 decisions** — User locked remaining V2 questions: 2.0 intro claim OK; keep \(P\) and \(D_{\mathrm{joint}}\) sep... | [2026-09-18-embedded-v2-decisions.md](2026-09-18-embedded-v2-decisions.md) |
 | 2026-09-18 | **Bridge prediction markets P0** — User asked to do the obvious fixes, suggest an MB6a resolution, push back that MB3 and MB4 should... | [2026-09-18-bridge-prediction-markets-p0.md](2026-09-18-bridge-prediction-markets-p0.md) |
@@ -20,11 +21,10 @@
 | 2026-09-10 | **Containment verification news card** — User attended Orpheus Lummis’s GSAI sequence with Royce Moon on Moon & Varshney (arXiv:2605.09045... | [2026-09-10-containment-verification-news.md](2026-09-10-containment-verification-news.md) |
 | 2026-09-08 | **What this map misses** — User asked for one “what TSA fails to represent of their crux” line per field agenda as a new sit... | [2026-09-08-what-tsa-fails-to-represent.md](2026-09-08-what-tsa-fails-to-represent.md) |
 | 2026-09-07 | **Restore real v1 bridge graph** — User noticed `/field/v1/` used an intermediate diagram where MB8 was already a gravestone. Asked ... | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |
-| 2026-09-07 | **Lean CI via shared check.sh** — Add GitHub CI for Lean (not the full book/site build) with little duplication vs the local gate, ... | [2026-09-07-lean-ci.md](2026-09-07-lean-ci.md) |
 
 ## Archive by month
 
-- **2026-09** (23): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (24): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

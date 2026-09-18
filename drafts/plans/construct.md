@@ -125,6 +125,7 @@ Conditions on the *construction process*, not on the finished ASI:
 - Fail/refuse is a success of the *method*; green dashboard without a stop is not.
 - Construction vs certification trees on the **same episode** (TODO: H5 two trees).
 - Distinguishing optimizer-policy counterfactuals (ch16/ch25/ch39) from **intervention-impact** counterfactuals.
+- Named **restorer** for the construction boundary: after damage, who pays to keep the cut distinguishable and handle-backed (physics, operator stack, institution, or a policy selected to restore it). Fail if the restorer is only the operator stack, or only selected self-repair of \(A\) (that can fight correction). Unsigned “the cut came back” is not enough — same signed-object lesson as \(g_{\mathrm{CCI}}\). Not autopoiesis: \(A\) need not try to repair “its” boundary. Grain map: [`embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (cut persistence).
 - **Audit telemetry (draft, not v1):** what agent projects should record so a later audit can fail — [`audit-telemetry.md`](audit-telemetry.md). Candidate Family C note / recommendation; not a chapter.
 
 ### Family D — Social process conditions (the Ngo-shaped gap; outline now)
@@ -177,7 +178,7 @@ Raw result: [`drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`]
 
 **Verdict:** usable as an XI/XII briefing after stripping Perplexity `turnNsearch` cite junk. Argument matches the construction filter. **Not** a new spine primitive. Do not ingest into v1 chapters.
 
-**Load-bearing line from the review (keep):** construction is strong when \(D\) is coupled to a controllable, distinguishable boundary. If desired and undesired states look the same at that boundary, contracts, coin votes, TEEs, zk proofs, stronger selectors, and verified compilers cannot create the missing distinction.
+**Load-bearing line from the review (keep):** construction is strong when \(D\) is coupled to a controllable, distinguishable boundary. If desired and undesired states look the same at that boundary, contracts, coin votes, TEEs, zk proofs, stronger selectors, and verified compilers cannot create the missing distinction. Distinguishability at \(t\) is not enough: name who restores the cut after damage (Family C restorer).
 
 **Prompt compliance (why keep the file):** claim-strength tags; buckets; “idle for AI if…”; DAO split \(R \neq \theta \neq H \neq S \neq D\); hard fork classified as social layer; contract/verification homographs; amendment table asks handle vs record; GSAI = agenda, CAI = empirical on a proxy, AI Control = testbed \(\theta/H\).
 
@@ -230,6 +231,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [ ] Do not add Lean `PathRealizable` in v1; if later typed, uninterpreted, no axiom
 - [ ] Specify H5 “two trees” protocol (construction vs certification stop, same episode) as Witness *addendum*, not Expectation 7 revival
 - [ ] ch37: one 2.0 paragraph (when drafting) that conductivity ≠ construction; false attractor = constructibility failure
+- [ ] Family C restorer named on each unblocked Family B part (not only operator stack; not only selected self-repair of \(A\))
 - [ ] ch40: one 2.0 sentence that humans also launder *motives* via unused counterfactuals; v1 detector does not cover that
 - [ ] Do not open chapter `.tex` files in this lane until P2/P3
 - [ ] **Rerun formulation-groundedness (G)** on the 2.0 chapter map (same process as the 2026-08 v1 pass: one read-only reader per chapter, F1–F5, do not raise G by inventing early tuples). Method and v1 snapshot: [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md). Do not reuse v1 scores after 2.0 drafting.

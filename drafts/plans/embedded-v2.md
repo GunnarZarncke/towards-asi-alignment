@@ -86,6 +86,7 @@ Independence cells (keep):
 | Capacity change in \(h\) | Both \(P\) and \(D_{\mathrm{joint}}\) (more people, same capture) |
 | \(D_{\mathrm{joint}}\) | `PathRealizable` (good institutions, no legal first step toward \(G^\star\)) |
 | `ConstructionCrux` for this \(P\) | \(D_{\mathrm{joint}}\) (a realizing \(A\) whose surrounding process cannot refuse) |
+| Snapshot \(\varepsilon\)-cut at Identify | Named restorer still paying after \(T\) (physics / operator / institution / selected self-repair of \(A\)) |
 
 ### M2 — Forgetful projections (documentation, not Lean)
 
@@ -117,7 +118,7 @@ Cycle stages:
 
 with feedback from every downstream stage to earlier ones (certify can reconstruct; identify can respecify; act can change the measurement regime).
 
-**Preserve** is not a stage. It is the property that repeating the cycle stays in \(D_{\mathrm{joint}}\), or converges back to it. Bridges previously tagged `preserve` (MB3, MB4, MB5, MB6) are **cycle-property** constraints: they must hold of the transition, not of a fifth box.
+**Preserve** is not a stage. It is the property that repeating the cycle stays in \(D_{\mathrm{joint}}\), or converges back to it. Bridges previously tagged `preserve` (MB3, MB4, MB5, MB6) are **cycle-property** constraints: they must hold of the transition, not of a fifth box. “Converges back” is ecology-grain repair of \(z\), not autopoiesis of \(A\). Snapshot cut, named restorer, and that cycle property are distinct — [`embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (cut persistence).
 
 **Act/Refuse** is Backtest Exp. 4 / Family C fail-refuse / Lean `DeploymentOk` neighborhood — certification that does not change a decision does not close the loop.
 

@@ -100,7 +100,7 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 
 The coverage matrix remains **evidential**. Institutional variables are often *inside* the causal subgraph a bridge compresses, not a second DAG.
 
-**Cut method** (analysis only; no new `MB*`): for each live bridge, name what the unary form silently holds fixed. First inventory: memo §4 / [`embedded-v2.md`](embedded-v2.md). Families: MB1/2/7/9 epistemic; MB4/4a authority and correction; MB3/5/10 temporal/inheritance; MB6 ecological; MB11 deployment.
+**Cut method** (analysis only; no new `MB*`): for each live bridge, name what the unary form silently holds fixed. First inventory: memo §4 / [`embedded-v2.md`](embedded-v2.md). Families: MB1/2/7/9 epistemic; MB4/4a authority and correction; MB3/5/10 temporal/inheritance; MB6 ecological; MB11 deployment. **MB1** silently holds fixed *who restores* the recovered cut after damage (physics / operator / institution / selected self-repair of \(A\)); unsigned reversion is not the object. See [`embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (cut persistence). Not a new `MB*`.
 
 **Capacity vs structural field construction.** Explicit on [`roster.yml`](../../reference/field-agendas/data/roster.yml) as `fieldConstruction`: `none` | `capacity` | `structural` | `mixed`. Capacity stays upstream of the matrix. Structural acts on context of MB4a/MB6/MB7/MB10/MB11 and does not discharge those bridges. Coverage matrix stays evidential — no `actsOnContextOf` cells. Construction/convergence is presented on the lifecycle cycle, not as matrix paint.
 
@@ -123,7 +123,7 @@ The coverage matrix remains **evidential**. Institutional variables are often *i
 - [ ] International AI Safety Report → Field when read
 - [x] Lifecycle cycle on field hub; Preserve as cycle property ([`lifecycle.yml`](../../reference/field-agendas/data/lifecycle.yml), 2026-09-18)
 - [x] Capacity vs structural on roster (`fieldConstruction`); no matrix paint
-- [ ] Bridge-cut inventory: one paragraph or table per live MB (silently fixed context); start MB6 and MB11
+- [ ] Bridge-cut inventory: one paragraph or table per live MB (silently fixed context); start MB1 (restorer of the cut), then MB6 and MB11
 
 ## Verification
 

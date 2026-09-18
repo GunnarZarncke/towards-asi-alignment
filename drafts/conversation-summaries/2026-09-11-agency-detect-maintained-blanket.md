@@ -19,7 +19,7 @@ User asked to check sibling `agency-detect` for new papers, add them to `context
 ## Open / next
 - Optional manuscript pass (ask before writing): retarget ch01/ch06/ch08 “maintains a boundary” sentences so persistence ≠ self-repair; optional ch07 paragraph on *who pays* for damage-reversion (physics / operator / institution / selected policy). Do not add a fifth agency clause. Do not `\autocite{zarncke2026maintained}`.
 - Lean: no change. Optional later empirical predicate (reversion + restorer locus), not a requirement for `AgentCandidate`.
-- Related unindexed sketch: `drafts/entropic-agency-experiment.md` (transfer into a degrading ecology).
+- **V2 (2026-09-18 review):** same split applies to construction and \(D_{\mathrm{joint}}\). Identify/Construct need a distinguishable cut *and* a named restorer; Preserve’s “converges back” is ecology-grain repair of \(z\), not autopoiesis of \(A\). Unsigned reversion is as wrong as unsigned basin. Memo §9 (“MB1 stays simple”) is the under-weight. No new bridge. Related sketch: `drafts/entropic-agency-experiment.md`.
 
 ## Key paths
 - `context/extracts/maintained-blanket.md`

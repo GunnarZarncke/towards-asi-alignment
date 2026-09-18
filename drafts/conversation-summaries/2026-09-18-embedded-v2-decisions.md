@@ -26,6 +26,7 @@ No v1 intro-claim or Lean covering tuple. Coverage matrix unchanged.
 - Draft 2.0 claim wording in Part XI only.
 - Name ch34–38 / MB6 context-relative homes before any ecology spin-out.
 - Author may edit roster `because` lines (GovAI mixed, Pause structural, five field-builders capacity).
+- **Boundary persistence:** added to grain map + Construct Family C + field MB1 inventory (`2026-09-18-v2-boundary-restorer.md`). Remaining: v1 “maintain” wording; Family B restorer when unblocked.
 
 ## Key paths
 

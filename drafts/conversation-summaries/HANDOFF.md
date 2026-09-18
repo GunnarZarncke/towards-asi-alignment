@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-18 (MB6 Lean rewrite + embedded V2 decisions).
+Last updated: 2026-09-18 (V2 named restorer / cut persistence).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-18:** **V2 named restorer** — snapshot cut ≠ who pays after damage ≠ ecology repair of \(z\). Family C fail if restorer is only ops or only selected self-repair of \(A\). Field inventory starts at MB1. Log: `2026-09-18-v2-boundary-restorer.md`.
 - **2026-09-18:** **MB6 Lean rewrite** — Signed \(g_{\mathrm{CCI}}\) object: `CorrectionSupportingBasin` / `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`. Unsigned `BasinShockRobust` is not the consequent. App G/B, ch42/ch48 `LayeredAlignedDef`, cards, axiom ledger calibrated. Log: `2026-09-18-mb6-lean-rewrite.md`.
 - **2026-09-18:** **Embedded V2 decisions** — 2.0 intro claim OK; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential; construction/convergence on the field hub; roster `fieldConstruction`; canonical grain map at [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1–M3, no Lean covering tuple). Plan: [`embedded-v2.md`](../plans/embedded-v2.md). Log: `2026-09-18-embedded-v2-decisions.md`.
 - **2026-09-18:** **Bridge prediction markets P0b** — Binary YES/NO (refuse→NO). MB6 retargeted at signed \(g_{\mathrm{CCI}}\); unsigned-basin §7a retracted; Lean rewrite queued on spine P2. Criteria `0.3`. Plan: [`bridge-prediction-markets.md`](../plans/bridge-prediction-markets.md). Log: `2026-09-18-bridge-markets-mb6-binary.md`.
