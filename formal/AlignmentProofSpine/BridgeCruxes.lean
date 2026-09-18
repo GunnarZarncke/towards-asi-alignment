@@ -32,10 +32,10 @@ def MB5Crux : Prop :=
   ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
 
 def MB6aCrux : Prop :=
-  ∀ A : System, PercolationEvidenceSys A → BasinStableSys A
+  ∀ A : System, CorrectionGradientEvidenceSys A → CorrectionGradientIdentified A
 
 def MB6bCrux : Prop :=
-  ∀ A : System, BasinStableSys A → CorrectionIntegrity A
+  ∀ (A : System) (ε : Int), CorrectionSupportingBasin A ε → CorrectionIntegrity A
 
 def MB7aCrux : Prop :=
   ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
@@ -61,9 +61,9 @@ theorem mb3_crux_holds : MB3Crux := MB3_bearer_import
 
 theorem mb5_crux_holds : MB5Crux := MB5_ontology_shift_successor_audit
 
-theorem mb6a_crux_holds : MB6aCrux := MB6a_percolation_evidence_to_basin_stability
+theorem mb6a_crux_holds : MB6aCrux := MB6a_gradient_estimator_soundness
 
-theorem mb6b_crux_holds : MB6bCrux := MB6b_basin_stability_to_correction_integrity
+theorem mb6b_crux_holds : MB6bCrux := MB6b_correction_supporting_basin
 
 theorem mb7a_crux_holds : MB7aCrux := MB7a_access_model_soundness
 

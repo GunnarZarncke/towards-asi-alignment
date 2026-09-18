@@ -52,8 +52,8 @@ bridges:
     noun: Goodhart Selection
     cruxWording: Socio-technical selection supports a basin that preserves correction, rather than selecting proxy-satisfying systems that hollow it out.
     leanAxiom:
-      - MB6a_percolation_evidence_to_basin_stability
-      - MB6b_basin_stability_to_correction_integrity
+      - MB6a_gradient_estimator_soundness
+      - MB6b_correction_supporting_basin
     cardSlug: mb6-selection-and-basin-stability
     fieldAgree: Goodhart-as-selector; gradual disempowerment narrative; governance/pause on selection handles.
     fieldDiffer: Demski “selection vs control” homograph; CLR multipolar = different layer; thin in model-centric agendas.

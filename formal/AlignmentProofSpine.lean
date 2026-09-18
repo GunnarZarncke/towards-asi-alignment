@@ -31,7 +31,7 @@ Alignment*. It re-exports the layered modules:
 
 | Module          | Proof-spine nodes                         | Book chapters |
 |-----------------|-------------------------------------------|---------------|
-| `Core`          | carriers, `U_H`/`U_S`, grounding, access handles, `MB1`–`MB9` (`MB6a`/`MB6b`, `MB7a`–`MB7d`), pigeonhole | (foundations) |
+| `Core`          | carriers, `U_H`/`U_S`, grounding, access handles, `MB1`–`MB9` (`MB6a`/`MB6b` signed gradient, `MB7a`–`MB7d`), pigeonhole | (foundations) |
 | `MB2Identifiability` | MB2a/MB2b evidence→identifiability→gradient; `MB2Crux` packaging | 15–21 |
 | `MB4CorrectionIntegrity` | MB4 reference legitimacy vs uptake/persistence; `MB4Crux` packaging | 25–26 |
 | `BridgeCruxes`  | `MB1`/`MB3`/`MB5`/`MB6`/`MB7`/`MB9` as `Prop` cruxes; `CoreBridgeCruxes` → `BridgeAssumptions` | crosswalk |

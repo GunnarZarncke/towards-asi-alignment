@@ -12,7 +12,7 @@ formulas:
 leanNodes:
   - nodeId: P33
     kind: proof
-    summary: With no open edges — causal or inferential — there is no large cooperation component. Only this negative direction is proved; giant-component thresholds are empirical imports (MB6a–MB6b).
+    summary: With no open edges — causal or inferential — there is no large cooperation component. Only this negative direction is proved; giant-component thresholds are empirical imports (graph scaffolding, not the MB6a antecedent).
     module: AlignmentProofSpine/CooperationGraph.lean
 related:
   - unsupervised-agent-discovery

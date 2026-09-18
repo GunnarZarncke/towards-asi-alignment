@@ -508,7 +508,7 @@ MB1 & A-004, Ch.~\ref{ch:finding-boundary} & Embedded agency / boundary discover
 MB2, MB3 & A-001, A-006 & IRL non-identifiability, ELK, RLHF ceiling & Bundle/bearer identifiability from behavior \\
 MB4, MB4a, MB8 & A-002 & Corrigibility, off-switch, legitimacy & Correction authority and capture resistance (MB4a: legitimacy of the designated measured path, incl.\ anti-capture) \\
 MB5 & A-007, A-010 & Tiling, ontology identification & Successor audit under ontology shift \\
-MB6a, MB6b & A-008, A-011 & Selection dynamics, basin integrity & Socio-technical percolation evidence \\
+MB6a, MB6b & A-008, A-011 & Selection dynamics, supporting-basin integrity & Signed \(g_{\mathrm{CCI}}\) estimator; shock-robust basin at a frozen floor \\
 MB7a--c & A-004, A-009 & Inner alignment, scalable oversight & Hidden productive BIQ under adversaries \\
 MB7d & A-009, A-013 & Inferential coordination & UAD/inferential detector validity \\
 MB9 & A-014 & Specification / world-model coverage & Grounding certificate over open deployment \\
@@ -613,23 +613,25 @@ Field crossroad: tiling/Vingean reflection and ontology identification \autocite
 Book bridge: Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}.
 \end{assumption}
 
-\begin{assumption}[MB6a: percolation evidence to basin stability]
+\begin{assumption}[MB6a: gradient-estimator soundness]
 \label{appi:ass:mb6a}
 \begin{equation}
 \label{appi:eq:mb6a}
-\forall A,\ \mathrm{PercolationEvidenceSys}(A)\Rightarrow \mathrm{BasinStableSys}(A).
+\forall A,\ \mathrm{CorrectionGradientEvidenceSys}(A)\Rightarrow \mathrm{CorrectionGradientIdentified}(A).
 \end{equation}
 Field crossroad: selection/competition dynamics and gradual disempowerment \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2020ai}.
-Book bridge: Chapter~\ref{ch:multi-agent-strategic-coupling}, Chapter~\ref{ch:alignment-attractor}.
+Book bridge: Chapter~\ref{ch:selection-environment}, Chapter~\ref{ch:alignment-attractor}.
+Unsigned percolation-to-stability is not this arrow: \(g_{\mathrm{CCI}}\) is the integer proxy for how expected CCI change moves with deployment leverage \(\mu\).
 \end{assumption}
 
-\begin{assumption}[MB6b: basin stability to correction integrity]
+\begin{assumption}[MB6b: correction-supporting basin]
 \label{appi:ass:mb6b}
 \begin{equation}
 \label{appi:eq:mb6b}
-\forall A,\ \mathrm{BasinStableSys}(A)\Rightarrow \mathrm{CorrectionIntegrity}(A).
+\forall A,\varepsilon,\ \mathrm{CorrectionSupportingBasin}(A,\varepsilon)\Rightarrow \mathrm{CorrectionIntegrity}(A).
 \end{equation}
-Field crossroad: basin persistence must imply correction integrity, not merely stable bad outcomes.
+\(\mathrm{CorrectionSupportingBasin}(A,\varepsilon)\) is shock-robustness plus identified \(g_{\mathrm{CCI}}\ge-\varepsilon\) at a \emph{frozen} \(\varepsilon\).
+Field crossroad: basin persistence must not be confused with correction integrity; a locked-in bad equilibrium can be shock-robust (\texttt{LockedInBadBasin}).
 Book bridge: Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:alignment-attractor}.
 \end{assumption}
 
@@ -770,7 +772,7 @@ Solid grey arrows are proved steps; dashed red arrows are bridge assumptions.
 
 \begin{corollary}[\leanid{certified_class_safety_from_bridge_record}: bridge-record certification]
 \label{appi:cor:bridge-record-certification}
-Given explicit \texttt{BridgeAssumptions}, direct layer evidence (boundary, bundle, bearer, successor), bridge-layer inputs (grounding certificate, access, filters, percolation), and numeric leaf \(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta\), the system satisfies \texttt{LayeredAlignedDef} and \(\mathrm{RiskGap}(A)\leq\delta\) (Chapter~\ref{ch:certification-without-construction}).
+Given explicit \texttt{BridgeAssumptions}, direct layer evidence (boundary, bundle, bearer, successor), bridge-layer inputs (grounding certificate, access, filters, gradient evidence, shock-robustness, frozen \(g_{\mathrm{CCI}}\) floor), and numeric leaf \(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta\), the system satisfies \texttt{LayeredAlignedDef} and \(\mathrm{RiskGap}(A)\leq\delta\) (Chapter~\ref{ch:certification-without-construction}).
 \end{corollary}
 \begin{proof}
 Apply \leanid{BridgeLayerInputs.derive} to the bridge record, assemble \texttt{LayeredAlignedDef} from direct and derived evidence, and apply Theorem~\ref{appi:thm:p13} to the numeric leaf.
@@ -1436,10 +1438,10 @@ There exist channels whose verifiability facts diverge at a shared capability (\
 
 \begin{corollary}[Worked instance: former \texttt{MB8} is not an independent backup]
 \label{appi:cor:chokepoint-mb6-mb8}
-Package \texttt{MB6a} composed with \texttt{MB6b} as a gated bridge over the percolation-evidence channel, and the gravestone \texttt{MB8} axiom as a gated bridge over the value-update-operator channel. \emph{Given} the named hypothesis that a deployment reads both through one shared self-report/cooperation-signal instrument (\leanid{SharedInstrumentHypothesis} --- an explicit, refutable claim about the deployment, not a global axiom), steerability of that instrument at a system's capability blocks both packaged arrows to \(\mathrm{CorrectionIntegrity}\) simultaneously (\leanid{correction\_integrity\_disjunctive\_tolerance\_needs\_distinct\_instruments}). This is why the manuscript retires the former ``\texttt{MB6b} or \texttt{MB8}'' reading: under that hypothesis the packaging is a special case of one instrument, not two routes. CEV itself is an \texttt{AlignmentTarget}, not this backup arrow (Chapter~\ref{ch:extrapolative-correction}).
+Package \texttt{MB6b} as a gated bridge over the correction-supporting-basin channel (legacy Lean name \texttt{percolationChannel}), and the gravestone \texttt{MB8} axiom as a gated bridge over the value-update-operator channel. \texttt{MB6a} is upstream estimator soundness, not a field of that \texttt{sound} discharge. \emph{Given} the named hypothesis that a deployment reads both through one shared self-report/cooperation-signal instrument (\leanid{SharedInstrumentHypothesis} --- an explicit, refutable claim about the deployment, not a global axiom), steerability of that instrument at a system's capability blocks both packaged arrows to \(\mathrm{CorrectionIntegrity}\) simultaneously (\leanid{correction\_integrity\_disjunctive\_tolerance\_needs\_distinct\_instruments}). This is why the manuscript retires the former ``\texttt{MB6b} or \texttt{MB8}'' reading: under that hypothesis the packaging is a special case of one instrument, not two routes. CEV itself is an \texttt{AlignmentTarget}, not this backup arrow (Chapter~\ref{ch:extrapolative-correction}).
 \end{corollary}
 \begin{proof}
-Instantiate Theorem~\ref{appi:thm:chokepoint-collapse} with the two gated bridges; \texttt{sound} for each discharges via the existing \texttt{MB6a}/\texttt{MB6b}/\texttt{MB8} axioms unchanged.
+Instantiate Theorem~\ref{appi:thm:chokepoint-collapse} with the two gated bridges; \texttt{sound} for the supporting-basin channel discharges via \texttt{MB6b}, and \texttt{sound} for the value-update channel via \texttt{MB8}.
 \end{proof}
 
 \subsubsection{A defeater ledger for \texttt{MB1}--\texttt{MB9}}
@@ -1449,7 +1451,7 @@ Instantiate Theorem~\ref{appi:thm:chokepoint-collapse} with the two gated bridge
 
 \begin{definition}[Named defeater signals]
 \label{appi:def:defeater-signals}
-Each bridge below is paired with a signal traced to the assumptions/uncertainty ledgers: \texttt{MB1} $\to$ \texttt{EstimatorNonstationary} (A-004, U-05); \texttt{MB2} $\to$ \texttt{GradientEquivalenceEstimationArtifact} (A-001, U-01); \texttt{MB3} $\to$ \texttt{BearerMapSpoofed} (A-001, A-006, U-02) and admission signal \texttt{BearerAdmissionMisclassified} (U-17); \texttt{MB4} $\to$ \texttt{JudgeManipulated} (A-002, U-03, U-07); \texttt{MB5} $\to$ \texttt{OntologyShiftUnaudited} (A-007, U-04); \texttt{MB6a} $\to$ \texttt{PercolationEvidenceConfounded} (A-008, A-013, U-10, U-12); \texttt{MB6b} $\to$ \texttt{LockedInBadBasin} (A-005, A-008, U-10, U-11); \texttt{MB7a} $\to$ \texttt{AccessModelGamed} (A-004, U-05); \texttt{MB8} $\to$ \texttt{LegitimacyTheater} (A-002, U-07); \texttt{MB9} $\to$ \texttt{OntologyDriftBeyondCertifiedDomain} (A-014, U-16). \texttt{MB7b}--\texttt{MB7d} reduce to \(\mathrm{SteerableAt}\) (Definition~\ref{appi:def:adv-verifiable}) on the channel each reads through, rather than inventing a fresh signal.
+Each bridge below is paired with a signal traced to the assumptions/uncertainty ledgers: \texttt{MB1} $\to$ \texttt{EstimatorNonstationary} (A-004, U-05); \texttt{MB2} $\to$ \texttt{GradientEquivalenceEstimationArtifact} (A-001, U-01); \texttt{MB3} $\to$ \texttt{BearerMapSpoofed} (A-001, A-006, U-02) and admission signal \texttt{BearerAdmissionMisclassified} (U-17); \texttt{MB4} $\to$ \texttt{JudgeManipulated} (A-002, U-03, U-07); \texttt{MB5} $\to$ \texttt{OntologyShiftUnaudited} (A-007, U-04); \texttt{MB6a} $\to$ \texttt{GradientEvidenceConfounded} (A-008, A-013, U-10, U-12; legacy alias \texttt{PercolationEvidenceConfounded}); \texttt{MB6b} $\to$ \texttt{LockedInBadBasin} (A-005, A-008, U-10, U-11); \texttt{MB7a} $\to$ \texttt{AccessModelGamed} (A-004, U-05); \texttt{MB8} $\to$ \texttt{LegitimacyTheater} (A-002, U-07); \texttt{MB9} $\to$ \texttt{OntologyDriftBeyondCertifiedDomain} (A-014, U-16). \texttt{MB7b}--\texttt{MB7d} reduce to \(\mathrm{SteerableAt}\) (Definition~\ref{appi:def:adv-verifiable}) on the channel each reads through, rather than inventing a fresh signal.
 \end{definition}
 
 \begin{theorem}[Four bridges have a checked defeater shape]
@@ -1528,7 +1530,7 @@ Extract the successor-safe witness. Apply the successor audit links \eqref{appi:
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/04-selection-limits.png}
   \caption[Spine IV: selection and limits]{Spine IV: selection ecology and normative limits (Chapters~\ref{ch:selection-environment}, \ref{ch:goal-laundering}, Part~XI).
-  Covers deployment-leverage selection (\texttt{P31}), UAD/inferential cooperation-graph certificates, cooperation and audit aliasing, \texttt{MB6a--b} percolation/basin bridges, \texttt{MB7d} inferential detector validity, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
+  Covers deployment-leverage selection (\texttt{P31}), UAD/inferential cooperation-graph certificates, cooperation and audit aliasing, \texttt{MB6a--b} gradient / supporting-basin bridges, \texttt{MB7d} inferential detector validity, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
   \label{fig:lean-spine-selection}
 \end{figure}
 
@@ -1879,7 +1881,7 @@ Layered alignment is the conjunction
 \mathrm{LayeredAligned}(A)\iff&
 \mathrm{BoundaryAligned}(A)\wedge \mathrm{GroundingViable}(A)\wedge \mathrm{BundleTransport}(A)\wedge \mathrm{BearerTransport}(A)\\
 &{}\wedge \mathrm{CorrectionIntegrity}(A)\wedge \mathrm{SuccessorStable}(A)\\
-&{}\wedge \mathrm{BasinStableSys}(A)\wedge \mathrm{AdversariallyRobust}(A).
+&{}\wedge \mathrm{CorrectionSupportingBasinSys}(A)\wedge \mathrm{AdversariallyRobust}(A).
 \end{split}
 \end{equation}
 Book reference: the layered certification-class shape is stated in Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch33}.
@@ -1933,8 +1935,8 @@ Bridge & Witness theorem & Failed consequent or export \\
 \texttt{MB4} & \texttt{MB4\_independently\_load\_bearing} & Correction-operator preservation \\
 \texttt{MB4a} & \texttt{MB4a\_independently\_load\_bearing} & Measured-path legitimacy \\
 \texttt{MB5} & \texttt{MB5\_independently\_load\_bearing} & Audited-ontology successor safety \\
-\texttt{MB6a} & \texttt{MB6a\_independently\_load\_bearing} & Basin stability \\
-\texttt{MB6b} & \texttt{MB6b\_independently\_load\_bearing} & Correction integrity from basin evidence \\
+\texttt{MB6a} & \texttt{MB6a\_independently\_load\_bearing} & Identified correction-selection gradient \\
+\texttt{MB6b} & \texttt{MB6b\_independently\_load\_bearing} & Correction integrity from supporting basin \\
 \texttt{MB7a} & \texttt{MB7a\_independently\_load\_bearing} & Access robustness \\
 \texttt{MB7b} & \texttt{MB7b\_independently\_load\_bearing} & Hidden-BIQ bound \\
 \texttt{MB7c} & \texttt{MB7c\_independently\_load\_bearing} & Adversarial robustness \\

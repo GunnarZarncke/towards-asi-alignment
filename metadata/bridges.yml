@@ -130,7 +130,7 @@ bridges:
     kind: bridge
     title: MB6 — Goodhart Selection
     status: bridge
-    summary: "Goodhart selection and basin stability: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: cooperation evidence warrants basin stability (MB6a), and a stable basin supports correction (MB6b)."
+    summary: "Goodhart selection: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: evidence identifies a correction-selection gradient (MB6a); a shock-robust basin with a frozen non-negative-enough gradient supports correction (MB6b). Unsigned stability is not the object."
     decision: Before trusting that an aligned equilibrium will persist, ask whether the basin is stable because it is good, or merely because it is stable — a bad basin can be just as sticky.
     evidence: Evidence would include tracking whether deployment-leverage selection pressure preserves or erodes correction-channel integrity over time, independent of any single system's weights.
     bookChapters:

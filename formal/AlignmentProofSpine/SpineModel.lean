@@ -177,14 +177,14 @@ theorem MB5_independently_load_bearing :
 structure MB6aToySample where
   theater : Bool
 
-abbrev MB6aToyPercolationEvidence (_ : MB6aToySample) : Prop := True
-abbrev MB6aToyBasinStable (s : MB6aToySample) : Prop := ¬ s.theater
+abbrev MB6aToyGradientEvidence (_ : MB6aToySample) : Prop := True
+abbrev MB6aToyGradientIdentified (s : MB6aToySample) : Prop := ¬ s.theater
 
 theorem MB6a_independently_load_bearing :
-    ∃ s : MB6aToySample, MB6aToyPercolationEvidence s ∧ ¬ MB6aToyBasinStable s :=
+    ∃ s : MB6aToySample, MB6aToyGradientEvidence s ∧ ¬ MB6aToyGradientIdentified s :=
   ⟨⟨true⟩, trivial, by decide⟩
 
-/-- Blocked export shape for `MB6b`. -/
+/-- Unsigned shock-robustness does not imply correction integrity. -/
 theorem MB6b_independently_load_bearing :
     ∃ b : MB6bDefeaterToyBasin,
       MB6bDefeaterToyBasinStable b ∧ ¬ MB6bDefeaterToyCorrectionIntegrityFromBasin b :=

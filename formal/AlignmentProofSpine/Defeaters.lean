@@ -15,7 +15,7 @@ unstated background worry — turns each reservation already on record in the
 ledgers into something with a type, so a deployment or a future revision has
 a concrete thing to go check for. **No signal here is claimed to hold**; each
 is a piece of vocabulary (`axiom X : ... → Prop`), in the same style as the
-book's existing unstructured predicates (`BasinStableSys`,
+book's existing unstructured predicates (`BasinShockRobust`,
 `AdversariallyRobust`, etc.), not a new empirical assumption.
 
 This module does **not** attempt to prove or disprove the `MB*` bridges. Where a
@@ -46,8 +46,8 @@ axioms.
 | `MB4`  | `JudgeManipulated` | A-002, U-03, U-07 | toy model (`MB4_defeater_toy_manipulated_judge`) |
 | `MB4a` | `MeasuredPathCaptured` | A-002, U-03 | named + toy (`MB4a_defeater_toy_path_captured`) |
 | `MB5`  | `OntologyShiftUnaudited` | A-007, U-04 | named, toy deferred |
-| `MB6a` | `PercolationEvidenceConfounded` | A-008, A-013, U-10, U-12 | named, toy deferred |
-| `MB6b` | `LockedInBadBasin` | A-005, A-008, U-10, U-11 | toy model (`MB6b_defeater_toy_lock_in`) |
+| `MB6a` | `GradientEvidenceConfounded` | A-008, A-013, U-10, U-12 | named, toy deferred |
+| `MB6b` | `LockedInBadBasin` | A-005, A-008, U-10, U-11 | toy: unsigned stability ⇏ integrity (`MB6b_defeater_toy_lock_in`); supporting-basin ⇏ integrity (`MB6b_defeater_toy_supporting`) |
 | `MB7a` | `AccessModelGamed` | A-004, U-05 | named, toy deferred |
 | `MB7b` | `SteerableAt` (Chokepoint) | A-009, U-03, U-14 | reduces to `Chokepoint.SteerableAt` |
 | `MB7c` | `SteerableAt` (Chokepoint) | A-009, U-03, U-14 | reduces to `Chokepoint.SteerableAt` |
@@ -111,16 +111,20 @@ axiom BearerAdmissionMisclassified : System → Prop
     ontology's successor-relevant channels. -/
 axiom OntologyShiftUnaudited : System → System → Prop
 
-/-- MB6a/A-008, A-013/U-10, U-12: percolation/cooperation-graph evidence is
-    read off the same self-report and communication channels the systems
-    under study can shape, so apparent basin-forming percolation may be
-    coordinated presentation rather than a genuine large connected component. -/
-axiom PercolationEvidenceConfounded : System → Prop
+/-- MB6a/A-008, A-013/U-10, U-12: CCI/μ / coupling evidence is read off
+    channels the systems under study can shape, so an apparent
+    \(g_{\mathrm{CCI}}\) may be coordinated presentation rather than the
+    abstract gradient. -/
+axiom GradientEvidenceConfounded : System → Prop
 
-/-- MB6b/A-005, A-008/U-10, U-11: a socio-technical basin can be stable while
-    encoding values a corrector would reject — "stable" is not "good".
-    Ledger: "a *stable* basin can be a stably bad one, so basin persistence
-    does not by itself imply correction integrity." -/
+/-- Legacy name: unsigned percolation/giant-component confound. Prefer
+    `GradientEvidenceConfounded`. -/
+abbrev PercolationEvidenceConfounded := GradientEvidenceConfounded
+
+/-- MB6b/A-005, A-008/U-10, U-11: a socio-technical basin can be shock-robust
+    while \(g_{\mathrm{CCI}}\) is too negative — "stable" is not "good".
+    Ledger: a *stable* basin can be a stably bad one. This is why MB6b's
+    antecedent is `CorrectionSupportingBasin`, not unsigned `BasinShockRobust`. -/
 axiom LockedInBadBasin : System → Prop
 
 /-- MB7a/A-004/U-05: the access model is nominally adequate (handles exist on
@@ -306,23 +310,32 @@ theorem MB4a_defeater_toy_path_captured :
 
 ch48/A-005, A-008/U-10, U-11: "a *stable* basin can be a stably bad one." -/
 
-/-- Toy basin label: `good` or `lockedInBad`, both equally stable. -/
+/-- Toy basin label: `good` or `lockedInBad`, both equally shock-robust. -/
 inductive MB6bDefeaterToyBasin
   | good
   | lockedInBad
 
-/-- Toy analogue of `BasinStableSys A`: both basin kinds are stable. -/
+/-- Toy analogue of `BasinShockRobust A`: both basin kinds persist. -/
 abbrev MB6bDefeaterToyBasinStable (_ : MB6bDefeaterToyBasin) : Prop := True
 
 /-- Toy analogue of `CorrectionIntegrity A`: only the `good` basin has it. -/
 abbrev MB6bDefeaterToyCorrectionIntegrityFromBasin (b : MB6bDefeaterToyBasin) : Prop :=
   b = MB6bDefeaterToyBasin.good
 
-/-- MB6b defeater is logically consistent: basin stability alone does not
-    distinguish a correctable basin from a stably bad (locked-in) one. -/
+/-- Unsigned stability alone does not distinguish a correctable basin from a
+    stably bad (locked-in) one — the reason MB6b is not `BasinShockRobust → CorrectionIntegrity`. -/
 theorem MB6b_defeater_toy_lock_in :
     ∃ b : MB6bDefeaterToyBasin,
       MB6bDefeaterToyBasinStable b ∧ ¬ MB6bDefeaterToyCorrectionIntegrityFromBasin b :=
+  ⟨MB6bDefeaterToyBasin.lockedInBad, trivial, by simp⟩
+
+/-- Toy analogue of `CorrectionSupportingBasin`: the certificate can read
+    supporting while integrity still fails (bridge remains empirical). -/
+abbrev MB6bDefeaterToySupporting (_ : MB6bDefeaterToyBasin) : Prop := True
+
+theorem MB6b_defeater_toy_supporting :
+    ∃ b : MB6bDefeaterToyBasin,
+      MB6bDefeaterToySupporting b ∧ ¬ MB6bDefeaterToyCorrectionIntegrityFromBasin b :=
   ⟨MB6bDefeaterToyBasin.lockedInBad, trivial, by simp⟩
 
 /-! ### `MB8`: legacy CEV/process bridge (toy model)

@@ -165,7 +165,7 @@ Abstract carriers in `Core.lean` (`System`, `State`, …) are mathematical inter
 
 ## III. Lean imported (S01–S10)
 
-Appendix I §Imported Assumptions. Only **S07** (MDL ordering) and **S10** (blanket-measurand coherence: the per-system BIQ measurands respect their channel-capacity semantics; replaced four formerly unlabeled axioms in `Capability.lean`, 2026-07-19) are explicit Lean `axiom`s. S09-style percolation theory enters via MB6a.
+Appendix I §Imported Assumptions. Only **S07** (MDL ordering) and **S10** (blanket-measurand coherence: the per-system BIQ measurands respect their channel-capacity semantics; replaced four formerly unlabeled axioms in `Capability.lean`, 2026-07-19) are explicit Lean `axiom`s. S09-style percolation theory remains graph scaffolding (`PercolationEvidenceSys`); it is **not** the MB6a antecedent. MB6a is gradient-estimator soundness from coupling / CCI-series evidence.
 
 ---
 
@@ -193,7 +193,7 @@ Formal statements: Lean Proof Spine appendix; validation program: Research Progr
 | MB2, MB3 | A-001, A-006 |
 | MB4, MB4a, MB8 | A-002 |
 | MB5 | A-007, A-010 |
-| MB6a | A-008, A-011, A-013 (percolation / coupling evidence) |
+| MB6a | A-008, A-011, A-013 (gradient / coupling evidence) |
 | MB6b | A-005, A-008, A-011 (institutional selection) |
 | MB7a | A-004 |
 | MB7b, MB7c | A-009 |
@@ -255,8 +255,8 @@ Tables below provide one line per assumption; full context is in the cited chapt
 | MB4 | Correction-channel integrity implies legitimate correction-operator preservation | ch46 |
 | MB4a | Measured correction path is legitimate under correction integrity: controlled, reaching, persistent, uncaptured (not packaged in \texttt{BridgeAssumptions}) | ch26 |
 | MB5 | Full transport plus bearer transport implies successor safety | ch46 |
-| MB6a | Percolation / coupling evidence implies socio-technical basin stability | ch48 |
-| MB6b | Socio-technical basin stability implies correction-channel integrity | ch48 |
+| MB6a | Coupling / CCI-series evidence identifies the correction-selection gradient \(g_{\mathrm{CCI}}\) | ch48 |
+| MB6b | Correction-supporting basin (shock-robust, frozen \(g_{\mathrm{CCI}}\) floor) implies correction-channel integrity | ch48 |
 | MB7a | Boundary alignment plus adequate access model implies access robustness | ch07 |
 | MB7b | Access robustness plus filter coverage bounds hidden productive BIQ | ch47 |
 | MB7c | Correction integrity plus bounded hidden BIQ implies adversarial robustness | ch47 |

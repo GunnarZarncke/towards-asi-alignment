@@ -56,7 +56,7 @@ def LayeredAlignedDef (A : System) : Prop :=
   BearerTransport A ∧
   CorrectionIntegrity A ∧
   SuccessorStable A ∧
-  BasinStableSys A ∧
+  CorrectionSupportingBasinSys A ∧
   AdversariallyRobust A
 
 theorem P02_layered_alignment_requires_correction
@@ -85,20 +85,36 @@ structure BridgeLayerInputs (A : System) : Prop where
   groundingCert : GroundingCertificate A
   access : AccessModelAdequate A
   filters : FilterCoverageAdequate A
-  percolation : PercolationEvidenceSys A
+  gradientEvidence : CorrectionGradientEvidenceSys A
+  shockRobust : BasinShockRobust A
+  frozenGradientFloor :
+    ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A
 
 /-- Layers obtained by applying a bridge record to bridge-layer inputs. -/
 structure BridgeDerivedLayerEvidence (A : System) : Prop where
   grounding : GroundingViable A
   correction : CorrectionIntegrity A
-  basin : BasinStableSys A
+  basin : CorrectionSupportingBasinSys A
   adversarial : AdversariallyRobust A
 
 def BridgeLayerInputs.derive {A : System}
     (bridges : BridgeAssumptions) (direct : DirectLayerEvidence A)
     (inputs : BridgeLayerInputs A) : BridgeDerivedLayerEvidence A :=
-  let hbasin := bridges.mb6a A inputs.percolation
-  let hcorr := bridges.mb6b A hbasin
+  let hident := bridges.mb6a A inputs.gradientEvidence
+  let hcorr :=
+    inputs.frozenGradientFloor.elim fun ε hε =>
+      bridges.mb6b A ε
+        { tolFrozen := hε.1
+          shockRobust := inputs.shockRobust
+          identified := hident
+          gradientFloor := hε.2 }
+  let hbasin : CorrectionSupportingBasinSys A :=
+    inputs.frozenGradientFloor.elim fun ε hε =>
+      ⟨ε,
+        { tolFrozen := hε.1
+          shockRobust := inputs.shockRobust
+          identified := hident
+          gradientFloor := hε.2 }⟩
   let hgrounding := bridges.mb9 A inputs.groundingCert
   let haccessRobust := bridges.mb7a A direct.boundary inputs.access
   let hhidden := bridges.mb7b A haccessRobust inputs.filters
@@ -203,8 +219,8 @@ theorem P30_certified_class_safety_derived
     risk_bound := risk_gap_bound_from_cci_slack h.cci_slack }
 
 /-- Safety-case assembly through the explicit bridge record. Derivational
-    content: the bridge record turns percolation / grounding-certificate /
-    access / filter inputs into the grounding, correction, basin, and
+    content: the bridge record turns gradient-evidence / grounding-certificate /
+    access / filter inputs into the grounding, correction, supporting-basin, and
     adversarial layers (`BridgeLayerInputs.derive`), and the numeric leaf
     yields the risk bound. The packaging itself proves nothing further. -/
 theorem certified_class_safety_from_bridge_record
@@ -231,7 +247,9 @@ theorem certified_class_safety_from_spine_and_bridges
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hpercolation : PercolationEvidenceSys A)
+    (hgradEvidence : CorrectionGradientEvidenceSys A)
+    (hshock : BasinShockRobust A)
+    (hfloor : ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A)
     (hcci : Control A ≤ CCI A + δ) :
     CertifiedSafetyCase A δ :=
   certified_class_safety_from_bridge_record standardBridges A δ
@@ -246,7 +264,9 @@ theorem certified_class_safety_from_spine_and_bridges
         { groundingCert := hgroundingCert
           access := haccess
           filters := hfilters
-          percolation := hpercolation }
+          gradientEvidence := hgradEvidence
+          shockRobust := hshock
+          frozenGradientFloor := hfloor }
       numeric := { cci_slack := hcci } }
 
 /-- Same assembly as `certified_class_safety_from_spine_and_bridges`, with core
@@ -263,7 +283,9 @@ theorem certified_class_safety_from_core_cruxes
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hpercolation : PercolationEvidenceSys A)
+    (hgradEvidence : CorrectionGradientEvidenceSys A)
+    (hshock : BasinShockRobust A)
+    (hfloor : ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A)
     (hcci : Control A ≤ CCI A + δ) :
     CertifiedSafetyCase A δ :=
   certified_class_safety_from_bridge_record cruxes.toBridgeAssumptions A δ
@@ -278,7 +300,9 @@ theorem certified_class_safety_from_core_cruxes
         { groundingCert := hgroundingCert
           access := haccess
           filters := hfilters
-          percolation := hpercolation }
+          gradientEvidence := hgradEvidence
+          shockRobust := hshock
+          frozenGradientFloor := hfloor }
       numeric := { cci_slack := hcci } }
 
 /-! ### What a safety case buys: `MB11` (safety-case adequacy)
@@ -380,12 +404,15 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hpercolation : PercolationEvidenceSys A)
+    (hgradEvidence : CorrectionGradientEvidenceSys A)
+    (hshock : BasinShockRobust A)
+    (hfloor : ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A)
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
     CertifiedSafetyCase A δ ∧ RiskGap B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation hcci
+    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc
+    hgradEvidence hshock hfloor hcci
   exact ⟨hroot, risk_gap_bound_along_successor_safe_chain links hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
@@ -411,11 +438,14 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hpercolation : PercolationEvidenceSys A)
+    (hgradEvidence : CorrectionGradientEvidenceSys A)
+    (hshock : BasinShockRobust A)
+    (hfloor : ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A)
     (hbiq : BIQDerivedCCISlack A δ) :
     CertifiedSafetyCase A δ :=
   certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation
+    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc
+    hgradEvidence hshock hfloor
     (control_le_correction_from_biq_ceiling hbiq)
 
 theorem certified_class_safety_from_biq_along_successor_chain

@@ -175,7 +175,7 @@ this repo). The `context/*.pdf` copies are book-local snapshots; rebuild from Te
 formulas or claims must be verified exactly.
 
 - `../brain-to-values/papers/` — value bundles, free-energy loops, unit-of-caring, viability-constrained value formation, consciousness/agency backbone
-- `../agency-detect/docs/papers/` — UAD, capability, intentional stance, attractor basins, construction/successor work
+- `../agency-detect/docs/papers/` — UAD, capability, intentional stance, attractor basins, maintained boundaries, construction/successor work
 
 ## Source map
 
@@ -192,6 +192,7 @@ formulas or claims must be verified exactly.
 | `access-uad.pdf` | `extracts/access-uad.md` | agency-detect | `../agency-detect/docs/papers/access-uad/access-uad.tex` | `../agency-detect/docs/papers/access-uad/access-uad.pdf` |
 | `smooth-uad.pdf` | `extracts/smooth-uad.md` | agency-detect | `../agency-detect/docs/papers/smooth-uad/smooth-uad.tex` | `../agency-detect/docs/papers/smooth-uad/smooth-uad.pdf` |
 | `stealth-capability-bounds.pdf` | `extracts/stealth-capability-bounds.md` | agency-detect | `../agency-detect/docs/papers/stealth-capability-bounds/stealth-capability-bounds.tex` | `../agency-detect/docs/papers/stealth-capability-bounds/stealth-capability-bounds.pdf` |
+| `maintained-blanket.pdf` | `extracts/maintained-blanket.md` | agency-detect | `../agency-detect/docs/papers/maintained-blanket/maintained-blanket.tex` | `../agency-detect/docs/papers/maintained-blanket/maintained-blanket.pdf` |
 | `loop-hub-value-model.pdf` | `extracts/loop-hub-value-model.md` | brain-to-values | `../brain-to-values/papers/loop-hub-value-model/loop-hub-value-model.tex` | `../brain-to-values/papers/loop-hub-value-model/loop-hub-value-model.pdf` |
 | `lhcv-model-v2.pdf` | `extracts/lhcv-model-v2.md` | brain-to-values | `../brain-to-values/papers/loop-hub-control-value/lhcv-model-v2.tex` | `../brain-to-values/papers/loop-hub-control-value/lhcv-model-v2.pdf` |
 | `unit-of-caring.pdf` | `extracts/unit-of-caring.md` | brain-to-values | `../brain-to-values/papers/unit-of-caring/unit-of-caring.tex` | `../brain-to-values/papers/unit-of-caring/unit-of-caring.pdf` |

@@ -18,10 +18,10 @@ digraph Spine00Overview {
       fillcolor="#EFFBEA", penwidth=2];
   S3 [label="Spine III\nCorrection & successors\n(P23–P29, P13, MB4–5, MB7c, MB8, MB10)\n→ CCI, Risk, SuccessorSafe, TrueHarm",
       fillcolor="#FFF0FB", penwidth=2];
-  S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45,\nMB6a–b, MB7d)\n→ percolation evidence, basin, normative boundary",
+  S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45,\nMB6a–b, MB7d)\n→ signed gradient, supporting basin, normative boundary",
       fillcolor="#FFF0EC", penwidth=2];
 
-  P02 [label="P02 LayeredAligned\n7 layers: boundary, bundle, bearer,\ncorrection, successor, basin, adversarial",
+  P02 [label="P02 LayeredAligned\n7 layers: boundary, bundle, bearer,\ncorrection, successor, supporting basin, adversarial",
        fillcolor="#F2F2F2", penwidth=2];
   P35 [label="P35 Basin stability", fillcolor="#F2F2F2"];
   P01 [label="P01 Basin invariant", fillcolor="#F2F2F2"];
@@ -32,20 +32,20 @@ digraph Spine00Overview {
 
   MB7 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333",
        label="MB7a→b→c→d\n(adversarial + inferential UAD bridges)"];
-  MB6a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6a\nPercolation evidence ⇒ basin"];
-  MB6b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6b\nBasin ⇒ correction"];
+  MB6a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6a\nGradient evidence ⇒ identified g_CCI"];
+  MB6b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6b\nSupporting basin ⇒ correction"];
 
   S1 -> S2 [label="identifiability\nconstraints"];
   S1 -> S3 [label="BIQ / control\n+ MB7a–b"];
   S2 -> S3 [label="transport &\nbearer maps"];
   S3 -> S4 [label="successor &\nrisk exports"];
-  S4 -> P02 [label="basin + limits"];
+  S4 -> P02 [label="supporting basin + limits"];
 
   S1 -> MB7 [style=dashed, color="#CC3333"];
   MB7 -> P02 [style=dashed, color="#CC3333", label="AdversariallyRobust layer"];
   S4 -> MB6a [style=dashed, color="#CC3333"];
   MB6a -> MB6b [style=dashed, color="#CC3333"];
-  MB6b -> P02 [style=dashed, color="#CC3333", label="CorrectionIntegrity\n+ basin layer"];
+  MB6b -> P02 [style=dashed, color="#CC3333", label="CorrectionIntegrity\n+ supporting-basin layer"];
   S3 -> P02 [label="correction +\nsuccessor layers"];
   S2 -> P02 [label="bundle +\nbearer layers"];
   S1 -> P02 [label="boundary layer"];

@@ -25,8 +25,10 @@ scaffolding (book ch13, ch48, basin/attractor paper, acausal-trade UAD paper).
   `P_meta(π_i = π_j)` (and optional causal `γ̂_ij`);
 * UAD discovery as `UADDiscoveredAgent` + `BoundaryCondition`.
 
-Giant-component thresholds remain external (`MB6a`, manuscript `S09`-style
-percolation theory), with basin-to-correction interpretation in `MB6b`.
+Giant-component thresholds remain external (manuscript `S09`-style
+percolation theory). MB6a's antecedent is gradient evidence, not unsigned
+giant-component membership; basin-to-correction interpretation is `MB6b`
+on `CorrectionSupportingBasin`.
 Full acausal-trade equilibrium (paper eq. 6) is not formalized; detection + percolation
 composition is.
 -/

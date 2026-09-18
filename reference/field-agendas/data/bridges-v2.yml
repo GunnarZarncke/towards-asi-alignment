@@ -1,5 +1,6 @@
 # Bridge lifecycle roles for field map v2 (parallel to bridges.yml; not live matrix).
-# lifecycleRole: specify | construct | identify | certify | preserve
+# lifecycleRole: specify | construct | identify | certify | act | preserve
+# preserve = cycle property (stability / convergence), not a stage.
 # Regenerate: cd site && npm run sync:field-v2
 
 bridges:

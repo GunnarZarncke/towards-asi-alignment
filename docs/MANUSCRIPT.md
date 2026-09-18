@@ -60,7 +60,7 @@ Prior work lives in sibling repositories and is mirrored under [`context/`](../c
 
 | Repo | Topics |
 |------|--------|
-| [`agency-detect`](../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, successors |
+| [`agency-detect`](../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, maintained boundaries, successors |
 | [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | Hidden self-preservation in a simulated release pipeline; perturbation-based secret-loyalty audit |
 | [`brain-to-values`](../brain-to-values/papers/) | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
 

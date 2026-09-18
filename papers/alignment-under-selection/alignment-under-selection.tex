@@ -84,7 +84,7 @@ Second, we distinguish pointwise fitness from robustness of descendants. Canaliz
 
 Third, we import invasion fitness and mutation--selection balance. A desirable population is not evolutionarily stable merely because currently observed adversaries perform poorly. It must resist invasion by reachable variants. Conversely, even negative growth of every existing adversarial lineage does not imply zero long-run prevalence if the same adversarial phenotype is continually regenerated.
 
-Fourth, we make the selector endogenous. Standard analyses often hold the fitness rule fixed. Yet eco-evolutionary theory has long studied reciprocal feedback between population and environment \parencite{govaert2019,ashby2019}. Meiotic drive provides a sharper precedent: a genetic element can increase its own transmission by exploiting the machinery of inheritance rather than by improving ordinary organism-level fitness \parencite{tao2007a,tao2007b,courret2019}. In AI, the selected system may additionally model the selection process explicitly or implicitly, as studied in strategic classification, performative prediction, reward tampering, and alignment-faking settings \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}. We do not model the capability threshold at which this becomes important. We only include the feedback in the state space.
+Fourth, we make the selector endogenous. Standard analyses often hold the fitness rule fixed. Yet eco-evolutionary theory has long studied reciprocal feedback between population and environment \parencite{govaert2019,ashby2019}. Meiotic drive provides a sharper precedent: a genetic element can increase its own transmission by exploiting the machinery of inheritance rather than by improving ordinary organism-level fitness \parencite{tao2007a,tao2007b,courret2019}. The joint-state stability result later in this paper requires only this feedback structure. Separately, AI systems may model and exploit the selection process, as studied in strategic classification, performative prediction, reward tampering, and alignment-faking settings \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}; we treat that strategic case as motivation for why coupling may strengthen, not as a condition of the theorem.
 
 Fifth, we propose a narrow definition of an \emph{evolutionarily robust alignment attractor}: a desirable region that is retention-stable under transformations, attracts nearby variants, resists invasion, has low adversarial regeneration, and remains stable in the coupled population--selector dynamics.
 
@@ -363,6 +363,8 @@ The evolutionary precedent is older and more general. Meiotic drivers bias their
 \end{equation}
 No explicit model of meiosis is required. Thus selector exploitation is not dependent on strategic cognition. Strategic cognition potentially makes the search over selector exploits faster and more directed, but the present paper does not attempt to derive capability thresholds for that transition.
 
+Strategic endogeneity motivates why $C$, the influence of selected systems on selectors, may become large or deliberately optimized. The stability result in the next section requires only endogeneity---nonzero population--selector feedback as in Eq.~\eqref{eq:endogenous-system}---not strategic cognition, explicit models of the evaluator, or deception. We do not prove a separate instability theorem for the strategic case; the examples above supply motivation and precedents, not an additional mathematical tier.
+
 \section{A Joint-State Stability Result}
 
 Once the selector is endogenous, the state space has to expand. Let
@@ -411,6 +413,8 @@ Then $A=D=[0.5]$, so $\rho(A)=\rho(D)=0.5<1$. But $J$ has eigenvalues $1.3$ and 
 
 The proposition is elementary control/dynamical-systems mathematics. Its importance here is conceptual. A safety evaluation that freezes the selector can establish only stability of the $A$ block. A separate analysis showing that an evaluation or update rule is stable in isolation establishes only the $D$ block. The feedback terms $B$ and $C$ can create a new unstable mode that neither subsystem exhibits alone.
 
+The theorem requires only endogeneity: any nonzero population--selector feedback suffices. It does not establish a separate instability class for strategic, evaluator-aware, or deceptive systems, and it does not require that selected systems model the selector. Readers should not infer a proof about alignment faking or reward tampering from the block structure alone.
+
 This gives a clean reason to treat the selector as part of the alignment state rather than as an external scoring oracle. It also sharpens the meaning of ``alignment attractor.'' If selected systems can change the conditions under which they or their descendants are selected, then an attractor in model-state space alone is not the relevant object.
 
 The full local Jacobian, including the environment, has the block form
@@ -450,7 +454,8 @@ The lesson is not that AI systems will resemble selfish genetic elements mechani
 
 Artificial systems make the strategic version easier to isolate. Strategic classification explicitly models a classifier and a subject who changes features after observing the rule \parencite{hardt2016}. Performative prediction generalizes this to cases where deployed predictors change the data distribution on which future predictors are evaluated or trained \parencite{perdomo2020}. Reward-tampering analysis formalizes when an optimizing agent has causal incentives to influence its reward process \parencite{everitt2019}. Alignment-faking experiments show that a language model can condition behavior on whether its outputs are expected to affect subsequent training \parencite{greenblatt2024}.
 
-These are not all instances of evolution in the strict sense. They are included for a narrower reason: they demonstrate that artificial optimization systems can instantiate the cross-coupling terms $B$ and $C$ in Eq.~\eqref{eq:block-jacobian}, including cases where the system responds to a model of the selector. The evolutionary framework tells us how to analyze the resulting long-run population dynamics once those couplings persist across transformations and differential retention.
+These are not all instances of evolution in the strict sense. They are included for a narrower reason: they motivate why $C$ may be large or deliberately shaped in artificial settings, including cases where the system responds to a model of the selector. They do not extend the coupled-selector instability proposition to a strategic instability class; that result requires only endogeneity. 
+The evolutionary framework tells us how to analyze the resulting long-run population dynamics once those couplings persist across transformations and differential retention.
 
 \section{Defining an Evolutionarily Robust Alignment Attractor}
 
@@ -563,7 +568,8 @@ Digital and artificial systems permit nearly exact copying, cheap horizontal tra
 
 \subsection{Capability may accelerate selector modeling}
 
-A sufficiently capable system may infer how selection works and search deliberately for actions that alter future selection. Alignment-faking and reward-tampering work show the logical possibility in restricted settings \parencite{greenblatt2024,everitt2019}. The present paper does not estimate when this capability appears or how to bound it. That problem should be treated by capability analysis rather than hidden inside the evolutionary model.
+A sufficiently capable system may infer how selection works and search deliberately for actions that alter future selection. 
+Alignment-faking and reward-tampering work show the logical possibility in restricted settings \parencite{greenblatt2024,everitt2019}. The present paper does not estimate when this capability appears or how to bound it, and the coupled-selector instability result does not depend on it. That problem should be treated by capability analysis rather than hidden inside the evolutionary model.
 
 \subsection{Institutions and correction channels are excluded}
 
@@ -606,10 +612,11 @@ Mutation--selection balance makes it standard that selection can continually rem
 Host--parasite theory and digital evolution show coexistence, cycling, and escalating complexity under reciprocal adaptation \parencite{buckingham2022,papkou2019,zaman2014}. A permanent adversarial test set is therefore not equivalent to evolutionary stability against an adapting adversarial population.
 
 \paragraph{Clean mathematical extension: selector stability must be analyzed jointly.}
-The block-Jacobian proposition is standard dynamical-systems mathematics, but it changes the alignment object. Once the selector is endogenous, neither fixed-selector robustness nor selector robustness in isolation is sufficient.
+The block-Jacobian proposition is standard dynamical-systems mathematics, but it changes the alignment object. Once the selector is endogenous, neither fixed-selector robustness nor selector robustness in isolation is sufficient. The result requires only endogeneity, not strategic cognition.
 
 \paragraph{Plausible but less established AI extrapolation: capability increases strategic endogeneity.}
-Artificial examples show that systems can react to, game, or tamper with selection-related mechanisms \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}. It is plausible that greater capability expands this space, but the quantitative scaling law is currently unknown and intentionally left outside this paper.
+Artificial examples show that systems can react to, game, or tamper with selection-related mechanisms \parencite{hardt2016,perdomo2020,everitt2019,greenblatt2024}. Strategic endogeneity motivates why $C$ may become large or deliberately optimized, but the paper does not mathematically differentiate that case from nonstrategic eco-evolutionary feedback. 
+It is plausible that greater capability expands the strategic space, but the quantitative scaling law is currently unknown and intentionally left outside this paper.
 
 \section{Conclusion}
 

@@ -4,7 +4,7 @@ Agent-oriented crosswalk material for comparing alignment agendas and vocabulary
 
 | File / path | Role |
 |-------------|------|
-| [`data/`](data/) | **Source of truth** — structured YAML (agendas, matrix, evidence catalog, clustering) |
+| [`data/roster.yml`](data/roster.yml) | Agenda order, `inMatrix`, and `fieldConstruction` (`none` / `capacity` / `structural` / `mixed`) |
 | [`data/agendas/*.yml`](data/agendas/) | One file per coherent agenda |
 | [`data/matrix.yml`](data/matrix.yml) | Agenda × bridge matrix; cells are `{ type, ids[] }` lists (see [`MAINTAINER.md`](MAINTAINER.md)) |
 | [`data/bridges.yml`](data/bridges.yml) | Field nouns + semantic crux wording per `MB*` (matrix headers + legend) |

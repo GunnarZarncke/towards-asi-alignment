@@ -155,12 +155,13 @@ Specialized to the book's actual `System` carrier from `Core.lean` (not the
 generic `Sys` above), since this section instantiates the real `MB6a`, `MB6b`,
 and `MB8` axioms. -/
 
-/-- The percolation-evidence channel behind `MB6a → MB6b`: what the audit
-    reads is `PercolationEvidenceSys`. -/
+/-- The MB6 route's channel: what the audit reads is a
+    `CorrectionSupportingBasinSys` certificate (frozen `ε`, shock-robust,
+    identified \(g_{\mathrm{CCI}}\)). Legacy name `percolationChannel`. -/
 def percolationChannel
     (costFake : System → Int → Int) (surplus : Int → Int) :
     MeasurementChannel System where
-  reads := PercolationEvidenceSys
+  reads := CorrectionSupportingBasinSys
   costFake := costFake
   affordableSurplus := surplus
 
@@ -185,9 +186,10 @@ def SharedInstrumentHypothesis
     (costFake : System → Int → Int) (surplus : Int → Int) : Prop :=
   percolationChannel costFake surplus = valueUpdateChannel costFake surplus
 
-/-- `MB6a` composed with `MB6b`, packaged as a verifiability-gated bridge over
-    the percolation channel. The `sound` field discharges via the two
-    existing `MB*` axioms — this module never weakens or bypasses them. -/
+/-- `MB6b`, packaged as a verifiability-gated bridge over the supporting-basin
+    channel. The `sound` field discharges via `MB6b` — this module never
+    weakens it. (`MB6a` is upstream: it identifies \(g_{\mathrm{CCI}}\), which
+    is already a conjunct of `CorrectionSupportingBasin`.) -/
 def percolationGatedBridge
     (costFake : System → Int → Int) (surplus : Int → Int)
     (capability : System → Int) : VerifiabilityGatedBridge System where
@@ -195,8 +197,7 @@ def percolationGatedBridge
   consequent := CorrectionIntegrity
   capability := capability
   sound := fun A _ hread =>
-    MB6b_basin_stability_to_correction_integrity A
-      (MB6a_percolation_evidence_to_basin_stability A hread)
+    hread.elim fun ε hb => MB6b_correction_supporting_basin A ε hb
 
 /-- `MB8`, packaged as a verifiability-gated bridge over the value-update
     channel. -/
@@ -212,7 +213,7 @@ def valueUpdateGatedBridge
 /-- The reviewer's finding, instantiated at the book's actual `MB6a`/`MB6b`
     vs `MB8` pair: **given** the shared-instrument hypothesis, if that
     instrument is steerable at a system's capability, neither the
-    percolation-basin route nor the legacy value-process route can be
+    correction-supporting-basin route nor the legacy value-process route can be
     soundly invoked for that system — the two "independent" certification
     paths for `CorrectionIntegrity` fail together. Discharging
     `SharedInstrumentHypothesis`, or refuting it, is left to the deployment;

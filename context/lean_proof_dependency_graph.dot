@@ -96,8 +96,8 @@ digraph LeanProofDependencies {
   MB3 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB3 Bearer import theorem\nhuman Φ ⇒ substrate Φ′"];
   MB4 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB4 Correction legitimacy criterion\nnon-manipulated deliberation"];
   MB5 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB5 Ontology-shift successor audit\nsuccessors preserve B,Φ,CCI"];
-  MB6a [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB6a Percolation evidence ⇒ basin\ncooperation / coupling graph evidence"];
-  MB6b [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB6b Basin ⇒ correction integrity\ninstitutional selection bridge"];
+  MB6a [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB6a Gradient evidence ⇒ identified g_CCI\nestimator soundness"];
+  MB6b [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB6b Supporting basin ⇒ correction integrity\nshock-robust ∧ frozen g_CCI floor"];
   MB7a [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7a Access-model soundness\nboundary + adequate handles ⇒ access robust"];
   MB7b [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7b Filter-family coverage\naccess robust + filter coverage ⇒ hidden BIQ bounded"];
   MB7c [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7c Hidden-BIQ robustness\ncorrection + hidden BIQ bound ⇒ adversarial robustness"];
@@ -171,7 +171,7 @@ digraph LeanProofDependencies {
   MB7c -> P02 [label="C-LAYER: adversarial robustness layer", style=dashed, color="#CC3333"];
   MB7a -> MB7d [label="access robust", style=dashed, color="#CC3333"];
   MB7d -> MB6a [label="valid inferential coupling", style=dashed, color="#CC3333"];
-  MB6a -> MB6b [label="basin stability", style=dashed, color="#CC3333"];
+  MB6a -> MB6b [label="supporting basin", style=dashed, color="#CC3333"];
 
   // Socio-technical selection
   P12 -> P31 [label="C-SEL: selection can disfavor safety"];
@@ -212,9 +212,9 @@ digraph LeanProofDependencies {
   MB4 -> P44 [label="missing C-NORM-LIMIT", style=dashed, color="#CC3333"];
   MB5 -> P27 [label="missing C-ONTO-SUC", style=dashed, color="#CC3333"];
   MB5 -> P28 [label="missing C-AUDIT-COMPOSE", style=dashed, color="#CC3333"];
-  P33 -> MB6a [label="missing C-PERCOLATION-EVIDENCE", style=dashed, color="#CC3333"];
+  P33 -> MB6a [label="missing C-GRADIENT-EVIDENCE", style=dashed, color="#CC3333"];
   MB6a -> P01 [label="missing C-ATTRACTOR-SELECTION", style=dashed, color="#CC3333"];
-  MB6b -> P02 [label="C-LAYER: correction via basin", style=dashed, color="#CC3333"];
+  MB6b -> P02 [label="C-LAYER: correction via supporting basin", style=dashed, color="#CC3333"];
   P05 -> MB7a [label="BoundaryAligned input", style=dashed, color="#CC3333"];
   P09A -> MB7a [label="missing C-HANDLE-ADEQUACY", style=dashed, color="#CC3333"];
   P36M -> MB7b [label="margin motivates filter coverage", style=dashed, color="#CC3333"];

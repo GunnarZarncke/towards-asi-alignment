@@ -123,6 +123,14 @@ INTERNAL_PAPERS = """
   note        = {Source: ../agency-detect/docs/papers/stealth-capability-bounds/; extract: context/extracts/stealth-capability-bounds.md},
 }
 
+@techreport{zarncke2026maintained,
+  author      = {Zarncke, Gunnar},
+  title       = {Discovering Maintained Agent Boundaries},
+  institution = {AE Studio},
+  year        = {2026},
+  note        = {Source: ../agency-detect/docs/papers/maintained-blanket/; extract: context/extracts/maintained-blanket.md},
+}
+
 @techreport{zarncke2025loop-hub-value,
   author      = {Zarncke, Gunnar},
   title       = {Loop--Hub--Value Model: From Free-Energy Loops to Intrinsic Values},
@@ -656,6 +664,7 @@ INTERNAL_KEYS = {
     "zarncke2026access",
     "zarncke2026smoothing",
     "zarncke2026stealth",
+    "zarncke2026maintained",
     "zarncke2025loop-hub-value",
     "zarncke2025lhcv",
     "zarncke2025unit-of-caring",

@@ -57,7 +57,7 @@ Start with:
 Related GitHub repositories to consult when empirical or source evidence is at issue:
 
 - `https://github.com/GunnarZarncke/agency-detect`
-  - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+  - Unsupervised agent discovery, operational agent boundaries, maintained-boundary repair, capability, intentional stance, attractor basins, successors.
 - `https://github.com/GunnarZarncke/deployment-pipeline-simulator`
   - Hidden self-preservation in a simulated deployment/release pipeline; perturbation-based audit of secret loyalties (ET-4 substrate).
 - `https://github.com/GunnarZarncke/brain-to-values`

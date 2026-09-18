@@ -401,7 +401,14 @@ constant BundleTransport : System → Prop
 constant BearerTransport : System → Prop
 constant CorrectionIntegrity : System → Prop
 constant SuccessorStable : System → Prop
+/-- Unsigned shock-robustness. Live: `BasinShockRobust` with `abbrev BasinStableSys`.
+    Not the MB6 consequent. -/
 constant BasinStableSys : System → Prop
+/-- Signed MB6 layer: shock-robust ∧ identified \(g_{\mathrm{CCI}}\) at a frozen floor.
+    Live: `CorrectionSupportingBasinSys`. -/
+constant CorrectionSupportingBasinSys : System → Prop
+constant CorrectionGradientEvidenceSys : System → Prop
+constant CorrectionGradientIdentified : System → Prop
 constant AdversariallyRobust : System → Prop
 
 /-- Chapter-specific predicates. -/
@@ -588,14 +595,25 @@ axiom MB5_ontology_shift_successor_audit :
     BearerTransport B →
     SuccessorSafe A B
 
-/-- MB6: percolation-to-institutional-basin bridge.
+/-- MB6a: gradient-estimator soundness.
 
-If cooperation percolates through the relevant socio-technical graph, the institutional
-environment supports an alignment basin rather than selecting against it.
+Coupling / CCI-series evidence identifies the abstract correction-selection gradient.
+Unsigned percolation-to-stability is not this arrow. Live: `MB6a_gradient_estimator_soundness`.
 -/
-axiom MB6_percolation_to_institutional_basin :
+axiom MB6a_gradient_estimator_soundness :
   ∀ A : System,
-    BasinStableSys A →
+    CorrectionGradientEvidenceSys A →
+    CorrectionGradientIdentified A
+
+/-- MB6b: correction-supporting basin.
+
+Shock-robustness plus identified \(g_{\mathrm{CCI}}\ge-\varepsilon\) at a frozen `ε`
+supports correction integrity. Unsigned `BasinStableSys` is not the antecedent.
+Live: `MB6b_correction_supporting_basin`.
+-/
+axiom MB6b_correction_supporting_basin :
+  ∀ A : System,
+    CorrectionSupportingBasinSys A →
     CorrectionIntegrity A
 
 /-- MB7: adversarial UAD robustness.
@@ -658,7 +676,7 @@ def LayeredAlignedDef (A : System) : Prop :=
   BearerTransport A ∧
   CorrectionIntegrity A ∧
   SuccessorStable A ∧
-  BasinStableSys A ∧
+  CorrectionSupportingBasinSys A ∧
   AdversariallyRobust A
 
 theorem P02_layered_alignment_requires_correction

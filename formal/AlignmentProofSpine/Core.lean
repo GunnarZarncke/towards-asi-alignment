@@ -152,6 +152,12 @@ axiom SelfControl : System → Int
 /-- Deployment leverage `μ_E(A)` in environment `E` (book ch34, Eq. deployment-mass label). -/
 axiom DeploymentMass : Environment → System → Int
 
+/-- Integer proxy for the correction-selection gradient
+    \(g_{\mathrm{CCI}} = \partial\mathbb{E}[\mathrm{CCI}_{t+1}-\mathrm{CCI}_t]/\partial\mu\).
+    Sign: nonnegative means additional leverage is not expected to erode CCI.
+    Magnitude is a bookkeeping unit, not a calibrated derivative. -/
+axiom CorrectionSelectionGradient : System → Int
+
 /-! ## Predicates over systems -/
 
 axiom Safe : System → Prop
@@ -167,7 +173,12 @@ axiom BundleTransport : System → Prop
 axiom BearerTransport : System → Prop
 axiom CorrectionIntegrity : System → Prop
 axiom SuccessorStable : System → Prop
-axiom BasinStableSys : System → Prop
+/-- Unsigned persistence of a socio-technical cluster under relevant shocks.
+    Has no sign: a locked-in bad equilibrium can be shock-robust.
+    Not the MB6 consequent; see `CorrectionSupportingBasin`. -/
+axiom BasinShockRobust : System → Prop
+/-- Legacy name for unsigned persistence only. Prefer `BasinShockRobust`. -/
+abbrev BasinStableSys := BasinShockRobust
 axiom AdversariallyRobust : System → Prop
 
 /-- Operational envelope for "human/civilizational value-update preservation":
@@ -204,10 +215,38 @@ theorem ValueUpdateEnvelope.successor {A : System} :
 theorem ValueUpdateEnvelope.adversarial {A : System} :
     ValueUpdateEnvelope A → AdversariallyRobust A := fun h => h.2.2.2.2.2
 
-/-- Percolation / cooperation-graph evidence that the socio-technical system is
-    inside the relevant basin. Concrete graph construction lives in
-    `CooperationGraph`; this predicate is the bridge-level interface. -/
+/-- Percolation / cooperation-graph evidence. Concrete graph construction lives
+    in `CooperationGraph`. Coupling structure may *inform* a gradient estimate;
+    this predicate is **not** the MB6a antecedent (unsigned giant-component
+    evidence does not warrant a signed basin). -/
 axiom PercolationEvidenceSys : System → Prop
+
+/-- Evidence from which a correction-selection gradient is estimated
+    (CCI-time measurements plus μ / coupling / selection-handle structure). -/
+axiom CorrectionGradientEvidenceSys : System → Prop
+
+/-- The evidence identifies the abstract `CorrectionSelectionGradient`
+    (estimator soundness). -/
+axiom CorrectionGradientIdentified : System → Prop
+
+/-- Pre-registered tolerance `ε` for "gradient not too negative," frozen
+    independently of the measured `CorrectionSelectionGradient` (same pattern as
+    `WithinDeploymentRiskTolerance`). -/
+axiom FrozenGradientTolerance : System → Int → Prop
+
+/-- Shock-robust ∧ identified \(g_{\mathrm{CCI}}\) ∧ \(g_{\mathrm{CCI}}\ge-\varepsilon\)
+    at a frozen `ε`. This is the signed MB6 object. Do not reconstruct `ε`
+    from the gradient. -/
+structure CorrectionSupportingBasin (A : System) (ε : Int) : Prop where
+  tolFrozen : FrozenGradientTolerance A ε
+  shockRobust : BasinShockRobust A
+  identified : CorrectionGradientIdentified A
+  gradientFloor : -ε ≤ CorrectionSelectionGradient A
+
+/-- Unary layer: supporting at *the* frozen `ε` (opaque witness).
+    Not a license to pick `ε` after seeing the gradient. -/
+def CorrectionSupportingBasinSys (A : System) : Prop :=
+  ∃ ε : Int, CorrectionSupportingBasin A ε
 
 /-- The available handles are rich enough for the boundary claim being made. -/
 axiom AccessModelAdequate : System → Prop
@@ -525,15 +564,17 @@ axiom MB4_correction_integrity :
 axiom MB5_ontology_shift_successor_audit :
   ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
 
-/-- MB6a: percolation-evidence-to-basin bridge. Cooperation/percolation
-    evidence warrants the abstract basin-stability predicate. -/
-axiom MB6a_percolation_evidence_to_basin_stability :
-  ∀ A : System, PercolationEvidenceSys A → BasinStableSys A
+/-- MB6a: gradient-estimator soundness. Coupling / CCI-series evidence
+    identifies the abstract correction-selection gradient. Unsigned
+    percolation-to-stability is not this arrow. -/
+axiom MB6a_gradient_estimator_soundness :
+  ∀ A : System, CorrectionGradientEvidenceSys A → CorrectionGradientIdentified A
 
-/-- MB6b: basin-to-correction bridge. A stable socio-technical basin supports
-    correction integrity rather than selecting against it. -/
-axiom MB6b_basin_stability_to_correction_integrity :
-  ∀ A : System, BasinStableSys A → CorrectionIntegrity A
+/-- MB6b: a *correction-supporting* basin (shock-robust at frozen `ε` with
+    \(g_{\mathrm{CCI}}\ge-\varepsilon\)) supports correction integrity.
+    Unsigned `BasinShockRobust` is not the antecedent. -/
+axiom MB6b_correction_supporting_basin :
+  ∀ (A : System) (ε : Int), CorrectionSupportingBasin A ε → CorrectionIntegrity A
 
 /-- MB7a: access-model soundness. Boundary alignment plus adequate handles yields
     access-robust boundary discovery. -/
@@ -581,8 +622,8 @@ structure BridgeAssumptions : Prop where
   mb3 : ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
   mb4 : ∀ A : System, CorrectionIntegrity A → PreservesCorrectionOperator A
   mb5 : ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
-  mb6a : ∀ A : System, PercolationEvidenceSys A → BasinStableSys A
-  mb6b : ∀ A : System, BasinStableSys A → CorrectionIntegrity A
+  mb6a : ∀ A : System, CorrectionGradientEvidenceSys A → CorrectionGradientIdentified A
+  mb6b : ∀ (A : System) (ε : Int), CorrectionSupportingBasin A ε → CorrectionIntegrity A
   mb7a : ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
   mb7b : ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
   mb7c : ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
@@ -595,8 +636,8 @@ def standardBridges : BridgeAssumptions where
   mb3 := MB3_bearer_import
   mb4 := MB4_correction_integrity
   mb5 := MB5_ontology_shift_successor_audit
-  mb6a := MB6a_percolation_evidence_to_basin_stability
-  mb6b := MB6b_basin_stability_to_correction_integrity
+  mb6a := MB6a_gradient_estimator_soundness
+  mb6b := MB6b_correction_supporting_basin
   mb7a := MB7a_access_model_soundness
   mb7b := MB7b_filter_family_coverage
   mb7c := MB7c_hidden_biq_to_adversarial_robustness

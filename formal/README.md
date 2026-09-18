@@ -151,7 +151,8 @@ unconditionally (`capture_makes_cci_captured_or_invalid`) and refutes
 `SystemCorrectionPath` carries **data only** (corrector, handles, capacities)
 and asserts no validity.
 The bridge path now splits socio-technical selection into `MB6a`/`MB6b`
-(percolation evidence → basin stability → correction integrity) and adversarial
+(gradient-estimator soundness → correction-supporting basin → correction
+integrity; unsigned `BasinShockRobust` is not the MB6 consequent) and adversarial
 measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector validity.
 `MB9` is the grounding-certificate bridge: it turns a conservative value-correction
 abstraction certificate into the abstract `GroundingViable` layer.
