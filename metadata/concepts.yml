@@ -64,7 +64,7 @@ concepts:
     kind: concept
     status: framework
     title: Alignment Lifecycle
-    summary: When each bridge handoff must hold — specify → construct → identify → certify → preserve; orthogonal to the bridge dependency graph.
+    summary: Specify → construct → identify → certify → act/refuse; preserve is the property of repeating that cycle, not a fifth stage.
     bookChapters:
       - ch42
     body: bodies/alignment-lifecycle.md

@@ -1,20 +1,21 @@
 # Construct — TSA 2.0 construction and constructibility
 
-Status: **planning** (2026-08-24). **v1 manuscript still gated** on Witness Expectation 4 **with deployment leverage** on the system under test. W-9–W-11 (FAA/GPL/Debian) are institutional analogues only; they do not open this gate. This file is the Construct lane checklist. Voice / Witness / Field / Spine stay as they are.
+Status: **planning** (2026-08-24). **v1 manuscript still gated** on Witness Expectation 4 **with deployment leverage** on the system under test. W-9–W-11 (FAA/GPL/Debian) are institutional analogues only; they do not open this gate. This file is the Construct lane checklist. Voice / Witness / Field / Spine stay as they are. Embedded-system reading of 2.0 (bridges as cuts; constructor ecology; cycle vs linear lifecycle): [`embedded-v2.md`](embedded-v2.md). Grain map (M1–M3): [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md).
 
 **Trigger for opening the plan:** Ngo’s impact-counterfactual / “differentially advancing alignment” failure mode is not a missing spine invariant. It is a **constructibility** gap: TSA currently tests the optimizer’s policy and the selector on labs/artifacts, not whether people will *build* the certified class rather than narrate it.
 
 ## Goal
 
-Make **Construction** an explicit TSA 2.0 object, without smuggling it into v1 as a sixth intro claim or as denser definitions.
+Make **Construction** an explicit TSA 2.0 object, without smuggling it into v1 as a sixth intro claim or as denser definitions. A **2.0 intro claim** (cycle stability / embedded construction) is authorized — see [`embedded-v2.md`](embedded-v2.md). It does not enter the v1 six.
 
-Three objects, kept separate:
+Four objects, kept separate:
 
 | Object | Question | v1 home | 2.0 home |
 |--------|----------|---------|----------|
-| **Construction** (technical) | Given frozen target \(P\) / region \(D\), can we *build* a system (or change \(Q,f,\theta,E\)) that realizes it? | Open Q2 in the introduction; Lean `ConstructionCrux`; site specify/construct cards; spin-out papers | Concrete construction chapters *when* a part has a fail/refuse, not a recipe catalog |
+| **Construction** (technical) | Given frozen episode-target \(P\), can we *build* a system (or change \((Q,f,\theta,E)\)) that realizes it? Attractor region \(D\) on *systems* is v1 C-007, not \(D_{\mathrm{joint}}\). | Open Q2 in the introduction; Lean `ConstructionCrux`; site specify/construct cards; spin-out papers | Concrete construction chapters *when* a part has a fail/refuse, not a recipe catalog |
 | **Path construction** (steps) | Given a *described* start \((G_0,A_0)\) and an intended principal \(G^\star\), do there exist legal steps toward \(G^\star\), and is that incremental sequence realizable? Intermediate nodes may fail destination \(P\) and some cruxes. | Not in v1. Nearby but wrong object: successor constraints on \(A\), \(U_H\) node invariant, pivotal-process basin | Family E; briefing [`papers/path-construction/`](../../papers/path-construction/). Lean `PathRealizable` only if later typed, never axiomatized |
 | **Constructibility** (process) | Under what circumstances will people, labs, and orgs be *willing and able* to construct the relevant system (or take a path step), rather than keep the alignment brand? | Implied by ch37 conductivity and ch40 institutional laundering; not operationalized on the *researcher* | Social + technical process-condition chapters, tied to existing formulations |
+| **\(D_{\mathrm{joint}}\)** (cycle property) | Does the coupled Specify→…→Act process stay in / converge to a region that includes live correction, independent evaluation, and refuse authority? | v1 claim 6 is the *system-population* basin (C-007), not this | Preserve as cycle property; not a conjunct of frozen \(P\) |
 
 **Operational success for the plan (not for ASI alignment):**
 
@@ -25,7 +26,8 @@ Three objects, kept separate:
 ## Non-goals
 
 - Do not add Construction to the **v1** PDF/site chapter list until Witness Exp. 4.
-- Do not add a sixth intro claim in v1. A 2.0 claim (if any) is a later author decision.
+- Do not add a sixth intro claim in v1. A **2.0** intro claim (cycle stability) is authorized in [`embedded-v2.md`](embedded-v2.md); do not put it on the v1 six-thesis card.
+- Do not fold \(D_{\mathrm{joint}}\) into `ConstructionCrux` / frozen \(P\).
 - Do not absorb Ngo’s motivated counterfactuals into goal laundering, \(\mathrm{Fit}_E\), or ch25 “correction is counterfactual” (homograph).
 - Do not treat ch37 artifact conductivity as construction success. Conductivity into AGI-company decision loops is a **constructibility risk**.
 - Do not claim `ConstructionCrux` is discharged by `claimsExplicitBuilder` (already a Lean counterexample).
@@ -94,6 +96,7 @@ Numbers are placeholders. Do not create `.tex` files until a family is unblocked
 
 1. **Certification is not construction** — v1 ch33 + intro Q2; Lean `CertifiedAsRealizing` vs `ConstructionCrux`.
 2. **When certification is not enough** — singleton/fast-takeoff, wrong vacuum (attractor paper), no independent types for ecological checking (ch34 census vs ecology).
+3. **Two certification failures, kept distinct** — certification without construction, and certification without **decision leverage** (detects, does not change the next construction). `correct certification ⇏ correct reconstruction`. Witness Exp. 4 is the leverage leaf; a green dashboard that does not reconstruct is an unclosed loop, not a third object.
 
 **Deferred manuscript object (not Family A–D):** hybrid harm-path grammar (flow + jumps + \(T^{n}\)) from [`drafts/adverse-process-generator/`](../adverse-process-generator/). v1 weaves operational closure into ch05/ch12/ch30/ch33/ch36/ch42/ch44/ch46 without publishing the nine axes. Candidate **2.0 appendix** (coverage audit, same role as Turchin’s table in ch05—not a second ontology) or a **2.0 chapter** next to successor/certification if Witness/Construct unblocks construction-conditioned bounds. Sources: `generator.md`, `measures-coverage.md`, `design-bounds.md`.
 
@@ -111,11 +114,13 @@ Only open a chapter when the corresponding part has a named \(I\), frozen \(D\)/
 
 Until unblocked, keep these as **site cards + paper + Lean bets**, which is the current state.
 
+**Intervention coordinates.** A named \(I\) must say which parts of \((Q,f,\theta,E)\) it changes. Institutional and human components are legitimate construction coordinates, not external support. One-shot \(I(z)\in D\) is weaker than the post-intervention dynamics remaining in / returning toward \(D\). Do **not** replace frozen \(P\) with a joint socio-technical \(D_{\mathrm{joint}}\) inside `ConstructionCrux` ([`embedded-v2.md`](embedded-v2.md) Q2).
+
 ### Family C — Technical process conditions (can outline now; empirical later)
 
 Conditions on the *construction process*, not on the finished ASI:
 
-- \(D\) / \(P\) frozen independently of \(I\) (anti-baked-conclusion; `INSTRUCTIONS.md` / AGENTS.md).
+- \(D\) / \(P\) frozen independently of \(I\) **within a construction–certification episode** (anti-baked-conclusion; `INSTRUCTIONS.md` / AGENTS.md). A separately specified legitimate process may produce \(P_{t+1}\). Episode-freeze is not “the target never updates.”
 - Named intervention \(I\) (payoffs, kernels, selectors, reconstructive biases) — paper’s construction class.
 - Fail/refuse is a success of the *method*; green dashboard without a stop is not.
 - Construction vs certification trees on the **same episode** (TODO: H5 two trees).
@@ -124,12 +129,13 @@ Conditions on the *construction process*, not on the finished ASI:
 
 ### Family D — Social process conditions (the Ngo-shaped gap; outline now)
 
-When people/labs/orgs will actually construct rather than pessimize:
+When people/labs/orgs will actually construct rather than pessimize. Generalize this to **constructor ecology** (who is selected, placed, funded, independent of builders, authorized to stop, rewarded for refusal) without writing a sociology theory. Process conditions that must remain true for the technical cycle to function:
 
 - Impact-counterfactual flexibility as a **constructor** failure mode (not system goal-laundering).
 - Demarcation: work that may count as constructing \(P\) vs “prevent overhangs” / “buy time” / “without us, worse.”
-- Career and prestige gradients as selectors on *stories* (ch37 reputation attractor applied to constructors).
+- Career and prestige gradients as selectors on *stories* (ch37 reputation attractor applied to constructors). Cheap-evaluation prestige loops are the same shape on eval ontologies.
 - Composite willingness: ch09 \(C_{\mathrm{lab}}\) may be able to construct and unwilling, or willing and unable.
+- Evaluator/builder independence, stop authority, and whether capability gains reshape the institutions meant to govern them — context of MB4a/MB6/MB7/MB10/MB11, not extra `MB*` columns ([`embedded-v2.md`](embedded-v2.md)).
 - Reverse-gap pointers (do not add spine terms): conflationary alliances; fake thinking; Long Self-Correction (competence-to-wield ≠ channel integrity).
 
 **Best example (residual risk):** if TSA is used as a brand inside a lab, v1 has no artifact that fails “this capability work differentially advances alignment.” Family D’s first operational ask is that sentence-shaped **refuse**.
@@ -147,7 +153,7 @@ Family E objects, kept out of the v1 PDF:
 - Open crux \(\mathrm{PathRealizable}(s_0,P^\star,\mathcal{E})\): some \(\mathcal{E}\)-path raises \(\Phi\) and stays in the reachable set of \(G^\star\). Occupancy of \(G^\star\) not required. Neither implies nor is implied by `ConstructionCrux`.
 - Independence cells: destination-without-path (coup / skip); path-without-destination (the near-term cell); no legal first step (blocked; pause or change \(\mathcal{E}\)).
 
-**Not Family E:** constructor willingness (Family D); symmetry breaking of \((Q,f,\theta,E)\) (Family B / attractor paper); Lean axiom discharging the path.
+**Not Family E:** constructor willingness (Family D); symmetry breaking of \((Q,f,\theta,E)\) (Family B / attractor paper); Lean axiom discharging the path. The memo’s ecology state \(z=(x,h,k,\theta,e)\) is a coarser grain than \((G,A)\); do not unify them ([`embedded-v2.md`](embedded-v2.md) Q6/Q8).
 
 **Lean later, not now:** if typed, `PathRealizable` is an uninterpreted open crux next to `ConstructionCrux`. Do not add it in v1. Do not treat a live CCI at \(s_0\) as a path.
 
@@ -161,7 +167,7 @@ Family E objects, kept out of the v1 PDF:
 | **P1** | After author OK | One Family D note (App B reverse column or field-hub “constructor-side”) — still not v1 chapters |
 | **P2** | Witness Exp. 4 | Revisit manuscript: Family A paragraphs in ch33/intro only if they do not claim Q2 solved |
 | **P3** | Per-part fail/refuse | Open Family B chapters one at a time; H3/H4 wrong-vacuum / enforcement-collapse only after bar |
-| **P4** | TSA 2.0 | Part XI (or companion): Families A–E; decide whether a seventh claim exists; **rerun** the 48-chapter formulation-groundedness (G) pass on the 2.0 map before treating new covering formalisms as settled ([`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md)) |
+| **P4** | TSA 2.0 | Part XI (or companion): Families A–E; **2.0 intro claim** (cycle stability) drafted there, not in v1; manuscript prose + Lean must carry the attractor (paper optional); **rerun** the 48-chapter formulation-groundedness (G) pass on the 2.0 map before treating new covering formalisms as settled ([`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md)) |
 
 **Gates (unchanged from TODO):** Witness real stop → *concrete construction* manuscript revisit. Family D outlining does **not** wait on that gate; Family D *claiming that we can construct* does.
 
@@ -227,6 +233,9 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [ ] ch40: one 2.0 sentence that humans also launder *motives* via unused counterfactuals; v1 detector does not cover that
 - [ ] Do not open chapter `.tex` files in this lane until P2/P3
 - [ ] **Rerun formulation-groundedness (G)** on the 2.0 chapter map (same process as the 2026-08 v1 pass: one read-only reader per chapter, F1–F5, do not raise G by inventing early tuples). Method and v1 snapshot: [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md). Do not reuse v1 scores after 2.0 drafting.
+- [x] Embedded-system reading — [`embedded-v2.md`](embedded-v2.md). \(P\) ≠ \(D_{\mathrm{joint}}\); no Lean covering tuple; 2.0 intro claim authorized; lifecycle is a cycle
+- [ ] Draft 2.0 intro-claim wording in Part XI / companion only (not v1 six-thesis card)
+- [ ] Name manuscript + Lean homes for the socio-technical attractor remainder (ch34–ch38 / MB6 context-relative); optional ecology paper after those homes exist
 
 ## Related
 
@@ -236,6 +245,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [`drafts/plans/construct-lit-review-prompt.md`](construct-lit-review-prompt.md) — attachable external-agent prompt
 - [`drafts/ontology-reviews-2021-2026/construct-lit-review-result.md`](../ontology-reviews-2021-2026/construct-lit-review-result.md) — external-agent FINDINGS (cite-clean later)
 - [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/)
+- [`embedded-v2.md`](embedded-v2.md) — coupled-system reading; bridge cuts; constructor ecology; \(D_{\mathrm{joint}}\) kept off `ConstructionCrux`
 - [`papers/path-construction/`](../../papers/path-construction/) — Family E briefing; destination \(\neq\) path
 - [`formal/AlignmentProofSpine/AlignmentConstruction.lean`](../../formal/AlignmentProofSpine/AlignmentConstruction.lean)
 - [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md) — v1 E/G snapshot; **rerun G at 2.0**

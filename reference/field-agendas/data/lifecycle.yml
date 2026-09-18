@@ -1,27 +1,49 @@
-# Alignment lifecycle axis for field map v2 (orthogonal to bridge dependency graph).
+# Alignment lifecycle for field map v2.
+# A cycle of stages, orthogonal to the bridge dependency graph.
+# Preserve is a property of repeating the cycle, not a stage.
 # Regenerate: cd site && npm run sync:field-v2
 
 intro: >-
-  Each bridge and open crux sits at a stage in the alignment lifecycle —
-  orthogonal to the dependency graph above. The axis asks when a handoff
-  must hold: from stating the target, through building and measuring the
-  system, to certifying and preserving alignment under change.
+  Alignment work is a cycle, not a one-way pipeline. Each live bridge sits at a
+  stage — or on the cycle as a whole — where a handoff must hold: state the
+  target, build, measure, certify, then act or refuse. Preservation is whether
+  repeating that cycle stays inside a desirable region, or converges back to it.
 
 bridgeAssignmentNote: >-
-  Live MB bridges (MB1–MB11) mostly tag identify, certify, and preserve
-  handoffs: whether measurement, oversight, or long-run dynamics support
-  discharge once a target and deployable system are in view. Assignment does
-  not mirror dependency edges — for example MB11 assembles many antecedents in
-  the graph above while sitting in the certify lifecycle role, and MB4 in
-  preserve while MB4a is certify.
+  Live MB bridges mostly tag identify, certify, or the cycle property
+  (preserve). Assignment does not mirror dependency edges — for example MB11
+  assembles many antecedents in the graph while sitting in the certify role,
+  and MB4 is a cycle-property constraint while MB4a is certify. Act/Refuse has
+  no MB column: it is the open interface that certification actually changed a
+  decision.
 
 gapsNote: >-
   Specify and construct look sparse because those stages were underrepresented
-  in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it
-  is retired and factorizes as Alignment Target (specify) plus Target
-  Realization (construct). Open spine interfaces fill those roles; field
-  outer-alignment work often spans specify and identify without mapping to a
-  single MB column.
+  in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is
+  retired and factorizes as Alignment Target (specify) plus Target Realization
+  (construct). Open spine interfaces fill specify, construct, and act/refuse.
+  Field outer-alignment work often spans specify and identify without mapping
+  to a single MB column.
+
+cycle:
+  - specify
+  - construct
+  - identify
+  - certify
+  - act
+
+cycleAxis: "specify → construct → identify → certify → act/refuse ↻"
+
+property:
+  id: preserve
+  label: Preserve
+  summary: >-
+    Not a stage. The property of the repeated cycle: the coupled
+    socio-technical state stays in the joint desirable region, or converges
+    back to it, under transformation, selection, and endogenous selectors.
+    Bridges tagged preserve (bearer continuity, correction under pressure,
+    successor inheritance, socio-technical basin) are constraints on that
+    transition.
 
 phases:
   specify:
@@ -29,13 +51,15 @@ phases:
     summary: >-
       State the alignment target or constitutional rule the system is
       supposed to serve — what counts as success before construction or
-      certification arguments apply.
+      certification arguments apply. Identification or environmental change
+      can send work back here.
   construct:
     label: Construct
     summary: >-
       Build (or show buildable) a system that robustly tracks that target.
       Distinct from identifying what the target is or certifying that
-      evidence licenses tracking.
+      evidence licenses tracking. Certification failure can trigger
+      reconstruction.
   identify:
     label: Identify
     summary: >-
@@ -47,10 +71,16 @@ phases:
     summary: >-
       Oversight, audits, and safety-case evidence license that the deployed
       system meets claimed properties — including resistance to hidden
-      capability and checklist gaming.
+      capability and checklist gaming. A green record that does not change
+      the next decision has not closed the cycle.
+  act:
+    label: Act / Refuse
+    summary: >-
+      Certification changes a real decision: deploy, restrict, reconstruct,
+      or refuse. Fail/refuse is a success of the method. Pause and recovery
+      live here as a regime, not as an extra MB column.
   preserve:
     label: Preserve
     summary: >-
-      Maintain correction integrity, value/bearer transport, and basin
-      stability under pressure, substrate change, successor handoffs, and
-      long-run selection.
+      Cycle property (stability or convergence), not a fifth equal stage.
+      See the Preserve block below the cycle.

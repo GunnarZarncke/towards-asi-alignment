@@ -19,6 +19,8 @@ Apart Research runs open research sprints and hackathon-style collaborations tha
 
 **Who carries it:** Apart Research
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Sprint throughput; demos are not refusal tests.
+
 **What they aim to do.** Accelerate alignment research by lowering the barrier to sprint-style collaboration and connecting participants with mentors and peers.
 
 **The hard question.** Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.

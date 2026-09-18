@@ -61,7 +61,7 @@ const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
   </article>
 
   <article class="field-preview-panel">
-    <h2>When each handoff must hold</h2>
+    <h2>Construction and convergence</h2>
     <ol class="field-preview-phases">
       {phases.map((phase) => (
         <li>
@@ -70,7 +70,14 @@ const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
         </li>
       ))}
     </ol>
-    <a class="field-preview-cover" href={cardHref(base, "alignment-lifecycle", "concept")}><span class="visually-hidden">When each handoff must hold</span></a>
+    {fieldV2.lifecycleProperty ? (
+      <p class="field-preview-property">
+        <strong>{fieldV2.lifecycleProperty.label}</strong>
+        {" — "}
+        {fieldV2.lifecycleProperty.summary}
+      </p>
+    ) : null}
+    <a class="field-preview-cover" href={cardHref(base, "alignment-lifecycle", "concept")}><span class="visually-hidden">Construction and convergence</span></a>
   </article>
 
   <article class="field-preview-panel">
@@ -299,6 +306,17 @@ const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
   .field-preview-phases span {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .field-preview-property {
+    margin: 0.65rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--color-muted, #4a5568);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

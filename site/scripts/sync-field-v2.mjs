@@ -51,12 +51,23 @@ async function main() {
     leanCrux: lifecycleByKey[row.key]?.leanCrux ?? row.leanAxiom ?? null
   }));
 
-  const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
-  const lifecyclePhases = lifecycleOrder.map((id) => ({
+  const lifecycleCycle = Array.isArray(lifecycle.cycle)
+    ? lifecycle.cycle
+    : ["specify", "construct", "identify", "certify", "preserve"];
+  const lifecyclePhases = lifecycleCycle.map((id) => ({
     id,
+    kind: "stage",
     label: lifecycle.phases[id]?.label ?? id,
     summary: lifecycle.phases[id]?.summary ?? ""
   }));
+  const lifecycleProperty = lifecycle.property
+    ? {
+        id: lifecycle.property.id ?? "preserve",
+        kind: "property",
+        label: lifecycle.property.label ?? "Preserve",
+        summary: lifecycle.property.summary ?? ""
+      }
+    : null;
 
   const payload = {
     _generated: generatedBanner(),
@@ -64,7 +75,7 @@ async function main() {
       lifecycleIntro: lifecycle.intro,
       lifecycleBridgeAssignmentNote: lifecycle.bridgeAssignmentNote ?? "",
       lifecycleGapsNote: lifecycle.gapsNote ?? "",
-      lifecycleAxis: lifecycleOrder.join(" → "),
+      lifecycleAxis: lifecycle.cycleAxis ?? lifecycleCycle.join(" → "),
       openSpineInterfaces: meta.openSpineInterfaces,
       note: "Live field hub at /field/v2/ (/field/ redirects here). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
       adjacentWorkIntro: adjacentWork.intro ?? "",
@@ -74,6 +85,7 @@ async function main() {
       specifyConstructPlaceholderNote: specifyConstruct.placeholderNote ?? ""
     },
     lifecyclePhases,
+    lifecycleProperty,
     bridges,
     openSpineInterfaces,
     adjacentWork: adjacentWork.items ?? [],

@@ -33,6 +33,8 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 
 **Who carries it:** Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya Siddarth, Saffron Huang et al.)
 
+**Field construction.** Mixed — evidential and/or capacity work plus structural instruments. Institutional specify/construct of legitimacy processes, plus in-matrix evidence.
+
 **What they aim to do.** Align AI–institution systems and legitimate value aggregation—not model behavior in isolation.
 
 **The hard question.** Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?

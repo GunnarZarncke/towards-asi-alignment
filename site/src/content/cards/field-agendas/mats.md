@@ -19,6 +19,8 @@ MATS runs a twelve-week mentored research program pairing scholars with alignmen
 
 **Who carries it:** MATS (Machine Alignment, Transparency, and Security)
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Mentored pairing; diversity of output is their success, not a spine composition.
+
 **What they aim to do.** Connect promising scholars to alignment mentors so they can produce substantive empirical or conceptual research during an intensive fellowship term.
 
 **The hard question.** Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.

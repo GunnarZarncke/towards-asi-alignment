@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-18 | **MB6 Lean rewrite** — User asked to do the Lean rewrite of the MB6 object: unsigned `PercolationEvidence → BasinStable ... | [2026-09-18-mb6-lean-rewrite.md](2026-09-18-mb6-lean-rewrite.md) |
+| 2026-09-18 | **Embedded V2 decisions** — User locked remaining V2 questions: 2.0 intro claim OK; keep \(P\) and \(D_{\mathrm{joint}}\) sep... | [2026-09-18-embedded-v2-decisions.md](2026-09-18-embedded-v2-decisions.md) |
+| 2026-09-18 | **Bridge prediction markets P0** — User asked to do the obvious fixes, suggest an MB6a resolution, push back that MB3 and MB4 should... | [2026-09-18-bridge-prediction-markets-p0.md](2026-09-18-bridge-prediction-markets-p0.md) |
+| 2026-09-18 | **Bridge markets MB6 + binary** — User: markets are YES/NO only; conservatively map refuse → NO (still aggregates, even if coarser ... | [2026-09-18-bridge-markets-mb6-binary.md](2026-09-18-bridge-markets-mb6-binary.md) |
 | 2026-09-18 | **Anthropic pace-measurements field news** — User asked to ingest Anthropic Institute *Measurements for understanding the pace of AI developme... | [2026-09-18-anthropic-pace-measurements.md](2026-09-18-anthropic-pace-measurements.md) |
 | 2026-09-18 | **Anthropic constitution field news** — User parked the Goldstein “thousand constitutions” talk as adjacent, not news. Then asked whether... | [2026-09-18-anthropic-constitution-news.md](2026-09-18-anthropic-constitution-news.md) |
 | 2026-09-17 | **Bridge prediction markets** — User asked to read `drafts/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`, create a pla... | [2026-09-17-bridge-prediction-markets.md](2026-09-17-bridge-prediction-markets.md) |
@@ -17,14 +21,10 @@
 | 2026-09-08 | **What this map misses** — User asked for one “what TSA fails to represent of their crux” line per field agenda as a new sit... | [2026-09-08-what-tsa-fails-to-represent.md](2026-09-08-what-tsa-fails-to-represent.md) |
 | 2026-09-07 | **Restore real v1 bridge graph** — User noticed `/field/v1/` used an intermediate diagram where MB8 was already a gravestone. Asked ... | [2026-09-07-v1-bridge-graph.md](2026-09-07-v1-bridge-graph.md) |
 | 2026-09-07 | **Lean CI via shared check.sh** — Add GitHub CI for Lean (not the full book/site build) with little duplication vs the local gate, ... | [2026-09-07-lean-ci.md](2026-09-07-lean-ci.md) |
-| 2026-09-07 | **Housekeeping and erasure** — User asked to review today's changes and consider erasure. | [2026-09-07-housekeeping.md](2026-09-07-housekeeping.md) |
-| 2026-09-07 | **Front-door vocabulary** — Feedback that TSA front doors use heavy private vocabulary; implement plan to defer catalog IDs a... | [2026-09-07-front-door-vocab.md](2026-09-07-front-door-vocab.md) |
-| 2026-09-07 | Claim ID renumber + ledger freshness | [2026-09-07-claim-id-renumber.md](2026-09-07-claim-id-renumber.md) |
-| 2026-09-07 | **make check CI** — Add a separate GitHub Actions job for `make check`, not combined with Lean or the site build. | [2026-09-07-check-ci.md](2026-09-07-check-ci.md) |
 
 ## Archive by month
 
-- **2026-09** (19): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (23): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

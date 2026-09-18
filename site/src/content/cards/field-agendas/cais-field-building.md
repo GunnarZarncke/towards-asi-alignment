@@ -21,6 +21,8 @@ CAIS publishes coordinated risk statements, runs the AISES course, and organizes
 
 **Who carries it:** Center for AI Safety
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Course, events, and legitimacy pipeline; statements are not stop authority.
+
 **What they aim to do.** Build the AI safety research field and advocate for safety standards so that capability labs and policymakers treat existential risk from AI as a serious, actionable concern.
 
 **The hard question.** Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.

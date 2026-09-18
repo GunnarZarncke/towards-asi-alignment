@@ -31,6 +31,8 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 
 **Who carries it:** PauseAI, FLI, ControlAI, Encode, Stop AI (distinct tactics, shared vocabulary)
 
+**Field construction.** Structural — changes independence, stop authority, access, or selection/deployment rules; not a matrix cell. Success condition is changing who can deploy; a halt that never fires is still this type.
+
 **What they aim to do.** Change policy and public narrative to reduce extinction risk from advanced AI.
 
 **The hard question.** Can advocacy create enforceable slowdown without collateral governance failure?

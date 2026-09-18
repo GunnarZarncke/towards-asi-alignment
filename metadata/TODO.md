@@ -51,7 +51,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 ## Construct (plan open; v1 manuscript parked)
 
-Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + **path construction** + social/technical **constructibility**). Papers stay spin-outs. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`; do **not** add `PathRealizable` in v1. v1 book path remains certification/preservation (ch33), not attractor or path construction. Family E briefing: [`papers/path-construction/`](../papers/path-construction/).
+Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + **path construction** + social/technical **constructibility** + cycle property \(D_{\mathrm{joint}}\)). Embedded-system reading: [`drafts/plans/embedded-v2.md`](../drafts/plans/embedded-v2.md) (2.0 intro claim authorized; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle). Papers stay spin-outs; manuscript + Lean must carry the attractor. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`; do **not** add `PathRealizable` in v1. v1 book path remains certification/preservation (ch33), not attractor or path construction. Family E briefing: [`papers/path-construction/`](../papers/path-construction/).
 
 - [ ] **Do not include Construction chapters in the v1 manuscript yet.** Site specify/construct cards and the lifecycle card stay. 2.0 outline may proceed; concrete Family B chapters wait on Backtest.
 
@@ -71,7 +71,7 @@ One queue; pick up when trigger fires.
 - [ ] **MacKinlay *Agency WTF*** — when published; bib + glossary homograph.
 - [ ] **Chris Pang boundary ontology** — author call; ch06–07 or `open-problems.md`.
 - [ ] **Citation review queue** — complete in-body cites; Part III ch12/ch13 thin; leftover keys from `2026-06-30-deep-research-top10-citations.md`; App C sector empirics (consent decrees, coordinated effects, incident reporting).
-- [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open.
+- [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open. Orthogonal to 2027 bridge-contract markets ([`drafts/plans/bridge-prediction-markets.md`](../drafts/plans/bridge-prediction-markets.md)).
 
 ---
 
@@ -94,6 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
+- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/bridge-prediction-market-criteria.md`](../drafts/bridge-prediction-market-criteria.md) (`0.3`); plan [`drafts/plans/bridge-prediction-markets.md`](../drafts/plans/bridge-prediction-markets.md). Binary YES/NO (refuse→NO). MB6 = \(g_{\mathrm{CCI}}\) slice; unsigned-basin market retracted; Lean rewrite shipped ([`spine.md`](../drafts/plans/spine.md) P2). Remaining: Q1 list vs not, Q2 titles, Q6 platform, Q8 App B. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 

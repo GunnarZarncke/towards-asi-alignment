@@ -43,6 +43,8 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 
 **Who carries it:** Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI (NIST); Simon Institute; IAPS (policy orbit)
 
+**Field construction.** Mixed — evidential and/or capacity work plus structural instruments. In-matrix evidence plus institute evals and policy instruments meant to bind deployment rules.
+
 **What they aim to do.** Inform decision-makers and test frontier systems through policy research and government-led evaluation capacity.
 
 **The hard question.** Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?

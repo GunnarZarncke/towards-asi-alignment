@@ -19,6 +19,8 @@ BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governa
 
 **Who carries it:** BlueDot Impact
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Introductory curricula and career placement.
+
 **What they aim to do.** Provide accessible, high-quality on-ramp courses so newcomers can orient in AI safety and enter research or policy paths with a common baseline.
 
 **The hard question.** Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.

@@ -27,6 +27,8 @@ Iliad runs the ILIAD conference series, Iliad Intensive and Fellowship programs,
 
 **Who carries it:** Iliad (Principles of Intelligence affiliate)
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Onboarding and communal canon; not evaluator independence or stop authority.
+
 **What they aim to do.** Establish coherent shared context for foundational alignment research—onboarding researchers, experts from other fields, and AIs—through a communal textbook skeleton and field-building programs.
 
 **The hard question.** Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?

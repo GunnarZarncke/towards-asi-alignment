@@ -1,10 +1,10 @@
 {
   "_generated": "<!-- GENERATED FILE — do not edit. Regenerate: cd site && npm run sync:field-v2 -->",
   "meta": {
-    "lifecycleIntro": "Each bridge and open crux sits at a stage in the alignment lifecycle — orthogonal to the dependency graph above. The axis asks when a handoff must hold: from stating the target, through building and measuring the system, to certifying and preserving alignment under change.",
-    "lifecycleBridgeAssignmentNote": "Live MB bridges (MB1–MB11) mostly tag identify, certify, and preserve handoffs: whether measurement, oversight, or long-run dynamics support discharge once a target and deployable system are in view. Assignment does not mirror dependency edges — for example MB11 assembles many antecedents in the graph above while sitting in the certify lifecycle role, and MB4 in preserve while MB4a is certify.",
-    "lifecycleGapsNote": "Specify and construct look sparse because those stages were underrepresented in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is retired and factorizes as Alignment Target (specify) plus Target Realization (construct). Open spine interfaces fill those roles; field outer-alignment work often spans specify and identify without mapping to a single MB column.",
-    "lifecycleAxis": "specify → construct → identify → certify → preserve",
+    "lifecycleIntro": "Alignment work is a cycle, not a one-way pipeline. Each live bridge sits at a stage — or on the cycle as a whole — where a handoff must hold: state the target, build, measure, certify, then act or refuse. Preservation is whether repeating that cycle stays inside a desirable region, or converges back to it.",
+    "lifecycleBridgeAssignmentNote": "Live MB bridges mostly tag identify, certify, or the cycle property (preserve). Assignment does not mirror dependency edges — for example MB11 assembles many antecedents in the graph while sitting in the certify role, and MB4 is a cycle-property constraint while MB4a is certify. Act/Refuse has no MB column: it is the open interface that certification actually changed a decision.",
+    "lifecycleGapsNote": "Specify and construct look sparse because those stages were underrepresented in the original MB matrix. MB8 (CEV) was the only specify-tagged bridge; it is retired and factorizes as Alignment Target (specify) plus Target Realization (construct). Open spine interfaces fill specify, construct, and act/refuse. Field outer-alignment work often spans specify and identify without mapping to a single MB column.",
+    "lifecycleAxis": "specify → construct → identify → certify → act/refuse ↻",
     "openSpineInterfaces": "**Target Realization** (`ConstructionCrux` in `AlignmentConstruction.lean`) — construct lifecycle; not an `MB*` column. Live: `/cards/alignment-lifecycle/`.",
     "note": "Live field hub at /field/v2/ (/field/ redirects here). Coverage at /field/coverage/. Archived v1 at /field/v1/.",
     "adjacentWorkIntro": "Theory and policy work on AI consciousness, sentience, and welfare — near the question of who values apply to (bearer maps; ch18): when a process is digital, simulated, or otherwise unfamiliar, who might still deserve moral consideration, and what can we conservatively rule out? These notes are not coverage-matrix cells. Filling a matrix cell requires a sourced agenda contribution under field-map curation rules; listing here only records related work the live hub should make visible.",
@@ -16,30 +16,41 @@
   "lifecyclePhases": [
     {
       "id": "specify",
+      "kind": "stage",
       "label": "Specify",
-      "summary": "State the alignment target or constitutional rule the system is supposed to serve — what counts as success before construction or certification arguments apply."
+      "summary": "State the alignment target or constitutional rule the system is supposed to serve — what counts as success before construction or certification arguments apply. Identification or environmental change can send work back here."
     },
     {
       "id": "construct",
+      "kind": "stage",
       "label": "Construct",
-      "summary": "Build (or show buildable) a system that robustly tracks that target. Distinct from identifying what the target is or certifying that evidence licenses tracking."
+      "summary": "Build (or show buildable) a system that robustly tracks that target. Distinct from identifying what the target is or certifying that evidence licenses tracking. Certification failure can trigger reconstruction."
     },
     {
       "id": "identify",
+      "kind": "stage",
       "label": "Identify",
       "summary": "Measure and identify the real control locus, value structure, and access boundaries — what is actually in the loop, not what the specification claims."
     },
     {
       "id": "certify",
+      "kind": "stage",
       "label": "Certify",
-      "summary": "Oversight, audits, and safety-case evidence license that the deployed system meets claimed properties — including resistance to hidden capability and checklist gaming."
+      "summary": "Oversight, audits, and safety-case evidence license that the deployed system meets claimed properties — including resistance to hidden capability and checklist gaming. A green record that does not change the next decision has not closed the cycle."
     },
     {
-      "id": "preserve",
-      "label": "Preserve",
-      "summary": "Maintain correction integrity, value/bearer transport, and basin stability under pressure, substrate change, successor handoffs, and long-run selection."
+      "id": "act",
+      "kind": "stage",
+      "label": "Act / Refuse",
+      "summary": "Certification changes a real decision: deploy, restrict, reconstruct, or refuse. Fail/refuse is a success of the method. Pause and recovery live here as a regime, not as an extra MB column."
     }
   ],
+  "lifecycleProperty": {
+    "id": "preserve",
+    "kind": "property",
+    "label": "Preserve",
+    "summary": "Not a stage. The property of the repeated cycle: the coupled socio-technical state stays in the joint desirable region, or converges back to it, under transformation, selection, and endogenous selectors. Bridges tagged preserve (bearer continuity, correction under pressure, successor inheritance, socio-technical basin) are constraints on that transition."
+  },
   "bridges": [
     {
       "key": "MB1",
@@ -114,8 +125,8 @@
       "noun": "Goodhart Selection",
       "cruxWording": "Socio-technical selection supports a basin that preserves correction, rather than selecting proxy-satisfying systems that hollow it out.",
       "leanAxiom": [
-        "MB6a_percolation_evidence_to_basin_stability",
-        "MB6b_basin_stability_to_correction_integrity"
+        "MB6a_gradient_estimator_soundness",
+        "MB6b_correction_supporting_basin"
       ],
       "cardSlug": "mb6-selection-and-basin-stability",
       "fieldAgree": "Goodhart-as-selector; gradual disempowerment narrative; governance/pause on selection handles.",
@@ -291,7 +302,27 @@
         "ch01"
       ],
       "conceptCard": "/cards/target-realization/",
-      "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction). Pause/recover (`DeploymentOk`) is a regime on certification timing, not a construct method.",
+      "summary": "Given target P, can we construct a system A that robustly tracks P? Open field crux; not an MB bridge. Certification schemas do not supply construction (see fin_certification_without_construction). Pause/recover (`DeploymentOk`) is the Act/Refuse stage, not a construct method.",
+      "dependsOn": [],
+      "notABridge": true
+    },
+    {
+      "id": "act-refuse",
+      "title": "Act / Refuse",
+      "lifecycleRole": "act",
+      "status": "open",
+      "leanModule": "AlignmentProofSpine/AlignmentRegime",
+      "leanProp": "DeploymentOk",
+      "leanDefs": [
+        "DeploymentOk"
+      ],
+      "bookChapters": [
+        "ch14",
+        "ch33",
+        "ch42"
+      ],
+      "conceptCard": "/cards/scope-and-correction-capacity/",
+      "summary": "Certification that does not change a real decision has not closed the cycle. Act, restrict, reconstruct, or refuse. Fail/refuse is a success of the method. Pause / recovery-viable is this regime, not an extra MB column. Backtest Expectation 4 is the empirical leaf.",
       "dependsOn": [],
       "notABridge": true
     }

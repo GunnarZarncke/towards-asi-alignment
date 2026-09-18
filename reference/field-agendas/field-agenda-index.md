@@ -15,6 +15,8 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 
 **Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows.
 
+**Field construction types** (roster; not matrix cells): `none` = technical/evidential; `capacity` = people/pipeline, upstream of bridges; `structural` = changes independence, stop authority, access, or selection/deployment rules; `mixed` = evidential and/or capacity plus structural instruments.
+
 ---
 
 ## Agendas
@@ -56,6 +58,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 Apart Research runs open research sprints and hackathon-style collaborations that produce rapid prototypes and exploratory write-ups under mentorship. Sprint velocity lowers the barrier to empirical alignment work but does not substitute for adversarial verification or a load-bearing safety case. Outputs often probe [certification under manipulation](/cards/certification-under-manipulation/) and related measurement questions without discharging them.
 
 - **Type:** Training / sprint program
+- **Field construction:** capacity — Sprint throughput; demos are not refusal tests.
 - **Carrier:** Apart Research
 - **Primary artifact:** Apart runs open research sprints and hackathon-style collaborations that produce rapid prototypes and exploratory write-ups under mentorship.
 - **Signature vocabulary:** The community uses terms like [research sprints](https://apartresearch.com/), Apart hackathons, and rapid prototype cycles to describe short, intensive alignment research bursts.
@@ -104,6 +107,7 @@ ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
 BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governance courses that serve as a standard on-ramp for people entering AI safety careers. Strong pedagogy transmits shared field vocabulary and problem framings rather than resolving technical cruxes. Graduates enter the [Field hub](/field/) with a common baseline for reading bridge-crosswalk material and concept cards such as [alignment-as-measurement](/cards/alignment-as-measurement/).
 
 - **Type:** Training / field-building program
+- **Field construction:** capacity — Introductory curricula and career placement.
 - **Carrier:** BlueDot Impact
 - **Primary artifact:** BlueDot runs introductory Technical AI Safety and Frontier AI Governance courses that serve as a standard on-ramp for people entering AI safety careers.
 - **Signature vocabulary:** Key terms include [Technical AI Safety](https://bluedot.org/), [Frontier AI Governance](https://bluedot.org/), introductory alignment curricula, and a course pipeline that transmits shared field vocabulary via the [Field hub](/field/) and [glossary](/glossary/).
@@ -120,6 +124,7 @@ BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governa
 CAIS publishes coordinated risk statements, runs the AISES course, and organizes field-building events that raise the profile of AI safety research. Its advocacy and researcher pipeline grow legitimacy for existential-risk framing without committing to a single technical discharge path. CAIS mainly transmits vocabulary and talent into the broader [Field hub](/field/) rather than resolving typed alignment mechanisms or [bridge assumptions](/cards/bridge-assumptions/).
 
 - **Type:** Research + advocacy org
+- **Field construction:** capacity — Course, events, and legitimacy pipeline; statements are not stop authority.
 - **Carrier:** Center for AI Safety
 - **Primary artifact:** CAIS publishes coordinated risk statements, runs the AI Safety, Ethics, and Society (AISES) course, and organizes field-building events that raise the profile of AI safety research.
 - **Signature vocabulary:** The org is associated with [AI safety](/field/) as a field, public risk statements, safety-standards advocacy, and researcher pipeline building rather than a single technical research program.
@@ -249,6 +254,7 @@ Google DeepMind integrates safety research into a large capabilities org, produc
 GovAI and allied institutes connect policy research to frontier evaluation, touching [Goodhart Selection](/cards/mb6-selection-and-basin-stability/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Deployment Safety](/cards/mb11-deployment-safety/) in institutional form.
 
 - **Type:** Governance research + gov eval institutes
+- **Field construction:** mixed — In-matrix evidence plus institute evals and policy instruments meant to bind deployment rules.
 - **Carrier:** Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI (NIST); Simon Institute; IAPS (policy orbit)
 - **Primary artifact:** Policy-facing research, the GovAI Fellowship, gradual disempowerment programmes, frontier model testing, standards development, and alignment evaluation case studies.
 - **Signature vocabulary:** Terms include AI governance, compute governance, frontier evaluations, gradual disempowerment, [AI safety](/field/) institutes, pre-deployment testing, and evaluation awareness.
@@ -265,6 +271,7 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 Iliad runs the ILIAD conference series, Iliad Intensive and Fellowship programs, Alignment Journal, and the [Textbook from the Future](https://textbookfromthefuture.org/) megaproject—a communal, living textbook meant to sketch foundational alignment theory before the answers are known. The FAQ frames it as a coordination instrument and selective synthesis of theory-driven agendas (ARC, Timaeus/devInterp, debate, Simplex, agent foundations, and others), explicitly focused on alignment rather than control. Like other field-building efforts, shared canon and onboarding do not by themselves discharge typed [bridge assumptions](/cards/bridge-assumptions/).
 
 - **Type:** Field-building / theory-synthesis megaproject
+- **Field construction:** capacity — Onboarding and communal canon; not evaluator independence or stop authority.
 - **Carrier:** Iliad (Principles of Intelligence affiliate)
 - **Primary artifact:** The [Textbook from the Future](https://textbookfromthefuture.org/)—a communal table of contents and research-automation programme for foundational alignment theory, plus Iliad Intensive curriculum, fellowship, and conference infrastructure.
 - **Signature vocabulary:** Textbook from the future (Yudkowsky metaphor), selective synthesis, coordination instrument, megaproject, theory-driven research programme, Iliad Intensive, ILIAD conference.
@@ -281,6 +288,7 @@ Iliad runs the ILIAD conference series, Iliad Intensive and Fellowship programs,
 Kairos operates SPAR mentored research, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers. Like other field-building agendas, program throughput accelerates talent discovery rather than mechanism discovery. Participants seed early work across subfields while the [Field hub](/field/) tracks which technical cruxes—such as [composite agency](/cards/composite-agency/)—remain open.
 
 - **Type:** Training / field-building org
+- **Field construction:** capacity — Talent discovery and placement; not mechanism discovery.
 - **Carrier:** Kairos
 - **Primary artifact:** Kairos operates SPAR mentored research projects, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers.
 - **Signature vocabulary:** Core program names include [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), university-group organizing, and [Global Challenges Project](https://www.globalchallengesproject.org/) (GCP) workshops.
@@ -313,6 +321,7 @@ Vanessa Kosoy's [learning-theoretic agenda](https://www.alignmentforum.org/posts
 MAI and CIP pursue full-stack alignment through thick values, alignment assemblies, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)—aligning AI–institution systems rather than model behavior in isolation. The agenda asks whether deliberative processes stay identifiable and contestable under strategic pressure and AI mediation. Legitimate institutional output does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or institutional-selection-gating that survives optimization.
 
 - **Type:** Research org cluster
+- **Field construction:** mixed — Institutional specify/construct of legitimacy processes, plus in-matrix evidence.
 - **Carrier:** Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya Siddarth, Saffron Huang et al.)
 - **Primary artifact:** Full-Stack Alignment research, alignment assemblies, collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback), and thick-value / institutional design programmes.
 - **Signature vocabulary:** Key terms include full-stack alignment, thick values, alignment assemblies, deliberative alignment, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback).
@@ -329,6 +338,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 MATS runs a twelve-week mentored research program pairing scholars with alignment mentors for empirical and conceptual projects across transparency, security, and related subfields. Fellowship output is intentionally diverse and does not collapse into a single unified measurement spine. The program feeds talent into the broader [Field hub](/field/) while individual projects may advance lines such as [Inner Alignment](/cards/mb7-hidden-capability-and-access/) without resolving cross-cutting bridge composition.
 
 - **Type:** Training / research program
+- **Field construction:** capacity — Mentored pairing; diversity of output is their success, not a spine composition.
 - **Carrier:** MATS (Machine Alignment, Transparency, and Security)
 - **Primary artifact:** MATS runs a twelve-week mentored research program with an extension track, pairing scholars with alignment mentors for empirical and conceptual projects.
 - **Signature vocabulary:** Key terms include [MATS](https://www.matsprogram.org/), [mentored research](https://www.matsprogram.org/), [mechanistic interpretability](https://www.anthropic.com/research), [AI control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion), and related technical subfields across transparency and security.
@@ -409,6 +419,7 @@ Orthogonal is an agent-foundations research community advancing formal alignment
 The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and allies—pursues policy campaigns, moratorium advocacy, and verified-slowdown narratives to reduce extinction risk from advanced AI. Its primary lever is schedule and selection ecology rather than mechanism discharge. Advocacy can shape [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transitions without resolving the full bridge stack from [embedded agency](/cards/mb1-boundary-estimator-soundness/) through successor gaming.
 
 - **Type:** Advocacy coalition
+- **Field construction:** structural — Success condition is changing who can deploy; a halt that never fires is still this type.
 - **Carrier:** PauseAI, FLI, ControlAI, Encode, Stop AI (distinct tactics, shared vocabulary)
 - **Primary artifact:** Policy campaigns, SB 53 / RAISE-style bills, and ControlAI's Narrow Path advocacy programme.
 - **Signature vocabulary:** Key terms include [pause](https://pauseai.info/), [moratorium](https://futureoflife.org/open-letter/pause-giant-ai-experiments/), standards, [off-switch](/cards/subsumption-shutdown/) priority, and verified slowdown.

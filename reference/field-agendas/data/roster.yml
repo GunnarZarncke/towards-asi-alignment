@@ -1,121 +1,190 @@
+# Agenda roster for the field matrix and field-construction types.
+# fieldConstruction: none | capacity | structural | mixed
+#   none       — technical / evidential agenda; not a field-construction org
+#   capacity   — people, courses, pipeline; upstream of the coverage matrix
+#   structural — changes independence, stop authority, access, or selection/deployment rules
+#   mixed      — evidential and/or capacity work plus structural instruments
+# Matrix cells stay evidential. Structural is not a green MB cell.
+# because: one line; author-editable.
+
 agendas:
   - slug: miri
     title: MIRI
     order: 1
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: redwood-research
     title: Redwood Research
     order: 2
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: chai-russell
     title: CHAI / FAR.AI (Berkeley alignment)
     order: 3
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: christiano-lineage
     title: Christiano lineage
     order: 4
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: davidad-guaranteed-safe-ai-gsai
     title: davidad / Guaranteed-Safe AI (GSAI)
     order: 5
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: anthropic-lab
     title: Anthropic / Goodfire (lab & MI stack)
     order: 6
     inMatrix: true
+    fieldConstruction: none
+    because: Lab stack. RSP-style gating is lab policy, not tagged structural here.
   - slug: google-deepmind-safety
     title: Google DeepMind (safety)
     order: 7
     inMatrix: true
+    fieldConstruction: none
+    because: Lab safety program.
   - slug: apollo-research
     title: Apollo / Truthful AI (deception & scheming)
     order: 8
     inMatrix: true
+    fieldConstruction: none
+    because: Eval suite; no stop authority claimed.
   - slug: metr
     title: METR
     order: 9
     inMatrix: true
+    fieldConstruction: none
+    because: Risk numbers; not a showing that those numbers bind deployment.
   - slug: resolution
     title: Resolution
     order: 10
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: neglected-approaches-portfolio
     title: Neglected approaches portfolio
     order: 11
     inMatrix: true
+    fieldConstruction: none
+    because: Research portfolio, not field construction.
   - slug: orthogonal
     title: Orthogonal
     order: 12
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: wentworth-natural-abstractions
     title: Wentworth / natural abstractions
     order: 13
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: kosoy-infra-bayesianism-lta
     title: Kosoy / infra-Bayesianism & LTA
     order: 14
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: ciris
     title: CIRIS
     order: 16
     inMatrix: true
+    fieldConstruction: none
+    because: Technical construction of a shipped stack, not field construction.
   - slug: govai
     title: GovAI / UK AISI (governance & eval)
     order: 17
     inMatrix: true
+    fieldConstruction: mixed
+    because: In-matrix evidence plus institute evals and policy instruments meant to bind deployment rules.
   - slug: pause-standards-advocacy-cluster
     title: Pause / standards advocacy cluster
     order: 19
     inMatrix: true
+    fieldConstruction: structural
+    because: Success condition is changing who can deploy; a halt that never fires is still this type.
   - slug: cais-field-building
     title: CAIS (field-building)
     order: 20
     inMatrix: false
+    fieldConstruction: capacity
+    because: Course, events, and legitimacy pipeline; statements are not stop authority.
   - slug: bluedot-impact
     title: BlueDot Impact
     order: 21
     inMatrix: false
+    fieldConstruction: capacity
+    because: Introductory curricula and career placement.
   - slug: mats
     title: MATS
     order: 22
     inMatrix: false
+    fieldConstruction: capacity
+    because: Mentored pairing; diversity of output is their success, not a spine composition.
   - slug: apart-research
     title: Apart Research
     order: 23
     inMatrix: false
+    fieldConstruction: capacity
+    because: Sprint throughput; demos are not refusal tests.
   - slug: kairos-field-building
     title: Kairos (field-building)
     order: 24
     inMatrix: false
+    fieldConstruction: capacity
+    because: Talent discovery and placement; not mechanism discovery.
   - slug: arc-alignment-research-center
     title: ARC (Alignment Research Center)
     order: 25
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: clr-cooperation-conflict
     title: CLR (cooperation / conflict)
     order: 28
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: ai-futures-forecasting-cluster
     title: AI Futures / forecasting cluster
     order: 29
     inMatrix: true
+    fieldConstruction: none
+    because: Schedule cues, not field construction.
   - slug: conjecture-cognitive-emulation
     title: Conjecture / cognitive emulation
     order: 31
     inMatrix: true
+    fieldConstruction: none
+    because: Technical / evidential agenda.
   - slug: safeguarded-ai-aria-zeroth-heron
     title: Safeguarded AI (ARIA / Zeroth / Heron)
     order: 32
     inMatrix: true
+    fieldConstruction: none
+    because: Technical assurance program.
   - slug: mai-cip-institutional-alignment
     title: MAI + CIP (institutional alignment)
     order: 33
     inMatrix: true
+    fieldConstruction: mixed
+    because: Institutional specify/construct of legitimacy processes, plus in-matrix evidence.
   - slug: this-project-towards-superintelligence-alignment-tsa
     title: This project - Towards Superintelligence Alignment (TSA)
     order: 34
     inMatrix: true
+    fieldConstruction: none
+    because: Measurement spine; not tagged as a field-construction org.
   - slug: iliad-textbook-from-the-future
     title: Iliad / Textbook from the Future
     order: 35
     inMatrix: false
+    fieldConstruction: capacity
+    because: Onboarding and communal canon; not evaluator independence or stop authority.

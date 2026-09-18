@@ -11,15 +11,18 @@ const { base, headingLevel = "h2" } = Astro.props;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const HeadingTag = headingLevel;
 
-const lifecycleOrder = ["specify", "construct", "identify", "certify", "preserve"];
-const bridgesByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+const cycleOrder = (fieldV2.lifecyclePhases ?? []).map((p) => p.id);
+const property = fieldV2.lifecycleProperty ?? null;
+const allRoles = property ? [...cycleOrder, property.id] : cycleOrder;
+
+const bridgesByRole = Object.fromEntries(allRoles.map((r) => [r, []]));
 for (const b of fieldV2.bridges) {
   const role = b.lifecycleRole ?? "certify";
   if (!bridgesByRole[role]) bridgesByRole[role] = [];
   bridgesByRole[role].push(b);
 }
 
-const openByRole = Object.fromEntries(lifecycleOrder.map((r) => [r, []]));
+const openByRole = Object.fromEntries(allRoles.map((r) => [r, []]));
 for (const iface of fieldV2.openSpineInterfaces) {
   const role = iface.lifecycleRole ?? "construct";
   if (!openByRole[role]) openByRole[role] = [];
@@ -29,13 +32,14 @@ for (const iface of fieldV2.openSpineInterfaces) {
 const phaseMeta = Object.fromEntries(
   (fieldV2.lifecyclePhases ?? []).map((p) => [p.id, p])
 );
+if (property) phaseMeta[property.id] = property;
 
 const specifyConstructInstances = fieldV2.specifyConstructInstances ?? [];
 const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
 ---
 
 <section id="lifecycle-axis" class="lifecycle-section readable">
-  <HeadingTag>Lifecycle axis</HeadingTag>
+  <HeadingTag>Lifecycle cycle</HeadingTag>
   <p class="lifecycle-intro">{fieldV2.meta.lifecycleIntro}</p>
   {fieldV2.meta.lifecycleBridgeAssignmentNote ? (
     <p class="lifecycle-note">{fieldV2.meta.lifecycleBridgeAssignmentNote}</p>
@@ -44,9 +48,9 @@ const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
     <p class="lifecycle-note lifecycle-gaps">{fieldV2.meta.lifecycleGapsNote}</p>
   ) : null}
   <p class="lifecycle-axis-line side-panel-meta">
-    <strong>Axis:</strong> {fieldV2.meta.lifecycleAxis}
+    <strong>Cycle:</strong> {fieldV2.meta.lifecycleAxis}
   </p>
-  {lifecycleOrder.map((role) => {
+  {cycleOrder.map((role) => {
     const phase = phaseMeta[role];
     const bridges = bridgesByRole[role] ?? [];
     const openInterfaces = openByRole[role] ?? [];
@@ -124,6 +128,34 @@ const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
       </div>
     );
   })}
+  {property ? (
+    <div class="role-block role-block--property">
+      <h3>{property.label} <span class="property-tag">cycle property</span></h3>
+      {property.summary ? <p class="role-summary">{property.summary}</p> : null}
+      {(bridgesByRole[property.id] ?? []).length > 0 ? (
+        <ul class="bridge-list">
+          {(bridgesByRole[property.id] ?? []).map((b) => (
+            <li class:list={[{ gravestone: b.gravestone }]}>
+              <strong>{b.noun}</strong> ({b.key})
+              {b.gravestone ? <span class="gravestone-tag">retired matrix bridge</span> : null}
+              {b.cardSlug ? (
+                <>
+                  {" — "}
+                  <a href={cardHref(base, b.cardSlug, "bridge")}>card</a>
+                </>
+              ) : null}
+              {b.leanCrux ? (
+                <span class="lean-crux">
+                  {" "}
+                  · Lean: <code>{typeof b.leanCrux === "string" ? b.leanCrux : b.leanCrux.join(", ")}</code>
+                </span>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  ) : null}
   <p class="side-panel-meta">
     Orthogonal view: <a href={withBase("/cards/bridge-assumptions/#bridge-dependencies")}>bridge dependency map</a>
     {" · "}
@@ -161,6 +193,20 @@ const specifyConstructPeerRows = fieldV2.specifyConstructPeerRows ?? [];
 
   .role-block {
     margin: 1.75rem 0;
+  }
+
+  .role-block--property {
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
+  }
+
+  .property-tag {
+    margin-left: 0.35rem;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: var(--color-muted, #64748b);
+    font-style: italic;
   }
 
   .role-block h3 {

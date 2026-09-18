@@ -165,7 +165,7 @@ This portfolio bets on many underused shots, such as [self-other overlap](https:
 
 ## Field-building
 
-These programs treat pipeline, pedagogy, or sprint velocity as the bottleneck. This map asks whether we can tell that a system [still tracks](/cards/alignment-as-measurement/). None of the five has an object for that. Matrix cells that look covered are vocabulary overlap.
+Roster type **capacity**: pipeline, pedagogy, or sprint velocity. This map asks whether we can tell that a system [still tracks](/cards/alignment-as-measurement/). None of the five has an object for that. Matrix cells that look covered are vocabulary overlap. **Structural** field construction (changing stop authority, evaluator independence, or who can deploy) is a different type — tagged on the agenda card, not as a green coverage cell. See [alignment lifecycle](/cards/alignment-lifecycle/) for construction and convergence.
 
 ### [CAIS](/cards/agenda/cais-field-building/)
 

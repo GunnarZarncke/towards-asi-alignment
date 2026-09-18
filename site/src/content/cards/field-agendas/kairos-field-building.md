@@ -25,6 +25,8 @@ Kairos operates SPAR mentored research, Pathfinder career programs, Global Chall
 
 **Who carries it:** Kairos
 
+**Field construction.** Capacity — people, courses, pipeline; upstream of the coverage matrix. Talent discovery and placement; not mechanism discovery.
+
 **What they aim to do.** Accelerate talent into AI safety through structured programs, campus organizing, and mentored research placements.
 
 **The hard question.** Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.

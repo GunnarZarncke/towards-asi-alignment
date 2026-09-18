@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-18 (Anthropic pace-measurements field news).
+Last updated: 2026-09-18 (MB6 Lean rewrite + embedded V2 decisions).
 
 ---
 
@@ -20,6 +20,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-18:** **MB6 Lean rewrite** — Signed \(g_{\mathrm{CCI}}\) object: `CorrectionSupportingBasin` / `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`. Unsigned `BasinShockRobust` is not the consequent. App G/B, ch42/ch48 `LayeredAlignedDef`, cards, axiom ledger calibrated. Log: `2026-09-18-mb6-lean-rewrite.md`.
+- **2026-09-18:** **Embedded V2 decisions** — 2.0 intro claim OK; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential; construction/convergence on the field hub; roster `fieldConstruction`; canonical grain map at [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1–M3, no Lean covering tuple). Plan: [`embedded-v2.md`](../plans/embedded-v2.md). Log: `2026-09-18-embedded-v2-decisions.md`.
+- **2026-09-18:** **Bridge prediction markets P0b** — Binary YES/NO (refuse→NO). MB6 retargeted at signed \(g_{\mathrm{CCI}}\); unsigned-basin §7a retracted; Lean rewrite queued on spine P2. Criteria `0.3`. Plan: [`bridge-prediction-markets.md`](../plans/bridge-prediction-markets.md). Log: `2026-09-18-bridge-markets-mb6-binary.md`.
+- **2026-09-18:** **Bridge prediction markets P0** — Obvious contract fixes in working criteria (`0.2`): void, claim-strength, judgment stack (not lone judge), §3=MB3 / §4=MB4 with probes inside those rows, seven properties, **§7a MB6a**. Docx had no tracked changes. Plan: [`bridge-prediction-markets.md`](../plans/bridge-prediction-markets.md). Criteria: [`drafts/bridge-prediction-market-criteria.md`](../bridge-prediction-market-criteria.md). Log: `2026-09-18-bridge-prediction-markets-p0.md`.
 - **2026-09-18:** **Anthropic pace-measurements field news** — Institute post on R&D automation, agent oversight, and safety compute share: public race metrics, not a showing that correction binds. Log: `2026-09-18-anthropic-pace-measurements.md`.
 - **2026-09-18:** **Anthropic constitution field news** — January 2026 public constitution as specify text; “directly shapes Claude” is a construction claim, not shown. Goldstein “thousand constitutions” talk parked (adjacent Specify, not news). Log: `2026-09-18-anthropic-constitution-news.md`.
 - **2026-09-13:** **Path construction paper** — spin-out on incremental realizability from a described present controller to a better principal; destination \(\neq\) path; Construct 2.0 Family E. Log: `2026-09-13-path-construction-paper.md`.

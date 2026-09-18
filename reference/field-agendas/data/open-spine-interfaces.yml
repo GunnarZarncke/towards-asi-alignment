@@ -55,7 +55,27 @@ openSpineInterfaces:
       Given target P, can we construct a system A that robustly tracks P?
       Open field crux; not an MB bridge. Certification schemas do not supply
       construction (see fin_certification_without_construction). Pause/recover
-      (`DeploymentOk`) is a regime on certification timing, not a construct method.
+      (`DeploymentOk`) is the Act/Refuse stage, not a construct method.
 
+    dependsOn: []
+    notABridge: true
+  - id: act-refuse
+    title: Act / Refuse
+    lifecycleRole: act
+    status: open
+    leanModule: AlignmentProofSpine/AlignmentRegime
+    leanProp: DeploymentOk
+    leanDefs:
+      - DeploymentOk
+    bookChapters:
+      - ch14
+      - ch33
+      - ch42
+    conceptCard: /cards/scope-and-correction-capacity/
+    summary: >-
+      Certification that does not change a real decision has not closed the
+      cycle. Act, restrict, reconstruct, or refuse. Fail/refuse is a success
+      of the method. Pause / recovery-viable is this regime, not an extra MB
+      column. Backtest Expectation 4 is the empirical leaf.
     dependsOn: []
     notABridge: true

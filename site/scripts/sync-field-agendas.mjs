@@ -36,6 +36,22 @@ function indexBanner() {
   return generatedBanner("reference/field-agendas/data/");
 }
 
+const FIELD_CONSTRUCTION_LABELS = {
+  none: "not a field-construction org (technical / evidential)",
+  capacity: "people, courses, pipeline; upstream of the coverage matrix",
+  structural:
+    "changes independence, stop authority, access, or selection/deployment rules; not a matrix cell",
+  mixed: "evidential and/or capacity work plus structural instruments"
+};
+
+function fieldConstructionLine(rosterRow) {
+  const kind = rosterRow?.fieldConstruction ?? "none";
+  const label = FIELD_CONSTRUCTION_LABELS[kind] ?? FIELD_CONSTRUCTION_LABELS.none;
+  const because = rosterRow?.because ? ` ${rosterRow.because}` : "";
+  const kindLabel = kind.charAt(0).toUpperCase() + kind.slice(1);
+  return `**Field construction.** ${kindLabel} — ${label}.${because}`;
+}
+
 function buildMbBridgeCards(bridgeRows) {
   const map = {};
   for (const row of bridgeRows) {
@@ -190,7 +206,7 @@ function clusteringForSlug(slug, clustering) {
   return clustering.filter((row) => row.rollsUpSlug === slug);
 }
 
-function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs) {
+function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow) {
   const lines = [];
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   lines.push(`## Introduction`);
@@ -206,6 +222,10 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, 
     lines.push(
       `**${agenda.title}** is a ${(agenda.type || "research agenda").toLowerCase()} carried by **${agenda.carrier}**.`
     );
+    lines.push("");
+  }
+  if (rosterRow && (rosterRow.fieldConstruction ?? "none") !== "none") {
+    lines.push(fieldConstructionLine(rosterRow));
     lines.push("");
   }
   if (agenda.statedIntent) {
@@ -271,7 +291,7 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, 
   return lines.join("\n");
 }
 
-function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs) {
+function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow) {
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   const related = uniqueStrings([...(agenda.related ?? []), ...(specifyConstruct?.related ?? [])]);
   const fm = [
@@ -288,7 +308,7 @@ function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, 
     "",
     agendaCardBanner(agenda.slug),
     "",
-    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs)
+    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow)
   ].join("\n");
   return fm;
 }
@@ -325,6 +345,8 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push(meta.inclusionTest);
   lines.push("");
+  lines.push("**Field construction types** (roster; not matrix cells): `none` = technical/evidential; `capacity` = people/pipeline, upstream of bridges; `structural` = changes independence, stop authority, access, or selection/deployment rules; `mixed` = evidential and/or capacity plus structural instruments.");
+  lines.push("");
   lines.push("---");
   lines.push("");
   lines.push("## Agendas");
@@ -337,6 +359,12 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
       lines.push("");
     }
     if (agenda.type) lines.push(`- **Type:** ${agenda.type}`);
+    {
+      const rosterRow = roster.find((r) => r.slug === agenda.slug);
+      if (rosterRow?.fieldConstruction && rosterRow.fieldConstruction !== "none") {
+        lines.push(`- **Field construction:** ${rosterRow.fieldConstruction}${rosterRow.because ? ` — ${rosterRow.because}` : ""}`);
+      }
+    }
     if (agenda.carrier) lines.push(`- **Carrier:** ${agenda.carrier}`);
     if (agenda.primaryArtifact) lines.push(`- **Primary artifact:** ${agenda.primaryArtifact}`);
     if (agenda.signatureVocabulary) lines.push(`- **Signature vocabulary:** ${agenda.signatureVocabulary}`);
@@ -505,6 +533,8 @@ async function main() {
     // product-comparison.yml optional until first sync
   }
 
+  const rosterBySlug = Object.fromEntries(roster.map((r) => [r.slug, r]));
+
   const mismatches = [];
   const matrixPath = path.join(dataRoot, "matrix.yml");
 
@@ -518,7 +548,8 @@ async function main() {
       clusterRows,
       bridgeRows,
       specifyConstructByAgenda[agenda.slug],
-      specSheetSlugs
+      specSheetSlugs,
+      rosterBySlug[agenda.slug]
     );
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }
@@ -536,6 +567,7 @@ async function main() {
       summary: agendaSummary(a),
       bookBridges: normalizeBridgeKeys(a.bookBridges),
       inMatrix: roster.find((r) => r.slug === a.slug)?.inMatrix ?? false,
+      fieldConstruction: roster.find((r) => r.slug === a.slug)?.fieldConstruction ?? "none",
       generateCard: a.generateCard !== false,
       matrixLink: a.matrixLink ?? null
     })),

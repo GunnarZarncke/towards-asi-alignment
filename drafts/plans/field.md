@@ -10,7 +10,9 @@ For each `MB*` column, make explicit:
 2. **Book predicates** — what the Lean bridge antecedent/consequent pair actually bets.
 3. **Gap handling** — field-local Lean models + interface counterexamples where load-bearing; App B / chapter prose where claim strength must change.
 
-**Non-goals:** renaming spine `MB*` axioms for synonymy; collapsing glossary homographs; adding `MB12` without a distinct conclusion not already represented.
+**Non-goals:** renaming spine `MB*` axioms for synonymy; collapsing glossary homographs; adding `MB12` without a distinct conclusion not already represented; painting `actsOnContextOf` as coverage-matrix cells; putting the 2.0 cycle claim on the v1 six.
+
+Embedded-system reading (bridges as cuts; capacity vs structural field construction): [`embedded-v2.md`](embedded-v2.md). Grain map: [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md).
 
 Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](../attic/field-claim-formalization-and-bridge-review-plan.md) (field-local first, interfaces + defeaters, no `Safe` bypass).
 
@@ -57,9 +59,9 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 | | |
 |---|---|
 | **Field** | Goodhart-as-selector / gradual disempowerment vs Demski search-vs-control inside one optimizer |
-| **Book** | `MB6a`/`MB6b` basin + correction; deployment leverage / `Fit_E` typed form |
-| **Lean today** | Selection env predicates in spine; no Demski finite model |
-| **Work** | One paragraph homograph guard in ch34 + App B; optional finite Demski vs deployment-selection contrast module (catalog only unless it interfaces to `BasinStableSys`) |
+| **Book** | `MB6a`/`MB6b` basin + correction; deployment leverage / `Fit_E` typed form. **Accepted (2026-09-18):** unsigned `BasinStable` is the wrong object; retype around \(g_{\mathrm{CCI}}\) / correction-supporting basin before tests. [`bridge-prediction-markets.md`](bridge-prediction-markets.md), [`spine.md`](spine.md) P2 |
+| **Lean today** | Selection env predicates in spine; no Demski finite model; live objects `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin` (`CorrectionSupportingBasin`, signed \(g_{\mathrm{CCI}}\`); unsigned `BasinShockRobust` is not the consequent) |
+| **Work** | One paragraph homograph guard in ch34 + App B; optional finite Demski vs deployment-selection contrast module (catalog only unless it interfaces to the *new* MB6 object, not unsigned `BasinStableSys`) |
 
 ### P2 — MB7 vs MB10 naming history
 
@@ -94,6 +96,16 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 | **Book** | Legacy `MB8_cev_process_convergence`; live path MB4/MB4a |
 | **Work** | Keep secondary labeling in App B; no merge with MB2/MB3 outer targets |
 
+## Bridge cuts and field construction (2.0 reading)
+
+The coverage matrix remains **evidential**. Institutional variables are often *inside* the causal subgraph a bridge compresses, not a second DAG.
+
+**Cut method** (analysis only; no new `MB*`): for each live bridge, name what the unary form silently holds fixed. First inventory: memo §4 / [`embedded-v2.md`](embedded-v2.md). Families: MB1/2/7/9 epistemic; MB4/4a authority and correction; MB3/5/10 temporal/inheritance; MB6 ecological; MB11 deployment.
+
+**Capacity vs structural field construction.** Explicit on [`roster.yml`](../../reference/field-agendas/data/roster.yml) as `fieldConstruction`: `none` | `capacity` | `structural` | `mixed`. Capacity stays upstream of the matrix. Structural acts on context of MB4a/MB6/MB7/MB10/MB11 and does not discharge those bridges. Coverage matrix stays evidential — no `actsOnContextOf` cells. Construction/convergence is presented on the lifecycle cycle, not as matrix paint.
+
+**Lifecycle.** Cycle `specify → construct → identify → certify → act/refuse`. **Preserve** is a property of repeating that cycle (stability or convergence), not a fifth equal stage. Bridges tagged `preserve` are cycle-property constraints. Source: [`lifecycle.yml`](../../reference/field-agendas/data/lifecycle.yml).
+
 ## Execution order (suggested)
 
 1. **Inventory pass** — export `bridges.yml` `fieldAgree`/`fieldDiffer` into a checklist; mark which have glossary headwords vs need new entries.
@@ -109,6 +121,9 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 - [ ] MB7a–c optional field-standard noun aliases (keep MB7 split)
 - [ ] App B vs merged field-agenda row names (secondary prose)
 - [ ] International AI Safety Report → Field when read
+- [x] Lifecycle cycle on field hub; Preserve as cycle property ([`lifecycle.yml`](../../reference/field-agendas/data/lifecycle.yml), 2026-09-18)
+- [x] Capacity vs structural on roster (`fieldConstruction`); no matrix paint
+- [ ] Bridge-cut inventory: one paragraph or table per live MB (silently fixed context); start MB6 and MB11
 
 ## Verification
 
@@ -119,6 +134,8 @@ Precedent: [`drafts/attic/field-claim-formalization-and-bridge-review-plan.md`](
 
 ## Related artifacts
 
+- [`embedded-v2.md`](embedded-v2.md) — coupled-system reading; `evidenceFor` ≠ `actsOnContextOf`
+- [`bridge-prediction-markets.md`](bridge-prediction-markets.md) — 2027 binary contracts on live `MB*`; YES ≠ discharge; not a second green-cell layer
 - [`alignment-crux-map.md`](alignment-crux-map.md) — funder-facing job map + outsider tests (Field lane grant)
 - [`cousin-product-comparison.md`](cousin-product-comparison.md) — spec sheet for what programs *ship* (Start Here, not Field hub)
 - [`iliad-communal-canon.md`](iliad-communal-canon.md) — Iliad lessons (concept)
