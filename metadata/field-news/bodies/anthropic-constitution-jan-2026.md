@@ -88,34 +88,19 @@ The [August 2026 risk report](/cards/news/field-news-anthropic-risk-report-aug-2
 
 ## Compared with CIRIS
 
-[CIRIS](/cards/agenda/ciris/) does a better job of *naming* the split, and of shipping something other than a document. It does not do a better job of keeping the public claim in line with that split.
-
-CIRIS is mostly a construction stack: a constitution plus a runtime, deferral to a designated human, signed traces, and attestation. The engineer pages refuse the Anthropic-style slide. Verify is not ethics:
+[CIRIS](/cards/agenda/ciris/) does two things this preface does not: it ships a runtime, and it names the split.
 
 <blockquote class="src-quote src-quote--ciris">
 <p class="src-quote-attr"><a href="https://github.com/CIRISAI/CIRISVerify">CIRISVerify</a> · README</p>
 <p>It proves an agent is <strong>authentic</strong> — necessary, not sufficient. Ethical <em>behavior</em> is the separate job of the CIRIS covenant system.</p>
 </blockquote>
 
-The Agent README later says the same thing about accountability:
-
 <blockquote class="src-quote src-quote--ciris">
 <p class="src-quote-attr"><a href="https://github.com/CIRISAI/CIRISAgent">CIRISAgent</a> · Honest read</p>
 <p>It proves an AI is <em>accountable</em>, not that it is <em>correct</em>: the reasoning is made visible so you can judge it yourself.</p>
 </blockquote>
 
-That is the missing sentence in Anthropic's preface: intentions are not behavior; a signature is not ethics; a log is not the intervening loop. CIRIS also has hooks that can fail (deferral, fail-closed billing, a green named path that is not the real loop). Anthropic's "directly shapes" has no such failure criterion in the document.
-
-The first screen still sells the fused claim:
-
-<blockquote class="src-quote src-quote--ciris">
-<p class="src-quote-attr"><a href="https://github.com/CIRISAI/CIRISAgent">CIRISAgent</a> · README hero</p>
-<p>A safer, more ethical AI assistant — one you can actually check. […] Every answer passes ethical, common-sense, domain, and reasoning-fragility checks.</p>
-</blockquote>
-
-Same file, two doctrines, no sentence that says the Honest read binds. This project's [CIRIS card](/cards/agenda/ciris/) already logs that: engineer-facing non-claims in one register, storefront fusion in another, "not bound by a precedence rule." Anthropic's unofficial preface versus official body is the same structure. CIRIS's motte is real. Quoting only the motte does not rebut the bailey.
-
-Use CIRIS as the comparison that *has a builder and a named split*. Do not use it as proof that constitutional ops close the construction claim.
+That is the missing sentence: intentions are not behavior. Anthropic's "directly shapes" has no such failure criterion in the document.
 
 ## Needed work
 

@@ -117,6 +117,12 @@ code {
   color: var(--src-zvi, #15803d);
 }
 
+.src-legend-item--ciris,
+.src-quote--ciris .src-quote-attr,
+.src-quote--ciris .src-quote-attr a {
+  color: var(--src-ciris, #0f766e);
+}
+
 .src-legend-item--tsa,
 .src-quote--tsa .src-quote-attr,
 .src-quote--tsa .src-quote-attr a {
@@ -141,6 +147,14 @@ code {
   background: color-mix(in srgb, var(--src-zvi, #15803d) 9%, var(--color-surface));
 }
 
+.src-legend-item--ciris .src-legend-swatch {
+  background: var(--src-ciris, #0f766e);
+}
+
+.src-quote--ciris {
+  background: color-mix(in srgb, var(--src-ciris, #0f766e) 9%, var(--color-surface));
+}
+
 .src-legend-item--tsa .src-legend-swatch {
   background: var(--src-tsa, #0f172a);
 }
@@ -163,6 +177,10 @@ code {
 
 .src-quote--zvi {
   border-left-color: var(--src-zvi, #15803d);
+}
+
+.src-quote--ciris {
+  border-left-color: var(--src-ciris, #0f766e);
 }
 
 .src-quote--tsa {
