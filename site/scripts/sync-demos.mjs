@@ -2,7 +2,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { publishChapterDemos } from "./lib/publish-chapter-demos.mjs";
-import { APPENDIX_TITLES } from "./lib/chapter-links.mjs";
+import { APPENDIX_TITLES, demoBookUnitPrefix, formatDemoTitle, stripDemoTitlePrefix } from "./lib/chapter-links.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -159,6 +159,9 @@ async function main() {
     demo.chapterTitle = demo.chapterId
       ? chapters.get(demo.chapterId) || APPENDIX_TITLES[demo.chapterId] || null
       : null;
+    demo.bookUnitPrefix = demo.chapterId ? demoBookUnitPrefix(demo.chapterId) : null;
+    demo.shortTitle = stripDemoTitlePrefix(demo.title);
+    demo.title = formatDemoTitle(demo.chapterId, demo.title);
     demo.cards = cardLinks.get(demo.id) || [];
     demos.push(demo);
   }

@@ -21,7 +21,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
     <p class="eyebrow">Research toys</p>
     <h1>Chapter demos</h1>
     <p class="lede">
-      Experimental mini apps that illustrate manuscript ideas. They are not part of the PDF and are not validation of frontier systems — sanity-check toys for intuition.
+      Experimental mini apps that illustrate manuscript ideas and help build an intuition but do not serve as proof.  
     </p>
     <div class="button-row">
       <a class="button primary" href={withBase("/chapter-demos/ch16-value-bundle-simulator/")} target="_blank" rel="noopener noreferrer">Try a demo<LinkIndicator kind="newtab" /></a>
@@ -41,17 +41,19 @@ const demoHref = (sitePath: string) => withBase(sitePath);
       {demos.demos.map((demo) => (
         <article class="card" id={demo.id}>
           <div class="badge-row">
-            {demo.chapterId && <Badge label={demo.chapterId} variant="framework" />}
+            {demo.bookUnitPrefix && <Badge label={demo.bookUnitPrefix} variant="framework" />}
             <Badge label={demo.kind.replace("-", " ")} />
           </div>
           <h3>
             <a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">{demo.title}<LinkIndicator kind="newtab" /></a>
           </h3>
-          {demo.chapterTitle && (
+          {demo.chapterTitle && demo.chapterId && (
             <p class="side-panel-meta">
-              Book: <a href={bookHref(base, demo.chapterId!)}>{demo.chapterTitle}</a>
+              Book: <a href={bookHref(base, demo.chapterId)}>{demo.chapterTitle}</a>
               {" · "}
-              <a href={cardHref(base, `chapters/${demo.chapterId}`)}>{demo.chapterId.startsWith("app") ? "Appendix card" : "Chapter card"}</a>
+              <a href={cardHref(base, demo.chapterId.startsWith("app") ? `appendix/${demo.chapterId.toLowerCase()}` : `chapters/${demo.chapterId}`)}>
+                {demo.chapterId.startsWith("app") ? "Appendix card" : "Chapter card"}
+              </a>
             </p>
           )}
           <p set:html={demo.summary} />
@@ -105,7 +107,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
         <tbody>
           {demos.demos.map((demo) => (
             <tr>
-              <td>{demo.chapterId || "—"}</td>
+              <td>{demo.bookUnitPrefix || demo.chapterId || "—"}</td>
               <td>
                 <a href={`#${demo.id}`}>{demo.title}</a>
               </td>

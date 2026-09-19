@@ -603,7 +603,8 @@ async function initDemo(root) {
   ui.innerHTML = `
     <header class="fsm-header">
       <h1>Field Crux Map</h1>
-      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Weights reflect field listed evidence or heuristics.</p>
+      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. 
+      Weights reflect field listed evidence or heuristics.</p>
     </header>
     <div class="fsm-controls">
       <label>Category <select data-category><option value="all">All research</option></select></label>
@@ -769,8 +770,7 @@ async function initDemo(root) {
       panel.innerHTML = `
         <h2>${escapeHtml(title)}</h2>
         ${summary ? `<p class="bridge-summary">${escapeHtml(summary)}</p>` : `<p>${escapeHtml(label)}</p>`}
-        ${linkHtml}
-        <p class="muted">Bridge anchor node on the field map.</p>`;
+        ${linkHtml}`;
       return;
     }
     const listing = snapshot.listings.find((l) => l.id === node.projectId);

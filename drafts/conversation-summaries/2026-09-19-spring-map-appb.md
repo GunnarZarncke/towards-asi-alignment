@@ -24,4 +24,4 @@ The field spring-map demo was parked under ch05, which does not fit. Move it to 
 - `site/src/pages/cards/[...slug].astro`
 
 ## Commits
-- (this session — App B move + bridge panel)
+- `5ff73e96` — Move field spring-map to App B and enrich bridge side panel.

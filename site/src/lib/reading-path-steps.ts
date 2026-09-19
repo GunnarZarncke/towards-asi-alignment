@@ -77,7 +77,9 @@ export function resolveReadingPathStep(
       const badges: StepBadge[] = [
         { label: "demo", variant: "framework", href: withBase("/demos/") }
       ];
-      if (demo.chapterId) {
+      if (demo.bookUnitPrefix) {
+        badges.push({ label: demo.bookUnitPrefix, variant: "framework" });
+      } else if (demo.chapterId) {
         badges.push({ label: demo.chapterId, variant: "framework" });
       }
       badges.push({ label: demo.kind.replace(/-/g, " ") });

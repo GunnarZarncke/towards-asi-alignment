@@ -24,6 +24,31 @@ export async function loadChapterTitles(siteRoot) {
   return titles;
 }
 
+/** "Chapter 16" / "Appendix B" — demo inventory labels (not field-news "Ch. N"). */
+export function demoBookUnitPrefix(id) {
+  if (!id) return null;
+  if (id.startsWith("app")) return `Appendix ${id.slice(3).toUpperCase()}`;
+  const num = parseInt(id.replace(/^ch0?/, ""), 10);
+  return Number.isFinite(num) ? `Chapter ${num}` : id;
+}
+
+/** Strip an existing chapter/appendix prefix from a demo HTML title. */
+export function stripDemoTitlePrefix(title) {
+  return title
+    .replace(/^Chapter\s+\d+\s*[—–-]\s*/i, "")
+    .replace(/^Appendix\s+[A-Za-z0-9]+\s*[—–-]\s*/i, "")
+    .replace(/\s*\(demo\)\s*$/i, "")
+    .trim();
+}
+
+/** Normalize demo card title: always "{Chapter N|Appendix X} — {short name}". */
+export function formatDemoTitle(chapterId, rawTitle) {
+  const prefix = demoBookUnitPrefix(chapterId);
+  if (!prefix) return rawTitle;
+  const short = stripDemoTitlePrefix(rawTitle) || rawTitle;
+  return `${prefix} — ${short}`;
+}
+
 /** @returns {{ prefix: string, title: string }} */
 export function chapterLabel(id, titles) {
   if (id.startsWith("app")) {
