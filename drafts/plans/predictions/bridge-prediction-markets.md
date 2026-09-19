@@ -186,7 +186,7 @@ Rejected: lone expert judge (single captured handle). Rejected: standing 5-panel
 |-------|------|------|
 | **P0** | Plan + working criteria 0.2 | **applied** 2026-09-18 |
 | **P0b** | Binary YES/NO; MB6 \(g_{\mathrm{CCI}}\) retarget; retract §7a | **applied** 2026-09-18 |
-| **P0c** | Certificate-output rule; §§15–18; appendix + site hub; derive `Certified` | **plans** 2026-09-19; Lean adapters **done** 2026-09-19 |
+| **P0c** | Certificate-output rule; §§15–18; appendix + site hub; derive `Certified` | **done** 2026-09-19 |
 | **Appendix / site** | Print H + `/predictions/` hub | **done** 2026-09-19 |
 | **P1** | YAML catalog: id, §, `MB*` keys, `resolvesMB: false` | Q1 if listing |
 | **P2** | Working criteria is the P2 draft; freeze a dated string at listing | Q1 |
@@ -200,10 +200,12 @@ Backtest, Construct, and Spine gates are unchanged. A listed market is not Expec
 
 Decided: Q3 banner not parlays; Q4 seven properties; Q5 §14 governance-only (not MB11); **§18** is the scoped safety-case market (`SafeIn`, not `Safe`); Q7 judgment stack (not lone judge); **refuse→NO**; **MB6a = §7 slice, MB6b = §16**; no unsigned-basin market; **Q8** = predictions appendix (optional App B pointer).
 
-1. **Q1 — Instrument vs research program.** Are these *our* contracts (we list, we resolve, we eat default-NO), or a *suggested* resolution sheet for someone else’s market? Listing implies naming the desk.
-2. **Q2 — 2027 default-NO.** Titles should probably say “published method meeting *these bars*” so traders do not read NO as “MB1 is false.” Stronger now that refuse lumps into NO.
-3. **Q6 — Platform.** Manifold, Metaculus, both, or criteria-only until a host exists?
+1. **Q1 — Instrument vs research program.** **Decided:** author owns contract design and will list on Metaculus (needed to keep specs consistent). External resolvers adjudicate; author is custodian only.
+2. **Q2 — 2027 default-NO.** **Decided:** keep catalog titles; `marketQuestion` lead uses “Published method for…” (or equivalent for non-method rows) so NO is not read as “bridge false.” Resolve-by date lives in `resolveBy`, not in the title or question lead; thresholds stay in the appendix spec only.
+3. **Q6 — Platform.** Metaculus first; Manifold optional later with same external-resolver language.
 4. **Q8 — Modeling absorb.** **Decided P0c:** appendix is the absorb surface; App B at most a `\ref` to it.
+
+**Early resolve-by (13, 14):** `2027-06-30` in `metadata/predictions.yml` — documentary (#14) and audit-game (#13) rows can close on public evidence before the main 2027-12-31 cohort.
 
 ## Execution order
 

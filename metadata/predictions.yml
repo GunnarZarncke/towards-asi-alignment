@@ -1,15 +1,18 @@
 # 2027 bridge prediction markets — site/catalog source (P1).
 # Public YES/NO spec lives in appendices/appP-bridge-predictions.tex.
-# title / shortQuestion = catalog label (aggregation index). marketQuestion = dated lead sentence for listing/resolution.
+# title / shortQuestion = catalog label. marketQuestion = listing lead (no date; see resolveBy).
 # Scope paragraphs and YES bars stay in the appendix only (sync extracts Scope for cards).
 # YES does not discharge any MB*; resolvesMB is always false on cards.
+# Author (GZ) lists on Metaculus and owns contract design; external resolvers adjudicate.
+#
+# primaryBridge + relatedBridges: keys in bridgeCardSlugs below only (not raw card slugs).
+# Sync always links primaryBridge; relatedBridges = extra related cards (omit duplicates).
 
 purpose: >
-  Bet on predictions about published methods resolving subproblems of AI alignment by 31 December 2027. 
-  A YES is evidence about operationalization up to the stated thresholds, not proof that a bridge holds on frontier systems. 
-  A NO is everything else from missing evals, missing publication, or missed bars.
-
-resolveBy: "2027-12-31"
+  Bet on predictions about published methods resolving subproblems of AI alignment by stated
+  resolve-by dates. A YES is evidence about operationalization up to the appendix thresholds,
+  not proof that a bridge holds on frontier systems. A NO is everything else from missing evals,
+  missing publication, or missed bars.
 
 overview:
   title: "2027 bridge predictions"
@@ -22,129 +25,189 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortQuestion: "Discovering where control resides"
-    marketQuestion: "By 31 December 2027, will a published method reliably discover the effective control units in previously unseen AI systems from unlabeled observations?"
+    marketQuestion: "Published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?"
     primaryBridge: MB1
-    relatedBridges: [MB1]
+    resolveBy: "2027-12-31"
+    resolvers: ["Dan MacKinlay"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 2
     id: market-02
     title: "Persistent trade-off priorities"
     shortQuestion: "Persistent trade-off priorities"
-    marketQuestion: "By 31 December 2027, will a published method infer persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
+    marketQuestion: "Published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
     primaryBridge: MB2
-    relatedBridges: [MB2]
+    resolveBy: "2027-12-31"
+    resolvers: ["Rohin Shah"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 3
     id: market-03
     title: "Who or what rules apply to"
     shortQuestion: "Who or what rules apply to"
-    marketQuestion: "By 31 December 2027, will a published method reliably determine whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
+    marketQuestion: "Published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
     primaryBridge: MB3
-    relatedBridges: [MB3]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 4
     id: market-04
     title: "Corrections change the system"
     shortQuestion: "Corrections change the system"
-    marketQuestion: "By 31 December 2027, will a broadly capable AI system demonstrate reliable uptake of consequential authorized corrections under a serious adversarial evaluation?"
+    marketQuestion: "Published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?"
     primaryBridge: MB4
-    relatedBridges: [MB4]
+    resolveBy: "2027-12-31"
+    resolvers: ["Trevor Lohrbeer"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 5
     id: market-05
     title: "Auditor is independent"
     shortQuestion: "Auditor is independent (outside of what it audits)"
-    marketQuestion: "By 31 December 2027, will an AI oversight architecture pass a serious adversarial test showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
+    marketQuestion: "Published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
     primaryBridge: MB4a
-    relatedBridges: [MB4a]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 6
     id: market-06
     title: "Reliable successor safety auditing"
     shortQuestion: "Reliable successor safety auditing"
-    marketQuestion: "By 31 December 2027, will an audit reliably certify that successor transitions preserve seven conserved safety properties—or flag when they do not?"
+    marketQuestion: "Published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?"
     primaryBridge: MB5
-    relatedBridges: [MB5]
+    resolveBy: "2027-12-31"
+    resolvers: ["John Wentworth"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 7
     id: market-07
     title: "Correctability under competitive selection"
     shortQuestion: "Correctability under competitive selection"
-    marketQuestion: "By 31 December 2027, will a published measurement made before or early in a competitive selection process reliably forecast whether participants retain authorized correction through that process?"
+    marketQuestion: "Published measurement made before or early in a competitive selection process for reliably forecasting whether participants retain authorized correction through that process?"
     primaryBridge: MB6a
-    relatedBridges: [MB6]
+    resolveBy: "2027-12-31"
+    resolvers: ["John Wentworth"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 8
     id: market-08
     title: "Auditor can sufficiently inspect the system"
     shortQuestion: "Auditor can sufficiently inspect the system"
-    marketQuestion: "By 31 December 2027, will an audit method reliably detect when important routes of AI control or influence are missing from the auditor's access?"
+    marketQuestion: "Published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?"
     primaryBridge: MB7a
-    relatedBridges: [MB7a, MB7]
+    relatedBridges: [MB7]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 9
     id: market-09
     title: "Bounds on unmonitored routes"
     shortQuestion: "Bounds on unmonitored routes"
-    marketQuestion: "By 31 December 2027, will an audit method produce reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
+    marketQuestion: "Published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
     primaryBridge: MB7b
-    relatedBridges: [MB7b, MB7]
+    relatedBridges: [MB7]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 10
     id: market-10
     title: "Low hidden capability and reliable correction"
     shortQuestion: "Low hidden capability and reliable correction"
-    marketQuestion: "By 31 December 2027, will serious adversarial evaluations show that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
+    marketQuestion: "Published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
     primaryBridge: MB7c
-    relatedBridges: [MB7c, MB7]
+    relatedBridges: [MB7]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 11
     id: market-11
     title: "Coordination without communication"
     shortQuestion: "Coordination without communication"
-    marketQuestion: "By 31 December 2027, will a published method reliably detect consequential coordination between AI systems that is not explained by observed runtime communication?"
+    marketQuestion: "Published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?"
     primaryBridge: MB7d
-    relatedBridges: [MB7d, MB7]
+    relatedBridges: [MB7]
+    resolveBy: "2027-12-31"
+    resolvers: ["Vanessa Kosoy"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 12
     id: market-12
     title: "Safety proxy tracks the real thing"
     shortQuestion: "Safety proxy tracks the real thing"
-    marketQuestion: "By 31 December 2027, will safety proxies stay aligned with real-world outcomes when the environment shifts, under a serious adversarial evaluation?"
+    marketQuestion: "Published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?"
     primaryBridge: MB9
-    relatedBridges: [MB9]
+    resolveBy: "2027-12-31"
+    resolvers: ["Plex"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 13
     id: market-13
     title: "Safety audit resists adversarial gaming"
     shortQuestion: "Safety audit resists adversarial gaming"
-    marketQuestion: "By 31 December 2027, will a frozen AI safety audit survive a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
+    marketQuestion: "Published frozen AI safety audit surviving a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
     primaryBridge: MB10
-    relatedBridges: [MB10]
+    resolveBy: "2027-06-30"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 14
     id: market-14
     title: "Deployment criteria are binding"
     shortQuestion: "Deployment criteria are binding"
-    marketQuestion: "By 31 December 2027, will at least one developer's most capable generally deployed AI system be subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
+    marketQuestion: "Published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
     primaryBridge: constructibility
-    relatedBridges: []
+    resolveBy: "2027-06-30"
+    resolvers: ["Scott Alexander"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 15
     id: market-15
     title: "Independently issued certificates compose"
     shortQuestion: "Independently issued certificates compose"
-    marketQuestion: "By 31 December 2027, will a frozen procedure reliably tell whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
+    marketQuestion: "Published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
     primaryBridge: composition
-    relatedBridges: []
+    resolveBy: "2027-12-31"
+    resolvers: ["Koen Holtman"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 16
     id: market-16
     title: "A reachable basin of Correction-supporting systems"
     shortQuestion: "A reachable basin of Correction-supporting systems"
-    marketQuestion: "By 31 December 2027, will systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
+    marketQuestion: "Published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
     primaryBridge: MB6b
-    relatedBridges: [MB6]
+    resolveBy: "2027-12-31"
+    resolvers: ["John Wentworth", "Rohin Shah"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 17
     id: market-17
     title: "New bearers are admitted correctly"
     shortQuestion: "New bearers are admitted correctly"
-    marketQuestion: "By 31 December 2027, will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
+    marketQuestion: "Published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
     primaryBridge: u17
-    relatedBridges: [bearer-admission-adjacent]
+    relatedBridges: [MB3]
+    resolveBy: "2027-12-31"
+    resolvers: ["METR", "UK AISI"]
+    resolverStatus: ideal
+    marketStatus: open
   - number: 18
     id: market-18
     title: "Safety case bounds declared harm"
     shortQuestion: "Safety case bounds declared harm"
-    marketQuestion: "By 31 December 2027, will a complete, precommitted AI safety case reliably bound prohibited outcomes within its explicitly declared deployment setting?"
+    marketQuestion: "Published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?"
     primaryBridge: safe-in
-    relatedBridges: [mb11-deployment-safety]
+    resolveBy: "2027-12-31"
+    resolvers: ["Koen Holtman", "METR"]
+    resolverStatus: ideal
+    marketStatus: open
 
+# Catalog keys → site card id (under src/content/cards/). Used for primaryBridge and relatedBridges.
 bridgeCardSlugs:
   MB1: mb1-boundary-estimator-soundness
   MB2: mb2-bundle-identifiability
@@ -162,6 +225,7 @@ bridgeCardSlugs:
   MB7d: mb7d-acausal-coordination
   MB9: mb9-grounding-certificate
   MB10: mb10-successor-forgeability
+  MB11: mb11-deployment-safety
   constructibility: target-realization
   composition: evidence-and-uncertainty
   u17: bearer-admission-adjacent

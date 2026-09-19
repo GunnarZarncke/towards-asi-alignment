@@ -137,16 +137,14 @@ function extractPriorTest(sectionBody) {
 
 function relatedForMarket(market, bridgeCardSlugs) {
   const related = new Set(["chapters/appP"]);
-  for (const key of market.relatedBridges ?? []) {
-    if (typeof key === "string" && !key.includes("-")) {
-      const slug = bridgeCardSlugs[key];
-      if (slug) related.add(slug);
-    } else if (typeof key === "string") {
-      related.add(key);
-    }
-  }
-  const primarySlug = bridgeCardSlugs[market.primaryBridge];
-  if (primarySlug) related.add(primarySlug);
+  const addKey = (key) => {
+    if (!key) return;
+    const slug = bridgeCardSlugs[key];
+    if (slug) related.add(slug);
+    else console.warn(`predictions.yml: unknown bridgeCardSlugs key "${key}" (market ${market.number})`);
+  };
+  addKey(market.primaryBridge);
+  for (const key of market.relatedBridges ?? []) addKey(key);
   return [...related];
 }
 
@@ -154,13 +152,37 @@ function appendixAnchor(number) {
   return `sec:appp-m${number}`;
 }
 
+function formatResolveBy(isoDate) {
+  if (!isoDate) return "31 December 2027";
+  const [year, month, day] = isoDate.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC"
+  });
+}
+
+function formatResolverLine(market) {
+  if (market.resolverStatus === "confirmed" && market.resolvers?.length) {
+    return `**Resolver:** ${market.resolvers.join(", ")} (confirmed).`;
+  }
+  if (market.resolverStatus === "ideal" && market.resolvers?.length) {
+    return `**Resolver (proposed):** ${market.resolvers.join(", ")}.`;
+  }
+  return "**Resolver:** not yet named.";
+}
+
 function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   const summary = market.shortQuestion || market.title || "";
   const marketQuestion =
     market.marketQuestion || extracted.questionLead || extracted.question || market.shortQuestion;
   const appendixFull = `/cards/appendix/appP/full/#${appendixAnchor(market.number)}`;
+  const resolveByLabel = formatResolveBy(market.resolveBy);
   const bodyParts = [
-    `**Resolve by:** 31 December 2027.`,
+    `**Resolve by:** ${resolveByLabel}.`,
+    formatResolverLine(market),
     "",
     "## Question",
     "",
@@ -279,7 +301,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
     "",
     raw.purpose.trim(),
     "",
-    "**Claim strength.** YES means a public artifact met *these frozen bars* by 31 December 2027. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
+    "**Claim strength.** YES means a public artifact met the appendix thresholds by each market's resolve-by date. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
     "",
     "**Aggregation.** Prices compose along the spine dependency graph into an *optimistic* upper bound on $P(\\mathrm{doom})$; see [Composing an optimistic bound](/cards/appendix/appP/full/#sec-appp-aggregation) in Appendix H. YES on a market means the *tool exists*, not that it certifies a frontier deployment.",
     "",
@@ -366,7 +388,6 @@ for (const factor of externalFactors) {
 
 const payload = {
   purpose: raw.purpose?.trim() ?? "",
-  resolveBy: raw.resolveBy ?? "2027-12-31",
   overviewCardId: "predictions/overview",
   appendixBookId: "appP",
   markets: enrichedMarkets,

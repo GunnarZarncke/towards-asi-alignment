@@ -14,7 +14,7 @@ Working notes, lane plans, and agent handoff — not manuscript canon. Git histo
 
 | Folder | Contents |
 |--------|----------|
-| [`predictions/`](predictions/) | Bridge prediction market criteria, prior-art scan, source docx |
+| [`predictions/`](predictions/) | Bridge prediction market criteria, prior-art scan, source docx — hub: [`predictions/README.md`](predictions/README.md) |
 | [`plans/`](plans/) | Active lane checklists (backtest, field, spine, construct, predictions, …) |
 | [`project/`](project/) | Claim spine, epistemic census, shipping benchmark, residuals map |
 | [`ontology/`](ontology/) | Ngo critique, source list, per-source reviews |

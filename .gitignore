@@ -48,6 +48,9 @@ metadata/concept-graph/*.svg
 # Local renumber backup (scripts/git_mv_renumber.py)
 .renumber-content-backup/
 
+# Git worktrees (local inspection clones)
+.worktrees/
+
 # Python
 .venv/
 .venv-test/

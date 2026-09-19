@@ -1,3 +1,5 @@
+> **Reference only.** Do not import P1–P13 IDs into the manuscript problem axis — see closed [`../plans/problem-axis-incorporation.md`](../plans/problem-axis-incorporation.md).
+
 # Problems in AI alignment
 
 Below is a reconstruction of the formal structure of the problems of AI alignment that avoids using the standard vocabulary. 

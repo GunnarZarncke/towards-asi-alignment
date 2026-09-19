@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (predictions positive titles + aggregation).
+Last updated: 2026-09-19 (housekeeping; predictions catalog + resolvers).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-19 (predictions positive titles + aggregation).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) (App H + `/predictions/` hub + Lean v1 adapters shipped; listing Q1/Q2/Q6 open).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) (App H + `/predictions/` hub + Lean v1 adapters shipped; Q1/Q6 decided in plan — Metaculus first; confirm proposed resolvers before listing).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,48 +20,16 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-19:** **Predictions positive titles + aggregation** — Renamed 18 markets to positive framing; Appendix H §aggregation (spine + q_pause optimistic P(doom) bound); `marketQuestion` tier in yaml/sync (Question vs Scope on cards); external Metaculus Q44423 card with embed. Log: `2026-09-19-predictions-positive-aggregation.md`.
-- **2026-09-19:** **Demos landing list** — `/demos/` is the single list hub (plain blurbs + CTAs); removed `/demos/all/` (redirect to landing); card demo links → `/demos/#id`; secondary nav → badge index. Log: `2026-09-19-demos-landing-list.md`.
-- **2026-09-19:** **Predictions Lean adapters** — `Evidence.lean`: per-system certs, eval-soundness adapters (not new `MB*`), `CoherentCertificateBundle`, derived `Certified` / `SatisfiesInvariants`, `HiddenRouteBound`, `SafeIn` stub (MB11 unchanged). Log: `2026-09-19-predictions-lean-adapters.md`.
-- **2026-09-19:** **Predictions site hub** — `/predictions/`; `prediction` card type; 19 synced cards from `metadata/predictions.yml` + `appP` boxes; Gauss icon; offsite price placeholder. Log: `2026-09-19-predictions-site.md`.
-- **2026-09-19:** **Predictions appendix (print H)** — `appP-bridge-predictions.tex`; 18 boxed 2027 contracts + prior-test `\autocite{}` (24 new bib keys); Lean print I, experiments print J. Log: `2026-09-19-predictions-appendix.md`.
-- **2026-09-19:** **Prediction interface P0c** — Criteria `0.4` (18 markets, certificate-output rule, §15–§18); appendix + `/predictions/` hub planned not drafted; Spine `Evidence.lean` queued; `Certified`/`SatisfiesInvariants` to be derived. Log: `2026-09-19-prediction-interface-p0c.md`.
-- **2026-09-19:** **Drafts folder restructure** — Topic subfolders (`predictions/`, `ontology/`, `editorial/`, `project/`, …); lane plans under `plans/{backtest,field,spine,construct,predictions}/`; README indexes; live path updates. Log: `2026-09-19-drafts-folder-restructure.md`.
-- **2026-09-19:** **Interactive Field Crux Map UI** — Short bridge labels, 2× pop, hover panel + click-navigate (wide), overlay flow (compact/touch), caption links, narrow-desktop mouse fix. Log: `2026-09-19-field-crux-map-ui.md`.
-- **2026-09-19:** **Mapping AI pointer** — One bullet on `field-map-starting-points` (U.S. policy-actor map; not a news card or spec-sheet column). Log: `2026-09-19-mapping-ai-pointer.md`.
-- **2026-09-19:** **Quiz news-takeaways CI fix** — Three missing `news-takeaway-*` items for Sep field-news (`pace-measurements`, `constitution`, `containment-verification`); `make check` quiz bank passes again. Log: `2026-09-19-quiz-news-takeaways-fix.md`.
-- **2026-09-19:** **Spring map → App B** — Demo folder `appB-field-spring-map`; inventory/card summaries render markdown links; App B card inherits the toy; bridge click panel shows concept-card summary + link. Log: `2026-09-19-spring-map-appb.md`.
-- **2026-09-19:** **Field spring-map polish** — More curated org→bridge weights + snapshot regen; simplified UI (category + layout toggle); per-geometry scales, MB4/MB4a row align, 2× bridge-dep stroke, seeded weight jitter, unified zoom. Log: `2026-09-19-field-spring-map-polish.md`.
-- **2026-09-18:** **Field crux spring-map demo (shipped)** — now `demos/appB-field-spring-map/` (Appendix B, not ch05). Run: `./serve-demos.sh` → `/appB-field-spring-map/`. Plan: [`field-spring-map.md`](../plans/field/field-spring-map.md). Log: `2026-09-18-field-spring-map-ship.md`.
-- **2026-09-18:** **V2 named restorer** — snapshot cut ≠ who pays after damage ≠ ecology repair of \(z\). Family C fail if restorer is only ops or only selected self-repair of \(A\). Field inventory starts at MB1. Log: `2026-09-18-v2-boundary-restorer.md`.
-- **2026-09-18:** **MB6 Lean rewrite** — Signed \(g_{\mathrm{CCI}}\) object: `CorrectionSupportingBasin` / `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`. Unsigned `BasinShockRobust` is not the consequent. App G/B, ch42/ch48 `LayeredAlignedDef`, cards, axiom ledger calibrated. Log: `2026-09-18-mb6-lean-rewrite.md`.
-- **2026-09-18:** **Embedded V2 decisions** — 2.0 intro claim OK; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential; construction/convergence on the field hub; roster `fieldConstruction`; canonical grain map at [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1–M3, no Lean covering tuple). Plan: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Log: `2026-09-18-embedded-v2-decisions.md`.
-- **2026-09-18:** **Bridge prediction markets P0b** — Binary YES/NO (refuse→NO). MB6 retargeted at signed \(g_{\mathrm{CCI}}\); unsigned-basin §7a retracted; Lean rewrite queued on spine P2. Criteria `0.3`. Plan: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md). Log: `2026-09-18-bridge-markets-mb6-binary.md`.
-- **2026-09-18:** **Bridge prediction markets P0** — Obvious contract fixes in working criteria (`0.2`): void, claim-strength, judgment stack (not lone judge), §3=MB3 / §4=MB4 with probes inside those rows, seven properties, **§7a MB6a**. Docx had no tracked changes. Plan: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md). Criteria: [`drafts/predictions/bridge-prediction-market-criteria.md`](../predictions/bridge-prediction-market-criteria.md). Log: `2026-09-18-bridge-prediction-markets-p0.md`.
-- **2026-09-18:** **Anthropic pace-measurements field news** — Institute post on R&D automation, agent oversight, and safety compute share: public race metrics, not a showing that correction binds. Log: `2026-09-18-anthropic-pace-measurements.md`.
-- **2026-09-18:** **Anthropic constitution field news** — January 2026 public constitution as specify text; “directly shapes Claude” is a construction claim, not shown. Goldstein “thousand constitutions” talk parked (adjacent Specify, not news). Log: `2026-09-18-anthropic-constitution-news.md`.
-- **2026-09-13:** **Path construction paper** — spin-out on incremental realizability from a described present controller to a better principal; destination \(\neq\) path; Construct 2.0 Family E. Log: `2026-09-13-path-construction-paper.md`.
-- **2026-09-11:** **Maintained-blanket paper** — imported *Discovering Maintained Agent Boundaries* from sibling `agency-detect` into `context/`. User correction: self-repair is selected, not definitional; wording pass on “maintain” (ch01/ch06/ch08) not drafted. Log: `2026-09-11-agency-detect-maintained-blanket.md`.
-- **2026-09-10:** **Crux map S-curve** — Alignment Crux Map funding card now shows the original S-process U vs $ chart. Log: `2026-09-10-crux-map-s-curve.md`.
-- **2026-09-10:** **Containment verification news** — GSAI-call card on Moon & Varshney (arXiv:2605.09045): proved whitelist on PocketFlow; world-state/sequence specs as residual; unbounded world ends the guarantee. Log: `2026-09-10-containment-verification-news.md`.
-- **2026-09-08:** **What this map misses** — reverse-column card at `/cards/concept/what-tsa-fails-to-represent/`; front-door terms; Orthogonal/Resolution evidence remap; CIRIS leftover is construction. Log: `2026-09-08-what-tsa-fails-to-represent.md`.
-- **2026-09-07:** **Voice lane closed** — ledgers fresh; C-012/C-013 renumber; WWCTV→chokepoint moved to optional TODO. Log: `2026-09-07-claim-id-renumber.md`.
-- **2026-09-07:** **Claim ID renumber + ledger freshness** — `C-004a`→`C-012`, `C-044`→`C-013`; W-* bullets on claims ledger; U-ledger chokepoint note. Log: `2026-09-07-claim-id-renumber.md`.
-- **2026-09-07:** **Witness → Backtest rename** — Third experiment class is **Backtests** (`experiments/backtest/`, `/cards/experiment/backtests/`, `/experiments/findings/backtest/`). YAML `bridgeHooks`; App N + site copy rewritten; no old URL redirects. Log: `2026-09-07-backtest-rename.md`.
-- **2026-09-07:** **Appendix stubs retired + App N readings** — Deleted unused appH–K stubs; print-letter table in `INSTRUCTIONS.md` §14. App N: protocol note + host-trace safety-case readings (W-9, W-3/W-4, W-10, W-11, W-1/W-8). Plan: [`appendix-stubs.md`](../plans/appendix-stubs.md). Log: `2026-09-07-appendix-stubs-appn-readings.md`.
-- **2026-09-07:** **Front-door vocabulary** — Plain English on first-contact surfaces; policy in [`voice.md`](../plans/voice.md) §9. Log: `2026-09-07-front-door-vocab.md`.
-- **2026-09-07:** **Check + Lean required on `main`** — GitHub ruleset requires job names **Check** and **Lean**. Workflows: `check.yml`, `lean.yml`. Logs: `2026-09-07-check-ci.md`, `2026-09-07-lean-ci.md`.
-- **2026-09-07:** **Real v1 bridge graph** — `/field/v1/` now uses the live-MB8 diagram from `c15ad815` (not the 2026-08-17 gravestone copy). Log: `2026-09-07-v1-bridge-graph.md`.
-- **2026-09-07:** **Alignment Attractor Season draft** — Node-tempo audit (not a hub grant); not a site card yet. [`drafts/funding/alignment-attractor-season.md`](../funding/alignment-attractor-season.md). Log: `2026-09-05-attractor-season-draft.md`.
-- **2026-09-05:** **v1.6.0 tagged** — Backtests W-1–W-17, problem-axis / four questions / bridge first-use, site product layers. Log: `2026-09-05-v1-6-0-release-notes.md`.
-- **2026-09-05:** **Audit telemetry draft** — W-17 + sim audit-layer comparison as a v2-facing recording rec (not v1 MS). [`audit-telemetry.md`](../plans/audit-telemetry.md). Log: `2026-09-05-audit-telemetry-draft.md`.
-- **2026-09-05:** **App B ontology-homograph link** — `/full/appB/` was not a route; cards now use `/cards/appendix/appb/#sec:ontology-homographs-appb` plus a `/full/appB/` redirect. Log: `2026-09-05-appb-homograph-link.md`.
-- **2026-09-05:** **Field hub v2 consolidation** — `/field/` redirects to v2; preview-panel hub (coverage, bridge graph, programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps); `field-map-starting-points` card; plain Alignment Target intro; bridge-assumptions table links in Bridge column only. Log: `2026-09-05-field-hub-v2-consolidation.md`.
-- **2026-09-05:** **Field overview adjacent voice** — plain-language consciousness/welfare panel; research-programs panel moved to #3; concept card + v2 adjacent-work copy. Log: `2026-09-05-field-overview-adjacent-voice.md`.
-- **2026-09-04:** **Crux map card voice** — funding card body follows the grant listing, not the generated expansion. Log: `2026-09-04-crux-map-card-voice.md`.
-- **2026-09-04:** **Spec sheet footer trim** — one caption line with links; dropped redundant footer blocks. Log: `2026-09-04-spec-sheet-footer.md`.
-- **2026-09-04:** **Funding page polish** — Cytoscape+dagre dependency graph; compact legend under graph; hero CTA; team FTE + roles on cards/list; 2-sig-fig asks; fixed funded/done icon fill; TSA $10k + site summary. Log: `2026-09-04-funding-offers-site.md`.
-- **2026-09-04:** **Funding opportunities on companion site** (initial) — `funding` card type; nine cards; `/funding/`; About + funder-policy + Guided Tour links. Commit `512f2280`.
+- **2026-09-19:** **Predictions catalog cleanup** — unified `bridgeCardSlugs` keys in `metadata/predictions.yml`; proposed resolvers M7/M16/M18; [`drafts/predictions/README.md`](../predictions/README.md). Log: `2026-09-19-housekeeping.md`.
+- **2026-09-19:** **Housekeeping / erasure** — compact HANDOFF; reference-only headers; log archive/prune; `.worktrees/` gitignore. Same log.
+- **2026-09-19:** **Predictions positive titles + aggregation** — Positive market framing; Appendix H §aggregation; `marketQuestion` tier; Metaculus Q44423 embed. Log: `2026-09-19-predictions-positive-aggregation.md`.
+- **2026-09-19:** **Predictions lane (P0c → ship)** — Criteria `0.4`; print H; `/predictions/` hub + cards; `Evidence.lean` adapters. Logs: `2026-09-19-prediction-interface-p0c.md` through `-predictions-positive-aggregation.md`.
+- **2026-09-19:** **App B field spring-map** — Demo at `demos/appB-field-spring-map/`; polish + interactive UI; App B card integration. Plan closed: [`field-spring-map.md`](../plans/field/field-spring-map.md). Logs: `2026-09-18-field-spring-map-ship.md` through `2026-09-19-field-crux-map-ui.md`.
+- **2026-09-19:** **Demos landing list** — `/demos/` single hub; `/demos/all/` removed. Log: `2026-09-19-demos-landing-list.md`.
+- **2026-09-19:** **Drafts folder restructure** — Topic subfolders + lane plans under `plans/{backtest,field,spine,construct,predictions}/`. Log: `2026-09-19-drafts-folder-restructure.md`.
+- **2026-09-19:** **Mapping AI pointer** · **Quiz news-takeaways CI fix** — Logs: `2026-09-19-mapping-ai-pointer.md`, `2026-09-19-quiz-news-takeaways-fix.md`.
+- **2026-09-18:** **V2 named restorer** · **MB6 Lean rewrite** · **Embedded V2 decisions** · **Bridge markets P0/P0b** — Logs in `archive/2026-09/` and root `2026-09-18-*.md`.
+- **2026-09-18:** **Field news** — Anthropic pace-measurements + constitution cards. Logs: `archive/2026-09/2026-09-18-anthropic-*.md`.
 
 ## Compressed history (Jun–Jul 2026)
 
@@ -88,11 +56,10 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 
 ## This week
 
-See **Recently shipped** for 2026-09-04–07. Earlier this week, still load-bearing:
+See **Recently shipped** for 2026-09-18–19. Early Sep still load-bearing — detail in `archive/2026-09/`:
 
-- **2026-09-04:** **Bergemann–Koh–Morris** as field implementation (ch10/11/14; ch35 possibility, not protocol). Log: `archive/2026-09/2026-09-04-bergemann-mechanism-plug.md`.
-- **2026-09-02:** **Cousin spec-sheet** — `/start/spec-sheet/`. Log: `archive/2026-09/2026-09-02-cousin-product-comparison.md`.
-- **2026-09-01:** **W-17** Moltbook MB7a **structure_stop**; **problem-axis** closed; **bridge first-use** at Ch. 10. Logs: `archive/2026-08/2026-08-31-witness-w17-moltbook.md`, `archive/2026-09/2026-09-01-problem-or-case-and.md`, `archive/2026-09/2026-09-01-bridge-first-use-impl.md`.
+- **2026-09-04–07:** Funding site, field hub v2, backtest rename, voice lane closed, Check+Lean CI, v1.6.0 — see `archive/2026-09/2026-09-INDEX.md`.
+- **2026-09-01:** W-17 structure_stop; problem-axis closed; bridge first-use at Ch. 10.
 
 ## Where durable state lives (do not re-derive from old logs)
 

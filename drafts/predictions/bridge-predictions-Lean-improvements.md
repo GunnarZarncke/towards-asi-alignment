@@ -1,3 +1,5 @@
+> **Status:** Historical source review (P0c, 2026-09-19). Decisions absorbed into [`../plans/predictions/prediction-interface.md`](../plans/predictions/prediction-interface.md), working criteria `0.4`, and `Evidence.lean`. Do not treat this file as a live checklist.
+
 # Criteria consistency
 
 The criteria match the **semantic topics** of the bridges quite well, but they do **not yet compose as Lean interfaces**. The important mismatch is that the prediction markets mostly ask whether an *evaluation method works across a benchmark population*, whereas the Lean spine consumes *system-specific propositions about the same \(A\), \(A\to B\), or \(\delta\)*. A vector of 14 YES resolutions therefore does not type-check into a safety case. The document itself makes the individual empirical claims fairly concrete, but not their composition. 

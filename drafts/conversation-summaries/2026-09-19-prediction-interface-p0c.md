@@ -18,10 +18,7 @@ User asked to fold Lean-interface feedback on the 2027 bridge predictions into t
 - v2-later (not 2027 boxes): restorer, path-legality, cycle-preserve. Do not widen §1/§6/§14.
 
 ## Open / next
-1. Draft `appendices/appP-bridge-predictions.tex` (print-letter plumbing).
-2. Site hub and `prediction` cards.
-3. Spine: `Evidence.lean`.
-4. Q1/Q2/Q6 still open (listing).
+Superseded for appendix, site, and Lean by `2026-09-19-predictions-appendix.md`, `-predictions-site.md`, `-predictions-lean-adapters.md`, `-predictions-positive-aggregation.md`. **Remaining:** Q1/Q2/Q6 listing only.
 
 ## Key paths
 - [`drafts/plans/predictions/prediction-interface.md`](../plans/predictions/prediction-interface.md)

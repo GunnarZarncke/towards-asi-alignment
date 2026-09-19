@@ -16,3 +16,7 @@ One line per log removed because a **later session log** superseded it (not beca
 - `2026-07-06-lab-simulation-d3-ecology-notes.md` **Lab-layer simulation: D3 realistic-ecology design notes recorded (no code)** — **Recorded, no code written.** New section "D3 design notes — realistic (superseded; see later session in git)
 - `2026-07-05-lab-simulation-phase2-5.md` **Lab-layer simulation (4th line): Phases 2-5 (referee freeze)** — **Phase 2 (access control)**: `access.py` (`PermissionService`: (superseded; see later session in git)
 
+## Prune run 2026-09-19
+
+- `2026-09-18-bridge-markets-mb6-binary.md` **Bridge markets MB6 + binary** — Criteria `0.3`: no void; refuse/inapplicable/desk-disagreement → NO; claim-strength says NO is a lump. (superseded; see later session in git)
+
