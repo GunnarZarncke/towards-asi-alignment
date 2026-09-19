@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-19 | **Mapping AI pointer** — Field-map starting-points bullet; not a spec-sheet column. | [2026-09-19-mapping-ai-pointer.md](2026-09-19-mapping-ai-pointer.md) |
 | 2026-09-19 | **Quiz news-takeaways CI fix** — Three missing takeaway questions for Sep field-news; quiz bank check green again. | [2026-09-19-quiz-news-takeaways-fix.md](2026-09-19-quiz-news-takeaways-fix.md) |
 | 2026-09-19 | **Spring map → App B** — Moved off ch05; card-suitable summary with HTML links. | [2026-09-19-spring-map-appb.md](2026-09-19-spring-map-appb.md) |
 | 2026-09-19 | **Field spring-map polish** — Org weights, simplified controls, layout scales, MB4 row, jitter, thicker bridge deps. | [2026-09-19-field-spring-map-polish.md](2026-09-19-field-spring-map-polish.md) |

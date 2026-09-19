@@ -16,6 +16,7 @@ related:
 Useful **starting points** for orienting to AI safety and alignment research:
 
 - **[AISafety.com map](https://www.aisafety.com/map)** — ecosystem map of organizations, programs, and resources (the clustering on this site rolls up map listings into coherent **agenda** rows).
+- **[Mapping AI](https://mapping-ai.org/)** — U.S. policy-actor map (who can shape governance, what they believe, how they connect); [insights](https://mapping-ai.org/insights) are structural analyses of that database. Complementary to the research-ecosystem map above. Beliefs may be inferred; their “bridge builders” are connector people, not this site’s MB\* cuts.
 - **[AI Safety Interventions](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions)** — index of roughly ninety named interventions across foundational theory, oversight, control, interpretability, governance, and underexplored routes; [extended PDF](https://github.com/GunnarZarncke/ai-safety-interventions/blob/master/ai_safety_interventions.pdf).
 - **[AI Alignment: A Comprehensive Survey](https://alignmentsurvey.com/)** (Ji et al., 2023) — academic survey of alignment problems and methods.
 - **[Foundational challenges in assuring alignment and safety of LLMs](https://arxiv.org/abs/2404.09932)** (Ganguli et al., 2024) — Anthropic's framing of eighteen foundational challenges.
