@@ -1,17 +1,14 @@
-# Field crux spring map (demo)
+# Field Crux Map
 
-Research toy: place [AISafety.com](https://aisafety.com/map) listings on a force-directed map by **bridge crux affinity** (`MB1`–`MB11`, excluding gravestone `MB8`).
+Place [AISafety.com](https://aisafety.com/map) organizations on the book's bridge cruxes (MB1–MB11). Springs pull each listing toward the bridges it works on — inherited from the Appendix B field matrix when the org matches, otherwise from a conservative heuristic. A short spring means the org *touches* that crux, not that the crux is solved.
 
-This is a **field-hub illustration**, not a Chapter 5 manuscript demo. It extends the curated field matrix ([`reference/field-agendas/`](../../reference/field-agendas/)) with spatial layout — not the Alignment Crux Map grant’s six-word disambiguation.
+This is an **Appendix B / field-hub illustration**, not a Chapter 5 manuscript demo. It extends the curated field matrix ([`reference/field-agendas/`](../../reference/field-agendas/)) with spatial layout — not the Alignment Crux Map grant’s six-word disambiguation.
 
 ## What it shows
 
 - **Who:** all map organizations (frozen snapshot).
 - **What crux:** non-binary weights per bridge — inherited from agenda matrix cells where clustering matches, otherwise keyword heuristics.
-- **Where:** spring layout with three modes:
-  - **A** — fixed bridge anchors (default)
-  - **B** — movable bridges + dependency springs
-  - **C** — project–project edges from cosine similarity of weight vectors
+- **Where:** spring layout with fixed bridge anchors (dependency graph or circle). Toggle geometry in the demo.
 
 Scores mean “touches this crux in field evidence or classifier/heuristic,” **not** bridge discharge to Safe.
 
@@ -29,18 +26,18 @@ Scores mean “touches this crux in field evidence or classifier/heuristic,” *
 ```bash
 cd demos
 python3 serve.py
-# open http://127.0.0.1:8765/ch05-field-spring-map/
+# open http://127.0.0.1:8765/appB-field-spring-map/
 ```
 
 ## Refresh data
 
 ```bash
 # Bridge positions from field hub Graphviz (requires `dot`):
-python3 demos/ch05-field-spring-map/scripts/extract_bridge_layout.py
+python3 demos/appB-field-spring-map/scripts/extract_bridge_layout.py
 
 # Listings, weights, and map logos (CC-BY-4.0 → data/logos/):
-python3 demos/ch05-field-spring-map/scripts/build_snapshot.py
-python3 demos/ch05-field-spring-map/scripts/build_snapshot.py --remap-existing  # re-score frozen listings
+python3 demos/appB-field-spring-map/scripts/build_snapshot.py
+python3 demos/appB-field-spring-map/scripts/build_snapshot.py --remap-existing  # re-score frozen listings
 # optional: --llm with OPENAI_API_KEY in repo-root .env
 ```
 

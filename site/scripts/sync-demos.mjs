@@ -2,6 +2,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { publishChapterDemos } from "./lib/publish-chapter-demos.mjs";
+import { APPENDIX_TITLES } from "./lib/chapter-links.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -14,8 +15,14 @@ const OUT_PATH = path.join(siteRoot, "src", "data", "demos.json");
 const DEFAULT_STATIC_PORT = 8765;
 
 function parseChapterId(folderName) {
-  const match = folderName.match(/^ch(\d+)/);
-  return match ? `ch${match[1].padStart(2, "0")}` : null;
+  const chapter = folderName.match(/^ch(\d+)/);
+  if (chapter) return `ch${chapter[1].padStart(2, "0")}`;
+  const appendix = folderName.match(/^app([A-Za-z0-9]+)/);
+  return appendix ? `app${appendix[1]}` : null;
+}
+
+function markdownLinksToHtml(text) {
+  return text.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>');
 }
 
 function titleFromHtml(html) {
@@ -38,7 +45,7 @@ function summaryFromReadme(text) {
     parts.push(trimmed.replace(/\*\*/g, ""));
     if (parts.join(" ").length > 40) break;
   }
-  return parts.join(" ").replace(/\s+/g, " ").trim();
+  return markdownLinksToHtml(parts.join(" ").replace(/\s+/g, " ").trim());
 }
 
 function summaryFromIndexHtml(html) {
@@ -142,14 +149,16 @@ async function main() {
 
   const [chapters, cardLinks] = await Promise.all([loadBookChapters(), loadCardLinks()]);
   const folders = (await readdir(DEMOS_DIR, { withFileTypes: true }))
-    .filter((e) => e.isDirectory() && e.name.startsWith("ch"))
+    .filter((e) => e.isDirectory() && /^(ch\d+|app[A-Za-z])/.test(e.name))
     .map((e) => e.name)
     .sort((a, b) => a.localeCompare(b));
 
   const demos = [];
   for (const folder of folders) {
     const demo = await loadDemoFolder(folder);
-    demo.chapterTitle = demo.chapterId ? chapters.get(demo.chapterId) || null : null;
+    demo.chapterTitle = demo.chapterId
+      ? chapters.get(demo.chapterId) || APPENDIX_TITLES[demo.chapterId] || null
+      : null;
     demo.cards = cardLinks.get(demo.id) || [];
     demos.push(demo);
   }

@@ -51,11 +51,37 @@ type ListingRecord = {
   provenance: Record<string, unknown>;
 };
 
+type BridgeCard = {
+  slug: string;
+  title: string;
+  summary: string;
+  cardPath: string;
+};
+
 type Snapshot = {
   meta: Record<string, string | number | string[]>;
   bridges: Record<BridgeKey, string>;
+  bridgeCards?: Partial<Record<BridgeKey, BridgeCard>>;
   listings: ListingRecord[];
 };
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Companion-site bridge card URL (embedded demo vs standalone serve). */
+function bridgeCardHref(snapshot: Snapshot, cardPath: string): string {
+  if (!cardPath) return "";
+  const path = window.location.pathname;
+  const embedded = path.match(/^(.*)\/chapter-demos\//);
+  if (embedded) return `${embedded[1]}${cardPath}`;
+  const base = String(snapshot.meta.companionSite ?? "https://towards-alignment.com");
+  return `${base.replace(/\/$/, "")}${cardPath}`;
+}
 
 const BRIDGE_COLORS: Record<BridgeKey, string> = {
   MB1: "#4a7c59",
@@ -193,8 +219,9 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
   ui.className = "fsm-root";
   ui.innerHTML = `
     <header class="fsm-header">
-      <h1>Field crux spring map</h1>
-      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Scores reflect field evidence or heuristics — not discharge to Safe.</p>
+      <h1>Field Crux Map</h1>
+      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. 
+      Weights reflect field listed evidence or heuristics.</p>
     </header>
     <div class="fsm-controls">
       <label>Category <select data-category><option value="all">All research</option></select></label>
@@ -230,6 +257,7 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     .fsm-panel .panel-logo { width:48px; height:48px; border-radius:50%; object-fit:cover; margin-bottom:8px; border:1px solid #c8d4e0; }
     .fsm-panel .meta { color:#666; margin:0 0 8px; }
     .fsm-panel .muted { color:#777; }
+    .fsm-panel .bridge-summary { margin:0 0 10px; line-height:1.45; color:#333; }
     .weight-row { display:grid; grid-template-columns:1fr 1fr auto; gap:6px; align-items:center; margin:4px 0; font-size:0.78rem; }
     .weight-bar { height:8px; background:#e8edf2; border-radius:4px; overflow:hidden; }
     .weight-fill { height:100%; border-radius:4px; }
@@ -369,7 +397,18 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
 
   function renderPanel(node: SimNode) {
     if (node.kind === "bridge" && node.bridgeKey) {
-      panel.innerHTML = `<h2>${node.bridgeKey}</h2><p>${snapshot.bridges[node.bridgeKey]}</p><p class="muted">Bridge anchor node.</p>`;
+      const card = snapshot.bridgeCards?.[node.bridgeKey];
+      const label = snapshot.bridges[node.bridgeKey] ?? node.bridgeKey;
+      const title = card?.title ?? `${node.bridgeKey} — ${label}`;
+      const summary = card?.summary ?? "";
+      const href = card?.cardPath ? bridgeCardHref(snapshot, card.cardPath) : "";
+      const linkHtml = href
+        ? `<p><a href="${escapeHtml(href)}" target="_blank" rel="noopener">Bridge concept card</a></p>`
+        : "";
+      panel.innerHTML = `
+        <h2>${escapeHtml(title)}</h2>
+        ${summary ? `<p class="bridge-summary">${escapeHtml(summary)}</p>` : `<p>${escapeHtml(label)}</p>`}
+        ${linkHtml}`;
       return;
     }
     const listing = snapshot.listings.find((l) => l.id === node.projectId);
@@ -501,7 +540,8 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     if (node?.kind === "project" || node?.kind === "bridge") {
       hoveredId = node.id;
       if (node.kind === "bridge" && node.bridgeKey) {
-        tooltip.textContent = snapshot.bridges[node.bridgeKey] ?? node.label;
+        const card = snapshot.bridgeCards?.[node.bridgeKey];
+        tooltip.textContent = card?.title ?? snapshot.bridges[node.bridgeKey] ?? node.label;
         tooltip.classList.add("fsm-tooltip-bridge");
       } else {
         tooltip.textContent = node.label;

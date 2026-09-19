@@ -1,6 +1,6 @@
 # Field crux spring-map prototype
 
-Status: **built** (2026-09-18). Demo: [`demos/ch05-field-spring-map/`](../../demos/ch05-field-spring-map/).
+Status: **built** (2026-09-18). Demo: [`demos/appB-field-spring-map/`](../../demos/appB-field-spring-map/).
 
 Research toy — not manuscript canon, not `/field/` hub integration.
 

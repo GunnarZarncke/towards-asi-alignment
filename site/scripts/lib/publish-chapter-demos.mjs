@@ -105,7 +105,7 @@ export async function publishChapterDemos() {
   await mkdir(demosPublic, { recursive: true });
 
   const folders = (await readdir(demosSrc, { withFileTypes: true }))
-    .filter((e) => e.isDirectory() && e.name.startsWith("ch"))
+    .filter((e) => e.isDirectory() && /^(ch\d+|app[A-Za-z])/.test(e.name))
     .map((e) => e.name)
     .sort();
 

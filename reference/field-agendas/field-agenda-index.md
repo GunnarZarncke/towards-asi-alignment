@@ -779,6 +779,7 @@ Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, c
 | [METR](https://metr.org/), [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/) | [METR](#metr) / forecasting adjacent |
 | [Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/) | [Resolution](#resolution) |
 | [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) | [Neglected approaches portfolio](#neglected-approaches-portfolio) |
+| [Steve Byrnes's Brain-Like-AGI Safety](https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8) | [Neglected approaches portfolio](#neglected-approaches-portfolio) |
 | [Orthogonal](https://orxl.org/) | [Orthogonal](#orthogonal) |
 | [John Wentworth](https://www.lesswrong.com/users/johnswentworth) | [Wentworth / NAH](#wentworth--natural-abstractions) |
 | [Vanessa Kosoy](https://www.alignmentforum.org/users/vanessa-kosoy) | [Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta) |
@@ -803,6 +804,7 @@ Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, c
 | AI Safety Interventions (zarncke post) | **Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio)) |
 | [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [Zeroth Research](https://www.zeroth.org/), [Heron AI Security](https://www.heronsec.ai/) | [Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron) |
 | [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective Intelligence Project](https://www.cip.org/) | [MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment) |
+| [Towards Superintelligence Alignment (TSA)](https://towards-alignment.com/) | [This project - TSA](#this-project-towards-superintelligence-alignment-tsa) |
 
 ---
 

@@ -8,6 +8,7 @@ import functools
 import http.server
 import json
 import os
+import re
 import socketserver
 import subprocess
 import sys
@@ -23,7 +24,7 @@ BACKEND_PORT = 8766
 def is_demo_dir(path: Path) -> bool:
     return (
         path.is_dir()
-        and path.name.startswith("ch")
+        and re.match(r"^(ch\d+|app[A-Za-z])", path.name) is not None
         and path.name not in SKIP_DIR_NAMES
         and (path / "index.html").is_file()
     )

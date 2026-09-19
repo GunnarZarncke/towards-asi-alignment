@@ -1,4 +1,4 @@
-// demos/ch05-field-spring-map/weights.ts
+// appB-field-spring-map/weights.ts
 var LIVE_BRIDGES = [
   "MB1",
   "MB2",
@@ -97,7 +97,7 @@ function dominantBridge(weights) {
   return bestVal > 0 ? best : null;
 }
 
-// demos/ch05-field-spring-map/layout.ts
+// appB-field-spring-map/layout.ts
 var DEPENDENCY_ANCHOR_SCALE = 2.3;
 var CIRCLE_ANCHOR_SCALE = 1;
 function bridgeAnchorScale(geometry) {
@@ -251,7 +251,7 @@ function graphDistance(a, b) {
   return 4;
 }
 
-// demos/ch05-field-spring-map/physics.ts
+// appB-field-spring-map/physics.ts
 function effectiveWeight(raw, useSquared) {
   const w = Math.max(0, raw);
   return useSquared ? w * w : w;
@@ -461,7 +461,7 @@ function simulateStep(nodes, edges, options) {
   }
 }
 
-// demos/ch05-field-spring-map/app.ts
+// appB-field-spring-map/app.ts
 var DEFAULT_VIEW_SCALE = 1 / DEPENDENCY_ANCHOR_SCALE;
 var SIM_OPTIONS = {
   mode: "A",
@@ -471,6 +471,17 @@ var SIM_OPTIONS = {
   weightThreshold: 0.05,
   useSquaredWeights: true
 };
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function bridgeCardHref(snapshot, cardPath) {
+  if (!cardPath) return "";
+  const path = window.location.pathname;
+  const embedded = path.match(/^(.*)\/chapter-demos\//);
+  if (embedded) return `${embedded[1]}${cardPath}`;
+  const base = String(snapshot.meta.companionSite ?? "https://towards-alignment.com");
+  return `${base.replace(/\/$/, "")}${cardPath}`;
+}
 var BRIDGE_COLORS = {
   MB1: "#4a7c59",
   MB2: "#5b8a72",
@@ -591,8 +602,8 @@ async function initDemo(root) {
   ui.className = "fsm-root";
   ui.innerHTML = `
     <header class="fsm-header">
-      <h1>Field crux spring map</h1>
-      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Scores reflect field evidence or heuristics \u2014 not discharge to Safe.</p>
+      <h1>Field Crux Map</h1>
+      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Weights reflect field listed evidence or heuristics.</p>
     </header>
     <div class="fsm-controls">
       <label>Category <select data-category><option value="all">All research</option></select></label>
@@ -627,6 +638,7 @@ async function initDemo(root) {
     .fsm-panel .panel-logo { width:48px; height:48px; border-radius:50%; object-fit:cover; margin-bottom:8px; border:1px solid #c8d4e0; }
     .fsm-panel .meta { color:#666; margin:0 0 8px; }
     .fsm-panel .muted { color:#777; }
+    .fsm-panel .bridge-summary { margin:0 0 10px; line-height:1.45; color:#333; }
     .weight-row { display:grid; grid-template-columns:1fr 1fr auto; gap:6px; align-items:center; margin:4px 0; font-size:0.78rem; }
     .weight-bar { height:8px; background:#e8edf2; border-radius:4px; overflow:hidden; }
     .weight-fill { height:100%; border-radius:4px; }
@@ -748,7 +760,17 @@ async function initDemo(root) {
   }
   function renderPanel(node) {
     if (node.kind === "bridge" && node.bridgeKey) {
-      panel.innerHTML = `<h2>${node.bridgeKey}</h2><p>${snapshot.bridges[node.bridgeKey]}</p><p class="muted">Bridge anchor node.</p>`;
+      const card = snapshot.bridgeCards?.[node.bridgeKey];
+      const label = snapshot.bridges[node.bridgeKey] ?? node.bridgeKey;
+      const title = card?.title ?? `${node.bridgeKey} \u2014 ${label}`;
+      const summary = card?.summary ?? "";
+      const href = card?.cardPath ? bridgeCardHref(snapshot, card.cardPath) : "";
+      const linkHtml = href ? `<p><a href="${escapeHtml(href)}" target="_blank" rel="noopener">Bridge concept card</a></p>` : "";
+      panel.innerHTML = `
+        <h2>${escapeHtml(title)}</h2>
+        ${summary ? `<p class="bridge-summary">${escapeHtml(summary)}</p>` : `<p>${escapeHtml(label)}</p>`}
+        ${linkHtml}
+        <p class="muted">Bridge anchor node on the field map.</p>`;
       return;
     }
     const listing = snapshot.listings.find((l) => l.id === node.projectId);
@@ -869,7 +891,8 @@ async function initDemo(root) {
     if (node?.kind === "project" || node?.kind === "bridge") {
       hoveredId = node.id;
       if (node.kind === "bridge" && node.bridgeKey) {
-        tooltip.textContent = snapshot.bridges[node.bridgeKey] ?? node.label;
+        const card = snapshot.bridgeCards?.[node.bridgeKey];
+        tooltip.textContent = card?.title ?? snapshot.bridges[node.bridgeKey] ?? node.label;
         tooltip.classList.add("fsm-tooltip-bridge");
       } else {
         tooltip.textContent = node.label;

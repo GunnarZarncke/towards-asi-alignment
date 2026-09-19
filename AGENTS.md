@@ -184,7 +184,7 @@ Astro publication layer: guided paths, concept cards, chapter pages, Lean playgr
 
 ### Chapter demos (`demos/`)
 
-Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/`. Not part of the manuscript or PDF. See [`demos/README.md`](demos/README.md); run with `python3 serve.py` from `demos/` or `./serve-demos.sh` from the repo root.
+Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/` (appendix toys: `demos/appX-slug/`). Not part of the manuscript or PDF. See [`demos/README.md`](demos/README.md); run with `python3 serve.py` from `demos/` or `./serve-demos.sh` from the repo root.
 
 ### Review artifacts (`review/`)
 

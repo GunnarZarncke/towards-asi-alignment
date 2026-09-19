@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-19 | **Spring map → App B** — Moved off ch05; card-suitable summary with HTML links. | [2026-09-19-spring-map-appb.md](2026-09-19-spring-map-appb.md) |
 | 2026-09-19 | **Field spring-map polish** — Org weights, simplified controls, layout scales, MB4 row, jitter, thicker bridge deps. | [2026-09-19-field-spring-map-polish.md](2026-09-19-field-spring-map-polish.md) |
 | 2026-09-18 | **Field spring-map ship** — Committed demo: layout polish, curated listing weights, TSA/Byrnes clustering, bridge hover UI. | [2026-09-18-field-spring-map-ship.md](2026-09-18-field-spring-map-ship.md) |
 | 2026-09-18 | **Spring-map matching + evidence audit** — Token match; `--` slug collapse; remapped snapshot; matrix-only evidence tags in panel. | [2026-09-18-field-spring-map-matching.md](2026-09-18-field-spring-map-matching.md) |

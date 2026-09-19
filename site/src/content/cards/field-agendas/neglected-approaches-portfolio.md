@@ -71,6 +71,7 @@ AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2
 AISafety.com map listings that roll up to this agenda:
 
 - [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) → [Neglected approaches portfolio](#neglected-approaches-portfolio)
+- [Steve Byrnes's Brain-Like-AGI Safety](https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8) → [Neglected approaches portfolio](#neglected-approaches-portfolio)
 - AI Safety Interventions (zarncke post) → **Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))
 
 See the [coverage matrix](/field/coverage/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

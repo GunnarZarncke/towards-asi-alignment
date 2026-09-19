@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (field spring-map polish).
+Last updated: 2026-09-19 (spring-map App B + bridge panel).
 
 ---
 
@@ -20,8 +20,9 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-19:** **Spring map → App B** — Demo folder `appB-field-spring-map`; inventory/card summaries render markdown links; App B card inherits the toy; bridge click panel shows concept-card summary + link. Log: `2026-09-19-spring-map-appb.md`.
 - **2026-09-19:** **Field spring-map polish** — More curated org→bridge weights + snapshot regen; simplified UI (category + layout toggle); per-geometry scales, MB4/MB4a row align, 2× bridge-dep stroke, seeded weight jitter, unified zoom. Log: `2026-09-19-field-spring-map-polish.md`.
-- **2026-09-18:** **Field crux spring-map demo (shipped)** — `demos/ch05-field-spring-map/`: dependency layout, bridge hover highlights, TSA pinned + full matrix inherit, curated weights (ACS/CSER/Yampolskiy/Team Shard), Byrnes→neglected approaches. Run: `./serve-demos.sh` → `/ch05-field-spring-map/`. Plan: [`field-spring-map.md`](../plans/field-spring-map.md). Log: `2026-09-18-field-spring-map-ship.md`.
+- **2026-09-18:** **Field crux spring-map demo (shipped)** — now `demos/appB-field-spring-map/` (Appendix B, not ch05). Run: `./serve-demos.sh` → `/appB-field-spring-map/`. Plan: [`field-spring-map.md`](../plans/field-spring-map.md). Log: `2026-09-18-field-spring-map-ship.md`.
 - **2026-09-18:** **V2 named restorer** — snapshot cut ≠ who pays after damage ≠ ecology repair of \(z\). Family C fail if restorer is only ops or only selected self-repair of \(A\). Field inventory starts at MB1. Log: `2026-09-18-v2-boundary-restorer.md`.
 - **2026-09-18:** **MB6 Lean rewrite** — Signed \(g_{\mathrm{CCI}}\) object: `CorrectionSupportingBasin` / `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`. Unsigned `BasinShockRobust` is not the consequent. App G/B, ch42/ch48 `LayeredAlignedDef`, cards, axiom ledger calibrated. Log: `2026-09-18-mb6-lean-rewrite.md`.
 - **2026-09-18:** **Embedded V2 decisions** — 2.0 intro claim OK; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential; construction/convergence on the field hub; roster `fieldConstruction`; canonical grain map at [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1–M3, no Lean covering tuple). Plan: [`embedded-v2.md`](../plans/embedded-v2.md). Log: `2026-09-18-embedded-v2-decisions.md`.

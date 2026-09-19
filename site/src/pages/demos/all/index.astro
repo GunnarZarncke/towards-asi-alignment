@@ -51,10 +51,10 @@ const demoHref = (sitePath: string) => withBase(sitePath);
             <p class="side-panel-meta">
               Book: <a href={bookHref(base, demo.chapterId!)}>{demo.chapterTitle}</a>
               {" · "}
-              <a href={cardHref(base, `chapters/${demo.chapterId}`)}>Chapter card</a>
+              <a href={cardHref(base, `chapters/${demo.chapterId}`)}>{demo.chapterId.startsWith("app") ? "Appendix card" : "Chapter card"}</a>
             </p>
           )}
-          <p>{demo.summary}</p>
+          <p set:html={demo.summary} />
           <p>
             <a class="button" href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">Launch demo<LinkIndicator kind="newtab" /></a>
             {" "}

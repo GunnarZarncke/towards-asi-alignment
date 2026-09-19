@@ -93,6 +93,23 @@ const isFundingCard = card.data.type === "funding";
 const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
+const bookUnitDemos = (() => {
+  const explicit = card.data.demos.map((demo) => demo.demoId);
+  const inherited = isBookUnit && card.data.bookPageId
+    ? demosIndex.demos
+        .filter((demo) => demo.chapterId && routeSlug(demo.chapterId) === routeSlug(card.data.bookPageId!))
+        .map((demo) => ({ demoId: demo.id, summary: demo.summary }))
+    : [];
+  const seen = new Set(explicit);
+  return [
+    ...card.data.demos,
+    ...inherited.filter((demo) => {
+      if (seen.has(demo.demoId)) return false;
+      seen.add(demo.demoId);
+      return true;
+    }),
+  ];
+})();
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
 const related = relatedSlugs
@@ -598,13 +615,14 @@ const pageDescription = showFullText
           </ul>
         </>
       )}
-      {card.data.demos.length > 0 && (
+      {bookUnitDemos.length > 0 && (
         <>
           <h3>Interactive demos</h3>
           <ul>
-            {card.data.demos.map((demo) => {
+            {bookUnitDemos.map((demo) => {
               const entry = demoFor(demo.demoId);
               const href = entry ? withBase(entry.sitePath) : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/demos/${demo.demoId}`;
+              const summary = demo.summary || entry?.summary || "";
               return (
               <li>
                 {entry ? (
@@ -624,7 +642,11 @@ const pageDescription = showFullText
                 ) : (
                   <a href={href} target="_blank" rel="noopener noreferrer">{demo.demoId}<LinkIndicator kind="github" /></a>
                 )}
-                <br /><span class="side-panel-meta">{demo.summary || entry?.summary}</span>
+                {summary && (
+                  <>
+                    <br /><span class="side-panel-meta" set:html={summary} />
+                  </>
+                )}
               </li>
               );
             })}

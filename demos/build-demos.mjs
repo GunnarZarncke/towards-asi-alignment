@@ -7,7 +7,7 @@ const rootDir = import.meta.dirname;
 function entrypoints() {
   const entries = [];
   for (const name of readdirSync(rootDir)) {
-    if (!name.startsWith("ch")) continue;
+    if (!/^(ch\d+|app[A-Za-z])/.test(name)) continue;
     const demoDir = join(rootDir, name);
     if (!statSync(demoDir).isDirectory()) continue;
 

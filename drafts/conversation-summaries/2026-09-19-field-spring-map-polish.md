@@ -26,4 +26,4 @@ Follow-up on the ch05 field crux spring-map demo: connect remaining research org
 - `demos/ch05-field-spring-map/data/snapshot.json`, `bridge-layout.json`
 
 ## Commits
-- (this session)
+- `83a08679` Polish field spring-map demo: weights, layout, and simplified UI.

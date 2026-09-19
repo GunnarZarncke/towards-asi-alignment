@@ -5118,6 +5118,27 @@
       "rollsUpSlug": "neglected-approaches-portfolio"
     },
     {
+      "listings": "[Steve Byrnes's Brain-Like-AGI Safety](https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8)",
+      "listingLinks": [
+        {
+          "label": "Steve Byrnes's Brain-Like-AGI Safety",
+          "url": "https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8"
+        },
+        {
+          "label": "Brain-Like-AGI Safety",
+          "url": "https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8"
+        }
+      ],
+      "rollsUpTo": "[Neglected approaches portfolio](#neglected-approaches-portfolio)",
+      "rollsUpLinks": [
+        {
+          "label": "Neglected approaches portfolio",
+          "url": "#neglected-approaches-portfolio"
+        }
+      ],
+      "rollsUpSlug": "neglected-approaches-portfolio"
+    },
+    {
       "listings": "[Orthogonal](https://orxl.org/)",
       "listingLinks": [
         {
@@ -5569,6 +5590,27 @@
         }
       ],
       "rollsUpSlug": "mai-cip-institutional-alignment"
+    },
+    {
+      "listings": "[Towards Superintelligence Alignment (TSA)](https://towards-alignment.com/)",
+      "listingLinks": [
+        {
+          "label": "Towards Superintelligence Alignment (TSA)",
+          "url": "https://towards-alignment.com/"
+        },
+        {
+          "label": "TSA",
+          "url": "https://towards-alignment.com/"
+        }
+      ],
+      "rollsUpTo": "[This project - TSA](#this-project-towards-superintelligence-alignment-tsa)",
+      "rollsUpLinks": [
+        {
+          "label": "This project - TSA",
+          "url": "#this-project-towards-superintelligence-alignment-tsa"
+        }
+      ],
+      "rollsUpSlug": "this-project-towards-superintelligence-alignment-tsa"
     }
   ],
   "bridges": [

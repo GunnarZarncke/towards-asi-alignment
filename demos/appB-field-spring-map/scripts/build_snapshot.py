@@ -6,8 +6,8 @@ clustering.yml, inherits matrix/evidence weights, and scores unmatched listings
 with heuristics (or optional OpenAI classification).
 
 Usage (from repo root):
-  python3 demos/ch05-field-spring-map/scripts/build_snapshot.py
-  python3 demos/ch05-field-spring-map/scripts/build_snapshot.py --llm
+  python3 demos/appB-field-spring-map/scripts/build_snapshot.py
+  python3 demos/appB-field-spring-map/scripts/build_snapshot.py --llm
 """
 
 from __future__ import annotations
@@ -31,7 +31,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 DEMO_DIR = SCRIPT_DIR.parent
 REPO_ROOT = DEMO_DIR.parents[1]
 FIELD_DATA = REPO_ROOT / "reference" / "field-agendas" / "data"
+BRIDGES_META = REPO_ROOT / "metadata" / "bridges.yml"
 OUT_PATH = DEMO_DIR / "data" / "snapshot.json"
+COMPANION_SITE = "https://towards-alignment.com"
 LOGOS_DIR = DEMO_DIR / "data" / "logos"
 
 LIVE_BRIDGES = [
@@ -577,6 +579,23 @@ def main() -> None:
         if b.get("key") in LIVE_BRIDGES
     }
 
+    bridge_cards: dict[str, dict] = {}
+    meta_doc = yaml.safe_load(BRIDGES_META.read_text())
+    for entry in meta_doc.get("bridges") or []:
+        bid = entry.get("id")
+        if bid not in LIVE_BRIDGES:
+            continue
+        slug = entry.get("slug") or ""
+        bridge_cards[bid] = {
+            "slug": slug,
+            "title": entry.get("title") or bid,
+            "summary": entry.get("summary") or "",
+            "cardPath": f"/cards/bridge/{slug}/" if slug else "",
+        }
+    missing_cards = [b for b in LIVE_BRIDGES if b not in bridge_cards]
+    if missing_cards:
+        print(f"  warning: no bridge card metadata for {missing_cards}")
+
     print("[3/4] Assigning crux weights …")
     listings = []
     matched = 0
@@ -677,9 +696,11 @@ def main() -> None:
             "attribution": "AISafety.com",
             "listingCount": len(listings),
             "bridgeKeys": LIVE_BRIDGES,
+            "companionSite": COMPANION_SITE,
             "note": "Weights are field-evidence inheritance or heuristic scores — not bridge discharge.",
         },
         "bridges": bridge_labels,
+        "bridgeCards": bridge_cards,
         "listings": listings,
     }
 

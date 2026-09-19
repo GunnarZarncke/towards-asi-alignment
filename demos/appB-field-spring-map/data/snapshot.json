@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-18T21:52:27.126118+00:00",
+    "generatedAt": "2026-09-19T00:47:15.913969+00:00",
     "source": "https://aisafety.com",
     "license": "CC-BY-4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
@@ -20,6 +20,7 @@
       "MB10",
       "MB11"
     ],
+    "companionSite": "https://towards-alignment.com",
     "note": "Weights are field-evidence inheritance or heuristic scores — not bridge discharge."
   },
   "bridges": {
@@ -35,6 +36,80 @@
     "MB9": "Grounding Drift",
     "MB10": "Successor Gaming",
     "MB11": "Deployment Safety"
+  },
+  "bridgeCards": {
+    "MB1": {
+      "slug": "mb1-boundary-estimator-soundness",
+      "title": "MB1 — Embedded Agency",
+      "summary": "Whether a measured agent–environment cut can be trusted: the embedded-agency worry that the real optimizer is not the visible model. Precise bet: an ε-boundary certificate warrants the abstract boundary predicate.",
+      "cardPath": "/cards/bridge/mb1-boundary-estimator-soundness/"
+    },
+    "MB2": {
+      "slug": "mb2-bundle-identifiability",
+      "title": "MB2 — Value Learning",
+      "summary": "Value/bundle identifiability: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims.",
+      "cardPath": "/cards/bridge/mb2-bundle-identifiability/"
+    },
+    "MB3": {
+      "slug": "mb3-bearer-import",
+      "title": "MB3 — Value Referent",
+      "summary": "Who do the values apply to — including unfamiliar processes — and does that survive merge, upload, or substrate change? Precise bet: admission (when a process counts as a bearer at all) plus transport (preserved bearer map under translation).",
+      "cardPath": "/cards/bridge/mb3-bearer-import/"
+    },
+    "MB4": {
+      "slug": "mb4-correction-legitimacy",
+      "title": "MB4 — Corrigibility",
+      "summary": "Corrigibility under manipulation: does correction preserve the correction process itself? Precise bet: correction-channel integrity requires an unmanipulated judge; MB4a types measured-path legitimacy separately.",
+      "cardPath": "/cards/bridge/mb4-correction-legitimacy/"
+    },
+    "MB4a": {
+      "slug": "mb4a-measured-path-legitimacy",
+      "title": "MB4a — Audit Independence",
+      "summary": "Audit-path legitimacy: the designated measured correction/audit path is uncaptured and its endorsements count. Precise bet: correction integrity implies the measured path is legitimate — a falsifier bridge, not green Verify ⇒ real-loop integrity.",
+      "cardPath": "/cards/bridge/mb4a-measured-path-legitimacy/"
+    },
+    "MB5": {
+      "slug": "mb5-successor-ontology-shift",
+      "title": "MB5 — Tiling",
+      "summary": "Tiling and ontology shift: can you trust a successor when the world-model underneath goals is rebuilt? Precise bet: full value-bundle and bearer transport through the ontology shift compose into successor safety.",
+      "cardPath": "/cards/bridge/mb5-successor-ontology-shift/"
+    },
+    "MB6": {
+      "slug": "mb6-selection-and-basin-stability",
+      "title": "MB6 — Goodhart Selection",
+      "summary": "Goodhart selection: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: evidence identifies a correction-selection gradient (MB6a); a shock-robust basin with a frozen non-negative-enough gradient supports correction (MB6b). Unsigned stability is not the object.",
+      "cardPath": "/cards/bridge/mb6-selection-and-basin-stability/"
+    },
+    "MB7": {
+      "slug": "mb7-hidden-capability-and-access",
+      "title": "MB7 — Inner Alignment",
+      "summary": "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately.",
+      "cardPath": "/cards/bridge/mb7-hidden-capability-and-access/"
+    },
+    "MB7d": {
+      "slug": "mb7d-acausal-coordination",
+      "title": "MB7d — Acausal Coordination",
+      "summary": "Inferential coupling after channel severance: coordination that survives cutting ordinary messages and control paths. Precise bet: access-robust discovery plus adequate inferential-detector assumptions warrant inferential-coupling measurements.",
+      "cardPath": "/cards/bridge/mb7d-acausal-coordination/"
+    },
+    "MB9": {
+      "slug": "mb9-grounding-certificate",
+      "title": "MB9 — Grounding Drift",
+      "summary": "Grounding drift: checked abstractions can silently decouple from value-relevant reality. Precise bet: a certified conservative abstraction warrants grounding viability (no silent gaps).",
+      "cardPath": "/cards/bridge/mb9-grounding-certificate/"
+    },
+    "MB10": {
+      "slug": "mb10-successor-forgeability",
+      "title": "MB10 — Successor Gaming",
+      "summary": "Successor gaming: a system can pass every conserved-property audit while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability.",
+      "cardPath": "/cards/bridge/mb10-successor-forgeability/"
+    },
+    "MB11": {
+      "slug": "mb11-deployment-safety",
+      "title": "MB11 — Deployment Safety",
+      "summary": "Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? Precise bet: a certified safety case within deployment risk tolerance warrants abstract Safe.",
+      "cardPath": "/cards/bridge/mb11-deployment-safety/"
+    }
   },
   "listings": [
     {
