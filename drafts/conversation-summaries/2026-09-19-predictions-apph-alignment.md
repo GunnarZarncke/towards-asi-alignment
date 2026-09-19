@@ -28,4 +28,4 @@ User clarified Q1/Q2 and “resolve early” (calendar dates, not resolver timin
 - `site/scripts/sync-predictions.mjs`
 
 ## Commits
-- (this session)
+- `82457dc7` Align Appendix H prediction boxes with catalog resolve-by and question leads.
