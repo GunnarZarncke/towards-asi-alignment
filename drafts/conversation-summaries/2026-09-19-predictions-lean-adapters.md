@@ -29,4 +29,4 @@ User asked to implement the Lean (v1) part of the prediction-interface plan, not
 - [`drafts/plans/spine/spine.md`](../plans/spine/spine.md)
 
 ## Commits
-- (pending)
+- `6c46f4bb` — v1 `Evidence.lean` certificate layer; derived `Certified` / `SatisfiesInvariants`.
