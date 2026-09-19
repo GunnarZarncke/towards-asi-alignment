@@ -24,7 +24,10 @@ User asked for housekeeping/erasure; then predictions `relatedBridges` cleanup a
 
 ## Open / next
 - Confirm resolver names with M7/M16/M18 before listing on Metaculus.
-- ch01/ch06/ch08 “maintains a boundary” wording pass (v1 manuscript; parked since 2026-09-11).
+- **Boundary persistence:** ch01 unchanged; canonical home `\ref{par:cut-persistence-restoration}` in ch07 (Leaky Boundaries); ch06/ch08 one-line cross-refs only.
+
+## Follow-up (same day)
+- Author: keep ch01 as is; single home in ch07, not redundant footnotes across chapters.
 
 ## Key paths
 - `metadata/predictions.yml`
@@ -34,3 +37,4 @@ User asked for housekeeping/erasure; then predictions `relatedBridges` cleanup a
 
 ## Commits
 - `6f3033aa` — Housekeeping and unify predictions catalog bridge links.
+- (this session, boundary persistence) —

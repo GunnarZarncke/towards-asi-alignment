@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (housekeeping; predictions catalog + resolvers).
+Last updated: 2026-09-19 (boundary persistence footnotes ch06/ch08).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-19:** **Cut persistence (ch07 home)** — `\ref{par:cut-persistence-restoration}` in Leaky Boundaries; ch06/ch08 cross-refs; ch01 unchanged. Log: `2026-09-19-housekeeping.md`.
 - **2026-09-19:** **Predictions catalog cleanup** — unified `bridgeCardSlugs` keys in `metadata/predictions.yml`; proposed resolvers M7/M16/M18; [`drafts/predictions/README.md`](../predictions/README.md). Log: `2026-09-19-housekeeping.md`.
 - **2026-09-19:** **Housekeeping / erasure** — compact HANDOFF; reference-only headers; log archive/prune; `.worktrees/` gitignore. Same log.
 - **2026-09-19:** **Predictions positive titles + aggregation** — Positive market framing; Appendix H §aggregation; `marketQuestion` tier; Metaculus Q44423 embed. Log: `2026-09-19-predictions-positive-aggregation.md`.

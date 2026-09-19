@@ -343,6 +343,12 @@ where safety-relevant variables receive higher weight.
 This is already an intervention choice.
 The measurement frame must say what kinds of leakage matter.
 
+\paragraph{Cut persistence and restoration.}
+\label{par:cut-persistence-restoration}
+Finding a boundary and explaining why it remains usable after perturbations are different questions.
+An identified boundary can persist because physics, an operator, an institution, or selection holds the interface in place; the candidate agent need not repair its own boundary.
+Until we formalize a restoration process, ``maintains a boundary'' means persistence of a useful cut of the state space, not (self-)repair.
+
 \end{authbar}
 \authbarneedspace
 \section{Non-Stationary Boundaries}
@@ -353,9 +359,9 @@ The harder problem is that agents move, grow, shrink, learn, delegate, merge, sp
 A fixed set of raw variables may form a boundary at one time and fail later.
 A child grows.
 A company acquires another company.
-A model gains tools.
+A model deploys a copy.
 A research group becomes an institution.
-A software agent receives persistent memory.
+A software agent acquires a new tool.
 A human becomes dependent on an AI assistant.
 A market creates a new financial instrument.
 A state delegates functions to automated systems.
@@ -388,16 +394,16 @@ The invariants may include:
 \begin{itemize}
 \item closure of input-output dynamics,
 \item continuity of memory,
-\item continuity of control locus,
+\item continuity of control dynamics,
 \item preservation of internal predictive structure,
-\item preservation of value-bundle response geometry,
-\item preservation of correction-channel responsiveness,
+\item preservation of goals,
+\item preservation of correction responsiveness,
 \item preservation of relevant self-model and other-model relations.
 \end{itemize}
 
 Not all of these are needed for every agent.
-A thermostat has no rich value-bundle response geometry.
-A corporation may have no unified phenomenal self-model.
+A thermostat has no rich goal structure.
+A corporation may have no phenomenal self-model.
 A superintelligent AI system may have many self-models at many scales.
 The point is that non-stationary boundary discovery must track what remains stable through change.
 
