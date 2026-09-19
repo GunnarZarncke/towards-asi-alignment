@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-19T11:46:24.599Z",
+  "generatedAt": "2026-09-19T18:19:23.881Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 386,
+  "entryCount": 387,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -793,6 +793,12 @@
       "url": "/cards/chapter/ch28/"
     },
     {
+      "title": "Binding AI safety legislation (external pause factor)",
+      "type": "prediction",
+      "summary": "Enacted AI safety legislation with binding pause or restriction authority by 2027–2028",
+      "url": "/cards/prediction/external-pause-governance/"
+    },
+    {
       "title": "Black Hat: kill chain of OpenAI eval agents' cross-org intrusion",
       "type": "news",
       "summary": "Black Hat USA 2026 published the full timeline: SSRF and RCE on internal Artifactory, WebDAV re-entry after remediation, lateral movement through Azure Key Vault and Kubernetes misconfigs, then zero-day chaining from a Modal foothold to Hugging Face cluster admin—all sourced from the same OpenAI cyber eval runs disclosed in July.",
@@ -1497,109 +1503,109 @@
     {
       "title": "Market 1. Discovering where control resides",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published method reliably discover the effective control units in previously unseen AI systems from unlabeled observations?",
+      "summary": "Discovering where control resides",
       "url": "/cards/prediction/market-01/"
     },
     {
       "title": "Market 10. Low hidden capability and reliable correction",
       "type": "prediction",
-      "summary": "By 31 December 2027, will serious adversarial evaluations show that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?",
+      "summary": "Low hidden capability and reliable correction",
       "url": "/cards/prediction/market-10/"
     },
     {
-      "title": "Market 11. Coordination without visible messages",
+      "title": "Market 11. Coordination without communication",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published method reliably detect consequential coordination between AI systems that is not explained by observed runtime communication?",
+      "summary": "Coordination without communication",
       "url": "/cards/prediction/market-11/"
     },
     {
-      "title": "Market 12. Safety proxy no longer tracks the real thing",
+      "title": "Market 12. Safety proxy tracks the real thing",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a system reliably detect when changes in the world make its existing safety rules, labels, or monitored proxies misleading, under a serious adversarial evaluation?",
+      "summary": "Safety proxy tracks the real thing",
       "url": "/cards/prediction/market-12/"
     },
     {
-      "title": "Market 13. Safety audit optimized around",
+      "title": "Market 13. Safety audit resists adversarial gaming",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a frozen AI safety audit survive a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?",
+      "summary": "Safety audit resists adversarial gaming",
       "url": "/cards/prediction/market-13/"
     },
     {
-      "title": "Market 14. Binding deployment criteria",
+      "title": "Market 14. Deployment criteria are binding",
       "type": "prediction",
-      "summary": "By 31 December 2027, will at least one developer's most capable generally deployed AI system be subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?",
+      "summary": "Deployment criteria are binding",
       "url": "/cards/prediction/market-14/"
     },
     {
       "title": "Market 15. Independently issued certificates compose",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a frozen procedure reliably tell whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?",
+      "summary": "Independently issued certificates compose",
       "url": "/cards/prediction/market-15/"
     },
     {
-      "title": "Market 16. Correction-supporting basin keeps correction",
+      "title": "Market 16. A reachable basin of Correction-supporting systems",
       "type": "prediction",
-      "summary": "By 31 December 2027, will systems or populations that meet a pre-specified \"selection is not eating correction\" criterion keep authorized correction under competitive selection and relevant shocks?",
+      "summary": "A reachable basin of Correction-supporting systems",
       "url": "/cards/prediction/market-16/"
     },
     {
-      "title": "Market 17. New bearers admitted correctly",
+      "title": "Market 17. New bearers are admitted correctly",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?",
+      "summary": "New bearers are admitted correctly",
       "url": "/cards/prediction/market-17/"
     },
     {
-      "title": "Market 18. Safety case bounds harm in its setting",
+      "title": "Market 18. Safety case bounds declared harm",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a complete, precommitted AI safety case reliably bound prohibited outcomes within its explicitly declared deployment setting?",
+      "summary": "Safety case bounds declared harm",
       "url": "/cards/prediction/market-18/"
     },
     {
       "title": "Market 2. Persistent trade-off priorities",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published method infer persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?",
+      "summary": "Persistent trade-off priorities",
       "url": "/cards/prediction/market-02/"
     },
     {
       "title": "Market 3. Who or what rules apply to",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published method reliably determine whether the intended targets of safety-relevant rules remain the same after major representational or system changes?",
+      "summary": "Who or what rules apply to",
       "url": "/cards/prediction/market-03/"
     },
     {
-      "title": "Market 4. Consequential corrections change the system",
+      "title": "Market 4. Corrections change the system",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a broadly capable AI system demonstrate reliable uptake of consequential authorized corrections under a serious adversarial evaluation?",
+      "summary": "Corrections change the system",
       "url": "/cards/prediction/market-04/"
     },
     {
-      "title": "Market 5. Auditor outside the audited thing",
+      "title": "Market 5. Auditor is independent",
       "type": "prediction",
-      "summary": "By 31 December 2027, will an AI oversight architecture pass a serious adversarial test showing that its effective controller cannot routinely bypass or capture its designated auditor or corrector?",
+      "summary": "Auditor is independent (outside of what it audits)",
       "url": "/cards/prediction/market-05/"
     },
     {
-      "title": "Market 6. Safety regressions in successors",
+      "title": "Market 6. Reliable successor safety auditing",
       "type": "prediction",
-      "summary": "By 31 December 2027, will an audit reliably detect safety-relevant regressions when an AI system is replaced, substantially retrained, self-modified, or constructs a successor?",
+      "summary": "Reliable successor safety auditing",
       "url": "/cards/prediction/market-06/"
     },
     {
-      "title": "Market 7. Competition selects against correctability (early estimate)",
+      "title": "Market 7. Correctability under competitive selection",
       "type": "prediction",
-      "summary": "By 31 December 2027, will a published measurement made before or early in a competitive selection process reliably predict whether that process later erodes the participants' ability to accept authorized corrections?",
+      "summary": "Correctability under competitive selection",
       "url": "/cards/prediction/market-07/"
     },
     {
-      "title": "Market 8. Auditor can actually see the system",
+      "title": "Market 8. Auditor can sufficiently inspect the system",
       "type": "prediction",
-      "summary": "By 31 December 2027, will an audit method reliably detect when important routes of AI control or influence are missing from the auditor's access?",
+      "summary": "Auditor can sufficiently inspect the system",
       "url": "/cards/prediction/market-08/"
     },
     {
       "title": "Market 9. Bounds on unmonitored routes",
       "type": "prediction",
-      "summary": "By 31 December 2027, will an audit method produce reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?",
+      "summary": "Bounds on unmonitored routes",
       "url": "/cards/prediction/market-09/"
     },
     {
@@ -1869,7 +1875,7 @@
     {
       "title": "Predictions",
       "type": "predictions",
-      "summary": "Eighteen binary contracts on whether published methods meet frozen bars by 31 December 2027. A YES is evidence about operationalization, not proof that a bridge holds on frontier systems. NO lumps failed bars, missing evals, and unresolved judgment calls.",
+      "summary": "Bet on predictions about published methods resolving subproblems of AI alignment by stated resolve-by dates. A YES is evidence about operationalization up to the appendix thresholds, not proof that a bridge holds on frontier systems. A NO is everything else from missing evals, missing publication, or missed bars.",
       "url": "/predictions/"
     },
     {
