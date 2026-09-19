@@ -22,4 +22,4 @@ User asked to continue with the site phase after Appendix H shipped.
 3. Embed live prices when a platform is chosen.
 
 ## Commits
-- (pending)
+- `d439bf17` — `/predictions/` hub, prediction card type, sync script, P1 YAML.
