@@ -19,7 +19,7 @@ User asked for one “what TSA fails to represent of their crux” line per fiel
 
 ## Open / next
 - Optional: persist residuals on agenda YAML; App B one-liner that the crosswalk is translation, not completeness.
-- Not staged: `papers/alignment-under-selection/*`, `drafts/alignment-problem-alternative-decomposition.md`.
+- Not staged: `papers/alignment-under-selection/*`, `drafts/project/alignment-problem-alternative-decomposition.md`.
 
 ## Later pass
 - Unpacked ARC/ELK, Kosoy (user ID → boundary discovery), CLR therefore-clause, Resolution as capability + successors.

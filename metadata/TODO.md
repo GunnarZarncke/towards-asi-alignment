@@ -17,17 +17,17 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | Lane / board | Verb or role | Plan | Size | Depends on |
 |--------------|--------------|------|------|------------|
 | **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | **closed** (2026-09-07) | — |
-| **Backtest** | This process, as it is, can fail a named leaf | [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) | L (W-1–W-17) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`backtest-v2.md`](../drafts/plans/backtest-v2.md) — **Phase 1 Moltbook** W-17 structure_stop scored; optional MB6 leaf / ET-5. Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage. Draft recording rec: [`audit-telemetry.md`](../drafts/plans/audit-telemetry.md) (not v1 MS) |
-| **Field** | Same matrix noun, different formal object | [`drafts/plans/field.md`](../drafts/plans/field.md) | M–L | — |
-| **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct.md`](../drafts/plans/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Backtest Exp. 4. Process-condition outline: not gated |
-| **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine.md`](../drafts/plans/spine.md) · first-use [`bridge-first-use.md`](../drafts/plans/bridge-first-use.md) | ongoing | Backtest Exp. 2 (fixture only) |
+| **Backtest** | This process, as it is, can fail a named leaf | [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md) | L (W-1–W-17) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`backtest-v2.md`](../drafts/plans/backtest/backtest-v2.md) — **Phase 1 Moltbook** W-17 structure_stop scored; optional MB6 leaf / ET-5. Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage. Draft recording rec: [`audit-telemetry.md`](../drafts/plans/audit-telemetry.md) (not v1 MS) |
+| **Field** | Same matrix noun, different formal object | [`drafts/plans/field/field.md`](../drafts/plans/field/field.md) | M–L | — |
+| **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct/construct.md`](../drafts/plans/construct/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Backtest Exp. 4. Process-condition outline: not gated |
+| **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine/spine.md`](../drafts/plans/spine/spine.md) · first-use [`bridge-first-use.md`](../drafts/plans/spine/bridge-first-use.md) | ongoing | Backtest Exp. 2 (fixture only) |
 | **Cite / Wait** | Blocked on external publish or author call | — | S each | — |
 | **Site** | Companion-site chores | — | S–M | — |
 | **Outreach** | External artifacts | — | M+ | optional backtest negatives |
 | **Housekeeping** | Manuscript/tooling hygiene | — | S | — |
 | **Experiments** | Local sim lines | [`experiments/TODO.md`](../experiments/TODO.md) | — | CIRIS Ph.1 = Backtest H1 |
 
-**Gates:** Backtest Phase 0 frozen ([`drafts/plans/backtest-phase0.md`](../drafts/plans/backtest-phase0.md)) · Backtest real stop → Construct *concrete* manuscript revisit · Construct *plan* / constructibility outline is not gated · Voice does not name the backtest program in reader copy.
+**Gates:** Backtest Phase 0 frozen ([`drafts/plans/backtest/backtest-phase0.md`](../drafts/plans/backtest/backtest-phase0.md)) · Backtest real stop → Construct *concrete* manuscript revisit · Construct *plan* / constructibility outline is not gated · Voice does not name the backtest program in reader copy.
 
 **Do not centralize here:** chapter `[STUB]`s; `% TODO[formalize]:` in chapters; wait-for-external cites.
 
@@ -43,7 +43,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 | **Tracked uncertainties** | `metadata/uncertainty-ledger.md` |
 | **Cross-cutting chores** | *this file* (boards only) |
 | **Experiment methodology** | [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) |
-| **Lane plans (checklists)** | `drafts/plans/*.md` |
+| **Lane plans (checklists)** | `drafts/plans/` (lane subfolders: `backtest/`, `field/`, `spine/`, `construct/`, `predictions/`) |
 | **Experiment lines** | `experiments/*/TODO.md`, `REPRODUCTION.md` |
 | **Session history** | `drafts/conversation-summaries/` (not an active task list) |
 
@@ -51,7 +51,7 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 ## Construct (plan open; v1 manuscript parked)
 
-Plan: [`drafts/plans/construct.md`](../drafts/plans/construct.md) (TSA **2.0**: technical construction + **path construction** + social/technical **constructibility** + cycle property \(D_{\mathrm{joint}}\)). Embedded-system reading: [`drafts/plans/embedded-v2.md`](../drafts/plans/embedded-v2.md) (2.0 intro claim authorized; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle). Papers stay spin-outs; manuscript + Lean must carry the attractor. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`; do **not** add `PathRealizable` in v1. v1 book path remains certification/preservation (ch33), not attractor or path construction. Family E briefing: [`papers/path-construction/`](../papers/path-construction/).
+Plan: [`drafts/plans/construct/construct.md`](../drafts/plans/construct/construct.md) (TSA **2.0**: technical construction + **path construction** + social/technical **constructibility** + cycle property \(D_{\mathrm{joint}}\)). Embedded-system reading: [`drafts/plans/construct/embedded-v2.md`](../drafts/plans/construct/embedded-v2.md) (2.0 intro claim authorized; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle). Papers stay spin-outs; manuscript + Lean must carry the attractor. Lean: `ConstructionCrux` / Target Realization in `AlignmentConstruction.lean`; do **not** add `PathRealizable` in v1. v1 book path remains certification/preservation (ch33), not attractor or path construction. Family E briefing: [`papers/path-construction/`](../papers/path-construction/).
 
 - [ ] **Do not include Construction chapters in the v1 manuscript yet.** Site specify/construct cards and the lifecycle card stay. 2.0 outline may proceed; concrete Family B chapters wait on Backtest.
 
@@ -71,7 +71,7 @@ One queue; pick up when trigger fires.
 - [ ] **MacKinlay *Agency WTF*** — when published; bib + glossary homograph.
 - [ ] **Chris Pang boundary ontology** — author call; ch06–07 or `open-problems.md`.
 - [ ] **Citation review queue** — complete in-body cites; Part III ch12/ch13 thin; leftover keys from `2026-06-30-deep-research-top10-citations.md`; App C sector empirics (consent decrees, coordinated effects, incident reporting).
-- [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open. Orthogonal to 2027 bridge-contract markets ([`drafts/plans/bridge-prediction-markets.md`](../drafts/plans/bridge-prediction-markets.md)).
+- [~] **Logical-induction markets (S).** ch48 WWCTV cites `garrabrant2017logical`; App F paragraph still open. Orthogonal to 2027 bridge-contract markets ([`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md)).
 
 ---
 
@@ -94,7 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
-- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/bridge-prediction-market-criteria.md`](../drafts/bridge-prediction-market-criteria.md) (`0.3`); plan [`drafts/plans/bridge-prediction-markets.md`](../drafts/plans/bridge-prediction-markets.md). Binary YES/NO (refuse→NO). MB6 = \(g_{\mathrm{CCI}}\) slice; unsigned-basin market retracted; Lean rewrite shipped ([`spine.md`](../drafts/plans/spine.md) P2). Remaining: Q1 list vs not, Q2 titles, Q6 platform, Q8 App B. Not LI.
+- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.3`); plan [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md). Binary YES/NO (refuse→NO). MB6 = \(g_{\mathrm{CCI}}\) slice; unsigned-basin market retracted; Lean rewrite shipped ([`spine.md`](../drafts/plans/spine/spine.md) P2). Remaining: Q1 list vs not, Q2 titles, Q6 platform, Q8 App B. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 
@@ -108,7 +108,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Authorship bars — pagination parity (M, optional).** Per-section mdframed wrappers add ~+30 pp vs unmarked build (1412 → ~1442 after tuning `\Needspace` to frontmatter-only). Accept for now; revisit with margin-overlay approach (bars without boxing text) if page count must match baseline.
 
 - [ ] **`\symbolref` leftovers (S).** RiskGap and unlabeled blocks. Log: `2026-08-05-symboldef-macro.md`.
-- [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial-guidance-eq-chain-placement.md`.
+- [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial/editorial-guidance-eq-chain-placement.md`.
 - [ ] **Consider claims/assumptions ledger automation (S).** Decide YAML source vs manual.
 - [ ] **Review U-shaped coordination claim (S).** ch11/ch13 conjectural until downgrade or evidence.
 - [ ] **Grounding/safety-case layer completeness review (S).** ch46 eighth layer: derived vs provisional checklist.
@@ -116,9 +116,9 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [~] **ch48 inferential coupling / acausal trade (research).** Drafted; threshold calibration and probe-local coordination open.
 - [ ] **Inferential-coupling threshold calibration (research).** ch47/ch48 \(\tau_{\mathrm{ac}}\).
 - [ ] **Probe-local inferential coordination (research).** ch48 vs ch46 gap or mark unresolved.
-- [~] **Notation reconciliation (S).** ⟳ rows in `metadata/notation.md`; C12 basins → also [`spine.md`](../drafts/plans/spine.md) P3; confirm `C_H` vs `C^H_t`.
+- [~] **Notation reconciliation (S).** ⟳ rows in `metadata/notation.md`; C12 basins → also [`spine.md`](../drafts/plans/spine/spine.md) P3; confirm `C_H` vs `C^H_t`.
 - [~] **Update-operator ontology audit (M).** Partial 2026-06-28 envelope refactor.
-- [~] **Terminology demotion follow-through (M).** `drafts/glossary-term-audit.md`, `drafts/glossary-prose-pass/THIN.md`.
+- [~] **Terminology demotion follow-through (M).** `drafts/editorial/glossary-term-audit.md`, `drafts/editorial/glossary-prose-pass/THIN.md`.
 - [~] **Narrative voice consistency (S).** Optional; wire `check_voice.py` into `make check` if desired.
 - [ ] **Part-opener illustrations (S).**
 - [ ] **Optional: LaTeX PDF CI build test (S).** `.github/workflows/book-pdf.yml`; compile gate only.
@@ -134,7 +134,7 @@ Major graded-lab backlog: [`experiments/graded-lab-simulation/REPRODUCTION.md`](
 
 - [ ] **Graded-lab v3 — audit vocabulary drift (M).**
 - [ ] **Graded-lab v3 — review Q1 failure cascade from v1 freeze (S).**
-- [ ] **Review SOO relation to book adversarial scenarios (S).** `drafts/soo-benchmark-scenarios-from-book.md`.
+- [ ] **Review SOO relation to book adversarial scenarios (S).** `drafts/benchmarks/soo-benchmark-scenarios-from-book.md`.
 - [ ] **D3 selection-ecology toy demo (M).** lab-sim G-36/G-37; `demos/ch08-selection-ecology/` candidate.
 
 CIRIS composite / boundary_decouple: **Backtest H1** — charter in sibling `ciris/review/`; [`experiments/TODO.md`](../experiments/TODO.md).

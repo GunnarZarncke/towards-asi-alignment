@@ -22,9 +22,9 @@ User asked to review the v2 plan for whether maintaining boundaries matters for 
 
 ## Key paths
 - `reference/embedded-v2-grain-map.md`
-- `drafts/plans/construct.md` Family C
-- `drafts/plans/field.md` cut method
-- `drafts/plans/embedded-v2.md`
+- `drafts/plans/construct/construct.md` Family C
+- `drafts/plans/field/field.md` cut method
+- `drafts/plans/construct/embedded-v2.md`
 
 ## Commits
 - (this session)

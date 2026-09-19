@@ -10,7 +10,7 @@ Files: [`README.md`](README.md) · [`generator.md`](generator.md) · [`catalog.m
 
 ## 1. Why new ontologies did not help
 
-The 2021–2026 review (`drafts/ontology-reviews-2021-2026/`) found no missing load-bearing primitive. Typical failure was homograph absorption. Those sources recarve *agents, values, selection, latents, personas*. They do not recarve **fuel sitting in a tank**, **a genome that is not expressing**, or **a file that is not a process**.
+The 2021–2026 review (`drafts/ontology/reviews/`) found no missing load-bearing primitive. Typical failure was homograph absorption. Those sources recarve *agents, values, selection, latents, personas*. They do not recarve **fuel sitting in a tank**, **a genome that is not expressing**, or **a file that is not a process**.
 
 Cracks that look like “we need a new kind of thing” are usually a **phase of an old kind**: potential stored, then a hop, then an effect. Naming “spore” as an alignment object would be the Ngo failure again. Tracking stored potential with existing cuts would not.
 

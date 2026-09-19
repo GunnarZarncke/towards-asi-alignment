@@ -18,7 +18,7 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
 | Field agenda index | `reference/field-agendas/field-agenda-index.md` | 32 coherent agendas clustered from AISafety.com map |
 | Inter-agenda term glossary | `reference/field-agendas/inter-agenda-term-glossary.md` | Alphabetical terms by source agenda; homographs; cross-agenda notes (book integration deferred) |
 | Anthropic/acausal taxonomy | `reference/field-agendas/anthropic-acausal-taxonomy.md` | Four loads; homograph rows in glossary |
-| Glossary term audit (working) | `drafts/glossary-term-audit.md` | Deferred prose pass notes; demotion inventory |
+| Glossary term audit (working) | `drafts/editorial/glossary-term-audit.md` | Deferred prose pass notes; demotion inventory |
 
 ### AFFINE seminar curriculum (external training map)
 

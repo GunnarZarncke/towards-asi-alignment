@@ -12,7 +12,7 @@ People who have shaped the manuscript, formal spine, or field map. Sorted alphab
 | [Cameron Berg](https://www.lesswrong.com/users/cameron-berg) | Early review | Clarity and claim strength while the framework was forming. |
 | Chris Pang | Collaboration; review | Agent discovery (especially one agent modeling another); talks; review feedback with Peter Kuhn. |
 | [Diogo de Lucena](https://www.lesswrong.com/users/diogo-de-lucena) | Early review | Clarity and claim strength while the framework was forming. |
-| [Eric Moore](https://www.lesswrong.com/users/eric-moore) | CIRIS; cross-reference; LW | CIRIS Accord review and TSA crosswalk; referenced TSA in CIRIS context; short comment on LessWrong. See [`drafts/ciris-accord-reply-eric-moore.md`](../drafts/ciris-accord-reply-eric-moore.md). |
+| [Eric Moore](https://www.lesswrong.com/users/eric-moore) | CIRIS; cross-reference; LW | CIRIS Accord review and TSA crosswalk; referenced TSA in CIRIS context; short comment on LessWrong. See [`drafts/outreach/ciris-accord-reply-eric-moore.md`](../drafts/outreach/ciris-accord-reply-eric-moore.md). |
 | [Harfe](https://www.lesswrong.com/users/harfe) | Lean critique | LW field-overview thread: challenged debate Lean as meaningful crux reduction (Boolean eval = judge, trivial κ_C separation, axiom-heavy spine). See [`drafts/conversation-summaries/2026-08-15-debate-lean-harfe-response.md`](../drafts/conversation-summaries/2026-08-15-debate-lean-harfe-response.md). |
 | Hauke Rehfeld | Informal pressure-testing | Aintelope co-founder. |
 | Human Alignment Summer School (Prague) | Community | Encouragement and critique. |

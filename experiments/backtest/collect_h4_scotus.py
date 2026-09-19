@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """SCDB justice-centered same-unit geometry vs issueArea; write h4-scotus fixture.
 
-Protocol: drafts/plans/backtest-c004-scotus.md (h4-scotus-v1.0.0).
+Protocol: drafts/plans/backtest/backtest-c004-scotus.md (h4-scotus-v1.0.0).
 """
 
 from __future__ import annotations

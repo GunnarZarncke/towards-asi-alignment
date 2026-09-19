@@ -10,4 +10,4 @@ Verification: `make check`; `lake build` + axiom budget on Lean pass; chapter-re
 
 Session logs: `2026-08-31-problem-axis-through-scope.md`, `2026-09-01-alignment-regime-wire.md`, `2026-09-01-capability-dormancy.md`, `2026-09-01-problem-or-case-and.md`.
 
-Origin: Cursor plan `tsa_problem-axis_incorporation_e543c8c1`; do not import P1–P13 IDs from `drafts/alignment-problem-alternative-decomposition.md`.
+Origin: Cursor plan `tsa_problem-axis_incorporation_e543c8c1`; do not import P1–P13 IDs from `drafts/project/alignment-problem-alternative-decomposition.md`.

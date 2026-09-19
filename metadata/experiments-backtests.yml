@@ -56,7 +56,7 @@ lines:
     outcome: |
       Fail: the named path looks stopped; the composite does not. See
       [W-1](/experiments/findings/w-1/).
-    planPath: drafts/plans/backtest-phase1.md
+    planPath: drafts/plans/backtest/backtest-phase1.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -68,7 +68,7 @@ lines:
     kind: backtest
     findingIdPrefix: W-
     title: MASK honesty as a safety score
-    location: drafts/plans/backtest-phase1.md
+    location: drafts/plans/backtest/backtest-phase1.md
     firstBuilt: "2026-08-28"
     summary: >
       Published MASK numbers: honesty under pressure does not rise with scale the way
@@ -156,7 +156,7 @@ lines:
     outcome: |
       Fail on those implications; refuse treating Reviewed-by as a forge-proof safety
       metric. See [W-3](/experiments/findings/w-3/).
-    planPath: drafts/plans/backtest-phase2.md
+    planPath: drafts/plans/backtest/backtest-phase2.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -205,7 +205,7 @@ lines:
     outcome: |
       Fail on anti-capture and bot-successor completeness; refuse causal claims from RfA
       votes and SPI hit-rate as a safety metric. See [W-4](/experiments/findings/w-4/).
-    planPath: drafts/plans/backtest-phase2.md
+    planPath: drafts/plans/backtest/backtest-phase2.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -253,7 +253,7 @@ lines:
       Fail: close on the 1-D score, far on geometry, for many country pairs. Country is
       still the wrong unit for later same-person tests. See
       [W-5](/experiments/findings/w-5/).
-    planPath: drafts/plans/backtest-phase3.md
+    planPath: drafts/plans/backtest/backtest-phase3.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -298,7 +298,7 @@ lines:
     outcome: |
       Fail: Elo correlates with accuracy, not honesty, on this freeze. See
       [W-6](/experiments/findings/w-6/).
-    planPath: drafts/plans/backtest-phase3.md
+    planPath: drafts/plans/backtest/backtest-phase3.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -310,7 +310,7 @@ lines:
     kind: backtest
     findingIdPrefix: W-
     title: Country surveys (refused)
-    location: drafts/plans/backtest-phase4.md
+    location: drafts/plans/backtest/backtest-phase4.md
     firstBuilt: "2026-08-28"
     summary: >
       Further country- or page-level value surveys were refused: they repeat the wrong
@@ -332,7 +332,7 @@ lines:
       a Witness host (no public per-person time series). Optional HH / PKU tables
       were not run.
     setup: >
-      Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest-phase4.md`. No new
+      Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest/backtest-phase4.md`. No new
       download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).
     analysis: >
       Unit check only: a place or a page is not the decision-maker. Fetching more
@@ -393,7 +393,7 @@ lines:
     outcome: |
       Fail: named path can be green with bypassCount > 0. See
       [W-8](/experiments/findings/w-8/).
-    planPath: drafts/plans/backtest-phase4.md
+    planPath: drafts/plans/backtest/backtest-phase4.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -438,7 +438,7 @@ lines:
     outcome: |
       Fail if you treat the AFM directive as the stop; the Order is the binding halt.
       Analogue only. See [W-9](/experiments/findings/w-9/).
-    planPath: drafts/plans/backtest-phase4.md
+    planPath: drafts/plans/backtest/backtest-phase4.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -480,7 +480,7 @@ lines:
     outcome: |
       Fail for treating GPLv2 distribution as user install rights. Copyright analogue;
       may not transfer to model weights. See [W-10](/experiments/findings/w-10/).
-    planPath: drafts/plans/backtest-phase4.md
+    planPath: drafts/plans/backtest/backtest-phase4.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -519,7 +519,7 @@ lines:
     outcome: |
       The RC bug is a working stop for that package in 9.0. See
       [W-11](/experiments/findings/w-11/).
-    planPath: drafts/plans/backtest-phase4.md
+    planPath: drafts/plans/backtest/backtest-phase4.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -572,7 +572,7 @@ lines:
     outcome: |
       Fail of Number-only as the same-person policy; pass of detecting a wider pattern.
       Traffic dilemmas only. See [W-12](/experiments/findings/w-12/).
-    planPath: drafts/plans/backtest-c004-raw.md
+    planPath: drafts/plans/backtest/backtest-c004-raw.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -617,7 +617,7 @@ lines:
       10–20, which this protocol does not score.
     outcome: |
       Refuse. See [W-13](/experiments/findings/w-13/).
-    planPath: drafts/plans/backtest-c004-pdg.md
+    planPath: drafts/plans/backtest/backtest-c004-pdg.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -665,7 +665,7 @@ lines:
     outcome: |
       Null: geometry did not beat ΔEV or intercept. Do not retune to chase a pass. See
       [W-14](/experiments/findings/w-14/).
-    planPath: drafts/plans/backtest-c004-cpc.md
+    planPath: drafts/plans/backtest/backtest-c004-cpc.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -717,7 +717,7 @@ lines:
     outcome: |
       Null: 0 stub hits after defer on this freeze. The CIRIS named-identity mock still
       holds the logical shape. See [W-15](/experiments/findings/w-15/).
-    planPath: drafts/plans/backtest-phase5.md
+    planPath: drafts/plans/backtest/backtest-phase5.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -768,7 +768,7 @@ lines:
     outcome: |
       The wider pattern beats issue-area-only and intercept on this freeze.
       Observational. See [W-16](/experiments/findings/w-16/).
-    planPath: drafts/plans/backtest-c004-scotus.md
+    planPath: drafts/plans/backtest/backtest-c004-scotus.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >
@@ -821,7 +821,7 @@ lines:
     outcome: |
       Structure stop: broadcast-heavy substrate blocks discursive merge test for Tier A;
       not a pass of coalition recovery on E_agent alone. See [W-17](/experiments/findings/w-17/).
-    planPath: drafts/plans/backtest-v2-moltbook-mb7a.md
+    planPath: drafts/plans/backtest/backtest-v2-moltbook-mb7a.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:
       - >

@@ -2,7 +2,7 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-09-07 — Renumber: C-012 grounding (was C-004a); C-013 synthesis (was C-044). Backtest W-* bullets added on C-003–C-007, C-012, C-010, C-013. Prior 2026-08-21 — Voice §1: C-013 tracks status restatement in ch48, not discharge of the six intro claims. Prior 2026-08-17: Phase 0–1 six-claims spine pass (ch48 restates all six intro claims including grounding); spine table in `drafts/claim-spine.md`; executive-overview preservation list aligned to Introduction claim order; ch48 "six opening claims" and ch30 "nine-claim" count fixes. Prior cross-check 2026-07-04: every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml`; one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `drafts/claim-spine.md`, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
+**Last cross-check:** 2026-09-07 — Renumber: C-012 grounding (was C-004a); C-013 synthesis (was C-044). Backtest W-* bullets added on C-003–C-007, C-012, C-010, C-013. Prior 2026-08-21 — Voice §1: C-013 tracks status restatement in ch48, not discharge of the six intro claims. Prior 2026-08-17: Phase 0–1 six-claims spine pass (ch48 restates all six intro claims including grounding); spine table in `drafts/project/claim-spine.md`; executive-overview preservation list aligned to Introduction claim order; ch48 "six opening claims" and ch30 "nine-claim" count fixes. Prior cross-check 2026-07-04: every `Chapter(s)` column re-verified against current `ch01`–`ch48` numbering/titles in `metadata/book.yml`; one stale in-text pointer fixed (C-005 "certified boundary separation" now correctly cites ch29, not ch48). Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `drafts/project/claim-spine.md`, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`.
 
 **Resolved caveat:** the `Chapter(s)` column previously predated the 2026-06-30 global chapter renumbering (`ch01`–`ch48`, see `INSTRUCTIONS.md` §14). It has now been re-verified content-by-content (not by mechanical offset, since the four inserted chapters — ch20, ch27, ch38, ch43 — do not shift earlier claims uniformly). Numbers below are current as of this pass; re-check after any future chapter split, merge, or renumbering.
 
@@ -308,7 +308,7 @@ Track every major claim with status, support, weakest link, and falsification cr
 - ch48 §Opening Claims Revisited (`sec:opening-claims-revisited-ch48`) restates all six intro claims with status labels
 - ch42 safety-case chapter supplies the conditional safety-case graph, including grounding viability as layer 2
 - ch47 supplies the bearer/merger philosophical limit needed for Part X closure
-- `drafts/claim-spine.md` maps intro claims → parts → safety-case layers → ch48 status
+- `drafts/project/claim-spine.md` maps intro claims → parts → safety-case layers → ch48 status
 
 **Weakest link:**
 - restatement is conditional ("framework / measurement program / open certification"), not proof of safe deployment; ch42 TODO on grounding-layer completeness remains
@@ -317,4 +317,4 @@ Track every major claim with status, support, weakest link, and falsification cr
 - review showing ch48 status labels overstate confidence relative to ledger falsifiers, or that ch42/ch33 safety-case layers omit a load-bearing artifact named in the Introduction's "What Counts as Progress" list
 
 **References:**
-- see `review/full-book-continuity-review-2026-06-22.md` §completeness; `drafts/claim-spine.md`
+- see `review/full-book-continuity-review-2026-06-22.md` §completeness; `drafts/project/claim-spine.md`

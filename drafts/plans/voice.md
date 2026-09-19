@@ -1,6 +1,6 @@
 # Voice — claim-strength voice and naming
 
-Status: **closed** (2026-09-07). Policy and execution checklist below remain the reference; active tracking moved to [`metadata/TODO.md`](../../metadata/TODO.md). §1 started by author request. **Backtests** (safety-check backtests) are independent — see [`backtest.md`](backtest.md). Chapter narrative does not name the program. **Exception:** Appendix N and `/experiments/` may name **backtests** as the distinctive empirical class (authored simulations and external tests stay supporting).
+Status: **closed** (2026-09-07). Policy and execution checklist below remain the reference; active tracking moved to [`metadata/TODO.md`](../../metadata/TODO.md). §1 started by author request. **Backtests** (safety-check backtests) are independent — see [`backtest.md`](backtest/backtest.md). Chapter narrative does not name the program. **Exception:** Appendix N and `/experiments/` may name **backtests** as the distinctive empirical class (authored simulations and external tests stay supporting).
 
 ## Goal
 
@@ -240,6 +240,6 @@ python3 scripts/check_voice.py   # after chapterthesis edits
 | [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
 | [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-013 |
 | [`site/src/content/cards/what-not-claiming.md`](../../site/src/content/cards/what-not-claiming.md) | Scope limits card |
-| [`drafts/plans/backtest.md`](backtest.md) | Separate empirical program (not a dependency; do not name in chapter copy) |
-| [`drafts/plans/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |
+| [`drafts/plans/backtest/backtest.md`](backtest.md) | Separate empirical program (not a dependency; do not name in chapter copy) |
+| [`drafts/plans/spine/spine.md`](spine.md) | Lean ↔ chapter formalism (not reader copy) |
 | [`review/chapter-formulation-groundedness.md`](../../review/chapter-formulation-groundedness.md) | E/G snapshot; 2.0 rerun lives on Construct P4 |

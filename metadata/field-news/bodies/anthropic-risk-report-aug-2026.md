@@ -7,7 +7,7 @@ external:
   - label: Zvi — Anthropic Risk Report August 2026 (LessWrong)
     url: https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026
   - label: Technical notes (this book)
-    url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/anthropic-risk-report-aug-2026-analysis.md
+    url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/outreach/anthropic-risk-report-aug-2026-analysis.md
   - label: Prior news — Mythos withheld
     url: https://towards-alignment.com/cards/field-news-mythos-withheld-apr-2026/
   - label: Prior news — accidental CoT optimization

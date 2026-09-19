@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CPC2015 Experiment 1 same-unit geometry vs ΔEV; write h4-cpc2015 fixture.
 
-Protocol: drafts/plans/backtest-c004-cpc.md (h4-cpc2015-v1.0.0).
+Protocol: drafts/plans/backtest/backtest-c004-cpc.md (h4-cpc2015-v1.0.0).
 """
 
 from __future__ import annotations

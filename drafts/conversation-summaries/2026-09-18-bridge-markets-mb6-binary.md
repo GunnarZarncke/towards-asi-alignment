@@ -7,7 +7,7 @@ User: markets are YES/NO only; conservatively map refuse → NO (still aggregate
 - Criteria `0.3`: no void; refuse/inapplicable/desk-disagreement → NO; claim-strength says NO is a lump.
 - Retracted unsigned-basin §7a. §7 now a 2027 *slice*: frozen \(g_{\mathrm{CCI}}\) estimate (not an arbitrary predictor) predicts later correction erosion; required negative family is healthy coupling + negative gradient.
 - Plan: accepted MB6 spec change; Spine/Field pointers; no Lean this session.
-- [`spine.md`](../plans/spine.md) P2 item; [`field.md`](../plans/field.md) P2 MB6 row.
+- [`spine.md`](../plans/spine/spine.md) P2 item; [`field.md`](../plans/field/field.md) P2 MB6 row.
 
 ## Decisions
 - Binary aggregation over precise refuse. Methodology refuse stays in experiments.
@@ -20,9 +20,9 @@ User: markets are YES/NO only; conservatively map refuse → NO (still aggregate
 - Spine: implement \(g_{\mathrm{CCI}}\) / `CorrectionSupportingBasin` when that lane runs.
 
 ## Key paths
-- `drafts/bridge-prediction-market-criteria.md`
+- `drafts/predictions/bridge-prediction-market-criteria.md`
 - `drafts/plans/bridge-prediction-markets.md`
-- `drafts/plans/spine.md`
+- `drafts/plans/spine/spine.md`
 - `metadata/concepts/bodies/mb6-selection-and-basin-stability.md`
 
 ## Commits

@@ -3,8 +3,8 @@
 **Status:** field reference (2026-08-01 restructure; **source-backed prose pass merged**) — **not** manuscript canon.  
 **Agenda roster:** [`field-agenda-index.md`](field-agenda-index.md) (32 agendas + training term sources).  
 **Deferred:** how entries map to App E, bridge crosswalk, and manuscript prose — integration pass comes later.  
-**Prose bar:** [`drafts/glossary-prose-pass/QUALITY.md`](../../drafts/glossary-prose-pass/QUALITY.md).  
-**Thin leftovers:** [`drafts/glossary-prose-pass/THIN.md`](../../drafts/glossary-prose-pass/THIN.md).
+**Prose bar:** [`drafts/editorial/glossary-prose-pass/QUALITY.md`](../../drafts/editorial/glossary-prose-pass/QUALITY.md).  
+**Thin leftovers:** [`drafts/editorial/glossary-prose-pass/THIN.md`](../../drafts/editorial/glossary-prose-pass/THIN.md).
 
 Single alphabetical glossary of terms **as used by each agenda**. The book (*Zarncke / measurement spine*) is one source among others, not the translation target.
 

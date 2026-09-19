@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-19 | **Drafts folder restructure** — Topic subfolders (`predictions/`, `ontology/`, `editorial/`, …); lane plans split; README indexes; path updates. | [2026-09-19-drafts-folder-restructure.md](2026-09-19-drafts-folder-restructure.md) |
 | 2026-09-19 | **Interactive Field Crux Map UI** — Bridge labels, responsive hover/overlay/click, caption links. | [2026-09-19-field-crux-map-ui.md](2026-09-19-field-crux-map-ui.md) |
 | 2026-09-19 | **Mapping AI pointer** — Field-map starting-points bullet; not a spec-sheet column. | [2026-09-19-mapping-ai-pointer.md](2026-09-19-mapping-ai-pointer.md) |
 | 2026-09-19 | **Quiz news-takeaways CI fix** — Three missing takeaway questions for Sep field-news; quiz bank check green again. | [2026-09-19-quiz-news-takeaways-fix.md](2026-09-19-quiz-news-takeaways-fix.md) |
@@ -22,7 +23,7 @@
 | 2026-09-18 | **Bridge markets MB6 + binary** — User: markets are YES/NO only; conservatively map refuse → NO (still aggregates, even if coarser ... | [2026-09-18-bridge-markets-mb6-binary.md](2026-09-18-bridge-markets-mb6-binary.md) |
 | 2026-09-18 | **Anthropic pace-measurements field news** — User asked to ingest Anthropic Institute *Measurements for understanding the pace of AI developme... | [2026-09-18-anthropic-pace-measurements.md](2026-09-18-anthropic-pace-measurements.md) |
 | 2026-09-18 | **Anthropic constitution field news** — User parked the Goldstein “thousand constitutions” talk as adjacent, not news. Then asked whether... | [2026-09-18-anthropic-constitution-news.md](2026-09-18-anthropic-constitution-news.md) |
-| 2026-09-17 | **Bridge prediction markets** — User asked to read `drafts/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`, create a pla... | [2026-09-17-bridge-prediction-markets.md](2026-09-17-bridge-prediction-markets.md) |
+| 2026-09-17 | **Bridge prediction markets** — User asked to read `drafts/predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`, create a pla... | [2026-09-17-bridge-prediction-markets.md](2026-09-17-bridge-prediction-markets.md) |
 | 2026-09-16 | **Embedded V2 extensions** — User asked to review `drafts/Proposed V2 Extensions_ Embedded Construction, Field Dynamics, and B... | [2026-09-16-embedded-v2-extensions.md](2026-09-16-embedded-v2-extensions.md) |
 | 2026-09-13 | **Path construction spin-out** — A conversation questioned the v2 unification of CEV with outer alignment: the CEV principal is fu... | [2026-09-13-path-construction-paper.md](2026-09-13-path-construction-paper.md) |
 | 2026-09-11 | **Agency-detect maintained-blanket import** — User asked to check sibling `agency-detect` for new papers, add them to `context/`, and check whe... | [2026-09-11-agency-detect-maintained-blanket.md](2026-09-11-agency-detect-maintained-blanket.md) |

@@ -4,7 +4,7 @@
 
 **v1 plan status: closed** (2026-08-26). Scores below are a **pre-demotion snapshot**. Do not treat them as current chapter grades.
 
-**Rerun:** TSA 2.0 / Part XI drafting — see [`drafts/plans/construct.md`](../drafts/plans/construct.md) (checklist item). After substantial 2.0 prose, run the **G** pass again (E is optional; it collapsed).
+**Rerun:** TSA 2.0 / Part XI drafting — see [`drafts/plans/construct/construct.md`](../drafts/plans/construct/construct.md) (checklist item). After substantial 2.0 prose, run the **G** pass again (E is optional; it collapsed).
 
 ## Why two passes
 

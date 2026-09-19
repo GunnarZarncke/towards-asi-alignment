@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Moltbook MB7a anchored structure typing; write h7-moltbook-mb7a fixture.
 
-Protocol: drafts/plans/backtest-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
+Protocol: drafts/plans/backtest/backtest-v2-moltbook-mb7a.md (h7-moltbook-mb7a-v1.0.0).
 """
 
 from __future__ import annotations

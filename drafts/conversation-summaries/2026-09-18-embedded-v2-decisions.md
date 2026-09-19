@@ -6,7 +6,7 @@ User locked remaining V2 questions: 2.0 intro claim OK; keep \(P\) and \(D_{\mat
 
 ## Done
 
-- Decisions in [`drafts/plans/embedded-v2.md`](../plans/embedded-v2.md).
+- Decisions in [`drafts/plans/construct/embedded-v2.md`](../plans/construct/embedded-v2.md).
 - Canonical grain map: [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1 default; M2 silence checks; M3 per-bridge later).
 - Lifecycle cycle in `lifecycle.yml`; Act/Refuse open interface; Preserve as cycle property. Field hub preview panel retitled Construction and convergence. Alignment-lifecycle card updated.
 - Roster `fieldConstruction` + `because` on every agenda; cards show capacity/structural/mixed only.
@@ -30,7 +30,7 @@ No v1 intro-claim or Lean covering tuple. Coverage matrix unchanged.
 
 ## Key paths
 
-- [`drafts/plans/embedded-v2.md`](../plans/embedded-v2.md)
+- [`drafts/plans/construct/embedded-v2.md`](../plans/construct/embedded-v2.md)
 - [`reference/field-agendas/data/lifecycle.yml`](../../reference/field-agendas/data/lifecycle.yml)
 - [`reference/field-agendas/data/roster.yml`](../../reference/field-agendas/data/roster.yml)
 

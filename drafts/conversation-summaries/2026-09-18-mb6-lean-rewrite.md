@@ -27,7 +27,7 @@ User asked to do the Lean rewrite of the MB6 object: unsigned `PercolationEviden
 ## Key paths
 - `formal/AlignmentProofSpine/Core.lean`
 - `appendices/appG-lean-proof-spine.tex`
-- `drafts/plans/spine.md`
+- `drafts/plans/spine/spine.md`
 - `drafts/plans/bridge-prediction-markets.md`
 
 ## Commits

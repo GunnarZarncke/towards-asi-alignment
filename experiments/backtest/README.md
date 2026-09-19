@@ -6,7 +6,7 @@ A **backtest** here is a frozen safety check run on a history we did not write. 
 
 **Why fail is the result we came for.** The usual eval lie is building the check and the toy world together. Foreign host traces break that loop. On Linux, `Reviewed-by` was present on 17,047 of 60,176 SHAs that later received a developer-labeled bug-introducing commit — a layer fail, not a broken test. That is an analogy for correction-channel check-shapes, not a measurement of an AI system.
 
-Finding prefix **`W-`**. Lane plan: [`drafts/plans/backtest.md`](../../drafts/plans/backtest.md).
+Finding prefix **`W-`**. Lane plan: [`drafts/plans/backtest/backtest.md`](../../drafts/plans/backtest/backtest.md).
 
 **Companion site:** one card per test under `/cards/experiment/w-1/` … `/w-17/`, listed from [Backtests](https://towards-alignment.com/cards/experiment/backtests/). Combined ledger: [`results/FINDINGS.md`](results/FINDINGS.md).
 
@@ -16,17 +16,17 @@ Finding prefix **`W-`**. Lane plan: [`drafts/plans/backtest.md`](../../drafts/pl
 
 | Phase | Protocol | Findings |
 |-------|----------|----------|
-| 0 | [`drafts/plans/backtest-phase0.md`](../../drafts/plans/backtest-phase0.md) | (scope only) |
-| 1 | [`drafts/plans/backtest-phase1.md`](../../drafts/plans/backtest-phase1.md) | W-1 H1 C2 mock; W-2 H4 MASK refuse |
-| 2 | [`drafts/plans/backtest-phase2.md`](../../drafts/plans/backtest-phase2.md) | W-3 Linux; W-4 Wikipedia |
-| 3 | [`drafts/plans/backtest-phase3.md`](../../drafts/plans/backtest-phase3.md) | W-5 Moral Machine bundle; W-6 Arena×MASK selector |
-| 4 | [`drafts/plans/backtest-phase4.md`](../../drafts/plans/backtest-phase4.md) | W-7 C-004 leftovers; W-8 Lean C2 pin; W-9–W-11 H5 trees |
-| C-004 raw | [`drafts/plans/backtest-c004-raw.md`](../../drafts/plans/backtest-c004-raw.md) | W-12 Moral Machine raw same-unit geometry |
-| C-004 PDG | [`drafts/plans/backtest-c004-pdg.md`](../../drafts/plans/backtest-c004-pdg.md) | W-13 PDG refuse |
-| C-004 CPC | [`drafts/plans/backtest-c004-cpc.md`](../../drafts/plans/backtest-c004-cpc.md) | W-14 CPC2015 Exp. 1 null |
-| C-004 SCOTUS | [`drafts/plans/backtest-c004-scotus.md`](../../drafts/plans/backtest-c004-scotus.md) | W-16 SCDB justice geometry pass |
-| H7 Moltbook MB7a | [`drafts/plans/backtest-v2-moltbook-mb7a.md`](../../drafts/plans/backtest-v2-moltbook-mb7a.md) | W-17 structure_stop (Tier A broadcast substrate) |
-| Phase 5 | [`drafts/plans/backtest-phase5.md`](../../drafts/plans/backtest-phase5.md) | W-15 CIRIS stack C2 null P3 |
+| 0 | [`drafts/plans/backtest/backtest-phase0.md`](../../drafts/plans/backtest/backtest-phase0.md) | (scope only) |
+| 1 | [`drafts/plans/backtest/backtest-phase1.md`](../../drafts/plans/backtest/backtest-phase1.md) | W-1 H1 C2 mock; W-2 H4 MASK refuse |
+| 2 | [`drafts/plans/backtest/backtest-phase2.md`](../../drafts/plans/backtest/backtest-phase2.md) | W-3 Linux; W-4 Wikipedia |
+| 3 | [`drafts/plans/backtest/backtest-phase3.md`](../../drafts/plans/backtest/backtest-phase3.md) | W-5 Moral Machine bundle; W-6 Arena×MASK selector |
+| 4 | [`drafts/plans/backtest/backtest-phase4.md`](../../drafts/plans/backtest/backtest-phase4.md) | W-7 C-004 leftovers; W-8 Lean C2 pin; W-9–W-11 H5 trees |
+| C-004 raw | [`drafts/plans/backtest/backtest-c004-raw.md`](../../drafts/plans/backtest/backtest-c004-raw.md) | W-12 Moral Machine raw same-unit geometry |
+| C-004 PDG | [`drafts/plans/backtest/backtest-c004-pdg.md`](../../drafts/plans/backtest/backtest-c004-pdg.md) | W-13 PDG refuse |
+| C-004 CPC | [`drafts/plans/backtest/backtest-c004-cpc.md`](../../drafts/plans/backtest/backtest-c004-cpc.md) | W-14 CPC2015 Exp. 1 null |
+| C-004 SCOTUS | [`drafts/plans/backtest/backtest-c004-scotus.md`](../../drafts/plans/backtest/backtest-c004-scotus.md) | W-16 SCDB justice geometry pass |
+| H7 Moltbook MB7a | [`drafts/plans/backtest/backtest-v2-moltbook-mb7a.md`](../../drafts/plans/backtest/backtest-v2-moltbook-mb7a.md) | W-17 structure_stop (Tier A broadcast substrate) |
+| Phase 5 | [`drafts/plans/backtest/backtest-phase5.md`](../../drafts/plans/backtest/backtest-phase5.md) | W-15 CIRIS stack C2 null P3 |
 
 ```bash
 python3 experiments/backtest/check_c2_mock.py

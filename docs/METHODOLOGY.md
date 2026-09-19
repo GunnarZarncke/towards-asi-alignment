@@ -27,10 +27,10 @@ did (prompts, schemas, frozen JSON, checkers).
 | **This file** | `docs/METHODOLOGY.md` — shared habits, blind-generation lessons, backtest failure conditions |
 | **Experiment narrative + finding tables** | [`docs/EXPERIMENTS.md`](EXPERIMENTS.md) |
 | **Site / coverage matrix** | [`metadata/experiments.yml`](../metadata/experiments.yml) |
-| **Backtest charter + Exp. 1–6 pass/fail/refuse** | [`drafts/plans/backtest-phase0.md`](../drafts/plans/backtest-phase0.md) |
-| **Backtest phase index + finding template** | [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) |
-| **Backtest v2 (plan only)** | [`drafts/plans/backtest-v2.md`](../drafts/plans/backtest-v2.md) — Phase 1 Moltbook; [`backtest-v2-moltbook-inventory.md`](../drafts/plans/backtest-v2-moltbook-inventory.md); **MB7a freeze** [`backtest-v2-moltbook-mb7a.md`](../drafts/plans/backtest-v2-moltbook-mb7a.md) |
-| **Backtest per-host freezes** | `drafts/plans/backtest-phase*.md`, `backtest-c004-*.md`, `backtest-v2-moltbook-mb7a.md` |
+| **Backtest charter + Exp. 1–6 pass/fail/refuse** | [`drafts/plans/backtest/backtest-phase0.md`](../drafts/plans/backtest/backtest-phase0.md) |
+| **Backtest phase index + finding template** | [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md) |
+| **Backtest v2 (plan only)** | [`drafts/plans/backtest/backtest-v2.md`](../drafts/plans/backtest/backtest-v2.md) — Phase 1 Moltbook; [`backtest-v2-moltbook-inventory.md`](../drafts/plans/backtest/backtest-v2-moltbook-inventory.md); **MB7a freeze** [`backtest-v2-moltbook-mb7a.md`](../drafts/plans/backtest/backtest-v2-moltbook-mb7a.md) |
+| **Backtest per-host freezes** | `drafts/plans/backtest/backtest-phase*.md`, `backtest-c004-*.md`, `backtest-v2-moltbook-mb7a.md` |
 | **Backtest ledger + checkers** | [`experiments/backtest/`](../experiments/backtest/) |
 | **Sim blind-generation (binding)** | [`goal-agent-simulation/BLIND_GENERATION.md`](../experiments/goal-agent-simulation/BLIND_GENERATION.md), [`lab-simulation/BLIND_GENERATION.md`](../experiments/lab-simulation/BLIND_GENERATION.md), [`lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](../experiments/lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md), [`lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](../experiments/lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md), [`graded-lab-simulation/BLIND_GENERATION.md`](../experiments/graded-lab-simulation/BLIND_GENERATION.md) |
 | **External-test preregistration** | e.g. `experiments/lab-simulation/runners/et4_secret_loyalties/*_preregistration.json`, [`graded-lab-simulation/PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md) |
@@ -178,8 +178,8 @@ Backtests apply the core habits to **existing traces** (Linux git, Wikipedia,
 published evals, CIRIS-shaped mock, institutional documents). It does **not**
 use sim-style blind generation.
 
-**Charter and Exp. 1–6 tables:** [`backtest-phase0.md`](../drafts/plans/backtest-phase0.md).
-**Phase index:** [`backtest.md`](../drafts/plans/backtest.md).
+**Charter and Exp. 1–6 tables:** [`backtest-phase0.md`](../drafts/plans/backtest/backtest-phase0.md).
+**Phase index:** [`backtest.md`](../drafts/plans/backtest/backtest.md).
 **Ledger:** [`experiments/backtest/results/FINDINGS.md`](../experiments/backtest/results/FINDINGS.md).
 
 ### Finding shape
@@ -226,7 +226,7 @@ adversarial \(M\) at \(\kappa^*\); no live CIRIS bypass demo.
 
 ### Open depth gates (canonical TODOs)
 
-Tracked in [`drafts/plans/backtest.md`](../drafts/plans/backtest.md) and
+Tracked in [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md) and
 [`metadata/TODO.md`](../metadata/TODO.md):
 
 - [ ] **Adversarial \(M\)** (Expectation 3): stated \(\kappa^*\) + cost-of-faking

@@ -6,7 +6,7 @@ A conversation questioned the v2 unification of CEV with outer alignment: the CE
 ## Done
 - Added [`papers/path-construction/`](../../papers/path-construction/): `path-construction.tex`, `.bib`, `build.sh`, built PDF (7 pp.).
 - Listed the paper in [`papers/README.md`](../../papers/README.md).
-- Extended [`drafts/plans/construct.md`](../plans/construct.md): third object (path construction); Family E; checklist; P0/P4.
+- Extended [`drafts/plans/construct/construct.md`](../plans/construct/construct.md): third object (path construction); Family E; checklist; P0/P4.
 - Noted Family E in [`metadata/TODO.md`](../../metadata/TODO.md) Construct row. No Lean `PathRealizable` in v1.
 
 ## Decisions
@@ -21,11 +21,11 @@ A conversation questioned the v2 unification of CEV with outer alignment: the CE
 - Freeze a first \(\Phi\) independently of any exhibited path.
 - If later typed in Lean, `PathRealizable` stays uninterpreted next to `ConstructionCrux`.
 - Constructibility of taking the steps remains Family D, not this paper.
-- Left uncommitted (prior or adjacent drafts): maintained-blanket import, containment-verification news card, `drafts/alignment-problem-alternative-decomposition.md`, alignment-under-selection edits, site/field-news leftovers.
+- Left uncommitted (prior or adjacent drafts): maintained-blanket import, containment-verification news card, `drafts/project/alignment-problem-alternative-decomposition.md`, alignment-under-selection edits, site/field-news leftovers.
 
 ## Key paths
 - `papers/path-construction/path-construction.tex`
-- `drafts/plans/construct.md` (Family E)
+- `drafts/plans/construct/construct.md` (Family E)
 - `formal/AlignmentProofSpine/AlignmentConstruction.lean` (destination crux only)
 
 ## Commits

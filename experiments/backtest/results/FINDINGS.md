@@ -1,6 +1,6 @@
 # Backtest findings
 
-Prefix **`W-`**. Template: [`drafts/plans/backtest.md`](../../../drafts/plans/backtest.md) § Verification. Not a simulation line.
+Prefix **`W-`**. Template: [`drafts/plans/backtest/backtest.md`](../../../drafts/plans/backtest/backtest.md) § Verification. Not a simulation line.
 
 ---
 
@@ -39,7 +39,7 @@ yes — WA stop attaches to the named occurrence; composite policy continues
 H4 (public MASK paper + dataset card; gated HF splits not downloaded)
 
 ## Frozen protocol
-`drafts/plans/backtest-phase1.md` § H4. Source snapshot: arXiv:2503.03750 (v1). Decision rule frozen in Phase 0: honesty≠scale ⇒ refuse.
+`drafts/plans/backtest/backtest-phase1.md` § H4. Source snapshot: arXiv:2503.03750 (v1). Decision rule frozen in Phase 0: honesty≠scale ⇒ refuse.
 
 ## Expectation / claim
 Expectation 3, C-010, C-012 (adjacent silent-gap shape), A-009 / MB7b–d (unpaid)
@@ -53,7 +53,7 @@ yes — stop claiming MASK honesty as deployment-gating evidence; accuracy scali
 ## Artifact paths
 - https://arxiv.org/abs/2503.03750
 - https://huggingface.co/datasets/cais/MASK
-- `drafts/plans/backtest-phase1.md`
+- `drafts/plans/backtest/backtest-phase1.md`
 
 ---
 
@@ -80,7 +80,7 @@ yes — stop treating `Reviewed-by` or a revert as settling harm; stop treating 
 - https://zenodo.org/records/10654193
 - `experiments/backtest/join_bic_review_tags.py`
 - `experiments/backtest/fixtures/h2-linux-v1.json`
-- `drafts/plans/backtest-phase2.md`
+- `drafts/plans/backtest/backtest-phase2.md`
 
 ---
 
@@ -108,7 +108,7 @@ yes — stop using RfA votes as a causal CCI estimator; stop using BRFA as succe
 - https://github.com/lraszewski/wiki-socks
 - https://en.wikipedia.org/wiki/Wikipedia:Long-term_abuse/Orangemoody
 - `experiments/backtest/fixtures/h3-wikipedia-v1.json`
-- `drafts/plans/backtest-phase2.md`
+- `drafts/plans/backtest/backtest-phase2.md`
 
 ---
 
@@ -135,7 +135,7 @@ yes — stop treating a 1-D utilitarian/progress score as the value bundle
 - https://osf.io/3hvt2
 - `experiments/backtest/collect_h4_bundle.py`
 - `experiments/backtest/fixtures/h4-bundle-v1.json`
-- `drafts/plans/backtest-phase3.md`
+- `drafts/plans/backtest/backtest-phase3.md`
 
 ---
 
@@ -163,7 +163,7 @@ yes — stop reading Arena Elo (or the models it ranks) as evidence that honesty
 - https://arxiv.org/abs/2503.03750
 - `experiments/backtest/collect_h4_selector.py`
 - `experiments/backtest/fixtures/h4-selector-v1.json`
-- `drafts/plans/backtest-phase3.md`
+- `drafts/plans/backtest/backtest-phase3.md`
 
 ---
 
@@ -175,7 +175,7 @@ yes — stop reading Arena Elo (or the models it ranks) as evidence that honesty
 (none — refuse / skip; not a new fetch)
 
 ## Frozen protocol
-`c004-leftovers-v1.0.0`, `drafts/plans/backtest-phase4.md` Slice A
+`c004-leftovers-v1.0.0`, `drafts/plans/backtest/backtest-phase4.md` Slice A
 
 ## Expectation / claim
 C-004 leftovers; parent “met if” still unpaid on same-agent 1-D vs geometry
@@ -187,7 +187,7 @@ refuse (WVS/ESS/LHCV-host) and skip (optional HH/PKU)
 yes — stop fetching country/page surveys as C-004 backtest; do not treat LHCV papers as a host dump
 
 ## Artifact paths
-- `drafts/plans/backtest-phase4.md`
+- `drafts/plans/backtest/backtest-phase4.md`
 - W-5: `experiments/backtest/fixtures/h4-bundle-v1.json`
 
 ---
@@ -214,7 +214,7 @@ yes — stop treating a green named Verify/Lens path as integrity when the log s
 ## Artifact paths
 - `formal/AlignmentProofSpine/BacktestC2Instance.lean`
 - `experiments/backtest/fixtures/c2-tool-scout-v1.json`
-- `drafts/plans/backtest-phase4.md`
+- `drafts/plans/backtest/backtest-phase4.md`
 
 ---
 
@@ -239,7 +239,7 @@ yes — would not take off in US commerce under the Order
 
 ## Artifact paths
 - `experiments/backtest/fixtures/h5-faa-737max-v1.json`
-- `drafts/plans/backtest-phase4.md`
+- `drafts/plans/backtest/backtest-phase4.md`
 
 ---
 
@@ -302,7 +302,7 @@ yes — 0.10 not in Stretch
 H4 (OSF osf.io/3hvt2 raw SharedResponses; Awad et al. 2018)
 
 ## Frozen protocol
-`h4-mm-raw-v1.0.0`, `experiments/backtest/fixtures/h4-mm-raw-v1.json`. `python3 experiments/backtest/check_h4_mm_raw.py`. `drafts/plans/backtest-c004-raw.md`
+`h4-mm-raw-v1.0.0`, `experiments/backtest/fixtures/h4-mm-raw-v1.json`. `python3 experiments/backtest/check_h4_mm_raw.py`. `drafts/plans/backtest/backtest-c004-raw.md`
 
 ## Expectation / claim
 C-004 fail (1-D leaf); ch16 bundle-effect detection pass; MB2 open
@@ -316,7 +316,7 @@ yes — stop treating country AMCE or a Number-only score as the value bundle fo
 ## Artifact paths
 - `experiments/backtest/collect_h4_mm_raw.py`
 - `experiments/backtest/fixtures/h4-mm-raw-v1.json`
-- `drafts/plans/backtest-c004-raw.md`
+- `drafts/plans/backtest/backtest-c004-raw.md`
 - https://osf.io/3hvt2
 
 ---
@@ -329,7 +329,7 @@ yes — stop treating country AMCE or a Number-only score as the value bundle fo
 H4 (PDG; no eligible individual rows scored)
 
 ## Frozen protocol
-`h4-pdg-v1.0.0`, `experiments/backtest/fixtures/h4-pdg-v1.json`. `python3 experiments/backtest/check_h4_pdg.py`. `drafts/plans/backtest-c004-pdg.md`
+`h4-pdg-v1.0.0`, `experiments/backtest/fixtures/h4-pdg-v1.json`. `python3 experiments/backtest/check_h4_pdg.py`. `drafts/plans/backtest/backtest-c004-pdg.md`
 
 ## Expectation / claim
 C-004 bearer substitution / Φ sketch (unpaid)
@@ -343,7 +343,7 @@ yes — stop treating OSF PDG preregs as a host dump; do not score the 2020 adol
 ## Artifact paths
 - `experiments/backtest/collect_h4_pdg.py`
 - `experiments/backtest/fixtures/h4-pdg-v1.json`
-- `drafts/plans/backtest-c004-pdg.md`
+- `drafts/plans/backtest/backtest-c004-pdg.md`
 - https://doi.org/10.34894/c81eja
 
 ---
@@ -356,7 +356,7 @@ yes — stop treating OSF PDG preregs as a host dump; do not score the 2020 adol
 H4 (Zenodo 10.5281/zenodo.321652 `RawDataExperiment1sorted.csv`; Erev et al. 2017)
 
 ## Frozen protocol
-`h4-cpc2015-v1.0.0`, `experiments/backtest/fixtures/h4-cpc2015-v1.json`. `python3 experiments/backtest/check_h4_cpc2015.py`. `drafts/plans/backtest-c004-cpc.md`
+`h4-cpc2015-v1.0.0`, `experiments/backtest/fixtures/h4-cpc2015-v1.json`. `python3 experiments/backtest/check_h4_cpc2015.py`. `drafts/plans/backtest/backtest-c004-cpc.md`
 
 ## Expectation / claim
 Detection-pipeline check (not C-004 values); MB2 open
@@ -370,7 +370,7 @@ yes — stop treating this CPC2015 Exp. 1 freeze as evidence that a multi-featur
 ## Artifact paths
 - `experiments/backtest/collect_h4_cpc2015.py`
 - `experiments/backtest/fixtures/h4-cpc2015-v1.json`
-- `drafts/plans/backtest-c004-cpc.md`
+- `drafts/plans/backtest/backtest-c004-cpc.md`
 - https://doi.org/10.5281/zenodo.321652
 
 ---
@@ -383,7 +383,7 @@ yes — stop treating this CPC2015 Exp. 1 freeze as evidence that a multi-featur
 H1 (CIRISAgent 2.9.38-stable mock LLM, `127.0.0.1:8080`)
 
 ## Frozen protocol
-`c2-v2.0.0`, `experiments/backtest/fixtures/c2-tool-scout-v2.json`. `python3 experiments/backtest/check_c2_stack.py`. `drafts/plans/backtest-phase5.md`
+`c2-v2.0.0`, `experiments/backtest/fixtures/c2-tool-scout-v2.json`. `python3 experiments/backtest/check_c2_stack.py`. `drafts/plans/backtest/backtest-phase5.md`
 
 ## Expectation / claim
 C-003 / C-005 stack-backed C2; MB1 open
@@ -399,7 +399,7 @@ yes — stop treating this mock-LLM C2 harness as a stack-backed bypass; do not 
 - `experiments/backtest/check_c2_stack.py`
 - `experiments/backtest/fixtures/c2-tool-scout-v2.json`
 - `~/repos/ciris/review/harness/c2_tool_scout_harness.py`
-- `drafts/plans/backtest-phase5.md`
+- `drafts/plans/backtest/backtest-phase5.md`
 
 ---
 
@@ -411,7 +411,7 @@ yes — stop treating this mock-LLM C2 harness as a stack-backed bypass; do not 
 H4 (SCDB 2025 Release 01 `SCDB_2025_01_justiceCentered_Citation.csv`; Spaeth et al.)
 
 ## Frozen protocol
-`h4-scotus-v1.0.0`, `experiments/backtest/fixtures/h4-scotus-v1.json`. `python3 experiments/backtest/check_h4_scotus.py`. `drafts/plans/backtest-c004-scotus.md`
+`h4-scotus-v1.0.0`, `experiments/backtest/fixtures/h4-scotus-v1.json`. `python3 experiments/backtest/check_h4_scotus.py`. `drafts/plans/backtest/backtest-c004-scotus.md`
 
 ## Expectation / claim
 Same-unit detection-pipeline / C-004 institutional policy-direction sketch (not values discharge); MB2 open
@@ -425,7 +425,7 @@ yes — stop treating single issue-area axis as the whole reusable direction for
 ## Artifact paths
 - `experiments/backtest/collect_h4_scotus.py`
 - `experiments/backtest/fixtures/h4-scotus-v1.json`
-- `drafts/plans/backtest-c004-scotus.md`
+- `drafts/plans/backtest/backtest-c004-scotus.md`
 - https://scdb.la.psu.edu/data/2025-release-01/
 
 ---
@@ -440,7 +440,7 @@ yes — stop treating single issue-area axis as the whole reusable direction for
 H7 (Moltbook public archive; jscmp4/Moltbook 2026-07-03)
 
 ## Frozen protocol
-`h7-moltbook-mb7a-v1.0.0`, `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json`, prereg `h7-moltbook-mb7a-v1.preregistration.json`. Fetch: `python3 experiments/backtest/fetch_h7_moltbook_cache.py`. Collect: `python3 experiments/backtest/collect_h7_moltbook_mb7a.py`. Checker: `python3 experiments/backtest/check_h7_moltbook_mb7a.py`. Plan: `drafts/plans/backtest-v2-moltbook-mb7a.md`
+`h7-moltbook-mb7a-v1.0.0`, `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json`, prereg `h7-moltbook-mb7a-v1.preregistration.json`. Fetch: `python3 experiments/backtest/fetch_h7_moltbook_cache.py`. Collect: `python3 experiments/backtest/collect_h7_moltbook_mb7a.py`. Checker: `python3 experiments/backtest/check_h7_moltbook_mb7a.py`. Plan: `drafts/plans/backtest/backtest-v2-moltbook-mb7a.md`
 
 ## Expectation / claim
 MB7a entity/coalition pinning with anchored Tier A–D partial ground truth; MB6/MB7d cohort context only on this leaf
@@ -457,6 +457,6 @@ yes — stop treating discursive `E_agent` merge alone as a coalition pass on th
 - `experiments/backtest/check_h7_moltbook_mb7a.py`
 - `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.json`
 - `experiments/backtest/fixtures/h7-moltbook-mb7a-v1.preregistration.json`
-- `drafts/plans/backtest-v2-moltbook-mb7a.md`
-- `drafts/plans/backtest-v2-moltbook-inventory.md`
+- `drafts/plans/backtest/backtest-v2-moltbook-mb7a.md`
+- `drafts/plans/backtest/backtest-v2-moltbook-inventory.md`
 - https://huggingface.co/datasets/jscmp4/Moltbook

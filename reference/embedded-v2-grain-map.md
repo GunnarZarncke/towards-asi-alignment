@@ -1,6 +1,6 @@
 # Embedded V2 grain map
 
-**Status:** canonical reference (2026-09-18). Plan: [`drafts/plans/embedded-v2.md`](../drafts/plans/embedded-v2.md). **Do not unify in Lean.** Use M1 now; M2 for prose silence checks; M3 only when a bridge rewrite needs ambient \(z\).
+**Status:** canonical reference (2026-09-18). Plan: [`drafts/plans/construct/embedded-v2.md`](../drafts/plans/construct/embedded-v2.md). **Do not unify in Lean.** Use M1 now; M2 for prose silence checks; M3 only when a bridge rewrite needs ambient \(z\).
 
 ## One transition, three questions
 
@@ -119,6 +119,6 @@ Cycle: specify → construct → identify → certify → act/refuse ↻
 
 ## Related
 
-- [`drafts/plans/embedded-v2.md`](../drafts/plans/embedded-v2.md) — decisions, roster types, phasing
+- [`drafts/plans/construct/embedded-v2.md`](../drafts/plans/construct/embedded-v2.md) — decisions, roster types, phasing
 - [`reference/field-agendas/data/lifecycle.yml`](field-agendas/data/lifecycle.yml) — cycle YAML
 - [`papers/path-construction/`](../papers/path-construction/) — path grain briefing

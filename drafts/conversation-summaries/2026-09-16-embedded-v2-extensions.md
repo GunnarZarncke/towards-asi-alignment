@@ -6,7 +6,7 @@ User asked to review `drafts/Proposed V2 Extensions_ Embedded Construction, Fiel
 
 ## Done
 
-- Live plan: [`drafts/plans/embedded-v2.md`](../plans/embedded-v2.md).
+- Live plan: [`drafts/plans/construct/embedded-v2.md`](../plans/construct/embedded-v2.md).
 - Status banner on the source memo (not the live plan).
 - Construct Families A–D: two certification failures; intervention coordinates; episode-freeze vs legitimate \(P_{t+1}\); constructor ecology; \(D_{\mathrm{joint}}\) kept off `ConstructionCrux`; Family E grain note.
 - Field: bridge-as-cut method; capacity vs structural; no `actsOnContextOf` matrix paint; lifecycle reader axis unchanged.
@@ -24,14 +24,14 @@ No v1 manuscript, site, or Lean edits.
 
 ## Open / next
 
-Author questions Q1–Q8 in the session reply and [`embedded-v2.md`](../plans/embedded-v2.md). Recommended next: answer Q2/Q3/Q4/Q7 (target vs joint basin; lifecycle copy; context-claims refuse; which orgs are structural) before any site or Lean work.
+Author questions Q1–Q8 in the session reply and [`embedded-v2.md`](../plans/construct/embedded-v2.md). Recommended next: answer Q2/Q3/Q4/Q7 (target vs joint basin; lifecycle copy; context-claims refuse; which orgs are structural) before any site or Lean work.
 
 ## Key paths
 
-- [`drafts/plans/embedded-v2.md`](../plans/embedded-v2.md)
-- [`drafts/plans/construct.md`](../plans/construct.md)
-- [`drafts/plans/field.md`](../plans/field.md)
-- [`drafts/plans/spine.md`](../plans/spine.md)
+- [`drafts/plans/construct/embedded-v2.md`](../plans/construct/embedded-v2.md)
+- [`drafts/plans/construct/construct.md`](../plans/construct/construct.md)
+- [`drafts/plans/field/field.md`](../plans/field/field.md)
+- [`drafts/plans/spine/spine.md`](../plans/spine/spine.md)
 - Source memo in `drafts/Proposed V2 Extensions_ Embedded Construction, Field Dynamics, and Bridge Cuts.md`
 
 ## Commits

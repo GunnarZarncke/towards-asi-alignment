@@ -33,7 +33,7 @@ fake `ch46` name.
       number was corrupted). Rewrite link targets and the visible chapter numbers in the row text.
 - [x] Add rows for the 42 unindexed logs, in date order.
 - [x] One dangling row is unrelated: `2026-07-19-ciris-accord-reply-eric-moore.md` was indexed but
-      never written; the untracked reply itself exists as `drafts/ciris-accord-reply-eric-moore.md`.
+      never written; the untracked reply itself exists as `drafts/outreach/ciris-accord-reply-eric-moore.md`.
       Point the row at the artifact or drop it.
 - [x] Verify: log filenames on disk and index link targets are set-equal.
 
@@ -158,10 +158,10 @@ Working tree is ~20 GB, essentially all regenerable and correctly ignored.
 
 ## Task 9 — Commit the finished untracked work
 
-- [x] `drafts/hostile-review.md` is byte-identical to the deleted root `hostile-review.md` — a clean
+- [x] `drafts/editorial/hostile-review.md` is byte-identical to the deleted root `hostile-review.md` — a clean
       move. Stage both sides.
-- [x] `drafts/ciris-accord-reply-eric-moore.md` (finished reply; see Task 1 orphan row).
-- [x] `drafts/soo-benchmark-scenarios-from-book.md` — artifact for an open `metadata/TODO.md` item.
+- [x] `drafts/outreach/ciris-accord-reply-eric-moore.md` (finished reply; see Task 1 orphan row).
+- [x] `drafts/benchmarks/soo-benchmark-scenarios-from-book.md` — artifact for an open `metadata/TODO.md` item.
 - [x] `scripts/generate_concept_logos.py` + `drafts/illustrations/concept-logos/` (44 SVGs).
       Committing SVGs without the generator would be the bad option; commit both.
       `preview.html` is a throwaway contact sheet — do not commit.
