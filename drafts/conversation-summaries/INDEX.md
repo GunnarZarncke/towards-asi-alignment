@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-19 | **Interactive Field Crux Map UI** — Bridge labels, responsive hover/overlay/click, caption links. | [2026-09-19-field-crux-map-ui.md](2026-09-19-field-crux-map-ui.md) |
 | 2026-09-19 | **Mapping AI pointer** — Field-map starting-points bullet; not a spec-sheet column. | [2026-09-19-mapping-ai-pointer.md](2026-09-19-mapping-ai-pointer.md) |
 | 2026-09-19 | **Quiz news-takeaways CI fix** — Three missing takeaway questions for Sep field-news; quiz bank check green again. | [2026-09-19-quiz-news-takeaways-fix.md](2026-09-19-quiz-news-takeaways-fix.md) |
 | 2026-09-19 | **Spring map → App B** — Moved off ch05; card-suitable summary with HTML links. | [2026-09-19-spring-map-appb.md](2026-09-19-spring-map-appb.md) |

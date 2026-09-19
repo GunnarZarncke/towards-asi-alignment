@@ -118,7 +118,7 @@ export function buildSimulation(
         vx: 0,
         vy: 0,
         pinned: options.mode === "A" || options.pinBridges,
-        radius: 22,
+        radius: 34,
       });
     }
 

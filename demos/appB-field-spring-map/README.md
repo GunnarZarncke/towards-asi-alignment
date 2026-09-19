@@ -1,4 +1,4 @@
-# Field Crux Map
+# Interactive Field Crux Map
 
 Place [AISafety.com](https://aisafety.com/map) organizations on the book's bridge cruxes (MB1–MB11). Springs pull each listing toward the bridges it works on — inherited from the Appendix B field matrix when the org matches, otherwise from a conservative heuristic. A short spring means the org *touches* that crux, not that the crux is solved.
 

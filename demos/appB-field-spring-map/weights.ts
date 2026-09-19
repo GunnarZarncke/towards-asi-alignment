@@ -17,6 +17,22 @@ export const LIVE_BRIDGES = [
 export type BridgeKey = (typeof LIVE_BRIDGES)[number];
 export type WeightVector = Record<BridgeKey, number>;
 
+/** Short labels on spring-map bridge nodes (not MB* codes). */
+export const BRIDGE_SHORT_LABELS: Record<BridgeKey, string> = {
+  MB1: "Boundary",
+  MB2: "Value",
+  MB3: "Ref.",
+  MB4: "Corrig.",
+  MB4a: "Indep.",
+  MB5: "Tiling",
+  MB6: "Goodhard",
+  MB7: "Inner",
+  MB7d: "Acausal",
+  MB9: "Ground.",
+  MB10: "Gaming",
+  MB11: "Safety",
+};
+
 /** Always shown in the default research-only filter (companion site / hub listings). */
 export const PINNED_LISTING_IDS = new Set(["rec1QpsZCIfnfTF1y"]);
 

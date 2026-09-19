@@ -15,6 +15,7 @@ import {
 /** Same zoom for both layouts (tied to dependency scale, not circle ring scale). */
 const DEFAULT_VIEW_SCALE = 1.0 / DEPENDENCY_ANCHOR_SCALE;
 import {
+  BRIDGE_SHORT_LABELS,
   LIVE_BRIDGES,
   categoryParts,
   dominantBridge,
@@ -25,6 +26,10 @@ import {
   type BridgeKey,
   type WeightVector,
 } from "./weights.js";
+
+const COMPACT_LAYOUT_MQ = "(max-width: 900px)";
+const MOUSE_POINTER_MQ = "(hover: hover) and (pointer: fine)";
+const BRIDGE_POP_SCALE = 2;
 
 const SIM_OPTIONS: SimOptions = {
   mode: "A",
@@ -73,14 +78,14 @@ function escapeHtml(text: string): string {
     .replace(/"/g, "&quot;");
 }
 
-/** Companion-site bridge card URL (embedded demo vs standalone serve). */
-function bridgeCardHref(snapshot: Snapshot, cardPath: string): string {
-  if (!cardPath) return "";
+/** Companion-site path (embedded demo vs standalone serve). */
+function companionHref(snapshot: Snapshot, sitePath: string): string {
+  if (!sitePath) return "";
   const path = window.location.pathname;
   const embedded = path.match(/^(.*)\/chapter-demos\//);
-  if (embedded) return `${embedded[1]}${cardPath}`;
+  if (embedded) return `${embedded[1]}${sitePath}`;
   const base = String(snapshot.meta.companionSite ?? "https://towards-alignment.com");
-  return `${base.replace(/\/$/, "")}${cardPath}`;
+  return `${base.replace(/\/$/, "")}${sitePath}`;
 }
 
 const BRIDGE_COLORS: Record<BridgeKey, string> = {
@@ -217,11 +222,14 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
 
   const ui = document.createElement("div");
   ui.className = "fsm-root";
+  const evidenceCatalogHref = companionHref(
+    snapshot,
+    "/field/coverage/#coverage-evidence-catalog",
+  );
   ui.innerHTML = `
     <header class="fsm-header">
-      <h1>Field Crux Map</h1>
-      <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. 
-      Weights reflect field listed evidence or heuristics.</p>
+      <h1>Interactive Field Crux Map</h1>
+      <p class="fsm-caption"><a href="https://aisafety.com/map" target="_blank" rel="noopener">AISafety.com</a> listings placed by bridge-crux affinity. Weights reflect field <a href="${escapeHtml(evidenceCatalogHref)}">listed evidence</a> or heuristics.</p>
     </header>
     <div class="fsm-controls">
       <label>Category <select data-category><option value="all">All research</option></select></label>
@@ -229,7 +237,14 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     </div>
     <div class="fsm-main">
       <div class="fsm-canvas-wrap"><canvas data-canvas></canvas></div>
-      <aside class="fsm-panel" data-panel><p class="muted">Click a node.</p></aside>
+      <aside class="fsm-panel" data-panel><p class="muted">Hover a node.</p></aside>
+    </div>
+    <div class="fsm-overlay" data-overlay hidden>
+      <div class="fsm-overlay-backdrop" data-overlay-close></div>
+      <div class="fsm-overlay-pane">
+        <button type="button" class="fsm-overlay-close" data-overlay-close aria-label="Close">×</button>
+        <div data-overlay-content></div>
+      </div>
     </div>
     <footer class="fsm-footer">Data: <a href="https://aisafety.com/map" target="_blank" rel="noopener">AISafety.com</a> (CC-BY-4.0)</footer>
   `;
@@ -239,14 +254,15 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
   style.textContent = `
     .fsm-root { font-family: system-ui,sans-serif; color:#1a2433; max-width:1200px; margin:0 auto; padding:16px; }
     .fsm-header h1 { margin:0 0 6px; font-size:1.35rem; }
-    .fsm-caption { margin:0 0 12px; color:#555; max-width:70ch; font-size:0.92rem; }
+    .fsm-caption { margin:0 0 12px; color:#555; font-size:0.92rem; line-height:1.45; }
+    .fsm-caption a { color:#2f4f6f; }
     .fsm-controls { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; margin-bottom:12px; font-size:0.85rem; }
     .fsm-controls label { display:flex; align-items:center; gap:4px; }
     .fsm-controls select, .fsm-controls button { font:inherit; }
     .fsm-controls button { padding:4px 10px; border:1px solid #c8d4e0; border-radius:4px; background:#fff; cursor:pointer; }
     .fsm-controls button:hover { background:#f0f4f8; }
     .fsm-main { display:grid; grid-template-columns:1fr 280px; gap:12px; min-height:520px; }
-    @media (max-width:900px) { .fsm-main { grid-template-columns:1fr; } }
+    @media (max-width:900px) { .fsm-main { grid-template-columns:1fr; } .fsm-panel { display:none; } }
     .fsm-canvas-wrap { position:relative; border:1px solid #c8d4e0; border-radius:8px; background:#fff; height:480px; min-height:480px; overflow:hidden; }
     canvas { display:block; width:100%; cursor:grab; }
     canvas:active { cursor:grabbing; }
@@ -263,6 +279,12 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     .weight-fill { height:100%; border-radius:4px; }
     .fsm-panel .ev-list { margin:8px 0 0; padding-left:18px; font-size:0.78rem; color:#444; }
     .fsm-footer { margin-top:10px; font-size:0.8rem; color:#666; }
+    .fsm-overlay { position:fixed; inset:0; z-index:100; display:flex; align-items:flex-end; justify-content:center; }
+    .fsm-overlay[hidden] { display:none; }
+    .fsm-overlay-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+    .fsm-overlay-pane { position:relative; background:#fff; border-radius:12px 12px 0 0; max-height:75vh; overflow-y:auto; padding:16px 16px 24px; width:100%; max-width:640px; font-size:0.88rem; box-shadow:0 -4px 24px rgba(0,0,0,0.15); }
+    .fsm-overlay-close { position:absolute; top:8px; right:10px; border:none; background:transparent; font-size:1.5rem; line-height:1; cursor:pointer; color:#555; padding:4px 8px; z-index:1; }
+    .fsm-overlay-pane h2 { margin:0 0 6px; font-size:1rem; padding-right:28px; }
   `;
   document.head.appendChild(style);
 
@@ -282,14 +304,37 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
 
   const canvas = ui.querySelector<HTMLCanvasElement>("[data-canvas]")!;
   const panel = ui.querySelector<HTMLElement>("[data-panel]")!;
+  const overlay = ui.querySelector<HTMLElement>("[data-overlay]")!;
+  const overlayContent = ui.querySelector<HTMLElement>("[data-overlay-content]")!;
   const ctx = canvas.getContext("2d")!;
   const tooltip = document.createElement("div");
   tooltip.className = "fsm-tooltip";
   tooltip.hidden = true;
   canvas.parentElement!.appendChild(tooltip);
   let dragging: { lastX: number; lastY: number } | null = null;
+  let pointerDown: { x: number; y: number; ox: number; oy: number } | null = null;
+  let listingCount = 0;
+  let suppressMouseUntil = 0;
 
   const geometryBtn = ui.querySelector<HTMLButtonElement>("[data-toggle-geometry]")!;
+
+  /** Side panel hidden (narrow viewport). */
+  function compactLayout(): boolean {
+    return window.matchMedia(COMPACT_LAYOUT_MQ).matches;
+  }
+
+  /** Tap-to-select overlay flow — touch/coarse pointer, not narrow desktop with a mouse. */
+  function touchInteraction(): boolean {
+    return compactLayout() && !window.matchMedia(MOUSE_POINTER_MQ).matches;
+  }
+
+  function sidePanelVisible(): boolean {
+    return !compactLayout();
+  }
+
+  function focusNodeId(): string | null {
+    return touchInteraction() ? selectedId : hoveredId;
+  }
 
   function simOptions(): SimOptions {
     return { ...SIM_OPTIONS, pinGeometry };
@@ -314,9 +359,40 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     nodes = sim.nodes;
     edges = sim.edges;
     ensureLogoImages(filtered, logos);
-    panel.innerHTML = `<p class="muted">${filtered.length} listings · click a node</p>`;
+    listingCount = filtered.length;
+    resetPanel();
     selectedId = null;
     hoveredId = null;
+    closeOverlay();
+  }
+
+  function resetPanel() {
+    const hint = touchInteraction() ? "Tap a node" : "Hover a node";
+    panel.innerHTML = `<p class="muted">${listingCount} listings · ${hint}</p>`;
+  }
+
+  function closeOverlay() {
+    overlay.hidden = true;
+    overlayContent.innerHTML = "";
+  }
+
+  function openOverlay(node: SimNode) {
+    overlayContent.innerHTML = panelHtml(node);
+    overlay.hidden = false;
+  }
+
+  function nodeUrl(node: SimNode): string | null {
+    if (node.kind === "bridge" && node.bridgeKey) {
+      const card = snapshot.bridgeCards?.[node.bridgeKey];
+      return card?.cardPath ? companionHref(snapshot, card.cardPath) : null;
+    }
+    const listing = snapshot.listings.find((l) => l.id === node.projectId);
+    return listing?.link ?? null;
+  }
+
+  function navigateToNode(node: SimNode) {
+    const href = nodeUrl(node);
+    if (href) window.open(href, "_blank", "noopener");
   }
 
   function strokeEdge(
@@ -381,13 +457,19 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     return [(sx - w / 2) / transform.scale - transform.x, (sy - h / 2) / transform.scale - transform.y] as const;
   }
 
+  function nodeHitRadius(n: SimNode): number {
+    const focus = focusNodeId();
+    const pop = n.kind === "bridge" && focus === n.id ? BRIDGE_POP_SCALE : 1;
+    return n.radius * pop + 6;
+  }
+
   function pick(sx: number, sy: number) {
     const [wx, wy] = screenToWorld(sx, sy);
     let best: SimNode | null = null;
     let bestD = Infinity;
     for (const n of nodes) {
       const d = Math.hypot(n.x - wx, n.y - wy);
-      if (d < n.radius + 6 && d < bestD) {
+      if (d < nodeHitRadius(n) && d < bestD) {
         bestD = d;
         best = n;
       }
@@ -395,37 +477,81 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     return best;
   }
 
-  function renderPanel(node: SimNode) {
+  function panelHtml(node: SimNode): string {
     if (node.kind === "bridge" && node.bridgeKey) {
       const card = snapshot.bridgeCards?.[node.bridgeKey];
       const label = snapshot.bridges[node.bridgeKey] ?? node.bridgeKey;
       const title = card?.title ?? `${node.bridgeKey} — ${label}`;
       const summary = card?.summary ?? "";
-      const href = card?.cardPath ? bridgeCardHref(snapshot, card.cardPath) : "";
+      const href = card?.cardPath ? companionHref(snapshot, card.cardPath) : "";
       const linkHtml = href
         ? `<p><a href="${escapeHtml(href)}" target="_blank" rel="noopener">Bridge concept card</a></p>`
         : "";
-      panel.innerHTML = `
+      return `
         <h2>${escapeHtml(title)}</h2>
         ${summary ? `<p class="bridge-summary">${escapeHtml(summary)}</p>` : `<p>${escapeHtml(label)}</p>`}
         ${linkHtml}`;
-      return;
     }
     const listing = snapshot.listings.find((l) => l.id === node.projectId);
-    if (!listing) return;
+    if (!listing) return "";
     const dom = dominantBridge(listingWeights(listing));
     const logoHtml = listing.logoLocal
       ? `<img class="panel-logo" src="./data/${listing.logoLocal}" alt="" />`
       : "";
-    panel.innerHTML = `
+    return `
       ${logoHtml}
-      <h2>${listing.title}</h2>
-      <p class="meta">${listing.category} · ${listing.status}</p>
-      <p>${listing.description}</p>
-      ${listing.link ? `<p><a href="${listing.link}" target="_blank" rel="noopener">Website</a></p>` : ""}
+      <h2>${escapeHtml(listing.title)}</h2>
+      <p class="meta">${escapeHtml(listing.category)} · ${escapeHtml(listing.status)}</p>
+      <p>${escapeHtml(listing.description)}</p>
+      ${listing.link ? `<p><a href="${escapeHtml(listing.link)}" target="_blank" rel="noopener">Website</a></p>` : ""}
       ${renderProvenance(listing)}
       ${dom ? `<p><strong>Dominant:</strong> ${dom}</p>` : ""}
       <div>${renderWeightBars(listing, snapshot.bridges)}</div>`;
+  }
+
+  function renderPanel(node: SimNode) {
+    panel.innerHTML = panelHtml(node);
+  }
+
+  function drawBridgeNode(ctx: CanvasRenderingContext2D, n: SimNode, active: boolean) {
+    const col = n.bridgeKey ? BRIDGE_COLORS[n.bridgeKey] : "#888";
+    const scale = active ? BRIDGE_POP_SCALE : 1;
+    const r = n.radius;
+    const label = n.bridgeKey ? BRIDGE_SHORT_LABELS[n.bridgeKey] : "";
+    ctx.save();
+    ctx.translate(n.x, n.y);
+    ctx.scale(scale, scale);
+    ctx.fillStyle = col;
+    ctx.strokeStyle = active ? "#111" : "#fff";
+    ctx.lineWidth = active ? 2.5 : 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, -r);
+    ctx.lineTo(r, 0);
+    ctx.lineTo(0, r);
+    ctx.lineTo(-r, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#fff";
+    ctx.font = `bold ${Math.max(8, Math.round(10 / scale))}px system-ui`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, 0, 0);
+    ctx.restore();
+  }
+
+  function handleMobileTap(node: SimNode | null) {
+    if (!node) {
+      selectedId = null;
+      closeOverlay();
+      return;
+    }
+    if (selectedId === node.id) {
+      openOverlay(node);
+    } else {
+      selectedId = node.id;
+      closeOverlay();
+    }
   }
 
   function drawFrame() {
@@ -440,19 +566,20 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     ctx.scale(transform.scale, transform.scale);
 
     const nodeById = new Map(nodes.map((n) => [n.id, n]));
-    const hoveredNode = hoveredId ? nodeById.get(hoveredId) : undefined;
+    const focusId = focusNodeId();
+    const focusNode = focusId ? nodeById.get(focusId) : undefined;
     const edgeHighlight = (e: SimEdge): "normal" | "dim" | "bright" => {
-      if (!hoveredNode) return "normal";
-      if (hoveredNode.kind === "project") {
+      if (!focusNode) return "normal";
+      if (focusNode.kind === "project") {
         if (e.kind !== "crux") return "normal";
-        return e.source === hoveredId ? "bright" : "dim";
+        return e.source === focusId ? "bright" : "dim";
       }
-      if (hoveredNode.kind === "bridge") {
+      if (focusNode.kind === "bridge") {
         if (e.kind === "crux") {
-          return e.target === hoveredId ? "bright" : "dim";
+          return e.target === focusId ? "bright" : "dim";
         }
         if (e.kind === "bridge-dep" || e.kind === "bridge-dep-static") {
-          return e.source === hoveredId || e.target === hoveredId ? "bright" : "dim";
+          return e.source === focusId || e.target === focusId ? "bright" : "dim";
         }
       }
       return "normal";
@@ -474,28 +601,12 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     }
 
     for (const n of nodes) {
-      const sel = selectedId === n.id;
-      if (n.kind === "bridge") {
-        const col = n.bridgeKey ? BRIDGE_COLORS[n.bridgeKey] : "#888";
-        ctx.fillStyle = col;
-        ctx.strokeStyle = sel ? "#111" : "#fff";
-        ctx.lineWidth = sel ? 2.5 : 1.5;
-        const r = n.radius;
-        ctx.beginPath();
-        ctx.moveTo(n.x, n.y - r);
-        ctx.lineTo(n.x + r, n.y);
-        ctx.lineTo(n.x, n.y + r);
-        ctx.lineTo(n.x - r, n.y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = "#fff";
-        ctx.font = "bold 9px system-ui";
-        ctx.textAlign = "center";
-        ctx.fillText(n.bridgeKey ?? "", n.x, n.y + 3);
-      } else {
-        drawProjectNode(ctx, n, sel, logos);
-      }
+      if (n.kind === "bridge") continue;
+      drawProjectNode(ctx, n, focusId === n.id, logos);
+    }
+    for (const n of nodes) {
+      if (n.kind !== "bridge") continue;
+      drawBridgeNode(ctx, n, focusId === n.id);
     }
     ctx.restore();
   }
@@ -528,17 +639,14 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
   function hideTooltip() {
     tooltip.hidden = true;
     tooltip.classList.remove("fsm-tooltip-bridge");
-    hoveredId = null;
   }
 
-  function updateTooltip(clientX: number, clientY: number, offsetX: number, offsetY: number) {
-    if (dragging) {
-      hideTooltip();
-      return;
-    }
+  function updateDesktopHover(clientX: number, clientY: number, offsetX: number, offsetY: number) {
+    if (dragging || touchInteraction()) return;
     const node = pick(offsetX, offsetY);
     if (node?.kind === "project" || node?.kind === "bridge") {
       hoveredId = node.id;
+      if (sidePanelVisible()) renderPanel(node);
       if (node.kind === "bridge" && node.bridgeKey) {
         const card = snapshot.bridgeCards?.[node.bridgeKey];
         tooltip.textContent = card?.title ?? snapshot.bridges[node.bridgeKey] ?? node.label;
@@ -553,26 +661,27 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
       canvas.style.cursor = "pointer";
       return;
     }
+    hoveredId = null;
+    if (sidePanelVisible()) resetPanel();
     hideTooltip();
     canvas.style.cursor = "grab";
   }
 
   canvas.addEventListener("mousemove", (e) => {
-    updateTooltip(e.clientX, e.clientY, e.offsetX, e.offsetY);
+    updateDesktopHover(e.clientX, e.clientY, e.offsetX, e.offsetY);
   });
   canvas.addEventListener("mouseleave", () => {
+    if (touchInteraction()) return;
+    hoveredId = null;
+    if (sidePanelVisible()) resetPanel();
     hideTooltip();
     canvas.style.cursor = "grab";
   });
 
   canvas.addEventListener("mousedown", (e) => {
+    pointerDown = { x: e.clientX, y: e.clientY, ox: e.offsetX, oy: e.offsetY };
     dragging = { lastX: e.clientX, lastY: e.clientY };
     hideTooltip();
-    const node = pick(e.offsetX, e.offsetY);
-    if (node) {
-      selectedId = node.id;
-      renderPanel(node);
-    }
   });
   window.addEventListener("mousemove", (e) => {
     if (!dragging) return;
@@ -581,9 +690,68 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     dragging.lastX = e.clientX;
     dragging.lastY = e.clientY;
   });
-  window.addEventListener("mouseup", () => {
+  window.addEventListener("mouseup", (e) => {
+    if (pointerDown && !touchInteraction() && Date.now() >= suppressMouseUntil) {
+      const moved = Math.hypot(e.clientX - pointerDown.x, e.clientY - pointerDown.y);
+      if (moved < 6) {
+        const node = pick(pointerDown.ox, pointerDown.oy);
+        if (node) {
+          if (sidePanelVisible()) navigateToNode(node);
+          else openOverlay(node);
+        } else if (compactLayout()) {
+          closeOverlay();
+        }
+      }
+    }
     dragging = null;
+    pointerDown = null;
   });
+
+  canvas.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      pointerDown = {
+        x: t.clientX,
+        y: t.clientY,
+        ox: t.clientX - rect.left,
+        oy: t.clientY - rect.top,
+      };
+      dragging = { lastX: t.clientX, lastY: t.clientY };
+    },
+    { passive: true },
+  );
+  canvas.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!dragging || e.touches.length !== 1) return;
+      const t = e.touches[0];
+      transform.x += (t.clientX - dragging.lastX) / transform.scale;
+      transform.y += (t.clientY - dragging.lastY) / transform.scale;
+      dragging.lastX = t.clientX;
+      dragging.lastY = t.clientY;
+    },
+    { passive: true },
+  );
+  canvas.addEventListener("touchend", (e) => {
+    if (!pointerDown) return;
+    const t = e.changedTouches[0];
+    const moved = Math.hypot(t.clientX - pointerDown.x, t.clientY - pointerDown.y);
+    if (moved < 10 && touchInteraction()) {
+      handleMobileTap(pick(pointerDown.ox, pointerDown.oy));
+      suppressMouseUntil = Date.now() + 400;
+    }
+    dragging = null;
+    pointerDown = null;
+  });
+
+  for (const el of ui.querySelectorAll("[data-overlay-close]")) {
+    el.addEventListener("click", () => {
+      closeOverlay();
+    });
+  }
 
   updateGeometryLabel();
   resize();
