@@ -33,4 +33,4 @@ User asked for housekeeping/erasure; then predictions `relatedBridges` cleanup a
 - `drafts/plans/predictions/bridge-prediction-markets.md`
 
 ## Commits
-- (this session)
+- `6f3033aa` — Housekeeping and unify predictions catalog bridge links.
