@@ -1,4 +1,5 @@
-const defaultParams = {
+// ch35-kappa-percolation/app.ts
+var defaultParams = {
   communities: 5,
   nodesPerCommunity: 18,
   avgDegree: 5.2,
@@ -7,7 +8,7 @@ const defaultParams = {
   strengthContrast: 0.62,
   benefitCost: 2.2
 };
-class Rng {
+var Rng = class {
   constructor(seed) {
     this.state = seed >>> 0;
   }
@@ -20,9 +21,9 @@ class Rng {
     const v = Math.max(this.next(), 1e-9);
     return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
   }
-}
-const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
-const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+};
+var clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
+var mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 function makeActivities(n, distribution, rng) {
   let values;
   if (distribution === "homogeneous") {
@@ -190,7 +191,7 @@ function nodeColor(community, communities) {
   const hue = Math.round(360 * community / Math.max(communities, 1));
   return `hsl(${hue} 62% 55%)`;
 }
-const SVG_NS = "http://www.w3.org/2000/svg";
+var SVG_NS = "http://www.w3.org/2000/svg";
 function svgEl(tag, attrs = {}) {
   const el = document.createElementNS(SVG_NS, tag);
   for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value);
@@ -202,7 +203,7 @@ function createElement(tag, attrs = {}, text) {
   if (text !== void 0) el.textContent = text;
   return el;
 }
-const sliderDefs = [
+var sliderDefs = [
   { key: "communities", label: "Communities", min: 1, max: 9, step: 1 },
   { key: "nodesPerCommunity", label: "Nodes per community", min: 6, max: 36, step: 1 },
   { key: "avgDegree", label: "Average degree", min: 1, max: 12, step: 0.2 },

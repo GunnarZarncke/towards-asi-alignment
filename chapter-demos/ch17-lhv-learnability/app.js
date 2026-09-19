@@ -1,4 +1,5 @@
-const defaultConfig = {
+// ch17-lhv-learnability/app.ts
+var defaultConfig = {
   seed: 17,
   total: 2200,
   testCount: 700,

@@ -1,0 +1,38 @@
+{
+  "source": "reference/field-agendas/graphs/mb-bridge-dependencies-v2.dot",
+  "positions": {
+    "MB1": { "x": -5, "y": -155 },
+    "MB2": { "x": -150, "y": -75 },
+    "MB3": { "x": -150, "y": -1.667 },
+    "MB4": { "x": 130, "y": 35 },
+    "MB4a": { "x": 42.5, "y": 35 },
+    "MB5": { "x": -150, "y": 71.667 },
+    "MB6": { "x": 130, "y": -75 },
+    "MB7": { "x": -45, "y": -75 },
+    "MB7d": { "x": -97.5, "y": 35 },
+    "MB9": { "x": -45, "y": 108.333 },
+    "MB10": { "x": -150, "y": 145 },
+    "MB11": { "x": -5, "y": 218.333 }
+  },
+  "edges": [
+    { "from": "MB1", "to": "MB3", "color": "#CC3333", "assembly": false },
+    { "from": "MB1", "to": "MB7", "color": "#CC3333", "assembly": false },
+    { "from": "MB1", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB2", "to": "MB3", "color": "#CC3333", "assembly": false },
+    { "from": "MB2", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB3", "to": "MB5", "color": "#CC3333", "assembly": false },
+    { "from": "MB3", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB4", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB4a", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB5", "to": "MB10", "color": "#CC3333", "assembly": false },
+    { "from": "MB5", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB6", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB6", "to": "MB4", "color": "#CC3333", "assembly": false },
+    { "from": "MB6", "to": "MB4a", "color": "#CC3333", "assembly": false },
+    { "from": "MB6", "to": "MB7", "color": "#CC3333", "assembly": false },
+    { "from": "MB7", "to": "MB7d", "color": "#CC3333", "assembly": false },
+    { "from": "MB7", "to": "MB11", "color": "#333333", "assembly": true },
+    { "from": "MB7d", "to": "MB6", "color": "#CC3333", "assembly": false },
+    { "from": "MB9", "to": "MB11", "color": "#333333", "assembly": true }
+  ]
+}

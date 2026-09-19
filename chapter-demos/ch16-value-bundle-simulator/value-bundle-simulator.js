@@ -1,4 +1,5 @@
-const sliderDefinitions = [
+// ch16-value-bundle-simulator/value-bundle-simulator.ts
+var sliderDefinitions = [
   { key: "R", label: "Resource slack", low: "scarce", high: "abundant" },
   { key: "N", label: "Group scale", low: "small", high: "large" },
   { key: "G", label: "Gossip / visibility", low: "private", high: "visible" },
@@ -7,7 +8,7 @@ const sliderDefinitions = [
   { key: "M", label: "Mobility", low: "sedentary", high: "mobile" },
   { key: "C", label: "Contestable wealth", low: "secure", high: "raidable" }
 ];
-const presets = {
+var presets = {
   "Mobile forager band": {
     R: 0.45,
     N: 0.1,

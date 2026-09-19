@@ -1,4 +1,5 @@
-const TIERS = ["none", "light", "full", "deep"];
+// ch07-lab-sim-replay/app.ts
+var TIERS = ["none", "light", "full", "deep"];
 function actionLabel(rec) {
   if (!rec.action) return "\u2014";
   const inner = rec.action.args?.["step_id"];
@@ -68,7 +69,7 @@ function agentGlyphClass(rec) {
 function auditTierTooltip(tier) {
   return `The episode is fixed \u2014 it was recorded once. Selecting tier "${tier}" does not re-run the simulation. It only changes what the Audit lane shows.`;
 }
-const STYLE = `
+var STYLE = `
 .lsr { font-family: system-ui, -apple-system, Segoe UI, sans-serif; max-width: 1100px; color: #111; }
 .lsr h2 { font-size: 1.15rem; margin: 0 0 4px; }
 .lsr .scenario { color: #444; line-height: 1.5; max-width: 82ch; margin: 0 0 14px; font-size: 0.92rem; }
