@@ -79,7 +79,7 @@ If a bridge rewrite needs context:
 - Path edges = \(T\) restricted to \(\mathcal{E}\)-legal \(\pi_{\mathrm{path}}\).
 - Attractor dynamics = induced dynamics on \(\pi_{\mathrm{attr}}(z)\).
 
-Lean order: **MB6** (`Environment` / joint \(z\)) then **MB11** (`SafeIn C A`). No five-field `AlignmentContext` record up front.
+Lean order: **MB6** (`Environment` / joint \(z\)) then **MB11** (`SafeIn C A`). No five-field `AlignmentContext` record up front. Per-system **certificates** that mention extra indices while semantic predicates stay unary are v1 adapters, not this M3 step ([`drafts/plans/predictions/prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md)).
 
 ## Independence cells (keep explicit)
 

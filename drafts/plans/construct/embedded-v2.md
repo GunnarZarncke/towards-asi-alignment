@@ -108,6 +108,8 @@ Take ecology as the ambient state. Then:
 
 Lean order if authorized: **MB6** relative to `Environment`, then joint \(z\); **MB11** as `SafeIn C A`. Recover roles from \(h\) and \(\theta\) when a bridge needs them (equality when one lab builds, evaluates, and deploys). Do not add a five-field `AlignmentContext` record up front.
 
+**v1 certificate layer** (Predictions P0c): extra indices live on *certificates* that collapse onto today’s unary predicates. That is not this M3 rewrite. 2027 markets §16 and §18 may *talk about* selection environment and declared deployment setting in surrounding prose; do not freeze restorer / path-legality / \(D_{\mathrm{joint}}\) as 2027 boxes.
+
 ## Lifecycle (reader surface)
 
 Cycle stages:
@@ -166,6 +168,7 @@ New / updated surfaces for construction and convergence:
 | **Now** | Decisions in this file; lifecycle cycle on the field hub; roster types; grain map | none |
 | **P1** | 2.0 claim wording in construct plan / Part XI outline only; reverse-column note uses roster types | not v1 intro |
 | **Lean 2.0** | MB6 then MB11 context-relative; no covering tuple; no new axiom to `Safe` | author; still no `Safe` bypass |
+| **Certificate layer (v1)** | Per-system certs onto unary predicates — **not** Lean 2.0 | [`../predictions/prediction-interface.md`](../predictions/prediction-interface.md) |
 | **Paper** | Optional research-ecology spin-out **after** manuscript/Lean homes are named | construct |
 | **Family B chapters** | still Backtest Exp. 4 | unchanged |
 

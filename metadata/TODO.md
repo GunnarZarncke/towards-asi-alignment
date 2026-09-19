@@ -80,7 +80,7 @@ One queue; pick up when trigger fires.
 Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md).
 
 - [x] **Guided Tour “read next” from last book page (M).** `/paths/` offers a continue target from the last visited book chapter (visit history + chapter card URLs). Maps onto the active reading path when the chapter matches; otherwise chapter graph, then manuscript order.
-- [ ] **Per-part chapter renumbering (display only) (L, high risk).** Do not rename `chNN` files or `\label`s without migration pass.
+- [ ] **Predictions hub (M).** `/predictions/` nav, `prediction` cards (overview + §1–§18), Gauss-curve symbol, coming-soon offsite graph placeholder. After appendix boxes. Plan: [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md).
 - [ ] **Submit page notes to site (S).**
 - [ ] **Standalone claims publishability review (S).** Cross-ref Outreach.
 - [ ] **Add companion site to Substack (S).**
@@ -94,7 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
-- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.3`); plan [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md). Binary YES/NO (refuse→NO). MB6 = \(g_{\mathrm{CCI}}\) slice; unsigned-basin market retracted; Lean rewrite shipped ([`spine.md`](../drafts/plans/spine/spine.md) P2). Remaining: Q1 list vs not, Q2 titles, Q6 platform, Q8 App B. Not LI.
+- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). P0c: 18 binaries; certificate-output rule; §15–§18; appendix + site hub authorized (not drafted). Remaining: Q1 list vs not, Q2 titles, Q6 platform. Q8 = appendix. Spine: `Evidence.lean` adapters. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 

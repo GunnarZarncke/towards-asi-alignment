@@ -10,7 +10,7 @@ Checklists for cross-cutting work lanes. **`metadata/TODO.md`** is the canonical
 | **Field** | [`field/field.md`](field/field.md) | Field-matrix homographs, crux map, spring-map demo plan |
 | **Spine** | [`spine/spine.md`](spine/spine.md) | Lean ↔ manuscript alignment; [`bridge-first-use.md`](spine/bridge-first-use.md) |
 | **Construct** | [`construct/construct.md`](construct/construct.md) | Constructibility / 2.0 families; [`embedded-v2.md`](construct/embedded-v2.md) |
-| **Predictions** | [`predictions/bridge-prediction-markets.md`](predictions/bridge-prediction-markets.md) | 2027 bridge markets instrument |
+| **Predictions** | [`predictions/bridge-prediction-markets.md`](predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](predictions/prediction-interface.md) | 2027 bridge markets; P0c interface / appendix / site / Lean adapters |
 
 ## Root-level plans
 

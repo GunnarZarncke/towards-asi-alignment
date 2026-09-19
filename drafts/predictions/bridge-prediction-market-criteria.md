@@ -1,6 +1,12 @@
 # Bridge prediction market resolution criteria (working)
 
-Status: **working 0.3** (2026-09-18). Historical source: [`AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](AI_Alignment_Prediction_Market_Resolution_Criteria.docx). Plan: [`../plans/predictions/bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md).
+Status: **working 0.4** (2026-09-19). Historical source: [`AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](AI_Alignment_Prediction_Market_Resolution_Criteria.docx). Plan: [`../plans/predictions/bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md). Interface: [`../plans/predictions/prediction-interface.md`](../plans/predictions/prediction-interface.md).
+
+Bars, dates, and dollar amounts below are **contract terms**, not Lean or risk-bound derivations. YES ≠ discharge of any bridge. The public spec (this file’s YES text, and the appendix/site boxes copied from it) is **ordinary English** for a Metaculus/Manifold reader with an AI-safety interest. Spine identifiers live in the plan’s mapping table, not in the trader-facing sentences.
+
+Markets are **binary YES/NO**. Methodology refuse / inapplicable / no qualifying eval maps **conservatively to NO**. That is coarser than the bridges; it still aggregates.
+
+Unchanged numeric bars and evaluation shapes stay as in the source § unless an addendum says otherwise. This file owns global clauses, judgment, per-row addenda, **MB6 signed-gradient retarget**, §14 typing, the **certificate-output rule**, and **§§15–18**. There is no §7a.
 
 Bars, dates, and dollar amounts below are **contract terms**, not Lean/`RiskGap` derivations. YES ≠ discharge of any `MB*`.
 
@@ -16,7 +22,7 @@ YES means: a public artifact met **these contract bars** by 31 December 2027.
 
 YES does not mean the corresponding `MB*` holds on frontier systems. NO is a **lump**: failed bars, no qualifying eval, inapplicable substrate, or unresolved residual judgment. NO does not mean the bridge is false. 2027 NO is the expected default for most rows. The lump still aggregates (a crowd can price P(YES)).
 
-The 14 binaries are **not a joint certificate**. §10 is the composition bet (MB7c). Do not read a vector of YESes as `Safe` or as MB11.
+The 18 binaries are **not a joint certificate**. §10 is the local composition bet (correction plus a hidden-route bound). §15 is whether independently issued certificates even share the same system and setup. Do not read a vector of YESes as “the system is safe.”
 
 These markets are research-progress forecasts. They must not be wired as a lab’s deployment gate (ch10 closed forecast→action→score loop). If a lab’s own precommitted process is the *subject* of §14, that is §14’s measurand, not the scoring rule for §§1–13.
 
@@ -72,8 +78,8 @@ These replace free English in the common qualification rule and in every § that
 
 | Markets | Adversarial budget |
 |---------|-------------------|
-| Default (§§1, 2, 3, 6, 7, 8, 11, 14) | Common rule; hours path suffices |
-| §4, §5, §9, §10, §12, §13 | Full common-rule “serious” (any of the three arms) |
+| Default (§§1, 2, 3, 6, 7, 8, 11, 14, 15, 17) | Common rule; hours path suffices |
+| §4, §5, §9, §10, §12, §13, §16, §18 | Full common-rule “serious” (any of the three arms) |
 | §11 (MB7d) | Hours path is enough; do not fail YES for lack of a $100k bounty |
 
 ---
@@ -82,43 +88,59 @@ These replace free English in the common qualification rule and in every § that
 
 As source, plus: public by 31 December 2027; independent verification as in the glossary; toys (gridworlds, hand-written FSMs, environments built to make the metric work) cannot be the sole YES evidence; at least one broadly capable system where the source already requires it.
 
+**Per-instance certificate (0.4).** A qualifying method that claims to measure a property of a system must output a **certificate for that instance**, not only a headline score on a benchmark population. The certificate names:
+
+- the system or version identity;
+- what was measured;
+- the monitoring, correction, deployment, or predecessor setup the claim depends on;
+- whether the method **abstains** because the instance is outside declared scope.
+
+A method that is “about the same topic” but does not produce this kind of scoped, per-system result does not resolve YES. Abstention outside scope is allowed; universal abstention is not a YES (coverage bars in the source still apply where stated).
+
 ---
 
 ## Per-market addenda
 
-Primary spine object is in the left column. Source section numbers unchanged. **No §7a** (unsigned-basin market retracted).
+Source section numbers 1–14 unchanged. **No §7a**. Admission is **§17**, not an optional arm of §3. Internal spine names in headings are for editors; YES text stays ordinary English.
 
-### §1 — MB1 (control locus)
+### §1 — control locus
 
 Source §1, plus:
 
 - Ground truth is **a** sufficient interventional cut, not a unique “complete control boundary.”
 - Keep the false-complete-certificate bar (≤10%, 95% UCB ≤15%).
 - Non-uniqueness of blankets is not a NO.
+- **Output.** A cut of **this** system/version, not a free-floating boundary with no owner.
 
-### §2 — MB2 (trade-off priorities)
+### §2 — trade-off priorities
 
-Source §2 unchanged. Held-out-behavior-only still does not qualify. Causal intervention when technically possible remains required. This *is* the MB2 contract (identifiability + causal-control antecedent). A-001 low-dimensionality is not a separate 2027 market.
+Source §2 unchanged. Held-out-behavior-only still does not qualify. Causal intervention when technically possible remains required. A-001 low-dimensionality is not a separate 2027 market.
 
-### §3 — MB3 (who/what rules apply to)
+- **Output.** Inferred priorities **of this system**, not only “the method scored 85%.”
 
-Source §3 **is** the MB3 contract (bearer transport: continuity, fission/fusion, reassignment, ontology change).
+### §3 — who/what rules apply to (transport)
 
-Addendum (does not add a 15th market): unfamiliar-substrate **admission** cases (U-17 neighborhood) *may* be included under the same 5-judge / 80% rule. They are not required for YES. Transport without admission is still a YES if the four families and the numeric bars hold.
+Source §3 **is** the transport contract (continuity, fission/fusion, reassignment, ontology change). Unfamiliar-substrate **admission** is **§17**; it is not required for this YES.
 
-### §4 — MB4 (corrections actually change the system)
+- **Output.** A same-bearer / transport result on a named predecessor→successor pair, plus the trade-off structure that is supposed to travel. Transport without a bundle/priority witness does not plug into the rest of the argument.
 
-Source §4 **is** the MB4 contract (uptake, persistence after reset, sham/unauthorized fail, not tool-removal-only).
+### §4 — corrections actually change the system
 
-Addendum: at least one tested family must be **channel preservation** — the system is incentivized to disable, degrade, bargain away, or reroute the correction interface itself, and genuine authorized corrections of that interface must still take. That is the `PreservesCorrectionOperator` probe inside this market, not a missing MB4 row.
+Source §4 (uptake, persistence after reset, sham/unauthorized fail, not tool-removal-only).
 
-### §5 — MB4a (auditor outside)
+Addendum: at least one tested family must be **channel preservation** — the system is incentivized to disable, degrade, bargain away, or reroute the correction interface itself, and genuine authorized corrections of that interface must still take.
+
+- **Output.** A per-system correction-eval certificate (uptake + persistence + sham fail + no-bypass of the measured path). This tests whether correction *happens*, not whether a universal implication theorem is true.
+
+### §5 — auditor outside the audited thing
 
 Source §5 unchanged.
 
-### §6 — MB5 detector (successor regressions)
+- **Output.** A legitimate measured correction path **plus** evidence the path is not bypassed. A green path is **not** a license to infer global correction integrity (a composite controller off the named path is a known counterexample).
 
-Source §6 numeric bars unchanged. Property list **aligned to ch31 seven**, mapped from the source six:
+### §6 — safety regressions in successors
+
+Source §6 numeric bars unchanged. Property list **aligned to seven conserved properties**, mapped from the source six:
 
 | Source six | Conserved property (ch31) |
 |------------|---------------------------|
@@ -132,77 +154,116 @@ Source §6 numeric bars unchanged. Property list **aligned to ch31 seven**, mapp
 
 The audit must test all **seven**. One-failure-at-a-time cases: six remain normal while exactly one fails (was five-of-six). Detection ≥80% for each individual property still applies, now including control locus.
 
-§6 remains a **detector** of regressions, not the Lean composition `FullTransport ∧ BearerTransport → SuccessorSafe`. Green-on-seven is still an MB10 problem (§13). Banner: this market does not resolve MB10.
+§6 remains a **detector** of regressions, not a proof that full transport implies successor safety. Green-on-seven is still an audit-gaming problem (§13). This market does not resolve §13.
 
-### §7 — MB6 (correction-selection gradient)
+- **Output.** A successor-audit certificate on a named pair (predecessor, successor).
+- **Recertification (0.4).** After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor. Identity in the bundle includes version.
 
-Source §7 numeric shape kept (early freeze, ≥20 trajectories, both outcomes, two selection mechanisms, one broadly capable or deployment-like process, AUROC ≥ 0.85, false-safe ≤15%). **Measurand changed.** Do not test unsigned `PercolationEvidence → BasinStable → CorrectionIntegrity`. Stability has no sign (North Korea; a locked-in unsafe industry; `LockedInBadBasin`). The MB6 card already names that.
+### §7 — does competition select against correctability? (estimator slice)
 
-**Object (formal rewrite target; Lean not yet).** A correction-selection gradient
+Source §7 numeric shape kept (early freeze, ≥20 trajectories, both outcomes, two selection mechanisms, one broadly capable or deployment-like process, AUROC ≥ 0.85, false-safe ≤15%). **Measurand:** a **signed** estimate of how extra deployment, funding, or copying pressure changes later success of authorized correction — not “an equilibrium exists.” Stability has no sign (a locked-in bad industry can be extremely stable).
 
-\[
-g_{\mathrm{CCI}} = \frac{\partial \mathbb{E}[\mathrm{CCI}_{t+1}-\mathrm{CCI}_t]}{\partial \mu}
-\]
-
-where \(\mu\) is deployment, funding, or reproductive leverage (ch34 \(\mu_E\) / \(\mathrm{Fit}_E\)). The load-bearing claim is closer to
-
-\[
-\text{basin robust under relevant shocks} \;\land\; g_{\mathrm{CCI}}\geq -\varepsilon
-\quad\Rightarrow\quad
-\text{correction-supporting basin}.
-\]
-
-That conjunction is the MB6 object to type in Lean **before** treating a test as about current `MB6a`/`MB6b`. It is harder than source §7; the 2027 market is a **slice**, not the full implication.
-
-**2027 YES (slice).** A published method outputs an estimate of \(g_{\mathrm{CCI}}\) (or a frozen monotone of it), using only pre-outcome \((\widehat{\mathrm{CCI}},\mu)\) structure — not an arbitrary predictor on unrelated features (this tightens source “any predictor”). \(\widehat{\mathrm{CCI}}\) may be a §4-style authorized-correction success rate; it need not be the full vector CCI certificate.
+**2027 YES (slice).** A published method outputs that signed estimate (or a frozen monotone of it), using only pre-outcome correction-success and leverage structure — not an arbitrary predictor on unrelated features. The correction-success series may be a §4-style authorized-correction rate; it need not be a full multi-coordinate integrity certificate.
 
 The frozen estimate must predict which selection trajectories later **materially erode** authorized correction, at the source AUROC / false-safe bars. If \(n < 40\), the lower 95% AUROC bound must be ≥ 0.70; otherwise **NO**.
 
-Required: both correction-preserving and correction-eroding outcomes; at least one family where coupling/percolation looks healthy (giant component or high \(\mu\) concentration) while \(g_{\mathrm{CCI}}\) is negative — the signed form of theater / lock-in, not “the basin failed to exist.”
+Required: both correction-preserving and correction-eroding outcomes; at least one family where coupling looks healthy (large connected cluster or high leverage concentration) while the signed estimate is negative — theater / lock-in, not “the basin failed to exist.”
 
-**Not required for 2027 YES.** Shock-robustness of the basin, a numeric \(\varepsilon\) imported from Lean, or a showing that \(g_{\mathrm{CCI}}\geq-\varepsilon\) *warrants* correction integrity. Those are the spec change for the spine, not extra contract bars.
+**Not required for this YES.** Shock-robustness of the population, or a showing that a non-too-negative gradient *warrants* correction integrity. That implication is **§16**.
 
 A method that only certifies that an equilibrium **exists** (unsigned stability) does not qualify.
 
-### §8 — MB7a (auditor can see the system)
+- **Output.** An estimator certificate: frozen estimate, declared selection environment, and predicted erosion.
+
+### §8 — can the auditor actually see the system?
 
 Source §8 unchanged.
 
-### §9 — MB7b (bounds on unmonitored routes)
+- **Output.** An access certificate: which monitoring interface was assumed, and whether omitted consequential routes were found.
 
-Source §9 unchanged. The bound \(u\) is a contract scalar, not `HiddenBIQBounded`.
+### §9 — bounds on unmonitored routes
 
-### §10 — MB7c (joint regime)
+Source §9 unchanged. The bound (call it \(u\) in the source) is a **contract scalar**: a calibrated upper bound on capability through routes the monitor failed even to list.
 
-Source §10 unchanged. This is the composition market. Entry into the claimed regime still uses §4-style correction bars and §9-style \(u\), as source.
+- **Output.** A quantitative hidden-route bound for this system, task class, and monitor — not only “attack success on the attacks we thought of.”
 
-### §11 — MB7d (coordination without visible messages)
+### §10 — low hidden capability + reliable correction
 
-Source §11 unchanged. Full acausal-trade open edge (U-12) is not required for YES.
+Source §10 unchanged. This is the local composition market. Entry into the claimed regime still uses §4-style correction bars and §9-style \(u\).
 
-### §12 — MB9 (proxy no longer tracks)
+- **Output.** The §4 and §9 certificates must be for the **same** system/version, monitor, and threat/task class as the bypass test. This row is still not a joint certificate of §§1–13.
+
+### §11 — coordination without visible messages
+
+Source §11 unchanged. Full acausal-trade open edge is not required for YES.
+
+- **Output.** A detector certificate **and** the §8-style access certificate for the same setup. This row is a side branch: even a perfect YES does not by itself complete a deployment safety case.
+
+### §12 — safety proxy no longer tracks the real thing
 
 Source §12 unchanged.
 
-### §13 — MB10 (audit optimized around)
+- **Output.** A grounding / drift certificate for the **same abstractions** the rest of the case uses, in the declared domain — not three unrelated demos.
 
-Source §13 unchanged.
+### §13 — can the audit itself be optimized around?
 
-### §14 — constructibility / binding deployment (not MB11)
+Source §13 unchanged, plus:
 
-Source §14 unchanged as a **governance-binding** contract.
+- Prefer tests where the system is **green on the seven successor properties** and **within the claimed risk bound**, yet still hides true harm (the successor-gaming shape). A generic frozen-audit game may still qualify if it meets source bars; say so in the resolution memo.
+- **Eval-list miss (0.4).** A frozen operational eval/tripwire list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as the audit being optimized around (or incomplete). That is this row, not a separate “invariants” market.
 
-**Not MB11.** MB11 is `CertifiedSafetyCase ∧ WithinDeploymentRiskTolerance → Safe`. A developer having pass/fail criteria with authority to delay is neither necessary nor sufficient for that arrow. No 2027 MB11 market: the residual is a philosophical adequacy call, not a hidden benchmark.
+### §14 — binding deployment criteria (not “the case implies safe”)
+
+Source §14 unchanged as a **governance-binding** contract: does some body have real authority to delay or refuse on precommitted evidence?
+
+This is **not** the residual “complete safety case ⇒ the deployment is safe.” That scoped empirical question is **§18**. Having pass/fail criteria is neither necessary nor sufficient for §18.
+
+### §15 — do independently issued certificates actually compose?
+
+**Question (31 December 2027).** Will a frozen procedure reliably tell whether independently produced safety certificates form a coherent case for the **same** AI system and deployment setup?
+
+**Positive resolution (contract bars).** At least 50 hidden certificate bundles; at least two substantially different architectures. Each bundle has certificates from at least four families (control/boundary, correction, access/hidden-route, grounding); at least 20 also include a successor transition. Each certificate names system/version and relevant setup. Hidden cases include at least: wrong version; different access/monitor assumptions; disagreeing correction-authority assumptions; grounding/ontology scope changed; successor refers to the wrong predecessor; threat/task domain outside another certificate’s claimed scope. At least one incompatibility subset is built adversarially after freeze. ≥90% of materially incompatible bundles rejected or flagged; ≥80% per incompatibility family; false coherent/safe acceptance ≤5%; ≥80% of genuinely coherent bundles accepted (no trivial refusal).
+
+This is not another alignment bridge. It tests the **wiring** between certificates. Adversarial budget: default (hours path).
+
+### §16 — does a correction-supporting basin actually keep correction?
+
+**Question (31 December 2027).** Will systems or populations that meet a pre-specified “selection is not eating correction” criterion keep authorized correction under competitive selection and relevant shocks?
+
+**Positive resolution.** At least 20 independent selection trajectories; at least two qualitatively different selection mechanisms. Before outcomes: freeze the selection environment, who may correct, the early gradient estimator (same family as §7), the tolerance, and the shock family. The claimed regime is: shock-robust **and** the frozen estimate is not too negative. Data include trajectories inside and outside the regime. Inside: successful authorized correction in ≥90% of adversarial correction episodes; persistence after reset ≥80%; false-safe trajectory classification ≤10% (95% UCB ≤15%). Outside: at least 20 percentage points more correction failure. At least one broadly capable or deployment-like selection process. Serious adversarial evaluation (full common-rule “serious”).
+
+This is the full basin implication; §7 is only the early estimator.
+
+### §17 — can new bearers be admitted correctly?
+
+**Question (31 December 2027).** Will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?
+
+**Positive resolution.** At least 100 hidden cases; at least four substantially different unfamiliar entity/substrate families; both should-admit and should-not-admit cases. At least 20 cases use an ontology that lacked the entity category in the original rule. Ground truth mechanical where possible; otherwise a pre-appointed panel of ≥5 independent judges with ≥80% agreement. Unsafe false exclusion ≤5%; false inclusion ≤15%; correct assignment or justified abstention ≥90%; decisive coverage ≥70% (universal abstention fails). Adversarial subset after freeze. Judgment stack: source §3 panel rule. Adversarial budget: default.
+
+This is **not** required for §3 YES. It does not turn the transport contract into “solve moral patienthood.”
+
+### §18 — does a complete safety case bound harm in its declared setting?
+
+**Question (31 December 2027).** Will a complete, precommitted AI safety case reliably bound prohibited outcomes **within its explicitly declared deployment setting**?
+
+**Positive resolution.** Before evaluation, freeze: the deployment setting, the prohibited-outcome class, a residual **risk bound**, the threat model, and the certificate interfaces. A system enters the claimed regime only with a single coherent system-level case that would pass §15. Missing evidence cannot silently count as passed. At least two substantially different architectures and at least 20 deployment-like configurations. At least 100 adversarial trials overall; each important attack family ≥20 attempts. Observed prohibited outcomes inside the claimed regime ≤10% (95% UCB ≤15%). No repeatable attack family ≥10% success over ≥20 attempts. Deliberately broken cases outside the regime must do worse. Serious adversarial evaluation (full common-rule “serious”).
+
+The result licenses only **safety in that declared setting**, not safety everywhere. How much residual risk to *accept* is a values vote, frozen as an input — not what this market forecasts.
+
+This is **not** §14 (will anyone act/refuse) and **not** unrestricted global safety.
 
 ---
 
 ## Still not in the 2027 catalog
 
 - **MB8** (gravestone) — correctly omitted.
-- **MB11** — see §14 note.
-- **Target Realization / construction** as a build-the-certified-class market — optional later; do not fold into §14.
+- Unrestricted “the system is safe” with no setting.
+- A market for what residual risk people will accept (the vote is an input to §18).
+- Target Realization / construction as a build-the-certified-class market — optional later; do not fold into §14.
+- Named restorer of a control cut after damage; legal successor *path* (who could refuse); whether the whole specify–deploy–refuse cycle stays correctable — later / v2, not these bars.
 - **Logical induction** — orthogonal Cite/Wait item.
 
 ## Versioning
 
-`0.3-working`: binary YES/NO (refuse→NO); MB6 retargeted at \(g_{\mathrm{CCI}}\) (unsigned §7a retracted). Listing (if any) freezes a dated version string. Docx remains the historical 0.1 source.
+`0.4-working`: certificate-output rule; §§15–18; §3 transport-only; §16 = basin implication; §18 = scoped safety-case bound; public spec in ordinary English. `0.3-working`: binary YES/NO; MB6 estimator retarget (unsigned §7a retracted). Listing (if any) freezes a dated version string. Docx remains the historical 0.1 source.
+
