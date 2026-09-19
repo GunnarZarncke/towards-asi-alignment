@@ -15,6 +15,6 @@ Every recorded finding or negative result across experiment lines uses a **line-
 
 **Suffix letters** (e.g. `LS-1a`, `LS-3a`) keep their letter after the prefix.
 
-**Appendix I** (`appendices/appN-experimental-evidence.tex`) cites a curated subset using the **same global IDs as each line's ledger** (not a second numbering scheme). Labels are `\label{finding:<lowercase-prefix-id>}` (e.g. `finding:gl-11`, `finding:ls-32`). Toy-simulation uses `TS-1`…`TS-3` for appendix-only curated entries (no numbered ledger yet).
+**Appendix J** (`appendices/appN-experimental-evidence.tex`) cites a curated subset using the **same global IDs as each line's ledger** (not a second numbering scheme). Labels are `\label{finding:<lowercase-prefix-id>}` (e.g. `finding:gl-11`, `finding:ls-32`). Toy-simulation uses `TS-1`…`TS-3` for appendix-only curated entries (no numbered ledger yet).
 
 **Deprecated:** unqualified `G-`, `F-`, and `N-` in older session logs may refer to the pre-2026-07-14 scheme. Resolve by line context or check the ledger above.

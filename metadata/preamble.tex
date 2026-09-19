@@ -60,6 +60,21 @@
   after skip=6pt
 }
 
+% Trader-facing 2027 contract (Appendix H). Title is the market question.
+\newtcolorbox{predictionbox}[1][]{
+  colback=orange!4!white,
+  colframe=orange!45!black,
+  fonttitle=\bfseries\small,
+  title={#1},
+  boxrule=0.4pt,
+  left=5pt,
+  right=5pt,
+  top=4pt,
+  bottom=4pt,
+  before skip=8pt,
+  after skip=8pt
+}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{assumption}{Assumption}[chapter]

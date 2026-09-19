@@ -22,6 +22,7 @@ WIRED_APPENDICES = {
     "appD-worked-example.tex",
     "appE-glossary.tex",
     "appF-research-program.tex",
+    "appP-bridge-predictions.tex",
     "appG-lean-proof-spine.tex",
     "appN-experimental-evidence.tex",
 }
@@ -42,6 +43,7 @@ SKIP_ENVS = {
     "subfigure",
     "subfigure*",
     "authbar",
+    "predictionbox",
 }
 INPUTS_OUTSIDE_AUTHBAR = (
     "tables/",

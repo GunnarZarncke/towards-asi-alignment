@@ -86,6 +86,7 @@ APPENDICES = [
     ("appD-worked-example", "Worked Example: BioShield"),
     ("appE-glossary", "Glossary"),
     ("appF-research-program", "Research Program"),
+    ("appP-bridge-predictions", "Dated Predictions on the Bridges"),
     ("appG-lean-proof-spine", "Lean Proof Spine"),
     ("appN-experimental-evidence", "Experimental Evidence: Findings by Line"),
 ]

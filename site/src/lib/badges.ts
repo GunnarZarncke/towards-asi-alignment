@@ -67,7 +67,7 @@ export const TYPE_META: Record<
   },
   appendix: {
     title: "Appendix",
-    description: "Companion card for a built appendix (A–G) — crosswalk, worked example, Lean spine, etc."
+    description: "Companion card for a built appendix (A–J) — crosswalk, dated predictions, Lean spine, etc."
   },
   frontmatter: {
     title: "Frontmatter",

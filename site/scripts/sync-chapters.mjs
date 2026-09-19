@@ -32,7 +32,8 @@ const APPENDIX_FILES = [
   { id: "appM", file: "appendices/appM-institutional-histories.tex", order: 102 },
   { id: "appD", file: "appendices/appD-worked-example.tex", order: 103 },
   { id: "appF", file: "appendices/appF-research-program.tex", order: 104 },
-  { id: "appN", file: "appendices/appN-experimental-evidence.tex", order: 105 }
+  { id: "appP", file: "appendices/appP-bridge-predictions.tex", order: 105 },
+  { id: "appN", file: "appendices/appN-experimental-evidence.tex", order: 106 }
 ];
 
 const PART_RANGES = [

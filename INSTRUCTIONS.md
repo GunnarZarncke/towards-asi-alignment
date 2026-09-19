@@ -301,7 +301,7 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 
 ## 14. Chapter and appendix numbering
 
-**Canonical rule:** filename prefix, `metadata/book.yml` key, generated roadmap table column, and printed `\chapter{…}` number all match **manuscript order** (1–48 for chapters; A–I for built appendices).
+**Canonical rule:** filename prefix, `metadata/book.yml` key, generated roadmap table column, and printed `\chapter{…}` number all match **manuscript order** (1–48 for chapters; A–J for built appendices).
 
 | Layer | Convention | Example |
 |-------|------------|---------|
@@ -312,7 +312,7 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 | **Section labels** | Prefer `-chNN` suffix matching the hosting file's print number | `\label{sec:certificate-under-pressure-ch27}` in ch27 |
 | **Appendix source files** | `appendices/app<Token>-<slug>.tex`; token is **not always** the printed letter | `appM-institutional-histories.tex` prints as Appendix D |
 
-**Printed appendix letters vs source files** (nine appendices in the PDF; `\label{…}` names are historical and load-bearing):
+**Printed appendix letters vs source files** (ten appendices in the PDF; `\label{…}` names are historical and load-bearing):
 
 | Print | Source file | Main `\label` |
 |-------|-------------|---------------|
@@ -323,9 +323,10 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 | E | `appD-worked-example.tex` | `appk-worked-example` |
 | F | `appE-glossary.tex` | `appf-glossary` |
 | G | `appF-research-program.tex` | `apph-research-program` |
-| H | `appG-lean-proof-spine.tex` | `appi-lean-proof-spine` |
-| I | `appN-experimental-evidence.tex` | `appn-experimental-evidence` |
+| H | `appP-bridge-predictions.tex` | `appp-bridge-predictions` |
+| I | `appG-lean-proof-spine.tex` | `appi-lean-proof-spine` |
+| J | `appN-experimental-evidence.tex` | `appn-experimental-evidence` |
 
-**Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → M Institutional histories → D Worked example → E Glossary → F Research program → G Lean proof spine → N Experimental evidence.
+**Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → M Institutional histories → D Worked example → E Glossary → F Research program → P Dated bridge predictions → G Lean proof spine → N Experimental evidence.
 
 When adding a chapter, extend `metadata/book.yml`, the relevant `parts/part*.tex`, and regenerate tables (`python3 scripts/generate_tables.py` or `./build.sh`). Do not reintroduce `b`-suffix file ids.

@@ -8,6 +8,7 @@ export const APPENDIX_TITLES = {
   appC: "Human Institutions as Alignment Translation Guide",
   appD: "Worked Example",
   appF: "Research Program",
+  appP: "Dated Predictions on the Bridges",
   appM: "Institutional Genesis, Memory, and Decay: Historical Case Studies",
   appN: "Experimental Evidence: Findings by Line"
 };

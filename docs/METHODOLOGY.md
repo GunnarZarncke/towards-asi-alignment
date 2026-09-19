@@ -259,7 +259,7 @@ build. Discipline:
 - **Shared rule?** Add or amend **this file** only.
 - **Line-specific prompt, schema, or frozen artifact?** That line's
   `BLIND_GENERATION.md`, `PLAN*.md`, or Backtest per-host freeze — not here.
-- **New finding?** Ledger + optional Appendix I; do not duplicate outcome prose
+- **New finding?** Ledger + optional Appendix J; do not duplicate outcome prose
   here.
 - **Site card** [`experiment-methodology.md`](../metadata/concepts/bodies/experiment-methodology.md):
   keep short; link here for full discipline.

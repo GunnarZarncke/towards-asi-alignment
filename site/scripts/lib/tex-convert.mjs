@@ -33,6 +33,10 @@ const ENV_HANDLERS = {
     `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
   epistemicstatus: (body, ctx) =>
     `<div class="callout epistemic-status"><strong>Epistemic status.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
+  predictionbox: (body, ctx, env) => {
+    const title = env?.optional?.trim() || "2027 contract";
+    return `<div class="callout prediction-box"><strong>${convertInlineText(title, ctx)}</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`;
+  },
   quote: (body, ctx) => `> ${convertInlineText(body, ctx).replace(/\n+/g, "\n> ")}\n\n`,
   itemize: (body, ctx) => convertList(body, "ul", ctx),
   enumerate: (body, ctx) => convertList(body, "ol", ctx),
@@ -285,7 +289,12 @@ function skipBeginArgs(tex, cursor, envName) {
 }
 
 function readBeginEnvArgs(tex, cursor, envName) {
-  cursor = skipBeginOptional(tex, cursor);
+  let optional = "";
+  if (tex[cursor] === "[") {
+    const opt = readOptional(tex, cursor);
+    optional = opt.content;
+    cursor = opt.end;
+  }
   const args = [];
   const argCount = BEGIN_ENV_ARG_COUNT[envName] ?? 0;
   for (let i = 0; i < argCount; i += 1) {
@@ -296,7 +305,7 @@ function readBeginEnvArgs(tex, cursor, envName) {
       cursor = arg.end;
     }
   }
-  return { args, cursor };
+  return { args, optional, cursor };
 }
 
 const MULTILINE_MATH_ENVS = new Set([
@@ -348,7 +357,8 @@ function readEnvironment(tex, startIndex) {
   if (!beginMatch) return null;
   const envName = beginMatch[1];
   const afterBegin = startIndex + beginMatch[0].length;
-  const { args, cursor } = readBeginEnvArgs(tex, afterBegin, envName);
+  const envArgs = readBeginEnvArgs(tex, afterBegin, envName);
+  const { args, cursor } = envArgs;
   const bodyStart = cursor;
   let depth = 1;
   let cursorWalk = cursor;
@@ -367,6 +377,7 @@ function readEnvironment(tex, startIndex) {
         return {
           name: envName,
           args,
+          optional: envArgs.optional,
           body: tex.slice(bodyStart, cursorWalk - nextEnd[0].length),
           end: cursorWalk
         };
@@ -893,7 +904,7 @@ function convertDocument(tex, ctx) {
       }
 
       if (ENV_HANDLERS[env.name]) {
-        out += ENV_HANDLERS[env.name](env.body, ctx);
+        out += ENV_HANDLERS[env.name](env.body, ctx, env);
         continue;
       }
 

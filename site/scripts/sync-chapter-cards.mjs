@@ -211,6 +211,19 @@ async function main() {
     { id: "appD", file: "appendices/appD-worked-example.tex", type: "appendix", title: "Worked Example" },
     { id: "appF", file: "appendices/appF-research-program.tex", type: "appendix", title: "Research Program" },
     {
+      id: "appP",
+      file: "appendices/appP-bridge-predictions.tex",
+      type: "appendix",
+      title: "Dated Predictions on the Bridges",
+      related: [
+        "mb1-boundary-estimator-soundness",
+        "mb4-correction-legitimacy",
+        "mb6-selection-and-basin-stability"
+      ],
+      bodyExtra:
+        "Eighteen binary 2027 contracts on the book's live bridges. A YES means a public artifact met these bars by 31 December 2027; it does not discharge a bridge and is not a joint safety case. Boxed text is the public spec; surrounding prose is the book's terms."
+    },
+    {
       id: "appN",
       file: "appendices/appN-experimental-evidence.tex",
       type: "appendix",
