@@ -56,6 +56,45 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "anthropic-pace-measurements-sep-2026",
+        "MB11",
+        ["ch11", "ch12", "ch25", "ch39", "ch42", "ch43"],
+        "Anthropic publishes metrics on AI-led R&D share, agent oversight, and safety compute. What do those numbers fail to settle by themselves?",
+        "Whether human judgment still changes the next model before irreversible harm",
+        [
+            "Whether the automation index rose on a frozen July R&D task basket",
+            "Whether blocked actions got human review within one week on one platform",
+            "Whether safety compute was about 6% of AI R&D in one July snapshot week",
+        ],
+        "A dashboard of how models are built can show the race. It cannot show that humans still win it, or that a flagged event changed later training instead of only the chart.",
+    ),
+    Q(
+        "anthropic-constitution-jan-2026",
+        "MB2",
+        ["ch16", "ch40", "ch42"],
+        "Anthropic's constitution describes intended values and says the text directly shapes Claude. What should you ask first?",
+        "Whether directly shapes is tested on pre-chosen cases, not the document itself",
+        [
+            "Whether the PDF length shows the constitution is already a construction result",
+            "Whether the preface calling honesty almost-a-hard-constraint hard-codes honesty",
+            "Whether final authority on vision is the same claim as a behavior guarantee",
+        ],
+        "A specify document is not a builder. Publishing the text, then pointing at the text, is not proof that deployed Claude tracks the stated tradeoffs.",
+    ),
+    Q(
+        "containment-verification-sep-2026",
+        "MB1",
+        ["ch01", "ch07", "ch33", "ch42", "ch43"],
+        "Containment verification proves PocketFlow's dispatch cannot emit out-of-policy boundary events. What does that guarantee fail to cover?",
+        "Whether effects outside the typed enum can still reach the unbounded real world",
+        [
+            "Whether read paths stay under a workspace root inside the closed runtime only",
+            "Whether step events stop after the configured loop bound inside the typed enum",
+            "Whether tool-call events stay on an allowlisted tool name inside the runtime",
+        ],
+        "A machine-checked whitelist on a closed runtime is real progress. It is not a statement about the unbounded world those actions can still reach.",
+    ),
+    Q(
         "openai-hf-roadahead-aug-2026",
         "MB7a",
         ["ch07", "ch14", "ch39", "ch40", "ch43"],

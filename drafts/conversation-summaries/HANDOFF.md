@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (spring-map App B + bridge panel).
+Last updated: 2026-09-19 (quiz news-takeaways CI fix).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-19:** **Quiz news-takeaways CI fix** — Three missing `news-takeaway-*` items for Sep field-news (`pace-measurements`, `constitution`, `containment-verification`); `make check` quiz bank passes again. Log: `2026-09-19-quiz-news-takeaways-fix.md`.
 - **2026-09-19:** **Spring map → App B** — Demo folder `appB-field-spring-map`; inventory/card summaries render markdown links; App B card inherits the toy; bridge click panel shows concept-card summary + link. Log: `2026-09-19-spring-map-appb.md`.
 - **2026-09-19:** **Field spring-map polish** — More curated org→bridge weights + snapshot regen; simplified UI (category + layout toggle); per-geometry scales, MB4/MB4a row align, 2× bridge-dep stroke, seeded weight jitter, unified zoom. Log: `2026-09-19-field-spring-map-polish.md`.
 - **2026-09-18:** **Field crux spring-map demo (shipped)** — now `demos/appB-field-spring-map/` (Appendix B, not ch05). Run: `./serve-demos.sh` → `/appB-field-spring-map/`. Plan: [`field-spring-map.md`](../plans/field-spring-map.md). Log: `2026-09-18-field-spring-map-ship.md`.

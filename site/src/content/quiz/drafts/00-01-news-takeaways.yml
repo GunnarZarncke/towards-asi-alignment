@@ -1,4 +1,96 @@
 questions:
+- id: news-takeaway-anthropic-pace-measurements-sep-2026
+  prompt: "Anthropic publishes metrics on AI-led R&D share, agent oversight, and safety compute. What\
+    \ do those numbers fail to settle by themselves?"
+  options:
+  - id: take
+    text: Whether human judgment still changes the next model before irreversible harm
+    correct: true
+  - id: d0
+    text: "Whether the automation index rose on a frozen July R&D task basket"
+    correct: false
+  - id: d1
+    text: Whether blocked actions got human review within one week on one platform
+    correct: false
+  - id: d2
+    text: "Whether safety compute was about 6% of AI R&D in one July snapshot week"
+    correct: false
+  explanation: "A dashboard of how models are built can show the race. It cannot show that humans still\
+    \ win it, or that a flagged event changed later training instead of only the chart."
+  source:
+    href: /cards/chapter/ch11/
+    label: Chapter 11 — Measuring Capability Without Task Ontology
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch11"
+  - "chapter:ch12"
+  - "chapter:ch25"
+  - "chapter:ch39"
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
+- id: news-takeaway-anthropic-constitution-jan-2026
+  prompt: "Anthropic's constitution describes intended values and says the text directly shapes Claude.\
+    \ What should you ask first?"
+  options:
+  - id: take
+    text: "Whether directly shapes is tested on pre-chosen cases, not the document itself"
+    correct: true
+  - id: d0
+    text: Whether the PDF length shows the constitution is already a construction result
+    correct: false
+  - id: d1
+    text: Whether the preface calling honesty almost-a-hard-constraint hard-codes honesty
+    correct: false
+  - id: d2
+    text: Whether final authority on vision is the same claim as a behavior guarantee
+    correct: false
+  explanation: "A specify document is not a builder. Publishing the text, then pointing at the text, is\
+    \ not proof that deployed Claude tracks the stated tradeoffs."
+  source:
+    href: /cards/chapter/ch16/
+    label: Chapter 16 — The Value-Bundle Model
+  topics:
+  - MB2
+  appearOn:
+  - "chapter:ch16"
+  - "chapter:ch40"
+  - "chapter:ch42"
+  tags:
+  - takeaway
+- id: news-takeaway-containment-verification-sep-2026
+  prompt: "Containment verification proves PocketFlow's dispatch cannot emit out-of-policy boundary events.\
+    \ What does that guarantee fail to cover?"
+  options:
+  - id: take
+    text: Whether effects outside the typed enum can still reach the unbounded real world
+    correct: true
+  - id: d0
+    text: Whether read paths stay under a workspace root inside the closed runtime only
+    correct: false
+  - id: d1
+    text: Whether step events stop after the configured loop bound inside the typed enum
+    correct: false
+  - id: d2
+    text: Whether tool-call events stay on an allowlisted tool name inside the runtime
+    correct: false
+  explanation: A machine-checked whitelist on a closed runtime is real progress. It is not a statement
+    about the unbounded world those actions can still reach.
+  source:
+    href: /cards/chapter/ch01/
+    label: Chapter 1 — The Wrong Object of Alignment
+  topics:
+  - MB1
+  appearOn:
+  - "chapter:ch01"
+  - "chapter:ch07"
+  - "chapter:ch33"
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: news-takeaway-openai-hf-roadahead-aug-2026
   prompt: "A lab says the next incident will not look like the last sandbox escape, and safeguards must\
     \ stay ahead of capability. What still has to be in place?"
