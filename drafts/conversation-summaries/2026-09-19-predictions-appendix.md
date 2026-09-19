@@ -27,4 +27,4 @@ User asked to write the new 2027 bridge-predictions appendix, then to continue u
 - `drafts/plans/predictions/prediction-interface.md`
 
 ## Commits
-- (this session)
+- `03503995` — Appendix H + prior-test bibliography + print/site plumbing.
