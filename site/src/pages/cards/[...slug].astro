@@ -20,6 +20,7 @@ import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.as
 import ExperimentLedgersTable from "../../components/ExperimentLedgersTable.astro";
 import QuizBlock from "../../components/QuizBlock.astro";
 import FundingCardChrome from "../../components/FundingCardChrome.astro";
+import MetaculusEmbed from "../../components/MetaculusEmbed.astro";
 import partGems from "../../data/part-gems.json";
 import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
 import references from "../../data/references.json";
@@ -91,6 +92,7 @@ const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
 const isFundingCard = card.data.type === "funding";
 const isPredictionCard = card.data.type === "prediction";
+const isExternalPrediction = isPredictionCard && card.data.predictionExternal === true;
 const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
@@ -232,6 +234,7 @@ const pageDescription = showFullText
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
         {isReleaseCard && card.data.version && <Badge label={`v${card.data.version}`} variant="framework" />}
         {isReleaseCard && card.data.releasedAt && <Badge label={card.data.releasedAt} />}
+        {isExternalPrediction && <Badge label="External factor" variant="framework" />}
       </div>
       {!bookEntry ? (
         <>
@@ -244,6 +247,18 @@ const pageDescription = showFullText
             <h1>{card.data.title}</h1>
           )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
+          {isExternalPrediction && (
+            <div class="callout external-prediction-callout">
+              <p>
+                <strong>External factor.</strong> Not one of the eighteen bridge markets. Hosted on Metaculus;
+                used in the Appendix H aggregation sketch as institutional pause capacity (q<sub>pause</sub>).
+                YES does not discharge any MB*.
+              </p>
+            </div>
+          )}
+          {isExternalPrediction && card.data.metaculusEmbedId && (
+            <MetaculusEmbed questionId={card.data.metaculusEmbedId} title={card.data.title} />
+          )}
           {isFundingCard && (
             <FundingCardChrome
               fundingState={card.data.fundingState}

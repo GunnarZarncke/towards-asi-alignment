@@ -11,8 +11,17 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
 const allCards = await getCollection("cards");
 const predictionCards = allCards
-  .filter((c) => c.data.type === "prediction" && !c.data.predictionOverview)
+  .filter(
+    (c) =>
+      c.data.type === "prediction" &&
+      !c.data.predictionOverview &&
+      !c.data.predictionExternal
+  )
   .sort((a, b) => (a.data.predictionNumber ?? 0) - (b.data.predictionNumber ?? 0));
+
+const externalPredictionCards = allCards.filter(
+  (c) => c.data.type === "prediction" && c.data.predictionExternal
+);
 
 const overviewCard = allCards.find(
   (c) => c.data.type === "prediction" && c.data.predictionOverview
@@ -20,9 +29,13 @@ const overviewCard = allCards.find(
 
 const purpose = predictions.purpose?.replace(/\s+/g, " ").trim() ?? "";
 const graph = predictions.graphPlaceholder ?? {
-  title: "Live prices (coming soon)",
-  blurb: "Aggregate prices will embed here when contracts are listed publicly."
+  title: "Optimistic P(doom) composition",
+  blurb: "Compose spine-market prices with an external pause factor. See Appendix H §aggregation."
 };
+const aggregation = predictions.aggregation;
+const aggregationHref = aggregation?.appendixAnchor
+  ? withBase(`/cards/appendix/appP/full/#${aggregation.appendixAnchor}`)
+  : withBase("/cards/appendix/appP/full/");
 ---
 
 <SiteLayout
@@ -50,6 +63,41 @@ const graph = predictions.graphPlaceholder ?? {
   </section>
 
   <PredictionsGraphPlaceholder title={graph.title} blurb={graph.blurb} />
+
+  {
+    aggregation && (
+      <section class="predictions-aggregation readable" aria-labelledby="predictions-aggregation-heading">
+        <h2 id="predictions-aggregation-heading">{aggregation.title}</h2>
+        <p>{aggregation.blurb}</p>
+        <p class="aggregation-note">
+          <a href={aggregationHref}>Read the aggregation sketch in Appendix H</a>
+          {" "}— spine dependencies, pause factor, and why this is an optimistic bound (YES = tool exists, not frontier bridge discharge).
+        </p>
+      </section>
+    )
+  }
+
+  {
+    externalPredictionCards.length > 0 && (
+      <section class="predictions-external readable" aria-labelledby="predictions-external-heading">
+        <h2 id="predictions-external-heading">External factors</h2>
+        <p class="external-intro">
+          Not bridge markets. Crowd forecasts used in the aggregation sketch—institutional pause capacity alongside Market 14.
+        </p>
+        <ul class="external-list">
+          {externalPredictionCards.map((card) => (
+            <li>
+              <a href={cardHrefForCard(base, card)}>
+                <span class="external-badge">External</span>
+                {card.data.title.replace(/^Market \d+\.\s*/, "")}
+              </a>
+              <p class="market-summary">{card.data.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 
   <section class="predictions-market-grid readable" aria-label="Eighteen markets">
     <h2 class="section-heading">The eighteen markets</h2>
@@ -126,5 +174,56 @@ const graph = predictions.graphPlaceholder ?? {
     font-size: 0.95rem;
     line-height: 1.45;
     opacity: 0.92;
+  }
+
+  .predictions-aggregation,
+  .predictions-external {
+    max-width: 52rem;
+    margin-bottom: 2rem;
+  }
+
+  .predictions-aggregation h2,
+  .predictions-external h2 {
+    font-size: 1.15rem;
+    margin: 0 0 0.65rem;
+  }
+
+  .aggregation-note,
+  .external-intro {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.92;
+  }
+
+  .external-list {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .external-list li {
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--color-border, #c8d4e0);
+  }
+
+  .external-list a {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .external-badge {
+    display: inline-block;
+    margin-right: 0.45rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, #c2410c 12%, var(--color-surface));
+    color: color-mix(in srgb, #c2410c 85%, var(--color-text));
   }
 </style>

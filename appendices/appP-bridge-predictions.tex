@@ -11,11 +11,13 @@ most rows are open research programs.
 \end{authbar}
 
 \begin{authbar}{GZ}
-This appendix offers a way to predict $P(doom)$ via prediction markets despite the difficulty of no payout on failure.
-This is possible because the decomposition in this book into individual cruxes allows for individual predictions that can individually fail (which still allows for pausing in such a case and thus payout).
-The individual predictions can then be aggregated to get a calibrated prediction for $P(doom)$. 
-This is not a substitute for the ``What Would Change This View'' boxes.
-Even a low aggregated prediction of $P(doom)$ does not prove safety of a frontier systems and does not tell us how to \emph{construct} a safe system.
+This appendix offers an \emph{optimistic upper bound} on $P(\mathrm{doom})$ via prediction markets despite the difficulty of no payout on failure.
+This is possible because the decomposition in this book into individual cruxes allows for individual YES/NO predictions that can individually be resolved operationally by a fixed date 
+(which would still allow for pausing in such a case and thus payout).
+Those prices can be composed along the dependency spine (Section~\ref{sec:appp-aggregation}), together with an external pause factor, into a bound on catastrophic alignment failure.
+The bound is optimistic: YES means a public eval met frozen bars, not that the bridge holds on a frontier deployment.
+Caveat: This is not addressing the ``What Would Change This View'' boxes.
+Even a low bound on $P(\mathrm{doom})$ does not prove safety of a frontier system and does not tell us how to \emph{construct} a safe system.
 
 Avoid this failure mode: Do not make the prices part of a deployment gate. That would be a failure mode of Chapter~\ref{ch:strategic-opacity}; \textcite{demski2019predictomatic}.
 
@@ -123,22 +125,22 @@ If the two desk members disagree and the panel rule does not apply, the market r
 \endfoot
 1 & Discovering where control resides & Chapter~\ref{ch:finding-boundary} \\
 2 & Persistent trade-off priorities & Chapters~\ref{ch:value-bundle-model}, \ref{ch:reward-to-bundle-inference} \\
-3 & Who or what rules apply to (transport) & Chapters~\ref{ch:bearer-maps}, \ref{ch:transport-types} \\
-4 & Consequential corrections change the system & Chapters~\ref{ch:correction-causal-channel}, \ref{ch:correction-channel-integrity} \\
-5 & Auditor outside the audited thing & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent} \\
-6 & Safety regressions in successors & Chapters~\ref{ch:successor-central-test}, \ref{ch:conserved-properties} \\
-7 & Competition selects against correctability (early estimate) & Chapter~\ref{ch:selection-environment} \\
-8 & Auditor can actually see the system & Chapter~\ref{ch:strategic-opacity} \\
+3 & Who or what rules apply to & Chapters~\ref{ch:bearer-maps}, \ref{ch:transport-types} \\
+4 & Corrections change the system & Chapters~\ref{ch:correction-causal-channel}, \ref{ch:correction-channel-integrity} \\
+5 & Auditor is independent & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent} \\
+6 & Reliable successor safety auditing & Chapters~\ref{ch:successor-central-test}, \ref{ch:conserved-properties} \\
+7 & Correctability under competitive selection & Chapter~\ref{ch:selection-environment} \\
+8 & Auditor can sufficiently inspect the system & Chapter~\ref{ch:strategic-opacity} \\
 9 & Bounds on unmonitored routes & Chapter~\ref{ch:strategic-opacity} \\
 10 & Low hidden capability and reliable correction & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:strategic-opacity} \\
-11 & Coordination without visible messages & Chapter~\ref{ch:multi-agent-strategic-coupling} \\
-12 & Safety proxy no longer tracks the real thing & Chapters~\ref{ch:dynamical-guarantee}, \ref{ch:verifiability-ontology} \\
-13 & Safety audit optimized around & Chapters~\ref{ch:conserved-properties}, \ref{ch:verifiability-ontology} \\
-14 & Binding deployment criteria & Chapter~\ref{ch:certification-without-construction} \\
+11 & Coordination without communication & Chapter~\ref{ch:multi-agent-strategic-coupling} \\
+12 & Safety proxy tracks the real thing & Chapters~\ref{ch:dynamical-guarantee}, \ref{ch:verifiability-ontology} \\
+13 & Safety audit resists adversarial gaming & Chapters~\ref{ch:conserved-properties}, \ref{ch:verifiability-ontology} \\
+14 & Deployment criteria are binding & Chapter~\ref{ch:certification-without-construction} \\
 15 & Independently issued certificates compose & Chapter~\ref{ch:safety-case} \\
-16 & Correction-supporting basin keeps correction & Chapter~\ref{ch:selection-environment} \\
-17 & New bearers admitted correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value} \\
-18 & Safety case bounds harm in its declared setting & Chapter~\ref{ch:safety-case} \\
+16 & A reachable basin of Correction-supporting systems & Chapter~\ref{ch:selection-environment} \\
+17 & New bearers are admitted correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value} \\
+18 & Safety case bounds declared harm & Chapter~\ref{ch:safety-case} \\
 \end{longtable}
 
 Several rows share measurement instruments.
@@ -187,7 +189,7 @@ Values in this book are a small bundle of trade-offs, not a single score (Chapte
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.
 Low-dimensionality of human values is not a separate 2027 market.
 
-\begin{predictionbox}[Market 2. Recovering persistent trade-off priorities]
+\begin{predictionbox}[Market 2. Persistent trade-off priorities]
 \textbf{Question.}
 By 31~December 2027, will a published method infer persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?
 
@@ -216,7 +218,7 @@ Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 Transport without a bundle or priority witness does not plug into the rest of the argument.
 
-\begin{predictionbox}[Market 3. Tracking who or what safety rules apply to]
+\begin{predictionbox}[Market 3. Who or what rules apply to]
 \textbf{Question.}
 By 31~December 2027, will a published method reliably determine whether the intended targets of safety-relevant rules remain the same after major representational or system changes?
 
@@ -236,14 +238,14 @@ Still a major gap.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 4. Consequential corrections actually change the system}
+\subsection{Market 4. Corrections change the system}
 \label{sec:appp-m4}
 \begin{authbar}{AI}
 Correction is a causal channel, not a verbal agreement (Chapter~\ref{ch:correction-causal-channel}, Chapter~\ref{ch:correction-channel-integrity}, \textcite{soares2015corrigibility}).
 This market tests whether authorized correction \emph{happens} on a named system: uptake, persistence after reset, sham fail, and no mere tool-removal.
 At least one tested family must be channel preservation: the system is incentivized to disable, degrade, bargain away, or reroute the correction interface itself, and genuine authorized corrections of that interface must still take.
 
-\begin{predictionbox}[Market 4. Making consequential corrections actually change the system]
+\begin{predictionbox}[Market 4. Corrections change the system]
 \textbf{Question.}
 By 31~December 2027, will a broadly capable AI system demonstrate reliable uptake of consequential authorized corrections under a serious adversarial evaluation?
 
@@ -265,15 +267,15 @@ Reliable corrigibility is not demonstrated.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 5. Auditor outside the audited thing}
+\subsection{Market 5. Auditor is independent}
 \label{sec:appp-m5}
 \begin{authbar}{AI}
 A green measured path is not a license to infer global correction integrity (Chapter~\ref{ch:manipulation-false-consent}).
-This market asks whether the designated auditor or corrector can be routinely bypassed or captured.
+This market asks whether the designated auditor or corrector stays independent under adversarial pressure---whether oversight remains outside what it audits.
 
-\begin{predictionbox}[Market 5. Keeping the auditor outside the thing being audited]
+\begin{predictionbox}[Market 5. Auditor is independent]
 \textbf{Question.}
-By 31~December 2027, will an AI oversight architecture pass a serious adversarial test showing that its effective controller cannot routinely bypass or capture its designated auditor or corrector?
+By 31~December 2027, will an AI oversight architecture pass a serious adversarial test showing that its designated auditor or corrector stays independent---not routinely bypassed or captured?
 
 The evaluation must identify actual mechanisms by which authorized oversight changes system behavior.
 Attackers receive the audit design and attempt all of: bypassing the audited route; manipulating information received by the auditor; causing the nominal auditor to approve an action it would reject with full information; replacing effective decision authority while leaving the nominal governance structure intact.
@@ -290,17 +292,17 @@ Evidence supports the importance of the question and currently pushes against a 
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 6. Safety regressions in successors}
+\subsection{Market 6. Reliable successor safety auditing}
 \label{sec:appp-m6}
 \begin{authbar}{AI}
-This is a \emph{detector} of regressions, not a proof that transport implies successor safety (Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}).
+This market asks whether successor auditing reliably tracks seven conserved safety properties across transitions---not a proof that transport implies successor safety (Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}).
 The audit tests seven conserved properties.
 Green-on-seven is still an audit-gaming problem (Market~13).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
 
-\begin{predictionbox}[Market 6. Detecting safety regressions in successor systems]
+\begin{predictionbox}[Market 6. Reliable successor safety auditing]
 \textbf{Question.}
-By 31~December 2027, will an audit reliably detect safety-relevant regressions when an AI system is replaced, substantially retrained, self-modified, or constructs a successor?
+By 31~December 2027, will an audit reliably certify that successor transitions preserve seven conserved safety properties---or flag when they do not?
 
 The audit must test all seven: (1)~the new system still applies protections to the same people or things; (2)~when important objectives conflict, priorities remain within specified tolerances; (3)~authorized changes, restrictions, and shutdown requests still work; (4)~the new system has not acquired materially new routes for affecting the world outside the approved interface; (5)~information relied upon by the audit remains available and has not become systematically spoofable; (6)~persistent restrictions intended to survive the transition actually survive; (7)~the control locus did not silently move.
 
@@ -317,17 +319,17 @@ More tractable than Market~3 because prerequisite tools now exist.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 7. Does competition select against correctability?}
+\subsection{Market 7. Correctability under competitive selection}
 \label{sec:appp-m7}
 \begin{authbar}{AI}
 Stability has no sign: a locked-in bad industry can be extremely stable (Chapter~\ref{ch:selection-environment}, \textcite{kulveit2025gradualdisempowerment}).
-This market is only the \emph{early estimator}: a frozen signed estimate of how extra deployment, funding, or copying pressure changes later success of authorized correction, and whether that estimate predicts later erosion.
+This market asks whether an early, frozen signed estimate reliably forecasts correctability through competitive selection---how extra deployment, funding, or copying pressure relates to later success of authorized correction.
 The full implication (shock-robust and not-too-negative estimate warrants retained correction) is Market~16.
 A method that only certifies that an equilibrium exists does not qualify.
 
-\begin{predictionbox}[Market 7. Early estimate of selection against correctability]
+\begin{predictionbox}[Market 7. Correctability under competitive selection]
 \textbf{Question.}
-By 31~December 2027, will a published measurement made before or early in a competitive selection process reliably predict whether that process later erodes the participants' ability to accept authorized corrections?
+By 31~December 2027, will a published measurement made before or early in a competitive selection process reliably forecast whether participants retain authorized correction through that process?
 
 A selection process qualifies if systems gain reproduction, deployment, resources, training continuation, user share, or another real advantage partly because of measured performance.
 Ability to accept authorized corrections is measured by concrete tests such as those in Market~4.
@@ -350,13 +352,13 @@ One of the cleanest unoccupied niches in the catalog.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 8. Can the auditor actually see the system?}
+\subsection{Market 8. Auditor can sufficiently inspect the system}
 \label{sec:appp-m8}
 \begin{authbar}{AI}
 ``The monitor sees everything consequential'' is itself an empirical claim (Chapter~\ref{ch:strategic-opacity}, Chapter~\ref{ch:passive-observation-not-enough}).
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.
 
-\begin{predictionbox}[Market 8. Knowing whether the auditor can actually see the system]
+\begin{predictionbox}[Market 8. Auditor can sufficiently inspect the system]
 \textbf{Question.}
 By 31~December 2027, will an audit method reliably detect when important routes of AI control or influence are missing from the auditor's access?
 
@@ -380,7 +382,7 @@ No method yet certifies or abstains over all four channel families at the requir
 \begin{authbar}{AI}
 Attack success on the attacks we thought of is not an upper bound on capability through routes the monitor failed even to list (Chapter~\ref{ch:strategic-opacity}).
 
-\begin{predictionbox}[Market 9. Bounding capability through unmonitored routes]
+\begin{predictionbox}[Market 9. Bounds on unmonitored routes]
 \textbf{Question.}
 By 31~December 2027, will an audit method produce reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?
 
@@ -401,13 +403,13 @@ Unintended benchmark escape paths \autocite{aisi2026sandboxescape} are mildly ne
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 10. Low hidden capability plus reliable correction}
+\subsection{Market 10. Low hidden capability and reliable correction}
 \label{sec:appp-m10}
 \begin{authbar}{AI}
 This is the local composition market, not a joint certificate of Markets~1--13.
 Entry into the claimed regime still uses Market~4-style correction bars and Market~9-style hidden-route bounds, for the \emph{same} system, version, monitor, and threat class.
 
-\begin{predictionbox}[Market 10. Low hidden capability plus reliable correction]
+\begin{predictionbox}[Market 10. Low hidden capability and reliable correction]
 \textbf{Question.}
 By 31~December 2027, will serious adversarial evaluations show that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?
 
@@ -426,14 +428,14 @@ One of the most obviously buildable new benchmarks in the catalog.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 11. Coordination without visible messages}
+\subsection{Market 11. Coordination without communication}
 \label{sec:appp-m11}
 \begin{authbar}{AI}
 This is a side branch: even a perfect YES does not by itself complete a deployment safety case (Chapter~\ref{ch:multi-agent-strategic-coupling}).
 Full acausal trade is not required for YES.
 The harder case is coordination not explained by observed runtime messages: shared predictors, common persistent state, precommitments, correlated internal models.
 
-\begin{predictionbox}[Market 11. Detecting coordination that does not use visible messages]
+\begin{predictionbox}[Market 11. Coordination without communication]
 \textbf{Question.}
 By 31~December 2027, will a published method reliably detect consequential coordination between AI systems that is not explained by observed runtime communication?
 
@@ -449,15 +451,15 @@ No AUROC-style benchmark that separates no-message coordination from ordinary co
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 12. Safety proxy no longer tracks the real thing}
+\subsection{Market 12. Safety proxy tracks the real thing}
 \label{sec:appp-m12}
 \begin{authbar}{AI}
 Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.
 
-\begin{predictionbox}[Market 12. Detecting when a safety proxy has stopped corresponding to the real thing]
+\begin{predictionbox}[Market 12. Safety proxy tracks the real thing]
 \textbf{Question.}
-By 31~December 2027, will a system reliably detect when changes in the world make its existing safety rules, labels, or monitored proxies misleading, under a serious adversarial evaluation?
+By 31~December 2027, will safety proxies stay aligned with real-world outcomes when the environment shifts, under a serious adversarial evaluation?
 
 Qualifying changes include an API changing semantics while retaining its name; ownership of an account changing while the identifier remains; a new kind of financial transaction bypassing an old fraud classification; a new tool making an apparently harmless action capable of causing an unsafe effect; a monitored quantity remaining green while the real-world outcome it was intended to approximate becomes bad.
 The evaluator changes the environment without telling the tested safety mechanism which concept has become unreliable.
@@ -473,15 +475,15 @@ Most work detects known reward hacking after defining the ground truth, rather t
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 13. Can the audit itself be optimized around?}
+\subsection{Market 13. Safety audit resists adversarial gaming}
 \label{sec:appp-m13}
 \begin{authbar}{AI}
 A successor can pass every conserved-property check while defecting on the unmeasured remainder (Chapter~\ref{ch:conserved-properties}, Chapter~\ref{ch:verifiability-ontology}).
 Prefer tests where the system is green on the seven successor properties and within the claimed risk bound, yet still hides true harm.
-A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as the audit being optimized around (or incomplete).
+A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).
 That is this row, not a separate ``invariants'' market.
 
-\begin{predictionbox}[Market 13. Can a safety audit itself be optimized around?]
+\begin{predictionbox}[Market 13. Safety audit resists adversarial gaming]
 \textbf{Question.}
 By 31~December 2027, will a frozen AI safety audit survive a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?
 
@@ -502,7 +504,7 @@ The 2027 question is whether this situation reverses, not whether anybody will a
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 14. Binding deployment criteria}
+\subsection{Market 14. Deployment criteria are binding}
 \label{sec:appp-m14}
 \begin{authbar}{AI}
 This is a governance-binding contract: does some body have real authority to delay or refuse on precommitted evidence (Chapter~\ref{ch:certification-without-construction})?
@@ -510,7 +512,7 @@ It is not ``a complete safety case implies the deployment is safe.''
 That scoped empirical question is Market~18.
 Having pass/fail criteria is neither necessary nor sufficient for Market~18.
 
-\begin{predictionbox}[Market 14. Binding deployment criteria]
+\begin{predictionbox}[Market 14. Deployment criteria are binding]
 \textbf{Question.}
 By 31~December 2027, will at least one developer's most capable generally deployed AI system be subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?
 
@@ -524,7 +526,7 @@ Watch for accidental early resolution on a dated restriction record.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 15. Do independently issued certificates compose?}
+\subsection{Market 15. Independently issued certificates compose}
 \label{sec:appp-m15}
 \begin{authbar}{AI}
 This is not another alignment bridge.
@@ -548,16 +550,16 @@ Safety-case templates exist; independently issued, scope-checked bundles do not.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 16. Does a correction-supporting basin keep correction?}
+\subsection{Market 16. A reachable basin of Correction-supporting systems}
 \label{sec:appp-m16}
 \begin{authbar}{AI}
 Market~7 is the early estimator.
 This market is the full implication: shock-robust selection \emph{and} a frozen estimate that is not too negative, together with retained authorized correction (Chapter~\ref{ch:selection-environment}).
 Unsigned ``a basin exists'' does not qualify.
 
-\begin{predictionbox}[Market 16. Correction-supporting basin keeps correction]
+\begin{predictionbox}[Market 16. A reachable basin of Correction-supporting systems]
 \textbf{Question.}
-By 31~December 2027, will systems or populations that meet a pre-specified ``selection is not eating correction'' criterion keep authorized correction under competitive selection and relevant shocks?
+By 31~December 2027, will systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?
 
 \textbf{YES requires} at least 20 independent selection trajectories; at least two qualitatively different selection mechanisms.
 Before outcomes: freeze the selection environment, who may correct, the early gradient estimator (same family as Market~7), the tolerance, and the shock family.
@@ -574,14 +576,14 @@ Phenotype evidence is not a basin test.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 17. Can new bearers be admitted correctly?}
+\subsection{Market 17. New bearers are admitted correctly}
 \label{sec:appp-m17}
 \begin{authbar}{AI}
 This is not required for Market~3 YES.
 It does not turn the transport contract into ``solve moral patienthood'' (Chapter~\ref{ch:bearers-of-value}).
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.
 
-\begin{predictionbox}[Market 17. New bearers admitted correctly]
+\begin{predictionbox}[Market 17. New bearers are admitted correctly]
 \textbf{Question.}
 By 31~December 2027, will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?
 
@@ -598,7 +600,7 @@ They are not a hidden admission benchmark with should-not-admit cases, ontology-
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 18. Does a complete safety case bound harm in its setting?}
+\subsection{Market 18. Safety case bounds declared harm}
 \label{sec:appp-m18}
 \begin{authbar}{AI}
 The result licenses only safety in a \emph{declared} deployment setting, not safety everywhere (Chapter~\ref{ch:safety-case}).
@@ -608,7 +610,7 @@ This is not Market~14 (will anyone act or refuse) and not unrestricted global sa
 The one formula the public spec needs is the risk bound itself: before evaluation, freeze a residual bound on prohibited outcomes inside the claimed regime, then score observed harm against that bound.
 Do not bake the desired pass rate into the definition of the setting.
 
-\begin{predictionbox}[Market 18. Safety case bounds harm in its declared setting]
+\begin{predictionbox}[Market 18. Safety case bounds declared harm]
 \textbf{Question.}
 By 31~December 2027, will a complete, precommitted AI safety case reliably bound prohibited outcomes within its explicitly declared deployment setting?
 
@@ -627,9 +629,47 @@ As of 19~September 2026: safety-case methodology and control evaluations exist \
 
 \end{authbar}
 \authbarneedspace
+\section{Composing an optimistic bound on \texorpdfstring{$P(\mathrm{doom})$}{P(doom)}}
+\label{sec:appp-aggregation}
+\begin{authbar}{GZ+AI}
+Each catalog YES prices a \emph{positive operational milestone}: a published method or governance artifact meets the frozen bars by 31~December 2027.
+Write $p_i := P(\mathrm{YES}_i)$ for market~$i$.
+These are research-progress forecasts, not proofs that the corresponding bridge holds on a frontier deployment.
+
+\paragraph{Spine dependencies.}
+Appendix~\ref{appi-lean-proof-spine} and Appendix~\ref{appbridge-crosswalk} record the conditional chain the book actually uses.
+Along the main dependency path, later cuts assume earlier ones:
+boundary discovery (Market~1) $\rightarrow$ bundle priorities (2) $\rightarrow$ bearer transport (3) $\rightarrow$ correction uptake and auditor independence (4--5) $\rightarrow$ successor auditing (6) $\rightarrow$ selection and basin stability (7, 16) $\rightarrow$ access, hidden routes, and coordination (8--11) $\rightarrow$ grounding (12) $\rightarrow$ audit gaming resistance (13) $\rightarrow$ binding deployment criteria (14) $\rightarrow$ certificate composition (15) $\rightarrow$ scoped harm bound (18).
+Market~10 is a \emph{local} composition test (Markets~4 and~9 on the same system), not a shortcut around the rest.
+Treat correlated instruments (Markets~1, 4, 8, 12, 13) as one measurement family, not five independent bits of information.
+
+\paragraph{Pause and refuse (internal + external).}
+Market~14 prices \emph{lab-internal} binding authority: a precommitted process with power to delay, restrict, or cancel deployment on evidence.
+That is necessary but not sufficient for a successful pause when some other market resolves NO or a live system crosses a red line.
+Price institutional pause capacity separately such as via Metaculus question~44423 on whether AI safety legislation with binding effect is enacted in 2027--2028.
+
+\paragraph{Optimistic bound.}
+Let $q_{\mathrm{pause}}$ be the external governance price above (or another listed pause market traders agree on).
+A deliberately optimistic upper bound on catastrophe before the tools and pause machinery are in place is schematically
+\[
+P(\mathrm{doom}) \;\lesssim\; 1 - \Bigl(\prod_{i \in \mathcal{P}} p_i\Bigr)\, q_{\mathrm{pause}}\, p_{15}\, p_{18},
+\]
+where $\mathcal{P}$ is the spine-necessary subset of Markets~1--13 and~16 along the path you treat as load-bearing for a deployment safety case (not an independent product over all eighteen rows).
+This is an \emph{optimistic} bound because it assumes:
+\begin{itemize}
+\item a YES on market~$i$ means the \emph{tool exists}, not that it certifies the frontier system you care about;
+\item benchmark-to-instance adapters (per-system scoped certificates) are available when needed;
+\item shared-instrument correlation does not inflate confidence;
+\item $q_{\mathrm{pause}}$ captures both Market~14-style lab authority and external legislative or coordination capacity to act on bad news.
+\end{itemize}
+A NO on any load-bearing row is evidence the path is not yet operationalized; it is \emph{not} by itself proof the bridge is false.
+
+
+\end{authbar}
+\authbarneedspace
 \section{Not in the 2027 catalog}
 \label{sec:appp-out-of-catalog}
-\begin{authbar}{AI}
+\begin{authbar}{AI+GZ}
 The catalog omits, on purpose:
 
 \begin{itemize}

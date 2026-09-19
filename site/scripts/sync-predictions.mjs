@@ -57,10 +57,23 @@ function stripLatexInline(text) {
     .trim();
 }
 
-function firstQuestionSentence(text) {
+function splitQuestionBlock(text) {
   const trimmed = stripLatexInline(text);
-  const match = trimmed.match(/^[^?]+\?/);
-  return match ? match[0].trim() : trimmed.slice(0, 220);
+  const leadMatch = trimmed.match(/^[^?]+\?/);
+  if (!leadMatch) {
+    return { questionLead: trimmed.slice(0, 220), questionScope: "" };
+  }
+  const questionLead = leadMatch[0].trim();
+  const questionScope = trimmed.slice(leadMatch[0].length).trim();
+  return { questionLead, questionScope };
+}
+
+function normalizeQuestion(text) {
+  return stripLatexInline(text)
+    .replace(/---/g, "-")
+    .replace(/—/g, "-")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function extractMarketSections(tex) {
@@ -85,7 +98,16 @@ function extractPredictionBox(sectionBody) {
   const match = sectionBody.match(
     /\\begin\{predictionbox\}(?:\[([^\]]*)\])?([\s\S]*?)\\end\{predictionbox\}/
   );
-  if (!match) return { title: "", question: "", yesRequires: "", output: "" };
+  if (!match) {
+    return {
+      title: "",
+      question: "",
+      questionLead: "",
+      questionScope: "",
+      yesRequires: "",
+      output: ""
+    };
+  }
   const optionalTitle = match[1]?.trim() ?? "";
   const inner = match[2];
   const questionMatch = inner.match(
@@ -95,9 +117,13 @@ function extractPredictionBox(sectionBody) {
     /\\textbf\{YES requires\}\s*([\s\S]*?)(?=\\textbf\{Output\.\}|$)/
   );
   const outputMatch = inner.match(/\\textbf\{Output\.\}\s*([\s\S]*?)$/);
+  const questionRaw = questionMatch?.[1] ?? "";
+  const { questionLead, questionScope } = splitQuestionBlock(questionRaw);
   return {
     title: optionalTitle,
-    question: stripLatexInline(questionMatch?.[1] ?? ""),
+    question: stripLatexInline(questionRaw),
+    questionLead,
+    questionScope,
     yesRequires: stripLatexInline(yesMatch?.[1] ?? ""),
     output: stripLatexInline(outputMatch?.[1] ?? "")
   };
@@ -129,16 +155,21 @@ function appendixAnchor(number) {
 }
 
 function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
-  const summary = firstQuestionSentence(extracted.question || market.shortQuestion);
+  const summary = market.shortQuestion || market.title || "";
+  const marketQuestion =
+    market.marketQuestion || extracted.questionLead || extracted.question || market.shortQuestion;
   const appendixFull = `/cards/appendix/appP/full/#${appendixAnchor(market.number)}`;
   const bodyParts = [
     `**Resolve by:** 31 December 2027.`,
     "",
     "## Question",
     "",
-    extracted.question || market.shortQuestion,
+    marketQuestion,
     ""
   ];
+  if (extracted.questionScope) {
+    bodyParts.push("## Scope", "", extracted.questionScope, "");
+  }
   if (extracted.yesRequires) {
     bodyParts.push("## YES requires", "", extracted.yesRequires, "");
   }
@@ -178,10 +209,48 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   ].join("\n");
 }
 
-function overviewCardMarkdown(raw, markets, bridgeCardSlugs) {
+function externalFactorCardMarkdown(factor) {
+  const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
+  const bodyParts = [
+    "**External factor.** This forecast is hosted on Metaculus, not in the eighteen bridge contracts.",
+    "",
+    factor.note?.trim() ?? "",
+    "",
+    "## Role in aggregation",
+    "",
+    "The Appendix H aggregation sketch uses this price as **q_pause**: institutional capacity to slow or restrict frontier deployment when evidence warrants pause, complementing [Market 14](/cards/prediction/market-14/) (lab-internal binding criteria).",
+    "",
+    "This is **not** one of the eighteen markets. YES here does not discharge any MB*.",
+    "",
+    `[Open on Metaculus](${factor.url}) · [Aggregation section in Appendix H](/cards/appendix/appP/full/#sec-appp-aggregation)`,
+    ""
+  ];
+
+  return [
+    "---",
+    `title: ${yamlString(factor.title)}`,
+    `type: "prediction"`,
+    `status: "open"`,
+    `summary: ${yamlString(factor.shortQuestion)}`,
+    "predictionExternal: true",
+    `predictionRole: ${yamlString(factor.role)}`,
+    `metaculusEmbedId: ${factor.embedId}`,
+    formatRelatedYaml(["chapters/appP", "predictions/market-14"]),
+    formatExternalYaml([{ label: "Metaculus (live market)", url: factor.url }]),
+    "---",
+    "",
+    ...bodyParts
+  ].join("\n");
+}
+
+function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
   const list = markets.map((market) => {
     const cardPath = cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" });
     return `- [Market ${market.number}. ${market.title}](${cardPath}) — ${market.shortQuestion}`;
+  });
+  const externalList = externalFactors.map((factor) => {
+    const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
+    return `- [${factor.title}](${cardPath}) — ${factor.shortQuestion} *(external)*`;
   });
 
   return [
@@ -212,10 +281,15 @@ function overviewCardMarkdown(raw, markets, bridgeCardSlugs) {
     "",
     "**Claim strength.** YES means a public artifact met *these frozen bars* by 31 December 2027. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
     "",
+    "**Aggregation.** Prices compose along the spine dependency graph into an *optimistic* upper bound on $P(\\mathrm{doom})$; see [Composing an optimistic bound](/cards/appendix/appP/full/#sec-appp-aggregation) in Appendix H. YES on a market means the *tool exists*, not that it certifies a frontier deployment.",
+    "",
     "## The eighteen contracts",
     "",
     ...list,
-    ""
+    "",
+    ...(externalList.length
+      ? ["## External factors (not bridge markets)", "", ...externalList, ""]
+      : [])
   ].join("\n");
 }
 
@@ -225,6 +299,7 @@ const sectionByNumber = extractMarketSections(appendixTex);
 const bridgeCardSlugs = raw.bridgeCardSlugs ?? {};
 
 const markets = [...raw.markets].sort((a, b) => a.number - b.number);
+const externalFactors = [...(raw.externalFactors ?? [])];
 
 await rm(predictionCardsDir, { recursive: true, force: true });
 await mkdir(predictionCardsDir, { recursive: true });
@@ -233,7 +308,7 @@ let cardCount = 0;
 
 await writeFile(
   path.join(predictionCardsDir, "overview.md"),
-  overviewCardMarkdown(raw, markets, bridgeCardSlugs),
+  overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs),
   "utf8"
 );
 cardCount += 1;
@@ -242,11 +317,24 @@ const enrichedMarkets = markets.map((market) => {
   const section = sectionByNumber.get(market.number);
   const box = section ? extractPredictionBox(section.body) : {};
   const priorTest = section ? extractPriorTest(section.body) : "";
+  const marketQuestion =
+    market.marketQuestion || box.questionLead || box.question || market.shortQuestion;
+  if (
+    market.marketQuestion &&
+    box.questionLead &&
+    normalizeQuestion(market.marketQuestion) !== normalizeQuestion(box.questionLead)
+  ) {
+    console.warn(
+      `sync-predictions: market ${market.number} marketQuestion differs from appendix lead sentence`
+    );
+  }
   return {
     ...market,
     cardId: market.id,
     cardPath: cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" }),
-    question: box.question || market.shortQuestion,
+    marketQuestion,
+    questionScope: box.questionScope || "",
+    question: marketQuestion,
     priorTest
   };
 });
@@ -264,16 +352,35 @@ for (const market of markets) {
   cardCount += 1;
 }
 
+const enrichedExternalFactors = externalFactors.map((factor) => ({
+  ...factor,
+  cardId: factor.id,
+  cardPath: cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" })
+}));
+
+for (const factor of externalFactors) {
+  const md = externalFactorCardMarkdown(factor);
+  await writeFile(path.join(predictionCardsDir, `${factor.id}.md`), md, "utf8");
+  cardCount += 1;
+}
+
 const payload = {
   purpose: raw.purpose?.trim() ?? "",
   resolveBy: raw.resolveBy ?? "2027-12-31",
   overviewCardId: "predictions/overview",
   appendixBookId: "appP",
   markets: enrichedMarkets,
-  graphPlaceholder: {
-    title: "Live prices (coming soon)",
+  externalFactors: enrichedExternalFactors,
+  aggregation: {
+    title: "Optimistic bound on P(doom)",
+    appendixAnchor: "sec-appp-aggregation",
     blurb:
-      "When these contracts are listed on a public platform (Metaculus, Manifold, or both), aggregate prices will embed here. Until then, use the cards below and Appendix H for the frozen spec."
+      "Compose spine-market YES prices with an external pause factor (Metaculus Q44423). This is an optimistic upper bound: YES means operational tools exist, not that bridges hold on frontier systems."
+  },
+  graphPlaceholder: {
+    title: "Optimistic P(doom) composition",
+    blurb:
+      "Eighteen bridge markets price operational milestones along the spine. An external Metaculus forecast prices institutional pause capacity. Together they sketch an optimistic bound—see Appendix H §aggregation."
   }
 };
 

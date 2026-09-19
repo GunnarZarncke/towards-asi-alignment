@@ -109,7 +109,13 @@ const card = defineCollection({
     /** Internal spine tag (MB*, constructibility, composition, u17, safe-in). */
     primaryBridge: z.string().optional(),
     /** Always false: YES does not discharge MB*. */
-    resolvesMB: z.boolean().optional()
+    resolvesMB: z.boolean().optional(),
+    /** External Metaculus/Manifold factor (not one of the 18 bridge markets). */
+    predictionExternal: z.boolean().optional(),
+    /** Role in P(doom) aggregation sketch (e.g. pause governance). */
+    predictionRole: z.enum(["pause"]).optional(),
+    /** Metaculus numeric question id for iframe embed. */
+    metaculusEmbedId: z.number().optional()
   })
 });
 

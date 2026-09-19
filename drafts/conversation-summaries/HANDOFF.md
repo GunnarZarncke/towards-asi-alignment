@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (demos landing list).
+Last updated: 2026-09-19 (predictions positive titles + aggregation).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-19:** **Predictions positive titles + aggregation** — Renamed 18 markets to positive framing; Appendix H §aggregation (spine + q_pause optimistic P(doom) bound); `marketQuestion` tier in yaml/sync (Question vs Scope on cards); external Metaculus Q44423 card with embed. Log: `2026-09-19-predictions-positive-aggregation.md`.
 - **2026-09-19:** **Demos landing list** — `/demos/` is the single list hub (plain blurbs + CTAs); removed `/demos/all/` (redirect to landing); card demo links → `/demos/#id`; secondary nav → badge index. Log: `2026-09-19-demos-landing-list.md`.
 - **2026-09-19:** **Predictions Lean adapters** — `Evidence.lean`: per-system certs, eval-soundness adapters (not new `MB*`), `CoherentCertificateBundle`, derived `Certified` / `SatisfiesInvariants`, `HiddenRouteBound`, `SafeIn` stub (MB11 unchanged). Log: `2026-09-19-predictions-lean-adapters.md`.
 - **2026-09-19:** **Predictions site hub** — `/predictions/`; `prediction` card type; 19 synced cards from `metadata/predictions.yml` + `appP` boxes; Gauss icon; offsite price placeholder. Log: `2026-09-19-predictions-site.md`.

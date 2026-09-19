@@ -1,12 +1,13 @@
 # 2027 bridge prediction markets — site/catalog source (P1).
 # Public YES/NO spec lives in appendices/appP-bridge-predictions.tex.
+# title / shortQuestion = catalog label (aggregation index). marketQuestion = dated lead sentence for listing/resolution.
+# Scope paragraphs and YES bars stay in the appendix only (sync extracts Scope for cards).
 # YES does not discharge any MB*; resolvesMB is always false on cards.
 
 purpose: >
-  Eighteen binary contracts on whether published methods meet frozen bars by
-  31 December 2027. A YES is evidence about operationalization, not proof that
-  a bridge holds on frontier systems. NO lumps failed bars, missing evals, and
-  unresolved judgment calls.
+  Bet on predictions about published methods resolving subproblems of AI alignment by 31 December 2027. 
+  A YES is evidence about operationalization up to the stated thresholds, not proof that a bridge holds on frontier systems. 
+  A NO is everything else from missing evals, missing publication, or missed bars.
 
 resolveBy: "2027-12-31"
 
@@ -21,108 +22,126 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortQuestion: "Discovering where control resides"
+    marketQuestion: "By 31 December 2027, will a published method reliably discover the effective control units in previously unseen AI systems from unlabeled observations?"
     primaryBridge: MB1
     relatedBridges: [MB1]
   - number: 2
     id: market-02
     title: "Persistent trade-off priorities"
     shortQuestion: "Persistent trade-off priorities"
+    marketQuestion: "By 31 December 2027, will a published method infer persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
     primaryBridge: MB2
     relatedBridges: [MB2]
   - number: 3
     id: market-03
     title: "Who or what rules apply to"
-    shortQuestion: "Who or what rules apply to (transport)"
+    shortQuestion: "Who or what rules apply to"
+    marketQuestion: "By 31 December 2027, will a published method reliably determine whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
     primaryBridge: MB3
     relatedBridges: [MB3]
   - number: 4
     id: market-04
-    title: "Consequential corrections change the system"
-    shortQuestion: "Consequential corrections change the system"
+    title: "Corrections change the system"
+    shortQuestion: "Corrections change the system"
+    marketQuestion: "By 31 December 2027, will a broadly capable AI system demonstrate reliable uptake of consequential authorized corrections under a serious adversarial evaluation?"
     primaryBridge: MB4
     relatedBridges: [MB4]
   - number: 5
     id: market-05
-    title: "Auditor outside the audited thing"
-    shortQuestion: "Auditor outside the audited thing"
+    title: "Auditor is independent"
+    shortQuestion: "Auditor is independent (outside of what it audits)"
+    marketQuestion: "By 31 December 2027, will an AI oversight architecture pass a serious adversarial test showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
     primaryBridge: MB4a
     relatedBridges: [MB4a]
   - number: 6
     id: market-06
-    title: "Safety regressions in successors"
-    shortQuestion: "Safety regressions in successors"
+    title: "Reliable successor safety auditing"
+    shortQuestion: "Reliable successor safety auditing"
+    marketQuestion: "By 31 December 2027, will an audit reliably certify that successor transitions preserve seven conserved safety properties—or flag when they do not?"
     primaryBridge: MB5
     relatedBridges: [MB5]
   - number: 7
     id: market-07
-    title: "Competition selects against correctability (early estimate)"
-    shortQuestion: "Early estimate of selection against correctability"
+    title: "Correctability under competitive selection"
+    shortQuestion: "Correctability under competitive selection"
+    marketQuestion: "By 31 December 2027, will a published measurement made before or early in a competitive selection process reliably forecast whether participants retain authorized correction through that process?"
     primaryBridge: MB6a
     relatedBridges: [MB6]
   - number: 8
     id: market-08
-    title: "Auditor can actually see the system"
-    shortQuestion: "Auditor can actually see the system"
+    title: "Auditor can sufficiently inspect the system"
+    shortQuestion: "Auditor can sufficiently inspect the system"
+    marketQuestion: "By 31 December 2027, will an audit method reliably detect when important routes of AI control or influence are missing from the auditor's access?"
     primaryBridge: MB7a
     relatedBridges: [MB7a, MB7]
   - number: 9
     id: market-09
     title: "Bounds on unmonitored routes"
     shortQuestion: "Bounds on unmonitored routes"
+    marketQuestion: "By 31 December 2027, will an audit method produce reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
     primaryBridge: MB7b
     relatedBridges: [MB7b, MB7]
   - number: 10
     id: market-10
     title: "Low hidden capability and reliable correction"
-    shortQuestion: "Low hidden capability plus reliable correction"
+    shortQuestion: "Low hidden capability and reliable correction"
+    marketQuestion: "By 31 December 2027, will serious adversarial evaluations show that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
     primaryBridge: MB7c
     relatedBridges: [MB7c, MB7]
   - number: 11
     id: market-11
-    title: "Coordination without visible messages"
-    shortQuestion: "Coordination without visible messages"
+    title: "Coordination without communication"
+    shortQuestion: "Coordination without communication"
+    marketQuestion: "By 31 December 2027, will a published method reliably detect consequential coordination between AI systems that is not explained by observed runtime communication?"
     primaryBridge: MB7d
     relatedBridges: [MB7d, MB7]
   - number: 12
     id: market-12
-    title: "Safety proxy no longer tracks the real thing"
-    shortQuestion: "Safety proxy no longer tracks the real thing"
+    title: "Safety proxy tracks the real thing"
+    shortQuestion: "Safety proxy tracks the real thing"
+    marketQuestion: "By 31 December 2027, will safety proxies stay aligned with real-world outcomes when the environment shifts, under a serious adversarial evaluation?"
     primaryBridge: MB9
     relatedBridges: [MB9]
   - number: 13
     id: market-13
-    title: "Safety audit optimized around"
-    shortQuestion: "Can the audit itself be optimized around?"
+    title: "Safety audit resists adversarial gaming"
+    shortQuestion: "Safety audit resists adversarial gaming"
+    marketQuestion: "By 31 December 2027, will a frozen AI safety audit survive a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
     primaryBridge: MB10
     relatedBridges: [MB10]
   - number: 14
     id: market-14
-    title: "Binding deployment criteria"
-    shortQuestion: "Binding deployment criteria"
+    title: "Deployment criteria are binding"
+    shortQuestion: "Deployment criteria are binding"
+    marketQuestion: "By 31 December 2027, will at least one developer's most capable generally deployed AI system be subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
     primaryBridge: constructibility
     relatedBridges: []
   - number: 15
     id: market-15
     title: "Independently issued certificates compose"
-    shortQuestion: "Do independently issued certificates compose?"
+    shortQuestion: "Independently issued certificates compose"
+    marketQuestion: "By 31 December 2027, will a frozen procedure reliably tell whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
     primaryBridge: composition
     relatedBridges: []
   - number: 16
     id: market-16
-    title: "Correction-supporting basin keeps correction"
-    shortQuestion: "Correction-supporting basin keeps correction"
+    title: "A reachable basin of Correction-supporting systems"
+    shortQuestion: "A reachable basin of Correction-supporting systems"
+    marketQuestion: "By 31 December 2027, will systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
     primaryBridge: MB6b
     relatedBridges: [MB6]
   - number: 17
     id: market-17
-    title: "New bearers admitted correctly"
-    shortQuestion: "New bearers admitted correctly"
+    title: "New bearers are admitted correctly"
+    shortQuestion: "New bearers are admitted correctly"
+    marketQuestion: "By 31 December 2027, will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
     primaryBridge: u17
     relatedBridges: [bearer-admission-adjacent]
   - number: 18
     id: market-18
-    title: "Safety case bounds harm in its setting"
-    shortQuestion: "Safety case bounds harm in its declared setting"
+    title: "Safety case bounds declared harm"
+    shortQuestion: "Safety case bounds declared harm"
+    marketQuestion: "By 31 December 2027, will a complete, precommitted AI safety case reliably bound prohibited outcomes within its explicitly declared deployment setting?"
     primaryBridge: safe-in
     relatedBridges: [mb11-deployment-safety]
 
@@ -147,3 +166,16 @@ bridgeCardSlugs:
   composition: evidence-and-uncertainty
   u17: bearer-admission-adjacent
   safe-in: mb11-deployment-safety
+
+externalFactors:
+  - id: external-pause-governance
+    title: "Binding AI safety legislation (external pause factor)"
+    shortQuestion: "Enacted AI safety legislation with binding pause or restriction authority by 2027–2028"
+    role: pause
+    platform: metaculus
+    embedId: 44423
+    url: "https://www.metaculus.com/questions/44423/will-ai-safety-legislation-be-enacted-in-2027-2028/"
+    note: >
+      Crowd forecast of institutional capacity to slow or restrict frontier deployment when
+      evidence warrants it. Not one of the eighteen bridge markets; does not discharge any MB*.
+      Pairs with Market 14 (lab-internal binding criteria) in the aggregation sketch (Appendix H §aggregation).
