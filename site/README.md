@@ -72,7 +72,7 @@ Output: `site/dist/`
 
 | Path | Purpose |
 |------|---------|
-| `src/pages/` | Routes (Start Here, **`/essay/`**, FAQ, book map, **`/field/`**, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
+| `src/pages/` | Routes (Start Here, **`/essay/`**, FAQ, book map, **`/field/`**, **`/predictions/`**, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
 | `src/content/cards/` | Short concept, bridge, artifact, glossary, **essay**, and **release** cards — most are generated; essays are hand-authored (`type: essay`) |
 | `src/pages/updates/` | Releases & updates — newest version card first (`CardSection` initial count 1) |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
@@ -92,6 +92,7 @@ Output: `site/dist/`
 | `scripts/sync-chapters.mjs` | Syncs chapter/appendix LaTeX to `src/content/book/` via `scripts/lib/tex-convert.mjs`; `\authbar{…}` keys become optional section/subsection heading chips (Notes panel toggle) |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` plus `metadata/experiments-backtests.yml` (one card per Witness test). Writes three class overview cards plus one card per line, with GitHub source and results URLs. |
+| `scripts/sync-predictions.mjs` | Generates `src/data/predictions.json` and prediction cards from `metadata/predictions.yml` plus `appendices/appP-bridge-predictions.tex` (overview + 18 markets). |
 | `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |
 | `public/robots.txt` | Crawler rules, sitemap index URL, pointer to `llms.txt` |
 | `public/llms.txt` | Bot / LLM orientation (synced from repo-root `llms.txt` via `sync-bot-orientation.mjs`) |

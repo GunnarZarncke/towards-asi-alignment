@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-19 (predictions appendix print H).
+Last updated: 2026-09-19 (predictions site hub).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-19 (predictions appendix print H).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) (App H drafted; site hub + Lean adapters queued).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) (App H + `/predictions/` hub shipped; Lean adapters queued).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,7 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-19:** **Predictions appendix (print H)** — `appP-bridge-predictions.tex`; 18 boxed 2027 contracts + prior-test `\autocite{}` (24 new bib keys); Lean print I, experiments print J. Site hub not drafted. Log: `2026-09-19-predictions-appendix.md`.
+- **2026-09-19:** **Predictions site hub** — `/predictions/`; `prediction` card type; 19 synced cards from `metadata/predictions.yml` + `appP` boxes; Gauss icon; offsite price placeholder. Log: `2026-09-19-predictions-site.md`.
+- **2026-09-19:** **Predictions appendix (print H)** — `appP-bridge-predictions.tex`; 18 boxed 2027 contracts + prior-test `\autocite{}` (24 new bib keys); Lean print I, experiments print J. Log: `2026-09-19-predictions-appendix.md`.
 - **2026-09-19:** **Prediction interface P0c** — Criteria `0.4` (18 markets, certificate-output rule, §15–§18); appendix + `/predictions/` hub planned not drafted; Spine `Evidence.lean` queued; `Certified`/`SatisfiesInvariants` to be derived. Log: `2026-09-19-prediction-interface-p0c.md`.
 - **2026-09-19:** **Drafts folder restructure** — Topic subfolders (`predictions/`, `ontology/`, `editorial/`, `project/`, …); lane plans under `plans/{backtest,field,spine,construct,predictions}/`; README indexes; live path updates. Log: `2026-09-19-drafts-folder-restructure.md`.
 - **2026-09-19:** **Interactive Field Crux Map UI** — Short bridge labels, 2× pop, hover panel + click-navigate (wide), overlay flow (compact/touch), caption links, narrow-desktop mouse fix. Log: `2026-09-19-field-crux-map-ui.md`.

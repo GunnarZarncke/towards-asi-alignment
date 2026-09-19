@@ -90,6 +90,7 @@ const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
 const isFundingCard = card.data.type === "funding";
+const isPredictionCard = card.data.type === "prediction";
 const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
@@ -332,6 +333,13 @@ const pageDescription = showFullText
           {isFundingCard && (
             <p class="side-panel-meta">
               <a href={withBase("/funding/")}>All funding opportunities</a>
+            </p>
+          )}
+          {isPredictionCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/predictions/")}>All 2027 predictions</a>
+              {" · "}
+              <a href={withBase("/cards/appendix/appP/full/")}>Appendix H</a>
             </p>
           )}
         </>

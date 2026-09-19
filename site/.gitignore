@@ -22,6 +22,8 @@ src/content/book/
 src/content/cards/chapters/
 src/content/cards/references/
 src/content/cards/experiments/
+src/content/cards/predictions/
+src/data/predictions.json
 src/content/cards/reference-index.md
 public/chapter-demos/
 public/lean-graphs/

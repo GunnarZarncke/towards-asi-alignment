@@ -101,7 +101,15 @@ const card = defineCollection({
     fte: z.number().optional(),
     fteMax: z.number().optional(),
     dependsOn: z.array(z.string()).default([]),
-    roles: z.array(z.string()).default([])
+    roles: z.array(z.string()).default([]),
+    /** Hub overview card for /predictions/. */
+    predictionOverview: z.boolean().optional(),
+    /** Market number 1–18 on section cards. */
+    predictionNumber: z.number().min(1).max(18).optional(),
+    /** Internal spine tag (MB*, constructibility, composition, u17, safe-in). */
+    primaryBridge: z.string().optional(),
+    /** Always false: YES does not discharge MB*. */
+    resolvesMB: z.boolean().optional()
   })
 });
 

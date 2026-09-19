@@ -187,7 +187,7 @@ Rejected: lone expert judge (single captured handle). Rejected: standing 5-panel
 | **P0** | Plan + working criteria 0.2 | **applied** 2026-09-18 |
 | **P0b** | Binary YES/NO; MB6 \(g_{\mathrm{CCI}}\) retarget; retract §7a | **applied** 2026-09-18 |
 | **P0c** | Certificate-output rule; §§15–18; appendix + site hub; derive `Certified` | **plans** 2026-09-19 |
-| **Appendix / site** | Print H drafted (`appP-bridge-predictions.tex`); `/predictions/` hub next | appendix 2026-09-19 |
+| **Appendix / site** | Print H + `/predictions/` hub | **done** 2026-09-19 |
 | **P1** | YAML catalog: id, §, `MB*` keys, `resolvesMB: false` | Q1 if listing |
 | **P2** | Working criteria is the P2 draft; freeze a dated string at listing | Q1 |
 | **P3** | Platform + listing (Manifold / Metaculus / both). Subsidy, version strings | Q6; P2 frozen |

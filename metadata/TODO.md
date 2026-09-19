@@ -80,7 +80,7 @@ One queue; pick up when trigger fires.
 Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md).
 
 - [x] **Guided Tour “read next” from last book page (M).** `/paths/` offers a continue target from the last visited book chapter (visit history + chapter card URLs). Maps onto the active reading path when the chapter matches; otherwise chapter graph, then manuscript order.
-- [ ] **Predictions hub (M).** `/predictions/` nav, `prediction` cards (overview + §1–§18), Gauss-curve symbol, coming-soon offsite graph placeholder. After appendix boxes (App H drafted). Plan: [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md).
+- [x] **Predictions hub (M).** `/predictions/` nav, `prediction` cards (overview + §1–§18), Gauss-curve symbol, coming-soon offsite graph placeholder. Plan: [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md).
 - [ ] **Submit page notes to site (S).**
 - [ ] **Standalone claims publishability review (S).** Cross-ref Outreach.
 - [ ] **Add companion site to Substack (S).**
@@ -94,7 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
-- [ ] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). Appendix H drafted (`appendices/appP-bridge-predictions.tex`). Remaining: site hub; Q1 list vs not, Q2 titles, Q6 platform. Spine: `Evidence.lean` adapters. Not LI.
+- [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). Appendix H + site hub shipped. Remaining: Q1 list vs not, Q2 titles, Q6 platform + live embed. Spine: `Evidence.lean` adapters. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 

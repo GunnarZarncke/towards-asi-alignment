@@ -15,7 +15,8 @@ export const CARD_TYPES = [
   "news",
   "agenda",
   "essay",
-  "funding"
+  "funding",
+  "prediction"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -106,6 +107,11 @@ export const TYPE_META: Record<
     title: "Funding opportunity",
     description:
       "Open or past funding asks scoped to this research program — decision relevance without application form chrome."
+  },
+  prediction: {
+    title: "Prediction",
+    description:
+      "Dated 2027 operational contract on a book bridge — public YES/NO bars, not bridge discharge or a joint safety case."
   }
 };
 

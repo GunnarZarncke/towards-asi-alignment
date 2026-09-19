@@ -1,0 +1,38 @@
+---
+/** Gaussian bell — predictions hub / nav mark (aggregate uncertainty, not a price). */
+interface Props {
+  class?: string;
+  title?: string;
+}
+
+const { class: className = "", title = "Predictions" } = Astro.props;
+---
+
+<svg
+  class:list={["predictions-gauss-icon", className]}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 24"
+  width="32"
+  height="24"
+  role="img"
+  aria-label={title}
+>
+  <title>{title}</title>
+  <path
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    d="M2 20 Q8 20 16 4 Q24 20 30 20"
+  ></path>
+  <line x1="16" y1="4" x2="16" y2="20" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity="0.45"
+  ></line>
+</svg>
+
+<style>
+  .predictions-gauss-icon {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+</style>

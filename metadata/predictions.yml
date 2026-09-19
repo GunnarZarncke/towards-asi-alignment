@@ -1,0 +1,149 @@
+# 2027 bridge prediction markets — site/catalog source (P1).
+# Public YES/NO spec lives in appendices/appP-bridge-predictions.tex.
+# YES does not discharge any MB*; resolvesMB is always false on cards.
+
+purpose: >
+  Eighteen binary contracts on whether published methods meet frozen bars by
+  31 December 2027. A YES is evidence about operationalization, not proof that
+  a bridge holds on frontier systems. NO lumps failed bars, missing evals, and
+  unresolved judgment calls.
+
+resolveBy: "2027-12-31"
+
+overview:
+  title: "2027 bridge predictions"
+  summary: >
+    Catalog of dated operational contracts on the book's live bridges — boxed
+    public spec, prior-test snapshot, and links to the appendix and spine map.
+
+markets:
+  - number: 1
+    id: market-01
+    title: "Discovering where control resides"
+    shortQuestion: "Discovering where control resides"
+    primaryBridge: MB1
+    relatedBridges: [MB1]
+  - number: 2
+    id: market-02
+    title: "Persistent trade-off priorities"
+    shortQuestion: "Persistent trade-off priorities"
+    primaryBridge: MB2
+    relatedBridges: [MB2]
+  - number: 3
+    id: market-03
+    title: "Who or what rules apply to"
+    shortQuestion: "Who or what rules apply to (transport)"
+    primaryBridge: MB3
+    relatedBridges: [MB3]
+  - number: 4
+    id: market-04
+    title: "Consequential corrections change the system"
+    shortQuestion: "Consequential corrections change the system"
+    primaryBridge: MB4
+    relatedBridges: [MB4]
+  - number: 5
+    id: market-05
+    title: "Auditor outside the audited thing"
+    shortQuestion: "Auditor outside the audited thing"
+    primaryBridge: MB4a
+    relatedBridges: [MB4a]
+  - number: 6
+    id: market-06
+    title: "Safety regressions in successors"
+    shortQuestion: "Safety regressions in successors"
+    primaryBridge: MB5
+    relatedBridges: [MB5]
+  - number: 7
+    id: market-07
+    title: "Competition selects against correctability (early estimate)"
+    shortQuestion: "Early estimate of selection against correctability"
+    primaryBridge: MB6a
+    relatedBridges: [MB6]
+  - number: 8
+    id: market-08
+    title: "Auditor can actually see the system"
+    shortQuestion: "Auditor can actually see the system"
+    primaryBridge: MB7a
+    relatedBridges: [MB7a, MB7]
+  - number: 9
+    id: market-09
+    title: "Bounds on unmonitored routes"
+    shortQuestion: "Bounds on unmonitored routes"
+    primaryBridge: MB7b
+    relatedBridges: [MB7b, MB7]
+  - number: 10
+    id: market-10
+    title: "Low hidden capability and reliable correction"
+    shortQuestion: "Low hidden capability plus reliable correction"
+    primaryBridge: MB7c
+    relatedBridges: [MB7c, MB7]
+  - number: 11
+    id: market-11
+    title: "Coordination without visible messages"
+    shortQuestion: "Coordination without visible messages"
+    primaryBridge: MB7d
+    relatedBridges: [MB7d, MB7]
+  - number: 12
+    id: market-12
+    title: "Safety proxy no longer tracks the real thing"
+    shortQuestion: "Safety proxy no longer tracks the real thing"
+    primaryBridge: MB9
+    relatedBridges: [MB9]
+  - number: 13
+    id: market-13
+    title: "Safety audit optimized around"
+    shortQuestion: "Can the audit itself be optimized around?"
+    primaryBridge: MB10
+    relatedBridges: [MB10]
+  - number: 14
+    id: market-14
+    title: "Binding deployment criteria"
+    shortQuestion: "Binding deployment criteria"
+    primaryBridge: constructibility
+    relatedBridges: []
+  - number: 15
+    id: market-15
+    title: "Independently issued certificates compose"
+    shortQuestion: "Do independently issued certificates compose?"
+    primaryBridge: composition
+    relatedBridges: []
+  - number: 16
+    id: market-16
+    title: "Correction-supporting basin keeps correction"
+    shortQuestion: "Correction-supporting basin keeps correction"
+    primaryBridge: MB6b
+    relatedBridges: [MB6]
+  - number: 17
+    id: market-17
+    title: "New bearers admitted correctly"
+    shortQuestion: "New bearers admitted correctly"
+    primaryBridge: u17
+    relatedBridges: [bearer-admission-adjacent]
+  - number: 18
+    id: market-18
+    title: "Safety case bounds harm in its setting"
+    shortQuestion: "Safety case bounds harm in its declared setting"
+    primaryBridge: safe-in
+    relatedBridges: [mb11-deployment-safety]
+
+bridgeCardSlugs:
+  MB1: mb1-boundary-estimator-soundness
+  MB2: mb2-bundle-identifiability
+  MB3: mb3-bearer-import
+  MB4: mb4-correction-legitimacy
+  MB4a: mb4a-measured-path-legitimacy
+  MB5: mb5-successor-ontology-shift
+  MB6: mb6-selection-and-basin-stability
+  MB6a: mb6-selection-and-basin-stability
+  MB6b: mb6-selection-and-basin-stability
+  MB7: mb7-hidden-capability-and-access
+  MB7a: mb7a-access-model-soundness
+  MB7b: mb7b-filter-coverage
+  MB7c: mb7c-bounded-hidden-capability
+  MB7d: mb7d-acausal-coordination
+  MB9: mb9-grounding-certificate
+  MB10: mb10-successor-forgeability
+  constructibility: target-realization
+  composition: evidence-and-uncertainty
+  u17: bearer-admission-adjacent
+  safe-in: mb11-deployment-safety

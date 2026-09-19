@@ -1,0 +1,63 @@
+---
+import PredictionsGaussIcon from "./PredictionsGaussIcon.astro";
+
+interface Props {
+  title: string;
+  blurb: string;
+}
+
+const { title, blurb } = Astro.props;
+---
+
+<section class="predictions-graph-placeholder" aria-labelledby="predictions-graph-heading">
+  <div class="predictions-graph-inner">
+    <PredictionsGaussIcon class="predictions-graph-icon" title="" />
+    <div>
+      <h2 id="predictions-graph-heading">{title}</h2>
+      <p>{blurb}</p>
+      <p class="predictions-graph-note">
+        Listing platform (Metaculus, Manifold, or criteria-only) is still open. Prices will not gate deployment.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .predictions-graph-placeholder {
+    margin: 0 0 2.5rem;
+    max-width: 52rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px dashed color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--color-text) 3%, var(--color-surface));
+  }
+
+  .predictions-graph-inner {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .predictions-graph-icon {
+    width: 2.75rem;
+    height: auto;
+    margin-top: 0.15rem;
+    color: color-mix(in srgb, #c2410c 70%, var(--color-text));
+  }
+
+  .predictions-graph-placeholder h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .predictions-graph-placeholder p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .predictions-graph-note {
+    margin-top: 0.65rem !important;
+    font-size: 0.92rem;
+    opacity: 0.85;
+  }
+</style>

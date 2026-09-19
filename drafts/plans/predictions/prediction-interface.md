@@ -24,7 +24,7 @@ This file is the **integration checklist** across Predictions, Spine, Construct/
 |-------|------|--------|
 | **P0c plans** | This file; criteria 0.4; instrument-plan P0c; spine P2 certificate layer; embedded-v2 note | **done** 2026-09-19 |
 | **Appendix** | `appP-bridge-predictions.tex`; `predictionbox`; print-letter plumbing; prior-test snapshot in sections | **done** 2026-09-19 |
-| **Site** | card type, hub, nav, Gauss SVG, coming-soon embed | after boxes exist |
+| **Site** | card type, hub, nav, Gauss SVG, coming-soon embed | **done** 2026-09-19 |
 | **Lean (v1 adapters)** | `Evidence.lean`: certs, adapters onto unary preds, `CoherentCertificateBundle`, derive `Certified`/`SatisfiesInvariants`, `HiddenRouteBound`, optional `SafeIn` stub | after or overlapping appendix |
 | **Lean 2.0** | MB6 `Environment` then MB11 `SafeIn`; no covering tuple | later; author |
 

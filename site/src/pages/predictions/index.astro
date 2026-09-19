@@ -1,0 +1,130 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import PredictionsGaussIcon from "../../components/PredictionsGaussIcon.astro";
+import PredictionsGraphPlaceholder from "../../components/PredictionsGraphPlaceholder.astro";
+import predictions from "../../data/predictions.json";
+import { cardHrefForCard } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const allCards = await getCollection("cards");
+const predictionCards = allCards
+  .filter((c) => c.data.type === "prediction" && !c.data.predictionOverview)
+  .sort((a, b) => (a.data.predictionNumber ?? 0) - (b.data.predictionNumber ?? 0));
+
+const overviewCard = allCards.find(
+  (c) => c.data.type === "prediction" && c.data.predictionOverview
+);
+
+const purpose = predictions.purpose?.replace(/\s+/g, " ").trim() ?? "";
+const graph = predictions.graphPlaceholder ?? {
+  title: "Live prices (coming soon)",
+  blurb: "Aggregate prices will embed here when contracts are listed publicly."
+};
+---
+
+<SiteLayout
+  title="Predictions"
+  description={purpose || "Eighteen 2027 contracts on whether published methods meet frozen operational bars."}
+>
+  <section class="hero">
+    <p class="eyebrow predictions-eyebrow">
+      <PredictionsGaussIcon class="eyebrow-icon" title="" />
+      <span>2027 contracts</span>
+    </p>
+    <h1>Predictions</h1>
+    <p class="lede">{purpose}</p>
+    <div class="button-row">
+      {
+        overviewCard && (
+          <a class="button primary" href={cardHrefForCard(base, overviewCard)}>
+            Catalog overview
+          </a>
+        )
+      }
+      <a class="button" href={withBase("/cards/appendix/appP/full/")}>Appendix H (full)</a>
+      <a class="button" href={withBase("/cards/appendix/appB/")}>Bridge crosswalk</a>
+    </div>
+  </section>
+
+  <PredictionsGraphPlaceholder title={graph.title} blurb={graph.blurb} />
+
+  <section class="predictions-market-grid readable" aria-label="Eighteen markets">
+    <h2 class="section-heading">The eighteen markets</h2>
+    <ol class="market-list">
+      {
+        predictionCards.map((card) => (
+          <li>
+            <a href={cardHrefForCard(base, card)}>
+              <span class="market-num">{card.data.predictionNumber}.</span>
+              <span class="market-title">{card.data.title.replace(/^Market \d+\.\s*/, "")}</span>
+            </a>
+            <p class="market-summary">{card.data.summary}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</SiteLayout>
+
+<style>
+  .predictions-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .eyebrow-icon {
+    width: 1.35rem;
+    height: auto;
+    color: color-mix(in srgb, #c2410c 75%, var(--color-text));
+  }
+
+  .section-heading {
+    font-size: 1.15rem;
+    margin: 0 0 1rem;
+  }
+
+  .predictions-market-grid {
+    max-width: 52rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .market-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .market-list li {
+    margin: 0;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid var(--color-border, #c8d4e0);
+  }
+
+  .market-list a {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .market-list a:hover {
+    text-decoration: underline;
+  }
+
+  .market-num {
+    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+    margin-right: 0.25rem;
+  }
+
+  .market-summary {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.92;
+  }
+</style>

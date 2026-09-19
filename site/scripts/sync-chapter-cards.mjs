@@ -216,6 +216,7 @@ async function main() {
       type: "appendix",
       title: "Dated Predictions on the Bridges",
       related: [
+        "predictions/overview",
         "mb1-boundary-estimator-soundness",
         "mb4-correction-legitimacy",
         "mb6-selection-and-basin-stability"

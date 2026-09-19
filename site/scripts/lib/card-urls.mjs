@@ -17,7 +17,8 @@ export const TYPE_URL_SEGMENT = {
   release: "release",
   news: "news",
   agenda: "agenda",
-  funding: "funding"
+  funding: "funding",
+  prediction: "prediction"
 };
 
 /**
@@ -38,6 +39,7 @@ export function inferTypeFromCardId(id, type) {
   if (id.startsWith("experiments/")) return "experiment";
   if (id.startsWith("field-agendas/")) return "agenda";
   if (id.startsWith("funding/")) return "funding";
+  if (id.startsWith("predictions/")) return "prediction";
   return type ?? null;
 }
 
@@ -55,6 +57,7 @@ export function cardLocalSlug(id, type) {
   if (type === "experiment") return id.replace(/^experiments\//, "");
   if (type === "agenda") return id.replace(/^field-agendas\//, "");
   if (type === "funding") return id.replace(/^funding\//, "");
+  if (type === "prediction") return id.replace(/^predictions\//, "");
   if (id.includes("/")) return id.split("/").pop() ?? id;
   return id;
 }
@@ -200,6 +203,12 @@ export function legacyCardRedirectPath(slugParam) {
   // Old references/*
   if (first === "references" && parts[1]) {
     const target = cardPublicPath({ id: `references/${parts[1]}`, type: "reference" }).replace(/\/$/, "");
+    return showFull ? `${target}/full/` : `${target}/`;
+  }
+
+  // Old predictions/*
+  if (first === "predictions" && parts[1]) {
+    const target = cardPublicPath({ id: `predictions/${parts[1]}`, type: "prediction" }).replace(/\/$/, "");
     return showFull ? `${target}/full/` : `${target}/`;
   }
 

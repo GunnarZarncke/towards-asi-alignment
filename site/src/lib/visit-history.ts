@@ -15,7 +15,8 @@ export type VisitType =
   | "about"
   | "start"
   | "essay"
-  | "quiz";
+  | "quiz"
+  | "predictions";
 
 export type VisitEntry = {
   path: string;
@@ -36,7 +37,8 @@ const TYPE_LABELS: Record<VisitType, string> = {
   about: "About",
   start: "Start Here",
   essay: "Essays",
-  quiz: "Quiz"
+  quiz: "Quiz",
+  predictions: "Predictions"
 };
 
 const CARD_KIND_LABELS: Record<string, string> = {
@@ -52,7 +54,9 @@ const CARD_KIND_LABELS: Record<string, string> = {
   experiment: "Experiment",
   release: "Release",
   news: "News",
-  agenda: "Field agenda"
+  agenda: "Field agenda",
+  funding: "Funding",
+  prediction: "Prediction"
 };
 
 const NAV_LANDING_PATHS = new Set([
@@ -69,7 +73,8 @@ const NAV_LANDING_PATHS = new Set([
   "/essay/",
   "/glossary/",
   "/references/",
-  "/notation/"
+  "/notation/",
+  "/predictions/"
 ]);
 
 const SKIP_PREFIXES = ["/offline", "/search-index", "/impressum", "/feed.xml"];
@@ -105,6 +110,7 @@ export function visitTypeForPath(pathname: string): VisitType | null {
   if (first === "start" || first === "faq") return "start";
   if (first === "essay") return "essay";
   if (first === "quiz") return "quiz";
+  if (first === "predictions") return "predictions";
   return null;
 }
 

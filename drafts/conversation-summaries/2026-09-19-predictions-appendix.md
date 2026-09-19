@@ -18,9 +18,9 @@ User asked to write the new 2027 bridge-predictions appendix, then to continue u
 - Listing still Q1/Q6; the appendix is the absorb surface either way.
 
 ## Open / next
-1. Site `/predictions/` hub.
-2. Spine `Evidence.lean`.
-3. Q1/Q2/Q6 listing.
+1. Spine `Evidence.lean`.
+2. Q1/Q2/Q6 listing.
+3. Site hub shipped in `2026-09-19-predictions-site.md`.
 
 ## Key paths
 - `appendices/appP-bridge-predictions.tex`
