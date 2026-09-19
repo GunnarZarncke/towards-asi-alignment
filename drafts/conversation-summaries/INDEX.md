@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-19 | **Demos landing list** — Replace minimal `/demos/` landing with plain-language list + CTAs; remove `/demos/all/` inventory; redirect; card links → `/demos/#id`; badge index link. | [2026-09-19-demos-landing-list.md](2026-09-19-demos-landing-list.md) |
 | 2026-09-19 | **Spring map to Appendix B** — The field spring-map demo was parked under ch05, which does not fit. Move it to App B; make the d... | [2026-09-19-spring-map-appb.md](2026-09-19-spring-map-appb.md) |
 | 2026-09-19 | **Quiz news-takeaways CI fix** — CI `make check` failed on **quiz bank**: three `news-takeaway-*` questions missing for field-news... | [2026-09-19-quiz-news-takeaways-fix.md](2026-09-19-quiz-news-takeaways-fix.md) |
 | 2026-09-19 | **Predictions site hub** — User asked to continue with the site phase after Appendix H shipped. | [2026-09-19-predictions-site.md](2026-09-19-predictions-site.md) |

@@ -18,7 +18,10 @@ const botOrientationPages = [
 export default defineConfig({
   site,
   trailingSlash: "always",
-  redirects: cardRedirects,
+  redirects: {
+    ...cardRedirects,
+    "/demos/all/": "/demos/"
+  },
   integrations: [
     sitemap({
       // Illustration-prompt pages are unlisted and noindex; keep them out of

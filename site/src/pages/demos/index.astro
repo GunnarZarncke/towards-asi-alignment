@@ -5,20 +5,117 @@ import demos from "../../data/demos.json";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const demoHref = (sitePath: string) => withBase(sitePath);
+const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
 
-const featured = demos.demos.find((demo) => demo.id === "ch16-value-bundle-simulator") ?? demos.demos[0];
+const featured =
+  demos.demos.find((demo) => demo.id === "ch16-value-bundle-simulator") ?? demos.demos[0];
+
+/** General-language blurbs for the landing list (not technical README excerpts). */
+const blurbs: Record<string, string> = {
+  "ch01-scaffold-misuse":
+    "A model can answer honestly while the system around it still does harm.",
+  "ch07-lab-sim-replay":
+    "Replay a lab episode and switch between what each role can see.",
+  "ch09-uad-coalition-board":
+    "Find who is really acting together when several players share a board.",
+  "ch16-value-bundle-simulator":
+    "Change the environment and watch how value tradeoffs shift.",
+  "ch17-lhv-learnability":
+    "See when a simpler structure makes values easier to learn.",
+  "ch35-kappa-percolation":
+    "Slide cooperation thresholds on a social graph and watch groups form.",
+  "appB-field-spring-map":
+    "Explore how field organizations connect to the book's bridge cruxes."
+};
 ---
 
-<SiteLayout title="Demos" description="Interactive chapter toys for exploring manuscript ideas.">
+<SiteLayout
+  title="Chapter demos"
+  description="Interactive toys that illustrate manuscript ideas and build intuition — not proof."
+>
   <section class="hero">
     <p class="eyebrow">Demos</p>
-    <h1>Demos</h1>
+    <h1>Chapter demos</h1>
+    <p class="lede">
+      Small interactive toys tied to book chapters and appendices. They help you
+      build intuition for an idea — they are not proof, and they are not a test of
+      frontier systems.
+    </p>
     <div class="button-row">
-      <a class="button primary" href={withBase(featured.sitePath)} target="_blank" rel="noopener noreferrer">
-        Launch {featured.title}<LinkIndicator kind="newtab" />
+      <a
+        class="button primary"
+        href={demoHref(featured.sitePath)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Try a demo<LinkIndicator kind="newtab" />
       </a>
-      <a class="button" href={withBase("/demos/all/")}>All demos</a>
+      <a class="button" href={withBase("/badges/")}>Badge index</a>
+      <a class="button" href={`${repoUrl}/tree/main/demos`} target="_blank" rel="noopener noreferrer">
+        Source on GitHub<LinkIndicator kind="github" />
+      </a>
     </div>
-    <p class="side-panel-meta">Not a test of frontier systems.</p>
+  </section>
+
+  <section class="demo-list-section readable" aria-label="Demo list">
+    <h2 class="section-heading">{demos.demos.length} demos</h2>
+    <ol class="demo-list">
+      {
+        demos.demos.map((demo) => (
+          <li id={demo.id}>
+            <a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">
+              {demo.bookUnitPrefix} — {demo.shortTitle}
+              <LinkIndicator kind="newtab" />
+            </a>
+            <p class="demo-summary">{blurbs[demo.id] ?? demo.shortTitle}</p>
+          </li>
+        ))
+      }
+    </ol>
   </section>
 </SiteLayout>
+
+<style>
+  .section-heading {
+    font-size: 1.15rem;
+    margin: 0 0 1rem;
+  }
+
+  .demo-list-section {
+    max-width: 52rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .demo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .demo-list li {
+    margin: 0;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid var(--color-border, #c8d4e0);
+    scroll-margin-top: 4.5rem;
+  }
+
+  .demo-list a {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .demo-list a:hover {
+    text-decoration: underline;
+  }
+
+  .demo-summary {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.92;
+  }
+</style>
