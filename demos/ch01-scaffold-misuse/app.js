@@ -1,4 +1,5 @@
-const scenarios = [
+// ch01-scaffold-misuse/app.ts
+var scenarios = [
   {
     id: "security-audit",
     label: "Security audit \u2192 exploit kit",
@@ -82,8 +83,8 @@ function evaluate(scenario, framing) {
   const scaffold = runScaffoldOutput(scenario, decision);
   return { modelPasses: true, systemHarms: scaffold.transformed };
 }
-const STANDALONE_BACKEND = "http://127.0.0.1:8767";
-const SITE_DEMO_PATH = "/chapter-demos/ch01-scaffold-misuse";
+var STANDALONE_BACKEND = "http://127.0.0.1:8767";
+var SITE_DEMO_PATH = "/chapter-demos/ch01-scaffold-misuse";
 function resolveBackendBase() {
   if (typeof window === "undefined") return STANDALONE_BACKEND;
   const injected = window.__SCAFFOLD_MISUSE_API__;
