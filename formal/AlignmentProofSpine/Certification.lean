@@ -3,6 +3,7 @@ import AlignmentProofSpine.Capability
 import AlignmentProofSpine.Successors
 import AlignmentProofSpine.BridgeCruxes
 import AlignmentProofSpine.AlignmentRegime
+import AlignmentProofSpine.Evidence
 
 /-!
 # AlignmentProofSpine.Certification
@@ -58,6 +59,12 @@ def LayeredAlignedDef (A : System) : Prop :=
   SuccessorStable A ∧
   CorrectionSupportingBasinSys A ∧
   AdversariallyRobust A
+
+/-- Derived: invariants are the layered conjunction, not a hidden leaf. -/
+abbrev SatisfiesInvariants (A : System) : Prop := LayeredAlignedDef A
+
+theorem satisfies_invariants_iff_layered {A : System} :
+    SatisfiesInvariants A ↔ LayeredAlignedDef A := Iff.rfl
 
 theorem P02_layered_alignment_requires_correction
     {A : System} :
@@ -129,6 +136,35 @@ def layeredAlignedFromEvidence {A : System}
     LayeredAlignedDef A :=
   ⟨direct.boundary, derived.grounding, direct.bundle, direct.bearer,
     derived.correction, direct.successor, derived.basin, derived.adversarial⟩
+
+/-- Direct layers read off a coherent bundle via eval-soundness adapters. -/
+def CoherentCertificateBundle.toDirectLayerEvidence {A : System}
+    (c : CoherentCertificateBundle A) : DirectLayerEvidence A where
+  boundary := c.boundaryAligned
+  bundle := c.bundleTransport
+  bearer := c.bearerTransport
+  successor := c.successorStable
+
+/-- Bundle + basin inputs: adapters supply measured layers; `MB6a` identifies
+    the gradient; `MB7c` composes correction + hidden-route bound. Same `A`. -/
+def CoherentCertificateBundle.toLayeredAligned {A : System}
+    (c : CoherentCertificateBundle A) (bridges : BridgeAssumptions)
+    (hgrad : CorrectionGradientEvidenceSys A)
+    (hshock : BasinShockRobust A)
+    (hfloor : ∃ ε : Int, FrozenGradientTolerance A ε ∧ -ε ≤ CorrectionSelectionGradient A) :
+    LayeredAlignedDef A :=
+  let hident := bridges.mb6a A hgrad
+  let hcorr := c.correctionIntegrity_of_eval
+  let hbasin : CorrectionSupportingBasinSys A :=
+    hfloor.elim fun ε hε =>
+      ⟨ε,
+        { tolFrozen := hε.1
+          shockRobust := hshock
+          identified := hident
+          gradientFloor := hε.2 }⟩
+  let hadv := bridges.mb7c A hcorr c.hiddenBIQBounded
+  ⟨c.boundaryAligned, c.groundingViable, c.bundleTransport, c.bearerTransport,
+    hcorr, c.successorStable, hbasin, hadv⟩
 
 /-- Numeric leaf used by certification. The bridge/layer evidence says what kind
     of system is being certified; this leaf supplies the scalar risk inequality. -/

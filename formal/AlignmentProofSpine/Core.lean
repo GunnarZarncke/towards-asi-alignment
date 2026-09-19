@@ -162,8 +162,9 @@ axiom CorrectionSelectionGradient : System → Int
 
 axiom Safe : System → Prop
 axiom SafeState : State → Prop
-axiom Certified : System → Prop
-axiom SatisfiesInvariants : System → Prop
+
+/-! `Certified` is derived in `Evidence.lean` (coherent-bundle inhabitance).
+    `SatisfiesInvariants` is derived in `Certification.lean` (`LayeredAlignedDef`). -/
 
 /-- Alignment layers (C-BND, C-GRND, C-VB, C-BEAR, C-CC, C-SUC, C-AB, C-ADV). -/
 axiom BoundaryAligned : System → Prop

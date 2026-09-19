@@ -137,13 +137,10 @@ theorem regret_alone_not_harm_bound_interface :
 
 `MB4a` remains the necessary-condition / capture-falsifier bridge. A *positive*
 license from a green path to `CorrectionIntegrity` needs extra coverage and
-no-bypass premises. Those premises are named here; the empirical step
-"positive certificate → integrity" is **not** added as a numbered bridge in
-this pass (Phase 3: structure only).
-
-TODO (`metadata/TODO.md`): when CIRIS composite/boundary-decouple consumer is
-ready, try deriving covers/no-bypass from `MB1`/`MB7a`; if that fails, consider
-a threaded MB4b-shaped bridge — do not reverse `MB4a`. -/
+no-bypass premises. Those premises are named here. The eval-soundness adapter
+`positive_measured_path_eval_soundness` lives in `Evidence.lean` (not a
+numbered bridge; not a converse of `MB4a`). Empirical discharge still waits
+on Witness H1 / CIRIS. -/
 
 /-- The designated measured path audits the effective intervening controller
     (boundary/access coverage). Vocabulary; finite analogue is

@@ -94,7 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
-- [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). Appendix H + site hub shipped. Remaining: Q1 list vs not, Q2 titles, Q6 platform + live embed. Spine: `Evidence.lean` adapters. Not LI.
+- [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). Appendix H + site hub + Spine `Evidence.lean` adapters shipped. Remaining: Q1 list vs not, Q2 titles, Q6 platform + live embed. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 

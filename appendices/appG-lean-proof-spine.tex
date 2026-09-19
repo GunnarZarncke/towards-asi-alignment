@@ -1898,6 +1898,7 @@ The labels \texttt{MB1}--\texttt{MB9} match bridge assumptions in \texttt{Bridge
 Imported field handles live in \texttt{AlignmentProofSpine.Field.Imported}; the field crosswalk modules require explicit import of \texttt{AlignmentProofSpine.Field}.
 The only \(S*\) premise materialized as a Lean axiom is \(S07\); the others are built into Lean's logic, proved locally, or left as external mathematical background.
 Top certification is \leanid{certified_class_safety_from_spine_and_bridges} (Corollary~\ref{appi:cor:p30t}), packaging \leanid{CertifiedSafetyCase} with explicit bridge dependencies.
+\leanid{Certified} is derived as inhabitance of a \leanid{CoherentCertificateBundle} (\texttt{Evidence.lean}); \leanid{SatisfiesInvariants} is an abbreviation of \leanid{LayeredAlignedDef}. Neither is an opaque axiom. The eval-soundness adapters in \texttt{Evidence.lean} are not numbered \texttt{MB*} bridges and do not reverse \texttt{MB4}/\texttt{MB4a}. Scoped \leanid{SafeIn} is a stub distinct from unary \leanid{Safe}; \texttt{MB11} is unchanged.
 
 Thus a \leanspine{proof}{P13}{risk is bounded by correction slack} reference in the manuscript should be read as a pointer to Theorem~\ref{appi:thm:p13}, while a \leanspine{bridge}{MB7b}{filter-family coverage bounds hidden productive control} reference should be read as a pointer to Bridge~\ref{appi:ass:mb7b}.
 Field-agenda pointers should be read against Part~I (published handle + book projection), not as claims that Lean reproduces the external proof.

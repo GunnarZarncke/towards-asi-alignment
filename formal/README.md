@@ -132,7 +132,8 @@ scalar projection `CCI_λ` is computed from the certificate
 certificate + θ-floor margin → `risk_gap_bound_from_threshold_certified_cci`;
 instantiated on real data by `WorkedInstance.honest_instance_risk_bound`).
 `P30_certified_class_safety_derived` packages that risk leaf together with
-`Certified`, `SatisfiesInvariants`, and `LayeredAlignedDef` into a
+derived `Certified` (coherent-bundle inhabitance, `Evidence.lean`), derived
+`SatisfiesInvariants` (`LayeredAlignedDef`), and `LayeredAlignedDef` into a
 `CertifiedSafetyCase`; its docstring says explicitly that this step is
 **assembly, not derivation**. What the record buys is separate:
 `MB11_safety_case_adequacy` is the labeled bridge from a safety case plus a
@@ -186,6 +187,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Field/Finite/RegretSafety.lean` | finite regret⇏safety: zero-regret/wrong-loss and prefix-catastrophe counterexamples; conditional loss/exploration transfer to zero harm; **no** new `MB*` | field regret candidate |
 | `AlignmentProofSpine/Field/Finite/CompositePathBypass.lean` | green named measured path + composite bypass ⇏ real correction integrity; positive path certificate requires no-bypass (does not reverse `MB4a`) | CIRIS / anti-capture neighborhood |
 | `AlignmentProofSpine/FieldInterfaces.lean` | Phase 2 book interfaces (**no** new `MB*`): `EpistemicCoverageEvidence` → `MB9`/`GroundingViable`; `SystemRegretSafetyEvidence` distinct from `RiskGap` (not a safety-case leaf); `PositiveMeasuredPathCertificate` (legitimacy+coverage+no-bypass); finite consumers/separations | field-claim plan |
+| `AlignmentProofSpine/Evidence.lean` | v1 certificate layer (**no** new `MB*`, no `AlignmentContext`): per-system certs + eval-soundness adapters onto unary predicates; `HiddenRouteBound` beside `HiddenBIQBoundedSys`; `CoherentCertificateBundle`; derived `Certified`; `SafeIn` stub (does not retarget `MB11`) | App H / predictions |
 | `AlignmentProofSpine/Forgeability.lean` (Phase 2 addendum) | `SystemTransition` channel reading of `ConservedPropertySignatureVerifiable` via `Chokepoint.AdversariallyVerifiableUpTo`; `true_harm_bound_of_successor_safe_step_via_chokepoint` | 8, 31, 43, 48 |
 | `AlignmentProofSpine/Mathlib.lean` | shared Mathlib lemmas (e.g. finite-cardinality pigeonhole for `P34`) | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
