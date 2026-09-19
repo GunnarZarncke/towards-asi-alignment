@@ -1,21 +1,19 @@
 import {
-  DEFAULT_SIM_OPTIONS,
   buildSimulation,
-  reheat,
   simulateStep,
-  type LayoutMode,
   type SimEdge,
   type SimNode,
   type SimOptions,
 } from "./physics.js";
 import {
-  BRIDGE_LAYOUT_SCALE,
+  DEPENDENCY_ANCHOR_SCALE,
   setBridgeLayout,
   type BridgeLayout,
   type PinGeometry,
 } from "./layout.js";
 
-const DEFAULT_VIEW_SCALE = 0.85 / BRIDGE_LAYOUT_SCALE;
+/** Same zoom for both layouts (tied to dependency scale, not circle ring scale). */
+const DEFAULT_VIEW_SCALE = 1.0 / DEPENDENCY_ANCHOR_SCALE;
 import {
   LIVE_BRIDGES,
   categoryParts,
@@ -23,9 +21,19 @@ import {
   emptyWeights,
   isResearchListing,
   PINNED_LISTING_IDS,
+  RESEARCH_CATEGORIES,
   type BridgeKey,
   type WeightVector,
 } from "./weights.js";
+
+const SIM_OPTIONS: SimOptions = {
+  mode: "A",
+  pinGeometry: "dependency",
+  pinBridges: true,
+  dominantOnly: false,
+  weightThreshold: 0.05,
+  useSquaredWeights: true,
+};
 
 type ListingRecord = {
   id: string;
@@ -125,32 +133,11 @@ function listingWeights(listing: ListingRecord): WeightVector {
   return w;
 }
 
-function filterListings(
-  listings: ListingRecord[],
-  opts: {
-    showAll: boolean;
-    category: string;
-    status: string;
-    source: string;
-    search: string;
-    minWeight: number;
-  },
-): ListingRecord[] {
+function filterListings(listings: ListingRecord[], category: string): ListingRecord[] {
   return listings.filter((l) => {
-    if (!opts.showAll && !isResearchListing(l.category) && !PINNED_LISTING_IDS.has(l.id)) {
-      return false;
-    }
-    if (opts.category !== "all" && !categoryParts(l.category).includes(opts.category)) return false;
-    if (opts.status !== "all" && l.status !== opts.status) return false;
-    if (opts.source !== "all" && l.source !== opts.source) return false;
-    if (opts.search) {
-      const q = opts.search.toLowerCase();
-      if (!l.title.toLowerCase().includes(q) && !l.description.toLowerCase().includes(q)) {
-        return false;
-      }
-    }
-    const maxW = Math.max(...LIVE_BRIDGES.map((b) => l.weights[b] ?? 0));
-    if (maxW < opts.minWeight) return false;
+    if (l.status !== "Active") return false;
+    if (!isResearchListing(l.category) && !PINNED_LISTING_IDS.has(l.id)) return false;
+    if (category !== "all" && !categoryParts(l.category).includes(category)) return false;
     return true;
   });
 }
@@ -197,8 +184,7 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
 
   let nodes: SimNode[] = [];
   let edges: ReturnType<typeof buildSimulation>["edges"] = [];
-  let simOptions: SimOptions = { ...DEFAULT_SIM_OPTIONS };
-  let paused = false;
+  let pinGeometry: PinGeometry = SIM_OPTIONS.pinGeometry;
   let selectedId: string | null = null;
   let hoveredId: string | null = null;
   let transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };
@@ -211,19 +197,8 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
       <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Scores reflect field evidence or heuristics — not discharge to Safe.</p>
     </header>
     <div class="fsm-controls">
-      <label>Mode <select data-mode><option value="A">A — fixed bridges</option><option value="B">B — movable bridges</option><option value="C">C — similarity</option></select></label>
-      <label>Geometry <select data-geometry><option value="circle">Circle</option><option value="dependency" selected>Dependency</option></select></label>
-      <label><input type="checkbox" data-pin-bridges checked /> Pin bridges</label>
-      <label><input type="checkbox" data-dominant /> Dominant only</label>
-      <label><input type="checkbox" data-show-all /> All categories</label>
-      <label>Category <select data-category><option value="all">All</option></select></label>
-      <label>Status <select data-status><option value="all">All</option><option value="Active">Active</option><option value="Inactive">Inactive</option></select></label>
-      <label>Source <select data-source><option value="all">All</option><option value="inherited">Inherited</option><option value="heuristic">Heuristic</option><option value="unmatched">Unmatched</option></select></label>
-      <label>Min w <input type="range" data-min-weight min="0" max="0.5" step="0.05" value="0" /><span data-min-label>0</span></label>
-      <input type="search" data-search placeholder="Search…" />
-      <button type="button" data-pause>Pause</button>
-      <button type="button" data-reheat>Reheat</button>
-      <button type="button" data-reset-view>Reset view</button>
+      <label>Category <select data-category><option value="all">All research</option></select></label>
+      <button type="button" data-toggle-geometry>Layout: dependency</button>
     </div>
     <div class="fsm-main">
       <div class="fsm-canvas-wrap"><canvas data-canvas></canvas></div>
@@ -240,7 +215,9 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     .fsm-caption { margin:0 0 12px; color:#555; max-width:70ch; font-size:0.92rem; }
     .fsm-controls { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; margin-bottom:12px; font-size:0.85rem; }
     .fsm-controls label { display:flex; align-items:center; gap:4px; }
-    .fsm-controls select, .fsm-controls input[type=search] { font:inherit; }
+    .fsm-controls select, .fsm-controls button { font:inherit; }
+    .fsm-controls button { padding:4px 10px; border:1px solid #c8d4e0; border-radius:4px; background:#fff; cursor:pointer; }
+    .fsm-controls button:hover { background:#f0f4f8; }
     .fsm-main { display:grid; grid-template-columns:1fr 280px; gap:12px; min-height:520px; }
     @media (max-width:900px) { .fsm-main { grid-template-columns:1fr; } }
     .fsm-canvas-wrap { position:relative; border:1px solid #c8d4e0; border-radius:8px; background:#fff; height:480px; min-height:480px; overflow:hidden; }
@@ -264,7 +241,9 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
   const catSelect = ui.querySelector<HTMLSelectElement>("[data-category]")!;
   const catNames = new Set<string>();
   for (const l of snapshot.listings) {
-    for (const part of categoryParts(l.category)) catNames.add(part);
+    for (const part of categoryParts(l.category)) {
+      if (RESEARCH_CATEGORIES.has(part)) catNames.add(part);
+    }
   }
   for (const c of [...catNames].sort()) {
     const opt = document.createElement("option");
@@ -282,17 +261,20 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
   canvas.parentElement!.appendChild(tooltip);
   let dragging: { lastX: number; lastY: number } | null = null;
 
-  const getFilters = () => ({
-    showAll: ui.querySelector<HTMLInputElement>("[data-show-all]")!.checked,
-    category: ui.querySelector<HTMLSelectElement>("[data-category]")!.value,
-    status: ui.querySelector<HTMLSelectElement>("[data-status]")!.value,
-    source: ui.querySelector<HTMLSelectElement>("[data-source]")!.value,
-    search: ui.querySelector<HTMLInputElement>("[data-search]")!.value.trim(),
-    minWeight: Number(ui.querySelector<HTMLInputElement>("[data-min-weight]")!.value),
-  });
+  const geometryBtn = ui.querySelector<HTMLButtonElement>("[data-toggle-geometry]")!;
+
+  function simOptions(): SimOptions {
+    return { ...SIM_OPTIONS, pinGeometry };
+  }
+
+  function updateGeometryLabel() {
+    geometryBtn.textContent =
+      pinGeometry === "dependency" ? "Layout: dependency" : "Layout: circle";
+  }
 
   function rebuild() {
-    const filtered = filterListings(snapshot.listings, getFilters());
+    const category = ui.querySelector<HTMLSelectElement>("[data-category]")!.value;
+    const filtered = filterListings(snapshot.listings, category);
     const projects = filtered.map((l) => ({
       id: l.id,
       title: l.title,
@@ -300,7 +282,7 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
       logoLocal: l.logoLocal,
       scale: l.scale,
     }));
-    const sim = buildSimulation(projects, snapshot.bridges, simOptions);
+    const sim = buildSimulation(projects, snapshot.bridges, simOptions());
     nodes = sim.nodes;
     edges = sim.edges;
     ensureLogoImages(filtered, logos);
@@ -319,16 +301,16 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     if (e.kind === "bridge-dep" || e.kind === "bridge-dep-static") {
       if (highlight === "bright") {
         ctx.strokeStyle = e.assembly ? "rgba(51,51,51,0.95)" : "rgba(204,51,51,0.95)";
-        ctx.lineWidth = e.assembly ? 2.8 : 2.2;
+        ctx.lineWidth = e.assembly ? 5.6 : 4.4;
       } else if (highlight === "dim") {
         ctx.strokeStyle = "rgba(204,51,51,0.08)";
-        ctx.lineWidth = 0.75;
+        ctx.lineWidth = 1.5;
       } else if (e.kind === "bridge-dep-static") {
         ctx.strokeStyle = e.assembly ? "rgba(51,51,51,0.55)" : "rgba(204,51,51,0.6)";
-        ctx.lineWidth = e.assembly ? 2 : 1.5;
+        ctx.lineWidth = e.assembly ? 4 : 3;
       } else {
         ctx.strokeStyle = "rgba(204,51,51,0.35)";
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 2.4;
       }
     } else if (e.kind === "crux") {
       if (highlight === "bright") {
@@ -481,50 +463,17 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
 
   let raf = 0;
   function loop() {
-    if (!paused) {
-      for (let i = 0; i < 2; i++) simulateStep(nodes, edges, simOptions);
-    }
+    for (let i = 0; i < 2; i++) simulateStep(nodes, edges, simOptions());
     drawFrame();
     raf = requestAnimationFrame(loop);
   }
 
-  const bind = (sel: string, fn: () => void) => ui.querySelector(sel)?.addEventListener("change", fn);
-  const bindClick = (sel: string, fn: () => void) => ui.querySelector(sel)?.addEventListener("click", fn);
-
-  bind("[data-mode]", () => {
-    simOptions.mode = ui.querySelector<HTMLSelectElement>("[data-mode]")!.value as LayoutMode;
-    simOptions.pinBridges = simOptions.mode === "A" || ui.querySelector<HTMLInputElement>("[data-pin-bridges]")!.checked;
-    rebuild();
-  });
-  bind("[data-geometry]", () => {
-    simOptions.pinGeometry = ui.querySelector<HTMLSelectElement>("[data-geometry]")!.value as PinGeometry;
-    rebuild();
-  });
-  ui.querySelector("[data-pin-bridges]")?.addEventListener("change", (e) => {
-    simOptions.pinBridges = (e.target as HTMLInputElement).checked || simOptions.mode === "A";
-    rebuild();
-  });
-  ui.querySelector("[data-dominant]")?.addEventListener("change", (e) => {
-    simOptions.dominantOnly = (e.target as HTMLInputElement).checked;
-    rebuild();
-  });
-  ui.querySelector("[data-show-all]")?.addEventListener("change", rebuild);
-  bind("[data-category]", rebuild);
-  bind("[data-status]", rebuild);
-  bind("[data-source]", rebuild);
-  ui.querySelector("[data-min-weight]")?.addEventListener("input", (e) => {
-    ui.querySelector("[data-min-label]")!.textContent = (e.target as HTMLInputElement).value;
-    rebuild();
-  });
-  ui.querySelector("[data-search]")?.addEventListener("input", rebuild);
-
-  bindClick("[data-pause]", () => {
-    paused = !paused;
-    ui.querySelector<HTMLButtonElement>("[data-pause]")!.textContent = paused ? "Resume" : "Pause";
-  });
-  bindClick("[data-reheat]", () => reheat(nodes));
-  bindClick("[data-reset-view]", () => {
+  ui.querySelector("[data-category]")?.addEventListener("change", rebuild);
+  geometryBtn.addEventListener("click", () => {
+    pinGeometry = pinGeometry === "dependency" ? "circle" : "dependency";
     transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };
+    updateGeometryLabel();
+    rebuild();
   });
 
   canvas.addEventListener(
@@ -596,6 +545,7 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     dragging = null;
   });
 
+  updateGeometryLabel();
   resize();
   rebuild();
   window.addEventListener("resize", resize);

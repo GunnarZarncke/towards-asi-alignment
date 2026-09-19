@@ -145,7 +145,7 @@ def apply_layout_tweaks(positions: dict[str, dict[str, float]]) -> dict[str, dic
     mb5_y = mb7_y + 2 * step
     mb4a_y = (mb3_y + mb5_y) / 2.0  # vertically between MB3 and MB5
     row_mid_y = mb7_y + 2.5 * step  # between MB5 and MB10
-    p["MB4"] = {"x": 130.0, "y": row_mid_y}
+    p["MB4"] = {"x": 130.0, "y": mb4a_y}
     p["MB4a"] = {"x": (130.0 + -45.0) / 2.0, "y": mb4a_y}
     p["MB9"] = {"x": -45.0, "y": row_mid_y}
     p["MB6"] = {"x": 130.0, "y": mb7_y}

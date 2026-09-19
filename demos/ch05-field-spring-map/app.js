@@ -1,4 +1,4 @@
-// ch05-field-spring-map/weights.ts
+// demos/ch05-field-spring-map/weights.ts
 var LIVE_BRIDGES = [
   "MB1",
   "MB2",
@@ -31,6 +31,30 @@ function isResearchListing(category) {
 function emptyWeights() {
   return Object.fromEntries(LIVE_BRIDGES.map((b) => [b, 0]));
 }
+var WEIGHT_JITTER_AMPLITUDE = 0.05;
+function hashString(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+function mulberry32(seed) {
+  let state = seed;
+  return () => {
+    state = state + 1831565813 >>> 0;
+    let t = state;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function jitterWeight(raw, projectId, bridge, amplitude = WEIGHT_JITTER_AMPLITUDE) {
+  if (raw <= 0) return 0;
+  const rand = mulberry32(hashString(`${projectId}\0${bridge}`))();
+  return Math.min(1, raw * (1 + amplitude * (2 * rand - 1)));
+}
 function springRestLength(w, l0 = 38, shrink = 0.18) {
   const clamped = Math.min(1, Math.max(0, w));
   return l0 * (1 - shrink * clamped);
@@ -53,6 +77,14 @@ function cosineSimilarity(a, b) {
   if (na === 0 || nb === 0) return 0;
   return dot / (Math.sqrt(na) * Math.sqrt(nb));
 }
+function projectBridgeKeys(weights, opts) {
+  const entries = LIVE_BRIDGES.map((key) => ({
+    key,
+    w: opts.useSquaredWeights ? weights[key] * weights[key] : weights[key]
+  })).filter((e) => e.w > opts.weightThreshold);
+  const springs = opts.dominantOnly && entries.length ? entries.sort((a, b) => b.w - a.w).slice(0, 1) : entries;
+  return springs.map((e) => e.key);
+}
 function dominantBridge(weights) {
   let best = null;
   let bestVal = 0;
@@ -65,29 +97,133 @@ function dominantBridge(weights) {
   return bestVal > 0 ? best : null;
 }
 
-// ch05-field-spring-map/layout.ts
-var BRIDGE_LAYOUT_SCALE = 1.5;
+// demos/ch05-field-spring-map/layout.ts
+var DEPENDENCY_ANCHOR_SCALE = 2.3;
+var CIRCLE_ANCHOR_SCALE = 1;
+function bridgeAnchorScale(geometry) {
+  return geometry === "dependency" ? DEPENDENCY_ANCHOR_SCALE : CIRCLE_ANCHOR_SCALE;
+}
 var PROJECT_ICON_SCALE = 0.7;
 var bridgeLayout = null;
+var circleBridgeOrder = null;
+function pairKey(a, b) {
+  return a < b ? `${a}|${b}` : `${b}|${a}`;
+}
+function pairAffinity(map, a, b) {
+  if (a === b) return 0;
+  return map.get(pairKey(a, b)) ?? 0;
+}
+function ringCooccurrenceScore(order, map) {
+  let score = 0;
+  for (let i = 0; i < order.length; i++) {
+    const j = (i + 1) % order.length;
+    score += pairAffinity(map, order[i], order[j]);
+  }
+  return score;
+}
+function computeCircleBridgeOrder(projects, opts) {
+  const cooccurrence = /* @__PURE__ */ new Map();
+  for (const project of projects) {
+    const bridges = projectBridgeKeys(project.weights, opts);
+    for (let i = 0; i < bridges.length; i++) {
+      for (let j = i + 1; j < bridges.length; j++) {
+        const pk = pairKey(bridges[i], bridges[j]);
+        cooccurrence.set(pk, (cooccurrence.get(pk) ?? 0) + 1);
+      }
+    }
+  }
+  const n = LIVE_BRIDGES.length;
+  const affinity = (i, j) => pairAffinity(cooccurrence, LIVE_BRIDGES[i], LIVE_BRIDGES[j]);
+  let hasCooccurrence = false;
+  for (const v of cooccurrence.values()) {
+    if (v > 0) {
+      hasCooccurrence = true;
+      break;
+    }
+  }
+  if (!hasCooccurrence) return [...LIVE_BRIDGES];
+  const full = (1 << n) - 1;
+  const negInf = -1e9;
+  const dp = Array.from({ length: 1 << n }, () => Array(n).fill(negInf));
+  const parent = Array.from({ length: 1 << n }, () => new Int16Array(n).fill(-1));
+  dp[1][0] = 0;
+  for (let mask2 = 1; mask2 <= full; mask2++) {
+    if (!(mask2 & 1)) continue;
+    for (let j = 0; j < n; j++) {
+      if (!(mask2 & 1 << j)) continue;
+      const base = dp[mask2][j];
+      if (base <= negInf / 2) continue;
+      for (let k = 0; k < n; k++) {
+        if (mask2 & 1 << k) continue;
+        const nextMask = mask2 | 1 << k;
+        const next = base + affinity(j, k);
+        if (next > dp[nextMask][k]) {
+          dp[nextMask][k] = next;
+          parent[nextMask][k] = j;
+        }
+      }
+    }
+  }
+  let bestScore = negInf;
+  let bestEnd = 0;
+  for (let j = 1; j < n; j++) {
+    const score = dp[full][j] + affinity(j, 0);
+    if (score > bestScore) {
+      bestScore = score;
+      bestEnd = j;
+    }
+  }
+  const idxPath = [];
+  let mask = full;
+  let cur = bestEnd;
+  while (cur >= 0) {
+    idxPath.push(cur);
+    const prev = parent[mask][cur];
+    mask ^= 1 << cur;
+    cur = prev;
+  }
+  idxPath.reverse();
+  let bestOrder = idxPath.map((i) => LIVE_BRIDGES[i]);
+  bestScore = ringCooccurrenceScore(bestOrder, cooccurrence);
+  for (let rot = 0; rot < bestOrder.length; rot++) {
+    for (const candidate of [
+      [...bestOrder.slice(rot), ...bestOrder.slice(0, rot)],
+      [...bestOrder.slice(rot), ...bestOrder.slice(0, rot)].reverse()
+    ]) {
+      const score = ringCooccurrenceScore(candidate, cooccurrence);
+      if (score > bestScore) {
+        bestScore = score;
+        bestOrder = candidate;
+      }
+    }
+  }
+  return bestOrder;
+}
+function setCircleBridgeOrder(order) {
+  circleBridgeOrder = order;
+}
 function bridgeCirclePosition(key, radius, cx = 0, cy = 0) {
-  const idx = LIVE_BRIDGES.indexOf(key);
-  const angle = idx / LIVE_BRIDGES.length * Math.PI * 2 - Math.PI / 2;
+  const order = circleBridgeOrder ?? LIVE_BRIDGES;
+  const idx = order.indexOf(key);
+  const slot = idx >= 0 ? idx : LIVE_BRIDGES.indexOf(key);
+  const angle = slot / order.length * Math.PI * 2 - Math.PI / 2;
   return { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
 }
 function setBridgeLayout(layout) {
   bridgeLayout = layout;
 }
 function bridgePinPosition(key, geometry, radius = 320) {
+  const scale = bridgeAnchorScale(geometry);
   if (geometry === "dependency") {
     const pos = bridgeLayout?.positions[key];
     if (pos) {
       return {
-        x: pos.x * BRIDGE_LAYOUT_SCALE,
-        y: pos.y * BRIDGE_LAYOUT_SCALE
+        x: pos.x * scale,
+        y: pos.y * scale
       };
     }
   }
-  return bridgeCirclePosition(key, radius * BRIDGE_LAYOUT_SCALE);
+  return bridgeCirclePosition(key, radius * scale);
 }
 function bridgeDependencyEdges() {
   return bridgeLayout?.edges ?? [];
@@ -115,15 +251,7 @@ function graphDistance(a, b) {
   return 4;
 }
 
-// ch05-field-spring-map/physics.ts
-var DEFAULT_SIM_OPTIONS = {
-  mode: "A",
-  pinGeometry: "dependency",
-  pinBridges: true,
-  dominantOnly: false,
-  weightThreshold: 0.05,
-  useSquaredWeights: true
-};
+// demos/ch05-field-spring-map/physics.ts
 function effectiveWeight(raw, useSquared) {
   const w = Math.max(0, raw);
   return useSquared ? w * w : w;
@@ -145,6 +273,13 @@ function buildSimulation(projects, bridgeLabels, options) {
   const edges = [];
   const showBridges = options.mode !== "C";
   const showBridgeDeps = options.pinGeometry === "dependency" || options.mode === "B";
+  const layoutScale = bridgeAnchorScale(options.pinGeometry);
+  const projectSpawnScale = options.mode === "A" ? layoutScale : 1;
+  if (showBridges && options.pinGeometry === "circle") {
+    setCircleBridgeOrder(computeCircleBridgeOrder(projects, options));
+  } else {
+    setCircleBridgeOrder(null);
+  }
   if (showBridges) {
     for (const key of LIVE_BRIDGES) {
       const pos = bridgePinPosition(key, options.pinGeometry);
@@ -167,7 +302,7 @@ function buildSimulation(projects, bridgeLabels, options) {
   }
   for (const p of projects) {
     const angle = Math.random() * Math.PI * 2;
-    const r = BRIDGE_LAYOUT_SCALE * (70 + Math.random() * 110);
+    const r = projectSpawnScale * (70 + Math.random() * 110);
     const scaleRadius = (p.scale === "Large" ? 28 : p.scale === "Medium" ? 22 : p.scale === "Small" ? 16 : 20) * PROJECT_ICON_SCALE;
     nodes.push({
       id: `project:${p.id}`,
@@ -183,16 +318,13 @@ function buildSimulation(projects, bridgeLabels, options) {
       radius: scaleRadius
     });
     if (showBridges) {
-      const entries = LIVE_BRIDGES.map((key) => ({
-        key,
-        w: effectiveWeight(p.weights[key], options.useSquaredWeights)
-      })).filter((e) => e.w > options.weightThreshold);
-      const springs = options.dominantOnly && entries.length ? entries.sort((a, b) => b.w - a.w).slice(0, 1) : entries;
-      for (const { key, w } of springs) {
+      const keys = projectBridgeKeys(p.weights, options);
+      for (const key of keys) {
+        const raw = jitterWeight(p.weights[key], p.id, key);
         edges.push({
           source: `project:${p.id}`,
           target: `bridge:${key}`,
-          weight: w,
+          weight: effectiveWeight(raw, options.useSquaredWeights),
           kind: "crux"
         });
       }
@@ -224,7 +356,7 @@ function simulateStep(nodes, edges, options) {
   const repulsion = 520;
   const centerPull = 5e-4;
   const maxSpeed = 7;
-  const bridgeDepRest = 100 * BRIDGE_LAYOUT_SCALE;
+  const bridgeDepRest = 100 * bridgeAnchorScale(options.pinGeometry);
   const bridgeDepK = 0.012;
   for (const n of nodes) {
     n.vx *= damping;
@@ -328,16 +460,17 @@ function simulateStep(nodes, edges, options) {
     n.y += n.vy;
   }
 }
-function reheat(nodes) {
-  for (const n of nodes) {
-    if (n.pinned) continue;
-    n.vx += (Math.random() - 0.5) * 12;
-    n.vy += (Math.random() - 0.5) * 12;
-  }
-}
 
-// ch05-field-spring-map/app.ts
-var DEFAULT_VIEW_SCALE = 0.85 / BRIDGE_LAYOUT_SCALE;
+// demos/ch05-field-spring-map/app.ts
+var DEFAULT_VIEW_SCALE = 1 / DEPENDENCY_ANCHOR_SCALE;
+var SIM_OPTIONS = {
+  mode: "A",
+  pinGeometry: "dependency",
+  pinBridges: true,
+  dominantOnly: false,
+  weightThreshold: 0.05,
+  useSquaredWeights: true
+};
 var BRIDGE_COLORS = {
   MB1: "#4a7c59",
   MB2: "#5b8a72",
@@ -403,22 +536,11 @@ function listingWeights(listing) {
   }
   return w;
 }
-function filterListings(listings, opts) {
+function filterListings(listings, category) {
   return listings.filter((l) => {
-    if (!opts.showAll && !isResearchListing(l.category) && !PINNED_LISTING_IDS.has(l.id)) {
-      return false;
-    }
-    if (opts.category !== "all" && !categoryParts(l.category).includes(opts.category)) return false;
-    if (opts.status !== "all" && l.status !== opts.status) return false;
-    if (opts.source !== "all" && l.source !== opts.source) return false;
-    if (opts.search) {
-      const q = opts.search.toLowerCase();
-      if (!l.title.toLowerCase().includes(q) && !l.description.toLowerCase().includes(q)) {
-        return false;
-      }
-    }
-    const maxW = Math.max(...LIVE_BRIDGES.map((b) => l.weights[b] ?? 0));
-    if (maxW < opts.minWeight) return false;
+    if (l.status !== "Active") return false;
+    if (!isResearchListing(l.category) && !PINNED_LISTING_IDS.has(l.id)) return false;
+    if (category !== "all" && !categoryParts(l.category).includes(category)) return false;
     return true;
   });
 }
@@ -461,8 +583,7 @@ async function initDemo(root) {
   const logos = /* @__PURE__ */ new Map();
   let nodes = [];
   let edges = [];
-  let simOptions = { ...DEFAULT_SIM_OPTIONS };
-  let paused = false;
+  let pinGeometry = SIM_OPTIONS.pinGeometry;
   let selectedId = null;
   let hoveredId = null;
   let transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };
@@ -474,19 +595,8 @@ async function initDemo(root) {
       <p class="fsm-caption">AISafety.com listings placed by bridge-crux affinity. Scores reflect field evidence or heuristics \u2014 not discharge to Safe.</p>
     </header>
     <div class="fsm-controls">
-      <label>Mode <select data-mode><option value="A">A \u2014 fixed bridges</option><option value="B">B \u2014 movable bridges</option><option value="C">C \u2014 similarity</option></select></label>
-      <label>Geometry <select data-geometry><option value="circle">Circle</option><option value="dependency" selected>Dependency</option></select></label>
-      <label><input type="checkbox" data-pin-bridges checked /> Pin bridges</label>
-      <label><input type="checkbox" data-dominant /> Dominant only</label>
-      <label><input type="checkbox" data-show-all /> All categories</label>
-      <label>Category <select data-category><option value="all">All</option></select></label>
-      <label>Status <select data-status><option value="all">All</option><option value="Active">Active</option><option value="Inactive">Inactive</option></select></label>
-      <label>Source <select data-source><option value="all">All</option><option value="inherited">Inherited</option><option value="heuristic">Heuristic</option><option value="unmatched">Unmatched</option></select></label>
-      <label>Min w <input type="range" data-min-weight min="0" max="0.5" step="0.05" value="0" /><span data-min-label>0</span></label>
-      <input type="search" data-search placeholder="Search\u2026" />
-      <button type="button" data-pause>Pause</button>
-      <button type="button" data-reheat>Reheat</button>
-      <button type="button" data-reset-view>Reset view</button>
+      <label>Category <select data-category><option value="all">All research</option></select></label>
+      <button type="button" data-toggle-geometry>Layout: dependency</button>
     </div>
     <div class="fsm-main">
       <div class="fsm-canvas-wrap"><canvas data-canvas></canvas></div>
@@ -502,7 +612,9 @@ async function initDemo(root) {
     .fsm-caption { margin:0 0 12px; color:#555; max-width:70ch; font-size:0.92rem; }
     .fsm-controls { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; margin-bottom:12px; font-size:0.85rem; }
     .fsm-controls label { display:flex; align-items:center; gap:4px; }
-    .fsm-controls select, .fsm-controls input[type=search] { font:inherit; }
+    .fsm-controls select, .fsm-controls button { font:inherit; }
+    .fsm-controls button { padding:4px 10px; border:1px solid #c8d4e0; border-radius:4px; background:#fff; cursor:pointer; }
+    .fsm-controls button:hover { background:#f0f4f8; }
     .fsm-main { display:grid; grid-template-columns:1fr 280px; gap:12px; min-height:520px; }
     @media (max-width:900px) { .fsm-main { grid-template-columns:1fr; } }
     .fsm-canvas-wrap { position:relative; border:1px solid #c8d4e0; border-radius:8px; background:#fff; height:480px; min-height:480px; overflow:hidden; }
@@ -525,7 +637,9 @@ async function initDemo(root) {
   const catSelect = ui.querySelector("[data-category]");
   const catNames = /* @__PURE__ */ new Set();
   for (const l of snapshot.listings) {
-    for (const part of categoryParts(l.category)) catNames.add(part);
+    for (const part of categoryParts(l.category)) {
+      if (RESEARCH_CATEGORIES.has(part)) catNames.add(part);
+    }
   }
   for (const c of [...catNames].sort()) {
     const opt = document.createElement("option");
@@ -541,16 +655,16 @@ async function initDemo(root) {
   tooltip.hidden = true;
   canvas.parentElement.appendChild(tooltip);
   let dragging = null;
-  const getFilters = () => ({
-    showAll: ui.querySelector("[data-show-all]").checked,
-    category: ui.querySelector("[data-category]").value,
-    status: ui.querySelector("[data-status]").value,
-    source: ui.querySelector("[data-source]").value,
-    search: ui.querySelector("[data-search]").value.trim(),
-    minWeight: Number(ui.querySelector("[data-min-weight]").value)
-  });
+  const geometryBtn = ui.querySelector("[data-toggle-geometry]");
+  function simOptions() {
+    return { ...SIM_OPTIONS, pinGeometry };
+  }
+  function updateGeometryLabel() {
+    geometryBtn.textContent = pinGeometry === "dependency" ? "Layout: dependency" : "Layout: circle";
+  }
   function rebuild() {
-    const filtered = filterListings(snapshot.listings, getFilters());
+    const category = ui.querySelector("[data-category]").value;
+    const filtered = filterListings(snapshot.listings, category);
     const projects = filtered.map((l) => ({
       id: l.id,
       title: l.title,
@@ -558,7 +672,7 @@ async function initDemo(root) {
       logoLocal: l.logoLocal,
       scale: l.scale
     }));
-    const sim = buildSimulation(projects, snapshot.bridges, simOptions);
+    const sim = buildSimulation(projects, snapshot.bridges, simOptions());
     nodes = sim.nodes;
     edges = sim.edges;
     ensureLogoImages(filtered, logos);
@@ -570,16 +684,16 @@ async function initDemo(root) {
     if (e.kind === "bridge-dep" || e.kind === "bridge-dep-static") {
       if (highlight === "bright") {
         ctx.strokeStyle = e.assembly ? "rgba(51,51,51,0.95)" : "rgba(204,51,51,0.95)";
-        ctx.lineWidth = e.assembly ? 2.8 : 2.2;
+        ctx.lineWidth = e.assembly ? 5.6 : 4.4;
       } else if (highlight === "dim") {
         ctx.strokeStyle = "rgba(204,51,51,0.08)";
-        ctx.lineWidth = 0.75;
+        ctx.lineWidth = 1.5;
       } else if (e.kind === "bridge-dep-static") {
         ctx.strokeStyle = e.assembly ? "rgba(51,51,51,0.55)" : "rgba(204,51,51,0.6)";
-        ctx.lineWidth = e.assembly ? 2 : 1.5;
+        ctx.lineWidth = e.assembly ? 4 : 3;
       } else {
         ctx.strokeStyle = "rgba(204,51,51,0.35)";
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 2.4;
       }
     } else if (e.kind === "crux") {
       if (highlight === "bright") {
@@ -721,47 +835,16 @@ async function initDemo(root) {
   }
   let raf = 0;
   function loop() {
-    if (!paused) {
-      for (let i = 0; i < 2; i++) simulateStep(nodes, edges, simOptions);
-    }
+    for (let i = 0; i < 2; i++) simulateStep(nodes, edges, simOptions());
     drawFrame();
     raf = requestAnimationFrame(loop);
   }
-  const bind = (sel, fn) => ui.querySelector(sel)?.addEventListener("change", fn);
-  const bindClick = (sel, fn) => ui.querySelector(sel)?.addEventListener("click", fn);
-  bind("[data-mode]", () => {
-    simOptions.mode = ui.querySelector("[data-mode]").value;
-    simOptions.pinBridges = simOptions.mode === "A" || ui.querySelector("[data-pin-bridges]").checked;
-    rebuild();
-  });
-  bind("[data-geometry]", () => {
-    simOptions.pinGeometry = ui.querySelector("[data-geometry]").value;
-    rebuild();
-  });
-  ui.querySelector("[data-pin-bridges]")?.addEventListener("change", (e) => {
-    simOptions.pinBridges = e.target.checked || simOptions.mode === "A";
-    rebuild();
-  });
-  ui.querySelector("[data-dominant]")?.addEventListener("change", (e) => {
-    simOptions.dominantOnly = e.target.checked;
-    rebuild();
-  });
-  ui.querySelector("[data-show-all]")?.addEventListener("change", rebuild);
-  bind("[data-category]", rebuild);
-  bind("[data-status]", rebuild);
-  bind("[data-source]", rebuild);
-  ui.querySelector("[data-min-weight]")?.addEventListener("input", (e) => {
-    ui.querySelector("[data-min-label]").textContent = e.target.value;
-    rebuild();
-  });
-  ui.querySelector("[data-search]")?.addEventListener("input", rebuild);
-  bindClick("[data-pause]", () => {
-    paused = !paused;
-    ui.querySelector("[data-pause]").textContent = paused ? "Resume" : "Pause";
-  });
-  bindClick("[data-reheat]", () => reheat(nodes));
-  bindClick("[data-reset-view]", () => {
+  ui.querySelector("[data-category]")?.addEventListener("change", rebuild);
+  geometryBtn.addEventListener("click", () => {
+    pinGeometry = pinGeometry === "dependency" ? "circle" : "dependency";
     transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };
+    updateGeometryLabel();
+    rebuild();
   });
   canvas.addEventListener(
     "wheel",
@@ -827,6 +910,7 @@ async function initDemo(root) {
   window.addEventListener("mouseup", () => {
     dragging = null;
   });
+  updateGeometryLabel();
   resize();
   rebuild();
   window.addEventListener("resize", resize);

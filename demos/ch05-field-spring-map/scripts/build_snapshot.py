@@ -43,6 +43,10 @@ LIVE_BRIDGES = [
 LISTING_AGENDA_OVERRIDES: dict[str, str] = {
     "rec1QpsZCIfnfTF1y": "this-project-towards-superintelligence-alignment-tsa",
     "recQA1xIcTe6j8tjr": "neglected-approaches-portfolio",
+    # CHAI / cooperative IRL lineage (Algorithmic Alignment Group, MIT)
+    "recDaHglyXODmpBkV": "chai-russell",
+    # MIRI-adjacent alignment wiki (Yudkowsky; foundational concepts and open problems)
+    "recAa8UuevcBb6LFI": "miri",
 }
 
 # Curated bridge weights when no matrix row exists (field-evidence style scores, not discharge).
@@ -117,6 +121,150 @@ LISTING_WEIGHT_OVERRIDES: dict[str, dict] = {
             "MB2": 0.95,
             # MB7 Inner Alignment — primary mechanistic lane: contextual shards vs intended reward (field ev. #51)
             "MB7": 0.75,
+        },
+    },
+    "recu9yuBKbPAYgRz8": {
+        "rationale": (
+            "AIXI Labs: formal-agent risk models via AIXI variants and translation to real agents "
+            "(aixi-labs.com)"
+        ),
+        "weights": {
+            # MB1 Embedded Agency — idealized agents, formal decision-theoretic agency models
+            "MB1": 0.9,
+            # MB2 Value Learning — risk factors and mitigations framed as preference/reward structure
+            "MB2": 0.6,
+            # MB5 Reflective Stability — self-modifying / unbounded optimizers in formal setting
+            "MB5": 0.45,
+            # MB9 Grounding Drift — bridging formal models to deployed systems; specification gap
+            "MB9": 0.75,
+        },
+    },
+    "recxg7Q2L2NEFP8NV": {
+        "rationale": (
+            "Dovetail: foundational mathematics for the nature of AI agents (dovetail.ai)"
+        ),
+        "weights": {
+            # MB1 Embedded Agency — primary: mathematical theory of agents and environments
+            "MB1": 0.95,
+            # MB2 Value Learning — some overlap via utility/representation in agent foundations
+            "MB2": 0.5,
+            # MB5 Reflective Stability — tiling/self-reference in formal agent theory
+            "MB5": 0.6,
+            # MB9 Grounding Drift — formal foundations vs real systems
+            "MB9": 0.55,
+        },
+    },
+    "rec8UWo45vym2oLBS": {
+        "rationale": (
+            "MAISI: Mathematical AI Safety Institute — mathematical foundations for powerful-AI safety "
+            "(maisi.org)"
+        ),
+        "weights": {
+            # MB1 Embedded Agency — formal models of agency under mathematical safety programme
+            "MB1": 0.7,
+            # MB2 Value Learning — preference/utility formalization threads
+            "MB2": 0.5,
+            # MB9 Grounding Drift — flagship: mathematical foundations, verification, specification
+            "MB9": 0.95,
+            # MB10 Eval Gaming — formal eval and measurement foundations (secondary)
+            "MB10": 0.4,
+        },
+    },
+    "recop5s8QpZlOHzkT": {
+        "rationale": (
+            "Paradigm 3: science of evals, near-term transformative-AI evidence, differential development "
+            "(paradigm3.org)"
+        ),
+        "weights": {
+            # MB6 Selection & Basin Stability — differential development, competitive dynamics
+            "MB6": 0.55,
+            # MB7 Inner Alignment — empirical eval of deceptive/scheming behavior (secondary)
+            "MB7": 0.45,
+            # MB10 Eval Gaming — primary: eval science, forgeability, measurement protocols
+            "MB10": 0.95,
+            # MB11 Deployment Safety — evidence for near-term TAI deployment decisions
+            "MB11": 0.7,
+        },
+    },
+    "recucg98qMKaCWj0G": {
+        "rationale": (
+            "CARMA: interdisciplinary global AI risk management; policy and technical research "
+            "(carma.org)"
+        ),
+        "weights": {
+            # MB4a Audit Independence — regulator/evaluator independence in global risk management
+            "MB4a": 0.65,
+            # MB6 Selection & Basin Stability — systemic x-risk and competitive deployment pressures
+            "MB6": 0.7,
+            # MB11 Deployment Safety — primary: global AI risk management and governance
+            "MB11": 0.9,
+        },
+    },
+    "rec3oqODxzqGFwo7y": {
+        "rationale": (
+            "GCRI: Global Catastrophic Risk Institute — existential-risk scholarship and policy "
+            "(gcrinstitute.org)"
+        ),
+        "weights": {
+            # MB6 Selection & Basin Stability — primary: existential / global catastrophic risk framing
+            "MB6": 0.85,
+            # MB11 Deployment Safety — real-world decision-making for risk reduction
+            "MB11": 0.75,
+        },
+    },
+    "rec1XEk9LnTSTvpvN": {
+        "rationale": (
+            "Forethought: navigating the transition to superintelligent AI (forethought.org)"
+        ),
+        "weights": {
+            # MB2 Value Learning — alignment and values under superintelligence transition
+            "MB2": 0.7,
+            # MB6 Selection & Basin Stability — transition dynamics, disempowerment trajectories
+            "MB6": 0.8,
+            # MB7 Inner Alignment — scheming/deception under advanced systems
+            "MB7": 0.5,
+            # MB11 Deployment Safety — preparedness and governance for superintelligent transition
+            "MB11": 0.75,
+        },
+    },
+    "recbT1xoUenprVP5I": {
+        "rationale": (
+            "Narrow Path: ControlAI policymaker proposals for surviving artificial superintelligence "
+            "(controlai.org/narrow-path)"
+        ),
+        "weights": {
+            # MB4a Audit Independence — oversight and certification proposals in policy package
+            "MB4a": 0.5,
+            # MB6 Selection & Basin Stability — ASI race dynamics, pause/standards advocacy cluster
+            "MB6": 0.8,
+            # MB11 Deployment Safety — primary: deployment governance and survival-oriented policy
+            "MB11": 0.95,
+        },
+    },
+    "recIOkOheFHYAMbAp": {
+        "rationale": (
+            "Partnership on AI: multi-stakeholder AI safety and governance convening (partnershiponai.org)"
+        ),
+        "weights": {
+            # MB4a Audit Independence — shared audit/eval norms across industry and civil society
+            "MB4a": 0.55,
+            # MB10 Eval Gaming — shared eval practices and responsible-release frameworks
+            "MB10": 0.45,
+            # MB11 Deployment Safety — primary: deployment governance and societal outcomes
+            "MB11": 0.7,
+        },
+    },
+    "rec1JabBvTzkHKqwA": {
+        "rationale": (
+            "GPAI: Global Partnership on AI — OECD-aligned international trustworthy-AI governance"
+        ),
+        "weights": {
+            # MB4a Audit Independence — international certification and oversight norms
+            "MB4a": 0.6,
+            # MB6 Selection & Basin Stability — geopolitical AI development and race dynamics
+            "MB6": 0.5,
+            # MB11 Deployment Safety — primary: human-centric deployment governance
+            "MB11": 0.8,
         },
     },
 }

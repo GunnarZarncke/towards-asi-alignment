@@ -74,6 +74,53 @@ export function emptyWeights(): WeightVector {
   return Object.fromEntries(LIVE_BRIDGES.map((b) => [b, 0])) as WeightVector;
 }
 
+/** Multiplicative ± jitter on layout springs (breaks symmetric multi-bridge equilibria). */
+export const WEIGHT_JITTER_AMPLITUDE = 0.05;
+
+function hashString(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function mulberry32(seed: number): () => number {
+  let state = seed;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Deterministic ±amplitude multiplicative noise per listing×bridge (zeros unchanged). */
+export function jitterWeight(
+  raw: number,
+  projectId: string,
+  bridge: BridgeKey,
+  amplitude = WEIGHT_JITTER_AMPLITUDE,
+): number {
+  if (raw <= 0) return 0;
+  const rand = mulberry32(hashString(`${projectId}\0${bridge}`))();
+  return Math.min(1, raw * (1 + amplitude * (2 * rand - 1)));
+}
+
+export function jitterWeights(
+  weights: WeightVector,
+  projectId: string,
+  amplitude = WEIGHT_JITTER_AMPLITUDE,
+): WeightVector {
+  const out = emptyWeights();
+  for (const key of LIVE_BRIDGES) {
+    out[key] = jitterWeight(weights[key], projectId, key, amplitude);
+  }
+  return out;
+}
+
 /** Gap beyond touching circles. Weight barely changes length; affinity is stiffness. */
 export function springRestLength(w: number, l0 = 38, shrink = 0.18): number {
   const clamped = Math.min(1, Math.max(0, w));
@@ -98,6 +145,30 @@ export function cosineSimilarity(a: WeightVector, b: WeightVector): number {
   }
   if (na === 0 || nb === 0) return 0;
   return dot / (Math.sqrt(na) * Math.sqrt(nb));
+}
+
+export type BridgeWeightOptions = {
+  weightThreshold: number;
+  useSquaredWeights: boolean;
+  dominantOnly: boolean;
+};
+
+/** Bridge keys that receive a crux spring for this project (same rules as simulation). */
+export function projectBridgeKeys(
+  weights: WeightVector,
+  opts: BridgeWeightOptions,
+): BridgeKey[] {
+  const entries = LIVE_BRIDGES.map((key) => ({
+    key,
+    w: opts.useSquaredWeights ? weights[key] * weights[key] : weights[key],
+  })).filter((e) => e.w > opts.weightThreshold);
+
+  const springs =
+    opts.dominantOnly && entries.length
+      ? entries.sort((a, b) => b.w - a.w).slice(0, 1)
+      : entries;
+
+  return springs.map((e) => e.key);
 }
 
 export function dominantBridge(weights: WeightVector): BridgeKey | null {

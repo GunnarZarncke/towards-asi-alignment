@@ -1,11 +1,20 @@
 import type { BridgeKey, WeightVector } from "./weights.js";
-import { LIVE_BRIDGES, cosineSimilarity, springRestLength, springStiffness } from "./weights.js";
 import {
-  BRIDGE_LAYOUT_SCALE,
+  LIVE_BRIDGES,
+  cosineSimilarity,
+  jitterWeight,
+  projectBridgeKeys,
+  springRestLength,
+  springStiffness,
+} from "./weights.js";
+import {
   PROJECT_ICON_SCALE,
+  bridgeAnchorScale,
   bridgeDependencyEdges,
   bridgePinPosition,
+  computeCircleBridgeOrder,
   graphDistance,
+  setCircleBridgeOrder,
   type PinGeometry,
 } from "./layout.js";
 
@@ -87,6 +96,14 @@ export function buildSimulation(
   const showBridges = options.mode !== "C";
   const showBridgeDeps =
     options.pinGeometry === "dependency" || options.mode === "B";
+  const layoutScale = bridgeAnchorScale(options.pinGeometry);
+  const projectSpawnScale = options.mode === "A" ? layoutScale : 1;
+
+  if (showBridges && options.pinGeometry === "circle") {
+    setCircleBridgeOrder(computeCircleBridgeOrder(projects, options));
+  } else {
+    setCircleBridgeOrder(null);
+  }
 
   if (showBridges) {
     for (const key of LIVE_BRIDGES) {
@@ -112,7 +129,7 @@ export function buildSimulation(
 
   for (const p of projects) {
     const angle = Math.random() * Math.PI * 2;
-    const r = BRIDGE_LAYOUT_SCALE * (70 + Math.random() * 110);
+    const r = projectSpawnScale * (70 + Math.random() * 110);
     const scaleRadius =
       (p.scale === "Large" ? 28 : p.scale === "Medium" ? 22 : p.scale === "Small" ? 16 : 20) *
       PROJECT_ICON_SCALE;
@@ -131,21 +148,13 @@ export function buildSimulation(
     });
 
     if (showBridges) {
-      const entries = LIVE_BRIDGES.map((key) => ({
-        key,
-        w: effectiveWeight(p.weights[key], options.useSquaredWeights),
-      })).filter((e) => e.w > options.weightThreshold);
-
-      const springs =
-        options.dominantOnly && entries.length
-          ? entries.sort((a, b) => b.w - a.w).slice(0, 1)
-          : entries;
-
-      for (const { key, w } of springs) {
+      const keys = projectBridgeKeys(p.weights, options);
+      for (const key of keys) {
+        const raw = jitterWeight(p.weights[key], p.id, key);
         edges.push({
           source: `project:${p.id}`,
           target: `bridge:${key}`,
-          weight: w,
+          weight: effectiveWeight(raw, options.useSquaredWeights),
           kind: "crux",
         });
       }
@@ -184,7 +193,7 @@ export function simulateStep(
   const repulsion = 520;
   const centerPull = 0.0005;
   const maxSpeed = 7;
-  const bridgeDepRest = 100 * BRIDGE_LAYOUT_SCALE;
+  const bridgeDepRest = 100 * bridgeAnchorScale(options.pinGeometry);
   const bridgeDepK = 0.012;
 
   for (const n of nodes) {

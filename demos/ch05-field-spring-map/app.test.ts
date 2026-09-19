@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildSimulation, simulateStep } from "./physics.js";
+import { computeCircleBridgeOrder } from "./layout.js";
 import {
   RESEARCH_CATEGORIES,
   categoryParts,
@@ -7,9 +8,12 @@ import {
   emptyWeights,
   evidenceContribution,
   isResearchListing,
+  jitterWeight,
   saturate,
   springRestLength,
   springStiffness,
+  WEIGHT_JITTER_AMPLITUDE,
+  type BridgeKey,
   type WeightVector,
 } from "./weights.js";
 
@@ -41,6 +45,18 @@ describe("weight model", () => {
     expect(cosineSimilarity(a, b)).toBe(0);
   });
 
+  it("applies deterministic ±5% jitter per listing and bridge", () => {
+    const w = 0.8;
+    const a = jitterWeight(w, "rec-test", "MB7");
+    const b = jitterWeight(w, "rec-test", "MB7");
+    const c = jitterWeight(w, "rec-test", "MB4");
+    expect(a).toBe(b);
+    expect(a).toBeGreaterThanOrEqual(w * (1 - WEIGHT_JITTER_AMPLITUDE));
+    expect(a).toBeLessThanOrEqual(w * (1 + WEIGHT_JITTER_AMPLITUDE));
+    expect(c).not.toBe(a);
+    expect(jitterWeight(0, "rec-test", "MB7")).toBe(0);
+  });
+
   it("treats comma-separated AISafety.com categories as a set", () => {
     expect(isResearchListing("Governance, Advocacy, Conceptual research")).toBe(true);
     expect(isResearchListing("Newsletter")).toBe(false);
@@ -49,6 +65,34 @@ describe("weight model", () => {
       "Empirical research",
     ]);
     expect(RESEARCH_CATEGORIES.has("Governance, Advocacy, Conceptual research")).toBe(false);
+  });
+});
+
+describe("circle bridge order", () => {
+  const opts = {
+    weightThreshold: 0.05,
+    useSquaredWeights: false,
+    dominantOnly: false,
+  };
+
+  function ringStep(order: BridgeKey[], a: BridgeKey, b: BridgeKey): number {
+    const n = order.length;
+    const ia = order.indexOf(a);
+    const ib = order.indexOf(b);
+    const d = Math.abs(ia - ib);
+    return Math.min(d, n - d);
+  }
+
+  it("places bridges with shared projects adjacent on the ring", () => {
+    const w1 = emptyWeights();
+    w1.MB1 = 1;
+    w1.MB2 = 1;
+    const w2 = emptyWeights();
+    w2.MB2 = 1;
+    w2.MB3 = 1;
+    const order = computeCircleBridgeOrder([{ weights: w1 }, { weights: w2 }], opts);
+    expect(ringStep(order, "MB1", "MB2")).toBe(1);
+    expect(ringStep(order, "MB2", "MB3")).toBe(1);
   });
 });
 

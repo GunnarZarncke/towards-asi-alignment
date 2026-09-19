@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-18T20:48:03.758991+00:00",
+    "generatedAt": "2026-09-18T21:52:27.126118+00:00",
     "source": "https://aisafety.com",
     "license": "CC-BY-4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
@@ -54,10 +54,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -77,8 +77,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -94,8 +94,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -130,10 +130,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -153,8 +153,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -170,8 +170,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -473,8 +473,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -878,16 +878,16 @@
       "source": "inherited",
       "agendaSlug": "resolution",
       "weights": {
-        "MB1": 0.12,
+        "MB1": 0.009,
         "MB2": 0.0,
         "MB3": 0.0,
         "MB4": 0.0,
         "MB4a": 0.0,
-        "MB5": 0.12,
+        "MB5": 0.009,
         "MB6": 0.0,
         "MB7": 0.0,
         "MB7d": 0.0,
-        "MB9": 0.4,
+        "MB9": 0.03,
         "MB10": 0.0,
         "MB11": 0.6
       },
@@ -901,8 +901,8 @@
               "evidenceId": 39,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "Automation-first alignment research: the research process itself becomes a more capable successor",
               "evidenceBridges": [
                 "MB1",
@@ -920,8 +920,8 @@
               "evidenceId": 39,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "Automation-first alignment research: the research process itself becomes a more capable successor",
               "evidenceBridges": [
                 "MB1",
@@ -938,8 +938,8 @@
               "evidenceId": 40,
               "type": "T",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.4,
+              "weight": 0.3,
+              "contrib": 0.03,
               "summary": "Singular learning / formal pipeline bet (Timaeus lineage)",
               "evidenceBridges": [
                 "MB9"
@@ -987,7 +987,7 @@
         "MB4": 1.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.2,
+        "MB6": 0.015,
         "MB7": 1.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -1005,8 +1005,8 @@
               "evidenceId": 41,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "Neglected-approaches portfolio strategy (AE Studio alignment agenda)",
               "evidenceBridges": [
                 "MB2"
@@ -1030,8 +1030,8 @@
               "evidenceId": 144,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)",
               "evidenceBridges": [
                 "MB2",
@@ -1063,8 +1063,8 @@
               "evidenceId": 43,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "AI Safety Interventions field index (cross-cuts agendas)",
               "evidenceBridges": [
                 "MB6"
@@ -1077,8 +1077,8 @@
               "evidenceId": 144,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)",
               "evidenceBridges": [
                 "MB2",
@@ -1161,12 +1161,12 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
-        "MB7": 1.0,
+        "MB6": 0.024,
+        "MB7": 0.824,
         "MB7d": 0.0,
         "MB9": 0.0,
-        "MB10": 0.32,
-        "MB11": 0.32
+        "MB10": 0.024,
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "metr",
@@ -1184,8 +1184,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -1200,8 +1200,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -1230,8 +1230,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -1246,8 +1246,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -1708,9 +1708,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -1728,8 +1728,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -1740,8 +1740,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -1777,8 +1777,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -1790,8 +1790,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -1802,8 +1802,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -1818,8 +1818,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -1831,8 +1831,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -1871,8 +1871,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -1883,8 +1883,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -1900,8 +1900,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -2394,8 +2394,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -2989,8 +2989,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -3419,12 +3419,12 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
-        "MB7": 1.0,
+        "MB6": 0.024,
+        "MB7": 0.824,
         "MB7d": 0.0,
         "MB9": 0.0,
-        "MB10": 0.32,
-        "MB11": 0.32
+        "MB10": 0.024,
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "metr",
@@ -3442,8 +3442,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -3458,8 +3458,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -3488,8 +3488,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -3504,8 +3504,8 @@
               "evidenceId": 36,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Risk Report: entity-based internal-agent assessment",
               "evidenceBridges": [
                 "MB10",
@@ -3801,13 +3801,13 @@
         "MB1": 0.85,
         "MB2": 0.55,
         "MB3": 0.5,
-        "MB4": 0.2,
-        "MB4a": 0.2,
+        "MB4": 0.0,
+        "MB4a": 0.0,
         "MB5": 0.35,
         "MB6": 0.95,
         "MB7": 0.5,
-        "MB7d": 0.45,
-        "MB9": 0.2,
+        "MB7d": 0.0,
+        "MB9": 0.0,
         "MB10": 0.25,
         "MB11": 0.65
       },
@@ -3828,24 +3828,251 @@
       "scale": "Medium",
       "mapX": 46.2,
       "mapY": 11.9,
-      "source": "heuristic",
-      "agendaSlug": null,
+      "source": "inherited",
+      "agendaSlug": "miri",
       "weights": {
-        "MB1": 0.15,
-        "MB2": 0.15,
+        "MB1": 1.0,
+        "MB2": 0.5,
         "MB3": 0.0,
-        "MB4": 0.0,
-        "MB4a": 0.0,
-        "MB5": 0.0,
+        "MB4": 1.0,
+        "MB4a": 1.0,
+        "MB5": 1.0,
         "MB6": 0.0,
-        "MB7": 0.0,
-        "MB7d": 0.0,
+        "MB7": 1.0,
+        "MB7d": 1.0,
         "MB9": 0.0,
-        "MB10": 0.0,
+        "MB10": 1.0,
         "MB11": 0.0
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.15)"
+        "agendaSlug": "miri",
+        "clusterSlug": "miri",
+        "matchKind": "override",
+        "bridgeEvidence": {
+          "MB1": [
+            {
+              "evidenceId": 1,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Embedded Agency: no clean agent–environment cut; subsystem alignment bucket",
+              "evidenceBridges": [
+                "MB1",
+                "MB7"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 2,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Agent Foundations technical agenda (embedded agency, delegation, decision theory)",
+              "evidenceBridges": [
+                "MB1"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB2": [
+            {
+              "evidenceId": 3,
+              "type": "C",
+              "direction": "challenge",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Value learning under training ambiguity and ontology change",
+              "evidenceBridges": [
+                "MB2"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB3": [],
+          "MB4": [
+            {
+              "evidenceId": 4,
+              "type": "T",
+              "direction": "challenge",
+              "weight": 3,
+              "contrib": 3.0,
+              "summary": "Corrigibility: no known utility function stably corrigible",
+              "evidenceBridges": [
+                "MB4",
+                "MB4a"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 5,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Safely interruptible agents (formal interruptibility)",
+              "evidenceBridges": [
+                "MB4",
+                "MB4a"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB4a": [
+            {
+              "evidenceId": 4,
+              "type": "T",
+              "direction": "challenge",
+              "weight": 3,
+              "contrib": 3.0,
+              "summary": "Corrigibility: no known utility function stably corrigible",
+              "evidenceBridges": [
+                "MB4",
+                "MB4a"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 5,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Safely interruptible agents (formal interruptibility)",
+              "evidenceBridges": [
+                "MB4",
+                "MB4a"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB5": [
+            {
+              "evidenceId": 6,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Tiling agents for self-modifying AI (successor trust)",
+              "evidenceBridges": [
+                "MB10",
+                "MB5"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 8,
+              "type": "C",
+              "direction": "challenge",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Ontological crises in agents' value systems",
+              "evidenceBridges": [
+                "MB5"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 7,
+              "type": "T",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 1.0,
+              "summary": "Vingean reflection (reasoning about smarter successors)",
+              "evidenceBridges": [
+                "MB10",
+                "MB5"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB6": [],
+          "MB7": [
+            {
+              "evidenceId": 1,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Embedded Agency: no clean agent–environment cut; subsystem alignment bucket",
+              "evidenceBridges": [
+                "MB1",
+                "MB7"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 9,
+              "type": "C",
+              "direction": "challenge",
+              "weight": 2,
+              "contrib": 1.0,
+              "summary": "Predict-O-Matic: predictors becoming consequentialists",
+              "evidenceBridges": [
+                "MB7"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB7d": [
+            {
+              "evidenceId": 10,
+              "type": "T",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 1.0,
+              "summary": "Functional Decision Theory",
+              "evidenceBridges": [
+                "MB7d"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 124,
+              "type": "T",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 1.0,
+              "summary": "Logical induction (logical uncertainty under bounded reasoning)",
+              "evidenceBridges": [
+                "MB5",
+                "MB7d"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB9": [],
+          "MB10": [
+            {
+              "evidenceId": 6,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Tiling agents for self-modifying AI (successor trust)",
+              "evidenceBridges": [
+                "MB10",
+                "MB5"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 7,
+              "type": "T",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 1.0,
+              "summary": "Vingean reflection (reasoning about smarter successors)",
+              "evidenceBridges": [
+                "MB10",
+                "MB5"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB11": []
+        }
       },
       "logoLocal": "logos/recAa8UuevcBb6LFI.svg",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attLfFHQw5nF3i3Om.svg"
@@ -4140,10 +4367,10 @@
       "source": "inherited",
       "agendaSlug": "orthogonal",
       "weights": {
-        "MB1": 0.2,
+        "MB1": 0.015,
         "MB2": 1.0,
         "MB3": 0.0,
-        "MB4": 0.4,
+        "MB4": 0.03,
         "MB4a": 0.0,
         "MB5": 0.0,
         "MB6": 0.0,
@@ -4163,8 +4390,8 @@
               "evidenceId": 147,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Orthogonal inherits the Embedded Agency cut (no free agent–environment split) as a wall to close. Same problem family as",
               "evidenceBridges": [
                 "MB1"
@@ -4192,8 +4419,8 @@
               "evidenceId": 163,
               "type": "T",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.4,
+              "weight": 0.3,
+              "contrib": 0.03,
               "summary": "Orthogonal names MIRI/CHAI corrigibility (a utility that accepts correction) as a wall to close. Same word as this colum",
               "evidenceBridges": [
                 "MB4"
@@ -4267,9 +4494,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -4290,8 +4517,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -4302,8 +4529,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -4314,8 +4541,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -4329,8 +4556,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -4366,9 +4593,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -4389,8 +4616,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -4401,8 +4628,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -4413,8 +4640,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -4428,8 +4655,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -5159,7 +5386,7 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.12,
+        "MB6": 0.009,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -5182,8 +5409,8 @@
               "evidenceId": 77,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "AI 2027 scenario (schedule shapes for governance stress tests only)",
               "evidenceBridges": [
                 "MB6"
@@ -5287,7 +5514,7 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.12,
+        "MB6": 0.009,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -5310,8 +5537,8 @@
               "evidenceId": 77,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "AI 2027 scenario (schedule shapes for governance stress tests only)",
               "evidenceBridges": [
                 "MB6"
@@ -5415,7 +5642,7 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.12,
+        "MB6": 0.009,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -5438,8 +5665,8 @@
               "evidenceId": 77,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "AI 2027 scenario (schedule shapes for governance stress tests only)",
               "evidenceBridges": [
                 "MB6"
@@ -5609,9 +5836,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -5632,8 +5859,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -5644,8 +5871,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -5656,8 +5883,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -5671,8 +5898,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -5708,9 +5935,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -5731,8 +5958,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -5743,8 +5970,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -5755,8 +5982,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -5770,8 +5997,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -6206,9 +6433,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -6226,8 +6453,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -6238,8 +6465,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -6275,8 +6502,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -6288,8 +6515,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -6300,8 +6527,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -6316,8 +6543,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -6329,8 +6556,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -6369,8 +6596,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -6381,8 +6608,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -6398,8 +6625,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -6530,10 +6757,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -6553,8 +6780,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -6570,8 +6797,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -7064,10 +7291,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -7087,8 +7314,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -7104,8 +7331,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -7705,8 +7932,8 @@
               "evidenceId": 89,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "CEV factorizes as AlignmentTarget; not a live certification route (gravestone)",
               "evidenceBridges": [
                 "MB4",
@@ -7808,8 +8035,8 @@
               "evidenceId": 95,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Institutional translation appendix (App C)",
               "evidenceBridges": [
                 "MB6"
@@ -7942,16 +8169,16 @@
       "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.2,
-        "MB2": 0.35,
-        "MB3": 0.25,
-        "MB4": 0.25,
+        "MB1": 0.0,
+        "MB2": 0.0,
+        "MB3": 0.0,
+        "MB4": 0.0,
         "MB4a": 0.85,
-        "MB5": 0.2,
+        "MB5": 0.0,
         "MB6": 0.75,
-        "MB7": 0.3,
-        "MB7d": 0.25,
-        "MB9": 0.2,
+        "MB7": 0.0,
+        "MB7d": 0.0,
+        "MB9": 0.0,
         "MB10": 0.45,
         "MB11": 0.95
       },
@@ -7972,24 +8199,24 @@
       "scale": "Medium",
       "mapX": 38,
       "mapY": 14.2,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
         "MB4": 0.0,
-        "MB4a": 0.0,
+        "MB4a": 0.6,
         "MB5": 0.0,
-        "MB6": 0.0,
+        "MB6": 0.5,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
-        "MB11": 0.0
+        "MB11": 0.8
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "GPAI: Global Partnership on AI — OECD-aligned international trustworthy-AI governance"
       },
       "logoLocal": "logos/rec1JabBvTzkHKqwA.png",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attazeJNYiw6shoft.png"
@@ -8038,24 +8265,24 @@
       "scale": "Medium",
       "mapX": 31.5,
       "mapY": 16,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
         "MB4": 0.0,
-        "MB4a": 0.0,
+        "MB4a": 0.55,
         "MB5": 0.0,
         "MB6": 0.0,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
-        "MB10": 0.0,
-        "MB11": 0.0
+        "MB10": 0.45,
+        "MB11": 0.7
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "Partnership on AI: multi-stakeholder AI safety and governance convening (partnershiponai.org)"
       },
       "logoLocal": "logos/recIOkOheFHYAMbAp.svg",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attmpGdC6ls9Vv04V.svg"
@@ -8113,7 +8340,7 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.12,
+        "MB6": 0.009,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -8136,8 +8363,8 @@
               "evidenceId": 77,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "AI 2027 scenario (schedule shapes for governance stress tests only)",
               "evidenceBridges": [
                 "MB6"
@@ -8579,9 +8806,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -8602,8 +8829,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -8614,8 +8841,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -8626,8 +8853,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -8641,8 +8868,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -8747,9 +8974,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -8767,8 +8994,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -8779,8 +9006,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -8816,8 +9043,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -8829,8 +9056,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -8841,8 +9068,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -8857,8 +9084,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -8870,8 +9097,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -8910,8 +9137,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -8922,8 +9149,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -8939,8 +9166,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -9533,10 +9760,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -9556,8 +9783,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -9573,8 +9800,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -9708,10 +9935,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -9731,8 +9958,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -9748,8 +9975,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -11032,24 +11259,24 @@
       "scale": "Small",
       "mapX": 46.7,
       "mapY": 6.5,
-      "source": "heuristic",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.15,
-        "MB2": 0.15,
+        "MB1": 0.9,
+        "MB2": 0.6,
         "MB3": 0.0,
         "MB4": 0.0,
         "MB4a": 0.0,
-        "MB5": 0.0,
+        "MB5": 0.45,
         "MB6": 0.0,
         "MB7": 0.0,
         "MB7d": 0.0,
-        "MB9": 0.0,
+        "MB9": 0.75,
         "MB10": 0.0,
         "MB11": 0.0
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.15)"
+        "rationale": "AIXI Labs: formal-agent risk models via AIXI variants and translation to real agents (aixi-labs.com)"
       },
       "logoLocal": "logos/recu9yuBKbPAYgRz8.webp",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attLpNSpADlOrEMSm.webp"
@@ -11205,24 +11432,24 @@
       "scale": "Small",
       "mapX": 45.1,
       "mapY": 7.6,
-      "source": "heuristic",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.15,
-        "MB2": 0.15,
+        "MB1": 0.95,
+        "MB2": 0.5,
         "MB3": 0.0,
         "MB4": 0.0,
         "MB4a": 0.0,
-        "MB5": 0.0,
+        "MB5": 0.6,
         "MB6": 0.0,
         "MB7": 0.0,
         "MB7d": 0.0,
-        "MB9": 0.0,
+        "MB9": 0.55,
         "MB10": 0.0,
         "MB11": 0.0
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.15)"
+        "rationale": "Dovetail: foundational mathematics for the nature of AI agents (dovetail.ai)"
       },
       "logoLocal": "logos/recxg7Q2L2NEFP8NV.png",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/att914TmZhMRdkCgQ.png"
@@ -11241,17 +11468,17 @@
       "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.25,
+        "MB1": 0.0,
         "MB2": 0.75,
-        "MB3": 0.2,
+        "MB3": 0.0,
         "MB4": 0.95,
-        "MB4a": 0.3,
-        "MB5": 0.25,
+        "MB4a": 0.0,
+        "MB5": 0.0,
         "MB6": 0.5,
         "MB7": 0.45,
-        "MB7d": 0.15,
+        "MB7d": 0.0,
         "MB9": 0.4,
-        "MB10": 0.2,
+        "MB10": 0.0,
         "MB11": 0.55
       },
       "provenance": {
@@ -11271,24 +11498,131 @@
       "scale": "Small",
       "mapX": 43.6,
       "mapY": 7.5,
-      "source": "heuristic",
-      "agendaSlug": null,
+      "source": "inherited",
+      "agendaSlug": "chai-russell",
       "weights": {
-        "MB1": 0.15,
-        "MB2": 0.15,
-        "MB3": 0.0,
-        "MB4": 0.0,
-        "MB4a": 0.0,
+        "MB1": 0.0,
+        "MB2": 1.0,
+        "MB3": 1.0,
+        "MB4": 1.0,
+        "MB4a": 1.0,
         "MB5": 0.0,
         "MB6": 0.0,
-        "MB7": 0.0,
+        "MB7": 1.0,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.15)"
+        "agendaSlug": "chai-russell",
+        "clusterSlug": "chai-russell",
+        "matchKind": "override",
+        "bridgeEvidence": {
+          "MB1": [],
+          "MB2": [
+            {
+              "evidenceId": 14,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Cooperative inverse reinforcement learning (assistance games)",
+              "evidenceBridges": [
+                "MB2",
+                "MB3"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 16,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Attainable utility preservation (conservative agency)",
+              "evidenceBridges": [
+                "MB2"
+              ],
+              "tagMismatch": false
+            },
+            {
+              "evidenceId": 15,
+              "type": "C",
+              "direction": "support",
+              "weight": 1,
+              "contrib": 0.5,
+              "summary": "Human Compatible control problem framing",
+              "evidenceBridges": [
+                "MB2"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB3": [
+            {
+              "evidenceId": 14,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Cooperative inverse reinforcement learning (assistance games)",
+              "evidenceBridges": [
+                "MB2",
+                "MB3"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB4": [
+            {
+              "evidenceId": 17,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Off-switch game (shutdown incentive structure)",
+              "evidenceBridges": [
+                "MB4"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB4a": [
+            {
+              "evidenceId": 17,
+              "type": "T",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 2.0,
+              "summary": "Off-switch game (shutdown incentive structure)",
+              "evidenceBridges": [
+                "MB4"
+              ],
+              "tagMismatch": true
+            }
+          ],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "evidenceId": 78,
+              "type": "E",
+              "direction": "support",
+              "weight": 2,
+              "contrib": 1.6,
+              "summary": "Scalable oversight via partitioned human supervision (FAR.Lab)",
+              "evidenceBridges": [
+                "MB7"
+              ],
+              "tagMismatch": false
+            }
+          ],
+          "MB7d": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        }
       },
       "logoLocal": "logos/recDaHglyXODmpBkV.jpg",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attY1iad8P5Ip4rtI.jpg"
@@ -11304,11 +11638,11 @@
       "scale": "Small",
       "mapX": 42.6,
       "mapY": 7.8,
-      "source": "heuristic",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.15,
-        "MB2": 0.15,
+        "MB1": 0.7,
+        "MB2": 0.5,
         "MB3": 0.0,
         "MB4": 0.0,
         "MB4a": 0.0,
@@ -11316,12 +11650,12 @@
         "MB6": 0.0,
         "MB7": 0.0,
         "MB7d": 0.0,
-        "MB9": 0.0,
-        "MB10": 0.0,
+        "MB9": 0.95,
+        "MB10": 0.4,
         "MB11": 0.0
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.15)"
+        "rationale": "MAISI: Mathematical AI Safety Institute — mathematical foundations for powerful-AI safety (maisi.org)"
       },
       "logoLocal": "logos/rec8UWo45vym2oLBS.webp",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attUy5xbuh0qiukuc.webp"
@@ -11346,7 +11680,7 @@
         "MB4": 1.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.2,
+        "MB6": 0.015,
         "MB7": 1.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -11364,8 +11698,8 @@
               "evidenceId": 41,
               "type": "O",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.12,
+              "weight": 0.3,
+              "contrib": 0.009,
               "summary": "Neglected-approaches portfolio strategy (AE Studio alignment agenda)",
               "evidenceBridges": [
                 "MB2"
@@ -11389,8 +11723,8 @@
               "evidenceId": 144,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)",
               "evidenceBridges": [
                 "MB2",
@@ -11422,8 +11756,8 @@
               "evidenceId": 43,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "AI Safety Interventions field index (cross-cuts agendas)",
               "evidenceBridges": [
                 "MB6"
@@ -11436,8 +11770,8 @@
               "evidenceId": 144,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)",
               "evidenceBridges": [
                 "MB2",
@@ -11481,18 +11815,18 @@
       "source": "manual",
       "agendaSlug": null,
       "weights": {
-        "MB1": 0.35,
+        "MB1": 0.0,
         "MB2": 0.95,
-        "MB3": 0.3,
-        "MB4": 0.15,
-        "MB4a": 0.1,
-        "MB5": 0.25,
-        "MB6": 0.3,
+        "MB3": 0.0,
+        "MB4": 0.0,
+        "MB4a": 0.0,
+        "MB5": 0.0,
+        "MB6": 0.0,
         "MB7": 0.75,
-        "MB7d": 0.1,
-        "MB9": 0.15,
-        "MB10": 0.1,
-        "MB11": 0.15
+        "MB7d": 0.0,
+        "MB9": 0.0,
+        "MB10": 0.0,
+        "MB11": 0.0
       },
       "provenance": {
         "rationale": "Team Shard: shard theory — RL-shaped contextual value shards; reward design for reliable value instillation (Turner/Udell; field evidence #51 on MB2)"
@@ -11519,9 +11853,9 @@
         "MB3": 1.0,
         "MB4": 0.0,
         "MB4a": 0.0,
-        "MB5": 0.7,
+        "MB5": 0.515,
         "MB6": 0.0,
-        "MB7": 0.7,
+        "MB7": 0.515,
         "MB7d": 1.0,
         "MB9": 1.0,
         "MB10": 0.0,
@@ -11632,8 +11966,8 @@
               "evidenceId": 156,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda; Physicalist Superimitation / PreDCA outer strand)",
               "evidenceBridges": [
                 "MB2",
@@ -11647,8 +11981,8 @@
               "evidenceId": 157,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Community distillation of PreDCA protocol (precursor detection, classification, assistance)",
               "evidenceBridges": [
                 "MB2",
@@ -11689,8 +12023,8 @@
               "evidenceId": 156,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda; Physicalist Superimitation / PreDCA outer strand)",
               "evidenceBridges": [
                 "MB2",
@@ -11704,8 +12038,8 @@
               "evidenceId": 157,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Community distillation of PreDCA protocol (precursor detection, classification, assistance)",
               "evidenceBridges": [
                 "MB2",
@@ -11733,8 +12067,8 @@
               "evidenceId": 156,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda; Physicalist Superimitation / PreDCA outer strand)",
               "evidenceBridges": [
                 "MB2",
@@ -11763,8 +12097,8 @@
               "evidenceId": 156,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda; Physicalist Superimitation / PreDCA outer strand)",
               "evidenceBridges": [
                 "MB2",
@@ -12937,8 +13271,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -13334,8 +13668,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -13392,7 +13726,7 @@
       "scale": "Small",
       "mapX": 51.2,
       "mapY": 9.7,
-      "source": "heuristic",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
@@ -13401,15 +13735,15 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.0,
-        "MB7": 0.075,
+        "MB6": 0.55,
+        "MB7": 0.45,
         "MB7d": 0.0,
         "MB9": 0.0,
-        "MB10": 0.0,
-        "MB11": 0.0
+        "MB10": 0.95,
+        "MB11": 0.7
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.07)"
+        "rationale": "Paradigm 3: science of evals, near-term transformative-AI evidence, differential development (paradigm3.org)"
       },
       "logoLocal": "logos/recop5s8QpZlOHzkT.webp",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attwpmZybs0HE3v27.webp"
@@ -13899,9 +14233,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -13919,8 +14253,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -13931,8 +14265,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -13968,8 +14302,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -13981,8 +14315,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -13993,8 +14327,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14009,8 +14343,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -14022,8 +14356,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -14062,8 +14396,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -14074,8 +14408,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14091,8 +14425,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14229,9 +14563,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -14249,8 +14583,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -14261,8 +14595,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -14298,8 +14632,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -14311,8 +14645,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -14323,8 +14657,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14339,8 +14673,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -14352,8 +14686,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -14392,8 +14726,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -14404,8 +14738,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14421,8 +14755,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14493,9 +14827,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -14513,8 +14847,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -14525,8 +14859,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -14562,8 +14896,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -14575,8 +14909,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -14587,8 +14921,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14603,8 +14937,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -14616,8 +14950,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -14656,8 +14990,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -14668,8 +15002,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14685,8 +15019,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -14955,9 +15289,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -14975,8 +15309,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -14987,8 +15321,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -15024,8 +15358,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15037,8 +15371,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -15049,8 +15383,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15065,8 +15399,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15078,8 +15412,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -15118,8 +15452,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -15130,8 +15464,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15147,8 +15481,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15246,10 +15580,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -15269,8 +15603,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -15286,8 +15620,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -15394,9 +15728,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -15414,8 +15748,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -15426,8 +15760,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -15463,8 +15797,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15476,8 +15810,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -15488,8 +15822,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15504,8 +15838,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15517,8 +15851,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -15557,8 +15891,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -15569,8 +15903,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15586,8 +15920,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15658,9 +15992,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -15678,8 +16012,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -15690,8 +16024,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -15727,8 +16061,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15740,8 +16074,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -15752,8 +16086,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15768,8 +16102,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -15781,8 +16115,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -15821,8 +16155,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -15833,8 +16167,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -15850,8 +16184,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -16975,8 +17309,8 @@
               "evidenceId": 135,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Frontier Model Forum risk taxonomy and capability thresholds",
               "evidenceBridges": [
                 "MB11"
@@ -17000,24 +17334,24 @@
       "scale": "Small",
       "mapX": 35.2,
       "mapY": 16,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
         "MB4": 0.0,
-        "MB4a": 0.0,
+        "MB4a": 0.65,
         "MB5": 0.0,
-        "MB6": 0.0,
+        "MB6": 0.7,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
-        "MB11": 0.0
+        "MB11": 0.9
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "CARMA: interdisciplinary global AI risk management; policy and technical research (carma.org)"
       },
       "logoLocal": "logos/recucg98qMKaCWj0G.webp",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attU3qNgHHTtYZ16S.webp"
@@ -17033,24 +17367,24 @@
       "scale": "Small",
       "mapX": 36.9,
       "mapY": 15.5,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
-        "MB2": 0.0,
+        "MB2": 0.7,
         "MB3": 0.0,
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.0,
-        "MB7": 0.0,
+        "MB6": 0.8,
+        "MB7": 0.5,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
-        "MB11": 0.0
+        "MB11": 0.75
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "Forethought: navigating the transition to superintelligent AI (forethought.org)"
       },
       "logoLocal": "logos/rec1XEk9LnTSTvpvN.svg",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attmbe2p9KejWar6I.svg"
@@ -17066,7 +17400,7 @@
       "scale": "Small",
       "mapX": 34.6,
       "mapY": 20.1,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
@@ -17075,15 +17409,15 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.0,
+        "MB6": 0.85,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
-        "MB11": 0.0
+        "MB11": 0.75
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "GCRI: Global Catastrophic Risk Institute — existential-risk scholarship and policy (gcrinstitute.org)"
       },
       "logoLocal": "logos/rec3oqODxzqGFwo7y.webp",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attRliNq536wWKzUs.webp"
@@ -17099,24 +17433,24 @@
       "scale": "Small",
       "mapX": 30.3,
       "mapY": 15,
-      "source": "unmatched",
+      "source": "manual",
       "agendaSlug": null,
       "weights": {
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
         "MB4": 0.0,
-        "MB4a": 0.0,
+        "MB4a": 0.5,
         "MB5": 0.0,
-        "MB6": 0.0,
+        "MB6": 0.8,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
         "MB10": 0.0,
-        "MB11": 0.0
+        "MB11": 0.95
       },
       "provenance": {
-        "rationale": "Heuristic keyword/category match (top=0.00)"
+        "rationale": "Narrow Path: ControlAI policymaker proposals for surviving artificial superintelligence (controlai.org/narrow-path)"
       },
       "logoLocal": "logos/recbT1xoUenprVP5I.svg",
       "mapLogoUrl": "https://vfnmdozpctvdobh7.public.blob.vercel-storage.com/airtable/attJWmVGX9MX1goZw.svg"
@@ -17504,9 +17838,9 @@
         "MB4": 0.0,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.6,
+        "MB6": 0.045,
         "MB7": 0.0,
-        "MB7d": 0.2,
+        "MB7d": 0.015,
         "MB9": 0.0,
         "MB10": 0.0,
         "MB11": 0.0
@@ -17527,8 +17861,8 @@
               "evidenceId": 67,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "ARCHES: multipolar and cooperation failure taxonomy",
               "evidenceBridges": [
                 "MB6"
@@ -17539,8 +17873,8 @@
               "evidenceId": 68,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Multipolar failure modes under competition",
               "evidenceBridges": [
                 "MB6"
@@ -17551,8 +17885,8 @@
               "evidenceId": 151,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Cooperative AI research agenda (CAIF lineage)",
               "evidenceBridges": [
                 "MB6"
@@ -17566,8 +17900,8 @@
               "evidenceId": 70,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Evidential cooperation / acausal trade line",
               "evidenceBridges": [
                 "MB7d"
@@ -17738,9 +18072,9 @@
         "MB6": 1.0,
         "MB7": 1.0,
         "MB7d": 0.0,
-        "MB9": 0.52,
+        "MB9": 0.039,
         "MB10": 0.0,
-        "MB11": 0.32
+        "MB11": 0.024
       },
       "provenance": {
         "agendaSlug": "govai",
@@ -17758,8 +18092,8 @@
               "evidenceId": 57,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Gradual disempowerment: systemic risk from incremental AI development",
               "evidenceBridges": [
                 "MB6"
@@ -17770,8 +18104,8 @@
               "evidenceId": 59,
               "type": "E",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "International control of powerful technology (governance analogies)",
               "evidenceBridges": [
                 "MB6"
@@ -17807,8 +18141,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -17820,8 +18154,8 @@
               "evidenceId": 61,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "UK AISI frontier model testing mandate",
               "evidenceBridges": [
                 "MB6"
@@ -17832,8 +18166,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -17848,8 +18182,8 @@
               "evidenceId": 58,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Compute governance and frontier-policy research pipeline",
               "evidenceBridges": [
                 "MB6",
@@ -17861,8 +18195,8 @@
               "evidenceId": 64,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Government-led frontier eval binding on deployment",
               "evidenceBridges": [
                 "MB7"
@@ -17901,8 +18235,8 @@
               "evidenceId": 60,
               "type": "C",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.2,
+              "weight": 0.3,
+              "contrib": 0.015,
               "summary": "Institutional translation of safety specs (policy-facing coverage)",
               "evidenceBridges": [
                 "MB9"
@@ -17913,8 +18247,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -17930,8 +18264,8 @@
               "evidenceId": 63,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Standards and pre-deployment testing (UK + US CAISI cluster)",
               "evidenceBridges": [
                 "MB11",
@@ -18565,10 +18899,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -18588,8 +18922,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -18605,8 +18939,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
@@ -19169,10 +19503,10 @@
         "MB1": 0.0,
         "MB2": 0.0,
         "MB3": 0.0,
-        "MB4": 0.32,
+        "MB4": 0.024,
         "MB4a": 0.0,
         "MB5": 0.0,
-        "MB6": 0.32,
+        "MB6": 0.024,
         "MB7": 0.0,
         "MB7d": 0.0,
         "MB9": 0.0,
@@ -19192,8 +19526,8 @@
               "evidenceId": 65,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Off-switch / pause priority in advocacy platforms",
               "evidenceBridges": [
                 "MB4",
@@ -19209,8 +19543,8 @@
               "evidenceId": 66,
               "type": "P",
               "direction": "unclear",
-              "weight": 1,
-              "contrib": 0.32,
+              "weight": 0.3,
+              "contrib": 0.024,
               "summary": "Moratorium and verified-slowdown campaigns",
               "evidenceBridges": [
                 "MB6"
