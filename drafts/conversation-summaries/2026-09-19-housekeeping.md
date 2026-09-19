@@ -37,4 +37,4 @@ User asked for housekeeping/erasure; then predictions `relatedBridges` cleanup a
 
 ## Commits
 - `6f3033aa` — Housekeeping and unify predictions catalog bridge links.
-- (this session, boundary persistence) —
+- `9b1cbda3` — Centralize cut persistence vs repair in ch07 with thin cross-refs.
