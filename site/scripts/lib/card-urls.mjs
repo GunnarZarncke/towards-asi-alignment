@@ -267,10 +267,19 @@ export function buildCardRedirects(cards) {
     const legacy = `/cards/${legacyCardRouteSlug(card.id)}/`;
     if (legacy !== canonical) redirects[legacy] = canonical;
 
-    if (card.data?.overviewOnly || card.overviewOnly) {
+    if (card.data?.bookPageId) {
       const legacyFull = `${legacy}full/`;
       const canonicalFull = canonical.endsWith("/") ? `${canonical}full/` : `${canonical}/full/`;
       if (legacyFull !== canonicalFull) redirects[legacyFull] = canonicalFull;
+
+      const bookPageId = card.data.bookPageId;
+      if (bookPageId !== routeSlug(bookPageId)) {
+        const segment = TYPE_URL_SEGMENT[type];
+        if (segment) {
+          const wrongCaseFull = `/cards/${segment}/${bookPageId}/full/`;
+          if (wrongCaseFull !== canonicalFull) redirects[wrongCaseFull] = canonicalFull;
+        }
+      }
     }
   }
 

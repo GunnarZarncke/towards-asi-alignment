@@ -30,12 +30,12 @@ const MATH_ENVS = new Set([
 
 const ENV_HANDLERS = {
   chapterthesis: (body, ctx) =>
-    `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
+    `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${inlineCalloutHtml(body, ctx)}</div>\n\n`,
   epistemicstatus: (body, ctx) =>
-    `<div class="callout epistemic-status"><strong>Epistemic status.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
+    `<div class="callout epistemic-status"><strong>Epistemic status.</strong> ${inlineCalloutHtml(body, ctx)}</div>\n\n`,
   predictionbox: (body, ctx, env) => {
     const title = env?.optional?.trim() || "2027 contract";
-    return `<div class="callout prediction-box"><strong>${convertInlineText(title, ctx)}</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`;
+    return `<div class="callout prediction-box"><strong>${inlineCalloutHtml(title, ctx)}</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`;
   },
   quote: (body, ctx) => `> ${convertInlineText(body, ctx).replace(/\n+/g, "\n> ")}\n\n`,
   itemize: (body, ctx) => convertList(body, "ul", ctx),
@@ -129,17 +129,22 @@ function convertList(body, tag, ctx) {
 
 function convertDescription(body, ctx) {
   const items = [];
-  const re = /\\item(?:\[[^\]]*\])?\s*([\s\S]*?)(?=\\item|$)/g;
+  const re = /\\item(?:\[([^\]]*)\])?\s*([\s\S]*?)(?=\\item|$)/g;
   let match;
   while ((match = re.exec(stripLeadingEnvOptions(body))) !== null) {
-    const chunk = match[1].trim();
+    const bracketLabel = match[1]?.trim();
+    const chunk = match[2].trim();
     const split = chunk.match(/^(.+?)\s*\n([\s\S]*)$/);
-    if (split) {
+    if (bracketLabel) {
       items.push(
-        `<dt>${convertInlineText(split[1].trim(), ctx)}</dt><dd>${convertInlineText(split[2].trim(), ctx)}</dd>`
+        `<dt>${inlineCalloutHtml(bracketLabel, ctx)}</dt><dd>${inlineCalloutHtml(chunk, ctx)}</dd>`
+      );
+    } else if (split) {
+      items.push(
+        `<dt>${inlineCalloutHtml(split[1].trim(), ctx)}</dt><dd>${inlineCalloutHtml(split[2].trim(), ctx)}</dd>`
       );
     } else {
-      items.push(`<dt>${convertInlineText(chunk, ctx)}</dt><dd></dd>`);
+      items.push(`<dt>${inlineCalloutHtml(chunk, ctx)}</dt><dd></dd>`);
     }
   }
   return `<dl class="description-list">\n${items.join("\n")}\n</dl>\n\n`;
@@ -213,17 +218,32 @@ export function loadIllustrationAlts(repoRoot) {
   return alts;
 }
 
+function readFigureCaption(body) {
+  const captionStart = body.match(/\\caption(?:\[[^\]]*\])?\{/);
+  if (!captionStart) return "";
+  const braceIndex = body.indexOf("{", captionStart.index);
+  const balanced = readBalanced(body, braceIndex);
+  return balanced?.content.trim() ?? "";
+}
+
 function convertFigure(body, ctx) {
   const imgMatch = body.match(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/);
-  const captionMatch = body.match(/\\caption(?:\[[^\]]*\])?\{([\s\S]*?)\}/);
+  const captionRaw = readFigureCaption(body);
   const labelMatch = body.match(/\\label\{([^}]+)\}/);
   if (!imgMatch) return `${body.trim()}\n\n`;
   const illustrationMatch = imgMatch[1].match(ILLUSTRATION_PATH_RE);
   const localSrc = illustrationMatch ? illustrationPublicSrc(imgMatch[1]) : null;
-  const src = localSrc ?? `${FIGURE_BASE}/${imgMatch[1]}`;
-  const caption = captionMatch ? captionMatch[1].trim() : "";
+  const repoRelative = path.join(ctx.repoRoot ?? "", imgMatch[1]);
+  const sitePublicSrc =
+    !localSrc && ctx.repoRoot && existsSync(repoRelative)
+      ? `/${imgMatch[1].replace(/^site\/public\//, "")}`
+      : null;
+  const src = localSrc ?? sitePublicSrc ?? `${FIGURE_BASE}/${imgMatch[1]}`;
+  const caption = inlineCalloutHtml(captionRaw, ctx);
   const anchor = labelMatch ? `<span id="${labelMatch[1]}"></span>` : "";
-  const alt = illustrationMatch ? ctx.illustrationAlts?.get(illustrationMatch[1].toLowerCase()) || caption : caption;
+  const alt = illustrationMatch
+    ? ctx.illustrationAlts?.get(illustrationMatch[1].toLowerCase()) || captionRaw
+    : captionRaw;
   const captionHtml = illustrationMatch
     ? `<a href="${relIllustrationHref(illustrationMatch[1])}">${caption}</a>`
     : caption;
@@ -482,6 +502,11 @@ function convertInlineText(text, ctx) {
   return convertDocument(text, ctx).trim();
 }
 
+/** Markdown links inside HTML callouts must be emitted as `<a>` tags (remark skips raw HTML). */
+function inlineCalloutHtml(text, ctx) {
+  return tableCellLinksToHtml(renderTableCellMath(convertInlineText(text, ctx)));
+}
+
 function relBookHref(pageId, anchor, fromPageId) {
   const slug = pageId.toLowerCase();
   if (pageId === fromPageId) {
@@ -637,6 +662,11 @@ function convertCommand(name, tex, index, ctx) {
     case "label": {
       const label = readArg() || "";
       return { output: `<span id="${label}"></span>`, index };
+    }
+    case "texorpdfstring": {
+      const latexText = readArg() || "";
+      readArg();
+      return { output: convertInlineText(latexText, ctx), index };
     }
     case "ref":
     case "eqref": {

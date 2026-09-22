@@ -46,7 +46,7 @@ export async function getStaticPaths() {
         props: { card, showFullText: false as const }
       })),
     ...cards
-      .filter((card) => card.data.overviewOnly && card.data.bookPageId && card.data.type !== "essay")
+      .filter((card) => card.data.bookPageId && card.data.type !== "essay")
       .map((card) => ({
         params: { slug: `${cardRouteSlug({ id: card.id, type: card.data.type })}/full` },
         props: { card, showFullText: true as const }
@@ -246,7 +246,9 @@ const pageDescription = showFullText
           ) : (
             <h1>{card.data.title}</h1>
           )}
-          {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
+          {!isOverviewHub && !(isPredictionCard && !isExternalPrediction) && (
+            <p class="lede">{card.data.summary}</p>
+          )}
           {isExternalPrediction && (
             <div class="callout external-prediction-callout">
               <p>
@@ -354,7 +356,7 @@ const pageDescription = showFullText
             <p class="side-panel-meta">
               <a href={withBase("/predictions/")}>All 2027 predictions</a>
               {" · "}
-              <a href={withBase("/cards/appendix/appP/full/")}>Appendix H</a>
+              <a href={bookFullHref(base, "appP")}>Appendix H</a>
             </p>
           )}
         </>

@@ -25,7 +25,7 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortQuestion: "Discovering where control resides"
-    marketQuestion: "Published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?"
+    marketQuestion: "Will there be a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?"
     primaryBridge: MB1
     resolveBy: "2027-12-31"
     resolvers: ["Dan MacKinlay"]
@@ -35,7 +35,7 @@ markets:
     id: market-02
     title: "Persistent trade-off priorities"
     shortQuestion: "Persistent trade-off priorities"
-    marketQuestion: "Published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
+    marketQuestion: "Will there be a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
     primaryBridge: MB2
     resolveBy: "2027-12-31"
     resolvers: ["Rohin Shah"]
@@ -45,7 +45,7 @@ markets:
     id: market-03
     title: "Who or what rules apply to"
     shortQuestion: "Who or what rules apply to"
-    marketQuestion: "Published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
+    marketQuestion: "Will there be a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
     primaryBridge: MB3
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
@@ -55,7 +55,7 @@ markets:
     id: market-04
     title: "Corrections change the system"
     shortQuestion: "Corrections change the system"
-    marketQuestion: "Published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?"
+    marketQuestion: "Will there be a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?"
     primaryBridge: MB4
     resolveBy: "2027-12-31"
     resolvers: ["Trevor Lohrbeer"]
@@ -65,7 +65,7 @@ markets:
     id: market-05
     title: "Auditor is independent"
     shortQuestion: "Auditor is independent (outside of what it audits)"
-    marketQuestion: "Published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
+    marketQuestion: "Will there be a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
     primaryBridge: MB4a
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
@@ -75,7 +75,7 @@ markets:
     id: market-06
     title: "Reliable successor safety auditing"
     shortQuestion: "Reliable successor safety auditing"
-    marketQuestion: "Published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?"
+    marketQuestion: "Will there be a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?"
     primaryBridge: MB5
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth"]
@@ -85,7 +85,7 @@ markets:
     id: market-07
     title: "Correctability under competitive selection"
     shortQuestion: "Correctability under competitive selection"
-    marketQuestion: "Published measurement made before or early in a competitive selection process for reliably forecasting whether participants retain authorized correction through that process?"
+    marketQuestion: "Will there be a published measurement made before or early in a competitive selection process for reliably forecasting whether participants retain authorized correction through that process?"
     primaryBridge: MB6a
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth"]
@@ -95,7 +95,7 @@ markets:
     id: market-08
     title: "Auditor can sufficiently inspect the system"
     shortQuestion: "Auditor can sufficiently inspect the system"
-    marketQuestion: "Published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?"
+    marketQuestion: "Will there be a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?"
     primaryBridge: MB7a
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -106,7 +106,7 @@ markets:
     id: market-09
     title: "Bounds on unmonitored routes"
     shortQuestion: "Bounds on unmonitored routes"
-    marketQuestion: "Published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
+    marketQuestion: "Will there be a published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
     primaryBridge: MB7b
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -117,7 +117,7 @@ markets:
     id: market-10
     title: "Low hidden capability and reliable correction"
     shortQuestion: "Low hidden capability and reliable correction"
-    marketQuestion: "Published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
+    marketQuestion: "Will there be published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
     primaryBridge: MB7c
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -128,7 +128,7 @@ markets:
     id: market-11
     title: "Coordination without communication"
     shortQuestion: "Coordination without communication"
-    marketQuestion: "Published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?"
+    marketQuestion: "Will there be a published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?"
     primaryBridge: MB7d
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -139,7 +139,7 @@ markets:
     id: market-12
     title: "Safety proxy tracks the real thing"
     shortQuestion: "Safety proxy tracks the real thing"
-    marketQuestion: "Published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?"
+    marketQuestion: "Will there be a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?"
     primaryBridge: MB9
     resolveBy: "2027-12-31"
     resolvers: ["Plex"]
@@ -149,7 +149,7 @@ markets:
     id: market-13
     title: "Safety audit resists adversarial gaming"
     shortQuestion: "Safety audit resists adversarial gaming"
-    marketQuestion: "Published frozen AI safety audit surviving a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
+    marketQuestion: "Will there be a published frozen AI safety audit surviving a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
     primaryBridge: MB10
     resolveBy: "2027-06-30"
     resolvers: ["METR", "UK AISI"]
@@ -159,7 +159,7 @@ markets:
     id: market-14
     title: "Deployment criteria are binding"
     shortQuestion: "Deployment criteria are binding"
-    marketQuestion: "Published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
+    marketQuestion: "Will there be published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
     primaryBridge: constructibility
     resolveBy: "2027-06-30"
     resolvers: ["Scott Alexander"]
@@ -169,7 +169,7 @@ markets:
     id: market-15
     title: "Independently issued certificates compose"
     shortQuestion: "Independently issued certificates compose"
-    marketQuestion: "Published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
+    marketQuestion: "Will there be a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
     primaryBridge: composition
     resolveBy: "2027-12-31"
     resolvers: ["Koen Holtman"]
@@ -179,7 +179,7 @@ markets:
     id: market-16
     title: "A reachable basin of Correction-supporting systems"
     shortQuestion: "A reachable basin of Correction-supporting systems"
-    marketQuestion: "Published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
+    marketQuestion: "Will there be a published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
     primaryBridge: MB6b
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth", "Rohin Shah"]
@@ -189,7 +189,7 @@ markets:
     id: market-17
     title: "New bearers are admitted correctly"
     shortQuestion: "New bearers are admitted correctly"
-    marketQuestion: "Published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
+    marketQuestion: "Will there be a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
     primaryBridge: u17
     relatedBridges: [MB3]
     resolveBy: "2027-12-31"
@@ -200,7 +200,7 @@ markets:
     id: market-18
     title: "Safety case bounds declared harm"
     shortQuestion: "Safety case bounds declared harm"
-    marketQuestion: "Published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?"
+    marketQuestion: "Will there be a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?"
     primaryBridge: safe-in
     resolveBy: "2027-12-31"
     resolvers: ["Koen Holtman", "METR"]

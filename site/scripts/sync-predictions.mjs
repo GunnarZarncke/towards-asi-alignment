@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import { stripComments } from "./lib/tex-convert.mjs";
-import { cardPublicPath } from "./lib/card-urls.mjs";
+import { bookFullPublicHref, cardPublicPath } from "./lib/card-urls.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -16,6 +16,7 @@ const outputPath = path.join(outputDir, "predictions.json");
 const predictionCardsDir = path.join(siteRoot, "src", "content", "cards", "predictions");
 
 const REPO = "https://github.com/GunnarZarncke/towards-asi-alignment";
+const APPENDIX_H_FULL = bookFullPublicHref("", "appP");
 
 function yamlString(value) {
   return JSON.stringify(value ?? "");
@@ -80,7 +81,7 @@ function extractMarketSections(tex) {
   const cleaned = stripComments(tex);
   const sections = new Map();
   const re =
-    /\\subsection\{Market (\d+)\. ([^}]+)\}\s*\\label\{sec:appp-m(\d+)\}([\s\S]*?)(?=\\subsection\{Market |\\section\{Not in)/g;
+    /\\subsection\{Market (\d+)\. ([^}]+)\}\s*\\label\{sec:appp-m(\d+)\}([\s\S]*?)(?=\\subsection\{Market |\\section\{Composing an optimistic bound)/g;
   let match;
   while ((match = re.exec(cleaned)) !== null) {
     const number = Number(match[1]);
@@ -175,10 +176,10 @@ function formatResolverLine(market) {
 }
 
 function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
-  const summary = market.shortQuestion || market.title || "";
   const marketQuestion =
     market.marketQuestion || extracted.questionLead || extracted.question || market.shortQuestion;
-  const appendixFull = `/cards/appendix/appP/full/#${appendixAnchor(market.number)}`;
+  const summary = marketQuestion || market.shortQuestion || market.title || "";
+  const appendixFull = `${APPENDIX_H_FULL}#${appendixAnchor(market.number)}`;
   const resolveByLabel = formatResolveBy(market.resolveBy);
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
@@ -244,7 +245,7 @@ function externalFactorCardMarkdown(factor) {
     "",
     "This is **not** one of the eighteen markets. YES here does not discharge any MB*.",
     "",
-    `[Open on Metaculus](${factor.url}) · [Aggregation section in Appendix H](/cards/appendix/appP/full/#sec-appp-aggregation)`,
+    `[Open on Metaculus](${factor.url}) · [Aggregation section in Appendix H](${APPENDIX_H_FULL}#sec-appp-aggregation)`,
     ""
   ];
 
@@ -290,7 +291,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
       "evidence-and-uncertainty"
     ]),
     formatExternalYaml([
-      { label: "Appendix H (full on site)", url: "/cards/appendix/appP/full/" },
+      { label: "Appendix H (full on site)", url: APPENDIX_H_FULL },
       { label: "Bridge crosswalk (Appendix B)", url: "/cards/appendix/appB/" },
       {
         label: "Working criteria (GitHub)",
@@ -303,9 +304,9 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
     "",
     "**Claim strength.** YES means a public artifact met the appendix thresholds by each market's resolve-by date. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
     "",
-    "**Aggregation.** Prices compose along the spine dependency graph into an *optimistic* upper bound on $P(\\mathrm{doom})$; see [Composing an optimistic bound](/cards/appendix/appP/full/#sec-appp-aggregation) in Appendix H. YES on a market means the *tool exists*, not that it certifies a frontier deployment.",
+    `**Aggregation.** Prices compose along the spine dependency graph into an *optimistic* upper bound on $P(\\mathrm{doom})$; see [Composing an optimistic bound](${APPENDIX_H_FULL}#sec-appp-aggregation) in Appendix H. YES on a market means the *tool exists*, not that it certifies a frontier deployment.`,
     "",
-    "## The eighteen contracts",
+    "## The eighteen markets",
     "",
     ...list,
     "",

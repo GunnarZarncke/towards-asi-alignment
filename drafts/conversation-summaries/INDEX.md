@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-22 | **Predictions App H + site polish** — Reader pass on appendix H; proper questions; spine SVG; Gauss icon, hub list, `/full/` routes, tex-convert fixes. | [2026-09-22-predictions-apph-site-polish.md](2026-09-22-predictions-apph-site-polish.md) |
 | 2026-09-22 | **Predictions assurance-risk plan** — Reviewed PRA/appendix plan vs local catalog and Lean; self-contained lane plan; Markets 19–20 for demo; moved to `plans/predictions/`. | [2026-09-22-predictions-assurance-plan.md](2026-09-22-predictions-assurance-plan.md) |
 | 2026-09-19 | **Appendix H ↔ predictions catalog** — Per-box resolve-by; question leads match YAML; markets 13–14 early close 2027-06-30. | [2026-09-19-predictions-apph-alignment.md](2026-09-19-predictions-apph-alignment.md) |
 | 2026-09-19 | **Housekeeping / erasure** — Compact HANDOFF; reference-only headers; predictions README; revert graph timestamp; prune superseded log. | [2026-09-19-housekeeping.md](2026-09-19-housekeeping.md) |
