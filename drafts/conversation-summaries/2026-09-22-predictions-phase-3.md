@@ -40,4 +40,4 @@ Continue the assurance-risk plan with Phase 3 after the editorial review pass an
 
 ## Commits
 
-- none
+- `92810fd3` — Ship predictions assurance Phases 0–3 with funding gate and site demo.
