@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] OpenAI’s RSI standards: a shared ruler is not a stop</title>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-rsi-standards-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-rsi-standards-sep-2026/</guid>
+      <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+      <description>AI building the next AI. OpenAI asks for shared measurements. They say those measurements will not be licenses or a pre-release review.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] Anthropic’s pace measurements: seeing the race is not winning it</title>
       <link>https://towards-alignment.com/cards/news/field-news-anthropic-pace-measurements-sep-2026/</link>

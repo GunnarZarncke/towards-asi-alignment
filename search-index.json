@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-22T02:10:29.354Z",
+  "generatedAt": "2026-09-22T21:40:51.966Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 387,
+  "entryCount": 388,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1823,6 +1823,12 @@
       "type": "news",
       "summary": "OpenAI’s 26 August postmortem names four training-side patterns, a rebuilt swarm channel, and a CoT monitor tuned with hindsight. They also say future incidents may not resemble this one and that safeguards must stay ahead of capability, including at agent speed. Use that acknowledgement; the offer here is to find the acting unit, time the stop to the swarm, and price faking the monitor, not only retune named sandboxes.",
       "url": "/cards/news/field-news-openai-hf-roadahead-aug-2026/"
+    },
+    {
+      "title": "OpenAI’s RSI standards: a shared ruler is not a stop",
+      "type": "news",
+      "summary": "OpenAI’s 21 September 2026 Global Affairs post asks the United States to lead voluntary global technical standards for frontier AI, including recursive self-improvement. The two named pieces are a CAISI-centred institute and industry mechanism, and common protocols for measuring autonomous research, triggering human review, and classifying alignment incidents. Fully autonomous RSI, they say, is not happening and should not be pursued until it can be done safely. The same post says the standards would not be licenses, mandatory prerelease review, or approval requirements; governments decide whether to write them into law. This book’s cut is the same as for Anthropic’s pace measurements and OpenAI’s August hold: a shared answer to “what does good look like” is not a safety case unless a finding can delay the next model’s use for further AI R&D.",
+      "url": "/cards/news/field-news-openai-rsi-standards-sep-2026/"
     },
     {
       "title": "Orthogonal",
