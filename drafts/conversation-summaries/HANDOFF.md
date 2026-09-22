@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-22:** **App P editorial pass** — Prose cleanup; Market 3/11 conceptual clarification; forecasts separated from deployment evidence; stronger contract designs retained as preferences rather than YES gates; PDF-compatible spine figure. Log: `2026-09-22-app-p-editorial-pass.md`.
 - **2026-09-22:** **Predictions App H + site polish** — Appendix H reader pass; proper market questions; spine SVG in aggregation; site Gauss icon, list title/question split, App P `/full/` routes, tex-convert callout/glossary fixes. Log: `2026-09-22-predictions-apph-site-polish.md`.
 - **2026-09-22:** **Predictions assurance-risk plan** — Reviewed PRA/appendix improvement plan; Markets 19–20 integrated for site demo; canonical assurance-model manifest; resolution incentives; lane plan at `drafts/plans/predictions/assurance-risk-modelling.md`. Log: `2026-09-22-predictions-assurance-plan.md`.
 - **2026-09-19:** **Appendix H ↔ predictions catalog** — Per-box resolve-by; “Published method for…” question leads; 13/14 → 30 June 2027. Log: `2026-09-19-predictions-apph-alignment.md`.
