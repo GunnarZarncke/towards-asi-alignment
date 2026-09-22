@@ -1,0 +1,30 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import PredictionsAssuranceDemo from "../../../components/PredictionsAssuranceDemo.astro";
+import { bookFullHref } from "../../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const appendixFullHref = bookFullHref(base, "appP");
+---
+
+<SiteLayout
+  title="Assurance sensitivity model"
+  description="User-supplied PRA parameters for assurance failure and consequence sensitivity. Not a validated catastrophe estimate."
+>
+  <section class="hero">
+    <p class="eyebrow">Predictions · Phase 3</p>
+    <h1>Assurance sensitivity model</h1>
+    <p class="lede">
+      Explore how explicit assumptions about assurance failure, coverage, evidence strength, and
+      consequences combine. This is a sensitivity calculator, not a forecast from market prices.
+    </p>
+    <div class="button-row">
+      <a class="button" href={withBase("/predictions/")}>Back to predictions</a>
+      <a class="button" href={`${appendixFullHref}#sec-appp-assurance`}>Appendix H assurance section</a>
+      <a class="button" href={withBase("/cards/funding/prediction-evaluation-program/")}>Fund evaluations</a>
+    </div>
+  </section>
+
+  <PredictionsAssuranceDemo />
+</SiteLayout>

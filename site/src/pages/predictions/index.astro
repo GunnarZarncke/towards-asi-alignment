@@ -31,9 +31,21 @@ const purpose = predictions.purpose?.replace(/\s+/g, " ").trim() ?? "";
 const marketQuestionByNumber = new Map(
   (predictions.markets ?? []).map((market) => [market.number, market.marketQuestion ?? market.question ?? ""])
 );
+const marketStatusByNumber = new Map(
+  (predictions.markets ?? []).map((market) => [market.number, market.marketStatus ?? "draft"])
+);
+const listingStatusLabel = {
+  draft: "Draft",
+  "funding-gated": "Funding-gated",
+  "ready-to-list": "Ready to list",
+  listed: "Listed",
+  "resolved-yes": "Resolved YES",
+  "resolved-no": "Resolved NO"
+};
 const graph = predictions.graphPlaceholder ?? {
-  title: "Optimistic P(doom) composition",
-  blurb: "Compose spine-market prices with an external pause factor. See Appendix H §aggregation."
+  title: "Assurance context, not a doom product",
+  blurb:
+    "Eighteen contracts price operational milestones. An external Metaculus forecast prices institutional pause capacity. Neither is a safety-case probability, and their product is not a bound on catastrophe."
 };
 const aggregation = predictions.aggregation;
 const appendixFullHref = bookFullHref(base, "appP");
@@ -63,6 +75,8 @@ const aggregationHref = aggregation?.appendixAnchor
       }
       <a class="button" href={appendixFullHref}>Appendix H (full)</a>
       <a class="button" href={withBase("/cards/appendix/appB/")}>Bridge crosswalk</a>
+      <a class="button" href={withBase("/predictions/assurance/")}>Assurance sensitivity</a>
+      <a class="button" href={withBase("/cards/funding/prediction-evaluation-program/")}>Fund evaluations</a>
     </div>
   </section>
 
@@ -74,8 +88,8 @@ const aggregationHref = aggregation?.appendixAnchor
         <h2 id="predictions-aggregation-heading">{aggregation.title}</h2>
         <p>{aggregation.blurb}</p>
         <p class="aggregation-note">
-          <a href={aggregationHref}>Read the aggregation sketch in Appendix H</a>
-          {" "}— spine dependencies, pause factor, and why this is an optimistic bound (YES = tool exists, not frontier bridge discharge).
+          <a href={aggregationHref}>Read the assurance sections in Appendix H</a>
+          {" "}— {aggregation.hubNote || "three evidence levels, the F/R/U odds update, and why Market 14 is not an override probability."}
         </p>
       </section>
     )
@@ -86,7 +100,7 @@ const aggregationHref = aggregation?.appendixAnchor
       <section class="predictions-external readable" aria-labelledby="predictions-external-heading">
         <h2 id="predictions-external-heading">External factors</h2>
         <p class="external-intro">
-          Not bridge markets. Crowd forecasts used in the aggregation sketch—institutional pause capacity alongside Market 14.
+          Not bridge markets. Crowd forecasts of institutional pause capacity, modeled separately from Market 14. Not a factor in a product bound on catastrophe.
         </p>
         <ul class="external-list">
           {externalPredictionCards.map((card) => (
@@ -105,6 +119,9 @@ const aggregationHref = aggregation?.appendixAnchor
 
   <section class="predictions-market-grid readable" aria-label="Eighteen markets">
     <h2 class="section-heading">The eighteen markets</h2>
+    <p class="listing-note">
+      These are candidate contracts, not live markets. “Funding-gated” means that a credible YES route needs an unfunded independent evaluation or challenge; it does not mean the technical claim is false.
+    </p>
     <ol class="market-list">
       {
         predictionCards.map((card) => (
@@ -112,6 +129,12 @@ const aggregationHref = aggregation?.appendixAnchor
             <a href={cardHrefForCard(base, card)}>
               <span class="market-num">{card.data.predictionNumber}.</span>
               <span class="market-title">{card.data.title.replace(/^Market \d+\.\s*/, "")}</span>
+              <span class:list={[
+                "listing-status",
+                `listing-status-${marketStatusByNumber.get(card.data.predictionNumber ?? 0) ?? "draft"}`
+              ]}>
+                {listingStatusLabel[marketStatusByNumber.get(card.data.predictionNumber ?? 0) ?? "draft"]}
+              </span>
             </a>
             <p class="market-summary">
               {marketQuestionByNumber.get(card.data.predictionNumber ?? 0) || card.data.summary}
@@ -139,6 +162,13 @@ const aggregationHref = aggregation?.appendixAnchor
   .section-heading {
     font-size: 1.15rem;
     margin: 0 0 1rem;
+  }
+
+  .listing-note {
+    margin: -0.35rem 0 1rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    opacity: 0.85;
   }
 
   .predictions-market-grid {
@@ -173,6 +203,25 @@ const aggregationHref = aggregation?.appendixAnchor
   .market-num {
     color: color-mix(in srgb, var(--color-text) 55%, transparent);
     margin-right: 0.25rem;
+  }
+
+  .listing-status {
+    display: inline-block;
+    margin-left: 0.55rem;
+    padding: 0.08rem 0.38rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 24%, transparent);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.3;
+    vertical-align: 0.08rem;
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  }
+
+  .listing-status-funding-gated {
+    border-color: color-mix(in srgb, #c2410c 42%, transparent);
+    color: color-mix(in srgb, #c2410c 82%, var(--color-text));
+    background: color-mix(in srgb, #c2410c 7%, transparent);
   }
 
   .market-summary {

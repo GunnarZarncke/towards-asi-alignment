@@ -94,7 +94,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Outreach board
 
-- [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md). Appendix H + site hub + Spine `Evidence.lean` adapters shipped. Remaining: Q1 list vs not, Q2 titles, Q6 platform + live embed. Not LI.
+- [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../drafts/plans/predictions/assurance-risk-modelling.md). Phases 0–3 shipped (assurance manifest, draft Markets 19–20, `/predictions/assurance/` demo). Remaining: Phase 4 pilot/listing for 19–20, external funding submission, preset slots when artifacts resolve; Q1/Q2/Q6. Not LI.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 

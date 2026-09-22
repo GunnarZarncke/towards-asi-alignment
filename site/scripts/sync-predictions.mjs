@@ -17,6 +17,7 @@ const predictionCardsDir = path.join(siteRoot, "src", "content", "cards", "predi
 
 const REPO = "https://github.com/GunnarZarncke/towards-asi-alignment";
 const APPENDIX_H_FULL = bookFullPublicHref("", "appP");
+const FUNDING_CARD = "/cards/funding/prediction-evaluation-program/";
 
 function yamlString(value) {
   return JSON.stringify(value ?? "");
@@ -81,7 +82,7 @@ function extractMarketSections(tex) {
   const cleaned = stripComments(tex);
   const sections = new Map();
   const re =
-    /\\subsection\{Market (\d+)\. ([^}]+)\}\s*\\label\{sec:appp-m(\d+)\}([\s\S]*?)(?=\\subsection\{Market |\\section\{Composing an optimistic bound)/g;
+    /\\subsection\{Market (\d+)\. ([^}]+)\}\s*\\label\{sec:appp-m(\d+)\}([\s\S]*?)(?=\\subsection\{Market |\\section\{)/g;
   let match;
   while ((match = re.exec(cleaned)) !== null) {
     const number = Number(match[1]);
@@ -175,6 +176,50 @@ function formatResolverLine(market) {
   return "**Resolver:** not yet named.";
 }
 
+const OUTPUT_CLASS_LABEL = {
+  "diagnostic-certificate": "Diagnostic certificate",
+  "quantitative-bound": "Quantitative bound",
+  "conditional-rate": "Conditional rate",
+  "structural-validation": "Structural validation",
+  governance: "Governance evidence"
+};
+
+const EVIDENCE_TIER_LABEL = {
+  A: "Tier A (method exists)",
+  B: "Tier B (quantitatively validated)",
+  C: "Tier C (adversarially validated)"
+};
+
+const LISTING_STATUS_LABEL = {
+  draft: "Draft contract",
+  "funding-gated": "Funding-gated",
+  "ready-to-list": "Ready to list",
+  listed: "Listed",
+  "resolved-yes": "Resolved YES",
+  "resolved-no": "Resolved NO"
+};
+
+function formatListingStatus(market) {
+  const label = LISTING_STATUS_LABEL[market.marketStatus] ?? market.marketStatus;
+  if (!label) return "";
+  if (market.marketStatus === "funding-gated") {
+    return `**Listing status.** ${label}. A credible YES route requires an unfunded independent evaluation or challenge. This is not evidence that the technical claim is false. [Fund the evaluation program](${FUNDING_CARD}).`;
+  }
+  if (market.marketStatus === "draft") {
+    return `**Listing status.** ${label}. The contract exists, but listing questions or scientific prerequisites remain open. It is not live on a prediction platform.`;
+  }
+  return `**Listing status.** ${label}.`;
+}
+
+function formatAuditLine(market) {
+  const output = OUTPUT_CLASS_LABEL[market.outputClass] ?? market.outputClass;
+  const tier = EVIDENCE_TIER_LABEL[market.evidenceTier] ?? market.evidenceTier;
+  if (!output || !tier) return "";
+  const adapter = market.adapterVersion ?? 1;
+  const unit = market.sampleUnit ? ` Sample unit: ${market.sampleUnit.replace(/-/g, " ")}.` : "";
+  return `**Evidence class.** ${output}. YES predicts ${tier}. Adapter v${adapter}.${unit}`;
+}
+
 function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   const marketQuestion =
     market.marketQuestion || extracted.questionLead || extracted.question || market.shortQuestion;
@@ -184,6 +229,7 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
     formatResolverLine(market),
+    formatListingStatus(market),
     "",
     "## Question",
     "",
@@ -199,6 +245,13 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   if (extracted.output) {
     bodyParts.push("## Output", "", extracted.output, "");
   }
+  const auditLine = formatAuditLine(market);
+  if (auditLine) {
+    bodyParts.push(auditLine, "");
+  }
+  if (market.notes) {
+    bodyParts.push(market.notes.trim().replace(/\s+/g, " "), "");
+  }
   if (extracted.priorTest) {
     bodyParts.push("## Closest work (19 September 2026)", "", extracted.priorTest, "");
   }
@@ -213,9 +266,10 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
     "---",
     `title: ${yamlString(`Market ${market.number}. ${market.title}`)}`,
     `type: "prediction"`,
-    `status: "open"`,
+    `status: "framework"`,
     `summary: ${yamlString(summary)}`,
     `predictionNumber: ${market.number}`,
+    `predictionListingStatus: ${yamlString(market.marketStatus)}`,
     `primaryBridge: ${yamlString(market.primaryBridge)}`,
     "resolvesMB: false",
     formatRelatedYaml(relatedForMarket(market, bridgeCardSlugs)),
@@ -224,6 +278,10 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
       {
         label: "Criteria draft (GitHub)",
         url: `${REPO}/blob/main/drafts/predictions/bridge-prediction-market-criteria.md`
+      },
+      {
+        label: "Prediction-evaluation funding",
+        url: FUNDING_CARD
       }
     ]),
     "---",
@@ -239,13 +297,13 @@ function externalFactorCardMarkdown(factor) {
     "",
     factor.note?.trim() ?? "",
     "",
-    "## Role in aggregation",
+    "## Role in assurance",
     "",
-    "The Appendix H aggregation sketch uses this price as **q_pause**: institutional capacity to slow or restrict frontier deployment when evidence warrants pause, complementing [Market 14](/cards/prediction/market-14/) (lab-internal binding criteria).",
+    "This price forecasts whether binding legislation exists by a date. It may inform a separately modeled governance branch, complementing [Market 14](/cards/prediction/market-14/) (lab-internal binding criteria). It is **not** a direct estimate of override probability, and it is not a factor in a product bound on catastrophe.",
     "",
     "This is **not** one of the eighteen markets. YES here does not discharge any MB*.",
     "",
-    `[Open on Metaculus](${factor.url}) · [Aggregation section in Appendix H](${APPENDIX_H_FULL}#sec-appp-aggregation)`,
+    `[Open on Metaculus](${factor.url}) · [How these forecasts inform assurance](${APPENDIX_H_FULL}#sec-appp-aggregation)`,
     ""
   ];
 
@@ -304,7 +362,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
     "",
     "**Claim strength.** YES means a public artifact met the appendix thresholds by each market's resolve-by date. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
     "",
-    `**Aggregation.** Prices compose along the spine dependency graph into an *optimistic* upper bound on $P(\\mathrm{doom})$; see [Composing an optimistic bound](${APPENDIX_H_FULL}#sec-appp-aggregation) in Appendix H. YES on a market means the *tool exists*, not that it certifies a frontier deployment.`,
+    `**Assurance.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform assurance](${APPENDIX_H_FULL}#sec-appp-aggregation) and [Assurance failure, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
     "",
     "## The eighteen markets",
     "",
@@ -316,12 +374,80 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
   ].join("\n");
 }
 
+const REQUIRED_OUTPUT_CLASSES = new Set([
+  "diagnostic-certificate",
+  "quantitative-bound",
+  "conditional-rate",
+  "structural-validation",
+  "governance"
+]);
+const REQUIRED_TIERS = new Set(["A", "B", "C"]);
+const REQUIRED_LISTING_STATUSES = new Set([
+  "draft",
+  "funding-gated",
+  "ready-to-list",
+  "listed",
+  "resolved-yes",
+  "resolved-no"
+]);
+const REQUIRED_REASON_CODES = new Set([
+  "substantive-bar-failed",
+  "no-qualifying-artifact",
+  "reporting-insufficient",
+  "adversarial-validation-absent",
+  "evidence-incompatible",
+  "unresolved-judgment"
+]);
+
+function assertMarketAudit(market) {
+  const problems = [];
+  if (!REQUIRED_OUTPUT_CLASSES.has(market.outputClass)) {
+    problems.push(`missing/invalid outputClass (${market.outputClass ?? "—"})`);
+  }
+  if (!REQUIRED_TIERS.has(market.evidenceTier)) {
+    problems.push(`missing/invalid evidenceTier (${market.evidenceTier ?? "—"})`);
+  }
+  if (!REQUIRED_LISTING_STATUSES.has(market.marketStatus)) {
+    problems.push(`missing/invalid marketStatus (${market.marketStatus ?? "—"})`);
+  }
+  if (!market.sampleUnit) problems.push("missing sampleUnit");
+  if (!market.bars?.scientific?.length) problems.push("missing scientific bars");
+  if (problems.length) {
+    console.warn(`sync-predictions: market ${market.number} audit: ${problems.join("; ")}`);
+  }
+}
+
+function collapseBlurb(value) {
+  return (value ?? "").replace(/\s+/g, " ").trim();
+}
+
 const raw = yaml.load(await readFile(sourcePath, "utf8"));
 const appendixTex = await readFile(appendixPath, "utf8");
 const sectionByNumber = extractMarketSections(appendixTex);
 const bridgeCardSlugs = raw.bridgeCardSlugs ?? {};
 
 const markets = [...raw.markets].sort((a, b) => a.number - b.number);
+const configuredListingStatuses = new Set(Object.keys(raw.resolution?.listingStatuses ?? {}));
+const configuredReasonCodes = new Set(raw.resolution?.reasonCodes ?? []);
+for (const status of REQUIRED_LISTING_STATUSES) {
+  if (!configuredListingStatuses.has(status)) {
+    throw new Error(`predictions.yml: missing listing-status definition "${status}"`);
+  }
+}
+for (const reason of REQUIRED_REASON_CODES) {
+  if (!configuredReasonCodes.has(reason)) {
+    throw new Error(`predictions.yml: missing resolution reason code "${reason}"`);
+  }
+}
+if (markets.length !== 18) {
+  console.warn(`sync-predictions: expected 18 catalog markets, found ${markets.length}`);
+}
+if (sectionByNumber.size !== markets.length) {
+  console.warn(
+    `sync-predictions: appendix market sections (${sectionByNumber.size}) != YAML markets (${markets.length})`
+  );
+}
+for (const market of markets) assertMarketAudit(market);
 const externalFactors = [...(raw.externalFactors ?? [])];
 
 await rm(predictionCardsDir, { recursive: true, force: true });
@@ -387,23 +513,27 @@ for (const factor of externalFactors) {
   cardCount += 1;
 }
 
+const aggregation = {
+  title: raw.aggregation?.title ?? "How these forecasts inform assurance",
+  appendixAnchor: raw.aggregation?.appendixAnchor ?? "sec:appp-aggregation",
+  blurb: collapseBlurb(raw.aggregation?.blurb),
+  hubNote: collapseBlurb(raw.aggregation?.hubNote),
+  assuranceAnchor: "sec:appp-assurance"
+};
+const graphPlaceholder = {
+  title: raw.graphPlaceholder?.title ?? "Assurance context, not a doom product",
+  blurb: collapseBlurb(raw.graphPlaceholder?.blurb)
+};
+
 const payload = {
   purpose: raw.purpose?.trim() ?? "",
   overviewCardId: "predictions/overview",
   appendixBookId: "appP",
   markets: enrichedMarkets,
   externalFactors: enrichedExternalFactors,
-  aggregation: {
-    title: "Optimistic bound on P(doom)",
-    appendixAnchor: "sec-appp-aggregation",
-    blurb:
-      "Compose spine-market YES prices with an external pause factor (Metaculus Q44423). This is an optimistic upper bound: YES means operational tools exist, not that bridges hold on frontier systems."
-  },
-  graphPlaceholder: {
-    title: "Optimistic P(doom) composition",
-    blurb:
-      "Eighteen bridge markets price operational milestones along the spine. An external Metaculus forecast prices institutional pause capacity. Together they sketch an optimistic bound—see Appendix H §aggregation."
-  }
+  resolution: raw.resolution ?? {},
+  aggregation,
+  graphPlaceholder
 };
 
 await mkdir(outputDir, { recursive: true });

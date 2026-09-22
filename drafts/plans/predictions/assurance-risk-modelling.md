@@ -1,6 +1,8 @@
 # Predictions appendix and assurance-risk modelling
 
-Status: **plan only** (2026-09-22). Lane: **Predictions** (appendix PRA layer, Markets 19–20, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `formal/AlignmentProofSpine/Evidence.lean`. Do not start implementation until the scope decisions below are accepted.
+Status: **Phase 3 implemented** (2026-09-22). Assurance manifest, draft Markets 19–20 contracts, and site sensitivity demo shipped; catalog expansion and external listing remain Phase 4. Lane: **Predictions** (appendix PRA layer, Markets 19–20, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `metadata/assurance-model.yml`, `formal/AlignmentProofSpine/Evidence.lean`.
+
+**Source freeze (Phase 0, before this implementation):** HEAD `2543ddbd`; appendix + YAML last at `1ebf999e` (2026-09-22 App H polish); `Evidence.lean` last at `6c46f4bb` (2026-09-19 v1 adapters). Locked prediction-interface decisions unchanged: no `AlignmentContext`, no market outcomes in Lean, extra predicate indices deferred. PRA derivation in manuscript; interactive user-parameter model remains site-later (Phase 3).
 
 ## 1. Executive decision
 
@@ -787,68 +789,68 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 
 ### Phase 0 — freeze scope and sources
 
-- [ ] Preserve Markets 1--18 and their IDs.
-- [ ] Treat `appendices/appP-bridge-predictions.tex`, `metadata/predictions.yml`, and `Evidence.lean` as authoritative sources.
-- [ ] Preserve the locked prediction-interface decisions: no `AlignmentContext`, no market outcomes in Lean, extra predicate indices deferred.
-- [ ] Keep the PRA/Bayesian assurance derivation in the manuscript and the interactive user-parameter model on the site.
-- [ ] Record the exact version of every source used before editing generated surfaces.
+- [x] Preserve Markets 1--18 and their IDs.
+- [x] Treat `appendices/appP-bridge-predictions.tex`, `metadata/predictions.yml`, and `Evidence.lean` as authoritative sources.
+- [x] Preserve the locked prediction-interface decisions: no `AlignmentContext`, no market outcomes in Lean, extra predicate indices deferred.
+- [x] Keep the PRA/Bayesian assurance derivation in the manuscript and the interactive user-parameter model on the site.
+- [x] Record the exact version of every source used before editing generated surfaces.
 
 ### Phase 1 — correct interpretation
 
-- [ ] Replace the appendix claim that market-price products form an optimistic \(P_{\rm doom}\) bound.
-- [ ] Replace the product formula with the assurance-failure \(F/R/U\) model and the \(S_R/S_U\) derivation.
-- [ ] Update generated site aggregation copy and graph-placeholder copy in the same implementation pass.
-- [ ] State the three levels: market outcome, per-instance method output, and truth label.
-- [ ] Keep Market 14 separate from override-probability estimation and Market 18 separate from Lean `RiskGap`.
+- [x] Replace the appendix claim that market-price products form an optimistic \(P_{\rm doom}\) bound.
+- [x] Replace the product formula with the assurance-failure \(F/R/U\) model and the \(S_R/S_U\) derivation.
+- [x] Update generated site aggregation copy and graph-placeholder copy in the same implementation pass.
+- [x] State the three levels: market outcome, per-instance method output, and truth label.
+- [x] Keep Market 14 separate from override-probability estimation and Market 18 separate from Lean `RiskGap`.
 
 ### Phase 2 — audit the 18 contracts
 
-- [ ] Classify each method output as diagnostic certificate, continuous bound, conditional rate, structural validation, or governance evidence.
-- [ ] Classify every bar as scientific, adversarial-validation, or reporting/interface.
-- [ ] Freeze a deterministic resolution adapter and its allowed operations for each applicable market.
-- [ ] Decide whether each market predicts Tier A, B, or C evidence.
-- [ ] Add compatible multi-source evidence rules without allowing opportunistic stitching.
-- [ ] Add class-conditional reporting only where benchmark truth and a binary certificate are meaningful.
-- [ ] Audit Market 1's positive-certification coverage.
-- [ ] Preserve continuous outputs for Markets 7 and 9.
-- [ ] Preserve Market 13's current scope and Market 15's current static-composition scope.
-- [ ] Check sample unit, repeated-measure dependence, confidence method, abstention, and subgroup coverage for each applicable market.
-- [ ] Replace publication-format obligations with reconstructibility where this does not weaken the scientific or adversarial bar.
-- [ ] Decide whether “serious adversarial evaluation” should use frozen capability/independence routes rather than dollar/hour expenditure as its primary definition.
-- [ ] Do not add requirements to a listed/frozen contract without creating a new version.
+- [x] Classify each method output as diagnostic certificate, continuous bound, conditional rate, structural validation, or governance evidence.
+- [x] Classify every bar as scientific, adversarial-validation, or reporting/interface.
+- [x] Freeze a deterministic resolution adapter and its allowed operations for each applicable market.
+- [x] Decide whether each market predicts Tier A, B, or C evidence.
+- [x] Add compatible multi-source evidence rules without allowing opportunistic stitching.
+- [x] Add class-conditional reporting only where benchmark truth and a binary certificate are meaningful.
+- [x] Audit Market 1's positive-certification coverage.
+- [x] Preserve continuous outputs for Markets 7 and 9.
+- [x] Preserve Market 13's current scope and Market 15's current static-composition scope.
+- [x] Check sample unit, repeated-measure dependence, confidence method, abstention, and subgroup coverage for each applicable market.
+- [x] Replace publication-format obligations with reconstructibility where this does not weaken the scientific or adversarial bar.
+- [x] Decide whether “serious adversarial evaluation” should use frozen capability/independence routes rather than dollar/hour expenditure as its primary definition.
+- [x] Do not add requirements to a listed/frozen contract without creating a new version.
 
 ### Phase 2b — funding and listing gate
 
-- [ ] Publish a resolution-gap analysis for every candidate market.
-- [ ] Identify the smallest preregistered reproduction, transfer test, hidden subset, or adversarial condition that could close each gap.
-- [ ] Classify markets as `draft`, `funding-gated`, or `ready-to-list` before any external listing.
-- [ ] Write and submit the prediction-evaluation funding application, linked from `/funding/`.
+- [x] Publish a resolution-gap analysis for every candidate market.
+- [x] Identify the smallest preregistered reproduction, transfer test, hidden subset, or adversarial condition that could close each gap.
+- [x] Classify markets as `draft`, `funding-gated`, or `ready-to-list` before any external listing.
+- [~] Write and publish the prediction-evaluation funding application, linked from `/funding/`; external submission target remains open.
 - [ ] Obtain funding or an external evaluator commitment before listing any market whose credible resolution route depends on project-supplied adversarial work.
-- [ ] Define small bounties for marginal tests only after the gap analysis.
-- [ ] Freeze binary resolution reason codes separately from evidence tier and market status.
-- [ ] Extend YAML validation and site cards to display the frozen status vocabulary without implying that `funding-gated` means technically false.
+- [x] Define small bounties for marginal tests only after the gap analysis.
+- [x] Freeze binary resolution reason codes separately from evidence tier and market status.
+- [x] Extend YAML validation and site cards to display the frozen status vocabulary without implying that `funding-gated` means technically false.
 
 ### Phase 3 — write the assurance model and design the site demo
 
-- [ ] Freeze \(F,R,U,E,D\) and the unit of analysis.
-- [ ] Include the general \(S_R/S_U\) derivation and the \(S_U=1\) special case in the manuscript.
-- [ ] State that \(S_U=1\) is no-information, not worst-case.
-- [ ] Complete the Market 19 integrated-tournament contract: eligible artifact, frozen protocol, stack-selection rule, challenge distribution, sample size, uncertainty bars, abstention handling, resolver, deadline, and funding route.
-- [ ] Specify when Market 19's class-conditional measurements estimate \(S_R\) and when they remain benchmark-local.
-- [ ] Complete the Market 20 open-world-challenge contract: eligible stack, unrestricted attack protocol, exposure measure, post hoc failure classification, raw reporting, resolver, deadline, and funding route.
-- [ ] State what Market 20 can update about ontology gaps and what additional sampling assumptions would be required to infer \(\kappa\).
-- [ ] Define the typed assurance-model manifest and its logical, causal, evidential, and common-cause relation types.
-- [ ] Give every causal or evidential edge a justification independent of the existence of a Lean proof edge.
-- [ ] Generate or mechanically validate the Lean and PRA/Bayesian projections from the same shared node definitions.
-- [ ] Separate the assurance update from the catastrophe consequence model.
-- [ ] Define the one-attempt consequence model and verify limiting cases.
-- [ ] Expose parameter ranges, provenance, and sensitivity.
-- [ ] Add multi-lab or repeated-attempt aggregation only after dependence is specified.
-- [ ] Keep \(\kappa=P(R\mid F)\) as a sensitivity input until a defensible estimator exists.
-- [ ] Put user-supplied consequence parameters and interactive plots on the site, not in the prediction boxes.
-- [ ] Make the demo work with user-supplied ranges before Markets 19--20 resolve.
+- [x] Freeze \(F,R,U,E,D\) and the unit of analysis.
+- [x] Include the general \(S_R/S_U\) derivation and the \(S_U=1\) special case in the manuscript.
+- [x] State that \(S_U=1\) is no-information, not worst-case.
+- [x] Complete the Market 19 integrated-tournament contract: eligible artifact, frozen protocol, stack-selection rule, challenge distribution, sample size, uncertainty bars, abstention handling, resolver, deadline, and funding route.
+- [x] Specify when Market 19's class-conditional measurements estimate \(S_R\) and when they remain benchmark-local.
+- [x] Complete the Market 20 open-world-challenge contract: eligible stack, unrestricted attack protocol, exposure measure, post hoc failure classification, raw reporting, resolver, deadline, and funding route.
+- [x] State what Market 20 can update about ontology gaps and what additional sampling assumptions would be required to infer \(\kappa\).
+- [x] Define the typed assurance-model manifest and its logical, causal, evidential, and common-cause relation types.
+- [x] Give every causal or evidential edge a justification independent of the existence of a Lean proof edge.
+- [x] Generate or mechanically validate the Lean and PRA/Bayesian projections from the same shared node definitions.
+- [x] Separate the assurance update from the catastrophe consequence model.
+- [x] Define the one-attempt consequence model and verify limiting cases.
+- [x] Expose parameter ranges, provenance, and sensitivity.
+- [x] Add multi-lab or repeated-attempt aggregation only after dependence is specified.
+- [x] Keep \(\kappa=P(R\mid F)\) as a sensitivity input until a defensible estimator exists.
+- [x] Put user-supplied consequence parameters and interactive plots on the site, not in the prediction boxes.
+- [x] Make the demo work with user-supplied ranges before Markets 19--20 resolve.
 - [ ] Add versioned Market 19 and Market 20 result presets only from qualifying resolved artifacts, with scope, provenance, uncertainty, and transfer caveats.
-- [ ] Never use either market's price or binary outcome as a numerical PRA/Bayesian parameter.
+- [x] Never use either market's price or binary outcome as a numerical PRA/Bayesian parameter.
 
 ### Phase 4 — pilot, fund, and list Markets 19--20
 
@@ -870,7 +872,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 ## 12. Verification checklist for a later implementation
 
 - [ ] No market price is used as a deployment failure probability.
-- [ ] No product of marginal market prices is called a bound on catastrophe.
+- [x] No product of marginal market prices is called a bound on catastrophe.
 - [ ] No market YES is described as discharging an `MB*`.
 - [ ] No Lean proof edge is silently treated as a causal Bayesian edge.
 - [ ] Logical and probabilistic views use the same canonical node identities and scopes.
@@ -898,7 +900,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] The risk demo reports assumptions and sensitivity more prominently than a point estimate.
 - [ ] Appendix, YAML, generated cards, site copy, and any diagram agree.
 - [ ] Prediction sync emits no appendix/YAML question mismatch warning and regenerates one card per approved catalog market plus the overview and external-factor cards (18 before, 20 after the approved expansion).
-- [ ] The site no longer advertises “Optimistic \(P(\mathrm{doom})\) composition” after the aggregation is replaced.
+- [x] The site no longer advertises “Optimistic \(P(\mathrm{doom})\) composition” after the aggregation is replaced.
 - [ ] `make check`, the site build, and `make lean` pass after their respective files are eventually changed.
 
 ## 13. Intended final message

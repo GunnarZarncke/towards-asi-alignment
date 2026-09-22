@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-22 (Predictions App H + site polish).
+Last updated: 2026-09-22 (Predictions Phase 3 assurance model).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-22 (Predictions App H + site polish).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) (App H + `/predictions/` hub + Lean v1 adapters shipped; Q1/Q2/Q6 decided) · **next:** [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (PRA layer, Markets 19–20, aggregation replacement, site demo — plan only, not implemented).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; **next:** Phase 4 pilot/listing for Markets 19–20, external funding submission, preset slots when artifacts resolve).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,7 +20,12 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-22:** **Predictions Phase 3** — Assurance manifest, draft Markets 19–20, extended assurance/consequence prose, `/predictions/assurance/` demo. Log: `2026-09-22-predictions-phase-3.md`.
+- **2026-09-22:** **Predictions funding gate** — Funding application card; seven draft and eleven funding-gated contracts; YAML validation, site badges, and funding links. Log: `2026-09-22-predictions-funding-gate.md`.
 - **2026-09-22:** **App P editorial pass** — Prose cleanup; Market 3/11 conceptual clarification; forecasts separated from deployment evidence; stronger contract designs retained as preferences rather than YES gates; PDF-compatible spine figure. Log: `2026-09-22-app-p-editorial-pass.md`.
+- **2026-09-22:** **App P PRA vocabulary** — Named PRA; Kaplan–Garrick + NRC cites; glosses for \(F/R/U\), \(\kappa\), \(S_R/S_U\), consequence. Log: `2026-09-22-predictions-pra-vocab.md`.
+- **2026-09-22:** **Predictions gap analysis + App H voice** — CIRIS-informed resolution gaps for all 18; opening and resolution section rewritten; Markets 15/18 asides expanded. Log: `2026-09-22-predictions-gap-ciris.md`.
+- **2026-09-22:** **Predictions Phases 0–2** — Replaced product-of-prices \(P(\mathrm{doom})\) with \(F/R/U\) odds update; 18-market contract audit in appendix + YAML. Log: `2026-09-22-predictions-phase-0-2.md`.
 - **2026-09-22:** **Predictions App H + site polish** — Appendix H reader pass; proper market questions; spine SVG in aggregation; site Gauss icon, list title/question split, App P `/full/` routes, tex-convert callout/glossary fixes. Log: `2026-09-22-predictions-apph-site-polish.md`.
 - **2026-09-22:** **Predictions assurance-risk plan** — Reviewed PRA/appendix improvement plan; Markets 19–20 integrated for site demo; canonical assurance-model manifest; resolution incentives; lane plan at `drafts/plans/predictions/assurance-risk-modelling.md`. Log: `2026-09-22-predictions-assurance-plan.md`.
 - **2026-09-19:** **Appendix H ↔ predictions catalog** — Per-box resolve-by; “Published method for…” question leads; 13/14 → 30 June 2027. Log: `2026-09-19-predictions-apph-alignment.md`.

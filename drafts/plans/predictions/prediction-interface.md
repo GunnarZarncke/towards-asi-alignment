@@ -42,7 +42,7 @@ Spine map (this file, instrument-plan table, `Evidence.lean`): where types must 
 
 ## Next phase
 
-PRA/Bayesian assurance layer, aggregation replacement, Markets 19–20, resolution incentives, canonical assurance-model manifest, site demo: [`assurance-risk-modelling.md`](assurance-risk-modelling.md).
+PRA/Bayesian assurance layer: Phases 0–2 shipped; Phase 2b gap analysis shipped ([`../../predictions/resolution-gap-analysis.md`](../../predictions/resolution-gap-analysis.md), CIRIS context). Remaining: funding application + site listing-status cards; Phase 3 Markets 19–20 + site demo. [`assurance-risk-modelling.md`](assurance-risk-modelling.md).
 
 ## Related
 

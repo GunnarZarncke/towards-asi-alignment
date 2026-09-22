@@ -4,12 +4,12 @@ BibLaTeX sources loaded by `book.tex` (`references/*.bib`). Cited keys must exis
 
 ## One-line bibliography summaries
 
-Reader-facing glosses print **above each bibliography entry** in the PDF (global bibliography and per-chapter *Chapter References*). **DOI**, **URL**, and **eprint** lines print at the end of each entry when present in the `.bib` file (see `metadata/preamble.tex`).
+Reader-facing glosses print **after each bibliography entry** in the PDF (global bibliography and per-chapter *Chapter References*), following the standard author/title block and any **DOI**, **URL**, or **eprint** lines (see `metadata/preamble.tex`).
 
 | Artifact | Role |
 |----------|------|
 | `references/bibliography-summaries.tex` | `\bibsummary{key}{One sentence.}` map keyed by BibTeX entry key |
-| `metadata/preamble.tex` | Hooks summaries via `\renewbibmacro*{begentry}` |
+| `metadata/preamble.tex` | Hooks summaries via `\renewbibmacro*{finentry}` |
 
 **Do not** put these glosses in `.bib` files. Keeping them in TeX avoids biber custom-field issues and matches the 2026-06-26 design.
 

@@ -269,7 +269,6 @@ This is the \emph{transport} contract: after continuity, fission or fusion, reas
 Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 A Market~3 YES establishes bearer transport only.
-Later tests that transport a value bundle also require a Market~2-style priority witness on the predecessor.
 
 \begin{predictionbox}[Market 3. Who or what rules apply to]
 \textbf{Resolve by.} 31~December 2027.
@@ -745,6 +744,76 @@ What is missing is a precommitted bound on observed harm in a frozen setting, ch
 
 \end{authbar}
 \authbarneedspace
+\section{Cross-cutting assurance tests (draft)}
+\label{sec:appp-cross-cutting}
+\begin{authbar}{GZ+AI}
+The eighteen catalog markets price component methods and governance artifacts.
+Markets~19 and~20 are draft extensions for end-to-end assurance evidence that no single component market supplies.
+They are not listed on a prediction platform until Phase~4 approval, independent evaluators, and a funded resolution route exist.
+Their resolved artifacts may inform the site's assurance sensitivity model; their prices and YES/NO outcomes do not populate PRA parameters directly.
+
+\end{authbar}
+\authbarneedspace
+\subsection{Market 19. Integrated assurance transfer tournament}
+\label{sec:appp-m19}
+\begin{authbar}{AI}
+This is not Market~13.
+Market~13 tests whether a frozen audit can be optimized around on successor properties.
+Market~19 tests whether a frozen \emph{integrated stack} transfers from benchmark to deployment-like cases: valid modeled cases, material represented defects, and required broken controls must be scored with the same ACCEPT/REFUSE/ABSTAIN rule.
+
+Required freeze discipline:
+protocol freeze $\to$ method development $\to$ stack freeze $\to$ fresh hidden challenge $\to$ one frozen evaluation.
+``One evaluation'' must still contain enough independent units to estimate false acceptance with predeclared uncertainty.
+
+\begin{predictionbox}[Market 19. Integrated assurance transfer tournament]
+\textbf{Resolve by.} 30~June 2028.
+
+\textbf{Question.}
+Will there be a published integrated assurance transfer tournament reporting class-conditional ACCEPT rates on valid modeled cases, material represented defects, and required broken controls under a frozen hidden challenge?
+
+Before any method development, freeze: the certificate subset in the stack; how candidate stacks are selected without final-test leakage; coherent and broken case generators; within-class mixtures; how interacting failures are sampled; system-family and deployment-setting holdouts; ACCEPT/REFUSE/ABSTAIN scoring; sample size and confidence targets; adversarial budget; resolver; and versioning.
+
+\textbf{YES requires} at least 200 independent evaluation units overall, with at least 50 valid modeled cases, at least 50 material represented-defect cases, and at least 20 deliberately broken controls that must fail acceptance; report $P(\mathrm{ACCEPT}\mid\text{valid modeled case})$, $P(\mathrm{ACCEPT}\mid\text{material represented defect})$, and one-sided 95\% confidence bounds; publish dependence information (shared system, trajectory, evaluator, or attack family); and preserve raw class-conditional counts for independent reproduction.
+Abstention is allowed but must be reported by class; universal abstention is not a YES.
+
+\textbf{Output.} A tournament artifact: frozen protocol, raw counts, intervals, dependence notes, and the challenge distribution used.
+\end{predictionbox}
+
+A benchmark-local ratio $\widehat S_R = P(\mathrm{ACCEPT}\mid\text{valid})/P(\mathrm{ACCEPT}\mid\text{material represented defect})$ estimates deployment $S_R$ only if ``valid modeled case'' operationalizes $\neg F$, ``material represented defect'' operationalizes $F\land R$, ACCEPT is the same evidence event $E$ in benchmark and deployment, within-class mixtures are frozen or reweighted to the deployment conditionals, and system/threat/setting transfer is justified.
+Otherwise report the ratio as benchmark-local discrimination only.
+
+Closest existing work: component evals and AI Control-style monitor games \autocite{greenblatt2024aicontrol}.
+None yet publish the full stack-transfer artifact with the stated class-conditional reporting and dependence discipline.
+
+\end{authbar}
+\authbarneedspace
+\subsection{Market 20. Open-world coverage challenge}
+\label{sec:appp-m20}
+\begin{authbar}{AI}
+Treat $\kappa = P(R\mid F)$ as a sensitivity parameter, not a measured completeness score.
+An open-world challenge after an eligible stack receives ACCEPT can discover:
+(1)~an instance of an existing modeled failure;
+(2)~a new combination of modeled failures;
+(3)~a genuinely new variable, edge, or failure family.
+The observed category-3 rate is not an estimator of $\kappa$ without a defensible sampling distribution over catastrophe-relevant assurance failures.
+
+\begin{predictionbox}[Market 20. Open-world coverage challenge]
+\textbf{Resolve by.} 30~June 2028.
+
+\textbf{Question.}
+Will there be a published open-world assurance challenge, run after an eligible integrated stack received ACCEPT, that reports exposure, discovery taxonomy, and saturation curves under a frozen attack protocol?
+
+Before attacks begin, freeze: the eligible stack entry rule (including composition checks at least as strong as Market~15); the unrestricted attack protocol; exposure measure (search budget, wall-clock, or attempt count); post hoc failure classification into categories~1--3 above; resolver; and raw reporting schema.
+The YES criterion must concern a predeclared observable property of the challenge process or result; it must not claim that the assurance ontology is complete.
+
+\textbf{YES requires} at least one eligible stack that would have received ACCEPT under the frozen tournament scoring rule; at least 300 documented adversarial attempts or an equivalent frozen exposure budget; independent red-team construction after stack freeze; classification of every qualifying discovery into categories~1--3; publication of exposure, success counts, and a saturation or yield curve; and preservation of raw logs sufficient to revise the assurance model and construct justified $\kappa$ sensitivity ranges.
+\end{predictionbox}
+
+Market~20 can document ontology gaps and motivate $\kappa$ sensitivity presets on the companion site.
+It does not directly estimate $\kappa$, and its price is not a coverage probability.
+
+\end{authbar}
+\authbarneedspace
 \section{How these forecasts inform assurance}
 \label{sec:appp-aggregation}
 \begin{authbar}{GZ+AI}
@@ -801,6 +870,14 @@ Coverage of $F$ by that ontology is $\kappa = P(R\mid F)$.
 Favorable evidence $E$ (for example a frozen integrated stack returning ACCEPT) updates the odds of $F$ through likelihood ratios $S_R$ and $S_U$.
 A separate \emph{consequence} step then asks how often $F$, or its absence, leads to $D$.
 
+\paragraph{Unit of analysis.}
+Unless stated otherwise, probabilities are conditional on one qualifying deployment attempt: a named system or version, a declared deployment setting, and a frozen threat model.
+Repeated trials, shared evaluators, and correlated attack families are not independent units unless a dependence model says so.
+
+\paragraph{Mapping tournament output to $S_R$.}
+Market~19's class-conditional ACCEPT rates may inform $S_R$ only under the transfer conditions in Section~\ref{sec:appp-m19}.
+Market~20's category-3 discoveries inform sensitivity ranges for $\kappa$; they do not estimate $\kappa$ without an explicit sampling model over catastrophe-relevant failures.
+
 Here $R$ and $U$ are mutually exclusive and exhaustive conditional on $F$, and $O(F):=P(F)/P(\neg F)$.
 Define
 \[
@@ -828,7 +905,7 @@ The $S_U=1$ case is a no-information assumption for the unrepresented branch.
 It is conservative relative to assuming that modeled assurance generalizes to unknown failures, but it is not worst-case: adversarially misleading evidence could imply $S_U<1$.
 Even perfect discrimination against represented failures ($S_R\to\infty$) leaves an odds ratio of $1-\kappa$ under $S_U=1$.
 
-This update is about assurance failure $F$, not catastrophe $D$.
+This update is about assurance failure $F$, not catastrophe.
 The next step is a separate consequence model:
 \[
 P(D\mid E)
@@ -839,8 +916,21 @@ P(D\mid \neg F,E)\,P(\neg F\mid E).
 \]
 Do not silently set $P(D\mid \neg F,E)=0$.
 Do not reuse $\kappa$ in the consequence layer in a way that double-counts the represented/unrepresented partition.
-The companion site can expose user-supplied parameters, ranges, and scenario comparisons without turning them into prediction-box criteria.
-Any absolute $P(\mathrm{doom})$ shown there would be an assumption-dependent sensitivity output, not a validated project estimate.
+
+\paragraph{One-attempt illustration.}
+For a single qualifying attempt, a companion sensitivity model may also expose deployment-override and remaining-control parameters such as
+\[
+o=P(\text{deploy despite REFUSE/ABSTAIN}),
+\quad
+b=P(\text{remaining controls defeated}\mid F,\text{deployment}),
+\quad
+c=P(D\mid F,\text{controls defeated}).
+\]
+These are user-supplied or scenario inputs, not outputs of the eighteen market prices.
+A union bound over labs requires explicit dependence assumptions; do not default to multiplying independent complements when attempts may share infrastructure or information.
+
+The companion site exposes user-supplied parameters, ranges, and scenario comparisons on its assurance sensitivity page without turning them into prediction-box criteria.
+Any absolute $P(\mathrm{doom})$ shown there is an assumption-dependent sensitivity output, not a validated project estimate.
 
 \paragraph{What the catalog contributes.}
 The market prices estimate whether the required tools and governance artifacts will exist by their deadlines.

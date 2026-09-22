@@ -2,7 +2,7 @@
 
 Status: **P0c** (2026-09-19) on top of P0 + P0b (2026-09-18). Working criteria: [`../../predictions/bridge-prediction-market-criteria.md`](../../predictions/bridge-prediction-market-criteria.md) (`0.4-working`). Integration checklist: [`prediction-interface.md`](prediction-interface.md). Historical source: [`../../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](../../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx) (python-docx export; **no comments or tracked changes**). Lane: Field mapping + Outreach listing. Certificate-layer Lean is Spine. **Appendix + site hub authorized**; still no sixth intro claim.
 
-The catalog is **18 binary** markets resolving by **31 December 2027** (source §§1–14 plus §15 composition, §16 correction-supporting basin, §17 bearer admission, §18 scoped safety-case bound). It is a *contract layer* on the live bridges, not a new ontology. Refuse maps to NO. Aggregation is the point. A vector of YESes is still not a joint safety case.
+The catalog is **18 binary** markets resolving by **31 December 2027** (source §§1–14 plus §15 composition, §16 correction-supporting basin, §17 bearer admission, §18 scoped safety-case bound). It is a *contract layer* on the live bridges, not a new ontology. Refuse maps to NO. Prices forecast artifact existence; they are not multiplied into \(P_{\rm doom}\). A vector of YESes is still not a joint safety case.
 
 ## Goal
 

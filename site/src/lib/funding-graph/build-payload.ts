@@ -28,7 +28,8 @@ const SHORT_LABEL: Record<string, string> = {
   "corrigibility-measurement": "Corrigibility",
   "multi-principal-testbed": "Multi-principal testbed",
   "competitive-lab-selection": "Competitive labs",
-  "alignment-crux-map": "Crux Map"
+  "alignment-crux-map": "Crux Map",
+  "prediction-evaluation-program": "Prediction evaluations"
 };
 
 export function fundingNodeLabel(slug: string) {

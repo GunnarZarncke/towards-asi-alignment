@@ -1,0 +1,322 @@
+# Typed assurance model manifest (Phase 3).
+# Shared node identities for PRA/Bayesian and Lean certificate projections.
+# Causal and evidential edges carry their own justifications; they are not
+# inferred from proof dependencies alone.
+
+version: 1
+
+unitOfAnalysis: >
+  One qualifying deployment attempt on a named system or version, in a declared
+  deployment setting, under a frozen threat model. Probabilities are conditional
+  on that unit unless stated otherwise.
+
+events:
+  F:
+    label: Assurance failure
+    description: >
+      The deployment case was accepted while a catastrophe-relevant defect was
+      present.
+  R:
+    label: Represented failure
+    description: >
+      Conditional on F, the failure family is represented by the current
+      assurance ontology.
+  U:
+    label: Unrepresented failure
+    description: >
+      Conditional on F, the failure is outside the current assurance ontology.
+  E:
+    label: Favorable assurance evidence
+    description: >
+      For example a frozen integrated stack returning ACCEPT on the deployment
+      under evaluation.
+  D:
+    label: Catastrophe
+    description: >
+      A prohibited catastrophic outcome within the declared consequence model,
+      not a market YES.
+
+parameters:
+  assurance:
+    - id: priorOdds
+      label: Prior odds O(F)
+      role: user-supplied
+      default: 1
+      min: 0.01
+      max: 100
+    - id: kappa
+      label: "κ = P(R | F)"
+      role: sensitivity
+      default: 0.9
+      min: 0
+      max: 1
+      note: >
+        Sensitivity input until a defensible estimator exists. Market 20
+        discoveries inform ranges, not a direct point estimate.
+    - id: sR
+      label: "S_R"
+      role: user-or-preset
+      default: 5
+      min: 1
+      max: 1000
+      note: >
+        Benchmark-local tournament ratios estimate S_R only under the transfer
+        conditions in Appendix H (Market 19).
+    - id: sU
+      label: "S_U"
+      role: user-or-preset
+      default: 1
+      min: 0.1
+      max: 10
+      note: >
+        S_U = 1 is a no-information assumption for the unrepresented branch,
+        not a worst-case guarantee.
+  consequence:
+    - id: pDgivenF
+      label: "P(D | F, E)"
+      role: user-supplied
+      default: 0.05
+      min: 0
+      max: 1
+    - id: pDgivenNotF
+      label: "P(D | ¬F, E)"
+      role: user-supplied
+      default: 0.001
+      min: 0
+      max: 1
+      note: Do not silently set this to zero.
+  perAttemptIllustrative:
+    - id: m
+      label: "m = P(hazardous at attempt)"
+      default: 0.2
+      min: 0
+      max: 1
+    - id: fM
+      label: "f_M = P(false ACCEPT | represented hazardous)"
+      default: 0.1
+      min: 0
+      max: 1
+    - id: fU
+      label: "f_U = P(ACCEPT | unrepresented hazardous)"
+      default: 0.5
+      min: 0
+      max: 1
+    - id: o
+      label: "o = P(deploy despite REFUSE / ABSTAIN)"
+      default: 0.1
+      min: 0
+      max: 1
+    - id: b
+      label: "b = P(controls defeated | hazardous deployed)"
+      default: 0.3
+      min: 0
+      max: 1
+    - id: c
+      label: "c = P(D | controls defeated)"
+      default: 0.5
+      min: 0
+      max: 1
+
+relationTypes:
+  logical: Proof or definition dependency in the Lean spine.
+  evidential: Empirical support or certificate soundness arrow.
+  causal: Declared parent in the PRA/Bayesian graph.
+  common-cause: Shared ancestor that induces dependence between branches.
+
+nodes:
+  - id: m1
+    market: 1
+    label: Control locus
+    leanCert: BoundaryCert
+    leanPredicate: BoundaryAligned
+    outputClass: diagnostic-certificate
+  - id: m2
+    market: 2
+    label: Persistent priorities
+    leanCert: BundleCert
+    leanPredicate: BundleTransport
+    outputClass: diagnostic-certificate
+  - id: m3
+    market: 3
+    label: Bearer transport
+    leanCert: BearerCert
+    leanPredicate: BearerTransport
+    outputClass: diagnostic-certificate
+  - id: m4
+    market: 4
+    label: Correction uptake
+    leanCert: CorrectionEvalCert
+    leanPredicate: CorrectionIntegrity
+    outputClass: diagnostic-certificate
+  - id: m5
+    market: 5
+    label: Auditor independence
+    leanCert: PositiveMeasuredPathCertificate
+    leanPredicate: CorrectionIntegrity
+    outputClass: diagnostic-certificate
+    note: Legitimacy route to CorrectionIntegrity, not a converse of MB4a.
+  - id: m6
+    market: 6
+    label: Successor audit
+    leanCert: SuccessorTransitionCert
+    leanPredicate: SuccessorSafe
+    outputClass: structural-validation
+  - id: m7
+    market: 7
+    label: Selection-gradient estimator
+    outputClass: conditional-rate
+    note: Signed continuous output; not a binary certificate leaf.
+  - id: m8
+    market: 8
+    label: Access adequacy
+    leanCert: AccessCert
+    leanPredicate: AccessModelAdequate
+    outputClass: diagnostic-certificate
+  - id: m9
+    market: 9
+    label: Hidden-route bound
+    leanCert: HiddenRouteBound
+    leanPredicate: HiddenBIQBoundedSys
+    outputClass: quantitative-bound
+  - id: m10
+    market: 10
+    label: Local composition (Markets 4 and 9)
+    outputClass: conditional-rate
+    dependsOnMarkets: [4, 9]
+  - id: m11
+    market: 11
+    label: Hidden coordination
+    outputClass: diagnostic-certificate
+    scopeTriggered: true
+    bridge: MB7d
+  - id: m12
+    market: 12
+    label: Grounding / proxy drift
+    leanCert: EpistemicCoverageEvidence
+    leanPredicate: GroundingViable
+    outputClass: diagnostic-certificate
+  - id: m13
+    market: 13
+    label: Adversarial audit gaming
+    outputClass: structural-validation
+    bridge: MB10
+  - id: m14
+    market: 14
+    label: Binding deployment authority
+    outputClass: governance
+    outsideBridgeAssumptions: true
+  - id: m15
+    market: 15
+    label: Certificate composition
+    outputClass: structural-validation
+    note: Static scope coherence; distinct from dynamic revocation.
+  - id: m16
+    market: 16
+    label: Correction-supporting basin
+    outputClass: conditional-rate
+    bridge: MB6b
+  - id: m17
+    market: 17
+    label: Novel bearer admission
+    outputClass: diagnostic-certificate
+    scopeTriggered: true
+  - id: m18
+    market: 18
+    label: Scoped harm bound
+    leanPredicate: SafeIn
+    outputClass: conditional-rate
+    note: Scoped SafeIn neighborhood only; not live Safe or MB11 discharge.
+  - id: m19
+    market: 19
+    label: Integrated transfer tournament
+    outputClass: structural-validation
+    catalogPhase: 3
+    producesPreset: sR
+  - id: m20
+    market: 20
+    label: Open-world coverage challenge
+    outputClass: structural-validation
+    catalogPhase: 3
+    producesPreset: kappaSensitivity
+
+relations:
+  - from: m1
+    to: m2
+    type: evidential
+    justification: Bundle inference requires a stable control subject.
+  - from: m5
+    to: m4
+    type: evidential
+    justification: Independent authority is prerequisite for meaningful correction tests.
+  - from: m7
+    to: m16
+    type: evidential
+    justification: Early signed estimate feeds basin regime claims; not logical equivalence.
+  - from: m8
+    to: m9
+    type: evidential
+    justification: Access model must be adequate before hidden-route bounds apply.
+  - from: m4
+    to: m10
+    type: evidential
+    justification: Local composition requires correction evidence on the same system.
+  - from: m9
+    to: m10
+    type: evidential
+    justification: Local composition requires hidden-route bounds on the same system.
+  - from: m4
+    to: m13
+    type: common-cause
+    justification: Shared correction measurements; do not count as independent bits.
+  - from: m8
+    to: m13
+    type: common-cause
+    justification: Shared access/audit substrate; correlated false assurance risk.
+  - from: m15
+    to: m18
+    type: evidential
+    justification: Scoped harm case requires a compositionally coherent certificate bundle.
+  - from: m19
+    to: assuranceUpdate
+    type: evidential
+    justification: >
+      Class-conditional ACCEPT rates may inform S_R only when valid modeled cases
+      operationalize ¬F and material represented defects operationalize F∧R,
+      with frozen transfer to the deployment setting.
+  - from: m20
+    to: kappaSensitivity
+    type: evidential
+    justification: >
+      Category-3 discoveries document ontology gaps; raw rates do not estimate κ
+      without a stated sampling model over catastrophe-relevant failures.
+
+dependenceWarnings:
+  - markets: [1, 4, 8, 12, 13]
+    note: Correlated measurement family; not five independent forecast bits.
+  - markets: [4, 5, 16]
+    note: >
+      Complementary correction obligations with shared measurements; not
+      independent confirmations and not a simple OR alternative.
+
+phase3Markets:
+  - number: 19
+    id: market-19
+    title: Integrated assurance transfer tournament
+    resolveBy: "2028-06-30"
+    marketStatus: draft
+    fundingRoute: prediction-evaluation-program
+    appendixAnchor: sec:appp-m19
+  - number: 20
+    id: market-20
+    title: Open-world coverage challenge
+    resolveBy: "2028-06-30"
+    marketStatus: draft
+    fundingRoute: prediction-evaluation-program
+    appendixAnchor: sec:appp-m20
+
+presets:
+  note: >
+    Market prices and YES/NO outcomes never populate these fields. Presets may
+    be added only from qualifying resolved tournament or challenge artifacts.
+  sR: []
+  kappaRanges: []

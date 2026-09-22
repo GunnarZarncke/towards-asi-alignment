@@ -93,6 +93,16 @@ const isAgendaCard = card.data.type === "agenda";
 const isFundingCard = card.data.type === "funding";
 const isPredictionCard = card.data.type === "prediction";
 const isExternalPrediction = isPredictionCard && card.data.predictionExternal === true;
+const predictionListingLabel = card.data.predictionListingStatus
+  ? {
+      draft: "Draft contract",
+      "funding-gated": "Funding-gated",
+      "ready-to-list": "Ready to list",
+      listed: "Listed",
+      "resolved-yes": "Resolved YES",
+      "resolved-no": "Resolved NO"
+    }[card.data.predictionListingStatus]
+  : null;
 const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
@@ -235,6 +245,7 @@ const pageDescription = showFullText
         {isReleaseCard && card.data.version && <Badge label={`v${card.data.version}`} variant="framework" />}
         {isReleaseCard && card.data.releasedAt && <Badge label={card.data.releasedAt} />}
         {isExternalPrediction && <Badge label="External factor" variant="framework" />}
+        {predictionListingLabel && <Badge label={predictionListingLabel} variant="framework" />}
       </div>
       {!bookEntry ? (
         <>
@@ -253,7 +264,7 @@ const pageDescription = showFullText
             <div class="callout external-prediction-callout">
               <p>
                 <strong>External factor.</strong> Not one of the eighteen bridge markets. Hosted on Metaculus;
-                used in the Appendix H aggregation sketch as institutional pause capacity (q<sub>pause</sub>).
+                used in Appendix H as a separately modeled governance forecast, not as a numerical override probability.
                 YES does not discharge any MB*.
               </p>
             </div>

@@ -106,6 +106,15 @@ const card = defineCollection({
     predictionOverview: z.boolean().optional(),
     /** Market number 1–18 on section cards. */
     predictionNumber: z.number().min(1).max(18).optional(),
+    /** Contract/listing axis, separate from evidence tier and YES/NO outcome. */
+    predictionListingStatus: z.enum([
+      "draft",
+      "funding-gated",
+      "ready-to-list",
+      "listed",
+      "resolved-yes",
+      "resolved-no"
+    ]).optional(),
     /** Internal spine tag (MB*, constructibility, composition, u17, safe-in). */
     primaryBridge: z.string().optional(),
     /** Always false: YES does not discharge MB*. */

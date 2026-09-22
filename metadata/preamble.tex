@@ -107,15 +107,18 @@
 \def\symbolref@plain#1{\ensuremath{#1}}
 \makeatother
 
-% Bibliography entries start with a one-line reader-facing gloss, keyed by
-% BibLaTeX entry key so biber does not need to parse custom data fields.
-\input{references/bibliography-summaries.tex}
-\renewbibmacro*{begentry}{%
-  \ifcsname bibsummary@\thefield{entrykey}\endcsname
-    \csname bibsummary@\thefield{entrykey}\endcsname\par\nobreak\smallskip
-  \fi}
+% pdflscape + longtable: on continuation pages the table head can climb into the
+% running header unless LTpre reserves headheight + headsep (memoir defaults).
+\AtBeginEnvironment{landscape}{%
+  \clearpage
+  \setlength{\LTpre}{\dimexpr\headheight+\headsep+0.75\baselineskip\relax}%
+  \setlength{\LTpost}{0.75\baselineskip}}
 
-% Always append DOI, eprint, and URL at the end of each bibliography entry.
+% One-line reader-facing gloss after each entry (standard author/title first).
+% Keyed by BibLaTeX entry key so biber does not need custom data fields.
+\input{references/bibliography-summaries.tex}
+
+% Append DOI, eprint, URL, then summary at the end of each bibliography entry.
 \renewbibmacro*{doi+eprint+url}{}
 \renewbibmacro*{finentry}{%
   \iffieldundef{doi}{}{%
@@ -127,4 +130,8 @@
   \iffieldundef{url}{}{%
     \newunit\newblock
     \printfield{url}}%
+  \ifcsname bibsummary@\thefield{entrykey}\endcsname
+    \par\nobreak\smallskip
+    \csname bibsummary@\thefield{entrykey}\endcsname
+  \fi
   \finentry}

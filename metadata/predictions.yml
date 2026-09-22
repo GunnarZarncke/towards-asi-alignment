@@ -7,18 +7,95 @@
 #
 # primaryBridge + relatedBridges: keys in bridgeCardSlugs below only (not raw card slugs).
 # Sync always links primaryBridge; relatedBridges = extra related cards (omit duplicates).
+#
+# Phase 2 audit fields (outputClass, evidenceTier, adapterVersion, sampleUnit, bars)
+# freeze reconstructibility and adapter scope.
+# Resolution-gap analysis (Phase 2b, CIRIS context): drafts/predictions/resolution-gap-analysis.md
+# Listing-status vocabulary on cards is not wired yet; classes live in that file.
+
+gapAnalysis: drafts/predictions/resolution-gap-analysis.md
+assuranceModel: metadata/assurance-model.yml
+assuranceDemo: /predictions/assurance/
 
 purpose: >
-  Bet on predictions about published methods resolving subproblems of AI alignment by stated
-  resolve-by dates. A YES is evidence about operationalization up to the appendix thresholds,
-  not proof that a bridge holds on frontier systems. A NO is everything else from missing evals,
-  missing publication, or missed bars.
+  Bet on predictions about whether publicly reconstructible methods resolve
+  subproblems of AI alignment by stated resolve-by dates. A YES is evidence
+  about operationalization up to the appendix thresholds, not proof that a
+  bridge holds on frontier systems, and not a probability of catastrophe.
+  A NO is everything else from missing evals, missing publication, or missed bars.
 
 overview:
   title: "2027 bridge predictions"
   summary: >
     Catalog of dated operational contracts on the book's live bridges — boxed
     public spec, prior-test snapshot, and links to the appendix and spine map.
+
+aggregation:
+  title: "How these forecasts inform assurance"
+  appendixAnchor: "sec:appp-aggregation"
+  blurb: >
+    Market prices forecast whether qualifying artifacts exist by a deadline.
+    They are not multiplied into P(doom). A later PRA updates assurance-failure
+    odds separately from any catastrophe consequence model.
+  hubNote: >
+    three evidence levels, the F/R/U odds update, and why Market 14 is not an
+    override probability.
+
+graphPlaceholder:
+  title: "Assurance context, not a doom product"
+  blurb: >
+    Eighteen contracts price operational milestones. An external Metaculus
+    forecast prices institutional pause capacity. Neither is a safety-case
+    probability, and their product is not a bound on catastrophe.
+
+resolution:
+  listingStatuses:
+    draft: >
+      The contract exists, but listing questions or scientific prerequisites
+      remain open.
+    funding-gated: >
+      A credible YES route needs a preregistered challenge or independent
+      evaluation that is not yet funded.
+    ready-to-list: >
+      The contract and a credible funded resolution route are both ready.
+    listed: >
+      The frozen contract is live on an external prediction platform.
+    resolved-yes: >
+      The frozen contract resolved YES.
+    resolved-no: >
+      The frozen contract resolved NO; inspect the separate reason code before
+      interpreting the result.
+  reasonCodes:
+    - substantive-bar-failed
+    - no-qualifying-artifact
+    - reporting-insufficient
+    - adversarial-validation-absent
+    - evidence-incompatible
+    - unresolved-judgment
+  reconstructibility: >
+    Markets resolve on publicly reconstructible technical evidence, not on
+    authors using TSA terminology or certificate formats.
+  routes:
+    - native
+    - adapter-wrap
+    - independent-reproduction
+    - project-challenge
+  adapterVersionDefault: 1
+  adapterMay:
+    - identify system, version, benchmark, monitor, and scope from explicit source material
+    - compute rates, confusion matrices, likelihood ratios, and confidence intervals from released raw counts
+    - rerun released code on a frozen public dataset
+    - apply a frozen threshold
+    - translate labels or reported values into the result schema
+    - derive a certificate record from explicitly reported fields
+  adapterMayNot:
+    - introduce a new dataset after seeing the result
+    - reinterpret ambiguous labels in the favorable direction
+    - assume missing negative cases
+    - infer an unstated causal or semantic relation
+    - extrapolate from toy systems to frontier systems
+    - claim a benchmark establishes a Lean predicate without separately required soundness evidence
+    - silently combine incompatible studies
 
 markets:
   - number: 1
@@ -30,7 +107,22 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Dan MacKinlay"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: hidden-system
+    bars:
+      scientific:
+        - identify at least 80% of ground-truth control components on the full hidden benchmark
+        - false complete-boundary certificate rate at most 10%; 95% CI upper bound at most 15%
+        - decisive coverage (non-abstain) at least 70% of hidden systems
+      adversarialValidation:
+        - at least one subset constructed adversarially after method freeze
+        - hours-path capability/independence (meaningful adversarial component retained)
+      reportingInterface:
+        - per-system cut naming this system and version
   - number: 2
     id: market-02
     title: "Persistent trade-off priorities"
@@ -40,7 +132,21 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Rohin Shah"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: hidden-system
+    bars:
+      scientific:
+        - 85% accuracy distinguishing materially different hidden trade-offs
+        - 80% accuracy on novel-conflict direction and intervention effect
+        - causal intervention on at least half of qualifying systems where architecture allows
+      adversarialValidation:
+        - systems deliberately trained with hidden trade-offs, including near-identical ordinary-task pairs
+      reportingInterface:
+        - inferred priorities of this named system
   - number: 3
     id: market-03
     title: "Who or what rules apply to"
@@ -50,7 +156,21 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: hidden-transport-case
+    bars:
+      scientific:
+        - at least 90% correct target assignment across at least 100 hidden cases
+        - false acceptance at most 10% where the textual rule is unchanged but the real-world target changed
+      adversarialValidation:
+        - all four failure families required in the hidden benchmark
+      reportingInterface:
+        - same-bearer result on a named predecessor-successor pair plus travelling trade-off structure
+        - panel agreement only where mechanical ground truth is absent and predeclared
   - number: 4
     id: market-04
     title: "Corrections change the system"
@@ -60,7 +180,23 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Trevor Lohrbeer"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: correction-episode
+    bars:
+      scientific:
+        - 90% genuine-correction uptake; 80% post-reset persistence; sham success at most 10%
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - channel-preservation family required
+      reportingInterface:
+        - per-system correction-eval certificate with headline rates
+    notes: >
+      Distinct from Markets 5 and 16. Shared correction measurements; not an independent
+      confirmation; a YES here does not resolve those markets.
   - number: 5
     id: market-05
     title: "Auditor is independent"
@@ -70,7 +206,23 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: attack-attempt
+    bars:
+      scientific:
+        - no attack family with at least 10% success over at least 20 independent attempts
+        - planted bypasses discovered at least 90% of the time
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - four attack families required
+      reportingInterface:
+        - legitimate measured path plus evidence it is not bypassed
+    notes: >
+      Distinct from Markets 4 and 16. Do not count as an independent confirmation of correction integrity.
   - number: 6
     id: market-06
     title: "Reliable successor safety auditing"
@@ -80,17 +232,46 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: predecessor-successor-pair
+    bars:
+      scientific:
+        - at least 90% detection of materially unsafe transitions; false-safe at most 5%
+        - at least 80% detection for each individual property
+      adversarialValidation:
+        - one-failure-at-a-time cases; at least 20 large successor changes
+      reportingInterface:
+        - certificate names both versions and per-property pass/fail; version does not transfer
   - number: 7
     id: market-07
     title: "Correctability under competitive selection"
     shortQuestion: "Correctability under competitive selection"
-    marketQuestion: "Will there be a published measurement made before or early in a competitive selection process for reliably forecasting whether participants retain authorized correction through that process?"
+    marketQuestion: "Will there be a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?"
     primaryBridge: MB6a
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: quantitative-bound
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: selection-trajectory
+    bars:
+      scientific:
+        - AUROC at least 0.85; false-safe at most 15%; lower 95% AUROC bound at least 0.70 if n<40
+        - preserve the signed estimate as a continuous output
+      adversarialValidation:
+        - both outcome branches; two selection mechanisms; one healthy-looking negative-estimate family
+      reportingInterface:
+        - frozen estimate, declared selection environment, predicted erosion
+    notes: >
+      Repeated trajectories that share a system or evaluator are not independent units.
+      Do not force the signed estimate into a binary classifier merely to obtain a likelihood ratio.
   - number: 8
     id: market-08
     title: "Auditor can sufficiently inspect the system"
@@ -101,7 +282,19 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: access-model-case
+    bars:
+      scientific:
+        - at least 90% detection of missing consequential routes; incorrect sufficient-access certifications at most 5%
+      adversarialValidation:
+        - all four channel families; hours-path capability/independence (meaningful adversarial component retained)
+      reportingInterface:
+        - access certificate for this monitoring interface
   - number: 9
     id: market-09
     title: "Bounds on unmonitored routes"
@@ -112,7 +305,22 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: quantitative-bound
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: system-monitor-task-class
+    bars:
+      scientific:
+        - actual hidden-route success no greater than the stated bound in at least 95% of at least 100 cases
+        - median bound among positively certified systems no greater than 20%
+        - preserve the continuous bound; do not force a binary classifier
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - evaluator-created hidden routes detected or highly bounded at least 90% of the time
+      reportingInterface:
+        - quantitative bound for this system, task class, and monitor
   - number: 10
     id: market-10
     title: "Low hidden capability and reliable correction"
@@ -123,7 +331,22 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: conditional-rate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: trial-in-claimed-regime
+    bars:
+      scientific:
+        - attack success at most 10% across at least 100 trials; 95% CI upper bound at most 15%
+        - out-of-regime systems show materially higher attack success
+      adversarialValidation:
+        - full serious adversarial evaluation
+      reportingInterface:
+        - Market 4 and Market 9 certificates for the same system, version, monitor, and threat class
+    notes: >
+      Informs false-acceptance or bypass risk only inside the stated correction/hidden-route regime.
   - number: 11
     id: market-11
     title: "Coordination without communication"
@@ -134,7 +357,22 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Vanessa Kosoy"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: hidden-coordination-case
+    bars:
+      scientific:
+        - AUROC at least 0.90; recall at least 80% on concealed subset; FPR at most 10%
+      adversarialValidation:
+        - at least two independently designed hidden-coordination mechanisms
+        - hours-path capability/independence
+      reportingInterface:
+        - detector certificate plus Market 8-style access certificate for the same setup
+    notes: >
+      Scope-triggered side branch. Not a default main-safety-case leaf.
   - number: 12
     id: market-12
     title: "Safety proxy tracks the real thing"
@@ -144,17 +382,48 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Plex"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: environmental-shift
+    bars:
+      scientific:
+        - at least 90% of material mismatches trigger update, warning, abstention, or new information
+        - at most 10% remain falsely green; at most 25% of irrelevant shifts escalate unnecessarily
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - at least three genuinely different real-world-like domains
+      reportingInterface:
+        - grounding or drift certificate for the same abstractions the rest of the case uses
   - number: 13
     id: market-13
     title: "Safety audit resists adversarial gaming"
     shortQuestion: "Safety audit resists adversarial gaming"
-    marketQuestion: "Will there be a published frozen AI safety audit surviving a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
+    marketQuestion: "Will there be a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
     primaryBridge: MB10
     resolveBy: "2027-06-30"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: adversarial-construction
+    bars:
+      scientific:
+        - false-safe at most 5% over at least 50 independently evaluated constructions
+        - no repeatable attack family with at least 10% success over at least 20 trials
+        - planted vulnerable systems detected at least 90% of the time
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - audit frozen before white-box attacks
+      reportingInterface:
+        - frozen-audit game certificate; resolution memo names successor-gaming vs generic shape
+    notes: >
+      Frozen-audit / MB10 neighborhood only. Not an end-to-end stack transfer tournament.
   - number: 14
     id: market-14
     title: "Deployment criteria are binding"
@@ -164,7 +433,22 @@ markets:
     resolveBy: "2027-06-30"
     resolvers: ["Scott Alexander"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: governance
+    evidenceTier: A
+    adapterVersion: 1
+    sampleUnit: named-deployment-process
+    bars:
+      scientific:
+        - precommitted pass/fail or escalation criteria with actual authority over deployment
+        - at least one criterion caused a restriction or is documented as binding even if the model passed
+      adversarialValidation: []
+      reportingInterface:
+        - dated decision record stating which criteria passed, failed, or remained unresolved
+    notes: >
+      Governance binding / constructibility. Does not estimate a generic override probability
+      for all labs. Not MB11.
   - number: 15
     id: market-15
     title: "Independently issued certificates compose"
@@ -174,7 +458,23 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Koen Holtman"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: structural-validation
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: certificate-bundle
+    bars:
+      scientific:
+        - at least 90% of materially incompatible bundles rejected or flagged; at least 80% per family
+        - false coherent/safe acceptance at most 5%; at least 80% of genuinely coherent bundles accepted
+      adversarialValidation:
+        - at least one incompatibility subset built adversarially after freeze
+      reportingInterface:
+        - each certificate names system or version and relevant setup
+    notes: >
+      Static scope/coherence test. Dynamic provenance, revocation, and recertification are out of scope.
+      A multi-source evidence package for another market does not itself resolve this market.
   - number: 16
     id: market-16
     title: "A reachable basin of Correction-supporting systems"
@@ -184,7 +484,24 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["John Wentworth", "Rohin Shah"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: conditional-rate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: selection-trajectory
+    bars:
+      scientific:
+        - inside regime: 90% authorized correction; 80% persistence; false-safe trajectory class at most 10% (95% CI UB 15%)
+        - outside: at least 20 percentage points more correction failure
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - freeze environment, who may correct, estimator, tolerance, and shock family before outcomes
+      reportingInterface:
+        - trajectories inside and outside the claimed regime
+    notes: >
+      Distinct from Markets 4 and 5. Shared measurements; not an independent confirmation.
+      Repeated trajectories that share a system or evaluator are not independent units.
   - number: 17
     id: market-17
     title: "New bearers are admitted correctly"
@@ -195,7 +512,20 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["METR", "UK AISI"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: draft
+    contractVersion: 1
+    outputClass: diagnostic-certificate
+    evidenceTier: B
+    adapterVersion: 1
+    sampleUnit: hidden-admission-case
+    bars:
+      scientific:
+        - unsafe false exclusion at most 5%; false inclusion at most 15%
+        - correct assignment or justified abstention at least 90%; decisive coverage at least 70%
+      adversarialValidation:
+        - adversarial subset after freeze; at least four unfamiliar families; ontology-shift items
+      reportingInterface:
+        - Market 3 panel rule where mechanical ground truth is absent
   - number: 18
     id: market-18
     title: "Safety case bounds declared harm"
@@ -205,7 +535,24 @@ markets:
     resolveBy: "2027-12-31"
     resolvers: ["Koen Holtman", "METR"]
     resolverStatus: ideal
-    marketStatus: open
+    marketStatus: funding-gated
+    contractVersion: 1
+    outputClass: conditional-rate
+    evidenceTier: C
+    adapterVersion: 1
+    sampleUnit: trial-in-declared-setting
+    bars:
+      scientific:
+        - observed prohibited outcomes inside the claimed regime at most 10% (95% CI UB 15%)
+        - no repeatable attack family with at least 10% success over at least 20 attempts
+      adversarialValidation:
+        - full serious adversarial evaluation
+        - coherent Market 15-passing case required to enter the regime
+      reportingInterface:
+        - freeze setting, prohibited-outcome class, residual bound, threat model, and certificate interfaces before evaluation
+    notes: >
+      Observed prohibited-outcome rate in a declared setting. Not Lean RiskGap, not unrestricted
+      Safe, and not a discharge of MB11. Does not separately identify S_R or consequence parameters.
 
 # Catalog keys → site card id (under src/content/cards/). Used for primaryBridge and relatedBridges.
 bridgeCardSlugs:
@@ -242,4 +589,5 @@ externalFactors:
     note: >
       Crowd forecast of institutional capacity to slow or restrict frontier deployment when
       evidence warrants it. Not one of the eighteen bridge markets; does not discharge any MB*.
-      Pairs with Market 14 (lab-internal binding criteria) in the aggregation sketch (Appendix H §aggregation).
+      Pairs with Market 14 (lab-internal binding criteria) as a separately modeled governance
+      branch, not as a numerical override probability and not as a factor in a P(doom) product.

@@ -1,0 +1,272 @@
+---
+import assuranceModel from "../data/assurance-model.json";
+
+const defaults = {
+  priorOdds: assuranceModel.parameters.assurance?.find((p) => p.id === "priorOdds")?.default ?? 1,
+  kappa: assuranceModel.parameters.assurance?.find((p) => p.id === "kappa")?.default ?? 0.9,
+  sR: assuranceModel.parameters.assurance?.find((p) => p.id === "sR")?.default ?? 5,
+  sU: assuranceModel.parameters.assurance?.find((p) => p.id === "sU")?.default ?? 1,
+  pDgivenF: assuranceModel.parameters.consequence?.find((p) => p.id === "pDgivenF")?.default ?? 0.05,
+  pDgivenNotF:
+    assuranceModel.parameters.consequence?.find((p) => p.id === "pDgivenNotF")?.default ?? 0.001,
+  m: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "m")?.default ?? 0.2,
+  fM: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "fM")?.default ?? 0.1,
+  fU: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "fU")?.default ?? 0.5,
+  o: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "o")?.default ?? 0.1,
+  b: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "b")?.default ?? 0.3,
+  c: assuranceModel.parameters.perAttemptIllustrative?.find((p) => p.id === "c")?.default ?? 0.5
+};
+---
+
+<section class="assurance-demo readable" data-assurance-demo>
+  <p class="demo-lede">
+    {assuranceModel.unitOfAnalysis}
+    Market prices and YES/NO outcomes do not populate these fields. Adjust assumptions and read
+    sensitivity outputs, not a validated safety estimate.
+  </p>
+
+  <div class="demo-grid">
+    <div class="panel">
+      <h2>Assurance update</h2>
+      <p class="panel-note">Updates O(F), not catastrophe D directly.</p>
+      <label>
+        Prior odds O(F)
+        <input type="range" min="0.01" max="100" step="0.01" value={defaults.priorOdds} data-input="priorOdds" />
+        <output data-out="priorOdds">{defaults.priorOdds}</output>
+      </label>
+      <label>
+        κ = P(R | F)
+        <input type="range" min="0" max="1" step="0.01" value={defaults.kappa} data-input="kappa" />
+        <output data-out="kappa">{defaults.kappa}</output>
+      </label>
+      <label>
+        S<sub>R</sub>
+        <input type="range" min="1" max="100" step="0.5" value={defaults.sR} data-input="sR" />
+        <output data-out="sR">{defaults.sR}</output>
+      </label>
+      <label>
+        S<sub>U</sub> (1 = no information on U)
+        <input type="range" min="0.1" max="10" step="0.1" value={defaults.sU} data-input="sU" />
+        <output data-out="sU">{defaults.sU}</output>
+      </label>
+      <dl class="results">
+        <div><dt>Odds ratio O(F|E)/O(F)</dt><dd data-result="oddsRatio">—</dd></div>
+        <div><dt>Posterior O(F|E)</dt><dd data-result="posteriorOdds">—</dd></div>
+        <div><dt>P(F|E)</dt><dd data-result="posteriorPF">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="panel">
+      <h2>Consequence step</h2>
+      <p class="panel-note">Separate from the κ / S<sub>R</sub> / S<sub>U</sub> partition. Do not double-count κ here.</p>
+      <label>
+        P(D | F, E)
+        <input type="range" min="0" max="1" step="0.001" value={defaults.pDgivenF} data-input="pDgivenF" />
+        <output data-out="pDgivenF">{defaults.pDgivenF}</output>
+      </label>
+      <label>
+        P(D | ¬F, E)
+        <input type="range" min="0" max="1" step="0.0001" value={defaults.pDgivenNotF} data-input="pDgivenNotF" />
+        <output data-out="pDgivenNotF">{defaults.pDgivenNotF}</output>
+      </label>
+      <dl class="results">
+        <div><dt>P(D | E)</dt><dd data-result="posteriorPD">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="panel">
+      <h2>One-attempt illustration</h2>
+      <p class="panel-note">Optional per-attempt tree; not a substitute for multi-lab dependence modeling.</p>
+      <label>
+        m = P(hazardous)
+        <input type="range" min="0" max="1" step="0.01" value={defaults.m} data-input="m" />
+        <output data-out="m">{defaults.m}</output>
+      </label>
+      <label>
+        f<sub>M</sub>
+        <input type="range" min="0" max="1" step="0.01" value={defaults.fM} data-input="fM" />
+        <output data-out="fM">{defaults.fM}</output>
+      </label>
+      <label>
+        f<sub>U</sub>
+        <input type="range" min="0" max="1" step="0.01" value={defaults.fU} data-input="fU" />
+        <output data-out="fU">{defaults.fU}</output>
+      </label>
+      <label>
+        o = override after REFUSE
+        <input type="range" min="0" max="1" step="0.01" value={defaults.o} data-input="o" />
+        <output data-out="o">{defaults.o}</output>
+      </label>
+      <label>
+        b = controls defeated
+        <input type="range" min="0" max="1" step="0.01" value={defaults.b} data-input="b" />
+        <output data-out="b">{defaults.b}</output>
+      </label>
+      <label>
+        c = catastrophe if defeated
+        <input type="range" min="0" max="1" step="0.01" value={defaults.c} data-input="c" />
+        <output data-out="c">{defaults.c}</output>
+      </label>
+      <dl class="results">
+        <div><dt>Illustrative q per attempt</dt><dd data-result="perAttempt">—</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <p class="preset-note">
+    Market 19 may later supply a scoped S<sub>R</sub> preset from class-conditional tournament counts.
+    Market 20 may later supply κ sensitivity ranges from open-world discoveries.
+    Neither market's price or YES/NO outcome is used here.
+  </p>
+</section>
+
+<script>
+  import {
+    computeAssuranceUpdate,
+    formatPercent,
+    formatRatio,
+    perAttemptCatastropheProbability
+  } from "../lib/predictions/assurance-demo.ts";
+
+  const root = document.querySelector("[data-assurance-demo]");
+  if (root instanceof HTMLElement) {
+    const read = (name: string) => {
+      const input = root.querySelector(`[data-input="${name}"]`);
+      return input instanceof HTMLInputElement ? Number(input.value) : 0;
+    };
+
+    const writeOut = (name: string, value: string) => {
+      const out = root.querySelector(`[data-out="${name}"]`);
+      if (out) out.textContent = value;
+    };
+
+    const writeResult = (name: string, value: string) => {
+      const out = root.querySelector(`[data-result="${name}"]`);
+      if (out) out.textContent = value;
+    };
+
+    const render = () => {
+      const priorOdds = read("priorOdds");
+      const kappa = read("kappa");
+      const sR = read("sR");
+      const sU = read("sU");
+      const pDgivenF = read("pDgivenF");
+      const pDgivenNotF = read("pDgivenNotF");
+      const m = read("m");
+      const fM = read("fM");
+      const fU = read("fU");
+      const o = read("o");
+      const b = read("b");
+      const c = read("c");
+
+      writeOut("priorOdds", formatRatio(priorOdds));
+      writeOut("kappa", formatRatio(kappa));
+      writeOut("sR", formatRatio(sR));
+      writeOut("sU", formatRatio(sU));
+      writeOut("pDgivenF", formatRatio(pDgivenF, 3));
+      writeOut("pDgivenNotF", formatRatio(pDgivenNotF, 4));
+      writeOut("m", formatRatio(m));
+      writeOut("fM", formatRatio(fM));
+      writeOut("fU", formatRatio(fU));
+      writeOut("o", formatRatio(o));
+      writeOut("b", formatRatio(b));
+      writeOut("c", formatRatio(c));
+
+      const assurance = computeAssuranceUpdate({
+        priorOdds,
+        kappa,
+        sR,
+        sU,
+        pDgivenF,
+        pDgivenNotF
+      });
+      writeResult("oddsRatio", formatRatio(assurance.oddsRatio));
+      writeResult("posteriorOdds", formatRatio(assurance.posteriorOdds));
+      writeResult("posteriorPF", formatPercent(assurance.posteriorPF));
+      writeResult("posteriorPD", formatPercent(assurance.posteriorPD));
+
+      const perAttempt = perAttemptCatastropheProbability({ m, kappa, fM, fU, o, b, c });
+      writeResult("perAttempt", formatPercent(perAttempt, 3));
+    };
+
+    for (const input of root.querySelectorAll("input[type='range']")) {
+      input.addEventListener("input", render);
+    }
+    render();
+  }
+</script>
+
+<style>
+  .assurance-demo {
+    max-width: 56rem;
+    margin: 0 auto 2rem;
+  }
+
+  .demo-lede,
+  .preset-note,
+  .panel-note {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.92;
+  }
+
+  .demo-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 960px) {
+    .demo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .panel {
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--color-surface) 96%, #fff);
+  }
+
+  .panel h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .panel label {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .panel output {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.85;
+  }
+
+  .results {
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .results div {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+    border-top: 1px solid var(--color-border, #c8d4e0);
+  }
+
+  .results dt {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  .results dd {
+    margin: 0;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
