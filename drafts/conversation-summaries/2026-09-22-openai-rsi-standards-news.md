@@ -23,3 +23,6 @@ User asked for a site news entry commenting on OpenAI’s 21 September 2026 post
 - `metadata/field-news.yml`
 - `metadata/field-news/bodies/openai-rsi-standards-sep-2026.md`
 - `/cards/news/field-news-openai-rsi-standards-sep-2026/`
+
+## Commits
+- `ced7ac05` Add field news on OpenAI’s proposed RSI standards.
