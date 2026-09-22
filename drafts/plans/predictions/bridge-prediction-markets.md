@@ -227,6 +227,7 @@ Decided: Q3 banner not parlays; Q4 seven properties; Q5 §14 governance-only (no
 
 ## Related artifacts
 
+- Next phase (PRA layer, Markets 19–20, site demo): [`assurance-risk-modelling.md`](assurance-risk-modelling.md)
 - Working criteria: [`drafts/predictions/bridge-prediction-market-criteria.md`](../predictions/bridge-prediction-market-criteria.md)
 - Source 0.1: [`drafts/predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx)
 - [`field.md`](field.md) — homographs; markets must resolve the *book* object, not the field noun; MB6 unsigned-stability leftover

@@ -40,6 +40,10 @@ Public spec (criteria YES text, appendix boxes, site card bodies): ordinary AI-s
 
 Spine map (this file, instrument-plan table, `Evidence.lean`): where types must match.
 
+## Next phase
+
+PRA/Bayesian assurance layer, aggregation replacement, Markets 19–20, resolution incentives, canonical assurance-model manifest, site demo: [`assurance-risk-modelling.md`](assurance-risk-modelling.md).
+
 ## Related
 
-[`bridge-prediction-markets.md`](bridge-prediction-markets.md) · [`../spine/spine.md`](../spine/spine.md) · [`../construct/embedded-v2.md`](../construct/embedded-v2.md) · session `2026-09-19-prediction-interface-p0c.md`
+[`bridge-prediction-markets.md`](bridge-prediction-markets.md) · [`assurance-risk-modelling.md`](assurance-risk-modelling.md) · [`../spine/spine.md`](../spine/spine.md) · [`../construct/embedded-v2.md`](../construct/embedded-v2.md) · session `2026-09-19-prediction-interface-p0c.md`
