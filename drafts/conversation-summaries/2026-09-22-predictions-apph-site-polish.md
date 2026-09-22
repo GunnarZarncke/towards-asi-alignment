@@ -20,4 +20,4 @@ User feedback on predictions appendix readability (site + print source), Gauss i
 - Run full site sync + deploy to pick up gitignored book/card artifacts on production.
 
 ## Commit
-(pending this session)
+`1ebf999e` — Polish Appendix H predictions and the site hub for readability.
