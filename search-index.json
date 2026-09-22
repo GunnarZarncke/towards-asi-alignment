@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-19T18:19:23.881Z",
+  "generatedAt": "2026-09-22T02:10:29.354Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1503,109 +1503,109 @@
     {
       "title": "Market 1. Discovering where control resides",
       "type": "prediction",
-      "summary": "Discovering where control resides",
+      "summary": "Will there be a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?",
       "url": "/cards/prediction/market-01/"
     },
     {
       "title": "Market 10. Low hidden capability and reliable correction",
       "type": "prediction",
-      "summary": "Low hidden capability and reliable correction",
+      "summary": "Will there be published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?",
       "url": "/cards/prediction/market-10/"
     },
     {
       "title": "Market 11. Coordination without communication",
       "type": "prediction",
-      "summary": "Coordination without communication",
+      "summary": "Will there be a published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?",
       "url": "/cards/prediction/market-11/"
     },
     {
       "title": "Market 12. Safety proxy tracks the real thing",
       "type": "prediction",
-      "summary": "Safety proxy tracks the real thing",
+      "summary": "Will there be a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?",
       "url": "/cards/prediction/market-12/"
     },
     {
       "title": "Market 13. Safety audit resists adversarial gaming",
       "type": "prediction",
-      "summary": "Safety audit resists adversarial gaming",
+      "summary": "Will there be a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?",
       "url": "/cards/prediction/market-13/"
     },
     {
       "title": "Market 14. Deployment criteria are binding",
       "type": "prediction",
-      "summary": "Deployment criteria are binding",
+      "summary": "Will there be published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?",
       "url": "/cards/prediction/market-14/"
     },
     {
       "title": "Market 15. Independently issued certificates compose",
       "type": "prediction",
-      "summary": "Independently issued certificates compose",
+      "summary": "Will there be a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?",
       "url": "/cards/prediction/market-15/"
     },
     {
       "title": "Market 16. A reachable basin of Correction-supporting systems",
       "type": "prediction",
-      "summary": "A reachable basin of Correction-supporting systems",
+      "summary": "Will there be a published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?",
       "url": "/cards/prediction/market-16/"
     },
     {
       "title": "Market 17. New bearers are admitted correctly",
       "type": "prediction",
-      "summary": "New bearers are admitted correctly",
+      "summary": "Will there be a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?",
       "url": "/cards/prediction/market-17/"
     },
     {
       "title": "Market 18. Safety case bounds declared harm",
       "type": "prediction",
-      "summary": "Safety case bounds declared harm",
+      "summary": "Will there be a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?",
       "url": "/cards/prediction/market-18/"
     },
     {
       "title": "Market 2. Persistent trade-off priorities",
       "type": "prediction",
-      "summary": "Persistent trade-off priorities",
+      "summary": "Will there be a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?",
       "url": "/cards/prediction/market-02/"
     },
     {
       "title": "Market 3. Who or what rules apply to",
       "type": "prediction",
-      "summary": "Who or what rules apply to",
+      "summary": "Will there be a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?",
       "url": "/cards/prediction/market-03/"
     },
     {
       "title": "Market 4. Corrections change the system",
       "type": "prediction",
-      "summary": "Corrections change the system",
+      "summary": "Will there be a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?",
       "url": "/cards/prediction/market-04/"
     },
     {
       "title": "Market 5. Auditor is independent",
       "type": "prediction",
-      "summary": "Auditor is independent (outside of what it audits)",
+      "summary": "Will there be a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?",
       "url": "/cards/prediction/market-05/"
     },
     {
       "title": "Market 6. Reliable successor safety auditing",
       "type": "prediction",
-      "summary": "Reliable successor safety auditing",
+      "summary": "Will there be a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?",
       "url": "/cards/prediction/market-06/"
     },
     {
       "title": "Market 7. Correctability under competitive selection",
       "type": "prediction",
-      "summary": "Correctability under competitive selection",
+      "summary": "Will there be a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?",
       "url": "/cards/prediction/market-07/"
     },
     {
       "title": "Market 8. Auditor can sufficiently inspect the system",
       "type": "prediction",
-      "summary": "Auditor can sufficiently inspect the system",
+      "summary": "Will there be a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?",
       "url": "/cards/prediction/market-08/"
     },
     {
       "title": "Market 9. Bounds on unmonitored routes",
       "type": "prediction",
-      "summary": "Bounds on unmonitored routes",
+      "summary": "Will there be a published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?",
       "url": "/cards/prediction/market-09/"
     },
     {
@@ -1875,7 +1875,7 @@
     {
       "title": "Predictions",
       "type": "predictions",
-      "summary": "Bet on predictions about published methods resolving subproblems of AI alignment by stated resolve-by dates. A YES is evidence about operationalization up to the appendix thresholds, not proof that a bridge holds on frontier systems. A NO is everything else from missing evals, missing publication, or missed bars.",
+      "summary": "Bet on predictions about whether publicly reconstructible methods resolve subproblems of AI alignment by stated resolve-by dates. A YES is evidence about operationalization up to the appendix thresholds, not proof that a bridge holds on frontier systems, and not a probability of catastrophe. A NO is everything else from missing evals, missing publication, or missed bars.",
       "url": "/predictions/"
     },
     {
@@ -1887,7 +1887,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 476 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 483 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
