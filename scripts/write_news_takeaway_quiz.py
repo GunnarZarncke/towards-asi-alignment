@@ -56,6 +56,19 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "openai-rsi-standards-sep-2026",
+        "MB11",
+        ["ch12", "ch13", "ch25", "ch38", "ch42", "ch43"],
+        "OpenAI asks for shared RSI measurements that would not be licenses or mandatory pre-release review. What do those standards fail to settle?",
+        "Whether a finding would delay the next model's use for further AI R&D",
+        [
+            "Whether the post names CAISI and national institutes as the vehicle",
+            "Whether they list autonomous-research share as a published measure",
+            "Whether they say fully autonomous RSI is not happening today at labs",
+        ],
+        "A shared ruler can make labs comparable. It is not a stop unless a finding delays the next model's use for further AI R&D.",
+    ),
+    Q(
         "anthropic-pace-measurements-sep-2026",
         "MB11",
         ["ch11", "ch12", "ch25", "ch39", "ch42", "ch43"],

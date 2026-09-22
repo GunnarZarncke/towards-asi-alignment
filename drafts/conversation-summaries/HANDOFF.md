@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-22 (Predictions Phase 3 assurance model).
+Last updated: 2026-09-22 (OpenAI RSI standards field news).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-22:** **OpenAI RSI standards news** — Field-news card on the 21 September “next phase” standards post: a shared RSI ruler is not a stop. Log: `2026-09-22-openai-rsi-standards-news.md`.
 - **2026-09-22:** **Predictions Phase 3** — Assurance manifest, draft Markets 19–20, extended assurance/consequence prose, `/predictions/assurance/` demo. Log: `2026-09-22-predictions-phase-3.md`.
 - **2026-09-22:** **Predictions funding gate** — Funding application card; seven draft and eleven funding-gated contracts; YAML validation, site badges, and funding links. Log: `2026-09-22-predictions-funding-gate.md`.
 - **2026-09-22:** **App P editorial pass** — Prose cleanup; Market 3/11 conceptual clarification; forecasts separated from deployment evidence; stronger contract designs retained as preferences rather than YES gates; PDF-compatible spine figure. Log: `2026-09-22-app-p-editorial-pass.md`.

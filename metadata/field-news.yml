@@ -2,6 +2,27 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-openai-rsi-standards-sep-2026
+    date: 2026-09-22
+    eventDate: 2026-09-21
+    kind: policy
+    title: "OpenAI’s RSI standards: a shared ruler is not a stop"
+    hook: "AI building the next AI. OpenAI asks for shared measurements. They say those measurements will not be licenses or a pre-release review."
+    summary: "OpenAI’s 21 September 2026 Global Affairs post asks the United States to lead voluntary global technical standards for frontier AI, including recursive self-improvement. The two named pieces are a CAISI-centred institute and industry mechanism, and common protocols for measuring autonomous research, triggering human review, and classifying alignment incidents. Fully autonomous RSI, they say, is not happening and should not be pursued until it can be done safely. The same post says the standards would not be licenses, mandatory prerelease review, or approval requirements; governments decide whether to write them into law. This book’s cut is the same as for Anthropic’s pace measurements and OpenAI’s August hold: a shared answer to “what does good look like” is not a safety case unless a finding can delay the next model’s use for further AI R&D."
+    decision: "Ask: (1) if autonomous-research rises, does that delay the next model’s AI R&D, or only update a paperwork chart? (2) who, outside the lab that wrote the seed reports, can say the standard was not met? (3) when they say the standards are not licenses or mandatory prerelease review, what finding would stop a deployment? (4) does “alignment research stay ahead of capabilities” include a human judgment that changed internal processes, or did it lead only to more safety papers?"
+    bookChapters:
+      - ch12
+      - ch13
+      - ch25
+      - ch38
+      - ch42
+      - ch43
+    bridges:
+      - MB4
+      - MB6
+      - MB11
+    body: bodies/openai-rsi-standards-sep-2026.md
+    order: 0
   - slug: field-news-anthropic-pace-measurements-sep-2026
     date: 2026-09-18
     eventDate: 2026-09-17

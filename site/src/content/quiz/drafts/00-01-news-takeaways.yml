@@ -1,4 +1,36 @@
 questions:
+- id: news-takeaway-openai-rsi-standards-sep-2026
+  prompt: OpenAI asks for shared RSI measurements that would not be licenses or mandatory pre-release
+    review. What do those standards fail to settle?
+  options:
+  - id: take
+    text: "Whether a finding would delay the next model's use for further AI R&D"
+    correct: true
+  - id: d0
+    text: Whether the post names CAISI and national institutes as the vehicle
+    correct: false
+  - id: d1
+    text: Whether they list autonomous-research share as a published measure
+    correct: false
+  - id: d2
+    text: Whether they say fully autonomous RSI is not happening today at labs
+    correct: false
+  explanation: "A shared ruler can make labs comparable. It is not a stop unless a finding delays the\
+    \ next model's use for further AI R&D."
+  source:
+    href: /cards/chapter/ch12/
+    label: Chapter 12 — Capability Growth Is Boundary Expansion
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch12"
+  - "chapter:ch13"
+  - "chapter:ch25"
+  - "chapter:ch38"
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: news-takeaway-anthropic-pace-measurements-sep-2026
   prompt: "Anthropic publishes metrics on AI-led R&D share, agent oversight, and safety compute. What\
     \ do those numbers fail to settle by themselves?"
