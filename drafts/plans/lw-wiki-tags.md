@@ -1,6 +1,6 @@
 # LW wiki tags — TSA differentiations (v2 pilot)
 
-Status: **pilot sketch** (2026-09-02). Companion to [`cousin-product-comparison.md`](cousin-product-comparison.md). Not scheduled.
+Status: **pilot sketch** (2026-09-02). Companion to [`cousin-product-comparison-plan.md`](../attic/cousin-product-comparison-plan.md). Not scheduled.
 
 **Why.** Arbital (MIRI-commissioned) was folded into the [LessWrong wiki](https://www.lesswrong.com/w). In that product sense the LW wiki is the field’s living communal canon and part of the MIRI agenda lineage (recorded on the MIRI card). TSA’s companion site is *not* that wiki. Genuine cuts that currently live only in App B / the glossary should be offered *there*, as improvements to existing tags — not as a TSA overlay wiki.
 

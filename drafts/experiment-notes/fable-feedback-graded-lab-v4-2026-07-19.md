@@ -69,7 +69,7 @@ Success on the first track would show that the sandbox can host unscripted optim
 
 ## Implementation plan
 
-Draft annex (parallel to `PLAN_ET1.md`, not a new v5): [`experiments/graded-lab-simulation/PLAN_IA1.md`](../experiments/graded-lab-simulation/PLAN_IA1.md).
+Draft annex (parallel to `PLAN_ET1.md`, not a new v5): [`experiments/graded-lab-simulation/PLAN_IA1.md`](../../experiments/graded-lab-simulation/PLAN_IA1.md).
 
 - **IA-1** = in-situ LLM agents on the existing affordable-primitive API + `AgentTrace` logging + R-MB7 rig (PLAN_v4 V4-6).
 - **ET-1** = external Orbit traces + passive UAD (orthogonal).

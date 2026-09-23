@@ -1,6 +1,6 @@
 # Anthropic Risk Report (August 2026): quote-bridge to this project
 
-Working notes. The public, sourced version is the [news card](../metadata/field-news/bodies/anthropic-risk-report-aug-2026.md) (`/cards/field-news-anthropic-risk-report-aug-2026/`).
+Working notes. The public, sourced version is the [news card](../../metadata/field-news/bodies/anthropic-risk-report-aug-2026.md) (`/cards/field-news-anthropic-risk-report-aug-2026/`).
 
 **Sources**
 

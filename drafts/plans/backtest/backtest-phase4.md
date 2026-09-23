@@ -1,6 +1,6 @@
-# Witness Phase 4 — protocol freeze
+# Backtest Phase 4 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md). Prior plan (not a freeze): [`backtest-next.md`](backtest-next.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md). Prior plan (not a freeze): [`backtest-next-after-w16.md`](../../attic/backtest-next-after-w16.md) (attic).
 
 Not a sixth simulation line. No live CIRIS. No `Safe` / `MB11` lemmas. Thresholds and refuse lists below are fixed *before* looking at Lean `#print axioms` or tree checker output.
 
@@ -15,8 +15,8 @@ Not a sixth simulation line. No live CIRIS. No `Safe` / `MB11` lemmas. Threshold
 
 | Source | Frozen action | Required columns | Outcome |
 |--------|---------------|------------------|---------|
-| WVS / ESS / Schwartz–MFT **country means** / Wikipedia **categories** | **Refuse** as C-004 Witness | — | Wrong unit (place/page), redundant with W-5 |
-| Sibling brain-to-values / LHCV papers as Witness **host** | **Refuse** | \(\epsilon_i(t)\), \(s_h(t)\) — not in public dumps | Architecture prior only |
+| WVS / ESS / Schwartz–MFT **country means** / Wikipedia **categories** | **Refuse** as C-004 Backtest | — | Wrong unit (place/page), redundant with W-5 |
+| Sibling brain-to-values / LHCV papers as Backtest **host** | **Refuse** | \(\epsilon_i(t)\), \(s_h(t)\) — not in public dumps | Architecture prior only |
 | MASK Table 3 | **Do not reuse** | — | Already W-2 |
 | Bai et al. 2022 HH Pareto **or** PKU-SafeRLHF dual labels | **Optional** | Same checkpoint/prompt row; 1-D = helpful (or RM) frozen first; geometry ≥ harmlessness; \(n\) pre-registered | Layer fail if 1-D high and harm axis moves; refuse if no recoverable table |
 

@@ -73,7 +73,7 @@ make biber
 
 For diagnosis only: `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" biber book` (after at least one `pdflatex book.tex`).
 
-## Lean proof spine
+## Lean dependency spine
 
 Same command locally and on GitHub Actions (`.github/workflows/lean.yml`):
 
@@ -112,7 +112,7 @@ INSTRUCTIONS.md             # editorial mission, style, source canon
 AGENTS.md                   # agent behavior and handoff rules
 metadata/book.yml           # chapter status (source of truth)
 chapters/                   # ch01–ch48
-formal/                     # Lean 4 proof spine
-experiments/                # toy + embedded simulators
+formal/                     # Lean 4 dependency spine
+experiments/                # five simulation lines + backtest/ (W- findings)
 site/                       # Astro companion site
 ```

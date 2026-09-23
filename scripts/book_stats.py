@@ -63,7 +63,23 @@ FRONTMATTER_TOC_TITLES = {
 }
 
 def discover_appendix_files() -> list[str]:
-    return sorted(str(p.relative_to(ROOT)) for p in (ROOT / "appendices").glob("app*.tex"))
+    """Appendix sources in *print* order (the `\\input{appendices/...}` order in book.tex).
+
+    Alphabetical order does not match print order (appM prints as D, appP as H), and
+    the TOC pairing below is positional, so the include order is authoritative.
+    """
+    book_tex = (ROOT / "book.tex").read_text(encoding="utf-8")
+    ordered = [
+        f"appendices/{name}.tex"
+        for name in re.findall(r"\\input\{appendices/([^}]+)\}", book_tex)
+    ]
+    ordered = [rel for rel in ordered if (ROOT / rel).exists()]
+    extra = sorted(
+        str(p.relative_to(ROOT))
+        for p in (ROOT / "appendices").glob("app*.tex")
+        if str(p.relative_to(ROOT)) not in ordered
+    )
+    return ordered + extra
 
 
 @dataclass
@@ -768,6 +784,7 @@ def build_report() -> str:
         f"- **Lean spine MB bridges** (unique `MB*` axioms): {len(all_mb_ids):,}",
         f"- **Lean declarations**: {lean_totals['theorems']:,} theorems, {lean_totals['lemmas']:,} lemmas, "
         f"{lean_totals['defs']:,} defs, {lean_totals['structures']:,} structures, {lean_totals['axioms']:,} axioms",
+        "- **Reading the axiom count**: only the `MB*` bridges and `S07`/`S10` are epistemic assumptions; the other `axiom` declarations are abstract carriers, typed predicates, certificate adapters, defeater signals, and source-cited field handles (see the Lean dependency spine appendix, *How to read the axiom count*). Bridge footprints per headline theorem: `formal/axiom-ledger.json`.",
         f"- **\\leanspine cross-refs** in manuscript: {leanspine_total:,} ({len(leanspine_nodes):,} distinct node IDs cited)",
         "",
         "## Source material extracts",

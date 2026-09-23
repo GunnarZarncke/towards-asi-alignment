@@ -1,8 +1,8 @@
-# Witness Phase 3 — protocol freeze
+# Backtest Phase 3 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
 
-Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
+Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../../experiments/backtest/).
 
 **Exit (parent):** one bundle **non-implication** table (C-004); one **selector** table (C-007). Inputs frozen below *before* looking at signs. Report fail or refuse; do not retune the 1-D, geometry, proxy, or target after seeing the numbers.
 

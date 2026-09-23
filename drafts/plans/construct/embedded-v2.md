@@ -8,7 +8,7 @@ Treat the memo as a *closure* of objects V2 already has. The 2.0 reader-facing c
 
 > Alignment is a stability — or convergence — property of a coupled socio-technical construction and correction cycle, not only a property of a system at a time. Bridges are interface cuts through that cycle: each one holds only for some class of contexts it currently leaves implicit.
 
-This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesis claim and does not rewrite [`six-thesis-claims`](../../metadata/concepts/bodies/six-thesis-claims.md). v1 claim 6 (basin / selection, C-007) stays the *system-population* attractor. The 2.0 claim is the *process* remaining valid as constructors, evaluators, and selectors are endogenous.
+This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesis claim and does not rewrite [`six-thesis-claims`](../../../metadata/concepts/bodies/six-thesis-claims.md). v1 claim 6 (basin / selection, C-007) stays the *system-population* attractor. The 2.0 claim is the *process* remaining valid as constructors, evaluators, and selectors are endogenous.
 
 ## Locked decisions (2026-09-18)
 
@@ -29,7 +29,7 @@ This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesi
 | Endogenous selector; joint \((x,\theta,e)\) | *Alignment Under Selection* | Institutional capture and human correction-channel integrity were **deliberately out of scope** there — 2.0 / manuscript must now carry that remainder, paper optional |
 | Selector as state, not external field | *Constructing Alignment Attractors* | Research/deployment ecology as another coupled basin |
 | Construction vs constructibility; \(I\) changes \((Q,f,\theta,E)\) | [`construct.md`](construct.md) Families A–D | Institutional \(I\) already in scope; constructor ecology sketched |
-| Joint controller–system state \((G,A)\); legal path \(\mathcal{E}\) | Family E; [`papers/path-construction/`](../../papers/path-construction/) | Different grain from \(z\); do not collapse |
+| Joint controller–system state \((G,A)\); legal path \(\mathcal{E}\) | Family E; [`papers/path-construction/`](../../../papers/path-construction/) | Different grain from \(z\); do not collapse |
 | Fail/refuse as method success; Backtest Exp. 4 | Family C | **Act/Refuse** is this object, now a cycle stage |
 | `Environment`; `P35_basin_stability_induction` | `Core.lean`, `Certification.lean` | Unary `System` predicates still hide context; Preserve-as-loop is already Lean’s meaning |
 | v1 claim 6 basin / selection | C-007; attractor-control card | 2.0 claim generalizes from population basin to cycle-on-\(z\) |
@@ -47,7 +47,7 @@ Episode-freeze: \(P_t\) is frozen inside a construction–certification episode.
 
 ## Mapping the three grains
 
-**Canonical map:** [`reference/embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (M1 default; M2 silence checks; M3 per-bridge later). Do not collapse these into one `AlignmentContext` covering tuple.
+**Canonical map:** [`reference/embedded-v2-grain-map.md`](../../../reference/embedded-v2-grain-map.md) (M1 default; M2 silence checks; M3 per-bridge later). Do not collapse these into one `AlignmentContext` covering tuple.
 
 | Grain | State | Job |
 |-------|--------|-----|
@@ -120,15 +120,15 @@ Cycle stages:
 
 with feedback from every downstream stage to earlier ones (certify can reconstruct; identify can respecify; act can change the measurement regime).
 
-**Preserve** is not a stage. It is the property that repeating the cycle stays in \(D_{\mathrm{joint}}\), or converges back to it. Bridges previously tagged `preserve` (MB3, MB4, MB5, MB6) are **cycle-property** constraints: they must hold of the transition, not of a fifth box. “Converges back” is ecology-grain repair of \(z\), not autopoiesis of \(A\). Snapshot cut, named restorer, and that cycle property are distinct — [`embedded-v2-grain-map.md`](../../reference/embedded-v2-grain-map.md) (cut persistence).
+**Preserve** is not a stage. It is the property that repeating the cycle stays in \(D_{\mathrm{joint}}\), or converges back to it. Bridges previously tagged `preserve` (MB3, MB4, MB5, MB6) are **cycle-property** constraints: they must hold of the transition, not of a fifth box. “Converges back” is ecology-grain repair of \(z\), not autopoiesis of \(A\). Snapshot cut, named restorer, and that cycle property are distinct — [`embedded-v2-grain-map.md`](../../../reference/embedded-v2-grain-map.md) (cut persistence).
 
 **Act/Refuse** is Backtest Exp. 4 / Family C fail-refuse / Lean `DeploymentOk` neighborhood — certification that does not change a decision does not close the loop.
 
-Source: [`lifecycle.yml`](../../reference/field-agendas/data/lifecycle.yml). Coverage matrix unchanged.
+Source: [`lifecycle.yml`](../../../reference/field-agendas/data/lifecycle.yml). Coverage matrix unchanged.
 
 ## Field construction types (roster)
 
-`fieldConstruction` on [`roster.yml`](../../reference/field-agendas/data/roster.yml): `none` | `capacity` | `structural` | `mixed`. Missing means `none`.
+`fieldConstruction` on [`roster.yml`](../../../reference/field-agendas/data/roster.yml): `none` | `capacity` | `structural` | `mixed`. Missing means `none`.
 
 | Value | Meaning | Matrix |
 |-------|---------|--------|
@@ -148,7 +148,7 @@ A structural tag is not a showing that stop authority actually fires.
 
 ## Presentation (not the matrix)
 
-Leave [`matrix.yml`](../../reference/field-agendas/data/matrix.yml) as the evidential catalog.
+Leave [`matrix.yml`](../../../reference/field-agendas/data/matrix.yml) as the evidential catalog.
 
 New / updated surfaces for construction and convergence:
 
@@ -174,8 +174,8 @@ New / updated surfaces for construction and convergence:
 
 ## Related
 
-- [`construct.md`](construct.md) · [`field.md`](field.md) · [`spine.md`](spine.md)
-- [`papers/alignment-under-selection/`](../../papers/alignment-under-selection/)
-- [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/)
-- [`papers/path-construction/`](../../papers/path-construction/)
+- [`construct.md`](construct.md) · [`../field/field.md`](../field/field.md) · [`../spine/spine.md`](../spine/spine.md)
+- [`papers/alignment-under-selection/`](../../../papers/alignment-under-selection/)
+- [`papers/constructing-alignment-attractors/`](../../../papers/constructing-alignment-attractors/)
+- [`papers/path-construction/`](../../../papers/path-construction/)
 - Sessions: `2026-09-16-embedded-v2-extensions.md`, `2026-09-18-embedded-v2-decisions.md`

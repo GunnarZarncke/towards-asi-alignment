@@ -134,7 +134,7 @@ An optimizer's $\arg\max$ lives where a distributional $S\approx V$ was never va
 Possible discharges are disjunctive and are not all $\text{MB*}$: a mechanistic checked map (construction or grounding), an unfakeable measurand (this chapter's $\kappa^{*}$), reduced optimization pressure on the proxy (quantilization, impact penalties, tool AI --- Chapter~\ref{ch:correction-channels-adversarial-pressure}), or a recovery-viable regime (Introduction, fourth question).
 This is not Goodhart \emph{Selection} in Chapter~\ref{ch:selection-environment}, where a proxy becomes a selector over a population of systems.
 
-\emph{What would resolve it.} \textbf{(Positive resolution, at least one measurand)} A constructive $c_{\mathrm{fake}}$ with a proof that it dominates affordable surplus up to a stated $\kappa^{*}$, calibrated against a real estimator (the instantiation gap named in \texttt{metadata/TODO.md} ``Measurand instantiation table''). \textbf{(Negative resolution)} A demonstration --- formal or empirical --- that for every candidate measurand in the book's stack, $\kappa^{*}$ is below the capability level the safety case needs to certify against, i.e.\ every load-bearing certificate is theater at the capability the book cares about. \textbf{(Partial/current status)} Neither: the cost-relation \emph{definition} is formalized generically and the shared-channel identity is proved (Lean-spine note above), but $c_{\mathrm{fake}}$ is not established for any concrete measurand against a real adversary.
+\emph{What would resolve it.} \textbf{(Positive resolution, at least one measurand)} A constructive $c_{\mathrm{fake}}$ with a proof that it dominates affordable surplus up to a stated $\kappa^{*}$, calibrated against a real estimator (the instantiation gap: no concrete measurand has such a calibrated estimator yet). \textbf{(Negative resolution)} A demonstration --- formal or empirical --- that for every candidate measurand in the book's stack, $\kappa^{*}$ is below the capability level the safety case needs to certify against, i.e.\ every load-bearing certificate is theater at the capability the book cares about. \textbf{(Partial/current status)} Neither: the cost-relation \emph{definition} is formalized generically and the shared-channel identity is proved (Lean-spine note above), but $c_{\mathrm{fake}}$ is not established for any concrete measurand against a real adversary.
 \end{claim}
 
 The named problem is Assumption~\akey{A-009} asked of a specific measurand: whether adversarial verifiability holds up to a capability ceiling \(\kappa^{*}\).
@@ -235,6 +235,8 @@ This is the lens the next chapter applies in detail: the lethality stress test (
 \authbarneedspace
 \section{What Would Change This View}
 \begin{authbar}{AI}
+This chapter argues that a metric can support a safety decision only where the cost of faking it can be bounded; that view would change if any of the following held:
+
 \begin{itemize}
   \item A constructive demonstration that a useful safety metric \emph{is} adversarially verifiable at frontier capability \emph{without} any cost relation or proof --- i.e., honest-by-observation against an optimizer --- would make this chapter's worry idle.
   \item A proof that for some core metric $c_{\mathrm{fake}}$ does \emph{not} grow with divergence (faking is asymptotically free), which would kill the budget program and force everything onto GSAI-style proof.
@@ -242,9 +244,8 @@ This is the lens the next chapter applies in detail: the lethality stress test (
   \item Evidence that the opacity--capability cost relation is real and measurable at scale --- concealment producing a detectable capability deficit --- which would promote the hopeful reading from conjecture to method.
 \end{itemize}
 
-% TODO[open-crux]: Name a perturbation a superintelligence cannot recognize as a test. If none exists, active-measurement remedies (Ch.~\ref{ch:passive-observation-not-enough}) reduce to the system's chosen story, and the cost relation is the only remaining handle.
-% DONE 2026-07-04: c_fake(M, Delta) and the affordable-surplus model are defined above (sec:cost-relation-ch43) and named as the Certification-Under-Manipulation Problem (sec:certification-under-manipulation-ch43). Still open: establishing kappa* for any concrete measurand.
-% TODO[open-crux]: Prove or bound the measure of decisive-yet-undetectable effective controllers (representability vs detection-latency).
+Two of these are posed as named open problems with stated success criteria in the research program (Appendix~\ref{apph-research-program}, \S\ref{sec:master-crux}): whether any perturbation exists that a capable system cannot recognize as a test, and whether the measure of decisive-yet-undetectable controllers can be bounded.
+The cost relation $c_{\mathrm{fake}}$ is defined above (\S\ref{sec:cost-relation-ch43}); what remains open is $\kappa^{*}$ for any concrete measurand.
 
 \end{authbar}
 \authbarneedspace

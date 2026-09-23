@@ -7,8 +7,8 @@ Review and refine the predictions appendix / PRA improvement plan against local 
 ## Done
 
 - Authored reviewed execution plan at [`drafts/plans/predictions/assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (~910 lines).
-- Preserved archive [`drafts/predictions/predictions-improvements-v0.md`](../predictions/predictions-improvements-v0.md) and redirect [`drafts/predictions/predictions-improvements.md`](../predictions/predictions-improvements.md).
-- Incorporated resolution incentives from [`drafts/predictions/predictions-improvements-incentives.md`](../predictions/predictions-improvements-incentives.md).
+- Preserved archive [`drafts/predictions/predictions-improvements-v0.md`](../attic/predictions-improvements-v0.md) and redirect [`drafts/predictions/predictions-improvements.md`](../attic/predictions-improvements-v0.md).
+- Incorporated resolution incentives from [`drafts/predictions/predictions-improvements-incentives.md`](../attic/predictions-improvements-incentives.md).
 - Wired plan into [`drafts/plans/README.md`](../plans/README.md), [`prediction-interface.md`](../plans/predictions/prediction-interface.md), [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md).
 
 ## Decisions

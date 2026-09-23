@@ -914,6 +914,6 @@ The public message should be:
 - [`prediction-interface.md`](prediction-interface.md) — P0c locked decisions; appendix + site + Lean adapters (shipped)
 - [`bridge-prediction-markets.md`](bridge-prediction-markets.md) — 18-market instrument plan and MB\* map
 - [`../spine/spine.md`](../spine/spine.md) — Lean spine; certificate layer
-- [`predictions-improvements-v0.md`](../../predictions/predictions-improvements-v0.md) — earlier long draft (archive)
-- [`predictions-improvements-incentives.md`](../../predictions/predictions-improvements-incentives.md) — resolution incentives notes (incorporated here)
+- [`predictions-improvements-v0.md`](../../attic/predictions-improvements-v0.md) — earlier long draft (archive)
+- [`predictions-improvements-incentives.md`](../../attic/predictions-improvements-incentives.md) — resolution incentives notes (incorporated here)
 

@@ -9,8 +9,9 @@ Capability / BIQ / control–correction arithmetic (book chapters 11–14, 33).
 
 * Capability at the blanket: `K` (`KSys`; not value-bundle `B`).
 * Effective control `Control` from ch11 control information (integer proxy).
-* Collective competence and coordination loss (ch13).
-* Risk gap: `Control − CCI`.
+* Collective competence and coordination loss (ch13); weighted form `P12W`.
+* Risk gap: `Control − CCI`; hidden-BIQ certificate corollary `P10H`;
+  hidden-rate accumulation `P38H`.
 -/
 
 namespace AlignmentProofSpine
@@ -243,6 +244,31 @@ theorem P12_seven_loss_bottleneck {n : Nat}
         totalCoordinationLoss l' := by omega
   rwa [harith] at h
 
+/-- App G `P12W` (weighted coordination bottleneck), packaged: for the
+    authority-weighted aggregate `weightedCollectiveCompetence`, a local
+    increment `δ` at component `i` (a) moves the weighted sum by exactly
+    `ω i * δ`, (b) changes nothing when `ω i = 0`, and (c) does not improve the
+    collective when it induces at least `ω i * δ` extra coordination loss. The
+    three conjuncts are `weightedLocalCompetence_update`,
+    `P12_disconnected_competence_gain_is_lost`, and
+    `P12_coordination_bottleneck_partial`; the seven-loss instantiation is
+    `P12_seven_loss_bottleneck`. -/
+theorem P12W_weighted_coordination_bottleneck {n : Nat}
+    (ω K : Fin n → Int) (gain loss δ : Int) (i : Fin n) :
+    (weightedLocalCompetence ω (Function.update K i (K i + δ)) =
+        weightedLocalCompetence ω K + ω i * δ) ∧
+    (ω i = 0 →
+      weightedCollectiveCompetence ω (Function.update K i (K i + δ)) gain loss =
+        weightedCollectiveCompetence ω K gain loss) ∧
+    (∀ lossIncrease : Int, ω i * δ ≤ lossIncrease →
+      weightedCollectiveCompetence ω (Function.update K i (K i + δ)) gain
+          (loss + lossIncrease) ≤
+        weightedCollectiveCompetence ω K gain loss) :=
+  ⟨weightedLocalCompetence_update ω K i δ,
+   fun hω => P12_disconnected_competence_gain_is_lost ω K gain loss δ i hω,
+   fun lossIncrease hloss =>
+     P12_coordination_bottleneck_partial ω K gain loss δ lossIncrease i hloss⟩
+
 theorem coordination_bottleneck_when_loss_positive
     (localSum gain loss : Int)
     (hloss : 0 < loss) :
@@ -422,6 +448,15 @@ theorem risk_gap_bound_from_hidden_biq_certificate
     RiskGap A ≤ δ :=
   P13_risk_gap_bounded_by_cci_slack h.hidden_biq_le_cci
 
+/-- App G `P10H` (hidden-BIQ certificate bounds risk): a `HiddenBIQCertificate`
+    supplying the correction slack `Control A ≤ CCI A + δ` yields
+    `RiskGap A ≤ δ`, by `P13`. -/
+theorem P10H_hidden_biq_certificate_bounds_risk
+    {A : System} {δ : Int}
+    (h : HiddenBIQCertificate A δ) :
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_hidden_biq_certificate h
+
 theorem P13_control_outpaces_correction_risk
     {A B : System}
     (hctrl : Control A < Control B)
@@ -448,6 +483,15 @@ theorem positive_hidden_rate_eventually_crosses
       have hmul : threshold + 1 ≤ (threshold + 1) * (r + 1) :=
         Nat.le_mul_of_pos_right (threshold + 1) (Nat.succ_pos r)
       exact Nat.lt_of_lt_of_le hbase hmul
+
+/-- App G `P38H` (positive hidden rate eventually crosses a threshold): for any
+    natural-number rate `r > 0` and threshold `T` there is `n` with `T < n * r`
+    (witness `n = T + 1`). -/
+theorem P38H_positive_hidden_rate_eventually_crosses
+    (rate threshold : Nat)
+    (hr : 0 < rate) :
+    ∃ n : Nat, threshold < n * rate :=
+  positive_hidden_rate_eventually_crosses rate threshold hr
 
 end AlignmentProofSpine
 

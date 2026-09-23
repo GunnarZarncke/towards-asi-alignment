@@ -1,5 +1,7 @@
 # Reviewer Feedback — Correlated Steerability Failure & Operationalization Deferral
 
+> **Historical record (2026-06-30).** External reviewer feedback preserved as received; not a task list. Follow-ups were absorbed into `Chokepoint.lean`, the uncertainty ledger, and the Spine lane.
+
 Recorded 2026-06-30. External reviewer feedback (claim-strength / structural, not a localized bug report). Preserved verbatim structure from the review output format in `REVIEWING_FOR_AGENTS.md`.
 
 ---

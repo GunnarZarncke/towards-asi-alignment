@@ -2,7 +2,7 @@
 
 Status: **implemented** (2026-09-01). Manuscript + `\leanspine` placement. Lean modules unchanged.
 
-**Lanes:** Voice (when the word is allowed) · Spine (home-chapter tags). Pointers: [`voice.md`](voice.md), [`spine.md`](spine.md).
+**Lanes:** Voice (when the word is allowed) · Spine (home-chapter tags). Pointers: [`voice-plan.md`](../../attic/voice-plan.md) (closed), [`spine.md`](spine.md).
 
 **Non-goals:** Discharge any `MB*` on real systems; retitle Appendix B; site/quiz sync (follow-on); adding `\leanspine` in every chapter that mentions a load.
 
@@ -98,4 +98,4 @@ One dedicated tag per live ID. Do not tag every split (`MB2a`…) unless that ch
 
 ## Related
 
-[`metadata/bridges.yml`](../../metadata/bridges.yml) · [`chapters/ch10-strategic-opacity.tex`](../../chapters/ch10-strategic-opacity.tex) · [`chapters/ch07-finding-boundary.tex`](../../chapters/ch07-finding-boundary.tex) (A-004) · [`appendices/appG-lean-proof-spine.tex`](../../appendices/appG-lean-proof-spine.tex) · [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex)
+[`metadata/bridges.yml`](../../../metadata/bridges.yml) · [`chapters/ch10-strategic-opacity.tex`](../../../chapters/ch10-strategic-opacity.tex) · [`chapters/ch07-finding-boundary.tex`](../../../chapters/ch07-finding-boundary.tex) (A-004) · [`appendices/appG-lean-proof-spine.tex`](../../../appendices/appG-lean-proof-spine.tex) · [`appendices/appB-bridge-crosswalk.tex`](../../../appendices/appB-bridge-crosswalk.tex)

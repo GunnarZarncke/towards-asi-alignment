@@ -1,6 +1,6 @@
 # Iliad communal canon — lessons (rough)
 
-Status: **concept sketch** (2026-09-02). Not a lane. Split from [`cousin-product-comparison.md`](cousin-product-comparison.md).
+Status: **concept sketch** (2026-09-02). Not a lane. Split from [`cousin-product-comparison-plan.md`](../attic/cousin-product-comparison-plan.md).
 
 Iliad’s [Textbook from the Future](https://textbookfromthefuture.org/faq.html) is the closest *product-form* cousin: a communal living TOC, not a finished book. TSA should not become Iliad. It can steal a few coordination moves.
 
@@ -22,7 +22,7 @@ Iliad’s [Textbook from the Future](https://textbookfromthefuture.org/faq.html)
 ## Lessons (steal without merging)
 
 1. **A fillable skeleton that is not the book.** Field hub ≈ TOC of questions; the manuscript is *one* filling, not the field’s canon.
-2. **Reverse translation.** Other agendas write their crux in their own terms (parked Ngo column in [`field.md`](field.md)).
+2. **Reverse translation.** Other agendas write their crux in their own terms (parked Ngo column in [`field/field.md`](field/field.md)).
 3. **AIs as a first-class reader.** `llms.txt` / reviewing-for-agents already exist; keep them current.
 4. **Selective synthesis, stated.** Inclusion test already omits; say so instead of pretending completeness.
 5. **Do not compete as the communal textbook.** Depth-first one-author(+AI) argument vs breadth-first communal TOC. Point at Iliad. The communal wiki that *exists* is LW (Arbital fold-in) — see [`lw-wiki-tags.md`](lw-wiki-tags.md).

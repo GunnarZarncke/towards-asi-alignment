@@ -1,6 +1,6 @@
-# Witness — C-004 later host: SCDB justice votes (held-out policy direction)
+# Backtest — C-004 later host: SCDB justice votes (held-out policy direction)
 
-**Frozen:** 2026-08-29. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). After [`backtest-c004-cpc.md`](backtest-c004-cpc.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
+**Frozen:** 2026-08-29. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). After [`backtest-c004-cpc.md`](backtest-c004-cpc.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **same-unit detection-pipeline** check on institutional vote direction (justice-centered, not correction-channel CCI). Observational; doctrine and coalition confound. Does **not** discharge MB2. Does **not** transfer W-12 or W-14.
 

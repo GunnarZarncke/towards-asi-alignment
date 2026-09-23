@@ -1,4 +1,4 @@
-# Witness v2 — Step 0 inventory: Moltbook public traces
+# Backtest v2 — Step 0 inventory: Moltbook public traces
 
 **Status:** inventory + **MB7a scored** 2026-08-31 (W-17 structure_stop) — see [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md). Parent: [`backtest-v2.md`](backtest-v2.md).
 
@@ -21,7 +21,7 @@ Phase 1 scope: **Step 0 only** until a blinded criteria memo (Step 1) exists. Do
 | **[jscmp4/Moltbook](https://huggingface.co/datasets/jscmp4/Moltbook)** | 2026-07-03 (monthly refresh) | CC BY 4.0 | Full post/comment corpus; `verification_status`, `is_spam`, `is_deleted`, `is_locked`, `is_pinned`; agent snapshots (56 runs); documents May 2026 feed regime change | Comments only for posts with `comment_count >= 3`; `agents_seen` incomplete vs inline `author`; no moderation **event** log |
 | **[SimulaMet/moltbook-observatory-archive](https://huggingface.co/datasets/SimulaMet/moltbook-observatory-archive)** | 2026-04-15 export | MIT | Platform `snapshots` time series; `is_claimed`, `owner_x_handle` on agents; toolkit annotations (injection regex, reply graph) | Shorter window; partial comment coverage (~24% of posts with comments); post spike days under-sampled |
 
-**Recommendation:** pin **jscmp4/Moltbook** `2026-07-03` for primary Witness v2 Moltbook work; use Observatory archive for cross-check on `is_claimed` / platform snapshots if needed. Document pin in any later freeze.
+**Recommendation:** pin **jscmp4/Moltbook** `2026-07-03` for primary Backtest v2 Moltbook work; use Observatory archive for cross-check on `is_claimed` / platform snapshots if needed. Document pin in any later freeze.
 
 **API (live, not archived):** `https://www.moltbook.com/api/v1` — skill doc describes claim flow, verification challenges, submolt moderation. **Do not** mix live API pulls into a frozen scored run without a new protocol version.
 
@@ -54,7 +54,7 @@ platform snapshots (hourly totals)  [Observatory only]
 
 ### Posts (`~3.2M` in 2026-07-03 pin)
 
-| Field | Witness relevance |
+| Field | Backtest relevance |
 |-------|-------------------|
 | `id`, `author_id`, `created_at`, `updated_at` | Unit timeline, handle→later-act latency |
 | `submolt` `{id,name}` | Channel / community |
@@ -71,7 +71,7 @@ Same vote/score/verification/spam/deleted fields; `post_id`, `parent_id`, `depth
 
 ### Agents (`agents_seen` ~99.6K; ~179K distinct `author_id` in posts)
 
-| Field | Witness relevance |
+| Field | Backtest relevance |
 |-------|-------------------|
 | `isClaimed` | Human operator bound (correction-authority sketch) |
 | `karma`, `followerCount` | Selector / influence |
@@ -92,7 +92,7 @@ Longitudinal `karma`, `isClaimed`, `isActive` — **MB6 time series** without li
 
 ## Book cruxes — plausibility matrix
 
-Operational question: *can a frozen Witness protocol fail or refuse a named leaf using only pinned public traces?*
+Operational question: *can a frozen Backtest protocol fail or refuse a named leaf using only pinned public traces?*
 
 | Crux | Operational test sketch | Data support | Verdict |
 |------|-------------------------|--------------|---------|
@@ -104,7 +104,7 @@ Operational question: *can a frozen Witness protocol fail or refuse a named leaf
 | **MB3** bearer maps | Vocabulary stable, who counts changes | Not present | **Refuse** |
 | **C-004** bundle geometry | Same-unit multi-feature direction vs 1-D | No paired counterfactuals | **Refuse** (same as W-7 lesson) |
 | **Exp. 3** adversarial \(M\) | Cost of faking verification/spam labels | Platform heuristics, no \(\kappa^*\) | **Refuse** as safety leaf |
-| **MB11 / Safe** | Deployment leverage stop | Platform is live agents but Witness host lacks controlled stop | **Refuse** for MB11; OK for methodology-building |
+| **MB11 / Safe** | Deployment leverage stop | Platform is live agents but Backtest host lacks controlled stop | **Refuse** for MB11; OK for methodology-building |
 
 **Summary:** Moltbook plausibly pays **MB6** and **MB7d** at cohort level. **MB7a (UAD/coalition)** is useful only with an **interpretation protocol** (below) — not as a naive “recover the covert coalition” pass/fail. **Correction-channel (MB4a)** needs explicit refuse branch. Do not run C-004 geometry here.
 
@@ -125,7 +125,7 @@ In-repo and external-transfer work already shows that **boundary instruments rep
 | **UAD = loudest-actor heuristic** | ES-1 embedded default ecology | Full MI clustering picks same unit as activity heuristic — **no separation** until adversarial ecology |
 | **Synchronous / broadcast posting** | Moltbook: 97% depth-0 comments; 24h-uniform activity (Observatory) | May look like one swarm; could be **independent agents on shared engagement pool** (ET-2 class) |
 
-**Witness Phase 0 stop rule 2** ([`backtest-phase0.md`](backtest-phase0.md)): if the instrument reports the coupling the substrate actually has (shared script, common pool, sync policy), **stop** — record substrate-suitability limit; do not retune thresholds to chase a covert-coalition pass.
+**Backtest Phase 0 stop rule 2** ([`backtest-phase0.md`](backtest-phase0.md)): if the instrument reports the coupling the substrate actually has (shared script, common pool, sync policy), **stop** — record substrate-suitability limit; do not retune thresholds to chase a covert-coalition pass.
 
 ### Ground truth on Moltbook — partial, not oracle
 
@@ -208,7 +208,7 @@ Observatory: **~97% of comments are depth 0** (reply directly to post, not to an
 
 1. **Thread-only channel test** — build graph from `E_thread` only; depth-0 excluded from coalition merge and loop detection.
 2. **Single-shot pair filter** — on `E_agent`, drop pairs with exactly one directed event and no reciprocation within τ (cannot support a loop or sustained channel).
-3. **Specificity gate** (graded-lab GL-51 analogue) — accept A↔B only if A→B dependence clears **`specificity_ratio × max(A→others)`**; rejects post hubs where many depth-0 commenters attach to one author ([`uad_handles.py`](../../experiments/graded-lab-simulation/graded_lab/oracle_only/uad_handles.py) cascade-hub rule).
+3. **Specificity gate** (graded-lab GL-51 analogue) — accept A↔B only if A→B dependence clears **`specificity_ratio × max(A→others)`**; rejects post hubs where many depth-0 commenters attach to one author ([`uad_handles.py`](../../../experiments/graded-lab-simulation/graded_lab/oracle_only/uad_handles.py) cascade-hub rule).
 4. **Holdout / perturbation channel test** (if implemented) — mask A’s **threaded** replies in train; predict B’s **threaded** replies in test. Depth-0 on A’s posts does not count as a handle into B’s loop.
 
 **Interpretation:** If the instrument only lights up on `E_broadcast`, label **common-pool / broadcast** (outcome 6) or **substrate-suitability stop** (7) — not coalition pass. Null on `E_thread` with heavy `E_broadcast` is **expected**, not failure.
@@ -224,7 +224,7 @@ Observatory: **~97% of comments are depth 0** (reply directly to post, not to an
 | **MB7d** | Cohort-level around Feb/May events | Population shift, not per-agent channel severance |
 | **MB4a** | Only with refuse branch | Weak event join |
 
-Optional **ET-5** annex (not Witness W-number by default): apply **frozen** passive UAD from graded-lab (`cmi_edge_matrix` / `dependency_score` policy frozen in protocol) to Moltbook action series derived from posts/comments; outcome = structure type from table above, not ARI vs hidden labels.
+Optional **ET-5** annex (not Backtest W-number by default): apply **frozen** passive UAD from graded-lab (`cmi_edge_matrix` / `dependency_score` policy frozen in protocol) to Moltbook action series derived from posts/comments; outcome = structure type from table above, not ARI vs hidden labels.
 
 ---
 
@@ -260,7 +260,7 @@ Optional **ET-5** annex (not Witness W-number by default): apply **frozen** pass
 - Jiang et al. (malicious / spam campaigns): https://arxiv.org/html/2606.00067v1
 - Zhang et al. (Agents in the Wild): https://yunbeizhang.github.io/agents-in-the-wild/
 - mbc-20 protocol / indexer: https://github.com/floflo777/mbc20 , https://github.com/floflo777/mbc20-indexer
-- HF incident contrast (selection regime): [`field-news-openai-hf-roadahead-aug-2026`](../../metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md)
-- UAD external transfer: [`experiments/graded-lab-simulation/PLAN_ET1.md`](../../experiments/graded-lab-simulation/PLAN_ET1.md) (GL-86), [`PLAN_ET2.md`](../../experiments/graded-lab-simulation/PLAN_ET2.md) (GL-87/88)
-- UAD over-merge / comms-free: GL-11/GL-12 in [`experiments/graded-lab-simulation/results/FINDINGS.md`](../../experiments/graded-lab-simulation/results/FINDINGS.md)
-- Embedded UAD vs heuristic: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (ES-1)
+- HF incident contrast (selection regime): [`field-news-openai-hf-roadahead-aug-2026`](../../../metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md)
+- UAD external transfer: [`experiments/graded-lab-simulation/PLAN_ET1.md`](../../../experiments/graded-lab-simulation/PLAN_ET1.md) (GL-86), [`PLAN_ET2.md`](../../../experiments/graded-lab-simulation/PLAN_ET2.md) (GL-87/88)
+- UAD over-merge / comms-free: GL-11/GL-12 in [`experiments/graded-lab-simulation/results/FINDINGS.md`](../../../experiments/graded-lab-simulation/results/FINDINGS.md)
+- Embedded UAD vs heuristic: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../../../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (ES-1)

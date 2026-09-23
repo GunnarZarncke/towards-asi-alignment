@@ -1,8 +1,8 @@
-# Witness Phase 1 — protocol freeze
+# Backtest Phase 1 — protocol freeze
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Scope: [`backtest-phase0.md`](backtest-phase0.md).
 
-Not a sixth simulation line. Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
+Not a sixth simulation line. Artifacts: [`experiments/backtest/`](../../../experiments/backtest/).
 
 ---
 

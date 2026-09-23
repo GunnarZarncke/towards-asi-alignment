@@ -1,6 +1,6 @@
 # Glossary prose-pass quality bar
 
-Working instructions for rewriting entries in [`reference/field-agendas/inter-agenda-term-glossary.md`](../../reference/field-agendas/inter-agenda-term-glossary.md).
+Working instructions for rewriting entries in [`reference/field-agendas/inter-agenda-term-glossary.md`](../../../reference/field-agendas/inter-agenda-term-glossary.md).
 
 ## Goal
 

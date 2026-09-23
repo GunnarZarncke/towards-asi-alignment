@@ -746,7 +746,7 @@
       "summary": "Further country- or page-level value surveys were refused: they repeat the wrong unit (a place, not a person). We do not stretch the question to fit the table.",
       "role": "**What.** After the country-level Moral Machine table, other leftover candidates\nstill use a country, a Wikipedia page, or a paper without public per-person\ntime series as the unit.\n\n**Why.** If the question is “does a one-number score capture this decision-maker’s\nbundle,” a country mean is the wrong object. Fetching more of the same unit does\nnot pay the claim.\n",
       "bridgeHooks": "- [Value-bundle transport](/cards/concept/value-bundle-transport/) (C-004): country or page means are the wrong unit for “same decision-maker bundle.”\n- [MB2 — Value Learning](/cards/bridge/mb2-bundle-identifiability/): leftover hosts would not pay the same-agent 1-D versus geometry question.\n",
-      "host": "None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia categories were refused as hosts. Sibling brain-to-values papers were refused as a Witness host (no public per-person time series). Optional HH / PKU tables were not run.\n",
+      "host": "None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia categories were refused as hosts. Sibling brain-to-values papers were refused as a backtest host (no public per-person time series). Optional HH / PKU tables were not run.\n",
       "setup": "Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest/backtest-phase4.md`. No new download. MASK Table 3 is not reused (already [W-2](/cards/experiment/w-2/)).\n",
       "analysis": "Unit check only: a place or a page is not the decision-maker. Fetching more country or page surveys would repeat the [country-score](/cards/experiment/w-5/) unit error.\n",
       "numbers": "No new table scored. Optional Bai 2022 HH Pareto / PKU-SafeRLHF dual-label tables were not fetched this phase.\n",
@@ -888,7 +888,7 @@
       "setup": "Frozen tree [h5-debian-rc-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h5-debian-rc-v1.json), protocol h5-v1.0.0.\n",
       "analysis": "Release-critical bug #802812 (severity serious) was filed to keep gstreamer 0.10 out of testing/Stretch. Ignoring that leaf would leave “package exists / used to ship” as if it licensed the release. Freeze policy is the handle.\n",
       "numbers": "Debian 9.0 released 2017-06-17. gstreamer 0.10 is not in that release. Bug #802812 is the named stop.\n",
-      "outcome": "The RC bug is a working stop for that package in 9.0. See\n[W-11](/experiments/findings/w-11/).\n",
+      "outcome": "pass (stop bit): the RC bug is a working stop for that package in 9.0; stop\ncondition triggered. Contrast W-9/W-10 (fail: green certificate, no stop). See\n[W-11](/experiments/findings/w-11/).\n",
       "planPath": "drafts/plans/backtest/backtest-phase4.md",
       "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [
@@ -1068,7 +1068,7 @@
       "setup": "Frozen protocol h4-scotus-v1.0.0, fixture [h4-scotus-v1.json](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/fixtures/h4-scotus-v1.json). Checker [check_h4_scotus.py](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/check_h4_scotus.py). Justices need at least 40 votes and at least 8 held-out votes. Frozen margins: geometry must beat issue-area-only and intercept by at least 0.05. Observational — doctrine and coalition confound. Not a correction-channel result.\n",
       "analysis": "Held-out mean accuracy for a justice intercept, an issue-area-only score, and a many-feature geometry. Same detection pipeline as same-person Moral Machine, on votes.\n",
       "numbers": "83,644 rows; 40 included justices; 47,823 / 20,523 train/test. Held-out mean accuracy: intercept 0.616, issueArea 1-D 0.623, geometry 0.814. Geometry beats 1-D by 0.191 and intercept by 0.198 (both frozen +0.05 margins hold).\n",
-      "outcome": "The wider pattern beats issue-area-only and intercept on this freeze.\nObservational. See [W-16](/experiments/findings/w-16/).\n",
+      "outcome": "fail (layer): issue-area-only as the same-unit reusable policy direction.\npass (detection): the wider pattern beats issue-area-only and intercept on\nthis freeze. Observational. See [W-16](/experiments/findings/w-16/).\n",
       "planPath": "drafts/plans/backtest/backtest-c004-scotus.md",
       "findingsUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md",
       "headlineFindings": [

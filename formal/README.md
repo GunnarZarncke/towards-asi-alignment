@@ -37,7 +37,7 @@ and makes one distinction explicit and machine-checked:
 * **Proved in Lean** — *if* these predicates and inequalities hold, *then* the
   certification conclusion follows.
 * **Assumed bridge** (`axiom`) — real systems satisfy these predicates under
-  these measurement procedures. These are the nine `MB1`–`MB9` bridges packaged
+  these measurement procedures. These are the `MB*` bridges: eleven `Core` axioms packaged
   in `Core.BridgeAssumptions`, plus three bridges declared outside the record
   because their statements need later definitions (threaded explicitly, same
   pattern): `MB4a` (measured-path legitimacy, **including the anti-capture
@@ -104,7 +104,11 @@ LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 headline theorems in `scripts/check_axiom_budget.py`, which diffs
 `#print axioms` output against the checked-in snapshot `axiom-ledger.json`
 and regenerates the Appendix G table (`metadata/axiom-budget-index.tex`,
-`appi:sec:axiom-budget`) from it:
+`appi:sec:axiom-budget`) from it. One ledger entry,
+`c2_pinned_green_named_with_bypass_not_integrity` (`BacktestC2Instance.lean`),
+is decided by `native_decide` and therefore also rests on `Lean.ofReduceBool`
+and `Lean.trustCompiler` (trust in the compiled evaluator, not a book bridge);
+the ledger records this footprint verbatim:
 
 ```bash
 ./formal/check.sh                       # after any spine change (includes lake build)
@@ -173,7 +177,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 
 ## Module map
 
-| Module | Proof-spine nodes | Book chapters |
+| Module | Spine nodes | Book chapters |
 |--------|-------------------|---------------|
 | `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
 | `AlignmentProofSpine/BridgeCruxes.lean` | `MB1Crux`–`MB9Crux` (except MB2/MB4/MB8), `CoreBridgeCruxes`, `certified_class_safety_from_core_cruxes` consumer | crosswalk |
@@ -231,9 +235,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `syntactic_tiling_not_import_preserving`, `forgeability_gap`, `P25`, `P26`,
   `P31`, `P37`, `P41`, `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,
-  governance, or future theory (`MB1`–`MB11` plus `MB4a`, declared as `axiom`;
-  `MB1`–`MB9` packaged in `BridgeAssumptions`, `MB4a`/`MB10`/`MB11` threaded
-  explicitly).
+  governance, or future theory.
 * **imported field theorem** — a source-cited external result or protocol
   assumption (`Field.Imported`, plus the statement-bearing
   `OA2016_offpolicy_qlearning_convergence` in `Field/Finite/BellmanQ.lean`)
@@ -267,6 +269,9 @@ depends on `MB4`.
   counterexamples forever").
 * `P44` uses the brief's §6 amendment (two disagreeing legitimacy orderings), not
   the inconsistent single-predicate form.
+* Brief nodes `P38`/`P39` (tripwire failure decertifies) were not carried into
+  the spine; `P40_unsupported_leaf_blocks_root` (`Certification.lean`) stands
+  without that antecedent, and tripwires appear nowhere in the Lean development.
 * The host-capacity aliasing theorem `P34` uses Mathlib's
   `Fintype.card_le_of_injective` via `AlignmentProofSpine.Mathlib`.
 * **`RiskGap`** is `Control − CCI` — excess influence bandwidth, an
@@ -324,4 +329,4 @@ depends on `MB4`.
   in prose, including ch46 `U_S` semantics via `rawCapacity` and `ontologyTranslation`).
 * Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
   Full graph: `context/lean_proof_dependency_graph.dot`.
-  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean Proof Spine appendix, Section~\ref{sec:appi-proof-dependency}).
+  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean dependency spine appendix, Section~\ref{sec:appi-proof-dependency}).

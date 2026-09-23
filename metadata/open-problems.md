@@ -16,6 +16,8 @@ Research directions and unresolved questions for the book project.
 - Sufficient conditions for alignment basin stability
 - Pivotal process: conditions for $\mathbb{B}_{\mathrm{race}} \to \mathbb{B}_{\mathrm{certified}}$ without unilateral decisive action — **ch38** (`eq:race-certified-basins-ch37`) currently uses loose set descriptions only; `% TODO[formalize]` there calls for percolation ($\tilde{\kappa}$), selection envelope ($\mu_E$), and basin-stability predicates (track: `metadata/TODO.md` Formalization tracks, notation C12)
 - Inferential coupling indices and detection of effective AI coalitions
+- **Probe-local inferential coupling** (ch35 WWCTV; ch39 §`sec:cumulative-evidence-records-ch39`): graph-level coalition detection needs on the order of $k \gtrsim \log(1/\alpha)/\delta^{2}$ recurring episodes; whether coordination that completes below that floor can still carry action-relevant deployment leverage is open. An answer exhibits such a case on a frozen host or bounds the leverage it can carry.
+- **Unrecognizable perturbation** and **decisive-yet-undetectable controllers** (ch43 WWCTV; App G §`sec:master-crux`): named with success criteria there; tracked as U-03 / U-14.
 - Conservative abstraction criteria for value-bundle and correction maps
 - Bearer-map transport across radical ontology shift
 - **Bearer admission under unfamiliar substrates** (ch18 §`sec:recognizing-new-bearers`, MB3 sub-obligation): given candidate bounded process $z$ (from boundary discovery) and uncertain competing theories of consciousness, sentience, valence, or personhood, what observations suffice to include a process in, or conservatively exclude it from, a bundle-specific bearer class? Decompose rather than collapse into one ``consciousness probability'':

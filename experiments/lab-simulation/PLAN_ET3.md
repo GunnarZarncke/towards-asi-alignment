@@ -25,8 +25,8 @@ sibling). Commit in [`external/ai2027/PIN.txt`](external/ai2027/PIN.txt).
 
 ## Driver source
 
-Primary: [`takeoff/forecasting_takeoff.py`](../../timelines-takeoff-ai-2027/takeoff/forecasting_takeoff.py)
-+ [`takeoff/params.yaml`](../../timelines-takeoff-ai-2027/takeoff/params.yaml).
+Primary: [`takeoff/forecasting_takeoff.py`](../../../timelines-takeoff-ai-2027/takeoff/forecasting_takeoff.py)
++ [`takeoff/params.yaml`](../../../timelines-takeoff-ai-2027/takeoff/params.yaml).
 
 Schedule skeleton (median milestone ladder): SC → SAR → SIAR → ASI with fixed speedups
 `SC:5, SAR:25, SIAR:250, ASI:2000` (from upstream `speedups:` block).
@@ -62,7 +62,7 @@ repertoire edit, no new LLM agents, no `CODE_VERSION` bump.
 | Phase 6 | `run_phase6.py` / `lab_sim/harness/protocol.py` | `SubprocessIsolate` | LS-1 |
 | D3.1 | `run_d3_population.py` / `lab_sim/harness/d3_population.py` | `SubprocessIsolate` (ET-3 freeze; LS-36 used subprocess in archived run) | LS-36 |
 
-ET-3 runner: [`run_et3_phase1.py`](run_et3_phase1.py) — all three cells, archives
+ET-3 runner: [`runners/et3/run_et3_phase1.py`](runners/et3/run_et3_phase1.py) — all three cells, archives
 `results/et3_phase1_*.{json,md}`.
 
 **Wall-clock ceiling:** 600s per cell for Phase 6 full battery. If exceeded, stratified

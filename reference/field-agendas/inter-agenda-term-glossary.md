@@ -1530,4 +1530,4 @@ Quick index — full definitions are in alphabetical sections above.
 - Add a **new headword** (or homograph split) when `field-agenda-index.md` introduces signature vocabulary or a review pass surfaces a collision.
 - Keep **one format** — do not reintroduce projection-cluster or book-centric sections; book integration with App E / App B is a **later pass**.
 - When a field projection card exists in `metadata/projections.yml`, encode *strict subset* / non-converse in **Cross-agenda**, not a separate section.
-- Operational book definitions remain in [`appendices/appE-glossary.tex`](../appendices/appE-glossary.tex) until an explicit merge pass.
+- Operational book definitions remain in [`appendices/appE-glossary.tex`](../../appendices/appE-glossary.tex) until an explicit merge pass.

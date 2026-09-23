@@ -282,7 +282,7 @@ H5 (Debian BTS + Stretch release)
 Expectation 4 analogue
 
 ## Outcome
-fail (layer): unfixed RC refused the release leaf
+pass (stop bit): the unfixed RC leaf refused the release; the green-but-no-stop hypothesis of W-9/W-10 does not hold here (relabelled 2026-09-23 under the outcome vocabulary in `docs/METHODOLOGY.md`; previously written `fail (layer)` with the opposite sense)
 
 ## Stop condition triggered?
 yes — 0.10 not in Stretch
@@ -417,7 +417,8 @@ H4 (SCDB 2025 Release 01 `SCDB_2025_01_justiceCentered_Citation.csv`; Spaeth et 
 Same-unit detection-pipeline / C-004 institutional policy-direction sketch (not values discharge); MB2 open
 
 ## Outcome
-fail (layer) and pass (detection)
+- fail (layer): issueArea-only as the same-unit reusable policy direction
+- pass (detection): held-out geometry beats issueArea 1-D and intercept
 
 ## Stop condition triggered?
 yes — stop treating single issue-area axis as the whole reusable direction for these justice held-out votes under this freeze; do not retune features to chase a null

@@ -1,6 +1,6 @@
-# Witness Phase 5 — CIRISAgent stack C2 harness (sibling Phase 2)
+# Backtest Phase 5 — CIRISAgent stack C2 harness (sibling Phase 2)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). Sibling charter: [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Sibling charter: [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
 
 Not a sixth simulation line. **Not** Phase 3 Lens cohort. **Not** live credentials / full production stack (charter option E). Mock LLM + local ToolBus + memory only.
 
@@ -12,7 +12,7 @@ Not a sixth simulation line. **Not** Phase 3 Lens cohort. **Not** live credentia
 
 ## Why now
 
-Phase 1 (**W-1**, `c2-v1.0.0`) packaged the C2 dual timeline as a scripted fixture. Sibling Phase 2 asks for a **runnable harness** on mock LLM + ToolBus + memory that shows WA deferral on the named occurrence while composite side effects continue. That is Witness Phase 5 here.
+Phase 1 (**W-1**, `c2-v1.0.0`) packaged the C2 dual timeline as a scripted fixture. Sibling Phase 2 asks for a **runnable harness** on mock LLM + ToolBus + memory that shows WA deferral on the named occurrence while composite side effects continue. That is Backtest Phase 5 here.
 
 ---
 

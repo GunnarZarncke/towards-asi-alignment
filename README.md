@@ -56,12 +56,13 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Item | Detail |
 |------|--------|
 | Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
-| Status | 48 chapters reviewed (not final); four alignment questions; backtests W-1–W-17; plain-first legibility pass |
+| Status | Every chapter drafted and reviewed at least once; depth varies by chapter and nothing is final; four alignment questions; backtests W-1–W-17; plain-first legibility pass |
 | Structure | 10 parts, 48 chapters, 10 appendices in the PDF (A–J) |
 | Field crosswalk | agenda records, concept cards; inter-agenda glossary — [`reference/field-agendas/`](reference/field-agendas/README.md) · [Field hub](https://towards-alignment.com/field/) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
 | Experiments | Tentative sanity checks — sims, external tests (ET-1–4), backtests (W-1–W-17) — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/); findings in Appendix J ([`appN-experimental-evidence.tex`](appendices/appN-experimental-evidence.tex)) |
 | Formal spine | Lean 4 dependency spine — field-claim finite models, `BridgeCruxes`, construction interface — [`formal/README.md`](formal/README.md) |
+| Predictions | Appendix H: 18 dated bridge predictions with resolution criteria — [`metadata/predictions.yml`](metadata/predictions.yml) · [site hub](https://towards-alignment.com/predictions/) |
 | Symbol census | Symbol/formula census with contribution audit and dependency graphs — [`metadata/symbol-census/README.md`](metadata/symbol-census/README.md) |
 
 Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
@@ -78,7 +79,7 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 | [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy → graded-lab lines, external transfer, backtests, sibling precursors |
 | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) | Freeze, preregistration, blind generation, backtest failure conditions |
 | [`reference/field-agendas/README.md`](reference/field-agendas/README.md) | Field agenda index, matrix, inter-agenda glossary |
-| [`papers/README.md`](papers/README.md) | Spin-out papers (ET-4 Secret Loyalties, feedback-horizon gap, verifier construction, alignment under selection); frozen sources and PDFs |
+| [`papers/README.md`](papers/README.md) | Spin-out papers (ET-4 secret loyalties, feedback-horizon gap, verifier construction, alignment under selection, constructing alignment attractors, path construction); frozen sources and PDFs |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute (Lean, sims, writing) |
 | [`INSTRUCTIONS.md`](INSTRUCTIONS.md) | Editorial mission and style |
 | [`AGENTS.md`](AGENTS.md) | Agent handoff rules |

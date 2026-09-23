@@ -17,14 +17,14 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 - [Field coverage](https://towards-alignment.com/field/coverage/): agenda × bridge matrix and evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): topic groups with Highlights first; full inventory at [/cards/browse/](https://towards-alignment.com/cards/browse/).
 - [Field news](https://towards-alignment.com/news/): field incidents and manuscript releases (unfolds).
-- [Updates](https://towards-alignment.com/updates/): versioned release notes (current: v1.5.0).
+- [Updates](https://towards-alignment.com/updates/): versioned release notes (current: v1.6.0).
 - [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
 - [FAQ](https://towards-alignment.com/faq/): same questions as Start Here.
 - [About](https://towards-alignment.com/about/): authorship and reuse.
 - [Book](https://towards-alignment.com/book/): PDF and contents in book order (front matter, parts, appendices, bibliography).
 - [Lean](https://towards-alignment.com/lean/): questions Lean checked; graphs and modules at [/lean/spine/](https://towards-alignment.com/lean/spine/).
 - [Experiments](https://towards-alignment.com/experiments/): in-repo lines and negatives; coverage matrix at [/experiments/coverage/](https://towards-alignment.com/experiments/coverage/).
-- [Demos](https://towards-alignment.com/demos/): featured chapter toy; inventory at [/demos/all/](https://towards-alignment.com/demos/all/).
+- [Demos](https://towards-alignment.com/demos/): all chapter and appendix toys, one landing list.
 - [Negative results](https://towards-alignment.com/cards/negative-results/): curated failures and ledger links.
 - [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
 - [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
@@ -36,7 +36,7 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 ## Repository (clone / deep review)
 
 - `README.md` - project overview, repository map, build commands.
-- `RELEASE_NOTES.md` - versioned release history (current: v1.5.0).
+- `RELEASE_NOTES.md` - versioned release history (current: v1.6.0).
 - `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents (also at https://towards-alignment.com/reviewing-for-agents.md).
 - `reference/field-agendas/` - field agenda index, inter-agenda glossary, MB coverage matrix (not manuscript canon).
 - `appendices/appB-bridge-crosswalk.tex` - bridges and the field: canonical crosswalk map.
@@ -65,7 +65,7 @@ The Introduction's six connected claims: boundary, value-bundle, grounding, corr
 
 - Boundary discovery: find the real optimizer, not just the visible model.
 - Grounding viability: keep symbols, metrics, monitors, and correction signals connected to value-relevant reality.
-- Value bundles: learnable value geometry without pretending values are scalar rewards; ch46 stress-tests bundle-geometry measurement under Goodhart pressure.
+- Value bundles: learnable value geometry without pretending values are scalar rewards; ch20 stress-tests bundle-geometry measurement under Goodhart pressure.
 - Bearer maps: preserve what values apply to, not merely the words used for them.
 - Transport hierarchy: distinguish semantic, bundle, bearer, correction, and successor continuity.
 - Correction-channel integrity: ensure human correction has uncaptured causal force, then stress-test that force under adversarial pressure.
@@ -97,7 +97,7 @@ This project often treats familiar proposals as projections, special cases, or s
 - incentive diagrams and agent tests become boundary-relative;
 - CIRL and reward inference become local projections of bundle/bearer/correction preservation;
 - shutdown and interruptibility become one-bit correction projections;
-- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity in the ch48 stress tests;
+- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity in the ch27 stress tests;
 - broad corrigibility becomes a dynamical correction invariant;
 - debate can preserve local truth while losing the judge's correction channel;
 - amplification can improve local supervision while failing global correction-channel contraction;

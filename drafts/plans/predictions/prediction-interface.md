@@ -1,6 +1,6 @@
 # Prediction interface (P0c)
 
-Status: **plans locked** (2026-09-19). Source review: [`../../predictions/bridge-predictions-Lean-improvements.md`](../../predictions/bridge-predictions-Lean-improvements.md). Prior-test snapshot: [`../../predictions/bridge-predictions-prior-tests.md`](../../predictions/bridge-predictions-prior-tests.md). Working criteria: [`../../predictions/bridge-prediction-market-criteria.md`](../../predictions/bridge-prediction-market-criteria.md) (`0.4-working`). Instrument plan: [`bridge-prediction-markets.md`](bridge-prediction-markets.md).
+Status: **plans locked** (2026-09-19). Source review: [`../../attic/bridge-predictions-Lean-improvements.md`](../../attic/bridge-predictions-Lean-improvements.md). Prior-test snapshot: [`../../predictions/bridge-predictions-prior-tests.md`](../../predictions/bridge-predictions-prior-tests.md). Working criteria: [`../../predictions/bridge-prediction-market-criteria.md`](../../predictions/bridge-prediction-market-criteria.md) (`0.4-working`). Instrument plan: [`bridge-prediction-markets.md`](bridge-prediction-markets.md).
 
 This file is the **integration checklist** across Predictions, Spine, Construct/v2, manuscript appendix, and site. It does not replace the instrument plan’s Q1/Q2/Q6 listing questions.
 

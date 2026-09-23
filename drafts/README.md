@@ -16,7 +16,7 @@ Working notes, lane plans, and agent handoff — not manuscript canon. Git histo
 |--------|----------|
 | [`predictions/`](predictions/) | Bridge prediction market criteria, prior-art scan, source docx — hub: [`predictions/README.md`](predictions/README.md) |
 | [`plans/`](plans/) | Active lane checklists (backtest, field, spine, construct, predictions, …) |
-| [`project/`](project/) | Claim spine, epistemic census, shipping benchmark, residuals map |
+| [`project/`](project/) | Claim spine, shipping-velocity baseline, alternative decomposition (reference), project consistency review, `ch46` correction table |
 | [`ontology/`](ontology/) | Ngo critique, source list, per-source reviews |
 | [`editorial/`](editorial/) | Eq-chain guidance, glossary demotion audit, hostile review, ch34 regime note |
 | [`outreach/`](outreach/) | External replies and field-news analyses |
@@ -30,4 +30,4 @@ Working notes, lane plans, and agent handoff — not manuscript canon. Git histo
 | [`continuity-drift-study/`](continuity-drift-study/) | Frozen comparative study packets |
 | [`attic/`](attic/) | Superseded plans and one-off exports |
 
-Other small folders (`slides/`, `quiz-*`, `adverse-process-generator/`) stay as-is until they grow enough to warrant a category.
+Other small folders (`slides/`, `quiz-blind-packets/`, `adverse-process-generator/`) stay as-is until they grow enough to warrant a category.

@@ -1,10 +1,10 @@
-# Witness v2 — H7 Moltbook MB7a: entity pinning + anchored structure typing
+# Backtest v2 — H7 Moltbook MB7a: entity pinning + anchored structure typing
 
 **Frozen:** 2026-08-31. Reopen only by amending this file. Parent: [`backtest-v2.md`](backtest-v2.md). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). Do **not** retune thresholds after seeing fixture scores.
 
 **Claim strength:** methodology-building. Pays **MB7a** (named `author_id` vs inferred unit; claim vs boundary) on agent-native public traces with **partial Tier A–D anchors** from independent investigations. Does **not** discharge MB1 globally. Does **not** claim exhaustive coalition oracle. Does **not** substitute for ET-5 passive UAD transfer.
 
-**Finding ID:** **W-17** — **structure_stop** (2026-08-31). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../experiments/backtest/results/FINDINGS.md).
+**Finding ID:** **W-17** — **structure_stop** (2026-08-31). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../../experiments/backtest/results/FINDINGS.md).
 
 ---
 

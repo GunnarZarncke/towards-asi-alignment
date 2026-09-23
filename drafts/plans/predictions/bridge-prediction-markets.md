@@ -31,11 +31,11 @@ Own the proposal as a project instrument:
 |--------|--------|------------------------|
 | Live `MB*` axioms / crux `Prop`s | `Core.lean`, `MB2Identifiability.lean`, `Correction.lean`, `Forgeability.lean`, `Certification.lean` | Time-bounded, public, independently checkable **binary** operationalizations |
 | WWCTV boxes | chapter ends; ch48 master disconfirmer | Calendar-dated contracts; WWCTV stays qualitative and undated |
-| Freeze / preregister / refuse | [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Same habit, pointed at a *hidden benchmark* and a *serious adversarial budget* |
-| Backtest fail / refuse / null | [`backtest.md`](backtest/backtest.md) | Experiments still refuse internally. **Markets map refuse → NO** (conservative lump) |
+| Freeze / preregister / refuse | [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) | Same habit, pointed at a *hidden benchmark* and a *serious adversarial budget* |
+| Backtest fail / refuse / null | [`backtest.md`](../backtest/backtest.md) | Experiments still refuse internally. **Markets map refuse → NO** (conservative lump) |
 | App B crosswalk | `appendices/appB-bridge-crosswalk.tex` | Markets are field-facing bets on the *book’s* cuts, not on field homographs |
 | Logical-induction WWCTV | ch48; Cite/Wait in `TODO.md` | These are ordinary prediction markets, not Garrabrant LI. LI remains a side channel. |
-| Target Realization / constructibility | [`construct.md`](construct.md); not an `MB*` | Market 14 is this neighborhood, not MB11 |
+| Target Realization / constructibility | [`../construct/construct.md`](../construct/construct.md); not an `MB*` | Market 14 is this neighborhood, not MB11 |
 | Shared-instrument chokepoint | `Chokepoint.lean`; U-03/U-05/U-14/U-16 | Several markets are correlated through A-009; treating them as independent overstates information |
 
 ## Mapping (proposal § → spine)
@@ -87,7 +87,7 @@ Docx has **no** in-file proposed changes (no comments, no track-changes). `0.2-w
 
 ## P0c (2026-09-19)
 
-Interface review: [`../../predictions/bridge-predictions-Lean-improvements.md`](../../predictions/bridge-predictions-Lean-improvements.md). Checklist: [`prediction-interface.md`](prediction-interface.md).
+Interface review: [`../../attic/bridge-predictions-Lean-improvements.md`](../../attic/bridge-predictions-Lean-improvements.md). Checklist: [`prediction-interface.md`](prediction-interface.md).
 
 1. **Common certificate-output rule.** Qualifying methods emit a per-instance scoped certificate and may abstain outside declared scope. Replaces per-bridge “benchmark → this deployment” extra markets.
 2. **Output-type addenda** on §§1–14 (certificate of *this* system/version, not only method AUROC).
@@ -161,7 +161,7 @@ Harder to establish; asks whether selection preserves the thing we care about, n
 
 | Layer | Do |
 |-------|----|
-| **Spine** | **Done 2026-09-18.** Live `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`; `CorrectionSupportingBasin` := shock-robust ∧ frozen \(g_{\mathrm{CCI}}\ge-\varepsilon\). `LockedInBadBasin` kept. Checklist on [`spine.md`](spine.md). |
+| **Spine** | **Done 2026-09-18.** Live `MB6a_gradient_estimator_soundness` / `MB6b_correction_supporting_basin`; `CorrectionSupportingBasin` := shock-robust ∧ frozen \(g_{\mathrm{CCI}}\ge-\varepsilon\). `LockedInBadBasin` kept. Checklist on [`../spine/spine.md`](../spine/spine.md). |
 | **Markets §7** | 2027 slice: frozen gradient estimate (not an arbitrary predictor) predicts later correction erosion at source bars. Qualifying negative family: healthy coupling, negative gradient. |
 | **Markets §16** | Full shock-robust ∧ frozen floor ⇒ retained authorized correction (P0c). |
 | **Not a market** | Unsigned “basin exists” (§7a retracted). |
@@ -228,13 +228,13 @@ Decided: Q3 banner not parlays; Q4 seven properties; Q5 §14 governance-only (no
 ## Related artifacts
 
 - Next phase (PRA layer, Markets 19–20, site demo): [`assurance-risk-modelling.md`](assurance-risk-modelling.md)
-- Working criteria: [`drafts/predictions/bridge-prediction-market-criteria.md`](../predictions/bridge-prediction-market-criteria.md)
-- Source 0.1: [`drafts/predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx)
-- [`field.md`](field.md) — homographs; markets must resolve the *book* object, not the field noun; MB6 unsigned-stability leftover
+- Working criteria: [`drafts/predictions/bridge-prediction-market-criteria.md`](../../predictions/bridge-prediction-market-criteria.md)
+- Source 0.1: [`drafts/predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](../../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx)
+- [`../field/field.md`](../field/field.md) — homographs; markets must resolve the *book* object, not the field noun; MB6 unsigned-stability leftover
 - [`../spine/spine.md`](../spine/spine.md) — P2 certificate layer; MB6 signed gradient shipped
 - [`../construct/embedded-v2.md`](../construct/embedded-v2.md) — certificate layer is not Lean 2.0; market YES still does not paint `actsOnContextOf`
-- [`construct.md`](construct.md) — §14 neighborhood
-- [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) — freeze, refuse, no post-hoc bars
-- [`reference/field-agendas/data/bridges.yml`](../../reference/field-agendas/data/bridges.yml)
+- [`../construct/construct.md`](../construct/construct.md) — §14 neighborhood
+- [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) — freeze, refuse, no post-hoc bars
+- [`reference/field-agendas/data/bridges.yml`](../../../reference/field-agendas/data/bridges.yml)
 - ch10 Predict-O-Matic; ch31 seven properties; ch48 LI WWCTV
 - Cite/Wait: logical-induction markets (App F) — orthogonal

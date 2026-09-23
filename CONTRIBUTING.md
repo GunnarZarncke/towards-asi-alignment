@@ -10,13 +10,13 @@ Thank you for interest in *Towards Superintelligence Alignment*. This is a resea
 
 ## Improving the Lean proofs of field results
 
-The Lean dependency spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Live bridges are **`MB1`–`MB11` incl. `MB4a`** (`MB8` retired from the live path); **`MB1`–`MB9`** stay packaged in `BridgeAssumptions`, with **`MB4a`**, **`MB10`**, and **`MB11`** threaded explicitly.
+The Lean dependency spine (`formal/`) checks logical dependencies and finite separations; it does **not** prove deployed safety. Live bridges are **`MB1`–`MB11` incl. `MB4a`** (`MB8` retired from the live path); `BridgeAssumptions` packages the axioms.
 
 High-value work:
 
 - Strengthening the spine per [`formal/README.md`](formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](formal/LeanProofSpineImplementationBrief.md)
 - **Field-agenda formalization** — shared finite fragment in `formal/AlignmentProofSpine/Field/` linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions (see Appendix G gem on field formalization)
-- Closing chapter ↔ Lean mapping gaps listed in `metadata/TODO.md` (§ Lean proof spine)
+- Closing chapter ↔ Lean mapping gaps listed in the Spine lane checklist, [`drafts/plans/spine/spine.md`](drafts/plans/spine/spine.md)
 
 Build/check: `make lean` (same as `./formal/check.sh`; CI uses `--no-build` after `lake build`)
 
@@ -24,7 +24,7 @@ Build/check: `make lean` (same as `./formal/check.sh`; CI uses `--no-build` afte
 
 ## Building the simulations
 
-Five experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map; [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) for shared discipline — freeze, preregistration, blind generation, Witness rules):
+Five experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map; [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) for shared discipline — freeze, preregistration, blind generation, backtest rules):
 
 | Path | Role |
 |------|------|

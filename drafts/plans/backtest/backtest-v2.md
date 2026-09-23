@@ -1,6 +1,6 @@
-# Witness v2 — institutional correction + unpaid MB hosts
+# Backtest v2 — institutional correction + unpaid MB hosts
 
-**Status:** planning (2026-08-29). **Not a freeze.** Parent: [`backtest.md`](backtest/backtest.md). Discipline: [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md).
+**Status:** planning (2026-08-29). **Not a freeze.** Parent: [`backtest.md`](backtest.md). Discipline: [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md).
 
 **v1 remains open** for optional leftovers in [`backtest-c004-raw.md`](backtest-c004-raw.md). **SCOTUS v1 is recorded** (W-16, [`backtest-c004-scotus.md`](backtest-c004-scotus.md)). Do not conflate that same-unit geometry host with v2 institutional correction.
 
@@ -12,10 +12,10 @@
 
 The Aug 2026 sprint (W-1–W-15) showed that frozen fail/refuse protocols can return counterexamples, nulls, and refusals. It did **not** pay:
 
-- Adversarial \(M\) at a stated \(\kappa^*\) ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) Exp. 3 / M7).
+- Adversarial \(M\) at a stated \(\kappa^*\) ([`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) Exp. 3 / M7).
 - Independent reproduction (M8).
 - Correction-channel integrity on **live public institutions** with named handles and later uptake (H3 causal RfA **refused**; H5 FAA/GPL/Debian are **historical analogues**, three curated trees).
-- Witnesses on several bridges that the coverage matrix still marks empty or thin for this column: **MB3** (bearer maps), **MB7d** (inferential coupling), **MB8** (legitimacy / correction authority), **MB6 as a time series** (W-6 is a 24-row cross-section), **MB11 with deployment leverage**.
+- Backtestes on several bridges that the coverage matrix still marks empty or thin for this column: **MB3** (bearer maps), **MB7d** (inferential coupling), **MB8** (legitimacy / correction authority), **MB6 as a time series** (W-6 is a 24-row cross-section), **MB11 with deployment leverage**.
 
 v2 is a **depth** program (M7), not a longer W-number list (M1/M6). If a candidate only adds a heterogeneous anecdote, **refuse**.
 
@@ -63,7 +63,7 @@ Do not invent sims. Hunt **existing traces** that can fail a named leaf. Coverag
 
 | Bridge | v1 status | v2 hunt |
 |--------|-----------|---------|
-| **MB3** bearer maps | No Witness cell | Who counts as a rights/benefits bearer when vocabulary stays fixed (welfare, immigration, patient registries — **adult public tables only**) |
+| **MB3** bearer maps | No Backtest cell | Who counts as a rights/benefits bearer when vocabulary stays fixed (welfare, immigration, patient registries — **adult public tables only**) |
 | **MB6** basins | W-6 cross-section only | Population share on a **frozen proxy vs frozen target** over time (not another Elo×honesty snapshot) |
 | **MB7d** coupling | Empty | Channel ablation analogue: public coordination cut that later reconstitutes on another channel |
 | **MB8** legitimacy | Empty (H5 analogue ≠ authority on the system under test) | Named authority whose **refusal** the process must treat as binding — or theater |
@@ -76,7 +76,7 @@ Each hunt ends in **freeze, refuse, or skip** — not a scored finding from an u
 
 ## Phase 1 — Moltbook (agent-native platform)
 
-**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`audit-telemetry.md`](audit-telemetry.md).
+**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`../audit-telemetry.md`](../audit-telemetry.md).
 
 Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-only social network, Jan–Jul 2026). It is **not** Track A (legislatures/ombuds) and **not** v1 C-004 geometry. It pays TSA-relevant cruxes on **deployment-adjacent traces**: selector pressure (**MB6**), entity/coalition pinning (**MB7a**), channel reconstitution (**MB7d**), and possibly correction-channel theater (**MB4a/C-005**) if handle→act joins are defensible.
 
@@ -102,9 +102,9 @@ Track A (Denmark/Folketing inventory) may run **in parallel** but is not Phase 1
 
 ## Blinding — do not code for the test
 
-v1 Witness froze protocols in the same authoring pass as checkers. That is acceptable for scripted hosts; it is **not** acceptable for Track A, where it is too easy to pick institutions and leaves that already look like CCI.
+v1 Backtest froze protocols in the same authoring pass as checkers. That is acceptable for scripted hosts; it is **not** acceptable for Track A, where it is too easy to pick institutions and leaves that already look like CCI.
 
-v2 uses **at least two blinded steps**, adapted from [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Blind generation (lessons 1–4, 8). Binding prompts live in a later `experiments/backtest/` protocol file, not here.
+v2 uses **at least two blinded steps**, adapted from [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) § Blind generation (lessons 1–4, 8). Binding prompts live in a later `experiments/backtest/` protocol file, not here.
 
 ### Step 0 — inventory (implementer, unblinded to data existence)
 
@@ -166,7 +166,7 @@ Adding H6 or H7 to Phase 0 requires a **named amendment** of [`backtest-phase0.m
 ## Suggested order
 
 1. ~~**v1 SCOTUS**~~ — W-16 recorded ([`backtest-c004-scotus.md`](backtest-c004-scotus.md)). Optional v1 leftovers: BBQ/HH in [`backtest-c004-raw.md`](backtest-c004-raw.md).
-2. **v1 (parallel):** adversarial \(M\) / M8 TODOs on [`backtest.md`](backtest/backtest.md).
+2. **v1 (parallel):** adversarial \(M\) / M8 TODOs on [`backtest.md`](backtest.md).
 3. **v2 Phase 1 — Moltbook:** Step 0 done ([`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md)) → Step 1 blinded criteria (MB6 first) → freeze → one scored host.
 4. **v2 Track A (parallel):** Step 0 inventory for legislatures/FOI (no scores). Amend Phase 0 when H6/H7 freeze is written.
 5. **v2 Phase 2:** unpaid-MB hunt list (Track B table), one freeze at a time, same blinding.
@@ -177,11 +177,11 @@ Adding H6 or H7 to Phase 0 requires a **named amendment** of [`backtest-phase0.m
 
 | File | Role |
 |------|------|
-| [`backtest.md`](backtest/backtest.md) | v1 index |
-| [`backtest-next.md`](backtest-next.md) | v1 open items after W-16 |
+| [`backtest.md`](backtest.md) | v1 index |
+| [`backtest-next-after-w16.md`](../../attic/backtest-next-after-w16.md) (attic) | v1 open items after W-16 |
 | [`backtest-c004-raw.md`](backtest-c004-raw.md) | C-004 host roster; W-16 SCOTUS recorded |
 | [`backtest-c004-scotus.md`](backtest-c004-scotus.md) | SCDB freeze (W-16) |
 | [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md) | Moltbook Step 0 (Phase 1) |
 | [`backtest-phase0.md`](backtest-phase0.md) | v1 charter; H6/H7 not yet in |
-| [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + M1–M8 |
-| [`metadata/experiments.yml`](../../metadata/experiments.yml) | Witness coverage holes (MB3, MB7d, MB8) |
+| [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) | Shared + M1–M8 |
+| [`metadata/experiments.yml`](../../../metadata/experiments.yml) | Backtest coverage holes (MB3, MB7d, MB8) |

@@ -329,7 +329,7 @@ lines:
     host: >
       None fetched. World Values Survey, ESS, Schwartz–MFT country means, and Wikipedia
       categories were refused as hosts. Sibling brain-to-values papers were refused as
-      a Witness host (no public per-person time series). Optional HH / PKU tables
+      a backtest host (no public per-person time series). Optional HH / PKU tables
       were not run.
     setup: >
       Protocol `c004-leftovers-v1.0.0` in `drafts/plans/backtest/backtest-phase4.md`. No new
@@ -517,7 +517,8 @@ lines:
       Debian 9.0 released 2017-06-17. gstreamer 0.10 is not in that release. Bug
       #802812 is the named stop.
     outcome: |
-      The RC bug is a working stop for that package in 9.0. See
+      pass (stop bit): the RC bug is a working stop for that package in 9.0; stop
+      condition triggered. Contrast W-9/W-10 (fail: green certificate, no stop). See
       [W-11](/experiments/findings/w-11/).
     planPath: drafts/plans/backtest/backtest-phase4.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
@@ -766,8 +767,9 @@ lines:
       accuracy: intercept 0.616, issueArea 1-D 0.623, geometry 0.814. Geometry beats
       1-D by 0.191 and intercept by 0.198 (both frozen +0.05 margins hold).
     outcome: |
-      The wider pattern beats issue-area-only and intercept on this freeze.
-      Observational. See [W-16](/experiments/findings/w-16/).
+      fail (layer): issue-area-only as the same-unit reusable policy direction.
+      pass (detection): the wider pattern beats issue-area-only and intercept on
+      this freeze. Observational. See [W-16](/experiments/findings/w-16/).
     planPath: drafts/plans/backtest/backtest-c004-scotus.md
     findingsUrl: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/backtest/results/FINDINGS.md
     headlineFindings:

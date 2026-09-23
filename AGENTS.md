@@ -188,7 +188,7 @@ Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/
 
 ### Review artifacts (`review/`)
 
-Structured continuity review, split plans, and reviewer templates. Start with [`review/reviewer-guide.md`](review/reviewer-guide.md); active fix list in [`review/fix-plans-2026-06-22.md`](review/fix-plans-2026-06-22.md).
+Reviewer guide and templates. Start with [`review/reviewer-guide.md`](review/reviewer-guide.md). Open cross-cutting work is tracked only in `metadata/TODO.md`.
 
 ### Human docs (`docs/`)
 
@@ -203,11 +203,7 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 - **`HANDOFF.md`** — aggregated open work and recent themes; read first when resuming.
 - **`INDEX.md`** — recent session logs; older logs in **`archive/`**.
 - **`RECOVERY.md`** — one-line index of **pruned** logs only (superseded by a later session).
-- **`README.md`** — log template and retention policy.
-- **`INDEX.md`** — pointer to the above.
-- **`README.md`** — maintenance rules.
-
-Per-session `.md` log files are retired.
+- **`README.md`** — log template, retention policy, and maintenance rules.
 
 ## Git
 

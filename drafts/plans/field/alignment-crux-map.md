@@ -2,7 +2,7 @@
 
 Status: **draft listing + S-process ready** (2026-09-04). Awaiting funder submission / first contract send. Not funded yet.
 
-**Lane:** Field hub + [`experiments/lab-simulation/`](../../experiments/lab-simulation/) packaging. Sibling: [`field.md`](field.md) (MB homograph divergence in Lean + App B); this plan is the **funder-facing job map + outsider tests**, not spine work.
+**Lane:** Field hub + [`experiments/lab-simulation/`](../../../experiments/lab-simulation/) packaging. Sibling: [`field.md`](field.md) (MB homograph divergence in Lean + App B); this plan is the **funder-facing job map + outsider tests**, not spine work.
 
 **Non-goals:** New book chapters; new lab platform; Apollo; coverage/selection/oversight/substitution as billed *words*; claim that the field uses the map without documented use tests; discharge any `MB*` bridge.
 
@@ -34,7 +34,7 @@ Publish a **job-level** map for six crowded labels funders and newcomers actuall
 
 Cap table, utilities, durations, and contractor `reviews`: `funding-applications/alignment-crux-map/alignment-crux-map-s-process.md` (local; gitignored). Editable steps + chart: `funding-applications/alignment-crux-map/alignment-crux-map-s-process.steps.yml`, `plot_alignment_crux_map_s_process.py`.
 
-Grant listing (paste-ready): `funding-applications/alignment-crux-map/alignment-crux-map.md`. Public card: [`site/src/content/cards/funding/alignment-crux-map.md`](../../site/src/content/cards/funding/alignment-crux-map.md) (includes the S-process curve).
+Grant listing (paste-ready): `funding-applications/alignment-crux-map/alignment-crux-map.md`. Public card: [`site/src/content/cards/funding/alignment-crux-map.md`](../../../site/src/content/cards/funding/alignment-crux-map.md) (includes the S-process curve).
 
 ---
 
@@ -100,8 +100,8 @@ Homograph work (same English, different formal objects) continues in [`field.md`
 ## Related artifacts
 
 - `funding-applications/alignment-crux-map/` — listing, S-process, YAML, curve PNG/SVG (local; gitignored)
-- [`reference/field-agendas/`](../../reference/field-agendas/) — evidence index, bridges.yml, agenda YAML
-- [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex) — MB ↔ field crux
-- [`experiments/lab-simulation/`](../../experiments/lab-simulation/) — sim workplace
-- [`drafts/conversation-summaries/2026-08-28-alignment-crux-map.md`](../conversation-summaries/2026-08-28-alignment-crux-map.md) — session log
+- [`reference/field-agendas/`](../../../reference/field-agendas/) — evidence index, bridges.yml, agenda YAML
+- [`appendices/appB-bridge-crosswalk.tex`](../../../appendices/appB-bridge-crosswalk.tex) — MB ↔ field crux
+- [`experiments/lab-simulation/`](../../../experiments/lab-simulation/) — sim workplace
+- [`drafts/conversation-summaries/2026-08-28-alignment-crux-map.md`](../../conversation-summaries/archive/2026-08/2026-08-28-alignment-crux-map.md) — session log
 - Prior catalog: [AI Safety Interventions](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions)

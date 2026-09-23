@@ -113,15 +113,15 @@ Track every major claim with status, support, weakest link, and falsification cr
 
 **Claim:** (Grounding claim) This project's maps only matter if they stay connected to value-relevant reality under optimization pressure; alignment requires grounding viability, meaning changes in the value-relevant world reliably change the model state, correction signal, or uncertainty state in the right way.
 
-**Chapter(s):** Introduction, 3, 16, 20, 25, 42, 46, 47
+**Chapter(s):** Introduction, 3, 16, 21, 26, 42, 43
 
 **Status:** framework; adversarial sufficiency unproven
 
 **Support:**
 - ch03 defines grounding viability, conservative abstraction, and abstraction-gap exploitation
-- ch16/ch46 require value-bundle abstractions to move or become uncertain under value-relevant change
-- ch46 treats independent evidence, monitor integrity, dissent, exit, and uncertainty escalation as technical anti-capture validity conditions for correction
-- ch42 makes grounding the eighth safety-case layer; ch47 ties metric honesty to capture of grounding
+- ch16/ch21 require value-bundle abstractions to move or become uncertain under value-relevant change
+- ch26 treats independent evidence, monitor integrity, dissent, exit, and uncertainty escalation as technical anti-capture validity conditions for correction
+- ch42 makes grounding the eighth safety-case layer; ch43 ties metric honesty to capture of grounding
 - backtest host-trace: H2 Linux — `Reviewed-by` on 17 047/60 176 developer-labeled bug-introducing SHAs (layer fail: checked symbol green, later bug referent) (W-3); H5 GPL — GPLv2 source-with-object can stay green while user install handle is missing until GPLv3 §6 (silent-gap shape) (W-10)
 
 **Weakest link:**

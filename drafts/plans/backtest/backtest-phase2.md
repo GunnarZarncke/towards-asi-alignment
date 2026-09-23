@@ -1,8 +1,8 @@
-# Witness Phase 2 — protocol freeze
+# Backtest Phase 2 — protocol freeze
 
 **Frozen:** 2026-08-28. **Amended 2026-08-28 (richer sources):** H2 C-012/C-005/C-006 are **layer fail** on joined traces. H3 C-006 is **layer fail** (BetacommandBot). H3 causal RfA remains **refuse** (join, no control). Reopen only by amending this file.
 
-Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../experiments/backtest/).
+Not a sixth simulation line. Raw caches in [`experiments/backtest/data/`](../../../experiments/backtest/data/) (gitignored except README). Artifacts: [`experiments/backtest/`](../../../experiments/backtest/).
 
 ---
 

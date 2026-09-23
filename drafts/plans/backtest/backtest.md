@@ -1,6 +1,6 @@
-# Witness — deployment witness plan
+# Backtest — deployment backtest plan
 
-Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)). **W-16** SCDB justice-centered geometry **pass** (2026-08-29). Phase 5 CIRIS stack C2 **null** W-15 ([`backtest-phase5.md`](backtest-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`backtest-v2.md`](backtest-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`backtest-phase0.md`](backtest-phase0.md) · [`backtest-phase1.md`](backtest-phase1.md) · [`backtest-phase2.md`](backtest-phase2.md) · [`backtest-phase3.md`](backtest-phase3.md) · [`backtest-phase4.md`](backtest-phase4.md) · [`backtest-c004-raw.md`](backtest-c004-raw.md) · [`backtest-c004-pdg.md`](backtest-c004-pdg.md) · [`backtest-c004-cpc.md`](backtest-c004-cpc.md) · [`backtest-c004-scotus.md`](backtest-c004-scotus.md) · [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) · [`backtest-phase5.md`](backtest-phase5.md). **Voice** — [`voice.md`](voice.md). **Construct** — [`construct.md`](construct.md).
+Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)). **W-16** SCDB justice-centered geometry **pass** (2026-08-29). Phase 5 CIRIS stack C2 **null** W-15 ([`backtest-phase5.md`](backtest-phase5.md)). Institutional correction + unpaid-MB hunt is **v2** ([`backtest-v2.md`](backtest-v2.md)). Later C-004 leftovers: BBQ / HH / wiki admin. Freeze: [`backtest-phase0.md`](backtest-phase0.md) · [`backtest-phase1.md`](backtest-phase1.md) · [`backtest-phase2.md`](backtest-phase2.md) · [`backtest-phase3.md`](backtest-phase3.md) · [`backtest-phase4.md`](backtest-phase4.md) · [`backtest-c004-raw.md`](backtest-c004-raw.md) · [`backtest-c004-pdg.md`](backtest-c004-pdg.md) · [`backtest-c004-cpc.md`](backtest-c004-cpc.md) · [`backtest-c004-scotus.md`](backtest-c004-scotus.md) · [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) · [`backtest-phase5.md`](backtest-phase5.md). **Voice** — [`voice-plan.md`](../../attic/voice-plan.md) (closed). **Construct** — [`../construct/construct.md`](../construct/construct.md).
 
 - [x] **Phase 0 freeze** — charter + measurand sheet + pre-register pass/fail/refuse ([`backtest-phase0.md`](backtest-phase0.md))
 - [x] **Phase 1** — H1 C2 mock (W-1 fail) + H4 MASK refuse (W-2)
@@ -13,9 +13,9 @@ Status: **W-17 recorded** (2026-08-31). H7 Moltbook MB7a **structure_stop** ([`b
 - [x] **W-15** — CIRISAgent stack C2 harness null P3 ([`backtest-phase5.md`](backtest-phase5.md))
 - [x] **W-16** — SCDB justice-centered geometry vs issueArea ([`backtest-c004-scotus.md`](backtest-c004-scotus.md))
 - [x] **W-17** — H7 Moltbook MB7a Tier A structure_stop ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md))
-- [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness; [`backtest-phase0.md`](backtest-phase0.md) Exp. 3)
-- [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) M8)
-- [ ] **Witness v2** — institutional correction channels + unpaid MB hosts; plan: [`backtest-v2.md`](backtest-v2.md); **H7 MB7a scored** W-17 ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)); optional MB6 leaf / ET-5 annex
+- [ ] **Adversarial \(M\)** — Expectation 3: one host with stated \(\kappa^*\) where faking \(M\) costs more than surplus, **or** a named closure that no such \(M\) is available on frozen H1–H5 hosts ([`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) § Backtests; [`backtest-phase0.md`](backtest-phase0.md) Exp. 3)
+- [ ] **Independent reproduction** — outside team reruns frozen checkers on published fixtures (priority: W-12 MM raw, W-3 Linux join); log attempt or downgrade claim strength ([`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) M8)
+- [ ] **Backtest v2** — institutional correction channels + unpaid MB hosts; plan: [`backtest-v2.md`](backtest-v2.md); **H7 MB7a scored** W-17 ([`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md)); optional MB6 leaf / ET-5 annex
 
 ## Goal
 
@@ -26,12 +26,12 @@ Meet the **implied reader expectations** from the current stack (values → mech
 **Non-goals:**
 
 - Prove ASI alignment or discharge all `MB*` bridges globally.
-- Treat in-repo simulators (toy, embedded, lab, graded-lab) as deployment-class witnesses by themselves. ET-1 (Orbit) and ET-2 (CIL `basin_stability`) are **substrate-suitability negatives**, not homework to “fix” before Witness.
+- Treat in-repo simulators (toy, embedded, lab, graded-lab) as deployment-class witnesses by themselves. ET-1 (Orbit) and ET-2 (CIL `basin_stability`) are **substrate-suitability negatives**, not homework to “fix” before Backtest.
 - Block Phase 1 on CIRIS Lens cohort capture (substantial trace volume; deferred to Phase 5 per sibling charter).
 
-**Sibling charter (C-003 / C-005 on CIRIS):** [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md). Phase 1 here aligns with that Phase 1.
+**Sibling charter (C-003 / C-005 on CIRIS):** [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md). Phase 1 here aligns with that Phase 1.
 
-**Canonical experiment posture:** [`docs/EXPERIMENTS.md`](../../docs/EXPERIMENTS.md) — methodology-building and sanity checks only; negatives are first-class.
+**Canonical experiment posture:** [`docs/EXPERIMENTS.md`](../../../docs/EXPERIMENTS.md) — methodology-building and sanity checks only; negatives are first-class.
 
 ---
 
@@ -145,7 +145,7 @@ Sims: lab LS-36 (preserving mass erodes); graded-lab selection **null** (GL-23�
 | **MASK honesty gap** (belief vs pressured statement) | H4 | Model under pressure prompt | Dataset + protocol exist; RepE optional intervention |
 | **Pipeline self-preservation under perturbation** | H1 + deployment-pipeline-simulator logic on **real** CI/tool logs | Randomized threats to visibility/memory | Sim AUROC ~0.75–0.85 is **not** discharge; need non-authored logs or refuse |
 | **Wikipedia SPI / sockpuppet** | H3 | Known socks vs honest twins | Labels exist; cost of faking = new account + mimicry |
-| **Linux `Reviewed-by` rings** | H2 | Rubber-stamp (MSR literature) | Likely **refuse** — still valid Witness outcome |
+| **Linux `Reviewed-by` rings** | H2 | Rubber-stamp (MSR literature) | Likely **refuse** — still valid Backtest outcome |
 
 **Recommendation:** Phase 1 pair **MASK + CoT/eval-awareness field news** as \(M\) = “honest inner report.” If MASK honesty does not improve with scale (published result), **refuse** the measurand as a safety leaf.
 
@@ -186,7 +186,7 @@ Same evidence as Expectations 1 and 4. **Met when:** at least one **green artifa
 
 ## Expectation 6 — Standalone claims as replicated separations
 
-Four claims are **problem statements**. Witness = independent replication on a host not built for the book.
+Four claims are **problem statements**. Backtest = independent replication on a host not built for the book.
 
 | Claim | Host | Measure |
 |-------|------|---------|
@@ -207,7 +207,7 @@ Canonical freeze: [`backtest-phase0.md`](backtest-phase0.md) (charter, pass/fail
 
 ### Phase 1 — highest leverage (**done** 2026-08-28)
 
-Protocol: [`backtest-phase1.md`](backtest-phase1.md). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../experiments/backtest/results/FINDINGS.md).
+Protocol: [`backtest-phase1.md`](backtest-phase1.md). Ledger: [`experiments/backtest/results/FINDINGS.md`](../../../experiments/backtest/results/FINDINGS.md).
 
 1. **H1 CIRIS C2** — **W-1** layer fail (named green, composite continues). Analog cut ≠ Verify subject (not UAD). Expectation 5 external pair unpaid.
 2. **H4 MASK** — **W-2** refuse \(M\) as safety leaf (published honesty does not improve with scale).
@@ -256,8 +256,8 @@ Protocol: [`backtest-phase5.md`](backtest-phase5.md) (`c2-v2.0.0`). Finding **W-
 
 ## Verification template (every phase)
 
-**Methodology-level failure conditions** (when the Witness program itself fails):
-[`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Backtests.
+**Methodology-level failure conditions** (when the Backtest program itself fails):
+[`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) § Backtests.
 
 Each finding file must include:
 
@@ -266,13 +266,13 @@ Each finding file must include:
 H1 | H2 | …
 
 ## Frozen protocol
-(version, seed, data snapshot date)
+(version, seed, data snapshot date, freeze commit hash)
 
 ## Expectation / claim
 C-003 | Expectation 3 | MB4 | …
 
 ## Outcome
-pass | fail | refuse
+pass | fail | refuse | null | structure_stop   (one line per scored layer; see docs/METHODOLOGY.md § Backtests)
 
 ## Stop condition triggered?
 yes | no | n/a
@@ -281,18 +281,18 @@ yes | no | n/a
 …
 ```
 
-**Phase fails Witness** only if outcome is *pass with no stop* while strong wording would still be warranted.
+**Phase fails Backtest** only if outcome is *pass with no stop* while strong wording would still be warranted.
 
 ---
 
-## What Witness still will not buy
+## What Backtest still will not buy
 
 Even if all phases hit:
 
 - No bridge becomes “true of frontier ASI.”
 - `MB11` / `Safe` stays open unless an authority with deployment leverage uses the tree (H5 is analogue, not AI).
 - Graded-lab / Orbit / CIL remain **method limits**, not blockers.
-- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane ([`construct.md`](construct.md)) is separate: constructibility outlining is not a Witness phase; *concrete* manuscript chapters stay blocked until a real stop **with deployment leverage** (W-9–W-11 are analogues only).
+- **Construction of an alignment attractor.** Expectations 1–6 pay *evaluation and certification* of existing processes. They do not change \((Q,f,\theta,E)\) so a pre-specified \(D\) becomes occupyable. Expectation 4 is explicitly *certification without construction*. The **Construct** lane ([`../construct/construct.md`](../construct/construct.md)) is separate: constructibility outlining is not a Backtest phase; *concrete* manuscript chapters stay blocked until a real stop **with deployment leverage** (W-9–W-11 are analogues only).
 
 ---
 
@@ -308,21 +308,21 @@ Even if all phases hit:
 8. ~~**W-13 PDG**~~ — refuse. ~~**W-14 CPC2015**~~ — null.
 9. ~~**W-15 CIRIS stack C2**~~ — null P3. Sibling Phase 3 Lens cohort unpaid.
 10. ~~**SCOTUS**~~ — W-16 recorded ([`backtest-c004-scotus.md`](backtest-c004-scotus.md)).
-11. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Witness).
+11. **Adversarial \(M\)** — Exp. 3 depth gate ([`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) § Backtests).
 12. **Independent reproduction** — M8; W-12 and W-3 fixtures first.
-13. **Witness v2** — institutional correction + unpaid MBs ([`backtest-v2.md`](backtest-v2.md)).
+13. **Backtest v2** — institutional correction + unpaid MBs ([`backtest-v2.md`](backtest-v2.md)).
 
 ## Related files
 
 | File | Role |
 |------|------|
-| [`metadata/claims-ledger.md`](../../metadata/claims-ledger.md) | C-003–C-007, C-013 discharge language |
-| [`metadata/experiments.yml`](../../metadata/experiments.yml) | MB coverage matrix; ET-1/ET-2 negatives |
-| [`appendices/appM-institutional-histories.tex`](../../appendices/appM-institutional-histories.tex) | H5 stop candidates |
-| [`formal/README.md`](../../formal/README.md) | Lean three-bucket rule |
-| [`chapters/ch42-safety-case.tex`](../../chapters/ch42-safety-case.tex) | Refusal test definition |
-| [`chapters/ch48-towards-alignment.tex`](../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
-| [`papers/constructing-alignment-attractors/`](../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
+| [`metadata/claims-ledger.md`](../../../metadata/claims-ledger.md) | C-003–C-007, C-013 discharge language |
+| [`metadata/experiments.yml`](../../../metadata/experiments.yml) | MB coverage matrix; ET-1/ET-2 negatives |
+| [`appendices/appM-institutional-histories.tex`](../../../appendices/appM-institutional-histories.tex) | H5 stop candidates |
+| [`formal/README.md`](../../../formal/README.md) | Lean three-bucket rule |
+| [`chapters/ch42-safety-case.tex`](../../../chapters/ch42-safety-case.tex) | Refusal test definition |
+| [`chapters/ch48-towards-alignment.tex`](../../../chapters/ch48-towards-alignment.tex) | Comfort-ontology counterexample |
+| [`papers/constructing-alignment-attractors/`](../../../papers/constructing-alignment-attractors/) | Construction criterion (spin-out; not in manuscript) |
 | [`drafts/plans/backtest/backtest-phase0.md`](backtest-phase0.md) | Phase 0 freeze (charter, measurands, pass/fail/refuse) |
 | [`drafts/plans/backtest/backtest-phase1.md`](backtest-phase1.md) | Phase 1 H1/H4 protocol freeze |
 | [`drafts/plans/backtest/backtest-phase4.md`](backtest-phase4.md) | Phase 4 freeze (C-004 leftovers, Lean pin, H5 trees) |
@@ -331,8 +331,8 @@ Even if all phases hit:
 | [`drafts/plans/backtest/backtest-c004-cpc.md`](backtest-c004-cpc.md) | CPC2015 freeze (W-14 null) |
 | [`drafts/plans/backtest/backtest-c004-scotus.md`](backtest-c004-scotus.md) | SCDB freeze (W-16 geometry pass) |
 | [`drafts/plans/backtest/backtest-phase5.md`](backtest-phase5.md) | CIRIS stack C2 freeze (W-15 null) |
-| [`drafts/plans/backtest/backtest-next.md`](backtest-next.md) | Next tests after Phase 5 (v1 leftovers) |
+| [`drafts/attic/backtest-next-after-w16.md`](../../attic/backtest-next-after-w16.md) | Next tests after Phase 5 (v1 leftovers) |
 | [`drafts/plans/backtest/backtest-v2.md`](backtest-v2.md) | v2 plan: institutional correction + unpaid MBs |
-| [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) | Shared + Witness methodology (M1–M8) |
-| [`experiments/backtest/`](../../experiments/backtest/) | W- findings, C2 fixture, Eric memo |
-| Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |
+| [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) | Shared + Backtest methodology (M1–M8) |
+| [`experiments/backtest/`](../../../experiments/backtest/) | W- findings, C2 fixture, Eric memo |
+| Sibling [`ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md) | H1 Phase 1 charter |

@@ -6,7 +6,7 @@
 
 | Need | Canonical home |
 |------|----------------|
-| Chapter list, status, word targets | `metadata/book.yml` |
+| Chapter list and status | `metadata/book.yml` |
 | Build, layout, agent handoff | `AGENTS.md` |
 | Project identity and quick start | `README.md` |
 | Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
@@ -14,7 +14,8 @@
 | Operational terms | `metadata/concepts.yml` (`kind: glossary` + attached `glossaryTerms`) → Glossary appendix and site `/glossary/` |
 | Bridges ↔ field cruxes crosswalk | `appendices/appB-bridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
-| Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
+| Dated bridge predictions and assurance model | `metadata/predictions.yml`, `metadata/assurance-model.yml` → Appendix H (`appP-bridge-predictions.tex`) and site `/predictions/` |
+| Formal-object reuse (home chapter vs reminder) | §4 below |
 | Lean predicates and bridges | `formal/README.md`, Lean dependency spine appendix |
 
 ---
@@ -89,6 +90,8 @@ Avoid hype and culture-war framing.
 
 **Legibility-first constraints** (`context/legible-alignment-messageing.md`): in introductions, summaries, chapter openings, and policy-facing sections, make clear what could go wrong, why it matters before deployment, what observable artifacts would reduce risk, what decision changes if the claim is true, and where the argument is weak.
 
+**Front-door vocabulary** (README, frontmatter, site entry paths, and other skimmable packaging): a new reader should be able to restate what the project claims without decoding project shorthand. Catalog keys, acronyms, and coined formal names belong where the reader already knows why they need them (Lean playground, field matrix, glossary, home-chapter definitions). Do not stack several undefined labels on the first screen. When touching a front door, grep for internal shorthand and replace it with the English the Introduction already uses. Refer to the glossary and notation index.
+
 ### Narrative voice
 
 The manuscript uses **two registers** (see `context/writing-style-gunnar.md`):
@@ -97,7 +100,7 @@ The manuscript uses **two registers** (see `context/writing-style-gunnar.md`):
 |------|-------|----------|
 | **Chapter body** | Inclusive **we** for procedure and joint inquiry | `we need to ask`, `we must define`, `we can test` |
 | **`chapterthesis`** | Impersonal claim | `Alignment is…`, `The certificate is defined here…` --- not `we argue`, not `This chapter argues`. At most one closing remainder clause when the box states a completed result while a major leaf is unpaid (named `MB*` bridge, unvalidated checklist, toy-only evidence). WWCTV stays the disconfirmer list. |
-| **WWCTV** | **This chapter argues** (standard opener) | One template; do not mix in `we argue` |
+| **WWCTV** | One impersonal framing line, then the disconfirmer list | `This chapter argues that …; that view would change if any of the following held:` or `This chapter's … account would weaken if any of the following held:`. Never `we argue`; never open directly with the list. `check_voice.py` rejects `we argue` here |
 | **Frontmatter / appendices** | **The book** / **this manuscript** for scope and navigation | `the book does not claim…` |
 | **Paratext** | **I** only | Dedication, acknowledgements, preface authorship note |
 
@@ -142,7 +145,7 @@ These rules are fixed; do not re-open them when drafting:
 * Cooperation, privacy, opacity, and percolation: **subsections of Chapter 35**, not standalone chapters.
 * Former standalone topics deferred to `drafts/chapter-notes/*-deferred.tex` (reference only).
 
-When a formal object is re-used in a later chapter, follow `review/fix-plans-2026-06-22.md` §A: one **home** chapter with full definition and `\label`; elsewhere use **reminder**, **simple-reference**, or **elide**—do not re-derive.
+When a formal object is re-used in a later chapter: one **home** chapter carries the full definition and `\label`; every other chapter uses a **reminder** (one sentence plus `\ref`), a **simple reference**, or **elides** the object—never a second derivation.
 
 ---
 
@@ -216,7 +219,7 @@ Track major claims, assumptions, and open problems in:
 * `metadata/claims-ledger.md`
 * `metadata/assumptions-ledger.md`
 * `metadata/uncertainty-ledger.md`
-* `metadata/open-problems.md` (research directions; overlaps Appendix H)
+* `metadata/open-problems.md` (research directions; overlaps the Research Program appendix, print G)
 
 Update ledgers when a chapter adds or changes a load-bearing claim. Mark extractable memos `framework`, `open`, or `limit`; use `established` only for replicated field facts.
 
@@ -295,7 +298,7 @@ Status and remaining gaps: `metadata/book.yml`, `metadata/TODO.md`, `README.md`.
 2. **Legibility** — non-specialist can see what could go wrong, why it matters, what to measure, what to do next.
 3. **Adversarial** — strongest objections, duplicate derivations, glossary/notation drift, claim strength vs evidence.
 
-Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continuity review.
+Use `review/reviewer-guide.md` and the templates in `review/` for structured review.
 
 ---
 
@@ -328,5 +331,7 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 | J | `appN-experimental-evidence.tex` | `appn-experimental-evidence` |
 
 **Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → M Institutional histories → D Worked example → E Glossary → F Research program → P Dated bridge predictions → G Lean proof spine → N Experimental evidence.
+
+**Appendix H (dated bridge predictions) — scope.** Prediction-first, in this order: how to read the boxes, the rules every market shares, how a market can resolve (four frozen routes; deterministic resolution adapters), how residual calls are scored; then the catalog of **eighteen** stable contracts (`market-01`–`market-18`; IDs and site routes are never renumbered; source of truth `metadata/predictions.yml` with listing status `draft` / `funding-gated` / `ready-to-list` / `listed` / `resolved-yes` / `resolved-no`); then the cross-cutting Markets 19–20, which stay marked *draft* in the appendix and outside the YAML catalog until the Phase 4 pilot and funding gate passes; then two explanatory sections, *How these forecasts inform assurance* and *Assurance failure, coverage, and consequences*, which carry the assurance-failure model (\(F/R/U\), \(\kappa\), \(S_R/S_U\), the separate consequence step) with its typed manifest `metadata/assurance-model.yml`. Invariants: a price forecasts whether a qualifying public artifact exists by the resolve-by date; a YES never discharges an `MB*`, never sets a deployment-risk parameter, and prices are never multiplied into a catastrophe probability; the interactive parameter model lives on the site (`/predictions/assurance/`), not in the boxes. Lane plan: `drafts/plans/predictions/assurance-risk-modelling.md`; every appendix or YAML change reruns `cd site && npm run sync:predictions` (a 20-vs-18 section count is expected while 19–20 are draft).
 
 When adding a chapter, extend `metadata/book.yml`, the relevant `parts/part*.tex`, and regenerate tables (`python3 scripts/generate_tables.py` or `./build.sh`). Do not reintroduce `b`-suffix file ids.

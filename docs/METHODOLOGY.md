@@ -172,7 +172,7 @@ Before freezing in `DESIGN.md` / `PLAN.md`:
 
 ---
 
-## backtests
+## Backtests
 
 Backtests apply the core habits to **existing traces** (Linux git, Wikipedia,
 published evals, CIRIS-shaped mock, institutional documents). It does **not**
@@ -185,9 +185,47 @@ use sim-style blind generation.
 ### Finding shape
 
 Every `W-*` entry includes: Host · Frozen protocol (version, snapshot) ·
-Expectation/claim · Outcome (`pass` | `fail` | `refuse` | `null`) · Stop
-condition triggered? · Artifact paths. Per-host freeze files are the
-preregistration record — committed with or before the first scored fixture.
+Expectation/claim · Outcome · Stop condition triggered? · Artifact paths.
+Per-host freeze files are the preregistration record — committed with or
+before the first scored fixture.
+
+**Outcome vocabulary (closed set; one word per scored layer).** `outcome` says
+what the frozen protocol returned about the *layer under test*; `stop` says
+whether a stop condition fired on the host. Never fold the second into the
+first.
+
+| `outcome` | Means |
+|-----------|-------|
+| `fail` | The layer failed on this host: the named leaf read green while the referent moved, or the checklist passed and an unlisted invariant broke |
+| `pass` | The layer held on this host: the frozen instrument predicted held-out behaviour, or the named stop bit actually stopped the thing (`pass (stop bit)`) |
+| `refuse` | The measurand cannot be adversarially verified on this host; a valid stop for Expectation 3 |
+| `null` | The protocol ran and returned no signal either way |
+| `structure_stop` | The protocol could not be applied because the host's structure does not fit the access model (distinct from `refuse`, which is about verifiability) |
+
+`stop` is `yes` / `no` / `n/a`. A green certificate that did not stop anything
+is `fail` + `stop: no` (W-9, W-10); a freeze rule that did exclude the package
+is `pass (stop bit)` + `stop: yes` (W-11). The word `fail` never means "the
+stop worked".
+
+**Compound results are separate lines, not one string.** When one host scores
+more than one layer (W-3, W-4, W-16), the ledger, `docs/EXPERIMENTS.md`, and
+`metadata/experiments-backtests.yml` each list every layer with its own
+outcome, so no surface can drop half of a verdict.
+
+**Appendix J classification (stated once, applied everywhere).** *Pos.* = the
+pre-registered primary measurand was scored and at least one book layer
+returned `fail` or `structure_stop`. *Ambig.* = the primary measurand was
+`refuse`d, whatever secondary layers returned (W-4: causal RfA uptake refused;
+Orangemoody and BRFA fails are secondary). *Neg.* = `pass`-only or `null`
+(W-14, W-15). A `pass (stop bit)` on an Expectation-4 tree counts as *Pos.*
+because the stop is the pre-registered leaf (W-11).
+
+**Freeze order (M2).** For W-1–W-17 the freeze file, fixture, and checker were
+co-committed in the same authoring pass; git order therefore gives no
+independent evidence that the freeze preceded scoring beyond the plan's
+"Predictions (registered before run)" sections. From W-18 on: commit the
+freeze file first, and record its commit hash in the ledger's "Frozen
+protocol" line and in any `*preregistration.json`.
 
 ### Host-level failure (Expectations 1–6)
 

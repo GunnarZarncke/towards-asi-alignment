@@ -178,6 +178,16 @@ nodes:
     leanCert: HiddenRouteBound
     leanPredicate: HiddenBIQBoundedSys
     outputClass: quantitative-bound
+  - id: filterCoverage
+    label: Filter-family coverage
+    leanCert: FilterCert
+    leanPredicate: FilterCoverageAdequate
+    outputClass: diagnostic-certificate
+    bundleMemberOnly: true
+    note: >
+      Member of CoherentCertificateBundle in Evidence.lean (filters field;
+      filter_cert_soundness adapter, not MB7b). No market is attached; listed
+      so the Lean bundle and this manifest name the same certificate leaves.
   - id: m10
     market: 10
     label: Local composition (Markets 4 and 9)
@@ -256,6 +266,18 @@ relations:
     to: m9
     type: evidential
     justification: Access model must be adequate before hidden-route bounds apply.
+  - from: m8
+    to: filterCoverage
+    type: evidential
+    justification: >
+      Filter coverage is read through the same access model; in Core the
+      MB7b bridge consumes AccessRobust together with FilterCoverageAdequate.
+  - from: filterCoverage
+    to: m15
+    type: logical
+    justification: >
+      CoherentCertificateBundle requires the filters field; composition cannot
+      be coherent without this leaf (Evidence.lean).
   - from: m4
     to: m10
     type: evidential

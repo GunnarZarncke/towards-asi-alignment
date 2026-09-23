@@ -34,18 +34,87 @@ const GRAPH_ORDER = [
   { id: "05-field-subsumptions", slug: "field-subsumptions", title: "Field-agenda crosswalk" }
 ];
 
-const MODULES = [
-  { file: "AlignmentProofSpine/Core.lean", title: "Core carriers and bridges", chapters: "foundations" },
-  { file: "AlignmentProofSpine/Boundaries.lean", title: "Boundaries and measurement", chapters: "6–7, 10, 36" },
-  { file: "AlignmentProofSpine/Capability.lean", title: "Capability and BIQ", chapters: "11–14, 33, 36" },
-  { file: "AlignmentProofSpine/Bundles.lean", title: "Value bundles and transport", chapters: "15–23, 30" },
-  { file: "AlignmentProofSpine/Correction.lean", title: "Correction channels", chapters: "25–29, 41–43" },
-  { file: "AlignmentProofSpine/Successors.lean", title: "Successors and continuity", chapters: "28–31" },
-  { file: "AlignmentProofSpine/Certification.lean", title: "Basins, layers, certification", chapters: "1–5, 35, 39, 44" },
-  { file: "AlignmentProofSpine/Adversarial.lean", title: "Adversarial measurement", chapters: "32–37" },
-  { file: "AlignmentProofSpine/Forgeability.lean", title: "Successor forgeability (MB10)", chapters: "8, 31, 43, 48" },
-  { file: "AlignmentProofSpine/Field.lean", title: "Field-agenda crosswalk", chapters: "Appendix B crosswalk" }
-];
+const SPINE_ROOT_FILE = path.join(repoRoot, "formal", "AlignmentProofSpine.lean");
+
+// Hand-written titles/chapter ranges for modules that predate the derived
+// list. Every other module gets its title from its own docstring heading
+// and its chapter column from the module table in AlignmentProofSpine.lean.
+const MODULE_OVERRIDES = new Map([
+  ["Core", { title: "Core carriers and bridges", chapters: "foundations" }],
+  ["Boundaries", { title: "Boundaries and measurement", chapters: "6–7, 10, 36" }],
+  ["Capability", { title: "Capability and BIQ", chapters: "11–14, 33, 36" }],
+  ["Bundles", { title: "Value bundles and transport", chapters: "15–23, 30" }],
+  ["Correction", { title: "Correction channels", chapters: "25–29, 41–43" }],
+  ["Successors", { title: "Successors and continuity", chapters: "28–31" }],
+  ["Certification", { title: "Basins, layers, certification", chapters: "1–5, 35, 39, 44" }],
+  ["Adversarial", { title: "Adversarial measurement", chapters: "32–37" }],
+  ["Forgeability", { title: "Successor forgeability (MB10)", chapters: "8, 31, 43, 48" }],
+  ["Field", { title: "Field-agenda crosswalk", chapters: "Appendix B crosswalk" }]
+]);
+
+function stripMarkdown(text) {
+  return text.replace(/[`*]/g, "").replace(/\s+/g, " ").trim();
+}
+
+function titleFromDocstring(text, fallback) {
+  // First paragraph after the `# AlignmentProofSpine.X` heading of the module
+  // docstring, cut at the first sentence and capped at a word boundary.
+  const doc = text.match(/\/-!\s*\n#\s*AlignmentProofSpine[^\n]*\n\s*\n([\s\S]*?)\n\s*\n/);
+  if (!doc) return fallback;
+  let title = stripMarkdown(doc[1].replace(/-\n\s*/g, "-"));
+  const sentenceEnd = title.search(/[.:;](\s|$)/);
+  if (sentenceEnd > 0) title = title.slice(0, sentenceEnd);
+  if (title.length > 90) title = `${title.slice(0, 90).replace(/\s+\S*$/, "")}…`;
+  // Drop a parenthetical the cut left unclosed.
+  const open = title.lastIndexOf("(");
+  if (open > 0 && title.indexOf(")", open) < 0) title = title.slice(0, open).trim();
+  return title || fallback;
+}
+
+/**
+ * Derive the module list from formal/AlignmentProofSpine.lean: the top-level
+ * `import AlignmentProofSpine.X` lines (source order), followed by any module
+ * rows of its docstring table that are not direct imports (e.g. `Field`,
+ * `Field/Finite/*`). Chapters come from the table's book-chapters column,
+ * titles from MODULE_OVERRIDES or the module's own docstring. Output shape is
+ * unchanged: `{ file, title, chapters }`.
+ */
+async function loadModules() {
+  const rootText = await readFile(SPINE_ROOT_FILE, "utf8");
+  const ordered = [];
+  const chaptersByModule = new Map();
+  for (const line of rootText.split("\n")) {
+    const imp = line.match(/^import AlignmentProofSpine\.([A-Za-z0-9_.]+)\s*$/);
+    if (imp) {
+      ordered.push(imp[1]);
+      continue;
+    }
+    // `| \`Module\` | nodes | chapters |` rows of the docstring table.
+    const row = line.match(/^\|\s*`([^`]+)`\s*\|(.*)\|\s*([^|]*?)\s*\|\s*$/);
+    if (!row) continue;
+    const key = row[1].replace(/\//g, ".");
+    const chapters = stripMarkdown(row[3]).replace(/^\((.*)\)$/, "$1");
+    if (chapters) chaptersByModule.set(key, chapters);
+    if (!ordered.includes(key)) ordered.push(key);
+  }
+
+  const modules = [];
+  for (const mod of ordered) {
+    const file = `AlignmentProofSpine/${mod.replace(/\./g, "/")}.lean`;
+    let text;
+    try {
+      text = await readFile(path.join(repoRoot, "formal", file), "utf8");
+    } catch {
+      console.warn(`[lean-spine] module ${mod} listed in AlignmentProofSpine.lean but ${file} not found`);
+      continue;
+    }
+    const override = MODULE_OVERRIDES.get(mod);
+    const title = override?.title ?? titleFromDocstring(text, mod);
+    const chapters = override?.chapters ?? chaptersByModule.get(mod) ?? "";
+    modules.push({ file, title, chapters });
+  }
+  return modules;
+}
 
 function nodeKind(id) {
   if (/^MB\d/.test(id)) return "bridge";
@@ -240,11 +309,12 @@ async function renderGraphSvgs(graphs) {
 }
 
 async function main() {
-  const [graphs, playgrounds, ledger, cardIndex] = await Promise.all([
+  const [graphs, playgrounds, ledger, cardIndex, modules] = await Promise.all([
     loadGraphs(),
     loadPlaygrounds(),
     loadLedgerNodes(),
-    loadCardNodeIndex()
+    loadCardNodeIndex(),
+    loadModules()
   ]);
 
   for (const graph of Object.values(graphs)) {
@@ -282,7 +352,7 @@ async function main() {
     ],
     graphs,
     graphOrder: GRAPH_ORDER.map((g) => g.slug),
-    modules: MODULES,
+    modules,
     nodes,
     playgrounds,
     ledger

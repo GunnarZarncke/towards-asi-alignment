@@ -2,7 +2,7 @@
 
 Single source for Appendix A (notation index). Regenerate the typeset index with `python3 scripts/generate_notation_appendix.py` (also run from `./build.sh`).
 
-Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predicates: `formal/README.md`, `appendices/appG-lean-proof-spine.tex` (Lean dependency spine appendix). Operational terms (not symbols): `metadata/concepts.yml`, Appendix F.
+Cross-chapter reconciliation: the June 2026 §C pass (now `review/attic/fix-plans-2026-06-22.md`; chapter ids there predate the renumber). Formal predicates: `formal/README.md`, `appendices/appG-lean-proof-spine.tex` (Lean dependency spine appendix). Operational terms (not symbols): `metadata/concepts.yml`, Appendix F.
 
 ## Maintainer notes
 
@@ -14,7 +14,7 @@ Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predi
 
 **§C16 terminology:** *capacity* = $C_{\mathrm{raw}}$; *integrity* = vector/status $CCI$; scalar projections should be marked $CCI_\lambda$. Retired: $C_{\text{corr}}$ (except ch05 $C_{\text{corr}}^{\text{society}}$). Goodharting lowers integrity via $M$ or invalidates grounding; residual ontology translation loss is \(O_{\mathrm{trans}}\).
 
-**Seven conserved successor properties (ch48):** boundary closure, memory lineage, bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity — defined in ch48; ch48 groups them for audit.
+**Seven conserved successor properties (ch31):** boundary closure, memory lineage, bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity — defined in ch31; ch33 groups them for audit.
 
 ---
 
@@ -88,11 +88,11 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 
 | Symbol | Definition | Home |
 |--------|------------|------|
-| $L$ | Log-evidence / predictive score (higher = better fit) | ch46 |
-| $DL(\cdot)$ | Description length (model-complexity cost) | ch46 |
-| $\Delta L_{\text{int}}$ | Intentional compression gain | ch46 |
-| $\Delta L_{\text{transport}}$ | Goal-transport compression gain | ch46 |
-| $\Delta L_T$ | Transport decomposition (semantic, bundle, bearer, correction, successor) | ch46 |
+| $L$ | Log-evidence / predictive score (higher = better fit) | ch22 |
+| $DL(\cdot)$ | Description length (model-complexity cost) | ch22 |
+| $\Delta L_{\text{int}}$ | Intentional compression gain | ch22 |
+| $\Delta L_{\text{transport}}$ | Goal-transport compression gain | ch23 |
+| $\Delta L_T$ | Transport decomposition (semantic, bundle, bearer, correction, successor) | ch23 |
 
 ### Correction and integrity
 
@@ -106,12 +106,12 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $CCI_\lambda$ | Scalar projection of the CCI vector for exposition, not the certification object | ch26 |
 | $\mathrm{Control}(A)$ | Effective actuator control capacity | ch11 |
 | $\mathrm{RiskGap}(A)$ | $\mathrm{Control}(A)-\mathrm{CCI}(A)$ | ch33 |
-| $\mathrm{Risk}(A)$ | Certification risk functional | ch48 |
+| $\mathrm{Risk}(A)$ | Certification risk functional (Lean `Certification.lean`; manuscript uses $\mathrm{RiskGap}$) | ch33 |
 | $\mathrm{SelfControlGap}(A)$ | Self-control minus correction demand | ch32 |
-| $L,M,R,O_{\mathrm{trans}}$ | CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss | ch46 |
-| $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights | ch46 |
+| $L,M,R,O_{\mathrm{trans}}$ | CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss | ch26 |
+| $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights | ch26 |
 | $U_H$ | Human value-update operator ($V_{t+1}=U_H(V_t,E_t,D_t)$; `eq:human-value-update-ch04`) | ch04 |
-| $U_S$ | System correction-update operator | ch46 |
+| $U_S$ | System correction-update operator | ch25 |
 | $V_t$ | Schematic value state in that update; later chapters introduce projected tuples | ch04 |
 | $C_H$ | Human correction capacity | ch29 |
 
@@ -119,8 +119,8 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 
 | Symbol | Definition | Home |
 |--------|------------|------|
-| $\text{Succ}(A)$ | Successors of agent $A$ | ch46 |
-| $\mathcal S_{\text{certified}}$ | Certified successor class | ch48 |
+| $\text{Succ}(A)$ | Successors of agent $A$ | ch30 |
+| $\mathcal S_{\text{certified}}$ | Certified successor class | ch30 |
 | $\mathcal C$ | Certified class in the dynamical guarantee | ch03 |
 | $\delta$ | Catastrophic-drift probability bound | ch03 |
 | $\tau$ | Self-transparency $1-I(M;\hat M)/H(M)$ | ch32 |
@@ -135,14 +135,14 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 
 | Symbol | Definition | Home |
 |--------|------------|------|
-| $\kappa_{ij}$ | Cooperativity index | ch48 |
-| $\varphi$ | Cooperation order parameter | ch48 |
-| $\varphi_c$ | Percolation threshold for cooperation | ch48 |
-| $\chi$ | Artifact conductivity | ch46 |
-| $\chi_{ij}(a)$ | Artifact conductivity on edge $(i,j)$ for artifact $a$ | ch48 |
+| $\kappa_{ij}$ | Cooperativity index (`eq:kappa-coordination`; value-sensitive $\kappa^V_{ij}$ in ch35) | ch13 |
+| $\varphi$ | Cooperation order parameter | ch13 |
+| $\varphi_c$ | Percolation threshold for cooperation (`eq:cooperation-percolation`) | ch13 |
+| $\chi$ | Artifact conductivity | ch37 |
+| $\chi_{ij}(a)$ | Artifact conductivity on edge $(i,j)$ for artifact $a$ | ch37 |
 | $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch35 |
-| $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch46 |
-| $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch46 |
+| $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch36 |
+| $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch36 |
 | $GLI$ | Goal-laundering index | ch40 |
 | $D_G$ | Goal-layer divergence score | ch40 |
 | $\Omega_Q$ | Selective opacity score | ch10 |
@@ -153,7 +153,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\mathrm{InvFit}_E(a\mid D)$ | Invasion fitness: rare-type deployment growth in resident environment $D$ | ch34 |
 | $M_{\mathrm{sel}}$ | Selector manipulation bound in $\vec{\Pi}(A)$ | ch34 |
 | $\mathrm{AdvVerif}$ | Adversarial verification meaningful (preservation coordinate) | ch34 |
-| $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch46 |
+| $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch34 |
 
 ### Conventions
 
@@ -162,5 +162,5 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $K$ vs $B$ | $K$ = capability; $B$ = value bundle (never swap) | ch11 |
 | $N_{\mathrm{proxy}}$ vs $K_X$ vs $K_{\mathrm{coll}}$ | Proxy-throughput count (ch34) vs blanket competence (ch11) vs collective competence (ch13) | ch34 |
 | $k$ | Bundle dimension count (not $m$) | ch18 |
-| $\Delta L$ sign | Positive gain = richer model earns its complexity cost | ch46 |
+| $\Delta L$ sign | Positive gain = richer model earns its complexity cost | ch22 |
 | Bundle catalogue | New bundle dimensions are added in ch16, not locally elsewhere | ch16 |

@@ -12,7 +12,7 @@ experiment folder.
   Backtest Phase 0–3: [`drafts/plans/backtest/backtest-phase0.md`](../drafts/plans/backtest/backtest-phase0.md),
   [`backtest-phase1.md`](../drafts/plans/backtest/backtest-phase1.md),
   [`backtest-phase2.md`](../drafts/plans/backtest/backtest-phase2.md),
-  [`backtest-phase3.md`](../drafts/plans/backtest/backtest-phase3.md). **W-1**–**W-15** recorded.
+  [`backtest-phase3.md`](../drafts/plans/backtest/backtest-phase3.md). **W-1**–**W-17** recorded.
   Methodology: [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md).
   **CIRIS Phase 2:** CIRISAgent integration harness (**W-15** null).
   **Sibling Phase 3 (deferred):** Lens cohort + Coherence Ratchet battery (≥3 agents
@@ -32,4 +32,4 @@ experiment folder.
 - [`toy-simulation/TODO.md`](toy-simulation/TODO.md) — multiresolution alignment
   toy simulation, bridge coverage, and red-team work.
 - [`embedded-simulation/TODO.md`](embedded-simulation/TODO.md) — v3 embedded audit experiment; run: `python3 run.py`.
-- [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) — open backtest depth gates (adversarial \(M\), independent reproduction). Checklist: [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md), [`backtest-next.md`](../drafts/plans/backtest/backtest-next.md).
+- [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md) — open backtest depth gates (adversarial \(M\), independent reproduction). Checklist: [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md).

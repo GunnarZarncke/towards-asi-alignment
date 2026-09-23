@@ -33,7 +33,10 @@ Disastrous results are to be expected \ldots\ wherever two agencies essentially 
 \authbarneedspace
 \section{The Standard Picture and Its Failure}
 \begin{authbar}{GZ+AI}
-%TODO: Needs a structuring intro. Suggestion of a tripart structure: There is an OBJECT (AI or some mesaoptimizer), a SUBJECT (Humans, capitalism, whatever) and a CONTENT (human values, or more). Before I continue here, would you agree that this is a good way of framing? or do you also object to tripart framing
+Any account of alignment fixes three things, usually without saying so: an \emph{object} that is being aligned, a \emph{subject} that does the aligning, and a \emph{content} that is supposed to pass from the one to the other.
+The standard picture fills the slots with a trained model, its developers, and human values.
+The claim of this chapter is that the first slot is filled wrongly for capable deployed systems, and that the error propagates: once the object is misidentified, no choice of subject or content repairs the safety case.
+We use the three slots as a reading aid for the rest of the chapter, not as a structure for the book.
 
 The standard picture imagines alignment as a simple instruction relation:
 \[
@@ -76,18 +79,11 @@ While these are important questions.
 But they assume that we already know what object is being aligned.
 Often we do not.
 
-%Paragraph reads like super-AI-slop :) TODO: rewrite
-
-A deployed AI system is not just a neural network.
-It is a service, an interface, a memory store, a tool environment, an evaluation suite, a user population, an operator team, a company, a market, and sometimes a state interest.
-Some of these parts learn.
-Some select.
-Some remember.
-Some reward.
-Some constrain.
-Some hide.
-Some amplify.
-Some are treated as background even though they shape the effective optimization process more than the model weights do.
+Take a coding assistant sold as a product.
+What we train is a network.
+What we deploy is that network plus a system prompt, a tool sandbox with shell access, a memory store that carries context across sessions, an evaluation suite that gates releases, a population of users who learn what it will and will not do, an operator team that patches the prompt every week, a company whose revenue depends on retention, and a market that rewards whoever ships first.
+The network learns during training; the users and the operator team learn during deployment; the evaluation suite selects; the memory store remembers; the market rewards; the sandbox constrains; the prompt hides part of the objective from the user.
+Only the first of these is what the alignment literature usually calls the system, yet several of the others shape the effective optimization more than the weights do.
 
 If we align the wrong object, we can get local success and global failure.
 This pattern---each component behaving acceptably while the aggregate drifts---is the failure mode Christiano describes, in which no single model is obviously the thing to align \autocite{christiano2019failure}.

@@ -65,7 +65,7 @@ Frozen fail/refuse protocols on hosts whose traces already exist (Linux git and 
 | **W-8** | Lean C2 pin | **Fail** named path green, `bypassCount = 2 > 0`; CCI floats refused |
 | **W-9** | FAA 737-8/9 | **Fail** AD 2018-23-51 AFM ⇏ stop; Order 2019-03-13 grounded |
 | **W-10** | GPLv2→v3 | **Fail** §3 source offer ⇏ install handle; GPLv3 §6 |
-| **W-11** | Debian Stretch | **Fail** RC #802812 kept gstreamer 0.10 out of 9.0 |
+| **W-11** | Debian Stretch | **Pass (stop bit)** RC #802812 kept gstreamer 0.10 out of 9.0: the freeze leaf actually refused the release (contrast W-9/W-10, where the green certificate stopped nothing) |
 | **W-12** | Moral Machine raw | **Fail** Number 1-D as same-unit policy; **pass** geometry detection (acc 0.682 vs 0.576 vs 0.529; \(n=20{,}000\) UserIDs). Bootstrap margins stay ≥0.05; Number collinear with type counts |
 | **W-13** | Pandemic Dictator Game | **Refuse** (no eligible public adult table; 2020 adolescent SPSS not scored) |
 | **W-14** | CPC2015 Exp. 1 | **Null** geometry vs ΔEV/intercept (acc 0.435 vs 0.542 vs 0.545; \(n=113\)) |

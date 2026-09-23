@@ -1,6 +1,6 @@
-# Witness — C-004 later host: CPC2015 raw (held-out latent direction)
+# Backtest — C-004 later host: CPC2015 raw (held-out latent direction)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). After [`backtest-c004-pdg.md`](backtest-c004-pdg.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). After [`backtest-c004-pdg.md`](backtest-c004-pdg.md). Not Phase 5. Do **not** retune W-12. Do **not** retune this file after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **same-unit detection-pipeline** check on repeated risky choice (not a moral bundle). Does **not** discharge MB2. Does **not** transfer W-12.
 

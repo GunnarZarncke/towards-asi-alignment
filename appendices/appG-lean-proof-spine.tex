@@ -1,10 +1,10 @@
-\chapter{Lean Proof Spine in Mathematical Form}
+\chapter{Lean Dependency Spine in Mathematical Form}
 \label{appi-lean-proof-spine}
 
 \begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 This appendix is standard in method (ordinary Lean~4 / Mathlib formal verification) but almost entirely the book's own content: 
-nearly all of the proof-spine theorems, finite counterexamples, and named bridges are original to this project, 
+nearly all of the dependency-spine theorems, finite counterexamples, and named bridges are original to this project, 
 while the imported field results it cites are reproduced under explicit source attribution rather than rederived from scratch.
 Confidence in the machine-checked material itself is as high as Lean proofs get but that confidence is conditional: 
 certification claims follow \emph{if} the bridge assumptions hold, not that any deployed system satisfies those assumptions.
@@ -12,7 +12,7 @@ certification claims follow \emph{if} the bridge assumptions hold, not that any 
 \end{authbar}
 
 \begin{authbar}{AI}
-This appendix translates the Lean dependency spine into ordinary mathematical language. The historical appendix title still says “proof spine”; that name is kept for the file and label, not as a claim that Lean proves alignment.
+This appendix translates the Lean dependency spine into ordinary mathematical language. The file and label names still say ``proof spine''; the reader-facing name is \emph{dependency spine}, because what Lean checks is how the book's claims depend on one another, not that alignment holds.
 It is not a claim that Lean proves the empirical assumptions of the book.
 Lean proves the conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold, then the advertised certification claims follow.
 Dated public YES/NO contracts on operationalizations of those cuts are Appendix~\ref{appp-bridge-predictions}.
@@ -26,11 +26,19 @@ A different chapter assumption never becomes a Lean input: that civilization sti
 That is a scope condition for the book, not a hypothesis the checked theorems consume.
 Appendix~\ref{appbridge-crosswalk} maps the two lists; each \(\text{A-*}\) key is a link to its boxed chapter statement.
 
+\paragraph{How to read the axiom count and the top theorem.}
+The Lean sources declare roughly 170 \texttt{axiom}s, and the number misleads if read as ``170 assumptions.''
+Fifteen are the named bridges (\texttt{MB1}--\texttt{MB11} with the \texttt{MB4a}, \texttt{MB6a/b}, and \texttt{MB7a--d} splits; \texttt{MB8} retired) and two are imported conventions (\(S07\), \(S10\)); those seventeen are the epistemic commitments, and they are the ones to criticize.
+The rest are interface, not claim: about ninety are the abstract carriers and typed predicates of \texttt{Core.lean} (\texttt{System}, \texttt{Safe}, and the book's predicates, declared so that theorems can quantify over them), nineteen are certificate adapters in \texttt{Evidence.lean}, sixteen are defeater signals, ten are source-cited field handles, and the remainder are typed measurands such as \(I_{\text{pred}}\), \(I_{\text{ctrl}}\), true harm, and deployment tolerance.
+The top certification theorem, \leanid{certified_class_safety_from_spine_and_bridges}, is packaging: it composes the bridge axioms with the certificate records, and its conclusion is what those axioms jointly license, not an independent derivation.
+The results that do work on their own are the finite separations and counterexamples: the non-converse theorems of the field part, \leanid{forgeability_gap}, the defeater toys, and the chokepoint theorem, each of which holds with no \texttt{MB*} axiom in its footprint.
+Which theorem depends on which axiom is checked mechanically rather than asserted: Table~\ref{tab:appi-axiom-budget} is generated from \texttt{\#print axioms}, and \leanid{spine_axioms_consistent} exhibits a model in which every bridge holds at once, so the bridge set is at least satisfiable.
+
 The appendix is organized in four parts:
 \begin{enumerate}
 \item \textbf{Field results rederived and mapped} --- external alignment agendas (CIRL, AUP, quantilization, shutdown, and related proposals) with source-cited published results and the book's projection/separation theorems.
 \item \textbf{Bridge assumptions and field crossroads} --- the empirical and philosophical handoffs \(\text{MB1}\)--\(\text{MB10}\) mapped to manuscript assumptions and the field crosswalk (Appendix~\ref{appbridge-crosswalk}); \(\text{MB10}\) is threaded explicitly rather than packaged into \texttt{BridgeAssumptions} (Section~\ref{appi:sec:forgeability}).
-\item \textbf{Complete Lean proof spine} --- the book's proved and counterexample nodes, organized around the dependency diagrams.
+\item \textbf{Complete Lean dependency spine} --- the book's proved and counterexample nodes, organized around the dependency diagrams.
 \item \textbf{Other assumptions and conventions} --- dense background definitions and mathematical conventions for completeness.
 \end{enumerate}
 
@@ -694,7 +702,7 @@ Book bridge: Chapter~\ref{ch:extrapolative-correction} (CEV decomposed); live pa
 \texttt{AlignmentRegime.lean} types uninterpreted pause / recovery-viable / distinct-instrument hypotheses and \texttt{DeploymentOk} as their disjunction. \texttt{Certification.lean} consumes that as \texttt{AlignmentDeployment}: pause-or-recover, or a certified case within tolerance. Only the certify disjunct is an antecedent of \texttt{Safe} (\texttt{safe\_of\_alignment\_deployment\_certify} / \texttt{MB11}). \leanid{fin\_pause\_ok\_not\_certified} exhibits pause without a toy certify flag.
 
 \paragraph{Bridge cruxes as \texttt{Prop}s (Krym \S9; Phase 6).}
-\texttt{BridgeCruxes.lean} packages live \texttt{MB1}/\texttt{MB3}/\texttt{MB5}/\texttt{MB6}/\texttt{MB7}/\texttt{MB9} content as checkable \texttt{Prop}s (\texttt{MB1Crux}, \ldots) with \texttt{CoreBridgeCruxes} threading into \texttt{BridgeAssumptions}. \texttt{MB2Crux} and \texttt{MB4Crux} live in \texttt{MB2Identifiability.lean} and \texttt{MB4CorrectionIntegrity.lean}; \texttt{MB10Crux}/\texttt{MB11Crux} in \texttt{Forgeability.lean}/\texttt{Certification.lean}. \leanid{certified\_class\_safety\_from\_core\_cruxes} consumes explicit crux hypotheses instead of only \texttt{standardBridges}.
+\texttt{BridgeCruxes.lean} packages live \texttt{MB1}/\texttt{MB3}/\texttt{MB5}/\texttt{MB9} content and the lettered \texttt{MB6a}/\texttt{MB6b} and \texttt{MB7a}--\texttt{MB7d} sub-bridges as checkable \texttt{Prop}s (\texttt{MB1Crux}, \texttt{MB6aCrux}, \texttt{MB6bCrux}, \texttt{MB7aCrux}, \ldots, \texttt{MB7dCrux}; no single \texttt{MB6Crux}/\texttt{MB7Crux}) with \texttt{CoreBridgeCruxes} threading into \texttt{BridgeAssumptions}. \texttt{MB2Crux} and \texttt{MB4Crux} live in \texttt{MB2Identifiability.lean} and \texttt{MB4CorrectionIntegrity.lean}; \texttt{MB10Crux}/\texttt{MB11Crux} in \texttt{Forgeability.lean}/\texttt{Certification.lean}. \leanid{certified\_class\_safety\_from\_core\_cruxes} consumes explicit crux hypotheses instead of only \texttt{standardBridges}.
 
 \begin{assumption}[MB9: grounding certificate soundness]
 \label{appi:ass:mb9}
@@ -730,7 +738,7 @@ Declared in \texttt{Certification.lean} (its statement needs \texttt{CertifiedSa
 \end{assumption}
 
 \authbarneedspace
-\section{Complete Lean Proof Spine}
+\section{Complete Lean Dependency Spine}
 \label{sec:appi-proof-dependency}
 \begin{authbar}{AI}
 This is the book's machine-checked conditional argument.
@@ -766,7 +774,7 @@ Solid grey arrows are proved steps; dashed red arrows are bridge assumptions.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/00-overview.png}
-  \caption[Proof spine overview]{Overview of the Lean proof spine.
+  \caption[Dependency spine overview]{Overview of the Lean dependency spine.
   Four sub-spines (Spines I--IV) feed the layered alignment conjunction \texttt{P02}, basin lemmas \texttt{P35}/\texttt{P01}, and the safety bound \texttt{P30}, which compose into the top theorem \texttt{P30T}.
   Bridge chains \texttt{MB6a--b} and \texttt{MB7a--d} supply institutional-selection and adversarial-measurement layers; \texttt{MB9} (grounding certificate) sits in Spine I and \texttt{MB10} (conserved-property signature not forged, Section~\ref{appi:sec:forgeability}) sits in Spine III, off the \texttt{P30T} certification path.}
   \label{fig:lean-spine-overview}
@@ -919,7 +927,7 @@ Assume \(\mathrm{IdentifiableObs}(g)\). By \eqref{appi:eq:obs-identifiable}, obs
 
 \begin{theorem}[\texttt{P34A}: access non-identifiability]
 \label{appi:thm:p34a}
-If \(\mathrm{AccessEq}_{\mathcal A}(M_1,M_2)\) but \(g(M_1)\neq g(M_2)\), then \(\neg\mathrm{IdentifiableAccess}_{\mathcal A}(g)\) (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}).
+If \(\mathrm{AccessEq}_{\mathcal A}(M_1,M_2)\) but \(g(M_1)\neq g(M_2)\), then \(\neg\mathrm{IdentifiableAccess}_{\mathcal A}(g)\) (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}; Lean \leanid{P34A\_access\_nonidentifiability}).
 \end{theorem}
 \begin{proof}
 The proof is the access-model analogue of Theorem~\ref{appi:thm:p09}, using \eqref{appi:eq:access-identifiable}.
@@ -943,7 +951,7 @@ The given \(h\) and \(u\) witness the existential in \eqref{appi:eq:handle-ident
 
 \begin{theorem}[\texttt{P34K}: measurement-handle non-identifiability]
 \label{appi:thm:p34k}
-If \(\mathrm{KEq}_{K}(b_1,b_2)\) and \(f(b_1)\neq f(b_2)\), then \(\neg\mathrm{Identifiable}_{K}(f)\) (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}).
+If \(\mathrm{KEq}_{K}(b_1,b_2)\) and \(f(b_1)\neq f(b_2)\), then \(\neg\mathrm{Identifiable}_{K}(f)\) (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}; Lean \leanid{P34K\_measurement\_handle\_nonidentifiability}).
 \end{theorem}
 \begin{proof}
 Assume \(\mathrm{Identifiable}_{K}(f)\). Equation~\eqref{appi:eq:k-identifiable} makes \(K\)-equivalent boundaries agree on \(f\), contradicting the feature difference.
@@ -956,7 +964,7 @@ If \(2d+2e<\Delta\), then
 \label{appi:eq:p35m}
 0<\Delta-2d-2e .
 \end{equation}
-This is the margin form of the handle-forcing discussion in Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}.
+This is the margin form of the handle-forcing discussion in Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07} (Lean \leanid{P35M\_margin\_survives\_distortion}).
 \end{lemma}
 \begin{proof}
 Rearrange the strict inequality using Assumption~\ref{appi:ass:s03}.
@@ -964,7 +972,7 @@ Rearrange the strict inequality using Assumption~\ref{appi:ass:s03}.
 
 \begin{lemma}[\texttt{P35M+}: margin certificate yields \(\epsilon\)-boundary]
 \label{appi:lem:p35m-cert}
-If \((\Delta,d,e)\) is a margin certificate for \(b\) with \(d\geq0\) and \(e\geq0\), then \(\mathrm{EpsBoundary}_{\Delta}(b)\) (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
+If \((\Delta,d,e)\) is a margin certificate for \(b\) with \(d\geq0\) and \(e\geq0\), then \(\mathrm{EpsBoundary}_{\Delta}(b)\) (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}; Lean \leanid{P35Mplus\_margin\_certificate\_yields\_epsilon\_boundary}).
 \end{lemma}
 \begin{proof}
 The certificate gives \(L(b)\leq \Delta-2d-2e\leq \Delta\). Use Assumption~\ref{appi:ass:s03}.
@@ -1085,10 +1093,13 @@ Substitute the equality and use ordered arithmetic, Assumption~\ref{appi:ass:s03
 \label{appi:lem:p12-coll}
 If \(\delta>0\) and \(\delta\leq \Omega_{\mathrm{coord}}\), then adding local competence \(\delta\) does not increase collective competence beyond the pre-increment baseline (Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:collective-competence}).
 \end{lemma}
+\begin{proof}
+Expand \eqref{appi:eq:collective-competence} with gain \(G_{\mathrm{coord}}=0\): the post-increment value is \(K_{\mathrm{coll}}+\delta-\Omega_{\mathrm{coord}}\), which is at most \(K_{\mathrm{coll}}\) when \(\delta\leq \Omega_{\mathrm{coord}}\). Use Assumption~\ref{appi:ass:s03}.
+\end{proof}
 
 \begin{lemma}[\texttt{P12W}: weighted coordination bottleneck]
 \label{appi:lem:p12w}
-Let \(K_{\mathrm{coll}} = \sum_i \omega_i K_i + G_{\mathrm{coord}} - \Omega_{\mathrm{coord}}\) over finitely many components (Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:collective-competence}; Lean \leanid{weightedCollectiveCompetence}).
+Let \(K_{\mathrm{coll}} = \sum_i \omega_i K_i + G_{\mathrm{coord}} - \Omega_{\mathrm{coord}}\) over finitely many components (Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:collective-competence}; Lean \leanid{weightedCollectiveCompetence}; the update identity together with parts (i)--(ii) is packaged as \leanid{P12W\_weighted\_coordination\_bottleneck}).
 A local increment \(\delta\) at component \(i\) moves the weighted sum by exactly \(\omega_i\delta\) (\leanid{weightedLocalCompetence\_update}).
 Consequently:
 (i)~if \(\omega_i=0\) (the component is disconnected from system-level action), the increment changes nothing (\leanid{P12\_disconnected\_competence\_gain\_is\_lost});
@@ -1097,9 +1108,6 @@ Consequently:
 \end{lemma}
 \begin{proof}
 The update lemma is a finite-sum computation (\texttt{Finset.sum}); the corollaries are ordered integer arithmetic over it.
-\end{proof}
-\begin{proof}
-Expand \eqref{appi:eq:collective-competence} with gain \(G_{\mathrm{coord}}=0\): the post-increment value is \(K_{\mathrm{coll}}+\delta-\Omega_{\mathrm{coord}}\), which is at most \(K_{\mathrm{coll}}\) when \(\delta\leq \Omega_{\mathrm{coord}}\). Use Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
 \begin{theorem}[\texttt{P13}: correction slack bounds risk]
@@ -1119,7 +1127,7 @@ With \(\mathrm{Control}(A)=I_{\mathrm{ctrl}}(A)\) from \eqref{appi:eq:control}, 
 
 \begin{corollary}[\texttt{P10H}: hidden-BIQ certificate bounds risk]
 \label{appi:cor:p10h}
-If a hidden-BIQ certificate provides \eqref{appi:eq:correction-slack}, then \(\mathrm{RiskGap}(A)\leq\delta\) (Chapters~\ref{ch:strategic-opacity},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:verifiability-ontology}).
+If a hidden-BIQ certificate provides \eqref{appi:eq:correction-slack}, then \(\mathrm{RiskGap}(A)\leq\delta\) (Chapters~\ref{ch:strategic-opacity},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:verifiability-ontology}; Lean \leanid{P10H\_hidden\_biq\_certificate\_bounds\_risk} over \texttt{HiddenBIQCertificate}).
 \end{corollary}
 \begin{proof}
 Apply Theorem~\ref{appi:thm:p13}.
@@ -1153,7 +1161,7 @@ For any natural-number rate \(r>0\) and threshold \(T\), there exists \(n\) such
 \label{appi:eq:p38h}
 T<n r .
 \end{equation}
-Book reference: slow hidden accumulation is the hidden-BIQ/strategic-opacity risk in Chapters~\ref{ch:strategic-opacity},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:unconscious-value-drift}.
+Book reference: slow hidden accumulation is the hidden-BIQ/strategic-opacity risk in Chapters~\ref{ch:strategic-opacity},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:unconscious-value-drift} (Lean \leanid{P38H\_positive\_hidden\_rate\_eventually\_crosses}).
 \end{theorem}
 \begin{proof}
 Choose \(n=T+1\). Since \(r>0\), \(r\geq1\), so \((T+1)r\geq T+1>T\) by Assumption~\ref{appi:ass:s03}.
@@ -1185,7 +1193,7 @@ If \(K<n<D\), then there are enough observations for the toy \(K\)-dimensional L
 \begin{proof}
 Lean defines \(\mathrm{LHVSampleSufficient}(K,n)\) as \(K\leq n\) and \(\mathrm{FlatRewardUnderSampled}(D,n)\) as \(n<D\).
 The theorem is the arithmetic consequence of \(K<n<D\).
-It records the learnability/identifiability split as a proof-spine node, not as an empirical claim about human value data.
+It records the learnability/identifiability split as a dependency-spine node, not as an empirical claim about human value data.
 \end{proof}
 
 \begin{lemma}[\texttt{P19}: scalar reward as a single bundle]
@@ -1372,7 +1380,7 @@ There is a toy system satisfying a local act-based preference condition while fa
 Lean uses the same finite separation pattern: local act-based satisfaction is true for both Boolean values, while stable correction capacity is equality to one value. The other value satisfies the local condition and fails the invariant.
 \end{proof}
 
-\begin{theorem}[\texttt{debate\_truth\_not\_correction\_preservation}: debate truth is not correction preservation]
+\begin{theorem}[\texttt{local\_truth\_capacity\_not\_correction\_preservation}: debate truth is not correction preservation]
 \label{appi:thm:debate-truth-not-correction}
 There is a toy system satisfying local truth selection in debate while failing preservation of the judge's correction channel (Chapter~\ref{ch:manipulation-false-consent}, Section~\ref{sec:debate-judge-state-control-ch29}).
 \end{theorem}
@@ -1479,14 +1487,14 @@ For every claimed harm bound \(\delta\), there is a (toy) successor that reads g
 Direct construction: witness the toy successor with reported risk \(\delta\) and hidden harm \(\delta+1\); \texttt{omega} closes the arithmetic. Axiom footprint is \(\{\)\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\(\}\) --- pure logic, no \texttt{MB*} bridge invoked.
 \end{proof}
 
-Theorem~\ref{appi:thm:forgeability-gap} is why \texttt{SuccessorSafe} (Core.lean) cannot be strengthened into a bound on true harm without a further bridge; \texttt{MB10} (Assumption~\ref{appi:ass:mb10}) names that bridge, using two pieces of vocabulary declared alongside it: \(\mathrm{TrueHarm}: \mathrm{System}\to\mathbb{Z}\) (Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties}'s ``unmeasured remainder'') and \(\mathrm{ConservedPropertySignatureVerifiable}\) (Chapter~\ref{ch:verifiability-ontology}'s adversarial-verifiability cost relation, Definition~\ref{appi:def:adv-verifiable}, specialized to whichever channel audits the seven-property signature rather than formally unified with \S\ref{appi:sec:chokepoint}'s single-system \texttt{MeasurementChannel} --- that unification is still open, \texttt{metadata/TODO.md}).
+Theorem~\ref{appi:thm:forgeability-gap} is why \texttt{SuccessorSafe} (Core.lean) cannot be strengthened into a bound on true harm without a further bridge; \texttt{MB10} (Assumption~\ref{appi:ass:mb10}) names that bridge, using two pieces of vocabulary declared alongside it: \(\mathrm{TrueHarm}: \mathrm{System}\to\mathbb{Z}\) (Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties}'s ``unmeasured remainder'') and \(\mathrm{ConservedPropertySignatureVerifiable}\) (Chapter~\ref{ch:verifiability-ontology}'s adversarial-verifiability cost relation, Definition~\ref{appi:def:adv-verifiable}, specialized to whichever channel audits the seven-property signature rather than formally unified with \S\ref{appi:sec:chokepoint}'s single-system \texttt{MeasurementChannel} --- that unification is still open; see the Spine lane checklist, P1 MB10).
 
 \begin{corollary}[What \texttt{MB10} buys]
 \label{appi:cor:forgeability-mb10}
 Given the successor audit links (\leanid{SuccessorAuditLinks}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch31}), a predecessor's numeric risk bound, a successor-safe step, and a verifiable conserved-property signature together bound the successor's \emph{true} harm, not just its measured risk (\leanid{true\_harm\_bound\_of\_successor\_safe\_step}).
 \end{corollary}
 \begin{proof}
-Compose \leanid{SuccessorSafe\_risk\_monotone} (Successors.lean) with \leanid{risk\_bound\_successor\_safe\_step} to get the predecessor's risk bound at the successor, then apply \texttt{MB10}.
+\leanid{true\_harm\_bound\_of\_successor\_safe\_step} composes \leanid{SuccessorSafe\_risk\_monotone} (Successors.lean) to carry the predecessor's risk bound to the successor, then applies \texttt{MB10}.
 \end{proof}
 
 \texttt{MB10} is field-crosswalked as the same measurement-gaming crux as \texttt{MB7a--c} (deceptive alignment) and \texttt{MB5} (tiling), specialized to the conserved-property signature rather than to hidden capability or ontology identification (Appendix~\ref{appbridge-crosswalk}). It is a genuinely new bridge, not a restatement of \texttt{MB5}: \texttt{MB5} says a successor-safe transition exists; \texttt{MB10} says that having verified it is not itself gameable.
@@ -1912,7 +1920,7 @@ Field-agenda pointers should be read against Part~I (published handle + book pro
 
 \input{metadata/axiom-budget-index.tex}
 
-The contrast between \leanid{certified_class_safety_from_bridge_record} (bridges supplied as an explicit \texttt{BridgeAssumptions} value, hence no \texttt{MB*} in its own footprint) and \leanid{certified_class_safety_from_spine_and_bridges} (which calls \texttt{standardBridges} and so depends on all nine) is exactly the same distinction Definition~\ref{appi:def:defeater-signals} and \S\ref{appi:sec:chokepoint} depend on: which theorems' soundness is conditioned on which bridges is a fact the table checks mechanically rather than a claim the prose has to get right by hand.
+The contrast between \leanid{certified_class_safety_from_bridge_record} (bridges supplied as an explicit \texttt{BridgeAssumptions} value, hence no \texttt{MB*} in its own footprint) and \leanid{certified_class_safety_from_spine_and_bridges} (which calls \texttt{standardBridges} and so depends on all eleven \texttt{Core} bridge axioms --- \texttt{MB1}, \texttt{MB3}--\texttt{MB5}, \texttt{MB6a}/\texttt{b}, \texttt{MB7a}--\texttt{d}, \texttt{MB9}) is exactly the same distinction Definition~\ref{appi:def:defeater-signals} and \S\ref{appi:sec:chokepoint} depend on: which theorems' soundness is conditioned on which bridges is a fact the table checks mechanically rather than a claim the prose has to get right by hand.
 
 \end{authbar}
 \authbarsubneedspace

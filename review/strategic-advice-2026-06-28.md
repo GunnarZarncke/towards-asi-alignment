@@ -1,5 +1,7 @@
 # Strategic Advice — Demonstration And Exposure
 
+> **Historical record (2026-06-28).** External advice preserved verbatim; not a task list. Status against it is assessed in `drafts/project/consistency-review-2026-09-22.md` §7.
+
 Recorded 2026-06-28. This note preserves external strategic advice about how to move the project from a coherent requirements decomposition to something that has survived contact with critics.
 
 ## One-Sentence Summary

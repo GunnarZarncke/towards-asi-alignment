@@ -2,7 +2,7 @@
 
 Status, structure, bibliography, and source canon for *Towards Superintelligence Alignment*.
 
-**Live draft status:** [`metadata/book.yml`](../metadata/book.yml) (chapter titles, review tags, word targets).
+**Live draft status:** [`metadata/book.yml`](../metadata/book.yml) (chapter titles, review tags, formal density).
 
 **Read online:** [companion site book index](https://towards-alignment.com/book/) · [PDF](https://towards-alignment.com/towards-superintelligence-alignment.pdf) · [Field hub](https://towards-alignment.com/field/) (agenda × bridge matrix). Policy-adjacent readers: [institutional translation](https://towards-alignment.com/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://towards-alignment.com/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://towards-alignment.com/cards/chapters/appm/full/)).
 
@@ -15,9 +15,10 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 | Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
 | Milestone | **Sixth** — backtests, problem-axis reader contract, bridge first-use at Ch. 10, companion-site product layers; all main chapters have first drafts and at least one review pass |
 | Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **10 appendices in the PDF** (A–J; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; dated bridge predictions are Appendix H, source file `appP-bridge-predictions.tex`; Appendix J is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) |
-| Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
-| Bibliography | **~250+ entries** across categorized `.bib` files |
-| Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
+| Chapters | 48, each with at least one review pass ([`metadata/book.yml`](../metadata/book.yml)); *reviewed* means feedback received and logged, not final; depth varies widely by chapter |
+| Bibliography | **~500 entries** across categorized `.bib` files, each with a one-line summary (`make check` verifies) |
+| Length | ~290k body words, ~1,440 PDF pages ([`metadata/book-stats.md`](../metadata/book-stats.md)); no word targets are maintained |
+| Predictions | Appendix H: 18 dated bridge predictions (`metadata/predictions.yml`; site [`/predictions/`](https://towards-alignment.com/predictions/)) |
 
 **v1.6.0 themes:** backtests (W-1–W-17) and shared [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md); four alignment questions and problem-axis (layer vs mechanism, capability dormancy, App F composition); bridge first-use at Ch. 10; Bergemann–Koh–Morris as field incentive implementation; companion-site product (essays, quiz, spec sheet, funding, Field hub v2 default).
 
@@ -25,7 +26,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **v1.4.0 themes:** Field agenda crosswalk (`reference/field-agendas/`); App B synced to MB1–MB11 incl. MB4a; plain-first terminology demotion + Appendix E ↔ inter-agenda glossary; field-claim Lean (finite defeaters, `FieldInterfaces`, `BridgeCruxes`); ET-3 closed, ET-4 hackathon paper + replay demo.
 
-**Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, citation review).
+**Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) (citation review queue, housekeeping boards) and per-chapter `% TODO[...]` comments. *Reviewed* chapters vary widely in depth: ch42 (safety case), ch47, and ch48 (closing synthesis) are the shortest load-bearing chapters at roughly 2–2.5k words each.
 
 For agent session continuity: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md).
 
@@ -37,16 +38,16 @@ The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summa
 
 | Part | Chapters | Focus |
 |------|----------|-------|
-| I. The Alignment Problem Reframed | 1–5 | Wrong object, civilization frame, dynamical guarantee, scope |
-| II. Agents, Boundaries, and Real Optimizers | 6–10 | Agent definition, boundaries, composite agency, opacity |
-| III. Capability Growth and Competence | 11–14 | Capability without task ontology, coordination, misalignment |
-| IV. Human Values as Needs Smoothed over Time | 15–19 | Value bundles, low dimensionality, bearers, tradeoffs |
-| V. Interpreting a System's Goals | 20–23 | Bundle inference, compression test, transport types |
-| VI. Correction Channels | 24–27 | Causal correction, integrity, extrapolation, manipulation |
-| VII. Successors, Reproduction, and Continuity | 28–31 | Successor test, conserved properties, certification |
-| VIII. Attractor Basins and Socio-Technical Selection | 32–35 | Selection environment, coupling, parasites, attractor |
-| IX. Safety Cases, Adversaries, and Open Questions | 36–40 plus 39b | Observation limits, goal laundering, safety case, lethality stress test |
-| X. The Philosophical and Civilizational Limit | 41–48 | Value change, drift, bearers, closing synthesis |
+| I. The Alignment Problem Reframed | 1–5 | Wrong object, civilization frame, dynamical guarantee, fixed values, scope |
+| II. Agents, Boundaries, and Real Optimizers | 6–10 | Agent definition, boundaries, grow/split/merge, composite agency, opacity |
+| III. Capability Growth and Competence | 11–14 | Capability without task ontology, boundary expansion, coordination, misalignment |
+| IV. Human Values as Needs Smoothed over Time | 15–20 | Value bundles, low dimensionality, bearers, tradeoffs, measurement |
+| V. Interpreting a System's Goals | 21–24 | Bundle inference, compression test, goal transport, transport types |
+| VI. Correction Channels | 25–29 | Causal correction, integrity, adversarial pressure, extrapolation, manipulation |
+| VII. Successors, Reproduction, and Continuity | 30–33 | Successor test, conserved properties, self-opacity, certification |
+| VIII. Attractor Basins and Socio-Technical Selection | 34–38 | Selection environment, coupling, parasites, attractor, conductive artifacts |
+| IX. Safety Cases, Adversaries, and Open Questions | 39–44 | Observation limits, goal laundering, multiscale checks, safety case, verifiability, lethality stress test |
+| X. The Philosophical and Civilizational Limit | 45–48 | Value change, drift, bearers, closing synthesis |
 
 Full titles and per-chapter status: [`metadata/book.yml`](../metadata/book.yml).
 
@@ -60,9 +61,9 @@ Prior work lives in sibling repositories and is mirrored under [`context/`](../c
 
 | Repo | Topics |
 |------|--------|
-| [`agency-detect`](../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, maintained boundaries, successors |
+| [`agency-detect`](../../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, maintained boundaries, successors |
 | [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | Hidden self-preservation in a simulated release pipeline; perturbation-based secret-loyalty audit |
-| [`brain-to-values`](../brain-to-values/papers/) | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
+| [`brain-to-values`](../../brain-to-values/papers/) | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
 
 Each PDF under `context/` has a markdown extract in [`context/extracts/`](../context/extracts/) (`python3 scripts/extract_pdf_to_md.py`). Full map: [`metadata/source-canon.md`](../metadata/source-canon.md).
 

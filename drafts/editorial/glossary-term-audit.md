@@ -2,7 +2,7 @@
 
 **Status:** manuscript demotion pass — **shipped** (2026-08-02). App E and site `concepts.yml` / glossaryTerms synced with inter-agenda glossary; card bodies updated for CCI, MB6, strategic opacity, MB7 BIQ disambiguation.
 
-**Source rules:** v1.1 demotion ([`archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`](conversation-summaries/archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md)); field translation from [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md).
+**Source rules:** v1.1 demotion ([`archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`](../conversation-summaries/archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md)); field translation from [`reference/field-agendas/inter-agenda-term-glossary.md`](../../reference/field-agendas/inter-agenda-term-glossary.md).
 
 **Out of scope here:** thin field-only headwords ([`glossary-prose-pass/THIN.md`](glossary-prose-pass/THIN.md)); App E rewrite; `metadata/concepts.yml` sync.
 

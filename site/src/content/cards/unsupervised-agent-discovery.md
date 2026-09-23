@@ -77,4 +77,4 @@ Claim strength is deliberately mixed. Controlled simulations recover known parti
 
 Start with [agency-detect](/cards/experiments/agency-detect/) for the original prototype, or [embedded simulation](/cards/experiments/embedded-simulation/) for the richest end-to-end negative ledger (ES-1: UAD equals loudest-actor heuristic in the default ecology).
 
-**Open direction (TODO):** [TimesFM-3](https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/) may be relevant as a pretrained backbone for a general agent-discovery model — multivariate traces, cross-series attention, zero-shot transfer — but it targets forecasting, not boundary certificates; see [`metadata/open-problems.md`](../../../metadata/open-problems.md).
+**Open direction (TODO):** [TimesFM-3](https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/) may be relevant as a pretrained backbone for a general agent-discovery model — multivariate traces, cross-series attention, zero-shot transfer — but it targets forecasting, not boundary certificates; see [`metadata/open-problems.md`](../../../../metadata/open-problems.md).

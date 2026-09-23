@@ -60,6 +60,7 @@ add_check() {
 
 add_check "generate" ./scripts/generate_manuscript_tex.sh
 add_check "structure" python3 scripts/check_structure.py
+add_check "markdown links" python3 scripts/check_markdown_links.py
 add_check "citations" python3 scripts/check_citations.py
 add_check "bibliography summaries" python3 scripts/check_bibliography_summaries.py
 add_check "claim spine" python3 scripts/check_claim_spine.py

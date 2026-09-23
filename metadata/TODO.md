@@ -6,7 +6,7 @@ Run `make todos` for inline `[STUB]`, `TODO`, and `FIXME` markers in chapters.
 
 **Canonical map (this file).** Session handoff: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md) points here — do not maintain a parallel open-work list.
 
-**Lane checklists** live only in [`drafts/plans/`](../drafts/plans/) `(`voice`, `backtest`, `field`, `spine`, `construct`). Below: work map, gates, and non-lane boards.
+**Lane checklists** live only in [`drafts/plans/`](../drafts/plans/) (`backtest`, `field`, `spine`, `construct`, `predictions`). Below: work map, gates, and non-lane boards.
 
 Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
@@ -16,9 +16,10 @@ Size: **S** <1 session · **M** 1–3 sessions · **L** multi-week.
 
 | Lane / board | Verb or role | Plan | Size | Depends on |
 |--------------|--------------|------|------|------------|
-| **Voice** | Dropping the strong wording still leaves factoring | [`drafts/plans/voice.md`](../drafts/plans/voice.md) | **closed** (2026-09-07) | — |
-| **Backtest** | This process, as it is, can fail a named leaf | [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md) | L (W-1–W-17) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`backtest-v2.md`](../drafts/plans/backtest/backtest-v2.md) — **Phase 1 Moltbook** W-17 structure_stop scored; optional MB6 leaf / ET-5. Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage. Draft recording rec: [`audit-telemetry.md`](../drafts/plans/audit-telemetry.md) (not v1 MS) |
+| **Voice** | Dropping the strong wording still leaves factoring | closed 2026-09-07 → [`drafts/attic/voice-plan.md`](../drafts/attic/voice-plan.md); front-door policy now `INSTRUCTIONS.md` §2 | **closed** | — |
+| **Backtest** | This process, as it is, can fail a named leaf | [`drafts/plans/backtest/backtest.md`](../drafts/plans/backtest/backtest.md) | L (W-1–W-17) | **Open:** adversarial \(M\); M8 reproduction. **v2:** [`backtest-v2.md`](../drafts/plans/backtest/backtest-v2.md) — **Phase 1 Moltbook** W-17 structure_stop scored; optional MB6 leaf / ET-5. Track A legislatures parallel. BBQ/HH optional. Lens unpaid; Construct needs stop with deployment leverage |
 | **Field** | Same matrix noun, different formal object | [`drafts/plans/field/field.md`](../drafts/plans/field/field.md) | M–L | — |
+| **Predictions** | Dated, resolvable bridge questions; YES ≠ discharge | [`drafts/plans/predictions/assurance-risk-modelling.md`](../drafts/plans/predictions/assurance-risk-modelling.md) (+ [`bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md), [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md)) | M (Phases 0–3 shipped) | Phase 4 pilot/listing of Markets 19–20 gated on funding or an external evaluator |
 | **Construct** | Named \(I\) moved geometry toward a frozen \(D\), or fail/refuse; **constructibility** = willing/able to build, not narrate | [`drafts/plans/construct/construct.md`](../drafts/plans/construct/construct.md) | L (plan open; v1 MS parked) | Concrete chapters: Backtest Exp. 4. Process-condition outline: not gated |
 | **Spine** | Chapter formalism matches Lean structure | [`drafts/plans/spine/spine.md`](../drafts/plans/spine/spine.md) · first-use [`bridge-first-use.md`](../drafts/plans/spine/bridge-first-use.md) | ongoing | Backtest Exp. 2 (fixture only) |
 | **Cite / Wait** | Blocked on external publish or author call | — | S each | — |
@@ -86,22 +87,33 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Add companion site to Substack (S).**
 - [ ] **Book map: generate “Also on the site” from book order (S).**
 - [ ] **Part hub cards (S).**
-- [ ] **ch10 alignment-faking experiment line (M).**
-- [ ] **Chapter-end exercises + online quiz (M).**
-- [ ] **Quiz distractors too easy (M).** Many wrong options remain near-jokes or obvious misses even after the length-tell pass. Later: rewrite as concept near-misses, then re-run the blind solver protocol (`site/src/content/quiz/BLIND_EVAL.md`) and the length gate. Do not treat the current 211/211 solve as a difficulty certificate.
+- [ ] **Chapter → demo back-links (M).** Demos are reachable only from `/demos/`; render a demo chip on `book/[id]` and chapter cards from `site/src/data/demos.json` (`chapterId` already present); `serve-demos.sh` lists 3 of 7.
+- [ ] **`check:concepts` in CI (S).** `site/scripts/build-search-index.mjs --check` always fails because the JSON embeds `generatedAt`; drop the timestamp (also in `src/data/chapter-reading-graph.json`, which dirties the tree on every build), then add `npm --prefix site run check:concepts` to `scripts/check.sh`.
+- [ ] **Predictions sync hygiene (S).** `sync-predictions.mjs` warns "appendix market sections (20) != YAML markets (18)" on every build (draft Markets 19–20 are intentional; downgrade to info); its `extractPriorTest` regex still matches the retired "As of 19 September 2026:" lead, so cards lost the "Closest existing work" section; `marketStatus` vocabulary is not enum-validated.
+- [x] **Online quiz (M).** `/quiz/` shipped 2026-08-27 (215-question bank; `make check` gates). Residual: chapter-end `QuizBlock` on `book/[id]` pages (currently cards and essays only).
+- [ ] **Quiz distractors too easy (M).** Many wrong options remain near-jokes or obvious misses even after the length-tell pass. Later: rewrite as concept near-misses, then re-run the blind solver protocol (`site/src/content/quiz/BLIND_EVAL.md`) and the length gate. The blind solve (211/211, 2026-08-27) predates the four questions added since and is not a difficulty certificate.
 
 ---
 
 ## Outreach board
 
 - [~] **Bridge prediction markets (M).** Working criteria [`drafts/predictions/bridge-prediction-market-criteria.md`](../drafts/predictions/bridge-prediction-market-criteria.md) (`0.4`); plans [`drafts/plans/predictions/bridge-prediction-markets.md`](../drafts/plans/predictions/bridge-prediction-markets.md) · [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../drafts/plans/predictions/assurance-risk-modelling.md). Phases 0–3 shipped (assurance manifest, draft Markets 19–20, `/predictions/assurance/` demo). Remaining: Phase 4 pilot/listing for 19–20, external funding submission, preset slots when artifacts resolve; Q1/Q2/Q6. Not LI.
+- [ ] **PRA scope-conditional parameters (S).** Event tree ([`lean_checked_bayesian_pra_event_tree.dot`](../drafts/plans/predictions/lean_checked_bayesian_pra_event_tree.dot)) now gates **`f_M,multi`** (Market 11 / MB7d, represented branch) and **`c_novel`** (Market 17 / U-17, consequence branch). Wire through: `metadata/assurance-model.yml`; assurance `.dot` (`f_M,multi` from Market 11); [`assurance-risk-modelling.md`](../drafts/plans/predictions/assurance-risk-modelling.md) + App P prose; `site` demo (`assurance-demo.ts`, synced JSON); extend \(q_{\mathrm{doom}}\) without double-counting \(\kappa\).
+- [~] **Standalone publish — anti-capture validity note (M).** Draft at [`papers/anti-capture-validity/`](../papers/anti-capture-validity/) (2026-09-23): validity condition, No-Bypass, separation certificate, Lean `MB4a` / `CompositePathBypass`, W-1 + W-4 instances, ends on Certification-Under-Manipulation. Next: author read; decide venue (LW/AF post vs arXiv note); optional second host before posting.
+- [ ] **Standalone publish — Goodhart-as-selector instrument (M).** W-5/W-6/W-12/W-16 tables as the result; not yet drafted.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
+- [ ] **Alignment Crux Map grant (M, funding-gated).** Draft listing and S-process text ready 2026-09-04; 12 deliverables unchecked until funded — [`drafts/plans/field/alignment-crux-map.md`](../drafts/plans/field/alignment-crux-map.md). Public record is the site funding card only (full applications are local, by design).
+- [ ] **LW wiki tag pilot / Iliad canon lessons (S each, unscheduled).** Sketches [`lw-wiki-tags.md`](../drafts/plans/lw-wiki-tags.md), [`iliad-communal-canon.md`](../drafts/plans/iliad-communal-canon.md).
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 
 ---
 
 ## Housekeeping board
 
+- [x] **`ch46` reference corrections (M).** Applied 2026-09-23 from [`drafts/project/ch46-corrections.md`](../drafts/project/ch46-corrections.md) (kept as audit trail). Residual: re-check other claim blocks' bare-number `Chapter(s)` lines in `claims-ledger.md` the same way (S).
+- [x] **Manuscript TODO resolutions (S–M).** Applied 2026-09-23 per [`drafts/project/consistency-review-2026-09-22.md`](../drafts/project/consistency-review-2026-09-22.md) §0.1: ch01 framing paragraph + example rewrite; ch39 episode floor + ch35 pointer; ch43 cruxes posed in App G §`sec:master-crux`; ch44 audit shape; ch42 checklist sentence; ch45 summary. Remaining `% TODO` comments: ch21 citation (Cite/Wait), ch38 formalize (Spine P3).
+- [x] **Backtest outcome vocabulary (S).** Implemented 2026-09-23: closed set `fail|pass|refuse|null|structure_stop` + separate `stop` field, compound results as separate lines, Appendix J Pos./Ambig./Neg. rule keyed on the primary measurand, M2 freeze-hash rule (`docs/METHODOLOGY.md` § Backtests; template in `backtest.md`). Relabelled W-11 (`pass (stop bit)`) and W-16 (two lines) in ledger, `docs/EXPERIMENTS.md`, YAML; cards regenerated.
+- [ ] **Audit-telemetry placement (S, author decision).** [`drafts/plans/audit-telemetry.md`](../drafts/plans/audit-telemetry.md): promote to a `docs/METHODOLOGY.md` instrumentation note, a backtest v2 host-export requirement, or Construct Family C — or attic.
 - [ ] **WWCTV → chokepoint forward refs (S, optional — may drop).** Per-chapter WWCTV boxes could forward-link to `SharedInstrumentHypothesis` / measurability steerability chokepoint ([`formal/AlignmentProofSpine/Chokepoint.lean`](../formal/AlignmentProofSpine/Chokepoint.lean)). Was Voice checklist item; not required for v1.
 - [ ] **Authorship bars — companion site (M).** PDF: `\authbar` on frontmatter, all 48 chapters, and wired appendices. **Site (partial):** section/subsection heading chips synced from `\authbar` keys (`AI` / `GZ+AI` / `GZ`); toggled via Notes panel button (`localStorage`). Still open: image prompts `{AI}`; optional reader legend.
 
@@ -111,18 +123,18 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial/editorial-guidance-eq-chain-placement.md`.
 - [ ] **Consider claims/assumptions ledger automation (S).** Decide YAML source vs manual.
 - [ ] **Review U-shaped coordination claim (S).** ch11/ch13 conjectural until downgrade or evidence.
-- [ ] **Grounding/safety-case layer completeness review (S).** ch46 eighth layer: derived vs provisional checklist.
-- [ ] **Perturbation-recognition crux (S).** ch47 `% TODO[open-crux]:` — bounded answer or downgrade.
-- [~] **ch48 inferential coupling / acausal trade (research).** Drafted; threshold calibration and probe-local coordination open.
-- [ ] **Inferential-coupling threshold calibration (research).** ch47/ch48 \(\tau_{\mathrm{ac}}\).
-- [ ] **Probe-local inferential coordination (research).** ch48 vs ch46 gap or mark unresolved.
-- [~] **Notation reconciliation (S).** ⟳ rows in `metadata/notation.md`; C12 basins → also [`spine.md`](../drafts/plans/spine/spine.md) P3; confirm `C_H` vs `C^H_t`.
+- [x] **Grounding/safety-case layer completeness review (S).** ch42 now states the eight-layer list is an assembled checklist, not a derived completeness result (2026-09-23); a derivation is Construct 2.0 material.
+- [x] **Perturbation-recognition crux (S).** Posed as a named open problem with success criteria in App G §`sec:master-crux` (2026-09-23), alongside the decisive-yet-undetectable-controller bound; tracked U-03 / U-14.
+- [~] **ch35 inferential coupling / acausal trade (research).** Drafted; threshold calibration and probe-local coordination open.
+- [ ] **Inferential-coupling threshold calibration (research).** ch35 \(\tau_{\mathrm{ac}}\); calibration deferred to ch43/ch44.
+- [~] **Probe-local inferential coordination (research).** Bounded 2026-09-23: ch39 §cumulative-evidence states the episode floor \(k \gtrsim \log(1/\alpha)/\delta^{2}\); ch35 WWCTV points to it; residual (does sub-floor coordination carry deployment leverage?) is in `metadata/open-problems.md` and App G.
+- [~] **Notation reconciliation (S).** No ⟳ rows remain in `metadata/notation.md` (legend only); remaining: C12 basins → also [`spine.md`](../drafts/plans/spine/spine.md) P3; confirm `C_H` vs `C^H_t`; home-chapter columns re-derived 2026-09-23.
 - [~] **Update-operator ontology audit (M).** Partial 2026-06-28 envelope refactor.
 - [~] **Terminology demotion follow-through (M).** `drafts/editorial/glossary-term-audit.md`, `drafts/editorial/glossary-prose-pass/THIN.md`.
 - [~] **Narrative voice consistency (S).** Optional; wire `check_voice.py` into `make check` if desired.
 - [ ] **Part-opener illustrations (S).**
 - [ ] **Optional: LaTeX PDF CI build test (S).** `.github/workflows/book-pdf.yml`; compile gate only.
-- [x] **Voice lane** — claim-strength voice, ledgers, front-door vocab, PDF de-center (partial). Plan closed 2026-09-07: [`drafts/plans/voice.md`](../drafts/plans/voice.md).
+- [x] **Voice lane** — claim-strength voice, ledgers, front-door vocab, PDF de-center (partial). Plan closed 2026-09-07: [`drafts/attic/voice-plan.md`](../drafts/attic/voice-plan.md).
 
 ---
 
@@ -132,6 +144,7 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 Major graded-lab backlog: [`experiments/graded-lab-simulation/REPRODUCTION.md`](../experiments/graded-lab-simulation/REPRODUCTION.md) — not itemized here.
 
+- [ ] **ch10 alignment-faking experiment line (M).** (moved from Site board)
 - [ ] **Graded-lab v3 — audit vocabulary drift (M).**
 - [ ] **Graded-lab v3 — review Q1 failure cascade from v1 freeze (S).**
 - [ ] **Review SOO relation to book adversarial scenarios (S).** `drafts/benchmarks/soo-benchmark-scenarios-from-book.md`.
@@ -145,7 +158,7 @@ CIRIS composite / boundary_decouple: **Backtest H1** — charter in sibling `cir
 
 Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
 
-- [x] Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · **`zarncke2026embedded-value-formation` manuscript wiring** — closed 2026-09-07: paper stays unpublished; ch15/ch45 project-derived prose + graded-lab Phase 3b suffice; no `\autocite` · *(see git for full list)*
+- [x] Voice lane (2026-09-07) · Problem-axis incorporation (2026-09-01) · Field spring-map demo (2026-09-18) · Spec-sheet page (2026-09-02) · Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · **`zarncke2026embedded-value-formation` manuscript wiring** — closed 2026-09-07: paper stays unpublished; ch15/ch45 project-derived prose + graded-lab Phase 3b suffice; no `\autocite` · *(see git for full list)*
 
 ---
 

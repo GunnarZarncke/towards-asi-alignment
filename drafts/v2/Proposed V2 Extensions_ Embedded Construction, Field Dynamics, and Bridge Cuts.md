@@ -1,4 +1,4 @@
-> **Status (2026-09-18):** reviewed; decisions locked in [`plans/embedded-v2.md`](plans/embedded-v2.md). This file is the source memo. 2.0 intro claim authorized; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential.
+> **Status (2026-09-18):** reviewed; decisions locked in [`../plans/construct/embedded-v2.md`](../plans/construct/embedded-v2.md). This file is the source memo. 2.0 intro claim authorized; \(P\) ≠ \(D_{\mathrm{joint}}\); lifecycle is a cycle (Preserve = property); matrix stays evidential.
 
 ## Summary
 

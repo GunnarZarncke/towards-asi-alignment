@@ -119,4 +119,4 @@ Pass 1 E extremes (for archive): highest ch02 5.80, ch09 5.60; lowest ch21 4.20.
 - [`INSTRUCTIONS.md`](../INSTRUCTIONS.md) §11 — covering lists vs later homes
 - [`REVIEWING_FOR_AGENTS.md`](../REVIEWING_FOR_AGENTS.md) — anti-pattern
 - [`metadata/concept-graph/README.md`](../metadata/concept-graph/README.md) — Part I `\eqref` contract
-- [`drafts/conversation-summaries/2026-08-26-early-chapter-demotion.md`](../drafts/conversation-summaries/2026-08-26-early-chapter-demotion.md) — session chronology (may be archived)
+- [`drafts/conversation-summaries/2026-08-26-early-chapter-demotion.md`](../drafts/conversation-summaries/archive/2026-08/2026-08-26-early-chapter-demotion.md) — session chronology (may be archived)

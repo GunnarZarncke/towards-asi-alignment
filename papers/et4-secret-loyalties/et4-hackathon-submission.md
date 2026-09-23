@@ -157,7 +157,7 @@ We built and audited a **pipeline-embedded secret loyalty** in a separately buil
 
 ## **References**
 
-1. Kwon, Lamerton, et al. *AIs with Secret Loyalties are a Serious but Addressable Threat* (hackathon agenda whitepaper; see [`secret-loyalties-whitepaper.pdf`](secret-loyalties-whitepaper.pdf) in this folder).
+1. Kwon, Lamerton, et al. *AIs with Secret Loyalties are a Serious but Addressable Threat* (hackathon agenda whitepaper; see [`../../context/ET4-context/secret-loyalties-whitepaper.pdf`](../../context/ET4-context/secret-loyalties-whitepaper.pdf) in this folder).
 2. Apart Research. *Secret Loyalties Hackathon*, July 2026. https://apartresearch.com/sprints/secret-loyalties-hackathon-2026-07-24-to-2026-07-26
 3. Zarncke, G. *Towards Superintelligence Alignment* — `lab-simulation` experiment line (`experiments/lab-simulation/`, repo above).
 

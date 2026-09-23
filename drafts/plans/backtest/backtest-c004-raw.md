@@ -1,6 +1,6 @@
-# Witness — C-004 same-unit bundle effect (Moral Machine raw)
+# Backtest — C-004 same-unit bundle effect (Moral Machine raw)
 
-**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest/backtest.md). Not Phase 5 (that remains CIRIS live). Not a sixth sim. Do **not** retune features, split, seed, or margins after seeing held-out scores.
+**Frozen:** 2026-08-28. Reopen only by amending this file. Parent: [`backtest.md`](backtest.md). Not Phase 5 (that remains CIRIS live). Not a sixth sim. Do **not** retune features, split, seed, or margins after seeing held-out scores.
 
 **Claim strength:** methodology-building. Pays a **policy-effect / reusable-direction** witness on one decision-making unit class (ch16 activation + policy effect; tradeoff geometry as held-out non-implication vs 1-D). Does **not** test LHCV \(L\to H\to C\). Does **not** discharge MB2.
 

@@ -1,6 +1,6 @@
 # Audit telemetry for AI agent projects
 
-**Status:** draft report (2026-09-05). **Not a freeze. Not v1 manuscript.** Candidate later for an audit recommendation (backtest v2 / Construct 2.0 Family C). Parent lanes: [`backtest-v2.md`](backtest-v2.md), [`construct.md`](construct.md). Empirical sources: in-repo simulations, ET-1/ET-2, backtests W-1–W-17 (esp. W-17 Moltbook MB7a).
+**Status:** draft report (2026-09-05). **Not a freeze. Not v1 manuscript.** Candidate later for an audit recommendation (backtest v2 / Construct 2.0 Family C). Parent lanes: [`backtest/backtest-v2.md`](backtest/backtest-v2.md), [`construct/construct.md`](construct/construct.md). Empirical sources: in-repo simulations, ET-1/ET-2, backtests W-1–W-17 (esp. W-17 Moltbook MB7a).
 
 **Claim strength:** methodology-building. This is a **recording recommendation**, not a claim that logging discharges `MB*` or that frontier systems are auditable. A green dashboard on the wrong layer is not a pass.
 

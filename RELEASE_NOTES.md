@@ -10,22 +10,22 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
-## v1.6.0 — 2026-09-05 — Witness tests, problem-axis, and companion-site product
+## v1.6.0 — 2026-09-05 — Backtests, problem-axis, and companion-site product
 
 Commit: `c6713029` · Tag: `v1.6.0`
 
-**Witness tests** (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the **Introduction** now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the **companion site** becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.
+**Backtests** (W-1–W-17; released under the name “witness tests”, renamed 2026-09-07) add a third experiment class: frozen fail/refuse protocols on existing host traces; the **Introduction** now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the **companion site** becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.
 
-### Witness tests (`experiments/witness/`)
+### Backtests (`experiments/backtest/`)
 
 A third experiment class beside simulations and external-transfer (ET) lines. Not a sixth simulation: protocols freeze before scoring, then return **fail**, **refuse**, or **null** on hosts whose traces already exist. 
 
-- **W-1–W-4** indexed in Appendix I: CIRIS-shaped C2 mock (named path green, composite still acts); MASK honesty refused as a safety leaf; Linux Reviewed-by×BIC and revert/re-entry; Wikipedia Orangemoody / BRFA.
+- **W-1–W-4** indexed in the experimental-evidence appendix (then I, now J): CIRIS-shaped C2 mock (named path green, composite still acts); MASK honesty refused as a safety leaf; Linux Reviewed-by×BIC and revert/re-entry; Wikipedia Orangemoody / BRFA.
 - **W-5–W-11:** Moral Machine country AMCE (Number 1-D close, 8-D geometry far); Arena Elo × MASK honesty (Spearman −0.105 vs accuracy +0.811); leftover C-004 hosts refused; Lean C2 pin of the W-1 bypass; H5 trees (FAA AD ⇏ stop; GPLv2 source offer ⇏ install handle; Debian RC held gstreamer 0.10 out of 9.0).
 - **W-12 / W-16:** same-unit geometry beats 1-D compression (Moral Machine raw UserIDs acc 0.682 vs Number 0.576; SCDB justices acc 0.814 vs issueArea 0.623). Observational; not v2 CCI.
 - **W-13–W-15:** PDG refuse (no eligible adult table); CPC2015 Exp. 1 null vs ΔEV/intercept; CIRISAgent stack C2 mock-LLM null (stub 0 hits). Recorded without retuning.
 - **W-17** Moltbook MB7a: Tier A joined and coactive, not merged on `E_agent`; broadcast substrate → **structure_stop**. Reply-graph merge is the wrong access model for that coordination class.
-- **Methodology:** [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) is the shared discipline (freeze, preregistration, refuse/null first-class, Witness M1–M8). Companion hub: `/experiments/#witness` and per-test cards.
+- **Methodology:** [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) is the shared discipline (freeze, preregistration, refuse/null first-class, Backtest M1–M8). Companion hub: `/experiments/#backtest` and per-test cards.
 
 ### Problem-axis and reader contract
 
@@ -58,7 +58,7 @@ A third experiment class beside simulations and external-transfer (ET) lines. No
 - **Spec sheet** at `/start/spec-sheet/`: 8 features × 25 roster columns (what agendas ship — not a ranking).
 - **Funding offers** at `/funding/`: nine public cards, dependency graph, team FTE + roles, rounded asks.
 - **Field hub:** `/field/` redirects to v2 preview panels (coverage, bridge graph, research programs, bridge assumptions, lifecycle, alignment target, consciousness/welfare, external maps). `field-map-starting-points` card holds the external-survey list.
-- **Experiment cards:** class overviews, W-1–W-17 cards, negative-results hub, findings pages render markdown; Witness cards link to bridges and GitHub paths.
+- **Experiment cards:** class overviews, W-1–W-17 cards, negative-results hub, findings pages render markdown; backtest cards link to bridges and GitHub paths.
 - **Epistemic-status callouts** on book pages (lighter than chapter-thesis accent). FAQ rewritten for current entry paths.
 
 ### Field news (since v1.5.0)

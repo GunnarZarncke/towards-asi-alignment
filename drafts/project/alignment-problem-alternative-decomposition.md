@@ -1,4 +1,4 @@
-> **Reference only.** Do not import P1–P13 IDs into the manuscript problem axis — see closed [`../plans/problem-axis-incorporation.md`](../plans/problem-axis-incorporation.md).
+> **Reference only.** Do not import P1–P13 IDs into the manuscript problem axis — see closed [`../attic/problem-axis-incorporation.md`](../attic/problem-axis-incorporation.md).
 
 # Problems in AI alignment
 

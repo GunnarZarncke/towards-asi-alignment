@@ -71,7 +71,9 @@ For this book, the layers are (see Table~\ref{tab:claim-layer-map}):
   \item the deployment environment selects for correction rather than against it;
   \item adversarial measurement is strong enough that the preceding metrics are not mere presentations.
 \end{enumerate}
-% TODO[grounding-layer-completeness]: Review whether this eight-layer list can be derived from a completeness argument over grounded correction, or whether it remains an ad-hoc checklist.
+
+This list is assembled from the chapters that precede it; it is not derived from a completeness argument over grounded correction.
+A missing layer would not announce itself, which is one reason the case must state its own coverage limits and submit to the stress test of Chapter~\ref{ch:lethality-stress-test-open-issues}.
 
 The safety case is not stronger than its weakest load-bearing leaf.
 If a leaf is only observable, the case must say that.
@@ -102,10 +104,10 @@ The safety case forces these layers to appear in one graph.
 \authbarneedspace
 \section{Formal Model}
 \begin{authbar}{AI}
-The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
+The companion Lean dependency spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
 \leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
 \leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
-Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, etc.) remain explicit axioms.
+Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin support, etc.) remain explicit hypotheses: axioms, except \texttt{MB2}, which enters as a stated crux.
 \leanspine{bridge}{MB11}{A certified safety case within deployment risk tolerance is assumed to warrant abstract \texttt{Safe}; pause and recovery-viable are not that arrow.}
 \end{authbar}
 \begin{authbar}{AI}
@@ -274,7 +276,7 @@ Those discoveries are not embarrassments.
 They are what a safety case is for.
 They convert vague unease into a refusal condition.
 
-Appendix~\ref{appk-worked-example} instantiates the layered refusal test on one deployment gate---named traces, handles, bridge tags, and a conditional closure---organized by the proof spine rather than by this chapter's layer list.
+Appendix~\ref{appk-worked-example} instantiates the layered refusal test on one deployment gate---named traces, handles, bridge tags, and a conditional closure---organized by the dependency spine rather than by this chapter's layer list.
 It does not replace the schematic scientific-assistance example above; it shows how the same structure looks when every load-bearing claim is tied to telemetry and intervention surfaces.
 
 \end{authbar}
@@ -309,6 +311,8 @@ It is to make unsupported leaves visible and to treat them as blockers rather th
 \authbarneedspace
 \section{What Would Change This View}
 \begin{authbar}{AI}
+This chapter argues that a safety case is a structured refusal test whose root claim fails when any required leaf is missing; that view would change if any of the following held:
+
 \begin{itemize}
   \item A complete, rigorous safety case---every claim discharged, every assumption checked---is built for a system that then causes catastrophe, because a safety case can only certify the absence of \emph{imagined} failure modes and a superintelligence supplies an unimagined one.
   \item The case rests on metrics that are observable but not adversarially verifiable, so a passing case and a deceptive system are compatible (Chapter~\ref{ch:verifiability-ontology}). What would strengthen it: a safety-case format whose failure the system is forced to reveal \emph{before} the loss, not one that explains the loss afterward.
@@ -322,7 +326,7 @@ It is to make unsupported leaves visible and to treat them as blockers rather th
 \begin{itemize}
   \item A safety case is a structured refusal test, not a declaration that alignment is solved.
   \item The root claim depends on seven layers: boundary, bundle, bearer, correction, successor, basin, and adversarial measurement.
-  \item The Lean proof spine proves conditional steps such as the \(CCI\)-slack risk bound and the unsupported-leaf blocker; it does not discharge empirical bridge assumptions.
+  \item The Lean dependency spine proves conditional steps such as the \(CCI\)-slack risk bound and the unsupported-leaf blocker; it does not discharge empirical bridge assumptions.
   \item Every load-bearing metric should carry a verifiability label: observable, i.i.d.-robust, or adversarially verifiable up to a stated capability ceiling.
   \item Boundary shaping only helps when human correction, legitimacy, and grounding are constitutive of the maintained process, not replaceable presentation layers.
   \item If a root claim depends on an unsupported bridge or a merely observable metric under adversarial optimization, the case must conclude with restriction, redesign, or refusal.

@@ -1,0 +1,47 @@
+# 2026-09-23 — Consistency review: decisions executed
+
+## Trigger
+Author decisions on [`drafts/project/consistency-review-2026-09-22.md`](../project/consistency-review-2026-09-22.md): remove size targets; funding applications stay local by design; tabulate (not apply) `ch46` corrections; do the Lean implementation and align prose; move visible TODOs and suggest resolutions; propose a backtest outcome vocabulary; fix docs to match structure; fix broken links; use "Backtest" in plans; attic closed plans (incl. the June review files and quiz work); fix TODO.md; fix orphans.
+
+## Done
+- **Size targets removed:** `word_target*` gone from `metadata/book.yml` (status `draft-reviewed`, milestone `sixth`); `docs/MANUSCRIPT.md`, `INSTRUCTIONS.md` no longer mention targets.
+- **`ch46` table:** `drafts/project/ch46-corrections.md` (65 occurrences; 61 to fix; 2 correct; 2 human calls; adjacent ch45/47/48 cascade in appendix; `claims-ledger.md` C-012 block flagged). Applied later the same day; see follow-up.
+- **Lean + prose:** seven App G labels (`P34A`, `P34K`, `P35M`, `P35Mplus`, `P12W`, `P10H`, `P38H`) added as theorems in `Boundaries.lean` / `Capability.lean`; App G `\leanid`s, phantom theorem name, "all nine" → eleven axioms; `formal/README.md`, `REVIEWING_FOR_AGENTS.md`, `CONTRIBUTING.md` corrected (MB2 is `MB2Crux`; `BridgeAssumptions` = eleven axioms / seven ids); axiom ledger 40 → 48 headline theorems; `assurance-model.yml` `filterCoverage` node; `sync-lean-spine.mjs` derives modules. `lake build` + `formal/check.sh` green.
+- **Visible TODOs:** ch35 bullet, ch44 table cell, ch43 and App G repo-path mentions moved to `% TODO[...]` comments / plain prose. Resolutions suggested in report §0.1 (applied later the same day; see follow-up).
+- **Backtest vocabulary:** proposal in report §0.2 (`outcome` + `stop` fields; `structure_stop`/`null` added; Pos./Neg./Ambig. rule; M2 freeze-hash rule). Implemented later the same day; see follow-up.
+- **Docs:** `docs/MANUSCRIPT.md` parts table (pre-renumber `39b` gone), bib count, Predictions row; `llms.txt` v1.6.0 and `/demos/`; `INSTRUCTIONS.md` §2 front-door policy (from Voice §9), §4 reuse rule inline, App G letter, `review/attic` pointer; `AGENTS.md` review pointer and conversation-log section; `CONTRIBUTING.md`; `docs/BUILD.md`; `site/README.md`; `experiments/README.md` (`witness/` link), `experiments/TODO.md`; `papers/README.md` (+ `institutions-and-construction` draft row); root README papers list + Predictions row; `book-stats.md` regenerated after fixing the appendix title offset in `scripts/book_stats.py`.
+- **Rename:** "Witness" → "Backtest" in all plan titles/bodies, `CONTRIBUTING.md`, `RELEASE_NOTES.md` (paths and anchor corrected; old name noted once), `experiments-backtests.yml`; `docs/METHODOLOGY.md` heading `## Backtests`. Release and experiment cards regenerated.
+- **Attic:** `voice-plan.md`, `problem-axis-incorporation.md`, `field-spring-map-plan.md`, `cousin-product-comparison-plan.md`, `construct-external-lit.md`, `construct-lit-review-prompt.md`, `backtest-next-after-w16.md`, `predictions-improvements-v0.md`, `predictions-improvements-incentives.md`, `bridge-predictions-Lean-improvements.md`, `epistemic-status-field-census.md`, `what-tsa-fails-to-represent-residuals.md`, `quiz-length-work/` → `drafts/attic/`; `fix-plans-2026-06-22.md`, `full-book-continuity-review-2026-06-22.md` → `review/attic/`; deleted `plans/appendix-stubs.md`, `plans/front-door-vocab.md`, `predictions/predictions-improvements.md`; `sandboxed-agent-mcp.md` → `drafts/plans/` root. Attic READMEs updated; historical headers on `strategic-advice` and `adversarial-steerability`.
+- **Links:** new `scripts/check_markdown_links.py` (`--fix`; basename/suffix/directory resolution; skips site-routed markdown, dated logs, sibling repos), wired into `scripts/check.sh`; ~100 links fixed; sibling-repo links re-pointed; last two (never-written `lw-bridges-section.md`) turned into plain text.
+- **TODO.md:** lane list; Predictions work-map row; Site board (quiz shipped w/ residual, three hygiene items, ch10 moved); Outreach (crux-map funding-gated, sketches); Housekeeping (`ch46`, TODO resolutions, backtest vocabulary, audit-telemetry); closed list.
+- **Orphans:** eight scripts → `scripts/attic/`; root `node_modules/`, `.astro/` deleted.
+- `make check` (14 gates incl. links) and `check_voice.py` pass.
+
+## Decisions
+- `REPRODUCING.md` kept: distinct v1 closure record, not a duplicate (report corrected).
+- Backtest freeze files stay in `drafts/plans/backtest/` (they are the prereg record), marked as frozen records in `drafts/plans/README.md`.
+- `value-detect-*` untracked trees left alone.
+
+## Done (follow-up, same day)
+- **`ch46` corrections applied** by exact-line replacement across `metadata/notation.md`, `assumptions-ledger.md`, `uncertainty-ledger.md`, `claims-ledger.md` (C-012 block), `REVIEWING_FOR_AGENTS.md`, `llms.txt`, plus the adjacent `ch45/47/48` cascade rows. Decisions: `χ` rows → ch37; `κ_ij`/`φ`/`φ_c` → ch13 (defined there; map said ch35); `S_certified` → ch30; A-002 span ch25–29 / "also stated in" ch25, ch27–29; U-03 → ch39; C-012 drops 46. Also corrected the stale "MB1–MB9 packaged" wording in the assumptions ledger. Survivors are the two legitimate rows. Site mirror regenerated (`sync-bot-orientation`).
+
+- **Manuscript TODO resolutions applied** (report §0.1): ch01 (framing paragraph naming object/subject/content as a reading aid; coding-assistant example replaces the flagged list paragraph), ch39 (episode floor \(k \gtrsim \log(1/\alpha)/\delta^2\) in §cumulative-evidence), ch35 (WWCTV bullet points to that floor; open problem in App G + `open-problems.md`), ch43 (two cruxes posed as named open problems with success criteria in App G §`sec:master-crux`; comments removed), ch44 (audit shape in the gradient-hacking row), ch42 (checklist-not-derivation sentence), ch45 (`\section{Summary}` added). ch21 citation and ch38 formalize TODOs stay by design. TODO.md items closed/updated.
+
+- **Backtest vocabulary implemented** (report §0.2): METHODOLOGY § Backtests now has the closed outcome set, separate `stop` field, compound-as-lines rule, App J Pos./Ambig./Neg. rule keyed on the primary measurand (keeps W-3 Pos., W-4 Ambig.), and the M2 freeze-hash rule with an honest co-commit note for W-1–W-17; template updated; App J preamble states the rule. W-11 relabelled `pass (stop bit)` (ledger, `docs/EXPERIMENTS.md`, YAML) and W-16 split into fail (layer) + pass (detection) lines; experiment cards regenerated. Misreading audit: only the `docs/EXPERIMENTS.md` W-11 row had been inverted; App J and the site card were right.
+- **App G ↔ Lean sync check:** all 175 distinct `\leanid{}` names and all 26 cited modules exist in `formal/`; one `\texttt{}` theorem name was stale (`debate_truth_not_correction_preservation` → `local_truth_capacity_not_correction_preservation`, fixed). PDF build after the manuscript edits: exit 0, zero undefined references. Pre-existing and untouched: 104 `\nocite` keys in the generated `metadata/global-nocite.tex` have no bib entry (warnings only).
+
+- **Lean honesty-of-structure in prose** (June yardstick item 4): reader-facing "proof spine" → "dependency spine" in App G title/section/caption, ch26/ch32/ch42/ch48, App E, `docs/BUILD.md`, `formal/README.md`, site book index (labels/file names kept); App G opening paragraph *How to read the axiom count and the top theorem* (172 axiom declarations categorised; top theorem = packaging; separations hold with no `MB*` footprint; ledger + `spine_axioms_consistent`); ch42 no longer calls MB2 an axiom; `book_stats.py` emits the framing line. Report §0.3 progress section added.
+
+- **Stale strings, WWCTV openers, App H expectations** (requested): README/MANUSCRIPT chapter-status rows reworded (no counts implying uniformity); `INSTRUCTIONS.md` §2 WWCTV rule restated (framing line then list; never `we argue`), framing lines added to ch35/ch42/ch43/ch47/ch48; `INSTRUCTIONS.md` §14 gains an Appendix H scope paragraph and a canonical-home row for `predictions.yml` / `assurance-model.yml`.
+
+- **Anti-capture validity paper draft** written at `papers/anti-capture-validity/` (tex, frozen bib of 23 entries copied from `references/`, `build.sh`, PDF built: 9 pages, no undefined refs). Sources: ch26 §validity, ch29 No-Bypass + certified boundary separation, `Correction.lean` (`CorrectionPathLegitimate`, `MB4a`, `capture_defeats_correction_integrity`), `CompositePathBypass.lean`, `BacktestC2Instance.lean`, backtest ledger W-1/W-3/W-4, ch43 posed problem. Claims necessity only, names the regress, ends on Certification-Under-Manipulation. `papers/README.md` row added; TODO Outreach updated (Goodhart-as-selector listed as the next candidate; bearer-map and CCI-as-channel not drafted by decision).
+
+## Open / next
+- Notation reconciliation follow-through (C12 basins, `C_H` vs `C^H_t`).
+- Not done from the report: Lean-calibration rule (§11.4), demo back-links, `check:concepts` timestamp fix, predictions sync regex — all on TODO.md boards.
+
+## Key paths
+- `drafts/project/consistency-review-2026-09-22.md` (§0 execution record), `drafts/project/ch46-corrections.md`, `metadata/TODO.md`, `scripts/check_markdown_links.py`
+
+## Commits
+- none (nothing committed; renames are staged by `git mv`)

@@ -1,6 +1,6 @@
 # LW draft — two verifiable Lean slices
 
-Drop-in sections for a LessWrong post. Bridge roster: [`lw-bridges-section.md`](lw-bridges-section.md).
+Drop-in sections for a LessWrong post. Bridge roster section: not drafted yet (was planned as `lw-bridges-section.md`).
 
 Shared repo: [GunnarZarncke/towards-asi-alignment](https://github.com/GunnarZarncke/towards-asi-alignment) · Lean hub: [towards-alignment.com/lean/](https://towards-alignment.com/lean/) · Field matrix: [towards-alignment.com/field/](https://towards-alignment.com/field/)
 
@@ -247,4 +247,4 @@ Does not prove bundle or bearer transport for frontier models. Does not derive M
 | SpineModel.lean (MB3 toy) | https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/SpineModel.lean |
 | Correction.lean (§1 separation) | https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean |
 | Defeaters.lean (§1 MB4 toy) | https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Defeaters.lean |
-| Bridge roster | [`drafts/lw-bridges-section.md`](lw-bridges-section.md) |
+| Bridge roster | `lw-bridges-section.md` (not drafted) |

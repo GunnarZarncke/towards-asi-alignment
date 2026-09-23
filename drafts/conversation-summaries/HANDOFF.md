@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-22 (OpenAI RSI standards field news).
+Last updated: 2026-09-23 (PRA Graphviz diagrams).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-09-22 (OpenAI RSI standards field news).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in closed [`voice.md`](../plans/voice.md) §9. Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; **next:** Phase 4 pilot/listing for Markets 19–20, external funding submission, preset slots when artifacts resolve).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; **next:** Phase 4 pilot/listing for Markets 19–20, external funding submission, preset slots when artifacts resolve).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-23:** **PRA Graphviz diagrams** — Split event tree and assurance model into `.dot` sources + `render_pra_diagrams.sh`; Lean-aligned assurance composition; scope gates for `f_M,multi` (Market 11) and `c_novel` (Market 17) on the event tree. Log: `2026-09-23-pra-diagram-lean.md`.
 - **2026-09-22:** **OpenAI RSI standards news** — Field-news card on the 21 September “next phase” standards post: a shared RSI ruler is not a stop. Log: `2026-09-22-openai-rsi-standards-news.md`.
 - **2026-09-22:** **Predictions Phase 3** — Assurance manifest, draft Markets 19–20, extended assurance/consequence prose, `/predictions/assurance/` demo. Log: `2026-09-22-predictions-phase-3.md`.
 - **2026-09-22:** **Predictions funding gate** — Funding application card; seven draft and eleven funding-gated contracts; YAML validation, site badges, and funding links. Log: `2026-09-22-predictions-funding-gate.md`.
@@ -35,7 +36,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 - **2026-09-19:** **Housekeeping / erasure** — compact HANDOFF; reference-only headers; log archive/prune; `.worktrees/` gitignore. Same log.
 - **2026-09-19:** **Predictions positive titles + aggregation** — Positive market framing; Appendix H §aggregation; `marketQuestion` tier; Metaculus Q44423 embed. Log: `2026-09-19-predictions-positive-aggregation.md`.
 - **2026-09-19:** **Predictions lane (P0c → ship)** — Criteria `0.4`; print H; `/predictions/` hub + cards; `Evidence.lean` adapters. Logs: `2026-09-19-prediction-interface-p0c.md` through `-predictions-positive-aggregation.md`.
-- **2026-09-19:** **App B field spring-map** — Demo at `demos/appB-field-spring-map/`; polish + interactive UI; App B card integration. Plan closed: [`field-spring-map.md`](../plans/field/field-spring-map.md). Logs: `2026-09-18-field-spring-map-ship.md` through `2026-09-19-field-crux-map-ui.md`.
+- **2026-09-19:** **App B field spring-map** — Demo at `demos/appB-field-spring-map/`; polish + interactive UI; App B card integration. Plan closed: [`field-spring-map-plan.md`](../attic/field-spring-map-plan.md). Logs: `2026-09-18-field-spring-map-ship.md` through `2026-09-19-field-crux-map-ui.md`.
 - **2026-09-19:** **Demos landing list** — `/demos/` single hub; `/demos/all/` removed. Log: `2026-09-19-demos-landing-list.md`.
 - **2026-09-19:** **Drafts folder restructure** — Topic subfolders + lane plans under `plans/{backtest,field,spine,construct,predictions}/`. Log: `2026-09-19-drafts-folder-restructure.md`.
 - **2026-09-19:** **Mapping AI pointer** · **Quiz news-takeaways CI fix** — Logs: `2026-09-19-mapping-ai-pointer.md`, `2026-09-19-quiz-news-takeaways-fix.md`.
@@ -61,7 +62,7 @@ Theme rollup — per-session detail in `archive/2026-08/`.
 - **Reader contract:** six-claims spine Phases 0–6; site `six-thesis-claims` card; `check_claim_spine.py`.
 - **Field hub:** `/field/` → `/field/v2/` + `/field/coverage/`; stance SVG icons; specify/construct instances; MB7a–c cards; agenda merges + Kosoy/Iliad.
 - **Site:** card-notes triage closed; offline PWA v9–v10; translation spine `/lean/`; field news (Black Hat, jailbreak, Anthropic risk report).
-- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct/construct.md`](../plans/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Backtest real stop.
+- **Papers / ch34:** feedback-horizon gap + verifier-construction spin-outs; selection ecology integration; constructing-alignment-attractors companion (explicit SB). **v1 Construction not in manuscript** — [`drafts/plans/construct/construct.md`](../plans/construct/construct.md) is the 2.0 plan (construction + constructibility); concrete chapters still gated on Backtest real stop.
 - **Backtest / methodology:** W-1–W-16 scored (CIRIS, MM, SCDB, host traces); `docs/METHODOLOGY.md` (M1–M8). W-17 Moltbook **structure_stop** scored 2026-09-01.
 - **Problem axis:** layer vs mechanism, four intro questions, `AlignmentRegime` — closed 2026-09-01.
 
