@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-23 | **Markdown links CI fix** — CI failed 16 relative links on clean checkout; local passed because gitignored generated artifacts existed on disk. Fixed checker to skip gitignored targets. | [2026-09-23-markdown-links-ci-fix.md](2026-09-23-markdown-links-ci-fix.md) |
 | 2026-09-23 | **PRA diagram vs Lean** — User asked to review `lean_checked_bayesian_pra_diagram.py` against the actual Lean spine and fix... | [2026-09-23-pra-diagram-lean.md](2026-09-23-pra-diagram-lean.md) |
 | 2026-09-23 | **Consistency decisions executed** — Size targets removed; `ch46` correction table; Lean P-node theorems + prose sync; Backtest rename; attic pass; link checker; TODO.md. | [2026-09-23-consistency-decisions.md](2026-09-23-consistency-decisions.md) |
 | 2026-09-22 | **Project consistency review** — Review the whole project and the plan; assess how well it meets stated and implied expectations a... | [2026-09-22-project-consistency-review.md](2026-09-22-project-consistency-review.md) |

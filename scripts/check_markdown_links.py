@@ -6,6 +6,11 @@ Scans tracked ``*.md`` files (excluding attic folders, archived session logs, an
 that does not exist. External URLs, anchors-only links, ``mailto:``, ``~/`` and
 absolute paths are ignored. Anchors (``#...``) are stripped before checking.
 
+Links whose resolved path is **gitignored** (generated locally — e.g.
+``dist/pdf/*.pdf``, concept-graph / symbol-census ``.dot`` outputs) are skipped:
+they are valid references for developers who have run the generators, not CI
+artifacts.
+
     python3 scripts/check_markdown_links.py            # report, exit 1 on failures
     python3 scripts/check_markdown_links.py --fix      # rewrite links whose basename
                                                         # resolves to exactly one file
@@ -33,6 +38,18 @@ SKIP_DIRS = {"node_modules", ".lake", ".git", ".venv", ".venv-test", "dist"}
 SITE_ROUTED = ("metadata/concepts/bodies/", "site/src/content/")
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 HISTORICAL_DIRS = ("attic", "conversation-summaries/archive")
+
+
+def is_gitignored(rel: str) -> bool:
+    """True when ``rel`` matches ``.gitignore`` (optional generated artifact)."""
+    return (
+        subprocess.run(
+            ["git", "check-ignore", "-q", "--", rel],
+            cwd=ROOT,
+            capture_output=True,
+        ).returncode
+        == 0
+    )
 
 
 def tracked_markdown(include_all: bool) -> list[Path]:
@@ -109,12 +126,14 @@ def check_file(
             if not clean or UUID_RE.match(clean):
                 return m.group(0)
             resolved = (path.parent / clean).resolve()
-            if resolved.exists():
-                return m.group(0)
             try:
-                resolved.relative_to(ROOT)
+                rel_to = str(resolved.relative_to(ROOT))
             except ValueError:
                 return m.group(0)  # points outside the repository (sibling repo); not checked
+            if is_gitignored(rel_to):
+                return m.group(0)  # generated locally; see .gitignore
+            if resolved.exists():
+                return m.group(0)
             candidates = idx.get(Path(clean).name, [])
             new_target: str | None = None
             if len(candidates) == 1 and not clean.endswith("/"):

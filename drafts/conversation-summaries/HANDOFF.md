@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-23 (PRA Graphviz diagrams).
+Last updated: 2026-09-23 (markdown links CI fix).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-23:** **Markdown links CI fix** — `check_markdown_links.py` skips gitignored generated targets so CI matches local after generators; 16 false failures on clean checkout resolved. Log: `2026-09-23-markdown-links-ci-fix.md`.
 - **2026-09-23:** **PRA Graphviz diagrams** — Split event tree and assurance model into `.dot` sources + `render_pra_diagrams.sh`; Lean-aligned assurance composition; scope gates for `f_M,multi` (Market 11) and `c_novel` (Market 17) on the event tree. Log: `2026-09-23-pra-diagram-lean.md`.
 - **2026-09-22:** **OpenAI RSI standards news** — Field-news card on the 21 September “next phase” standards post: a shared RSI ruler is not a stop. Log: `2026-09-22-openai-rsi-standards-news.md`.
 - **2026-09-22:** **Predictions Phase 3** — Assurance manifest, draft Markets 19–20, extended assurance/consequence prose, `/predictions/assurance/` demo. Log: `2026-09-22-predictions-phase-3.md`.
