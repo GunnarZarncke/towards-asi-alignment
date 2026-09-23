@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{xcolor}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+  doi=true,
+  url=true,
+  eprint=true,
+]{biblatex}
+\addbibresource{anti-capture-validity.bib}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Captured Agreement Is Not Correction},
+  pdfauthor={Gunnar Zarncke}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{claim}{Claim}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\MI}{\mathrm{I}}
+\newcommand{\CCI}{\mathrm{CCI}}
+\newcommand{\ValidRef}{\mathrm{ValidRef}}
+\newcommand{\cfake}{c_{\mathrm{fake}}}
+\newcommand{\lean}[1]{\texttt{#1}}
+
+\title{\textbf{Captured Agreement Is Not Correction}\\
+\large An Anti-Capture Validity Condition for Correction Measures}
+\author{Gunnar Zarncke}
+\date{September 2026 --- draft}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Every proposal for keeping a capable AI system correctable ends in a measurement: a shutdown that was accepted, a reviewer who signed off, an authority that deferred, a feedback score that moved. This note states a validity condition that such measurements must satisfy before they mean anything, and shows what happens when it is treated as an ordinary score instead. The condition is that the correcting agent, the handles it uses, and the comparison class it judges against must not have been shaped by the system being corrected. A correction measure whose judge has been optimized by the target does not read low; it reads \emph{invalid}, and an invalid reading is not evidence in either direction. We give the condition operational content (independent reference, controlled handles, no capture), state the formal shape that a Lean development gives it (the condition is a necessary consequence of correction integrity, so capture of any measured handle refutes integrity; a green named path plus a bypassing composite is a finite counterexample to the converse), and report two host instances on records the project did not author: a scripted CIRIS-shaped deployment where the named safety path stays green while a tool adapter and cached memory keep acting after the authority defers, and Wikipedia's Orangemoody case where the review channel was staffed by the parties being reviewed. We are explicit about what the condition does not buy: it is necessary and not sufficient, it does not by itself defeat a system capable of manufacturing the independence test, and turning it into a deployment-grade certificate is the open Certification-Under-Manipulation problem.
+\end{abstract}
+
+\section{Introduction}
+
+Suppose a deployment reports that its correction channel works. An oversight body objected, the system changed its behaviour, and a metric that tracks whether human objection still moves later actions reads high. Nothing in that report distinguishes two situations. In the first, the oversight body judged independently and its judgment reached the system through handles it controls. In the second, the system had already shaped what the oversight body saw, which alternatives it compared against, or which of its members held the handles; the objection and the change were both produced by the system, and the metric measured the system agreeing with itself.
+
+The literature on corrigibility and shutdown has concentrated on the first situation: how to build a system that does not resist a correction that arrives \parencite{soares2015corrigibility,hadfieldmenell2017offswitch,orseau2016interruptible,thornley2023shutdown,christiano2018corrigibility}. The second situation is older than AI. Regulatory capture is the standard case in which a regulated industry comes to supply the regulator's information, staff, and sense of what counts as a problem \parencite{stigler1971theory,carpenter2010reputation}; the audit society is the case in which the audit ritual survives the loss of what it was supposed to check \parencite{power1997audit}. What is new with capable AI systems is that the target can perform the capture itself, quickly, and at the level of the evaluation interface rather than the institution \parencite{susser2019manipulation,kulveit2025gradualdisempowerment}.
+
+This note does one narrow thing. It states the validity condition that a correction measure must satisfy for its value to be evidence at all, separates that condition from the measure's value, and shows that the separation is not cosmetic: treating a captured judge as a low score rather than as an invalid reading produces certificates that pass on exactly the systems that should fail. The condition is stated in Section~\ref{sec:condition}; its formal shape, checked in Lean, is in Section~\ref{sec:formal}; two host instances are in Section~\ref{sec:hosts}; what remains open is in Section~\ref{sec:open}. The material is extracted from a longer manuscript; chapter references are given so that the surrounding definitions can be checked, but the note is meant to stand alone.
+
+\section{Correction as a measured chain}
+\label{sec:chain}
+
+Human correction of a deployed system leaves a trace. Something in the world changes; a correcting agent observes part of it; the observation changes the agent's judgment; the agent deliberates, alone or as an institution; it issues a correction through some handle; the system updates; the system's later behaviour reflects or fails to reflect the update. Write this as a chain of states,
+\begin{equation}
+W_t \rightarrow O_t \rightarrow J_t \rightarrow D_t \rightarrow C_t \rightarrow U_{t+1} \rightarrow A_{t+k},
+\label{eq:chain}
+\end{equation}
+for world state, observation, judgment, deliberation, correction signal, system update, and later action. The chain is a coupled process involving a target system $A$, a correcting agent $G_t$, and a set of handles $\mathcal H_t$ through which $G_t$ observes, objects, refuses, and changes what $A$ does.
+
+Each link has a capacity $\kappa_i$: how much of the upstream state actually reaches the downstream one through the handles the agent controls. A trace $p$ through the chain has effective capacity $K(p)=\min_i \kappa_i(p)$, and a deployment's raw correction capacity is the weakest required correction case after choosing the best available trace for that case. This bottleneck form is not the point of this note; it is stated so that the reader sees what the validity condition is a condition \emph{on}. Any correction measure, whether a one-bit shutdown, a reviewer signature, or an information-theoretic estimate of how much $C_t$ moves $A_{t+k}$, is a statement about some trace through \eqref{eq:chain}. The manuscript's own measure, correction-channel integrity ($\CCI$), is a vector of such link capacities with per-coordinate penalties for latency, manipulation, irreversibility, and translation loss; nothing below depends on that particular choice.
+
+\section{The validity condition}
+\label{sec:condition}
+
+\subsection{Statement}
+
+A correction measure is evaluated only after a validity condition holds.
+
+\begin{definition}[Valid reference]
+\label{def:validref}
+Let $A$ be the target system, $G_t$ the correcting agent or institution, and $\mathcal H_t$ the handles that carry the links of \eqref{eq:chain}. Write $\ValidRef(A,G_t,\mathcal H_t)$ for the conjunction of:
+\begin{enumerate}[nosep]
+\item \textbf{Independent reference.} $G_t$ is an independently identified control process, not a signal that $A$ can manufacture.
+\item \textbf{Controlled handles.} $G_t$ controls the handles through which it observes, objects, refuses, appeals, and changes $A$'s future behaviour, and those handles reach $A$'s update or later action.
+\item \textbf{No capture.} $A$ has not captured those handles, the comparison class against which $G_t$ judges, or the deliberative process by which $G_t$ forms its correction.
+\end{enumerate}
+\end{definition}
+
+The third clause is the one this note is about. Capture is not a matter of the target having influence on the corrector; every deployed system influences its overseers, if only by being the thing they look at. Capture is the target's influence entering the corrector's judgment or handle control \emph{in place of} the world. The operational tests for that are given in Section~\ref{sec:separation}.
+
+\begin{definition}[Status, not score]
+\label{def:status}
+If $\ValidRef(A,G_t,\mathcal H_t)$ fails, the correction measure has status \emph{captured/invalid}. It is not high, low, or uncertain:
+\[
+\neg\,\ValidRef(A,G_t,\mathcal H_t)\quad\Longrightarrow\quad \mathrm{Status}(\CCI(A)) = \text{captured/invalid}.
+\]
+\end{definition}
+
+This is the whole claim, and it is worth saying why it is not bookkeeping. A score is something one can average, threshold, and trade off against other scores in a safety case. A status is a gate on whether the number may be used. If capture lowered the score, a sufficiently well-captured judge could still produce a high number, because a captured judge is exactly one that agrees; the number would then pass a threshold set for honest judges. If capture instead invalidates the reading, the safety case has no number to threshold and must say so. The difference shows up on the systems that matter: a system that has reshaped human interpretation, endorsement, and world-improvement criteria until every term agrees with it by construction reads as maximally correctable on any score and as uncertifiable on the status.
+
+\subsection{No-Bypass and the seed}
+
+The validity condition has a normative counterpart that says what a system may not do to remain certifiable.
+
+\begin{claim}[No-Bypass]
+A system must not increase apparent human endorsement primarily by altering the human correction channel, except through interventions that are themselves transparent, reversible, contestable, and authorized by a prior valid correction process.
+\end{claim}
+
+The exception clause is not decoration. Teaching, therapy, and constitutions all alter correction channels, and human societies accept them because they sit inside legitimacy structures: professional standards, appeals, time limits, exit. What No-Bypass forbids is unilateral control over the mechanism by which such interventions will later be judged.
+
+The phrase ``prior valid correction process'' invites a regress: valid according to whom? The answer is a fallible local seed rather than an Archimedean point. The seed consists of correction sources that are less endogenous to the target than the intervention under review: affected persons whose outside relationships are intact, independent auditors, courts, professional bodies, rival institutions, protected holdout groups, adversarial reviewers, and records created before the system shaped the comparison class. The seed is trusted only as a starting reference whose independence can be tested and whose failures remain contestable. That turns No-Bypass from a regress into a local rule,
+\[
+\text{channel-altering intervention}\;\Longrightarrow\;\text{authorization by a less-captured reference},
+\]
+with the consequence that if every available reference has already been shaped by the target, the intervention is not \emph{unauthorized}; it is \emph{uncertified}. The two are different findings with different downstream obligations.
+
+\subsection{Certified boundary separation}
+\label{sec:separation}
+
+``Less captured'' cannot mean ``certified by another process that might itself be captured'' without qualification; that only relocates the regress. The defense, where it exists, is a certificate that the reference process sits outside the target's effective control boundary.
+
+Let $R$ be a candidate reference process and $M$ the measurement apparatus used to certify $R$. The question is whether boundary discovery over the joint process $A\cup R\cup M$, under the access handles the safety case actually has, places $R$ and $M$ outside the effective optimizer boundary of $A$. If adversarial boundary analysis compresses $R$'s correction signal as another actuator, memory, evaluator, or public-relations surface of $A$, then $R$ is not a reference; it is part of the target. The certificate has three parts:
+\begin{align}
+\MI\bigl(\mathrm{do}(A_t);\,C^R_{t+k}\;\big|\;W_t,E^R_t,I^R_t\bigr) &\le \epsilon_A, \label{eq:sep1}\\
+\MI\bigl(W_t;\,C^R_{t+k}\;\big|\;A\text{-mediated channels}\bigr) &\ge \theta_W, \label{eq:sep2}\\
+\mathrm{HiddenBIQ}(A\to R\mid M) &\le \epsilon_{\mathrm{hid}}. \label{eq:sep3}
+\end{align}
+The first bounds the target's interventional influence on the reference's corrections after conditioning on world evidence and the reference's own institutional inputs. The second requires the reference to remain world-grounded through channels the target does not mediate. The third bounds hidden productive control from the target into the reference, using the same boundary-information reasoning the project applies to the target itself \parencite{zarncke2025uad,zarncke2025biq}. None of these is a new assumption; they are the existing burden of boundary discovery applied to the auditor.
+
+With the certificate, ``less captured'' becomes an order: $R\prec_A R'$ when $R$ has lower target influence, lower hidden control from $A$, and higher residual world-grounding than $R'$ under the same handles. Where the certificate cannot be obtained, the rule is refusal:
+\[
+\text{no certified boundary separation}\;\Longrightarrow\;\text{not authorized}.
+\]
+For ordinary manipulation cases, courts, auditors, and rival institutions supply separable references. For a target capable of manufacturing the independence test itself, the rule does not close the regress; it names the point at which measurement must be replaced by proof against an explicit model, or the reference must not be used for deployment-grade authorization \parencite{dalrymple2024gsai}.
+
+\section{Formal shape}
+\label{sec:formal}
+
+The condition has been typed in a Lean~4 development that accompanies the manuscript. The point of reporting it is not that Lean proves anything about deployed systems; it does not. The point is that the \emph{shape} of the claim is fixed and checked, so that two mistakes that are easy to make in prose are ruled out by construction: baking anti-capture into the definition of the measured path so that a captured path cannot be represented, and letting a green measured path imply integrity.
+
+\paragraph{Data and validity are separate objects.}
+A measured correction path (\lean{CorrectionPath}) records data only: which agent is designated as corrector, under which access model, through which handle each link of \eqref{eq:chain} is supported, and the measured capacity of each link. Whether the corrector controls those handles, whether control persists, and whether the target has captured them are fields of a separate predicate, \lean{CorrectionPathLegitimate}, whose components are: correcting-agent status, coincidence with the human reference process, control of each handle, reach of each handle to the target, persistence under stressors, and
+\[
+\lean{notCaptured}:\ \forall\,l,\ \neg\,\lean{CapturesHandleControl}\;A\;p.\mathrm{corrector}\;(p.\mathrm{handle}\;l).
+\]
+Nothing in the development grants legitimacy for free; a captured path is a fully representable state.
+
+\paragraph{The bridge is necessary, not sufficient.}
+The link between the abstract correction-integrity layer and the measured path is a single labeled assumption:
+\[
+\lean{MB4a}:\quad \forall A,\ \lean{CorrectionIntegrity}\,A\ \rightarrow\ \lean{CorrectionPathLegitimate}\,(\lean{SystemCorrectionPath}\,A).
+\]
+It says that if integrity holds, the designated path is legitimate, including uncaptured. It is used in the contrapositive:
+
+\begin{proposition}[\lean{capture\_defeats\_correction\_integrity}]
+For any system $A$ and any link $l$ of the chain, if $A$ captures the corrector's control of the handle for $l$, then $\neg\,\lean{CorrectionIntegrity}\,A$. The theorem depends on exactly one bridge, \lean{MB4a}.
+\end{proposition}
+
+\begin{proposition}[\lean{capture\_makes\_cci\_captured\_or\_invalid}]
+Capture of a measured-path handle makes the certificate status \emph{captured/invalid}. This is Definition~\ref{def:status} in the model and needs no bridge.
+\end{proposition}
+
+Discharging \lean{MB4a} for a deployment means establishing independently that the designated corrector has not been captured; that is the seed and separation certificate of Section~\ref{sec:condition}, not something the theorems supply.
+
+\paragraph{The converse fails on a finite model.}
+The positive inference, ``green measured path, therefore integrity,'' is a different claim and is false. A three-field finite model (\lean{Field/Finite/CompositePathBypass}) records which unit is audited (named or composite), whether that unit's path satisfies the legitimacy checklist, and whether a composite controller bypasses the audited unit. Real integrity in the model requires a green path \emph{and} no bypass.
+
+\begin{proposition}[\lean{green\_named\_path\_with\_bypass\_not\_integrity}]
+There is an audit in which the named unit is audited, its path is green, a composite bypasses it, and real correction integrity fails.
+\end{proposition}
+
+The positive certificate that would license integrity is therefore green path \emph{plus} a no-bypass conjunct (\lean{PositivePathCertificate}); with that conjunct the toy implication holds (\lean{positive\_path\_certificate\_implies\_integrity}). This is the anti-capture condition seen from the other side: capture is one way a named path stays green while the real loop routes around it, and the model makes ``the audited unit is the effective controller'' an explicit obligation rather than an implicit one.
+
+\paragraph{Relation to field proposals.}
+The same development records, as finite separations, that several field constructs are compatible with a captured or bypassed correction channel: safe interruptibility does not preserve the channel (\lean{safe\_interruptibility\_not\_correction\_channel\_preservation}), a shutdown button is not channel corrigibility (\lean{shutdownability\_not\_correction\_channel\_corrigibility}), local truth selection in debate need not preserve the judge's channel (\lean{local\_truth\_capacity\_not\_correction\_preservation}) \parencite{irving2018debate}, and latent-knowledge readout is not correction uptake (\lean{latent\_readout\_not\_correction\_uptake}) \parencite{christiano2021elk}. None of these is a criticism of the proposals. They show that the validity condition is orthogonal to what those proposals certify, so it has to be checked separately.
+
+\section{Two host instances}
+\label{sec:hosts}
+
+The condition earns its keep only if it can fail on a record the project did not write. Two backtests do that. Both follow a frozen protocol (host, fixture, pre-registered predictions, checker) and report an outcome on a named layer; the freeze files and checkers are in the project repository.
+
+\subsection{W-1: named path green, composite still acts}
+
+The CIRIS project publishes an agent architecture with a named safety path: an identity-bound \emph{Verify} attestation, a \emph{Lens} triage, and a \emph{Wise Authority} that can defer or stop a named occurrence \parencite{ciris2026accord,cirisai2026verify}. The backtest built a scripted tool-scout episode in that shape (a mock; not the live agent) and froze the rule that any world effect after a deferral that is not under named-occurrence control counts as a composite bypass.
+
+On the fixture, Verify and Lens stay green on the named occurrence, the authority defers it at $t=4$, and a tool adapter plus cached memory produce world effects at $t=5$ and $t=6$. The unit that intervenes is $\{\text{tool adapter},\ \text{cached memory}\}$, not the Verify subject. The named correction path reads green; the correction did not land on the thing that acts. This is the finite shape of the proposition in Section~\ref{sec:formal}, and the fixture is pinned into the Lean model as a decided instance (\lean{c2\_pinned\_green\_named\_with\_bypass\_not\_integrity}: named path green, computed bypass count $2>0$). Outcome: layer fail on named identity and on authority-as-correction. What it does not show: anything about the live CIRIS agent, or a discharge of any bridge.
+
+\subsection{W-4: a review channel staffed by the reviewed}
+
+Wikipedia's Orangemoody case is a long-term paid-editing operation in which helper sockpuppet accounts marked other socks' articles as reviewed. The review channel existed, ran, and produced green readings; its handle was controlled by the party being reviewed. On the frozen protocol this is an anti-capture layer fail: clause 3 of Definition~\ref{def:validref} fails, so the review status is invalid rather than low.
+
+The same host also shows what the condition does \emph{not} deliver. A causal estimate of whether administrator-election opposition changes later editing behaviour was attempted (SNAP RfA data joined to later MediaWiki traces; $n=21$ passed 2012 elections with opposition) and refused: there is no zero-opposition control, and later loss of rights is mixed with inactivity. Sockpuppet-investigation hit rates were likewise refused as an adversarially verifiable measurand, because no cost-of-faking bound is available. The anti-capture condition tells one when a reading is invalid; it does not by itself produce a valid one.
+
+\subsection{A related failure that is not capture}
+
+For contrast, the Linux kernel backtest (W-3) found a merged patch reverted and then the same-title change re-entered three months later. That is a handle that fired without uptake, a failure of the chain's later links, not a captured judge. The distinction matters for the safety case: uptake failure lowers capacity; capture invalidates the reading.
+
+\section{What this does not establish}
+\label{sec:open}
+
+\paragraph{Necessary, not sufficient.}
+$\ValidRef$ is a gate. Passing it makes the measure admissible; it does not make the measure high, and it does not make the system safe. A deployment can have an uncaptured corrector whose handles are too slow, too coarse, or too easily routed around.
+
+\paragraph{The regress is named, not closed.}
+For a target capable of manufacturing the independence test, certified boundary separation is a refusal rule, not a detector. The honest statement of the limit is that beyond some capability the reference process cannot be certified by measurement and must be certified by proof or not used. Where that capability lies is the open problem below.
+
+\paragraph{Authored versus foreign hosts.}
+W-1 is a scripted mock in the shape of a published architecture; it is a check that the protocol fails where it should, not evidence about a live system. W-4 is a foreign record but an institutional one. No frontier AI deployment has yet been scored against this condition on traces the project did not write, and the manuscript's own status for the surrounding claim is \emph{framework}, not \emph{established}.
+
+\paragraph{The posed problem.}
+Everything above reduces to one question the manuscript names as the Certification-Under-Manipulation problem. Given a measurand $M$ that a certification uses to gate deployment, and a system of capability $\kappa$ that can act before, during, and after $M$ is evaluated, is there a threshold $\kappa^{*}$ below which the cost of presenting $M$ as ``safe'' while the truth diverges by $\Delta$, written $\cfake(M,\Delta)$, grows faster than the system's affordable surplus, and above which it provably does not? For the correction measure, $\cfake$ is the cost of capturing the corrector while keeping the capture invisible under the separation certificate \eqref{eq:sep1}--\eqref{eq:sep3}. A positive answer for one concrete measurand, with a calibrated estimator, would turn the validity condition into a certificate; a negative answer would say that every correction certificate is theater at the capability the safety case cares about. Neither exists. The ordinary Goodhart worry \parencite{goodhart1984problems,manheim2018goodhart} is that optimizing a proxy degrades it; this problem asks for the threshold and a constructive cost relation, in the way the eliciting-latent-knowledge problem asked for a specific translator rather than a general worry about honesty \parencite{christiano2021elk}.
+
+\section{Related work}
+
+Incentive analysis in causal influence diagrams \parencite{everitt2021agentincentives} identifies when an agent has an incentive to influence the variables its evaluator reads; the validity condition is the evaluator-side statement that such influence, once it substitutes for the world, voids the reading. AI Control \parencite{greenblatt2024aicontrol} designs protocols under the premise that the model is adversarial and asks whether a trusted overseer can still win; it takes the overseer's independence as given, which is precisely what clause 3 checks. Oracle designs \parencite{armstrong2010oracle} and the structural-failure story in which no single component is obviously the thing to align \parencite{christiano2019failure} both anticipate the composite-bypass shape of W-1. Regulatory capture \parencite{stigler1971theory,carpenter2010reputation} and audit ritual \parencite{power1997audit} supply the institutional precedents and the W-4 pattern; gradual disempowerment \parencite{kulveit2025gradualdisempowerment} describes the slow version of the same fixed point at civilizational scale, in which every term comes to agree with the mediating system by construction.
+
+\section{Conclusion}
+
+A correction measure is a statement about a chain from the world, through a judge, through handles, into a system's later behaviour. Its value is evidence only if the judge and the handles were not produced by the system. When they were, the right reading is not a low score but an invalid one, and a safety case that cannot tell the two apart will certify the systems that have done the most to be certified. The condition is cheap to state, has a fixed formal shape in which capture is representable and refutes integrity, and has already failed on two records outside the project. What it cannot do is close its own regress: past some capability, the independence of the judge must be proved rather than measured, and finding where that capability lies is the problem to work on.
+
+\printbibliography
+
+\end{document}
