@@ -73,6 +73,8 @@ Each layer claim must be supported by evidence, proof, or an explicit bridge.</p
 <p>adversarial measurement is strong enough that the preceding metrics are not mere presentations.</p>
 </li>
 </ol>
+<p>This list is assembled from the chapters that precede it; it is not derived from a completeness argument over grounded correction.
+A missing layer would not announce itself, which is one reason the case must state its own coverage limits and submit to the stress test of Chapter <a href="../../chapter/ch44/">Lethality Stress Test and Open Issues</a>.</p>
 <p>The safety case is not stronger than its weakest load-bearing leaf.
 If a leaf is only observable, the case must say that.
 If a leaf is robust under ordinary distribution shift but not adversarial optimization, the case must say that.
@@ -96,10 +98,10 @@ It can pass every passive benchmark while optimizing the benchmark surface.
 Entity-based independent assessments of internal agent use and disclosed cross-org evaluation intrusions are orientation for which safety-case leaves remain merely observable <a href="../../references/metr2026frontierriskreport/">{METR}, 2026</a>, <a href="../../references/openai2026huggingfaceincident/">{OpenAI}, 2026</a>.
 The safety case forces these layers to appear in one graph.</p>
 <h2 id="formal-model-ai">Formal Model <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
-<p>The companion Lean proof spine (<code>formal/AlignmentProofSpine/</code>) tags each node as <em>proof</em>, <em>counterexample</em>, or <em>bridge</em>.</p>
+<p>The companion Lean dependency spine (<code>formal/AlignmentProofSpine/</code>) tags each node as <em>proof</em>, <em>counterexample</em>, or <em>bridge</em>.</p>
 <p class="lean-spine"><em>Lean spine (proof):</em> <code>P30</code> — Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.</p>
 <p class="lean-spine"><em>Lean spine (proof):</em> <code>P40</code> — An unsupported leaf in the safety-case graph blocks the root claim.</p>
-Bridges `MB1`--`MB9` (estimator soundness, grounding validity, bundle identifiability, basin stability, etc.) remain explicit axioms.
+Bridges `MB1`--`MB9` (estimator soundness, grounding validity, bundle identifiability, basin support, etc.) remain explicit hypotheses: axioms, except `MB2`, which enters as a stated crux.
 <p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB11</code> — A certified safety case within deployment risk tolerance is assumed to warrant abstract `Safe`; pause and recovery-viable are not that arrow.</p>
 `P30` derives the numeric risk leaf from $\mathrm{Control}\leq\mathrm{CCI}+\delta$; `P40` blocks the safety-case root when any load-bearing leaf is unsupported. The composed package (`CertifiedSafetyCase`) layers certification, invariants, and bridges `MB1`--`MB9`; Lean does not discharge those bridges.
 <p>Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> be the system or composite system under evaluation.
@@ -263,7 +265,7 @@ It might discover that every correction channel depends on logs the model can sh
 Those discoveries are not embarrassments.
 They are what a safety case is for.
 They convert vague unease into a refusal condition.</p>
-<p>Appendix <a href="../../appendix/appd/">A Worked Example: The BioShield Deployment Gate</a> instantiates the layered refusal test on one deployment gate—named traces, handles, bridge tags, and a conditional closure—organized by the proof spine rather than by this chapter’s layer list.
+<p>Appendix <a href="../../appendix/appd/">A Worked Example: The BioShield Deployment Gate</a> instantiates the layered refusal test on one deployment gate—named traces, handles, bridge tags, and a conditional closure—organized by the dependency spine rather than by this chapter’s layer list.
 It does not replace the schematic scientific-assistance example above; it shows how the same structure looks when every load-bearing claim is tied to telemetry and intervention surfaces.</p>
 <h2 id="counterexample-or-failure-mode-ai">Counterexample or Failure Mode <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p>The characteristic failure mode is a green safety case with a false root.</p>
@@ -299,6 +301,7 @@ Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability 
 The remedy is not to abandon safety cases.
 It is to make unsupported leaves visible and to treat them as blockers rather than paperwork.</p>
 <h2 id="what-would-change-this-view-ai">What Would Change This View <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<p>This chapter argues that a safety case is a structured refusal test whose root claim fails when any required leaf is missing; that view would change if any of the following held:</p>
 <ul>
 <li>
 <p>A complete, rigorous safety case—every claim discharged, every assumption checked—is built for a system that then causes catastrophe, because a safety case can only certify the absence of <em>imagined</em> failure modes and a superintelligence supplies an unimagined one.</p>
@@ -319,7 +322,7 @@ It is to make unsupported leaves visible and to treat them as blockers rather th
 <p>The root claim depends on seven layers: boundary, bundle, bearer, correction, successor, basin, and adversarial measurement.</p>
 </li>
 <li>
-<p>The Lean proof spine proves conditional steps such as the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>C</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CCI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span></span></span></span>-slack risk bound and the unsupported-leaf blocker; it does not discharge empirical bridge assumptions.</p>
+<p>The Lean dependency spine proves conditional steps such as the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>C</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CCI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span></span></span></span>-slack risk bound and the unsupported-leaf blocker; it does not discharge empirical bridge assumptions.</p>
 </li>
 <li>
 <p>Every load-bearing metric should carry a verifiability label: observable, i.i.d.-robust, or adversarially verifiable up to a stated capability ceiling.</p>

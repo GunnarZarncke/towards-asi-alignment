@@ -24,7 +24,7 @@ The main layers:
 - Selection basins: make institutions select for correction-preserving systems.
 - Adversarial verifiability: ask whether faking the safety signal is cheap.
 
-The Lean dependency spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Live bridges are **`MB1`–`MB11` incl. `MB4a`** in the field matrix and crosswalk; **`MB8` retired** from the live path (gravestone). **`MB1`–`MB9`** are packaged in `BridgeAssumptions`; **`MB4a`**, **`MB10`**, and **`MB11`** are threaded explicitly. These are empirical or philosophical assumptions, not theorem conclusions.
+The Lean dependency spine checks logical dependencies and finite separations. It does not prove that deployed AI systems are safe. Live bridges are **`MB1`–`MB11` incl. `MB4a`** in the field matrix and crosswalk; **`MB8` retired** from the live path (gravestone). `BridgeAssumptions` packages eleven axioms under seven numbered ids (**`MB1`**, **`MB3`**–**`MB5`**, **`MB6a`/`b`**, **`MB7a`–`d`**, **`MB9`**); **`MB2`** is the `Prop` hypothesis `MB2Crux`, not an axiom; **`MB4a`**, **`MB10`**, and **`MB11`** are threaded explicitly. These are empirical or philosophical assumptions, not theorem conclusions.
 
 ## First Files To Read
 
@@ -75,17 +75,17 @@ If you cannot access a related repo or source PDF, say so. Do not infer missing 
 Gems are independent separations or operational results, not evidence the stack is complete. Each line is tagged **proved**, **counterexample**, or **bridge**.
 
 - Boundary discovery: ch06-ch10 — **bridge**
-- Grounding viability: ch03, ch47 — **bridge**
-- Value bundles: ch15-ch46 — **bridge**
-- Bundle-geometry measurement and Goodhart pressure: ch46 — **bridge**
-- Bearer maps: ch18, ch46, ch47 — **bridge**
-- Transport hierarchy: ch46 — **bridge**
-- Vector/status CCI: ch46; adversarial pressure tests: ch48 — **bridge**
-- Existing-work crosswalk (field agendas as special cases / separations): ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`) — **proved**
-- Successor test: ch46-ch48 — **bridge**
-- Selection envelope and correction parasites: ch46-ch48 — **bridge**
-- Conductive artifacts and pivotal processes: ch45 — **bridge**
-- Goal laundering and cost of faking: ch48, ch47 — **bridge**
+- Grounding viability: ch03, ch43 — **bridge**
+- Value bundles: ch15-ch20 — **bridge**
+- Bundle-geometry measurement and Goodhart pressure: ch20 — **bridge**
+- Bearer maps: ch18, ch24, ch47 — **bridge**
+- Transport hierarchy: ch24 — **bridge**
+- Vector/status CCI: ch26; adversarial pressure tests: ch27 — **bridge**
+- Existing-work crosswalk (field agendas as special cases / separations): ch07, ch21, ch25-ch29, ch41, ch43; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`) — **proved**
+- Successor test: ch30-ch33 — **bridge**
+- Selection envelope and correction parasites: ch34-ch37 — **bridge**
+- Conductive artifacts and pivotal processes: ch38 — **bridge**
+- Goal laundering and cost of faking: ch40, ch43 — **bridge**
 - Value-update envelope: ch45-ch46 — **bridge**
 - Lean dependency spine as hygiene: `formal/`, Appendix G — **proved**
 - Field-agenda Lean formalization (community gem in progress): Appendix G gem ``field-agenda formalization'' (`sec:appg-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today — **proved**
@@ -100,7 +100,7 @@ The book relates familiar proposals to its invariants as projections, special ca
 - Causal influence diagrams and incentive tests become boundary-relative under ontology choice and system-boundary choice.
 - CIRL and reward inference become local projections of bundle, bearer, and correction preservation.
 - Shutdown and interruptibility become one-bit correction projections.
-- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity; see the ch48 stress tests.
+- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity; see the ch27 stress tests.
 - Christiano-style corrigibility becomes a dynamical correction invariant.
 - Debate can preserve local truth while losing the judge's correction channel.
 - Amplification can improve local supervision while failing global correction-channel contraction.

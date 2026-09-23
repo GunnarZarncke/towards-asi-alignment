@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-22T21:40:51.966Z",
+  "generatedAt": "2026-09-23T00:13:00.957Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -22,37 +22,37 @@
       "title": "$\\chi_{ij}(a)$",
       "type": "notation",
       "summary": "Artifact conductivity on edge $(i,j)$ for artifact $a$",
-      "url": "/cards/chapter/ch48/"
+      "url": "/cards/chapter/ch37/"
     },
     {
       "title": "$\\chi$",
       "type": "notation",
       "summary": "Artifact conductivity",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch37/"
     },
     {
       "title": "$\\Delta L_{\\text{int}}$",
       "type": "notation",
       "summary": "Intentional compression gain",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch22/"
     },
     {
       "title": "$\\Delta L_{\\text{transport}}$",
       "type": "notation",
       "summary": "Goal-transport compression gain",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch23/"
     },
     {
       "title": "$\\Delta L_T$",
       "type": "notation",
       "summary": "Transport decomposition (semantic, bundle, bearer, correction, successor)",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch23/"
     },
     {
       "title": "$\\Delta L$ sign",
       "type": "notation",
       "summary": "Positive gain = richer model earns its complexity cost",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch22/"
     },
     {
       "title": "$\\delta$",
@@ -94,19 +94,19 @@
       "title": "$\\kappa_{\\mathrm{sel}}(E,A,h)$",
       "type": "notation",
       "summary": "Effective selection capacity through handle $h$",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch34/"
     },
     {
       "title": "$\\kappa_{ij}$",
       "type": "notation",
-      "summary": "Cooperativity index",
-      "url": "/cards/chapter/ch48/"
+      "summary": "Cooperativity index (`eq:kappa-coordination`; value-sensitive $\\kappa^V_{ij}$ in ch35)",
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\lambda_L,\\lambda_M,\\lambda_R,\\lambda_O$",
       "type": "notation",
       "summary": "CCI penalty weights",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch26/"
     },
     {
       "title": "$\\mathcal C$",
@@ -118,7 +118,7 @@
       "title": "$\\mathcal S_{\\text{certified}}$",
       "type": "notation",
       "summary": "Certified successor class",
-      "url": "/cards/chapter/ch48/"
+      "url": "/cards/chapter/ch30/"
     },
     {
       "title": "$\\mathcal{H}_t$",
@@ -159,8 +159,8 @@
     {
       "title": "$\\mathrm{Risk}(A)$",
       "type": "notation",
-      "summary": "Certification risk functional",
-      "url": "/cards/chapter/ch48/"
+      "summary": "Certification risk functional (Lean `Certification.lean`; manuscript uses $\\mathrm{RiskGap}$)",
+      "url": "/cards/chapter/ch33/"
     },
     {
       "title": "$\\mathrm{RiskGap}(A)$",
@@ -226,19 +226,19 @@
       "title": "$\\text{Succ}(A)$",
       "type": "notation",
       "summary": "Successors of agent $A$",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch30/"
     },
     {
       "title": "$\\varphi_c$",
       "type": "notation",
-      "summary": "Percolation threshold for cooperation",
-      "url": "/cards/chapter/ch48/"
+      "summary": "Percolation threshold for cooperation (`eq:cooperation-percolation`)",
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\varphi$",
       "type": "notation",
       "summary": "Cooperation order parameter",
-      "url": "/cards/chapter/ch48/"
+      "url": "/cards/chapter/ch13/"
     },
     {
       "title": "$\\vec{\\Pi}(A)$",
@@ -256,7 +256,7 @@
       "title": "$A_Y,I_Y,\\lambda_Y$",
       "type": "notation",
       "summary": "Evasion-process action entropy, internal entropy, weight",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch36/"
     },
     {
       "title": "$B_{\\mathrm{align}}$",
@@ -322,7 +322,7 @@
       "title": "$C_X$",
       "type": "notation",
       "summary": "Host correction capacity (correction-audit-evasion criterion)",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch36/"
     },
     {
       "title": "$CCI_\\lambda$",
@@ -358,7 +358,7 @@
       "title": "$DL(\\cdot)$",
       "type": "notation",
       "summary": "Description length (model-complexity cost)",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch22/"
     },
     {
       "title": "$E_t$",
@@ -472,13 +472,13 @@
       "title": "$L,M,R,O_{\\mathrm{trans}}$",
       "type": "notation",
       "summary": "CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch26/"
     },
     {
       "title": "$L$",
       "type": "notation",
       "summary": "Log-evidence / predictive score (higher = better fit)",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch22/"
     },
     {
       "title": "$M_{\\mathrm{sel}}$",
@@ -526,7 +526,7 @@
       "title": "$U_S$",
       "type": "notation",
       "summary": "System correction-update operator",
-      "url": "/cards/chapter/ch46/"
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$V_t$",
@@ -2209,9 +2209,9 @@
       "url": "/cards/release/release-v1-5-0/"
     },
     {
-      "title": "v1.6.0 — Witness tests, problem-axis, and companion-site product",
+      "title": "v1.6.0 — Backtests, problem-axis, and companion-site product",
       "type": "release",
-      "summary": "Witness tests (W-1–W-17) add a third experiment class: frozen fail/refuse protocols on existing host traces; the Introduction now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the companion site becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.",
+      "summary": "Backtests (W-1–W-17; released under the name “witness tests”, renamed 2026-09-07) add a third experiment class: frozen fail/refuse protocols on existing host traces; the Introduction now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the companion site becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.",
       "url": "/cards/release/release-v1-6-0/"
     },
     {

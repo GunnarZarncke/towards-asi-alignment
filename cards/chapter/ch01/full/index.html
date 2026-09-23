@@ -27,6 +27,10 @@ This chapter previews the boundary claim (Claim Introduction).</div>
 <blockquote class="epigraph"><p>%
 Disastrous results are to be expected \ wherever two agencies essentially foreign to each other are coupled in the attempt to achieve a common purpose.%</p><footer>— Norbert Wiener, “Some Moral and Technical Consequences of Automation,” <em>Science</em> (1960)</footer></blockquote>
 <h2 id="the-standard-picture-and-its-failure-gz-ai">The Standard Picture and Its Failure <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
+<p>Any account of alignment fixes three things, usually without saying so: an <em>object</em> that is being aligned, a <em>subject</em> that does the aligning, and a <em>content</em> that is supposed to pass from the one to the other.
+The standard picture fills the slots with a trained model, its developers, and human values.
+The claim of this chapter is that the first slot is filled wrongly for capable deployed systems, and that the error propagates: once the object is misidentified, no choice of subject or content repairs the safety case.
+We use the three slots as a reading aid for the rest of the chapter, not as a structure for the book.</p>
 <p>The standard picture imagines alignment as a simple instruction relation:</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>humans</mtext><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mtext>human values</mtext></mpadded></mover><mtext>AI system</mtext></mrow><annotation encoding="application/x-tex">\text{humans} \xrightarrow{\text{human values}} \text{AI system}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord text"><span class="mord">humans</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">human values</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
 -16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
@@ -60,16 +64,11 @@ They ask whether a deployment is safe <a href="../../references/russell2019human
 While these are important questions.
 But they assume that we already know what object is being aligned.
 Often we do not.</p>
-<p>A deployed AI system is not just a neural network.
-It is a service, an interface, a memory store, a tool environment, an evaluation suite, a user population, an operator team, a company, a market, and sometimes a state interest.
-Some of these parts learn.
-Some select.
-Some remember.
-Some reward.
-Some constrain.
-Some hide.
-Some amplify.
-Some are treated as background even though they shape the effective optimization process more than the model weights do.</p>
+<p>Take a coding assistant sold as a product.
+What we train is a network.
+What we deploy is that network plus a system prompt, a tool sandbox with shell access, a memory store that carries context across sessions, an evaluation suite that gates releases, a population of users who learn what it will and will not do, an operator team that patches the prompt every week, a company whose revenue depends on retention, and a market that rewards whoever ships first.
+The network learns during training; the users and the operator team learn during deployment; the evaluation suite selects; the memory store remembers; the market rewards; the sandbox constrains; the prompt hides part of the objective from the user.
+Only the first of these is what the alignment literature usually calls the system, yet several of the others shape the effective optimization more than the weights do.</p>
 <p>If we align the wrong object, we can get local success and global failure.
 This pattern—each component behaving acceptably while the aggregate drifts—is the failure mode Christiano describes, in which no single model is obviously the thing to align <a href="../../references/christiano2019failure/">Christiano, 2019</a>.</p>
 <p>A model can pass behavioral tests while the product around it selects for manipulation.
