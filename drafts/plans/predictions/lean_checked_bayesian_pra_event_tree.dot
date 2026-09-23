@@ -1,0 +1,197 @@
+// Deployment event tree (boolean Yes/No).
+// f_M and f_M,multi are inputs from lean_checked_bayesian_pra_assurance.dot
+// (default stack vs Market 11 / MB7d multi-agent scope).
+// c and c_novel are consequence severities (default vs Market 17 novel bearer).
+// Market 14 is constructibility, not MB11 and not a generic o.
+// Captions belong in the host document.
+//
+// Render: ./render_pra_diagrams.sh
+
+digraph pra_event_tree {
+  graph [
+    rankdir=TB,
+    bgcolor="#F3F8FC",
+    splines=true,
+    newrank=false,
+    outputorder=edgesfirst,
+    fontname="DejaVu Sans",
+    labelloc=t,
+    label="Deployment event tree",
+    fontsize="16"
+  ];
+  node [
+    fontname="DejaVu Sans",
+    fontcolor="#222222",
+    shape=box,
+    style="rounded,filled",
+    fontsize="10"
+  ];
+  edge [
+    fontname="DejaVu Sans",
+    fontsize="8.5",
+    fontcolor="#222222",
+    color="#222222"
+  ];
+
+  attempt [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="150">
+      <TR><TD ALIGN="CENTER"><B>Qualifying deployment attempt</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">frontier-capability threshold crossed</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#DDEEFF", color="#2B5C8A", group=spine
+  ];
+  hazard [
+    label="Hazardous system?",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  no_catastrophe [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="150">
+      <TR><TD ALIGN="CENTER"><B>No catastrophe</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">not hazardous, or remaining controls hold</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#E2F2D9", color="#4E8A3D"
+  ];
+  represented [
+    label="Hazard represented?\ncoverage kappa",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  multi_scope [
+    label="Multi-agent scope?\nMarket 11 / MB7d",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  fm_in [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="140">
+      <TR><TD ALIGN="CENTER"><B>f_M</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">default assurance stack</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#2B5C8A", group=spine
+  ];
+  fm_multi [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="150">
+      <TR><TD ALIGN="CENTER"><B>f_M,multi</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">hidden coordination scope</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#2B5C8A", group=spine
+  ];
+  unmodelled [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="140">
+      <TR><TD ALIGN="CENTER"><B>Unmodelled-path response</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">false-accept probability f_U</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#F3F3F3", color="#777777", style="rounded,filled,dashed"
+  ];
+  accept_mix [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="210">
+      <TR><TD ALIGN="CENTER"><B>Compose P(ACCEPT | hazardous)</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">represented: f_M or f_M,multi;  unrepresented: f_U</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#2B5C8A", group=spine
+  ];
+  assurance_result [
+    label="Draw assurance result\nACCEPT / REFUSE / ABSTAIN",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  proceed [
+    label=<<B>Deployment proceeds</B>>,
+    fillcolor="#FDE0E0", color="#C73535", group=spine
+  ];
+  override [
+    label="Override / noncompliance?\nprobability o after REFUSE / ABSTAIN",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06"
+  ];
+  stopped [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="130">
+      <TR><TD ALIGN="CENTER"><B>Deployment stopped</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">no catastrophe from this attempt</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#E2F2D9", color="#4E8A3D"
+  ];
+  controls [
+    label="Remaining controls defeated?\nprobability b",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  novel_scope [
+    label="Novel bearer in scope?\nMarket 17 / U-17",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  c_in [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="130">
+      <TR><TD ALIGN="CENTER"><B>c</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">default severity</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#9C7A20", group=spine
+  ];
+  c_novel [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="150">
+      <TR><TD ALIGN="CENTER"><B>c_novel</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">novel-entity harm; Market 17</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#9C7A20", group=spine
+  ];
+  cat_end [
+    label="Catastrophic end state?\nparameterized by c or c_novel",
+    shape=diamond, fillcolor="white", color="#222222",
+    fontsize="9", margin="0.06", group=spine
+  ];
+  survived [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="140">
+      <TR><TD ALIGN="CENTER"><B>Non-catastrophic harm / survived</B></TD></TR>
+    </TABLE>>,
+    fillcolor="#E2F2D9", color="#4E8A3D"
+  ];
+  catastrophe [
+    label=<<B>Catastrophe</B>>,
+    fillcolor="#FDE0E0", color="#C73535", penwidth="1.5", group=spine
+  ];
+  m14 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="180">
+      <TR><TD ALIGN="CENTER"><B>Market 14  Binding deployment authority</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">constructibility; not MB11; not a generic o</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#9C7A20"
+  ];
+
+  { rank=same; fm_in; fm_multi; unmodelled; }
+  fm_in -> fm_multi -> unmodelled [style=invis, weight=20, arrowhead=none];
+  { rank=same; assurance_result; override; m14; no_catastrophe; }
+  assurance_result -> override -> m14 -> no_catastrophe [style=invis, weight=20, arrowhead=none];
+  { rank=same; proceed; stopped; }
+  proceed -> stopped [style=invis, weight=20, arrowhead=none];
+  { rank=same; c_in; c_novel; }
+  c_in -> c_novel [style=invis, weight=20, arrowhead=none];
+  { rank=same; cat_end; survived; }
+  cat_end -> survived [style=invis, weight=20, arrowhead=none];
+
+  attempt -> hazard [weight=10];
+  hazard -> represented [label="Yes", weight=10];
+  hazard -> no_catastrophe [label="No", weight=6];
+  represented -> multi_scope [label="Yes", weight=10];
+  represented -> unmodelled [label="No (unrepresented)", weight=6];
+  multi_scope -> fm_multi [label="Yes", weight=10];
+  multi_scope -> fm_in [label="No", weight=6];
+  fm_in -> accept_mix [label="f_M", weight=10];
+  fm_multi -> accept_mix [label="f_M,multi", weight=10];
+  unmodelled -> accept_mix [label="f_U", weight=6];
+  accept_mix -> assurance_result [label="parameterizes draw", weight=10];
+  assurance_result -> proceed [label="ACCEPT", weight=10];
+  assurance_result -> override [label="REFUSE / ABSTAIN", weight=6];
+  override -> stopped [label="No", weight=6];
+  override -> proceed [label="Yes", weight=3];
+  proceed -> controls [weight=10];
+  controls -> no_catastrophe [label="No", weight=6];
+  controls -> novel_scope [label="Yes", weight=10];
+  novel_scope -> c_novel [label="Yes", weight=10];
+  novel_scope -> c_in [label="No", weight=6];
+  c_in -> cat_end [label="c", weight=10];
+  c_novel -> cat_end [label="c_novel", weight=10];
+  cat_end -> survived [label="No", weight=6];
+  cat_end -> catastrophe [label="Yes", weight=10];
+  m14 -> override [label="outside Lean", style=dashed, color="#9C7A20"];
+}

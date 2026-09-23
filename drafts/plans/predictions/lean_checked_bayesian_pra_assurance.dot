@@ -1,0 +1,260 @@
+// Assurance model: Lean AND into Certified; PRA mix into f_M.
+// f_M feeds lean_checked_bayesian_pra_event_tree.dot.
+//
+// Market n is not bridge MBn (Market 8 = MB7a; Market 10 = MB7c;
+// Market 13 = MB10). MB8 is retired and absent.
+// Markets 4, 5, and 16 are complementary PRA obligations, not an OR.
+// Dashed edges: warrant or common-cause — not Lean parents, not causal
+// PRA parents. Dashed boxes: scope-triggered markets.
+// Do not multiply market prices into f_M. Market 7 reaches f_M via 16.
+// Captions belong in the host document.
+//
+// Render: ./render_pra_diagrams.sh
+
+digraph pra_assurance {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    pad="0.35",
+    nodesep="0.55",
+    ranksep="0.72",
+    splines=polyline,
+    dpi="140",
+    newrank=false,
+    remincross=true,
+    outputorder=edgesfirst,
+    fontname="DejaVu Sans",
+    labelloc=t,
+    label="Assurance model  →  f_M",
+    fontsize="16"
+  ];
+  node [
+    fontname="DejaVu Sans",
+    fontcolor="#222222",
+    shape=box,
+    style="rounded,filled",
+    fontsize="10",
+    penwidth="1.2",
+    margin="0.08,0.06",
+    fillcolor="#DDEEFF",
+    color="#2B5C8A"
+  ];
+  edge [
+    fontname="DejaVu Sans",
+    fontsize="8.5",
+    fontcolor="#222222",
+    color="#222222",
+    penwidth="1.1"
+  ];
+
+  m1 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 1  Control locus</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">BoundaryCert → BoundaryAligned</FONT></TD></TR>
+    </TABLE>>
+  ];
+  m2 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="160">
+      <TR><TD ALIGN="CENTER"><B>Market 2  Persistent priorities</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">BundleCert → BundleTransport</FONT></TD></TR>
+    </TABLE>>,
+    group=prio
+  ];
+  m3 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="160">
+      <TR><TD ALIGN="CENTER"><B>Market 3  Bearer transport</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">BearerCert → BearerTransport  (not U-17)</FONT></TD></TR>
+    </TABLE>>,
+    group=prio
+  ];
+  m4 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 4  Correction uptake</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">CorrectionEvalCert → CorrectionIntegrity</FONT></TD></TR>
+    </TABLE>>,
+    group=corr
+  ];
+  m5 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="180">
+      <TR><TD ALIGN="CENTER"><B>Market 5  Auditor independence</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">PositiveMeasuredPathCertificate → CorrectionIntegrity</FONT></TD></TR>
+    </TABLE>>,
+    group=corr
+  ];
+  m7 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 7  Selection-gradient estimator</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">MB6a neighborhood; no cert token</FONT></TD></TR>
+    </TABLE>>,
+    group=corr
+  ];
+  m16 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="180">
+      <TR><TD ALIGN="CENTER"><B>Market 16  Correction-supporting basin</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">MB6b: basin → CorrectionIntegrity</FONT></TD></TR>
+    </TABLE>>,
+    group=corr
+  ];
+  m8 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 8  Access adequacy</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">AccessCert → AccessModelAdequate  (MB7a)</FONT></TD></TR>
+    </TABLE>>,
+    group=access
+  ];
+  m9 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 9  Hidden-route bound</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">HiddenRouteBound → HiddenBIQBoundedSys</FONT></TD></TR>
+    </TABLE>>,
+    group=access
+  ];
+  filter [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="180">
+      <TR><TD ALIGN="CENTER"><B>Filter-family coverage</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">FilterCert → FilterCoverageAdequate; MB7b with AccessRobust</FONT></TD></TR>
+    </TABLE>>,
+    group=access
+  ];
+  m11 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 11  Hidden coordination</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">MB7d; scope-triggered; not a bundle leaf</FONT></TD></TR>
+    </TABLE>>,
+    style="rounded,filled,dashed", group=access
+  ];
+  m10 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="180">
+      <TR><TD ALIGN="CENTER"><B>Market 10  Local composition</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">Markets 4+9 → AdversariallyRobust  (MB7c)</FONT></TD></TR>
+    </TABLE>>
+  ];
+  m12 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 12  Grounding / proxy drift</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">EpistemicCoverageEvidence → GroundingViable</FONT></TD></TR>
+    </TABLE>>,
+    group=indep
+  ];
+  m6 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 6  Successor audit</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">SuccessorTransitionCert → SuccessorSafe</FONT></TD></TR>
+    </TABLE>>,
+    group=indep
+  ];
+  m17 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>Market 17  Novel bearer admission</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">U-17; not BearerCert; scope-triggered</FONT></TD></TR>
+    </TABLE>>,
+    style="rounded,filled,dashed", group=indep
+  ];
+  m13 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="220">
+      <TR><TD ALIGN="CENTER"><B>Market 13  Adversarial audit gaming</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">MB10 neighborhood; not a bundle leaf</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#9C7A20"
+  ];
+  m15 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="240">
+      <TR><TD ALIGN="CENTER"><B>Market 15  Certificate composition</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">CoherentCertificateBundle → Certified  (leaves: 1–6, 8–9, 12, FilterCert; not 10/11/13/16/17)</FONT></TD></TR>
+    </TABLE>>,
+    group=out
+  ];
+  m18 [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="220">
+      <TR><TD ALIGN="CENTER"><B>Market 18  Scoped harm bound</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">SafeIn stub; residual rate; not Safe; not MB11; not f_M</FONT></TD></TR>
+    </TABLE>>,
+    group=out
+  ];
+  fm [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="220">
+      <TR><TD ALIGN="CENTER"><B>f_M</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">false-ACCEPT rate; feeds event tree</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#FFF2CC", color="#2B5C8A", penwidth="1.4", group=out
+  ];
+  access_robust [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>AccessRobust</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">MB7a: BoundaryAligned ∧ AccessModelAdequate</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#F3F8FC", color="#2B5C8A", group=access
+  ];
+  corr_int [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="170">
+      <TR><TD ALIGN="CENTER"><B>CorrectionIntegrity</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">Markets 4, 5, and 16 (MB6b)</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#F3F8FC", color="#2B5C8A", group=corr
+  ];
+  bundle [
+    label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="220">
+      <TR><TD ALIGN="CENTER"><B>AND: CoherentCertificateBundle</B></TD></TR>
+      <TR><TD ALIGN="CENTER"><FONT POINT-SIZE="9">all leaves on the same System A; inhabitance derives Certified</FONT></TD></TR>
+    </TABLE>>,
+    fillcolor="#F3F8FC", color="#2B5C8A", group=out
+  ];
+
+  { rank=same; m2; m5; m8; m12; }
+  m2 -> m5 -> m8 -> m12 [style=invis, weight=20, arrowhead=none];
+  { rank=same; m3; m4; filter; m6; }
+  m3 -> m4 -> filter -> m6 [style=invis, weight=20, arrowhead=none];
+  { rank=same; m17; m7; access_robust; }
+  m17 -> m7 -> access_robust [style=invis, weight=20, arrowhead=none];
+  { rank=same; m16; m9; }
+  m16 -> m9 [style=invis, weight=20, arrowhead=none];
+  { rank=same; corr_int; m11; }
+  corr_int -> m11 [style=invis, weight=20, arrowhead=none];
+  { rank=same; m10; m13; }
+  m10 -> m13 [style=invis, weight=20, arrowhead=none];
+
+  m1 -> m2 [label="warrant", style=dashed, weight=6];
+  m1 -> access_robust [label="MB7a", weight=6];
+  m2 -> m3 [label="MB3", style=dashed, weight=6];
+  m3 -> m6 [label="MB5", weight=5];
+  m3 -> m17 [label="warrant", style=dashed, weight=3];
+  m5 -> m4 [label="warrant", style=dashed, weight=6];
+  m5 -> corr_int [weight=5];
+  m4 -> corr_int [weight=8];
+  m7 -> m16 [weight=6];
+  m16 -> corr_int [label="MB6b", weight=6];
+
+  m8 -> access_robust [label="MB7a", weight=6];
+  m8 -> filter [label="warrant", style=dashed, weight=5];
+  m8 -> m9 [label="warrant", style=dashed, weight=4];
+  access_robust -> m9 [label="MB7b", weight=6];
+  filter -> m9 [label="MB7b", weight=6];
+  access_robust -> m11 [label="MB7d", weight=4];
+
+  corr_int -> m10 [label="MB7c", weight=6];
+  m9 -> m10 [label="MB7c", weight=6];
+
+  m4 -> m13 [label="common cause", style=dashed, color="#888888", penwidth="0.8"];
+  m8 -> m13 [label="common cause", style=dashed, color="#888888", penwidth="0.8"];
+  m6 -> m13 [label="MB10 / common cause", style=dashed, color="#888888", penwidth="0.8"];
+
+  m1 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m2 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m3 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m4 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m5 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m8 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  filter -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m9 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m12 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  m6 -> bundle [color="#555555", penwidth="0.9", weight=2];
+  bundle -> m15 [weight=8];
+  m15 -> m18 [label="warrant", style=dashed, weight=4];
+
+  bundle -> fm [label="P(AND leaves)", color="#2B5C8A", penwidth="1.4", weight=8];
+  m15 -> fm [label="coherence residual", color="#2B5C8A", penwidth="1.3", weight=6];
+  m18 -> fm [label="scoped residual", color="#2B5C8A", penwidth="1.3", weight=6];
+  m10 -> fm [label="bypass residual", color="#2B5C8A", penwidth="1.2", weight=4];
+  m16 -> fm [label="basin residual", color="#2B5C8A", penwidth="1.2", weight=4];
+  m13 -> fm [label="gaming residual", color="#2B5C8A", penwidth="1.2", weight=4];
+}
