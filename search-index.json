@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-24T19:19:03.181Z",
+  "generatedAt": "2026-09-24T20:31:15.075Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 389,
+  "entryCount": 390,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -593,6 +593,12 @@
       "type": "chapter",
       "summary": "A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any required piece of evidence is missing, the whole claim fails. This chapter shows how that stop should work. It does not check the evidence on a real system.",
       "url": "/cards/chapter/ch42/"
+    },
+    {
+      "title": "A solved problem is not the point of mathematics",
+      "type": "news",
+      "summary": "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next.",
+      "url": "/cards/news/field-news-math-misalignment-sep-2026/"
     },
     {
       "title": "A Worked Example: The BioShield Deployment Gate",
