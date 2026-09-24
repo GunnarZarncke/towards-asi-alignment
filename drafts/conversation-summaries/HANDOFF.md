@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-24 (Fields-medallist mathematics misalignment news).
+Last updated: 2026-09-24 (quiz takeaway for mathematics misalignment news).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-24:** **Quiz math-misalignment takeaway** — News card now has `news-takeaway-math-misalignment-sep-2026`. Log: `2026-09-24-quiz-math-takeaway.md`.
 - **2026-09-24:** **Mathematics misalignment field news** — Fields-medallist declaration: a solved problem is a landmark, not the goal. Log: `2026-09-24-math-misalignment-news.md`.
 - **2026-09-24:** **Related Metaculus links** — Hub lists 38190, 38597, and 31707 as related forecasts. Metaculus 6509 is listed only as an underspecified-question example (Appendix H judgment section and the hub). Log: `2026-09-24-related-metaculus.md`.
 - **2026-09-24:** **Ban ASI Act field news** — Senate text of the Sanders bill: training pause ends when the department is staffed; lasting ban still needs a checkable finding. Log: `2026-09-24-ban-asi-act-news.md`.

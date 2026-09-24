@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-24 | **Quiz math-misalignment takeaway** — CI quiz bank failed: missing `news-takeaway-math-misalignment-sep-2026`. | [2026-09-24-quiz-math-takeaway.md](2026-09-24-quiz-math-takeaway.md) |
 | 2026-09-24 | **Mathematics misalignment field news** — Short card on the 11 September Fields-medallist declaration: solved problems as a bad proxy, Goodhart selection, a green check while understanding has not moved, and values that do not collapse to one score. | [2026-09-24-math-misalignment-news.md](2026-09-24-math-misalignment-news.md) |
 | 2026-09-24 | **UAD on the project itself** — Continuation of the reflexive "TSA on itself" discussion: detect the effective agent with UAD ins... | [2026-09-24-uad-on-tsa.md](2026-09-24-uad-on-tsa.md) |
 | 2026-09-24 | **Related Metaculus links** — Link Metaculus 31707, 38190, and 38597 from the predictions hub as related questions, not in the ... | [2026-09-24-related-metaculus.md](2026-09-24-related-metaculus.md) |

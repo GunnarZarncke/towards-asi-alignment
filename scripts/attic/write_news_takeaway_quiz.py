@@ -56,6 +56,19 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "math-misalignment-sep-2026",
+        "MB9",
+        ["ch03", "ch14", "ch34", "ch16"],
+        "Fields medallists say a solved famous problem used to mean a method a community could learn. What does a true-or-false score fail to settle?",
+        "Whether a method others can learn moved, or only the true-or-false",
+        [
+            "Whether the letter says company and mathematics goals are misaligned",
+            "Whether famous problems are called landmarks for new understanding",
+            "Whether students and ideas are named the profession's main resource",
+        ],
+        "A solved problem used to mean understanding had moved. The score can stay bright after the method, the writeup, and the students have not.",
+    ),
+    Q(
         "ban-asi-act-sep-2026",
         "MB11",
         ["ch05", "ch12", "ch13", "ch25", "ch42", "ch43"],

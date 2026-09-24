@@ -1532,6 +1532,36 @@ questions:
   - "chapter:ch48"
   tags:
   - takeaway
+- id: news-takeaway-math-misalignment-sep-2026
+  prompt: Fields medallists say a solved famous problem used to mean a method a community could learn.
+    What does a true-or-false score fail to settle?
+  options:
+  - id: take
+    text: "Whether a method others can learn moved, or only the true-or-false"
+    correct: true
+  - id: d0
+    text: Whether the letter says company and mathematics goals are misaligned
+    correct: false
+  - id: d1
+    text: Whether famous problems are called landmarks for new understanding
+    correct: false
+  - id: d2
+    text: "Whether students and ideas are named the profession's main resource"
+    correct: false
+  explanation: "A solved problem used to mean understanding had moved. The score can stay bright after\
+    \ the method, the writeup, and the students have not."
+  source:
+    href: /cards/chapter/ch03/
+    label: Chapter 3 — Alignment as a Dynamical Guarantee
+  topics:
+  - MB9
+  appearOn:
+  - "chapter:ch03"
+  - "chapter:ch14"
+  - "chapter:ch34"
+  - "chapter:ch16"
+  tags:
+  - takeaway
 - id: news-takeaway-ban-asi-act-sep-2026
   prompt: The Ban Artificial Superintelligence Act pauses advanced training until a new department is
     staffed and has written rules it calls clear. What does that ending condition leave open?

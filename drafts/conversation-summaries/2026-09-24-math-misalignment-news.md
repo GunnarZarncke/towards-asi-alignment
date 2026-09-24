@@ -16,6 +16,7 @@ User asked for a short news card on Terence Tao’s 11 September 2026 Fields-med
 
 ## Open / next
 - Other working-tree drafts (Metaculus hub, Ban ASI body tweak, appendices, experiments zips) left unstaged.
+- Quiz takeaway for this card added in `2026-09-24-quiz-math-takeaway.md`.
 
 ## Key paths
 - `metadata/field-news/bodies/math-misalignment-sep-2026.md`
