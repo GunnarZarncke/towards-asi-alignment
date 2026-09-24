@@ -30,4 +30,4 @@ User asked for a site news entry on the [Ban Artificial Superintelligence Act](h
 - `/cards/news/field-news-ban-asi-act-sep-2026/`
 
 ## Commits
-- `764c572d1` Add field news on Sanders’ Ban Artificial Superintelligence Act.
+- `6a5e36538` Add field news on Sanders’ Ban Artificial Superintelligence Act.
