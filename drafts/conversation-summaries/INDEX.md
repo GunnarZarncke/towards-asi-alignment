@@ -6,9 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-09-23 | **Markdown links CI fix** — CI failed 16 relative links on clean checkout; local passed because gitignored generated artifacts existed on disk. Fixed checker to skip gitignored targets. | [2026-09-23-markdown-links-ci-fix.md](2026-09-23-markdown-links-ci-fix.md) |
+| 2026-09-24 | **Ban Artificial Superintelligence Act field news** — User asked for a site news entry on the [Ban Artificial Superintelligence Act](https://www.sander... | [2026-09-24-ban-asi-act-news.md](2026-09-24-ban-asi-act-news.md) |
 | 2026-09-23 | **PRA diagram vs Lean** — User asked to review `lean_checked_bayesian_pra_diagram.py` against the actual Lean spine and fix... | [2026-09-23-pra-diagram-lean.md](2026-09-23-pra-diagram-lean.md) |
-| 2026-09-23 | **Consistency decisions executed** — Size targets removed; `ch46` correction table; Lean P-node theorems + prose sync; Backtest rename; attic pass; link checker; TODO.md. | [2026-09-23-consistency-decisions.md](2026-09-23-consistency-decisions.md) |
+| 2026-09-23 | **Markdown links CI fix** — CI `make check` failed on the markdown link gate (16 broken relative links) while local check pas... | [2026-09-23-markdown-links-ci-fix.md](2026-09-23-markdown-links-ci-fix.md) |
+| 2026-09-23 | **Consistency review: decisions executed** — Author decisions on [`drafts/project/consistency-review-2026-09-22.md`](../project/consistency-re... | [2026-09-23-consistency-decisions.md](2026-09-23-consistency-decisions.md) |
 | 2026-09-22 | **Project consistency review** — Review the whole project and the plan; assess how well it meets stated and implied expectations a... | [2026-09-22-project-consistency-review.md](2026-09-22-project-consistency-review.md) |
 | 2026-09-22 | **App P PRA vocabulary** — Appendix H/P should introduce the assurance/PRA vocabulary explicitly and include a suitable refe... | [2026-09-22-predictions-pra-vocab.md](2026-09-22-predictions-pra-vocab.md) |
 | 2026-09-22 | **Predictions Phase 3** — Continue the assurance-risk plan with Phase 3 after the editorial review pass and Phase 2b fundin... | [2026-09-22-predictions-phase-3.md](2026-09-22-predictions-phase-3.md) |
@@ -20,13 +21,10 @@
 | 2026-09-22 | **PRA diagram layout** — User asked to run `lean_checked_bayesian_pra_diagram.py`, inspect the generated graph, and improv... | [2026-09-22-pra-diagram-layout.md](2026-09-22-pra-diagram-layout.md) |
 | 2026-09-22 | **OpenAI RSI standards field news** — User asked for a site news entry commenting on OpenAI’s 21 September 2026 post [Building standard... | [2026-09-22-openai-rsi-standards-news.md](2026-09-22-openai-rsi-standards-news.md) |
 | 2026-09-22 | **Appendix H editorial pass** — User requested an editorial read of Appendix H for a reader already familiar with the book, with ... | [2026-09-22-app-p-editorial-pass.md](2026-09-22-app-p-editorial-pass.md) |
-| 2026-09-19 | **Spring map to Appendix B** — The field spring-map demo was parked under ch05, which does not fit. Move it to App B; make the d... | [2026-09-19-spring-map-appb.md](2026-09-19-spring-map-appb.md) |
-| 2026-09-19 | **Quiz news-takeaways CI fix** — CI `make check` failed on **quiz bank**: three `news-takeaway-*` questions missing for field-news... | [2026-09-19-quiz-news-takeaways-fix.md](2026-09-19-quiz-news-takeaways-fix.md) |
-| 2026-09-19 | **Predictions site hub** — User asked to continue with the site phase after Appendix H shipped. | [2026-09-19-predictions-site.md](2026-09-19-predictions-site.md) |
 
 ## Archive by month
 
-- **2026-09** (53): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (56): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

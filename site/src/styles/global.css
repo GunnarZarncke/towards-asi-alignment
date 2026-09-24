@@ -123,6 +123,12 @@ code {
   color: var(--src-ciris, #0f766e);
 }
 
+.src-legend-item--bill,
+.src-quote--bill .src-quote-attr,
+.src-quote--bill .src-quote-attr a {
+  color: var(--src-bill, #9f1239);
+}
+
 .src-legend-item--tsa,
 .src-quote--tsa .src-quote-attr,
 .src-quote--tsa .src-quote-attr a {
@@ -155,6 +161,14 @@ code {
   background: color-mix(in srgb, var(--src-ciris, #0f766e) 9%, var(--color-surface));
 }
 
+.src-legend-item--bill .src-legend-swatch {
+  background: var(--src-bill, #9f1239);
+}
+
+.src-quote--bill {
+  background: color-mix(in srgb, var(--src-bill, #9f1239) 9%, var(--color-surface));
+}
+
 .src-legend-item--tsa .src-legend-swatch {
   background: var(--src-tsa, #0f172a);
 }
@@ -181,6 +195,10 @@ code {
 
 .src-quote--ciris {
   border-left-color: var(--src-ciris, #0f766e);
+}
+
+.src-quote--bill {
+  border-left-color: var(--src-bill, #9f1239);
 }
 
 .src-quote--tsa {

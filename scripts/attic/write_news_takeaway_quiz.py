@@ -11,7 +11,7 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def _str_representer(dumper: yaml.Dumper, data: str):
@@ -55,6 +55,19 @@ MAX_OPTION_SPREAD = 12
 
 
 questions = [
+    Q(
+        "ban-asi-act-sep-2026",
+        "MB11",
+        ["ch05", "ch12", "ch13", "ch25", "ch42", "ch43"],
+        "The Ban Artificial Superintelligence Act pauses advanced training until a new department is staffed and has written rules it calls clear. What does that ending condition leave open?",
+        "Whether human judgment still changing the next model is what ends the pause",
+        [
+            "Whether the pause text names recursive self-improvement as forbidden training",
+            "Whether a system identified as superintelligence must be shut down at once",
+            "Whether the precursor list includes refusing shutdown and hiding from oversight",
+        ],
+        "Sections 9 and 10 can refuse a release or shut a system down. Section 8 ends the training pause when the department is staffed and the Secretary calls the rules clear.",
+    ),
     Q(
         "openai-rsi-standards-sep-2026",
         "MB11",

@@ -1532,6 +1532,38 @@ questions:
   - "chapter:ch48"
   tags:
   - takeaway
+- id: news-takeaway-ban-asi-act-sep-2026
+  prompt: The Ban Artificial Superintelligence Act pauses advanced training until a new department is
+    staffed and has written rules it calls clear. What does that ending condition leave open?
+  options:
+  - id: take
+    text: Whether human judgment still changing the next model is what ends the pause
+    correct: true
+  - id: d0
+    text: Whether the pause text names recursive self-improvement as forbidden training
+    correct: false
+  - id: d1
+    text: Whether a system identified as superintelligence must be shut down at once
+    correct: false
+  - id: d2
+    text: Whether the precursor list includes refusing shutdown and hiding from oversight
+    correct: false
+  explanation: Sections 9 and 10 can refuse a release or shut a system down. Section 8 ends the training
+    pause when the department is staffed and the Secretary calls the rules clear.
+  source:
+    href: /cards/chapter/ch05/
+    label: "Chapter 5 — Assumptions, Scope, and Failure Coverage"
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch05"
+  - "chapter:ch12"
+  - "chapter:ch13"
+  - "chapter:ch25"
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: news-takeaway-openai-rsi-standards-sep-2026
   prompt: OpenAI asks for shared RSI measurements that would not be licenses or mandatory pre-release
     review. What do those standards fail to settle?

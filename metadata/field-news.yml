@@ -2,6 +2,26 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-ban-asi-act-sep-2026
+    date: 2026-09-24
+    eventDate: 2026-09-23
+    kind: policy
+    title: "The superintelligence ban: a staffed office is not the finding"
+    hook: "Sanders’ bill would pause training past a compute line until a new department is staffed and has written rules. It would also ban systems that speed up AI research, refuse shutdown, or hide from oversight — if the Secretary finds those traits."
+    summary: "On 23 September 2026 Sen. Bernie Sanders introduced the Ban Artificial Superintelligence Act of 2026; the sponsors’ release names Rep. Greg Casar as the House sponsor. The Senate text defines artificial superintelligence as a system that exceeds human cognitive performance across most tasks, or that can plan and execute the destruction or disempowerment of humanity. It separately bans “precursor” traits, including automating AI research and development, resisting shutdown, self-modification, and scheming or avoiding oversight, and it defines a mandatory pause to include recursive self-improvement. Advanced systems, those trained with at least 10^25 operations, may not be trained or released until the Secretary of a new Department of Artificial Intelligence determines that the Department is fully staffed and has promulgated rules the Secretary calls clear, including pre-deployment approval. Identified superintelligence must be rendered inoperative; precursor systems are sequestered and destroyed within 30 days unless the traits are removed. This book’s cut: sections 9 and 10 can change a deployment. Section 8 ends the training pause on a staffing and drafting finding, and the lasting ban still needs a check that survives a system optimizing against the inspection."
+    decision: "Ask: (1) is “automate or greatly accelerate” AI research decided by a measurement fixed before the inspection, or by the Secretary after the fact? (2) when the training pause ends, is the trigger a staffed department with rules called clear, or a finding that human judgment still changes the next model? (3) if a listed trait is scheming or avoiding oversight, what inspection would still count as the system not having it? (4) does the instruction to pursue international agreements change training outside the United States?"
+    bookChapters:
+      - ch05
+      - ch12
+      - ch13
+      - ch25
+      - ch42
+      - ch43
+    bridges:
+      - MB4
+      - MB11
+    body: bodies/ban-asi-act-sep-2026.md
+    order: 0
   - slug: field-news-openai-rsi-standards-sep-2026
     date: 2026-09-22
     eventDate: 2026-09-21
