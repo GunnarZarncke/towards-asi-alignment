@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] The superintelligence ban: a staffed office is not the finding</title>
+      <link>https://towards-alignment.com/cards/news/field-news-ban-asi-act-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-ban-asi-act-sep-2026/</guid>
+      <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Sanders’ bill would pause training past a compute line until a new department is staffed and has written rules. It would also ban systems that speed up AI research, refuse shutdown, or hide from oversight — if the Secretary finds those traits.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] OpenAI’s RSI standards: a shared ruler is not a stop</title>
       <link>https://towards-alignment.com/cards/news/field-news-openai-rsi-standards-sep-2026/</link>
