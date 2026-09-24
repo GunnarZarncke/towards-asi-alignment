@@ -8,6 +8,7 @@
 |------|-------|-----|
 | 2026-09-24 | **Ban Artificial Superintelligence Act field news** — User asked for a site news entry on the [Ban Artificial Superintelligence Act](https://www.sander... | [2026-09-24-ban-asi-act-news.md](2026-09-24-ban-asi-act-news.md) |
 | 2026-09-23 | **PRA diagram vs Lean** — User asked to review `lean_checked_bayesian_pra_diagram.py` against the actual Lean spine and fix... | [2026-09-23-pra-diagram-lean.md](2026-09-23-pra-diagram-lean.md) |
+| 2026-09-24 | **UAD on the project itself** — Findings report + plan §3.12–§3.15 (edit-attribution snapshots, prompt recording, full/deep-tier telemetry, channel-ablation backtest). | [2026-09-24-uad-on-tsa.md](2026-09-24-uad-on-tsa.md) |
 | 2026-09-23 | **Markdown links CI fix** — CI `make check` failed on the markdown link gate (16 broken relative links) while local check pas... | [2026-09-23-markdown-links-ci-fix.md](2026-09-23-markdown-links-ci-fix.md) |
 | 2026-09-23 | **Consistency review: decisions executed** — Author decisions on [`drafts/project/consistency-review-2026-09-22.md`](../project/consistency-re... | [2026-09-23-consistency-decisions.md](2026-09-23-consistency-decisions.md) |
 | 2026-09-22 | **Project consistency review** — Review the whole project and the plan; assess how well it meets stated and implied expectations a... | [2026-09-22-project-consistency-review.md](2026-09-22-project-consistency-review.md) |

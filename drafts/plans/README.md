@@ -14,6 +14,7 @@ Checklists for cross-cutting work lanes. **`metadata/TODO.md`** is the canonical
 
 ## Root-level notes (not lanes)
 
+- [`tsa-on-itself.md`](tsa-on-itself.md) — plan to apply the book's layers and instruments to the project's own process (agents, author, external readers); stop conditions per instrument; findings in [`../project/uad-on-tsa-findings-2026-09-24.md`](../project/uad-on-tsa-findings-2026-09-24.md)
 - [`audit-telemetry.md`](audit-telemetry.md) — draft recording recommendation; placement awaits an author decision (tracked in `metadata/TODO.md` Housekeeping)
 - [`lw-wiki-tags.md`](lw-wiki-tags.md), [`iliad-communal-canon.md`](iliad-communal-canon.md) — outreach sketches, not scheduled (tracked in `metadata/TODO.md` Outreach)
 - [`sandboxed-agent-mcp.md`](sandboxed-agent-mcp.md) — tooling draft, not scheduled
