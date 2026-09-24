@@ -23,6 +23,9 @@ const externalPredictionCards = allCards.filter(
   (c) => c.data.type === "prediction" && c.data.predictionExternal
 );
 
+const relatedForecasts = predictions.relatedForecasts ?? [];
+const underspecifiedExamples = predictions.underspecifiedExamples ?? [];
+
 const overviewCard = allCards.find(
   (c) => c.data.type === "prediction" && c.data.predictionOverview
 );
@@ -110,6 +113,50 @@ const aggregationHref = aggregation?.appendixAnchor
                 {card.data.title.replace(/^Market \d+\.\s*/, "")}
               </a>
               <p class="market-summary">{card.data.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    relatedForecasts.length > 0 && (
+      <section class="predictions-related readable" aria-labelledby="predictions-related-heading">
+        <h2 id="predictions-related-heading">Related forecasts</h2>
+        <p class="external-intro">
+          Nearby Metaculus questions. Not the pause factor above, not bridge markets, and not inputs to the assurance model.
+        </p>
+        <ul class="external-list">
+          {relatedForecasts.map((item) => (
+            <li>
+              <a href={item.url}>
+                <span class="related-badge">Related</span>
+                {item.title}
+              </a>
+              <p class="market-summary">{(item.note ?? "").replace(/\s+/g, " ").trim()}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    underspecifiedExamples.length > 0 && (
+      <section class="predictions-underspecified readable" aria-labelledby="predictions-underspecified-heading">
+        <h2 id="predictions-underspecified-heading">An underspecified question</h2>
+        <p class="external-intro">
+          Listed as a contract shape this catalog refuses. Not a forecast input.
+        </p>
+        <ul class="external-list">
+          {underspecifiedExamples.map((item) => (
+            <li>
+              <a href={item.url}>
+                <span class="underspecified-badge">Example</span>
+                {item.title}
+              </a>
+              <p class="market-summary">{(item.note ?? "").replace(/\s+/g, " ").trim()}</p>
             </li>
           ))}
         </ul>
@@ -232,13 +279,17 @@ const aggregationHref = aggregation?.appendixAnchor
   }
 
   .predictions-aggregation,
-  .predictions-external {
+  .predictions-external,
+  .predictions-related,
+  .predictions-underspecified {
     max-width: 52rem;
     margin-bottom: 2rem;
   }
 
   .predictions-aggregation h2,
-  .predictions-external h2 {
+  .predictions-external h2,
+  .predictions-related h2,
+  .predictions-underspecified h2 {
     font-size: 1.15rem;
     margin: 0 0 0.65rem;
   }
@@ -267,6 +318,32 @@ const aggregationHref = aggregation?.appendixAnchor
     font-weight: 600;
     text-decoration: none;
     color: inherit;
+  }
+
+  .underspecified-badge {
+    display: inline-block;
+    margin-right: 0.45rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 0.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 28%, transparent);
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  }
+
+  .related-badge {
+    display: inline-block;
+    margin-right: 0.45rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, var(--color-text) 8%, var(--color-surface));
+    color: color-mix(in srgb, var(--color-text) 75%, transparent);
   }
 
   .external-badge {

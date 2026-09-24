@@ -591,3 +591,42 @@ externalFactors:
       evidence warrants it. Not one of the eighteen bridge markets; does not discharge any MB*.
       Pairs with Market 14 (lab-internal binding criteria) as a separately modeled governance
       branch, not as a numerical override probability and not as a factor in a P(doom) product.
+
+# Nearby Metaculus questions. Linked from the predictions hub. Not externalFactors:
+# they do not occupy the pause slot, are not embedded, and are not assurance inputs.
+relatedForecasts:
+  - id: metaculus-38190
+    title: "US mandate for AI model safety checks"
+    platform: metaculus
+    url: "https://www.metaculus.com/questions/38190/"
+    note: >
+      Whether a federal law, regulation, or executive order requiring safety checks
+      for AI models is in place before 20 January 2029. A duty to check, not pause
+      or veto authority.
+  - id: metaculus-38597
+    title: "US veto on frontier AI deployment"
+    platform: metaculus
+    url: "https://www.metaculus.com/questions/38597/"
+    note: >
+      Whether the United States government has formal veto power over frontier-model
+      deployment before 2028. Government veto, separate from Market 14's lab-internal
+      process and from the pause-legislation factor.
+  - id: metaculus-31707
+    title: "Experts calling alignment techniques sufficient in 2029"
+    platform: metaculus
+    url: "https://www.metaculus.com/questions/31707/"
+    note: >
+      What percentage of AI alignment experts surveyed in 2029 will call the
+      techniques of that time sufficient. An opinion poll, not a published method
+      and not a bridge discharge.
+
+# Questions listed only as examples of a contract shape the catalog refuses.
+underspecifiedExamples:
+  - id: metaculus-6509
+    title: "Control problem solved before weak AGI"
+    platform: metaculus
+    url: "https://www.metaculus.com/questions/6509/"
+    note: >
+      Resolves on expert consensus that the control problem is solved.
+      Control is not defined precisely. A later consensus records how experts
+      come to use that word, not whether a frozen property held.

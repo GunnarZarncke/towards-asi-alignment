@@ -44,7 +44,7 @@ An absolute \(P_{\rm doom}\) may be shown downstream in that demo as an assumpti
 - Market 15 is certificate-scope coherence, not a new bridge.
 - Market 18 concerns observed prohibited outcomes in a declared setting. It is not unrestricted `Safe`.
 - MB8 is retired from the live path and should not re-enter through the risk model.
-- Metaculus question 44423 is an external institutional-pause forecast. It is not one of the 18 markets and does not discharge a bridge.
+- Metaculus question 44423 is an external institutional-pause forecast. It is not one of the 18 markets and does not discharge a bridge. Related Metaculus questions 38190, 38597, and 31707 are linked from the predictions hub under `relatedForecasts`. They are not in the pause slot and are not assurance inputs. Metaculus 6509 is listed only as an underspecified-question example (`underspecifiedExamples`): “control” is undefined, so expert consensus tracks future use of the word.
 
 Use an explicit indexing convention throughout later work:
 

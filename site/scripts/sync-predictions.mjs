@@ -324,7 +324,7 @@ function externalFactorCardMarkdown(factor) {
   ].join("\n");
 }
 
-function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
+function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, underspecifiedExamples, bridgeCardSlugs) {
   const list = markets.map((market) => {
     const cardPath = cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" });
     return `- [Market ${market.number}. ${market.title}](${cardPath}) — ${market.shortQuestion}`;
@@ -333,6 +333,12 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
     const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
     return `- [${factor.title}](${cardPath}) — ${factor.shortQuestion} *(external)*`;
   });
+  const relatedList = relatedForecasts.map(
+    (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
+  );
+  const underspecifiedList = underspecifiedExamples.map(
+    (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
+  );
 
   return [
     "---",
@@ -370,6 +376,26 @@ function overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs) {
     "",
     ...(externalList.length
       ? ["## External factors (not bridge markets)", "", ...externalList, ""]
+      : []),
+    ...(relatedList.length
+      ? [
+          "## Related forecasts",
+          "",
+          "Nearby Metaculus questions. They are not the pause factor above, not bridge markets, and not inputs to the assurance model.",
+          "",
+          ...relatedList,
+          ""
+        ]
+      : []),
+    ...(underspecifiedList.length
+      ? [
+          "## An underspecified question",
+          "",
+          "Listed as a contract shape this catalog refuses. Not a forecast input.",
+          "",
+          ...underspecifiedList,
+          ""
+        ]
       : [])
   ].join("\n");
 }
@@ -449,6 +475,8 @@ if (sectionByNumber.size !== markets.length) {
 }
 for (const market of markets) assertMarketAudit(market);
 const externalFactors = [...(raw.externalFactors ?? [])];
+const relatedForecasts = [...(raw.relatedForecasts ?? [])];
+const underspecifiedExamples = [...(raw.underspecifiedExamples ?? [])];
 
 await rm(predictionCardsDir, { recursive: true, force: true });
 await mkdir(predictionCardsDir, { recursive: true });
@@ -457,7 +485,7 @@ let cardCount = 0;
 
 await writeFile(
   path.join(predictionCardsDir, "overview.md"),
-  overviewCardMarkdown(raw, markets, externalFactors, bridgeCardSlugs),
+  overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, underspecifiedExamples, bridgeCardSlugs),
   "utf8"
 );
 cardCount += 1;
@@ -531,6 +559,8 @@ const payload = {
   appendixBookId: "appP",
   markets: enrichedMarkets,
   externalFactors: enrichedExternalFactors,
+  relatedForecasts,
+  underspecifiedExamples,
   resolution: raw.resolution ?? {},
   aggregation,
   graphPlaceholder
