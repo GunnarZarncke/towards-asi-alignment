@@ -152,6 +152,6 @@ That sentence points at the statements already covered in [Pacing the Frontier](
 <p>Large-scale alignment fails when capability grows faster than the system's ability to coordinate prediction, control, correction, and incentives.</p>
 </blockquote>
 
-Anthropic, OpenAI, and xAI build inside the United States, so the pause, the ban, and the penalties apply to them. Section 15 is the United States starting the wider pause on its own: seek agreements, and use export controls. A lab outside U.S. law stays outside this statute until those agreements exist.
+This bill binds the most powerful labs which are luckily in its reach and section 15 is the U.S. starting an unilateral pause. The beginning of an international coordination for a global pause.
 
 **Read more in:** [Ch. 5, *Assumptions, Scope, and Failure Coverage*](/cards/chapter/ch05/); [Ch. 12, *Capability Growth Is Boundary Expansion*](/cards/chapter/ch12/); [Ch. 13, *The Coordination Bottleneck*](/cards/chapter/ch13/); [Ch. 25, *Correction Is a Causal Channel*](/cards/chapter/ch25/); [Ch. 42, *A Safety Case for Superintelligence Alignment*](/cards/chapter/ch42/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapter/ch43/).
