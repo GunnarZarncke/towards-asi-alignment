@@ -129,6 +129,12 @@ code {
   color: var(--src-bill, #9f1239);
 }
 
+.src-legend-item--math,
+.src-quote--math .src-quote-attr,
+.src-quote--math .src-quote-attr a {
+  color: var(--src-math, #c2410c);
+}
+
 .src-legend-item--tsa,
 .src-quote--tsa .src-quote-attr,
 .src-quote--tsa .src-quote-attr a {
@@ -169,6 +175,14 @@ code {
   background: color-mix(in srgb, var(--src-bill, #9f1239) 9%, var(--color-surface));
 }
 
+.src-legend-item--math .src-legend-swatch {
+  background: var(--src-math, #c2410c);
+}
+
+.src-quote--math {
+  background: color-mix(in srgb, var(--src-math, #c2410c) 9%, var(--color-surface));
+}
+
 .src-legend-item--tsa .src-legend-swatch {
   background: var(--src-tsa, #0f172a);
 }
@@ -199,6 +213,10 @@ code {
 
 .src-quote--bill {
   border-left-color: var(--src-bill, #9f1239);
+}
+
+.src-quote--math {
+  border-left-color: var(--src-math, #c2410c);
 }
 
 .src-quote--tsa {

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-24 (Ban Artificial Superintelligence Act field news).
+Last updated: 2026-09-24 (Fields-medallist mathematics misalignment news).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-24:** **Mathematics misalignment field news** — Fields-medallist declaration: a solved problem is a landmark, not the goal. Log: `2026-09-24-math-misalignment-news.md`.
+- **2026-09-24:** **Related Metaculus links** — Hub lists 38190, 38597, and 31707 as related forecasts. Metaculus 6509 is listed only as an underspecified-question example (Appendix H judgment section and the hub). Log: `2026-09-24-related-metaculus.md`.
 - **2026-09-24:** **Ban ASI Act field news** — Senate text of the Sanders bill: training pause ends when the department is staffed; lasting ban still needs a checkable finding. Log: `2026-09-24-ban-asi-act-news.md`.
 - **2026-09-23:** **Markdown links CI fix** — `generate_manuscript_tex.sh` now emits symbol-census / concept-graph artifacts; link check verifies those after generate (exempt only PDF + toy-sim JSON). Log: `2026-09-23-markdown-links-ci-fix.md`.
 - **2026-09-23:** **PRA Graphviz diagrams** — Split event tree and assurance model into `.dot` sources + `render_pra_diagrams.sh`; Lean-aligned assurance composition; scope gates for `f_M,multi` (Market 11) and `c_novel` (Market 17) on the event tree. Log: `2026-09-23-pra-diagram-lean.md`.

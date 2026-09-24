@@ -2,6 +2,21 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-math-misalignment-sep-2026
+    date: 2026-09-24
+    eventDate: 2026-09-11
+    kind: research
+    title: "A solved problem is not the point of mathematics"
+    hook: "Twenty-five Fields medallists say company benchmarks and mathematics want different things. A famous problem was a landmark for understanding. Scoring the landmark can take the understanding away."
+    summary: "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next."
+    decision: "Ask: (1) when a lab says a major problem is solved, is there a method other mathematicians can learn, or only a true-or-false? (2) Will the next benchmark wait for a writeup?"
+    bookChapters:
+      - ch14
+      - ch34
+      - ch03
+      - ch16
+    body: bodies/math-misalignment-sep-2026.md
+    order: 0
   - slug: field-news-ban-asi-act-sep-2026
     date: 2026-09-24
     eventDate: 2026-09-23
