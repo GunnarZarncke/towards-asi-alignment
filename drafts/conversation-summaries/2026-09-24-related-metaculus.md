@@ -22,4 +22,4 @@ Link Metaculus 31707, 38190, and 38597 from the predictions hub as related quest
 - `site/src/pages/predictions/index.astro`
 
 ## Commits
-- `c9662fc66` Link nearby Metaculus forecasts on the predictions hub and cite 6509 as an underspecified question.
+- `23b7d15a9` Link nearby Metaculus forecasts on the predictions hub and cite 6509 as an underspecified question.

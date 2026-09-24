@@ -17,3 +17,6 @@ CI `make check` failed on **quiz bank**: `news-takeaway-math-misalignment-sep-20
 - `scripts/attic/write_news_takeaway_quiz.py`
 - `site/src/content/quiz/questions.yml`
 - `metadata/field-news.yml`
+
+## Commits
+- `031263267` Add quiz takeaway for mathematics misalignment field news.
