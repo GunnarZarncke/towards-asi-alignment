@@ -9,12 +9,12 @@ site glossary entry (`metadata/concepts.yml`) resolves to a manuscript
 
 | Status | Count |
 |--------|------:|
-| `ok` (explicit `sec:`) | 32 |
-| `inferred` (eq/definition/ch hint → section) | 7 |
+| `ok` (explicit `sec:`) | 40 |
+| `inferred` (eq/definition/ch hint → section) | 9 |
 | `chapter-only` (needs `sec:` in bookLabels) | 2 |
-| `missing` | 0 |
+| `missing` | 3 |
 
-Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
+Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
 
 ## OK — explicit section anchor
 
@@ -36,6 +36,7 @@ Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 
 | Correction-capacity assumption | `scope-and-correction-capacity` | `sec:correction-capacity-assumption-ch05` | sec label |
 | Ecology size | `attractor-control` | `sec:census-not-ecology-ch34` | sec label |
 | Feedback-horizon exposure | `attractor-control` | `sec:selection-turn-ch34` | sec label |
+| Goal | `goal-inference` | `sec:why-goal-inference-not-enough` | sec label |
 | Goal inference | `goal-inference` | `sec:why-goal-inference-not-enough` | sec label |
 | Goal transport | `value-bundle-transport` | `sec:goal-transport-def` | sec label |
 | Grounded correction | `grounding-viability` | `sec:grounding-viability-ch03` | sec label |
@@ -44,13 +45,20 @@ Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 
 | Inferential coupling | `inferential-coupling` | `sec:inferential-coupling-acausal-trade-ch35` | sec label |
 | Inferential coupling index (ICI) | `inferential-coupling` | `sec:inferential-coupling-acausal-trade-ch35` | sec label |
 | Invasion fitness | `attractor-control` | `sec:selection-turn-ch34` | sec label |
+| Legibility | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Pivotal process | `pivotal-process` | `sec:pivotal-process-ch37` | sec label |
 | Point of control over deployment | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Pointing problem | `pointing-problem` | `sec:pointing-problem` | sec label |
 | Selection environment | `attractor-control` | `sec:selection-turn-ch34` | sec label |
+| Simulacra (Turchin) | `scope-and-correction-capacity` | `sec:correction-capacity-assumption-ch05` | sec label |
 | Strategic opacity | `strategic-opacity` | `sec:problem-can-hide` | sec label |
+| Subagent | `agent-without-anthropomorphism` | `sec:colder-definition` | sec label |
 | Successor | `successor-stability` | `sec:successor-problem-ch31` | sec label |
+| Target identification | `pointing-problem` | `sec:pointing-problem` | sec label |
+| Target preservation | `pointing-problem` | `sec:pointing-problem` | sec label |
+| Target realization | `target-realization` | `sec:construction-demand-ch33` | sec label |
 | Transport | `value-bundle-transport` | `sec:four-layers-transport` | sec label |
+| Unsupervised Agent Discovery (UAD) | `unsupervised-agent-discovery` | `sec:estimator-feasibility-recovery-ch07` | sec label |
 | Value bundle | `value-bundle-transport` | `sec:four-part-definition` | sec label |
 
 ## Inferred — section resolved from definition/equation
@@ -58,11 +66,13 @@ Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 
 | Term | Card | Home | Source |
 |------|------|------|--------|
 | Agent | `agent-without-anthropomorphism` | `sec:colder-definition` | definition block in sec:colder-definition |
+| Correcting judgment (\(J_t\)) | `correction-channel-integrity` | `sec:minimal-causal-model` | equation eq:handle-controlled-correction-channel-ch25 |
 | Correction channel | `correction-channel-integrity` | `sec:strong-correction-channel` | definition block in sec:strong-correction-channel |
 | Correction-channel integrity (CCI) | `correction-channel-integrity` | `sec:correction-chain-ch26` | equation eq:correction-bottleneck-capacity |
 | Deployment growth rate | `attractor-control` | `sec:minimal-model-selection-ch34` | equation eq:fitness-ch34 |
 | Deployment leverage | `attractor-control` | `sec:minimal-model-selection-ch34` | equation eq:deployment-mass-ch34 |
 | Preservation conditions | `attractor-control` | `sec:minimal-model-selection-ch34` | equation eq:preservation-envelope-ch34 |
+| Selection divergence | `attractor-control` | `sec:minimal-model-selection-ch34` | equation eq:selection-divergence-ch34 |
 | Value-bundle geometry | `value-bundle-transport` | `sec:bundle-policy-effect` | sec label |
 
 ## Chapter-only — add `sec:` to bookLabels
@@ -71,6 +81,14 @@ Manuscript: 1349 section labels, 1081 sec/ch ref edges, 121 equation ref edges, 
 |------|------|------|--------|
 | Adversarial measurement | `alignment-as-measurement` | `ch:wrong-object` | chapter label only — no sec: anchor |
 | Paternalism boundary | `paternalism-boundary` | `ch:manipulation-false-consent` | chapter label only — no sec: anchor |
+
+## Missing — no resolvable anchor
+
+| Term | Card | Home | Source |
+|------|------|------|--------|
+| Boundary-information quality (BIQ) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
+| Emergent-ambiguity index (EAI) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
+| Virtual filesystem (VFS) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
 
 ## Unresolved manuscript refs
 
@@ -85,6 +103,8 @@ card slug shown, then re-run this script.
 - `attractor-control` → add `sec:minimal-model-selection-ch34` for *Deployment leverage*
 - `attractor-control` → add `sec:minimal-model-selection-ch34` for *Deployment growth rate*
 - `attractor-control` → add `sec:minimal-model-selection-ch34` for *Preservation conditions*
+- `attractor-control` → add `sec:minimal-model-selection-ch34` for *Selection divergence*
 - `correction-channel-integrity` → add `sec:strong-correction-channel` for *Correction channel*
 - `correction-channel-integrity` → add `sec:correction-chain-ch26` for *Correction-channel integrity (CCI)*
+- `correction-channel-integrity` → add `sec:minimal-causal-model` for *Correcting judgment (\(J_t\))*
 - `value-bundle-transport` → add `sec:bundle-policy-effect` for *Value-bundle geometry*

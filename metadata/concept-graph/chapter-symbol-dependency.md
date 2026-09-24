@@ -43,9 +43,9 @@ No incoming or outgoing edge — add informal edges or symbol bridges:
 
 Each layer can be read in any order internally; read layer *n* before layer *n+1*.
 
-1. **ch04** (Why Fixed Values Are the Wrong Target); **ch07** (Finding the Boundary); **ch09** (The Real Agent May Be Composite); **ch32** (Better Self-Modeling Can Be Worse)
-2. **ch08** (Agents That Grow, Split, and Merge); **ch10** (Agency Under Strategic Opacity); **ch17** (When Low Dimensionality Helps Value Learning)
-3. **ch11** (Measuring Capability Without Task Ontology); **ch35** (Multi-Agent Superintelligence and Inferential Coupling)
+1. **ch04** (Why Fixed Values Are the Wrong Target); **ch07** (Finding the Boundary); **ch09** (The Real Agent May Be Composite); **ch10** (Agency Under Strategic Opacity); **ch32** (Better Self-Modeling Can Be Worse)
+2. **ch08** (Agents That Grow, Split, and Merge); **ch17** (When Low Dimensionality Helps Value Learning); **ch35** (Multi-Agent Superintelligence and Inferential Coupling)
+3. **ch11** (Measuring Capability Without Task Ontology)
 4. **ch12** (Capability Growth Is Boundary Expansion)
 5. **ch13** (The Coordination Bottleneck)
 6. **ch14** (When Intelligence Deepens Misalignment); **ch16** (The Value-Bundle Model)
@@ -62,10 +62,10 @@ Each layer can be read in any order internally; read layer *n* before layer *n+1
 
 | Provider | Consumer | Symbols | Use sites |
 |----------|----------|---------|-----------|
-| ch04 | ch14 | U_H | 1 |
+| ch04 | ch24 | U_H | 1 |
 | ch07 | ch08 | epsilon | 1 |
-| ch07 | ch10 | epsilon | 2 |
 | ch07 | ch17 | epsilon | 1 |
+| ch07 | ch35 | epsilon | 2 |
 | ch08 | ch11 | I_pred | 1 |
 | ch09 | ch11 | mathcal_R_i | 2 |
 | ch10 | ch22 | X_1:T | 2 |

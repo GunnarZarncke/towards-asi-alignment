@@ -6,10 +6,9 @@ Scans tracked ``*.md`` files (excluding attic folders, archived session logs, an
 that does not exist. External URLs, anchors-only links, ``mailto:``, ``~/`` and
 absolute paths are ignored. Anchors (``#...``) are stripped before checking.
 
-Links whose resolved path is **gitignored** (generated locally — e.g.
-``dist/pdf/*.pdf``, concept-graph / symbol-census ``.dot`` outputs) are skipped:
-they are valid references for developers who have run the generators, not CI
-artifacts.
+Gitignored targets are checked **after** ``make generate`` (symbol census and
+concept-graph outputs). Only gitignored paths that ``make check`` deliberately
+does not build (``dist/pdf/``, toy-simulation ``results/`` JSON) are skipped.
 
     python3 scripts/check_markdown_links.py            # report, exit 1 on failures
     python3 scripts/check_markdown_links.py --fix      # rewrite links whose basename
@@ -38,10 +37,13 @@ SKIP_DIRS = {"node_modules", ".lake", ".git", ".venv", ".venv-test", "dist"}
 SITE_ROUTED = ("metadata/concepts/bodies/", "site/src/content/")
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 HISTORICAL_DIRS = ("attic", "conversation-summaries/archive")
+# Gitignored outputs produced by scripts/generate_manuscript_tex.sh before this check runs.
+GENERATED_IN_CHECK_PREFIXES = ("metadata/concept-graph/", "metadata/symbol-census/")
+# Gitignored paths outside make check scope (see scripts/check.sh — no PDF, no sim runs).
+LINK_CHECK_EXEMPT_PREFIXES = ("dist/pdf/", "experiments/toy-simulation/results/")
 
 
 def is_gitignored(rel: str) -> bool:
-    """True when ``rel`` matches ``.gitignore`` (optional generated artifact)."""
     return (
         subprocess.run(
             ["git", "check-ignore", "-q", "--", rel],
@@ -50,6 +52,15 @@ def is_gitignored(rel: str) -> bool:
         ).returncode
         == 0
     )
+
+
+def is_exempt_gitignored_target(rel: str) -> bool:
+    """Skip link check for gitignored artifacts make check does not generate."""
+    if not is_gitignored(rel):
+        return False
+    if rel.startswith(GENERATED_IN_CHECK_PREFIXES):
+        return False  # must exist after generate
+    return rel.startswith(LINK_CHECK_EXEMPT_PREFIXES)
 
 
 def tracked_markdown(include_all: bool) -> list[Path]:
@@ -130,8 +141,8 @@ def check_file(
                 rel_to = str(resolved.relative_to(ROOT))
             except ValueError:
                 return m.group(0)  # points outside the repository (sibling repo); not checked
-            if is_gitignored(rel_to):
-                return m.group(0)  # generated locally; see .gitignore
+            if is_exempt_gitignored_target(rel_to):
+                return m.group(0)  # outside make check scope; see LINK_CHECK_EXEMPT_PREFIXES
             if resolved.exists():
                 return m.group(0)
             candidates = idx.get(Path(clean).name, [])

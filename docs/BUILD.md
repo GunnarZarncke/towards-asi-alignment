@@ -58,7 +58,7 @@ Output: [`dist/pdf/towards-superintelligence-alignment.pdf`](../dist/pdf/towards
 
 Run `make generate` (or any build/check target) before compiling if these files are missing.
 
-All of the above are wrapped by `scripts/generate_manuscript_tex.sh`.
+All of the above are wrapped by `scripts/generate_manuscript_tex.sh`, which also regenerates **symbol-census / concept-graph** outputs (`metadata/symbol-census/`, `metadata/concept-graph/` — gitignored `.dot` / coverage markdown). `make check` runs this before the markdown link gate.
 
 ## Biber troubleshooting
 
