@@ -1,5 +1,6 @@
 # External AI safety incidents and evaluations mapped to book chapters.
 # Regenerate site cards with: cd site && npm run sync:field-news
+# Optional previewImage: site-root path; else auto from public/field-news/memes/{slug}.{jpg,png}
 
 fieldNews:
   - slug: field-news-huang-klein-zvi-sep-2026

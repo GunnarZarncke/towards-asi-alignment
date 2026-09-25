@@ -9,6 +9,9 @@ User asked for meme suggestions for the five newest field-news cards, then a min
 - Added `site/scripts/sync-field-news-memes.mjs` and wired `sync:field-news-memes` into `site/package.json` sync chain.
 - Embedded `<figure class="book-figure book-figure--meme">` in five `metadata/field-news/bodies/*.md` files; ran `sync-field-news`.
 - Copied five rendered memes to `site/public/field-news/memes/` (math uses user-edited PNG).
+- Added `news-takeaway-huang-klein-zvi-sep-2026` quiz item; removed untracked appendix stubs blocking structure check.
+- Retitled Huang field-news entry (user edit + YAML quote fix).
+- Wired meme paths as `previewImage` on news cards → `og:image` / RSS `<enclosure>` (auto-detect from `public/field-news/memes/{slug}.*`).
 
 ## Decisions
 - Meme figures sit after each card’s “If you remember one thing” line.
@@ -17,6 +20,7 @@ User asked for meme suggestions for the five newest field-news cards, then a min
 ## Open / next
 - Tune layout boxes in `meme_workflow.py` if auto-render quality is insufficient; math meme is hand-edited PNG.
 - Optional: show meme thumbnails on `/news/` index (not requested).
+- External platforms cache old previews until re-scrape after deploy.
 
 ## Key paths
 - `scripts/meme_workflow/meme_workflow.py`
@@ -25,5 +29,8 @@ User asked for meme suggestions for the five newest field-news cards, then a min
 - `site/public/field-news/memes/`
 
 ## Commits
-- (pending) workflow commit
-- (pending) meme images commit
+- `e723c3700` Add field-news meme workflow and embed figures in five cards.
+- `9e0f18d96` Add field-news meme images for five September cards.
+- `a2736e263` Add quiz takeaway for Huang/Klein/Zvi field news.
+- `fb8253101` Retitle Huang/Klein/Zvi field news around Jensen's stop-shipping line.
+- `b9f85ac68` Use field-news memes as Open Graph and RSS preview images.

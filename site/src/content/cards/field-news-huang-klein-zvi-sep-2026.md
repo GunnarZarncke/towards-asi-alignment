@@ -6,6 +6,7 @@ summary: "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia hea
 decision: "(1) If a lab says an experiment cannot be contained, does that stop the experiment? (2) What share of compute is adversarial evaluation? (3) Who outside the lab can enforce the share and its actual use?"
 releasedAt: "2026-09-25T00:00:00.000Z"
 eventDate: "2026-09-23T00:00:00.000Z"
+previewImage: "/field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg"
 bookChapters:
   - "ch02"
   - "ch38"

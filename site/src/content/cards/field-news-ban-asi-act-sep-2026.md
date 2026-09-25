@@ -6,6 +6,7 @@ summary: "On 23 September 2026 Sen. Bernie Sanders introduced the Ban Artificial
 decision: "Ask: (1) is “automate or greatly accelerate” AI research decided by a measurement fixed before the inspection, or by the Secretary after the fact? (2) when the training pause ends, is the trigger a staffed department with rules called clear, or a finding that human judgment still changes the next model? (3) if a listed trait is scheming or avoiding oversight, what inspection would still count as the system not having it? (4) does the instruction to pursue international agreements change training outside the United States?"
 releasedAt: "2026-09-24T00:00:00.000Z"
 eventDate: "2026-09-23T00:00:00.000Z"
+previewImage: "/field-news/memes/field-news-ban-asi-act-sep-2026.jpg"
 bookChapters:
   - "ch05"
   - "ch12"

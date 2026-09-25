@@ -6,6 +6,7 @@ summary: "Anthropic’s Institute post publishes three production-process metric
 decision: "Ask: (1) if the automation index rises, does that delay the next model’s use for further AI R&D, or only update a chart? (2) is “oversight keeping pace” coverage and flag rate, or a human judgment that changed later training, tools, or successor constraints? (3) does a week-scale human review still count when agents act in seconds? (4) when Claude scores Claude, what independent check would have counted as the index being wrong?"
 releasedAt: "2026-09-18T00:00:00.000Z"
 eventDate: "2026-09-17T00:00:00.000Z"
+previewImage: "/field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg"
 bookChapters:
   - "ch11"
   - "ch12"

@@ -2,7 +2,7 @@
 // Run after sync:field-news and sync:releases (included in npm run sync).
 //
 // Usage: node scripts/build-feed.mjs [--check]
-import { readFile, readdir, writeFile } from "node:fs/promises";
+import { readFile, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
@@ -46,6 +46,25 @@ function escapeXml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
+}
+
+function mimeTypeForPreview(pathname) {
+  if (pathname.endsWith(".png")) return "image/png";
+  if (pathname.endsWith(".webp")) return "image/webp";
+  return "image/jpeg";
+}
+
+async function previewEnclosure(previewImage) {
+  if (!previewImage) return "";
+  const filePath = path.join(siteRoot, "public", previewImage.replace(/^\/+/, ""));
+  try {
+    const info = await stat(filePath);
+    const url = `${SITE_ORIGIN}${previewImage.startsWith("/") ? previewImage : `/${previewImage}`}`;
+    const type = mimeTypeForPreview(previewImage);
+    return `\n      <enclosure url="${escapeXml(url)}" length="${info.size}" type="${type}" />`;
+  } catch {
+    return "";
+  }
 }
 
 async function loadReleaseItems() {
@@ -94,13 +113,14 @@ async function loadNewsItems() {
         slug: row.slug,
         title: `[News] ${row.title}`,
         summary: row.hook ?? row.summary ?? "",
-        url: cardHref(row.slug, "news")
+        url: cardHref(row.slug, "news"),
+        previewImage: row.previewImage ?? null
       };
     })
     .filter(Boolean);
 }
 
-function renderFeed(items) {
+async function renderFeed(items) {
   const sorted = [...items].sort((a, b) => {
     const byDate = b.date.localeCompare(a.date);
     if (byDate !== 0) return byDate;
@@ -109,18 +129,21 @@ function renderFeed(items) {
   const capped = sorted.slice(0, MAX_ITEMS);
   const lastBuildDate = capped[0] ? pubDateRfc822(capped[0].date) : pubDateRfc822(new Date().toISOString().slice(0, 10));
 
-  const itemXml = capped
-    .map(
-      (item) => `    <item>
+  const itemXml = (
+    await Promise.all(
+      capped.map(async (item) => {
+        const enclosure = item.previewImage ? await previewEnclosure(item.previewImage) : "";
+        return `    <item>
       <title>${escapeXml(item.title)}</title>
       <link>${escapeXml(item.url)}</link>
       <guid isPermaLink="true">${escapeXml(item.url)}</guid>
       <pubDate>${pubDateRfc822(item.date)}</pubDate>
       <description>${escapeXml(item.summary)}</description>
-      <category>${escapeXml(item.kind)}</category>
-    </item>`
+      <category>${escapeXml(item.kind)}</category>${enclosure}
+    </item>`;
+      })
     )
-    .join("\n");
+  ).join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
@@ -140,7 +163,7 @@ ${itemXml}
 async function main() {
   const check = process.argv.includes("--check");
   const items = [...(await loadReleaseItems()), ...(await loadNewsItems())];
-  const xml = renderFeed(items);
+  const xml = await renderFeed(items);
 
   if (check) {
     let existing = "";

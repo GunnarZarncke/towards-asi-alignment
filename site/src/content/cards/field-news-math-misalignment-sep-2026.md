@@ -6,6 +6,7 @@ summary: "On 11 September 2026, twenty-five Fields medallists said the goals of 
 decision: "Ask: (1) when a lab says a major problem is solved, is there a method other mathematicians can learn, or only a true-or-false? (2) Will the next benchmark wait for a writeup?"
 releasedAt: "2026-09-24T00:00:00.000Z"
 eventDate: "2026-09-11T00:00:00.000Z"
+previewImage: "/field-news/memes/field-news-math-misalignment-sep-2026.png"
 bookChapters:
   - "ch14"
   - "ch34"

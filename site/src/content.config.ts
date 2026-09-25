@@ -25,6 +25,8 @@ const card = defineCollection({
     releasedAt: z.string().optional(),
     /** When the underlying incident occurred (news cards); may differ from releasedAt. */
     eventDate: z.string().optional(),
+    /** Site-root path to social preview image (news cards with memes). */
+    previewImage: z.string().optional(),
     /** Semver string for versioned release cards (e.g. "1.1.0"). */
     version: z.string().optional(),
     citedIn: z.array(z.string()).default([]),
