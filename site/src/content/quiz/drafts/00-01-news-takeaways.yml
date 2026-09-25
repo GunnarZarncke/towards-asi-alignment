@@ -1,4 +1,34 @@
 questions:
+- id: news-takeaway-huang-klein-zvi-sep-2026
+  prompt: "Jensen Huang says don't ship until ready, with third-party auditors and ten times the eval\
+    \ compute. What does a stated rule fail to settle?"
+  options:
+  - id: take
+    text: Whether someone outside the lab can fail the next run
+    correct: true
+  - id: d0
+    text: Whether Huang said uncontainable labs should shut down
+    correct: false
+  - id: d1
+    text: Whether eval might cost ten times the training compute
+    correct: false
+  - id: d2
+    text: Whether Zvi treats those lines as binding standards
+    correct: false
+  explanation: "A stated rule is not a gate until containment, evaluation spend, and auditor findings\
+    \ can delay the next run without the lab grading its own test."
+  source:
+    href: /cards/chapter/ch02/
+    label: Chapter 2 — From Artificial Intelligence to Artificial Civilization
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch02"
+  - "chapter:ch38"
+  - "chapter:ch13"
+  - "chapter:ch25"
+  tags:
+  - takeaway
 - id: news-takeaway-math-misalignment-sep-2026
   prompt: Fields medallists say a solved famous problem used to mean a method a community could learn.
     What does a true-or-false score fail to settle?

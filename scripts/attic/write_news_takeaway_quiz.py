@@ -56,6 +56,19 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "huang-klein-zvi-sep-2026",
+        "MB11",
+        ["ch02", "ch38", "ch13", "ch25"],
+        "Jensen Huang says don't ship until ready, with third-party auditors and ten times the eval compute. What does a stated rule fail to settle?",
+        "Whether someone outside the lab can fail the next run",
+        [
+            "Whether Huang said uncontainable labs should shut down",
+            "Whether eval might cost ten times the training compute",
+            "Whether Zvi treats those lines as binding standards",
+        ],
+        "A stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test.",
+    ),
+    Q(
         "math-misalignment-sep-2026",
         "MB9",
         ["ch03", "ch14", "ch34", "ch16"],
