@@ -2,6 +2,21 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-huang-klein-zvi-sep-2026
+    date: 2026-09-25
+    eventDate: 2026-09-23
+    kind: policy
+    title: "Huang's release rule: stated is not failable"
+    hook: "On Ezra Klein's show, Jensen Huang said shut the labs if experiments cannot be contained, spend ten times the compute on evaluation, and don't ship until ready. Zvi cashed the sentences out. The work is to make each one a check someone outside the lab can fail."
+    summary: "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia headquarters. After the Hugging Face incident, Huang said labs that cannot contain experiments should shut down, that evaluation may soon cost ten times the training compute, and that unready products should not ship — with third-party auditors. Zvi's 25 September post treats those lines as binding standards and notes they would forbid today's frontier models. This project's cut: a stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test."
+    decision: "Ask: (1) if a lab says an experiment cannot be contained, does that run stop? (2) what share of the next run's compute is adversarial evaluation, and who outside the lab can reject the share? (3) when the watchdog and the system disagree, whose finding delays deployment?"
+    bookChapters:
+      - ch02
+      - ch38
+      - ch13
+      - ch25
+    body: bodies/huang-klein-zvi-sep-2026.md
+    order: 0
   - slug: field-news-math-misalignment-sep-2026
     date: 2026-09-24
     eventDate: 2026-09-11
