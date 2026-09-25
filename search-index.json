@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-24T20:31:15.075Z",
+  "generatedAt": "2026-09-25T17:06:54.797Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 390,
+  "entryCount": 391,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1415,6 +1415,12 @@
       "type": "essay",
       "summary": "Do not start from the labeled model. Start from what changes outcomes, then draw a boundary around that process.",
       "url": "/essay/how-would-you-find-what-decides/"
+    },
+    {
+      "title": "Huang's release rule: stated is not failable",
+      "type": "news",
+      "summary": "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia headquarters. After the Hugging Face incident, Huang said labs that cannot contain experiments should shut down, that evaluation may soon cost ten times the training compute, and that unready products should not ship — with third-party auditors. Zvi's 25 September post treats those lines as binding standards and notes they would forbid today's frontier models. This project's cut: a stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test.",
+      "url": "/cards/news/field-news-huang-klein-zvi-sep-2026/"
     },
     {
       "title": "Human Institutions as Alignment Translation Guide",

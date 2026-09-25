@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 24 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Huang&apos;s release rule: stated is not failable</title>
+      <link>https://towards-alignment.com/cards/news/field-news-huang-klein-zvi-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-huang-klein-zvi-sep-2026/</guid>
+      <pubDate>Fri, 25 Sep 2026 12:00:00 GMT</pubDate>
+      <description>On Ezra Klein&apos;s show, Jensen Huang said shut the labs if experiments cannot be contained, spend ten times the compute on evaluation, and don&apos;t ship until ready. Zvi cashed the sentences out. The work is to make each one a check someone outside the lab can fail.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] A solved problem is not the point of mathematics</title>
       <link>https://towards-alignment.com/cards/news/field-news-math-misalignment-sep-2026/</link>
