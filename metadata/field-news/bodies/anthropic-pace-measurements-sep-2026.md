@@ -19,6 +19,10 @@ related:
 
 **If you remember one thing:** a public index of how much Claude builds Claude can show the race of AI vs human control. It cannot, by itself, show that humans still win it.
 
+<figure class="book-figure book-figure--meme">
+<img src="/field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg" alt="Anakin and Padme meme: we publish ASL — and if ASL rises, the release delays, right?" />
+</figure>
+
 The [August risk report](/cards/news/field-news-anthropic-risk-report-aug-2026/) already had the threat and a stuck gauge: automated R&amp;D as the acute case, CoBench no longer resolving increments. This Institute post is the next instrument. It measures the production process instead of the task battery.
 
 <blockquote class="src-quote src-quote--anthropic">

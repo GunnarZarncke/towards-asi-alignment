@@ -21,6 +21,10 @@ external:
 
 **If you remember one thing:** the bill is about a training pause, and a ban on systems that can build the next AI, refuse shutdown, or hide from oversight. The pause ends when a new department is staffed and its rules are called clear. The ban triggers only if someone can tell whether the conditions are present.
 
+<figure class="book-figure book-figure--meme">
+<img src="/field-news/memes/field-news-ban-asi-act-sep-2026.jpg" alt="This is fine meme: dog in burning room labeled office staffed" />
+</figure>
+
 Sen. Bernie Sanders introduced the Senate bill on 23 September 2026. The [press release](https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-create-new-federal-agency-to-ban-artificial-superintelligence-pause-advanced-ai-development/) names Rep. Greg Casar as the House sponsor. Quotations below are from the Senate text.
 
 ## They name the loop, then forbid it

@@ -20,6 +20,10 @@ external:
 
 **If you remember one thing:** Jensen Huang said: "If your product might kill everyone then just stop." The task is to externally ensure the labs are doing it.
 
+<figure class="book-figure book-figure--meme">
+<img src="/field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg" alt="Anakin and Padme meme: don't ship until ready — and someone outside can stop it, right?" />
+</figure>
+
 Ezra Klein, when discussing the [Hugging Face incident](/cards/news/field-news-openai-huggingface-jul-2026/), said the labs do not know how to contain that. 
 
 <blockquote class="src-quote src-quote--openai">

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-25 | **Field news memes** — Meme workflow for five newest field-news cards; figures embedded in bodies; images synced to `site/public/field-news/memes/`. | [2026-09-25-field-news-memes.md](2026-09-25-field-news-memes.md) |
 | 2026-09-25 | **Glossary CI fix** — CI failed on three missing glossary anchors (VFS, BIQ, EAI); fixed with Appendix E section label + `experiment-methodology` bookLabels. | [2026-09-25-glossary-ci-fix.md](2026-09-25-glossary-ci-fix.md) |
 | 2026-09-25 | **Huang / Klein / Zvi field news** — Quote-driven card on Jensen Huang's Ezra Klein interview and Zvi's cashing of shut-labs / 10× eval / don't-ship lines; TSA cut is stated is not failable. | [2026-09-25-huang-klein-zvi-news.md](2026-09-25-huang-klein-zvi-news.md) |
 | 2026-09-24 | **Quiz math-misalignment takeaway** — CI quiz bank failed: missing `news-takeaway-math-misalignment-sep-2026`. | [2026-09-24-quiz-math-takeaway.md](2026-09-24-quiz-math-takeaway.md) |

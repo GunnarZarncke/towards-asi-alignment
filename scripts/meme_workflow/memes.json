@@ -1,0 +1,41 @@
+[
+  {
+    "id": "huang-release-rule",
+    "template_description": "Anakin Padme 4 panel Star Wars right meme",
+    "texts": [
+      "Don't ship until it's ready.",
+      "And if it isn't, someone outside can stop it?",
+      "",
+      "Someone outside can stop it, right?"
+    ]
+  },
+  {
+    "id": "math-misalignment",
+    "template_description": "midwit bell curve IQ meme three panels",
+    "texts": [
+      "Don't destroy the math commons.",
+      "Faster true theorems are more and better mathematics.",
+      "Don't destroy the math commons."
+    ]
+  },
+  {
+    "id": "ban-asi-act",
+    "template_description": "this is fine dog burning room meme",
+    "texts": ["office staffed"]
+  },
+  {
+    "id": "openai-rsi-standards",
+    "template_description": "is this a pigeon anime butterfly meme",
+    "texts": ["ruler", "a stop."]
+  },
+  {
+    "id": "anthropic-pace-measurements",
+    "template_description": "Anakin Padme 4 panel Star Wars right meme",
+    "texts": [
+      "We publish ASL.",
+      "And if ASL rises, the release delays?",
+      "",
+      "The release delays, right?"
+    ]
+  }
+]
