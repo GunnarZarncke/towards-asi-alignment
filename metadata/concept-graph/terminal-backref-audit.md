@@ -18,7 +18,7 @@ Back references are expected in a book (later chapters cite earlier definitions)
 
 ## Terminal nodes (no outgoing `\ref{ch:}` / `\ref{sec:}`)
 
-Count: 103 of 533 cross-ref nodes.
+Count: 103 of 534 cross-ref nodes.
 
 | Class | Count |
 |-------|------:|

@@ -435,6 +435,8 @@ concepts:
     status: framework
     summary: 'The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.'
     decision: Before trusting any reported experiment result in this project, check which of these four disciplines it followed — a result reported without them is weaker evidence, whatever the headline number says.
+    bookLabels:
+      - sec:experimental-methodology-shorthand
     body: bodies/experiment-methodology.md
     glossaryTerms:
       - term: Virtual filesystem (VFS)

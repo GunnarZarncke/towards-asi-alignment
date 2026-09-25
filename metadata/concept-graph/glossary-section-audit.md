@@ -9,12 +9,12 @@ site glossary entry (`metadata/concepts.yml`) resolves to a manuscript
 
 | Status | Count |
 |--------|------:|
-| `ok` (explicit `sec:`) | 40 |
+| `ok` (explicit `sec:`) | 43 |
 | `inferred` (eq/definition/ch hint → section) | 9 |
 | `chapter-only` (needs `sec:` in bookLabels) | 2 |
-| `missing` | 3 |
+| `missing` | 0 |
 
-Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
+Manuscript: 1393 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
 
 ## OK — explicit section anchor
 
@@ -27,6 +27,7 @@ Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 
 | Bearer map | `bearer-persistence` | `sec:bearer-maps-sufficient-statistics` | sec label |
 | Boundary | `boundary-discovery` | `sec:hidden-boundary` | sec label |
 | Boundary residual | `boundary-residual` | `sec:boundary-residual` | sec label |
+| Boundary-information quality (BIQ) | `experiment-methodology` | `sec:experimental-methodology-shorthand` | sec label |
 | Capability | `capability` | `sec:capability-before-goals` | sec label |
 | Capture of grounding | `anti-capture-correction-validity` | `sec:correction-channel-integrity-def` | sec label |
 | Certification-under-manipulation | `certification-under-manipulation` | `sec:certification-under-manipulation-ch43` | sec label |
@@ -35,6 +36,7 @@ Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 
 | Correction-audit evasion | `correction-channel-integrity` | `sec:correction-channel-integrity-def` | sec label |
 | Correction-capacity assumption | `scope-and-correction-capacity` | `sec:correction-capacity-assumption-ch05` | sec label |
 | Ecology size | `attractor-control` | `sec:census-not-ecology-ch34` | sec label |
+| Emergent-ambiguity index (EAI) | `experiment-methodology` | `sec:experimental-methodology-shorthand` | sec label |
 | Feedback-horizon exposure | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Goal | `goal-inference` | `sec:why-goal-inference-not-enough` | sec label |
 | Goal inference | `goal-inference` | `sec:why-goal-inference-not-enough` | sec label |
@@ -60,6 +62,7 @@ Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 
 | Transport | `value-bundle-transport` | `sec:four-layers-transport` | sec label |
 | Unsupervised Agent Discovery (UAD) | `unsupervised-agent-discovery` | `sec:estimator-feasibility-recovery-ch07` | sec label |
 | Value bundle | `value-bundle-transport` | `sec:four-part-definition` | sec label |
+| Virtual filesystem (VFS) | `experiment-methodology` | `sec:experimental-methodology-shorthand` | sec label |
 
 ## Inferred — section resolved from definition/equation
 
@@ -81,14 +84,6 @@ Manuscript: 1392 section labels, 1252 sec/ch ref edges, 141 equation ref edges, 
 |------|------|------|--------|
 | Adversarial measurement | `alignment-as-measurement` | `ch:wrong-object` | chapter label only — no sec: anchor |
 | Paternalism boundary | `paternalism-boundary` | `ch:manipulation-false-consent` | chapter label only — no sec: anchor |
-
-## Missing — no resolvable anchor
-
-| Term | Card | Home | Source |
-|------|------|------|--------|
-| Boundary-information quality (BIQ) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
-| Emergent-ambiguity index (EAI) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
-| Virtual filesystem (VFS) | `experiment-methodology` | `—` | no resolvable bookLabels or definition hint |
 
 ## Unresolved manuscript refs
 
