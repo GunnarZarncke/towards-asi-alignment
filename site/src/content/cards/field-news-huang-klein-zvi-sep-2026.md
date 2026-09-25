@@ -1,9 +1,9 @@
 ---
-title: "Huang's release rule: stated is not failable"
+title: "Jensen Huang said: \"If your product might kill everyone then just stop.\""
 type: "news"
 status: "established"
 summary: "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia headquarters. After the Hugging Face incident, Huang said labs that cannot contain experiments should shut down, that evaluation may soon cost ten times the training compute, and that unready products should not ship — with third-party auditors. Zvi's 25 September post treats those lines as binding standards and notes they would forbid today's frontier models. This project's cut: a stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test."
-decision: "Ask: (1) if a lab says an experiment cannot be contained, does that run stop? (2) what share of the next run's compute is adversarial evaluation, and who outside the lab can reject the share? (3) when the watchdog and the system disagree, whose finding delays deployment?"
+decision: "(1) If a lab says an experiment cannot be contained, does that stop the experiment? (2) What share of compute is adversarial evaluation? (3) Who outside the lab can enforce the share and its actual use?"
 releasedAt: "2026-09-25T00:00:00.000Z"
 eventDate: "2026-09-23T00:00:00.000Z"
 bookChapters:
@@ -24,7 +24,7 @@ external:
     url: "/cards/news/field-news-containment-verification-sep-2026/"
 ---
 
-On Ezra Klein's show, Jensen Huang said shut the labs if experiments cannot be contained, spend ten times the compute on evaluation, and don't ship until ready. Zvi cashed the sentences out. The work is to make each one a check someone outside the lab can fail.
+On Ezra Klein's show, Jensen Huang said labs should invest into safety and make products safe or be shut down. The hard part is to enforce external audits on the labs.
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>Huang · NYT (blue)</span>
