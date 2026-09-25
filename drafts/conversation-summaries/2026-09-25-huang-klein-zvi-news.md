@@ -25,4 +25,4 @@ User asked to read Zvi on Jensen Huang's Ezra Klein interview, discuss simulacru
 - NYT: https://www.nytimes.com/2026/09/23/opinion/ezra-klein-podcast-jensen-huang.html
 
 ## Commits
-- (this session)
+- `13c27f8fc` Add field news on Huang's Klein interview and Zvi's cashing of his release rules.
