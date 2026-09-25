@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-25T19:06:05.250Z",
+  "generatedAt": "2026-09-25T19:13:21.684Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1417,12 +1417,6 @@
       "url": "/essay/how-would-you-find-what-decides/"
     },
     {
-      "title": "Huang's release rule: stated is not failable",
-      "type": "news",
-      "summary": "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia headquarters. After the Hugging Face incident, Huang said labs that cannot contain experiments should shut down, that evaluation may soon cost ten times the training compute, and that unready products should not ship — with third-party auditors. Zvi's 25 September post treats those lines as binding standards and notes they would forbid today's frontier models. This project's cut: a stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test.",
-      "url": "/cards/news/field-news-huang-klein-zvi-sep-2026/"
-    },
-    {
       "title": "Human Institutions as Alignment Translation Guide",
       "type": "appendix",
       "summary": "Human Institutions as Alignment Translation Guide",
@@ -1457,6 +1451,12 @@
       "type": "lean-check",
       "summary": "Cooperative inverse reinforcement learning targets a scalar reward; on the shared finite domain that is exactly k=1 bundle inference. Full transport implies cooperative readability — but scalar inference does not determine bundle geometry or bearer maps.",
       "url": "/lean/check/cirl/"
+    },
+    {
+      "title": "Jensen Huang said: \"If your product might kill everyone then just stop.\"",
+      "type": "news",
+      "summary": "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia headquarters. After the Hugging Face incident, Huang said labs that cannot contain experiments should shut down, that evaluation may soon cost ten times the training compute, and that unready products should not ship — with third-party auditors. Zvi's 25 September post treats those lines as binding standards and notes they would forbid today's frontier models. This project's cut: a stated rule is not a gate until containment, evaluation spend, and auditor findings can delay the next run without the lab grading its own test.",
+      "url": "/cards/news/field-news-huang-klein-zvi-sep-2026/"
     },
     {
       "title": "Kairos (field-building)",
