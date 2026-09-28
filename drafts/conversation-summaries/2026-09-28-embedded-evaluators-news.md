@@ -29,4 +29,4 @@ User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions
 
 ## Commits
 - `d110d5165` Add embedded evaluators field news on Hinton letter and Accenture pick.
-- (this session) Field-news body + meme basename convention.
+- `3a513f655` Align field-news body and meme files on YYYY-MM-slug basenames.
