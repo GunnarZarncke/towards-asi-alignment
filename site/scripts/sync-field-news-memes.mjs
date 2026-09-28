@@ -28,6 +28,10 @@ const MEMES = [
   {
     src: "scripts/meme_workflow/output/anthropic-pace-measurements.jpg",
     dest: "field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg"
+  },
+  {
+    src: "scripts/meme_workflow/output/embedded-evaluators.jpg",
+    dest: "field-news/memes/field-news-embedded-evaluators-sep-2026.jpg"
   }
 ];
 

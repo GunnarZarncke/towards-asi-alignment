@@ -135,6 +135,12 @@ code {
   color: var(--src-math, #c2410c);
 }
 
+.src-legend-item--letter,
+.src-quote--letter .src-quote-attr,
+.src-quote--letter .src-quote-attr a {
+  color: var(--src-letter, #6d28d9);
+}
+
 .src-legend-item--tsa,
 .src-quote--tsa .src-quote-attr,
 .src-quote--tsa .src-quote-attr a {
@@ -183,6 +189,14 @@ code {
   background: color-mix(in srgb, var(--src-math, #c2410c) 9%, var(--color-surface));
 }
 
+.src-legend-item--letter .src-legend-swatch {
+  background: var(--src-letter, #6d28d9);
+}
+
+.src-quote--letter {
+  background: color-mix(in srgb, var(--src-letter, #6d28d9) 9%, var(--color-surface));
+}
+
 .src-legend-item--tsa .src-legend-swatch {
   background: var(--src-tsa, #0f172a);
 }
@@ -217,6 +231,10 @@ code {
 
 .src-quote--math {
   border-left-color: var(--src-math, #c2410c);
+}
+
+.src-quote--letter {
+  border-left-color: var(--src-letter, #6d28d9);
 }
 
 .src-quote--tsa {

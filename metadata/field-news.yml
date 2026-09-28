@@ -3,6 +3,26 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{slug}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-embedded-evaluators-sep-2026
+    date: 2026-09-28
+    eventDate: 2026-09-18
+    kind: policy
+    title: "Five conditions for an evaluator inside the lab"
+    hook: "Hinton, Russell, and Narayanan set five conditions for evaluators who sit inside frontier labs. Anthropic named Accenture and will pay. Follow who pays, what a bad finding changes, and what a known watcher becomes."
+    summary: "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators, signed by Geoffrey Hinton, Stuart Russell, Arvind Narayanan, and more than 200 others. The same day Anthropic said Faculty, Accenture’s AI business, would work inside the company, funded by Anthropic, and that it was in dialogue with METR about a pilot on METR’s own funding. Dario Amodei’s September essay calls employee-like access the way to verify pacing commitments. Zvi’s 27 September post grants the five conditions and asks who can be hired under them. The card lines the letter, the essay, the announcement, and Zvi up against Chapters 26, 13, 32, and 39."
+    decision: "(1) Who pays this evaluator, and who can employ them next year? (2) If the finding is bad, what action changes? (3) Which redaction list is in the contract? (4) If this evaluator left the room, would the behavior you care about look different?"
+    bookChapters:
+      - ch26
+      - ch13
+      - ch32
+      - ch39
+      - ch38
+      - appM
+    bridges:
+      - MB4
+      - MB4a
+    body: bodies/embedded-evaluators-sep-2026.md
+    order: 0
   - slug: field-news-huang-klein-zvi-sep-2026
     date: 2026-09-25
     eventDate: 2026-09-23

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-25 (field news memes).
+Last updated: 2026-09-28 (embedded evaluators news).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-28:** **Embedded evaluators field news** — Hinton-letter conditions vs Amodei, Accenture, Zvi; App M Andersen precedent; Ch. 26 corrector privacy; Anakin/Padme meme on perturbation tests. Log: `2026-09-28-embedded-evaluators-news.md`.
 - **2026-09-25:** **Field news meme OG previews** — Meme images auto-set `previewImage` on news cards for `og:image` and RSS enclosures. Same log.
 - **2026-09-25:** **Field news memes** — Minimal Pillow workflow (`scripts/meme_workflow/`); five newest news cards embed memes via `sync-field-news-memes`. Log: `2026-09-25-field-news-memes.md`.
 - **2026-09-25:** **Glossary CI fix** — VFS/BIQ/EAI experiment-methodology terms anchored at `sec:experimental-methodology-shorthand`; `make check` generate step passes. Log: `2026-09-25-glossary-ci-fix.md`.
