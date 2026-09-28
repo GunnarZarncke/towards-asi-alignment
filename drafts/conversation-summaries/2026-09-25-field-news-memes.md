@@ -33,4 +33,4 @@ User asked for meme suggestions for the five newest field-news cards, then a min
 - `9e0f18d96` Add field-news meme images for five September cards.
 - `a2736e263` Add quiz takeaway for Huang/Klein/Zvi field news.
 - `fb8253101` Retitle Huang/Klein/Zvi field news around Jensen's stop-shipping line.
-- `b9f85ac68` Use field-news memes as Open Graph and RSS preview images.
+- `3f38e1370` Use field-news memes as Open Graph and RSS preview images.

@@ -21,4 +21,4 @@ CI `make check` failed during the generate step: `build_section_reference_graph.
 - `metadata/concepts.yml` — `experiment-methodology` card.
 
 ## Commits
-- (this session)
+- `93c294926` Fix CI glossary audit failure for experiment-methodology terms.

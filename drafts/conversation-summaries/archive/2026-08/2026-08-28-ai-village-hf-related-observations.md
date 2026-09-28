@@ -16,7 +16,7 @@ User asked whether Tekofsky’s LessWrong post comparing AI Village to the OpenA
 - None for this thread. Left unstaged: `drafts/plans/construct.md`, `chapter-reading-graph.json`, `drafts/alignment-crux-map.md`, other Aug-28 session logs.
 
 ## Key paths
-- `metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md`
+- `metadata/field-news/bodies/2026-08-openai-hf-roadahead.md`
 - `site/src/content/cards/field-news-openai-hf-roadahead-aug-2026.md`
 
 ## Commits

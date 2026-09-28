@@ -6,7 +6,7 @@ summary: "Anthropic’s Institute post publishes three production-process metric
 decision: "Ask: (1) if the automation index rises, does that delay the next model’s use for further AI R&D, or only update a chart? (2) is “oversight keeping pace” coverage and flag rate, or a human judgment that changed later training, tools, or successor constraints? (3) does a week-scale human review still count when agents act in seconds? (4) when Claude scores Claude, what independent check would have counted as the index being wrong?"
 releasedAt: "2026-09-18T00:00:00.000Z"
 eventDate: "2026-09-17T00:00:00.000Z"
-previewImage: "/field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg"
+previewImage: "/field-news/memes/2026-09-anthropic-pace-measurements.jpg"
 bookChapters:
   - "ch11"
   - "ch12"
@@ -37,7 +37,7 @@ Claude now leads a quarter of Anthropic’s model R&D. Humans get a week to revi
 **If you remember one thing:** a public index of how much Claude builds Claude can show the race of AI vs human control. It cannot, by itself, show that humans still win it.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg" alt="Anakin and Padme meme: we publish ASL — and if ASL rises, the release delays, right?" />
+<img src="/field-news/memes/2026-09-anthropic-pace-measurements.jpg" alt="Anakin and Padme meme: we publish ASL — and if ASL rises, the release delays, right?" />
 </figure>
 
 The [August risk report](/cards/news/field-news-anthropic-risk-report-aug-2026/) already had the threat and a stuck gauge: automated R&amp;D as the acute case, CoBench no longer resolving increments. This Institute post is the next instrument. It measures the production process instead of the task battery.

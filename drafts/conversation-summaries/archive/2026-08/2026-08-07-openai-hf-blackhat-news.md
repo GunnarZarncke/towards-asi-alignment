@@ -15,7 +15,7 @@ User asked for a field-news entry on the Black Hat USA 2026 talk detailing the f
 - Bridges: MB7, MB7a, MB10.
 
 ## Key paths
-- `metadata/field-news/bodies/openai-hf-blackhat-aug-2026.md`
+- `metadata/field-news/bodies/2026-07-openai-hf-blackhat.md`
 - `metadata/field-news.yml`
 - `site/src/content/cards/field-news-openai-hf-blackhat-aug-2026.md`
 

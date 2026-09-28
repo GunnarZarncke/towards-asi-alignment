@@ -5,7 +5,7 @@ User asked for a site news entry on the [Ban Artificial Superintelligence Act](h
 
 ## Done
 - Field-news YAML entry `field-news-ban-asi-act-sep-2026` (`kind: policy`, `eventDate` 2026-09-23, site `date` 2026-09-24).
-- Body at `metadata/field-news/bodies/ban-asi-act-sep-2026.md` (quote-bridge: bill red / this book black). Quotes are from the Senate text, not the one-pager.
+- Body at `metadata/field-news/bodies/2026-09-ban-asi-act.md` (quote-bridge: bill red / this book black). Quotes are from the Senate text, not the one-pager.
 - News takeaway quiz item; merged quiz drafts (216 questions).
 - Quote color `--src-bill` in site tokens and global CSS.
 - `cd site && npm run sync:field-news && npm run generate:card-redirects && npm run build:feed`.
@@ -26,7 +26,7 @@ User asked for a site news entry on the [Ban Artificial Superintelligence Act](h
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/ban-asi-act-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-ban-asi-act.md`
 - `/cards/news/field-news-ban-asi-act-sep-2026/`
 
 ## Commits

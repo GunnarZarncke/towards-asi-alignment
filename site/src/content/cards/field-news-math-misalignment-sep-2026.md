@@ -6,7 +6,7 @@ summary: "On 11 September 2026, twenty-five Fields medallists said the goals of 
 decision: "Ask: (1) when a lab says a major problem is solved, is there a method other mathematicians can learn, or only a true-or-false? (2) Will the next benchmark wait for a writeup?"
 releasedAt: "2026-09-24T00:00:00.000Z"
 eventDate: "2026-09-11T00:00:00.000Z"
-previewImage: "/field-news/memes/field-news-math-misalignment-sep-2026.png"
+previewImage: "/field-news/memes/2026-09-math-misalignment.png"
 bookChapters:
   - "ch14"
   - "ch34"
@@ -27,7 +27,7 @@ Twenty-five Fields medallists say company benchmarks and mathematics want differ
 **If you remember one thing:** a famous problem was a landmark for understanding. If the landmark becomes the score, it can stay bright after the understanding is gone.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-math-misalignment-sep-2026.png" alt="Midwit meme: don't destroy the math commons versus faster true theorems are more and better mathematics" />
+<img src="/field-news/memes/2026-09-math-misalignment.png" alt="Midwit meme: don't destroy the math commons versus faster true theorems are more and better mathematics" />
 </figure>
 
 ## What the mathematical landmark is

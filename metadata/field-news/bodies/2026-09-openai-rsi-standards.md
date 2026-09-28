@@ -22,7 +22,7 @@ external:
 **If you remember one thing:** a shared ruler for how much AI builds the next AI can make labs comparable. It cannot, by itself, delay the next model. You need limitations that bite.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-openai-rsi-standards-sep-2026.jpg" alt="Is this a pigeon meme: butterfly labeled ruler, caption a stop" />
+<img src="/field-news/memes/2026-09-openai-rsi-standards.jpg" alt="Is this a pigeon meme: butterfly labeled ruler, caption a stop" />
 </figure>
 
 [Anthropic’s pace measurements](/cards/news/field-news-anthropic-pace-measurements-sep-2026/) already published a production-process index. 

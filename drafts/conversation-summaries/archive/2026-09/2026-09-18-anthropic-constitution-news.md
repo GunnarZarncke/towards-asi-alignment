@@ -5,7 +5,7 @@ User parked the Goldstein “thousand constitutions” talk as adjacent, not new
 
 ## Done
 - Field-news YAML entry `field-news-anthropic-constitution-jan-2026` (`kind: policy`, `eventDate` 2026-01-21, site `date` 2026-09-18).
-- Body at `metadata/field-news/bodies/anthropic-constitution-jan-2026.md` (preface quotes; unofficial-preface note; Ch. 40 / 42 / *The words stayed*).
+- Body at `metadata/field-news/bodies/2026-01-anthropic-constitution.md` (preface quotes; unofficial-preface note; Ch. 40 / 42 / *The words stayed*).
 - Pointed the Constitutional AI specify card at the 2026 document and this news card.
 - Added a short CIRIS comparison: ships a runtime and names authentic≠ethical / accountable≠correct. No CIRIS changelog in the news body.
 - `cd site && npm run sync:field-news && npm run sync:concepts && npm run generate:card-redirects && npm run build:feed`.
@@ -22,7 +22,7 @@ User parked the Goldstein “thousand constitutions” talk as adjacent, not new
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/anthropic-constitution-jan-2026.md`
+- `metadata/field-news/bodies/2026-01-anthropic-constitution.md`
 - `/cards/news/field-news-anthropic-constitution-jan-2026/`
 
 ## End of session

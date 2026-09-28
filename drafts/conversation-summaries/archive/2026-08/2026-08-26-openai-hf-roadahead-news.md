@@ -24,7 +24,7 @@ User asked for a follow-up news article on OpenAI’s 26 Aug 2026 Hugging Face p
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md`
+- `metadata/field-news/bodies/2026-08-openai-hf-roadahead.md`
 - `site/src/content/cards/field-news-openai-hf-roadahead-aug-2026.md`
 - `references/manuscript-citations.bib`
 

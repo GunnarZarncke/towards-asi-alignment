@@ -5,7 +5,7 @@ User asked for a site news entry commenting on OpenAI’s 21 September 2026 post
 
 ## Done
 - Field-news YAML entry `field-news-openai-rsi-standards-sep-2026` (`kind: policy`, `eventDate` 2026-09-21, site `date` 2026-09-22).
-- Body at `metadata/field-news/bodies/openai-rsi-standards-sep-2026.md` (quote-bridge: OpenAI blue / this book black).
+- Body at `metadata/field-news/bodies/2026-09-openai-rsi-standards.md` (quote-bridge: OpenAI blue / this book black).
 - News takeaway quiz item; regenerated and merged quiz drafts (215 questions).
 - `cd site && npm run sync:field-news && npm run generate:card-redirects && npm run build:feed`.
 
@@ -21,7 +21,7 @@ User asked for a site news entry commenting on OpenAI’s 21 September 2026 post
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/openai-rsi-standards-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-openai-rsi-standards.md`
 - `/cards/news/field-news-openai-rsi-standards-sep-2026/`
 
 ## Commits

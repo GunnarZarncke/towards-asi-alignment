@@ -5,7 +5,7 @@ User asked to ingest Anthropic Institute *Measurements for understanding the pac
 
 ## Done
 - Field-news YAML entry `field-news-anthropic-pace-measurements-sep-2026` (`kind: policy`, `eventDate` 2026-09-17, site `date` 2026-09-18).
-- Body at `metadata/field-news/bodies/anthropic-pace-measurements-sep-2026.md` (automation index, oversight latency, compute share; Ch. 11 / 12 / 25 / 39 / 42 / 43).
+- Body at `metadata/field-news/bodies/2026-09-anthropic-pace-measurements.md` (automation index, oversight latency, compute share; Ch. 11 / 12 / 25 / 39 / 42 / 43).
 - `cd site && npm run sync:field-news && npm run generate:card-redirects && npm run build:feed`.
 
 ## Decisions
@@ -19,5 +19,5 @@ User asked to ingest Anthropic Institute *Measurements for understanding the pac
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/anthropic-pace-measurements-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-anthropic-pace-measurements.md`
 - `/cards/news/field-news-anthropic-pace-measurements-sep-2026/`

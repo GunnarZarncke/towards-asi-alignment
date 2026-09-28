@@ -260,7 +260,7 @@ Optional **ET-5** annex (not Backtest W-number by default): apply **frozen** pas
 - Jiang et al. (malicious / spam campaigns): https://arxiv.org/html/2606.00067v1
 - Zhang et al. (Agents in the Wild): https://yunbeizhang.github.io/agents-in-the-wild/
 - mbc-20 protocol / indexer: https://github.com/floflo777/mbc20 , https://github.com/floflo777/mbc20-indexer
-- HF incident contrast (selection regime): [`field-news-openai-hf-roadahead-aug-2026`](../../../metadata/field-news/bodies/openai-hf-roadahead-aug-2026.md)
+- HF incident contrast (selection regime): [`field-news-openai-hf-roadahead-aug-2026`](../../../metadata/field-news/bodies/2026-08-openai-hf-roadahead.md)
 - UAD external transfer: [`experiments/graded-lab-simulation/PLAN_ET1.md`](../../../experiments/graded-lab-simulation/PLAN_ET1.md) (GL-86), [`PLAN_ET2.md`](../../../experiments/graded-lab-simulation/PLAN_ET2.md) (GL-87/88)
 - UAD over-merge / comms-free: GL-11/GL-12 in [`experiments/graded-lab-simulation/results/FINDINGS.md`](../../../experiments/graded-lab-simulation/results/FINDINGS.md)
 - Embedded UAD vs heuristic: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../../../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (ES-1)

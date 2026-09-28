@@ -19,7 +19,7 @@ User asked for a general-audience news entry on the AI Frontiers article “AI J
 - Optional: bibliography key if the Barton-Cooper/Gleave essay should appear in the PDF.
 
 ## Key paths
-- `metadata/field-news/bodies/jailbreak-disclosure-aug-2026.md`
+- `metadata/field-news/bodies/2026-08-jailbreak-disclosure.md`
 - `metadata/field-news.yml`
 - `site/src/content/cards/field-news-jailbreak-disclosure-aug-2026.md`
 

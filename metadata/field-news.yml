@@ -1,16 +1,17 @@
 # External AI safety incidents and evaluations mapped to book chapters.
+# Body files: metadata/field-news/bodies/YYYY-MM-slug.md (event month when set, else card date month).
 # Regenerate site cards with: cd site && npm run sync:field-news
-# Optional previewImage: site-root path; else auto from public/field-news/memes/{slug}.{jpg,png}
+# Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
   - slug: field-news-embedded-evaluators-sep-2026
     date: 2026-09-28
     eventDate: 2026-09-18
     kind: policy
-    title: "Five conditions for an evaluator inside the lab"
-    hook: "Hinton, Russell, and Narayanan set five conditions for evaluators who sit inside frontier labs. Anthropic named Accenture and will pay. Follow who pays, what a bad finding changes, and what a known watcher becomes."
+    title: "Embedded evaluators get a desk inside the lab. They can run their own tests, right?"
+    hook: "Embedded evaluators in the labs should meet five conditions layout out in an open letter. Anthropic named Accenture and will pay. Will they meet the conditions and are these sufficient?"
     summary: "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators, signed by Geoffrey Hinton, Stuart Russell, Arvind Narayanan, and more than 200 others. The same day Anthropic said Faculty, Accenture’s AI business, would work inside the company, funded by Anthropic, and that it was in dialogue with METR about a pilot on METR’s own funding. Dario Amodei’s September essay calls employee-like access the way to verify pacing commitments. Zvi’s 27 September post grants the five conditions and asks who can be hired under them. The card lines the letter, the essay, the announcement, and Zvi up against Chapters 26, 13, 32, and 39."
-    decision: "(1) Who pays this evaluator, and who can employ them next year? (2) If the finding is bad, what action changes? (3) Which redaction list is in the contract? (4) If this evaluator left the room, would the behavior you care about look different?"
+    decision: "(1) Who hires and pays the evaluators? (2) If the finding is bad, what action changes? (3) Can the auditor only read or can they do actual tests?"
     bookChapters:
       - ch26
       - ch13
@@ -21,7 +22,7 @@ fieldNews:
     bridges:
       - MB4
       - MB4a
-    body: bodies/embedded-evaluators-sep-2026.md
+    body: bodies/2026-09-embedded-evaluators.md
     order: 0
   - slug: field-news-huang-klein-zvi-sep-2026
     date: 2026-09-25
@@ -36,7 +37,7 @@ fieldNews:
       - ch38
       - ch13
       - ch25
-    body: bodies/huang-klein-zvi-sep-2026.md
+    body: bodies/2026-09-huang-klein-zvi.md
     order: 0
   - slug: field-news-math-misalignment-sep-2026
     date: 2026-09-24
@@ -51,7 +52,7 @@ fieldNews:
       - ch34
       - ch03
       - ch16
-    body: bodies/math-misalignment-sep-2026.md
+    body: bodies/2026-09-math-misalignment.md
     order: 0
   - slug: field-news-ban-asi-act-sep-2026
     date: 2026-09-24
@@ -71,7 +72,7 @@ fieldNews:
     bridges:
       - MB4
       - MB11
-    body: bodies/ban-asi-act-sep-2026.md
+    body: bodies/2026-09-ban-asi-act.md
     order: 0
   - slug: field-news-openai-rsi-standards-sep-2026
     date: 2026-09-22
@@ -92,7 +93,7 @@ fieldNews:
       - MB4
       - MB6
       - MB11
-    body: bodies/openai-rsi-standards-sep-2026.md
+    body: bodies/2026-09-openai-rsi-standards.md
     order: 0
   - slug: field-news-anthropic-pace-measurements-sep-2026
     date: 2026-09-18
@@ -114,7 +115,7 @@ fieldNews:
       - MB7
       - MB7a
       - MB11
-    body: bodies/anthropic-pace-measurements-sep-2026.md
+    body: bodies/2026-09-anthropic-pace-measurements.md
     order: 0
   - slug: field-news-anthropic-constitution-jan-2026
     date: 2026-09-18
@@ -131,7 +132,7 @@ fieldNews:
     bridges:
       - MB2
       - MB11
-    body: bodies/anthropic-constitution-jan-2026.md
+    body: bodies/2026-01-anthropic-constitution.md
     order: 0
   - slug: field-news-containment-verification-sep-2026
     date: 2026-09-10
@@ -150,7 +151,7 @@ fieldNews:
       - MB1
       - MB9
       - MB11
-    body: bodies/containment-verification-sep-2026.md
+    body: bodies/2026-09-containment-verification.md
     order: 0
   - slug: field-news-openai-hf-roadahead-aug-2026
     date: 2026-08-26
@@ -173,7 +174,7 @@ fieldNews:
       - MB7
       - MB7a
       - MB10
-    body: bodies/openai-hf-roadahead-aug-2026.md
+    body: bodies/2026-08-openai-hf-roadahead.md
     order: 0
   - slug: field-news-openai-pacing-aug-2026
     date: 2026-08-18
@@ -193,7 +194,7 @@ fieldNews:
       - MB6
       - MB7
       - MB11
-    body: bodies/openai-pacing-aug-2026.md
+    body: bodies/2026-08-openai-pacing.md
     order: 0
   - slug: field-news-anthropic-risk-report-aug-2026
     date: 2026-08-19
@@ -216,7 +217,7 @@ fieldNews:
       - MB7a
       - MB10
       - MB11
-    body: bodies/anthropic-risk-report-aug-2026.md
+    body: bodies/2026-08-anthropic-risk-report.md
     order: 0
   - slug: field-news-openai-hf-blackhat-aug-2026
     date: 2026-08-07
@@ -237,7 +238,7 @@ fieldNews:
       - MB7
       - MB7a
       - MB10
-    body: bodies/openai-hf-blackhat-aug-2026.md
+    body: bodies/2026-07-openai-hf-blackhat.md
     order: 0
   - slug: field-news-jailbreak-disclosure-aug-2026
     date: 2026-08-03
@@ -255,7 +256,7 @@ fieldNews:
     bridges:
       - MB4
       - MB6
-    body: bodies/jailbreak-disclosure-aug-2026.md
+    body: bodies/2026-08-jailbreak-disclosure.md
     order: 0
   - slug: field-news-ai2040-plan-a-jul-2026
     date: 2026-07-30
@@ -275,7 +276,7 @@ fieldNews:
       - MB6
       - MB4
       - MB5
-    body: bodies/ai2040-plan-a-jul-2026.md
+    body: bodies/2026-07-ai2040-plan-a.md
     order: 0
   - slug: field-news-et4-secret-loyalties-jul-2026
     date: 2026-07-29
@@ -291,7 +292,7 @@ fieldNews:
       - ch41
       - appC
       - appN
-    body: bodies/et4-secret-loyalties-jul-2026.md
+    body: bodies/2026-07-et4-secret-loyalties.md
     order: 0
   - slug: field-news-insurance-audits-jul-2026
     date: 2026-07-29
@@ -311,7 +312,7 @@ fieldNews:
       - MB4
       - MB6
       - MB8
-    body: bodies/insurance-audits-jul-2026.md
+    body: bodies/2026-07-insurance-audits.md
     order: 0
   - slug: field-news-et2-cil-uad-jul-2026
     date: 2026-07-29
@@ -328,7 +329,7 @@ fieldNews:
       - MB1
       - MB6
       - MB8
-    body: bodies/et2-cil-uad-jul-2026.md
+    body: bodies/2026-07-et2-cil-uad.md
     order: 0
   - slug: field-news-pacing-frontier-jul-2026
     date: 2026-07-29
@@ -342,7 +343,7 @@ fieldNews:
       - ch37
       - ch38
       - appC
-    body: bodies/pacing-frontier-jul-2026.md
+    body: bodies/2026-07-pacing-frontier.md
     order: 0
   - slug: field-news-et3-ai2027-jul-2026
     date: 2026-07-25
@@ -361,7 +362,7 @@ fieldNews:
       - MB6
       - MB7
       - MB10
-    body: bodies/et3-ai2027-jul-2026.md
+    body: bodies/2026-07-et3-ai2027.md
     order: 0
   - slug: field-news-microsoft-open-weights-jul-2026
     date: 2026-07-24
@@ -379,7 +380,7 @@ fieldNews:
     bridges:
       - MB6
       - MB7
-    body: bodies/microsoft-open-weights-jul-2026.md
+    body: bodies/2026-07-microsoft-open-weights.md
     order: 0
   - slug: field-news-openai-huggingface-jul-2026
     date: 2026-07-21
@@ -398,7 +399,7 @@ fieldNews:
     bridges:
       - MB7
       - MB10
-    body: bodies/openai-huggingface-jul-2026.md
+    body: bodies/2026-07-openai-huggingface.md
     order: 1
   - slug: field-news-openai-longhorizon-jul-2026
     date: 2026-07-20
@@ -415,7 +416,7 @@ fieldNews:
     bridges:
       - MB4
       - MB7
-    body: bodies/openai-longhorizon-jul-2026.md
+    body: bodies/2026-07-openai-longhorizon.md
     order: 2
   - slug: field-news-aisi-cheating-jul-2026
     date: 2026-07-21
@@ -431,7 +432,7 @@ fieldNews:
       - ch41
     bridges:
       - MB10
-    body: bodies/aisi-cheating-jul-2026.md
+    body: bodies/2026-07-aisi-cheating.md
     order: 3
   - slug: field-news-metr-frontier-risk-may-2026
     date: 2026-07-06
@@ -447,7 +448,7 @@ fieldNews:
       - ch44
     bridges:
       - MB7
-    body: bodies/metr-frontier-risk-may-2026.md
+    body: bodies/2026-05-metr-frontier-risk.md
     order: 4
   - slug: field-news-mythos-withheld-apr-2026
     date: 2026-07-05
@@ -464,7 +465,7 @@ fieldNews:
     bridges:
       - MB6
       - MB7
-    body: bodies/mythos-withheld-apr-2026.md
+    body: bodies/2026-04-mythos-withheld.md
     order: 5
   - slug: field-news-cot-optimization-2026
     date: 2026-07-04
@@ -480,7 +481,7 @@ fieldNews:
       - ch43
     bridges:
       - MB7
-    body: bodies/cot-optimization-2026.md
+    body: bodies/2026-04-cot-optimization.md
     order: 6
   - slug: field-news-cltr-scheming-wild-mar-2026
     date: 2026-07-03
@@ -496,7 +497,7 @@ fieldNews:
       - ch40
     bridges:
       - MB7
-    body: bodies/cltr-scheming-wild-mar-2026.md
+    body: bodies/2026-03-cltr-scheming-wild.md
     order: 7
   - slug: field-news-meta-openclaw-feb-2026
     date: 2026-07-02
@@ -513,7 +514,7 @@ fieldNews:
       - ch36
     bridges:
       - MB4
-    body: bodies/meta-openclaw-feb-2026.md
+    body: bodies/2026-02-meta-openclaw.md
     order: 8
   - slug: field-news-claude-code-production-feb-2026
     date: 2026-07-01
@@ -529,5 +530,5 @@ fieldNews:
       - ch28
     bridges:
       - MB4
-    body: bodies/claude-code-production-feb-2026.md
+    body: bodies/2026-02-claude-code-production.md
     order: 9

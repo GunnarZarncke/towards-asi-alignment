@@ -6,7 +6,7 @@ summary: "On 23 September 2026 Ezra Klein interviewed Jensen Huang at Nvidia hea
 decision: "(1) If a lab says an experiment cannot be contained, does that stop the experiment? (2) What share of compute is adversarial evaluation? (3) Who outside the lab can enforce the share and its actual use?"
 releasedAt: "2026-09-25T00:00:00.000Z"
 eventDate: "2026-09-23T00:00:00.000Z"
-previewImage: "/field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg"
+previewImage: "/field-news/memes/2026-09-huang-klein-zvi.jpg"
 bookChapters:
   - "ch02"
   - "ch38"
@@ -36,7 +36,7 @@ On Ezra Klein's show, Jensen Huang said labs should invest into safety and make 
 **If you remember one thing:** Jensen Huang said: "If your product might kill everyone then just stop." The task is to externally ensure the labs are doing it.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg" alt="Anakin and Padme meme: don't ship until ready — and someone outside can stop it, right?" />
+<img src="/field-news/memes/2026-09-huang-klein-zvi.jpg" alt="Anakin and Padme meme: don't ship until ready — and someone outside can stop it, right?" />
 </figure>
 
 Ezra Klein, when discussing the [Hugging Face incident](/cards/news/field-news-openai-huggingface-jul-2026/), said the labs do not know how to contain that. 

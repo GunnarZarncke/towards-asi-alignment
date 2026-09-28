@@ -20,7 +20,7 @@ Relate AI 2040 Plan A to the project: surgical chapter cites, general-audience n
 - Commit when requested (this session did not commit).
 
 ## Key paths
-- `metadata/field-news/bodies/ai2040-plan-a-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-ai2040-plan-a.md`
 - `appendices/appF-research-program.tex` (§ Governance-schedule stress tests)
 - `experiments/lab-simulation/TODO.md`, `experiments/graded-lab-simulation/REPRODUCTION.md` §15
 

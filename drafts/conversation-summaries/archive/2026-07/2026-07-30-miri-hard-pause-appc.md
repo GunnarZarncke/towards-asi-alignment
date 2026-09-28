@@ -18,7 +18,7 @@ After reading MIRI’s 2024 mission/strategy update: add only an App. C note loc
 
 ## Key paths
 - `appendices/appC-institutional-translation.tex`
-- `metadata/field-news/bodies/ai2040-plan-a-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-ai2040-plan-a.md`
 - `references/external-alignment.bib` (`miri2024strategy`)
 
 ## Commits

@@ -20,7 +20,7 @@ User asked whether Zvi’s 19 Aug 2026 OpenAI-response post added anything beyon
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/openai-pacing-aug-2026.md`
+- `metadata/field-news/bodies/2026-08-openai-pacing.md`
 - `site/src/content/cards/field-news-openai-pacing-aug-2026.md`
 
 ## Commits

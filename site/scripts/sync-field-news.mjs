@@ -22,14 +22,19 @@ const cardsDir = path.join(siteRoot, "src", "content", "cards");
 
 const PREVIEW_IMAGE_EXTS = [".jpg", ".jpeg", ".png", ".webp"];
 
-async function resolvePreviewImage(slug, explicit) {
+function memeBasename(bodyPath) {
+  return path.basename(bodyPath, path.extname(bodyPath));
+}
+
+async function resolvePreviewImage(bodyPath, explicit) {
   if (explicit) return explicit;
+  const base = memeBasename(bodyPath);
   const memeDir = path.join(siteRoot, "public", "field-news", "memes");
   for (const ext of PREVIEW_IMAGE_EXTS) {
-    const filePath = path.join(memeDir, `${slug}${ext}`);
+    const filePath = path.join(memeDir, `${base}${ext}`);
     try {
       await access(filePath);
-      return `/field-news/memes/${slug}${ext}`;
+      return `/field-news/memes/${base}${ext}`;
     } catch {
       // try next extension
     }
@@ -50,7 +55,7 @@ async function publicFieldsFor(row) {
   if (row.eventDate && row.eventDate !== row.date) {
     fields.eventDate = row.eventDate;
   }
-  const previewImage = await resolvePreviewImage(row.slug, row.previewImage);
+  const previewImage = await resolvePreviewImage(row.body, row.previewImage);
   if (previewImage) fields.previewImage = previewImage;
   return fields;
 }
@@ -96,7 +101,7 @@ async function main() {
   const dataDir = path.join(siteRoot, "src", "data");
   const newsIndex = [];
   for (const row of ordered) {
-    const previewImage = await resolvePreviewImage(row.slug, row.previewImage);
+    const previewImage = await resolvePreviewImage(row.body, row.previewImage);
     const entry = {
       slug: row.slug,
       card: row.slug,

@@ -5,7 +5,7 @@ Write a general-audience news entry about the ET-4 Secret Loyalties project for 
 
 ## Done
 - Added the ET-4 entry to `metadata/field-news.yml`.
-- Wrote the reader-facing body at `metadata/field-news/bodies/et4-secret-loyalties-jul-2026.md`.
+- Wrote the reader-facing body at `metadata/field-news/bodies/2026-07-et4-secret-loyalties.md`.
 - Added the synced site card at `site/src/content/cards/field-news-et4-secret-loyalties-jul-2026.md`.
 - Added the lab-simulation description-card link and expanded the whitepaper reference to its full title in both reader-facing copies.
 - Copied the ET-4 submission PDF into `site/public/papers/et4-secret-loyalties/` and linked it from both copies.
@@ -21,7 +21,7 @@ Write a general-audience news entry about the ET-4 Secret Loyalties project for 
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/et4-secret-loyalties-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-et4-secret-loyalties.md`
 - `site/src/content/cards/field-news-et4-secret-loyalties-jul-2026.md`
 
 ## Commits

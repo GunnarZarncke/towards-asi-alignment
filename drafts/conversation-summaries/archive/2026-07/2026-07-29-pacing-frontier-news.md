@@ -18,7 +18,7 @@ Add a short companion-site news entry about the July 2026 Pacing the Frontier st
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/pacing-frontier-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-pacing-frontier.md`
 - `site/src/content/cards/field-news-pacing-frontier-jul-2026.md`
 
 ## Commits

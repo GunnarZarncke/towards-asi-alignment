@@ -17,7 +17,7 @@ User requested small companion-site corrections: chapter illustrations overflowi
 ## Open / next
 - **`site/scripts/sync-chapters.mjs`** roadmap → `current-status.tex` fix is still uncommitted (see [2026-07-25-site-roadmap-sync-fix.md](2026-07-25-site-roadmap-sync-fix.md)).
 - **Concept logo** work (`CardSection.astro`, `ConceptLogo.astro`, `sync-concept-logos.mjs`, `public/concept-logos/`) is untracked — not part of this session.
-- **HF field-news body** rewrite (`metadata/field-news/bodies/openai-huggingface-jul-2026.md`) still uncommitted.
+- **HF field-news body** rewrite (`metadata/field-news/bodies/2026-07-openai-huggingface.md`) still uncommitted.
 - Full `npm run build` may still need the sync-chapters fix before prebuild completes.
 
 ## Key paths

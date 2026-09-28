@@ -6,11 +6,11 @@ User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions
 ## Done
 - Quote-driven field news: letter, Amodei, Anthropic, Zvi vs Ch. 26/13/32/39 and App M dual-mandate (Andersen, developer-terms access).
 - Purple `--src-letter` source color for Hinton-letter quotes.
-- Anakin/Padme meme: “The auditors can run their own tests, right?”
-- `metadata/field-news/bodies/embedded-evaluators-sep-2026.md`
+- Anakin/Padme meme: “The evaluators can run their own tests, right?” (panels 2 and 4).
+- `metadata/field-news/bodies/2026-09-embedded-evaluators.md`
 - `metadata/field-news.yml` entry `field-news-embedded-evaluators-sep-2026`
 - `scripts/meme_workflow/memes.json` + `output/embedded-evaluators.jpg`
-- `site/public/field-news/memes/field-news-embedded-evaluators-sep-2026.jpg`
+- **Follow-up (same day):** All 29 field-news bodies renamed to `YYYY-MM-slug.md`; meme public files and `previewImage` auto-detect now use the same basename (`2026-09-embedded-evaluators.jpg`, etc.); sync scripts updated; site build verified.
 - Synced site card via `sync:field-news-memes` + `sync:field-news`
 
 ## Decisions
@@ -22,10 +22,11 @@ User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions
 - Optional quiz takeaway if CI requires a news-takeaway id for this slug.
 
 ## Key paths
-- `metadata/field-news/bodies/embedded-evaluators-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-embedded-evaluators.md`
 - Letter: https://aievaluatorforum.org/initiatives/embedded-evaluation-letter
 - Zvi: https://thezvi.substack.com/p/the-quest-for-embedded-evaluators
 - Amodei: https://darioamodei.com/post/we-must-pace-the-frontier
 
 ## Commits
-- `90abe339c` Add embedded evaluators field news on Hinton letter and Accenture pick.
+- `d110d5165` Add embedded evaluators field news on Hinton letter and Accenture pick.
+- (this session) Field-news body + meme basename convention.

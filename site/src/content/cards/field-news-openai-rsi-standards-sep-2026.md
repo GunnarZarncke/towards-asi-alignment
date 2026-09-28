@@ -6,7 +6,7 @@ summary: "OpenAI’s 21 September 2026 Global Affairs post asks the United State
 decision: "Ask: (1) if autonomous-research rises, does that delay the next model’s AI R&D, or only update a paperwork chart? (2) who, outside the lab that wrote the seed reports, can say the standard was not met? (3) when they say the standards are not licenses or mandatory prerelease review, what finding would stop a deployment? (4) does “alignment research stay ahead of capabilities” include a human judgment that changed internal processes, or did it lead only to more safety papers?"
 releasedAt: "2026-09-22T00:00:00.000Z"
 eventDate: "2026-09-21T00:00:00.000Z"
-previewImage: "/field-news/memes/field-news-openai-rsi-standards-sep-2026.jpg"
+previewImage: "/field-news/memes/2026-09-openai-rsi-standards.jpg"
 bookChapters:
   - "ch12"
   - "ch13"
@@ -39,7 +39,7 @@ AI building the next AI. OpenAI asks for shared measurements. They say those mea
 **If you remember one thing:** a shared ruler for how much AI builds the next AI can make labs comparable. It cannot, by itself, delay the next model. You need limitations that bite.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-openai-rsi-standards-sep-2026.jpg" alt="Is this a pigeon meme: butterfly labeled ruler, caption a stop" />
+<img src="/field-news/memes/2026-09-openai-rsi-standards.jpg" alt="Is this a pigeon meme: butterfly labeled ruler, caption a stop" />
 </figure>
 
 [Anthropic’s pace measurements](/cards/news/field-news-anthropic-pace-measurements-sep-2026/) already published a production-process index. 

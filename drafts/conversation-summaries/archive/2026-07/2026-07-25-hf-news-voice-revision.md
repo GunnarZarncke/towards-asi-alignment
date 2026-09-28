@@ -4,7 +4,7 @@
 User asked to stay closer to their original prose on the OpenAI/Hugging Face news card after an over-edited draft.
 
 ## Done
-- Rewrote `metadata/field-news/bodies/openai-huggingface-jul-2026.md` to follow the author's wording: entity-pinning difficulty, OpenAI/HF quotes, UAD + graded-lab link, Zvi scope note—minimal editorial restructuring.
+- Rewrote `metadata/field-news/bodies/2026-07-openai-huggingface.md` to follow the author's wording: entity-pinning difficulty, OpenAI/HF quotes, UAD + graded-lab link, Zvi scope note—minimal editorial restructuring.
 - Regenerated site card via `npm run sync:field-news`.
 
 ## Decisions
@@ -14,7 +14,7 @@ User asked to stay closer to their original prose on the OpenAI/Hugging Face new
 - Concept-logo site work remains unstaged in working tree.
 
 ## Key paths
-- `metadata/field-news/bodies/openai-huggingface-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-openai-huggingface.md`
 
 ## Commits
 - `6095743e` Restore author voice on OpenAI/Hugging Face field-news card.

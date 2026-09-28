@@ -5,7 +5,7 @@ Write a general-audience, institutional-language companion-site news entry about
 
 ## Done
 - Added a policy entry to `metadata/field-news.yml`.
-- Wrote the reader-facing source body at `metadata/field-news/bodies/insurance-audits-jul-2026.md`.
+- Wrote the reader-facing source body at `metadata/field-news/bodies/2026-07-insurance-audits.md`.
 - Generated `site/src/content/cards/field-news-insurance-audits-jul-2026.md`.
 - Built the companion site successfully.
 
@@ -20,7 +20,7 @@ Write a general-audience, institutional-language companion-site news entry about
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/insurance-audits-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-insurance-audits.md`
 - `site/src/content/cards/field-news-insurance-audits-jul-2026.md`
 
 ## Commits

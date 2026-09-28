@@ -22,7 +22,7 @@ Implement Tier A and selected Tier B AI-safety incident catalog items on manuscr
 - Optional: align ch14 manuscript cite with expanded HF news framing.
 
 ## Key paths
-- `metadata/field-news.yml`, `metadata/field-news/bodies/openai-huggingface-jul-2026.md`
+- `metadata/field-news.yml`, `metadata/field-news/bodies/2026-07-openai-huggingface.md`
 - `site/src/pages/news/index.astro`, `site/scripts/sync-field-news.mjs`
 - `chapters/ch42-safety-case.tex`, `chapters/ch26-correction-channel-integrity.tex`
 

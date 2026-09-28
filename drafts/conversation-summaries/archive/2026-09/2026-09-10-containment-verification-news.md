@@ -5,7 +5,7 @@ User attended Orpheus Lummis’s GSAI sequence with Royce Moon on Moon & Varshne
 
 ## Done
 - Field-news YAML entry `field-news-containment-verification-sep-2026` (`kind: research`, 2026-09-10).
-- Body at `metadata/field-news/bodies/containment-verification-sep-2026.md` (paper quotes + Ch. 1 / 33 / 43 quotes; first-person call note; Bend / Taelin closed-world contrast).
+- Body at `metadata/field-news/bodies/2026-09-containment-verification.md` (paper quotes + Ch. 1 / 33 / 43 quotes; first-person call note; Bend / Taelin closed-world contrast).
 - `cd site && npm run sync:field-news && npm run build:feed`.
 - News index 404: `/news/` linked to legacy `/cards/field-news-…/` (dev catch-all 404s). Pass type `news`/`release`; infer `field-news-*` as news in `card-urls.mjs`.
 
@@ -19,5 +19,5 @@ User attended Orpheus Lummis’s GSAI sequence with Royce Moon on Moon & Varshne
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/containment-verification-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-containment-verification.md`
 - `/cards/news/field-news-containment-verification-sep-2026/`

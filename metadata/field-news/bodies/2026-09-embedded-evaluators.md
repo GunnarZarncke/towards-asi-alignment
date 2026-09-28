@@ -21,10 +21,10 @@ external:
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
 </p>
 
-**If you remember one thing:** the letter is a test of the witness. Follow who pays, what a bad finding changes, and what a known watcher becomes.
+**If you remember one thing:** Follow who pays, what a bad finding changes, and what an evaluator can actually do.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-embedded-evaluators-sep-2026.jpg" alt="Anakin and Padme meme: we embedded third-party evaluators — and the auditors can run their own tests, right?" />
+<img src="/field-news/memes/2026-09-embedded-evaluators.jpg" alt="Anakin and Padme meme: we embedded third-party evaluators — and the evaluators can run their own tests, right?" />
 </figure>
 
 [Zvi discusses](https://thezvi.substack.com/p/the-quest-for-embedded-evaluators) the five conditions published by the AI Evaluator Forum on 18 September 2026 (signed by Geoffrey Hinton, Stuart Russell, and Arvind Narayanan and more than 200 others) and the commitments by [Dario Amodei](https://darioamodei.com/post/we-must-pace-the-frontier) and [Anthropic](https://www.anthropic.com/news/accenture-embedded-evaluation).

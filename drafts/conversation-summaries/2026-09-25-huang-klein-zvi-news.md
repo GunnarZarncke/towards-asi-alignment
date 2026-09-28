@@ -6,7 +6,7 @@ User asked to read Zvi on Jensen Huang's Ezra Klein interview, discuss simulacru
 ## Done
 - Analyzed Zvi post vs four-level Huang model; noted Zvi may perform Level-1 reading strategically.
 - Drafted quote-driven field-news post (Huang · NYT / Zvi / book) in three clusters: containment/shut labs, 10× eval, pace letter + auditors.
-- `metadata/field-news/bodies/huang-klein-zvi-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-huang-klein-zvi.md`
 - `metadata/field-news.yml` entry `field-news-huang-klein-zvi-sep-2026`
 - Synced site card via `npm run sync:field-news`
 
@@ -20,7 +20,7 @@ User asked to read Zvi on Jensen Huang's Ezra Klein interview, discuss simulacru
 - No transcript file saved in `context/`.
 
 ## Key paths
-- `metadata/field-news/bodies/huang-klein-zvi-sep-2026.md`
+- `metadata/field-news/bodies/2026-09-huang-klein-zvi.md`
 - Zvi: https://www.lesswrong.com/posts/j3xefrWrNqsmMfJEi/on-ezra-klein-s-podcast-with-jensen-huang
 - NYT: https://www.nytimes.com/2026/09/23/opinion/ezra-klein-podcast-jensen-huang.html
 

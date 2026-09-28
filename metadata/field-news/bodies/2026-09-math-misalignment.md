@@ -12,7 +12,7 @@ external:
 **If you remember one thing:** a famous problem was a landmark for understanding. If the landmark becomes the score, it can stay bright after the understanding is gone.
 
 <figure class="book-figure book-figure--meme">
-<img src="/field-news/memes/field-news-math-misalignment-sep-2026.png" alt="Midwit meme: don't destroy the math commons versus faster true theorems are more and better mathematics" />
+<img src="/field-news/memes/2026-09-math-misalignment.png" alt="Midwit meme: don't destroy the math commons versus faster true theorems are more and better mathematics" />
 </figure>
 
 ## What the mathematical landmark is

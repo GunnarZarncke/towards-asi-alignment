@@ -22,7 +22,7 @@ User asked for a yes-and news entry on the Microsoft open-weights letter, then p
 
 ## Key paths
 - `metadata/field-news.yml`
-- `metadata/field-news/bodies/microsoft-open-weights-jul-2026.md`
+- `metadata/field-news/bodies/2026-07-microsoft-open-weights.md`
 - `metadata/field-news/bodies/`
 - `site/.gitignore`
 

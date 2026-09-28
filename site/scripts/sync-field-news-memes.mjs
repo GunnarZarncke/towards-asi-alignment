@@ -1,4 +1,5 @@
 // Copy field-news meme images from scripts/meme_workflow/output into site/public/.
+// Dest basename must match metadata/field-news/bodies/YYYY-MM-slug.{jpg,png}.
 import { cp, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,27 +12,27 @@ const repoRoot = path.resolve(siteRoot, "..");
 const MEMES = [
   {
     src: "scripts/meme_workflow/output/huang-release-rule.jpg",
-    dest: "field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg"
+    dest: "field-news/memes/2026-09-huang-klein-zvi.jpg"
   },
   {
     src: "scripts/meme_workflow/output/math-misalignment.png",
-    dest: "field-news/memes/field-news-math-misalignment-sep-2026.png"
+    dest: "field-news/memes/2026-09-math-misalignment.png"
   },
   {
     src: "scripts/meme_workflow/output/ban-asi-act.jpg",
-    dest: "field-news/memes/field-news-ban-asi-act-sep-2026.jpg"
+    dest: "field-news/memes/2026-09-ban-asi-act.jpg"
   },
   {
     src: "scripts/meme_workflow/output/openai-rsi-standards.jpg",
-    dest: "field-news/memes/field-news-openai-rsi-standards-sep-2026.jpg"
+    dest: "field-news/memes/2026-09-openai-rsi-standards.jpg"
   },
   {
     src: "scripts/meme_workflow/output/anthropic-pace-measurements.jpg",
-    dest: "field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg"
+    dest: "field-news/memes/2026-09-anthropic-pace-measurements.jpg"
   },
   {
     src: "scripts/meme_workflow/output/embedded-evaluators.jpg",
-    dest: "field-news/memes/field-news-embedded-evaluators-sep-2026.jpg"
+    dest: "field-news/memes/2026-09-embedded-evaluators.jpg"
   }
 ];
 
