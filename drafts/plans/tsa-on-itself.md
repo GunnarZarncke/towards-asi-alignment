@@ -1,6 +1,6 @@
 # TSA on itself — the alignment attractor in the small
 
-Status: **plan** (2026-09-23). Not a lane; cross-cutting. Origin: the 2026-09-22 consistency review and the reflexive discussion that followed ([`2026-09-23-consistency-decisions.md`](../conversation-summaries/2026-09-23-consistency-decisions.md)). Sibling notes: [`audit-telemetry.md`](audit-telemetry.md) (what agent projects should record), [`../project/consistency-review-2026-09-22.md`](../project/consistency-review-2026-09-22.md).
+Status: **plan** (2026-09-23; §3.12 scope and bar cadence revised 2026-09-28). Not a lane; cross-cutting. Origin: the 2026-09-22 consistency review and the reflexive discussion that followed ([`2026-09-23-consistency-decisions.md`](../conversation-summaries/2026-09-23-consistency-decisions.md)). Sibling notes: [`audit-telemetry.md`](audit-telemetry.md) (what agent projects should record), [`../project/consistency-review-2026-09-22.md`](../project/consistency-review-2026-09-22.md).
 
 **Claim strength:** methodology-building. Nothing here discharges an `MB*` or says anything about frontier systems. It applies the book's layers to the process that produces the book, names the adversarial dynamics inside that process, and proposes instruments that can fail. An instrument without a stop condition is documentation (INSTRUCTIONS.md §5); every instrument below carries one.
 
@@ -41,7 +41,7 @@ Each entry: what it measures, a sketch, and the stop condition. Scripts go in `s
 
 ### 3.1 `scripts/audit_authbar_series.py` — boundary
 
-Parse `\begin{authbar}{KEY}` blocks per chapter per commit (monthly samples from `git log`), weight by word count, emit a CSV of `GZ` / `GZ+AI` / `AI` share for load-bearing chapters (ch03, ch16, ch25–26, ch30, ch34, ch42–43, ch48). **Stop:** `GZ`-touched share on load-bearing chapters below a threshold fixed at first run (proposal: the current value minus ten points) → next lane is a human pass, not a feature.
+Read the bar-update log written by §3.12 (one row each time a span's key changes). Weight current keys by word count and emit a CSV of `GZ` / `GZ+AI` / `AI` share for load-bearing chapters (ch03, ch16, ch25–26, ch30, ch34, ch42–43, ch48). The series updates whenever a tracked span's key is rewritten, which is every commit that changes that span, so it does not wait for a monthly sample. **Stop:** `GZ`-touched share on load-bearing chapters below a threshold fixed at first run (proposal: the current value minus ten points) → next lane is a human pass, not a feature.
 
 ### 3.2 `scripts/check_generated_counts.py` — grounding
 
@@ -112,40 +112,33 @@ From session logs: proposals made by agents vs accepted unchanged vs modified vs
 | agent-start → agent-end | agent (that tool, that session) |
 | agent-end → next agent-start, or → precommit | human (any editor) |
 | precommit tree == last agent-end tree | agent output accepted unchanged (the null-correction signal) |
-| an agent interval with no bracketing start (hook missed) | unattributed |
+| a Claude turn followed by its next prompt with no end (user interrupted text generation; Claude Code runs no hook then) | `agent-interrupted` |
+| a turn whose end hook was missed (no end, no next prompt, older than 6 h) | unattributed |
+| human-interval lines that undo agent lines written since the last commit (rewind, checkpoint restore, Cursor reject, hand revert) | `rejected`: no human bar weight |
 
-Within an agent interval, files changed that the tool did **not** report editing (see per-tool file lists below) are attributed `human-during-agent`, so a hand edit made while an agent runs is not silently credited to the agent.
+Intervals are cut between consecutive snapshots of **all** sessions; each interval is attributed from the set of agent turns open across it, so overlapping sessions do not produce false human intervals. A file in exactly one open turn's edit list goes to that turn; several candidates give `agent-overlap`. Files changed that no open turn reported editing (see per-tool file lists below) are attributed `human-during-agent` unless an open turn ran a shell command that could not be measured (`agent-bash`) or declared the file (`agent-declared`, below), so a hand edit made while an agent runs is not silently credited to the agent. Turn ends and file lists are persisted per turn in `telemetry/turns.jsonl`, not only in the live session state.
 
-**Snapshot mechanism** (`scripts/hooks/snapshot.sh <label> <tool> <session> [generation]`). A commit object no branch points to, built from a temporary index so untracked files are included, stored under `refs/snapshots/`. It never touches the working tree, the real index, or `HEAD`:
+**Snapshot mechanism** (`scripts/hooks/snapshot.sh <label> <tool> <session> [generation]`). A commit object no branch points to, built from a temporary index private to that call (concurrent snapshots must not share one index lock), stored under `refs/snapshots/` with a millisecond timestamp. It never touches the working tree, the real index, or `HEAD`. The index is `git add -u` plus untracked files under `chapters/`, `appendices/`, `frontmatter/`, and `site/src/` (not a full `git add -A`, which would pull local experiment dumps into every snapshot).
 
 ```sh
-export GIT_INDEX_FILE="$(git rev-parse --git-dir)/snapshot-index"
-git add -A
+export GIT_INDEX_FILE="$(mktemp "$(git rev-parse --git-dir)/snapshot-index.XXXXXX")"; rm -f "$GIT_INDEX_FILE"
+git read-tree HEAD
+git add -u
+git add -- chapters appendices frontmatter site/src
 tree=$(git write-tree)
 c=$(git commit-tree "$tree" -p HEAD -m "snapshot $label $tool $session $generation")
-git update-ref "refs/snapshots/$(date -u +%Y%m%dT%H%M%SZ)-$label-$tool-$session" "$c"
+git update-ref "refs/snapshots/<UTC stamp with ms>-$label-$tool-$session" "$c" ""
 ```
 
 Cost: one tree and one commit per snapshot; blobs are shared, so thousands of snapshots are megabytes. `refs/snapshots/*` is outside the push refspec and stays local. Prune refs older than 90 days after §3.12's ledger has recorded them (`scripts/hooks/prune_snapshots.sh`).
 
 **Normalising adapter** (`scripts/hooks/agent_hook.py --tool {claude,cursor} --event <name>`). Reads the tool's JSON from stdin, maps it to `{tool, session, generation, event, prompt?, file?}`, then calls `snapshot.sh` or the prompt recorder (§3.13). One script for both tools; the JSON shapes differ and are listed below. Always exits 0 and never blocks the tool (a hook failure must not stop editing; it is logged to `telemetry/hooks.log`).
 
-**Claude Code integration** (`.claude/settings.json`, project-scoped and committable; docs: `code.claude.com/docs/en/hooks-guide.md`). `UserPromptSubmit` and `Stop` take no matcher and fire on every turn; `PostToolUse` matches on tool name. Stdin fields used: `session_id`, `prompt_id`, `user_prompt`, `transcript_path` (`UserPromptSubmit`); `tool_name`, `tool_input.file_path` (`PostToolUse`); `session_id`, `stop_hook_active` (`Stop`). `$CLAUDE_PROJECT_DIR` gives the repo root. Per-event timeout is 30 s for `UserPromptSubmit`; snapshots take well under a second.
+**Claude Code integration** (`.claude/settings.json`, project-scoped and committable; docs: `code.claude.com/docs/en/hooks-guide.md`). `UserPromptSubmit` and `Stop` take no matcher and fire on every turn; `PostToolUse` matches on tool name. Stdin fields used: `session_id`, `prompt_id`, `user_prompt`, `transcript_path` (`UserPromptSubmit`); `tool_name`, `tool_input.file_path` (`PostToolUse`); `is_interrupt`, `error_type` (`PostToolUseFailure`); `session_id`, `stop_hook_active` (`Stop`). `$CLAUDE_PROJECT_DIR` gives the repo root. Per-event timeout is 30 s for `UserPromptSubmit`; snapshots take well under a second.
 
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [{ "hooks": [{ "type": "command",
-      "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/hooks/agent_hook.py\" --tool claude --event UserPromptSubmit" }] }],
-    "PostToolUse": [{ "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash", "hooks": [{ "type": "command",
-      "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/hooks/agent_hook.py\" --tool claude --event PostToolUse" }] }],
-    "Stop": [{ "hooks": [{ "type": "command",
-      "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/hooks/agent_hook.py\" --tool claude --event Stop" }] }]
-  }
-}
-```
+Events hooked: `UserPromptSubmit`, `PostToolUse` (matcher `Edit|Write|MultiEdit|NotebookEdit|Bash`), `PostToolUseFailure`, `Stop`, `StopFailure`, `SessionEnd`, each calling `agent_hook.py --tool claude --event <name>`; the live list is `.claude/settings.json`.
 
-`UserPromptSubmit` → `snapshot agent-start` + record prompt. `PostToolUse` → append `file_path` to the session's touched-file list (`Bash` is matched so shell-side edits mark the interval as `agent-bash`, since their file list is unknown). `Stop` → `snapshot agent-end` only if the touched list is non-empty or `git status --porcelain` differs from the start snapshot; skip when `stop_hook_active` is true. `SubagentStop` is **not** hooked: subagents write inside the main session's interval and their edits show up in the main `PostToolUse` stream when they use Edit/Write; if a subagent edits via Bash the interval is `agent-bash`, which is the honest label.
+`UserPromptSubmit` → `snapshot agent-start` + record prompt; if the session's previous turn is still open, it is closed as `interrupted` first and the new prompt is tagged a correction. `PostToolUse` → append `file_path` to the turn's touched-file list. Shell commands are **measured**: `PreToolUse` and `PostToolUse` on `Bash` stat the tracked trees (about 20 ms) and add the files the command changed; only a command that cannot be measured (`run_in_background`, missing pre-map) marks the turn `agent-bash`. Edits no hook can measure are **declared** by the agent (`scripts/hooks/declare_edits.py '<glob>' 're:<regex>'`, rule 9 of the AGENTS.md self-audit); a declaration credits only files that changed during the turn and match, so under-declaring leaves `agent-bash`, never human. `PostToolUseFailure` → record the failure; with `is_interrupt` it closes the turn at that moment (`user-stopped`, exact end). `Stop` → `snapshot agent-end` on **every** turn, including turns that changed nothing (a skipped end would turn the following human gap into an unattributed start-to-start pair; `git status` cannot see content changes to already-modified files anyway); skip when `stop_hook_active` is true. `StopFailure` (API error) and `SessionEnd` (open turn at exit) also close the turn. Not observable by hook: an interrupt during text generation (resolved at the next prompt, a manual commit, or session end) and a user's denial in a permission dialog (`PermissionDenied` fires only for the auto-mode classifier; whether `PostToolUseFailure` fires on a user denial is unverified — its `error_type` is recorded to find out). `SubagentStop` is **not** hooked: subagents write inside the main session's interval and their edits show up in the main `PostToolUse` stream when they use Edit/Write; if a subagent edits via Bash the interval is `agent-bash`, which is the honest label.
 
 **Cursor integration** (`.cursor/hooks.json`, project-scoped; docs: `cursor.com/docs/agent/hooks`). Hooks run from the project root; the CLI and cloud agents load project hooks too. Stdin fields used: `prompt`, `conversation_id`, `generation_id` (`beforeSubmitPrompt`); `file_path`, `edits[]`, `conversation_id`, `generation_id` (`afterFileEdit`); `status`, `conversation_id`, `generation_id`, `model` (`stop`). Return `{"continue": true}` from `beforeSubmitPrompt`; return nothing from the others. Exit 0 always (non-zero other than 2 fails open anyway).
 
@@ -160,24 +153,43 @@ Cost: one tree and one commit per snapshot; blobs are shared, so thousands of sn
 }
 ```
 
-`beforeSubmitPrompt` → `snapshot agent-start` + record prompt; `afterFileEdit` → touched-file list (Cursor reports every agent edit, so `human-during-agent` attribution is exact here); `stop` → `snapshot agent-end` (skip if `status` is `aborted` and nothing was touched). Session id = `conversation_id`, reply id = `generation_id`. Caveat to verify on first install: a community report says the Cursor CLI does not emit every event; the precommit snapshot still bounds the interval, so a missed `stop` degrades to `unattributed`, never to a wrong attribution. Cursor **Tab** completions are not agent replies; they are human-interval edits by this rule (the author accepted each one), and `afterTabFileEdit` is deliberately not hooked.
+`beforeSubmitPrompt` → `snapshot agent-start` + record prompt (a still-open previous turn is closed as `lost`); `afterFileEdit` → touched-file list (Cursor reports every agent edit, so `human-during-agent` attribution is exact here); `stop` → `snapshot agent-end` always; `status: aborted` records the turn as `aborted` (a user stop with an exact end). Cursor also runs the `.claude/settings.json` hooks; the adapter recognises Cursor payloads there and skips them, so each Cursor turn is snapshotted once. Cursor shell commands are not hooked (`beforeShellExecution` would have to return a permission decision), so a Cursor agent's terminal edits read as `human-during-agent` unless the agent declares them first (`declare_edits.py`, attached to every open Cursor turn). Session id = `conversation_id`, reply id = `generation_id`. Caveat to verify on first install: a community report says the Cursor CLI does not emit every event; the precommit snapshot still bounds the interval, so a missed `stop` degrades to `unattributed`, never to a wrong attribution. Cursor **Tab** completions are not agent replies; they are human-interval edits by this rule (the author accepted each one), and `afterTabFileEdit` is deliberately not hooked.
 
 **Other tools.** Any other AI editor either gets an adapter case in `agent_hook.py` or is wrapped by hand: `make snap-start` / `make snap-end`. Forgetting is safe: the interval becomes `unattributed`, which the stop condition below counts.
 
-**Git hooks** (`.githooks/`, versioned; `make hooks` runs `git config core.hooksPath .githooks` on a clone). `pre-commit`: `snapshot precommit`; compute the delta since the last agent-end (or agent-start if a reply is in progress) restricted to the files being committed; write it to `$(git rev-parse --git-dir)/EDIT_ATTRIBUTION`. `prepare-commit-msg`: append trailers so git carries the summary:
+**Git hooks** (`.githooks/`, versioned; `make hooks` runs `git config core.hooksPath .githooks` on a clone). `pre-commit`: `snapshot precommit`, tagged with the committer (`claude:<session>` from `CLAUDE_CODE_SESSION_ID`, else `none`; a `none` commit closes any open Claude turn as interrupted); sum every interval since `HEAD` — all turns and all gaps between them, not only the last — restricted to the files being committed; write it to `$(git rev-parse --git-dir)/EDIT_ATTRIBUTION`. `prepare-commit-msg`: append trailers so git carries the summary:
 
 ```
 Human-Delta: 3 files, +41/-17 lines (since agent-end 2026-09-24T14:02Z claude/57652ed0)
 Agent-Delta: 12 files, +388/-95 lines (claude/57652ed0)
 ```
 
-A `Human-Delta: 0 files` trailer is informative: agent output accepted as is. Human commits made from Cursor or the CLI run the same hooks, so attribution is uniform. `post-commit`: append the interval rows to the ledger.
+Optional lines appear when non-zero: `Rejected-Delta` (agent lines undone by hand), `Unattributed-Delta`, `Interrupts: n (tool/session, …)`, `Correction-Prompts: n`. A `Human-Delta: 0 files` trailer with no `Rejected-Delta` or `Interrupts` line is informative: agent output accepted as is. Human commits made from Cursor or the CLI run the same hooks, so attribution is uniform. `post-commit`: append the interval rows to the ledger.
 
-**Ledger** (`scripts/human_delta.py`). Walks `refs/snapshots/` in time order, pairs consecutive snapshots into intervals with the attribution table above, runs `git diff --numstat` per interval, and appends one row per interval per file to `telemetry/edit-intervals.jsonl` (gitignored raw): `{ts_start, ts_end, kind, tool, session, generation, file, class (manuscript|metadata|plans|site|formal|experiments|other), chapter?, added, removed}`. `--month YYYY-MM` writes a committed aggregate `drafts/project/self-audit/edit-attribution/YYYY-MM.csv`: lines by kind × class × chapter, plus the unattributed share. The authorship bars (§3.1) are **derived** from this ledger once three months exist; until then they stay declared and are marked so.
+**Tracked paths.** Snapshots stay whole-tree, so a missed file list still bounds the interval. The ledger, commit trailers, the unattributed-share stop, and bar derivation count two trees only:
 
-**What it does not capture.** A correction the author gives as a prompt lands in an agent interval; that is the second channel and lives in the session log `kind`/`uptake` fields (§4.6) and the prompt record (§3.13). Line counts measure volume, not decisiveness; decisiveness is still scored per correction on the scale in §1. Edits during an agent reply by a tool with no file list (Bash) stay ambiguous and are labeled as such.
+- **Manuscript:** `chapters/`, `appendices/`, `frontmatter/`.
+- **Site:** `site/src/`, except paths a sync script rewrites from the manuscript. Chapter pages under `site/src/content/book/` are `sync:chapters` output and are not a second edit. Site-native prose (news, cards, pages) is tracked.
 
-**Stop:** unattributed share above 20% of changed lines in a month → hook coverage is broken; repair before any other instrument in this plan is read that month. Declared authorship bars disagreeing with derived attribution on a load-bearing chapter → that chapter's bars are regenerated and the disagreement logged.
+A diff outside those trees adds no ledger row and does not move a bar.
+
+**Ledger** (`scripts/human_delta.py`). Walks `refs/snapshots/` in time order, pairs consecutive snapshots into intervals with the attribution table above, runs `git diff --numstat` on tracked paths only, and appends one row per interval per file to `telemetry/edit-intervals.jsonl` (gitignored raw): `{ts_start, ts_end, kind, tool, session, generation, file, class (manuscript|site), chapter?, added, removed}`. `--month YYYY-MM` writes a committed aggregate `drafts/project/self-audit/edit-attribution/YYYY-MM.csv`: lines by kind × class × chapter, plus the unattributed share of manuscript and site lines.
+
+**Bars, updated per touched span.** On each commit that changes a tracked manuscript span, and whenever `scripts/human_delta.py --derive-bars` is run, recompute the key for each `\begin{authbar}` span whose tracked lines changed since the previous derivation:
+
+| Cumulative lines on the span | Key |
+|---|---|
+| Human intervals only | `GZ` |
+| Agent intervals only | `AI` |
+| Both present | `GZ+AI` |
+
+Lines that predate the ledger keep the key declared when the ledger starts; they are the prior. A later one-sided edit does not erase the other author: once both are present the key stays `GZ+AI`. If the derived key differs, the pre-commit hook writes it into that span in the working tree and in the index copy only (unstaged hunks stay unstaged); spans in files outside the commit wait until their file is committed. `\begin{authbar}` lines and whitespace-only lines carry no weight, so the hook's own key edits never count as authorship and the hook does not loop. Site chapter chips are those keys after `sync:chapters`. Spans with no tracked interval yet keep the declared key.
+
+Each derivation appends one row per changed key to `drafts/project/self-audit/edit-attribution/bar-updates.jsonl` (committed): `{ts, file, span, from, to, human_lines, agent_lines}`. §3.1 reads that log.
+
+**What it does not capture.** A correction the author gives as a prompt lands in an agent interval; the prompt record (§3.13) tags it `kind: correction` by a frozen first-pass rule (after an interrupt, or matching the patterns in `scripts/hooks/edit_attr.py`), and the session log `kind`/`uptake` fields (§4.6) carry the rest. The ledger holds rows back while a turn is unresolved (running, or open without an end for up to 6 h), so bars can lag a commit made in that window. Line counts measure volume, not decisiveness; decisiveness is still scored per correction on the scale in §1. Edits during an agent reply by a tool with no file list (Bash) stay ambiguous and are labeled as such.
+
+**Stop:** unattributed share above 20% of changed manuscript and site lines in a month → hook coverage is broken; repair before any other instrument in this plan is read that month. A declared key that disagrees with the derivation on a load-bearing chapter, after a commit that touched that span, is rewritten in that commit; the bar-update row is the log.
 
 ### 3.13 Verbatim prompt recording — the human channel as typed
 
@@ -243,8 +255,8 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 ### Agents (per session, weekly, monthly)
 
 - **Every session:** hooks run by themselves (§3.12 snapshots, §3.13 prompt record); §4.1, §4.6, and §4.8 at log time; `make check` (which will include §3.2) before any claim of completion.
-- **Weekly (first session of the week):** §3.3 audit on two sampled logs (now including prompt-id resolution); §3.8 parasite budget; `scripts/human_delta.py --week` summary (unattributed share, human vs agent lines by class); report all in the log.
-- **Monthly:** §3.1 authorship series (derived from §3.12 once three months exist); §3.6 blind re-derivation on five chapters; §3.10 acceptance-rate count; commit `drafts/project/self-audit/edit-attribution/YYYY-MM.csv` and the redacted prompt digest if the author exported one. One log titled `self-audit-YYYY-MM` holds all of it.
+- **Weekly (first session of the week):** §3.3 audit on two sampled logs (now including prompt-id resolution); §3.8 parasite budget; `scripts/human_delta.py --week` (print-only; does not append the ledger); report totals in the log. Ledger rows are written on commit (`post-commit`) and when cutting `--month`.
+- **Monthly:** §3.1 authorship-share CSV from the bar-update log (keys themselves are already current from per-commit derivation); §3.6 blind re-derivation on five chapters; §3.10 acceptance-rate count; commit `drafts/project/self-audit/edit-attribution/YYYY-MM.csv` and the redacted prompt digest if the author exported one. One log titled `self-audit-YYYY-MM` holds all of it.
 
 ### Author
 
@@ -278,7 +290,7 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 - [ ] Freeze thresholds for §3.1, §3.3, §3.4, §3.8, §3.10, §3.11 in script headers (author decision; record commit hash)
 - [ ] `scripts/audit_section_ai_scores.py` + tropa-mini pin; first baseline run (`--all`) checked in under `drafts/project/self-audit/section-ai-scores/` (S)
 - [ ] Wire §3.11 into release checklist (`RELEASE_NOTES.md` header or `docs/BUILD.md` release steps) (S)
-- [ ] §3.12/§3.13 tooling (S–M, one session): `scripts/hooks/snapshot.sh`, `scripts/hooks/agent_hook.py` (claude + cursor adapters), `scripts/hooks/prune_snapshots.sh`, `scripts/human_delta.py`, `scripts/export_prompts.py`; `.githooks/{pre-commit,prepare-commit-msg,post-commit}`; `.claude/settings.json` hooks block; `.cursor/hooks.json`; `telemetry/` in `.gitignore`; `make hooks`, `make snap-start`, `make snap-end`; log template `kind` / `uptake` / `Prompts:` fields
+- [x] §3.12/§3.13 tooling (S–M, one session): `scripts/hooks/snapshot.sh`, `scripts/hooks/agent_hook.py` (claude + cursor adapters), `scripts/hooks/prune_snapshots.sh`, `scripts/human_delta.py` (manuscript + site path filter; `--derive-bars` rewrites touched `\begin{authbar}` keys and appends `bar-updates.jsonl`), `scripts/export_prompts.py`; `.githooks/{pre-commit,prepare-commit-msg,post-commit}`; `.claude/settings.json` hooks block; `.cursor/hooks.json`; `telemetry/` in `.gitignore`; `make hooks`, `make snap-start`, `make snap-end`; log template `kind` / `uptake` / `Prompts:` fields
 - [ ] First-install verification: one Claude Code turn and one Cursor turn each produce start/end snapshot refs and a prompt row; one hand edit plus commit produces a non-zero `Human-Delta` trailer; Cursor CLI event coverage checked against the forum caveat
 - [ ] §3.14 full-tier events added to the adapter (read log, generator identity, handles; subagent events); conversation-element label set frozen (S)
 - [ ] §3.15 ablation backtest: freeze file `drafts/plans/backtest/self-audit-ablation-v1.md` (channels, kinds, seeds, predictions, `min_compensation`), `SA-` prefix registered in `docs/FINDING_IDS.md`, runner `scripts/self_audit_ablation.py` (worktree triples, progress logging); first run once ≥ 10 prompts per kind exist (M)
@@ -287,7 +299,7 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 - [ ] `scripts/audit_verification_claims.py` (S); first weekly sample
 - [ ] Feedback item list frozen for §3.4; first uptake backtest run (M)
 - [ ] First held-out packet prepared and scored; `liveness_features.py` features pre-registered (S + author + proofreader)
-- [ ] `AGENTS.md` **Self-audit** subsection (§4) (S)
+- [x] `AGENTS.md` **Self-audit** subsection (§4) (S)
 - [ ] Project-level stop condition written by the author (one paragraph, dated) (author)
 - [ ] First monthly self-audit log
 - [ ] Outreach contacts and artifacts logged in `feedback-contributors.md` (author)

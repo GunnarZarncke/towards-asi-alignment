@@ -1,4 +1,4 @@
-.PHONY: all pdf clean check lean wordcount bookstats todos generate biber
+.PHONY: all pdf clean check lean wordcount bookstats todos generate biber hooks snap-start snap-end
 
 all: pdf
 
@@ -28,3 +28,12 @@ bookstats:
 
 todos:
 	python3 scripts/extract_todos.py
+
+hooks:
+	git config core.hooksPath .githooks
+
+snap-start:
+	./scripts/hooks/snapshot.sh agent-start manual $$(id -un) manual
+
+snap-end:
+	./scripts/hooks/snapshot.sh agent-end manual $$(id -un) manual

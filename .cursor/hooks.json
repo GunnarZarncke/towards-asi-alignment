@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      { "command": "python3 scripts/hooks/agent_hook.py --tool cursor --event beforeSubmitPrompt" }
+    ],
+    "afterFileEdit": [
+      { "command": "python3 scripts/hooks/agent_hook.py --tool cursor --event afterFileEdit" }
+    ],
+    "stop": [
+      { "command": "python3 scripts/hooks/agent_hook.py --tool cursor --event stop" }
+    ]
+  }
+}

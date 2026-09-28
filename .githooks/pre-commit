@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Snapshot working tree, write EDIT_ATTRIBUTION, derive authorship bars.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+# Committer tag: a commit run by a Claude Code agent carries its session id;
+# "none" marks a manual commit, which proves any open Claude turn has ended.
+if [ -n "${CLAUDE_CODE_SESSION_ID:-}" ]; then
+  committer="claude:${CLAUDE_CODE_SESSION_ID}"
+else
+  committer="none"
+fi
+# Fail open: a hook error must not block the commit.
+bash "$ROOT/scripts/hooks/snapshot.sh" precommit git commit "$committer" >/dev/null || true
+python3 "$ROOT/scripts/human_delta.py" precommit || true
+exit 0

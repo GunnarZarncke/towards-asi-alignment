@@ -130,6 +130,20 @@ Write the plan into `drafts/<planname>.md` or a more task specific directory, as
 
 Do not rely on chat history alone for resume context.
 
+### Self-audit
+
+Edit attribution (§3.12 of `drafts/plans/tsa-on-itself.md`): Claude Code and Cursor hooks snapshot the tree around each reply; other tools use `make snap-start` / `make snap-end`. Run `make hooks` once per clone. Session logs use the template in `drafts/conversation-summaries/README.md` (`kind`, `uptake`, `Prompts:`). A log with no resolvable prompt id is paraphrase-only.
+
+1. **No verification claim without an artifact.** A log that says a check passed names the command and quotes the result line.
+2. **Agent agreement is one instrument.** Do not close a load-bearing item on the strength of a second agent's confirmation; require a script or a human.
+3. **Repository numbers are generated.** Do not type counts, version strings, or ranges into docs; cite the generated file or run the generator.
+4. **Held-out readers stay held out.** Never revise a scored packet in response to the reader; never prompt an agent with the reader's verdicts on those passages.
+5. **Every instrument has a stop.** A new checker, board, or ledger states in its header what result triggers what action; otherwise it is not added.
+6. **Session logs classify their own work** as content or bookkeeping (one word per Done bullet), with `kind` (new-work / correction / feedback / notes / housekeeping) and `uptake` (local / status / rule / gate).
+7. **Every AI tool snapshots around its replies.**
+8. **Session logs cite prompt ids** under Trigger.
+9. **Shell edits to tracked trees are measured or declared.** Claude Code foreground shell commands are measured by the hooks; nothing to do. Before a Claude Code background command, or any Cursor terminal command, that writes under `chapters/`, `appendices/`, `frontmatter/`, or `site/src/`, run `python3 scripts/hooks/declare_edits.py '<glob>' ['re:<regex>' ...]` naming what the command targets. An unmeasured edit without a declaration is labelled `agent-bash`; never leave it to be read as a hand edit.
+
 ## Project layout
 
 ### Reference (`reference/`)

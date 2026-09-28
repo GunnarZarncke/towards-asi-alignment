@@ -41,6 +41,10 @@ make check          # generate + structure/citation/quiz/field gates (CI: .githu
 make wordcount      # approximate chapter word counts
 make bookstats      # markdown report → metadata/book-stats.md
 make todos          # list [STUB] / TODO markers
+make hooks          # core.hooksPath=.githooks (edit-attribution trailers)
+make snap-start     # manual agent-start snapshot (non-Claude/Cursor tools)
+make snap-end       # manual agent-end snapshot
+
 ```
 
 Output: [`dist/pdf/towards-superintelligence-alignment.pdf`](../dist/pdf/towards-superintelligence-alignment.pdf)

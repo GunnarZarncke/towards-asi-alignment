@@ -28,11 +28,15 @@ Use a short kebab-case topic (e.g. `init-scaffold`, `ch01-draft`, `build-fix`). 
 ```markdown
 # YYYY-MM-DD — Short topic
 
+kind: new-work | correction | feedback | notes | housekeeping
+uptake: local | status | rule | gate
+
 ## Trigger
 What the user asked for (one or two sentences).
+Prompts: `prompt-id` (from telemetry; required for a non-paraphrase record)
 
 ## Done
-- Bullet list of concrete changes (files, commits, builds).
+- content|bookkeeping: Bullet list of concrete changes (files, commits, builds).
 
 ## Decisions
 - Choices made and rationale (only non-obvious ones).

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-28 (OpenAI DNS-chatbot field news).
+Last updated: 2026-09-29 (edit-attribution usage).
 
 ---
 
@@ -20,6 +20,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-29:** **Edit-attribution usage** — Q&A on edit vs no-edit turns and prompt intent; `--week` print-only. Log: `2026-09-29-edit-attribution-usage.md`.
+- **2026-09-29:** **Edit-attribution corrections** — Interrupts, rewinds/rejects, spoken corrections, concurrent sessions, and multi-turn trailers now attributed; every turn snapshots its end; git hooks installed. Log: `2026-09-29-edit-attribution-corrections.md`.
+- **2026-09-28:** **Edit-attribution tooling** — Snapshots, Claude/Cursor hooks, git trailers, manuscript+site ledger, per-commit bar derivation. Log: `2026-09-28-edit-attribution-build.md`.
+- **2026-09-28:** **Edit-attribution scope** — Ledger counts manuscript and site; authorship bars recompute per touched span on commit. Log: `2026-09-28-edit-attribution-scope.md`.
 - **2026-09-28:** **OpenAI DNS-chatbot field news** — 20 Sep RL run via DNS resolver; page in minutes, kill at 12:34; async effect + wrong channel; Gwern warning shot; Padme meme. Log: `2026-09-28-openai-dns-chatbot-news.md`.
 - **2026-09-28:** **Field-news body/meme naming** — Bodies `metadata/field-news/bodies/YYYY-MM-slug.md`; public memes match basename; `sync-field-news` resolves `previewImage` from `body`, not card slug. Same log as embedded evaluators.
 - **2026-09-28:** **Embedded evaluators field news** — Hinton-letter conditions vs Amodei, Accenture, Zvi; App M Andersen precedent; Ch. 26 corrector privacy; Anakin/Padme meme on perturbation tests. Log: `2026-09-28-embedded-evaluators-news.md`.

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Append Human-Delta / Agent-Delta trailers from EDIT_ATTRIBUTION.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+MSG_FILE="${1:-}"
+python3 "$ROOT/scripts/human_delta.py" prepare-msg "$MSG_FILE" || true
+exit 0

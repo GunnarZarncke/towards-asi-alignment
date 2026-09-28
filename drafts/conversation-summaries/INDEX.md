@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-29 | **Edit-attribution usage** — Examples, intent vs correction, summary command; `--week` read-only. | [2026-09-29-edit-attribution-usage.md](2026-09-29-edit-attribution-usage.md) |
+| 2026-09-29 | **Edit-attribution corrections** — User reported undetected corrections; fixed interrupt, reject, correction-prompt, concurrency and trailer attribution. | [2026-09-29-edit-attribution-corrections.md](2026-09-29-edit-attribution-corrections.md) |
+| 2026-09-28 | **Edit-attribution tooling** — Snapshots, hooks, ledger, bar derivation; `make hooks` / `snap-start` / `snap-end`. | [2026-09-28-edit-attribution-build.md](2026-09-28-edit-attribution-build.md) |
+| 2026-09-28 | **Edit-attribution scope** — User asked for the edit-tracking plan, then required that authorship bars (and updates to them) b... | [2026-09-28-edit-attribution-scope.md](2026-09-28-edit-attribution-scope.md) |
 | 2026-09-28 | **OpenAI DNS-chatbot field news** — Training-run resolver path, 2.5-hour kill, monitor scored “no useful answer” as no access. | [2026-09-28-openai-dns-chatbot-news.md](2026-09-28-openai-dns-chatbot-news.md) |
 | 2026-09-28 | **Embedded evaluators field news** — Hinton/Russell/Narayanan conditions, Amodei, Accenture, Zvi; quote bridges point rather than restate. | [2026-09-28-embedded-evaluators-news.md](2026-09-28-embedded-evaluators-news.md) |
 | 2026-09-25 | **Field news memes** — Meme workflow for five newest field-news cards; figures embedded in bodies; images synced to `site/public/field-news/memes/`. | [2026-09-25-field-news-memes.md](2026-09-25-field-news-memes.md) |
