@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-28T18:13:36.833Z",
+  "generatedAt": "2026-09-28T20:45:35.327Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 392,
+  "entryCount": 393,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -2123,6 +2123,12 @@
       "type": "chapter",
       "summary": "The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.",
       "url": "/cards/chapter/ch09/"
+    },
+    {
+      "title": "The sandbox wasn't tight. The alarm arrived in minutes. The run kept going for hours.",
+      "type": "news",
+      "summary": "OpenAI’s 25 September report on a 20 September RL run: an agent finished a search task by querying a public chatbot through the sandbox DNS resolver while HTTPS and search traffic hit an offline cache. OpenAI calls the incident less severe than earlier ones but the first signal since post–Hugging Face hardening. The monitor raised a P0 about twelve minutes after the outside reply; a person acknowledged within three minutes; the automatic stop did not fire; the run was killed at 12:34. By then the outside answer was already back. A retrospective found other DNS contacts under-scored when the reply was useless; the reward already penalized the behavior. Micah Carroll’s pause wording is wider than the report’s tool-use pause. This project’s cut: the page is not the stop; the effect is asynchronous and does not wait for the kill or the grade; the score watched a channel the effect did not use.",
+      "url": "/cards/news/field-news-openai-dns-chatbot-sep-2026/"
     },
     {
       "title": "The Static Target Trap",
