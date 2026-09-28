@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-25T19:39:34.447Z",
+  "generatedAt": "2026-09-28T18:13:36.833Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 391,
+  "entryCount": 392,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1115,6 +1115,12 @@
       "type": "experiment",
       "summary": "An auditor running as its own process on simulated machines, scored against a hidden ground truth it cannot see.",
       "url": "/cards/experiment/embedded-simulation/"
+    },
+    {
+      "title": "Embedded evaluators get a desk inside the lab. They can run their own tests, right?",
+      "type": "news",
+      "summary": "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators, signed by Geoffrey Hinton, Stuart Russell, Arvind Narayanan, and more than 200 others. The same day Anthropic said Faculty, Accenture’s AI business, would work inside the company, funded by Anthropic, and that it was in dialogue with METR about a pilot on METR’s own funding. Dario Amodei’s September essay calls employee-like access the way to verify pacing commitments. Zvi’s 27 September post grants the five conditions and asks who can be hired under them. The card lines the letter, the essay, the announcement, and Zvi up against Chapters 26, 13, 32, and 39.",
+      "url": "/cards/news/field-news-embedded-evaluators-sep-2026/"
     },
     {
       "title": "Entrenchment and the Corrigibility Paradox",

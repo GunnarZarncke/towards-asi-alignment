@@ -5,8 +5,17 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Embedded evaluators get a desk inside the lab. They can run their own tests, right?</title>
+      <link>https://towards-alignment.com/cards/news/field-news-embedded-evaluators-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-embedded-evaluators-sep-2026/</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Embedded evaluators in the labs should meet five conditions layout out in an open letter. Anthropic named Accenture and will pay. Will they meet the conditions and are these sufficient?</description>
+      <category>news</category>
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-embedded-evaluators.jpg" length="170021" type="image/jpeg" />
+    </item>
     <item>
       <title>[News] Jensen Huang said: &quot;If your product might kill everyone then just stop.&quot;</title>
       <link>https://towards-alignment.com/cards/news/field-news-huang-klein-zvi-sep-2026/</link>
@@ -14,7 +23,7 @@
       <pubDate>Fri, 25 Sep 2026 12:00:00 GMT</pubDate>
       <description>On Ezra Klein&apos;s show, Jensen Huang said labs should invest into safety and make products safe or be shut down. The hard part is to enforce external audits on the labs.</description>
       <category>news</category>
-      <enclosure url="https://towards-alignment.com/field-news/memes/field-news-huang-klein-zvi-sep-2026.jpg" length="166173" type="image/jpeg" />
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-huang-klein-zvi.jpg" length="166173" type="image/jpeg" />
     </item>
     <item>
       <title>[News] A solved problem is not the point of mathematics</title>
@@ -23,7 +32,7 @@
       <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
       <description>Twenty-five Fields medallists say company benchmarks and mathematics want different things. A famous problem was a landmark for understanding. Scoring the landmark can take the understanding away.</description>
       <category>news</category>
-      <enclosure url="https://towards-alignment.com/field-news/memes/field-news-math-misalignment-sep-2026.png" length="1210554" type="image/png" />
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-math-misalignment.png" length="1210554" type="image/png" />
     </item>
     <item>
       <title>[News] The superintelligence ban: a staffed office is not the finding</title>
@@ -32,7 +41,7 @@
       <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
       <description>Sanders’ bill would pause training past a compute line until a new department is staffed and has written rules. It would also ban systems that speed up AI research, refuse shutdown, or hide from oversight — if the Secretary finds those traits.</description>
       <category>news</category>
-      <enclosure url="https://towards-alignment.com/field-news/memes/field-news-ban-asi-act-sep-2026.jpg" length="42534" type="image/jpeg" />
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-ban-asi-act.jpg" length="42534" type="image/jpeg" />
     </item>
     <item>
       <title>[News] OpenAI’s RSI standards: a shared ruler is not a stop</title>
@@ -41,7 +50,7 @@
       <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
       <description>AI building the next AI. OpenAI asks for shared measurements. They say those measurements will not be licenses or a pre-release review.</description>
       <category>news</category>
-      <enclosure url="https://towards-alignment.com/field-news/memes/field-news-openai-rsi-standards-sep-2026.jpg" length="214920" type="image/jpeg" />
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-openai-rsi-standards.jpg" length="214920" type="image/jpeg" />
     </item>
     <item>
       <title>[News] Anthropic’s pace measurements: seeing the race is not winning it</title>
@@ -50,7 +59,7 @@
       <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
       <description>Claude now leads a quarter of Anthropic’s model R&amp;D. Humans get a week to review a blocked action. Those numbers describe the race. They do not show that correction is keeping up.</description>
       <category>news</category>
-      <enclosure url="https://towards-alignment.com/field-news/memes/field-news-anthropic-pace-measurements-sep-2026.jpg" length="160377" type="image/jpeg" />
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-anthropic-pace-measurements.jpg" length="160377" type="image/jpeg" />
     </item>
     <item>
       <title>[News] Anthropic’s constitution: the vision is not the construction</title>
