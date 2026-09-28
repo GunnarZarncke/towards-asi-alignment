@@ -40,7 +40,7 @@ See also the [Black Hat timeline](/cards/field-news-openai-hf-blackhat-aug-2026/
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch38/">this book</a> · Ch. 38 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch38/">this project</a> · Ch. 38 thesis</p>
 <p>Attractor theory matters only if it changes what gets built, funded, audited, and required at deployment gates.</p>
 </blockquote>
 
@@ -59,7 +59,7 @@ A lab delaying its own largest run is the kind of handle [Pacing the Frontier](/
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this book</a> · Ch. 25 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this project</a> · Ch. 25 thesis</p>
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.</p>
 </blockquote>
 
@@ -75,7 +75,7 @@ Daniel Kokotajlo asked what happens when a training trajectory is shut down for 
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this book</a> · Ch. 43 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this project</a> · Ch. 43 thesis</p>
 <p>First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
@@ -94,7 +94,7 @@ This is adjacent to, not the same as, [accidental CoT grading](/cards/field-news
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, four questions</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, four questions</p>
 <p>Alignment work is often described as one task: make the system point at the right thing. That description hides four different questions. (1) What should be tracked? […] (2) How can a system be built that tracks that target? (3) How can we tell that a given system still tracks it? (4) If tracking fails, can recovery still land?</p>
 </blockquote>
 

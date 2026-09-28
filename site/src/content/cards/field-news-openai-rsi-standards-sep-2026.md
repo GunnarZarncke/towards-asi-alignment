@@ -2,7 +2,7 @@
 title: "OpenAI’s RSI standards: a shared ruler is not a stop"
 type: "news"
 status: "established"
-summary: "OpenAI’s 21 September 2026 Global Affairs post asks the United States to lead voluntary global technical standards for frontier AI, including recursive self-improvement. The two named pieces are a CAISI-centred institute and industry mechanism, and common protocols for measuring autonomous research, triggering human review, and classifying alignment incidents. Fully autonomous RSI, they say, is not happening and should not be pursued until it can be done safely. The same post says the standards would not be licenses, mandatory prerelease review, or approval requirements; governments decide whether to write them into law. This book’s cut is the same as for Anthropic’s pace measurements and OpenAI’s August hold: a shared answer to “what does good look like” is not a safety case unless a finding can delay the next model’s use for further AI R&D."
+summary: "OpenAI’s 21 September 2026 Global Affairs post asks the United States to lead voluntary global technical standards for frontier AI, including recursive self-improvement. The two named pieces are a CAISI-centred institute and industry mechanism, and common protocols for measuring autonomous research, triggering human review, and classifying alignment incidents. Fully autonomous RSI, they say, is not happening and should not be pursued until it can be done safely. The same post says the standards would not be licenses, mandatory prerelease review, or approval requirements; governments decide whether to write them into law. This project’s cut is the same as for Anthropic’s pace measurements and OpenAI’s August hold: a shared answer to “what does good look like” is not a safety case unless a finding can delay the next model’s use for further AI R&D."
 decision: "Ask: (1) if autonomous-research rises, does that delay the next model’s AI R&D, or only update a paperwork chart? (2) who, outside the lab that wrote the seed reports, can say the standard was not met? (3) when they say the standards are not licenses or mandatory prerelease review, what finding would stop a deployment? (4) does “alignment research stay ahead of capabilities” include a human judgment that changed internal processes, or did it lead only to more safety papers?"
 releasedAt: "2026-09-22T00:00:00.000Z"
 eventDate: "2026-09-21T00:00:00.000Z"
@@ -33,7 +33,7 @@ AI building the next AI. OpenAI asks for shared measurements. They say those mea
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>OpenAI (blue)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a shared ruler for how much AI builds the next AI can make labs comparable. It cannot, by itself, delay the next model. You need limitations that bite.
@@ -62,7 +62,7 @@ The first listed goal is to build the loop, then stay inside it.
 That is this project's differential-growth claim, stated as a standards problem.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch12/">this book</a> · Ch. 12 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch12/">this project</a> · Ch. 12 thesis</p>
 <p>The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.</p>
 </blockquote>
 
@@ -138,7 +138,7 @@ The seed report is their own.
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch43/">this project</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p>Every metric in this project faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
 They also offer the loop as its own safety researcher.

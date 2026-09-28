@@ -16,7 +16,7 @@ external:
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--bill"><span class="src-legend-swatch" aria-hidden="true"></span>the bill (red)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** the bill is about a training pause, and a ban on systems that can build the next AI, refuse shutdown, or hide from oversight. The pause ends when a new department is staffed and its rules are called clear. The ban triggers only if someone can tell whether the conditions are present.
@@ -36,7 +36,7 @@ The permanent ban is a capability test, not a compute line.
 <p>The term “artificial superintelligence” means an artificial intelligence system that exhibits, or can easily be modified to exhibit, either of the following capabilities: (A) The artificial intelligence system exceeds human cognitive performance and capabilities across most domains or tasks, including those related to decision making, learning, and adaptive behavior. (B) The artificial intelligence system has sufficient capabilities to plan and execute the destruction or disempowerment of humanity, including by overthrowing or undermining the Federal Government.</p>
 </blockquote>
 
-The section also lists traits that “could lead to” that result. Three of them are the objects this book already treats as the risk:
+The section also lists traits that “could lead to” that result. Three of them are the objects this project already treats as the risk:
 
 <blockquote class="src-quote src-quote--bill">
 <p class="src-quote-attr"><a href="https://www.sanders.senate.gov/wp-content/uploads/Ban-Artificial-Superintelligence-Act.pdf">the bill</a> · §3(6)</p>
@@ -114,7 +114,7 @@ The Department must watch advanced systems, and smaller systems distilled from t
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch43/">this project</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p>Every metric in this project faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
 The Secretary is supposed to block a system when a banned trait is present. For this trait, a system that successfully deceives the inspectors and a system that has nothing to hide can produce the same clean report. The bill does not say what evidence would show the deception.

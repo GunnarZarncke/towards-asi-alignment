@@ -2,7 +2,7 @@
 title: "Anthropic’s pace measurements: seeing the race is not winning it"
 type: "news"
 status: "established"
-summary: "Anthropic’s Institute post publishes three production-process metrics: an R&D automation index (Claude “leads” 26% as of August 2026, up from under 1% in February), oversight coverage and latency on one internal agent platform (~30,000 concurrent agents; blocked actions reviewed by humans within a week), and a one-week snapshot of safety compute share (~6% of AI R&D; ~12% of AI-driven AI R&D). They frame these as public instruments for pacing, and as possible future triggers. This book’s cut is the same as for the August risk report: a dashboard of how models are built is not a showing that human judgment still changes the next model before irreversible harm."
+summary: "Anthropic’s Institute post publishes three production-process metrics: an R&D automation index (Claude “leads” 26% as of August 2026, up from under 1% in February), oversight coverage and latency on one internal agent platform (~30,000 concurrent agents; blocked actions reviewed by humans within a week), and a one-week snapshot of safety compute share (~6% of AI R&D; ~12% of AI-driven AI R&D). They frame these as public instruments for pacing, and as possible future triggers. This project’s cut is the same as for the August risk report: a dashboard of how models are built is not a showing that human judgment still changes the next model before irreversible harm."
 decision: "Ask: (1) if the automation index rises, does that delay the next model’s use for further AI R&D, or only update a chart? (2) is “oversight keeping pace” coverage and flag rate, or a human judgment that changed later training, tools, or successor constraints? (3) does a week-scale human review still count when agents act in seconds? (4) when Claude scores Claude, what independent check would have counted as the index being wrong?"
 releasedAt: "2026-09-18T00:00:00.000Z"
 eventDate: "2026-09-17T00:00:00.000Z"
@@ -31,7 +31,7 @@ Claude now leads a quarter of Anthropic’s model R&D. Humans get a week to revi
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--anthropic"><span class="src-legend-swatch" aria-hidden="true"></span>Anthropic (blue)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a public index of how much Claude builds Claude can show the race of AI vs human control. It cannot, by itself, show that humans still win it.
@@ -87,7 +87,7 @@ They name the other measurement problem too.
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch43/">this project</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p>Every metric in this project faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
 ## What the monitors cover

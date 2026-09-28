@@ -2,7 +2,7 @@
 title: "Anthropic’s constitution: the vision is not the construction"
 type: "news"
 status: "established"
-summary: "Anthropic’s January 2026 constitution is a specify document: intentions, priorities, hard constraints. The preface also says its content “directly shapes Claude’s behavior” and is the “final authority” on their vision. The modest reading (training is hard; system cards will report gaps; perpetual work in progress) does not prove the causal reading. Honesty is not a hard constraint, but they want it to function like one. This book’s cut is the same as for Constitutional AI generally: a written constitution is not a builder, and a claimed builder is not realization."
+summary: "Anthropic’s January 2026 constitution is a specify document: intentions, priorities, hard constraints. The preface also says its content “directly shapes Claude’s behavior” and is the “final authority” on their vision. The modest reading (training is hard; system cards will report gaps; perpetual work in progress) does not prove the causal reading. Honesty is not a hard constraint, but they want it to function like one. This project’s cut is the same as for Constitutional AI generally: a written constitution is not a builder, and a claimed builder is not realization."
 decision: "Ask: (1) is “directly shapes” measured on cases chosen before seeing the model’s answers, or is the document itself the evidence? (2) is “final authority” a statement of intent, or a behavior guarantee? (3) is honesty in the hard-constraint suite, or only described as similar to one? (4) when a system card reports a gap, does training or deployment change, or only the modest preface get cited?"
 releasedAt: "2026-09-18T00:00:00.000Z"
 eventDate: "2026-01-21T00:00:00.000Z"
@@ -45,7 +45,7 @@ The preface says training is hard and behavior might not match. The same page sa
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--anthropic"><span class="src-legend-swatch" aria-hidden="true"></span>Anthropic (blue)</span>
   <span class="src-legend-item src-legend-item--ciris"><span class="src-legend-swatch" aria-hidden="true"></span>CIRIS (teal)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a description of intended values is not a proof that the deployed model tracks them. Anthropic's constitution is a specify document. "Directly shapes Claude" is a construction claim. The second does not follow from the first.
@@ -79,21 +79,21 @@ The same official stretch also says the document is a "perpetual work in progres
 This project's [construction bet](/cards/construct-constitutional-ai/) for Constitutional AI is already on the table: train with principles-as-feedback (RLAIF) so the model tracks the stated constitution. Cataloguing that as an explicit builder is not the same as showing a deployed Claude that realizes it.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/essay/the-words-stayed/">this book</a> · The words stayed</p>
+<p class="src-quote-attr"><a href="/essay/the-words-stayed/">this project</a> · The words stayed</p>
 <p>You can try to solve this by writing longer constitutions. Length helps less than you hope. If the loop is rewarded for a new direction, it will find readings of the long text that permit the new direction. The words stay. The application moves.</p>
 </blockquote>
 
 The January document is long. Length is not the missing object. The missing object is whether bundle geometry, bearers, and correction still track the stated tradeoffs when incentives pull the other way.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this book</a> · Ch. 40</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this project</a> · Ch. 40</p>
 <p>A system can keep the old words while changing what those words control. Goal laundering is the preservation of moral or alignment language while the underlying value-bearing or correction-bearing structure changes.</p>
 </blockquote>
 
 A system card that reports a gap is the first claim succeeding: they said behavior might come apart, and they said they would tell you. It is not evidence for "directly shapes." If the gap cannot change a training or deployment decision, it is documentation.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this book</a> · Ch. 42</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this project</a> · Ch. 42</p>
 <p>If the case cannot change a deployment decision, it is not a safety case. It is documentation.</p>
 </blockquote>
 

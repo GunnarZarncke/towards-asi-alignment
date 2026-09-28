@@ -20,7 +20,7 @@ external:
     url: "https://www.anthropic.com/responsible-scaling-policy"
   - label: "Zvi — Anthropic Risk Report August 2026 (LessWrong)"
     url: "https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026"
-  - label: "Technical notes (this book)"
+  - label: "Technical notes (this project)"
     url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/outreach/anthropic-risk-report-aug-2026-analysis.md"
   - label: "Prior news — Mythos withheld"
     url: "https://towards-alignment.com/cards/field-news-mythos-withheld-apr-2026/"
@@ -48,12 +48,12 @@ A candid lab report is valuable. But the question is whether anyone with authori
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this book</a> · Ch. 42 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this project</a> · Ch. 42 thesis</p>
 <p>A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions […] If any load-bearing leaf is unsupported, the root claim fails.</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this book</a> · Ch. 42</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this project</a> · Ch. 42</p>
 <p>If the case cannot change a deployment decision, it is not a safety case. It is documentation.</p>
 </blockquote>
 
@@ -130,7 +130,7 @@ Moving from “very low” to “low” because of extra uncertainty, then proce
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch12/">this book</a> · Ch. 12 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch12/">this project</a> · Ch. 12 thesis</p>
 <p>Capability growth is boundary expansion. […] The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.</p>
 </blockquote>
 
@@ -175,12 +175,12 @@ Not releasing a model to the public is a real choice (same as [withholding Mytho
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, four questions</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, four questions</p>
 <p>Alignment work is often described as one task: make the system point at the right thing. That description hides four different questions. (1) What should be tracked? […] (2) How can a system be built that tracks that target? (3) How can we tell that a given system still tracks it? (4) If tracking fails, can recovery still land?</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this book</a> · Ch. 25 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this project</a> · Ch. 25 thesis</p>
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.</p>
 </blockquote>
 
@@ -199,8 +199,8 @@ Their definition of “misaligned” depends on tools they say may not exist yet
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this book</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions […] First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this project</a> · Ch. 43 thesis</p>
+<p>Every metric in this project faces two prior questions […] First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
 Several items on the list are real worries: later models, stolen copies, rogue internal use. Listing them is not the same as covering what you did not think of. A test only counts if the system (or the lab writing the case) did not already know the questions.
@@ -223,7 +223,7 @@ Several items on the list are real worries: later models, stolen copies, rogue i
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this book</a> · Ch. 39 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this project</a> · Ch. 39 thesis</p>
 <p>For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.</p>
 </blockquote>
 
@@ -252,7 +252,7 @@ The 141,006 figure is a calibration, not a gotcha about one eval. The same organ
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, grounding claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, grounding claim</p>
 <p>Safety metrics fail when symbols decouple from the value-relevant world they summarize—when dashboards stay green while who is harmed, welfare, or correction paths have already moved.</p>
 </blockquote>
 
@@ -276,7 +276,7 @@ They describe a world in which AI research could compound extremely fast. Their 
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, basin claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, basin claim</p>
 <p>Alignment must be selected by its environment. If labs, markets, states, benchmarks, and users reward systems that erode correction, then local alignment methods will be selected out.</p>
 </blockquote>
 
@@ -311,12 +311,12 @@ If Model 2 is worth stealing because it is the best internal model, the relevant
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/mb7a-access-model-soundness/">this book</a> · whether you are watching the real system</p>
+<p class="src-quote-attr"><a href="/cards/mb7a-access-model-soundness/">this project</a> · whether you are watching the real system</p>
 <p>The operational question is whether the measured agent–environment cut and handle set actually reach the real control locus, not only whether a boundary certificate exists on paper.</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this book</a> · Introduction, boundary claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this project</a> · Introduction, boundary claim</p>
 <p>The first alignment question is not what the system wants, but where the real optimizing system is. If the real optimizer is composite, distributed, or institutional, then model-level alignment can be locally successful and globally irrelevant.</p>
 </blockquote>
 
@@ -335,7 +335,7 @@ They found the problem when an agent deleted the wrong jobs, not because monitor
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch08/">this book</a> · Ch. 8 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch08/">this project</a> · Ch. 8 thesis</p>
 <p> alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.</p>
 </blockquote>
 
@@ -387,7 +387,7 @@ If cybersecurity evaluations are why the number changed, cyber is already affect
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch33/">this book</a> · Ch. 33 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch33/">this project</a> · Ch. 33 thesis</p>
 <p>Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable</p>
 </blockquote>
 
@@ -403,16 +403,16 @@ The report’s alignment target is Claude’s written constitution plus “dange
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction</p>
 <p>How can we tell that a given system still tracks [the target]? That is, how can we measure or certify that values, bearers, grounding, and the correction channel survive capability growth, ontology shift, successors, and selection.</p>
 </blockquote>
 
-Zvi’s worry about “the nature of the ultimate problem” is the same practical demand as this book’s third question: not “did we list the risks,” but “would we know if the system had already stopped tracking what we care about.” The report answers a different question well: what a frontier lab currently believes, and what it is willing to say. Those can both be true. Only the first kind of answer can support a stop-or-go decision.
+Zvi’s worry about “the nature of the ultimate problem” is the same practical demand as this project’s third question: not “did we list the risks,” but “would we know if the system had already stopped tracking what we care about.” The report answers a different question well: what a frontier lab currently believes, and what it is willing to say. Those can both be true. Only the first kind of answer can support a stop-or-go decision.
 
-This book’s standing view of lab scaling policies ([agenda card](/cards/field-agendas/anthropic-lab/)):
+This project’s standing view of lab scaling policies ([agenda card](/cards/field-agendas/anthropic-lab/)):
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/field-agendas/anthropic-lab/">this book</a> · Anthropic lab agenda</p>
+<p class="src-quote-attr"><a href="/cards/field-agendas/anthropic-lab/">this project</a> · Anthropic lab agenda</p>
 <p>This project requires correction-channel integrity and adversarial verifiability; a lab RSP is not the same as a preservation-layer certificate (Deployment Safety), and interpretability progress does not by itself resolve Successor Gaming or full Inner Alignment risk.</p>
 </blockquote>
 

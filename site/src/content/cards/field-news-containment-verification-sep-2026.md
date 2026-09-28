@@ -2,7 +2,7 @@
 title: "Containment verification: a proved whitelist, and where the world starts"
 type: "news"
 status: "established"
-summary: "Royce Moon presented Containment Verification (Moon & Varshney, arXiv:2605.09045) in Orpheus Lummis’s GSAI sequence. The paper deductively checks PocketFlow’s dispatch so an unconstrained model cannot emit out-of-policy boundary events. The published examples are a whitelist on a tiny action set. The call treated world-state bounds and action sequences as the interesting, spec-expressible next step. This book’s cut remains: a universal claim needs a closed effect envelope; past that cut you refuse or recertify, you do not still have a guarantee."
+summary: "Royce Moon presented Containment Verification (Moon & Varshney, arXiv:2605.09045) in Orpheus Lummis’s GSAI sequence. The paper deductively checks PocketFlow’s dispatch so an unconstrained model cannot emit out-of-policy boundary events. The published examples are a whitelist on a tiny action set. The call treated world-state bounds and action sequences as the interesting, spec-expressible next step. This project’s cut remains: a universal claim needs a closed effect envelope; past that cut you refuse or recertify, you do not still have a guarantee."
 decision: "Ask: (1) does the policy constrain world state the actions change, or only the runtime’s own registers? (2) is every effect that can matter inside the typed action set, including humans and tool arguments? (3) can innocent traces compose into harm the spec never named? (4) if the allowlist later grows, is that update itself in the proof?"
 releasedAt: "2026-09-10T00:00:00.000Z"
 bookChapters:
@@ -36,7 +36,7 @@ A machine-checked gate can forbid named actions inside a closed runtime. If thos
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>Moon &amp; Varshney (blue)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a machine-checked gate can say that some *named* actions do not leave the runtime. That is not a statement about the unbounded world those actions can still reach.
@@ -79,10 +79,10 @@ The guarantee also needs every real effect to pass through that enum. If a human
 <p>A deployed safety failure can therefore arise from three sources. […] Finally, failure can arise from a property-completeness gap where Π<sub>I</sub> does not capture the intended safety policy.</p>
 </blockquote>
 
-This book’s first chapter is the same cut from the other side. A language model with tools may include a browser, a scratchpad, credentials, and a human who clicks approve. The named runtime is not automatically the loop.
+This project’s first chapter is the same cut from the other side. A language model with tools may include a browser, a scratchpad, credentials, and a human who clicks approve. The named runtime is not automatically the loop.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch01/">this book</a> · Ch. 1</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch01/">this project</a> · Ch. 1</p>
 <p>Physical containment is evidence. It is not decisive.</p>
 </blockquote>
 
@@ -102,17 +102,17 @@ That is closer to the call’s request than PocketFlow’s whitelist. The law is
 
 If we could make statements about what cannot happen in the world, in the sense of actions, that would be the useful object. If those actions reach the unbounded real world, there are no guarantees we can make.
 
-That is not a dismissal of their lemma. It is the same bound this book already puts on certification.
+That is not a dismissal of their lemma. It is the same bound this project already puts on certification.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch33/">this book</a> · Ch. 33</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch33/">this project</a> · Ch. 33</p>
 <p>A guarantee over arbitrary superintelligence is almost vacuous unless it is a guarantee of containment by external force. But if the system is already superintelligent in the relevant sense, external force is itself one of the things under contest.</p>
 </blockquote>
 
 A useful guarantee is always relative to a certified class of systems, an environment, a monitoring regime, and the transformations still allowed. The risk number is not the load-bearing part.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch33/">this book</a> · Ch. 33</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch33/">this project</a> · Ch. 33</p>
 <p>Without those restrictions, the statement is not a safety claim. It is a wish.</p>
 </blockquote>
 
@@ -129,11 +129,11 @@ What still has to be written, if this is to sit in a GSAI stack rather than only
 3. An exclusive cut: every effect that can matter is in the model, including humans and tool arguments, or the claim is labelled as not covering them.
 4. A story for widening the enum later without the update path becoming an unmodeled effect.
 
-This book does not construct those proofs. It names what they would have to be about: boundary closure, correction integrity, successor invariants. GSAI is the external program for turning those targets into proofs rather than dashboards.
+This project does not construct those proofs. It names what they would have to be about: boundary closure, correction integrity, successor invariants. GSAI is the external program for turning those targets into proofs rather than dashboards.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch43/">this book</a> · Ch. 43</p>
-<p>The practical statement is therefore: this book supplies the target properties, failure separations, and bridge conditions that any deployment-grade proof or safety case must discharge.</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch43/">this project</a> · Ch. 43</p>
+<p>The practical statement is therefore: this project supplies the target properties, failure separations, and bridge conditions that any deployment-grade proof or safety case must discharge.</p>
 </blockquote>
 
 Containment verification is a container-level lemma for a declared action alphabet. Use it that way. Do not read the title as “alignment is unnecessary.” The authors do not claim that. Alignment, correction, and selection start where the alphabet no longer contains the effects.

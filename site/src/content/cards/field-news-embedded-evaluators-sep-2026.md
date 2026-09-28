@@ -35,7 +35,7 @@ Embedded evaluators in the labs should meet five conditions layout out in an ope
   <span class="src-legend-item src-legend-item--letter"><span class="src-legend-swatch" aria-hidden="true"></span>Hinton letter (purple)</span>
   <span class="src-legend-item src-legend-item--anthropic"><span class="src-legend-swatch" aria-hidden="true"></span>Amodei · Anthropic (blue)</span>
   <span class="src-legend-item src-legend-item--zvi"><span class="src-legend-swatch" aria-hidden="true"></span>Zvi (green)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** Follow who pays, what a bad finding changes, and what an evaluator can actually do.

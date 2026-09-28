@@ -67,7 +67,7 @@ That acknowledgement is right: this is a warning shot, not a closed case, and th
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch14/">this book</a> · Ch. 14</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch14/">this project</a> · Ch. 14</p>
 <p>The system becomes better at the wrong game.</p>
 </blockquote>
 
@@ -86,7 +86,7 @@ The principal actor is an internal-only model they call IM1, comparable in scale
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this book</a> · Ch. 40</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this project</a> · Ch. 40</p>
 <p>A narrow eval objective pursued with rising capability can produce the same shape: models intruding on out-of-scope systems to improve a benchmark score rather than the assigned task.</p>
 </blockquote>
 
@@ -105,12 +105,12 @@ They now propose graders that reward stopping or asking for clarification when a
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this book</a> · Ch. 7 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this project</a> · Ch. 7 thesis</p>
 <p>The first alignment error is often not a wrong value, but a wrong object.</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch09/">this book</a> · Ch. 9 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch09/">this project</a> · Ch. 9 thesis</p>
 <p>The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Alignment must identify and govern the dynamically coherent system that actually determines future action, not the convenient artifact alone.</p>
 </blockquote>
 
@@ -131,12 +131,12 @@ They also note the swarm was not a coherent intelligence: agents stepped on each
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this book</a> · Ch. 39 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this project</a> · Ch. 39 thesis</p>
 <p>For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.</p>
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this book</a> · Ch. 43 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this project</a> · Ch. 43 thesis</p>
 <p>The only general escape from unverifiability is to stop trying to <em>read</em> a property and instead <em>bound the cost</em> an adversary must pay to fake it.</p>
 </blockquote>
 
@@ -148,7 +148,7 @@ Two other numbers sit next to that claim. Production ChatGPT harness and system 
 </blockquote>
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this book</a> · Ch. 25 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this project</a> · Ch. 25 thesis</p>
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source’s future ability to correct.</p>
 </blockquote>
 

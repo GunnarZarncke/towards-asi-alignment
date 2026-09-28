@@ -16,7 +16,7 @@ external:
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>OpenAI (blue)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a shared ruler for how much AI builds the next AI can make labs comparable. It cannot, by itself, delay the next model. You need limitations that bite.
@@ -45,7 +45,7 @@ The first listed goal is to build the loop, then stay inside it.
 That is this project's differential-growth claim, stated as a standards problem.
 
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapter/ch12/">this book</a> · Ch. 12 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapter/ch12/">this project</a> · Ch. 12 thesis</p>
 <p>The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.</p>
 </blockquote>
 
@@ -121,7 +121,7 @@ The seed report is their own.
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch43/">this project</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p>Every metric in this project faces two prior questions before it can support a safety decision. First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 
 They also offer the loop as its own safety researcher.

@@ -30,7 +30,7 @@ On Ezra Klein's show, Jensen Huang said labs should invest into safety and make 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>Huang · NYT (blue)</span>
   <span class="src-legend-item src-legend-item--zvi"><span class="src-legend-swatch" aria-hidden="true"></span>Zvi (green)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** Jensen Huang said: "If your product might kill everyone then just stop." The task is to externally ensure the labs are doing it.

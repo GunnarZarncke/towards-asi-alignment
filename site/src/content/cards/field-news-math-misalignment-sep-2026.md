@@ -21,7 +21,7 @@ Twenty-five Fields medallists say company benchmarks and mathematics want differ
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--math"><span class="src-legend-swatch" aria-hidden="true"></span>Mathematicians (orange)</span>
-  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this book (black)</span>
+  <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
 **If you remember one thing:** a famous problem was a landmark for understanding. If the landmark becomes the score, it can stay bright after the understanding is gone.
