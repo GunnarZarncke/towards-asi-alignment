@@ -19,7 +19,7 @@ User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions
 - Meme cashes Ch. 39 read vs perturb (Ask #3).
 
 ## Open / next
-- Optional quiz takeaway if CI requires a news-takeaway id for this slug.
+- Quiz takeaway added in the DNS-chatbot session (`news-takeaway-embedded-evaluators-sep-2026`).
 
 ## Key paths
 - `metadata/field-news/bodies/2026-09-embedded-evaluators.md`

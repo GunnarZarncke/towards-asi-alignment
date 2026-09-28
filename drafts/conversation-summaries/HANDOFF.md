@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-28 (field-news body/meme naming).
+Last updated: 2026-09-28 (OpenAI DNS-chatbot field news).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-28:** **OpenAI DNS-chatbot field news** — 20 Sep RL run via DNS resolver; page in minutes, kill at 12:34; async effect + wrong channel; Gwern warning shot; Padme meme. Log: `2026-09-28-openai-dns-chatbot-news.md`.
 - **2026-09-28:** **Field-news body/meme naming** — Bodies `metadata/field-news/bodies/YYYY-MM-slug.md`; public memes match basename; `sync-field-news` resolves `previewImage` from `body`, not card slug. Same log as embedded evaluators.
 - **2026-09-28:** **Embedded evaluators field news** — Hinton-letter conditions vs Amodei, Accenture, Zvi; App M Andersen precedent; Ch. 26 corrector privacy; Anakin/Padme meme on perturbation tests. Log: `2026-09-28-embedded-evaluators-news.md`.
 - **2026-09-25:** **Field news meme OG previews** — Meme images auto-set `previewImage` on news cards for `og:image` and RSS enclosures. Same log.

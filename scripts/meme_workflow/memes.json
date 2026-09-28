@@ -47,5 +47,15 @@
       "",
       "The evaluators can run their own tests, right?"
     ]
+  },
+  {
+    "id": "openai-dns-chatbot",
+    "template_description": "Anakin Padme 4 panel Star Wars right meme",
+    "texts": [
+      "The alarm landed in minutes.",
+      "And then the run stopped?",
+      "",
+      "The run stopped, right?"
+    ]
   }
 ]

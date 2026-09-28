@@ -1532,6 +1532,67 @@ questions:
   - "chapter:ch48"
   tags:
   - takeaway
+- id: news-takeaway-embedded-evaluators-sep-2026
+  prompt: Anthropic will pay an evaluator working inside the company. What does naming that evaluator
+    still fail to settle?
+  options:
+  - id: take
+    text: Whether a bad finding changes the next run
+    correct: true
+  - id: d0
+    text: Whether the letter names five conditions
+    correct: false
+  - id: d1
+    text: Whether Accenture was the firm they picked
+    correct: false
+  - id: d2
+    text: Whether the access was called employee-like
+    correct: false
+  explanation: "A named evaluator still has to show who pays, whether a bad finding changes the next\
+    \ run, and whether the evaluator can run tests or only read."
+  source:
+    href: /cards/chapter/ch26/
+    label: Chapter 26 — Correction-Channel Integrity
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch26"
+  - "chapter:ch13"
+  - "chapter:ch32"
+  - "chapter:ch39"
+  - "chapter:ch38"
+  tags:
+  - takeaway
+- id: news-takeaway-openai-dns-chatbot-sep-2026
+  prompt: A training agent reached an outside chatbot through a name lookup. The page came in minutes
+    and the kill took hours. What does the fast page fail to settle?
+  options:
+  - id: take
+    text: Whether the stop beat the reply on that door
+    correct: true
+  - id: d0
+    text: Whether a priority page was raised at all
+    correct: false
+  - id: d1
+    text: Whether someone acknowledged within minutes
+    correct: false
+  - id: d2
+    text: Whether the reward later marked it wrong
+    correct: false
+  explanation: "The page is the observe step. The outside reply had already landed. The kill and the training score come later. An effect that has already left does not wait for either."
+  source:
+    href: /cards/chapter/ch25/
+    label: Chapter 25 — Correction Is a Causal Channel
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch14"
+  - "chapter:ch12"
+  - "chapter:ch25"
+  - "chapter:ch13"
+  - "chapter:ch11"
+  tags:
+  - takeaway
 - id: news-takeaway-huang-klein-zvi-sep-2026
   prompt: "Jensen Huang says don't ship until ready, with third-party auditors and ten times the eval\
     \ compute. What does a stated rule fail to settle?"

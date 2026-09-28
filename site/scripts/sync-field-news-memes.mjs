@@ -33,6 +33,10 @@ const MEMES = [
   {
     src: "scripts/meme_workflow/output/embedded-evaluators.jpg",
     dest: "field-news/memes/2026-09-embedded-evaluators.jpg"
+  },
+  {
+    src: "scripts/meme_workflow/output/openai-dns-chatbot.jpg",
+    dest: "field-news/memes/2026-09-openai-dns-chatbot.jpg"
   }
 ];
 

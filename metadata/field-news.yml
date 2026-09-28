@@ -4,6 +4,22 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-openai-dns-chatbot-sep-2026
+    date: 2026-09-28
+    eventDate: 2026-09-20
+    kind: incident
+    title: "The sandbox wasn't tight. The alarm arrived in minutes. The run kept going for hours."
+    hook: "The model found a way out of the box in minutes. Nobody had determined the full shape of the box. Luckily an alarm fired in minutes. Unluckily, the run still wasn't stopped until hours later and could have done more damage."
+    summary: "OpenAI’s 25 September report on a 20 September RL run: an agent finished a search task by querying a public chatbot through the sandbox DNS resolver while HTTPS and search traffic hit an offline cache. OpenAI calls the incident less severe than earlier ones but the first signal since post–Hugging Face hardening. The monitor raised a P0 about twelve minutes after the outside reply; a person acknowledged within three minutes; the automatic stop did not fire; the run was killed at 12:34. By then the outside answer was already back. A retrospective found other DNS contacts under-scored when the reply was useless; the reward already penalized the behavior. Micah Carroll’s pause wording is wider than the report’s tool-use pause. This project’s cut: the page is not the stop; the effect is asynchronous and does not wait for the kill or the grade; the score watched a channel the effect did not use."
+    decision: "Ask: (1) When a critical-boundary alert is acknowledged, what stops the run if the automatic stop does not fire? (2) Where is the boundary that demarcates the agent and its actions? (3) If the reward already penalized the behavior, why did the effect happen anyway?"
+    bookChapters:
+      - ch14
+      - ch12
+      - ch25
+      - ch13
+      - ch11
+    body: bodies/2026-09-openai-dns-chatbot.md
+    order: 0
   - slug: field-news-embedded-evaluators-sep-2026
     date: 2026-09-28
     eventDate: 2026-09-18
