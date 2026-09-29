@@ -41,4 +41,4 @@ Prompts: paraphrase-only (no prompt id in this session)
 - `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
-- `b5ddf5832` Integrate Gunnar's LessWrong prose as {GZ} blocks across nine chapters.
+- `9938a5627` Integrate Gunnar's LessWrong prose as {GZ} blocks across nine chapters.
