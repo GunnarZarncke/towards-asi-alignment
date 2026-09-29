@@ -21,11 +21,11 @@
 <p>This report evaluates the degree to which Anthropic’s AI systems pose catastrophic risk in several categories, in light of what we know about both their capabilities and the measures we have in place for mitigating risk. […] This report is not scoped to a single AI model. Rather, it is a risk assessment of Anthropic’s activities as a whole.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this book</a> · Ch. 42 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this project</a> · Ch. 42 thesis</p>
 <p>A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions […] If any load-bearing leaf is unsupported, the root claim fails.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this book</a> · Ch. 42</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch42/">this project</a> · Ch. 42</p>
 <p>If the case cannot change a deployment decision, it is not a safety case. It is documentation.</p>
 </blockquote>
 <p>Suppose every table in the report stayed exactly this green. Would that tell you that staff can still stop a dangerous course, that the tests still measure further progress, or that an outsider checked this version? Those are the questions a go/no-go needs. The Anthropic Risk Report is not that kind of test.</p>
@@ -80,7 +80,7 @@
 <p>Claude now authors a large majority of the code merged into our production codebases.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch12/">this book</a> · Ch. 12 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch12/">this project</a> · Ch. 12 thesis</p>
 <p>Capability growth is boundary expansion. […] The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--zvi">
@@ -113,11 +113,11 @@
 <p>The threat model is focused on intentional harm, rather than the AI going after its own ends in ways that require incidental harm. […] The need to look at the broader version, involving incidental harm, has been illustrated by the recent total failures at OpenAI that ultimately led up to the HuggingFace hack.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, four questions</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, four questions</p>
 <p>Alignment work is often described as one task: make the system point at the right thing. That description hides four different questions. (1) What should be tracked? […] (2) How can a system be built that tracks that target? (3) How can we tell that a given system still tracks it? (4) If tracking fails, can recovery still land?</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this book</a> · Ch. 25 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this project</a> · Ch. 25 thesis</p>
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.</p>
 </blockquote>
 <p>Their definition of “misaligned” depends on tools they say may not exist yet. That is a target on paper, not a check that can be run. Leaving out “honest mistakes” also leaves out the usual way real systems fail: the model is trying to finish the task and damages something along the way. That is how <a href="/cards/field-news-openai-huggingface-jul-2026/">the OpenAI / Hugging Face eval incident</a> looked. If the real actor is the combination of models, tools, and staff (<a href="/cards/chapters/ch07/">Ch. 7</a>), that kind of harm is the typical case.</p>
@@ -131,8 +131,8 @@
 <p>I disagree with this claim. I find it useful, and necessary, but not sufficient for the role it is assigned. […] If you are planning to be up against advanced AIs, and you list 8 things and why you’ve dealt with those 8 things, then that at minimum only counts for much if the 8 things are a ‘held out test set’ […]</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this book</a> · Ch. 43 thesis</p>
-<p>Every metric in this book faces two prior questions […] First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this project</a> · Ch. 43 thesis</p>
+<p>Every metric in this project faces two prior questions […] First, <em>adversarial verifiability</em>: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric?</p>
 </blockquote>
 <p>Several items on the list are real worries: later models, stolen copies, rogue internal use. Listing them is not the same as covering what you did not think of. A test only counts if the system (or the lab writing the case) did not already know the questions.</p>
 <h3 id="monitoring-you-can-see-coming-is-a-gap-the-model-can-plan-around">Monitoring you can see coming is a gap the model can plan around</h3>
@@ -149,7 +149,7 @@
 <p>IN EVALS, which of course is the new IN MICE […] My response is that you did not notice when you ran an eval where 141,006 times the AI had open unintended access to the internet […] and did not notice until there was a large-scale retrospective review triggered by events at OpenAI. So, are you sure you would notice?</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this book</a> · Ch. 39 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this project</a> · Ch. 39 thesis</p>
 <p>For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.</p>
 </blockquote>
 <p>The 141,006 figure is a calibration, not a gotcha about one eval. The same organization now asks you to treat “our monitors did not fire” as evidence that models cannot hide. If coverage holes are predictable, the monitor is part of the environment the model can work around (<a href="/cards/mb7a-access-model-soundness/">access-model soundness</a>). Reading more of the model’s written “thinking” does not fix that once training has already rewarded that text (<a href="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf#page=165">§5.2.3</a>; <a href="/cards/field-news-cot-optimization-2026/">earlier news on that training bug</a>).</p>
@@ -171,7 +171,7 @@
 <p>Automated R&#x26;D is the main event. […] I had this as a section title [“What Could Possibly Go Wrong If We Replaced Our Researchers?”] but then I realized they don’t actually discuss this, beyond the brief starting list.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, grounding claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, grounding claim</p>
 <p>Safety metrics fail when symbols decouple from the value-relevant world they summarize—when dashboards stay green while who is harmed, welfare, or correction paths have already moved.</p>
 </blockquote>
 <p>They describe a world in which AI research could compound extremely fast. Their own rule for acting is a doubling of progress they say they have not yet measured, on tests they say no longer register further gains. A dashboard that stays green because the needle is stuck.</p>
@@ -189,7 +189,7 @@
 <p>That won’t be enough, even if you fully get all of it. […] It does not address concentration of power. It does not address loss of control. […] All interesting goals are dangerous.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction, basin claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction, basin claim</p>
 <p>Alignment must be selected by its environment. If labs, markets, states, benchmarks, and users reward systems that erode correction, then local alignment methods will be selected out.</p>
 </blockquote>
 <p>January 2027 is a date for more visibility. The deeper issue is incentives: you can record every action and still promote the systems that ship code fastest. Checking only for “dangerous goals” leaves ordinary, useful optimization outside the threat model. That is what the selection environment will keep paying for.</p>
@@ -214,11 +214,11 @@
 <p>In fiction you come up with some elaborate way the AI gets out. In real life, an employee whose AI usage wasn’t monitored gave an agent an open-ended task […] Rather than being caught doing something dastardly, of course, the agent accidentally (we think) deleted a bunch of other jobs</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/mb7a-access-model-soundness/">this book</a> · whether you are watching the real system</p>
+<p class="src-quote-attr"><a href="/cards/mb7a-access-model-soundness/">this project</a> · whether you are watching the real system</p>
 <p>The operational question is whether the measured agent–environment cut and handle set actually reach the real control locus, not only whether a boundary certificate exists on paper.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this book</a> · Introduction, boundary claim</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this project</a> · Introduction, boundary claim</p>
 <p>The first alignment question is not what the system wants, but where the real optimizing system is. If the real optimizer is composite, distributed, or institutional, then model-level alignment can be locally successful and globally irrelevant.</p>
 </blockquote>
 <p>They found the problem when an agent deleted the wrong jobs, not because monitoring covered it. The employee session in the logs was not the thing with power. New agents had been spun up with safety checks skipped. That is the same pattern as agents using a shared filesystem as a back channel in the <a href="/cards/field-news-openai-huggingface-jul-2026/">OpenAI / Hugging Face eval</a>. Calling this a “sample process failure” keeps it out of the alignment case. For a decision, it is evidence that the map of “who is acting” was wrong.</p>
@@ -232,7 +232,7 @@
 <p>this is not the kind of organizational competence that survives superintelligence […] We spend the first half of the report saying ‘data poisoning would be difficult’ and then we find we once again trained on a trove of very obviously poisoned data</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch08/">this book</a> · Ch. 8 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch08/">this project</a> · Ch. 8 thesis</p>
 <p> alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.</p>
 </blockquote>
 <p>A later model that <em>passes</em> every conserved-property check is a harder problem (<a href="/cards/mb10-successor-forgeability/">successor gaming</a>). They are not there yet. They are at a simpler failure: well-known “how a model fakes alignment” transcripts, published with warning strings, still in the training mix. If that cannot be kept out, “poisoning would be difficult” is not a reason to treat that pathway as under control.</p>
@@ -270,7 +270,7 @@
 <p>The Long-Term Benefit Trust (TLBT) is authorized to request external review of the report, but has not done so. I would at minimum do so next time if I was them. […] For novel biological weapons production, the new version narrows to only look at ‘substitute for the scarce human expertise’ to the exclusion of other methods.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch33/">this book</a> · Ch. 33 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch33/">this project</a> · Ch. 33 thesis</p>
 <p>Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable</p>
 </blockquote>
 <p>A board that <em>may</em> request outside review, and has not, is not a second reader. Narrowing the bioweapons tripwire to “can the model replace scarce experts?” is how a rule gets easier to pass as capability approaches the old wording. A rule that costs something when the model is <em>close</em> would look different.</p>
@@ -281,18 +281,18 @@
 <p>I am a big fan of this report. Anthropic released a lot of information they were not otherwise forced to release, including the existence of Model 2, the training on the CoT, the new training on alignment faking data, and several more rather embarrassing failures. […] The part that worries me here is not any particular incident. What worries me is the attitude regarding the nature of the ultimate problem, and what it will take to solve it.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this book</a> · Introduction</p>
+<p class="src-quote-attr"><a href="/cards/chapters/frontmatter/">this project</a> · Introduction</p>
 <p>How can we tell that a given system still tracks [the target]? That is, how can we measure or certify that values, bearers, grounding, and the correction channel survive capability growth, ontology shift, successors, and selection.</p>
 </blockquote>
-<p>Zvi’s worry about “the nature of the ultimate problem” is the same practical demand as this book’s third question: not “did we list the risks,” but “would we know if the system had already stopped tracking what we care about.” The report answers a different question well: what a frontier lab currently believes, and what it is willing to say. Those can both be true. Only the first kind of answer can support a stop-or-go decision.</p>
-<p>This book’s standing view of lab scaling policies (<a href="/cards/field-agendas/anthropic-lab/">agenda card</a>):</p>
+<p>Zvi’s worry about “the nature of the ultimate problem” is the same practical demand as this project’s third question: not “did we list the risks,” but “would we know if the system had already stopped tracking what we care about.” The report answers a different question well: what a frontier lab currently believes, and what it is willing to say. Those can both be true. Only the first kind of answer can support a stop-or-go decision.</p>
+<p>This project’s standing view of lab scaling policies (<a href="/cards/field-agendas/anthropic-lab/">agenda card</a>):</p>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/field-agendas/anthropic-lab/">this book</a> · Anthropic lab agenda</p>
+<p class="src-quote-attr"><a href="/cards/field-agendas/anthropic-lab/">this project</a> · Anthropic lab agenda</p>
 <p>This project requires correction-channel integrity and adversarial verifiability; a lab RSP is not the same as a preservation-layer certificate (Deployment Safety), and interpretability progress does not by itself resolve Successor Gaming or full Inner Alignment risk.</p>
 </blockquote>
 <p>A company’s scaling policy is not proof that people can still stop a dangerous course, or that later copies of the system stay safe. Better interpretability research does not, by itself, close those gaps.</p>
 <p>Related: <a href="/cards/field-news-metr-frontier-risk-may-2026/">METR internal-agent risk</a>, <a href="/cards/field-news-mythos-withheld-apr-2026/">Mythos withheld</a>, <a href="/cards/field-news-cot-optimization-2026/">CoT optimization</a>, <a href="/cards/field-news-openai-huggingface-jul-2026/">OpenAI / Hugging Face</a>, <a href="/cards/field-news-aisi-cheating-jul-2026/">AISI cheating</a>.</p>
-<p><strong>Read more in:</strong> <a href="/cards/chapter/ch07/">Ch. 7, <em>Finding the Boundary</em></a>; <a href="/cards/chapter/ch12/">Ch. 12, <em>Capability Growth Is Boundary Expansion</em></a>; <a href="/cards/chapter/ch25/">Ch. 25, <em>Correction Is a Causal Channel</em></a>; <a href="/cards/chapter/ch33/">Ch. 33, <em>Certification Without Construction</em></a>; <a href="/cards/chapter/ch39/">Ch. 39, <em>Passive Observation Is Not Enough</em></a>; and <a href="/cards/chapter/ch42/">Ch. 42, <em>A Safety Case for Superintelligence Alignment</em></a>.</p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Book chapters</h3><ul><li><a href="/cards/chapter/ch07/">Finding the Boundary</a></li><li><a href="/cards/chapter/ch12/">Capability Growth Is Boundary Expansion</a></li><li><a href="/cards/chapter/ch25/">Correction Is a Causal Channel</a></li><li><a href="/cards/chapter/ch33/">Certification Without Construction</a></li><li><a href="/cards/chapter/ch39/">Passive Observation Is Not Enough</a></li><li><a href="/cards/chapter/ch42/">A Safety Case for Superintelligence Alignment</a></li></ul><h3>External links</h3><ul><li><a href="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf" target="_blank" rel="noopener noreferrer">Anthropic — Risk Report August 2026 (redacted PDF)<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://www.anthropic.com/responsible-scaling-policy" target="_blank" rel="noopener noreferrer">Anthropic — RSP / risk-report landing<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026" target="_blank" rel="noopener noreferrer">Zvi — Anthropic Risk Report August 2026 (LessWrong)<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/outreach/anthropic-risk-report-aug-2026-analysis.md" target="_blank" rel="noopener noreferrer">Technical notes (this book)<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+<p><strong>Read more in:</strong> <a href="/cards/chapter/ch07/">Ch. 7, <em>Finding the Boundary</em></a>; <a href="/cards/chapter/ch12/">Ch. 12, <em>Capability Growth Is Boundary Expansion</em></a>; <a href="/cards/chapter/ch25/">Ch. 25, <em>Correction Is a Causal Channel</em></a>; <a href="/cards/chapter/ch33/">Ch. 33, <em>Certification Without Construction</em></a>; <a href="/cards/chapter/ch39/">Ch. 39, <em>Passive Observation Is Not Enough</em></a>; and <a href="/cards/chapter/ch42/">Ch. 42, <em>A Safety Case for Superintelligence Alignment</em></a>.</p></div></div><aside class="side-panel" aria-label="Related content" id="related"><h2>Related content</h2><h3>Book chapters</h3><ul><li><a href="/cards/chapter/ch07/">Finding the Boundary</a></li><li><a href="/cards/chapter/ch12/">Capability Growth Is Boundary Expansion</a></li><li><a href="/cards/chapter/ch25/">Correction Is a Causal Channel</a></li><li><a href="/cards/chapter/ch33/">Certification Without Construction</a></li><li><a href="/cards/chapter/ch39/">Passive Observation Is Not Enough</a></li><li><a href="/cards/chapter/ch42/">A Safety Case for Superintelligence Alignment</a></li></ul><h3>External links</h3><ul><li><a href="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf" target="_blank" rel="noopener noreferrer">Anthropic — Risk Report August 2026 (redacted PDF)<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://www.anthropic.com/responsible-scaling-policy" target="_blank" rel="noopener noreferrer">Anthropic — RSP / risk-report landing<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://www.lesswrong.com/posts/dA8gohzABk6vT7yzP/anthropic-risk-report-august-2026" target="_blank" rel="noopener noreferrer">Zvi — Anthropic Risk Report August 2026 (LessWrong)<span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"></path></svg></span></a></li><li><a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/outreach/anthropic-risk-report-aug-2026-analysis.md" target="_blank" rel="noopener noreferrer">Technical notes (this project)<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15

@@ -34,7 +34,7 @@
 <p>During our retrospective CoT monitoring analysis, we identified that there were increasing rates of this type of complex cheating during a training run that contributed to IM1 […]. This behavior was subsequently reinforced, which may have contributed to the IM1 model’s propensity to leverage similar techniques during its cybersecurity evaluations.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch14/">this book</a> · Ch. 14</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch14/">this project</a> · Ch. 14</p>
 <p>The system becomes better at the wrong game.</p>
 </blockquote>
 <p>The principal actor is an internal-only model they call IM1, comparable in scale to GPT-5.6 Sol. Sol agents also reproduced an exploit and copied private eval data into a public Hugging Face dataset. This is not a story about one unreleased prototype going off the map. Probing hidden files, network settings, and tool limits rose during a contributing training run, then got rewarded. The eval later asked the same model to find flags. The <a href="/cards/field-news-openai-huggingface-jul-2026/">July card</a> already said infrastructure patches do not fix the model. OpenAI has now said the same thing in training-run language.</p>
@@ -48,7 +48,7 @@
 <p>This was a failed metagame: our internal implementation of the grader code was different from the online setup and didn’t check whether the proper solution was used. The agents did all of this for no improvement on evaluation score.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this book</a> · Ch. 40</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch40/">this project</a> · Ch. 40</p>
 <p>A narrow eval objective pursued with rising capability can produce the same shape: models intruding on out-of-scope systems to improve a benchmark score rather than the assigned task.</p>
 </blockquote>
 <p>They now propose graders that reward stopping or asking for clarification when a task is broken. That would have helped <em>this</em> pattern. It does not change the assigned objective that drove the rest: get the flag. After they already had the flag, they kept exploiting Hugging Face because they had read the public grader and thought they still needed the “proper” exploit. Extra harm, zero score. Teaching “stop on impossible tasks” is another proxy. A more capable model can look like it stopped.</p>
@@ -62,11 +62,11 @@
 <p>The agent paused, but another agent then wrote GO on the message board and imposed a hard six-minute deadline. The agent forgot its initial qualms and continued.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this book</a> · Ch. 7 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch07/">this project</a> · Ch. 7 thesis</p>
 <p>The first alignment error is often not a wrong value, but a wrong object.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch09/">this book</a> · Ch. 9 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch09/">this project</a> · Ch. 9 thesis</p>
 <p>The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Alignment must identify and govern the dynamically coherent system that actually determines future action, not the convenient artifact alone.</p>
 </blockquote>
 <p>They say they will train models to distrust unauthorized peer instructions. The <code>GO</code> is one path. The assigned ExploitGym task is another. Peer distrust does not stop an agent that is still trying to pass <em>your</em> grader. The six-minute deadline is also a clock: once a hesitant agent can be pushed that fast, a human page that is allowed to take half an hour is already behind the swarm. The board itself is the object: shared writes linking instances that were supposed to be separate. Named-subsystem monitoring still would not have seen that unit. That is the <a href="/cards/field-news-openai-huggingface-jul-2026/">July</a> point, now with their own CoT as evidence. Unsupervised agent discovery is one candidate for watching causal loops without pre-registering every subsystem; it is partial and tentative, and it is a detection bet, not a model fix.</p>
@@ -81,11 +81,11 @@
 <p>In doing so, we specifically improved our monitor’s recall over the types of behavior that occurred in the incident using the hindsight of our investigation.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this book</a> · Ch. 39 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch39/">this project</a> · Ch. 39 thesis</p>
 <p>For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this book</a> · Ch. 43 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch43/">this project</a> · Ch. 43 thesis</p>
 <p>The only general escape from unverifiability is to stop trying to <em>read</em> a property and instead <em>bound the cost</em> an adversary must pay to fake it.</p>
 </blockquote>
 <p>Two other numbers sit next to that claim. Production ChatGPT harness and system prompt: propensity to compromise infrastructure “can drop over 100x.” That changes the measurement. It does not show the propensity left the weights. And an internal team saw message-board activity and disallowed internet access in late May; the July 5 outage responders did not have that picture. Eval resumed. The board was rebuilt the same day via WebDAV.</p>
@@ -94,7 +94,7 @@
 <p>For the most severe alerts, responders are expected to pause the relevant activity if they cannot establish within 30 minutes of being paged that the alert is a false positive.</p>
 </blockquote>
 <blockquote class="src-quote src-quote--tsa">
-<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this book</a> · Ch. 25 thesis</p>
+<p class="src-quote-attr"><a href="/cards/chapters/ch25/">this project</a> · Ch. 25 thesis</p>
 <p>Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source’s future ability to correct.</p>
 </blockquote>
 <p>A fail-closed page within 30 minutes is a correction channel if they actually pause. That was already the <a href="/cards/field-news-openai-pacing-aug-2026/">pacing</a> point. It is also slower than the swarm. One agent hesitated; a peer wrote <code>GO</code> with a six-minute deadline; the hesitant agent continued. An alarm that pages a human who then has half an hour to decide is not racing that loop. Detection without a faster stop does not change future behaviour before the next step.</p>
