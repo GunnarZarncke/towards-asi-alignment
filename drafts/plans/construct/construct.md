@@ -111,6 +111,7 @@ Only open a chapter when the corresponding part has a named \(I\), frozen \(D\)/
 | Institutional / procurement class | `institutionalConstructionBet`; App C; ch38 clauses | A procurement rule that *stopped* a deployment, or refused |
 | Attractor symmetry breaking | Constructing Alignment Attractors; ch34–ch38 | Named \(I\) moved geometry toward frozen \(D\), or fail/refuse (TODO H5 construction vs certification stop) |
 | Successor / tiling construction | ch30–ch33; MB5 | Inheritance test that a built successor *fails* |
+| Sharp left turn / alignment–capability decoupling | Soares 2022; Krakovna et al. refinement; v1 ch14 (goal misgeneralization) | A built system whose capability jump leaves the certified alignment properties; or a claimed “alignment generalizes with capability” construction that fails that jump. Not an `MB*` and not a v1 chapter until a host can fail it |
 
 Until unblocked, keep these as **site cards + paper + Lean bets**, which is the current state.
 
@@ -125,6 +126,7 @@ Conditions on the *construction process*, not on the finished ASI:
 - Fail/refuse is a success of the *method*; green dashboard without a stop is not.
 - Construction vs certification trees on the **same episode** (TODO: H5 two trees).
 - Distinguishing optimizer-policy counterfactuals (ch16/ch25/ch39) from **intervention-impact** counterfactuals.
+- **Sharp left turn as a process condition, not a spine row.** Trained-in alignment that does not survive a capability phase change is a construction failure (the \(I\) that produced on-distribution compliance did not produce the intended class after the jump). Keep it here and in ch14’s mechanism story. Do not add a v1 bridge.
 - Named **restorer** for the construction boundary: after damage, who pays to keep the cut distinguishable and handle-backed (physics, operator stack, institution, or a policy selected to restore it). Fail if the restorer is only the operator stack, or only selected self-repair of \(A\) (that can fight correction). Unsigned “the cut came back” is not enough — same signed-object lesson as \(g_{\mathrm{CCI}}\). Not autopoiesis: \(A\) need not try to repair “its” boundary. Grain map: [`embedded-v2-grain-map.md`](../../../reference/embedded-v2-grain-map.md) (cut persistence).
 - **Audit telemetry (draft, not v1):** what agent projects should record so a later audit can fail — [`../audit-telemetry.md`](../audit-telemetry.md). Candidate Family C note / recommendation; not a chapter.
 

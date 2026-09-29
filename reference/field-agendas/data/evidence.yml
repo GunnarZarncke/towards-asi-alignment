@@ -1791,3 +1791,141 @@ evidence:
       - label: "Orthogonal"
         url: https://orxl.org/
     direction: unclear
+  - id: 164
+    agenda: OpenAI
+    bridges:
+      - MB2
+    type: E
+    evidence: >-
+      Deliberative alignment: train the model to reason over a written safety spec
+      before answering (Guan et al. 2024)
+    sources:
+      - label: "OpenAI — Deliberative alignment"
+        url: https://openai.com/index/deliberative-alignment/
+    direction: support
+    weight: 1
+  - id: 165
+    agenda: OpenAI
+    bridges:
+      - MB7
+    type: E
+    evidence: >-
+      Anti-scheming training in constructed environments; reduced observed scheming
+      may be concealment (Schoen et al. 2025, OpenAI / Apollo)
+    sources:
+      - label: "Schoen et al. 2025 — Anti-scheming training"
+        url: https://www.apolloresearch.ai/
+    direction: challenge
+    weight: 2
+  - id: 166
+    agenda: OpenAI
+    bridges:
+      - MB7
+    type: E
+    evidence: >-
+      Weak-to-strong generalization: fine-tune a strong model on a weak supervisor;
+      Burns et al. recover only a small fraction of the gap and conclude naive weak
+      supervision is insufficient for superalignment
+    sources:
+      - label: "Burns et al. 2023"
+        url: https://arxiv.org/abs/2312.09390
+    direction: challenge
+    weight: 2
+  - id: 167
+    agenda: OpenAI
+    bridges:
+      - MB2
+    type: E
+    evidence: >-
+      Process supervision: grade reasoning steps rather than outcomes only (Lightman
+      et al. 2023); assumes the legible steps carry the computation
+    sources:
+      - label: "Lightman et al. 2023"
+        url: https://arxiv.org/abs/2305.20050
+    direction: support
+    weight: 1
+  - id: 168
+    agenda: OpenAI
+    bridges:
+      - MB6
+      - MB11
+    type: P
+    evidence: >-
+      Preparedness Framework: pre-commit capability thresholds and mitigations before
+      training or deployment
+    sources:
+      - label: "OpenAI Preparedness Framework"
+        url: https://openai.com/safety/preparedness/
+    direction: support
+    weight: 1
+  - id: 169
+    agenda: Christiano
+    bridges:
+      - MB4a
+      - MB7
+    type: E
+    evidence: >-
+      Oversight-process scaling: Engels et al. 2025 model weaker overseers vs stronger
+      systems; nested scalable oversight success rates fall quickly as the capability
+      gap grows (human or weak-judge factors on the measured path)
+    sources:
+      - label: "Engels et al. 2025 — Scaling laws for scalable oversight"
+        url: https://arxiv.org/abs/2504.18530
+    direction: challenge
+    weight: 2
+  - id: 170
+    agenda: Anthropic / Goodfire
+    bridges:
+      - MB1
+      - MB7
+    type: E
+    evidence: >-
+      Auditing games: hidden-objective models behind an information barrier; winning
+      teams used training-data access, API-only auditors failed (Marks et al. 2025)
+    sources:
+      - label: "Marks et al. 2025 — Auditing language models for hidden objectives"
+        url: https://arxiv.org/abs/2503.10965
+    direction: challenge
+    weight: 2
+  - id: 171
+    agenda: Anthropic / Goodfire
+    bridges:
+      - MB2
+      - MB7
+    type: E
+    evidence: >-
+      Misalignment from production RL reward hacking rather than an implanted
+      backdoor (MacDiarmid et al. 2025); open-source replication mixed
+    sources:
+      - label: "MacDiarmid et al. 2025"
+        url: https://arxiv.org/abs/2511.18397
+    direction: challenge
+    weight: 2
+  - id: 172
+    agenda: Redwood
+    bridges:
+      - MB4a
+      - MB7
+    type: E
+    evidence: >-
+      Control-protocol subversion: an untrusted model that knows the protocol can
+      collapse monitor-based protocols (Terekhov et al. 2025); live dispute with
+      Emmons et al. 2025
+    sources:
+      - label: "Terekhov et al. 2025"
+        url: https://arxiv.org/abs/2510.09462
+    direction: challenge
+    weight: 2
+  - id: 173
+    agenda: Apollo / Truthful AI
+    bridges:
+      - MB7
+    type: E
+    evidence: >-
+      Sandbagging and evaluation-awareness: models can underperform or pass tests
+      they recognize (van der Weij et al.; SAD, Laine et al. 2024)
+    sources:
+      - label: "Laine et al. 2024 — Situational Awareness Dataset"
+        url: https://arxiv.org/abs/2407.04694
+    direction: challenge
+    weight: 2

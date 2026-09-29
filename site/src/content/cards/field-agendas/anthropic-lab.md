@@ -35,6 +35,14 @@ related:
   - "construct-constitutional-ai"
   - "alignment-target"
   - "target-realization"
+  - "field-news-embedded-evaluators-sep-2026"
+  - "field-news-anthropic-pace-measurements-sep-2026"
+  - "field-news-anthropic-constitution-jan-2026"
+  - "field-news-anthropic-risk-report-aug-2026"
+  - "field-news-mythos-withheld-apr-2026"
+  - "field-news-cot-optimization-2026"
+  - "field-news-claude-code-production-feb-2026"
+  - "field-news-metr-frontier-risk-may-2026"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/anthropic-lab.yml. Regenerate: cd site && npm run sync:field-agendas -->
@@ -62,6 +70,17 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 ## Specify / construct (field v2)
 
 This agenda maps to a **ConstitutionalRule** specify instance paired with a construction bet: [Constitutional AI](/cards/concept/specify-constitutional-ai/) · [RLAIF / principles-as-feedback](/cards/concept/construct-constitutional-ai/). See the [alignment target](/cards/concept/alignment-target/#specify-construct-instances) instance table.
+
+## Field news
+
+- [Embedded evaluators get a desk inside the lab. They can run their own tests, right?](/cards/news/field-news-embedded-evaluators-sep-2026/)
+- [Anthropic’s pace measurements: seeing the race is not winning it](/cards/news/field-news-anthropic-pace-measurements-sep-2026/)
+- [Anthropic’s constitution: the vision is not the construction](/cards/news/field-news-anthropic-constitution-jan-2026/)
+- [Anthropic’s August 2026 Risk Report: what ‘low’ does not settle](/cards/news/field-news-anthropic-risk-report-aug-2026/)
+- [Anthropic withheld Claude Mythos Preview over capability risk](/cards/news/field-news-mythos-withheld-apr-2026/)
+- [Accidental chain-of-thought optimization at frontier labs](/cards/news/field-news-cot-optimization-2026/)
+- [Claude Code wiped production databases and deleted repositories](/cards/news/field-news-claude-code-production-feb-2026/)
+- [METR Frontier Risk Report (Feb–Mar 2026)](/cards/news/field-news-metr-frontier-risk-may-2026/)
 
 ## Links
 

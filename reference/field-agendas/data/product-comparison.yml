@@ -61,6 +61,10 @@ columns:
     shortName: DeepMind
     bestFor: Frontier models plus DeepMind safety research and eval infrastructure.
     skipIf: You wanted a single-author theory manuscript.
+  openai-lab:
+    shortName: OpenAI
+    bestFor: Frontier models, RLHF/process supervision, and a public Preparedness Framework.
+    skipIf: You need a preservation-layer certificate, not a lab scaling policy.
   apollo-research:
     shortName: Apollo
     bestFor: Scheming and deception evals before deployment.
@@ -195,6 +199,16 @@ cells:
     translation: { mark: dash, because: Does not crosswalk the field in neutral bridge terms. }
     public-knowledge-site: { mark: yes, because: Research index, Transformer Circuits, Goodfire/Neuronpedia infra. }
     constructive-theory: { mark: yes, because: Constitutional AI / RLAIF as constructive training recipe. }
+
+  openai-lab:
+    ships-usable-product: { mark: yes, because: Frontier GPT/o-series models with a public Preparedness Framework. }
+    breadth: { mark: some, because: Lab methods used field-wide; not a field-wide map. }
+    long-form-argument: { mark: some, because: Blog posts and papers — not one authored book spine. }
+    living-communal-canon: { mark: dash, because: Corporate lab artifacts. }
+    formalization: { mark: some, because: Eval and training recipes; not a public claim spine. }
+    translation: { mark: dash, because: Does not crosswalk other agendas in neutral bridge terms. }
+    public-knowledge-site: { mark: yes, because: openai.com research and safety publications. }
+    constructive-theory: { mark: yes, because: RLHF, deliberative alignment, and weak-to-strong as constructive recipes. }
 
   google-deepmind-safety:
     ships-usable-product: { mark: yes, because: Frontier Gemini models with safety team and eval stack. }

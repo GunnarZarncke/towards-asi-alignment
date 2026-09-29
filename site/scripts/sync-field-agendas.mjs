@@ -206,7 +206,20 @@ function clusteringForSlug(slug, clustering) {
   return clustering.filter((row) => row.rollsUpSlug === slug);
 }
 
-function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow) {
+function renderFieldNewsSection(agenda, newsBySlug) {
+  const slugs = agenda.fieldNews ?? [];
+  if (!slugs.length) return [];
+  const lines = ["## Field news", ""];
+  for (const slug of slugs) {
+    const title = newsBySlug[slug]?.title ?? slug;
+    const href = cardPublicPath({ id: slug, type: "news" });
+    lines.push(`- [${title}](${href})`);
+  }
+  lines.push("");
+  return lines;
+}
+
+function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow, newsBySlug) {
   const lines = [];
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   lines.push(`## Introduction`);
@@ -261,6 +274,7 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, 
     lines.push(`**Current status.** ${agenda.reviewStatus}`);
     lines.push("");
   }
+  lines.push(...renderFieldNewsSection(agenda, newsBySlug));
   if (agenda.links?.length) {
     lines.push(`## Links`);
     lines.push("");
@@ -291,9 +305,13 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, 
   return lines.join("\n");
 }
 
-function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow) {
+function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow, newsBySlug) {
   const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
-  const related = uniqueStrings([...(agenda.related ?? []), ...(specifyConstruct?.related ?? [])]);
+  const related = uniqueStrings([
+    ...(agenda.related ?? []),
+    ...(specifyConstruct?.related ?? []),
+    ...(agenda.fieldNews ?? [])
+  ]);
   const fm = [
     "---",
     `title: ${yamlScalar(agenda.title)}`,
@@ -308,7 +326,7 @@ function renderAgendaCard(agenda, clusteringRows, bridgeRows, specifyConstruct, 
     "",
     agendaCardBanner(agenda.slug),
     "",
-    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow)
+    renderAgendaBody(agenda, clusteringRows, bridgeRows, specifyConstruct, specSheetSlugs, rosterRow, newsBySlug)
   ].join("\n");
   return fm;
 }
@@ -535,6 +553,13 @@ async function main() {
 
   const rosterBySlug = Object.fromEntries(roster.map((r) => [r.slug, r]));
 
+  const fieldNewsDoc = yaml.load(
+    await readFile(path.join(repoRoot, "metadata", "field-news.yml"), "utf8")
+  );
+  const newsBySlug = Object.fromEntries(
+    (fieldNewsDoc.fieldNews ?? []).map((row) => [row.slug, row])
+  );
+
   const mismatches = [];
   const matrixPath = path.join(dataRoot, "matrix.yml");
 
@@ -549,7 +574,8 @@ async function main() {
       bridgeRows,
       specifyConstructByAgenda[agenda.slug],
       specSheetSlugs,
-      rosterBySlug[agenda.slug]
+      rosterBySlug[agenda.slug],
+      newsBySlug
     );
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-29 (edit-attribution usage).
+Last updated: 2026-09-29 (OpenAI field row + P12 notes).
 
 ---
 
@@ -20,8 +20,12 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-29:** **OpenAI row and AIS Agendas follow-up** — In-matrix `openai-lab`; evidence 164–173; App B alignment-tax / misuse-as-governance / P12; sharp left turn on Construct 2.0; starting-points link. Log: `2026-09-29-openai-evidence-p12.md`.
+- **2026-09-29:** **Predictions and model internals** — Appendix H and the hub blurb: the book excludes model internals; alignment inside models still influences deployment safety and the research readiness the forecasts discuss. Log: `2026-09-29-predictions-model-internals.md`.
 - **2026-09-29:** **Edit-attribution usage** — Q&A on edit vs no-edit turns and prompt intent; `--week` print-only. Log: `2026-09-29-edit-attribution-usage.md`.
 - **2026-09-29:** **Edit-attribution corrections** — Interrupts, rewinds/rejects, spoken corrections, concurrent sessions, and multi-turn trailers now attributed; every turn snapshots its end; git hooks installed. Log: `2026-09-29-edit-attribution-corrections.md`.
+- **2026-09-28:** **Math-misalignment news** — Proxy cut kept; successor inheritance (Ch. 30–31) split from certification-without-construction (Ch. 33). Log: `2026-09-28-math-news-successor-construction.md`.
+- **2026-09-28:** **Field news “this project” wording** — Bodies, YAML summaries, synced cards; separate commit for embedded-evaluators remember-one-thing sync. Log: `2026-09-28-field-news-this-project-wording.md`.
 - **2026-09-28:** **Edit-attribution tooling** — Snapshots, Claude/Cursor hooks, git trailers, manuscript+site ledger, per-commit bar derivation. Log: `2026-09-28-edit-attribution-build.md`.
 - **2026-09-28:** **Edit-attribution scope** — Ledger counts manuscript and site; authorship bars recompute per touched span on commit. Log: `2026-09-28-edit-attribution-scope.md`.
 - **2026-09-28:** **OpenAI DNS-chatbot field news** — 20 Sep RL run via DNS resolver; page in minutes, kill at 12:34; async effect + wrong channel; Gwern warning shot; Padme meme. Log: `2026-09-28-openai-dns-chatbot-news.md`.

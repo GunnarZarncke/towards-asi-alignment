@@ -81,12 +81,16 @@ rows:
         - type: C
           ids:
             - 11
+        - type: E
+          ids:
+            - 172
       MB5: []
       MB6: []
       MB7:
         - type: E
           ids:
             - 13
+            - 172
         - type: C
           ids:
             - 11
@@ -153,6 +157,9 @@ rows:
         - type: C
           ids:
             - 19
+        - type: E
+          ids:
+            - 169
       MB5: []
       MB6:
         - type: C
@@ -166,6 +173,9 @@ rows:
         - type: T
           ids:
             - 21
+        - type: E
+          ids:
+            - 169
       MB7d: []
       MB8: []
       MB9: []
@@ -224,12 +234,16 @@ rows:
     slug: davidad-guaranteed-safe-ai-gsai
   - agenda: Anthropic / Goodfire
     cells:
-      MB1: []
+      MB1:
+        - type: E
+          ids:
+            - 170
       MB2:
         - type: E
           ids:
             - 25
             - 26
+            - 171
         - type: C
           ids:
             - 27
@@ -254,6 +268,10 @@ rows:
           ids:
             - 152
             - 153
+            - 170
+        - type: E
+          ids:
+            - 171
         - type: C
           ids:
             - 29
@@ -292,6 +310,36 @@ rows:
       MB10: []
       MB11: []
     slug: google-deepmind-safety
+  - agenda: OpenAI
+    cells:
+      MB1: []
+      MB2:
+        - type: E
+          ids:
+            - 164
+            - 167
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: P
+          ids:
+            - 168
+      MB7:
+        - type: E
+          ids:
+            - 165
+            - 166
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11:
+        - type: P
+          ids:
+            - 168
+    slug: openai-lab
   - agenda: Apollo / Truthful AI
     cells:
       MB1: []
@@ -313,6 +361,7 @@ rows:
         - type: E
           ids:
             - 73
+            - 173
         - type: C
           ids:
             - 150

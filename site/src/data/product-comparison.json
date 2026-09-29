@@ -144,6 +144,18 @@
       "isTsa": false
     },
     {
+      "slug": "openai-lab",
+      "title": "OpenAI (safety)",
+      "shortName": "OpenAI",
+      "bestFor": "Frontier models, RLHF/process supervision, and a public Preparedness Framework.",
+      "skipIf": "You need a preservation-layer certificate, not a lab scaling policy.",
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null,
+      "defaultVisible": true,
+      "isTsa": false
+    },
+    {
       "slug": "apollo-research",
       "title": "Apollo / Truthful AI (deception & scheming)",
       "shortName": "Apollo",
@@ -796,6 +808,62 @@
       "mark": "dash",
       "display": "No",
       "because": "Lab output."
+    },
+    {
+      "feature": "breadth",
+      "column": "openai-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "Lab methods used field-wide; not a field-wide map."
+    },
+    {
+      "feature": "long-form-argument",
+      "column": "openai-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "Blog posts and papers — not one authored book spine."
+    },
+    {
+      "feature": "formalization",
+      "column": "openai-lab",
+      "mark": "some",
+      "display": "Some",
+      "because": "Eval and training recipes; not a public claim spine."
+    },
+    {
+      "feature": "translation",
+      "column": "openai-lab",
+      "mark": "dash",
+      "display": "No",
+      "because": "Does not crosswalk other agendas in neutral bridge terms."
+    },
+    {
+      "feature": "public-knowledge-site",
+      "column": "openai-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "openai.com research and safety publications."
+    },
+    {
+      "feature": "constructive-theory",
+      "column": "openai-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "RLHF"
+    },
+    {
+      "feature": "ships-usable-product",
+      "column": "openai-lab",
+      "mark": "yes",
+      "display": "Yes",
+      "because": "Frontier GPT/o-series models with a public Preparedness Framework."
+    },
+    {
+      "feature": "living-communal-canon",
+      "column": "openai-lab",
+      "mark": "dash",
+      "display": "No",
+      "because": "Corporate lab artifacts."
     },
     {
       "feature": "breadth",

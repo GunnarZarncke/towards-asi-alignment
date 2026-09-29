@@ -106,6 +106,18 @@ The coverage matrix remains **evidential**. Institutional variables are often *i
 
 **Lifecycle.** Cycle `specify → construct → identify → certify → act/refuse`. **Preserve** is a property of repeating that cycle (stability or convergence), not a fifth equal stage. Bridges tagged `preserve` are cycle-property constraints. Source: [`lifecycle.yml`](../../../reference/field-agendas/data/lifecycle.yml).
 
+## Research allocation, alignment tax, epistemic security, misuse
+
+Notes derived from [aisafetyagendas.com] related to field structure and [./construction].
+
+**P12 (research misallocation)** is a field-construction fact: crowded names hide quiet jobs; citation-rich subproblems paint a cell green. Capacity orgs sit upstream of the matrix. Structural orgs change who can deploy. A community maturity grid that scores interpretability scaling, takeoff disagreement, and misallocation on the same colour scale as mesa-objectives will mis-allocate for the same reason. Do not add bridge.
+
+**Alignment tax** (extra cost of aligning vs an unaligned twin) is adoption pressure on **MB6**, not a measurand. [Berg et al. 2024](https://www.lesswrong.com/posts/xhLopzaJHtdkz9siQ/the-case-for-a-negative-alignment-tax) argue the tax can be *negative* when the same properties raise competence. That updates the selector, not correction integrity. Mention in App B; no spec-sheet row.
+
+**Epistemic security** (persuasion, information-environment attack) is an attack on the *human* end of the correction channel and on the selection ecology (**MB4** / **MB6**). It is not a new internals problem and not a method row next to inner alignment. Behavioral-framing methods stay exclude-by-reference; the *object* is already on those bridges.
+
+**Misuse / jailbreaks / unlearning** sit under **governance**. If stop authority, access, and selection rules bind the system, user-elicited harm is the same deployment problem (GovAI / pause cluster; App J). Cyber products stay exclude-by-reference unless they change a preservation handle.
+
 ## Execution order (suggested)
 
 1. **Inventory pass** — export `bridges.yml` `fieldAgree`/`fieldDiffer` into a checklist; mark which have glossary headwords vs need new entries.

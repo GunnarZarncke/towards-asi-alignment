@@ -62,6 +62,15 @@ manuscriptHooks:
   - ch43
   - field-news
   - App B LLM opacity default
+fieldNews:
+  - field-news-embedded-evaluators-sep-2026
+  - field-news-anthropic-pace-measurements-sep-2026
+  - field-news-anthropic-constitution-jan-2026
+  - field-news-anthropic-risk-report-aug-2026
+  - field-news-mythos-withheld-apr-2026
+  - field-news-cot-optimization-2026
+  - field-news-claude-code-production-feb-2026
+  - field-news-metr-frontier-risk-may-2026
 links:
   - label: "Anthropic"
     url: https://www.anthropic.com/

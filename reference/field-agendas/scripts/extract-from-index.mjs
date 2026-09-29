@@ -24,6 +24,8 @@ const MATRIX_AGENDA_SLUG = {
   "Anthropic (lab)": "anthropic-lab",
   "Anthropic / Goodfire": "anthropic-lab",
   "Google DeepMind": "google-deepmind-safety",
+  OpenAI: "openai-lab",
+  "OpenAI (safety)": "openai-lab",
   Apollo: "apollo-research",
   "Apollo / Truthful AI": "apollo-research",
   METR: "metr",

@@ -113,6 +113,12 @@ Debate and amplification stay with the [Christiano lineage](/cards/agenda/christ
 
 They still need in-house oversight that keeps up with the lab's own capability run. Sharing the word "oversight" does not make this project's measurement questions into that lab-internal program.
 
+### [OpenAI (safety)](/cards/agenda/openai-lab/)
+
+This map already covers the shared lab worry: on-distribution compliance under [strategic opacity](/cards/strategic-opacity/). Preference training, process supervision, and spec-grounded reasoning are instruments aimed at [Value Learning](/cards/mb2-bundle-identifiability/) and [Inner Alignment](/cards/mb7-hidden-capability-and-access/). The Preparedness Framework is a lab gate, not a [Deployment Safety](/cards/mb11-deployment-safety/) certificate.
+
+They still need methods that keep working after a capability jump, and a gate that binds when honouring it would cost a release. Weak-to-strong and anti-scheming results do not imply [correction still changes later behavior](/cards/correction-channel-integrity/). Reduced observed scheming is not reduced scheming.
+
 ### [Apollo / Truthful AI](/cards/agenda/apollo-research/)
 
 This map does not cover their eval gate. Bounds on hidden control sit with [Redwood](/cards/agenda/redwood-research/). Apollo does not use that quantity.

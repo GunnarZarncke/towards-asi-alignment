@@ -81,6 +81,15 @@ clustering:
       - label: Google DeepMind safety
         url: '#google-deepmind-safety'
     rollsUpSlug: google-deepmind-safety
+  - listings: '[OpenAI](https://openai.com/), OpenAI safety / preparedness'
+    listingLinks:
+      - label: OpenAI
+        url: https://openai.com/
+    rollsUpTo: '[OpenAI (safety)](#openai-lab)'
+    rollsUpLinks:
+      - label: OpenAI (safety)
+        url: '#openai-lab'
+    rollsUpSlug: openai-lab
   - listings: '[Apollo Research](https://www.apolloresearch.ai/)'
     listingLinks:
       - label: Apollo Research
@@ -368,7 +377,7 @@ clustering:
     rollsUpTo: '**Infrastructure** — hosts agendas'
     rollsUpLinks: []
     rollsUpSlug: null
-  - listings: AISafety.com, LessWrong, Alignment Forum, AI Plans
+  - listings: AISafety.com, LessWrong, Alignment Forum, AI Plans, aisafetyagendas.com
     listingLinks: []
     rollsUpTo: '**Resources / meta-index** — not agendas'
     rollsUpLinks: []

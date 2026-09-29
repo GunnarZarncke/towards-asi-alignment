@@ -73,6 +73,14 @@
       "because": "Lab safety program."
     },
     {
+      "slug": "openai-lab",
+      "title": "OpenAI (safety)",
+      "order": 8,
+      "inMatrix": true,
+      "fieldConstruction": "none",
+      "because": "Lab safety and preparedness stack."
+    },
+    {
       "slug": "apollo-research",
       "title": "Apollo / Truthful AI (deception & scheming)",
       "order": 8,
@@ -567,6 +575,21 @@
       "matrixLink": null
     },
     {
+      "slug": "openai-lab",
+      "title": "OpenAI (safety)",
+      "summary": "Do lab methods and the Preparedness Framework keep pace with capability growth, including under strategic opacity and Inner Alignment, or do they mainly produce on-distribution compliance?",
+      "bookBridges": [
+        "MB2",
+        "MB6",
+        "MB7",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "fieldConstruction": "none",
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
       "slug": "orthogonal",
       "title": "Orthogonal",
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
@@ -803,6 +826,12 @@
               "ids": [
                 11
               ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                172
+              ]
             }
           ],
           "MB5": [],
@@ -811,7 +840,8 @@
             {
               "type": "E",
               "ids": [
-                13
+                13,
+                172
               ]
             },
             {
@@ -929,6 +959,12 @@
               "ids": [
                 19
               ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                169
+              ]
             }
           ],
           "MB5": [],
@@ -952,6 +988,12 @@
               "type": "T",
               "ids": [
                 21
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                169
               ]
             }
           ],
@@ -1043,13 +1085,21 @@
       {
         "agenda": "Anthropic / Goodfire",
         "cells": {
-          "MB1": [],
+          "MB1": [
+            {
+              "type": "E",
+              "ids": [
+                170
+              ]
+            }
+          ],
           "MB2": [
             {
               "type": "E",
               "ids": [
                 25,
-                26
+                26,
+                171
               ]
             },
             {
@@ -1091,7 +1141,14 @@
               "type": "E",
               "ids": [
                 152,
-                153
+                153,
+                170
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                171
               ]
             },
             {
@@ -1156,6 +1213,54 @@
         "slug": "google-deepmind-safety"
       },
       {
+        "agenda": "OpenAI",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "E",
+              "ids": [
+                164,
+                167
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "P",
+              "ids": [
+                168
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                165,
+                166
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "P",
+              "ids": [
+                168
+              ]
+            }
+          ]
+        },
+        "slug": "openai-lab"
+      },
+      {
         "agenda": "Apollo / Truthful AI",
         "cells": {
           "MB1": [],
@@ -1184,7 +1289,8 @@
             {
               "type": "E",
               "ids": [
-                73
+                73,
+                173
               ]
             },
             {
@@ -4899,6 +5005,181 @@
         }
       ],
       "direction": "unclear"
+    },
+    {
+      "id": 164,
+      "agenda": "OpenAI",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "E",
+      "evidence": "Deliberative alignment: train the model to reason over a written safety spec before answering (Guan et al. 2024)",
+      "sources": [
+        {
+          "label": "OpenAI — Deliberative alignment",
+          "url": "https://openai.com/index/deliberative-alignment/"
+        }
+      ],
+      "direction": "support",
+      "weight": 1
+    },
+    {
+      "id": 165,
+      "agenda": "OpenAI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Anti-scheming training in constructed environments; reduced observed scheming may be concealment (Schoen et al. 2025, OpenAI / Apollo)",
+      "sources": [
+        {
+          "label": "Schoen et al. 2025 — Anti-scheming training",
+          "url": "https://www.apolloresearch.ai/"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 166,
+      "agenda": "OpenAI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Weak-to-strong generalization: fine-tune a strong model on a weak supervisor; Burns et al. recover only a small fraction of the gap and conclude naive weak supervision is insufficient for superalignment",
+      "sources": [
+        {
+          "label": "Burns et al. 2023",
+          "url": "https://arxiv.org/abs/2312.09390"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 167,
+      "agenda": "OpenAI",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "E",
+      "evidence": "Process supervision: grade reasoning steps rather than outcomes only (Lightman et al. 2023); assumes the legible steps carry the computation",
+      "sources": [
+        {
+          "label": "Lightman et al. 2023",
+          "url": "https://arxiv.org/abs/2305.20050"
+        }
+      ],
+      "direction": "support",
+      "weight": 1
+    },
+    {
+      "id": 168,
+      "agenda": "OpenAI",
+      "bridges": [
+        "MB6",
+        "MB11"
+      ],
+      "type": "P",
+      "evidence": "Preparedness Framework: pre-commit capability thresholds and mitigations before training or deployment",
+      "sources": [
+        {
+          "label": "OpenAI Preparedness Framework",
+          "url": "https://openai.com/safety/preparedness/"
+        }
+      ],
+      "direction": "support",
+      "weight": 1
+    },
+    {
+      "id": 169,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB4a",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Oversight-process scaling: Engels et al. 2025 model weaker overseers vs stronger systems; nested scalable oversight success rates fall quickly as the capability gap grows (human or weak-judge factors on the measured path)",
+      "sources": [
+        {
+          "label": "Engels et al. 2025 — Scaling laws for scalable oversight",
+          "url": "https://arxiv.org/abs/2504.18530"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 170,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB1",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Auditing games: hidden-objective models behind an information barrier; winning teams used training-data access, API-only auditors failed (Marks et al. 2025)",
+      "sources": [
+        {
+          "label": "Marks et al. 2025 — Auditing language models for hidden objectives",
+          "url": "https://arxiv.org/abs/2503.10965"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 171,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB2",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Misalignment from production RL reward hacking rather than an implanted backdoor (MacDiarmid et al. 2025); open-source replication mixed",
+      "sources": [
+        {
+          "label": "MacDiarmid et al. 2025",
+          "url": "https://arxiv.org/abs/2511.18397"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 172,
+      "agenda": "Redwood",
+      "bridges": [
+        "MB4a",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Control-protocol subversion: an untrusted model that knows the protocol can collapse monitor-based protocols (Terekhov et al. 2025); live dispute with Emmons et al. 2025",
+      "sources": [
+        {
+          "label": "Terekhov et al. 2025",
+          "url": "https://arxiv.org/abs/2510.09462"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
+    },
+    {
+      "id": 173,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Sandbagging and evaluation-awareness: models can underperform or pass tests they recognize (van der Weij et al.; SAD, Laine et al. 2024)",
+      "sources": [
+        {
+          "label": "Laine et al. 2024 — Situational Awareness Dataset",
+          "url": "https://arxiv.org/abs/2407.04694"
+        }
+      ],
+      "direction": "challenge",
+      "weight": 2
     }
   ],
   "clustering": [
@@ -5036,6 +5317,23 @@
         }
       ],
       "rollsUpSlug": "google-deepmind-safety"
+    },
+    {
+      "listings": "[OpenAI](https://openai.com/), OpenAI safety / preparedness",
+      "listingLinks": [
+        {
+          "label": "OpenAI",
+          "url": "https://openai.com/"
+        }
+      ],
+      "rollsUpTo": "[OpenAI (safety)](#openai-lab)",
+      "rollsUpLinks": [
+        {
+          "label": "OpenAI (safety)",
+          "url": "#openai-lab"
+        }
+      ],
+      "rollsUpSlug": "openai-lab"
     },
     {
       "listings": "[Apollo Research](https://www.apolloresearch.ai/)",
@@ -5527,7 +5825,7 @@
       "rollsUpSlug": null
     },
     {
-      "listings": "AISafety.com, LessWrong, Alignment Forum, AI Plans",
+      "listings": "AISafety.com, LessWrong, Alignment Forum, AI Plans, aisafetyagendas.com",
       "listingLinks": [],
       "rollsUpTo": "**Resources / meta-index** — not agendas",
       "rollsUpLinks": [],
@@ -5680,7 +5978,7 @@
       ],
       "cardSlug": "mb6-selection-and-basin-stability",
       "fieldAgree": "Goodhart-as-selector; gradual disempowerment narrative; governance/pause on selection handles.",
-      "fieldDiffer": "Demski “selection vs control” homograph; CLR multipolar = different layer; thin in model-centric agendas.",
+      "fieldDiffer": "Demski “selection vs control” homograph; CLR multipolar = different layer; thin in model-centric agendas. Alignment tax is adoption pressure on this layer.",
       "legendNote": "Goodhart Selection (deployment ecology) ≠ Demski selection (inside-optimizer search)."
     },
     {

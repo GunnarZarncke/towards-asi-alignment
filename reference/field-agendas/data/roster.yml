@@ -50,6 +50,12 @@ agendas:
     inMatrix: true
     fieldConstruction: none
     because: Lab safety program.
+  - slug: openai-lab
+    title: OpenAI (safety)
+    order: 8
+    inMatrix: true
+    fieldConstruction: none
+    because: Lab safety and preparedness stack.
   - slug: apollo-research
     title: Apollo / Truthful AI (deception & scheming)
     order: 8

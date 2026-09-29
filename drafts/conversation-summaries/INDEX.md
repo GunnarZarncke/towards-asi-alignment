@@ -6,36 +6,25 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-09-29 | **Edit-attribution usage** — Examples, intent vs correction, summary command; `--week` read-only. | [2026-09-29-edit-attribution-usage.md](2026-09-29-edit-attribution-usage.md) |
-| 2026-09-29 | **Edit-attribution corrections** — User reported undetected corrections; fixed interrupt, reject, correction-prompt, concurrency and trailer attribution. | [2026-09-29-edit-attribution-corrections.md](2026-09-29-edit-attribution-corrections.md) |
-| 2026-09-28 | **Edit-attribution tooling** — Snapshots, hooks, ledger, bar derivation; `make hooks` / `snap-start` / `snap-end`. | [2026-09-28-edit-attribution-build.md](2026-09-28-edit-attribution-build.md) |
+| 2026-09-29 | **Predictions and model internals** — User: for the predictions, TSA excludes model internals, but alignment within the models is a rea... | [2026-09-29-predictions-model-internals.md](2026-09-29-predictions-model-internals.md) |
+| 2026-09-29 | **OpenAI row, new evidence, P12 notes** — User asked to add OpenAI, auditing games and other new evidence, human oversight factors, mention... | [2026-09-29-openai-evidence-p12.md](2026-09-29-openai-evidence-p12.md) |
+| 2026-09-29 | **Edit-attribution usage and read-only week** — Cursor session `fc8b4b44` (the one that built the tooling, `2026-09-28-edit-attribution-build.md`... | [2026-09-29-edit-attribution-usage.md](2026-09-29-edit-attribution-usage.md) |
+| 2026-09-29 | **Edit-attribution: user corrections** — User reported that some user-indicated corrections are not detected by the edit-attribution hooks... | [2026-09-29-edit-attribution-corrections.md](2026-09-29-edit-attribution-corrections.md) |
+| 2026-09-28 | **OpenAI DNS-chatbot field news** — User asked for a high-quote field-news card on OpenAI’s 20 September RL-training incident (DNS to... | [2026-09-28-openai-dns-chatbot-news.md](2026-09-28-openai-dns-chatbot-news.md) |
+| 2026-09-28 | **Math-news successor vs construction** — User: the math-misalignment news argument is the right first cut, but construction and successor ... | [2026-09-28-math-news-successor-construction.md](2026-09-28-math-news-successor-construction.md) |
+| 2026-09-28 | **Field news: “this project” wording** — User asked to replace “this book” with “this project” in field-news posts and `metadata/field-new... | [2026-09-28-field-news-this-project-wording.md](2026-09-28-field-news-this-project-wording.md) |
+| 2026-09-28 | **Embedded evaluators field news** — User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions onto TSA, say what t... | [2026-09-28-embedded-evaluators-news.md](2026-09-28-embedded-evaluators-news.md) |
 | 2026-09-28 | **Edit-attribution scope** — User asked for the edit-tracking plan, then required that authorship bars (and updates to them) b... | [2026-09-28-edit-attribution-scope.md](2026-09-28-edit-attribution-scope.md) |
-| 2026-09-28 | **OpenAI DNS-chatbot field news** — Training-run resolver path, 2.5-hour kill, monitor scored “no useful answer” as no access. | [2026-09-28-openai-dns-chatbot-news.md](2026-09-28-openai-dns-chatbot-news.md) |
-| 2026-09-28 | **Embedded evaluators field news** — Hinton/Russell/Narayanan conditions, Amodei, Accenture, Zvi; quote bridges point rather than restate. | [2026-09-28-embedded-evaluators-news.md](2026-09-28-embedded-evaluators-news.md) |
-| 2026-09-25 | **Field news memes** — Meme workflow for five newest field-news cards; figures embedded in bodies; images synced to `site/public/field-news/memes/`. | [2026-09-25-field-news-memes.md](2026-09-25-field-news-memes.md) |
-| 2026-09-25 | **Glossary CI fix** — CI failed on three missing glossary anchors (VFS, BIQ, EAI); fixed with Appendix E section label + `experiment-methodology` bookLabels. | [2026-09-25-glossary-ci-fix.md](2026-09-25-glossary-ci-fix.md) |
-| 2026-09-25 | **Huang / Klein / Zvi field news** — Quote-driven card on Jensen Huang's Ezra Klein interview and Zvi's cashing of shut-labs / 10× eval / don't-ship lines; TSA cut is stated is not failable. | [2026-09-25-huang-klein-zvi-news.md](2026-09-25-huang-klein-zvi-news.md) |
-| 2026-09-24 | **Quiz math-misalignment takeaway** — CI quiz bank failed: missing `news-takeaway-math-misalignment-sep-2026`. | [2026-09-24-quiz-math-takeaway.md](2026-09-24-quiz-math-takeaway.md) |
-| 2026-09-24 | **Mathematics misalignment field news** — Short card on the 11 September Fields-medallist declaration: solved problems as a bad proxy, Goodhart selection, a green check while understanding has not moved, and values that do not collapse to one score. | [2026-09-24-math-misalignment-news.md](2026-09-24-math-misalignment-news.md) |
+| 2026-09-28 | **Edit-attribution tooling** — User asked to build the edit-tracking plan (snapshots, hooks, ledger, bar derivation). | [2026-09-28-edit-attribution-build.md](2026-09-28-edit-attribution-build.md) |
+| 2026-09-25 | **Huang / Klein / Zvi field news** — User asked to read Zvi on Jensen Huang's Ezra Klein interview, discuss simulacrum levels and plau... | [2026-09-25-huang-klein-zvi-news.md](2026-09-25-huang-klein-zvi-news.md) |
+| 2026-09-25 | **Glossary CI fix** — CI `make check` failed during the generate step: `build_section_reference_graph.py` exited 1 with... | [2026-09-25-glossary-ci-fix.md](2026-09-25-glossary-ci-fix.md) |
+| 2026-09-25 | **Field news memes** — User asked for meme suggestions for the five newest field-news cards, then a minimal automated wo... | [2026-09-25-field-news-memes.md](2026-09-25-field-news-memes.md) |
 | 2026-09-24 | **UAD on the project itself** — Continuation of the reflexive "TSA on itself" discussion: detect the effective agent with UAD ins... | [2026-09-24-uad-on-tsa.md](2026-09-24-uad-on-tsa.md) |
 | 2026-09-24 | **Related Metaculus links** — Link Metaculus 31707, 38190, and 38597 from the predictions hub as related questions, not in the ... | [2026-09-24-related-metaculus.md](2026-09-24-related-metaculus.md) |
-| 2026-09-24 | **Ban Artificial Superintelligence Act field news** — User asked for a site news entry on the [Ban Artificial Superintelligence Act](https://www.sander... | [2026-09-24-ban-asi-act-news.md](2026-09-24-ban-asi-act-news.md) |
-| 2026-09-23 | **PRA diagram vs Lean** — User asked to review `lean_checked_bayesian_pra_diagram.py` against the actual Lean spine and fix... | [2026-09-23-pra-diagram-lean.md](2026-09-23-pra-diagram-lean.md) |
-| 2026-09-23 | **Markdown links CI fix** — CI `make check` failed on the markdown link gate (16 broken relative links) while local check pas... | [2026-09-23-markdown-links-ci-fix.md](2026-09-23-markdown-links-ci-fix.md) |
-| 2026-09-23 | **Consistency review: decisions executed** — Author decisions on [`drafts/project/consistency-review-2026-09-22.md`](../project/consistency-re... | [2026-09-23-consistency-decisions.md](2026-09-23-consistency-decisions.md) |
-| 2026-09-22 | **Project consistency review** — Review the whole project and the plan; assess how well it meets stated and implied expectations a... | [2026-09-22-project-consistency-review.md](2026-09-22-project-consistency-review.md) |
-| 2026-09-22 | **App P PRA vocabulary** — Appendix H/P should introduce the assurance/PRA vocabulary explicitly and include a suitable refe... | [2026-09-22-predictions-pra-vocab.md](2026-09-22-predictions-pra-vocab.md) |
-| 2026-09-22 | **Predictions Phase 3** — Continue the assurance-risk plan with Phase 3 after the editorial review pass and Phase 2b fundin... | [2026-09-22-predictions-phase-3.md](2026-09-22-predictions-phase-3.md) |
-| 2026-09-22 | **Predictions Phases 0–2** — User asked to implement the predictions improvement plan through Phase 2 (`drafts/plans/predictio... | [2026-09-22-predictions-phase-0-2.md](2026-09-22-predictions-phase-0-2.md) |
-| 2026-09-22 | **Predictions gap analysis and App H voice** — Reader pass on the new Appendix H opening and resolution section; then use the CIRIS×TSA experime... | [2026-09-22-predictions-gap-ciris.md](2026-09-22-predictions-gap-ciris.md) |
-| 2026-09-22 | **Predictions funding gate** — Continue the assurance-risk plan after an intervening editorial review pass. Preserve the reviewe... | [2026-09-22-predictions-funding-gate.md](2026-09-22-predictions-funding-gate.md) |
-| 2026-09-22 | **Predictions assurance-risk plan** — Review and refine the predictions appendix / PRA improvement plan against local catalog, Lean spi... | [2026-09-22-predictions-assurance-plan.md](2026-09-22-predictions-assurance-plan.md) |
-| 2026-09-22 | **Predictions App H + site polish** — User feedback on predictions appendix readability (site + print source), Gauss icon shape, predic... | [2026-09-22-predictions-apph-site-polish.md](2026-09-22-predictions-apph-site-polish.md) |
-| 2026-09-22 | **PRA diagram layout** — User asked to run `lean_checked_bayesian_pra_diagram.py`, inspect the generated graph, and improv... | [2026-09-22-pra-diagram-layout.md](2026-09-22-pra-diagram-layout.md) |
 
 ## Archive by month
 
-- **2026-09** (58): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (73): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)
