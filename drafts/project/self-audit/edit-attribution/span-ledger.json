@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260929T222812.079Z",
+  "_as_of": "20260929T223322.127Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 3,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -259,7 +259,7 @@
   "chapters/ch07-finding-boundary.tex#3": {
     "agent": 0,
     "file": "chapters/ch07-finding-boundary.tex",
-    "human": 58,
+    "human": 60,
     "index": 3,
     "key": "GZ",
     "prior": "GZ"
@@ -345,7 +345,8 @@
     "prior": "AI"
   },
   "chapters/ch11-capability-without-task-ontology.tex#6": {
-    "agent": 0,
+    "agent": 8,
+    "dirty": true,
     "file": "chapters/ch11-capability-without-task-ontology.tex",
     "human": 13,
     "index": 6,
@@ -393,7 +394,8 @@
     "prior": "AI"
   },
   "chapters/ch17-low-dimensional-value-learning.tex#2": {
-    "agent": 0,
+    "agent": 2,
+    "dirty": true,
     "file": "chapters/ch17-low-dimensional-value-learning.tex",
     "human": 20,
     "index": 2,
