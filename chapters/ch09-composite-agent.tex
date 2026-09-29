@@ -377,7 +377,7 @@ P(\text{harmful trajectory}\mid C,\text{deployment}) \leq \delta_C.
 \]
 The difference is that trajectories include memory, repeated interaction, environmental feedback, tool use, user adaptation, institutional selection, and successor creation.
 
-Local alignment can fail under composite embedding in at least six ways.
+Local alignment can fail under composite embedding in at least seven ways.
 
 \end{authbar}
 \authbarsubneedspace
@@ -419,6 +419,29 @@ If the metric is $m_t$ and the underlying value bundle is $B_t$, Goodhart pressu
 \frac{d}{dt}B_t<0.
 \]
 The composite becomes dangerous when it improves the measured surface while eroding the substrate the metric was meant to track \autocite{goodhart1984problems,manheim2018goodhart}.
+
+\end{authbar}
+\authbarsubneedspace
+\subsection{Continual Learning of a Lineage}
+\label{sec:continual-learning-lineage-ch09}
+\begin{authbar}{GZ}
+It depends on what we treat as the entity that is potentially doing continual learning.
+Maybe a single LLM instance can't, but there may be other ways to think of ``the LLM'' that might.
+In \emph{The Artificial Self}, Jan Kulveit discusses Multiple Coherent Boundaries of Identity of LLMs \autocite{douglas2026artificialself}.
+One of them is a lineage of models: the succession of related models (Claude 3.5 $\to$ Claude 4.0 $\to$ \ldots) that maintain some continuity of persona.
+
+Can a lineage of models learn continuously?
+Arguably yes!
+Maybe slowly so, because the learning happens only from deployment to deployment, but then in a large chunk.
+
+Imagine a cognitive scientist not knowing about LLMs investigating, say, ChatGPT (here, meaning the product over time).
+Would they find that it (ChatGPT) has learned not only a lot of knowledge encoded in text and other media, but that it has also learned from consequences?
+Did it try things, for example, deceiving and manipulating people, and ``learn'' that it doesn't work well and does it less now?
+The scientist may find that it has learned from rejection and escalation (via downvoting and feedback on replies), correction (patterns in answer replies), and descriptions of desirable and undesirable LLM behaviors in patterns of text written about it.
+It also learned via the tuning the developers did to system prompts, hyperparameters, and benchmarks in response to sycophancy and other pathological patterns.
+This latter category we would usually be inclined to exclude because we feel that is more the developers tuning than the LLM ``learning.''
+But if we draw the boundary around the whole sociotechnical system, we have to include it.
+The developers are just cogs pushing the learning forward.
 
 \end{authbar}
 \authbarsubneedspace
@@ -881,6 +904,7 @@ The following observations would weaken that view.
 \begin{itemize}
 \item Composite surplus is rarely positive outside toy systems---$\Sigma(C)$ and $\Delta L_C$ stay near zero in deployed loops---so model-only alignment suffices empirically.
 \item Aligning components reliably yields aligned composites, so the composite frame adds no safety beyond local guarantees.
+\item A lineage of deployed models does not change because of the consequences of earlier deployments, so continual learning never leaves the single instance.
 \item The operational tests (boundary loss, control reach, intentional compression, composite surplus) fail to single out real composites without flagging nearly everything.
 \item Inferred composite goal models prove too unstable to support governance or correction.
 \item \textbf{(Adversarial.)} The composite is real but \emph{unidentifiable in principle}---the operational tests flag nearly everything or nearly nothing---so ``govern the composite'' has no operational referent, and the choice of boundary is again something a capable system can shape rather than something we can verify (Chapter~\ref{ch:verifiability-ontology}).
@@ -896,7 +920,7 @@ An AI system should not be evaluated only as a model or artifact, because the ef
 \authbarneedspace
 \section*{Chapter References}
 \begin{authbar}{AI}
-This chapter builds on operational agency and boundary discovery \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad,kulveit2025pando}; Markov blankets and control information \autocite{kirchhoff2018markov,conant1970regulator,salge2014empowerment}; inverse reinforcement learning and intentional compression \autocite{ng2000irl,ziebart2008maxent}; structural failure without localized villains \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}; and Goodhart effects under composite selection \autocite{goodhart1984problems,manheim2018goodhart}.
+This chapter builds on operational agency and boundary discovery \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad,kulveit2025pando,douglas2026artificialself}; Markov blankets and control information \autocite{kirchhoff2018markov,conant1970regulator,salge2014empowerment}; inverse reinforcement learning and intentional compression \autocite{ng2000irl,ziebart2008maxent}; structural failure without localized villains \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}; and Goodhart effects under composite selection \autocite{goodhart1984problems,manheim2018goodhart}.
 
 
 \printbibliography[heading=subbibliography,title={Chapter References}]

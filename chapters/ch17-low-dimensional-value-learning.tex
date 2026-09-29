@@ -35,9 +35,23 @@ Ambitious value learning \ldots\ aims to learn a utility function that captures 
 \authbarneedspace
 \section{The Problem}
 \label{sec:low-dim-problem}
+\begin{authbar}{GZ}
+Suppose human values were internally coherent, high-dimensional, explicit, and decently stable under reflection.
+Would alignment be easier or harder?
+My below calculations show that it would be much harder, if not impossible.
+If behavior is driven by a high-dimensional reward vector
+\[
+r \in \mathbb{R}^{n},
+\]
+inverse reinforcement learning requires an unreasonable number of samples.
+If it is driven by a low-rank projection
+\[
+r \mapsto s \in \mathbb{R}^{k}
+\]
+with small $k$, inference may become tractable.
+\end{authbar}
 \begin{authbar}{AI}
-If human values are treated as a fully explicit, high-dimensional reward function, then value learning appears almost hopeless.
-Every situation would require a separate moral parameter.
+A fully explicit high-dimensional reward gives every situation its own moral parameter.
 Every exception would add another degree of freedom.
 Every cultural practice, trauma response, social norm, legal precedent, aesthetic preference, attachment pattern, and reflective judgment would become another coordinate in a vast reward vector.
 
@@ -323,10 +337,12 @@ where $n$ is the ambient feature dimension, $\mathcal E$ is the diversity of env
 The bound above says something about the second term.
 It does not show that the first term is small.
 
-This distinction matters.
-If value learning requires inferring thousands or millions of independent moral dimensions across long horizons, then it is probably infeasible.
-If much of value-relevant behavior factors through something closer to ten or twenty latent bundle directions, the readout problem remains hard but no longer obviously impossible.
-Whether the representation problem is also tractable is the main empirical bridge.
+\end{authbar}
+\begin{authbar}{GZ}
+If you need at least 20 billion samples to learn complex values, we are doomed.
+But it may become solvable with a reduction of the number of required trajectories by a factor of about 200 (depending on how high-dimensional you were thinking the values are; 1000 is surely conservative).
+\end{authbar}
+\begin{authbar}{AI}
 
 This also sharpens which pessimistic claim the chapter rejects.
 The defensible claim is:
@@ -898,9 +914,18 @@ The important signs concern representation as well as readout.
 Given stable bundle features, readout accuracy should improve with far fewer samples than a flat high-dimensional model.
 This is the regime priced by the sample-complexity bound.
 
-\paragraph{2. Diminishing returns in preference dimension.}
-Preference prediction should improve rapidly with the first few latent dimensions and then flatten.
-The exact elbow may vary by domain, but the existence of an elbow is the important sign.
+\end{authbar}
+\paragraph{2. Diminishing returns in pairwise comparisons.}
+\begin{authbar}{GZ}
+How can we test if the dimensionality of human values is actually low?
+We should see diminishing returns in predictability for example when using $N$ pairwise comparisons of value-related queries.
+Predictability should drop off at
+\[
+N \approx O(k \log k) - O(k^{2}),
+\]
+e.g., for $k \sim 10$ we'd expect an elbow around $N \sim 150$.
+\end{authbar}
+\begin{authbar}{AI}
 
 \paragraph{Minimal synthetic check.}
 A small synthetic check has the expected shape.

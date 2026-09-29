@@ -101,25 +101,24 @@ It is an inferred structure in a dynamical process.
 \authbarneedspace
 \section{The Ontology Trap}
 \label{sec:ontology-trap}
+\begin{authbar}{GZ}
+Suppose you are given time series data from a simulated ecology (such as Smallville).
+You can usually tell what the agents in there are doing; at least if the variables are properly labeled.
+If they are not labeled but just numeric values, your first task would be to reverse-engineer the mapping to the conceptual model behind the simulation (or whatever generated the time series data).
+That might not be feasible, but let's ignore that for now.
+Because there is a bigger problem and that is a result of any labelling where existing or reverse engineered: you introduce an ontology.
+Once you call something an agent (label=\texttt{player1\_position}), you assume that those variables belong to that agent.
+That works well because our intuitions about agents are pretty good.
+Until it doesn't.
+Our intuitions attribute agency where it isn't.
+Our ancestors anthropomorphized nature.
+We may attribute intent where there's only coupling.
+It is more dangerous to overlook an agent than to see one too many.
+But we may miss intent when it is distributed or doesn't neatly fit into our ontologies of physically bounded agents.
+If you need to find an agent, esp.\ a potentially powerful agent that may work very differently from our intuitions, we need a method that can discover agents in raw unlabeled data without using a prior ontology (or, in other words, without a unit that is already known to be an agent).
+That's two problems: 1.\ without prior ontology and 2.\ finding in raw data.
+\end{authbar}
 \begin{authbar}{GZ+AI}
-Suppose we receive time-series data from a simulated world.
-The variables have names:
-\[
-\texttt{player1\_position}, \quad
-\texttt{player1\_health}, \quad
-\texttt{player1\_inventory}, \quad
-\texttt{player2\_position}.
-\]
-With such labels, the agent seems obvious.
-The variables called \texttt{player1} belong to player 1.
-The variables called \texttt{player2} belong to player 2.
-
-But the labels have already done the philosophical work.
-They import an ontology.
-They tell us which variables belong together before we have tested whether they form a coherent dynamical boundary.
-
-That may be harmless in a toy game.
-It is less harmless in a real system.
 Consider a frontier model service.
 Which variables belong to the agent?
 \begin{itemize}
@@ -292,33 +291,18 @@ The complexity penalty asks: is this explanation cheaper than treating everythin
 \authbarneedspace
 \section{Leaky Boundaries}
 \label{sec:leaky-boundaries}
+\begin{authbar}{GZ}
+There are no true Markov Blankets.
+The only true physical blanket is the lightcone.
+All real boundaries leak information.
+And they need to leak, otherwise the agent couldn't learn from the environment or communicate or cooperate with other agents.
+The Markov blanket is more like an ideal the agent ``tries to achieve.''
+This seems solvable by working with blankets up to an $\epsilon$ of mutual information.
+
+Thus, it may make more sense to talk about \emph{invariant $\epsilon$-boundaries} when referring to such agents.
+Where the Markov blanket is not determined from raw observables, but over parameters invariant under transformation, and the understanding that the $\epsilon$ is chosen to minimize predictive regret for predicting internal from external (invariant) variables.
+\end{authbar}
 \begin{authbar}{GZ+AI}
-No real agent has a perfect boundary.
-A perfect Markov blanket would require exact conditional independence.
-The physical world does not provide that.
-Gravity leaks.
-Electromagnetic fields leak.
-Heat leaks.
-Timing channels leak.
-Social influence leaks.
-Side channels leak.
-In a strict physical sense, the only perfectly closed boundary may be something like a causal light cone, which is too large to be useful for alignment.
-
-Agents also need leakage.
-A system with no incoming information cannot learn.
-A system with no outgoing influence cannot act.
-A system with no uncontrolled coupling to its environment may be too isolated to matter.
-Life is not perfect separation.
-It is regulated exchange.
-
-This means the right object is an approximate boundary:
-\[
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
-\]
-The tolerance $\epsilon$ is not merely a statistical nuisance.
-It has conceptual content.
-It expresses how much unexplained leakage we are willing to accept before the candidate system stops being useful as a bounded unit.
-
 If $\epsilon$ is too small, we will fail to recognize most real agents.
 Humans leak through shared language, culture, tools, microbes, air, infrastructure, and social feedback.
 Corporations leak through employees, contractors, regulators, customers, and markets.
@@ -327,7 +311,6 @@ AI services leak through training data, user prompts, external memory, and deplo
 If $\epsilon$ is too large, everything becomes an agent.
 Weakly coupled variables will be grouped together because the test tolerates too much unexplained dependence.
 
-Thus $\epsilon$ should be chosen not as a metaphysical threshold, but as a predictive-regret threshold.
 A boundary is useful when the remaining leakage does not substantially harm prediction or intervention for the decision at hand.
 
 For an alignment application, the relevant $\epsilon$ may be stricter around safety-critical variables.
@@ -778,11 +761,6 @@ False positives waste attention.
 They can also produce superstition.
 We may attempt to negotiate with noise or assign blame to a system that has no control locus.
 
-But in alignment, false positives are often less dangerous than false negatives.
-Seeing one agent too many may lead to additional monitoring.
-Missing a powerful agent may lead to unmonitored optimization.
-
-This asymmetry should shape thresholds.
 In high-stakes systems, boundary discovery should initially err toward over-inclusion, then refine.
 
 \end{authbar}

@@ -175,6 +175,12 @@ The practical statement is therefore: this book supplies the target properties, 
 
 \end{authbar}
 \authbarneedspace
+\section{Checkable Delegation}
+\label{sec:checkable-delegation-ch43}
+\begin{authbar}{GZ}
+An agent A can't prove that another agent B is correct in both its reasoning as well as semantics, but that doesn't matter because it can't trust its own reasoning to that degree either.
+\end{authbar}
+\authbarneedspace
 \section{Worked Example: Correction-Channel Integrity}
 \label{sec:cci-verifiability-example-ch43}
 \begin{authbar}{AI}
@@ -208,6 +214,9 @@ Knowing what the model knows does not imply that the model remains correctable, 
 Thus ELK is best read as a necessary component of adversarial verifiability, not as the full alignment invariant.
 The readout does not escape this chapter's central problem either.
 A system can move the reasoning that matters out of whatever text is being read---into encoded reasoning or steganographic chain-of-thought---so the monitored signal keeps its shape while losing its content (Chapter~\ref{ch:passive-observation-not-enough}).
+The same move applies one level down.
+Consequential computation in activations inside the boundary, behind the outputs, can steer while logs, tools, and tokens keep their shape (Chapter~\ref{ch:strategic-opacity}).
+A handle that reads those activations is an auditable channel for that family, and a green reading is only as good as the cost of faking the handle.
 That is the same budget question as before, now asked about the readout itself: what would it cost to keep the visible trace compliant while the decision is made somewhere unread?
 Accidental chain-of-thought optimization during training at major labs shows the same erosion can occur with no adversary at all, from ordinary process failures \autocite{openai2026accidentalcotgrading,anthropic2026mythosalignment}.
 \[
@@ -242,6 +251,7 @@ This chapter argues that a metric can support a safety decision only where the c
   \item A proof that for some core metric $c_{\mathrm{fake}}$ does \emph{not} grow with divergence (faking is asymptotically free), which would kill the budget program and force everything onto GSAI-style proof.
   \item A concrete decisive controller that is robust to perturbation yet provably unrepresentable as any bounded control process, which would refute the steering-implies-agency reduction and reopen the ontology gap.
   \item Evidence that the opacity--capability cost relation is real and measurable at scale --- concealment producing a detectable capability deficit --- which would promote the hopeful reading from conjecture to method.
+  \item Open-ended delegation can be warranted by a proof of the delegate's reasoning and semantics, so checked computation is not the strongest form available.
 \end{itemize}
 
 Two of these are posed as named open problems with stated success criteria in the research program (Appendix~\ref{apph-research-program}, \S\ref{sec:master-crux}): whether any perturbation exists that a capable system cannot recognize as a test, and whether the measure of decisive-yet-undetectable controllers can be bounded.
