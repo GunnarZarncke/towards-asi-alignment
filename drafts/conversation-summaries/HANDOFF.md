@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-29 (OpenAI field row + P12 notes).
+Last updated: 2026-09-30 (predictions internals interface and activation route).
 
 ---
 
@@ -20,8 +20,13 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-30:** **Session summary script** — `scripts/session_summary.py` read-only recap from hooks telemetry, git, and Cursor transcript; sensible no-arg defaults. Log: `2026-09-30-session-summary-script.md`.
+- **2026-09-30:** **Predictions internals interface** — Draft Market 21 (outside book); activation route under MB7a in Ch. 10 and Market 8; whitebox re-entry as measurement handle only; Ch. 10 terminology aligned to prior vocabulary. Log: `2026-09-30-activation-channel-family.md` (+ `2026-09-29-predictions-model-internals.md`).
+- **2026-09-29:** **OpenAI training safety-case news** — 28 Sep guidelines: documentation before a run continues; safety case is the north star. Stop = missing leaf (Ch. 42). Sandbox red team is a frontier checkpoint, “subject to a safety analysis.” Nested Anakin meme. Log: `2026-09-29-openai-training-safety-case-news.md`.
+- **2026-09-29:** **LW prose into chapters** — UAD, value-learning, and Friendly Telepaths replace paraphrases as `{GZ}` blocks. Ch. 9 adds continual learning of a model lineage. Second pass: Ch. 11 capability names, Ch. 2 desire-to-extreme prior, Ch. 15 acquired higher loops, Ch. 43 checkable delegation. Invisible Hand and AI Safety Interventions skipped. Log: `2026-09-29-lw-prose-into-chapters.md`.
+- **2026-09-29:** **App P chapter–bridge connections** — Catalog names the bridge beside each chapter; each market states what the contract tests about that bridge. Rows 14, 15, 17, and 18 stay beside the spine. Log: `2026-09-29-appp-bridge-connections.md`.
 - **2026-09-29:** **OpenAI row and AIS Agendas follow-up** — In-matrix `openai-lab`; evidence 164–173; App B alignment-tax / misuse-as-governance / P12; sharp left turn on Construct 2.0; starting-points link. Log: `2026-09-29-openai-evidence-p12.md`.
-- **2026-09-29:** **Predictions and model internals** — Appendix H and the hub blurb: the book excludes model internals; alignment inside models still influences deployment safety and the research readiness the forecasts discuss. Log: `2026-09-29-predictions-model-internals.md`.
+- **2026-09-29:** **Predictions and model internals** — Draft Market 21 wraps the book's exclusion of model internals: research-readiness price plus a certificate that can move covered defects out of \(U\). Not a book object. Log: `2026-09-29-predictions-model-internals.md`.
 - **2026-09-29:** **Edit-attribution usage** — Q&A on edit vs no-edit turns and prompt intent; `--week` print-only. Log: `2026-09-29-edit-attribution-usage.md`.
 - **2026-09-29:** **Edit-attribution corrections** — Interrupts, rewinds/rejects, spoken corrections, concurrent sessions, and multi-turn trailers now attributed; every turn snapshots its end; git hooks installed. Log: `2026-09-29-edit-attribution-corrections.md`.
 - **2026-09-28:** **Math-misalignment news** — Proxy cut kept; successor inheritance (Ch. 30–31) split from certification-without-construction (Ch. 33). Log: `2026-09-28-math-news-successor-construction.md`.
