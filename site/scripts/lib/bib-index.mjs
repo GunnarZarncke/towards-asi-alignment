@@ -6,18 +6,17 @@ const FIELD_RE = /^\s*([a-zA-Z_]+)\s*=\s*(\{[\s\S]*?\}|"[\s\S]*?"|\d+)\s*,?\s*$/
 
 function stripBraces(value) {
   let v = value.trim();
-  if (v.startsWith("{") && v.endsWith("}")) v = v.slice(1, -1);
+  while (v.startsWith("{") && v.endsWith("}")) v = v.slice(1, -1).trim();
   if (v.startsWith('"') && v.endsWith('"')) v = v.slice(1, -1);
   return v.replace(/\s+/g, " ").trim();
 }
 
 function firstAuthorLast(author) {
   if (!author) return "Unknown";
-  const first = author.split(/\s+and\s+/i)[0];
+  const first = author.split(/\s+and\s+/i)[0].trim();
   const comma = first.match(/^([^,]+),/);
   if (comma) return comma[1].trim();
-  const parts = first.trim().split(/\s+/);
-  return parts[parts.length - 1];
+  return first;
 }
 
 function parseEntry(text) {
@@ -154,12 +153,12 @@ export function extractBibliographyScope(tex) {
 export function collectCiteKeysOrdered(tex) {
   const keys = [];
   const seen = new Set();
-  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite)\{([^}]+)\}/g;
+  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite|wikiq)\{([^}]+)\}/g;
   let match;
   while ((match = citeRe.exec(tex)) !== null) {
     for (const raw of match[1].split(",")) {
       const key = raw.trim();
-      if (!key || seen.has(key)) continue;
+      if (!key || key.startsWith("#") || key === "bibkey" || seen.has(key)) continue;
       seen.add(key);
       keys.push(key);
     }
@@ -276,10 +275,13 @@ export function buildReferencesBibliography(units) {
 }
 
 export function collectCiteKeys(tex, cites) {
-  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite)\{([^}]+)\}/g;
+  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite|wikiq)\{([^}]+)\}/g;
   let match;
   while ((match = citeRe.exec(tex)) !== null) {
-    for (const key of match[1].split(",")) cites.add(key.trim());
+    for (const key of match[1].split(",")) {
+      const k = key.trim();
+      if (k && !k.startsWith("#") && k !== "bibkey") cites.add(k);
+    }
   }
 }
 

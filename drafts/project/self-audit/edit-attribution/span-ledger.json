@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260930T191446.208Z",
+  "_as_of": "20260930T203035.832Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -297,7 +297,7 @@
     "prior": "AI"
   },
   "chapters/ch02-artificial-civilization.tex#4": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch02-artificial-civilization.tex",
     "human": 0,
     "index": 4,
@@ -305,10 +305,18 @@
     "prior": "AI"
   },
   "chapters/ch02-artificial-civilization.tex#8": {
-    "agent": 8,
+    "agent": 9,
     "file": "chapters/ch02-artificial-civilization.tex",
     "human": 0,
     "index": 8,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch02-artificial-civilization.tex#9": {
+    "agent": 2,
+    "file": "chapters/ch02-artificial-civilization.tex",
+    "human": 0,
+    "index": 9,
     "key": "AI",
     "prior": "AI"
   },
@@ -329,15 +337,23 @@
     "prior": "AI"
   },
   "chapters/ch04-fixed-values-wrong-target.tex#17": {
-    "agent": 8,
+    "agent": 9,
     "file": "chapters/ch04-fixed-values-wrong-target.tex",
     "human": 0,
     "index": 17,
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch04-fixed-values-wrong-target.tex#18": {
+    "agent": 2,
+    "file": "chapters/ch04-fixed-values-wrong-target.tex",
+    "human": 0,
+    "index": 18,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch04-fixed-values-wrong-target.tex#8": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch04-fixed-values-wrong-target.tex",
     "human": 0,
     "index": 8,
@@ -353,7 +369,7 @@
     "prior": "AI"
   },
   "chapters/ch06-agent-without-anthropomorphism.tex#2": {
-    "agent": 7,
+    "agent": 10,
     "file": "chapters/ch06-agent-without-anthropomorphism.tex",
     "human": 0,
     "index": 2,
@@ -361,7 +377,7 @@
     "prior": "GZ+AI"
   },
   "chapters/ch07-finding-boundary.tex#2": {
-    "agent": 8,
+    "agent": 11,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 2,
@@ -393,7 +409,7 @@
     "prior": "GZ"
   },
   "chapters/ch07-finding-boundary.tex#6": {
-    "agent": 32,
+    "agent": 34,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 6,
@@ -401,12 +417,20 @@
     "prior": "GZ+AI"
   },
   "chapters/ch07-finding-boundary.tex#7": {
-    "agent": 0,
+    "agent": 2,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 26,
     "index": 7,
     "key": "GZ",
     "prior": "GZ"
+  },
+  "chapters/ch07-finding-boundary.tex#8": {
+    "agent": 2,
+    "file": "chapters/ch07-finding-boundary.tex",
+    "human": 0,
+    "index": 8,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
   },
   "chapters/ch08-grow-split-merge.tex#2": {
     "agent": 4,
@@ -489,7 +513,7 @@
     "prior": "AI"
   },
   "chapters/ch10-strategic-opacity.tex#2": {
-    "agent": 7,
+    "agent": 10,
     "file": "chapters/ch10-strategic-opacity.tex",
     "human": 0,
     "index": 2,
@@ -497,10 +521,26 @@
     "prior": "AI"
   },
   "chapters/ch10-strategic-opacity.tex#4": {
-    "agent": 14,
+    "agent": 16,
     "file": "chapters/ch10-strategic-opacity.tex",
     "human": 0,
     "index": 4,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch10-strategic-opacity.tex#5": {
+    "agent": 2,
+    "file": "chapters/ch10-strategic-opacity.tex",
+    "human": 0,
+    "index": 5,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch10-strategic-opacity.tex#6": {
+    "agent": 2,
+    "file": "chapters/ch10-strategic-opacity.tex",
+    "human": 0,
+    "index": 6,
     "key": "AI",
     "prior": "AI"
   },
@@ -576,8 +616,16 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch14-intelligence-deepens-misalignment.tex#10": {
+    "agent": 2,
+    "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
+    "human": 0,
+    "index": 10,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch14-intelligence-deepens-misalignment.tex#5": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
     "human": 0,
     "index": 5,
@@ -585,15 +633,23 @@
     "prior": "AI"
   },
   "chapters/ch14-intelligence-deepens-misalignment.tex#6": {
-    "agent": 6,
+    "agent": 7,
     "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
     "human": 0,
     "index": 6,
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch14-intelligence-deepens-misalignment.tex#7": {
+    "agent": 2,
+    "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
+    "human": 0,
+    "index": 7,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch14-intelligence-deepens-misalignment.tex#8": {
-    "agent": 6,
+    "agent": 7,
     "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
     "human": 0,
     "index": 8,
@@ -617,7 +673,7 @@
     "prior": "AI"
   },
   "chapters/ch15-values-compressed-control.tex#2": {
-    "agent": 10,
+    "agent": 14,
     "file": "chapters/ch15-values-compressed-control.tex",
     "human": 0,
     "index": 2,
@@ -629,6 +685,14 @@
     "file": "chapters/ch15-values-compressed-control.tex",
     "human": 0,
     "index": 29,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch15-values-compressed-control.tex#3": {
+    "agent": 2,
+    "file": "chapters/ch15-values-compressed-control.tex",
+    "human": 0,
+    "index": 3,
     "key": "AI",
     "prior": "AI"
   },
@@ -665,7 +729,7 @@
     "prior": "GZ"
   },
   "chapters/ch16-value-bundle-model.tex#2": {
-    "agent": 7,
+    "agent": 10,
     "file": "chapters/ch16-value-bundle-model.tex",
     "human": 0,
     "index": 2,
@@ -697,7 +761,7 @@
     "prior": "AI"
   },
   "chapters/ch17-low-dimensional-value-learning.tex#16": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch17-low-dimensional-value-learning.tex",
     "human": 0,
     "index": 16,
@@ -817,7 +881,7 @@
     "prior": "AI"
   },
   "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#8": {
-    "agent": 1,
+    "agent": 3,
     "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex",
     "human": 0,
     "index": 8,
@@ -841,7 +905,7 @@
     "prior": "AI"
   },
   "chapters/ch21-reward-to-bundle-inference.tex#2": {
-    "agent": 8,
+    "agent": 11,
     "file": "chapters/ch21-reward-to-bundle-inference.tex",
     "human": 0,
     "index": 2,
@@ -897,7 +961,7 @@
     "prior": "AI"
   },
   "chapters/ch23-goal-transport.tex#4": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch23-goal-transport.tex",
     "human": 0,
     "index": 4,
@@ -921,7 +985,7 @@
     "prior": "AI"
   },
   "chapters/ch25-correction-causal-channel.tex#18": {
-    "agent": 8,
+    "agent": 11,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 18,
@@ -933,6 +997,14 @@
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 3,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#10": {
+    "agent": 2,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 10,
     "key": "AI",
     "prior": "AI"
   },
@@ -953,7 +1025,7 @@
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#8": {
-    "agent": 6,
+    "agent": 11,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 8,
@@ -961,7 +1033,7 @@
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
-    "agent": 7,
+    "agent": 8,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 9,
@@ -993,7 +1065,7 @@
     "prior": "AI"
   },
   "chapters/ch29-manipulation-false-consent.tex#5": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch29-manipulation-false-consent.tex",
     "human": 0,
     "index": 5,
@@ -1009,7 +1081,7 @@
     "prior": "AI"
   },
   "chapters/ch30-successor-central-test.tex#3": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch30-successor-central-test.tex",
     "human": 0,
     "index": 3,
@@ -1017,7 +1089,7 @@
     "prior": "AI"
   },
   "chapters/ch31-conserved-properties.tex#3": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch31-conserved-properties.tex",
     "human": 0,
     "index": 3,
@@ -1105,7 +1177,7 @@
     "prior": "AI"
   },
   "chapters/ch33-certification-without-construction.tex#20": {
-    "agent": 8,
+    "agent": 11,
     "file": "chapters/ch33-certification-without-construction.tex",
     "human": 0,
     "index": 20,
@@ -1145,7 +1217,7 @@
     "prior": "AI"
   },
   "chapters/ch36-parasites-correction-system.tex#15": {
-    "agent": 2,
+    "agent": 4,
     "file": "chapters/ch36-parasites-correction-system.tex",
     "human": 0,
     "index": 15,
@@ -1177,7 +1249,7 @@
     "prior": "AI"
   },
   "chapters/ch38-conductive-artifacts-pivotal-processes.tex#3": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch38-conductive-artifacts-pivotal-processes.tex",
     "human": 0,
     "index": 3,
@@ -1225,7 +1297,7 @@
     "prior": "AI"
   },
   "chapters/ch40-goal-laundering.tex#6": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch40-goal-laundering.tex",
     "human": 0,
     "index": 6,
@@ -1265,7 +1337,7 @@
     "prior": "AI"
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#7": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
     "human": 0,
     "index": 7,
@@ -1289,7 +1361,7 @@
     "prior": "AI"
   },
   "chapters/ch44-lethality-stress-test-open-issues.tex#7": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch44-lethality-stress-test-open-issues.tex",
     "human": 0,
     "index": 7,
@@ -1321,7 +1393,7 @@
     "prior": "AI"
   },
   "chapters/ch46-unconscious-value-drift.tex#4": {
-    "agent": 6,
+    "agent": 9,
     "file": "chapters/ch46-unconscious-value-drift.tex",
     "human": 0,
     "index": 4,
@@ -1337,7 +1409,7 @@
     "prior": "AI"
   },
   "chapters/ch47-bearers-of-value.tex#5": {
-    "agent": 5,
+    "agent": 8,
     "file": "chapters/ch47-bearers-of-value.tex",
     "human": 0,
     "index": 5,

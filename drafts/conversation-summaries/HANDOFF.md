@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-30 (Ch. 15 overlapping environments).
+Last updated: 2026-09-30 (wikiq authbar + site).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-30:** **Wikiq authbar + site** — Quotes outside authbars; single `\autocite` footer; site `\wikiq` HTML + bib parse fix; nocite generator fix. Log: `2026-09-30-wikiq-authbar-site.md`.
 - **2026-09-30:** **Ch. 15 overlapping environments** — Per-person compression, environment overlap, pool-conformance drift (`sec:pool-conformance-ch46`); back-links Ch. 16/17/20/21. Commit `a67cdc672`. Log: `2026-09-30-ch15-overlapping-environments.md`.
 - **2026-09-30:** **Site notes batch two + session commit** — Field hub trim (incl. user badge/bearer-adjacent edits); notes save beside textarea; card preview resolution; offline SW v12; card-graphics docs; bundled with LW wiki quotes, App P/predictions/news/quiz updates in one commit. Log: `2026-09-30-site-notes-second-batch.md`.
 - **2026-09-30:** **LW wiki quotes applied** — Canonical LessWrong wiki sentences at planned homes and later mentions. `{GZ}` frozen; `{GZ+AI}` bars unchanged (new `{AI}` blocks beside). Log: `2026-09-30-lw-wiki-quotes-applied.md`.

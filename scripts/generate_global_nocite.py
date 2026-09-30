@@ -13,7 +13,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "metadata" / "global-nocite.tex"
-CITE_RE = re.compile(r"\\(?:parencite|textcite|cite|autocite|footcite)\{([^}]+)\}")
+CITE_RE = re.compile(r"\\(?:parencite|textcite|cite|autocite|footcite|wikiq)\{([^}]+)\}")
+
+def _keep_cite_key(key: str) -> bool:
+    k = key.strip()
+    return bool(k) and not k.startswith("#") and k != "bibkey"
 
 
 def find_citations() -> list[str]:
@@ -24,9 +28,8 @@ def find_citations() -> list[str]:
         text = tex.read_text(encoding="utf-8", errors="replace")
         for match in CITE_RE.findall(text):
             for key in match.split(","):
-                key = key.strip()
-                if key:
-                    cites.add(key)
+                if _keep_cite_key(key):
+                    cites.add(key.strip())
     return sorted(cites)
 
 

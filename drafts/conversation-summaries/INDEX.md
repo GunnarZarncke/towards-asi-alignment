@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-30 | **Wikiq authbar + site** — Quotes outside authbars; deduped attribution; site HTML cites; nocite generator fix; PDF rebuild. | [2026-09-30-wikiq-authbar-site.md](2026-09-30-wikiq-authbar-site.md) |
 | 2026-09-30 | **Ch. 15 overlapping environments** — Per-person compression and environment overlap as a thread through Ch. 15/16/17/20/21; Lean unchanged (`P17` covers it). | [2026-09-30-ch15-overlapping-environments.md](2026-09-30-ch15-overlapping-environments.md) |
 | 2026-09-30 | **Site notes batch two** — Field tile consolidation; notes save beside textarea; card preview images; offline SW v12; graphics checklist. | [2026-09-30-site-notes-second-batch.md](2026-09-30-site-notes-second-batch.md) |
 | 2026-09-30 | **Site notes: ch01, serious, cards hub** — Implement the first three items of the site-notes plan: simpler Chapter 1 opening, book-wide `ser... | [2026-09-30-site-notes-first-three.md](2026-09-30-site-notes-first-three.md) |

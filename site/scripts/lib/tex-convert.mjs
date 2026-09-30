@@ -607,6 +607,19 @@ function formatCite(keys, ctx) {
   }).join(", ");
 }
 
+function formatCiteHtml(keys, ctx) {
+  const parts = keys.split(",").map((k) => k.trim()).filter(Boolean);
+  return parts.map((key) => {
+    const entry = ctx.bibIndex.get(key);
+    if (!entry) {
+      ctx.errors.push(`Unresolved citation: ${key}`);
+      return `<span class="missing-cite">missing cite: ${key}</span>`;
+    }
+    const label = entry.shortLabel || key;
+    return `<a href="${relReferencesHref(key)}">${label}</a>`;
+  }).join(", ");
+}
+
 function convertCommand(name, tex, index, ctx) {
   const readArg = () => {
     const arg = readBalanced(tex, index);
@@ -753,6 +766,16 @@ function convertCommand(name, tex, index, ctx) {
       const attribution = convertInlineText(readArg() || "", ctx);
       return {
         output: `<blockquote class="epigraph"><p>${quote}</p><footer>${attribution}</footer></blockquote>\n\n`,
+        index
+      };
+    }
+    case "wikiq": {
+      const bibKey = readArg() || "";
+      readArg();
+      const quote = convertInlineText(readArg() || "", ctx);
+      const cite = formatCiteHtml(bibKey, ctx);
+      return {
+        output: `<blockquote class="wiki-quote"><p>${quote}</p><footer>${cite}</footer></blockquote>\n\n`,
         index
       };
     }
@@ -1079,8 +1102,11 @@ export function collectReferences(tex, refs) {
   const rangeRe = /\\ref\{([^}]+)\}/g;
   while ((match = rangeRe.exec(tex)) !== null) refs.add(match[1]);
 
-  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite)\{([^}]+)\}/g;
+  const citeRe = /\\(?:autocite|parencite|cite|textcite|footcite|wikiq)\{([^}]+)\}/g;
   while ((match = citeRe.exec(tex)) !== null) {
-    for (const key of match[1].split(",")) refs.add(key.trim());
+    for (const key of match[1].split(",")) {
+      const k = key.trim();
+      if (k && !k.startsWith("#") && k !== "bibkey") refs.add(k);
+    }
   }
 }
