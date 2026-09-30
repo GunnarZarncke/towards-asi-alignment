@@ -25,4 +25,4 @@ User asked to add OpenAI, auditing games and other new evidence, human oversight
 - `appendices/appB-bridge-crosswalk.tex`
 
 ## Commits
-- (this session)
+- `aa25a5bf8` Add OpenAI to the field map and split AIS Agendas follow-ups.

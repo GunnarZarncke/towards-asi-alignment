@@ -179,6 +179,6 @@ The section on investigating incidents has the same kind of hole. A table of how
 <p>What I do not see, that I most would like to see, is the idea that it counts as a misalignment incident the moment there is intent or an attempt, even if the attempt is prevented or strategically aborted. This should go in the severity table for escalations.</p>
 </blockquote>
 
-Astra 6.1 stayed off the market. The same model goes back into training. This page can stop a run whose monitor is switched off. It cannot yet stop a run because the break-in test has no review, or because the model tried and got caught. Those two checks would halt the next run. Until they do, the training starts anyway.
+Astra 6.1 stayed off the market. The same model goes back into training. This alarm can stop a run whose monitor is switched off. It cannot yet stop a run because the break-in test has no review, or because the model tried and got caught. Those two checks would halt the next run. Until they do, the training starts anyway.
 
 **Read more in:** [Ch. 42, *A Safety Case for Superintelligence Alignment*](/cards/chapter/ch42/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapter/ch43/).

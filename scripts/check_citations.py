@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-CITE_RE = re.compile(r"\\(?:parencite|textcite|cite|autocite|footcite)\{([^}]+)\}")
+CITE_RE = re.compile(r"\\(?:parencite|textcite|cite|autocite|footcite|wikiq)\{([^}]+)\}")
 KEY_RE = re.compile(r"@\w+\{([^,]+),")
 
 
@@ -34,7 +34,9 @@ def find_citations() -> set[str]:
         text = tex.read_text(encoding="utf-8", errors="replace")
         for match in CITE_RE.findall(text):
             for key in match.split(","):
-                cites.add(key.strip())
+                k = key.strip()
+                if k and not k.startswith("#") and k != "bibkey":
+                    cites.add(k)
     return cites
 
 

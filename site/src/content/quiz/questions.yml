@@ -1624,11 +1624,11 @@ questions:
   tags:
   - takeaway
 - id: news-takeaway-math-misalignment-sep-2026
-  prompt: Fields medallists say a solved famous problem used to mean a method a community could learn.
-    What does a true-or-false score fail to settle?
+  prompt: Fields medallists say scoring a famous problem is a bad proxy for understanding.
+    What extra split does this project add?
   options:
   - id: take
-    text: "Whether a method others can learn moved, or only the true-or-false"
+    text: "The next mathematician is a successor; a true theorem is a certificate, not a construction"
     correct: true
   - id: d0
     text: Whether the letter says company and mathematics goals are misaligned
@@ -1639,16 +1639,19 @@ questions:
   - id: d2
     text: "Whether students and ideas are named the profession's main resource"
     correct: false
-  explanation: "A solved problem used to mean understanding had moved. The score can stay bright after\
-    \ the method, the writeup, and the students have not."
+  explanation: "The proxy cut is right. Successor-closure asks what the next student or model inherits.\
+    \ Construction is still open: a certified result does not build the later community."
   source:
-    href: /cards/chapter/ch03/
-    label: Chapter 3 — Alignment as a Dynamical Guarantee
+    href: /cards/chapter/ch33/
+    label: Chapter 33 — Certification Without Construction
   topics:
   - MB9
   appearOn:
   - "chapter:ch03"
   - "chapter:ch14"
+  - "chapter:ch30"
+  - "chapter:ch31"
+  - "chapter:ch33"
   - "chapter:ch34"
   - "chapter:ch16"
   tags:

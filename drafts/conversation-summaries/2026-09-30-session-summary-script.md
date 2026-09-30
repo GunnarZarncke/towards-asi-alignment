@@ -23,4 +23,4 @@ Prompts: paraphrase-only (telemetry prompt ids not copied this turn).
 - `scripts/human_delta.py` (sibling edit-attribution tooling)
 
 ## Commits
-- _(this session)_
+- `dda6fae67` Add session summary script for hook telemetry and transcripts.

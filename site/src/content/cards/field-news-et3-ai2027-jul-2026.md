@@ -5,6 +5,7 @@ status: "established"
 summary: "AI 2027-style takeoff speedups were used only as schedule cues in a separate lab simulation with frozen safety batteries. Hard safety ranking held under moderate mapped stress but broke down under the strongest cue; selection dynamics differed by regime without validating calendar predictions. The public forecast code reproduced on a pinned fork; optional coupling from lab metrics to milestone years shifts medians in sensitivity plots, not as new timeline claims."
 decision: "Treat macro forecasts and micro lab tests as separate evidence. Use scenario speedups to stress correction and selection mechanisms — not to confirm when SC, SAR, or ASI will arrive."
 releasedAt: "2026-07-25T00:00:00.000Z"
+previewImage: "/experiments/lab-simulation/et3_foster_trajectories_median.png"
 bookChapters:
   - "ch12"
   - "ch14"

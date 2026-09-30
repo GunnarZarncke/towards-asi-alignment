@@ -28,4 +28,4 @@ Prompts: paraphrase-only (no resolvable prompt id in this session)
 - `drafts/site-notes-pass.md`
 
 ## Commits
-- none
+- `d8d21a72a` Simplify Chapter 1 opening and trim tell-don't-show "serious" across the book.

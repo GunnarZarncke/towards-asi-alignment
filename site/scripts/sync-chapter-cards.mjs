@@ -2,6 +2,7 @@ import { mkdir, readdir, readFile, writeFile, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { stripComments } from "./lib/tex-convert.mjs";
+import { resolveCardPreviewImage } from "./lib/preview-image.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -89,6 +90,7 @@ function cardFrontmatter(data) {
 
   if (data.part) lines.push(`part: ${yamlString(data.part)}`);
   if (data.formalDensity) lines.push(`formalDensity: ${yamlString(data.formalDensity)}`);
+  if (data.previewImage) lines.push(`previewImage: ${yamlString(data.previewImage)}`);
   if (data.overviewOnly) lines.push("overviewOnly: true");
   if (data.related.length > 0) {
     lines.push("related:");
@@ -133,6 +135,11 @@ async function main() {
     const bookLabel = extractChapterLabel(tex);
     if (!bookLabel) continue;
 
+    const previewImage = await resolveCardPreviewImage({
+      siteRoot,
+      bookPageId: chapter.id
+    });
+
     const md = [
       cardFrontmatter({
         title: chapter.title,
@@ -144,6 +151,7 @@ async function main() {
         part: chapter.part?.id,
         partTitle: chapter.part ? PART_TITLES[chapter.part.id] : undefined,
         formalDensity: chapter.formalDensity,
+        previewImage,
         related: relatedByChapter.get(chapter.id) || []
       }),
       cardBody({

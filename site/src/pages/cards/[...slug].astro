@@ -33,6 +33,11 @@ import leanSpine from "../../data/lean-spine.json";
 import experiments from "../../data/experiments.json";
 import { bookFullHref, bookHref, cardHref as buildCardHref, cardHrefForCard, cardRouteSlug, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { absoluteSiteUrl } from "../../lib/seo";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { resolveCardPreviewImage } from "../../../scripts/lib/preview-image.mjs";
+
+const siteRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { hasConceptLogo } from "../../lib/concept-logos";
 import { referenceLinksFor } from "../../lib/reference-links";
@@ -233,10 +238,17 @@ const pageDescription = showFullText
   ? `${card.data.summary} Full synced manuscript text on the companion site.`
   : card.data.summary;
 const siteOrigin = Astro.site?.origin ?? "https://towards-alignment.com";
-const pageOgImage = card.data.previewImage
-  ? absoluteSiteUrl(card.data.previewImage, siteOrigin)
+const resolvedPreviewImage =
+  card.data.previewImage ??
+  (await resolveCardPreviewImage({
+    siteRoot,
+    bodyText: card.body,
+    bookPageId: card.data.bookPageId
+  }));
+const pageOgImage = resolvedPreviewImage
+  ? absoluteSiteUrl(resolvedPreviewImage, siteOrigin)
   : undefined;
-const pageOgImageAlt = card.data.previewImage ? card.data.title : undefined;
+const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
 ---
 
 <SiteLayout

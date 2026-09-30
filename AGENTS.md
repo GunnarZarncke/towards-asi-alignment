@@ -196,6 +196,18 @@ Empirical sanity-check codebases that stress-test bridge cruxes. Five in-repo li
 
 Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build from repo root with `./serve-site.sh` (preferred) or from `site/` with `npm run build`. Full path map: [`docs/BUILD.md`](docs/BUILD.md). Some appendices use an **overview hub** on the site (case-study cards at `/cards/appendix/{id}/`, full synced text at `/cards/appendix/{id}/full/` — see `appM` institutional histories).
 
+**Card graphics (when creating or editing a card):** decide how the card gets a social preview (`og:image`, RSS enclosure) and any in-page figure:
+
+| Need | Where to edit | Sync / assets |
+|------|---------------|---------------|
+| Concept / bridge / projection | `metadata/concepts.yml`, `bridges.yml`, or `projections.yml` + body under `metadata/concepts/bodies/` | `npm run sync:concepts` (etc.) |
+| Field news | `metadata/field-news.yml` + `metadata/field-news/bodies/` | Optional meme via `scripts/meme_workflow/` → `public/field-news/memes/`; `npm run sync:field-news-memes` then `sync:field-news` |
+| Chapter | manuscript figure + `figures/illustrations/web/` | `npm run sync:chapter-illustrations` + `sync:chapter-cards` (sets `previewImage` from chapter JPEG) |
+| Hand-authored artifact | `site/src/content/cards/*.md` | Set `previewImage:` or embed an `<img>` / markdown image the sync can pick up |
+| Explicit override | `previewImage` in YAML frontmatter | Wins over auto-detect |
+
+Resolution order (see `site/scripts/lib/preview-image.mjs`): explicit `previewImage` → first in-body image on disk → chapter opening JPEG → field-news meme basename. Default fallback remains `/og-image.png`.
+
 ### Chapter demos (`demos/`)
 
 Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/` (appendix toys: `demos/appX-slug/`). Not part of the manuscript or PDF. See [`demos/README.md`](demos/README.md); run with `python3 serve.py` from `demos/` or `./serve-demos.sh` from the repo root.

@@ -17,6 +17,7 @@ Checklists for cross-cutting work lanes. **`metadata/TODO.md`** is the canonical
 - [`tsa-on-itself.md`](tsa-on-itself.md) — plan to apply the book's layers and instruments to the project's own process (agents, author, external readers); stop conditions per instrument; findings in [`../project/uad-on-tsa-findings-2026-09-24.md`](../project/uad-on-tsa-findings-2026-09-24.md)
 - [`audit-telemetry.md`](audit-telemetry.md) — draft recording recommendation; placement awaits an author decision (tracked in `metadata/TODO.md` Housekeeping)
 - [`lw-wiki-tags.md`](lw-wiki-tags.md), [`iliad-communal-canon.md`](iliad-communal-canon.md) — outreach sketches, not scheduled (tracked in `metadata/TODO.md` Outreach)
+- [`lw-wiki-chapter-quotes.md`](lw-wiki-chapter-quotes.md) — quote LW wiki openings into chapters; applied 2026-09-30
 - [`sandboxed-agent-mcp.md`](sandboxed-agent-mcp.md) — tooling draft, not scheduled
 
 Closed plans (Voice, problem-axis, field spring-map, spec sheet, construct lit-review inputs) live in [`../attic/`](../attic/).

@@ -107,6 +107,16 @@
 \def\symbolref@plain#1{\ensuremath{#1}}
 \makeatother
 
+% Unboxed field quotation: indented quote, hanging attribution, BibLaTeX cite.
+% \wikiq{bibkey}{Tag Name}{quoted sentences}
+\newcommand{\wikiq}[3]{%
+  \begin{quote}
+  #3
+  \par\nopagebreak
+  {\raggedleft\normalfont\small LessWrong wiki, \emph{#2}\autocite{#1}\par}%
+  \end{quote}%
+}
+
 % pdflscape + longtable: on continuation pages the table head can climb into the
 % running header unless LTpre reserves headheight + headsep (memoir defaults).
 \AtBeginEnvironment{landscape}{%

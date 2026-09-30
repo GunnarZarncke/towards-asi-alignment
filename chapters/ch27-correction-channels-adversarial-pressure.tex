@@ -241,6 +241,10 @@ Consensus is valuable only if the process that produced it remains truth-trackin
 \begin{authbar}{AI}
 Any measured correction channel can be gamed.
 This is not an accident.
+Chapter~\ref{ch:intelligence-deepens-misalignment} already quotes the wiki's Goodhart sentence.
+The LessWrong wiki's \emph{Reward Hacking} page states:
+\wikiq{lwwiki-reward-hacking}{Reward Hacking}{Reward hacking, also known as specification gaming, occurs when an AI trained with reinforcement learning optimizes an objective function, achieving the literal, formal specification of an objective, without actually achieving the outcome that the programmers intended.}
+The target here is the correction channel, not a reward specification.
 If the system is trained or selected to pass correction tests, those tests become part of the optimization environment \autocite{manheim2018goodhart,amodei2016concrete}.
 
 Common Goodhart failures include:
@@ -291,6 +295,9 @@ but
 \begin{authbar}{AI}
 Tool AI, soft optimization, low impact, attainable-utility preservation, relative reachability, and quantilization are \emph{outer-alignment} and soft-optimization proposals: 
 ways to keep powerful systems useful without full one-shot value locking \autocite{armstrong2010oracle,turner2019aup,krakovna2018relative,taylor2015quantilizers}.
+The LessWrong wiki's \emph{Impact Regularization} page says:
+\wikiq{lwwiki-impact-regularization}{Impact Regularization}{Impact Regularizers penalize an AI for affecting us too much. To reduce the risk posed by a powerful AI, you might want to make it try accomplish its goals with as little impact on the world as possible.}
+Low impact can preserve physical side-effect bounds while oversight degrades.
 The separations below ask a narrower question: whether any of them, alone, is the load-bearing invariant for correction under pressure.
 Impact regularization tries to keep powerful systems from causing irreversible side effects.
 Attainable utility preservation penalizes actions that reduce the agent's ability to optimize many auxiliary reward functions \autocite{turner2019aup}.

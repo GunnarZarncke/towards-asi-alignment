@@ -37,6 +37,10 @@ aggregation:
     Market prices forecast whether qualifying artifacts exist by a deadline.
     They are not multiplied into P(doom). A later PRA updates assurance-failure
     odds separately from any catastrophe consequence model.
+    The eighteen contracts follow the book's exclusion of model internals.
+    Market 21 is the wrapper around that exclusion: research readiness for
+    alignment inside models, and the certificate that can move a covered
+    defect out of the unrepresented branch. Its price is not κ.
   hubNote: >
     three evidence levels, the F/R/U odds update, and why Market 14 is not an
     override probability.

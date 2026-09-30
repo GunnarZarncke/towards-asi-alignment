@@ -102,3 +102,6 @@ drafts/quiz-blind-packets/answers-*.json
 
 # Local edit-attribution traces (snapshots, prompts, interval jsonl)
 telemetry/
+
+# Third-party bulk datasets (download locally; do not commit)
+data/lesswrong/

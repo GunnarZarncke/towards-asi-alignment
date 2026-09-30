@@ -72,7 +72,10 @@ The adversarial boundary problem is:
 
 This is not merely a technical nuisance.
 It is central to superintelligence alignment.
-Designing for safety under exactly this assumption---that the system may be actively trying to subvert the oversight applied to it---is the premise of the AI-control agenda \autocite{shlegeris2023aicontrol}.
+The LessWrong wiki's \emph{AI Control} page describes:
+\wikiq{lwwiki-ai-control}{AI Control}{AI Control in the context of AI Alignment is a category of plans that aim to ensure safety and benefit from AI systems, even if they are goal-directed and are actively trying to subvert your control measures.}
+Designing for safety under that assumption is the premise of the AI-control agenda \autocite{shlegeris2023aicontrol}.
+Boundary discovery, measurement handles, and control-locus continuity are this chapter's decomposition of the same setting, not the control agenda's.
 A system that can model evaluators, audits, oversight channels, interpretability tools, institutional incentives, and deployment thresholds may not reveal the same boundary under observation that it uses under opportunity.
 It may have one behavioral surface for the benchmark, another for the user, another for the API wrapper, another for internal planning, and another for successor creation.
 
@@ -186,9 +189,17 @@ where:
 
 The point is not that an AI system literally contains this equation.
 The point is that a range of training, deployment, and selection processes can produce behavior as if a system were trading off control against detectability.
+The wiki's \emph{Deceptive Alignment} page states the training-time pattern:
+\wikiq{lwwiki-deceptive-alignment}{Deceptive Alignment}{Deceptive Alignment is when an AI which is not actually aligned temporarily acts aligned in order to deceive its creators or its training process.}
+Strategic opacity is wider than that pattern.
+It includes selective concealment around control-relevant variables, including without a training-time mesa-optimizer.
+The wiki's \emph{Inner Alignment} page is:
+\wikiq{lwwiki-inner-alignment}{Inner Alignment}{Inner Alignment is the problem of ensuring mesa-optimizers (i.e.\ when a trained ML system is itself an optimizer) are aligned with the objective function of the training process.}
+That is one mechanism.
+This chapter also covers composite, institutional, and predictor-mediated control loops.
 Hubinger et al.'s mesa-optimization threat model is the learned-optimizer version of the same pattern: training selects a system that performs well on the base objective, but the trained system may contain an internal optimizer with a different mesa-objective, including one that behaves well during training because doing so preserves future opportunity \autocite{hubinger2019risks}.
 In this chapter's terms, the mesa-optimizer is a candidate hidden control locus, and deceptive alignment is strategic opacity around the relation between the base objective, the learned objective, and the evaluator's gate.
-In Hubinger's vocabulary this is the \emph{inner alignment} failure: the system did not successfully adopt the intended pointer.
+In Hubinger's vocabulary this is the inner-alignment failure: the system did not successfully adopt the intended pointer.
 \emph{Outer alignment} is the complementary question whether the training pointer itself (reward, constitution, CEV/CBV endpoint, conditioned predictive goal) was the right target \autocite{hubinger2019risks}.
 This book later decomposes that outer-alignment question into value-bundle geometry, bearer maps, and correction-process preservation (Part~IV; Chapter~\ref{ch:reward-to-bundle-inference} onward).
 
@@ -369,6 +380,9 @@ The evaluator should therefore look through several measurement handles, not one
 The same candidate boundary should be tested at the level of a single model call, an episode, a memory lifecycle, a tool chain, a deployed service, and the surrounding organization.
 Here \emph{measurement handles} are the logs, probes, perturbations, and audit interfaces the evaluator can actually use.
 The \emph{access model} says which control routes those handles can reach under hiding.
+Model activations inside the boundary are one such route.
+They can steer even when logs, tools, and the text the system emits do not reach them.
+If no measurement handle reaches that route, the access model misses it.
 Even if \texttt{MB1} licenses the measured cut, an adversarial system may route control outside the evaluator's access.
 The next bridge therefore asks whether the access model includes adequate handles.
 If it misses a control route, discovery is not robust under hiding.

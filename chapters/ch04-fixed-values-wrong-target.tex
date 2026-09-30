@@ -187,6 +187,10 @@ A route planner can optimize travel time.
 A warehouse robot can optimize throughput subject to safety constraints.
 
 But human values are not like thermostat settings.
+The LessWrong wiki's \emph{Complexity of value} page states:
+\wikiq{lwwiki-complexity-of-value}{Complexity of value}{If you tried to write an AI that would do right things without further looking at humans, the AI's preferences or utility function would need to contain a large amount of data.}
+The replacement proposed here is not a larger utility function.
+It is a correctable process.
 They are not even like a stable social welfare function over known outcomes.
 Formal work in AI value alignment argues that ethical impossibility results undermine strict total-order objectives for high-stakes systems \autocite{eckersley2019impossibility}.
 They are partly constituted by how humans learn, reflect, disagree, repair, mourn, celebrate, and change.
@@ -378,10 +382,14 @@ Here we preview only why these constraints matter early: a fixed-value target ca
 \section{Why ``What We Would Want If Smarter'' Is Not Enough}
 \label{sec:cev-not-enough}
 \begin{authbar}{AI}
+The LessWrong wiki's \emph{Coherent Extrapolated Volition} page presents CEV as this argument:
+\wikiq{lwwiki-cev}{Coherent Extrapolated Volition}{It would not be sufficient to explicitly program what we think our desires and motivations are into an AI; instead, we should find a way to program it so that it would act in our best interests, what we want it to do and not what we tell it to.}
+That is not a rejection of extrapolation as such.
+The danger this section identifies is collapsing an ongoing process into a one-shot prediction the system then optimizes.
 One response to fixed-value failure is extrapolation.
 Do not satisfy what humans currently want.
 Satisfy what humans would want if they knew more, thought faster, were more coherent, and had more time to deliberate.
-This is Yudkowsky's coherent extrapolated volition (CEV), framed as an initial dynamic rather than a fixed objective \autocite{yudkowsky2004cev,yudkowsky2011cevdynamic}; the danger this section identifies is collapsing that ongoing process into a one-shot prediction the system then optimizes.
+This is Yudkowsky's coherent extrapolated volition (CEV), framed as an initial dynamic rather than a fixed objective \autocite{yudkowsky2004cev,yudkowsky2011cevdynamic}.
 A closely related outer-alignment proposal is Goertzel's coherent blended volition (CBV): a human-led collective process that blends divergent perspectives into a compact shared target, rather than delegating the extrapolation to a machine \autocite{goertzel2012cbv}.
 CEV and CBV should be read as a pair.
 Both are live outer-alignment approaches.

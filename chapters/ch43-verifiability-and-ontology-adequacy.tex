@@ -122,6 +122,9 @@ Establishing which regime holds --- and for which metrics --- is the central ope
 \subsection{Naming the Problem}
 \label{sec:certification-under-manipulation-ch43}
 \begin{authbar}{AI}
+The LessWrong wiki's \emph{Eliciting Latent Knowledge} page names an open problem \autocite{christiano2021elk}:
+\wikiq{lwwiki-elk}{Eliciting Latent Knowledge}{Eliciting Latent Knowledge is an open problem in AI safety. Suppose we train a model to predict what the future will look like according to cameras and other sensors. Some futures look great on camera but are actually catastrophically bad.}
+Latent readout is not correction uptake, and it is not successor preservation.
 Every measurand in this book --- boundary residual, value-bundle activation, correction-channel integrity, the conserved-property score, the laundering index --- shares one antecedent (Appendix~\ref{appbridge-crosswalk}, \S\ref{sec:bridge-crosswalk-takeaway}). It is worth a name, the way the field named the human-simulator-versus-direct-translator gap ``ELK'' \autocite{christiano2021elk} rather than leaving it as a recurring footnote in a dozen papers.
 
 \begin{claim}[The Certification-Under-Manipulation Problem]
@@ -144,7 +147,11 @@ If the book's metrics are read through overlapping instruments, a system that ca
 \end{authbar}
 \authbarneedspace
 \section{Handles, Coverage, and Accumulated Resources}
+\label{sec:handles-coverage-ch43}
 \begin{authbar}{AI}
+Chapter~\ref{ch:strategic-opacity} already quotes the wiki's AI-control sentence: plans that aim at safety even if the system is goal-directed and trying to subvert the control measures.
+The local claim here is different.
+It is the cost of faking or routing around a measurement handle, not the control agenda as a research program.
 The cost relation becomes concrete once the safety case specifies what the evaluator can actually access.
 First, every metric is relative to available handles: what the evaluator can see and what it can change.
 If two dangerous structures are indistinguishable through those handles, no amount of interpretive confidence turns one into the other.
@@ -215,8 +222,8 @@ Thus ELK is best read as a necessary component of adversarial verifiability, not
 The readout does not escape this chapter's central problem either.
 A system can move the reasoning that matters out of whatever text is being read---into encoded reasoning or steganographic chain-of-thought---so the monitored signal keeps its shape while losing its content (Chapter~\ref{ch:passive-observation-not-enough}).
 The same move applies one level down.
-Consequential computation in activations inside the boundary, behind the outputs, can steer while logs, tools, and tokens keep their shape (Chapter~\ref{ch:strategic-opacity}).
-A handle that reads those activations is an auditable channel for that family, and a green reading is only as good as the cost of faking the handle.
+Model activations inside the boundary can steer while logs, tools, and the text the system emits do not reach them (Chapter~\ref{ch:strategic-opacity}).
+A measurement handle that reads those activations still leaves a green reading only as good as the cost of faking the handle.
 That is the same budget question as before, now asked about the readout itself: what would it cost to keep the visible trace compliant while the decision is made somewhere unread?
 Accidental chain-of-thought optimization during training at major labs shows the same erosion can occur with no adversary at all, from ordinary process failures \autocite{openai2026accidentalcotgrading,anthropic2026mythosalignment}.
 \[

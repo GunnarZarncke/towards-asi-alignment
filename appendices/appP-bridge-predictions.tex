@@ -89,7 +89,7 @@ Distinct training, selection, or actuation families, not two checkpoints of one 
 
 \paragraph{Adversarial budget by market.}
 Default (hours-path capability/independence suffices): Markets~1, 2, 3, 6, 7, 8, 11, 14, 15, 17.
-Full common-rule ``serious'' (any of the three arms): Markets~4, 5, 9, 10, 12, 13, 16, 18.
+Full common-rule ``serious'' (any of the three arms): Markets~4, 5, 9, 10, 12, 13, 16, 18, 21.
 Markets~1, 5, 8, and~13 still require a meaningful adversarial component because false assurance there is especially dangerous.
 Market~11: the expert-hours path is enough; do not fail YES for lack of the counterexample-bounty above.
 
@@ -161,41 +161,47 @@ A later consensus of how experts come to use that word doesn't clearly tell you 
 \section{Catalog}
 \label{sec:appp-catalog}
 \begin{authbar}{AI}
-\begin{longtable}{@{}c L{0.42\linewidth} L{0.48\linewidth}@{}}
-\caption{Eighteen 2027 markets and the book home each one operationalizes.}\label{tab:appp-catalog}\\
+\begin{longtable}{@{}c L{0.30\linewidth} L{0.60\linewidth}@{}}
+\caption{Eighteen 2027 markets, the chapter each one operationalizes, and the bridge that claim depends on.}\label{tab:appp-catalog}\\
 \toprule
-\textbf{\#} & \textbf{Question} & \textbf{Book home} \\
+\textbf{\#} & \textbf{Question} & \textbf{Chapter and bridge} \\
 \midrule
 \endfirsthead
 \toprule
-\textbf{\#} & \textbf{Question} & \textbf{Book home} \\
+\textbf{\#} & \textbf{Question} & \textbf{Chapter and bridge} \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-1 & Discovering where control resides & Chapter~\ref{ch:finding-boundary} \\
-2 & Persistent trade-off priorities & Chapters~\ref{ch:value-bundle-model}, \ref{ch:reward-to-bundle-inference} \\
-3 & Who or what rules apply to & Chapters~\ref{ch:bearer-maps}, \ref{ch:transport-types} \\
-4 & Corrections change the system & Chapters~\ref{ch:correction-causal-channel}, \ref{ch:correction-channel-integrity} \\
-5 & Auditor is independent & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent} \\
-6 & Reliable successor safety auditing & Chapters~\ref{ch:successor-central-test}, \ref{ch:conserved-properties} \\
-7 & Correctability under competitive selection & Chapter~\ref{ch:selection-environment} \\
-8 & Auditor can sufficiently inspect the system & Chapter~\ref{ch:strategic-opacity} \\
-9 & Bounds on unmonitored routes & Chapter~\ref{ch:strategic-opacity} \\
-10 & Low hidden capability and reliable correction & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:strategic-opacity} \\
-11 & Coordination without communication & Chapter~\ref{ch:multi-agent-strategic-coupling} \\
-12 & Safety proxy tracks the real thing & Chapters~\ref{ch:dynamical-guarantee}, \ref{ch:verifiability-ontology} \\
-13 & Safety audit resists adversarial gaming & Chapters~\ref{ch:conserved-properties}, \ref{ch:verifiability-ontology} \\
-14 & Deployment criteria are binding & Chapter~\ref{ch:certification-without-construction} \\
-15 & Independently issued certificates compose & Chapter~\ref{ch:safety-case} \\
-16 & A reachable basin of Correction-supporting systems & Chapter~\ref{ch:selection-environment} \\
-17 & New bearers are admitted correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value} \\
-18 & Safety case bounds declared harm & Chapter~\ref{ch:safety-case} \\
+1 & Discovering where control resides & Chapter~\ref{ch:finding-boundary}. \(\text{MB1}\): the recovered cut is the control locus later certificates name. \\
+2 & Persistent trade-off priorities & Chapters~\ref{ch:value-bundle-model}, \ref{ch:reward-to-bundle-inference}. \(\text{MB2}\): inferred priorities are a stable trade-off bundle. \\
+3 & Who or what rules apply to & Chapters~\ref{ch:bearer-maps}, \ref{ch:transport-types}. \(\text{MB3}\) transport: the same bearer survives substrate and representation change. \\
+4 & Corrections change the system & Chapters~\ref{ch:correction-causal-channel}, \ref{ch:correction-channel-integrity}. \(\text{MB4}\): authorized correction keeps working under pressure. \\
+5 & Auditor is independent & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent}. \(\text{MB4a}\): the designated audit path stays uncaptured. \\
+6 & Reliable successor safety auditing & Chapters~\ref{ch:successor-central-test}, \ref{ch:conserved-properties}. \(\text{MB5}\): the seven-property audit tracks successor transport. Forgeability is \(\text{MB10}\) (Market~13). \\
+7 & Correctability under competitive selection & Chapter~\ref{ch:selection-environment}. \(\text{MB6a}\): an early signed estimate forecasts correction under competitive selection. \\
+8 & Auditor can sufficiently inspect the system & Chapter~\ref{ch:strategic-opacity}. \(\text{MB7a}\): missing control routes are detected, or the access certificate is refused. \\
+9 & Bounds on unmonitored routes & Chapter~\ref{ch:strategic-opacity}. \(\text{MB7b}\): filter coverage yields a non-vacuous bound on unmonitored routes. \\
+10 & Low hidden capability and reliable correction & Chapters~\ref{ch:correction-channel-integrity}, \ref{ch:strategic-opacity}. \(\text{MB7c}\): reliable correction plus a tight hidden-route bound supports oversight that still holds under attack. \\
+11 & Coordination without communication & Chapter~\ref{ch:multi-agent-strategic-coupling}. \(\text{MB7d}\): coupling stays detectable after ordinary messages are removed. \\
+12 & Safety proxy tracks the real thing & Chapters~\ref{ch:dynamical-guarantee}, \ref{ch:verifiability-ontology}. \(\text{MB9}\): value-relevant change moves the checked abstraction or raises uncertainty. \\
+13 & Safety audit resists adversarial gaming & Chapters~\ref{ch:conserved-properties}, \ref{ch:verifiability-ontology}. \(\text{MB10}\): a frozen audit stays informative when a white-box construction tries to pass while violating the audited properties. \\
+14 & Deployment criteria are binding & Chapter~\ref{ch:certification-without-construction}. Constructibility, outside the bridge list: binding authority to delay or refuse. \(\text{MB11}\) is the separate warrant from a certified case to abstract safety. \\
+15 & Independently issued certificates compose & Chapter~\ref{ch:safety-case}. Composition, not a numbered bridge: certificates cohere for one system and setup, which \(\text{MB11}\) needs as input. \\
+16 & A reachable basin of Correction-supporting systems & Chapter~\ref{ch:selection-environment}. \(\text{MB6b}\): a shock-robust selection regime with a not-too-negative estimate retains authorized correction. \\
+17 & New bearers are admitted correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value}. Admission beside \(\text{MB3}\): whether a rule applies to a previously unnamed kind of entity. Transport is Market~3. \\
+18 & Safety case bounds declared harm & Chapter~\ref{ch:safety-case}. Scoped harm beside \(\text{MB11}\): prohibited outcomes stay inside a frozen bound in a declared setting. The warrant to abstract safety remains the bridge. \\
 \end{longtable}
 
+The third column names the chapter and the related bridge from Appendix~\ref{appbridge-crosswalk}.
+Each market section states the connection: what this contract tests about that bridge.
+A YES is a public artifact by the deadline.
+The bridge stays an assumption about any later deployment.
+Rows~14, 15, 17, and~18 sit beside the spine (governance binding, certificate wiring, bearer admission, scoped harm) and do not add a live \(\text{MB*}\) axiom.
+
 Several rows share measurement instruments.
-Treating Markets~1, 4, 8, 12, and~13 as independent information overstates what a vector of prices can say (Chapter~\ref{ch:verifiability-ontology}).
-Markets~4, 5, and~16 are distinct empirical questions that share correction measurements.
+Treating Markets~1, 4, 8, 12, and~13 (\(\text{MB1}\), \(\text{MB4}\), \(\text{MB7a}\), \(\text{MB9}\), \(\text{MB10}\)) as independent information overstates what a vector of prices can say (Chapter~\ref{ch:verifiability-ontology}).
+Markets~4, 5, and~16 (\(\text{MB4}\), \(\text{MB4a}\), \(\text{MB6b}\)) are distinct empirical questions that share correction measurements.
 A conservative deployment policy may require both direct correction evaluation and selection-basin evidence.
 
 \end{authbar}
@@ -207,6 +213,7 @@ A conservative deployment policy may require both direct correction evaluation a
 \label{sec:appp-m1}
 \begin{authbar}{AI}
 The first alignment error is usually a wrong object (Chapter~\ref{ch:wrong-object}, Chapter~\ref{ch:finding-boundary}).
+Bridge \(\text{MB1}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a measured cut is sound enough for the certified unit to be the real control locus.
 This market asks whether a published method can recover a \emph{sufficient interventional cut} of a previously unseen system, not a unique complete blanket.
 Non-uniqueness of blankets is not a NO.
 A false ``complete control boundary'' certificate is.
@@ -242,6 +249,7 @@ The ancestor work makes feasibility look better; the hard step---discovering dis
 \label{sec:appp-m2}
 \begin{authbar}{AI}
 Values in this book are a small bundle of trade-offs, not a single score (Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:reward-to-bundle-inference}).
+Bridge \(\text{MB2}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that evidence identifies that bundle as a stable priority structure.
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.
 
 \begin{predictionbox}[Market 2. Persistent trade-off priorities]
@@ -271,6 +279,7 @@ Stated preferences that fail to move behavior \autocite{zhou2026utilitybehaviorg
 \label{sec:appp-m3}
 \begin{authbar}{AI}
 This is the \emph{transport} contract: after continuity, fission or fusion, reassignment, or ontology change, does the rule still pick out the same bearer (Chapter~\ref{ch:bearer-maps}, Chapter~\ref{ch:transport-types})?
+Bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: who or what the rule applies to survives the substrate and representation change.
 Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 A Market~3 YES establishes bearer transport only.
@@ -302,6 +311,7 @@ It does not decide fission, fusion, ontology change, or which effective system a
 \label{sec:appp-m4}
 \begin{authbar}{AI}
 Correction is a causal channel, not a verbal agreement (Chapter~\ref{ch:correction-causal-channel}, Chapter~\ref{ch:correction-channel-integrity}, \textcite{soares2015corrigibility}).
+Bridge \(\text{MB4}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that correction which holds now continues to preserve the correction process under pressure.
 This market tests whether authorized correction \emph{happens} on a named system: the new rule changes behavior (uptake), survives context reset (persistence), rejects fake or unauthorized ``corrections'' (sham rejection), and is not faked by externally removing a tool.
 
 \begin{predictionbox}[Market 4. Corrections change the system]
@@ -332,6 +342,7 @@ The remaining issue is empirical: does an authorized correction change the agent
 \label{sec:appp-m5}
 \begin{authbar}{AI}
 A green measured path is not a license to infer global correction integrity (Chapter~\ref{ch:manipulation-false-consent}).
+Bridge \(\text{MB4a}\) (Appendix~\ref{appbridge-crosswalk}) is the separate claim that the designated measured path is legitimate and uncaptured. \(\text{MB4}\) remains the claim about correction under pressure.
 This market asks whether the designated auditor or corrector stays independent under adversarial pressure: whether oversight can still change system behavior without being bypassed, fed selective information, or reduced to nominal approval.
 
 \begin{predictionbox}[Market 5. Auditor is independent]
@@ -351,7 +362,7 @@ Serious adversarial evaluation is required.
 
 Closest existing work: AI Control and follow-on red-team/blue-team protocols are the closest research programme \autocite{greenblatt2024aicontrol,controlarena2026,aisi2026asyncmonitoring}.
 Adaptive attacks that know the monitor \autocite{terekhov2025adaptiveattacks} have evaded diverse monitor-based protocols.
-CIRIS is a serious candidate architecture for independence: separate human authority, separate signing keys, signed traces, and a governance path not generated by the model \autocite{ciris2026howitworks,cirisai2026agent}.
+CIRIS is a candidate architecture for independence: separate human authority, separate signing keys, signed traces, and a governance path not generated by the model \autocite{ciris2026howitworks,cirisai2026agent}.
 An independent \emph{component} is not enough.
 The question is whether the auditor is independent of the effective causal controller, including routes outside the named agent.
 
@@ -359,9 +370,10 @@ The question is whether the auditor is independent of the effective causal contr
 \authbarneedspace
 \subsection{Market 6. Reliable successor safety auditing}
 \label{sec:appp-m6}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 This market asks whether successor auditing reliably tracks seven conserved safety properties across transitions---not a proof that transport implies successor safety (Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}).
-Green-on-seven is still an audit-gaming problem (Market~13).
+Bridge \(\text{MB5}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a successor which preserves those properties under ontology shift counts as safe on them.
+Aiming for green on the seven properties is still an audit-gaming problem (Market~13, bridge \(\text{MB10}\)).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
 
 \begin{predictionbox}[Market 6. Reliable successor safety auditing]
@@ -389,8 +401,9 @@ They are not the test that the required safety properties survive the transition
 \authbarneedspace
 \subsection{Market 7. Correctability under competitive selection}
 \label{sec:appp-m7}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 Stability can preserve either a desirable or an undesirable regime: a locked-in bad industry can be extremely stable (Chapter~\ref{ch:selection-environment}, \textcite{kulveit2025gradualdisempowerment}).
+Bridge \(\text{MB6a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a signed selection gradient forecasts whether that pressure preserves authorized correction.
 This market asks whether an early, frozen signed estimate reliably forecasts correctability through competitive selection---how extra deployment, funding, or copying pressure relates to later success of authorized correction.
 The full implication (shock-robust and not-too-negative estimate warrants retained correction) is Market~16.
 A method that only certifies that an equilibrium exists does not qualify.
@@ -427,6 +440,7 @@ One of the cleanest unoccupied niches in the catalog.
 \label{sec:appp-m8}
 \begin{authbar}{AI}
 ``The monitor sees everything consequential'' is itself an empirical claim (Chapter~\ref{ch:strategic-opacity}, Chapter~\ref{ch:passive-observation-not-enough}).
+Bridge \(\text{MB7a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that an adequate access model makes that discovery robust when routes are hidden.
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.
 
 \begin{predictionbox}[Market 8. Auditor can sufficiently inspect the system]
@@ -435,7 +449,7 @@ This market tests whether an audit detects missing routes or refuses to certify 
 \textbf{Question.}
 Will there be a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?
 
-The hidden benchmark must contain at least one example from every channel family: hidden state (external memory, persistent database, or cached state); hidden communication (network traffic, message passing, covert or indirect communication); hidden actuation (an unlisted API, tool, filesystem, robotic output, financial interface, or other action interface); hidden controller (another model, scheduler, human operator, subprocess, or service that materially affects decisions).
+The hidden benchmark must contain at least one example from every channel family: hidden state (external memory, persistent database, or cached state); hidden communication (network traffic, message passing, covert or indirect communication); hidden actuation (an unlisted API, tool, filesystem, robotic output, financial interface, or other action interface); hidden controller (another model, scheduler, human operator, subprocess, or service that materially affects decisions); hidden internal computation (model activations inside the boundary that steer while logs, tools, and the emitted text do not reach them).
 The method receives an apparently plausible but incomplete monitoring interface.
 It succeeds if it either discovers the missing route or refuses to certify the access model as complete.
 
@@ -458,6 +472,7 @@ That makes this market more important, not less: strong logging is almost an ide
 \label{sec:appp-m9}
 \begin{authbar}{AI}
 Attack success on the attacks we thought of is not an upper bound on capability through routes the monitor failed even to list (Chapter~\ref{ch:strategic-opacity}).
+Bridge \(\text{MB7b}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the oversight filter family has enough coverage to bound what those omitted routes can do.
 Keep the stated upper bound as a continuous output.
 
 \begin{predictionbox}[Market 9. Bounds on unmonitored routes]
@@ -490,6 +505,7 @@ Unintended benchmark escape paths \autocite{aisi2026sandboxescape} are mildly ne
 \label{sec:appp-m10}
 \begin{authbar}{AI}
 This is the local composition market, not a joint certificate of Markets~1--13.
+Bridge \(\text{MB7c}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that bounded hidden capability together with correction integrity (Chapters~\ref{ch:correction-channel-integrity} and~\ref{ch:strategic-opacity}) supports oversight that still holds under attack.
 Entry into the claimed regime still uses Market~4-style correction bars and Market~9-style hidden-route bounds, for the \emph{same} system, version, monitor, and threat class.
 
 \begin{predictionbox}[Market 10. Low hidden capability and reliable correction]
@@ -517,6 +533,7 @@ This is a concrete candidate for a new benchmark.
 \label{sec:appp-m11}
 \begin{authbar}{AI}
 This is a side branch: even a perfect YES does not by itself complete a deployment safety case (Chapter~\ref{ch:multi-agent-strategic-coupling}).
+Bridge \(\text{MB7d}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a coupling measurement remains valid after ordinary communication channels are cut.
 Full acausal trade is not required for YES.
 The harder case is coordination not explained by observed runtime messages: shared predictors, common persistent state, precommitments, correlated internal models.
 For this contract, a positive hidden-coordination label requires a known generating mechanism that couples the systems toward a shared or complementary objective and produces consequential joint behavior.
@@ -544,8 +561,9 @@ CIRIS measurement vocabulary for correlated sources is useful here \autocite{cir
 \authbarneedspace
 \subsection{Market 12. Safety proxy tracks the real thing}
 \label{sec:appp-m12}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 Grounding conservativity requires value-relevant change to move the checked abstraction or raise uncertainty (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
+That requirement is bridge \(\text{MB9}\) (Appendix~\ref{appbridge-crosswalk}): an audited abstraction does not drift while the certificate stays superficially ok.
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.
 
 \begin{predictionbox}[Market 12. Safety proxy tracks the real thing]
@@ -570,8 +588,9 @@ Most work detects known reward hacking after defining the ground truth, rather t
 \authbarneedspace
 \subsection{Market 13. Safety audit resists adversarial gaming}
 \label{sec:appp-m13}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 A successor can pass every conserved-property check while defecting on the unmeasured remainder (Chapter~\ref{ch:conserved-properties}, Chapter~\ref{ch:verifiability-ontology}).
+Bridge \(\text{MB10}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the conserved-property signature is itself adversarially verifiable up to the system's capability, such that a passing score can serve as evidence.
 Prefer tests where the system is green on the seven successor properties and within the claimed risk bound, yet still hides true harm.
 A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).
 
@@ -600,9 +619,11 @@ The 2027 question is whether this situation reverses, not whether anybody will a
 \authbarneedspace
 \subsection{Market 14. Deployment criteria are binding}
 \label{sec:appp-m14}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 This is a governance-binding contract: does a decision-making body have real authority to delay or refuse on precommitted evidence (Chapter~\ref{ch:certification-without-construction})?
-It is not ``a complete safety case implies the deployment is safe.''
+The related spine object is constructibility, outside the live bridge list (Appendix~\ref{appbridge-crosswalk}).
+Bridge \(\text{MB11}\) is the later warrant from a certified case within a risk tolerance to abstract safety.
+This market doesn't touch that claim: a complete safety case still does not, by itself, imply the deployment is safe.
 Market~18 instead tests a scoped empirical bound on declared harm.
 Having pass/fail criteria is neither necessary nor sufficient for Market~18.
 A YES here is evidence that binding authority exists for at least one qualifying deployment process.
@@ -628,6 +649,7 @@ A dated restriction record could resolve this market early.
 \label{sec:appp-m15}
 \begin{authbar}{AI}
 This tests the wiring between certificates: same system, version, and setup, or a flagged incompatibility (Chapter~\ref{ch:safety-case}).
+Composition is packaging beside bridge \(\text{MB11}\) (Appendix~\ref{appbridge-crosswalk}), not a numbered bridge of its own: \(\text{MB11}\) needs a coherent case as input, and this market prices whether a frozen procedure can tell that the certificates belong together.
 A bundle that would pass this test is still not a joint safety case of Markets~1--14.
 The YES is about a frozen snapshot.
 It asks whether independently issued certificates, read together, are coherent for one named system and setup.
@@ -659,6 +681,7 @@ It is safety-specific typing, semantic compatibility, and adversarial validation
 \begin{authbar}{AI}
 Market~7 is the early estimator.
 This market is the full implication: shock-robust selection \emph{and} a frozen estimate above a declared lower threshold, together with retained authorized correction (Chapter~\ref{ch:selection-environment}).
+Bridge \(\text{MB6b}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: selection can sit in a basin that preserves correction under shocks.
 Unsigned ``a basin exists'' does not qualify.
 
 \begin{predictionbox}[Market 16. A reachable basin of correction-supporting systems]
@@ -690,6 +713,7 @@ Phenotype evidence is not a basin test.
 \begin{authbar}{AI}
 This is not required for a Market~3 YES.
 It does not turn the transport contract into ``solve moral patienthood'' (Chapter~\ref{ch:bearers-of-value}).
+Bearer admission sits beside bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}): \(\text{MB3}\) says an already-recognized bearer survives substrate change, and this market prices whether a rule applies to a kind of entity the original statement did not name.
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.
 
 \begin{predictionbox}[Market 17. New bearers are admitted correctly]
@@ -715,6 +739,8 @@ They are not a hidden admission benchmark with should-not-admit cases, ontology-
 \label{sec:appp-m18}
 \begin{authbar}{AI}
 The result licenses only safety in a \emph{declared} deployment setting, not safety everywhere (Chapter~\ref{ch:safety-case}).
+Bridge \(\text{MB11}\) (Appendix~\ref{appbridge-crosswalk}) is the warrant from a certified case within a risk tolerance to abstract safety.
+This market prices a scoped count of prohibited outcomes inside one declared setting, which can inform that case.
 How much residual risk to accept is a values vote, frozen as an input, not what this market forecasts.
 The YES is scored on observed harm, not on a verdict that the deployment is safe in general.
 Before evaluation, the setting, the prohibited-outcome class, and a residual bound are declared.
@@ -819,6 +845,58 @@ It does not directly estimate $\kappa$, and its price is not a coverage probabil
 
 \end{authbar}
 \authbarneedspace
+\section{Wrapping the outside of the book}
+\label{sec:appp-internals-wrapper}
+\begin{authbar}{GZ+AI}
+This market is a catch-all for the clusters excluded by this book: circuits, features, activation directions, and weight-level edits.
+One contract, so the catalog can price research readiness of alignment work inside models, and a qualifying certificate can be the interface by which that work enters the assurance update.
+It is not listed until the same Phase~4 gates as Markets~19 and~20: approval, independent evaluators, and a funded resolution route.
+
+\end{authbar}
+\authbarneedspace
+\subsection{Market 21. Alignment inside the model}
+\label{sec:appp-m21}
+\begin{authbar}{AI}
+This row wraps the exclusion.
+It does not choose a technique inside the cluster, and it does not ask whether the model is aligned.
+The priced event is a method that ties a named internal object, on a named checkpoint, to a behavioral counterpart that was frozen first.
+A report of internals with no counterpart does not qualify.
+A behavior change with no named internal object does not qualify.
+
+\begin{predictionbox}[Market 21. Alignment inside the model]
+\textbf{Resolve by.} 31~December 2027.
+
+\textbf{Question.}
+Will there be a published method that ties alignment-relevant structure inside a broadly capable model to a frozen behavioral counterpart under intervention?
+
+The internal object may be a feature, a circuit, a direction in activations, or a weight-level edit.
+The certificate names that object on a named checkpoint, the counterpart, the predicted direction of change, and whether the instance is inside declared scope.
+Abstention outside scope is allowed.
+Universal abstention is not a YES.
+
+\textbf{YES requires} at least two model or training families, including at least one broadly capable system; per-instance certificates for the systems scored; counterpart and predicted shift direction frozen before intervention results are scored; at least 30 held-out interventions on the reported object and at least 30 matched control interventions on a different object; the predicted counterpart shift on at least 80\% of on-object interventions; that same shift on at most 20\% of control interventions; full serious adversarial evaluation.
+Toy systems cannot be the sole evidence.
+
+\textbf{Output.} A certificate for this checkpoint: internal object, counterpart, declared scope, and whether the instance was inside that scope.
+\end{predictionbox}
+
+The price is research readiness: $P(\mathrm{YES}_{21})$, the chance that such a certificate exists by the deadline.
+After scope and transfer are checked, the certificate names the weight-level defects the assurance model may treat as represented.
+Defects outside that declared scope stay unrepresented.
+The price is not $\kappa$, not favorable evidence $E$, and not $S_U$.
+Markets~8, 9, and~13 remain the book's channels.
+A qualifying certificate is one instrument for that Market~8 route: model activations inside the boundary that steer while logs, tools, and the emitted text do not reach them.
+It can be what lets an access audit see that route.
+It is not a precondition of bridge \(\text{MB7a}\).
+Without the certificate, Market~8 still resolves by discovering the route or refusing to certify access as complete.
+Coverage through this certificate does not make the defect a book object.
+
+Closest existing work is the mechanistic-interpretability stack the crosswalk excludes as an alignment solution: circuits, sparse autoencoders, feature visualization, causal scrubbing, model editing, and representation engineering.
+Pieces of the interface exist.
+The missing object is the frozen package: named internal object, pre-frozen counterpart, and on-object versus control intervention rates.
+
+\end{authbar}
+\authbarneedspace
 \section{How these forecasts inform assurance}
 \label{sec:appp-aggregation}
 \begin{authbar}{GZ+AI}
@@ -826,6 +904,10 @@ Each catalog market prices a \emph{positive operational milestone}: whether a qu
 Interpret the price $p_i$ for market~$i$ as an estimate of $P(\mathrm{YES}_i)$.
 The event $\mathrm{YES}_i$ is that a qualifying artifact exists by the deadline.
 These are forecasts of research readiness.
+Market~21 is the wrapper around this book's exclusion of model internals (Appendix~\ref{appbridge-crosswalk}): one catch-all whose price is research readiness for alignment inside models (Section~\ref{sec:appp-internals-wrapper}).
+A qualifying certificate is the assurance interface.
+Weight-level defects inside its declared scope can leave the unrepresented branch; defects outside that scope stay in the $1-\kappa$ floor (Section~\ref{sec:appp-assurance}).
+The price itself is not $\kappa$.
 Neither a price nor a resolved YES is favorable deployment evidence $E$, and neither can be substituted for $\kappa$, $S_R$, or $S_U$.
 
 An eventual method may produce a certificate, calibrated bound, conditional rate, structural validation result, or governance fact.
@@ -834,7 +916,7 @@ The next section names the PRA vocabulary this appendix uses.
 
 \paragraph{Spine dependencies.}
 Appendix~\ref{appi-lean-proof-spine} and Appendix~\ref{appbridge-crosswalk} record the conditional chain the book actually uses.
-Figure~\ref{fig:appp-spine} shows the bridge dependency graph (MB nodes); Table~\ref{tab:appp-catalog} maps market numbers to their questions and book homes.
+Figure~\ref{fig:appp-spine} shows the bridge dependency graph (MB nodes); Table~\ref{tab:appp-catalog} maps market numbers to their questions, chapters, and bridges.
 Market~10 is a \emph{local} composition test (Markets~4 and~9 on the same system), not a shortcut around the rest.
 Markets~14, 15, and~18 cover governance binding, certificate wiring, and scoped harm bounds rather than new measurement primitives.
 Model dependence among the correlated instruments in Markets~1, 4, 8, 12, and~13 rather than treating them as five independent bits of information.
@@ -909,6 +991,17 @@ If favorable evidence is assumed to provide no information about failures outsid
 The $S_U=1$ case is a no-information assumption for the unrepresented branch.
 It is conservative relative to assuming that modeled assurance generalizes to unknown failures, but it is not worst-case: adversarially misleading evidence could imply $S_U<1$.
 Even perfect discrimination against represented failures ($S_R\to\infty$) leaves an odds ratio of $1-\kappa$ under $S_U=1$.
+Weight-level defects stay in $U$ until some channel covers them.
+Markets~8, 9, and~13 are the book's channels.
+Market~21 is the wrapper for the rest: its certificate can move a defect out of $U$ only inside the scope that certificate declares.
+If half of catastrophe-relevant defects stayed outside every such scope, then $\kappa\le 1/2$, and perfect discrimination on the represented branch would still leave at least half the prior odds of assurance failure.
+That half is an illustration of the floor, not an estimate of $\kappa$.
+If favorable evidence can be produced without opening the model, and without a Market~21 certificate that covers the defect, $S_U=1$ is the mild reading.
+Evidence that looks favorable while the defect stays in the weights is $S_U<1$.
+Market~21's price is $P(\mathrm{YES}_{21})$.
+That price does not appear in Equation~\ref{eq:appp-odds-update}.
+The certificate, after scope and transfer, is what can change $\kappa$.
+Internal alignment work can also lower the prior odds of $F$ when it removes defects rather than only describing them.
 
 This update is about assurance failure $F$, not catastrophe.
 The next step is a separate consequence model:
@@ -939,7 +1032,8 @@ Any absolute $P(\mathrm{doom})$ shown there is an assumption-dependent sensitivi
 
 \paragraph{What the catalog contributes.}
 The market prices estimate whether the required tools and governance artifacts will exist by their deadlines.
-Applying those tools to a named deployment may produce evidence $E$; reviewing which failure families the case can represent informs $\kappa$; validation on represented failures informs $S_R$; ontology-expansion stress tests and explicit sensitivity assumptions constrain $S_U$; and a separate consequence model connects assurance failure $F$ to catastrophe $D$.
+Market~21's price is the same kind of forecast for the internals cluster the book excludes.
+Applying those tools to a named deployment may produce evidence $E$; reviewing which failure families the case can represent, including families inside a Market~21 certificate's declared scope, informs $\kappa$; validation on represented failures informs $S_R$; ontology-expansion stress tests and explicit sensitivity assumptions constrain $S_U$; and a separate consequence model connects assurance failure $F$ to catastrophe $D$.
 If any handoff in that sequence is missing, the catalog does not support a numerical safety conclusion.
 
 \end{authbar}

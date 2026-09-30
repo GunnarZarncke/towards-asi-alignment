@@ -32,3 +32,7 @@
 {"ts": "2026-09-29T22:30:52Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#3", "from": "GZ+AI", "to": "GZ", "human_lines": 58, "agent_lines": 0}
 {"ts": "2026-09-29T22:30:52Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#7", "from": "GZ+AI", "to": "GZ", "human_lines": 26, "agent_lines": 0}
 {"ts": "2026-09-30T12:25:13Z", "file": "chapters/ch11-capability-without-task-ontology.tex", "span": "chapters/ch11-capability-without-task-ontology.tex#6", "from": "GZ", "to": "GZ+AI", "human_lines": 13, "agent_lines": 8}
+{"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch01-wrong-object.tex", "span": "chapters/ch01-wrong-object.tex#7", "from": "AI", "to": "GZ+AI", "human_lines": 0, "agent_lines": 4}
+{"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch06-agent-without-anthropomorphism.tex", "span": "chapters/ch06-agent-without-anthropomorphism.tex#2", "from": "AI", "to": "GZ+AI", "human_lines": 0, "agent_lines": 7}
+{"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#6", "from": "AI", "to": "GZ+AI", "human_lines": 0, "agent_lines": 32}
+{"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch17-low-dimensional-value-learning.tex", "span": "chapters/ch17-low-dimensional-value-learning.tex#2", "from": "GZ", "to": "GZ+AI", "human_lines": 20, "agent_lines": 2}

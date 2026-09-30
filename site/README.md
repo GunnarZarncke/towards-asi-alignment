@@ -100,7 +100,19 @@ Output: `site/dist/`
 | `public/reviewing-for-agents.md` | Read-only review guide for agents (from `REVIEWING_FOR_AGENTS.md`) |
 | `public/search-index.json` | Flat JSON index for programmatic lookup (built by `build-search-index.mjs`); documented at `/search-index/` |
 | `public/og-image.png` | Default Open Graph / Twitter preview image (1200×630) |
+| `scripts/lib/preview-image.mjs` | Resolves card `previewImage` (explicit → body image → chapter JPEG → news meme) |
 | `src/lib/seo.ts` | Site name, canonical URL helpers, default description |
+
+## Card graphics
+
+When you add or edit a card, decide its preview image and any in-page figure before syncing:
+
+1. **Edit the source**, not generated cards: YAML roster + body file for concepts/bridges/projections/news; hand `.md` for artifacts.
+2. **Pick a graphics path:** none (site default og-image) · concept logo (in-page only) · chapter illustration JPEG · field-news meme · custom `previewImage` path · first `<img>` / markdown image in the body.
+3. **Run the matching sync:** e.g. `sync:field-news-memes` + `sync:field-news`, or `sync:chapter-illustrations` + `sync:chapter-cards`.
+4. **`previewImage` sets `og:image` and RSS enclosures** for news cards; chapter cards pick up opening JPEGs automatically when present under `public/figures/illustrations/web/`.
+
+See also the **Card graphics** table in root [`AGENTS.md`](../AGENTS.md) (Companion site section).
 
 ## Deploy
 

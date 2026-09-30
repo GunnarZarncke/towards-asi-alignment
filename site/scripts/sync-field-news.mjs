@@ -2,7 +2,7 @@
 // src/data/field-news.json (chapter → related news lookup).
 //
 // Usage: node scripts/sync-field-news.mjs [--check]
-import { access, readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadYaml, loadBody, renderCard, writeCard } from "./lib/concepts-yaml.mjs";
@@ -12,6 +12,7 @@ import {
   loadChapterTitles,
   stripReadMoreFooter
 } from "./lib/chapter-links.mjs";
+import { resolveCardPreviewImage } from "./lib/preview-image.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -20,29 +21,7 @@ const metadataDir = path.join(repoRoot, "metadata");
 const bodiesDir = path.join(metadataDir, "field-news", "bodies");
 const cardsDir = path.join(siteRoot, "src", "content", "cards");
 
-const PREVIEW_IMAGE_EXTS = [".jpg", ".jpeg", ".png", ".webp"];
-
-function memeBasename(bodyPath) {
-  return path.basename(bodyPath, path.extname(bodyPath));
-}
-
-async function resolvePreviewImage(bodyPath, explicit) {
-  if (explicit) return explicit;
-  const base = memeBasename(bodyPath);
-  const memeDir = path.join(siteRoot, "public", "field-news", "memes");
-  for (const ext of PREVIEW_IMAGE_EXTS) {
-    const filePath = path.join(memeDir, `${base}${ext}`);
-    try {
-      await access(filePath);
-      return `/field-news/memes/${base}${ext}`;
-    } catch {
-      // try next extension
-    }
-  }
-  return undefined;
-}
-
-async function publicFieldsFor(row) {
+async function publicFieldsFor(row, bodyText) {
   const fields = {
     title: row.title,
     type: "news",
@@ -55,7 +34,12 @@ async function publicFieldsFor(row) {
   if (row.eventDate && row.eventDate !== row.date) {
     fields.eventDate = row.eventDate;
   }
-  const previewImage = await resolvePreviewImage(row.body, row.previewImage);
+  const previewImage = await resolveCardPreviewImage({
+    siteRoot,
+    explicit: row.previewImage,
+    bodyPath: row.body,
+    bodyText
+  });
   if (previewImage) fields.previewImage = previewImage;
   return fields;
 }
@@ -93,7 +77,7 @@ async function main() {
     const readMore = formatReadMoreMarkdown(row.bookChapters, chapterTitles);
     const body = readMore ? `${stripped}\n\n${readMore}` : stripped;
     const hookLine = row.hook ? `${row.hook}\n\n` : "";
-    const contents = renderCard(await publicFieldsFor(row), bodyFm, hookLine + body);
+    const contents = renderCard(await publicFieldsFor(row, hookLine + body), bodyFm, hookLine + body);
     const result = await writeCard(cardsDir, row.slug, contents, { check });
     if (!result.matches) mismatches.push(result.filePath);
   }
@@ -101,7 +85,13 @@ async function main() {
   const dataDir = path.join(siteRoot, "src", "data");
   const newsIndex = [];
   for (const row of ordered) {
-    const previewImage = await resolvePreviewImage(row.body, row.previewImage);
+    const { body: rawBodyForPreview } = await loadBody(bodiesDir, row.body);
+    const previewImage = await resolveCardPreviewImage({
+      siteRoot,
+      explicit: row.previewImage,
+      bodyPath: row.body,
+      bodyText: rawBodyForPreview
+    });
     const entry = {
       slug: row.slug,
       card: row.slug,

@@ -100,6 +100,10 @@ If selection pressure rewards opacity, speed, or dependence, local alignment met
 LLM whitebox methods, such as training-hygiene methods, mechanistic-interpretability tool stacks, and formal-verification construction programs 
 (see Appendix~\ref{appbridge-crosswalk}, Section~\ref{sec:intervention-coverage-map}, and the external intervention index \autocite{zarncke2025interventions}) 
 are important inner alignment approaches and a widely studied research agenda, but not the scope of this book.
+They re-enter when they give the evaluator a measurement handle on model activations inside the boundary (Chapter~\ref{ch:strategic-opacity}).
+Without that handle, those activations can still steer while logs, tools, and the emitted text do not reach them.
+A method that only prevents the misbehavior, and opens no handle, does not re-enter here.
+That prevention bears on how often assurance failure still leads to catastrophe (Appendix~\ref{appp-bridge-predictions}, Section~\ref{sec:appp-assurance}).
 
 Methods that only keep a system behaving well on inputs like those it was trained on are a standard robustness topic (Amodei et al.: robustness to distributional shift \autocite{amodei2016concrete}).
 This book does not treat ``stay like the training set'' as the primary alignment object.

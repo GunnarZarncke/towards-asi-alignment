@@ -76,13 +76,16 @@ fieldNews:
     eventDate: 2026-09-11
     kind: research
     title: "A solved problem is not the point of mathematics"
-    hook: "Twenty-five Fields medallists say company benchmarks and mathematics want different things. A famous problem was a landmark for understanding. Scoring the landmark can take the understanding away."
-    summary: "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next."
-    decision: "Ask: (1) when a lab says a major problem is solved, is there a method other mathematicians can learn, or only a true-or-false? (2) Will the next benchmark wait for a writeup?"
+    hook: "Twenty-five Fields medallists say company benchmarks and mathematics want different things. Scoring a landmark is a bad proxy. The next mathematician is a successor, and a certificate is not a construction."
+    summary: "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next. This project grants the proxy cut, then splits successor inheritance from construction: a true theorem is a certificate; how to build the next understanding stays open."
+    decision: "Ask: (1) when a lab says a major problem is solved, is there a method other mathematicians can learn, or only a true-or-false? (2) does the next student or model inherit that method, or only the theorem? (3) is the writeup a certificate, or a construction of the later community?"
     bookChapters:
       - ch14
       - ch34
       - ch03
+      - ch30
+      - ch31
+      - ch33
       - ch16
     body: bodies/2026-09-math-misalignment.md
     order: 0

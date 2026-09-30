@@ -42,18 +42,20 @@
         </button>
       </div>
       <div class="page-notes-editor">
-        <textarea
-          class="page-notes-input"
-          rows="3"
-          spellcheck="true"
-          aria-label="Note text"
-        ></textarea>
-        <div class="page-notes-actions">
-          <button type="button" class="page-notes-action" data-action="save" title="Save note" aria-label="Save note">
+        <div class="page-notes-input-row">
+          <textarea
+            class="page-notes-input"
+            rows="3"
+            spellcheck="true"
+            aria-label="Note text"
+          ></textarea>
+          <button type="button" class="page-notes-action page-notes-save" data-action="save" title="Save note" aria-label="Save note">
             <svg class="page-notes-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M6.2 11.2 2.8 7.8l1-1 2.4 2.4 5.6-5.6 1 1-6.6 6.6Z" />
             </svg>
           </button>
+        </div>
+        <div class="page-notes-actions">
           <button type="button" class="page-notes-action" data-action="copy" title="Insert page selection" aria-label="Insert page selection">
             <svg class="page-notes-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h6A1.5 1.5 0 0 1 11 3.5V4h1.5A1.5 1.5 0 0 1 14 5.5v7A1.5 1.5 0 0 1 12.5 14h-7A1.5 1.5 0 0 1 4 12.5V11H3.5A1.5 1.5 0 0 1 2 9.5v-6ZM5 11h7.5V5.5H5V11Z" />
@@ -896,20 +898,25 @@
   }
 
   .page-notes-editor {
-    position: relative;
     flex-shrink: 0;
-    padding-bottom: 1.1rem;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
   }
 
+  .page-notes-input-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
   .page-notes-input {
+    flex: 1;
     width: 100%;
     min-height: calc(3 * 1.45em + 0.75rem);
     max-height: 12rem;
     margin: 0;
-    padding: 0.45rem 0.55rem 2rem;
+    padding: 0.45rem 0.55rem;
     border: 1px solid var(--color-border);
     border-radius: 0.45rem;
     resize: vertical;
@@ -939,17 +946,16 @@
     outline-offset: 1px;
   }
 
+  .page-notes-save {
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
   .page-notes-actions {
-    position: absolute;
-    left: 0.35rem;
-    right: 0.35rem;
-    bottom: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.35rem;
-    transform: translateY(50%);
-    z-index: 2;
   }
 
   .page-notes-action {

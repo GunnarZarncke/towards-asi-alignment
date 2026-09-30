@@ -248,6 +248,16 @@ nodes:
     outputClass: structural-validation
     catalogPhase: 3
     producesPreset: kappaSensitivity
+  - id: m21
+    market: 21
+    label: Internals exclusion wrapper
+    outputClass: diagnostic-certificate
+    catalogPhase: 3
+    outsideBook: true
+    note: >
+      Catch-all for alignment work inside models. Not a book object.
+      A qualifying certificate may move weight-level defects out of U
+      only inside its declared scope. The price is not κ.
 
 relations:
   - from: m1
@@ -311,6 +321,13 @@ relations:
     justification: >
       Category-3 discoveries document ontology gaps; raw rates do not estimate κ
       without a stated sampling model over catastrophe-relevant failures.
+  - from: m21
+    to: kappaSensitivity
+    type: evidential
+    justification: >
+      A qualifying internals certificate names the scope inside which weight-level
+      defects may leave U. The market price does not estimate κ. Coverage through
+      this node does not make the defect a book object.
 
 dependenceWarnings:
   - markets: [1, 4, 8, 12, 13]
@@ -319,6 +336,11 @@ dependenceWarnings:
     note: >
       Complementary correction obligations with shared measurements; not
       independent confirmations and not a simple OR alternative.
+  - markets: [8, 9, 13, 21]
+    note: >
+      Markets 8, 9, and 13 are the book's channels. Market 21 wraps weight-level
+      defects they do not cover. Do not add the four prices as independent bits,
+      and do not treat a Market 21 YES as coverage on 8, 9, or 13.
 
 phase3Markets:
   - number: 19
@@ -335,6 +357,15 @@ phase3Markets:
     marketStatus: draft
     fundingRoute: prediction-evaluation-program
     appendixAnchor: sec:appp-m20
+  - number: 21
+    id: market-21
+    title: Alignment inside the model
+    resolveBy: "2027-12-31"
+    marketStatus: draft
+    outsideBook: true
+    role: exclusion-wrapper
+    fundingRoute: prediction-evaluation-program
+    appendixAnchor: sec:appp-m21
 
 presets:
   note: >

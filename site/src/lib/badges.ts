@@ -96,7 +96,7 @@ export const TYPE_META: Record<
   agenda: {
     title: "Field agenda",
     description:
-      "Coherent AI safety research or advocacy program — introduction, links, map clustering, and bridge coverage on the Field hub."
+      "Coherent AI safety research or advocacy programs."
   },
   essay: {
     title: "Essay",
