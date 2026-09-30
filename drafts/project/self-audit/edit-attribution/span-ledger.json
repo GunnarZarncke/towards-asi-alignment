@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260930T203035.832Z",
+  "_as_of": "20260930T204854.787Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -371,7 +371,7 @@
   "chapters/ch06-agent-without-anthropomorphism.tex#2": {
     "agent": 10,
     "file": "chapters/ch06-agent-without-anthropomorphism.tex",
-    "human": 0,
+    "human": 2,
     "index": 2,
     "key": "GZ+AI",
     "prior": "GZ+AI"
@@ -379,9 +379,9 @@
   "chapters/ch07-finding-boundary.tex#2": {
     "agent": 11,
     "file": "chapters/ch07-finding-boundary.tex",
-    "human": 0,
+    "human": 2,
     "index": 2,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch07-finding-boundary.tex#20": {
@@ -419,7 +419,7 @@
   "chapters/ch07-finding-boundary.tex#7": {
     "agent": 2,
     "file": "chapters/ch07-finding-boundary.tex",
-    "human": 26,
+    "human": 28,
     "index": 7,
     "key": "GZ",
     "prior": "GZ"
@@ -515,9 +515,9 @@
   "chapters/ch10-strategic-opacity.tex#2": {
     "agent": 10,
     "file": "chapters/ch10-strategic-opacity.tex",
-    "human": 0,
+    "human": 4,
     "index": 2,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch10-strategic-opacity.tex#4": {
@@ -539,9 +539,9 @@
   "chapters/ch10-strategic-opacity.tex#6": {
     "agent": 2,
     "file": "chapters/ch10-strategic-opacity.tex",
-    "human": 0,
+    "human": 1,
     "index": 6,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch10-strategic-opacity.tex#8": {
@@ -643,9 +643,9 @@
   "chapters/ch14-intelligence-deepens-misalignment.tex#7": {
     "agent": 2,
     "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
-    "human": 0,
+    "human": 1,
     "index": 7,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch14-intelligence-deepens-misalignment.tex#8": {
@@ -691,9 +691,9 @@
   "chapters/ch15-values-compressed-control.tex#3": {
     "agent": 2,
     "file": "chapters/ch15-values-compressed-control.tex",
-    "human": 0,
+    "human": 3,
     "index": 3,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch15-values-compressed-control.tex#30": {
@@ -907,9 +907,9 @@
   "chapters/ch21-reward-to-bundle-inference.tex#2": {
     "agent": 11,
     "file": "chapters/ch21-reward-to-bundle-inference.tex",
-    "human": 0,
+    "human": 1,
     "index": 2,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch21-reward-to-bundle-inference.tex#20": {
@@ -1003,9 +1003,9 @@
   "chapters/ch27-correction-channels-adversarial-pressure.tex#10": {
     "agent": 2,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
-    "human": 0,
+    "human": 1,
     "index": 10,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#2": {
@@ -1027,9 +1027,9 @@
   "chapters/ch27-correction-channels-adversarial-pressure.tex#8": {
     "agent": 11,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
-    "human": 0,
+    "human": 3,
     "index": 8,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
@@ -1083,17 +1083,17 @@
   "chapters/ch30-successor-central-test.tex#3": {
     "agent": 8,
     "file": "chapters/ch30-successor-central-test.tex",
-    "human": 0,
+    "human": 1,
     "index": 3,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch31-conserved-properties.tex#3": {
     "agent": 9,
     "file": "chapters/ch31-conserved-properties.tex",
-    "human": 0,
+    "human": 1,
     "index": 3,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch32-self-modeling-self-opacity.tex#1": {
@@ -1179,9 +1179,9 @@
   "chapters/ch33-certification-without-construction.tex#20": {
     "agent": 11,
     "file": "chapters/ch33-certification-without-construction.tex",
-    "human": 0,
+    "human": 3,
     "index": 20,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch34-selection-environment.tex#34": {
@@ -1251,9 +1251,9 @@
   "chapters/ch38-conductive-artifacts-pivotal-processes.tex#3": {
     "agent": 9,
     "file": "chapters/ch38-conductive-artifacts-pivotal-processes.tex",
-    "human": 0,
+    "human": 1,
     "index": 3,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch38-conductive-artifacts-pivotal-processes.tex#31": {
@@ -1339,9 +1339,9 @@
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#7": {
     "agent": 8,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
-    "human": 0,
+    "human": 2,
     "index": 7,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#8": {
@@ -1363,9 +1363,9 @@
   "chapters/ch44-lethality-stress-test-open-issues.tex#7": {
     "agent": 8,
     "file": "chapters/ch44-lethality-stress-test-open-issues.tex",
-    "human": 0,
+    "human": 3,
     "index": 7,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch45-value-change-at-stake.tex#10": {
@@ -1395,9 +1395,9 @@
   "chapters/ch46-unconscious-value-drift.tex#4": {
     "agent": 9,
     "file": "chapters/ch46-unconscious-value-drift.tex",
-    "human": 0,
+    "human": 2,
     "index": 4,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch47-bearers-of-value.tex#4": {
@@ -1411,9 +1411,9 @@
   "chapters/ch47-bearers-of-value.tex#5": {
     "agent": 8,
     "file": "chapters/ch47-bearers-of-value.tex",
-    "human": 0,
+    "human": 1,
     "index": 5,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch48-towards-alignment.tex#6": {
