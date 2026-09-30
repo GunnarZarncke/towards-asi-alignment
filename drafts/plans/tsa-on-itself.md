@@ -1,6 +1,6 @@
 # TSA on itself — the alignment attractor in the small
 
-Status: **plan** (2026-09-23; §3.12 scope and bar cadence revised 2026-09-28). Not a lane; cross-cutting. Origin: the 2026-09-22 consistency review and the reflexive discussion that followed ([`2026-09-23-consistency-decisions.md`](../conversation-summaries/2026-09-23-consistency-decisions.md)). Sibling notes: [`audit-telemetry.md`](audit-telemetry.md) (what agent projects should record), [`../project/consistency-review-2026-09-22.md`](../project/consistency-review-2026-09-22.md).
+Status: **plan** (2026-09-23; §3.12 scope and bar cadence revised 2026-09-28). Not a lane; cross-cutting. Origin: the 2026-09-22 consistency review and the reflexive discussion that followed ([`2026-09-23-consistency-decisions.md`](../conversation-summaries/archive/2026-09/2026-09-23-consistency-decisions.md)). Sibling notes: [`audit-telemetry.md`](audit-telemetry.md) (what agent projects should record), [`../project/consistency-review-2026-09-22.md`](../project/consistency-review-2026-09-22.md).
 
 **Claim strength:** methodology-building. Nothing here discharges an `MB*` or says anything about frontier systems. It applies the book's layers to the process that produces the book, names the adversarial dynamics inside that process, and proposes instruments that can fail. An instrument without a stop condition is documentation (INSTRUCTIONS.md §5); every instrument below carries one.
 
