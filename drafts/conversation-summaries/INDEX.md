@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-09-30 | **Decision blocks plain language** — Rewrite all projection/bridge and 18 concept `decision:` fields; close site-notes plan. | [2026-09-30-decision-blocks-plain.md](2026-09-30-decision-blocks-plain.md) |
 | 2026-09-30 | **Wikiq citation review** — Author trimmed redundant pre-quote lead-ins at 15 `\wikiq` sites; ch15 Shard Theory `{GZ}` bridge. | [2026-09-30-wikiq-citation-review.md](2026-09-30-wikiq-citation-review.md) |
 | 2026-09-30 | **Wikiq authbar + site** — Quotes outside authbars; deduped attribution; site HTML cites; nocite generator fix; PDF rebuild. | [2026-09-30-wikiq-authbar-site.md](2026-09-30-wikiq-authbar-site.md) |
 | 2026-09-30 | **Ch. 15 overlapping environments** — Per-person compression and environment overlap as a thread through Ch. 15/16/17/20/21; Lean unchanged (`P17` covers it). | [2026-09-30-ch15-overlapping-environments.md](2026-09-30-ch15-overlapping-environments.md) |

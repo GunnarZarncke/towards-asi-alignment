@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260930T204854.787Z",
+  "_as_of": "20260930T210056.485Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -689,7 +689,8 @@
     "prior": "AI"
   },
   "chapters/ch15-values-compressed-control.tex#3": {
-    "agent": 2,
+    "agent": 4,
+    "dirty": true,
     "file": "chapters/ch15-values-compressed-control.tex",
     "human": 3,
     "index": 3,

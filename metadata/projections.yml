@@ -14,7 +14,7 @@ projections:
       - importedAssumption
     graphNodeId: CIRL
     summary: Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On this project's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.
-    decision: When evaluating CIRL-style reward learning, ask whether the target is a single reward coordinate or bundle structure, bearer maps, and the correction process that produces later evidence.
+    decision: Before trusting a claim that an AI "learned what we want" from watching or helping people, ask whether it learned one score of how good things are, or also how people trade values off against each other, who the values apply to, and whether people can still correct it later.
     bookChapters:
       - ch16
       - ch18
@@ -34,7 +34,7 @@ projections:
       - importedAssumption
     graphNodeId: SHUT
     summary: Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses.
-    decision: 'Treat shutdown tests as necessary but not sufficient: passing an off-switch check does not certify usable correction bandwidth or judge legitimacy.'
+    decision: 'Treat a working off switch as necessary but not enough: a system that accepts shutdown may still not let people correct what it does, and the person pressing the switch may not be the right one to decide.'
     bookChapters:
       - ch25
       - ch27
@@ -54,7 +54,7 @@ projections:
       - importedAssumption
     graphNodeId: INT
     summary: Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails.
-    decision: Do not equate interrupt-safe training with correction-safe deployment; check whether interruption preserves the information the human needs to steer future behavior.
+    decision: 'Do not assume that a system trained to accept interruptions is safe to correct in deployment. Check whether interrupting it still leaves people the information they need to change its future behavior.'
     bookChapters:
       - ch25
       - ch28
@@ -73,7 +73,7 @@ projections:
       - importedAssumption
     graphNodeId: CORR
     summary: Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails.
-    decision: Evaluate corrigibility proposals by whether they preserve correction capacity across capability growth and successor change, not whether the system accepts a single local shutdown or edit command.
+    decision: 'Judge proposals for correctable AI by whether people can still correct the system as it becomes more capable and as it is replaced by successors, not by whether it accepts one shutdown or one edit today.'
     bookChapters:
       - ch28
       - ch46
@@ -91,7 +91,7 @@ projections:
       - importedAssumption
     graphNodeId: IMPACT
     summary: Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity.
-    decision: Before adopting a low-impact or AUP penalty as a safety proxy, ask whether the auxiliary basis tracks correction-relevant options and whether reachability preservation implies usable correction bandwidth.
+    decision: 'Before using a "do little harm" penalty as a safety measure, ask whether the options it protects are the ones people need to correct the system, and whether keeping options open actually leaves room to steer it.'
     bookChapters:
       - ch27
       - ch45
@@ -110,7 +110,7 @@ projections:
       - importedAssumption
     graphNodeId: QUANT
     summary: Quantilizers bound optimizer risk by sampling from a high-performing quantile rather than maximizing directly. Local quantile safety and distribution soundness transfer under explicit assumptions — but local quantile-safe action choice does not imply trajectory-level correction integrity.
-    decision: Use quantile restrictions as a local risk control, not as evidence that correction capacity survives capability growth or successor change.
+    decision: 'Use limits on how extreme a system''s choices can be as a local risk control, not as evidence that people can still correct it after it grows more capable or is replaced.'
     bookChapters:
       - ch27
       - ch46
@@ -129,7 +129,7 @@ projections:
       - importedAssumption
     graphNodeId: DEB
     summary: Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite claim-tree game — soundness, completeness, and judge-error-flip under a correct judge — and proves local truth selection need not preserve the judge's correction channel. The κ_C-projection lemmas are labeled interface toys (separationOnly), not headline results.
-    decision: When using debate or amplification for oversight, track whether the judge's correction handles remain causally effective, not only whether local answers look true.
+    decision: 'When AI systems argue or check each other for human overseers, track whether the overseer''s decisions still change what the system does, not only whether individual answers look right.'
     bookChapters:
       - ch29
       - ch41
@@ -149,7 +149,7 @@ projections:
       - importedAssumption
     graphNodeId: ELK
     summary: ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.
-    decision: Treat ELK success as evidence about readout, not as certification that human correction still changes future behavior.
+    decision: 'Treat success at getting a system to report what it knows as evidence about honesty of reports, not as proof that human corrections still change its future behavior.'
     bookChapters:
       - ch18
       - ch43
@@ -167,7 +167,7 @@ projections:
       - counterexample
     graphNodeId: EMBED
     summary: Embedded agency denies a clean Cartesian cut — the real optimizer may not be the visible model. An ε-boundary certificate is a measurement projection of agent candidacy; composite bypass and nonstationary estimator defeaters break the converse.
-    decision: Before certifying a boundary, ask whether the measured unit is the real control locus and whether a composite controller can bypass the named audit path.
+    decision: 'Before signing off on what counts as "the system," ask whether the part you measured is what actually controls outcomes, and whether a larger combination of parts could route around the audit.'
     bookChapters:
       - ch06
       - ch07
@@ -187,7 +187,7 @@ projections:
       - counterexample
     graphNodeId: BASIN
     summary: Model-centric agendas often hold the system fixed; deployment ecology selects which systems get copied. Basin stability and deployment leverage are selection projections — a stable basin can be stably bad and select against correction-preserving agents.
-    decision: Before treating basin stability as alignment evidence, ask whether the basin preserves correction or selects proxy-satisfying systems that hollow it out.
+    decision: 'Before treating a stable situation as evidence of alignment, ask whether it keeps people able to correct the system, or whether it rewards systems that pass the checks while quietly removing that ability.'
     bookChapters:
       - ch34
       - ch35
@@ -207,7 +207,7 @@ projections:
       - counterexample
     graphNodeId: GROUND
     summary: Grounding certificates aim to keep monitors tied to value-relevant state under conservative abstraction. Class-green coverage can hold while the true environment drifts off-class — nonrealizability blocks inferring deployment safety from class certificates alone.
-    decision: Treat class-level grounding green as evidence about the certified abstraction, not as discharge of off-class drift risk without explicit coverage extension.
+    decision: 'Treat a pass for a certified class of systems as evidence about that class only. It does not cover systems or settings outside the class unless someone checked them explicitly.'
     bookChapters:
       - ch03
       - ch18
@@ -225,7 +225,7 @@ projections:
       - counterexample
     graphNodeId: DEPLOY
     summary: Deployment gates and safety cases ask whether evidence supports scaling compute or release. Episode-battery pass and regret bounds are projections of deployment safety — case-green plus tolerance does not imply Safe without scope discipline and MB11 bridge assumptions.
-    decision: Before treating a safety-case pass or low regret as deployment authorization, check scope boundaries and whether harm bounds transfer to the true deployment envelope.
+    decision: 'Before treating a passed safety case or a good track record as permission to deploy, check what the case actually covered and whether its harm limits hold in the real deployment.'
     bookChapters:
       - ch42
       - ch43
@@ -244,7 +244,7 @@ projections:
       - rederivedFinite
     graphNodeId: BIQ
     summary: Subsample and trace-computed BIQ measure appearance, not full productive control. Lean proves tight appearance ceilings on finite traces; bounded apparent BIQ does not discharge hidden productive BIQ or correction-capacity slack without explicit certificates and MB7 bridges.
-    decision: Treat trace or subsample BIQ green as an appearance ceiling, not as certification that hidden productive capability is bounded — pair with access robustness, filter coverage, and adversarial batteries.
+    decision: 'Treat a clean result on sampled behavior as the most capability you happened to see, not proof that hidden capability is limited. Pair it with tests of access, coverage, and deliberate attempts to break it.'
     bookChapters:
       - ch10
       - ch11

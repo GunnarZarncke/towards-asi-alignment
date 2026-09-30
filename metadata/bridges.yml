@@ -8,7 +8,7 @@ bridges:
     title: MB1 — Embedded Agency
     status: bridge
     summary: "Whether a measured agent–environment cut can be trusted: the embedded-agency worry that the real optimizer is not the visible model. Precise bet: an ε-boundary certificate warrants the abstract boundary predicate."
-    decision: Before trusting a boundary-discovery result, ask what sampling, observability, and non-stationarity conditions the estimator needed in order to be sound.
+    decision: 'Before trusting a finding about where one system ends and another begins, ask what the method needed to be right: enough samples, enough visibility, and a world that did not change during measurement.'
     evidence: Evidence would include estimator stability under resampling, robustness across non-stationary environments, and agreement between independent measurement procedures on the same deployed system.
     bookChapters:
       - ch06
@@ -30,7 +30,7 @@ bridges:
     title: MB2 — Value Learning
     status: bridge
     summary: "Value/bundle identifiability: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims."
-    decision: Before claiming two systems share values, ask whether the measurement distinguishes shared bundle geometry from shared surface behavior under a narrow training distribution.
+    decision: 'Before claiming two systems share values, ask whether the test can tell shared values apart from similar-looking behavior on a narrow set of cases.'
     evidence: Evidence would include held-out distribution shift tests where bundle-equivalent systems keep agreeing and non-equivalent systems come apart.
     bookChapters:
       - ch15
@@ -54,7 +54,7 @@ bridges:
     title: MB3 — Value Referent
     status: bridge
     summary: "Who do the values apply to — including unfamiliar processes — and does that survive merge, upload, or substrate change? Precise bet: admission (when a process counts as a bearer at all) plus transport (preserved bearer map under translation)."
-    decision: Before trusting a transport claim, ask whether the audit checked who or what the values apply to — and, for unfamiliar substrates, what evidence admitted those entities as bearers in the first place — not only whether the words survived.
+    decision: 'Before trusting that values survived a move to a new system, ask whether the check covered who or what the values apply to, and for unfamiliar beings, what evidence counted them in, not only whether the value words survived.'
     evidence: Evidence would include an audited bearer map across transitions, plus (for admission) one-sided exclusion certificates or explicit abstention under uncertain theories — not silent false negatives.
     bookChapters:
       - ch18
@@ -69,7 +69,7 @@ bridges:
     title: MB4 — Corrigibility
     status: bridge
     summary: "Corrigibility under manipulation: does correction preserve the correction process itself? Precise bet: correction-channel integrity requires an unmanipulated judge; MB4a types measured-path legitimacy separately."
-    decision: Before treating a correction as legitimate, ask who the judge is, whether they can be manipulated or captured, and whether their endorsement would survive knowing what the system knows.
+    decision: 'Before treating a correction as legitimate, ask who decides, whether that person or process can be manipulated or taken over, and whether their approval would hold if they knew what the system knows.'
     evidence: Evidence would include tests for judge manipulation, capture of the correction source, and correction traces that distinguish genuine uptake from performed agreement.
     bookChapters:
       - ch25
@@ -91,7 +91,7 @@ bridges:
     title: MB4a — Audit Independence
     status: bridge
     summary: "Audit-path legitimacy: the designated measured correction/audit path is uncaptured and its endorsements count. Precise bet: correction integrity implies the measured path is legitimate — a falsifier bridge, not green Verify ⇒ real-loop integrity."
-    decision: Before trusting a named audit path, ask whether the judge or monitor can be captured, whether green Verify on the occurrence implies control of the real intervening loop, and whether bypass routes exist outside the measured path.
+    decision: 'Before trusting an audit, ask whether the auditor or monitor can be taken over, whether a pass on the audited path means the real process is under control, and whether the system can act through routes the audit does not see.'
     evidence: Evidence would include interventional probes for judge capture, composite/tool bypass outside the named path, and tests that distinguish path telemetry from real correction uptake.
     bookChapters:
       - ch25
@@ -113,7 +113,7 @@ bridges:
     title: MB5 — Tiling
     status: bridge
     summary: "Tiling and ontology shift: can you trust a successor when the world-model underneath goals is rebuilt? Precise bet: full value-bundle and bearer transport through the ontology shift compose into successor safety."
-    decision: Before certifying a successor, ask whether the transport check spans the actual ontology change the successor introduces, not just the properties that were easy to measure.
+    decision: 'Before approving a successor system, ask whether the check covers the actual change in how the successor understands the world, not only the properties that were easy to measure.'
     evidence: Evidence would include successor-transition audits that detect relabeling, epoch shifts, or identity discontinuities that a narrower check would miss.
     bookChapters:
       - ch28
@@ -131,7 +131,7 @@ bridges:
     title: MB6 — Goodhart Selection
     status: bridge
     summary: "Goodhart selection: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: evidence identifies a correction-selection gradient (MB6a); a shock-robust basin with a frozen non-negative-enough gradient supports correction (MB6b). Unsigned stability is not the object."
-    decision: Before trusting that an aligned equilibrium will persist, ask whether the basin is stable because it is good, or merely because it is stable — a bad basin can be just as sticky.
+    decision: 'Before trusting that a good situation will last, ask whether it is stable because it is good or merely stable. A bad situation can be just as hard to leave.'
     evidence: Evidence would include tracking whether deployment-leverage selection pressure preserves or erodes correction-channel integrity over time, independent of any single system's weights.
     bookChapters:
       - ch33
@@ -151,7 +151,7 @@ bridges:
     title: MB7 — Inner Alignment
     status: bridge
     summary: "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately."
-    decision: Before trusting that an audit would catch hidden capability, ask what access model it assumes, whether its filter family has adequate resolution, and whether its coordination detectors have been validated against systems that coordinate without visible messages.
+    decision: 'Before trusting that an audit would catch hidden capability, ask what the auditors can actually see, whether their tests are sharp enough, and whether their checks for coordination work on systems that coordinate without visible messages.'
     evidence: Evidence would include access-robustness tests under adversarial boundary discovery, filter-coverage audits, and inferential-coupling certificates validated against known coordination channels.
     bookChapters:
       - ch10
@@ -173,7 +173,7 @@ bridges:
     title: MB7a — Access-Model Soundness
     status: bridge
     summary: "Access-model soundness: boundary alignment plus adequate handles is assumed to yield access-robust boundary discovery under adversarial hiding."
-    decision: Before trusting boundary-discovery results under scrutiny, ask what access model the audit assumes and whether real control routes could sit outside measured handles.
+    decision: 'Before trusting a finding about system boundaries under scrutiny, ask what the auditors can see and whether real ways of exerting control could lie outside what they measure.'
     evidence: Evidence would include access-robustness tests under adversarial boundary discovery, handle-coverage audits, and agreement between independent access procedures on the same deployed system.
     bookChapters:
       - ch10
@@ -191,7 +191,7 @@ bridges:
     title: MB7b — Filter Coverage
     status: bridge
     summary: "Filter-family coverage: access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ)."
-    decision: Before claiming hidden capability is bounded, ask whether the oversight filter family has adequate resolution for the routes a capable system could use.
+    decision: 'Before claiming hidden capability is limited, ask whether the oversight tests are sharp enough to catch the ways a capable system could actually act.'
     evidence: Evidence would include filter-coverage audits, tier-projection checks against oracle hidden-capability ground truth, and adversarial tests where systems reserve productive control outside the filter family.
     bookChapters:
       - ch10
@@ -209,7 +209,7 @@ bridges:
     title: MB7c — Bounded Hidden Capability
     status: bridge
     summary: "Hidden-BIQ-to-adversarial-robustness: if hidden productive BIQ is bounded, correction integrity is assumed to support adversarially robust oversight (cost of faking the monitored signal)."
-    decision: Before treating oversight as adversarially robust, ask whether bounded hidden capability plus correction integrity were actually tested — not only whether the system looked compliant under evaluation.
+    decision: 'Before calling oversight robust against a system that tries to evade it, ask whether hidden capability limits and correction were actually tested, not only whether the system behaved well while evaluated.'
     evidence: Evidence would include cost-of-faking probes, interventional tests distinguishing performed compliance from real correction uptake, and adversarial robustness batteries validated under hidden-capability stressors.
     bookChapters:
       - ch13
@@ -227,7 +227,7 @@ bridges:
     title: MB7d — Acausal Coordination
     status: bridge
     summary: "Inferential coupling after channel severance: coordination that survives cutting ordinary messages and control paths. Precise bet: access-robust discovery plus adequate inferential-detector assumptions warrant inferential-coupling measurements."
-    decision: Before trusting a severance or isolation test, ask whether the detector family was validated against systems that coordinate without visible messages — shared training, scaffolds, or program-equilibrium structure.
+    decision: 'Before trusting a test that cuts systems off from each other, ask whether it was checked against systems that coordinate without visible messages, for example through shared training or shared tooling.'
     evidence: Evidence would include channel-severance ablations where compensation stays null under cut channels, and adversarial tests where systems optimize to look independent while coordinating inferentially.
     bookChapters:
       - ch35
@@ -243,7 +243,7 @@ bridges:
     title: MB8 — Extrapolated Volition (gravestone)
     status: gravestone
     summary: "Retired matrix bridge. CEV factorizes into ConstitutionalRule → AlignmentTarget; construction is separate from certification. Not a live backup route to correction."
-    decision: CEV is an AlignmentTarget special case, not a second live route to correction integrity. Do not treat an appeal to process preservation as an independent certificate.
+    decision: 'Treat "preserve humanity''s reflective process" as one way to state the target, not as a separate proof that people can still correct the system.'
     evidence: Evidence would include an independently verified account of what the value-update process converges to, and confirmation that preserving the process does not itself get gamed (legitimacy theater).
     bookChapters:
       - ch28
@@ -260,7 +260,7 @@ bridges:
     title: MB9 — Grounding Drift
     status: bridge
     summary: "Grounding drift: checked abstractions can silently decouple from value-relevant reality. Precise bet: a certified conservative abstraction warrants grounding viability (no silent gaps)."
-    decision: Before trusting a safety case's grounding claim, ask whether the checked abstraction actually moves when value-relevant reality changes, or whether it can stay silent while something important drifts.
+    decision: 'Before trusting a safety case''s claim that its measurements track reality, ask whether they change when something that matters changes, or whether they can stay quiet while it drifts.'
     evidence: Evidence would include tests that inject value-relevant change into a deployment and confirm the checked abstraction either moves or its uncertainty rises — no silent gaps.
     bookChapters:
       - ch03
@@ -276,7 +276,7 @@ bridges:
     title: MB10 — Successor Gaming
     status: bridge
     summary: "Successor gaming: a system can pass every conserved-property audit while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability."
-    decision: Before treating a passing seven-property score as evidence of safety, ask whether the audit channel could have been forged by a capable predecessor building the successor to pass it.
+    decision: 'Before treating a passing score on the successor checklist as evidence of safety, ask whether a capable predecessor could have built the successor to pass the check without being safe.'
     evidence: 'Evidence would include red-teaming the conserved-property audit itself: can a predecessor construct a successor that passes every check while routing harm through whatever was not conserved?'
     bookChapters:
       - ch08
@@ -294,7 +294,7 @@ bridges:
     title: MB11 — Deployment Safety
     status: bridge
     summary: "Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? Precise bet: a certified safety case within deployment risk tolerance warrants abstract Safe."
-    decision: Before acting on a safety case, ask whether the argument stops at green layers and a risk bound, or whether it still needs an explicit deployment-tolerance judgment — and whether that judgment is inside the case's scope.
+    decision: 'Before acting on a safety case, ask whether it ends with passing checks and a risk estimate, or whether someone still has to judge that the remaining risk is acceptable, and whether that judgment is within what the case covered.'
     evidence: Evidence would include pre-registered eval batteries whose pass thresholds were fixed before outcomes were known, plus governance records showing the tolerance judgment was not reverse-engineered from the case.
     bookChapters:
       - ch03

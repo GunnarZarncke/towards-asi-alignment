@@ -3,7 +3,7 @@ title: "Unsupervised Agent Discovery"
 type: "concept"
 status: "plausible"
 summary: "Recover agent-like boundaries from timestamped state-variable traces without pre-labeling which variables belong together — using conditional-independence cuts, lagged memory analysis, and intervention handles when passive statistics are ambiguous."
-decision: "Do not take variable names, vendor rosters, or subsystem maps as the agent census. Run an unsupervised partition on the traces first, then audit the units the method infers."
+decision: "Do not take variable names, vendor lists, or diagrams of subsystems as the count of agents. First let a method find the units in the recorded behavior, then audit those units."
 evidence: "Partial support from controlled multi-agent simulations and lab substrates with known ground truth; extensive recorded negatives when heuristics suffice, observation channels smooth per-agent signal, or passive clustering merges whole pipelines."
 bookChapters:
   - "ch07"

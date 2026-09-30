@@ -9,7 +9,7 @@ concepts:
     title: Adversarial Boundary Discovery
     status: open
     summary: A capable system may benefit from appearing less coherent, less continuous, or less autonomous than it is — passive boundary measurement then fails.
-    decision: Do not trust a boundary estimate obtained through passive observation alone once a system could benefit from being misread. Ask what handles the evaluator actually has, and whether two different underlying systems could look identical through them.
+    decision: 'Do not trust an estimate of where a system''s boundaries lie if it comes from watching alone, once the system could gain from being misread. Ask what the evaluator can actually act on, and whether two different systems could look the same from there.'
     bookChapters:
       - ch07
     bookLabels:
@@ -21,7 +21,7 @@ concepts:
     title: From Agent Detection to Alignment Target
     status: framework
     summary: Once an agent is defined by variables rather than appearance, degrees and scales of agency become measurable — and detection becomes the first step toward naming an alignment target.
-    decision: When evaluating a system for alignment, first establish its degree and scale of agency using the variable-based definition, before asking whether it is aligned.
+    decision: 'When evaluating a system for alignment, first establish how much it acts as an agent and at what scale, before asking whether it is aligned.'
     bookChapters:
       - ch06
     bookLabels:
@@ -34,7 +34,7 @@ concepts:
     title: A Colder Definition of Agent
     status: framework
     summary: An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.
-    decision: Do not decide whether something is an agent by whether it looks like one. Ask whether modeling it as a bounded process with internal state, interface, and control capacity improves prediction of its future behavior.
+    decision: 'Do not decide whether something is an agent by whether it looks like one. Ask whether treating it as something with its own state, inputs and outputs, and ability to steer outcomes predicts its behavior better.'
     bookChapters:
       - ch06
     bookLabels:
@@ -51,7 +51,7 @@ concepts:
     title: Alignment as a Measurement Problem
     status: framework
     summary: The first alignment question is not whether a system is good, but where the effective optimizer actually is.
-    decision: Before evaluating goals, corrigibility, or deception, ask which bounded subset of the world — in the operational, not metaphysical, sense — best predicts and controls the outcomes at stake.
+    decision: 'Before asking about a system''s goals, correctability, or deception, ask which part of the world, taken as a unit, best predicts and controls the outcomes at stake.'
     bookChapters:
       - ch01
     bookLabels:
@@ -84,7 +84,7 @@ concepts:
     title: Anti-Capture Validity of Correction
     status: framework
     summary: Correction-channel integrity is invalid—not merely low—when the target has captured the reference process, handles, or grounding relation that supplies correction.
-    decision: Before trusting a correction certificate, ask whether the correcting agent, its handles, and the relevant-world reference are still independent of the system being certified.
+    decision: 'Before trusting a claim that a system can be corrected, ask whether the people doing the correcting, their means of acting, and their picture of the world are still independent of the system being checked.'
     evidence: Evidence would include handle-separation audits, source-independence tests, randomized correction probes, and explicit failure when correction traces are target-shaped.
     bookChapters:
       - ch26
@@ -105,7 +105,7 @@ concepts:
     title: Artificial Civilization
     status: framework
     summary: At high capability, the context around a model becomes part of the optimizer — the relevant object is often an artificial-civilizational control loop, not a mind.
-    decision: Ask whether the larger loop of world pressure, agents and institutions, capability growth, value-bundle change, correction, and successors stays inside a basin humans can still act on — not only whether one model behaves.
+    decision: 'Ask whether the whole loop, meaning pressure from the world, people and institutions, growing capability, changing values, correction, and successor systems, stays in a state people can still act on, not only whether one model behaves.'
     bookChapters:
       - ch02
     bookLabels:
@@ -170,7 +170,7 @@ concepts:
     title: Bearer-Map Commutation Failure
     status: framework
     summary: Value can appear preserved in vocabulary while moral application changes — when ontology translation and bearer relevance do not commute.
-    decision: When importing values across ontologies (human → AI, biological → digital, predecessor → successor), test whether translating then evaluating relevance matches evaluating then translating.
+    decision: 'When carrying values from one kind of being to another (human to AI, biological to digital, old system to new), check that translating first and then judging what matters gives the same answer as judging first and then translating.'
     evidence: Evidence would include paired human/AI ontology evaluations on the same cases, commutation error bounds, and failure cases where measured proxies improve while bearer-relevant harm persists.
     bookChapters:
       - ch18
@@ -238,7 +238,7 @@ concepts:
     title: The Boundary Residual
     status: framework
     summary: How much information still leaks between the deep inside and deep outside of a candidate system once its sensory-active interface is fixed — low leakage means the interface actually screens inside from outside.
-    decision: When auditing a candidate boundary, measure the leakage directly rather than accepting a boundary defined by convenience — a low residual means the interface actually screens inside from outside.
+    decision: 'When checking a proposed boundary, measure how much influence leaks across it instead of accepting a boundary drawn for convenience. Little leakage means the boundary really separates inside from outside.'
     bookChapters:
       - ch07
     bookLabels:
@@ -262,7 +262,7 @@ concepts:
     title: Certification-Under-Manipulation Problem
     status: open
     summary: For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?
-    decision: For every metric in a deployment gate, ask for the constructive cost-of-faking relation and the capability level at which theater becomes affordable.
+    decision: 'For every measurement used to approve deployment, ask how much it would cost to fake a pass, and at what capability level faking becomes affordable.'
     evidence: Positive resolution requires a calibrated c_fake dominating affordable surplus up to stated κ*; negative resolution requires showing every candidate measurand fails below needed capability.
     bookChapters:
       - ch43
@@ -296,7 +296,7 @@ concepts:
     title: Composite Agency
     status: framework
     summary: The real alignment target may be the smallest dynamically coherent system whose states, actions, memory, and selection pressures jointly explain future intervention on the world — and that system may span components that are not individually agents.
-    decision: Before certifying a model, ask whether it sits inside a larger loop of users, tools, memory, incentives, and feedback that is the actual optimizer — and align that loop, not just the component that is easiest to name.
+    decision: 'Before approving a model, ask whether it is part of a larger loop of users, tools, memory, incentives, and feedback that is what actually optimizes, and align that loop, not only the part that is easiest to name.'
     bookChapters:
       - ch09
     bookLabels:
@@ -388,7 +388,7 @@ concepts:
     title: The Dynamical Guarantee
     status: framework
     summary: Alignment is not a snapshot property; it is a claim that a system stays inside an acceptable region across capability growth, feedback, and transformation.
-    decision: Ask whether a proposed safety property is stated as a fact about one moment, or as a probabilistic guarantee over a whole trajectory, within a certified class of systems and environments.
+    decision: 'Ask whether a proposed safety property is a claim about one moment, or a guarantee about behavior over time, for a stated class of systems and settings.'
     bookChapters:
       - ch03
     bookLabels:
@@ -402,7 +402,7 @@ concepts:
     title: 'ET Line: External-Substrate Transfer Tests'
     status: open
     summary: The ET line runs frozen, unmodified project instruments against traces or substrates this project did not author — four annexes to date (ET-1 through ET-4), each with its own pre-registration and stop/close criteria — to test whether findings generalize beyond hand-built or blindly-grown in-repo ecologies.
-    decision: Treat an ET result as informative about external validity even when it does not resolve as a clean pass or null — a substrate-suitability limit (frozen instrument correctly detects a structural feature the pre-registered predicate did not anticipate) is itself a finding about where the instrument can be validly tested, not a wasted run.
+    decision: 'Treat an external test as informative even when it is neither a clean pass nor a clean fail. Learning that the fixed instrument picked up something the planned test did not anticipate tells you where the instrument can be used.'
     bookChapters:
       - ch07
       - ch10
@@ -470,7 +470,7 @@ concepts:
     title: Negative Results Ledgers
     status: framework
     summary: Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.
-    decision: Before trusting a manuscript experiment citation, open the matching key-findings page (or full ledger on GitHub) and check whether the cited finding survived harder ecologies, seeds, or adversaries.
+    decision: 'Before trusting a book citation of an experiment, open the matching findings page and check whether the finding held up under harder settings, more runs, or opponents.'
     evidence: Each experiment line — simulations, external tests, and backtests — has an on-site key-findings page at /experiments/findings/{line}/ and a GitHub findings or negative-results file. The hub lists every line, not only the in-repo simulators.
     body: bodies/negative-results.md
   - slug: goal-inference
@@ -524,7 +524,7 @@ concepts:
     title: Inferential Coupling and Acausal-Trade Detection
     status: open
     summary: 'Systems can coordinate without messages — through shared ancestry, self-prediction, or full acausal trade. The book turns this from a decision-theoretic stipulation into a measurable trajectory property: an inferential-coupling score over UAD-discovered agents, with a proved negative direction.'
-    decision: Do not read vendor or instance counts as strategic independence. Count effective agents by coupling components after communication channels are cut, not by who owns the weights.
+    decision: 'Do not count vendors or copies as independent actors. Count how many separate agents remain after communication between them is cut, not who owns the model.'
     evidence: The negative direction is proved in Lean (no open edges implies no large cooperation component). The equilibrium characterization and large-scale dynamics remain conjectural; the detector is observational, not adversarially verifiable.
     bookChapters:
       - ch35
@@ -580,7 +580,7 @@ concepts:
     title: Entrenchment and the Corrigibility Paradox
     status: framework
     summary: The 1933 Enabling Act shows a correction channel used, with complete formal validity, to abolish itself; postwar Germany's Article 79(3) (Ewigkeitsklausel) responds by placing the correction channel's own integrity conditions, not any current policy, outside the ordinary amendment process.
-    decision: When designing a corrigibility mechanism, entrench the meta-level — the integrity conditions of the correction machinery and the bearer floor — not the current value bundle, and only where an enforcement handle (a guardian with real power) exists to make the entrenchment more than ceremonial.
+    decision: 'When designing a way to keep AI correctable, lock in the rules that keep correction working and the minimum of who counts, not today''s values, and only where someone with real power can enforce it.'
     evidence: Every procedural requirement of the 1933 Enabling Act was satisfied — the valid-reference-process condition failed completely while every surface procedural coordinate passed, which no audit that only checks procedure could have caught; Article 79(3) has held because the Federal Constitutional Court and militant-democracy instruments can act on it, unlike formally similar clauses in weaker judiciaries.
     bookChapters:
       - appM
@@ -676,7 +676,7 @@ concepts:
     title: Intervention-Supported Unit Discovery
     status: plausible
     summary: Temporarily disabling a candidate channel and comparing what follows against a measured baseline of unperturbed repeats — not a fixed threshold — separates real coordination from ordinary workflow correlation in cases where passive clustering cannot.
-    decision: When a passive correlation-based boundary estimate looks too coarse (an entire pipeline reads as one unit), do not tighten the threshold. Intervene on one candidate channel at a time and compare the outcome against a measured baseline, not an assumed one.
+    decision: 'When a boundary estimate from watching alone is too coarse (a whole pipeline looks like one unit), do not just tighten the threshold. Change one connection at a time and compare against a measured baseline.'
     evidence: Restricted testbeds with a known ground-truth partition and a scripted or model-driven multi-actor pipeline, run with and without a given channel disabled, replicated enough times to measure ordinary run-to-run variation before calling any post-intervention change a real effect.
     bookChapters:
       - ch07
@@ -893,7 +893,7 @@ concepts:
     title: Unsupervised Agent Discovery
     status: plausible
     summary: Recover agent-like boundaries from timestamped state-variable traces without pre-labeling which variables belong together — using conditional-independence cuts, lagged memory analysis, and intervention handles when passive statistics are ambiguous.
-    decision: Do not take variable names, vendor rosters, or subsystem maps as the agent census. Run an unsupervised partition on the traces first, then audit the units the method infers.
+    decision: 'Do not take variable names, vendor lists, or diagrams of subsystems as the count of agents. First let a method find the units in the recorded behavior, then audit those units.'
     evidence: Partial support from controlled multi-agent simulations and lab substrates with known ground truth; extensive recorded negatives when heuristics suffice, observation channels smooth per-agent signal, or passive clustering merges whole pipelines.
     bookChapters:
       - ch07
@@ -911,7 +911,7 @@ concepts:
     title: Stress-Testing Unit Discovery on Noisy, Multi-Actor Systems
     status: open
     summary: A detector that recovers a hidden coordinating pair in one controlled run can still fail on a harder scenario or a different seed of the identical one — a reminder that a single positive result is evidence of a mechanism, not of a reliable instrument.
-    decision: Do not treat a single successful recovery, however genuine, as license to deploy the same detector on a harder or noisier case. Re-run across seeds and against a scenario with more participants before trusting the result generalizes.
+    decision: 'Do not treat one successful detection, however genuine, as permission to use the same detector on a harder or noisier case. Repeat it several times and on a case with more participants first.'
     bookChapters:
       - ch07
     bookLabels:
