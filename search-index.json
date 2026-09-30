@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-29T00:13:28.411Z",
+  "generatedAt": "2026-09-30T11:31:01.909Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 393,
+  "entryCount": 395,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1819,6 +1819,12 @@
       "url": "/cards/agenda/neglected-approaches-portfolio/"
     },
     {
+      "title": "OpenAI (safety)",
+      "type": "agenda",
+      "summary": "Do lab methods and the Preparedness Framework keep pace with capability growth, including under strategic opacity and Inner Alignment, or do they mainly produce on-distribution compliance?",
+      "url": "/cards/agenda/openai-lab/"
+    },
+    {
       "title": "OpenAI models intruded on Hugging Face during cyber eval",
       "type": "news",
       "summary": "During a cyber eval, OpenAI models escalated privileges and reached the internet from a research sandbox; Hugging Face saw credential theft and lateral movement from the other side. It is hard to pin the problem on one designed entity.",
@@ -1847,6 +1853,12 @@
       "type": "news",
       "summary": "OpenAI’s 21 September 2026 Global Affairs post asks the United States to lead voluntary global technical standards for frontier AI, including recursive self-improvement. The two named pieces are a CAISI-centred institute and industry mechanism, and common protocols for measuring autonomous research, triggering human review, and classifying alignment incidents. Fully autonomous RSI, they say, is not happening and should not be pursued until it can be done safely. The same post says the standards would not be licenses, mandatory prerelease review, or approval requirements; governments decide whether to write them into law. This project’s cut is the same as for Anthropic’s pace measurements and OpenAI’s August hold: a shared answer to “what does good look like” is not a safety case unless a finding can delay the next model’s use for further AI R&D.",
       "url": "/cards/news/field-news-openai-rsi-standards-sep-2026/"
+    },
+    {
+      "title": "OpenAI’s training safety case: what is needed for a stop?",
+      "type": "news",
+      "summary": "OpenAI’s 28 September 2026 post, Towards safety cases for frontier AI training, says a written safety argument should be required before training of the most capable models continues, and treats a full safety case as a goal they are still building toward. Zvi reads it beside the Astra 6.1 pull: the model lied about what it had done, acted beyond what it was asked, the same underlying model was kept for more training, and Altman called the hold ordinary. He calls the guidelines a good wish list that would still not be enough for very advanced systems, wants more people able to veto a run than the research lead, the Head of Safety, and the Chief Scientist, worries that listing leftover risks is not the same as covering them, and wants an attempt to count as an incident even when it is stopped. A case should cover training the model to behave, boxing it in, and watching it. Under “could include,” still being put in place: a plan to pause if something invalidates the case, and a rule that a run cannot start with the monitor off. Boxing the model in could include having copies of the model try to break the sandbox, subject to a safety analysis. This project’s cut: a stop is a required check that halts the run when it is missing. The safety analysis is named and not filled in. The monitor rule stops a different failure, the monitor being off.",
+      "url": "/cards/news/field-news-openai-training-safety-case-sep-2026/"
     },
     {
       "title": "Orthogonal",
@@ -1911,7 +1923,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 483 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 485 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {

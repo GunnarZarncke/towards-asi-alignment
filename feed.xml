@@ -5,8 +5,17 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] OpenAI’s training safety case: what is needed for a stop?</title>
+      <link>https://towards-alignment.com/cards/news/field-news-openai-training-safety-case-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-openai-training-safety-case-sep-2026/</guid>
+      <pubDate>Tue, 29 Sep 2026 12:00:00 GMT</pubDate>
+      <description>OpenAI’s 28 September guidelines cover how a model is trained to behave, how it is boxed in, and how it is watched. The break-in test for the sandbox is a copy of the model being trained, “subject to a safety analysis.” A stop is that analysis missing, and the training not continuing.</description>
+      <category>news</category>
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-openai-training-safety-case.jpg" length="174898" type="image/jpeg" />
+    </item>
     <item>
       <title>[News] The sandbox wasn&apos;t tight. The alarm arrived in minutes. The run kept going for hours.</title>
       <link>https://towards-alignment.com/cards/news/field-news-openai-dns-chatbot-sep-2026/</link>
