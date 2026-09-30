@@ -22,4 +22,4 @@ Prompts: paraphrase-only (telemetry prompt ids not copied this turn).
 - `chapters/ch06-agent-without-anthropomorphism.tex` … `ch47-bearers-of-value.tex` (15 files)
 
 ## Commits
-- (this session)
+- `6f6098f2d` Trim redundant lead-ins before LW wiki quotes after author review.
