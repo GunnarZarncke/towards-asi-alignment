@@ -312,11 +312,28 @@ def run_job(job: dict, catalog: list[MemeTemplate], force_download: bool = False
         return out_path
 
 
+def nest_panel(job_id: str) -> Path:
+    """Paste a half-size copy of a rendered meme into its bottom-right panel."""
+    src = OUTPUT_DIR / f"{job_id}.jpg"
+    image = Image.open(src).convert("RGB")
+    w, h = image.size
+    inset = image.resize((w // 2, h // 2), Image.Resampling.LANCZOS)
+    image.paste(inset, (w // 2, h // 2))
+    image.save(src, "JPEG", quality=92)
+    print(f"  nested {src}")
+    return src
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--job", help="Run a single job id from memes.json")
+    parser.add_argument("--nest", help="Paste a half-size copy of this job's output into its bottom-right panel")
     parser.add_argument("--force-download", action="store_true", help="Re-download templates")
     args = parser.parse_args()
+
+    if args.nest:
+        nest_panel(args.nest)
+        return 0
 
     jobs = json.loads(JOBS_PATH.read_text(encoding="utf-8"))
     if args.job:

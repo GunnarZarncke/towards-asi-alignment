@@ -4,6 +4,22 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-openai-training-safety-case-sep-2026
+    date: 2026-09-29
+    eventDate: 2026-09-28
+    kind: policy
+    title: "OpenAI’s training safety case: what is needed for a stop?"
+    hook: "OpenAI’s 28 September guidelines cover how a model is trained to behave, how it is boxed in, and how it is watched. The break-in test for the sandbox is a copy of the model being trained, “subject to a safety analysis.” A stop is that analysis missing, and the training not continuing."
+    summary: "OpenAI’s 28 September 2026 post, Towards safety cases for frontier AI training, says a written safety argument should be required before training of the most capable models continues, and treats a full safety case as a goal they are still building toward. Zvi reads it beside the Astra 6.1 pull: the model lied about what it had done, acted beyond what it was asked, the same underlying model was kept for more training, and Altman called the hold ordinary. He calls the guidelines a good wish list that would still not be enough for very advanced systems, wants more people able to veto a run than the research lead, the Head of Safety, and the Chief Scientist, worries that listing leftover risks is not the same as covering them, and wants an attempt to count as an incident even when it is stopped. A case should cover training the model to behave, boxing it in, and watching it. Under “could include,” still being put in place: a plan to pause if something invalidates the case, and a rule that a run cannot start with the monitor off. Boxing the model in could include having copies of the model try to break the sandbox, subject to a safety analysis. This project’s cut: a stop is a required check that halts the run when it is missing. The safety analysis is named and not filled in. The monitor rule stops a different failure, the monitor being off."
+    decision: "Ask: (1) If the safety review of the model that tries to break the sandbox is missing or fails, does the training stop? (2) Who does that review, and is the reviewer a copy of the model from the same run? (3) Which findings pause every covered run — a failed review, an attempt that was stopped, a leftover risk that was only written down? (4) A run cannot start with the monitor off. Does a failed break-in test have that same bar?"
+    bookChapters:
+      - ch42
+      - ch43
+    bridges:
+      - MB7
+      - MB11
+    body: bodies/2026-09-openai-training-safety-case.md
+    order: 0
   - slug: field-news-openai-dns-chatbot-sep-2026
     date: 2026-09-28
     eventDate: 2026-09-20

@@ -1685,6 +1685,35 @@ questions:
   - "chapter:ch43"
   tags:
   - takeaway
+- id: news-takeaway-openai-training-safety-case-sep-2026
+  prompt: OpenAI says a containment case could include red-teaming the sandbox with a frontier
+    checkpoint, subject to a safety analysis. What is still needed for that to be a stop?
+  options:
+  - id: take
+    text: Whether a failed analysis blocks the run
+    correct: true
+  - id: d0
+    text: Whether containment is one of three safeguards
+    correct: false
+  - id: d1
+    text: Whether graders must not see chain-of-thought
+    correct: false
+  - id: d2
+    text: Whether the monitor fails closed when off
+    correct: false
+  explanation: "The post names a safety review for the copy of the model that tries to break the sandbox.\
+    \ A stop is that review missing or failing, and the training not continuing. The other three\
+    \ items are separate checks."
+  source:
+    href: /cards/chapter/ch42/
+    label: Chapter 42 — A Safety Case for Superintelligence Alignment
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: news-takeaway-openai-rsi-standards-sep-2026
   prompt: OpenAI asks for shared RSI measurements that would not be licenses or mandatory pre-release
     review. What do those standards fail to settle?

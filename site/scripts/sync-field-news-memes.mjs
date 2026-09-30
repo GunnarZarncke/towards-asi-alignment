@@ -11,6 +11,10 @@ const repoRoot = path.resolve(siteRoot, "..");
 /** @type {{ src: string; dest: string }[]} */
 const MEMES = [
   {
+    src: "scripts/meme_workflow/output/openai-training-safety-case.jpg",
+    dest: "field-news/memes/2026-09-openai-training-safety-case.jpg"
+  },
+  {
     src: "scripts/meme_workflow/output/huang-release-rule.jpg",
     dest: "field-news/memes/2026-09-huang-klein-zvi.jpg"
   },
