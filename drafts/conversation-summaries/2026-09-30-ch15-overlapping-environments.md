@@ -34,4 +34,4 @@ Assess the site note on Ch. 15 ("people are different and live in different over
 - `formal/AlignmentProofSpine/Bundles.lean` (`P17`), `MB2Identifiability.lean`
 
 ## Commits
-- (filled in at session end)
+- `a67cdc672` Thread per-person value compression through Part IV and name pool-conformance drift.

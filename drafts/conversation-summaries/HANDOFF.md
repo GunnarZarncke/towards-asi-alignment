@@ -20,7 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-30:** **Ch. 15 overlapping environments** — New section: compression is per person; shared coordinates rest on shared environments; pooling across people is not plain variance reduction. Back-links in Ch. 16/17/20/21; `P17` cited in Ch. 21; optional Lean population toy in spine plan. Uncommitted. Log: `2026-09-30-ch15-overlapping-environments.md`.
+- **2026-09-30:** **Ch. 15 overlapping environments** — Per-person compression, environment overlap, pool-conformance drift (`sec:pool-conformance-ch46`); back-links Ch. 16/17/20/21. Commit `a67cdc672`. Log: `2026-09-30-ch15-overlapping-environments.md`.
 - **2026-09-30:** **Site notes batch two + session commit** — Field hub trim (incl. user badge/bearer-adjacent edits); notes save beside textarea; card preview resolution; offline SW v12; card-graphics docs; bundled with LW wiki quotes, App P/predictions/news/quiz updates in one commit. Log: `2026-09-30-site-notes-second-batch.md`.
 - **2026-09-30:** **LW wiki quotes applied** — Canonical LessWrong wiki sentences at planned homes and later mentions. `{GZ}` frozen; `{GZ+AI}` bars unchanged (new `{AI}` blocks beside). Log: `2026-09-30-lw-wiki-quotes-applied.md`.
 - **2026-09-30:** **Site notes first three** — Ch. 1 simpler thesis and Ch. 7 preview of the alignment object; book-wide `serious` tell-pattern in chapters; `/cards/` lede and Tools and checklists. Remaining notes not done. Log: `2026-09-30-site-notes-first-three.md`.
