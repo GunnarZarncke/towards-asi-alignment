@@ -48,7 +48,7 @@
       <link>https://towards-alignment.com/cards/news/field-news-math-misalignment-sep-2026/</link>
       <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-math-misalignment-sep-2026/</guid>
       <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
-      <description>Twenty-five Fields medallists say company benchmarks and mathematics want different things. A famous problem was a landmark for understanding. Scoring the landmark can take the understanding away.</description>
+      <description>Twenty-five Fields medallists say company benchmarks and mathematics want different things. Scoring a landmark is a bad proxy. The next mathematician is a successor, and a certificate is not a construction.</description>
       <category>news</category>
       <enclosure url="https://towards-alignment.com/field-news/memes/2026-09-math-misalignment.png" length="1210554" type="image/png" />
     </item>
@@ -206,6 +206,7 @@
       <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
       <description>A famous timeline forecast can drive lab safety tests — without the lab proving the forecast right.</description>
       <category>news</category>
+      <enclosure url="https://towards-alignment.com/experiments/lab-simulation/et3_foster_trajectories_median.png" length="125424" type="image/png" />
     </item>
     <item>
       <title>[Release] v1.3.0 — Field news, chapter art, external transfer, and graded-lab v4</title>

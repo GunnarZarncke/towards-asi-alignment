@@ -1,4 +1,5 @@
-const CACHE_NAME = "asi-alignment-site-v11";
+const CACHE_NAME = "asi-alignment-site-v12";
+const NETWORK_TIMEOUT_MS = 2500;
 const CACHE_PREFIX = "asi-alignment-site-";
 const OFFLINE_URL = "/offline/";
 const OFFLINE_STATE = "offline-state";
@@ -289,12 +290,35 @@ async function migrateLegacyCaches() {
   }
 }
 
-async function fetchFromNetwork(request) {
-  return fetch(request, { cache: "no-store" });
+async function fetchFromNetwork(request, timeoutMs = NETWORK_TIMEOUT_MS) {
+  if (!self.navigator.onLine) {
+    throw new Error("Offline");
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(request, { cache: "no-store", signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function revalidateInBackground(cache, request) {
+  fetchFromNetwork(request)
+    .then(async (response) => {
+      if (response.ok) await cacheWithTimestamp(cache, request, response.clone());
+    })
+    .catch(() => {});
 }
 
 async function handleFetch(request, cache, state) {
   const useOfflineCache = state.enabled || state.phase !== "idle";
+  const cached = useOfflineCache ? await cache.match(request) : undefined;
+
+  if (cached) {
+    if (self.navigator.onLine) revalidateInBackground(cache, request);
+    return cached;
+  }
 
   if (!useOfflineCache) {
     try {
@@ -310,8 +334,6 @@ async function handleFetch(request, cache, state) {
     if (response.ok) await cacheWithTimestamp(cache, request, response.clone());
     return response;
   } catch {
-    const cached = await cache.match(request);
-    if (cached) return cached;
     if (request.mode === "navigate") return (await cache.match(OFFLINE_URL)) || OFFLINE_FALLBACK;
     throw new Error("Offline asset unavailable");
   }

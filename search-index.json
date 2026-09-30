@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-30T11:31:01.909Z",
+  "generatedAt": "2026-09-30T19:24:33.237Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -597,7 +597,7 @@
     {
       "title": "A solved problem is not the point of mathematics",
       "type": "news",
-      "summary": "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next.",
+      "summary": "On 11 September 2026, twenty-five Fields medallists said the goals of AI companies and of the mathematical community are severely misaligned. Solving a famous problem had been a sign of new insight, which a community then learned, simplified, and taught. They warn that producing true-or-false results faster can destroy the chain from one mathematician to the next. This project grants the proxy cut, then splits successor inheritance from construction: a true theorem is a certificate; how to build the next understanding stays open.",
       "url": "/cards/news/field-news-math-misalignment-sep-2026/"
     },
     {
@@ -1923,7 +1923,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 485 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 518 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
@@ -2169,7 +2169,7 @@
     {
       "title": "The Wrong Object of Alignment",
       "type": "chapter",
-      "summary": "Before asking whether a system is aligned, the task is to locate the bounded process whose dynamics determine the relevant risk; aligning the model while missing the composite optimizer is a boundary error that can produce local success and global failure.",
+      "summary": "A model is the trained network. Alignment is making its behavior stay something humans can still correct. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Before asking whether a system is aligned, locate that loop.",
       "url": "/cards/chapter/ch01/"
     },
     {
