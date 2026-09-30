@@ -6,8 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-09-30 | **Session summary script** — User asked for a script to recap user vs agent actions from recorded session logs; then useful defaul... | [2026-09-30-session-summary-script.md](2026-09-30-session-summary-script.md) |
-| 2026-09-30 | **Predictions internals interface** — Thread on Market 21 wrapper, MB7a activation route, Markets 8/15, and Ch. 10 terminology. | [2026-09-30-activation-channel-family.md](2026-09-30-activation-channel-family.md) |
+| 2026-09-30 | **Site notes: ch01, serious, cards hub** — Implement the first three items of the site-notes plan: simpler Chapter 1 opening, book-wide `ser... | [2026-09-30-site-notes-first-three.md](2026-09-30-site-notes-first-three.md) |
+| 2026-09-30 | **Session summary script** — User asked for a script to recap user vs agent actions from recorded session logs; then useful de... | [2026-09-30-session-summary-script.md](2026-09-30-session-summary-script.md) |
+| 2026-09-30 | **LW wiki quotes into chapters** — User asked for a plan (not an edit) to open TSA chapters or sections with LessWrong wiki quotatio... | [2026-09-30-lw-wiki-chapter-quotes.md](2026-09-30-lw-wiki-chapter-quotes.md) |
+| 2026-09-30 | **Predictions, internals interface, activation route** — Thread on predictions and excluded model internals: research readiness vs assurance; draft Market... | [2026-09-30-activation-channel-family.md](2026-09-30-activation-channel-family.md) |
 | 2026-09-29 | **Predictions and model internals** — User: for the predictions, TSA excludes model internals, but alignment within the models is a rea... | [2026-09-29-predictions-model-internals.md](2026-09-29-predictions-model-internals.md) |
 | 2026-09-29 | **OpenAI training safety-case news** — User asked for a field-news card on OpenAI’s 28 September safety-case guidelines, titled “OpenAI’... | [2026-09-29-openai-training-safety-case-news.md](2026-09-29-openai-training-safety-case-news.md) |
 | 2026-09-29 | **OpenAI row, new evidence, P12 notes** — User asked to add OpenAI, auditing games and other new evidence, human oversight factors, mention... | [2026-09-29-openai-evidence-p12.md](2026-09-29-openai-evidence-p12.md) |
@@ -19,13 +21,10 @@
 | 2026-09-28 | **Math-news successor vs construction** — User: the math-misalignment news argument is the right first cut, but construction and successor ... | [2026-09-28-math-news-successor-construction.md](2026-09-28-math-news-successor-construction.md) |
 | 2026-09-28 | **Field news: “this project” wording** — User asked to replace “this book” with “this project” in field-news posts and `metadata/field-new... | [2026-09-28-field-news-this-project-wording.md](2026-09-28-field-news-this-project-wording.md) |
 | 2026-09-28 | **Embedded evaluators field news** — User asked to map the Hinton–Russell–Narayanan embedded-evaluator conditions onto TSA, say what t... | [2026-09-28-embedded-evaluators-news.md](2026-09-28-embedded-evaluators-news.md) |
-| 2026-09-28 | **Edit-attribution scope** — User asked for the edit-tracking plan, then required that authorship bars (and updates to them) b... | [2026-09-28-edit-attribution-scope.md](2026-09-28-edit-attribution-scope.md) |
-| 2026-09-28 | **Edit-attribution tooling** — User asked to build the edit-tracking plan (snapshots, hooks, ledger, bar derivation). | [2026-09-28-edit-attribution-build.md](2026-09-28-edit-attribution-build.md) |
-| 2026-09-25 | **Huang / Klein / Zvi field news** — User asked to read Zvi on Jensen Huang's Ezra Klein interview, discuss simulacrum levels and plau... | [2026-09-25-huang-klein-zvi-news.md](2026-09-25-huang-klein-zvi-news.md) |
 
 ## Archive by month
 
-- **2026-09** (77): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (80): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

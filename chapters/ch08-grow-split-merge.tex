@@ -56,7 +56,7 @@ A government agency outlives all of its employees.
 A religious community preserves doctrines and rituals across centuries, while nearly every material part changes.
 An artificial system may create successors more capable than itself, then vanish as a separately identifiable process.
 
-If alignment is defined over fixed objects, this is a serious problem.
+If alignment is defined over fixed objects, this fails.
 We might align the model while the real optimizer becomes the model-plus-tools-plus-users system.
 We might evaluate a deployed service while the dangerous part sits in the fine-tuning loop, the monitoring layer, the market incentive, or the successor system it creates.
 We might certify a system at time $t$, only to find that the relevant agent at time $t+1$ has moved.
@@ -64,7 +64,7 @@ We might certify a system at time $t$, only to find that the relevant agent at t
 The central claim of this chapter is therefore simple:
 
 \begin{quote}
-For serious superintelligence alignment, agent identity must be treated as a relation across transformations, not as a fixed set of variables.
+For alignment under growth, split, and merge, agent identity must be treated as a relation across transformations, not as a fixed set of variables.
 \end{quote}
 
 This sounds philosophical, but it is operational.
@@ -896,7 +896,7 @@ A local guarantee has the form:
 \[
 A_t\in\mathcal{S}_{\text{safe}}.
 \]
-A serious guarantee has the form:
+A guarantee over descendants has the form:
 \begin{equation}
 \Pr\left[
 \forall t \leq T,\;
@@ -1089,8 +1089,8 @@ The most important conserved properties are the seven of Chapter~\ref{ch:conserv
 Later chapters develop the value, bearer, and correction components in detail.
 For now, the lesson is that alignment must be defined over lineages and composites, not merely over isolated systems.
 
-A system is not seriously aligned if it is safe only while small, static, isolated, memoryless, tool-less, and unable to reproduce.
-Serious alignment begins when safety survives growth.
+A system is not aligned for this book's purposes if it is safe only while small, static, isolated, memoryless, tool-less, and unable to reproduce.
+That claim begins when safety survives growth.
 
 \end{authbar}
 \authbarneedspace

@@ -108,7 +108,7 @@ export function cardCatalogSections(
     { title: "Experiments", id: "experiments", cards: experiments },
     { title: "Predictions", id: "predictions", cards: byType("prediction") },
     { title: "Objections & caveats", id: "objections", cards: byType("objection") },
-    { title: "Artifacts", id: "artifacts", cards: byType("artifact") },
+    { title: "Tools and checklists", id: "artifacts", cards: byType("artifact") },
     { title: "Appendices & front matter", id: "appendices", cards: appendices },
     { title: "Releases & updates", id: "releases", cards: releaseVersions },
     { title: "Reference cards", id: "references", cards: referencesSection }

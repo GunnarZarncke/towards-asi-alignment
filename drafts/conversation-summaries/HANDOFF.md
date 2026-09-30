@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-30 (predictions internals interface and activation route).
+Last updated: 2026-09-30 (site notes first three: ch01, serious, cards hub).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-09-30:** **Site notes first three** — Ch. 1 simpler thesis and Ch. 7 preview of the alignment object; book-wide `serious` tell-pattern in chapters; `/cards/` lede and Tools and checklists. Remaining notes not done. Log: `2026-09-30-site-notes-first-three.md`.
+- **2026-09-30:** **LW wiki chapter quotes (plan only)** — Where a LessWrong tag states a concept a chapter uses, quote it once and keep the TSA distinction. `{GZ}` spans frozen; `{GZ+AI}` bars unchanged if the quote is a new block beside them. Not executed. Log: `2026-09-30-lw-wiki-chapter-quotes.md`.
 - **2026-09-30:** **Session summary script** — `scripts/session_summary.py` read-only recap from hooks telemetry, git, and Cursor transcript; sensible no-arg defaults. Log: `2026-09-30-session-summary-script.md`.
 - **2026-09-30:** **Predictions internals interface** — Draft Market 21 (outside book); activation route under MB7a in Ch. 10 and Market 8; whitebox re-entry as measurement handle only; Ch. 10 terminology aligned to prior vocabulary. Log: `2026-09-30-activation-channel-family.md` (+ `2026-09-29-predictions-model-internals.md`).
 - **2026-09-29:** **OpenAI training safety-case news** — 28 Sep guidelines: documentation before a run continues; safety case is the north star. Stop = missing leaf (Ch. 42). Sandbox red team is a frontier checkpoint, “subject to a safety analysis.” Nested Anakin meme. Log: `2026-09-29-openai-training-safety-case-news.md`.

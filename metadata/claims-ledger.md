@@ -161,7 +161,7 @@ Track every major claim with status, support, weakest link, and falsification cr
 
 ## Claim ID: C-006
 
-**Claim:** (Successor claim) No alignment guarantee is serious unless it covers successors, delegates, copies, and systems created under competitive pressure; successor creation is the central alignment test, and certification (not construction) of a restricted class is the tractable form of guarantee.
+**Claim:** (Successor claim) An alignment guarantee does not cover this claim unless it covers successors, delegates, copies, and systems created under competitive pressure; successor creation is the central alignment test, and certification (not construction) of a restricted class is the tractable form of guarantee.
 
 **Chapter(s):** 8, 30, 31, 32, 33
 

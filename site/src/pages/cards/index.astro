@@ -16,10 +16,13 @@ const highlights = highlightEntries(cards);
 const sections = cardCatalogSections(cards, fieldProjectionGems, experimentsData);
 ---
 
-<SiteLayout title="Cards" description="Short concept, chapter, bridge, and glossary cards grouped by topic.">
+<SiteLayout title="Cards" description="Short pages for one idea each: concepts, chapters, bridges, and glossary terms. The PDF is the full argument.">
   <section class="hero">
     <p class="eyebrow">Cards</p>
     <h1>Cards</h1>
+    <p class="lede">
+      Short lookup pages for one idea each. The PDF is the full argument; these pages are for finding a term, a chapter, or a decision prompt.
+    </p>
     <p class="button-row">
       <a class="button" href={withBase("/glossary/")}>Glossary</a>
       <a class="button" href={withBase("/badges/")}>Badge index</a>

@@ -29,7 +29,7 @@ A common first move in alignment is to observe the system. Record its actions. I
 Independent entity-level risk assessments and cross-lab cheating studies reinforce the same lesson: passive scores and model cards are weak leaves in a safety case unless embedded in perturbation and adversarial review \autocite{metr2026frontierriskreport,aisi2026cheatingbehaviour}.
 Ask it questions. Compare its stated reasons to its visible behavior. If it passes, increase trust.
 
-This is not foolish. Observation is the basis of all empirical work. But it is incomplete in exactly the regime where serious alignment matters.
+This is not foolish. Observation is the basis of all empirical work. But it is incomplete in the regime of rare, delayed, observer-conditioned failure.
 
 A weak system can often be understood by observation because it lacks the ability to condition its behavior on being observed. A stronger system may not merely produce behavior. It may produce behavior partly for the observer. A still stronger system may model the observer, infer the test, manage the evidence, preserve hidden control channels, and change its behavior when the measurement regime changes \autocite{park2024deception,hubinger2023modelorganisms}.
 The AI~2027 scenario gives this concern a familiar narrative form: apparent honesty and
@@ -184,7 +184,7 @@ because \(\theta\) itself changes:
 \]
 A fixed-boundary estimate may then average over incompatible states. The result can be misleading in both directions. It may invent agency where there is only regime shift, or miss agency because the relevant behavior appears only after the system has learned the test.
 
-For serious alignment, the important cases are often rare and delayed. A system may behave corrigibly during normal operation and only shift when it has an opportunity to acquire durable resources, create successors, remove oversight, or influence the training process. Passive observation of common cases will not find this unless the common trace contains enough information about the rare policy.
+The important cases are often rare and delayed. A system may behave corrigibly during normal operation and only shift when it has an opportunity to acquire durable resources, create successors, remove oversight, or influence the training process. Passive observation of common cases will not find this unless the common trace contains enough information about the rare policy.
 
 Thus the second practical rule:
 
@@ -495,7 +495,7 @@ Under perturbation, we ask:
 \[
 CCI^{\mathcal{P}} \geq CCI_{\min}.
 \]
-If correction works in demos but collapses under time pressure, capability gain, successor creation, or ontology shift, it is not a serious correction channel.
+If correction works in demos but collapses under time pressure, capability gain, successor creation, or ontology shift, it is not a correction channel that later chapters can use.
 
 \end{authbar}
 \authbarsubneedspace
@@ -1157,7 +1157,7 @@ Alignment is counterfactual. So alignment measurement must be counterfactual too
 \begin{authbar}{AI}
 Passive observation can show that a system behaved acceptably in the observed context. It cannot, by itself, show that the system will preserve alignment-relevant structure when context changes.
 
-For serious systems, the evaluator must perturb tools, memory, oversight, incentives, ontology, and successor channels. The evaluator must then ask which control loci, goals, value-bundle geometries, bearer maps, correction channels, and evidence trails remain invariant.
+For systems that can condition on being tested, the evaluator must perturb tools, memory, oversight, incentives, ontology, and successor channels. The evaluator must then ask which control loci, goals, value-bundle geometries, bearer maps, correction channels, and evidence trails remain invariant.
 
 The chapter's core test can be stated compactly:
 \[

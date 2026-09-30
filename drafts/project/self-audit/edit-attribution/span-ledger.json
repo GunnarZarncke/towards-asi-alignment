@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260929T232117.221Z",
+  "_as_of": "20260930T121510.676Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -25,7 +25,8 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#11": {
-    "agent": 1,
+    "agent": 3,
+    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 11,
@@ -216,6 +217,62 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch01-wrong-object.tex#0": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 0,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#1": {
+    "agent": 3,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 1,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#13": {
+    "agent": 1,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 13,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#14": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 14,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#3": {
+    "agent": 3,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 3,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#6": {
+    "agent": 35,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 6,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#7": {
+    "agent": 1,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 7,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "chapters/ch02-artificial-civilization.tex#12": {
     "agent": 0,
     "file": "chapters/ch02-artificial-civilization.tex",
@@ -224,11 +281,35 @@
     "key": "GZ",
     "prior": "GZ"
   },
+  "chapters/ch02-artificial-civilization.tex#13": {
+    "agent": 2,
+    "file": "chapters/ch02-artificial-civilization.tex",
+    "human": 0,
+    "index": 13,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch02-artificial-civilization.tex#20": {
     "agent": 1,
     "file": "chapters/ch02-artificial-civilization.tex",
     "human": 0,
     "index": 20,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch03-dynamical-guarantee.tex#25": {
+    "agent": 2,
+    "file": "chapters/ch03-dynamical-guarantee.tex",
+    "human": 0,
+    "index": 25,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch03-dynamical-guarantee.tex#29": {
+    "agent": 2,
+    "file": "chapters/ch03-dynamical-guarantee.tex",
+    "human": 0,
+    "index": 29,
     "key": "AI",
     "prior": "AI"
   },
@@ -239,6 +320,14 @@
     "index": 5,
     "key": "AI",
     "prior": "AI"
+  },
+  "chapters/ch06-agent-without-anthropomorphism.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch06-agent-without-anthropomorphism.tex",
+    "human": 0,
+    "index": 2,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
   },
   "chapters/ch07-finding-boundary.tex#20": {
     "agent": 4,
@@ -280,6 +369,30 @@
     "key": "GZ",
     "prior": "GZ"
   },
+  "chapters/ch08-grow-split-merge.tex#2": {
+    "agent": 4,
+    "file": "chapters/ch08-grow-split-merge.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch08-grow-split-merge.tex#35": {
+    "agent": 2,
+    "file": "chapters/ch08-grow-split-merge.tex",
+    "human": 0,
+    "index": 35,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch08-grow-split-merge.tex#44": {
+    "agent": 4,
+    "file": "chapters/ch08-grow-split-merge.tex",
+    "human": 0,
+    "index": 44,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch09-composite-agent.tex#13": {
     "agent": 2,
     "file": "chapters/ch09-composite-agent.tex",
@@ -303,6 +416,14 @@
     "index": 17,
     "key": "GZ",
     "prior": "GZ"
+  },
+  "chapters/ch09-composite-agent.tex#32": {
+    "agent": 2,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 0,
+    "index": 32,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
   },
   "chapters/ch09-composite-agent.tex#35": {
     "agent": 1,
@@ -336,6 +457,14 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch11-capability-without-task-ontology.tex#38": {
+    "agent": 2,
+    "file": "chapters/ch11-capability-without-task-ontology.tex",
+    "human": 0,
+    "index": 38,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch11-capability-without-task-ontology.tex#5": {
     "agent": 2,
     "file": "chapters/ch11-capability-without-task-ontology.tex",
@@ -346,12 +475,35 @@
   },
   "chapters/ch11-capability-without-task-ontology.tex#6": {
     "agent": 8,
-    "dirty": true,
     "file": "chapters/ch11-capability-without-task-ontology.tex",
     "human": 13,
     "index": 6,
-    "key": "GZ",
+    "key": "GZ+AI",
     "prior": "GZ"
+  },
+  "chapters/ch12-boundary-expansion.tex#35": {
+    "agent": 2,
+    "file": "chapters/ch12-boundary-expansion.tex",
+    "human": 0,
+    "index": 35,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch13-coordination-bottleneck.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch13-coordination-bottleneck.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch13-coordination-bottleneck.tex#36": {
+    "agent": 2,
+    "file": "chapters/ch13-coordination-bottleneck.tex",
+    "human": 0,
+    "index": 36,
+    "key": "AI",
+    "prior": "AI"
   },
   "chapters/ch15-values-compressed-control.tex#29": {
     "agent": 1,
@@ -450,6 +602,134 @@
     "key": "GZ",
     "prior": "GZ"
   },
+  "chapters/ch18-bearer-maps.tex#14": {
+    "agent": 2,
+    "file": "chapters/ch18-bearer-maps.tex",
+    "human": 0,
+    "index": 14,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch21-reward-to-bundle-inference.tex#13": {
+    "agent": 2,
+    "file": "chapters/ch21-reward-to-bundle-inference.tex",
+    "human": 0,
+    "index": 13,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch21-reward-to-bundle-inference.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch21-reward-to-bundle-inference.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch21-reward-to-bundle-inference.tex#20": {
+    "agent": 2,
+    "file": "chapters/ch21-reward-to-bundle-inference.tex",
+    "human": 0,
+    "index": 20,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch21-reward-to-bundle-inference.tex#39": {
+    "agent": 2,
+    "file": "chapters/ch21-reward-to-bundle-inference.tex",
+    "human": 0,
+    "index": 39,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch22-compression-test-intention.tex#20": {
+    "agent": 2,
+    "file": "chapters/ch22-compression-test-intention.tex",
+    "human": 0,
+    "index": 20,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch22-compression-test-intention.tex#41": {
+    "agent": 2,
+    "file": "chapters/ch22-compression-test-intention.tex",
+    "human": 0,
+    "index": 41,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch23-goal-transport.tex#14": {
+    "agent": 2,
+    "file": "chapters/ch23-goal-transport.tex",
+    "human": 0,
+    "index": 14,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch23-goal-transport.tex#37": {
+    "agent": 2,
+    "file": "chapters/ch23-goal-transport.tex",
+    "human": 0,
+    "index": 37,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#21": {
+    "agent": 2,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 21,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
+    "agent": 2,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 9,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch28-extrapolative-correction.tex#26": {
+    "agent": 2,
+    "file": "chapters/ch28-extrapolative-correction.tex",
+    "human": 0,
+    "index": 26,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch29-manipulation-false-consent.tex#38": {
+    "agent": 2,
+    "file": "chapters/ch29-manipulation-false-consent.tex",
+    "human": 0,
+    "index": 38,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch30-successor-central-test.tex#14": {
+    "agent": 2,
+    "file": "chapters/ch30-successor-central-test.tex",
+    "human": 0,
+    "index": 14,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch32-self-modeling-self-opacity.tex#1": {
+    "agent": 2,
+    "file": "chapters/ch32-self-modeling-self-opacity.tex",
+    "human": 0,
+    "index": 1,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "chapters/ch32-self-modeling-self-opacity.tex#11": {
     "agent": 0,
     "file": "chapters/ch32-self-modeling-self-opacity.tex",
@@ -498,6 +778,94 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch33-certification-without-construction.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch33-certification-without-construction.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch34-selection-environment.tex#34": {
+    "agent": 2,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 0,
+    "index": 34,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch34-selection-environment.tex#4": {
+    "agent": 2,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 0,
+    "index": 4,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch37-alignment-attractor.tex#13": {
+    "agent": 2,
+    "file": "chapters/ch37-alignment-attractor.tex",
+    "human": 0,
+    "index": 13,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch37-alignment-attractor.tex#19": {
+    "agent": 2,
+    "file": "chapters/ch37-alignment-attractor.tex",
+    "human": 0,
+    "index": 19,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch37-alignment-attractor.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch37-alignment-attractor.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch38-conductive-artifacts-pivotal-processes.tex#31": {
+    "agent": 2,
+    "file": "chapters/ch38-conductive-artifacts-pivotal-processes.tex",
+    "human": 0,
+    "index": 31,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch39-passive-observation-not-enough.tex#19": {
+    "agent": 2,
+    "file": "chapters/ch39-passive-observation-not-enough.tex",
+    "human": 0,
+    "index": 19,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch39-passive-observation-not-enough.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch39-passive-observation-not-enough.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch39-passive-observation-not-enough.tex#52": {
+    "agent": 2,
+    "file": "chapters/ch39-passive-observation-not-enough.tex",
+    "human": 0,
+    "index": 52,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch39-passive-observation-not-enough.tex#6": {
+    "agent": 2,
+    "file": "chapters/ch39-passive-observation-not-enough.tex",
+    "human": 0,
+    "index": 6,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#10": {
     "agent": 0,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
@@ -529,5 +897,21 @@
     "index": 9,
     "key": "AI",
     "prior": "AI"
+  },
+  "chapters/ch48-towards-alignment.tex#6": {
+    "agent": 2,
+    "file": "chapters/ch48-towards-alignment.tex",
+    "human": 0,
+    "index": 6,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "frontmatter/introduction.tex#2": {
+    "agent": 2,
+    "file": "frontmatter/introduction.tex",
+    "human": 0,
+    "index": 2,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
   }
 }

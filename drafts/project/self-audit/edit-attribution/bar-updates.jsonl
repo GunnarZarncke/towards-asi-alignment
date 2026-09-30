@@ -31,3 +31,4 @@
 {"ts": "2026-09-29T22:30:52Z", "file": "appendices/appP-bridge-predictions.tex", "span": "appendices/appP-bridge-predictions.tex#20", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 4}
 {"ts": "2026-09-29T22:30:52Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#3", "from": "GZ+AI", "to": "GZ", "human_lines": 58, "agent_lines": 0}
 {"ts": "2026-09-29T22:30:52Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#7", "from": "GZ+AI", "to": "GZ", "human_lines": 26, "agent_lines": 0}
+{"ts": "2026-09-30T12:25:13Z", "file": "chapters/ch11-capability-without-task-ontology.tex", "span": "chapters/ch11-capability-without-task-ontology.tex#6", "from": "GZ", "to": "GZ+AI", "human_lines": 13, "agent_lines": 8}
