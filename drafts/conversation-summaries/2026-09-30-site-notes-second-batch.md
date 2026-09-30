@@ -29,4 +29,4 @@ Implement site-notes batch two: consolidate field tiles, notes panel save placem
 - `AGENTS.md` (Companion site — Card graphics)
 
 ## Commits
-- (filled in at session end)
+- `68ef70d1e` Apply LW wiki quotes, site notes batch two, and field hub polish.
