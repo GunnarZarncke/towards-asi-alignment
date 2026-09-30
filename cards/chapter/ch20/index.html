@@ -142,7 +142,7 @@ It is about changing the future geometry.</p>
 <h2 id="goodhart-pressure-on-bundle-geometry-ai">Goodhart Pressure on Bundle Geometry <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:goodhart-bundle-geometry"></span>
 Once bundle geometry becomes a metric, it can be gamed.
-Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a> already quotes the wiki’s Goodhart sentence.
+Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a> already quotes the Goodhart sentence.
 This is not a reason to avoid measurement.
 It is a reason to measure adversarially <a href="../../references/manheim2018goodhart/">Manheim, 2018</a>, <a href="../../references/goodhart1984problems/">Goodhart, 1984</a>.</p>
 <p>There are several failure modes.</p>
@@ -530,11 +530,23 @@ This chapter builds on apprenticeship learning and inverse reinforcement learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

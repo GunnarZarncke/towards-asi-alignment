@@ -88,9 +88,9 @@ A superintelligence that <em>internalizes coordination</em> (Ch. <a href="../../
 The hopeful reading is that there is no free lunch in concealment: opacity traded for capability, or capability spent on opacity, should in principle be measurable as a deficit somewhere.
 The pessimistic reading, which we do not get to dismiss, is that at high <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi></mrow><annotation encoding="application/x-tex">\kappa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">κ</span></span></span></span> the affordable surplus dwarfs every <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">c_{\mathrm{fake}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">fake</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> we can construct, and the footprint shrinks below measurement noise.
 Establishing which regime holds — and for which metrics — is the central open problem this chapter hands forward.</p>
-<h3 id="naming-the-problem-ai">Naming the Problem <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h3>
-<p><span id="sec:certification-under-manipulation-ch43"></span>
-The LessWrong wiki’s <em>Eliciting Latent Knowledge</em> page names an open problem <a href="../../references/christiano2021elk/">Christiano, 2021</a>:</p>
+<h3 id="naming-the-problem-gz-ai">Naming the Problem <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
+<p><span id="sec:certification-under-manipulation-ch43"></span></p>
+<blockquote class="wiki-quote"><p>Eliciting Latent Knowledge is an open problem in AI safety. Suppose we train a model to predict what the future will look like according to cameras and other sensors. Some futures look great on camera but are actually catastrophically bad.</p><footer><a href="../../references/lwwiki-elk/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>Latent readout is not correction uptake, and it is not successor preservation.
 Every measurand in this book — boundary residual, value-bundle activation, correction-channel integrity, the conserved-property score, the laundering index — shares one antecedent (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>, <a href="../../appendix/appb/#sec:bridge-crosswalk-takeaway">Bridges and the Field: A Crosswalk</a>). It is worth a name, the way the field named the human-simulator-versus-direct-translator gap “ELK” <a href="../../references/christiano2021elk/">Christiano, 2021</a> rather than leaving it as a recurring footnote in a dozen papers.</p>
 <div class="env-box env-claim"><strong>Claim.</strong> <em>Statement.</em> Given a measurand $M$ that a certification procedure uses to gate deployment or successor creation, and a system of capability $\kappa$ that can act on the world before, during, and after $M$ is evaluated: does there exist a resource budget $\kappa^{*}$ such that for all $\kappa &#x3C; \kappa^{*}$, $M$ is adversarially verifiable ([What Survives an Adversary: Verifiability and Representability](#sec:cost-relation-ch43)) — i.e.\ $c_{\mathrm{fake}}(M,\Delta)$ grows faster in $\Delta$ than the system's affordable surplus — and for $\kappa \geq \kappa^{*}$ it provably is not?
@@ -165,7 +165,7 @@ The same move applies one level down.
 Model activations inside the boundary can steer while logs, tools, and the text the system emits do not reach them (Chapter <a href="../../chapter/ch10/">Agency Under Strategic Opacity</a>).
 A measurement handle that reads those activations still leaves a green reading only as good as the cost of faking the handle.
 That is the same budget question as before, now asked about the readout itself: what would it cost to keep the visible trace compliant while the decision is made somewhere unread?
-Accidental chain-of-thought optimization during training at major labs shows the same erosion can occur with no adversary at all, from ordinary process failures <a href="../../references/openai2026accidentalcotgrading/">{OpenAI}, 2026</a>, <a href="../../references/anthropic2026mythosalignment/">{Anthropic}, 2026</a>.</p>
+Accidental chain-of-thought optimization during training at major labs shows the same erosion can occur with no adversary at all, from ordinary process failures <a href="../../references/openai2026accidentalcotgrading/">OpenAI, 2026</a>, <a href="../../references/anthropic2026mythosalignment/">Anthropic, 2026</a>.</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>latent readout</mtext><mo>⇏</mo><mtext>correction uptake</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{latent readout}
 \not\Rightarrow
 \text{correction uptake}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">latent readout</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace nobreak"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">correction uptake</span></span><span class="mord">.</span></span></span></span></span>
@@ -321,11 +321,23 @@ This chapter draws on <em>AGI Ruin</em> as the source of the adversarial reading
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

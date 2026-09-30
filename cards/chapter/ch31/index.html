@@ -56,10 +56,10 @@ They must describe the system’s boundary, memory lineage, value-bundle geometr
 <p>A successor can be more capable while preserving these structures.
 It can also be more capable by eroding them.
 The latter is one of the central routes to catastrophic misalignment.</p>
-<h2 id="identity-as-invariance-not-sameness-ai">Identity as Invariance, Not Sameness <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="identity-as-invariance-not-sameness-gz-ai">Identity as Invariance, Not Sameness <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
 <p><span id="sec:identity-invariance-ch31"></span>
-For physical, biological, institutional, and artificial systems, identity over time is never literal sameness.
-The LessWrong wiki’s <em>Personal Identity</em> page is:</p>
+For physical, biological, institutional, and artificial systems, identity over time is never literal sameness.</p>
+<blockquote class="wiki-quote"><p>Personal identity is the concept that two configurations of particles (or computations, etc), each of which is a person, can be in some sense the same person.</p><footer><a href="../../references/lwwiki-personal-identity/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>This chapter does not settle that question.
 It asks which safety-bearing properties are invariant across a causal transformation.
 A child becomes an adult.
@@ -1006,11 +1006,23 @@ This chapter builds on inverse reinforcement learning and apprenticeship learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

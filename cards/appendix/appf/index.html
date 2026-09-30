@@ -398,7 +398,7 @@ Do not treat this chapter’s tests as covering material fatigue or sub-threshol
 <p>Attempt the master disconfirmer: full stack green on every proxy with catastrophic outcome, or exhibit one adversarially verifiable core metric (Chapter <a href="../../chapter/ch48/">Towards Superintelligence Alignment</a>).</p>
 <h2 id="governance-schedule-stress-tests-deferred-ai">Governance-schedule stress tests (deferred) <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:research-governance-schedule"></span>
-Macro scenario work such as AI 2027 and AI 2040 Plan A supplies <em>schedule shapes</em> and candidate outer handles—verified slowdown, research transparency, compute tracking, timed pause-then-handoff—but does not discharge <code>MB1</code>—<code>MB10</code> <a href="../../references/ai2027/">2027}, 2026</a>, <a href="../../references/ai2040/">Larsen, 2026</a>.
+Macro scenario work such as AI 2027 and AI 2040 Plan A supplies <em>schedule shapes</em> and candidate outer handles—verified slowdown, research transparency, compute tracking, timed pause-then-handoff—but does not discharge <code>MB1</code>—<code>MB10</code> <a href="../../references/ai2027/">AI 2027, 2026</a>, <a href="../../references/ai2040/">Larsen, 2026</a>.
 The book’s experiment lines stress micro mechanisms (boundaries, CCI, selection basins, successors) under controlled substrates.
 A useful next research band is to reuse Plan A-shaped <em>protocols</em> as opaque institutional cues, the way ET-3 reused AI 2027 speedups as schedule cues, without treating calendar dates or geopolitics as findings.</p>
 <p>Deferred experiment ideas (not implemented; see also <code>experiments/lab-simulation/TODO.md</code> and <code>experiments/graded-lab-simulation/REPRODUCTION.md</code>):</p>
@@ -474,11 +474,23 @@ Chapter <a href="../../chapter/ch44/">Lethality Stress Test and Open Issues</a> 
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

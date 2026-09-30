@@ -28,9 +28,9 @@ Cartesian boundaries are part of the map, not the territory.
 In reality, there is no distinction between agent and environment.%</p><footer>— Mark Xu &#x26; Evan Hubinger, “Agents Over Cartesian World Models,” LessWrong (2021)</footer></blockquote>
 <blockquote class="epigraph"><p>%
 Boundary maintenance is system maintenance.%</p><footer>— Niklas Luhmann, <em>Social Systems</em> (1995), p.\ 17</footer></blockquote>
-<h2 id="the-problem-of-the-hidden-boundary-ai">The Problem of the Hidden Boundary <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
-<p><span id="sec:hidden-boundary"></span>
-The LessWrong wiki’s <em>Embedded Agency</em> page states the field’s starting problem:</p>
+<h2 id="the-problem-of-the-hidden-boundary-gz-ai">The Problem of the Hidden Boundary <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
+<p><span id="sec:hidden-boundary"></span></p>
+<blockquote class="wiki-quote"><p>An understanding of the theory of rational agents must account for the fact that the agents we create (and we ourselves) are inside the world or universe we are trying to affect, and not separated from it.</p><footer><a href="../../references/lwwiki-embedded-agency/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>The rest of this section treats the boundary as a testable hypothesis recovered from traces and interventions, not only as a critique of a Cartesian picture.
 The previous chapter introduced an agent without relying on familiar biological or social labels <a href="../../references/orseau2018agents/">Orseau, 2018</a>, <a href="../../references/kenton2022discovering/">Kenton, 2022</a>.
 An agent, in the operational sense used in this book, is a bounded dynamical process whose internal states help predict and control its future interface with the world.
@@ -179,9 +179,10 @@ Variables can be correlated because they share a common cause, because they are 
 Correlation alone does not reveal agency.
 We need a criterion that asks whether the subset has the right kind of input-output closure.</p>
 <h2 id="boundary-as-conditional-independence-gz-ai">Boundary as Conditional Independence <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
-<p><span id="sec:boundary-conditional-independence"></span>
-A Cartesian setup, on the LessWrong wiki, is:</p>
-<p>Critch’s <em>Boundaries / Membranes</em> page uses “boundaries” this way:</p>
+<p><span id="sec:boundary-conditional-independence"></span></p>
+<blockquote class="wiki-quote"><p>A Cartesian agent setup is one where the agent receives sensory information from the environment, and the agent sends motor outputs to the environment, and nothing else can cross the `Cartesian border' separating the agent and environment.</p><footer><a href="../../references/lwwiki-cartesian-boundary/">LessWrong wiki, 2026</a></footer></blockquote>
+<p>Critch uses “boundaries” this way:</p>
+<blockquote class="wiki-quote"><p>By boundaries, I just mean the approximate causal separation of regions in some kind of physical space (e.g., spacetime) or abstract space (e.g., cyberspace).</p><footer><a href="../../references/lwwiki-boundaries-membranes/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>The estimator below is not any such approximate cut.
 It is a leaky, scale-relative boundary recovered by conditional independence and intervention.
 The central idea is to divide variables around a candidate system into four roles—<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">I_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">S_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">A_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">E_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>—as introduced in Chapter <a href="../../chapter/ch01/">The Wrong Object of Alignment</a>.</p>
@@ -1205,11 +1206,23 @@ This chapter builds on the good regulator theorem and Markov blankets <a href=".
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

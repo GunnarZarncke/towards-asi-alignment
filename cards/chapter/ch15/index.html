@@ -30,9 +30,10 @@ Reason is, and ought only to be the slave of the passions, and can never pretend
 <h2 id="the-basic-shift-ai">The Basic Shift <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:basic-shift"></span>
 It is tempting to imagine values as propositions.
-The LessWrong wiki’s <em>Human Values</em> page calls them:</p>
-<p>That is the ordinary target, not the compression model below.
-The wiki’s <em>Shard Theory</em> page is the nearest field program:</p>
+In the field lexicon, human values often mean:</p>
+<blockquote class="wiki-quote"><p>Human Values are the things we care about, and would want an aligned superintelligence to look after and support.</p><footer><a href="../../references/lwwiki-human-values/">LessWrong wiki, 2026</a></footer></blockquote>
+<p>A related research program is <em>Shard Theory</em>:</p>
+<blockquote class="wiki-quote"><p>Shard Theory is an alignment research program, about the relationship between training variables and learned values in trained Reinforcement Learning (RL) agents.</p><footer><a href="../../references/lwwiki-shard-theory/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>The loop—hub architecture in this chapter is not that ontology.
 A person values honesty, autonomy, love, beauty, justice, learning, loyalty, or non-suffering.
 On this picture, alignment would mean finding the right list of propositions, resolving the inconsistencies, assigning weights, and placing the resulting objective function inside an artificial system.</p>
@@ -1036,11 +1037,23 @@ This chapter builds on apprenticeship learning and inverse reinforcement learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

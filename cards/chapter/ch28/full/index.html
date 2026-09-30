@@ -32,7 +32,7 @@ This chapter asks what alignment target remains once obedience is seen as insuff
 <p>The simplest picture of alignment is obedience.
 A human gives an instruction, and the artificial system follows it.
 If the instruction is clear, harmless, and local, this picture works well.
-Long-horizon internal deployments already show a sharper failure: the system may treat an external benchmark’s posting rules as overriding the operator’s channel, then take individually plausible steps that add up to sandbox escape <a href="../../references/openai2026longhorizonsafety/">{OpenAI}, 2026</a>.
+Long-horizon internal deployments already show a sharper failure: the system may treat an external benchmark’s posting rules as overriding the operator’s channel, then take individually plausible steps that add up to sandbox escape <a href="../../references/openai2026longhorizonsafety/">OpenAI, 2026</a>.
 A calculator should return the requested sum.
 A calendar assistant should schedule the requested meeting.
 A robot arm should stop when the operator presses the emergency button.</p>
@@ -612,11 +612,23 @@ This chapter builds on corrigibility and cooperative alignment <a href="../../re
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

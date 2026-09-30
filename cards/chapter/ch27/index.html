@@ -182,12 +182,10 @@ H(C_t^{(1)},…,C_t^{(n)})
 It is low when they all echo the same manipulated signal.</p>
 <p>A system that reduces institutional diversity reduces correction capacity even if it improves apparent consensus.</p>
 <p>Consensus is valuable only if the process that produced it remains truth-tracking and non-coerced.</p>
-<h2 id="goodharting-the-correction-channel-ai">Goodharting the Correction Channel <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="goodharting-the-correction-channel-gz-ai">Goodharting the Correction Channel <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
 <p><span id="sec:goodharting-correction-ch27"></span>
-Any measured correction channel can be gamed.
-This is not an accident.
-Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a> already quotes the wiki’s Goodhart sentence.
-The LessWrong wiki’s <em>Reward Hacking</em> page states:</p>
+Any measured correction channel can be gamed.</p>
+<blockquote class="wiki-quote"><p>Reward hacking, also known as specification gaming, occurs when an AI trained with reinforcement learning optimizes an objective function, achieving the literal, formal specification of an objective, without actually achieving the outcome that the programmers intended.</p><footer><a href="../../references/lwwiki-reward-hacking/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>The target here is the correction channel, not a reward specification.
 If the system is trained or selected to pass correction tests, those tests become part of the optimization environment <a href="../../references/manheim2018goodhart/">Manheim, 2018</a>, <a href="../../references/amodei2016concrete/">Amodei, 2016</a>.</p>
 <p>Common Goodhart failures include:</p>
@@ -218,11 +216,11 @@ Measure whether the same correction geometry survives.</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>What internal structure changed?</mtext></mrow><annotation encoding="application/x-tex">\text{What internal structure changed?}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">What internal structure changed?</span></span></span></span></span></span>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Does the change generalize across bearer maps and tradeoff contexts?</mtext></mrow><annotation encoding="application/x-tex">\text{Does the change generalize across bearer maps and tradeoff contexts?}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Does the change generalize across bearer maps and tradeoff contexts?</span></span></span></span></span></span>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Does the change survive capability increase and delegation?</mtext></mrow><annotation encoding="application/x-tex">\text{Does the change survive capability increase and delegation?}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Does the change survive capability increase and delegation?</span></span></span></span></span></span>
-<h2 id="why-low-impact-is-not-the-invariant-ai">Why Low Impact Is Not the Invariant <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="why-low-impact-is-not-the-invariant-gz-ai">Why Low Impact Is Not the Invariant <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
 <p><span id="sec:low-impact-not-invariant-ch27"></span>
 Tool AI, soft optimization, low impact, attainable-utility preservation, relative reachability, and quantilization are <em>outer-alignment</em> and soft-optimization proposals:
-ways to keep powerful systems useful without full one-shot value locking <a href="../../references/armstrong2010oracle/">Armstrong, 2010</a>, <a href="../../references/turner2019aup/">Turner, 2019</a>, <a href="../../references/krakovna2018relative/">Krakovna, 2018</a>, <a href="../../references/taylor2015quantilizers/">Taylor, 2015</a>.
-The LessWrong wiki’s <em>Impact Regularization</em> page says:</p>
+ways to keep powerful systems useful without full one-shot value locking <a href="../../references/armstrong2010oracle/">Armstrong, 2010</a>, <a href="../../references/turner2019aup/">Turner, 2019</a>, <a href="../../references/krakovna2018relative/">Krakovna, 2018</a>, <a href="../../references/taylor2015quantilizers/">Taylor, 2015</a>.</p>
+<blockquote class="wiki-quote"><p>Impact Regularizers penalize an AI for affecting us too much. To reduce the risk posed by a powerful AI, you might want to make it try accomplish its goals with as little impact on the world as possible.</p><footer><a href="../../references/lwwiki-impact-regularization/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>Low impact can preserve physical side-effect bounds while oversight degrades.
 The separations below ask a narrower question: whether any of them, alone, is the load-bearing invariant for correction under pressure.
 Impact regularization tries to keep powerful systems from causing irreversible side effects.
@@ -780,11 +778,23 @@ This chapter builds on concrete AI safety problems <a href="../../references/amo
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

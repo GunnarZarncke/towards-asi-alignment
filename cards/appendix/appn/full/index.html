@@ -70,7 +70,7 @@ Chapter <a href="../../chapter/ch16/">The Value-Bundle Model</a> gets a partial:
 For Chapter <a href="../../chapter/ch35/">Multi-Agent Superintelligence and Inferential Coupling</a> and Chapter <a href="../../chapter/ch42/">A Safety Case for Superintelligence Alignment</a>, the standing result is the one both chapters name as the dangerous case: these metrics are observable, and not yet adversarially verifiable.
 The corresponding safety-case leaves remain unsupported rather than discharged, which is the outcome the safety case is designed to make visible.</p>
 <p><strong>AI 2027 and AI 2040 as scenario sources.</strong></p>
-<p>The AI 2027 scenario supplies a concrete vocabulary for these chapter connections: capability expands through a lab—agent collective and its memory, tools, and copies; apparent honesty can coexist with weak oversight; successors can be designed by predecessors; and competitive pressure can select for speed over correction <a href="../../references/ai2027/">2027}, 2026</a>.
+<p>The AI 2027 scenario supplies a concrete vocabulary for these chapter connections: capability expands through a lab—agent collective and its memory, tools, and copies; apparent honesty can coexist with weak oversight; successors can be designed by predecessors; and competitive pressure can select for speed over correction <a href="../../references/ai2027/">AI 2027, 2026</a>.
 AI 2040 Plan A is the same team’s recommended alternative: a verified international slowdown that delays superintelligence and changes the deployment environment rather than racing through it <a href="../../references/ai2040/">Larsen, 2026</a>.
 These are scenario illustrations, not findings from the lab batteries and not evidence for either scenario’s calendar dates.
 ET-3 used AI 2027 speed assumptions only as opaque stress cues; LS-42—LS-48 therefore belong to the “stress-tested mechanism” column, not to a forecast-validation column.
@@ -405,11 +405,23 @@ Which book bridges and cross-cutting features each line exercises. “Primary”
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

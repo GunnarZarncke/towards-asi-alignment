@@ -482,7 +482,8 @@ The useful middle position is:</p>
 <p><span id="sec:bearer-problem-ch17"></span>
 Low-dimensional bundle structure is not enough.
 A system must also learn what the bundles apply to.
-The LessWrong wiki’s <em>Pointers Problem</em> page asks:</p>
+The <em>Pointers Problem</em> asks:</p>
+<blockquote class="wiki-quote"><p>What functions of what variables (if any) in the environment and/or another world-model correspond to the latent variables in the agent's world-model?</p><footer><a href="../../references/lwwiki-pointers-problem/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>Bearer maps are the extension of that question to who or what a value applies to, including under ontology shift.
 They are not a renaming of the pointers problem.</p>
 <p>A value bundle requires a bearer map:</p>
@@ -883,11 +884,23 @@ This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

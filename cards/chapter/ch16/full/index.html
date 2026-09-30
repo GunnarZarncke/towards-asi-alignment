@@ -31,7 +31,8 @@ It is the greatest happiness of the greatest number that is the measure of right
 <p><span id="sec:why-value-model-needed"></span>
 The alignment problem is often phrased as though the relevant target were already available.
 We say that a system should be aligned with human values.
-The LessWrong wiki’s <em>Value Learning</em> page names a proposed method:</p>
+One proposed method is <em>value learning</em>:</p>
+<blockquote class="wiki-quote"><p>Value Learning is a proposed method for incorporating human values in an AGI. It involves the creation of an artificial learner whose actions consider many possible sets of values and preferences, weighed by their likelihood.</p><footer><a href="../../references/lwwiki-value-learning/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>A value bundle is not that learner, and it is not a single utility.
 Activation, policy effect, tradeoff geometry, and bearer maps still have to be specified.</p>
 <p>What are values?
@@ -1149,11 +1150,23 @@ This chapter builds on apprenticeship learning and inverse reinforcement learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

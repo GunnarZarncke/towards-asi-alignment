@@ -52,9 +52,9 @@ It is tempting to imagine human values as a stable target that artificial system
 <p>For example, a society may preserve the word “dignity” while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\Phi_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, the tradeoff weights <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">W_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, and whether the update envelope <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="script">E</mi><mi>t</mi><mi>H</mi></msubsup></mrow><annotation encoding="application/x-tex">\mathcal E^H_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0883em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.453em;margin-left:-0.0894em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0813em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span> remains grounded, plural, reversible, and correctable.</p>
 <p>A person may preserve the verbal belief “family matters” while the bundle geometry changes. The phrase may once have meant obedience to parents, later mutual care, later chosen kinship, later the protection of children against inherited obligations. Again, the phrase remains stable while the control structure changes.</p>
 <p>This is ordinary human development. The problem is that superintelligent systems may become very good at shaping these changes.</p>
-<h2 id="value-drift-as-a-dynamical-process-ai">Value Drift as a Dynamical Process <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
-<p><span id="sec:dynamical-drift-ch46"></span>
-The LessWrong wiki’s <em>Value Drift</em> page refers to:</p>
+<h2 id="value-drift-as-a-dynamical-process-gz-ai">Value Drift as a Dynamical Process <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
+<p><span id="sec:dynamical-drift-ch46"></span></p>
+<blockquote class="wiki-quote"><p>Value drift refers to the idea that over time, the values or goals of a person or an AI system can change, often in ways that weren't originally intended.</p><footer><a href="../../references/lwwiki-value-drift/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>Ordinary or legitimate change is not the same as unconscious, manipulable, or irreversible drift.
 The question below is whether correction and contestation still govern the change.
 We can model value drift as a transition in the value state:</p>
@@ -580,11 +580,23 @@ This chapter builds on superintelligence risk <a href="../../references/bostrom2
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

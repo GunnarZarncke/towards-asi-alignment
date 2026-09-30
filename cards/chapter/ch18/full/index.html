@@ -305,7 +305,7 @@ n\, p_{\mathrm{FN}},</annotation></semantics></math></span><span class="katex-ht
 <p>Grounding certificates (Chapter <a href="../../chapter/ch03/">Alignment as a Dynamical Guarantee</a>, Section <a href="../../glossary/grounding-viability/">Alignment as a Dynamical Guarantee</a>; Chapter <a href="../../chapter/ch16/">The Value-Bundle Model</a>, <code>MB9</code>) ask what justifies transporting an observable indicator to a value-relevant bearer property, and when optimization or distribution shift should increase uncertainty.
 Consciousness-indicator research supplies candidate indicators and failure modes; it does not discharge grounding by itself.</p>
 <p>Deployment decisions under bearer uncertainty are another input to safety cases (Chapter <a href="../../chapter/ch42/">A Safety Case for Superintelligence Alignment</a>), not a replacement for catastrophic-risk concerns <a href="../../references/long2024aiwelfare/">Long, 2024</a>, <a href="../../references/butlin2025responsibleconsciousness/">Butlin, 2025</a>.
-Recent model-welfare work treats possible model experience as an open question and explores cautious interventions under that uncertainty <a href="../../references/anthropic2025modelwelfare/">{Anthropic}, 2025</a>, <a href="../../references/anthropic2025endsubset/">{Anthropic}, 2025</a>.</p>
+Recent model-welfare work treats possible model experience as an open question and explores cautious interventions under that uncertainty <a href="../../references/anthropic2025modelwelfare/">Anthropic, 2025</a>, <a href="../../references/anthropic2025endsubset/">Anthropic, 2025</a>.</p>
 <h2 id="false-negatives-and-false-positives-ai">False Negatives and False Positives <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:false-negatives-positives"></span>
 Bearer maps fail by false negatives and false positives.
@@ -1065,11 +1065,23 @@ This chapter builds on apprenticeship learning and cooperative inverse reinforce
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

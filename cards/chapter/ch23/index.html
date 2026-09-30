@@ -122,7 +122,8 @@ They preserve values, if they do, by preserving deeper patterns of relevance, co
 <h2 id="transport-persistence-and-reinterpretation-ai">Transport, Persistence, and Reinterpretation <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:transport-persistence-reinterpretation"></span>
 We need to distinguish three phenomena that are often confused.
-The LessWrong wiki’s <em>Ontological Crisis</em> page names:</p>
+An <em>ontological crisis</em> names:</p>
+<blockquote class="wiki-quote"><p>Ontological crisis is a term coined to describe the crisis an agent, human or not, goes through when its model (its ontology) of reality changes.</p><footer><a href="../../references/lwwiki-ontological-crisis/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>A crisis is not evidence that transport succeeded.
 Transport is a causal claim about bundles, bearers, correction, and successors.</p>
 <h3 id="goal-persistence-ai">Goal Persistence <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h3>
@@ -799,11 +800,23 @@ This chapter builds on inverse reinforcement learning and apprenticeship learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

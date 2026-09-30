@@ -32,9 +32,9 @@ We are not stuff that abides, but patterns that perpetuate themselves.%</p><foot
 <blockquote class="epigraph"><p>%
 Defining a boundary does not mean isolating the system.%</p><footer>— Niklas Luhmann, <em>Social Systems</em> (1995), p.\ 17</footer></blockquote>
 <h2 id="the-need-for-a-colder-definition-gz-ai">The Need for a Colder Definition <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
-<p><span id="sec:colder-definition"></span>
-The LessWrong wiki’s <em>Agent Foundations</em> page opens:
-It is tempting to define an agent by examples.
+<p><span id="sec:colder-definition"></span></p>
+<blockquote class="wiki-quote"><p>There are fundamental confusions about intelligent agents, that is, about minds that try to make stuff that they want happen.</p><footer><a href="../../references/lwwiki-agent-foundations/">LessWrong wiki, 2026</a></footer></blockquote>
+<p>It is tempting to define an agent by examples.
 A person is an agent.
 A dog is an agent.
 A chess program might be an agent.
@@ -676,11 +676,23 @@ This chapter builds on relative definitions of agency <a href="../../references/
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

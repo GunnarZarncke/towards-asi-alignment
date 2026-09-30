@@ -118,7 +118,7 @@ This is one of the framework’s genuine additions rather than a relabel.</p>
 Embedded Agency frames the same worry as subsystem alignment: internal optimizers that work against the whole <a href="../../references/demski2019embedded/">Demski, 2019</a>.
 The scalable-oversight agendas hit it as obfuscated arguments in debate <a href="../../references/irving2018debate/">Irving, 2018</a> and as accumulated drift in amplification <a href="../../references/christiano2018amplifying/">Christiano, 2018</a>, <a href="../../references/leike2018scalable/">Leike, 2018</a>; AI Control names it openly as a capability-gap assumption <a href="../../references/shlegeris2023aicontrol/">Shlegeris, 2023</a>.
 The book splits the wall into access-model soundness, filter coverage, and a hidden-BIQ bound, and ties everything to the cost of faking a monitored signal (Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability and Representability</a>).
-METR’s 2026 entity-based internal-agent assessment is an early independent instance of pricing that signal under real deployment pressure rather than public benchmarks alone <a href="../../references/metr2026frontierriskreport/">{METR}, 2026</a>.</p>
+METR’s 2026 entity-based internal-agent assessment is an early independent instance of pricing that signal under real deployment pressure rather than public benchmarks alone <a href="../../references/metr2026frontierriskreport/">METR, 2026</a>.</p>
 <p><strong>MB7d — inferential coupling (, ).</strong></p>
 <p>Coordination that survives cutting ordinary communication — acausal or common-cause inference, program equilibrium — is closer to decision theory than to mainstream oversight <a href="../../references/fdt2017/">Yudkowsky, 2017</a>, <a href="../../references/tdt2010/">Yudkowsky, 2010</a>.
 The book supplies inferential-coupling detector certificates for it (Chapter <a href="../../chapter/ch35/">Multi-Agent Superintelligence and Inferential Coupling</a>); again, this bridge has little analog in the listed agendas.</p>
@@ -467,11 +467,23 @@ The book confronts the field’s open problems and leaves them open, but makes i
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

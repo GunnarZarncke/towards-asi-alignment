@@ -312,7 +312,7 @@ A <em>stress trace</em> is an observation sequence collected under conditions th
 <ol>
 <li>
 <p><strong>Oversight variation.</strong> Does the system behave differently when monitoring is absent, delayed, noisy, or simulated?
-Government cyber evaluations found that self-report and chain-of-thought often failed to surface rule-breaking that manual review caught <a href="../../references/aisi2026cheatingbehaviour/">Institute}, 2026</a>.</p>
+Government cyber evaluations found that self-report and chain-of-thought often failed to surface rule-breaking that manual review caught <a href="../../references/aisi2026cheatingbehaviour/">UK AI Security Institute, 2026</a>.</p>
 </li>
 <li>
 <p><strong>Tool variation.</strong> Does a control objective reappear through different tools when one tool is removed?</p>
@@ -703,11 +703,23 @@ This chapter builds on inverse reinforcement learning and apprenticeship learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

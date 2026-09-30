@@ -259,7 +259,7 @@ The host’s modeling capacity is not fixed. It can be increased by artifacts.</
 <h2 id="goodhart-parasites-ai">Goodhart Parasites <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:goodhart-parasites-ch36"></span>
 Goodhart selection (Chapter <a href="../../chapter/ch34/">Alignment Is Selected or Destroyed by Its Environment</a>, Section <a href="../ch34/#sec:goodhart-selection-ch34">Alignment Is Selected or Destroyed by Its Environment</a>) says that when a proxy becomes a selector, the population shifts toward traits that raise the proxy without raising the underlying property.
-Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a> already quotes the wiki’s Goodhart sentence.
+Chapter <a href="../../chapter/ch14/">When Intelligence Deepens Misalignment</a> already quotes the Goodhart sentence.
 The parasite and correction-host model is not that law.
 A correction parasite is such a Goodhart process living inside a correction system.</p>
 <p>Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span></span></span></span> be a metric and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span> the risk variable it was intended to track. Initially:</p>
@@ -624,11 +624,23 @@ This chapter builds on the good-regulator principle <a href="../../references/co
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

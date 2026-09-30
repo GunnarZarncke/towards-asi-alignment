@@ -68,10 +68,10 @@ Identity continuity is one input to bearer continuity, not a complete criterion 
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>behavioral continuity</mtext><mtext>  </mtext><mo>⇏</mo><mtext>  </mtext><mtext>phenomenological or correctional continuity</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{behavioral continuity}
 \;\not\Rightarrow\;
 \text{phenomenological or correctional continuity}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">behavioral continuity</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace nobreak"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">phenomenological or correctional continuity</span></span><span class="mord">.</span></span></span></span></span>
-<h2 id="merging-with-artificial-entities-ai">Merging with Artificial Entities <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="merging-with-artificial-entities-gz-ai">Merging with Artificial Entities <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
 <p><span id="sec:merging-artificial-entities"></span>
-Human—AI merger, upload, and composite personhood raise bearer questions before value questions.
-The LessWrong wiki’s <em>AI Sentience</em> page designates:</p>
+Human—AI merger, upload, and composite personhood raise bearer questions before value questions.</p>
+<blockquote class="wiki-quote"><p>AI sentience designates the potential ability of AI systems to feel qualia (pain, happiness, colors...).</p><footer><a href="../../references/lwwiki-ai-sentience/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>Possible felt experience is not the question of who bears values or who participates in correction.</p>
 <p>When a human cognitive boundary is expanded, partitioned, or fused with artificial substrates, bearer maps and correction participation may change even if stated preferences appear stable.
 The merger may preserve many surface facts: autobiographical memory, speech style, friendships, legal identity, and stated commitments.
@@ -329,11 +329,23 @@ This chapter builds on the philosophy of personal identity <a href="../../refere
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

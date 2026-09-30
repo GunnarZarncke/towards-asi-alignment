@@ -139,7 +139,8 @@ A thermostat can optimize temperature error.
 A route planner can optimize travel time.
 A warehouse robot can optimize throughput subject to safety constraints.</p>
 <p>But human values are not like thermostat settings.
-The LessWrong wiki’s <em>Complexity of value</em> page states:</p>
+<em>Complexity of value</em> states:</p>
+<blockquote class="wiki-quote"><p>If you tried to write an AI that would do right things without further looking at humans, the AI's preferences or utility function would need to contain a large amount of data.</p><footer><a href="../../references/lwwiki-complexity-of-value/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>The replacement proposed here is not a larger utility function.
 It is a correctable process.
 They are not even like a stable social welfare function over known outcomes.
@@ -269,7 +270,8 @@ That does not make the change legitimate.</p>
 Here we preview only why these constraints matter early: a fixed-value target cannot distinguish growth from corruption, and compression makes both learnable and lossy.</p>
 <h2 id="why-what-we-would-want-if-smarter-is-not-enough-ai">Why “What We Would Want If Smarter” Is Not Enough <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:cev-not-enough"></span>
-The LessWrong wiki’s <em>Coherent Extrapolated Volition</em> page presents CEV as this argument:</p>
+CEV presents the argument as:</p>
+<blockquote class="wiki-quote"><p>It would not be sufficient to explicitly program what we think our desires and motivations are into an AI; instead, we should find a way to program it so that it would act in our best interests, what we want it to do and not what we tell it to.</p><footer><a href="../../references/lwwiki-cev/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>That is not a rejection of extrapolation as such.
 The danger this section identifies is collapsing an ongoing process into a one-shot prediction the system then optimizes.
 One response to fixed-value failure is extrapolation.
@@ -556,11 +558,23 @@ This chapter builds on inverse reinforcement learning and apprenticeship learnin
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {

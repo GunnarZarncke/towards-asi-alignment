@@ -25,10 +25,10 @@ It proves in Lean that cooperative reward inference does not entail value-bundle
 This part tests value-bundle, correction, and successor preservation jointly through transport (Claims Introduction, Introduction, Introduction).</div>
 <blockquote class="epigraph"><p>%
 Values may easily clash within the breast of a single individual; and it does not follow that, if they do, some must be true and others false.%</p><footer>— Isaiah Berlin, “The Pursuit of the Ideal” (1988); in <em>The Crooked Timber of Humanity</em> (1990)</footer></blockquote>
-<h2 id="the-problem-with-asking-for-the-reward-function-ai">The Problem with Asking for the Reward Function <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
+<h2 id="the-problem-with-asking-for-the-reward-function-gz-ai">The Problem with Asking for the Reward Function <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h2>
 <p><span id="sec:problem-reward-function"></span>
 A common formalization of alignment begins with a simple question: given an agent’s behavior, what reward function explains it?</p>
-<p>The LessWrong wiki’s <em>Inverse Reinforcement Learning</em> page describes:</p>
+<blockquote class="wiki-quote"><p>Inverse Reinforcement Learning is a technique in which an AI system learns the preferences or objectives of an agent, typically a human, by observing their behavior.</p><footer><a href="../../references/lwwiki-irl/">LessWrong wiki, 2026</a></footer></blockquote>
 <p>IRL is the starting point here, not the conclusion.
 The inference target is bundles, tradeoffs, bearer maps, and correction structure, and behavior underdetermines them.</p>
 <p>Let an observed system produce a trajectory</p>
@@ -1133,11 +1133,23 @@ This chapter builds on apprenticeship learning, inverse reinforcement learning, 
       margin: 1rem 0;
     }
 
-    .book-page :global(.epigraph) {
+    .book-page :global(.epigraph),
+    .book-page :global(.wiki-quote) {
       margin: 1.5rem 0;
       padding-left: 1rem;
       border-left: 3px solid var(--color-border);
       color: var(--color-muted);
+    }
+
+    .book-page :global(.wiki-quote) {
+      color: var(--color-text);
+    }
+
+    .book-page :global(.wiki-quote footer) {
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
     }
 
     .book-page :global(.book-figure) {
