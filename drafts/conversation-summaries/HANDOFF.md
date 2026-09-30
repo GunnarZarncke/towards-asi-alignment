@@ -20,7 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-09-30:** **Decision blocks plain language** — All projection and bridge `decision:` strings plus 18 jargon-heavy concepts rewritten for "What decision changes?"; site-notes plan closed (`drafts/attic/site-notes-pass.md`). Log: `2026-09-30-decision-blocks-plain.md`.
+- **2026-09-30:** **Decision blocks plain language** — All projection and bridge `decision:` strings plus 18 jargon-heavy concepts rewritten for "What decision changes?"; site-notes plan closed (`drafts/attic/site-notes-pass.md`). Commit `cbcbecfc3`. Log: `2026-09-30-decision-blocks-plain.md`.
 - **2026-09-30:** **Wikiq citation review** — Author pass on 15 chapter lead-ins; redundant pre-quote labels removed; ch15 Shard Theory `{GZ}` bridge. Log: `2026-09-30-wikiq-citation-review.md`.
 - **2026-09-30:** **Wikiq authbar + site** — Quotes outside authbars; single `\autocite` footer; site `\wikiq` HTML + bib parse fix; nocite generator fix. Log: `2026-09-30-wikiq-authbar-site.md`.
 - **2026-09-30:** **Ch. 15 overlapping environments** — Per-person compression, environment overlap, pool-conformance drift (`sec:pool-conformance-ch46`); back-links Ch. 16/17/20/21. Commit `a67cdc672`. Log: `2026-09-30-ch15-overlapping-environments.md`.

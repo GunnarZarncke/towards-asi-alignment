@@ -23,4 +23,4 @@ Complete the open site-notes item: rewrite "What decision changes?" on cards in 
 - `drafts/attic/site-notes-pass.md`
 
 ## Commits
-- (filled in at session end)
+- `cbcbecfc3` Plain-language decision blocks on cards; close site-notes plan.
