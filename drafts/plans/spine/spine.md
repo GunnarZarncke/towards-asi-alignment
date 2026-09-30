@@ -25,6 +25,7 @@ Align **drafted chapter formalism** with the **Lean dependency spine**: finite m
 - [ ] **P3** — `{leanbox}` on remaining high-value chapters (~26 without)
 - [x] **P3** — Bridge first-use: Ch. 10 genus + home-chapter `\leanspine{bridge}` only ([`bridge-first-use.md`](bridge-first-use.md)); freeze Lean/`MB*` before Ch. 10 (2026-09-01)
 - [ ] **P3** — Chapter ↔ Lean gaps opportunistically: `Bundles.lean`, ch13 `P12`, ch07 boundaries, ch48 basins, ch42 `P40` (do not scatter extra `{bridge}` tags; see first-use plan)
+- [ ] **P3 (optional)** — Population/overlap finite toy for ch15 `sec:overlapping-environments-ch15`: pooled `PolicyProfile`s from two demonstrators identify shared salience but not per-person residual; bearer-map divergence already covered by `P17`. No new `MB*`; `MB2Crux` stays single-experiment.
 - [ ] **P3** — App G translation spine opener (**author**); wire `BundleEvidenceAdequate` to experiments
 - [ ] **P4** — App B secondary sync (overlaps Field); regret leaf; field-agenda build-time codegen; axiom budget in `make check`; Debate site prose grep
 - [ ] **2.0 (not v1):** if authorized, MB6 then MB11 context-relative (`Environment` / `SafeIn`); comments on unary MB1/2/9. No `AlignmentContext` n-tuple; no new axiom to `Safe`. `BridgeCut` stays a review method until a rewrite needs it. **Certificate adapters are v1**, not this bullet ([`../predictions/prediction-interface.md`](../predictions/prediction-interface.md)).

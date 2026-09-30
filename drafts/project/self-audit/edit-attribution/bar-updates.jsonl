@@ -36,3 +36,5 @@
 {"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch06-agent-without-anthropomorphism.tex", "span": "chapters/ch06-agent-without-anthropomorphism.tex#2", "from": "AI", "to": "GZ+AI", "human_lines": 0, "agent_lines": 7}
 {"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch07-finding-boundary.tex", "span": "chapters/ch07-finding-boundary.tex#6", "from": "AI", "to": "GZ+AI", "human_lines": 0, "agent_lines": 32}
 {"ts": "2026-09-30T18:42:40Z", "file": "chapters/ch17-low-dimensional-value-learning.tex", "span": "chapters/ch17-low-dimensional-value-learning.tex#2", "from": "GZ", "to": "GZ+AI", "human_lines": 20, "agent_lines": 2}
+{"ts": "2026-09-30T19:17:10Z", "file": "chapters/ch17-low-dimensional-value-learning.tex", "span": "chapters/ch17-low-dimensional-value-learning.tex#15", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 1}
+{"ts": "2026-09-30T19:17:10Z", "file": "chapters/ch15-values-compressed-control.tex", "span": "chapters/ch15-values-compressed-control.tex#18", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 37}

@@ -54,7 +54,7 @@ Often lumped into corrigibility; a green measured path on one component can coex
 
 (Same book card as MB4.)
 
-Longer LW drop-in — **§1** MB4 + debate field leaf + separation; **§2** MB2 + MB3 composition + P15/P17 counterexamples: [`lw-mb4-mb4a-debate-section.md`](lw-mb4-mb4a-debate-section.md).
+Longer LW drop-in — **§1** MB4 + debate field leaf + separation; **§2** MB2 + MB3 composition + P15/P17 counterexamples: [`lw-mb4-mb4a-debate-section.md`](outreach/lw-mb4-mb4a-debate-section.md).
 
 ---
 

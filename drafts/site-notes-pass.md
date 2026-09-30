@@ -14,7 +14,9 @@ Working copy of the 2026-09-30 site-notes plan.
 7. Card graphics checklist in `AGENTS.md` and `site/README.md`.
 8. Offline SW v12 (cache-first, onLine, short timeout).
 
+**Done (batch 3 — uncommitted):**
+9. Ch.15 overlapping environments as a section, threaded through Ch. 16/17/20/21 (log `2026-09-30-ch15-overlapping-environments.md`).
+
 **Not done:**
 - Decision-block plain-language pass.
-- Ch.15 overlapping-environments paragraph.
 - Restore homepage Five Failure Modes (explicitly skipped).

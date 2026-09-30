@@ -710,6 +710,16 @@ It is:
 }
 \]
 In the window \(K\ll n\ll D\), a constrained bundle learner can generalize while a flat reward learner remains underidentified.
+
+The window is stated for one demonstrator, or for a population that shares one geometry.
+Real demonstrators differ and live in partly overlapping environments (Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:overlapping-environments-ch15}).
+Pooled demonstrations then identify the shared coordinates on the overlap and a mixture elsewhere, and the same value word can carry different bearer maps across demonstrators.
+A population learner has to carry the person index and the overlap structure; otherwise the residual it treats as noise is exactly the part where bearer maps and tradeoff weights differ, which is what the aggregation of Chapter~\ref{ch:measuring-stress-testing-bundle-geometry} has to compare.
+Deploying the pooled model does not leave that residual alone.
+A system whose corrections track only the shared coordinates withdraws the occasions for everything else, and the dropped residual becomes conformance pressure on each person (Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:overlapping-environments-ch15}).
+
+\leanspine{counterexample}{P17\_same\_value\_words\_not\_same\_bearer\_map}{Two finite value profiles carry identical labels and different bearer maps; a label shared across demonstrators does not fix the geometry behind it.}
+
 The next sections explain why that still does not solve bearer import, correction, or successor transport.
 
 \end{authbar}

@@ -338,6 +338,8 @@ m_{\mathrm{readout}}(h_\theta,k),
 where $n$ is the ambient feature dimension, $\mathcal E$ is the diversity of environments, and $\mathcal I$ is the set of interventions, comparisons, and corrections available to the learner.
 The bound above says something about the second term.
 It does not show that the first term is small.
+It also prices one demonstrator's geometry.
+Demonstrations pooled from people whose environments only partly overlap reduce variance on the shared coordinates and mix the rest (Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:overlapping-environments-ch15}); $\mathcal E$ has to include that overlap structure.
 
 \end{authbar}
 \begin{authbar}{GZ}
@@ -610,7 +612,7 @@ The key test is whether it predicts hard counterfactuals: conflicts between care
 \authbarneedspace
 \section{Local Low Rank versus Global Low Rank}
 \label{sec:local-vs-global-low-rank}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 The strongest version of the bottleneck hypothesis says that human values have one globally low-dimensional structure.
 That may be false.
 
@@ -632,6 +634,8 @@ The global structure may be a patchwork of low-dimensional charts:
 \{(U_i,B_i)\}_{i=1}^{m},
 \]
 where each $U_i$ is a region of context space and $B_i$ is the local value-bundle coordinate system for that region.
+The regions are indexed by person as well as by domain: 
+two people share a chart only where their environments overlap (Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:overlapping-environments-ch15}).
 
 This resembles a manifold.
 Locally, the structure is low-dimensional.

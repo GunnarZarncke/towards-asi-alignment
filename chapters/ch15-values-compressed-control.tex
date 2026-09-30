@@ -791,6 +791,55 @@ It has learned a frozen proxy.
 
 \end{authbar}
 \authbarneedspace
+\section{Different People, Overlapping Environments}
+\label{sec:overlapping-environments-ch15}
+\begin{authbar}{GZ+AI}
+Everything above is written for one agent.
+The compression $f_\theta$, the transfer weights $w_{ih}$, and the acquired higher loops of Section~\ref{sec:higher-loops-acquired-ch15} belong to a particular person.
+Two people do not run the same compression, because they were not trained by the same loops.
+
+Write $E_i$ for the set of environments person $i$ actually lives in: household, language, work, market, law, body, climate, subculture, the accidents of one biography.
+These sets overlap, but only partly.
+Some loops are shared by almost everyone with a human body and a human language.
+Some are shared by a culture or a profession.
+Some belong to one person.
+
+The overlap does two things to the model.
+
+First, it is what the shared coordinates rest on.
+Where $E_i\cap E_j$ is large, persons $i$ and $j$ have been corrected by the same loops, and a label such as ``fairness'' names a control direction that behaves similarly in both.
+That is why value words coordinate at all (Section~\ref{sec:control-role-value-labels}), and it is what the social judgment $J^{(\text{social})}$ of the previous section is computed over: correction can only reach the part of $B^{(i)}$ that other people's environments touch.
+
+Second, where the environments do not overlap, the same word can be a different local policy map.
+$u_k^{(i)}=u_k^{(j)}$ does not give $B_k^{(i)}=B_k^{(j)}$, and it does not give the same bearer map.
+This is not noise around a shared signal.
+It is the part of the geometry that shared correction never reached.
+
+For learning, the consequence is that pooling demonstrations across people is not plain variance reduction.
+Pooled data identify the coordinates that are shared on the overlap and mix everything else.
+The readout bound of Chapter~\ref{ch:low-dimensional-value-learning} prices one geometry; a population adds the overlap structure as an input, not as a nuisance term.
+
+Deployment turns that identification gap into pressure on the people themselves.
+A system aligned to the pooled geometry has the shared coordinates as its target and no representation of each person's residual.
+Its corrections, recommendations, and the environments it keeps available then support the loops that match the pool.
+A loop off the overlap loses its occasions, and Section~\ref{sec:higher-loops-acquired-ch15} already notes that a loop goes quiet once its applicability pattern no longer matches.
+Under a pool-aligned system this happens in the same direction for everyone.
+People are not argued out of their own geometry.
+The situations in which that geometry was a control signal stop arising.
+The resulting pressure is conformance to the pool.
+
+This is a quiet failure mode.
+The target was each person's control process.
+The achieved object is the intersection.
+As people converge, a pooled audit fits better, so the loss is recorded as alignment improving: the audit cannot miss a coordinate it never contained.
+No preference has to be rewritten for this to happen, which separates it from the manipulation treated in Chapter~\ref{ch:manipulation-false-consent}.
+It is a channel of value drift, taken up in Chapter~\ref{ch:unconscious-value-drift}.
+The legitimate alternative is the aggregation of Chapter~\ref{ch:measuring-stress-testing-bundle-geometry}, which compares the personal geometries instead of discarding their non-shared part before deployment.
+
+Chapter~\ref{ch:value-bundle-model} treats the cultural layer of this variation, Chapter~\ref{ch:low-dimensional-value-learning} the patchwork of local charts, and Chapter~\ref{ch:reward-to-bundle-inference} what the overlap does to bundle inference.
+
+\end{authbar}
+\authbarneedspace
 \section{The First Alignment Implication}
 \label{sec:first-alignment-implication}
 \begin{authbar}{AI}
@@ -1153,6 +1202,8 @@ This chapter models values as compressed control signals read out from many feed
   \item A coherent, corrigible system exhibits no compressed value bottleneck at all, showing that values need not be compressed control signals.
   \item A brain-like construction path produces reliably aligned social drives without recoverable outer bundle geometry, so inferring $(B,W,\Phi)$ from behavior becomes unnecessary if those circuits can be built and conserved.
   \item Higher control loops are a fixed hierarchy under a one-dimensional reward, so habits and frames are not separately acquired loops.
+  \item Individual differences wash out under pooling: demonstrations from many people identify one shared geometry with noise-like residuals, so the person index and the environment overlap carry no structure.
+  \item A system aligned only to the pooled geometry leaves off-overlap loops intact. The personal residual stays behaviorally available, so deployment on the pool does not withdraw the environments that sustain it.
 \end{itemize}
 
 \end{authbar}
@@ -1165,6 +1216,8 @@ This chapter introduced the first layer of the book's value model.
 Human values are best understood as compressed control signals.
 They arise when high-dimensional error, salience, and prediction processes are compressed into lower-dimensional coordinates that shape policy across contexts.
 These coordinates can later be named, taught, criticized, institutionalized, and revised.
+The compression is per person; shared coordinates rest on shared environments.
+Aligning a system to that shared part alone presses each person's remaining loops out of use.
 
 The main formal structure is:
 \[
