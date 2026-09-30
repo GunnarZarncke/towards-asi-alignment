@@ -29,4 +29,4 @@ Prompts: paraphrase-only (telemetry prompt ids not copied this turn).
 - `scripts/split_authbars_around_wikiq.py`
 
 ## Commits
-- (this session)
+- `61dc240c4` Fix wiki quote layout and site rendering after LW wiki apply.
