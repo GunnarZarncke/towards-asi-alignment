@@ -54,3 +54,6 @@
 {"ts": "2026-09-30T20:49:19Z", "file": "chapters/ch44-lethality-stress-test-open-issues.tex", "span": "chapters/ch44-lethality-stress-test-open-issues.tex#7", "from": "AI", "to": "GZ+AI", "human_lines": 3, "agent_lines": 8}
 {"ts": "2026-09-30T20:49:19Z", "file": "chapters/ch46-unconscious-value-drift.tex", "span": "chapters/ch46-unconscious-value-drift.tex#4", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 9}
 {"ts": "2026-09-30T20:49:19Z", "file": "chapters/ch47-bearers-of-value.tex", "span": "chapters/ch47-bearers-of-value.tex#5", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 8}
+{"ts": "2026-10-01T22:29:28Z", "file": "chapters/ch09-composite-agent.tex", "span": "chapters/ch09-composite-agent.tex#11", "from": "GZ", "to": "GZ+AI", "human_lines": 14, "agent_lines": 24}
+{"ts": "2026-10-01T22:29:28Z", "file": "chapters/ch01-wrong-object.tex", "span": "chapters/ch01-wrong-object.tex#5", "from": "GZ", "to": "GZ+AI", "human_lines": 0, "agent_lines": 5}
+{"ts": "2026-10-01T22:34:37Z", "file": "chapters/ch01-wrong-object.tex", "span": "chapters/ch01-wrong-object.tex#5", "from": "GZ", "to": "GZ+AI", "human_lines": 5, "agent_lines": 5}

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20260930T210056.485Z",
+  "_as_of": "20261001T223427.823Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -256,6 +256,22 @@
     "key": "GZ+AI",
     "prior": "GZ+AI"
   },
+  "chapters/ch01-wrong-object.tex#4": {
+    "agent": 1,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 4,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#5": {
+    "agent": 5,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 5,
+    "index": 5,
+    "key": "GZ+AI",
+    "prior": "GZ"
+  },
   "chapters/ch01-wrong-object.tex#6": {
     "agent": 35,
     "file": "chapters/ch01-wrong-object.tex",
@@ -456,6 +472,30 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch09-composite-agent.tex#10": {
+    "agent": 1,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 0,
+    "index": 10,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch09-composite-agent.tex#11": {
+    "agent": 24,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 14,
+    "index": 11,
+    "key": "GZ+AI",
+    "prior": "GZ"
+  },
+  "chapters/ch09-composite-agent.tex#12": {
+    "agent": 4,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 0,
+    "index": 12,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "chapters/ch09-composite-agent.tex#13": {
     "agent": 2,
     "file": "chapters/ch09-composite-agent.tex",
@@ -505,10 +545,26 @@
     "prior": "AI"
   },
   "chapters/ch09-composite-agent.tex#37": {
-    "agent": 1,
+    "agent": 2,
     "file": "chapters/ch09-composite-agent.tex",
     "human": 0,
     "index": 37,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch09-composite-agent.tex#38": {
+    "agent": 2,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 0,
+    "index": 38,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch09-composite-agent.tex#39": {
+    "agent": 1,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 0,
+    "index": 39,
     "key": "AI",
     "prior": "AI"
   },

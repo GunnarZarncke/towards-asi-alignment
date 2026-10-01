@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-09-30 (decision blocks plain language; site-notes plan closed).
+Last updated: 2026-10-01 (infant-caregiver `{GZ}` in Ch. 1/9).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-01:** **Infant-caregiver composite** — Uncited `{GZ}` in Ch. 1 (*The Folk Person*) and Ch. 9 (*The Infant plus Caregiver*); Henrich/Hanson socialization cites; Worley dependence reading cited, not adopted as recipe. Log: `2026-10-01-infant-caregiver-composite.md`.
 - **2026-09-30:** **Decision blocks plain language** — All projection and bridge `decision:` strings plus 18 jargon-heavy concepts rewritten for "What decision changes?"; site-notes plan closed (`drafts/attic/site-notes-pass.md`). Commit `cbcbecfc3`. Log: `2026-09-30-decision-blocks-plain.md`.
 - **2026-09-30:** **Wikiq citation review** — Author pass on 15 chapter lead-ins; redundant pre-quote labels removed; ch15 Shard Theory `{GZ}` bridge. Log: `2026-09-30-wikiq-citation-review.md`.
 - **2026-09-30:** **Wikiq authbar + site** — Quotes outside authbars; single `\autocite` footer; site `\wikiq` HTML + bib parse fix; nocite generator fix. Log: `2026-09-30-wikiq-authbar-site.md`.
