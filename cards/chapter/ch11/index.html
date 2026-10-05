@@ -833,11 +833,35 @@ This chapter builds on the good regulator theorem and cybernetic control <a href
     }
 
     .book-page :global(.prediction-box) {
-      margin: 1.5rem 0;
+      margin: 1.5rem 0 0.35rem;
       background: color-mix(in srgb, #c2410c 6%, var(--color-surface));
       border-color: color-mix(in srgb, #c2410c 28%, var(--color-border));
       border-left: 3px solid color-mix(in srgb, #c2410c 55%, var(--color-border));
       box-shadow: none;
+    }
+
+    .book-page :global(.prediction-field) {
+      margin: 0.35rem 0;
+      box-shadow: none;
+    }
+
+    .book-page :global(.prediction-background) {
+      background: color-mix(in srgb, #c2410c 3.5%, var(--color-surface));
+      border-color: color-mix(in srgb, #c2410c 16%, var(--color-border));
+      border-left: 3px solid color-mix(in srgb, #c2410c 32%, var(--color-border));
+    }
+
+    .book-page :global(.prediction-resolution) {
+      background: color-mix(in srgb, #c2410c 3.5%, var(--color-surface));
+      border-color: color-mix(in srgb, #c2410c 16%, var(--color-border));
+      border-left: 3px solid color-mix(in srgb, #c2410c 32%, var(--color-border));
+    }
+
+    .book-page :global(.prediction-fineprint) {
+      margin-bottom: 1.5rem;
+      background: color-mix(in srgb, #c2410c 2%, var(--color-surface));
+      border-color: color-mix(in srgb, #c2410c 12%, var(--color-border));
+      border-left: 3px solid color-mix(in srgb, #c2410c 24%, var(--color-border));
     }
 
     .book-page :global(.env-box) {
