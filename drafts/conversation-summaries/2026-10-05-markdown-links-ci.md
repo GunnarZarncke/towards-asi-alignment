@@ -22,4 +22,4 @@ Prompts: paraphrase
 - `drafts/conversation-summaries/INDEX.md`
 
 ## Commits
-- (pending)
+- `5098ef913` Fix the markdown-link check for CI.
