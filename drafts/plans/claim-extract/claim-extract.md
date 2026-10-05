@@ -1,10 +1,10 @@
-# Claim-extract lane: fix Chapter 42 first
+# Claim-extract lane
 
-Status: open. Scope: repair `chapters/ch42-safety-case.tex` against the claim extract; other chapters wait until this is done.
+Status: open. **Pilot closed 2026-10-05** (Ch. 42, commit `5b474be47`). **Rollout:** same instrument for every manuscript chapter.
 
-Instrument: `metadata/claim-extracts/ch42.jsonl` (one record per load-bearing sentence: formal line, qualifier, Lean referents, flags; schema and stop rule in `metadata/claim-extracts/README.md`). Check with `python3 scripts/check_claim_extract.py`. Records are cited as `ch42.NNN`.
+Instrument: one `metadata/claim-extracts/chNN.jsonl` per chapter (one record per load-bearing sentence: formal line, qualifier, Lean referents, flags; schema and stop rule in `metadata/claim-extracts/README.md`). Check with `python3 scripts/check_claim_extract.py`. Records are cited as `chNN.NNN`.
 
-Stop rule: an item is closed when the chapter or plan was changed and the affected records re-checked, or the author wrote "keep as is" here. Closed items are deleted from this file with a session-log note. Items still open after the Ch. 42 pass move to `metadata/TODO.md`.
+Stop rule: an item is closed when the chapter or plan was changed and the affected records re-checked, or the author wrote "keep as is" here. Closed items are deleted from this file with a session-log note.
 
 ## Principles
 
@@ -50,13 +50,43 @@ Bridge ids are edge tags. No `P`-numbers on this figure. No `MB4`, `MB4a`, `MB8`
 
 When the overview's cross-spine edges change, this figure changes. It is not generated from Lean and not copied from the field graph.
 
-## Changes to Chapter 42
+## Pilot: Chapter 42 (closed)
 
-P1 prose pass closed 2026-10-05. Closed items deleted here. See session log `2026-10-05-ch42-p1-pass.md`.
+P1 prose pass closed 2026-10-05. Session logs: `2026-10-02-claim-extract-pilot.md` through `2026-10-05-ch42-p1-pass.md`.
 
-Remaining after this pass: confirm `lean.status = proved` entries with `#print axioms` or `formal/axiom-ledger.json` before citing them as proved. 2.0 work stays below.
+Remaining on Ch. 42 only: confirm `lean.status = proved` entries with `#print axioms` or `formal/axiom-ledger.json` before citing them as proved.
 
 Not changed (intentionally informal): `Open` leaf kind; observable / i.i.d.-robust predicates have no Lean term; the extract marks them `none`. "Refusal condition" is now an instance of refuse.
+
+Principles §1–§8 and the join figure below are the **template** for spine-heavy chapters; most chapters will not need a chapter-local assembly figure.
+
+## Rollout to all chapters
+
+Goal: every manuscript chapter has a checked extract; load-bearing prose is aligned with the Lean spine at the same name, with divergences flagged rather than hidden.
+
+Scope: `metadata/book.yml` chapters `ch01`–`ch48` (main text). Appendices after the main run, starting with load-bearing ones (App I, App P). One JSONL per chapter; full chapter body including Summary, excluding `\printbibliography` / references-only sections unless a sentence there is load-bearing.
+
+Per chapter (repeat until all `chNN.jsonl` exist and checker-clean):
+
+1. Extract load-bearing sentences (same schema as Ch. 42).
+2. `python3 scripts/check_claim_extract.py metadata/claim-extracts/chNN.jsonl` → 0 errors.
+3. Prose pass only where flags require repair (surgical; principles §1–§8 where they apply).
+4. Session log; compare flag histogram to prior chapters; retire unused flags from the vocabulary when nothing needs them.
+
+Order (default queue; reorder when a chapter edit makes another urgent):
+
+- [ ] **Ch. 25** — correction channel; proposed next after pilot.
+- [ ] **High `formal_density`** in `metadata/book.yml` (e.g. Ch. 7, 10, 26, 30, 31, 33, 43, 48).
+- [ ] **Remaining chapters** in manuscript order.
+- [ ] **Appendices** (App I, App P, …) after `ch48`.
+
+Infrastructure (do early in rollout, not per chapter):
+
+- [ ] Extend `scripts/check_claim_extract.py` `CHAPTER_FILES` from `metadata/book.yml` (or a generated manifest under `metadata/claim-extracts/`) so any `chNN.jsonl` resolves to `chapters/chNN-*.tex` without hand-editing the script each time.
+- [ ] Optional: wire the checker into `make check` once a threshold of chapters is clean (author decides threshold).
+- [ ] Optional: extraction prompt/spec document if manual extract quality drifts across agents.
+
+Done for the lane: all scoped chapters have checker-clean JSONL; cross-chapter flag histogram reviewed; remaining open items are 2.0 spine work or author "keep as is" on flagged records.
 
 ## Work for 2.0 (do not do in this pass)
 
@@ -69,9 +99,9 @@ Recorded in `drafts/plans/construct/construct.md` (checklist) and `drafts/plans/
 
 Spine items to consider in a separate Lean session (small, not 2.0): connect `FiniteProvenDef` to the join or demote `P40` to a documented generic lemma; resolve `SatisfiesInvariants := LayeredAlignedDef` (root conjuncts 2 and 3 coincide; drop or give it ch48 content).
 
-## After the pass
+## After each chapter pass
 
 1. Repair or delete extract records for edited sentences; re-run the checker.
-2. `./build.sh`, `make check`.
+2. `./build.sh`, `make check` when the chapter prose changed.
 3. Session log in `drafts/conversation-summaries/`; delete closed items here.
-4. Extract the next chapter (Ch. 25 proposed) and compare flag histograms.
+4. Queue the next chapter from **Rollout** above.

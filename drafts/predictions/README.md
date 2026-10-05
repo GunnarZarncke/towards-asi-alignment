@@ -9,6 +9,8 @@ Working contracts and source material for 2027 bridge markets — not manuscript
 | [`bridge-prediction-market-criteria.md`](bridge-prediction-market-criteria.md) | Working resolution criteria (`0.4-working`) |
 | [`bridge-predictions-prior-tests.md`](bridge-predictions-prior-tests.md) | Prior-art / prior-test snapshot (2026-09-19); the appendix boxes now carry a "Closest existing work" lead instead of quoting this file |
 | [`resolution-gap-analysis.md`](resolution-gap-analysis.md) | Phase 2b gaps, CIRIS context, smallest next experiment |
+| [`resolution-advisors.md`](resolution-advisors.md) | Proposed advisors and desk/panel protocols for other platforms. Not linked from the manuscript or the site |
+| [`metaculus-question-template.md`](metaculus-question-template.md) | Create-form fields, the limits that apply, and how to lay them out in TeX and on the site |
 | [`CIRIS_TSA_Combined_Experiment_Proposal.pdf`](CIRIS_TSA_Combined_Experiment_Proposal.pdf) | CIRIS×TSA experiment proposal (architecture only in the gap analysis) |
 | [`AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](AI_Alignment_Prediction_Market_Resolution_Criteria.docx) | Source export (no tracked changes) |
 

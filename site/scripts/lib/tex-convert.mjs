@@ -37,6 +37,12 @@ const ENV_HANDLERS = {
     const title = env?.optional?.trim() || "2027 contract";
     return `<div class="callout prediction-box"><strong>${inlineCalloutHtml(title, ctx)}</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`;
   },
+  predictionbackground: (body, ctx) =>
+    `<div class="callout prediction-field prediction-background"><strong>Background</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`,
+  predictionresolution: (body, ctx) =>
+    `<div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`,
+  predictionfineprint: (body, ctx) =>
+    `<div class="callout prediction-field prediction-fineprint"><strong>Fine print</strong>\n\n${convertDocument(body, ctx)}</div>\n\n`,
   quote: (body, ctx) => `> ${convertInlineText(body, ctx).replace(/\n+/g, "\n> ")}\n\n`,
   itemize: (body, ctx) => convertList(body, "ul", ctx),
   enumerate: (body, ctx) => convertList(body, "ol", ctx),
@@ -129,15 +135,16 @@ function convertList(body, tag, ctx) {
 
 function convertDescription(body, ctx) {
   const items = [];
-  const re = /\\item(?:\[([^\]]*)\])?\s*([\s\S]*?)(?=\\item|$)/g;
+  // `\item[{...}]` lets a label contain brackets, e.g. `\item[{\texttt{[x]}}]`.
+  const re = /\\item(?:\[\{((?:[^{}]|\{[^{}]*\})*)\}\]|\[([^\]]*)\])?\s*([\s\S]*?)(?=\\item|$)/g;
   let match;
   while ((match = re.exec(stripLeadingEnvOptions(body))) !== null) {
-    const bracketLabel = match[1]?.trim();
-    const chunk = match[2].trim();
+    const bracketLabel = (match[1] ?? match[2])?.trim();
+    const chunk = match[3].trim();
     const split = chunk.match(/^(.+?)\s*\n([\s\S]*)$/);
     if (bracketLabel) {
       items.push(
-        `<dt>${inlineCalloutHtml(bracketLabel, ctx)}</dt><dd>${inlineCalloutHtml(chunk, ctx)}</dd>`
+        `<dt>${inlineCalloutHtml(bracketLabel, ctx).replace(/`([^`]+)`/g, "<code>$1</code>")}</dt><dd>${inlineCalloutHtml(chunk, ctx)}</dd>`
       );
     } else if (split) {
       items.push(

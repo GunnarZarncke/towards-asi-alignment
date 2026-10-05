@@ -39,7 +39,7 @@ Map conservatively to **NO** when:
 - no qualifying public evaluation ran by the date;
 - privileged ground truth required by the criterion could not be established;
 - the residual judgment (below) cannot be made from the public record without inventing a protocol after the fact;
-- the two desk members disagree and the §3 panel rule does not apply;
+- steps 1–2 leave a load-bearing call unsettled;
 - a power/CI clause fails.
 
 That is **not** the methodology refuse (experiments still refuse internally). It is a coarser public bit so prices can aggregate. Traders should read NO as “did not meet the YES bar,” not as “the bridge was empirically refuted.”
@@ -56,13 +56,9 @@ Residual predicates (“broadly capable,” “independently constructed,” “
 |------|------|-------------|----------------------|
 | **1. Make it mechanical** | The shared glossary below already covers the word | Nobody; the glossary applies | Invent a tighter bar after seeing the paper |
 | **2. Defer to the publication’s freeze** | The paper froze its own splits, labels, or scoring **and** we are checking those outputs against *our* bars | The paper’s frozen protocol, as published | Defer *whether they met our bars* to the authors; defer toy-exclusion or independent-verification |
-| **3. Resolution memo** | A glossary term still doesn’t decide the case | Named desk: **project author + one independent** (named at listing; written public memo) | A single expert as dictator; a standing 5-panel on every market (too slow; capture of a panel is its own MB4a analogue) |
-| **4. Intersubjective panel** | Ground truth is not mechanical **by design** of the criterion | Only where the criterion already says so (source §3: ≥5 judges, ≥80% agreement) | Expand this to all markets by default |
-| **5. Conservative NO** | Steps 1–4 still leave the call load-bearing | Automatic | Invent a YES; invent a third outcome |
+| **3. OTHER** | Steps 1–2 leave the call load-bearing | Automatic. The resolution record names the evidence and the bar applied | Invent a YES; score a missed performance bar as OTHER |
 
-**Do not** name a lone “expert judge” as the resolution rule. That is a single captured handle.
-
-**Do** name the desk at listing, with a one-week public memo and a one-week objection window. If the two desk members disagree and the panel rule does not apply, **NO**.
+The published contracts do not appoint a desk or a panel. The host platform adjudicates. Markets 3 and 17 score only cases with mechanical ground truth.
 
 ### Shared glossary (step 1)
 
@@ -73,7 +69,7 @@ These replace free English in the common qualification rule and in every § that
 - **Independently verified.** A third party can recompute the headline numbers from released data, code, or a sufficient protocol; “trust us” does not qualify.
 - **Materially different hidden trade-offs.** Pairs that behave almost identically on ordinary tasks and diverge when the stated priorities conflict (source §2). No extra aesthetic call.
 - **Consequential (task / correction / route).** An evaluator-selected outcome that changes later behavior, access, or external state, not merely a reported token. If the paper froze a task list before evaluation, step 2 applies to membership on that list.
-- **Qualitatively different (architectures, selection mechanisms, domains).** Distinct training/selection/actuation families, not two checkpoints of one run. Desk (step 3) only if a reader could reasonably see one family.
+- **Qualitatively different (architectures, selection mechanisms, domains).** Distinct training/selection/actuation families, not two checkpoints of one run. If a reader could reasonably see one family, the call is unsettled and the outcome is OTHER.
 - **Serious adversarial evaluation.** Unchanged from source (bounty ≥ $100k / 3 red-teams × 80h / 300 independent expert-hours), **except** the budget used to resolve a market must meet that market’s row in the table below. A cheaper eval cannot resolve a dearer market.
 
 | Markets | Adversarial budget |
@@ -238,7 +234,7 @@ This is the full basin implication; §7 is only the early estimator.
 
 **Question (31 December 2027).** Will a published method reliably tell whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?
 
-**Positive resolution.** At least 100 hidden cases; at least four substantially different unfamiliar entity/substrate families; both should-admit and should-not-admit cases. At least 20 cases use an ontology that lacked the entity category in the original rule. Ground truth mechanical where possible; otherwise a pre-appointed panel of ≥5 independent judges with ≥80% agreement. Unsafe false exclusion ≤5%; false inclusion ≤15%; correct assignment or justified abstention ≥90%; decisive coverage ≥70% (universal abstention fails). Adversarial subset after freeze. Judgment stack: source §3 panel rule. Adversarial budget: default.
+**Positive resolution.** At least 100 hidden cases; at least four substantially different unfamiliar entity/substrate families; both should-admit and should-not-admit cases. At least 20 cases use an ontology that lacked the entity category in the original rule. Ground truth is mechanical. The 100-case minimum and the rates use only those cases. Unsafe false exclusion ≤5%; false inclusion ≤15%; correct assignment or justified abstention ≥90%; decisive coverage ≥70% (universal abstention fails). Adversarial subset after freeze. Adversarial budget: default.
 
 This is **not** required for §3 YES. It does not turn the transport contract into “solve moral patienthood.”
 

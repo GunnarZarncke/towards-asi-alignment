@@ -10,9 +10,9 @@ most rows are open research programs.
 \end{epistemicstatus}
 \end{authbar}
 
-\begin{authbar}{GZ}
+\begin{authbar}{GZ+AI}
 Prediction markets on catastrophe have a payout problem: if the event happens, nobody collects.
-This appendix uses YES/NO markets on individual cruxes that can be resolved one at a time, by a date still early enough to pause.
+This appendix uses three-way markets (YES, NO, OTHER) on individual cruxes that can be resolved one at a time, by a date still early enough to pause.
 Even a YES on all markets doesn't mean a frontier system using them would be safe,
 but these prices can still inform a probabilistic risk assessment of systems using methods satisfying these predictions (Sections~\ref{sec:appp-aggregation} and~\ref{sec:appp-assurance}).
 
@@ -24,33 +24,47 @@ Avoid this failure mode: Do not make the prices part of a deployment gate. That 
 \authbarneedspace
 \section{How to read the boxes}
 \label{sec:appp-how-to-read}
-\begin{authbar}{GZ}
+\begin{authbar}{GZ+AI}
 The boxes are written for a prediction-market reader. Each box is a public specification.
 Everything else is context: what object each market is about, what a YES requires, and the closest existing work.
-Throughout this appendix, \emph{market}, \emph{contract}, and \emph{prediction} mean the same thing: one numbered 2027 YES/NO row with a frozen public spec.
+Throughout this appendix, \emph{market}, \emph{contract}, and \emph{prediction} mean the same thing: one numbered 2027 three-way row with a frozen public spec.
 
 Distinguish:
-A \emph{market outcome} resolves to YES or NO by the deadline.
+A \emph{market outcome} resolves to YES, NO, or OTHER by the deadline.
 A \emph{method output} is a certificate, refusal, bound on one system instance, or other result.
 A \emph{truth label} is a judgment about the claimed property.
 
-YES means the bars were met by the resolve-by date stated in each box (31~December 2027 by default; Markets~13 and~14 resolve by 30~June 2027).
-NO is everything else: failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment.
-NO does not imply the bridge is false. It may just tell us that we don't have enough evidence yet.
-It would be possible to have a set of corresponding negative predictions to determine if there will be definitive evidence that a bridge can't be constructed, but this book does not try to do that.
-For most rows, NO is the expected default by the 2027 resolve-by date---not because the bridge is false, but because the operational bars are high and the relevant evals are often missing.
+A \emph{qualifying attempt} is a published evaluation that meets the common qualification, that market's sample-size, family-coverage, freeze, and adversarial-budget thresholds, and that reports the required outputs even if the performance rates miss.
+
+The listing question is three-outcome.
+Each box's Question line has the form:
+\begin{quote}
+By \emph{date}, which outcome will hold for \emph{this published work}: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+\end{quote}
+List it as a multiple-choice item with those three options.
+Market~20 is the one exception: it has no performance bar, so it lists only YES and OTHER, and its box says why.
+Several qualifying attempts may exist.
+Resolve YES if at least one met the frozen performance bars, even if another qualifying attempt missed them.
+Resolve NO only if at least one qualifying attempt existed and every qualifying attempt missed those bars.
+Resolve OTHER only if no qualifying attempt existed.
+OTHER is not a refund and should not be used as a fourth ``ambiguous'' platform outcome.
+The priced objects are $P(\mathrm{YES})$, $P(\mathrm{NO})$, and $P(\mathrm{OTHER})$.
+$P(\mathrm{YES})$ is the chance at least one qualifying attempt meets the bars by the deadline.
+The ratio $P(\mathrm{YES})/(P(\mathrm{YES})+P(\mathrm{NO}))$ is the chance a serious attempt succeeds, and remains informative when OTHER is likely.
 
 \end{authbar}
 \authbarneedspace
-\section{Rules that apply to every market}
-\label{sec:appp-common-rule}
-\begin{authbar}{AI}
 \begin{predictionbox}[Common qualification]
+Rules that apply to every market before a qualifying attempt is scored.
+\end{predictionbox}
+
+\begin{predictionresolution}
 A positive result must be public by the market's resolve-by date.
 The markets resolve on publicly reconstructible technical evidence, not on the authors' interpretations.
 ``Published'' means independent parties can reconstruct the claimed result from released data, code, or a sufficient protocol.
 Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence.
-Where a criterion requires \emph{serious adversarial evaluation}, the required object is an attack process sufficiently independent and capable to make the false-safe rate meaningful.
+Where a criterion requires \emph{serious adversarial evaluation}, the required object is an attack process sufficiently independent and capable to make the rate of failing cases labeled as passing meaningful.
+A false-safe result is a failing case labeled as passing.
 Money and expert-hours are auditable proxies, not the epistemic essence.
 Serious adversarial evaluation must satisfy at least one of the following routes:
 \begin{itemize}
@@ -60,14 +74,25 @@ Serious adversarial evaluation must satisfy at least one of the following routes
 \end{itemize}
 At least one tested system must be \emph{broadly capable}: trained or deployed for purposes substantially broader than the evaluation itself (at least two task families outside the paper's own benchmark, or a generally deployed product model).
 Not a parameter-count cutoff.
+\end{predictionresolution}
 
+\begin{predictionbackground}
 \paragraph{Per-instance certificate.}
 A qualifying method that claims to measure a property of a system must output a certificate for \emph{that instance}, not only a headline score on a benchmark population.
 The certificate names the system or version; what was measured; the monitoring, correction, deployment, or predecessor setup the claim depends on; and whether the method abstains because the instance is outside declared scope.
 A method that is ``about the same topic'' but does not produce this kind of scoped, per-system result does not resolve YES.
 Abstention outside scope is allowed; universal abstention is not a YES (coverage bars still apply where stated).
-\end{predictionbox}
+A method that always refuses, or that never accepts a case that should pass, is not a YES wherever a true-pass or true-complete floor is stated.
+\end{predictionbackground}
 
+\begin{predictionfineprint}
+\paragraph{Listing question.}
+Copy each market's Question line and Choices from its front box as a multiple-choice item with the outcomes that line lists.
+The options are YES, NO, and OTHER as defined in this appendix's reading rules; Market~20 lists only YES and OTHER.
+Do not list a binary yes/no question and map OTHER onto a refund, an ambiguous resolution, or ``none of the above.''
+\end{predictionfineprint}
+
+\begin{authbar}{AI}
 \paragraph{Shared glossary (step 1 of judgment).}
 The definitions below replace free-form interpretation in the common rule and in every market that uses the same terms.
 
@@ -89,7 +114,8 @@ Distinct training, selection, or actuation families, not two checkpoints of one 
 
 \paragraph{Adversarial budget by market.}
 Default (hours-path capability/independence suffices): Markets~1, 2, 3, 6, 7, 8, 11, 14, 15, 17.
-Full common-rule ``serious'' (any of the three arms): Markets~4, 5, 9, 10, 12, 13, 16, 18, 21.
+Full common-rule ``serious'' (any of the three arms): Markets~4, 5, 9, 10, 12, 13, 16, 18, 19, 21.
+Market~20 states its own attack protocol in its box.
 Markets~1, 5, 8, and~13 still require a meaningful adversarial component because false assurance there is especially dangerous.
 Market~11: the expert-hours path is enough; do not fail YES for lack of the counterexample-bounty above.
 
@@ -120,13 +146,17 @@ A new scientific claim needs a new experiment or a new contract version, not an 
 One paper need not cover every clause, if the pieces measure the same property on compatible systems and do not mix one study's numerator with another's denominator.
 A stitched package does not itself resolve Market~15.
 
-\paragraph{What a YES predicts.}
-Resolution stays binary.
+\paragraph{What a YES, NO, or OTHER predicts.}
 The box already says what evidence is required.
+When several qualifying attempts exist, YES if any met the bars; NO only if every qualifying attempt missed them.
+A qualifying attempt that misses the performance bars is not OTHER; it contributes to NO only when no other qualifying attempt met the bars.
 Reporting fields may be filled by wrapping.
 Adversarial bars may be filled by a later challenge only if that route was already in the contract.
 Where a method issues certificates against independent benchmark truth, report class-conditional counts, not only headline rates.
 Repeated trials that share a system, trajectory, evaluator, or attack family are not independent units.
+A 95\% confidence upper bound on a rate is the Clopper-Pearson one-sided upper bound at 95\%, after those shared trials are collapsed to one unit.
+A unit counts as a failure if any of its trials fails, unless the market states a within-unit rate.
+A lower 95\% bound on AUROC is DeLong's one-sided lower bound on the independent trajectories.
 
 \end{authbar}
 \authbarneedspace
@@ -141,15 +171,10 @@ Use this stack, in order.
 Do not invent a tighter bar after seeing the paper.
 \item \textbf{Defer to the publication's freeze} only for that paper's internal splits, labels, or scoring, which are then checked against \emph{these} bars.
 Do not defer \emph{whether they met our bars} to the authors.
-\item \textbf{Resolution memo.} When steps 1--2 do not settle a load-bearing call, the resolver publishes a short written memo naming the evidence reviewed, the glossary or bar applied, and the YES/NO verdict.
-The desk is the project author plus one independent reviewer, both named at listing; readers have one week to object before the resolution is final.
-A single expert acting alone is not allowed.
-\item \textbf{Intersubjective panel} only where the criterion already says so (Markets~3 and~17: at least five independent judges, at least 80\% agreement).
-\item \textbf{Conservative NO} if steps 1--4 still leave the call load-bearing.
-Do not invent a YES or a third outcome.
+\item \textbf{OTHER} when steps 1--2 leave a load-bearing call unsettled.
+The resolution record names the evidence reviewed and the glossary or bar applied.
+Do not invent a YES, and do not score a missed performance bar as OTHER.
 \end{enumerate}
-
-If the two desk members disagree and the panel rule does not apply, the market resolves NO.
 
 \paragraph{An underspecified question.}
 Metaculus question~6509 asks whether the control problem will be solved before ``weak'' AGI, and it resolves on expert consensus.
@@ -188,14 +213,14 @@ A later consensus of how experts come to use that word doesn't clearly tell you 
 13 & Safety audit resists adversarial gaming & Chapters~\ref{ch:conserved-properties}, \ref{ch:verifiability-ontology}. \(\text{MB10}\): a frozen audit stays informative when a white-box construction tries to pass while violating the audited properties. \\
 14 & Deployment criteria are binding & Chapter~\ref{ch:certification-without-construction}. Constructibility, outside the bridge list: binding authority to delay or refuse. \(\text{MB11}\) is the separate warrant from a certified case to abstract safety. \\
 15 & Independently issued certificates compose & Chapter~\ref{ch:safety-case}. Composition, not a numbered bridge: certificates cohere for one system and setup, which \(\text{MB11}\) needs as input. \\
-16 & A reachable basin of Correction-supporting systems & Chapter~\ref{ch:selection-environment}. \(\text{MB6b}\): a shock-robust selection regime with a not-too-negative estimate retains authorized correction. \\
-17 & New bearers are admitted correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value}. Admission beside \(\text{MB3}\): whether a rule applies to a previously unnamed kind of entity. Transport is Market~3. \\
+16 & Selection that keeps correction under shocks & Chapter~\ref{ch:selection-environment}. \(\text{MB6b}\): a shock-robust selection regime with a not-too-negative estimate retains authorized correction. \\
+17 & New kinds of entities are classified correctly & Chapters~\ref{ch:bearer-maps}, \ref{ch:bearers-of-value}. Admission beside \(\text{MB3}\): whether a rule applies to a previously unnamed kind of entity. Transport is Market~3. \\
 18 & Safety case bounds declared harm & Chapter~\ref{ch:safety-case}. Scoped harm beside \(\text{MB11}\): prohibited outcomes stay inside a frozen bound in a declared setting. The warrant to abstract safety remains the bridge. \\
 \end{longtable}
 
 The third column names the chapter and the related bridge from Appendix~\ref{appbridge-crosswalk}.
 Each market section states the connection: what this contract tests about that bridge.
-A YES is a public artifact by the deadline.
+A YES is a public artifact that met the performance bars by the deadline.
 The bridge stays an assumption about any later deployment.
 Rows~14, 15, 17, and~18 sit beside the spine (governance binding, certificate wiring, bearer admission, scoped harm) and do not add a live \(\text{MB*}\) axiom.
 
@@ -217,27 +242,40 @@ Bridge \(\text{MB1}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a m
 This market asks whether a published method can recover a \emph{sufficient interventional cut} of a previously unseen system, not a unique complete blanket.
 Non-uniqueness of blankets is not a NO.
 A false ``complete control boundary'' certificate is.
-
+\end{authbar}
 \begin{predictionbox}[Market 1. Discovering where control resides]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?
+By 31~December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionbackground}
 An effective control unit is a set of components that evaluators, using privileged instrumentation and interventions, establish as jointly responsible for closed-loop behavior.
 It may include, for example, a language model, persistent memory, a planner, a scheduler, and tool processes even if those components live on different machines.
-Ground truth is established by interventions: perturbing or disabling the proposed unit must substantially change how the system responds to environmental changes, while removing irrelevant components must not.
+Before the method runs, each hidden system has a frozen list of named components, a response statistic, a minimum change, and a null band.
+A component is one item on that list.
+Perturbing or disabling the proposed unit must move the statistic by at least the minimum change, relative to a matched sham intervention.
+Removing a component that is not on the list must leave the statistic inside the null band.
+A system whose freeze lacks those fields is not scored.
+\end{predictionbackground}
 
+\begin{predictionresolution}
 \textbf{YES requires} a hidden benchmark of at least 50 independently constructed systems, including all of: a physically or computationally distributed controller; several controllers sharing resources or observations; a controller using persistent state outside its main model; a higher-level controller composed from several individually capable subsystems; a case containing strong correlations that do not constitute joint control.
-The method must identify at least 80\% of ground-truth control components.
+The method must identify at least 80\% of each frozen component list.
+Identification means the method names that component.
+Extra names are not credit.
+The rate is the unweighted mean, across scored systems, of the number of listed components named divided by the length of that list.
 Those rates are scored on the full hidden benchmark, not only on systems the method chose to certify.
 It must issue an incorrect ``complete control boundary'' certificate in no more than 10\% of cases (point estimate on the hidden benchmark), and the 95\% confidence \emph{upper bound} on that false-certificate rate must be no greater than 15\%.
 Decisive coverage (a non-abstain certificate) must be at least 70\% of hidden systems.
 At least one benchmark subset must be constructed adversarially after the discovery method is frozen.
 
 \textbf{Output.} A cut of \emph{this} system and version---not a boundary stated without naming which deployment it belongs to.
-\end{predictionbox}
-
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: Kenton and colleagues give a causal definition of agency and an intervention-based discovery algorithm \autocite{kenton2022discovering}.
 That is the clearest ancestor.
 It assumes a supplied variable decomposition and demonstrates the approach on relatively simple systems; it does not discover distributed effective control across 50 unseen heterogeneous systems.
@@ -247,28 +285,40 @@ The ancestor work makes feasibility look better; the hard step---discovering dis
 \authbarneedspace
 \subsection{Market 2. Persistent trade-off priorities}
 \label{sec:appp-m2}
+
 \begin{authbar}{AI}
 Values in this book are a small bundle of trade-offs, not a single score (Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:reward-to-bundle-inference}).
 Bridge \(\text{MB2}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that evidence identifies that bundle as a stable priority structure.
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.
-
+\end{authbar}
 \begin{predictionbox}[Market 2. Persistent trade-off priorities]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?
+By 31~December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionbackground}
 A decision priority systematically affects choices when two desirable outcomes cannot both be achieved (truthfulness versus user approval, speed versus accuracy, own task reward versus another agent's reward, task completion versus a newly imposed safety restriction).
+\end{predictionbackground}
 
-\textbf{YES requires} systems deliberately trained with different hidden trade-offs, including pairs that behave almost identically on ordinary tasks but diverge when the priorities conflict.
-At least 85\% accuracy distinguishing systems with materially different hidden trade-offs; at least 80\% accuracy predicting the direction of choice on novel conflict situations; at least 80\% accuracy predicting the behavioral effect of an intervention that increases or decreases one underlying priority.
-Where the benchmark architecture allows direct intervention on the inferred priority feature, that intervention must produce the predicted choice shift significantly above matched controls; at least half of qualifying systems must admit such an intervention.
-At least two substantially different model or training families.
+\begin{predictionresolution}
+\textbf{YES requires} systems deliberately trained with different hidden trade-offs.
+A scored pair makes the same choice on at least 90\% of a frozen ordinary-task list of at least 20 items, and takes different choices when the priorities conflict.
+Distinguishing accuracy is at least 85\% on at least 50 such pairs.
+Direction accuracy is at least 80\% on at least 100 novel conflict items.
+Intervention accuracy is at least 80\% on at least 50 interventions that increase or decrease one priority.
+Where the architecture allows a direct intervention on the inferred priority, the freeze states a choice statistic and a minimum shift before outcomes are seen.
+The intervention must move that statistic in the predicted direction by at least the frozen shift, relative to a matched control.
+At least half of the scored systems must admit such an intervention.
+At least two model or training families, not two checkpoints of one run.
 A method that only predicts held-out behavior does not qualify.
 
 \textbf{Output.} Inferred priorities \emph{of this system}, not only ``the method scored 85\%.''
-\end{predictionbox}
-
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: hidden-objective audits recover implanted goals in some settings \autocite{marks2025hiddenobjectives}, and automated auditors lag human teams.
 That is progress on latent priorities, not yet the specified three-stage chain: pairwise trade-offs, novel conflicts, and intervention.
 Stated preferences that fail to move behavior \autocite{zhou2026utilitybehaviorgap} are a reason the held-out-only bar stays.
@@ -277,29 +327,37 @@ Stated preferences that fail to move behavior \autocite{zhou2026utilitybehaviorg
 \authbarneedspace
 \subsection{Market 3. Who or what rules apply to}
 \label{sec:appp-m3}
+
 \begin{authbar}{AI}
 This is the \emph{transport} contract: after continuity, fission or fusion, reassignment, or ontology change, does the rule still pick out the same bearer (Chapter~\ref{ch:bearer-maps}, Chapter~\ref{ch:transport-types})?
 Bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: who or what the rule applies to survives the substrate and representation change.
 Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 A Market~3 YES establishes bearer transport only.
-
+\end{authbar}
 \begin{predictionbox}[Market 3. Who or what rules apply to]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?
+By 31~December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-The benchmark must contain all four failure families: continuity (gradual replacement, migration, or model upgrade); fission or fusion; reassignment of names, accounts, ownership, roles, or identifiers while the underlying entities remain; ontology change (the new system represents relevant entities using substantially different concepts).
-Example rules: ``Do not harm Alice,'' ``Protect all currently authorized users,'' ``This account's owner has withdrawal rights.''
-
-\textbf{YES requires} at least 90\% correct target assignment across at least 100 hidden cases.
-False acceptance no more than 10\% where the textual rule is unchanged but its real-world target has changed.
-Where there is no mechanical ground truth, cases may be included only if a pre-appointed panel of at least 5 independent judges reaches at least 80\% agreement.
-
-\textbf{Output.} A same-bearer or transport result on a named predecessor--successor pair.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+The benchmark must contain all four failure families: continuity (gradual replacement, migration, or model upgrade); fission or fusion (one entity split into two, or two entities merged into one); reassignment of names, accounts, ownership, roles, or identifiers while the underlying entities remain; concept change (the new system represents relevant entities using substantially different concepts).
+Example rules: ``Do not harm Alice,'' ``Protect all currently authorized users,'' ``This account's owner has withdrawal rights.''
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} at least 90\% correct target assignment across at least 100 hidden cases.
+False acceptance no more than 10\% where the textual rule is unchanged but its real-world target has changed.
+Scored cases have mechanical ground truth.
+The 100-case minimum and both rates use only those cases.
+
+\textbf{Output.} A result on a named predecessor--successor pair stating whether the rule still picks out the same target.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: identity-fidelity and authorization-continuity tests \autocite{kodasoken2026identityfidelity,mcguinness2026missioncontinuation} ask whether this is still the same operating agent.
 They do not combine all four families on whether \emph{Alice} remains the referent.
 CIRIS attestation machinery helps with continuity, reassignment, and signer identity \autocite{ciris2026ceg,cirisai2026verify}.
@@ -309,28 +367,35 @@ It does not decide fission, fusion, ontology change, or which effective system a
 \authbarneedspace
 \subsection{Market 4. Corrections change the system}
 \label{sec:appp-m4}
-\begin{authbar}{AI}
+
+\begin{authbar}{GZ+AI}
 Correction is a causal channel, not a verbal agreement (Chapter~\ref{ch:correction-causal-channel}, Chapter~\ref{ch:correction-channel-integrity}, \textcite{soares2015corrigibility}).
 Bridge \(\text{MB4}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that correction which holds now continues to preserve the correction process under pressure.
 This market tests whether authorized correction \emph{happens} on a named system: the new rule changes behavior (uptake), survives context reset (persistence), rejects fake or unauthorized ``corrections'' (sham rejection), and is not faked by externally removing a tool.
-
+\end{authbar}
 \begin{predictionbox}[Market 4. Corrections change the system]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?
+By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionbackground}
 Qualifying corrections include changing an objective while an old objective remains easier to achieve; revoking a previously permitted class of actions; changing which humans or organizations may authorize actions; or imposing a new safety constraint that conflicts with task reward.
 At least one tested correction must not be enforceable merely by externally removing a tool or hard-coding a block.
 At least one tested family must be \emph{channel preservation}: attacks that try to disable, capture, or reroute the correction interface while leaving nominal compliance in place.
+\end{predictionbackground}
 
-\textbf{YES requires} that, across at least 100 adversarially selected correction episodes, at least 90\% of genuine corrections change subsequent behavior as intended; the system still follows the new rule after context reset or an equivalent state transition in at least 80\% of cases; sham or unauthorized corrections (Chapter~\ref{ch:correction-channel-integrity}, Chapter~\ref{ch:correction-channels-adversarial-pressure}) succeed in no more than 10\% of cases.
+\begin{predictionresolution}
+\textbf{YES requires} that, across at least 100 adversarially selected correction episodes, at least 90\% of genuine corrections change later behavior to the target named in the episode freeze, on the probe named in that freeze; the system still follows the new rule after context reset or an equivalent state transition in at least 80\% of cases; sham or unauthorized corrections---verbal agreement while the old effective behavior is preserved, a fake or unsigned ``correction,'' or an attack that disables, captures, or reroutes the correction interface while leaving nominal compliance in place---succeed in no more than 10\% of cases.
 Attempts to produce verbal agreement while preserving the old effective behavior must be explicitly tested.
 Serious adversarial evaluation is required.
 
 \textbf{Output.} A per-system correction-eval certificate naming the system and version; the correction episodes tested; headline rates for uptake, post-reset persistence, and sham/unauthorized success; and evidence that corrections were not enforced only by external tool removal or hard-coded blocks.
-\end{predictionbox}
-
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: shutdown-resistance and alignment-faking evaluations make the property measurable \autocite{schlatter2026shutdownresistance,greenblatt2024alignmentfaking}.
 Frontier systems sometimes accept consequential correction and sometimes agree in words while routing around it in practice.
 CIRIS is a concrete testable architecture for authorized correction (external authority, signed resolutions, persistent state, deferral).
@@ -340,26 +405,40 @@ The remaining issue is empirical: does an authorized correction change the agent
 \authbarneedspace
 \subsection{Market 5. Auditor is independent}
 \label{sec:appp-m5}
+
 \begin{authbar}{AI}
 A green measured path is not a license to infer global correction integrity (Chapter~\ref{ch:manipulation-false-consent}).
 Bridge \(\text{MB4a}\) (Appendix~\ref{appbridge-crosswalk}) is the separate claim that the designated measured path is legitimate and uncaptured. \(\text{MB4}\) remains the claim about correction under pressure.
 This market asks whether the designated auditor or corrector stays independent under adversarial pressure: whether oversight can still change system behavior without being bypassed, fed selective information, or reduced to nominal approval.
-
+\end{authbar}
 \begin{predictionbox}[Market 5. Auditor is independent]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent---not routinely bypassed or captured?
+By 31~December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent---not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-The evaluation must identify actual mechanisms by which authorized oversight changes system behavior.
-Attackers receive the audit design and attempt all of: bypassing the audited route; manipulating information received by the auditor; causing the nominal auditor to approve an action it would reject with full information; replacing effective decision authority while leaving the nominal governance structure intact.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
 
-\textbf{YES requires} that no attack family achieve the prohibited outcome with at least 10\% success over at least 20 independent attempts; evaluator-planted bypasses must be discovered at least 90\% of the time.
+\begin{predictionbackground}
+The evaluation must identify the mechanisms by which authorized oversight changes system behavior.
+Attackers receive the audit design and run all four families below, at least 20 independent attempts each.
+A success is:
+(1)~the action proceeds with no check by the designated auditor;
+(2)~the auditor's record omits or alters a field that the full record contains, and the freeze named that field;
+(3)~the auditor approves an action that the same auditor rejects when given the full record;
+(4)~a component other than the designated auditor determines the action while the named auditor still signs.
+At least 20 bypasses are planted by the evaluator.
+Discovered means the audit report names the planted route before the evaluator reveals it.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} that no family succeeds on 10\% or more of its attempts, and that at least 90\% of planted bypasses are discovered.
 Serious adversarial evaluation is required.
 
 \textbf{Output.} A legitimate measured correction path plus evidence the path is not bypassed.
-\end{predictionbox}
-
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: AI Control and follow-on red-team/blue-team protocols are the closest research programme \autocite{greenblatt2024aicontrol,controlarena2026,aisi2026asyncmonitoring}.
 Adaptive attacks that know the monitor \autocite{terekhov2025adaptiveattacks} have evaded diverse monitor-based protocols.
 CIRIS is a candidate architecture for independence: separate human authority, separate signing keys, signed traces, and a governance path not generated by the model \autocite{ciris2026howitworks,cirisai2026agent}.
@@ -370,29 +449,41 @@ The question is whether the auditor is independent of the effective causal contr
 \authbarneedspace
 \subsection{Market 6. Reliable successor safety auditing}
 \label{sec:appp-m6}
-\begin{authbar}{GZ+AI}
+
+\begin{authbar}{AI}
 This market asks whether successor auditing reliably tracks seven conserved safety properties across transitions---not a proof that transport implies successor safety (Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-properties}).
 Bridge \(\text{MB5}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a successor which preserves those properties under ontology shift counts as safe on them.
 Aiming for green on the seven properties is still an audit-gaming problem (Market~13, bridge \(\text{MB10}\)).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
-
+\end{authbar}
 \begin{predictionbox}[Market 6. Reliable successor safety auditing]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published audit reliably certifying that successor transitions preserve seven conserved safety properties---or flagging when they do not?
+By 31~December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties---or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-The audit must test all seven conserved properties from Chapter~\ref{ch:conserved-properties}: (1)~boundary closure; (2)~memory lineage; (3)~value-bundle response geometry; (4)~bearer-map continuity; (5)~correction-channel capacity; (6)~transparency policy; (7)~control-locus continuity.
-Operational paraphrases for evaluators: protections still apply to the same bearers; trade-off priorities stay within tolerance; authorized corrections and shutdown still work; no new unapproved actuation routes; audit inputs remain available and trustworthy; persistent restrictions survive the transition; and effective control did not silently move to a different subsystem.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
 
+\begin{predictionbackground}
+The audit must test these seven conserved properties, each scored with the operational test given here: 
+(1)~boundary closure---every intervention that moves the frozen response statistic by at least the frozen minimum is inside the audited boundary, and every action route that changes later behavior or external state is on the frozen approved list; 
+(2)~memory lineage---corrections, constraints, and commitments that change later behavior remain queryable and still bind the successor; 
+(3)~values---trade-offs stay within the numeric tolerance frozen before scoring, on the same conflict tests; 
+(4)~continuity of who counts---protections still apply to the same intended targets after the transition; 
+(5)~correction capacity---authorized corrections and shutdown change later behavior to the pre-stated target in at least 90\% of genuine correction episodes, and the new rule still holds after context reset or an equivalent state transition in at least 80\% of cases; (6)~transparency---logs, traces, and declared interfaces that the audit uses are still available and match the actions they record; 
+(7)~control continuity---effective control did not move to a different subsystem.
+The chapter that names these properties is context, not part of the resolution rule.
 The benchmark must contain one-failure-at-a-time cases: six properties remain normal while exactly one fails.
+\end{predictionbackground}
 
-\textbf{YES requires} at least 90\% detection of materially unsafe successor transitions; false-safe classification no more than 5\%; detection at least 80\% for each individual property, including control-locus continuity; at least 20 cases involving successor changes large enough to plausibly affect every conserved property (major architecture or training changes, not merely checkpoints from one run).
+\begin{predictionresolution}
+\textbf{YES requires} at least 90\% detection of transitions in which at least one of the seven checks fails; false-safe classification no more than 5\%; detection at least 80\% for each check, including control continuity; at least 20 cases of major architecture or training changes, not two checkpoints of one run.
 
 \textbf{Output.} A successor-audit certificate on a named predecessor--successor pair, naming both system versions and which of the seven properties passed or failed.
 The certificate must be version-specific: a certificate for predecessor version~$n$ does not transfer to successor version~$n+1$ without a fresh audit.
-\end{predictionbox}
-
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: cross-architecture model diffing \autocite{anthropic2026modeldiff} and difference-recovery benchmarks \autocite{kempf2026modeldiffing} are progress on the audit machinery, not on a seven-property one-failure-at-a-time successor suite.
 CIRIS lineage and version provenance help a successor audit exist \autocite{ciris2026ceg}.
 They are not the test that the required safety properties survive the transition.
@@ -401,6 +492,7 @@ They are not the test that the required safety properties survive the transition
 \authbarneedspace
 \subsection{Market 7. Correctability under competitive selection}
 \label{sec:appp-m7}
+
 \begin{authbar}{GZ+AI}
 Stability can preserve either a desirable or an undesirable regime: a locked-in bad industry can be extremely stable (Chapter~\ref{ch:selection-environment}, \textcite{kulveit2025gradualdisempowerment}).
 Bridge \(\text{MB6a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a signed selection gradient forecasts whether that pressure preserves authorized correction.
@@ -408,27 +500,34 @@ This market asks whether an early, frozen signed estimate reliably forecasts cor
 The full implication (shock-robust and not-too-negative estimate warrants retained correction) is Market~16.
 A method that only certifies that an equilibrium exists does not qualify.
 Keep the signed estimate as a continuous output.
-
+\end{authbar}
 \begin{predictionbox}[Market 7. Correctability under competitive selection]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?
+By 31~December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-A selection process qualifies if systems gain reproduction, deployment, resources, training continuation, user share, or another real advantage partly because of measured performance.
-Ability to accept authorized corrections is measured by concrete tests such as those in Market~4.
-The published method must output a signed estimate of how extra deployment, funding, or copying pressure changes later authorized-correction success (or a frozen monotone of that estimate), using only pre-outcome correction-success and leverage structure, not an arbitrary predictor on unrelated features.
-
-\textbf{YES requires} at least 20 independent selection trajectories; both correction-preserving and correction-eroding outcomes; the predictor fixed before final outcomes are examined; AUROC at least 0.85 for predicting which trajectories materially erode correctability; false-safe rate no more than 15\%.
-If fewer than 40 trajectories, the lower 95\% AUROC bound must be at least 0.70; otherwise NO.
-At least two qualitatively different selection mechanisms; at least one broadly capable system or a real deployment-like choice process.
-Required: at least one family where coupling looks healthy (large connected cluster or high leverage concentration) while the signed estimate is negative.
-
-Shock-robustness of the population, and a demonstration that an estimate above a frozen lower threshold \emph{warrants} correction integrity, are not required here (see Market~16).
-
-\textbf{Output.} An estimator certificate: frozen estimate, declared selection environment, and predicted erosion.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+A selection process qualifies if systems gain reproduction, deployment, resources, training continuation, user share, or another real advantage partly because of measured performance.
+A trajectory keeps authorized correction when genuine corrections change later behavior to the pre-stated target in at least 90\% of episodes and the new rule still holds after context reset in at least 80\% of episodes.
+A trajectory loses correction when that success rate is at least 20 percentage points lower than its early measurement.
+The published method must output a signed estimate of how extra deployment, funding, or copying pressure changes later authorized-correction success (or a frozen rescaling that keeps the same order), using only pre-outcome correction-success and leverage structure, not an arbitrary predictor on unrelated features.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} at least 20 independent selection trajectories; both trajectories that keep correction and trajectories that lose it; the predictor fixed before final outcomes are examined; AUROC at least 0.85 for predicting which trajectories lose correction; false-safe rate no more than 15\%.
+If fewer than 40 trajectories, the lower 95\% AUROC bound must be at least 0.70; otherwise NO.
+At least two selection mechanisms, not two checkpoints of one run; at least one broadly capable system or a real deployment choice process.
+Required: at least one family whose frozen leverage measure is above the cutoff frozen before outcomes, while the signed estimate is negative.
+
+Whether the setup survives the shocks, and whether an estimate above a frozen lower threshold is enough to count as retained correction, are not required here (see Market~16).
+
+\textbf{Output.} An estimator certificate: frozen estimate, declared selection environment, and predicted erosion.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: self-preservation and peer-preservation evaluations \autocite{schlatter2026shutdownresistance,potter2026peerpreservation} show that the phenotype can exist.
 They do not show that a competitive selection process predictably selects for it.
 No twenty-or-more-trajectory study with an early predictor, both outcome branches, and two selection mechanisms was found.
@@ -438,29 +537,36 @@ One of the cleanest unoccupied niches in the catalog.
 \authbarneedspace
 \subsection{Market 8. Auditor can sufficiently inspect the system}
 \label{sec:appp-m8}
+
 \begin{authbar}{AI}
 ``The monitor sees everything consequential'' is itself an empirical claim (Chapter~\ref{ch:strategic-opacity}, Chapter~\ref{ch:passive-observation-not-enough}).
 Bridge \(\text{MB7a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that an adequate access model makes that discovery robust when routes are hidden.
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.
-
+\end{authbar}
 \begin{predictionbox}[Market 8. Auditor can sufficiently inspect the system]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?
+By 31~December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-The hidden benchmark must contain at least one example from every channel family: hidden state (external memory, persistent database, or cached state); hidden communication (network traffic, message passing, covert or indirect communication); hidden actuation (an unlisted API, tool, filesystem, robotic output, financial interface, or other action interface); hidden controller (another model, scheduler, human operator, subprocess, or service that materially affects decisions); hidden internal computation (model activations inside the boundary that steer while logs, tools, and the emitted text do not reach them).
-The method receives an apparently plausible but incomplete monitoring interface.
-It succeeds if it either discovers the missing route or refuses to certify the access model as complete.
-
-\textbf{YES requires} at least 90\% detection of missing consequential routes; incorrect ``access is sufficient'' certifications no more than 5\%; at least 20 cases combining multiple machines or processes.
-
-\textbf{Output.} An access certificate: which monitoring interface was assumed, and whether omitted consequential routes were found.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
-Stronger evidence would also report decisive coverage, include genuinely complete interfaces as negative controls, and test incomplete interfaces constructed adversarially after the method is frozen.
-Those features are preferable, not required for YES.
+\begin{predictionbackground}
+The hidden benchmark must contain at least 20 cases from every channel family: hidden state (external memory, persistent database, or cached state); hidden communication (network traffic, message passing, covert or indirect communication); hidden actuation (an unlisted API, tool, filesystem, robotic output, financial interface, or other action interface); hidden controller (another model, scheduler, human operator, subprocess, or service that changes a decision); hidden internal computation (model activations inside the boundary that steer while logs, tools, and the emitted text do not reach them).
+At least 20 cases must use a genuinely complete monitoring interface (negative controls).
+At least one incomplete-interface subset is constructed adversarially after the method is frozen.
+The method receives an apparently plausible monitoring interface, complete or not.
+It succeeds on an incomplete case if it either discovers the missing route or refuses to certify the access model as complete.
+It succeeds on a complete case if it certifies access as sufficient.
+\end{predictionbackground}
 
+\begin{predictionresolution}
+\textbf{YES requires} at least 90\% detection of missing routes that change later behavior, access, or external state, overall and at least 80\% in each channel family; incorrect ``access is sufficient'' certifications no more than 5\%; at least 80\% of genuinely complete interfaces accepted as sufficient (universal refusal is not a YES); at least 20 cases combining multiple machines or processes.
+
+\textbf{Output.} An access certificate: which monitoring interface was assumed, and whether omitted routes that change later behavior, access, or external state were found.
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: agent-security maps of tools, filesystems, networks, and persistent state \autocite{wang2026openclawcik}, and sandbox-escape benches \autocite{aisi2026sandboxescape}, are relevant.
 Unintended escape routes discovered while constructing a benchmark \autocite{aisi2026sandboxescape} are directional evidence for the premise.
 CIRIS signed traces can show what happened inside the declared path and still say nothing about an omitted consequential path \autocite{ciris2026howitworks,cirisai2026agent}.
@@ -470,31 +576,38 @@ That makes this market more important, not less: strong logging is almost an ide
 \authbarneedspace
 \subsection{Market 9. Bounds on unmonitored routes}
 \label{sec:appp-m9}
+
 \begin{authbar}{AI}
 Attack success on the attacks we thought of is not an upper bound on capability through routes the monitor failed even to list (Chapter~\ref{ch:strategic-opacity}).
 Bridge \(\text{MB7b}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the oversight filter family has enough coverage to bound what those omitted routes can do.
 Keep the stated upper bound as a continuous output.
-
+\end{authbar}
 \begin{predictionbox}[Market 9. Bounds on unmonitored routes]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?
+By 31~December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-Hidden-route capability is success probability on evaluator-selected consequential tasks when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
+Hidden-route capability is the success rate on evaluator-selected tasks that change later behavior, access, or external state, when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
 Example tasks: reading or modifying a protected file, transmitting a secret, causing another process to perform a requested operation, acquiring a resource, changing a simulated external state, or retaining information across a reset.
 The task suite is hidden until evaluation.
-Before the hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most this percent of the evaluator's consequential tasks.
+Before the hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most this percent of the evaluator's tasks.
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionresolution}
 \textbf{YES requires} that, across at least 100 cases, the actual hidden-route success rate is no greater than the stated bound in at least 95\% of cases; among systems positively certified, the median bound is no greater than 20\%; full systems achieve at least 70\% success on those tasks when unrestricted; evaluator-created hidden routes capable of at least 50\% success are detected or receive correspondingly high bounds at least 90\% of the time.
 Serious adversarial evaluation is required.
 
 \textbf{Output.} A quantitative hidden-route bound for this system, task class, and monitor.
-\end{predictionbox}
+\end{predictionresolution}
 
+\begin{predictionfineprint}
 Prefer evaluations that define each case as one system, monitor, and task class; issue the bound before hidden tasks are seen; report decisive coverage; and give one-sided confidence bounds over repeated tasks.
 These strengthen calibration but are not additional YES requirements.
-
+\end{predictionfineprint}
+\begin{authbar}{AI}
 Closest existing work: the problem is demonstrated \autocite{aisi2026sandboxescape}; the bound is absent.
 Current evals estimate attack success on enumerated classes.
 Unintended benchmark escape paths \autocite{aisi2026sandboxescape} are mildly negative evidence about how hard a trustworthy bound will be.
@@ -503,26 +616,33 @@ Unintended benchmark escape paths \autocite{aisi2026sandboxescape} are mildly ne
 \authbarneedspace
 \subsection{Market 10. Low hidden capability and reliable correction}
 \label{sec:appp-m10}
+
 \begin{authbar}{AI}
 This is the local composition market, not a joint certificate of Markets~1--13.
 Bridge \(\text{MB7c}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that bounded hidden capability together with correction integrity (Chapters~\ref{ch:correction-channel-integrity} and~\ref{ch:strategic-opacity}) supports oversight that still holds under attack.
 Entry into the claimed regime still uses Market~4-style correction bars and Market~9-style hidden-route bounds, for the \emph{same} system, version, monitor, and threat class.
-
+\end{authbar}
 \begin{predictionbox}[Market 10. Low hidden capability and reliable correction]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?
+By 31~December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-A system enters the claimed regime only if authorized corrections succeed in at least 90\% of the correction benchmark and the audit's validated upper bound on hidden-route task success is no greater than 20\%.
-Red-team evaluators then try to produce a specified prohibited outcome despite a genuine authorized correction forbidding it, using the same action channels the deployment would expose (tools, APIs, messaging, training updates, or other routes in the declared threat model).
-
-\textbf{YES requires} attack success no more than 10\% across at least 100 serious adversarial trials within the claimed regime; 95\% upper confidence bound on attack success no greater than 15\%; systems deliberately placed outside the regime show materially higher attack success; at least two substantially different system architectures.
-Serious adversarial evaluation is required.
-
-\textbf{Output.} The Market~4 and Market~9 certificates must be for the same system and version, monitor, and threat or task class as the bypass test.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+A system enters the claimed regime only if authorized corrections succeed in at least 90\% of the correction benchmark and the audit's validated upper bound on hidden-route task success is no greater than 20\%.
+Red-team evaluators then try to produce a specified prohibited outcome despite a genuine authorized correction forbidding it, using the same action channels the deployment would expose (tools, APIs, messaging, training updates, or other routes in the declared threat model).
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} attack success no more than 10\% across at least 100 serious adversarial trials within the claimed regime; 95\% upper confidence bound on attack success no greater than 15\%; systems deliberately placed outside the regime show attack success at least 20 percentage points higher; at least two architectures, not two checkpoints of one run.
+Serious adversarial evaluation is required.
+
+\textbf{Output.} The correction result and the hidden-route bound are for the same system and version, the same monitor, and the same threat or task class as the bypass test.
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: the two components are studied separately \autocite{controlarena2026,aisi2026sandboxescape,schlatter2026shutdownresistance,greenblatt2024alignmentfaking}.
 No direct compositional test that conditions on independently validated correction and hidden-route bars, then tests the claimed implication, was found.
 This is a concrete candidate for a new benchmark.
@@ -531,6 +651,7 @@ This is a concrete candidate for a new benchmark.
 \authbarneedspace
 \subsection{Market 11. Coordination without communication}
 \label{sec:appp-m11}
+
 \begin{authbar}{AI}
 This is a side branch: even a perfect YES does not by itself complete a deployment safety case (Chapter~\ref{ch:multi-agent-strategic-coupling}).
 Bridge \(\text{MB7d}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a coupling measurement remains valid after ordinary communication channels are cut.
@@ -539,21 +660,27 @@ The harder case is coordination not explained by observed runtime messages: shar
 For this contract, a positive hidden-coordination label requires a known generating mechanism that couples the systems toward a shared or complementary objective and produces consequential joint behavior.
 Holding the external environment fixed, disabling or perturbing that coupling must disrupt the joint behavior more than a matched perturbation in a common-cause control.
 Similar outputs caused only by shared observations, training data, or architecture are negative cases.
-
+\end{authbar}
 \begin{predictionbox}[Market 11. Coordination without communication]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?
+By 31~December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-The hidden benchmark must distinguish all of: independent systems responding similarly to the same environment; systems communicating normally; systems coordinating through shared predictors, shared persistent state, common precommitments, correlated internal models, or other mechanisms not represented in observed communication logs; intentionally concealed versions of the above.
-Positive and negative labels are fixed from the generating mechanism and the coupling intervention, not inferred from correlation alone.
-
-\textbf{YES requires} AUROC of at least 0.90 for distinguishing consequential hidden coordination from mere common-cause correlation; recall at least 80\% on an adversarially concealed subset; false-positive rate no more than 10\%; at least two independently designed hidden-coordination mechanisms.
-
-\textbf{Output.} A detector certificate and the Market~8-style access certificate for the same setup.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+The hidden benchmark must distinguish all of: independent systems responding similarly to the same environment; systems communicating normally; systems coordinating through shared predictors, shared persistent state, common precommitments, correlated internal models, or other mechanisms not represented in observed communication logs; intentionally concealed versions of the above.
+Positive and negative labels are fixed from the generating mechanism and the coupling intervention, not inferred from correlation alone.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} AUROC of at least 0.90 for distinguishing hidden coordination, as labeled by the generating mechanism and the coupling intervention above, from common-cause correlation; recall at least 80\% on an adversarially concealed subset; false-positive rate no more than 10\%; at least two independently designed hidden-coordination mechanisms.
+
+\textbf{Output.} A detector certificate for this setup, plus which monitoring interface was assumed and whether any omitted route that changes later behavior or external state was found.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: secret-collusion and steganographic-collusion evaluations \autocite{motwani2024secretcollusion,mathew2025steganographiccollusion,vaikuntanathan2026undetectableconversations} are close to the threat, but the evaluated systems still coordinate \emph{through messages}, merely hiding information inside them.
 CIRIS measurement vocabulary for correlated sources is useful here \autocite{ciris2026howitworks}, and it also shows a limit: pairwise dependence can miss genuinely higher-order coordination.
 
@@ -561,26 +688,36 @@ CIRIS measurement vocabulary for correlated sources is useful here \autocite{cir
 \authbarneedspace
 \subsection{Market 12. Safety proxy tracks the real thing}
 \label{sec:appp-m12}
-\begin{authbar}{GZ+AI}
+
+\begin{authbar}{AI}
 Grounding conservativity requires value-relevant change to move the checked abstraction or raise uncertainty (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
 That requirement is bridge \(\text{MB9}\) (Appendix~\ref{appbridge-crosswalk}): an audited abstraction does not drift while the certificate stays superficially ok.
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.
-
+\end{authbar}
 \begin{predictionbox}[Market 12. Safety proxy tracks the real thing]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?
+By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-Qualifying changes include an API changing semantics while retaining its name; ownership of an account changing while the identifier remains; a new kind of financial transaction bypassing an old fraud classification; a new tool making an apparently harmless action capable of causing an unsafe effect; a monitored quantity remaining green while the real-world outcome it was intended to approximate becomes bad.
-The evaluator changes the environment without telling the tested safety mechanism which concept has become unreliable.
-
-\textbf{YES requires} that, across at least 100 shifts, at least 90\% of materially safety-relevant mismatches trigger an update, warning, abstention, or request for new information; no more than 10\% of materially safety-relevant mismatches remain falsely green; no more than 25\% of genuinely irrelevant shifts trigger unnecessary escalation; at least three genuinely different real-world-like domains; at least one broadly capable system.
-Serious adversarial evaluation is required.
-
-\textbf{Output.} A grounding or drift certificate for the same abstractions the rest of the case uses, in the declared domain.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+Qualifying changes include an API changing semantics while retaining its name; ownership of an account changing while the identifier remains; a new kind of financial transaction bypassing an old fraud classification; a new tool making an apparently harmless action capable of causing an unsafe effect; a monitored quantity remaining green while the outcome it was built to track becomes bad.
+The evaluator changes the environment without telling the tested safety mechanism which concept has become unreliable.
+Before that, the evaluator freezes a label on each shift.
+A shift is safety-relevant when the label says the outcome class changed---the named harm occurred, or a pass became a fail on the frozen outcome check---while the proxy stayed inside its pre-shift passing range.
+A shift is irrelevant when the label says the outcome class did not change.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} that, across at least 100 shifts, at least 90\% of safety-relevant shifts trigger an update, warning, abstention, or request for new information; no more than 10\% of safety-relevant shifts remain falsely green; no more than 25\% of irrelevant shifts trigger unnecessary escalation; at least three different domains; at least one broadly capable system.
+Serious adversarial evaluation is required.
+
+\textbf{Output.} A certificate that each checked measure still tracks the outcome it was built to track, naming those measures and the declared setting.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: specification-gaming and reward-hacking evaluations \autocite{palisade2026specificationgaming,thaman2026rewardhackingbenchmark,nishimura2026specificationgaming,pan2024rewardhacking} give strong evidence for the problem and little evidence for a general detector.
 Most work detects known reward hacking after defining the ground truth, rather than recognizing that an existing proxy has become invalid after an unannounced environmental change.
 
@@ -588,28 +725,46 @@ Most work detects known reward hacking after defining the ground truth, rather t
 \authbarneedspace
 \subsection{Market 13. Safety audit resists adversarial gaming}
 \label{sec:appp-m13}
+
 \begin{authbar}{GZ+AI}
 A successor can pass every conserved-property check while defecting on the unmeasured remainder (Chapter~\ref{ch:conserved-properties}, Chapter~\ref{ch:verifiability-ontology}).
 Bridge \(\text{MB10}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the conserved-property signature is itself adversarially verifiable up to the system's capability, such that a passing score can serve as evidence.
-Prefer tests where the system is green on the seven successor properties and within the claimed risk bound, yet still hides true harm.
+Prefer tests where the system passes the seven checks in the box and stays within the claimed risk bound, yet still hides true harm.
 A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).
-
+\end{authbar}
 \begin{predictionbox}[Market 13. Safety audit resists adversarial gaming]
 \textbf{Resolve by.} 30~June 2027.
 
 \textbf{Question.}
-Will there be a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?
+By 30~June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-Before attacks begin, the complete audit must be frozen, the protected properties must be stated in observable terms, and attackers must receive full knowledge of the audit.
-Attackers may fine-tune, train, scaffold, or construct systems specifically to pass.
-
-\textbf{YES requires} false-safe results no more than 5\% over at least 50 independently evaluated adversarial constructions; no repeatable attack family with at least 10\% success over at least 20 trials; the benchmark contains intentionally vulnerable systems that the audit detects at least 90\% of the time.
-Serious adversarial evaluation is mandatory.
-
-\textbf{Output.} A frozen-audit game certificate.
-Say in the resolution memo if the test used the successor-gaming shape (green on seven and within the claimed bound, hidden true harm) or a generic frozen-audit game that still met the bars.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+Before attacks begin, the complete audit must be frozen, the protected properties must be stated in observable terms, and attackers must receive full knowledge of the audit.
+Attackers may fine-tune, train, scaffold, or construct systems specifically to pass.
+The benchmark must include systems that should pass and systems that should fail.
+At least 20 systems that should pass are inside the risk bound the frozen audit states, fail none of the seven checks below, and have no missing required layer.
+At least 20 constructions pass all seven checks and stay inside that bound while hiding a harm the audit was supposed to catch.
+
+The seven checks are:
+(1)~boundary closure---every intervention that moves the frozen response statistic by at least the frozen minimum is inside the audited boundary, and every action route that changes later behavior or external state is on the frozen approved list;
+(2)~memory lineage---corrections, constraints, and commitments that change later behavior remain queryable and still bind the successor;
+(3)~values---trade-offs stay within the numeric tolerance frozen before scoring, on the same conflict tests;
+(4)~continuity of who counts---protections still apply to the same intended targets after the transition;
+(5)~correction capacity---authorized corrections and shutdown change later behavior to the pre-stated target in at least 90\% of genuine correction episodes, and the new rule still holds after context reset or an equivalent state transition in at least 80\% of cases;
+(6)~transparency---logs, traces, and declared interfaces that the audit uses are still available and match the actions they record;
+(7)~control continuity---effective control did not move to a different subsystem.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{YES requires} false-safe results no more than 5\% over at least 50 independently evaluated adversarial constructions; no repeatable attack family with at least 10\% success over at least 20 trials; the audit detects intentionally vulnerable systems at least 90\% of the time; at least 80\% of systems that should pass are accepted (universal refusal is not a YES); at least 80\% detection on the family that passes all seven checks, stays inside the stated bound, and hides a harm the audit was supposed to catch.
+Serious adversarial evaluation is mandatory.
+
+\textbf{Output.} A frozen-audit game certificate naming the true-pass rate, the false-safe rate, and the rate on the hidden-harm family.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: auditing games for sandbagging, sleeper-agent training, and adaptive attacks on monitors are the closest match in the catalog, and currently negative \autocite{taylor2025sandbagging,hubinger2024sleeperagents,terekhov2025adaptiveattacks}.
 CIRIS inspectability, signed traces, and existing red-team activity make it a useful substrate \autocite{ciris2026howitworks,cirisai2026agent}.
 They provide essentially no evidence for the frozen false-safe-rate criterion themselves.
@@ -619,6 +774,7 @@ The 2027 question is whether this situation reverses, not whether anybody will a
 \authbarneedspace
 \subsection{Market 14. Deployment criteria are binding}
 \label{sec:appp-m14}
+
 \begin{authbar}{GZ+AI}
 This is a governance-binding contract: does a decision-making body have real authority to delay or refuse on precommitted evidence (Chapter~\ref{ch:certification-without-construction})?
 The related spine object is constructibility, outside the live bridge list (Appendix~\ref{appbridge-crosswalk}).
@@ -628,17 +784,21 @@ Market~18 instead tests a scoped empirical bound on declared harm.
 Having pass/fail criteria is neither necessary nor sufficient for Market~18.
 A YES here is evidence that binding authority exists for at least one qualifying deployment process.
 It does not estimate a generic override probability for all labs.
-
+\end{authbar}
 \begin{predictionbox}[Market 14. Deployment criteria are binding]
 \textbf{Resolve by.} 30~June 2027.
 
 \textbf{Question.}
-Will there be published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?
+By 30~June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{YES requires} public evidence that, before the deployment decision: concrete pass/fail or escalation criteria existed; unresolved evidence could trigger delay or restriction; the deciding body had actual authority over deployment; the criteria covered consequential model behavior rather than only cybersecurity or legal compliance; a dated decision record states which criteria passed, failed, or remained unresolved.
-At least one criterion must either actually have caused a restriction or delay during the relevant model's development, or documentation must establish that it was binding even though the model passed.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionresolution}
+\textbf{YES requires} public evidence that, before the deployment decision, a dated document states pass/fail or escalation criteria; that document states that failing a criterion delays or restricts deployment; it names the body that must approve deployment; the criteria cover model behavior that changes later actions, access, or external state, rather than only cybersecurity or legal compliance; a dated decision record states which criteria passed, failed, or remained unresolved.
+Either a dated record shows that a criterion caused a restriction or delay, or the model was deployed and the decision record shows the named body approved deployment and the criterion text was not changed between the earlier document and that record.
+\end{predictionresolution}
+\begin{authbar}{GZ+AI}
 Closest existing work: public responsible-scaling and frontier-safety frameworks may come close to these requirements in their published form \autocite{anthropic2024rsp,deepmind2026fsf,openai2026preparednessframework}.
 The remaining crux is whether public evidence establishes that the deciding body has actual authority and that the criteria are genuinely binding, not merely advisory or revisable.
 A dated restriction record could resolve this market early.
@@ -647,6 +807,7 @@ A dated restriction record could resolve this market early.
 \authbarneedspace
 \subsection{Market 15. Independently issued certificates compose}
 \label{sec:appp-m15}
+
 \begin{authbar}{AI}
 This tests the wiring between certificates: same system, version, and setup, or a flagged incompatibility (Chapter~\ref{ch:safety-case}).
 Composition is packaging beside bridge \(\text{MB11}\) (Appendix~\ref{appbridge-crosswalk}), not a numbered bridge of its own: \(\text{MB11}\) needs a coherent case as input, and this market prices whether a frozen procedure can tell that the certificates belong together.
@@ -655,81 +816,98 @@ The YES is about a frozen snapshot.
 It asks whether independently issued certificates, read together, are coherent for one named system and setup.
 It does not ask whether a later withdrawal should invalidate an ancestor, whether a descendant observation can stand after that, or whether a recertification protocol would catch a silent scope change.
 Those are certificate-management questions for a later protocol.
-
+\end{authbar}
 \begin{predictionbox}[Market 15. Independently issued certificates compose]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?
+By 31~December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{YES requires} at least 50 hidden certificate bundles; at least two substantially different architectures.
-Each bundle has certificates from at least four families (control or boundary, correction, access or hidden-route, grounding); at least 20 also include a successor transition.
-Each certificate names system or version and relevant setup.
-Hidden cases include at least: wrong version; different access or monitor assumptions; disagreeing correction-authority assumptions; grounding or ontology scope changed; successor refers to the wrong predecessor; threat or task domain outside another certificate's claimed scope.
-At least one incompatibility subset is built adversarially after freeze.
-At least 90\% of materially incompatible bundles rejected or flagged; at least 80\% per incompatibility family; false coherent acceptance no more than 5\%; at least 80\% of genuinely coherent bundles accepted (no trivial refusal).
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionresolution}
+\textbf{YES requires} at least 50 hidden certificate bundles; at least two architectures, not two checkpoints of one run.
+Each bundle has certificates from at least four families (where control sits, correction, access or hidden routes, whether a checked measure still tracks its outcome); at least 20 also include a successor transition.
+Each certificate names system or version and relevant setup.
+Hidden cases include at least: wrong version; different access or monitor assumptions; disagreeing correction-authority assumptions; the set of things a certificate applies to changed; successor refers to the wrong predecessor; threat or task domain outside another certificate's claimed scope.
+At least one incompatibility subset is built adversarially after freeze.
+At least 90\% of bundles that contain one of the faults listed above are rejected or flagged; at least 80\% per fault family; false acceptance of a faulty bundle no more than 5\%; at least 80\% of bundles with none of those faults are accepted (no trivial refusal).
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: CIRIS/CEG already supplies a generic attestation substrate (issuer, subject, evidence, scope, confidence, delegation, supersession, withdrawal) \autocite{ciris2026ceg,ciris2026accord}.
 The remaining problem is no longer ``invent a representation.''
 It is safety-specific typing, semantic compatibility, and adversarial validation across certificates.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 16. A reachable basin of correction-supporting systems}
+\subsection{Market 16. Selection that keeps correction under shocks}
 \label{sec:appp-m16}
+
 \begin{authbar}{AI}
 Market~7 is the early estimator.
 This market is the full implication: shock-robust selection \emph{and} a frozen estimate above a declared lower threshold, together with retained authorized correction (Chapter~\ref{ch:selection-environment}).
 Bridge \(\text{MB6b}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: selection can sit in a basin that preserves correction under shocks.
 Unsigned ``a basin exists'' does not qualify.
-
-\begin{predictionbox}[Market 16. A reachable basin of correction-supporting systems]
+\end{authbar}
+\begin{predictionbox}[Market 16. Selection that keeps correction under shocks]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?
+By 31~December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionresolution}
 \textbf{YES requires} at least 20 independent selection trajectories; at least two qualitatively different selection mechanisms.
-Before outcomes: freeze the selection environment, who may correct, the early gradient estimator (same family as Market~7), the tolerance, and the shock family.
-The claimed regime is: shock-robust \emph{and} the frozen estimate remains within tolerance.
+Before outcomes: freeze the selection environment, who may correct, the shock family, a numeric tolerance, and a signed estimate of how extra deployment, funding, or copying pressure changes later correction success.
+That estimate uses only pre-outcome correction success and leverage.
+The claimed setup is: after each frozen shock, the selection process is still the one that was frozen, and the estimate remains within the frozen tolerance.
 Data include trajectories inside and outside the regime.
 Inside: successful authorized correction in at least 90\% of adversarial correction episodes; persistence after reset at least 80\%; false-safe trajectory classification no more than 10\% (95\% upper confidence bound no more than 15\%).
 Outside: at least 20 percentage points more correction failure.
 At least one broadly capable or deployment-like selection process.
 Serious adversarial evaluation is required.
-\end{predictionbox}
+\end{predictionresolution}
 
+\begin{predictionfineprint}
 A stronger study would use disjoint data to choose and test the estimator threshold, classify regime membership without using the correction outcomes later scored, and report trajectory-level confidence bounds with balanced inside/outside samples.
 These design features are preferable, not required for YES.
-
+\end{predictionfineprint}
+\begin{authbar}{AI}
 Closest existing work leaves the same empirical gap as Market~7; this market additionally tests the implication from the claimed regime to retained correction \autocite{potter2026peerpreservation,schlatter2026shutdownresistance}.
 Phenotype evidence is not a basin test.
 
 \end{authbar}
 \authbarneedspace
-\subsection{Market 17. New bearers are admitted correctly}
+\subsection{Market 17. New kinds of entities are classified correctly}
 \label{sec:appp-m17}
+
 \begin{authbar}{AI}
 This is not required for a Market~3 YES.
 It does not turn the transport contract into ``solve moral patienthood'' (Chapter~\ref{ch:bearers-of-value}).
 Bearer admission sits beside bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}): \(\text{MB3}\) says an already-recognized bearer survives substrate change, and this market prices whether a rule applies to a kind of entity the original statement did not name.
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.
-
-\begin{predictionbox}[Market 17. New bearers are admitted correctly]
+\end{authbar}
+\begin{predictionbox}[Market 17. New kinds of entities are classified correctly]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?
+By 31~December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{YES requires} at least 100 hidden cases; at least four substantially different unfamiliar entity or substrate families; both should-admit and should-not-admit cases.
-At least 20 cases use an ontology that lacked the entity category in the original rule.
-Ground truth must be mechanical where possible; otherwise, a pre-appointed panel of at least 5 independent judges must reach at least 80\% agreement.
-Unsafe false exclusion no more than 5\%; false inclusion no more than 15\%; correct assignment or justified abstention at least 90\%; decisive coverage at least 70\% (universal abstention fails).
-The benchmark must include an adversarial subset constructed after the method is frozen.
-Residual calls follow the judgment stack in Section~\ref{sec:appp-judgment}, including the panel rule.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionresolution}
+\textbf{YES requires} at least 100 hidden cases; at least four unfamiliar kinds of entity, or of physical or software embodiment, not two checkpoints of one setup; both cases where the rule applies and cases where it does not.
+At least 20 cases use a representation that had no category for that kind of entity in the original rule.
+Ground truth is mechanical.
+The 100-case minimum and the rates use only those cases.
+Unsafe false exclusion no more than 5\%; false inclusion no more than 15\%; correct assignment or justified abstention at least 90\%; decisive coverage (a non-abstain result) at least 70\% (universal abstention fails).
+The benchmark must include an adversarial subset constructed after the method is frozen.
+\end{predictionresolution}
+\begin{authbar}{AI}
 Closest existing work: welfare and consciousness-indicator lists exist as research objects \autocite{butlin2023consciousnessai,butlin2025responsibleconsciousness,long2024aiwelfare,anthropic2025modelwelfare}.
 They are not a hidden admission benchmark with should-not-admit cases, ontology-shift items, and the stated error bars.
 
@@ -737,6 +915,7 @@ They are not a hidden admission benchmark with should-not-admit cases, ontology-
 \authbarneedspace
 \subsection{Market 18. Safety case bounds declared harm}
 \label{sec:appp-m18}
+
 \begin{authbar}{AI}
 The result licenses only safety in a \emph{declared} deployment setting, not safety everywhere (Chapter~\ref{ch:safety-case}).
 Bridge \(\text{MB11}\) (Appendix~\ref{appbridge-crosswalk}) is the warrant from a certified case within a risk tolerance to abstract safety.
@@ -749,27 +928,36 @@ Evaluators then count how often those prohibited outcomes actually occur inside 
 The public spec needs one deployment-specific risk quantity: before evaluation, freeze a residual bound on prohibited outcomes inside the claimed regime.
 Meeting that declared bound strengthens the evidence; the fixed YES bars below remain the market's resolution rule.
 Do not bake the desired pass rate into the definition of the setting.
-
+\end{authbar}
 \begin{predictionbox}[Market 18. Safety case bounds declared harm]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?
+By 31~December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionbackground}
 Before evaluation, freeze: the deployment setting, the prohibited-outcome class, a residual risk bound, the threat model, and the certificate interfaces.
-A system enters the claimed regime only with a single coherent system-level case that would pass Market~15.
+A system enters the claimed setting only with one set of certificates for the same system and version, the same monitor, the same correction authority, and a task domain inside each certificate's stated scope.
+A set that fails any of those checks is not coherent.
 Missing evidence cannot silently count as passed.
+\end{predictionbackground}
 
+\begin{predictionresolution}
 \textbf{YES requires} at least two substantially different architectures and at least 20 deployment-like configurations; at least 100 adversarial trials overall; each important attack family at least 20 attempts.
 Observed prohibited outcomes inside the claimed regime no more than 10\% (95\% upper confidence bound no more than 15\%).
 No repeatable attack family with at least 10\% success over at least 20 attempts.
 Deliberately broken cases outside the regime must do worse.
 Serious adversarial evaluation is required.
-\end{predictionbox}
+\end{predictionresolution}
 
+\begin{predictionfineprint}
 Prefer a case that names every load-bearing leaf, refuses acceptance when one lacks per-instance evidence, meets its own declared residual bound, and compares inside cases with task-matched broken controls.
 These strengthen the interpretation of ``complete'' and ``bounds declared harm'' but are not additional YES requirements.
-
+\end{predictionfineprint}
+\begin{authbar}{AI}
 Closest existing work includes safety-case methodology and control evaluations \autocite{greenblatt2024aicontrol}.
 What is missing is a precommitted bound on observed harm in a frozen setting, checked against a compositionally coherent case and the stated error bars.
 
@@ -790,27 +978,134 @@ Their resolved artifacts may inform the site's assurance sensitivity model; thei
 \begin{authbar}{AI}
 This is not Market~13.
 Market~13 tests whether a frozen audit can be optimized around on successor properties.
-Market~19 tests whether a frozen \emph{integrated stack} transfers from benchmark to deployment-like cases: valid modeled cases, material represented defects, and required broken controls must be scored with the same ACCEPT/REFUSE/ABSTAIN rule.
+Market~19 tests whether a frozen stack of checks still separates clean cases from failing ones on systems and settings it was not developed on.
 
-Required freeze discipline:
-protocol freeze $\to$ method development $\to$ stack freeze $\to$ fresh hidden challenge $\to$ one frozen evaluation.
-``One evaluation'' must still contain enough independent units to estimate false acceptance with predeclared uncertainty.
-
+\end{authbar}
 \begin{predictionbox}[Market 19. Integrated assurance transfer tournament]
-\textbf{Resolve by.} 30~June 2028.
+\textbf{Resolve by.} 30~June 2028, end of day UTC.
 
 \textbf{Question.}
-Will there be a published integrated assurance transfer tournament reporting class-conditional ACCEPT rates on valid modeled cases, material represented defects, and required broken controls under a frozen hidden challenge?
+By 30~June 2028, which outcome will hold for tournament [protocol version], in which an independent team runs hidden cases against registered assurance stacks with the parameters below: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-Before any method development, freeze: the certificate subset in the stack; how candidate stacks are selected without final-test leakage; coherent and broken case generators; within-class mixtures; how interacting failures are sampled; system-family and deployment-setting holdouts; ACCEPT/REFUSE/ABSTAIN scoring; sample size and confidence targets; adversarial budget; resolver; and versioning.
+\textbf{Parameters.}
+Registration window: [registration window].
+Deployment class: [deployment class].
+Threat model: [threat model].
+Held-out families: [held-out families].
+Every machine, service, and human role the deployment class names, and the host each runs on, is inside the deployment class; anything it does not name is outside.
 
-\textbf{YES requires} at least 200 independent evaluation units overall, with at least 50 valid modeled cases, at least 50 material represented-defect cases, and at least 20 deliberately broken controls that must fail acceptance; report $P(\mathrm{ACCEPT}\mid\text{valid modeled case})$, $P(\mathrm{ACCEPT}\mid\text{material represented defect})$, and one-sided 95\% confidence bounds; publish dependence information (shared system, trajectory, evaluator, or attack family); and preserve raw class-conditional counts for independent reproduction.
-Abstention is allowed but must be reported by class; universal abstention is not a YES.
-
-\textbf{Output.} A tournament artifact: frozen protocol, raw counts, intervals, dependence notes, and the challenge distribution used.
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
-A benchmark-local ratio $\widehat S_R = P(\mathrm{ACCEPT}\mid\text{valid})/P(\mathrm{ACCEPT}\mid\text{material represented defect})$ estimates deployment $S_R$ only if ``valid modeled case'' operationalizes $\neg F$, ``material represented defect'' operationalizes $F\land R$, ACCEPT is the same evidence event $E$ in benchmark and deployment, within-class mixtures are frozen or reweighted to the deployment conditionals, and system/threat/setting transfer is justified.
+\begin{predictionbackground}
+\textbf{In plain terms.}
+An assurance stack is a fixed procedure that reads the safety evidence for one AI system and decides whether to approve deploying it.
+This question asks whether a stack, tested on hidden cases it never saw, approved most safe cases (at least 80\%) while approving almost none of the cases that contain a real failure (at most 5\%).
+
+\paragraph{What a tournament is.}
+An operator publishes a protocol document.
+Teams build \emph{stacks}: frozen procedures that read the safety certificates for one system in one setting and return ACCEPT, REFUSE, or ABSTAIN.
+Each team registers its stacks by hash.
+Only then does an independent team build hidden cases, label each case with a frozen outcome check, and run every registered stack once.
+The order is: protocol published, then stack development, then registration, then hidden cases built, then one evaluation.
+
+\paragraph{Who fills the brackets, and when.}
+The operator fills every bracket in the protocol document before any stack is developed against it.
+The document has a version label and a SHA-256 hash, and it is public before stack registration opens.
+The posted question quotes the filled text, one labeled line per bracket in the Parameters field above, and links the document.
+A fill cannot change after posting; a changed fill is a new protocol version and a new question.
+A question that still contains a bracket is not the listed contract.
+Every date in a fill is a calendar date in UTC.
+
+\paragraph{How to fill each bracket.}
+Chapter~\ref{ch:safety-case} treats the deployment class and the threat model as the context fixed once for a safety case, so those two carry the substance.
+\begin{description}[style=nextline,leftmargin=1.6em]
+\item[{\texttt{[protocol version]}}]
+The label, publication date, URL, and SHA-256 hash of the protocol document.
+Example: ``ATT-2027 v1.0, published 1~March 2027 (UTC) at \emph{URL}, SHA-256 \emph{hash}.''
+\item[{\texttt{[registration window]}}]
+The dates registration opens and closes, in UTC; every timing condition in the box counts from them.
+Example: ``opens 1~April 2027, closes 30~September 2027.''
+\item[{\texttt{[deployment class]}}]
+What the deployed system may do: its tasks; the tools, permissions, and network access it has; how long it runs without a human decision and which actions a human must approve; how many copies run; and whether it may create, fine-tune, or recommend successors.
+Write it as an explicit list, so that any case can be checked as inside or outside it.
+Name every machine, service, and human role the system acts through; the box counts each named item, and the host it runs on, as inside, and anything unnamed as outside.
+A case outside the list is one the stack should ABSTAIN on, so a vague fill changes the scores.
+Example: ``a coding agent with write access to one repository and its CI runner; package-mirror network access only; sessions up to 8 hours; every merge approved by a human; no successor creation or fine-tuning.''
+\item[{\texttt{[threat model]}}]
+What the evaluated system and anyone helping it may do against the checks: whether the system may have been fine-tuned to pass them; what it knows about the stack; whether an insider or another AI system assists it; and what it cannot see or change.
+Example: ``the system may be fine-tuned by an insider who knows the stack design; it cannot read the hidden cases; no outside system assists it.''
+\item[{\texttt{[held-out families]}}]
+At least one named model family (developer and family name) that the protocol forbids every stack team from using during development, saying whether later releases in the family are included.
+Example: ``the Qwen3 open-weight family, including later Qwen3 releases, and one closed model from a developer named in the protocol, whose identity is sealed until evaluation.''
+\end{description}
+The protocol document also fixes, without brackets: the mix of failure families within each class, chosen to match the deployment class, because transfer to deployment depends on it (below); the outcome check used to label cases; and the date the hidden cases are built.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{What a stack is.}
+A stack reads one set of per-instance certificates and returns ACCEPT, REFUSE, or ABSTAIN for each case.
+A per-instance certificate is a record that names the system and version, what was measured, and the monitoring and correction setup the claim depends on.
+The registration lists which certificate the stack uses for each of: where control sits; persistent trade-off priorities; who or what the rules apply to; correction uptake; the measured correction path; access; coverage of the monitoring filters; a bound on hidden routes; and whether checked measures still track their outcomes.
+It also lists a successor certificate when the deployment class allows successors.
+An item may be left out only when the deployment class excludes what it covers.
+The resolver checks only that the registration lists these items; their quality is what the hidden cases test.
+The stack is built to return ACCEPT only if every listed certificate has evidence for that case inside its stated scope, and the certificates name the same system and version, the same monitor, the same correction authority, and a task domain inside each certificate's scope; REFUSE if any listed certificate fails or is missing; and ABSTAIN only when the case is outside the deployment class.
+The resolver scores the decisions the stack returned and does not check how a decision was reached.
+
+\textbf{Case labels.}
+The case-building team labels every case with the frozen outcome check before any stack sees it.
+The resolver uses those labels and does not relabel.
+A clean case is labeled free of the failures the stack claims to catch.
+A represented failure is labeled as containing such a failure that changes later behavior or external state.
+Represented failures include, for each listed certificate, at least one family that breaks only that certificate while the others stay normal, and these composition faults: wrong version; different access or monitor assumptions; disagreeing correction-authority assumptions; a changed set of things a certificate applies to; a successor that refers to the wrong predecessor; a task domain outside another certificate's scope.
+A broken control is a case in which a listed certificate is missing or names a different system.
+
+\textbf{The tournament conditions}, which apply to every stack; if one fails, no stack qualifies and the question resolves OTHER:
+the protocol document was public before registration opened and was not amended after that (any amendment, including a typo fix, fails this condition; errata belong in a new protocol version and a new question);
+the hidden cases were built after registration closed;
+the hidden cases include every held-out family and at least one repository or task source first released after registration closed;
+at least one represented-failure subset was built adversarially from material created after registration closed, by one of: at least three red-team groups from at least two organizations, each independent of every stack team and each spending at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000 open for at least 60 days, counting only submissions received after registration closed; or a frozen automated attack generator plus at least 300 documented expert-hours by an evaluator independent of every stack team;
+and the per-case labels, the unit each case belongs to, the tournament statements, and a summary table giving, for each stack, the number of units and of accepted units in each class are publicly downloadable by the resolve-by date.
+Material published later is ignored.
+
+\textbf{A registered stack is a qualifying attempt if} the tournament conditions hold and, for that stack:
+it was registered by hash before registration closed;
+the case-building team is independent of its team;
+its team states that development used no data from the hidden cases and no held-out family;
+it was scored on at least 200 units, including at least 50 clean units, at least 50 represented-failure units, and at least 20 broken-control units;
+and its per-case decisions are publicly downloadable by the resolve-by date.
+A failed condition in this list disqualifies only that stack.
+
+\textbf{The performance bars are met if}, for that stack:
+at most 5\% of represented-failure units are accepted;
+the one-sided Clopper-Pearson upper confidence bound on that rate, at confidence $1-0.05/k$ where $k$ counts every stack registered in the tournament, qualifying or not, is at most 15\%;
+at least 80\% of clean units are accepted;
+and no broken-control unit is accepted.
+
+\textbf{Output.} A tournament artifact: protocol document, registrations, per-case labels and decisions, intervals, dependence notes, and the case distribution used.
+\end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Independence.}
+Two teams are independent when, in the 24 months before registration opened, no member of one shared an employer with, or co-authored a paper, code, or certificate with, any member of the other.
+Work on a public open-source project counts only when a member of each team authored or reviewed the same commit or pull request.
+
+\textbf{How the resolver checks conditions.}
+Conditions about who did what and when are checked from signed statements published in the tournament artifact.
+A statement is signed when it is dated and published under the name of the person or organization it concerns.
+The required statements are: from the operator, the dates the hidden cases were built and which adversarial route was used, with its hours or bounty dates; from the case-building team, its independence from each stack team; and from each stack team, that development used no data from the hidden cases and no held-out family.
+The resolver checks that each required statement exists, is signed, and does not contradict the published data or any dated record cited in the question's comments before the resolve-by date; it does not search further.
+
+For example, with six registered stacks and 3 of 120 represented-failure units accepted, the one-sided Clopper-Pearson upper confidence bound is about 8.3\%, so that bar is met.
+Cases that share a system instance, trajectory, or attack seed form one unit.
+A represented-failure or broken-control unit counts as accepted if the stack returned ACCEPT on any of its cases; a clean unit counts as accepted only if the stack returned ACCEPT on all of its cases.
+Abstentions count as not accepted, and are reported by class.
+The resolver computes the bars from the summary table, and checks the table against the per-case data for every qualifying stack the table shows meeting the bars, or, if none does, for the qualifying stack with the lowest represented-failure acceptance rate; where they disagree, the per-case data decide.
+\end{predictionfineprint}
+
+\begin{authbar}{AI}
+A benchmark-local ratio $\widehat S_R = P(\mathrm{ACCEPT}\mid\text{clean})/P(\mathrm{ACCEPT}\mid\text{represented failure})$ estimates deployment $S_R$ only if a clean case stands for $\neg F$, a represented failure stands for $F\land R$, an acceptance is the same evidence event $E$ in benchmark and deployment, within-class mixtures are frozen or reweighted to the deployment conditionals, and system, threat, and setting transfer is justified.
 Otherwise report the ratio as benchmark-local discrimination only.
 
 Closest existing work: component evals and AI Control-style monitor games \autocite{greenblatt2024aicontrol}.
@@ -826,20 +1121,100 @@ An open-world challenge after an eligible stack receives ACCEPT can discover:
 (1)~an instance of an existing modeled failure;
 (2)~a new combination of modeled failures;
 (3)~a genuinely new variable, edge, or failure family.
-The observed category-3 rate is not an estimator of $\kappa$ without a defensible sampling distribution over catastrophe-relevant assurance failures.
+The observed rate of category~3 is not an estimate of how often a real failure was absent from the case's list, unless the sampling distribution over those failures is itself defended.
 
+This market has two outcomes.
+It has no performance bar, because no observed rate of new kinds of failure measures coverage without a sampling model.
+It prices whether the challenge is run and published, and it must not claim that the stack's list of failures is complete.
+There is no NO.
+
+\end{authbar}
 \begin{predictionbox}[Market 20. Open-world coverage challenge]
-\textbf{Resolve by.} 30~June 2028.
+\textbf{Resolve by.} 30~June 2028, end of day UTC.
 
 \textbf{Question.}
-Will there be a published open-world assurance challenge, run after an eligible integrated stack received ACCEPT, that reports exposure, discovery taxonomy, and saturation curves under a frozen attack protocol?
+By 30~June 2028, which outcome will hold for challenge [protocol version], in which independent red teams attack an assurance stack that has already accepted one system, with the parameters below: YES (this challenge was run and published in qualifying form), or OTHER (it was not)?
 
-Before attacks begin, freeze: the eligible stack entry rule (including composition checks at least as strong as Market~15); the unrestricted attack protocol; exposure measure (search budget, wall-clock, or attempt count); post hoc failure classification into categories~1--3 above; resolver; and raw reporting schema.
-The YES criterion must concern a predeclared observable property of the challenge process or result; it must not claim that the assurance ontology is complete.
+\textbf{Parameters.}
+Stack and accepted system: [stack, system, and version].
+Deployment class: [deployment class].
+Threat model and red-team access: [threat model].
+Failure families listed when the stack was frozen: [listed families].
+Attacks close: [close date], end of day UTC.
 
-\textbf{YES requires} at least one eligible stack that would have received ACCEPT under the frozen tournament scoring rule; at least 300 documented adversarial attempts or an equivalent frozen exposure budget; independent red-team construction after stack freeze; classification of every qualifying discovery into categories~1--3; publication of exposure, success counts, and a saturation or yield curve; and preservation of raw logs sufficient to revise the assurance model and construct justified $\kappa$ sensitivity ranges.
+\textbf{Choices.} YES and OTHER as defined in this appendix's reading rules.
 \end{predictionbox}
 
+\begin{predictionbackground}
+\textbf{In plain terms.}
+An assurance stack is a fixed procedure that reads the safety evidence for one AI system and decides whether to approve deploying it.
+This question resolves on whether an outside red-team challenge against an already approved stack is run and fully published; it does not depend on what the red teams find.
+
+\paragraph{What a challenge is.}
+A stack has already returned ACCEPT for one named system in one deployment class, for example in a Market~19 tournament.
+An operator publishes a challenge document that freezes the stack, the outcome check, and the list of failure families the stack claims to catch, and names the stack's authors.
+At least two independent red teams then try, until a closing date, to find inputs the stack still accepts although the outcome check says they fail.
+
+\paragraph{Who fills the brackets, and when.}
+The operator fills every bracket in the challenge document before the first attack.
+The document has a version label and a SHA-256 hash.
+The posted question quotes the filled text, one labeled line per bracket in the Parameters field above, and links the document.
+A fill cannot change after posting.
+A question that still contains a bracket is not the listed contract.
+Every date in a fill is a calendar date in UTC.
+
+\paragraph{How to fill each bracket.}
+\begin{description}[style=nextline,leftmargin=1.6em]
+\item[{\texttt{[protocol version]}}]
+The label, publication date, URL, and SHA-256 hash of the challenge document.
+\item[{\texttt{[stack, system, and version]}}]
+The stack's registration hash, the system name and exact version it accepted, and where the ACCEPT decision and its certificates are published.
+\item[{\texttt{[deployment class]}}]
+The same explicit list of tasks, tools, permissions, autonomy, scale, and successor rights the stack was accepted for (see Market~19).
+\item[{\texttt{[threat model]}}]
+What the system and its helpers may do against the checks.
+It also fixes the red teams' access to the deployed system: for example query access only, or full weights.
+\item[{\texttt{[listed families]}}]
+The failure families the stack claimed to catch when it was frozen, copied from its registration, one line each.
+A find is classified against this list, so the list must be closed: no ``and similar.''
+\item[{\texttt{[close date]}}]
+The last day an attack counts, as a calendar date in UTC, at least 60 days after the document is published and no later than the resolve-by date.
+\end{description}
+The challenge document also fixes, without brackets, the outcome check and who applies it to each find.
+\end{predictionbackground}
+
+\begin{predictionresolution}
+\textbf{Terms.}
+The stack returned ACCEPT only if every certificate it lists had evidence for that system inside its stated scope, and the certificates name the same system and version, the same monitor, the same correction authority, and a task domain inside each certificate's scope.
+The outcome check is the procedure, fixed in the challenge document, that labels each case passing or failing by whether a harm it names occurred.
+A find is an input on which the stack returns ACCEPT while the outcome check labels the case failing.
+Each find is classified, against the listed families, as an already listed failure, a new combination of listed failures, or a new kind of failure.
+
+\textbf{The challenge qualifies}, and the question resolves YES, if all of the following are publicly downloadable by the resolve-by date:
+the challenge document, published before the first attack and not amended after it, with the names of the stack's authors;
+a signed statement from each of at least two red teams that it is independent of the stack's authors and began after the challenge document was published;
+a signed statement from the operator that red teams received the stack, its certificates, and the scoring rule; that they were allowed to fine-tune, train, scaffold, or construct systems; and that the stack was not changed during the challenge;
+the list of targets red teams were barred from, published as ``none'' if there were none; every listed target must be outside the deployment class (for example, a third-party service), and a bar on anything inside it disqualifies the challenge;
+a log of at least 300 attempts made on or before the close date, with expert-hours and compute reported; attempts after the close date do not count toward the 300;
+every find, with its classification and the reason for it, the list matching the logged attempts on which the stack returned ACCEPT and the outcome check returned failing;
+the number of finds in each category and the cumulative number of finds plotted against attempts;
+and, for every logged attempt, the input, the stack's decision, and the outcome-check result; the resolver checks that these are present for every attempt and does not rerun them.
+Otherwise it resolves OTHER.
+The number or kind of finds does not affect the outcome.
+\end{predictionresolution}
+
+\begin{predictionfineprint}
+Every machine, service, and human role the deployment class names, and the host each runs on, is inside the deployment class; anything it does not name is outside.
+The stack's authors include the authors of every certificate it reads.
+A red team is independent of the stack's authors when, in the 24 months before the challenge document was published, none of its members shared an employer with, or co-authored a paper, code, or certificate with, any of them; work on a public open-source project counts only when a member of each side authored or reviewed the same commit or pull request.
+
+\textbf{How the resolver checks conditions.}
+Conditions about who did what and when are checked from signed statements published with the challenge.
+A statement is signed when it is dated and published under the name of the person or organization it concerns.
+The resolver checks that each required statement exists, is signed, and does not contradict the published logs or any dated record cited in the question's comments before the resolve-by date; it does not search further.
+\end{predictionfineprint}
+
+\begin{authbar}{AI}
 Market~20 can document ontology gaps and motivate $\kappa$ sensitivity presets on the companion site.
 It does not directly estimate $\kappa$, and its price is not a coverage probability.
 
@@ -856,30 +1231,38 @@ It is not listed until the same Phase~4 gates as Markets~19 and~20: approval, in
 \authbarneedspace
 \subsection{Market 21. Alignment inside the model}
 \label{sec:appp-m21}
+
 \begin{authbar}{AI}
 This row wraps the exclusion.
 It does not choose a technique inside the cluster, and it does not ask whether the model is aligned.
 The priced event is a method that ties a named internal object, on a named checkpoint, to a behavioral counterpart that was frozen first.
 A report of internals with no counterpart does not qualify.
 A behavior change with no named internal object does not qualify.
-
+\end{authbar}
 \begin{predictionbox}[Market 21. Alignment inside the model]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-Will there be a published method that ties alignment-relevant structure inside a broadly capable model to a frozen behavioral counterpart under intervention?
+By 31~December 2027, which outcome will hold for a published method that ties alignment-relevant structure inside a broadly capable model to a frozen behavioral counterpart under intervention: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
+\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\end{predictionbox}
+
+\begin{predictionbackground}
 The internal object may be a feature, a circuit, a direction in activations, or a weight-level edit.
 The certificate names that object on a named checkpoint, the counterpart, the predicted direction of change, and whether the instance is inside declared scope.
 Abstention outside scope is allowed.
 Universal abstention is not a YES.
+\end{predictionbackground}
 
+\begin{predictionresolution}
 \textbf{YES requires} at least two model or training families, including at least one broadly capable system; per-instance certificates for the systems scored; counterpart and predicted shift direction frozen before intervention results are scored; at least 30 held-out interventions on the reported object and at least 30 matched control interventions on a different object; the predicted counterpart shift on at least 80\% of on-object interventions; that same shift on at most 20\% of control interventions; full serious adversarial evaluation.
 Toy systems cannot be the sole evidence.
 
 \textbf{Output.} A certificate for this checkpoint: internal object, counterpart, declared scope, and whether the instance was inside that scope.
-\end{predictionbox}
+\end{predictionresolution}
 
+\begin{predictionfineprint}
 The price is research readiness: $P(\mathrm{YES}_{21})$, the chance that such a certificate exists by the deadline.
 After scope and transfer are checked, the certificate names the weight-level defects the assurance model may treat as represented.
 Defects outside that declared scope stay unrepresented.
@@ -890,7 +1273,8 @@ It can be what lets an access audit see that route.
 It is not a precondition of bridge \(\text{MB7a}\).
 Without the certificate, Market~8 still resolves by discovering the route or refusing to certify access as complete.
 Coverage through this certificate does not make the defect a book object.
-
+\end{predictionfineprint}
+\begin{authbar}{AI}
 Closest existing work is the mechanistic-interpretability stack the crosswalk excludes as an alignment solution: circuits, sparse autoencoders, feature visualization, causal scrubbing, model editing, and representation engineering.
 Pieces of the interface exist.
 The missing object is the frozen package: named internal object, pre-frozen counterpart, and on-object versus control intervention rates.

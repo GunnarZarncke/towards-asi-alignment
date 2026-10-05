@@ -60,7 +60,54 @@
   after skip=6pt
 }
 
-% Trader-facing 2027 contract (Appendix H). Title is the market question.
+% Trader-facing 2027 contract (Appendix P). Strong orange: listing front matter only.
+% Lighter mdframed boxes below group Background, Resolution criteria, and Fine print.
+% (breakable tcolorbox needs pdfcol.sty, absent on TeX Live basic.)
+\newcommand{\predictionfieldtitle}[1]{%
+  \par\noindent{\bfseries\small #1}\par\vspace{0.35em}}
+\newcommand{\predictionfieldstart}[2]{%
+  \par\smallskip
+  \begin{mdframed}[%
+    hidealllines,%
+    backgroundcolor=#1,%
+    linewidth=0.4pt,%
+    linecolor=#2,%
+    innerleftmargin=5pt,%
+    innerrightmargin=5pt,%
+    innertopmargin=4pt,%
+    innerbottommargin=4pt,%
+    skipabove=4pt,%
+    skipbelow=4pt,%
+    nobreak=false,%
+    needspace=0pt,%
+    splittopskip=0pt,%
+    splitbottomskip=0pt,%
+    leftmargin=0pt,%
+    rightmargin=0pt,%
+  ]%
+}
+\newcommand{\predictionfieldend}{%
+  \end{mdframed}%
+  \smallskip
+}
+\newenvironment{predictionbackground}{%
+  \predictionfieldstart{orange!2!white}{orange!22!black}%
+  \predictionfieldtitle{Background}%
+}{%
+  \predictionfieldend
+}
+\newenvironment{predictionresolution}{%
+  \predictionfieldstart{orange!2!white}{orange!22!black}%
+  \predictionfieldtitle{Resolution criteria}%
+}{%
+  \predictionfieldend
+}
+\newenvironment{predictionfineprint}{%
+  \predictionfieldstart{orange!1!white}{orange!18!black}%
+  \predictionfieldtitle{Fine print}%
+}{%
+  \predictionfieldend
+}
 \newtcolorbox{predictionbox}[1][]{
   colback=orange!4!white,
   colframe=orange!45!black,
@@ -72,7 +119,7 @@
   top=4pt,
   bottom=4pt,
   before skip=8pt,
-  after skip=8pt
+  after skip=4pt
 }
 
 \theoremstyle{definition}

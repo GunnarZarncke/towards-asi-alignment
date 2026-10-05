@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-05 (claim-extract rollout plan).
+Last updated: 2026-10-05 (prediction contract migration, all markets).
 
 ---
 
@@ -20,8 +20,13 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-05:** **Prediction contract migration** — Markets 1–18, 21, and common qualification now use the four-environment Metaculus layout (`predictionbox` + Background / Resolution / Fine print); authbar closes before contract blocks. Sync reads resolution from `predictionresolution`. Log: `2026-10-05-prediction-contract-migration.md`.
 - **2026-10-05:** **Claim-extract rollout plan** — Ch. 42 pilot closed; lane plan covers all chapters `ch01`–`ch48`. Plan: [`claim-extract/claim-extract.md`](../plans/claim-extract/claim-extract.md) § Rollout.
 - **2026-10-05:** **Ch. 42 claim-extract pilot** — Join figure, checker, `ch42.jsonl`; pushed `5b474be47`. Logs: `2026-10-02-claim-extract-pilot.md` through `2026-10-05-ch42-p1-pass.md`.
+- **2026-10-05:** **Metaculus question template** — Create-form fields, database lengths (title 2000, each choice 200, prose fields uncapped), and a layout that keeps one question as one contract. The box split was a TeX page-break workaround. File: `drafts/predictions/metaculus-question-template.md`.
+- **2026-10-05:** **Markets 19 and 20 admin iterations** — Three Metaculus-admin subagent rounds (scenario match 4/9 → 11/12 → 12/12); fill-guidance prose, Parameters field, independence and signed-statement rules, tournament-wide vs per-stack conditions; site converter now renders braced description labels. Open: Market 20 YES/NO vs YES/OTHER (user), admin effort above 15 min. Log: `2026-10-05-market-19-20-admin-iterations.md`.
+- **2026-10-05:** **Markets 19 and 20 templates** — Brackets cut to real degrees of freedom (deployment class, threat model, holdouts, stack); Market 19 gains catalog bars; Market 20 is YES/OTHER with a defined find. Log: `2026-10-05-market-19-20-templates.md`.
+- **2026-10-05:** **Mixed qualifying attempts** — YES if any qualifying attempt met the bars; NO only if every qualifying attempt missed them. Log: `2026-10-05-mixed-qualifying-attempts.md`.
 - **2026-10-02:** **Prediction box mechanics** — Shared Clopper-Pearson and DeLong bounds; frozen statistics instead of undefined effect sizes; Markets 13, 19, and 20 self-contained (19 and 20 are bracket templates). Log: `2026-10-02-prediction-box-mechanics.md`.
 - **2026-10-02:** **Resolution advisors** — Named resolvers and the judge panel left the manuscript and the site. They live in `drafts/predictions/resolution-advisors.md` for other platforms and later advice. Log: `2026-10-02-resolution-advisors.md`.
 - **2026-10-02:** **Predictions three-way and loopholes** — YES/NO/OTHER; Markets 4 and 6 self-contained; Market 8 per-family coverage and true-complete floor; Market 13 true-pass and successor-gaming required; leftover TeX fails prediction sync. Log: `2026-10-02-predictions-three-way-loopholes.md`.

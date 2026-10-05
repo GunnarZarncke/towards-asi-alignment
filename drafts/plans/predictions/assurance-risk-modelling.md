@@ -1,6 +1,6 @@
 # Predictions appendix and assurance-risk modelling
 
-Status: **Phase 3 implemented** (2026-09-22). Assurance manifest, draft Markets 19–20 contracts, and site sensitivity demo shipped; catalog expansion and external listing remain Phase 4. Lane: **Predictions** (appendix PRA layer, Markets 19–20, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `metadata/assurance-model.yml`, `formal/AlignmentProofSpine/Evidence.lean`.
+Status: **Phase 3 implemented** (2026-09-22), with draft **Market 21** added 2026-09-29/30 ([model-internals thread](../../conversation-summaries/archive/2026-09/2026-09-29-predictions-model-internals.md), [activation route](../../conversation-summaries/archive/2026-09/2026-09-30-activation-channel-family.md)). Assurance manifest, draft Markets 19–21 contracts, and site sensitivity demo shipped; catalog expansion and external listing remain Phase 4. Lane: **Predictions** (appendix PRA layer, draft Markets 19–21, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `metadata/assurance-model.yml`, `formal/AlignmentProofSpine/Evidence.lean`.
 
 **Source freeze (Phase 0, before this implementation):** HEAD `2543ddbd`; appendix + YAML last at `1ebf999e` (2026-09-22 App H polish); `Evidence.lean` last at `6c46f4bb` (2026-09-19 v1 adapters). Locked prediction-interface decisions unchanged: no `AlignmentContext`, no market outcomes in Lean, extra predicate indices deferred. PRA derivation in manuscript; interactive user-parameter model remains site-later (Phase 3).
 
@@ -26,7 +26,7 @@ Target architecture:
 - make the markets resolve on publicly reconstructible technical evidence, not on outside authors adopting TSA terminology or certificate formats;
 - include the assurance-failure model and its core derivations in the manuscript so the predictions have a coherent context;
 - put interactive user-supplied parameters, scenario comparison, and richer consequence modelling in a site-only demo;
-- complete resolvable contracts for Market 19 (integrated transfer tournament) and Market 20 (open-world coverage challenge) in Phase 3, and integrate their empirical outputs into the site model without treating their market prices as risk parameters.
+- complete resolvable contracts for Market 19 (integrated transfer tournament), Market 20 (open-world coverage challenge), and Market 21 (alignment inside the model — an **outside-book** exclusion wrapper) in Phase 3, and integrate their empirical outputs into the site model without treating their market prices as risk parameters.
 
 An absolute \(P_{\rm doom}\) may be shown downstream in that demo as an assumption-dependent sensitivity output. It should not be presented as a validated project estimate.
 
@@ -36,8 +36,9 @@ An absolute \(P_{\rm doom}\) may be shown downstream in that demo as an assumpti
 
 - The `appP` source and `metadata/predictions.yml` define **18** markets.
 - The IDs `market-01` through `market-18` already drive generated cards and stable site routes.
-- The appendix is the public YES/NO spec. The YAML is the catalog source. Site content is generated from them.
-- A YES means that a qualifying method or governance artifact met frozen bars by the resolve-by date.
+- The appendix is the public YES/NO/OTHER spec. The YAML is the catalog source. Site content is generated from them.
+- A YES means that a qualifying attempt met frozen performance bars by the resolve-by date.
+- A NO means a qualifying attempt existed and missed those bars. OTHER means no qualifying attempt.
 - A YES does not discharge an `MB*`, establish a predicate for a frontier deployment, or estimate a PRA basic-event probability.
 - Market 13 is currently the frozen-audit / MB10-neighborhood contract.
 - Market 14 is governance binding / constructibility, not MB11.
@@ -165,9 +166,11 @@ Market 1 already asks for a sufficient interventional control cut and explicitly
 
 In the risk model, represent uncertainty that the certificates concern the relevant effective controller. Add a Lean relation only if a later theorem needs it, and scope it to system version and deployment setting.
 
-### 3.8 Add Markets 19 and 20 through complete resolution protocols
+### 3.8 Add draft Markets 19, 20, and 21 through complete resolution protocols
 
-The integrated transfer tournament and open-world coverage challenge are needed because they produce cross-cutting evidence that the component markets do not. Develop them as Market 19 and Market 20 in Phase 3. Before either contract is added to the catalog, specify:
+Markets 19 and 20 produce cross-cutting assurance evidence that the eighteen component markets do not. Market 21 wraps the book's exclusion of model internals (circuits, features, activation directions, weight-level edits) in one outside-book contract so research readiness and certificates for that cluster have a forecast and assurance interface without renumbering the catalog or treating internals as book objects.
+
+Develop all three as draft appendix rows in Phase 3. Before any of them is added to the YAML catalog, specify:
 
 - a market question and resolve-by date;
 - a precise eligible artifact;
@@ -182,8 +185,9 @@ Their **resolved experimental outputs**, not their prediction-market prices or b
 
 - Market 19 can estimate benchmark-local \(P(\mathrm{ACCEPT}\mid\neg F)\), \(P(\mathrm{ACCEPT}\mid F,R)\), their uncertainty, and therefore a candidate \(S_R\) under the transfer conditions in Section 6.2.
 - Market 20 can report open-world attack exposure, success counts, discovered failure families, category-3 discoveries, and saturation curves. These results can inform sensitivity ranges or a separately specified Bayesian prior over \(\kappa\), but they do not directly estimate \(\kappa\).
+- Market 21 prices research readiness \(P(\mathrm{YES}_{21})\) for a frozen internal-object / behavioral-counterpart / intervention package. Its **certificate**, after scope and transfer checks, names weight-level defects that may leave \(U\); the price is not \(\kappa\), not favorable evidence \(E\), and not \(S_U\). Do not treat a Market 21 YES as coverage on Markets 8, 9, or 13, and do not add those four prices as independent forecast bits.
 
-The demo must remain usable before either market resolves by accepting transparent user-supplied ranges. Once qualifying results exist, it may offer those results as versioned, scoped presets with provenance and confidence intervals.
+The demo must remain usable before any draft market resolves by accepting transparent user-supplied ranges. Once qualifying results exist, it may offer those results as versioned, scoped presets with provenance and confidence intervals.
 
 ### 3.9 The \(\kappa\)-Bayes-factor equation targets assurance failure, not doom
 
@@ -230,9 +234,9 @@ The product also assumes a joint distribution that is not supplied by marginal m
 The appendix should retain:
 
 - the interpretation and common rules;
-- the 18 stable contracts, followed by Markets 19--20 only after their contracts pass the Phase 3 design and Phase 4 approval gates;
+- the 18 stable contracts, followed by draft Markets 19--21 only after their contracts pass the Phase 3 design and Phase 4 approval gates;
 - the market-to-book / bridge-neighborhood map;
-- the distinction between YES/NO market outcomes and per-instance method outputs.
+- the distinction between YES/NO/OTHER market outcomes and per-instance method outputs.
 
 The predictions should still come first. They should then be placed in a substantive but compact PRA/Bayesian assurance context in the same manuscript artifact. Predictions alone are too disconnected; the current product-of-prices context is the part to remove.
 
@@ -271,7 +275,7 @@ The companion site should hold the user-supplied parameters, ranges, multi-lab a
 
 Start with a small event tree. Add a Bayesian network only when a causal or evidential dependency has a stated justification. Add a fault-tree view only for a Boolean submodel that genuinely has fault-tree semantics.
 
-Use Market 19's resolving measurements as the intended empirical source for a scoped \(S_R\) preset when the benchmark-to-deployment transfer conditions hold. Use Market 20's resolving measurements to document discovered ontology gaps and motivate \(\kappa\) sensitivity ranges; do not convert its raw category-3 frequency into \(\kappa\) without an explicit sampling model. Market prices and YES/NO outcomes never populate these parameters.
+Use Market 19's resolving measurements as the intended empirical source for a scoped \(S_R\) preset when the benchmark-to-deployment transfer conditions hold. Use Market 20's resolving measurements to document discovered ontology gaps and motivate \(\kappa\) sensitivity ranges; do not convert its raw category-3 frequency into \(\kappa\) without an explicit sampling model. A Market 21 certificate may narrow which weight-level defects stay in \(U\) inside its declared scope; its price never enters the odds update. Market prices and YES/NO outcomes never populate these parameters.
 
 It should not announce “the TSA doom probability.”
 
@@ -299,12 +303,13 @@ The first manifest pass should preserve these non-obvious mappings:
 - Market 13 is the MB10 forgeability neighborhood.
 - Market 14 maps to governance / `AlignmentRegime` and `DeploymentOk`, outside `BridgeAssumptions`.
 - Market 18 maps only to scoped harm evidence / the `SafeIn` neighborhood, not live `Safe` or a discharge of MB11.
+- Market 21 (`m21`) is an outside-book exclusion wrapper: evidential link to \(\kappa\) sensitivity only through a qualifying certificate's declared scope, not through \(P(\mathrm{YES}_{21})\). Dependence with Markets 8, 9, and 13 is explicit in the manifest.
 
 ## 5. Market-output audit
 
 First separate three levels that must not be conflated:
 
-1. **Market outcome:** YES or NO by the deadline.
+1. **Market outcome:** YES, NO, or OTHER by the deadline.
 2. **Method output on one instance:** certificate, refusal, abstention, score, or bound.
 3. **Truth/evaluation label:** privileged benchmark judgment about the claimed property.
 
@@ -466,15 +471,15 @@ Do not weaken:
 - held-out transfer;
 - explicit scope.
 
-#### Three evidence tiers, one binary market
+#### Three evidence tiers, three-way market
 
-Track three statuses even though the market remains YES/NO:
+Track three evidence tiers and a separate three-way outcome:
 
 - **Tier A — method exists:** a public method satisfies the core technical property.
 - **Tier B — quantitatively validated:** evidence estimates the relevant likelihood ratio, bound, calibration, or conditional failure rate.
 - **Tier C — adversarially validated:** the method survives the prescribed independent adversarial challenge.
 
-Each market must state which tier its YES predicts. Tier B may be appropriate for many 2027 markets; Tier C may be too funding-dependent unless a credible challenge route exists. Markets 1, 5, 8, and 13 should retain a meaningful adversarial component because false assurance there is especially dangerous. Market 13 and the integrated tournament remain stronger cross-cutting checks rather than excuses to remove all local adversarial tests.
+Each market must state which tier its YES predicts. Tier B may be appropriate for many 2027 markets; Tier C may be too funding-dependent unless a credible challenge route exists. Markets 1, 5, 8, and 13 should retain a meaningful adversarial component because false assurance there is especially dangerous. Market 8 requires per-family coverage, complete-interface negative controls, and a true-complete floor (universal refusal is not YES). Market 13 requires a true-pass floor and the successor-gaming family. Market 13 and the integrated tournament remain stronger cross-cutting checks rather than excuses to remove all local adversarial tests.
 
 #### Define adversarial effort by capability and independence
 
@@ -518,9 +523,10 @@ Extend `metadata/predictions.yml` market status beyond the current generic `open
 - `ready-to-list`;
 - `listed`;
 - `resolved-yes`;
-- `resolved-no`.
+- `resolved-no`;
+- `resolved-other`.
 
-Keep market resolution binary. Separately record a reason code such as substantive bar failed, no qualifying artifact, reporting insufficient, adversarial validation absent, evidence incompatible, or unresolved judgment. This prevents a NO caused by missing incentives from being misread as technical refutation.
+Resolution is three-way. YES: a qualifying attempt met the performance bars. NO: a qualifying attempt missed them. OTHER: no qualifying attempt. Separately record a reason code such as substantive bar failed, no qualifying artifact, reporting insufficient, adversarial validation absent, evidence incompatible, or unresolved judgment. Do not use a platform refund or “ambiguous” resolution: that throws away the YES:NO price. Unresolved residual judgment is OTHER, not NO.
 
 ## 6. PRA/Bayesian assurance model
 
@@ -720,7 +726,7 @@ An open-world red-team challenge can discover:
 
 That taxonomy is useful. The observed category-3 rate is **not** an estimator of \(\kappa\) without a defensible sampling distribution over catastrophe-relevant assurance failures. Report discovered families, exposure, search budget, and saturation curves without claiming model completeness.
 
-Specify Market 20 as a resolvable contract around a frozen open-world attack protocol following an eligible stack `ACCEPT`. Its YES criterion must concern a predeclared observable property of the challenge process or result; it must not claim that the assurance ontology is complete. Preserve all raw outputs needed to revise the assurance model and construct justified \(\kappa\) sensitivity presets.
+**Shipped 2026-10-05:** Market 20 is a two-outcome existence market (YES = qualifying challenge published, OTHER = none; no NO). A *find* is an input the stack ACCEPTs while the frozen outcome check labels it failing. Open brackets: stack/system/version, deployment class, threat model, failure families listed at stack freeze, close date. Canon: `sec:appp-m20`.
 
 ## 8. Market 19: integrated transfer tournament
 
@@ -740,19 +746,7 @@ Required freeze discipline:
 
 “One evaluation” must still contain enough independent units to estimate false acceptance and useful acceptance with predeclared uncertainty.
 
-Before this becomes a market, specify:
-
-- the subset of certificates in the stack;
-- how candidate stacks are selected without final-test leakage;
-- the coherent and broken case generators;
-- within-class mixtures;
-- how multiple interacting failures are sampled;
-- system-family and deployment-setting holdouts;
-- ACCEPT/REFUSE/ABSTAIN scoring;
-- sample size and confidence bars;
-- adversarial budget;
-- resolver, deadline, and versioning;
-- what a positive result does and does not transfer to.
+**Shipped 2026-10-05:** certificate list (Ch. 42 join / `CoherentCertificateBundle`), registration-by-hash selection, case families (one-leaf breaks + Market 15 composition faults), ACCEPT/REFUSE/ABSTAIN rule, adversarial budget, and performance bars (point false-accept ≤5%, stack-adjusted 95% upper bound ≤15%, clean accept ≥80%, no broken control accepted) are fixed in the box. Open brackets: protocol version, deployment class, threat model, held-out families. Canon: `sec:appp-m19`.
 
 Report the false-acceptance rate directly. A transfer likelihood ratio is useful only with the \(F,R,E\) mapping and frozen within-class distributions in Section 6.2.
 
@@ -760,7 +754,28 @@ Specify Market 19 as a resolvable contract whose qualifying artifact includes ra
 
 Keep this protocol separate from Market 13. Market 13 tests whether a frozen audit can be optimized around; the tournament tests end-to-end stack transfer.
 
-## 9. Importance and prioritization
+## 9. Market 21: alignment inside the model (outside book)
+
+The eighteen catalog rows follow the book's exclusion of model internals as alignment solutions. Alignment work inside models is still real effort that affects research readiness and can change what the assurance model treats as represented versus unrepresented.
+
+Market 21 is a **single exclusion wrapper**, not a book object and not an MB* discharge:
+
+- **Priced event:** \(P(\mathrm{YES}_{21})\) — a published method ties a named internal object (feature, circuit, activation direction, or weight-level edit) on a named checkpoint to a frozen behavioral counterpart under intervention, with pre-frozen on-object versus control intervention rates.
+- **Assurance interface:** the resolved certificate names weight-level defects that may leave \(U\) inside its declared scope; defects outside that scope stay unrepresented.
+- **What it is not:** the price is not \(\kappa\), not favorable evidence \(E\), and not \(S_U\). A YES does not make internals a book object, does not discharge Markets 8, 9, or 13, and is not a precondition of bridge MB7a.
+
+Two paths for excluded internals (do not double-count):
+
+1. **Legible evidence** — qualifying certificate → may narrow \(U\) / inform \(\kappa\) sensitivity inside scope after transfer checks.
+2. **Reliable prevention** — moves catastrophe odds through \(P(D\mid F)\) and deployment or control-defeat parameters, not through the same bit as the certificate route.
+
+**Dependence:** Markets 8, 9, and 13 remain the book's channels. Market 21 wraps weight-level defects they do not cover. A qualifying certificate can be one instrument for the Market 8 internal-computation route (activations inside the boundary that steer without reaching logs, tools, or emitted text); Market 8 still resolves by discovering the route or refusing to certify access as complete.
+
+Same Phase 4 listing gates as Markets 19–20: approval, independent evaluators, and a funded resolution route. Resolve-by 31 December 2027.
+
+**Shipped (2026-09-29/30):** appendix prediction box (`sec:appp-m21`), node `m21` and dependence warning in `metadata/assurance-model.yml`, aggregation hub blurb in `metadata/predictions.yml`, assurance-demo note. Stable ID `market-21` and generated card remain Phase 4.
+
+## 10. Importance and prioritization
 
 Risk-reduction worth, risk-achievement worth, minimal cut sets, and dominant paths are downstream analyses, not starting assumptions.
 
@@ -774,18 +789,18 @@ Use them only after:
 
 Do not rank research programs from a fragile point estimate. Report where rankings change.
 
-## 10. Non-goals for the first pass
+## 11. Non-goals for the first pass
 
 - Do not add a market for unrestricted `Safe`.
 - Do not add a market for what residual risk society should accept.
 - Do not fold target realization or construction into Market 14.
 - Do not revive retired MB8.
 - Do not turn logical induction into one of these ordinary prediction contracts.
-- Do not list Markets 19--20 or assign them stable public contracts until their resolution protocols are complete and the catalog expansion is approved.
+- Do not list Markets 19--21 or assign them stable public catalog rows until their resolution protocols are complete and the catalog expansion is approved.
 - Do not list a funding-gated market merely to obtain a price when the required adversarial evidence has no credible funded route.
 - Do not build the interactive demo before the event model and aggregation replacement are accepted.
 
-## 11. Implementation sequence
+## 12. Implementation sequence
 
 ### Phase 0 — freeze scope and sources
 
@@ -848,16 +863,19 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [x] Add multi-lab or repeated-attempt aggregation only after dependence is specified.
 - [x] Keep \(\kappa=P(R\mid F)\) as a sensitivity input until a defensible estimator exists.
 - [x] Put user-supplied consequence parameters and interactive plots on the site, not in the prediction boxes.
-- [x] Make the demo work with user-supplied ranges before Markets 19--20 resolve.
-- [ ] Add versioned Market 19 and Market 20 result presets only from qualifying resolved artifacts, with scope, provenance, uncertainty, and transfer caveats.
-- [x] Never use either market's price or binary outcome as a numerical PRA/Bayesian parameter.
+- [x] Make the demo work with user-supplied ranges before Markets 19--21 resolve.
+- [ ] Add versioned Market 19, Market 20, and Market 21 result presets only from qualifying resolved artifacts, with scope, provenance, uncertainty, and transfer caveats.
+- [x] Never use any draft market's price or binary outcome as a numerical PRA/Bayesian parameter.
+- [x] Complete the Market 21 exclusion-wrapper contract (outside book): internal object, frozen counterpart, intervention package, scope, and resolve-by.
+- [x] State that \(P(\mathrm{YES}_{21})\) does not enter the odds update; only a qualifying certificate may narrow \(U\) inside declared scope.
+- [x] Record Market 21 dependence with Markets 8, 9, and 13 in the assurance manifest; do not count four independent forecast bits.
 
-### Phase 4 — pilot, fund, and list Markets 19--20
+### Phase 4 — pilot, fund, and list Markets 19--21
 
-- [ ] Pilot both protocols on non-frontier systems before freezing final resolution bars.
+- [ ] Pilot Markets 19–20 protocols on non-frontier systems before freezing final resolution bars.
 - [ ] Revise the contracts only through explicit versioning based on pilot findings.
 - [ ] Secure independent evaluators and the required challenge funding.
-- [ ] Approve the catalog expansion, assign stable IDs `market-19` and `market-20`, and list only after the funding and resolution gates pass.
+- [ ] Approve the catalog expansion, assign stable IDs `market-19`, `market-20`, and `market-21`, and list only after the funding and resolution gates pass.
 
 ### Phase 5 — optional formal follow-through
 
@@ -869,7 +887,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] Machine-check the node-to-certificate-to-predicate projection for identifier and signature drift.
 - [ ] Run `./formal/check.sh`, inspect `#print axioms` for changed headline theorems, and review the axiom-budget diff before accepting any formal mapping change.
 
-## 12. Verification checklist for a later implementation
+## 13. Verification checklist for a later implementation
 
 - [ ] No market price is used as a deployment failure probability.
 - [x] No product of marginal market prices is called a bound on catastrophe.
@@ -899,20 +917,24 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] The consequence model is separate and does not double-count \(\kappa\).
 - [ ] The risk demo reports assumptions and sensitivity more prominently than a point estimate.
 - [ ] Appendix, YAML, generated cards, site copy, and any diagram agree.
-- [ ] Prediction sync emits no appendix/YAML question mismatch warning and regenerates one card per approved catalog market plus the overview and external-factor cards (18 before, 20 after the approved expansion).
+- [ ] Market 21 price is not \(\kappa\), \(E\), or an independent bit alongside Markets 8, 9, and 13.
+- [ ] Market 21 certificate scope is stated before any claim that weight-level defects left \(U\).
+- [ ] Prediction sync emits no appendix/YAML question mismatch warning and regenerates one card per approved catalog market plus the overview and external-factor cards (18 before, 21 after the approved expansion).
 - [x] The site no longer advertises “Optimistic \(P(\mathrm{doom})\) composition” after the aggregation is replaced.
 - [ ] `make check`, the site build, and `make lean` pass after their respective files are eventually changed.
 
-## 13. Intended final message
+## 14. Intended final message
 
 The public message should be:
 
-> The 18 predictions are dated research targets for publicly reconstructible assurance evidence, not adoption of TSA's terminology or artifact format. Lean checks selected logical consequences if typed predicates and bridges hold. PRA and Bayesian updating place those instruments in a coherent assurance-failure model; a separate consequence model connects assurance failure to catastrophe under explicit assumptions. None of these layers substitutes for the others, and no product of market prices is a safety estimate.
+> The 18 predictions are dated research targets for publicly reconstructible assurance evidence, not adoption of TSA's terminology or artifact format. Draft Markets 19–21 extend cross-cutting assurance and the excluded-internals cluster without renumbering the catalog. Lean checks selected logical consequences if typed predicates and bridges hold. PRA and Bayesian updating place those instruments in a coherent assurance-failure model; a separate consequence model connects assurance failure to catastrophe under explicit assumptions. None of these layers substitutes for the others, and no product of market prices is a safety estimate.
 
 ## Related
 
 - [`prediction-interface.md`](prediction-interface.md) — P0c locked decisions; appendix + site + Lean adapters (shipped)
 - [`bridge-prediction-markets.md`](bridge-prediction-markets.md) — 18-market instrument plan and MB\* map
+- [`../../conversation-summaries/archive/2026-09/2026-09-29-predictions-model-internals.md`](../../conversation-summaries/archive/2026-09/2026-09-29-predictions-model-internals.md) — Market 21 exclusion wrapper (2026-09-29)
+- [`../../conversation-summaries/archive/2026-09/2026-09-30-activation-channel-family.md`](../../conversation-summaries/archive/2026-09/2026-09-30-activation-channel-family.md) — MB7a activation route and Market 8/21 linkage (2026-09-30)
 - [`../spine/spine.md`](../spine/spine.md) — Lean spine; certificate layer
 - [`predictions-improvements-v0.md`](../../attic/predictions-improvements-v0.md) — earlier long draft (archive)
 - [`predictions-improvements-incentives.md`](../../attic/predictions-improvements-incentives.md) — resolution incentives notes (incorporated here)

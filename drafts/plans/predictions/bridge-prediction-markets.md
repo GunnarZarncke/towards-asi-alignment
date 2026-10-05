@@ -2,7 +2,7 @@
 
 Status: **P0c** (2026-09-19) on top of P0 + P0b (2026-09-18). Working criteria: [`../../predictions/bridge-prediction-market-criteria.md`](../../predictions/bridge-prediction-market-criteria.md) (`0.4-working`). Integration checklist: [`prediction-interface.md`](prediction-interface.md). Historical source: [`../../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](../../predictions/AI_Alignment_Prediction_Market_Resolution_Criteria.docx) (python-docx export; **no comments or tracked changes**). Lane: Field mapping + Outreach listing. Certificate-layer Lean is Spine. **Appendix + site hub authorized**; still no sixth intro claim.
 
-The catalog is **18 binary** markets resolving by **31 December 2027** (source §§1–14 plus §15 composition, §16 correction-supporting basin, §17 bearer admission, §18 scoped safety-case bound). It is a *contract layer* on the live bridges, not a new ontology. Refuse maps to NO. Prices forecast artifact existence; they are not multiplied into \(P_{\rm doom}\). A vector of YESes is still not a joint safety case.
+The catalog is **18 three-way** markets resolving by **31 December 2027** (source §§1–14 plus §15 composition, §16 correction-supporting basin, §17 bearer admission, §18 scoped safety-case bound), plus draft Markets 19–21. It is a *contract layer* on the live bridges, not a new ontology. Prices forecast artifact existence; they are not multiplied into \(P_{\rm doom}\). A vector of YESes is still not a joint safety case.
 
 ## Goal
 
@@ -10,11 +10,11 @@ Own the proposal as a project instrument:
 
 1. Freeze a **market ↔ `MB*`** map (including splits the proposal flattens).
 2. Amend the criteria where they would mis-resolve a typed cut, bake a δ into a definition, or treat YES as bridge discharge.
-3. List the markets only after those amendments, with a named resolver. Outcomes are YES/NO only.
+3. List the markets only after those amendments, with a named resolver. Outcomes are YES, NO, or OTHER.
 
-**Success (instrument, not alignment):** a public catalog of frozen **YES/NO** contracts whose resolution cannot be honestly read as “Lean proved / disproved `MB*`,” that can still aggregate, and whose MB6 row tests a **signed** correction-selection gradient rather than unsigned basin existence.
+**Success (instrument, not alignment):** a public catalog of frozen **YES/NO/OTHER** contracts whose resolution cannot be honestly read as “Lean proved / disproved `MB*`,” that can still aggregate, and whose MB6 row tests a **signed** correction-selection gradient rather than unsigned basin existence.
 
-**Weakest link:** calendar default-NO is now even lumpier (refuse → NO). Most of these are open research programs. A 2027 NO is weakly informative unless titles say *met these bars*, not *the bridge is false*. The lump is accepted so a crowd can price P(YES).
+**Weakest link:** OTHER (nobody tried) is the expected 2027 default for most rows. The YES:NO ratio remains the attempt-success price. Titles still say *met these bars*, not *the bridge is false*.
 
 ## Non-goals
 
@@ -70,7 +70,7 @@ The source 14 sections track the live roster (MB8 gravestone correctly omitted).
 These were the obvious contract edits. Detail in the working criteria, not as silent interpretation of the docx.
 
 1. **Claim-strength header** on every market. YES = met *these bars* by 2027.
-2. **Refuse → NO.** No third market outcome. Inapplicable / no eval / desk disagreement / failed CI → NO. Experiments keep refuse internally.
+2. **Refuse → NO.** Superseded by three-way YES/NO/OTHER. A missed performance bar is NO. No qualifying attempt, or an unsettled load-bearing call, is OTHER. Experiments keep refuse internally.
 3. **Threshold freeze.** New version string if a bar changes; numbers stay contract-only (not `RiskGap`).
 4. **§6 → seven properties.** Map the source six onto ch31; add control-locus continuity; one-failure-at-a-time is six-of-seven.
 5. **§10 / §14 typing.** §10 = MB7c composition. §14 = governance-binding, not MB11. (P0c: §18 is a *scoped* safety-case market targeting planned `SafeIn`, not this row and not unrestricted `Safe`.)
@@ -81,7 +81,7 @@ These were the obvious contract edits. Detail in the working criteria, not as si
 10. **Predict-O-Matic + toy/repo** clauses.
 11. **Not-a-joint-certificate banner.** Conditionals later if listing happens; do not delay P2 for parlays.
 12. **§7 MB6 = \(g_{\mathrm{CCI}}\)** (2026-09-18 later). Unsigned-basin §7a **retracted**. Formal object change is Spine; 2027 market is the estimator/prediction slice only.
-13. **Judgment stack** (precision → publication freeze → two-person desk memo → §3 panel only → conservative NO). No lone expert judge.
+13. **Judgment stack** (historical). Desk and panel withdrawn 2026-10-02. Live rule: glossary, then the publication's freeze, then OTHER. Proposed names live only in `drafts/predictions/resolution-advisors.md`.
 
 Docx has **no** in-file proposed changes (no comments, no track-changes). `0.2-working` *was* the P0 amendment layer; live working file is `0.4-working`.
 
@@ -170,15 +170,13 @@ Public card body should follow the Lean rewrite, not the other way around.
 
 ## Judgment calls
 
-Recommended instrument is the **stack**, not a single choice:
+The published contracts use this stack:
 
 1. **Make precise** first (shared glossary: broadly capable, independently constructed, consequential, …).
 2. **Defer to the publication’s freeze** only for *that paper’s* internal splits that we then score against *our* bars — never for whether they passed.
-3. **Named desk** (author + one independent, public memo, objection window) for residual calls. Two-way disagreement → **NO**.
-4. **5-judge panel** only where the criterion already needs intersubjective ground truth (source §3).
-5. **NO** rather than a third outcome or a heroic YES.
+3. **OTHER** when steps 1–2 leave a load-bearing call unsettled. **NO** only when a qualifying attempt missed the performance bars. Do not refund or annul.
 
-Rejected: lone expert judge (single captured handle). Rejected: standing 5-panel on every market (slow; panel-capture).
+The host platform adjudicates. Markets 3 and 17 score only cases with mechanical ground truth. Names and the desk/panel protocols for venues that require an external judge are in [`drafts/predictions/resolution-advisors.md`](../../predictions/resolution-advisors.md). That file is not linked from the manuscript or the site.
 
 ## Phasing (does not move existing gates)
 
@@ -191,7 +189,7 @@ Rejected: lone expert judge (single captured handle). Rejected: standing 5-panel
 | **P1** | YAML catalog: id, §, `MB*` keys, `resolvesMB: false` | Q1 if listing |
 | **P2** | Working criteria is the P2 draft; freeze a dated string at listing | Q1 |
 | **P3** | Platform + listing (Manifold / Metaculus / both). Subsidy, version strings | Q6; P2 frozen |
-| **P4** | Name the two-person desk at listing; freeze date; optional field-hub links (no recency badges, no green cells) | Q1 |
+| **P4** | List on the host platform; the platform adjudicates. Do not name a project desk. Optional field-hub links (no recency badges, no green cells) | Q1 |
 | **Spine (adapters)** | `Evidence.lean` | **done** 2026-09-19 ([`spine.md`](../spine/spine.md)) |
 
 Backtest, Construct, and Spine gates are unchanged. A listed market is not Expectation 4.
@@ -200,9 +198,9 @@ Backtest, Construct, and Spine gates are unchanged. A listed market is not Expec
 
 Decided: Q3 banner not parlays; Q4 seven properties; Q5 §14 governance-only (not MB11); **§18** is the scoped safety-case market (`SafeIn`, not `Safe`); Q7 judgment stack (not lone judge); **refuse→NO**; **MB6a = §7 slice, MB6b = §16**; no unsigned-basin market; **Q8** = predictions appendix (optional App B pointer).
 
-1. **Q1 — Instrument vs research program.** **Decided:** author owns contract design and will list on Metaculus (needed to keep specs consistent). External resolvers adjudicate; author is custodian only.
+1. **Q1 — Instrument vs research program.** **Decided:** author owns contract design and will list on Metaculus (needed to keep specs consistent). The host platform adjudicates. Proposed advisors stay in `drafts/predictions/resolution-advisors.md`, off the manuscript and the site.
 2. **Q2 — 2027 default-NO.** **Decided:** keep catalog titles; `marketQuestion` lead uses “Published method for…” (or equivalent for non-method rows) so NO is not read as “bridge false.” Resolve-by date lives in `resolveBy`, not in the title or question lead; thresholds stay in the appendix spec only.
-3. **Q6 — Platform.** Metaculus first; Manifold optional later with same external-resolver language.
+3. **Q6 — Platform.** Metaculus first; Manifold optional later with the same contract text. The platform adjudicates.
 4. **Q8 — Modeling absorb.** **Decided P0c:** appendix is the absorb surface; App B at most a `\ref` to it.
 
 **Early resolve-by (13, 14):** `2027-06-30` in `metadata/predictions.yml` — documentary (#14) and audit-game (#13) rows can close on public evidence before the main 2027-12-31 cohort.

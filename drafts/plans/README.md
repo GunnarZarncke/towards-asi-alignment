@@ -10,7 +10,7 @@ Checklists for cross-cutting work lanes. **`metadata/TODO.md`** is the canonical
 | **Field** | [`field/field.md`](field/field.md) | Field-matrix homographs and crux divergence; grant plan [`field/alignment-crux-map.md`](field/alignment-crux-map.md) (funding-gated) |
 | **Spine** | [`spine/spine.md`](spine/spine.md) | Lean ↔ manuscript alignment; reader contract [`spine/bridge-first-use.md`](spine/bridge-first-use.md) (implemented 2026-09-01, kept as reference) |
 | **Construct** | [`construct/construct.md`](construct/construct.md) | Constructibility / 2.0 families; [`construct/embedded-v2.md`](construct/embedded-v2.md) |
-| **Claim-extract** | [`claim-extract/claim-extract.md`](claim-extract/claim-extract.md) | Sentence-level formal extracts of chapters (`metadata/claim-extracts/`); pilot: fix Ch. 42 first |
+| **Claim-extract** | [`claim-extract/claim-extract.md`](claim-extract/claim-extract.md) | Sentence-level formal extracts of all chapters (`metadata/claim-extracts/`); Ch. 42 pilot shipped; rollout open |
 | **Predictions** | [`predictions/bridge-prediction-markets.md`](predictions/bridge-prediction-markets.md) · [`predictions/prediction-interface.md`](predictions/prediction-interface.md) · [`predictions/assurance-risk-modelling.md`](predictions/assurance-risk-modelling.md) | 2027 bridge markets; P0c interface (shipped); PRA layer, Markets 19–20 (Phase 4 open) |
 
 ## Root-level notes (not lanes)

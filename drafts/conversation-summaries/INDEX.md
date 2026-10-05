@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-05 | **Prediction contract migration (all markets)** — Four-environment Metaculus layout applied to Markets 1–18, 21, and common rules; sync reads `predictionresolution`. | [2026-10-05-prediction-contract-migration.md](2026-10-05-prediction-contract-migration.md) |
+| 2026-10-05 | **Mixed qualifying attempts resolve YES** — Contracts should resolve YES when several qualifying attempts exist and at least one met the froz... | [2026-10-05-mixed-qualifying-attempts.md](2026-10-05-mixed-qualifying-attempts.md) |
+| 2026-10-05 | **Markets 19 and 20: real degrees of freedom** — Review the bracket templates in Markets 19 and 20 against the relevant chapters; keep only bracke... | [2026-10-05-market-19-20-templates.md](2026-10-05-market-19-20-templates.md) |
+| 2026-10-05 | **2026-10-05-market-19-20-admin-iterations** — The user asked for more prose and structure outside the questions on what the placeholders are an... | [2026-10-05-market-19-20-admin-iterations.md](2026-10-05-market-19-20-admin-iterations.md) |
 | 2026-10-05 | **Markdown link CI** — `make check` on `5b474be47` failed: markdown links, 4 broken relative links. Local check passed. | [2026-10-05-markdown-links-ci.md](2026-10-05-markdown-links-ci.md) |
 | 2026-10-05 | **Ch. 42 P1 prose pass** — Fix remaining "layers" sentences, implement the claim-extract P1 plan, update `ch42.jsonl`. | [2026-10-05-ch42-p1-pass.md](2026-10-05-ch42-p1-pass.md) |
 | 2026-10-04 | **Ch. 42 join figure in chapter** — Add the reviewed safety-case join Graphviz figure to Chapter 42. | [2026-10-04-ch42-join-figure.md](2026-10-04-ch42-join-figure.md) |
@@ -18,13 +22,10 @@
 | 2026-09-30 | **Author review of LW wiki quote lead-ins** — User reviewed all `\wikiq` citation sites and adapted lead-in sentences; end-of-session commit. | [2026-09-30-wikiq-citation-review.md](2026-09-30-wikiq-citation-review.md) |
 | 2026-09-30 | **Wiki quotes: authbar split, site render, PDF** — Follow-up on applied LW wiki quotes: authbars must not cover `\wikiq`; remove redundant wiki attr... | [2026-09-30-wikiq-authbar-site.md](2026-09-30-wikiq-authbar-site.md) |
 | 2026-09-30 | **Site notes second batch** — Implement site-notes batch two: consolidate field tiles, notes panel save placement, card preview... | [2026-09-30-site-notes-second-batch.md](2026-09-30-site-notes-second-batch.md) |
-| 2026-09-30 | **Site notes: ch01, serious, cards hub** — Implement the first three items of the site-notes plan: simpler Chapter 1 opening, book-wide `ser... | [2026-09-30-site-notes-first-three.md](2026-09-30-site-notes-first-three.md) |
-| 2026-09-30 | **Session summary script** — User asked for a script to recap user vs agent actions from recorded session logs; then useful de... | [2026-09-30-session-summary-script.md](2026-09-30-session-summary-script.md) |
-| 2026-09-30 | **Apply LW wiki chapter quotes** — User asked to apply the plan in `drafts/plans/lw-wiki-chapter-quotes.md`. | [2026-09-30-lw-wiki-quotes-applied.md](2026-09-30-lw-wiki-quotes-applied.md) |
 
 ## Archive by month
 
-- **2026-09** (95): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-09** (98): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

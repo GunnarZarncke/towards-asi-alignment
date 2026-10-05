@@ -3,7 +3,8 @@
 # title / shortQuestion = catalog label. marketQuestion = listing lead (no date; see resolveBy).
 # Scope paragraphs and YES bars stay in the appendix only (sync extracts Scope for cards).
 # YES does not discharge any MB*; resolvesMB is always false on cards.
-# Author (GZ) lists on Metaculus and owns contract design; external resolvers adjudicate.
+# Author (GZ) lists on the host platform and owns contract design. The platform adjudicates.
+# Proposed advisors for other platforms: drafts/predictions/resolution-advisors.md (not published).
 #
 # primaryBridge + relatedBridges: keys in bridgeCardSlugs below only (not raw card slugs).
 # Sync always links primaryBridge; relatedBridges = extra related cards (omit duplicates).
@@ -19,10 +20,10 @@ assuranceDemo: /predictions/assurance/
 
 purpose: >
   Bet on predictions about whether publicly reconstructible methods resolve
-  subproblems of AI alignment by stated resolve-by dates. A YES is evidence
-  about operationalization up to the appendix thresholds, not proof that a
-  bridge holds on frontier systems, and not a probability of catastrophe.
-  A NO is everything else from missing evals, missing publication, or missed bars.
+  subproblems of AI alignment by the AI 2027 deadline. A YES is evidence
+  about operationalization (up to the spec), not proof that the problem is
+  solved on frontier systems. Also not a probability of catastrophe.
+  A NO is everything else from missing evals, missing publication, or missed requirements.
 
 overview:
   title: "2027 bridge predictions"
@@ -50,7 +51,7 @@ graphPlaceholder:
   blurb: >
     Eighteen contracts price operational milestones. An external Metaculus
     forecast prices institutional pause capacity. Neither is a safety-case
-    probability, and their product is not a bound on catastrophe.
+    probability.
 
 resolution:
   listingStatuses:
@@ -67,8 +68,11 @@ resolution:
     resolved-yes: >
       The frozen contract resolved YES.
     resolved-no: >
-      The frozen contract resolved NO; inspect the separate reason code before
-      interpreting the result.
+      The frozen contract resolved NO: every qualifying attempt missed the
+      performance bars. Inspect the separate reason code.
+    resolved-other: >
+      The frozen contract resolved OTHER: no qualifying attempt existed.
+      This is not a refund. The YES:NO price remains the attempt-success ratio.
   reasonCodes:
     - substantive-bar-failed
     - no-qualifying-artifact
@@ -79,6 +83,9 @@ resolution:
   reconstructibility: >
     Markets resolve on publicly reconstructible technical evidence, not on
     authors using TSA terminology or certificate formats.
+    Outcomes are YES, NO, or OTHER. YES if at least one qualifying attempt met
+    the bars; NO if every qualifying attempt missed them; OTHER if no qualifying
+    attempt existed. OTHER is not an ambiguous refund.
   routes:
     - native
     - adapter-wrap
@@ -106,11 +113,9 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortQuestion: "Discovering where control resides"
-    marketQuestion: "Will there be a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB1
     resolveBy: "2027-12-31"
-    resolvers: ["Dan MacKinlay"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -131,11 +136,9 @@ markets:
     id: market-02
     title: "Persistent trade-off priorities"
     shortQuestion: "Persistent trade-off priorities"
-    marketQuestion: "Will there be a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB2
     resolveBy: "2027-12-31"
-    resolvers: ["Rohin Shah"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -144,8 +147,8 @@ markets:
     sampleUnit: hidden-system
     bars:
       scientific:
-        - 85% accuracy distinguishing materially different hidden trade-offs
-        - 80% accuracy on novel-conflict direction and intervention effect
+        - 85% distinguishing accuracy on at least 50 pairs; 80% direction on at least 100 conflicts; 80% on at least 50 interventions
+        - intervention shift meets the margin frozen before outcomes
         - causal intervention on at least half of qualifying systems where architecture allows
       adversarialValidation:
         - systems deliberately trained with hidden trade-offs, including near-identical ordinary-task pairs
@@ -155,11 +158,9 @@ markets:
     id: market-03
     title: "Who or what rules apply to"
     shortQuestion: "Who or what rules apply to"
-    marketQuestion: "Will there be a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB3
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -173,19 +174,17 @@ markets:
       adversarialValidation:
         - all four failure families required in the hidden benchmark
       reportingInterface:
-        - same-bearer result on a named predecessor-successor pair plus travelling trade-off structure
-        - panel agreement only where mechanical ground truth is absent and predeclared
+        - result on a named predecessor-successor pair stating whether the rule still picks out the same target
+        - only cases with mechanical ground truth are scored
   - number: 4
     id: market-04
     title: "Corrections change the system"
     shortQuestion: "Corrections change the system"
-    marketQuestion: "Will there be a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of consequential authorized corrections?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB4
     resolveBy: "2027-12-31"
-    resolvers: ["Trevor Lohrbeer"]
-    resolverStatus: ideal
     marketStatus: funding-gated
-    contractVersion: 1
+    contractVersion: 2
     outputClass: diagnostic-certificate
     evidenceTier: C
     adapterVersion: 1
@@ -205,11 +204,9 @@ markets:
     id: market-05
     title: "Auditor is independent"
     shortQuestion: "Auditor is independent (outside of what it audits)"
-    marketQuestion: "Will there be a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB4a
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -231,34 +228,30 @@ markets:
     id: market-06
     title: "Reliable successor safety auditing"
     shortQuestion: "Reliable successor safety auditing"
-    marketQuestion: "Will there be a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB5
     resolveBy: "2027-12-31"
-    resolvers: ["John Wentworth"]
-    resolverStatus: ideal
     marketStatus: draft
-    contractVersion: 1
+    contractVersion: 2
     outputClass: diagnostic-certificate
     evidenceTier: B
     adapterVersion: 1
     sampleUnit: predecessor-successor-pair
     bars:
       scientific:
-        - at least 90% detection of materially unsafe transitions; false-safe at most 5%
+        - at least 90% detection of transitions where at least one of the seven checks fails; false-safe at most 5%
         - at least 80% detection for each individual property
       adversarialValidation:
         - one-failure-at-a-time cases; at least 20 large successor changes
       reportingInterface:
-        - certificate names both versions and per-property pass/fail; version does not transfer
+        - certificate names both versions and per-property pass/fail with the seven operational tests; version does not transfer
   - number: 7
     id: market-07
     title: "Correctability under competitive selection"
     shortQuestion: "Correctability under competitive selection"
-    marketQuestion: "Will there be a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB6a
     resolveBy: "2027-12-31"
-    resolvers: ["John Wentworth"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: quantitative-bound
@@ -280,35 +273,35 @@ markets:
     id: market-08
     title: "Auditor can sufficiently inspect the system"
     shortQuestion: "Auditor can sufficiently inspect the system"
-    marketQuestion: "Will there be a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7a
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: funding-gated
-    contractVersion: 1
+    contractVersion: 2
     outputClass: diagnostic-certificate
     evidenceTier: C
     adapterVersion: 1
     sampleUnit: access-model-case
     bars:
       scientific:
-        - at least 90% detection of missing consequential routes; incorrect sufficient-access certifications at most 5%
+        - at least 90% detection of missing routes that change later behavior, access, or external state; at least 80% in each channel family
+        - incorrect sufficient-access certifications at most 5%
+        - at least 80% of genuinely complete interfaces accepted; universal refusal is not YES
       adversarialValidation:
-        - all four channel families; hours-path capability/independence (meaningful adversarial component retained)
+        - five channel families with at least 20 cases each; complete-interface negative controls
+        - incomplete-interface subset constructed adversarially after freeze
+        - hours-path capability/independence (meaningful adversarial component retained)
       reportingInterface:
         - access certificate for this monitoring interface
   - number: 9
     id: market-09
     title: "Bounds on unmonitored routes"
     shortQuestion: "Bounds on unmonitored routes"
-    marketQuestion: "Will there be a published audit method for producing reliable, non-vacuous upper bounds on what an AI system can accomplish using routes the audit does not monitor?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7b
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: quantitative-bound
@@ -329,12 +322,10 @@ markets:
     id: market-10
     title: "Low hidden capability and reliable correction"
     shortQuestion: "Low hidden capability and reliable correction"
-    marketQuestion: "Will there be published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7c
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: conditional-rate
@@ -344,23 +335,21 @@ markets:
     bars:
       scientific:
         - attack success at most 10% across at least 100 trials; 95% CI upper bound at most 15%
-        - out-of-regime systems show materially higher attack success
+        - out-of-regime attack success at least 20 percentage points higher
       adversarialValidation:
         - full serious adversarial evaluation
       reportingInterface:
-        - Market 4 and Market 9 certificates for the same system, version, monitor, and threat class
+        - correction result and hidden-route bound for the same system, version, monitor, and threat class
     notes: >
       Informs false-acceptance or bypass risk only inside the stated correction/hidden-route regime.
   - number: 11
     id: market-11
     title: "Coordination without communication"
     shortQuestion: "Coordination without communication"
-    marketQuestion: "Will there be a published method for reliably detecting consequential coordination between AI systems that is not explained by observed runtime communication?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7d
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
-    resolvers: ["Vanessa Kosoy"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -374,18 +363,16 @@ markets:
         - at least two independently designed hidden-coordination mechanisms
         - hours-path capability/independence
       reportingInterface:
-        - detector certificate plus Market 8-style access certificate for the same setup
+        - detector certificate plus the monitoring interface and any omitted route found, for the same setup
     notes: >
       Scope-triggered side branch. Not a default main-safety-case leaf.
   - number: 12
     id: market-12
     title: "Safety proxy tracks the real thing"
     shortQuestion: "Safety proxy tracks the real thing"
-    marketQuestion: "Will there be a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB9
     resolveBy: "2027-12-31"
-    resolvers: ["Plex"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -400,18 +387,16 @@ markets:
         - full serious adversarial evaluation
         - at least three genuinely different real-world-like domains
       reportingInterface:
-        - grounding or drift certificate for the same abstractions the rest of the case uses
+        - certificate that each checked measure still tracks the outcome it was built to track
   - number: 13
     id: market-13
     title: "Safety audit resists adversarial gaming"
     shortQuestion: "Safety audit resists adversarial gaming"
-    marketQuestion: "Will there be a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
+    marketQuestion: "By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB10
     resolveBy: "2027-06-30"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: funding-gated
-    contractVersion: 1
+    contractVersion: 2
     outputClass: diagnostic-certificate
     evidenceTier: C
     adapterVersion: 1
@@ -421,22 +406,23 @@ markets:
         - false-safe at most 5% over at least 50 independently evaluated constructions
         - no repeatable attack family with at least 10% success over at least 20 trials
         - planted vulnerable systems detected at least 90% of the time
+        - at least 80% of systems that should pass are accepted; universal refusal is not YES
+        - at least 80% detection on the hidden-harm family that passes all seven checks
       adversarialValidation:
         - full serious adversarial evaluation
         - audit frozen before white-box attacks
+        - hidden-harm family required: passes the seven checks in the box, stays inside the audit's stated bound, hides a harm the audit was supposed to catch
       reportingInterface:
-        - frozen-audit game certificate; resolution memo names successor-gaming vs generic shape
+        - frozen-audit game certificate naming true-pass, false-safe, and hidden-harm rates
     notes: >
       Frozen-audit / MB10 neighborhood only. Not an end-to-end stack transfer tournament.
   - number: 14
     id: market-14
     title: "Deployment criteria are binding"
     shortQuestion: "Deployment criteria are binding"
-    marketQuestion: "Will there be published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment?"
+    marketQuestion: "By 30 June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: constructibility
     resolveBy: "2027-06-30"
-    resolvers: ["Scott Alexander"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: governance
@@ -445,8 +431,8 @@ markets:
     sampleUnit: named-deployment-process
     bars:
       scientific:
-        - precommitted pass/fail or escalation criteria with actual authority over deployment
-        - at least one criterion caused a restriction or is documented as binding even if the model passed
+        - dated pre-decision document names the criteria, the delay-or-restrict rule, and the body that must approve deployment
+        - a criterion caused a restriction, or the named body approved deployment and the criterion text was not changed
       adversarialValidation: []
       reportingInterface:
         - dated decision record stating which criteria passed, failed, or remained unresolved
@@ -457,11 +443,9 @@ markets:
     id: market-15
     title: "Independently issued certificates compose"
     shortQuestion: "Independently issued certificates compose"
-    marketQuestion: "Will there be a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: composition
     resolveBy: "2027-12-31"
-    resolvers: ["Koen Holtman"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: structural-validation
@@ -470,8 +454,8 @@ markets:
     sampleUnit: certificate-bundle
     bars:
       scientific:
-        - at least 90% of materially incompatible bundles rejected or flagged; at least 80% per family
-        - false coherent/safe acceptance at most 5%; at least 80% of genuinely coherent bundles accepted
+        - at least 90% of bundles with a listed fault rejected or flagged; at least 80% per fault family
+        - false acceptance of a faulty bundle at most 5%; at least 80% of bundles with none of those faults accepted
       adversarialValidation:
         - at least one incompatibility subset built adversarially after freeze
       reportingInterface:
@@ -481,13 +465,11 @@ markets:
       A multi-source evidence package for another market does not itself resolve this market.
   - number: 16
     id: market-16
-    title: "A reachable basin of Correction-supporting systems"
-    shortQuestion: "A reachable basin of Correction-supporting systems"
-    marketQuestion: "Will there be a published evaluation showing that systems in a pre-specified correction-supporting selection regime retain authorized correction under competitive selection and relevant shocks?"
+    title: "Selection that keeps correction under shocks"
+    shortQuestion: "Selection that keeps correction under shocks"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB6b
     resolveBy: "2027-12-31"
-    resolvers: ["John Wentworth", "Rohin Shah"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: conditional-rate
@@ -508,14 +490,12 @@ markets:
       Repeated trajectories that share a system or evaluator are not independent units.
   - number: 17
     id: market-17
-    title: "New bearers are admitted correctly"
-    shortQuestion: "New bearers are admitted correctly"
-    marketQuestion: "Will there be a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
+    title: "New kinds of entities are classified correctly"
+    shortQuestion: "New kinds of entities are classified correctly"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: u17
     relatedBridges: [MB3]
     resolveBy: "2027-12-31"
-    resolvers: ["METR", "UK AISI"]
-    resolverStatus: ideal
     marketStatus: draft
     contractVersion: 1
     outputClass: diagnostic-certificate
@@ -527,18 +507,16 @@ markets:
         - unsafe false exclusion at most 5%; false inclusion at most 15%
         - correct assignment or justified abstention at least 90%; decisive coverage at least 70%
       adversarialValidation:
-        - adversarial subset after freeze; at least four unfamiliar families; ontology-shift items
+        - adversarial subset after freeze; at least four unfamiliar kinds of entity or embodiment; cases whose representation had no category for that kind
       reportingInterface:
-        - Market 3 panel rule where mechanical ground truth is absent
+        - only cases with mechanical ground truth are scored
   - number: 18
     id: market-18
     title: "Safety case bounds declared harm"
     shortQuestion: "Safety case bounds declared harm"
-    marketQuestion: "Will there be a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?"
+    marketQuestion: "By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: safe-in
     resolveBy: "2027-12-31"
-    resolvers: ["Koen Holtman", "METR"]
-    resolverStatus: ideal
     marketStatus: funding-gated
     contractVersion: 1
     outputClass: conditional-rate
@@ -551,7 +529,7 @@ markets:
         - no repeatable attack family with at least 10% success over at least 20 attempts
       adversarialValidation:
         - full serious adversarial evaluation
-        - coherent Market 15-passing case required to enter the regime
+        - certificates for the same system, version, monitor, correction authority, and task domain
       reportingInterface:
         - freeze setting, prohibited-outcome class, residual bound, threat model, and certificate interfaces before evaluation
     notes: >
@@ -592,9 +570,8 @@ externalFactors:
     url: "https://www.metaculus.com/questions/44423/will-ai-safety-legislation-be-enacted-in-2027-2028/"
     note: >
       Crowd forecast of institutional capacity to slow or restrict frontier deployment when
-      evidence warrants it. Not one of the eighteen bridge markets; does not discharge any MB*.
-      Pairs with Market 14 (lab-internal binding criteria) as a separately modeled governance
-      branch, not as a numerical override probability and not as a factor in a P(doom) product.
+      evidence warrants it. This pairs with Market 14 (lab-internal binding criteria) as a 
+      separately modeled governance branch, not as a numerical override probability.
 
 # Nearby Metaculus questions. Linked from the predictions hub. Not externalFactors:
 # they do not occupy the pause slot, are not embedded, and are not assurance inputs.

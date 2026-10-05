@@ -14,7 +14,7 @@ site glossary entry (`metadata/concepts.yml`) resolves to a manuscript
 | `chapter-only` (needs `sec:` in bookLabels) | 2 |
 | `missing` | 0 |
 
-Manuscript: 1401 section labels, 1299 sec/ch ref edges, 142 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
+Manuscript: 1403 section labels, 1301 sec/ch ref edges, 143 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
 
 ## OK — explicit section anchor
 

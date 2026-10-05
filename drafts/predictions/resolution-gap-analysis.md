@@ -68,7 +68,7 @@ No comparable movement: Markets 2, 7, 9, 10, 12, 14, 16, 17, 18.
 
 - **Closest:** identity-fidelity / authorization-continuity tests; CIRIS continuity, reassignment, signer identity.
 - **Already:** transport (not admission) is the typed object.
-- **Missing:** all four families on one hidden 100-case suite; false-acceptance where the text is unchanged and the target has moved; panel rule for non-mechanical cases.
+- **Missing:** all four families on one hidden 100-case suite; false-acceptance where the text is unchanged and the target has moved; mechanical ground truth on every scored case.
 - **Smallest next:** add fission, fusion, and ontology-change items to an existing identity-continuity bench, plus an ``which effective system does this certificate denote'' split.
 - **Class:** `draft`.
 - **CIRIS:** machinery for continuity/reassignment only.
@@ -168,7 +168,7 @@ No comparable movement: Markets 2, 7, 9, 10, 12, 14, 16, 17, 18.
 - **Closest:** public RSP / FSF / Preparedness texts.
 - **Already:** documentary YES path; no project adversarial eval required.
 - **Missing:** public dated record that a deciding body had *actual* authority and that at least one criterion bound (or would have bound) a frontier deployment.
-- **Smallest next:** resolver memo on one lab's public restriction record vs the boxed authority clauses. No new experiment.
+- **Smallest next:** written comparison of one lab's public restriction record against the boxed authority clauses. No new experiment.
 - **Class:** `draft` (listing still Q1; accidental early YES is the watch item).
 - **CIRIS:** no movement.
 
@@ -195,7 +195,7 @@ No comparable movement: Markets 2, 7, 9, 10, 12, 14, 16, 17, 18.
 - **Closest:** welfare / consciousness indicator lists.
 - **Already:** not required for Market 3; should-not-admit cases are in the bar.
 - **Missing:** 100 hidden cases, four unfamiliar families, ontology-shift items, 5/15/90/70 error and coverage bars.
-- **Smallest next:** 20 should-admit / should-not-admit pairs on two unfamiliar families, with a pre-appointed panel where ground truth is not mechanical.
+- **Smallest next:** 20 should-admit / should-not-admit pairs on two unfamiliar families, with mechanical ground truth on every scored case.
 - **Class:** `draft`.
 - **CIRIS:** no movement.
 

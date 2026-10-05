@@ -1,6 +1,6 @@
 # Claim extracts
 
-Exploratory sidecars: one JSONL record per load-bearing (or load-checked) sentence of a chapter, with a light formal rendering and a link to Lean symbols. Pilot: `ch42.jsonl` (Ch. 42, sections Why This Matters, Plain-Language Model, Formal Model up to the layer table). Not manuscript canon.
+Exploratory sidecars: one JSONL record per load-bearing (or load-checked) sentence of a chapter, with a light formal rendering and a link to Lean symbols. One file per chapter: `chNN.jsonl`. **Shipped:** `ch42.jsonl` (full chapter). **Rollout:** all `ch01`–`ch48` per `drafts/plans/claim-extract/claim-extract.md`. Not manuscript canon.
 
 **Check:** `python3 scripts/check_claim_extract.py` (quote must match the `.tex` lines; every `lean:` name must occur in `formal/`).
 **Stop rule:** a failure means the record is stale or wrong. Fix or delete the record; never edit the chapter to fit it. If the chapter has changed enough that more than a handful of quotes fail, delete the extract and redo that chapter. A flag that no record needs any more is removed from the vocabulary.

@@ -40,7 +40,7 @@ The program will:
 - contract evaluators who are independent of the method builders;
 - construct hidden or adversarial cases after method freeze where the contract requires them;
 - release raw class-conditional counts, dependence information, code or a sufficient protocol, and uncertainty intervals;
-- obtain an adjudication memo from a resolver who did not run the evaluation;
+- obtain a review memo from someone who did not run the evaluation; the host platform adjudicates;
 - preserve negative results and assign a separate resolution reason code when a contract resolves NO.
 
 The first candidates are Markets 4, 8, and 15 because CIRIS-like signed-authority, trace, and attestation systems provide concrete substrates while leaving the scientific questions open:
@@ -53,9 +53,9 @@ Final selection occurs before results and may change if an independent protocol 
 
 ## Funding bands
 
-**USD 50,000: protocol and independent-review package.** Freeze three evaluation protocols, recruit resolvers and evaluators, build planted controls, and run small preregistered pilots. Reserve USD 500 to USD 2,000 bounties for bounded reproduction or adversarial tasks. This tier need not resolve a market.
+**USD 50,000: protocol and independent-review package.** Freeze three evaluation protocols, recruit independent reviewers and evaluators, build planted controls, and run small preregistered pilots. Reserve USD 500 to USD 2,000 bounties for bounded reproduction or adversarial tasks. This tier need not resolve a market.
 
-**USD 120,000: one full independent evaluation plus two pilots.** Complete one hidden or adversarial campaign at the contract's stated sample size, publish reconstructible evidence, and have an independent resolver issue a reasoned adjudication. The other two protocols receive pilots and power or feasibility revisions.
+**USD 120,000: one full independent evaluation plus two pilots.** Complete one hidden or adversarial campaign at the contract's stated sample size, publish reconstructible evidence, and have an independent reviewer write a reasoned memo the host platform can use. The other two protocols receive pilots and power or feasibility revisions.
 
 **USD 250,000: three evaluation campaigns over twelve months.** Run three frozen campaigns with independent red teams or hidden-set builders, external reproduction, resolution memos, and a reusable adapter package. Publish all qualifying outcomes, including failures and nulls.
 
@@ -63,15 +63,15 @@ Large experiments needed to solve an entire bridge remain separate projects. Thi
 
 ## Milestones
 
-1. **Month 1:** independent priority review; evaluator and resolver conflict checks; three protocol drafts.
+1. **Month 1:** independent priority review; evaluator conflict checks; three protocol drafts.
 2. **Months 2–3:** protocol freeze, planted controls, pilot runs, and public preregistrations.
 3. **Months 4–9:** funded evaluation campaigns with progress and provenance logs.
-4. **Months 10–11:** independent reproduction and adjudication.
+4. **Months 10–11:** independent reproduction and a review memo.
 5. **Month 12:** raw release, resolution reason codes, limitations, and revised gap analysis.
 
 ## Success criteria
 
-- Every funded evaluation has a named frozen protocol and independent adjudicator.
+- Every funded evaluation has a named frozen protocol and an independent review memo.
 - Reporting preserves the contract's units, denominators, abstentions, and dependence structure.
 - No result is described as proving an MB bridge or certifying a frontier deployment.
 - A NO caused by missing reporting or adversarial validation is distinguished from a substantive bar failure.

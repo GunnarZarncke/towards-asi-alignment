@@ -43,20 +43,27 @@ function stripLatexInline(text) {
     .replace(/\\autocite\{[^}]+\}/g, "")
     .replace(/\\textcite\{[^}]+\}/g, "")
     .replace(/\\cite\{[^}]+\}/g, "")
+    .replace(/\\(?:ref|eqref)\{[^}]+\}/g, "")
     .replace(/\\emph\{([^}]*)\}/g, "$1")
     .replace(/\\textbf\{([^}]*)\}/g, "**$1**")
     .replace(/\\textit\{([^}]*)\}/g, "$1")
     .replace(/\\paragraph\{([^}]*)\}/g, "**$1**")
-    .replace(/~ /g, " ")
-    .replace(/(\d)~([A-Za-z])/g, "$1 $2")
+    .replace(/~/g, " ")
     .replace(/``/g, '"')
     .replace(/''/g, '"')
     .replace(/\\%/g, "%")
     .replace(/\\\$/g, "$")
-    .replace(/\\, /g, " ")
+    .replace(/\\,/g, " ")
     .replace(/\{,\}/g, ",")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function assertPlainCardText(label, text) {
+  if (!text) return;
+  if (/\\[a-zA-Z@]/.test(text) || /~/.test(text)) {
+    throw new Error(`sync-predictions: leftover TeX in ${label}: ${text.slice(0, 180)}`);
+  }
 }
 
 function splitQuestionBlock(text) {
@@ -96,11 +103,31 @@ function extractMarketSections(tex) {
   return sections;
 }
 
-function extractPredictionBox(sectionBody) {
+function extractContractEnv(sectionBody, envName) {
   const match = sectionBody.match(
-    /\\begin\{predictionbox\}(?:\[([^\]]*)\])?([\s\S]*?)\\end\{predictionbox\}/
+    new RegExp(`\\\\begin\\{${envName}\\}([\\s\\S]*?)\\\\end\\{${envName}\\}`)
   );
-  if (!match) {
+  return match?.[1]?.trim() ?? "";
+}
+
+function extractResolutionFields(resolutionInner) {
+  const yesMatch = resolutionInner.match(
+    /\\textbf\{YES requires\}\s*([\s\S]*?)(?=\\textbf\{Output\.\}|$)/
+  );
+  const outputMatch = resolutionInner.match(/\\textbf\{Output\.\}\s*([\s\S]*?)$/);
+  return {
+    yesRequires: stripLatexInline(yesMatch?.[1] ?? ""),
+    output: stripLatexInline(outputMatch?.[1] ?? "")
+  };
+}
+
+function extractPredictionBox(sectionBody) {
+  const boxes = [
+    ...sectionBody.matchAll(
+      /\\begin\{predictionbox\}(?:\[([^\]]*)\])?([\s\S]*?)\\end\{predictionbox\}/g
+    )
+  ];
+  if (!boxes.length) {
     return {
       title: "",
       question: "",
@@ -110,29 +137,38 @@ function extractPredictionBox(sectionBody) {
       output: ""
     };
   }
-  const optionalTitle = match[1]?.trim() ?? "";
-  const inner = match[2];
-  const questionMatch = inner.match(
-    /\\textbf\{Question\.\}\s*([\s\S]*?)(?=\\textbf\{YES requires\}|\\textbf\{Output\.\}|$)/
+  const optionalTitle = boxes[0][1]?.trim() ?? "";
+  const frontInner = boxes.map((b) => b[2]).join("\n\n");
+  const questionMatch = frontInner.match(
+    /\\textbf\{Question\.\}\s*([\s\S]*?)(?=\\textbf\{Choices\.\}|\\textbf\{Parameters\.\}|$)/
   );
-  const yesMatch = inner.match(
-    /\\textbf\{YES requires\}\s*([\s\S]*?)(?=\\textbf\{Output\.\}|$)/
-  );
-  const outputMatch = inner.match(/\\textbf\{Output\.\}\s*([\s\S]*?)$/);
   const questionRaw = questionMatch?.[1] ?? "";
   const { questionLead, questionScope } = splitQuestionBlock(questionRaw);
-  return {
+
+  const resolutionInner = extractContractEnv(sectionBody, "predictionresolution");
+  const legacyInner = resolutionInner ? "" : frontInner;
+  const { yesRequires, output } = resolutionInner
+    ? extractResolutionFields(resolutionInner)
+    : extractResolutionFields(legacyInner);
+
+  const extracted = {
     title: optionalTitle,
     question: stripLatexInline(questionRaw),
     questionLead,
     questionScope,
-    yesRequires: stripLatexInline(yesMatch?.[1] ?? ""),
-    output: stripLatexInline(outputMatch?.[1] ?? "")
+    yesRequires,
+    output
   };
+  for (const [field, value] of Object.entries(extracted)) {
+    assertPlainCardText(`prediction box ${field}`, value);
+  }
+  return extracted;
 }
 
 function extractPriorTest(sectionBody) {
-  const match = sectionBody.match(/As of 19~September 2026:([\s\S]*?)(?=\\end\{authbar\})/);
+  const match = sectionBody.match(
+    /Closest existing work(?: is)?[:\s]([\s\S]*?)(?=\\end\{authbar\})/
+  );
   if (!match) return "";
   return stripLatexInline(match[1]);
 }
@@ -166,16 +202,6 @@ function formatResolveBy(isoDate) {
   });
 }
 
-function formatResolverLine(market) {
-  if (market.resolverStatus === "confirmed" && market.resolvers?.length) {
-    return `**Resolver:** ${market.resolvers.join(", ")} (confirmed).`;
-  }
-  if (market.resolverStatus === "ideal" && market.resolvers?.length) {
-    return `**Resolver (proposed):** ${market.resolvers.join(", ")}.`;
-  }
-  return "**Resolver:** not yet named.";
-}
-
 const OUTPUT_CLASS_LABEL = {
   "diagnostic-certificate": "Diagnostic certificate",
   "quantitative-bound": "Quantitative bound",
@@ -196,7 +222,8 @@ const LISTING_STATUS_LABEL = {
   "ready-to-list": "Ready to list",
   listed: "Listed",
   "resolved-yes": "Resolved YES",
-  "resolved-no": "Resolved NO"
+  "resolved-no": "Resolved NO",
+  "resolved-other": "Resolved OTHER"
 };
 
 function formatListingStatus(market) {
@@ -228,7 +255,6 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   const resolveByLabel = formatResolveBy(market.resolveBy);
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
-    formatResolverLine(market),
     formatListingStatus(market),
     "",
     "## Question",
@@ -253,12 +279,13 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
     bodyParts.push(market.notes.trim().replace(/\s+/g, " "), "");
   }
   if (extracted.priorTest) {
-    bodyParts.push("## Closest work (19 September 2026)", "", extracted.priorTest, "");
+    assertPlainCardText(`market ${market.number} closest work`, extracted.priorTest);
+    bodyParts.push("## Closest existing work", "", extracted.priorTest, "");
   }
   bodyParts.push(
     `[Read the full contract in Appendix H](${appendixFull}) (PDF canon).`,
     "",
-    "YES means these public bars were met; it does **not** mean the corresponding bridge is proved or discharged.",
+    "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
     ""
   );
 
@@ -366,7 +393,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, u
     "",
     raw.purpose.trim(),
     "",
-    "**Claim strength.** YES means a public artifact met the appendix thresholds by each market's resolve-by date. NO lumps failed bars, no qualifying evaluation, inapplicable substrate, or unresolved residual judgment. NO does not mean a bridge is false.",
+    "**Claim strength.** Each listing question is three-outcome: YES (qualifying attempt met the bars), NO (qualifying attempt missed them), or OTHER (no qualifying attempt). None of these means a bridge is false.",
     "",
     `**Assurance.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform assurance](${APPENDIX_H_FULL}#sec-appp-aggregation) and [Assurance failure, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
     "",
@@ -414,7 +441,8 @@ const REQUIRED_LISTING_STATUSES = new Set([
   "ready-to-list",
   "listed",
   "resolved-yes",
-  "resolved-no"
+  "resolved-no",
+  "resolved-other"
 ]);
 const REQUIRED_REASON_CODES = new Set([
   "substantive-bar-failed",
@@ -468,9 +496,12 @@ for (const reason of REQUIRED_REASON_CODES) {
 if (markets.length !== 18) {
   console.warn(`sync-predictions: expected 18 catalog markets, found ${markets.length}`);
 }
-if (sectionByNumber.size !== markets.length) {
-  console.warn(
-    `sync-predictions: appendix market sections (${sectionByNumber.size}) != YAML markets (${markets.length})`
+const missingSections = markets.filter((market) => !sectionByNumber.has(market.number));
+if (missingSections.length) {
+  throw new Error(
+    `sync-predictions: YAML markets missing appendix sections: ${missingSections
+      .map((m) => m.number)
+      .join(", ")}`
   );
 }
 for (const market of markets) assertMarketAudit(market);
