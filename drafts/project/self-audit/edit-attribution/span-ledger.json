@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261005T114506.510Z",
+  "_as_of": "20261005T124656.323Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1485,7 +1485,8 @@
     "prior": "AI"
   },
   "chapters/ch42-safety-case.tex#5": {
-    "agent": 8,
+    "agent": 12,
+    "dirty": true,
     "file": "chapters/ch42-safety-case.tex",
     "human": 0,
     "index": 5,

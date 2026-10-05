@@ -8,7 +8,8 @@ absolute paths are ignored. Anchors (``#...``) are stripped before checking.
 
 Gitignored targets are checked **after** ``make generate`` (symbol census and
 concept-graph outputs). Only gitignored paths that ``make check`` deliberately
-does not build (``dist/pdf/``, toy-simulation ``results/`` JSON) are skipped.
+does not build (``dist/pdf/``, toy-simulation ``results/`` JSON, the local
+``data/lesswrong/`` corpus) are skipped.
 
     python3 scripts/check_markdown_links.py            # report, exit 1 on failures
     python3 scripts/check_markdown_links.py --fix      # rewrite links whose basename
@@ -39,8 +40,13 @@ UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]
 HISTORICAL_DIRS = ("attic", "conversation-summaries/archive")
 # Gitignored outputs produced by scripts/generate_manuscript_tex.sh before this check runs.
 GENERATED_IN_CHECK_PREFIXES = ("metadata/concept-graph/", "metadata/symbol-census/")
-# Gitignored paths outside make check scope (see scripts/check.sh — no PDF, no sim runs).
-LINK_CHECK_EXEMPT_PREFIXES = ("dist/pdf/", "experiments/toy-simulation/results/")
+# Gitignored paths outside make check scope (see scripts/check.sh — no PDF, no sim runs,
+# no third-party LessWrong dump).
+LINK_CHECK_EXEMPT_PREFIXES = (
+    "dist/pdf/",
+    "experiments/toy-simulation/results/",
+    "data/lesswrong/",
+)
 
 
 def is_gitignored(rel: str) -> bool:

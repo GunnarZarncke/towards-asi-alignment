@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-05 | **Markdown link CI** — Check failed on three uncommitted session logs and the gitignored LessWrong corpus. | [2026-10-05-markdown-links-ci.md](2026-10-05-markdown-links-ci.md) |
 | 2026-10-05 | **Ch. 42 P1 prose pass** — Remaining layer language removed; claim-extract P1 implemented; jsonl retargeted. | [2026-10-05-ch42-p1-pass.md](2026-10-05-ch42-p1-pass.md) |
 | 2026-10-04 | **Ch. 42 join figure** — Safety-case join graph in the chapter; layer list and longtable removed. | [2026-10-04-ch42-join-figure.md](2026-10-04-ch42-join-figure.md) |
 | 2026-10-03 | **Claim-extract spine join** — Ch. 42's layers are the four-spine join. Chapter figure at that grain; Lean graphs and the field bridge graph stay where they are. | [2026-10-03-claim-extract-spine-join.md](2026-10-03-claim-extract-spine-join.md) |
