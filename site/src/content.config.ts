@@ -115,13 +115,15 @@ const card = defineCollection({
       "ready-to-list",
       "listed",
       "resolved-yes",
-      "resolved-no"
+      "resolved-no",
+      "resolved-other"
     ]).optional(),
+    predictionShortTitle: z.string().optional(),
     /** Internal spine tag (MB*, constructibility, composition, u17, safe-in). */
     primaryBridge: z.string().optional(),
     /** Always false: YES does not discharge MB*. */
     resolvesMB: z.boolean().optional(),
-    /** External Metaculus/Manifold factor (not one of the 18 bridge markets). */
+    /** External Metaculus/Manifold factor (not a catalog subproblem market). */
     predictionExternal: z.boolean().optional(),
     /** Role in P(doom) aggregation sketch (e.g. pause governance). */
     predictionRole: z.enum(["pause"]).optional(),

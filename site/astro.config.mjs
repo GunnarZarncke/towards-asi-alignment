@@ -20,7 +20,8 @@ export default defineConfig({
   trailingSlash: "always",
   redirects: {
     ...cardRedirects,
-    "/demos/all/": "/demos/"
+    "/demos/all/": "/demos/",
+    "/predictions/assurance/": "/predictions/safety-case/"
   },
   integrations: [
     sitemap({

@@ -31,4 +31,4 @@ Prompts: (paraphrase — prior session handoff)
 - `drafts/predictions/metaculus-question-template.md`
 
 ## Commits
-- `159dcb82b` — Restructure Appendix P prediction contracts for Metaculus listing.
+- `373487891` — Restructure Appendix P prediction contracts for Metaculus listing.

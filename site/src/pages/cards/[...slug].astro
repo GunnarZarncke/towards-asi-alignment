@@ -106,7 +106,8 @@ const predictionListingLabel = card.data.predictionListingStatus
       "ready-to-list": "Ready to list",
       listed: "Listed",
       "resolved-yes": "Resolved YES",
-      "resolved-no": "Resolved NO"
+      "resolved-no": "Resolved NO",
+      "resolved-other": "Resolved OTHER"
     }[card.data.predictionListingStatus]
   : null;
 const isBridgeCard = card.data.type === "bridge";
@@ -287,14 +288,17 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
           {isExternalPrediction && (
             <div class="callout external-prediction-callout">
               <p>
-                <strong>External factor.</strong> Not one of the eighteen bridge markets. Hosted on Metaculus;
+                <strong>External factor.</strong> Not one of the AI alignment subproblem markets. Hosted on Metaculus;
                 used in Appendix H as a separately modeled governance forecast, not as a numerical override probability.
                 YES does not discharge any MB*.
               </p>
             </div>
           )}
-          {isExternalPrediction && card.data.metaculusEmbedId && (
-            <MetaculusEmbed questionId={card.data.metaculusEmbedId} title={card.data.title} />
+          {isPredictionCard && card.data.metaculusEmbedId && (
+            <MetaculusEmbed
+              questionId={card.data.metaculusEmbedId}
+              title={card.data.predictionShortTitle || card.data.title}
+            />
           )}
           {isFundingCard && (
             <FundingCardChrome

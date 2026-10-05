@@ -3,19 +3,19 @@
   "unitOfAnalysis": "One qualifying deployment attempt on a named system or version, in a declared deployment setting, under a frozen threat model. Probabilities are conditional on that unit unless stated otherwise.",
   "events": {
     "F": {
-      "label": "Assurance failure",
+      "label": "False accept",
       "description": "The deployment case was accepted while a catastrophe-relevant defect was present.\n"
     },
     "R": {
       "label": "Represented failure",
-      "description": "Conditional on F, the failure family is represented by the current assurance ontology.\n"
+      "description": "Conditional on F, the failure family is among the failure families the case can represent.\n"
     },
     "U": {
       "label": "Unrepresented failure",
-      "description": "Conditional on F, the failure is outside the current assurance ontology.\n"
+      "description": "Conditional on F, the failure is outside the families the case can represent.\n"
     },
     "E": {
-      "label": "Favorable assurance evidence",
+      "label": "Favorable evidence",
       "description": "For example a frozen integrated stack returning ACCEPT on the deployment under evaluation.\n"
     },
     "D": {
@@ -24,7 +24,7 @@
     }
   },
   "parameters": {
-    "assurance": [
+    "safetyCase": [
       {
         "id": "priorOdds",
         "label": "Prior odds O(F)",
@@ -367,7 +367,7 @@
       "from": "m8",
       "to": "m13",
       "type": "common-cause",
-      "justification": "Shared access/audit substrate; correlated false assurance risk."
+      "justification": "Shared access/audit substrate; correlated false-accept risk."
     },
     {
       "from": "m15",
@@ -377,7 +377,7 @@
     },
     {
       "from": "m19",
-      "to": "assuranceUpdate",
+      "to": "safetyCaseUpdate",
       "type": "evidential",
       "justification": "Class-conditional ACCEPT rates may inform S_R only when valid modeled cases operationalize ¬F and material represented defects operationalize F∧R, with frozen transfer to the deployment setting.\n"
     },
@@ -427,7 +427,7 @@
     {
       "number": 19,
       "id": "market-19",
-      "title": "Integrated assurance transfer tournament",
+      "title": "Integrated safety-case transfer tournament",
       "resolveBy": "2028-06-30",
       "marketStatus": "draft",
       "fundingRoute": "prediction-evaluation-program",

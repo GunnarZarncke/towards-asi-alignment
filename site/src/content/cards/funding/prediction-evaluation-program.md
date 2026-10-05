@@ -2,7 +2,7 @@
 title: "Independent evaluation for the 2027 bridge predictions"
 type: funding
 status: framework
-summary: "Turn the eighteen candidate prediction contracts into independently resolvable research instruments by freezing protocols, funding hidden and adversarial tests, and publishing reconstructible results including nulls."
+summary: "Turn the candidate prediction contracts into independently resolvable research instruments by freezing protocols, funding hidden and adversarial tests, and publishing reconstructible results including nulls."
 fundingState: open
 doneState: not_started
 costUsd: 50000
@@ -27,7 +27,7 @@ external:
 
 ## Problem
 
-The eighteen 2027 contracts ask whether specific alignment methods or governance artifacts will meet public operational bars. Eleven are **funding-gated**: a credible route to YES requires a hidden benchmark, independent reproduction, transfer test, or adversarial challenge that nobody has funded. Listing those contracts now could produce prices about missing evaluation infrastructure rather than about research readiness.
+The 2027 contracts ask whether specific alignment methods or governance artifacts will meet public operational bars. Eleven are **funding-gated**: a credible route to YES requires a hidden benchmark, independent reproduction, transfer test, or adversarial challenge that nobody has funded. Listing those contracts now could produce prices about missing evaluation infrastructure rather than about research readiness.
 
 Funding does not buy a YES. It buys a fair chance to resolve the frozen question. Failed bars, null results, and discovered incompatibilities remain publishable outputs.
 
@@ -41,7 +41,7 @@ The program will:
 - construct hidden or adversarial cases after method freeze where the contract requires them;
 - release raw class-conditional counts, dependence information, code or a sufficient protocol, and uncertainty intervals;
 - obtain a review memo from someone who did not run the evaluation; the host platform adjudicates;
-- preserve negative results and assign a separate resolution reason code when a contract resolves NO.
+- preserve negative results and assign a separate resolution reason code when a contract resolves YES, NO, or OTHER.
 
 The first candidates are Markets 4, 8, and 15 because CIRIS-like signed-authority, trace, and attestation systems provide concrete substrates while leaving the scientific questions open:
 
@@ -74,9 +74,9 @@ Large experiments needed to solve an entire bridge remain separate projects. Thi
 - Every funded evaluation has a named frozen protocol and an independent review memo.
 - Reporting preserves the contract's units, denominators, abstentions, and dependence structure.
 - No result is described as proving an MB bridge or certifying a frontier deployment.
-- A NO caused by missing reporting or adversarial validation is distinguished from a substantive bar failure.
+- Missing reporting or adversarial validation is OTHER (no qualifying attempt), not NO. NO is only a missed performance bar on qualifying attempts.
 - At least one full campaign reaches an independently adjudicable result at the USD 120,000 tier; the full tier targets three.
 
 ## If it works
 
-The prediction prices will refer to contracts with credible resolution routes rather than unfunded wishes. More importantly, the project will publish reusable evaluation protocols and reconstructible evidence about which assurance instruments work, fail, or remain outside scope.
+The prediction prices will refer to contracts with credible resolution routes rather than unfunded wishes. More importantly, the project will publish reusable evaluation protocols and reconstructible results about the evidence the case can use, including failures and out-of-scope findings.

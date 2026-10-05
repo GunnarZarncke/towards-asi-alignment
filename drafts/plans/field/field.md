@@ -147,7 +147,7 @@ Notes derived from [aisafetyagendas.com] related to field structure and [./const
 ## Related artifacts
 
 - [`../construct/embedded-v2.md`](../construct/embedded-v2.md) — coupled-system reading; `evidenceFor` ≠ `actsOnContextOf`
-- [`../predictions/bridge-prediction-markets.md`](../predictions/bridge-prediction-markets.md) — 2027 binary contracts on live `MB*`; YES ≠ discharge; not a second green-cell layer
+- [`../predictions/bridge-prediction-markets.md`](../predictions/bridge-prediction-markets.md) — 2027 three-way contracts on live `MB*`; YES ≠ discharge; not a second green-cell layer
 - [`alignment-crux-map.md`](alignment-crux-map.md) — funder-facing job map + outsider tests (Field lane grant)
 - [`cousin-product-comparison-plan.md`](../../attic/cousin-product-comparison-plan.md) (closed) — spec sheet for what programs *ship* (Start Here, not Field hub)
 - [`../iliad-communal-canon.md`](../iliad-communal-canon.md) — Iliad lessons (concept)

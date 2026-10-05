@@ -92,7 +92,7 @@ Output: `site/dist/`
 | `scripts/sync-chapters.mjs` | Syncs chapter/appendix LaTeX to `src/content/book/` via `scripts/lib/tex-convert.mjs`; `\authbar{…}` keys become optional section/subsection heading chips (Notes panel toggle) |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` plus `metadata/experiments-backtests.yml` (one card per backtest). Writes three class overview cards plus one card per line, with GitHub source and results URLs. |
-| `scripts/sync-predictions.mjs` | Generates `src/data/predictions.json` and prediction cards from `metadata/predictions.yml` (`shortQuestion` = label, `marketQuestion` = dated lead) plus scope/YES bars from `appendices/appP-bridge-predictions.tex`. |
+| `scripts/sync-predictions.mjs` | Generates `src/data/predictions.json` and prediction cards from `metadata/predictions.yml` (`shortTitle` / `longTitle` = Metaculus titles) plus scope/YES bars from `appendices/appP-bridge-predictions.tex`. |
 | `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |
 | `public/robots.txt` | Crawler rules, sitemap index URL, pointer to `llms.txt` |
 | `public/llms.txt` | Bot / LLM orientation (synced from repo-root `llms.txt` via `sync-bot-orientation.mjs`) |
@@ -116,7 +116,7 @@ See also the **Card graphics** table in root [`AGENTS.md`](../AGENTS.md) (Compan
 
 ## Deploy
 
-Pushes to `main` run `.github/workflows/site.yml`, which builds `site/` and pushes `site/dist/` to the `gh-pages` branch via **branch-based** publishing (`peaceiris/actions-gh-pages`).
+Pushes to `main` run `.github/workflows/site.yml`, which builds `site/` and pushes `site/dist/` to the `gh-pages` branch via **branch-based** publishing (`peaceiris/actions-gh-pages`) on `ubuntu-24.04`.
 
 This is **not** a custom GitHub Actions Pages deployment (the Deployment API). With custom Actions deployments, the domain is configured only in repository settings and a deployed `CNAME` file is ignored. Here, branch publishing applies: the workflow’s `cname: towards-alignment.com` writes `CNAME` on `gh-pages`, which GitHub Pages reads for the custom domain.
 
@@ -148,4 +148,6 @@ curl -I https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintel
 
 The book PDF is copied into `site/public/` during build (`npm run copy:pdf`) from `dist/pdf/towards-superintelligence-alignment.pdf` (run `./build.sh` locally) or, when that file is missing, fetched from the latest GitHub Release asset (automatic in CI). Nav **PDF**, Start Here, and the book map link to `/towards-superintelligence-alignment.pdf` on this domain — no GitHub login required.
 
-We use a branch push (`peaceiris/actions-gh-pages`) instead of the GitHub Pages Deployment API because overlapping deploys were stuck in `deployment_queued` for 10 minutes.
+We use branch push (`peaceiris/actions-gh-pages`) instead of the GitHub Pages Deployment API because overlapping `actions/deploy-pages` runs stalled in `deployment_queued` for the full 10-minute timeout (July 2026; see `drafts/conversation-summaries/archive/2026-07/2026-07-02-pages-deploy-gem-publications.md`, commit `db18093`). Branch publishing uses a different pipeline and deploys in ~1 minute.
+
+**CI notices:** With branch-based publishing, GitHub also runs its built-in **pages build and deployment** workflow on each `gh-pages` push. That workflow may show Node 20 / `upload-artifact@v4` and `ubuntu-latest` migration notices — GitHub-controlled, not fixable from this repo without switching back to the Deployment API and risking the queue stall again.

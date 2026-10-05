@@ -1,0 +1,107 @@
+---
+import MetaculusEmbed from "./MetaculusEmbed.astro";
+
+interface Props {
+  number: number;
+  shortTitle: string;
+  href: string;
+  listingStatus: string;
+  listingLabel: string;
+  embedId?: number;
+}
+
+const { number, shortTitle, href, listingStatus, listingLabel, embedId } = Astro.props;
+---
+
+<article class="market-panel">
+  <h3 class="market-panel-title">
+    <a href={href}>
+      <span class="market-num">{number}.</span>
+      {shortTitle}
+    </a>
+    <span class:list={["listing-status", `listing-status-${listingStatus}`]}>{listingLabel}</span>
+  </h3>
+  {
+    embedId ? (
+      <MetaculusEmbed questionId={embedId} title={shortTitle} />
+    ) : (
+      <div class="forecast-slot" aria-hidden="true">
+        <p>Forecast appears here when this market is listed on Metaculus.</p>
+      </div>
+    )
+  }
+</article>
+
+<style>
+  .market-panel {
+    margin: 0;
+    padding: 1rem 1rem 1.1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--color-surface) 96%, #fff);
+  }
+
+  .market-panel-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.55rem;
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .market-panel-title a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .market-panel-title a:hover {
+    text-decoration: underline;
+  }
+
+  .market-num {
+    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  }
+
+  .listing-status {
+    display: inline-block;
+    padding: 0.08rem 0.38rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 24%, transparent);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  }
+
+  .listing-status-funding-gated {
+    border-color: color-mix(in srgb, #c2410c 42%, transparent);
+    color: color-mix(in srgb, #c2410c 82%, var(--color-text));
+    background: color-mix(in srgb, #c2410c 7%, transparent);
+  }
+
+  .forecast-slot {
+    min-height: 8rem;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    border: 1px dashed color-mix(in srgb, var(--color-text) 22%, transparent);
+    border-radius: 0.4rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, #e8eef4);
+  }
+
+  .forecast-slot p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  .market-panel :global(.metaculus-embed-wrap) {
+    margin: 0;
+    max-width: none;
+  }
+</style>

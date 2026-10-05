@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
-import PredictionsAssuranceDemo from "../../../components/PredictionsAssuranceDemo.astro";
+import PredictionsSafetyCaseDemo from "../../../components/PredictionsSafetyCaseDemo.astro";
 import { bookFullHref } from "../../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
@@ -9,22 +9,22 @@ const appendixFullHref = bookFullHref(base, "appP");
 ---
 
 <SiteLayout
-  title="Assurance sensitivity model"
-  description="User-supplied PRA parameters for assurance failure and consequence sensitivity. Not a validated catastrophe estimate."
+  title="Safety-case odds"
+  description="User-supplied assumptions for a false-accept odds update and a separate consequence step. Not a validated catastrophe estimate."
 >
   <section class="hero">
     <p class="eyebrow">Predictions · Phase 3</p>
-    <h1>Assurance sensitivity model</h1>
+    <h1>Safety-case odds</h1>
     <p class="lede">
-      Explore how explicit assumptions about assurance failure, coverage, evidence strength, and
+      Explore how explicit assumptions about a false accept, coverage, evidence the case can use, and
       consequences combine. This is a sensitivity calculator, not a forecast from market prices.
     </p>
     <div class="button-row">
       <a class="button" href={withBase("/predictions/")}>Back to predictions</a>
-      <a class="button" href={`${appendixFullHref}#sec-appp-assurance`}>Appendix H assurance section</a>
+      <a class="button" href={`${appendixFullHref}#sec-appp-assurance`}>Appendix H safety-case section</a>
       <a class="button" href={withBase("/cards/funding/prediction-evaluation-program/")}>Fund evaluations</a>
     </div>
   </section>
 
-  <PredictionsAssuranceDemo />
+  <PredictionsSafetyCaseDemo />
 </SiteLayout>

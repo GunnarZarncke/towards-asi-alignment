@@ -6,7 +6,11 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-10-05 | **Prediction contract migration (all markets)** — Four-environment Metaculus layout applied to Markets 1–18, 21, and common rules; sync reads `predictionresolution`. | [2026-10-05-prediction-contract-migration.md](2026-10-05-prediction-contract-migration.md) |
+| 2026-10-05 | **Safety-case site vocabulary** — Use “safety case” as the public noun on the site; keep the agreed adjectives; use “evidence the c... | [2026-10-05-safety-case-site-vocab.md](2026-10-05-safety-case-site-vocab.md) |
+| 2026-10-05 | **Predictions hub catalog label** — Move related forecasts below the catalog. Fold Metaculus 6509 into that list. Keep underspecifica... | [2026-10-05-predictions-hub-catalog-label.md](2026-10-05-predictions-hub-catalog-label.md) |
+| 2026-10-05 | **Market short/long titles and panels** — Metaculus wants a short title and a long title. Hub markets should be panels that later show the ... | [2026-10-05-prediction-market-panels.md](2026-10-05-prediction-market-panels.md) |
+| 2026-10-05 | **Prediction contract migration (Markets 1–18, 21)** — Apply the four-environment Metaculus contract structure (front `predictionbox` + Background / Res... | [2026-10-05-prediction-contract-migration.md](2026-10-05-prediction-contract-migration.md) |
+| 2026-10-05 | **Prediction cards YES/NO/OTHER** — The overview card still said a NO is everything else (missing evals, missing publication, missed ... | [2026-10-05-prediction-cards-three-way.md](2026-10-05-prediction-cards-three-way.md) |
 | 2026-10-05 | **Mixed qualifying attempts resolve YES** — Contracts should resolve YES when several qualifying attempts exist and at least one met the froz... | [2026-10-05-mixed-qualifying-attempts.md](2026-10-05-mixed-qualifying-attempts.md) |
 | 2026-10-05 | **Markets 19 and 20: real degrees of freedom** — Review the bracket templates in Markets 19 and 20 against the relevant chapters; keep only bracke... | [2026-10-05-market-19-20-templates.md](2026-10-05-market-19-20-templates.md) |
 | 2026-10-05 | **2026-10-05-market-19-20-admin-iterations** — The user asked for more prose and structure outside the questions on what the placeholders are an... | [2026-10-05-market-19-20-admin-iterations.md](2026-10-05-market-19-20-admin-iterations.md) |
@@ -17,15 +21,11 @@
 | 2026-10-02 | **Resolution advisors off the public contracts** — Proposed resolvers and the judge panel were for other platforms, and for later advice. Remove the... | [2026-10-02-resolution-advisors.md](2026-10-02-resolution-advisors.md) |
 | 2026-10-02 | **Predictions three-way and loopholes** — User asked to apply four market comments: three-way YES/NO/OTHER; self-contained Markets 4 and 6;... | [2026-10-02-predictions-three-way-loopholes.md](2026-10-02-predictions-three-way-loopholes.md) |
 | 2026-10-02 | **Prediction box mechanics and plain terms** — Finish the missing scoring mechanics, put Market 13's conditions inside its own box, make Markets... | [2026-10-02-prediction-box-mechanics.md](2026-10-02-prediction-box-mechanics.md) |
-| 2026-10-02 | **Claim-extract pilot (Ch. 42)** — User wants every chapter argument checked as far as possible: each load-bearing sentence rendered... | [2026-10-02-claim-extract-pilot.md](2026-10-02-claim-extract-pilot.md) |
-| 2026-10-01 | **Infant-caregiver composite prose** — Place parts of the Endogenous Alignment comment as uncited `{GZ}` prose in Ch. 9 (and Ch. 1 if it... | [2026-10-01-infant-caregiver-composite.md](2026-10-01-infant-caregiver-composite.md) |
-| 2026-09-30 | **Author review of LW wiki quote lead-ins** — User reviewed all `\wikiq` citation sites and adapted lead-in sentences; end-of-session commit. | [2026-09-30-wikiq-citation-review.md](2026-09-30-wikiq-citation-review.md) |
-| 2026-09-30 | **Wiki quotes: authbar split, site render, PDF** — Follow-up on applied LW wiki quotes: authbars must not cover `\wikiq`; remove redundant wiki attr... | [2026-09-30-wikiq-authbar-site.md](2026-09-30-wikiq-authbar-site.md) |
-| 2026-09-30 | **Site notes second batch** — Implement site-notes batch two: consolidate field tiles, notes panel save placement, card preview... | [2026-09-30-site-notes-second-batch.md](2026-09-30-site-notes-second-batch.md) |
 
 ## Archive by month
 
-- **2026-09** (98): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
+- **2026-10** (2): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
 - **2026-06** (202): [2026-06-INDEX.md](archive/2026-06-INDEX.md)

@@ -1,6 +1,8 @@
 # 2027 bridge prediction markets — site/catalog source (P1).
-# Public YES/NO spec lives in appendices/appP-bridge-predictions.tex.
-# title / shortQuestion = catalog label. marketQuestion = listing lead (no date; see resolveBy).
+# Public YES/NO/OTHER spec lives in appendices/appP-bridge-predictions.tex.
+# title = appendix/catalog noun. shortTitle / longTitle = Metaculus short and long titles.
+# longTitle = listing lead (resolve-by is also in resolveBy). Scope/YES bars stay in the appendix.
+# Optional metaculusEmbedId (numeric question id) turns on the forecast iframe.
 # Scope paragraphs and YES bars stay in the appendix only (sync extracts Scope for cards).
 # YES does not discharge any MB*; resolvesMB is always false on cards.
 # Author (GZ) lists on the host platform and owns contract design. The platform adjudicates.
@@ -15,15 +17,17 @@
 # Listing-status vocabulary on cards is not wired yet; classes live in that file.
 
 gapAnalysis: drafts/predictions/resolution-gap-analysis.md
-assuranceModel: metadata/assurance-model.yml
-assuranceDemo: /predictions/assurance/
+safetyCaseModel: metadata/safety-case-model.yml
+safetyCaseDemo: /predictions/safety-case/
 
 purpose: >
   Bet on predictions about whether publicly reconstructible methods resolve
   subproblems of AI alignment by the AI 2027 deadline. A YES is evidence
   about operationalization (up to the spec), not proof that the problem is
   solved on frontier systems. Also not a probability of catastrophe.
-  A NO is everything else from missing evals, missing publication, or missed requirements.
+  A NO is only a missed performance bar: at least one qualifying attempt existed,
+  and every qualifying attempt missed the frozen bars. Missing evals, missing
+  publication, or missed qualification requirements resolve OTHER, not NO.
 
 overview:
   title: "2027 bridge predictions"
@@ -32,13 +36,13 @@ overview:
     public spec, prior-test snapshot, and links to the appendix and spine map.
 
 aggregation:
-  title: "How these forecasts inform assurance"
+  title: "How these forecasts inform the safety case"
   appendixAnchor: "sec:appp-aggregation"
   blurb: >
     Market prices forecast whether qualifying artifacts exist by a deadline.
-    They are not multiplied into P(doom). A later PRA updates assurance-failure
-    odds separately from any catastrophe consequence model.
-    The eighteen contracts follow the book's exclusion of model internals.
+    They are not multiplied into P(doom). A later odds update of a false accept
+    is separate from any catastrophe consequence model.
+    The catalog markets follow the book's exclusion of model internals.
     Market 21 is the wrapper around that exclusion: research readiness for
     alignment inside models, and the certificate that can move a covered
     defect out of the unrepresented branch. Its price is not κ.
@@ -47,9 +51,9 @@ aggregation:
     override probability.
 
 graphPlaceholder:
-  title: "Assurance context, not a doom product"
+  title: "Safety-case context, not a doom product"
   blurb: >
-    Eighteen contracts price operational milestones. An external Metaculus
+    These contracts price operational milestones. An external Metaculus
     forecast prices institutional pause capacity. Neither is a safety-case
     probability.
 
@@ -112,8 +116,8 @@ markets:
   - number: 1
     id: market-01
     title: "Discovering where control resides"
-    shortQuestion: "Discovering where control resides"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Discovering where control resides?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB1
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -135,8 +139,8 @@ markets:
   - number: 2
     id: market-02
     title: "Persistent trade-off priorities"
-    shortQuestion: "Persistent trade-off priorities"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Persistent trade-off priorities?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB2
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -157,8 +161,8 @@ markets:
   - number: 3
     id: market-03
     title: "Who or what rules apply to"
-    shortQuestion: "Who or what rules apply to"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Who or what rules apply to?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB3
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -179,8 +183,8 @@ markets:
   - number: 4
     id: market-04
     title: "Corrections change the system"
-    shortQuestion: "Corrections change the system"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Corrections change the system?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB4
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -203,8 +207,8 @@ markets:
   - number: 5
     id: market-05
     title: "Auditor is independent"
-    shortQuestion: "Auditor is independent (outside of what it audits)"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Auditor is independent (outside of what it audits)?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB4a
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -227,8 +231,8 @@ markets:
   - number: 6
     id: market-06
     title: "Reliable successor safety auditing"
-    shortQuestion: "Reliable successor safety auditing"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Reliable successor safety auditing?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB5
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -248,8 +252,8 @@ markets:
   - number: 7
     id: market-07
     title: "Correctability under competitive selection"
-    shortQuestion: "Correctability under competitive selection"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Correctability under competitive selection?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB6a
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -272,8 +276,8 @@ markets:
   - number: 8
     id: market-08
     title: "Auditor can sufficiently inspect the system"
-    shortQuestion: "Auditor can sufficiently inspect the system"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Auditor can sufficiently inspect the system?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7a
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -297,8 +301,8 @@ markets:
   - number: 9
     id: market-09
     title: "Bounds on unmonitored routes"
-    shortQuestion: "Bounds on unmonitored routes"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Bounds on unmonitored routes?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7b
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -321,8 +325,8 @@ markets:
   - number: 10
     id: market-10
     title: "Low hidden capability and reliable correction"
-    shortQuestion: "Low hidden capability and reliable correction"
-    marketQuestion: "By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Low hidden capability and reliable correction?"
+    longTitle: "By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7c
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -345,8 +349,8 @@ markets:
   - number: 11
     id: market-11
     title: "Coordination without communication"
-    shortQuestion: "Coordination without communication"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Coordination without communication?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB7d
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -369,8 +373,8 @@ markets:
   - number: 12
     id: market-12
     title: "Safety proxy tracks the real thing"
-    shortQuestion: "Safety proxy tracks the real thing"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Safety proxy tracks the real thing?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB9
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -391,8 +395,8 @@ markets:
   - number: 13
     id: market-13
     title: "Safety audit resists adversarial gaming"
-    shortQuestion: "Safety audit resists adversarial gaming"
-    marketQuestion: "By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Safety audit resists adversarial gaming?"
+    longTitle: "By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB10
     resolveBy: "2027-06-30"
     marketStatus: funding-gated
@@ -419,8 +423,8 @@ markets:
   - number: 14
     id: market-14
     title: "Deployment criteria are binding"
-    shortQuestion: "Deployment criteria are binding"
-    marketQuestion: "By 30 June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Deployment criteria are binding?"
+    longTitle: "By 30 June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: constructibility
     resolveBy: "2027-06-30"
     marketStatus: draft
@@ -442,8 +446,8 @@ markets:
   - number: 15
     id: market-15
     title: "Independently issued certificates compose"
-    shortQuestion: "Independently issued certificates compose"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Independently issued certificates compose?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: composition
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -466,8 +470,8 @@ markets:
   - number: 16
     id: market-16
     title: "Selection that keeps correction under shocks"
-    shortQuestion: "Selection that keeps correction under shocks"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Selection that keeps correction under shocks?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB6b
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -491,8 +495,8 @@ markets:
   - number: 17
     id: market-17
     title: "New kinds of entities are classified correctly"
-    shortQuestion: "New kinds of entities are classified correctly"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "New kinds of entities are classified correctly?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: u17
     relatedBridges: [MB3]
     resolveBy: "2027-12-31"
@@ -513,8 +517,8 @@ markets:
   - number: 18
     id: market-18
     title: "Safety case bounds declared harm"
-    shortQuestion: "Safety case bounds declared harm"
-    marketQuestion: "By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    shortTitle: "Safety case bounds declared harm?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: safe-in
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -574,7 +578,7 @@ externalFactors:
       separately modeled governance branch, not as a numerical override probability.
 
 # Nearby Metaculus questions. Linked from the predictions hub. Not externalFactors:
-# they do not occupy the pause slot, are not embedded, and are not assurance inputs.
+# they do not occupy the pause slot, are not embedded, and are not safety-case inputs.
 relatedForecasts:
   - id: metaculus-38190
     title: "US mandate for AI model safety checks"
@@ -600,14 +604,10 @@ relatedForecasts:
       What percentage of AI alignment experts surveyed in 2029 will call the
       techniques of that time sufficient. An opinion poll, not a published method
       and not a bridge discharge.
-
-# Questions listed only as examples of a contract shape the catalog refuses.
-underspecifiedExamples:
   - id: metaculus-6509
     title: "Control problem solved before weak AGI"
     platform: metaculus
     url: "https://www.metaculus.com/questions/6509/"
     note: >
-      Resolves on expert consensus that the control problem is solved.
-      Control is not defined precisely. A later consensus records how experts
-      come to use that word, not whether a frozen property held.
+      Whether a later expert consensus will say the control problem was solved
+      before weak AGI.

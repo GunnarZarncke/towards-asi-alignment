@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261005T183953.925Z",
+  "_as_of": "20261005T191840.115Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -193,7 +193,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#3": {
-    "agent": 23,
+    "agent": 25,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 3,
@@ -272,6 +272,22 @@
     "key": "AI",
     "prior": "AI"
   },
+  "appendices/appP-bridge-predictions.tex#43": {
+    "agent": 6,
+    "file": "appendices/appP-bridge-predictions.tex",
+    "human": 0,
+    "index": 43,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "appendices/appP-bridge-predictions.tex#48": {
+    "agent": 2,
+    "file": "appendices/appP-bridge-predictions.tex",
+    "human": 0,
+    "index": 48,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "appendices/appP-bridge-predictions.tex#49": {
     "agent": 1,
     "file": "appendices/appP-bridge-predictions.tex",
@@ -288,8 +304,24 @@
     "key": "AI",
     "prior": "AI"
   },
+  "appendices/appP-bridge-predictions.tex#51": {
+    "agent": 2,
+    "file": "appendices/appP-bridge-predictions.tex",
+    "human": 0,
+    "index": 51,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "appendices/appP-bridge-predictions.tex#53": {
+    "agent": 16,
+    "file": "appendices/appP-bridge-predictions.tex",
+    "human": 0,
+    "index": 53,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "appendices/appP-bridge-predictions.tex#6": {
-    "agent": 59,
+    "agent": 61,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 6,

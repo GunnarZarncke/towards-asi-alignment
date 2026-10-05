@@ -1,6 +1,6 @@
 # Predictions appendix and assurance-risk modelling
 
-Status: **Phase 3 implemented** (2026-09-22), with draft **Market 21** added 2026-09-29/30 ([model-internals thread](../../conversation-summaries/archive/2026-09/2026-09-29-predictions-model-internals.md), [activation route](../../conversation-summaries/archive/2026-09/2026-09-30-activation-channel-family.md)). Assurance manifest, draft Markets 19–21 contracts, and site sensitivity demo shipped; catalog expansion and external listing remain Phase 4. Lane: **Predictions** (appendix PRA layer, draft Markets 19–21, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `metadata/assurance-model.yml`, `formal/AlignmentProofSpine/Evidence.lean`.
+Status: **Phase 3 implemented** (2026-09-22), with draft **Market 21** added 2026-09-29/30 ([model-internals thread](../../conversation-summaries/archive/2026-09/2026-09-29-predictions-model-internals.md), [activation route](../../conversation-summaries/archive/2026-09/2026-09-30-activation-channel-family.md)). Assurance manifest, draft Markets 19–21 contracts, and site sensitivity demo shipped; catalog expansion and external listing remain Phase 4. Lane: **Predictions** (appendix PRA layer, draft Markets 19–21, site demo). Builds on P0c: [`prediction-interface.md`](prediction-interface.md), [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Authoritative sources: `appendices/appP-bridge-predictions.tex` (Appendix H in print), `metadata/predictions.yml`, `metadata/safety-case-model.yml`, `formal/AlignmentProofSpine/Evidence.lean`.
 
 **Source freeze (Phase 0, before this implementation):** HEAD `2543ddbd`; appendix + YAML last at `1ebf999e` (2026-09-22 App H polish); `Evidence.lean` last at `6c46f4bb` (2026-09-19 v1 adapters). Locked prediction-interface decisions unchanged: no `AlignmentContext`, no market outcomes in Lean, extra predicate indices deferred. PRA derivation in manuscript; interactive user-parameter model remains site-later (Phase 3).
 
@@ -45,7 +45,7 @@ An absolute \(P_{\rm doom}\) may be shown downstream in that demo as an assumpti
 - Market 15 is certificate-scope coherence, not a new bridge.
 - Market 18 concerns observed prohibited outcomes in a declared setting. It is not unrestricted `Safe`.
 - MB8 is retired from the live path and should not re-enter through the risk model.
-- Metaculus question 44423 is an external institutional-pause forecast. It is not one of the 18 markets and does not discharge a bridge. Related Metaculus questions 38190, 38597, and 31707 are linked from the predictions hub under `relatedForecasts`. They are not in the pause slot and are not assurance inputs. Metaculus 6509 is listed only as an underspecified-question example (`underspecifiedExamples`): “control” is undefined, so expert consensus tracks future use of the word.
+- Metaculus question 44423 is an external institutional-pause forecast. It is not one of the catalog markets and does not discharge a bridge. Related Metaculus questions 38190, 38597, 31707, and 6509 are linked from the predictions hub under `relatedForecasts`. They are not in the pause slot and are not safety-case inputs. Discussion of why 6509 is underspecified stays in Appendix H.
 
 Use an explicit indexing convention throughout later work:
 
@@ -106,7 +106,7 @@ The target source of truth is a typed assurance model that records:
 
 The Lean dependency view and the PRA/Bayesian view should be projections of that model, or be mechanically checked against those projections. The richer model may itself be represented in Lean or in a typed manifest that generates Lean declarations and the risk graph. Either representation is acceptable only if there is one canonical definition for shared nodes and mappings.
 
-For the first pass, Lean remains authoritative for formal signatures and conditional implications. The versioned assurance-model manifest adds the causal/evidential relations and their justifications, imports Lean identifiers, and is checked for mapping drift. This is a staged path to one source of truth, not a claim that causal edges can be inferred from proof edges.
+For the first pass, Lean remains authoritative for formal signatures and conditional implications. The versioned safety-case-model manifest adds the causal/evidential relations and their justifications, imports Lean identifiers, and is checked for mapping drift. This is a staged path to one source of truth, not a claim that causal edges can be inferred from proof edges.
 
 If machine-generated cut sets are wanted, encode a Boolean submodel in this source with explicit `iff` gates and a stated closed-world scope. Generate cut sets only from that submodel.
 
@@ -181,7 +181,7 @@ Develop all three as draft appendix rows in Phase 3. Before any of them is added
 - a cost-feasible adversarial protocol;
 - a decision about which of the 18 components are actually required.
 
-Their **resolved experimental outputs**, not their prediction-market prices or binary YES outcomes, supply potential model inputs:
+Their **resolved experimental outputs**, not their prediction-market prices or YES/NO/OTHER outcomes, supply potential model inputs:
 
 - Market 19 can estimate benchmark-local \(P(\mathrm{ACCEPT}\mid\neg F)\), \(P(\mathrm{ACCEPT}\mid F,R)\), their uncertainty, and therefore a candidate \(S_R\) under the transfer conditions in Section 6.2.
 - Market 20 can report open-world attack exposure, success counts, discovered failure families, category-3 discoveries, and saturation curves. These results can inform sensitivity ranges or a separately specified Bayesian prior over \(\kappa\), but they do not directly estimate \(\kappa\).
@@ -279,7 +279,7 @@ Use Market 19's resolving measurements as the intended empirical source for a sc
 
 It should not announce “the TSA doom probability.”
 
-### 4.4 Canonical assurance-model manifest
+### 4.4 Canonical safety-case-model manifest
 
 Create a typed, versioned manifest with shared node identities and explicit relation types. It must support this projection:
 
@@ -773,7 +773,7 @@ Two paths for excluded internals (do not double-count):
 
 Same Phase 4 listing gates as Markets 19–20: approval, independent evaluators, and a funded resolution route. Resolve-by 31 December 2027.
 
-**Shipped (2026-09-29/30):** appendix prediction box (`sec:appp-m21`), node `m21` and dependence warning in `metadata/assurance-model.yml`, aggregation hub blurb in `metadata/predictions.yml`, assurance-demo note. Stable ID `market-21` and generated card remain Phase 4.
+**Shipped (2026-09-29/30):** appendix prediction box (`sec:appp-m21`), node `m21` and dependence warning in `metadata/safety-case-model.yml`, aggregation hub blurb in `metadata/predictions.yml`, safety-case-demo note. Stable ID `market-21` and generated card remain Phase 4.
 
 ## 10. Importance and prioritization
 
@@ -854,7 +854,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [x] Specify when Market 19's class-conditional measurements estimate \(S_R\) and when they remain benchmark-local.
 - [x] Complete the Market 20 open-world-challenge contract: eligible stack, unrestricted attack protocol, exposure measure, post hoc failure classification, raw reporting, resolver, deadline, and funding route.
 - [x] State what Market 20 can update about ontology gaps and what additional sampling assumptions would be required to infer \(\kappa\).
-- [x] Define the typed assurance-model manifest and its logical, causal, evidential, and common-cause relation types.
+- [x] Define the typed safety-case-model manifest and its logical, causal, evidential, and common-cause relation types.
 - [x] Give every causal or evidential edge a justification independent of the existence of a Lean proof edge.
 - [x] Generate or mechanically validate the Lean and PRA/Bayesian projections from the same shared node definitions.
 - [x] Separate the assurance update from the catastrophe consequence model.
@@ -894,7 +894,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] No market YES is described as discharging an `MB*`.
 - [ ] No Lean proof edge is silently treated as a causal Bayesian edge.
 - [ ] Logical and probabilistic views use the same canonical node identities and scopes.
-- [ ] Neither projection contains hand-maintained shared mappings that can drift from the assurance-model manifest.
+- [ ] Neither projection contains hand-maintained shared mappings that can drift from the safety-case-model manifest.
 - [ ] No minimal cut set is claimed from a merely sufficient proof DAG.
 - [ ] `RiskGap`, observed prohibited-outcome rate, and accepted risk tolerance remain distinct.
 - [ ] Markets 1--18 retain stable IDs and URLs.
@@ -906,7 +906,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] Markets resolve on reconstructible evidence, not adoption of TSA terminology or schemas.
 - [ ] Every deterministic resolution adapter is versioned and adds no substantive empirical inference.
 - [ ] Multi-source evidence satisfies the frozen compatibility rule and preserves denominators, versions, threat models, and provenance.
-- [ ] Method tier, market listing status, and binary resolution outcome remain distinct fields.
+- [ ] Method tier, market listing status, and three-way resolution outcome remain distinct fields.
 - [ ] No funding-gated market is externally listed without a credible funded challenge route.
 - [ ] Adversarial bars measure attack capability and independence; resource proxies are not silently treated as epistemic guarantees.
 - [ ] Every displayed probability states its conditioning event and unit of analysis.

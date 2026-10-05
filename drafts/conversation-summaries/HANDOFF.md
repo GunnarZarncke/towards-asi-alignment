@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-05 (prediction contract migration, all markets).
+Last updated: 2026-10-05 (prediction market panels).
 
 ---
 
@@ -20,6 +20,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-05:** **Market panels** — `shortTitle` / `longTitle` on catalog markets; hub panels use the short title and a Metaculus forecast slot. Log: `2026-10-05-prediction-market-panels.md`.
+- **2026-10-05:** **Predictions hub catalog** — Heading “AI alignment subproblem markets”; related forecasts (including 6509) below that list; underspecification stays in Appendix H. Log: `2026-10-05-predictions-hub-catalog-label.md`.
+- **2026-10-05:** **Safety-case site vocabulary** — Public noun is safety case; `/predictions/safety-case/`; `metadata/safety-case-model.yml`. Log: `2026-10-05-safety-case-site-vocab.md`.
+- **2026-10-05:** **Prediction cards three-way** — Hub purpose and related cards: NO is missed bars on qualifying attempts; missing evals/publication/qualification is OTHER. Log: `2026-10-05-prediction-cards-three-way.md`.
 - **2026-10-05:** **Prediction contract migration** — Markets 1–18, 21, and common qualification now use the four-environment Metaculus layout (`predictionbox` + Background / Resolution / Fine print); authbar closes before contract blocks. Sync reads resolution from `predictionresolution`. Log: `2026-10-05-prediction-contract-migration.md`.
 - **2026-10-05:** **Claim-extract rollout plan** — Ch. 42 pilot closed; lane plan covers all chapters `ch01`–`ch48`. Plan: [`claim-extract/claim-extract.md`](../plans/claim-extract/claim-extract.md) § Rollout.
 - **2026-10-05:** **Ch. 42 claim-extract pilot** — Join figure, checker, `ch42.jsonl`; pushed `5b474be47`. Logs: `2026-10-02-claim-extract-pilot.md` through `2026-10-05-ch42-p1-pass.md`.

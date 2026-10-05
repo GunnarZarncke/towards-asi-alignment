@@ -23,8 +23,8 @@ Working contracts and source material for 2027 bridge markets — not manuscript
 ## Shipped (do not re-derive from drafts)
 
 - Manuscript: `appendices/appP-bridge-predictions.tex` (print H)
-- Site: `/predictions/` hub + `prediction` cards from `metadata/predictions.yml`; `/predictions/assurance/` sensitivity demo
-- Manifest: `metadata/assurance-model.yml` (shared node IDs; Markets 19–20 draft metadata)
+- Site: `/predictions/` hub + `prediction` cards from `metadata/predictions.yml`; `/predictions/safety-case/` odds demo
+- Manifest: `metadata/safety-case-model.yml` (shared node IDs; Markets 19–20 draft metadata)
 - Lean: `formal/AlignmentProofSpine/Evidence.lean` (v1 certificate adapters)
 
 Superseded improvement drafts (v0, incentives, Lean-improvements) are in [`../attic/`](../attic/). Open listing questions (Q1/Q2/Q6) live only in the instrument plan — not in this folder.

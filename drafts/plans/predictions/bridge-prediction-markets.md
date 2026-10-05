@@ -29,10 +29,10 @@ Own the proposal as a project instrument:
 
 | Object | Where | What the proposal adds |
 |--------|--------|------------------------|
-| Live `MB*` axioms / crux `Prop`s | `Core.lean`, `MB2Identifiability.lean`, `Correction.lean`, `Forgeability.lean`, `Certification.lean` | Time-bounded, public, independently checkable **binary** operationalizations |
+| Live `MB*` axioms / crux `Prop`s | `Core.lean`, `MB2Identifiability.lean`, `Correction.lean`, `Forgeability.lean`, `Certification.lean` | Time-bounded, public, independently checkable **three-way** operationalizations |
 | WWCTV boxes | chapter ends; ch48 master disconfirmer | Calendar-dated contracts; WWCTV stays qualitative and undated |
 | Freeze / preregister / refuse | [`docs/METHODOLOGY.md`](../../../docs/METHODOLOGY.md) | Same habit, pointed at a *hidden benchmark* and a *serious adversarial budget* |
-| Backtest fail / refuse / null | [`backtest.md`](../backtest/backtest.md) | Experiments still refuse internally. **Markets map refuse → NO** (conservative lump) |
+| Backtest fail / refuse / null | [`backtest.md`](../backtest/backtest.md) | Experiments still refuse internally. **Markets map missed bars → NO; missing qualifying attempt → OTHER** |
 | App B crosswalk | `appendices/appB-bridge-crosswalk.tex` | Markets are field-facing bets on the *book’s* cuts, not on field homographs |
 | Logical-induction WWCTV | ch48; Cite/Wait in `TODO.md` | These are ordinary prediction markets, not Garrabrant LI. LI remains a side channel. |
 | Target Realization / constructibility | [`../construct/construct.md`](../construct/construct.md); not an `MB*` | Market 14 is this neighborhood, not MB11 |

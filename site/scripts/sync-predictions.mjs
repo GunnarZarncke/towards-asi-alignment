@@ -247,19 +247,39 @@ function formatAuditLine(market) {
   return `**Evidence class.** ${output}. YES predicts ${tier}. Adapter v${adapter}.${unit}`;
 }
 
+function catalogShortTitle(market) {
+  const raw = (market.shortTitle || market.shortQuestion || market.title || "").trim();
+  if (!raw) return "";
+  return raw.endsWith("?") ? raw : `${raw}?`;
+}
+
+function catalogLongTitle(market, extracted = {}) {
+  return (
+    market.longTitle ||
+    market.marketQuestion ||
+    extracted.questionLead ||
+    extracted.question ||
+    catalogShortTitle(market)
+  );
+}
+
 function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
-  const marketQuestion =
-    market.marketQuestion || extracted.questionLead || extracted.question || market.shortQuestion;
-  const summary = marketQuestion || market.shortQuestion || market.title || "";
+  const shortTitle = catalogShortTitle(market);
+  const longTitle = catalogLongTitle(market, extracted);
+  const summary = longTitle || shortTitle || market.title || "";
   const appendixFull = `${APPENDIX_H_FULL}#${appendixAnchor(market.number)}`;
   const resolveByLabel = formatResolveBy(market.resolveBy);
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
     formatListingStatus(market),
     "",
-    "## Question",
+    "## Short title",
     "",
-    marketQuestion,
+    shortTitle,
+    "",
+    "## Long title",
+    "",
+    longTitle,
     ""
   ];
   if (extracted.questionScope) {
@@ -297,8 +317,10 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
     `summary: ${yamlString(summary)}`,
     `predictionNumber: ${market.number}`,
     `predictionListingStatus: ${yamlString(market.marketStatus)}`,
+    `predictionShortTitle: ${yamlString(shortTitle)}`,
     `primaryBridge: ${yamlString(market.primaryBridge)}`,
     "resolvesMB: false",
+    ...(market.metaculusEmbedId != null ? [`metaculusEmbedId: ${market.metaculusEmbedId}`] : []),
     formatRelatedYaml(relatedForMarket(market, bridgeCardSlugs)),
     formatExternalYaml([
       { label: "Full contract (Appendix H)", url: appendixFull },
@@ -320,17 +342,17 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
 function externalFactorCardMarkdown(factor) {
   const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
   const bodyParts = [
-    "**External factor.** This forecast is hosted on Metaculus, not in the eighteen bridge contracts.",
+    "**External factor.** This forecast is hosted on Metaculus, not among the AI alignment subproblem markets.",
     "",
     factor.note?.trim() ?? "",
     "",
-    "## Role in assurance",
+    "## Role in the safety case",
     "",
     "This price forecasts whether binding legislation exists by a date. It may inform a separately modeled governance branch, complementing [Market 14](/cards/prediction/market-14/) (lab-internal binding criteria). It is **not** a direct estimate of override probability, and it is not a factor in a product bound on catastrophe.",
     "",
-    "This is **not** one of the eighteen markets. YES here does not discharge any MB*.",
+    "This is **not** one of the AI alignment subproblem markets. YES here does not discharge any MB*.",
     "",
-    `[Open on Metaculus](${factor.url}) · [How these forecasts inform assurance](${APPENDIX_H_FULL}#sec-appp-aggregation)`,
+    `[Open on Metaculus](${factor.url}) · [How these forecasts inform the safety case](${APPENDIX_H_FULL}#sec-appp-aggregation)`,
     ""
   ];
 
@@ -351,19 +373,16 @@ function externalFactorCardMarkdown(factor) {
   ].join("\n");
 }
 
-function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, underspecifiedExamples, bridgeCardSlugs) {
+function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, bridgeCardSlugs) {
   const list = markets.map((market) => {
     const cardPath = cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" });
-    return `- [Market ${market.number}. ${market.title}](${cardPath}) — ${market.shortQuestion}`;
+    return `- [Market ${market.number}. ${catalogShortTitle(market)}](${cardPath})`;
   });
   const externalList = externalFactors.map((factor) => {
     const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
     return `- [${factor.title}](${cardPath}) — ${factor.shortQuestion} *(external)*`;
   });
   const relatedList = relatedForecasts.map(
-    (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
-  );
-  const underspecifiedList = underspecifiedExamples.map(
     (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
   );
 
@@ -393,11 +412,11 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, u
     "",
     raw.purpose.trim(),
     "",
-    "**Claim strength.** Each listing question is three-outcome: YES (qualifying attempt met the bars), NO (qualifying attempt missed them), or OTHER (no qualifying attempt). None of these means a bridge is false.",
+    "**Claim strength.** Each listing question is three-outcome: YES (at least one qualifying attempt met the bars), NO (every qualifying attempt missed them), or OTHER (no qualifying attempt existed). Missing evals or missed qualification is OTHER, not NO. None of these means a bridge is false.",
     "",
-    `**Assurance.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform assurance](${APPENDIX_H_FULL}#sec-appp-aggregation) and [Assurance failure, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
+    `**Safety case.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform the safety case](${APPENDIX_H_FULL}#sec-appp-aggregation) and [False accept, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
     "",
-    "## The eighteen markets",
+    "## AI alignment subproblem markets",
     "",
     ...list,
     "",
@@ -408,19 +427,9 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, u
       ? [
           "## Related forecasts",
           "",
-          "Nearby Metaculus questions. They are not the pause factor above, not bridge markets, and not inputs to the assurance model.",
+          "Nearby Metaculus questions. They are not the pause factor above, not the subproblem markets, and not inputs to the safety-case model.",
           "",
           ...relatedList,
-          ""
-        ]
-      : []),
-    ...(underspecifiedList.length
-      ? [
-          "## An underspecified question",
-          "",
-          "Listed as a contract shape this catalog refuses. Not a forecast input.",
-          "",
-          ...underspecifiedList,
           ""
         ]
       : [])
@@ -507,7 +516,6 @@ if (missingSections.length) {
 for (const market of markets) assertMarketAudit(market);
 const externalFactors = [...(raw.externalFactors ?? [])];
 const relatedForecasts = [...(raw.relatedForecasts ?? [])];
-const underspecifiedExamples = [...(raw.underspecifiedExamples ?? [])];
 
 await rm(predictionCardsDir, { recursive: true, force: true });
 await mkdir(predictionCardsDir, { recursive: true });
@@ -516,7 +524,7 @@ let cardCount = 0;
 
 await writeFile(
   path.join(predictionCardsDir, "overview.md"),
-  overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, underspecifiedExamples, bridgeCardSlugs),
+  overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, bridgeCardSlugs),
   "utf8"
 );
 cardCount += 1;
@@ -525,24 +533,25 @@ const enrichedMarkets = markets.map((market) => {
   const section = sectionByNumber.get(market.number);
   const box = section ? extractPredictionBox(section.body) : {};
   const priorTest = section ? extractPriorTest(section.body) : "";
-  const marketQuestion =
-    market.marketQuestion || box.questionLead || box.question || market.shortQuestion;
+  const longTitle = catalogLongTitle(market, box);
   if (
-    market.marketQuestion &&
+    longTitle &&
     box.questionLead &&
-    normalizeQuestion(market.marketQuestion) !== normalizeQuestion(box.questionLead)
+    normalizeQuestion(longTitle) !== normalizeQuestion(box.questionLead)
   ) {
     console.warn(
-      `sync-predictions: market ${market.number} marketQuestion differs from appendix lead sentence`
+      `sync-predictions: market ${market.number} longTitle differs from appendix lead sentence`
     );
   }
   return {
     ...market,
     cardId: market.id,
     cardPath: cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" }),
-    marketQuestion,
+    shortTitle: catalogShortTitle(market),
+    longTitle,
+    marketQuestion: longTitle,
     questionScope: box.questionScope || "",
-    question: marketQuestion,
+    question: longTitle,
     priorTest
   };
 });
@@ -573,14 +582,14 @@ for (const factor of externalFactors) {
 }
 
 const aggregation = {
-  title: raw.aggregation?.title ?? "How these forecasts inform assurance",
+  title: raw.aggregation?.title ?? "How these forecasts inform the safety case",
   appendixAnchor: raw.aggregation?.appendixAnchor ?? "sec:appp-aggregation",
   blurb: collapseBlurb(raw.aggregation?.blurb),
   hubNote: collapseBlurb(raw.aggregation?.hubNote),
   assuranceAnchor: "sec:appp-assurance"
 };
 const graphPlaceholder = {
-  title: raw.graphPlaceholder?.title ?? "Assurance context, not a doom product",
+  title: raw.graphPlaceholder?.title ?? "Safety-case context, not a doom product",
   blurb: collapseBlurb(raw.graphPlaceholder?.blurb)
 };
 
@@ -591,7 +600,6 @@ const payload = {
   markets: enrichedMarkets,
   externalFactors: enrichedExternalFactors,
   relatedForecasts,
-  underspecifiedExamples,
   resolution: raw.resolution ?? {},
   aggregation,
   graphPlaceholder

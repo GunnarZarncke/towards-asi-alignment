@@ -230,7 +230,7 @@ async function main() {
         "mb6-selection-and-basin-stability"
       ],
       bodyExtra:
-        "Eighteen binary 2027 contracts on the book's live bridges. A YES means a public artifact met these bars by 31 December 2027; it does not discharge a bridge and is not a joint safety case. Boxed text is the public spec; surrounding prose is the book's terms."
+        "Three-way 2027 contracts on the book's live bridges. YES means at least one qualifying attempt met the frozen bars; NO means every qualifying attempt missed those bars; OTHER means no qualifying attempt existed. None of these discharges a bridge or makes a joint safety case. Boxed text is the public spec; surrounding prose is the book's terms."
     },
     {
       id: "appN",

@@ -1,25 +1,25 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  assuranceOddsRatio,
-  computeAssuranceUpdate,
+  computeSafetyCaseUpdate,
   oddsToProbability,
-  perAttemptCatastropheProbability
-} from "./assurance-demo.ts";
+  perAttemptCatastropheProbability,
+  safetyCaseOddsRatio
+} from "./safety-case-demo.ts";
 
-test("assuranceOddsRatio with S_U=1 reduces to (1-kappa)+kappa/S_R", () => {
+test("safetyCaseOddsRatio with S_U=1 reduces to (1-kappa)+kappa/S_R", () => {
   const kappa = 0.9;
   const sR = 10;
-  assert.equal(assuranceOddsRatio(kappa, sR, 1), (1 - kappa) + kappa / sR);
+  assert.equal(safetyCaseOddsRatio(kappa, sR, 1), (1 - kappa) + kappa / sR);
 });
 
 test("perfect S_R still leaves 1-kappa odds multiplier under S_U=1", () => {
-  const ratio = assuranceOddsRatio(0.9, 1e9, 1);
+  const ratio = safetyCaseOddsRatio(0.9, 1e9, 1);
   assert.ok(Math.abs(ratio - 0.1) < 1e-6);
 });
 
-test("computeAssuranceUpdate separates consequence layer", () => {
-  const out = computeAssuranceUpdate({
+test("computeSafetyCaseUpdate separates consequence layer", () => {
+  const out = computeSafetyCaseUpdate({
     priorOdds: 1,
     kappa: 0.5,
     sR: 2,

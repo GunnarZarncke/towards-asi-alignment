@@ -7,9 +7,9 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
 const repoRoot = path.resolve(siteRoot, "..");
 
-const sourcePath = path.join(repoRoot, "metadata", "assurance-model.yml");
+const sourcePath = path.join(repoRoot, "metadata", "safety-case-model.yml");
 const evidencePath = path.join(repoRoot, "formal", "AlignmentProofSpine", "Evidence.lean");
-const outputPath = path.join(siteRoot, "src", "data", "assurance-model.json");
+const outputPath = path.join(siteRoot, "src", "data", "safety-case-model.json");
 
 function leanIdentifiers(text) {
   const ids = new Set();
@@ -34,9 +34,9 @@ for (const node of raw.nodes ?? []) {
 }
 
 if (drift.length) {
-  for (const line of drift) console.warn(`sync-assurance-model: ${line}`);
+  for (const line of drift) console.warn(`sync-safety-case-model: ${line}`);
 } else {
-  console.log("sync-assurance-model: Lean identifier check passed");
+  console.log("sync-safety-case-model: Lean identifier check passed");
 }
 
 const payload = {
@@ -54,4 +54,4 @@ const payload = {
 
 await mkdir(path.dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-console.log(`sync-assurance-model: wrote assurance-model.json (${payload.nodes.length} nodes)`);
+console.log(`sync-safety-case-model: wrote safety-case-model.json (${payload.nodes.length} nodes)`);

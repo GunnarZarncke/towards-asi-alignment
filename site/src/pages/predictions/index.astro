@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import PredictionsGaussIcon from "../../components/PredictionsGaussIcon.astro";
 import PredictionsGraphPlaceholder from "../../components/PredictionsGraphPlaceholder.astro";
+import PredictionMarketPanel from "../../components/PredictionMarketPanel.astro";
 import predictions from "../../data/predictions.json";
 import { bookFullHref, cardHrefForCard } from "../../lib/site-urls";
 
@@ -24,20 +25,16 @@ const externalPredictionCards = allCards.filter(
 );
 
 const relatedForecasts = predictions.relatedForecasts ?? [];
-const underspecifiedExamples = predictions.underspecifiedExamples ?? [];
 
 const overviewCard = allCards.find(
   (c) => c.data.type === "prediction" && c.data.predictionOverview
 );
 
 const purpose = predictions.purpose?.replace(/\s+/g, " ").trim() ?? "";
-const marketQuestionByNumber = new Map(
-  (predictions.markets ?? []).map((market) => [market.number, market.marketQuestion ?? market.question ?? ""])
+const cardByNumber = new Map(
+  predictionCards.map((card) => [card.data.predictionNumber ?? 0, card])
 );
-const marketStatusByNumber = new Map(
-  (predictions.markets ?? []).map((market) => [market.number, market.marketStatus ?? "draft"])
-);
-const listingStatusLabel = {
+const listingStatusLabel: Record<string, string> = {
   draft: "Draft",
   "funding-gated": "Funding-gated",
   "ready-to-list": "Ready to list",
@@ -47,9 +44,9 @@ const listingStatusLabel = {
   "resolved-other": "Resolved OTHER"
 };
 const graph = predictions.graphPlaceholder ?? {
-  title: "Assurance context, not a doom product",
+  title: "Safety-case context, not a doom product",
   blurb:
-    "Eighteen contracts price operational milestones. An external Metaculus forecast prices institutional pause capacity. Neither is a safety-case probability, and their product is not a bound on catastrophe."
+    "These contracts price operational milestones. An external Metaculus forecast prices institutional pause capacity. Neither is a safety-case probability, and their product is not a bound on catastrophe."
 };
 const aggregation = predictions.aggregation;
 const appendixFullHref = bookFullHref(base, "appP");
@@ -60,7 +57,7 @@ const aggregationHref = aggregation?.appendixAnchor
 
 <SiteLayout
   title="Predictions"
-  description={purpose || "Eighteen 2027 contracts on whether published methods meet frozen operational bars."}
+  description={purpose || "2027 contracts on whether published methods meet frozen operational bars."}
 >
   <section class="hero">
     <p class="eyebrow predictions-eyebrow">
@@ -79,7 +76,7 @@ const aggregationHref = aggregation?.appendixAnchor
       }
       <a class="button" href={appendixFullHref}>Appendix H (full)</a>
       <a class="button" href={withBase("/cards/appendix/appB/")}>Bridge crosswalk</a>
-      <a class="button" href={withBase("/predictions/assurance/")}>Assurance sensitivity</a>
+      <a class="button" href={withBase("/predictions/safety-case/")}>Safety-case odds</a>
       <a class="button" href={withBase("/cards/funding/prediction-evaluation-program/")}>Fund evaluations</a>
     </div>
   </section>
@@ -92,7 +89,7 @@ const aggregationHref = aggregation?.appendixAnchor
         <h2 id="predictions-aggregation-heading">{aggregation.title}</h2>
         <p>{aggregation.blurb}</p>
         <p class="aggregation-note">
-          <a href={aggregationHref}>Read the assurance sections in Appendix H</a>
+          <a href={aggregationHref}>Read the safety-case sections in Appendix H</a>
           {" "}— {aggregation.hubNote || "three evidence levels, the F/R/U odds update, and why Market 14 is not an override probability."}
         </p>
       </section>
@@ -121,12 +118,38 @@ const aggregationHref = aggregation?.appendixAnchor
     )
   }
 
+  <section class="predictions-market-grid readable" aria-label="AI alignment subproblem markets">
+    <h2 class="section-heading">AI alignment subproblem markets</h2>
+    <p class="listing-note">
+      These are candidate contracts, not live markets. “Funding-gated” means that a credible YES route needs an unfunded independent evaluation or challenge; it does not mean the technical claim is false.
+    </p>
+    <div class="market-panels">
+      {
+        (predictions.markets ?? []).map((market) => {
+          const card = cardByNumber.get(market.number);
+          if (!card) return null;
+          const status = market.marketStatus ?? "draft";
+          return (
+            <PredictionMarketPanel
+              number={market.number}
+              shortTitle={market.shortTitle || market.title}
+              href={cardHrefForCard(base, card)}
+              listingStatus={status}
+              listingLabel={listingStatusLabel[status] ?? status}
+              embedId={market.metaculusEmbedId}
+            />
+          );
+        })
+      }
+    </div>
+  </section>
+
   {
     relatedForecasts.length > 0 && (
       <section class="predictions-related readable" aria-labelledby="predictions-related-heading">
         <h2 id="predictions-related-heading">Related forecasts</h2>
         <p class="external-intro">
-          Nearby Metaculus questions. Not the pause factor above, not bridge markets, and not inputs to the assurance model.
+          Nearby Metaculus questions. Not the pause factor above, not the subproblem markets, and not inputs to the safety-case model.
         </p>
         <ul class="external-list">
           {relatedForecasts.map((item) => (
@@ -142,56 +165,6 @@ const aggregationHref = aggregation?.appendixAnchor
       </section>
     )
   }
-
-  {
-    underspecifiedExamples.length > 0 && (
-      <section class="predictions-underspecified readable" aria-labelledby="predictions-underspecified-heading">
-        <h2 id="predictions-underspecified-heading">An underspecified question</h2>
-        <p class="external-intro">
-          Listed as a contract shape this catalog refuses. Not a forecast input.
-        </p>
-        <ul class="external-list">
-          {underspecifiedExamples.map((item) => (
-            <li>
-              <a href={item.url}>
-                <span class="underspecified-badge">Example</span>
-                {item.title}
-              </a>
-              <p class="market-summary">{(item.note ?? "").replace(/\s+/g, " ").trim()}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
-
-  <section class="predictions-market-grid readable" aria-label="Eighteen markets">
-    <h2 class="section-heading">The eighteen markets</h2>
-    <p class="listing-note">
-      These are candidate contracts, not live markets. “Funding-gated” means that a credible YES route needs an unfunded independent evaluation or challenge; it does not mean the technical claim is false.
-    </p>
-    <ol class="market-list">
-      {
-        predictionCards.map((card) => (
-          <li>
-            <a href={cardHrefForCard(base, card)}>
-              <span class="market-num">{card.data.predictionNumber}.</span>
-              <span class="market-title">{card.data.title.replace(/^Market \d+\.\s*/, "")}</span>
-              <span class:list={[
-                "listing-status",
-                `listing-status-${marketStatusByNumber.get(card.data.predictionNumber ?? 0) ?? "draft"}`
-              ]}>
-                {listingStatusLabel[marketStatusByNumber.get(card.data.predictionNumber ?? 0) ?? "draft"]}
-              </span>
-            </a>
-            <p class="market-summary">
-              {marketQuestionByNumber.get(card.data.predictionNumber ?? 0) || card.data.summary}
-            </p>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
 </SiteLayout>
 
 <style>
@@ -220,77 +193,25 @@ const aggregationHref = aggregation?.appendixAnchor
   }
 
   .predictions-market-grid {
-    max-width: 52rem;
+    max-width: 56rem;
     margin-bottom: 2.5rem;
   }
 
-  .market-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .market-panels {
     display: grid;
-    gap: 1.1rem;
-  }
-
-  .market-list li {
-    margin: 0;
-    padding: 0 0 1rem;
-    border-bottom: 1px solid var(--color-border, #c8d4e0);
-  }
-
-  .market-list a {
-    font-weight: 600;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .market-list a:hover {
-    text-decoration: underline;
-  }
-
-  .market-num {
-    color: color-mix(in srgb, var(--color-text) 55%, transparent);
-    margin-right: 0.25rem;
-  }
-
-  .listing-status {
-    display: inline-block;
-    margin-left: 0.55rem;
-    padding: 0.08rem 0.38rem;
-    border: 1px solid color-mix(in srgb, var(--color-text) 24%, transparent);
-    border-radius: 999px;
-    font-size: 0.68rem;
-    font-weight: 600;
-    line-height: 1.3;
-    vertical-align: 0.08rem;
-    color: color-mix(in srgb, var(--color-text) 72%, transparent);
-  }
-
-  .listing-status-funding-gated {
-    border-color: color-mix(in srgb, #c2410c 42%, transparent);
-    color: color-mix(in srgb, #c2410c 82%, var(--color-text));
-    background: color-mix(in srgb, #c2410c 7%, transparent);
-  }
-
-  .market-summary {
-    margin: 0.35rem 0 0;
-    font-size: 0.95rem;
-    line-height: 1.45;
-    opacity: 0.92;
+    gap: 1rem;
   }
 
   .predictions-aggregation,
   .predictions-external,
-  .predictions-related,
-  .predictions-underspecified {
+  .predictions-related {
     max-width: 52rem;
     margin-bottom: 2rem;
   }
 
   .predictions-aggregation h2,
   .predictions-external h2,
-  .predictions-related h2,
-  .predictions-underspecified h2 {
+  .predictions-related h2 {
     font-size: 1.15rem;
     margin: 0 0 0.65rem;
   }
@@ -321,17 +242,11 @@ const aggregationHref = aggregation?.appendixAnchor
     color: inherit;
   }
 
-  .underspecified-badge {
-    display: inline-block;
-    margin-right: 0.45rem;
-    padding: 0.1rem 0.4rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    border-radius: 0.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-text) 28%, transparent);
-    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  .market-summary {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.92;
   }
 
   .related-badge {
