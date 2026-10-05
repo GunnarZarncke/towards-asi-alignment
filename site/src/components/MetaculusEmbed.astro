@@ -2,13 +2,14 @@
 interface Props {
   questionId: number;
   title?: string;
+  layout?: "inline" | "panel";
 }
 
-const { questionId, title = "Metaculus forecast" } = Astro.props;
+const { questionId, title = "Metaculus forecast", layout = "inline" } = Astro.props;
 const src = `https://www.metaculus.com/questions/embed/${questionId}/`;
 ---
 
-<div class="metaculus-embed-wrap">
+<div class:list={["metaculus-embed-wrap", layout === "panel" && "metaculus-embed-wrap--panel"]}>
   <iframe
     class="metaculus-embed"
     src={src}
@@ -21,17 +22,32 @@ const src = `https://www.metaculus.com/questions/embed/${questionId}/`;
 <style>
   .metaculus-embed-wrap {
     margin: 1.25rem 0 1.5rem;
-    max-width: 36rem;
+    width: 100%;
+    max-width: none;
     border: 1px solid var(--color-border, #c8d4e0);
     border-radius: 0.5rem;
     overflow: hidden;
     background: var(--color-surface, #fff);
   }
 
+  .metaculus-embed-wrap--panel {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    margin: 0;
+    min-width: 0;
+    min-height: 27rem;
+  }
+
   .metaculus-embed {
     display: block;
     width: 100%;
-    min-height: 22rem;
+    min-height: 33rem;
     border: none;
+  }
+
+  .metaculus-embed-wrap--panel .metaculus-embed {
+    flex: 1 1 auto;
+    min-height: 27rem;
   }
 </style>

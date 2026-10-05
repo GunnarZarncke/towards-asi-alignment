@@ -25,9 +25,8 @@ purpose: >
   subproblems of AI alignment by the AI 2027 deadline. A YES is evidence
   about operationalization (up to the spec), not proof that the problem is
   solved on frontier systems. Also not a probability of catastrophe.
-  A NO is only a missed performance bar: at least one qualifying attempt existed,
-  and every qualifying attempt missed the frozen bars. Missing evals, missing
-  publication, or missed qualification requirements resolve OTHER, not NO.
+  A NO is trials missing the performance bar. Missing evals, missing
+  publication, or missed qualification requirements resolve OTHER.
 
 overview:
   title: "2027 bridge predictions"
@@ -39,23 +38,17 @@ aggregation:
   title: "How these forecasts inform the safety case"
   appendixAnchor: "sec:appp-aggregation"
   blurb: >
-    Market prices forecast whether qualifying artifacts exist by a deadline.
-    They are not multiplied into P(doom). A later odds update of a false accept
-    is separate from any catastrophe consequence model.
-    The catalog markets follow the book's exclusion of model internals.
-    Market 21 is the wrapper around that exclusion: research readiness for
-    alignment inside models, and the certificate that can move a covered
-    defect out of the unrepresented branch. Its price is not κ.
-  hubNote: >
-    three evidence levels, the F/R/U odds update, and why Market 14 is not an
-    override probability.
+    Market prices forecast whether suitable artifacts exist by the AI 2027 deadline. 
+    This does not directly determine P(doom), because the catastrophe despite 
+    safety case and non-catastrophe despite non-safety are not covered by these markets.
+    But these markets provide odds-ratios that may update your P(doom). 
+    A calculator for that is provided below.
 
 graphPlaceholder:
-  title: "Safety-case context, not a doom product"
+  title: "Safety-case estimation"
   blurb: >
-    These contracts price operational milestones. An external Metaculus
-    forecast prices institutional pause capacity. Neither is a safety-case
-    probability.
+    These contracts price operational milestones. 
+    An external Metaculus forecast prices institutional pause capacity. 
 
 resolution:
   listingStatuses:
@@ -573,41 +566,40 @@ externalFactors:
     embedId: 44423
     url: "https://www.metaculus.com/questions/44423/will-ai-safety-legislation-be-enacted-in-2027-2028/"
     note: >
-      Crowd forecast of institutional capacity to slow or restrict frontier deployment when
-      evidence warrants it. This pairs with Market 14 (lab-internal binding criteria) as a 
-      separately modeled governance branch, not as a numerical override probability.
+      Pairs with Market 14 (lab-internal binding criteria) as a separately modeled
+      governance branch. Crowd price of institutional pause capacity, not a numerical
+      override probability and not a safety-case input.
 
-# Nearby Metaculus questions. Linked from the predictions hub. Not externalFactors:
-# they do not occupy the pause slot, are not embedded, and are not safety-case inputs.
+# Nearby Metaculus questions. Hub lists these with externalFactors as related-forecast panels
+# (Metaculus links and embeds; not subproblem markets or safety-case inputs).
+# Panel notes: add context only — do not restate the embed title or listing question.
 relatedForecasts:
   - id: metaculus-38190
     title: "US mandate for AI model safety checks"
     platform: metaculus
     url: "https://www.metaculus.com/questions/38190/"
     note: >
-      Whether a federal law, regulation, or executive order requiring safety checks
-      for AI models is in place before 20 January 2029. A duty to check, not pause
-      or veto authority.
+      A duty to check, not pause or veto authority. Near governance context for the
+      catalog; not a subproblem market or safety-case input.
   - id: metaculus-38597
     title: "US veto on frontier AI deployment"
     platform: metaculus
     url: "https://www.metaculus.com/questions/38597/"
     note: >
-      Whether the United States government has formal veto power over frontier-model
-      deployment before 2028. Government veto, separate from Market 14's lab-internal
-      process and from the pause-legislation factor.
+      Government veto, separate from Market 14's lab-internal process and from the
+      pause-legislation external factor. Tracks formal deployment gate, not voluntary
+      lab criteria.
   - id: metaculus-31707
     title: "Experts calling alignment techniques sufficient in 2029"
     platform: metaculus
     url: "https://www.metaculus.com/questions/31707/"
     note: >
-      What percentage of AI alignment experts surveyed in 2029 will call the
-      techniques of that time sufficient. An opinion poll, not a published method
-      and not a bridge discharge.
+      Opinion poll of alignment researchers, not a published method meeting frozen
+      bars and not a bridge discharge. Mood context only.
   - id: metaculus-6509
     title: "Control problem solved before weak AGI"
     platform: metaculus
     url: "https://www.metaculus.com/questions/6509/"
     note: >
-      Whether a later expert consensus will say the control problem was solved
-      before weak AGI.
+      Resolves on later expert consensus; "control problem" and "weak AGI" are
+      underspecified relative to this catalog. Kept as related context — see Appendix H.

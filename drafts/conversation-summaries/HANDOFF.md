@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-05 (prediction market panels).
+Last updated: 2026-10-05 (predictions hub panels polish).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-05:** **Predictions hub panels polish** — Related forecasts include external factor; two-column Metaculus panels; contextual notes; market cards render resolution blocks (`YES requires`, `Output`, Background). Log: `2026-10-05-predictions-hub-panels-polish.md`.
 - **2026-10-05:** **Market panels** — `shortTitle` / `longTitle` on catalog markets; hub panels use the short title and a Metaculus forecast slot. Log: `2026-10-05-prediction-market-panels.md`.
 - **2026-10-05:** **Predictions hub catalog** — Heading “AI alignment subproblem markets”; related forecasts (including 6509) below that list; underspecification stays in Appendix H. Log: `2026-10-05-predictions-hub-catalog-label.md`.
 - **2026-10-05:** **Safety-case site vocabulary** — Public noun is safety case; `/predictions/safety-case/`; `metadata/safety-case-model.yml`. Log: `2026-10-05-safety-case-site-vocab.md`.

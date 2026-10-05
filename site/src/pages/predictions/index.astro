@@ -20,11 +20,36 @@ const predictionCards = allCards
   )
   .sort((a, b) => (a.data.predictionNumber ?? 0) - (b.data.predictionNumber ?? 0));
 
-const externalPredictionCards = allCards.filter(
-  (c) => c.data.type === "prediction" && c.data.predictionExternal
-);
-
 const relatedForecasts = predictions.relatedForecasts ?? [];
+const externalFactors = predictions.externalFactors ?? [];
+
+function metaculusQuestionId(url: string): number | undefined {
+  const match = url.match(/metaculus\.com\/questions\/(\d+)/i);
+  return match ? Number(match[1]) : undefined;
+}
+
+function collapseNote(note?: string): string {
+  return (note ?? "").replace(/\s+/g, " ").trim();
+}
+
+const relatedForecastPanels = [
+  ...externalFactors.map((factor) => ({
+    id: factor.id,
+    shortTitle: factor.shortQuestion || factor.title,
+    href: factor.url,
+    embedId: factor.embedId ?? metaculusQuestionId(factor.url),
+    note: collapseNote(factor.note),
+    badge: "external" as const
+  })),
+  ...relatedForecasts.map((item) => ({
+    id: item.id,
+    shortTitle: item.title,
+    href: item.url,
+    embedId: item.embedId ?? metaculusQuestionId(item.url),
+    note: collapseNote(item.note),
+    badge: "related" as const
+  }))
+];
 
 const overviewCard = allCards.find(
   (c) => c.data.type === "prediction" && c.data.predictionOverview
@@ -96,29 +121,7 @@ const aggregationHref = aggregation?.appendixAnchor
     )
   }
 
-  {
-    externalPredictionCards.length > 0 && (
-      <section class="predictions-external readable" aria-labelledby="predictions-external-heading">
-        <h2 id="predictions-external-heading">External factors</h2>
-        <p class="external-intro">
-          Not bridge markets. Crowd forecasts of institutional pause capacity, modeled separately from Market 14. Not a factor in a product bound on catastrophe.
-        </p>
-        <ul class="external-list">
-          {externalPredictionCards.map((card) => (
-            <li>
-              <a href={cardHrefForCard(base, card)}>
-                <span class="external-badge">External</span>
-                {card.data.title.replace(/^Market \d+\.\s*/, "")}
-              </a>
-              <p class="market-summary">{card.data.summary}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
-
-  <section class="predictions-market-grid readable" aria-label="AI alignment subproblem markets">
+  <section class="predictions-market-grid predictions-panels-section" aria-label="AI alignment subproblem markets">
     <h2 class="section-heading">AI alignment subproblem markets</h2>
     <p class="listing-note">
       These are candidate contracts, not live markets. “Funding-gated” means that a credible YES route needs an unfunded independent evaluation or challenge; it does not mean the technical claim is false.
@@ -145,23 +148,24 @@ const aggregationHref = aggregation?.appendixAnchor
   </section>
 
   {
-    relatedForecasts.length > 0 && (
-      <section class="predictions-related readable" aria-labelledby="predictions-related-heading">
+    relatedForecastPanels.length > 0 && (
+      <section class="predictions-related predictions-panels-section" aria-labelledby="predictions-related-heading">
         <h2 id="predictions-related-heading">Related forecasts</h2>
         <p class="external-intro">
-          Nearby Metaculus questions. Not the pause factor above, not the subproblem markets, and not inputs to the safety-case model.
+          Live Metaculus questions, including the external pause factor. Not subproblem markets and not inputs to the safety-case model.
         </p>
-        <ul class="external-list">
-          {relatedForecasts.map((item) => (
-            <li>
-              <a href={item.url}>
-                <span class="related-badge">Related</span>
-                {item.title}
-              </a>
-              <p class="market-summary">{(item.note ?? "").replace(/\s+/g, " ").trim()}</p>
-            </li>
+        <div class="market-panels">
+          {relatedForecastPanels.map((item) => (
+            <PredictionMarketPanel
+              shortTitle={item.shortTitle}
+              href={item.href}
+              embedId={item.embedId}
+              note={item.note || undefined}
+              badge={item.badge}
+              externalLink
+            />
           ))}
-        </ul>
+        </div>
       </section>
     )
   }
@@ -192,25 +196,36 @@ const aggregationHref = aggregation?.appendixAnchor
     opacity: 0.85;
   }
 
-  .predictions-market-grid {
-    max-width: 56rem;
+  .predictions-panels-section {
+    width: 100%;
+    max-width: none;
     margin-bottom: 2.5rem;
+  }
+
+  .predictions-related.predictions-panels-section {
+    margin-bottom: 2rem;
   }
 
   .market-panels {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    align-items: stretch;
   }
 
-  .predictions-aggregation,
-  .predictions-external,
-  .predictions-related {
-    max-width: 52rem;
+  /* Metaculus desktop charts need ~33rem+ iframe width; cap at two columns. */
+  @media (min-width: 960px) {
+    .market-panels {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .predictions-aggregation {
+    max-width: var(--max-readable);
     margin-bottom: 2rem;
   }
 
   .predictions-aggregation h2,
-  .predictions-external h2,
   .predictions-related h2 {
     font-size: 1.15rem;
     margin: 0 0 0.65rem;
@@ -221,57 +236,5 @@ const aggregationHref = aggregation?.appendixAnchor
     font-size: 0.95rem;
     line-height: 1.45;
     opacity: 0.92;
-  }
-
-  .external-list {
-    list-style: none;
-    margin: 0.75rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-  }
-
-  .external-list li {
-    padding-bottom: 0.85rem;
-    border-bottom: 1px solid var(--color-border, #c8d4e0);
-  }
-
-  .external-list a {
-    font-weight: 600;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .market-summary {
-    margin: 0.35rem 0 0;
-    font-size: 0.95rem;
-    line-height: 1.45;
-    opacity: 0.92;
-  }
-
-  .related-badge {
-    display: inline-block;
-    margin-right: 0.45rem;
-    padding: 0.1rem 0.4rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    border-radius: 0.25rem;
-    background: color-mix(in srgb, var(--color-text) 8%, var(--color-surface));
-    color: color-mix(in srgb, var(--color-text) 75%, transparent);
-  }
-
-  .external-badge {
-    display: inline-block;
-    margin-right: 0.45rem;
-    padding: 0.1rem 0.4rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    border-radius: 0.25rem;
-    background: color-mix(in srgb, #c2410c 12%, var(--color-surface));
-    color: color-mix(in srgb, #c2410c 85%, var(--color-text));
   }
 </style>

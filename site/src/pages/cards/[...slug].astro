@@ -282,9 +282,7 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
           ) : (
             <h1>{card.data.title}</h1>
           )}
-          {!isOverviewHub && !(isPredictionCard && !isExternalPrediction) && (
-            <p class="lede">{card.data.summary}</p>
-          )}
+          {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
           {isExternalPrediction && (
             <div class="callout external-prediction-callout">
               <p>

@@ -23,6 +23,11 @@ function yamlString(value) {
   return JSON.stringify(value ?? "");
 }
 
+function metaculusQuestionId(url) {
+  const match = String(url ?? "").match(/metaculus\.com\/questions\/(\d+)/i);
+  return match ? Number(match[1]) : undefined;
+}
+
 function formatRelatedYaml(related) {
   if (!related?.length) return "related: []";
   return `related:\n${related.map((id) => `  - ${yamlString(id)}`).join("\n")}`;
@@ -58,6 +63,58 @@ function stripLatexInline(text) {
     .replace(/\s+/g, " ")
     .trim();
 }
+
+function convertBasicLatexLists(text) {
+  return text
+    .replace(/\\begin\{itemize\}([\s\S]*?)\\end\{itemize\}/g, (_, items) => {
+      const lines = [...items.matchAll(/\\item\s*([\s\S]*?)(?=\\item|$)/g)];
+      return `${lines.map((match) => `- ${stripLatexInline(match[1])}`).join("\n")}\n`;
+    })
+    .replace(/\\begin\{enumerate\}([\s\S]*?)\\end\{enumerate\}/g, (_, items) => {
+      const lines = [...items.matchAll(/\\item\s*([\s\S]*?)(?=\\item|$)/g)];
+      return `${lines
+        .map((match, index) => `${index + 1}. ${stripLatexInline(match[1])}`)
+        .join("\n")}\n`;
+    })
+    .replace(
+      /\\begin\{description\}[\s\S]*?\\end\{description\}/g,
+      (block) =>
+        [...block.matchAll(/\\item\[([^\]]*)\]\s*([\s\S]*?)(?=\\item\[|$)/g)]
+          .map((match) => `- **${stripLatexInline(match[1])}** ${stripLatexInline(match[2])}`)
+          .join("\n") + "\n"
+    );
+}
+
+function formatLatexParagraphs(text) {
+  return convertBasicLatexLists(text)
+    .split(/\n\s*\n|\n(?=[A-Z"(\[])/)
+    .map((para) => stripLatexInline(para))
+    .filter(Boolean)
+    .join("\n\n");
+}
+
+function extractResolutionBlocks(resolutionInner) {
+  const trimmed = resolutionInner.trim();
+  if (!trimmed) return [];
+
+  const blocks = [];
+  const re = /\\textbf\{([^}]+)\}\s*([\s\S]*?)(?=\\textbf\{|$)/g;
+  let match;
+  while ((match = re.exec(trimmed)) !== null) {
+    const label = stripLatexInline(match[1]).replace(/\.$/, "").trim();
+    const body = formatLatexParagraphs(match[2]);
+    if (label || body) blocks.push({ label, body });
+  }
+
+  if (!blocks.length) {
+    const body = formatLatexParagraphs(trimmed);
+    if (body) blocks.push({ label: "", body });
+  }
+  return blocks;
+}
+
+const RESOLUTION_THREE_WAY_INTRO =
+  "These bars define when a qualifying attempt counts toward **YES**. A qualifying attempt that ran but missed them counts toward **NO** when no other qualifying attempt met them. Missing evals, missing publication, or unmet qualification requirements resolve **OTHER**.";
 
 function assertPlainCardText(label, text) {
   if (!text) return;
@@ -110,17 +167,6 @@ function extractContractEnv(sectionBody, envName) {
   return match?.[1]?.trim() ?? "";
 }
 
-function extractResolutionFields(resolutionInner) {
-  const yesMatch = resolutionInner.match(
-    /\\textbf\{YES requires\}\s*([\s\S]*?)(?=\\textbf\{Output\.\}|$)/
-  );
-  const outputMatch = resolutionInner.match(/\\textbf\{Output\.\}\s*([\s\S]*?)$/);
-  return {
-    yesRequires: stripLatexInline(yesMatch?.[1] ?? ""),
-    output: stripLatexInline(outputMatch?.[1] ?? "")
-  };
-}
-
 function extractPredictionBox(sectionBody) {
   const boxes = [
     ...sectionBody.matchAll(
@@ -133,8 +179,8 @@ function extractPredictionBox(sectionBody) {
       question: "",
       questionLead: "",
       questionScope: "",
-      yesRequires: "",
-      output: ""
+      background: "",
+      resolutionBlocks: []
     };
   }
   const optionalTitle = boxes[0][1]?.trim() ?? "";
@@ -145,21 +191,28 @@ function extractPredictionBox(sectionBody) {
   const questionRaw = questionMatch?.[1] ?? "";
   const { questionLead, questionScope } = splitQuestionBlock(questionRaw);
 
+  const backgroundInner = extractContractEnv(sectionBody, "predictionbackground");
   const resolutionInner = extractContractEnv(sectionBody, "predictionresolution");
   const legacyInner = resolutionInner ? "" : frontInner;
-  const { yesRequires, output } = resolutionInner
-    ? extractResolutionFields(resolutionInner)
-    : extractResolutionFields(legacyInner);
+  const resolutionBlocks = resolutionInner
+    ? extractResolutionBlocks(resolutionInner)
+    : extractResolutionBlocks(legacyInner);
 
   const extracted = {
     title: optionalTitle,
     question: stripLatexInline(questionRaw),
     questionLead,
     questionScope,
-    yesRequires,
-    output
+    background: formatLatexParagraphs(backgroundInner),
+    resolutionBlocks
   };
   for (const [field, value] of Object.entries(extracted)) {
+    if (field === "resolutionBlocks") {
+      for (const block of value) {
+        assertPlainCardText(`prediction box resolution ${block.label || "block"}`, block.body);
+      }
+      continue;
+    }
     assertPlainCardText(`prediction box ${field}`, value);
   }
   return extracted;
@@ -272,24 +325,30 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
     formatListingStatus(market),
-    "",
-    "## Short title",
-    "",
-    shortTitle,
-    "",
-    "## Long title",
-    "",
-    longTitle,
     ""
   ];
+  if (extracted.background) {
+    bodyParts.push("## Background", "", extracted.background, "");
+  }
   if (extracted.questionScope) {
     bodyParts.push("## Scope", "", extracted.questionScope, "");
   }
-  if (extracted.yesRequires) {
-    bodyParts.push("## YES requires", "", extracted.yesRequires, "");
-  }
-  if (extracted.output) {
-    bodyParts.push("## Output", "", extracted.output, "");
+  if (extracted.resolutionBlocks?.length) {
+    bodyParts.push("## Resolution criteria", "");
+    const hasYesRequires = extracted.resolutionBlocks.some((block) =>
+      block.label.toLowerCase().includes("yes requires")
+    );
+    if (hasYesRequires) {
+      bodyParts.push(RESOLUTION_THREE_WAY_INTRO, "");
+    }
+    for (const block of extracted.resolutionBlocks) {
+      if (block.label) {
+        bodyParts.push(`### ${block.label}`, "");
+      }
+      if (block.body) {
+        bodyParts.push(block.body, "");
+      }
+    }
   }
   const auditLine = formatAuditLine(market);
   if (auditLine) {
@@ -311,7 +370,7 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
 
   return [
     "---",
-    `title: ${yamlString(`Market ${market.number}. ${market.title}`)}`,
+    `title: ${yamlString(`Market ${market.number}. ${shortTitle}`)}`,
     `type: "prediction"`,
     `status: "framework"`,
     `summary: ${yamlString(summary)}`,
@@ -378,13 +437,15 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     const cardPath = cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" });
     return `- [Market ${market.number}. ${catalogShortTitle(market)}](${cardPath})`;
   });
-  const externalList = externalFactors.map((factor) => {
-    const cardPath = cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" });
-    return `- [${factor.title}](${cardPath}) — ${factor.shortQuestion} *(external)*`;
-  });
-  const relatedList = relatedForecasts.map(
-    (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
-  );
+  const relatedList = [
+    ...externalFactors.map((factor) => {
+      const label = factor.shortQuestion || factor.title;
+      return `- [${label}](${factor.url}) — ${(factor.note ?? "").replace(/\s+/g, " ").trim()} *(external)*`;
+    }),
+    ...relatedForecasts.map(
+      (item) => `- [${item.title}](${item.url}) — ${(item.note ?? "").replace(/\s+/g, " ").trim()}`
+    )
+  ];
 
   return [
     "---",
@@ -420,14 +481,11 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     "",
     ...list,
     "",
-    ...(externalList.length
-      ? ["## External factors (not bridge markets)", "", ...externalList, ""]
-      : []),
     ...(relatedList.length
       ? [
           "## Related forecasts",
           "",
-          "Nearby Metaculus questions. They are not the pause factor above, not the subproblem markets, and not inputs to the safety-case model.",
+          "Live Metaculus questions, including the external pause factor. Not subproblem markets and not inputs to the safety-case model.",
           "",
           ...relatedList,
           ""
@@ -571,8 +629,14 @@ for (const market of markets) {
 
 const enrichedExternalFactors = externalFactors.map((factor) => ({
   ...factor,
+  embedId: factor.embedId ?? metaculusQuestionId(factor.url),
   cardId: factor.id,
   cardPath: cardPublicPath({ id: `predictions/${factor.id}`, type: "prediction" })
+}));
+
+const enrichedRelatedForecasts = relatedForecasts.map((item) => ({
+  ...item,
+  embedId: item.embedId ?? metaculusQuestionId(item.url)
 }));
 
 for (const factor of externalFactors) {
@@ -599,7 +663,7 @@ const payload = {
   appendixBookId: "appP",
   markets: enrichedMarkets,
   externalFactors: enrichedExternalFactors,
-  relatedForecasts,
+  relatedForecasts: enrichedRelatedForecasts,
   resolution: raw.resolution ?? {},
   aggregation,
   graphPlaceholder
