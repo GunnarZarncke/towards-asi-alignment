@@ -15,7 +15,7 @@ Prompts: paraphrase
 - Do not commit `data/lesswrong/gunnar_zarncke_lw_content.json`. The ignore rule is the local-dataset rule.
 
 ## Open / next
-- Working tree still links `drafts/predictions/resolution-advisors.md` and the archived `2026-09-29-lw-prose-into-chapters.md`. Those targets are untracked; committing the edits without the files fails the same gate.
+- Working tree still links untracked `drafts/predictions/resolution-advisors.md`. Committing that link without the file fails this gate.
 
 ## Key paths
 - `scripts/check_markdown_links.py`

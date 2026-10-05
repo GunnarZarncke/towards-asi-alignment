@@ -29,4 +29,4 @@ Prompts: (this session; paraphrase-only if no telemetry id)
 - `references/neuroscience-values.bib`
 
 ## Commits
-- (pending)
+- `f4827be73` Add infant-caregiver composite prose in Ch. 1 and Ch. 9. (amended: Ch. 1 `{GZ}` folk-person edits)

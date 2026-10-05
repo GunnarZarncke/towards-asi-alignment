@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-05 (Ch. 42 P1 prose pass).
+Last updated: 2026-10-05 (claim-extract rollout plan).
 
 ---
 
@@ -20,7 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-05:** **Ch. 42 P1 prose pass** — Join language throughout; extract checker 0 errors. Log: `2026-10-05-ch42-p1-pass.md`.
+- **2026-10-05:** **Claim-extract rollout plan** — Ch. 42 pilot closed; lane plan covers all chapters `ch01`–`ch48`. Plan: [`claim-extract/claim-extract.md`](../plans/claim-extract/claim-extract.md) § Rollout.
+- **2026-10-05:** **Ch. 42 claim-extract pilot** — Join figure, checker, `ch42.jsonl`; pushed `5b474be47`. Logs: `2026-10-02-claim-extract-pilot.md` through `2026-10-05-ch42-p1-pass.md`.
 - **2026-10-02:** **Prediction box mechanics** — Shared Clopper-Pearson and DeLong bounds; frozen statistics instead of undefined effect sizes; Markets 13, 19, and 20 self-contained (19 and 20 are bracket templates). Log: `2026-10-02-prediction-box-mechanics.md`.
 - **2026-10-02:** **Resolution advisors** — Named resolvers and the judge panel left the manuscript and the site. They live in `drafts/predictions/resolution-advisors.md` for other platforms and later advice. Log: `2026-10-02-resolution-advisors.md`.
 - **2026-10-02:** **Predictions three-way and loopholes** — YES/NO/OTHER; Markets 4 and 6 self-contained; Market 8 per-family coverage and true-complete floor; Market 13 true-pass and successor-gaming required; leftover TeX fails prediction sync. Log: `2026-10-02-predictions-three-way-loopholes.md`.
