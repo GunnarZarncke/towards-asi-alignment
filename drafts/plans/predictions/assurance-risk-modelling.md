@@ -876,6 +876,7 @@ Do not rank research programs from a fragile point estimate. Report where rankin
 - [ ] Revise the contracts only through explicit versioning based on pilot findings.
 - [ ] Secure independent evaluators and the required challenge funding.
 - [ ] Approve the catalog expansion, assign stable IDs `market-19`, `market-20`, and `market-21`, and list only after the funding and resolution gates pass.
+- [ ] Registry split before any external listing: sibling repo, host transfer, then appendix/site pointers ([`eval-registry-split.md`](eval-registry-split.md)). Do not list literature-search questions.
 
 ### Phase 5 — optional formal follow-through
 

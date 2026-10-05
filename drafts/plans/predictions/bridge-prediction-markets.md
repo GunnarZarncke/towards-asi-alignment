@@ -16,6 +16,8 @@ Own the proposal as a project instrument:
 
 **Weakest link:** OTHER (nobody tried) is the expected 2027 default for most rows. The YES:NO ratio remains the attempt-success price. Titles still say *met these bars*, not *the bridge is false*.
 
+**Listing shape (2026-10-05):** Metaculus reads a third-party registry snapshot, not the literature. Plan: [`eval-registry-split.md`](eval-registry-split.md). Do not rewrite the boxes until that repo has a host.
+
 ## Non-goals
 
 - Do not treat a YES resolution as discharging any `MB*` axiom, `A-*` assumption, or WWCTV box.

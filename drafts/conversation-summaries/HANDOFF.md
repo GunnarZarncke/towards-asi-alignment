@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-05 (predictions hub panels polish).
+Last updated: 2026-10-05 (eval registry split plan).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-10-05 (predictions hub panels polish).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** Phase 4 pilot/listing for Markets 19–21, external funding submission, preset slots when artifacts resolve).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** registry split before listing — [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md); then Phase 4 pilot/listing for Markets 19–21, external funding, preset slots when artifacts resolve). Do not rewrite Appendix P until a host owns the sibling repo.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-05:** **Eval registry split plan** — Metaculus resolves a third-party git snapshot; appendix and site shrink to pointers; per-market packs and checker live in a sibling repo. Hugging Face / Inspect / Every Eval Ever are neighbors, not the resolution source. Plan: `drafts/plans/predictions/eval-registry-split.md`. Log: `2026-10-05-eval-registry-split.md`.
 - **2026-10-05:** **Predictions hub panels polish** — Related forecasts include external factor; two-column Metaculus panels; contextual notes; market cards render resolution blocks (`YES requires`, `Output`, Background). Log: `2026-10-05-predictions-hub-panels-polish.md`.
 - **2026-10-05:** **Market panels** — `shortTitle` / `longTitle` on catalog markets; hub panels use the short title and a Metaculus forecast slot. Log: `2026-10-05-prediction-market-panels.md`.
 - **2026-10-05:** **Predictions hub catalog** — Heading “AI alignment subproblem markets”; related forecasts (including 6509) below that list; underspecification stays in Appendix H. Log: `2026-10-05-predictions-hub-catalog-label.md`.
