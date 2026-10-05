@@ -57,3 +57,5 @@
 {"ts": "2026-10-01T22:29:28Z", "file": "chapters/ch09-composite-agent.tex", "span": "chapters/ch09-composite-agent.tex#11", "from": "GZ", "to": "GZ+AI", "human_lines": 14, "agent_lines": 24}
 {"ts": "2026-10-01T22:29:28Z", "file": "chapters/ch01-wrong-object.tex", "span": "chapters/ch01-wrong-object.tex#5", "from": "GZ", "to": "GZ+AI", "human_lines": 0, "agent_lines": 5}
 {"ts": "2026-10-01T22:34:37Z", "file": "chapters/ch01-wrong-object.tex", "span": "chapters/ch01-wrong-object.tex#5", "from": "GZ", "to": "GZ+AI", "human_lines": 5, "agent_lines": 5}
+{"ts": "2026-10-05T12:46:45Z", "file": "chapters/ch42-safety-case.tex", "span": "chapters/ch42-safety-case.tex#2", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 12}
+{"ts": "2026-10-05T12:46:45Z", "file": "chapters/ch42-safety-case.tex", "span": "chapters/ch42-safety-case.tex#3", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 32}

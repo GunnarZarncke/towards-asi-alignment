@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-01 (infant-caregiver `{GZ}` in Ch. 1/9).
+Last updated: 2026-10-05 (Ch. 42 P1 prose pass).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-10-01 (infant-caregiver `{GZ}` in Ch. 1/9).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; **next:** Phase 4 pilot/listing for Markets 19–20, external funding submission, preset slots when artifacts resolve).
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** Phase 4 pilot/listing for Markets 19–21, external funding submission, preset slots when artifacts resolve).
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -19,6 +19,11 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ---
 
 ## Recently shipped
+
+- **2026-10-05:** **Ch. 42 P1 prose pass** — Join language throughout; extract checker 0 errors. Log: `2026-10-05-ch42-p1-pass.md`.
+- **2026-10-02:** **Prediction box mechanics** — Shared Clopper-Pearson and DeLong bounds; frozen statistics instead of undefined effect sizes; Markets 13, 19, and 20 self-contained (19 and 20 are bracket templates). Log: `2026-10-02-prediction-box-mechanics.md`.
+- **2026-10-02:** **Resolution advisors** — Named resolvers and the judge panel left the manuscript and the site. They live in `drafts/predictions/resolution-advisors.md` for other platforms and later advice. Log: `2026-10-02-resolution-advisors.md`.
+- **2026-10-02:** **Predictions three-way and loopholes** — YES/NO/OTHER; Markets 4 and 6 self-contained; Market 8 per-family coverage and true-complete floor; Market 13 true-pass and successor-gaming required; leftover TeX fails prediction sync. Log: `2026-10-02-predictions-three-way-loopholes.md`.
 
 - **2026-10-01:** **Infant-caregiver composite** — Uncited `{GZ}` in Ch. 1 (*The Folk Person*) and Ch. 9 (*The Infant plus Caregiver*); Henrich/Hanson socialization cites; Worley dependence reading cited, not adopted as recipe. Log: `2026-10-01-infant-caregiver-composite.md`.
 - **2026-09-30:** **Decision blocks plain language** — All projection and bridge `decision:` strings plus 18 jargon-heavy concepts rewritten for "What decision changes?"; site-notes plan closed (`drafts/attic/site-notes-pass.md`). Commit `cbcbecfc3`. Log: `2026-09-30-decision-blocks-plain.md`.
