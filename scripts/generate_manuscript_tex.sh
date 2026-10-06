@@ -6,15 +6,16 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+PYTHON="$("$ROOT/scripts/resolve_python.sh")"
 
 echo "[generate] manuscript .tex fragments..."
-python3 scripts/generate_tables.py
-python3 scripts/generate_global_nocite.py
-python3 scripts/generate_notation_appendix.py
-python3 formal/scripts/check_axiom_budget.py --no-lean
+"$PYTHON" scripts/generate_tables.py
+"$PYTHON" scripts/generate_global_nocite.py
+"$PYTHON" scripts/generate_notation_appendix.py
+"$PYTHON" formal/scripts/check_axiom_budget.py --no-lean
 
 echo "[generate] symbol census + concept graphs (may take ~2 min)..."
-python3 scripts/extract_symbol_formula_graph.py
-python3 scripts/build_section_reference_graph.py
-python3 scripts/build_chapter_symbol_dependency.py --all-modes
+"$PYTHON" scripts/extract_symbol_formula_graph.py
+"$PYTHON" scripts/build_section_reference_graph.py
+"$PYTHON" scripts/build_chapter_symbol_dependency.py --all-modes
 echo "[generate] done."

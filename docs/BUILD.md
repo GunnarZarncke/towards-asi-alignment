@@ -1,6 +1,21 @@
 # Building the manuscript
 
-**Requirements:** TeX distribution with `latexmk`, `pdflatex`, `biber`, and the `memoir` class.
+**Requirements:** TeX distribution with `latexmk`, `pdflatex`, `biber`, and the `memoir` class; **Python 3** with **PyYAML** for generation and checks (see below).
+
+## Python virtualenv (`.venv/`)
+
+Several generators and gates read YAML metadata (`metadata/book.yml`, quiz banks, field-agenda stance files, etc.). System `python3` on macOS typically **does not** include PyYAML.
+
+One-time setup at repo root:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
+
+After that, either `source .venv/bin/activate` or call `.venv/bin/python` directly. Wrapper scripts (`./scripts/check.sh`, `./scripts/generate_manuscript_tex.sh`, `./build.sh`, `./serve-site.sh`) resolve `.venv/bin/python` automatically via `./scripts/resolve_python.sh`. If PyYAML is missing, that helper prints the setup commands above.
+
+Per-experiment Python envs (e.g. `experiments/graded-lab-simulation/.venv/`) are separate; see each experiment's `README.md` / `REPRODUCTION.md`.
 
 ## Build map (read this first)
 

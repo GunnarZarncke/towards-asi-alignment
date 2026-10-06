@@ -1,0 +1,3 @@
+# Root Python deps for manuscript generation, metadata checks, and site sync.
+# One-time setup: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+PyYAML>=6.0

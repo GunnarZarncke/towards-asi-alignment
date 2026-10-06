@@ -6,6 +6,8 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+PYTHON="$("$ROOT/scripts/resolve_python.sh")"
+export PYTHON
 
 usage() {
   sed -n '2,5p' "$0"
@@ -59,17 +61,17 @@ add_check() {
 }
 
 add_check "generate" ./scripts/generate_manuscript_tex.sh
-add_check "structure" python3 scripts/check_structure.py
-add_check "markdown links" python3 scripts/check_markdown_links.py
-add_check "citations" python3 scripts/check_citations.py
-add_check "bibliography summaries" python3 scripts/check_bibliography_summaries.py
-add_check "claim spine" python3 scripts/check_claim_spine.py
-add_check "evidence stance" python3 reference/field-agendas/scripts/check-evidence-stance.py
-add_check "open spine interfaces" python3 formal/scripts/check_open_spine_interfaces.py
-add_check "specify/construct instances" python3 formal/scripts/check_specify_construct_instances.py
+add_check "structure" "$PYTHON" scripts/check_structure.py
+add_check "markdown links" "$PYTHON" scripts/check_markdown_links.py
+add_check "citations" "$PYTHON" scripts/check_citations.py
+add_check "bibliography summaries" "$PYTHON" scripts/check_bibliography_summaries.py
+add_check "claim spine" "$PYTHON" scripts/check_claim_spine.py
+add_check "evidence stance" "$PYTHON" reference/field-agendas/scripts/check-evidence-stance.py
+add_check "open spine interfaces" "$PYTHON" formal/scripts/check_open_spine_interfaces.py
+add_check "specify/construct instances" "$PYTHON" formal/scripts/check_specify_construct_instances.py
 add_check "field-v2 sync" npm --prefix site run sync:field-v2 -- --check
-add_check "quiz bank" python3 scripts/check_quiz_bank.py
-add_check "quiz length" python3 scripts/check_quiz_length_tell.py
+add_check "quiz bank" "$PYTHON" scripts/check_quiz_bank.py
+add_check "quiz length" "$PYTHON" scripts/check_quiz_length_tell.py
 add_check "field matrix tests" node --test reference/field-agendas/scripts/matrix-cell.test.mjs
 add_check "site lib tests" node --test --experimental-strip-types \
   site/src/lib/field-matrix-cell.test.ts \

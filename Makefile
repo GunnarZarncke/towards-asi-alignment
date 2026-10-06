@@ -21,13 +21,13 @@ check:
 	./scripts/check.sh
 
 wordcount:
-	python3 scripts/wordcount.py
+	$$(./scripts/resolve_python.sh) scripts/wordcount.py
 
 bookstats:
-	python3 scripts/book_stats.py
+	$$(./scripts/resolve_python.sh) scripts/book_stats.py
 
 todos:
-	python3 scripts/extract_todos.py
+	$$(./scripts/resolve_python.sh) scripts/extract_todos.py
 
 hooks:
 	git config core.hooksPath .githooks

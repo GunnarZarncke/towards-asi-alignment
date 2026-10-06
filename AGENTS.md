@@ -174,6 +174,15 @@ in [`docs/BUILD.md`](docs/BUILD.md).
 
 Run from **repo root** unless noted. There is no root `package.json`; npm lives under `site/` and `demos/` only. See [`docs/BUILD.md`](docs/BUILD.md) for the full build map.
 
+**Python (PyYAML):** macOS/Homebrew `python3` does **not** ship PyYAML. Manuscript generation, `make check`, and several metadata scripts require it. Use the repo virtualenv at **`.venv/`** (gitignored):
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # one-time
+source .venv/bin/activate   # optional; or use .venv/bin/python directly
+```
+
+`./scripts/resolve_python.sh` picks `.venv/bin/python` when present; `./scripts/check.sh`, `./scripts/generate_manuscript_tex.sh`, `./build.sh`, and `./serve-site.sh` call it (or prepend `.venv/bin` to `PATH`) automatically. When invoking a script **directly**, prefer `.venv/bin/python scripts/foo.py` over bare `python3`.
+
 ```bash
 ./build.sh        # or: make pdf  → dist/pdf/towards-superintelligence-alignment.pdf
 ./clean.sh        # or: make clean

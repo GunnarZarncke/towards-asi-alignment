@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-06 | **Python venv for agents** — Agents hit PyYAML errors on bare `python3`; root venv auto-resolved in check/generate/serve wrappers; documented in AGENTS.md and BUILD.md. | [2026-10-06-python-venv-agents.md](2026-10-06-python-venv-agents.md) |
+| 2026-10-06 | **Eval registry scaffold** — Review and adapt the registry plan; Market 14 YES/NO in Appendix P; create sibling repo `ai-safety-claims` (validator, contracts 1 and 4, scenarios, listing template); admin and maintainer re-trials. | [2026-10-06-eval-registry-scaffold.md](2026-10-06-eval-registry-scaffold.md) |
 | 2026-10-05 | **Safety-case site vocabulary** — Use “safety case” as the public noun on the site; keep the agreed adjectives; use “evidence the c... | [2026-10-05-safety-case-site-vocab.md](2026-10-05-safety-case-site-vocab.md) |
 | 2026-10-05 | **Predictions hub panels polish** — Continue predictions hub work: merge external factors into related-forecast panels (Metaculus lin... | [2026-10-05-predictions-hub-panels-polish.md](2026-10-05-predictions-hub-panels-polish.md) |
 | 2026-10-05 | **Predictions hub catalog label** — Move related forecasts below the catalog. Fold Metaculus 6509 into that list. Keep underspecifica... | [2026-10-05-predictions-hub-catalog-label.md](2026-10-05-predictions-hub-catalog-label.md) |

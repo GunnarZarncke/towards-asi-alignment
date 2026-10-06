@@ -1,4 +1,5 @@
 import { execSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -58,8 +59,16 @@ function buildPayload(parsed, stats) {
   };
 }
 
+function repoPython() {
+  if (process.env.PYTHON) return process.env.PYTHON;
+  const venvPy = path.join(repoRoot, ".venv/bin/python");
+  if (existsSync(venvPy)) return venvPy;
+  return "python3";
+}
+
 async function regenerateDot() {
-  execSync("python3 scripts/build_chapter_symbol_dependency.py --mode combined", {
+  const python = repoPython();
+  execSync(`${python} scripts/build_chapter_symbol_dependency.py --mode combined`, {
     cwd: repoRoot,
     stdio: "inherit"
   });

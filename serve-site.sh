@@ -2,6 +2,9 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -x "$REPO_ROOT/.venv/bin/python" ]]; then
+  export PATH="$REPO_ROOT/.venv/bin:$PATH"
+fi
 SITE_DIR="$REPO_ROOT/site"
 PORT="${PORT:-4321}"
 MODE="dev"
