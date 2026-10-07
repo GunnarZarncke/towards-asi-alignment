@@ -5,9 +5,62 @@
 Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 - **MAJOR** — structural milestones (numbering scheme, part/chapter architecture, or a manuscript milestone declared complete).
-
 - **MINOR** — new or substantially rewritten chapters, appendices, or framework objects.
 - **PATCH** — fixes, calibration, citations, and editorial passes.
+---
+
+## v1.7.0 — 2026-10-07 — Crux Predictions
+
+Commit: _(pending)_ · Tag: `v1.7.0`
+
+**Appendix H** states predictions about the bridges/cruxes as three-way contracts (YES, NO, OTHER), with a site hub at `/predictions/`. A price is a forecast that a qualifying artifact exists by a deadline that is matched to the AI 2027 forecasts. 
+
+The manuscript takes in LessWrong prose and wiki sentences as authored blocks and states one adversarial-validation procedure. 
+
+The third experiment class is now named **backtests** on public URLs.
+
+### Dated bridge predictions (Appendix H, `appP-bridge-predictions.tex`)
+
+These are proposed predictions, not measurements and not proofs. Confidence that a given row resolves YES by its date is low: most rows are open research programs.
+
+- **Eighteen catalog markets** in `metadata/predictions.yml`. Each box is a public specification: resolve-by date, question, what a YES requires, and fine print. Common qualification and that market's adversarial budget (serious or default) are repeated in every box, so a question can be listed on its own.
+- **Three outcomes.** YES if at least one qualifying attempt met the frozen performance bars. NO only if at least one qualifying attempt existed and every qualifying attempt missed those bars. OTHER if no qualifying attempt existed (exception: Market 14 lists YES and NO only, Market 20 lists YES and OTHER only).
+- **Markets 19 to 21** are draft cross-cutting predictions. They stay unlisted for now.
+- **Listing.** No market is on a prediction platform in this release. 
+
+### Manuscript
+
+- **LessWrong prose** originating from Gunnar entered as `{GZ}` blocks across nine chapters (including UAD, value-learning, and Friendly Telepaths). Canonical wiki sentences are added where fitting.
+- Missing **OpenAI** added as an in-matrix lab row on the field map.
+- **Voice improvements** across the book.
+- Ans miscellaneaous small improvements such as the **Infant plus caregiver** points in Chapters 1 and 9
+
+### Field news (since v1.6.0)
+
+- **Ward, 7 Oct:** frontier-lab monitoring survey. Each documented practice — clock, transcript, activations, coverage, live-filter disclaimer, monitor choice, human tail — is granted as a first step and left short of a bound.
+- **OpenAI training safety case (29 Sep):** documentation before a run continues. A stop is a missing leaf (Chapter 42).
+- **OpenAI DNS chatbot (28 Sep):** the page arrived in minutes; the kill arrived hours later.
+- **Embedded evaluators (28 Sep):** a desk inside the lab, set against the Hinton-letter conditions.
+- **Huang / Klein / Zvi (25 Sep):** the stop-shipping line cashed against a release rule.
+- **Mathematics (24 Sep):** a solved problem is a landmark. The declaration says the point of the work lies past the landmark.
+- **Ban ASI Act (24 Sep):** staffing the office is the pause condition in the Senate text. Ending the pause still needs a checkable finding.
+- **OpenAI RSI standards (22 Sep):** a shared ruler for recursive self-improvement. The card's claim is that a ruler is not a stop.
+- **Anthropic, 18 Sep:** pace measurements, and the constitution (the vision and the construction are different objects).
+- **Containment verification (10 Sep):** a proved whitelist, and where the world starts.
+- **Field-news memes** were added, starting in the September cards, also used as Open Graph and RSS previews.
+
+### Backtests
+
+The class shipped in v1.6.0 under the name "witness tests" is now **backtests** on public paths: `experiments/backtest/`, hub `/experiments/#backtest`. Finding IDs stay `W-1`–`W-17`. Old `/witness/` and `/witness-tests/` URLs are not redirected.
+
+### Other
+
+- Small improvements in the Lean code, e.g., in **`Evidence.lean`**.
+- **Field crux spring map** (a SafeAI.com hackathon result) was added under Appendix B (`demos/appB-field-spring-map/`).
+- Chapter 42 has undergone a pilot of a full prose formal consistency check with the identified issues addressed.
+- Plans for v2 take shape.
+- Housekeeping
+
 ---
 
 ## v1.6.0 — 2026-09-05 — Backtests, problem-axis, and companion-site product

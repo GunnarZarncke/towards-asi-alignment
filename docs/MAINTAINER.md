@@ -53,7 +53,7 @@ Every `field-news-*` slug in `metadata/field-news.yml` **must** have a matching 
 |------|--------|
 | 1 | Edit print canon [`appendices/appP-bridge-predictions.tex`](../appendices/appP-bridge-predictions.tex) |
 | 2 | Update [`metadata/predictions.yml`](../metadata/predictions.yml) (`shortTitle`, `longTitle`, `listingStatus`, `outcomes`, versions) |
-| 3 | Update [`metadata/assurance-model.yml`](../metadata/assurance-model.yml) if PRA nodes change |
+| 3 | Update [`metadata/safety-case-model.yml`](../metadata/safety-case-model.yml) if PRA nodes change |
 | 4 | Sync: `cd site && npm run sync:predictions && npm run sync:safety-case-model && npm run sync:chapters` |
 | 5 | Verify PDF: `./build.sh`; verify sync guard (fine print must repeat Common rules verbatim — `site/scripts/sync-predictions.mjs`) |
 | 6 | Verify: `make check`; site lib tests include safety-case demo |
