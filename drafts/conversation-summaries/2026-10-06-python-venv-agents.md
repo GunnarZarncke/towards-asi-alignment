@@ -30,4 +30,4 @@ Agents keep failing on PyYAML because they run bare `python3` instead of the rep
 - `make wordcount` → exit 0
 
 ## Commits
-- (this session)
+- `f5d7c8dd7` Auto-resolve repo .venv for PyYAML-dependent scripts.
