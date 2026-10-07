@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T13:12:55.607Z",
+  "generatedAt": "2026-10-07T17:10:44.827Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 403,
+  "entryCount": 404,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -2303,6 +2303,12 @@
       "type": "release",
       "summary": "Backtests (W-1–W-17; released under the name “witness tests”, renamed 2026-09-07) add a third experiment class: frozen fail/refuse protocols on existing host traces; the Introduction now carries four alignment questions and a Chapter-10 first-use for bridge assumptions; the companion site becomes a product surface — essays, quiz, spec sheet, funding offers, and a Field hub that lands on v2.",
       "url": "/cards/release/release-v1-6-0/"
+    },
+    {
+      "title": "v1.7.0 — Crux Predictions",
+      "type": "release",
+      "summary": "Appendix H states predictions about the bridges/cruxes as three-way contracts (YES, NO, OTHER), with a site hub at `/predictions/`. A price is a forecast that a qualifying artifact exists by a deadline that is matched to the AI 2027 forecasts.",
+      "url": "/cards/release/release-v1-7-0/"
     },
     {
       "title": "Value Change vs. Value Corruption",
