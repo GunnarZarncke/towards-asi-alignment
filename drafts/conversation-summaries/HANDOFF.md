@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-07 (v1.7.0 release notes drafted, not tagged).
+Last updated: 2026-10-07 (v1.7.0 tagged and released).
 
 ---
 
@@ -20,7 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-07:** **v1.7.0 notes drafted, not tagged** — Appendix H three-way predictions, site hub, field news since v1.6.0, backtest public name. Commit line pending author review. Log: `2026-10-07-v1-7-0-release-notes.md`.
+- **2026-10-07:** **v1.7.0 released** — Tag `v1.7.0` (`86815d35f` notes commit). Appendix H three-way predictions, site hub, field news since v1.6.0, backtest public name, maintainer checklists. Log: `2026-10-07-v1-7-0-release-notes.md`.
 - **2026-10-07:** **Maintainer checklists** — `docs/MAINTAINER.md`: action→follow-up rules (field news→quiz, symbols→graphs, CI gate map). Log: `2026-10-07-maintainer-checklists.md`.
 - **2026-10-07:** **Ward monitoring news** — Field-news card on Francis Rhys Ward’s 7 October survey of Anthropic, OpenAI, and DeepMind internal-agent monitoring. Each documented practice is granted as a first step (clock, transcript, activations, coverage, live-filter disclaimer, monitor choice, human tail) and left short of a bound. Log: `2026-10-07-ward-monitoring-news.md`.
 - **2026-10-06:** **Python venv for agents** — Root `requirements.txt`, `scripts/resolve_python.sh`, and auto-resolution in check/generate/serve wrappers; documented in `AGENTS.md` and `docs/BUILD.md`. Log: `2026-10-06-python-venv-agents.md`.

@@ -32,4 +32,6 @@ Prompts: paraphrase (no prompt id on this turn)
 - `site/scripts/sync-releases.mjs`
 
 ## Commits
-- None — `RELEASE_NOTES.md` draft stays local until author finishes edit (removed from maintainer commit after review).
+- `86815d35f` Release v1.7.0 — Crux Predictions notes.
+- `c0178fdec` Record v1.7.0 commit hash in RELEASE_NOTES.
+- Tag: `v1.7.0` on `c0178fdec`; pushed; GitHub release created.
