@@ -12,13 +12,15 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 | Item | Status |
 |------|--------|
-| Release | **v1.6.0** (2026-09-05) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
-| Milestone | **Sixth** — backtests, problem-axis reader contract, bridge first-use at Ch. 10, companion-site product layers; all main chapters have first drafts and at least one review pass |
+| Release | **v1.7.0** (2026-10-07) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
+| Milestone | **Seventh** — Appendix H dated bridge predictions (three-way contracts, safety-case forecast layer); all main chapters have first drafts and at least one review pass |
 | Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **10 appendices in the PDF** (A–J; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; dated bridge predictions are Appendix H, source file `appP-bridge-predictions.tex`; Appendix J is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) |
 | Chapters | 48, each with at least one review pass ([`metadata/book.yml`](../metadata/book.yml)); *reviewed* means feedback received and logged, not final; depth varies widely by chapter |
 | Bibliography | **~500 entries** across categorized `.bib` files, each with a one-line summary (`make check` verifies) |
 | Length | ~290k body words, ~1,440 PDF pages ([`metadata/book-stats.md`](../metadata/book-stats.md)); no word targets are maintained |
-| Predictions | Appendix H: 18 dated bridge predictions (`metadata/predictions.yml`; site [`/predictions/`](https://towards-alignment.com/predictions/)) |
+| Predictions | Appendix H: 18 catalog markets, three-way YES/NO/OTHER (7 draft, 11 funding-gated), plus draft Markets 19–21 (`metadata/predictions.yml`; site [`/predictions/`](https://towards-alignment.com/predictions/)). Not listed on a prediction platform in v1.7.0. |
+
+**v1.7.0 themes:** Appendix H dated bridge predictions and `/predictions/` hub; prices as research-readiness forecasts (`F/R/U`, not a product of doom prices); Chapter 43 adversarial-validation procedure cited from the market fine print; LessWrong `{GZ}` blocks and wiki sentences; pool-conformance drift; backtests as the public name of the W- class.
 
 **v1.6.0 themes:** backtests (W-1–W-17) and shared [`docs/METHODOLOGY.md`](../docs/METHODOLOGY.md); four alignment questions and problem-axis (layer vs mechanism, capability dormancy, App F composition); bridge first-use at Ch. 10; Bergemann–Koh–Morris as field incentive implementation; companion-site product (essays, quiz, spec sheet, funding, Field hub v2 default).
 

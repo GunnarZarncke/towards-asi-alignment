@@ -32,3 +32,6 @@ Prompts: (paraphrase — continuation after commit `9f0dbfcc4`)
 
 ## Verification
 - `npm run sync:predictions` → `sync-predictions: wrote 20 cards and predictions.json`
+
+## Commits
+- `63bb15e20` Predictions hub: related Metaculus panels, card resolution blocks.

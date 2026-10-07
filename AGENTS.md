@@ -210,7 +210,7 @@ Astro publication layer: guided paths, concept cards, chapter pages, Lean playgr
 | Need | Where to edit | Sync / assets |
 |------|---------------|---------------|
 | Concept / bridge / projection | `metadata/concepts.yml`, `bridges.yml`, or `projections.yml` + body under `metadata/concepts/bodies/` | `npm run sync:concepts` (etc.) |
-| Field news | `metadata/field-news.yml` + `metadata/field-news/bodies/` | Optional meme via `scripts/meme_workflow/` → `public/field-news/memes/`; `npm run sync:field-news-memes` then `sync:field-news` |
+| Field news | `metadata/field-news.yml` + `metadata/field-news/bodies/` | Optional meme via `scripts/meme_workflow/` → `public/field-news/memes/`; `npm run sync:field-news-memes` then `sync:field-news`; **quiz takeaway required** (`docs/MAINTAINER.md` § Field news) |
 | Chapter | manuscript figure + `figures/illustrations/web/` | `npm run sync:chapter-illustrations` + `sync:chapter-cards` (sets `previewImage` from chapter JPEG) |
 | Hand-authored artifact | `site/src/content/cards/*.md` | Set `previewImage:` or embed an `<img>` / markdown image the sync can pick up |
 | Explicit override | `previewImage` in YAML frontmatter | Wins over auto-detect |
@@ -227,7 +227,7 @@ Reviewer guide and templates. Start with [`review/reviewer-guide.md`](review/rev
 
 ### Human docs (`docs/`)
 
-Condensed entry points: [`docs/BUILD.md`](docs/BUILD.md), [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md), [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md).
+Condensed entry points: [`docs/BUILD.md`](docs/BUILD.md), [`docs/MAINTAINER.md`](docs/MAINTAINER.md) (action → follow-up checklists), [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md), [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md), [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md).
 
 ### README
 

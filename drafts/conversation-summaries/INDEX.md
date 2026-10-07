@@ -6,7 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-07 | **Maintainer checklists** — User: we keep missing quiz questions after field news; add maintainer doc with action→follow-up rules from conversation logs. | [2026-10-07-maintainer-checklists.md](2026-10-07-maintainer-checklists.md) |
 | 2026-10-07 | **Ward monitoring news** — Create a field-news card on Francis Rhys Ward’s 7 October 2026 survey of frontier-lab monitoring.... | [2026-10-07-ward-monitoring-news.md](2026-10-07-ward-monitoring-news.md) |
+| 2026-10-07 | **v1.7.0 release notes** — User asked to prepare the release. | [2026-10-07-v1-7-0-release-notes.md](2026-10-07-v1-7-0-release-notes.md) |
 | 2026-10-06 | **Python venv for agents** — Agents keep failing on PyYAML because they run bare `python3` instead of the repo `.venv/`. | [2026-10-06-python-venv-agents.md](2026-10-06-python-venv-agents.md) |
 | 2026-10-06 | **Market 1 wording** — Clarify four technical phrases in Market 1 (null band, sham intervention, freeze fields, extra na... | [2026-10-06-market-1-wording.md](2026-10-06-market-1-wording.md) |
 | 2026-10-06 | **Eval registry scaffold** — Review the eval-registry-split plan against Appendix P; adapt it ("when in doubt choose simplicit... | [2026-10-06-eval-registry-scaffold.md](2026-10-06-eval-registry-scaffold.md) |
@@ -20,11 +22,10 @@
 | 2026-10-05 | **Markets 19 and 20: real degrees of freedom** — Review the bracket templates in Markets 19 and 20 against the relevant chapters; keep only bracke... | [2026-10-05-market-19-20-templates.md](2026-10-05-market-19-20-templates.md) |
 | 2026-10-05 | **2026-10-05-market-19-20-admin-iterations** — The user asked for more prose and structure outside the questions on what the placeholders are an... | [2026-10-05-market-19-20-admin-iterations.md](2026-10-05-market-19-20-admin-iterations.md) |
 | 2026-10-05 | **Markdown link CI** — `make check` on `5b474be47` failed: markdown links, 4 broken relative links. Local check passed. | [2026-10-05-markdown-links-ci.md](2026-10-05-markdown-links-ci.md) |
-| 2026-10-05 | **Eval registry split** — Plan the split: third-party registry (sibling repo at first), appendix and site restructure, per-... | [2026-10-05-eval-registry-split.md](2026-10-05-eval-registry-split.md) |
 
 ## Archive by month
 
-- **2026-10** (8): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (9): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

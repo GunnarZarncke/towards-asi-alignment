@@ -1,6 +1,7 @@
 # External AI safety incidents and evaluations mapped to book chapters.
 # Body files: metadata/field-news/bodies/YYYY-MM-slug.md (event month when set, else card date month).
 # Regenerate site cards with: cd site && npm run sync:field-news
+# After adding a slug: quiz takeaway required — see docs/MAINTAINER.md § Field news.
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:

@@ -1,5 +1,7 @@
 # Building the manuscript
 
+**Maintainer checklists** (field news → quiz, symbols → graphs, releases, etc.): [`docs/MAINTAINER.md`](MAINTAINER.md).
+
 **Requirements:** TeX distribution with `latexmk`, `pdflatex`, `biber`, and the `memoir` class; **Python 3** with **PyYAML** for generation and checks (see below).
 
 ## Python virtualenv (`.venv/`)
