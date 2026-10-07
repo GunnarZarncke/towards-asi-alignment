@@ -3,14 +3,14 @@ import { getCollection } from "astro:content";
 import fieldNewsIndex from "../../data/field-news.json";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
+import { selectFeaturedFieldNews } from "../../lib/field-news-featured";
 import { cardHref as buildCardHref, cardHrefForCard } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const newsHref = (id: string) => buildCardHref(base, id, "news");
 
-const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
-const [newestNews, ...olderNews] = items;
+const { featured: featuredNews, older: olderNews } = selectFeaturedFieldNews(fieldNewsIndex);
 
 const cards = await getCollection("cards");
 const versions = cards
@@ -44,17 +44,17 @@ const kindLabel: Record<string, string> = {
   <div class="news-unfolds">
     <details open class="news-unfold">
       <summary>Field news</summary>
-      {newestNews && (
+      {featuredNews.map((item) => (
         <article class="news-item">
           <p class="news-meta">
-            <time datetime={newestNews.eventDate ?? newestNews.date}>{newestNews.eventDate ?? newestNews.date}</time>
+            <time datetime={item.eventDate ?? item.date}>{item.eventDate ?? item.date}</time>
             {" · "}
-            <span>{kindLabel[newestNews.kind] ?? newestNews.kind}</span>
+            <span>{kindLabel[item.kind] ?? item.kind}</span>
           </p>
-          <h2><a href={newsHref(newestNews.card)}>{newestNews.title}</a></h2>
-          <p>{newestNews.hook}</p>
+          <h2><a href={newsHref(item.card)}>{item.title}</a></h2>
+          <p>{item.hook}</p>
         </article>
-      )}
+      ))}
       {olderNews.length > 0 && (
         <details>
           <summary>More field news</summary>

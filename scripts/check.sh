@@ -75,6 +75,7 @@ add_check "quiz length" "$PYTHON" scripts/check_quiz_length_tell.py
 add_check "field matrix tests" node --test reference/field-agendas/scripts/matrix-cell.test.mjs
 add_check "site lib tests" node --test --experimental-strip-types \
   site/src/lib/field-matrix-cell.test.ts \
+  site/src/lib/field-news-featured.test.ts \
   site/src/lib/visit-history.test.ts \
   site/src/lib/read-next.test.ts \
   site/src/lib/quiz/quiz.test.ts \
