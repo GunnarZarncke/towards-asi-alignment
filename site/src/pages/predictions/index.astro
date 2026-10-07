@@ -127,7 +127,10 @@ const aggregationHref = aggregation?.appendixAnchor
     <p class="listing-note">
       These are candidate contracts, not live markets. “Funding-gated” means that a credible YES route needs an unfunded independent evaluation or challenge; it does not mean the technical claim is false.
       Numeric bars and scored outcomes for catalog markets 1–13 and 15–18 live on the versioned page in the <a href={predictions.registry?.site ?? "https://ai-safety-claims.com/"}>claims registry</a>
-      (not a resolution source until an independent host tags a snapshot). Market 14 and Phase 4 drafts 19–21 list from their appendix boxes only.
+      {predictions.registry?.snapshotTag
+        ? <> (resolution snapshot <code>{predictions.registry.snapshotTag}</code>).</>
+        : <> (not a resolution source until an independent host tags a snapshot).</>}
+      {" "}Market 14 and Phase 4 drafts 19–21 list from their appendix boxes only.
     </p>
     <div class="market-panels">
       {

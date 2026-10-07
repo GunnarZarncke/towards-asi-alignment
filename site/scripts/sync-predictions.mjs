@@ -539,8 +539,11 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs, registry) {
     const contractLine = contractUrl
       ? ` Resolution criteria: [contract v${market.contractVersion}](${contractUrl}).`
       : " No contract page is published there yet, so this market is not listable.";
+    const resolutionNote = registry.snapshotTag
+      ? ` Metaculus resolves the \`outcome\` field at git tag \`${registry.snapshotTag}\` (see listing template).`
+      : " The registry is not a resolution source until an independent host tags a snapshot.";
     bodyParts.push(
-      `[Property in Appendix H](${appendixFull}).${contractLine} The registry is not a resolution source until an independent host tags a snapshot.`,
+      `[Property in Appendix H](${appendixFull}).${contractLine}${resolutionNote}`,
       "",
       "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
       ""

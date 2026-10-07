@@ -1,6 +1,6 @@
 # Eval registry split
 
-Status: **step 5 of 7** (2026-10-07). Appendix P and the site hub now point at the claims registry ([site](https://ai-safety-claims.com/), [source](https://github.com/aintelope/ai-safety-claims)). aintelope hosts it for now and is **not independent**, so `resolutionSource` stays false and attempts by aintelope or Gunnar Zarncke are not accepted. Runnable evaluations live in [`aintelope/ai-safety-claims-workbench`](https://github.com/aintelope/ai-safety-claims-workbench). Next: an independent host, then Metaculus for frozen contracts only.
+Status: **step 6 of 7** (2026-10-08). Appendix P and the site hub point at the claims registry ([site](https://ai-safety-claims.com/), [source](https://github.com/aintelope/ai-safety-claims)). Bootstrap tag **`snapshot-0`** is tagged in the registry (`3563a88`; all OTHER); `resolutionSource` is true and TSA pins `snapshotTag: snapshot-0`. aintelope still hosts and is **not independent**; attempts by aintelope or Gunnar Zarncke are not accepted. Runnable evaluations live in [`aintelope/ai-safety-claims-workbench`](https://github.com/aintelope/ai-safety-claims-workbench). Next: Metaculus listing for frozen contracts; independent host transfer when ready.
 
 **Stop:** delete or attic this file when the registry URL is the live resolution source (`resolutionSource` true after an independent host tags a snapshot). Markets without a published registry contract (other than Market 14) are not listable.
 
@@ -139,7 +139,7 @@ After host transfer:
 1. This plan (done).
 2. Scaffold **`ai-safety-claims`** (done 2026-10-06; public under `aintelope` 2026-10-07 with Apache-2.0 / CC BY 4.0, CI, and the Pages site). The contracts' `openQuestions` were settled in the chapters (G1–G7). Added 2026-10-07: exercised-bars rule (also in the Appendix P reading rules), sketches and contributor tools, evidence files behind every score table, and the workbench repo.
 3. Admin re-trial (done 2026-10-06): admin agent 6/6 cases as intended, posting defects fixed in `listing-template.md`; maintainer agent found the intended check sets, and its findings became rule text (human-check triggers, fail vs unsettled, per-instance certificate check, `freezeEvidence` for wrapped attempts) or contract `openQuestions`. Agent agreement is one instrument; rerun both trials after the open questions are settled.
-4. Independent host (Plex first; host criteria in `GOVERNANCE.md`). aintelope hosts in the meantime, without resolution power. Transfer org. Tag `snapshot-0` (all OTHER).
+4. Independent host (Plex first; host criteria in `GOVERNANCE.md`). aintelope hosts in the meantime. Transfer org when ready. Tag **`snapshot-0`** (done 2026-10-08; all OTHER; `resolutionSource` on).
 5. Shrink Appendix P and site to pointers (done 2026-10-07). Sync predictions.
    Decouple fully, not only shorten: the registry's contracts and shared rules become the authoritative text; the registry may hold non-TSA contracts and diverge from or drop TSA ones; contract versions number independently of the book. Needed for host independence. Recorded in `ai-safety-claims/GOVERNANCE.md` § Decoupling from the manuscript.
 6. Metaculus for frozen contracts only.

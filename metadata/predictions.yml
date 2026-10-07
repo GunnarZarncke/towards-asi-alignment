@@ -24,7 +24,7 @@ safetyCaseModel: metadata/safety-case-model.yml
 safetyCaseDemo: /predictions/safety-case/
 registryRepo: https://github.com/aintelope/ai-safety-claims
 registrySite: https://ai-safety-claims.com/
-# snapshotTag: pin when an independent host tags snapshot-0; do not track main.
+snapshotTag: snapshot-0
 
 purpose: >
   Bet on predictions about whether publicly reconstructible methods resolve

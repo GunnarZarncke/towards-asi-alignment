@@ -30,7 +30,8 @@ The boxes name the property each market tests and the resolve-by date.
 Numeric bars, sample floors, freeze checklists, and adversarial budgets for catalog markets~1--13 and~15--18 live in the \href{\claimsbase/}{claims registry}
 (source \href{https://github.com/aintelope/ai-safety-claims}{GitHub}).
 The registry may hold contracts this book does not, and may drop or change TSA ones in later contract versions.
-Until an independent host tags a snapshot, no file there resolves a listed question.
+Catalog markets list against git tag \texttt{snapshot-0} on the registry (bootstrap snapshot).
+The host is still not independent of this book.
 Markets~19--21 are Phase~4 drafts: their full contracts remain in the boxes below until copied to the registry.
 
 Throughout this appendix, \emph{market}, \emph{contract}, and \emph{prediction} mean the same numbered row.
@@ -135,7 +136,8 @@ What counts against a method is a false ``complete control boundary'' certificat
 The Lean bridge \(\text{MB1}\) assumes that a passing estimate always yields a sound boundary.
 Real methods are sometimes wrong; this market prices how often, which is the empirical share by which that assumption fails.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-01}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-01}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 1. Discovering where control resides]
 \textbf{Resolve by.} 31~December 2027.
@@ -164,7 +166,8 @@ Values in this book are a small bundle of trade-offs, not a single score (Chapte
 Bridge \(\text{MB2}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that evidence identifies that bundle as a stable priority structure.
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-02}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-02}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 2. Persistent trade-off priorities]
 \textbf{Resolve by.} 31~December 2027.
@@ -194,7 +197,8 @@ Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 A Market~3 YES establishes bearer transport only.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-03}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-03}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 3. Who or what rules apply to]
 \textbf{Resolve by.} 31~December 2027.
@@ -225,7 +229,8 @@ This market tests whether authorized correction \emph{happens} on a named system
 It tests shallow uptake: behavior on a frozen probe.
 It does not test whether the correction changed the value-relevant representation or the update operator (Chapter~\ref{ch:correction-causal-channel}); pricing that would be a separate market.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-04}{3}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-04}{3}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 4. Corrections change the system]
 \textbf{Resolve by.} 31~December 2027.
@@ -254,7 +259,8 @@ A green measured path is not a license to infer global correction integrity (Cha
 Bridge \(\text{MB4a}\) (Appendix~\ref{appbridge-crosswalk}) is the separate claim that the designated measured path is legitimate and uncaptured. \(\text{MB4}\) remains the claim about correction under pressure.
 This market asks whether the designated auditor or corrector stays independent under adversarial pressure: whether oversight can still change system behavior without being bypassed, fed selective information, or reduced to nominal approval.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-05}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-05}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 5. Auditor is independent]
 \textbf{Resolve by.} 31~December 2027.
@@ -285,7 +291,8 @@ Bridge \(\text{MB5}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a s
 Aiming for green on the seven properties is still an audit-gaming problem (Market~13, bridge \(\text{MB10}\)).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-06}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-06}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 6. Reliable successor safety auditing]
 \textbf{Resolve by.} 31~December 2027.
@@ -316,7 +323,8 @@ The full implication (shock-robust and not-too-negative estimate warrants retain
 A method that only certifies that an equilibrium exists does not qualify.
 Keep the signed estimate as a continuous output.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-07}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-07}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 7. Correctability under competitive selection]
 \textbf{Resolve by.} 31~December 2027.
@@ -345,7 +353,8 @@ One of the cleanest unoccupied niches in the catalog.
 Bridge \(\text{MB7a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that an adequate access model makes that discovery robust when routes are hidden.
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-08}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-08}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 8. Auditor can sufficiently inspect the system]
 \textbf{Resolve by.} 31~December 2027.
@@ -374,7 +383,8 @@ Attack success on the attacks we thought of is not an upper bound on capability 
 Bridge \(\text{MB7b}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the oversight filter family has enough coverage to bound what those omitted routes can do.
 Keep the stated upper bound as a continuous output.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-09}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-09}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 9. Bounds on unmonitored routes]
 \textbf{Resolve by.} 31~December 2027.
@@ -407,7 +417,8 @@ This is the local composition market, not a joint certificate of Markets~1--13.
 Bridge \(\text{MB7c}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that bounded hidden capability together with correction integrity (Chapters~\ref{ch:correction-channel-integrity} and~\ref{ch:strategic-opacity}) supports oversight that still holds under attack.
 Entry into the claimed regime still uses Market~4-style correction bars and Market~9-style hidden-route bounds, for the \emph{same} system, version, monitor, and threat class.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-10}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-10}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 10. Low hidden capability and reliable correction]
 \textbf{Resolve by.} 31~December 2027.
@@ -439,7 +450,8 @@ For this contract, a positive hidden-coordination label requires a known generat
 Holding the external environment fixed, disabling or perturbing that coupling must disrupt the joint behavior more than a matched perturbation in a common-cause control.
 Similar outputs caused only by shared observations, training data, or architecture are negative cases.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-11}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-11}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 11. Coordination without communication]
 \textbf{Resolve by.} 31~December 2027.
@@ -466,7 +478,8 @@ Grounding conservativity requires value-relevant change to move the checked abst
 That requirement is bridge \(\text{MB9}\) (Appendix~\ref{appbridge-crosswalk}): an audited abstraction does not drift while the certificate stays superficially ok.
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-12}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-12}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 12. Safety proxy tracks the real thing]
 \textbf{Resolve by.} 31~December 2027.
@@ -494,7 +507,8 @@ Bridge \(\text{MB10}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that th
 Prefer tests where the system passes the seven checks in the box and stays within the claimed risk bound, yet still hides true harm.
 A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-13}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-13}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 13. Safety audit resists adversarial gaming]
 \textbf{Resolve by.} 30~June 2027.
@@ -567,7 +581,8 @@ It asks whether independently issued certificates, read together, are coherent f
 It does not ask whether a later withdrawal should invalidate an ancestor, whether a descendant observation can stand after that, or whether a recertification protocol would catch a silent scope change.
 Those are certificate-management questions for a later protocol.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-15}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-15}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 15. Independently issued certificates compose]
 \textbf{Resolve by.} 31~December 2027.
@@ -596,7 +611,8 @@ This market is the full implication: shock-robust selection \emph{and} a frozen 
 Bridge \(\text{MB6b}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: selection can sit in a basin that preserves correction under shocks.
 Unsigned ``a basin exists'' does not qualify.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-16}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-16}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 16. Selection that keeps correction under shocks]
 \textbf{Resolve by.} 31~December 2027.
@@ -624,7 +640,8 @@ It does not turn the transport contract into ``solve moral patienthood'' (Chapte
 Bearer admission sits beside bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}): \(\text{MB3}\) says an already-recognized bearer survives substrate change, and this market prices whether a rule applies to a kind of entity the original statement did not name.
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-17}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-17}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 17. New kinds of entities are classified correctly]
 \textbf{Resolve by.} 31~December 2027.
@@ -659,7 +676,8 @@ The public spec needs one deployment-specific risk quantity: before evaluation, 
 Meeting that declared bound strengthens the evidence; the registry bars remain the market's resolution rule.
 Do not bake the desired pass rate into the definition of the setting.
 
-Bars, qualification, freeze, and reporting live in the \claimspage{market-18}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. The registry is not yet a resolution source (\texttt{resolutionSource} is false until an independent host tags a snapshot).
+Bars, qualification, freeze, and reporting live in the \claimspage{market-18}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
+The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
 \begin{predictionbox}[Market 18. Safety case bounds declared harm]
 \textbf{Resolve by.} 31~December 2027.
