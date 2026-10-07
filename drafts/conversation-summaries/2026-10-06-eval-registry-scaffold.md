@@ -59,4 +59,7 @@ Prompts: paraphrase (no prompt id in this session)
 - `../ai-safety-claims/` (sibling repo)
 
 ## Commits
-- (this session)
+- `f5331aa5e` Archive session logs past the active cap and record the venv commit hash (other sessions' bookkeeping, committed so INDEX stays consistent).
+- `888bfa8c4` Settle Market 1/4 contracts from the chapters; add adversarial-validation procedure; θ cleanup.
+- `../ai-safety-claims` `b225f2f` Scaffold ai-safety-claims registry (local only, no remote).
+- Left uncommitted (not this session): `.github/workflows/*`, `2026-10-05-predictions-hub-panels-polish.md`, `site/src/data/card-redirects.json`, untracked Metaculus export files, experiments, context PDF.
