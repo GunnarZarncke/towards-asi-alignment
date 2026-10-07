@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-06 (Python venv for agents).
+Last updated: 2026-10-07 (Ward monitoring news card).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-07:** **Ward monitoring news** — Field-news card on Francis Rhys Ward’s 7 October survey of Anthropic, OpenAI, and DeepMind internal-agent monitoring. Each documented practice is granted as a first step (clock, transcript, activations, coverage, live-filter disclaimer, monitor choice, human tail) and left short of a bound. Log: `2026-10-07-ward-monitoring-news.md`.
 - **2026-10-06:** **Python venv for agents** — Root `requirements.txt`, `scripts/resolve_python.sh`, and auto-resolution in check/generate/serve wrappers; documented in `AGENTS.md` and `docs/BUILD.md`. Log: `2026-10-06-python-venv-agents.md`.
 - **2026-10-06/07:** **Eval registry scaffold + chapter gaps** — local sibling repo `ai-safety-claims` (validator, schemas, Markets 1 and 4 contracts, scenarios, listing template; Apache-2.0 code, CC BY 4.0 content). Appendix P: Market 14 YES/NO; Market 1/4 settled from chapters (per-certificate error share, 50 scored systems, per-case correction bars, capture invalidates); condensed Common rules + adversarial budget repeated in every market's fine print (sync guard). Chapters: Ch. 7 calibration, complete-boundary claim, adversarial-pressure condition; Ch. 25 `Pers` (calibrated bound), `Pers_beh`, `Auth_k`; Ch. 43 §Testing a Certificate Under Attack cited across chapters; θ cleanup book-wide (bare θ = causal-influence threshold; `θ_corr` vector). Open: author review of chapter edits, registry GitHub location, host. Log: `2026-10-06-eval-registry-scaffold.md`.
 - **2026-10-05:** **Eval registry split plan** — Metaculus resolves a third-party git snapshot; appendix and site shrink to pointers; per-market contracts and validator live in sibling repo `ai-safety-claims`. Hugging Face / Inspect / Every Eval Ever are neighbors, not the resolution source. Plan: `drafts/plans/predictions/eval-registry-split.md`. Log: `2026-10-05-eval-registry-split.md`.

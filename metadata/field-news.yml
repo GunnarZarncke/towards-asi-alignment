@@ -4,6 +4,28 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-ward-monitoring-oct-2026
+    date: 2026-10-07
+    eventDate: 2026-10-07
+    kind: research
+    title: "The monitors are on. Each one still needs a bound."
+    hook: "Francis Rhys Ward collated the public record of frontier-lab monitoring. The response times, the responses, and the named holes are good first steps. Each one still stops short of a bound on what gets through."
+    summary: "On 7 October 2026 Francis Rhys Ward compiled what Anthropic, OpenAI, and Google DeepMind have said in public about watching agents inside the lab: review clocks, what the monitor is shown, coverage holes, and a live filter that says it does not catch scheming. Each is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act. Monitor performance, collusion, and how the monitors are elicited are outside the survey."
+    decision: "Ask: (1) When the review finishes 30 minutes after the trajectory, or a week after the flag, which irreversible effects are already complete? (2) Under 0.1% of internal coding-agent traffic sits outside the monitor. What can an agent still do on that slice, and on routes inside a monitored transcript? (3) Auto-review approves about 99% of escalations and is documented as not a scheming defense. Which later claim still treats that approval as a catch? (4) Activation classifiers run on some training and on Astra with tools. What does it cost the model to keep that classifier quiet? (5) A person reviews the severe tail. If that person had decided differently, which later behavior would have changed?"
+    bookChapters:
+      - ch10
+      - ch12
+      - ch25
+      - ch39
+      - ch43
+    bridges:
+      - MB4
+      - MB7
+      - MB7a
+      - MB7b
+      - MB7c
+    body: bodies/2026-10-ward-monitoring.md
+    order: 0
   - slug: field-news-openai-training-safety-case-sep-2026
     date: 2026-09-29
     eventDate: 2026-09-28

@@ -1,5 +1,15 @@
 [
   {
+    "id": "ward-monitoring",
+    "template_description": "Anakin Padme 4 panel Star Wars right meme",
+    "texts": [
+      "The monitors are on.",
+      "So nothing can slip past?",
+      "",
+      "Nothing can slip past, right?"
+    ]
+  },
+  {
     "id": "openai-training-safety-case",
     "template_description": "Anakin Padme 4 panel Star Wars right meme",
     "texts": [

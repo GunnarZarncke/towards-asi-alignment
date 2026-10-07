@@ -259,6 +259,21 @@ code {
   border-left-color: var(--src-tsa, #0f172a);
 }
 
+.src-legend-item--ward,
+.src-quote--ward .src-quote-attr,
+.src-quote--ward .src-quote-attr a {
+  color: var(--src-ward, #0e7490);
+}
+
+.src-legend-item--ward .src-legend-swatch {
+  background: var(--src-ward, #0e7490);
+}
+
+.src-quote--ward {
+  background: color-mix(in srgb, var(--src-ward, #0e7490) 9%, var(--color-surface));
+  border-left-color: var(--src-ward, #0e7490);
+}
+
 .src-quote-attr {
   margin: 0 0 0.4rem;
   font-size: 0.82rem;
