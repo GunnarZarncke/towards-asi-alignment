@@ -2475,6 +2475,37 @@ questions:
   - "chapter:ch28"
   tags:
   - takeaway
+- id: news-takeaway-ward-monitoring-oct-2026
+  prompt: Ward collates frontier-lab monitoring — review clocks, transcript review, and human tails.
+    What does documenting those practices still fail to settle?
+  options:
+  - id: take
+    text: Whether harm before the alert is bounded in advance
+    correct: true
+  - id: d0
+    text: Whether reviews finish within thirty minutes
+    correct: false
+  - id: d1
+    text: Whether transcripts are reviewed offline
+    correct: false
+  - id: d2
+    text: Whether a person reviews the severe tail
+    correct: false
+  explanation: "Response times, disclosure, and a human on the tail are real steps. They are not a bound\
+    \ on what can still get through before anyone can act."
+  source:
+    href: /cards/chapter/ch25/
+    label: Chapter 25 — Correction Is a Causal Channel
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch10"
+  - "chapter:ch12"
+  - "chapter:ch25"
+  - "chapter:ch39"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: wiener-coupled-agencies
   prompt: "Who first wrote: \"Disastrous results are to be expected … wherever two agencies essentially\
     \ foreign to each other are coupled in the attempt to achieve a common purpose.\"?"

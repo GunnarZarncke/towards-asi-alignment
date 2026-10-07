@@ -56,6 +56,19 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "ward-monitoring-oct-2026",
+        "MB4",
+        ["ch10", "ch12", "ch25", "ch39", "ch43"],
+        "Ward collates frontier-lab monitoring — review clocks, transcript review, and human tails. What does documenting those practices still fail to settle?",
+        "Whether harm before the alert is bounded in advance",
+        [
+            "Whether reviews finish within thirty minutes",
+            "Whether transcripts are reviewed offline",
+            "Whether a person reviews the severe tail",
+        ],
+        "Response times, disclosure, and a human on the tail are real steps. They are not a bound on what can still get through before anyone can act.",
+    ),
+    Q(
         "huang-klein-zvi-sep-2026",
         "MB11",
         ["ch02", "ch38", "ch13", "ch25"],
