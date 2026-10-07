@@ -1,10 +1,10 @@
 # Eval registry split
 
-Status: **step 4 of 7** (2026-10-06). Registry scaffolded locally and re-trialled; host next, after the author settles the open questions below. Do not rewrite Appendix P or list on Metaculus until a host org owns the sibling repo.
+Status: **step 5 of 7** (2026-10-07). Appendix P and the site hub now point at the claims registry ([site](https://aintelope.github.io/ai-safety-claims/), [source](https://github.com/aintelope/ai-safety-claims)). aintelope hosts it for now and is **not independent**, so `resolutionSource` stays false and attempts by aintelope or Gunnar Zarncke are not accepted. Runnable evaluations live in [`aintelope/ai-safety-claims-workbench`](https://github.com/aintelope/ai-safety-claims-workbench). Next: an independent host, then Metaculus for frozen contracts only.
 
-**Stop:** delete or attic this file when the registry URL is the live resolution source and the appendix boxes have been cut to pointers. Until then, a market whose bars still live only in the TeX box is not listable.
+**Stop:** delete or attic this file when the registry URL is the live resolution source (`resolutionSource` true after an independent host tags a snapshot). Markets without a published registry contract (other than Market 14) are not listable.
 
-Lane: Predictions. Builds on [`assurance-risk-modelling.md`](assurance-risk-modelling.md) Phase 4 and [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Public contracts stay in `appendices/appP-bridge-predictions.tex` until the rewrite in “Appendix P after the split”.
+Lane: Predictions. Builds on [`assurance-risk-modelling.md`](assurance-risk-modelling.md) Phase 4 and [`bridge-prediction-markets.md`](bridge-prediction-markets.md). Public bars live in the registry; Appendix P keeps property paragraphs and pointers.
 
 ## Decision
 
@@ -40,29 +40,32 @@ Nothing public scores “did this attempt meet frozen bars for market *k*?” as
 | **`ai-safety-claims`** | Contracts, attempts, validation, resolution snapshots, thin UI | Thesis, Lean, odds model |
 | Metaculus | Price of the snapshot | Reading papers |
 
-**Source order for bars:** Appendix P box → `contract-vK.yaml`, K = the book's `contractVersion` in `predictions.yml` (copied, then checked against the box by hand) → appendix shrinks to a pointer and `predictions.yml` drops `bars:`. Until the shrink, the TeX box wins on any disagreement. The `scientific` / `adversarialValidation` / `reportingInterface` split already in `predictions.yml` seeds the contract's bars vs qualification fields.
+**Source order for bars:** the registry contract at `contractVersion` in `predictions.yml` is authoritative. The appendix does not restate numeric bars. Market 14 is the exception (box only).
 
 A YES in the registry is still not an `MB*` discharge. Prices still do not enter the safety-case demo as parameters.
 
-## Registry scaffold (built 2026-10-06)
+## Registry and workbench (public 2026-10-07)
 
-Local sibling repo **`../ai-safety-claims`** (git init, uncommitted, no GitHub remote). It is now the canonical place for everything this plan used to spell out; do not duplicate it here:
+Sibling checkouts `../ai-safety-claims` ([registry](https://github.com/aintelope/ai-safety-claims)) and `../ai-safety-claims-workbench` ([workbench](https://github.com/aintelope/ai-safety-claims-workbench)). They are the canonical place for everything this plan used to spell out; do not duplicate it here:
 
 | Topic | Where |
 |-------|-------|
-| Vocabulary, attempt id format, filing rules, deadlines | `ai-safety-claims/README.md` |
-| Host criteria, conflicts, disputes, tags, transfer | `ai-safety-claims/GOVERNANCE.md` |
-| File formats (attempt, adversarial route, suite manifest, adjudication, contract, outcome) | `ai-safety-claims/schemas/` |
-| Shared rules copied from Appendix P (qualification, adversarial routes and budgets, glossary, judgment stack, wrapping, statistics, deadlines, common human checks) | `ai-safety-claims/shared-rules/common-v1.yaml` |
-| Contracts: Markets 1 and 4, v1 `draft`, each with `openQuestions` | `ai-safety-claims/market-contracts/` |
+| Vocabulary, attempt id format, filing rules, evidence files, deadlines | `ai-safety-claims/README.md` |
+| Interim host, host criteria, conflicts, disputes, tags, decoupling | `ai-safety-claims/GOVERNANCE.md`, `registry.yaml` |
+| File formats (attempt, freeze, frozen cases, trial record, adapter, adversarial route, suite manifest, adjudication, contract, outcome) | `ai-safety-claims/schemas/` |
+| Shared rules copied from Appendix P, plus registry rules (exercised bars, evidence, hash-only hidden suites) | `ai-safety-claims/shared-rules/common-v1.yaml` |
+| Contracts: Markets 1–13 and 15–18, `frozen` as versions (2026-10-07); not a resolution source | `ai-safety-claims/market-contracts/` |
 | Check order and reasons (reporting → dates → qualification → maintainer checks → bars) | `ai-safety-claims/validator/engine.py` docstring |
-| Four fictional scenarios with intended outcomes fixed before the first run | `ai-safety-claims/examples/README.md` |
+| Sketches (unfinished attempts no outcome reads), dry run, submit, adjudication helpers | `ai-safety-claims/sketches/README.md` |
+| Fictional scenarios with intended outcomes fixed before their first run | `ai-safety-claims/examples/README.md` |
+| Registry-side plans and progress | `ai-safety-claims/docs/plans/` |
+| Running an evaluation: freeze, run, export a sketch (Inspect by default) | `ai-safety-claims-workbench/README.md` |
 
-`python -m validator check` and `python -m validator test` pass (2026-10-06; quoted in the session log). Rules the scaffold settled: `wrapped` attempts filable by anyone; per-contract `adversarialBudget` and `freezeOrder` copied from the box; 60-day window, tag at its end, annul 30 days later; one outcome file per contract version; `dependsOnAttempts`; submitter-set outcome fields fail the build; `resolutionSource: false` in every outcome file until a host owns the repo.
+The score table is no longer self-reported: every attempt carries its frozen cases, per-trial records, and raw log, and the validator re-derives the table from them. The site publishes `ui/index.html` on every push after `validator check`.
 
 ## Per market: what goes in the contract
 
-Guide for copying the remaining contracts (Markets 1 and 4 are done). Each contract copies its box verbatim, sets `adversarialBudget` and `freezeOrder` from the box (never stricter), and lists ambiguities under `openQuestions` instead of deciding them. Markets 19–20 need `stack` and `challenge` attempt types and the tournament order: protocol published → registration window → registration closes → hidden cases built after close → stacks evaluated → optional Market 20 challenge against one ACCEPT. Market 19: if a tournament-wide condition fails, no stack qualifies (OTHER). Market 20: YES/OTHER only.
+Guide for Markets 19–21 (catalog 1–18 except 14 is copied and frozen as versions). Each contract copies its box verbatim, sets `adversarialBudget` and `freezeOrder` from the box (never stricter), and lists ambiguities under `openQuestions` instead of deciding them. Markets 19–20 need `stack` and `challenge` attempt types and the tournament order: protocol published → registration window → registration closes → hidden cases built after close → stacks evaluated → optional Market 20 challenge against one ACCEPT. Market 19: if a tournament-wide condition fails, no stack qualifies (OTHER). Market 20: YES/OTHER only.
 
 | # | Contract adds | Validator reads from score table | Human (adjudication) |
 |---|---------------|----------------------------------|----------------------|
@@ -96,9 +99,11 @@ Markets 19–21 may stay `draft` in contracts until Phase 4. Partials are valid:
 
 Rewrite only after the registry URL and `contractVersion` exist. Update `INSTRUCTIONS.md` Appendix H scope in the same pass.
 
-**Stays, shortened:** opening; three-way rule; catalog table; per-market property paragraph + registry pointer; closest existing work; aggregation and \(F/R/U\); Market 21 wrapper note.
+**Stays, shortened (catalog 1–18 except 14):** opening; three-way rule; catalog table; per-market property paragraph + registry pointer; closest existing work; aggregation and \(F/R/U\); Market 21 wrapper note.
 
-**Moves to `ai-safety-claims`:** common qualification, glossary procedure, adapter rules, per-market YES lists, unit rules, Market 19–20 fill guidance.
+**Stays full-box in Appendix P until Phase 4:** Markets 19–21 (not copied to the registry in step 5).
+
+**Moves to `ai-safety-claims`:** common qualification, glossary procedure, adapter rules, per-market YES lists, unit rules; Market 19–20 fill guidance moves only when those contracts are copied.
 
 **“How a market can resolve”** shrinks to: published work counts whoever files it; the registry maintainer adjudicates; OTHER means no qualifying attempt, not a missing snapshot.
 
@@ -124,31 +129,36 @@ After host transfer:
 
 ## TSA submissions
 
-- Path: `submitted-attempts/tsa-<date>-<slug>/`.
-- No merge on `adjudication/` or `market-outcomes/` after transfer.
+- Until an independent host owns the registry, attempts submitted or authored by aintelope or Gunnar Zarncke are not accepted (`GOVERNANCE.md`). Sketches are fine, since no outcome reads them: the first is the lab-simulation intervention UAD sketch for Market 1 (`sketches/zarncke-2026-10-07-lab-sim-intervention-uad/`, frozen and run in the workbench).
+- After the transfer: no merge on `adjudication/` or `market-outcomes/`.
 - Partials are success for the registry, not a book claim of bridge discharge.
 - Seed a non-TSA example attempt before the first TSA row.
 
 ## Order of work
 
 1. This plan (done).
-2. Scaffold **`ai-safety-claims`** (done 2026-10-06, local only): schemas, validator, contracts for Markets 1 and 4, `challenge-runs` fixture, `wrapped` example, four scenarios, static UI, CI workflow. Open before publishing it: license, GitHub location, author settles each contract's `openQuestions`.
+2. Scaffold **`ai-safety-claims`** (done 2026-10-06; public under `aintelope` 2026-10-07 with Apache-2.0 / CC BY 4.0, CI, and the Pages site). The contracts' `openQuestions` were settled in the chapters (G1–G7). Added 2026-10-07: exercised-bars rule (also in the Appendix P reading rules), sketches and contributor tools, evidence files behind every score table, and the workbench repo.
 3. Admin re-trial (done 2026-10-06): admin agent 6/6 cases as intended, posting defects fixed in `listing-template.md`; maintainer agent found the intended check sets, and its findings became rule text (human-check triggers, fail vs unsettled, per-instance certificate check, `freezeEvidence` for wrapped attempts) or contract `openQuestions`. Agent agreement is one instrument; rerun both trials after the open questions are settled.
-4. Host (Plex first; host criteria in `GOVERNANCE.md`). Transfer org. Tag `snapshot-0` (all OTHER).
-5. Shrink Appendix P and site to pointers. Sync predictions.
+4. Independent host (Plex first; host criteria in `GOVERNANCE.md`). aintelope hosts in the meantime, without resolution power. Transfer org. Tag `snapshot-0` (all OTHER).
+5. Shrink Appendix P and site to pointers (done 2026-10-07). Sync predictions.
+   Decouple fully, not only shorten: the registry's contracts and shared rules become the authoritative text; the registry may hold non-TSA contracts and diverge from or drop TSA ones; contract versions number independently of the book. Needed for host independence. Recorded in `ai-safety-claims/GOVERNANCE.md` § Decoupling from the manuscript.
 6. Metaculus for frozen contracts only.
 7. Optional: Inspect register, Every Eval Ever export, HF for logs — none replace `market-outcomes/`.
 
 ## Open questions for the author (before any contract is frozen)
 
-Checked against the chapters and Lean (2026-10-06; Market 1: Ch. 1, 7, `Evidence.lean`, `Core.lean`, `Defeaters.lean`; Market 4: Ch. 25, 26, 29, `Correction.lean`, `MB4CorrectionIntegrity.lean`, `Evidence.lean`). Where the book gave one answer it went into the box and the contract (Market 1 → v2, Market 4 → v3):
+Settled: the questions the contracts first listed (Market 1 floor and denominators, adversarial effort, toy versus constructed systems, "previously unseen"; Market 4 persistence, episode floor, per-case bars) are in the chapters, the boxes, and the contracts; see [`chapter-gaps-from-contracts.md`](chapter-gaps-from-contracts.md) G1–G7.
 
-- Market 1: "unlabeled" = no agent-membership labels or prior ontology; interventions allowed (Ch. 7 "recovered from observations and interventions", "without a unit that is already known to be an agent"). The adversarial subset is ambiguous, composite, transformed, or adversarially presented control processes (Ch. 7 generator–detector game).
-- Market 4: verbal agreement without behavior change is a failed genuine correction, not a sham (Ch. 25 "listens politely but does not change has no correction channel"). A captured or rerouted channel invalidates the certificate: zero successful channel captures, the 10% cap applies to fake/unauthorized inputs only (Ch. 26 `ValidRef` Boolean gate, "invalid rather than merely low-scoring").
+Settled (2026-10-07 author picks; registry text in `ai-safety-claims/shared-rules/common-v1.yaml` and Market 1 contract). These rules are **fixed for this contract version**. Later versions, if any, go through the usual community process for new contract versions; that is not an open question now.
 
-Still open (book silent or plural; listed under `openQuestions` in `ai-safety-claims/market-contracts/market-01/contract-v2.yaml` and `market-04/contract-v3.yaml`): Market 1 floor and denominators, minimum adversarial effort, toy exclusion vs constructed systems, "previously unseen"; (Market 4 settled by the author 2026-10-06: persistence over all genuine corrections; the 100-episode floor pools genuine and sham; bars per required correction case, at least 20 genuine each; the unit rule does not bite because the rates are within-system rates.) Chapter gaps, with suggested resolutions: [`chapter-gaps-from-contracts.md`](chapter-gaps-from-contracts.md).
+1. **Minimum negative cases.** One design-supplied case per bar is enough (`exercisedBars` / `exercisedBy`). No extra floor for Market 4 fake corrections or Market 1 correlation-not-control systems beyond that.
+2. **Distinct benchmark systems (Market 1).** Different seeds count as distinct.
+3. **"Unlabeled" when interventions rerun the system (Market 1).** Rerunning a system with its own configuration counts as allowed access, not as reading labels.
+4. **Who assigns families (Market 1).** **Maintainer check** that each scored system belongs to the families the benchmark claims.
+5. **Checking the freeze fields (Market 1).** The attempt must **show per scored system** that perturbing the unit hits the minimum change and that removing a non-listed component stays in the no-effect range.
+6. **Several trials per case.** **One trial per case** only (validator rejects a second trial for the same `case_id`). Repeated runs are not allowed.
 
-Settle each in the box first (the appendix wins), then copy into the contract and drop the `openQuestions` entry.
+Registry-only follow-ups live in `ai-safety-claims/docs/plans/registry-open-questions.md`.
 
 ## Not in this split
 

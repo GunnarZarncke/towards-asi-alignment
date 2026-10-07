@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-07 (v1.7.0 tagged and released).
+Last updated: 2026-10-08 (versioned registry links in appendix, hub, and sync; Markets 19–21 full-box until Phase 4).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-10-07 (v1.7.0 tagged and released).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** registry split before listing — [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) (step 4 of 7; sibling repo `../ai-safety-claims` scaffolded locally, Markets 1 and 4 contracts; Market 14 is YES/NO outside the registry); then Phase 4 pilot/listing for Markets 19–21, external funding, preset slots when artifacts resolve). Do not rewrite Appendix P until a host owns the sibling repo.
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — catalog 1–13 & 15–18 point to versioned registry pages via `registrySite`; Market 14 full box in appendix/card; Markets 19–21 full appendix boxes until Phase 4; remaining: independent host, `snapshot-0`, Metaculus; workbench `aintelope/ai-safety-claims-workbench`); then Phase 4.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -20,6 +20,11 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-08:** **Versioned registry links** — `\claimspage` / `registrySite` for manuscript and site; fixed prediction-card Property/Closest-work LaTeX refs; Market 14 card readability; Markets 19–21 restored to full appendix boxes. Log: `2026-10-08-predictions-registry-links.md`.
+- **2026-10-07:** **Catalog contract freeze** — Copied Markets 2–3, 5–13, 15–18 into `ai-safety-claims` and set catalog contracts `status: frozen` (not a resolution source). Appendix pointers updated. Log: `2026-10-07-catalog-contract-freeze.md`.
+- **2026-10-07:** **Appendix P after the split** — Appendix H boxes cut to property + registry pointer; Market 14 keeps YES conditions; `predictions.yml` drops `bars:`; hub and cards link [ai-safety-claims](https://aintelope.github.io/ai-safety-claims/). Log: `2026-10-07-appendix-p-split.md`.
+- **2026-10-07:** **Registry split plan revised** — `eval-registry-split.md` brought up to date (public registry and workbench, interim non-independent host, evidence files, TSA attempts excluded until independent); stale `openQuestions` pointer replaced by six open box questions from the Market 1 UAD sketch and the exercised-bars rule. Log: `2026-10-07-registry-split-revision.md`.
+- **2026-10-07:** **Exercised-bars rule** — Appendix H reading rules: a bar over design-supplied cases needs at least one case, else not qualifying (not NO); registry implements it as `exercisedBy`. Split plan step 5 now says decouple fully (non-TSA contracts, registry text authoritative). Log: `2026-10-07-exercised-bars-rule.md`.
 - **2026-10-07:** **v1.7.0 released** — Tag `v1.7.0` (`86815d35f` notes commit). Appendix H three-way predictions, site hub, field news since v1.6.0, backtest public name, maintainer checklists. Log: `2026-10-07-v1-7-0-release-notes.md`.
 - **2026-10-07:** **Maintainer checklists** — `docs/MAINTAINER.md`: action→follow-up rules (field news→quiz, symbols→graphs, CI gate map). Log: `2026-10-07-maintainer-checklists.md`.
 - **2026-10-07:** **Ward monitoring news** — Field-news card on Francis Rhys Ward’s 7 October survey of Anthropic, OpenAI, and DeepMind internal-agent monitoring. Each documented practice is granted as a first step (clock, transcript, activations, coverage, live-filter disclaimer, monitor choice, human tail) and left short of a bound. Log: `2026-10-07-ward-monitoring-news.md`.

@@ -11,6 +11,8 @@ interface Props {
   note?: string;
   badge?: "external" | "related";
   externalLink?: boolean;
+  registryHref?: string;
+  registryLabel?: string;
 }
 
 const {
@@ -22,7 +24,9 @@ const {
   embedId,
   note,
   badge,
-  externalLink = false
+  externalLink = false,
+  registryHref,
+  registryLabel
 } = Astro.props;
 ---
 
@@ -45,6 +49,14 @@ const {
     }
   </h3>
   {note && <p class="market-panel-note">{note}</p>}
+  {
+    registryHref && (
+      <p class="market-panel-note">
+        <a href={registryHref} target="_blank" rel="noopener noreferrer">{registryLabel || "Claims registry"}</a>
+        {" "}— scored outcome, separate from listing status and the forecast below.
+      </p>
+    )
+  }
   {
     embedId ? (
       <MetaculusEmbed questionId={embedId} title={shortTitle} layout="panel" />

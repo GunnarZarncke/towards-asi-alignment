@@ -9,6 +9,7 @@ cd "$ROOT"
 PYTHON="$("$ROOT/scripts/resolve_python.sh")"
 
 echo "[generate] manuscript .tex fragments..."
+"$PYTHON" scripts/generate_claims_base_tex.py
 "$PYTHON" scripts/generate_tables.py
 "$PYTHON" scripts/generate_global_nocite.py
 "$PYTHON" scripts/generate_notation_appendix.py

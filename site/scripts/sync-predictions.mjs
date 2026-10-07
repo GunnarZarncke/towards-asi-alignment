@@ -1,8 +1,16 @@
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
-import { stripComments } from "./lib/tex-convert.mjs";
+import {
+  collectLabels,
+  convertLatexDocument,
+  expandInputs,
+  extractChapterMeta,
+  stripComments
+} from "./lib/tex-convert.mjs";
+import { buildReferencesJson, buildBibIndex } from "./lib/bib-index.mjs";
+import { buildCardIndex } from "./lib/card-index.mjs";
 import { bookFullPublicHref, cardPublicPath } from "./lib/card-urls.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -15,9 +23,27 @@ const outputDir = path.join(siteRoot, "src", "data");
 const outputPath = path.join(outputDir, "predictions.json");
 const predictionCardsDir = path.join(siteRoot, "src", "content", "cards", "predictions");
 
-const REPO = "https://github.com/GunnarZarncke/towards-asi-alignment";
 const APPENDIX_H_FULL = bookFullPublicHref("", "appP");
 const FUNDING_CARD = "/cards/funding/prediction-evaluation-program/";
+const DEFAULT_REGISTRY_SITE = "https://aintelope.github.io/ai-safety-claims/";
+const DEFAULT_REGISTRY_REPO = "https://github.com/aintelope/ai-safety-claims";
+const APPENDIX_B_CARD = cardPublicPath({ id: "chapters/appB", type: "appendix" });
+
+const LABEL_SCAN_PATHS = [
+  "appendices/appA-notation.tex",
+  "appendices/appE-glossary.tex",
+  "appendices/appG-lean-proof-spine.tex"
+];
+
+const APPENDIX_SOURCES = [
+  { id: "appB", file: "appendices/appB-bridge-crosswalk.tex" },
+  { id: "appC", file: "appendices/appC-institutional-translation.tex" },
+  { id: "appM", file: "appendices/appM-institutional-histories.tex" },
+  { id: "appD", file: "appendices/appD-worked-example.tex" },
+  { id: "appF", file: "appendices/appF-research-program.tex" },
+  { id: "appP", file: "appendices/appP-bridge-predictions.tex" },
+  { id: "appN", file: "appendices/appN-experimental-evidence.tex" }
+];
 
 function yamlString(value) {
   return JSON.stringify(value ?? "");
@@ -50,7 +76,12 @@ function stripLatexInline(text) {
     .replace(/\\cite\{[^}]+\}/g, "")
     .replace(/\\(?:ref|eqref)\{[^}]+\}/g, "")
     .replace(/\\emph\{([^}]*)\}/g, "$1")
+    .replace(/\\text\{([^}]*)\}/g, "$1")
+    .replace(/\\ensuremath\{([^}]*)\}/g, "$1")
+    .replace(/\\\(([\s\S]*?)\\\)/g, "$1")
     .replace(/\\textbf\{([^}]*)\}/g, "**$1**")
+    .replace(/\\url\{([^}]*)\}/g, "$1")
+    .replace(/\\texttt\{([^}]*)\}/g, "`$1`")
     .replace(/\\textit\{([^}]*)\}/g, "$1")
     .replace(/\\paragraph\{([^}]*)\}/g, "**$1**")
     .replace(/~/g, " ")
@@ -124,36 +155,6 @@ function isYesNoMarket(market) {
   return outcomes.length === 2 && outcomes.includes("YES") && outcomes.includes("NO");
 }
 
-// Each market's fine print repeats the Common qualification rules verbatim so a question can be
-// listed on its own. Markets 14, 19, and 20 state their own procedures and are exempt.
-const COMMON_RULES_EXEMPT = new Set([14, 19, 20]);
-
-function commonParagraph(tex, marker) {
-  const start = tex.indexOf(marker);
-  if (start === -1) throw new Error(`sync-predictions: Common qualification lacks "${marker}"`);
-  const end = tex.indexOf("\n\n", start);
-  return tex.slice(start, end === -1 ? undefined : end).trim();
-}
-
-function assertCommonRulesCopies(tex, sectionByNumber) {
-  const boxStart = tex.indexOf("\\begin{predictionbox}[Common qualification]");
-  const boxEnd = tex.indexOf("\\end{predictionresolution}", boxStart);
-  const common = tex.slice(boxStart, boxEnd);
-  const rules = commonParagraph(common, "\\textbf{Common rules.}");
-  const serious = commonParagraph(common, "\\textbf{Adversarial budget: serious.}");
-  const fallback = commonParagraph(common, "\\textbf{Adversarial budget: default.}");
-  for (const [number, section] of sectionByNumber) {
-    if (COMMON_RULES_EXEMPT.has(number)) continue;
-    const body = section.body;
-    const budgets = [serious, fallback].filter((text) => body.includes(text)).length;
-    if (!body.includes(rules) || budgets !== 1) {
-      throw new Error(
-        `sync-predictions: Market ${number} fine print must repeat the Common rules verbatim and exactly one adversarial budget`
-      );
-    }
-  }
-}
-
 function assertPlainCardText(label, text) {
   if (!text) return;
   if (/\\[a-zA-Z@]/.test(text) || /~/.test(text)) {
@@ -205,7 +206,103 @@ function extractContractEnv(sectionBody, envName) {
   return match?.[1]?.trim() ?? "";
 }
 
-function extractPredictionBox(sectionBody) {
+function claimsPageMarkdown(marketId, version, base) {
+  const root = base.replace(/\/$/, "");
+  return `[claims registry (contract v${version})](${root}/markets/${marketId}/v${version}/)`;
+}
+
+function expandClaimspage(tex, base) {
+  return tex.replace(/\\claimspage\{([^}]+)\}\{(\d+)\}/g, (_, market, version) =>
+    claimsPageMarkdown(market, version, base)
+  );
+}
+
+function stripRegistryPointer(text) {
+  return text
+    .replace(
+      /\nBars, qualification, freeze, and reporting (?:live|will live) in the[\s\S]*?(?=$)/,
+      ""
+    )
+    .replace(/\nThis market is outside the claims registry:[\s\S]*?(?=$)/, "")
+    .trim();
+}
+
+function normalizeCardMath(text) {
+  return text
+    .replace(/\$\\text\{([^}]*)\}\$/g, "$1")
+    .replace(/\\\[([\s\S]*?)\\\]/g, "$1")
+    .replace(/\\\(([\s\S]*?)\\\)/g, "$1")
+    .replace(/\\text\{([^}]*)\}/g, "$1")
+    .replace(/\\emph\{([^}]*)\}/g, "$1")
+    .replace(/\\texttt\{([^}]*)\}/g, "`$1`");
+}
+
+function convertCardFragment(texFragment, convertCtx) {
+  if (!texFragment.trim()) return "";
+  const errors = [];
+  const out = convertLatexDocument(texFragment, {
+    ...convertCtx,
+    pageId: "appP",
+    errors,
+    footnoteCount: 0,
+    authHeadingKeys: [],
+    authHeadingIndex: 0
+  });
+  if (errors.length) {
+    console.warn(`sync-predictions: ${errors.slice(0, 3).join("; ")}`);
+  }
+  return normalizeCardMath(out.replace(/\n{3,}/g, "\n\n").trim());
+}
+
+async function buildConvertContext(registrySite) {
+  const indexSources = [];
+  const webPageIds = new Set(["appP"]);
+
+  const chapterFiles = (await readdir(path.join(repoRoot, "chapters")))
+    .filter((file) => file.startsWith("ch") && file.endsWith(".tex"))
+    .sort();
+  for (const file of chapterFiles) {
+    const tex = await readFile(path.join(repoRoot, "chapters", file), "utf8");
+    const id = file.match(/^(ch\d+)-/)?.[1] ?? file.replace(/\.tex$/, "");
+    const meta = extractChapterMeta(tex);
+    indexSources.push({ id, title: meta.title, tex });
+    webPageIds.add(id);
+  }
+
+  for (const appendix of APPENDIX_SOURCES) {
+    const tex = await readFile(path.join(repoRoot, appendix.file), "utf8");
+    const meta = extractChapterMeta(tex);
+    indexSources.push({ id: appendix.id, title: meta.title, tex });
+    webPageIds.add(appendix.id);
+  }
+
+  for (const rel of LABEL_SCAN_PATHS) {
+    try {
+      const tex = await readFile(path.join(repoRoot, rel), "utf8");
+      const meta = extractChapterMeta(tex);
+      indexSources.push({ id: path.basename(rel, ".tex"), title: meta.title, tex });
+    } catch {
+      // optional appendix files may not exist in all snapshots
+    }
+  }
+
+  const labelIndex = new Map();
+  for (const source of indexSources) {
+    const tex = expandInputs(stripComments(source.tex), repoRoot);
+    collectLabels(tex, source.id, source.title, webPageIds.has(source.id), labelIndex);
+  }
+
+  return {
+    repoRoot,
+    claimsBase: String(registrySite || DEFAULT_REGISTRY_SITE).replace(/\/$/, ""),
+    labelIndex,
+    bibIndex: new Map(buildReferencesJson(repoRoot).entries.map((entry) => [entry.key, entry])),
+    cardIndex: buildCardIndex(path.join(siteRoot, "src", "content", "cards")),
+    illustrationAlts: {}
+  };
+}
+
+function extractPredictionBox(sectionBody, convertCtx) {
   const boxes = [
     ...sectionBody.matchAll(
       /\\begin\{predictionbox\}(?:\[([^\]]*)\])?([\s\S]*?)\\end\{predictionbox\}/g
@@ -218,6 +315,7 @@ function extractPredictionBox(sectionBody) {
       questionLead: "",
       questionScope: "",
       background: "",
+      property: "",
       resolutionBlocks: []
     };
   }
@@ -230,7 +328,10 @@ function extractPredictionBox(sectionBody) {
   const { questionLead, questionScope } = splitQuestionBlock(questionRaw);
 
   const backgroundInner = extractContractEnv(sectionBody, "predictionbackground");
-  const resolutionInner = extractContractEnv(sectionBody, "predictionresolution");
+  const resolutionInner = expandClaimspage(
+    extractContractEnv(sectionBody, "predictionresolution"),
+    convertCtx.claimsBase || ""
+  );
   const legacyInner = resolutionInner ? "" : frontInner;
   const resolutionBlocks = resolutionInner
     ? extractResolutionBlocks(resolutionInner)
@@ -241,9 +342,10 @@ function extractPredictionBox(sectionBody) {
     question: stripLatexInline(questionRaw),
     questionLead,
     questionScope,
-    background: formatLatexParagraphs(backgroundInner),
-    resolutionBlocks
-  };
+      background: formatLatexParagraphs(backgroundInner),
+      property: extractProperty(sectionBody, convertCtx),
+      resolutionBlocks
+    };
   for (const [field, value] of Object.entries(extracted)) {
     if (field === "resolutionBlocks") {
       for (const block of value) {
@@ -256,12 +358,18 @@ function extractPredictionBox(sectionBody) {
   return extracted;
 }
 
-function extractPriorTest(sectionBody) {
+function extractProperty(sectionBody, convertCtx) {
+  const match = sectionBody.match(/\\begin\{authbar\}\{[^}]*\}([\s\S]*?)\\end\{authbar\}/);
+  if (!match) return "";
+  return convertCardFragment(stripRegistryPointer(match[1]), convertCtx);
+}
+
+function extractPriorTest(sectionBody, convertCtx) {
   const match = sectionBody.match(
     /Closest existing work(?: is)?[:\s]([\s\S]*?)(?=\\end\{authbar\})/
   );
   if (!match) return "";
-  return stripLatexInline(match[1]);
+  return convertCardFragment(match[1].trim(), convertCtx);
 }
 
 function relatedForMarket(market, bridgeCardSlugs) {
@@ -329,6 +437,12 @@ function formatListingStatus(market) {
   return `**Listing status.** ${label}.`;
 }
 
+function showsYesConditions(extracted) {
+  return (extracted.resolutionBlocks ?? []).some((block) =>
+    block.label.toLowerCase().includes("yes requires")
+  );
+}
+
 function formatAuditLine(market) {
   const output = OUTPUT_CLASS_LABEL[market.outputClass] ?? market.outputClass;
   const tier = EVIDENCE_TIER_LABEL[market.evidenceTier] ?? market.evidenceTier;
@@ -354,17 +468,28 @@ function catalogLongTitle(market, extracted = {}) {
   );
 }
 
-function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
+function registryContractUrl(market, registrySite) {
+  if (!market.registryContractPublished || !market.contractVersion) return "";
+  return `${registrySite.replace(/\/$/, "")}/markets/${market.id}/v${market.contractVersion}/`;
+}
+
+function marketCardMarkdown(market, extracted, bridgeCardSlugs, registry) {
   const shortTitle = catalogShortTitle(market);
   const longTitle = catalogLongTitle(market, extracted);
   const summary = longTitle || shortTitle || market.title || "";
   const appendixFull = `${APPENDIX_H_FULL}#${appendixAnchor(market.number)}`;
   const resolveByLabel = formatResolveBy(market.resolveBy);
+  const registrySite = registry.site;
+  const registryRepo = registry.repo;
+  const contractUrl = registryContractUrl(market, registrySite);
   const bodyParts = [
     `**Resolve by:** ${resolveByLabel}.`,
     formatListingStatus(market),
     ""
   ];
+  if (extracted.property) {
+    bodyParts.push("## Property", "", extracted.property, "");
+  }
   if (extracted.background) {
     bodyParts.push("## Background", "", extracted.background, "");
   }
@@ -388,25 +513,54 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
       }
     }
   }
-  const auditLine = formatAuditLine(market);
-  if (auditLine) {
-    bodyParts.push(auditLine, "");
-  }
-  if (market.notes) {
-    bodyParts.push(market.notes.trim().replace(/\s+/g, " "), "");
+  // Markets that still print the YES conditions (Market 14) already say what a YES is.
+  // The audit line and notes are the stand-in for markets whose bars live in the registry.
+  if (!showsYesConditions(extracted)) {
+    const auditLine = formatAuditLine(market);
+    if (auditLine) {
+      bodyParts.push(auditLine, "");
+    }
+    if (market.notes) {
+      bodyParts.push(market.notes.trim().replace(/\s+/g, " "), "");
+    }
   }
   if (extracted.priorTest) {
     assertPlainCardText(`market ${market.number} closest work`, extracted.priorTest);
     bodyParts.push("## Closest existing work", "", extracted.priorTest, "");
   }
-  bodyParts.push(
-    `[Read the full contract in Appendix H](${appendixFull}) (PDF canon).`,
-    "",
-    isYesNoMarket(market)
-      ? "YES and NO are the two listing options: every condition holds, or not. Neither means the corresponding bridge is proved or discharged."
-      : "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
-    ""
-  );
+  if (isYesNoMarket(market)) {
+    bodyParts.push(
+      `[Read the box in Appendix H](${appendixFull}). This market is not in the claims registry.`,
+      "",
+      "YES and NO are the two listing options: every condition holds, or not. Neither means the corresponding bridge is proved or discharged.",
+      ""
+    );
+  } else {
+    const contractLine = contractUrl
+      ? ` Resolution criteria: [contract v${market.contractVersion}](${contractUrl}).`
+      : " No contract page is published there yet, so this market is not listable.";
+    bodyParts.push(
+      `[Property in Appendix H](${appendixFull}).${contractLine} The registry is not a resolution source until an independent host tags a snapshot.`,
+      "",
+      "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
+      ""
+    );
+  }
+
+  const external = [{ label: "Property (Appendix H)", url: appendixFull }];
+  if (!isYesNoMarket(market)) {
+    external.push({ label: "Claims registry", url: registrySite });
+    if (contractUrl) {
+      external.push({
+        label: `Resolution criteria (v${market.contractVersion})`,
+        url: contractUrl
+      });
+    }
+  }
+  external.push({
+    label: "Prediction-evaluation funding",
+    url: FUNDING_CARD
+  });
 
   return [
     "---",
@@ -421,17 +575,7 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
     "resolvesMB: false",
     ...(market.metaculusEmbedId != null ? [`metaculusEmbedId: ${market.metaculusEmbedId}`] : []),
     formatRelatedYaml(relatedForMarket(market, bridgeCardSlugs)),
-    formatExternalYaml([
-      { label: "Full contract (Appendix H)", url: appendixFull },
-      {
-        label: "Criteria draft (GitHub)",
-        url: `${REPO}/blob/main/drafts/predictions/bridge-prediction-market-criteria.md`
-      },
-      {
-        label: "Prediction-evaluation funding",
-        url: FUNDING_CARD
-      }
-    ]),
+    formatExternalYaml(external),
     "---",
     "",
     ...bodyParts
@@ -503,11 +647,8 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     ]),
     formatExternalYaml([
       { label: "Appendix H (full on site)", url: APPENDIX_H_FULL },
-      { label: "Bridge crosswalk (Appendix B)", url: "/cards/appendix/appB/" },
-      {
-        label: "Working criteria (GitHub)",
-        url: `${REPO}/blob/main/drafts/predictions/bridge-prediction-market-criteria.md`
-      }
+      { label: "Claims registry", url: DEFAULT_REGISTRY_SITE },
+      { label: "Bridge crosswalk (Appendix B)", url: APPENDIX_B_CARD }
     ]),
     "---",
     "",
@@ -572,7 +713,9 @@ function assertMarketAudit(market) {
     problems.push(`missing/invalid marketStatus (${market.marketStatus ?? "—"})`);
   }
   if (!market.sampleUnit) problems.push("missing sampleUnit");
-  if (!market.bars?.scientific?.length) problems.push("missing scientific bars");
+  if (market.number !== 14 && !market.contractVersion) {
+    problems.push("missing contractVersion");
+  }
   if (problems.length) {
     console.warn(`sync-predictions: market ${market.number} audit: ${problems.join("; ")}`);
   }
@@ -586,6 +729,7 @@ const raw = yaml.load(await readFile(sourcePath, "utf8"));
 const appendixTex = await readFile(appendixPath, "utf8");
 const sectionByNumber = extractMarketSections(appendixTex);
 const bridgeCardSlugs = raw.bridgeCardSlugs ?? {};
+const convertCtx = await buildConvertContext(raw.registrySite);
 
 const markets = [...raw.markets].sort((a, b) => a.number - b.number);
 const configuredListingStatuses = new Set(Object.keys(raw.resolution?.listingStatuses ?? {}));
@@ -612,7 +756,11 @@ if (missingSections.length) {
   );
 }
 for (const market of markets) assertMarketAudit(market);
-assertCommonRulesCopies(appendixTex, sectionByNumber);
+const registry = {
+  site: (raw.registrySite || DEFAULT_REGISTRY_SITE).replace(/\/?$/, "/"),
+  repo: (raw.registryRepo || DEFAULT_REGISTRY_REPO).replace(/\/$/, ""),
+  snapshotTag: raw.snapshotTag || ""
+};
 const externalFactors = [...(raw.externalFactors ?? [])];
 const relatedForecasts = [...(raw.relatedForecasts ?? [])];
 
@@ -630,8 +778,8 @@ cardCount += 1;
 
 const enrichedMarkets = markets.map((market) => {
   const section = sectionByNumber.get(market.number);
-  const box = section ? extractPredictionBox(section.body) : {};
-  const priorTest = section ? extractPriorTest(section.body) : "";
+  const box = section ? extractPredictionBox(section.body, convertCtx) : {};
+  const priorTest = section ? extractPriorTest(section.body, convertCtx) : "";
   const longTitle = catalogLongTitle(market, box);
   if (
     longTitle &&
@@ -651,18 +799,21 @@ const enrichedMarkets = markets.map((market) => {
     marketQuestion: longTitle,
     questionScope: box.questionScope || "",
     question: longTitle,
-    priorTest
+    priorTest,
+    registryOutcomeUrl: registry.site,
+    registryContractUrl: registryContractUrl(market, registry.site)
   };
 });
 
 for (const market of markets) {
   const section = sectionByNumber.get(market.number);
-  const box = section ? extractPredictionBox(section.body) : {};
-  const priorTest = section ? extractPriorTest(section.body) : "";
+  const box = section ? extractPredictionBox(section.body, convertCtx) : {};
+  const priorTest = section ? extractPriorTest(section.body, convertCtx) : "";
   const md = marketCardMarkdown(
     market,
     { ...box, priorTest },
-    bridgeCardSlugs
+    bridgeCardSlugs,
+    registry
   );
   await writeFile(path.join(predictionCardsDir, `${market.id}.md`), md, "utf8");
   cardCount += 1;
@@ -702,6 +853,11 @@ const payload = {
   purpose: raw.purpose?.trim() ?? "",
   overviewCardId: "predictions/overview",
   appendixBookId: "appP",
+  registry: {
+    site: registry.site,
+    repo: registry.repo,
+    snapshotTag: registry.snapshotTag
+  },
   markets: enrichedMarkets,
   externalFactors: enrichedExternalFactors,
   relatedForecasts: enrichedRelatedForecasts,

@@ -627,6 +627,15 @@ function formatCiteHtml(keys, ctx) {
   }).join(", ");
 }
 
+function claimsBase(ctx) {
+  if (ctx.claimsBase) return ctx.claimsBase.replace(/\/$/, "");
+  if (!ctx.repoRoot) return "";
+  const raw = readFileSync(path.join(ctx.repoRoot, "metadata", "predictions.yml"), "utf8");
+  const match = raw.match(/^registrySite:\s*(\S+)/m);
+  ctx.claimsBase = (match?.[1] || "").replace(/\/$/, "");
+  return ctx.claimsBase;
+}
+
 function convertCommand(name, tex, index, ctx) {
   const readArg = () => {
     const arg = readBalanced(tex, index);
@@ -740,6 +749,17 @@ function convertCommand(name, tex, index, ctx) {
     case "url": {
       const inner = convertInlineText(readArg() || "", ctx);
       return { output: `\`${inner}\``, index };
+    }
+    case "href": {
+      const url = (readArg() || "").replace(/\\claimsbase\b/g, claimsBase(ctx));
+      const text = convertInlineText(readArg() || "", ctx);
+      return { output: `[${text}](${url})`, index };
+    }
+    case "claimspage": {
+      const market = (readArg() || "").trim();
+      const version = (readArg() || "").trim();
+      const url = `${claimsBase(ctx)}/markets/${market}/v${version}/`;
+      return { output: `[claims registry (contract v${version})](${url})`, index };
     }
     case "textsc": {
       const inner = convertInlineText(readArg() || "", ctx);
