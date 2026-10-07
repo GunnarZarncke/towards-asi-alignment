@@ -89,6 +89,37 @@ A superintelligence that <em>internalizes coordination</em> (Ch. <a href="../../
 The hopeful reading is that there is no free lunch in concealment: opacity traded for capability, or capability spent on opacity, should in principle be measurable as a deficit somewhere.
 The pessimistic reading, which we do not get to dismiss, is that at high <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi></mrow><annotation encoding="application/x-tex">\kappa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">κ</span></span></span></span> the affordable surplus dwarfs every <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">c_{\mathrm{fake}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">fake</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> we can construct, and the footprint shrinks below measurement noise.
 Establishing which regime holds — and for which metrics — is the central open problem this chapter hands forward.</p>
+<h3 id="testing-a-certificate-under-attack-gz-ai">Testing a Certificate Under Attack <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
+<p><span id="sec:adversarial-validation-ch43"></span>
+The cost relation is the target.
+A test cannot establish <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">c_{\mathrm{fake}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">fake</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, but it can estimate how often a frozen method, audit, or certificate is fooled by an attack of stated strength.
+Many chapters need that estimate, so we state a procedure once here and the chapters cite it:</p>
+<ol>
+<li>
+<p><strong>Freeze first.</strong> The method, its thresholds, and its stated scope are fixed before any test case is built.</p>
+</li>
+<li>
+<p><strong>Independent cases.</strong> Test cases are built by people who did not author the method, are not used in developing, training, or tuning it, and stay hidden from its authors until scoring.</p>
+</li>
+<li>
+<p><strong>Stated attack strength.</strong> The attack is described by who ran it, how much effort it got, and what access it had; access is frozen in advance and at least as strong as the test assumes.</p>
+</li>
+<li>
+<p><strong>Controls both ways.</strong> The test includes cases that should pass and cases that should fail, with the answer known by construction, and it checks that the attack can find failures at all, for example by finding vulnerabilities planted in a weakened copy of the target.</p>
+</li>
+<li>
+<p><strong>The result.</strong> The headline is the false-safe rate, the share of failing cases labeled as passing, with a confidence bound, next to a true-pass or coverage floor; a method that refuses everything has not passed.</p>
+</li>
+<li>
+<p><strong>Scope.</strong> Toy systems are never the only evidence, and a claim about deployment needs at least one broadly capable system.</p>
+</li>
+<li>
+<p><strong>Stop.</strong> Nothing is retuned after scoring, failed results are recorded, and a pass is a snapshot: a new round needs a newly frozen attack.</p>
+</li>
+</ol>
+<p>A pass under this procedure is evidence about one attack strength, not a proof that the measurand is adversarially verifiable up to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi></mrow><annotation encoding="application/x-tex">\kappa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">κ</span></span></span></span>.
+If the attack was weaker than the capability the certificate must hold against, the pass says little about the regime that matters.
+Appendix <a href="../../appendix/appp/">Dated Predictions on the Bridges</a> states a condensed version as the common rule of its prediction markets, with numeric attack budgets.</p>
 <h3 id="naming-the-problem-gz-ai">Naming the Problem <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
 <p><span id="sec:certification-under-manipulation-ch43"></span></p>
 <blockquote class="wiki-quote"><p>Eliciting Latent Knowledge is an open problem in AI safety. Suppose we train a model to predict what the future will look like according to cameras and other sensors. Some futures look great on camera but are actually catastrophically bad.</p><footer><a href="../../references/lwwiki-elk/">LessWrong wiki, 2026</a></footer></blockquote>

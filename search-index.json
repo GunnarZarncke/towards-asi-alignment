@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T23:00:58.988Z",
+  "generatedAt": "2026-10-07T00:07:53.843Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 395,
+  "entryCount": 402,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -127,6 +127,12 @@
       "url": "/cards/chapter/ch25/"
     },
     {
+      "title": "$\\mathcal{P}_{\\mathrm{corr}}$",
+      "type": "notation",
+      "summary": "Correction audit profile $(Obs,Fid,Auth_k,Reach,L,M,Pers,Pers_{\\mathrm{beh}})$ (`eq:correction-profile`)",
+      "url": "/cards/chapter/ch25/"
+    },
+    {
       "title": "$\\mathrm{AdvVerif}$",
       "type": "notation",
       "summary": "Adversarial verification meaningful (preservation coordinate)",
@@ -229,6 +235,12 @@
       "url": "/cards/chapter/ch30/"
     },
     {
+      "title": "$\\theta$",
+      "type": "notation",
+      "summary": "Causal-influence (mutual-information) threshold, e.g. $I(C_t;A_{t+k}\\mid S_t,I_t)>\\theta$; bare $\\theta$ means only this. Other thresholds carry a subscript ($\\theta_L$, $\\theta_M$, $\\theta_{\\mathrm{soc}}$, $\\theta_{\\mathrm{esc}}$, \\ldots); model parameters appear only as subscripts ($p_\\theta$, $\\pi_\\theta$)",
+      "url": "/cards/chapter/ch07/"
+    },
+    {
       "title": "$\\varphi_c$",
       "type": "notation",
       "summary": "Percolation threshold for cooperation (`eq:cooperation-percolation`)",
@@ -247,6 +259,18 @@
       "url": "/cards/chapter/ch34/"
     },
     {
+      "title": "$\\vec{\\theta}_{\\mathrm{corr}}$",
+      "type": "notation",
+      "summary": "Deployment-specific per-coordinate CCI thresholds; $\\vec{\\mathrm{CCI}}\\succeq\\vec{\\theta}_{\\mathrm{corr}}$ means the certificate passes (validity holds, every coordinate meets its threshold). Ch. 28's scalar $\\theta_{\\mathrm{corr}}$ is its one-number reading",
+      "url": "/cards/chapter/ch24/"
+    },
+    {
+      "title": "$\\vec{\\theta}_{\\Pi}$",
+      "type": "notation",
+      "summary": "Per-coordinate thresholds of the preservation envelope $\\vec{\\Pi}(A)$",
+      "url": "/cards/chapter/ch34/"
+    },
+    {
       "title": "$A_t$",
       "type": "notation",
       "summary": "Active interface at time $t$",
@@ -257,6 +281,12 @@
       "type": "notation",
       "summary": "Evasion-process action entropy, internal entropy, weight",
       "url": "/cards/chapter/ch36/"
+    },
+    {
+      "title": "$Auth_k$",
+      "type": "notation",
+      "summary": "Effective authority $I(D_t;A_{t+k}\\mid S_t,\\Theta_t)$ (`eq:effective-authority`)",
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$B_{\\mathrm{align}}$",
@@ -497,6 +527,18 @@
       "type": "notation",
       "summary": "Proxy-throughput count (ch34) vs blanket competence (ch11) vs collective competence (ch13)",
       "url": "/cards/chapter/ch34/"
+    },
+    {
+      "title": "$Pers_{\\mathrm{beh}}$",
+      "type": "notation",
+      "summary": "Behavioural persistence: share of genuine corrections whose target behaviour still holds after a context reset; a correction that never took counts as not persisting (`eq:behavioral-persistence`)",
+      "url": "/cards/chapter/ch25/"
+    },
+    {
+      "title": "$Pers$",
+      "type": "notation",
+      "summary": "Channel persistence: calibrated lower bound on $\\Pr(\\vec{\\mathrm{CCI}}_{t+k}\\succeq\\vec{\\theta}_{\\mathrm{corr}}\\mid\\text{stress})$ (`eq:channel-persistence`)",
+      "url": "/cards/chapter/ch25/"
     },
     {
       "title": "$S_t$",
@@ -1521,7 +1563,7 @@
     {
       "title": "Market 1. Discovering where control resides?",
       "type": "prediction",
-      "summary": "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?",
+      "summary": "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?",
       "url": "/cards/prediction/market-01/"
     },
     {
@@ -1551,7 +1593,7 @@
     {
       "title": "Market 14. Deployment criteria are binding?",
       "type": "prediction",
-      "summary": "By 30 June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?",
+      "summary": "By 30 June 2027, will published evidence show that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (every condition below holds for at least one developer), or NO (otherwise)?",
       "url": "/cards/prediction/market-14/"
     },
     {

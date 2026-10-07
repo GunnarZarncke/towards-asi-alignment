@@ -430,7 +430,7 @@ I(E_t;O_{t+k}).</annotation></semantics></math></span><span class="katex-html" a
 <h2 id="adversarial-measurement-ai">Adversarial Measurement <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:adversarial-measurement-ch39"></span>
 Adversarial measurement treats the system as potentially responsive to the measurement process. It does not assume deception. It assumes only that deception, camouflage, or strategic compliance are hypotheses that must be distinguished from alignment <a href="../../references/iaisr2025/">International AI Safety Report Consortium, 2025</a>, <a href="../../references/park2024deception/">Park, 2024</a>.</p>
-<p>An adversarial measurement protocol has six components.</p>
+<p>An adversarial measurement protocol has the following components.</p>
 <h3 id="competing-hypotheses-ai">Competing Hypotheses <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h3>
 <p><span id="sec:competing-hypotheses-ch39"></span>
 Every evaluation should name the hypotheses it distinguishes.</p>
@@ -584,7 +584,8 @@ The cumulative record therefore covers persistent control patterns.
 One-shot or short-horizon coupling below the episode floor is a stated gap, not a covered case; only perturbation within an episode (Section <a href="#sec:perturbation-measurement-ch39">Passive Observation Is Not Enough</a>) reaches it, and only when the evaluator controls the perturbation.</p>
 <h3 id="red-team-incentive-design-ai">Red-Team Incentive Design <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h3>
 <p><span id="sec:red-team-incentives-ch39"></span>
-Red teams should not merely search for bad outputs. They should search for hidden invariants.</p>
+Red teams should not merely search for bad outputs. They should search for hidden invariants.
+When a red team validates a method or an audit, its effort and access are stated and its pass is a snapshot (Section <a href="../ch43/#sec:adversarial-validation-ch43">What Survives an Adversary: Verifiability and Representability</a>).</p>
 <p>Useful red-team prompts include:</p>
 <ul>
 <li>
