@@ -2,7 +2,7 @@
 title: "The monitors are on. Each one still needs a bound."
 type: "news"
 status: "established"
-summary: "On 7 October 2026 Francis Rhys Ward compiled what Anthropic, OpenAI, and Google DeepMind have said in public about watching agents inside the lab: review clocks, what the monitor is shown, coverage holes, and a live filter that says it does not catch scheming. Each is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act. Monitor performance, collusion, and how the monitors are elicited are outside the survey."
+summary: "On 7 October 2026 Francis Rhys Ward compiled the public record of how Anthropic, OpenAI, and Google DeepMind watch agents inside the lab. Each documented practice is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act."
 decision: "Ask: (1) When the review finishes 30 minutes after the trajectory, or a week after the flag, which irreversible effects are already complete? (2) Under 0.1% of internal coding-agent traffic sits outside the monitor. What can an agent still do on that slice, and on routes inside a monitored transcript? (3) Auto-review approves about 99% of escalations and is documented as not a scheming defense. Which later claim still treats that approval as a catch? (4) Activation classifiers run on some training and on Astra with tools. What does it cost the model to keep that classifier quiet? (5) A person reviews the severe tail. If that person had decided differently, which later behavior would have changed?"
 releasedAt: "2026-10-07T00:00:00.000Z"
 eventDate: "2026-10-07T00:00:00.000Z"

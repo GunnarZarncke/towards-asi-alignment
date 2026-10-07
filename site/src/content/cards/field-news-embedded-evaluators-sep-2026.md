@@ -2,7 +2,7 @@
 title: "Embedded evaluators get a desk inside the lab. They can run their own tests, right?"
 type: "news"
 status: "established"
-summary: "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators, signed by Geoffrey Hinton, Stuart Russell, Arvind Narayanan, and more than 200 others. The same day Anthropic said Faculty, Accenture’s AI business, would work inside the company, funded by Anthropic, and that it was in dialogue with METR about a pilot on METR’s own funding. Dario Amodei’s September essay calls employee-like access the way to verify pacing commitments. Zvi’s 27 September post grants the five conditions and asks who can be hired under them. The card lines the letter, the essay, the announcement, and Zvi up against Chapters 26, 13, 32, and 39."
+summary: "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators. The same day Anthropic named Faculty, Accenture’s AI business, as an in-house evaluator funded by Anthropic. Dario Amodei treats employee-like access as the way to verify pacing; Zvi grants the five conditions and asks who can be hired under them."
 decision: "(1) Who hires and pays the evaluators? (2) If the finding is bad, what action changes? (3) Can the auditor only read or can they do actual tests?"
 releasedAt: "2026-09-28T00:00:00.000Z"
 eventDate: "2026-09-18T00:00:00.000Z"

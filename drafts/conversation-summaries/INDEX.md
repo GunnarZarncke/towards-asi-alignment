@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-07 | **Field news summary trim** — Shorten the `summary` field on the last four field-news cards (they were too long for the listing). | [2026-10-07-field-news-summary-trim.md](2026-10-07-field-news-summary-trim.md) |
 | 2026-10-07 | **Maintainer checklists** — User: we keep missing quiz questions after field news; add maintainer doc with action→follow-up rules from conversation logs. | [2026-10-07-maintainer-checklists.md](2026-10-07-maintainer-checklists.md) |
 | 2026-10-07 | **Ward monitoring news** — Create a field-news card on Francis Rhys Ward’s 7 October 2026 survey of frontier-lab monitoring.... | [2026-10-07-ward-monitoring-news.md](2026-10-07-ward-monitoring-news.md) |
 | 2026-10-07 | **v1.7.0 release notes** — User asked to prepare the release. | [2026-10-07-v1-7-0-release-notes.md](2026-10-07-v1-7-0-release-notes.md) |

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261007T164320.153Z",
+  "_as_of": "20261007T185524.845Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -138,8 +138,9 @@
   },
   "appendices/appP-bridge-predictions.tex#2": {
     "agent": 41,
+    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
-    "human": 3,
+    "human": 6,
     "index": 2,
     "key": "GZ+AI",
     "prior": "GZ"
