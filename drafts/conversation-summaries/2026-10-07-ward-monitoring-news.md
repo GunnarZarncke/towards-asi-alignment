@@ -25,4 +25,4 @@ Prompts: paraphrase (no telemetry id in this session)
 - `site/src/content/cards/field-news-ward-monitoring-oct-2026.md`
 
 ## Commits
-- none
+- `9f50c9e6d` Add field news on Ward's frontier-lab monitoring survey.
