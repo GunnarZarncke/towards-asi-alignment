@@ -11,7 +11,7 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.7.0 — 2026-10-07 — Crux Predictions
 
-Commit: _(pending)_ · Tag: `v1.7.0`
+Commit: `86815d35f` · Tag: `v1.7.0`
 
 **Appendix H** states predictions about the bridges/cruxes as three-way contracts (YES, NO, OTHER), with a site hub at `/predictions/`. A price is a forecast that a qualifying artifact exists by a deadline that is matched to the AI 2027 forecasts. 
 
