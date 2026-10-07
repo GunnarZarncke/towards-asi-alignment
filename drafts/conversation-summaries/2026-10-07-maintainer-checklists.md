@@ -26,4 +26,4 @@ Prompts: paraphrase (no telemetry id in this session)
 
 ## Commits
 - `eb6bf89de` Add quiz takeaway for Ward monitoring field news so make check passes.
-- (pending) Add maintainer checklists (`RELEASE_NOTES.md` left unstaged — still in author edit).
+- `e712d6765` Add maintainer action checklists (`RELEASE_NOTES.md` left unstaged — still in author edit).
