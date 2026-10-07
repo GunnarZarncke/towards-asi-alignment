@@ -25,7 +25,7 @@ const predictionCardsDir = path.join(siteRoot, "src", "content", "cards", "predi
 
 const APPENDIX_H_FULL = bookFullPublicHref("", "appP");
 const FUNDING_CARD = "/cards/funding/prediction-evaluation-program/";
-const DEFAULT_REGISTRY_SITE = "https://aintelope.github.io/ai-safety-claims/";
+const DEFAULT_REGISTRY_SITE = "https://ai-safety-claims.com/";
 const DEFAULT_REGISTRY_REPO = "https://github.com/aintelope/ai-safety-claims";
 const APPENDIX_B_CARD = cardPublicPath({ id: "chapters/appB", type: "appendix" });
 

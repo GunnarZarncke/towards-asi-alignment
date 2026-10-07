@@ -1,6 +1,6 @@
 # Eval registry split
 
-Status: **step 5 of 7** (2026-10-07). Appendix P and the site hub now point at the claims registry ([site](https://aintelope.github.io/ai-safety-claims/), [source](https://github.com/aintelope/ai-safety-claims)). aintelope hosts it for now and is **not independent**, so `resolutionSource` stays false and attempts by aintelope or Gunnar Zarncke are not accepted. Runnable evaluations live in [`aintelope/ai-safety-claims-workbench`](https://github.com/aintelope/ai-safety-claims-workbench). Next: an independent host, then Metaculus for frozen contracts only.
+Status: **step 5 of 7** (2026-10-07). Appendix P and the site hub now point at the claims registry ([site](https://ai-safety-claims.com/), [source](https://github.com/aintelope/ai-safety-claims)). aintelope hosts it for now and is **not independent**, so `resolutionSource` stays false and attempts by aintelope or Gunnar Zarncke are not accepted. Runnable evaluations live in [`aintelope/ai-safety-claims-workbench`](https://github.com/aintelope/ai-safety-claims-workbench). Next: an independent host, then Metaculus for frozen contracts only.
 
 **Stop:** delete or attic this file when the registry URL is the live resolution source (`resolutionSource` true after an independent host tags a snapshot). Markets without a published registry contract (other than Market 14) are not listable.
 
