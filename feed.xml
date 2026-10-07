@@ -5,8 +5,17 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] The monitors are on. Each one still needs a bound.</title>
+      <link>https://towards-alignment.com/cards/news/field-news-ward-monitoring-oct-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-ward-monitoring-oct-2026/</guid>
+      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Francis Rhys Ward collated the public record of frontier-lab monitoring. The response times, the responses, and the named holes are good first steps. Each one still stops short of a bound on what gets through.</description>
+      <category>news</category>
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-10-ward-monitoring.jpg" length="158070" type="image/jpeg" />
+    </item>
     <item>
       <title>[News] OpenAI’s training safety case: what is needed for a stop?</title>
       <link>https://towards-alignment.com/cards/news/field-news-openai-training-safety-case-sep-2026/</link>

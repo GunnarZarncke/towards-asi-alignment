@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T00:07:53.843Z",
+  "generatedAt": "2026-10-07T13:12:55.607Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 402,
+  "entryCount": 403,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -2171,6 +2171,12 @@
       "type": "essay",
       "summary": "A deployed 'AI' is often the institution plus the model. The night the tool starts acting, the hospital is in the loop.",
       "url": "/essay/the-hospital-is-the-ai/"
+    },
+    {
+      "title": "The monitors are on. Each one still needs a bound.",
+      "type": "news",
+      "summary": "On 7 October 2026 Francis Rhys Ward compiled what Anthropic, OpenAI, and Google DeepMind have said in public about watching agents inside the lab: review clocks, what the monitor is shown, coverage holes, and a live filter that says it does not catch scheming. Each is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act. Monitor performance, collusion, and how the monitors are elicited are outside the survey.",
+      "url": "/cards/news/field-news-ward-monitoring-oct-2026/"
     },
     {
       "title": "The Real Agent May Be Composite",
