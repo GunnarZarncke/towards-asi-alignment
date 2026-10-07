@@ -22,4 +22,4 @@ Pin registry bootstrap tag `snapshot-0` on the TSA side after tagging in `ai-saf
 - Metaculus listing (step 6); Zenodo deposit for snapshot-0.
 
 ## Commits
-- (this session)
+- `713cb17fa` Pin snapshot-0 on the TSA predictions side.
