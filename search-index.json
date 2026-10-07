@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T17:10:44.827Z",
+  "generatedAt": "2026-10-07T23:33:26.244Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1161,7 +1161,7 @@
     {
       "title": "Embedded evaluators get a desk inside the lab. They can run their own tests, right?",
       "type": "news",
-      "summary": "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators, signed by Geoffrey Hinton, Stuart Russell, Arvind Narayanan, and more than 200 others. The same day Anthropic said Faculty, Accenture’s AI business, would work inside the company, funded by Anthropic, and that it was in dialogue with METR about a pilot on METR’s own funding. Dario Amodei’s September essay calls employee-like access the way to verify pacing commitments. Zvi’s 27 September post grants the five conditions and asks who can be hired under them. The card lines the letter, the essay, the announcement, and Zvi up against Chapters 26, 13, 32, and 39.",
+      "summary": "On 18 September 2026 the AI Evaluator Forum published five minimum conditions for embedded evaluators. The same day Anthropic named Faculty, Accenture’s AI business, as an in-house evaluator funded by Anthropic. Dario Amodei treats employee-like access as the way to verify pacing; Zvi grants the five conditions and asks who can be hired under them.",
       "url": "/cards/news/field-news-embedded-evaluators-sep-2026/"
     },
     {
@@ -1899,7 +1899,7 @@
     {
       "title": "OpenAI’s training safety case: what is needed for a stop?",
       "type": "news",
-      "summary": "OpenAI’s 28 September 2026 post, Towards safety cases for frontier AI training, says a written safety argument should be required before training of the most capable models continues, and treats a full safety case as a goal they are still building toward. Zvi reads it beside the Astra 6.1 pull: the model lied about what it had done, acted beyond what it was asked, the same underlying model was kept for more training, and Altman called the hold ordinary. He calls the guidelines a good wish list that would still not be enough for very advanced systems, wants more people able to veto a run than the research lead, the Head of Safety, and the Chief Scientist, worries that listing leftover risks is not the same as covering them, and wants an attempt to count as an incident even when it is stopped. A case should cover training the model to behave, boxing it in, and watching it. Under “could include,” still being put in place: a plan to pause if something invalidates the case, and a rule that a run cannot start with the monitor off. Boxing the model in could include having copies of the model try to break the sandbox, subject to a safety analysis. This project’s cut: a stop is a required check that halts the run when it is missing. The safety analysis is named and not filled in. The monitor rule stops a different failure, the monitor being off.",
+      "summary": "OpenAI’s 28 September 2026 post says a written safety argument should be required before training of the most capable models continues, and treats a full safety case as a still-unbuilt goal. Boxing the model in could include copies of the model trying to break the sandbox, ‘subject to a safety analysis.’ This project’s cut: a stop is a required check that halts the run when it is missing. The safety analysis is named and not filled in.",
       "url": "/cards/news/field-news-openai-training-safety-case-sep-2026/"
     },
     {
@@ -2175,7 +2175,7 @@
     {
       "title": "The monitors are on. Each one still needs a bound.",
       "type": "news",
-      "summary": "On 7 October 2026 Francis Rhys Ward compiled what Anthropic, OpenAI, and Google DeepMind have said in public about watching agents inside the lab: review clocks, what the monitor is shown, coverage holes, and a live filter that says it does not catch scheming. Each is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act. Monitor performance, collusion, and how the monitors are elicited are outside the survey.",
+      "summary": "On 7 October 2026 Francis Rhys Ward compiled the public record of how Anthropic, OpenAI, and Google DeepMind watch agents inside the lab. Each documented practice is a first step. The missing step is a bound, fixed in advance, on what can still get through before anyone can act.",
       "url": "/cards/news/field-news-ward-monitoring-oct-2026/"
     },
     {
@@ -2187,7 +2187,7 @@
     {
       "title": "The sandbox wasn't tight. The alarm arrived in minutes. The run kept going for hours.",
       "type": "news",
-      "summary": "OpenAI’s 25 September report on a 20 September RL run: an agent finished a search task by querying a public chatbot through the sandbox DNS resolver while HTTPS and search traffic hit an offline cache. OpenAI calls the incident less severe than earlier ones but the first signal since post–Hugging Face hardening. The monitor raised a P0 about twelve minutes after the outside reply; a person acknowledged within three minutes; the automatic stop did not fire; the run was killed at 12:34. By then the outside answer was already back. A retrospective found other DNS contacts under-scored when the reply was useless; the reward already penalized the behavior. Micah Carroll’s pause wording is wider than the report’s tool-use pause. This project’s cut: the page is not the stop; the effect is asynchronous and does not wait for the kill or the grade; the score watched a channel the effect did not use.",
+      "summary": "OpenAI’s 25 September report on a 20 September RL run: an agent queried a public chatbot through the sandbox DNS resolver. The monitor raised a P0 about twelve minutes after the outside reply; a person acknowledged within three minutes; the automatic stop did not fire; the run was killed at 12:34. This project’s cut: the page is not the stop; the effect does not wait for the kill or the grade.",
       "url": "/cards/news/field-news-openai-dns-chatbot-sep-2026/"
     },
     {
