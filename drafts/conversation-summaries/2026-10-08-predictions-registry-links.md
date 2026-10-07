@@ -33,4 +33,4 @@ End-of-session commit: wire manuscript and site to versioned claims-registry pag
 - `drafts/plans/predictions/eval-registry-split.md`
 
 ## Commits
-- (this session)
+- `43e1a4b1a` Wire predictions to versioned claims-registry pages.
