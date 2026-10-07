@@ -53,9 +53,9 @@ Each layer can be read in any order internally; read layer *n* before layer *n+1
 8. **ch23** (Has the Goal Really Survived?); **ch40** (Detecting Goal Laundering)
 9. **ch24** (When the Words Survive but the Meaning Doesn't)
 10. **ch25** (Correction Is a Causal Channel)
-11. **ch26** (Correction-Channel Integrity)
-12. **ch27** (Correction Channels under Adversarial Pressure); **ch33** (Certification Without Construction)
-13. **ch28** (Beyond Following Instruction); **ch34** (Alignment Is Selected or Destroyed by Its Environment); **ch42** (A Safety Case for Superintelligence Alignment)
+11. **ch26** (Correction-Channel Integrity); **ch27** (Correction Channels under Adversarial Pressure); **ch28** (Beyond Following Instruction)
+12. **ch33** (Certification Without Construction)
+13. **ch34** (Alignment Is Selected or Destroyed by Its Environment); **ch42** (A Safety Case for Superintelligence Alignment)
 14. **ch44** (Lethality Stress Test and Open Issues)
 
 ## Edges (provider → consumer)
@@ -75,15 +75,15 @@ Each layer can be read in any order internally; read layer *n* before layer *n+1
 | ch13 | ch14 | C_raw | 3 |
 | ch13 | ch16 | B_i | 1 |
 | ch14 | ch22 | G_B, d_bundle | 2 |
-| ch16 | ch22 | Phi, theta | 3 |
+| ch16 | ch22 | Phi | 1 |
 | ch22 | ch23 | Delta_L_{bearer}, Delta_L_{bundle}, L_bearer, L_bundle, bearer | 5 |
 | ch22 | ch40 | bearer | 1 |
 | ch23 | ch24 | B^{A}, Delta_L_{correction}, Delta_L_{semantic}, L_correction, L_semantic | 5 |
-| ch24 | ch25 | pi | 1 |
+| ch24 | ch25 | pi, theta_corr | 2 |
 | ch25 | ch26 | C_t, G_t | 4 |
-| ch26 | ch27 | CCI | 1 |
+| ch25 | ch27 | C_t | 1 |
+| ch25 | ch28 | C_t | 5 |
 | ch26 | ch33 | CCI | 1 |
-| ch27 | ch28 | Succ | 1 |
 | ch32 | ch33 | SelfControlGap | 2 |
 | ch33 | ch34 | RiskGap | 3 |
 | ch33 | ch42 | RiskGap | 1 |

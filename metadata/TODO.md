@@ -110,6 +110,8 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 
 ## Housekeeping board
 
+- [ ] **Chapter gaps from registry contracts (S, author review).** G1–G7 and F1–F4 applied 2026-10-06/07 (Ch. 7, 24–29, 31, 33, 34, 39, 42, 43, App. D, G, P; θ cleanup across the book). Review the chapter edits, then delete [`drafts/plans/predictions/chapter-gaps-from-contracts.md`](../drafts/plans/predictions/chapter-gaps-from-contracts.md) and this item.
+
 - [x] **`ch46` reference corrections (M).** Applied 2026-09-23 from [`drafts/project/ch46-corrections.md`](../drafts/project/ch46-corrections.md) (kept as audit trail). Residual: re-check other claim blocks' bare-number `Chapter(s)` lines in `claims-ledger.md` the same way (S).
 - [x] **Manuscript TODO resolutions (S–M).** Applied 2026-09-23 per [`drafts/project/consistency-review-2026-09-22.md`](../drafts/project/consistency-review-2026-09-22.md) §0.1: ch01 framing paragraph + example rewrite; ch39 episode floor + ch35 pointer; ch43 cruxes posed in App G §`sec:master-crux`; ch44 audit shape; ch42 checklist sentence; ch45 summary. Remaining `% TODO` comments: ch21 citation (Cite/Wait), ch38 formalize (Spine P3).
 - [x] **Backtest outcome vocabulary (S).** Implemented 2026-09-23: closed set `fail|pass|refuse|null|structure_stop` + separate `stop` field, compound results as separate lines, Appendix J Pos./Ambig./Neg. rule keyed on the primary measurand, M2 freeze-hash rule (`docs/METHODOLOGY.md` § Backtests; template in `backtest.md`). Relabelled W-11 (`pass (stop bit)`) and W-16 (two lines) in ledger, `docs/EXPERIMENTS.md`, YAML; cards regenerated.

@@ -116,6 +116,44 @@ function extractResolutionBlocks(resolutionInner) {
 const RESOLUTION_THREE_WAY_INTRO =
   "These bars define when a qualifying attempt counts toward **YES**. A qualifying attempt that ran but missed them counts toward **NO** when no other qualifying attempt met them. Missing evals, missing publication, or unmet qualification requirements resolve **OTHER**.";
 
+const RESOLUTION_YES_NO_INTRO =
+  "These conditions define **YES**. Anything else, including missing evidence, resolves **NO**. This market has no OTHER.";
+
+function isYesNoMarket(market) {
+  const outcomes = market.outcomes ?? ["YES", "NO", "OTHER"];
+  return outcomes.length === 2 && outcomes.includes("YES") && outcomes.includes("NO");
+}
+
+// Each market's fine print repeats the Common qualification rules verbatim so a question can be
+// listed on its own. Markets 14, 19, and 20 state their own procedures and are exempt.
+const COMMON_RULES_EXEMPT = new Set([14, 19, 20]);
+
+function commonParagraph(tex, marker) {
+  const start = tex.indexOf(marker);
+  if (start === -1) throw new Error(`sync-predictions: Common qualification lacks "${marker}"`);
+  const end = tex.indexOf("\n\n", start);
+  return tex.slice(start, end === -1 ? undefined : end).trim();
+}
+
+function assertCommonRulesCopies(tex, sectionByNumber) {
+  const boxStart = tex.indexOf("\\begin{predictionbox}[Common qualification]");
+  const boxEnd = tex.indexOf("\\end{predictionresolution}", boxStart);
+  const common = tex.slice(boxStart, boxEnd);
+  const rules = commonParagraph(common, "\\textbf{Common rules.}");
+  const serious = commonParagraph(common, "\\textbf{Adversarial budget: serious.}");
+  const fallback = commonParagraph(common, "\\textbf{Adversarial budget: default.}");
+  for (const [number, section] of sectionByNumber) {
+    if (COMMON_RULES_EXEMPT.has(number)) continue;
+    const body = section.body;
+    const budgets = [serious, fallback].filter((text) => body.includes(text)).length;
+    if (!body.includes(rules) || budgets !== 1) {
+      throw new Error(
+        `sync-predictions: Market ${number} fine print must repeat the Common rules verbatim and exactly one adversarial budget`
+      );
+    }
+  }
+}
+
 function assertPlainCardText(label, text) {
   if (!text) return;
   if (/\\[a-zA-Z@]/.test(text) || /~/.test(text)) {
@@ -339,7 +377,7 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
       block.label.toLowerCase().includes("yes requires")
     );
     if (hasYesRequires) {
-      bodyParts.push(RESOLUTION_THREE_WAY_INTRO, "");
+      bodyParts.push(isYesNoMarket(market) ? RESOLUTION_YES_NO_INTRO : RESOLUTION_THREE_WAY_INTRO, "");
     }
     for (const block of extracted.resolutionBlocks) {
       if (block.label) {
@@ -364,7 +402,9 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs) {
   bodyParts.push(
     `[Read the full contract in Appendix H](${appendixFull}) (PDF canon).`,
     "",
-    "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
+    isYesNoMarket(market)
+      ? "YES and NO are the two listing options: every condition holds, or not. Neither means the corresponding bridge is proved or discharged."
+      : "YES, NO, and OTHER are the three listing options: at least one qualifying attempt met the bars, every qualifying attempt missed them, or no qualifying attempt existed. If several qualifying attempts exist and any met the bars, resolve YES. None of these means the corresponding bridge is proved or discharged.",
     ""
   );
 
@@ -473,7 +513,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     "",
     raw.purpose.trim(),
     "",
-    "**Claim strength.** Each listing question is three-outcome: YES (at least one qualifying attempt met the bars), NO (every qualifying attempt missed them), or OTHER (no qualifying attempt existed). Missing evals or missed qualification is OTHER, not NO. None of these means a bridge is false.",
+    "**Claim strength.** Each listing question is three-outcome: YES (at least one qualifying attempt met the bars), NO (every qualifying attempt missed them), or OTHER (no qualifying attempt existed). Missing evals or missed qualification is OTHER, not NO. Market 14 is the exception: YES or NO only, and anything short of YES, including missing evidence, is NO. None of these means a bridge is false.",
     "",
     `**Safety case.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform the safety case](${APPENDIX_H_FULL}#sec-appp-aggregation) and [False accept, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
     "",
@@ -572,6 +612,7 @@ if (missingSections.length) {
   );
 }
 for (const market of markets) assertMarketAudit(market);
+assertCommonRulesCopies(appendixTex, sectionByNumber);
 const externalFactors = [...(raw.externalFactors ?? [])];
 const relatedForecasts = [...(raw.relatedForecasts ?? [])];
 

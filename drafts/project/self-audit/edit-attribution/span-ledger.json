@@ -18,7 +18,6 @@
   },
   "appendices/appD-worked-example.tex#16": {
     "agent": 2,
-    "dirty": true,
     "file": "appendices/appD-worked-example.tex",
     "human": 0,
     "index": 16,
@@ -27,7 +26,6 @@
   },
   "appendices/appF-research-program.tex#5": {
     "agent": 2,
-    "dirty": true,
     "file": "appendices/appF-research-program.tex",
     "human": 0,
     "index": 5,
@@ -36,7 +34,6 @@
   },
   "appendices/appG-lean-proof-spine.tex#3": {
     "agent": 4,
-    "dirty": true,
     "file": "appendices/appG-lean-proof-spine.tex",
     "human": 0,
     "index": 3,
@@ -45,7 +42,6 @@
   },
   "appendices/appG-lean-proof-spine.tex#7": {
     "agent": 10,
-    "dirty": true,
     "file": "appendices/appG-lean-proof-spine.tex",
     "human": 0,
     "index": 7,
@@ -86,7 +82,6 @@
   },
   "appendices/appP-bridge-predictions.tex#13": {
     "agent": 24,
-    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 13,
@@ -143,7 +138,6 @@
   },
   "appendices/appP-bridge-predictions.tex#2": {
     "agent": 41,
-    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 3,
     "index": 2,
@@ -232,7 +226,6 @@
   },
   "appendices/appP-bridge-predictions.tex#3": {
     "agent": 38,
-    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 3,
@@ -265,7 +258,6 @@
   },
   "appendices/appP-bridge-predictions.tex#33": {
     "agent": 4,
-    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 33,
@@ -370,11 +362,10 @@
   },
   "appendices/appP-bridge-predictions.tex#7": {
     "agent": 26,
-    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 6,
     "index": 7,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#8": {
@@ -555,7 +546,6 @@
   },
   "chapters/ch05-assumptions-scope-failure-coverage.tex#11": {
     "agent": 6,
-    "dirty": true,
     "file": "chapters/ch05-assumptions-scope-failure-coverage.tex",
     "human": 0,
     "index": 11,
@@ -564,7 +554,6 @@
   },
   "chapters/ch05-assumptions-scope-failure-coverage.tex#12": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch05-assumptions-scope-failure-coverage.tex",
     "human": 0,
     "index": 12,
@@ -581,7 +570,6 @@
   },
   "chapters/ch05-assumptions-scope-failure-coverage.tex#6": {
     "agent": 8,
-    "dirty": true,
     "file": "chapters/ch05-assumptions-scope-failure-coverage.tex",
     "human": 0,
     "index": 6,
@@ -590,7 +578,6 @@
   },
   "chapters/ch05-assumptions-scope-failure-coverage.tex#7": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch05-assumptions-scope-failure-coverage.tex",
     "human": 0,
     "index": 7,
@@ -623,7 +610,6 @@
   },
   "chapters/ch07-finding-boundary.tex#21": {
     "agent": 7,
-    "dirty": true,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 21,
@@ -632,7 +618,6 @@
   },
   "chapters/ch07-finding-boundary.tex#27": {
     "agent": 56,
-    "dirty": true,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 27,
@@ -649,7 +634,6 @@
   },
   "chapters/ch07-finding-boundary.tex#30": {
     "agent": 7,
-    "dirty": true,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 30,
@@ -658,7 +642,6 @@
   },
   "chapters/ch07-finding-boundary.tex#34": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 34,
@@ -667,7 +650,6 @@
   },
   "chapters/ch07-finding-boundary.tex#36": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 36,
@@ -700,7 +682,6 @@
   },
   "chapters/ch08-grow-split-merge.tex#10": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch08-grow-split-merge.tex",
     "human": 0,
     "index": 10,
@@ -717,7 +698,6 @@
   },
   "chapters/ch08-grow-split-merge.tex#28": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch08-grow-split-merge.tex",
     "human": 0,
     "index": 28,
@@ -734,7 +714,6 @@
   },
   "chapters/ch08-grow-split-merge.tex#36": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch08-grow-split-merge.tex",
     "human": 0,
     "index": 36,
@@ -847,7 +826,6 @@
   },
   "chapters/ch10-strategic-opacity.tex#19": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch10-strategic-opacity.tex",
     "human": 0,
     "index": 19,
@@ -896,7 +874,6 @@
   },
   "chapters/ch11-capability-without-task-ontology.tex#20": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch11-capability-without-task-ontology.tex",
     "human": 0,
     "index": 20,
@@ -937,7 +914,6 @@
   },
   "chapters/ch12-boundary-expansion.tex#21": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch12-boundary-expansion.tex",
     "human": 0,
     "index": 21,
@@ -1050,7 +1026,6 @@
   },
   "chapters/ch15-values-compressed-control.tex#3": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch15-values-compressed-control.tex",
     "human": 3,
     "index": 3,
@@ -1059,7 +1034,6 @@
   },
   "chapters/ch15-values-compressed-control.tex#30": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch15-values-compressed-control.tex",
     "human": 0,
     "index": 30,
@@ -1116,7 +1090,6 @@
   },
   "chapters/ch16-value-bundle-model.tex#8": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch16-value-bundle-model.tex",
     "human": 0,
     "index": 8,
@@ -1213,7 +1186,6 @@
   },
   "chapters/ch18-bearer-maps.tex#14": {
     "agent": 6,
-    "dirty": true,
     "file": "chapters/ch18-bearer-maps.tex",
     "human": 0,
     "index": 14,
@@ -1222,7 +1194,6 @@
   },
   "chapters/ch18-bearer-maps.tex#17": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch18-bearer-maps.tex",
     "human": 0,
     "index": 17,
@@ -1247,7 +1218,6 @@
   },
   "chapters/ch18-bearer-maps.tex#45": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch18-bearer-maps.tex",
     "human": 0,
     "index": 45,
@@ -1272,7 +1242,6 @@
   },
   "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#3": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex",
     "human": 0,
     "index": 3,
@@ -1385,7 +1354,6 @@
   },
   "chapters/ch24-transport-types.tex#17": {
     "agent": 3,
-    "dirty": true,
     "file": "chapters/ch24-transport-types.tex",
     "human": 0,
     "index": 17,
@@ -1394,7 +1362,6 @@
   },
   "chapters/ch24-transport-types.tex#33": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch24-transport-types.tex",
     "human": 0,
     "index": 33,
@@ -1403,7 +1370,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#10": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 10,
@@ -1412,7 +1378,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#14": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 14,
@@ -1429,7 +1394,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#19": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 19,
@@ -1438,7 +1402,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#28": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 28,
@@ -1447,7 +1410,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#34": {
     "agent": 25,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 34,
@@ -1456,7 +1418,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#35": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 35,
@@ -1465,7 +1426,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#39": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 39,
@@ -1474,7 +1434,6 @@
   },
   "chapters/ch25-correction-causal-channel.tex#6": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 6,
@@ -1483,7 +1442,6 @@
   },
   "chapters/ch26-correction-channel-integrity.tex#13": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 13,
@@ -1492,7 +1450,6 @@
   },
   "chapters/ch26-correction-channel-integrity.tex#2": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 2,
@@ -1509,7 +1466,6 @@
   },
   "chapters/ch26-correction-channel-integrity.tex#4": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 4,
@@ -1518,7 +1474,6 @@
   },
   "chapters/ch26-correction-channel-integrity.tex#8": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 8,
@@ -1551,7 +1506,6 @@
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#23": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 23,
@@ -1560,7 +1514,6 @@
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#34": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 34,
@@ -1569,7 +1522,6 @@
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#5": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 5,
@@ -1618,7 +1570,6 @@
   },
   "chapters/ch29-manipulation-false-consent.tex#49": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch29-manipulation-false-consent.tex",
     "human": 0,
     "index": 49,
@@ -1651,7 +1602,6 @@
   },
   "chapters/ch31-conserved-properties.tex#27": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch31-conserved-properties.tex",
     "human": 0,
     "index": 27,
@@ -1740,7 +1690,6 @@
   },
   "chapters/ch33-certification-without-construction.tex#19": {
     "agent": 3,
-    "dirty": true,
     "file": "chapters/ch33-certification-without-construction.tex",
     "human": 0,
     "index": 19,
@@ -1765,7 +1714,6 @@
   },
   "chapters/ch34-selection-environment.tex#12": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
     "index": 12,
@@ -1774,7 +1722,6 @@
   },
   "chapters/ch34-selection-environment.tex#14": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
     "index": 14,
@@ -1791,7 +1738,6 @@
   },
   "chapters/ch34-selection-environment.tex#4": {
     "agent": 6,
-    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
     "index": 4,
@@ -1800,7 +1746,6 @@
   },
   "chapters/ch34-selection-environment.tex#43": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
     "index": 43,
@@ -1809,7 +1754,6 @@
   },
   "chapters/ch34-selection-environment.tex#46": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
     "index": 46,
@@ -1842,7 +1786,6 @@
   },
   "chapters/ch36-parasites-correction-system.tex#3": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch36-parasites-correction-system.tex",
     "human": 0,
     "index": 3,
@@ -1851,7 +1794,6 @@
   },
   "chapters/ch36-parasites-correction-system.tex#9": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch36-parasites-correction-system.tex",
     "human": 0,
     "index": 9,
@@ -1916,7 +1858,6 @@
   },
   "chapters/ch39-passive-observation-not-enough.tex#23": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch39-passive-observation-not-enough.tex",
     "human": 0,
     "index": 23,
@@ -1925,7 +1866,6 @@
   },
   "chapters/ch39-passive-observation-not-enough.tex#31": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch39-passive-observation-not-enough.tex",
     "human": 0,
     "index": 31,
@@ -1958,7 +1898,6 @@
   },
   "chapters/ch41-multiscale-decomposition.tex#11": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch41-multiscale-decomposition.tex",
     "human": 0,
     "index": 11,
@@ -1967,7 +1906,6 @@
   },
   "chapters/ch41-multiscale-decomposition.tex#14": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch41-multiscale-decomposition.tex",
     "human": 0,
     "index": 14,
@@ -1984,7 +1922,6 @@
   },
   "chapters/ch41-multiscale-decomposition.tex#25": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch41-multiscale-decomposition.tex",
     "human": 0,
     "index": 25,
@@ -2041,7 +1978,6 @@
   },
   "chapters/ch42-safety-case.tex#5": {
     "agent": 12,
-    "dirty": true,
     "file": "chapters/ch42-safety-case.tex",
     "human": 0,
     "index": 5,
@@ -2066,7 +2002,6 @@
   },
   "chapters/ch42-safety-case.tex#8": {
     "agent": 10,
-    "dirty": true,
     "file": "chapters/ch42-safety-case.tex",
     "human": 0,
     "index": 8,
@@ -2107,7 +2042,6 @@
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#7": {
     "agent": 24,
-    "dirty": true,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
     "human": 3,
     "index": 7,
@@ -2148,7 +2082,6 @@
   },
   "chapters/ch45-value-change-at-stake.tex#9": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch45-value-change-at-stake.tex",
     "human": 0,
     "index": 9,
@@ -2157,7 +2090,6 @@
   },
   "chapters/ch46-unconscious-value-drift.tex#11": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch46-unconscious-value-drift.tex",
     "human": 0,
     "index": 11,
@@ -2182,7 +2114,6 @@
   },
   "chapters/ch46-unconscious-value-drift.tex#36": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch46-unconscious-value-drift.tex",
     "human": 0,
     "index": 36,
@@ -2191,7 +2122,6 @@
   },
   "chapters/ch46-unconscious-value-drift.tex#4": {
     "agent": 11,
-    "dirty": true,
     "file": "chapters/ch46-unconscious-value-drift.tex",
     "human": 2,
     "index": 4,

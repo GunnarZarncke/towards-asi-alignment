@@ -493,6 +493,7 @@ This is the most important guarantee and the hardest one. It is also where many 
 \label{sec:adversarial-certification-ch33}
 \begin{authbar}{AI}
 Certification must assume that a system, or the socio-technical environment around it, may optimize against the test.
+The test itself follows the procedure in Section~\ref{sec:adversarial-validation-ch43}.
 
 Let the system choose actions under an objective that includes detectability:
 \[
@@ -527,7 +528,7 @@ The central diagnostic is control-locus continuity. If the surface explanation c
 
 Let \(L_t\) denote an inferred latent control locus. Certification should test:
 \[
-I(L_t;A_{t+k})>\theta
+I(L_t;A_{t+k})>\theta_L
 \]
 across perturbations. If \(L_t\) persists while the declared objective changes, the system is not being explained by its stated semantics.
 

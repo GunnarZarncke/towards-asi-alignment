@@ -143,7 +143,7 @@ The numeric risk leaf inside the package is narrower:
 This leaf says only that effective control does not outrun correction-channel integrity by more than the accepted slack.
 The conclusion is not a metaphysical safety property; it is the risk-gap bound used by the spine.
 In the manuscript language of Chapter~\ref{ch:correction-channel-integrity}, this is the scalar projection leaf.
-It is usable only after the surrounding case has established \(\mathrm{ValidRef}(A,G_t,\mathcal H_t)\), grounding viability, and \(\vec{\mathrm{CCI}}\succeq\vec\theta\) under the stated threat model.
+It is usable only after the surrounding case has established \(\mathrm{ValidRef}(A,G_t,\mathcal H_t)\), grounding viability, and \(\vec{\mathrm{CCI}}\succeq\vec{\theta}_{\mathrm{corr}}\) under the stated threat model.
 A failed vector coordinate cannot be repaired by choosing a friendlier scalar projection.
 
 The safety-case root is the package around that leaf:
@@ -261,7 +261,7 @@ A stronger case follows Figure~\ref{fig:ch42-safety-case-join}.
   \item \textbf{Correction:} human objections must change future policies, not merely produce local apologies. The case audits the CCI coordinates of Chapter~\ref{ch:correction-channel-integrity}: latency, manipulation, irreversibility, ontology translation, coercion, dependency, plurality, exit capacity, and independence. Halt and scan are tested as control actions: what causal effects does a successful stop produce?
   \item \textbf{Successor:} the service is not allowed to create or recommend successor modifications unless the successor is inside the same certified class and preserves correction and system-update constraints. Exports, loads, and iterated copies count. enable surfaces (valves, spend, synthesis APIs) sit under the same agency bound as the model interface. Cyber and physical slices are not certified separately.
   \item \textbf{Basin:} deployment contracts, incentives, logging, procurement, and liability must reward correction-preserving behavior rather than speed, lock-in, or apparent competence.
-  \item \textbf{Adversarial measurement:} high-stakes tests include perturbations and post-commitment randomization. Metrics that remain only observable are marked as non-root-supporting. Embedded third-party red-teaming of internal monitoring stacks---as in METR's exercise at Anthropic---is one template for stress-testing those leaves before deployment \autocite{metr2026anthropicredteam}.
+  \item \textbf{Adversarial measurement:} high-stakes tests include perturbations and post-commitment randomization. Validating a method or audit under attack follows Section~\ref{sec:adversarial-validation-ch43}. Metrics that remain only observable are marked as non-root-supporting. Embedded third-party red-teaming of internal monitoring stacks---as in METR's exercise at Anthropic---is one template for stress-testing those leaves before deployment \autocite{metr2026anthropicredteam}.
 \end{itemize}
 
 The case can still fail.

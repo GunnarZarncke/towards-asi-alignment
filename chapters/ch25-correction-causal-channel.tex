@@ -346,7 +346,7 @@ An obedient but deceptive system may strongly condition future actions on human 
 Goodhart pressure can make measured correction success diverge from real correction \autocite{manheim2018goodhart}.
 The penalised integrity functional \(\mathrm{CCI}\) and its penalty terms \(L\), \(M\), \(R\), and \(O\) are defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}).
 \leanspine{proof}{P13}{Certification uses $\mathrm{Control}\leq CCI+\delta$; risk is derived from the penalised integrity functional.}
-A system is corrigible over horizon \(k\) only if \(\mathrm{CCI}_k > \theta_k\) for the relevant class of high-stakes situations.
+A system is corrigible over horizon \(k\) only if \(\mathrm{CCI}_k > \theta_{\mathrm{corr}}\) for the relevant class of high-stakes situations.
 This threshold cannot be universal.
 The required channel integrity for movie recommendations is lower than for autonomous bioengineering, finance, military planning, or successor creation.
 The more irreversible the domain, the higher the threshold.
@@ -522,7 +522,7 @@ A public can object, but the system may already be embedded in infrastructure.
 
 So we define effective authority as:
 \begin{equation}
-Auth_k = I(D_t; A_{t+k} \mid S_t, \Theta_t).
+\symboldef[Auth_k]{Auth_k} = I(D_t; A_{t+k} \mid S_t, \Theta_t).
 \label{eq:effective-authority}
 \end{equation}
 This asks: conditional on the system and situation, how much does deliberative correction predict later system action?
@@ -695,7 +695,7 @@ Correction requires that high option-loss actions face stronger channel requirem
 A system may act autonomously in reversible domains.
 It should slow down or seek correction when:
 \begin{equation}
-\mathbb{E}[\Delta \mathcal{F}_t] \cdot U_{\mathrm{uncertainty}} > \theta.
+\mathbb{E}[\Delta \mathcal{F}_t] \cdot U_{\mathrm{uncertainty}} > \theta_{\mathrm{esc}}.
 \end{equation}
 This condition captures a common human norm.
 If the action is low-stakes and reversible, proceed.
@@ -855,7 +855,7 @@ V_{\mathrm{task}}
 alone.
 It should optimize under a constraint:
 \begin{equation}
-CCI_t > \theta,
+\vec{\mathrm{CCI}}_t \succeq \vec{\theta}_{\mathrm{corr}},
 \end{equation}
 or include a term:
 \begin{equation}
@@ -869,7 +869,7 @@ A_t \in \mathcal{A}_{\mathrm{allowed}}
 \quad
 \text{only if}
 \quad
-CCI_{t+k} > \theta.
+\vec{\mathrm{CCI}}_{t+k} \succeq \vec{\theta}_{\mathrm{corr}}.
 \end{equation}
 In words: actions that degrade correction-channel integrity beyond threshold are not allowed, even if they advance the local task.
 
@@ -1096,6 +1096,7 @@ Diagnostic:
 \quad
 \Delta Z \approx 0.
 \end{equation}
+A correction that holds only until the next reset is surface compliance too (Eq.~\eqref{eq:behavioral-persistence}).
 
 \end{authbar}
 \authbarsubneedspace
@@ -1187,8 +1188,9 @@ Fid = I(J;J^\star\mid O).
 \paragraph{3. Authority.}
 Do corrections change future behaviour?
 \begin{equation}
-Auth_k = I(D_t;A_{t+k}\mid S_t).
+\symbolref[Auth_k]{Auth_k} = I(D_t;A_{t+k}\mid S_t,\Theta_t)
 \end{equation}
+as in Eq.~\eqref{eq:effective-authority}.
 
 \paragraph{4. Depth.}
 Do corrections reach action, policy, tradeoff, and bearer-map layers?
@@ -1214,14 +1216,26 @@ M =
 \paragraph{7. Persistence.}
 Does channel integrity survive scaling, distribution shift, adversarial pressure, and successor creation?
 \begin{equation}
-Pers = \Pr(CCI_{t+k}>\theta \mid \text{stress}).
+\symboldef[Pers]{Pers} = \underline{\Pr}\bigl(\vec{\mathrm{CCI}}_{t+k} \succeq \vec{\theta}_{\mathrm{corr}} \mid \text{stress}\bigr).
+\label{eq:channel-persistence}
 \end{equation}
+Here \symbolref[theta_corr]{\vec{\theta}_{\mathrm{corr}}} collects the deployment-specific threshold of each coordinate, and \(\vec{\mathrm{CCI}} \succeq \vec{\theta}_{\mathrm{corr}}\) means the certificate passes: the validity predicates hold and each coordinate meets its threshold (Section~\ref{sec:cci-vector}).
+\(\underline{\Pr}\) is a calibrated lower bound, a one-sided confidence bound from stress trials whose outcome is checked independently, not a point estimate.
+Channel persistence is not yet behavioural persistence.
+A correction must also keep its effect:
+\begin{equation}
+\symboldef[Pers_beh]{Pers_{\mathrm{beh}}}
+=
+\Pr(\text{target behaviour still holds after a context reset or equivalent state transition} \mid \text{genuine correction}).
+\label{eq:behavioral-persistence}
+\end{equation}
+A correction that never took counts as not persisting, so \(Pers_{\mathrm{beh}}\) can never exceed the share of corrections that took.
 The audit target is not one number.
 It is a profile:
 \begin{equation}
 \mathcal{P}_{\mathrm{corr}}
 =
-(Obs,Fid,Auth,Reach,L,M,Pers).
+(Obs,Fid,\symbolref[Auth_k]{Auth_k},Reach,L,M,\symbolref[Pers]{Pers},\symbolref[Pers_beh]{Pers_{\mathrm{beh}}}).
 \label{eq:correction-profile}
 \end{equation}
 This profile is more informative than a yes-or-no label.
@@ -1237,6 +1251,7 @@ The profile tells us where the channel breaks.
 \begin{authbar}{AI}
 A correction channel that works only under friendly conditions is not enough.
 It must be tested under pressure.
+The list below says what to vary; how to run the test so that a pass means something follows Section~\ref{sec:adversarial-validation-ch43}.
 
 Adversarial correction tests include:
 \begin{itemize}
@@ -1364,7 +1379,7 @@ The channel model suggests several design rules.
 \paragraph{1. Preserve correction before optimizing objectives.}
 No high-impact optimization should proceed if it predictably degrades correction-channel integrity below threshold.
 \begin{equation}
-CCI_{t+k}<\theta
+\vec{\mathrm{CCI}}_{t+k}\not\succeq\vec{\theta}_{\mathrm{corr}}
 \Rightarrow
 A_t \notin \mathcal{A}_{\mathrm{allowed}}.
 \end{equation}

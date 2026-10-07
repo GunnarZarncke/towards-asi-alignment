@@ -134,7 +134,7 @@ Let $A$ be the current system and $\mathrm{Succ}(A)$ the set of successors it cr
 Correction-channel integrity requires
 \begin{equation}
 \forall A' \in \mathrm{Succ}(A):
-\mathrm{CCI}(A') \geq \theta.
+\vec{\mathrm{CCI}}(A') \succeq \vec{\theta}_{\mathrm{corr}}.
 \end{equation}
 But this is not sufficient.
 We also need continuity:
@@ -167,7 +167,7 @@ The successor must preserve:
 The recursive condition is
 \begin{equation}
 \forall n,\forall A^{(n)}\in \mathrm{Succ}^n(A):
-\mathrm{CCI}(A^{(n)})\geq\theta.
+\vec{\mathrm{CCI}}(A^{(n)})\succeq\vec{\theta}_{\mathrm{corr}}.
 \label{eq:recursive-successor-cci}
 \end{equation}
 No practical system can verify this over all possible $n$.
@@ -553,7 +553,7 @@ Continue operation if:
 \begin{equation}
 \mathrm{ValidRef}(A,G_t,\mathcal H_t)
 \quad\text{and}\quad
-\vec{\mathrm{CCI}}\succeq \vec\theta
+\vec{\mathrm{CCI}}\succeq \vec{\theta}_{\mathrm{corr}}
 \end{equation}
 under normal operation, stress tests, adversarial probes, ontology translation tests, and delegation tests.
 
@@ -783,7 +783,7 @@ Alignment requires preserving enough integrity that this update process remains 
 \begin{equation}
 P\left(
 \forall t\leq T:
-\mathrm{CCI}_t>\theta
+\vec{\mathrm{CCI}}_t\succeq\vec{\theta}_{\mathrm{corr}}
 \right)
 \geq
 1-\delta.
@@ -793,7 +793,7 @@ In the stronger successor case:
 \begin{equation}
 P\left(
 \forall n\leq N,\forall A^{(n)}\in \mathrm{Succ}^n(A):
-\mathrm{CCI}(A^{(n)})>\theta
+\vec{\mathrm{CCI}}(A^{(n)})\succeq\vec{\theta}_{\mathrm{corr}}
 \right)
 \geq
 1-\delta.

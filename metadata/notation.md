@@ -102,8 +102,15 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\mathcal{H}_t$ | Handle set controlled by $G_t$ | ch25 |
 | $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | Correction trace induced by controlled handles | ch25 |
 | $C_{\mathrm{raw}}$ | Weakest required correction case after bottlenecking over certified correction traces | ch25 |
+| $\mathcal{P}_{\mathrm{corr}}$ | Correction audit profile $(Obs,Fid,Auth_k,Reach,L,M,Pers,Pers_{\mathrm{beh}})$ (`eq:correction-profile`) | ch25 |
+| $Auth_k$ | Effective authority $I(D_t;A_{t+k}\mid S_t,\Theta_t)$ (`eq:effective-authority`) | ch25 |
+| $Pers$ | Channel persistence: calibrated lower bound on $\Pr(\vec{\mathrm{CCI}}_{t+k}\succeq\vec{\theta}_{\mathrm{corr}}\mid\text{stress})$ (`eq:channel-persistence`) | ch25 |
+| $Pers_{\mathrm{beh}}$ | Behavioural persistence: share of genuine corrections whose target behaviour still holds after a context reset; a correction that never took counts as not persisting (`eq:behavioral-persistence`) | ch25 |
 | $CCI$ | Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds | ch26 |
 | $CCI_\lambda$ | Scalar projection of the CCI vector for exposition, not the certification object | ch26 |
+| $\theta$ | Causal-influence (mutual-information) threshold, e.g. $I(C_t;A_{t+k}\mid S_t,I_t)>\theta$; bare $\theta$ means only this. Other thresholds carry a subscript ($\theta_L$, $\theta_M$, $\theta_{\mathrm{soc}}$, $\theta_{\mathrm{esc}}$, \ldots); model parameters appear only as subscripts ($p_\theta$, $\pi_\theta$) | ch07 |
+| $\vec{\theta}_{\Pi}$ | Per-coordinate thresholds of the preservation envelope $\vec{\Pi}(A)$ | ch34 |
+| $\vec{\theta}_{\mathrm{corr}}$ | Deployment-specific per-coordinate CCI thresholds; $\vec{\mathrm{CCI}}\succeq\vec{\theta}_{\mathrm{corr}}$ means the certificate passes (validity holds, every coordinate meets its threshold). Ch. 28's scalar $\theta_{\mathrm{corr}}$ is its one-number reading | ch24 |
 | $\mathrm{Control}(A)$ | Effective actuator control capacity | ch11 |
 | $\mathrm{RiskGap}(A)$ | $\mathrm{Control}(A)-\mathrm{CCI}(A)$ | ch33 |
 | $\mathrm{Risk}(A)$ | Certification risk functional (Lean `Certification.lean`; manuscript uses $\mathrm{RiskGap}$) | ch33 |

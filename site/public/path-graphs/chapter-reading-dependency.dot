@@ -80,7 +80,7 @@ digraph ChapterReadingDependency {
   "unit:ch14" -> "unit:ch22" [label="2 sym\nG_B, d_bundle", color="#2563eb"];
   "unit:ch15" -> "unit:ch16" [label="1 concept\nvalue-bundle-transport", color="#16a34a", style=dashed];
   "unit:ch15" -> "unit:ch17" [label="1 concept\nvalue-bundle-transport", color="#16a34a", style=dashed];
-  "unit:ch16" -> "unit:ch22" [label="2 sym\nPhi, theta", color="#2563eb"];
+  "unit:ch16" -> "unit:ch22" [label="1 sym\nPhi", color="#2563eb"];
   "unit:ch18" -> "unit:ch16" [label="1 concept\nbearer-persistence", color="#16a34a", style=dashed];
   "unit:ch18" -> "unit:ch31" [label="1 concept\nbearer-map-commutation-failure", color="#16a34a", style=dashed];
   "unit:ch18" -> "unit:ch47" [label="1 concept\nbearer-persistence", color="#16a34a", style=dashed];
@@ -91,12 +91,14 @@ digraph ChapterReadingDependency {
   "unit:ch22" -> "unit:ch23" [label="5 sym\nDelta_L_{bearer}, Delta_L_{bundle}, L_bearer, L_bundle, +1", color="#2563eb"];
   "unit:ch22" -> "unit:ch40" [label="1 sym\nbearer", color="#2563eb"];
   "unit:ch23" -> "unit:ch24" [label="5 sym\nB^{A}, Delta_L_{correction}, Delta_L_{semantic}, L_correction, +1", color="#2563eb"];
-  "unit:ch24" -> "unit:ch25" [label="1 sym\npi", color="#2563eb"];
+  "unit:ch24" -> "unit:ch25" [label="2 sym\npi, theta_corr", color="#2563eb"];
   "unit:ch25" -> "unit:ch26" [label="2 sym\nC_t, G_t", color="#2563eb"];
-  "unit:ch26" -> "unit:ch27" [label="1 sym\nCCI", color="#2563eb"];
+  "unit:ch25" -> "unit:ch27" [label="1 sym\nC_t", color="#2563eb"];
+  "unit:ch25" -> "unit:ch28" [label="1 sym\nC_t", color="#2563eb"];
   "unit:ch26" -> "unit:ch33" [label="1 sym\nCCI", color="#2563eb"];
-  "unit:ch27" -> "unit:ch28" [label="1 sym\nSucc", color="#2563eb"];
   "unit:ch29" -> "unit:ch26" [label="1 concept\nanti-capture-correction-validity", color="#16a34a", style=dashed];
+  "unit:ch29" -> "unit:ch27" [label="2 concept\nanti-capture-correction-validity, manipulation-false-consent", color="#16a34a", style=dashed];
+  "unit:ch29" -> "unit:ch28" [label="1 concept\nmanipulation-false-consent", color="#16a34a", style=dashed];
   "unit:ch30" -> "unit:ch31" [label="1 concept\nsuccessor-stability", color="#16a34a", style=dashed];
   "unit:ch31" -> "unit:ch32" [label="1 concept\nconserved-properties", color="#16a34a", style=dashed];
   "unit:ch32" -> "unit:ch33" [label="1 sym\nSelfControlGap", color="#2563eb"];
@@ -104,6 +106,7 @@ digraph ChapterReadingDependency {
   "unit:ch33" -> "unit:ch42" [label="1 sym\nRiskGap", color="#2563eb"];
   "unit:ch34" -> "unit:ch44" [label="1 sym\nSuccessorSafe", color="#2563eb"];
   "unit:ch36" -> "unit:ch26" [label="1 concept\ncorrection-parasites", color="#16a34a", style=dashed];
+  "unit:ch36" -> "unit:ch27" [label="1 concept\ncorrection-parasites", color="#16a34a", style=dashed];
   "unit:ch37" -> "unit:ch38" [label="2 concept\nalignment-attractor, pivotal-process", color="#16a34a", style=dashed];
   "unit:ch38" -> "unit:ch33" [label="2 concept\ncertified-basin, conductive-artifacts", color="#16a34a", style=dashed];
   "unit:ch39" -> "unit:ch07" [label="1 concept\npassive-observation-limit", color="#16a34a", style=dashed];
@@ -118,5 +121,5 @@ digraph ChapterReadingDependency {
   "unit:ch47" -> "unit:ch24" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
   "unit:ch47" -> "unit:ch48" [label="1 concept\nbearers-of-value", color="#16a34a", style=dashed];
 
-  // (48 chapters, 64 edges: 25 symbol, 39 informal, 0 mixed)
+  // (48 chapters, 67 edges: 25 symbol, 42 informal, 0 mixed)
 }

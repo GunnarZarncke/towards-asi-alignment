@@ -6,8 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-10-06 | **Python venv for agents** — Agents hit PyYAML errors on bare `python3`; root venv auto-resolved in check/generate/serve wrappers; documented in AGENTS.md and BUILD.md. | [2026-10-06-python-venv-agents.md](2026-10-06-python-venv-agents.md) |
-| 2026-10-06 | **Eval registry scaffold** — Review and adapt the registry plan; Market 14 YES/NO in Appendix P; create sibling repo `ai-safety-claims` (validator, contracts 1 and 4, scenarios, listing template); admin and maintainer re-trials. | [2026-10-06-eval-registry-scaffold.md](2026-10-06-eval-registry-scaffold.md) |
+| 2026-10-06 | **Python venv for agents** — Agents keep failing on PyYAML because they run bare `python3` instead of the repo `.venv/`. | [2026-10-06-python-venv-agents.md](2026-10-06-python-venv-agents.md) |
+| 2026-10-06 | **Market 1 wording** — Clarify four technical phrases in Market 1 (null band, sham intervention, freeze fields, extra na... | [2026-10-06-market-1-wording.md](2026-10-06-market-1-wording.md) |
+| 2026-10-06 | **Eval registry scaffold** — Review the eval-registry-split plan against Appendix P; adapt it ("when in doubt choose simplicit... | [2026-10-06-eval-registry-scaffold.md](2026-10-06-eval-registry-scaffold.md) |
 | 2026-10-05 | **Safety-case site vocabulary** — Use “safety case” as the public noun on the site; keep the agreed adjectives; use “evidence the c... | [2026-10-05-safety-case-site-vocab.md](2026-10-05-safety-case-site-vocab.md) |
 | 2026-10-05 | **Predictions hub panels polish** — Continue predictions hub work: merge external factors into related-forecast panels (Metaculus lin... | [2026-10-05-predictions-hub-panels-polish.md](2026-10-05-predictions-hub-panels-polish.md) |
 | 2026-10-05 | **Predictions hub catalog label** — Move related forecasts below the catalog. Fold Metaculus 6509 into that list. Keep underspecifica... | [2026-10-05-predictions-hub-catalog-label.md](2026-10-05-predictions-hub-catalog-label.md) |
@@ -20,13 +21,10 @@
 | 2026-10-05 | **Markdown link CI** — `make check` on `5b474be47` failed: markdown links, 4 broken relative links. Local check passed. | [2026-10-05-markdown-links-ci.md](2026-10-05-markdown-links-ci.md) |
 | 2026-10-05 | **Eval registry split** — Plan the split: third-party registry (sibling repo at first), appendix and site restructure, per-... | [2026-10-05-eval-registry-split.md](2026-10-05-eval-registry-split.md) |
 | 2026-10-05 | **Ch. 42 P1 prose pass** — Fix remaining "layers" sentences, implement the claim-extract P1 plan, update `ch42.jsonl`. | [2026-10-05-ch42-p1-pass.md](2026-10-05-ch42-p1-pass.md) |
-| 2026-10-04 | **Ch. 42 join figure in chapter** — Add the reviewed safety-case join Graphviz figure to Chapter 42. | [2026-10-04-ch42-join-figure.md](2026-10-04-ch42-join-figure.md) |
-| 2026-10-03 | **Claim-extract spine join** — The eight safety-case layers are a simplification of the spine dependency tree. Stay closer to th... | [2026-10-03-claim-extract-spine-join.md](2026-10-03-claim-extract-spine-join.md) |
-| 2026-10-02 | **Resolution advisors off the public contracts** — Proposed resolvers and the judge panel were for other platforms, and for later advice. Remove the... | [2026-10-02-resolution-advisors.md](2026-10-02-resolution-advisors.md) |
 
 ## Archive by month
 
-- **2026-10** (4): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (7): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

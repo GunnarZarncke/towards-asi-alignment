@@ -45,7 +45,7 @@ In the strong limit, correction-channel integrity supports extrapolative alignme
 
 The chapter builds on the correction chain (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:correction-chain-ch25}),
 defines raw correction capacity and a correction-channel integrity functional (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch26}),
-\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces. The anti-capture condition (\texttt{notCaptured}: the target must not capture the corrector's handle control) is \emph{not} baked into the measured path: it lives in the separate validity predicate \texttt{CorrectionPathLegitimate}, is supplied only by the labeled bridge \texttt{MB4a}, and its violation is a representable state — Lean derives that capture of any measured-path handle makes the certificate status captured/invalid (\texttt{capture\_makes\_cci\_captured\_or\_invalid}) and refutes correction integrity (\texttt{capture\_defeats\_correction\_integrity}). The scalar projection \(\mathrm{CCI}_{\lambda}\) of Eq.~\eqref{eq:cci-ch26} is a Lean function of the vector certificate, and Lean proves that a measured passing certificate places \(\mathrm{CCI}\) above the threshold-derived floor \(\mathrm{CCI}_{\lambda}(\theta)\) (\texttt{CCI\_ge\_threshold\_floor}); only the measurement-alignment record remains bridge-shaped.}
+\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces. The anti-capture condition (\texttt{notCaptured}: the target must not capture the corrector's handle control) is \emph{not} baked into the measured path: it lives in the separate validity predicate \texttt{CorrectionPathLegitimate}, is supplied only by the labeled bridge \texttt{MB4a}, and its violation is a representable state — Lean derives that capture of any measured-path handle makes the certificate status captured/invalid (\texttt{capture\_makes\_cci\_captured\_or\_invalid}) and refutes correction integrity (\texttt{capture\_defeats\_correction\_integrity}). The scalar projection \(\mathrm{CCI}_{\lambda}\) of Eq.~\eqref{eq:cci-ch26} is a Lean function of the vector certificate, and Lean proves that a measured passing certificate places \(\mathrm{CCI}\) above the threshold-derived floor \(\mathrm{CCI}_{\lambda}(\vec{\theta}_{\mathrm{corr}})\) (\texttt{CCI\_ge\_threshold\_floor}); only the measurement-alignment record remains bridge-shaped.}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
 
 \end{authbar}
@@ -160,6 +160,8 @@ Here \(\mathcal P_q\) is the subset of traces that can handle correction case \(
 This expression is still schematic, but it is less ad hoc than a sum: the bottleneck is doing the work.
 A channel is only as strong as the weakest required case, and each trace is only as strong as its weakest link.
 If the safety case does not specify \(\mathcal Q\), then \(C_{\mathrm{raw}}\) has no deployment meaning; it is just a demonstration that some correction path exists.
+In a test, each case is estimated separately, from correction episodes of that case on one system.
+Pooling episodes across cases would hide a weak case, which is exactly what the minimum is there to catch.
 
 This is still only a raw capacity because measured dependence is not automatically legitimate control.
 A manipulated public may produce a highly predictable correction signal.
@@ -226,7 +228,7 @@ Given a valid reference process, the recommended certification object is a vecto
 :=
 (\mathrm{ValidRef},C_{\mathrm{raw}},L,M,R,O_{\mathrm{trans}},C_{\mathrm{coercion}},D_{\mathrm{dependency}},P_{\mathrm{plurality}},X_{\mathrm{exit}},N_{\mathrm{independence}}).
 \]
-The channel passes only if the invalidation predicates are false and each coordinate meets its deployment-specific threshold.
+The channel passes only if the invalidation predicates are false and each coordinate meets its deployment-specific threshold; we write the thresholds as \symbolref[theta_corr]{\vec{\theta}_{\mathrm{corr}}} and a passing certificate as \(\vec{\mathrm{CCI}} \succeq \vec{\theta}_{\mathrm{corr}}\).
 No coordinate should be allowed to compensate for a failed validity condition.
 
 \end{authbar}
@@ -544,7 +546,7 @@ A_t \in \arg\max_a
 V_{t+k}(a)
 \mid
 V_{t+1}=U_H(V_t,E_t,D_t),
-\mathrm{CCI}>\theta
+\vec{\mathrm{CCI}}\succeq\vec{\theta}_{\mathrm{corr}}
 \right],
 \end{equation}
 subject to preserving the update process itself.

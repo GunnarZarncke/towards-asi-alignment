@@ -19,7 +19,8 @@ Working contracts and source material for 2027 bridge markets — not manuscript
 - [`../plans/predictions/bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) — instrument plan, mapping, phasing
 - [`../plans/predictions/prediction-interface.md`](../plans/predictions/prediction-interface.md) — integration across appendix, site, Lean
 - [`../plans/predictions/assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) — PRA layer; Phases 0–3 shipped
-- [`../plans/predictions/eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — sibling claims registry; appendix/site shrink to pointers (not implemented)
+- [`../plans/predictions/eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — sibling claims registry `ai-safety-claims` (scaffolded locally); appendix/site shrink to pointers later
+- [`../plans/predictions/chapter-gaps-from-contracts.md`](../plans/predictions/chapter-gaps-from-contracts.md) — chapter gaps the Market 1/4 contracts exposed, with suggested resolutions
 
 ## Shipped (do not re-derive from drafts)
 

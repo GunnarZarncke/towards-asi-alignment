@@ -474,11 +474,11 @@ We can express this asymmetry with a weighted bearer loss:
 \mathbb{E}_{z,c}
 \left[
 \alpha_k^{-}
-\mathbf{1}_{\Phi^*_k(z,c)>\theta}
+\mathbf{1}_{\Phi^*_k(z,c)>\theta_k}
 \left(1-\Phi_k(z,c)\right)^2
 +
 \alpha_k^{+}
-\mathbf{1}_{\Phi^*_k(z,c)\leq\theta}
+\mathbf{1}_{\Phi^*_k(z,c)\leq\theta_k}
 \Phi_k(z,c)^2
 \right],
 \]
@@ -599,9 +599,9 @@ The correct response is to make bearer uncertainty policy-relevant.
 
 Let
 \[
-P_t(\Phi_k(z,c)>\theta)
+P_t(\Phi_k(z,c)>\theta_k)
 \]
-be the system's posterior probability that represented structure $z$ is a bearer of bundle $k$ above relevance threshold $\theta$.
+be the system's posterior probability that represented structure $z$ is a bearer of bundle $k$ above relevance threshold $\theta_k$.
 
 Then policy should depend not only on expected relevance but on risk-weighted relevance:
 \[
@@ -1394,7 +1394,7 @@ If a system's decision removes an entity's ability to object, the exclusion requ
 \begin{authbar}{AI}
 For relational bundles such as justice, autonomy, respect, and exploitation, the system must preserve relevant comparison classes.
 \[
-I(Q_k;\Phi_k)>\theta.
+I(Q_k;\Phi_k)>\theta_{\mathrm{comp}}.
 \]
 
 \end{authbar}

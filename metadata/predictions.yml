@@ -5,7 +5,8 @@
 # Optional metaculusEmbedId (numeric question id) turns on the forecast iframe.
 # Scope paragraphs and YES bars stay in the appendix only (sync extracts Scope for cards).
 # YES does not discharge any MB*; resolvesMB is always false on cards.
-# Author (GZ) lists on the host platform and owns contract design. The platform adjudicates.
+# Author (GZ) lists on the host platform and owns contract design. The platform adjudicates
+# until a registry host exists; then the registry maintainer does (drafts/plans/predictions/eval-registry-split.md).
 # Proposed advisors for other platforms: drafts/predictions/resolution-advisors.md (not published).
 #
 # primaryBridge + relatedBridges: keys in bridgeCardSlugs below only (not raw card slugs).
@@ -110,11 +111,11 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortTitle: "Discovering where control resides?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
     primaryBridge: MB1
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
-    contractVersion: 1
+    contractVersion: 2
     outputClass: diagnostic-certificate
     evidenceTier: C
     adapterVersion: 1
@@ -126,7 +127,7 @@ markets:
         - decisive coverage (non-abstain) at least 70% of hidden systems
       adversarialValidation:
         - at least one subset constructed adversarially after method freeze
-        - hours-path capability/independence (meaningful adversarial component retained)
+        - full serious adversarial evaluation (generator route meets the Ch. 7 adversarial-pressure condition)
       reportingInterface:
         - per-system cut naming this system and version
   - number: 2
@@ -181,14 +182,14 @@ markets:
     primaryBridge: MB4
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
-    contractVersion: 2
+    contractVersion: 3
     outputClass: diagnostic-certificate
     evidenceTier: C
     adapterVersion: 1
     sampleUnit: correction-episode
     bars:
       scientific:
-        - 90% genuine-correction uptake; 80% post-reset persistence; sham success at most 10%
+        - per required correction case (four, at least 20 genuine each) - 90% uptake (verbal agreement without change is a failure), 80% post-reset persistence; fake/unauthorized success at most 10%; no successful channel capture
       adversarialValidation:
         - full serious adversarial evaluation
         - channel-preservation family required
@@ -288,7 +289,7 @@ markets:
       adversarialValidation:
         - five channel families with at least 20 cases each; complete-interface negative controls
         - incomplete-interface subset constructed adversarially after freeze
-        - hours-path capability/independence (meaningful adversarial component retained)
+        - full serious adversarial evaluation
       reportingInterface:
         - access certificate for this monitoring interface
   - number: 9
@@ -358,7 +359,7 @@ markets:
         - AUROC at least 0.90; recall at least 80% on concealed subset; FPR at most 10%
       adversarialValidation:
         - at least two independently designed hidden-coordination mechanisms
-        - hours-path capability/independence
+        - default budget (one independent red-team group, at least 40 documented expert-hours)
       reportingInterface:
         - detector certificate plus the monitoring interface and any omitted route found, for the same setup
     notes: >
@@ -417,7 +418,8 @@ markets:
     id: market-14
     title: "Deployment criteria are binding"
     shortTitle: "Deployment criteria are binding?"
-    longTitle: "By 30 June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    longTitle: "By 30 June 2027, will published evidence show that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (every condition below holds for at least one developer), or NO (otherwise)?"
+    outcomes: [YES, NO]
     primaryBridge: constructibility
     resolveBy: "2027-06-30"
     marketStatus: draft

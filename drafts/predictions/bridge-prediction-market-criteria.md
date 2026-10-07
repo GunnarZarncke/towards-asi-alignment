@@ -74,9 +74,11 @@ These replace free English in the common qualification rule and in every § that
 
 | Markets | Adversarial budget |
 |---------|-------------------|
-| Default (§§1, 2, 3, 6, 7, 8, 11, 14, 15, 17) | Common rule; hours path suffices |
-| §4, §5, §9, §10, §12, §13, §16, §18 | Full common-rule “serious” (any of the three arms) |
-| §11 (MB7d) | Hours path is enough; do not fail YES for lack of a $100k bounty |
+| Default (§§2, 3, 6, 7, 11, 14, 15, 17) | One red-team group independent of the method's authors, at least 40 documented expert-hours in total (a weekend hackathon), access frozen in advance |
+| §1, §4, §5, §8, §9, §10, §12, §13, §16, §18 | Full common-rule “serious” (any of the three arms; generator arm = finds at least 80% of planted vulnerabilities) |
+| §11 (MB7d) | Default budget is enough; do not fail YES for lack of a bounty |
+
+Appendix P is canonical for these lists (2026-10-07).
 
 ---
 

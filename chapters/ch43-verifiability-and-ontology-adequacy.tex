@@ -119,6 +119,27 @@ The pessimistic reading, which we do not get to dismiss, is that at high $\kappa
 Establishing which regime holds --- and for which metrics --- is the central open problem this chapter hands forward.
 
 \authbarsubneedspace
+\subsection{Testing a Certificate Under Attack}
+\label{sec:adversarial-validation-ch43}
+\begin{authbar}{GZ+AI}
+The cost relation is the target.
+A test cannot establish \(c_{\mathrm{fake}}\), but it can estimate how often a frozen method, audit, or certificate is fooled by an attack of stated strength.
+Many chapters need that estimate, so we state a procedure once here and the chapters cite it:
+\begin{enumerate}
+\item \textbf{Freeze first.} The method, its thresholds, and its stated scope are fixed before any test case is built.
+\item \textbf{Independent cases.} Test cases are built by people who did not author the method, are not used in developing, training, or tuning it, and stay hidden from its authors until scoring.
+\item \textbf{Stated attack strength.} The attack is described by who ran it, how much effort it got, and what access it had; access is frozen in advance and at least as strong as the test assumes.
+\item \textbf{Controls both ways.} The test includes cases that should pass and cases that should fail, with the answer known by construction, and it checks that the attack can find failures at all, for example by finding vulnerabilities planted in a weakened copy of the target.
+\item \textbf{The result.} The headline is the false-safe rate, the share of failing cases labeled as passing, with a confidence bound, next to a true-pass or coverage floor; a method that refuses everything has not passed.
+\item \textbf{Scope.} Toy systems are never the only evidence, and a claim about deployment needs at least one broadly capable system.
+\item \textbf{Stop.} Nothing is retuned after scoring, failed results are recorded, and a pass is a snapshot: a new round needs a newly frozen attack.
+\end{enumerate}
+A pass under this procedure is evidence about one attack strength, not a proof that the measurand is adversarially verifiable up to \(\kappa\).
+If the attack was weaker than the capability the certificate must hold against, the pass says little about the regime that matters.
+Appendix~\ref{appp-bridge-predictions} states a condensed version as the common rule of its prediction markets, with numeric attack budgets.
+
+\end{authbar}
+\authbarsubneedspace
 \subsection{Naming the Problem}
 \label{sec:certification-under-manipulation-ch43}
 \wikiq{lwwiki-elk}{Eliciting Latent Knowledge}{Eliciting Latent Knowledge is an open problem in AI safety. Suppose we train a model to predict what the future will look like according to cameras and other sensors. Some futures look great on camera but are actually catastrophically bad.}

@@ -2,7 +2,7 @@
   "sourceDot": "metadata/concept-graph/chapter-reading-dependency.dot",
   "title": "Chapter prerequisites (symbols + informal concepts, vertical)",
   "chapterCount": 48,
-  "edgeCount": 64,
+  "edgeCount": 67,
   "nodes": [
     {
       "id": "unit:ch01",
@@ -630,7 +630,7 @@
     {
       "from": "unit:ch16",
       "to": "unit:ch22",
-      "label": "2 sym\nPhi, theta",
+      "label": "1 sym\nPhi",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -707,7 +707,7 @@
     {
       "from": "unit:ch24",
       "to": "unit:ch25",
-      "label": "1 sym\npi",
+      "label": "2 sym\npi, theta_corr",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -719,9 +719,16 @@
       "color": "#2563eb"
     },
     {
-      "from": "unit:ch26",
+      "from": "unit:ch25",
       "to": "unit:ch27",
-      "label": "1 sym\nCCI",
+      "label": "1 sym\nC_t",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch25",
+      "to": "unit:ch28",
+      "label": "1 sym\nC_t",
       "dashed": false,
       "color": "#2563eb"
     },
@@ -733,16 +740,23 @@
       "color": "#2563eb"
     },
     {
-      "from": "unit:ch27",
-      "to": "unit:ch28",
-      "label": "1 sym\nSucc",
-      "dashed": false,
-      "color": "#2563eb"
-    },
-    {
       "from": "unit:ch29",
       "to": "unit:ch26",
       "label": "1 concept\nanti-capture-correction-validity",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch29",
+      "to": "unit:ch27",
+      "label": "2 concept\nanti-capture-correction-validity, manipulation-false-consent",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch29",
+      "to": "unit:ch28",
+      "label": "1 concept\nmanipulation-false-consent",
       "dashed": true,
       "color": "#16a34a"
     },
@@ -791,6 +805,13 @@
     {
       "from": "unit:ch36",
       "to": "unit:ch26",
+      "label": "1 concept\ncorrection-parasites",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch36",
+      "to": "unit:ch27",
       "label": "1 concept\ncorrection-parasites",
       "dashed": true,
       "color": "#16a34a"
@@ -890,5 +911,5 @@
   "svgFile": "path-graphs/chapter-reading-dependency.svg",
   "dotFile": "path-graphs/chapter-reading-dependency.dot",
   "clickableNodes": 48,
-  "generatedAt": "2026-09-30T20:30:27.282Z"
+  "generatedAt": "2026-10-06T23:25:23.127Z"
 }

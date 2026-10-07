@@ -178,7 +178,7 @@ The published contracts use this stack:
 2. **Defer to the publication’s freeze** only for *that paper’s* internal splits that we then score against *our* bars — never for whether they passed.
 3. **OTHER** when steps 1–2 leave a load-bearing call unsettled. **NO** only when a qualifying attempt missed the performance bars. Do not refund or annul.
 
-The host platform adjudicates. Markets 3 and 17 score only cases with mechanical ground truth. Names and the desk/panel protocols for venues that require an external judge are in [`drafts/predictions/resolution-advisors.md`](../../predictions/resolution-advisors.md). That file is not linked from the manuscript or the site.
+The host platform adjudicates. Once a host owns the registry, the registry maintainer adjudicates and the platform reads its snapshot ([`eval-registry-split.md`](eval-registry-split.md)). Markets 3 and 17 score only cases with mechanical ground truth. Names and the desk/panel protocols for venues that require an external judge are in [`drafts/predictions/resolution-advisors.md`](../../predictions/resolution-advisors.md). That file is not linked from the manuscript or the site.
 
 ## Phasing (does not move existing gates)
 
@@ -191,7 +191,7 @@ The host platform adjudicates. Markets 3 and 17 score only cases with mechanical
 | **P1** | YAML catalog: id, §, `MB*` keys, `resolvesMB: false` | Q1 if listing |
 | **P2** | Working criteria is the P2 draft; freeze a dated string at listing | Q1 |
 | **P3** | Platform + listing (Manifold / Metaculus / both). Subsidy, version strings | Q6; P2 frozen |
-| **P4** | List on the host platform; the platform adjudicates. Do not name a project desk. Optional field-hub links (no recency badges, no green cells) | Q1 |
+| **P4** | List on the host platform; the platform adjudicates (registry maintainer once hosted; see `eval-registry-split.md`). Do not name a project desk. Optional field-hub links (no recency badges, no green cells) | Q1 |
 | **Spine (adapters)** | `Evidence.lean` | **done** 2026-09-19 ([`spine.md`](../spine/spine.md)) |
 
 Backtest, Construct, and Spine gates are unchanged. A listed market is not Expectation 4.
@@ -200,10 +200,12 @@ Backtest, Construct, and Spine gates are unchanged. A listed market is not Expec
 
 Decided: Q3 banner not parlays; Q4 seven properties; Q5 §14 governance-only (not MB11); **§18** is the scoped safety-case market (`SafeIn`, not `Safe`); Q7 judgment stack (not lone judge); **refuse→NO**; **MB6a = §7 slice, MB6b = §16**; no unsigned-basin market; **Q8** = predictions appendix (optional App B pointer).
 
-1. **Q1 — Instrument vs research program.** **Decided:** author owns contract design and will list on Metaculus (needed to keep specs consistent). The host platform adjudicates. Proposed advisors stay in `drafts/predictions/resolution-advisors.md`, off the manuscript and the site.
+1. **Q1 — Instrument vs research program.** **Decided:** author owns contract design and will list on Metaculus (needed to keep specs consistent). The host platform adjudicates (registry maintainer once hosted; see `eval-registry-split.md`). Proposed advisors stay in `drafts/predictions/resolution-advisors.md`, off the manuscript and the site.
 2. **Q2 — 2027 default-NO.** **Decided:** keep catalog titles; `marketQuestion` lead uses “Published method for…” (or equivalent for non-method rows) so NO is not read as “bridge false.” Resolve-by date lives in `resolveBy`, not in the title or question lead; thresholds stay in the appendix spec only.
-3. **Q6 — Platform.** Metaculus first; Manifold optional later with the same contract text. The platform adjudicates.
+3. **Q6 — Platform.** Metaculus first; Manifold optional later with the same contract text. The platform adjudicates (registry maintainer once hosted).
 4. **Q8 — Modeling absorb.** **Decided P0c:** appendix is the absorb surface; App B at most a `\ref` to it.
+
+**Market 14 (2026-10-06):** binary YES/NO, no OTHER; YES if every box condition is met, NO otherwise. Lists directly on Metaculus without the registry; the platform adjudicates. Appendix box updated.
 
 **Early resolve-by (13, 14):** `2027-06-30` in `metadata/predictions.yml` — documentary (#14) and audit-game (#13) rows can close on public evidence before the main 2027-12-31 cohort.
 

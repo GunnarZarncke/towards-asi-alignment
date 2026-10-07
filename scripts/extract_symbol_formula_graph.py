@@ -865,6 +865,12 @@ def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
         syms.add(f"{greek}_{{{sub}}}")
     for m in re.finditer(rf"\\({greek_pat})_\\([A-Za-z]+)", math):
         syms.add(f"{m.group(1)}_{{{m.group(2)}}}")
+    # Vector Greek with subscript: \vec{\theta}_{\mathrm{corr}} → theta_{corr}
+    for m in re.finditer(
+        rf"\\vec\{{\\({greek_pat})\}}(?:_\{{([^}}]+)\}}|_([A-Za-z0-9]+))",
+        math,
+    ):
+        syms.add(f"{m.group(1)}_{{{normalize_sub(m.group(2) or m.group(3))}}}")
 
     # Bare command symbols
     for m in re.finditer(r"\\([A-Za-z]+)", math):
@@ -874,6 +880,13 @@ def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
             if cmd == "mu" and re.search(r"\\mu_E\b", math):
                 continue
             if end < len(math) and math[end] == "_":
+                continue
+            # \vec{\theta}_{...}: subscripted vector, handled above
+            if math[end:end + 2] == "}_" and math[max(0, m.start() - 5):m.start()] == "\\vec{":
+                continue
+            # Parameter subscript (p_\theta, Q_{\theta,\psi}): not a symbol of its own
+            before = math[:m.start()].rstrip()
+            if before.endswith("_") or re.search(r"_\{[^{}]*$", before):
                 continue
             syms.add(cmd)
         elif cmd in ("CCI", "GLI", "DL", "MI", "Phi", "Gamma", "Delta", "Fit"):

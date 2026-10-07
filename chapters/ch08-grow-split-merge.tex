@@ -372,7 +372,7 @@ L(M_{\text{new}}\mid X_{t:t+k})
 -
 L(M_{\text{old}}\mid X_{t:t+k})
 >
-\theta
+\theta_{\mathrm{dev}}
 \label{eq:development-compression-gain}
 \end{equation}
 while transport of the Chapter~\ref{ch:conserved-properties} structures remains bounded (Eq.~\eqref{eq:import-preserving-successor-transport-ch30}).
@@ -790,7 +790,7 @@ The evaluated object remains safe, but the deployed composite is a new agent.
 
 Boundary drift is detected by rising explanatory power of a larger boundary:
 \[
-L(M_{\text{larger}}\mid X)-L(M_{\text{certified}}\mid X)>\theta.
+L(M_{\text{larger}}\mid X)-L(M_{\text{certified}}\mid X)>\theta_{\mathrm{drift}}.
 \]
 
 \end{authbar}
@@ -956,7 +956,7 @@ If multiple descendants are generated, the selection process itself is certified
 \paragraph{Merger condition.}
 If the system becomes part of a larger composite, the composite boundary is analyzed:
 \[
-\Gamma_{\text{merge}}>\theta
+\Gamma_{\text{merge}}>\theta_{\mathrm{merge}}
 \Rightarrow
 A^H\text{ requires certification}.
 \]

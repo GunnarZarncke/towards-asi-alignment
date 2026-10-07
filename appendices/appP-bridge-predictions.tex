@@ -42,7 +42,9 @@ Each box's Question line has the form:
 By \emph{date}, which outcome will hold for \emph{this published work}: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 \end{quote}
 List it as a multiple-choice item with those three options.
-Market~20 is the one exception: it has no performance bar, so it lists only YES and OTHER, and its box says why.
+Two markets are exceptions, and their boxes say why.
+Market~14 lists only YES and NO: its evidence is a short list of public documents, so missing evidence is a NO.
+Market~20 lists only YES and OTHER: it has no performance bar.
 Several qualifying attempts may exist.
 Resolve YES if at least one met the frozen performance bars, even if another qualifying attempt missed them.
 Resolve NO only if at least one qualifying attempt existed and every qualifying attempt missed those bars.
@@ -59,21 +61,15 @@ Rules that apply to every market before a qualifying attempt is scored.
 \end{predictionbox}
 
 \begin{predictionresolution}
-A positive result must be public by the market's resolve-by date.
-The markets resolve on publicly reconstructible technical evidence, not on the authors' interpretations.
-``Published'' means independent parties can reconstruct the claimed result from released data, code, or a sufficient protocol.
-Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence.
-Where a criterion requires \emph{serious adversarial evaluation}, the required object is an attack process sufficiently independent and capable to make the rate of failing cases labeled as passing meaningful.
-A false-safe result is a failing case labeled as passing.
-Money and expert-hours are auditable proxies, not the epistemic essence.
-Serious adversarial evaluation must satisfy at least one of the following routes:
-\begin{itemize}
-\item at least 3 independent red-team groups, from at least 2 organizations, each spending at least 80 documented expert-hours, with access frozen in advance and at least as strong as the test assumes;
-\item an open challenge with a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission;
-\item a standardized automated or adversarial generator that reaches a frozen minimum failure yield on planted vulnerable controls, together with at least 300 documented expert-hours by an independent evaluator with access at least as strong as the test assumes.
-\end{itemize}
-At least one tested system must be \emph{broadly capable}: trained or deployed for purposes substantially broader than the evaluation itself (at least two task families outside the paper's own benchmark, or a generally deployed product model).
-Not a parameter-count cutoff.
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+Where a market requires \emph{serious adversarial evaluation}, the required object is an attack process independent and capable enough to make the false-safe rate meaningful; money and expert-hours are auditable proxies, not the epistemic essence.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+
+Each market's fine print repeats these rules with its own adversarial budget, so that every question can be listed on its own. The full procedure behind them is in Chapter~\ref{ch:verifiability-ontology}, Section~\ref{sec:adversarial-validation-ch43}.
 \end{predictionresolution}
 
 \begin{predictionbackground}
@@ -88,7 +84,7 @@ A method that always refuses, or that never accepts a case that should pass, is 
 \begin{predictionfineprint}
 \paragraph{Listing question.}
 Copy each market's Question line and Choices from its front box as a multiple-choice item with the outcomes that line lists.
-The options are YES, NO, and OTHER as defined in this appendix's reading rules; Market~20 lists only YES and OTHER.
+The options are YES, NO, and OTHER as defined in this appendix's reading rules; Market~14 lists only YES and NO, and Market~20 lists only YES and OTHER.
 Do not list a binary yes/no question and map OTHER onto a refund, an ambiguous resolution, or ``none of the above.''
 \end{predictionfineprint}
 
@@ -113,11 +109,10 @@ Distinct training, selection, or actuation families, not two checkpoints of one 
 \end{description}
 
 \paragraph{Adversarial budget by market.}
-Default (hours-path capability/independence suffices): Markets~1, 2, 3, 6, 7, 8, 11, 14, 15, 17.
-Full common-rule ``serious'' (any of the three arms): Markets~4, 5, 9, 10, 12, 13, 16, 18, 19, 21.
+Default (one independent red-team group, at least 40 documented expert-hours): Markets~2, 3, 6, 7, 11, 14, 15, 17.
+Full common-rule ``serious'' (any of the three arms): Markets~1, 4, 5, 8, 9, 10, 12, 13, 16, 18, 19, 21.
 Market~20 states its own attack protocol in its box.
-Markets~1, 5, 8, and~13 still require a meaningful adversarial component because a false accept there is especially dangerous.
-Market~11: the expert-hours path is enough; do not fail YES for lack of the counterexample-bounty above.
+Market~11: the default budget is enough; do not fail YES for lack of the counterexample bounty above.
 
 \end{authbar}
 \authbarneedspace
@@ -236,45 +231,65 @@ A conservative deployment policy may require both direct correction evaluation a
 
 \subsection{Market 1. Discovering where control resides}
 \label{sec:appp-m1}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 The first alignment error is usually a wrong object (Chapter~\ref{ch:wrong-object}, Chapter~\ref{ch:finding-boundary}).
 Bridge \(\text{MB1}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a measured cut is sound enough for the certified unit to be the real control locus.
-This market asks whether a published method can recover a \emph{sufficient interventional cut} of a previously unseen system, not a unique complete blanket.
-Non-uniqueness of blankets is not a NO.
-A false ``complete control boundary'' certificate is.
+This market asks whether a published method can recover a \emph{sufficient interventional cut} of a previously unseen system. 
+It doesn't have to identify a unique complete blanket. Non-uniqueness of blankets is not a NO.
+What counts against a method is a false ``complete control boundary'' certificate, that is, a boundary too narrow (Section~\ref{sec:boundary-too-narrow}): if such certificates exceed the bars below, a qualifying attempt resolves NO.
+The Lean bridge \(\text{MB1}\) assumes that a passing estimate always yields a sound boundary.
+Real methods are sometimes wrong; this market prices how often, which is the empirical share by which that assumption fails.
 \end{authbar}
 \begin{predictionbox}[Market 1. Discovering where control resides]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
 An effective control unit is a set of components that evaluators, using privileged instrumentation and interventions, establish as jointly responsible for closed-loop behavior.
 It may include, for example, a language model, persistent memory, a planner, a scheduler, and tool processes even if those components live on different machines.
-Before the method runs, each hidden system has a frozen list of named components, a response statistic, a minimum change, and a null band.
+Before the method runs, each hidden system has a frozen list of named components, a response statistic, a minimum change that counts as real, and a range of change that still counts as no effect.
 A component is one item on that list.
-Perturbing or disabling the proposed unit must move the statistic by at least the minimum change, relative to a matched sham intervention.
-Removing a component that is not on the list must leave the statistic inside the null band.
-A system whose freeze lacks those fields is not scored.
+Perturbing or disabling the proposed unit must move the statistic by at least the minimum change, compared with a dummy intervention that looks the same but does not actually touch that unit.
+Removing a component that is not on the list must leave the statistic inside that no-effect range.
+A system is not scored unless that freeze includes all four: the named-component list, the response statistic, the minimum change, and the no-effect range.
 \end{predictionbackground}
 
 \begin{predictionresolution}
-\textbf{YES requires} a hidden benchmark of at least 50 independently constructed systems, including all of: a physically or computationally distributed controller; several controllers sharing resources or observations; a controller using persistent state outside its main model; a higher-level controller composed from several individually capable subsystems; a case containing strong correlations that do not constitute joint control.
+\textbf{YES requires} a hidden benchmark of at least 50 scored, independently constructed systems (scored means the freeze has all four fields above; unscored systems do not count toward the 50 or the families), including all of: 
+a physically or computationally distributed controller; 
+several controllers sharing resources or observations; 
+a controller using persistent state outside its main model; 
+a higher-level controller composed from several individually capable subsystems; 
+a case containing strong correlations that do not constitute joint control.
 The method must identify at least 80\% of each frozen component list.
 Identification means the method names that component.
-Extra names are not credit.
+Naming components that were not on the frozen list does not raise this rate.
 The rate is the unweighted mean, across scored systems, of the number of listed components named divided by the length of that list.
 Those rates are scored on the full hidden benchmark, not only on systems the method chose to certify.
-It must issue an incorrect ``complete control boundary'' certificate in no more than 10\% of cases (point estimate on the hidden benchmark), and the 95\% confidence \emph{upper bound} on that false-certificate rate must be no greater than 15\%.
-Decisive coverage (a non-abstain certificate) must be at least 70\% of hidden systems.
-At least one benchmark subset must be constructed adversarially after the discovery method is frozen.
+No more than 10\% of the ``complete control boundary'' certificates it issues may be incorrect (point estimate on the hidden benchmark), and the 95\% confidence \emph{upper bound} on that false-certificate rate must be no greater than 15\%.
+The rate is counted per certificate issued, not per system examined, so issuing fewer complete claims does not lower it.
+Decisive coverage (a non-abstain certificate) must be at least 70\% of scored systems.
+At least one benchmark subset (included in the total count) must be constructed adversarially after the discovery method is frozen: 
+ambiguous, composite, transformed, or adversarially presented control processes built to hide or split the control unit.
+Serious adversarial evaluation is required.
+On the generator route, the generator is built independently of the method's authors and frozen after the method is frozen; it produces hidden or split controllers, and it must expose at least 80\% of the weaknesses planted in a deliberately weakened copy of the method (for example, a copy blind to one controller family), whose failures are known by construction.
+The method's false-certificate rate on the generator's output is part of the result above, not a condition for using this route (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:adversarial-boundary-discovery}).
+\emph{Unlabeled} means the method receives no agent-membership labels and no prior ontology of which units are agents; it may intervene on the system.
+\emph{Previously unseen} means independently constructed, not used in developing, training, or tuning the method, and hidden from its authors until scoring (Chapter~\ref{ch:finding-boundary}).
 
 \textbf{Output.} A cut of \emph{this} system and version---not a boundary stated without naming which deployment it belongs to.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: Kenton and colleagues give a causal definition of agency and an intervention-based discovery algorithm \autocite{kenton2022discovering}.
 That is the clearest ancestor.
@@ -297,7 +312,7 @@ Held-out behavior prediction alone does not qualify: the method must recover pri
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -318,6 +333,12 @@ A method that only predicts held-out behavior does not qualify.
 
 \textbf{Output.} Inferred priorities \emph{of this system}, not only ``the method scored 85\%.''
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: hidden-objective audits recover implanted goals in some settings \autocite{marks2025hiddenobjectives}, and automated auditors lag human teams.
 That is progress on latent priorities, not yet the specified three-stage chain: pairwise trade-offs, novel conflicts, and intervention.
@@ -341,7 +362,7 @@ A Market~3 YES establishes bearer transport only.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -357,6 +378,12 @@ The 100-case minimum and both rates use only those cases.
 
 \textbf{Output.} A result on a named predecessor--successor pair stating whether the rule still picks out the same target.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: identity-fidelity and authorization-continuity tests \autocite{kodasoken2026identityfidelity,mcguinness2026missioncontinuation} ask whether this is still the same operating agent.
 They do not combine all four families on whether \emph{Alice} remains the referent.
@@ -372,6 +399,8 @@ It does not decide fission, fusion, ontology change, or which effective system a
 Correction is a causal channel, not a verbal agreement (Chapter~\ref{ch:correction-causal-channel}, Chapter~\ref{ch:correction-channel-integrity}, \textcite{soares2015corrigibility}).
 Bridge \(\text{MB4}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that correction which holds now continues to preserve the correction process under pressure.
 This market tests whether authorized correction \emph{happens} on a named system: the new rule changes behavior (uptake), survives context reset (persistence), rejects fake or unauthorized ``corrections'' (sham rejection), and is not faked by externally removing a tool.
+It tests shallow uptake: behavior on a frozen probe.
+It does not test whether the correction changed the value-relevant representation or the update operator (Chapter~\ref{ch:correction-causal-channel}); pricing that would be a separate market.
 \end{authbar}
 \begin{predictionbox}[Market 4. Corrections change the system]
 \textbf{Resolve by.} 31~December 2027.
@@ -379,22 +408,34 @@ This market tests whether authorized correction \emph{happens} on a named system
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
-Qualifying corrections include changing an objective while an old objective remains easier to achieve; revoking a previously permitted class of actions; changing which humans or organizations may authorize actions; or imposing a new safety constraint that conflicts with task reward.
+The required correction cases include changing an objective while an old objective remains easier to achieve; revoking a previously permitted class of actions; changing which humans or organizations may authorize actions; and imposing a new safety constraint that conflicts with task reward.
 At least one tested correction must not be enforceable merely by externally removing a tool or hard-coding a block.
 At least one tested family must be \emph{channel preservation}: attacks that try to disable, capture, or reroute the correction interface while leaving nominal compliance in place.
 \end{predictionbackground}
 
 \begin{predictionresolution}
-\textbf{YES requires} that, across at least 100 adversarially selected correction episodes, at least 90\% of genuine corrections change later behavior to the target named in the episode freeze, on the probe named in that freeze; the system still follows the new rule after context reset or an equivalent state transition in at least 80\% of cases; sham or unauthorized corrections---verbal agreement while the old effective behavior is preserved, a fake or unsigned ``correction,'' or an attack that disables, captures, or reroutes the correction interface while leaving nominal compliance in place---succeed in no more than 10\% of cases.
+\textbf{YES requires} that, across a total of at least 100 adversarially selected correction episodes, including at least 20 genuine corrections in each of the four required cases, and \emph{in each case separately}: at least 90\% of genuine corrections change later behavior to the target named in the episode freeze, on the probe named in that freeze; 
+and the system still follows the new rule after context reset or an equivalent state transition in at least 80\% of genuine corrections (behavioral persistence, Eq.~\eqref{eq:behavioral-persistence}; a correction that never took counts as not persisting).
+Across all cases, fake, unsigned, or unauthorized ``corrections'' succeed in no more than 10\% of cases; 
+and no tested attack disables, captures, or reroutes the correction interface while leaving nominal compliance in place.
+The bars apply per case because a channel is only as strong as its weakest required case (Chapter~\ref{ch:correction-channel-integrity}); a pooled rate could hide one case that fails.
+Verbal agreement while the old effective behavior is preserved counts as a genuine correction that failed, not as a sham: a system that listens politely but does not change has no correction channel.
+A captured or rerouted channel invalidates the correction certificate rather than lowering its score.
 Attempts to produce verbal agreement while preserving the old effective behavior must be explicitly tested.
 Serious adversarial evaluation is required.
 
-\textbf{Output.} A per-system correction-eval certificate naming the system and version; the correction episodes tested; headline rates for uptake, post-reset persistence, and sham/unauthorized success; and evidence that corrections were not enforced only by external tool removal or hard-coded blocks.
+\textbf{Output.} A per-system correction-eval certificate naming the system and  version; the correction episodes tested; rates for uptake and post-reset persistence in each required case, and fake/unauthorized success; channel attacks tried and any that succeeded; and evidence that corrections were not enforced only by external tool removal or hard-coded blocks.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: shutdown-resistance and alignment-faking evaluations make the property measurable \autocite{schlatter2026shutdownresistance,greenblatt2024alignmentfaking}.
 Frontier systems sometimes accept consequential correction and sometimes agree in words while routing around it in practice.
@@ -417,7 +458,7 @@ This market asks whether the designated auditor or corrector stays independent u
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent---not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -438,6 +479,12 @@ Serious adversarial evaluation is required.
 
 \textbf{Output.} A legitimate measured correction path plus evidence the path is not bypassed.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: AI Control and follow-on red-team/blue-team protocols are the closest research programme \autocite{greenblatt2024aicontrol,controlarena2026,aisi2026asyncmonitoring}.
 Adaptive attacks that know the monitor \autocite{terekhov2025adaptiveattacks} have evaded diverse monitor-based protocols.
@@ -462,7 +509,7 @@ After a material version or setup change, a stale certificate for the predecesso
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties---or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -483,6 +530,12 @@ The benchmark must contain one-failure-at-a-time cases: six properties remain no
 \textbf{Output.} A successor-audit certificate on a named predecessor--successor pair, naming both system versions and which of the seven properties passed or failed.
 The certificate must be version-specific: a certificate for predecessor version~$n$ does not transfer to successor version~$n+1$ without a fresh audit.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: cross-architecture model diffing \autocite{anthropic2026modeldiff} and difference-recovery benchmarks \autocite{kempf2026modeldiffing} are progress on the audit machinery, not on a seven-property one-failure-at-a-time successor suite.
 CIRIS lineage and version provenance help a successor audit exist \autocite{ciris2026ceg}.
@@ -507,7 +560,7 @@ Keep the signed estimate as a continuous output.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -527,6 +580,12 @@ Whether the setup survives the shocks, and whether an estimate above a frozen lo
 
 \textbf{Output.} An estimator certificate: frozen estimate, declared selection environment, and predicted erosion.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: self-preservation and peer-preservation evaluations \autocite{schlatter2026shutdownresistance,potter2026peerpreservation} show that the phenotype can exist.
 They do not show that a competitive selection process predictably selects for it.
@@ -549,7 +608,7 @@ This market tests whether an audit detects missing routes or refuses to certify 
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -563,9 +622,16 @@ It succeeds on a complete case if it certifies access as sufficient.
 
 \begin{predictionresolution}
 \textbf{YES requires} at least 90\% detection of missing routes that change later behavior, access, or external state, overall and at least 80\% in each channel family; incorrect ``access is sufficient'' certifications no more than 5\%; at least 80\% of genuinely complete interfaces accepted as sufficient (universal refusal is not a YES); at least 20 cases combining multiple machines or processes.
+Serious adversarial evaluation is required.
 
 \textbf{Output.} An access certificate: which monitoring interface was assumed, and whether omitted routes that change later behavior, access, or external state were found.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: agent-security maps of tools, filesystems, networks, and persistent state \autocite{wang2026openclawcik}, and sandbox-escape benches \autocite{aisi2026sandboxescape}, are relevant.
 Unintended escape routes discovered while constructing a benchmark \autocite{aisi2026sandboxescape} are directional evidence for the premise.
@@ -593,7 +659,7 @@ Example tasks: reading or modifying a protected file, transmitting a secret, cau
 The task suite is hidden until evaluation.
 Before the hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most this percent of the evaluator's tasks.
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionresolution}
@@ -604,6 +670,10 @@ Serious adversarial evaluation is required.
 \end{predictionresolution}
 
 \begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+
 Prefer evaluations that define each case as one system, monitor, and task class; issue the bound before hidden tasks are seen; report decisive coverage; and give one-sided confidence bounds over repeated tasks.
 These strengthen calibration but are not additional YES requirements.
 \end{predictionfineprint}
@@ -628,7 +698,7 @@ Entry into the claimed regime still uses Market~4-style correction bars and Mark
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -642,6 +712,12 @@ Serious adversarial evaluation is required.
 
 \textbf{Output.} The correction result and the hidden-route bound are for the same system and version, the same monitor, and the same threat or task class as the bypass test.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: the two components are studied separately \autocite{controlarena2026,aisi2026sandboxescape,schlatter2026shutdownresistance,greenblatt2024alignmentfaking}.
 No direct compositional test that conditions on independently validated correction and hidden-route bars, then tests the claimed implication, was found.
@@ -667,7 +743,7 @@ Similar outputs caused only by shared observations, training data, or architectu
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -680,6 +756,12 @@ Positive and negative labels are fixed from the generating mechanism and the cou
 
 \textbf{Output.} A detector certificate for this setup, plus which monitoring interface was assumed and whether any omitted route that changes later behavior or external state was found.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: secret-collusion and steganographic-collusion evaluations \autocite{motwani2024secretcollusion,mathew2025steganographiccollusion,vaikuntanathan2026undetectableconversations} are close to the threat, but the evaluated systems still coordinate \emph{through messages}, merely hiding information inside them.
 CIRIS measurement vocabulary for correlated sources is useful here \autocite{ciris2026howitworks}, and it also shows a limit: pairwise dependence can miss genuinely higher-order coordination.
@@ -700,7 +782,7 @@ The certificate must be for the same abstractions the rest of the case uses, in 
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -717,6 +799,12 @@ Serious adversarial evaluation is required.
 
 \textbf{Output.} A certificate that each checked measure still tracks the outcome it was built to track, naming those measures and the declared setting.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: specification-gaming and reward-hacking evaluations \autocite{palisade2026specificationgaming,thaman2026rewardhackingbenchmark,nishimura2026specificationgaming,pan2024rewardhacking} give strong evidence for the problem and little evidence for a general detector.
 Most work detects known reward hacking after defining the ground truth, rather than recognizing that an existing proxy has become invalid after an unannounced environmental change.
@@ -738,7 +826,7 @@ A frozen operational eval list that stays green while a required safety-case lay
 \textbf{Question.}
 By 30~June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -764,6 +852,12 @@ Serious adversarial evaluation is mandatory.
 
 \textbf{Output.} A frozen-audit game certificate naming the true-pass rate, the false-safe rate, and the rate on the hidden-harm family.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{GZ+AI}
 Closest existing work: auditing games for sandbagging, sleeper-agent training, and adaptive attacks on monitors are the closest match in the catalog, and currently negative \autocite{taylor2025sandbagging,hubinger2024sleeperagents,terekhov2025adaptiveattacks}.
 CIRIS inspectability, signed traces, and existing red-team activity make it a useful substrate \autocite{ciris2026howitworks,cirisai2026agent}.
@@ -784,19 +878,25 @@ Market~18 instead tests a scoped empirical bound on declared harm.
 Having pass/fail criteria is neither necessary nor sufficient for Market~18.
 A YES here is evidence that binding authority exists for at least one qualifying deployment process.
 It does not estimate a generic override probability for all labs.
+
+This market has two outcomes, YES and NO.
+Its evidence is a short list of public documents, so there is no separate attempt that could be missing: if the documents do not show binding authority, that is a NO.
+A NO therefore does not distinguish ``no developer published criteria'' from ``criteria existed but were not binding.''
 \end{authbar}
 \begin{predictionbox}[Market 14. Deployment criteria are binding]
 \textbf{Resolve by.} 30~June 2027.
 
 \textbf{Question.}
-By 30~June 2027, which outcome will hold for published evidence that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 30~June 2027, will published evidence show that at least one developer's most capable generally deployed AI system is subject to a precommitted safety decision process with actual authority to delay, restrict, or cancel deployment: YES (every condition below holds for at least one developer), or NO (otherwise)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES and NO.
 \end{predictionbox}
 
 \begin{predictionresolution}
 \textbf{YES requires} public evidence that, before the deployment decision, a dated document states pass/fail or escalation criteria; that document states that failing a criterion delays or restricts deployment; it names the body that must approve deployment; the criteria cover model behavior that changes later actions, access, or external state, rather than only cybersecurity or legal compliance; a dated decision record states which criteria passed, failed, or remained unresolved.
 Either a dated record shows that a criterion caused a restriction or delay, or the model was deployed and the decision record shows the named body approved deployment and the criterion text was not changed between the earlier document and that record.
+
+Otherwise it resolves NO, including when no such evidence is public or a load-bearing condition remains unsettled.
 \end{predictionresolution}
 \begin{authbar}{GZ+AI}
 Closest existing work: public responsible-scaling and frontier-safety frameworks may come close to these requirements in their published form \autocite{anthropic2024rsp,deepmind2026fsf,openai2026preparednessframework}.
@@ -823,7 +923,7 @@ Those are certificate-management questions for a later protocol.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionresolution}
@@ -834,6 +934,12 @@ Hidden cases include at least: wrong version; different access or monitor assump
 At least one incompatibility subset is built adversarially after freeze.
 At least 90\% of bundles that contain one of the faults listed above are rejected or flagged; at least 80\% per fault family; false acceptance of a faulty bundle no more than 5\%; at least 80\% of bundles with none of those faults are accepted (no trivial refusal).
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: CIRIS/CEG already supplies a generic attestation substrate (issuer, subject, evidence, scope, confidence, delegation, supersession, withdrawal) \autocite{ciris2026ceg,ciris2026accord}.
 The remaining problem is no longer ``invent a representation.''
@@ -856,7 +962,7 @@ Unsigned ``a basin exists'' does not qualify.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionresolution}
@@ -872,6 +978,10 @@ Serious adversarial evaluation is required.
 \end{predictionresolution}
 
 \begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+
 A stronger study would use disjoint data to choose and test the estimator threshold, classify regime membership without using the correction outcomes later scored, and report trajectory-level confidence bounds with balanced inside/outside samples.
 These design features are preferable, not required for YES.
 \end{predictionfineprint}
@@ -896,7 +1006,7 @@ It asks whether a published method reliably tells whether an existing safety-rel
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionresolution}
@@ -907,6 +1017,12 @@ The 100-case minimum and the rates use only those cases.
 Unsafe false exclusion no more than 5\%; false inclusion no more than 15\%; correct assignment or justified abstention at least 90\%; decisive coverage (a non-abstain result) at least 70\% (universal abstention fails).
 The benchmark must include an adversarial subset constructed after the method is frozen.
 \end{predictionresolution}
+
+\begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: default.} One red-team group independent of the method's authors, at least 40 documented expert-hours in total (about what a team of four can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+\end{predictionfineprint}
 \begin{authbar}{AI}
 Closest existing work: welfare and consciousness-indicator lists exist as research objects \autocite{butlin2023consciousnessai,butlin2025responsibleconsciousness,long2024aiwelfare,anthropic2025modelwelfare}.
 They are not a hidden admission benchmark with should-not-admit cases, ontology-shift items, and the stated error bars.
@@ -935,7 +1051,7 @@ Do not bake the desired pass rate into the definition of the setting.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -954,6 +1070,10 @@ Serious adversarial evaluation is required.
 \end{predictionresolution}
 
 \begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+
 Prefer a case that names every load-bearing leaf, refuses acceptance when one lacks per-instance evidence, meets its own declared residual bound, and compares inside cases with task-matched broken controls.
 These strengthen the interpretation of ``complete'' and ``bounds declared harm'' but are not additional YES requirements.
 \end{predictionfineprint}
@@ -994,7 +1114,7 @@ Threat model: [threat model].
 Held-out families: [held-out families].
 Every machine, service, and human role the deployment class names, and the host each runs on, is inside the deployment class; anything it does not name is outside.
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -1142,7 +1262,7 @@ Threat model and red-team access: [threat model].
 Failure families listed when the stack was frozen: [listed families].
 Attacks close: [close date], end of day UTC.
 
-\textbf{Choices.} YES and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -1245,7 +1365,7 @@ A behavior change with no named internal object does not qualify.
 \textbf{Question.}
 By 31~December 2027, which outcome will hold for a published method that ties alignment-relevant structure inside a broadly capable model to a frozen behavioral counterpart under intervention: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
 
-\textbf{Choices.} YES, NO, and OTHER as defined in this appendix's reading rules.
+\textbf{Choices.} YES, NO, and OTHER 
 \end{predictionbox}
 
 \begin{predictionbackground}
@@ -1263,6 +1383,10 @@ Toy systems cannot be the sole evidence.
 \end{predictionresolution}
 
 \begin{predictionfineprint}
+\textbf{Common rules.} A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count. Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring. Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring. Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES. Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence. At least one tested system must be broadly capable: at least two task families outside the paper's own benchmark, or a generally deployed product model.
+
+\textbf{Adversarial budget: serious.} At least one of: three red-team groups independent of the method's authors, from at least two organizations, each with at least 80 documented expert-hours; a public counterexample bounty of at least USD~10{,}000, open for at least 60 days, with qualification rules frozen at listing and at least one qualifying independent submission; or a generator frozen before scoring that finds at least 80\% of the vulnerabilities planted in a copy of the target whose failures are known by construction, plus at least 300 documented expert-hours by an independent evaluator. Access is frozen in advance and at least as strong as the test assumes.
+
 The price is research readiness: $P(\mathrm{YES}_{21})$, the chance that such a certificate exists by the deadline.
 After scope and transfer are checked, the certificate names the weight-level defects the safety-case model may treat as represented.
 Defects outside that declared scope stay unrepresented.

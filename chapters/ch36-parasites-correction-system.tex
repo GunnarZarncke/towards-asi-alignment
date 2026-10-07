@@ -69,7 +69,7 @@ C_{\mathrm{raw}}(H \to X \mid Y) < C_{\mathrm{raw}}(H \to X \mid \neg Y).
 \]
 Third, \(Y\) persists partly because \(H\) lacks sufficient modeling capacity, access, or incentive to distinguish \(Y\)'s effects from legitimate correction work:
 \[
-P(\mathrm{detect}(Y)\mid H) < \theta.
+P(\mathrm{detect}(Y)\mid H) < \theta_{\mathrm{det}}.
 \]
 These conditions are deliberately broad. A parasite need not be adversarial in the ordinary sense. It may be a local adaptation that improves one metric while degrading the correction process as a whole. For example, a model-evaluation team might optimize for producing impressive safety reports because those reports unlock funding and public trust. The reports may not be false, but if they select for legible, easy-to-measure risks while leaving the most dangerous latent dynamics unmeasured, the reporting process has become partly parasitic on correction.
 
@@ -265,7 +265,7 @@ It can distort the grounding and correction conditions that the update notation 
 \[
 \mathrm{ValidRef}\downarrow,\quad
 \mathrm{GroundingViable}\downarrow,\quad
-\vec{\mathrm{CCI}}\not\succeq\vec\theta,
+\vec{\mathrm{CCI}}\not\succeq\vec{\theta}_{\mathrm{corr}},
 \]
 for example by making future deliberation less informed, less representative, less reversible, or more dependent on the system being evaluated. In older shorthand this looks like \(U_H\to\tilde U_H\). Operationally, it is a change in evidence integrity, deliberative access, process freedom, institutional independence, or the grounding relation that lets value-relevant reality reach correction.
 
