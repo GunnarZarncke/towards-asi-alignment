@@ -19,6 +19,7 @@ roles:
   - Independent evaluators and red teams
 related:
   - predictions/overview
+  - external-services/ai-safety-claims
   - chapters/appP
 external:
   - label: "Resolution-gap analysis"

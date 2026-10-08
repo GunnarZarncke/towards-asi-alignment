@@ -225,6 +225,7 @@ async function main() {
       title: "Dated Predictions on the Bridges",
       related: [
         "predictions/overview",
+        "external-services/ai-safety-claims",
         "mb1-boundary-estimator-soundness",
         "mb4-correction-legitimacy",
         "mb6-selection-and-basin-stability"

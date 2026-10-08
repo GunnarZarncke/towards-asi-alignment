@@ -56,7 +56,8 @@ const CARD_KIND_LABELS: Record<string, string> = {
   news: "News",
   agenda: "Field agenda",
   funding: "Funding",
-  prediction: "Prediction"
+  prediction: "Prediction",
+  "external-service": "External service"
 };
 
 const NAV_LANDING_PATHS = new Set([

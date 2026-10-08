@@ -16,7 +16,8 @@ export const CARD_TYPES = [
   "agenda",
   "essay",
   "funding",
-  "prediction"
+  "prediction",
+  "external-service"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -112,6 +113,11 @@ export const TYPE_META: Record<
     title: "Prediction",
     description:
       "Dated 2027 operational contract on a book bridge — public YES/NO bars, not bridge discharge or a joint safety case."
+  },
+  "external-service": {
+    title: "External service",
+    description:
+      "Third-party site or registry the book links to for listing, resolution, or evaluation — not manuscript canon."
   }
 };
 

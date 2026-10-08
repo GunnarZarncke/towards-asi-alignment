@@ -649,6 +649,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     "predictionOverview: true",
     formatRelatedYaml([
       "chapters/appP",
+      "external-services/ai-safety-claims",
       "mb1-boundary-estimator-soundness",
       "mb4-correction-legitimacy",
       "mb6-selection-and-basin-stability",
@@ -829,12 +830,7 @@ for (const market of markets) {
   const section = sectionByNumber.get(market.number);
   const box = section ? extractPredictionBox(section.body, convertCtx) : {};
   const priorTest = section ? extractPriorTest(section.body, convertCtx) : "";
-  const md = marketCardMarkdown(
-    market,
-    { ...box, priorTest },
-    bridgeCardSlugs,
-    registry
-  );
+  const md = marketCardMarkdown(market, { ...box, priorTest }, bridgeCardSlugs, registry);
   await writeFile(path.join(predictionCardsDir, `${market.id}.md`), md, "utf8");
   cardCount += 1;
 }

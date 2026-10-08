@@ -105,6 +105,7 @@ export function cardCatalogSections(
     { title: "Field projections", id: "field-projections", cards: fieldProjections },
     { title: "Field agendas", id: "field-agendas", cards: byType("agenda") },
     { title: "Funding opportunities", id: "funding", cards: byType("funding") },
+    { title: "External services", id: "external-services", cards: byType("external-service") },
     { title: "Experiments", id: "experiments", cards: experiments },
     { title: "Predictions", id: "predictions", cards: byType("prediction") },
     { title: "Objections & caveats", id: "objections", cards: byType("objection") },

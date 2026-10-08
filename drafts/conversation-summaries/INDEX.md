@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-08 | **External-services claims card** — Hand-authored ai-safety-claims.com companion card; `external-service` type; related from predictions overview. | [2026-10-08-external-services-claims-card.md](2026-10-08-external-services-claims-card.md) |
 | 2026-10-08 | **Prediction background split** — Book `authbar` vs Metaculus `predictionbackground`; trimmed listing titles markets 1–18 except 14. | [2026-10-08-prediction-background-split.md](2026-10-08-prediction-background-split.md) |
 | 2026-10-08 | **snapshot-0 TSA pin** — Pin `snapshotTag: snapshot-0` after claims-repo tag; update Appendix P, hub, cards, eval plan. | [2026-10-08-snapshot-0-tsa.md](2026-10-08-snapshot-0-tsa.md) |
 | 2026-10-08 | **Predictions registry links** — Versioned claims-registry URLs from `registrySite`; card LaTeX link fixes; Market 14 readability; Markets 19–21 full-box until Phase 4. | [2026-10-08-predictions-registry-links.md](2026-10-08-predictions-registry-links.md) |
