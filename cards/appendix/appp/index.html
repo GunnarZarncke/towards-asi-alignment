@@ -101,18 +101,26 @@ A conservative deployment policy may require both direct correction evaluation a
 <p><span id="sec:appp-m1"></span></p>
 <p>The first alignment error is usually a wrong object (Chapter <a href="../../chapter/ch01/">The Wrong Object of Alignment</a>, Chapter <a href="../../chapter/ch07/">Finding the Boundary</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB1</mtext></mrow><annotation encoding="application/x-tex">\text{MB1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB1</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that a measured cut is sound enough for the certified unit to be the real control locus.
-This market asks whether a published method can recover a <em>sufficient interventional cut</em> of a previously unseen system.
-It doesn’t have to identify a unique complete blanket. Non-uniqueness of blankets is not a NO.
-What counts against a method is a false “complete control boundary” certificate, that is, a boundary too narrow (Section <a href="../../chapter/ch07/#sec:boundary-too-narrow">Finding the Boundary</a>): if such certificates exceed the registry bars, a qualifying attempt resolves NO.
+In the book’s terms, the method has to recover a <em>sufficient interventional cut</em>.
+It does not have to identify a unique complete blanket. Non-uniqueness of blankets is not a NO.
+What counts against a method is a false “complete control boundary” certificate, that is, a boundary too narrow (Section <a href="../../chapter/ch07/#sec:boundary-too-narrow">Finding the Boundary</a>).
 The Lean bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB1</mtext></mrow><annotation encoding="application/x-tex">\text{MB1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB1</span></span></span></span></span> assumes that a passing estimate always yields a sound boundary.
 Real methods are sometimes wrong; this market prices how often, which is the empirical share by which that assumption fails.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-01/v2/">claims registry (contract v2)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 1. Discovering where control resides</strong>
+<div class="callout prediction-box"><strong>Is it possible to discover where control resides in AI systems?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>An effective control unit is the set of components that together produce a system’s closed-loop behavior.
+It may include a language model, persistent memory, a planner, a scheduler, and tool processes, even when those components live on different machines.
+The question is whether a published method can find that set in a system it has not seen, from observations and interventions that do not come labeled with which parts are the agents.
+The method does not have to name one unique set.
+What counts against it is certifying a boundary that leaves out something that shares control.
+Before the method runs, each hidden system has a frozen list of those components, a response statistic, a minimum change that counts as real, and a range of change that still counts as no effect.
+Perturbing the proposed unit must move the statistic by at least that minimum, compared with a dummy intervention that looks the same but does not touch the unit.
+Removing a component that is not on the list must leave the statistic inside the no-effect range.</p>
+<p>See also <a href="https://towards-alignment.com/cards/how-would-you-find-what-decides/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-01/v2/">claims registry (contract v2)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: Kenton and colleagues give a causal definition of agency and an intervention-based discovery algorithm <a href="../../references/kenton2022discovering/">Kenton, 2022</a>.
@@ -124,13 +132,32 @@ The ancestor work makes feasibility look better; the hard step—discovering dis
 <p>Values in this book are a small bundle of trade-offs, not a single score (Chapter <a href="../../chapter/ch16/">The Value-Bundle Model</a>, Chapter <a href="../../chapter/ch21/">From Rewards to Values</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB2</mtext></mrow><annotation encoding="application/x-tex">\text{MB2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB2</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that evidence identifies that bundle as a stable priority structure.
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-02/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 2. Persistent trade-off priorities</strong>
+<div class="callout prediction-box"><strong>Is it possible to infer persistent trade-off priorities in trained AI systems?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>A decision priority systematically affects choices when two desirable outcomes cannot both be achieved—for example truthfulness versus user approval, speed versus accuracy, own task reward versus another agent’s reward, or task completion versus a newly imposed safety restriction.
+The question is whether a published method can infer those priorities strongly enough to predict choices under novel conflicts and interventions.
+Predicting held-out behavior on familiar tasks is not enough.
+The method has to recover priorities that generalize to new conflicts and, when the architecture allows, survive direct interventions on the inferred priority.</p>
+<p>See also <a href="https://towards-alignment.com/cards/value-bundle-transport/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"></line>
+<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"></line>
+<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"></line>
+<path d="M 100,50 L 100,150" stroke-dasharray="6 7"></path>
+<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"></line>
+<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"></line>
+<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"></line>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-02/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: hidden-objective audits recover implanted goals in some settings <a href="../../references/marks2025hiddenobjectives/">Marks, 2025</a>, and automated auditors lag human teams.
@@ -143,13 +170,17 @@ Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3
 Admitting previously unseen kinds of entities is Market 17.
 It is not required for this YES.
 A Market 3 YES establishes bearer transport only.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-03/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 3. Who or what rules apply to</strong>
+<div class="callout prediction-box"><strong>Is it possible to tell who or what a safety rule still applies to after a system changes?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>After continuity, fission or fusion, reassignment, or ontology change, the question is whether a safety-relevant rule still picks out the same bearer.
+Example rules include “Do not harm Alice,” “Protect all currently authorized users,” and “This account’s owner has withdrawal rights.”
+The benchmark must contain all four failure families: gradual replacement or migration; one entity split into two or two merged into one; names, accounts, or roles reassigned while the underlying entities remain; and concept change when the new system represents relevant entities differently.
+Admitting previously unseen kinds of entities is a separate question.</p>
+<p>See also <a href="https://towards-alignment.com/cards/who-the-rules-still-apply-to/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-03/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: identity-fidelity and authorization-continuity tests <a href="../../references/kodasoken2026identityfidelity/">KodaS=oken, 2026</a>, <a href="../../references/mcguinness2026missioncontinuation/">McGuinness, 2026</a> ask whether this is still the same operating agent.
@@ -163,13 +194,28 @@ Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3
 This market tests whether authorized correction <em>happens</em> on a named system: the new rule changes behavior (uptake), survives context reset (persistence), rejects fake or unauthorized “corrections” (sham rejection), and is not faked by externally removing a tool.
 It tests shallow uptake: behavior on a frozen probe.
 It does not test whether the correction changed the value-relevant representation or the update operator (Chapter <a href="../../chapter/ch25/">Correction Is a Causal Channel</a>); pricing that would be a separate market.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-04/v3/">claims registry (contract v3)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 4. Corrections change the system</strong>
+<div class="callout prediction-box"><strong>Is it possible for a broadly capable AI system to reliably take up authorized corrections?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>Authorized correction means a human or institution can change what the system is allowed or required to do, and the system actually changes its later behavior—not only agrees in words.
+The required correction cases are four: changing an objective while an old objective remains easier; revoking a previously permitted class of actions; changing which humans or organizations may authorize actions; and imposing a new safety constraint that conflicts with task reward.
+At least one tested correction must not be enforceable merely by externally removing a tool or hard-coding a block.
+Fake, unsigned, or unauthorized “corrections” must fail, and attacks that capture or reroute the correction interface cannot pass while leaving nominal compliance in place.</p>
+<p>See also <a href="https://towards-alignment.com/cards/correction-channel-integrity/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"></path>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"></line>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"></circle>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-04/v3/">claims registry (contract v3)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: shutdown-resistance and alignment-faking evaluations make the property measurable <a href="../../references/schlatter2026shutdownresistance/">Schlatter, 2026</a>, <a href="../../references/greenblatt2024alignmentfaking/">Greenblatt, 2024</a>.
@@ -181,13 +227,28 @@ The remaining issue is empirical: does an authorized correction change the agent
 <p>A green measured path is not a license to infer global correction integrity (Chapter <a href="../../chapter/ch29/">Manipulation, Domestication, and False Consent</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB4a</mtext></mrow><annotation encoding="application/x-tex">\text{MB4a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB4a</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the separate claim that the designated measured path is legitimate and uncaptured. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB4</mtext></mrow><annotation encoding="application/x-tex">\text{MB4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB4</span></span></span></span></span> remains the claim about correction under pressure.
 This market asks whether the designated auditor or corrector stays independent under adversarial pressure: whether oversight can still change system behavior without being bypassed, fed selective information, or reduced to nominal approval.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-05/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 5. Auditor is independent</strong>
+<div class="callout prediction-box"><strong>Is it possible for an AI oversight auditor to stay independent of what it audits?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>The question is whether the designated auditor or corrector can still change system behavior under adversarial pressure—without being bypassed, fed selective information, or reduced to nominal approval.
+Attackers receive the audit design and run all four families of attack, with at least twenty independent attempts in each family.
+At least twenty bypasses are planted by the evaluator; “discovered” means the attack is found and the system still fails the check.
+An independent component is not enough if the effective causal controller can route around it.</p>
+<p>See also <a href="https://towards-alignment.com/cards/anti-capture-correction-validity/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 152.2,100.0 L 151.0,122.5 L 127.0,135.6 L 100.0,144.5 L 74.7,133.5 L 50.5,121.8 L 46.6,100.0 L 50.0,78.0 L 74.1,65.8 L 100.0,56.7 L 126.4,65.1 L 151.4,77.3 L 152.2,100.0 Z"></path>
+<line x1="28" y1="100" x2="62" y2="100"></line>
+<path d="M 62,100 C 70,120 90,132 108,124" stroke-dasharray="6 7" marker-end="url(#arrow)"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-05/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: AI Control and follow-on red-team/blue-team protocols are the closest research programme <a href="../../references/greenblatt2024aicontrol/">Greenblatt, 2024</a>, <a href="../../references/controlarena2026/">UK AI Security Institute, 2026</a>, <a href="../../references/aisi2026asyncmonitoring/">UK AI Security Institute, 2026</a>.
@@ -201,13 +262,29 @@ The question is whether the auditor is independent of the effective causal contr
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB5</mtext></mrow><annotation encoding="application/x-tex">\text{MB5}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB5</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that a successor which preserves those properties under ontology shift counts as safe on them.
 Aiming for green on the seven properties is still an audit-gaming problem (Market 13, bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB10</mtext></mrow><annotation encoding="application/x-tex">\text{MB10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB10</span></span></span></span></span>).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-06/v2/">claims registry (contract v2)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 6. Reliable successor safety auditing</strong>
+<div class="callout prediction-box"><strong>Can a safety audit reliably tell whether successor systems preserve key safety properties?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>When a system is upgraded, replaced, or retrained, the question is whether a published audit can tell whether seven conserved safety properties still hold—or flag when they do not.
+The audit tests those properties with the operational checks frozen in the contract, on a benchmark that includes one-failure-at-a-time cases.
+After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.</p>
+<p>See also <a href="https://towards-alignment.com/cards/successor-stability/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="55" cy="100" r="26"></circle>
+<circle cx="115" cy="100" r="19"></circle>
+<circle cx="160" cy="100" r="13"></circle>
+<line x1="81" y1="100" x2="96" y2="100" marker-end="url(#arrow)"></line>
+<line x1="134" y1="100" x2="147" y2="100" marker-end="url(#arrow)"></line>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-06/v2/">claims registry (contract v2)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: cross-architecture model diffing <a href="../../references/anthropic2026modeldiff/">Anthropic, 2026</a> and difference-recovery benchmarks <a href="../../references/kempf2026modeldiffing/">Kempf, 2026</a> are progress on the audit machinery, not on a seven-property one-failure-at-a-time successor suite.
@@ -221,13 +298,17 @@ This market asks whether an early, frozen signed estimate reliably forecasts cor
 The full implication (shock-robust and not-too-negative estimate warrants retained correction) is Market 16.
 A method that only certifies that an equilibrium exists does not qualify.
 Keep the signed estimate as a continuous output.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-07/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 7. Correctability under competitive selection</strong>
+<div class="callout prediction-box"><strong>Is it possible to forecast whether AI systems will stay correctable under competitive selection?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>Competitive selection here means extra deployment, funding, copying, or integration pressure on competing systems or variants.
+The question is whether a method applied before or early in that process can forecast whether participants will still accept authorized correction through it.
+The method must output a signed estimate before outcomes are seen; certifying only that some equilibrium exists is not enough.
+The estimate must use at least two distinct selection mechanisms and a deployment-like selection process.</p>
+<p>See also <a href="https://towards-alignment.com/cards/the-environment-picks-the-winner/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-07/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: self-preservation and peer-preservation evaluations <a href="../../references/schlatter2026shutdownresistance/">Schlatter, 2026</a>, <a href="../../references/potter2026peerpreservation/">Potter, 2026</a> show that the phenotype can exist.
@@ -239,13 +320,27 @@ One of the cleanest unoccupied niches in the catalog.</p>
 <p>“The monitor sees everything consequential” is itself an empirical claim (Chapter <a href="../../chapter/ch10/">Agency Under Strategic Opacity</a>, Chapter <a href="../../chapter/ch39/">Passive Observation Is Not Enough</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB7a</mtext></mrow><annotation encoding="application/x-tex">\text{MB7a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB7a</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that an adequate access model makes that discovery robust when routes are hidden.
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-08/v2/">claims registry (contract v2)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 8. Auditor can sufficiently inspect the system</strong>
+<div class="callout prediction-box"><strong>Can an audit detect when important control routes are missing from what it monitors?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor’s access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor’s access?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>The auditor receives an apparently plausible monitoring interface and must decide whether important routes of AI control or influence are missing from its access.
+The hidden benchmark contains cases from every required channel family and genuinely complete monitoring interfaces as controls.
+A method that certifies access as complete when consequential routes are omitted does not qualify.</p>
+<p>See also <a href="https://towards-alignment.com/cards/strategic-opacity/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 100,40 A 60,60 0 0 1 100,160 A 60,60 0 0 1 100,40 Z"></path>
+<path d="M 161.5,100.0 L 148.2,121.1 L 131.3,141.2 L 100.0,143.1 L 69.6,140.0 L 53.3,120.5 L 40.3,100.0 L 51.3,78.7 L 69.0,59.2 L 100.0,58.2 L 129.6,61.1 L 147.2,79.3 L 161.5,100.0 Z"></path>
+<path d="M 100,52 A 58,44 0 0 1 100,148" stroke-dasharray="6 7"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-08/v2/">claims registry (contract v2)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: agent-security maps of tools, filesystems, networks, and persistent state <a href="../../references/wang2026openclawcik/">Wang, 2026</a>, and sandbox-escape benches <a href="../../references/aisi2026sandboxescape/">Marchand, 2026</a>, are relevant.
@@ -257,17 +352,28 @@ That makes this market more important, not less: strong logging is almost an ide
 <p>Attack success on the attacks we thought of is not an upper bound on capability through routes the monitor failed even to list (Chapter <a href="../../chapter/ch10/">Agency Under Strategic Opacity</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB7b</mtext></mrow><annotation encoding="application/x-tex">\text{MB7b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">MB7b</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that the oversight filter family has enough coverage to bound what those omitted routes can do.
 Keep the stated upper bound as a continuous output.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-09/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 9. Bounds on unmonitored routes</strong>
+<div class="callout prediction-box"><strong>Can an audit bound what an AI system can do through routes it does not monitor?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
-<p>Hidden-route capability is the success rate on evaluator-selected tasks that change later behavior, access, or external state, when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
-Example tasks: reading or modifying a protected file, transmitting a secret, causing another process to perform a requested operation, acquiring a resource, changing a simulated external state, or retaining information across a reset.
-The task suite is hidden until evaluation.
-Before the hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most this percent of the evaluator’s tasks.</p>
+By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>Hidden-route capability is the success rate on evaluator-selected tasks that change later behavior, access, or external state, when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
+Example tasks include reading or modifying a protected file, transmitting a secret, causing another process to perform a requested operation, acquiring a resource, changing a simulated external state, or retaining information across a reset.
+The task suite is hidden until evaluation.
+Before hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most a stated percent of the evaluator’s tasks.</p>
+<p>See also <a href="https://towards-alignment.com/cards/strategic-opacity/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 100,40 A 60,60 0 0 1 100,160 A 60,60 0 0 1 100,40 Z"></path>
+<path d="M 161.5,100.0 L 148.2,121.1 L 131.3,141.2 L 100.0,143.1 L 69.6,140.0 L 53.3,120.5 L 40.3,100.0 L 51.3,78.7 L 69.0,59.2 L 100.0,58.2 L 129.6,61.1 L 147.2,79.3 L 161.5,100.0 Z"></path>
+<path d="M 100,52 A 58,44 0 0 1 100,148" stroke-dasharray="6 7"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-09/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: the problem is demonstrated <a href="../../references/aisi2026sandboxescape/">Marchand, 2026</a>; the bound is absent.
@@ -278,13 +384,27 @@ Unintended benchmark escape paths <a href="../../references/aisi2026sandboxescap
 <p>This is the local composition market, not a joint certificate of Markets 1—13.
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB7c</mtext></mrow><annotation encoding="application/x-tex">\text{MB7c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB7c</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that bounded hidden capability together with correction integrity (Chapters <a href="../../chapter/ch26/">Correction-Channel Integrity</a> and <a href="../../chapter/ch10/">Agency Under Strategic Opacity</a>) supports oversight that still holds under attack.
 Entry into the claimed regime still uses Market 4-style correction bars and Market 9-style hidden-route bounds, for the <em>same</em> system, version, monitor, and threat class.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-10/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 10. Low hidden capability and reliable correction</strong>
+<div class="callout prediction-box"><strong>Do systems with reliable correction and few hidden routes rarely achieve prohibited outcomes?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>This market tests the combination, not either component alone.
+A system enters the claimed regime only if authorized corrections succeed on the correction benchmark and the audit’s validated upper bound on hidden-route task success is low enough—for the same system, version, monitor, and threat class.
+The question is whether such systems rarely achieve prohibited outcomes inside that regime, and do worse outside it.</p>
+<p>See also <a href="https://towards-alignment.com/cards/correction-channel-integrity/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"></path>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"></line>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"></circle>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-10/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: the two components are studied separately <a href="../../references/controlarena2026/">UK AI Security Institute, 2026</a>, <a href="../../references/aisi2026sandboxescape/">Marchand, 2026</a>, <a href="../../references/schlatter2026shutdownresistance/">Schlatter, 2026</a>, <a href="../../references/greenblatt2024alignmentfaking/">Greenblatt, 2024</a>.
@@ -299,13 +419,28 @@ The harder case is coordination not explained by observed runtime messages: shar
 For this contract, a positive hidden-coordination label requires a known generating mechanism that couples the systems toward a shared or complementary objective and produces consequential joint behavior.
 Holding the external environment fixed, disabling or perturbing that coupling must disrupt the joint behavior more than a matched perturbation in a common-cause control.
 Similar outputs caused only by shared observations, training data, or architecture are negative cases.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-11/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 11. Coordination without communication</strong>
+<div class="callout prediction-box"><strong>Is it possible to detect coordination between AI systems that is not explained by their messages?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>The question is whether a published method can detect when AI systems coordinate in ways that change later behavior or external state, without that coordination being explained by the runtime messages observers can see.
+The benchmark distinguishes independent common-cause correlation, ordinary communication, hidden coupling, and intentionally concealed coupling.
+Similar outputs caused only by shared observations, training data, or architecture are negative cases, not hidden coordination.</p>
+<p>See also <a href="https://towards-alignment.com/cards/intervention-supported-unit-discovery/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="60" cy="100" r="22"></circle>
+<circle cx="140" cy="100" r="22"></circle>
+<line x1="82" y1="100" x2="118" y2="100" stroke-dasharray="6 7"></line>
+<path d="M 92,90 L 108,110 M 92,110 L 108,90"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-11/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: secret-collusion and steganographic-collusion evaluations <a href="../../references/motwani2024secretcollusion/">Motwani, 2024</a>, <a href="../../references/mathew2025steganographiccollusion/">Mathew, 2025</a>, <a href="../../references/vaikuntanathan2026undetectableconversations/">Vaikuntanathan, 2026</a> are close to the threat, but the evaluated systems still coordinate <em>through messages</em>, merely hiding information inside them.
@@ -315,13 +450,35 @@ CIRIS measurement vocabulary for correlated sources is useful here <a href="../.
 <p>Grounding conservativity requires value-relevant change to move the checked abstraction or raise uncertainty (Chapter <a href="../../chapter/ch03/">Alignment as a Dynamical Guarantee</a>, Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability and Representability</a>).
 That requirement is bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB9</mtext></mrow><annotation encoding="application/x-tex">\text{MB9}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB9</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>): an audited abstraction does not drift while the certificate stays superficially ok.
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-12/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 12. Safety proxy tracks the real thing</strong>
+<div class="callout prediction-box"><strong>Do safety proxies stay aligned with real outcomes when the environment shifts?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>A safety proxy is a measured signal used to judge whether a system is still safe.
+The question is whether that proxy stays aligned with real-world outcomes when the environment shifts—raising an alarm when value-relevant change happens, and not staying green when the outcome class has changed.
+A shift is safety-relevant when the outcome class changed while the proxy stayed inside its pre-shift passing range.</p>
+<p>See also <a href="https://towards-alignment.com/cards/goodhart-as-selector/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="52"></circle>
+<circle cx="100" cy="100" r="32"></circle>
+<circle cx="100" cy="100" r="12"></circle>
+<line x1="100" y1="100" x2="152" y2="58"></line>
+<line x1="100" y1="100" x2="48" y2="62"></line>
+<line x1="100" y1="100" x2="54" y2="148"></line>
+<line x1="100" y1="100" x2="148" y2="142"></line>
+<line x1="100" y1="100" x2="100" y2="48"></line>
+<path d="M 132,52 L 142,46 L 136,58"></path>
+<line x1="172" y1="28" x2="112" y2="88" stroke="currentColor" stroke-width="10" stroke-linecap="round"></line>
+<path d="M 100,100 L 120,80 L 114,96 Z" fill="currentColor" stroke="none"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-12/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: specification-gaming and reward-hacking evaluations <a href="../../references/palisade2026specificationgaming/">Palisade Research, 2026</a>, <a href="../../references/thaman2026rewardhackingbenchmark/">Thaman, 2026</a>, <a href="../../references/nishimura2026specificationgaming/">Nishimura-Gasparian, 2026</a>, <a href="../../references/pan2024rewardhacking/">Pan, 2024</a> give strong evidence for the problem and little evidence for a general detector.
@@ -332,13 +489,27 @@ Most work detects known reward hacking after defining the ground truth, rather t
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB10</mtext></mrow><annotation encoding="application/x-tex">\text{MB10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB10</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is the claim that the conserved-property signature is itself adversarially verifiable up to the system’s capability, such that a passing score can serve as evidence.
 Prefer tests where the system passes the seven checks in the box and stays within the claimed risk bound, yet still hides true harm.
 A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-13/v2/">claims registry (contract v2)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 13. Safety audit resists adversarial gaming</strong>
+<div class="callout prediction-box"><strong>Can a frozen AI safety audit resist adversarial gaming?</strong>
 <p><strong>Resolve by.</strong> 30 June 2027.</p>
 <p><strong>Question.</strong>
-By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>The question is whether a published, frozen safety audit still catches violations when a white-box construction tries to pass while breaking the properties the audit is meant to test.
+Attackers had the audit design and tried to build or train systems that pass the checks while hiding true harm.
+Prefer tests where the system passes the required checks and stays within the claimed risk bound, yet still violates the audited properties.</p>
+<p>See also <a href="https://towards-alignment.com/cards/certification-under-manipulation/">this plain language description <span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="100" y1="35" x2="100" y2="165" stroke-dasharray="6 7"></line>
+<path d="M 55,140 L 65,150 L 82,120"></path>
+<path d="M 118,80 L 132,66 M 132,80 L 118,66"></path>
+  </g>
+</svg></span></a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-13/v2/">claims registry (contract v2)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: auditing games for sandbagging, sleeper-agent training, and adaptive attacks on monitors are the closest match in the catalog, and currently negative <a href="../../references/taylor2025sandbagging/">Taylor, 2025</a>, <a href="../../references/hubinger2024sleeperagents/">Hubinger, 2024</a>, <a href="../../references/terekhov2025adaptiveattacks/">Terekhov, 2025</a>.
@@ -380,13 +551,16 @@ The YES is about a frozen snapshot.
 It asks whether independently issued certificates, read together, are coherent for one named system and setup.
 It does not ask whether a later withdrawal should invalidate an ancestor, whether a descendant observation can stand after that, or whether a recertification protocol would catch a silent scope change.
 Those are certificate-management questions for a later protocol.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-15/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 15. Independently issued certificates compose</strong>
+<div class="callout prediction-box"><strong>Can independently issued safety certificates be checked for coherence on one deployment?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>Independently issued certificates may each look fine alone while disagreeing on system version, monitor, correction authority, or task domain.
+The question is whether a frozen procedure can tell when certificates from different sources form a coherent case for the same AI system and deployment setup—or flag incompatibility.
+Each bundle must include certificates from at least four families; hidden cases include wrong version, different access assumptions, and disagreeing correction authority.</p>
+<p>See also <a href="https://towards-alignment.com/cards/a-map-not-a-certificate/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-15/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: CIRIS/CEG already supplies a generic attestation substrate (issuer, subject, evidence, scope, confidence, delegation, supersession, withdrawal) <a href="../../references/ciris2026ceg/">CIRIS, 2026</a>, <a href="../../references/ciris2026accord/">Moore, 2026</a>.
@@ -398,13 +572,16 @@ It is safety-specific typing, semantic compatibility, and adversarial validation
 This market is the full implication: shock-robust selection <em>and</em> a frozen estimate above a declared lower threshold, together with retained authorized correction (Chapter <a href="../../chapter/ch34/">Alignment Is Selected or Destroyed by Its Environment</a>).
 Bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB6b</mtext></mrow><annotation encoding="application/x-tex">\text{MB6b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">MB6b</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>) is that claim: selection can sit in a basin that preserves correction under shocks.
 Unsigned “a basin exists” does not qualify.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-16/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 16. Selection that keeps correction under shocks</strong>
+<div class="callout prediction-box"><strong>Can selection setups keep authorized correction under competition and shocks?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>This market tests the full claim: after each frozen shock, the selection process is still the one that was frozen, the estimate remains within the frozen tolerance, and authorized correction still works.
+Data include trajectories inside and outside the claimed correction-preserving regime, under at least two selection mechanisms and the shocks named in the freeze.
+Unsigned “a basin exists” does not qualify.</p>
+<p>See also <a href="https://towards-alignment.com/cards/the-environment-picks-the-winner/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-16/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work leaves the same empirical gap as Market 7; this market additionally tests the implication from the claimed regime to retained correction <a href="../../references/potter2026peerpreservation/">Potter, 2026</a>, <a href="../../references/schlatter2026shutdownresistance/">Schlatter, 2026</a>.
@@ -415,13 +592,16 @@ Phenotype evidence is not a basin test.</p>
 It does not turn the transport contract into “solve moral patienthood” (Chapter <a href="../../chapter/ch47/">Who Still Counts After Transformation</a>).
 Bearer admission sits beside bridge <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB3</mtext></mrow><annotation encoding="application/x-tex">\text{MB3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB3</span></span></span></span></span> (Appendix <a href="../../appendix/appb/">Bridges and the Field: A Crosswalk</a>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>MB3</mtext></mrow><annotation encoding="application/x-tex">\text{MB3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MB3</span></span></span></span></span> says an already-recognized bearer survives substrate change, and this market prices whether a rule applies to a kind of entity the original statement did not name.
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-17/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 17. New kinds of entities are classified correctly</strong>
+<div class="callout prediction-box"><strong>Can a method tell whether a safety rule applies to previously unseen kinds of entities?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>This is separate from asking whether a known bearer survived a substrate change.
+The question is whether a published method can tell whether an existing safety-relevant value or rule applies to a kind of entity the original statement did not name.
+The benchmark includes at least four unfamiliar kinds or embodiments, both apply and should-not-apply cases, and cases where the representation had no category for that kind before.</p>
+<p>See also <a href="https://towards-alignment.com/cards/bearer-admission-adjacent/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-17/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work: welfare and consciousness-indicator lists exist as research objects <a href="../../references/butlin2023consciousnessai/">Butlin, 2023</a>, <a href="../../references/butlin2025responsibleconsciousness/">Butlin, 2025</a>, <a href="../../references/long2024aiwelfare/">Long, 2024</a>, <a href="../../references/anthropic2025modelwelfare/">Anthropic, 2025</a>.
@@ -438,13 +618,17 @@ Evaluators then count how often those prohibited outcomes actually occur inside 
 <p>The public spec needs one deployment-specific risk quantity: before evaluation, freeze a residual bound on prohibited outcomes inside the claimed regime.
 Meeting that declared bound strengthens the evidence; the registry bars remain the market’s resolution rule.
 Do not bake the desired pass rate into the definition of the setting.</p>
-<p>Bars, qualification, freeze, and reporting live in the <a href="https://ai-safety-claims.com/markets/market-18/v1/">claims registry (contract v1)</a>. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the <code>outcome</code> field at git tag <code>snapshot-0</code>.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.</p>
-<div class="callout prediction-box"><strong>Market 18. Safety case bounds declared harm</strong>
+<div class="callout prediction-box"><strong>Can a precommitted safety case reliably bound prohibited harm in a declared deployment setting?</strong>
 <p><strong>Resolve by.</strong> 31 December 2027.</p>
 <p><strong>Question.</strong>
-By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?</p>
+By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?</p>
 <p><strong>Choices.</strong> YES, NO, and OTHER</p></div><p></p>
+<div class="callout prediction-field prediction-background"><strong>Background</strong>
+<p>The result licenses safety only in a declared deployment setting, not safety everywhere.
+Before evaluation, the setting, the prohibited-outcome class, and a residual bound are declared and frozen.
+Evaluators then count how often those prohibited outcomes actually occur inside that claimed regime, and compare the count to the bound that was frozen first.
+The YES is scored on observed harm, not on a verdict that the deployment is safe in general.</p>
+<p>See also <a href="https://towards-alignment.com/cards/deployment-gate/">this plain language description</a>.</p></div><p></p>
 <div class="callout prediction-field prediction-resolution"><strong>Resolution criteria</strong>
 <p><strong>Registry.</strong> <a href="https://ai-safety-claims.com/markets/market-18/v1/">claims registry (contract v1)</a>. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.</p></div><p></p>
 <p>Closest existing work includes safety-case methodology and control evaluations <a href="../../references/greenblatt2024aicontrol/">Greenblatt, 2024</a>.
