@@ -6,6 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-08 | **Workbench README catalog scope** — Distinguish frozen catalog from scaffolds; fix stale “Markets 1 and 4 only” reader impression. | [2026-10-08-workbench-readme-catalog-scope.md](2026-10-08-workbench-readme-catalog-scope.md) |
+| 2026-10-08 | **Market 11 / 12 sketches** — S7 blind shared_slot gap (M11); ET-4 A0 proxy inversion (M12); claims commit. | [2026-10-08-market-11-12-sketches.md](2026-10-08-market-11-12-sketches.md) |
+| 2026-10-08 | **Market 8 Orbit sketch** — Workbench wrap + claims sketch commit; published Table 13 cells; plan removed from TSA repo. | [2026-10-08-market-08-orbit-sketch-implement.md](2026-10-08-market-08-orbit-sketch-implement.md) |
 | 2026-10-08 | **External-services claims card** — Hand-authored ai-safety-claims.com companion card; `external-service` type; related from predictions overview. | [2026-10-08-external-services-claims-card.md](2026-10-08-external-services-claims-card.md) |
 | 2026-10-08 | **Prediction background split** — Book `authbar` vs Metaculus `predictionbackground`; trimmed listing titles markets 1–18 except 14. | [2026-10-08-prediction-background-split.md](2026-10-08-prediction-background-split.md) |
 | 2026-10-08 | **snapshot-0 TSA pin** — Pin `snapshotTag: snapshot-0` after claims-repo tag; update Appendix P, hub, cards, eval plan. | [2026-10-08-snapshot-0-tsa.md](2026-10-08-snapshot-0-tsa.md) |
