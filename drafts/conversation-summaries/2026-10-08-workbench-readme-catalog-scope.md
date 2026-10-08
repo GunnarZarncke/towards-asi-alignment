@@ -24,5 +24,6 @@ Prompts: `77899380-2c49-4651-bcca-4c80f1bcbb14`, `7fbbb24e-2adb-4234-b75b-e6ced6
 - `drafts/plans/predictions/eval-registry-split.md`
 
 ## Commits
-- (book repo — this session)
-- (sibling repos — README only)
+- `18806a88a` Document registry catalog scope in drafts README and session logs.
+- workbench `38daeae` README: full frozen catalog vs workbench scaffolds.
+- claims `c04dedd` Docs: accurate workbench scope and wrap evidence notes.
