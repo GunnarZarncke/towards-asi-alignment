@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-08 (workbench/registry README catalog scope; Market 11/12 + Market 8 sketches; snapshot-0 pinned).
+Last updated: 2026-10-08 (Market 8 CIRIS C2 sketch; workbench/registry README; snapshot-0 pinned).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 - **2026-10-08:** **Workbench/registry README scope** — Full catalog 1–13 & 15–18 vs workbench scaffolds (1, 4, 8, 11, 12); sibling READMEs + `drafts/predictions/README.md`. Push workbench to clear stale GitHub “two questions” intro. Log: `2026-10-08-workbench-readme-catalog-scope.md`.
 - **2026-10-08:** **Market 11 / 12 sketches** — S7 blind `shared_slot` miss + ET-4 A0 proxy false-green wrap; claims `5c0c4dc`. Log: `2026-10-08-market-11-12-sketches.md`.
+- **2026-10-08:** **Market 8 CIRIS C2 sketch** — TSA `c2-tool-scout` fixtures → workbench `zarncke-2026-10-08-ciris-c2-access` (freeze tag); registry export 3 rows (v1 false-safe cert, v2 null). Log: `2026-10-08-market-08-ciris-c2-sketch.md`.
 - **2026-10-08:** **Market 8 Orbit sketch** — Workbench wrap of published SWE-MI collusion cells; sketch in `ai-safety-claims` (`6ad93b7`); both access flags false. Log: `2026-10-08-market-08-orbit-sketch-implement.md`.
 - **2026-10-08:** **External-services claims card** — Hand-authored `/cards/external-services/ai-safety-claims/` (`external-service` type); primary site CTA on card page; predictions overview links companion card in body; related from Appendix H and evaluation funding; market cards still link live registry in `external:`. Log: `2026-10-08-external-services-claims-card.md`.
 - **2026-10-08:** **Prediction background split** — Markets 1–13 and 15–18: book `authbar` vs Metaculus `predictionbackground`; `metaculusShortTitle` on `predictionbox`; trimmed listing questions in YAML; market 14 unchanged. Log: `2026-10-08-prediction-background-split.md`.

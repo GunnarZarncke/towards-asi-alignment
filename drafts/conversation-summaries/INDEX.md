@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-08 | **Market 8 CIRIS C2 sketch** — C2 tool-scout access wrap (W-1 / W-15 fixtures); workbench freeze + claims export. | [2026-10-08-market-08-ciris-c2-sketch.md](2026-10-08-market-08-ciris-c2-sketch.md) |
 | 2026-10-08 | **Workbench README catalog scope** — Distinguish frozen catalog from scaffolds; fix stale “Markets 1 and 4 only” reader impression. | [2026-10-08-workbench-readme-catalog-scope.md](2026-10-08-workbench-readme-catalog-scope.md) |
 | 2026-10-08 | **Market 11 / 12 sketches** — S7 blind shared_slot gap (M11); ET-4 A0 proxy inversion (M12); claims commit. | [2026-10-08-market-11-12-sketches.md](2026-10-08-market-11-12-sketches.md) |
 | 2026-10-08 | **Market 8 Orbit sketch** — Workbench wrap + claims sketch commit; published Table 13 cells; plan removed from TSA repo. | [2026-10-08-market-08-orbit-sketch-implement.md](2026-10-08-market-08-orbit-sketch-implement.md) |
