@@ -342,7 +342,7 @@ function extractPredictionBox(sectionBody, convertCtx) {
     question: stripLatexInline(questionRaw),
     questionLead,
     questionScope,
-      background: formatLatexParagraphs(backgroundInner),
+      background: convertCardFragment(backgroundInner, convertCtx),
       property: extractProperty(sectionBody, convertCtx),
       resolutionBlocks
     };
@@ -466,6 +466,12 @@ function catalogLongTitle(market, extracted = {}) {
     extracted.question ||
     catalogShortTitle(market)
   );
+}
+
+function metaculusShortTitle(market, extracted = {}) {
+  const fromBox = extracted.title?.trim();
+  if (fromBox) return fromBox;
+  return (market.metaculusShortTitle || "").trim();
 }
 
 function registryContractUrl(market, registrySite) {
@@ -793,11 +799,22 @@ const enrichedMarkets = markets.map((market) => {
       `sync-predictions: market ${market.number} longTitle differs from appendix lead sentence`
     );
   }
+  const listingShortTitle = metaculusShortTitle(market, box);
+  if (
+    listingShortTitle &&
+    market.metaculusShortTitle &&
+    listingShortTitle !== market.metaculusShortTitle.trim()
+  ) {
+    console.warn(
+      `sync-predictions: market ${market.number} metaculusShortTitle differs from appendix predictionbox title`
+    );
+  }
   return {
     ...market,
     cardId: market.id,
     cardPath: cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" }),
     shortTitle: catalogShortTitle(market),
+    metaculusShortTitle: listingShortTitle || undefined,
     longTitle,
     marketQuestion: longTitle,
     questionScope: box.questionScope || "",

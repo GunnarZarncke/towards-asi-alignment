@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261007T232842.654Z",
+  "_as_of": "20261008T153310.227Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -65,7 +65,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#11": {
-    "agent": 27,
+    "agent": 32,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 11,
@@ -81,7 +81,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#13": {
-    "agent": 27,
+    "agent": 32,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 2,
     "index": 13,
@@ -97,7 +97,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#15": {
-    "agent": 16,
+    "agent": 21,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 15,
@@ -113,7 +113,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#17": {
-    "agent": 16,
+    "agent": 21,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 17,
@@ -129,7 +129,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#19": {
-    "agent": 40,
+    "agent": 45,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 2,
     "index": 19,
@@ -137,7 +137,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#2": {
-    "agent": 86,
+    "agent": 89,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 6,
     "index": 2,
@@ -153,7 +153,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#21": {
-    "agent": 18,
+    "agent": 23,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 21,
@@ -169,7 +169,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#23": {
-    "agent": 26,
+    "agent": 31,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 23,
@@ -185,7 +185,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#25": {
-    "agent": 4,
+    "agent": 9,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 25,
@@ -201,7 +201,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#27": {
-    "agent": 145,
+    "agent": 150,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 27,
@@ -217,7 +217,7 @@
     "prior": "GZ+AI"
   },
   "appendices/appP-bridge-predictions.tex#29": {
-    "agent": 40,
+    "agent": 45,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 29,
@@ -257,7 +257,7 @@
     "prior": "GZ+AI"
   },
   "appendices/appP-bridge-predictions.tex#33": {
-    "agent": 7,
+    "agent": 12,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 33,
@@ -265,7 +265,7 @@
     "prior": "GZ+AI"
   },
   "appendices/appP-bridge-predictions.tex#35": {
-    "agent": 4,
+    "agent": 9,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 35,
@@ -273,7 +273,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#37": {
-    "agent": 4,
+    "agent": 9,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 37,
@@ -281,7 +281,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#39": {
-    "agent": 5,
+    "agent": 10,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 39,
@@ -369,7 +369,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#5": {
-    "agent": 35,
+    "agent": 46,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 5,
@@ -401,7 +401,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#7": {
-    "agent": 30,
+    "agent": 35,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 7,
     "index": 7,
@@ -417,7 +417,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#9": {
-    "agent": 19,
+    "agent": 24,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 1,
     "index": 9,

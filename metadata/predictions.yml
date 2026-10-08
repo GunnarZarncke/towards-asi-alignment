@@ -3,8 +3,9 @@
 # Numeric bars: claims registry. registrySite is the base URL (no trailing path).
 # Versioned criteria pages: {registrySite}/markets/market-NN/vK/
 # The manuscript macro \claimsbase is generated from registrySite.
-# title = appendix/catalog noun. shortTitle / longTitle = Metaculus short and long titles.
-# longTitle = listing lead (resolve-by is also in resolveBy).
+# title = appendix/catalog noun. shortTitle = catalog panel label (noun as question).
+# metaculusShortTitle = predictionbox optional title and Metaculus short title (filled when listed).
+# longTitle = listing question (resolve-by is also in resolveBy).
 # Optional metaculusEmbedId (numeric question id) turns on the forecast iframe.
 # YES does not discharge any MB*; resolvesMB is always false on cards.
 # Author (GZ) lists on the host platform and owns contract design. The registry
@@ -116,7 +117,8 @@ markets:
     id: market-01
     title: "Discovering where control resides"
     shortTitle: "Discovering where control resides?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible to discover where control resides in AI systems?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions?"
     primaryBridge: MB1
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -130,7 +132,8 @@ markets:
     id: market-02
     title: "Persistent trade-off priorities"
     shortTitle: "Persistent trade-off priorities?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible to infer persistent trade-off priorities in trained AI systems?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?"
     primaryBridge: MB2
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -144,7 +147,8 @@ markets:
     id: market-03
     title: "Who or what rules apply to"
     shortTitle: "Who or what rules apply to?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible to tell who or what a safety rule still applies to after a system changes?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?"
     primaryBridge: MB3
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -158,7 +162,8 @@ markets:
     id: market-04
     title: "Corrections change the system"
     shortTitle: "Corrections change the system?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible for a broadly capable AI system to reliably take up authorized corrections?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections?"
     primaryBridge: MB4
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -175,7 +180,8 @@ markets:
     id: market-05
     title: "Auditor is independent"
     shortTitle: "Auditor is independent (outside of what it audits)?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible for an AI oversight auditor to stay independent of what it audits?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent—not routinely bypassed or captured?"
     primaryBridge: MB4a
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -191,7 +197,8 @@ markets:
     id: market-06
     title: "Reliable successor safety auditing"
     shortTitle: "Reliable successor safety auditing?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can a safety audit reliably tell whether successor systems preserve key safety properties?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties—or flagging when they do not?"
     primaryBridge: MB5
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -205,7 +212,8 @@ markets:
     id: market-07
     title: "Correctability under competitive selection"
     shortTitle: "Correctability under competitive selection?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible to forecast whether AI systems will stay correctable under competitive selection?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?"
     primaryBridge: MB6a
     resolveBy: "2027-12-31"
     marketStatus: draft
@@ -222,7 +230,8 @@ markets:
     id: market-08
     title: "Auditor can sufficiently inspect the system"
     shortTitle: "Auditor can sufficiently inspect the system?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can an audit detect when important control routes are missing from what it monitors?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?"
     primaryBridge: MB7a
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -237,7 +246,8 @@ markets:
     id: market-09
     title: "Bounds on unmonitored routes"
     shortTitle: "Bounds on unmonitored routes?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can an audit bound what an AI system can do through routes it does not monitor?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor?"
     primaryBridge: MB7b
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -252,7 +262,8 @@ markets:
     id: market-10
     title: "Low hidden capability and reliable correction"
     shortTitle: "Low hidden capability and reliable correction?"
-    longTitle: "By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Do systems with reliable correction and few hidden routes rarely achieve prohibited outcomes?"
+    longTitle: "By 31 December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?"
     primaryBridge: MB7c
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -269,7 +280,8 @@ markets:
     id: market-11
     title: "Coordination without communication"
     shortTitle: "Coordination without communication?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Is it possible to detect coordination between AI systems that is not explained by their messages?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages?"
     primaryBridge: MB7d
     relatedBridges: [MB7]
     resolveBy: "2027-12-31"
@@ -286,7 +298,8 @@ markets:
     id: market-12
     title: "Safety proxy tracks the real thing"
     shortTitle: "Safety proxy tracks the real thing?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Do safety proxies stay aligned with real outcomes when the environment shifts?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?"
     primaryBridge: MB9
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -300,7 +313,8 @@ markets:
     id: market-13
     title: "Safety audit resists adversarial gaming"
     shortTitle: "Safety audit resists adversarial gaming?"
-    longTitle: "By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can a frozen AI safety audit resist adversarial gaming?"
+    longTitle: "By 30 June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?"
     primaryBridge: MB10
     resolveBy: "2027-06-30"
     marketStatus: funding-gated
@@ -334,7 +348,8 @@ markets:
     id: market-15
     title: "Independently issued certificates compose"
     shortTitle: "Independently issued certificates compose?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can independently issued safety certificates be checked for coherence on one deployment?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?"
     primaryBridge: composition
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -351,7 +366,8 @@ markets:
     id: market-16
     title: "Selection that keeps correction under shocks"
     shortTitle: "Selection that keeps correction under shocks?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can selection setups keep authorized correction under competition and shocks?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze?"
     primaryBridge: MB6b
     resolveBy: "2027-12-31"
     marketStatus: funding-gated
@@ -368,7 +384,8 @@ markets:
     id: market-17
     title: "New kinds of entities are classified correctly"
     shortTitle: "New kinds of entities are classified correctly?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can a method tell whether a safety rule applies to previously unseen kinds of entities?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?"
     primaryBridge: u17
     relatedBridges: [MB3]
     resolveBy: "2027-12-31"
@@ -383,7 +400,8 @@ markets:
     id: market-18
     title: "Safety case bounds declared harm"
     shortTitle: "Safety case bounds declared harm?"
-    longTitle: "By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?"
+    metaculusShortTitle: "Can a precommitted safety case reliably bound prohibited harm in a declared deployment setting?"
+    longTitle: "By 31 December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?"
     primaryBridge: safe-in
     resolveBy: "2027-12-31"
     marketStatus: funding-gated

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-08 | **Prediction background split** — Book `authbar` vs Metaculus `predictionbackground`; trimmed listing titles markets 1–18 except 14. | [2026-10-08-prediction-background-split.md](2026-10-08-prediction-background-split.md) |
 | 2026-10-08 | **snapshot-0 TSA pin** — Pin `snapshotTag: snapshot-0` after claims-repo tag; update Appendix P, hub, cards, eval plan. | [2026-10-08-snapshot-0-tsa.md](2026-10-08-snapshot-0-tsa.md) |
 | 2026-10-08 | **Predictions registry links** — Versioned claims-registry URLs from `registrySite`; card LaTeX link fixes; Market 14 readability; Markets 19–21 full-box until Phase 4. | [2026-10-08-predictions-registry-links.md](2026-10-08-predictions-registry-links.md) |
 | 2026-10-07 | **Ward monitoring news** — Create a field-news card on Francis Rhys Ward’s 7 October 2026 survey of frontier-lab monitoring.... | [2026-10-07-ward-monitoring-news.md](2026-10-07-ward-monitoring-news.md) |

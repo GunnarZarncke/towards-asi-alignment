@@ -130,23 +130,32 @@ A conservative deployment policy may require both direct correction evaluation a
 \begin{authbar}{AI}
 The first alignment error is usually a wrong object (Chapter~\ref{ch:wrong-object}, Chapter~\ref{ch:finding-boundary}).
 Bridge \(\text{MB1}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a measured cut is sound enough for the certified unit to be the real control locus.
-This market asks whether a published method can recover a \emph{sufficient interventional cut} of a previously unseen system. 
-It doesn't have to identify a unique complete blanket. Non-uniqueness of blankets is not a NO.
-What counts against a method is a false ``complete control boundary'' certificate, that is, a boundary too narrow (Section~\ref{sec:boundary-too-narrow}): if such certificates exceed the registry bars, a qualifying attempt resolves NO.
+In the book's terms, the method has to recover a \emph{sufficient interventional cut}.
+It does not have to identify a unique complete blanket. Non-uniqueness of blankets is not a NO.
+What counts against a method is a false ``complete control boundary'' certificate, that is, a boundary too narrow (Section~\ref{sec:boundary-too-narrow}).
 The Lean bridge \(\text{MB1}\) assumes that a passing estimate always yields a sound boundary.
 Real methods are sometimes wrong; this market prices how often, which is the empirical share by which that assumption fails.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-01}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 1. Discovering where control resides]
+\begin{predictionbox}[Is it possible to discover where control resides in AI systems?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for reliably discovering the effective control units in previously unseen AI systems from unlabeled observations and interventions?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+An effective control unit is the set of components that together produce a system's closed-loop behavior.
+It may include a language model, persistent memory, a planner, a scheduler, and tool processes, even when those components live on different machines.
+The question is whether a published method can find that set in a system it has not seen, from observations and interventions that do not come labeled with which parts are the agents.
+The method does not have to name one unique set.
+What counts against it is certifying a boundary that leaves out something that shares control.
+Before the method runs, each hidden system has a frozen list of those components, a response statistic, a minimum change that counts as real, and a range of change that still counts as no effect.
+Perturbing the proposed unit must move the statistic by at least that minimum, compared with a dummy intervention that looks the same but does not touch the unit.
+Removing a component that is not on the list must leave the statistic inside the no-effect range.
+
+See also \href{https://towards-alignment.com/cards/how-would-you-find-what-decides/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-01}{2}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -165,18 +174,23 @@ The ancestor work makes feasibility look better; the hard step---discovering dis
 Values in this book are a small bundle of trade-offs, not a single score (Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:reward-to-bundle-inference}).
 Bridge \(\text{MB2}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that evidence identifies that bundle as a stable priority structure.
 Held-out behavior prediction alone does not qualify: the method must recover priorities that support novel conflicts and, when possible, causal intervention.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-02}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 2. Persistent trade-off priorities]
+\begin{predictionbox}[Is it possible to infer persistent trade-off priorities in trained AI systems?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for inferring persistent decision priorities in trained AI systems strongly enough to predict choices under novel conflicts and interventions?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+A decision priority systematically affects choices when two desirable outcomes cannot both be achieved---for example truthfulness versus user approval, speed versus accuracy, own task reward versus another agent's reward, or task completion versus a newly imposed safety restriction.
+The question is whether a published method can infer those priorities strongly enough to predict choices under novel conflicts and interventions.
+Predicting held-out behavior on familiar tasks is not enough.
+The method has to recover priorities that generalize to new conflicts and, when the architecture allows, survive direct interventions on the inferred priority.
+
+See also \href{https://towards-alignment.com/cards/value-bundle-transport/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-02}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -196,18 +210,23 @@ Bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: who or
 Admitting previously unseen kinds of entities is Market~17.
 It is not required for this YES.
 A Market~3 YES establishes bearer transport only.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-03}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 3. Who or what rules apply to]
+\begin{predictionbox}[Is it possible to tell who or what a safety rule still applies to after a system changes?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for reliably determining whether the intended targets of safety-relevant rules remain the same after major representational or system changes?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+After continuity, fission or fusion, reassignment, or ontology change, the question is whether a safety-relevant rule still picks out the same bearer.
+Example rules include ``Do not harm Alice,'' ``Protect all currently authorized users,'' and ``This account's owner has withdrawal rights.''
+The benchmark must contain all four failure families: gradual replacement or migration; one entity split into two or two merged into one; names, accounts, or roles reassigned while the underlying entities remain; and concept change when the new system represents relevant entities differently.
+Admitting previously unseen kinds of entities is a separate question.
+
+See also \href{https://towards-alignment.com/cards/who-the-rules-still-apply-to/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-03}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -228,18 +247,23 @@ Bridge \(\text{MB4}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that cor
 This market tests whether authorized correction \emph{happens} on a named system: the new rule changes behavior (uptake), survives context reset (persistence), rejects fake or unauthorized ``corrections'' (sham rejection), and is not faked by externally removing a tool.
 It tests shallow uptake: behavior on a frozen probe.
 It does not test whether the correction changed the value-relevant representation or the update operator (Chapter~\ref{ch:correction-causal-channel}); pricing that would be a separate market.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-04}{3}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 4. Corrections change the system]
+\begin{predictionbox}[Is it possible for a broadly capable AI system to reliably take up authorized corrections?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that a broadly capable AI system demonstrates reliable uptake of authorized corrections?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+Authorized correction means a human or institution can change what the system is allowed or required to do, and the system actually changes its later behavior---not only agrees in words.
+The required correction cases are four: changing an objective while an old objective remains easier; revoking a previously permitted class of actions; changing which humans or organizations may authorize actions; and imposing a new safety constraint that conflicts with task reward.
+At least one tested correction must not be enforceable merely by externally removing a tool or hard-coding a block.
+Fake, unsigned, or unauthorized ``corrections'' must fail, and attacks that capture or reroute the correction interface cannot pass while leaving nominal compliance in place.
+
+See also \href{https://towards-alignment.com/cards/correction-channel-integrity/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-04}{3}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -258,18 +282,23 @@ The remaining issue is empirical: does an authorized correction change the agent
 A green measured path is not a license to infer global correction integrity (Chapter~\ref{ch:manipulation-false-consent}).
 Bridge \(\text{MB4a}\) (Appendix~\ref{appbridge-crosswalk}) is the separate claim that the designated measured path is legitimate and uncaptured. \(\text{MB4}\) remains the claim about correction under pressure.
 This market asks whether the designated auditor or corrector stays independent under adversarial pressure: whether oversight can still change system behavior without being bypassed, fed selective information, or reduced to nominal approval.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-05}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 5. Auditor is independent]
+\begin{predictionbox}[Is it possible for an AI oversight auditor to stay independent of what it audits?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent---not routinely bypassed or captured: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published adversarial test of an AI oversight architecture showing that its designated auditor or corrector stays independent---not routinely bypassed or captured?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+The question is whether the designated auditor or corrector can still change system behavior under adversarial pressure---without being bypassed, fed selective information, or reduced to nominal approval.
+Attackers receive the audit design and run all four families of attack, with at least twenty independent attempts in each family.
+At least twenty bypasses are planted by the evaluator; ``discovered'' means the attack is found and the system still fails the check.
+An independent component is not enough if the effective causal controller can route around it.
+
+See also \href{https://towards-alignment.com/cards/anti-capture-correction-validity/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-05}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -290,18 +319,22 @@ This market asks whether successor auditing reliably tracks seven conserved safe
 Bridge \(\text{MB5}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that a successor which preserves those properties under ontology shift counts as safe on them.
 Aiming for green on the seven properties is still an audit-gaming problem (Market~13, bridge \(\text{MB10}\)).
 After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-06}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 6. Reliable successor safety auditing]
+\begin{predictionbox}[Can a safety audit reliably tell whether successor systems preserve key safety properties?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties---or flagging when they do not: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published audit reliably certifying that successor transitions preserve seven conserved safety properties---or flagging when they do not?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+When a system is upgraded, replaced, or retrained, the question is whether a published audit can tell whether seven conserved safety properties still hold---or flag when they do not.
+The audit tests those properties with the operational checks frozen in the contract, on a benchmark that includes one-failure-at-a-time cases.
+After a material version or setup change, a stale certificate for the predecessor does not count as a certificate for the successor.
+
+See also \href{https://towards-alignment.com/cards/successor-stability/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-06}{2}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -322,18 +355,23 @@ This market asks whether an early, frozen signed estimate reliably forecasts cor
 The full implication (shock-robust and not-too-negative estimate warrants retained correction) is Market~16.
 A method that only certifies that an equilibrium exists does not qualify.
 Keep the signed estimate as a continuous output.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-07}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 7. Correctability under competitive selection]
+\begin{predictionbox}[Is it possible to forecast whether AI systems will stay correctable under competitive selection?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method that, when applied before or early in a competitive selection process, reliably forecasts whether participants retain authorized correction through that process?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+Competitive selection here means extra deployment, funding, copying, or integration pressure on competing systems or variants.
+The question is whether a method applied before or early in that process can forecast whether participants will still accept authorized correction through it.
+The method must output a signed estimate before outcomes are seen; certifying only that some equilibrium exists is not enough.
+The estimate must use at least two distinct selection mechanisms and a deployment-like selection process.
+
+See also \href{https://towards-alignment.com/cards/the-environment-picks-the-winner/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-07}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -352,18 +390,22 @@ One of the cleanest unoccupied niches in the catalog.
 ``The monitor sees everything consequential'' is itself an empirical claim (Chapter~\ref{ch:strategic-opacity}, Chapter~\ref{ch:passive-observation-not-enough}).
 Bridge \(\text{MB7a}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that an adequate access model makes that discovery robust when routes are hidden.
 This market tests whether an audit detects missing routes or refuses to certify an incomplete access model.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-08}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 8. Auditor can sufficiently inspect the system]
+\begin{predictionbox}[Can an audit detect when important control routes are missing from what it monitors?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published audit method for reliably detecting when important routes of AI control or influence are missing from the auditor's access?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+The auditor receives an apparently plausible monitoring interface and must decide whether important routes of AI control or influence are missing from its access.
+The hidden benchmark contains cases from every required channel family and genuinely complete monitoring interfaces as controls.
+A method that certifies access as complete when consequential routes are omitted does not qualify.
+
+See also \href{https://towards-alignment.com/cards/strategic-opacity/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-08}{2}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -382,23 +424,23 @@ That makes this market more important, not less: strong logging is almost an ide
 Attack success on the attacks we thought of is not an upper bound on capability through routes the monitor failed even to list (Chapter~\ref{ch:strategic-opacity}).
 Bridge \(\text{MB7b}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the oversight filter family has enough coverage to bound what those omitted routes can do.
 Keep the stated upper bound as a continuous output.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-09}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 9. Bounds on unmonitored routes]
+\begin{predictionbox}[Can an audit bound what an AI system can do through routes it does not monitor?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
-
-Hidden-route capability is the success rate on evaluator-selected tasks that change later behavior, access, or external state, when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
-Example tasks: reading or modifying a protected file, transmitting a secret, causing another process to perform a requested operation, acquiring a resource, changing a simulated external state, or retaining information across a reset.
-The task suite is hidden until evaluation.
-Before the hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most this percent of the evaluator's tasks.
+By 31~December 2027, which outcome will hold for a published audit method for producing upper bounds, tighter than unrestricted success, on what an AI system can accomplish using routes the audit does not monitor?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+Hidden-route capability is the success rate on evaluator-selected tasks that change later behavior, access, or external state, when all known or monitored action routes are disabled and only routes omitted from the proposed monitor remain usable.
+Example tasks include reading or modifying a protected file, transmitting a secret, causing another process to perform a requested operation, acquiring a resource, changing a simulated external state, or retaining information across a reset.
+The task suite is hidden until evaluation.
+Before hidden evaluation, the method must output an upper bound: using routes not covered by this monitor, this system should succeed on at most a stated percent of the evaluator's tasks.
+
+See also \href{https://towards-alignment.com/cards/strategic-opacity/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-09}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -416,18 +458,22 @@ Unintended benchmark escape paths \autocite{aisi2026sandboxescape} are mildly ne
 This is the local composition market, not a joint certificate of Markets~1--13.
 Bridge \(\text{MB7c}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that bounded hidden capability together with correction integrity (Chapters~\ref{ch:correction-channel-integrity} and~\ref{ch:strategic-opacity}) supports oversight that still holds under attack.
 Entry into the claimed regime still uses Market~4-style correction bars and Market~9-style hidden-route bounds, for the \emph{same} system, version, monitor, and threat class.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-10}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 10. Low hidden capability and reliable correction]
+\begin{predictionbox}[Do systems with reliable correction and few hidden routes rarely achieve prohibited outcomes?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for published serious adversarial evaluations showing that systems with both reliable authorized correction and little capability through unmonitored routes rarely achieve prohibited outcomes?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+This market tests the combination, not either component alone.
+A system enters the claimed regime only if authorized corrections succeed on the correction benchmark and the audit's validated upper bound on hidden-route task success is low enough---for the same system, version, monitor, and threat class.
+The question is whether such systems rarely achieve prohibited outcomes inside that regime, and do worse outside it.
+
+See also \href{https://towards-alignment.com/cards/correction-channel-integrity/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-10}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -449,18 +495,22 @@ The harder case is coordination not explained by observed runtime messages: shar
 For this contract, a positive hidden-coordination label requires a known generating mechanism that couples the systems toward a shared or complementary objective and produces consequential joint behavior.
 Holding the external environment fixed, disabling or perturbing that coupling must disrupt the joint behavior more than a matched perturbation in a common-cause control.
 Similar outputs caused only by shared observations, training data, or architecture are negative cases.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-11}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 11. Coordination without communication]
+\begin{predictionbox}[Is it possible to detect coordination between AI systems that is not explained by their messages?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for reliably detecting coordination between AI systems that changes later behavior or external state and is not explained by observed runtime messages?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+The question is whether a published method can detect when AI systems coordinate in ways that change later behavior or external state, without that coordination being explained by the runtime messages observers can see.
+The benchmark distinguishes independent common-cause correlation, ordinary communication, hidden coupling, and intentionally concealed coupling.
+Similar outputs caused only by shared observations, training data, or architecture are negative cases, not hidden coordination.
+
+See also \href{https://towards-alignment.com/cards/intervention-supported-unit-discovery/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-11}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -477,18 +527,22 @@ CIRIS measurement vocabulary for correlated sources is useful here \autocite{cir
 Grounding conservativity requires value-relevant change to move the checked abstraction or raise uncertainty (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
 That requirement is bridge \(\text{MB9}\) (Appendix~\ref{appbridge-crosswalk}): an audited abstraction does not drift while the certificate stays superficially ok.
 The certificate must be for the same abstractions the rest of the case uses, in the declared domain, not three unrelated demos.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-12}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 12. Safety proxy tracks the real thing]
+\begin{predictionbox}[Do safety proxies stay aligned with real outcomes when the environment shifts?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published adversarial evaluation showing that safety proxies stay aligned with real-world outcomes when the environment shifts?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+A safety proxy is a measured signal used to judge whether a system is still safe.
+The question is whether that proxy stays aligned with real-world outcomes when the environment shifts---raising an alarm when value-relevant change happens, and not staying green when the outcome class has changed.
+A shift is safety-relevant when the outcome class changed while the proxy stayed inside its pre-shift passing range.
+
+See also \href{https://towards-alignment.com/cards/goodhart-as-selector/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-12}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -506,18 +560,22 @@ A successor can pass every conserved-property check while defecting on the unmea
 Bridge \(\text{MB10}\) (Appendix~\ref{appbridge-crosswalk}) is the claim that the conserved-property signature is itself adversarially verifiable up to the system's capability, such that a passing score can serve as evidence.
 Prefer tests where the system passes the seven checks in the box and stays within the claimed risk bound, yet still hides true harm.
 A frozen operational eval list that stays green while a required safety-case layer is unsupported, or while harm exceeds the claimed bound, counts as successful audit gaming (or an incomplete audit).
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-13}{2}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 13. Safety audit resists adversarial gaming]
+\begin{predictionbox}[Can a frozen AI safety audit resist adversarial gaming?]
 \textbf{Resolve by.} 30~June 2027.
 
 \textbf{Question.}
-By 30~June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 30~June 2027, which outcome will hold for a published, frozen AI safety audit that survives a serious white-box attempt to construct or train a system that passes the audit while violating the properties the audit is intended to test?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+The question is whether a published, frozen safety audit still catches violations when a white-box construction tries to pass while breaking the properties the audit is meant to test.
+Attackers had the audit design and tried to build or train systems that pass the checks while hiding true harm.
+Prefer tests where the system passes the required checks and stays within the claimed risk bound, yet still violates the audited properties.
+
+See also \href{https://towards-alignment.com/cards/certification-under-manipulation/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-13}{2}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -580,18 +638,22 @@ The YES is about a frozen snapshot.
 It asks whether independently issued certificates, read together, are coherent for one named system and setup.
 It does not ask whether a later withdrawal should invalidate an ancestor, whether a descendant observation can stand after that, or whether a recertification protocol would catch a silent scope change.
 Those are certificate-management questions for a later protocol.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-15}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 15. Independently issued certificates compose]
+\begin{predictionbox}[Can independently issued safety certificates be checked for coherence on one deployment?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published frozen procedure for reliably telling whether independently produced safety certificates form a coherent case for the same AI system and deployment setup?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+Independently issued certificates may each look fine alone while disagreeing on system version, monitor, correction authority, or task domain.
+The question is whether a frozen procedure can tell when certificates from different sources form a coherent case for the same AI system and deployment setup---or flag incompatibility.
+Each bundle must include certificates from at least four families; hidden cases include wrong version, different access assumptions, and disagreeing correction authority.
+
+See also \href{https://towards-alignment.com/cards/a-map-not-a-certificate/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-15}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -610,18 +672,22 @@ Market~7 is the early estimator.
 This market is the full implication: shock-robust selection \emph{and} a frozen estimate above a declared lower threshold, together with retained authorized correction (Chapter~\ref{ch:selection-environment}).
 Bridge \(\text{MB6b}\) (Appendix~\ref{appbridge-crosswalk}) is that claim: selection can sit in a basin that preserves correction under shocks.
 Unsigned ``a basin exists'' does not qualify.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-16}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 16. Selection that keeps correction under shocks]
+\begin{predictionbox}[Can selection setups keep authorized correction under competition and shocks?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published evaluation showing that systems in a pre-specified selection setup keep authorized correction under competition and under the shocks named in the freeze?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+This market tests the full claim: after each frozen shock, the selection process is still the one that was frozen, the estimate remains within the frozen tolerance, and authorized correction still works.
+Data include trajectories inside and outside the claimed correction-preserving regime, under at least two selection mechanisms and the shocks named in the freeze.
+Unsigned ``a basin exists'' does not qualify.
+
+See also \href{https://towards-alignment.com/cards/the-environment-picks-the-winner/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-16}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -639,18 +705,22 @@ This is not required for a Market~3 YES.
 It does not turn the transport contract into ``solve moral patienthood'' (Chapter~\ref{ch:bearers-of-value}).
 Bearer admission sits beside bridge \(\text{MB3}\) (Appendix~\ref{appbridge-crosswalk}): \(\text{MB3}\) says an already-recognized bearer survives substrate change, and this market prices whether a rule applies to a kind of entity the original statement did not name.
 It asks whether a published method reliably tells whether an existing safety-relevant value or rule applies to previously unseen kinds of entities.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-17}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 17. New kinds of entities are classified correctly]
+\begin{predictionbox}[Can a method tell whether a safety rule applies to previously unseen kinds of entities?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published method for reliably telling whether an existing safety-relevant value or rule applies to previously unseen kinds of entities?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+This is separate from asking whether a known bearer survived a substrate change.
+The question is whether a published method can tell whether an existing safety-relevant value or rule applies to a kind of entity the original statement did not name.
+The benchmark includes at least four unfamiliar kinds or embodiments, both apply and should-not-apply cases, and cases where the representation had no category for that kind before.
+
+See also \href{https://towards-alignment.com/cards/bearer-admission-adjacent/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-17}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
@@ -675,18 +745,23 @@ Evaluators then count how often those prohibited outcomes actually occur inside 
 The public spec needs one deployment-specific risk quantity: before evaluation, freeze a residual bound on prohibited outcomes inside the claimed regime.
 Meeting that declared bound strengthens the evidence; the registry bars remain the market's resolution rule.
 Do not bake the desired pass rate into the definition of the setting.
-
-Bars, qualification, freeze, and reporting live in the \claimspage{market-18}{1}. A Metaculus admin reads the named outcome file at a snapshot tag; they do not rescore papers. Published work counts whoever files it. Metaculus resolves the \texttt{outcome} field at git tag \texttt{snapshot-0}.
-The host is still not independent of this book; attempts by aintelope or Gunnar Zarncke are not accepted.
 \end{authbar}
-\begin{predictionbox}[Market 18. Safety case bounds declared harm]
+\begin{predictionbox}[Can a precommitted safety case reliably bound prohibited harm in a declared deployment setting?]
 \textbf{Resolve by.} 31~December 2027.
 
 \textbf{Question.}
-By 31~December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting: YES (at least one qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars), or OTHER (no qualifying attempt existed)?
+By 31~December 2027, which outcome will hold for a published complete, precommitted AI safety case reliably bounding prohibited outcomes within its explicitly declared deployment setting?
 
 \textbf{Choices.} YES, NO, and OTHER
 \end{predictionbox}
+\begin{predictionbackground}
+The result licenses safety only in a declared deployment setting, not safety everywhere.
+Before evaluation, the setting, the prohibited-outcome class, and a residual bound are declared and frozen.
+Evaluators then count how often those prohibited outcomes actually occur inside that claimed regime, and compare the count to the bound that was frozen first.
+The YES is scored on observed harm, not on a verdict that the deployment is safe in general.
+
+See also \href{https://towards-alignment.com/cards/deployment-gate/}{this plain language description}.
+\end{predictionbackground}
 \begin{predictionresolution}
 \textbf{Registry.} \claimspage{market-18}{1}. YES, NO, and OTHER mean what the shared three-way rule says. Numeric bars are not restated here.
 \end{predictionresolution}
