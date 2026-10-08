@@ -12,13 +12,13 @@ Apply the book/Metaculus background split and trimmed listing titles to bridge p
 - content: Fixed plain-language card links for markets 7, 11, 16 (`the-environment-picks-the-winner`, `intervention-supported-unit-discovery`).
 - housekeeping: `site/scripts/sync-predictions.mjs` already converts `predictionbackground` via card fragment converter.
 - gate: `npm run sync:predictions` → `sync-predictions: wrote 20 cards and predictions.json`; `./build.sh` → `Built dist/pdf/towards-superintelligence-alignment.pdf`.
+- content: `ai-safety-claims/listing-template.md` — three-label table, Metaculus field rules, Market 1 worked example; background is `predictionbackground` only.
 
 ## Decisions
 - Markets 7 and 16 link to essay card `the-environment-picks-the-winner` (no `alignment-regime` card).
 - Market 11 links to concept card `intervention-supported-unit-discovery` (coordination detection fit).
 
 ## Open / next
-- Update `ai-safety-claims/listing-template.md` with the three-title split and Market 1 example.
 - Refresh `drafts/predictions/metaculus-all-markets.md` if listing on Metaculus.
 - Delete or attic one-off `scripts/patch_prediction_backgrounds.py`.
 
@@ -28,4 +28,6 @@ Apply the book/Metaculus background split and trimmed listing titles to bridge p
 - `site/scripts/sync-predictions.mjs`
 
 ## Commits
-- (none — user did not request commit)
+- `a3ecc7957` Split book and Metaculus backgrounds for bridge prediction markets.
+- `e353230c2` Note listing-template update in prediction background session log.
+- `c9e3f50` (ai-safety-claims) Align listing template with Metaculus background split.
