@@ -25,6 +25,10 @@ const predictionCardsDir = path.join(siteRoot, "src", "content", "cards", "predi
 
 const APPENDIX_H_FULL = bookFullPublicHref("", "appP");
 const FUNDING_CARD = "/cards/funding/prediction-evaluation-program/";
+const REGISTRY_CARD = cardPublicPath({
+  id: "external-services/ai-safety-claims",
+  type: "external-service"
+});
 const DEFAULT_REGISTRY_SITE = "https://ai-safety-claims.com/";
 const DEFAULT_REGISTRY_REPO = "https://github.com/aintelope/ai-safety-claims";
 const APPENDIX_B_CARD = cardPublicPath({ id: "chapters/appB", type: "appendix" });
@@ -657,12 +661,15 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     ]),
     formatExternalYaml([
       { label: "Appendix H (full on site)", url: APPENDIX_H_FULL },
-      { label: "Claims registry", url: DEFAULT_REGISTRY_SITE },
+      { label: "Claims registry (companion card)", url: REGISTRY_CARD },
+      { label: "Claims registry (live site)", url: DEFAULT_REGISTRY_SITE },
       { label: "Bridge crosswalk (Appendix B)", url: APPENDIX_B_CARD }
     ]),
     "---",
     "",
     raw.purpose.trim(),
+    "",
+    `**Claims registry.** Markets 1–13 and 15–18 resolve from outcome files at [ai-safety-claims.com](${DEFAULT_REGISTRY_SITE}). [What the registry is and how resolution works](${REGISTRY_CARD}).`,
     "",
     "**Claim strength.** Each listing question is three-outcome: YES (at least one qualifying attempt met the bars), NO (every qualifying attempt missed them), or OTHER (no qualifying attempt existed). Missing evals or missed qualification is OTHER, not NO. Market 14 is the exception: YES or NO only, and anything short of YES, including missing evidence, is NO. None of these means a bridge is false.",
     "",

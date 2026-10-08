@@ -97,6 +97,7 @@ const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
 const isFundingCard = card.data.type === "funding";
+const isExternalServiceCard = card.data.type === "external-service";
 const isPredictionCard = card.data.type === "prediction";
 const isExternalPrediction = isPredictionCard && card.data.predictionExternal === true;
 const predictionListingLabel = card.data.predictionListingStatus
@@ -230,6 +231,19 @@ const claimLink = card.data.claimId
   ? { label: `Claims ledger: ${card.data.claimId}`, url: `${repoBase}/metadata/claims-ledger.md#claim-id-${card.data.claimId.toLowerCase()}` }
   : null;
 const externalLinks = claimLink ? [claimLink, ...card.data.external] : card.data.external;
+const externalServicePrimaryLink = isExternalServiceCard
+  ? (card.data.external.find((link) => !link.url.includes("github.com")) ?? card.data.external[0])
+  : null;
+const externalServiceSecondaryLinks = isExternalServiceCard
+  ? card.data.external.filter((link) => link !== externalServicePrimaryLink)
+  : [];
+function externalServiceButtonLabel(url: string, fallback: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return fallback;
+  }
+}
 
 const bibEntry = isReferenceCard && card.data.bibKey ? refByKey.get(card.data.bibKey) : undefined;
 const referenceLinks = isReferenceCard
@@ -283,6 +297,33 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
             <h1>{card.data.title}</h1>
           )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
+          {isExternalServiceCard && externalServicePrimaryLink && (
+            <p class="button-row external-service-cta">
+              <a
+                class="button primary"
+                href={externalServicePrimaryLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {externalServiceButtonLabel(
+                  externalServicePrimaryLink.url,
+                  externalServicePrimaryLink.label
+                )}
+                <LinkIndicator kind="external" />
+              </a>
+              {externalServiceSecondaryLinks.map((link) => (
+                <a
+                  class="button"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                  <LinkIndicator kind={link.url.includes("github.com") ? "github" : "external"} />
+                </a>
+              ))}
+            </p>
+          )}
           {isExternalPrediction && (
             <div class="callout external-prediction-callout">
               <p>

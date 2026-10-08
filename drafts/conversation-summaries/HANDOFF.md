@@ -20,7 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-08:** **External-services claims card** — Hand-authored `/cards/external-services/ai-safety-claims/` (`external-service` type); related from predictions overview, Appendix H, evaluation funding; market cards still link live registry in `external:`. Log: `2026-10-08-external-services-claims-card.md`.
+- **2026-10-08:** **External-services claims card** — Hand-authored `/cards/external-services/ai-safety-claims/` (`external-service` type); primary site CTA on card page; predictions overview links companion card in body; related from Appendix H and evaluation funding; market cards still link live registry in `external:`. Log: `2026-10-08-external-services-claims-card.md`.
 - **2026-10-08:** **Prediction background split** — Markets 1–13 and 15–18: book `authbar` vs Metaculus `predictionbackground`; `metaculusShortTitle` on `predictionbox`; trimmed listing questions in YAML; market 14 unchanged. Log: `2026-10-08-prediction-background-split.md`.
 - **2026-10-08:** **snapshot-0 TSA pin** — `snapshotTag` in predictions.yml; Appendix P and site hub/cards cite tag; eval plan step 6 next. Log: `2026-10-08-snapshot-0-tsa.md`.
 - **2026-10-08:** **Versioned registry links** — `\claimspage` / `registrySite` for manuscript and site; fixed prediction-card Property/Closest-work LaTeX refs; Market 14 card readability; Markets 19–21 restored to full appendix boxes. Log: `2026-10-08-predictions-registry-links.md`.
