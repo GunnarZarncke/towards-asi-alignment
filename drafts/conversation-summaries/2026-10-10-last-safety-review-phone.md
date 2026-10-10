@@ -29,7 +29,7 @@ Prompts: paraphrase (no telemetry id)
 - `game/last-safety-autocomplete-prototype/fixtures/terminal-session.json`
 
 ## Commits
-- none
+- `00af9b172` Add Last Safety Review player phone draft and solo harness.
 
 ## Verification
 `cd game/last-safety-autocomplete-prototype && npm test` → `ℹ pass 15` / `ℹ fail 0`, including `fixture session matches the solo phone check`.
