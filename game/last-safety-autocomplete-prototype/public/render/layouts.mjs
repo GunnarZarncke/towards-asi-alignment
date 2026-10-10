@@ -1,0 +1,135 @@
+/**
+ * Room layouts as data. Units are metres. Floor spans x ∈ [-W/2, W/2], z ∈ [-D/2, D/2].
+ * Walls stand on the back (z = -D/2) and left (x = -W/2) edges; front and right are cut away for the camera.
+ * Headings are degrees; 0 faces +z (towards the camera side), 90 faces +x.
+ * `hotspot` names the scene-view hotspot id a prop answers to. A prop without one is art only.
+ */
+
+export const LAYOUTS = {
+  platform: {
+    size: [12, 8],
+    wallHeight: 2.9,
+    wall: '#e3e1db',
+    floor: '#c8cec7',
+    floorLine: '#b3bbb2',
+    floorStyle: 'tiles',
+    accent: '#3f7a6c',
+    camera: { pos: [7.5, 8.2, 10.5], target: [-0.3, 0.7, -0.4], fov: 30 },
+    sun: [-3, 9, -12],
+    ceiling: [
+      { at: [-0.4, -1.6], w: 2.8, d: 1.05 },
+      { at: [-2.2, 1.1], w: 1.35, d: 0.85 },
+      { at: [2.6, -0.2], w: 1.7, d: 0.9 },
+    ],
+    windows: [
+      { wall: 'back', at: -3.0, w: 2.0, y0: 0.85, y1: 2.5 },
+      { wall: 'back', at: -0.7, w: 2.0, y0: 0.85, y1: 2.5 },
+    ],
+    doors: [
+      { to: 'evaluation', wall: 'left', at: 2.3, w: 1.1 },
+      { to: 'people', wall: 'back', at: 4.7, w: 1.1 },
+    ],
+    props: [
+      { type: 'serverRack', at: [-5.4, -3.35], rot: 90 },
+      { type: 'serverRack', at: [-5.4, -2.6], rot: 90 },
+      { type: 'serverRack', at: [-5.4, -1.85], rot: 90 },
+      { type: 'glassPartition', at: [-4.55, -2.4], rot: 90, opts: { len: 3.2 } },
+      { type: 'opsDesk', at: [-0.2, -2.5], rot: 0, hotspot: 'job_log', opts: { lamp: true } },
+      { type: 'chair', at: [-0.9, -1.7], rot: 180 },
+      { type: 'workstation', at: [-2.4, 1.3], rot: 0, hotspot: 'player_terminal', opts: { lamp: true } },
+      { type: 'noraWall', wall: 'back', at: 2.5, y: 1.85 },
+      { type: 'cabinet', at: [1.4, -3.7], rot: 0 },
+      { type: 'securityCamera', wall: 'left', at: -3.6, y: 2.6 },
+      { type: 'standingTable', at: [2.9, 0.9] },
+      { type: 'plant', at: [3.7, -3.45], opts: { size: 1 } },
+      { type: 'plant', at: [-5.4, 3.45], opts: { size: 1.25 } },
+      { type: 'plant', at: [5.3, 3.3], opts: { size: 0.9 } },
+    ],
+    spots: { pavel: [1.9, -1.2, 20], player: [2.6, 2.4, 200] },
+    interact: { job_log: [0.4, -1.5, 180], player_terminal: [-2.4, 2.05, 180] },
+  },
+
+  evaluation: {
+    size: [12, 8],
+    wallHeight: 2.9,
+    wall: '#e6e6e1',
+    floor: '#d2d5ce',
+    floorLine: '#bec2ba',
+    floorStyle: 'tiles',
+    accent: '#4a6f8a',
+    camera: { pos: [7.5, 8.2, 10.5], target: [-0.3, 0.7, -0.4], fov: 30 },
+    sun: [-4, 9, -12],
+    ceiling: [
+      { at: [-1.5, -2.4], w: 3.2, d: 1.1 },
+      { at: [1.8, -0.8], w: 2.0, d: 0.95 },
+      { at: [0.2, 1.6], w: 1.8, d: 0.85 },
+    ],
+    windows: [
+      { wall: 'back', at: -4.0, w: 2.2, y0: 0.85, y1: 2.5 },
+      { wall: 'back', at: -1.4, w: 2.2, y0: 0.85, y1: 2.5 },
+    ],
+    doors: [
+      { to: 'platform', wall: 'back', at: 4.7, w: 1.1 },
+      { to: 'people', wall: 'left', at: 2.3, w: 1.1 },
+    ],
+    props: [
+      { type: 'bench', at: [-1.6, -2.9], rot: 0, opts: { len: 3.4, lamp: true } },
+      { type: 'chair', at: [-2.4, -2.05], rot: 180 },
+      { type: 'chair', at: [-0.8, -2.05], rot: 180 },
+      { type: 'bigScreen', at: [2.8, -3.3], rot: 0 },
+      { type: 'documentTable', at: [2.3, 0.4], rot: 0, hotspot: 'shutdown_report', opts: { kind: 'binder', lamp: true } },
+      { type: 'whiteboard', wall: 'left', at: -1.0, y: 1.55 },
+      { type: 'cabinet', at: [-5.6, -3.4], rot: 90 },
+      { type: 'securityCamera', wall: 'back', at: -5.5, y: 2.6 },
+      { type: 'plant', at: [-5.4, 3.4], opts: { size: 1.1 } },
+      { type: 'plant', at: [5.3, 3.2], opts: { size: 1 } },
+      { type: 'plant', at: [0.9, -3.55], opts: { size: 0.8 } },
+    ],
+    spots: { leila: [1.0, -0.3, 25], player: [3.2, 2.6, 210] },
+    interact: { shutdown_report: [2.3, 1.25, 180] },
+  },
+
+  people: {
+    size: [12, 8],
+    wallHeight: 2.9,
+    wall: '#e8e2da',
+    floor: '#c9b9a2',
+    floorLine: '#b3a189',
+    floorStyle: 'planks',
+    accent: '#9a6a4a',
+    camera: { pos: [7.5, 8.2, 10.5], target: [-0.3, 0.7, -0.4], fov: 30 },
+    sun: [-12, 9, -2],
+    ceiling: [
+      { at: [-1.3, -2.2], w: 2.2, d: 1.0 },
+      { at: [1.5, 0.2], w: 2.4, d: 1.0 },
+      { at: [-0.5, 2.0], w: 2.0, d: 0.9 },
+    ],
+    windows: [
+      { wall: 'left', at: -2.4, w: 2.4, y0: 0.85, y1: 2.5 },
+      { wall: 'left', at: 0.4, w: 1.6, y0: 0.85, y1: 2.5 },
+    ],
+    doors: [
+      { to: 'evaluation', wall: 'back', at: -4.4, w: 1.1 },
+      { to: 'platform', wall: 'back', at: 4.7, w: 1.1 },
+    ],
+    props: [
+      { type: 'desk', at: [-1.4, -2.6], rot: 0, opts: { w: 1.6, d: 0.75, monitor: 'chart', laptop: true, lamp: true } },
+      { type: 'chair', at: [-1.4, -3.35], rot: 0 },
+      { type: 'bookshelf', at: [0.9, -3.78], rot: 0, opts: { w: 1.6 } },
+      { type: 'staffBoard', wall: 'back', at: 2.8, y: 1.7 },
+      { type: 'documentTable', at: [2.2, -1.0], rot: 0, hotspot: 'staffing_memo', opts: { kind: 'folder', lamp: true } },
+      { type: 'rug', at: [1.6, 1.9], opts: { w: 2.8, d: 2.3 } },
+      { type: 'roundTable', at: [1.6, 1.9] },
+      { type: 'chair', at: [0.8, 1.9], rot: 90 },
+      { type: 'chair', at: [2.4, 1.9], rot: 270 },
+      { type: 'chair', at: [1.6, 2.7], rot: 180 },
+      { type: 'sofa', at: [-4.95, 2.4], rot: 90 },
+      { type: 'securityCamera', wall: 'back', at: -5.6, y: 2.6 },
+      { type: 'plant', at: [-5.45, -3.5], opts: { size: 1.1 } },
+      { type: 'plant', at: [-3.2, -3.55], opts: { size: 0.85 } },
+      { type: 'plant', at: [5.3, 3.2], opts: { size: 1.2 } },
+    ],
+    spots: { elena: [-0.4, -1.3, 20], player: [3.4, 2.8, 215] },
+    interact: { staffing_memo: [2.2, -0.2, 180] },
+  },
+};

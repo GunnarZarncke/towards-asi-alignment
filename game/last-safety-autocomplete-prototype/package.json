@@ -1,0 +1,17 @@
+{
+  "name": "last-safety-autocomplete-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.10"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev:ui": "node scripts/dev-ui.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  }
+}

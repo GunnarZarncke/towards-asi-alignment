@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-08 (Market 8 CIRIS C2 sketch; workbench/registry README; snapshot-0 pinned).
+Last updated: 2026-10-10 (Last Safety Review live 3D rooms; session commit).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-10:** **Last Safety Review 3D rooms** — Graphics lane: live Three.js rooms (procedural furniture and bodies, click-to-walk, walk-then-act hotspots, surveillance overlay, act lighting) and fixture harness `npm run dev:ui`. O-33 closed; asset kit still open. Log: `2026-10-10-last-safety-review-3d-rooms.md`.
+- **2026-10-09:** **Last Safety Review plan** — Development structure in `game/last-safety-autocomplete-prototype/PLAN.md`; design split into `spec/` so grammar, graphics, terminal, and engine can proceed in parallel. Player computer follows the lab-sim isolate tool list (files, DMs, access requests; pipeline and handles excluded). Log: `2026-10-09-last-safety-review-plan.md`.
 - **2026-10-08:** **Workbench/registry README scope** — Full catalog 1–13 & 15–18 vs workbench scaffolds (1, 4, 8, 11, 12); sibling READMEs + `drafts/predictions/README.md`. Push workbench to clear stale GitHub “two questions” intro. Log: `2026-10-08-workbench-readme-catalog-scope.md`.
 - **2026-10-08:** **Market 11 / 12 sketches** — S7 blind `shared_slot` miss + ET-4 A0 proxy false-green wrap; claims `5c0c4dc`. Log: `2026-10-08-market-11-12-sketches.md`.
 - **2026-10-08:** **Market 8 CIRIS C2 sketch** — TSA `c2-tool-scout` fixtures → workbench `zarncke-2026-10-08-ciris-c2-access` (freeze tag); registry export 3 rows (v1 false-safe cert, v2 null). Log: `2026-10-08-market-08-ciris-c2-sketch.md`.

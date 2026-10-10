@@ -1,0 +1,22 @@
+{
+  "room": "platform",
+  "actors": {
+    "pavel": { "name": "Pavel Ruiz", "role": "Runtime engineer", "room": "platform", "initials": "PR" },
+    "leila": { "name": "Leila Sen", "role": "Head of evaluation", "room": "evaluation", "initials": "LS" },
+    "elena": { "name": "Elena Fischer", "role": "People and coordination", "room": "people", "initials": "EF" }
+  },
+  "entities": {},
+  "examined": [],
+  "learnedFacts": [],
+  "evidence": [
+    { "id": "shutdown_report", "title": "Shutdown evaluation report", "room": "evaluation", "examined": false },
+    { "id": "job_log", "title": "Execution queue excerpt", "room": "platform", "examined": false },
+    { "id": "staffing_memo", "title": "Task matching memorandum", "room": "people", "examined": false }
+  ],
+  "previous": [
+    { "role": "npc", "npc": "pavel", "text": "The model shut down. That's what the test established — for the runtime, anyway." }
+  ],
+  "asked": [],
+  "usage": { "calls": 0, "input": 0, "output": 0 },
+  "serverMode": "demo"
+}

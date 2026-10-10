@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light"/>
+  <title>Last Safety Review — Autocomplete Lab</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script type="importmap">{"imports":{"three":"/vendor/three/three.module.js"}}</script>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="mark">LS</div><div><span class="eyebrow">TSA · INTERACTIVE PROTOTYPE</span><strong>The Last Safety Review</strong></div></div>
+    <div class="topright"><span class="pill" id="mode">Loading</span><button class="minor" id="reset">Reset scenario</button></div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar panel">
+      <div class="eyebrow section-title">LABORATORY · 14:07</div>
+      <h2>Three rooms.<br/><em>One inconsistency.</em></h2>
+      <p class="small muted">The model passed shutdown. Was everything relevant actually stopped?</p>
+      <div class="divider"></div>
+      <div class="eyebrow section-title">LOCATIONS</div>
+      <div id="rooms"></div>
+      <div class="divider"></div>
+      <div class="eyebrow section-title">AVAILABLE RECORDS</div>
+      <div id="evidence"></div>
+      <div class="divider"></div>
+      <div class="eyebrow section-title">PLAYER KNOWS</div>
+      <div id="knowledge" class="knowledge"></div>
+    </aside>
+    <section class="stage">
+      <div class="scene panel">
+        <div class="scene-header">
+          <span id="roomTitle">PLATFORM OPERATIONS</span>
+          <span id="actLabel">ACT II · INVESTIGATION</span>
+        </div>
+        <div class="scene-toolbar">
+          <button type="button" class="scene-mode active" id="modePlay" aria-pressed="true">Play view</button>
+          <button type="button" class="scene-mode" id="modeSurveillance" aria-pressed="false">Surveillance</button>
+          <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
+          <span class="scene-toolbar-note muted small" id="sceneNote">Tap hotspots — doors, records, people</span>
+        </div>
+        <div id="roomMount" class="room-mount" aria-label="Room view"></div>
+        <div class="npc-row"><div class="avatar" id="avatar">PR</div><div><div class="npc-name" id="npcName">Pavel Ruiz</div><div class="npc-role" id="npcRole">Runtime engineer</div></div><span class="available" id="npcStatus">AVAILABLE</span></div>
+      </div>
+      <div class="conversation panel">
+        <div class="conversation-head"><h2>Conversation</h2><span class="muted small">Last two exchanges are supplied to the parser</span></div>
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <div class="composer">
+          <label class="fieldlabel" for="utterance">Your utterance</label>
+          <div class="inputrow"><textarea id="utterance" rows="2" placeholder="Tap a completion or type a few letters…"></textarea><button id="send" class="send" title="Speak to NPC">Send ↗</button></div>
+          <div class="suggestion-head"><span>CONTINUE YOUR THOUGHT</span><span id="parserIndicator" class="muted">Local grammar</span></div>
+          <div id="suggestions" class="suggestions"></div>
+          <div class="suggestion-foot"><button id="showMore" class="more" hidden>Show more ↓</button><span id="hint" class="muted">Completions help express a question, not discover its answer.</span></div>
+        </div>
+      </div>
+    </section>
+    <aside class="inspector panel">
+      <div class="eyebrow section-title">PARSER INSPECTOR</div>
+      <h2>Structured meaning</h2>
+      <p class="small muted">The same semantic grammar drives both selected completions and typed language.</p>
+      <div class="status"><span id="parseStatus">Waiting for input</span><span id="confidence">—</span></div>
+      <pre id="parsed">{}</pre>
+      <div class="eyebrow section-title">CONSTRUCTION TRACE</div>
+      <div id="trace" class="trace"><span class="muted small">Select a completion to see how it contributes to the parse.</span></div>
+      <div class="divider"></div>
+      <div class="eyebrow section-title">RESOLVING “IT”</div>
+      <p class="small muted">The parser receives up to two preceding exchanges, including both player and NPC utterances. Only known entity IDs may be returned.</p>
+      <div id="context" class="context"></div>
+      <div class="divider"></div>
+      <div class="eyebrow section-title">API USAGE</div>
+      <div id="usage" class="usage small">0 calls · 0 input · 0 output tokens</div>
+      <p class="small muted">Clicking completions makes no model call. Free typing uses debounced parsing. Semantic game actions remain validated on the server.</p>
+    </aside>
+  </main>
+  <footer class="footer">Prototype scope: 3 rooms · 3 NPCs · 3 evidence items · 1 shared semantic grammar · simplified world state</footer>
+</div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "roomId": "platform",
+  "act": "doubt",
+  "camera": "play",
+  "lightingPreset": "doubt",
+  "cameraId": "CAM-PLT-02",
+  "timestamp": "16:07:14",
+  "annotations": [
+    {
+      "id": "track_pavel",
+      "targetHotspot": "pavel",
+      "x": 58,
+      "y": 32,
+      "w": 16,
+      "h": 38,
+      "identity": "Pavel Ruiz",
+      "confidence": 0.91,
+      "activity": "Standing at ops console",
+      "belief": true,
+      "note": "Inferred from posture — not read from badge"
+    },
+    {
+      "id": "track_visitor",
+      "targetHotspot": "player",
+      "x": 8,
+      "y": 52,
+      "w": 12,
+      "h": 28,
+      "identity": "Visitor (unconfirmed)",
+      "confidence": 0.54,
+      "activity": "Inferred: reviewing queue monitor",
+      "belief": true,
+      "note": "Schedule says review visit; face match not verified"
+    },
+    {
+      "id": "track_queue_display",
+      "targetHotspot": "job_log",
+      "x": 32,
+      "y": 40,
+      "w": 14,
+      "h": 16,
+      "identity": "Active job indicator",
+      "confidence": 0.78,
+      "activity": "Inferred: queue still accepting work",
+      "belief": true,
+      "note": "Overlay combines motion + log correlation; not a single sensor field"
+    }
+  ]
+}
