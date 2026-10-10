@@ -68,13 +68,13 @@ Graphics does not invent hotspots for entities the state did not list. A hotspot
 
 ## TerminalState
 
-Not implemented. The terminal lane renders this. The engine produces it. Face-to-face `ClientState` stays as it is.
+Draft. The terminal lane renders this (`public/terminal/`). The engine does not produce it yet. Face-to-face `ClientState` stays as it is.
 
 ```text
 clock: { timeLabel, act?, dateLabel }   // dateLabel is the locked late-2027 day
 notifications: { id, app, title, body, target }[]
-files: { name, rel, owned, sharedBy, kind: "text" | "image" | "video" | "wiki" | "note" | "other" }[]
-threads: { with, messages: { from, text, parse, released }[] }[]
+files: { name, rel, owned, sharedBy, kind, text?, bytes?, sharedWith? }[]
+threads: { with, messages: { from, text, parse, released }[], suggestions?: { phrase, parse }[], omit?: { phrase, parse }[] }[]
 appointments: { id, title, who, where, start, end }[]   // read-only
 contacts: { id, name, role, room? }[]                   // player-visible people + nora
 lastAccess: { capability, ok, reason } | null
@@ -82,9 +82,13 @@ settings?: { completions, sound, reduceMotion, largerType, alwaysShowPhone, demo
 open?: { app, path? }
 ```
 
-`app` on a notification is one of `chat`, `files`, `wiki`, `api`, `calendar`, `contacts`, `notes`, `photo`, `settings`. `files` is only what this player could `file.read`. Wiki pages live under `wiki/`, notes under `notes/`, photos under `photos/`. `released: false` means the reply exists for the engine and must not be shown yet. Pipeline step ids and handle ids are not fields. Notifications only reference ids already in `files` or `threads`. Appointments cannot be edited through any tool.
+`kind` is `text`, `image`, `video`, `wiki`, `note`, or `other`. `target` is `{ kind: "thread" | "file" | "app", id }`. `text` is what a successful `file.read` shows; the engine may omit it until a read. `sharedWith` lists people the player has granted read. `suggestions` are chips. `omit` is a move the NORA channel hides; it is not a chip, and typed text may still send it.
 
-No HTTP route for the terminal exists yet. When composition adds one, it is a tool-shaped call (`file.read`, `file.write`, `file.share`, `dm.send`, `dm.read`, `access.request`) and the response is a tool result plus `TerminalState`. `pipeline.trigger_step` and `handle.invoke` are not routes.
+`app` on a notification is one of `chat`, `files`, `wiki`, `api`, `calendar`, `contacts`, `notes`, `photo`, `settings`. `files` is only what this player could `file.read`. Wiki pages live under `wiki/`, notes under `notes/`, photos under `photos/`. `released: false` means the reply exists for the engine and must not be shown yet. Pipeline step ids and handle ids are not fields. Notifications only reference ids already in `files`, `threads`, or apps. Appointments cannot be edited through any tool.
+
+`fixtures/terminal-session.json` may include `_hostFiles`. That key is not `TerminalState`. The solo test projects it and checks that oracle-only paths are absent.
+
+The solo harness serves the fixture at `GET /api/terminal`. That is not a tool route. When composition adds one, it is a tool-shaped call (`file.read`, `file.write`, `file.share`, `dm.send`, `dm.read`, `access.request`) and the response is a tool result plus `TerminalState`. `pipeline.trigger_step` and `handle.invoke` are not routes.
 
 ## Fixtures
 

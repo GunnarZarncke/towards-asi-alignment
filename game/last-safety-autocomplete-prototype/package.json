@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node server.mjs",
     "dev:ui": "node scripts/dev-ui.mjs",
+    "dev:terminal": "node scripts/dev-terminal.mjs",
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="color-scheme" content="light"/>
+  <meta name="theme-color" content="#f4f7f5"/>
+  <title>Last Safety Review — Phone</title>
+  <link rel="stylesheet" href="/terminal/phone.css"/>
+</head>
+<body>
+  <div class="stage">
+    <div class="room" id="room">
+      <div class="lab-still" aria-hidden="true">
+        <div class="still-sky"></div>
+        <div class="still-window"></div>
+        <div class="still-console"></div>
+        <div class="still-screen"></div>
+        <div class="still-plant"></div>
+        <div class="still-floor"></div>
+      </div>
+      <div class="room-copy">
+        <p class="eyebrow">PLATFORM OPERATIONS</p>
+        <h1>The handset is on the desk.</h1>
+        <p>Fixture only. No engine and no model.</p>
+      </div>
+      <button type="button" class="handset" id="handset" data-act="open-phone">
+        <span class="handset-body" aria-hidden="true"></span>
+        <span class="handset-label">Phone</span>
+      </button>
+    </div>
+    <div class="phone-slot" id="phoneSlot">
+      <div class="phone" id="phone" role="region" aria-label="Phone"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" hidden></div>
+  <script type="module" src="/terminal/phone.js"></script>
+</body>
+</html>

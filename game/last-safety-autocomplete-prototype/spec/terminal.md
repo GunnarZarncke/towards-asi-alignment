@@ -2,7 +2,7 @@
 
 Lane: terminal. Code: `public/terminal/`, `tests/terminal*.mjs`. Reads [grammar.md](grammar.md) for the composer inside a message. Reads [contract.md](contract.md) for `TerminalState`. Does not import `experiments/lab-simulation`.
 
-Status: working. The room UI does not specify this computer. This file does.
+Status: draft phone in `public/terminal/` (`npm run dev:terminal`, port 3002). The room UI does not specify this computer. This file does.
 
 The player is an isolate. They see tool calls and tool results. They do not see the host objects behind them (pipeline engine, permission service, admin policy). The lab-sim `Host` in `experiments/lab-simulation/lab_sim/world_visible/tools.py` is the reference list. The game reimplements only the rows marked for the player.
 
@@ -28,7 +28,8 @@ Clock time is in-game time from the engine (or the fixture), not the player’s 
 Default surface when the overlay opens.
 
 - Clock, large enough to read.
-- Notification stack: unread chats, a file shared with the player, a grant or denial. Tapping a notification opens the matching app and item. Notifications do not invent facts; they only point at `TerminalState`.
+- Notification stack: unread chats, a file shared with the player, a grant or denial, a topic an NPC has raised. Tapping a notification opens the matching app and item. Notifications do not invent facts; they only point at `TerminalState`. They are the hint channel (O-11): a topic or a file, not an oracle conclusion.
+- When the phone overlay is closed and a notification is unread, the room’s phone object blinks. Graphics draws the blink. This lane decides when the unread flag is set.
 - App tiles, always present:
 
 | App | What the player sees | Isolate tools |
@@ -39,7 +40,7 @@ Default surface when the overlay opens.
 | **API** | Explorer for the isolate API: pick a capability, send `access.request`, see ok or denial. No pipeline step ids as runnable actions. | `access.request` |
 | **Calendar** | One day in **late 2027**. Date and appointments cannot be changed. A line marks current in-game time. | none (read-only engine list) |
 | **Contacts** | People in this game (cast the player knows). Open Chat with that person. NORA is a contact. | none; Chat uses `dm.*` |
-| **Notes** | Title plus a plain text field. No formatting. Save is `file.write` under `notes/`. | `file.read`, `file.write` |
+| **Notes** | Title plus a plain text field. No formatting. Save is `file.write` under `notes/`. Player hypotheses live here (O-13). The engine does not seed them, and a notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
 | **Photo** | Capture the **current room** from the phone: pan and zoom the live view, then save. The still goes to Files (`photos/`). | `file.write` |
 | **Settings** | Game and phone options. Do not change the lab’s world. See below. | none (local UI + optional composition flags) |
 

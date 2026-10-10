@@ -40,7 +40,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 | One room, live parse | `npm start`, then the browser | Repo-root `.env` (`OPENAI_API_KEY`). `DEMO_MODE=1` skips the model. |
 | All together | `npm start` | Composition server on `127.0.0.1:3000`. |
 
-`dev:ui` loads fixture state and scene data (`npm run dev:ui` → port 3001). `dev:terminal` and `test:engine` are still target harnesses. Grammar is `npm test`; the combined app is `npm start`.
+`dev:ui` loads fixture state and scene data (`npm run dev:ui` → port 3001). `dev:terminal` loads the phone fixture (`npm run dev:terminal` → port 3002). `test:engine` is still a target harness. Grammar is `npm test`; the combined app is `npm start`.
 
 Fixtures live in `fixtures/`. Each lane may add fixtures for its solo check. A fixture is data, not a second world model.
 
@@ -51,12 +51,12 @@ Gates say when a combination is worth playing. Lanes do not wait on each other b
 | Gate | Together, the build can… | Still open in meta |
 | --- | --- | --- |
 | 0 — now | Parse and speak in three rooms with three people and three records. | Almost everything in the full cast and plot. |
-| 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge. Different strategies justify different conclusions. No new dialogue and no new rooms. | O-01–O-05 until those tables are the canonical history. |
+| 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge. Different strategies justify different conclusions. No new dialogue and no new rooms. | Pack tables still unfilled. First pack is boundary-narrow. Other packs after that one checks. |
 | 2 — playable model | Disclose a fact and get a new observable from the person who can act on it. Finish high on control and low on identifying intention, and the reverse. | O-26, O-27 for the full meeting. |
 | 3 — one room drawn | Show Platform Operations in play and in surveillance mode, on engine state. | O-33–O-38. |
 | 4 — slice | Play that incident through several rooms, with both success measures still distinct. | |
 | 5 — full day | Walk the nine-room cast through three acts. | Length, difficulty, teaching (O-39–O-42). |
-| 6 — language and proofs | Reject leaked facts and illegal transitions in tests; optional Lean on the abstract graph. | O-28–O-32. |
+| 6 — language and proofs | Reject leaked facts and illegal transitions in tests. Lean on the declarative model: designated end-states reachable, fuel as the forcing parameter, no collapse to one end-state before act III. | O-31, O-32. Whether the simplified lab-sim copy is needed (O-28). |
 
 A post-game transfer scenario (a second system, scored on whether the player spots a missing boundary) is out of this plan. See [spec/meta.md](spec/meta.md).
 

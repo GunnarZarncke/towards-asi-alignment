@@ -6,6 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-10 | **Last Safety Review phone draft** — Build a draft of the mobile terminal for the Last Safety Review prototype. | [2026-10-10-last-safety-review-phone.md](2026-10-10-last-safety-review-phone.md) |
+| 2026-10-10 | **Last Safety Review open questions O-01–O-30** — Gunnar answered O-01 through O-30. O-01 asked for book failure modes that fit the shutdown scene.... | [2026-10-10-last-safety-review-open-questions.md](2026-10-10-last-safety-review-open-questions.md) |
+| 2026-10-10 | **Last Safety Review lineage background** — Gunnar asked for background on the CEO, the lab, and NORA: NORA as successor N, with selection pr... | [2026-10-10-last-safety-review-lineage.md](2026-10-10-last-safety-review-lineage.md) |
 | 2026-10-10 | **Last Safety Review: graphics lane, live 3D rooms** — Gunnar: "Start implementing UI & graphics" (PLAN.md graphics lane), then "build proper 3D scenes ... | [2026-10-10-last-safety-review-3d-rooms.md](2026-10-10-last-safety-review-3d-rooms.md) |
 | 2026-10-09 | **Last Safety Review plan split** — User asked for a development plan without the design detail, and for the consolidated game doc to... | [2026-10-09-last-safety-review-plan.md](2026-10-09-last-safety-review-plan.md) |
 | 2026-10-08 | **Workbench README catalog scope** — Feedback that the public workbench README still read as Markets 1 and 4 only, not the full frozen... | [2026-10-08-workbench-readme-catalog-scope.md](2026-10-08-workbench-readme-catalog-scope.md) |
@@ -18,13 +21,10 @@
 | 2026-10-08 | **External-services claims registry card** — User asked for a site card for ai-safety-claims.com as a related card from predictions (not repla... | [2026-10-08-external-services-claims-card.md](2026-10-08-external-services-claims-card.md) |
 | 2026-10-07 | **Ward monitoring news** — Create a field-news card on Francis Rhys Ward’s 7 October 2026 survey of frontier-lab monitoring.... | [2026-10-07-ward-monitoring-news.md](2026-10-07-ward-monitoring-news.md) |
 | 2026-10-07 | **v1.7.0 release notes** — User asked to prepare the release. | [2026-10-07-v1-7-0-release-notes.md](2026-10-07-v1-7-0-release-notes.md) |
-| 2026-10-07 | **Registry split plan revised** — User: revise eval-registry-split.md and the open questions in the TSA repo. | [2026-10-07-registry-split-revision.md](2026-10-07-registry-split-revision.md) |
-| 2026-10-07 | **Maintainer checklists + quiz CI fix** — User: build failed (`make check`, quiz bank); then asked for maintainer doc listing action→follow... | [2026-10-07-maintainer-checklists.md](2026-10-07-maintainer-checklists.md) |
-| 2026-10-07 | **Field news summary trim** — Shorten the `summary` field on the last four field-news cards (they were too long for the listing). | [2026-10-07-field-news-summary-trim.md](2026-10-07-field-news-summary-trim.md) |
 
 ## Archive by month
 
-- **2026-10** (25): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (28): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

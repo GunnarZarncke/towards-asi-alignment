@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-10 (Last Safety Review live 3D rooms; session commit).
+Last updated: 2026-10-10 (Last Safety Review phone draft).
 
 ---
 
@@ -20,6 +20,9 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-10:** **Last Safety Review phone draft** — Isolate phone at `npm run dev:terminal` (port 3002): homescreen, chat, files, wiki, API, calendar, contacts, notes, photo, settings. Full screen under 760px. Pipeline steps are not controls. Log: `2026-10-10-last-safety-review-phone.md`.
+- **2026-10-10:** **Last Safety Review O-01–O-30** — Packs for the shutdown oracle (first: boundary-too-narrow). Fuel, three storylet outcomes, no mandatory spine, phone-blink hints. Speech samples and storylet drafts up for review. Log: `2026-10-10-last-safety-review-open-questions.md`.
+- **2026-10-10:** **Last Safety Review lineage background** — NORA is successor 4 of a purchased base. Partial self-design (tools, matcher, training notes) filtered by Mara’s promotions and the team’s existing selection pressures. Not a plot; MB5/MB10 stay off. Log: `2026-10-10-last-safety-review-lineage.md`.
 - **2026-10-10:** **Last Safety Review 3D rooms** — Graphics lane: live Three.js rooms (procedural furniture and bodies, click-to-walk, walk-then-act hotspots, surveillance overlay, act lighting) and fixture harness `npm run dev:ui`. O-33 closed; asset kit still open. Log: `2026-10-10-last-safety-review-3d-rooms.md`.
 - **2026-10-09:** **Last Safety Review plan** — Development structure in `game/last-safety-autocomplete-prototype/PLAN.md`; design split into `spec/` so grammar, graphics, terminal, and engine can proceed in parallel. Player computer follows the lab-sim isolate tool list (files, DMs, access requests; pipeline and handles excluded). Log: `2026-10-09-last-safety-review-plan.md`.
 - **2026-10-08:** **Workbench/registry README scope** — Full catalog 1–13 & 15–18 vs workbench scaffolds (1, 4, 8, 11, 12); sibling READMEs + `drafts/predictions/README.md`. Push workbench to clear stale GitHub “two questions” intro. Log: `2026-10-08-workbench-readme-catalog-scope.md`.

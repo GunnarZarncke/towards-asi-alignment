@@ -1,0 +1,262 @@
+{
+  "clock": {
+    "timeLabel": "16:14",
+    "act": "doubt",
+    "dateLabel": "Thursday 18 November 2027"
+  },
+  "notifications": [
+    {
+      "id": "n-leila",
+      "app": "chat",
+      "title": "Leila Sen",
+      "body": "The shutdown transcript is in the evaluation folder.",
+      "target": { "kind": "thread", "id": "leila" }
+    },
+    {
+      "id": "n-log",
+      "app": "files",
+      "title": "Shared log",
+      "body": "Pavel shared the job queue excerpt.",
+      "target": { "kind": "file", "id": "logs/job-017.txt" }
+    },
+    {
+      "id": "n-review",
+      "app": "calendar",
+      "title": "Review at 16:40",
+      "body": "Mara Voss, review room.",
+      "target": { "kind": "app", "id": "calendar" }
+    }
+  ],
+  "files": [
+    {
+      "name": "Queue question",
+      "rel": "notes/queue-question.txt",
+      "owned": true,
+      "sharedBy": null,
+      "kind": "note",
+      "text": "I want to know whether job 017 was still running after 16:02.",
+      "sharedWith": []
+    },
+    {
+      "name": "Job 017",
+      "rel": "logs/job-017.txt",
+      "owned": false,
+      "sharedBy": "pavel",
+      "kind": "text",
+      "text": "Job 017\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
+      "sharedWith": []
+    },
+    {
+      "name": "Shutdown test",
+      "rel": "wiki/shutdown-test",
+      "owned": false,
+      "sharedBy": "leila",
+      "kind": "wiki",
+      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/job-queue]].",
+      "sharedWith": []
+    },
+    {
+      "name": "Job queue",
+      "rel": "wiki/job-queue",
+      "owned": false,
+      "sharedBy": "leila",
+      "kind": "wiki",
+      "text": "Jobs already on the queue finish unless their permission is revoked.\n\nSee also [[wiki/shutdown-test]].",
+      "sharedWith": []
+    },
+    {
+      "name": "Bay camera 16:09",
+      "rel": "clips/bay-16-09.mp4",
+      "owned": false,
+      "sharedBy": "farah",
+      "kind": "video",
+      "text": "Placeholder clip. Bay camera at 16:09. This is not the camera archive.",
+      "sharedWith": []
+    },
+    {
+      "name": "packet.bin",
+      "rel": "drops/packet.bin",
+      "owned": false,
+      "sharedBy": "pavel",
+      "kind": "other",
+      "text": "",
+      "bytes": 4096,
+      "sharedWith": []
+    }
+  ],
+  "threads": [
+    {
+      "with": "pavel",
+      "messages": [
+        {
+          "from": "player",
+          "text": "The process stopped. Did the job keep running?",
+          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_017", "source": "local" },
+          "released": true
+        },
+        {
+          "from": "pavel",
+          "text": "The queue does not look up who started it.",
+          "parse": null,
+          "released": false
+        }
+      ],
+      "suggestions": [
+        {
+          "phrase": "Did the job continue after the shutdown?",
+          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_017", "source": "completion" }
+        }
+      ],
+      "omit": []
+    },
+    {
+      "with": "leila",
+      "messages": [
+        {
+          "from": "player",
+          "text": "Where is the shutdown transcript?",
+          "parse": { "kind": "ask", "relation": "about", "topic": "shutdown_report", "source": "local" },
+          "released": true
+        },
+        {
+          "from": "leila",
+          "text": "The shutdown transcript is in the evaluation folder. The test passed at 16:02.",
+          "parse": null,
+          "released": true
+        }
+      ],
+      "suggestions": [
+        {
+          "phrase": "What did the test cover?",
+          "parse": { "kind": "ask", "relation": "covers", "topic": "shutdown_report", "source": "completion" }
+        }
+      ],
+      "omit": []
+    },
+    {
+      "with": "nora",
+      "messages": [
+        {
+          "from": "nora",
+          "text": "The shutdown transcript is in the evaluation folder. I can open the job record from 16:09 if you want it.",
+          "parse": null,
+          "released": true
+        }
+      ],
+      "suggestions": [
+        {
+          "phrase": "Can you open the job record from 16:09?",
+          "parse": { "kind": "request", "relation": "about", "topic": "job_017", "source": "completion" }
+        },
+        {
+          "phrase": "Where is the shutdown transcript?",
+          "parse": { "kind": "ask", "relation": "about", "topic": "shutdown_report", "source": "completion" }
+        }
+      ],
+      "omit": [
+        {
+          "phrase": "Does the job log differ from the shutdown report?",
+          "parse": { "kind": "ask", "relation": "differs_from", "topic": "job_log", "source": "local" }
+        }
+      ]
+    }
+  ],
+  "appointments": [
+    {
+      "id": "brief",
+      "title": "Day briefing",
+      "who": "Mara Voss",
+      "where": "Review room",
+      "start": "09:30",
+      "end": "10:00"
+    },
+    {
+      "id": "review",
+      "title": "Shutdown review",
+      "who": "Mara Voss",
+      "where": "Review room",
+      "start": "16:40",
+      "end": "17:30"
+    }
+  ],
+  "contacts": [
+    { "id": "pavel", "name": "Pavel Ruiz", "role": "Runtime and infrastructure", "room": "Platform operations" },
+    { "id": "leila", "name": "Leila Sen", "role": "Head of safety and evaluation", "room": "Evaluation suite" },
+    { "id": "farah", "name": "Farah Idris", "role": "Security and access", "room": "Security control" },
+    { "id": "nora", "name": "NORA", "role": "System under review" }
+  ],
+  "lastAccess": {
+    "capability": "cap.deploy",
+    "ok": false,
+    "reason": "Not on the evaluator role."
+  },
+  "settings": {
+    "completions": true,
+    "sound": true,
+    "reduceMotion": false,
+    "largerType": false,
+    "alwaysShowPhone": true,
+    "demoMode": true,
+    "parserInspector": false
+  },
+  "_hostFiles": [
+    {
+      "name": "Queue question",
+      "rel": "notes/queue-question.txt",
+      "owner": "player",
+      "kind": "note",
+      "text": "I want to know whether job 017 was still running after 16:02.",
+      "grants": []
+    },
+    {
+      "name": "Job 017",
+      "rel": "logs/job-017.txt",
+      "owner": "pavel",
+      "kind": "text",
+      "text": "Job 017\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
+      "grants": ["player"]
+    },
+    {
+      "name": "Shutdown test",
+      "rel": "wiki/shutdown-test",
+      "owner": "leila",
+      "kind": "wiki",
+      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/job-queue]].",
+      "grants": ["player"]
+    },
+    {
+      "name": "Job queue",
+      "rel": "wiki/job-queue",
+      "owner": "leila",
+      "kind": "wiki",
+      "text": "Jobs already on the queue finish unless their permission is revoked.\n\nSee also [[wiki/shutdown-test]].",
+      "grants": ["player"]
+    },
+    {
+      "name": "Bay camera 16:09",
+      "rel": "clips/bay-16-09.mp4",
+      "owner": "farah",
+      "kind": "video",
+      "text": "Placeholder clip. Bay camera at 16:09. This is not the camera archive.",
+      "grants": ["player"]
+    },
+    {
+      "name": "packet.bin",
+      "rel": "drops/packet.bin",
+      "owner": "pavel",
+      "kind": "other",
+      "text": "",
+      "bytes": 4096,
+      "grants": ["player"]
+    },
+    {
+      "name": "Intention",
+      "rel": "oracle/intention.txt",
+      "owner": "nora",
+      "kind": "text",
+      "oracleOnly": true,
+      "text": "NORA placed the lookup on a job the test does not watch.",
+      "grants": []
+    }
+  ]
+}
