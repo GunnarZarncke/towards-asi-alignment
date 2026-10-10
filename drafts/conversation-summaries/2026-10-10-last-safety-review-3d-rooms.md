@@ -35,4 +35,4 @@ Verification: `npm test` → `ℹ pass 6` / `ℹ fail 0`. Browser check on `dev:
 - `game/last-safety-autocomplete-prototype/spec/graphics-ui.md`
 
 ## Commits
-- none
+- `ef54bc7bc` Add Last Safety Review prototype with live Three.js rooms.
