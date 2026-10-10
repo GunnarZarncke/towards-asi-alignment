@@ -1,6 +1,6 @@
 # Contract
 
-Status: matches the running prototype. Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
+Status: matches the running prototype, except the ranking fields in `ClientState`, which arrive with the O-19 ranker ([ranking.md](ranking.md)). Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
 
 The browser never receives the API key, oracle-only facts, or unfiltered NPC knowledge.
 
@@ -23,16 +23,27 @@ Returned by the engine on every API response as `state`. The UI renders this and
 room
 actors: id → { name, role, room, initials }
 entities: id → public entity record (only ids in player knowledge)
-examined: evidence ids
-learnedFacts: { id, text }[]
+  domains: DomainId[]          // ranking; empty on actor records
+  eventAt: number | null       // minute of day, only after the player has read that time
+examined: evidence ids         // inspection order; last id is focused evidence
+learnedFacts: { id, text, refs: id[], eventAt: number | null }[]
+discoveredAt: id → number      // fuel index when the id became player-visible (0 for the starting vocabulary)
+introduced: id[]               // actors, including nora, whose public role the player has heard
+roleDomains: { id, domains: DomainId[] }[]  // one row per introduced id; unintroduced rows are absent
 evidence: { id, title, room, examined }[]
-previous: recent conversation turns
-asked: topic keys already asked
+previous: { role, text, npc?, refs?: id[] }[]
+asked: topic keys already asked   // stored; the ranker does not read this
 usage: { calls, input, output }
 serverMode: "demo" | "live"
+conceptLinksEnabled: boolean   // mirrors phone setting; default false
+conceptMoreLink: { summary, href } | null   // O-41: one sticky link per room visit; null when off or none yet
 ```
 
+`summary` is a very short phrase for the underlined text after `More: `. `href` is the companion-site concept card URL for that concept slug. The mapping from in-game concept ids to slug, summary, and href is compiled from `metadata/concepts.yml` and the knowledge graph (composition or a generated game asset). The engine sets `conceptMoreLink` when a scene event marks a concept relevant; it replaces the previous link only with a newer trigger in the same room, and clears on `go(room)`.
+
 Today `clientState` also exposes every actor’s room even when the player has not visited it. Tightening that is an engine change to this contract, not a UI filter.
+
+Ranking fields (`domains`, `eventAt`, `discoveredAt`, `introduced`, `roleDomains`, fact `refs`, turn `refs`) are defined in [ranking.md](ranking.md). They are part of this shape once the ranker is implemented. They carry no oracle id. `asked` remains on the state and is not a ranking input.
 
 ## HTTP
 

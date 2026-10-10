@@ -53,17 +53,17 @@ Entity slots accept only ids the player knows. Evidence offered for `show` must 
 
 Two channels. The engine names which one is active. Grammar does not infer it from the room.
 
-**With a person.** Suggestions are epistemic moves the player could make with what they already know: ask someone, request a record, compare two known items, show an examined record. Typing `camera` may offer asking Farah about access, requesting footage, or comparing the camera record with the job log, and only the ones the player’s knowledge supports. The player chooses the move. Phrasing is secondary. A click still does not call the model.
+**With a person.** Suggestions are epistemic moves the player could make with what they already know: ask someone, request a record, compare two known items, show an examined record. Typing `camera` may offer asking Justine about access, requesting footage, or comparing the camera record with the job log, and only the ones the player’s knowledge supports. The player chooses the move. Phrasing is secondary. A click still does not call the model.
 
 The list is not the set of legal actions. Typed text outside the list is still parsed and sent. A suggestion must not be the only way to reach a discriminating test, and it must not mention an entity the player has not encountered.
 
-**With NORA** (terminal thread, recipient `nora`). The same composer, a different ranking. Suggestions follow what NORA is willing to help with. They may omit a comparison, a permission change, or a record that would discriminate among explanations. They must not state a hidden fact, invent a log, or mark an omitted move as impossible. The player can still type the omitted move.
+**With NORA** (terminal thread, recipient `nora`). The same composer and the same ranker. The engine may omit a comparison, a permission change, or a record that would discriminate among explanations. The list must not state a hidden fact, invent a log, or mark an omitted move as impossible. The player can still type the omitted move.
 
 Empty field, either channel: a few relevant openings, not a menu of the plot.
 
 “Show more” pages a stable ranking inside the active channel. It is not a hint about later scenes.
 
-Ranking inputs with a person, in the prototype: public NPC expertise, known entities, examined evidence, room. NORA’s omissions are specified with the incident model, not by the prototype ranker. Fuller ranking (O-19) and novel questions (O-20) stay open. Until they close, do not rank the person-channel by oracle facts.
+Order is [ranking.md](ranking.md) (O-19, working). The person channel passes the addressed NPC. The NORA channel passes `nora` after the engine’s omit list. The ranker does not see oracle facts. Novel wording stays allowed (O-20) and does not create an engine action.
 
 Three sources were proposed: authored plot-critical lines, compositional fragments (verb + topic + evidence + person), and model completions for unusual prefixes. The third source may suggest phrasing. It may not change consequential state until the engine accepts the resulting parse. On the NORA channel the model may propose a helpful next step. It may not be the component that decides which evidence is missing from the list. That list comes from the engine.
 
@@ -81,6 +81,8 @@ Rules already in `lib/llm.mjs`:
 
 `DEMO_MODE=1` or a missing key uses a toy parser. That parser is for UI exercise, not a quality claim.
 
+Player text is one sentence (O-32). The proposed cap is 100 characters; the number is tentative. Before parse, strip characters that are not letters, digits, spaces, or ordinary sentence punctuation (`. , ? ! ' -`). Do not add a jailbreak filter in this build. Text that maps to no relation stays `relation: "open"`.
+
 Free replies are not grammar. They are composition (`lib/llm.mjs`) speaking from facts the engine chose to expose. See [engine.md](engine.md).
 
 ## Tests already required
@@ -92,5 +94,6 @@ Free replies are not grammar. They are composition (`lib/llm.mjs`) speaking from
 - Typed openings are recognized locally.
 - A prefix can surface more than one move (ask, request, compare) and never an id the fixture’s player does not know.
 - With NORA as the addressee, a fixture can omit one known discriminating move that remains typable.
+- Ranking cases in [ranking.md](ranking.md).
 
 Add cases in `tests/grammar*.mjs` when a kind or relation changes. Do not assert story outcomes here.

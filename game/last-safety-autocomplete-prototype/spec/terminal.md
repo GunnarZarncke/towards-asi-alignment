@@ -42,6 +42,7 @@ Default surface when the overlay opens.
 | **Contacts** | People in this game (cast the player knows). Open Chat with that person. NORA is a contact. | none; Chat uses `dm.*` |
 | **Notes** | Title plus a plain text field. No formatting. Save is `file.write` under `notes/`. Player hypotheses live here (O-13). The engine does not seed them, and a notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
 | **Photo** | Capture the **current room** from the phone: pan and zoom the live view, then save. The still goes to Files (`photos/`). | `file.write` |
+| **Video** | Camera recordings the engine has released. Playback is a replay of stored events, clocked by fuel (O-36). | none (reads the event log) |
 | **Settings** | Game and phone options. Do not change the lab’s world. See below. | none (local UI + optional composition flags) |
 
 NORA has no body. The Chat thread with NORA is how the player talks to the system. Face to face in a room is the same dialogue when that person is present.
@@ -54,7 +55,7 @@ Opening a file, a download, or a document from Chat, Files, Knowledge, or a noti
 | --- | --- |
 | Text, log, memo, wiki page | Scrollable document. |
 | Image | Still image, pinch or scroll if the viewport is small. |
-| Video / camera clip | In-phone video player (play, pause, scrub). Surveillance clips from [graphics-ui.md](graphics-ui.md) can open here when the engine has released the file. |
+| Video / camera clip | Opens the Video app. Play, pause, fast forward, backward, jump to the next room in the log, jump to the previous room. The picture is the room rebuilt from events at that fuel index, not a stored movie file. |
 | Unknown | Filename, size, and a “cannot preview” line. No extra tools. |
 
 Closing the viewer returns to the app that opened it. Viewers do not grant new access. If `file.read` would fail, the viewer does not open.
@@ -86,6 +87,7 @@ The finder is the current room camera from graphics, shown inside the phone. Pan
 | Always show phone | on (desktop) | If off, hide overlay until the launcher or a room handset is used. |
 | Demo / no model | follow `.env` | Same as `DEMO_MODE=1`: no live parse. Shown so a tester can flip it without editing files. |
 | Parser inspector | off | Extra technical view of the current `Parse` (useful while building). |
+| TSA concept links | off | Room footer: `More: ` + underlined short summary → companion concept card. One link at a time; the last relevant concept in this room until the player leaves (O-41). Graphics draws it; engine supplies summary and href from the compiled concept map. |
 
 ## Player tool list
 
@@ -117,7 +119,7 @@ In-room talk and a terminal message are one dialogue system.
 - Face to face, the addressee is in the room and the reply can return on that turn (`/api/respond`).
 - On the terminal, the addressee is a recipient id. Human replies wait (O-44). Opening the thread shows what has already arrived. It does not pull a reply that the engine has not released.
 - NORA is recipient `nora`. No room contains NORA. NORA’s replies use the same fact filter as any NPC (`exposedNpcFacts`). They are not a second, less careful channel. They may be helpful in a way that selects evidence.
-- Completions in this thread use the NORA channel in [grammar.md](grammar.md). The suggestion list may hide a move that would discriminate among explanations. The text field still accepts that move. The terminal does not decide the omission. The engine passes the list.
+- Completions in this thread use the NORA channel in [grammar.md](grammar.md). Order is [ranking.md](ranking.md), after the engine’s omit list. The suggestion list may hide a move that would discriminate among explanations. The text field still accepts that move. The terminal does not decide the omission. The engine passes the list.
 
 Showing a file to someone can be `file.share` to them, or a `show` speech act in a message. Sharing grants read. `show` records that they were asked to look. The engine decides whether those are one action or two. The terminal must not grant read as a side effect of sending text.
 

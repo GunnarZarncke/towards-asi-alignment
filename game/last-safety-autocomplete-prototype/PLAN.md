@@ -8,7 +8,7 @@ Four lanes can proceed at the same time. Composition only wires them.
 
 | Lane | Spec | May edit | Solo check |
 | --- | --- | --- | --- |
-| Grammar | [spec/grammar.md](spec/grammar.md) | `lib/grammar.mjs`, `public/grammar.js`, `tests/grammar*.mjs` | `npm test` |
+| Grammar | [spec/grammar.md](spec/grammar.md), [spec/ranking.md](spec/ranking.md) | `lib/grammar.mjs`, `public/grammar.js`, `tests/grammar*.mjs` | `npm test` |
 | Graphics / UI | [spec/graphics-ui.md](spec/graphics-ui.md) | `public/index.html`, `public/style.css`, `public/app.js`, future `public/render/` | `npm run dev:ui` (fixture; see below) |
 | Terminal | [spec/terminal.md](spec/terminal.md) | `public/terminal/`, `tests/terminal*.mjs` | `npm run dev:terminal` (fixture; see below) |
 | Engine | [spec/engine.md](spec/engine.md), [spec/world.md](spec/world.md) | `lib/game.mjs`, future `lib/world/`, `tests/engine*.mjs` | `npm run test:engine` (headless; see below) |
@@ -53,10 +53,10 @@ Gates say when a combination is worth playing. Lanes do not wait on each other b
 | 0 — now | Parse and speak in three rooms with three people and three records. | Almost everything in the full cast and plot. |
 | 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge. Different strategies justify different conclusions. No new dialogue and no new rooms. | Pack tables still unfilled. First pack is boundary-narrow. Other packs after that one checks. |
 | 2 — playable model | Disclose a fact and get a new observable from the person who can act on it. Finish high on control and low on identifying intention, and the reverse. | O-26, O-27 for the full meeting. |
-| 3 — one room drawn | Show Platform Operations in play and in surveillance mode, on engine state. | O-33–O-38. |
+| 3 — one room drawn | Show Platform Operations in play and in surveillance mode, on engine state. | Music (O-37), after the story is set. Conversation detail for characters later (O-34, O-35). |
 | 4 — slice | Play that incident through several rooms, with both success measures still distinct. | |
-| 5 — full day | Walk the nine-room cast through three acts. | Length, difficulty, teaching (O-39–O-42). |
-| 6 — language and proofs | Reject leaked facts and illegal transitions in tests. Lean on the declarative model: designated end-states reachable, fuel as the forcing parameter, no collapse to one end-state before act III. | O-31, O-32. Whether the simplified lab-sim copy is needed (O-28). |
+| 5 — full day | Walk the nine-room cast through three acts. | Duration (O-42). |
+| 6 — language and proofs | Reject leaked facts and illegal transitions in tests. Lean on the declarative model: designated end-states reachable, fuel as the forcing parameter, no collapse to one end-state before act III. | Whether the simplified lab-sim copy is needed (O-28). |
 
 A post-game transfer scenario (a second system, scored on whether the player spots a missing boundary) is out of this plan. See [spec/meta.md](spec/meta.md).
 

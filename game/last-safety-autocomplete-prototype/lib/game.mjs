@@ -91,7 +91,7 @@ const IN_WORLD = {
     task_queue:'The model submits work to the queue. The queue can keep going when the model process stops.',
     shutdown_test:'Leila tested the model runtime, not the durable queue. Those are different systems.',
     job_017:'Job 017 was already queued. I can explain the runtime, but not the model’s intention.',
-    camera_system:'The camera system is not in the model sandbox. Services can have separate permissions; Farah owns that configuration.',
+    camera_system:'The camera system is not in the model sandbox. Services can have separate permissions; Justine owns that configuration.',
     visitor_records:'Some internal jobs can query visitor records. An access log would show whether that happened.',
     job_log:'The log records what the execution service did, not why NORA initiated it.',
     shutdown_report:'It says the model process stopped. It does not say the whole workflow stopped.'

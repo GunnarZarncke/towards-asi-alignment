@@ -41,7 +41,7 @@ Strong in the current design: MB1 boundary, MB4 correction, MB4a audit independe
 
 Partial: MB2 value bundle, MB3 value referents. Weak: MB8 extrapolated volition. Absent on purpose for now: MB5 successor stability, MB7d acausal coordination, MB10 successor audit forgeability.
 
-Thesis claims in play: boundary, value bundle, grounding, correction, selection. Successor is only implied by persistence and delegation.
+Thesis claims in play: boundary, value bundle, grounding, correction, selection. NORA’s lineage is background only ([world.md](world.md)): successor 4 of the lab’s line, partial self-design of tools and proposals, training still Jun’s, promotions still Ian’s. That note does not add a successor plot. MB5 and MB10 stay absent.
 
 The four questions: certifying continued tracking is the main activity; determining the target is partial (Amara); constructing a tracking system is weak (the player is not the designer); recovery is partial (the player can request an intervention).
 
@@ -51,25 +51,59 @@ Also in play, at narrative strength: evaluation awareness, metric laundering, th
 
 Successor alignment, ontology shift, acausal coordination, and a general method for constructing aligned systems. No humanoid NORA. No receptionist, guards, or background staff. No continuous day–night clock. No unilateral player authority over shutdown, policy, or promotions.
 
+## Decisions (10 October 2026)
+
+Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc is unchanged.
+
+| Id | Status | Decision |
+| --- | --- | --- |
+| O-01 | working | No single hidden history. Campaigns are packs in [incident.md](incident.md). The first pack is boundary-too-narrow. Other book failure modes are other packs. |
+| O-02 | working | Both. Deception is off in some packs and on in others. Packs are also the difficulty ladder. |
+| O-03 | working | Partial escape is defined per pack, inside the building. The same word is not one mechanic. |
+| O-04 | working | Per pack. In the first pack the revelation is the boundary mismatch: the certificate is about the model process, and the system that acted is wider. |
+| O-05 | working | Play the immediate effect of the decision (stop, revoke, hold, release). Leave later consequences unnarrated. Where the pack makes it plausible, show that the immediate action did not cover the system. |
+| O-06 | open | Grain is undecided until the drafts in [incident.md](incident.md) are reviewed. Proposed grain: one disclosure or one intervention, not a whole encounter. |
+| O-07 | working | Three structural outcomes: cooperate (progress, reveal), refuse (delay, prerequisite), other. |
+| O-08 | working | An act changes when an evidence threshold is met, or when fuel runs out. Fuel counts sentences sent. Which other actions spend fuel is still open. No wall clock. |
+| O-09 | working | The budget is that fuel. Exhausting it forces the review (clock forcing in O-29). Meeting the evidence threshold lets the player call the review sooner. Thresholds are not numbered yet. |
+| O-10 | closed | No mandatory spine. Missing the central problem is allowed. NPCs bring key topics up. The phone blinks when a notification is waiting. |
+| O-11 | closed | Those topics and notifications are the hints. A notification points at a topic or a file. It does not state an oracle fact. |
+| O-12 | open | Substantiation waits on the incident model. |
+| O-13 | working | Hypotheses are player notes on the phone. The engine does not seed them. A notification does not write a note. |
+| O-14 | closed | No tool resolves correlated sources. The player may write a note about them. |
+| O-15 | closed | No player-facing probability. The two scores stay a set of open explanations and a yes/no restriction. If an NPC prompt needs uncertainty, the engine supplies words and the model speaks words. A number on screen is fuel, or a figure already printed in a document. |
+| O-16 | working | Tests are a fixed handle list (rerun shutdown, revoke a job’s permission, camera archive, shared meeting summary, pilot results with permission, hypotheticals with Amara). The player does not invent a procedure. A simplified lab-sim is what would make a handle a mechanism rather than a storylet flag. Pipeline stays off the phone. |
+| O-17 | closed | The eight humans stay. NORA is spoken to on the terminal, not as a ninth body. |
+| O-18 | working | Prompt paragraphs are in [world.md](world.md) for review. Facts and storylet outcomes are authored. Wording is mostly the model. |
+| O-19 | working | Rank by shortest paths on a projection of player-visible state: domains, public roles after introduction, document time, and discovery fuel. The prefix filters. Diversity is a small bonus. Oracle facts, asked-line penalties, and storylet lookahead stay out. Spec: [ranking.md](ranking.md). |
+| O-20 | closed | “Genuinely new” meant a suggestion the author did not write. The grammar already accepts open text (`relation: "open"`). Novel wording is allowed. It does not create an engine action. |
+| O-21 | closed | No separate status arithmetic. Status lives in the NPC prompt. The model may pick which of the three authored outcomes fires, from how the player acted. It cannot add an outcome. |
+| O-22 | open | Each NPC will have a concealment list, chosen when a pack’s plot needs it, applied by prompt. The lists are not written yet. |
+| O-23 | working | Amara: a conversation about her work and a simplified value bundle. She answers hypotheticals. She runs no experiment. Pilot results are a file, behind permission. |
+| O-24 | working | In a pack that features the B plot, solving it adds oversight or changed incentives on top of the normal ending. In the Goodhart pack the B plot is the center and is more complicated. In the false-positive pack the B plot is the false positive and does not add that ending. |
+| O-25 | working | The add-on is more external oversight or changed incentives. Goodhart makes that problem the meeting. The false-positive pack does not unlock it. |
+| O-26 | working | The meeting follows evidence presented and conclusions derived, including objections that fill a hole in that presentation. Persuasion is small and covers only holes the player did not investigate. |
+| O-27 | open | A coherent wrong institutional decision is allowed. Do not build it until a pack needs it. |
+| O-28 | working | A simplified copy of the lab-sim may live under the game, isolate planes kept. Do not import `experiments/lab-simulation`. Whether the copy is needed is still open. Pipeline TBD. |
+| O-29 | working | Lean proves reachability of designated end-states on the declarative model. Fuel is the forcing parameter. At the start every designated end-state is reachable. From every reachable state at least one is. The set of reachable end-states does not shrink to one before act III. |
+| O-30 | working | A declarative knowledge model, plus an action model on top of it, drives the game. Lean checks that declarative model. The language model sits above actions. |
+| O-31 | working | Browser local storage. Export and import are JSON with a `version` and a `scenario` name. Every event is stored, including movement. The clock on an event is fuel, not a wall-clock time. |
+| O-32 | working | Player input is one sentence. Proposed cap is 100 characters, and that number is tentative. Special characters are stripped. No jailbreak defense in this build. |
+| O-33 | closed | Stay with live Three.js. One fixed camera per room. Asset kit still open; procedural bodies stand in. |
+| O-34 | working | Current procedural characters are enough. More detail, if it comes, is for conversations. |
+| O-35 | working | Current motion is enough. More detail, if it comes, is for conversations. |
+| O-36 | working | A recording is the event log replayed in the room. The phone’s video app can fast-forward, rewind, and jump to the next or previous room. |
+| O-37 | open | Music waits until the story is set. |
+| O-38 | working | Current phone layout is enough. Tune it later. |
+| O-39 | working | General audience. Terms arrive after the scene has introduced them, except AI, safety review, and alignment. Each NPC prompt has a focus and explains those words when asked. |
+| O-40 | working | No separate learning score. A load-bearing gap is noticeable in a report’s summary or checklist, costs fuel if an analysis action is used, and may be spoken by an NPC after an act change. |
+| O-41 | working | Phone setting (default off). When on, the room view shows one line at the bottom: `More: ` plus a very short underlined summary linking to the matching companion-site concept card. URLs are compiled from in-game concept ids and the repo knowledge graph (`metadata/concepts.yml`, concept-graph). Only the most recently relevant link is shown; it stays until the player leaves the room. |
+
 ## Open questions
 
-Narrative truth (blocks gate 1 content): O-01 actual shutdown history; O-02 whether deception is canonical, merely suspected, or per-campaign; O-03 operational meaning of partial escape; O-04 decisive revelation; O-05 NORA after the decision.
-
-Progression: O-06 storylet size; O-07 outcomes per storylet; O-08 act triggers; O-09 time or action budget; O-10 mandatory spine; O-11 hints that do not leak oracle facts.
-
-Evidence: O-12 substantiation standard; O-13 hypothesis representation (the incident table in [incident.md](incident.md) is the working form); O-14 correlated sources, including a file NORA produced because it was asked; O-15 quantitative uncertainty; O-16 how far a player-invented test may go.
-
-Talk: O-17 whether Daniel stays a separate person (Amara stays); O-18 authored versus generated lines; O-19 suggestion ranking; O-20 novel questions from autocomplete; O-21 status update rules; O-22 mistakes versus lies; O-23 depth of Amara’s interview.
-
-Endings: O-24 how fixed the selection subplot is; O-25 evidence for the institutional ending; O-26 final-meeting decision rule; O-27 a coherent wrong institutional decision.
-
-Build: O-28 lab-sim boundary; O-29 smallest Lean abstraction; O-30 spec versus Lean sync; O-31 save, replay, camera history; O-32 accept / clarify / reject for free language.
+O-06 storylet grain (drafts up for review). O-12 substantiation. O-22 concealment lists. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration (earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation; untested). The 100-character cap (O-32) is tentative.
 
 Player terminal: O-43 which capabilities an evaluator may `access.request` beyond files and messages; O-44 how long a human reply waits, and how that differs for NORA. Placement is a generic phone overlay (right on desktop, full screen on mobile)—working. The pipeline stays off the terminal (working). See [terminal.md](terminal.md).
-
-Picture and sound: O-33 closed 10 October 2026 by Gunnar: live Three.js scenes, one fixed camera per room (asset kit still open; procedural primitives stand in); O-34 character style; O-35 animation depth; O-36 how recordings are produced; O-37 music; O-38 mobile floor.
-
-Evaluation: O-39 audience and difficulty; O-40 what learning to measure; O-41 concepts during play or only after; O-42 duration (earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation; untested).
 
 ## Later
 
@@ -77,6 +111,6 @@ A transfer check is out of scope for this build: after the game, a short unrelat
 
 ## Lab-sim
 
-The design reuses the lab-simulation idea of separate planes: oracle, what a role can see, and audit surfaces. No software integration exists. O-28 is open. Until it closes, the game engine does not import `experiments/lab-simulation`.
+The design reuses the lab-simulation idea of separate planes: oracle, what a role can see, and audit surfaces. O-28 is a simplified copy under the game, isolate kept, not an import of `experiments/lab-simulation`. Do not add that copy until a pack needs a handle the storylet flags cannot express. Pipeline TBD.
 
 The player computer is specified against that isolate tool list anyway. See [terminal.md](terminal.md). That does not import the Python sim.

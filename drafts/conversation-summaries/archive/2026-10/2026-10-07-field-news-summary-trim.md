@@ -21,4 +21,4 @@ Prompts: paraphrase-only
 - `site/src/content/cards/field-news-ward-monitoring-oct-2026.md` (and the three Sep cards)
 
 ## Commits
-- none
+- `b3328f019` Shorten summaries on the four newest field-news cards.
