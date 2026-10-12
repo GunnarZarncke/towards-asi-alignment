@@ -46,6 +46,7 @@
       "note": "Foresight AI Salon, Berlin, 8 July",
       "url": "https://www.youtube.com/watch?v=5ezlG3l6iNw",
       "sublinks": [
+        { "label": "slides", "url": "https://docs.google.com/presentation/d/1VxuMpfIPe119YhtX6hBX5zKg9XE_C6s8q66s9nAaXQk/edit" },
         { "label": "event", "url": "https://luma.com/f9w6lghs" }
       ]
     },

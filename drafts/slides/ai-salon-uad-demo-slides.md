@@ -1,6 +1,6 @@
 # AI Salon: Finding Agency in Real-World Data
 
-Draft notes for the July 8 Foresight AI Salon.
+Draft notes for the July 8 Foresight AI Salon. **Delivered deck (Google Slides):** https://docs.google.com/presentation/d/1VxuMpfIPe119YhtX6hBX5zKg9XE_C6s8q66s9nAaXQk/edit
 
 Assumptions:
 - Audience: mixed AI safety, technical, funder, and curious generalist salon audience.

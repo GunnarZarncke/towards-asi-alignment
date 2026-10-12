@@ -20,7 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-12:** **UAD salon on the about page** — Publications list: “Finding Agency in Real-World Data” (Foresight AI Salon, Berlin, 8 July). Main link is the YouTube recording; event is a sublink. Log: `2026-10-12-uad-salon-about.md`.
+- **2026-10-12:** **UAD salon on the about page** — Publications list: “Finding Agency in Real-World Data” (Foresight AI Salon, Berlin, 8 July). YouTube main link; sublinks: Google Slides, Luma. Log: `2026-10-12-uad-salon-about.md`.
 - **2026-10-12:** **Greenblatt 2025 control-measures cite** — `greenblatt2025controloverview` in App B (AI Control row + MB7 note) and Ch. 43; three-way split named as staffing map, not adopted. Ch. 42 uncited. Log: `2026-10-12-greenblatt-control-measures-cite.md`.
 - **2026-10-12:** **Outer alignment field home** — Glossary card `/cards/outer-alignment/` (not an MB): Hubinger name factorized into specify, MB2/MB3, realization, preservation-if-optimized. App B Specify row + notes; App E `sec:outer-alignment`; term-links and inter-agenda glossary. Log: `2026-10-12-outer-alignment-home.md`.
 - **2026-10-11:** **Last Safety Review specs shipped** — Full spec lane update (world, incident, meta decisions, ranking, contract, UX). Commit `c0a0ed19c`. Log: `2026-10-11-last-safety-review-specs-commit.md`.
