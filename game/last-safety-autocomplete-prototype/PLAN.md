@@ -4,15 +4,16 @@ Structure only. Design detail lives in [`spec/`](spec/README.md). The consolidat
 
 ## Lanes
 
-Four lanes can proceed at the same time. Composition only wires them.
+Four lanes can proceed at the same time. Composition only wires them. Playtest only drives the engine through the same endpoints a player uses.
 
 | Lane | Spec | May edit | Solo check |
 | --- | --- | --- | --- |
 | Grammar | [spec/grammar.md](spec/grammar.md), [spec/ranking.md](spec/ranking.md) | `lib/grammar.mjs`, `public/grammar.js`, `tests/grammar*.mjs` | `npm test` |
 | Graphics / UI | [spec/graphics-ui.md](spec/graphics-ui.md) | `public/index.html`, `public/style.css`, `public/app.js`, future `public/render/` | `npm run dev:ui` (fixture; see below) |
 | Terminal | [spec/terminal.md](spec/terminal.md) | `public/terminal/`, `tests/terminal*.mjs` | `npm run dev:terminal` (fixture; see below) |
-| Engine | [spec/engine.md](spec/engine.md), [spec/world.md](spec/world.md), [spec/documents.md](spec/documents.md) | `lib/game.mjs`, `lib/documents.mjs`, `content/documents/`, future `lib/world/`, `tests/engine*.mjs`, `tests/documents.test.mjs` | `npm test` (includes document render) |
+| Engine | [spec/engine.md](spec/engine.md), [spec/npcs.md](spec/npcs.md), [spec/world.md](spec/world.md), [spec/documents.md](spec/documents.md), [spec/access.md](spec/access.md) | `lib/game.mjs`, `lib/documents.mjs`, `lib/access.mjs`, `content/documents/`, future `lib/world/` and `content/npcs/`, `tests/engine*.mjs`, `tests/documents.test.mjs`, `tests/access.test.mjs` | `npm test` |
 | Composition | [spec/contract.md](spec/contract.md) | `server.mjs`, `lib/llm.mjs` | `npm start` |
+| Playtest | [spec/playtest.md](spec/playtest.md) | future `scripts/playtest.mjs`, `playtest/personas/` | `npm run playtest` (target) |
 
 Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.md](spec/contract.md). World content is engine-owned; graphics reads it and does not edit it.
 
@@ -20,6 +21,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 
 - A lane does not edit another lane’s files.
 - Consequential facts, access, and endings change only in the engine.
+- NPC behavior is authored as knowledge, policies, goals, and agendas ([spec/npcs.md](spec/npcs.md)). Do not author a line or a scene for one anticipated question. A dead end found in playtest is fixed with a fact, a policy, or a referral edge.
 - The first incident is a causal model ([spec/incident.md](spec/incident.md)). Dialogue and rooms for that incident wait until its headless check passes.
 - The renderer draws `ClientState`. It does not decide outcomes.
 - The terminal is an issued Lab Access handset overlay ([spec/terminal.md](spec/terminal.md)): homescreen, chat, files, wiki, API, calendar, contacts, notes, photo, settings, viewers. Isolate tools only. No pipeline or overseer handles. Overlay waits on `labAccessActive`.
@@ -28,7 +30,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 - A change to shapes in [spec/contract.md](spec/contract.md) is a composition change: update the contract and every consumer in the same pass.
 - Open questions stay open until recorded in [spec/meta.md](spec/meta.md). A lane must not close one inside its spec.
 - Do not implement a side idea because it is written down. If it does not change what a player can justify or what they can still control, it waits.
-- Long shared lab documents are **sources** in [`content/documents/`](content/documents/README.md), registered in [`lib/documents.mjs`](lib/documents.mjs), specified in [`spec/documents.md`](spec/documents.md). Pack-conditional text is rendered at serve time; fixtures hold served bytes or call the renderer in tests.
+- Long shared lab documents are **sources** in [`content/documents/`](content/documents/README.md), registered in [`lib/documents.mjs`](lib/documents.mjs), specified in [`spec/documents.md`](spec/documents.md). Access tree in [`spec/access.md`](spec/access.md) / [`lib/access.mjs`](lib/access.mjs). Files are not autocomplete picks.
 
 ## How to test
 
@@ -38,6 +40,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 | Engine alone | `npm run test:engine` | Scripted actions against `lib/game.mjs`. No browser, no model. Includes the incident scripts in [spec/incident.md](spec/incident.md) once that model exists. |
 | Graphics alone | `npm run dev:ui` | Frozen `fixtures/client-state.json` plus a scene fixture. No engine, no key. |
 | Terminal alone | `npm run dev:terminal` | Frozen `fixtures/terminal-session.json`. Lab Access overlay on a dummy room (fixture already activated); no engine, no key. |
+| LLM playtest | `npm run playtest` (target) | Repo-root `.env`. Persona agents play headless against the engine; measures and stops in [spec/playtest.md](spec/playtest.md). Not a gate by itself. |
 | One room, live parse | `npm start`, then the browser | Repo-root `.env` (`OPENAI_API_KEY`). `DEMO_MODE=1` skips the model. |
 | All together | `npm start` | Composition server on `127.0.0.1:3000`. |
 
@@ -52,8 +55,8 @@ Gates say when a combination is worth playing. Lanes do not wait on each other b
 | Gate | Together, the build can… | Still open in meta |
 | --- | --- | --- |
 | 0 — now | Parse and speak in three rooms with three people and three records. | Almost everything in the full cast and plot. |
-| 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge. Different strategies justify different conclusions. No new dialogue and no new rooms. | Pack tables still unfilled. First pack is boundary-narrow. Other packs after that one checks. |
-| 2 — playable model | Disclose a fact and get a new observable from the person who can act on it. Finish high on control and low on identifying intention, and the reverse. | O-26, O-27 for the full meeting. |
+| 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge and policies for the prototype three (Pavel, Leila, Elena). Different strategies justify different conclusions. Enumerated no-dead-end and no-leak checks pass. No new dialogue and no new rooms. | Pack tables still unfilled. First pack is boundary-narrow. Other packs after that one checks. O-45. |
+| 2 — playable model | Disclose a fact and get a new observable from the person who can act on it. NPC goals, agendas, and initiative questions for the full cast. Finish high on control and low on identifying intention, and the reverse. LLM playtest below its frozen thresholds, with zero leaks. | O-26, O-27 for the full meeting. O-46, O-47. |
 | 3 — one room drawn | Show Platform Operations in play and in surveillance mode, on engine state. | Music (O-37), after the story is set. Conversation detail for characters later (O-34, O-35). |
 | 4 — slice | Play that incident through several rooms, with both success measures still distinct. | |
 | 5 — full day | Walk the nine-room cast through three acts. | Duration (O-42). |
