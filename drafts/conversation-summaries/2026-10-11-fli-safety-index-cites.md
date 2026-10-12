@@ -26,4 +26,4 @@ Prompts: none resolvable (paraphrase only).
 - `references/governance-institutions.bib`
 
 ## Commits
-- none
+- `3f07a32fe` Cite FLI Summer 2026 AI Safety Index in Ch. 34, 42, and 43.

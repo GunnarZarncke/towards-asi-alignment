@@ -23,4 +23,4 @@ Prompts: paraphrase-only (no telemetry prompt id in this session)
 - `site/src/pages/about/index.astro`
 
 ## Commits
-- `8644bc3cb` Add UAD Foresight salon talk to the about-page publications list.
+- `5a61182b7` Add UAD Foresight salon talk to the about-page publications list.

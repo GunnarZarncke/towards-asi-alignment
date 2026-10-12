@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-12 (outer alignment field home).
+Last updated: 2026-10-12 (UAD salon on the about page).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-12:** **UAD salon on the about page** — Publications list: “Finding Agency in Real-World Data” (Foresight AI Salon, Berlin, 8 July). Main link is the YouTube recording; event is a sublink. Log: `2026-10-12-uad-salon-about.md`.
+- **2026-10-12:** **Greenblatt 2025 control-measures cite** — `greenblatt2025controloverview` in App B (AI Control row + MB7 note) and Ch. 43; three-way split named as staffing map, not adopted. Ch. 42 uncited. Log: `2026-10-12-greenblatt-control-measures-cite.md`.
 - **2026-10-12:** **Outer alignment field home** — Glossary card `/cards/outer-alignment/` (not an MB): Hubinger name factorized into specify, MB2/MB3, realization, preservation-if-optimized. App B Specify row + notes; App E `sec:outer-alignment`; term-links and inter-agenda glossary. Log: `2026-10-12-outer-alignment-home.md`.
 - **2026-10-11:** **Last Safety Review specs shipped** — Full spec lane update (world, incident, meta decisions, ranking, contract, UX). Commit `c0a0ed19c`. Log: `2026-10-11-last-safety-review-specs-commit.md`.
 - **2026-10-11:** **Last Safety Review suggestion ranking** — O-19 is working. Order is shortest paths on a projection of player-visible state (domains, introduced roles, document time, discovery fuel). Spec: `game/last-safety-autocomplete-prototype/spec/ranking.md`. Log: `2026-10-11-autocomplete-ranking-spec.md`.

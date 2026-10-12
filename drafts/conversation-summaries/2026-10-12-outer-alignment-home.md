@@ -32,4 +32,4 @@ Prompts: paraphrase-only (no telemetry prompt id in this session)
 - `reference/field-agendas/inter-agenda-term-glossary.md`
 
 ## Commits
-- `3a71e1655` Add outer alignment as a field glossary home factorized across TSA.
+- `38ce36ba6` Add outer alignment as a field glossary home factorized across TSA. (amended: MB7/field-map cross-link trim)

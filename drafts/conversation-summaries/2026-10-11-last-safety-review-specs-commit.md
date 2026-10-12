@@ -21,4 +21,4 @@ Prompts: none resolvable (paraphrase only).
 - `game/last-safety-autocomplete-prototype/spec/`
 
 ## Commits
-- `cea1fa2a7` Last Safety Review: ship spec decisions for world, incident, and UX.
+- `c0a0ed19c` Last Safety Review: ship spec decisions for world, incident, and UX.

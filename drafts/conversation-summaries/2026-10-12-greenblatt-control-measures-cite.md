@@ -26,4 +26,4 @@ Prompts: paraphrase-only (no telemetry prompt id in this session)
 - `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
-- (none)
+- `8d10f4c2e` Cite Greenblatt 2025 control-measures catalog in App B and Ch. 43.
