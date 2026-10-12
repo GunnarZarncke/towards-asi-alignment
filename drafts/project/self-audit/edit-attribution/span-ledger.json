@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261012T184339.305Z",
+  "_as_of": "20261012T190740.186Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -11,9 +11,9 @@
   "appendices/appB-bridge-crosswalk.tex#2": {
     "agent": 4,
     "file": "appendices/appB-bridge-crosswalk.tex",
-    "human": 0,
+    "human": 5,
     "index": 2,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "appendices/appB-bridge-crosswalk.tex#4": {
@@ -2043,8 +2043,9 @@
   },
   "chapters/ch42-safety-case.tex#2": {
     "agent": 13,
+    "dirty": true,
     "file": "chapters/ch42-safety-case.tex",
-    "human": 2,
+    "human": 4,
     "index": 2,
     "key": "GZ+AI",
     "prior": "AI"
@@ -2156,7 +2157,7 @@
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#9": {
     "agent": 8,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
-    "human": 2,
+    "human": 5,
     "index": 9,
     "key": "GZ+AI",
     "prior": "AI"

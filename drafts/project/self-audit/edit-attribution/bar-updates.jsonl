@@ -90,3 +90,4 @@
 {"ts": "2026-10-12T14:47:32Z", "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex", "span": "chapters/ch43-verifiability-and-ontology-adequacy.tex#9", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 2}
 {"ts": "2026-10-12T14:47:32Z", "file": "chapters/ch34-selection-environment.tex", "span": "chapters/ch34-selection-environment.tex#19", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 1}
 {"ts": "2026-10-12T14:47:32Z", "file": "chapters/ch34-selection-environment.tex", "span": "chapters/ch34-selection-environment.tex#24", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 1}
+{"ts": "2026-10-12T19:07:55Z", "file": "appendices/appB-bridge-crosswalk.tex", "span": "appendices/appB-bridge-crosswalk.tex#2", "from": "AI", "to": "GZ+AI", "human_lines": 5, "agent_lines": 4}
