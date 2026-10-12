@@ -221,6 +221,14 @@ Resolution order (see `site/scripts/lib/preview-image.mjs`): explicit `previewIm
 
 Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/` (appendix toys: `demos/appX-slug/`). Not part of the manuscript or PDF. See [`demos/README.md`](demos/README.md); run with `python3 serve.py` from `demos/` or `./serve-demos.sh` from the repo root.
 
+### Last Safety Review (`game/`)
+
+Browser narrative investigation prototype (*The Last Safety Review*): semantic autocomplete, deterministic world state, optional LLM parse/reply on the server. Lives under [`game/last-safety-autocomplete-prototype/`](game/last-safety-autocomplete-prototype/). **Not** part of the manuscript PDF or the companion site build yet.
+
+- **Plan and lanes:** [`PLAN.md`](game/last-safety-autocomplete-prototype/PLAN.md) (grammar, graphics/UI, terminal, engine, composition). Design detail: [`spec/`](game/last-safety-autocomplete-prototype/spec/README.md). Consolidated source: [`last-safety-review-game.md`](game/last-safety-autocomplete-prototype/last-safety-review-game.md).
+- **Run:** Node 22.10+; `cd game/last-safety-autocomplete-prototype && npm start` → http://127.0.0.1:3000. Repo-root `.env` supplies `OPENAI_API_KEY` (loaded by `server.mjs`). Lane work edits the matching spec, not the consolidated design doc.
+- **Cross-ref:** development plan index [`drafts/plans/last-safety-review.md`](drafts/plans/last-safety-review.md). Player terminal follows the lab-sim isolate tool surface (files, DMs, `access.request`; no pipeline or overseer handles)—see [`spec/terminal.md`](game/last-safety-autocomplete-prototype/spec/terminal.md).
+
 ### Review artifacts (`review/`)
 
 Reviewer guide and templates. Start with [`review/reviewer-guide.md`](review/reviewer-guide.md). Open cross-cutting work is tracked only in `metadata/TODO.md`.
