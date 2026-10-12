@@ -32,6 +32,18 @@ Four objects, kept separate:
 - Do not treat ch37 artifact conductivity as construction success. Conductivity into AGI-company decision loops is a **constructibility risk**.
 - Do not claim `ConstructionCrux` is discharged by `claimsExplicitBuilder` (already a Lean counterexample).
 
+## 2.0 planning scope (relaxed)
+
+v1 stays deployment- and ecology-first on the spine. **2.0 planning** (chapter map, App B crosswalk, WWCTV, Construct families) may now also consider:
+
+| Topic | 2.0 stance |
+|-------|------------|
+| **Within-model alignment** | **Consider**, not a dedicated deep dive. Ask where inner/within-model alignment or its absence changes what the outer spine must assume or test; effects on deployment-class outcomes stay relevant. |
+| **Proof-based approaches; GSAI** | **In-scope** as agendas and comparison targets (spec-relative construction, containment verification). Not GSAI/CAI as `ConstructionCrux` discharge by default — see “Do not ingest” under lit review. |
+| **Logical induction** | **In-scope** for planning (agent-foundations neighborhood; ch48 WWCTV; App B row). v1 prose may stay exclude-by-reference until 2.0 drafting consumes it — see [`metadata/TODO.md`](../../../metadata/TODO.md) Cite/Wait. |
+
+v1 Backtest and “do not open Construction chapters in the v1 PDF” gates are unchanged.
+
 ## Relation to v1 (do not rewrite the book’s Q2 hedge)
 
 Introduction (`sec:three-alignment-questions`): the book develops Q1 (what to track) and a structure for Q3 (how to tell); Q2 (how to build) stays open. ch33 is **certification without construction** on purpose.
@@ -222,6 +234,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 ## Checklist
 
 - [x] Lane plan file exists; TODO work-map node points here
+- [ ] **2.0 planning scope relaxation** — within-model alignment (topic to consider; effects relevant, no detailed within-model program); proof-based approaches, GSAI, and logical induction in-scope for map/crosswalk/drafting. v1 gates unchanged. Policy: § 2.0 planning scope above; [`metadata/TODO.md`](../../../metadata/TODO.md) Construct row
 - [ ] Author decision: 2.0 as Part XI vs XI+XII vs companion volume vs keep papers-only until P3
 - [x] External construction lit review received — [`construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md); usable list in this file
 - [ ] Cite-clean FINDINGS + optional move out of `ontology-reviews-2021-2026/`; ingest **keep** rows to constructing-paper / XI bib only when drafting
