@@ -40,6 +40,16 @@
       "url": "https://gunnarzarncke787351.substack.com/p/is-the-invisible-hand-an-agent"
     },
     {
+      "title": "Finding Agency in Real-World Data",
+      "year": 2026,
+      "kind": "talk",
+      "note": "Foresight AI Salon, Berlin, 8 July",
+      "url": "https://www.youtube.com/watch?v=5ezlG3l6iNw",
+      "sublinks": [
+        { "label": "event", "url": "https://luma.com/f9w6lghs" }
+      ]
+    },
+    {
       "title": "Handles Before Interventions: Access-Model UAD and the Embedded Semantics of Agency Tests",
       "year": 2026,
       "kind": "paper",
