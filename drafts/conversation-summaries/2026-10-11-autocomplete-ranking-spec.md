@@ -33,5 +33,5 @@ Prompts: none resolvable (paraphrase only).
 - `game/last-safety-autocomplete-prototype/public/grammar.js`
 
 ## Commits
-- `82b0f987a` Last Safety Review: refine O-19 ranking for room union and move diversity.
+- `c60cd4220` Last Safety Review: refine O-19 ranking for room union and move diversity.
 - `c0a0ed19c` Last Safety Review: ship spec decisions for world, incident, and UX (initial ranking spec).
