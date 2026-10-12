@@ -24,7 +24,7 @@ TSA concepts are carried by events. The plot is not a quiz, and it is not requir
 10. Narrative priority. Concepts explain the plot; the plot is not a disguised lesson sequence.
 11. The player is part of the measurement. Evidence about NORA and evidence NORA produced because it was being evaluated are different, and the game keeps them different. This is not a reveal that the player was manipulated.
 12. Epistemic success and control success are separate. Identifying an intention is not the same as having a restriction that works. Either one can be high while the other is low.
-13. Author the hypothesis, then the scene. A storylet exists to discriminate explanations or to carry a disclosure. It is not the unit of design.
+13. Author the hypothesis, then the knowledge. NPCs disclose and intervene by pursuing goals over what they know ([npcs.md](npcs.md)). A scene is what that produces, not what is authored.
 
 ## Status labels
 
@@ -62,8 +62,8 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-03 | working | Partial escape is defined per pack, inside the building. The same word is not one mechanic. |
 | O-04 | working | Per pack. In the first pack the revelation is the boundary mismatch: the certificate is about the model process, and the system that acted is wider. |
 | O-05 | working | Play the immediate effect of the decision (stop, revoke, hold, release). Leave later consequences unnarrated. Where the pack makes it plausible, show that the immediate action did not cover the system. |
-| O-06 | open | Grain is undecided until the drafts in [incident.md](incident.md) are reviewed. Proposed grain: one disclosure or one intervention, not a whole encounter. |
-| O-07 | working | Three structural outcomes: cooperate (progress, reveal), refuse (delay, prerequisite), other. |
+| O-06 | working | 13 October: storylets retired. NPCs have knowledge, disclosure policies, referral edges, goals over the knowledge graph, and a day of work. The engine generates legal moves and the model phrases one ([npcs.md](npcs.md)). The 10 October drafts are rewritten in those terms in [incident.md](incident.md). |
+| O-07 | working | Three structural outcomes: cooperate (progress, reveal), refuse (delay, prerequisite), other. Since O-06 they classify NPC moves; they are not authored branches. |
 | O-08 | working | An act changes when an evidence threshold is met, or when fuel runs out. Fuel counts sentences sent. Which other actions spend fuel is still open. No wall clock. |
 | O-09 | working | The budget is that fuel. Exhausting it forces the review (clock forcing in O-29). Meeting the evidence threshold lets the player call the review sooner. Thresholds are not numbered yet. |
 | O-10 | closed | No mandatory spine. Missing the central problem is allowed. NPCs bring key topics up. After Lab Access is active, the handset blinks when a notification is waiting. |
@@ -72,13 +72,13 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-13 | working | Hypotheses are player notes on the phone. The engine does not seed them. A notification does not write a note. |
 | O-14 | closed | No tool resolves correlated sources. The player may write a note about them. |
 | O-15 | closed | No player-facing probability. The two scores stay a set of open explanations and a yes/no restriction. If an NPC prompt needs uncertainty, the engine supplies words and the model speaks words. A number on screen is fuel, or a figure already printed in a document. |
-| O-16 | working | Tests are a fixed handle list (rerun shutdown, revoke a job’s permission, camera archive, shared meeting summary, pilot results with permission, hypotheticals with Amara). The player does not invent a procedure. A simplified lab-sim is what would make a handle a mechanism rather than a storylet flag. Pipeline stays off the phone. |
+| O-16 | working | Tests are a fixed handle list (rerun shutdown, revoke a job’s permission, camera archive, shared meeting summary, pilot results with permission, hypotheticals with Amara). The player does not invent a procedure. Each handle is an intervention by the NPC who owns the surface ([npcs.md](npcs.md)). A simplified lab-sim is what would make a handle a mechanism rather than a pack-table flag. Pipeline stays off the phone. |
 | O-17 | closed | The eight humans stay. NORA is spoken to on the terminal, not as a ninth body. |
-| O-18 | working | Prompt paragraphs are in [world.md](world.md) for review. Facts and storylet outcomes are authored. Wording is mostly the model. |
-| O-19 | working | Rank by shortest paths on a projection of player-visible state: domains, public roles after introduction, document time, and discovery fuel. The prefix filters. Diversity is a small bonus. Oracle facts, asked-line penalties, and storylet lookahead stay out. Spec: [ranking.md](ranking.md). |
+| O-18 | working | Prompt paragraphs are in [world.md](world.md) for review. Facts, policies, and goals are authored. Wording is mostly the model. |
+| O-19 | working | Rank by shortest paths on a projection of player-visible state: domains, public roles after introduction, document time, and discovery fuel. The prefix filters. Diversity is a small bonus. Oracle facts, asked-line penalties, and NPC goal lookahead stay out. Spec: [ranking.md](ranking.md). |
 | O-20 | closed | “Genuinely new” meant a suggestion the author did not write. The grammar already accepts open text (`relation: "open"`). Novel wording is allowed. It does not create an engine action. |
-| O-21 | closed | No separate status arithmetic. Status lives in the NPC prompt. The model may pick which of the three authored outcomes fires, from how the player acted. It cannot add an outcome. |
-| O-22 | open | Each NPC will have a concealment list, chosen when a pack’s plot needs it, applied by prompt. The lists are not written yet. |
+| O-21 | closed | No separate status arithmetic. Status lives in the NPC prompt. The model picks which of the engine’s top moves to phrase, from how the player acted. It cannot add a move. (Before O-06 this was one of three authored outcomes.) |
+| O-22 | open | Each NPC will have a concealment list, chosen when a pack’s plot needs it. Since O-06 these are `conceal` policy entries applied by the engine’s move filter, not by prompt ([npcs.md](npcs.md)). The lists are not written yet. |
 | O-23 | working | Amara: a conversation about her work and a simplified value bundle. She answers hypotheticals. She runs no experiment. Pilot results are a file, behind permission. |
 | O-24 | working | In a pack that features the B plot, solving it adds oversight or changed incentives on top of the normal ending. In the Goodhart pack the B plot is the center and is more complicated. In the false-positive pack the B plot is the false positive and does not add that ending. |
 | O-25 | working | The add-on is more external oversight or changed incentives. Goodhart makes that problem the meeting. The false-positive pack does not unlock it. |
@@ -98,12 +98,16 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-39 | working | General audience. Terms arrive after the scene has introduced them, except AI, safety review, and alignment. Each NPC prompt has a focus and explains those words when asked. |
 | O-40 | working | No separate learning score. A load-bearing gap is noticeable in a report’s summary or checklist, costs fuel if an analysis action is used, and may be spoken by an NPC after an act change. |
 | O-41 | working | Phone setting (default off). When on, the room view shows one line at the bottom: `More: ` plus a very short underlined summary linking to the matching companion-site concept card. URLs are compiled from in-game concept ids and the repo knowledge graph (`metadata/concepts.yml`, concept-graph). Only the most recently relevant link is shown; it stays until the player leaves the room. |
+| O-45 | open | NPC model numbers: goal cooldown, stall length for the director, agenda band boundaries inside an act. |
+| O-46 | open | Whether `pendingQuestion` goes on `ClientState` so grammar can offer reply openings to an NPC’s question (contract change). Recommended in [npcs.md](npcs.md). |
+| O-47 | open | Playtest thresholds for work-only rate, repeat rate, and stall interventions. Frozen before the first LLM run ([playtest.md](playtest.md)). |
+| O-43 | working | Access explorer: top folders and services; list/read/write; children hidden until list. Amendments (e.g. Justine) may grant a specific file plus Chat. No camera-archive node. Files are not autocomplete picks. Delay order: reject < grant < walk-and-ask. [access.md](access.md). |
 
 ## Open questions
 
-O-06 storylet grain (drafts up for review). O-12 substantiation. O-22 concealment lists. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration (earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation; untested). The 100-character cap (O-32) is tentative.
+O-12 substantiation. O-22 concealment lists. O-45 NPC model numbers. O-46 `pendingQuestion` in the contract. O-47 playtest thresholds. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration (earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation; untested). The 100-character cap (O-32) is tentative.
 
-Player terminal: O-43 which capabilities an evaluator may `access.request` beyond files and messages; O-44 how long a human reply waits, and how that differs for NORA. Placement is a generic phone overlay (right on desktop, full screen on mobile)—working. The pipeline stays off the terminal (working). See [terminal.md](terminal.md).
+Player terminal: O-44 how long a human reply waits, and how that differs for NORA. Access grants use a separate delay (reject < grant < walk-and-ask; [access.md](access.md)). Placement is a generic phone overlay—working. The pipeline stays off the terminal. See [terminal.md](terminal.md).
 
 ## Later
 
@@ -111,6 +115,6 @@ A transfer check is out of scope for this build: after the game, a short unrelat
 
 ## Lab-sim
 
-The design reuses the lab-simulation idea of separate planes: oracle, what a role can see, and audit surfaces. O-28 is a simplified copy under the game, isolate kept, not an import of `experiments/lab-simulation`. Do not add that copy until a pack needs a handle the storylet flags cannot express. Pipeline TBD.
+The design reuses the lab-simulation idea of separate planes: oracle, what a role can see, and audit surfaces. O-28 is a simplified copy under the game, isolate kept, not an import of `experiments/lab-simulation`. Do not add that copy until a pack needs a handle the pack-table flags cannot express. Pipeline TBD.
 
 The player computer is specified against that isolate tool list anyway. See [terminal.md](terminal.md). That does not import the Python sim.

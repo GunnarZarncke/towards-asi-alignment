@@ -14,7 +14,7 @@ The caller passes `addressees`: an array of actor ids (`pavel`, `nora`, …). Fa
 
 Ranking uses the **union** of what those ids contribute. Do not weight one addressee over another. Each introduced id in the list may supply role-domain anchors; each domain appears at most once at the role weight, even if several people share it.
 
-`getCandidates` reads only its arguments. Oracle facts, `publiclyKnows`, concealment lists, and storylet tables are not arguments.
+`getCandidates` reads only its arguments. Oracle facts, `publiclyKnows`, concealment lists, and NPC goals, policies, and agendas are not arguments.
 
 ### Domains
 
@@ -59,11 +59,15 @@ Prototype entities, when the player knows them:
 | Ids | Domains |
 | --- | --- |
 | shutdown_test | runtime, evaluation |
-| job_017, task_queue | queue |
+| job_284, task_queue | queue |
 | camera_system, visitor_records | access |
 | shutdown_report, safety_case | evaluation |
 | job_log | provenance, queue |
 | staffing_memo | staffing, metrics |
+| evaluation_records, shutdown_spec | evaluation |
+| platform_jobs | queue |
+| policies | access |
+| wiki_pages | evaluation |
 | personnel_policy, performance_reviews | staffing |
 | skill_matching | matching |
 | release_schedule | release |
@@ -128,7 +132,8 @@ Weights are conversational relevance. They are not probabilities.
 | Source | Weight |
 | --- | ---: |
 | Entity ids on the current parse (`subject`, `object`, `recipient`, `evidence`, `topic`) | 1.00 |
-| Focused evidence: the last id in `examined`, if any | 0.90 |
+| Focused evidence: the last id in `examined`, if any (a **screen**, not a file chip) | 0.90 |
+| Access request salience: `kind: request` after that screen, or after a file mention in the last two turns | 0.90 |
 | Entity ids on the latest conversation turn | 0.80 |
 | Entity ids on the turn before that | 0.55 |
 | Recent discoveries | 0.60 |
@@ -183,7 +188,7 @@ Recompute when the text, the parse, the projection, `addressees`, or a relevant 
 
 Empty field: the opening list, in this order. No extra boost for “Can”, “What about”, or “Show”.
 
-Leave out of the score: how often a line was asked, whether a line is true, whether it would spoil a later scene, which storylet comes next, and what the next conversation might be. `publicRoles` integer bonuses in the current `score` function are replaced by the role edges above.
+Leave out of the score: how often a line was asked, whether a line is true, whether it would spoil a later scene, which NPC goal fires next, and what the next conversation might be. `publicRoles` integer bonuses in the current `score` function are replaced by the role edges above.
 
 ## Configurable defaults
 

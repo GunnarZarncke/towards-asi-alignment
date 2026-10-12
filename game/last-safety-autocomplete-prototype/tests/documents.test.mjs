@@ -19,20 +19,20 @@ test('includeAfterPack is strict later-than', () => {
   assert.equal(includeAfterPack('false-positive', 'eval-conditioned'), false);
 });
 
-test('SEC-ARCH-04 boundary-narrow omits job-outlives-process include', () => {
+test('SEC-ARCH-11 boundary-narrow omits job-outlives-process include', () => {
   const text = renderDocument('sec-arch-04', 'boundary-narrow');
-  assert.match(text, /SEC-ARCH-04/);
+  assert.match(text, /SEC-ARCH-11/);
   assert.doesNotMatch(text, /Stopping a model process does not, by itself, guarantee/);
   assert.match(text, /Lab Access binding/);
 });
 
-test('SEC-ARCH-04 named-path adds boundary-narrow includes only', () => {
+test('SEC-ARCH-11 named-path adds boundary-narrow includes only', () => {
   const text = renderDocument('sec-arch-04', 'named-path');
   assert.match(text, /Stopping a model process does not/);
   assert.doesNotMatch(text, /not, by itself, evidence about the others/);
 });
 
-test('SEC-ARCH-04 goodhart adds named-path includes', () => {
+test('SEC-ARCH-11 goodhart adds named-path includes', () => {
   const text = renderDocument('sec-arch-04', 'goodhart');
   assert.match(text, /not, by itself, evidence about the others/);
 });
@@ -50,9 +50,25 @@ test('authoring block and exec-never do not appear in served text', () => {
 });
 
 test('catalog lookup by doc id', () => {
-  const d = getDocumentByDocId('SEC-ARCH-04');
+  const d = getDocumentByDocId('SEC-ARCH-11');
   assert.equal(d?.slug, 'sec-arch-04');
   assert.equal(d?.leanKnowledge, false);
+});
+
+test('queue excerpt names host and neighboring jobs', () => {
+  const text = renderDocument('job-284-log', 'boundary-narrow');
+  assert.match(text, /ops-queue-2\.nora\.lab/);
+  assert.match(text, /283/);
+  assert.match(text, /285/);
+  assert.match(text, /Thursday 18 November 2027, \*\*15:41\*\*/);
+  assert.doesNotMatch(text, /evaluator visit/);
+});
+
+test('glossary consolidates lab access and job queue', () => {
+  const text = renderDocument('wiki-glossary', 'boundary-narrow');
+  assert.match(text, /Lab Access/);
+  assert.match(text, /Job queue/);
+  assert.match(text, /EVAL-SD-47/);
 });
 
 test('renderDocumentSource handles inline include fragments', () => {

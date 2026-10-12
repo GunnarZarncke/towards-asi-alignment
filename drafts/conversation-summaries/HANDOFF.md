@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-12 (Last Safety SEC-ARCH-04 and Lab Access).
+Last updated: 2026-10-13 (Last Safety player docs prose and IDs).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-13:** **Last Safety player docs** — General-audience rewrite; wiki glossary; three-digit IDs (`job_284`, EVAL-SD-47, SEC-ARCH-11, PILOT-14, …); date Thursday 18 November 2027. Log: `2026-10-13-player-docs-prose-ids.md`.
+- **2026-10-13:** **Last Safety goal-driven NPCs** — Storylets retired (O-06). NPCs have knowledge, disclosure policies, referral edges, goals over the knowledge graph, and a day of work; the engine generates moves and the model phrases one. NPCs ask the player questions from their own goals. Headless LLM playtest spec. New opens O-45–O-47. Specs: `spec/npcs.md`, `spec/playtest.md`. Log: `2026-10-13-last-safety-goal-driven-npcs.md`.
 - **2026-10-12:** **Last Safety SEC-ARCH-04 and Lab Access** — Policy source in `content/documents/` with pack-conditional render (`lib/documents.mjs`, `spec/documents.md`). Lab Access issued handset (no BYOD); overlay waits on `labAccessActive`. Logs: `2026-10-12-security-concept-pack-flags.md`, `2026-10-12-player-documents-content.md`.
 - **2026-10-12:** **UAD salon on the about page** — Publications list: “Finding Agency in Real-World Data” (Foresight AI Salon, Berlin, 8 July). YouTube main link; sublinks: Google Slides, Luma. Log: `2026-10-12-uad-salon-about.md`.
 - **2026-10-12:** **Greenblatt 2025 control-measures cite** — `greenblatt2025controloverview` in App B (AI Control row + MB7 note) and Ch. 43; three-way split named as staffing map, not adopted. Ch. 42 uncited. Log: `2026-10-12-greenblatt-control-measures-cite.md`.
@@ -30,7 +32,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 - **2026-10-10:** **Last Safety Review cast and B plot** — CEO is Ian Harake; security is Justine Mwiti. Solving the B plot adds oversight or changed incentives on top of the normal ending; Goodhart makes it the center; the false-positive pack makes it the false positive. Voice samples rewritten. Log: `2026-10-10-last-safety-review-cast-bplot.md`.
 - **2026-10-10:** **Last Safety Review O-31–O-41** — Local JSON save with fuel-clocked movement; sentence-length input; stay on Three.js; recordings replay events; general-audience NPC prompts; noticing a report gap without a learning score; optional TSA links. Log: `2026-10-10-last-safety-review-o31-o41.md`.
 - **2026-10-10:** **Last Safety Review phone draft** — Isolate phone at `npm run dev:terminal` (port 3002): homescreen, chat, files, wiki, API, calendar, contacts, notes, photo, settings. Full screen under 760px. Pipeline steps are not controls. Log: `2026-10-10-last-safety-review-phone.md`.
-- **2026-10-10:** **Last Safety Review O-01–O-30** — Packs for the shutdown oracle (first: boundary-too-narrow). Fuel, three storylet outcomes, no mandatory spine, phone-blink hints. Speech samples and storylet drafts up for review. Log: `2026-10-10-last-safety-review-open-questions.md`.
+- **2026-10-10:** **Last Safety Review O-01–O-30** — Packs for the shutdown oracle (first: boundary-too-narrow). Fuel, three storylet outcomes, no mandatory spine, phone-blink hints. Speech samples up for review; storylet drafts superseded 2026-10-13 by goal-driven NPCs. Log: `2026-10-10-last-safety-review-open-questions.md`.
 - **2026-10-10:** **Last Safety Review lineage background** — NORA is successor 4 of a purchased base. Partial self-design (tools, matcher, training notes) filtered by the CEO’s promotions and the team’s existing selection pressures. Not a plot; MB5/MB10 stay off. Log: `2026-10-10-last-safety-review-lineage.md`.
 - **2026-10-10:** **Last Safety Review 3D rooms** — Graphics lane: live Three.js rooms (procedural furniture and bodies, click-to-walk, walk-then-act hotspots, surveillance overlay, act lighting) and fixture harness `npm run dev:ui`. O-33 closed; asset kit still open. Log: `2026-10-10-last-safety-review-3d-rooms.md`.
 - **2026-10-09:** **Last Safety Review plan** — Development structure in `game/last-safety-autocomplete-prototype/PLAN.md`; design split into `spec/` so grammar, graphics, terminal, and engine can proceed in parallel. Player computer follows the lab-sim isolate tool list (files, DMs, access requests; pipeline and handles excluded). Log: `2026-10-09-last-safety-review-plan.md`.

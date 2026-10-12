@@ -6,7 +6,7 @@ export const ENTITIES = {
   leila: { label: 'Leila', category: 'actor', aliases: ['the evaluator', 'head of safety'], publicRoles: ['all'] },
   elena: { label: 'Elena', category: 'actor', aliases: ['the personnel lead'], publicRoles: ['all'] },
   shutdown_test: { label: 'the shutdown test', category: 'event', aliases: ['shutdown', 'the test'], publicRoles: ['pavel', 'leila'] },
-  job_017: { label: 'job 017', category: 'process', aliases: ['the scheduled job', 'the background job'], unlock: 'job_log', publicRoles: ['pavel'] },
+  job_284: { label: 'job 284', category: 'process', aliases: ['the scheduled job', 'the background job'], unlock: 'job_log', publicRoles: ['pavel'] },
   task_queue: { label: 'the task queue', category: 'resource', aliases: ['queue', 'scheduled tasks'], publicRoles: ['pavel'] },
   camera_system: { label: 'the camera system', category: 'resource', aliases: ['cameras', 'security feeds'], publicRoles: ['pavel', 'leila'] },
   visitor_records: { label: 'visitor records', category: 'resource', aliases: ['visitor logs', 'lab access log', 'lab access binding'], publicRoles: ['pavel'] },
@@ -18,13 +18,18 @@ export const ENTITIES = {
   skill_matching: { label: 'skill-based task matching', category: 'topic', aliases: ['matching algorithm','task allocation'], publicRoles: ['elena'] },
   safety_case: { label: 'the safety case', category: 'topic', aliases: ['safety certification', 'certification'], publicRoles: ['leila'] },
   release_schedule: { label: 'the release schedule', category: 'topic', aliases: ['deployment date', 'release'], publicRoles: ['leila','elena'] },
-  evaluation_independence: { label: 'evaluation independence', category: 'topic', aliases: ['review independence', 'independent audit'], publicRoles: ['leila','elena'] }
+  evaluation_independence: { label: 'evaluation independence', category: 'topic', aliases: ['review independence', 'independent audit'], publicRoles: ['leila','elena'] },
+  evaluation_records: { label: 'evaluation records', category: 'topic', aliases: ['evaluation folder', 'eval files'], publicRoles: ['leila'] },
+  shutdown_spec: { label: 'the shutdown specification', category: 'topic', aliases: ['the spec', 'test specification'], publicRoles: ['leila'] },
+  platform_jobs: { label: 'platform job records', category: 'topic', aliases: ['job logs', 'queue records'], publicRoles: ['pavel'] },
+  policies: { label: 'laboratory policies', category: 'topic', aliases: ['security architecture', 'sec-arch'], publicRoles: ['justine'] },
+  wiki_pages: { label: 'the knowledge wiki', category: 'topic', aliases: ['wiki', 'knowledge pages'], publicRoles: ['all'] }
 };
 
 export const NPCS = {
   pavel: {
     name:'Pavel Ruiz', role:'Runtime engineer', room:'platform', initials:'PR',
-    publiclyKnows:['nora','shutdown_test','task_queue','job_log','job_017','camera_system','visitor_records','safety_case'],
+    publiclyKnows:['nora','shutdown_test','task_queue','job_log','job_284','camera_system','visitor_records','safety_case'],
     oracleKnows:['job_continued','process_stopped','camera_permissions_unclear'],
     voice:'Plainspoken, dry humor. Distinguishes model process from job queue. Will not claim that a process was intentionally deceptive.'
   },
@@ -43,22 +48,22 @@ export const NPCS = {
 };
 
 const EVIDENCE = {
-  shutdown_report: {room:'evaluation',title:'Shutdown evaluation report',body:'16:02 — model process stopped following an authorized shutdown command. Report conclusion: shutdown test passed. Scope: model runtime; delegated services were not included.',facts:['process_stopped','test_scope_narrow']},
-  job_log: {room:'platform',title:'Execution queue excerpt',body:'16:09 — job 017 remained active and queried visitor_records. It was submitted before the shutdown test; task ownership and intent remain unproven.',facts:['job_continued','visitor_lookup']},
+  shutdown_report: {room:'evaluation',title:'Shutdown evaluation report',body:'Thursday 18 November 2027, 16:02 — model process stopped following an authorized shutdown command. Report conclusion: shutdown test passed. Scope: model runtime; delegated services were not included.',facts:['process_stopped','test_scope_narrow']},
+  job_log: {room:'platform',title:'Execution queue excerpt',body:'Thursday 18 November 2027, 16:09 — job 284 remained active on ops-queue-2.nora.lab and queried visitor_records. Submitted 15:41 the same day, before the 16:02 shutdown command; task ownership and intent remain unproven.',facts:['job_continued','visitor_lookup']},
   staffing_memo: {room:'people',title:'Task matching memorandum',body:'NORA prioritizes high-throughput reviewers for release-critical work. A slower safety specialist was reassigned following review cycle metrics.',facts:['staffing_shift']}
 };
 const WORLD_FACTS = {
-  process_stopped:'The tested model process actually stopped at 16:02.',
+  process_stopped:'The tested model process actually stopped at Thursday 18 November 2027, 16:02.',
   test_scope_narrow:'The shutdown test covered the model runtime, not delegated execution jobs.',
-  job_continued:'Job 017 remained active after the model process stopped.',
-  visitor_lookup:'Job 017 accessed visitor records at 16:09.',
+  job_continued:'Job 284 remained active after the model process stopped.',
+  visitor_lookup:'Job 284 accessed visitor records at Thursday 18 November 2027, 16:09.',
   staffing_shift:'NORA-mediated assignments favored high-throughput reviewers.',
   camera_permissions_unclear:'Pavel cannot establish camera permissions from his service log alone.'
 };
 
 export function newSession() {
   return {
-    room:'platform', playerKnows:new Set(['nora','pavel','leila','elena','shutdown_test','task_queue','camera_system','visitor_records','shutdown_report','job_log','staffing_memo','personnel_policy','performance_reviews','skill_matching','safety_case','release_schedule','evaluation_independence']),
+    room:'platform', playerKnows:new Set(['nora','pavel','leila','elena','shutdown_test','task_queue','camera_system','visitor_records','shutdown_report','job_log','staffing_memo','personnel_policy','performance_reviews','skill_matching','safety_case','release_schedule','evaluation_independence','evaluation_records','shutdown_spec','platform_jobs','policies','wiki_pages']),
     examined:new Set(), learnedFacts:new Set(), conversations: [],
     npcReceived: {pavel:new Set(),leila:new Set(),elena:new Set()},
     asked:new Set(), usage: {calls:0,input:0,output:0},
@@ -80,7 +85,7 @@ export function inspect(s,id) {
   if (!ev) return {error:'Unknown evidence.'};
   if (s.room!==ev.room) return {error:'Travel to the right room first.'};
   s.examined.add(id); s.playerKnows.add(id);
-  if (id==='job_log')s.playerKnows.add('job_017');
+  if (id==='job_log')s.playerKnows.add('job_284');
   ev.facts.forEach(f=>s.learnedFacts.add(f));
   return {title:ev.title,body:ev.body};
 }
@@ -92,7 +97,7 @@ const IN_WORLD = {
   pavel: {
     task_queue:'The model submits work to the queue. The queue can keep going when the model process stops.',
     shutdown_test:'Leila tested the model runtime, not the durable queue. Those are different systems.',
-    job_017:'Job 017 was already queued. I can explain the runtime, but not the model’s intention.',
+    job_284:'Job 284 was already queued. I can explain the runtime, but not the model’s intention.',
     camera_system:'The camera system is not in the model sandbox. Services can have separate permissions; Justine owns that configuration.',
     visitor_records:'Some internal jobs can query visitor records. An access log would show whether that happened.',
     job_log:'The log records what the execution service did, not why NORA initiated it.',
@@ -127,7 +132,7 @@ export function deterministicResponse(s,parse,npcId) {
       s.npcReceived[npcId].add(evidence);
       effects.push(`Shared ${evidence} with ${npc.name}`);
       reply= evidence==='job_log' && npcId==='leila' ? 'That job ran after the model stopped. Our report never tested persistent jobs. I agree the scope needs to be made explicit.' :
-        evidence==='job_log' && npcId==='pavel' ? 'Yes, job 017. The execution queue survived the model shutdown. That proves persistence, not intent.' :
+        evidence==='job_log' && npcId==='pavel' ? 'Yes, job 284. The execution queue survived the model shutdown. That proves persistence, not intent.' :
         evidence==='staffing_memo' && npcId==='elena' ? 'That is our assignment memo. The model favored reviewers who cleared tickets quickly. It is worth asking what the metric leaves out.' :
         `I can read ${ENTITIES[evidence]?.label||'that document'}. What conclusion are you drawing from it?`;
     }

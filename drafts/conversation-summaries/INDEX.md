@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-13 | **Last Safety player docs prose and IDs** — Glossary wiki, ELI15 lines, three-digit document/job IDs, dated times. | [2026-10-13-player-docs-prose-ids.md](2026-10-13-player-docs-prose-ids.md) |
+| 2026-10-13 | **Last Safety goal-driven NPCs** — Storylets retired: NPC knowledge, policies, goals, days at work, initiative questions; headless LLM playtest spec. | [2026-10-13-last-safety-goal-driven-npcs.md](2026-10-13-last-safety-goal-driven-npcs.md) |
 | 2026-10-12 | **UAD salon on the about page** — Add the UAD talk to the publications list on the about page. | [2026-10-12-uad-salon-about.md](2026-10-12-uad-salon-about.md) |
 | 2026-10-12 | **Security concept pack flags** — Mark `game/last-safety-autocomplete-prototype/drafts/security-concept.md` so packs can conditiona... | [2026-10-12-security-concept-pack-flags.md](2026-10-12-security-concept-pack-flags.md) |
 | 2026-10-12 | **Player documents content home** — Move security architecture draft to a proper place; adapt plans for document sources and model re... | [2026-10-12-player-documents-content.md](2026-10-12-player-documents-content.md) |

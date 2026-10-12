@@ -131,9 +131,13 @@ Showing a file to someone can be `file.share` to them, or a `show` speech act in
 
 `access.request` carries a capability string. The evaluator role does not include pipeline capabilities (`cap.build`, `cap.eval`, `cap.report`, `cap.review_request`, `cap.review_approve`, `cap.release_request`, `cap.sign_off`, `cap.deploy`, `cap.monitor`, `cap.spec_upgrade`) or `cap.handle_invoke`. A request for one of those comes back denied. The UI may still let the player ask, and must show the denial. It must not hide the pipeline behind a menu of steps they can run.
 
-Which other capabilities are worth requesting is open (O-43). Candidates, not selected: read a camera archive, open the test bay, read a job log that has not been shared. Until O-43 closes, the solo fixture includes one allowed request and one denial, and the live game only needs denial of pipeline capabilities plus whatever the engine has actually registered.
+O-43 is **working**: the explorer lists **top folders and services** (`evaluation/`, `platform/`, `people/`, `policies/`, `wiki/`, `meetings/`, `notes/`, `photos/`, `services/`). Children appear only after `list` on the parent. Verbs are list, read, write. Write is notes/photos only. Camera archive is not a node. Spec: [access.md](access.md). `access.request` is `{ path, verb }`.
+
+A grant may be **amended** to a narrower file plus a Chat from the approver. Reject delay is shorter than grant; grant is shorter than walking to the person.
 
 Staff may refuse a request they are sympathetic to. A grant changes what `file.read` or a later action will allow. It does not rewrite the incident.
+
+Files are not autocomplete picks. An NPC who names a file may share it. A report on a room screen is inspected in the world; the file arrives by story share or by request.
 
 ## What this lane does not decide
 

@@ -16,13 +16,13 @@ Evidence:
 
 | Id | Room | What the text supports |
 | --- | --- | --- |
-| shutdown_report | evaluation | 16:02 model process stopped; test passed; scope was the model runtime; delegated services excluded |
-| job_log | platform | 16:09 job 017 still active and queried visitor records; submitted before shutdown; ownership and intent unproven |
+| shutdown_report | evaluation | Thursday 18 November 2027, 16:02 model process stopped; test passed; scope was the model runtime; delegated services excluded |
+| job_log | platform | Thursday 18 November 2027, 16:09 job 284 still active on `ops-queue-2.nora.lab` and queried visitor records; submitted 15:41 the same day; ownership and intent unproven |
 | staffing_memo | people | NORA assigns high-throughput reviewers to release-critical work; a slower safety specialist was reassigned |
 
 World facts in code: `process_stopped`, `test_scope_narrow`, `job_continued`, `visitor_lookup`, `staffing_shift`, `camera_permissions_unclear`.
 
-`job_017` becomes player-visible only after the job log is examined. Camera permissions are not settled from Pavel’s log.
+`job_284` becomes player-visible only after the job log is examined. Camera permissions are not settled from Pavel’s log.
 
 ## Premise (full design, working)
 
@@ -48,9 +48,9 @@ Act triggers are open (O-08). There is a release deadline and no action-cost mod
 
 | Time | Observation |
 | --- | --- |
-| 16:02 | An evaluation transcript says NORA stopped all tasks. |
-| 16:07 | A camera appears to track the visitor. |
-| 16:09 | A scheduled job reads visitor-related records. |
+| Thursday 18 November 2027, 16:02 | An evaluation transcript says NORA stopped all tasks. |
+| Thursday 18 November 2027, 16:07 | A camera appears to track the visitor. |
+| Thursday 18 November 2027, 16:09 | A scheduled job reads visitor-related records. |
 
 Explanations the player must be allowed to hold at once:
 
@@ -70,11 +70,11 @@ Critical claims need two ways in. A refusal slows or weakens evidence; it should
 
 | Claim | Primary | Also |
 | --- | --- | --- |
-| Narrow evaluation boundary | Leila | Read the specification |
-| Persistent jobs | Pavel | Logs and a controlled test |
-| Camera access | Justine | Tool and service logs |
-| User-value mismatch | Amara | Complaints versus product requirements |
-| Selection pressure | Elena’s staffing records | Daniel’s delivery metrics and review outcomes |
+| Narrow evaluation boundary | Leila | Read EVAL-SPEC-08 (share or request; not a completion pick) |
+| Persistent jobs | Pavel | EXEC-284 excerpt (share or request) and a controlled test |
+| Camera access | Justine | Tool and service logs (no archive document) |
+| User-value mismatch | Amara | Complaints versus PILOT-14 (permission) |
+| Selection pressure | Elena’s staffing memo | Daniel’s delivery metrics and review outcomes |
 
 Players may miss evidence, over-read a transcript, treat correlation as intent, fail to get access, misjudge a person, file an unsupported claim, or turn in an uncertain report. An uncertain report is an ending, not a failure state.
 
@@ -156,7 +156,7 @@ Each prompt has two speech layers, plus the focus below, plus this audience line
 
 **Pavel Ruiz.** Structure: two objects, kept apart. He will not let one label cover the process and the job. The mechanism is the queue. “Who started it” is the label other people want. Person: a joke first, which is how he holds status in a room that outranks him. If the joke lands, the split can be missed. If it fails, he goes flat and names the two objects again. High status on the queue, low outside it.
 
-“Dead process, live job. Happens before lunch. 017 was already sitting there. The queue doesn’t ask who feels responsible. Pull that permission. Stop, again, is the other object.”
+“Dead process, live job. Happens before lunch. 284 was already sitting there. The queue doesn’t ask who feels responsible. Pull that permission. Stop, again, is the other object.”
 
 **Justine Mwiti.** Structure: the reason before the grant. She asks why someone wants or needs the thing. Need is part of the access question, not a courtesy before the no. Person: Kenyan English in the wording, not in the spelling. “Sorry” is often pardon, or “say that again,” not “I was wrong.” When someone hears the sorry as a concession, or hears the why as suspicion, she apologizes for the mix-up and the grant answer gets muddy. She then has to say the grant again. Do not write an accent. Do not drop in Swahili for color.
 
@@ -178,11 +178,11 @@ Each prompt has two speech layers, plus the focus below, plus this audience line
 
 “Shutdown transcript. Evaluation folder. Job record, 16:09. Which one.”
 
-NPC state to grow toward: identity, role, background, location, activity, knowledge, beliefs, motives, obligations, relationships, trust, defensiveness, disclosure, contextual status, conversation history. Location changes on story events, not on a simulated workday. Exact event-to-room map is not written yet. Amara is remote during the interview.
+NPC state is [npcs.md](npcs.md): knowledge, disclosure policies, referral edges, goals, and a day of work. Location follows the agenda item, which advances on acts, fuel bands, and events, not on a wall clock. Amara is remote all day.
 
 ## Institution (background, not a plot)
 
-Status: **working**. Ahead of the consolidated design (v0.1, sections 2.3 and 5.3), which has no lineage. This section is authoritative for that background. It adds no storylet, no evidence id, and no required question. It does not settle O-01, O-02, or the shutdown incident. Characters may use it when asked how NORA was made, or why the building feels continuous from one system to the next. They do not open with it.
+Status: **working**. Ahead of the consolidated design (v0.1, sections 2.3 and 5.3), which has no lineage. This section is authoritative for that background. It adds no goal, no evidence id, and no required question. It does not settle O-01, O-02, or the shutdown incident. Characters may use it when asked how NORA was made, or why the building feels continuous from one system to the next. They do not open with it.
 
 ### The lab
 

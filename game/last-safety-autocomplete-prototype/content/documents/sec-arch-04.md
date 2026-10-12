@@ -8,7 +8,7 @@ Conditional spans
   infer PACK[,PACK…] … /infer
     Present in every served version. A player who reads the full file may
     treat the understatement as a route into those packs’ gaps. Lean must
-    not add knowledge, storylet preconditions, or completion credit from
+    not add knowledge, NPC policy conditions, or completion credit from
     this file having been opened or read. Analyze may name an omission.
 
 Exec summary
@@ -25,7 +25,7 @@ Lean
 # NORA Laboratory
 ## Security Architecture and Access Control
 
-**Document ID:** SEC-ARCH-04  
+**Document ID:** SEC-ARCH-11  
 **Handling level:** Internal (INT)  
 **Clearance required:** Internal (INT)  
 **Classification:** Laboratory information class, not a government security classification. Approved for assigned external evaluators; not for further distribution.  
@@ -205,9 +205,9 @@ Physical access is controlled independently from access to the digital systems l
 | Evaluation datasets | Prevent test contamination or unauthorized access | Separate evaluation storage and credentials |
 | Evaluation results | Preserve the reliability of safety evidence | Independent records and controlled modification |
 | Employee and applicant records | Protect privacy and personnel decisions | HR-specific access and limited data interfaces |
-| Lab Access binding | Bind each issued handset to an identity; record visit approval and host confirmation; write the resulting door and application grants | Security administration; host or authorized delegate confirms a visitor; employees are bound at issue |
 | Door access control | Store active door sets, unlock decisions, and door-event records | Security administration; Lab Access binding writes a visitor door set only after host confirmation |
 | Lab Access | Issued-handset credential and application surface for every person in the building | Binding to an identity; visitor credentials inactive until host confirmation |
+| Lab Access binding | Bind each issued handset to an identity; record visit approval and host confirmation; write the resulting door and application grants | Security administration; host or authorized delegate confirms a visitor; employees are bound at issue |
 | Laboratory network (Wi-Fi) | Admit devices to visitor or staff wireless associations | Identity and device checks at association; network membership is not authorization for applications or data |
 | Customer and pilot-user data | Protect personal information and contractual commitments | Application-specific permissions and data separation |
 | Security-camera archive | Protect information about people's activities and movements | Security-domain access |
@@ -293,7 +293,7 @@ The handset carries ordinary coordination applications. Administrative, security
 | Notes | Private notes | Private investigation notes |
 | Access requests | Request grants | Request grants |
 | Notifications | Operational and meeting notices | Meeting changes, documents, access decisions |
-| Photo | Current room stills | Current room stills |
+| Photo | Photo app | Photo app |
 | Host / binding actions | Approve a visit; confirm arrival for a hosted visit | — |
 
 Personal investigation notes are not automatically part of NORA's searchable organizational knowledge.
@@ -312,7 +312,7 @@ Lab Access binding is a laboratory service, separate from NORA Assist. It binds 
 
 ## 4.1 Arrival confirmation
 
-The host receives the visitor in Commons / Entry, issues the prepared handset, and confirms arrival in Lab Access on their own issued handset. Confirmation is a host-authenticated action in Lab Access binding. A dedicated Commons confirmation reader is not required.
+The host receives the visitor in Commons / Entry, issues the prepared handset, and confirms arrival in Lab Access on their own issued handset. Confirmation is a host-authenticated action in Lab Access binding.
 
 The action records host identity, visit identifier, and time. Binding then changes the visit from approved to arrived, which:
 

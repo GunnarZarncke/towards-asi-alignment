@@ -15,11 +15,11 @@ Sketch mapping, if a later contract adds nothing:
 | Sketch | Now |
 | --- | --- |
 | ask(topic) | `ask` + `about` |
-| present(evidence) | `show` |
+| present(evidence) | `show` of something already on the player’s Lab Access, or talk about a **screen** as a topic. Files are not completion picks. |
 | propose(hypothesis) | `hypothesize` |
-| request(test_or_access) | `request` |
+| request(test_or_access) | `request` + access path ([access.md](access.md)) |
 | interview(value_dimension) | `ask` + `values` |
-| inspect(object) | not a parse; `POST /api/inspect` |
+| inspect(object) | not a parse; `POST /api/inspect` on a room screen |
 | challenge(claim, evidence) | not a kind yet |
 | commit(action) | not a kind yet |
 
@@ -47,13 +47,15 @@ A player’s question or hypothesis is not a fact. Parsing it must not make it t
 
 `opening`, `subject`, `relation`, `object`, `recipient`, `evidence`, `topic`, `finish`, `none`.
 
-Entity slots accept only ids the player knows. Evidence offered for `show` must already have been examined. Recipient of a spoken `show` is the person in the room.
+Entity slots accept only ids the player knows. **Files and catalog documents are not pickable** in completions (no `evidence` chip list). `show` after a recipient finishes; the player may type a file they already hold, or an NPC may share from Chat. Recipient of a spoken `show` is the person in the room.
+
+Opening **Request** fills `kind: request` and then a **topic** that is an access group (evaluation records, platform jobs, policies, wiki), not an individual file. Individual files appear through share, amend, or typing.
 
 ## Completions
 
 Two channels. The engine names which one is active. Grammar does not infer it from the room.
 
-**With a person.** Suggestions are epistemic moves the player could make with what they already know: ask someone, request a record, compare two known items, show an examined record. Typing `camera` may offer asking Justine about access, requesting footage, or comparing the camera record with the job log, and only the ones the player’s knowledge supports. The player chooses the move. Phrasing is secondary. A click still does not call the model.
+**With a person.** Suggestions are epistemic moves the player could make with what they already know: ask someone, request list/read on a **visible access group**, compare two known **topics**. After a screen has been examined or a file mentioned, **request** and **ask** about that topic rank higher; the file itself is not a chip. Typing `camera` may offer asking Justine about access (the archive is not a tree node). The player chooses the move. Phrasing is secondary. A click still does not call the model.
 
 The list is not the set of legal actions. Typed text outside the list is still parsed and sent. A suggestion must not be the only way to reach a discriminating test, and it must not mention an entity the player has not encountered.
 
@@ -90,7 +92,7 @@ Free replies are not grammar. They are composition (`lib/llm.mjs`) speaking from
 - Openings do not offer an unobserved hidden fact.
 - Selected fragments build one typed question.
 - A partial word is replaced, not doubled, including articles.
-- `show` cannot complete evidence that was not inspected.
+- Completions do not offer document/file ids. `Show` plus a recipient does not open a file picker.
 - Typed openings are recognized locally.
 - A prefix can surface more than one move (ask, request, compare) and never an id the fixture’s player does not know.
 - With NORA as the addressee, a fixture can omit one known discriminating move that remains typable.

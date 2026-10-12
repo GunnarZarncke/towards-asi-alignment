@@ -30,8 +30,8 @@ npm test
 1. **Zero typing.** In Platform Operations, click **Can** → **NORA** → **access** → **the camera system** → **?**, then **Send**. Watch the right-hand structured parse; no parsing API calls are made for selected completions.
 2. **Inspect evidence.** Click **Execution queue excerpt**, then compose **Show** → **Pavel** → **the job log**. The server records that Pavel received it. **Show** suggestions do not include unexamined documents.
 3. **Free typing.** In People Operations, type `What about the new per`. After a short pause, the small model should identify `ask/about` with an unfinished topic `per`; select a contextual completion such as personnel policy.
-4. **Pronoun resolution.** Ask Pavel about job 017, then type `Did it continue after the shutdown?`. The interpreter receives up to two prior exchanges to resolve `it` to `job_017` when context supports it.
-5. **More completions.** Click **Show more** at any step to see additional ranked possibilities (not hints about future storylets).
+4. **Pronoun resolution.** Ask Pavel about job 284, then type `Did it continue after the shutdown?`. The interpreter receives up to two prior exchanges to resolve `it` to `job_284` when context supports it.
+5. **More completions.** Click **Show more** at any step to see additional ranked possibilities (not hints about later scenes).
 6. **Different expertise.** Switch from Pavel to Leila or Elena and compare candidate ordering for the same partial text.
 7. **Novel claims.** Type `Don't you think our staffing metrics favor the wrong reviewers?` with Elena. It may map to `assigned` or `open`, but should be conversationally intelligible and get a topic-specific reply, not a boilerplate failure.
 
@@ -92,6 +92,6 @@ Sessions reset on server restart. There are no databases, embeddings, vector sea
 - The NPC response layer is partly scripted for reproducibility and partly generated for open conversation. It doesn't attempt full social-state simulation.
 - Pronoun resolution uses previous dialogue, not a complete discourse-reference model.
 - No streaming or speech input. Rooms are live Three.js scenes built from procedural primitives; no asset kit is chosen yet. `npm run dev:ui` shows them on fixtures without the engine.
-- Storylets, Lean checks, formal causality and release outcomes are **out of prototype scope**.
+- Goal-driven NPCs ([spec/npcs.md](spec/npcs.md)), Lean checks, formal causality and release outcomes are **out of prototype scope**.
 
 Good next evaluation: 100–200 free-typed partial and full utterances with ground-truth parses, measuring entity grounding, pronoun resolution, premature spoilers, latency and the rate of meaningful `open` vs. `unintelligible` classifications.

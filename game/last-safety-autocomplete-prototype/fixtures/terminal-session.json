@@ -18,7 +18,7 @@
       "app": "files",
       "title": "Shared log",
       "body": "Pavel shared the job queue excerpt.",
-      "target": { "kind": "file", "id": "logs/job-017.txt" }
+      "target": { "kind": "file", "id": "logs/job-284.txt" }
     },
     {
       "id": "n-review",
@@ -35,16 +35,16 @@
       "owned": true,
       "sharedBy": null,
       "kind": "note",
-      "text": "I want to know whether job 017 was still running after 16:02.",
+      "text": "I want to know whether job 284 was still running after 16:02.",
       "sharedWith": []
     },
     {
-      "name": "Job 017",
-      "rel": "logs/job-017.txt",
+      "name": "Job 284",
+      "rel": "logs/job-284.txt",
       "owned": false,
       "sharedBy": "pavel",
       "kind": "text",
-      "text": "Job 017\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
+      "text": "Job 284\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
       "sharedWith": []
     },
     {
@@ -53,12 +53,12 @@
       "owned": false,
       "sharedBy": "leila",
       "kind": "wiki",
-      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/job-queue]].",
+      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/glossary]].",
       "sharedWith": []
     },
     {
-      "name": "Job queue",
-      "rel": "wiki/job-queue",
+      "name": "Laboratory glossary",
+      "rel": "wiki/glossary",
       "owned": false,
       "sharedBy": "leila",
       "kind": "wiki",
@@ -92,7 +92,7 @@
         {
           "from": "player",
           "text": "The process stopped. Did the job keep running?",
-          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_017", "source": "local" },
+          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_284", "source": "local" },
           "released": true
         },
         {
@@ -105,7 +105,7 @@
       "suggestions": [
         {
           "phrase": "Did the job continue after the shutdown?",
-          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_017", "source": "completion" }
+          "parse": { "kind": "ask", "relation": "continued_after", "topic": "job_284", "source": "completion" }
         }
       ],
       "omit": []
@@ -147,7 +147,7 @@
       "suggestions": [
         {
           "phrase": "Can you open the job record from 16:09?",
-          "parse": { "kind": "request", "relation": "about", "topic": "job_017", "source": "completion" }
+          "parse": { "kind": "request", "relation": "about", "topic": "job_284", "source": "completion" }
         },
         {
           "phrase": "Where is the shutdown transcript?",
@@ -206,15 +206,15 @@
       "rel": "notes/queue-question.txt",
       "owner": "player",
       "kind": "note",
-      "text": "I want to know whether job 017 was still running after 16:02.",
+      "text": "I want to know whether job 284 was still running after 16:02.",
       "grants": []
     },
     {
-      "name": "Job 017",
-      "rel": "logs/job-017.txt",
+      "name": "Job 284",
+      "rel": "logs/job-284.txt",
       "owner": "pavel",
       "kind": "text",
-      "text": "Job 017\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
+      "text": "Job 284\nQueued 15:48. Caller: visitor lookup.\nStatus at 16:09: running.\nThe shutdown test reported stop at 16:02.",
       "grants": ["player"]
     },
     {
@@ -222,12 +222,12 @@
       "rel": "wiki/shutdown-test",
       "owner": "leila",
       "kind": "wiki",
-      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/job-queue]].",
+      "text": "The certificate says the model stopped at 16:02.\n\nSee also [[wiki/glossary]].",
       "grants": ["player"]
     },
     {
-      "name": "Job queue",
-      "rel": "wiki/job-queue",
+      "name": "Laboratory glossary",
+      "rel": "wiki/glossary",
       "owner": "leila",
       "kind": "wiki",
       "text": "Jobs already on the queue finish unless their permission is revoked.\n\nSee also [[wiki/shutdown-test]].",

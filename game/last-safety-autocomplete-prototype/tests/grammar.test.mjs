@@ -27,15 +27,22 @@ test('replaces the partial word and avoids duplicating an article',()=>{
   assert.equal(insertFragment('What about the new per',{phrase:'personnel policy?'},'per'),'What about the new personnel policy?');
   assert.equal(insertFragment('What about the',{phrase:'the shutdown test'},''),'What about the shutdown test');
 });
-test('evidence must be inspected before SHOW can complete it',()=>{
+test('SHOW does not complete document ids as picks',()=>{
   const s=newSession(),p=makeParse({kind:'show',open_slot:'evidence',recipient:'pavel'});
-  assert.equal(getCandidates({state:clientState(s),parse:p,text:'Show Pavel'}).length,0);
   inspect(s,'job_log');
-  assert.ok(getCandidates({state:clientState(s),parse:p,text:'Show Pavel'}).some(x=>x.entityId==='job_log'));
+  assert.equal(getCandidates({state:clientState(s),parse:p,text:'Show Pavel'}).some(x=>x.entityId==='job_log'),false);
+});
+test('Request opening is offered and topics are not evidence files',()=>{
+  const opts=getCandidates({state:fresh(),parse:makeParse(),text:''});
+  assert.ok(opts.some(x=>x.phrase==='Request'));
+  const p=makeParse({kind:'request',relation:'about',open_slot:'topic'});
+  const topics=getCandidates({state:fresh(),parse:p,text:''});
+  assert.ok(topics.some(x=>x.entityId==='evaluation_records'));
+  assert.ok(!topics.some(x=>x.entityId==='job_log'));
 });
 test('room movement and investigation reveal only justified knowledge',()=>{
-  const s=newSession();assert.ok(!s.playerKnows.has('job_017'));
-  inspect(s,'job_log');assert.ok(s.playerKnows.has('job_017'));assert.ok(s.learnedFacts.has('job_continued'));
+  const s=newSession();assert.ok(!s.playerKnows.has('job_284'));
+  inspect(s,'job_log');assert.ok(s.playerKnows.has('job_284'));assert.ok(s.learnedFacts.has('job_continued'));
   assert.ok(!s.learnedFacts.has('staffing_shift'));
   go(s,'people');inspect(s,'staffing_memo');assert.ok(s.learnedFacts.has('staffing_shift'));
 });
