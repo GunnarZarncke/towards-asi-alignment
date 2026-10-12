@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-11 (Last Safety Review specs commit).
+Last updated: 2026-10-12 (outer alignment field home).
 
 ---
 
@@ -20,7 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-11:** **Last Safety Review specs shipped** — Full spec lane update (world, incident, meta decisions, ranking, contract, UX). Commit `cea1fa2a7`. Log: `2026-10-11-last-safety-review-specs-commit.md`.
+- **2026-10-12:** **Outer alignment field home** — Glossary card `/cards/outer-alignment/` (not an MB): Hubinger name factorized into specify, MB2/MB3, realization, preservation-if-optimized. App B Specify row + notes; App E `sec:outer-alignment`; term-links and inter-agenda glossary. Log: `2026-10-12-outer-alignment-home.md`.
+- **2026-10-11:** **Last Safety Review specs shipped** — Full spec lane update (world, incident, meta decisions, ranking, contract, UX). Commit `c0a0ed19c`. Log: `2026-10-11-last-safety-review-specs-commit.md`.
 - **2026-10-11:** **Last Safety Review suggestion ranking** — O-19 is working. Order is shortest paths on a projection of player-visible state (domains, introduced roles, document time, discovery fuel). Spec: `game/last-safety-autocomplete-prototype/spec/ranking.md`. Log: `2026-10-11-autocomplete-ranking-spec.md`.
 - **2026-10-10:** **Last Safety Review voice layers** — Each NPC has a structural habit (how a label sits on the system) and a personal one (status, and for Justine Kenyan English). Log: `2026-10-10-last-safety-review-voice-layers.md`.
 - **2026-10-10:** **Last Safety Review cast and B plot** — CEO is Ian Harake; security is Justine Mwiti. Solving the B plot adds oversight or changed incentives on top of the normal ending; Goodhart makes it the center; the false-positive pack makes it the false positive. Voice samples rewritten. Log: `2026-10-10-last-safety-review-cast-bplot.md`.

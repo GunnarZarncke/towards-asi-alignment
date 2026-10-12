@@ -11,6 +11,7 @@ related:
   - "what-tsa-fails-to-represent"
   - "bridge-assumptions"
   - "alignment-lifecycle"
+  - "outer-alignment"
 ---
 
 Useful **starting points** for orienting to AI safety and alignment research:

@@ -33,6 +33,14 @@ Field work also factors \emph{mechanisms}: how a trained or deployed system goes
 Deception (eval-conditioning) and an evaluator-capability gap are different jobs that both sit in \(\text{MB7a}\)--\(\text{MB7c}\) \autocite{hubinger2019risks,park2024deception,shlegeris2023aicontrol}; uptake failure versus measured-path capture are already typed as \(\text{MB4}\) versus \(\text{MB4a}\); reward misspecification and goal misgeneralization can look like the same ``wrong target'' while Chapter~\ref{ch:intelligence-deepens-misalignment} separates them \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}; Goodhart pressure on a scored metric is not the same object as selection-theoretic Goodhart in Chapter~\ref{ch:selection-environment}.
 Completeness of \(\text{MB*}\) is relative to the layer axis, not a claim that every field mechanism has its own bridge.
 
+\paragraph{Outer alignment is not one bridge.}
+Hubinger et al.\ name \emph{outer alignment} as whether the training pointer (reward, constitution, CEV endpoint, conditioned goal) is the intended target, complementary to inner alignment \autocite{hubinger2019risks}.
+That field name is an important subject heading; it is not a native book object and it does not get an \(\text{MB*}\) column.
+The book splits the same English question across (i)~specify: a coherent \texttt{AlignmentTarget} (\texttt{SpecifyCrux} remains uninterpreted), (ii)~identification: \(\text{MB2}\) bundle identifiability and \(\text{MB3}\) bearer maps, (iii)~realization: open \texttt{ConstructionCrux}, not a bridge assumption, and (iv)~preservation-if-optimized: whether optimizing the base objective would preserve bundle and bearer transport, correction-channel integrity, and successor stability (Chapter~\ref{ch:lethality-stress-test-open-issues}).
+CEV, Constitutional AI, GSAI, institutional constitutions, and peer protocols such as PreDCA/PSI and QACI are \emph{instances} of that specify-plus-construction neighborhood, not extra coverage-matrix columns.
+Inner alignment remains \(\text{MB7a}\)--\(\text{MB7c}\) (this table).
+The pointing-problem umbrella in Appendix~\ref{appf-glossary} is a different three-way cut (identification / realization / preservation) of overlapping English.
+
 \end{authbar}
 \authbarneedspace
 \section{The crosswalk}
@@ -52,7 +60,8 @@ Completeness of \(\text{MB*}\) is relative to the layer axis, not a claim that e
 \bottomrule
 \endfoot
 MB1 \newline (\akey{A-004}, Ch.~\ref{ch:finding-boundary}) & Embedded agency: no clean agent/environment cut; the real optimizer is not the visible model & Agent foundations (MIRI) & Treat the Markov-blanket boundary as a \emph{measurable} object (\(\epsilon\)-boundary discovery); a conceptual gap becomes an estimator-soundness bet \\
-MB2, MB3 \newline (\akey{A-001}, \akey{A-006}; Chs.~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, \ref{ch:unconscious-value-drift}) & Value/bundle identifiability: inverse-RL non-identifiability; values vs.\ irrationality underdetermined; ELK; reward misspecification. Field umbrella ``pointing problem'': Appendix~\ref{appf-glossary} & CIRL / value learning, ELK, RLHF/RLAIF & Add bundle geometry plus bearer maps alongside scalar reward (\(k=1\) embed); ELK becomes a latent-readout subchannel, not the whole problem \\
+Specify \newline (not an \(\text{MB}\); Chs.~\ref{ch:fixed-values-wrong-target}, \ref{ch:strategic-opacity}, \ref{ch:lethality-stress-test-open-issues}) & Outer alignment: is the stated or training objective the intended target? & Hubinger outer/inner split; CEV, Constitutional AI, GSAI, PreDCA/PSI, QACI & Factorizes: specify schema; identification (\(\text{MB2}\)/\(\text{MB3}\)); realization (open); preservation-if-optimized (transport, CCI, successors). Not one column \\
+MB2, MB3 \newline (\akey{A-001}, \akey{A-006}; Chs.~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, \ref{ch:unconscious-value-drift}) & Value/bundle identifiability: inverse-RL non-identifiability; values vs.\ irrationality underdetermined; ELK; reward misspecification. Field umbrella ``pointing problem'': Appendix~\ref{appf-glossary}. Outer-alignment ``right target'' is the identification slice only & CIRL / value learning, ELK, RLHF/RLAIF & Add bundle geometry plus bearer maps alongside scalar reward (\(k=1\) embed); ELK becomes a latent-readout subchannel, not the whole problem \\
 MB4 \newline (\akey{A-002}, Ch.~\ref{ch:correction-channel-integrity}) & Corrigibility and off-switch anti-naturality; correction authority & MIRI, CHAI, Constitutional AI & Correction-channel integrity as a dynamical invariant; shutdown/interruptibility are one-bit projections \\
 MB4a \newline (\akey{A-002}, Chs.~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent}) & Capture resistance and audit-judge independence on the designated measured path & MIRI, CHAI, Constitutional AI & Measured path carries data only; legitimacy (control, reach, persistence, anti-capture) is supplied by bridge; integrity \(\Rightarrow\) legitimate path --- not green path \(\Rightarrow\) integrity \\
 MB8 \newline (\akey{A-002}, Ch.~\ref{ch:extrapolative-correction}) & CEV as \texttt{AlignmentTarget} special case & MIRI (CEV) & Gravestone: not a live route to correction integrity; CEV factorizes through construction/certification \\
@@ -264,6 +273,7 @@ Underexplored index items (AI-BSL, PRA, etc.) & Exclude by reference & Conductiv
 The crosswalk cuts both ways, and the book should own both edges.
 
 \emph{Shared.} The book inherits the seven-or-so recurring problems across model-centric alignment agendas---value identification, scalable oversight, inner alignment, ontology shift, corrigibility and legitimacy, the embedded boundary, and specification coverage---and \emph{dissolves none} of them.
+Outer alignment is among those inherited names: it is treated as a field subject heading that factorizes (specify plus identification plus realization plus preservation-if-optimized), not as a missing thirteenth bridge.
 Relating them through a shared dependency graph centered on correction-channel integrity does not make \(\text{MB4}\) (legitimacy) or \(\text{MB7}\) (hidden capability) more tractable than they are for MIRI or Redwood; it relocates them.
 
 \emph{Crispness, and where it lives.} The gain from typing these assumptions is not that the assumption becomes \emph{less} fuzzy; it is that the fuzz cannot hide.

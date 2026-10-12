@@ -38,6 +38,7 @@ external:
     url: "/field/coverage/"
 related:
   - "target-realization"
+  - "outer-alignment"
   - "pointing-problem"
   - "specify-cev"
   - "specify-constitutional-ai"
@@ -50,7 +51,7 @@ related:
 
 Before asking whether a system is aligned, the field must say **what it is aligned to**: human preferences, a written constitution, assistance under uncertainty, an institutional mandate, or another stated target. Labs disagree on the answer; they still share the handoff that the answer must be coherent enough to build toward and check against.
 
-On the [field hub](/field/v2/), outer-alignment research programs are **instances** of that one specify-stage question — each paired with a construction bet — not separate columns in the [coverage matrix](/field/coverage/). Examples include CEV, Constitutional AI, GSAI, and institutional constitutions (listed below).
+The field name for “is the pointer the right target?” is [outer alignment](/cards/outer-alignment/). That name is not native here: it mixes specify with identification and construction. On the [field hub](/field/v2/), outer-alignment research programs are **instances** of this one specify-stage question — each paired with a construction bet — not separate columns in the [coverage matrix](/field/coverage/). Examples include CEV, Constitutional AI, GSAI, and institutional constitutions (listed below).
 
 **Lifecycle role:** specify — first stage on the [alignment lifecycle](/cards/alignment-lifecycle/) axis (see [glossary](/glossary/)). Open spine interface in Lean; not an `MB*` bridge column.
 

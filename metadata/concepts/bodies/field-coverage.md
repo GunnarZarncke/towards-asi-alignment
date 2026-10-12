@@ -3,6 +3,7 @@ related:
   - bridge-assumptions
   - alignment-lifecycle
   - alignment-target
+  - outer-alignment
   - what-tsa-fails-to-represent
 external:
   - label: Open full matrix
@@ -15,4 +16,4 @@ This card is a pointer; the interactive matrix and catalog live on the companion
 
 **[/field/coverage/](/field/coverage/)**
 
-For how to read bridges and lifecycle placement, see [Bridge assumptions](/cards/bridge-assumptions/) and [Alignment lifecycle](/cards/alignment-lifecycle/). For outer-alignment program instances, see [Alignment target](/cards/alignment-target/). For what this matrix fails to represent of each agenda’s own crux, see [What this map misses](/cards/concept/what-tsa-fails-to-represent/).
+For how to read bridges and lifecycle placement, see [Bridge assumptions](/cards/bridge-assumptions/) and [Alignment lifecycle](/cards/alignment-lifecycle/). For the field name **outer alignment** (not a matrix column), see [Outer alignment](/cards/outer-alignment/). Program instances live on [Alignment target](/cards/alignment-target/). For what this matrix fails to represent of each agenda’s own crux, see [What this map misses](/cards/concept/what-tsa-fails-to-represent/).

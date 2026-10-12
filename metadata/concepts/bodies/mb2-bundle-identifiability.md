@@ -15,6 +15,7 @@ related:
   - correction-channel-integrity
   - mb3-bearer-import
   - pointing-problem
+  - outer-alignment
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
@@ -29,6 +30,6 @@ This is value/bundle identifiability. In the field it is often called the pointi
 
 This project's precise bet is **MB2**: behavioral and internal traces are assumed to identify stable [value-bundle](/cards/value-bundle-transport/) geometry well enough to license claims of bundle alignment. The move is not "scalar reward solved," but "replace the flat reward target with measurable bundle geometry." That only helps if the geometry is itself identifiable. Closely related is [bearer import](/cards/mb3-bearer-import/) (MB3), which asks who those values apply to.
 
-**Where agendas agree:** MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment "right target." **Where they diverge:** ELK is a latent-readout slice; PreDCA/QACI are peer outer targets; this project splits referent transport to MB3.
+**Where agendas agree:** MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); [outer alignment](/cards/outer-alignment/) “right target” (identification slice only). **Where they diverge:** ELK is a latent-readout slice; PreDCA/QACI are peer outer targets; this project splits referent transport to MB3. Outer alignment as a whole is not this card.
 
 Diagnostic evidence shows the failure mode under light instrumentation: bundle drift can be invisible to [correction](/cards/correction-channel-integrity/) handles that are not tracing bearer welfare. That is exactly what this bridge would need to rule out before low-cost measurement is trustworthy.

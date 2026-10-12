@@ -4,6 +4,7 @@ related:
   - what-tsa-fails-to-represent
   - bridge-assumptions
   - alignment-lifecycle
+  - outer-alignment
 external:
   - label: Field hub
     url: /field/v2/

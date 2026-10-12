@@ -24,6 +24,8 @@ terms:
   - { phrase: Goodhart Selection, url: /cards/mb6-selection-and-basin-stability/, fields: all }
   - { phrase: Inner Alignment, url: /cards/mb7-hidden-capability-and-access/, fields: all }
   - { phrase: inner alignment, url: /cards/mb7-hidden-capability-and-access/, fields: all }
+  - { phrase: Outer Alignment, url: /cards/outer-alignment/, fields: all }
+  - { phrase: outer alignment, url: /cards/outer-alignment/, fields: all }
   - { phrase: Acausal Coordination, url: /cards/mb7d-acausal-coordination/, fields: all }
   - { phrase: Extrapolated Volition, url: /cards/mb8-cev-process-convergence/, fields: all }
   - { phrase: extrapolated volition, url: /cards/mb8-cev-process-convergence/, fields: all }

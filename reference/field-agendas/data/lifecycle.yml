@@ -23,7 +23,8 @@ gapsNote: >-
   retired and factorizes as Alignment Target (specify) plus Target Realization
   (construct). Open spine interfaces fill specify, construct, and act/refuse.
   Field outer-alignment work often spans specify and identify without mapping
-  to a single MB column.
+  to a single MB column; the named-subject home is /cards/outer-alignment/,
+  not a coverage-matrix column.
 
 cycle:
   - specify

@@ -46,6 +46,7 @@ external:
     url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/attic/krym-architecture-revision-plan.md"
 related:
   - "pointing-problem"
+  - "outer-alignment"
   - "alignment-target"
   - "specify-cev"
   - "specify-constitutional-ai"

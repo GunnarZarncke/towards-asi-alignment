@@ -16,7 +16,7 @@ bridges:
     cruxWording: Evidence identifies a stable intended value/objective structure (not surface training compliance alone).
     leanAxiom: MB2Crux
     cardSlug: mb2-bundle-identifiability
-    fieldAgree: MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment “right target.”
+    fieldAgree: MIRI value learning; CHAI CIRL; Wentworth pointers problem (identification sense); outer alignment “right target” (identification slice; the name is not this column).
     fieldDiffer: ELK = latent-readout slice; PreDCA/QACI = peer outer targets; book splits referent to MB3.
   - key: MB3
     noun: Value Referent

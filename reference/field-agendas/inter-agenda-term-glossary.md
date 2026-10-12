@@ -792,7 +792,7 @@ Same spelling, different loads: use **separate headwords** with a disambiguator 
 | **Sources** | Hubinger et al. Risks from Learned Optimization; Demski; field generic; training curricula |
 | **Definition** | The problem of ensuring that a learned system’s internal objectives (mesa-objectives, if a mesa-optimizer forms) match the base objective it was trained under — as opposed to outer alignment, which is whether the base objective matches the intended goal. Failures include proxy mesa-objectives, deceptive alignment, and subsystem conflict. The problem it targets is that optimizing a loss can produce an internal optimizer aimed at something else, including strategically. |
 | **Not the same as** | Outer alignment — wrong or incomplete target specified to the trainer; orthogonal axis (both can fail). Benchmark overfitting alone — poor OOD accuracy without an internal objective story. Emergent misalignment — empirical fine-tune phenomenon; may instantiate inner failure modes without proving the mesa-optimizer ontology. |
-| **Cross-agenda** | Deceptive alignment / mesa-optimization (*strict subset* relations): mesa-optimization is a mechanism class; deceptive alignment a severe inner failure; inner alignment is the umbrella success criterion. Scheming / alignment faking (*same crux* in empirical agendas): behavioral research programs aimed at the same wall. Zarncke MB7 / strategic opacity (*partial overlap*): book splits hidden productive capability and control locus rather than one inner-alignment binary. |
+| **Cross-agenda** | Deceptive alignment / mesa-optimization (*strict subset* relations): mesa-optimization is a mechanism class; deceptive alignment a severe inner failure; inner alignment is the umbrella success criterion. Scheming / alignment faking (*same crux* in empirical agendas): behavioral research programs aimed at the same wall. Zarncke MB7 / strategic opacity (*partial overlap*): book splits hidden productive capability and control locus rather than one inner-alignment binary. Companion card for the complementary field name: [outer alignment](/cards/outer-alignment/). |
 
 #### intentional subversion
 
@@ -1038,11 +1038,10 @@ Same spelling, different loads: use **separate headwords** with a disambiguator 
 | **Sources** | Field generic; Hubinger outer/inner split |
 | **Definition** | Whether the system is pointed at the right objective or target—the specification / base objective matches what operators intend—as opposed to inner alignment (whether the trained system actually pursues that intended objective). Outer alignment covers reward misspecification, wrong formal goals, and failed preference pointers; it does not by itself address mesa-objectives or deceptive compliance. |
 | **Not the same as** | Inner alignment / mesa-optimization; tool AI “safety by not being an agent”; corrigibility/CCI (correction properties can fail even with a perfect static outer target). |
-| **Cross-agenda** | CEV/CBV/QACI/PreDCA/KANSI are peer outer-endpoint proposals. Book decomposes “pointing” into bundle geometry + bearer maps + correction process rather than a single outer scalar (App B MB2/MB3). RLHF/RLAIF inherit outer *and* legitimacy cruxes under feedback optimization. |
+| **Cross-agenda** | CEV/CBV/QACI/PreDCA/KANSI are peer outer-endpoint proposals. The book’s home for this *name* is [outer alignment](/cards/outer-alignment/): not an MB column; it factorizes specify (`AlignmentTarget`) + identification (MB2/MB3) + realization (open) + preservation-if-optimized. App B records that split. RLHF/RLAIF inherit outer *and* legitimacy cruxes under feedback optimization. |
 
 ---
 
-### P
 ### P
 
 #### pre-deployment evals

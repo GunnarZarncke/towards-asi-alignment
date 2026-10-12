@@ -34,6 +34,7 @@ leanNodes:
     module: AlignmentProofSpine/AlignmentRegime.lean
 related:
   - pointing-problem
+  - outer-alignment
   - alignment-target
   - specify-cev
   - specify-constitutional-ai

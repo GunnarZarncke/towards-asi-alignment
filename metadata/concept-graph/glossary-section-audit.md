@@ -9,12 +9,12 @@ site glossary entry (`metadata/concepts.yml`) resolves to a manuscript
 
 | Status | Count |
 |--------|------:|
-| `ok` (explicit `sec:`) | 43 |
+| `ok` (explicit `sec:`) | 45 |
 | `inferred` (eq/definition/ch hint → section) | 9 |
 | `chapter-only` (needs `sec:` in bookLabels) | 2 |
 | `missing` | 0 |
 
-Manuscript: 1404 section labels, 1317 sec/ch ref edges, 146 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
+Manuscript: 1404 section labels, 1318 sec/ch ref edges, 145 equation ref edges, 1 unresolved `\ref{...}` / `\eqref{...}` targets.
 
 ## OK — explicit section anchor
 
@@ -48,6 +48,8 @@ Manuscript: 1404 section labels, 1317 sec/ch ref edges, 146 equation ref edges, 
 | Inferential coupling index (ICI) | `inferential-coupling` | `sec:inferential-coupling-acausal-trade-ch35` | sec label |
 | Invasion fitness | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Legibility | `attractor-control` | `sec:selection-turn-ch34` | sec label |
+| Outer alignment | `outer-alignment` | `sec:outer-alignment` | sec label |
+| Outer alignment | `outer-alignment` | `sec:outer-alignment` | sec label |
 | Pivotal process | `pivotal-process` | `sec:pivotal-process-ch37` | sec label |
 | Point of control over deployment | `attractor-control` | `sec:selection-turn-ch34` | sec label |
 | Pointing problem | `pointing-problem` | `sec:pointing-problem` | sec label |

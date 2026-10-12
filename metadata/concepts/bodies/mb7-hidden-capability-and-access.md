@@ -26,6 +26,7 @@ related:
   - correction-channel-integrity
   - inferential-coupling
   - bridge-assumptions
+  - outer-alignment
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex

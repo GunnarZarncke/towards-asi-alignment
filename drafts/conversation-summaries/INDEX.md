@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-12 | **Outer alignment field home** — Give TSA a clear home for Outer Alignment as a named AT safety subject (not a native TSA object):... | [2026-10-12-outer-alignment-home.md](2026-10-12-outer-alignment-home.md) |
 | 2026-10-11 | **Last Safety Review specs commit** — Gunnar asked for end of session and to commit the Last Safety Review specs. | [2026-10-11-last-safety-review-specs-commit.md](2026-10-11-last-safety-review-specs-commit.md) |
 | 2026-10-11 | **FLI Safety Index chapter cites** — Cite the Future of Life Institute AI Safety Index (Summer 2026) in chapters only, quoting the rep... | [2026-10-11-fli-safety-index-cites.md](2026-10-11-fli-safety-index-cites.md) |
 | 2026-10-11 | **Autocomplete ranking spec** — Gunnar supplied an answer to O-19 in `game/last-safety-autocomplete-prototype/drafts/autocomplete... | [2026-10-11-autocomplete-ranking-spec.md](2026-10-11-autocomplete-ranking-spec.md) |
@@ -20,11 +21,10 @@
 | 2026-10-08 | **Workbench README catalog scope** — Feedback that the public workbench README still read as Markets 1 and 4 only, not the full frozen... | [2026-10-08-workbench-readme-catalog-scope.md](2026-10-08-workbench-readme-catalog-scope.md) |
 | 2026-10-08 | **snapshot-0 TSA pin** — Pin registry bootstrap tag `snapshot-0` on the TSA side after tagging in `ai-safety-claims` (`356... | [2026-10-08-snapshot-0-tsa.md](2026-10-08-snapshot-0-tsa.md) |
 | 2026-10-08 | **Predictions registry links** — End-of-session commit: wire manuscript and site to versioned claims-registry pages via a single `... | [2026-10-08-predictions-registry-links.md](2026-10-08-predictions-registry-links.md) |
-| 2026-10-08 | **Prediction background field split** — Apply the book/Metaculus background split and trimmed listing titles to bridge prediction markets... | [2026-10-08-prediction-background-split.md](2026-10-08-prediction-background-split.md) |
 
 ## Archive by month
 
-- **2026-10** (34): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (35): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)
