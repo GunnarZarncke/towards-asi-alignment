@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-11 | **Last Safety Review specs commit** — Gunnar asked for end of session and to commit the Last Safety Review specs. | [2026-10-11-last-safety-review-specs-commit.md](2026-10-11-last-safety-review-specs-commit.md) |
+| 2026-10-11 | **FLI Safety Index chapter cites** — Cite the Future of Life Institute AI Safety Index (Summer 2026) in chapters only, quoting the rep... | [2026-10-11-fli-safety-index-cites.md](2026-10-11-fli-safety-index-cites.md) |
 | 2026-10-11 | **Autocomplete ranking spec** — Gunnar supplied an answer to O-19 in `game/last-safety-autocomplete-prototype/drafts/autocomplete... | [2026-10-11-autocomplete-ranking-spec.md](2026-10-11-autocomplete-ranking-spec.md) |
 | 2026-10-10 | **Last Safety Review voice layers** — Gunnar asked for two voice layers for every character: structure (how they order an explanation, ... | [2026-10-10-last-safety-review-voice-layers.md](2026-10-10-last-safety-review-voice-layers.md) |
 | 2026-10-10 | **Last Safety Review phone draft** — Build a draft of the mobile terminal for the Last Safety Review prototype. | [2026-10-10-last-safety-review-phone.md](2026-10-10-last-safety-review-phone.md) |
@@ -19,12 +21,10 @@
 | 2026-10-08 | **snapshot-0 TSA pin** — Pin registry bootstrap tag `snapshot-0` on the TSA side after tagging in `ai-safety-claims` (`356... | [2026-10-08-snapshot-0-tsa.md](2026-10-08-snapshot-0-tsa.md) |
 | 2026-10-08 | **Predictions registry links** — End-of-session commit: wire manuscript and site to versioned claims-registry pages via a single `... | [2026-10-08-predictions-registry-links.md](2026-10-08-predictions-registry-links.md) |
 | 2026-10-08 | **Prediction background field split** — Apply the book/Metaculus background split and trimmed listing titles to bridge prediction markets... | [2026-10-08-prediction-background-split.md](2026-10-08-prediction-background-split.md) |
-| 2026-10-08 | **Market 11 (S7) and Market 12 (ET-4) registry sketches** — User asked to build ET-4 → Market 12 and lab-sim S7 → Market 11 sketches in the workbench and com... | [2026-10-08-market-11-12-sketches.md](2026-10-08-market-11-12-sketches.md) |
-| 2026-10-08 | **Market 8 Orbit sketch (workbench + registry)** — Orbit ET-1 / published SWE-MI tables map to Market 8 (access completeness), not hidden-coordinati... | [2026-10-08-market-08-orbit-sketch-implement.md](2026-10-08-market-08-orbit-sketch-implement.md) |
 
 ## Archive by month
 
-- **2026-10** (32): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (34): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

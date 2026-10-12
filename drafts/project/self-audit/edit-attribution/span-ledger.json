@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261008T171639.520Z",
+  "_as_of": "20261012T144715.404Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1768,6 +1768,22 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch34-selection-environment.tex#19": {
+    "agent": 1,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 1,
+    "index": 19,
+    "key": "GZ+AI",
+    "prior": "AI"
+  },
+  "chapters/ch34-selection-environment.tex#24": {
+    "agent": 1,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 1,
+    "index": 24,
+    "key": "GZ+AI",
+    "prior": "AI"
+  },
   "chapters/ch34-selection-environment.tex#34": {
     "agent": 2,
     "file": "chapters/ch34-selection-environment.tex",
@@ -1993,7 +2009,7 @@
     "prior": "AI"
   },
   "chapters/ch42-safety-case.tex#2": {
-    "agent": 12,
+    "agent": 13,
     "file": "chapters/ch42-safety-case.tex",
     "human": 2,
     "index": 2,
@@ -2097,11 +2113,11 @@
     "prior": "AI"
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#9": {
-    "agent": 1,
+    "agent": 2,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
-    "human": 0,
+    "human": 2,
     "index": 9,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch44-lethality-stress-test-open-issues.tex#7": {
