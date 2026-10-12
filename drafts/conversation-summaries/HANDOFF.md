@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-12 (UAD salon on the about page).
+Last updated: 2026-10-12 (Last Safety SEC-ARCH-04 and Lab Access).
 
 ---
 
@@ -20,6 +20,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-12:** **Last Safety SEC-ARCH-04 and Lab Access** — Policy source in `content/documents/` with pack-conditional render (`lib/documents.mjs`, `spec/documents.md`). Lab Access issued handset (no BYOD); overlay waits on `labAccessActive`. Logs: `2026-10-12-security-concept-pack-flags.md`, `2026-10-12-player-documents-content.md`.
 - **2026-10-12:** **UAD salon on the about page** — Publications list: “Finding Agency in Real-World Data” (Foresight AI Salon, Berlin, 8 July). YouTube main link; sublinks: Google Slides, Luma. Log: `2026-10-12-uad-salon-about.md`.
 - **2026-10-12:** **Greenblatt 2025 control-measures cite** — `greenblatt2025controloverview` in App B (AI Control row + MB7 note) and Ch. 43; three-way split named as staffing map, not adopted. Ch. 42 uncited. Log: `2026-10-12-greenblatt-control-measures-cite.md`.
 - **2026-10-12:** **Outer alignment field home** — Glossary card `/cards/outer-alignment/` (not an MB): Hubinger name factorized into specify, MB2/MB3, realization, preservation-if-optimized. App B Specify row + notes; App E `sec:outer-alignment`; term-links and inter-agenda glossary. Log: `2026-10-12-outer-alignment-home.md`.

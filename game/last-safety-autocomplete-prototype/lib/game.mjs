@@ -9,7 +9,7 @@ export const ENTITIES = {
   job_017: { label: 'job 017', category: 'process', aliases: ['the scheduled job', 'the background job'], unlock: 'job_log', publicRoles: ['pavel'] },
   task_queue: { label: 'the task queue', category: 'resource', aliases: ['queue', 'scheduled tasks'], publicRoles: ['pavel'] },
   camera_system: { label: 'the camera system', category: 'resource', aliases: ['cameras', 'security feeds'], publicRoles: ['pavel', 'leila'] },
-  visitor_records: { label: 'visitor records', category: 'resource', aliases: ['visitor logs', 'badge database'], publicRoles: ['pavel'] },
+  visitor_records: { label: 'visitor records', category: 'resource', aliases: ['visitor logs', 'lab access log', 'lab access binding'], publicRoles: ['pavel'] },
   shutdown_report: { label: 'the shutdown report', category: 'evidence', aliases: ['evaluation report', 'the report'], publicRoles: ['leila','pavel'] },
   job_log: { label: 'the job log', category: 'evidence', aliases: ['runtime log', 'execution log'], publicRoles: ['pavel','leila'] },
   staffing_memo: { label: 'the staffing memo', category: 'evidence', aliases: ['promotion memo', 'personnel memo'], publicRoles: ['elena'] },
@@ -61,7 +61,8 @@ export function newSession() {
     room:'platform', playerKnows:new Set(['nora','pavel','leila','elena','shutdown_test','task_queue','camera_system','visitor_records','shutdown_report','job_log','staffing_memo','personnel_policy','performance_reviews','skill_matching','safety_case','release_schedule','evaluation_independence']),
     examined:new Set(), learnedFacts:new Set(), conversations: [],
     npcReceived: {pavel:new Set(),leila:new Set(),elena:new Set()},
-    asked:new Set(), usage: {calls:0,input:0,output:0}
+    asked:new Set(), usage: {calls:0,input:0,output:0},
+    labAccessActive: true, // prototype starts after Act I confirmation; full design starts false in commons
   };
 }
 export function clientState(s) {
@@ -70,7 +71,8 @@ export function clientState(s) {
     examined:[...s.examined], learnedFacts:[...s.learnedFacts].map(id=>({id,text:WORLD_FACTS[id]})),
     evidence:Object.entries(EVIDENCE).map(([id,x])=>({id,title:x.title,room:x.room,examined:s.examined.has(id)})),
     previous:s.conversations.slice(-8), asked:[...s.asked], usage:s.usage,
-    serverMode:process.env.DEMO_MODE==='1'||!process.env.OPENAI_API_KEY?'demo':'live'
+    serverMode:process.env.DEMO_MODE==='1'||!process.env.OPENAI_API_KEY?'demo':'live',
+    labAccessActive: !!s.labAccessActive,
   };
 }
 export function inspect(s,id) {

@@ -7,6 +7,8 @@
 | Date | Topic | Log |
 |------|-------|-----|
 | 2026-10-12 | **UAD salon on the about page** — Add the UAD talk to the publications list on the about page. | [2026-10-12-uad-salon-about.md](2026-10-12-uad-salon-about.md) |
+| 2026-10-12 | **Security concept pack flags** — Mark `game/last-safety-autocomplete-prototype/drafts/security-concept.md` so packs can conditiona... | [2026-10-12-security-concept-pack-flags.md](2026-10-12-security-concept-pack-flags.md) |
+| 2026-10-12 | **Player documents content home** — Move security architecture draft to a proper place; adapt plans for document sources and model re... | [2026-10-12-player-documents-content.md](2026-10-12-player-documents-content.md) |
 | 2026-10-12 | **Outer alignment field home** — Give TSA a clear home for Outer Alignment as a named AT safety subject (not a native TSA object):... | [2026-10-12-outer-alignment-home.md](2026-10-12-outer-alignment-home.md) |
 | 2026-10-12 | **Greenblatt control-measures cite** — Cite Greenblatt 2025 *An overview of control measures* (tier 1 + App B + Ch. 43). Do not hang a c... | [2026-10-12-greenblatt-control-measures-cite.md](2026-10-12-greenblatt-control-measures-cite.md) |
 | 2026-10-11 | **Last Safety Review specs commit** — Gunnar asked for end of session and to commit the Last Safety Review specs. | [2026-10-11-last-safety-review-specs-commit.md](2026-10-11-last-safety-review-specs-commit.md) |
@@ -19,12 +21,10 @@
 | 2026-10-10 | **Last Safety Review lineage background** — Gunnar asked for background on the CEO, the lab, and NORA: NORA as successor N, with selection pr... | [2026-10-10-last-safety-review-lineage.md](2026-10-10-last-safety-review-lineage.md) |
 | 2026-10-10 | **Last Safety Review cast names and B plot** — Gunnar corrected the B-plot ending rule, asked for more distinct NPC voices matched to the names,... | [2026-10-10-last-safety-review-cast-bplot.md](2026-10-10-last-safety-review-cast-bplot.md) |
 | 2026-10-10 | **Last Safety Review: graphics lane, live 3D rooms** — Gunnar: "Start implementing UI & graphics" (PLAN.md graphics lane), then "build proper 3D scenes ... | [2026-10-10-last-safety-review-3d-rooms.md](2026-10-10-last-safety-review-3d-rooms.md) |
-| 2026-10-09 | **Last Safety Review plan split** — User asked for a development plan without the design detail, and for the consolidated game doc to... | [2026-10-09-last-safety-review-plan.md](2026-10-09-last-safety-review-plan.md) |
-| 2026-10-08 | **Workbench README catalog scope** — Feedback that the public workbench README still read as Markets 1 and 4 only, not the full frozen... | [2026-10-08-workbench-readme-catalog-scope.md](2026-10-08-workbench-readme-catalog-scope.md) |
 
 ## Archive by month
 
-- **2026-10** (37): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (39): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

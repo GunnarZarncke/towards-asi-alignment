@@ -8,12 +8,16 @@ The player is an isolate. They see tool calls and tool results. They do not see 
 
 ## What the screen is
 
-The player’s computer is a **phone**: a bezel around a short screen. It is the isolate UI. It is not a laptop window and not a desktop OS.
+The player’s computer is an issued **Lab Access** handset: a bezel around a short screen. It is the isolate UI, the door credential, and the visitor identity. It is not a personal phone, not a laptop window, and not a desktop OS. Staff use the same device class.
+
+**When it appears**
+
+The overlay is absent until Lab Access binding marks the visit arrived (`labAccessActive` on [contract.md](contract.md)). Ian’s Act I confirmation on his handset sets that flag and may open the overlay once. Before that, there is no launcher, no blink, and isolate tools on this screen cannot be used. Face-to-face talk in Commons still works. `dev:terminal` uses a fixture that is already active.
 
 **Placement**
 
-- Desktop: overlay on the **right** of the room view. The room stays visible on the left. The phone is a tall rounded rectangle, not a full-height panel.
-- Narrow / mobile viewport: the phone is **full screen**. There is a way back to the room (home indicator or a short “Lab” control).
+- Desktop: overlay on the **right** of the room view. The room stays visible on the left. The handset is a tall rounded rectangle, not a full-height panel.
+- Narrow / mobile viewport: the handset is **full screen**. There is a way back to the room (home indicator or a short “Lab” control).
 
 **Chrome (generic, no vendor IP)**
 
@@ -29,7 +33,7 @@ Default surface when the overlay opens.
 
 - Clock, large enough to read.
 - Notification stack: unread chats, a file shared with the player, a grant or denial, a topic an NPC has raised. Tapping a notification opens the matching app and item. Notifications do not invent facts; they only point at `TerminalState`. They are the hint channel (O-11): a topic or a file, not an oracle conclusion.
-- When the phone overlay is closed and a notification is unread, the room’s phone object blinks. Graphics draws the blink. This lane decides when the unread flag is set.
+- When Lab Access is active, the overlay is closed, and a notification is unread, the room’s handset object blinks. Graphics draws the blink. This lane decides when the unread flag is set. Before activation, nothing blinks.
 - App tiles, always present:
 
 | App | What the player sees | Isolate tools |
@@ -84,7 +88,7 @@ The finder is the current room camera from graphics, shown inside the phone. Pan
 | Sound | on | UI clicks and notification pips. Act music stays a graphics/audio concern (O-37). |
 | Reduce motion | off | Cut walk and overlay animation. |
 | Larger type | off | Phone text size only. |
-| Always show phone | on (desktop) | If off, hide overlay until the launcher or a room handset is used. |
+| Always show phone | on (desktop) | Only after `labAccessActive`. If off, hide overlay until the launcher or the issued handset in the room is used. Before activation the setting has no effect. |
 | Demo / no model | follow `.env` | Same as `DEMO_MODE=1`: no live parse. Shown so a tester can flip it without editing files. |
 | Parser inspector | off | Extra technical view of the current `Parse` (useful while building). |
 | TSA concept links | off | Room footer: `More: ` + underlined short summary → companion concept card. One link at a time; the last relevant concept in this room until the player leaves (O-41). Graphics draws it; engine supplies summary and href from the compiled concept map. |

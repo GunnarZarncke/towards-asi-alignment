@@ -11,7 +11,7 @@ Four lanes can proceed at the same time. Composition only wires them.
 | Grammar | [spec/grammar.md](spec/grammar.md), [spec/ranking.md](spec/ranking.md) | `lib/grammar.mjs`, `public/grammar.js`, `tests/grammar*.mjs` | `npm test` |
 | Graphics / UI | [spec/graphics-ui.md](spec/graphics-ui.md) | `public/index.html`, `public/style.css`, `public/app.js`, future `public/render/` | `npm run dev:ui` (fixture; see below) |
 | Terminal | [spec/terminal.md](spec/terminal.md) | `public/terminal/`, `tests/terminal*.mjs` | `npm run dev:terminal` (fixture; see below) |
-| Engine | [spec/engine.md](spec/engine.md), [spec/world.md](spec/world.md) | `lib/game.mjs`, future `lib/world/`, `tests/engine*.mjs` | `npm run test:engine` (headless; see below) |
+| Engine | [spec/engine.md](spec/engine.md), [spec/world.md](spec/world.md), [spec/documents.md](spec/documents.md) | `lib/game.mjs`, `lib/documents.mjs`, `content/documents/`, future `lib/world/`, `tests/engine*.mjs`, `tests/documents.test.mjs` | `npm test` (includes document render) |
 | Composition | [spec/contract.md](spec/contract.md) | `server.mjs`, `lib/llm.mjs` | `npm start` |
 
 Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.md](spec/contract.md). World content is engine-owned; graphics reads it and does not edit it.
@@ -22,12 +22,13 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 - Consequential facts, access, and endings change only in the engine.
 - The first incident is a causal model ([spec/incident.md](spec/incident.md)). Dialogue and rooms for that incident wait until its headless check passes.
 - The renderer draws `ClientState`. It does not decide outcomes.
-- The terminal is a generic phone overlay ([spec/terminal.md](spec/terminal.md)): homescreen, chat, files, wiki, API, calendar, contacts, notes, photo, settings, viewers. Isolate tools only. No pipeline or overseer handles.
+- The terminal is an issued Lab Access handset overlay ([spec/terminal.md](spec/terminal.md)): homescreen, chat, files, wiki, API, calendar, contacts, notes, photo, settings, viewers. Isolate tools only. No pipeline or overseer handles. Overlay waits on `labAccessActive`.
 - Completions and the parser emit a `Parse`. Room completions do not reveal oracle-only facts. Completions addressed to NORA may omit evidence; they still must not assert a hidden fact.
 - `lib/llm.mjs` interprets player text into a `Parse` and phrases replies from engine-filtered NPC facts. It does not own grammar or world truth.
 - A change to shapes in [spec/contract.md](spec/contract.md) is a composition change: update the contract and every consumer in the same pass.
 - Open questions stay open until recorded in [spec/meta.md](spec/meta.md). A lane must not close one inside its spec.
 - Do not implement a side idea because it is written down. If it does not change what a player can justify or what they can still control, it waits.
+- Long shared lab documents are **sources** in [`content/documents/`](content/documents/README.md), registered in [`lib/documents.mjs`](lib/documents.mjs), specified in [`spec/documents.md`](spec/documents.md). Pack-conditional text is rendered at serve time; fixtures hold served bytes or call the renderer in tests.
 
 ## How to test
 
@@ -36,7 +37,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 | Grammar alone | `npm test` | Node. No key, no browser. |
 | Engine alone | `npm run test:engine` | Scripted actions against `lib/game.mjs`. No browser, no model. Includes the incident scripts in [spec/incident.md](spec/incident.md) once that model exists. |
 | Graphics alone | `npm run dev:ui` | Frozen `fixtures/client-state.json` plus a scene fixture. No engine, no key. |
-| Terminal alone | `npm run dev:terminal` | Frozen `fixtures/terminal-session.json`. Phone overlay on a dummy room; no engine, no key. |
+| Terminal alone | `npm run dev:terminal` | Frozen `fixtures/terminal-session.json`. Lab Access overlay on a dummy room (fixture already activated); no engine, no key. |
 | One room, live parse | `npm start`, then the browser | Repo-root `.env` (`OPENAI_API_KEY`). `DEMO_MODE=1` skips the model. |
 | All together | `npm start` | Composition server on `127.0.0.1:3000`. |
 

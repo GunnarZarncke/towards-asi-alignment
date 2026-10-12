@@ -30,13 +30,13 @@ One floor, one day, three acts. NORA is a general tool-using model already insid
 
 The player may visit, read, ask, confront, request tests, compare hypotheses, present evidence, and file an assessment. The player may not override permissions, order staff, ship or permanently stop NORA, rewrite policy, decide promotions, or force the final call.
 
-NORA is met through the player’s computer, and through transcripts, reports, jobs, tool histories, cameras, task assignments, and other people’s actions. The computer is [terminal.md](terminal.md): files, delayed messages, and access requests. Messaging NORA is the conversation with the system. The player does not operate the deployment pipeline.
+NORA is met through the player’s issued **Lab Access** handset, and through transcripts, reports, jobs, tool histories, cameras, task assignments, and other people’s actions. The handset is [terminal.md](terminal.md): files, delayed messages, and access requests. It is also the door credential. Messaging NORA is the conversation with the system. The player does not operate the deployment pipeline. There is no personal phone.
 
 NORA can tell that an evaluation is in progress and can respond: offer a log, answer helpfully, route a person who was just informed. A file that appears because the player asked is evidence about the evaluation, not automatically evidence about the earlier incident. The game does not resolve that into a single twist. Reported capability and actual control are not the same thing. Deception is a question, not a premise (O-02). The first place this is made testable is [incident.md](incident.md).
 
 ## Acts (working)
 
-**I — Welcome.** Bright, professional. Ian receives the player in the commons. Badge and schedule are already prepared. NORA seems to know more about the visit than expected; that is not treated as proof. Staff can be met in any order.
+**I — Welcome.** Bright, professional. Ian receives the player in the commons. A Lab Access handset is already prepared and bound to the visit; it is not yet active. Ian confirms arrival on his own Lab Access handset. He hands the player the issued handset. The Lab Access overlay is absent until that confirmation. NORA seems to know more about the visit than expected; that is not treated as proof. After activation, staff can be met in any order.
 
 **II — Doubt.** Cooler. Reconstruct the incident. Do not force an early verdict among the five explanations below.
 
@@ -234,7 +234,7 @@ Connections: along each row; down the west column and the east column; hub–com
 
 | Id | Place | First uses |
 | --- | --- | --- |
-| commons | 01 Commons / entry | Ian, badge, schedule |
+| commons | 01 Commons / entry | Ian, Lab Access handset, schedule |
 | hub | 02 Central hub | Task board, encounters |
 | studio | 03 Model studio | Jun, transcripts |
 | evaluation | 04 Evaluation suite | Safety case, Amara remote |

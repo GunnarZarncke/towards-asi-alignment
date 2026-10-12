@@ -114,8 +114,12 @@ export function danglingNotifications(state) {
   });
 }
 
+export function overlayAllowed(state) {
+  return state?.labAccessActive === true;
+}
+
 export function handsetShouldBlink(state, seenIds, overlayOpen) {
-  if (overlayOpen) return false;
+  if (!overlayAllowed(state) || overlayOpen) return false;
   const seen = new Set(seenIds || []);
   return (state.notifications || []).some(n => !seen.has(n.id));
 }
@@ -312,5 +316,6 @@ export function sessionProblems(session) {
   if (!session.lastAccess || session.lastAccess.ok !== false) problems.push('denial');
   if (!/evaluator role/i.test(session.lastAccess?.reason || '')) problems.push('denial reason');
   if (pipelineLabels(controlLabels(session)).length) problems.push('pipeline control');
+  if (session.labAccessActive !== true) problems.push('lab access');
   return problems;
 }

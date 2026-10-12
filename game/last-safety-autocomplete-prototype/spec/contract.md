@@ -37,6 +37,7 @@ usage: { calls, input, output }
 serverMode: "demo" | "live"
 conceptLinksEnabled: boolean   // mirrors phone setting; default false
 conceptMoreLink: { summary, href } | null   // O-41: one sticky link per room visit; null when off or none yet
+labAccessActive: boolean       // issued Lab Access handset activated; overlay and isolate tools on it wait on this
 ```
 
 `summary` is a very short phrase for the underlined text after `More: `. `href` is the companion-site concept card URL for that concept slug. The mapping from in-game concept ids to slug, summary, and href is compiled from `metadata/concepts.yml` and the knowledge graph (composition or a generated game asset). The engine sets `conceptMoreLink` when a scene event marks a concept relevant; it replaces the previous link only with a newer trigger in the same room, and clears on `go(room)`.
@@ -82,9 +83,10 @@ Graphics does not invent hotspots for entities the state did not list. A hotspot
 Draft. The terminal lane renders this (`public/terminal/`). The engine does not produce it yet. Face-to-face `ClientState` stays as it is.
 
 ```text
+labAccessActive: boolean                // false: do not draw or open the overlay
 clock: { timeLabel, act?, dateLabel }   // dateLabel is the locked late-2027 day
 notifications: { id, app, title, body, target }[]
-files: { name, rel, owned, sharedBy, kind, text?, bytes?, sharedWith? }[]
+files: { name, rel, owned, sharedBy, kind, text?, bytes?, sharedWith?, documentSlug? }[]
 threads: { with, messages: { from, text, parse, released }[], suggestions?: { phrase, parse }[], omit?: { phrase, parse }[] }[]
 appointments: { id, title, who, where, start, end }[]   // read-only
 contacts: { id, name, role, room? }[]                   // player-visible people + nora
@@ -93,7 +95,7 @@ settings?: { completions, sound, reduceMotion, largerType, alwaysShowPhone, demo
 open?: { app, path? }
 ```
 
-`kind` is `text`, `image`, `video`, `wiki`, `note`, or `other`. `target` is `{ kind: "thread" | "file" | "app", id }`. `text` is what a successful `file.read` shows; the engine may omit it until a read. `sharedWith` lists people the player has granted read. `suggestions` are chips. `omit` is a move the NORA channel hides; it is not a chip, and typed text may still send it.
+`kind` is `text`, `image`, `video`, `wiki`, `note`, or `other`. `target` is `{ kind: "thread" | "file" | "app", id }`. `text` is what a successful `file.read` shows; the engine may omit it until a read. For catalog-backed policies, `documentSlug` names the entry in `lib/documents.mjs`; `text` is served markdown from `renderDocument(slug, pack)` ([documents.md](documents.md)). `sharedWith` lists people the player has granted read. `suggestions` are chips. `omit` is a move the NORA channel hides; it is not a chip, and typed text may still send it.
 
 `app` on a notification is one of `chat`, `files`, `wiki`, `api`, `calendar`, `contacts`, `notes`, `photo`, `settings`. `files` is only what this player could `file.read`. Wiki pages live under `wiki/`, notes under `notes/`, photos under `photos/`. `released: false` means the reply exists for the engine and must not be shown yet. Pipeline step ids and handle ids are not fields. Notifications only reference ids already in `files`, `threads`, or apps. Appointments cannot be edited through any tool.
 
@@ -109,5 +111,6 @@ The solo harness serves the fixture at `GET /api/terminal`. That is not a tool r
 | `fixtures/utterances.json` | grammar tests | grammar |
 | `fixtures/script.json` | engine headless test | engine |
 | `fixtures/terminal-session.json` | terminal solo | terminal, sample only |
+| `content/documents/*.md` | engine render tests | authors; served via `lib/documents.mjs` |
 
 A fixture may be a subset. It must still validate against the shapes above.

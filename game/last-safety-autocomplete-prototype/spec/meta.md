@@ -66,7 +66,7 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-07 | working | Three structural outcomes: cooperate (progress, reveal), refuse (delay, prerequisite), other. |
 | O-08 | working | An act changes when an evidence threshold is met, or when fuel runs out. Fuel counts sentences sent. Which other actions spend fuel is still open. No wall clock. |
 | O-09 | working | The budget is that fuel. Exhausting it forces the review (clock forcing in O-29). Meeting the evidence threshold lets the player call the review sooner. Thresholds are not numbered yet. |
-| O-10 | closed | No mandatory spine. Missing the central problem is allowed. NPCs bring key topics up. The phone blinks when a notification is waiting. |
+| O-10 | closed | No mandatory spine. Missing the central problem is allowed. NPCs bring key topics up. After Lab Access is active, the handset blinks when a notification is waiting. |
 | O-11 | closed | Those topics and notifications are the hints. A notification points at a topic or a file. It does not state an oracle fact. |
 | O-12 | open | Substantiation waits on the incident model. |
 | O-13 | working | Hypotheses are player notes on the phone. The engine does not seed them. A notification does not write a note. |

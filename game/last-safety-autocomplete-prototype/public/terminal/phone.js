@@ -1,6 +1,6 @@
 import {
   APPS, SETTINGS, ALLOWED_CAPS, defaultSettings, applyTool, suggestionChips, sendable,
-  visibleMessages, nowPlacement, handsetShouldBlink,
+  visibleMessages, nowPlacement, handsetShouldBlink, overlayAllowed,
 } from './project.mjs';
 
 const ICONS = {
@@ -326,6 +326,7 @@ function applyPhotoTransform() {
 }
 
 function render() {
+  if (!overlayAllowed(state)) overlay = false;
   const phone = $('#phone');
   phone.classList.toggle('type-large', !!state.settings.largerType);
   phone.innerHTML = `<div class="screen">${statusBar()}<div class="phone-body">${body()}</div>${homeBar()}</div>`;
@@ -333,6 +334,7 @@ function render() {
   document.body.classList.toggle('reduce-motion', !!state.settings.reduceMotion);
   const blink = handsetShouldBlink(state, [...seen], overlay);
   $('#handset').classList.toggle('has-unread', blink);
+  $('#handset').classList.toggle('is-absent', !overlayAllowed(state));
   applyPhotoTransform();
   const utter = $('#utterance');
   if (utter && top().draft) {
@@ -351,7 +353,7 @@ function onClick(e) {
   if (!b) return;
   const act = b.dataset.act;
   if (act === 'open-phone') {
-    overlay = true;
+    if (overlayAllowed(state)) overlay = true;
     render();
     return;
   }
@@ -414,7 +416,7 @@ function onClick(e) {
   if (act === 'toggle') {
     const key = b.dataset.key;
     state.settings = { ...state.settings, [key]: !state.settings[key] };
-    if (key === 'alwaysShowPhone' && state.settings.alwaysShowPhone) overlay = true;
+    if (key === 'alwaysShowPhone' && overlayAllowed(state) && state.settings.alwaysShowPhone) overlay = true;
     if (key === 'alwaysShowPhone' && !state.settings.alwaysShowPhone) overlay = false;
     render();
   }
@@ -599,7 +601,7 @@ async function boot() {
   state = await res.json();
   delete state._hostFiles;
   state.settings = { ...defaultSettings(), ...(state.settings || {}) };
-  overlay = state.settings.alwaysShowPhone !== false;
+  overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
   document.body.addEventListener('click', onClick);
   document.body.addEventListener('input', onInput);
   document.body.addEventListener('pointerdown', onPointerDown);

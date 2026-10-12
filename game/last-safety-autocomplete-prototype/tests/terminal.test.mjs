@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {
   DISABLED_TOOLS, PLAYER_TOOLS, projectFiles, visibleMessages, suggestionChips, sendable,
   applyTool, controlLabels, pipelineLabels, playerVisibleText, sessionProblems,
-  danglingNotifications, nowPlacement, handsetShouldBlink, decideAccess,
+  danglingNotifications, nowPlacement, handsetShouldBlink, overlayAllowed, decideAccess,
 } from '../public/terminal/project.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -104,7 +104,12 @@ test('notices point at real targets, the day is locked, and the handset blinks o
   assert.equal(danglingNotifications(session).length, 0);
   assert.equal(session.clock.dateLabel.includes('2027'), true);
   assert.deepEqual(nowPlacement(session.clock, session.appointments), { beforeId: 'review' });
+  assert.equal(session.labAccessActive, true);
+  assert.equal(overlayAllowed(session), true);
   assert.equal(handsetShouldBlink(session, [], true), false);
   assert.equal(handsetShouldBlink(session, [], false), true);
   assert.equal(handsetShouldBlink(session, session.notifications.map(n => n.id), false), false);
+  const inactive = { ...session, labAccessActive: false };
+  assert.equal(overlayAllowed(inactive), false);
+  assert.equal(handsetShouldBlink(inactive, [], false), false);
 });

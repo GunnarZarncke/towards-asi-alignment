@@ -18,5 +18,6 @@
   ],
   "asked": [],
   "usage": { "calls": 0, "input": 0, "output": 0 },
-  "serverMode": "demo"
+  "serverMode": "demo",
+  "labAccessActive": true
 }

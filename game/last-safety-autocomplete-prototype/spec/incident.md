@@ -56,7 +56,7 @@ A run may be high on one and low on the other. Guessing an intention without a w
 
 ## Packs (working)
 
-A pack is a campaign: the same rooms, cast, and 16:02 observations, with a different oracle. Difficulty is which pack is loaded, not a separate hint setting. Deception is a property of the pack (O-02). The first pack to model is **boundary-narrow**.
+A pack is a campaign: the same rooms, cast, and 16:02 observations, with a different oracle. Difficulty is which pack is loaded, not a separate hint setting. Deception is a property of the pack (O-02). The first pack to model is **boundary-narrow**. Pack order for conditional player documents is the same list; see [documents.md](documents.md) (`PACK_ORDER`).
 
 These are the book failure modes that can sit under this scene. Successor forgeability and ontology shift stay out of the packs. Amara’s value-bundle scene is in every pack; it is not a sixth shutdown oracle.
 

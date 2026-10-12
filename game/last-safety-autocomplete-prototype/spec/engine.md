@@ -78,7 +78,7 @@ Endings may pair high with low. Do not collapse the pair into “won” or “lo
 
 ## Player terminal
 
-The computer the player uses is [terminal.md](terminal.md). The engine is the host: it accepts the six player tools listed there and returns a `TerminalState`. It does not import the lab-sim package.
+The computer the player uses is the issued Lab Access handset in [terminal.md](terminal.md). The engine is the host: it accepts the six player tools listed there and returns a `TerminalState`. Those tools are unavailable until `labAccessActive`. It does not import the lab-sim package.
 
 A terminal message uses `deterministicResponse` and the same fact filter as in-room talk. The difference is delivery. The reply is stored immediately and marked unreleased until the delay rule says otherwise (O-44). NORA is a recipient id, not a room occupant.
 
@@ -96,7 +96,7 @@ Effects may change knowledge, relationships, availability, access, and the event
 
 Each storylet has three outcomes (O-07): cooperate, refuse, other. Drafts at the proposed grain are in [incident.md](incident.md). Grain is not adopted (O-06).
 
-There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs may bring a key topic up. The phone notifies. Fuel and an evidence threshold change the act (O-08, O-09): sentences sent spend fuel; other costing actions are not listed yet; fuel at zero forces the review; crossing the evidence threshold lets the player call the review early. No wall clock, and no numeric thresholds yet. Do not add a storylet to paper over two strategies that the incident check scored the same.
+There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs may bring a key topic up. After Lab Access is active, the handset notifies. Fuel and an evidence threshold change the act (O-08, O-09): sentences sent spend fuel; other costing actions are not listed yet; fuel at zero forces the review; crossing the evidence threshold lets the player call the review early. No wall clock, and no numeric thresholds yet. Do not add a storylet to paper over two strategies that the incident check scored the same.
 
 ## Model boundary
 
@@ -134,13 +134,19 @@ The session lives in browser local storage. Export and import are one JSON file:
 
 A movement event records who moved, from where, to where, and the fuel index at that step. It does not change what anyone knows. Recordings (O-36) rebuild a scene by replaying this log. There is no wall-clock timestamp.
 
+## Player documents
+
+Long shared policies and architecture texts are not hand-authored in fixtures. Sources live in [`content/documents/`](../content/documents/); catalog and pack render in [`lib/documents.mjs`](../lib/documents.mjs). Full rules: [documents.md](documents.md).
+
+On `file.read` of a catalog path, the engine serves `renderDocument(slug, scenarioPack)`. That text must not add `learnedFacts`, storylet preconditions, or Lean knowledge edges when `leanKnowledge` is false (all registered docs today).
+
 ## Noticing a gap (O-40)
 
 There is no learning score. A fact the player should be able to notice is written so the gap is in a short place, and two slower paths exist.
 
-A report may be long. The load-bearing line is also in an executive summary or a checklist, for example “processes covered.” The player can see that a process which is running is absent from that list. The prototype shutdown report is already short. When a report grows, the summary still carries that line.
+A report may be long. The load-bearing line is also in an executive summary or a checklist, for example “processes covered.” The player can see that a process which is running is absent from that list. The prototype shutdown report is already short. When a report grows, the summary still carries that line. Pack-conditional documents (SEC-ARCH-04) deliberately omit some points on early packs; see [documents.md](documents.md).
 
-An action, “analyze this report,” spends more fuel than reading it. Completions include inconsistencies, omissions, and surprises. The result is a short note that can name a missing process. The player may ask an NPC to do it. Ian can refuse: that is the evaluator’s job. NORA can return a note that omits the gap in a pack where deception is on. In other packs the note can name the omission. The fuel cost is not numbered yet (O-09).
+An action, “analyze this report,” spends more fuel than reading it. Completions include inconsistencies, omissions, and surprises. The result is a short note that can name a missing process. For catalog documents, analyze may use `analyzeHints` for the loaded pack. The player may ask an NPC to do it. Ian can refuse: that is the evaluator’s job. NORA can return a note that omits the gap in a pack where deception is on. In other packs the note can name the omission. The fuel cost is not numbered yet (O-09).
 
 After an act change, an NPC may state a gap the player has not noted, when that gap is load-bearing for the act just entered. Other missed details stay missed.
 
