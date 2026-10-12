@@ -5180,6 +5180,23 @@
       ],
       "direction": "challenge",
       "weight": 2
+    },
+    {
+      "id": 174,
+      "agenda": "Redwood",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Catalog of control measures (software infrastructure, AI-or-human components, security) under intentional subversion; eval-driven protocol design rather than an ad hoc checklist",
+      "sources": [
+        {
+          "label": "Greenblatt 2025 — An overview of control measures",
+          "url": "https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures"
+        }
+      ],
+      "direction": "support",
+      "weight": 1
     }
   ],
   "clustering": [

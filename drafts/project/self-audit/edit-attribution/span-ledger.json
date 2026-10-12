@@ -10,7 +10,6 @@
   },
   "appendices/appB-bridge-crosswalk.tex#2": {
     "agent": 4,
-    "dirty": true,
     "file": "appendices/appB-bridge-crosswalk.tex",
     "human": 0,
     "index": 2,
@@ -2132,7 +2131,6 @@
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#16": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
     "human": 0,
     "index": 16,
@@ -2157,7 +2155,6 @@
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#9": {
     "agent": 8,
-    "dirty": true,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
     "human": 2,
     "index": 9,

@@ -13,6 +13,8 @@ external:
     url: "https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion"
   - label: "Greenblatt et al. 2024 — Alignment faking"
     url: "https://arxiv.org/abs/2412.14093"
+  - label: "Greenblatt 2025 — An overview of control measures"
+    url: "https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures"
 related: []
 ---
 
@@ -43,6 +45,7 @@ Redwood Research makes safety-under-subversion research legible to labs and gove
 - [Redwood Research](https://www.redwoodresearch.org/)
 - [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
 - [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093)
+- [Greenblatt 2025 — An overview of control measures](https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures)
 
 ## Map clustering
 

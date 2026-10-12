@@ -127,7 +127,7 @@ Same spelling, different loads: use **separate headwords** with a disambiguator 
 
 | | |
 |---|---|
-| **Sources** | Redwood Research (Greenblatt et al. 2023/2024; Shlegeris “case for control”) |
+| **Sources** | Redwood Research (Greenblatt et al. 2023/2024; Shlegeris “case for control”; Greenblatt 2025 measures catalog) |
 | **Definition** | AI control is safety research under the assumption that a model may be egregiously misaligned and may intentionally subvert oversight. A system is controlled if it cannot cause unacceptable damage even then; the property is evaluated by measuring **capability** to defeat control techniques, not by estimating propensity to try. Protocols often use weaker trusted models to oversee stronger untrusted ones, accepting that black-box control is transitional as capability gaps widen. |
 | **Not the same as** | **Boxing** restricts I/O without the full control-eval methodology under adaptive subversion. **RLHF deployment** aims to shape preferences; control assumes preference shaping may have failed. **Interpretability alone** may supply monitors but is not itself a control protocol with red-team capability measurement. **Alignment (inner)** tries to remove scheming motives; control bounds consequences if motives remain. |
 | **Cross-agenda** | Apollo scheming science — *partial overlap*: empirical deception/situational awareness feeds control threat models. Zarncke hidden productive BIQ bound + adversarial verifiability — *same crux* class for “can oversight stay honest,” different formal object (BIQ/cost-of-faking vs Redwood protocol safety cases). Wentworth / critics of control — *orthogonal* debate about whether control research creates false confidence; does not redefine the term. |

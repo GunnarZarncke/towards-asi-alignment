@@ -57,7 +57,7 @@ This consolidated report drew on the following prior efforts.
 
 ### Control and Operational Approaches
 
-*   [An Overview of Control Measures (Greenblatt, 2023)](/api/post/G8WwLmcGFa4H6Ld9d)
+*   [An Overview of Control Measures (Greenblatt, 2025)](/api/post/G8WwLmcGFa4H6Ld9d)
 *   [AI Assurance Technology Market Report 2024](https://www.aiat.report/report/about)
 
 ### Governance and Policy
@@ -523,7 +523,7 @@ See also [LessWrong Tag AI Control](/tag/ai-control) and [Notes on Control Evalu
 Designing protocols for deploying powerful but untrusted AI systems.
 
 *   [Greenblatt et al. (2024)](/api/sequence/PC3yJgdKvk8kzqZyA/post/Yu8jADLfptjPsR58E)
-*   [Greenblatt (2023): Overview of Control Measures](/api/post/G8WwLmcGFa4H6Ld9d)
+*   [Greenblatt (2025): Overview of Control Measures](/api/post/G8WwLmcGFa4H6Ld9d)
 
 ### [Permission Management and Sandboxing](https://calypsoai.com/)
 
@@ -675,13 +675,13 @@ See also [LessWrong Tag AI Safety Research](/tag/ai-safety-research) 
 Treating prompts and agent orchestration as formal programs with verifiable properties.
 
 *   mentioned in [Ji et al. (2023): AI Alignment Survey](https://alignmentsurvey.com/uploads/AI-Alignment-A-Comprehensive-Survey.pdf)
-*   mentioned in [Greenblatt (2023): An overview of control measures](/api/post/G8WwLmcGFa4H6Ld9d)
+*   mentioned in [Greenblatt (2025): An overview of control measures](/api/post/G8WwLmcGFa4H6Ld9d)
 
 ### Control-Theoretic Certificates for Tool-Using Agents
 
 Extending barrier certificates to multi-step, multi-API agent action graphs.
 
-*   mentioned in [Greenblatt (2023): An overview of control measures](/api/post/G8WwLmcGFa4H6Ld9d)
+*   mentioned in [Greenblatt (2025): An overview of control measures](/api/post/G8WwLmcGFa4H6Ld9d)
 
 ### AI-BSL: Capability-Tiered Physical Containment Standards
 

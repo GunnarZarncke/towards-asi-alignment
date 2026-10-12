@@ -461,7 +461,7 @@ Redwood Research makes safety-under-subversion research legible to labs and gove
 - **Contributes:** Makes the capability-gap assumption explicit and runs empirical control evaluations under intentional subversion.
 - **Project separates:** This project adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
 - **Manuscript hooks:** ch10, ch43; App B MB7
-- **Links:** [Redwood Research](https://www.redwoodresearch.org/); [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion); [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093)
+- **Links:** [Redwood Research](https://www.redwoodresearch.org/); [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion); [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093); [Greenblatt 2025 — An overview of control measures](https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures)
 
 ### Resolution
 
@@ -786,6 +786,7 @@ Stance marks prefix tags on a +3 (+++, advances discharge) to −3 (−−−, c
 | <a id="ev-171"></a>171 | Anthropic / Goodfire | MB2, MB7 | E | −− | Complicates | 2 | Misalignment from production RL reward hacking rather than an implanted backdoor (MacDiarmid et al. 2025); open-source replication mixed | [MacDiarmid et al. 2025](https://arxiv.org/abs/2511.18397) |
 | <a id="ev-172"></a>172 | Redwood | MB4a, MB7 | E | −− | Complicates | 2 | Control-protocol subversion: an untrusted model that knows the protocol can collapse monitor-based protocols (Terekhov et al. 2025); live dispute with Emmons et al. 2025 | [Terekhov et al. 2025](https://arxiv.org/abs/2510.09462) |
 | <a id="ev-173"></a>173 | Apollo / Truthful AI | MB7 | E | −− | Complicates | 2 | Sandbagging and evaluation-awareness: models can underperform or pass tests they recognize (van der Weij et al.; SAD, Laine et al. 2024) | [Laine et al. 2024 — Situational Awareness Dataset](https://arxiv.org/abs/2407.04694) |
+| <a id="ev-174"></a>174 | Redwood | MB7 | C | + | Advances | 1 | Catalog of control measures (software infrastructure, AI-or-human components, security) under intentional subversion; eval-driven protocol design rather than an ad hoc checklist | [Greenblatt 2025 — An overview of control measures](https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures) |
 
 **Maintenance:** when adding an agenda row or bridge cell, edit YAML under `reference/field-agendas/data/` and run `cd site && npm run sync:field-agendas`. Prefer bibliography keys already in `references/` when citing external work.
 
