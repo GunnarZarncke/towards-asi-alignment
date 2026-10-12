@@ -63,7 +63,7 @@ Empty field, either channel: a few relevant openings, not a menu of the plot.
 
 “Show more” pages a stable ranking inside the active channel. It is not a hint about later scenes.
 
-Order is [ranking.md](ranking.md) (O-19, working). The person channel passes the addressed NPC. The NORA channel passes `nora` after the engine’s omit list. The ranker does not see oracle facts. Novel wording stays allowed (O-20) and does not create an engine action.
+Order is [ranking.md](ranking.md) (O-19, working). The person channel passes `addressees`: every actor in the room. The NORA channel passes `['nora']` after the engine’s omit list. The ranker unions their public role domains and does not weight individuals. It does not see oracle facts. Novel wording stays allowed (O-20) and does not create an engine action.
 
 Three sources were proposed: authored plot-critical lines, compositional fragments (verb + topic + evidence + person), and model completions for unusual prefixes. The third source may suggest phrasing. It may not change consequential state until the engine accepts the resulting parse. On the NORA channel the model may propose a helpful next step. It may not be the component that decides which evidence is missing from the list. That list comes from the engine.
 

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261012T144715.404Z",
+  "_as_of": "20261012T144738.241Z",
   "appendices/appB-bridge-crosswalk.tex#4": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1777,7 +1777,8 @@
     "prior": "AI"
   },
   "chapters/ch34-selection-environment.tex#24": {
-    "agent": 1,
+    "agent": 3,
+    "dirty": true,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 1,
     "index": 24,
@@ -2113,7 +2114,8 @@
     "prior": "AI"
   },
   "chapters/ch43-verifiability-and-ontology-adequacy.tex#9": {
-    "agent": 2,
+    "agent": 5,
+    "dirty": true,
     "file": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
     "human": 2,
     "index": 9,

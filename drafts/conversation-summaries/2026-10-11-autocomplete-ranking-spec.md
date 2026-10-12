@@ -11,6 +11,7 @@ Prompts: none resolvable (paraphrase only).
 - content: `spec/ranking.md` — ranking procedure on a per-call projection of player-visible state.
 - status: O-19 set to working in `spec/meta.md`. Grammar, contract, engine, terminal, and PLAN point at the spec.
 - bookkeeping: decision record kept at `drafts/autocomplete.md` with a pointer to the spec.
+- status: `addressees[]` (union of in-room roles, no per-person weights) and diversity on branch plus action type (`kind|relation`) in `spec/ranking.md` and `spec/grammar.md`.
 
 ## Decisions
 - The ranker stays `getCandidates`. There is no stored knowledge graph, and the book concept graph stays the O-41 card map.
@@ -23,10 +24,14 @@ Prompts: none resolvable (paraphrase only).
 - Implement the ranker and the projection fields. Grammar tests are listed in `spec/ranking.md`.
 - Domain inventory and the closely related pairs are a first cut from the cast table. Playtesting may split or merge them.
 
+## Follow-up (2026-10-11)
+- status: `addressees[]` with union of in-room role domains, no per-person weights; diversity bonus requires new branch **and** new action type (`kind|relation`).
+
 ## Key paths
 - `game/last-safety-autocomplete-prototype/spec/ranking.md`
 - `game/last-safety-autocomplete-prototype/drafts/autocomplete.md`
 - `game/last-safety-autocomplete-prototype/public/grammar.js`
 
 ## Commits
-- none
+- `82b0f987a` Last Safety Review: refine O-19 ranking for room union and move diversity.
+- `c0a0ed19c` Last Safety Review: ship spec decisions for world, incident, and UX (initial ranking spec).

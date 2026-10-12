@@ -10,7 +10,9 @@ The book concept graph (`metadata/concepts.yml`) is the O-41 card map. This rank
 
 There is no stored knowledge graph. Each call builds a virtual graph from the player-visible projection and discards it. Nodes are known entity ids, learned-fact ids, and domain ids. Edges are virtual. Do not materialize every pair, and do not add a second graph module.
 
-The caller passes `addressee` (`pavel`, `nora`, …). The in-room composer uses the occupant of the current room. The phone passes the thread recipient. Grammar does not infer the channel from the room.
+The caller passes `addressees`: an array of actor ids (`pavel`, `nora`, …). Face to face, that is every person in the current room (zero or more). The phone passes the thread recipient, usually one id. Grammar does not infer the list from the room; the composer builds it from `ClientState`.
+
+Ranking uses the **union** of what those ids contribute. Do not weight one addressee over another. Each introduced id in the list may supply role-domain anchors; each domain appears at most once at the role weight, even if several people share it.
 
 `getCandidates` reads only its arguments. Oracle facts, `publiclyKnows`, concealment lists, and storylet tables are not arguments.
 
@@ -130,7 +132,7 @@ Weights are conversational relevance. They are not probabilities.
 | Entity ids on the latest conversation turn | 0.80 |
 | Entity ids on the turn before that | 0.55 |
 | Recent discoveries | 0.60 |
-| Each domain in the addressee’s `roleDomains` row | 0.45 |
+| Each domain in the union of `roleDomains` for ids in `addressees` | 0.45 |
 
 Recent discoveries are the ids whose `discoveredAt` is one of the three latest distinct values in the projection.
 
@@ -150,7 +152,7 @@ A node no anchor reaches within distance 3 contributes nothing.
 
 A candidate’s score is the maximum \(R\) among its principal referents: entity ids it would write into `subject`, `object`, `recipient`, `evidence`, or `topic`. A candidate with none of those (an opening, a relation word, a finish mark) scores `GENERIC_PRIOR` (default 0.05).
 
-The prior sits under a distance-3 hit from the role weight (\(0.45 / 8 = 0.056\)). The diversity bonus can lift a new branch over a weak path. It cannot lift anything over a parse anchor at distance 0.
+The prior sits under a distance-3 hit from the role weight (\(0.45 / 8 = 0.056\)). The diversity bonus can lift a row that introduces a new branch and a new action type over a weak path. It cannot lift anything over a parse anchor at distance 0.
 
 The typed prefix does not add to the score.
 
@@ -159,23 +161,25 @@ The typed prefix does not add to the score.
 1. **Expand** the current `open_slot` with the existing openings, entity list, relation list, and finish marks.
 2. **Filter.** Keep grammar-compatible rows (the slot, category, and kind rules already in the expander). Keep rows whose surface or alias starts with the unfinished token, when that token is non-empty. If none match, the list is empty. Keep only ids present in the projection. Collapse one semantic signature to one row: the surface that matches the prefix, otherwise the earlier row. `asked` does not remove a row.
 3. **Score** as above.
-4. **Order** for diversity. Walk the remaining rows. Each pick maximizes `score + bonus`, where `bonus` is `DIVERSITY_BONUS` (default 0.15) when no selected row shares this row’s branch, and 0 when one does. Ties keep expansion order.
+4. **Order** for diversity. Walk the remaining rows. Each pick maximizes `score + bonus`. `bonus` is `DIVERSITY_BONUS` (default 0.15) only when **both** are true among rows already chosen: no selected row shares this row’s **branch**, and no selected row shares this row’s **action type**. If either branch or action type already appears in the selection, `bonus` is 0. Ties keep expansion order.
 5. **Page** in the UI. Return the full ordered array. The composer shows five and advances by five. Show more slices that array. It does not recompute and it does not add ids.
 
-The branch follows the slot being filled:
+**Branch** (topic family) follows the slot being filled:
 
 | Slot | Branch |
 | --- | --- |
-| opening | `kind` |
-| relation | `relation` |
+| opening | `kind` from the row’s patch |
+| relation | `relation` from the row’s patch |
 | subject, object, recipient, evidence, topic | the referent’s domain, or its category when it has no domain |
 | finish | the `open_slot` the row would leave |
+
+**Action type** is the epistemic move the row would yield if selected now: `kind` and `relation` on the candidate’s parse after its patch (`kind|relation`, e.g. `ask|has_access`, `show|about`, `hypothesize|covers`). Openings that only set `kind` use the parse’s current `relation` when it is already set, otherwise `about`. Finish-only rows use `kind|finish`.
 
 `localPrefixParse` still recognizes a typed opening and a short unfinished opening. A selected row still copies its parse patch into the composer (`source: "completion"`) and does not call `/api/parse`. Send calls `/api/parse` only when the text has changed since the parse the composer holds. Free typing uses the same `Parse` and the same `/api/parse` path, including pronoun resolution from recent turns.
 
 The NORA channel drops the engine’s `omit` phrases before this procedure. The ranker does not decide the omission. A dropped phrase stays typable.
 
-Recompute when the text, the parse, the projection, the addressee, or a relevant `eventAt` / `discoveredAt` changes. The same arguments produce the same order.
+Recompute when the text, the parse, the projection, `addressees`, or a relevant `eventAt` / `discoveredAt` changes. The same arguments produce the same order.
 
 Empty field: the opening list, in this order. No extra boost for “Can”, “What about”, or “Show”.
 
@@ -202,11 +206,12 @@ One object, exported beside `getCandidates`, so playtests can move the knobs wit
 Add these in `tests/grammar.test.mjs`. Fixtures may be hand-built projections. They do not need the live three-room session, the network, or a model.
 
 1. Introducing an NPC, including NORA, adds their `roleDomains` row and changes order. Before NORA is introduced, a queue entity and a staffing entity with no other anchors stay in expansion order. After her row is `[queue, tools, matching]`, the queue entity ranks above the staffing entity.
-2. The same entity ranks higher for an addressee whose public domains contain it than for an addressee whose domains do not. With both introduced, `camera_system` ranks higher for Justine (`access`) than for Leila (`evaluation`, `independence`).
+2. The same entity ranks higher when `addressees` includes someone whose public domains contain it than when the list does not. With both introduced, `camera_system` ranks higher for `addressees: ['justine']` than for `addressees: ['leila']`. With `addressees: ['justine', 'leila']`, the union of domains applies and does not double the weight on `access`.
 3. Facts that share a specific ref and sit seven minutes apart on `eventAt` are temporal neighbors at cost \(7/15\). A fact with an old `eventAt` and a `discoveredAt` shared with a related recent fact is a neighbor on the discovery clock.
 4. Close times, or the same discovery fuel, do not make a temporal neighbor when the pair shares no specific ref and no domain.
-5. A prefix that matches one surface drops the others, including a row the addressee’s domains would have ranked first.
+5. A prefix that matches one surface drops the others, including a row the room’s role union would have ranked first.
 6. Two aliases of one entity occupy one row. A signature listed in `asked` is still offered.
-7. A second call with the same arguments returns the same order. The second page is a slice of that array. Every entity id on the list is in the projection.
-8. A projection that differs from another only by oracle state the client never received yields the same list. The function’s result follows its arguments.
-9. A selected row keeps the parse patch it carried. Free typing and pronoun resolution still go through `parseUtterance` and the same grammar.
+7. On one page, two candidates with the same branch but different action types can both receive the diversity bonus on their respective picks; two with the same action type cannot both get the bonus once one is selected.
+8. A second call with the same arguments returns the same order. The second page is a slice of that array. Every entity id on the list is in the projection.
+9. A projection that differs from another only by oracle state the client never received yields the same list. The function’s result follows its arguments.
+10. A selected row keeps the parse patch it carried. Free typing and pronoun resolution still go through `parseUtterance` and the same grammar.
