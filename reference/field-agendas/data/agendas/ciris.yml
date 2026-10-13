@@ -8,11 +8,13 @@ overview: >-
   Independence](/cards/mb4a-measured-path-legitimacy/) as its primary operational test
   surfaces.
 primaryArtifact: >-
-  The public constitution is CC 1.0-rc2 (Accord 1.3-RC2 plus CEG, one version line). The
-  sibling checkout also has unpublished CC 1.0-rc3. Runtime still loads Accord 1.2b.
-  Shipped code: [CIRISAgent](https://github.com/CIRISAI/CIRISAgent) 2.9.x (phone and
-  self-host), [Verify](https://github.com/CIRISAI/CIRISVerify),
-  [Lens](https://github.com/CIRISAI/CIRISLens), and [Proxy](https://github.com/CIRISAI/CIRISProxy).
+  The public constitution is CC 1.0-rc7 (tagged 2026-10-05; Accord and CEG under one
+  version line), with rc8 on branch (eleven plain-language promises, a 441-row evidence
+  register, six formal models in CI). The agent loads the Accord 1.2b conscience corpus by
+  hash; it tracks the ethics text, not the wire, and an Accord 1.3 cut from CC Parts
+  1/7/annexes is owed. Shipped code: [CIRISAgent](https://github.com/CIRISAI/CIRISAgent)
+  2.15.0 (phone and self-host), [Verify](https://github.com/CIRISAI/CIRISVerify) 20.1.0,
+  Persist 55.0.0, Edge 40.1.0, Server 0.5.224; LensCore runs distributed in Server.
 signatureVocabulary: >-
   Core terms include [Verify](https://github.com/CIRISAI/CIRISVerify) (authenticity
   checks), [Lens](https://github.com/CIRISAI/CIRISLens) (triage rather than final
@@ -23,16 +25,18 @@ signatureVocabulary: >-
   Ratchet](https://ciris.ai/constitution/), M-1 principles-as-identity, signed traces, and
   NEW-04 compositional limits.
 statedIntent: >-
-  Public copy sells a private phone assistant plus a signed post-quantum mesh as the
-  answer to superalignment. Engineer-facing text still offers accountability in validated
-  sub-ASI scope, not a program to prevent ASI outright. The two registers are not bound by
-  a precedence rule.
+  CC rc8 N1 states the claim and its precedence: CIRIS does not make a superintelligence
+  good and says nothing about the inside of any model; it binds nobody who did not join,
+  so it cannot stop an unaccountable superintelligence forming anywhere else; what it can
+  do is keep people able to pause, correct and refuse the agents it holds as they outgrow
+  their holders, and inside CIRIS it tries its best to keep any such power from forming
+  unaccountable; where anything on ciris.ai reads as more, that sentence holds.
 primaryCrux: >-
-  CIRIS bets on named identity: if [Verify](https://github.com/CIRISAI/CIRISVerify) and
-  [Lens](https://github.com/CIRISAI/CIRISLens) report green on a certified occurrence,
-  does that imply [Corrigibility](/cards/mb4-correction-legitimacy/) on the real
-  intervening loop—[composite agency](/cards/composite-agency/), tools, memory, and
-  incentives included?
+  In CIRIS the agent is the loop (H3ERE creates it; model, memory, scheduler and adapters
+  are inside; every effect ends in a terminal ACTION_RESULT). The crux is whether that
+  boundary is total (CC 1.13.6, CIRISConstitution#93) and whether an authorised correction
+  reaches tomorrow's policy; both are proposed as preregistered studies (RATCHET#27 UPTAKE
+  and LOOP) with hidden sets to be held outside CIRIS.
 bookBridges:
   - MB1
   - MB4
@@ -49,19 +53,20 @@ contributes: >-
   the sharpest falsifier shape for named-identity versus [composite
   agency](/cards/composite-agency/).
 bookSeparates: >-
-  Signed protocol logs do not imply that the represented reasoning produced the action,
-  nor that the action is honest, safe, or beneficial. Green attestation does not imply
-  correction uptake. A signed agent record does not imply the real agent. Unpublished CC
-  1.0-rc3 demotes Part VI as a warrant for ethics; published CC 1.0-rc2 and the
-  agent-loaded Accord 1.2b still sell the older entailment.
+  CIRIS's own text now carries the separations this project asked for: shown reasoning is
+  not taken on trust (plain rule 2a); Verify authenticates origin, not ethics; detection
+  is triage, not verdict; the Part 6 geometry is symmetric and not a warrant; alignment is
+  not solved here (N1) and the five-operations claim is a result, not a theorem (N4). What
+  remains open: totality of the act record (#93), correction uptake unmeasured,
+  adversarial runs not done, and the agent's conscience corpus eleven ethics rulings
+  behind the Constitution.
 reviewStatus: >-
-  July smoke battery: 50 of 50 selected unit tests passed (prohibitions, conscience
-  helpers, proxy fail-closed, verify types). Integration testing, hardware attestation,
-  and adversarial gaming have not been run. August review: storefront and published CC
-  fuse identity, pipeline, and traces into “safer / more ethical”; unpublished rc3 Part VI
-  refuses that fusion; HARM-1 inverts the MH-3 pipeline-vs-prompt ordering. Composite
-  [boundary discovery](/cards/boundary-discovery/) counterexample (Verify+Lens green,
-  Wise-Authority-blind composite) remains open.
+  2026-10: CC rc7 released, rc8 on branch; register 340 established / 26 normative / 75
+  staged, resolved in CI; MH-3 and TORQUE measured with bounds; NULLWORKS read-only
+  assurance review (2026-08) reproduced 42/42 selected tests and found 'role is not the
+  same as jurisdiction'. Not run: RATCHET#27 UPTAKE and LOOP (the composite counterexample
+  is arm B1), integration and adversarial batteries under outside custody. The site serves
+  the rc5 text; a CIRIS defect.
 manuscriptHooks:
   - "`experiments/TODO.md`"
   - "toy T-9 `boundary_decouple`"
