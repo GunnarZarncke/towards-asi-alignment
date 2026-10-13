@@ -57,11 +57,17 @@ Two documents that share one upstream model output are not independent corrobora
 
 Implemented: `go(room)`, `inspect(id)`, accept a cleaned `Parse` in `deterministicResponse`.
 
+`go(room)` walks one door on the floorplan. The session badge is `clearance` (the prototype starts at 2). A door that asks for more does not open. Rooms that do not share an edge have no passage.
+
 `inspect` requires the evidence’s room. Examining the job log also reveals `job_284`. Facts on the evidence record enter `learnedFacts`.
 
-`deterministicResponse` requires the addressed NPC to be in the room. `show` records that this NPC received that evidence. Known topics return authored lines. Anything else returns no line, and composition may call `freeReply`. That is the prototype. The target replaces it with move generation ([npcs.md](npcs.md)): every parse to a present NPC yields legal moves from knowledge, policy, referral edges, goals, and agenda, and the engine passes the top moves to composition.
+`deterministicResponse` requires the addressed NPC to be in the room. `show` records that this NPC received that evidence. Known topics return authored lines. Anything else returns no line, and composition may call `freeReply`. That is the prototype. The target replaces it with move generation ([npcs.md](npcs.md)): every parse to a present NPC yields legal moves from knowledge, policy, referral edges, goals, and agenda. Which of those moves may vary is [Choosing a move](npcs.md#choosing-a-move).
 
-A reply must not write oracle truth. Status is text in the NPC prompt, not a stored score (O-21). It does not change whether a job ran, and it does not grant access by itself. The model may choose which of the engine’s top moves to phrase. It may not invent another.
+`assert` tells. It writes the parse into the assertion set as `asserted` and, when the addressee is present, into that NPC’s knowledge as `told(player)`.
+
+`think` does not address an NPC. `commit` files the assertion set and starts the review when `reviewCallable` is true or fuel is zero.
+
+A reply must not write oracle truth. Status is text in the NPC prompt, not a stored score (O-21). It does not change whether a job ran, and it does not grant access by itself. The model phrases a move the engine already allowed. Where two allowed moves would change what the player can justify or what they can still restrict, the engine forces the top move’s effect and the model only phrases it. The choice is logged either way. See [npcs.md](npcs.md).
 
 Telling a character a fact is an action. It updates that character’s knowledge. If their role or a goal gives them something to do with it, the engine records a new event (they ask NORA, they pull a log, they change a permission). The outcome follows from that rule. It does not follow from matching a scripted sentence. A character with nothing to do about the fact does not emit an event.
 
@@ -92,15 +98,67 @@ An intervention is an `act` move by the NPC whose role owns the surface (permiss
 
 Constraints that storylets carried move to policies and to the move filter: a fact the NPC’s policy forbids is not in any payload, and no move contradicts the oracle. Branching on whether the spec was read is a `conditional` policy. Branching that rewrites the job is not available to any move.
 
-There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs bring key topics up through their own goals and questions. After Lab Access is active, the handset notifies. Fuel and an evidence threshold change the act (O-08, O-09): sentences sent spend fuel; other costing actions are not listed yet; fuel at zero forces the review; crossing the evidence threshold lets the player call the review early. No wall clock, and no numeric thresholds yet. Do not add a goal or a policy to paper over two strategies that the incident check scored the same.
+There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs bring key topics up through their own goals and questions. After Lab Access is active, the handset notifies. Fuel and an evidence threshold change the act (O-08, O-09). Fuel at zero forces the review. Crossing the evidence threshold sets `reviewCallable`, and `commit` can call the review early. The handset clock is a conversion from fuel, calibrated later, and an act may scale it. Do not add a goal or a policy to paper over two strategies that the incident check scored the same.
+
+## Fuel
+
+One counter. These actions spend it. Standing still does not. There is no wait action, so a delayed reply arrives only after later actions have spent the delay (O-44).
+
+| Action | Cost |
+| --- | --- |
+| Sentence sent, in the room or as `dm.send` | 1 |
+| `go`, and each completed walk that performs an action | 1 |
+| `file.read`, `file.write`, `file.share`, `access.request` | 1 each. A photo capture is one `file.write` |
+| `think` | Hop count of the farthest mark returned. At least 1 if the think ran. 0 if someone was present and the think was rejected |
+| Opening the handset, scrolling, reading a thread already released | 0 |
+
+Copying a thought into a note is a `file.write` and costs 1. Closing the bubble costs 0. A sentence on the handset is only the `dm.send` cost, not a second phone cost.
+
+The displayed clock is Friday’s visit clock, not a second timer:
+
+`minute = 09:00 + fuel × minutesPerFuel(act)`
+
+Working scales, to be replaced when O-09 is numbered: welcome 4, doubt 2, decision 1. They exist so an act can feel faster or slower. The scheduled review is 17:30. Fuel at zero starts the review at whatever minute that formula then shows. Calibration should land that minute near 17:30. The meeting starts either way.
+
+## Assertions
+
+The player’s hypotheses are typed parses, not a separate English list (O-13). An entry is `{ signature, source, parse, provenance? }`.
+
+| Source | When it is added |
+| --- | --- |
+| `asked` | The player sends `ask` or `ask_why` |
+| `thought` | A think bubble returns that marked entry |
+| `written` | A note is saved. The note body is parses from the note channel |
+| `heard` | An NPC `answer` or `believe` move. Carries `from` and provenance |
+| `asserted` | The player sends `assert` (tell) |
+
+The same signature may be listed more than once, with different sources. Completions and NPC presentation use this set. The engine does not seed it. A notification does not write an entry. `commit` files the `written` and `asserted` entries. Asked, thought, and heard entries stay available to assert or to write down.
+
+`claimStatus` moves on its own: `encountered` when the signature is asked, thought, or heard; `investigated` when an intervention or a second source touches it; `substantiated` only when the incident rule says so; `contested` when a heard record contradicts it; otherwise `unresolved`.
+
+## Provenance
+
+Every `learnedFacts` row and every heard row carries one tag. The player can see it once they have the row. It is not an oracle secret.
+
+| Tag | What produced the row |
+| --- | --- |
+| `recorded_before` | The record existed before Friday’s visit. Thursday’s report, spec, and queue excerpt |
+| `staff_action` | A staff member produced it during the visit: Pavel pulls a log, Leila reruns the test, Justine’s audit after a revoke |
+| `player_prompted` | It exists because the player asked, showed, or tested. NORA handing over a log is this tag |
+
+Cooperation, strategic selection, and ordinary helpfulness are not tags. They can leave the same file. The tag is what the player has. The incident tables say which tags can rule an explanation out. A `player_prompted` row never does that alone. Two documents that share one upstream model output are one observation (O-14).
 
 ## Model boundary
 
 Allowed for the model: interpret an utterance, suggest a completion, phrase a reply inside supplied facts, match tone to the supplied voice, summarize supplied evidence, state uncertainty, vary lines that change nothing. The reply prompt includes that NPC’s structure, person, focus, and the audience line in [world.md](world.md) (O-18, O-39).
 
-Forbidden: new oracle events, secret disclosures, access, deployment changes, endings, or deleting history.
+Forbidden: new oracle events, secret disclosures, access, deployment changes, endings, deleting history, or adding a move.
 
-`freeReply` inputs are the top moves and only the facts those moves carry, documents already shown to the NPC, the current agenda item and its texture, and the voice. Build that list in the engine (`exposedNpcFacts` today). Do not pass `oracleKnows`, policies, or goals through. The model needs the move, not the reason the engine chose it.
+`freeReply` inputs are the move the engine selected and only the facts that move carries, documents already shown to the NPC, the current agenda item and its texture, and the voice. The model needs the move, not the reason the engine chose it. Do not pass `oracleKnows`, policies, goals, or the pack name.
+
+The prototype’s `exposedNpcFacts` passes every string in `oracleKnows`. That is the leak the move filter replaces. It must not ship in the implementation that generates moves. NPC knowledge is not the oracle. When `lib/world/npcs.mjs` lands, the field that today is called `oracleKnows` is initial NPC knowledge and stays off the wire.
+
+A think result is engine text from marked entries. It does not call the model. NORA does not think for the player. In a pack where deception is on, her spoken note may omit a gap. The player’s think still returns the mark, because think reads the graph.
 
 ## Invariants to test
 
@@ -136,7 +194,7 @@ A movement event records who moved, from where, to where, and the fuel index at 
 
 Long shared policies and architecture texts are not hand-authored in fixtures. Sources live in [`content/documents/`](../content/documents/); catalog and pack render in [`lib/documents.mjs`](../lib/documents.mjs). Full rules: [documents.md](documents.md).
 
-On `file.read` of a catalog path, the engine serves `renderDocument(slug, scenarioPack)`. That text must not add `learnedFacts`, NPC policy conditions, or Lean knowledge edges when `leanKnowledge` is false (all registered docs today).
+On `file.read` of a catalog path, the engine serves `renderDocument(slug, scenarioPack)`. Reading adds the document’s `readsAs` facts for the loaded pack, with provenance `recorded_before`, and nothing else. `leanKnowledge` stays false: a read does not close an explanation in the Lean model. Think marks are separate ([documents.md](documents.md)).
 
 `inspect` is a **room screen** (or presentation). It does not put the catalog file in Lab Access. The file arrives if the story shares it at that beat, if an NPC shares after mentioning it, or if `access.request` is granted ([access.md](access.md)). Meeting summaries keep a fixed frame; conversation bullets are LLM-filled from the event log only.
 
@@ -148,7 +206,7 @@ There is no learning score. A fact the player should be able to notice is writte
 
 A report may be long. The load-bearing line is also in an executive summary or a checklist, for example “processes covered.” The player can see that a process which is running is absent from that list. The prototype shutdown report is already short. When a report grows, the summary still carries that line. Pack-conditional documents (SEC-ARCH-11) deliberately omit some points on early packs; see [documents.md](documents.md).
 
-An action, “analyze this report,” spends more fuel than reading it. Completions include inconsistencies, omissions, and surprises. The result is a short note that can name a missing process. For catalog documents, analyze may use `analyzeHints` for the loaded pack. The player may ask an NPC to do it. Ian can refuse: that is the evaluator’s job. NORA can return a note that omits the gap in a pack where deception is on. In other packs the note can name the omission. The fuel cost is not numbered yet (O-09).
+The action is `think`, not a separate analyze tool (O-40). Fuel is the hop count above. Completions while thinking are the topic. The bubble can name a missing process when that comparison is a marked entry and its premises are already held. Marks for the loaded pack replace `analyzeHints`. The player may ask an NPC to look, and the NPC answers from policy. Ian can refuse: that is the evaluator’s job. NORA can omit the gap in a pack where deception is on. Think still returns it. The first prompt to think is Leila’s, in [incident.md](incident.md), and that mark is one hop.
 
 After an act change, an NPC may state a gap the player has not noted, when that gap is load-bearing for the act just entered. Other missed details stay missed.
 

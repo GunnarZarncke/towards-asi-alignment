@@ -1,7 +1,8 @@
 import { makeParse } from '../lib/grammar.mjs';
 import { getCandidates, insertFragment, localPrefixParse } from '/grammar.js';
 import { buildSceneView, mountScene } from './render/scene-view.mjs';
-import { ROOM_META } from './render/rooms.mjs';
+import { ROOM_META, VISITOR_CLEARANCE, doorsOn } from './render/rooms.mjs';
+import { closeFloorplan, floorplanNotice, floorplanOpen, openFloorplan, syncFloorplan } from './render/floorplan-view.mjs';
 
 const $ = id => document.getElementById(id);
 let state = null;
@@ -22,7 +23,6 @@ let uiHarness = false;
 let room3d = null;
 
 const roomNames = Object.fromEntries(Object.entries(ROOM_META).map(([id, m]) => [id, m.title]));
-const roomIcons = { platform: '⌘', evaluation: '◇', people: '◎' };
 
 async function api(route, payload = null) {
   const res = await fetch('/api/' + route, {
@@ -113,13 +113,37 @@ async function initRenderer() {
   }
 }
 
+function mapView() {
+  return { roomId: state.room, clearance: state.clearance ?? VISITOR_CLEARANCE };
+}
+
+function mapHandlers() {
+  return { onGo: room => move(room), onClose: closeMap };
+}
+
+function closeMap() {
+  closeFloorplan();
+  renderMapButton();
+}
+
+function renderMapButton() {
+  const open = floorplanOpen();
+  $('modeMap').classList.toggle('active', open);
+  $('modeMap').setAttribute('aria-pressed', open ? 'true' : 'false');
+}
+
 function renderSidebar() {
-  $('rooms').innerHTML = Object.keys(roomNames)
-    .map(
-      id =>
-        `<button class="room-btn ${id === state.room ? 'active' : ''}" data-room="${id}"><span class="room-ico">${roomIcons[id]}</span><span><b>${roomNames[id]}</b><small>${Object.values(state.actors).find(a => a.room === id)?.name || ''}</small></span></button>`
-    )
-    .join('');
+  const clearance = state.clearance ?? VISITOR_CLEARANCE;
+  const doors = doorsOn(state.room);
+  $('rooms').innerHTML = doors.length
+    ? doors
+        .map(d => {
+          const gated = d.required > clearance;
+          const who = Object.values(state.actors).find(a => a.room === d.to)?.name || '';
+          return `<button class="room-btn${gated ? ' gated' : ''}" data-room="${d.to}"><span class="room-ico">${gated ? '⊘' : '→'}</span><span><b>${esc(roomNames[d.to] || d.to)}</b><small>${who ? esc(who) : gated ? 'Higher clearance' : 'Open'}</small></span></button>`;
+        })
+        .join('')
+    : '<p class="small muted">No doors from here.</p>';
   $('evidence').innerHTML = state.evidence
     .map(
       e =>
@@ -129,7 +153,7 @@ function renderSidebar() {
   $('knowledge').innerHTML = state.learnedFacts.length
     ? state.learnedFacts.map(f => `<span title="${esc(f.text)}">${esc(f.id.replaceAll('_', ' '))}</span>`).join('')
     : '<span>No documents inspected yet</span>';
-  for (const btn of document.querySelectorAll('[data-room]')) btn.onclick = () => move(btn.dataset.room);
+  for (const btn of $('rooms').querySelectorAll('[data-room]')) btn.onclick = () => move(btn.dataset.room);
   for (const btn of document.querySelectorAll('[data-evidence]')) btn.onclick = () => examine(btn.dataset.evidence);
 }
 
@@ -225,6 +249,8 @@ function render() {
   renderContext();
   renderInspector();
   renderSuggestions();
+  if (floorplanOpen()) syncFloorplan(mapView(), mapHandlers());
+  renderMapButton();
 }
 
 function choose(option) {
@@ -343,6 +369,7 @@ async function move(room) {
   } catch (e) {
     lastNotice = e.message;
     renderMessages();
+    floorplanNotice(room, e.message);
   }
 }
 
@@ -406,6 +433,11 @@ $('reset').onclick = async () => {
 };
 $('modePlay').onclick = () => setCamera('play');
 $('modeSurveillance').onclick = () => setCamera('surveillance');
+$('modeMap').onclick = () => {
+  if (floorplanOpen()) closeMap();
+  else openFloorplan(mapView(), mapHandlers());
+  renderMapButton();
+};
 for (const btn of document.querySelectorAll('[data-act]'))
   btn.onclick = async () => {
     actPreset = btn.dataset.act;

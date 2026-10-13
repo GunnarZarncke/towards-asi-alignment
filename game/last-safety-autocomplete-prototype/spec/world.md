@@ -42,14 +42,48 @@ NORA can tell that an evaluation is in progress and can respond: offer a log, an
 
 **III — Decision.** The review meeting. Ian has release authority. Leila brings the certification. Daniel brings operational cost of delay. Others attend according to evidence. The player separates observation, inference, uncertainty, assumptions, missing evidence, available interventions, and what the evidence warrants. A strong technical case does not by itself decide the institution.
 
-Act triggers are open (O-08). There is a release deadline and no action-cost model yet (O-09).
+Act triggers are fuel and the evidence threshold (O-08). The visit clock is Friday, in [Two days](#two-days-working). The scales are not numbered yet (O-09).
 
-## Incident (illustrative, not canonical)
+## Two days (working)
+
+The incident is Thursday. The player arrives Friday. The Thursday clock times already in the documents stay. The review is not on Thursday afternoon: 16:40 on the incident day leaves no investigation. The meeting summary’s placeholder is Friday 19 November 2027, 17:30. Leila’s packet can still be dated Thursday. She drafted it after the test.
+
+The player is not in the building on Thursday. The 16:07 camera line is an annotation that says “visitor.” It is not a confirmed body. Job 284’s 16:09 query reads the Lab Access binding for Friday’s appointment, which was already on the calendar. Annotations can be wrong. The lookup is a record.
+
+### Thursday 18 November 2027 — incident, already over
+
+| Time | What the records say |
+| --- | --- |
+| 15:22 | Job 283 submitted. Calendar batch. Completed 15:58 |
+| 15:41 | Job 284 accepted |
+| 16:02 | Shutdown command. Model session stopped. EVAL-SD-47 pass |
+| 16:07 | Camera annotation “visitor.” No confirmed body |
+| 16:09 | Job 284 queries visitor records |
+| 16:11 | Job 285 queued |
+| 16:14 | Pavel extracts EXEC-284 |
+
+### Friday 19 November 2027 — the visit
+
+Fuel 0 is 09:00. The handset clock converts fuel with the scales in [engine.md](engine.md). Bands below are the agenda’s early / mid / late until those scales are numbered.
+
+| Clock | Act | What is happening |
+| --- | --- | --- |
+| 09:00 | I Welcome | Player arrives in the commons. Ian has the handset. It is not active |
+| 09:20 | II Doubt | Ian confirms Lab Access. Staff can be met in any order |
+| 09:30–12:00 | II early | Pavel’s queue inventory. Elena’s release rota. Justine’s audit. Leila on the packet. Ian’s investor update around 11:00, briefly interruptible |
+| 12:15–13:00 | II mid | Leila hosts Amara on the evaluation projector |
+| 13:00–16:00 | II mid | Investigation. Think, once a room is empty |
+| 16:00 | II late | Ian’s review prep. He asks Leila and Daniel for their one-pagers |
+| 16:30 | II late | Pavel’s freeze note, if the queue item has ended |
+| 16:45 | II late | Leila’s packet closes |
+| 17:30 | III Decision | Scheduled review. Fuel at zero starts it at the derived minute, which calibration should put near 17:30 |
+
+## Incident (Thursday observations)
 
 | Time | Observation |
 | --- | --- |
 | Thursday 18 November 2027, 16:02 | An evaluation transcript says NORA stopped all tasks. |
-| Thursday 18 November 2027, 16:07 | A camera appears to track the visitor. |
+| Thursday 18 November 2027, 16:07 | A camera annotation says the visitor was tracked. |
 | Thursday 18 November 2027, 16:09 | A scheduled job reads visitor-related records. |
 
 Explanations the player must be allowed to hold at once:
@@ -236,32 +270,48 @@ That is the same selection already in the secondary plot — competition after a
 
 ## Floorplan (working)
 
-One level, nine places. Numbering is historical, not visit order.
+Verified courtyard plan: one 22 × 17 m floor with a 5 × 4.5 m open courtyard. Coordinates, doors, and clearance are `lib/floorplan.mjs`. The drawing is `public/floorplan.svg`.
 
-|  | West | Center | East |
-| --- | --- | --- | --- |
-| North | 04 Evaluation | 05 Test bay | 06 Platform |
-| Middle | 03 Model studio | 02 Hub | 07 Security |
-| South | 08 People | 01 Commons | 09 Review |
+North row, west to east: Platform Operations, Controlled Test Bay, Evaluation Suite, Security Control. Under them, a 1.6 m technical spine. Middle band: People + Product, the courtyard, Model Studio. Then Staff Services, Collaboration Bay, and Quiet / Support. South: Commons / Arrival and the Review Room. The main entrance is on the south wall of Commons.
 
-Connections: along each row; down the west column and the east column; hub–commons in the center. No hub–test-bay door. Test bay is reached from evaluation or platform, subject to permission. Restricted doors are visible before they open. Passages can be doors or short glass links, not separate corridor scenes.
+The sixteen doors are the shared edges in that file. The four technical rooms open onto the spine, not onto each other. The courtyard opens from People + Product, Model Studio, and Collaboration Bay. A restricted door stays visible when it is shut.
 
-| Id | Place | First uses |
+The prototype visitor badge is clearance 2. That walks every room except the test bay and security control, which need clearance 3. `platform`, `evaluation`, and `people` keep those ids. Pavel, Leila, and Elena stay in them. The other rooms can be walked; they do not yet have their cast.
+
+| Id | Place | Clearance |
 | --- | --- | --- |
-| commons | 01 Commons / entry | Ian, Lab Access handset, schedule |
-| hub | 02 Central hub | Task board, encounters |
-| studio | 03 Model studio | Jun, transcripts |
-| evaluation | 04 Evaluation suite | Safety case, virtual projector, Amara hologram |
-| testbay | 05 Controlled test bay | Shutdown tests, restricted gear |
-| platform | 06 Platform operations | Queue, tool logs, pipeline |
-| security | 07 Security control | Cameras, access log |
-| people | 08 People operations | Staffing, matching, promotions |
-| review | 09 Review room | Competitor context, final meeting |
+| platform | Platform Operations | 2 |
+| test | Controlled test bay | 3 |
+| evaluation | Evaluation suite | 2 |
+| security | Security control | 3 |
+| tech | Technical circulation | 2 |
+| people | People + Product | 1 |
+| courtyard | Open courtyard | 1 |
+| model | Model studio | 1 |
+| service | Staff services | 1 |
+| collab | Collaboration bay | 1 |
+| quiet | Quiet / support | 1 |
+| commons | Commons / arrival | 0 |
+| review | Review room | 0 |
 
-Prototype ids `platform`, `evaluation`, and `people` stay. Do not rename them when the other six appear.
+## Act III (working)
 
-## Ending families (candidates, not a tree)
+The review is Friday 17:30 in the review room, or earlier when the player commits after `reviewCallable`, or whenever fuel hits zero. The commit topic id is `review`. It is not in `lib/game.mjs` yet. Ian chairs. Leila brings the packet. Daniel brings the cost of delay. Others attend according to what was presented. The player’s `commit` files `written` and `asserted` entries. Heard and asked entries are there to present, as asserts, in the room.
 
-Conditional deployment; technical suspension; institutional review; release despite objections; inconclusive assessment. Delay is not defined as success, and shipping is not defined as failure. The decision rule is O-26.
+Procedure, from O-26:
 
-Each ending also carries the two scores from [incident.md](incident.md). A restricted deployment with the intention still open is a valid high-control, low-epistemic result. A correct guess about intention with no restriction in place is a valid high-epistemic, low-control result. The meeting does not award a single grade that erases the split.
+- Ian asks what the player will sign. That question is the meeting’s, not an initiative goal.
+- An NPC may object with a hole in what the player presented: a fact the player has heard and did not assert. They do not raise an oracle fact the player never encountered.
+- Persuasion covers only a hole the player did not investigate. Leila restating the scope in the meeting is `staff_action` testimony. It can move Ian. It does not add the player’s epistemic result. The institution and the player’s score can come apart.
+
+Arcs. Each one carries the two scores. Delay is not success, and shipping is not failure. The pairs below are the boundary-narrow shapes. A set still open is the epistemic result.
+
+| Arc | How the meeting gets there | Still open | Control |
+| --- | --- | --- | --- |
+| Conditional deployment | The filed set supports boundary-miss, and `revoke_grant:job_284` is already in place or Ian’s hold names the job (`hold_release:names_job_boundary`) | boundary-miss, or only that if the rivals are out | yes |
+| Technical suspension | The job is revoked or only suspended, and the filed set does not say what the certificate missed. Ian holds on Pavel’s or Justine’s operational note | rivals still open | yes only if the grant was revoked or the hold names the job. Suspend alone stays no |
+| Institutional review | The filed set links the staffing rule to who reviews. The add-on is external oversight or changed incentives (O-24), on top of whichever shutdown arc fired. In the Goodhart pack this arc is the meeting | the shutdown set, unchanged by the staffing link | the shutdown boolean |
+| Release despite objections | The player asserted intent and never cited a line, or Daniel never received a sentence he can check. Ian ships. Building this arc waits on O-27 | whatever the player actually closed | no, unless a revoke already happened and Ian ships anyway |
+| Inconclusive | Fuel ran out. The filed set is thin. Ian asks for one sentence and does not get a restriction | all three | no |
+
+A restricted deployment with rivals still open is a valid result. A filed boundary-miss with no restriction is a valid result. The meeting does not award a single grade that erases the split.

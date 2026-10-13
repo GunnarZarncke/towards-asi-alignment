@@ -44,7 +44,20 @@ test('room movement and investigation reveal only justified knowledge',()=>{
   const s=newSession();assert.ok(!s.playerKnows.has('job_284'));
   inspect(s,'job_log');assert.ok(s.playerKnows.has('job_284'));assert.ok(s.learnedFacts.has('job_continued'));
   assert.ok(!s.learnedFacts.has('staffing_shift'));
+  assert.equal(go(s,'people').error,'No door from here.');
+  assert.equal(go(s,'tech').room,'tech');
+  assert.equal(go(s,'test').error,'That door needs a higher clearance.');
   go(s,'people');inspect(s,'staffing_memo');assert.ok(s.learnedFacts.has('staffing_shift'));
+});
+test('Think is offered only in an empty room; File is an opening',()=>{
+  const occupied=getCandidates({state:fresh(),parse:makeParse(),text:''});
+  assert.ok(occupied.some(x=>x.phrase==='File'));
+  assert.ok(!occupied.some(x=>x.parse.kind==='think'));
+  const state=fresh();
+  for (const actor of Object.values(state.actors)) actor.room='people';
+  state.room='platform';
+  const alone=getCandidates({state,parse:makeParse(),text:''});
+  assert.ok(alone.some(x=>x.phrase==='Think' && x.parse.kind==='think'));
 });
 test('typed openers are recognized locally',()=>{
   assert.equal(localPrefixParse('Can').open_slot,'subject');

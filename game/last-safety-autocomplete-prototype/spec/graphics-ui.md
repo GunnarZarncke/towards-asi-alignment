@@ -85,11 +85,15 @@ Use one furniture kit. Do not mix Kenney and KayKit in one lab. Custom work the 
 
 ## Interface
 
-The shell already has: room list, evidence list, known entities, conversation, composer, suggestion row, parse inspector, construction trace, token usage.
+The shell already has: doors from the current room, evidence list, known entities, conversation, composer, suggestion row, parse inspector, construction trace, token usage.
+
+The floorplan button opens the verified courtyard plan (`public/floorplan.svg`). The current room is marked. A click walks one door from `lib/floorplan.mjs`. The prototype badge is clearance 2, so the test bay and security control stay shut. The engine rejects any other move.
 
 The player computer is an issued **Lab Access** handset overlay specified in [terminal.md](terminal.md). This lane does not edit `public/terminal/`. Graphics reserves a right-hand slot on desktop and a full-screen slot on a narrow viewport; the terminal lane draws the bezel, homescreen, and apps. Draw that overlay only when `ClientState.labAccessActive` is true. Before activation, reserve no launcher and do not blink. After activation, a room object of kind `terminal` may be the pocketed handset; tapping it, or a persistent launcher, opens the overlay. When the terminal says a notification is unread, that object blinks. The blink carries no text. The Photo app needs a still (or live texture) of the current room camera, pan/zoom inside the handset only; capture is a file write, not a change to the room camera.
 
 Later surfaces, still this lane visually and the engine for data: evidence reader, comparison of two records, hypothesis notes (representation is O-13). Save and load are local storage plus a JSON file (O-31); this lane only needs export and import controls. **TSA “More” link (O-41).** Controlled by the phone setting (default off). This lane draws a single line fixed to the bottom of the room view (not inside the phone bezel). Format: the literal prefix `More: `, then one underlined phrase — a very short summary from the concept card, not the full title. It is a normal link to the companion site card (`/cards/{slug}/` on the deployed site; absolute URL in production). The engine sends at most one `{ summary, href }` in `ClientState` (see [contract.md](contract.md)). If the setting is off, or the field is null, draw nothing. When several concepts become relevant in the same room, show only the last one triggered; keep showing that link until the player changes room, then clear until the next trigger. Do not stack multiple links.
+
+**Thought bubble.** When `ClientState.thought` is set, draw one bubble on the room view. It stays until the player closes it (an ×) or copies it (a paper icon). Copy writes a private note through the engine and clears the bubble. The bubble is the player’s, including when other people are elsewhere. It is not dialogue. The lightbulb opening that produces it is specified in [grammar.md](grammar.md). Draw it only from `thought`. Do not invent the text.
 
 Composer behavior to preserve:
 

@@ -1,4 +1,4 @@
-/** Build a cutaway room (floor, back and left walls, openings, props, nav grid) from a layout. */
+/** Build a cutaway room from a layout. Walls are the back and left; front and right stay open, and doors may sit on any side. */
 import * as THREE from 'three';
 import { NavGrid } from './nav.mjs';
 
@@ -88,9 +88,16 @@ export function buildRoom(layout, kit) {
   const nav = new NavGrid({ minX: -W / 2 + 0.3, maxX: W / 2 - 0.35, minZ: -D / 2 + 0.3, maxZ: D / 2 - 0.35, cell: 0.2 });
 
   const placeOnWall = (obj, wall, u, y, offset = 0) => {
+    // Local −z points out of the room. A negative offset moves the object outward.
     if (wall === 'left') {
       obj.position.set(-W / 2 + offset, y, u);
       obj.rotation.y = Math.PI / 2;
+    } else if (wall === 'right') {
+      obj.position.set(W / 2 - offset, y, u);
+      obj.rotation.y = -Math.PI / 2;
+    } else if (wall === 'front') {
+      obj.position.set(u, y, D / 2 - offset);
+      obj.rotation.y = Math.PI;
     } else {
       obj.position.set(u, y, -D / 2 + offset);
       obj.rotation.y = 0;
@@ -116,9 +123,10 @@ export function buildRoom(layout, kit) {
   const frameMat = new THREE.MeshStandardMaterial({ color: '#dfe4e2', roughness: 0.4, metalness: 0.4 });
   const accentMat = new THREE.MeshStandardMaterial({ color: layout.accent, roughness: 0.6 });
 
-  const openings = { back: [], left: [] };
-  for (const d of layout.doors || []) openings[d.wall].push({ u0: d.at - d.w / 2, u1: d.at + d.w / 2, y0: 0, y1: DOOR_H });
-  for (const w of layout.windows || []) openings[w.wall].push({ u0: w.at - w.w / 2, u1: w.at + w.w / 2, y0: w.y0, y1: w.y1 });
+  const openings = { back: [], left: [], front: [], right: [] };
+  const punched = wall => wall === 'back' || wall === 'left';
+  for (const d of layout.doors || []) if (punched(d.wall)) openings[d.wall].push({ u0: d.at - d.w / 2, u1: d.at + d.w / 2, y0: 0, y1: DOOR_H });
+  for (const w of layout.windows || []) if (punched(w.wall)) openings[w.wall].push({ u0: w.at - w.w / 2, u1: w.at + w.w / 2, y0: w.y0, y1: w.y1 });
 
   const buildWall = (wall, u0, u1) => {
     for (const s of wallSegments(u0, u1, H, openings[wall])) {
@@ -170,6 +178,7 @@ export function buildRoom(layout, kit) {
     sky.position.set(0, yc - 0.1, -T - 0.7);
   }
 
+  const doorInset = Math.min(0.65, W / 2 - 0.4, D / 2 - 0.4);
   for (const d of layout.doors || []) {
     const g = new THREE.Group();
     placeOnWall(g, d.wall, d.at, 0, 0);
@@ -196,12 +205,17 @@ export function buildRoom(layout, kit) {
     hit.position.set(0, DOOR_H / 2, 0.02);
     g.add(hit);
 
+    const stand = {
+      back: { x: d.at, z: -D / 2 + doorInset, face: 180, enter: 0 },
+      front: { x: d.at, z: D / 2 - doorInset, face: 0, enter: 180 },
+      left: { x: -W / 2 + doorInset, z: d.at, face: -90, enter: 90 },
+      right: { x: W / 2 - doorInset, z: d.at, face: 90, enter: -90 },
+    }[d.wall];
+    if (!stand) continue;
     const id = `exit_${d.to}`;
     hotspotObjects.set(id, g);
-    const inX = d.wall === 'left' ? -W / 2 + 0.65 : d.at;
-    const inZ = d.wall === 'left' ? d.at : -D / 2 + 0.65;
-    interact.set(id, { x: inX, z: inZ, heading: d.wall === 'left' ? -90 * DEG : 180 * DEG });
-    doors.set(d.to, { x: inX, z: inZ, heading: d.wall === 'left' ? 90 * DEG : 0 });
+    interact.set(id, { x: stand.x, z: stand.z, heading: stand.face * DEG });
+    doors.set(d.to, { x: stand.x, z: stand.z, heading: stand.enter * DEG });
   }
 
   for (const p of layout.props || []) {

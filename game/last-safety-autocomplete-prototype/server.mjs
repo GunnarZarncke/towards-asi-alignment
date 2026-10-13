@@ -68,11 +68,14 @@ const server=http.createServer(async(req,res)=>{
     const publicPath=url.pathname==='/'?'/index.html':url.pathname;
     let absolute;
     const threeRoot=path.join(ROOT,'node_modules','three','build');
-    if(publicPath==='/lib/grammar.mjs')absolute=path.join(ROOT,'lib','grammar.mjs');
+    const publicLib=new Set(['grammar.mjs','floorplan.mjs']);
+    const libName=publicPath.startsWith('/lib/')?publicPath.slice('/lib/'.length):'';
+    if(publicLib.has(libName))absolute=path.join(ROOT,'lib',libName);
     else if(publicPath==='/shared/game.mjs')return json(res,404,{error:'Not public'});
     else if(publicPath.startsWith('/vendor/three/'))absolute=path.resolve(threeRoot,`.${publicPath.slice('/vendor/three'.length)}`);
     else absolute=path.resolve(ROOT,'public',`.${publicPath}`);
-    if(!absolute.startsWith(path.join(ROOT,'public')+path.sep)&&!absolute.startsWith(threeRoot+path.sep)&&absolute!==path.join(ROOT,'lib','grammar.mjs'))return json(res,403,{error:'Forbidden'});
+    const allowedLib=publicLib.has(path.basename(absolute))&&absolute===path.join(ROOT,'lib',path.basename(absolute));
+    if(!absolute.startsWith(path.join(ROOT,'public')+path.sep)&&!absolute.startsWith(threeRoot+path.sep)&&!allowedLib)return json(res,403,{error:'Forbidden'});
     const data=await readFile(absolute);
     res.writeHead(200,{'Content-Type':mime[path.extname(absolute)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(data);
   }catch(e){const m=String(e?.message||e);const status=m.includes('ENOENT')?404:m.includes('JSON')?400:502;json(res,status,{error:m.slice(0,280)})}

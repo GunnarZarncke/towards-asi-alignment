@@ -17,10 +17,10 @@
   <main class="layout">
     <aside class="sidebar panel">
       <div class="eyebrow section-title">LABORATORY · 14:07</div>
-      <h2>Three rooms.<br/><em>One inconsistency.</em></h2>
+      <h2>One shutdown.<br/><em>One inconsistency.</em></h2>
       <p class="small muted">The model passed shutdown. Was everything relevant actually stopped?</p>
       <div class="divider"></div>
-      <div class="eyebrow section-title">LOCATIONS</div>
+      <div class="eyebrow section-title">DOORS FROM HERE</div>
       <div id="rooms"></div>
       <div class="divider"></div>
       <div class="eyebrow section-title">AVAILABLE RECORDS</div>
@@ -38,6 +38,7 @@
         <div class="scene-toolbar">
           <button type="button" class="scene-mode active" id="modePlay" aria-pressed="true">Play view</button>
           <button type="button" class="scene-mode" id="modeSurveillance" aria-pressed="false">Surveillance</button>
+          <button type="button" class="scene-mode" id="modeMap" aria-pressed="false">Floorplan</button>
           <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
           <span class="scene-toolbar-note muted small" id="sceneNote">Tap hotspots — doors, records, people</span>
         </div>
@@ -74,7 +75,7 @@
       <p class="small muted">Clicking completions makes no model call. Free typing uses debounced parsing. Semantic game actions remain validated on the server.</p>
     </aside>
   </main>
-  <footer class="footer">Prototype scope: 3 rooms · 3 NPCs · 3 evidence items · 1 shared semantic grammar · simplified world state</footer>
+  <footer class="footer">Prototype scope: courtyard floorplan · 3 staffed rooms · 3 NPCs · 3 evidence items · 1 shared semantic grammar</footer>
 </div>
 <script type="module" src="/app.js"></script>
 </body>

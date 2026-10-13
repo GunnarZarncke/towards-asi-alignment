@@ -6,6 +6,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { passageError, VISITOR_CLEARANCE } from '../lib/floorplan.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLIC = path.join(ROOT, 'public');
@@ -18,6 +19,7 @@ const mime = {
   '.mjs': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml',
 };
 
 let sessionState = null;
@@ -68,10 +70,10 @@ const server = http.createServer(async (req, res) => {
           return json(res, 200, { state: sessionState, scene: sceneForRoom(sessionState.room) });
         }
         if (url.pathname === '/api/go') {
-          const room = body.room;
-          if (!['platform', 'evaluation', 'people'].includes(room)) return json(res, 400, { error: 'Unknown room.' });
-          sessionState.room = room;
-          return json(res, 200, { state: sessionState, scene: sceneForRoom(room) });
+          const error = passageError(sessionState.room, body.room, sessionState.clearance ?? VISITOR_CLEARANCE);
+          if (error) return json(res, 400, { error });
+          sessionState.room = body.room;
+          return json(res, 200, { state: sessionState, scene: sceneForRoom(body.room) });
         }
         if (url.pathname === '/api/inspect') {
           const id = body.id;
@@ -109,8 +111,10 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method !== 'GET') return json(res, 405, { error: 'Only GET supported' });
     const publicPath = url.pathname === '/' ? '/index.html' : url.pathname;
-    if (publicPath === '/lib/grammar.mjs') {
-      const data = await readFile(path.join(ROOT, 'lib', 'grammar.mjs'));
+    const publicLib = new Set(['grammar.mjs', 'floorplan.mjs']);
+    const libName = publicPath.startsWith('/lib/') ? publicPath.slice('/lib/'.length) : '';
+    if (publicLib.has(libName)) {
+      const data = await readFile(path.join(ROOT, 'lib', libName));
       res.writeHead(200, { 'Content-Type': mime['.mjs'], 'Cache-Control': 'no-store' });
       return res.end(data);
     }

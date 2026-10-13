@@ -4,7 +4,7 @@
  */
 import * as THREE from 'three';
 import { createKit } from './kit.mjs';
-import { LAYOUTS } from './layouts.mjs';
+import { layoutFor } from './layouts.mjs';
 import { ACT_PRESETS, COLOR_KEYS, NUMBER_KEYS } from './lighting.mjs';
 import { Walker, appearanceFor } from './person.mjs';
 import { buildRoom, WALL_T } from './room.mjs';
@@ -169,7 +169,7 @@ export class RoomRenderer {
     this.persons.clear();
     this.hovered = null;
 
-    this.layout = LAYOUTS[roomId] || LAYOUTS.platform;
+    this.layout = layoutFor(roomId);
     this.kit = createKit();
     this.room = buildRoom(this.layout, this.kit);
     this.scene.add(this.room.group);
@@ -248,9 +248,9 @@ export class RoomRenderer {
       const anchor = new THREE.Vector3();
       this.box.getCenter(anchor);
       anchor.y = this.box.max.y + 0.18;
-      const marker = el('button', `room3d-marker kind-${h.kind}${h.examined ? ' examined' : ''}`, this.markerLayer);
+      const marker = el('button', `room3d-marker kind-${h.kind}${h.examined ? ' examined' : ''}${h.restricted ? ' restricted' : ''}`, this.markerLayer);
       marker.type = 'button';
-      const icon = h.kind === 'exit' ? '→' : h.kind === 'terminal' ? '⌨' : h.examined ? '✓' : '▤';
+      const icon = h.restricted ? '⊘' : h.kind === 'exit' ? '→' : h.kind === 'terminal' ? '⌨' : h.examined ? '✓' : '▤';
       const status = h.kind === 'object' ? (h.examined ? ' · examined' : ' · not yet read') : '';
       marker.innerHTML = `<span class="mk-ico">${icon}</span><span class="mk-label">${esc(h.label)}</span>`;
       marker.setAttribute('aria-label', `${h.label}${status}`);
@@ -464,7 +464,7 @@ export class RoomRenderer {
       text = hit.id === 'player' ? 'You' : `${info?.label || hit.id} — click to select`;
     } else if (hit?.type === 'hotspot') {
       const h = this.active.get(hit.id)?.h;
-      text = h ? (h.kind === 'exit' ? `Go to ${h.label}` : h.kind === 'terminal' ? `${h.label} — walk over and use` : `${h.label} — walk over and read`) : '';
+      text = h ? (h.kind === 'exit' ? (h.restricted ? `${h.label} — higher clearance` : `Go to ${h.label}`) : h.kind === 'terminal' ? `${h.label} — walk over and use` : `${h.label} — walk over and read`) : '';
     }
     this.renderer.domElement.style.cursor = hit?.type === 'floor' ? 'crosshair' : hit ? 'pointer' : 'default';
     if (key !== this.hovered) {

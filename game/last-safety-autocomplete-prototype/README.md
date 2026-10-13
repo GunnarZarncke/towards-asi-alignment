@@ -1,6 +1,6 @@
 # The Last Safety Review — semantic autocomplete prototype
 
-A **runnable browser prototype** of the conversation interface proposed for *The Last Safety Review*. It is deliberately ~10% of the proposed game: **three rooms, three NPCs, one persistent-job incident, one staffing subplot, three evidence records**, and a shared semantic grammar.
+A **runnable browser prototype** of the conversation interface proposed for *The Last Safety Review*. It is deliberately ~10% of the proposed game: **the courtyard floorplan, three staffed rooms, three NPCs, one persistent-job incident, one staffing subplot, three evidence records**, and a shared semantic grammar.
 
 The primary experiment is **how selected completions and arbitrary typing produce the same structured speech act**, without spoiling unobserved facts.
 
@@ -34,7 +34,7 @@ What that covers, and the other layers: [`spec/testing.md`](spec/testing.md).
 3. **Free typing.** In People Operations, type `What about the new per`. After a short pause, the small model should identify `ask/about` with an unfinished topic `per`; select a contextual completion such as personnel policy.
 4. **Pronoun resolution.** Ask Pavel about job 284, then type `Did it continue after the shutdown?`. The interpreter receives up to two prior exchanges to resolve `it` to `job_284` when context supports it.
 5. **More completions.** Click **Show more** at any step to see additional ranked possibilities (not hints about later scenes).
-6. **Different expertise.** Switch from Pavel to Leila or Elena and compare candidate ordering for the same partial text.
+6. **Different expertise.** Open **Floorplan** and walk through the technical spine to Leila or Elena. Compare candidate ordering for the same partial text.
 7. **Novel claims.** Type `Don't you think our staffing metrics favor the wrong reviewers?` with Elena. It may map to `assigned` or `open`, but should be conversationally intelligible and get a topic-specific reply, not a boilerplate failure.
 
 ## Architecture

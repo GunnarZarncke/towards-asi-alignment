@@ -1,9 +1,11 @@
 /**
  * Room layouts as data. Units are metres. Floor spans x ∈ [-W/2, W/2], z ∈ [-D/2, D/2].
- * Walls stand on the back (z = -D/2) and left (x = -W/2) edges; front and right are cut away for the camera.
+ * Walls stand on the back (z = -D/2) and left (x = -W/2). Front and right stay open for the camera; doors may still sit there.
  * Headings are degrees; 0 faces +z (towards the camera side), 90 faces +x.
  * `hotspot` names the scene-view hotspot id a prop answers to. A prop without one is art only.
+ * Authored rooms are larger than the plan. Their doors name the same neighbors; generated rooms use the plan's metres.
  */
+import { ROOMS, doorsOn } from '../../lib/floorplan.mjs';
 
 export const LAYOUTS = {
   platform: {
@@ -26,8 +28,7 @@ export const LAYOUTS = {
       { wall: 'back', at: -0.7, w: 2.0, y0: 0.85, y1: 2.5 },
     ],
     doors: [
-      { to: 'evaluation', wall: 'left', at: 2.3, w: 1.1 },
-      { to: 'people', wall: 'back', at: 4.7, w: 1.1 },
+      { to: 'tech', wall: 'front', at: 0, w: 1.1 },
     ],
     props: [
       { type: 'serverRack', at: [-5.4, -3.35], rot: 90 },
@@ -69,8 +70,7 @@ export const LAYOUTS = {
       { wall: 'back', at: -1.4, w: 2.2, y0: 0.85, y1: 2.5 },
     ],
     doors: [
-      { to: 'platform', wall: 'back', at: 4.7, w: 1.1 },
-      { to: 'people', wall: 'left', at: 2.3, w: 1.1 },
+      { to: 'tech', wall: 'front', at: 0, w: 1.1 },
     ],
     props: [
       { type: 'bench', at: [-1.6, -2.9], rot: 0, opts: { len: 3.4, lamp: true } },
@@ -109,8 +109,9 @@ export const LAYOUTS = {
       { wall: 'left', at: 0.4, w: 1.6, y0: 0.85, y1: 2.5 },
     ],
     doors: [
-      { to: 'evaluation', wall: 'back', at: -4.4, w: 1.1 },
-      { to: 'platform', wall: 'back', at: 4.7, w: 1.1 },
+      { to: 'tech', wall: 'back', at: -0.2, w: 1.2 },
+      { to: 'courtyard', wall: 'right', at: 0, w: 1.0 },
+      { to: 'collab', wall: 'front', at: 2.6, w: 1.1 },
     ],
     props: [
       { type: 'desk', at: [-1.4, -2.6], rot: 0, opts: { w: 1.6, d: 0.75, monitor: 'chart', laptop: true, lamp: true } },
@@ -133,3 +134,140 @@ export const LAYOUTS = {
     interact: { staffing_memo: [2.2, -0.2, 180] },
   },
 };
+
+const PALETTE = {
+  0: { floor: '#d5e0db', floorLine: '#c3d0cb', wall: '#e6ebe8', accent: '#3f6f74' },
+  1: { floor: '#dce3d2', floorLine: '#c9d2be', wall: '#e7ebe3', accent: '#5d7a62' },
+  2: { floor: '#e6decc', floorLine: '#d4cbb6', wall: '#ebe6dc', accent: '#8a7340' },
+  3: { floor: '#e7d6d1', floorLine: '#d4c2bc', wall: '#efe6e3', accent: '#8a5348' },
+};
+
+const DRESS = {
+  tech: {
+    spot: [0, 0, 90],
+    ceiling: [-8, -2.5, 3, 8].map(x => ({ at: [x, 0], w: 1.6, d: 0.4 })),
+    props: [{ type: 'securityCamera', wall: 'back', at: 0.8, y: 2.45 }],
+  },
+  test: {
+    spot: [1.6, 0.6, 200],
+    props: [
+      { type: 'bench', at: [0, -1.05], rot: 0, opts: { len: 2.8 } },
+      { type: 'cabinet', at: [-2.4, -1.35], rot: 0 },
+      { type: 'plant', at: [2.4, 1.2], opts: { size: 0.9 } },
+    ],
+  },
+  security: {
+    spot: [1.2, 0.7, 210],
+    props: [
+      { type: 'desk', at: [0, -1.05], rot: 0, opts: { monitor: 'dash', lamp: true } },
+      { type: 'chair', at: [0, -0.2], rot: 180 },
+      { type: 'cabinet', at: [-1.5, -1.4], rot: 0 },
+    ],
+  },
+  courtyard: {
+    spot: [0, -1.1, 0],
+    props: [
+      { type: 'plant', at: [-1.5, -1.3], opts: { size: 1.15 } },
+      { type: 'plant', at: [1.55, -1.15], opts: { size: 1 } },
+      { type: 'sofa', at: [0.1, 0.35], rot: 0 },
+      { type: 'plant', at: [1.4, 1.15], opts: { size: 0.85 } },
+    ],
+  },
+  model: {
+    spot: [-1.6, 0.6, 160],
+    props: [
+      { type: 'workstation', at: [2.3, -0.45], rot: 0, opts: { lamp: true } },
+      { type: 'chair', at: [2.3, 0.45], rot: 180 },
+      { type: 'plant', at: [-3.2, -1.4], opts: { size: 1 } },
+    ],
+  },
+  service: {
+    spot: [0.2, 0.4, 180],
+    props: [
+      { type: 'cabinet', at: [-1.3, -0.85], rot: 0 },
+      { type: 'cabinet', at: [-0.3, -0.85], rot: 0 },
+    ],
+  },
+  collab: {
+    spot: [-2.4, 0.45, 170],
+    props: [
+      { type: 'roundTable', at: [2.3, 0.15] },
+      { type: 'chair', at: [1.35, 0.15], rot: 90 },
+      { type: 'chair', at: [3.25, 0.15], rot: 270 },
+      { type: 'plant', at: [-4.6, 0.5], opts: { size: 0.9 } },
+    ],
+  },
+  quiet: {
+    spot: [-0.8, 0.55, 200],
+    props: [
+      { type: 'desk', at: [0.7, -0.7], rot: 0, opts: { lamp: true, laptop: true } },
+      { type: 'chair', at: [0.7, 0.15], rot: 180 },
+    ],
+  },
+  commons: {
+    spot: [0.4, 0.15, 160],
+    props: [
+      { type: 'sofa', at: [-3.4, 0.15], rot: 90 },
+      { type: 'plant', at: [-4.7, -0.85], opts: { size: 1 } },
+      { type: 'standingTable', at: [1.2, 0.2] },
+    ],
+  },
+  review: {
+    spot: [0.4, 0.45, 190],
+    props: [
+      { type: 'bigScreen', at: [3.2, -1.05], rot: 0 },
+      { type: 'roundTable', at: [-1.6, 0.2] },
+      { type: 'chair', at: [-2.55, 0.2], rot: 90 },
+      { type: 'chair', at: [-0.65, 0.2], rot: 270 },
+    ],
+  },
+};
+
+function addWindow(windows, wall, span) {
+  const w = Math.min(1.8, span - 1.2);
+  if (w < 0.8) return;
+  windows.push({ wall, at: 0, w, y0: 0.85, y1: 2.4 });
+}
+
+function exteriorWindows(id, room, doors) {
+  if (id === 'courtyard') return [{ wall: 'back', at: 0, w: 3.2, y0: 0.75, y1: 2.45 }];
+  const windows = [];
+  const blocked = new Set(doors.map(d => d.wall));
+  if (room.y === 0 && !blocked.has('back')) addWindow(windows, 'back', room.w);
+  if (room.x === 0 && !blocked.has('left')) addWindow(windows, 'left', room.d);
+  if (Math.abs(room.x + room.w - 22) < 1e-6 && !blocked.has('right')) addWindow(windows, 'right', room.d);
+  if (Math.abs(room.y + room.d - 17) < 1e-6 && !blocked.has('front')) addWindow(windows, 'front', room.w);
+  return windows;
+}
+
+function generatedLayout(id) {
+  const room = ROOMS[id];
+  const doors = doorsOn(id).map(({ to, wall, at, w }) => ({ to, wall, at, w }));
+  const dress = DRESS[id] || {};
+  const tone = id === 'courtyard'
+    ? { floor: '#cfe3c4', floorLine: '#b7d0aa', wall: '#e7f0e4', accent: '#3d7a49' }
+    : PALETTE[room.level];
+  const span = Math.max(room.w, room.d);
+  return {
+    size: [room.w, room.d],
+    wallHeight: 2.9,
+    wall: tone.wall,
+    floor: tone.floor,
+    floorLine: tone.floorLine,
+    floorStyle: 'tiles',
+    accent: tone.accent,
+    camera: { pos: [span * 0.45, 7.5, span * 0.62], target: [0, 0.7, 0], fov: 32 },
+    sun: [-4, 10, -6],
+    ceiling: dress.ceiling || [{ at: [0, 0], w: Math.min(2.2, room.w * 0.45), d: Math.min(0.9, room.d * 0.35) }],
+    windows: exteriorWindows(id, room, doors),
+    doors,
+    props: dress.props || [],
+    spots: { player: dress.spot || [0, 0, 180] },
+  };
+}
+
+export function layoutFor(id) {
+  if (LAYOUTS[id]) return LAYOUTS[id];
+  if (ROOMS[id]) return generatedLayout(id);
+  return LAYOUTS.platform;
+}

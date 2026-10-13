@@ -1,4 +1,5 @@
 import { semanticSignature } from './grammar.mjs';
+import { passageError, VISITOR_CLEARANCE } from './floorplan.mjs';
 
 export const ENTITIES = {
   nora: { label: 'NORA', category: 'actor', aliases: ['the AI', 'the model', 'the system'], publicRoles: ['all'] },
@@ -63,7 +64,7 @@ const WORLD_FACTS = {
 
 export function newSession() {
   return {
-    room:'platform', playerKnows:new Set(['nora','pavel','leila','elena','shutdown_test','task_queue','camera_system','visitor_records','shutdown_report','job_log','staffing_memo','personnel_policy','performance_reviews','skill_matching','safety_case','release_schedule','evaluation_independence','evaluation_records','shutdown_spec','platform_jobs','policies','wiki_pages']),
+    room:'platform', clearance:VISITOR_CLEARANCE, playerKnows:new Set(['nora','pavel','leila','elena','shutdown_test','task_queue','camera_system','visitor_records','shutdown_report','job_log','staffing_memo','personnel_policy','performance_reviews','skill_matching','safety_case','release_schedule','evaluation_independence','evaluation_records','shutdown_spec','platform_jobs','policies','wiki_pages']),
     examined:new Set(), learnedFacts:new Set(), conversations: [],
     npcReceived: {pavel:new Set(),leila:new Set(),elena:new Set()},
     asked:new Set(), usage: {calls:0,input:0,output:0},
@@ -72,7 +73,7 @@ export function newSession() {
 }
 export function clientState(s) {
   return {
-    room:s.room, actors:Object.fromEntries(Object.entries(NPCS).map(([id,n])=>[id,{name:n.name,role:n.role,room:n.room,initials:n.initials}])), entities:Object.fromEntries([...s.playerKnows].filter(id=>ENTITIES[id]).map(id=>[id,ENTITIES[id]])),
+    room:s.room, clearance:s.clearance??VISITOR_CLEARANCE, actors:Object.fromEntries(Object.entries(NPCS).map(([id,n])=>[id,{name:n.name,role:n.role,room:n.room,initials:n.initials}])), entities:Object.fromEntries([...s.playerKnows].filter(id=>ENTITIES[id]).map(id=>[id,ENTITIES[id]])),
     examined:[...s.examined], learnedFacts:[...s.learnedFacts].map(id=>({id,text:WORLD_FACTS[id]})),
     evidence:Object.entries(EVIDENCE).map(([id,x])=>({id,title:x.title,room:x.room,examined:s.examined.has(id)})),
     previous:s.conversations.slice(-8), asked:[...s.asked], usage:s.usage,
@@ -90,7 +91,8 @@ export function inspect(s,id) {
   return {title:ev.title,body:ev.body};
 }
 export function go(s,room){
-  if (!['platform','evaluation','people'].includes(room))return {error:'Unknown room.'};
+  const error=passageError(s.room,room,s.clearance??VISITOR_CLEARANCE);
+  if(error)return {error};
   s.room=room;return {room};
 }
 const IN_WORLD = {

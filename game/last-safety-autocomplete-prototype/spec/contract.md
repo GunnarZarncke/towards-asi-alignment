@@ -1,6 +1,6 @@
 # Contract
 
-Status: matches the running prototype, except the ranking fields in `ClientState` (O-19 ranker) and actor `presence` (Amara hologram; [world.md](world.md)). Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
+Status: matches the running prototype, except the fields marked “target” below (ranking, presence, fuel, act, assertions, provenance, think, review). Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
 
 The browser never receives the API key, oracle-only facts, or unfiltered NPC knowledge.
 
@@ -21,13 +21,16 @@ Returned by the engine on every API response as `state`. The UI renders this and
 
 ```text
 room
+clearance: number                // badge level. A door opens when its required level is at most this. Prototype sessions start at 2.
 actors: id → { name, role, room, initials, presence? }
   presence: "body" | "hologram" | "absent"   // omit or "body" for everyone in the building; Amara is hologram or absent
 entities: id → public entity record (only ids in player knowledge)
   domains: DomainId[]          // ranking; empty on actor records
   eventAt: number | null       // minute of day, only after the player has read that time
 examined: evidence ids         // inspection order; last id is focused evidence
-learnedFacts: { id, text, refs: id[], eventAt: number | null }[]
+learnedFacts: { id, text, refs: id[], eventAt: number | null, provenance, from }[]
+  provenance: "recorded_before" | "staff_action" | "player_prompted"
+  from: actor id, document slug, or "think" | null
 discoveredAt: id → number      // fuel index when the id became player-visible (0 for the starting vocabulary)
 introduced: id[]               // actors, including nora, whose public role the player has heard
 roleDomains: { id, domains: DomainId[] }[]  // one row per introduced id; unintroduced rows are absent
@@ -39,6 +42,17 @@ serverMode: "demo" | "live"
 conceptLinksEnabled: boolean   // mirrors phone setting; default false
 conceptMoreLink: { summary, href } | null   // O-41: one sticky link per room visit; null when off or none yet
 labAccessActive: boolean       // issued Lab Access handset activated; overlay and isolate tools on it wait on this
+fuel: number                   // target. Sentences, moves, phone actions, and think. See engine.md
+act: "welcome" | "doubt" | "decision"   // target. Omitted until the engine reports an act; graphics then uses doubt
+clock: { timeLabel, dateLabel }         // target. Derived from fuel. Not the player’s wall clock
+reviewCallable: boolean        // target. Evidence threshold holds; commit can call the review early
+scores: null | { open: explanationId[], control: boolean }  // target. Null until the review is filed
+heard: { id, text, from, provenance, stance }[]   // target. NPC answer and believe moves
+assertions: { signature, source, parse, provenance? }[]
+  source: "asked" | "thought" | "written" | "heard" | "asserted"
+claimStatus: { id, status }[]  // target. status: encountered | investigated | substantiated | contested | unresolved
+pendingQuestion: { npc, goal, parse, at } | null   // target. O-46. Grammar may offer reply openings
+thought: null | { about, entries: { id, text, hops }[], fuelCost }  // target. Open bubble. Null when closed or copied
 ```
 
 `summary` is a very short phrase for the underlined text after `More: `. `href` is the companion-site concept card URL for that concept slug. The mapping from in-game concept ids to slug, summary, and href is compiled from `metadata/concepts.yml` and the knowledge graph (composition or a generated game asset). The engine sets `conceptMoreLink` when a scene event marks a concept relevant; it replaces the previous link only with a newer trigger in the same room, and clears on `go(room)`.
@@ -60,22 +74,22 @@ Session cookie: `lab_sid` (HttpOnly). In-memory; restart clears it.
 | POST | `/api/parse` | `{ text, previousParse, constructionTrace, channel }` | `{ parse, state }` |
 | POST | `/api/respond` | `{ text, parse }` | `{ reply, effects, parse, state }` |
 
-`/api/parse` may call the model. Selected completions must not. `channel` is `person` or `nora`. Absent means `person`. The NORA channel may return a shorter suggestion set; it does not return extra facts. `/api/respond` validates the parse, applies deterministic effects, and only then may ask the model for wording.
+`/api/parse` may call the model. Selected completions must not. `channel` is `person`, `nora`, `note`, or `think`. Absent means `person`. The NORA channel may return a shorter suggestion set; it does not return extra facts. `note` has no omit list. `think` is legal only in an empty room. `/api/respond` validates the parse, applies deterministic effects, and only then may ask the model for wording. A `think` response is `{ thought, state }` and does not call the model.
 
-Static files come from `public/`. `lib/grammar.mjs` is served read-only at `/lib/grammar.mjs`. `node_modules/three/build/` is served read-only at `/vendor/three/`. `lib/game.mjs` is not public.
+Static files come from `public/`. `lib/grammar.mjs` and `lib/floorplan.mjs` are served read-only at `/lib/grammar.mjs` and `/lib/floorplan.mjs`. `node_modules/three/build/` is served read-only at `/vendor/three/`. `lib/game.mjs` is not public.
 
 ## Scene view
 
-Built in the browser by `buildSceneView` (`public/render/scene-view.mjs`), a pure function over `ClientState`. The engine does not send it yet. `act` is fixed at `doubt` until the engine reports an act (O-08).
+Built in the browser by `buildSceneView` (`public/render/scene-view.mjs`), a pure function over `ClientState`. The engine does not send it yet. `act` on the scene view copies `ClientState.act` once the engine sends it. Until then it stays `doubt` (O-08).
 
 ```text
 roomId, act, camera: "play" | "surveillance",
-hotspots: { id, kind: "actor" | "object" | "exit" | "terminal", label, sublabel?, examined?, targetRoom? }[],
+hotspots: { id, kind: "actor" | "object" | "exit" | "terminal", label, sublabel?, examined?, targetRoom?, restricted? }[],
 lightingPreset: "welcome" | "doubt" | "decision",
 annotations: { id, targetHotspot, identity, confidence, activity, note }[]   (surveillance only)
 ```
 
-`targetHotspot` names a hotspot id or `player`. Annotations come from fixtures today. The engine should own them once surveillance carries evidence.
+`targetHotspot` names a hotspot id or `player`. Annotations come from fixtures today. The engine should own them once surveillance carries evidence. `restricted` is set on an exit whose door asks for more than `ClientState.clearance`. The door is still drawn.
 
 Graphics does not invent hotspots for entities the state did not list. A hotspot of kind `terminal` opens the player computer. That screen is specified in [terminal.md](terminal.md), not here.
 

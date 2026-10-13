@@ -1,4 +1,4 @@
-import { ACT_LABELS, ROOM_EXITS, ROOM_META } from './rooms.mjs';
+import { ACT_LABELS, ROOM_META, VISITOR_CLEARANCE, doorsOn } from './rooms.mjs';
 
 const DEFAULT_ACT = 'doubt';
 
@@ -46,13 +46,14 @@ export function buildSceneView(state, options = {}) {
     });
   }
 
-  for (const dest of ROOM_EXITS[roomId] || []) {
-    const destMeta = ROOM_META[dest];
+  for (const door of doorsOn(roomId)) {
+    const destMeta = ROOM_META[door.to];
     hotspots.push({
-      id: `exit_${dest}`,
+      id: `exit_${door.to}`,
       kind: 'exit',
-      label: destMeta?.title || dest,
-      targetRoom: dest,
+      label: destMeta?.title || door.to,
+      targetRoom: door.to,
+      restricted: door.required > (state.clearance ?? VISITOR_CLEARANCE),
     });
   }
 
@@ -122,6 +123,7 @@ export function renderSceneMarkup(scene) {
     .map(h => {
       const classes = ['hotspot', `hotspot-${h.kind}`];
       if (h.sealed) classes.push('hotspot-sealed');
+      if (h.restricted) classes.push('hotspot-restricted');
       if (h.examined) classes.push('hotspot-examined');
       const pos = hotspotPosition(tpl, h);
       const style = pos ? ` style="--hx:${pos.x}%;--hy:${pos.y}%;--hw:${pos.w || 12}%;--hh:${pos.h || 14}%"` : '';
@@ -145,6 +147,9 @@ export function renderSceneMarkup(scene) {
 }
 
 function roomInnerHtml(template) {
+  if (template === 'generic') {
+    return `<div class="arch arch-generic"><div class="generic-floor"></div></div>`;
+  }
   if (template === 'evaluation') {
     return `<div class="arch arch-eval"><div class="eval-lightbar"></div><div class="eval-bench"></div><div class="eval-screen eval-screen-a"></div><div class="eval-screen eval-screen-b"></div><div class="eval-figure"><div class="fig-head"></div><div class="fig-body"></div></div><div class="eval-plant"></div><div class="eval-floor"></div></div>`;
   }
