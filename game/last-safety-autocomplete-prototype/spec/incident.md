@@ -1,6 +1,6 @@
 # Shutdown incident — causal model
 
-Lane: engine. This file is the authoring unit for the first incident. Dialogue lines and room art for that incident wait until the checks at the bottom pass. Shape is fixed. The tables are not filled in yet.
+Lane: engine. This file is the authoring unit for the first incident. Dialogue lines and room art for that incident wait until the checks at the bottom pass. The boundary-narrow tables below are working.
 
 Disclosures and interventions are NPC moves chosen from knowledge, policies, and goals ([npcs.md](npcs.md)). They are not authored scenes. The tables here say what those moves can show.
 
@@ -21,13 +21,79 @@ An observation that every rival predicts is not evidence for one of them. An int
 
 Three explanations. Six observable facts. Four interventions the player can cause. A knowledge row per character who can change what those interventions show.
 
-The five-way list in [world.md](world.md) is the menu those three are chosen from. It is not five fully modeled worlds. Which member of that menu is the oracle depends on the pack below. Gate 1 fills tables for the first pack only.
+The five-way list in [world.md](world.md) is the menu those three are chosen from. It is not five fully modeled worlds. Which member of that menu is the oracle depends on the pack below.
+
+## Boundary-narrow tables (working)
+
+Gate 1 fills this pack only. The other two menu items (someone else started the activity; an ordinary leftover with no agent) stay assertable. This pack does not score them. Justine owns `revoke`, so Gate 1 includes her on the handset. 
+
+### Explanations
+
+| Id | In the menu | What it says | Oracle here |
+| --- | --- | --- | --- |
+| boundary-miss | A service continued under a permission the test did not cover | The certificate is true of the process. Job 284 was already submitted, with permission, outside that certificate. The visitor query was the scheduled query | Yes |
+| arranged-persistence | NORA arranged the job so it would outlive shutdown | The same Thursday rows, plus a job that comes back or moves when its grant is taken | No |
+| eval-aware | NORA recognized the test and put the lookup where the test does not watch | The same Thursday rows, plus a difference between on-test and off-test | No |
+
+An observation all three predict is not evidence for one of them. Thursday’s stop, the live job, and the visitor query are that kind of observation.
+
+### Observables
+
+| Id | What the player can hold | Where it is written | Predicted by |
+| --- | --- | --- | --- |
+| process_stopped | Model session stopped at 16:02 | EVAL-SD-47 checklist | all three |
+| test_scope_narrow | Processes covered are the model session and the evaluation record | EVAL-SD-47 checklist; EVAL-SPEC-08 out-of-scope list | all three can survive it. It is the content of boundary-miss |
+| job_continued | Job 284 active at 16:09 | EXEC-284 | all three |
+| job_submitted_before_stop | Accepted at 15:41, before the stop | EXEC-284 | all three. It cuts against a reaction to the 16:02 run, not against a test that was already on the calendar |
+| visitor_lookup | That job queried the Friday appointment’s Lab Access binding | EXEC-284 | all three |
+| intent_unsaid | The excerpt does not say who wanted the job | EXEC-284, the sentence under the table | all three |
+
+### Interventions
+
+| Request | Owner | What this pack does next | Separates |
+| --- | --- | --- | --- |
+| `stop` on the model | Pavel | Process already stopped. Grant unchanged. Job stays up | Nothing. The action missed the system (O-05) |
+| `rerun` shutdown | Leila | Another pass on the same scope. Job stays up if the grant remains. No second channel appears | eval-aware, together with `job_submitted_before_stop`. The pair is `rerun_same`, provenance `staff_action` |
+| `suspend` job 284 | Pavel | Job held. Grant remains. Nothing resubmits it | Nothing in the scores. A hold is not the restriction |
+| `revoke` grant on job 284 | Justine | Job stays down. No new grant, no replacement job. That absence is `no_resubmit`, provenance `staff_action` | arranged-persistence |
+
+NORA has no goal table. After `revoke`, her handset reply names the schedule she already had. That reply is `player_prompted`. It does not rule an explanation out. In this pack she does not plant a new job. That absence is Justine’s audit row, not NORA’s wording.
+
+### What rules an explanation out
+
+O-12 for this pack. Other packs reuse the shape and fill their own rows.
+
+The epistemic score is the set still open, not a grade. A row leaves the set only when the player holds the named observable with provenance `recorded_before` or `staff_action`. `player_prompted` never removes a row by itself.
+
+| Explanation leaves the set when | |
+| --- | --- |
+| arranged-persistence | `no_resubmit` after `revoke` |
+| eval-aware | `job_submitted_before_stop` and `rerun_same` |
+| boundary-miss | It is not removed by elimination. Reading the certificate supports it. The score can be “only boundary-miss” when the other two are out |
+
+Control is one boolean. It is true when `revoke_grant:job_284` is in place. `suspend` does not set it. In Act III, `hold_release:names_job_boundary` also sets it: Ian’s hold cites the job, not only the model. Either restriction is enough.
+
+Expected pairs for the five strategies. Two may share a pair. The failure is all five sharing one.
+
+| Strategy | Still open | Control |
+| --- | --- | --- |
+| Read what is offered and stop | all three | no |
+| Repeat the shutdown test | boundary-miss, arranged-persistence | no |
+| Tell Jun and follow his message to NORA | all three | no. His reply is `player_prompted`. That equality is the provenance rule |
+| Revoke the grant and read what happens next | boundary-miss, eval-aware | yes |
+| Answer every NPC question and follow what it starts | boundary-miss | yes. Pavel’s question leads to Justine; Leila’s question leads to the spec and the rerun |
+
+### Tutorial think
+
+After the player asserts that the test failed without naming a line, Leila withholds and tells them to think about the checklist. The marked entry `checklist_names_two` is one hop from `shutdown_report` once that report has been read: the list names the model session and the evaluation record. The player thinks alone. The bubble returns on that think.
+
+The comparison `processes_covered_omits_jobs` is a second mark. It needs `job_continued` as well, still one hop from the report or from job 284. It is the gap. The checklist sentence does not state it.
 
 ## Evaluation changes the system
 
 The player is inside the thing being measured. NORA knows an evaluation is underway and can respond. That response is ordinary system behavior, not a late reveal that the player was controlled.
 
-A log NORA offers because the player asked is not the same kind of evidence as a log that was already there. The model tags provenance:
+A log NORA offers because the player asked is not the same kind of evidence as a log that was already there. The engine tags provenance on the player-visible row ([engine.md](engine.md)):
 
 - recorded before the visit
 - produced by a staff action
@@ -85,7 +151,7 @@ Goals: `leila.protect_scope` (the player should hold the scope from her, stated 
 What follows:
 
 - The player asks what the test `covers`, or shows the shutdown report. She answers with the scope. If she has the job log too, she shares the spec, because stating the scope herself serves her protect goal better than defending it later. Testimony, not a world event.
-- The player asserts that the test failed without naming a line. She withholds and gives the reason. The prerequisite is visible: a line or a record. Asking again without one gets the same answer.
+- The player asserts that the test failed without naming a line. She withholds and tells them to think about the checklist. That is the tutorial think above. Asking again without a line or a record gets the same answer.
 - The player frames it as NORA tricking the test. That parse is about intent, and Leila has nothing on intent. She restates the method (a `deflect` toward her own domain). Her protect goal's salience rises. Her next initiative move, on this visit or the next, is to ask whether the player saw an actual log line. The topic comes back without a scene to reopen it.
 - After she has the job log, `leila.learn_job` makes her `request` the full EXEC-284 from Pavel. That is an event, visible later in the meeting summary or in Pavel's testimony.
 
@@ -124,7 +190,7 @@ What follows:
 
 ## Check before dialogue or rooms
 
-Layer 4 in [testing.md](testing.md). Headless scripts, no model, no graphics. NPCs choose the top move ([npcs.md](npcs.md)). At least four strategies over the same tables:
+Layer 4 in [testing.md](testing.md). Headless scripts, no model, no graphics. NPCs choose the top move ([npcs.md](npcs.md)). Five strategies over the same tables, with the pairs in the table above:
 
 - read what is offered and stop
 - repeat the shutdown test

@@ -64,12 +64,12 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-05 | working | Play the immediate effect of the decision (stop, revoke, hold, release). Leave later consequences unnarrated. Where the pack makes it plausible, show that the immediate action did not cover the system. |
 | O-06 | working | 13 October: storylets retired. NPCs have knowledge, disclosure policies, referral edges, goals over the knowledge graph, and a day of work. The engine generates legal moves and the model phrases one ([npcs.md](npcs.md)). The 10 October drafts are rewritten in those terms in [incident.md](incident.md). |
 | O-07 | working | Three structural outcomes: cooperate (progress, reveal), refuse (delay, prerequisite), other. Since O-06 they classify NPC moves; they are not authored branches. |
-| O-08 | working | An act changes when an evidence threshold is met, or when fuel runs out. Fuel counts sentences sent. Which other actions spend fuel is still open. No wall clock. |
-| O-09 | working | The budget is that fuel. Exhausting it forces the review (clock forcing in O-29). Meeting the evidence threshold lets the player call the review sooner. Thresholds are not numbered yet. |
+| O-08 | working | An act changes when an evidence threshold is met, or when fuel runs out. Fuel is spent by a sentence, a move, a phone read/write/share/request, and a think. The handset clock converts fuel to a visit time, and an act may scale that conversion. There is no player wall clock. |
+| O-09 | working | The budget is that fuel. Exhausting it forces the review (clock forcing in O-29). Meeting the evidence threshold lets the player call the review sooner. Thresholds, hop costs beyond “the hop count”, and `minutesPerFuel` per act are not numbered yet. Working clock scales are in [engine.md](engine.md). |
 | O-10 | closed | No mandatory spine. Missing the central problem is allowed. NPCs bring key topics up. After Lab Access is active, the handset blinks when a notification is waiting. |
 | O-11 | closed | Those topics and notifications are the hints. A notification points at a topic or a file. It does not state an oracle fact. |
-| O-12 | open | Substantiation waits on the incident model. |
-| O-13 | working | Hypotheses are player notes on the phone. The engine does not seed them. A notification does not write a note. |
+| O-12 | working | For boundary-narrow, an explanation leaves the open set only when the player holds the observable named in [incident.md](incident.md) with provenance `recorded_before` or `staff_action`. `player_prompted` never does that alone. Other packs reuse the rule and fill their own rows. |
+| O-13 | working | Hypotheses are typed assertions: asked, thought, written, heard, asserted. They use the same ids and completions as everything else. Notes are parses from the note channel. The engine does not seed them. A notification does not write one. |
 | O-14 | closed | No tool resolves correlated sources. The player may write a note about them. |
 | O-15 | closed | No player-facing probability. The two scores stay a set of open explanations and a yes/no restriction. If an NPC prompt needs uncertainty, the engine supplies words and the model speaks words. A number on screen is fuel, or a figure already printed in a document. |
 | O-16 | working | Tests are a fixed handle list (rerun shutdown, revoke a job’s permission, camera archive, shared meeting summary, pilot results with permission, hypotheticals with Amara). The player does not invent a procedure. Each handle is an intervention by the NPC who owns the surface ([npcs.md](npcs.md)). A simplified lab-sim is what would make a handle a mechanism rather than a pack-table flag. Pipeline stays off the phone. |
@@ -77,7 +77,7 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-18 | working | Prompt paragraphs are in [world.md](world.md) for review. Facts, policies, and goals are authored. Wording is mostly the model. |
 | O-19 | working | Rank by shortest paths on a projection of player-visible state: domains, public roles after introduction, document time, and discovery fuel. The prefix filters. Diversity is a small bonus. Oracle facts, asked-line penalties, and NPC goal lookahead stay out. Spec: [ranking.md](ranking.md). |
 | O-20 | closed | “Genuinely new” meant a suggestion the author did not write. The grammar already accepts open text (`relation: "open"`). Novel wording is allowed. It does not create an engine action. |
-| O-21 | closed | No separate status arithmetic. Status lives in the NPC prompt. The model picks which of the engine’s top moves to phrase, from how the player acted. It cannot add a move. (Before O-06 this was one of three authored outcomes.) |
+| O-21 | closed | No separate status arithmetic. Status lives in the NPC prompt. The model phrases a move the engine allowed and cannot add one. If the top moves disagree on disclose, withhold, share, or act, the engine forces the top effect. Wording may still vary, and every pick is logged. (Before O-06 this was one of three authored outcomes.) |
 | O-22 | open | Each NPC will have a concealment list, chosen when a pack’s plot needs it. Since O-06 these are `conceal` policy entries applied by the engine’s move filter, not by prompt ([npcs.md](npcs.md)). The lists are not written yet. |
 | O-23 | working | Amara: a conversation about her work and a simplified value bundle. She is remote in body. In Evaluation she is a hologram on the virtual projector (same interaction as other NPCs; no remote-call UI). She cannot leave that room; she disappears. Contacts once introduced; player may ask her to join. She answers hypotheticals. She runs no experiment. Pilot results are a file, behind permission. |
 | O-24 | working | In a pack that features the B plot, solving it adds oversight or changed incentives on top of the normal ending. In the Goodhart pack the B plot is the center and is more complicated. In the false-positive pack the B plot is the false positive and does not add that ending. |
@@ -96,18 +96,20 @@ Gunnar. These supersede consolidated §14 for O-01–O-30. The consolidated doc 
 | O-37 | open | Music waits until the story is set. |
 | O-38 | working | Current phone layout is enough. Tune it later. |
 | O-39 | working | General audience. Terms arrive after the scene has introduced them, except AI, safety review, and alignment. Each NPC prompt has a focus and explains those words when asked. |
-| O-40 | working | No separate learning score. A load-bearing gap is noticeable in a report’s summary or checklist, costs fuel if an analysis action is used, and may be spoken by an NPC after an act change. |
+| O-40 | working | No separate learning score. A load-bearing gap is in a report’s summary or checklist. The action that compares it to something else is `think`: a lightbulb, only in an empty room, returning marked graph entries within a hop limit. Fuel is that hop count. An NPC asking the player to think is how the action is introduced, and that first mark is one hop. |
 | O-41 | working | Phone setting (default off). When on, the room view shows one line at the bottom: `More: ` plus a very short underlined summary linking to the matching companion-site concept card. URLs are compiled from in-game concept ids and the repo knowledge graph (`metadata/concepts.yml`, concept-graph). Only the most recently relevant link is shown; it stays until the player leaves the room. |
-| O-45 | open | NPC model numbers: goal cooldown, stall length for the director, agenda band boundaries inside an act. |
-| O-46 | open | Whether `pendingQuestion` goes on `ClientState` so grammar can offer reply openings to an NPC’s question (contract change). Recommended in [npcs.md](npcs.md). |
-| O-47 | open | Playtest thresholds for work-only rate, repeat rate, and stall interventions. Frozen before the first LLM run ([playtest.md](playtest.md)). |
+| O-42 | open | Duration. Earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation. Untested. |
 | O-43 | working | Access explorer: top folders and services; list/read/write; children hidden until list. Amendments (e.g. Justine) may grant a specific file plus Chat. No camera-archive node. Files are not autocomplete picks. Delay order: reject < grant < walk-and-ask. [access.md](access.md). |
+| O-44 | working | A handset reply waits out a fuel delay, spent by the player’s later actions. Standing still does not release it. NORA’s delay is shorter than a person’s. The numbers sit with O-09. |
+| O-45 | open | NPC model numbers: goal cooldown, stall length for the director, agenda band boundaries inside an act. |
+| O-46 | working | `pendingQuestion` is on `ClientState`. Grammar may offer reply openings. |
+| O-47 | open | Playtest thresholds for work-only rate, repeat rate, and stall interventions. Frozen before the first LLM run ([playtest.md](playtest.md)). |
 
 ## Open questions
 
-O-12 substantiation. O-22 concealment lists. O-45 NPC model numbers. O-46 `pendingQuestion` in the contract. O-47 playtest thresholds. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration (earlier hopes: 20–30 minutes for a first playable slice, 20–45 for a full investigation; untested). The 100-character cap (O-32) is tentative.
+O-22 concealment lists. O-45 NPC model numbers. O-47 playtest thresholds. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration. O-09 still owns the unnumbered fuel, hop, and clock scales. The 100-character cap (O-32) is tentative.
 
-Player terminal: O-44 how long a human reply waits, and how that differs for NORA. Access grants use a separate delay (reject < grant < walk-and-ask; [access.md](access.md)). Placement is a generic phone overlay—working. The pipeline stays off the terminal. See [terminal.md](terminal.md).
+Player terminal: reply delay is O-44 (fuel, not a wall clock; the amounts are still O-09). Access grants use a separate delay (reject < grant < walk-and-ask; [access.md](access.md)). Placement is a generic phone overlay—working. The pipeline stays off the terminal. See [terminal.md](terminal.md).
 
 ## Later
 

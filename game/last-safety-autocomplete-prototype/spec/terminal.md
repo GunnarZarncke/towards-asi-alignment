@@ -25,7 +25,7 @@ The look sits between a Pixel, a Samsung, and an iPhone without copying any of t
 
 Allowed: a rounded rectangle, a thin status row (clock, silent battery and signal as abstract bars), a simple home pill or bar, a small grid of unlabeled-until-titled app tiles, muted lab palette. Original icons drawn for this game.
 
-Clock time is in-game time from the engine (or the fixture), not the player’s wall clock, unless the engine has not sent a time yet.
+Clock time is the visit clock the engine derives from fuel (or the fixture). It is not the player’s wall clock. An act may scale the conversion ([engine.md](engine.md)). Until the engine sends a time, the fixture’s `timeLabel` is the sample.
 
 **Homescreen**
 
@@ -44,7 +44,7 @@ Default surface when the overlay opens.
 | **API** | Explorer for the isolate API: pick a capability, send `access.request`, see ok or denial. No pipeline step ids as runnable actions. | `access.request` |
 | **Calendar** | One day in **late 2027**. Date and appointments cannot be changed. A line marks current in-game time. | none (read-only engine list) |
 | **Contacts** | People the engine has added (introduced cast). Open Chat. If `joinable`, ask them to join as a hologram. NORA is a contact, not joinable. | Chat uses `dm.*`; join is a `request` the engine maps to projection |
-| **Notes** | Title plus a plain text field. No formatting. Save is `file.write` under `notes/`. Player hypotheses live here (O-13). The engine does not seed them, and a notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
+| **Notes** | Title plus a plain text field, with the note-channel completions (no NORA). Save is `file.write` under `notes/` and stores written assertions (O-13). The engine does not seed them. A notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
 | **Photo** | Capture the **current room** from the phone: pan and zoom the live view, then save. The still goes to Files (`photos/`). | `file.write` |
 | **Video** | Camera recordings the engine has released. Playback is a replay of stored events, clocked by fuel (O-36). | none (reads the event log) |
 | **Settings** | Game and phone options. Do not change the lab’s world. See below. | none (local UI + optional composition flags) |
@@ -76,7 +76,7 @@ Tapping a person opens Chat with that id. If `joinable` and she is not already a
 
 **Notes**
 
-New note: title field, body as one unformatted text area. Open an existing `notes/` file the same way. Autosave or an explicit Save both map to `file.write`. No checklist, markdown, or attach.
+New note: title field, body as one unformatted text area. The body composer is the grammar’s `note` channel: the same completions as talk, with no addressee and no NORA omit list ([grammar.md](grammar.md)). Open an existing `notes/` file the same way. Autosave or an explicit Save both map to `file.write` and store the parses as `written` assertions. No checklist, markdown, or attach. A thought copied from the room bubble arrives as a note the same way. The paper icon is on the bubble, not a second editor.
 
 **Photo**
 

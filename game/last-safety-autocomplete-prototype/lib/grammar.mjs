@@ -1,6 +1,6 @@
 // Shared semantic language. This file is the one source of truth for the
 // completion engine's AST and the LLM interpreter's target representation.
-export const KINDS = ["ask", "ask_why", "assert", "hypothesize", "show", "request", "social", "unintelligible"];
+export const KINDS = ["ask", "ask_why", "assert", "hypothesize", "show", "request", "think", "commit", "social", "unintelligible"];
 export const RELATIONS = {
   about: "Topic reference, no assertion of truth.",
   has_access: "(actor, resource) Technical ability to access a resource. Not permission or evidence of actual use.",
@@ -14,6 +14,10 @@ export const RELATIONS = {
   assigned: "(coordinator, task_or_person) Assignment/matching decisions.",
   values: "(person, outcome) An individual's priorities and tradeoffs.",
   differs_from: "(thing, thing) Contradiction or distinction between two known observations.",
+  suspend: "(job) Ask the queue owner to hold a job. A request, not a player action on the queue.",
+  revoke: "(grant or job) Ask the access owner to remove a permission.",
+  rerun: "(test) Ask the evaluation owner to run a test again.",
+  stop: "(process) Ask the runtime owner to stop a process.",
   open: "Interpretable natural-language proposition outside the typed relation vocabulary."
 };
 export const SLOT_TYPES = ["opening", "subject", "relation", "object", "recipient", "evidence", "topic", "finish", "none"];

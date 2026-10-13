@@ -10,7 +10,7 @@ The book concept graph (`metadata/concepts.yml`) is the O-41 card map. This rank
 
 There is no stored knowledge graph. Each call builds a virtual graph from the player-visible projection and discards it. Nodes are known entity ids, learned-fact ids, and domain ids. Edges are virtual. Do not materialize every pair, and do not add a second graph module.
 
-The caller passes `addressees`: an array of actor ids (`pavel`, `nora`, …). Face to face, that is every person in the current room with `presence` `body` or `hologram` (zero or more). The phone passes the thread recipient, usually one id. Grammar does not infer the list from the room; the composer builds it from `ClientState`.
+The caller passes `addressees`: an array of actor ids (`pavel`, `nora`, …). Face to face, that is every person in the current room with `presence` `body` or `hologram` (zero or more). The phone passes the thread recipient, usually one id. The note channel and the think channel pass an empty list. Grammar does not infer the list from the room; the composer builds it from `ClientState`. Think’s lightbulb is gated by presence before ranking, in [grammar.md](grammar.md).
 
 Ranking uses the **union** of what those ids contribute. Do not weight one addressee over another. Each introduced id in the list may supply role-domain anchors; each domain appears at most once at the role weight, even if several people share it.
 

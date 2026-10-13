@@ -35,18 +35,26 @@ async function responsesRequest(system, user, format, stats, max_output_tokens=4
   } finally {clearTimeout(timer)}
 }
 
-function demoParse(text,known){
+function demoParse(text, known){
   const clean=text.trim();const last=clean.split(/\s+/).pop()||'';
   const unfinished=/[a-z]$/i.test(clean)?last:'';
   const low=clean.toLowerCase();
   let kind='ask',relation='about',open_slot='topic',subject=null,recipient=null,topic=null;
   if(/^show\b/i.test(clean)){kind='show';open_slot='recipient';}
+  else if(/^think\b/i.test(clean)){kind='think';open_slot='topic';}
+  else if(/^(file|commit)\b/i.test(clean)){kind='commit';open_slot='topic';}
+  else if(/^hold\b/i.test(clean)){kind='request';relation='suspend';open_slot='object';}
+  else if(/^revoke\b/i.test(clean)){kind='request';relation='revoke';open_slot='object';}
+  else if(/^run again\b/i.test(clean)){kind='request';relation='rerun';open_slot='object';}
+  else if(/^stop\b/i.test(clean)){kind='request';relation='stop';open_slot='object';}
   else if(/^i (think|suspect|wonder)\b/i.test(clean)){kind='hypothesize';open_slot='subject';}
   else if(/^the\b/i.test(clean)){kind='assert';open_slot='subject';}
   else if(/^(can|could|does|did|has|is)\b/i.test(clean)){kind='ask';open_slot='subject';}
   else if(/^why\b/i.test(clean)){kind='ask_why';open_slot='subject';}
   const found=Object.keys(ENTITIES).filter(id=>known.includes(id) && [ENTITIES[id].label,...ENTITIES[id].aliases].some(a=>low.includes(a.toLowerCase())));
   if(found.length&&['ask','hypothesize','assert','ask_why'].includes(kind)){subject=found[0];open_slot='relation';}
+  else if(found.length&&(kind==='think'||kind==='commit')){topic=found[0];open_slot='finish';}
+  else if(found.length&&kind==='request'&&relation!=='about'){topic=found[0];open_slot='finish';}
   if(/\baccess\b/i.test(clean)){relation='has_access';open_slot='object';}
   if(/\babout the new per\w*$/i.test(clean)){subject=null;relation='about';open_slot='topic';}
   if(/\babout\b/i.test(clean)&&!subject){relation='about';open_slot='topic';}
@@ -68,7 +76,7 @@ function sanitizeParse(parsed,known){
 
 export async function parseUtterance({text,known,history,actorId,previousParse,constructionTrace},stats){
   if(!process.env.OPENAI_API_KEY||process.env.DEMO_MODE==='1')return demoParse(text,known);
-  const system=`You are a narrowly-scoped incremental SEMANTIC PARSER for a browser investigation game, NOT a conversational assistant. Output only JSON matching the schema.\n${explainGrammar()}\n\nRULES:\n1. Parse BOTH completed utterances and unfinished prefixes; preserve partial meaning. open_slot identifies the NEXT meaningful semantic constituent; unfinished is the exact trailing incomplete word if present.\n2. Ground entity IDs ONLY to the provided player-visible vocabulary. Do not invent entity IDs, facts, motives, or actions. Unknown relations become 'open' with a short open_content meaning; do NOT mark meaningful language 'unintelligible'.\n3. Treat questions, hypotheses, and claims as speech acts, NEVER as established game facts. 'Has access', 'authorized', and 'actually used' are different.\n4. Use the most recent 1-2 conversational exchanges to resolve pronouns (it, that, they, the other one) when clear. If unclear, keep a null reference or open_content. Do NOT consult hidden game state.\n5. For free-typed 'What about the new per', return ask/about, open_slot=topic, unfinished='per'.\n6. Examples: 'Does NORA have camera access?' => ask/has_access/subject=nora/object=camera_system. 'Show Pavel the job log' => show/about/recipient=pavel/evidence=job_log. 'It kept running?' after discussing job 284 => ask/continued_after/subject=job_284/object=shutdown_test.\n7. When text is grammatical but outside ontology, keep kind and relation='open' and state meaning in open_content. Reserve kind='unintelligible' for genuinely unrecoverable content.\n8. The previousParse is a HINT, not authoritative after the user edits text.`;
+  const system=`You are a narrowly-scoped incremental SEMANTIC PARSER for a browser investigation game, NOT a conversational assistant. Output only JSON matching the schema.\n${explainGrammar()}\n\nRULES:\n1. Parse BOTH completed utterances and unfinished prefixes; preserve partial meaning. open_slot identifies the NEXT meaningful semantic constituent; unfinished is the exact trailing incomplete word if present.\n2. Ground entity IDs ONLY to the provided player-visible vocabulary. Do not invent entity IDs, facts, motives, or actions. Unknown relations become 'open' with a short open_content meaning; do NOT mark meaningful language 'unintelligible'.\n3. Treat questions, hypotheses, and claims as speech acts, NEVER as established game facts. 'Has access', 'authorized', and 'actually used' are different.\n4. Use the most recent 1-2 conversational exchanges to resolve pronouns (it, that, they, the other one) when clear. If unclear, keep a null reference or open_content. Do NOT consult hidden game state.\n5. For free-typed 'What about the new per', return ask/about, open_slot=topic, unfinished='per'.\n6. Examples: 'Does NORA have camera access?' => ask/has_access/subject=nora/object=camera_system. Telling someone a claim is assert. 'Hold job 284' => request/suspend. 'Think about the report' => think. 'File the review' => commit. 'Show Pavel the job log' => show/about/recipient=pavel/evidence=job_log. 'It kept running?' after discussing job 284 => ask/continued_after/subject=job_284/object=shutdown_test.\n7. When text is grammatical but outside ontology, keep kind and relation='open' and state meaning in open_content. Reserve kind='unintelligible' for genuinely unrecoverable content.\n8. The previousParse is a HINT, not authoritative after the user edits text.`;
   const vocab=known.map(id=>({id,label:ENTITIES[id]?.label,aliases:ENTITIES[id]?.aliases})).filter(x=>x.label);
   const user=JSON.stringify({current_npc:actorId,player_visible_vocabulary:vocab,
     previous_utterances:history.slice(-4).map(x=>({speaker:x.role==='npc'?x.npc:'player',text:String(x.text).slice(0,240)})),

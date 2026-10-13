@@ -11,7 +11,14 @@ const OPENINGS=[
   {phrase:'Has',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
   {phrase:'Is',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
   {phrase:'Could',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
-  {phrase:'Tell me about',patch:{kind:'ask',relation:'about',open_slot:'topic'}}
+  {phrase:'Tell me about',patch:{kind:'ask',relation:'about',open_slot:'topic'}},
+  {phrase:'Request',patch:{kind:'request',relation:'about',open_slot:'topic'}},
+  {phrase:'Hold',patch:{kind:'request',relation:'suspend',open_slot:'object'}},
+  {phrase:'Revoke',patch:{kind:'request',relation:'revoke',open_slot:'object'}},
+  {phrase:'Run again',patch:{kind:'request',relation:'rerun',open_slot:'object'}},
+  {phrase:'Stop',patch:{kind:'request',relation:'stop',open_slot:'object'}},
+  {phrase:'Think',patch:{kind:'think',relation:'about',open_slot:'topic'}},
+  {phrase:'File',patch:{kind:'commit',relation:'about',open_slot:'topic'}}
 ];
 const relationOptions=[
   {phrase:'access',relation:'has_access',forCats:['actor','process']},
@@ -35,21 +42,25 @@ function topicCandidates(state,p,slot){
   return ids.filter(id=> {
     const e=state.entities[id];
     if(slot==='recipient')return e.category==='actor'&&!!state.actors[id]&&state.actors[id].room===state.room;
-    if(slot==='evidence')return e.category==='evidence'&&state.examined.includes(id);
-    if(slot==='subject')return e.category!=='evidence'&&e.category!=='resource' || id==='shutdown_report';
+    if(slot==='evidence')return false;
+    if(slot==='subject')return e.category!=='evidence'&&e.category!=='resource';
     if(slot==='object'){
-      if(p.relation==='has_access'||p.relation==='authorized'||p.relation==='did_use')return ['resource','topic','evidence'].includes(e.category);
+      if(p.relation==='has_access'||p.relation==='authorized'||p.relation==='did_use')return ['resource','topic'].includes(e.category);
       if(p.relation==='continued_after')return ['event','process'].includes(e.category);
       if(p.relation==='covers')return ['event','process','topic'].includes(e.category);
-      return e.category!=='actor';
+      if(p.relation==='suspend'||p.relation==='stop'||p.relation==='rerun')return ['process','event','topic'].includes(e.category);
+      if(p.relation==='revoke')return ['process','resource','topic'].includes(e.category);
+      return e.category!=='actor'&&e.category!=='evidence';
     }
+    if(slot==='topic' && p.kind==='think')return true;
+    if(slot==='topic')return e.category!=='evidence';
     return true;
   }).map(id=> {
     const e=state.entities[id];
     let label=e.label;
     if(slot==='subject'&& /^the\s/i.test(label)&& /\b(the|that)\s*$/i.test(p._rawPrefix||''))label=label.replace(/^the\s/i,'');
     const key=slot==='evidence'?'evidence':slot==='recipient'?'recipient':slot==='subject'?'subject':slot==='object'?'object':'topic';
-    const next=slot==='subject'?'relation':slot==='recipient'?'evidence':slot==='object'?'finish':slot==='evidence'?'finish':'finish';
+    const next=slot==='subject'?'relation':slot==='recipient'?'finish':slot==='object'?'finish':slot==='evidence'?'finish':'finish';
     return {...candidate(label,p,{[key]:id,open_slot:next},id),entityId:id};
   });
 }
@@ -92,7 +103,11 @@ export function getCandidates({state,parse,text}){
   const slot=parse.open_slot;
   const enriched={...parse,_rawPrefix:text};
   let all=[];
-  if(slot==='opening')all=OPENINGS.map(x=>candidate(x.phrase,parse,x.patch));
+  if(slot==='opening'){
+    all=OPENINGS.map(x=>candidate(x.phrase,parse,x.patch));
+    const someoneHere=Object.values(state.actors||{}).some(a=>a.room===state.room && a.presence!=='absent');
+    if(someoneHere)all=all.filter(x=>x.parse.kind!=='think');
+  }
   else if(['subject','object','recipient','topic','evidence'].includes(slot))all=topicCandidates(state,enriched,slot);
   else if(slot==='relation'){
     const cat=state.entities[parse.subject]?.category||'actor';

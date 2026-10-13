@@ -23,7 +23,7 @@ Exactly what a human sees. Nothing more:
 - The current completion list from the ranker, as a human would see it.
 - Remaining fuel.
 
-It acts through the same endpoints as the browser: `go`, `inspect`, one sentence of at most 100 characters (O-32) addressed to a person or to NORA, the six handset tools, and calling the review once it is allowed. It may pick a completion or type. It may not read the spec, the repo, or the pack name.
+It acts through the same endpoints as the browser: `go`, `inspect`, one sentence of at most 100 characters (O-32) addressed to a person or to NORA, `think` when the room is empty, a note on the note channel, the six handset tools, and `commit` once the review is allowed. It may pick a completion or type. It may not read the spec, the repo, or the pack name.
 
 ## Personas
 

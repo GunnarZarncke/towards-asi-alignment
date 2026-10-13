@@ -79,7 +79,7 @@ Order: layer 4 green on the first pack → then layer 6. The reverse is not a Ga
 | Gate | Testing that must be green |
 | --- | --- |
 | 0 | Layer 1 |
-| 1 | Layers 2–4 for the prototype three (Pavel, Leila, Elena) and the first pack |
+| 1 | Layers 2–4 for Pavel, Leila, Justine (handset), and the first pack. Elena’s staffing side is included. The five strategy pairs are the ones in [incident.md](incident.md) |
 | 2 | Layer 6 below frozen thresholds, leak count 0, plus both score directions on the incident scripts |
 | 3–5 | Layer 5 fixtures updated to live engine dumps; layer 1 still green |
 | 6 | Layer 7 |

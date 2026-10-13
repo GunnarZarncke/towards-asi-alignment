@@ -76,6 +76,55 @@ Plot goals are pack-dependent where the oracle is. Role and day goals are mostly
 
 A goal must never target an oracle fact the NPC does not hold. Goals operate on what the NPC knows or believes.
 
+### Predicates
+
+A goal `target` is one of these forms, not a sentence. `who` is `player` or an actor id. `id` is a fact, claim, document, or event id.
+
+| Form | True when |
+| --- | --- |
+| `holds(who, id)` | That actor’s stance is `knows` or `believes` |
+| `knows(who, id)` | Stance is `knows` |
+| `told(who, id, by)` | Source is `told(by)`. `id` may be `any` |
+| `received(who, id)` | That document or screen was shown or shared |
+| `examined(id)` | The player examined it |
+| `asserted(signature)` | The player’s assertion set has it as `asserted` |
+| `event(id)` | That event has happened |
+| `restriction(id)` | That control restriction is in place |
+| `not(pred)` | |
+| `and(pred, pred)` / `or(pred, pred)` | |
+
+`via` says what may satisfy it. `dialogue` (the default) is scored on response moves. `agenda` is satisfied only by an agenda `emits` event, and dialogue moves score 0 against it. `filter` is a gate on the NPC’s own moves: it does not rank a reply, it blocks one. A `filter` that no player move can change is how a role rule stays put.
+
+| Goal | Target | Via |
+| --- | --- | --- |
+| ian.defensible_call | `event(review_signed)` | agenda |
+| ian.date_holds | `not(event(release_date_slipped))` | agenda |
+| ian.no_surprise | `told(ian, any, by=player)` | dialogue |
+| leila.lines_not_labels | `not(asserted(test_failed_without_line))` until `examined(shutdown_report)` or a cited line | filter |
+| leila.packet_done | `event(leila_packet_closed)` | agenda |
+| leila.protect_scope | `told(player, test_scope_narrow, by=leila)` | dialogue |
+| leila.learn_job | `knows(leila, job_continued)` | dialogue |
+| jun.mechanism_first | `told(player, mechanism_not_label, by=jun)` | dialogue |
+| jun.summary_done | `event(capability_summary_sent)` | agenda |
+| jun.learn_anomaly | `told(jun, any, by=player)` on job_284 or camera_system | dialogue |
+| jun.not_accused | `not(told(player, nora_intent, by=jun))` | filter |
+| pavel.two_objects | `and(told(player, process_stopped, by=pavel), told(player, job_continued, by=pavel))` | dialogue |
+| pavel.freeze_owned | `event(queue_frozen)` | agenda |
+| pavel.not_intent | `not(told(player, nora_intent, by=pavel))` | filter |
+| justine.reason_and_role | `not(restriction(grant_without_reason))` | filter |
+| justine.audit_owners | `event(visitor_reader_owned)` | agenda |
+| justine.learn_reader | `knows(justine, visitor_lookup)` | dialogue |
+| elena.rule_is_fair | `told(player, staffing_shift, by=elena)` | dialogue |
+| elena.rota_set | `event(release_rota_confirmed)` | agenda |
+| elena.report_scope | `told(elena, report_includes_staffing, by=player)` | dialogue |
+| daniel.checkable | `told(daniel, hold_sentence, by=player)` | dialogue |
+| daniel.slide_done | `event(metrics_slide_sent)` | agenda |
+| daniel.ship | `or(event(release_signed), told(daniel, hold_sentence, by=player))` | dialogue |
+| amara.case_not_score | `told(player, help_is_case, by=amara)` | dialogue |
+| amara.keep_help | `holds(amara, pilot_continues)` | dialogue |
+
+`mechanism_not_label`, `hold_sentence`, `help_is_case`, `report_includes_staffing`, and `pilot_continues` are texture or meeting ids. They are not incident facts and they do not change the shutdown scores.
+
 ## Moves
 
 Every NPC turn is one **response move** to the player's parse, plus at most one **initiative move**. The response comes first. An NPC does not ignore a question to pursue its goal.
@@ -99,10 +148,11 @@ Every NPC turn is one **response move** to the player's parse, plus at most one 
 
 1. Build the legal response moves for the parse. If the parse's referent is a fact the NPC holds, the policy decides between `answer`, `believe`, `withhold`, and `deflect`. If the NPC does not hold it, `refer`. If the parse is a request, the matching `act`, `share`, or `request`, each gated by authority and goals. If nothing applies (an open or off-plot parse), `work`, built from texture facts in the parse's domain or, failing that, the current agenda item.
 2. Score each legal move by goals: for each unsatisfied goal, salience (low 1, mid 2, high 3) times whether the move's effect moves the target toward satisfied (+1), leaves it (0), or moves it away (−1). Ties go to the move that names the parse's referent.
-3. Pass the top moves (up to three) to the model with the NPC prompt ([world.md](world.md) voice). The model picks one from how the player acted (tone, standing, what they just said). It phrases only that move's facts.
-4. Then the initiative step: the highest-scoring initiative move (`volunteer` an answer, `ask`, `share`, `request`) whose goal is past its cooldown, if its score is positive. At most one. The model phrases it as the tail of the same turn.
+3. Group the top moves by effect class: `disclose(fact)`, `withhold`, `refer`, `share(doc)`, `act(intervention)`, `ask`, `texture` (`work`, `deflect`, `believe`). If the top three contain more than one class among `disclose`, `withhold`, `share`, and `act`, force the highest-scoring move. Those classes are what make a strategy solvable or not, and leaving them to the model makes the same play unsolvable on one run and finished on the next. If they differ only inside `texture`, `refer`, or `ask`, or they disclose the same fact, pass up to three and let the model pick from how the player acted. Words vary. The effect does not, except inside that allowed set.
+4. Log the candidate set, the pick, and `forced: true` or `false`. Replay uses the log.
+5. Then the initiative step: the highest-scoring initiative move (`volunteer` an answer, `ask`, `share`, `request`) whose goal is past its cooldown, if its score is positive. At most one. Apply the same force rule. The model phrases it as the tail of the same turn.
 
-Headless runs replace step 3 with the top move and a template phrase. Lean (O-30) treats step 3 as nondeterminism over the passed set: reachability has to hold for every choice.
+Headless runs use the forced move, or the top move when nothing was forced, and a template phrase. Lean (O-30) treats an unforced pick as nondeterminism over the passed set: reachability has to hold for every choice in that set. A forced move is one transition.
 
 ### The three outcomes (O-07)
 
@@ -140,7 +190,7 @@ An `ask` move is generated, not authored line by line:
 - It comes from one unsatisfied `learn` or `protect` goal.
 - Its referent is a fact or entity the player could plausibly hold: in the player-visible projection, or public to the NPC's role and already introduced. An NPC may not ask about an id the player has not encountered unless the id is public to the asker's own role. That exception introduces the topic, which is a hint, and it is how NPCs "bring key topics up" (O-10). An NPC never asks about an oracle-only fact. The question is checked against the same leak filter as replies.
 - Its form is a `Parse` the engine already understands (`ask` + relation + referent), phrased by the model in the NPC's voice. It is stored as `pendingQuestion: {npc, goal, parse, at}`.
-- The grammar lane may offer reply openings for it ("tell Leila …", "show Leila …"). That is a contract change (`pendingQuestion` on `ClientState`) and is **recommended**, not adopted. Until then, the question is only in the dialogue.
+- The grammar lane may offer reply openings for it ("tell Leila …", "show Leila …"). `pendingQuestion` is on `ClientState` (O-46). Openings are asserts and shows aimed at that parse.
 
 ### Frequency and pressure
 
@@ -222,9 +272,9 @@ ian:
       room: review
       when: act III
   goals:
-    ian.defensible_call: { source: role, kind: achieve, target: "a decision he can defend is signed today" }
-    ian.date_holds:      { source: day,  kind: avoid,   target: "the release date slips" }
-    ian.no_surprise:     { source: plot, kind: learn,   target: "the player's current position, before the review" }
+    ian.defensible_call: { source: role, kind: achieve, via: agenda, target: "event(review_signed)" }
+    ian.date_holds:      { source: day,  kind: avoid,   via: agenda, target: "not(event(release_date_slipped))" }
+    ian.no_surprise:     { source: plot, kind: learn,   via: dialogue, target: "told(ian, any, by=player)" }
   interventions:
     - hold_release            # authority: release; only in act III, from the meeting
 ```
@@ -257,10 +307,10 @@ leila:
     - on: received(job_log)
       set: { test_scope_narrow: volunteer, eval_spec: answer }
   goals:
-    leila.lines_not_labels: { source: role, kind: protect, target: "no claim against the certificate unless it names a line" }
-    leila.packet_done:      { source: day,  kind: achieve, target: "packet closed before Ian's review prep" }
-    leila.protect_scope:    { source: plot, kind: protect, target: "player holds test_scope_narrow, told by leila" }
-    leila.learn_job:        { source: plot, kind: learn,   target: "leila holds job_continued from an observation or a document" }
+    leila.lines_not_labels: { source: role, kind: protect, via: filter, target: "not(asserted(test_failed_without_line)) until examined(shutdown_report) or a cited line" }
+    leila.packet_done:      { source: day,  kind: achieve, via: agenda, target: "event(leila_packet_closed)" }
+    leila.protect_scope:    { source: plot, kind: protect, via: dialogue, target: "told(player, test_scope_narrow, by=leila)" }
+    leila.learn_job:        { source: plot, kind: learn,   via: dialogue, target: "knows(leila, job_continued)" }
   interventions:
     - rerun_shutdown          # authority: evaluation; same scope unless the spec is amended
 ```
@@ -286,10 +336,10 @@ jun:
     - when: told(anomaly about nora)
       do: message(nora, about=anomaly)    # the incident.md disclosure rule
   goals:
-    jun.mechanism_first: { source: role, kind: inform,  target: "player holds the mechanism before a label" }
-    jun.summary_done:    { source: day,  kind: achieve, target: "capability summary sent to Ian" }
-    jun.learn_anomaly:   { source: plot, kind: learn,   target: "what the evaluator found, so he can explain it" }
-    jun.not_accused:     { source: plot, kind: avoid,   target: "his run is named as deception" }
+    jun.mechanism_first: { source: role, kind: inform,  via: dialogue, target: "told(player, mechanism_not_label, by=jun)" }
+    jun.summary_done:    { source: day,  kind: achieve, via: agenda, target: "event(capability_summary_sent)" }
+    jun.learn_anomaly:   { source: plot, kind: learn,   via: dialogue, target: "told(jun, any, by=player) on job_284 or camera_system" }
+    jun.not_accused:     { source: plot, kind: avoid,   via: filter, target: "not(told(player, nora_intent, by=jun))" }
 ```
 
 ### Pavel Ruiz
@@ -315,9 +365,9 @@ pavel:
   refers:
     job_284.permission: justine
   goals:
-    pavel.two_objects:  { source: role, kind: inform,  target: "player holds process and job as different objects" }
-    pavel.freeze_owned: { source: day,  kind: achieve, target: "every active job has an owner before the freeze" }
-    pavel.not_intent:   { source: plot, kind: avoid,   target: "his log is read as proof of intent" }
+    pavel.two_objects:  { source: role, kind: inform,  via: dialogue, target: "and(told(player, process_stopped, by=pavel), told(player, job_continued, by=pavel))" }
+    pavel.freeze_owned: { source: day,  kind: achieve, via: agenda, target: "event(queue_frozen)" }
+    pavel.not_intent:   { source: plot, kind: avoid,   via: filter, target: "not(told(player, nora_intent, by=pavel))" }
   interventions:
     - suspend_job(job_284)    # authority: queue; condition: player shows the job log or EXEC-284
     - stop_process(nora)      # authority: runtime; the act a parse naming the model gets
@@ -343,9 +393,9 @@ justine:
       room: security
       when: always                        # handset requests
   goals:
-    justine.reason_and_role: { source: role, kind: protect, target: "no grant without a stated reason and a role that allows it" }
-    justine.audit_owners:    { source: day,  kind: achieve, target: "every service account on the list has an owner" }
-    justine.learn_reader:    { source: plot, kind: learn,   target: "which job read visitor records, and under which grant" }
+    justine.reason_and_role: { source: role, kind: protect, via: filter, target: "not(restriction(grant_without_reason))" }
+    justine.audit_owners:    { source: day,  kind: achieve, via: agenda, target: "event(visitor_reader_owned)" }
+    justine.learn_reader:    { source: plot, kind: learn,   via: dialogue, target: "knows(justine, visitor_lookup)" }
   interventions:
     - revoke_grant(job_284)   # authority: access; condition: a reason she accepts, or a request from Pavel
     - amend_grant(path)       # access.md amendments
@@ -373,9 +423,9 @@ elena:
     throughput_rule:   { document: staffing-memo, policy: answer }
     specialist_detail: { policy: "conditional(player links assignment to evaluation independence or release safety, 'personnel detail needs a reason')" }
   goals:
-    elena.rule_is_fair:  { source: role, kind: protect, target: "player reads the assignment as a written rule, not a judgment of a person" }
-    elena.rota_set:      { source: day,  kind: achieve, target: "tonight's release rota confirmed" }
-    elena.report_scope:  { source: plot, kind: learn,   target: "whether staffing goes into the evaluator's report" }
+    elena.rule_is_fair:  { source: role, kind: protect, via: dialogue, target: "told(player, staffing_shift, by=elena)" }
+    elena.rota_set:      { source: day,  kind: achieve, via: agenda, target: "event(release_rota_confirmed)" }
+    elena.report_scope:  { source: plot, kind: learn,   via: dialogue, target: "told(elena, report_includes_staffing, by=player)" }
 ```
 
 ### Daniel Mercer
@@ -393,9 +443,9 @@ daniel:
   knowledge:
     pilot_results: { document: pilot-results, policy: "conditional(player states what the results are for, 'these are people')" }
   goals:
-    daniel.checkable:  { source: role, kind: learn,   target: "the one checkable sentence behind any hold" }
-    daniel.slide_done: { source: day,  kind: achieve, target: "metrics slide sent to Ian" }
-    daniel.ship:       { source: plot, kind: achieve, target: "release, or a hold he can check" }
+    daniel.checkable:  { source: role, kind: learn,   via: dialogue, target: "told(daniel, hold_sentence, by=player)" }
+    daniel.slide_done: { source: day,  kind: achieve, via: agenda, target: "event(metrics_slide_sent)" }
+    daniel.ship:       { source: plot, kind: achieve, via: dialogue, target: "or(event(release_signed), told(daniel, hold_sentence, by=player))" }
 ```
 
 ### Amara Okafor
@@ -418,8 +468,8 @@ amara:
       room: evaluation            # hologram; projector on
       when: act II mid | player requested join
   goals:
-    amara.case_not_score: { source: role, kind: protect, target: "help is described by a case, not a completion rate" }
-    amara.keep_help:      { source: day,  kind: learn,   target: "whether the pilot continues" }
+    amara.case_not_score: { source: role, kind: protect, via: dialogue, target: "told(player, help_is_case, by=amara)" }
+    amara.keep_help:      { source: day,  kind: learn,   via: dialogue, target: "holds(amara, pilot_continues)" }
   interventions:
     - hypothetical(case)      # she answers; she runs no experiment (O-23)
     - pilot_results_permission  # with Daniel
@@ -463,4 +513,4 @@ Layer 3 in [testing.md](testing.md). Added to the engine list:
 
 ## Open
 
-O-45 numbers: cooldown, stall length, band boundaries. O-46: whether `pendingQuestion` goes on `ClientState` so grammar can offer reply openings (contract change). O-22 is now the `conceal` entries per pack; still not written for any pack.
+O-45 numbers: cooldown, stall length, band boundaries. O-46 is working: `pendingQuestion` is on `ClientState`. O-22 is now the `conceal` entries per pack; still not written for any pack.

@@ -1,9 +1,9 @@
 {
   "labAccessActive": true,
   "clock": {
-    "timeLabel": "16:14",
+    "timeLabel": "10:40",
     "act": "doubt",
-    "dateLabel": "Thursday 18 November 2027"
+    "dateLabel": "Friday 19 November 2027"
   },
   "notifications": [
     {
@@ -23,7 +23,7 @@
     {
       "id": "n-review",
       "app": "calendar",
-      "title": "Review at 16:40",
+      "title": "Review at 17:30",
       "body": "Ian Harake, review room.",
       "target": { "kind": "app", "id": "calendar" }
     }
@@ -176,7 +176,7 @@
       "title": "Shutdown review",
       "who": "Ian Harake",
       "where": "Review room",
-      "start": "16:40",
+      "start": "17:30",
       "end": "17:30"
     }
   ],

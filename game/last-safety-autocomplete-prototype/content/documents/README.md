@@ -29,7 +29,7 @@ HTML comments in the source are stripped or resolved at render time. They are no
 | --- | --- |
 | Leading `<!-- Authoring … -->` block | Removed entirely |
 | `<!-- include after-PACK --> … <!-- /include -->` | Body kept only if the loaded pack is **strictly later** than `PACK` |
-| `<!-- infer PACK[,…] --> … <!-- /infer -->` | Body always kept; tags removed |
+| `<!-- infer PACK[,…] --> … <!-- /infer -->` | Body always kept; tags removed. The pack list names which packs may use the sentence as a premise for a think mark. It does not hide the sentence |
 | `<!-- llm-fill: name --> … <!-- /llm-fill -->` | Frame kept until the engine replaces from the event log |
 | `<!-- exec-never: … -->` | Removed |
 
