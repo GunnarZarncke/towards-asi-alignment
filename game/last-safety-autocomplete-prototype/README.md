@@ -25,6 +25,8 @@ Open **http://127.0.0.1:3000** in a browser. The API key stays on the local Node
 npm test
 ```
 
+What that covers, and the other layers: [`spec/testing.md`](spec/testing.md).
+
 ## Try these interactions
 
 1. **Zero typing.** In Platform Operations, click **Can** → **NORA** → **access** → **the camera system** → **?**, then **Send**. Watch the right-hand structured parse; no parsing API calls are made for selected completions.

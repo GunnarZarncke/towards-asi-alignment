@@ -69,6 +69,7 @@ test('glossary consolidates lab access and job queue', () => {
   assert.match(text, /Lab Access/);
   assert.match(text, /Job queue/);
   assert.match(text, /EVAL-SD-47/);
+  assert.match(text, /Virtual projector/);
 });
 
 test('renderDocumentSource handles inline include fragments', () => {

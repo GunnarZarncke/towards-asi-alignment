@@ -1,6 +1,6 @@
 # Contract
 
-Status: matches the running prototype, except the ranking fields in `ClientState`, which arrive with the O-19 ranker ([ranking.md](ranking.md)). Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
+Status: matches the running prototype, except the ranking fields in `ClientState` (O-19 ranker) and actor `presence` (Amara hologram; [world.md](world.md)). Composition owns this file. A lane that needs a new field proposes it here and updates every consumer in the same change.
 
 The browser never receives the API key, oracle-only facts, or unfiltered NPC knowledge.
 
@@ -21,7 +21,8 @@ Returned by the engine on every API response as `state`. The UI renders this and
 
 ```text
 room
-actors: id → { name, role, room, initials }
+actors: id → { name, role, room, initials, presence? }
+  presence: "body" | "hologram" | "absent"   // omit or "body" for everyone in the building; Amara is hologram or absent
 entities: id → public entity record (only ids in player knowledge)
   domains: DomainId[]          // ranking; empty on actor records
   eventAt: number | null       // minute of day, only after the player has read that time
@@ -89,7 +90,7 @@ notifications: { id, app, title, body, target }[]
 files: { name, rel, owned, sharedBy, kind, text?, bytes?, sharedWith?, documentSlug? }[]
 threads: { with, messages: { from, text, parse, released }[], suggestions?: { phrase, parse }[], omit?: { phrase, parse }[] }[]
 appointments: { id, title, who, where, start, end }[]   // read-only
-contacts: { id, name, role, room? }[]                   // player-visible people + nora
+contacts: { id, name, role, room?, joinable? }[]         // engine-added people + nora; joinable = ask to project (Amara)
 lastAccess: { capability, ok, reason } | null
 settings?: { completions, sound, reduceMotion, largerType, alwaysShowPhone, demoMode, parserInspector }
 open?: { app, path? }

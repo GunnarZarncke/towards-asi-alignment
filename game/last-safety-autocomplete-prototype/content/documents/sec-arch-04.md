@@ -186,6 +186,7 @@ The following tables summarize why these assets are protected and how access is 
 | Employee workstations | Prevent unauthorized use and information exposure | Individual login, device management and screen locking |
 | Model Studio | Protect model development and research information | Staff access and authenticated workstations |
 | Evaluation Suite | Preserve confidentiality and independence of testing | Evaluation-specific accounts and permissions |
+| Virtual projector (Evaluation Suite) | Visitor presence in that room without a door grant | Projector on only for a scheduled session or an invited join; figure cannot leave the room |
 | Controlled Test Bay | Prevent unauthorized experiments or operation of connected equipment | Restricted entry and explicit test authorization |
 | Platform Operations | Protect runtime and deployment infrastructure | Restricted administrative access |
 | Security Control | Protect security records and access administration | Security-specific authorization |

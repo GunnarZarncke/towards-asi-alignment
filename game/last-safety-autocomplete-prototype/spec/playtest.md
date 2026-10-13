@@ -1,6 +1,6 @@
 # Headless playtest
 
-Lane: playtest. Code target: `scripts/playtest.mjs`, `playtest/personas/*.md`, run output under `playtest/runs/` (gitignored). None of it exists yet. Engine behavior under test is [engine.md](engine.md) and [npcs.md](npcs.md).
+Lane: playtest. Code target: `scripts/playtest.mjs`, `playtest/personas/*.md`, run output under `playtest/runs/` (gitignored). None of it exists yet. Engine behavior under test is [engine.md](engine.md) and [npcs.md](npcs.md). This file is layer 6 of [testing.md](testing.md). Scripted incident strategies are layer 4, not this lane.
 
 Status: **working** (13 October 2026). Not a quality claim about the game. It measures whether the NPC model in [npcs.md](npcs.md) leaves players stuck, leaks, or collapses strategies.
 

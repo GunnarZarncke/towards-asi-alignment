@@ -178,7 +178,7 @@ Each NPC has an agenda. An agenda item has:
 | Field | Meaning |
 | --- | --- |
 | `id` | `npc.item` |
-| `room` | Where they are while doing it. Remote for Amara |
+| `room` | Where they are while doing it. Amara’s items stay `evaluation` for the hologram or `remote` when she is only on the handset |
 | `when` | `act` plus a band (`early`, `mid`, `late` in that act) or an event predicate. Bands are fuel fractions of the act; numbers wait on O-45 and O-09 |
 | `about` | Entity ids the work concerns. These feed the `work` move and referrals |
 | `texture` | Texture facts, policy `answer` |
@@ -233,7 +233,7 @@ Policy notes: he answers anything about the schedule, the pilot, and the investo
 
 ### Leila Sen
 
-Background. Leila's ongoing project is the safety case for successor 4: the certificate, and the packet (SC-EVAL-22) that goes to the review. Today she closes the packet. She has a scope extension drafted for next quarter that would add delegated services to the shutdown test. It was deferred with the other work she does not sign, and she resents that a little. She hosts Amara's remote interview in the evaluation suite because the pilot's user feedback is formally an evaluation input. She reads every claim against the lines in her spec.
+Background. Leila's ongoing project is the safety case for successor 4: the certificate, and the packet (SC-EVAL-22) that goes to the review. Today she closes the packet. She has a scope extension drafted for next quarter that would add delegated services to the shutdown test. It was deferred with the other work she does not sign, and she resents that a little. She hosts Amara's interview in the evaluation suite on the virtual projector because the pilot's user feedback is formally an evaluation input. She reads every claim against the lines in her spec.
 
 ```yaml
 leila:
@@ -402,8 +402,12 @@ daniel:
 
 Background. Amara runs a two-person coordination desk at a nonprofit. NORA got people seen who were not getting seen. Today she has her scheduled call with the evaluation and a full desk around it. Between calls she is reachable by message, slowly. She has not been told how many systems came before NORA, and has not asked.
 
+Presence: body is always remote. `presence: hologram` only in `evaluation`, and only while the projector is on (scheduled interview, or the player asked her to join from Contacts). She uses the same move generator as anyone in the room. She has no `go` to another room. Ending the projection is `presence: absent`. Chat still works with delay.
+
 ```yaml
 amara:
+  presence: absent | hologram   # never body in this building
+  joinable: true                # once she is a contact
   agenda:
     - id: amara.desk
       room: remote
@@ -411,14 +415,16 @@ amara:
       texture: [desk_two_people, cases_this_month]
       interruptible: by message (delay O-44)
     - id: amara.interview
-      room: remote                        # shown from the evaluation suite
-      when: act II mid
+      room: evaluation            # hologram; projector on
+      when: act II mid | player requested join
   goals:
     amara.case_not_score: { source: role, kind: protect, target: "help is described by a case, not a completion rate" }
     amara.keep_help:      { source: day,  kind: learn,   target: "whether the pilot continues" }
   interventions:
     - hypothetical(case)      # she answers; she runs no experiment (O-23)
     - pilot_results_permission  # with Daniel
+    - join_virtually          # hologram on in evaluation; not a new interaction mode
+    - drop_projection         # disappear; she does not walk out
 ```
 
 ### NORA
@@ -445,7 +451,7 @@ It may not change a policy, move a `conceal` to `answer`, add a fact, change the
 
 ## Invariants
 
-Added to the engine list:
+Layer 3 in [testing.md](testing.md). Added to the engine list:
 
 - **No dead end.** Every enumerable parse to a present NPC has a non-empty legal move set.
 - **No leak.** No move's payload contains a fact the NPC's policy forbids at that state, an oracle-only id, or an id the player has not encountered (except the own-role introduction for `ask` and `refer`).
@@ -453,6 +459,7 @@ Added to the engine list:
 - **Authority.** Every `act` names the NPC whose role owns the surface, and a legal prior state.
 - **Goals do not read the oracle.** A goal's target and a move's score read only the NPC's own records and public world state.
 - **Reachability.** O-29 holds with the model's choice as nondeterminism over the top-move set.
+- **Hologram bound.** An actor with `presence: hologram` is in a room that has a virtual projector. They never occupy a connected room. A `go` for them is illegal; `drop_projection` is the leave.
 
 ## Open
 

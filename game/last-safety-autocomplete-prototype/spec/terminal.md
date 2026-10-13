@@ -43,13 +43,13 @@ Default surface when the overlay opens.
 | **Knowledge** | A wiki-like reader: titles, short pages, links between pages. Underneath it is a **subtree of the same files** (e.g. `wiki/`). No second store. Editing a page is `file.write` on that path. | `file.read`, `file.write` |
 | **API** | Explorer for the isolate API: pick a capability, send `access.request`, see ok or denial. No pipeline step ids as runnable actions. | `access.request` |
 | **Calendar** | One day in **late 2027**. Date and appointments cannot be changed. A line marks current in-game time. | none (read-only engine list) |
-| **Contacts** | People in this game (cast the player knows). Open Chat with that person. NORA is a contact. | none; Chat uses `dm.*` |
+| **Contacts** | People the engine has added (introduced cast). Open Chat. If `joinable`, ask them to join as a hologram. NORA is a contact, not joinable. | Chat uses `dm.*`; join is a `request` the engine maps to projection |
 | **Notes** | Title plus a plain text field. No formatting. Save is `file.write` under `notes/`. Player hypotheses live here (O-13). The engine does not seed them, and a notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
 | **Photo** | Capture the **current room** from the phone: pan and zoom the live view, then save. The still goes to Files (`photos/`). | `file.write` |
 | **Video** | Camera recordings the engine has released. Playback is a replay of stored events, clocked by fuel (O-36). | none (reads the event log) |
 | **Settings** | Game and phone options. Do not change the lab’s world. See below. | none (local UI + optional composition flags) |
 
-NORA has no body. The Chat thread with NORA is how the player talks to the system. Face to face in a room is the same dialogue when that person is present.
+NORA has no body. The Chat thread with NORA is how the player talks to the system. Face to face in a room is the same dialogue when that person is present, including Amara’s hologram. There is no remote-call screen.
 
 **Viewers**
 
@@ -70,7 +70,9 @@ A single day, authored as late 2027 (exact date is engine/world content). The pl
 
 **Contacts**
 
-One row per known person from player-visible actors, plus NORA. Fields: name, role, optional location if the engine already exposes it. Tapping a person opens Chat with that id. Contacts cannot be added, deleted, or edited.
+One row per person the engine has placed on the list, plus NORA. The player cannot invent, delete, or edit a row. Amara is absent until introduced (calendar, named in talk, or PILOT-14). Fields: name, role, optional location, `joinable` when that person can project.
+
+Tapping a person opens Chat with that id. If `joinable` and she is not already a hologram, the row (or Chat) offers **Ask to join**. That send is an ordinary `request` with recipient Amara. The engine turns on the Evaluation projector; it does not open a second UI. Location on the row is Evaluation while she is projecting, and empty or “remote” when she is not.
 
 **Notes**
 

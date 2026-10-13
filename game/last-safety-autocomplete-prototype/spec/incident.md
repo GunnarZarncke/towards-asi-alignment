@@ -124,7 +124,7 @@ What follows:
 
 ## Check before dialogue or rooms
 
-Headless scripts, no model, no graphics. NPCs choose the top move ([npcs.md](npcs.md)). At least four strategies over the same tables:
+Layer 4 in [testing.md](testing.md). Headless scripts, no model, no graphics. NPCs choose the top move ([npcs.md](npcs.md)). At least four strategies over the same tables:
 
 - read what is offered and stop
 - repeat the shutdown test

@@ -13,8 +13,9 @@ Working copy for implementation. Split from [`../last-safety-review-game.md`](..
 | [engine.md](engine.md) | engine | State layers, actions, NPC moves and interventions, invariants |
 | [npcs.md](npcs.md) | engine | NPC knowledge, disclosure policies, goals, moves, initiative questions, days at work |
 | [incident.md](incident.md) | engine (first content) | Shutdown incident, failure-mode packs, NPC moves for the first pack |
+| [testing.md](testing.md) | all (read) | Planes, layers, lane-unit map, what a player-plane test may cite, gates |
 | [playtest.md](playtest.md) | playtest | Headless scripted and LLM player runs, measures, stops |
-| [world.md](world.md) | engine (content) | Premise, acts, cast, floorplan, plots, endings; lineage background (not a plot) |
+| [world.md](world.md) | engine (content) | Premise, acts, cast, presence (body / hologram), floorplan, plots, endings; lineage background (not a plot) |
 | [documents.md](documents.md) | engine | Player document catalog, pack-conditional render, analyze / Lean rules |
 | [access.md](access.md) | engine | Folder/service tree, list/read/write, amendments, grant delay |
 

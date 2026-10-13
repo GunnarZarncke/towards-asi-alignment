@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-13 | **Last Safety Amara hologram** — Room projector presence; no remote-call UI; contacts then join. | [2026-10-13-last-safety-amara-hologram.md](2026-10-13-last-safety-amara-hologram.md) |
+| 2026-10-13 | **Last Safety testing spec** — Planes, layers, lane-unit map, player- vs engine-plane assertions. | [2026-10-13-last-safety-testing-spec.md](2026-10-13-last-safety-testing-spec.md) |
 | 2026-10-13 | **Last Safety player docs prose and IDs** — Glossary wiki, ELI15 lines, three-digit document/job IDs, dated times. | [2026-10-13-player-docs-prose-ids.md](2026-10-13-player-docs-prose-ids.md) |
 | 2026-10-13 | **Last Safety goal-driven NPCs** — Storylets retired: NPC knowledge, policies, goals, days at work, initiative questions; headless LLM playtest spec. | [2026-10-13-last-safety-goal-driven-npcs.md](2026-10-13-last-safety-goal-driven-npcs.md) |
 | 2026-10-12 | **UAD salon on the about page** — Add the UAD talk to the publications list on the about page. | [2026-10-12-uad-salon-about.md](2026-10-12-uad-salon-about.md) |

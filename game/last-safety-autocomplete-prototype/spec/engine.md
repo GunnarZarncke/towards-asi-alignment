@@ -23,7 +23,7 @@ Minimum, whether or not the prototype stores them all yet:
 | Object | Fields |
 | --- | --- |
 | World | Act, event history, deployment state, jobs, access, simulated AI state |
-| Actor | Position, activity, role, permissions |
+| Actor | Position, activity, role, permissions, presence (`body` / `hologram` / `absent`) |
 | NPC | Belief records, policies, goals with salience, agenda item, pending question. No trust or status number (O-21) |
 | Evidence | Id, source, content, provenance, observations, claims, access |
 | Player | Examined, heard, hypotheses, presented, requested |
@@ -104,7 +104,7 @@ Forbidden: new oracle events, secret disclosures, access, deployment changes, en
 
 ## Invariants to test
 
-Aim of `tests/engine*.mjs`, headless, no browser and no model:
+Layers 2–4 in [testing.md](testing.md). Aim of `tests/engine*.mjs`, headless, no browser and no model:
 
 - Every reachable test state can still reach some ending, once endings exist. A single “give up” action does not count as the only path.
 - A claim is not substantiated unless its evidence predicate holds.
@@ -112,6 +112,7 @@ Aim of `tests/engine*.mjs`, headless, no browser and no model:
 - An access grant names an authority and a legal prior state.
 - Events that share a timeline agree on time, place, and participants.
 - An NPC’s displayed room is their simulated room, except inside a recording of an earlier time.
+- A hologram is only in a room that has a virtual projector. That actor has no legal `go`. They leave by `drop_projection`. They are an addressee in that room while `presence` is `hologram`.
 - Player-facing payloads contain only permitted observations, talk, and exposed evidence.
 - The NPC invariants in [npcs.md](npcs.md): no dead end, no leak, response first, authority, goals do not read the oracle.
 
@@ -157,4 +158,4 @@ Follow the plane split in [meta.md](meta.md). Do not import `experiments/lab-sim
 
 ## Solo check
 
-`npm run test:engine` runs scripted sessions: move, inspect, show, ask, reset. Assert state and errors. No screenshot and no API key. Gate 1 adds a script that reaches a review by two routes and a script that ends inconclusive without getting stuck, plus the enumerated no-dead-end and no-leak checks from [npcs.md](npcs.md). LLM player agents are [playtest.md](playtest.md).
+`npm run test:engine` runs scripted sessions: move, inspect, show, ask, reset. Assert state and errors. No screenshot and no API key. Gate 1 adds a script that reaches a review by two routes and a script that ends inconclusive without getting stuck, plus the enumerated no-dead-end and no-leak checks from [npcs.md](npcs.md). LLM player agents are [playtest.md](playtest.md). Player-plane vs engine-plane assertions: [testing.md](testing.md).

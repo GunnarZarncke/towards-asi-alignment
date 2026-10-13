@@ -63,7 +63,7 @@ Each document is registered in `DOCUMENTS` in `lib/documents.mjs`:
 | `safety-case-excerpt` | SC-EVAL-22 | Leila, Act III packet or request | Not a full case |
 | `pilot-results` | PILOT-14 | Request; Daniel/Amara may refuse | O-23 |
 | `meeting-summary` | MTG-REV-18 | Frame always; bullets LLM from meeting log | Not a certificate |
-| `wiki-glossary` | — | Visit share after handset activation | Knowledge |
+| `wiki-glossary` | — | Visit share after handset activation | Knowledge; includes virtual projector |
 | `wiki-shutdown-test` | — | `wiki/` list then read | Short page |
 
 No camera archive. Inspect of a room screen ≠ file grant.

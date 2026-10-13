@@ -38,6 +38,10 @@ Organizational workflows (scheduling, matching, approved jobs) under separate se
 
 Leila’s packet of claims and cited tests for a named configuration. It is technical input to a release decision, not the decision itself. Current packet: SC-EVAL-22.
 
+## Virtual projector
+
+A room fixture in the Evaluation suite. It shows a visitor as a figure in that room (walk and talk like anyone present). The figure cannot leave through a door; the session ends by switching the projector off. It is not a phone video call. Visitor presence on the projector is not a door grant.
+
 ## Evaluation record
 
 The written log of what the shutdown test (or another evaluation procedure) actually observed. It is stored outside NORA’s ordinary write permissions.

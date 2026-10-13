@@ -14,6 +14,8 @@ Look: modern, architectural, moderately stylized, restrained color, readable on 
 
 NORA has no body, face, or robot shell. Presence is screens, jobs, transcripts, and camera overlays.
 
+Amara, when `presence` is `hologram`, uses the same procedural body and walk as staff. Draw her translucent, same silhouette, cooler tint — a 2027 visitor projector, not a science-fiction effect. She occupies Evaluation spots. Click-to-walk works inside that room. Door and exit hotspots do not path her. When `presence` is `absent`, draw no body. Evaluation has a **virtual projector** prop (`virtual_projector`). It is furniture, inspectable for the name; it is not a second conversation mode.
+
 ## Renderer (O-33 closed)
 
 Selected, and confirmed again the same day: stay with live Three.js. One fixed camera per room, weak perspective, act lighting as data (`public/render/lighting.mjs`), surveillance as a filter plus annotations on the same geometry and camera. Do not switch renderers.
@@ -62,7 +64,7 @@ Music waits until the story is set (O-37). Ship silence until then.
 
 ## Characters
 
-Current procedural bodies and their walk, idle, and stand are enough (O-34, O-35). More detail, if it is added, is for conversations: a closer view of the same body, not a new character style. Facial capture and lip sync stay out. The longer pose list (sit, nod, interrupt, status stance) waits with that conversation detail.
+Current procedural bodies and their walk, idle, and stand are enough (O-34, O-35). More detail, if it is added, is for conversations: a closer view of the same body, not a new character style. Facial capture and lip sync stay out. The longer pose list (sit, nod, interrupt, status stance) waits with that conversation detail. A hologram reuses that body with a material flag from `ClientState.actors[].presence`. Do not build a video-call overlay.
 
 Status may change posture and timing. It does not change the facts on screen.
 

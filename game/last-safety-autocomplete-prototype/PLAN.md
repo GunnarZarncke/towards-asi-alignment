@@ -15,7 +15,7 @@ Four lanes can proceed at the same time. Composition only wires them. Playtest o
 | Composition | [spec/contract.md](spec/contract.md) | `server.mjs`, `lib/llm.mjs` | `npm start` |
 | Playtest | [spec/playtest.md](spec/playtest.md) | future `scripts/playtest.mjs`, `playtest/personas/` | `npm run playtest` (target) |
 
-Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.md](spec/contract.md). World content is engine-owned; graphics reads it and does not edit it.
+Shared reading for every lane: [spec/meta.md](spec/meta.md), [spec/contract.md](spec/contract.md), and [spec/testing.md](spec/testing.md). World content is engine-owned; graphics reads it and does not edit it.
 
 ## Rules
 
@@ -33,6 +33,8 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md) and [spec/contract.m
 - Long shared lab documents are **sources** in [`content/documents/`](content/documents/README.md), registered in [`lib/documents.mjs`](lib/documents.mjs), specified in [`spec/documents.md`](spec/documents.md). Access tree in [`spec/access.md`](spec/access.md) / [`lib/access.mjs`](lib/access.mjs). Files are not autocomplete picks.
 
 ## How to test
+
+Map and concept: [spec/testing.md](spec/testing.md). In-fiction shutdown tests are O-16, not this table.
 
 | What | How | Needs |
 | --- | --- | --- |

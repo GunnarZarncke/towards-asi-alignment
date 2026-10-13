@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-13 (Last Safety player docs prose and IDs).
+Last updated: 2026-10-13 (Last Safety Amara hologram).
 
 ---
 
@@ -20,6 +20,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-13:** **Last Safety Amara hologram** — Evaluation projector; same NPC interaction; contacts then join. Log: `2026-10-13-last-safety-amara-hologram.md`.
+- **2026-10-13:** **Last Safety testing spec** — Planes and layers in `spec/testing.md`. Log: `2026-10-13-last-safety-testing-spec.md`.
 - **2026-10-13:** **Last Safety player docs** — General-audience rewrite; wiki glossary; three-digit IDs (`job_284`, EVAL-SD-47, SEC-ARCH-11, PILOT-14, …); date Thursday 18 November 2027. Log: `2026-10-13-player-docs-prose-ids.md`.
 - **2026-10-13:** **Last Safety goal-driven NPCs** — Storylets retired (O-06). NPCs have knowledge, disclosure policies, referral edges, goals over the knowledge graph, and a day of work; the engine generates moves and the model phrases one. NPCs ask the player questions from their own goals. Headless LLM playtest spec. New opens O-45–O-47. Specs: `spec/npcs.md`, `spec/playtest.md`. Log: `2026-10-13-last-safety-goal-driven-npcs.md`.
 - **2026-10-12:** **Last Safety SEC-ARCH-04 and Lab Access** — Policy source in `content/documents/` with pack-conditional render (`lib/documents.mjs`, `spec/documents.md`). Lab Access issued handset (no BYOD); overlay waits on `labAccessActive`. Logs: `2026-10-12-security-concept-pack-flags.md`, `2026-10-12-player-documents-content.md`.

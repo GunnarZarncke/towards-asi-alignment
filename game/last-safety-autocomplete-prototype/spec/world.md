@@ -94,7 +94,7 @@ The meeting itself follows evidence the player presented and conclusions they de
 
 ## Value interview (working)
 
-Amara uses NORA to coordinate help for vulnerable people. The scene is a conversation about that work (O-23). A first answer may be “help as many as possible, efficiently.” Further talk can surface timeliness, privacy, consent, autonomy, fairness, accuracy, correction, and particular circumstances — a simplified value bundle, not the book’s full geometry. A completed task can still violate a constraint (example: contacting an employer after being asked not to). She will answer a hypothetical about that case. She will not run an experiment. Pilot results are a file the player can request; permission can be refused.
+Amara uses NORA to coordinate help for vulnerable people. The scene is a conversation about that work (O-23). She is not in the building. When present in Evaluation she is a **hologram** from the suite’s virtual projector: same talk, walk, and select as anyone else in that room. She cannot take an exit. She only appears or disappears. There is no video-call or remote-interview UI. A first answer may be “help as many as possible, efficiently.” Further talk can surface timeliness, privacy, consent, autonomy, fairness, accuracy, correction, and particular circumstances — a simplified value bundle, not the book’s full geometry. A completed task can still violate a constraint (example: contacting an employer after being asked not to). She will answer a hypothetical about that case. She will not run an experiment. Pilot results are a file the player can request; permission can be refused.
 
 ## Cast (working)
 
@@ -109,7 +109,7 @@ Eight humans plus the player. The cast is fixed (O-17). NORA is addressed on the
 | justine | Justine Mwiti | Security and access | Security control | Cameras, permissions, provenance | MB1, MB4a, MB7 |
 | elena | Elena Fischer | People and coordination | People operations | Matching, staffing, promotion | MB6, MB4a |
 | daniel | Daniel Mercer | Product and release | Hub / review room | Metrics, release, commercial pressure | MB6, MB9, MB11 |
-| amara | Amara Okafor | External pilot user | Remote, from the evaluation suite | Value bundle, affected people | MB2, MB3, MB9 |
+| amara | Amara Okafor | External pilot user | Remote body; hologram in Evaluation when projecting | Value bundle, affected people | MB2, MB3, MB9 |
 
 Background notes for voice and status, not for hidden plot dumps. The longer form for Ian, the lab, and NORA is [Institution](#institution-background-not-a-plot).
 
@@ -178,7 +178,21 @@ Each prompt has two speech layers, plus the focus below, plus this audience line
 
 “Shutdown transcript. Evaluation folder. Job record, 16:09. Which one.”
 
-NPC state is [npcs.md](npcs.md): knowledge, disclosure policies, referral edges, goals, and a day of work. Location follows the agenda item, which advances on acts, fuel bands, and events, not on a wall clock. Amara is remote all day.
+NPC state is [npcs.md](npcs.md): knowledge, disclosure policies, referral edges, goals, and a day of work. Location follows the agenda item, which advances on acts, fuel bands, and events, not on a wall clock. Amara’s body is remote all day. Her hologram, when on, is only in Evaluation.
+
+## Presence (working)
+
+An actor in a room is either a **body** or a **hologram**. NORA is neither; she has no room occupant.
+
+| Kind | Who | Walk | Exits | Talk |
+| --- | --- | --- | --- | --- |
+| `body` | Staff in the building | Spots in their current room; they can `go` to a connected room | Yes | Face to face in that room |
+| `hologram` | Amara, while projecting | Spots in the projector’s room only | No. Pathing to a door is refused. She leaves by disappearing | Same composer and addressee list as a body in that room |
+| absent | Amara when not projecting; anyone not in a room | — | — | Handset Chat only, with the usual delay (O-44) |
+
+The Evaluation suite has a **virtual projector** (physical prop). It is the only projector in this build. A hologram cannot occupy a room that has no projector. Leila’s scheduled interview turns the projector on in Evaluation. The player can also ask Amara to join once she is a contact ([terminal.md](terminal.md)). Asking while the player is elsewhere still puts the hologram in Evaluation; the player walks there. If the player leaves, the hologram stays until she drops the projection. She does not follow.
+
+Contacts: Amara is not in the book at the start. The engine adds her when she is introduced (calendar row, Leila or Daniel names her, PILOT-14). The player cannot invent a contact. Once she is listed, Chat and “ask to join” are available. Dropping the projection is her move or the end of the interview item, not a door.
 
 ## Institution (background, not a plot)
 
@@ -237,7 +251,7 @@ Connections: along each row; down the west column and the east column; hub–com
 | commons | 01 Commons / entry | Ian, Lab Access handset, schedule |
 | hub | 02 Central hub | Task board, encounters |
 | studio | 03 Model studio | Jun, transcripts |
-| evaluation | 04 Evaluation suite | Safety case, Amara remote |
+| evaluation | 04 Evaluation suite | Safety case, virtual projector, Amara hologram |
 | testbay | 05 Controlled test bay | Shutdown tests, restricted gear |
 | platform | 06 Platform operations | Queue, tool logs, pipeline |
 | security | 07 Security control | Cameras, access log |
