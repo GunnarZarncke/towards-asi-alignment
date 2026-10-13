@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261013T011535.729Z",
+  "_as_of": "20261013T030138.871Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -313,7 +313,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#4": {
-    "agent": 48,
+    "agent": 84,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 4,
@@ -393,7 +393,7 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#5": {
-    "agent": 46,
+    "agent": 47,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 5,

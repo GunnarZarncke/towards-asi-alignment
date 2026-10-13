@@ -3,30 +3,39 @@ import MetaculusEmbed from "./MetaculusEmbed.astro";
 
 interface Props {
   shortTitle: string;
+  /** Metaculus iframe title when listed; defaults to shortTitle. */
+  embedTitle?: string;
   href: string;
   number?: number;
   listingStatus?: string;
   listingLabel?: string;
   embedId?: number;
   note?: string;
+  /** Rendered markdown (internal links); preferred over plain `note`. */
+  noteHtml?: string;
   badge?: "external" | "related";
   externalLink?: boolean;
   registryHref?: string;
   registryLabel?: string;
+  /** Shown inside the forecast slot when not yet listed on Metaculus. */
+  listingPreview?: string;
 }
 
 const {
   number,
   shortTitle,
+  embedTitle,
   href,
   listingStatus,
   listingLabel,
   embedId,
   note,
+  noteHtml,
   badge,
   externalLink = false,
   registryHref,
-  registryLabel
+  registryLabel,
+  listingPreview
 } = Astro.props;
 ---
 
@@ -48,21 +57,30 @@ const {
       )
     }
   </h3>
-  {note && <p class="market-panel-note">{note}</p>}
   {
-    registryHref && (
+    (noteHtml || note) && (
       <p class="market-panel-note">
-        <a href={registryHref} target="_blank" rel="noopener noreferrer">{registryLabel || "Claims registry"}</a>
-        {" "}— scored outcome, separate from listing status and the forecast below.
+        {noteHtml ? <span set:html={noteHtml} /> : note}
+        {
+          registryHref && (
+            <>
+              {" "}
+              <a class="market-panel-contract" href={registryHref} target="_blank" rel="noopener noreferrer">
+                {registryLabel || "Scored contract"}
+              </a>
+            </>
+          )
+        }
       </p>
     )
   }
   {
     embedId ? (
-      <MetaculusEmbed questionId={embedId} title={shortTitle} layout="panel" />
+      <MetaculusEmbed questionId={embedId} title={embedTitle || shortTitle} layout="panel" />
     ) : (
       <div class="forecast-slot" aria-hidden="true">
-        <p>Forecast appears here when this market is listed on Metaculus.</p>
+        {listingPreview && <p class="forecast-listing-preview">{listingPreview}</p>}
+        <p class="forecast-placeholder">Forecast appears here when this market is listed on Metaculus.</p>
       </div>
     )
   }
@@ -111,6 +129,16 @@ const {
     font-size: 0.92rem;
     line-height: 1.45;
     opacity: 0.88;
+  }
+
+  .market-panel-contract {
+    white-space: nowrap;
+  }
+
+  .market-panel-note :global(a) {
+    color: var(--color-link, #0b57d0);
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
   }
 
   .forecast-badge {
@@ -165,7 +193,16 @@ const {
     background: color-mix(in srgb, var(--color-surface) 92%, #e8eef4);
   }
 
-  .forecast-slot p {
+  .forecast-listing-preview {
+    margin: 0 0 0.65rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0.92;
+  }
+
+  .forecast-placeholder {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.4;

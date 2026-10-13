@@ -4,6 +4,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import PredictionsGaussIcon from "../../components/PredictionsGaussIcon.astro";
 import PredictionsGraphPlaceholder from "../../components/PredictionsGraphPlaceholder.astro";
 import PredictionMarketPanel from "../../components/PredictionMarketPanel.astro";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import predictions from "../../data/predictions.json";
 import { bookFullHref, cardHrefForCard } from "../../lib/site-urls";
 
@@ -74,6 +75,19 @@ const graph = predictions.graphPlaceholder ?? {
     "These contracts price operational milestones. An external Metaculus forecast prices institutional pause capacity. Neither is a safety-case probability, and their product is not a bound on catastrophe."
 };
 const aggregation = predictions.aggregation;
+const markdown = await createMarkdownProcessor();
+
+function prefixSiteRootLinks(html: string) {
+  return html.replace(/href="\/([^"]+)"/g, (_, path) => `href="${withBase(`/${path}`)}"`);
+}
+
+const panelNoteHtmlByNumber = new Map<number, string>();
+for (const market of predictions.markets ?? []) {
+  if (!market.panelSummary) continue;
+  const { code } = await markdown.render(market.panelSummary);
+  panelNoteHtmlByNumber.set(market.number, prefixSiteRootLinks(code));
+}
+
 const appendixFullHref = bookFullHref(base, "appP");
 const aggregationHref = aggregation?.appendixAnchor
   ? `${appendixFullHref}#${aggregation.appendixAnchor}`
@@ -116,7 +130,6 @@ const aggregationHref = aggregation?.appendixAnchor
         <p>{aggregation.blurb}</p>
         <p class="aggregation-note">
           <a href={aggregationHref}>Read the safety-case sections in Appendix H</a>
-          {" "}— {aggregation.hubNote || "three evidence levels, the F/R/U odds update, and why Market 14 is not an override probability."}
         </p>
       </section>
     )
@@ -130,7 +143,7 @@ const aggregationHref = aggregation?.appendixAnchor
       {predictions.registry?.snapshotTag
         ? <> (resolution snapshot <code>{predictions.registry.snapshotTag}</code>).</>
         : <> (not a resolution source until an independent host tags a snapshot).</>}
-      {" "}Market 14 and Phase 4 drafts 19–21 list from their appendix boxes only.
+      {" "}Market 14 is predicted directly and shows the spec text from the appendix H.
     </p>
     <div class="market-panels">
       {
@@ -141,7 +154,10 @@ const aggregationHref = aggregation?.appendixAnchor
           return (
             <PredictionMarketPanel
               number={market.number}
-              shortTitle={market.shortTitle || market.title}
+              shortTitle={market.title}
+              embedTitle={market.metaculusShortTitle || market.longTitle}
+              listingPreview={market.metaculusShortTitle || undefined}
+              noteHtml={panelNoteHtmlByNumber.get(market.number)}
               href={cardHrefForCard(base, card)}
               listingStatus={status}
               listingLabel={listingStatusLabel[status] ?? status}
@@ -149,14 +165,12 @@ const aggregationHref = aggregation?.appendixAnchor
               registryHref={
                 market.number === 14
                   ? undefined
-                  : (market.registryContractUrl || market.registryOutcomeUrl || predictions.registry?.site)
+                  : market.registryContractUrl || undefined
               }
               registryLabel={
-                market.number === 14
-                  ? undefined
-                  : market.registryContractUrl
-                    ? "Resolution criteria"
-                    : "Claims registry (no contract yet)"
+                market.registryContractUrl
+                  ? `Scored contract (v${market.contractVersion})`
+                  : undefined
               }
             />
           );

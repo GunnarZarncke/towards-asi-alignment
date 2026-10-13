@@ -119,6 +119,8 @@ const card = defineCollection({
       "resolved-other"
     ]).optional(),
     predictionShortTitle: z.string().optional(),
+    /** Metaculus / appendix predictionbox short question (not the TSA catalog title). */
+    metaculusShortTitle: z.string().optional(),
     /** Internal spine tag (MB*, constructibility, composition, u17, safe-in). */
     primaryBridge: z.string().optional(),
     /** Always false: YES does not discharge MB*. */

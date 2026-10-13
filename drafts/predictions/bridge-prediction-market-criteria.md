@@ -108,7 +108,7 @@ Source §1, plus:
 - Ground truth is **a** sufficient interventional cut, not a unique “complete control boundary.”
 - Keep the false-complete-certificate bar (≤10%, 95% UCB ≤15%).
 - Non-uniqueness of blankets is not a NO.
-- **Output.** A cut of **this** system/version, not a free-floating boundary with no owner.
+- **Output.** A per-system control-boundary certificate naming the system and version (complete, partial, or abstain), not a boundary stated without naming which deployment it belongs to.
 
 ### §2 — trade-off priorities
 

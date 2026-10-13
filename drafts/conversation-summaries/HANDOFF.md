@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-13 (Last Safety courtyard floorplan).
+Last updated: 2026-10-13 (registry contract sync and Metaculus export).
 
 ---
 
@@ -20,9 +20,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-13:** **Registry contract sync + Metaculus listing export** — Claims catalog bumped to match TSA (v2–v3); `\claimspage` pins; M1 per-certificate output wording; `export_metaculus_questions.mjs` + `metaculus-all-markets.md` (registry fine print from `metaculus-listing-v1.yaml`). Log: `2026-10-13-registry-contract-sync.md`.
+- **2026-10-13:** **Last Safety spec cleanup** — Live spec states current rules only. `spec/` is what code follows; the 9 October draft is frozen. Log: `2026-10-13-last-safety-spec-cleanup.md`.
 - **2026-10-13:** **Last Safety courtyard floorplan** — Verified 22 × 17 m plan is the lab map and the door graph. Badge clearance 2. Test bay and security stay shut. Log: `2026-10-13-last-safety-floorplan.md`.
 - **2026-10-13:** **Last Safety grammar and incident tables** — Think, commit, interventions; Friday visit vs Thursday incident; boundary-narrow score pairs. Log: `2026-10-13-last-safety-grammar-incident.md`.
-- **2026-10-13:** **Prediction backgrounds 1–4** — `\wikiq` plus one TSA sentence; registry checklists cut. Log: `2026-10-13-prediction-background-wikiq.md`.
 - **2026-10-13:** **Last Safety Amara hologram** — Evaluation projector; same NPC interaction; contacts then join. Log: `2026-10-13-last-safety-amara-hologram.md`.
 - **2026-10-13:** **Last Safety testing spec** — Planes and layers in `spec/testing.md`. Log: `2026-10-13-last-safety-testing-spec.md`.
 - **2026-10-13:** **Last Safety player docs** — General-audience rewrite; wiki glossary; three-digit IDs (`job_284`, EVAL-SD-47, SEC-ARCH-11, PILOT-14, …); date Thursday 18 November 2027. Log: `2026-10-13-player-docs-prose-ids.md`.

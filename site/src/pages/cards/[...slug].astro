@@ -336,7 +336,11 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
           {isPredictionCard && card.data.metaculusEmbedId && (
             <MetaculusEmbed
               questionId={card.data.metaculusEmbedId}
-              title={card.data.predictionShortTitle || card.data.title}
+              title={
+                card.data.metaculusShortTitle ||
+                card.data.predictionShortTitle ||
+                card.data.title
+              }
             />
           )}
           {isFundingCard && (

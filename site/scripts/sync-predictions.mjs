@@ -12,6 +12,10 @@ import {
 import { buildReferencesJson, buildBibIndex } from "./lib/bib-index.mjs";
 import { buildCardIndex } from "./lib/card-index.mjs";
 import { bookFullPublicHref, cardPublicPath } from "./lib/card-urls.mjs";
+import {
+  fixPrefixedRefLinks,
+  panelSummaryMarkdown
+} from "./lib/prediction-panel.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -255,7 +259,7 @@ function convertCardFragment(texFragment, convertCtx) {
   if (errors.length) {
     console.warn(`sync-predictions: ${errors.slice(0, 3).join("; ")}`);
   }
-  return normalizeCardMath(out.replace(/\n{3,}/g, "\n\n").trim());
+  return fixPrefixedRefLinks(normalizeCardMath(out.replace(/\n{3,}/g, "\n\n").trim()));
 }
 
 async function buildConvertContext(registrySite) {
@@ -456,10 +460,8 @@ function formatAuditLine(market) {
   return `**Evidence class.** ${output}. YES predicts ${tier}. Adapter v${adapter}.${unit}`;
 }
 
-function catalogShortTitle(market) {
-  const raw = (market.shortTitle || market.shortQuestion || market.title || "").trim();
-  if (!raw) return "";
-  return raw.endsWith("?") ? raw : `${raw}?`;
+function catalogTitle(market) {
+  return (market.title || "").trim();
 }
 
 function catalogLongTitle(market, extracted = {}) {
@@ -468,7 +470,7 @@ function catalogLongTitle(market, extracted = {}) {
     market.marketQuestion ||
     extracted.questionLead ||
     extracted.question ||
-    catalogShortTitle(market)
+    catalogTitle(market)
   );
 }
 
@@ -484,9 +486,10 @@ function registryContractUrl(market, registrySite) {
 }
 
 function marketCardMarkdown(market, extracted, bridgeCardSlugs, registry) {
-  const shortTitle = catalogShortTitle(market);
+  const tsaTitle = catalogTitle(market);
   const longTitle = catalogLongTitle(market, extracted);
-  const summary = longTitle || shortTitle || market.title || "";
+  const listingShortTitle = (extracted.title || market.metaculusShortTitle || "").trim();
+  const summary = longTitle || tsaTitle || "";
   const appendixFull = `${APPENDIX_H_FULL}#${appendixAnchor(market.number)}`;
   const resolveByLabel = formatResolveBy(market.resolveBy);
   const registrySite = registry.site;
@@ -577,13 +580,16 @@ function marketCardMarkdown(market, extracted, bridgeCardSlugs, registry) {
 
   return [
     "---",
-    `title: ${yamlString(`Market ${market.number}. ${shortTitle}`)}`,
+    `title: ${yamlString(`Market ${market.number}. ${tsaTitle}`)}`,
     `type: "prediction"`,
     `status: "framework"`,
     `summary: ${yamlString(summary)}`,
     `predictionNumber: ${market.number}`,
     `predictionListingStatus: ${yamlString(market.marketStatus)}`,
-    `predictionShortTitle: ${yamlString(shortTitle)}`,
+    `predictionShortTitle: ${yamlString(tsaTitle)}`,
+    ...(listingShortTitle
+      ? [`metaculusShortTitle: ${yamlString(listingShortTitle)}`]
+      : []),
     `primaryBridge: ${yamlString(market.primaryBridge)}`,
     "resolvesMB: false",
     ...(market.metaculusEmbedId != null ? [`metaculusEmbedId: ${market.metaculusEmbedId}`] : []),
@@ -632,7 +638,7 @@ function externalFactorCardMarkdown(factor) {
 function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, bridgeCardSlugs) {
   const list = markets.map((market) => {
     const cardPath = cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" });
-    return `- [Market ${market.number}. ${catalogShortTitle(market)}](${cardPath})`;
+    return `- [Market ${market.number}. ${catalogTitle(market)}](${cardPath})`;
   });
   const relatedList = [
     ...externalFactors.map((factor) => {
@@ -817,11 +823,12 @@ const enrichedMarkets = markets.map((market) => {
       `sync-predictions: market ${market.number} metaculusShortTitle differs from appendix predictionbox title`
     );
   }
+  const panelSummary = panelSummaryMarkdown(market, box.property, normalizeQuestion);
   return {
     ...market,
     cardId: market.id,
     cardPath: cardPublicPath({ id: `predictions/${market.id}`, type: "prediction" }),
-    shortTitle: catalogShortTitle(market),
+    panelSummary: panelSummary || undefined,
     metaculusShortTitle: listingShortTitle || undefined,
     longTitle,
     marketQuestion: longTitle,
