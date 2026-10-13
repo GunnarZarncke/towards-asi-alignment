@@ -52,7 +52,7 @@ Each document is registered in `DOCUMENTS` in `lib/documents.mjs`:
 | `defaultGrant` | How it enters the player projection: `on_request` (access / NPC share), `visit_share`, etc. |
 | `leanKnowledge` | Always `false` for registered docs today: a read does not close an explanation. It may still add `readsAs` facts |
 | `readsAs` | Map `pack → fact id[]` copied from the executive summary or checklist of the served text. Provenance `recorded_before` |
-| `thinkMarks` | `{ id, from: id[], needs: id[], hops, packs }[]`. Returned by `think` when `needs` are held and the topic is within `hops`. Replaces `analyzeHints` |
+| `thinkMarks` | `{ id, from: id[], needs: id[], hops, packs }[]`. Returned by `think` when `needs` are held and the topic is within `hops` |
 
 ## Roster (working)
 

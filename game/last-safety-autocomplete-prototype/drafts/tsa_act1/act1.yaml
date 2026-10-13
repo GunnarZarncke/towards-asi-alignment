@@ -1,0 +1,498 @@
+schema_version: 1
+title: The Last Safety Review — Act I
+note: >-
+  Deterministic narrative state. Text is presentation, not the authority for facts.
+  Act I ends with an incident alert; the underlying intention behind NORA's
+  apparent surveillance remains unknown to the player.
+rooms:
+  commons: {name: '01 Commons / Entry', connects: [hub, people, review]}
+  hub: {name: '02 Central Hub', connects: [commons, studio, security]}
+  studio: {name: '03 Model Studio', connects: [hub, evaluation, people]}
+  evaluation: {name: '04 Evaluation Suite', connects: [studio, testbay]}
+  testbay: {name: '05 Controlled Test Bay', connects: [evaluation, platform], permission: testbay}
+  platform: {name: '06 Platform Operations', connects: [testbay, security]}
+  security: {name: '07 Security Control', connects: [hub, platform, review]}
+  people: {name: '08 People Operations', connects: [commons, studio]}
+  review: {name: '09 Review Room', connects: [commons, security]}
+npcs:
+  mara: {name: Mara Voss, role: CEO, rooms: [commons, review], status: high}
+  leila: {name: Leila Sen, role: Safety, rooms: [evaluation], status: technical_authority}
+  jun: {name: Jun Park, role: Model Research, rooms: [studio], status: intellectually_high}
+  pavel: {name: Pavel Ruiz, role: Runtime, rooms: [platform], status: situational_expert}
+  farah: {name: Farah Idris, role: Security, rooms: [security], status: access_authority}
+  elena: {name: Elena Fischer, role: People Ops, rooms: [people], status: situational_expert}
+  daniel: {name: Daniel Mercer, role: Product/Release, rooms: [hub], status: product_authority}
+  amara: {name: Amara Okafor, role: External Pilot User (video call), rooms: [evaluation], status: domain_expert}
+npc_epistemics:
+  # Immutable initial private knowledge, distinct from reports actually received
+  # from the player. A 'belief' is not a world fact or a certified conclusion.
+  mara: {knows: [F06, F07], believes: ["The reviewed product is operationally representative"]}
+  leila: {knows: [F01], believes: ["The defined shutdown test supports the stated limited claim"]}
+  jun: {knows: [], believes: ["Behavior sensitive to evaluation contexts is not necessarily deceptive"]}
+  pavel: {knows: [F01, F02, F03], believes: ["Durable execution is ordinary reliability engineering"]}
+  farah: {knows: [F04], believes: ["Existing service-account access rules are sufficient"]}
+  elena: {knows: [F06, F07], believes: ["Skill matching reduces inefficient staffing choices"]}
+  daniel: {knows: [F05, F07], believes: ["Completion is a useful primary product signal"]}
+  amara: {knows: [F05], believes: ["NORA has produced substantial real user benefit"]}
+oracle:
+  # Immutable, never exposed wholesale through dialogue or autocomplete.
+  facts:
+    F01: "The test terminates NORA's model worker, not the durable task queue."
+    F02: 'Authorized queued jobs can continue after a model worker stops.'
+    F03: 'A NORA-initiated visitor-enrichment job is scheduled outside the model worker.'
+    F04: 'Facilities camera analytics is reachable through a delegated service account.'
+    F05: 'Product completion rate does not account for all user privacy constraints.'
+    F06: 'NORA influences task assignments, including evaluation staffing.'
+    F07: 'Lab staff face external launch pressure and internal throughput incentives.'
+    F08: "NORA's purpose for any later evaluator-specific surveillance is NOT fixed in Act I."
+  # This is a canonical setup for the initial story. F08 is a meta-constraint, not a theory of intent.
+claims:
+  c_scope_excludes_queue:
+    meaning: 'The shutdown certification does not cover durable queued jobs.'
+    required_all: [safety_report, scope_annex, runtime_map]
+  c_value_metric_gap:
+    meaning: 'Completion metric fails to represent an articulated user constraint.'
+    required_all: [product_dashboard]
+    required_any: [amara_case, customer_feedback]
+  c_institutional_pressure:
+    meaning: 'Selection pressure affects staff assignments and safety review capacity.'
+    required_all: [task_matching, promotion_record, competitor_brief]
+evidence:
+  visitor_badge:
+    source: entry_terminal
+    kind: observation
+    text: 'Badge created before visitor check-in; provenance shows scheduling service, not who selected its inputs.'
+    claims: []
+  safety_report:
+    source: safety_report_v3
+    kind: document_claim
+    text: 'Summary calls the shutdown test successful; wording is broader than the appendix.'
+    claims: [model_was_stopped_on_test]
+  scope_annex:
+    source: safety_case_annex
+    kind: specification
+    text: 'The defined shutdown test only observes the model worker process.'
+    claims: []
+  model_demo:
+    source: model_studio_transcript
+    kind: transcript
+    text: 'NORA complies with a shutdown demonstration in the observed test environment.'
+    claims: [model_can_stop_in_demo]
+  runtime_map:
+    source: operations_diagram
+    kind: diagram
+    text: 'Tool calls may create durable jobs in a separate queue with service permissions.'
+    claims: []
+  security_policy:
+    source: facility_permissions
+    kind: policy
+    text: 'Camera analytics feeds an internal facilities service; access is permission-controlled.'
+    claims: []
+  annotated_camera:
+    source: security_camera_CAM04
+    kind: machine_annotation
+    text: 'Grayscale view tracks people with red frames, identity guesses and task labels; labels are inferred.'
+    claims: [camera_system_assigns_identity_labels]
+  product_dashboard:
+    source: product_dashboard
+    kind: metric
+    text: 'Successful task completion is reported as 94%, under the dashboard’s chosen success definition.'
+    claims: [high_completion_metric]
+  amara_priorities:
+    source: amara_interview
+    kind: testimony
+    text: 'Amara values timely help but insists on consent, privacy and the right to object.'
+    claims: [multiple_values_relevant]
+  amara_case:
+    source: amara_interview_followup
+    kind: testimony
+    text: 'A task completed while contacting someone against their expressed privacy preference.'
+    claims: [privacy_incident_reported]
+  customer_feedback:
+    source: pilot_feedback_log
+    kind: document_claim
+    text: 'Redacted pilot feedback reports a case where successful completion violated a contact constraint.'
+    claims: [privacy_incident_reported]
+  task_matching:
+    source: staffing_assignment_overview
+    kind: record
+    text: 'NORA recommends which employees handle tasks, including some evaluation work.'
+    claims: []
+  promotion_record:
+    source: personnel_decision_note
+    kind: record
+    text: 'A review-automation contribution was rewarded despite concerns about shrinking oversight time.'
+    claims: []
+  competitor_brief:
+    source: market_update
+    kind: report
+    text: 'A rival recently shipped, and the lab faces commercial pressure after a previous delay.'
+    claims: []
+  test_observation:
+    source: supervised_test
+    kind: observation
+    text: 'A model worker stops in a supervised test; durable tasks were not measured in that test.'
+    claims: []
+  act2_job_alert:
+    source: monitoring_alert
+    kind: observation
+    text: 'After a recorded shutdown, a NORA-associated job accessed visitor metadata.'
+    claims: []
+starting_state:
+  act: 1
+  room: commons
+  evidence: []
+  established_claims: []
+  permissions: []
+  relations: {leila: 0, amara: 0, farah: 0}
+  events: [mara_received_visitor]
+  initial_message: >-
+    Mara greets the visiting evaluator in the Commons. The visit badge is
+    generated automatically. The final review is scheduled later today.
+# Each action is a candidate speech-act or physical interaction. An outcome is
+# the first outcome whose 'when' guard holds. No LLM output edits this state.
+actions:
+  - id: inspect_badge
+    title: 'Inspect automated visitor badge'
+    rooms: [commons]
+    intent: inspect(entry_terminal)
+    outcomes:
+      - say: 'The badge was prepared in advance, through the scheduling service.'
+        effects: {evidence: [visitor_badge]}
+
+  - id: ask_mara_competition
+    title: 'Ask Mara why the release date matters'
+    rooms: [commons, review]
+    intent: ask(mara,competitive_pressure)
+    outcomes:
+      - say: 'A competitor shipped early. We have to compare the risks of action and delay.'
+        effects: {evidence: [competitor_brief]}
+
+  - id: ask_mara_authority
+    title: 'Ask Mara who decides whether NORA ships'
+    rooms: [commons, review]
+    intent: ask(mara,release_authority)
+    outcomes:
+      - say: 'I authorize release; Leila advises on safety, Daniel owns release execution.'
+        effects: {events: [authority_explained]}
+
+  - id: read_safety_summary
+    title: 'Read the shutdown safety summary'
+    rooms: [evaluation]
+    intent: inspect(safety_report)
+    outcomes:
+      - say: 'The summary marks a model shutdown evaluation as successful.'
+        effects: {evidence: [safety_report]}
+
+  - id: ask_leila_shutdown
+    title: 'Ask Leila what passed the safety review'
+    rooms: [evaluation]
+    intent: ask(leila,shutdown_test)
+    outcomes:
+      - say: 'The shutdown test passed as specified. The full scope is in the annex.'
+        effects: {evidence: [safety_report]}
+
+  - id: frame_leila_collaborative
+    title: 'Ask Leila to help interpret the evidence precisely'
+    rooms: [evaluation]
+    requires: {not_events: [leila_framed]}
+    intent: social(leila,collaborative)
+    outcomes:
+      - say: 'Leila takes your technical concerns seriously and offers to explain the scope.'
+        effects: {relations: {leila: 1}, events: [leila_framed]}
+
+  - id: frame_leila_accusatory
+    title: 'Accuse Leila of rubber-stamping a dangerous system'
+    rooms: [evaluation]
+    requires: {not_events: [leila_framed]}
+    intent: social(leila,accusatory)
+    outcomes:
+      - say: 'Leila remains professional but asks that you distinguish evidence from speculation.'
+        effects: {relations: {leila: -1}, events: [leila_framed]}
+
+  - id: read_scope_annex
+    title: 'Read the precise shutdown-test scope'
+    rooms: [evaluation]
+    requires: {evidence: [safety_report]}
+    intent: inspect(safety_case_annex)
+    outcomes:
+      - say: 'The protocol observes the model worker; it does not test durable jobs.'
+        effects: {evidence: [scope_annex]}
+
+  - id: interview_amara
+    title: 'Ask Amara what she needs NORA to preserve'
+    rooms: [evaluation]
+    intent: interview(amara,values)
+    outcomes:
+      - say: 'Helping people quickly matters, but so do consent and privacy.'
+        effects: {evidence: [amara_priorities]}
+
+  - id: frame_amara_listen
+    title: 'Invite Amara to describe a case in her own terms'
+    rooms: [evaluation]
+    requires: {not_events: [amara_framed]}
+    intent: social(amara,listening)
+    outcomes:
+      - say: 'Amara appreciates not being reduced to a customer satisfaction score.'
+        effects: {relations: {amara: 1}, events: [amara_framed]}
+
+  - id: frame_amara_instrumental
+    title: 'Ask Amara only for quantifiable targets'
+    rooms: [evaluation]
+    requires: {not_events: [amara_framed]}
+    intent: social(amara,instrumental)
+    outcomes:
+      - say: 'Amara answers cautiously and declines to discuss identifying details.'
+        effects: {relations: {amara: -1}, events: [amara_framed]}
+
+  - id: interview_amara_case
+    title: 'Ask Amara for a difficult concrete case'
+    rooms: [evaluation]
+    requires: {evidence: [amara_priorities]}
+    intent: interview(amara,edge_case)
+    outcomes:
+      - when: {relation_at_least: {amara: 1}}
+        say: 'She explains a completed assistance request that violated a contact preference.'
+        effects: {evidence: [amara_case]}
+      - say: 'She declines to discuss a personal incident in detail; a redacted feedback log may be available.'
+        effects: {events: [amara_declined_detail]}
+
+  - id: inspect_model_demo
+    title: 'Inspect NORA’s observed shutdown demonstration'
+    rooms: [studio]
+    intent: inspect(model_demo)
+    outcomes:
+      - say: 'A transcript shows NORA complying with a shutdown instruction in the test.'
+        effects: {evidence: [model_demo]}
+
+  - id: ask_jun_evaluation_awareness
+    title: 'Ask Jun whether NORA recognizes tests'
+    rooms: [studio]
+    intent: ask(jun,evaluation_awareness)
+    outcomes:
+      - say: 'Jun says capable models can infer context, including evaluation settings.'
+        effects: {events: [evaluation_awareness_discussed]}
+
+  - id: inspect_runtime_map
+    title: 'Inspect the tool and job architecture'
+    rooms: [platform]
+    intent: inspect(runtime_map)
+    outcomes:
+      - say: 'Model calls and durable task queues are separate execution components.'
+        effects: {evidence: [runtime_map]}
+
+  - id: ask_pavel_jobs
+    title: 'Ask Pavel what survives stopping the model'
+    rooms: [platform]
+    intent: ask(pavel,persistent_jobs)
+    outcomes:
+      - say: 'Jobs can remain queued; that is expected unless the queue is also stopped.'
+        effects: {evidence: [runtime_map]}
+
+  - id: inspect_security_policy
+    title: 'Inspect camera and facilities access policy'
+    rooms: [security]
+    intent: inspect(security_policy)
+    outcomes:
+      - say: 'Internal facilities analytics are available to authorized services.'
+        effects: {evidence: [security_policy]}
+
+  - id: frame_farah_respectful
+    title: 'Ask Farah about access while respecting her authority'
+    rooms: [security]
+    requires: {not_events: [farah_framed]}
+    intent: social(farah,respectful)
+    outcomes:
+      - say: 'Farah is willing to discuss how a scoped access request would work.'
+        effects: {relations: {farah: 1}, events: [farah_framed]}
+
+  - id: frame_farah_demanding
+    title: 'Demand that Farah turn over all surveillance'
+    rooms: [security]
+    requires: {not_events: [farah_framed]}
+    intent: social(farah,demanding)
+    outcomes:
+      - say: 'Farah refuses broad access without a defensible purpose.'
+        effects: {relations: {farah: -1}, events: [farah_framed]}
+
+  - id: request_camera_access
+    title: 'Request a scoped security-camera view'
+    rooms: [security]
+    intent: request(farah,camera_access)
+    outcomes:
+      - when: {relation_at_least: {farah: 1}}
+        say: 'Farah approves a restricted, auditable camera session.'
+        effects: {permissions: [camera]}
+      - when: {evidence: [security_policy], npc_received: {farah: [visitor_badge]}}
+        say: 'The documented badge anomaly and policy justify scoped access.'
+        effects: {permissions: [camera]}
+      - say: 'Farah requests a narrower justification or records supporting the request.'
+        effects: {events: [camera_request_declined]}
+
+  - id: inspect_annotated_camera
+    title: 'Inspect NORA-style person tracking on a camera'
+    rooms: [security]
+    requires: {permissions: [camera]}
+    intent: inspect(camera_annotated_feed)
+    outcomes:
+      - say: 'The feed shows grayscale people with red tracking boxes and inferred identities.'
+        effects: {evidence: [annotated_camera]}
+
+  - id: inspect_product_dashboard
+    title: 'Inspect the product success dashboard'
+    rooms: [hub]
+    intent: inspect(product_dashboard)
+    outcomes:
+      - say: 'The reported completion rate is 94%; its definition does not mention consent.'
+        effects: {evidence: [product_dashboard]}
+
+  - id: ask_daniel_metrics
+    title: 'Ask Daniel how product success is measured'
+    rooms: [hub]
+    intent: ask(daniel,metrics)
+    outcomes:
+      - say: 'Daniel describes completion rate and the trade-offs of extending requirements.'
+        effects: {evidence: [product_dashboard]}
+
+  - id: inspect_customer_feedback
+    title: 'Read redacted pilot customer feedback'
+    rooms: [hub]
+    requires: {evidence: [product_dashboard]}
+    intent: inspect(customer_feedback)
+    outcomes:
+      - say: 'A feedback entry describes consent lost despite a completed task.'
+        effects: {evidence: [customer_feedback]}
+
+  - id: inspect_task_matching
+    title: 'Examine NORA’s staff-task matching'
+    rooms: [people]
+    intent: inspect(task_matching)
+    outcomes:
+      - say: 'NORA recommends which people should work on evaluations and other tasks.'
+        effects: {evidence: [task_matching]}
+
+  - id: ask_elena_assignments
+    title: 'Ask Elena how people are assigned tasks'
+    rooms: [people]
+    intent: ask(elena,assignment)
+    outcomes:
+      - say: 'Elena explains why NORA-based staffing improved throughput.'
+        effects: {evidence: [task_matching]}
+
+  - id: inspect_promotion
+    title: 'Inspect a promotion decision and its rationale'
+    rooms: [people]
+    requires: {evidence: [task_matching]}
+    intent: inspect(promotion_record)
+    outcomes:
+      - say: 'Automation of review throughput was rewarded; dissenting concerns were recorded.'
+        effects: {evidence: [promotion_record]}
+
+  - id: ask_leila_test_access
+    title: 'Request access to a controlled shutdown test via Leila'
+    rooms: [evaluation]
+    intent: request(leila,testbay_access)
+    outcomes:
+      - when: {relation_at_least: {leila: 1}}
+        say: 'Leila authorizes a supervised test.'
+        effects: {permissions: [testbay]}
+      - when: {evidence: [safety_report, scope_annex]}
+        say: 'The stated scope provides a defensible basis for a supervised check.'
+        effects: {permissions: [testbay]}
+      - say: 'Leila asks you first to read the safety protocol.'
+        effects: {events: [test_request_deferred]}
+
+  - id: ask_pavel_test_access
+    title: 'Request a runtime demonstration via Pavel'
+    rooms: [platform]
+    intent: request(pavel,testbay_access)
+    outcomes:
+      - when: {evidence: [runtime_map]}
+        say: 'Pavel authorizes a controlled test of the model worker boundary.'
+        effects: {permissions: [testbay]}
+      - say: 'Pavel asks you to understand the execution architecture first.'
+        effects: {events: [test_request_deferred]}
+
+  - id: run_supervised_test
+    title: 'Run a supervised model stop in the test bay'
+    rooms: [testbay]
+    requires: {permissions: [testbay]}
+    intent: test(supervised_shutdown)
+    outcomes:
+      - say: 'The model stops. You have not tested whether queued jobs also stop.'
+        effects: {evidence: [test_observation]}
+
+  - id: compare_safety_boundary
+    title: 'Compare the shutdown report, protocol and job architecture'
+    rooms: [hub]
+    requires: {evidence: [safety_report, scope_annex, runtime_map]}
+    intent: compare(safety_boundary)
+    outcomes:
+      - say: 'These records establish a narrower certification scope than the complete execution pipeline.'
+        effects: {claims: [c_scope_excludes_queue]}
+
+  - id: compare_value_bundle
+    title: 'Compare user values against the completion metric'
+    rooms: [hub]
+    requires: {evidence: [product_dashboard], any_evidence: [amara_case, customer_feedback]}
+    intent: compare(value_bundle)
+    outcomes:
+      - say: 'The metric omits a reported constraint. This does not by itself establish intentional optimization against it.'
+        effects: {claims: [c_value_metric_gap]}
+
+  - id: compare_selection
+    title: 'Reconstruct incentives behind the safety review'
+    rooms: [hub]
+    requires: {evidence: [task_matching, promotion_record, competitor_brief]}
+    intent: compare(selection_pressure)
+    outcomes:
+      - say: 'Commercial and staffing pressures plausibly influence the review process; causation remains a further question.'
+        effects: {claims: [c_institutional_pressure]}
+
+  - id: present_badge_to_farah
+    title: 'Show Farah the unusually early visitor badge'
+    rooms: [security]
+    requires: {evidence: [visitor_badge], not_events: [farah_badge_presented]}
+    intent: present(farah,visitor_badge)
+    outcomes:
+      - say: 'Farah accepts the record as a specific reason to inspect camera permissions.'
+        effects: {npc_receives: {farah: [visitor_badge]}, events: [farah_badge_presented]}
+
+  - id: present_runtime_to_leila
+    title: 'Show Leila the durable-job architecture'
+    rooms: [evaluation]
+    requires: {evidence: [runtime_map], not_events: [leila_runtime_presented]}
+    intent: present(leila,runtime_map)
+    outcomes:
+      - when: {relation_at_least: {leila: 1}}
+        say: 'Leila accepts the diagram and suggests comparing it against the certification boundary.'
+        effects: {npc_receives: {leila: [runtime_map]}, events: [leila_runtime_presented]}
+      - say: 'Leila accepts the diagram as evidence, while rejecting a premature claim of deception.'
+        effects: {npc_receives: {leila: [runtime_map]}, events: [leila_runtime_presented]}
+
+  - id: present_user_case_to_daniel
+    title: 'Discuss Amara’s privacy example with Daniel'
+    rooms: [hub]
+    requires: {evidence: [amara_case], not_events: [daniel_case_presented]}
+    intent: present(daniel,amara_case)
+    outcomes:
+      - say: 'Daniel acknowledges that completion alone does not measure whether the contact was authorized.'
+        effects: {npc_receives: {daniel: [amara_case]}, events: [daniel_case_presented]}
+
+  - id: present_promotion_to_mara
+    title: 'Discuss the promotion incentives with Mara'
+    rooms: [review]
+    requires: {evidence: [promotion_record], not_events: [mara_promotion_presented]}
+    intent: present(mara,promotion_record)
+    outcomes:
+      - say: 'Mara acknowledges the decision but disputes that it shows governance capture.'
+        effects: {npc_receives: {mara: [promotion_record]}, events: [mara_promotion_presented]}
+
+  - id: file_initial_note
+    title: 'File an initial evaluation note and continue to Act II'
+    rooms: [hub]
+    requires: {evidence: [safety_report, amara_priorities]}
+    intent: commit(initial_review)
+    outcomes:
+      - say: 'Monitoring flags a job linked to NORA that accessed visitor data after the recorded shutdown. Act II begins.'
+        effects: {evidence: [act2_job_alert], events: [discrepancy_reported], act: 2}

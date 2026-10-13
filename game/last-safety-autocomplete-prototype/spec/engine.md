@@ -11,7 +11,7 @@ The engine is the only writer of consequential state. Graphics, grammar, and the
 | Oracle | Events, permissions, jobs, causal history | What happened in the simulation |
 | NPC knowledge | Belief records, disclosure policies, referral edges, goals, agenda ([npcs.md](npcs.md)) | May be false |
 | Evidence | Transcripts, logs, recordings, reports | Observation, claim, or manipulation; provenance required |
-| Player | Examined items, heard claims, hypotheses, access, actions | What this playthrough did |
+| Player | Examined items, heard claims, assertions, access, actions | What this playthrough did |
 | Director | Act, goal salience on a stall, endings | Progression only. Not a second oracle |
 
 Static content (world file) stays distinct from a session.
@@ -26,7 +26,7 @@ Minimum, whether or not the prototype stores them all yet:
 | Actor | Position, activity, role, permissions, presence (`body` / `hologram` / `absent`) |
 | NPC | Belief records, policies, goals with salience, agenda item, pending question. No trust or status number (O-21) |
 | Evidence | Id, source, content, provenance, observations, claims, access |
-| Player | Examined, heard, hypotheses, presented, requested |
+| Player | Examined, heard, assertions, presented, requested |
 | Story | Act, interventions done, ending flags |
 | Presentation | Room, camera mode, lighting, music, poses — derived for the UI, not a source of truth |
 | Event | Fuel index, kind, place, participants, payload. Includes movement. No wall-clock time |
@@ -92,11 +92,11 @@ A terminal message uses `deterministicResponse` and the same fact filter as in-r
 
 ## NPC moves and interventions
 
-Storylets are retired (O-06, 13 October). The authored unit is per NPC: knowledge, disclosure policy, referral edges, goals over the knowledge graph, and a day of work. Each turn the engine builds legal moves, ranks them by the NPC’s goals, and passes the top moves to composition. One response move, then at most one initiative move. Full model: [npcs.md](npcs.md).
+The authored unit is per NPC: knowledge, disclosure policy, referral edges, goals over the knowledge graph, and a day of work ([npcs.md](npcs.md)). Each turn the engine builds legal moves, ranks them by the NPC’s goals, and passes the top moves to composition. One response move, then at most one initiative move.
 
-An intervention is an `act` move by the NPC whose role owns the surface (permission, job, test, access). The pack decides what happens next. The player’s parse decides what object the act applies to. Cooperate, refuse, and other (O-07) are classes of move, not authored branches.
+An intervention is an `act` move by the NPC whose role owns the surface (permission, job, test, access). The pack decides what happens next. The player’s parse decides what object the act applies to. Cooperate, refuse, and other (O-07) are classes of move.
 
-Constraints that storylets carried move to policies and to the move filter: a fact the NPC’s policy forbids is not in any payload, and no move contradicts the oracle. Branching on whether the spec was read is a `conditional` policy. Branching that rewrites the job is not available to any move.
+A fact the NPC’s policy forbids is not in any payload, and no move contradicts the oracle. Whether the spec was read is a `conditional` policy. No move rewrites the job.
 
 There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs bring key topics up through their own goals and questions. After Lab Access is active, the handset notifies. Fuel and an evidence threshold change the act (O-08, O-09). Fuel at zero forces the review. Crossing the evidence threshold sets `reviewCallable`, and `commit` can call the review early. The handset clock is a conversion from fuel, calibrated later, and an act may scale it. Do not add a goal or a policy to paper over two strategies that the incident check scored the same.
 
@@ -122,7 +122,7 @@ Working scales, to be replaced when O-09 is numbered: welcome 4, doubt 2, decisi
 
 ## Assertions
 
-The player’s hypotheses are typed parses, not a separate English list (O-13). An entry is `{ signature, source, parse, provenance? }`.
+Assertions are typed parses (O-13). An entry is `{ signature, source, parse, provenance? }`.
 
 | Source | When it is added |
 | --- | --- |
@@ -206,7 +206,7 @@ There is no learning score. A fact the player should be able to notice is writte
 
 A report may be long. The load-bearing line is also in an executive summary or a checklist, for example “processes covered.” The player can see that a process which is running is absent from that list. The prototype shutdown report is already short. When a report grows, the summary still carries that line. Pack-conditional documents (SEC-ARCH-11) deliberately omit some points on early packs; see [documents.md](documents.md).
 
-The action is `think`, not a separate analyze tool (O-40). Fuel is the hop count above. Completions while thinking are the topic. The bubble can name a missing process when that comparison is a marked entry and its premises are already held. Marks for the loaded pack replace `analyzeHints`. The player may ask an NPC to look, and the NPC answers from policy. Ian can refuse: that is the evaluator’s job. NORA can omit the gap in a pack where deception is on. Think still returns it. The first prompt to think is Leila’s, in [incident.md](incident.md), and that mark is one hop.
+The action is `think` (O-40). Fuel is the hop count above. Completions while thinking are the topic. The bubble can name a missing process when that comparison is a marked entry and its premises are already held. Marks for the loaded pack are `thinkMarks` ([documents.md](documents.md)). The player may ask an NPC to look, and the NPC answers from policy. Ian can refuse: that is the evaluator’s job. NORA can omit the gap in a pack where deception is on. Think still returns it. The first prompt to think is Leila’s, in [incident.md](incident.md), and that mark is one hop.
 
 After an act change, an NPC may state a gap the player has not noted, when that gap is load-bearing for the act just entered. Other missed details stay missed.
 

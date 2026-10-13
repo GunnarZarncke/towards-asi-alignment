@@ -29,4 +29,4 @@ Prompts: paraphrase-only (no prompt id resolved)
 - `game/last-safety-autocomplete-prototype/spec/contract.md`
 
 ## Commits
-- (filled after commit)
+- `63e9a3657` Specify Last Safety testing layers and Amara as an Evaluation hologram.

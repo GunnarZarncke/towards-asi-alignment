@@ -1,6 +1,6 @@
 # Specs
 
-Working copy for implementation. Split from [`../last-safety-review-game.md`](../last-safety-review-game.md) (v0.1, 9 October 2026). The development sequence is [`../PLAN.md`](../PLAN.md).
+Working copy for implementation. The development sequence is [`../PLAN.md`](../PLAN.md).
 
 | File | Lane | What it holds |
 | --- | --- | --- |
@@ -19,4 +19,4 @@ Working copy for implementation. Split from [`../last-safety-review-game.md`](..
 | [documents.md](documents.md) | engine | Player document catalog, pack-conditional render, analyze / Lean rules |
 | [access.md](access.md) | engine | Folder/service tree, list/read/write, amendments, grant delay |
 
-If a spec and the consolidated doc disagree, the spec is what the code follows. Record the divergence in that spec’s status line and in [meta.md](meta.md). Do not silently edit the consolidated doc.
+This directory is the design the code follows. [`../last-safety-review-game.md`](../last-safety-review-game.md) is the frozen 9 October draft. Do not implement from it, and do not edit it to catch up.

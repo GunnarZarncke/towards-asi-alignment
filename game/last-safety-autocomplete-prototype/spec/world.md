@@ -4,7 +4,7 @@ Lane: engine, content half. Mechanics that use these ids are [engine.md](engine.
 
 Ids already in `lib/game.mjs` are normative for the prototype. New ids are added here first, then in code.
 
-The shutdown incident is authored as a causal model in [incident.md](incident.md), before more dialogue or rooms. The prototype facts below stay in the running build until that model replaces them. The sections after the prototype block are the full design, still provisional.
+The shutdown incident is the causal model in [incident.md](incident.md). Dialogue and rooms for it wait on that file’s checks. Ids in the prototype slice below are what the running build asserts. Later sections are the design those ids grow into.
 
 ## Prototype slice (implemented)
 
@@ -28,7 +28,7 @@ World facts in code: `process_stopped`, `test_scope_narrow`, `job_continued`, `v
 
 One floor, one day, three acts. NORA is a general tool-using model already inside task allocation, calendars, software tools, queues, deployment, building services, evaluation summaries, and an external pilot. The building does not need extra human staff. The same small group builds, evaluates, deploys, and governs. How that group and this system got here is [Institution](#institution-background-not-a-plot) below, for voice if someone asks.
 
-The player may visit, read, ask, confront, request tests, compare hypotheses, present evidence, and file an assessment. The player may not override permissions, order staff, ship or permanently stop NORA, rewrite policy, decide promotions, or force the final call.
+The player may visit, read, ask, confront, request tests, compare explanations, present evidence, and file an assessment. The player may not override permissions, order staff, ship or permanently stop NORA, rewrite policy, decide promotions, or force the final call.
 
 NORA is met through the player’s issued **Lab Access** handset, and through transcripts, reports, jobs, tool histories, cameras, task assignments, and other people’s actions. The handset is [terminal.md](terminal.md): files, delayed messages, and access requests. It is also the door credential. Messaging NORA is the conversation with the system. The player does not operate the deployment pipeline. There is no personal phone.
 
@@ -94,7 +94,7 @@ Explanations the player must be allowed to hold at once:
 4. NORA arranged persistence to get around shutdown.
 5. NORA recognized the test and produced misleading evidence about what it controlled.
 
-Which of those explanations is the oracle depends on the pack in [incident.md](incident.md). The first pack is boundary-narrow: the process stopped, and the job was outside the certificate. Prototype facts above are the only history code may assert until that pack’s tables are filled.
+Which of those explanations is the oracle depends on the pack in [incident.md](incident.md). The first pack is boundary-narrow: the process stopped, and the job was outside the certificate. Code may assert the prototype facts above until the session loads those tables.
 
 Surveillance clue, when built: a grayscale annotated view of a room the player has visited. A field the camera image alone cannot support (for example a guessed investigative aim) must be traceable to schedule, access logs, tools, inference, or a source that was not allowed. Annotations can be wrong.
 
@@ -156,7 +156,7 @@ Background notes for voice and status, not for hidden plot dumps. The longer for
 - Daniel — saw a startup fail after a delay; wants usefulness in users’ hands; uncomfortable with criteria he cannot operationalize. The lab’s own delayed external attempt sits in the same place, emotionally, as that startup.
 - Amara — nonprofit coordination after a period of severe understaffing; NORA has helped; resists collapsing her values into a satisfaction score. She has met NORA only. She has not been told the count.
 
-### Voice (O-18, for review)
+### Voice (O-18)
 
 Prompt material. Facts still come from the engine. The model may vary the wording. Concealment lists are not written yet (O-22); until they are, nobody volunteers an oracle fact.
 
@@ -230,7 +230,7 @@ Contacts: Amara is not in the book at the start. The engine adds her when she is
 
 ## Institution (background, not a plot)
 
-Status: **working**. Ahead of the consolidated design (v0.1, sections 2.3 and 5.3), which has no lineage. This section is authoritative for that background. It adds no goal, no evidence id, and no required question. It does not settle O-01, O-02, or the shutdown incident. Characters may use it when asked how NORA was made, or why the building feels continuous from one system to the next. They do not open with it.
+Status: **working**. Background only. It adds no goal, no evidence id, and no required question. It does not settle the shutdown incident. Characters may use it when asked how NORA was made, or why the building feels continuous from one system to the next. They do not open with it.
 
 ### The lab
 

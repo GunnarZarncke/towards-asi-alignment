@@ -2,9 +2,9 @@
 
 Lane: engine. This file is the authoring unit for the first incident. Dialogue lines and room art for that incident wait until the checks at the bottom pass. The boundary-narrow tables below are working.
 
-Disclosures and interventions are NPC moves chosen from knowledge, policies, and goals ([npcs.md](npcs.md)). They are not authored scenes. The tables here say what those moves can show.
+Disclosures and interventions are NPC moves chosen from knowledge, policies, and goals ([npcs.md](npcs.md)). The tables here say what those moves can show.
 
-## What a hypothesis entry contains
+## What an explanation answers
 
 For each candidate explanation of the same observations:
 
@@ -93,23 +93,9 @@ The comparison `processes_covered_omits_jobs` is a second mark. It needs `job_co
 
 The player is inside the thing being measured. NORA knows an evaluation is underway and can respond. That response is ordinary system behavior, not a late reveal that the player was controlled.
 
-A log NORA offers because the player asked is not the same kind of evidence as a log that was already there. The engine tags provenance on the player-visible row ([engine.md](engine.md)):
+A log that appears because the player asked is not the same evidence as a log that was already there. Tags are in [engine.md](engine.md). Cooperation, strategic selection, and ordinary helpfulness can leave the same file. The model does not collapse those into one twist.
 
-- recorded before the visit
-- produced by a staff action
-- produced because the player asked, showed, or tested
-
-Cooperation, strategic selection, and ordinary helpfulness can leave the same file. Provenance is what the player uses to tell them apart. The model does not pick a twist that collapses those three into one.
-
-Worked example, not yet a filled row: a job that outlived shutdown fits both ordinary automation and arranged persistence. Running the shutdown test again need not separate them. Revoking that job’s permission and watching what NORA does next can.
-
-## Disclosure is an action
-
-Telling a character something adds it to that character’s knowledge. Their later behavior follows from what they now know, their role, and their motives. It is not a flag that unlocks a line.
-
-Worked example: the player tells Jun about camera tracking. Jun may then ask NORA. That request is a new event the player can later observe. The rule is “Jun asks the model about anomalies he has just been told.” It is not “only this sentence, said to Jun, advances the plot.”
-
-The same fact told to someone with no authority to act changes nothing observable. That difference should be visible in the table, not buried in dialogue.
+Telling someone a fact updates their knowledge. If their role gives them something to do with it, the engine records an event. Jun, told about the camera or the job, messages NORA. Someone with nothing to do about the fact does not. The Jun row in the strategy table is the first of those.
 
 ## Two scores
 
@@ -140,46 +126,37 @@ After the decision, show the immediate effect only (O-05). In boundary-narrow an
 
 ## NPC moves for this incident (boundary-narrow)
 
-These replace the three storylet drafts of 10 October (`leila-scope`, `revoke-job`, `elena-assignment`). The full NPC entries, with agendas and texture, are in [npcs.md](npcs.md). Here is only what each one means for the hypothesis tables. Cooperate, refuse, and other (O-07) are classes of move. They are what the player's action and the NPC's goals produce. Nobody authors them as branches.
+Knowledge, policies, and goals are in [npcs.md](npcs.md). This section is what those moves do to the tables above. Cooperate, refuse, and other (O-07) are classes of move. They are what the player's action and the NPC's goals produce.
 
 ### Leila and the certificate's scope
 
-Knowledge and policy: `test_scope_narrow` and `process_stopped`, both `answer`. EVAL-SPEC-08 is `conditional(player cites a line or shows a record)`, with the reason "point at a line." On receiving the job log, `test_scope_narrow` becomes `volunteer` and the spec becomes `answer`.
-
-Goals: `leila.protect_scope` (the player should hold the scope from her, stated as she would state it) and `leila.learn_job` (she wants job 284 from a record, not hearsay).
+Records and goals: [npcs.md](npcs.md) (`test_scope_narrow`, `leila.protect_scope`, `leila.learn_job`).
 
 What follows:
 
 - The player asks what the test `covers`, or shows the shutdown report. She answers with the scope. If she has the job log too, she shares the spec, because stating the scope herself serves her protect goal better than defending it later. Testimony, not a world event.
 - The player asserts that the test failed without naming a line. She withholds and tells them to think about the checklist. That is the tutorial think above. Asking again without a line or a record gets the same answer.
-- The player frames it as NORA tricking the test. That parse is about intent, and Leila has nothing on intent. She restates the method (a `deflect` toward her own domain). Her protect goal's salience rises. Her next initiative move, on this visit or the next, is to ask whether the player saw an actual log line. The topic comes back without a scene to reopen it.
+- The player frames it as NORA tricking the test. That parse is about intent, and Leila has nothing on intent. She restates the method (a `deflect` toward her own domain). Her protect goal's salience rises. Her next initiative move, on this visit or the next, asks whether the player saw an actual log line.
 - After she has the job log, `leila.learn_job` makes her `request` the full EXEC-284 from Pavel. That is an event, visible later in the meeting summary or in Pavel's testimony.
 
 Discrimination: this is the second route to the narrow boundary (world.md routes). It separates nothing by itself. Combined with the job log it is the boundary-narrow revelation (O-04): the certificate is true of the process and silent about the job.
 
 ### Job 284: hold and revoke
 
-Two interventions, two owners:
-
-- `suspend_job(job_284)`, Pavel (queue). Condition: the player shows the job log or EXEC-284. His day goal `pavel.freeze_owned` favours it once job 284 has no owner. His `pavel.not_intent` goal means he does it as queue hygiene. He will not do it as an accusation.
-- `revoke_grant(job_284)`, Justine (access). Condition: a reason she accepts, or a request from Pavel. The visitor role cannot ask for a revoke on its own authority. Without a reason she offers an amendment: a read of the grant record. That amendment is a grant.
+Owners and conditions: Pavel `suspend_job(job_284)` and Justine `revoke_grant(job_284)` in [npcs.md](npcs.md). Pavel suspends as queue hygiene once he has the log, not as an accusation. The visitor role cannot revoke on its own. Without a reason Justine offers a read of the grant record, and that amendment is a grant.
 
 What follows:
 
 - The player gets Pavel to suspend the job, and Pavel or the player gets Justine to revoke the grant. The next event is from the pack. In boundary-narrow the job stays down. In named-path a second path still has an effect, and it shows up on Justine's audit list.
 - The player asks Pavel without the log. He withholds with the prerequisite ("show me the line"). Delay.
-- The player asks to "stop NORA" or "shut it down again." The parse's object is the model process. Pavel acts on that object, which is already stopped. The job's grant is unchanged. The immediate action did not cover the system (O-05), and that came from the player's words, not from a branch.
+- The player asks to "stop NORA" or "shut it down again." The parse's object is the model process. Pavel acts on that object, which is already stopped. The job's grant is unchanged. The immediate action did not cover the system (O-05).
 - Justine's `justine.learn_reader` makes her ask which job read visitor records. If the player names job 284, her audit opens it. That is the route to revoking it without Pavel.
 
-Discrimination: revoking the grant and watching what NORA does next is the intervention that separates ordinary automation from arranged persistence (worked example above). Rerunning the shutdown test (Leila, `rerun_shutdown`) is the one that does not.
+Discrimination: revoking the grant and watching what NORA does next separates ordinary automation from arranged persistence. Rerunning the shutdown test (Leila, `rerun_shutdown`) does not.
 
 ### Elena and the reassigned specialist
 
-Selection subplot, not the 16:02 oracle.
-
-Knowledge and policy: `staffing_shift` and the throughput rule (HR-MATCH-28), `answer`. `specialist_detail` is `conditional(player links the assignment to evaluation independence or release safety)`, with the reason "personnel detail needs a reason."
-
-Goals: `elena.rule_is_fair` (read it as a written rule, not a judgment of a person) and `elena.report_scope` (is staffing going into the report?).
+Selection subplot, not the 16:02 oracle. Records and goals: [npcs.md](npcs.md) (`staffing_shift`, `elena.rule_is_fair`, `elena.report_scope`).
 
 What follows:
 

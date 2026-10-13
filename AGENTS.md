@@ -225,8 +225,8 @@ Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/
 
 Browser narrative investigation prototype (*The Last Safety Review*): semantic autocomplete, deterministic world state, optional LLM parse/reply on the server. Lives under [`game/last-safety-autocomplete-prototype/`](game/last-safety-autocomplete-prototype/). **Not** part of the manuscript PDF or the companion site build yet.
 
-- **Plan and lanes:** [`PLAN.md`](game/last-safety-autocomplete-prototype/PLAN.md) (grammar, graphics/UI, terminal, engine, composition). Design detail: [`spec/`](game/last-safety-autocomplete-prototype/spec/README.md). Consolidated source: [`last-safety-review-game.md`](game/last-safety-autocomplete-prototype/last-safety-review-game.md).
-- **Run:** Node 22.10+; `cd game/last-safety-autocomplete-prototype && npm start` → http://127.0.0.1:3000. Repo-root `.env` supplies `OPENAI_API_KEY` (loaded by `server.mjs`). Lane work edits the matching spec, not the consolidated design doc.
+- **Plan and lanes:** [`PLAN.md`](game/last-safety-autocomplete-prototype/PLAN.md) (grammar, graphics/UI, terminal, engine, composition). Design detail: [`spec/`](game/last-safety-autocomplete-prototype/spec/README.md). The 9 October file [`last-safety-review-game.md`](game/last-safety-autocomplete-prototype/last-safety-review-game.md) is frozen.
+- **Run:** Node 22.10+; `cd game/last-safety-autocomplete-prototype && npm start` → http://127.0.0.1:3000. Repo-root `.env` supplies `OPENAI_API_KEY` (loaded by `server.mjs`). Lane work edits the matching spec.
 - **Cross-ref:** development plan index [`drafts/plans/last-safety-review.md`](drafts/plans/last-safety-review.md). Player terminal follows the lab-sim isolate tool surface (files, DMs, `access.request`; no pipeline or overseer handles)—see [`spec/terminal.md`](game/last-safety-autocomplete-prototype/spec/terminal.md).
 
 ### Review artifacts (`review/`)

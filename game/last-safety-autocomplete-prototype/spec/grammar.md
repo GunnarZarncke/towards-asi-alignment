@@ -2,31 +2,15 @@
 
 Lane: grammar. Code: `lib/grammar.mjs` (source of truth), `public/grammar.js` (completion UI), `tests/grammar.test.mjs`. Ranking tests, when added, are layer 1 in [testing.md](testing.md).
 
-The implemented vocabulary below is what code must use. Section 8.4 of the consolidated doc listed a looser action list (`inspect`, `present`, `challenge`, `commit`, `interview`). That list is not a second grammar. Map it onto the kinds here, or propose a contract change.
-
 ## Kinds
 
 `ask`, `ask_why`, `assert`, `hypothesize`, `show`, `request`, `think`, `commit`, `social`, `unintelligible`.
 
-`assert` is tell. There is no separate tell kind. Saying a claim to a person, or filing it as something the player holds, is `assert`.
+`assert` is tell. There is no separate tell kind. Saying a claim to a person, or filing it as something the player holds, is `assert`. `hypothesize` files an assertion the same way.
 
 `unintelligible` is for text with no recoverable meaning. Meaningful language outside the relations uses `relation: "open"` and a short `open_content`.
 
-Sketch mapping, if a later contract adds nothing:
-
-| Sketch | Now |
-| --- | --- |
-| ask(topic) | `ask` + `about` |
-| present(evidence) | `show` of something already on the player’s Lab Access, or talk about a **screen** as a topic. Files are not completion picks. |
-| propose(hypothesis) | `hypothesize` |
-| request(test_or_access) | `request` + access path ([access.md](access.md)), or an intervention relation below |
-| request(join) | `request` + relation `join`, recipient a `joinable` contact. Engine: hologram in Evaluation. Not a new kind. |
-| interview(value_dimension) | `ask` + `values` |
-| inspect(object) | not a parse; `POST /api/inspect` on a room screen |
-| challenge(claim, evidence) | `assert` + `differs_from`, with the evidence id on `evidence` |
-| tell | `assert` |
-| think | `think` |
-| commit(action) | `commit` |
+`inspect` is not a parse. It is `POST /api/inspect` on a room screen. A challenge is `assert` with `differs_from` and the record id on `evidence`. Asking what someone values is `ask` with `values`.
 
 ## Relations
 
@@ -54,7 +38,7 @@ Sketch mapping, if a later contract adds nothing:
 
 `join` stays a relation on `request` for Amara’s hologram. It is not an intervention on the incident.
 
-A player’s question or hypothesis is not a fact. Parsing it must not make it true.
+A player’s question or assertion is not a fact. Parsing it must not make it true.
 
 ## Slots
 
@@ -98,7 +82,7 @@ Empty field, any channel: a few relevant openings, not a menu of the plot. The l
 
 Order is [ranking.md](ranking.md) (O-19, working). The person channel passes `addressees`: every actor in the room with `presence` `body` or `hologram`. The NORA channel passes `['nora']` after the engine’s omit list. The note channel and the think channel pass `[]`. The ranker unions their public role domains and does not weight individuals. It does not see oracle facts. Novel wording stays allowed (O-20) and does not create an engine action.
 
-Three sources were proposed: authored plot-critical lines, compositional fragments (verb + topic + evidence + person), and model completions for unusual prefixes. The third source may suggest phrasing. It may not change consequential state until the engine accepts the resulting parse. On the NORA channel the model may propose a helpful next step. It may not be the component that decides which evidence is missing from the list. That list comes from the engine.
+The model may suggest phrasing for an unusual prefix. It may not change consequential state until the engine accepts the resulting parse. On the NORA channel the model may propose a helpful next step. It does not decide which evidence is missing from the list. That list comes from the engine.
 
 ## Parser
 
@@ -108,7 +92,7 @@ Rules already in `lib/llm.mjs`:
 
 - Ground ids only to the supplied vocabulary.
 - Do not invent ids, facts, motives, or events.
-- Keep questions and hypotheses as speech acts.
+- Keep questions and assertions as speech acts.
 - Resolve pronouns from recent talk when clear; otherwise leave the slot null.
 - Previous parse is a hint and is not authoritative after the player edits the text.
 

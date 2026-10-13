@@ -1,6 +1,6 @@
 # The Last Safety Review — development plan
 
-Structure only. Design detail lives in [`spec/`](spec/README.md). The consolidated source is [`last-safety-review-game.md`](last-safety-review-game.md). While a lane is in progress, edit that lane’s spec, not the consolidated doc.
+Structure only. Design detail lives in [`spec/`](spec/README.md). [`last-safety-review-game.md`](last-safety-review-game.md) is the frozen 9 October draft. Edit the spec, not that file.
 
 ## Lanes
 

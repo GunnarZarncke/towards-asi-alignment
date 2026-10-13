@@ -2,15 +2,13 @@
 
 Lane: engine. Code target: `lib/world/npcs.mjs` (state and move generation) and `content/npcs/*.yml` (authored per-NPC data). Neither exists yet. Mechanics around this file are [engine.md](engine.md). Ids and cast are [world.md](world.md). The first incident's facts are [incident.md](incident.md).
 
-Status: **working** (Gunnar, 13 October 2026, replaces storylets). Ahead of the consolidated design (v0.1, sections 8–9), which uses storylets as the unit of interaction. This file is authoritative for NPC behavior. The consolidated doc is unchanged.
+Status: **working**. This file is the NPC model.
 
-## Why not storylets
+## Authored unit
 
-A storylet answers one anticipated situation. Players ask many more questions than anyone can anticipate. Each question without a storylet ends in a generic line or none. Covering that with storylets means authoring one per plausible question, and the count grows with questions × NPCs × state.
+Each NPC has knowledge, a disclosure policy per fact, referral edges, goals stated over the knowledge graph, and a day of work. Each turn the engine computes that NPC's legal moves from that data, ranks them by the NPC's goals, and passes the top moves to composition. The model phrases one. It does not add a move (O-21).
 
-Here the authored unit is smaller and reused. Each NPC has knowledge, a disclosure policy per fact, referral edges, goals stated over the knowledge graph, and a day of work. Each turn the engine computes the NPC's legal moves from that data. It ranks them by the NPC's goals. The model picks one of the top moves and phrases it. The model never adds a move. That is O-21 generalized: before, it picked one of three authored outcomes.
-
-Authoring grows with facts and NPCs, not with questions. Player input is a `Parse` over ids the player knows ([grammar.md](grammar.md)). So the set of possible questions is about kind × relation × known id. That set is finite and can be enumerated in tests.
+Authoring grows with facts and NPCs, not with questions. Player input is a `Parse` over ids the player knows ([grammar.md](grammar.md)). The set of possible questions is kind × relation × known id. That set is finite and tests can enumerate it.
 
 ## Knowledge
 
@@ -38,7 +36,7 @@ Each (NPC, fact) the NPC holds has one policy:
 | `volunteer` | May raise it unprompted as an initiative move (below) |
 | `answer` | Says it when the parse asks about it, or about a node one edge away |
 | `conditional(pred, reason)` | Answers once `pred` holds. Until then, withholds and gives `reason` in character. The reason is itself something the player learns |
-| `conceal(reason)` | Never states it. May deflect. This is the O-22 concealment list, now structured |
+| `conceal(reason)` | Never states it. May deflect. This is the O-22 concealment list |
 
 Policies may change on an event: `on(event) → policy`. That is how an NPC starts volunteering after receiving a document. Policies can differ by pack. A policy never changes because of how often a question was asked.
 
@@ -156,7 +154,7 @@ Headless runs use the forced move, or the top move when nothing was forced, and 
 
 ### The three outcomes (O-07)
 
-Cooperate, refuse, and other are now classes of response move, not branches someone authored. Cooperate is `answer`, `share`, or `act`. Refuse is `withhold` or a declined `act` with its prerequisite. Other is `refer`, `deflect`, `believe`, `work`, or an act on a different object than the one the player meant. The three drafts in [incident.md](incident.md) are rewritten in these terms.
+Cooperate is `answer`, `share`, or `act`. Refuse is `withhold` or a declined `act` with its prerequisite. Other is `refer`, `deflect`, `believe`, `work`, or an act on an object other than the one the player named.
 
 ### Dead-end guarantee
 
@@ -164,11 +162,11 @@ Every parse addressed to a present NPC yields at least one legal response move. 
 
 ## Interventions
 
-An intervention is an `act` move that changes world state the oracle governs: a permission, a job, a test run, access. It replaces the intervention storylet. It needs:
+An intervention is an `act` move that changes world state the oracle governs: a permission, a job, a test run, access. It needs:
 
 - **Authority**: the NPC whose role owns that surface (world.md, Institution: "the person named for that surface").
-- **Willingness**: the goals favour the act at the time of the request. A conflicting goal gives a `withhold` with a prerequisite, which is the old refuse.
-- **Object**: the act applies to the object in the parse. A parse whose object is the model process gets an act on the model process. That is the old "other" outcome, and it now comes from the player's own words.
+- **Willingness**: the goals favour the act at the time of the request. A conflicting goal gives a `withhold` with a prerequisite.
+- **Object**: the act applies to the object in the parse. A parse whose object is the model process gets an act on the model process.
 - **Pack effect**: what happens next is an oracle event from the loaded pack, read from the pack tables in [incident.md](incident.md). The NPC and the model do not author it.
 
 The handle list is O-16: rerun shutdown, revoke a job's permission, camera archive, shared meeting summary, pilot results with permission, hypotheticals with Amara. Each handle names its owner below. The player still does not invent procedures.
@@ -181,7 +179,7 @@ The handle list is O-16: rerun shutdown, revoke a job's permission, camera archi
 2. **The evaluator is a risk to protect against.** A `protect` goal is served by finding out what the player believes before the review. "Are you going to call the test a failure?" is how Leila learns whether she needs to restate the scope.
 3. **The role asks first.** Some voices ask before they answer, as habit: Justine's "why do you need it?" before a grant, Daniel's "one sentence I can check." These questions are part of the response move, not initiative. They come from the voice and from a `conditional` predicate that wants a stated reason.
 4. **It is the hint channel (O-10, O-11).** The question points at a topic. It does not state an oracle fact. Pavel asking "did Leila's test include the queue?" names a topic the player may have missed. It does not say the queue was outside the test.
-5. **The answer is a disclosure, and disclosure is an action** ([incident.md](incident.md)). When the player answers, that is a `tell` into the NPC's knowledge. If the NPC's role gives them something to do with it, an event follows. An NPC's question invites the player to take the action that moves the world, without a menu.
+5. **The answer can move the world.** When the player answers, that is a `tell` into the NPC's knowledge. If the NPC's role gives them something to do with it, an event follows. The question invites that action. There is no menu.
 
 ### How a question is built
 
@@ -216,7 +214,7 @@ The reply is parsed like any sentence. Three cases:
 | Pavel | `pavel.freeze_owned` | "Who did they tell you owns 284?" | If the player names NORA or "nobody", he asks Justine for the grant record. That is an event the player can later see |
 | Justine | `justine.audit_owners` | "Which service read visitor records — do you have the job name?" | Naming job 284 lets her open the grant audit for it |
 | Ian | `ian.no_surprise` | "Anything in there I'll be surprised by tonight?" | A player claim enters his belief records; at the review he brings it up with its source |
-| Jun | `jun.learn_anomaly` | "Which run was it, the 16:02 one? What did the transcript say?" | If told about the job or the camera, he messages NORA. That is the incident.md disclosure example, now from his goal |
+| Jun | `jun.learn_anomaly` | "Which run was it, the 16:02 one? What did the transcript say?" | If told about the job or the camera, he messages NORA |
 | Elena | `elena.report_scope` | "Is staffing going into your report?" | Yes: her `protect` goal rises and she shares HR-MATCH-28 to frame it as the rule |
 | Daniel | `daniel.checkable` | "What's the one thing you'd need to see to say ship?" | The player's sentence becomes the claim he carries to the meeting |
 | Amara | `amara.keep_help` | "Will we still have it next month?" | Opens her case history, which is the route into the value bundle |
@@ -239,9 +237,9 @@ Day goals sit on the NPC, not on the item. They are satisfied or lapse when the 
 
 Agenda steps advance on act changes, bands, and events, not on a wall clock (O-31: the clock on an event is fuel). Movement between items is a movement event. This is the source of the story events that move people in world.md. The displayed room is the agenda room, except in a recording.
 
-Agenda items that emit events give the day a rhythm the player does not drive: Pavel freezes the release queue, Leila's packet closes, Ian starts his review prep. These are not scenes. Whether the player is present is up to the player.
+Agenda items that emit events give the day a rhythm the player does not drive: Pavel freezes the release queue, Leila's packet closes, Ian starts his review prep. Whether the player is present is up to the player.
 
-The drafts below are for the boundary-narrow pack, for review. Background prose is for voice and for answering "what are you working on?" It adds no evidence id. It follows the Institution section of world.md. Ids in these drafts that are not in `lib/game.mjs` (texture facts, `second_pilot`, `service_accounts`, and so on) are proposals. They go into world.md before code, per that file's rule.
+Agendas below are the boundary-narrow pack. Background prose is for voice and for answering "what are you working on?" It adds no evidence id. It follows the Institution section of world.md. Ids here that are not in `lib/game.mjs` (texture facts, `second_pilot`, `service_accounts`, and so on) are not in the running build yet. They go into world.md before code, per that file's rule.
 
 ### Ian Harake
 
@@ -481,9 +479,9 @@ amara:
 
 NORA is not given a goal table here. What NORA is doing is pack-defined and sits in the oracle. Her visible day is the building's: queue runs, matcher assignments, calendar entries, notifications. Those appear as events in other agendas (Elena's rota, Pavel's inventory). On the handset her moves are record moves: name a record, return it, ask which one. The pack's omit list decides what she does not offer ([grammar.md](grammar.md), NORA channel). Do not write NORA goals into this file. A pack that needs them puts them in its incident table.
 
-## The arc without a spine
+## What moves the day
 
-The arc is the player's knowledge moving, not a sequence of scenes. Three things keep it moving:
+The arc is the player's knowledge moving. Three things keep it moving:
 
 1. **Act predicates over the knowledge graph.** Act I → II is `labAccessActive`. Act II → III is fuel at zero, or the player calls the review once an evidence threshold holds (O-08, O-09). The threshold is a predicate over player-visible facts and their provenance, set per pack before any playtest. For boundary-narrow, a candidate, not adopted: `process_stopped` and `job_continued` held, and `test_scope_narrow` held from either route (Leila or EVAL-SPEC-08).
 2. **Agenda events.** The queue freezes, the packet closes, Ian asks for one-pagers. The day moves whether or not the player is in the room. Those events change what NPCs want and say.
@@ -491,7 +489,7 @@ The arc is the player's knowledge moving, not a sequence of scenes. Three things
 
 ### Director
 
-The director replaces storylet availability. It may:
+The director may:
 
 - Raise the salience of an unsatisfied goal when the player stalls. A stall is some number of player sentences with no new player-visible fact (O-45). It picks the goal whose target is load-bearing for the current act, owned by an NPC in the room or reachable by message. That NPC's next initiative move then raises the topic.
 - After an act change, let an NPC state a gap the player has not noted, when it is load-bearing for the act just entered ([engine.md](engine.md), O-40).
@@ -513,4 +511,4 @@ Layer 3 in [testing.md](testing.md). Added to the engine list:
 
 ## Open
 
-O-45 numbers: cooldown, stall length, band boundaries. O-46 is working: `pendingQuestion` is on `ClientState`. O-22 is now the `conceal` entries per pack; still not written for any pack.
+O-45 numbers: cooldown, stall length, band boundaries. O-46 is working: `pendingQuestion` is on `ClientState`. O-22 is the `conceal` entries per pack. None are written yet.

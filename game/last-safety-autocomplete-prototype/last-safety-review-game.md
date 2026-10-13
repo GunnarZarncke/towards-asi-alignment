@@ -5,7 +5,7 @@
 **Version:** 0.1 — Design consolidation\
 **Date:** 9 October 2026\
 **Project:** Towards Superintelligence Alignment (TSA)\
-**Status:** Concept and partial specification. Working copy for implementation is [`PLAN.md`](PLAN.md) and [`spec/`](spec/README.md). This file stays the consolidated source; lane work edits the spec, not this document.
+**Status:** Frozen 9 October 2026 draft. Implementation follows [`spec/`](spec/README.md). Do not implement from this file, and do not edit it to catch up.
 
 ---
 
