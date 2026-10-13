@@ -41,13 +41,13 @@ test('Request opening is offered and topics are not evidence files',()=>{
   assert.ok(!topics.some(x=>x.entityId==='job_log'));
 });
 test('room movement and investigation reveal only justified knowledge',()=>{
-  const s=newSession();assert.ok(!s.playerKnows.has('job_284'));
-  inspect(s,'job_log');assert.ok(s.playerKnows.has('job_284'));assert.ok(s.learnedFacts.has('job_continued'));
-  assert.ok(!s.learnedFacts.has('staffing_shift'));
+  const s=newSession();s.room='platform';assert.ok(!s.vocab.includes('job_284'));
+  assert.ok(inspect(s,'job_log').body);assert.ok(s.vocab.includes('job_284'));assert.ok(s.learned.job_continued);
+  assert.ok(!s.learned.staffing_shift);
   assert.equal(go(s,'people').error,'No door from here.');
   assert.equal(go(s,'tech').room,'tech');
   assert.equal(go(s,'test').error,'That door needs a higher clearance.');
-  go(s,'people');inspect(s,'staffing_memo');assert.ok(s.learnedFacts.has('staffing_shift'));
+  go(s,'people');inspect(s,'staffing_memo');assert.ok(s.learned.staffing_shift);
 });
 test('Think is offered only in an empty room; File is an opening',()=>{
   const occupied=getCandidates({state:fresh(),parse:makeParse(),text:''});

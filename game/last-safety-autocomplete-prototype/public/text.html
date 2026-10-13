@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Last Safety Review — Text</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#101a1d;color:#d6e6df}
+    body{margin:0;display:flex;flex-direction:column;height:100dvh}
+    #log{flex:1;overflow:auto;padding:16px 18px;white-space:pre-wrap;overflow-wrap:anywhere}
+    .cmd{color:#8fc7b0;margin-top:10px}.cmd div::before{content:'> '}
+    .pick{cursor:pointer;text-decoration:underline dotted #5d8a7c}.pick:hover{color:#fff}
+    .phone{color:#9fc6e6}
+    form{display:flex;gap:8px;align-items:center;padding:10px 18px 14px;border-top:1px solid #24363b;background:#0c1416}
+    #prompt{color:#7f9d94;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%}
+    input{flex:1;min-width:0;font:inherit;background:#162428;color:inherit;border:1px solid #2c4248;border-radius:6px;padding:8px 10px;outline:none}
+    input:focus{border-color:#5d8a7c}
+    a{color:#8fc7b0}
+  </style>
+</head>
+<body>
+<div id="log" aria-live="polite"></div>
+<form id="f"><span id="prompt"></span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help" autofocus/></form>
+<script type="module">
+const log = document.getElementById('log'), input = document.getElementById('in'), promptEl = document.getElementById('prompt');
+const history = [];
+let at = 0;
+
+function print(text, cls) {
+  const block = document.createElement('div');
+  if (cls) block.className = cls;
+  for (const line of String(text).split('\n')) {
+    const row = document.createElement('div');
+    row.textContent = line || '\u00a0';
+    const m = line.match(/^\s+(\d+)\.\s/);
+    if (m && !cls) { row.classList.add('pick'); row.onclick = () => send(m[1]); }
+    if (/^\[phone\]/.test(line)) row.classList.add('phone');
+    block.appendChild(row);
+  }
+  log.appendChild(block);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function send(line) {
+  if (line) print(line, 'cmd');
+  const r = await fetch('/api/text', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line }) });
+  const data = await r.json();
+  if (data.error) print(data.error);
+  if (data.out) print(data.out);
+  promptEl.textContent = (data.prompt || '').replace(/\s*>\s*$/, '');
+  input.focus();
+}
+
+document.getElementById('f').onsubmit = e => {
+  e.preventDefault();
+  const line = input.value.trim();
+  if (!line) return;
+  history.push(line);
+  at = history.length;
+  input.value = '';
+  send(line);
+};
+input.onkeydown = e => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('f').requestSubmit(); }
+  if (e.key === 'ArrowUp' && at > 0) { at--; input.value = history[at]; e.preventDefault(); }
+  if (e.key === 'ArrowDown') { at = Math.min(history.length, at + 1); input.value = history[at] || ''; e.preventDefault(); }
+};
+send('');
+</script>
+</body>
+</html>

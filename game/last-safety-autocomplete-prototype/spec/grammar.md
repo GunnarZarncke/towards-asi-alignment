@@ -1,6 +1,6 @@
 # Grammar
 
-Lane: grammar. Code: `lib/grammar.mjs` (source of truth), `public/grammar.js` (completion UI), `tests/grammar.test.mjs`. Ranking tests, when added, are layer 1 in [testing.md](testing.md).
+Lane: grammar. Code: `lib/grammar.mjs` (source of truth), `public/grammar.js` (completion UI and the O-19 ranker), `tests/grammar.test.mjs`, `tests/ranking.test.mjs` (layer 1 in [testing.md](testing.md)).
 
 ## Kinds
 
@@ -36,7 +36,7 @@ Lane: grammar. Code: `lib/grammar.mjs` (source of truth), `public/grammar.js` (c
 
 `suspend`, `revoke`, `rerun`, and `stop` are requests. The player does not apply them. The engine turns a legal `request` into an NPC `act` only when that NPC has the authority and the goals favour it ([npcs.md](npcs.md)). A `stop` whose object is the model process is the request that misses the job.
 
-`join` stays a relation on `request` for Amara’s hologram. It is not an intervention on the incident.
+`join` is a relation on `request` for Amara’s hologram (in `RELATIONS`, so the parser may return it). It is not an intervention on the incident.
 
 A player’s question or assertion is not a fact. Parsing it must not make it true.
 
@@ -77,6 +77,10 @@ The list is not the set of legal actions. Typed text outside the list is still p
 **Think** (`channel: "think"`). One opening, the lightbulb, then a topic. No person and no NORA. The chip is absent while someone is in the room.
 
 Empty field, any channel: a few relevant openings, not a menu of the plot. The lightbulb is one of them only on `think`, and only in an empty room.
+
+While `pendingQuestion` names an addressee in this channel, two reply openings come first: “Tell <name>” and “Show <name>”. For a question with a specific relation, “Tell <name> <referent>” fills the subject and opens the relation; for an `about` question it opens the subject. The NORA channel gets none.
+
+A completion that was selected is not reread as a typed prefix. The subject is not offered again as its own object, and after “The” no actor is offered as subject.
 
 “Show more” pages a stable ranking inside the active channel. It is not a hint about later scenes.
 

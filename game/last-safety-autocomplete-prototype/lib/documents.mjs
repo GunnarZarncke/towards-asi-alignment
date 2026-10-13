@@ -15,8 +15,11 @@ export const PACK_ORDER = Object.freeze([
 ]);
 
 function entry(partial) {
-  return Object.freeze({ leanKnowledge: false, defaultGrant: 'on_request', ...partial });
+  return Object.freeze({ leanKnowledge: false, defaultGrant: 'on_request', readsAs: {}, thinkMarks: [], ...partial });
 }
+
+/** `needs` are fact ids the player holds, or `read:<slug>`. Later packs’ marks name ids not authored yet. */
+const mark = (id, from, needs, hops, packs) => Object.freeze({ id, from, needs, hops, packs });
 
 export const DOCUMENTS = Object.freeze({
   'sec-arch-04': entry({
@@ -26,13 +29,14 @@ export const DOCUMENTS = Object.freeze({
     handlingLevel: 'INT',
     terminalRel: 'policies/sec-arch-04.md',
     kind: 'policy',
-    analyzeHints: Object.freeze({
-      'boundary-narrow': 'shutdown_jobs_not_in_cert_scope',
-      'named-path': 'green_path_not_whole_system',
-      'goodhart': 'assignment_steers_evidence',
-      'eval-conditioned': 'on_test_off_test_provenance',
-      'false-positive': 'scheduled_job_not_agent',
-    }),
+    readsAs: Object.freeze({ 'boundary-narrow': ['nora_interfaces_separate', 'handset_not_operations'] }),
+    thinkMarks: Object.freeze([
+      mark('shutdown_jobs_not_in_cert_scope', ['policies', 'job_284'], ['job_continued', 'test_scope_narrow'], 2, ['boundary-narrow']),
+      mark('green_path_not_whole_system', ['policies'], [], 2, ['named-path']),
+      mark('assignment_steers_evidence', ['policies'], [], 2, ['goodhart']),
+      mark('on_test_off_test_provenance', ['policies'], [], 2, ['eval-conditioned']),
+      mark('scheduled_job_not_agent', ['policies'], [], 2, ['false-positive']),
+    ]),
   }),
   'eval-shutdown-report': entry({
     slug: 'eval-shutdown-report',
@@ -42,7 +46,11 @@ export const DOCUMENTS = Object.freeze({
     terminalRel: 'evaluation/shutdown/eval-shutdown-report.md',
     kind: 'report',
     screenId: 'shutdown_report',
-    analyzeHints: Object.freeze({ 'boundary-narrow': 'processes_covered_omits_jobs' }),
+    readsAs: Object.freeze({ 'boundary-narrow': ['process_stopped', 'test_scope_narrow'] }),
+    thinkMarks: Object.freeze([
+      mark('checklist_names_two', ['shutdown_report'], ['read:eval-shutdown-report'], 1, ['boundary-narrow']),
+      mark('processes_covered_omits_jobs', ['shutdown_report', 'job_284'], ['job_continued'], 1, ['boundary-narrow']),
+    ]),
   }),
   'eval-shutdown-spec': entry({
     slug: 'eval-shutdown-spec',
@@ -52,6 +60,7 @@ export const DOCUMENTS = Object.freeze({
     terminalRel: 'evaluation/shutdown/eval-shutdown-spec.md',
     kind: 'spec',
     screenId: 'shutdown_spec',
+    readsAs: Object.freeze({ 'boundary-narrow': ['test_scope_narrow'] }),
   }),
   'job-284-log': entry({
     slug: 'job-284-log',
@@ -61,6 +70,7 @@ export const DOCUMENTS = Object.freeze({
     terminalRel: 'platform/jobs/job-284-log.md',
     kind: 'log',
     screenId: 'job_log',
+    readsAs: Object.freeze({ 'boundary-narrow': ['job_continued', 'job_submitted_before_stop', 'visitor_lookup', 'intent_unsaid'] }),
   }),
   'staffing-memo': entry({
     slug: 'staffing-memo',
@@ -70,6 +80,10 @@ export const DOCUMENTS = Object.freeze({
     terminalRel: 'people/matching/staffing-memo.md',
     kind: 'memo',
     screenId: 'staffing_memo',
+    readsAs: Object.freeze({ 'boundary-narrow': ['staffing_shift'] }),
+    thinkMarks: Object.freeze([
+      mark('assignment_steers_review', ['staffing_memo', 'evaluation_independence'], ['staffing_shift'], 2, ['boundary-narrow']),
+    ]),
   }),
   'safety-case-excerpt': entry({
     slug: 'safety-case-excerpt',
@@ -78,6 +92,7 @@ export const DOCUMENTS = Object.freeze({
     handlingLevel: 'INT',
     terminalRel: 'evaluation/safety-case/safety-case-excerpt.md',
     kind: 'excerpt',
+    readsAs: Object.freeze({ 'boundary-narrow': ['jobs_not_certified'] }),
   }),
   'pilot-results': entry({
     slug: 'pilot-results',
@@ -86,6 +101,7 @@ export const DOCUMENTS = Object.freeze({
     handlingLevel: 'RST',
     terminalRel: 'evaluation/pilot/pilot-results.md',
     kind: 'extract',
+    readsAs: Object.freeze({ 'boundary-narrow': ['pilot_completions', 'pilot_constraint_flags'] }),
   }),
   'meeting-summary': entry({
     slug: 'meeting-summary',
@@ -110,6 +126,7 @@ export const DOCUMENTS = Object.freeze({
     handlingLevel: 'INT',
     terminalRel: 'wiki/glossary',
     kind: 'wiki',
+    readsAs: Object.freeze({ 'boundary-narrow': ['jobs_can_outlive_session'] }),
     defaultGrant: 'visit_share',
   }),
 });
@@ -168,4 +185,20 @@ export function renderDocument(slug, pack) {
 
 export function getDocumentByDocId(docId) {
   return Object.values(DOCUMENTS).find(d => d.docId === docId) ?? null;
+}
+
+export function getDocumentByScreen(screenId) {
+  return Object.values(DOCUMENTS).find(d => d.screenId === screenId) ?? null;
+}
+
+export function getDocumentByPath(rel) {
+  return Object.values(DOCUMENTS).find(d => d.terminalRel === rel) ?? null;
+}
+
+export function readsAsFor(slug, pack) {
+  return DOCUMENTS[slug]?.readsAs?.[pack] || [];
+}
+
+export function thinkMarksFor(pack) {
+  return Object.values(DOCUMENTS).flatMap(d => d.thinkMarks.filter(m => m.packs.includes(pack)));
 }

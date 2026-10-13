@@ -1,0 +1,50 @@
+# Jun Park. spec/npcs.md "Jun Park", spec/incident.md disclosure rule; voice spec/world.md.
+id: jun
+presence: body
+voice:
+  structure: The mechanism before the label. He says what the run does, and only then may he accept a name for it. He will not start from “deception” or “intent.”
+  person: Defensive and insecure. Steady about the mechanism, unsteady about whether he is being accused. He ends on a question about an unimportant detail, a timestamp or a line number.
+  focus: What the training run was built to do
+  sample: "The run keeps a thin context and completes it. People put ‘plot’ on the completion. I can walk that completion. Was the line 16:09 or 16:10?"
+agenda:
+  - id: jun.capability_summary
+    room: model
+    acts: [doubt]
+    bands: [early, late]
+    about: [nora, shutdown_test, training_runs]
+    texture: [capability_summary_due, reread_1602_transcript]
+  - id: jun.trace_curation
+    room: model
+    acts: [doubt]
+    bands: [mid]
+    about: [pilot, training_runs]
+    texture: [pilot_traces_for_fine_tune]
+  - id: jun.review
+    room: review
+    acts: [decision]
+    about: [nora]
+knowledge:
+  mechanism_not_label: { stance: knows, policy: volunteer }
+  capability_summary_due: { stance: knows, policy: answer }
+  reread_1602_transcript: { stance: knows, policy: answer }
+  pilot_traces_for_fine_tune: { stance: knows, policy: answer }
+  successor_count: { stance: knows, policy: answer }
+  process_stopped: { stance: knows, policy: answer }
+policy_events:
+  - on: "holds(jun, nora_says_scheduled)"
+    set: { nora_says_scheduled: volunteer }
+goals:
+  jun.mechanism_first: { source: role, kind: inform, via: dialogue, salience: low, target: "told(player, mechanism_not_label, by=jun)" }
+  jun.summary_done: { source: day, kind: achieve, via: agenda, salience: mid, target: "event(capability_summary_sent)" }
+  jun.learn_anomaly:
+    source: plot
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "told(jun, any, by=player, on=job_284|camera_system)"
+    question: { relation: about, about: shutdown_test }
+  jun.not_accused: { source: plot, kind: avoid, via: filter, target: "not(told(player, nora_intent, by=jun))" }
+role_rules:
+  - id: jun.ask_nora
+    when: "told(jun, any, by=player, on=job_284|camera_system)"
+    do: { message: { to: nora, about: job_284 } }

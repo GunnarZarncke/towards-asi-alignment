@@ -193,11 +193,20 @@ export class RoomRenderer {
     return { x, z, heading: hd * DEG };
   }
 
-  addPerson(id) {
+  addPerson(id, { hologram = false } = {}) {
     const p = new Walker(id, appearanceFor(id));
     const spot = this.spotFor(id);
     const [x, z] = this.room.nav.snap(spot.x, spot.z);
     p.place(x, z, spot.heading);
+    if (hologram) {
+      p.group.traverse(o => {
+        if (!o.material) return;
+        o.material = o.material.clone();
+        o.material.transparent = true;
+        o.material.opacity = 0.45;
+        o.material.emissive?.set?.(0x3d8f84);
+      });
+    }
     this.persons.set(id, p);
     this.scene.add(p.group);
     return p;
@@ -213,7 +222,7 @@ export class RoomRenderer {
       this.persons.delete(id);
     }
     if (!this.persons.has('player')) this.addPerson('player');
-    for (const h of actors) if (!this.persons.has(h.id)) this.addPerson(h.id);
+    for (const h of actors) if (!this.persons.has(h.id)) this.addPerson(h.id, { hologram: !!h.hologram });
 
     this.labels = new Map([['player', { label: 'You', sub: 'External evaluator' }], ...actors.map(h => [h.id, { label: h.label, sub: h.sublabel }])]);
     if (!this.persons.has(this.selectedId)) this.selectedId = 'player';
@@ -536,6 +545,13 @@ export class RoomRenderer {
     this.processHover();
     this.renderer.render(this.scene, this.camera);
     this.layoutOverlay();
+    this.onFrame?.();
+  }
+
+  /** Player position in canvas pixels, for a host that scrolls a canvas wider than the viewport. */
+  playerScreen() {
+    const p = this.persons.get('player');
+    return p ? this.toScreen(this.tmp.set(p.x, 1, p.z)) : null;
   }
 
   dispose() {

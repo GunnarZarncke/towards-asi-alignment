@@ -1,6 +1,6 @@
 # Headless playtest
 
-Lane: playtest. Code target: `scripts/playtest.mjs`, `playtest/personas/*.md`, run output under `playtest/runs/` (gitignored). None of it exists yet. Engine behavior under test is [engine.md](engine.md) and [npcs.md](npcs.md). This file is layer 6 of [testing.md](testing.md). Scripted incident strategies are layer 4, not this lane.
+Lane: playtest. Code: `scripts/playtest.mjs` (the player's text view is `lib/text/view.mjs`, shared with [text-console.md](text-console.md)), `playtest/personas/*.md` (the seven below; the held-out two are not in the repo), run output under `playtest/runs/` (gitignored). `npm run playtest -- --help` prints the flags. Engine behavior under test is [engine.md](engine.md) and [npcs.md](npcs.md). This file is layer 6 of [testing.md](testing.md). Scripted incident strategies are layer 4, not this lane.
 
 Status: **working** (13 October 2026). Not a quality claim about the game. It measures whether the NPC model in [npcs.md](npcs.md) leaves players stuck, leaks, or collapses strategies.
 
@@ -77,5 +77,6 @@ Thresholds for work-only rate, repeat rate, and stall interventions are open (O-
 
 - Progress per run: `[persona i/n] [run j/m] fuel f act a`. A battery prints that line per step group, not only at the end.
 - A run caps at the pack's fuel. A battery caps by persona count × runs, set on the command line.
-- Seeds: NPC choice among the top moves takes a seed in template mode. Live mode records the model and temperature.
+- Seeds: in template mode the engine takes the forced or top move, so the NPC side is deterministic; `--seed` drives the no-key `smoke` player, which picks among visible options at random and plays no persona. Live mode records the model in the run header.
+- `--player llm --phrasing live` phrases NPC lines through `freeReply`; the default keeps templates.
 - Output stays out of git. A summary that a session log cites is copied into the log with the command that produced it.

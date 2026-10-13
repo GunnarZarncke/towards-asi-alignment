@@ -2,7 +2,7 @@
 
 Lane: terminal. Code: `public/terminal/`, `tests/terminal*.mjs`. Reads [grammar.md](grammar.md) for the composer inside a message. Reads [contract.md](contract.md) for `TerminalState`. Does not import `experiments/lab-simulation`.
 
-Status: draft phone in `public/terminal/` (`npm run dev:terminal`, port 3002). The room UI does not specify this computer. This file does.
+Status: phone in `public/terminal/`. Solo on the fixture with `npm run dev:terminal` (port 3002); in the game it is embedded in the room page and runs on the engine (`?embed=1`, messages in [contract.md](contract.md)). The room UI does not specify this computer. This file does.
 
 The player is an isolate. They see tool calls and tool results. They do not see the host objects behind them (pipeline engine, permission service, admin policy). The lab-sim `Host` in `experiments/lab-simulation/lab_sim/world_visible/tools.py` is the reference list. The game reimplements only the rows marked for the player.
 

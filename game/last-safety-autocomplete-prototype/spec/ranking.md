@@ -1,8 +1,8 @@
 # Ranking
 
-Status: **working**. Answers O-19. Not implemented. Decision record: [../drafts/autocomplete.md](../drafts/autocomplete.md).
+Status: **working**. Answers O-19. Implemented in `public/grammar.js`; weights are the exported `RANKING`. Decision record: [../drafts/autocomplete.md](../drafts/autocomplete.md).
 
-Lane: grammar. The ranker is `getCandidates` in `public/grammar.js`. Tests: `tests/grammar.test.mjs`. The engine fills the projection in [engine.md](engine.md). Shapes are [contract.md](contract.md). Speech acts stay [grammar.md](grammar.md).
+Lane: grammar. The ranker is `getCandidates` in `public/grammar.js`. Tests: `tests/ranking.test.mjs`. The engine fills the projection in [engine.md](engine.md). Shapes are [contract.md](contract.md). Speech acts stay [grammar.md](grammar.md).
 
 The book concept graph (`metadata/concepts.yml`) is the O-41 card map. This ranker does not read it.
 
@@ -208,7 +208,7 @@ One object, exported beside `getCandidates`, so playtests can move the knobs wit
 
 ## Tests
 
-Add these in `tests/grammar.test.mjs`. Fixtures may be hand-built projections. They do not need the live three-room session, the network, or a model.
+These are in `tests/ranking.test.mjs`. Fixtures may be hand-built projections. They do not need the live three-room session, the network, or a model.
 
 1. Introducing an NPC, including NORA, adds their `roleDomains` row and changes order. Before NORA is introduced, a queue entity and a staffing entity with no other anchors stay in expansion order. After her row is `[queue, tools, matching]`, the queue entity ranks above the staffing entity.
 2. The same entity ranks higher when `addressees` includes someone whose public domains contain it than when the list does not. With both introduced, `camera_system` ranks higher for `addressees: ['justine']` than for `addressees: ['leila']`. With `addressees: ['justine', 'leila']`, the union of domains applies and does not double the weight on `access`.

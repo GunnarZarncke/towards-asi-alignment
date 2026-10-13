@@ -20,6 +20,9 @@ const STILL = `<div class="still-sky"></div><div class="still-window"></div><div
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 let state;
+/** Engine mode: tools go to /api/tool and the result is TerminalState. Fixture mode: applyTool locally. */
+let engine = false;
+const embed = new URLSearchParams(location.search).has('embed');
 let route = [{ name: 'home' }];
 let seen = new Set();
 let overlay = true;
@@ -33,6 +36,27 @@ let pinch0 = null;
 
 const $ = sel => document.querySelector(sel);
 const top = () => route[route.length - 1];
+
+function toParent(msg) {
+  if (embed && window.parent !== window) window.parent.postMessage({ source: 'lsr-phone', ...msg }, location.origin);
+}
+
+async function tool(call) {
+  if (!engine) return applyTool(state, call);
+  const res = await fetch('/api/tool', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(call) });
+  const data = await res.json();
+  if (!data.terminal) return { ok: false, reason: data.error || 'Request failed.', state };
+  toParent({ type: 'changed' });
+  return { ...data.result, state: { ...data.terminal, settings: state.settings } };
+}
+
+async function refresh() {
+  const res = await fetch('/api/terminal');
+  if (!res.ok) return;
+  const next = await res.json();
+  state = { ...next, settings: state.settings };
+  render();
+}
 
 function contactName(id) {
   return state.contacts.find(c => c.id === id)?.name || id;
@@ -96,16 +120,17 @@ function openNotice(n) {
   else if (t.kind === 'app') go({ name: t.id });
 }
 
-function openFile(rel, from) {
-  const read = applyTool(state, { tool: 'file.read', rel });
+async function openFile(rel, from) {
+  const read = await tool({ tool: 'file.read', rel });
   if (!read.ok) {
     toast('Cannot open. Not readable.');
     return;
   }
+  state = read.state;
   markTarget('file', rel);
   video = { t: 0, playing: false, dur: 8 };
   if (from) route = [{ name: 'home' }, from];
-  go({ name: 'viewer', rel });
+  go({ name: 'viewer', rel, file: read.file });
 }
 
 function slug(title) {
@@ -198,10 +223,11 @@ function wikiApp() {
   return `${head('Knowledge', 'Same files as Files, under wiki/')}<div class="pad">${rows || '<p class="hint">No pages.</p>'}</div>`;
 }
 
-function viewer(rel) {
-  const read = applyTool(state, { tool: 'file.read', rel });
-  if (!read.ok) return `${head('File')}<p class="pad hint">Cannot open. Not readable.</p>`;
-  const file = read.file;
+function viewer() {
+  const opened = top().file;
+  if (!opened) return `${head('File')}<p class="pad hint">Cannot open. Not readable.</p>`;
+  const row = state.files.find(f => f.rel === opened.rel);
+  const file = { ...opened, owned: row?.owned ?? opened.owned, sharedWith: row?.sharedWith || opened.sharedWith || [] };
   const share = file.owned
     ? `<button type="button" class="primary" data-act="share" data-rel="${esc(file.rel)}">Share</button>` : '';
   let body;
@@ -246,6 +272,18 @@ function apiApp() {
   const lastLine = last
     ? `<p class="hint">Last request ${esc(last.capability)}: ${last.ok ? 'ok' : 'denied'}. ${esc(last.reason)}</p>`
     : '';
+  if (state.accessTree) {
+    const pending = (state.pendingAccess || []).map(a => `${a.verb} ${a.path}`);
+    const rows = state.accessTree.map(n => {
+      const want = n.kind === 'file' ? 'read' : 'list';
+      const asked = pending.includes(`${want} ${n.path}`);
+      const btn = n.verbs.includes(want) || asked
+        ? `<span>${asked ? 'Waiting on the approver' : esc(n.verbs.join(', '))}</span>`
+        : `<button type="button" class="text-btn" data-act="ask-path" data-path="${esc(n.path)}" data-verb="${want}">Request ${want}</button>`;
+      return `<div class="row"><b>${esc(n.label)}</b><span>${esc(n.path)}</span>${btn}</div>`;
+    }).join('');
+    return `${head('API', 'Request access on Lab Access paths')}<div class="pad">${lastLine}${rows || '<p class="hint">Nothing visible yet.</p>'}</div>`;
+  }
   const rows = ALLOWED_CAPS.map(a => (
     `<button type="button" class="row" data-act="ask-cap" data-cap="${esc(a.capability)}"><b>${esc(a.label)}</b><span>${esc(a.capability)}</span></button>`
   )).join('');
@@ -307,7 +345,7 @@ function body() {
   if (r.name === 'thread') return threadView(r.id);
   if (r.name === 'files') return filesApp();
   if (r.name === 'wiki') return wikiApp();
-  if (r.name === 'viewer') return viewer(r.rel);
+  if (r.name === 'viewer') return viewer();
   if (r.name === 'share') return shareSheet(r.rel);
   if (r.name === 'api') return apiApp();
   if (r.name === 'calendar') return calendarApp();
@@ -326,6 +364,7 @@ function applyPhotoTransform() {
 }
 
 function render() {
+  if (embed) overlay = overlayAllowed(state);
   if (!overlayAllowed(state)) overlay = false;
   const phone = $('#phone');
   phone.classList.toggle('type-large', !!state.settings.largerType);
@@ -335,6 +374,7 @@ function render() {
   const blink = handsetShouldBlink(state, [...seen], overlay);
   $('#handset').classList.toggle('has-unread', blink);
   $('#handset').classList.toggle('is-absent', !overlayAllowed(state));
+  toParent({ type: 'unread', unread: handsetShouldBlink(state, [...seen], false) });
   applyPhotoTransform();
   const utter = $('#utterance');
   if (utter && top().draft) {
@@ -358,6 +398,7 @@ function onClick(e) {
     return;
   }
   if (act === 'lab') {
+    if (embed) return toParent({ type: 'close' });
     overlay = false;
     render();
     return;
@@ -378,13 +419,15 @@ function onClick(e) {
   if (act === 'open-file') return openFile(b.dataset.rel);
   if (act === 'share') return go({ name: 'share', rel: b.dataset.rel });
   if (act === 'do-share') {
-    const result = applyTool(state, { tool: 'file.share', rel: b.dataset.rel, to: b.dataset.id });
-    if (!result.ok) return toast(result.reason);
-    state = result.state;
-    toast(`Shared with ${contactName(b.dataset.id)}.`);
-    back();
+    tool({ tool: 'file.share', rel: b.dataset.rel, to: b.dataset.id }).then(result => {
+      if (!result.ok) return toast(result.reason);
+      state = result.state;
+      toast(`Shared with ${contactName(b.dataset.id)}.`);
+      back();
+    });
     return;
   }
+  if (act === 'ask-path') return askPath(b.dataset.path, b.dataset.verb);
   if (act === 'chip') {
     const thread = currentThread();
     const chip = thread && suggestionChips(thread)[Number(b.dataset.i)];
@@ -416,13 +459,17 @@ function onClick(e) {
   if (act === 'toggle') {
     const key = b.dataset.key;
     state.settings = { ...state.settings, [key]: !state.settings[key] };
+    if (key === 'conceptLinks' && engine) {
+      fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conceptLinksEnabled: state.settings.conceptLinks }) })
+        .then(() => toParent({ type: 'changed' }));
+    }
     if (key === 'alwaysShowPhone' && overlayAllowed(state) && state.settings.alwaysShowPhone) overlay = true;
     if (key === 'alwaysShowPhone' && !state.settings.alwaysShowPhone) overlay = false;
     render();
   }
 }
 
-function sendMessage(id) {
+async function sendMessage(id) {
   const field = $('#utterance');
   const text = field ? field.value : '';
   if (!sendable(text)) return toast('Write a message first.');
@@ -430,29 +477,36 @@ function sendMessage(id) {
   const chip = thread && suggestionChips(thread).find(s => s.phrase === text.trim());
   const omitted = thread && (thread.omit || []).find(s => s.phrase === text.trim());
   const parse = chip?.parse || omitted?.parse || lastParse || { kind: 'open', relation: 'open', source: 'local' };
-  const result = applyTool(state, { tool: 'dm.send', to: id, text, parse });
+  const result = await tool({ tool: 'dm.send', to: id, text, parse });
   if (!result.ok) return toast(result.reason);
   state = result.state;
-  lastParse = result.parse;
+  lastParse = result.parse || parse;
   if (top().name === 'thread') top().draft = '';
   pip();
   toast('Sent. A reply waits until it is released.');
   render();
 }
 
-function askCap(capability) {
-  const result = applyTool(state, { tool: 'access.request', capability: capability.trim() });
+async function askCap(capability) {
+  const result = await tool({ tool: 'access.request', capability: capability.trim() });
   state = result.state;
   toast(result.ok ? 'Granted.' : result.reason);
   render();
 }
 
-function saveNote(rel) {
+async function askPath(path, verb) {
+  const result = await tool({ tool: 'access.request', path, verb });
+  state = result.state;
+  toast(result.reason);
+  render();
+}
+
+async function saveNote(rel) {
   const title = ($('#noteTitle')?.value || '').trim();
   const text = $('#noteBody')?.value || '';
   if (!title) return toast('Add a title.');
   const path = rel || freshNoteRel(title);
-  const result = applyTool(state, { tool: 'file.write', rel: path, name: title, text, kind: 'note' });
+  const result = await tool({ tool: 'file.write', rel: path, name: title, text, kind: 'note' });
   if (!result.ok) return toast(result.reason);
   state = result.state;
   toast('Saved to Files.');
@@ -460,20 +514,19 @@ function saveNote(rel) {
   render();
 }
 
-function capture() {
+async function capture() {
   const canvas = document.createElement('canvas');
   canvas.width = 360;
   canvas.height = 480;
   paintLab(canvas.getContext('2d'), canvas.width, canvas.height);
   const stamp = String(state.clock.timeLabel).replace(':', '');
   const rel = `photos/room-${stamp}.png`;
-  const result = applyTool(state, {
-    tool: 'file.write', rel, name: `Room ${state.clock.timeLabel}`, text: canvas.toDataURL('image/png'), kind: 'image',
-  });
+  const text = canvas.toDataURL('image/png');
+  const result = await tool({ tool: 'file.write', rel, name: `Room ${state.clock.timeLabel}`, text, kind: 'image' });
   if (!result.ok) return toast(result.reason);
   state = result.state;
   toast('Saved to Files.');
-  route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel }];
+  route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel, file: { name: `Room ${state.clock.timeLabel}`, rel, kind: 'image', owned: true, text } }];
   render();
 }
 
@@ -596,12 +649,17 @@ function onKey(e) {
 }
 
 async function boot() {
+  engine = embed || (await fetch('/api/state').catch(() => null))?.ok === true;
+  if (embed) document.body.classList.add('embed');
   const res = await fetch('/api/terminal');
-  if (!res.ok) throw new Error('No terminal fixture');
+  if (!res.ok) throw new Error(engine ? 'No terminal state' : 'No terminal fixture');
   state = await res.json();
   delete state._hostFiles;
   state.settings = { ...defaultSettings(), ...(state.settings || {}) };
   overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
+  window.addEventListener('message', e => {
+    if (e.origin === location.origin && e.data?.source === 'lsr-room' && e.data.type === 'refresh') refresh();
+  });
   document.body.addEventListener('click', onClick);
   document.body.addEventListener('input', onInput);
   document.body.addEventListener('pointerdown', onPointerDown);

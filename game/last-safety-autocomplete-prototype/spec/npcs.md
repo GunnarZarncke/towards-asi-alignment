@@ -1,6 +1,6 @@
 # NPCs — goals over the knowledge graph
 
-Lane: engine. Code target: `lib/world/npcs.mjs` (state and move generation) and `content/npcs/*.yml` (authored per-NPC data). Neither exists yet. Mechanics around this file are [engine.md](engine.md). Ids and cast are [world.md](world.md). The first incident's facts are [incident.md](incident.md).
+Lane: engine. Code: `lib/world/npcs.mjs` (state and move generation) and `content/npcs/*.yml` (authored per-NPC data, one file per cast member and NORA). Mechanics around this file are [engine.md](engine.md). Ids and cast are [world.md](world.md). The first incident's facts are [incident.md](incident.md).
 
 Status: **working**. This file is the NPC model.
 
@@ -91,6 +91,19 @@ A goal `target` is one of these forms, not a sentence. `who` is `player` or an a
 | `not(pred)` | |
 | `and(pred, pred)` / `or(pred, pred)` | |
 
+The YAML predicate parser also takes these forms and qualifiers:
+
+| Form | True when |
+| --- | --- |
+| `told(who, any, by=player, on=a\|b)` | The player told `who` something whose ids include `a` or `b` |
+| `told(who, any, by=player, on=…, since=goal)` | As above, but only mentions after that NPC asked the question for `goal`. A rule keyed on an answer does not fire in the turn the question was asked |
+| `requested(by, to, action?)` | That request was made |
+| `asked(goal)` | The owner of `goal` has asked its question |
+| `linked(who, a, b)` | One player parse to `who` named an id from `a` and one from `b` |
+| `cited_line()` | The NPC received a record, or was told a world fact the player holds as `knows` |
+| `told_record(who)` | `who` was told a world fact the player holds as `knows` |
+| `read(slug)` / `act(name)` | The player read that document / the session is in that act |
+
 `via` says what may satisfy it. `dialogue` (the default) is scored on response moves. `agenda` is satisfied only by an agenda `emits` event, and dialogue moves score 0 against it. `filter` is a gate on the NPC’s own moves: it does not rank a reply, it blocks one. A `filter` that no player move can change is how a role rule stays put.
 
 | Goal | Target | Via |
@@ -149,6 +162,8 @@ Every NPC turn is one **response move** to the player's parse, plus at most one 
 3. Group the top moves by effect class: `disclose(fact)`, `withhold`, `refer`, `share(doc)`, `act(intervention)`, `ask`, `texture` (`work`, `deflect`, `believe`). If the top three contain more than one class among `disclose`, `withhold`, `share`, and `act`, force the highest-scoring move. Those classes are what make a strategy solvable or not, and leaving them to the model makes the same play unsolvable on one run and finished on the next. If they differ only inside `texture`, `refer`, or `ask`, or they disclose the same fact, pass up to three and let the model pick from how the player acted. Words vary. The effect does not, except inside that allowed set.
 4. Log the candidate set, the pick, and `forced: true` or `false`. Replay uses the log.
 5. Then the initiative step: the highest-scoring initiative move (`volunteer` an answer, `ask`, `share`, `request`) whose goal is past its cooldown, if its score is positive. At most one. Apply the same force rule. The model phrases it as the tail of the same turn.
+
+As implemented: a fact the NPC may volunteer, and a document it may share, score +1 before goals, so a willing holder discloses when no goal is in play. Ties then go, in order, to the move that names the referent, to a fact the player has not already heard from this NPC, to effect-class order, and to authored order. A `conditional` claim policy whose predicate fails yields only the withhold; no other disclosure competes with it in that turn. A rule outcome that `settle()` already delivered this turn is not repeated as the response or the initiative.
 
 Headless runs use the forced move, or the top move when nothing was forced, and a template phrase. Lean (O-30) treats an unforced pick as nondeterminism over the passed set: reachability has to hold for every choice in that set. A forced move is one transition.
 

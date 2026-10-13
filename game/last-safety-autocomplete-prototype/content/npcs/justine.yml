@@ -1,0 +1,58 @@
+# Justine Mwiti. spec/npcs.md "Justine Mwiti", spec/incident.md Justine; voice spec/world.md.
+# Security control needs clearance 3. The player reaches her on the handset.
+id: justine
+presence: body
+voice:
+  structure: The reason before the grant. She asks why someone wants or needs the thing. Need is part of the access question.
+  person: Kenyan English in the wording, not in the spelling. “Sorry” is often pardon, not “I was wrong.” When someone hears the why as suspicion she apologizes for the mix-up and says the grant again.
+  focus: Whether a permission exists
+  sample: "Sorry, the archive. Why do you need it? The grant is the reason and the role. You have the visitor role."
+agenda:
+  - id: justine.visitor_binding
+    room: security
+    acts: [welcome]
+    texture: [binding_issued_this_morning]
+  - id: justine.access_audit
+    room: security
+    acts: [doubt]
+    about: [camera_system, visitor_records, policies]
+    texture: [audit_before_release, camera_service_not_reviewed]
+  - id: justine.review
+    room: security
+    acts: [decision]
+    about: [policies]
+knowledge:
+  binding_issued_this_morning: { stance: knows, policy: answer }
+  audit_before_release: { stance: knows, policy: answer }
+  camera_service_not_reviewed: { stance: knows, policy: answer }
+  camera_service_separate:
+    stance: knows
+    policy: "conditional(told(justine, any, by=player), 'Sorry, why do you need it? The grant is the reason and the role.')"
+documents:
+  sec-arch-04: { policy: answer }
+goals:
+  justine.reason_and_role: { source: role, kind: protect, via: filter, target: "not(restriction(grant_without_reason))" }
+  justine.audit_owners: { source: day, kind: achieve, via: agenda, salience: mid, target: "event(visitor_reader_owned)" }
+  justine.learn_reader:
+    source: plot
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "knows(justine, visitor_lookup)"
+    question: { relation: did_use, about: visitor_records }
+role_rules:
+  - id: justine.audit_named_job
+    when: "told(justine, any, by=player, on=job_284)"
+    do: { act: open_audit }
+  - id: justine.audit_on_request
+    when: "requested(pavel, justine, grant_record)"
+    do: { act: open_audit }
+  - id: justine.revoke_on_request
+    when: "and(requested(pavel, justine, grant_record), knows(justine, visitor_lookup))"
+    do: { act: revoke_grant }
+interventions:
+  revoke_grant:
+    relations: [revoke]
+    objects: [job_284, visitor_records]
+    condition: "or(knows(justine, visitor_lookup), requested(pavel, justine, grant_record))"
+    reason: "Sorry, which job, and why? The grant is the reason and the role."

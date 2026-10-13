@@ -111,7 +111,7 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method !== 'GET') return json(res, 405, { error: 'Only GET supported' });
     const publicPath = url.pathname === '/' ? '/index.html' : url.pathname;
-    const publicLib = new Set(['grammar.mjs', 'floorplan.mjs']);
+    const publicLib = new Set(['grammar.mjs', 'floorplan.mjs', 'world/ranking-tables.mjs']);
     const libName = publicPath.startsWith('/lib/') ? publicPath.slice('/lib/'.length) : '';
     if (publicLib.has(libName)) {
       const data = await readFile(path.join(ROOT, 'lib', libName));

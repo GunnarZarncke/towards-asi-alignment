@@ -2,7 +2,7 @@
 
 Lane: engine (catalog + render); terminal (viewer only). Sources live in [`content/documents/`](../content/documents/). Implementation: [`lib/documents.mjs`](../lib/documents.mjs).
 
-Status: **working** for catalog sources and render rules. Wiring into live `file.read`, `think`, and access grants is not implemented yet. Access tree: [access.md](access.md).
+Status: **working**. Catalog sources and render rules feed live `file.read` and screen reads (`readDocument` in `lib/game.mjs`), think marks, and access grants (`lib/world/terminal-host.mjs`). Access tree: [access.md](access.md).
 
 ## Role in the game
 

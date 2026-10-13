@@ -10,9 +10,13 @@
     "start": "node server.mjs",
     "dev:ui": "node scripts/dev-ui.mjs",
     "dev:terminal": "node scripts/dev-terminal.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "test:engine": "node --test tests/engine.test.mjs tests/npc-enumerate.test.mjs tests/incident-strategies.test.mjs",
+    "playtest": "node scripts/playtest.mjs",
+    "text": "node scripts/text-play.mjs"
   },
   "dependencies": {
-    "three": "0.186.1"
+    "three": "0.186.1",
+    "yaml": "^2.9.1"
   }
 }

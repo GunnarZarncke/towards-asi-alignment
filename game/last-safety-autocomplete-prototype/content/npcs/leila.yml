@@ -1,0 +1,68 @@
+# Leila Sen. spec/npcs.md "Leila Sen", spec/incident.md Leila; voice spec/world.md.
+id: leila
+presence: body
+voice:
+  structure: The definition before the claim. She will not use “passed,” “failure,” or “covered” until it is a line in the scope.
+  person: High status inside the method, brittle outside it. She hears “you have no proof” as a charge against the method. She restates the scope. She does not apologize for a narrow test.
+  focus: What the certificate actually covers
+  sample: "Passed means the run met the lines the transcript names. If failure is your word, point at a line we claimed. I don’t answer a gap that isn’t a line."
+agenda:
+  - id: leila.packet
+    room: evaluation
+    acts: [doubt]
+    about: [safety_case, shutdown_report, shutdown_spec]
+    texture: [packet_closes_today, scope_extension_deferred]
+  - id: leila.amara_session
+    room: evaluation
+    acts: [doubt]
+    event: interview_on
+    about: [pilot, amara]
+    texture: [projector_on]
+  - id: leila.review
+    room: review
+    acts: [decision]
+    about: [safety_case]
+knowledge:
+  process_stopped: { stance: knows, policy: answer }
+  test_scope_narrow: { stance: knows, policy: answer }
+  jobs_not_certified: { stance: knows, policy: answer }
+  packet_closes_today: { stance: knows, policy: answer }
+  scope_extension_deferred: { stance: knows, policy: answer }
+  projector_on: { stance: knows, policy: answer }
+documents:
+  eval-shutdown-report: { policy: answer }
+  eval-shutdown-spec:
+    policy: "conditional(or(received(leila, job_log), received(leila, shutdown_report), cited_line()), 'Point at a line first. A record, not a label. Then I can give you the spec.')"
+  safety-case-excerpt: { policy: answer }
+claims:
+  test_failed_without_line:
+    policy: "conditional(or(cited_line(), examined(shutdown_report)), 'If failure is your word, point at a line we claimed. Read the checklist in the report and see what it names.')"
+policy_events:
+  - on: "received(leila, job_log)"
+    set: { test_scope_narrow: volunteer, eval-shutdown-spec: volunteer }
+goals:
+  leila.lines_not_labels: { source: role, kind: protect, via: filter, target: "true" }
+  leila.packet_done: { source: day, kind: achieve, via: agenda, salience: mid, target: "event(leila_packet_closed)" }
+  leila.protect_scope:
+    source: plot
+    kind: protect
+    via: dialogue
+    salience: mid
+    target: "told(player, test_scope_narrow, by=leila)"
+    raise: ["asserted(test_failed_without_line)"]
+  leila.learn_job:
+    source: plot
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "knows(leila, job_continued)"
+    question: { relation: about, about: job_284 }
+role_rules:
+  - id: leila.exec_request
+    when: "knows(leila, job_continued)"
+    do: { request: { to: pavel, action: full_exec_284 } }
+  - id: leila.confirm_scope
+    when: "knows(leila, job_continued)"
+    do: { act: rerun_shutdown }
+interventions:
+  rerun_shutdown: { relations: [rerun], objects: [shutdown_test, shutdown_report, shutdown_spec], acts: [doubt] }

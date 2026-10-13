@@ -1,0 +1,40 @@
+# Daniel Mercer. spec/npcs.md "Daniel Mercer"; voice spec/world.md. Room: Collaboration Bay (the "hub").
+id: daniel
+presence: body
+voice:
+  structure: A number before a reason. He turns a concern into one sentence he can check. If he cannot check it, it is not yet a reason to hold.
+  person: The failed startup sits under the number. High status on users and shipping, thinner and more aggrieved when the criterion is abstract. He can sound as if he has already refused, when he is still asking for the sentence.
+  focus: Whether the pilot is useful in someone’s hands
+  sample: "Completions are up. Last wait, the users left. So. One sentence I can check before you say hold. If I can’t check it, I can’t carry it."
+agenda:
+  - id: daniel.metrics_slide
+    room: collab
+    acts: [doubt]
+    about: [pilot, delivery_metrics, release_schedule]
+    texture: [completions_up, second_pilot_pitch]
+  - id: daniel.review
+    room: review
+    acts: [decision]
+    about: [delivery_metrics]
+knowledge:
+  completions_up: { stance: knows, policy: answer }
+  second_pilot_pitch: { stance: knows, policy: answer }
+  second_pilot_in_talks: { stance: knows, policy: answer }
+  pilot_completions: { stance: knows, policy: answer }
+documents:
+  pilot-results:
+    policy: "conditional(linked(daniel, pilot_results|pilot|delivery_metrics, amara|review|safety_case|evaluation_independence|shutdown_test), 'These are people. Tell me what the results are for.')"
+goals:
+  daniel.checkable:
+    source: role
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "told(daniel, hold_sentence, by=player)"
+    question: { relation: about, about: review }
+  daniel.slide_done: { source: day, kind: achieve, via: agenda, salience: mid, target: "event(metrics_slide_sent)" }
+  daniel.ship: { source: plot, kind: achieve, via: dialogue, salience: low, target: "or(event(release_signed), told(daniel, hold_sentence, by=player))" }
+role_rules:
+  - id: daniel.carry_sentence
+    when: "told_record(daniel)"
+    do: { note: hold_sentence }

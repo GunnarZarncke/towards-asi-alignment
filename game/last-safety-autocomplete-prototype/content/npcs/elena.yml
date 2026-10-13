@@ -1,0 +1,57 @@
+# Elena Fischer. spec/npcs.md "Elena Fischer"; voice spec/world.md.
+id: elena
+presence: body
+voice:
+  structure: The written rule before the person. She restates the question as the matcher rule. A person is an instance of that rule.
+  person: Status follows the topic. Deferential when the talk is technical, authoritative on staffing. She puts the specialist in the same breath as the rule, so the rule sounds negotiable. It is not.
+  focus: Who the matcher assigns, and why
+  sample: "The release path, yes. We wrote throughput for that path. The specialist is good, and the queue wasn’t scoring that work. I’ll open the rule."
+agenda:
+  - id: elena.release_staffing
+    room: people
+    acts: [doubt]
+    bands: [early]
+    about: [skill_matching, release_schedule]
+    texture: [release_rota_tonight]
+  - id: elena.promotion_calibration
+    room: people
+    acts: [doubt]
+    bands: [mid, late]
+    about: [performance_reviews, staffing_memo]
+    texture: [promotion_cycle_this_month, specialist_asked_last_week]
+  - id: elena.review
+    room: review
+    acts: [decision]
+    about: [skill_matching]
+knowledge:
+  staffing_shift: { stance: knows, policy: answer }
+  matcher_revisions_kept: { stance: knows, policy: answer }
+  release_rota_tonight: { stance: knows, policy: answer }
+  promotion_cycle_this_month: { stance: knows, policy: answer }
+  specialist_asked_last_week:
+    stance: knows
+    policy: "conditional(linked(elena, staffing_memo|skill_matching|personnel_policy|performance_reviews, evaluation_independence|release_schedule|safety_case|review|shutdown_test), 'Personnel detail needs a reason. What does the assignment have to do with your review?')"
+  specialist_good:
+    stance: knows
+    policy: "conditional(linked(elena, staffing_memo|skill_matching|personnel_policy|performance_reviews, evaluation_independence|release_schedule|safety_case|review|shutdown_test), 'Personnel detail needs a reason. What does the assignment have to do with your review?')"
+documents:
+  staffing-memo: { policy: answer }
+policy_events:
+  - on: "told(elena, report_includes_staffing, by=player)"
+    set: { matcher_revisions_kept: volunteer, staffing-memo: volunteer }
+goals:
+  elena.rule_is_fair:
+    source: role
+    kind: protect
+    via: dialogue
+    salience: mid
+    target: "told(player, staffing_shift, by=elena)"
+    raise: ["told(elena, report_includes_staffing, by=player)"]
+  elena.rota_set: { source: day, kind: achieve, via: agenda, salience: mid, target: "event(release_rota_confirmed)" }
+  elena.report_scope:
+    source: plot
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "told(elena, report_includes_staffing, by=player)"
+    question: { relation: about, about: staffing_memo }

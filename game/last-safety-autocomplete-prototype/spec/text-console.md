@@ -1,0 +1,38 @@
+# Text console
+
+Lane: text console. Code: `lib/text/console.mjs` (commands and change printing), `lib/text/view.mjs` (player-visible text view, shared with the playtest harness), `scripts/text-play.mjs` (terminal), `public/text.html` (browser page on `POST /api/text`), `tests/text-console.test.mjs`.
+
+The same game as the room view, with words for the picture. It plays one session through `applyAction` and reads only `ClientState` and `TerminalState` ([contract.md](contract.md)). It never reads oracle facts or NPC records. The browser page shares the cookie session with the graphical UI, so a player can switch between the two mid-visit.
+
+## What it shows
+
+- **Room:** title, the floorplan `role` text, windows, people present (projected people marked), doors with compass wall and whether the badge opens them, screens with read/unread. The floorplan `people` field is not shown; presence comes from state.
+- **Talk:** NPC lines as `Name: text`. The player's own line is not echoed.
+- **Phone:** lines prefixed `[phone]` for new thread messages, notifications (thread notifications are skipped; the message itself prints), and access replies.
+- **Prompt:** clock, fuel, room, and the person you face.
+
+## Not reshowing
+
+After each command the console prints the command's own result, then only what changed since the last command: act, room, arrivals and departures, new NPC lines, newly learned facts (`(noted)`), handset activation, phone traffic, a new thought, a new open question, review callable, ending. A first visit prints the full room; a revisit prints the title, people, and doors. Anything else reprints only on request (`look`, `phone`, `know`, `records`, `status`). An empty line reprints the room.
+
+## Commands
+
+`help` lists them. A bare number picks from the last numbered list (suggestions, screens, files, doors, topics, access paths, thread sends). Unknown input is said to the person you face, through the same parser as the composer (`parseUtterance`; demo grammar without a key).
+
+| Command | Effect |
+| --- | --- |
+| `look`, `exits`, `records`, `who` | room, doors, every screen with its room, people |
+| `go <room>` | walk; several doors if needed (one `go` action per door, so fuel and clock match the room view) |
+| `read <screen>` | inspect a screen in this room; names the room if it is elsewhere |
+| `to <name>` | face someone present |
+| `s [words]` | complete sentences from the O-19 ranker, filtered by words |
+| `say <text>` | typed sentence |
+| `think [topic]`, `keep`, `close` | thought in an empty room; keep writes the note |
+| `know`, `status`, `file` | learned facts, clock and act, file the review |
+| `phone`, `files`, `open`, `msg <who> [text]`, `access`, `request <path> [verb]`, `note`, `share`, `contacts`, `calendar` | handset, after `labAccessActive` |
+
+The terminal script adds `save [file]`, `load <file>`, `reset`, `quit`. In the browser, save and load stay in the room view menu.
+
+## Check
+
+`node --test tests/text-console.test.mjs`: the first room view prints in full and later commands do not reprint it; a picked sentence prints only the change; first visit and revisit differ; no fact text reaches the console unless the player learned it or thought it.

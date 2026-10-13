@@ -44,6 +44,7 @@ export const SETTINGS = Object.freeze([
   { key: 'alwaysShowPhone', label: 'Always show phone' },
   { key: 'demoMode', label: 'Demo / no model' },
   { key: 'parserInspector', label: 'Parser inspector' },
+  { key: 'conceptLinks', label: 'Book concept links' },
 ]);
 
 /** One capability the solo fixture will grant. O-43 is still open. */
@@ -62,6 +63,7 @@ export function defaultSettings() {
     alwaysShowPhone: true,
     demoMode: true,
     parserInspector: false,
+    conceptLinks: false,
   };
 }
 

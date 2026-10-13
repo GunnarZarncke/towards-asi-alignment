@@ -109,6 +109,11 @@ Ids O-01 through O-47. Open items are listed again under Open questions.
 
 O-22 concealment lists. O-45 NPC model numbers. O-47 playtest thresholds. O-27 whether a coherent wrong decision is needed. O-28 whether the simplified lab-sim is actually needed; pipeline TBD. O-37 music, after the story is set. O-42 duration. O-09 still owns the unnumbered fuel, hop, and clock scales. The 100-character cap (O-32) is tentative.
 
+Spec conflicts found while implementing, resolved provisionally in code and waiting on a spec decision:
+
+- [ranking.md](ranking.md) test 7 says two same-branch rows with different action types can both get the diversity bonus. Selection step 4 says the bonus needs both a new branch and a new action type. The code follows step 4; test 7 is written to it.
+- O-47 is not frozen. The first runs (a no-key smoke battery and a 12-step LLM plumbing check, session log 2026-10-13) used provisional thresholds on the command line. They are not the gate values.
+
 Player terminal: reply delay is O-44 (fuel, not a wall clock; the amounts are still O-09). Access grants use a separate delay (reject < grant < walk-and-ask; [access.md](access.md)). Placement is a generic phone overlay—working. The pipeline stays off the terminal. See [terminal.md](terminal.md).
 
 ## Later

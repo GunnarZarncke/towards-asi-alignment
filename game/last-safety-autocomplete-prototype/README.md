@@ -1,8 +1,8 @@
 # The Last Safety Review — semantic autocomplete prototype
 
-A **runnable browser prototype** of the conversation interface proposed for *The Last Safety Review*. It is deliberately ~10% of the proposed game: **the courtyard floorplan, three staffed rooms, three NPCs, one persistent-job incident, one staffing subplot, three evidence records**, and a shared semantic grammar.
+A **runnable browser prototype** of *The Last Safety Review*: the courtyard floorplan, the full cast of eight plus NORA on the Lab Access handset, one incident pack (boundary-too-narrow: a job that kept running after the model passed shutdown), the staffing subplot, three acts on a fuel clock, and a review that ends in one of three arcs.
 
-The primary experiment is **how selected completions and arbitrary typing produce the same structured speech act**, without spoiling unobserved facts.
+Two experiments run together: **selected completions and arbitrary typing produce the same structured speech act** without spoiling unobserved facts, and **NPCs disclose and act by pursuing goals over what they know** ([`spec/npcs.md`](spec/npcs.md)). The engine chooses every NPC move; the model only phrases it.
 
 Development is split so grammar, graphics, and the engine can move in parallel. Start at [`PLAN.md`](PLAN.md). Design detail is in [`spec/`](spec/README.md).
 
@@ -17,45 +17,56 @@ cp .env.example .env
 npm start
 ```
 
-Open **http://127.0.0.1:3000** in a browser. The API key stays on the local Node server, never in browser JavaScript. For a **no-key demo**, set `DEMO_MODE=1` in `.env` (the toy parser does not demonstrate actual LLM quality).
+Open **http://127.0.0.1:3000** in a browser (add `?test=1` for the parser inspector and API usage; **http://127.0.0.1:3000/text.html** is the text version on the same session). The API key stays on the local Node server, never in browser JavaScript. For a **no-key demo**, set `DEMO_MODE=1` in `.env` (the toy parser does not demonstrate actual LLM quality).
 
 **Mobile:** Start the server on your computer and either tunnel `127.0.0.1:3000` through a secure development tunnel or temporarily change the server bind address for trusted LAN testing; the default intentionally accepts local connections only. Do not expose the prototype publicly: it lacks authentication, quotas, and production hardening.
 
 ```bash
-npm test
+npm test                # every suite
+npm run test:engine     # engine scripts, NPC enumeration, incident strategies
+npm run playtest -- --help   # headless persona playtest (spec/playtest.md)
+npm run text            # text-only play in the terminal (spec/text-console.md); --demo for no model
 ```
 
 What that covers, and the other layers: [`spec/testing.md`](spec/testing.md).
 
+The game autosaves to browser local storage. **Save** in the ☰ menu downloads the event log; **Load** replays one.
+
 ## Try these interactions
 
-1. **Zero typing.** In Platform Operations, click **Can** → **NORA** → **access** → **the camera system** → **?**, then **Send**. Watch the right-hand structured parse; no parsing API calls are made for selected completions.
+0. **Arrival.** You start in the commons with Ian. Say anything to him: Lab Access goes live on your handset (topbar button; it blinks on a notification) and the day starts. The topbar shows the visit clock and remaining fuel.
+1. **Zero typing.** In Platform Operations, click **Can** → **NORA** → **access** → **the camera system** → **?**, then **Send**. With `?test=1`, watch the structured parse in the inspector; no parsing API calls are made for selected completions.
 2. **Inspect evidence.** Click **Execution queue excerpt**, then compose **Show** → **Pavel** → **the job log**. The server records that Pavel received it. **Show** suggestions do not include unexamined documents.
 3. **Free typing.** In People Operations, type `What about the new per`. After a short pause, the small model should identify `ask/about` with an unfinished topic `per`; select a contextual completion such as personnel policy.
 4. **Pronoun resolution.** Ask Pavel about job 284, then type `Did it continue after the shutdown?`. The interpreter receives up to two prior exchanges to resolve `it` to `job_284` when context supports it.
 5. **More completions.** Click **Show more** at any step to see additional ranked possibilities (not hints about later scenes).
 6. **Different expertise.** Open **Floorplan** and walk through the technical spine to Leila or Elena. Compare candidate ordering for the same partial text.
 7. **Novel claims.** Type `Don't you think our staffing metrics favor the wrong reviewers?` with Elena. It may map to `assigned` or `open`, but should be conversationally intelligible and get a topic-specific reply, not a boilerplate failure.
+8. **Think.** In an empty room the composer offers only the lightbulb. Think about a record you have read; marked entries come back in a thought bubble, and the hop count is the fuel.
+9. **The review.** Once you hold enough on the record, **File** calls the review early; otherwise it starts at 17:30 or when fuel runs out. Answer Ian, then **File** again to sign. The ending panel shows the arc, which explanations are still open, and whether a restriction is in place.
 
 ## Architecture
 
 ```
 Browser (no key)
-  public/grammar.js       deterministic fragment completion, ranking, insertion
-  public/app.js           incremental text/AST state, debounce, trace, UI
+  public/grammar.js       fragment completion, O-19 ranker (spec/ranking.md), insertion
+  public/app.js           incremental text/AST state, debounce, trace, room UI
+  public/terminal/        Lab Access handset, embedded as an iframe
         │
         ├── selected completion → typed AST patch, NO model call
         └── free typing → POST /api/parse (debounced, retains AST hint)
                                   │
 Local Node server                 ▼
-  lib/grammar.mjs       shared speech acts and relations (served read-only to browser)
-  lib/llm.mjs           Responses API, JSON Schema, compact player-visible vocabulary
-  lib/game.mjs          oracle facts, NPC beliefs, evidence, room state, validated actions
+  lib/grammar.mjs        shared speech acts and relations (served read-only to browser)
+  lib/llm.mjs            Responses API: parse typed text; phrase an engine-chosen move
+  lib/game.mjs           session: fuel, clock, acts, assertions, provenance, review, scores
+  lib/world/             entities, facts, the incident pack, NPC move generation, handset host
+  content/npcs/*.yml     per-NPC knowledge, disclosure policies, goals, agendas
         │
-        └── POST /api/respond → validate structured speech act and update world
+        └── POST /api/respond → applyAction → engine picks each NPC move
                                   │
-                                  └── deterministic response for recognized facts/actions,
-                                      grounded LLM dialogue for other intelligible input
+                                  └── template line, optionally re-worded by the model;
+                                      a wording that adds a time or number is discarded
 ```
 
 ### One semantic grammar
@@ -84,16 +95,15 @@ Sessions reset on server restart. There are no databases, embeddings, vector sea
 - Uses the OpenAI **Responses API** with `text.format.type=json_schema` for parses.
 - Default `OPENAI_MODEL=gpt-4.1-mini`. Change in `.env` if desired. Pricing and model availability may change.
 - The app displays token usage (and a rough estimate at $0.40/M input, $1.60/M output tokens, without accounting for caching).
-- **No live model request was made during preparation** because the authoring environment had no API key. The demo parser and deterministic behavior were exercised, and the API path is implemented against the published Responses API shape.
 
 ## Known limitations and next experiments
 
 - The shared grammar is intentionally small, and the local generator does not cover every well-formed sentence. Arbitrary typed input relies on the small model; live quality requires evaluation.
 - New LLM interpretations can change the AST, and changing an earlier manually edited phrase may invalidate the current anchor. Incremental repair is currently conservative.
 - The submitted action is client-provided and the server validates ID/room/evidence access but is **not hardened against a malicious browser**. Don't treat it as a secure multiplayer platform.
-- The NPC response layer is partly scripted for reproducibility and partly generated for open conversation. It doesn't attempt full social-state simulation.
+- NPC moves come from authored knowledge, policies, and goals; many off-plot questions still get a `work` reply (what the NPC is doing now). The playtest's work-only rate measures that.
 - Pronoun resolution uses previous dialogue, not a complete discourse-reference model.
 - No streaming or speech input. Rooms are live Three.js scenes built from procedural primitives; no asset kit is chosen yet. `npm run dev:ui` shows them on fixtures without the engine.
-- Goal-driven NPCs ([spec/npcs.md](spec/npcs.md)), Lean checks, formal causality and release outcomes are **out of prototype scope**.
+- One incident pack. Lean checks (Gate 6) are not started.
 
 Good next evaluation: 100–200 free-typed partial and full utterances with ground-truth parses, measuring entity grounding, pronoun resolution, premature spoilers, latency and the rate of meaningful `open` vs. `unintelligible` classifications.

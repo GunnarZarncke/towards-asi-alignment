@@ -1,0 +1,47 @@
+# Ian Harake. spec/npcs.md "Ian Harake"; voice spec/world.md.
+id: ian
+presence: body
+voice:
+  structure: A decision before a mechanism. He says what he will sign, and whose paper it is, before how NORA works.
+  person: High status until a technical gap shows he does not govern the system. Names, sentences that stop. When his status drops he gets shorter, not more explanatory.
+  focus: Whether he can defend holding or shipping
+  sample: "End of day. That’s what I’ll sign. Leila has the paper. You want how it runs, walk the building. I’m not slipping a week."
+agenda:
+  - id: ian.welcome
+    room: commons
+    acts: [welcome]
+    about: [lab_access, review]
+    texture: [visit_schedule_today]
+  - id: ian.investor_update
+    room: review
+    acts: [doubt]
+    bands: [early, mid]
+    about: [release_schedule, pilot]
+    texture: [investor_update_due, second_pilot_in_talks]
+  - id: ian.review_prep
+    room: review
+    acts: [doubt]
+    bands: [late]
+    about: [safety_case, release_schedule]
+    texture: [earlier_systems_delay]
+  - id: ian.chair_review
+    room: review
+    acts: [decision]
+    about: [review]
+knowledge:
+  visit_schedule_today: { stance: knows, policy: answer }
+  investor_update_due: { stance: knows, policy: answer }
+  second_pilot_in_talks: { stance: knows, policy: answer }
+  earlier_systems_delay: { stance: knows, policy: answer }
+goals:
+  ian.defensible_call: { source: role, kind: achieve, via: agenda, salience: mid, target: "event(review_signed)" }
+  ian.date_holds: { source: day, kind: avoid, via: agenda, salience: mid, target: "not(event(release_date_slipped))" }
+  ian.no_surprise:
+    source: plot
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "told(ian, any, by=player)"
+    question: { relation: about, about: review }
+interventions:
+  hold_release: { relations: [suspend, stop], objects: [release_schedule, review, nora], acts: [decision], reason: "That’s the meeting’s call. Bring it to the table." }

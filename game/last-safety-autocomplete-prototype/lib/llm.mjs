@@ -1,4 +1,4 @@
-import { ENTITIES } from './game.mjs';
+import { ENTITIES } from './world/entities.mjs';
 import { explainGrammar, KINDS, RELATIONS, SLOT_TYPES, makeParse } from './grammar.mjs';
 
 const PARSE_SCHEMA = {
@@ -33,6 +33,11 @@ async function responsesRequest(system, user, format, stats, max_output_tokens=4
     if(!output)throw Error('The model returned no text.');
     return output;
   } finally {clearTimeout(timer)}
+}
+
+/** Plain text completion for the headless playtest player. Null in demo mode. */
+export function modelText(system, user, stats, max_output_tokens=200){
+  return responsesRequest(system, user, null, stats, max_output_tokens);
 }
 
 function demoParse(text, known){
@@ -85,13 +90,26 @@ export async function parseUtterance({text,known,history,actorId,previousParse,c
   return sanitizeParse(JSON.parse(out),known);
 }
 
-export async function freeReply({text,parse,npcState,history},stats){
-  if(!process.env.OPENAI_API_KEY||process.env.DEMO_MODE==='1'){
-    return `You're asking about ${parse.open_content || 'that connection'}. I can discuss what I actually know, but I don't want to imply a conclusion from the phrasing alone.`;
-  }
-  const system=`You are ${npcState.name}, ${npcState.role}, an NPC in a serious research-lab mystery. ${npcState.voice}\nRespond naturally and specifically to the player's utterance. One or two sentences, max 55 words. You may express uncertainties, challenge assumptions and ask a relevant clarifying question. Stay grounded in ONLY the supplied facts and shared documents. You may discuss novel hypotheses but never assert they are true without supplied evidence. Do not invent specific system events, permissions, documents or secrets. If player is unclear, ask about concrete ambiguous referents. You are not a helpful AI assistant; speak as a person.`;
-  const input=JSON.stringify({your_known_facts:npcState.facts,documents_shown_to_you:npcState.shared,conversation_topics:npcState.canDiscuss,
-    previous_utterances:history.slice(-4),player_utterance:text,parsed_interpretation:parse});
-  const result=await responsesRequest(system,input,null,stats,130);
-  return result.trim().slice(0,700);
+const NUMBERS=/\b\d{1,2}:\d{2}\b|\b\d{2,}\b/g;
+
+/** A phrasing may not add a time or number the move does not carry (O-21: the model adds no move). */
+export function phrasingAdds(reply,{facts,texture,question,document,reason},template){
+  const allowed=new Set([facts,texture,question,document,reason,template].flat().filter(Boolean).join(' ').match(NUMBERS)||[]);
+  return (reply.match(NUMBERS)||[]).filter(x=>!allowed.has(x));
+}
+
+/**
+ * Phrase one engine-chosen move. Input is phrasingInput() from game.mjs: the move, the facts it
+ * carries, voice, agenda texture. Returns the template in demo mode or when the phrasing adds content.
+ */
+export async function freeReply({text,phrasing,template,history},stats){
+  if(!process.env.OPENAI_API_KEY||process.env.DEMO_MODE==='1')return template;
+  const p=phrasing;
+  const system=`You are ${p.name}, ${p.role}, in a serious research-lab mystery. Voice: ${p.voice?.structure||''} ${p.voice?.focus||''} Example of how you talk: "${p.voice?.sample||''}"\nThe engine has already chosen what you do this turn: ${p.move}. Phrase exactly that, in one or two sentences, at most 45 words. State only the supplied facts. Do not add events, times, numbers, permissions, documents, people, or conclusions. If the move is withhold, give the reason without the withheld content. If refer, name only the person given. If ask, ask only the supplied question. Speak as a person, not an assistant.`;
+  const input=JSON.stringify({move:p.move,facts:p.facts,reason:p.reason,refer_to:p.referTo,document:p.document,question:p.question,
+    your_work_right_now:p.texture,template_wording:template,
+    previous_utterances:history.slice(-4).map(x=>({speaker:x.role==='npc'?x.npc:'player',text:String(x.text).slice(0,240)})),player_utterance:text});
+  const result=(await responsesRequest(system,input,null,stats,120))?.trim().slice(0,400);
+  if(!result||phrasingAdds(result,p,template).length)return template;
+  return result;
 }

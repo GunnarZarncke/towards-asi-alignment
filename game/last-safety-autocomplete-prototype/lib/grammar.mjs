@@ -18,6 +18,7 @@ export const RELATIONS = {
   revoke: "(grant or job) Ask the access owner to remove a permission.",
   rerun: "(test) Ask the evaluation owner to run a test again.",
   stop: "(process) Ask the runtime owner to stop a process.",
+  join: "(person) Ask a remote person to join this room by projection.",
   open: "Interpretable natural-language proposition outside the typed relation vocabulary."
 };
 export const SLOT_TYPES = ["opening", "subject", "relation", "object", "recipient", "evidence", "topic", "finish", "none"];

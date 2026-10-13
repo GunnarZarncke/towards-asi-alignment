@@ -4,16 +4,17 @@ Structure only. Design detail lives in [`spec/`](spec/README.md). [`last-safety-
 
 ## Lanes
 
-Four lanes can proceed at the same time. Composition only wires them. Playtest only drives the engine through the same endpoints a player uses.
+Four lanes can proceed at the same time. Composition only wires them. Playtest and the text console only drive the engine through the same entry point a player uses.
 
 | Lane | Spec | May edit | Solo check |
 | --- | --- | --- | --- |
-| Grammar | [spec/grammar.md](spec/grammar.md), [spec/ranking.md](spec/ranking.md) | `lib/grammar.mjs`, `public/grammar.js`, `tests/grammar*.mjs` | `npm test` |
-| Graphics / UI | [spec/graphics-ui.md](spec/graphics-ui.md) | `public/index.html`, `public/style.css`, `public/app.js`, future `public/render/` | `npm run dev:ui` (fixture; see below) |
+| Grammar | [spec/grammar.md](spec/grammar.md), [spec/ranking.md](spec/ranking.md) | `lib/grammar.mjs`, `public/grammar.js`, `lib/world/ranking-tables.mjs`, `tests/grammar*.mjs`, `tests/ranking.test.mjs` | `npm test` |
+| Graphics / UI | [spec/graphics-ui.md](spec/graphics-ui.md) | `public/index.html`, `public/style.css`, `public/app.js`, `public/render/` | `npm run dev:ui` (fixture; see below) |
 | Terminal | [spec/terminal.md](spec/terminal.md) | `public/terminal/`, `tests/terminal*.mjs` | `npm run dev:terminal` (fixture; see below) |
-| Engine | [spec/engine.md](spec/engine.md), [spec/npcs.md](spec/npcs.md), [spec/world.md](spec/world.md), [spec/documents.md](spec/documents.md), [spec/access.md](spec/access.md) | `lib/game.mjs`, `lib/documents.mjs`, `lib/access.mjs`, `content/documents/`, future `lib/world/` and `content/npcs/`, `tests/engine*.mjs`, `tests/documents.test.mjs`, `tests/access.test.mjs` | `npm test` |
-| Composition | [spec/contract.md](spec/contract.md) | `server.mjs`, `lib/llm.mjs` | `npm start` |
-| Playtest | [spec/playtest.md](spec/playtest.md) | future `scripts/playtest.mjs`, `playtest/personas/` | `npm run playtest` (target) |
+| Engine | [spec/engine.md](spec/engine.md), [spec/npcs.md](spec/npcs.md), [spec/world.md](spec/world.md), [spec/documents.md](spec/documents.md), [spec/access.md](spec/access.md) | `lib/game.mjs`, `lib/documents.mjs`, `lib/access.mjs`, `content/documents/`, `lib/world/`, `content/npcs/`, `tests/engine*.mjs`, `tests/npc-enumerate.test.mjs`, `tests/incident-strategies.test.mjs`, `tests/documents.test.mjs`, `tests/access.test.mjs` | `npm run test:engine` |
+| Composition | [spec/contract.md](spec/contract.md) | `server.mjs`, `lib/llm.mjs`, `lib/phrase.mjs` | `npm start` |
+| Text console | [spec/text-console.md](spec/text-console.md) | `lib/text/`, `scripts/text-play.mjs`, `public/text.html`, `tests/text-console.test.mjs` | `npm run text -- --demo` |
+| Playtest | [spec/playtest.md](spec/playtest.md) | `scripts/playtest.mjs`, `playtest/personas/` (reads `lib/text/view.mjs`) | `npm run playtest -- --help` |
 
 Shared reading for every lane: [spec/meta.md](spec/meta.md), [spec/contract.md](spec/contract.md), and [spec/testing.md](spec/testing.md). World content is engine-owned; graphics reads it and does not edit it.
 
@@ -39,14 +40,15 @@ Map and concept: [spec/testing.md](spec/testing.md). In-fiction shutdown tests a
 | What | How | Needs |
 | --- | --- | --- |
 | Grammar alone | `npm test` | Node. No key, no browser. |
-| Engine alone | `npm run test:engine` | Scripted actions against `lib/game.mjs`. No browser, no model. Includes the incident scripts in [spec/incident.md](spec/incident.md) once that model exists. |
+| Engine alone | `npm run test:engine` | Scripted actions through `applyAction`. No browser, no model. Includes the NPC enumeration and the incident scripts in [spec/incident.md](spec/incident.md). |
 | Graphics alone | `npm run dev:ui` | Frozen `fixtures/client-state.json` plus a scene fixture. No engine, no key. |
 | Terminal alone | `npm run dev:terminal` | Frozen `fixtures/terminal-session.json`. Lab Access overlay on a dummy room (fixture already activated); no engine, no key. |
-| LLM playtest | `npm run playtest` (target) | Repo-root `.env`. Persona agents play headless against the engine; measures and stops in [spec/playtest.md](spec/playtest.md). Not a gate by itself. |
+| LLM playtest | `npm run playtest -- --player llm --work-only-max R --repeat-max R --stall-max N` | Repo-root `.env`. Persona agents play headless against the engine; measures and stops in [spec/playtest.md](spec/playtest.md). Not a gate by itself. `--player smoke` runs the harness with no key. |
+| Text only | `npm run text` (terminal) or `/text.html` on `npm start` | No browser for the first. Live parse with a key; `--demo` forces the local grammar. |
 | One room, live parse | `npm start`, then the browser | Repo-root `.env` (`OPENAI_API_KEY`). `DEMO_MODE=1` skips the model. |
 | All together | `npm start` | Composition server on `127.0.0.1:3000`. |
 
-`dev:ui` loads fixture state and scene data (`npm run dev:ui` → port 3001). `dev:terminal` loads the phone fixture (`npm run dev:terminal` → port 3002). `test:engine` is still a target harness. Grammar is `npm test`; the combined app is `npm start`.
+`dev:ui` loads fixture state and scene data (`npm run dev:ui` → port 3001). `dev:terminal` loads the phone fixture (`npm run dev:terminal` → port 3002). `npm test` runs every suite, `test:engine` the engine layers only; the combined app is `npm start`.
 
 Fixtures live in `fixtures/`. Each lane may add fixtures for its solo check. A fixture is data, not a second world model.
 
@@ -56,13 +58,15 @@ Gates say when a combination is worth playing. Lanes do not wait on each other b
 
 | Gate | Together, the build can… | Still open in meta |
 | --- | --- | --- |
-| 0 — now | Parse and speak in three rooms with three people and three records. | Almost everything in the full cast and plot. |
+| 0 | Parse and speak in three rooms with three people and three records. | Almost everything in the full cast and plot. |
 | 1 — one incident | Run the shutdown causal model: three explanations, six facts, four interventions, per-character knowledge and policies for Pavel, Leila, and Justine on the handset (no security room yet). Elena stays for the staffing side. Different strategies justify different score pairs, as in [spec/incident.md](spec/incident.md). Enumerated no-dead-end and no-leak checks pass. No new dialogue and no new rooms. | Other packs after this one checks. O-45. O-09 numbers. |
 | 2 — playable model | Disclose a fact and get a new observable from the person who can act on it. NPC goals, agendas, and initiative questions for the full cast. Finish high on control and low on identifying intention, and the reverse. LLM playtest below its frozen thresholds, with zero leaks. | O-26, O-27 for the full meeting. O-46, O-47. |
 | 3 — one room drawn | Show Platform Operations in play and in surveillance mode, on engine state. | Music (O-37), after the story is set. Conversation detail for characters later (O-34, O-35). |
 | 4 — slice | Play that incident through several rooms, with both success measures still distinct. | |
 | 5 — full day | Walk the nine-room cast through three acts. | Duration (O-42). |
 | 6 — language and proofs | Reject leaked facts and illegal transitions in tests. Lean on the declarative model: designated end-states reachable, fuel as the forcing parameter, no collapse to one end-state before act III. | Whether the simplified lab-sim copy is needed (O-28). |
+
+Where the build is: the Gate 1 headless checks run in `npm run test:engine` (incident strategies, enumeration, no leak). The Gate 2 engine pieces (full cast goals, agendas, initiative questions, both score directions) are in. Gate 2 still needs an LLM playtest at frozen O-47 thresholds. Lean (Gate 6) is not started.
 
 A post-game transfer scenario (a second system, scored on whether the player spots a missing boundary) is out of this plan. See [spec/meta.md](spec/meta.md).
 

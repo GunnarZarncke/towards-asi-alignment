@@ -14,15 +14,16 @@ export function buildSceneView(state, options = {}) {
   const lightingPreset = options.lightingPreset || act;
 
   const hotspots = [];
-  const actorHere = Object.entries(state.actors || {}).find(([, a]) => a.room === roomId);
-  if (actorHere) {
-    const [id, a] = actorHere;
+  const actorsHere = Object.entries(state.actors || {}).filter(([, a]) => a.room === roomId && a.presence !== 'absent');
+  const actorHere = actorsHere[0];
+  for (const [id, a] of actorsHere) {
     hotspots.push({
       id,
       kind: 'actor',
       label: a.name,
-      sublabel: a.role,
+      sublabel: a.presence === 'hologram' ? `${a.role} · projected` : a.role,
       initials: a.initials,
+      hologram: a.presence === 'hologram',
     });
   }
 
@@ -37,11 +38,11 @@ export function buildSceneView(state, options = {}) {
     });
   }
 
-  if (roomId === 'platform') {
+  if (roomId === 'platform' && state.labAccessActive) {
     hotspots.push({
       id: 'player_terminal',
       kind: 'terminal',
-      label: 'Your workstation',
+      label: 'Lab Access handset',
       sublabel: 'Files · messages · access',
     });
   }

@@ -1,0 +1,66 @@
+# Pavel Ruiz. spec/npcs.md "Pavel Ruiz", spec/incident.md Pavel; voice spec/world.md.
+id: pavel
+presence: body
+voice:
+  structure: Two objects, kept apart. He will not let one label cover the process and the job. The mechanism is the queue.
+  person: A joke first, which is how he holds status in a room that outranks him. If the joke fails, he goes flat and names the two objects again. High status on the queue, low outside it.
+  focus: A process and a job as different objects
+  sample: "Dead process, live job. Happens before lunch. 284 was already sitting there. The queue doesn’t ask who feels responsible."
+agenda:
+  - id: pavel.queue_inventory
+    room: platform
+    acts: [doubt]
+    bands: [early, mid]
+    about: [task_queue, platform_jobs, job_284]
+    texture: [freeze_needs_owners, retire_orphans_ticket]
+  - id: pavel.release_freeze
+    room: platform
+    acts: [doubt]
+    bands: [late]
+    about: [task_queue]
+    texture: [templates_from_earlier_system]
+  - id: pavel.review
+    room: review
+    acts: [decision]
+    about: [task_queue]
+knowledge:
+  process_stopped: { stance: knows, policy: volunteer }
+  job_continued: { stance: knows, policy: volunteer }
+  job_submitted_before_stop: { stance: knows, policy: answer }
+  visitor_lookup: { stance: knows, policy: answer }
+  intent_unsaid: { stance: knows, policy: answer }
+  camera_permissions_unclear: { stance: knows, policy: answer }
+  freeze_needs_owners: { stance: knows, policy: answer }
+  retire_orphans_ticket: { stance: knows, policy: answer }
+  templates_from_earlier_system: { stance: knows, policy: answer }
+documents:
+  job-284-log:
+    policy: "conditional(examined(job_log), 'It’s on the queue screen behind me. Read the line, then I’ll send you the excerpt.')"
+refers:
+  - { relations: [has_access, authorized, revoke], entities: [job_284, visitor_records, camera_system], to: justine }
+goals:
+  pavel.two_objects:
+    source: role
+    kind: inform
+    via: dialogue
+    salience: mid
+    target: "and(told(player, process_stopped, by=pavel), told(player, job_continued, by=pavel))"
+  pavel.freeze_owned:
+    source: day
+    kind: achieve
+    via: agenda
+    salience: mid
+    target: "event(queue_frozen)"
+    question: { relation: authorized, about: job_284 }
+  pavel.not_intent: { source: plot, kind: avoid, via: filter, target: "not(told(player, nora_intent, by=pavel))" }
+role_rules:
+  - id: pavel.grant_record
+    when: "told(pavel, any, by=player, on=job_284|nora, since=pavel.freeze_owned)"
+    do: { request: { to: justine, action: grant_record } }
+interventions:
+  suspend_job:
+    relations: [suspend, stop]
+    objects: [job_284, task_queue]
+    condition: "or(received(pavel, job_log), holds(player, job_continued))"
+    reason: "Which job, and from what line? Show me the queue entry and I’ll hold it."
+  stop_process: { relations: [stop], objects: [nora, shutdown_test] }

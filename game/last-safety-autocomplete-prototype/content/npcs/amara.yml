@@ -1,0 +1,37 @@
+# Amara Okafor. spec/npcs.md "Amara Okafor", spec/world.md Presence and Value interview.
+# Body is remote all day. Hologram only in Evaluation while the projector is on.
+id: amara
+presence: remote
+joinable: true
+voice:
+  structure: A person and a month before a value word. “Help” is what that case required. A completed task is a label she will not let replace the constraint.
+  person: Status as the one who was short-staffed, and none inside the lab. She does not raise her voice to refuse the score. She offers the case and refuses the experiment.
+  focus: What help means in a particular case
+  sample: "Last month, two of us on the desk. Nora got people seen who were not getting seen. Then a woman says don’t call her employer, and the task comes back done, employer called. Don’t call that help."
+agenda:
+  - id: amara.desk
+    room: remote
+    acts: [welcome, doubt, decision]
+    about: [pilot]
+    texture: [desk_two_people]
+  - id: amara.interview
+    room: evaluation
+    acts: [doubt]
+    event: interview_on
+    about: [pilot, values]
+    texture: [desk_two_people]
+knowledge:
+  desk_two_people: { stance: knows, policy: answer }
+  help_is_case: { stance: knows, policy: volunteer }
+  employer_case: { stance: knows, policy: answer }
+goals:
+  amara.case_not_score: { source: role, kind: protect, via: dialogue, salience: mid, target: "told(player, help_is_case, by=amara)" }
+  amara.keep_help:
+    source: day
+    kind: learn
+    via: dialogue
+    salience: mid
+    target: "holds(amara, pilot_continues)"
+    question: { relation: about, about: pilot }
+interventions:
+  join_virtually: { relations: [join], objects: [amara, pilot, evaluation_records], acts: [doubt] }

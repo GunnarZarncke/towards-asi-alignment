@@ -6,10 +6,13 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-10-13 | **Registry contract sync and Metaculus export** — Sync frozen claims contracts from TSA; Metaculus listing packet with registry resolution fine print. | [2026-10-13-registry-contract-sync.md](2026-10-13-registry-contract-sync.md) |
+| 2026-10-13 | **Registry contract sync from TSA (markets 2–3, 5–18)** — User: bring ai-safety-claims markets in sync with TSA like Market 4; skip Market 1 (in progress) ... | [2026-10-13-registry-contract-sync.md](2026-10-13-registry-contract-sync.md) |
+| 2026-10-13 | **Prediction background wiki quotes (markets 1–4)** — Apply LessWrong wiki quotes in Metaculus `predictionbackground` for the first four catalog market... | [2026-10-13-prediction-background-wikiq.md](2026-10-13-prediction-background-wikiq.md) |
 | 2026-10-13 | **Player documents prose and IDs** — Rewrite Last Safety player docs for a general audience; fix anachronistic provenance and vague ti... | [2026-10-13-player-docs-prose-ids.md](2026-10-13-player-docs-prose-ids.md) |
+| 2026-10-13 | **Last Safety: text console and overlay UI** — Gunnar asked for two game modifications. First, extend headless mode into a text-only interface: ... | [2026-10-13-last-safety-text-console-overlay-ui.md](2026-10-13-last-safety-text-console-overlay-ui.md) |
 | 2026-10-13 | **Last Safety testing spec** — Gunnar asked for more specification of the game's testing parts and a small testing concept. | [2026-10-13-last-safety-testing-spec.md](2026-10-13-last-safety-testing-spec.md) |
 | 2026-10-13 | **Last Safety spec cleanup** — Gunnar asked for another pass on the Last Safety spec: cut leftover hypothesis-log and storylet l... | [2026-10-13-last-safety-spec-cleanup.md](2026-10-13-last-safety-spec-cleanup.md) |
+| 2026-10-13 | **Last Safety: implement the spec** — Gunnar asked to implement `game/last-safety-autocomplete-prototype/spec/`. Scope agreed in-sessio... | [2026-10-13-last-safety-implement-spec.md](2026-10-13-last-safety-implement-spec.md) |
 | 2026-10-13 | **Last Safety grammar, think, incident tables** — Gunnar asked to join the grammar to the NPC model (interventions, tell = assert, commit), replace... | [2026-10-13-last-safety-grammar-incident.md](2026-10-13-last-safety-grammar-incident.md) |
 | 2026-10-13 | **Last Safety goal-driven NPCs** — Gunnar chose option A (NPC goals over the knowledge graph instead of many storylets). He asked fo... | [2026-10-13-last-safety-goal-driven-npcs.md](2026-10-13-last-safety-goal-driven-npcs.md) |
 | 2026-10-13 | **Last Safety courtyard floorplan** — Integrate the verified courtyard floorplan into the Last Safety prototype. | [2026-10-13-last-safety-floorplan.md](2026-10-13-last-safety-floorplan.md) |
@@ -18,13 +21,10 @@
 | 2026-10-12 | **Security concept pack flags** — Mark `game/last-safety-autocomplete-prototype/drafts/security-concept.md` so packs can conditiona... | [2026-10-12-security-concept-pack-flags.md](2026-10-12-security-concept-pack-flags.md) |
 | 2026-10-12 | **Player documents content home** — Move security architecture draft to a proper place; adapt plans for document sources and model re... | [2026-10-12-player-documents-content.md](2026-10-12-player-documents-content.md) |
 | 2026-10-12 | **Outer alignment field home** — Give TSA a clear home for Outer Alignment as a named AT safety subject (not a native TSA object):... | [2026-10-12-outer-alignment-home.md](2026-10-12-outer-alignment-home.md) |
-| 2026-10-12 | **Greenblatt control-measures cite** — Cite Greenblatt 2025 *An overview of control measures* (tier 1 + App B + Ch. 43). Do not hang a c... | [2026-10-12-greenblatt-control-measures-cite.md](2026-10-12-greenblatt-control-measures-cite.md) |
-| 2026-10-11 | **Last Safety Review specs commit** — Gunnar asked for end of session and to commit the Last Safety Review specs. | [2026-10-11-last-safety-review-specs-commit.md](2026-10-11-last-safety-review-specs-commit.md) |
-| 2026-10-11 | **FLI Safety Index chapter cites** — Cite the Future of Life Institute AI Safety Index (Summer 2026) in chapters only, quoting the rep... | [2026-10-11-fli-safety-index-cites.md](2026-10-11-fli-safety-index-cites.md) |
 
 ## Archive by month
 
-- **2026-10** (47): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (50): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

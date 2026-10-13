@@ -85,7 +85,15 @@ Use one furniture kit. Do not mix Kenney and KayKit in one lab. Custom work the 
 
 ## Interface
 
-The shell already has: doors from the current room, evidence list, known entities, conversation, composer, suggestion row, parse inspector, construction trace, token usage.
+The room view fills the window. Everything else floats over it:
+
+- top bar: room and act, clock and fuel, Play / Cam / Map, the Notebook drawer (doors, records, what the player knows), the Lab Access launcher, and a menu (save, load, reset, text version);
+- bottom panel: people present (addressee chips), recent talk, composer, suggestion chips, the More link;
+- thought bubble and ending card near the top.
+
+On a viewport narrower than the room (a phone held upright), the canvas is at least 1.5 × the viewport height wide and scrolls sideways. Each frame the renderer reports the player's screen position (`RoomRenderer.playerScreen()`, `onFrame`) and the page keeps the player near the middle. A manual swipe or wheel pauses the follow for a few seconds.
+
+Debug panels show only in test mode: the parser inspector (structured meaning, construction trace, resolving “it”, API usage), the demo/live pill, and the parser indicator. Test mode is `?test=1` on the URL, and always on in `npm run dev:ui`. The handset's own Parser inspector setting ([terminal.md](terminal.md)) is separate and stays inside the phone.
 
 The floorplan button opens the verified courtyard plan (`public/floorplan.svg`). The current room is marked. A click walks one door from `lib/floorplan.mjs`. The prototype badge is clearance 2, so the test bay and security control stay shut. The engine rejects any other move.
 

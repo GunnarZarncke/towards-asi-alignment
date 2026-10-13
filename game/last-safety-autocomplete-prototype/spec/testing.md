@@ -26,11 +26,11 @@ Bottom layer runs on every commit. Upper layers run when their gate or content c
 | Layer | Sees | Owns | Command | Stop |
 | --- | --- | --- | --- | --- |
 | 1. Lane units | That lane’s lib plus its fixtures | Each lane | `npm test` | Any fail: fix that lane before content or playtest |
-| 2. Engine scripts | Session, world, payloads | Engine | `npm run test:engine` (target) | Empty move set or leak in a payload: fix engine. Illegal transition: fix engine. Do not add a goal to paper over it |
+| 2. Engine scripts | Session, world, payloads | Engine | `npm run test:engine` | Empty move set or leak in a payload: fix engine. Illegal transition: fix engine. Do not add a goal to paper over it |
 | 3. NPC enumerate | Kind × relation × known ids, per NPC, per act | Engine | part of `test:engine` | Empty legal move set: engine bug. Leak by id: policy or filter bug |
-| 4. Incident strategies | Scripted Parses; epistemic and control scores | Engine (tables in [incident.md](incident.md)) | part of `test:engine` after Gate 1 tables exist | All strategies the same score pair: change the tables, not goals or scenes |
+| 4. Incident strategies | Scripted Parses; epistemic and control scores | Engine (tables in [incident.md](incident.md)) | part of `test:engine` | All strategies the same score pair: change the tables, not goals or scenes |
 | 5. Fixtures (graphics, terminal) | Frozen `ClientState` / `TerminalState` | Graphics, terminal | `npm run dev:ui`, `npm run dev:terminal`, plus `tests/terminal.test.mjs` | Fixture that contains an oracle sentence: fail. Renderer that needs a field not on `ClientState`: contract change, not a UI workaround |
-| 6. LLM playtest | Player-visible only | Playtest | `npm run playtest` (target) | [playtest.md](playtest.md) measures. Advisory except leak count and empty move set, which fail the gate |
+| 6. LLM playtest | Player-visible only | Playtest | `npm run playtest -- --player llm …` (thresholds required on the command line); `--player smoke` is a no-key harness check, not a layer-6 result | [playtest.md](playtest.md) measures. Advisory except leak count and empty move set, which fail the gate |
 | 7. Lean | Declarative knowledge + action model | Formal, later | Gate 6 | Reachability of designated end-states; fuel as forcing; no collapse to one end-state before act III ([engine.md](engine.md), O-29) |
 
 Composition (`npm start`) is a smoke, not a layer. It is allowed after layer 1 is green. It does not close a gate.
@@ -42,19 +42,15 @@ What exists now, and what each file is for:
 | Files | Asserts |
 | --- | --- |
 | `tests/grammar.test.mjs` | Completions stay in the player vocabulary. Hidden facts are not offered. Document ids are not autocomplete picks. Typed `Parse` after fragment insert |
+| `tests/ranking.test.mjs` | The ranking cases in [ranking.md](ranking.md), the channel cases in [grammar.md](grammar.md), reply openings. Hand-built projections only |
 | `tests/documents.test.mjs` | Pack-conditional render. Catalog ids and slugs. `leanKnowledge` false docs do not add knowledge edges |
 | `tests/access.test.mjs` | Tree shape, list-before-children, delay order, catalog paths exist |
 | `tests/terminal.test.mjs` | Isolate tools only. Oracle paths and unreleased messages stay off the projection. Overlay waits on `labAccessActive`. Fixture has no session problems |
+| `tests/engine.test.mjs` (layer 2) | Act I and Lab Access; fuel and clock; leak walk over `clientState`; both review routes; tutorial think; DM delay and provenance; Amara's hologram; save/replay equality and import rejection |
+| `tests/npc-enumerate.test.mjs` (layer 3) | Three states × eight NPCs × the finite parse grid: non-empty move set, payload facts visible, shares and acts owned, goals do not name explanation ids |
+| `tests/incident-strategies.test.mjs` (layer 4) | The five scripts in [incident.md](incident.md) land on their score pairs, with provenance |
 
-Missing, still owned by the named lane:
-
-| Missing | Lane | First check to add |
-| --- | --- | --- |
-| `tests/engine*.mjs` | Engine | Scripted `go` / `inspect` / `show` / ask / reset; payload leak filter; Lab Access flag; hologram cannot `go`; Amara not a contact until introduced |
-| `tests/ranking.test.mjs` | Grammar | Order uses only player-visible graph fields ([ranking.md](ranking.md)). Oracle and NPC goals do not change rank |
-| `tests/npc-enumerate.mjs` | Engine | Finite parse grid, non-empty move set, leak-by-id ([npcs.md](npcs.md) invariants) |
-| `tests/incident-strategies.mjs` | Engine | The five scripts in [incident.md](incident.md) once tables are filled |
-| Graphics Node tests | Graphics | None required. Solo check is the fixture harness. A screenshot gold file is not a gate |
+Graphics has no Node tests. Its solo check is the fixture harness. A screenshot gold file is not a gate.
 
 Fixtures are data for a frozen observer. They are not a second world model. A fixture that needs a new fact is a request to the engine, then a new dump of `ClientState`.
 

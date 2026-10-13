@@ -213,3 +213,9 @@ textarea:focus, input:focus { outline: 2px solid #8fb5a8; border-color: transpar
   .screen { border-radius: 0; height: 100dvh; }
   .status { padding-top: calc(8px + env(safe-area-inset-top)); }
 }
+
+/* Embedded in the room UI (?embed=1): the room page draws the room; this page draws only the handset. */
+body.embed { background: transparent; }
+body.embed .room { display: none; }
+body.embed .stage { display: block; min-height: 100vh; }
+body.embed .phone-slot { min-height: 100vh; }

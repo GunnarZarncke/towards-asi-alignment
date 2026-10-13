@@ -14,6 +14,7 @@ Working copy for implementation. The development sequence is [`../PLAN.md`](../P
 | [npcs.md](npcs.md) | engine | NPC knowledge, disclosure policies, goals, moves, initiative questions, days at work |
 | [incident.md](incident.md) | engine (first content) | Shutdown incident, failure-mode packs, NPC moves for the first pack |
 | [testing.md](testing.md) | all (read) | Planes, layers, lane-unit map, what a player-plane test may cite, gates |
+| [text-console.md](text-console.md) | text console | Text-only play in the terminal or browser: commands, change printing |
 | [playtest.md](playtest.md) | playtest | Headless scripted and LLM player runs, measures, stops |
 | [world.md](world.md) | engine (content) | Premise, acts, cast, presence (body / hologram), floorplan, plots, endings; lineage background (not a plot) |
 | [documents.md](documents.md) | engine | Player document catalog, pack-conditional render, analyze / Lean rules |
