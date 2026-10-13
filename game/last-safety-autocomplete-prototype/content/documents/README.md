@@ -2,7 +2,7 @@
 
 Authoring sources for lab documents the evaluator can receive through Lab Access (Files / Knowledge), after `access.request`, an NPC share, or a visit share.
 
-**Do not edit served text in fixtures by hand.** Change the source here; the engine renders it with [lib/documents.mjs](../lib/documents.mjs) for the loaded pack. Spec: [spec/documents.md](../spec/documents.md). Access tree: [spec/access.md](../spec/access.md).
+**Do not edit served text in fixtures by hand.** Change the source here; the engine renders it with [lib/documents.mjs](../../lib/documents.mjs) for the loaded pack. Spec: [spec/documents.md](../../spec/documents.md). Access tree: [spec/access.md](../../spec/access.md).
 
 ## Files
 
