@@ -633,7 +633,7 @@ export function think(s, topic) {
   return { thought: s.thought, moves: [], lines: [] };
 }
 
-/** Copy the open bubble into a note (file.write, 1 fuel) or close it (0). */
+/** Copy the open bubble into a note (file.write under notes/, 0 fuel) or close it (0). */
 export function thoughtAction(s, action) {
   if (!s.thought) return { error: 'No open thought.' };
   logAction(s, 'thought', { action });
@@ -642,7 +642,6 @@ export function thoughtAction(s, action) {
   const rel = `notes/thought-${t.about}-${s.fuelSpent}.txt`;
   writeNote(s, { rel, name: `Thought: ${ENTITIES[t.about]?.label || t.about}`, text: t.entries.map(e => e.text).join('\n') || 'Nothing marked.', facts: t.entries.map(e => e.id) });
   s.thought = null;
-  spend(s, 1);
   return { ok: true, rel };
 }
 

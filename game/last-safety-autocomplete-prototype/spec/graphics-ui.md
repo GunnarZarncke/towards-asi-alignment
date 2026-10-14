@@ -87,7 +87,8 @@ Use one furniture kit. Do not mix Kenney and KayKit in one lab. Custom work the 
 
 The room view fills the window. Everything else floats over it:
 
-- top bar: room and act, clock and fuel, Play / Cam / Map, the Notebook drawer (doors, records, what the player knows), the Lab Access launcher, and a menu (save, load, reset, text version);
+- top bar: room and act, clock and fuel, Play / Cam / Map, the Lab Access launcher, and a menu (save, load, reset, text version);
+- when the engine adds a new learned fact, a short dialog offers to copy it into the handset Notes app (doors, records, and the 3D room already cover navigation and evidence; only “what you know” needed this path);
 - bottom transcript dock (no panel chrome): recent talk flush left above an auto-growing composer, addressee chips and suggestion chips just above the input, the More link when enabled;
 - thought bubble and ending card near the top.
 

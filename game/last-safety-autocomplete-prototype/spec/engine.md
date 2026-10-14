@@ -118,11 +118,13 @@ One counter. These actions spend it. Standing still does not. There is no wait a
 | --- | --- |
 | Sentence sent, in the room or as `dm.send` | 1 |
 | `go`, and each completed walk that performs an action | 1 |
-| `file.read`, `file.write`, `file.share`, `access.request` | 1 each. A photo capture is one `file.write` |
+| `file.read`, `file.share`, `access.request` | 1 each |
+| `file.write` under `notes/` | 0. Learning is already tracked; the note is convenience |
+| `file.write` under `photos/` (room capture) | 1 |
 | `think` | Hop count of the farthest mark returned. At least 1 if the think ran. 0 if someone was present and the think was rejected |
 | Opening the handset, scrolling, reading a thread already released | 0 |
 
-Copying a thought into a note is a `file.write` and costs 1. Closing the bubble costs 0. A sentence on the handset is only the `dm.send` cost, not a second phone cost.
+Copying a thought into a note is a `file.write` under `notes/` and costs 0. Closing the bubble costs 0. A sentence on the handset is only the `dm.send` cost, not a second phone cost.
 
 The displayed clock is Friday’s visit clock, not a second timer:
 

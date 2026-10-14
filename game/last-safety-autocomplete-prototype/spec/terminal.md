@@ -76,7 +76,7 @@ Tapping a person opens Chat with that id. If `joinable` and she is not already a
 
 **Notes**
 
-New note: title field, body as one unformatted text area. The body composer is the grammar’s `note` channel: the same completions as talk, with no addressee and no NORA omit list ([grammar.md](grammar.md)). Open an existing `notes/` file the same way. Autosave or an explicit Save both map to `file.write` and store the parses as `written` assertions. No checklist, markdown, or attach. A thought copied from the room bubble arrives as a note the same way. The paper icon is on the bubble, not a second editor.
+New note: title field, body as one unformatted text area. The body composer is the grammar’s `note` channel: the same completions as talk, with no addressee and no NORA omit list ([grammar.md](grammar.md)). Open an existing `notes/` file the same way. Autosave or an explicit Save both map to `file.write` and store the parses as `written` assertions. Saving under `notes/` costs no fuel ([engine.md](engine.md)). No checklist, markdown, or attach. A thought copied from the room bubble arrives as a note the same way. The paper icon is on the bubble, not a second editor.
 
 **Photo**
 

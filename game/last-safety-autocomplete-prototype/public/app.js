@@ -1,7 +1,7 @@
 import { makeParse } from '../lib/grammar.mjs';
 import { getCandidates, insertFragment, localPrefixParse } from '/grammar.js';
 import { buildSceneView, mountScene } from './render/scene-view.mjs';
-import { ROOM_META, VISITOR_CLEARANCE, doorsOn } from './render/rooms.mjs';
+import { ROOM_META, VISITOR_CLEARANCE } from './render/rooms.mjs';
 import { closeFloorplan, floorplanNotice, floorplanOpen, openFloorplan, syncFloorplan } from './render/floorplan-view.mjs';
 
 const $ = id => document.getElementById(id);
@@ -24,6 +24,11 @@ let room3d = null;
 let addressee = null;
 let phoneOpen = false;
 let phoneUnread = false;
+/** Learned-fact ids seen on the last render; used to detect newly learned facts for the notebook dialog. */
+let learnedFactSnapshot = null;
+let notebookQueue = [];
+let notebookSkipped = new Set();
+let notebookPromptFact = null;
 const SAVE_KEY = 'lsr-save';
 /** Debug panels (parser inspector, trace, usage, server mode) show only in test mode or the dev-ui harness. */
 const testParam = new URLSearchParams(location.search).has('test');
@@ -180,11 +185,6 @@ function followPlayer() {
   if (Math.abs(d) > 1) m.scrollLeft += d * 0.12;
 }
 
-function setDrawer(open) {
-  $('drawer').hidden = !open;
-  $('drawerBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
-}
-
 function setMenu(open) {
   $('menu').hidden = !open;
   $('menuBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -209,29 +209,103 @@ function renderMapButton() {
   $('modeMap').setAttribute('aria-pressed', open ? 'true' : 'false');
 }
 
-function renderSidebar() {
-  const clearance = state.clearance ?? VISITOR_CLEARANCE;
-  const doors = doorsOn(state.room);
-  $('rooms').innerHTML = doors.length
-    ? doors
-        .map(d => {
-          const gated = d.required > clearance;
-          const who = Object.values(state.actors).find(a => a.room === d.to)?.name || '';
-          return `<button class="room-btn${gated ? ' gated' : ''}" data-room="${d.to}"><span class="room-ico">${gated ? '⊘' : '→'}</span><span><b>${esc(roomNames[d.to] || d.to)}</b><small>${who ? esc(who) : gated ? 'Higher clearance' : 'Open'}</small></span></button>`;
-        })
-        .join('')
-    : '<p class="small muted">No doors from here.</p>';
-  $('evidence').innerHTML = state.evidence
-    .map(
-      e =>
-        `<button class="record-btn" data-evidence="${e.id}" ${e.room !== state.room ? 'disabled title="Travel to ' + roomNames[e.room] + '"' : ''}><span class="icon ${e.examined ? 'done' : ''}">${e.examined ? '✓' : '▤'}</span><span>${e.title}${e.examined ? ' · examined' : ''}</span></button>`
-    )
-    .join('');
-  $('knowledge').innerHTML = state.learnedFacts.length
-    ? state.learnedFacts.map(f => `<span class="prov-${esc(f.provenance)}" title="${esc(f.text)} (${esc(f.provenance.replaceAll('_', ' '))})">${esc(f.id.replaceAll('_', ' '))}</span>`).join('')
-    : '<span>Nothing learned yet</span>';
-  for (const btn of $('rooms').querySelectorAll('[data-room]')) btn.onclick = () => move(btn.dataset.room);
-  for (const btn of document.querySelectorAll('[data-evidence]')) btn.onclick = () => examine(btn.dataset.evidence);
+function factInNotebook(factId) {
+  return (state?.assertions || []).some(a => a.signature === factId && a.source === 'written');
+}
+
+function factLabel(id) {
+  return id.replaceAll('_', ' ');
+}
+
+function resetNotebookTracking() {
+  learnedFactSnapshot = null;
+  notebookQueue = [];
+  notebookSkipped = new Set();
+  notebookPromptFact = null;
+  if ($('notebookPrompt')) $('notebookPrompt').hidden = true;
+}
+
+function trackNewLearnedFacts() {
+  if (!state) return;
+  const facts = state.learnedFacts || [];
+  const ids = new Set(facts.map(f => f.id));
+  if (learnedFactSnapshot === null) {
+    learnedFactSnapshot = ids;
+    return;
+  }
+  const newly = facts.filter(f => !learnedFactSnapshot.has(f.id));
+  learnedFactSnapshot = ids;
+  for (const f of newly) {
+    if (factInNotebook(f.id) || notebookSkipped.has(f.id)) continue;
+    if (!notebookQueue.some(q => q.id === f.id) && notebookPromptFact?.id !== f.id) notebookQueue.push(f);
+  }
+  showNextNotebookPrompt();
+}
+
+function renderNotebookPrompt() {
+  const el = $('notebookPrompt');
+  if (!el) return;
+  if (!notebookPromptFact) {
+    el.hidden = true;
+    return;
+  }
+  const f = notebookPromptFact;
+  el.hidden = false;
+  $('notebookPromptTitle').textContent = factLabel(f.id);
+  $('notebookPromptBody').textContent = f.text;
+  $('notebookPromptProv').textContent = `${(f.provenance || '').replaceAll('_', ' ')}${f.from ? ` · ${f.from}` : ''}`;
+  const can = !!state.labAccessActive;
+  $('notebookAdd').disabled = !can;
+  $('notebookPromptHint').hidden = can;
+}
+
+function showNextNotebookPrompt() {
+  if (notebookPromptFact) return;
+  while (notebookQueue.length) {
+    const next = notebookQueue.shift();
+    if (factInNotebook(next.id) || notebookSkipped.has(next.id)) continue;
+    notebookPromptFact = next;
+    renderNotebookPrompt();
+    return;
+  }
+}
+
+function dismissNotebookPrompt() {
+  if (notebookPromptFact) notebookSkipped.add(notebookPromptFact.id);
+  notebookPromptFact = null;
+  renderNotebookPrompt();
+  showNextNotebookPrompt();
+}
+
+async function confirmNotebookPrompt() {
+  const fact = notebookPromptFact;
+  if (!fact) return;
+  if (!state.labAccessActive) {
+    setPhone(true);
+    return;
+  }
+  try {
+    const data = await api('tool', {
+      tool: 'file.write',
+      rel: `notes/${fact.id}.txt`,
+      name: factLabel(fact.id).slice(0, 40),
+      text: fact.text,
+      kind: 'note',
+      facts: [fact.id],
+    });
+    state = data.state;
+    learnedFactSnapshot = new Set((state.learnedFacts || []).map(f => f.id));
+    lastNotice = 'Added to Notes on your handset.';
+    notebookPromptFact = null;
+    renderNotebookPrompt();
+    autosave();
+    refreshPhone();
+    render();
+  } catch (e) {
+    lastNotice = e.message;
+    renderMessages();
+  }
+  showNextNotebookPrompt();
 }
 
 /** Everyone in the room is an addressee option; the selected one receives the next sentence. */
@@ -258,7 +332,6 @@ function renderClock() {
   const c = state.clock || {};
   $('clock').textContent = `${c.timeLabel || '—'} · fuel ${state.fuel ?? '—'}`;
   $('clock').classList.toggle('low', (state.fuel ?? 99) <= 20);
-  $('labClock').textContent = `LABORATORY · ${c.dateLabel || ''} · ${c.timeLabel || ''}`.toUpperCase();
 }
 
 function renderThought() {
@@ -456,7 +529,6 @@ function renderSuggestions() {
 function render() {
   document.body.classList.toggle('test', testParam || uiHarness);
   renderClock();
-  renderSidebar();
   renderScenePanel();
   renderNPC();
   renderThought();
@@ -472,6 +544,8 @@ function render() {
   refreshPhone();
   resizeUtterance();
   syncTranscriptChrome();
+  trackNewLearnedFacts();
+  if (notebookPromptFact) renderNotebookPrompt();
 }
 
 function choose(option) {
@@ -637,6 +711,7 @@ async function loadSave(text) {
   try {
     const data = await api('import', JSON.parse(text));
     state = data.state;
+    resetNotebookTracking();
     resetComposer();
     addressee = null;
     lastNotice = 'Save loaded.';
@@ -690,7 +765,9 @@ document.addEventListener(
   true,
 );
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && phoneOpen) setPhone(false);
+  if (e.key !== 'Escape') return;
+  if (phoneOpen) setPhone(false);
+  else if (notebookPromptFact) dismissNotebookPrompt();
 });
 narrowMq.addEventListener('change', () => {
   if (!narrowMq.matches) {
@@ -720,11 +797,13 @@ $('reset').onclick = async () => {
   lastNotice = '';
   addressee = null;
   setPhone(false);
+  resetNotebookTracking();
   try { localStorage.removeItem(SAVE_KEY); } catch { /* ignore */ }
   render();
 };
 $('phoneBtn').onclick = () => setPhone(!phoneOpen);
-$('drawerBtn').onclick = () => setDrawer($('drawer').hidden);
+$('notebookAdd').onclick = () => confirmNotebookPrompt();
+$('notebookSkip').onclick = () => dismissNotebookPrompt();
 $('menuBtn').onclick = () => setMenu($('menu').hidden);
 document.addEventListener('click', e => { if (!$('menu').hidden && !e.target.closest('#menu, #menuBtn')) setMenu(false); });
 $('menu').addEventListener('click', e => { if (e.target.closest('button, a')) setMenu(false); });

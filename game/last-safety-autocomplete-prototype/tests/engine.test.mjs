@@ -62,6 +62,16 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the
   assert.equal(t.threads.length, contacts(s).length);
 });
 
+test('notes cost no fuel; photos still do', () => {
+  const s = startedSession();
+  const fuel = s.fuel;
+  const note = applyAction(s, 'tool', { tool: 'file.write', rel: 'notes/scratch.txt', name: 'Scratch', text: 'memo', kind: 'note' });
+  assert.equal(note.ok, true);
+  assert.equal(s.fuel, fuel);
+  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/snap.png', name: 'Snap', text: 'data:image/png,x', kind: 'image' });
+  assert.ok(s.fuel < fuel);
+});
+
 test('go costs fuel and clock; inspect is free and room-bound', () => {
   const s = startedSession();
   const before = { fuel: s.fuel, minute: s.minute };

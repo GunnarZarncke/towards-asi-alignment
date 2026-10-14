@@ -108,7 +108,7 @@ export function applyToolCall(s, call, { log = true } = {}) {
     if (!rel || !WRITABLE.test(rel)) return { ok: false, reason: 'That folder is not writable from here.' };
     const r = writeNote(s, { rel, name: cleanText(call.name) || rel.split('/').pop(), text: call.text, kind: call.kind || fileKind(rel), facts: call.facts || [], parses: call.parses || [] });
     if (!r.ok) return r;
-    spend(s, 1);
+    if (!rel.startsWith('notes/')) spend(s, 1);
     return { ok: true, reason: 'Saved.' };
   }
   if (tool === 'file.share') {

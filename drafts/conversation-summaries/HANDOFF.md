@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety room UI and mobile handset).
+Last updated: 2026-10-15 (Last Safety notebook dialog, free notes).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-15:** **Last Safety notebook dialog and free notes** — Removed redundant Notebook drawer; new learned facts offer Add to handset Notes; `notes/` writes (and thought copy) cost 0 fuel; photos still 1. Log: `2026-10-15-last-safety-notebook-dialog-free-notes.md`.
 - **2026-10-15:** **Last Safety room UI and mobile handset** — Transcript dock (grouped tabs, narrow column, scroll); mobile collapse until chat focus; Lab Access unread notifications and tile badges; full-screen phone close (×, Close lab, swipe, Esc); Hi/msg tab-complete, phone grammar completions, completion bench script. Log: `2026-10-15-last-safety-room-ui-mobile.md`.
 - **2026-10-14:** **Last Safety document revision headers** — Sparse **Revisions** headers on key sources (HR-MATCH-28, shutdown spec, safety-case excerpt, SEC-ARCH-11); not on every catalog doc. HR-MATCH-28 names Elena keeping throughput fields from an earlier system. No engine change. Log: `2026-10-14-last-safety-document-revisions.md`.
 - **2026-10-14:** **Last Safety NPC social glue** — Opening, optional mid, and closing non-fact lines from the Person/status layer (`CONFIG.GLUE`, per-NPC YAML). Work replies use agenda/`glue.work` instead of a shared shrug. Log: `2026-10-14-last-safety-npc-social-glue.md`.

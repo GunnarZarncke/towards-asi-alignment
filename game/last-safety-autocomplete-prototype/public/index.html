@@ -20,7 +20,6 @@
     <button type="button" class="scene-mode" id="modeSurveillance" aria-pressed="false" title="Surveillance camera">Cam</button>
     <button type="button" class="scene-mode" id="modeMap" aria-pressed="false" title="Floorplan">Map</button>
     <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
-    <button type="button" class="minor" id="drawerBtn" aria-expanded="false" title="Doors, records, what you know">Notebook</button>
     <button type="button" class="minor handset-btn" id="phoneBtn" hidden>Lab Access</button>
     <button type="button" class="minor" id="menuBtn" aria-expanded="false" aria-label="Menu">☰</button>
   </div>
@@ -34,22 +33,18 @@
 </header>
 <div class="scene-note muted" id="sceneNote"></div>
 
-<aside class="hud drawer" id="drawer" hidden>
-  <div class="eyebrow section-title" id="labClock">LABORATORY</div>
-  <h2>One shutdown.<br/><em>One inconsistency.</em></h2>
-  <p class="small muted">The model passed shutdown. Was everything relevant actually stopped?</p>
-  <div class="divider"></div>
-  <div class="eyebrow section-title">DOORS FROM HERE</div>
-  <div id="rooms"></div>
-  <div class="divider"></div>
-  <div class="eyebrow section-title">AVAILABLE RECORDS</div>
-  <div id="evidence"></div>
-  <div class="divider"></div>
-  <div class="eyebrow section-title">PLAYER KNOWS</div>
-  <div id="knowledge" class="knowledge"></div>
-</aside>
-
 <div id="thoughtBubble" class="thought" hidden></div>
+<section id="notebookPrompt" class="notebook-prompt hud panel" hidden role="dialog" aria-labelledby="notebookPromptTitle" aria-modal="true">
+  <div class="eyebrow section-title">NOTEBOOK</div>
+  <h2 id="notebookPromptTitle">—</h2>
+  <p id="notebookPromptBody"></p>
+  <p class="small muted" id="notebookPromptProv"></p>
+  <p class="small muted" id="notebookPromptHint" hidden>Open Lab Access to save this on your handset Notes.</p>
+  <div class="notebook-prompt-actions">
+    <button type="button" id="notebookAdd" class="send">Add to Notes</button>
+    <button type="button" id="notebookSkip" class="minor">Not now</button>
+  </div>
+</section>
 <section id="ending" class="ending hud" hidden></section>
 
 <section class="transcript-dock" id="transcriptDock">

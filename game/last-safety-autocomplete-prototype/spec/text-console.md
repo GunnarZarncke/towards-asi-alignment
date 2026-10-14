@@ -49,7 +49,7 @@ Normal play still shows new facts inline as **`(noted)`** in the command output 
 
 ## `know`
 
-Prints the full player **learned-facts** list: every row in `learnedFacts` as `- {text}`. It does not show fact ids, provenance, or entities that are visible only as vocabulary without a learned fact row. Same data the room UI’s knowledge strip uses, in plain text.
+Prints the full player **learned-facts** list: every row in `learnedFacts` as `- {text}`. It does not show fact ids, provenance, or entities that are visible only as vocabulary without a learned fact row. The room UI prompts to copy new facts into handset Notes instead of listing them in a sidebar.
 
 ## Tab completion
 
