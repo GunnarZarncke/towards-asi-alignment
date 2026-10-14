@@ -28,4 +28,4 @@ Prompts: (none recorded)
 - `game/last-safety-autocomplete-prototype/content/npcs/`
 
 ## Commits
-- (none)
+- `7a6810216` Last Safety: text console polish, invitation vocab, NPC social glue.

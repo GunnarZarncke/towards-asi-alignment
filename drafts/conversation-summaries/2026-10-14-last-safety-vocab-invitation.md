@@ -20,3 +20,6 @@ Verification: `npm test` in `game/last-safety-autocomplete-prototype` → `ℹ t
 
 ## Open / next
 - Opening the calendar is not a separate act: the names count when the handset is handed over.
+
+## Commits
+- `7a6810216` Last Safety: text console polish, invitation vocab, NPC social glue.
