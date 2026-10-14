@@ -38,7 +38,7 @@ Default surface when the overlay opens.
 
 | App | What the player sees | Isolate tools |
 | --- | --- | --- |
-| **Chat** | Thread list, then a thread. Composer as in [grammar.md](grammar.md). Delayed human replies. NORA is a thread. | `dm.send`, `dm.read` |
+| **Chat** | Thread list (one row per Contacts entry, empty until the first send). Composer as in [grammar.md](grammar.md). Delayed human replies. NORA is a thread. | `dm.send`, `dm.read` |
 | **Files** | Names the player owns or that were shared. Open, write, share. Notes and photos land here. | `file.read`, `file.write`, `file.share` |
 | **Knowledge** | A wiki-like reader: titles, short pages, links between pages. Underneath it is a **subtree of the same files** (e.g. `wiki/`). No second store. Editing a page is `file.write` on that path. | `file.read`, `file.write` |
 | **API** | Explorer for the isolate API: pick a capability, send `access.request`, see ok or denial. No pipeline step ids as runnable actions. | `access.request` |

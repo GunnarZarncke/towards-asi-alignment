@@ -62,6 +62,30 @@ const ASSERT_RELATIONS=[
 ];
 const REF_FIELDS=['subject','object','recipient','evidence','topic'];
 const present=a=>a&&a.presence!=='absent'&&a.room;
+const HI_PATCH={kind:'social',relation:'open',open_slot:'none'};
+function presentAddressees(state,addressees){
+  return (addressees||[]).filter(id=>{
+    const a=state.actors?.[id];
+    return a&&a.presence!=='absent'&&a.room===state.room;
+  });
+}
+/** One social opener: first in-room talk this stay, or nothing else matches (O-19). */
+function hiEligible({state,parse,channel,addressees,rowCount}){
+  if(parse.kind==='social')return false;
+  if(channel!=='person')return false;
+  const here=presentAddressees(state,addressees);
+  if(!here.length)return false;
+  const firstContact=here.some(id=>!state.actors[id].spokeSinceArrive);
+  return firstContact||rowCount===0;
+}
+function maybeHi({state,parse,channel,addressees,rows}){
+  if(!hiEligible({state,parse,channel,addressees,rowCount:rows.length}))return rows;
+  if(rows.some(r=>r.phrase==='Hi'&&r.parse.kind==='social'))return rows;
+  return [...rows,hiCandidate(parse)];
+}
+function hiCandidate(parse){
+  return {...candidate('Hi',parse,HI_PATCH),patch:HI_PATCH};
+}
 
 function candidate(phrase,parse,patch,semId=null){
   return {phrase,parse:{...parse,...patch,unfinished:'',confidence:1,source:'completion'},semanticId:semId};
@@ -340,6 +364,7 @@ export function getCandidates({state,parse,text='',addressees,channel='person',o
     if(!seen.has(sig))seen.set(sig,x);
   }
   rows=[...seen.values()];
+  if(slot==='opening')rows=maybeHi({state,parse,channel,addressees,rows});
   if(slot==='opening'&&!text.trim())return rows.map(strip);
   const R=relevance(state,parse,who,cfg);
   const scored=rows.map((x,i)=>{
@@ -370,6 +395,7 @@ export function localPrefixParse(text){
   const clean=text.trim();
   if(!clean)return makeParse();
   const w=clean.toLowerCase();
+  if(w==='hi'||w==='hello')return makeParse({...HI_PATCH,source:'local'});
   const match=OPENINGS.find(x=>x.phrase.toLowerCase()===w);
   if(match)return makeParse({...match.patch,source:'local'});
   if(clean.length<=4&&OPENINGS.some(x=>x.phrase.toLowerCase().startsWith(w)))return makeParse({open_slot:'opening',unfinished:clean,source:'local'});

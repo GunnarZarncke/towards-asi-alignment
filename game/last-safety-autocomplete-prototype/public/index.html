@@ -52,14 +52,17 @@
 <div id="thoughtBubble" class="thought" hidden></div>
 <section id="ending" class="ending hud" hidden></section>
 
-<section class="hud hud-bottom">
+<section class="transcript-dock" id="transcriptDock">
   <div id="moreLink" class="more-link" hidden></div>
-  <div class="npc-row" id="npcRow"></div>
-  <div id="messages" class="messages" aria-live="polite"></div>
-  <div class="composer">
-    <div class="inputrow"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap a completion or type a few letters…"></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
-    <div id="suggestions" class="suggestions"></div>
-    <div class="suggestion-foot"><button id="showMore" class="more" hidden>More ↓</button><span id="hint" class="muted">Completions help say a question, not find its answer.</span><span id="parserIndicator" class="muted debug">Local grammar</span></div>
+  <div id="messages" class="transcript-scroll" aria-live="polite"></div>
+  <div class="npc-row dock-npc" id="npcRow"></div>
+  <div class="composer dock-composer">
+    <div class="suggestion-row">
+      <div id="suggestions" class="suggestions"></div>
+      <button type="button" id="showMore" class="more more-inline" hidden>More ↓</button>
+    </div>
+    <div class="suggestion-foot"><span id="hint" class="muted">Completions help say a question, not find its answer.</span><span id="parserIndicator" class="muted debug">Local grammar</span></div>
+    <div class="inputrow dock-input"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap to speak…"></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
   </div>
 </section>
 

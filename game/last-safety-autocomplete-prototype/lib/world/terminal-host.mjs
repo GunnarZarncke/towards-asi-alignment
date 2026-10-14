@@ -6,7 +6,7 @@ import { ACCESS_TREE, ACCESS_DELAY, resolveAccessRequest, visiblePaths, hasVerb 
 import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
-import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument } from '../game.mjs';
+import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads } from '../game.mjs';
 
 export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.share', 'dm.send', 'dm.read', 'access.request']);
 const DENIED = new Set(['board.post', 'board.read', 'pipeline.trigger_step', 'handle.invoke', 'state.save', 'state.load']);
@@ -25,6 +25,7 @@ function fileKind(rel) {
 }
 
 export function terminalState(s) {
+  seedContactThreads(s);
   return {
     labAccessActive: !!s.labAccessActive,
     clock: { timeLabel: clockLabel(s.minute), act: s.act, dateLabel: CONFIG.DATE_LABEL },

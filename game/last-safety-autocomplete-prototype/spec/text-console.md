@@ -57,8 +57,8 @@ Same **fragment** ranker as the room composer (`public/grammar.js`, O-19). Up to
 
 | Surface | Behavior |
 | --- | --- |
-| **`npm run text`** | Node readline **Tab** (no literal tab): completes **`go` / `to` / `read`** arguments and speech; **Tab** again on the same line shows the next page. |
-| **`/text.html`** | **Tab** opens an overlay: best match in the input, four alternatives above; **↑/↓** cycle; **Tab** next page; **Esc** close. Code: `public/text-input.mjs`. |
+| **`npm run text`** | Node readline **Tab** (no literal tab): completes **`go` / `to` / `read`** arguments and speech; **`msg` / `dm`** contact names, then the same grammar chips as the phone thread (**`msg nora `**, **`msg leila `**, …); **Tab** again on the same line shows the next page. |
+| **`/text.html`** | **Tab** opens an overlay: best match in the input, four alternatives above; **↑/↓** cycle; **Tab** next page; **Esc** close. Command lines (including **`msg`**) use **`POST /api/tab-complete`**; bare speech uses the fragment ranker. Code: `public/text-input.mjs`. |
 
 ## Check
 

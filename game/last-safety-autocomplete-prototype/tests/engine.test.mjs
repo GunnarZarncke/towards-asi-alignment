@@ -43,6 +43,7 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the
   assert.equal(c.act, 'welcome');
   assert.equal(c.room, 'commons');
   assert.equal(c.labAccessActive, false);
+  assert.equal(terminalState(s).threads.length, 0);
   assert.deepEqual(contacts(s), []);
   assert.ok(!c.introduced.includes('amara'), 'Amara is not a contact until introduced');
   assert.ok(c.learnedFacts.some(f => f.id === 'invited_as_reviewer'));
@@ -56,6 +57,9 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the
   assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue'));
   assert.ok(contacts(s).some(x => x.id === 'amara'));
   assert.ok(terminalState(s).files.some(f => f.rel === 'wiki/glossary'));
+  const t = terminalState(s);
+  assert.ok(t.threads.some(x => x.with === 'nora'), 'NORA thread for Chat');
+  assert.equal(t.threads.length, contacts(s).length);
 });
 
 test('go costs fuel and clock; inspect is free and room-bound', () => {

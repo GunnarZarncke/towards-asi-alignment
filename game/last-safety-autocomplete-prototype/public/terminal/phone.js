@@ -2,6 +2,8 @@ import {
   APPS, SETTINGS, ALLOWED_CAPS, defaultSettings, applyTool, suggestionChips, sendable,
   visibleMessages, nowPlacement, handsetShouldBlink, overlayAllowed,
 } from './project.mjs';
+import { makeParse } from '../../lib/grammar.mjs';
+import { getCandidates, insertFragment, localPrefixParse } from '../grammar.js';
 
 const ICONS = {
   chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 6.5h10.5a2 2 0 0 1 2 2V14l-3.2-2H7a2 2 0 0 1-2-2v-1.5z"/><path d="M8 11h9.2a2 2 0 0 1 2 2v2.2L22 18v-5.2"/></svg>',
@@ -30,6 +32,11 @@ let photo = { x: 0, y: 0, z: 1 };
 let video = { t: 0, playing: false, dur: 8 };
 let lastParse = null;
 let chipPage = 0;
+let clientSnapshot = null;
+let phoneParse = makeParse();
+let phoneParseText = '';
+let phoneParseTimer = null;
+let phoneParseVersion = 0;
 let raf = 0;
 const pointers = new Map();
 let pinch0 = null;
@@ -50,16 +57,32 @@ async function tool(call) {
   return { ...data.result, state: { ...data.terminal, settings: state.settings } };
 }
 
+async function refreshClientSnapshot() {
+  if (!engine) return null;
+  const res = await fetch('/api/state');
+  if (!res.ok) return clientSnapshot;
+  clientSnapshot = await res.json();
+  return clientSnapshot;
+}
+
 async function refresh() {
   const res = await fetch('/api/terminal');
   if (!res.ok) return;
   const next = await res.json();
   state = { ...next, settings: state.settings };
+  await refreshClientSnapshot();
   render();
 }
 
 function contactName(id) {
   return state.contacts.find(c => c.id === id)?.name || id;
+}
+
+function threadFor(id) {
+  const t = state.threads.find(x => x.with === id);
+  if (t) return t;
+  if (!state.contacts.some(c => c.id === id)) return null;
+  return { with: id, messages: [], suggestions: [], omit: [] };
 }
 
 function toast(text) {
@@ -146,11 +169,21 @@ function freshNoteRel(title) {
   return `notes/${slug(title)}-${n}.txt`;
 }
 
+function closeEmbedToRoom() {
+  toParent({ type: 'close' });
+}
+
 function statusBar() {
-  return `<div class="status"><span class="status-time">${esc(state.clock.timeLabel)}</span><span class="status-icons" aria-hidden="true"><span class="sig"><i></i><i></i><i></i></span><span class="bat"><b></b></span></span></div>`;
+  const close = embed
+    ? `<button type="button" class="embed-close" data-act="lab" aria-label="Close phone and return to the lab">×</button>`
+    : '';
+  return `<div class="status">${close}<span class="status-time">${esc(state.clock.timeLabel)}</span><span class="status-icons" aria-hidden="true"><span class="sig"><i></i><i></i><i></i></span><span class="bat"><b></b></span></span></div>`;
 }
 
 function homeBar() {
+  if (embed) {
+    return `<div class="homebar homebar-embed" data-swipe-close><span class="homebar-hint">Swipe down or tap Close</span><button type="button" class="lab-btn close-room-btn" data-act="lab">Close lab</button><button type="button" class="pill" data-act="home" aria-label="Home"></button><span></span></div>`;
+  }
   return `<div class="homebar"><button type="button" class="lab-btn" data-act="lab">Lab</button><button type="button" class="pill" data-act="home" aria-label="Home"></button><span></span></div>`;
 }
 
@@ -158,29 +191,170 @@ function head(title, sub) {
   return `<header class="app-head"><button type="button" class="back" data-act="back" aria-label="Back">‹</button><div><h1>${esc(title)}</h1>${sub ? `<p>${esc(sub)}</p>` : ''}</div></header>`;
 }
 
+function appTitle(appId) {
+  return APPS.find(a => a.id === appId)?.title || appId;
+}
+
+function unreadNotifications() {
+  return (state.notifications || []).filter(n => !seen.has(n.id));
+}
+
+function appUnreadCount(appId) {
+  return unreadNotifications().filter(n => {
+    if (n.app === appId) return true;
+    if (appId === 'wiki' && n.app === 'files' && n.target?.kind === 'file' && String(n.target.id).startsWith('wiki/')) return true;
+    return false;
+  }).length;
+}
+
+function noticeButton(n) {
+  const read = seen.has(n.id);
+  return `<button type="button" class="notice${read ? ' is-read' : ' is-unread'}" data-act="notice" data-id="${esc(n.id)}"><span class="notice-app">${esc(appTitle(n.app))}</span><b>${esc(n.title)}</b><span>${esc(n.body)}</span></button>`;
+}
+
 function homescreen() {
-  const notes = state.notifications.map(n => {
-    const read = seen.has(n.id) ? ' is-read' : '';
-    return `<button type="button" class="notice${read}" data-act="notice" data-id="${esc(n.id)}"><b>${esc(n.title)}</b><span>${esc(n.body)}</span></button>`;
+  const unread = unreadNotifications();
+  const read = (state.notifications || []).filter(n => seen.has(n.id));
+  let stack = '';
+  if (unread.length) {
+    stack += `<p class="stack-heading">New <span class="badge">${unread.length}</span></p>${unread.map(noticeButton).join('')}`;
+  }
+  if (read.length) {
+    stack += `<p class="stack-heading stack-heading-muted">Earlier</p>${read.map(noticeButton).join('')}`;
+  }
+  if (!stack) stack = '<p class="hint">No notices yet.</p>';
+  const tiles = APPS.map(a => {
+    const badge = appUnreadCount(a.id);
+    return `<button type="button" class="tile${badge ? ' has-badge' : ''}" data-act="app" data-app="${esc(a.id)}"><span class="ico-wrap"><span class="ico ico-${esc(a.id)}">${ICONS[a.id]}</span>${badge ? `<span class="tile-badge" aria-label="${badge} unread">${badge}</span>` : ''}</span>${esc(a.title)}</button>`;
   }).join('');
-  const tiles = APPS.map(a => (
-    `<button type="button" class="tile" data-act="app" data-app="${esc(a.id)}"><span class="ico ico-${esc(a.id)}">${ICONS[a.id]}</span>${esc(a.title)}</button>`
+  return `<div class="home${unread.length ? ' has-unread-notices' : ''}"><p class="clock">${esc(state.clock.timeLabel)}</p><p class="date">${esc(state.clock.dateLabel)}</p><div class="stack">${stack}</div><div class="tiles">${tiles}</div></div>`;
+}
+
+function rankedPhoneCandidates(id, text) {
+  const thread = threadFor(id);
+  const staticOnly = () => suggestionChips(thread).map(s => ({ phrase: s.phrase, parse: s.parse }));
+  if (!engine || !clientSnapshot) return staticOnly();
+  const channel = id === 'nora' ? 'nora' : 'person';
+  const omit = thread?.omit || [];
+  const ranked = getCandidates({
+    state: clientSnapshot,
+    parse: phoneParse,
+    text,
+    addressees: [id],
+    channel,
+    omit,
+  });
+  if (!text.trim()) {
+    const seen = new Set(ranked.map(r => r.phrase));
+    for (const s of suggestionChips(thread)) {
+      if (!seen.has(s.phrase)) ranked.unshift(s);
+    }
+  }
+  return ranked;
+}
+
+function renderPhoneSuggestions(id) {
+  const box = $('#phoneSuggestions');
+  const more = $('#phoneSuggestMore');
+  if (!box) return;
+  if (!state.settings.completions) {
+    box.innerHTML = '';
+    if (more) more.hidden = true;
+    return;
+  }
+  const field = $('#utterance');
+  const text = field?.value ?? top().draft ?? '';
+  const list = rankedPhoneCandidates(id, text);
+  if (top().name === 'thread') top().phoneCandidates = list;
+  const page = list.slice(chipPage * 4, chipPage * 4 + 4);
+  box.innerHTML = page.map((c, i) => (
+    `<button type="button" class="chip" data-act="phone-chip" data-i="${chipPage * 4 + i}">${esc(c.phrase)}</button>`
   )).join('');
-  return `<div class="home"><p class="clock">${esc(state.clock.timeLabel)}</p><p class="date">${esc(state.clock.dateLabel)}</p><div class="stack">${notes || '<p class="hint">No new notices.</p>'}</div><div class="tiles">${tiles}</div></div>`;
+  if (more) more.hidden = list.length <= (chipPage + 1) * 4;
+}
+
+async function syncPhoneParse(text, version) {
+  if (!text.trim()) {
+    phoneParse = makeParse();
+    phoneParseText = text;
+    return;
+  }
+  const local = localPrefixParse(text);
+  if (local) {
+    phoneParse = local;
+    phoneParseText = text;
+    return;
+  }
+  if (!engine) {
+    phoneParse = makeParse();
+    phoneParseText = text;
+    return;
+  }
+  const id = top().name === 'thread' ? top().id : null;
+  const channel = id === 'nora' ? 'nora' : 'person';
+  try {
+    const res = await fetch('/api/parse', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, previousParse: lastParse, channel, addressee: id }),
+    });
+    const data = await res.json();
+    if (version !== phoneParseVersion) return;
+    phoneParse = data.parse || makeParse();
+    phoneParseText = text;
+    if (data.state) clientSnapshot = data.state;
+  } catch {
+    if (version !== phoneParseVersion) return;
+    phoneParse = makeParse({ kind: 'unintelligible', relation: 'open', open_slot: 'none', source: 'local' });
+    phoneParseText = text;
+  }
+}
+
+function bindThreadComposer(id) {
+  const field = $('#utterance');
+  if (!field) return;
+  if (top().draft) field.value = top().draft;
+  phoneParseText = field.value;
+  phoneParse = makeParse();
+  chipPage = 0;
+  const onType = () => {
+    top().draft = field.value;
+    chipPage = 0;
+    phoneParseVersion += 1;
+    clearTimeout(phoneParseTimer);
+    const version = phoneParseVersion;
+    const text = field.value;
+    const local = localPrefixParse(text);
+    if (local) {
+      phoneParse = local;
+      phoneParseText = text;
+      renderPhoneSuggestions(id);
+      return;
+    }
+    phoneParseTimer = setTimeout(async () => {
+      await syncPhoneParse(text, version);
+      if (top().name === 'thread' && top().id === id) renderPhoneSuggestions(id);
+    }, 520);
+    renderPhoneSuggestions(id);
+  };
+  field.oninput = onType;
+  void refreshClientSnapshot().then(() => renderPhoneSuggestions(id));
 }
 
 function chatList() {
-  const rows = state.threads.map(t => {
+  const byId = Object.fromEntries(state.threads.map(t => [t.with, t]));
+  const rows = state.contacts.map(c => {
+    const t = byId[c.id] || { messages: [] };
     const msgs = visibleMessages(t.messages);
     const last = msgs[msgs.length - 1];
     const preview = last ? last.text : 'No messages yet';
-    return `<button type="button" class="row" data-act="thread" data-id="${esc(t.with)}"><b>${esc(contactName(t.with))}</b><span>${esc(preview)}</span></button>`;
+    return `<button type="button" class="row" data-act="thread" data-id="${esc(c.id)}"><b>${esc(c.name)}</b><span>${esc(preview)}</span></button>`;
   }).join('');
-  return `${head('Chat')}<div class="pad">${rows}</div>`;
+  return `${head('Chat')}<div class="pad">${rows || '<p class="hint">No contacts yet.</p>'}</div>`;
 }
 
 function threadView(id) {
-  const thread = state.threads.find(t => t.with === id);
+  const thread = threadFor(id);
   if (!thread) return `${head('Chat')}<p class="pad hint">No thread.</p>`;
   markTarget('thread', id);
   const msgs = visibleMessages(thread.messages).map(m => {
@@ -189,37 +363,31 @@ function threadView(id) {
   }).join('');
   const waiting = thread.with !== 'nora' && !visibleMessages(thread.messages).some(m => m.from !== 'player')
     ? '<p class="waiting">No reply yet.</p>' : '';
-  const chips = state.settings.completions ? chipRow(thread) : '';
   const noraHint = id === 'nora' ? '<p class="hint">Suggestions follow what NORA will help with. Typed text is still sent.</p>' : '';
   const inspector = state.settings.parserInspector
     ? `<pre class="parse">${esc(JSON.stringify(lastParse || {}, null, 2))}</pre>` : '';
-  return `${head(contactName(id), id === 'nora' ? 'System under review' : '')}<div class="thread">${msgs}</div>${waiting}<div class="composer">${noraHint}${chips}<div class="inputrow"><textarea id="utterance" rows="2" placeholder="Write a message"></textarea><button type="button" class="send" data-act="send" data-id="${esc(id)}">Send</button></div>${inspector}</div>`;
+  return `${head(contactName(id), id === 'nora' ? 'System under review' : '')}<div class="thread">${msgs}</div>${waiting}<div class="composer">${noraHint}<div id="phoneSuggestions" class="chips"></div><button type="button" class="text-btn" id="phoneSuggestMore" data-act="phone-more" hidden>Show more</button><div class="inputrow"><textarea id="utterance" rows="2" placeholder="Write a message"></textarea><button type="button" class="send" data-act="send" data-id="${esc(id)}">Send</button></div>${inspector}</div>`;
 }
 
-function chipRow(thread) {
-  const all = suggestionChips(thread);
-  const page = all.slice(chipPage * 4, chipPage * 4 + 4);
-  const more = all.length > (chipPage + 1) * 4
-    ? '<button type="button" class="text-btn" data-act="more">Show more</button>' : '';
-  const chips = page.map((s, i) => (
-    `<button type="button" class="chip" data-act="chip" data-i="${chipPage * 4 + i}">${esc(s.phrase)}</button>`
-  )).join('');
-  return `<div class="chips">${chips}${more}</div>`;
+function fileIsNew(rel) {
+  return unreadNotifications().some(n => n.target?.kind === 'file' && n.target.id === rel);
 }
 
 function filesApp() {
   const rows = state.files.map(f => {
     const via = f.owned ? 'Yours' : `From ${contactName(f.sharedBy)}`;
-    return `<button type="button" class="row" data-act="open-file" data-rel="${esc(f.rel)}"><b>${esc(f.name)}</b><span>${esc(f.rel)} · ${esc(via)}</span></button>`;
+    const tag = fileIsNew(f.rel) ? '<span class="row-tag">New</span>' : '';
+    return `<button type="button" class="row${fileIsNew(f.rel) ? ' is-new' : ''}" data-act="open-file" data-rel="${esc(f.rel)}"><b>${esc(f.name)}${tag}</b><span>${esc(f.rel)} · ${esc(via)}</span></button>`;
   }).join('');
   return `${head('Files')}<div class="pad">${rows}</div>`;
 }
 
 function wikiApp() {
   const pages = state.files.filter(f => f.kind === 'wiki' || String(f.rel).startsWith('wiki/'));
-  const rows = pages.map(f => (
-    `<button type="button" class="row" data-act="open-file" data-rel="${esc(f.rel)}"><b>${esc(f.name)}</b><span>${esc(f.rel)}</span></button>`
-  )).join('');
+  const rows = pages.map(f => {
+    const tag = fileIsNew(f.rel) ? '<span class="row-tag">New</span>' : '';
+    return `<button type="button" class="row${fileIsNew(f.rel) ? ' is-new' : ''}" data-act="open-file" data-rel="${esc(f.rel)}"><b>${esc(f.name)}${tag}</b><span>${esc(f.rel)}</span></button>`;
+  }).join('');
   return `${head('Knowledge', 'Same files as Files, under wiki/')}<div class="pad">${rows || '<p class="hint">No pages.</p>'}</div>`;
 }
 
@@ -377,15 +545,19 @@ function render() {
   toParent({ type: 'unread', unread: handsetShouldBlink(state, [...seen], false) });
   applyPhotoTransform();
   const utter = $('#utterance');
-  if (utter && top().draft) {
-    utter.value = top().draft;
-    utter.focus();
+  if (utter && top().draft) utter.value = top().draft;
+  if (top().name === 'thread') bindThreadComposer(top().id);
+  if (overlay && top().name === 'home' && unreadNotifications().length) {
+    requestAnimationFrame(() => {
+      const body = document.querySelector('.phone-body');
+      if (body) body.scrollTop = 0;
+    });
   }
 }
 
 function currentThread() {
   const r = top();
-  return r.name === 'thread' ? state.threads.find(t => t.with === r.id) : null;
+  return r.name === 'thread' ? threadFor(r.id) : null;
 }
 
 function onClick(e) {
@@ -398,14 +570,20 @@ function onClick(e) {
     return;
   }
   if (act === 'lab') {
-    if (embed) return toParent({ type: 'close' });
+    if (embed) return closeEmbedToRoom();
     overlay = false;
     render();
     return;
   }
   if (act === 'home') return home();
   if (act === 'back') return back();
-  if (act === 'app') return go({ name: b.dataset.app });
+  if (act === 'app') {
+    const appId = b.dataset.app;
+    for (const n of state.notifications) {
+      if (n.target?.kind === 'app' && n.target.id === appId) seen.add(n.id);
+    }
+    return go({ name: appId });
+  }
   if (act === 'notice') {
     const n = state.notifications.find(x => x.id === b.dataset.id);
     if (n) openNotice(n);
@@ -428,22 +606,26 @@ function onClick(e) {
     return;
   }
   if (act === 'ask-path') return askPath(b.dataset.path, b.dataset.verb);
-  if (act === 'chip') {
-    const thread = currentThread();
-    const chip = thread && suggestionChips(thread)[Number(b.dataset.i)];
+  if (act === 'phone-chip') {
+    const list = top().phoneCandidates || [];
+    const chip = list[Number(b.dataset.i)];
     if (!chip) return;
     const field = $('#utterance');
-    if (field) field.value = chip.phrase;
-    lastParse = chip.parse;
-    if (top().name === 'thread') top().draft = chip.phrase;
+    if (field) {
+      field.value = insertFragment(field.value, chip, phoneParse?.unfinished);
+      top().draft = field.value;
+      phoneParseText = field.value;
+    }
+    phoneParse = { ...chip.parse, source: 'completion' };
+    lastParse = phoneParse;
+    chipPage = 0;
+    if (top().name === 'thread') renderPhoneSuggestions(top().id);
     if (state.settings.parserInspector) render();
     return;
   }
-  if (act === 'more') {
+  if (act === 'phone-more') {
     chipPage += 1;
-    const field = $('#utterance');
-    if (top().name === 'thread' && field) top().draft = field.value;
-    render();
+    if (top().name === 'thread') renderPhoneSuggestions(top().id);
     return;
   }
   if (act === 'send') return sendMessage(b.dataset.id);
@@ -473,7 +655,7 @@ async function sendMessage(id) {
   const field = $('#utterance');
   const text = field ? field.value : '';
   if (!sendable(text)) return toast('Write a message first.');
-  const thread = state.threads.find(t => t.with === id);
+  const thread = threadFor(id);
   const chip = thread && suggestionChips(thread).find(s => s.phrase === text.trim());
   const omitted = thread && (thread.omit || []).find(s => s.phrase === text.trim());
   const parse = chip?.parse || omitted?.parse || lastParse || { kind: 'open', relation: 'open', source: 'local' };
@@ -642,10 +824,24 @@ function pinchDist() {
 function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
 
 function onKey(e) {
-  if (e.key === 'Escape' && overlay) {
-    if (route.length > 1) back();
-    else { overlay = false; render(); }
-  }
+  if (e.key !== 'Escape' || !overlay) return;
+  if (route.length > 1) return back();
+  if (embed) return closeEmbedToRoom();
+  overlay = false;
+  render();
+}
+
+let embedSwipeY = null;
+
+function onEmbedSwipeStart(e) {
+  if (!embed || !e.target.closest?.('[data-swipe-close]')) return;
+  embedSwipeY = e.clientY;
+}
+
+function onEmbedSwipeEnd(e) {
+  if (embedSwipeY == null) return;
+  if (e.clientY - embedSwipeY > 72) closeEmbedToRoom();
+  embedSwipeY = null;
 }
 
 async function boot() {
@@ -656,6 +852,7 @@ async function boot() {
   state = await res.json();
   delete state._hostFiles;
   state.settings = { ...defaultSettings(), ...(state.settings || {}) };
+  if (engine) await refreshClientSnapshot();
   overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
   window.addEventListener('message', e => {
     if (e.origin === location.origin && e.data?.source === 'lsr-room' && e.data.type === 'refresh') refresh();
@@ -666,6 +863,9 @@ async function boot() {
   document.body.addEventListener('pointermove', onPointerMove);
   document.body.addEventListener('pointerup', onPointerUp);
   document.body.addEventListener('pointercancel', onPointerUp);
+  document.body.addEventListener('pointerdown', onEmbedSwipeStart);
+  document.body.addEventListener('pointerup', onEmbedSwipeEnd);
+  document.body.addEventListener('pointercancel', () => { embedSwipeY = null; });
   document.addEventListener('keydown', onKey);
   render();
 }

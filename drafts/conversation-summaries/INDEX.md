@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety room UI and mobile handset** — Transcript dock, mobile chat collapse, handset dismiss and unread UX, completions/tab-complete. | [2026-10-15-last-safety-room-ui-mobile.md](2026-10-15-last-safety-room-ui-mobile.md) |
 | 2026-10-14 | **CIRIS rc8 PR review and editorial** — Eric PR #3 reviewed; TSA pass on `ciris-rc8-review` (stance, matrix, judgement fields); reverse PR sent; Markets 4/5/8 suggested for Eric. | [2026-10-14-ciris-rc8-pr-editorial.md](2026-10-14-ciris-rc8-pr-editorial.md) |
 | 2026-10-14 | **Last Safety document revision headers** — Sparse revision headers; HR-MATCH-28 names Elena keeping throughput from an earlier system. | [2026-10-14-last-safety-document-revisions.md](2026-10-14-last-safety-document-revisions.md) |
 | 2026-10-14 | **Last Safety: vocabulary follows what the player has seen** — Completions offered systems (queue, cameras, release schedule) the player had not met. Gunnar ask... | [2026-10-14-last-safety-vocab-invitation.md](2026-10-14-last-safety-vocab-invitation.md) |

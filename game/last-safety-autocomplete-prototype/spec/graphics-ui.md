@@ -88,7 +88,7 @@ Use one furniture kit. Do not mix Kenney and KayKit in one lab. Custom work the 
 The room view fills the window. Everything else floats over it:
 
 - top bar: room and act, clock and fuel, Play / Cam / Map, the Notebook drawer (doors, records, what the player knows), the Lab Access launcher, and a menu (save, load, reset, text version);
-- bottom panel: people present (addressee chips), recent talk, composer, suggestion chips, the More link;
+- bottom transcript dock (no panel chrome): recent talk flush left above an auto-growing composer, addressee chips and suggestion chips just above the input, the More link when enabled;
 - thought bubble and ending card near the top.
 
 On a viewport narrower than the room (a phone held upright), the canvas is at least 1.5 × the viewport height wide and scrolls sideways. Each frame the renderer reports the player's screen position (`RoomRenderer.playerScreen()`, `onFrame`) and the page keeps the player near the middle. A manual swipe or wheel pauses the follow for a few seconds.

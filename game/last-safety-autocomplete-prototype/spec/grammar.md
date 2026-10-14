@@ -78,6 +78,8 @@ The list is not the set of legal actions. Typed text outside the list is still p
 
 Empty field, any channel: a few relevant openings, not a menu of the plot. The lightbulb is one of them only on `think`, and only in an empty room.
 
+**Social opener (person channel only).** One completion, `Hi` → `kind: social`, `relation: open`, `open_slot: none`. Offer it when the player has not yet spoken to someone present this stay (`spokeSinceArrive` on `ClientState.actors`) **or** when no other completion matches the current opening prefix. Do not offer it when the parse is already `social`, or on NORA, note, or think channels. Typed `Hi` / `Hello` resolves locally the same way.
+
 While `pendingQuestion` names an addressee in this channel, two reply openings come first: “Tell <name>” and “Show <name>”. For a question with a specific relation, “Tell <name> <referent>” fills the subject and opens the relation; for an `about` question it opens the subject. The NORA channel gets none.
 
 A completion that was selected is not reread as a typed prefix. The subject is not offered again as its own object, and after “The” no actor is offered as subject.

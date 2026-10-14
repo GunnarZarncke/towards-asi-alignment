@@ -22,8 +22,9 @@ Returned by the engine on every API response as `state`. The UI renders this and
 ```text
 room
 clearance: number                // badge level. A door opens when its required level is at most this. Prototype sessions start at 2.
-actors: id → { name, role, room, initials, presence? }
+actors: id → { name, role, room, initials, presence?, spokeSinceArrive? }
   presence: "body" | "hologram" | "absent"   // omit or "body" for everyone in the building; Amara is hologram or absent
+  spokeSinceArrive: boolean   // false until the player sends a line to that NPC this room stay; ranking uses it for the Hi opener
 entities: id → public entity record (only ids in player knowledge)
   domains: DomainId[]          // ranking; empty on actor records
   eventAt: number | null       // minute of day, only after the player has read that time

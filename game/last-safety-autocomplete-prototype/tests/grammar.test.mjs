@@ -3,7 +3,10 @@ import assert from 'node:assert/strict';
 import {makeParse,semanticSignature} from '../lib/grammar.mjs';
 import {newSession,clientState,go,inspect,ENTITIES} from '../lib/game.mjs';
 import {getCandidates,insertFragment,localPrefixParse} from '../public/grammar.js';
+import {P,say,startedSession,walk} from './helpers.mjs';
 const fresh=()=>clientState(newSession());
+const hereIds=state=>Object.entries(state.actors).filter(([,a])=>a.room===state.room&&a.presence!=='absent').map(([id])=>id);
+const personOpen=(state,parse=makeParse(),text='')=>getCandidates({state,parse,text,addressees:hereIds(state),channel:'person'});
 test('starts with contextual openers and offers no unobserved hidden fact',()=>{
   const opts=getCandidates({state:fresh(),parse:makeParse(),text:''});
   assert.ok(opts.some(x=>x.phrase==='Can'));
@@ -63,4 +66,20 @@ test('typed openers are recognized locally',()=>{
   assert.equal(localPrefixParse('Can').open_slot,'subject');
   assert.equal(localPrefixParse('Sho').open_slot,'opening');
   assert.equal(localPrefixParse('What about the new per'),null);
+  assert.equal(localPrefixParse('Hi').kind,'social');
+});
+test('Hi social opener: first contact, not when already social or after talking',()=>{
+  const state=fresh();
+  assert.ok(personOpen(state).some(x=>x.phrase==='Hi'&&x.parse.kind==='social'));
+  const social=makeParse({kind:'social',relation:'open',open_slot:'none'});
+  assert.ok(!personOpen(state,social).some(x=>x.phrase==='Hi'));
+  const s=startedSession();
+  walk(s,'platform');
+  assert.ok(personOpen(clientState(s)).some(x=>x.phrase==='Hi'),'first talk with Pavel this stay');
+  say(s,'pavel',P('social','open'),'Hi.');
+  const afterTalk=clientState(s);
+  assert.ok(!personOpen(afterTalk).some(x=>x.phrase==='Hi'),'after a line to Pavel, only epistemic openings');
+  const stuck=personOpen(afterTalk,makeParse({source:'local'}),'zzzz');
+  assert.ok(stuck.some(x=>x.phrase==='Hi'),'no prefix match falls back to Hi');
+  assert.ok(!getCandidates({state:afterTalk,parse:makeParse(),text:'',addressees:['nora'],channel:'nora'}).some(x=>x.phrase==='Hi'));
 });

@@ -205,7 +205,7 @@ function addFile(s, slug, sharedBy) {
   const d = DOCUMENTS[slug];
   if (!d || s.files.some(f => f.rel === d.terminalRel)) return;
   s.files.push({ name: d.title, rel: d.terminalRel, owned: false, sharedBy, kind: d.terminalRel.startsWith('wiki/') ? 'wiki' : 'text', documentSlug: slug, sharedWith: [] });
-  notify(s, 'files', `${d.docId}`, sharedBy ? `Shared by ${nameOf(sharedBy)}.` : 'In your Lab Access.', { kind: 'file', id: d.terminalRel });
+  notify(s, 'files', d.title, sharedBy ? `${nameOf(sharedBy)} shared this with you. Tap to read.` : 'On your handset. Tap to read.', { kind: 'file', id: d.terminalRel });
 }
 
 function notify(s, app, title, body, target) {
@@ -275,8 +275,9 @@ function confirmLabAccess(s) {
   introduce(s, 'justine');
   for (const id of CALENDAR_CAST) introduce(s, id);
   addFile(s, 'wiki-glossary', 'justine');
-  notify(s, 'calendar', 'Lab Access active', 'Your visitor binding is live. Today’s calendar is on the handset.', { kind: 'app', id: 'calendar' });
+  notify(s, 'calendar', 'Today’s schedule', 'Your visit calendar is ready. Tap to see briefings and meetings.', { kind: 'app', id: 'calendar' });
   s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here.', refs: ['lab_access', 'justine', 'review'] });
+  seedContactThreads(s);
   const left = relocateNpcs(s);
   trigger(s, 'act:doubt');
   return left;
@@ -492,6 +493,12 @@ function thread(s, withId) {
     s.threads.push(t);
   }
   return t;
+}
+
+/** One empty Chat thread per Contacts row so the handset can open a composer before the first send. */
+export function seedContactThreads(s) {
+  if (!s.labAccessActive) return;
+  for (const c of contacts(s)) thread(s, c.id);
 }
 
 function queueMessage(s, from, { text, moves = [], parse = null }, delay, base = s.fuelSpent) {
@@ -827,7 +834,14 @@ export function clientState(s) {
   const actors = {};
   for (const id of N.NPC_IDS) {
     const n = s.npcs[id];
-    actors[id] = { name: CAST[id].name, role: CAST[id].role, room: n.room, initials: CAST[id].initials, presence: n.presence };
+    actors[id] = {
+      name: CAST[id].name,
+      role: CAST[id].role,
+      room: n.room,
+      initials: CAST[id].initials,
+      presence: n.presence,
+      spokeSinceArrive: !!n.spokeSinceArrive,
+    };
   }
   const entities = {};
   for (const id of s.vocab) {

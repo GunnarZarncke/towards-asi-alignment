@@ -19,6 +19,7 @@ function channelFor(state) {
 }
 
 function previewText(anchorText, parse, option) {
+  if (typeof option === 'string') return option;
   return insertFragment(anchorText, option, parse?.unfinished);
 }
 
@@ -131,12 +132,54 @@ export function attachTabCompletion({ input, listEl, getState, ensureState, onPa
     open = false;
   }
 
+  async function fetchTabComplete(line, page) {
+    const r = await fetch('/api/tab-complete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ line, page }),
+    });
+    if (!r.ok) return [];
+    const data = await r.json();
+    return data.lines || [];
+  }
+
   async function openMenu(advancePage) {
     const slice = utteranceSlice(input.value);
     if (!slice) {
-      close();
-      flashHint('Tab completes speech (not console commands like go or help).');
-      return false;
+      if (!open) {
+        menuAnchorText = input.value;
+        linePrefix = '';
+        pageStart = 0;
+        pickIndex = 0;
+        open = true;
+        loading = true;
+        renderList();
+        try {
+          all = await fetchTabComplete(input.value, 0);
+        } catch {
+          all = [];
+        }
+        loading = false;
+        if (!all.length) {
+          close();
+          flashHint('Tab completes commands and speech (try msg nora after Lab Access is live).');
+          return false;
+        }
+        renderList();
+        return true;
+      }
+      if (advancePage) {
+        pageStart += PAGE;
+        try {
+          all = await fetchTabComplete(menuAnchorText, Math.floor(pageStart / PAGE));
+        } catch {
+          all = [];
+        }
+        if (!all.length) pageStart = 0;
+        pickIndex = 0;
+        renderList();
+      }
+      return true;
     }
     let state = getState();
     if (!state && ensureState) state = await ensureState();

@@ -13,6 +13,7 @@ import {parseUtterance} from './lib/llm.mjs';
 import {phraseLines} from './lib/phrase.mjs';
 import {makeParse} from './lib/grammar.mjs';
 import {createConsole} from './lib/text/console.mjs';
+import {tabCompleteLines} from './lib/text/tab-complete.mjs';
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
 for (const rel of ['../../.env', '../.env', '.env']) {
   const envPath=path.join(ROOT, rel);
@@ -64,6 +65,12 @@ const server=http.createServer(async(req,res)=>{
         if(!consoles.has(sid))consoles.set(sid,createConsole(()=>sessions.get(sid),{phrase:true}));
         const r=await consoles.get(sid).handle(String(b.line||'').slice(0,600));
         return json(res,200,r);
+      }
+      if(url.pathname==='/api/tab-complete'){
+        const line=String(b.line||'').slice(0,600);
+        const page=Math.max(0,Number(b.page)||0);
+        const lines=await tabCompleteLines(s,line,page);
+        return json(res,200,{lines,line});
       }
       if(url.pathname==='/api/tool'){
         const r=applyAction(s,'tool',b||{});

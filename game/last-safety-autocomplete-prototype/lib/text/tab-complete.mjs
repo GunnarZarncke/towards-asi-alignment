@@ -40,17 +40,80 @@ function facing(state) {
   return here.includes(asker) ? asker : here[0] || null;
 }
 
-async function resolveParse(session, utterance) {
+async function resolveParse(session, utterance, actorId = null) {
   const text = utterance.trimEnd();
   if (!text.trim()) return makeParse();
   const local = localPrefixParse(text);
   if (local) return local;
-  const actorId = facing(clientState(session));
+  const who = actorId ?? facing(clientState(session));
   const parse = await parseUtterance(
-    { text, known: [...session.vocab], history: session.conversations, actorId },
+    { text, known: [...session.vocab], history: session.conversations, actorId: who },
     session.usage,
   );
   return cleanParse({ ...parse, source: parse.source || 'llm' }, session);
+}
+
+function contactChoices(state, terminal) {
+  return (terminal?.contacts || []).map(c => ({
+    id: c.id,
+    name: state.actors?.[c.id]?.name || c.id,
+  }));
+}
+
+function pickContact(token, state, terminal) {
+  const q = String(token ?? '').trim().toLowerCase();
+  if (!q) return null;
+  const items = contactChoices(state, terminal);
+  return items.find(x => q === x.id.toLowerCase() || q === x.name.toLowerCase())
+    || items.find(x => matchPrefixIgnoreCase(q, x.name, x.id))
+    || null;
+}
+
+/** @returns {{ prefix: string, contactToken: string, message: string } | null} */
+export function parseMsgLine(line) {
+  const lead = String(line ?? '').match(/^\s*/)?.[0] || '';
+  const body = String(line ?? '').slice(lead.length);
+  const m = body.match(/^(msg|dm)\s+(\S+)(?:\s+(.*))?$/i);
+  if (!m) return null;
+  return {
+    prefix: `${lead}${m[1]} ${m[2]} `,
+    contactToken: m[2],
+    message: m[3] ?? '',
+  };
+}
+
+async function msgSpeechCompletions(session, line, page, state, terminal) {
+  const parsed = parseMsgLine(line);
+  if (!parsed || !terminal?.labAccessActive) return null;
+  const contact = pickContact(parsed.contactToken, state, terminal);
+  if (!contact) return null;
+  const exact = parsed.contactToken.toLowerCase() === contact.id.toLowerCase()
+    || parsed.contactToken.toLowerCase() === contact.name.toLowerCase();
+  const rest = String(line ?? '').match(/^\s*(?:msg|dm)\s+\S+\s*(.*)$/i)?.[1];
+  if (!exact && !rest?.length && !String(line ?? '').match(/^\s*(?:msg|dm)\s+\S+\s+/i)) return null;
+
+  const { prefix, message } = parsed;
+  const thread = terminal.threads?.find(t => t.with === contact.id);
+  const omit = thread?.omit || [];
+  const channel = contact.id === 'nora' ? 'nora' : 'person';
+  const lines = [];
+  if (!message.trim()) {
+    for (const s of thread?.suggestions || []) lines.push(prefix + s.phrase);
+  }
+  const parse = await resolveParse(session, message, contact.id);
+  const all = getCandidates({
+    state,
+    parse,
+    text: message,
+    addressees: [contact.id],
+    channel,
+    omit,
+  });
+  for (const opt of all) {
+    lines.push(prefix + insertFragment(message, opt, parse.unfinished));
+  }
+  const start = page * PAGE;
+  return lines.slice(start, start + PAGE);
 }
 
 /** Case-insensitive prefix match on display label and optional id slug. */
@@ -125,6 +188,19 @@ function commandCompletions(line, state, terminal, { saveFile = '' } = {}) {
   }
   if (verb === 'say' && !rest.trim()) return [afterVerb.trimEnd()];
 
+  if (verb === 'msg' || verb === 'dm') {
+    if (!terminal?.labAccessActive) return [];
+    const people = contactChoices(state, terminal);
+    if (!rest.trim()) return people.map(p => `${afterVerb}${p.name} `);
+    const tok = rest.split(/\s+/)[0] || '';
+    const contact = pickContact(tok, state, terminal);
+    const exact = contact && (tok.toLowerCase() === contact.id.toLowerCase()
+      || tok.toLowerCase() === contact.name.toLowerCase());
+    if (contact && (exact || rest.includes(' '))) return null;
+    const hits = people.filter(p => matchPrefixIgnoreCase(tok, p.name, p.id));
+    return hits.map(p => `${afterVerb}${p.name} `);
+  }
+
   if (!rest.trim()) return [afterVerb.trimEnd()];
   return [];
 }
@@ -138,6 +214,9 @@ function commandCompletions(line, state, terminal, { saveFile = '' } = {}) {
 export async function tabCompleteLines(session, line, page = 0, opts = {}) {
   const state = clientState(session);
   const terminal = terminalState(session);
+  const msgHits = await msgSpeechCompletions(session, line, page, state, terminal);
+  if (msgHits !== null) return msgHits;
+
   const cmd = commandCompletions(line, state, terminal, opts);
   if (cmd !== null) {
     const start = page * PAGE;

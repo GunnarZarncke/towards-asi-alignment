@@ -28,6 +28,36 @@ const SAVE_KEY = 'lsr-save';
 /** Debug panels (parser inspector, trace, usage, server mode) show only in test mode or the dev-ui harness. */
 const testParam = new URLSearchParams(location.search).has('test');
 let userScrollAt = 0;
+let chatExpanded = false;
+const narrowMq = matchMedia('(max-width: 720px)');
+
+function narrowLayout() {
+  return narrowMq.matches && !phoneOpen;
+}
+
+function syncTranscriptChrome() {
+  const collapsed = narrowLayout() && !chatExpanded;
+  document.body.classList.toggle('transcript-collapsed', collapsed);
+  document.body.classList.toggle('transcript-expanded', narrowLayout() && chatExpanded);
+}
+
+function collapseChat() {
+  if (!narrowLayout()) return;
+  chatExpanded = false;
+  $('utterance')?.blur();
+  syncTranscriptChrome();
+}
+
+function expandChat(focusInput = true) {
+  if (!narrowLayout()) {
+    chatExpanded = true;
+    syncTranscriptChrome();
+    return;
+  }
+  chatExpanded = true;
+  syncTranscriptChrome();
+  if (focusInput) $('utterance')?.focus({ preventScroll: true });
+}
 
 const roomNames = Object.fromEntries(Object.entries(ROOM_META).map(([id, m]) => [id, m.title]));
 
@@ -103,8 +133,14 @@ function renderScenePanel() {
   for (const btn of document.querySelectorAll('[data-act]')) btn.classList.toggle('active', btn.dataset.act === actPreset);
 
   const handlers = {
-    onGo: room => move(room),
-    onInspect: id => examine(id),
+    onGo: room => {
+      collapseChat();
+      move(room);
+    },
+    onInspect: id => {
+      collapseChat();
+      examine(id);
+    },
     onTerminal: () => {
       if (uiHarness || !state.labAccessActive) return;
       setPhone(true);
@@ -113,7 +149,7 @@ function renderScenePanel() {
       if (id && state.actors[id]) addressee = id;
       renderNPC();
       renderSuggestions();
-      $('utterance').focus({ preventScroll: true });
+      expandChat(true);
     },
   };
   if (room3d) room3d.update(scene, handlers);
@@ -285,6 +321,8 @@ function setPhone(open) {
   if (state?.labAccessActive && !frame.src) frame.src = '/terminal/index.html?embed=1';
   $('phoneOverlay').hidden = !open;
   renderPhoneButton();
+  if (open) collapseChat();
+  else syncTranscriptChrome();
 }
 
 function renderPhoneButton() {
@@ -312,16 +350,47 @@ window.addEventListener('message', async e => {
   }
 });
 
+function transcriptSpeakerKey(m) {
+  return m.role === 'player' ? 'player' : `npc:${m.npc || ''}`;
+}
+
+function transcriptSpeakerLabel(m) {
+  return m.role === 'player' ? 'You' : esc(state.actors[m.npc]?.name || 'NPC');
+}
+
+function groupTranscriptLines(messages) {
+  const groups = [];
+  for (const m of messages) {
+    const key = transcriptSpeakerKey(m);
+    const tail = groups[groups.length - 1];
+    if (tail && tail.key === key) tail.messages.push(m);
+    else groups.push({ key, messages: [m] });
+  }
+  return groups;
+}
+
 function renderMessages() {
   const convo = state.previous || [];
-  $('messages').innerHTML = convo.length
-    ? convo.slice(-10).map(
-        m =>
-          `<div class="bubble ${m.role === 'player' ? 'player' : 'npc'}"><div class="bubble-note">${m.role === 'player' ? 'YOU' : esc(state.actors[m.npc]?.name || 'NPC')}</div>${esc(m.text)}</div>`
-      ).join('')
+  const recent = convo.slice(-14);
+  $('messages').innerHTML = recent.length
+    ? groupTranscriptLines(recent)
+        .map(g => {
+          const role = g.messages[0].role === 'player' ? 'player' : 'npc';
+          const lines = g.messages.map(m => `<div class="transcript-line">${esc(m.text)}</div>`).join('');
+          return `<div class="transcript-group ${role}"><div class="transcript-speaker">${transcriptSpeakerLabel(g.messages[0])}</div><div class="transcript-bubbles">${lines}</div></div>`;
+        })
+        .join('')
     : '';
   if (lastNotice) $('messages').innerHTML += `<div class="notice">${esc(lastNotice)}</div>`;
-  $('messages').scrollTop = $('messages').scrollHeight;
+  const box = $('messages');
+  box.scrollTop = box.scrollHeight;
+}
+
+function resizeUtterance() {
+  const ta = $('utterance');
+  if (!ta) return;
+  ta.style.height = 'auto';
+  ta.style.height = `${Math.min(ta.scrollHeight, 120)}px`;
 }
 
 function renderContext() {
@@ -401,6 +470,8 @@ function render() {
   renderMapButton();
   renderPhoneButton();
   refreshPhone();
+  resizeUtterance();
+  syncTranscriptChrome();
 }
 
 function choose(option) {
@@ -418,6 +489,7 @@ function choose(option) {
   visibleCount = 5;
   renderInspector();
   renderSuggestions();
+  resizeUtterance();
   $('utterance').focus();
   $('utterance').setSelectionRange(parseText.length, parseText.length);
 }
@@ -444,6 +516,7 @@ function typed() {
   renderInspector();
   renderSuggestions();
   debounce = setTimeout(() => parseNow(requestVersion), 560);
+  resizeUtterance();
 }
 
 async function parseNow(version) {
@@ -583,6 +656,7 @@ function resetComposer() {
   visibleCount = 5;
   clearTimeout(debounce);
   requestVersion++;
+  resizeUtterance();
 }
 
 async function setCamera(mode) {
@@ -598,6 +672,33 @@ async function setCamera(mode) {
   renderScenePanel();
 }
 
+$('transcriptDock').addEventListener('focusin', () => expandChat(false));
+$('transcriptDock').addEventListener('pointerdown', e => {
+  if (!narrowLayout()) return;
+  if (e.target.closest('.dock-input, #suggestions, .suggestion, #showMore, .transcript-scroll')) {
+    expandChat(e.target.id === 'utterance' || e.target.closest('#utterance'));
+  }
+});
+$('roomMount').addEventListener('pointerdown', () => collapseChat(), { capture: true });
+document.addEventListener(
+  'pointerdown',
+  e => {
+    if (!narrowLayout()) return;
+    if (e.target.closest('#transcriptDock, #phoneOverlay, #phoneBtn')) return;
+    collapseChat();
+  },
+  true,
+);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && phoneOpen) setPhone(false);
+});
+narrowMq.addEventListener('change', () => {
+  if (!narrowMq.matches) {
+    chatExpanded = false;
+    document.body.classList.remove('transcript-collapsed', 'transcript-expanded');
+  } else syncTranscriptChrome();
+});
+$('utterance').addEventListener('focus', () => expandChat(false));
 $('utterance').addEventListener('input', typed);
 $('utterance').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {
