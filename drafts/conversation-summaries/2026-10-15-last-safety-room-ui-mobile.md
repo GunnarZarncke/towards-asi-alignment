@@ -30,4 +30,4 @@ Prompts: (paraphrase-only — no prompt ids in transcript export)
 - `game/last-safety-autocomplete-prototype/scripts/bench-completions.mjs`
 
 ## Commits
-- (filled after commit)
+- `c0c0e9151` Last Safety: room transcript UX, mobile handset dismiss, and completion paths.
