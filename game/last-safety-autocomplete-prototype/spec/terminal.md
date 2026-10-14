@@ -33,6 +33,7 @@ Default surface when the overlay opens.
 
 - Clock, large enough to read.
 - Notification stack: unread chats, a file shared with the player, a grant or denial, a topic an NPC has raised. Tapping a notification opens the matching app and item. Notifications do not invent facts; they only point at `TerminalState`. They are the hint channel (O-11): a topic or a file, not an oracle conclusion.
+- A notice clears when the player reaches its target (thread, file viewer, Calendar, API, or an owned note), including opening the file from Files or Knowledge without using the stack. Read state is client-side in the phone iframe; badges and the room blink follow the same seen set.
 - When Lab Access is active, the overlay is closed, and a notification is unread, the room’s handset object blinks. Graphics draws the blink. This lane decides when the unread flag is set. Before activation, nothing blinks.
 - App tiles, always present:
 
@@ -45,7 +46,7 @@ Default surface when the overlay opens.
 | **Calendar** | One day in **late 2027**. Date and appointments cannot be changed. A line marks current in-game time. | none (read-only engine list) |
 | **Contacts** | People the engine has added (introduced cast). Open Chat. If `joinable`, ask them to join as a hologram. NORA is a contact, not joinable. | Chat uses `dm.*`; join is a `request` the engine maps to projection |
 | **Notes** | Title plus a plain text field, with the note-channel completions (no NORA). Save is `file.write` under `notes/` and stores written assertions (O-13). The engine does not seed them. A notification does not write one. There is no tool that marks two sources as correlated or independent (O-14). | `file.read`, `file.write` |
-| **Photo** | Capture the **current room** from the phone: pan and zoom the live view, then save. The still goes to Files (`photos/`). | `file.write` |
+| **Photo** | The app **is** the live room: Lab Access closes, all room chrome hides, only a round shutter stays on the 3D view (drag/pinch to frame a portrait crop). Shutter saves to Files (`photos/`) and Lab Access reopens on the new photo. Esc cancels back to the phone home. | `file.write` |
 | **Video** | Camera recordings the engine has released. Playback is a replay of stored events, clocked by fuel (O-36). | none (reads the event log) |
 | **Settings** | Game and phone options. Do not change the lab’s world. See below. | none (local UI + optional composition flags) |
 
@@ -80,7 +81,7 @@ New note: title field, body as one unformatted text area. The body composer is t
 
 **Photo**
 
-The finder is the current room camera from graphics, shown inside the phone. Pan and zoom are presentation only (they do not move the player in the room). Capture writes an image file the player owns. Open it later in the image viewer. Photo does not grant camera-archive access in Security Control.
+The finder is the current room camera from graphics, shown inside the phone. Pan and zoom are presentation only (they do not move the player in the room). Capture writes an image file the player owns. Open it later in the image viewer (`file.read` returns a `href`; the game serves bytes at `GET /api/handset-file?rel=photos/...` so terminal JSON stays small). Photo does not grant camera-archive access in Security Control.
 
 **Settings (easy set, until a longer list is needed)**
 

@@ -139,6 +139,13 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   display: grid; place-items: center; border: 2px solid var(--paper); box-shadow: 0 1px 4px #0002;
 }
 .row.is-new { border-color: #e8c99a; background: #fff8ef; }
+.row-file { display: flex; align-items: center; gap: 12px; }
+.row-file .row-text { flex: 1; min-width: 0; }
+.row-thumb {
+  width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+  border: 1px solid var(--line); background: #eef2ef;
+}
+.image-view img { display: block; max-width: 100%; border-radius: 12px; }
 .row-tag { display: inline-block; margin-left: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #a65a12; vertical-align: middle; }
 .ico {
   width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; color: var(--accent);

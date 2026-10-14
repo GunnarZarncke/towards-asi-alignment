@@ -43,6 +43,17 @@ test('Ian’s closing glue fires when he leaves commons after talking', () => {
   assert.notEqual(s.npcs.ian.room, 'commons');
 });
 
+test('Jun work lines stay first person; texture facts are not read aloud verbatim', () => {
+  const s = startedSession();
+  walk(s, 'model');
+  const r = say(s, 'jun', P('social', 'open'), 'Hi.');
+  for (const l of r.lines) {
+    assert.doesNotMatch(l.text, /^Jun spent/i);
+    assert.doesNotMatch(l.text, /\bJun spent the morning\b/);
+    if (l.move?.type === 'work') assert.match(l.text, /^I[’']/);
+  }
+});
+
 test('stance follows domain and pressure; glue never carries a fact id', () => {
   assert.equal(pickStance(NPC_DEFS.elena.glue, { domains: ['staffing'] }), 'pushy');
   assert.equal(pickStance(NPC_DEFS.elena.glue, { domains: ['evaluation'] }), 'deferential');

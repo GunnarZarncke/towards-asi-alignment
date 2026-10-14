@@ -87,7 +87,7 @@ Use one furniture kit. Do not mix Kenney and KayKit in one lab. Custom work the 
 
 The room view fills the window. Everything else floats over it:
 
-- top bar: room and act, clock and fuel, Play / Cam / Map, the Lab Access launcher, and a menu (save, load, reset, text version);
+- floating overlay chips (not a full-width bar): room title; act then clock and fuel; Map, Lab Access, and menu (save, load, reset, text version);
 - when the engine adds a new learned fact, a short dialog offers to copy it into the handset Notes app (doors, records, and the 3D room already cover navigation and evidence; only “what you know” needed this path);
 - bottom transcript dock (no panel chrome): recent talk flush left above an auto-growing composer, addressee chips and suggestion chips just above the input, the More link when enabled;
 - thought bubble and ending card near the top.
@@ -98,7 +98,7 @@ Debug panels show only in test mode: the parser inspector (structured meaning, c
 
 The floorplan button opens the verified courtyard plan (`public/floorplan.svg`). The current room is marked. A click walks one door from `lib/floorplan.mjs`. The prototype badge is clearance 2, so the test bay and security control stay shut. The engine rejects any other move.
 
-The player computer is an issued **Lab Access** handset overlay specified in [terminal.md](terminal.md). This lane does not edit `public/terminal/`. Graphics reserves a right-hand slot on desktop and a full-screen slot on a narrow viewport; the terminal lane draws the bezel, homescreen, and apps. Draw that overlay only when `ClientState.labAccessActive` is true. Before activation, reserve no launcher and do not blink. After activation, a room object of kind `terminal` may be the pocketed handset; tapping it, or a persistent launcher, opens the overlay. When the terminal says a notification is unread, that object blinks. The blink carries no text. The Photo app needs a still (or live texture) of the current room camera, pan/zoom inside the handset only; capture is a file write, not a change to the room camera.
+The player computer is an issued **Lab Access** handset overlay specified in [terminal.md](terminal.md). This lane does not edit `public/terminal/`. Graphics reserves a right-hand slot on desktop and a full-screen slot on a narrow viewport; the terminal lane draws the bezel, homescreen, and apps. Draw that overlay only when `ClientState.labAccessActive` is true. Before activation, reserve no launcher and do not blink. After activation, a room object of kind `terminal` may be the pocketed handset; tapping it, or a persistent launcher, opens the overlay. When the terminal says a notification is unread, that object blinks. The blink carries no text. The Photo app **is** the main room view: tapping Photo closes the handset overlay and hides all other room chrome. The player pans and pinches the live Three.js view; only a round shutter remains on screen. Shutter writes a centered portrait crop to `photos/` via `file.write`, then Lab Access reopens on the saved file. Esc cancels and restores the phone.
 
 Later surfaces, still this lane visually and the engine for data: evidence reader and comparison of two records. Notes are the handset Notes app ([terminal.md](terminal.md), O-13). Save and load are local storage plus a JSON file (O-31); this lane only needs export and import controls. **TSA “More” link (O-41).** Controlled by the phone setting (default off). This lane draws a single line fixed to the bottom of the room view (not inside the phone bezel). Format: the literal prefix `More: `, then one underlined phrase — a very short summary from the concept card, not the full title. It is a normal link to the companion site card (`/cards/{slug}/` on the deployed site; absolute URL in production). The engine sends at most one `{ summary, href }` in `ClientState` (see [contract.md](contract.md)). If the setting is off, or the field is null, draw nothing. When several concepts become relevant in the same room, show only the last one triggered; keep showing that link until the player changes room, then clear until the next trigger. Do not stack multiple links.
 
@@ -107,7 +107,7 @@ Later surfaces, still this lane visually and the engine for data: evidence reade
 Composer behavior to preserve:
 
 - One action can be a tap, a partial type plus a completion, or free text.
-- Suggestion caption: completions help say a question; they do not answer it.
+- Composer placeholder carries the completion hint (after “Tap to speak…”): completions help say a question; they do not answer it.
 - Parser indicator distinguishes local grammar from a model call.
 
 Voice input is later, not this lane’s first job.

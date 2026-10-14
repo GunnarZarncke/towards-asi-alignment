@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {
   DISABLED_TOOLS, PLAYER_TOOLS, projectFiles, visibleMessages, suggestionChips, sendable,
   applyTool, controlLabels, pipelineLabels, playerVisibleText, sessionProblems,
-  danglingNotifications, nowPlacement, handsetShouldBlink, overlayAllowed, decideAccess,
+  danglingNotifications, nowPlacement, handsetShouldBlink, markNoticeTarget, overlayAllowed, decideAccess,
 } from '../public/terminal/project.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -98,6 +98,22 @@ test('pipeline tools and step labels are not on the phone', () => {
   const allowed = applyTool(session, { tool: 'access.request', capability: 'cap.meeting_summary' });
   assert.equal(allowed.ok, true);
   assert.deepEqual(decideAccess('cap.handle_invoke'), { ok: false, reason: 'Not on the evaluator role.' });
+});
+
+test('markNoticeTarget clears every notice for the same file or app', () => {
+  const sample = {
+    labAccessActive: true,
+    notifications: [
+      { id: 'n1', app: 'files', target: { kind: 'file', id: 'notes/a.txt' } },
+      { id: 'n2', app: 'files', target: { kind: 'file', id: 'notes/a.txt' } },
+      { id: 'n3', app: 'calendar', target: { kind: 'app', id: 'calendar' } },
+    ],
+  };
+  const afterFile = markNoticeTarget(sample, [], { kind: 'file', id: 'notes/a.txt' });
+  assert.deepEqual(new Set(afterFile), new Set(['n1', 'n2']));
+  assert.equal(handsetShouldBlink(sample, afterFile, false), true);
+  const afterCal = markNoticeTarget(sample, afterFile, { appId: 'calendar' });
+  assert.equal(handsetShouldBlink(sample, afterCal, false), false);
 });
 
 test('notices point at real targets, the day is locked, and the handset blinks only when closed', () => {

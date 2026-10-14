@@ -10,27 +10,37 @@
 </head>
 <body>
 <div id="roomMount" class="room-full" aria-label="Room view"></div>
+<div id="photoCapture" class="photo-capture" hidden>
+  <button type="button" class="photo-shutter" id="photoShutter" aria-label="Take photo"><span class="photo-shutter-inner"></span></button>
+</div>
 
-<header class="hud hud-top">
-  <div class="hud-place"><b id="roomTitle">—</b><span id="actLabel"></span></div>
-  <span class="pill" id="clock" title="Visit clock and remaining fuel">—</span>
-  <span class="pill debug" id="mode">Loading</span>
-  <div class="hud-tools">
-    <button type="button" class="scene-mode active" id="modePlay" aria-pressed="true" title="Play view">Play</button>
-    <button type="button" class="scene-mode" id="modeSurveillance" aria-pressed="false" title="Surveillance camera">Cam</button>
-    <button type="button" class="scene-mode" id="modeMap" aria-pressed="false" title="Floorplan">Map</button>
-    <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
-    <button type="button" class="minor handset-btn" id="phoneBtn" hidden>Lab Access</button>
-    <button type="button" class="minor" id="menuBtn" aria-expanded="false" aria-label="Menu">☰</button>
+<div class="hud-layer" aria-label="Room controls">
+  <div class="hud-cluster hud-cluster-start">
+    <div class="hud hud-room"><b id="roomTitle">—</b></div>
+    <div class="hud hud-status">
+      <span class="hud-act" id="actLabel"></span>
+      <span class="pill" id="clock" title="Visit clock and remaining fuel">—</span>
+    </div>
   </div>
-  <div class="menu" id="menu" hidden>
-    <button type="button" id="save" title="Download this session as a JSON save">Save</button>
-    <button type="button" id="load" title="Load a JSON save">Load</button>
-    <button type="button" id="reset">Reset scenario</button>
-    <a href="/text.html">Text version</a>
-    <input type="file" id="loadFile" accept="application/json" hidden/>
+  <div class="hud-cluster hud-cluster-end">
+    <span class="pill debug hud-debug" id="mode">Loading</span>
+    <div class="hud hud-tools">
+      <button type="button" class="scene-mode" id="modeMap" aria-pressed="false" title="Floorplan">Map</button>
+      <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
+      <button type="button" class="minor handset-btn" id="phoneBtn" hidden>Lab Access</button>
+    </div>
+    <div class="hud hud-menu">
+      <button type="button" class="minor" id="menuBtn" aria-expanded="false" aria-label="Menu">☰</button>
+      <div class="menu" id="menu" hidden>
+        <button type="button" id="save" title="Download this session as a JSON save">Save</button>
+        <button type="button" id="load" title="Load a JSON save">Load</button>
+        <button type="button" id="reset">Reset scenario</button>
+        <a href="/text.html">Text version</a>
+        <input type="file" id="loadFile" accept="application/json" hidden/>
+      </div>
+    </div>
   </div>
-</header>
+</div>
 <div class="scene-note muted" id="sceneNote"></div>
 
 <div id="thoughtBubble" class="thought" hidden></div>
@@ -53,11 +63,12 @@
   <div class="npc-row dock-npc" id="npcRow"></div>
   <div class="composer dock-composer">
     <div class="suggestion-row">
-      <div id="suggestions" class="suggestions"></div>
-      <button type="button" id="showMore" class="more more-inline" hidden>More ↓</button>
+      <div id="suggestions" class="suggestions">
+        <button type="button" id="showMore" class="more more-inline" hidden>More ↓</button>
+      </div>
     </div>
-    <div class="suggestion-foot"><span id="hint" class="muted">Completions help say a question, not find its answer.</span><span id="parserIndicator" class="muted debug">Local grammar</span></div>
-    <div class="inputrow dock-input"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap to speak…"></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
+    <div class="suggestion-foot"><span id="parserIndicator" class="muted debug">Local grammar</span></div>
+    <div class="inputrow dock-input"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap to speak… Completions help say a question, not find its answer."></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
   </div>
 </section>
 

@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { newSession, spend, exportSession, importSession, contacts } from '../lib/game.mjs';
 import { FACTS } from '../lib/world/facts.mjs';
 import { CONFIG } from '../lib/world/config.mjs';
-import { terminalState } from '../lib/world/terminal-host.mjs';
+import { terminalState, handsetMediaPayload } from '../lib/world/terminal-host.mjs';
 import { P, startedSession, say, dm, idle, commit, walk, applyAction, clientState } from './helpers.mjs';
 
 const ORACLE_KEYS = ['records', 'policies', 'goals', 'explanations', 'eliminate', 'role_rules', 'knowledge'];
@@ -70,6 +70,23 @@ test('notes cost no fuel; photos still do', () => {
   assert.equal(s.fuel, fuel);
   applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/snap.png', name: 'Snap', text: 'data:image/png,x', kind: 'image' });
   assert.ok(s.fuel < fuel);
+});
+
+test('owned photos list with href only and decode for the handset viewer', () => {
+  const s = startedSession();
+  const b64 = Buffer.from('png-bytes').toString('base64');
+  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/room-0958.png', name: 'Room 09:58', text: `data:image/png;base64,${b64}`, kind: 'image' });
+  const row = terminalState(s).files.find(f => f.rel === 'photos/room-0958.png');
+  assert.equal(row.kind, 'image');
+  assert.equal(row.text, undefined);
+  assert.match(row.href, /handset-file\?rel=photos%2Froom-0958.png/);
+  const read = applyAction(s, 'tool', { tool: 'file.read', rel: 'photos/room-0958.png' });
+  assert.equal(read.file.kind, 'image');
+  assert.equal(read.file.text, undefined);
+  assert.ok(read.file.href);
+  const media = handsetMediaPayload(s, 'photos/room-0958.png');
+  assert.equal(media.mime, 'image/png');
+  assert.equal(media.body.toString(), 'png-bytes');
 });
 
 test('go costs fuel and clock; inspect is free and room-bound', () => {

@@ -648,7 +648,8 @@ export function thoughtAction(s, action) {
 export function writeNote(s, { rel, name, text, kind = 'note', facts = [], parses = [] }) {
   const existing = s.files.find(f => f.rel === rel);
   if (existing && !existing.owned) return { ok: false, reason: 'Not your file.' };
-  const row = { name: String(name || rel.split('/').pop()).slice(0, 80), rel, owned: true, sharedBy: null, kind, text: String(text ?? '').slice(0, 200_000), sharedWith: existing?.sharedWith || [] };
+  const textCap = kind === 'image' ? 3_000_000 : 200_000;
+  const row = { name: String(name || rel.split('/').pop()).slice(0, 80), rel, owned: true, sharedBy: null, kind, text: String(text ?? '').slice(0, textCap), sharedWith: existing?.sharedWith || [] };
   s.files = s.files.filter(f => f.rel !== rel).concat(row);
   const sigs = [
     ...facts.filter(id => s.learned[id] || s.assertions.some(a => a.signature === id && a.source === 'thought')),
@@ -919,7 +920,12 @@ export function phrasingInput(s, npc, move) {
     document: move.doc ? DOCUMENTS[move.doc].docId : null,
     question: move.type === 'ask' ? N.templateText(s, move) : null,
     agenda: item?.id || null,
-    texture: (item?.texture || []).filter(id => s.npcs[npc].records[id]).map(id => FACTS[id].text),
+    texture:
+      move.type === 'work' && move.work
+        ? [move.work]
+        : move.fact && FACTS[move.fact]?.kind === 'texture'
+          ? [N.templateText(s, move)]
+          : (item?.texture || []).filter(id => s.npcs[npc].records[id]).map(id => FACTS[id].text),
     slot: move.slot || null,
     stance: move.stance || (move.type === 'glue' ? N.stanceOf(s, npc) : null),
     work: move.work || null,

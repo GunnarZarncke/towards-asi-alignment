@@ -29,6 +29,10 @@ let learnedFactSnapshot = null;
 let notebookQueue = [];
 let notebookSkipped = new Set();
 let notebookPromptFact = null;
+let photoMode = false;
+let photoView = { x: 0, y: 0, z: 1 };
+const photoPointers = new Map();
+let photoPinch0 = null;
 const SAVE_KEY = 'lsr-save';
 /** Debug panels (parser inspector, trace, usage, server mode) show only in test mode or the dev-ui harness. */
 const testParam = new URLSearchParams(location.search).has('test');
@@ -124,16 +128,9 @@ function renderScenePanel() {
   const scene = buildSceneView(state, sceneOptions());
   $('roomTitle').textContent = scene.roomTitle;
   $('actLabel').textContent = scene.actLabel;
-  $('modePlay').classList.toggle('active', cameraMode === 'play');
-  $('modeSurveillance').classList.toggle('active', cameraMode === 'surveillance');
-  $('modePlay').setAttribute('aria-pressed', cameraMode === 'play' ? 'true' : 'false');
-  $('modeSurveillance').setAttribute('aria-pressed', cameraMode === 'surveillance' ? 'true' : 'false');
-  $('sceneNote').textContent =
-    cameraMode === 'surveillance'
-      ? 'Belief overlays — compare with play view before trusting labels'
-      : room3d
-        ? 'Click the floor to walk · click a person to move them · doors and records walk you there'
-        : 'Tap hotspots — doors, records, people';
+  $('sceneNote').textContent = room3d
+    ? 'Click the floor to walk · click a person to move them · doors and records walk you there'
+    : 'Tap hotspots — doors, records, people';
   $('actSwitch').hidden = !uiHarness;
   for (const btn of document.querySelectorAll('[data-act]')) btn.classList.toggle('active', btn.dataset.act === actPreset);
 
@@ -175,6 +172,7 @@ async function initRenderer() {
 
 /** On a viewport narrower than the room, keep the player near the middle unless the user just scrolled. */
 function followPlayer() {
+  if (photoMode) return;
   const m = $('roomMount');
   const max = m.scrollWidth - m.clientWidth;
   if (max <= 1 || performance.now() - userScrollAt < 2500) return;
@@ -317,8 +315,8 @@ function renderNPC() {
         const n = state.actors[id];
         const holo = n.presence === 'hologram';
         return `<button type="button" class="actor-chip${id === current ? ' selected' : ''}${holo ? ' hologram' : ''}" data-addressee="${id}" aria-pressed="${id === current}"><span class="avatar">${esc(n.initials)}</span><span><span class="npc-name">${esc(n.name)}</span><span class="npc-role">${esc(n.role)}${holo ? ' · projected' : ''}</span></span></button>`;
-      }).join('') + `<span class="available">${here.length > 1 ? 'SPEAKING TO ' + esc(state.actors[current].name.split(' ')[0].toUpperCase()) : 'AVAILABLE'}</span>`
-    : '<div class="npc-name muted">No one present</div><span class="available">EMPTY · THINK IS OPEN</span>';
+      }).join('')
+    : '<span class="muted small">No one here — think is open.</span>';
   for (const b of $('npcRow').querySelectorAll('[data-addressee]')) {
     b.onclick = () => {
       addressee = b.dataset.addressee;
@@ -410,9 +408,109 @@ function refreshPhone() {
   $('phoneFrame').contentWindow?.postMessage({ source: 'lsr-room', type: 'refresh' }, location.origin);
 }
 
+function clampPhoto(n, lo, hi) {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+function applyPhotoViewTransform() {
+  const m = $('roomMount');
+  if (!m) return;
+  if (photoMode) {
+    m.style.transform = `translate(${photoView.x}px, ${photoView.y}px) scale(${photoView.z})`;
+    m.style.transformOrigin = '50% 50%';
+  } else {
+    m.style.transform = '';
+    m.style.transformOrigin = '';
+  }
+}
+
+function setPhotoMode(active) {
+  photoMode = !!active;
+  if (!photoMode) {
+    photoView = { x: 0, y: 0, z: 1 };
+    photoPointers.clear();
+    photoPinch0 = null;
+  }
+  document.body.classList.toggle('photo-mode', photoMode);
+  const cap = $('photoCapture');
+  if (cap) cap.hidden = !photoMode;
+  applyPhotoViewTransform();
+  if (photoMode) {
+    setPhone(false);
+    collapseChat();
+    closeMap();
+  }
+}
+
+function photoPinchDist() {
+  const pts = [...photoPointers.values()];
+  if (pts.length < 2) return null;
+  return Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || null;
+}
+
+/** Portrait crop (3:4) centered on the viewport; pan/zoom on #roomMount chooses the composition. */
+function portraitCropRect() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  let pw = Math.min(vw * 0.78, 340);
+  let ph = (pw * 4) / 3;
+  if (ph > vh * 0.88) {
+    ph = vh * 0.88;
+    pw = (ph * 3) / 4;
+  }
+  return new DOMRect((vw - pw) / 2, (vh - ph) / 2, pw, ph);
+}
+
+async function captureRoomPhoto() {
+  if (!room3d?.captureRect) {
+    lastNotice = '3D room is required to take a photo.';
+    renderMessages();
+    return;
+  }
+  const cropped = room3d.captureRect(portraitCropRect());
+  if (!cropped) {
+    lastNotice = 'Could not read the room view.';
+    renderMessages();
+    return;
+  }
+  const stamp = String(state.clock?.timeLabel || 'shot').replace(':', '');
+  const rel = `photos/room-${stamp}.png`;
+  const name = `Room ${state.clock?.timeLabel || stamp}`;
+  try {
+    const png = cropped.toDataURL('image/png');
+    const data = await api('tool', {
+      tool: 'file.write',
+      rel,
+      name,
+      text: png,
+      kind: 'image',
+    });
+    state = data.state;
+    autosave();
+    setPhotoMode(false);
+    $('phoneFrame').contentWindow?.postMessage(
+      { source: 'lsr-room', type: 'photo-saved', rel, file: { name, rel, kind: 'image', owned: true, text: png } },
+      location.origin,
+    );
+    refreshPhone();
+    render();
+  } catch (e) {
+    lastNotice = e.message;
+    renderMessages();
+  }
+}
+
+function cancelPhotoMode() {
+  if (!photoMode) return;
+  setPhotoMode(false);
+  $('phoneFrame').contentWindow?.postMessage({ source: 'lsr-room', type: 'photo-cancel' }, location.origin);
+}
+
 window.addEventListener('message', async e => {
   if (e.origin !== location.origin || e.data?.source !== 'lsr-phone') return;
   if (e.data.type === 'close') setPhone(false);
+  if (e.data.type === 'photo-mode') setPhotoMode(!!e.data.active);
+  if (e.data.type === 'phone-overlay' && state?.labAccessActive) setPhone(!!e.data.open);
   if (e.data.type === 'unread') {
     phoneUnread = !!e.data.unread;
     renderPhoneButton();
@@ -502,9 +600,11 @@ function renderInspector() {
 }
 
 function renderSuggestions() {
+  const moreBtn = $('showMore');
   if (!parse) {
     $('suggestions').innerHTML = '<div class="empty">Interpreting the typed prefix…</div>';
-    $('showMore').hidden = true;
+    $('suggestions').appendChild(moreBtn);
+    moreBtn.hidden = true;
     return;
   }
   const alone = !presentIds().length;
@@ -519,9 +619,10 @@ function renderSuggestions() {
         .map((c, i) => `<button type="button" class="suggestion" data-choice="${i}"><span>${esc(c.phrase)}</span><span>↵</span></button>`)
         .join('')
     : '<div class="empty">Continue typing freely, or send this utterance.</div>';
+  $('suggestions').appendChild(moreBtn);
   document.querySelectorAll('[data-choice]').forEach(btn => btn.onclick = () => choose(suggestions[Number(btn.dataset.choice)]));
-  $('showMore').hidden = suggestions.length <= visibleCount;
-  $('showMore').textContent = `Show more (${suggestions.length - visibleCount}) ↓`;
+  moreBtn.hidden = suggestions.length <= visibleCount;
+  moreBtn.textContent = `Show more (${suggestions.length - visibleCount}) ↓`;
   $('parserIndicator').textContent =
     parse.source === 'llm' ? 'Model-resolved prefix' : parse.source === 'local' ? 'Local prefix' : 'Semantic grammar';
 }
@@ -759,15 +860,54 @@ document.addEventListener(
   'pointerdown',
   e => {
     if (!narrowLayout()) return;
-    if (e.target.closest('#transcriptDock, #phoneOverlay, #phoneBtn')) return;
+    if (e.target.closest('#transcriptDock, #phoneOverlay, #phoneBtn, .hud-layer')) return;
     collapseChat();
   },
   true,
 );
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
-  if (phoneOpen) setPhone(false);
+  if (photoMode) cancelPhotoMode();
+  else if (phoneOpen) setPhone(false);
   else if (notebookPromptFact) dismissNotebookPrompt();
+});
+
+function onPhotoPointerDown(e) {
+  if (!photoMode || e.target.closest('#photoShutter')) return;
+  $('photoCapture')?.setPointerCapture?.(e.pointerId);
+  photoPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  photoPinch0 = photoPointers.size === 2 ? photoPinchDist() : null;
+}
+
+function onPhotoPointerMove(e) {
+  if (!photoMode || !photoPointers.has(e.pointerId)) return;
+  const prev = photoPointers.get(e.pointerId);
+  photoPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (photoPointers.size === 1) {
+    photoView.x = clampPhoto(photoView.x + (e.clientX - prev.x), -320, 320);
+    photoView.y = clampPhoto(photoView.y + (e.clientY - prev.y), -240, 240);
+    applyPhotoViewTransform();
+  } else if (photoPointers.size >= 2 && photoPinch0) {
+    const d = photoPinchDist();
+    if (d) photoView.z = clampPhoto(photoView.z * (d / photoPinch0), 1, 3);
+    photoPinch0 = d;
+    applyPhotoViewTransform();
+  }
+}
+
+function onPhotoPointerUp(e) {
+  photoPointers.delete(e.pointerId);
+  photoPinch0 = photoPointers.size >= 2 ? photoPinchDist() : null;
+}
+
+const photoCap = $('photoCapture');
+photoCap?.addEventListener('pointerdown', onPhotoPointerDown);
+photoCap?.addEventListener('pointermove', onPhotoPointerMove);
+photoCap?.addEventListener('pointerup', onPhotoPointerUp);
+photoCap?.addEventListener('pointercancel', onPhotoPointerUp);
+$('photoShutter')?.addEventListener('click', e => {
+  e.stopPropagation();
+  captureRoomPhoto();
 });
 narrowMq.addEventListener('change', () => {
   if (!narrowMq.matches) {
@@ -815,8 +955,6 @@ $('loadFile').onchange = async () => {
   if (f) await loadSave(await f.text());
   $('loadFile').value = '';
 };
-$('modePlay').onclick = () => setCamera('play');
-$('modeSurveillance').onclick = () => setCamera('surveillance');
 $('modeMap').onclick = () => {
   if (floorplanOpen()) closeMap();
   else openFloorplan(mapView(), mapHandlers());

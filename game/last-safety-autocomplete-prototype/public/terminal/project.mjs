@@ -126,6 +126,18 @@ export function handsetShouldBlink(state, seenIds, overlayOpen) {
   return (state.notifications || []).some(n => !seen.has(n.id));
 }
 
+/** Mark every notice whose target matches (shared by the phone UI when a destination is opened). */
+export function markNoticeTarget(state, seenIds, { kind, id, appId } = {}) {
+  const seen = new Set(seenIds || []);
+  for (const n of state.notifications || []) {
+    const t = n.target;
+    if (!t) continue;
+    if (kind && id != null && t.kind === kind && t.id === id) seen.add(n.id);
+    if (appId && t.kind === 'app' && t.id === appId) seen.add(n.id);
+  }
+  return [...seen];
+}
+
 /** Where the now-line sits on a locked day. Outside the listed hours it pins to an edge. */
 export function nowPlacement(clock, appointments) {
   const now = minutes(clock?.timeLabel);

@@ -12,9 +12,26 @@ export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.shar
 const DENIED = new Set(['board.post', 'board.read', 'pipeline.trigger_step', 'handle.invoke', 'state.save', 'state.load']);
 const WRITABLE = /^(notes|photos)\//;
 
-function safeRel(rel) {
+export function safeRel(rel) {
   if (typeof rel !== 'string' || !rel || rel.startsWith('/') || rel.includes('..') || rel.includes('\\') || rel.length > 160) return null;
   return rel;
+}
+
+/** Player-owned photos are served out-of-band so terminal JSON stays small. */
+export function handsetFileHref(rel) {
+  const r = safeRel(rel);
+  return r && r.startsWith('photos/') ? `/api/handset-file?rel=${encodeURIComponent(r)}` : null;
+}
+
+export function handsetMediaPayload(s, rel) {
+  const r = safeRel(rel);
+  if (!r || !r.startsWith('photos/')) return null;
+  const f = s.files.find(x => x.rel === r);
+  if (!f || !f.owned) return null;
+  const raw = String(f.text || '');
+  const m = /^data:image\/([\w+.-]+);base64,(.+)$/s.exec(raw);
+  if (!m) return null;
+  return { mime: `image/${m[1]}`, body: Buffer.from(m[2], 'base64') };
 }
 
 function fileKind(rel) {
@@ -32,9 +49,12 @@ export function terminalState(s) {
     fuel: s.fuel,
     notifications: s.notifications.filter(n => noticeValid(s, n)),
     files: s.files.map(f => ({
-      name: f.name, rel: f.rel, owned: f.owned, sharedBy: f.sharedBy, kind: f.kind,
+      name: f.name, rel: f.rel, owned: f.owned, sharedBy: f.sharedBy, kind: f.kind || fileKind(f.rel),
       ...(f.documentSlug ? { documentSlug: f.documentSlug } : {}),
-      ...(f.owned ? { text: f.text } : s.readDocs.includes(f.documentSlug) ? { text: renderDocument(f.documentSlug, s.scenario) } : {}),
+      ...(f.owned && f.kind !== 'image' && !String(f.rel).startsWith('photos/')
+        ? { text: f.text }
+        : s.readDocs.includes(f.documentSlug) ? { text: renderDocument(f.documentSlug, s.scenario) } : {}),
+      ...(f.owned && (f.kind === 'image' || String(f.rel).startsWith('photos/')) ? { href: handsetFileHref(f.rel) } : {}),
       sharedWith: [...(f.sharedWith || [])],
     })),
     threads: s.threads.map(t => ({
@@ -100,8 +120,14 @@ export function applyToolCall(s, call, { log = true } = {}) {
     if (!f) return { ok: false, reason: 'Not readable.' };
     if (f.documentSlug) readDocument(s, f.documentSlug, { via: f.sharedBy === 'nora' ? 'nora' : null });
     spend(s, 1);
-    const text = f.owned ? f.text : renderDocument(f.documentSlug, s.scenario);
-    return { ok: true, reason: 'Ok.', file: { name: f.name, rel: f.rel, kind: f.kind, text } };
+    const kind = f.kind || fileKind(f.rel);
+    const file = { name: f.name, rel: f.rel, kind };
+    if (f.owned && kind === 'image' && f.rel.startsWith('photos/')) {
+      file.href = handsetFileHref(f.rel);
+    } else {
+      file.text = f.owned ? f.text : renderDocument(f.documentSlug, s.scenario);
+    }
+    return { ok: true, reason: 'Ok.', file };
   }
   if (tool === 'file.write') {
     const rel = safeRel(call.rel);

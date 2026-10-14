@@ -439,7 +439,7 @@ function workMove(s, id, entityId) {
   const item = currentAgenda(s, id);
   const agendaTexture = (item?.texture || []).find(f => held.includes(f));
   const fact = inDomain || agendaTexture || null;
-  const work = !fact ? (item?.work || NPC_DEFS[id]?.glue?.work || null) : null;
+  const work = item?.work || NPC_DEFS[id]?.glue?.work || null;
   return { type: 'work', npc: id, fact, work, agenda: item?.id || null, cls: 'texture', names: false };
 }
 
@@ -729,12 +729,27 @@ export function goalIds(id) {
 
 // ---------- template phrasing (headless, demo, and the fallback) ----------
 
+/** Texture rows are author notes (often third person). Dialogue uses agenda work lines or glue.work. */
+function textureDialogue(s, npc, fid) {
+  const def = NPC_DEFS[npc];
+  for (const item of def?.agenda || []) {
+    if (item.texture?.includes(fid) && item.work) return item.work;
+  }
+  if (def?.glue?.work) return def.glue.work;
+  return FACTS[fid]?.text || '';
+}
+
 export function templateText(s, move) {
   const name = id => CAST[id]?.name.split(' ')[0] || (id === 'nora' ? 'NORA' : id);
   const label = id => ENTITIES[id]?.label || id;
+  const factLine = fid => {
+    const f = FACTS[fid];
+    if (!f) return '';
+    return f.kind === 'texture' ? textureDialogue(s, move.npc, fid) : f.text;
+  };
   switch (move.type) {
-    case 'answer': return FACTS[move.fact].text;
-    case 'believe': return `As far as I know: ${FACTS[move.fact].text}`;
+    case 'answer': return factLine(move.fact);
+    case 'believe': return `As far as I know: ${factLine(move.fact)}`;
     case 'withhold': return move.reason;
     case 'deflect': return move.reason;
     case 'refer': return `That’s ${name(move.to)}’s, ${CAST[move.to]?.role.toLowerCase() || ''}. Ask ${name(move.to)}.`;
@@ -743,7 +758,7 @@ export function templateText(s, move) {
     case 'request': return move.action === 'grant_record' ? 'I’m asking Justine for the grant record on 284.' : move.action === 'full_exec_284' ? 'I’m asking Pavel for the full EXEC-284 record.' : `I’m asking ${name(move.to)}.`;
     case 'message': return `I’ll ask NORA about ${label(move.about)}.`;
     case 'act': return actText(move);
-    case 'work': return move.fact ? FACTS[move.fact].text : (move.work || NPC_DEFS[move.npc]?.glue?.work || 'I’m at my desk. Ask about what I own today.');
+    case 'work': return move.work || NPC_DEFS[move.npc]?.glue?.work || 'I’m at my desk. Ask about what I own today.';
     case 'glue': return move.text || '';
     default: return '';
   }

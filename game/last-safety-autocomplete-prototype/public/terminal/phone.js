@@ -108,10 +108,26 @@ function pip() {
   } catch { /* no audio */ }
 }
 
+function markAppTarget(appId) {
+  for (const n of state.notifications || []) {
+    if (n.target?.kind === 'app' && n.target.id === appId) seen.add(n.id);
+  }
+}
+
+function markSeenForRoute(r) {
+  if (!r) return;
+  if (r.name === 'viewer' && r.rel) markTarget('file', r.rel);
+  if (r.name === 'thread' && r.id) markTarget('thread', r.id);
+  if (r.name === 'calendar') markAppTarget('calendar');
+  if (r.name === 'api') markAppTarget('api');
+  if (r.name === 'note' && r.rel) markTarget('file', r.rel);
+}
+
 function go(next) {
   route.push(next);
   chipPage = 0;
   stopVideo();
+  markSeenForRoute(next);
   render();
 }
 
@@ -137,6 +153,10 @@ function markTarget(kind, id) {
 function openNotice(n) {
   seen.add(n.id);
   const t = n.target;
+  if (t?.kind === 'thread') markTarget('thread', t.id);
+  else if (t?.kind === 'file') markTarget('file', t.id);
+  else if (t?.kind === 'app') markAppTarget(t.id);
+  render();
   if (!t) return;
   if (t.kind === 'thread') go({ name: 'thread', id: t.id });
   else if (t.kind === 'file') openFile(t.id, { name: 'files' });
@@ -147,6 +167,7 @@ async function openFile(rel, from) {
   const read = await tool({ tool: 'file.read', rel });
   if (!read.ok) {
     toast('Cannot open. Not readable.');
+    render();
     return;
   }
   state = read.state;
@@ -373,13 +394,29 @@ function fileIsNew(rel) {
   return unreadNotifications().some(n => n.target?.kind === 'file' && n.target.id === rel);
 }
 
+function fileKindOf(f) {
+  if (!f) return 'text';
+  return f.kind || (String(f.rel).startsWith('photos/') ? 'image' : 'text');
+}
+
+function imageSrcFor(f) {
+  if (!f || fileKindOf(f) !== 'image') return null;
+  if (f.text && String(f.text).startsWith('data:image')) return f.text;
+  if (f.href) return f.href;
+  if (engine && String(f.rel).startsWith('photos/')) return `/api/handset-file?rel=${encodeURIComponent(f.rel)}`;
+  return f.text || null;
+}
+
 function filesApp() {
   const rows = state.files.map(f => {
     const via = f.owned ? 'Yours' : `From ${contactName(f.sharedBy)}`;
     const tag = fileIsNew(f.rel) ? '<span class="row-tag">New</span>' : '';
-    return `<button type="button" class="row${fileIsNew(f.rel) ? ' is-new' : ''}" data-act="open-file" data-rel="${esc(f.rel)}"><b>${esc(f.name)}${tag}</b><span>${esc(f.rel)} · ${esc(via)}</span></button>`;
+    const preview = imageSrcFor(f);
+    const thumb = preview ? `<img class="row-thumb" alt="" src="${esc(preview)}"/>` : '';
+    const openHint = fileKindOf(f) === 'image' ? ' · Tap to view' : '';
+    return `<button type="button" class="row row-file${fileIsNew(f.rel) ? ' is-new' : ''}" data-act="open-file" data-rel="${esc(f.rel)}">${thumb}<span class="row-text"><b>${esc(f.name)}${tag}</b><span>${esc(f.rel)} · ${esc(via)}${openHint}</span></span></button>`;
   }).join('');
-  return `${head('Files')}<div class="pad">${rows}</div>`;
+  return `${head('Files')}<div class="pad">${rows || '<p class="hint">No files yet.</p>'}</div>`;
 }
 
 function wikiApp() {
@@ -393,14 +430,28 @@ function wikiApp() {
 
 function viewer() {
   const opened = top().file;
-  if (!opened) return `${head('File')}<p class="pad hint">Cannot open. Not readable.</p>`;
-  const row = state.files.find(f => f.rel === opened.rel);
-  const file = { ...opened, owned: row?.owned ?? opened.owned, sharedWith: row?.sharedWith || opened.sharedWith || [] };
+  const rel = opened?.rel || top().rel;
+  if (!rel) return `${head('File')}<p class="pad hint">Cannot open. Not readable.</p>`;
+  const row = state.files.find(f => f.rel === rel);
+  const file = {
+    name: opened?.name || row?.name || rel,
+    rel,
+    kind: fileKindOf(opened || row),
+    text: opened?.text ?? row?.text,
+    href: opened?.href ?? row?.href,
+    owned: row?.owned ?? opened?.owned,
+    sharedWith: row?.sharedWith || opened?.sharedWith || [],
+  };
   const share = file.owned
     ? `<button type="button" class="primary" data-act="share" data-rel="${esc(file.rel)}">Share</button>` : '';
   let body;
   if (file.kind === 'video') body = videoBlock(file);
-  else if (file.kind === 'image') body = `<div class="pad"><img alt="${esc(file.name)}" src="${esc(file.text)}" style="max-width:100%;border-radius:12px"/></div>`;
+  else if (file.kind === 'image') {
+    const src = imageSrcFor(file);
+    body = src
+      ? `<div class="pad image-view"><img alt="${esc(file.name)}" src="${esc(src)}"/></div>`
+      : `<div class="pad"><p class="hint">Image data is not available.</p></div>`;
+  }
   else if (file.kind === 'other') {
     const size = typeof file.bytes === 'number' ? `${file.bytes} B` : 'Size unavailable';
     body = `<div class="pad"><p class="doc">${esc(file.name)}</p><p class="hint">${esc(size)}</p><p class="hint">Cannot preview.</p></div>`;
@@ -495,6 +546,9 @@ function noteEditor(rel) {
 }
 
 function photoApp() {
+  if (embed) {
+    return '<div class="photo-embed-active" aria-hidden="true"></div>';
+  }
   return `${head('Photo', 'This room. Pan and zoom stay on the phone.')}<div class="finder" id="finder"><div class="lab-still" id="finderStill">${STILL}</div></div><div class="finder-tools"><button type="button" class="ghost" data-act="zoom-out" aria-label="Zoom out">−</button><button type="button" class="ghost" data-act="zoom-in" aria-label="Zoom in">+</button><button type="button" class="primary" data-act="capture">Capture</button></div>`;
 }
 
@@ -531,9 +585,15 @@ function applyPhotoTransform() {
   still.style.transform = `translate(${photo.x}px, ${photo.y}px) scale(${photo.z})`;
 }
 
+function syncRoomPhotoMode() {
+  if (!embed) return;
+  toParent({ type: 'photo-mode', active: top().name === 'photo' });
+}
+
 function render() {
   if (embed) overlay = overlayAllowed(state);
   if (!overlayAllowed(state)) overlay = false;
+  if (embed && top().name === 'photo') overlay = false;
   const phone = $('#phone');
   phone.classList.toggle('type-large', !!state.settings.largerType);
   phone.innerHTML = `<div class="screen">${statusBar()}<div class="phone-body">${body()}</div>${homeBar()}</div>`;
@@ -543,6 +603,7 @@ function render() {
   $('#handset').classList.toggle('has-unread', blink);
   $('#handset').classList.toggle('is-absent', !overlayAllowed(state));
   toParent({ type: 'unread', unread: handsetShouldBlink(state, [...seen], false) });
+  syncRoomPhotoMode();
   applyPhotoTransform();
   const utter = $('#utterance');
   if (utter && top().draft) utter.value = top().draft;
@@ -579,9 +640,8 @@ function onClick(e) {
   if (act === 'back') return back();
   if (act === 'app') {
     const appId = b.dataset.app;
-    for (const n of state.notifications) {
-      if (n.target?.kind === 'app' && n.target.id === appId) seen.add(n.id);
-    }
+    markAppTarget(appId);
+    if (embed && appId === 'photo') overlay = false;
     return go({ name: appId });
   }
   if (act === 'notice') {
@@ -632,7 +692,10 @@ function onClick(e) {
   if (act === 'ask-cap') return askCap(b.dataset.cap);
   if (act === 'ask-typed') return askCap($('#capField')?.value || '');
   if (act === 'new-note') return go({ name: 'note', rel: '' });
-  if (act === 'edit-note') return go({ name: 'note', rel: b.dataset.rel });
+  if (act === 'edit-note') {
+    markTarget('file', b.dataset.rel);
+    return go({ name: 'note', rel: b.dataset.rel });
+  }
   if (act === 'save-note') return saveNote(b.dataset.rel);
   if (act === 'zoom-in') { photo.z = Math.min(3, photo.z + 0.25); applyPhotoTransform(); return; }
   if (act === 'zoom-out') { photo.z = Math.max(1, photo.z - 0.25); applyPhotoTransform(); return; }
@@ -707,6 +770,7 @@ async function capture() {
   const result = await tool({ tool: 'file.write', rel, name: `Room ${state.clock.timeLabel}`, text, kind: 'image' });
   if (!result.ok) return toast(result.reason);
   state = result.state;
+  markTarget('file', rel);
   toast('Saved to Files.');
   route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel, file: { name: `Room ${state.clock.timeLabel}`, rel, kind: 'image', owned: true, text } }];
   render();
@@ -854,8 +918,30 @@ async function boot() {
   state.settings = { ...defaultSettings(), ...(state.settings || {}) };
   if (engine) await refreshClientSnapshot();
   overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
-  window.addEventListener('message', e => {
-    if (e.origin === location.origin && e.data?.source === 'lsr-room' && e.data.type === 'refresh') refresh();
+  window.addEventListener('message', async e => {
+    if (e.origin !== location.origin || e.data?.source !== 'lsr-room') return;
+    if (e.data.type === 'refresh') return refresh();
+    if (e.data.type === 'photo-cancel' && top().name === 'photo') {
+      back();
+      if (overlayAllowed(state)) overlay = true;
+      render();
+      toParent({ type: 'phone-overlay', open: true });
+      return;
+    }
+    if (e.data.type === 'photo-saved') {
+      const res = await fetch('/api/terminal');
+      if (res.ok) {
+        state = await res.json();
+        delete state._hostFiles;
+        state.settings = { ...defaultSettings(), ...(state.settings || {}) };
+      }
+      markTarget('file', e.data.rel);
+      route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel: e.data.rel, file: e.data.file }];
+      if (overlayAllowed(state)) overlay = true;
+      toast('Saved to Files.');
+      render();
+      toParent({ type: 'phone-overlay', open: true });
+    }
   });
   document.body.addEventListener('click', onClick);
   document.body.addEventListener('input', onInput);

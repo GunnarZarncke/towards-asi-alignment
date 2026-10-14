@@ -554,6 +554,25 @@ export class RoomRenderer {
     return p ? this.toScreen(this.tmp.set(p.x, 1, p.z)) : null;
   }
 
+  /** Crop the current frame to a viewport rectangle (DOMRect / getBoundingClientRect). */
+  captureRect(viewportRect) {
+    const canvas = this.renderer.domElement;
+    const bb = canvas.getBoundingClientRect();
+    if (bb.width < 1 || bb.height < 1) return null;
+    const scaleX = canvas.width / bb.width;
+    const scaleY = canvas.height / bb.height;
+    const sx = Math.max(0, Math.round((viewportRect.left - bb.left) * scaleX));
+    const sy = Math.max(0, Math.round((viewportRect.top - bb.top) * scaleY));
+    const sw = Math.min(canvas.width - sx, Math.round(viewportRect.width * scaleX));
+    const sh = Math.min(canvas.height - sy, Math.round(viewportRect.height * scaleY));
+    if (sw < 1 || sh < 1) return null;
+    const out = document.createElement('canvas');
+    out.width = sw;
+    out.height = sh;
+    out.getContext('2d').drawImage(canvas, sx, sy, sw, sh, 0, 0, sw, sh);
+    return out;
+  }
+
   dispose() {
     this.disposed = true;
     this.resizeObserver.disconnect();

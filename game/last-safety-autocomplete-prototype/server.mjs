@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {randomUUID} from 'node:crypto';
 import {newSession,clientState,cleanParse,exportSession,importSession} from './lib/game.mjs';
 import {applyAction} from './lib/world/actions.mjs';
-import {terminalState} from './lib/world/terminal-host.mjs';
+import {terminalState,handsetMediaPayload} from './lib/world/terminal-host.mjs';
 import {npcsInRoom} from './lib/world/npcs.mjs';
 import {parseUtterance} from './lib/llm.mjs';
 import {phraseLines} from './lib/phrase.mjs';
@@ -27,7 +27,7 @@ const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=u
 const PUBLIC_LIB=new Set(['grammar.mjs','floorplan.mjs','world/ranking-tables.mjs']);
 const CHANNELS=new Set(['person','nora','note','think']);
 function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data))}
-async function body(req){let str='';for await(const chunk of req){str+=chunk;if(str.length>200_000)throw Error('Request too large')}return JSON.parse(str||'{}')}
+async function body(req){let str='';for await(const chunk of req){str+=chunk;if(str.length>3_500_000)throw Error('Request too large')}return JSON.parse(str||'{}')}
 function getSession(req,res){
   let sid=(req.headers.cookie||'').match(/(?:^|;\s*)lab_sid=([\w-]+)/)?.[1];
   if(!sid || !sessions.has(sid)){sid=randomUUID();sessions.set(sid,newSession());res.setHeader('Set-Cookie',`lab_sid=${sid}; HttpOnly; SameSite=Lax; Path=/`)}
@@ -43,6 +43,12 @@ const server=http.createServer(async(req,res)=>{
       if(req.method==='GET'){
         if(url.pathname==='/api/state')return json(res,200,clientState(s));
         if(url.pathname==='/api/terminal')return json(res,200,terminalState(s));
+        if(url.pathname==='/api/handset-file'){
+          const media=handsetMediaPayload(s,url.searchParams.get('rel'));
+          if(!media)return json(res,404,{error:'Not readable.'});
+          res.writeHead(200,{'Content-Type':media.mime,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+          return res.end(media.body);
+        }
         if(url.pathname==='/api/export'){
           res.setHeader('Content-Disposition','attachment; filename="last-safety-review-save.json"');
           return json(res,200,exportSession(s));
