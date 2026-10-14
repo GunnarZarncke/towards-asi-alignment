@@ -15,6 +15,7 @@ import { ENTITIES, ROLE_DOMAINS, CAST, entityDomains } from './entities.mjs';
 import { evaluate, progress, parsePolicy, parsePredicate, predicateIds } from './predicates.mjs';
 import { CONFIG, band } from './config.mjs';
 import { DOCUMENTS, readsAsFor } from '../documents.mjs';
+import { glueEnabled, pickStance, glueText, midGlueHits, validateGlue } from './glue.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const NPC_DIR = path.join(ROOT, 'content', 'npcs');
@@ -61,6 +62,7 @@ function validate(def, file) {
   for (const e of def.policy_events || []) preds.push(e.on);
   for (const i of Object.values(def.interventions || {})) if (i.condition) preds.push(i.condition);
   for (const p of preds) parsePredicate(p);
+  validateGlue(def.glue, file);
 }
 
 export const NPC_DEFS = loadNpcDefs();
@@ -84,6 +86,7 @@ export function initNpcs() {
       askedGoals: [], askedAt: {}, askedVisit: [], lastInitiative: {}, boost: {},
       fired: [], firedEvents: [], raised: [],
       pendingQuestion: null,
+      spokeSinceArrive: false,
     };
   }
   return out;
@@ -239,9 +242,10 @@ export function placeNpcs(s) {
     }
     if (room === 'remote') { room = null; presence = 'absent'; }
     if (n.room !== room || n.presence !== presence) {
-      moves.push({ kind: 'move', who: id, from: n.room, to: room, presence });
+      moves.push({ kind: 'move', who: id, from: n.room, to: room, presence, spoke: !!n.spokeSinceArrive });
       n.room = room;
       n.presence = presence;
+      n.spokeSinceArrive = false;
     }
     n.agendaId = item?.id || null;
   }
@@ -435,7 +439,8 @@ function workMove(s, id, entityId) {
   const item = currentAgenda(s, id);
   const agendaTexture = (item?.texture || []).find(f => held.includes(f));
   const fact = inDomain || agendaTexture || null;
-  return { type: 'work', npc: id, fact, agenda: item?.id || null, cls: 'texture', names: false };
+  const work = !fact ? (item?.work || NPC_DEFS[id]?.glue?.work || null) : null;
+  return { type: 'work', npc: id, fact, work, agenda: item?.id || null, cls: 'texture', names: false };
 }
 
 function interventionMoves(s, id, parse, entityId) {
@@ -738,7 +743,8 @@ export function templateText(s, move) {
     case 'request': return move.action === 'grant_record' ? 'I’m asking Justine for the grant record on 284.' : move.action === 'full_exec_284' ? 'I’m asking Pavel for the full EXEC-284 record.' : `I’m asking ${name(move.to)}.`;
     case 'message': return `I’ll ask NORA about ${label(move.about)}.`;
     case 'act': return actText(move);
-    case 'work': return move.fact ? FACTS[move.fact].text : 'I’m in the middle of something. Ask me about my part of it.';
+    case 'work': return move.fact ? FACTS[move.fact].text : (move.work || NPC_DEFS[move.npc]?.glue?.work || 'I’m at my desk. Ask about what I own today.');
+    case 'glue': return move.text || '';
     default: return '';
   }
 }
@@ -760,4 +766,39 @@ function actText(move) {
 
 export function voiceOf(id) {
   return NPC_DEFS[id]?.voice || null;
+}
+
+function parseDomains(parse) {
+  return [...new Set(parseIds(parse).flatMap(id => entityDomains(id)))];
+}
+
+function dayPressure(s, id) {
+  const def = NPC_DEFS[id];
+  const late = s.act === 'decision' || band(s.minute) === 'late';
+  if (!late) return false;
+  return Object.values(def.goals || {}).some(g => g.source === 'day' && !evaluate(g.target, makeCtx(s, id)));
+}
+
+export function stanceOf(s, id, parse = null) {
+  const item = currentAgenda(s, id);
+  return pickStance(NPC_DEFS[id]?.glue, {
+    domains: parse ? parseDomains(parse) : [],
+    interruptible: item?.interruptible || 'yes',
+    pressure: dayPressure(s, id),
+  });
+}
+
+/** Non-fact social line. Null when glue is off, NORA, or no authored line. */
+export function glueMove(s, id, slot, parse = null) {
+  if (!glueEnabled(slot) || !NPC_DEFS[id]?.glue) return null;
+  const stance = stanceOf(s, id, parse);
+  const text = glueText(NPC_DEFS[id].glue, slot, stance);
+  if (!text) return null;
+  return { type: 'glue', npc: id, slot, stance, text, cls: 'texture', names: false };
+}
+
+export function midGlueMove(s, id, parse = null) {
+  const rate = NPC_DEFS[id]?.glue?.midRate;
+  if (!midGlueHits(s, id, rate)) return null;
+  return glueMove(s, id, 'mid', parse);
 }

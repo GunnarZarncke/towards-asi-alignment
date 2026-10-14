@@ -6,16 +6,39 @@ voice:
   person: The failed startup sits under the number. High status on users and shipping, thinner and more aggrieved when the criterion is abstract. He can sound as if he has already refused, when he is still asking for the sentence.
   focus: Whether the pilot is useful in someone’s hands
   sample: "Completions are up. Last wait, the users left. So. One sentence I can check before you say hold. If I can’t check it, I can’t carry it."
+glue:
+  midRate: 0.1
+  default: busy
+  pressure: thin
+  onDomain:
+    metrics: pushy
+    pilot: pushy
+  work: "I’m on the numbers for tonight. If you have a sentence I can check, say it."
+  opening:
+    busy: "I’m on the slide. If you have a sentence I can check, say it. If not, I’m still on the numbers."
+    pushy: "Give me one checkable line or let me finish the slide."
+    thin: "Last time we waited on a paper that never came. Don’t do that with a word I can’t check."
+    pleasant: "Pull up a chair. Numbers first, then whatever you came for."
+  closing:
+    busy: "I’ll be at the review. Bring a number, not a feeling."
+    pushy: "If you want hold, come back with a sentence I can carry."
+    thin: "Don’t leave me with a vibe. That’s how we missed last time."
+  mid:
+    busy: "Still need a sentence I can check."
+    pushy: "That’s not a number."
+    thin: "I can’t carry that."
 agenda:
   - id: daniel.metrics_slide
     room: collab
     acts: [doubt]
     about: [pilot, delivery_metrics, release_schedule]
     texture: [completions_up, second_pilot_pitch]
+    work: "I’m writing the slide for tonight. Ask me for a number I can check, not a mood."
   - id: daniel.review
     room: review
     acts: [decision]
     about: [delivery_metrics]
+    work: "I’m here for the numbers. One sentence, then we can talk hold."
 knowledge:
   completions_up: { stance: knows, policy: answer }
   second_pilot_pitch: { stance: knows, policy: answer }

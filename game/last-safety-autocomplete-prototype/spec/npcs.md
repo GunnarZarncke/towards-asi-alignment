@@ -154,6 +154,33 @@ Every NPC turn is one **response move** to the player's parse, plus at most one 
 | `message(nora, about)` | Role rule (e.g. Jun asks NORA about an anomaly he was just told) | Event. NORA's reply follows the pack |
 | `move(room)` | Agenda step | Movement event (O-31) |
 | `work(item)` | Nothing else applies | Texture: what they are doing now, and why |
+| `glue` | Opening, optional mid, or closing (below) | No fact. Not a response class. Does not satisfy a goal |
+
+A `work` move names a visible texture fact when one matches the parse’s domain or the current agenda. If none is visible yet, it uses the agenda item’s authored `work` line, then the NPC’s `glue.work`. It does not share a generic “middle of something” line across people.
+
+### Social glue
+
+Fact moves are dry because they are generated from facts. **Glue** is extra non-fact speech so a visit still sounds like a person. It is not a disclosure move, does not enter `learnedFacts`, and introduces no entity id. NORA has none (no status work). Handset turns skip room glue.
+
+| Slot | When |
+| --- | --- |
+| `opening` | First in-room talk with that person since they arrived (or the player did) |
+| `closing` | They leave the player’s current room after having talked this stay |
+| `mid` | Later in-room turns, at a person-specific rate |
+
+**Stance** is the Person/status layer in [world.md](world.md), not a stored number (O-21). Closed set: `pleasant`, `busy`, `pushy`, `thin` (low or aggrieved), `deferential`. Authored on the NPC:
+
+| Field | Meaning |
+| --- | --- |
+| `default` | Stance when nothing else applies |
+| `onDomain` | Ranking domain id → stance (Elena authoritative on staffing, deferential on evaluation) |
+| `busyOnInterrupt` | Used when the agenda item is `interruptible: no` or `briefly` (default `busy`) |
+| `pressure` | Used when a **day** goal is unsatisfied in act III or the late band |
+| `midRate` | Probability of a mid line (0–1). Falls back to `CONFIG.GLUE.defaultMidRate` |
+| `opening` / `closing` / `mid` | Map stance → one authored sentence |
+| `work` | Fallback when a `work` move has no visible texture fact |
+
+`CONFIG.GLUE` (`lib/world/config.mjs`) turns slots on or off: `enabled`, `opening`, `closing`, `mid`, `defaultMidRate`. Mid rolls are a hash of scenario, npc, sentence count, and fuel, so replay matches. The model may rephrase a glue line in voice; it still may not add a fact.
 
 ### Choosing a move
 
@@ -246,7 +273,8 @@ Each NPC has an agenda. An agenda item has:
 | `about` | Entity ids the work concerns. These feed the `work` move and referrals |
 | `texture` | Texture facts, policy `answer` |
 | `emits` | Events the item produces on its own (a freeze, a message, a meeting) |
-| `interruptible` | Whether the NPC will talk now, or says when they will |
+| `interruptible` | Whether the NPC will talk now, or says when they will. `no` / `briefly` push glue stance to busy |
+| `work` | Player-safe line for a `work` move when no texture fact is visible yet. No new entity names |
 
 Day goals sit on the NPC, not on the item. They are satisfied or lapse when the item that needs them ends.
 
@@ -287,6 +315,7 @@ ian:
   goals:
     ian.defensible_call: { source: role, kind: achieve, via: agenda, target: "event(review_signed)" }
     ian.date_holds:      { source: day,  kind: avoid,   via: agenda, target: "not(event(release_date_slipped))" }
+    ian.brief_auditor:  { source: role, kind: achieve, via: dialogue, target: "told(player, auditor_brief, by=ian)" }
     ian.no_surprise:     { source: plot, kind: learn,   via: dialogue, target: "told(ian, any, by=player)" }
   interventions:
     - hold_release            # authority: release; only in act III, from the meeting

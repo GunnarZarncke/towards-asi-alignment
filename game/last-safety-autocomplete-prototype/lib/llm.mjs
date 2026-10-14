@@ -105,9 +105,12 @@ export function phrasingAdds(reply,{facts,texture,question,document,reason},temp
 export async function freeReply({text,phrasing,template,history},stats){
   if(!process.env.OPENAI_API_KEY||process.env.DEMO_MODE==='1')return template;
   const p=phrasing;
-  const system=`You are ${p.name}, ${p.role}, in a serious research-lab mystery. Voice: ${p.voice?.structure||''} ${p.voice?.focus||''} Example of how you talk: "${p.voice?.sample||''}"\nThe engine has already chosen what you do this turn: ${p.move}. Phrase exactly that, in one or two sentences, at most 45 words. State only the supplied facts. Do not add events, times, numbers, permissions, documents, people, or conclusions. If the move is withhold, give the reason without the withheld content. If refer, name only the person given. If ask, ask only the supplied question. Speak as a person, not an assistant.`;
+  const social=p.move==='glue';
+  const system=social
+    ?`You are ${p.name}, ${p.role}, in a serious research-lab mystery. Status (Person layer): ${p.voice?.person||''} Structure: ${p.voice?.structure||''} Example: "${p.voice?.sample||''}"\nThis is a social-glue line (${p.slot||'mid'}, stance ${p.stance||'busy'}). Phrase only that courtesy or pressure. One sentence, at most 28 words. Do not add facts, events, times, numbers, permissions, documents, people, or conclusions.`
+    :`You are ${p.name}, ${p.role}, in a serious research-lab mystery. Voice: ${p.voice?.structure||''} Status (Person layer): ${p.voice?.person||''} Focus: ${p.voice?.focus||''} Example of how you talk: "${p.voice?.sample||''}"\nThe engine has already chosen what you do this turn: ${p.move}. Phrase exactly that, in one or two sentences, at most 45 words. State only the supplied facts. You may keep one short social beat if the template has one. Do not add events, times, numbers, permissions, documents, people, or conclusions. If the move is withhold, give the reason without the withheld content. If refer, name only the person given. If ask, ask only the supplied question. Speak as a person, not an assistant.`;
   const input=JSON.stringify({move:p.move,facts:p.facts,reason:p.reason,refer_to:p.referTo,document:p.document,question:p.question,
-    your_work_right_now:p.texture,template_wording:template,
+    your_work_right_now:p.texture,template_wording:template,slot:p.slot,stance:p.stance,work:p.work,
     previous_utterances:history.slice(-4).map(x=>({speaker:x.role==='npc'?x.npc:'player',text:String(x.text).slice(0,240)})),player_utterance:text});
   const result=(await responsesRequest(system,input,null,stats,120))?.trim().slice(0,400);
   if(!result||phrasingAdds(result,p,template).length)return template;

@@ -11,6 +11,7 @@ import { parseUtterance } from '../llm.mjs';
 import { phraseLines } from '../phrase.mjs';
 import { ACT_LABELS } from '../../public/render/rooms.mjs';
 import { sentences, presentIds } from './view.mjs';
+import { matchPrefixIgnoreCase, reachableRoomChoices } from './tab-complete.mjs';
 
 const WALL = { back: 'north', front: 'south', left: 'west', right: 'east' };
 
@@ -34,19 +35,36 @@ export const HELP = `Commands (a number picks from the last numbered list):
 
 const lower = x => String(x || '').toLowerCase();
 
-/** Pick by number, id, exact label, or prefix / substring of the label. */
+/** Pick by number, id, exact label (ignore case), or prefix on id / label. */
 function pick(input, items, label) {
   const q = lower(input).trim();
   if (!q) return null;
   if (/^\d+$/.test(q)) return items[Number(q) - 1] || null;
   return items.find(x => lower(x.id) === q || lower(label(x)) === q)
-    || items.find(x => lower(label(x)).startsWith(q))
+    || items.find(x => matchPrefixIgnoreCase(q, label(x), x.id))
     || items.find(x => lower(label(x)).includes(q))
+    || items.find(x => lower(String(x.id)).includes(q))
     || null;
+}
+
+function pickFile(input, files) {
+  const items = files.map(x => ({ ...x, id: x.rel }));
+  return pick(input, items, x => x.name)
+    || items.find(x => matchPrefixIgnoreCase(input, x.rel.split('/').pop() || x.rel, x.rel));
 }
 
 const roomTitle = id => ROOMS[id]?.title || id;
 const rooms = Object.keys(ROOMS).map(id => ({ id, title: ROOMS[id].title }));
+
+/** Player-visible line when someone is no longer in the player's room (matches door labels in the room UI). */
+export function departureLine(state, actorId) {
+  const a = state.actors[actorId];
+  if (!a) return `${actorId} leaves.`;
+  if (a.presence === 'absent' || !a.room) {
+    return a.presence === 'hologram' ? `${a.name}'s projection ends.` : `${a.name} is no longer nearby.`;
+  }
+  return `${a.name} heads to ${roomTitle(a.room)}.`;
+}
 
 /**
  * @param {() => object} getSession current engine session (the server may replace it on reset or import)
@@ -137,7 +155,10 @@ export function createConsole(getSession, { phrase = false } = {}) {
     } else {
       const before = new Set(last.present), after = new Set(now.present);
       for (const k of now.present) if (!before.has(k)) L.push(`${who(c, k.split(':')[0])} is here now.`);
-      for (const k of last.present) if (!after.has(k) && !now.present.some(x => x.startsWith(k.split(':')[0] + ':'))) L.push(`${c.actors[k.split(':')[0]]?.name} leaves.`);
+      for (const k of last.present) {
+        if (after.has(k) || now.present.some(x => x.startsWith(k.split(':')[0] + ':'))) continue;
+        L.push(departureLine(c, k.split(':')[0]));
+      }
     }
     for (const f of c.learnedFacts) if (!last.facts.has(f.id)) L.push(`  (noted) ${f.text}`);
     if (now.labAccess && !last.labAccess) L.push('[phone] Lab Access is active on your handset. Type phone.');
@@ -185,10 +206,20 @@ export function createConsole(getSession, { phrase = false } = {}) {
     return r?.error ? [r.error] : [];
   }
 
+  function listGoTargets() {
+    const c = cs();
+    const doors = exits(c).filter(d => !d.locked);
+    menu = doors.map(d => ({ run: () => go(d.title) }));
+    return ['Go where:', ...doors.map((d, i) => `  ${i + 1}. ${d.title} (${d.wall})`)];
+  }
+
   function go(arg) {
     const c = cs();
-    const target = pick(arg, exits(c), x => x.title) || pick(arg, rooms, x => x.title);
-    if (!target) return [`No room called "${arg}". Try exits.`];
+    const q = String(arg || '').trim();
+    if (!q) return listGoTargets();
+    const reachable = reachableRoomChoices(c).map(r => ({ id: r.id, title: r.title }));
+    const target = pick(q, reachable, x => x.title) || pick(q, exits(c), x => x.title) || pick(q, rooms, x => x.title);
+    if (!target) return [`No room called "${arg}". Try go or exits.`];
     if (target.id === c.room) return ['You are already here.'];
     const path = route(c.room, target.id, c.clearance);
     if (!path) return [`Your badge does not open a way to ${target.title}.`];
@@ -319,8 +350,10 @@ export function createConsole(getSession, { phrase = false } = {}) {
 
   function open(arg) {
     const t = ts();
-    const f = pick(arg, t.files.map(x => ({ ...x, id: x.rel })), x => x.name) || t.files.find(x => x.rel === arg);
-    if (!f) return [`No file "${arg}". Try files.`];
+    const q = String(arg ?? '').trim();
+    if (!q) return files();
+    const f = pickFile(q, t.files);
+    if (!f) return [`No file "${q}". Try open or files.`];
     const r = applyAction(getSession(), 'tool', { tool: 'file.read', rel: f.rel });
     if (!r.ok) return [r.reason];
     return [`-- ${r.file.name} (${r.file.rel}) --`, r.file.text];
@@ -422,7 +455,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
         menu = doors.map(d => ({ run: () => go(d.id) }));
         return ['Doors:', ...doors.map((d, i) => `  ${i + 1}. ${d.title} (${d.wall})`)];
       }
-      case 'go': case 'walk': return rest ? go(rest) : ['go <room>'];
+      case 'go': case 'walk': return go(rest);
       case 'read': case 'inspect': case 'x': return rest ? readArg(rest) : [look(false)];
       case 'records': return records();
       case 'to': case 'face': return face(rest);
@@ -439,7 +472,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
       case 'file': case 'commit': return act('commit', {});
       case 'phone': case 'p': return phone();
       case 'files': return files();
-      case 'open': return rest ? open(rest) : files();
+      case 'open': return open(rest);
       case 'msg': case 'dm': return msg(rest);
       case 'access': return access();
       case 'request': { const [path, verbArg] = rest.split(/\s+/); return path ? request(path, verbArg || 'read') : access(); }

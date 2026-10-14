@@ -17,10 +17,10 @@ test('selected grammatical fragments build a semantically typed question',()=>{
     assert.ok(opt,`option ${name}, found ${getCandidates({state,parse,text}).map(x=>x.phrase).join(', ')}`);
     text=insertFragment(text,opt,parse.unfinished);parse=opt.parse;
   }
-  select('Can');select('NORA');select('access');select('the camera system');select('?');
-  assert.equal(text,'Can NORA access the camera system?');
-  assert.equal(parse.kind,'ask');assert.equal(parse.relation,'has_access');
-  assert.equal(parse.subject,'nora');assert.equal(parse.object,'camera_system');
+  select('Can');select('Ian');select('know about');select('the review');select('?');
+  assert.equal(text,'Can Ian know about the review?');
+  assert.equal(parse.kind,'ask');assert.equal(parse.relation,'knows');
+  assert.equal(parse.subject,'ian');assert.equal(parse.object,'review');
   assert.equal(parse.open_slot,'none');
 });
 test('replaces the partial word and avoids duplicating an article',()=>{
@@ -32,13 +32,13 @@ test('SHOW does not complete document ids as picks',()=>{
   inspect(s,'job_log');
   assert.equal(getCandidates({state:clientState(s),parse:p,text:'Show Pavel'}).some(x=>x.entityId==='job_log'),false);
 });
-test('Request opening is offered and topics are not evidence files',()=>{
+test('Request opening is offered; unseen systems are not topics',()=>{
   const opts=getCandidates({state:fresh(),parse:makeParse(),text:''});
   assert.ok(opts.some(x=>x.phrase==='Request'));
   const p=makeParse({kind:'request',relation:'about',open_slot:'topic'});
   const topics=getCandidates({state:fresh(),parse:p,text:''});
-  assert.ok(topics.some(x=>x.entityId==='evaluation_records'));
-  assert.ok(!topics.some(x=>x.entityId==='job_log'));
+  assert.ok(topics.some(x=>x.entityId==='review' || x.entityId==='nora'));
+  assert.ok(!topics.some(x=>x.entityId==='evaluation_records' || x.entityId==='camera_system' || x.entityId==='task_queue' || x.entityId==='job_log'));
 });
 test('room movement and investigation reveal only justified knowledge',()=>{
   const s=newSession();s.room='platform';assert.ok(!s.vocab.includes('job_284'));

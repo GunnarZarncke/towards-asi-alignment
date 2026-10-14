@@ -6,22 +6,43 @@ voice:
   person: High status inside the method, brittle outside it. She hears “you have no proof” as a charge against the method. She restates the scope. She does not apologize for a narrow test.
   focus: What the certificate actually covers
   sample: "Passed means the run met the lines the transcript names. If failure is your word, point at a line we claimed. I don’t answer a gap that isn’t a line."
+glue:
+  midRate: 0.06
+  default: busy
+  pressure: thin
+  onDomain:
+    evaluation: busy
+  work: "I’m on the packet. Point at a line, or let me close it."
+  opening:
+    busy: "If this is a claim, point at a line. Otherwise I’m on the packet."
+    thin: "I don’t answer a gap that isn’t a line. The packet still has to close."
+    pleasant: "You can sit. Don’t ask me to use a word that isn’t in the spec."
+  closing:
+    busy: "I need the packet closed. Come back with a line."
+    thin: "I won’t apologize for a narrow test. That’s the paper."
+  mid:
+    busy: "Which line?"
+    thin: "That’s not in the scope."
 agenda:
   - id: leila.packet
     room: evaluation
     acts: [doubt]
     about: [safety_case, shutdown_report, shutdown_spec]
     texture: [packet_closes_today, scope_extension_deferred]
+    work: "I’m closing the packet. Ask about a line we claimed, not a word you brought."
   - id: leila.amara_session
     room: evaluation
     acts: [doubt]
     event: interview_on
     about: [pilot, amara]
     texture: [projector_on]
+    interruptible: no
+    work: "After the call. The projector is on."
   - id: leila.review
     room: review
     acts: [decision]
     about: [safety_case]
+    work: "The paper is the paper. Point at a line."
 knowledge:
   process_stopped: { stance: knows, policy: answer }
   test_scope_narrow: { stance: knows, policy: answer }

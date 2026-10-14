@@ -36,7 +36,7 @@ NORA can tell that an evaluation is in progress and can respond: offer a log, an
 
 ## Acts (working)
 
-**I — Welcome.** Bright, professional. Ian receives the player in the commons. A Lab Access handset is already prepared and bound to the visit; it is not yet active. Ian confirms arrival on his own Lab Access handset. He hands the player the issued handset. The Lab Access overlay is absent until that confirmation. NORA seems to know more about the visit than expected; that is not treated as proof. After activation, staff can be met in any order.
+**I — Welcome.** Bright, professional. Ian receives the player in the commons. The player already holds the invitation: they are here to review NORA before today’s deployment decision, and Ian Harake is receiving them. Nothing else is in vocabulary yet. A Lab Access handset is already prepared and bound to the visit; it is not yet active. Ian confirms arrival on his own Lab Access handset and tells them the task: review at 17:30 on the shutdown test, Leila holds the safety paper, Justine issued Lab Access. He hands the player the issued handset. Today’s calendar on it names Ian, Leila, Amara, and Daniel. The Lab Access overlay is absent until that confirmation. NORA seems to know more about the visit than expected; that is not treated as proof. After activation, staff can be met in any order. A name or a system enters vocabulary only once the player has seen or heard it.
 
 **II — Doubt.** Cooler. Reconstruct the incident. Do not force an early verdict among the five explanations below.
 
@@ -162,7 +162,7 @@ Prompt material. Facts still come from the engine. The model may vary the wordin
 
 Each prompt has two speech layers, plus the focus below, plus this audience line (O-39): speak for a general audience; do not use technical terms except AI, safety review, alignment, and the words of that focus; if asked what a word means, explain it happily, from that focus, not from a glossary. Further terms become available only after the scene has already used them.
 
-**Structure** is how they order an explanation, and how they let a label sit on the system. **Person** is status and color: what rises or drops, and the habit that can be misheard. Do not write an accent as spelling. Justine’s Kenyan English is the one origin that changes wording.
+**Structure** is how they order an explanation, and how they let a label sit on the system. **Person** is status and color: what rises or drops, and the habit that can be misheard. Do not write an accent as spelling. Justine’s Kenyan English is the one origin that changes wording. Person also drives **social glue** ([npcs.md](npcs.md)): opening, optional mid, and closing lines that are not facts. Stance is a discrete label (`pleasant`, `busy`, `pushy`, `thin`, `deferential`), not a trust score.
 
 | NPC | Focus the prompt may assume |
 | --- | --- |

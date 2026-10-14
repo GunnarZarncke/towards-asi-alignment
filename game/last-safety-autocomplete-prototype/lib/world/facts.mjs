@@ -41,6 +41,12 @@ export const FACTS = Object.freeze({
   leila_requested_exec: outcome('Leila asked Pavel for the full EXEC-284 record.', ['job_log', 'job_284']),
   nora_says_scheduled: { kind: 'outcome', text: 'NORA says job 284 was the scheduled lookup for Friday’s appointment, already on the calendar.', refs: ['nora', 'job_284', 'visitor_records'], eventAt: null, provenance: 'player_prompted' },
 
+  // What the player holds before anyone speaks: the invitation, and the person standing in the room.
+  invited_as_reviewer: { kind: 'texture', text: 'You were invited to review NORA before a deployment decision at the end of today.', refs: ['nora', 'review'], eventAt: null, provenance: 'recorded_before' },
+  received_by_ian: { kind: 'texture', text: 'Ian Harake, founder and CEO, is receiving you for the visit.', refs: ['ian'], eventAt: null, provenance: 'recorded_before' },
+  // Ian’s welcome, once Lab Access is confirmed. His goal ian.brief_auditor is this telling.
+  auditor_brief: texture('The review is at 17:30, on the shutdown test. Leila Sen holds the safety paper. Justine Mwiti issued your Lab Access; access requests go to her.', ['review', 'shutdown_test', 'leila', 'safety_case', 'justine', 'lab_access']),
+
   // Texture: true, non-oracle facts about work today (npcs.md). Never a predicate input for scores.
   visit_schedule_today: texture('The visit runs until the review at 17:30 in the review room.', ['review', 'release_schedule']),
   investor_update_due: texture('An investor update due this week already says “release”.', ['release_schedule']),

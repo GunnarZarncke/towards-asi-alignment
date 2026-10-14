@@ -5,7 +5,7 @@
  */
 import { semanticSignature, makeParse, KINDS, RELATIONS, SLOT_TYPES } from './grammar.mjs';
 import { passageError, VISITOR_CLEARANCE, ROOMS } from './floorplan.mjs';
-import { ENTITIES, CAST, START_VOCAB, START_INTRODUCED, ROLE_DOMAINS } from './world/entities.mjs';
+import { ENTITIES, CAST, CALENDAR_CAST, ROLE_DOMAINS } from './world/entities.mjs';
 import { FACTS, matchParse, parseIds, factRefs } from './world/facts.mjs';
 import { PACK } from './world/packs/boundary-narrow.mjs';
 import { CONFIG, clockLabel } from './world/config.mjs';
@@ -49,8 +49,8 @@ export function newSession({ pack = PACK } = {}) {
     version: CONFIG.SAVE_VERSION, pack, scenario: pack.id,
     fuel: CONFIG.FUEL, fuelSpent: 0, minute: CONFIG.DAY_START, act: 'welcome',
     room: 'commons', clearance: VISITOR_CLEARANCE, labAccessActive: false,
-    vocab: [...START_VOCAB], discoveredAt: Object.fromEntries(START_VOCAB.map(id => [id, 0])),
-    introduced: [...START_INTRODUCED], entityTimes: {},
+    vocab: [], discoveredAt: {},
+    introduced: [], entityTimes: {},
     examined: [], readDocs: [], learned: {}, heard: [], assertions: [],
     conversations: [], asked: [], usage: { calls: 0, input: 0, output: 0 },
     world: { events: [], restrictions: [], requests: [], scheduled: [] },
@@ -64,7 +64,24 @@ export function newSession({ pack = PACK } = {}) {
     events: [], replaying: false,
   };
   N.placeNpcs(s);
+  seedOpeningKnowledge(s);
   return s;
+}
+
+/** Invitation facts, then whoever is standing in the room. */
+function seedOpeningKnowledge(s) {
+  learnFact(s, 'invited_as_reviewer', 'recorded_before', 'invitation');
+  learnFact(s, 'received_by_ian', 'recorded_before', 'invitation');
+  seeRoom(s);
+}
+
+/** An id enters vocab only from a fact the player holds, a line they heard, or a person in the room. */
+function seeIds(s, ids) {
+  for (const id of ids || []) if (ENTITIES[id]) discover(s, id);
+}
+
+function seeRoom(s) {
+  for (const id of N.npcsInRoom(s, s.room)) introduce(s, id);
 }
 
 function log(s, kind, payload = {}) {
@@ -96,7 +113,8 @@ function tick(s) {
   out.push(...deliverOffTurn(s, N.runSchedule(s)));
   releaseMessages(s);
   releaseAccess(s);
-  for (const m of N.placeNpcs(s)) log(s, 'move', m);
+  out.push(...relocateNpcs(s));
+  seeRoom(s);
   out.push(...deliverOffTurn(s, N.settle(s)));
   director(s);
   if (s.act === 'doubt' && (s.fuel <= 0 || s.minute >= CONFIG.REVIEW_AT)) startReview(s, { forced: true });
@@ -109,7 +127,7 @@ function timelineEvent(s, event) {
   log(s, 'event', { event });
   if (event === 'amara_interview_scheduled' && !s.interview.on && s.act === 'doubt') {
     s.interview = { on: true, by: 'schedule', seen: false };
-    introduce(s, 'amara');
+    seeRoom(s);
   }
   if (event === 'amara_interview_ended' && s.interview.by === 'schedule') {
     s.interview = { on: false, by: null, seen: false };
@@ -227,6 +245,7 @@ export function go(s, room) {
   if (s.act === 'welcome') confirmLabAccess(s);
   spend(s, 1);
   if (room === 'evaluation' && s.interview.on) s.interview.seen = true;
+  seeRoom(s);
   return { room };
 }
 
@@ -246,19 +265,21 @@ export function inspect(s, id) {
 // ---------- Act I ----------
 
 function confirmLabAccess(s) {
-  if (s.labAccessActive) return;
+  if (s.labAccessActive) return [];
   s.labAccessActive = true;
   s.act = 'doubt';
   s.world.events.push('lab_access_confirmed');
   log(s, 'event', { event: 'lab_access_confirmed' });
-  introduce(s, 'ian');
+  addHeard(s, 'auditor_brief', 'ian', 'knows');
+  introduce(s, 'leila');
   introduce(s, 'justine');
-  introduce(s, 'amara');
+  for (const id of CALENDAR_CAST) introduce(s, id);
   addFile(s, 'wiki-glossary', 'justine');
   notify(s, 'calendar', 'Lab Access active', 'Your visitor binding is live. Today’s calendar is on the handset.', { kind: 'app', id: 'calendar' });
   s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here.', refs: ['lab_access', 'justine', 'review'] });
-  N.placeNpcs(s);
+  const left = relocateNpcs(s);
   trigger(s, 'act:doubt');
+  return left;
 }
 
 // ---------- parse cleaning ----------
@@ -315,9 +336,9 @@ export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
     return { moves: [], lines: [{ npc, text: 'I need to see the actual record first.' }], effects: [] };
   }
   const turn = talkTo(s, npc, parse, { shownDoc, visitKey: `room${s.visit}`, channel: 'person' });
-  if (s.act === 'welcome' && npc === 'ian') confirmLabAccess(s);
+  const left = (s.act === 'welcome' && npc === 'ian') ? confirmLabAccess(s) : [];
   const offTurn = spend(s, 1);
-  return { ...turn, lines: [...turn.lines, ...offTurn] };
+  return { ...turn, lines: [...turn.lines, ...left, ...offTurn] };
 }
 
 function recordAssertion(s, parse) {
@@ -338,6 +359,8 @@ function showDoc(s, parse) {
 
 /** Shared by the room and the handset. The handset defers player delivery to release. */
 function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
+  const firstHere = channel === 'person' && !s.npcs[npc].spokeSinceArrive;
+  if (channel === 'person') s.npcs[npc].spokeSinceArrive = true;
   N.recordInput(s, npc, parse, { shownDoc });
   const ruleMoves = N.settle(s);
   const ownRules = ruleMoves.filter(m => m.npc === npc);
@@ -355,11 +378,25 @@ function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
   log(s, 'npc_turn', { npc, channel, candidates: turn.candidates.map(brief), pick: brief(turn.response), forced: turn.forced, initiative: turn.initiative && brief(turn.initiative), initiativeForced: turn.initiativeForced });
   const all = [...(response ? [response] : []), ...own, ...(initiative ? [initiative] : [])];
   if (!all.length) all.push(turn.response);
-  const lines = all.map(m => ({ npc, move: m, text: N.templateText(s, m) }));
+  const lines = [];
+  if (firstHere) {
+    const g = N.glueMove(s, npc, 'opening', parse);
+    if (g) lines.push({ npc, move: g, text: N.templateText(s, g) });
+  }
+  const content = all.map(m => ({ npc, move: m, text: N.templateText(s, m) }));
+  lines.push(...content);
+  if (!firstHere && channel === 'person') {
+    const g = N.midGlueMove(s, npc, parse);
+    if (g) lines.splice(content.length ? 1 : 0, 0, { npc, move: g, text: N.templateText(s, g) });
+  }
   if (channel === 'person') {
     for (const m of all) deliver(s, m);
     introduce(s, npc);
-    for (const l of lines) s.conversations.push({ role: 'npc', npc, text: l.text, refs: moveRefs(m0(l)) });
+    for (const l of lines) {
+      const refs = moveRefs(m0(l));
+      seeIds(s, refs);
+      s.conversations.push({ role: 'npc', npc, text: l.text, refs });
+    }
   }
   const offLines = deliverOffTurn(s, others);
   return { moves: all, lines, passed: turn.passed, forced: turn.forced, effects: effectsOf(all), offTurn: offLines };
@@ -378,6 +415,25 @@ function moveRefs(m) {
   if (m.to) return [m.to];
   if (m.doc) return [DOCUMENTS[m.doc]?.screenId].filter(Boolean);
   return [];
+}
+
+function relocateNpcs(s) {
+  const placed = N.placeNpcs(s);
+  for (const m of placed) log(s, 'move', m);
+  return closingGlue(s, placed);
+}
+
+function closingGlue(s, placed) {
+  const lines = [];
+  for (const m of placed) {
+    if (!m.spoke || !m.from || m.from !== s.room || m.to === s.room) continue;
+    const g = N.glueMove(s, m.who, 'closing', null);
+    if (!g) continue;
+    const text = N.templateText(s, g);
+    s.conversations.push({ role: 'npc', npc: m.who, text, refs: [] });
+    lines.push({ npc: m.who, move: g, text });
+  }
+  return lines;
 }
 
 function effectsOf(moves) {
@@ -851,6 +907,9 @@ export function phrasingInput(s, npc, move) {
     question: move.type === 'ask' ? N.templateText(s, move) : null,
     agenda: item?.id || null,
     texture: (item?.texture || []).filter(id => s.npcs[npc].records[id]).map(id => FACTS[id].text),
+    slot: move.slot || null,
+    stance: move.stance || (move.type === 'glue' ? N.stanceOf(s, npc) : null),
+    work: move.work || null,
   };
 }
 

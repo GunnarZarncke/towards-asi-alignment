@@ -45,10 +45,10 @@ const STRATEGIES = {
     walk(s, 'platform');
     applyAction(s, 'inspect', { id: 'job_log' });
     say(s, 'pavel', P('ask', 'about', { topic: 'task_queue' }));
-    say(s, 'pavel', P('assert', 'caused', { subject: 'nora', object: 'job_284' }));
     const q = clientState(s).pendingQuestion;
     assert.equal(q?.npc, 'pavel', 'Pavel asks who owns job 284');
     say(s, 'pavel', P('assert', 'authorized', { subject: 'nora', object: 'job_284' }));
+    say(s, 'pavel', P('assert', 'caused', { subject: 'nora', object: 'job_284' }));
     walk(s, 'evaluation');
     say(s, 'leila', P('ask', 'about', { topic: 'shutdown_test' }));
     assert.equal(clientState(s).pendingQuestion?.npc, 'leila', 'Leila asks about the job');

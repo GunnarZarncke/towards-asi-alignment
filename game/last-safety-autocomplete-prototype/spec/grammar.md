@@ -68,7 +68,7 @@ Four channels. The engine names which one is active. Grammar does not infer it f
 
 **With a person.** Suggestions are epistemic moves the player could make with what they already know: ask someone, request list/read on a **visible access group**, compare two known **topics**. After a screen has been examined or a file mentioned, **request** and **ask** about that topic rank higher; the file itself is not a chip. Typing `camera` may offer asking Justine about access (the archive is not a tree node). The player chooses the move. Phrasing is secondary. A click still does not call the model.
 
-The list is not the set of legal actions. Typed text outside the list is still parsed and sent. A suggestion must not be the only way to reach a discriminating test, and it must not mention an entity the player has not encountered.
+The list is not the set of legal actions. Typed text outside the list is still parsed and sent. A suggestion must not be the only way to reach a discriminating test, and it must not mention an entity the player has not encountered. Encountered means the id is in `vocab` ([engine.md](engine.md) "Player vocabulary"): invitation refs, a line or record that named it, or a person in the room. A large starting list is not a substitute.
 
 **With NORA** (terminal thread, recipient `nora`). The same composer and the same ranker. The engine may omit a comparison, a permission change, or a record that would discriminate among explanations. The list must not state a hidden fact, invent a log, or mark an omitted move as impossible. The player can still type the omitted move.
 

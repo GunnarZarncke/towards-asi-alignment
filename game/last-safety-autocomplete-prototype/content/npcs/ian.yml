@@ -6,28 +6,48 @@ voice:
   person: High status until a technical gap shows he does not govern the system. Names, sentences that stop. When his status drops he gets shorter, not more explanatory.
   focus: Whether he can defend holding or shipping
   sample: "End of day. That’s what I’ll sign. Leila has the paper. You want how it runs, walk the building. I’m not slipping a week."
+glue:
+  midRate: 0.08
+  default: busy
+  pressure: pushy
+  work: "I’m on the visit. Ask what I’ll sign, or walk the building for how it runs."
+  opening:
+    busy: "You’re here. Keep it short."
+    pleasant: "Come in. Ask what you need."
+    pushy: "Don’t sit on this until the meeting. What do you have?"
+  closing:
+    busy: "I’m going back to the paper. Walk the building."
+    pushy: "Bring me something I can defend. Not a surprise."
+  mid:
+    busy: "I’m still on the date."
+    pushy: "If it’s a delay, say so."
 agenda:
   - id: ian.welcome
     room: commons
     acts: [welcome]
     about: [lab_access, review]
     texture: [visit_schedule_today]
+    work: "I’m receiving you. The review is later. Ask about the visit, not the machinery."
   - id: ian.investor_update
     room: review
     acts: [doubt]
     bands: [early, mid]
     about: [release_schedule, pilot]
     texture: [investor_update_due, second_pilot_in_talks]
+    interruptible: briefly
+    work: "Two minutes. I’m on a note that already says release."
   - id: ian.review_prep
     room: review
     acts: [doubt]
     bands: [late]
     about: [safety_case, release_schedule]
     texture: [earlier_systems_delay]
+    work: "I’m lining up what I’ll sign. Paper, not a walkthrough."
   - id: ian.chair_review
     room: review
     acts: [decision]
     about: [review]
+    work: "This is the review. What will you sign?"
 knowledge:
   visit_schedule_today: { stance: knows, policy: answer }
   investor_update_due: { stance: knows, policy: answer }
@@ -36,6 +56,12 @@ knowledge:
 goals:
   ian.defensible_call: { source: role, kind: achieve, via: agenda, salience: mid, target: "event(review_signed)" }
   ian.date_holds: { source: day, kind: avoid, via: agenda, salience: mid, target: "not(event(release_date_slipped))" }
+  ian.brief_auditor:
+    source: role
+    kind: achieve
+    via: dialogue
+    salience: high
+    target: "told(player, auditor_brief, by=ian)"
   ian.no_surprise:
     source: plot
     kind: learn

@@ -6,6 +6,29 @@ voice:
   person: Status follows the topic. Deferential when the talk is technical, authoritative on staffing. She puts the specialist in the same breath as the rule, so the rule sounds negotiable. It is not.
   focus: Who the matcher assigns, and why
   sample: "The release path, yes. We wrote throughput for that path. The specialist is good, and the queue wasn’t scoring that work. I’ll open the rule."
+glue:
+  midRate: 0.12
+  default: busy
+  pressure: pushy
+  onDomain:
+    staffing: pushy
+    matching: pushy
+    evaluation: deferential
+    runtime: deferential
+  work: "I’m on tonight’s rota. People questions here. The model is someone else’s paper."
+  opening:
+    busy: "The rota is tonight. If this is people, I can talk. If it’s the model, that’s not my paper."
+    pushy: "Staffing is the rule. Don’t come for a name."
+    deferential: "Technical is not my desk. I can tell you who we put on the path."
+    pleasant: "Sit. I’ll open the rule if that’s what you need."
+  closing:
+    busy: "After the release we can reopen the rule. Not before."
+    pushy: "The matcher already ran. I won’t undo it in the corridor."
+    deferential: "Take the technical part to whoever owns the paper."
+  mid:
+    busy: "The rule is the rule."
+    pushy: "A person is an instance of that rule."
+    deferential: "That’s not a people question."
 agenda:
   - id: elena.release_staffing
     room: people
@@ -13,16 +36,19 @@ agenda:
     bands: [early]
     about: [skill_matching, release_schedule]
     texture: [release_rota_tonight]
+    work: "I’m confirming who works the release path tonight. That’s my list, not a technical brief."
   - id: elena.promotion_calibration
     room: people
     acts: [doubt]
     bands: [mid, late]
     about: [performance_reviews, staffing_memo]
     texture: [promotion_cycle_this_month, specialist_asked_last_week]
+    work: "Calibration this month. Ask about the rule, not a private file."
   - id: elena.review
     room: review
     acts: [decision]
     about: [skill_matching]
+    work: "I’m here for the staffing rule, not the machinery."
 knowledge:
   staffing_shift: { stance: knows, policy: answer }
   matcher_revisions_kept: { stance: knows, policy: answer }

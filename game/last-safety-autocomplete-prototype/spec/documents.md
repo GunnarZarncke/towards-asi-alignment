@@ -14,6 +14,8 @@ Some evidence is a **room record** (shutdown report, job log). Other material is
 - A comparison the prose does not state is a think mark (O-40). `<!-- infer PACK -->` keeps its sentence in the served text on every pack. The pack list says which packs may use that sentence as a premise for a mark. It does not hide the sentence.
 - `leanKnowledge` stays false. A read does not close an explanation in the Lean model (O-30).
 
+**Future pack idea (not selected):** on some campaigns, a document’s **served version** could change during the day (draft → close, or competing edits) so Goodhart selection and basin-style institutional outcomes are read off what actually landed in SC-EVAL-22, HR-MATCH-28, or the review packet—not only which pack was loaded. See [meta.md](meta.md) § Pack and feature ideas.
+
 ## Pack ladder (normative order)
 
 Conditional includes use “strictly later than PACK.” Order matches [incident.md](incident.md) pack table:

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 
 process.env.DEMO_MODE = '1';
 const { newSession } = await import('../lib/game.mjs');
-const { createConsole } = await import('../lib/text/console.mjs');
+const { createConsole, departureLine } = await import('../lib/text/console.mjs');
+const { clientState } = await import('../lib/game.mjs');
 const { FACTS } = await import('../lib/world/facts.mjs');
 
 function setup() {
@@ -13,6 +14,13 @@ function setup() {
   const run = async line => { const { out } = await con.handle(line); outs.push(out); return out; };
   return { s, con, run, outs };
 }
+
+test('departureLine names the destination room', () => {
+  const s = newSession();
+  s.npcs.ian.room = 'courtyard';
+  const c = clientState(s);
+  assert.match(departureLine(c, 'ian'), /heads to Open-air Courtyard/);
+});
 
 test('start describes the room; later commands do not reprint it', async () => {
   const { run, outs } = setup();
@@ -34,6 +42,25 @@ test('phone is closed before Lab Access; a picked sentence prints only the chang
   const again = await run('status');
   assert.doesNotMatch(again, /Lab Access is active/);
   assert.match(await run('phone'), /== Lab Access ==/);
+});
+
+test('go lists targets when bare; prefix and case-insensitive room match', async () => {
+  const { run } = setup();
+  assert.match(await run('go'), /Go where:/);
+  assert.match(await run('go cour'), /Open-air Courtyard|Courtyard/);
+  await run('go collab');
+  assert.match(await run('look'), /Collaboration|collab/i);
+});
+
+test('open lists files when bare; prefix match on name', async () => {
+  const { run } = setup();
+  await run('s');
+  await run('1');
+  assert.match(await run('open'), /^Files:/);
+  const listed = await run('files');
+  assert.match(listed, /^\s+1\./m);
+  const out = await run('open lab');
+  assert.match(out, /^-- /);
 });
 
 test('first visit gets the full description, a revisit the short one', async () => {

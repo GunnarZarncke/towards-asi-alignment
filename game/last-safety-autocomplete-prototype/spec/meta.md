@@ -116,6 +116,14 @@ Spec conflicts found while implementing, resolved provisionally in code and wait
 
 Player terminal: reply delay is O-44 (fuel, not a wall clock; the amounts are still O-09). Access grants use a separate delay (reject < grant < walk-and-ask; [access.md](access.md)). Placement is a generic phone overlay—working. The pipeline stays off the terminal. See [terminal.md](terminal.md).
 
+## Pack and feature ideas
+
+Status **recommended** — not selected. Do not implement because it is written here ([PLAN.md](../PLAN.md) rules).
+
+| Idea | Packs / bridges | Sketch |
+| --- | --- | --- |
+| **Document development as plot** | **goodhart** (Ch. 34 selection), basin / MB6 selection pressure | One or more in-world documents (safety-case packet, certificate excerpt, staffing memo, meeting summary frame) need not be fixed at session load. Their **served text at close or at commit** could depend on agenda events, who the player asked to read a draft, whether they supplied facts or framing before `leila_packet_closed`, and similar engine-recorded moves—not a separate authoring minigame. That gives a concrete handle for Goodhart selection (what got promoted into the case) and basin-style effects (which institutional wording “wins” the day) without adding a quiz score. **boundary-narrow** can keep static `renderDocument(slug, pack)`; candidates first are goodhart and any pack where the B plot is the scored failure. Spec hook: [documents.md](documents.md). |
+
 ## Later
 
 A transfer check is out of scope for this build: after the game, a short unrelated case (a hospital system, a research assistant) with a reassuring safety report, scored on whether the player names a missing boundary, a bad evidence source, or an incentive. It is not a gate and not a scene inside the lab. Do not author it while the shutdown model is unfinished.

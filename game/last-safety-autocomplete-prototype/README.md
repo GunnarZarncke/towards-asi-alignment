@@ -17,7 +17,7 @@ cp .env.example .env
 npm start
 ```
 
-Open **http://127.0.0.1:3000** in a browser (add `?test=1` for the parser inspector and API usage; **http://127.0.0.1:3000/text.html** is the text version on the same session). The API key stays on the local Node server, never in browser JavaScript. For a **no-key demo**, set `DEMO_MODE=1` in `.env` (the toy parser does not demonstrate actual LLM quality).
+Open **http://127.0.0.1:3000** in a browser (add `?test=1` for the parser inspector and API usage; **http://127.0.0.1:3000/text.html** is the text version on the same session, **`?debug=1`** on that URL for per-step knowledge deltas). The API key stays on the local Node server, never in browser JavaScript. For a **no-key demo**, set `DEMO_MODE=1` in `.env` (the toy parser does not demonstrate actual LLM quality).
 
 **Mobile:** Start the server on your computer and either tunnel `127.0.0.1:3000` through a secure development tunnel or temporarily change the server bind address for trusted LAN testing; the default intentionally accepts local connections only. Do not expose the prototype publicly: it lacks authentication, quotas, and production hardening.
 
@@ -25,7 +25,7 @@ Open **http://127.0.0.1:3000** in a browser (add `?test=1` for the parser inspec
 npm test                # every suite
 npm run test:engine     # engine scripts, NPC enumeration, incident strategies
 npm run playtest -- --help   # headless persona playtest (spec/playtest.md)
-npm run text            # text-only play in the terminal (spec/text-console.md); --demo for no model
+npm run text            # text-only play in the terminal (spec/text-console.md); --demo for no model; --debug for knowledge deltas
 ```
 
 What that covers, and the other layers: [`spec/testing.md`](spec/testing.md).

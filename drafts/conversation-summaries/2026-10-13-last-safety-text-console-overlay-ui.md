@@ -35,7 +35,7 @@ Verification (from `game/last-safety-autocomplete-prototype/`):
 ## Open / next
 - Suggestion quality shows through more plainly in text: openings like "Show Ian" or "What about Ian" to Ian, and "Can Ian access …" to Daniel. This is the ranker finding from the previous session; it is not new.
 - The drawer overlaps the bottom panel when open on desktop; acceptable for now.
-- Not committed.
+- Gate 2 LLM battery at frozen O-47 thresholds still open from the implement-spec session.
 
 ## Key paths
 - `game/last-safety-autocomplete-prototype/lib/text/` · `scripts/text-play.mjs` · `public/text.html` · `lib/phrase.mjs`
@@ -43,4 +43,4 @@ Verification (from `game/last-safety-autocomplete-prototype/`):
 - `game/last-safety-autocomplete-prototype/spec/text-console.md` · `spec/graphics-ui.md`
 
 ## Commits
-- none
+- `0be3cd7e8` — Last Safety prototype: implement spec, text console, overlay UI (game tree + session logs).

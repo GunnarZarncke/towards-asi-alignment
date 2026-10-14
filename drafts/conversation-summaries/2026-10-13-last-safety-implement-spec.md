@@ -35,7 +35,7 @@ Verification (commands run from `game/last-safety-autocomplete-prototype/`):
 - Freeze O-47 and run the full LLM battery (seven personas, several runs) for Gate 2. The held-out two personas are not written.
 - Playtest findings to act on only if they cross a frozen threshold: Ian's `work` reply ("investor update …") repeats across unrelated questions; answers to NPC questions never produced a world event in smoke runs (uptake events 0); facing Ian, the menu fills with "Can Ian access …" (third person to the addressee).
 - Click through the ending panel in the browser once (blocked this session).
-- Not committed. Untracked/modified files are all under `game/last-safety-autocomplete-prototype/` plus this log, HANDOFF, and INDEX.
+- Committed with the text-console session in `0be3cd7e8`.
 
 ## Key paths
 - `game/last-safety-autocomplete-prototype/lib/world/` · `content/npcs/` · `lib/game.mjs` · `server.mjs`
@@ -44,4 +44,4 @@ Verification (commands run from `game/last-safety-autocomplete-prototype/`):
 - `game/last-safety-autocomplete-prototype/spec/contract.md` · `spec/meta.md`
 
 ## Commits
-- none
+- `0be3cd7e8` — Last Safety prototype: implement spec, text console, overlay UI.

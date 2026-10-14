@@ -24,7 +24,7 @@ Minimum, whether or not the prototype stores them all yet:
 | --- | --- |
 | World | Act, event history, deployment state, jobs, access, simulated AI state |
 | Actor | Position, activity, role, permissions, presence (`body` / `hologram` / `absent`) |
-| NPC | Belief records, policies, goals with salience, agenda item, pending question. No trust or status number (O-21) |
+| NPC | Belief records, policies, goals with salience, agenda item, pending question. No trust or status number (O-21). Glue stance is a discrete label from the Person layer, not stored arithmetic |
 | Evidence | Id, source, content, provenance, observations, claims, access |
 | Player | Examined, heard, assertions, presented, requested |
 | Story | Act, interventions done, ending flags |
@@ -37,7 +37,17 @@ Prototype session today: `room`, `playerKnows`, `examined`, `learnedFacts`, `con
 
 Autocomplete order is [ranking.md](ranking.md). The engine fills the projection. It does not rank.
 
-When an id becomes player-visible, store the fuel index on `discoveredAt`. Until fuel is stored, use the event-log index. Ids in the starting vocabulary are 0.
+When an id becomes player-visible, store the fuel index on `discoveredAt`. Until fuel is stored, use the event-log index. Invitation facts are learned at fuel 0, and their refs are the only ids at 0.
+
+## Player vocabulary
+
+An entity id enters `vocab` only when it has occurred somewhere the player can see or hear:
+
+- a ref of a fact the player holds (`learnedFacts`: the invitation, a record, or something they were told)
+- a ref on a line they heard
+- an actor in the room they are standing in (name and role, so they are introduced)
+
+The invitation holds two texture facts, `invited_as_reviewer` (NORA, the review) and `received_by_ian` (Ian, who is also in the room). It does not name the queue, the cameras, or the rest of the cast. When Ian confirms Lab Access he tells `auditor_brief` (the 17:30 review, the shutdown test, Leila and the safety paper, Justine and Lab Access). That is goal `ian.brief_auditor`. The handset calendar he hands over names the people on today’s entries (Ian, Leila, Amara, Daniel). Other ids wait for a screen, a file, a sentence, or a person in the room. Completions read `vocab` only, so they cannot offer a system the player has not met.
 
 `introduced` gains an actor when they speak to the player, or when a heard turn introduces them. The prototype session starts with `pavel`, `leila`, and `elena` introduced. NORA and the rest of the cast do not. Opening NORA’s thread and receiving a released line counts as her introduction.
 

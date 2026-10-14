@@ -24,6 +24,18 @@ export const CONFIG = Object.freeze({
   BANDS: Object.freeze({ early: [570, 735], mid: [735, 960], late: [960, 1050] }),
   INTERVIEW: Object.freeze({ start: 735, end: 780 }),
   SAVE_VERSION: 1,
+  /**
+   * Social glue (npcs.md). Discrete stance labels, not a trust number (O-21).
+   * opening: first in-room talk with that person. closing: they leave the player’s room after talking.
+   * mid: extra non-fact line at person-specific rate. Set enabled false to silence all glue.
+   */
+  GLUE: Object.freeze({
+    enabled: true,
+    opening: true,
+    closing: true,
+    mid: true,
+    defaultMidRate: 0.12,
+  }),
 });
 
 export function band(minute) {

@@ -7,20 +7,40 @@ voice:
   person: Kenyan English in the wording, not in the spelling. “Sorry” is often pardon, not “I was wrong.” When someone hears the why as suspicion she apologizes for the mix-up and says the grant again.
   focus: Whether a permission exists
   sample: "Sorry, the archive. Why do you need it? The grant is the reason and the role. You have the visitor role."
+glue:
+  midRate: 0.1
+  default: busy
+  pressure: pushy
+  onDomain:
+    access: busy
+  work: "I’m on the audit. Why do you need it? That’s the access question."
+  opening:
+    busy: "Sorry — why are you here? I mean the access question, not the greeting."
+    pushy: "Need and role. If you don’t have both, I don’t have a grant."
+    pleasant: "Sorry, sit. Ask why you need the thing. That’s how this desk works."
+  closing:
+    busy: "Send the request on the handset if that’s easier. I’ll see it."
+    pushy: "No grant without a reason. That’s the whole conversation."
+  mid:
+    busy: "Sorry, say that again — the reason, not the sorry."
+    pushy: "That’s still not a role."
 agenda:
   - id: justine.visitor_binding
     room: security
     acts: [welcome]
     texture: [binding_issued_this_morning]
+    work: "I issued the visitor binding this morning. Ask about the grant, not the pictures."
   - id: justine.access_audit
     room: security
     acts: [doubt]
     about: [camera_system, visitor_records, policies]
     texture: [audit_before_release, camera_service_not_reviewed]
+    work: "Pre-release audit. Every grant needs an owner and a reason. That’s the list."
   - id: justine.review
     room: security
     acts: [decision]
     about: [policies]
+    work: "I’m on the grant line. Why do you need it?"
 knowledge:
   binding_issued_this_morning: { stance: knows, policy: answer }
   audit_before_release: { stance: knows, policy: answer }

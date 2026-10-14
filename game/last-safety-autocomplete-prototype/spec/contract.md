@@ -32,7 +32,7 @@ learnedFacts: { id, text, refs: id[], eventAt: number | null, discoveredAt: numb
   discoveredAt: fuel index when the player learned the fact (ranking temporal edges)
   provenance: "recorded_before" | "staff_action" | "player_prompted"
   from: actor id, document slug, or "think" | null
-discoveredAt: id → number      // fuel index when the id became player-visible (0 for the starting vocabulary)
+discoveredAt: id → number      // fuel index when the id became player-visible (0 for invitation refs)
 introduced: id[]               // actors, including nora, whose public role the player has heard
 roleDomains: { id, domains: DomainId[] }[]  // one row per introduced id; unintroduced rows are absent
 evidence: { id, title, room, examined }[]

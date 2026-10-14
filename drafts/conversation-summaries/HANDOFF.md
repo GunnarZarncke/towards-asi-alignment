@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-13 (Last Safety text console and overlay UI).
+Last updated: 2026-10-14 (Last Safety NPC social glue).
 
 ---
 
@@ -20,8 +20,10 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-13:** **Last Safety text console and overlay UI** — `npm run text` and `/text.html` play the same session in words, printing only what changed (`spec/text-console.md`); the room view now fills the window with overlays, follows the player sideways on phones, and shows debug panels only with `?test=1`. Not committed. Log: `2026-10-13-last-safety-text-console-overlay-ui.md`.
-- **2026-10-13:** **Last Safety spec implemented** — Engine (`lib/world/`, `content/npcs/`), O-19 ranker, handset on the engine, UI (clock/fuel, addressee, think bubble, handset embed, ending, save/load), engine/enumerate/incident/ranking tests, playtest harness with seven personas. Gate 1 checks in `npm run test:engine`; Gate 2 waits on O-47 and an LLM battery. Not committed. Log: `2026-10-13-last-safety-implement-spec.md`.
+- **2026-10-14:** **Last Safety NPC social glue** — Opening, optional mid, and closing non-fact lines from the Person/status layer (`CONFIG.GLUE`, per-NPC YAML). Work replies use agenda/`glue.work` instead of a shared shrug. Log: `2026-10-14-last-safety-npc-social-glue.md`.
+- **2026-10-14:** **Last Safety vocabulary** — Invitation facts and Ian’s briefing are the early `know` rows. Entity ids enter only from a held fact, a heard line, a person in the room, or the handed calendar. Log: `2026-10-14-last-safety-vocab-invitation.md`.
+- **2026-10-13:** **Last Safety text console and overlay UI** — `npm run text` and `/text.html` play the same session in words, printing only what changed (`spec/text-console.md`); the room view now fills the window with overlays, follows the player sideways on phones, and shows debug panels only with `?test=1`. Committed `0be3cd7e8`. Log: `2026-10-13-last-safety-text-console-overlay-ui.md`.
+- **2026-10-13:** **Last Safety spec implemented** — Engine (`lib/world/`, `content/npcs/`), O-19 ranker, handset on the engine, UI (clock/fuel, addressee, think bubble, handset embed, ending, save/load), engine/enumerate/incident/ranking tests, playtest harness with seven personas. Gate 1 checks in `npm run test:engine`; Gate 2 waits on O-47 and an LLM battery. Committed `0be3cd7e8`. Log: `2026-10-13-last-safety-implement-spec.md`.
 - **2026-10-13:** **Registry contract sync + Metaculus listing export** — Claims catalog bumped to match TSA (v2–v3); `\claimspage` pins; M1 per-certificate output wording; `export_metaculus_questions.mjs` + `metaculus-all-markets.md` (registry fine print from `metaculus-listing-v1.yaml`). Log: `2026-10-13-registry-contract-sync.md`.
 - **2026-10-13:** **Last Safety spec cleanup** — Live spec states current rules only. `spec/` is what code follows; the 9 October draft is frozen. Log: `2026-10-13-last-safety-spec-cleanup.md`.
 - **2026-10-13:** **Last Safety courtyard floorplan** — Verified 22 × 17 m plan is the lab map and the door graph. Badge clearance 2. Test bay and security stay shut. Log: `2026-10-13-last-safety-floorplan.md`.

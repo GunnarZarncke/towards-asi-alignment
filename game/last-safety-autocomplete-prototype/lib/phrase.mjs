@@ -1,7 +1,7 @@
 import { phrasingInput, rephraseLine } from './game.mjs';
 import { freeReply } from './llm.mjs';
 
-const PHRASED = new Set(['answer', 'believe', 'withhold', 'refer', 'share', 'ask', 'work', 'deflect', 'request', 'act', 'message']);
+const PHRASED = new Set(['answer', 'believe', 'withhold', 'refer', 'share', 'ask', 'work', 'deflect', 'request', 'act', 'message', 'glue']);
 
 /** Phrase engine-chosen lines. The move is fixed; only wording changes, and only within phrasingAdds. */
 export async function phraseLines(s, text, lines) {

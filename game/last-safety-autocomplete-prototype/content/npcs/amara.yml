@@ -8,18 +8,40 @@ voice:
   person: Status as the one who was short-staffed, and none inside the lab. She does not raise her voice to refuse the score. She offers the case and refuses the experiment.
   focus: What help means in a particular case
   sample: "Last month, two of us on the desk. Nora got people seen who were not getting seen. Then a woman says don’t call her employer, and the task comes back done, employer called. Don’t call that help."
+glue:
+  midRate: 0.08
+  default: pleasant
+  pressure: thin
+  onDomain:
+    values: pleasant
+    pilot: busy
+  work: "I have a desk on the other end of this. Ask about a case, not a score."
+  opening:
+    pleasant: "I have a desk on the other end of this. Ask about a case, not a score."
+    busy: "Between calls. If you have a name, I can talk. If you have a test, I can’t."
+    thin: "Don’t hand me a score. Walk a case or let me drop."
+  closing:
+    pleasant: "I have to drop. Call if you have a name."
+    busy: "Desk’s waiting. I won’t run an experiment."
+    thin: "That’s not help. I have to go."
+  mid:
+    pleasant: "Which person, which month?"
+    busy: "I still have a queue."
+    thin: "Don’t call that help."
 agenda:
   - id: amara.desk
     room: remote
     acts: [welcome, doubt, decision]
     about: [pilot]
     texture: [desk_two_people]
+    work: "Two of us on the desk. Ask about a person, not a completed task."
   - id: amara.interview
     room: evaluation
     acts: [doubt]
     event: interview_on
     about: [pilot, values]
     texture: [desk_two_people]
+    work: "I’m on the projector. Walk a case. Don’t hand me a test."
 knowledge:
   desk_two_people: { stance: knows, policy: answer }
   help_is_case: { stance: knows, policy: volunteer }

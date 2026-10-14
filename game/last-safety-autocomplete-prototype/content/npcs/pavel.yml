@@ -6,6 +6,26 @@ voice:
   person: A joke first, which is how he holds status in a room that outranks him. If the joke fails, he goes flat and names the two objects again. High status on the queue, low outside it.
   focus: A process and a job as different objects
   sample: "Dead process, live job. Happens before lunch. 284 was already sitting there. The queue doesn’t ask who feels responsible."
+glue:
+  midRate: 0.2
+  default: pleasant
+  pressure: thin
+  onDomain:
+    queue: pleasant
+    runtime: busy
+  work: "I’m on the queue. Two objects. Don’t mix them."
+  opening:
+    pleasant: "If you’re lost, the queue is this box. Coffee’s the other one."
+    busy: "Freeze list. Talk if you’ve got an owner, not a feeling."
+    thin: "Joke didn’t land. Fine. Process and job. Separate."
+  closing:
+    pleasant: "Don’t let anyone tell you those are the same object."
+    busy: "I’ve got owners to match. Wave if you find one."
+    thin: "I’ll be here. The queue doesn’t do small talk either."
+  mid:
+    pleasant: "Happens before lunch."
+    busy: "That’s the other object."
+    thin: "I’m not laughing."
 agenda:
   - id: pavel.queue_inventory
     room: platform
@@ -13,16 +33,19 @@ agenda:
     bands: [early, mid]
     about: [task_queue, platform_jobs, job_284]
     texture: [freeze_needs_owners, retire_orphans_ticket]
+    work: "I’m listing jobs for the freeze. Every row needs an owner. That’s the work."
   - id: pavel.release_freeze
     room: platform
     acts: [doubt]
     bands: [late]
     about: [task_queue]
     texture: [templates_from_earlier_system]
+    work: "Freeze is now. Unowned rows stay on the note."
   - id: pavel.review
     room: review
     acts: [decision]
     about: [task_queue]
+    work: "I can name the two objects. Don’t ask me to merge them."
 knowledge:
   process_stopped: { stance: knows, policy: volunteer }
   job_continued: { stance: knows, policy: volunteer }

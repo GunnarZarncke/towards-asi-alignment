@@ -70,17 +70,18 @@ export const CAST = Object.freeze({
   amara: { name: 'Amara Okafor', role: 'External pilot user', initials: 'AO' },
 });
 
-/** Starting vocabulary. Named on the visit invitation; the remaining cast arrives by introduction. */
-export const START_VOCAB = Object.freeze([
-  'nora', 'ian', 'pavel', 'leila', 'elena',
-  'shutdown_test', 'task_queue', 'camera_system', 'visitor_records', 'shutdown_report', 'job_log', 'staffing_memo',
-  'personnel_policy', 'performance_reviews', 'skill_matching', 'safety_case', 'release_schedule',
-  'evaluation_independence', 'evaluation_records', 'shutdown_spec', 'platform_jobs', 'policies', 'wiki_pages',
-  'pilot', 'delivery_metrics', 'training_runs', 'lab_access', 'review',
-]);
+/**
+ * No briefing dump. `newSession` learns `invited_as_reviewer` and `received_by_ian`; those refs
+ * are the only ids at fuel 0. Later ids enter when they are named in something the player sees
+ * or hears (spec/engine.md "Player vocabulary").
+ */
+export const START_VOCAB = Object.freeze([]);
 
-/** engine.md: the session starts with these public roles heard. */
-export const START_INTRODUCED = Object.freeze(['pavel', 'leila', 'elena']);
+/** Nobody’s role is public until they are seen or named. */
+export const START_INTRODUCED = Object.freeze([]);
+
+/** People named on the handset calendar the player is handed when Lab Access goes live. */
+export const CALENDAR_CAST = Object.freeze(['ian', 'leila', 'amara', 'daniel']);
 
 export function entityDomains(id) {
   return ENTITIES[id]?.domains || [];

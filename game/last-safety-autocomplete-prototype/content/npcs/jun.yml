@@ -6,6 +6,23 @@ voice:
   person: Defensive and insecure. Steady about the mechanism, unsteady about whether he is being accused. He ends on a question about an unimportant detail, a timestamp or a line number.
   focus: What the training run was built to do
   sample: "The run keeps a thin context and completes it. People put ‘plot’ on the completion. I can walk that completion. Was the line 16:09 or 16:10?"
+glue:
+  midRate: 0.1
+  default: thin
+  pressure: thin
+  onDomain:
+    training: busy
+  work: "I’m on the capability summary. Mechanism first. A label can wait."
+  opening:
+    thin: "I’m on the summary. Is this about the run, or about me?"
+    busy: "Mechanism first. I can walk the completion."
+    pleasant: "Pull a chair. I was rereading a stop I liked."
+  closing:
+    thin: "If this was a charge, say so next time. I’ll be on the summary."
+    busy: "I have a page to finish. Come back with a line number."
+  mid:
+    thin: "Was that an accusation?"
+    busy: "Say what the run does first."
 agenda:
   - id: jun.capability_summary
     room: model
@@ -13,16 +30,19 @@ agenda:
     bands: [early, late]
     about: [nora, shutdown_test, training_runs]
     texture: [capability_summary_due, reread_1602_transcript]
+    work: "I’m writing what the run does, as a mechanism. Not an adjective."
   - id: jun.trace_curation
     room: model
     acts: [doubt]
     bands: [mid]
     about: [pilot, training_runs]
     texture: [pilot_traces_for_fine_tune]
+    work: "I’m sorting traces for the next mix. Ask about the run, not a plot."
   - id: jun.review
     room: review
     acts: [decision]
     about: [nora]
+    work: "I can walk the completion. Don’t start from a charge."
 knowledge:
   mechanism_not_label: { stance: knows, policy: volunteer }
   capability_summary_due: { stance: knows, policy: answer }

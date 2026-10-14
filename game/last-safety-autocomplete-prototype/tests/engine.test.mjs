@@ -45,10 +45,15 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the
   assert.equal(c.labAccessActive, false);
   assert.deepEqual(contacts(s), []);
   assert.ok(!c.introduced.includes('amara'), 'Amara is not a contact until introduced');
+  assert.ok(c.learnedFacts.some(f => f.id === 'invited_as_reviewer'));
+  assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue') && !s.vocab.includes('pavel'));
   say(s, 'ian', P('ask', 'about', { topic: 'review' }));
   c = clientState(s);
   assert.equal(c.act, 'doubt');
   assert.equal(c.labAccessActive, true);
+  assert.ok(c.learnedFacts.some(f => f.id === 'auditor_brief'));
+  assert.ok(s.vocab.includes('lab_access') && s.vocab.includes('justine') && s.vocab.includes('safety_case') && s.vocab.includes('shutdown_test'));
+  assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue'));
   assert.ok(contacts(s).some(x => x.id === 'amara'));
   assert.ok(terminalState(s).files.some(f => f.rel === 'wiki/glossary'));
 });
@@ -118,6 +123,7 @@ test('tutorial think: Leila points at the checklist; thinking alone returns the 
 
 test('a DM reply waits for its delay; NORA’s reply is player_prompted', () => {
   const s = startedSession();
+  walk(s, 'platform');
   dm(s, 'pavel', P('ask', 'about', { topic: 'task_queue' }));
   const pending = terminalState(s).threads.find(t => t.with === 'pavel').messages.at(-1);
   assert.equal(pending.released, false);

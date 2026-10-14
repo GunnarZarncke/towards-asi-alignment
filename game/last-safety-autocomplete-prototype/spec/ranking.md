@@ -73,7 +73,7 @@ Prototype entities, when the player knows them:
 | release_schedule | release |
 | evaluation_independence | independence |
 
-Actor entities do not carry those responsibility domains. The only role edges are `roleDomains` rows for ids in `introduced`. Knowing a person’s name does not activate their row. `nora` is in the starting vocabulary and stays off this list until she is introduced.
+Actor entities do not carry those responsibility domains. The only role edges are `roleDomains` rows for ids in `introduced`. Knowing a person’s name does not activate their row. NORA is named by the invitation and stays off this list until she is introduced.
 
 Closely related pairs (the explicit short link between domains):
 
@@ -86,7 +86,7 @@ Two clocks. A temporal edge uses one clock at a time. Discovery fuel is never su
 | Field | Unit | Set when |
 | --- | --- | --- |
 | eventAt | minute of day | The player has examined a record that states that time. 16:02 is 962. 16:09 is 969. Absent until then. |
-| discoveredAt | fuel index, or the event-log index until fuel is stored | The id entered player knowledge or learned facts. Starting vocabulary is 0. |
+| discoveredAt | fuel index, or the event-log index until fuel is stored | The id entered player knowledge or learned facts. Invitation refs are 0. |
 
 No wall clock runs. These fields do not add one.
 

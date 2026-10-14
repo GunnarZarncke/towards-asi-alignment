@@ -11,7 +11,15 @@
     .cmd{color:#8fc7b0;margin-top:10px}.cmd div::before{content:'> '}
     .pick{cursor:pointer;text-decoration:underline dotted #5d8a7c}.pick:hover{color:#fff}
     .phone{color:#9fc6e6}
-    form{display:flex;gap:8px;align-items:center;padding:10px 18px 14px;border-top:1px solid #24363b;background:#0c1416}
+    .debug{color:#c9a86a;margin-top:6px;font-size:13px}.debug div::before{content:''}
+    #debugBadge{color:#c9a86a;font-size:11px;margin-left:6px}
+    #foot{display:flex;flex-direction:column;border-top:1px solid #24363b;background:#0c1416}
+    #complete{padding:6px 18px 0;display:flex;flex-direction:column;gap:2px}
+    #complete[hidden]{display:none}
+    .complete-row{color:#6a9488;font-size:13px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2px 0}
+    .complete-row:hover{color:#b8ddd0}
+    .complete-empty{color:#5a7268;font-size:13px;font-style:italic}
+    form{display:flex;gap:8px;align-items:center;padding:10px 18px 14px}
     #prompt{color:#7f9d94;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%}
     input{flex:1;min-width:0;font:inherit;background:#162428;color:inherit;border:1px solid #2c4248;border-radius:6px;padding:8px 10px;outline:none}
     input:focus{border-color:#5d8a7c}
@@ -20,11 +28,36 @@
 </head>
 <body>
 <div id="log" aria-live="polite"></div>
-<form id="f"><span id="prompt"></span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help" autofocus/></form>
+<div id="foot">
+  <div id="complete" hidden aria-live="polite"></div>
+  <form id="f"><span id="prompt"></span><span id="debugBadge" hidden>debug</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help · Tab completes speech" autofocus/></form>
+</div>
 <script type="module">
+import { attachTabCompletion } from './text-input.mjs';
+import { kbSnapshot, formatKbDelta } from './text-debug.mjs';
+
+const debug = new URLSearchParams(location.search).has('debug');
 const log = document.getElementById('log'), input = document.getElementById('in'), promptEl = document.getElementById('prompt');
 const history = [];
 let at = 0;
+let gameState = null;
+let kbBefore = null;
+if (debug) document.getElementById('debugBadge').hidden = false;
+
+async function refreshState() {
+  try {
+    const r = await fetch('/api/state');
+    if (r.ok) gameState = await r.json();
+  } catch { /* offline */ }
+}
+
+const tab = attachTabCompletion({
+  input,
+  listEl: document.getElementById('complete'),
+  getState: () => gameState,
+  ensureState: refreshState,
+  onParseState: s => { gameState = s; },
+});
 
 function print(text, cls) {
   const block = document.createElement('div');
@@ -42,12 +75,20 @@ function print(text, cls) {
 }
 
 async function send(line) {
+  if (debug && gameState && line) kbBefore = kbSnapshot(gameState);
   if (line) print(line, 'cmd');
   const r = await fetch('/api/text', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line }) });
   const data = await r.json();
   if (data.error) print(data.error);
   if (data.out) print(data.out);
   promptEl.textContent = (data.prompt || '').replace(/\s*>\s*$/, '');
+  tab.resetComposer();
+  await refreshState();
+  if (debug && gameState) {
+    const after = kbSnapshot(gameState);
+    if (line && kbBefore) print(formatKbDelta(kbBefore, after), 'debug');
+    kbBefore = after;
+  }
   input.focus();
 }
 
@@ -61,11 +102,21 @@ document.getElementById('f').onsubmit = e => {
   send(line);
 };
 input.onkeydown = e => {
+  if (e.key === 'Tab' && !e.shiftKey) {
+    e.preventDefault();
+    if (tab.onKeyDown(e)) return;
+    void tab.onTab();
+    return;
+  }
+  if (tab.onKeyDown(e)) return;
   if (e.key === 'Enter') { e.preventDefault(); document.getElementById('f').requestSubmit(); }
-  if (e.key === 'ArrowUp' && at > 0) { at--; input.value = history[at]; e.preventDefault(); }
-  if (e.key === 'ArrowDown') { at = Math.min(history.length, at + 1); input.value = history[at] || ''; e.preventDefault(); }
+  if (!tab.isOpen() && e.key === 'ArrowUp' && at > 0) { at--; input.value = history[at]; e.preventDefault(); }
+  if (!tab.isOpen() && e.key === 'ArrowDown') { at = Math.min(history.length, at + 1); input.value = history[at] || ''; e.preventDefault(); }
 };
-send('');
+(async () => {
+  await refreshState();
+  await send('');
+})();
 </script>
 </body>
 </html>
