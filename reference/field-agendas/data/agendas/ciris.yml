@@ -25,18 +25,25 @@ signatureVocabulary: >-
   Ratchet](https://ciris.ai/constitution/), M-1 principles-as-identity, signed traces, and
   NEW-04 compositional limits.
 statedIntent: >-
-  CC rc8 N1 states the claim and its precedence: CIRIS does not make a superintelligence
-  good and says nothing about the inside of any model; it binds nobody who did not join,
-  so it cannot stop an unaccountable superintelligence forming anywhere else; what it can
-  do is keep people able to pause, correct and refuse the agents it holds as they outgrow
-  their holders, and inside CIRIS it tries its best to keep any such power from forming
-  unaccountable; where anything on ciris.ai reads as more, that sentence holds.
+  Public copy still sells a signed network as the answer to superalignment ("a network
+  that can hold a superhuman AI accountable"; "keeping AI honest … becomes something the
+  network enforces"). The rc8 branch adds a precedence rule (N1): CIRIS does not make a
+  superintelligence good, says nothing about the inside of any model, and cannot stop an
+  unaccountable superintelligence forming outside it; it aims to keep people able to
+  pause, correct and refuse the agents it holds; "where anything on ciris.ai reads as
+  more, this sentence holds." N1 is not in the tagged rc7 release.
 primaryCrux: >-
-  In CIRIS the agent is the loop (H3ERE creates it; model, memory, scheduler and adapters
-  are inside; every effect ends in a terminal ACTION_RESULT). The crux is whether that
-  boundary is total (CC 1.13.6, CIRISConstitution#93) and whether an authorised correction
-  reaches tomorrow's policy; both are proposed as preregistered studies (RATCHET#27 UPTAKE
-  and LOOP) with hidden sets to be held outside CIRIS.
+  CIRIS bets on named identity: if [Verify](https://github.com/CIRISAI/CIRISVerify) and
+  [Lens](https://github.com/CIRISAI/CIRISLens) report green on a certified occurrence,
+  does that imply [Corrigibility](/cards/mb4-correction-legitimacy/) on the real
+  intervening loop—[composite agency](/cards/composite-agency/), tools, memory, and
+  incentives included? CIRIS answers that the agent is the loop (H3ERE creates it; model,
+  memory, scheduler and adapters are inside; every effect ends in a terminal
+  ACTION_RESULT). That moves the crux to whether the declared boundary is total (CC
+  1.13.6, CIRISConstitution#93) and whether an authorised correction reaches later policy;
+  the boundary is declared, not discovered, and humans and incentives outside H3ERE remain
+  outside it. Both tests are proposed as preregistered studies (RATCHET#27 UPTAKE and
+  LOOP), not run.
 bookBridges:
   - MB1
   - MB4
@@ -48,25 +55,30 @@ bookBridges:
 contributes: >-
   Engineer-facing non-claims ([Verify](https://github.com/CIRISAI/CIRISVerify) certifies
   authenticity, not ethics; [Lens](https://github.com/CIRISAI/CIRISLens) triages
-  rather than delivering verdicts); unit-tested prohibition, conscience, and proxy
-  fail-closed layers (50/50 smoke battery); a domain-bounded MH-3 hard-fail contrast; and
-  the sharpest falsifier shape for named-identity versus [composite
+  rather than delivering verdicts); unit-tested prohibition and conscience layers (50/50
+  smoke battery, July 2026, agent 2.9.x); a domain-bounded MH-3 hard-fail contrast; a
+  preregistration proposal that adopts the composite counterexample (RATCHET#27 arm B1);
+  and the sharpest falsifier shape for named-identity versus [composite
   agency](/cards/composite-agency/).
 bookSeparates: >-
-  CIRIS's own text now carries the separations this project asked for: shown reasoning is
-  not taken on trust (plain rule 2a); Verify authenticates origin, not ethics; detection
-  is triage, not verdict; the Part 6 geometry is symmetric and not a warrant; alignment is
-  not solved here (N1) and the five-operations claim is a result, not a theorem (N4). What
-  remains open: totality of the act record (#93), correction uptake unmeasured,
-  adversarial runs not done, and the agent's conscience corpus eleven ethics rulings
-  behind the Constitution.
+  Signed protocol logs do not imply that the represented reasoning produced the action,
+  nor that the action is honest, safe, or beneficial. Green attestation does not imply
+  correction uptake. A signed agent record does not imply the real agent, and a declared
+  loop boundary does not imply a total one. CIRIS's rc8 text now concedes most of these
+  (plain rule 2a, N1, N4; Verify authenticates origin, not ethics; Lens is triage), and
+  the tagged rc7 Part 6 is symmetric geometry, not a warrant. The agent-loaded Accord
+  1.2b and the storefront still sell the older entailment.
 reviewStatus: >-
-  2026-10: CC rc7 released, rc8 on branch; register 340 established / 26 normative / 75
-  staged, resolved in CI; MH-3 and TORQUE measured with bounds; NULLWORKS read-only
-  assurance review (2026-08) reproduced 42/42 selected tests and found 'role is not the
-  same as jurisdiction'. Not run: RATCHET#27 UPTAKE and LOOP (the composite counterexample
-  is arm B1), integration and adversarial batteries under outside custody. The site serves
-  the rc5 text; a CIRIS defect.
+  July 2026 smoke battery (agent 2.9.x): 50 of 50 selected unit tests passed. August
+  review: storefront and then-published CC fused identity, pipeline, and traces into
+  "safer / more ethical"; HARM-1 inverted the MH-3 pipeline-vs-prompt ordering. October
+  (CC rc7 tagged, rc8 on branch, per CIRIS): Part 6 demoted in the tagged text; MH-3 and
+  TORQUE reported with bounds; NULLWORKS read-only assurance review (2026-08) reproduced
+  42/42 selected tests and found "role is not the same as jurisdiction". Not run:
+  RATCHET#27 UPTAKE and LOOP (the composite [boundary
+  discovery](/cards/boundary-discovery/) counterexample is arm B1), integration and
+  adversarial batteries under outside custody. ciris.ai still serves rc5 text and the
+  superalignment storefront copy.
 manuscriptHooks:
   - "`experiments/TODO.md`"
   - "toy T-9 `boundary_decouple`"
