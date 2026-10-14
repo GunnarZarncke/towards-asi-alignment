@@ -25,7 +25,7 @@ Prompts: (paraphrase — no prompt ids in export)
 - `game/last-safety-autocomplete-prototype/lib/photo-data.mjs`
 
 ## Commits
-- (this session)
+- `6d9bbb77b` Last Safety: reliable room photos and transcript collapse UX.
 
 ## Verification
 - `npm test` in `game/last-safety-autocomplete-prototype`: 99 pass.
