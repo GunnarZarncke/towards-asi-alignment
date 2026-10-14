@@ -673,7 +673,8 @@ evidence:
     evidence: >-
       rc8 N1 is a precedence rule (CIRIS does not make a
       superintelligence good; "where anything on ciris.ai reads as more, this
-      sentence holds") but it is not in tagged rc7 and the live site still serves rc5.
+      sentence holds") but it is not in tagged rc7; ciris.ai/philosophy carries it (labelled
+      rc8, released edition rc7) while ciris.ai/paths/superalignment does not.
     sources:
       - label: "ciris.ai/paths/superalignment"
         url: https://ciris.ai/paths/superalignment/
@@ -1716,8 +1717,9 @@ evidence:
     evidence: >-
       Four-claim fusion remains on the storefront (signed identity + pipeline +
       traces as the thing that holds a superhuman AI accountable). rc8 plain
-      rule 2a and N1–N5 concede the entailment in constitution text only; tagged
-      rc7 and ciris.ai do not yet carry that sentence.
+      rule 2a and N1–N5 concede the entailment in constitution text and on
+      ciris.ai/philosophy; tagged rc7 and the superalignment and safety pages do
+      not yet carry that sentence.
     sources:
       - label: "ciris.ai/paths/superalignment"
         url: https://ciris.ai/paths/superalignment/

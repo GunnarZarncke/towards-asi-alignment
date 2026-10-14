@@ -79,8 +79,9 @@ reviewStatus: >-
   42/42 selected tests and found "role is not the same as jurisdiction". Not run:
   RATCHET#27 UPTAKE and LOOP (the composite [boundary
   discovery](/cards/boundary-discovery/) counterexample is arm B1), integration and
-  adversarial batteries under outside custody. ciris.ai still serves rc5 text and the
-  superalignment storefront copy.
+  adversarial batteries under outside custody. ciris.ai publishes the tagged rc7 edition
+  (from the tag, with hashes, since 2026-10-14) and carries N1 on its philosophy page; the
+  superalignment page still carries the storefront copy.
 manuscriptHooks:
   - "`experiments/TODO.md`"
   - "toy T-9 `boundary_decouple`"
