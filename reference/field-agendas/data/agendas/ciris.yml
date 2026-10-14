@@ -66,8 +66,10 @@ bookSeparates: >-
   correction uptake. A signed agent record does not imply the real agent, and a declared
   loop boundary does not imply a total one. CIRIS's rc8 text now concedes most of these
   (plain rule 2a, N1, N4; Verify authenticates origin, not ethics; Lens is triage), and
-  the tagged rc7 Part 6 is symmetric geometry, not a warrant. The agent-loaded Accord
-  1.2b and the storefront still sell the older entailment.
+    the tagged rc7 Part 6 is symmetric geometry, not a warrant. The storefront still sells
+  the older entailment. The agent-loaded ethics text (Accord 1.2b) makes no such claim;
+  what it lacks is the constitution's eleven ethics rulings, and the Constitution's
+  ethics text 1.3 that replaces it is landing in CIRISAgent now (CIRISAgent#1252).
 reviewStatus: >-
   July 2026 smoke battery (agent 2.9.x): 50 of 50 selected unit tests passed. August
   review: storefront and then-published CC fused identity, pipeline, and traces into
