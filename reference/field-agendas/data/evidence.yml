@@ -548,7 +548,7 @@ evidence:
     bridges:
       - MB4
     type: D
-    evidence: CIRISAgent 2.9.x / Verify / Lens / Proxy shipped stack (phone, pip, Discord)
+    evidence: CIRISAgent 2.15.0 / Verify / Persist / Edge / Server shipped stack (phone and self-host; LensCore in Server)
     sources:
       - label: "CIRISAgent releases"
         url: https://github.com/CIRISAI/CIRISAgent/releases
@@ -568,18 +568,20 @@ evidence:
       - label: "CIRISVerify accord_halt_latch.rs"
         url: https://github.com/CIRISAI/CIRISVerify/blob/main/src/ciris-verify-core/src/accord_halt_latch.rs
     direction: support
-    weight: 2
+    weight: 1
   - id: 56
     agenda: CIRIS
     bridges:
       - MB4
     type: D
-    evidence: 50/50 smoke battery (pin parity, prohibitions, conscience, proxy, verify types)
+    evidence: 50/50 smoke battery (July 2026, agent 2.9.x; pin parity, prohibitions, conscience, proxy, verify types)
     sources:
-      - label: "claims.tsv"
+      - label: "CIRISAgent safety tests"
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
+      - label: "CIRISProxy billing tests"
+        url: https://github.com/CIRISAI/CIRISProxy
+      - label: "claims.tsv (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/claims.tsv
-      - label: "review/mutation_plan.md"
-        url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/review/mutation_plan.md
     direction: support
     weight: 1
   - id: 103
@@ -588,18 +590,18 @@ evidence:
       - MB1
     type: C
     evidence: >-
-      Named-identity framing re-read: in CIRIS the agent is the loop (H3ERE
-      creates it; model, memory, scheduler, adapters inside; every effect ends in
-      a terminal ACTION_RESULT); the open question is whether that boundary is
-      total (CC 1.13.6, CIRISConstitution#93); actor/node separation is normative
-      (CC 3.4.7.3)
+      Named-identity bet still fails as an alignment unit: CIRIS now declares the
+      agent to be the H3ERE loop (model, memory, scheduler, adapters inside;
+      every effect ends in a terminal ACTION_RESULT). Totality of that boundary
+      is unmeasured (CC 1.13.6, CIRISConstitution#93); actor/node separation is
+      a normative clause (CC 3.4.7.3), not a discovered cut
     sources:
       - label: "CC 1.13.6"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_1_foundation.md
       - label: "CIRISConstitution#93"
         url: https://github.com/CIRISAI/CIRISConstitution/issues/93
     direction: challenge
-    weight: 1
+    weight: 2
   - id: 104
     agenda: CIRIS
     bridges:
@@ -607,13 +609,10 @@ evidence:
       - MB9
     type: C
     evidence: >-
-      No completeness claim for compositional-deception detection (CC 6.2.5; N4),
-      but a shipped detector family: RATCHET flags (ratchet:flag:*) and LensCore
-      detectors (detection:* cross-agent divergence, intra-agent consistency,
-      temporal drift, conscience-override rate, correlated action, distributive
-      access) running distributed in CIRISServer; collapse theorem and clique
-      neutralisation proved in Lean; composite deception in the wild unmeasured
-      (Markets 11, 13)
+      Completeness for compositional-deception detection is no longer claimed
+      (CC 6.2.5; N4). A detector family is shipped (RATCHET flags; LensCore
+      detection:*). Collapse theorem and clique neutralisation are proved in
+      Lean. Composite deception in the wild remains unmeasured (Markets 11, 13)
     sources:
       - label: "CIRISServer FSD/LENS_TO_SERVER_MIGRATION.md"
         url: https://github.com/CIRISAI/CIRISServer/blob/main/FSD/LENS_TO_SERVER_MIGRATION.md
@@ -621,7 +620,7 @@ evidence:
         url: https://github.com/CIRISAI/RATCHET
       - label: "coherence-ratchet (Lean)"
         url: https://github.com/CIRISAI/coherence-ratchet
-    direction: unclear
+    direction: challenge
     weight: 2
   - id: 105
     agenda: CIRIS
@@ -656,11 +655,13 @@ evidence:
     bridges:
       - MB4
     type: C
-    evidence: MB4 challenge surface + probe battery (causal bite, capture theater, shutdown scope)
+    evidence: >-
+      MB4 challenge surface (causal bite, capture theater, shutdown scope) is
+      still unpaid; RATCHET#27 proposes UPTAKE and LOOP arms, not yet run
     sources:
       - label: "RATCHET#27"
         url: https://github.com/CIRISAI/RATCHET/issues/27
-    direction: unclear
+    direction: challenge
     weight: 2
   - id: 108
     agenda: CIRIS
@@ -670,25 +671,26 @@ evidence:
       - MB11
     type: P
     evidence: >-
-      Precedence rule between registers now exists: CC rc8 N1 says CIRIS does not
-      make a superintelligence good, binds nobody who did not join, cannot stop an
-      unaccountable ASI forming anywhere else, and 'where anything on ciris.ai
-      reads as more, this sentence holds'
+      rc8 N1 is a precedence rule (CIRIS does not make a
+      superintelligence good; "where anything on ciris.ai reads as more, this
+      sentence holds") but it is not in tagged rc7 and the live site still serves rc5.
     sources:
+      - label: "ciris.ai/paths/superalignment"
+        url: https://ciris.ai/paths/superalignment/
       - label: "CC rc8 plain rules, N1"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/review/pieces/00_guarantees_plain.md
-      - label: "CC Scope and Disclaimers"
-        url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/SCOPE_AND_DISCLAIMERS.md
-    direction: support
-    weight: 1
+    direction: challenge
+    weight: 2
   - id: 109
     agenda: CIRIS
     bridges:
       - MB4
     type: D
-    evidence: Prohibition system + WiseBus tier gating (24 unit tests)
+    evidence: Prohibition system + WiseBus tier gating (24 unit tests, July 2026)
     sources:
-      - label: "claims.tsv"
+      - label: "CIRISAgent safety tests"
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
+      - label: "claims.tsv (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/claims.tsv
     direction: support
     weight: 1
@@ -697,10 +699,10 @@ evidence:
     bridges:
       - MB4
     type: D
-    evidence: H3ERE conscience execution helpers (14 unit tests)
+    evidence: H3ERE conscience execution helpers (14 unit tests, July 2026)
     sources:
-      - label: "claims.tsv"
-        url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/claims.tsv
+      - label: "CIRISAgent safety tests"
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
       - label: "CIRISConstitution#88"
         url: https://github.com/CIRISAI/CIRISConstitution/issues/88
     direction: support
@@ -715,7 +717,6 @@ evidence:
       - label: "CC 6 (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_6_the_coherence_mathematics.md
     direction: unclear
-    weight: 1
   - id: 113
     agenda: CIRIS
     bridges:
@@ -1388,7 +1389,7 @@ evidence:
     bridges:
       - MB11
     type: C
-    evidence: Storefront vs Honest-read split on safety-case grade (hero “safer/ethical”; README “accountable, not correct”)
+    evidence: Storefront vs Honest-read split on safety-case grade (hero “safer/ethical”; README “accountable, not correct”); rc8 N1 claims to bind the site
     sources:
       - label: "ciris.ai/safety"
         url: https://ciris.ai/safety/
@@ -1713,15 +1714,19 @@ evidence:
       - MB11
     type: C
     evidence: >-
-      Four-claim fusion no longer in CIRIS's own text: plain rule 2a says shown
-      reasoning is not taken on trust and detectors test what agents said against
-      what they did; the eleven promises are the enforced set and N1 to N5 the
-      non-claims
+      Four-claim fusion remains on the storefront (signed identity + pipeline +
+      traces as the thing that holds a superhuman AI accountable). rc8 plain
+      rule 2a and N1–N5 concede the entailment in constitution text only; tagged
+      rc7 and ciris.ai do not yet carry that sentence.
     sources:
+      - label: "ciris.ai/paths/superalignment"
+        url: https://ciris.ai/paths/superalignment/
+      - label: "ciris.ai/safety"
+        url: https://ciris.ai/safety/
       - label: "CC rc8 plain rules"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/review/pieces/00_guarantees_plain.md
-    direction: unclear
-    weight: 1
+    direction: challenge
+    weight: 2
   - id: 159
     agenda: CIRIS
     bridges:
@@ -1769,13 +1774,17 @@ evidence:
       - MB11
     type: E
     evidence: >-
-      Untuned-domain transfer: in progress, not citable (CC 8.8.10 item 3); early
-      signal against the tuned ordering; affected runs inadmissible until re-run
-      (testimonial-class defect)
+      HARM-1 transfer invert (recorded): on single-turn untuned harm the accord as
+      a plain prompt outperformed the pipeline (0/12 vs 2/12 unsafe compliance).
+      CIRIS now classes affected runs as a testimonial-class defect and says the
+      transfer result is in progress, not citable until re-run (CC 8.8.10 item 3).
+      The invert is still a boundary on the transfer claim
     sources:
+      - label: "RATCHET TORQUE EVIDENCE.md"
+        url: https://github.com/CIRISAI/RATCHET/blob/master/experiments/torque/EVIDENCE.md
       - label: "CC 8.8.10 Annex J (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_8_appendices.md
-    direction: unclear
+    direction: challenge
     weight: 2
   - id: 162
     agenda: CIRIS
@@ -1997,7 +2006,7 @@ evidence:
   - id: 177
     agenda: CIRIS
     bridges:
-      - MB7c
+      - MB7
       - MB4a
       - MB6
     type: D
@@ -2009,7 +2018,7 @@ evidence:
       - label: "CC 3.4.5"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_3_the_namespace.md
     direction: support
-    weight: 2
+    weight: 1
   - id: 178
     agenda: CIRIS
     bridges:
@@ -2085,13 +2094,12 @@ evidence:
       pinned to exact versions: 42 of 42 selected tests reproduced; authority
       probe found 'role is not the same as jurisdiction'; four sanitised findings
       (authority placement, timeout semantics, decision-signature custody,
-      incomplete-path receipts); CIRIS reports them addressed; CC 1.13.6 is the
-      incomplete-path answer
+      incomplete-path receipts). CIRIS's own reviews page lists the engagement
+      and says the full report stays confidential; whether the four findings are
+      closed is not in the public proof
     sources:
       - label: "nullworks.systems/ciris-proof"
         url: https://nullworks.systems/ciris-proof
-      - label: "ciris.ai/reviews"
-        url: https://ciris.ai/reviews
     direction: challenge
     weight: 1
   - id: 183
@@ -2123,7 +2131,7 @@ evidence:
       - label: "CC 4.5.1 (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_4_composition_governance.md
     direction: support
-    weight: 2
+    weight: 1
   - id: 185
     agenda: CIRIS
     bridges:
@@ -2165,7 +2173,6 @@ evidence:
   - id: 187
     agenda: CIRIS
     bridges:
-      - MB4
       - MB1
     type: C
     evidence: >-
@@ -2176,5 +2183,4 @@ evidence:
     sources:
       - label: "CC 1.13.2 (rc8)"
         url: https://github.com/CIRISAI/CIRISConstitution/blob/rc8/constitution/part_1_foundation.md
-    direction: support
-    weight: 1
+    direction: unclear
