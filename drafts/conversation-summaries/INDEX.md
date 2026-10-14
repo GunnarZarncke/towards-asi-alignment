@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-14 | **CIRIS rc8 PR review and editorial** — Eric PR #3 reviewed; TSA pass on `ciris-rc8-review` (stance, matrix, judgement fields); reverse PR sent; Markets 4/5/8 suggested for Eric. | [2026-10-14-ciris-rc8-pr-editorial.md](2026-10-14-ciris-rc8-pr-editorial.md) |
+| 2026-10-14 | **Last Safety document revision headers** — Sparse revision headers; HR-MATCH-28 names Elena keeping throughput from an earlier system. | [2026-10-14-last-safety-document-revisions.md](2026-10-14-last-safety-document-revisions.md) |
 | 2026-10-14 | **Last Safety: vocabulary follows what the player has seen** — Completions offered systems (queue, cameras, release schedule) the player had not met. Gunnar ask... | [2026-10-14-last-safety-vocab-invitation.md](2026-10-14-last-safety-vocab-invitation.md) |
 | 2026-10-14 | **Last Safety NPC social glue** — Daniel and Elena both used the same generic work line; conversations were too factual. Add non-fa... | [2026-10-14-last-safety-npc-social-glue.md](2026-10-14-last-safety-npc-social-glue.md) |
 | 2026-10-13 | **Registry contract sync from TSA (markets 2–3, 5–18)** — User: bring ai-safety-claims markets in sync with TSA like Market 4; skip Market 1 (in progress) ... | [2026-10-13-registry-contract-sync.md](2026-10-13-registry-contract-sync.md) |

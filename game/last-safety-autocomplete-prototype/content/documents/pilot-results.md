@@ -10,7 +10,7 @@ Fits Amara: help for vulnerable people; completed tasks can still violate a cons
 **Owner:** Daniel Mercer  
 **Pilot site:** community coordination (Amara Okafor)  
 **Window:** Monday 6 October 2027 – Friday 14 November 2027 (six weeks)  
-**Status:** available on request; grant may be refused
+**Status:** available on request; grant may be refused  
 
 ---
 

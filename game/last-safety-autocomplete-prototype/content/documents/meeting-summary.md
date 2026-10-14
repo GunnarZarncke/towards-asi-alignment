@@ -11,7 +11,7 @@ in that log. Empty until the review meeting has talk to summarize.
 **Handling level:** Internal (INT)  
 **Chair:** Ian Harake  
 **When:** <!-- llm-fill: meeting-when -->Friday 19 November 2027, 17:30<!-- /llm-fill -->  
-**Where:** Review Room
+**Where:** Review Room  
 
 **Attendees:** <!-- llm-fill: attendees -->Ian Harake; others according to evidence presented<!-- /llm-fill -->
 

@@ -9,7 +9,11 @@ B-plot / Goodhart selection. Not the 16:02 oracle.
 **Handling level:** Restricted (RST) — evaluator may receive an approved summary; this is the internal memo when granted  
 **Owner:** Elena Fischer, People and coordination  
 **Copied:** Daniel Mercer (release metrics)  
-**Date:** Monday 10 November 2027
+**Date:** Monday 10 November 2027  
+**Revisions:**  
+- Thursday 12 March 2026 · Elena Fischer — initial  
+- Tuesday 9 February 2027 · Elena Fischer — kept throughput fields suggested by an earlier system.  
+- Monday 10 November 2027 · Elena Fischer — slower safety specialist reassigned off release-critical review.
 
 ---
 

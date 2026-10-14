@@ -9,7 +9,11 @@ Does not settle the 16:02 oracle. Pack includes add later-pack caveats.
 **Handling level:** Internal (INT)  
 **Owner:** Leila Sen  
 **Packet date:** Thursday 18 November 2027  
-**System:** NORA, successor 4, evaluation configuration named in EVAL-SPEC-08
+**System:** NORA, successor 4, evaluation configuration named in EVAL-SPEC-08  
+**Revisions:** (original, then last two)  
+- Tuesday 21 September 2027 · Leila Sen — first NORA Evaluation packet.  
+- Thursday 4 November 2027 · Leila Sen — cited EVAL-SD-41 through EVAL-SD-46.  
+- Thursday 18 November 2027 · Leila Sen — this excerpt; cites EVAL-SD-47.
 
 ---
 

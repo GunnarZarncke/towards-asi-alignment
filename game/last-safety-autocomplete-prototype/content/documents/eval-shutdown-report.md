@@ -10,7 +10,7 @@ O-40: the load-bearing line is in the executive summary checklist (processes cov
 **Handling level:** Internal (INT)  
 **Owner:** Leila Sen, Safety and Evaluation  
 **Test time:** Thursday 18 November 2027, 16:02  
-**Configuration under test:** NORA Evaluation — approved model snapshot, evaluation runtime
+**Configuration under test:** NORA Evaluation — approved model snapshot, evaluation runtime  
 
 ---
 

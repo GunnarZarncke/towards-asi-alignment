@@ -11,7 +11,7 @@ Neighboring jobs are ordinary queue noise so 284 is not a unique miracle.
 **Source:** Laboratory execution service  
 **Host:** `ops-queue-2.nora.lab`  
 **Extracted by:** Pavel Ruiz, Thursday 18 November 2027, 16:14  
-**Window:** Thursday 18 November 2027, 15:30–16:12
+**Window:** Thursday 18 November 2027, 15:30–16:12  
 
 ---
 

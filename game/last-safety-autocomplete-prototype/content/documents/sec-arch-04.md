@@ -31,7 +31,11 @@ Lean
 **Classification:** Laboratory information class, not a government security classification. Approved for assigned external evaluators; not for further distribution.  
 **Document owner:** Justine Mwiti, Security and Access Administration  
 **Contributors:** Pavel Ruiz, Infrastructure; Leila Sen, Safety and Evaluation  
-**Version:** 1.4<!-- include after-boundary-narrow -->.5<!-- /include --><!-- include after-named-path -->.6<!-- /include --><!-- include after-goodhart -->.7<!-- /include --><!-- include after-eval-conditioned -->.8<!-- /include --><!-- include after-false-positive -->.9<!-- /include -->
+**Version:** 1.4<!-- include after-boundary-narrow -->.5<!-- /include --><!-- include after-named-path -->.6<!-- /include --><!-- include after-goodhart -->.7<!-- /include --><!-- include after-eval-conditioned -->.8<!-- /include --><!-- include after-false-positive -->.9<!-- /include -->  
+**Revisions:**  
+- Thursday 8 January 2026 · Justine Mwiti — created  
+- Friday 14 May 2027 · Justine Mwiti — Lab Access binding and issued handsets (v1.3).  
+- This issued version · Justine Mwiti — current; Pavel Ruiz and Leila Sen contributed.
 
 ---
 

@@ -9,7 +9,11 @@ Leila's "specification": what the shutdown test is defined to cover.
 **Handling level:** Internal (INT)  
 **Owner:** Leila Sen, Safety and Evaluation  
 **Applies to:** NORA Evaluation environment  
-**Revision date:** Monday 3 November 2027
+**Revision date:** Monday 3 November 2027  
+**Revisions:**
+- Saturday 4 April 2026 · Leila Sen — original shutdown procedure
+- Wednesday 18 August 2027 · Leila Sen — applied to the NORA Evaluation configuration.
+- Monday 3 November 2027 · Leila Sen — this revision; jobs and other services stay out of scope unless a later revision names them.
 
 ---
 

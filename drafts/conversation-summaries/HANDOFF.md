@@ -2,11 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-14 (Last Safety NPC social glue).
+Last updated: 2026-10-14 (CIRIS rc8 field PR editorial).
 
 ---
 
 ## Open work
+
+**CIRIS field catalog (Eric PR):** Inbound [#3](https://github.com/GunnarZarncke/towards-asi-alignment/pull/3) (`emooreatx:ciris-rc8-update`) not merged as-is. TSA editorial on `origin/ciris-rc8-review` (`525d5e572`); reverse PR to Eric’s branch sent 2026-10-14. Blocked on Eric merge/reply; then merge to `main` and `cd site && npm run sync:field-agendas`. Log: `2026-10-14-ciris-rc8-pr-editorial.md`.
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
@@ -20,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-14:** **Last Safety document revision headers** — Sparse **Revisions** headers on key sources (HR-MATCH-28, shutdown spec, safety-case excerpt, SEC-ARCH-11); not on every catalog doc. HR-MATCH-28 names Elena keeping throughput fields from an earlier system. No engine change. Log: `2026-10-14-last-safety-document-revisions.md`.
 - **2026-10-14:** **Last Safety NPC social glue** — Opening, optional mid, and closing non-fact lines from the Person/status layer (`CONFIG.GLUE`, per-NPC YAML). Work replies use agenda/`glue.work` instead of a shared shrug. Log: `2026-10-14-last-safety-npc-social-glue.md`.
 - **2026-10-14:** **Last Safety vocabulary** — Invitation facts and Ian’s briefing are the early `know` rows. Entity ids enter only from a held fact, a heard line, a person in the room, or the handed calendar. Log: `2026-10-14-last-safety-vocab-invitation.md`.
 - **2026-10-13:** **Last Safety text console and overlay UI** — `npm run text` and `/text.html` play the same session in words, printing only what changed (`spec/text-console.md`); the room view now fills the window with overlays, follows the player sideways on phones, and shows debug panels only with `?test=1`. Committed `0be3cd7e8`. Log: `2026-10-13-last-safety-text-console-overlay-ui.md`.
