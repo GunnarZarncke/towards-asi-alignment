@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-13T04:40:04.081Z",
+  "generatedAt": "2026-10-14T21:26:14.438Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -939,7 +939,7 @@
     {
       "title": "CIRIS",
       "type": "agenda",
-      "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?",
+      "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included? CIRIS answers that the agent is the loop (H3ERE creates it; model, memory, scheduler and adapters are inside; every effect ends in a terminal ACTION_RESULT). That moves the crux to whether the declared boundary is total (CC 1.13.6, CIRISConstitution#93) and whether an authorised correction reaches later policy; the boundary is declared, not discovered, and humans and incentives outside H3ERE remain outside it. Both tests are proposed as preregistered studies (RATCHET#27 UPTAKE and LOOP), not run.",
       "url": "/cards/agenda/ciris/"
     },
     {
