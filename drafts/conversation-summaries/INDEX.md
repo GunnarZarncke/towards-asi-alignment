@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety photo pipeline and transcript collapse** — JPEG saves, valid image gate, WebGL capture, dock collapse UX. | [2026-10-15-last-safety-photo-transcript-fixes.md](2026-10-15-last-safety-photo-transcript-fixes.md) |
 | 2026-10-15 | **Last Safety handset UI, photo viewer, notices** — HUD chips, room Photo, image viewer API, notice clearing, NPC work voice. | [2026-10-15-last-safety-handset-ui-photo-notices.md](2026-10-15-last-safety-handset-ui-photo-notices.md) |
 | 2026-10-15 | **Last Safety notebook dialog and free notes** — Drop sidebar Notebook; prompt new facts → Notes; notes cost no fuel. | [2026-10-15-last-safety-notebook-dialog-free-notes.md](2026-10-15-last-safety-notebook-dialog-free-notes.md) |
 | 2026-10-15 | **Last Safety room UI and mobile handset** — Transcript dock, mobile chat collapse, handset dismiss and unread UX, completions/tab-complete. | [2026-10-15-last-safety-room-ui-mobile.md](2026-10-15-last-safety-room-ui-mobile.md) |

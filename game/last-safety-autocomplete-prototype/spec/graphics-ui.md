@@ -89,7 +89,7 @@ The room view fills the window. Everything else floats over it:
 
 - floating overlay chips (not a full-width bar): room title; act then clock and fuel; Map, Lab Access, and menu (save, load, reset, text version);
 - when the engine adds a new learned fact, a short dialog offers to copy it into the handset Notes app (doors, records, and the 3D room already cover navigation and evidence; only “what you know” needed this path);
-- bottom transcript dock (no panel chrome): recent talk flush left above an auto-growing composer, addressee chips and suggestion chips just above the input, the More link when enabled;
+- bottom transcript dock (no panel chrome): recent talk flush left above an auto-growing composer, addressee chips and suggestion chips just above the input, the More link when enabled; the scrollback and chips stay hidden until the composer is focused (tap the input or the dock to expand; a tap outside the dock—or keyboard focus leaving the dock—collapses it again, without hiding chips before a suggestion or Show more click lands);
 - thought bubble and ending card near the top.
 
 On a viewport narrower than the room (a phone held upright), the canvas is at least 1.5 × the viewport height wide and scrolls sideways. Each frame the renderer reports the player's screen position (`RoomRenderer.playerScreen()`, `onFrame`) and the page keeps the player near the middle. A manual swipe or wheel pauses the follow for a few seconds.

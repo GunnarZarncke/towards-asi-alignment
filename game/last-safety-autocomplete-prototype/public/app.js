@@ -3,6 +3,7 @@ import { getCandidates, insertFragment, localPrefixParse } from '/grammar.js';
 import { buildSceneView, mountScene } from './render/scene-view.mjs';
 import { ROOM_META, VISITOR_CLEARANCE } from './render/rooms.mjs';
 import { closeFloorplan, floorplanNotice, floorplanOpen, openFloorplan, syncFloorplan } from './render/floorplan-view.mjs';
+import { encodePhotoCanvas } from './photo-export.mjs';
 
 const $ = id => document.getElementById(id);
 let state = null;
@@ -40,29 +41,18 @@ let userScrollAt = 0;
 let chatExpanded = false;
 const narrowMq = matchMedia('(max-width: 720px)');
 
-function narrowLayout() {
-  return narrowMq.matches && !phoneOpen;
-}
-
 function syncTranscriptChrome() {
-  const collapsed = narrowLayout() && !chatExpanded;
-  document.body.classList.toggle('transcript-collapsed', collapsed);
-  document.body.classList.toggle('transcript-expanded', narrowLayout() && chatExpanded);
+  document.body.classList.toggle('transcript-collapsed', !chatExpanded);
+  document.body.classList.toggle('transcript-expanded', narrowMq.matches && chatExpanded);
 }
 
 function collapseChat() {
-  if (!narrowLayout()) return;
   chatExpanded = false;
-  $('utterance')?.blur();
+  if (document.activeElement === $('utterance')) $('utterance')?.blur();
   syncTranscriptChrome();
 }
 
 function expandChat(focusInput = true) {
-  if (!narrowLayout()) {
-    chatExpanded = true;
-    syncTranscriptChrome();
-    return;
-  }
   chatExpanded = true;
   syncTranscriptChrome();
   if (focusInput) $('utterance')?.focus({ preventScroll: true });
@@ -474,22 +464,28 @@ async function captureRoomPhoto() {
     return;
   }
   const stamp = String(state.clock?.timeLabel || 'shot').replace(':', '');
-  const rel = `photos/room-${stamp}.png`;
+  const rel = `photos/room-${stamp}.jpg`;
   const name = `Room ${state.clock?.timeLabel || stamp}`;
   try {
-    const png = cropped.toDataURL('image/png');
+    const { dataUrl } = encodePhotoCanvas(cropped);
     const data = await api('tool', {
       tool: 'file.write',
       rel,
       name,
-      text: png,
+      text: dataUrl,
       kind: 'image',
     });
+    if (data.result?.ok === false) throw Error(data.result.reason || 'Could not save photo.');
     state = data.state;
     autosave();
     setPhotoMode(false);
     $('phoneFrame').contentWindow?.postMessage(
-      { source: 'lsr-room', type: 'photo-saved', rel, file: { name, rel, kind: 'image', owned: true, text: png } },
+      {
+        source: 'lsr-room',
+        type: 'photo-saved',
+        rel,
+        file: { name, rel, kind: 'image', owned: true, text: dataUrl, href: `/api/handset-file?rel=${encodeURIComponent(rel)}` },
+      },
       location.origin,
     );
     refreshPhone();
@@ -848,19 +844,21 @@ async function setCamera(mode) {
   renderScenePanel();
 }
 
-$('transcriptDock').addEventListener('focusin', () => expandChat(false));
-$('transcriptDock').addEventListener('pointerdown', e => {
-  if (!narrowLayout()) return;
-  if (e.target.closest('.dock-input, #suggestions, .suggestion, #showMore, .transcript-scroll')) {
-    expandChat(e.target.id === 'utterance' || e.target.closest('#utterance'));
-  }
-});
+$('transcriptDock').addEventListener(
+  'pointerdown',
+  e => {
+    if (e.target.closest('#utterance')) return;
+    if (e.target.closest('.transcript-scroll, .dock-npc, #suggestions, .suggestion, #showMore, .dock-input, #send')) {
+      expandChat(e.target.closest('#utterance') != null);
+    }
+  },
+  true,
+);
 $('roomMount').addEventListener('pointerdown', () => collapseChat(), { capture: true });
 document.addEventListener(
   'pointerdown',
   e => {
-    if (!narrowLayout()) return;
-    if (e.target.closest('#transcriptDock, #phoneOverlay, #phoneBtn, .hud-layer')) return;
+    if (e.target.closest('#transcriptDock, #phoneOverlay, #phoneBtn')) return;
     collapseChat();
   },
   true,
@@ -916,6 +914,14 @@ narrowMq.addEventListener('change', () => {
   } else syncTranscriptChrome();
 });
 $('utterance').addEventListener('focus', () => expandChat(false));
+$('transcriptDock').addEventListener('focusout', e => {
+  const dock = $('transcriptDock');
+  if (e.relatedTarget && dock.contains(e.relatedTarget)) return;
+  requestAnimationFrame(() => {
+    if (dock.contains(document.activeElement)) return;
+    collapseChat();
+  });
+});
 $('utterance').addEventListener('input', typed);
 $('utterance').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {

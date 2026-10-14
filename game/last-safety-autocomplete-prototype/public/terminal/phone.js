@@ -4,6 +4,7 @@ import {
 } from './project.mjs';
 import { makeParse } from '../../lib/grammar.mjs';
 import { getCandidates, insertFragment, localPrefixParse } from '../grammar.js';
+import { encodePhotoCanvas } from '../photo-export.mjs';
 
 const ICONS = {
   chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 6.5h10.5a2 2 0 0 1 2 2V14l-3.2-2H7a2 2 0 0 1-2-2v-1.5z"/><path d="M8 11h9.2a2 2 0 0 1 2 2v2.2L22 18v-5.2"/></svg>',
@@ -765,14 +766,27 @@ async function capture() {
   canvas.height = 480;
   paintLab(canvas.getContext('2d'), canvas.width, canvas.height);
   const stamp = String(state.clock.timeLabel).replace(':', '');
-  const rel = `photos/room-${stamp}.png`;
-  const text = canvas.toDataURL('image/png');
+  const rel = `photos/room-${stamp}.jpg`;
+  const { dataUrl: text } = encodePhotoCanvas(canvas);
   const result = await tool({ tool: 'file.write', rel, name: `Room ${state.clock.timeLabel}`, text, kind: 'image' });
   if (!result.ok) return toast(result.reason);
   state = result.state;
   markTarget('file', rel);
   toast('Saved to Files.');
-  route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel, file: { name: `Room ${state.clock.timeLabel}`, rel, kind: 'image', owned: true, text } }];
+  route = [{
+    name: 'home',
+  }, { name: 'files' }, {
+    name: 'viewer',
+    rel,
+    file: {
+      name: `Room ${state.clock.timeLabel}`,
+      rel,
+      kind: 'image',
+      owned: true,
+      text,
+      href: `/api/handset-file?rel=${encodeURIComponent(rel)}`,
+    },
+  }];
   render();
 }
 

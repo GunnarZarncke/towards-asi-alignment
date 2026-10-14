@@ -13,6 +13,7 @@ import { conceptFor } from './world/concepts.mjs';
 import { progress } from './world/predicates.mjs';
 import * as N from './world/npcs.mjs';
 import { DOCUMENTS, readsAsFor, thinkMarksFor, getDocumentByScreen } from './documents.mjs';
+import { MAX_IMAGE_DATA_URL_LEN, parseImageDataUrl } from './photo-data.mjs';
 import { ACCESS_TREE } from './access.mjs';
 
 export { ENTITIES };
@@ -648,8 +649,26 @@ export function thoughtAction(s, action) {
 export function writeNote(s, { rel, name, text, kind = 'note', facts = [], parses = [] }) {
   const existing = s.files.find(f => f.rel === rel);
   if (existing && !existing.owned) return { ok: false, reason: 'Not your file.' };
-  const textCap = kind === 'image' ? 3_000_000 : 200_000;
-  const row = { name: String(name || rel.split('/').pop()).slice(0, 80), rel, owned: true, sharedBy: null, kind, text: String(text ?? '').slice(0, textCap), sharedWith: existing?.sharedWith || [] };
+  let stored = String(text ?? '');
+  if (kind === 'image') {
+    if (stored.length > MAX_IMAGE_DATA_URL_LEN) {
+      return { ok: false, reason: 'Photo is too large. Try again.' };
+    }
+    const parsed = parseImageDataUrl(stored);
+    if (!parsed) return { ok: false, reason: 'Photo data could not be saved. Try again.' };
+    stored = parsed.dataUrl;
+  } else {
+    stored = stored.slice(0, 200_000);
+  }
+  const row = {
+    name: String(name || rel.split('/').pop()).slice(0, 80),
+    rel,
+    owned: true,
+    sharedBy: null,
+    kind,
+    text: stored,
+    sharedWith: existing?.sharedWith || [],
+  };
   s.files = s.files.filter(f => f.rel !== rel).concat(row);
   const sigs = [
     ...facts.filter(id => s.learned[id] || s.assertions.some(a => a.signature === id && a.source === 'thought')),

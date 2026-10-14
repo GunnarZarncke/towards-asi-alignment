@@ -7,6 +7,7 @@ import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
 import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads } from '../game.mjs';
+import { parseImageDataUrl } from '../photo-data.mjs';
 
 export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.share', 'dm.send', 'dm.read', 'access.request']);
 const DENIED = new Set(['board.post', 'board.read', 'pipeline.trigger_step', 'handle.invoke', 'state.save', 'state.load']);
@@ -28,10 +29,9 @@ export function handsetMediaPayload(s, rel) {
   if (!r || !r.startsWith('photos/')) return null;
   const f = s.files.find(x => x.rel === r);
   if (!f || !f.owned) return null;
-  const raw = String(f.text || '');
-  const m = /^data:image\/([\w+.-]+);base64,(.+)$/s.exec(raw);
-  if (!m) return null;
-  return { mime: `image/${m[1]}`, body: Buffer.from(m[2], 'base64') };
+  const parsed = parseImageDataUrl(f.text);
+  if (!parsed) return null;
+  return { mime: `image/${parsed.mime}`, body: parsed.body };
 }
 
 function fileKind(rel) {

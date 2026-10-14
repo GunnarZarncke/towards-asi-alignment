@@ -13,6 +13,10 @@ import { P, startedSession, say, dm, idle, commit, walk, applyAction, clientStat
 
 const ORACLE_KEYS = ['records', 'policies', 'goals', 'explanations', 'eliminate', 'role_rules', 'knowledge'];
 
+function samplePhotoDataUrl() {
+  return `data:image/jpeg;base64,${Buffer.alloc(320, 0xcd).toString('base64')}`;
+}
+
 const ID_MAPS = new Set(['entities', 'discoveredAt']);
 
 function keysOf(v, out = new Set()) {
@@ -68,25 +72,24 @@ test('notes cost no fuel; photos still do', () => {
   const note = applyAction(s, 'tool', { tool: 'file.write', rel: 'notes/scratch.txt', name: 'Scratch', text: 'memo', kind: 'note' });
   assert.equal(note.ok, true);
   assert.equal(s.fuel, fuel);
-  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/snap.png', name: 'Snap', text: 'data:image/png,x', kind: 'image' });
+  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/snap.jpg', name: 'Snap', text: samplePhotoDataUrl(), kind: 'image' });
   assert.ok(s.fuel < fuel);
 });
 
 test('owned photos list with href only and decode for the handset viewer', () => {
   const s = startedSession();
-  const b64 = Buffer.from('png-bytes').toString('base64');
-  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/room-0958.png', name: 'Room 09:58', text: `data:image/png;base64,${b64}`, kind: 'image' });
-  const row = terminalState(s).files.find(f => f.rel === 'photos/room-0958.png');
+  applyAction(s, 'tool', { tool: 'file.write', rel: 'photos/room-0958.jpg', name: 'Room 09:58', text: samplePhotoDataUrl(), kind: 'image' });
+  const row = terminalState(s).files.find(f => f.rel === 'photos/room-0958.jpg');
   assert.equal(row.kind, 'image');
   assert.equal(row.text, undefined);
-  assert.match(row.href, /handset-file\?rel=photos%2Froom-0958.png/);
-  const read = applyAction(s, 'tool', { tool: 'file.read', rel: 'photos/room-0958.png' });
+  assert.match(row.href, /handset-file\?rel=photos%2Froom-0958.jpg/);
+  const read = applyAction(s, 'tool', { tool: 'file.read', rel: 'photos/room-0958.jpg' });
   assert.equal(read.file.kind, 'image');
   assert.equal(read.file.text, undefined);
   assert.ok(read.file.href);
-  const media = handsetMediaPayload(s, 'photos/room-0958.png');
-  assert.equal(media.mime, 'image/png');
-  assert.equal(media.body.toString(), 'png-bytes');
+  const media = handsetMediaPayload(s, 'photos/room-0958.jpg');
+  assert.equal(media.mime, 'image/jpeg');
+  assert.equal(media.body.length, 320);
 });
 
 test('go costs fuel and clock; inspect is free and room-bound', () => {

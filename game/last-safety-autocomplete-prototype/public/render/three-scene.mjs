@@ -71,7 +71,7 @@ export class RoomRenderer {
     this.chip.onclick = () => this.select('player');
     container.replaceChildren(this.root);
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
@@ -556,6 +556,8 @@ export class RoomRenderer {
 
   /** Crop the current frame to a viewport rectangle (DOMRect / getBoundingClientRect). */
   captureRect(viewportRect) {
+    if (!this.room) return null;
+    this.renderer.render(this.scene, this.camera);
     const canvas = this.renderer.domElement;
     const bb = canvas.getBoundingClientRect();
     if (bb.width < 1 || bb.height < 1) return null;

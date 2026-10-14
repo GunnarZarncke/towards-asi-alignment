@@ -81,7 +81,7 @@ New note: title field, body as one unformatted text area. The body composer is t
 
 **Photo**
 
-The finder is the current room camera from graphics, shown inside the phone. Pan and zoom are presentation only (they do not move the player in the room). Capture writes an image file the player owns. Open it later in the image viewer (`file.read` returns a `href`; the game serves bytes at `GET /api/handset-file?rel=photos/...` so terminal JSON stays small). Photo does not grant camera-archive access in Security Control.
+The finder is the current room camera from graphics, shown inside the phone. Pan and zoom are presentation only (they do not move the player in the room). Capture downscales to a JPEG (max about 720×960) before `file.write` so saves stay within server limits. Open it later in the image viewer (`file.read` returns a `href`; the game serves bytes at `GET /api/handset-file?rel=photos/...` so terminal JSON stays small). Invalid or truncated image data is rejected at write time. Photo does not grant camera-archive access in Security Control.
 
 **Settings (easy set, until a longer list is needed)**
 
