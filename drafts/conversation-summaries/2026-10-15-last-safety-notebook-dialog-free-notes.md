@@ -27,7 +27,7 @@ Remove the redundant room Notebook drawer (doors, records, knowledge strip dupli
 - `game/last-safety-autocomplete-prototype/lib/world/terminal-host.mjs` — fuel on `file.write`
 
 ## Commits
-- `(pending)` Last Safety: drop notebook drawer, fact-to-Notes prompt, free note saves.
+- `00b71df9c` Last Safety: notebook dialog for new facts and free note saves.
 
 ## Verification
 - `cd game/last-safety-autocomplete-prototype && npm test` — 94 pass.
