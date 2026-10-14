@@ -599,15 +599,23 @@ rows:
             - 103
             - 104
             - 106
+            - 175
+            - 186
         - type: D
           ids:
             - 105
-      MB2: []
+            - 183
+            - 185
+      MB2:
+        - type: E
+          ids:
+            - 181
       MB3: []
       MB4:
         - type: C
           ids:
             - 107
+            - 186
         - type: D
           ids:
             - 54
@@ -617,7 +625,7 @@ rows:
           ids:
             - 109
             - 110
-            - 111
+            - 185
         - type: P
           ids:
             - 108
@@ -625,15 +633,24 @@ rows:
           ids:
             - 160
             - 161
+            - 182
       MB4a:
         - type: C
           ids:
             - 107
+            - 175
         - type: D
           ids:
             - 109
             - 110
-            - 111
+            - 177
+            - 178
+        - type: P
+          ids:
+            - 184
+        - type: E
+          ids:
+            - 182
       MB5: []
       MB6:
         - type: P
@@ -642,10 +659,15 @@ rows:
         - type: C
           ids:
             - 113
+        - type: D
+          ids:
+            - 177
       MB7:
         - type: D
           ids:
             - 114
+            - 177
+            - 178
         - type: C
           ids:
             - 115
@@ -655,6 +677,11 @@ rows:
           ids:
             - 159
             - 162
+            - 176
+            - 179
+        - type: P
+          ids:
+            - 180
       MB7d: []
       MB8: []
       MB9:
@@ -663,18 +690,24 @@ rows:
             - 104
             - 117
             - 159
+            - 179
       MB10: []
       MB11:
         - type: C
           ids:
             - 130
             - 158
+            - 176
         - type: P
           ids:
             - 108
+            - 180
         - type: E
           ids:
             - 161
+        - type: D
+          ids:
+            - 185
     slug: ciris
   - agenda: GovAI / UK AISI
     cells:
