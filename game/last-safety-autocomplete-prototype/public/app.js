@@ -1128,6 +1128,7 @@ $('reset').onclick = async () => {
   resetNotebookTracking();
   try { localStorage.removeItem(SAVE_KEY); } catch { /* ignore */ }
   render();
+  showIntro();
 };
 $('phoneBtn').onclick = () => setPhone(!phoneOpen);
 $('notebookAdd').onclick = () => confirmNotebookPrompt();
@@ -1160,6 +1161,12 @@ for (const btn of document.querySelectorAll('[data-act]'))
     renderScenePanel();
   };
 
+function showIntro() {
+  $('intro').hidden = false;
+  $('introStart').focus();
+}
+$('introStart').onclick = () => { $('intro').hidden = true; $('utterance')?.focus(); };
+
 try {
   await initRenderer();
   state = await api('state');
@@ -1167,7 +1174,10 @@ try {
   const saved = !uiHarness && (() => { try { return localStorage.getItem(SAVE_KEY); } catch { return null; } })();
   const fresh = !state.labAccessActive && (state.previous || []).length === 0;
   if (saved && fresh && JSON.parse(saved).events?.some(e => e.kind === 'action')) await loadSave(saved);
-  else render();
+  else {
+    render();
+    if (!uiHarness && fresh) showIntro();
+  }
 } catch (e) {
   document.body.innerHTML = `<main style="padding:30px;font-family:sans-serif"><h2>Unable to connect to local server</h2><p>${esc(e.message)}</p><p class="muted">Run <code>npm run dev:ui</code> for the graphics harness or <code>npm start</code> for the full prototype.</p></main>`;
 }

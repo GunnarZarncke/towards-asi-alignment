@@ -98,7 +98,7 @@ export const ROOM_NOTES = Object.freeze({
   },
   control_card: {
     room: 'security', title: 'CCTV in progress',
-    body: 'The cameras see everything.\nThe tape is ok.\nI asked to see it.',
+    body: '<pen>The cameras see everything.\nThe tape is ok.\nI asked to see it.</pen>',
   },
 });
 

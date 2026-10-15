@@ -97,3 +97,9 @@ body.photo-mode .room3d-overlay,body.photo-mode .room3d-chip,body.photo-mode .ro
 .imprint-dialog{max-width:min(520px,92vw);max-height:86vh;overflow:auto;border:1px solid #dce4e0;border-radius:14px;padding:18px 22px;font-size:13px;line-height:1.5;color:#1a2c35;box-shadow:0 12px 40px #182a2544}
 .imprint-dialog h2{margin:0 0 4px;font-size:18px}
 .imprint-dialog::backdrop{background:#182a2566}
+.intro-scrim{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:16px;background:#182a25cc;backdrop-filter:blur(4px)}
+.intro-scrim[hidden]{display:none}
+.intro-card{max-width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 16px 50px #182a2566;font-size:14px;line-height:1.55;color:#1a2c35}
+.intro-card h2{margin:6px 0 10px;font-size:22px;letter-spacing:-.4px}
+.intro-card p{margin:8px 0}.intro-card ul{margin:10px 0 16px;padding-left:20px}.intro-card li{margin:6px 0}
+.intro-start{padding:10px 18px}

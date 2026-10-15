@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety start screen** — Pre-play modal: evaluator role, NORA review, short-notice framing; fresh boot and reset only. | [2026-10-15-last-safety-start-screen.md](2026-10-15-last-safety-start-screen.md) |
 | 2026-10-15 | **Last Safety impressum / About** — Bottom-right link; German provider block, AI/fiction disclaimer, UI credits. | [2026-10-15-last-safety-impressum.md](2026-10-15-last-safety-impressum.md) |
 | 2026-10-15 | **Last Safety onboarding hints** — Composer and Lab Access bubbles; one mechanic note per room without a screen, in the 3D view and the text console. | [2026-10-15-last-safety-onboarding-hints.md](2026-10-15-last-safety-onboarding-hints.md) |
 | 2026-10-15 | **Last Safety ending reachability** — O-29 witness tests for six `(arc, addOn)` endings; `npm run test:endings`. | [2026-10-15-last-safety-ending-reachability.md](2026-10-15-last-safety-ending-reachability.md) |
