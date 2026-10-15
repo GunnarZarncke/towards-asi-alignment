@@ -23,5 +23,8 @@ Prompts: paraphrase only (no prompt id).
 - `game/last-safety-autocomplete-prototype/public/render/three-scene.mjs`
 - `game/last-safety-autocomplete-prototype/public/app.js`
 
+## Verification
+- `npm test` in `game/last-safety-autocomplete-prototype` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
+
 ## Commits
-- (filled after commit)
+- `d96576a27` Last Safety: public-hosting hardening and NPC click addressee.

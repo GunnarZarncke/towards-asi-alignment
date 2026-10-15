@@ -32,4 +32,4 @@ Prompts: paraphrase only (no prompt id). User asked for a safety review of the g
 - Demo server on port 3917: `curl /nope.html` → `{"error":"Not found."}`; bad JSON POST → `{"error":"Bad request."}`; CSP header present. Headless Chrome loaded `/`, `/text.html`, `/terminal/index.html` with no CSP violations in the console log.
 
 ## Commits
-- None (not asked).
+- `d96576a27` Last Safety: public-hosting hardening and NPC click addressee. (Bundled with NPC click fix from a later turn in the same commit.)
