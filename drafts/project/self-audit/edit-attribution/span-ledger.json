@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261013T030138.871Z",
+  "_as_of": "20261014T235410.938Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -27,6 +27,30 @@
   "appendices/appB-bridge-crosswalk.tex#5": {
     "agent": 8,
     "file": "appendices/appB-bridge-crosswalk.tex",
+    "human": 0,
+    "index": 5,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "appendices/appC-institutional-translation.tex#12": {
+    "agent": 1,
+    "file": "appendices/appC-institutional-translation.tex",
+    "human": 0,
+    "index": 12,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "appendices/appC-institutional-translation.tex#22": {
+    "agent": 2,
+    "file": "appendices/appC-institutional-translation.tex",
+    "human": 0,
+    "index": 22,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "appendices/appC-institutional-translation.tex#5": {
+    "agent": 5,
+    "file": "appendices/appC-institutional-translation.tex",
     "human": 0,
     "index": 5,
     "key": "AI",

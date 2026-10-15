@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety photo pipeline, transcript collapse).
+Last updated: 2026-10-15 (Hu/Rong DeAI App C note).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-15:** **Hu/Rong DeAI App C note** — Accountability vs incapacitation gaps in Finding the Real Actor and Successors; bib `hu2026deai`. Log: `2026-10-15-hu-rong-deai-appc.md`.
 - **2026-10-15:** **Last Safety photo pipeline and transcript collapse** — JPEG downscale + image validation; fix black WebGL captures; transcript hides off dock without breaking suggestion clicks. Log: `2026-10-15-last-safety-photo-transcript-fixes.md`.
 - **2026-10-15:** **Last Safety handset UI, photo viewer, notices** — HUD overlay chips; room Photo capture; `/api/handset-file` image viewing; notification seen state on target visit; Jun/work first-person glue. Log: `2026-10-15-last-safety-handset-ui-photo-notices.md`.
 - **2026-10-15:** **Last Safety notebook dialog and free notes** — Removed redundant Notebook drawer; new learned facts offer Add to handset Notes; `notes/` writes (and thought copy) cost 0 fuel; photos still 1. Log: `2026-10-15-last-safety-notebook-dialog-free-notes.md`.
