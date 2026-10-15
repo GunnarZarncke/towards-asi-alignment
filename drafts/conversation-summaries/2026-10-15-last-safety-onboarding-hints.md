@@ -32,4 +32,4 @@ Prompts: paraphrase
 - `game/last-safety-autocomplete-prototype/lib/text/console.mjs`
 
 ## Commits
-- none
+- `82cd1e0a7` — Last Safety: onboarding bubbles, room notes, and map unlock.
