@@ -58,6 +58,7 @@ Plan: [`drafts/plans/construct/construct.md`](../drafts/plans/construct/construc
 - [ ] **2.0 planning scope relaxation (S).** Widen what v2/2.0 lane plans may treat as in-scope (chapter map, crosswalk, Construct families — not v1 manuscript until existing gates). Detail: [`construct.md`](../drafts/plans/construct/construct.md) § 2.0 planning scope.
   - **Within-model alignment:** include as a topic to consider; do not commit to a detailed within-model program. Effects of within-model alignment (or misalignment / non-alignment) on deployment-class outcomes stay relevant where they bear on bridges, construction, or basin questions.
   - **Proof-based agendas:** proof-based safety approaches, Guaranteed Safe AI (GSAI), and logical induction are in-scope for 2.0 planning (crosswalk, WWCTV depth, optional Lean field-local modules). Still not automatic `MB*` or `ConstructionCrux` discharge unless a later fail/refuse or manuscript claim consumes them.
+- [ ] **Prosaic vs superintelligence alignment positioning (S–M).** Clarify where TSA sits between prosaic alignment (LLM evals, deployment-class assurance) and strong superintelligence alignment (GSAI-style formal guarantees). Related: proof-based agendas bullet under 2.0 planning scope above; App B crosswalk, intro/messaging, and WWCTV depth as needed—not v1 manuscript until existing gates.
 
   Reviewer bar (2026-08-21) — *concrete* integration requires a backtest-style **fail/refuse**, not denser definitions:
 

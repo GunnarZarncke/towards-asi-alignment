@@ -21,4 +21,4 @@ Prompts: (paraphrase-only; no prompt id in this session)
 - `game/last-safety-autocomplete-prototype/content/documents/staffing-memo.md`
 
 ## Commits
-- (this session)
+- `fdc11f3e3` Last Safety: sparse revision headers on key player documents.
