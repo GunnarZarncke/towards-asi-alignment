@@ -40,6 +40,12 @@ const testParam = new URLSearchParams(location.search).has('test');
 let userScrollAt = 0;
 let chatExpanded = false;
 const narrowMq = matchMedia('(max-width: 720px)');
+/** Transcript reveal after /api/respond: one sentence per second, smooth scroll. */
+let transcriptAnimateOnRender = false;
+let transcriptDisplayedCount = 0;
+let transcriptRevealTimer = null;
+let transcriptRevealActive = false;
+const TRANSCRIPT_SENTENCE_MS = 1000;
 
 function syncTranscriptChrome() {
   document.body.classList.toggle('transcript-collapsed', !chatExpanded);
@@ -57,6 +63,15 @@ function expandChat(focusInput = true) {
   syncTranscriptChrome();
   if (focusInput) $('utterance')?.focus({ preventScroll: true });
 }
+
+/** Keep the dock open and caret in the composer (after send, etc.). */
+function focusComposer() {
+  expandChat(false);
+  $('utterance')?.focus({ preventScroll: true });
+}
+
+/** Send in flight — ignore dock focusout so disabling Send does not collapse the dock. */
+let composerBusy = false;
 
 const roomNames = Object.fromEntries(Object.entries(ROOM_META).map(([id, m]) => [id, m.title]));
 
@@ -536,21 +551,104 @@ function groupTranscriptLines(messages) {
   return groups;
 }
 
-function renderMessages() {
-  const convo = state.previous || [];
-  const recent = convo.slice(-14);
-  $('messages').innerHTML = recent.length
-    ? groupTranscriptLines(recent)
+function splitTranscriptSentences(text) {
+  const t = String(text || '').trim();
+  if (!t) return [];
+  const parts = t.split(/(?<=[.!?…])\s+/).map(s => s.trim()).filter(Boolean);
+  return parts.length ? parts : [t];
+}
+
+function buildTranscriptSentences(messages) {
+  const items = [];
+  for (const m of messages) {
+    for (const sentence of splitTranscriptSentences(m.text)) {
+      items.push({ role: m.role, npc: m.npc, text: sentence });
+    }
+  }
+  return items;
+}
+
+function groupTranscriptSentenceItems(items) {
+  const groups = [];
+  for (const item of items) {
+    const key = item.role === 'player' ? 'player' : `npc:${item.npc || ''}`;
+    const tail = groups[groups.length - 1];
+    if (tail && tail.key === key) tail.items.push(item);
+    else groups.push({ key, items: [item] });
+  }
+  return groups;
+}
+
+function stopTranscriptReveal() {
+  if (transcriptRevealTimer) clearTimeout(transcriptRevealTimer);
+  transcriptRevealTimer = null;
+  transcriptRevealActive = false;
+}
+
+function scrollTranscript(smooth) {
+  const box = $('messages');
+  if (!box) return;
+  box.scrollTo({ top: box.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+}
+
+function paintTranscript(sentenceItems, { includeNotice = false } = {}) {
+  const groups = groupTranscriptSentenceItems(sentenceItems);
+  $('messages').innerHTML = groups.length
+    ? groups
         .map(g => {
-          const role = g.messages[0].role === 'player' ? 'player' : 'npc';
-          const lines = g.messages.map(m => `<div class="transcript-line">${esc(m.text)}</div>`).join('');
-          return `<div class="transcript-group ${role}"><div class="transcript-speaker">${transcriptSpeakerLabel(g.messages[0])}</div><div class="transcript-bubbles">${lines}</div></div>`;
+          const role = g.items[0].role === 'player' ? 'player' : 'npc';
+          const lines = g.items.map(it => `<div class="transcript-line">${esc(it.text)}</div>`).join('');
+          const speakerMsg = { role: g.items[0].role, npc: g.items[0].npc };
+          return `<div class="transcript-group ${role}"><div class="transcript-speaker">${transcriptSpeakerLabel(speakerMsg)}</div><div class="transcript-bubbles">${lines}</div></div>`;
         })
         .join('')
     : '';
-  if (lastNotice) $('messages').innerHTML += `<div class="notice">${esc(lastNotice)}</div>`;
-  const box = $('messages');
-  box.scrollTop = box.scrollHeight;
+  if (includeNotice && lastNotice) $('messages').innerHTML += `<div class="notice">${esc(lastNotice)}</div>`;
+}
+
+function revealTranscriptSentences(target) {
+  if (transcriptDisplayedCount >= target.length) {
+    stopTranscriptReveal();
+    paintTranscript(target, { includeNotice: true });
+    scrollTranscript(false);
+    return;
+  }
+  while (transcriptDisplayedCount < target.length && target[transcriptDisplayedCount].role === 'player') {
+    transcriptDisplayedCount++;
+    paintTranscript(target.slice(0, transcriptDisplayedCount));
+    scrollTranscript(true);
+  }
+  if (transcriptDisplayedCount >= target.length) {
+    stopTranscriptReveal();
+    paintTranscript(target, { includeNotice: true });
+    scrollTranscript(true);
+    return;
+  }
+  transcriptRevealTimer = setTimeout(() => {
+    transcriptDisplayedCount++;
+    paintTranscript(target.slice(0, transcriptDisplayedCount));
+    scrollTranscript(true);
+    revealTranscriptSentences(target);
+  }, TRANSCRIPT_SENTENCE_MS);
+}
+
+function renderMessages({ animate = false } = {}) {
+  const recent = (state.previous || []).slice(-14);
+  const target = buildTranscriptSentences(recent);
+
+  if (!animate) {
+    stopTranscriptReveal();
+    transcriptDisplayedCount = target.length;
+    paintTranscript(target, { includeNotice: true });
+    scrollTranscript(false);
+    return;
+  }
+
+  stopTranscriptReveal();
+  transcriptRevealActive = true;
+  paintTranscript(target.slice(0, transcriptDisplayedCount));
+  scrollTranscript(true);
+  revealTranscriptSentences(target);
 }
 
 function resizeUtterance() {
@@ -631,7 +729,8 @@ function render() {
   renderThought();
   renderMoreLink();
   renderEnding();
-  renderMessages();
+  renderMessages({ animate: transcriptAnimateOnRender });
+  transcriptAnimateOnRender = false;
   renderContext();
   renderInspector();
   renderSuggestions();
@@ -730,7 +829,10 @@ async function send() {
     await parseNow(version);
   }
   if (!parse) return;
+  composerBusy = true;
+  focusComposer();
   $('send').disabled = true;
+  const transcriptBeforeSend = buildTranscriptSentences((state.previous || []).slice(-14)).length;
   try {
     const data = await api('respond', { text, parse, addressee: npcId() || null });
     state = data.state;
@@ -744,12 +846,17 @@ async function send() {
     lastAnchoredParse = null;
     trace = [];
     visibleCount = 5;
+    transcriptDisplayedCount = transcriptBeforeSend;
+    transcriptAnimateOnRender = true;
+    expandChat(false);
     render();
   } catch (err) {
     lastNotice = err.message;
     renderMessages();
   } finally {
     $('send').disabled = false;
+    composerBusy = false;
+    focusComposer();
   }
 }
 
@@ -915,9 +1022,11 @@ narrowMq.addEventListener('change', () => {
 });
 $('utterance').addEventListener('focus', () => expandChat(false));
 $('transcriptDock').addEventListener('focusout', e => {
+  if (composerBusy) return;
   const dock = $('transcriptDock');
   if (e.relatedTarget && dock.contains(e.relatedTarget)) return;
   requestAnimationFrame(() => {
+    if (composerBusy) return;
     if (dock.contains(document.activeElement)) return;
     collapseChat();
   });
@@ -929,6 +1038,7 @@ $('utterance').addEventListener('keydown', e => {
     send();
   }
 });
+$('send').addEventListener('mousedown', e => e.preventDefault());
 $('send').onclick = send;
 $('showMore').onclick = () => {
   visibleCount += 5;
