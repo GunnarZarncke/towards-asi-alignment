@@ -242,3 +242,45 @@ test('import rejects other scenarios and newer versions', async () => {
   assert.ok((await importSession({ version: CONFIG.SAVE_VERSION, scenario: 'nope', events: [] }, applyAction)).error);
   assert.ok((await importSession({ version: CONFIG.SAVE_VERSION + 1, scenario: 'boundary-narrow', events: [] }, applyAction)).error);
 });
+
+test('O-41: learning facts with concept links sets conceptMoreLink when setting is on', () => {
+  const s = startedSession();
+  applyAction(s, 'settings', { conceptLinksEnabled: true });
+  assert.equal(clientState(s).conceptMoreLink, null);
+  walk(s, 'platform');
+  applyAction(s, 'inspect', { id: 'job_log' });
+  const link = clientState(s).conceptMoreLink;
+  assert.ok(link);
+  assert.match(link.href, /the-boundary-error/);
+  applyAction(s, 'settings', { conceptLinksEnabled: false });
+  assert.equal(clientState(s).conceptMoreLink, null);
+});
+
+test('O-41: reading a note re-fires concept links from its signatures', () => {
+  const s = startedSession();
+  applyAction(s, 'settings', { conceptLinksEnabled: true });
+  walk(s, 'platform');
+  applyAction(s, 'inspect', { id: 'job_log' });
+  applyAction(s, 'tool', {
+    tool: 'file.write',
+    rel: 'notes/job-continued.txt',
+    name: 'Job continued',
+    text: 'Job 284 was still active.',
+    facts: ['job_continued'],
+  });
+  applyAction(s, 'tool', { tool: 'file.read', rel: 'notes/job-continued.txt' });
+  const link = clientState(s).conceptMoreLink;
+  assert.ok(link);
+  assert.match(link.href, /the-boundary-error/);
+});
+
+test('O-41: turning concept links on restores the last trigger in this room', () => {
+  const s = startedSession();
+  walk(s, 'platform');
+  applyAction(s, 'inspect', { id: 'job_log' });
+  assert.equal(clientState(s).conceptMoreLink, null);
+  applyAction(s, 'settings', { conceptLinksEnabled: true });
+  const link = clientState(s).conceptMoreLink;
+  assert.ok(link);
+  assert.match(link.href, /the-boundary-error/);
+});

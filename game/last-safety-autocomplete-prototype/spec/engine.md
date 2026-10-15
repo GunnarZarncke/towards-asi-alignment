@@ -190,7 +190,7 @@ Lean checks the declarative knowledge model plus the action model on top of it (
 
 ## Concept “More” link (O-41)
 
-When the player has turned on TSA concept links in phone settings, the engine may set `conceptMoreLink` on `ClientState`. Each relevant in-game concept id resolves through a compiled map to a card slug, a very short summary, and an href. Triggers are scene events (evidence read, intervention, act), not every mention in dialogue. In one room, only the last triggered link is sent; it persists until the next `go(room)`, then `conceptMoreLink` is null until something triggers again. Graphics prefixes `More: ` and underlines the summary.
+When the player has turned on TSA concept links in phone settings, the engine may set `conceptMoreLink` on `ClientState`. Each trigger key resolves through a compiled map to a card slug, a very short summary, and an href. Triggers are scene events (evidence read, intervention, act) and the first time a learned fact enters `learnedFacts` when that fact carries optional `conceptSlug` and `conceptSummary` in [`lib/world/facts.mjs`](../lib/world/facts.mjs) (`fact:{id}` keys). Dialogue mention alone does not trigger. In one room, only the last triggered link is sent; it persists until the next `go(room)`, then `conceptMoreLink` is null until something triggers again. Graphics prefixes `More: ` and underlines the summary. Regenerate the map with `node scripts/compile-concepts.mjs` after editing facts or [`metadata/concepts.yml`](../../../metadata/concepts.yml).
 
 ## Save and replay (O-31)
 

@@ -45,6 +45,7 @@
         <button type="button" id="load" title="Load a JSON save">Load</button>
         <button type="button" id="reset">Reset scenario</button>
         <a href="/text.html">Text version</a>
+        <button type="button" id="imprintLink">Impressum / About</button>
         <input type="file" id="loadFile" accept="application/json" hidden/>
       </div>
     </div>
@@ -79,7 +80,6 @@
 </div>
 
 <section class="transcript-dock" id="transcriptDock">
-  <div id="moreLink" class="more-link" hidden></div>
   <div id="messages" class="transcript-scroll" aria-live="polite"></div>
   <div class="npc-row dock-npc" id="npcRow"></div>
   <div class="composer dock-composer">
@@ -92,6 +92,7 @@
     <p class="coach-bubble coach-speak" id="speakCoach" hidden>write here to get information from persons in the room</p>
     <div class="inputrow dock-input"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap to speak… Completions help say a question, not find its answer."></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
   </div>
+  <div id="moreLink" class="more-link dock-more-link" hidden></div>
 </section>
 
 <aside class="hud inspector debug">
@@ -110,7 +111,6 @@
 </aside>
 
 <div id="phoneOverlay" class="phone-overlay" hidden><iframe id="phoneFrame" title="Lab Access handset"></iframe></div>
-<button type="button" class="imprint-link" id="imprintLink">Impressum / About</button>
 <dialog id="imprintDialog" class="imprint-dialog" aria-labelledby="imprintTitle">
   <h2 id="imprintTitle">Impressum / About</h2>
   <p class="small muted">Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV</p>

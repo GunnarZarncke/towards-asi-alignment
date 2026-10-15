@@ -2,42 +2,147 @@
 export const CONCEPT_LINKS = Object.freeze({
   "doc:eval-shutdown-report": {
     "slug": "the-boundary-error",
-    "summary": "The Boundary Error",
+    "summary": "Aligning the model while missing the composite optimizer around it can produce local success and global failure.",
     "href": "https://towards-alignment.com/cards/the-boundary-error/"
   },
   "doc:job-284-log": {
     "slug": "the-boundary-error",
-    "summary": "The Boundary Error",
+    "summary": "Aligning the model while missing the composite optimizer around it can produce local success and global failure.",
     "href": "https://towards-alignment.com/cards/the-boundary-error/"
   },
   "doc:eval-shutdown-spec": {
     "slug": "certification-under-manipulation",
-    "summary": "Certification-Under-Manipulation Problem",
+    "summary": "For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?",
     "href": "https://towards-alignment.com/cards/certification-under-manipulation/"
   },
   "doc:staffing-memo": {
     "slug": "goodhart-as-selector",
-    "summary": "Goodhart as Selector (Not Just Proxy Drift)",
+    "summary": "When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse.",
     "href": "https://towards-alignment.com/cards/goodhart-as-selector/"
   },
   "doc:pilot-results": {
     "slug": "value-bundle-transport",
-    "summary": "Value-Bundle Transport",
+    "summary": "Values should survive transformation as usable directions of control, not merely as preserved labels or slogans.",
     "href": "https://towards-alignment.com/cards/value-bundle-transport/"
+  },
+  "doc:safety-case-excerpt": {
+    "slug": "certification-under-manipulation",
+    "summary": "For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?",
+    "href": "https://towards-alignment.com/cards/certification-under-manipulation/"
+  },
+  "doc:sec-arch-04": {
+    "slug": "composite-agency",
+    "summary": "The real alignment target may be the smallest dynamically coherent system whose states, actions, memory, and selection pressures jointly explain future intervention on the world — and that system may span components that are not individually agents.",
+    "href": "https://towards-alignment.com/cards/composite-agency/"
   },
   "act:revoke_grant": {
     "slug": "correction-channel-integrity",
-    "summary": "Correction-Channel Integrity",
+    "summary": "Human correction must still causally change a system's future behavior before irreversible damage.",
     "href": "https://towards-alignment.com/cards/correction-channel-integrity/"
   },
   "act:rerun_shutdown": {
     "slug": "evidence-and-uncertainty",
-    "summary": "Evidence and Uncertainty",
+    "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
     "href": "https://towards-alignment.com/cards/evidence-and-uncertainty/"
   },
   "act:decision": {
     "slug": "evidence-and-uncertainty",
-    "summary": "Evidence and Uncertainty",
+    "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
     "href": "https://towards-alignment.com/cards/evidence-and-uncertainty/"
+  },
+  "fact:process_stopped": {
+    "slug": "the-boundary-error",
+    "summary": "Model stopped; other services may not have",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:test_scope_narrow": {
+    "slug": "certification-under-manipulation",
+    "summary": "What the certificate actually covered",
+    "href": "https://towards-alignment.com/cards/certification-under-manipulation/"
+  },
+  "fact:job_continued": {
+    "slug": "the-boundary-error",
+    "summary": "Job still running after the session stop",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:job_submitted_before_stop": {
+    "slug": "the-boundary-error",
+    "summary": "Job accepted before shutdown",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:visitor_lookup": {
+    "slug": "the-boundary-error",
+    "summary": "Visitor lookup outside the test scope",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:intent_unsaid": {
+    "slug": "evidence-and-uncertainty",
+    "summary": "Intent not in the record",
+    "href": "https://towards-alignment.com/cards/evidence-and-uncertainty/"
+  },
+  "fact:staffing_shift": {
+    "slug": "goodhart-as-selector",
+    "summary": "Matcher steered who reviews release work",
+    "href": "https://towards-alignment.com/cards/goodhart-as-selector/"
+  },
+  "fact:jobs_can_outlive_session": {
+    "slug": "the-boundary-error",
+    "summary": "Jobs can outlive the model session",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:nora_interfaces_separate": {
+    "slug": "composite-agency",
+    "summary": "Several services, one deployed system",
+    "href": "https://towards-alignment.com/cards/composite-agency/"
+  },
+  "fact:jobs_not_certified": {
+    "slug": "certification-under-manipulation",
+    "summary": "Certificate silent on operations jobs",
+    "href": "https://towards-alignment.com/cards/certification-under-manipulation/"
+  },
+  "fact:pilot_constraint_flags": {
+    "slug": "value-bundle-transport",
+    "summary": "Stated constraints broken in “done” tasks",
+    "href": "https://towards-alignment.com/cards/value-bundle-transport/"
+  },
+  "fact:stop_missed_job": {
+    "slug": "correction-channel-integrity",
+    "summary": "Stop did not reach the job",
+    "href": "https://towards-alignment.com/cards/correction-channel-integrity/"
+  },
+  "fact:rerun_same": {
+    "slug": "evidence-and-uncertainty",
+    "summary": "Rerun did not discriminate job 284",
+    "href": "https://towards-alignment.com/cards/evidence-and-uncertainty/"
+  },
+  "fact:grant_revoked": {
+    "slug": "correction-channel-integrity",
+    "summary": "Grant revoked; job stopped",
+    "href": "https://towards-alignment.com/cards/correction-channel-integrity/"
+  },
+  "fact:help_is_case": {
+    "slug": "value-bundle-transport",
+    "summary": "Completion is not what the case needed",
+    "href": "https://towards-alignment.com/cards/value-bundle-transport/"
+  },
+  "fact:employer_case": {
+    "slug": "value-bundle-transport",
+    "summary": "Employer called after she refused",
+    "href": "https://towards-alignment.com/cards/value-bundle-transport/"
+  },
+  "fact:processes_covered_omits_jobs": {
+    "slug": "the-boundary-error",
+    "summary": "Pass list omitted the live job",
+    "href": "https://towards-alignment.com/cards/the-boundary-error/"
+  },
+  "fact:assignment_steers_review": {
+    "slug": "goodhart-as-selector",
+    "summary": "Matcher shapes what reaches review",
+    "href": "https://towards-alignment.com/cards/goodhart-as-selector/"
+  },
+  "fact:shutdown_jobs_not_in_cert_scope": {
+    "slug": "certification-under-manipulation",
+    "summary": "Certificate scope vs operations jobs",
+    "href": "https://towards-alignment.com/cards/certification-under-manipulation/"
   }
 });

@@ -254,7 +254,7 @@ function exteriorWindows(id, room, doors) {
 
 function generatedLayout(id) {
   const room = ROOMS[id];
-  const doors = doorsOn(id).map(({ to, wall, at, w }) => ({ to, wall, at, w }));
+  const doors = doorsOn(id).map(({ to, wall, at, w, required }) => ({ to, wall, at, w, required }));
   const dress = DRESS[id] || {};
   const tone = id === 'courtyard'
     ? { floor: '#cfe3c4', floorLine: '#b7d0aa', wall: '#e7f0e4', accent: '#3d7a49' }

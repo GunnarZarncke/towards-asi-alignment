@@ -19,6 +19,8 @@ html, body { margin: 0; height: 100%; background: var(--room); }
 button, textarea, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
+.concept-more { font-size: 11px; color: var(--muted); margin: 10px 0 0; line-height: 1.45; }
+.concept-more a { color: var(--accent); font-weight: 650; text-decoration: underline; text-underline-offset: 2px; }
 .stage {
   min-height: 100dvh;
   display: grid;

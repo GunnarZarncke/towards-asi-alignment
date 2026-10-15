@@ -7,7 +7,7 @@ import { createKit } from './kit.mjs';
 import { layoutFor } from './layouts.mjs';
 import { ACT_PRESETS, COLOR_KEYS, NUMBER_KEYS } from './lighting.mjs';
 import { Walker, appearanceFor } from './person.mjs';
-import { buildRoom, WALL_T } from './room.mjs';
+import { applyClearanceSign, buildRoom, WALL_T } from './room.mjs';
 
 const DEG = Math.PI / 180;
 const GROUND = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
@@ -252,6 +252,10 @@ export class RoomRenderer {
         continue;
       }
       obj.userData.hotspotId = h.id;
+      if (h.kind === 'exit') {
+        const sign = obj.userData.clearanceSign;
+        if (sign) applyClearanceSign(sign, !h.restricted);
+      }
       obj.updateMatrixWorld(true);
       this.box.setFromObject(obj);
       const anchor = new THREE.Vector3();

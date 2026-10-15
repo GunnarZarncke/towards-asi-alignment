@@ -7,7 +7,7 @@ import { resolveAccessRequestGated } from './access-gates.mjs';
 import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
-import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads } from '../game.mjs';
+import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads, triggerFactConcepts } from '../game.mjs';
 import { parseImageDataUrl } from '../photo-data.mjs';
 
 export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.share', 'dm.send', 'dm.read', 'access.request']);
@@ -71,6 +71,7 @@ export function terminalState(s) {
     accessTree: visiblePaths(s.grants).map(p => ({ path: p, label: ACCESS_TREE[p].label, kind: ACCESS_TREE[p].kind, verbs: ['list', 'read', 'write'].filter(v => hasVerb(s.grants, p, v)) })),
     pendingAccess: s.pendingAccess.map(a => ({ path: a.path, verb: a.verb })),
     interview: { on: !!s.interview.on },
+    conceptLinksEnabled: !!s.conceptLinksEnabled,
   };
 }
 
@@ -123,6 +124,7 @@ export function applyToolCall(s, call, { log = true } = {}) {
     const f = rel && s.files.find(x => x.rel === rel);
     if (!f) return { ok: false, reason: 'Not readable.' };
     if (f.documentSlug) readDocument(s, f.documentSlug, { via: f.sharedBy === 'nora' ? 'nora' : null });
+    else if (f.signatures?.length) triggerFactConcepts(s, f.signatures);
     spend(s, 1);
     const kind = f.kind || fileKind(f.rel);
     const file = { name: f.name, rel: f.rel, kind };

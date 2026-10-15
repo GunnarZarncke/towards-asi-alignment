@@ -32,6 +32,7 @@ Shared reading for every lane: [spec/meta.md](spec/meta.md), [spec/contract.md](
 - Open questions stay open until recorded in [spec/meta.md](spec/meta.md). A lane must not close one inside its spec.
 - Do not implement a side idea because it is written down. If it does not change what a player can justify or what they can still control, it waits.
 - Long shared lab documents are **sources** in [`content/documents/`](content/documents/README.md), registered in [`lib/documents.mjs`](lib/documents.mjs), specified in [`spec/documents.md`](spec/documents.md). Access tree in [`spec/access.md`](spec/access.md) / [`lib/access.mjs`](lib/access.mjs). Files are not autocomplete picks.
+- O-41 concept cards: optional `conceptSlug` and `conceptSummary` on each fact in [`lib/world/facts.mjs`](lib/world/facts.mjs). Scene triggers stay in [`scripts/compile-concepts.mjs`](scripts/compile-concepts.mjs). Regenerate [`lib/world/concepts.generated.mjs`](lib/world/concepts.generated.mjs) after edits. The phone setting toggles the room footer line; graphics already draws it.
 
 ## How to test
 

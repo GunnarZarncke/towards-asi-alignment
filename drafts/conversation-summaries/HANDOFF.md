@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety start screen).
+Last updated: 2026-10-16 (Last Safety O-41 concept links).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-16:** **Last Safety O-41 concept links** — Optional per-fact TSA card links; phone setting synced and autosaved; More line under composer; handset read/note triggers; expanded authored links. Door clearance LED on exits. Log: `2026-10-16-last-safety-concept-links.md`.
 - **2026-10-15:** **Last Safety start screen** — Modal before first play (and after reset): independent evaluator, NORA deployment review, short-notice drop-in; skipped for saves and UI harness. Log: `2026-10-15-last-safety-start-screen.md`.
 - **2026-10-15:** **Last Safety impressum / About** — Bottom-right link on room UI opens dialog with minimal German provider block (aintelope UG), AI-generated/fictional disclaimer, three.js and optional LLM credits. Log: `2026-10-15-last-safety-impressum.md`.
 - **2026-10-15:** **Last Safety onboarding hints and room notes** — Composer bubble until the first sent line; Lab Access phone mark and bubble until opened; one mechanic note in each room that had no screen, including text `look`/`read`. Log: `2026-10-15-last-safety-onboarding-hints.md`.

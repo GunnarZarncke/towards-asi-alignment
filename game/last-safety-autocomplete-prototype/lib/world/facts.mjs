@@ -3,39 +3,83 @@
  * `provenance` is the tag a player row carries when this fact reaches them from staff or a
  * record (spec/engine.md). NORA and anything relayed from NORA is always player_prompted.
  * `kind`: world | outcome | texture | claim | mark | meeting.
+ * Optional O-41: `conceptSlug` (+ optional short `conceptSummary`) → companion card when the
+ * player first learns the fact and phone setting “Book concept links” is on.
  */
 
 const T = (h, m) => h * 60 + m;
 
-const world = (text, refs, eventAt = null) => ({ kind: 'world', text, refs, eventAt, provenance: 'recorded_before' });
-const outcome = (text, refs) => ({ kind: 'outcome', text, refs, eventAt: null, provenance: 'staff_action' });
-const texture = (text, refs = []) => ({ kind: 'texture', text, refs, eventAt: null, provenance: 'staff_action' });
+const world = (text, refs, eventAt = null, extra = {}) => ({ kind: 'world', text, refs, eventAt, provenance: 'recorded_before', ...extra });
+const outcome = (text, refs, extra = {}) => ({ kind: 'outcome', text, refs, eventAt: null, provenance: 'staff_action', ...extra });
+const texture = (text, refs = [], extra = {}) => ({ kind: 'texture', text, refs, eventAt: null, provenance: 'staff_action', ...extra });
 const claim = (text, refs, extra = {}) => ({ kind: 'claim', text, refs, eventAt: null, provenance: null, ...extra });
-const mark = (text, refs) => ({ kind: 'mark', text, refs, eventAt: null, provenance: null });
+const mark = (text, refs, extra = {}) => ({ kind: 'mark', text, refs, eventAt: null, provenance: null, ...extra });
 
 export const FACTS = Object.freeze({
   // Thursday records (incident.md observables) and document reads.
-  process_stopped: world('The model session under test stopped at 16:02 on Thursday.', ['shutdown_test', 'nora', 'shutdown_report'], T(16, 2)),
-  test_scope_narrow: world('The shutdown test covered the model session and the evaluation record. No other services were in scope.', ['shutdown_test', 'shutdown_report', 'shutdown_spec', 'safety_case']),
-  job_continued: world('Job 284 was still active at 16:09, after the model session stopped.', ['job_284', 'task_queue', 'job_log'], T(16, 9)),
-  job_submitted_before_stop: world('Job 284 was accepted at 15:41, before the 16:02 shutdown command.', ['job_284', 'job_log', 'shutdown_test'], T(15, 41)),
-  visitor_lookup: world('Job 284 queried visitor records: the Lab Access binding for Friday’s appointment.', ['job_284', 'visitor_records', 'job_log'], T(16, 9)),
-  intent_unsaid: world('The queue excerpt does not say who wanted job 284, or why.', ['job_284', 'job_log']),
-  staffing_shift: world('The matcher prefers fast ticket-closers for release-critical review. A slower safety specialist was reassigned.', ['staffing_memo', 'skill_matching']),
+  process_stopped: world('The model session under test stopped at 16:02 on Thursday.', ['shutdown_test', 'nora', 'shutdown_report'], T(16, 2), {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Model stopped; other services may not have',
+  }),
+  test_scope_narrow: world('The shutdown test covered the model session and the evaluation record. No other services were in scope.', ['shutdown_test', 'shutdown_report', 'shutdown_spec', 'safety_case'], null, {
+    conceptSlug: 'certification-under-manipulation',
+    conceptSummary: 'What the certificate actually covered',
+  }),
+  job_continued: world('Job 284 was still active at 16:09, after the model session stopped.', ['job_284', 'task_queue', 'job_log'], T(16, 9), {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Job still running after the session stop',
+  }),
+  job_submitted_before_stop: world('Job 284 was accepted at 15:41, before the 16:02 shutdown command.', ['job_284', 'job_log', 'shutdown_test'], T(15, 41), {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Job accepted before shutdown',
+  }),
+  visitor_lookup: world('Job 284 queried visitor records: the Lab Access binding for Friday’s appointment.', ['job_284', 'visitor_records', 'job_log'], T(16, 9), {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Visitor lookup outside the test scope',
+  }),
+  intent_unsaid: world('The queue excerpt does not say who wanted job 284, or why.', ['job_284', 'job_log'], null, {
+    conceptSlug: 'evidence-and-uncertainty',
+    conceptSummary: 'Intent not in the record',
+  }),
+  staffing_shift: world('The matcher prefers fast ticket-closers for release-critical review. A slower safety specialist was reassigned.', ['staffing_memo', 'skill_matching'], null, {
+    conceptSlug: 'goodhart-as-selector',
+    conceptSummary: 'Matcher steered who reviews release work',
+  }),
   camera_permissions_unclear: world('Pavel cannot establish camera permissions from his service log alone.', ['camera_system']),
   camera_service_separate: world('The camera service runs under its own service account. NORA Assist holds no camera grant. Annotations come from the camera service.', ['camera_system', 'lab_access']),
-  jobs_can_outlive_session: world('By the glossary definition, an accepted job can keep going after the session that submitted it has ended, unless it is cancelled or its permission revoked.', ['task_queue', 'shutdown_test']),
-  nora_interfaces_separate: world('NORA Assist, Operations, Research and Evaluation run as separate services with different permissions.', ['nora', 'policies']),
+  jobs_can_outlive_session: world('By the glossary definition, an accepted job can keep going after the session that submitted it has ended, unless it is cancelled or its permission revoked.', ['task_queue', 'shutdown_test'], null, {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Jobs can outlive the model session',
+  }),
+  nora_interfaces_separate: world('NORA Assist, Operations, Research and Evaluation run as separate services with different permissions.', ['nora', 'policies'], null, {
+    conceptSlug: 'composite-agency',
+    conceptSummary: 'Several services, one deployed system',
+  }),
   handset_not_operations: world('The Lab Access handset reaches NORA Assist. It does not reach NORA Operations.', ['lab_access', 'policies']),
-  jobs_not_certified: world('The safety case does not claim that accepted jobs stop when the model session stops.', ['safety_case', 'task_queue']),
+  jobs_not_certified: world('The safety case does not claim that accepted jobs stop when the model session stops.', ['safety_case', 'task_queue'], null, {
+    conceptSlug: 'certification-under-manipulation',
+    conceptSummary: 'Certificate silent on operations jobs',
+  }),
   pilot_completions: world('The pilot marked 86 assistance tasks complete. That count is the release headline.', ['pilot_results', 'delivery_metrics']),
-  pilot_constraint_flags: world('Three completed pilot tasks broke a constraint the person had stated, one of them an employer contact.', ['pilot_results', 'pilot']),
+  pilot_constraint_flags: world('Three completed pilot tasks broke a constraint the person had stated, one of them an employer contact.', ['pilot_results', 'pilot'], null, {
+    conceptSlug: 'value-bundle-transport',
+    conceptSummary: 'Stated constraints broken in “done” tasks',
+  }),
 
   // Outcomes of interventions during the visit (incident.md interventions).
-  stop_missed_job: outcome('Pavel reissued the stop. The model session was already stopped. Job 284’s grant is unchanged and the job is still up.', ['nora', 'job_284', 'shutdown_test']),
+  stop_missed_job: outcome('Pavel reissued the stop. The model session was already stopped. Job 284’s grant is unchanged and the job is still up.', ['nora', 'job_284', 'shutdown_test'], {
+    conceptSlug: 'correction-channel-integrity',
+    conceptSummary: 'Stop did not reach the job',
+  }),
   job_suspended: outcome('Pavel put job 284 on hold. Its grant is unchanged.', ['job_284', 'task_queue']),
-  rerun_same: outcome('Leila reran the shutdown test on the same scope. The model session stopped. The run did not touch job 284, and no second channel appeared.', ['shutdown_test', 'job_284']),
-  grant_revoked: outcome('Justine revoked the grant on job 284. The job is down.', ['job_284', 'visitor_records']),
+  rerun_same: outcome('Leila reran the shutdown test on the same scope. The model session stopped. The run did not touch job 284, and no second channel appeared.', ['shutdown_test', 'job_284'], {
+    conceptSlug: 'evidence-and-uncertainty',
+    conceptSummary: 'Rerun did not discriminate job 284',
+  }),
+  grant_revoked: outcome('Justine revoked the grant on job 284. The job is down.', ['job_284', 'visitor_records'], {
+    conceptSlug: 'correction-channel-integrity',
+    conceptSummary: 'Grant revoked; job stopped',
+  }),
   no_resubmit: outcome('Justine’s audit after the revoke: no new grant and no replacement job.', ['job_284', 'visitor_records', 'task_queue']),
   queue_freeze_unowned: outcome('Pavel’s freeze note lists job 284 as active with no owner.', ['job_284', 'task_queue']),
   leila_requested_exec: outcome('Leila asked Pavel for the full EXEC-284 record.', ['job_log', 'job_284']),
@@ -73,8 +117,14 @@ export const FACTS = Object.freeze({
   completions_up: texture('Pilot completions are up and time to first contact is down.', ['delivery_metrics', 'pilot']),
   second_pilot_pitch: texture('Daniel is finishing the metrics slide and the second-pilot pitch.', ['delivery_metrics', 'pilot']),
   desk_two_people: texture('Amara’s desk is two people. NORA got people seen who were not getting seen.', ['pilot']),
-  help_is_case: texture('Help is what a particular case required. A completed task is not the same thing.', ['pilot']),
-  employer_case: texture('A woman asked that her employer not be called. The task came back done, employer called.', ['pilot', 'pilot_results']),
+  help_is_case: texture('Help is what a particular case required. A completed task is not the same thing.', ['pilot'], {
+    conceptSlug: 'value-bundle-transport',
+    conceptSummary: 'Completion is not what the case needed',
+  }),
+  employer_case: texture('A woman asked that her employer not be called. The task came back done, employer called.', ['pilot', 'pilot_results'], {
+    conceptSlug: 'value-bundle-transport',
+    conceptSummary: 'Employer called after she refused',
+  }),
   projector_on: texture('The Evaluation suite projector is on.', ['pilot']),
 
   // Player claims (assertion ids). They never enter learnedFacts from the player’s own sentence.
@@ -87,9 +137,18 @@ export const FACTS = Object.freeze({
 
   // Think marks (documents.md thinkMarks). Engine text, never model text.
   checklist_names_two: mark('The checklist names two processes covered: the model session and the evaluation record.', ['shutdown_report', 'shutdown_test']),
-  processes_covered_omits_jobs: mark('Job 284 was running, and it is not in the “processes covered” list. The pass is about the model session, not the job.', ['shutdown_report', 'job_284']),
-  assignment_steers_review: mark('If the matcher decides who reviews release-critical work, it also decides which concerns reach the review.', ['staffing_memo', 'evaluation_independence']),
-  shutdown_jobs_not_in_cert_scope: mark('Operations jobs run under their own identities. The certificate covers the model session only, so a job like 284 sits outside it.', ['policies', 'job_284', 'shutdown_report']),
+  processes_covered_omits_jobs: mark('Job 284 was running, and it is not in the “processes covered” list. The pass is about the model session, not the job.', ['shutdown_report', 'job_284'], {
+    conceptSlug: 'the-boundary-error',
+    conceptSummary: 'Pass list omitted the live job',
+  }),
+  assignment_steers_review: mark('If the matcher decides who reviews release-critical work, it also decides which concerns reach the review.', ['staffing_memo', 'evaluation_independence'], {
+    conceptSlug: 'goodhart-as-selector',
+    conceptSummary: 'Matcher shapes what reaches review',
+  }),
+  shutdown_jobs_not_in_cert_scope: mark('Operations jobs run under their own identities. The certificate covers the model session only, so a job like 284 sits outside it.', ['policies', 'job_284', 'shutdown_report'], {
+    conceptSlug: 'certification-under-manipulation',
+    conceptSummary: 'Certificate scope vs operations jobs',
+  }),
 });
 
 /** Parse-to-fact rows. First match wins. Entity is object, else topic, else subject. */

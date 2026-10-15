@@ -61,7 +61,7 @@ pendingQuestion: { npc, goal, parse, at } | null   // O-46. Grammar offers reply
 thought: null | { about, entries: { id, text, hops }[], fuelCost }  // open bubble. Null when closed or copied
 ```
 
-`summary` is a very short phrase for the underlined text after `More: `. `href` is the companion-site concept card URL for that concept slug. The mapping from in-game concept ids to slug, summary, and href is compiled from `metadata/concepts.yml` and the knowledge graph (composition or a generated game asset). The engine sets `conceptMoreLink` when a scene event marks a concept relevant; it replaces the previous link only with a newer trigger in the same room, and clears on `go(room)`.
+`summary` is a very short phrase for the underlined text after `More: `. `href` is the companion-site concept card URL for that concept slug. The mapping is compiled in `lib/world/concepts.generated.mjs` (`scripts/compile-concepts.mjs`) from scene trigger keys (`doc:…`, `act:…`) and from optional `conceptSlug` / `conceptSummary` on each fact (`fact:…` keys), using `metadata/concepts.yml` for href and default summary. The engine sets `conceptMoreLink` when a scene event fires or when the player newly learns a fact that carries a concept slug; it replaces the previous link only with a newer trigger in the same room, and clears on `go(room)`.
 
 Today `clientState` also exposes every actor’s room even when the player has not visited it. Tightening that is an engine change to this contract, not a UI filter.
 

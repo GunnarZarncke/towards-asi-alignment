@@ -402,7 +402,7 @@ async function thoughtAction(action) {
 }
 
 function renderMoreLink() {
-  const c = state.conceptLinksEnabled ? state.conceptMoreLink : null;
+  const c = state?.conceptLinksEnabled ? state.conceptMoreLink : null;
   const el = $('moreLink');
   el.hidden = !c;
   el.innerHTML = c ? `More: <a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.summary)}</a>` : '';
@@ -596,6 +596,7 @@ window.addEventListener('message', async e => {
   if (e.data.type === 'changed') {
     state = await api('state');
     render();
+    autosave();
   }
 });
 

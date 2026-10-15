@@ -6,6 +6,17 @@ export const WALL_T = 0.18;
 const DEG = Math.PI / 180;
 const DOOR_H = 2.2;
 
+/** LED strip above each door: green when badge clearance opens it, red when not. */
+export const CLEARANCE_SIGN_OPEN = { color: '#2f9e64', emissive: '#4fd18b', emissiveIntensity: 1.1 };
+export const CLEARANCE_SIGN_CLOSED = { color: '#b83a3a', emissive: '#ff5555', emissiveIntensity: 1.0 };
+
+export function applyClearanceSign(sign, canPass) {
+  const c = canPass ? CLEARANCE_SIGN_OPEN : CLEARANCE_SIGN_CLOSED;
+  sign.material.color.set(c.color);
+  sign.material.emissive.set(c.emissive);
+  sign.material.emissiveIntensity = c.emissiveIntensity;
+}
+
 function wallSegments(u0, u1, H, openings) {
   const out = [];
   let cur = u0;
@@ -199,8 +210,14 @@ export function buildRoom(layout, kit) {
     corridor.position.set(0, (DOOR_H + 0.4) / 2, -T - 1.1);
     const strip = mesh(new THREE.BoxGeometry(d.w, 0.12, 1.2), new THREE.MeshStandardMaterial({ color: layout.floor, roughness: 0.85 }), g, false);
     strip.position.set(0, -0.06, -T - 0.5);
-    const sign = mesh(new THREE.BoxGeometry(0.3, 0.1, 0.03), new THREE.MeshStandardMaterial({ color: '#2f9e64', emissive: '#4fd18b', emissiveIntensity: 1.1 }), g, false);
+    const sign = mesh(
+      new THREE.BoxGeometry(0.3, 0.1, 0.03),
+      new THREE.MeshStandardMaterial({ ...CLEARANCE_SIGN_OPEN }),
+      g,
+      false,
+    );
     sign.position.set(0, DOOR_H + 0.25, 0.02);
+    g.userData.clearanceSign = sign;
     const hit = new THREE.Mesh(new THREE.PlaneGeometry(d.w, DOOR_H), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
     hit.position.set(0, DOOR_H / 2, 0.02);
     g.add(hit);

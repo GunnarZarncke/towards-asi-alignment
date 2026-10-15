@@ -55,7 +55,8 @@ async function tool(call) {
   const data = await res.json();
   if (!data.terminal) return { ok: false, reason: data.error || 'Request failed.', state };
   toParent({ type: 'changed' });
-  return { ...data.result, state: { ...data.terminal, settings: state.settings } };
+  await refreshClientSnapshot();
+  return { ...data.result, state: { ...data.terminal, settings: syncPhoneSettings(data.terminal, state.settings) } };
 }
 
 async function refreshClientSnapshot() {
@@ -66,11 +67,17 @@ async function refreshClientSnapshot() {
   return clientSnapshot;
 }
 
+function syncPhoneSettings(terminal, prev) {
+  const base = { ...defaultSettings(), ...(prev || {}) };
+  if (terminal && 'conceptLinksEnabled' in terminal) base.conceptLinks = !!terminal.conceptLinksEnabled;
+  return base;
+}
+
 async function refresh() {
   const res = await fetch('/api/terminal');
   if (!res.ok) return;
   const next = await res.json();
-  state = { ...next, settings: state.settings };
+  state = { ...next, settings: syncPhoneSettings(next, state.settings) };
   await refreshClientSnapshot();
   render();
 }
@@ -439,6 +446,12 @@ function wikiApp() {
   return `${head('Knowledge', 'Same files as Files, under wiki/')}<div class="pad">${rows || '<p class="hint">No pages.</p>'}</div>`;
 }
 
+function conceptMoreBlock() {
+  if (!state.settings.conceptLinks || !clientSnapshot?.conceptMoreLink) return '';
+  const c = clientSnapshot.conceptMoreLink;
+  return `<p class="concept-more">More: <a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.summary)}</a></p>`;
+}
+
 function viewer() {
   const opened = top().file;
   const rel = opened?.rel || top().rel;
@@ -469,7 +482,7 @@ function viewer() {
   } else body = `<div class="pad"><div class="doc">${richText(file.text)}</div></div>`;
   const shared = (file.sharedWith || []).length
     ? `<p class="hint">Shared with ${(file.sharedWith || []).map(contactName).join(', ')}.</p>` : '';
-  return `${head(file.name, file.rel)}<div class="pad">${share}${shared}</div>${body}`;
+  return `${head(file.name, file.rel)}<div class="pad">${share}${shared}${conceptMoreBlock()}</div>${body}`;
 }
 
 function richText(text) {
@@ -717,13 +730,31 @@ function onClick(e) {
     const key = b.dataset.key;
     state.settings = { ...state.settings, [key]: !state.settings[key] };
     if (key === 'conceptLinks' && engine) {
-      fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conceptLinksEnabled: state.settings.conceptLinks }) })
-        .then(() => toParent({ type: 'changed' }));
+      void postConceptLinksSetting(state.settings.conceptLinks);
+    } else {
+      if (key === 'alwaysShowPhone' && overlayAllowed(state) && state.settings.alwaysShowPhone) overlay = true;
+      if (key === 'alwaysShowPhone' && !state.settings.alwaysShowPhone) overlay = false;
+      render();
     }
-    if (key === 'alwaysShowPhone' && overlayAllowed(state) && state.settings.alwaysShowPhone) overlay = true;
-    if (key === 'alwaysShowPhone' && !state.settings.alwaysShowPhone) overlay = false;
-    render();
   }
+}
+
+async function postConceptLinksSetting(on) {
+  try {
+    const res = await fetch('/api/settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ conceptLinksEnabled: !!on }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Could not save setting.');
+    if (data.terminal) state = { ...data.terminal, settings: syncPhoneSettings(data.terminal, state.settings) };
+    toParent({ type: 'changed' });
+  } catch (err) {
+    toast(err.message || 'Could not save setting.');
+    state.settings = { ...state.settings, conceptLinks: !on };
+  }
+  render();
 }
 
 async function sendMessage(id) {
@@ -940,7 +971,7 @@ async function boot() {
   if (!res.ok) throw new Error(engine ? 'No terminal state' : 'No terminal fixture');
   state = await res.json();
   delete state._hostFiles;
-  state.settings = { ...defaultSettings(), ...(state.settings || {}) };
+  state.settings = syncPhoneSettings(state, state.settings);
   if (engine) await refreshClientSnapshot();
   overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
   window.addEventListener('message', async e => {
@@ -958,7 +989,7 @@ async function boot() {
       if (res.ok) {
         state = await res.json();
         delete state._hostFiles;
-        state.settings = { ...defaultSettings(), ...(state.settings || {}) };
+        state.settings = syncPhoneSettings(state, state.settings);
       }
       markTarget('file', e.data.rel);
       route = [{ name: 'home' }, { name: 'files' }, { name: 'viewer', rel: e.data.rel, file: e.data.file }];

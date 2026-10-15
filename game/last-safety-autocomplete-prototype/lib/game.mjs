@@ -129,7 +129,7 @@ export function newSession({ pack = PACK } = {}) {
     files: [], grants: [], pendingAccess: [], lastAccess: null,
     threads: [], notifications: [], noticeSeq: 0,
     thought: null, scores: null, filed: null, ending: null, graceUsed: false, filedNamesJob: false,
-    conceptLinksEnabled: false, conceptMoreLink: null, objected: [],
+    conceptLinksEnabled: false, conceptMoreLink: null, roomConceptLastTrigger: null, objected: [],
     events: [], replaying: false,
   };
   N.placeNpcs(s);
@@ -254,6 +254,7 @@ function learnFact(s, id, provenance, from) {
   }
   s.lastNewFactSentence = s.sentences;
   log(s, 'learn', { id, provenance, from });
+  trigger(s, `fact:${id}`);
 }
 
 function addHeard(s, id, from, stance = 'knows') {
@@ -295,9 +296,16 @@ function nameOf(id) {
 }
 
 function trigger(s, key) {
-  if (!s.conceptLinksEnabled) return;
   const c = conceptFor(key);
+  if (c) s.roomConceptLastTrigger = key;
+  if (!s.conceptLinksEnabled) return;
   if (c) s.conceptMoreLink = c;
+}
+
+/** O-41: re-fire concept triggers stored on a handset note (signatures from writeNote). */
+export function triggerFactConcepts(s, factIds) {
+  if (!Array.isArray(factIds)) return;
+  for (const id of factIds) trigger(s, `fact:${id}`);
 }
 
 // ---------- movement and inspection ----------
@@ -314,6 +322,7 @@ export function go(s, room) {
   s.room = room;
   s.visit += 1;
   s.conceptMoreLink = null;
+  s.roomConceptLastTrigger = null;
   log(s, 'move', { who: 'player', from, to: room });
   if (from === 'evaluation' && s.interview.on && s.interview.by === 'join' && s.interview.seen) {
     s.interview = { on: false, by: null, seen: false };
@@ -1047,7 +1056,14 @@ export function screens() {
 export function setConceptLinks(s, on) {
   logAction(s, 'settings', { conceptLinksEnabled: !!on });
   s.conceptLinksEnabled = !!on;
-  if (!on) s.conceptMoreLink = null;
+  if (!on) {
+    s.conceptMoreLink = null;
+    return;
+  }
+  if (s.roomConceptLastTrigger) {
+    const c = conceptFor(s.roomConceptLastTrigger);
+    if (c) s.conceptMoreLink = c;
+  }
 }
 
 /**
