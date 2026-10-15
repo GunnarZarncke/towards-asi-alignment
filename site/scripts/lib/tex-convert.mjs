@@ -180,7 +180,7 @@ function splitListItems(body) {
   return items;
 }
 
-// Chapter-opening illustrations live at figures/illustrations/chNN_<slug>.png.
+// Chapter-opening illustrations live at figures/illustrations/chNN_<slug>.jpg.
 // Their caption (the illustration title) links to an unlisted prompt page at
 // /illustrations/{chapterId}/ that is not part of the cards collection and is
 // therefore not listed or searchable — reachable only from this link.
@@ -191,11 +191,11 @@ function relIllustrationHref(chapterId) {
   return `../../../illustrations/${chapterId.toLowerCase()}/`;
 }
 
-// The print-resolution PNG is what \includegraphics uses for the PDF; the
-// site instead serves the downsized JPEG from figures/illustrations/web/
-// (regenerate with scripts/generate_web_illustrations.py).
+// The book JPEG is what \includegraphics uses for the PDF; the site instead
+// serves the downsized JPEG from figures/illustrations/web/ (regenerate with
+// scripts/generate_web_illustrations.py).
 export function webIllustrationPath(sourcePath) {
-  const match = sourcePath.match(/^figures\/illustrations\/(ch\d+_[^/]+)\.png$/);
+  const match = sourcePath.match(/^figures\/illustrations\/(ch\d+_[^/]+)\.(?:png|jpe?g)$/i);
   if (!match) return sourcePath;
   return `figures/illustrations/web/${match[1]}.jpg`;
 }

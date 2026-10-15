@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Downsize chapter-opening illustrations for web use.
 
-The source PNGs in figures/illustrations/ are full-resolution exports meant
-for print (used directly by \\includegraphics in the chapter .tex files).
-This script derives smaller, compressed JPEGs in figures/illustrations/web/
+The source JPEGs in figures/illustrations/ are used directly by
+\\includegraphics in the chapter .tex files. This script derives smaller,
+compressed JPEGs in figures/illustrations/web/
 for the companion site, which copies them into `site/public/` during sync
 (see `site/scripts/sync-chapter-illustrations.mjs`) for same-origin and offline cache.
 
@@ -29,7 +29,7 @@ WEB_DIR = SOURCE_DIR / "web"
 
 
 def find_sources() -> list[Path]:
-    return sorted(p for p in SOURCE_DIR.glob("ch*.png") if p.is_file())
+    return sorted(p for p in SOURCE_DIR.glob("ch*.jpg") if p.is_file())
 
 
 def web_path_for(source: Path) -> Path:

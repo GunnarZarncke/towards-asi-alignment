@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety /text.html fix).
+Last updated: 2026-10-15 (chapter illustrations JPEG masters).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-15:** **Chapter illustrations JPEG masters** — Sixteen opening figures converted from bloated PNGs to JPEG for PDF and git (~48 MiB → ~7.5 MiB); web derivatives regenerated; `\includegraphics` and site paths updated. Log: `2026-10-15-illustrations-jpeg.md`.
 - **2026-10-15:** **Last Safety /text.html** — Browser text console loads again (public import graph; no blocked `lib/text/tab-complete`); clearer errors when modules or API fail. Log: `2026-10-15-last-safety-text-html-fix.md`.
 - **2026-10-15:** **Last Safety Welcome until 11:00** — Lab Access no longer ends Act I. Doubt starts when Ian leaves the commons for the investor update. Log: `2026-10-15-last-safety-welcome-until-eleven.md`.
 - **2026-10-15:** **Hu/Rong DeAI App C note** — Accountability vs incapacitation gaps in Finding the Real Actor and Successors; bib `hu2026deai`. Log: `2026-10-15-hu-rong-deai-appc.md`.

@@ -20,7 +20,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const imageSrc = withBase(illustrationPublicSrc(entry.data.image) ?? `/figures/illustrations/web/${entry.data.image.match(/(ch\d+_[^/]+)\.png$/)?.[1]}.jpg`);
+const imageSrc = withBase(illustrationPublicSrc(entry.data.image) ?? `/figures/illustrations/web/${entry.data.image.match(/(ch\d+_[^/]+)\.(?:png|jpe?g)$/i)?.[1]}.jpg`);
 const chapterHref = bookHref(base, entry.data.chapterId);
 ---
 
