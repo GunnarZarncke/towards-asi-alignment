@@ -26,4 +26,4 @@ Prompts: paraphrase only (no prompt id).
 - `npm test` in `game/last-safety-autocomplete-prototype` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
 
 ## Commits
-- (filled after commit)
+- `31213aba9` Last Safety: stagger NPC transcript lines and keep composer focus.
