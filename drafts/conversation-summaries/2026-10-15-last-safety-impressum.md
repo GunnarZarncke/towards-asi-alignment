@@ -26,4 +26,4 @@ Prompts: (paraphrase-only — no telemetry id in thread)
 - `site/src/pages/impressum.astro` (full TSA imprint reference)
 
 ## Commits
-- (pending this session)
+- `6e0fc9570` Last Safety: Impressum / About link on room UI.
