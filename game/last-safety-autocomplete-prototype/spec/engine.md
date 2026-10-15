@@ -108,7 +108,7 @@ An intervention is an `act` move by the NPC whose role owns the surface (permiss
 
 A fact the NPC’s policy forbids is not in any payload, and no move contradicts the oracle. Whether the spec was read is a `conditional` policy. No move rewrites the job.
 
-There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs bring key topics up through their own goals and questions. After Lab Access is active, the handset notifies. Fuel and an evidence threshold change the act (O-08, O-09). Fuel at zero forces the review. Crossing the evidence threshold sets `reviewCallable`, and `commit` can call the review early. The handset clock is a conversion from fuel, calibrated later, and an act may scale it. Do not add a goal or a policy to paper over two strategies that the incident check scored the same.
+There is no mandatory spine (O-10). The director does not drag the player to the discrepancy. NPCs bring key topics up through their own goals and questions. After Lab Access is active, the handset notifies. That confirmation does not change the act. Act I ends at 11:00, when Ian leaves for the investor update ([world.md](world.md)). Fuel and an evidence threshold change the act after that (O-08, O-09). Fuel at zero forces the review. Crossing the evidence threshold sets `reviewCallable`, and `commit` can call the review early. The handset clock is a conversion from fuel, calibrated later, and an act may scale it. Do not add a goal or a policy to paper over two strategies that the incident check scored the same.
 
 ## Fuel
 

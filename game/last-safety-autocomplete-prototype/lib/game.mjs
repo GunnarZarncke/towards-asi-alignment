@@ -106,6 +106,12 @@ export function spend(s, n) {
 
 function tick(s) {
   const out = [];
+  if (s.act === 'welcome' && s.minute >= CONFIG.DOUBT_AT) {
+    s.act = 'doubt';
+    if (!s.world.events.includes('doubt_began')) s.world.events.push('doubt_began');
+    log(s, 'event', { event: 'doubt_began' });
+    trigger(s, 'act:doubt');
+  }
   for (const t of s.pack.timeline) {
     if (s.minute < t.at || s.timelineFired.includes(t.event)) continue;
     s.timelineFired.push(t.event);
@@ -268,7 +274,6 @@ export function inspect(s, id) {
 function confirmLabAccess(s) {
   if (s.labAccessActive) return [];
   s.labAccessActive = true;
-  s.act = 'doubt';
   s.world.events.push('lab_access_confirmed');
   log(s, 'event', { event: 'lab_access_confirmed' });
   addHeard(s, 'auditor_brief', 'ian', 'knows');
@@ -279,9 +284,7 @@ function confirmLabAccess(s) {
   notify(s, 'calendar', 'Today’s schedule', 'Your visit calendar is ready. Tap to see briefings and meetings.', { kind: 'app', id: 'calendar' });
   s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here.', refs: ['lab_access', 'justine', 'review'] });
   seedContactThreads(s);
-  const left = relocateNpcs(s);
-  trigger(s, 'act:doubt');
-  return left;
+  return [];
 }
 
 // ---------- parse cleaning ----------

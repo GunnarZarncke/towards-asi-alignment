@@ -8,6 +8,8 @@ export const CONFIG = Object.freeze({
   /** engine.md working scales (O-09). Minutes of visit clock per fuel spent in that act. */
   MINUTES_PER_FUEL: Object.freeze({ welcome: 4, doubt: 2, decision: 1 }),
   DAY_START: 9 * 60,
+  /** world.md: Ian leaves the commons for the investor update. That departure starts Act II. */
+  DOUBT_AT: 11 * 60,
   REVIEW_AT: 17 * 60 + 30,
   DATE_LABEL: 'Friday 19 November 2027',
   /** O-44 / O-09: handset reply delay in fuel. NORA is shorter than a person. */

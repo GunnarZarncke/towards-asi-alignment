@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newSession } from '../lib/game.mjs';
+import { newSession, spend } from '../lib/game.mjs';
+import { CONFIG } from '../lib/world/config.mjs';
 import { NPC_DEFS, templateText, glueMove } from '../lib/world/npcs.mjs';
 import { pickStance } from '../lib/world/glue.mjs';
 import { P, startedSession, say, walk } from './helpers.mjs';
@@ -34,13 +35,18 @@ test('first in-room talk opens with glue; a later stay does not repeat opening',
   assert.notEqual(b.lines[0]?.move?.slot, 'opening');
 });
 
-test('Ian’s closing glue fires when he leaves commons after talking', () => {
+test('Ian’s closing glue fires when he leaves commons for the investor update', () => {
   const s = newSession();
-  const r = say(s, 'ian', P('ask', 'about', { topic: 'review' }), 'What about the review?');
-  const close = r.lines.filter(l => l.move?.type === 'glue' && l.move.slot === 'closing');
+  say(s, 'ian', P('ask', 'about', { topic: 'review' }), 'What about the review?');
+  assert.equal(s.act, 'welcome');
+  assert.equal(s.npcs.ian.room, 'commons');
+  const need = CONFIG.DOUBT_AT - s.minute;
+  const lines = spend(s, Math.ceil(need / CONFIG.MINUTES_PER_FUEL.welcome));
+  assert.equal(s.act, 'doubt');
+  assert.equal(s.npcs.ian.room, 'review');
+  const close = lines.filter(l => l.move?.type === 'glue' && l.move.slot === 'closing');
   assert.equal(close.length, 1);
   assert.match(close[0].text, /paper|building|defend/i);
-  assert.notEqual(s.npcs.ian.room, 'commons');
 });
 
 test('Jun work lines stay first person; texture facts are not read aloud verbatim', () => {

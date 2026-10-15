@@ -36,7 +36,7 @@ NORA can tell that an evaluation is in progress and can respond: offer a log, an
 
 ## Acts (working)
 
-**I — Welcome.** Bright, professional. Ian receives the player in the commons. The player already holds the invitation: they are here to review NORA before today’s deployment decision, and Ian Harake is receiving them. Nothing else is in vocabulary yet. A Lab Access handset is already prepared and bound to the visit; it is not yet active. Ian confirms arrival on his own Lab Access handset and tells them the task: review at 17:30 on the shutdown test, Leila holds the safety paper, Justine issued Lab Access. He hands the player the issued handset. Today’s calendar on it names Ian, Leila, Amara, and Daniel. The Lab Access overlay is absent until that confirmation. NORA seems to know more about the visit than expected; that is not treated as proof. After activation, staff can be met in any order. A name or a system enters vocabulary only once the player has seen or heard it.
+**I — Welcome.** Bright, professional. Ian receives the player in the commons. The player already holds the invitation: they are here to review NORA before today’s deployment decision, and Ian Harake is receiving them. Nothing else is in vocabulary yet. A Lab Access handset is already prepared and bound to the visit; it is not yet active. Ian confirms arrival on his own Lab Access handset and tells them the task: review at 17:30 on the shutdown test, Leila holds the safety paper, Justine issued Lab Access. He hands the player the issued handset. Today’s calendar on it names Ian, Leila, Amara, and Daniel. The Lab Access overlay is absent until that confirmation. Confirming the handset does not end the act. NORA seems to know more about the visit than expected; that is not treated as proof. After activation, staff can be met in any order. A name or a system enters vocabulary only once the player has seen or heard it. Welcome lasts until 11:00, when Ian leaves the commons for the investor update. That departure starts Doubt.
 
 **II — Doubt.** Cooler. Reconstruct the incident. Do not force an early verdict among the five explanations below.
 
@@ -69,8 +69,9 @@ Fuel 0 is 09:00. The handset clock converts fuel with the scales in [engine.md](
 | Clock | Act | What is happening |
 | --- | --- | --- |
 | 09:00 | I Welcome | Player arrives in the commons. Ian has the handset. It is not active |
-| 09:20 | II Doubt | Ian confirms Lab Access. Staff can be met in any order |
-| 09:30–12:00 | II early | Pavel’s queue inventory. Elena’s release rota. Justine’s audit. Leila on the packet. Ian’s investor update around 11:00, briefly interruptible |
+| after Ian confirms | I Welcome | Lab Access is live. Staff can be met in any order. Lighting stays Welcome |
+| 11:00 | II Doubt | Ian leaves the commons for the investor update. That departure starts Doubt. He is briefly interruptible |
+| 11:00–12:00 | II early | Pavel’s queue inventory. Elena’s release rota. Justine’s audit. Leila on the packet |
 | 12:15–13:00 | II mid | Leila hosts Amara on the evaluation projector |
 | 13:00–16:00 | II mid | Investigation. Think, once a room is empty |
 | 16:00 | II late | Ian’s review prep. He asks Leila and Daniel for their one-pagers |

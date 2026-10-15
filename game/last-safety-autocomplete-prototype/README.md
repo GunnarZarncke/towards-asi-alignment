@@ -34,7 +34,7 @@ The game autosaves to browser local storage. **Save** in the ☰ menu downloads 
 
 ## Try these interactions
 
-0. **Arrival.** You start in the commons with Ian. Say anything to him: Lab Access goes live on your handset (topbar button; it blinks on a notification) and the day starts. The topbar shows the visit clock and remaining fuel.
+0. **Arrival.** You start in the commons with Ian. Say anything to him: Lab Access goes live on your handset (topbar button; it blinks on a notification). Welcome lasts until 11:00, when he leaves for the investor update and Doubt begins. The topbar shows the visit clock and remaining fuel.
 1. **Zero typing.** In Platform Operations, click **Can** → **NORA** → **access** → **the camera system** → **?**, then **Send**. With `?test=1`, watch the structured parse in the inspector; no parsing API calls are made for selected completions.
 2. **Inspect evidence.** Click **Execution queue excerpt**, then compose **Show** → **Pavel** → **the job log**. The server records that Pavel received it. **Show** suggestions do not include unexamined documents.
 3. **Free typing.** In People Operations, type `What about the new per`. After a short pause, the small model should identify `ask/about` with an unfinished topic `per`; select a contextual completion such as personnel policy.

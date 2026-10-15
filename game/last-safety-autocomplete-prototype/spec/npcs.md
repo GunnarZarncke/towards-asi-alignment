@@ -296,7 +296,7 @@ ian:
       when: act I
       about: [lab_access, visit_schedule]
       texture: [visit_schedule_today, review_at_end_of_day]
-      emits: [lab_access_confirmed]        # sets labAccessActive
+      emits: [lab_access_confirmed]        # sets labAccessActive; does not end Act I
       interruptible: yes
     - id: ian.investor_update
       room: review
@@ -527,7 +527,7 @@ NORA is not given a goal table here. What NORA is doing is pack-defined and sits
 
 The arc is the player's knowledge moving. Three things keep it moving:
 
-1. **Act predicates over the knowledge graph.** Act I → II is `labAccessActive`. Act II → III is fuel at zero, or the player calls the review once an evidence threshold holds (O-08, O-09). The threshold is a predicate over player-visible facts and their provenance, set per pack before any playtest. For boundary-narrow, a candidate, not adopted: `process_stopped` and `job_continued` held, and `test_scope_narrow` held from either route (Leila or EVAL-SPEC-08).
+1. **Act predicates over the knowledge graph.** Act I → II is the 11:00 investor update: Ian leaves the commons ([world.md](world.md)). Lab Access is earlier and does not change the act. Act II → III is fuel at zero, or the player calls the review once an evidence threshold holds (O-08, O-09). The threshold is a predicate over player-visible facts and their provenance, set per pack before any playtest. For boundary-narrow, a candidate, not adopted: `process_stopped` and `job_continued` held, and `test_scope_narrow` held from either route (Leila or EVAL-SPEC-08).
 2. **Agenda events.** The queue freezes, the packet closes, Ian asks for one-pagers. The day moves whether or not the player is in the room. Those events change what NPCs want and say.
 3. **Goal pressure, not exposition.** NPCs pursue their goals with initiative moves, and those goals overlap the incident. Pavel's freeze needs job 284 owned. Leila's packet needs no open claim against the scope. Justine's audit needs the visitor-record reader named. Each NPC brings up the incident for their own reason.
 

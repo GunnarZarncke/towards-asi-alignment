@@ -1,13 +1,23 @@
 import { makeParse } from '../lib/grammar.mjs';
 import { newSession, clientState } from '../lib/game.mjs';
+import { CONFIG } from '../lib/world/config.mjs';
 import { applyAction, walk } from '../lib/world/actions.mjs';
 
 export const P = (kind, relation, fields = {}) => makeParse({ kind, relation, open_slot: 'none', source: 'completion', ...fields });
 
-/** A session past Act I: one sentence to Ian in commons confirms Lab Access. */
+/**
+ * Lab Access is live and the clock has reached Ian’s investor update, so the act is doubt.
+ * The clock moves by logged walks, so a save replays to the same state.
+ */
 export function startedSession() {
   const s = newSession();
   applyAction(s, 'respond', { parse: P('ask', 'about', { topic: 'review' }), addressee: 'ian', text: 'What about the review?' });
+  let guard = 0;
+  while (s.minute < CONFIG.DOUBT_AT && guard < 80) {
+    applyAction(s, 'go', { room: s.room === 'commons' ? 'collab' : 'commons' });
+    guard++;
+  }
+  if (s.room !== 'commons') applyAction(s, 'go', { room: 'commons' });
   return s;
 }
 

@@ -41,7 +41,7 @@ function assertNoLeak(view, s) {
   }
 }
 
-test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the day', () => {
+test('Act I: commons, no Lab Access, no contacts; one sentence to Ian opens the handset and stays Welcome', () => {
   const s = newSession();
   let c = clientState(s);
   assert.equal(c.act, 'welcome');
@@ -54,8 +54,9 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian starts the
   assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue') && !s.vocab.includes('pavel'));
   say(s, 'ian', P('ask', 'about', { topic: 'review' }));
   c = clientState(s);
-  assert.equal(c.act, 'doubt');
+  assert.equal(c.act, 'welcome');
   assert.equal(c.labAccessActive, true);
+  assert.equal(s.npcs.ian.room, 'commons');
   assert.ok(c.learnedFacts.some(f => f.id === 'auditor_brief'));
   assert.ok(s.vocab.includes('lab_access') && s.vocab.includes('justine') && s.vocab.includes('safety_case') && s.vocab.includes('shutdown_test'));
   assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue'));
