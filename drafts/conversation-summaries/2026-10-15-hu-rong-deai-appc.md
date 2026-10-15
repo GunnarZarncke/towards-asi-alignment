@@ -21,4 +21,4 @@ Prompts: (session paraphrase; no telemetry id)
 - `appendices/appC-institutional-translation.tex`
 
 ## Commits
-- `f0fe755c1` App C: cite Hu/Rong on decentralized-AI addressability gaps.
+- `c6ad80ab5` App C: cite Hu/Rong on decentralized-AI addressability gaps.
