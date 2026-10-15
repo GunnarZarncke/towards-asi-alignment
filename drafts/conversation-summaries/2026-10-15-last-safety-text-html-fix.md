@@ -27,4 +27,4 @@ uptake: local
 - `node --test tests/text-html-imports.test.mjs tests/text-console.test.mjs` — pass 8/8.
 
 ## Commits
-- (pending)
+- `39cd00262` Fix Last Safety browser text console (/text.html).
