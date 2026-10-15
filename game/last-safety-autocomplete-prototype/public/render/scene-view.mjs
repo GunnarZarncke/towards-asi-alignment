@@ -38,6 +38,18 @@ export function buildSceneView(state, options = {}) {
     });
   }
 
+  for (const note of state.notes || []) {
+    if (note.room !== roomId) continue;
+    hotspots.push({
+      id: note.id,
+      kind: 'object',
+      label: note.title,
+      examined: Boolean(note.read),
+      sealed: !note.read,
+      note: true,
+    });
+  }
+
   if (roomId === 'platform' && state.labAccessActive) {
     hotspots.push({
       id: 'player_terminal',

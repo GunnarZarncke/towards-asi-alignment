@@ -52,6 +52,7 @@ export function options(s) {
     if (to) opts.push({ label: `Walk to ${to}`, action: 'go', args: { room: to } });
   }
   for (const ev of c.evidence.filter(x => x.room === c.room)) opts.push({ label: `Read the screen "${ev.title}"${ev.examined ? ' (again)' : ''}`, action: 'inspect', args: { id: ev.id } });
+  for (const note of (c.notes || []).filter(x => x.room === c.room)) opts.push({ label: `Read the note "${note.title}"${note.read ? ' (again)' : ''}`, action: 'inspect', args: { id: note.id } });
   if (t.labAccessActive) {
     for (const f of t.files) if (!f.text) opts.push({ label: `Handset: open file ${f.rel} ("${f.name}")`, action: 'tool', args: { tool: 'file.read', rel: f.rel } });
     const contacts = new Set((t.contacts || []).map(x => x.id));
@@ -79,6 +80,8 @@ export function render(s, view) {
   L.push(`${c.clock.timeLabel}, ${c.clock.dateLabel}. Act: ${c.act}. Fuel left: ${c.fuel}.`);
   L.push(`You are in: ${c.room}. ${here.length ? 'Present: ' + here.map(id => `${c.actors[id].name} (${c.actors[id].role}${c.actors[id].presence === 'hologram' ? ', projected' : ''})`).join('; ') : 'No one else is here.'}`);
   if (c.pendingQuestion) L.push(`${c.actors[c.pendingQuestion.npc]?.name} is waiting for your answer.`);
+  const notesHere = (c.notes || []).filter(n => n.room === c.room);
+  if (notesHere.length) L.push('In the room: ' + notesHere.map(n => n.title).join('; ') + '.');
   if (c.previous.length) L.push('Recent talk:', ...c.previous.slice(-6).map(x => `  ${x.role === 'npc' ? c.actors[x.npc]?.name : 'You'}: ${x.text}`));
   if (c.thought) L.push(`Thought bubble: ${JSON.stringify(c.thought).slice(0, 300)}`);
   const known = c.learnedFacts.map(f => `  - ${f.text}`);

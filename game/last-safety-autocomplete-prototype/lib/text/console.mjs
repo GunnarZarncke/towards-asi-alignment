@@ -16,14 +16,14 @@ import { matchPrefixIgnoreCase, reachableRoomChoices } from './tab-complete.mjs'
 const WALL = { back: 'north', front: 'south', left: 'west', right: 'east' };
 
 export const HELP = `Commands (a number picks from the last numbered list):
-  look | l              room, people, doors, screens
+  look | l              room, people, doors, screens, notes
   go <room>             walk there (several doors if needed); exits lists doors
-  read <screen>         read a screen in this room; records lists all screens
+  read <name>           read a screen or note in this room; records lists screens
   to <name>             face someone present
   s [words]             suggested sentences, optionally filtered by words
   say <text>  or just type the sentence
   think <topic>         think alone in an empty room; think lists topics
-  keep | close          keep the open thought as a note, or close it
+  keep | close          copy the open thought, or the last card you read, to Notes; close drops a thought
   know                  what you have learned
   file                  file the review
   phone | p             notifications, threads, pending access
@@ -76,6 +76,8 @@ export function createConsole(getSession, { phrase = false } = {}) {
   let menu = [];
   let addressee = null;
   let bound = null;
+  let usedPhone = false;
+  let lastCard = null;
 
   const cs = () => clientState(getSession());
   const ts = () => terminalState(getSession());
@@ -96,6 +98,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
       thought: c.thought ? JSON.stringify(c.thought) : null,
       callable: !!c.reviewCallable,
       ending: !!c.ending,
+      spoken: !!c.spoken,
       visited: seen?.visited || new Set(),
     };
   }
@@ -132,13 +135,29 @@ export function createConsole(getSession, { phrase = false } = {}) {
     const doors = exits(c);
     L.push(`Doors: ${doors.map(d => `${d.title} (${d.wall}${d.locked ? ', needs higher clearance' : ''})`).join('; ')}.`);
     const screens = c.evidence.filter(e => e.room === c.room);
+    const notes = (c.notes || []).filter(n => n.room === c.room);
     if (screens.length) {
       L.push('Screens:');
       screens.forEach((e, i) => L.push(`  ${i + 1}. ${e.title}${e.examined ? '' : ' (unread)'}`));
-      menu = screens.map(e => ({ run: () => read(e.id) }));
     }
+    if (notes.length) {
+      L.push('In the room:');
+      notes.forEach((n, i) => L.push(`  ${screens.length + i + 1}. ${n.title}${n.read ? '' : ' (unread)'}`));
+    }
+    const readable = [
+      ...screens.map(e => ({ id: e.id })),
+      ...notes.map(n => ({ id: n.id })),
+    ];
+    if (readable.length) menu = readable.map(x => ({ run: () => read(x.id) }));
+    L.push(...coachLines(c));
     if (c.pendingQuestion) L.push(`${c.actors[c.pendingQuestion.npc]?.name} is waiting for your answer.`);
     return L.join('\n');
+  }
+
+  function coachLines(c) {
+    if (!c.spoken) return ['write here to get information from persons in the room'];
+    if (c.labAccessActive && !usedPhone) return ['type phone — access tools, chat and information on your phone'];
+    return [];
   }
 
   /** Lines for everything that changed since the last snapshot. */
@@ -170,6 +189,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
     if (now.access !== last.access && t.lastAccess) L.push(`[phone] Access: ${t.lastAccess.reason || (t.lastAccess.ok ? 'granted' : 'refused')}`);
     if (now.thought && now.thought !== last.thought) L.push(thoughtText(c.thought));
     if (now.question && now.question !== last.question && now.room === last.room) L.push(`(${c.actors[c.pendingQuestion.npc]?.name} is waiting for your answer.)`);
+    if (now.room === last.room && now.spoken && !last.spoken) L.push(...coachLines(c));
     if (now.callable && !last.callable) L.push('You can file the review now: file.');
     if (now.ending && !last.ending) L.push(endingText(c));
     last = now;
@@ -233,17 +253,25 @@ export function createConsole(getSession, { phrase = false } = {}) {
   function read(id) {
     const r = applyAction(getSession(), 'inspect', { id });
     if (r.error) return [r.error];
-    return [`-- ${r.title} --`, r.body];
+    const lines = [`-- ${r.title} --`, r.body];
+    if (r.copy) {
+      lastCard = { id, title: r.title, body: r.body };
+      lines.push('keep — copy this onto your handset Notes');
+    }
+    return lines;
   }
 
   function readArg(arg) {
     const c = cs();
-    const here = c.evidence.filter(e => e.room === c.room);
+    const here = [
+      ...c.evidence.filter(e => e.room === c.room),
+      ...(c.notes || []).filter(n => n.room === c.room),
+    ];
     const e = pick(arg, here, x => x.title);
     if (e) return read(e.id);
-    const elsewhere = pick(arg, c.evidence, x => x.title);
+    const elsewhere = pick(arg, c.evidence, x => x.title) || pick(arg, c.notes || [], x => x.title);
     if (elsewhere) return [`"${elsewhere.title}" is in ${roomTitle(elsewhere.room)}.`];
-    return [`No screen "${arg}" here. Try look.`];
+    return [`Nothing called "${arg}" here. Try look.`];
   }
 
   function records() {
@@ -446,6 +474,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
     if (PHONE.has(verb)) {
       const no = needPhone();
       if (no) return no;
+      usedPhone = true;
     }
     switch (verb) {
       case 'help': case '?': return [HELP];
@@ -464,7 +493,14 @@ export function createConsole(getSession, { phrase = false } = {}) {
       case 'say': return rest ? say(rest) : suggest('');
       case 'think': return think(rest);
       case 'keep': {
-        const r = applyAction(getSession(), 'thought', { action: 'note' });
+        const s = getSession();
+        if (!s.thought && lastCard) {
+          if (!cs().labAccessActive) return ['You have no handset access yet.'];
+          const rel = `notes/${lastCard.id}.txt`;
+          const r = applyAction(s, 'tool', { tool: 'file.write', rel, name: lastCard.title, text: lastCard.body, kind: 'note' });
+          return [r.ok ? `Kept as a note: ${rel}.` : (r.reason || r.error || 'Could not keep that.')];
+        }
+        const r = applyAction(s, 'thought', { action: 'note' });
         return [r.error || `Kept as a note: ${r.rel}.`];
       }
       case 'close': return act('thought', { action: 'close' });
@@ -493,6 +529,8 @@ export function createConsole(getSession, { phrase = false } = {}) {
       last = null;
       addressee = null;
       menu = [];
+      usedPhone = false;
+      lastCard = null;
       seen = snapshot();
       seen.visited.add(seen.room);
       last = seen;

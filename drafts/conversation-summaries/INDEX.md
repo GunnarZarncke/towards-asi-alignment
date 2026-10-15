@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety onboarding hints** — Composer and Lab Access bubbles; one mechanic note per room without a screen, in the 3D view and the text console. | [2026-10-15-last-safety-onboarding-hints.md](2026-10-15-last-safety-onboarding-hints.md) |
 | 2026-10-15 | **Last Safety ending reachability** — O-29 witness tests for six `(arc, addOn)` endings; `npm run test:endings`. | [2026-10-15-last-safety-ending-reachability.md](2026-10-15-last-safety-ending-reachability.md) |
 | 2026-10-15 | **Last Safety access, doors, handset** — API gates; badge clearance 0→1→2; lunch/meetings; handset clearance, compact notices, note previews. | [2026-10-15-last-safety-access-doors-handset.md](2026-10-15-last-safety-access-doors-handset.md) |
 | 2026-10-15 | **Last Safety transcript reveal and composer focus** — NPC reply one sentence per second; Send/Enter keep focus in the composer. | [2026-10-15-last-safety-transcript-reveal-focus.md](2026-10-15-last-safety-transcript-reveal-focus.md) |

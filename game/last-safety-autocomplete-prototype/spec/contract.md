@@ -37,6 +37,8 @@ discoveredAt: id → number      // fuel index when the id became player-visible
 introduced: id[]               // actors, including nora, whose public role the player has heard
 roleDomains: { id, domains: DomainId[] }[]  // one row per introduced id; unintroduced rows are absent
 evidence: { id, title, room, examined }[]
+notes: { id, title, room, read }[]   // one mechanic note in each room that has no evidence screen. inspect does not learn a fact or add a showable record
+spoken: boolean                      // true once the player has sent a line
 previous: { role, text, npc?, refs?: id[] }[]
 asked: topic keys already asked   // stored; the ranker does not read this
 usage: { calls, input, output }
@@ -97,7 +99,7 @@ Built in the browser by `buildSceneView` (`public/render/scene-view.mjs`), a pur
 
 ```text
 roomId, act, camera: "play" | "surveillance",
-hotspots: { id, kind: "actor" | "object" | "exit" | "terminal", label, sublabel?, examined?, targetRoom?, restricted?, hologram? }[],
+hotspots: { id, kind: "actor" | "object" | "exit" | "terminal", label, sublabel?, examined?, targetRoom?, restricted?, hologram?, note? }[],
 lightingPreset: "welcome" | "doubt" | "decision",
 annotations: { id, targetHotspot, identity, confidence, activity, note }[]   (surveillance only)
 ```

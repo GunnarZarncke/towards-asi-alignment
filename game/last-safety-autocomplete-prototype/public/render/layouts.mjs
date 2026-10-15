@@ -146,7 +146,10 @@ const DRESS = {
   tech: {
     spot: [0, 0, 90],
     ceiling: [-8, -2.5, 3, 8].map(x => ({ at: [x, 0], w: 1.6, d: 0.4 })),
-    props: [{ type: 'securityCamera', wall: 'back', at: 0.8, y: 2.45 }],
+    props: [
+      { type: 'securityCamera', wall: 'back', at: 0.8, y: 2.45 },
+      { type: 'postedNote', wall: 'left', at: 0, y: 1.4, hotspot: 'spine_sign' },
+    ],
   },
   test: {
     spot: [1.6, 0.6, 200],
@@ -154,6 +157,7 @@ const DRESS = {
       { type: 'bench', at: [0, -1.05], rot: 0, opts: { len: 2.8 } },
       { type: 'cabinet', at: [-2.4, -1.35], rot: 0 },
       { type: 'plant', at: [2.4, 1.2], opts: { size: 0.9 } },
+      { type: 'postedNote', wall: 'back', at: 1.6, y: 1.45, hotspot: 'bay_placard' },
     ],
   },
   security: {
@@ -162,6 +166,7 @@ const DRESS = {
       { type: 'desk', at: [0, -1.05], rot: 0, opts: { monitor: 'dash', lamp: true } },
       { type: 'chair', at: [0, -0.2], rot: 180 },
       { type: 'cabinet', at: [-1.5, -1.4], rot: 0 },
+      { type: 'postedNote', wall: 'left', at: 0, y: 1.4, hotspot: 'control_card' },
     ],
   },
   courtyard: {
@@ -171,6 +176,7 @@ const DRESS = {
       { type: 'plant', at: [1.55, -1.15], opts: { size: 1 } },
       { type: 'sofa', at: [0.1, 0.35], rot: 0 },
       { type: 'plant', at: [1.4, 1.15], opts: { size: 0.85 } },
+      { type: 'postedNote', at: [-1.15, 1.05], hotspot: 'garden_card', opts: { stand: true } },
     ],
   },
   model: {
@@ -179,6 +185,7 @@ const DRESS = {
       { type: 'workstation', at: [2.3, -0.45], rot: 0, opts: { lamp: true } },
       { type: 'chair', at: [2.3, 0.45], rot: 180 },
       { type: 'plant', at: [-3.2, -1.4], opts: { size: 1 } },
+      { type: 'postedNote', wall: 'right', at: 0, y: 1.4, hotspot: 'studio_card' },
     ],
   },
   service: {
@@ -186,6 +193,7 @@ const DRESS = {
     props: [
       { type: 'cabinet', at: [-1.3, -0.85], rot: 0 },
       { type: 'cabinet', at: [-0.3, -0.85], rot: 0 },
+      { type: 'postedNote', wall: 'left', at: 0.2, y: 1.35, hotspot: 'kitchen_note' },
     ],
   },
   collab: {
@@ -195,6 +203,7 @@ const DRESS = {
       { type: 'chair', at: [1.35, 0.15], rot: 90 },
       { type: 'chair', at: [3.25, 0.15], rot: 270 },
       { type: 'plant', at: [-4.6, 0.5], opts: { size: 0.9 } },
+      { type: 'postedNote', wall: 'back', at: -2, y: 1.45, hotspot: 'bay_card' },
     ],
   },
   quiet: {
@@ -202,6 +211,7 @@ const DRESS = {
     props: [
       { type: 'desk', at: [0.7, -0.7], rot: 0, opts: { lamp: true, laptop: true } },
       { type: 'chair', at: [0.7, 0.15], rot: 180 },
+      { type: 'postedNote', wall: 'right', at: 0, y: 1.35, hotspot: 'quiet_card' },
     ],
   },
   commons: {
@@ -209,8 +219,9 @@ const DRESS = {
     props: [
       { type: 'sofa', at: [-3.4, 0.15], rot: 90 },
       { type: 'plant', at: [-4.7, -0.85], opts: { size: 1 } },
-      { type: 'standingTable', at: [1.2, 0.2] },
+      { type: 'standingTable', at: [1.2, 0.2], hotspot: 'visitor_card', opts: { card: true } },
     ],
+    interact: { visitor_card: [1.2, 0.75, 180] },
   },
   review: {
     spot: [0.4, 0.45, 190],
@@ -219,6 +230,7 @@ const DRESS = {
       { type: 'roundTable', at: [-1.6, 0.2] },
       { type: 'chair', at: [-2.55, 0.2], rot: 90 },
       { type: 'chair', at: [-0.65, 0.2], rot: 270 },
+      { type: 'whiteboard', wall: 'back', at: 2.2, y: 1.55, hotspot: 'review_agenda' },
     ],
   },
 };
@@ -263,6 +275,7 @@ function generatedLayout(id) {
     doors,
     props: dress.props || [],
     spots: { player: dress.spot || [0, 0, 180] },
+    interact: dress.interact,
   };
 }
 

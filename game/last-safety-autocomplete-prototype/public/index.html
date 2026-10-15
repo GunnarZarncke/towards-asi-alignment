@@ -25,9 +25,18 @@
   <div class="hud-cluster hud-cluster-end">
     <span class="pill debug hud-debug" id="mode">Loading</span>
     <div class="hud hud-tools">
-      <button type="button" class="scene-mode" id="modeMap" aria-pressed="false" title="Floorplan">Map</button>
+      <button type="button" class="scene-mode" id="modeMap" hidden aria-pressed="false" title="Floorplan" aria-label="Lab map">
+        <svg class="map-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M15 5.2 9.2 3 4 4.8v14.4l5.2-1.8L15 19.2l5-1.8V3.4L15 5.2zM9.2 4.7v11.8L5.5 17.9V6.2l3.7-1.5zm1.6.5 4.2 1.5v11.8l-4.2-1.4V5.2z"/></svg>
+        Map
+      </button>
       <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
-      <button type="button" class="minor handset-btn" id="phoneBtn" hidden>Lab Access</button>
+      <span class="handset-slot">
+        <button type="button" class="minor handset-btn" id="phoneBtn" hidden aria-label="Lab Access phone">
+          <svg class="phone-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 2.2h8A1.8 1.8 0 0 1 17.8 4v16a1.8 1.8 0 0 1-1.8 1.8H8A1.8 1.8 0 0 1 6.2 20V4A1.8 1.8 0 0 1 8 2.2zM8 4v16h8V4H8zm4 14.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></svg>
+          <span>Lab Access</span>
+        </button>
+        <p class="coach-bubble coach-phone" id="phoneCoach" hidden>access tools, chat and information on your phone</p>
+      </span>
     </div>
     <div class="hud hud-menu">
       <button type="button" class="minor" id="menuBtn" aria-expanded="false" aria-label="Menu">☰</button>
@@ -68,6 +77,7 @@
       </div>
     </div>
     <div class="suggestion-foot"><span id="parserIndicator" class="muted debug">Local grammar</span></div>
+    <p class="coach-bubble coach-speak" id="speakCoach" hidden>write here to get information from persons in the room</p>
     <div class="inputrow dock-input"><textarea id="utterance" rows="1" aria-label="Your utterance" placeholder="Tap to speak… Completions help say a question, not find its answer."></textarea><button id="send" class="send" title="Speak">Send ↗</button></div>
   </div>
 </section>

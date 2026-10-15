@@ -47,7 +47,7 @@ What exists now, and what each file is for:
 | `tests/documents.test.mjs` | Pack-conditional render. Catalog ids and slugs. `leanKnowledge` false docs do not add knowledge edges |
 | `tests/access.test.mjs` | Tree shape, list-before-children, delay order, catalog paths exist |
 | `tests/terminal.test.mjs` | Isolate tools only. Oracle paths and unreleased messages stay off the projection. Overlay waits on `labAccessActive`. Fixture has no session problems |
-| `tests/engine.test.mjs` (layer 2) | Act I and Lab Access; fuel and clock; leak walk over `clientState`; both review routes; tutorial think; DM delay and provenance; Amara's hologram; save/replay equality and import rejection |
+| `tests/engine.test.mjs` (layer 2) | Act I and Lab Access; fuel and clock; leak walk over `clientState`; both review routes; tutorial think; room notes; DM delay and provenance; Amara's hologram; save/replay equality and import rejection |
 | `tests/npc-enumerate.test.mjs` (layer 3) | Three states × eight NPCs × the finite parse grid: non-empty move set, payload facts visible, shares and acts owned, goals do not name explanation ids |
 | `tests/incident-strategies.test.mjs` (layer 4) | The five scripts in [incident.md](incident.md) land on their score pairs, with provenance |
 

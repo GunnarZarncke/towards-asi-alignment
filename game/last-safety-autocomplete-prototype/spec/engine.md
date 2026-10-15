@@ -69,7 +69,7 @@ Implemented: `go(room)`, `inspect(id)`, accept a cleaned `Parse` in `determinist
 
 `go(room)` walks one door on the floorplan. The session badge is `clearance`: 0 before host confirmation, 1 for the hub after Lab Access activates, 2 after Ian introduces Justine or the player states a review reason to her (see `lib/world/visitor-clearance.mjs`). A door that asks for more does not open. Rooms that do not share an edge have no passage.
 
-`inspect` requires the evidence’s room. Examining the job log also reveals `job_284`. Facts on the evidence record enter `learnedFacts`.
+`inspect` requires the evidence’s room. Examining the job log also reveals `job_284`. Facts on the evidence record enter `learnedFacts`. A room note (one per room that has no evidence screen) is also `inspect`: it returns its text, `copy: true`, and marks the note read. It does not enter `learnedFacts`, vocabulary, or the evidence list. The client offers to copy that text into handset Notes, the same dialog as a learned fact.
 
 `deterministicResponse` requires the addressed NPC to be in the room. `show` records that this NPC received that evidence. Known topics return authored lines. Anything else returns no line, and composition may call `freeReply`. That is the prototype. The target replaces it with move generation ([npcs.md](npcs.md)): every parse to a present NPC yields legal moves from knowledge, policy, referral edges, goals, and agenda. Which of those moves may vary is [Choosing a move](npcs.md#choosing-a-move).
 

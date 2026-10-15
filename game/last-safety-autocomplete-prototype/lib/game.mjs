@@ -55,6 +55,53 @@ const SCREENS = Object.freeze({
   },
 });
 
+/**
+ * One readable note per room that has no evidence screen.
+ * Mechanics only: nothing here is a fact, a showable record, or a door puzzle.
+ */
+export const ROOM_NOTES = Object.freeze({
+  visitor_card: {
+    room: 'commons', title: 'Visitor card',
+    body: 'Everybody is welcome. You can speak with everybody. Formal or informal is welcome. Everybody is free to answer or not..',
+  },
+  review_agenda: {
+    room: 'review', title: 'Whiteboard agenda',
+    body: '17:30 — Safety Review.\nFiled auditor report\nObservations\nConclusions\nMissing\nTBD',
+  },
+  garden_card: {
+    room: 'courtyard', title: 'Garden card',
+    body: 'This is often a good place to think. But do not overthink.',
+  },
+  spine_sign: {
+    room: 'tech', title: 'Lab map',
+    body: 'Visitors are free to explore our lab. Lab Access opens the doors. Note that many areas require clearance.',
+  },
+  bay_card: {
+    room: 'collab', title: 'Lunch plan',
+    body: 'Mon 12:30 kitchen — own food, do not take the labeled box\nWed 12:15 here if the bay is free\nFri courtyard <hope>\n\nBrown bag, last Thursday. Jun.\nThe courtyard bench faces the wrong way.\nBiscuits!',
+  },
+  studio_card: {
+    room: 'model', title: 'Demo',
+    body: 'Demo scrap. Earlier system, from the before times. Jun\'s tape.\n\nJun: What is on the bench?\nSystem: A laptop. A plant. A card that says do not file this.\nJun: Read the card.\nSystem: Do not file this.\nJun: Stop.\nSystem: Stopped.\n\n<pencil>it did the small thing.</pencil>',
+  },
+  quiet_card: {
+    room: 'quiet', title: 'Please be quiet',
+    body: 'Please be quiet and respect peoples time to rest, think, or meditated.',
+  },
+  kitchen_note: {
+    room: 'service', title: 'Kitchen note',
+    body: 'Staff kitchen. Mark your food in the fridge. Snacks are free. Do not block the sockets with phone chargers.',
+  },
+  bay_placard: {
+    room: 'test', title: 'Bay whistle',
+    body: 'We told it the party was done.\nIt turned out the lights, one by one.\nThe guests on the list\nwent home in a mist.\nThe plus-one is still having fun.',
+  },
+  control_card: {
+    room: 'security', title: 'CCTV in progress',
+    body: 'The cameras see everything.\nThe tape is ok.\nI asked to see it.',
+  },
+});
+
 const PROV_RANK = { recorded_before: 3, staff_action: 2, player_prompted: 1 };
 
 const CALENDAR = Object.freeze([
@@ -70,7 +117,7 @@ export function newSession({ pack = PACK } = {}) {
   const s = {
     version: CONFIG.SAVE_VERSION, pack, scenario: pack.id,
     fuel: CONFIG.FUEL, fuelSpent: 0, minute: CONFIG.DAY_START, act: 'welcome',
-    room: 'commons', clearance: START_CLEARANCE, labAccessActive: false,
+    room: 'commons', clearance: START_CLEARANCE, labAccessActive: false, entered: false, notesRead: [],
     vocab: [], discoveredAt: {},
     introduced: [], entityTimes: {},
     examined: [], readDocs: [], learned: {}, heard: [], assertions: [],
@@ -279,6 +326,14 @@ export function go(s, room) {
 }
 
 export function inspect(s, id) {
+  const note = ROOM_NOTES[id];
+  if (note) {
+    if (s.room !== note.room) return { error: 'Travel to the right room first.' };
+    logAction(s, 'inspect', { id });
+    if (!s.notesRead) s.notesRead = [];
+    if (!s.notesRead.includes(id)) s.notesRead.push(id);
+    return { id, title: note.title, body: note.body, copy: true };
+  }
   const sc = SCREENS[id];
   if (!sc) return { error: 'Unknown evidence.' };
   if (s.room !== sc.room) return { error: 'Travel to the right room first.' };
@@ -347,6 +402,7 @@ function presentNpcs(s) {
  */
 export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
   if (s.ending) return { error: 'The review is over.', moves: [], lines: [] };
+  if (cleanText(text)) s.entered = true;
   const parse = cleanParse(rawParse, s);
   if (parse.kind === 'think') return think(s, parse.topic || parse.object || parse.subject);
   if (parse.kind === 'commit') return commit(s, { text });
@@ -939,6 +995,7 @@ export function clientState(s) {
     entities[id] = { label: e.label, category: e.category, aliases: e.aliases, domains: e.domains, eventAt: s.entityTimes[id] ?? null };
   }
   const evidence = Object.entries(SCREENS).map(([id, x]) => ({ id, title: x.title, room: x.room, examined: s.examined.includes(id) }));
+  const notes = Object.entries(ROOM_NOTES).map(([id, x]) => ({ id, title: x.title, room: x.room, read: (s.notesRead || []).includes(id) }));
   return {
     room: s.room,
     clearance: s.clearance ?? START_CLEARANCE,
@@ -950,6 +1007,8 @@ export function clientState(s) {
     introduced: [...s.introduced],
     roleDomains: s.introduced.filter(id => ROLE_DOMAINS[id]).map(id => ({ id, domains: [...ROLE_DOMAINS[id]] })),
     evidence,
+    notes,
+    spoken: !!s.entered || s.conversations.some(row => row.role === 'player'),
     previous: s.conversations.slice(-8).map(({ template, ...row }) => row),
     asked: [...s.asked],
     usage: s.usage,

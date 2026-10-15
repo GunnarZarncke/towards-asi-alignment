@@ -27,9 +27,22 @@ test('start describes the room; later commands do not reprint it', async () => {
   assert.match(outs[0], /Commons \/ Arrival/);
   assert.match(outs[0], /Ian Harake/);
   assert.match(outs[0], /Doors:/);
+  assert.match(outs[0], /Visitor card/);
+  assert.match(outs[0], /write here to get information from persons in the room/);
   const st = await run('status');
   assert.doesNotMatch(st, /Doors:/);
   assert.match(await run('look'), /Doors:/);
+});
+
+test('a room note reads in place and does not add a fact', async () => {
+  const { s, run } = setup();
+  const facts = clientState(s).learnedFacts.length;
+  const out = await run('read visitor');
+  assert.match(out, /-- Visitor card --/);
+  assert.match(out, /speak with everybody/);
+  assert.match(out, /keep — copy this onto your handset Notes/);
+  assert.equal(clientState(s).learnedFacts.length, facts);
+  assert.match(await run('read garden'), /Garden card/);
 });
 
 test('phone is closed before Lab Access; a picked sentence prints only the change', async () => {
@@ -39,6 +52,7 @@ test('phone is closed before Lab Access; a picked sentence prints only the chang
   const out = await run('1');
   assert.match(out, /^Ian Harake: /m);
   assert.match(out, /\[phone\] Lab Access is active/);
+  assert.match(out, /type phone — access tools, chat and information on your phone/);
   const again = await run('status');
   assert.doesNotMatch(again, /Lab Access is active/);
   assert.match(await run('phone'), /== Lab Access ==/);

@@ -6,7 +6,7 @@ The same game as the room view, with words for the picture. It plays one session
 
 ## What it shows
 
-- **Room:** title, the floorplan `role` text, windows, people present (projected people marked), doors with compass wall and whether the badge opens them, screens with read/unread. The floorplan `people` field is not shown; presence comes from state.
+- **Room:** title, the floorplan `role` text, windows, people present (projected people marked), doors with compass wall and whether the badge opens them, screens with read/unread, and a room note when that room has one (`In the room:`). The floorplan `people` field is not shown; presence comes from state. Until the player has spoken, the room also says to write to people who are there. After that, until a phone command, it says to type `phone`.
 - **Talk:** NPC lines as `Name: text`. The player's own line is not echoed.
 - **Movement:** arrivals `Name is here now.`; departures `Name heads to {room title}.` (same destination the graphical room list shows on door buttons).
 - **Phone:** lines prefixed `[phone]` for new thread messages, notifications (thread notifications are skipped; the message itself prints), and access replies.
@@ -24,11 +24,11 @@ After each command the console prints the command's own result, then only what c
 | --- | --- |
 | `look`, `exits`, `records`, `who` | room, doors, every screen with its room, people |
 | `go <room>` | walk; several doors if needed (one `go` action per door, so fuel and clock match the room view) |
-| `read <screen>` | inspect a screen in this room; names the room if it is elsewhere |
+| `read <name>` | inspect a screen or note in this room; names the room if it is elsewhere. `records` lists screens only |
 | `to <name>` | face someone present |
 | `s [words]` | complete sentences from the O-19 ranker, filtered by words |
 | `say <text>` | typed sentence |
-| `think [topic]`, `keep`, `close` | thought in an empty room; keep writes the note |
+| `think [topic]`, `keep`, `close` | thought in an empty room; keep writes the thought, or the last room card you read, into handset Notes |
 | `know`, `status`, `file` | learned facts, clock and act, file the review |
 | `phone`, `files`, `open`, `msg <who> [text]`, `access`, `request <path> [verb]`, `note`, `share`, `contacts`, `calendar` | handset, after `labAccessActive`. **`open`** lists files when bare; opens by case-insensitive prefix on display name, path, or basename (like **`go`** for rooms). |
 

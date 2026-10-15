@@ -259,7 +259,7 @@ export class RoomRenderer {
       anchor.y = this.box.max.y + 0.18;
       const marker = el('button', `room3d-marker kind-${h.kind}${h.examined ? ' examined' : ''}${h.restricted ? ' restricted' : ''}`, this.markerLayer);
       marker.type = 'button';
-      const icon = h.restricted ? '⊘' : h.kind === 'exit' ? '→' : h.kind === 'terminal' ? '⌨' : h.examined ? '✓' : '▤';
+      const icon = h.restricted ? '⊘' : h.kind === 'exit' ? '→' : h.kind === 'terminal' ? '⌨' : h.note && !h.examined ? '✎' : h.examined ? '✓' : '▤';
       const status = h.kind === 'object' ? (h.examined ? ' · examined' : ' · not yet read') : '';
       marker.innerHTML = `<span class="mk-ico">${icon}</span><span class="mk-label">${esc(h.label)}</span>`;
       marker.setAttribute('aria-label', `${h.label}${status}`);

@@ -40,7 +40,7 @@ Per location, once gate 2 starts:
 
 Assets are shared across rooms. Missing ids fail a check; they are not replaced with a lookalike at runtime.
 
-Hotspots come from the scene view in the contract. A prop that is only art is not an inspect target.
+Hotspots come from the scene view in the contract. A prop that is only art is not an inspect target. Rooms without an evidence screen have one note hotspot (`ClientState.notes`): a card, sign, or the review-room whiteboard. The commons card sits on the standing table. The marker is a pencil until the note is read. Reading one opens the same Add to Notes dialog as a learned fact, with the card’s own text.
 
 ## Surveillance
 
@@ -96,7 +96,7 @@ On a viewport narrower than the room (a phone held upright), the canvas is at le
 
 Debug panels show only in test mode: the parser inspector (structured meaning, construction trace, resolving “it”, API usage), the demo/live pill, and the parser indicator. Test mode is `?test=1` on the URL, and always on in `npm run dev:ui`. The handset's own Parser inspector setting ([terminal.md](terminal.md)) is separate and stays inside the phone.
 
-The floorplan button opens the verified courtyard plan (`public/floorplan.svg`). The current room is marked. A click walks one door from `lib/floorplan.mjs`. The badge shows session `clearance` (0 → 1 → 2 during Act I). Clearance 2 still leaves the test bay and security control shut (they need 3). The engine rejects any other move.
+The floorplan button stays hidden until the player has read the lab-map note in the technical corridor. It then blinks until it is opened once. It opens the verified courtyard plan (`public/floorplan.svg`). The current room is marked. A click walks one door from `lib/floorplan.mjs`. The badge shows session `clearance` (0 → 1 → 2 during Act I). Clearance 2 still leaves the test bay and security control shut (they need 3). The engine rejects any other move.
 
 The player computer is an issued **Lab Access** handset overlay specified in [terminal.md](terminal.md). This lane does not edit `public/terminal/`. Graphics reserves a right-hand slot on desktop and a full-screen slot on a narrow viewport; the terminal lane draws the bezel, homescreen, and apps. Draw that overlay only when `ClientState.labAccessActive` is true. Before activation, reserve no launcher and do not blink. After activation, a room object of kind `terminal` may be the pocketed handset; tapping it, or a persistent launcher, opens the overlay. When the terminal says a notification is unread, that object blinks. The blink carries no text. The Photo app **is** the main room view: tapping Photo closes the handset overlay and hides all other room chrome. The player pans and pinches the live Three.js view; only a round shutter remains on screen. Shutter writes a centered portrait crop to `photos/` via `file.write`, then Lab Access reopens on the saved file. Esc cancels and restores the phone.
 
@@ -108,6 +108,8 @@ Composer behavior to preserve:
 
 - One action can be a tap, a partial type plus a completion, or free text.
 - Composer placeholder carries the completion hint (after “Tap to speak…”): completions help say a question; they do not answer it.
+- Until `spoken` is true, the composer blinks and a bubble over it says to write there to get information from people in the room. The bubble stays until a line is sent.
+- After that, and only once Lab Access is active, the launcher shows a phone mark beside the words, blinks, and a bubble says the phone is where tools, chat, and information are. That bubble goes away when the launcher is opened. An unread notification still blinks with no text of its own.
 - Parser indicator distinguishes local grammar from a model call.
 
 Voice input is later, not this lane’s first job.

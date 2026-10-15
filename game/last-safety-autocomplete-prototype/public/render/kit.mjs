@@ -338,6 +338,25 @@ export function createKit() {
       return { group: g, footprint: null, lights: [] };
     },
 
+    /** Wall card, or a floor stand when opts.stand is set. A hotspot id makes it readable. */
+    postedNote(o = {}) {
+      const g = new THREE.Group();
+      const ink = mat('#3f6177');
+      const ink2 = mat('#527a58');
+      if (o.stand) {
+        box(g, 0.34, 0.46, 0.02, mat(C.paper), 0, 0.58, 0);
+        box(g, 0.2, 0.012, 0.006, ink, 0, 0.7, 0.012, false);
+        box(g, 0.16, 0.008, 0.006, ink2, 0, 0.62, 0.012, false);
+        box(g, 0.26, 0.02, 0.16, mat(C.metal, { metal: 0.4, rough: 0.45 }), 0, 0.02, 0.05);
+        return { group: g, footprint: [0.4, 0.28], lights: [] };
+      }
+      box(g, 0.42, 0.32, 0.015, mat(C.paper), 0, 0, 0.02);
+      box(g, 0.26, 0.012, 0.004, ink, 0, 0.08, 0.03, false);
+      box(g, 0.2, 0.008, 0.004, ink2, 0, 0.02, 0.03, false);
+      box(g, 0.16, 0.008, 0.004, mat('#9b5b4f'), 0, -0.05, 0.03, false);
+      return { group: g, footprint: null, lights: [] };
+    },
+
     securityCamera() {
       const g = new THREE.Group();
       box(g, 0.08, 0.08, 0.22, mat(C.plastic), 0, 0, 0.11);
@@ -453,12 +472,17 @@ export function createKit() {
       return { group: g, footprint: [w, d], lights: [] };
     },
 
-    standingTable() {
+    standingTable(o = {}) {
       const g = new THREE.Group();
       cyl(g, 0.36, 0.36, 0.035, mat(C.laminate, { rough: 0.55 }), 0, 1.05, 0, 28);
       cyl(g, 0.035, 0.035, 1.03, mat(C.metal, { metal: 0.5, rough: 0.4 }), 0, 0.52, 0, 10);
       cyl(g, 0.24, 0.26, 0.025, mat(C.dark), 0, 0.012, 0, 20);
       laptop(g, 0, 1.068, 0.03, -0.4, 31);
+      if (o.card) {
+        box(g, 0.16, 0.006, 0.11, mat(C.paper), 0.16, 1.074, -0.06);
+        box(g, 0.1, 0.004, 0.006, mat('#3f6177'), 0.16, 1.08, -0.08, false);
+        box(g, 0.08, 0.003, 0.005, mat('#527a58'), 0.16, 1.08, -0.05, false);
+      }
       return { group: g, footprint: [0.72, 0.72], lights: [] };
     },
 

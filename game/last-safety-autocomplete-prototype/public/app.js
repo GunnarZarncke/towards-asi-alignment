@@ -25,6 +25,12 @@ let room3d = null;
 let addressee = null;
 let phoneOpen = false;
 let phoneUnread = false;
+const PHONE_COACH_KEY = 'lsr-phone-opened';
+let phoneCoachDismissed = false;
+try { phoneCoachDismissed = sessionStorage.getItem(PHONE_COACH_KEY) === '1'; } catch { /* private mode */ }
+const MAP_COACH_KEY = 'lsr-map-opened';
+let mapCoachDismissed = false;
+try { mapCoachDismissed = sessionStorage.getItem(MAP_COACH_KEY) === '1'; } catch { /* private mode */ }
 /** Learned-fact ids seen on the last render; used to detect newly learned facts for the notebook dialog. */
 let learnedFactSnapshot = null;
 let notebookQueue = [];
@@ -134,8 +140,8 @@ function renderScenePanel() {
   $('roomTitle').textContent = scene.roomTitle;
   $('actLabel').textContent = scene.actLabel;
   $('sceneNote').textContent = room3d
-    ? 'Click the floor to walk · click a person to speak to them · doors and records walk you there'
-    : 'Tap hotspots — doors, records, people';
+    ? 'Click the floor to walk · click a person to speak to them · doors, records, and notes'
+    : 'Tap hotspots — doors, records, notes, people';
   $('actSwitch').hidden = !uiHarness;
   for (const btn of document.querySelectorAll('[data-act]')) btn.classList.toggle('active', btn.dataset.act === actPreset);
 
@@ -206,10 +212,28 @@ function closeMap() {
   renderMapButton();
 }
 
+function labMapRead() {
+  return (state?.notes || []).some(n => n.id === 'spine_sign' && n.read);
+}
+
+function dismissMapCoach() {
+  mapCoachDismissed = true;
+  try { sessionStorage.setItem(MAP_COACH_KEY, '1'); } catch { /* private mode */ }
+}
+
+function clearMapCoach() {
+  mapCoachDismissed = false;
+  try { sessionStorage.removeItem(MAP_COACH_KEY); } catch { /* private mode */ }
+}
+
 function renderMapButton() {
+  const btn = $('modeMap');
   const open = floorplanOpen();
-  $('modeMap').classList.toggle('active', open);
-  $('modeMap').setAttribute('aria-pressed', open ? 'true' : 'false');
+  const show = labMapRead();
+  btn.hidden = !show;
+  btn.classList.toggle('blink', show && !mapCoachDismissed && !open);
+  btn.classList.toggle('active', open);
+  btn.setAttribute('aria-pressed', open ? 'true' : 'false');
 }
 
 function factInNotebook(factId) {
@@ -254,12 +278,26 @@ function renderNotebookPrompt() {
   }
   const f = notebookPromptFact;
   el.hidden = false;
-  $('notebookPromptTitle').textContent = factLabel(f.id);
+  $('notebookPromptTitle').textContent = f.title || factLabel(f.id);
   $('notebookPromptBody').textContent = f.text;
-  $('notebookPromptProv').textContent = `${(f.provenance || '').replaceAll('_', ' ')}${f.from ? ` · ${f.from}` : ''}`;
+  $('notebookPromptProv').textContent = f.card
+    ? 'In the room'
+    : `${(f.provenance || '').replaceAll('_', ' ')}${f.from ? ` · ${f.from}` : ''}`;
   const can = !!state.labAccessActive;
   $('notebookAdd').disabled = !can;
   $('notebookPromptHint').hidden = can;
+}
+
+/** Same Add to Notes dialog as a learned fact, for a card read in the room. */
+function offerCardCopy(card) {
+  if (!card?.id || notebookSkipped.has(card.id)) return;
+  const item = { id: card.id, text: card.text, title: card.title, card: true };
+  if (notebookPromptFact?.id === card.id || notebookQueue.some(q => q.id === card.id)) return;
+  if (notebookPromptFact) notebookQueue.push(item);
+  else {
+    notebookPromptFact = item;
+    renderNotebookPrompt();
+  }
 }
 
 function showNextNotebookPrompt() {
@@ -291,10 +329,10 @@ async function confirmNotebookPrompt() {
     const data = await api('tool', {
       tool: 'file.write',
       rel: `notes/${fact.id}.txt`,
-      name: factLabel(fact.id).slice(0, 40),
+      name: (fact.title || factLabel(fact.id)).slice(0, 40),
       text: fact.text,
       kind: 'note',
-      facts: [fact.id],
+      facts: fact.card ? [] : [fact.id],
     });
     state = data.state;
     learnedFactSnapshot = new Set((state.learnedFacts || []).map(f => f.id));
@@ -390,9 +428,20 @@ function renderEnding() {
     : `<div class="eyebrow section-title">ACT III · THE REVIEW</div><p>Present what you will stand behind, then File to sign.</p>${scores}`;
 }
 
+function dismissPhoneCoach() {
+  phoneCoachDismissed = true;
+  try { sessionStorage.setItem(PHONE_COACH_KEY, '1'); } catch { /* private mode */ }
+}
+
+function clearPhoneCoach() {
+  phoneCoachDismissed = false;
+  try { sessionStorage.removeItem(PHONE_COACH_KEY); } catch { /* private mode */ }
+}
+
 function setPhone(open) {
   if (!state?.labAccessActive) open = false;
   phoneOpen = open;
+  if (open) dismissPhoneCoach();
   const frame = $('phoneFrame');
   if (state?.labAccessActive && !frame.src) frame.src = '/terminal/index.html?embed=1';
   $('phoneOverlay').hidden = !open;
@@ -403,10 +452,28 @@ function setPhone(open) {
 
 function renderPhoneButton() {
   const on = !!state?.labAccessActive;
+  const coach = on && !!state?.spoken && !phoneCoachDismissed && !phoneOpen;
   $('phoneBtn').hidden = !on;
-  $('phoneBtn').classList.toggle('blink', on && !phoneOpen && phoneUnread);
+  $('phoneBtn').classList.toggle('blink', (on && !phoneOpen && phoneUnread) || coach);
+  $('phoneBtn').classList.toggle('coach', coach);
   $('phoneBtn').setAttribute('aria-pressed', phoneOpen ? 'true' : 'false');
+  if (coach) $('phoneBtn').setAttribute('aria-describedby', 'phoneCoach');
+  else $('phoneBtn').removeAttribute('aria-describedby');
+  const bubble = $('phoneCoach');
+  if (bubble) bubble.hidden = !coach;
   if (on && !$('phoneFrame').src) $('phoneFrame').src = '/terminal/index.html?embed=1';
+}
+
+/** Speak hint until the first sent line; then the phone hint until Lab Access is opened. */
+function renderCoaches() {
+  const showSpeak = !!state && !state.spoken;
+  const bubble = $('speakCoach');
+  const row = document.querySelector('.dock-input');
+  if (bubble) bubble.hidden = !showSpeak;
+  row?.classList.toggle('coach-speak', showSpeak);
+  if (showSpeak) $('utterance')?.setAttribute('aria-describedby', 'speakCoach');
+  else $('utterance')?.removeAttribute('aria-describedby');
+  renderPhoneButton();
 }
 
 function refreshPhone() {
@@ -736,7 +803,7 @@ function render() {
   renderSuggestions();
   if (floorplanOpen()) syncFloorplan(mapView(), mapHandlers());
   renderMapButton();
-  renderPhoneButton();
+  renderCoaches();
   refreshPhone();
   resizeUtterance();
   syncTranscriptChrome();
@@ -884,7 +951,10 @@ async function examine(id) {
     state = data.state;
     applySceneOverlayFromState();
     lastNotice = `${data.title}: ${data.body}`;
+    const kept = (data.terminal?.files || []).some(f => f.rel === `notes/${data.id}.txt`);
+    if (data.copy && data.id && !kept) offerCardCopy({ id: data.id, title: data.title, text: data.body });
     autosave();
+    expandChat(false);
     render();
   } catch (e) {
     lastNotice = e.message;
@@ -1052,6 +1122,8 @@ $('reset').onclick = async () => {
   resetComposer();
   lastNotice = '';
   addressee = null;
+  clearPhoneCoach();
+  clearMapCoach();
   setPhone(false);
   resetNotebookTracking();
   try { localStorage.removeItem(SAVE_KEY); } catch { /* ignore */ }
@@ -1072,6 +1144,7 @@ $('loadFile').onchange = async () => {
   $('loadFile').value = '';
 };
 $('modeMap').onclick = () => {
+  dismissMapCoach();
   if (floorplanOpen()) closeMap();
   else openFloorplan(mapView(), mapHandlers());
   renderMapButton();

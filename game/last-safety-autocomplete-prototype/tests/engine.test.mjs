@@ -5,8 +5,10 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newSession, spend, exportSession, importSession, contacts } from '../lib/game.mjs';
+import { newSession, spend, exportSession, importSession, contacts, ROOM_NOTES } from '../lib/game.mjs';
 import { FACTS } from '../lib/world/facts.mjs';
+import { ROOMS } from '../lib/floorplan.mjs';
+import { layoutFor } from '../public/render/layouts.mjs';
 import { CONFIG } from '../lib/world/config.mjs';
 import { terminalState, handsetMediaPayload } from '../lib/world/terminal-host.mjs';
 import { P, startedSession, say, dm, idle, commit, walk, applyAction, clientState } from './helpers.mjs';
@@ -66,6 +68,41 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian opens the 
   const t = terminalState(s);
   assert.ok(t.threads.some(x => x.with === 'nora'), 'NORA thread for Chat');
   assert.equal(t.threads.length, contacts(s).length);
+});
+
+test('each room has one readable object; notes teach and do not become evidence', () => {
+  const s = newSession();
+  const c = clientState(s);
+  assert.equal(c.spoken, false);
+  const covered = new Map();
+  for (const ev of c.evidence) covered.set(ev.room, (covered.get(ev.room) || 0) + 1);
+  for (const note of c.notes) covered.set(note.room, (covered.get(note.room) || 0) + 1);
+  assert.deepEqual([...covered.keys()].sort(), Object.keys(ROOMS).sort());
+  for (const [room, n] of covered) assert.equal(n, 1, room);
+  for (const [id, note] of Object.entries(ROOM_NOTES)) {
+    const props = layoutFor(note.room).props || [];
+    assert.ok(props.some(p => p.hotspot === id), `${note.room} has no prop for ${id}`);
+    assert.equal(c.evidence.some(e => e.id === id), false);
+  }
+  assert.match(applyAction(s, 'inspect', { id: 'review_agenda' }).error, /right room/);
+  applyAction(s, 'go', { room: 'review' });
+  const facts = clientState(s).learnedFacts.map(f => f.id);
+  const read = applyAction(s, 'inspect', { id: 'review_agenda' });
+  assert.equal(read.title, 'Whiteboard agenda');
+  assert.equal(read.copy, true);
+  assert.match(read.body, /Observations/);
+  assert.match(read.body, /TBD/);
+  const after = clientState(s);
+  assert.deepEqual(after.learnedFacts.map(f => f.id), facts);
+  assert.equal(after.examined.includes('review_agenda'), false);
+  assert.equal(after.notes.find(n => n.id === 'review_agenda').read, true);
+  assert.equal(after.evidence.length, 3);
+  applyAction(s, 'go', { room: 'collab' });
+  applyAction(s, 'go', { room: 'courtyard' });
+  assert.match(applyAction(s, 'inspect', { id: 'garden_card' }).body, /do not overthink/i);
+  for (const text of Object.values(ROOM_NOTES).map(n => n.body)) {
+    for (const f of Object.values(FACTS)) assert.equal(text.includes(f.text), false, f.id);
+  }
 });
 
 test('notes cost no fuel; photos still do', () => {
