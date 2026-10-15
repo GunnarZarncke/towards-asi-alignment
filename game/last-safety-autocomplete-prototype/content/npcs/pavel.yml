@@ -28,6 +28,13 @@ glue:
     busy: "That’s the other object."
     thin: "I’m not laughing."
 agenda:
+  - id: pavel.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [task_queue]
+    texture: [freeze_needs_owners]
+    work: "Lunch. The queue still has two objects — process and job."
   - id: pavel.queue_inventory
     room: platform
     acts: [doubt]
@@ -91,3 +98,7 @@ interventions:
     condition: "or(received(pavel, job_log), holds(player, job_continued))"
     reason: "Which job, and from what line? Show me the queue entry and I’ll hold it."
   stop_process: { relations: [stop], objects: [nora, shutdown_test] }
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "I’m on the freeze list. Meet me at the queue screen or ask for lunch in the commons."

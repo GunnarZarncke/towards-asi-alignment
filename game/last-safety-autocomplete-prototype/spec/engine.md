@@ -67,7 +67,7 @@ Two documents that share one upstream model output are not independent corrobora
 
 Implemented: `go(room)`, `inspect(id)`, accept a cleaned `Parse` in `deterministicResponse`.
 
-`go(room)` walks one door on the floorplan. The session badge is `clearance` (the prototype starts at 2). A door that asks for more does not open. Rooms that do not share an edge have no passage.
+`go(room)` walks one door on the floorplan. The session badge is `clearance`: 0 before host confirmation, 1 for the hub after Lab Access activates, 2 after Ian introduces Justine or the player states a review reason to her (see `lib/world/visitor-clearance.mjs`). A door that asks for more does not open. Rooms that do not share an edge have no passage.
 
 `inspect` requires the evidence’s room. Examining the job log also reveals `job_284`. Facts on the evidence record enter `learnedFacts`.
 

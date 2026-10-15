@@ -86,4 +86,28 @@ export const PACK = Object.freeze({
     { at: 990, event: 'queue_frozen' },
     { at: 1005, event: 'leila_packet_closed' },
   ]),
+
+  /** Wide handset list/read paths need intro or a stated review reason (lib/world/access-gates.mjs). */
+  accessGates: Object.freeze([
+    {
+      pathPrefix: 'evaluation/',
+      approver: 'justine',
+      allow: 'or(event(visitor_introduced_justine), told(justine, any, by=player, on=shutdown_test|job_284|review|evaluation_records|shutdown_report|shutdown_spec|safety_case))',
+    },
+    {
+      pathPrefix: 'people/',
+      approver: 'justine',
+      allow: 'or(event(visitor_introduced_justine), told(justine, any, by=player, on=staffing_memo|skill_matching|evaluation_independence|personnel_policy|review))',
+    },
+    {
+      pathPrefix: 'policies/',
+      approver: 'justine',
+      allow: 'or(event(visitor_introduced_justine), told(justine, any, by=player, on=policies|camera_system|visitor_records|review|job_284))',
+    },
+    {
+      pathPrefix: 'platform/',
+      approver: 'pavel',
+      allow: 'or(told(pavel, any, by=player, on=job_284|task_queue|platform_jobs|shutdown_test|review), examined(job_log))',
+    },
+  ]),
 });

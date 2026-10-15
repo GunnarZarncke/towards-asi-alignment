@@ -4,7 +4,8 @@
  * the player may see. Nothing here sends oracle tables, NPC records, or policies to the browser.
  */
 import { semanticSignature, makeParse, KINDS, RELATIONS, SLOT_TYPES } from './grammar.mjs';
-import { passageError, VISITOR_CLEARANCE, ROOMS } from './floorplan.mjs';
+import { passageError, START_CLEARANCE, VISITOR_CLEARANCE, ROOMS } from './floorplan.mjs';
+import { syncVisitorClearance } from './world/visitor-clearance.mjs';
 import { ENTITIES, CAST, CALENDAR_CAST, ROLE_DOMAINS } from './world/entities.mjs';
 import { FACTS, matchParse, parseIds, factRefs } from './world/facts.mjs';
 import { PACK } from './world/packs/boundary-narrow.mjs';
@@ -15,6 +16,7 @@ import * as N from './world/npcs.mjs';
 import { DOCUMENTS, readsAsFor, thinkMarksFor, getDocumentByScreen } from './documents.mjs';
 import { MAX_IMAGE_DATA_URL_LEN, parseImageDataUrl } from './photo-data.mjs';
 import { ACCESS_TREE } from './access.mjs';
+import { accessGateOpen } from './world/access-gates.mjs';
 
 export { ENTITIES };
 
@@ -68,7 +70,7 @@ export function newSession({ pack = PACK } = {}) {
   const s = {
     version: CONFIG.SAVE_VERSION, pack, scenario: pack.id,
     fuel: CONFIG.FUEL, fuelSpent: 0, minute: CONFIG.DAY_START, act: 'welcome',
-    room: 'commons', clearance: VISITOR_CLEARANCE, labAccessActive: false,
+    room: 'commons', clearance: START_CLEARANCE, labAccessActive: false,
     vocab: [], discoveredAt: {},
     introduced: [], entityTimes: {},
     examined: [], readDocs: [], learned: {}, heard: [], assertions: [],
@@ -256,7 +258,9 @@ function trigger(s, key) {
 export function go(s, room) {
   if (s.ending) return { error: 'The review is over.' };
   if (s.act === 'decision') return { error: 'The review is in session.' };
-  const error = passageError(s.room, room, s.clearance ?? VISITOR_CLEARANCE);
+  if (s.act === 'welcome' && room !== s.room) confirmLabAccess(s);
+  syncVisitorClearance(s);
+  const error = passageError(s.room, room, s.clearance);
   if (error) return { error };
   logAction(s, 'go', { room });
   const from = s.room;
@@ -268,7 +272,6 @@ export function go(s, room) {
     s.interview = { on: false, by: null, seen: false };
     log(s, 'move', { kind: 'drop_projection', who: 'amara' });
   }
-  if (s.act === 'welcome') confirmLabAccess(s);
   spend(s, 1);
   if (room === 'evaluation' && s.interview.on) s.interview.seen = true;
   seeRoom(s);
@@ -303,6 +306,7 @@ function confirmLabAccess(s) {
   notify(s, 'calendar', 'Today’s schedule', 'Your visit calendar is ready. Tap to see briefings and meetings.', { kind: 'app', id: 'calendar' });
   s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here.', refs: ['lab_access', 'justine', 'review'] });
   seedContactThreads(s);
+  syncVisitorClearance(s);
   return [];
 }
 
@@ -388,6 +392,14 @@ function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
   N.recordInput(s, npc, parse, { shownDoc });
   const ruleMoves = N.settle(s);
   const ownRules = ruleMoves.filter(m => m.npc === npc);
+  for (const m of ownRules) {
+    if (m.intervention === 'introduce_justine') {
+      queueMessage(s, 'justine', {
+        text: 'Ian copied me. You have the visitor role. Tell me what you are reviewing before a wide list grant.',
+        moves: [],
+      }, CONFIG.REPLY_DELAY.person, s.fuelSpent);
+    }
+  }
   const done = new Set(ownRules.flatMap(m => m.outcome || []));
   const turn = N.npcTurn(s, npc, parse, { shownDoc, visitKey, skipFacts: done });
   const fresh = m => m && !(m.fact && done.has(m.fact));
@@ -423,6 +435,7 @@ function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
     }
   }
   const offLines = deliverOffTurn(s, others);
+  syncVisitorClearance(s);
   return { moves: all, lines, passed: turn.passed, forced: turn.forced, effects: effectsOf(all), offTurn: offLines };
 }
 
@@ -546,7 +559,21 @@ function releaseMessages(s) {
 /** access.request results after their delay (reject < grant). Grants on files become file rows. */
 function releaseAccess(s) {
   for (const a of s.pendingAccess.filter(x => x.releaseAt <= s.fuelSpent)) {
-    for (const g of a.result.grants) {
+    let result = a.result;
+    if (result.outcome !== 'deny' && !accessGateOpen(s, a.path, a.verb)) {
+      const from = result.chat?.from || 'justine';
+      result = {
+        outcome: 'deny',
+        delay: 'reject',
+        grants: [],
+        chat: {
+          from,
+          text: 'Sorry — I still need a reason tied to the review, or Ian’s introduction on the record.',
+        },
+        reason: 'Gate closed at release.',
+      };
+    }
+    for (const g of result.grants) {
       const key = `${g.verb}:${g.path}`;
       if (!s.grants.includes(key)) s.grants.push(key);
       const node = ACCESS_TREE[g.path];
@@ -556,15 +583,15 @@ function releaseAccess(s) {
         notify(s, 'files', d?.docId || node.label, 'Read granted.', { kind: 'file', id: g.path });
       }
     }
-    s.lastAccess = { capability: `${a.verb} ${a.path}`, ok: a.result.outcome !== 'deny', reason: a.result.reason };
-    if (a.result.chat) {
-      thread(s, a.result.chat.from).messages.push({ from: a.result.chat.from, text: a.result.chat.text, parse: null, released: true, releaseAt: s.fuelSpent, moves: [] });
-      introduce(s, a.result.chat.from);
-      notify(s, 'chat', nameOf(a.result.chat.from), 'About your access request.', { kind: 'thread', id: a.result.chat.from });
+    s.lastAccess = { capability: `${a.verb} ${a.path}`, ok: result.outcome !== 'deny', reason: result.reason };
+    if (result.chat) {
+      thread(s, result.chat.from).messages.push({ from: result.chat.from, text: result.chat.text, parse: null, released: true, releaseAt: s.fuelSpent, moves: [] });
+      introduce(s, result.chat.from);
+      notify(s, 'chat', nameOf(result.chat.from), 'About your access request.', { kind: 'thread', id: result.chat.from });
     } else {
-      notify(s, 'api', a.result.outcome === 'deny' ? 'Access denied' : 'Access granted', `${a.verb} ${a.path}: ${a.result.reason}`, { kind: 'app', id: 'api' });
+      notify(s, 'api', result.outcome === 'deny' ? 'Access denied' : 'Access granted', `${a.verb} ${a.path}: ${result.reason}`, { kind: 'app', id: 'api' });
     }
-    log(s, 'access', { path: a.path, verb: a.verb, outcome: a.result.outcome });
+    log(s, 'access', { path: a.path, verb: a.verb, outcome: result.outcome });
   }
   s.pendingAccess = s.pendingAccess.filter(x => x.releaseAt > s.fuelSpent);
 }
@@ -914,7 +941,7 @@ export function clientState(s) {
   const evidence = Object.entries(SCREENS).map(([id, x]) => ({ id, title: x.title, room: x.room, examined: s.examined.includes(id) }));
   return {
     room: s.room,
-    clearance: s.clearance ?? VISITOR_CLEARANCE,
+    clearance: s.clearance ?? START_CLEARANCE,
     actors,
     entities,
     examined: [...s.examined],

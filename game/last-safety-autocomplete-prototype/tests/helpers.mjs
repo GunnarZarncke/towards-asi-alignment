@@ -12,6 +12,7 @@ export const P = (kind, relation, fields = {}) => makeParse({ kind, relation, op
 export function startedSession() {
   const s = newSession();
   applyAction(s, 'respond', { parse: P('ask', 'about', { topic: 'review' }), addressee: 'ian', text: 'What about the review?' });
+  applyAction(s, 'respond', { parse: P('ask', 'about', { topic: 'justine' }), addressee: 'ian', text: 'Can you introduce me to Justine for access?' });
   let guard = 0;
   while (s.minute < CONFIG.DOUBT_AT && guard < 80) {
     applyAction(s, 'go', { room: s.room === 'commons' ? 'collab' : 'commons' });

@@ -24,6 +24,8 @@ Example (all packs, until a pack table overrides): `list` on `evaluation/` → l
 
 Face-to-face asking the same person can still yield a wider grant; it costs more (below).
 
+**Pack gates (boundary-narrow).** Wide `list`/`read` on `evaluation/`, `people/`, and `policies/` stays denied until `visitor_introduced_justine` (Ian vouch in Commons) or the player has told Justine a review reason on the handset. `platform/` needs the job log examined or a stated reason to Pavel. If the approver is in the player’s room when the grant releases, delay uses `walk_and_ask`. Implementation: [`lib/world/access-gates.mjs`](../lib/world/access-gates.mjs), pack table in [`lib/world/packs/boundary-narrow.mjs`](../lib/world/packs/boundary-narrow.mjs).
+
 ## Delay (fuel)
 
 Exact numbers wait on O-09. **Order is fixed:**

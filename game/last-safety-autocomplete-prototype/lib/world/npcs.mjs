@@ -30,6 +30,8 @@ const STRONG = ['recorded_before', 'staff_action'];
 const ENGINE_INTERVENTIONS = Object.freeze({
   join_virtually: { surface: 'projection', learns: [], event: 'amara_projecting' },
   hold_release: { surface: 'release', learns: [], event: 'release_held' },
+  introduce_justine: { surface: 'access', learns: [], event: 'visitor_introduced_justine' },
+  accept_meeting: { surface: 'calendar', learns: [], event: null },
 });
 
 export function loadNpcDefs(dir = NPC_DIR) {
@@ -87,6 +89,7 @@ export function initNpcs() {
       fired: [], firedEvents: [], raised: [],
       pendingQuestion: null,
       spokeSinceArrive: false,
+      meetingCommit: null,
     };
   }
   return out;
@@ -207,6 +210,21 @@ export function makeCtx(s, self, ov = EMPTY_OVERLAY) {
     act([name]) {
       return s.act === name;
     },
+    present([a, b]) {
+      const roomOf = w => {
+        w = who(w);
+        if (w === 'player') return s.room;
+        const n = s.npcs[w];
+        return n?.presence === 'absent' ? null : n?.room;
+      };
+      const ra = roomOf(a);
+      const rb = roomOf(b);
+      return !!ra && ra === rb;
+    },
+    npc_room([w, room]) {
+      const n = npc(w);
+      return !!n && n.room === room && n.presence !== 'absent';
+    },
   };
 }
 
@@ -219,8 +237,12 @@ export function currentAgenda(s, id) {
   const ok = it => (!it.acts || it.acts.includes(s.act)) && (!it.bands || it.bands.includes(b));
   const ev = items.find(it => it.event && ok(it) && eventItemOn(s, it.event));
   if (ev) return ev;
+  if (b === 'lunch') {
+    const lunch = items.find(it => !it.event && ok(it) && it.bands?.includes('lunch'));
+    if (lunch) return lunch;
+  }
   const inAct = act => items.find(it => !it.event && (!it.acts || it.acts.includes(act)));
-  return items.find(it => !it.event && ok(it)) || inAct(s.act) || inAct('doubt') || items[0] || null;
+  return items.find(it => !it.event && ok(it)) || inAct(s.act) || null;
 }
 
 function eventItemOn(s, name) {
@@ -228,12 +250,21 @@ function eventItemOn(s, name) {
   return s.world.events.includes(name);
 }
 
+function meetingRoom(s) {
+  if (s.room && s.room !== 'tech' && s.room !== 'review') return s.room;
+  return 'commons';
+}
+
 /** Room and presence from the agenda. Returns movement events for the log. */
 export function placeNpcs(s) {
   const moves = [];
   for (const id of NPC_IDS) {
     const n = s.npcs[id];
-    const item = currentAgenda(s, id);
+    const commit = n.meetingCommit;
+    let item = currentAgenda(s, id);
+    if (commit?.active && s.act !== 'decision') {
+      item = { id: 'meeting.commit', room: commit.room || meetingRoom(s) };
+    }
     let room = item?.room || null;
     let presence = 'body';
     if (NPC_DEFS[id].presence === 'remote') {
@@ -261,6 +292,12 @@ export function npcsInRoom(s, room) {
 /** A player parse reaches an NPC: knowledge records, mentions, documents received. */
 export function recordInput(s, id, parse, { shownDoc = null } = {}) {
   const n = s.npcs[id];
+  const meet = n.meetingCommit;
+  if (meet?.active && s.room === meet.room && n.room === s.room) {
+    meet.active = false;
+    n.meetingCommit = null;
+    if (!s.world.events.includes(`meeting_held:${id}`)) s.world.events.push(`meeting_held:${id}`);
+  }
   const ids = parseIds(parse);
   const m = matchParse(parse);
   const docIds = shownDoc ? docEntities(shownDoc, s.pack.id) : [];
@@ -452,7 +489,8 @@ function interventionMoves(s, id, parse, entityId) {
   const out = [];
   for (const [iid, iv] of Object.entries(def.interventions || {})) {
     if (!iv.relations?.includes(parse.relation)) continue;
-    if (iv.objects && !iv.objects.includes(entityId)) continue;
+    if (parse.relation === 'meet' && entityId && entityId !== id) continue;
+    if (iv.objects?.length && !iv.objects.includes(entityId)) continue;
     if (iv.acts && !iv.acts.includes(s.act)) {
       out.push({ type: 'withhold', npc: id, intervention: iid, reason: iv.reason || 'Not now.', cls: 'withhold', names: true });
       continue;
@@ -495,7 +533,7 @@ export function responseCandidates(s, id, parse, { shownDoc = null } = {}) {
   } else if (parse.kind === 'request') {
     const iv = interventionMoves(s, id, parse, E);
     iv.forEach(push);
-    if (!iv.length && ['suspend', 'revoke', 'rerun', 'stop', 'join'].includes(parse.relation)) {
+    if (!iv.length && ['suspend', 'revoke', 'rerun', 'stop', 'join', 'meet'].includes(parse.relation)) {
       const owner = interventionOwner(parse.relation, E, id);
       const over = (def.refers || []).find(r => r.entities.includes(E) && (!r.relations || r.relations.includes(parse.relation)));
       const to = over?.to || owner;
@@ -673,6 +711,15 @@ export function applyWorld(s, move) {
     const eff = interventionEffect(s, move.intervention);
     if (!eff) return;
     if (move.intervention === 'join_virtually') s.interview = { on: true, by: 'join', seen: false };
+    if (move.intervention === 'introduce_justine') {
+      if (!s.world.events.includes('visitor_introduced_justine')) s.world.events.push('visitor_introduced_justine');
+    }
+    if (move.intervention === 'accept_meeting') {
+      const room = meetingRoom(s);
+      n.meetingCommit = { room, active: true, at: at };
+      const ev = `meeting_accepted:${move.npc}`;
+      if (!s.world.events.includes(ev)) s.world.events.push(ev);
+    }
     if (move.intervention === 'hold_release') {
       move.restriction = s.filedNamesJob ? 'hold_release:names_job_boundary' : 'hold_release:model_only';
       if (!s.world.restrictions.includes(move.restriction)) s.world.restrictions.push(move.restriction);
@@ -793,6 +840,8 @@ function actText(move) {
   if (outs.length) return outs.join(' ');
   if (move.intervention === 'join_virtually') return 'I can join on the Evaluation projector.';
   if (move.intervention === 'hold_release') return 'We hold the release.';
+  if (move.intervention === 'introduce_justine') return 'I’ll tell Justine you’re here for the review.';
+  if (move.intervention === 'accept_meeting') return 'All right. I’ll come to you.';
   return 'Done.';
 }
 

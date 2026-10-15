@@ -47,6 +47,7 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian opens the 
   assert.equal(c.act, 'welcome');
   assert.equal(c.room, 'commons');
   assert.equal(c.labAccessActive, false);
+  assert.equal(c.clearance, 0);
   assert.equal(terminalState(s).threads.length, 0);
   assert.deepEqual(contacts(s), []);
   assert.ok(!c.introduced.includes('amara'), 'Amara is not a contact until introduced');

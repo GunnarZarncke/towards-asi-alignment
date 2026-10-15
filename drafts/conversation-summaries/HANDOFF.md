@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety transcript reveal + composer focus).
+Last updated: 2026-10-15 (Last Safety access gates, visitor doors, handset clearance).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-15:** **Last Safety access, doors, handset** — API access gates (intro/reason); progressive badge clearance 0→1→2; lunch/meetings; status-bar clearance; compact notices; note hover preview. Log: `2026-10-15-last-safety-access-doors-handset.md`.
 - **2026-10-15:** **Last Safety transcript reveal and composer focus** — After send, NPC lines appear one sentence per second with smooth scroll; Send/Enter keep focus in `#utterance`. Log: `2026-10-15-last-safety-transcript-reveal-focus.md`.
 - **2026-10-15:** **Last Safety NPC dialogue and DM phrasing** — `work_alt` and authored refer lines; texture dialogue uses agenda/glue; handset DMs go through `phraseLines`; relaxed composition prompt; rotated Act III Ian filing lines. Log: `2026-10-15-last-safety-npc-dialogue-dm-phrasing.md`.
 - **2026-10-15:** **Last Safety NPC click addressee** — 3D room person click sets default speak target (transcript addressee chips); floor click walks only the player. Log: `2026-10-15-last-safety-npc-click-addressee.md`.

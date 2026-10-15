@@ -277,7 +277,7 @@ North row, west to east: Platform Operations, Controlled Test Bay, Evaluation Su
 
 The sixteen doors are the shared edges in that file. The four technical rooms open onto the spine, not onto each other. The courtyard opens from People + Product, Model Studio, and Collaboration Bay. A restricted door stays visible when it is shut.
 
-The prototype visitor badge is clearance 2. That walks every room except the test bay and security control, which need clearance 3. `platform`, `evaluation`, and `people` keep those ids. Pavel, Leila, and Elena stay in them. The other rooms can be walked; they do not yet have their cast.
+The visitor handset starts at clearance 0 (Commons and Review only). After Ian confirms Lab Access it rises to 1 (hub band). After introduction to Justine or a stated review reason on the handset it rises to 2, which opens the north spine and the People and Model wings; the test bay and security control still need clearance 3. `platform`, `evaluation`, and `people` keep those ids. Pavel, Leila, and Elena stay in them.
 
 | Id | Place | Clearance |
 | --- | --- | --- |

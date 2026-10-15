@@ -199,7 +199,9 @@ function statusBar() {
   const close = embed
     ? `<button type="button" class="embed-close" data-act="lab" aria-label="Close phone and return to the lab">×</button>`
     : '';
-  return `<div class="status">${close}<span class="status-time">${esc(state.clock.timeLabel)}</span><span class="status-icons" aria-hidden="true"><span class="sig"><i></i><i></i><i></i></span><span class="bat"><b></b></span></span></div>`;
+  const level = state.labAccessActive ? (state.clearance ?? 0) : '—';
+  const badge = `<span class="status-badge" title="Door badge clearance">Clearance ${esc(String(level))}</span>`;
+  return `<div class="status">${close}<span class="status-time">${esc(state.clock.timeLabel)}</span>${badge}<span class="status-icons" aria-hidden="true"><span class="sig"><i></i><i></i><i></i></span><span class="bat"><b></b></span></span></div>`;
 }
 
 function homeBar() {
@@ -231,7 +233,15 @@ function appUnreadCount(appId) {
 
 function noticeButton(n) {
   const read = seen.has(n.id);
-  return `<button type="button" class="notice${read ? ' is-read' : ' is-unread'}" data-act="notice" data-id="${esc(n.id)}"><span class="notice-app">${esc(appTitle(n.app))}</span><b>${esc(n.title)}</b><span>${esc(n.body)}</span></button>`;
+  const tip = esc(n.body);
+  return `<button type="button" class="notice${read ? ' is-read' : ' is-unread'}" data-act="notice" data-id="${esc(n.id)}" title="${tip}"><span class="notice-top"><span class="notice-app">${esc(appTitle(n.app))}</span><b>${esc(n.title)}</b></span><span class="notice-body">${tip}</span></button>`;
+}
+
+function notePreviewText(text, maxLen = 160) {
+  const one = String(text ?? '').replace(/\s+/g, ' ').trim();
+  if (!one) return 'Empty note';
+  if (one.length <= maxLen) return one;
+  return `${one.slice(0, maxLen - 1)}…`;
 }
 
 function homescreen() {
@@ -533,10 +543,11 @@ function contactsApp() {
 
 function notesApp() {
   const notes = state.files.filter(f => f.kind === 'note' || String(f.rel).startsWith('notes/'));
-  const rows = notes.map(f => (
-    `<button type="button" class="row" data-act="edit-note" data-rel="${esc(f.rel)}"><b>${esc(f.name)}</b><span>${esc(f.rel)}</span></button>`
-  )).join('');
-  return `${head('Notes')}<div class="pad"><button type="button" class="primary" data-act="new-note">New note</button>${rows}</div>`;
+  const rows = notes.map(f => {
+    const preview = notePreviewText(f.text);
+    return `<button type="button" class="row row-note" data-act="edit-note" data-rel="${esc(f.rel)}"><span class="row-text"><b>${esc(f.name)}</b></span><span class="note-tip" role="tooltip">${esc(preview)}</span></button>`;
+  }).join('');
+  return `${head('Notes')}<div class="pad"><button type="button" class="primary" data-act="new-note">New note</button>${rows || '<p class="hint">No notes yet.</p>'}</div>`;
 }
 
 function noteEditor(rel) {

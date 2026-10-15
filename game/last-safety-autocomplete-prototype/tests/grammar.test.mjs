@@ -44,7 +44,7 @@ test('Request opening is offered; unseen systems are not topics',()=>{
   assert.ok(!topics.some(x=>x.entityId==='evaluation_records' || x.entityId==='camera_system' || x.entityId==='task_queue' || x.entityId==='job_log'));
 });
 test('room movement and investigation reveal only justified knowledge',()=>{
-  const s=newSession();s.room='platform';assert.ok(!s.vocab.includes('job_284'));
+  const s=newSession();s.room='platform';s.clearance=2;s.labAccessActive=true;assert.ok(!s.vocab.includes('job_284'));
   assert.ok(inspect(s,'job_log').body);assert.ok(s.vocab.includes('job_284'));assert.ok(s.learned.job_continued);
   assert.ok(!s.learned.staffing_shift);
   assert.equal(go(s,'people').error,'No door from here.');

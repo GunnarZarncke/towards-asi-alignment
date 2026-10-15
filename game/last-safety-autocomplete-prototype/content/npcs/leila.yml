@@ -25,6 +25,13 @@ glue:
     busy: "Which line?"
     thin: "That’s not in the scope."
 agenda:
+  - id: leila.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [shutdown_report, safety_case]
+    texture: [packet_closes_today]
+    work: "Lunch. After, the packet still has to close."
   - id: leila.packet
     room: evaluation
     acts: [doubt]
@@ -88,3 +95,7 @@ role_rules:
     do: { act: rerun_shutdown }
 interventions:
   rerun_shutdown: { relations: [rerun], objects: [shutdown_test, shutdown_report, shutdown_spec], acts: [doubt] }
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "The packet closes today. Meet me at Evaluation or say when in the commons."

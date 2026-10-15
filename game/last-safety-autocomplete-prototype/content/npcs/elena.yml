@@ -31,6 +31,13 @@ glue:
     pushy: "A person is an instance of that rule."
     deferential: "That’s not a people question."
 agenda:
+  - id: elena.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [skill_matching, release_schedule]
+    texture: [release_rota_tonight]
+    work: "Lunch in the commons. Staffing questions only — the model is someone else’s paper."
   - id: elena.release_staffing
     room: people
     acts: [doubt]
@@ -88,3 +95,8 @@ goals:
     salience: mid
     target: "told(elena, report_includes_staffing, by=player)"
     question: { relation: about, about: staffing_memo }
+interventions:
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "Personnel is the rule. Meet me in People Operations or catch lunch in the commons."

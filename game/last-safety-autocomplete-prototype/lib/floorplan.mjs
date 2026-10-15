@@ -5,6 +5,9 @@
  * Drawing: public/floorplan.svg.
  */
 
+/** Badge levels for the boundary-narrow visitor handset. */
+export const START_CLEARANCE = 0;
+export const HUB_CLEARANCE = 1;
 export const VISITOR_CLEARANCE = 2;
 
 /** @type {Record<string, {title: string, level: number, area: number, x: number, y: number, w: number, d: number, people: string, role: string, windows: string, label: string}>} */
@@ -87,11 +90,11 @@ export const EDGES = [
   { a: 'review', b: 'collab', required: 1, axis: 'h', at: 13.7, from: 13.7, to: 14.9 },
   { a: 'collab', b: 'service', required: 1, axis: 'v', at: 5, from: 11.5, to: 12.5 },
   { a: 'collab', b: 'quiet', required: 1, axis: 'v', at: 17, from: 11.5, to: 12.5 },
-  { a: 'people', b: 'collab', required: 1, axis: 'h', at: 10.3, from: 6.4, to: 7.5 },
-  { a: 'model', b: 'collab', required: 1, axis: 'h', at: 10.3, from: 14.5, to: 15.6 },
+  { a: 'people', b: 'collab', required: 2, axis: 'h', at: 10.3, from: 6.4, to: 7.5 },
+  { a: 'model', b: 'collab', required: 2, axis: 'h', at: 10.3, from: 14.5, to: 15.6 },
   { a: 'courtyard', b: 'collab', required: 1, axis: 'h', at: 10.3, from: 10.4, to: 11.6 },
-  { a: 'people', b: 'courtyard', required: 1, axis: 'v', at: 8.5, from: 7.55, to: 8.55 },
-  { a: 'model', b: 'courtyard', required: 1, axis: 'v', at: 13.5, from: 7.55, to: 8.55 },
+  { a: 'people', b: 'courtyard', required: 2, axis: 'v', at: 8.5, from: 7.55, to: 8.55 },
+  { a: 'model', b: 'courtyard', required: 2, axis: 'v', at: 13.5, from: 7.55, to: 8.55 },
   { a: 'people', b: 'tech', required: 2, axis: 'h', at: 5.8, from: 3.6, to: 4.8 },
   { a: 'model', b: 'tech', required: 2, axis: 'h', at: 5.8, from: 17.25, to: 18.45 },
   { a: 'platform', b: 'tech', required: 2, axis: 'h', at: 4.2, from: 2.2, to: 3.3 },

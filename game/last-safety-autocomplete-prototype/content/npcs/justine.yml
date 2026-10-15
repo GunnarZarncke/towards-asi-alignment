@@ -31,9 +31,24 @@ agenda:
     acts: [welcome]
     texture: [binding_issued_this_morning]
     work: "I issued the visitor binding this morning. Ask about the grant, not the pictures."
+  - id: justine.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [lab_access, policies]
+    texture: [audit_before_release]
+    work: "Lunch in the commons. I still need a reason before a wide grant."
+  - id: justine.platform_audit
+    room: platform
+    acts: [doubt]
+    bands: [early, mid]
+    about: [job_284, visitor_records, task_queue]
+    texture: [camera_service_not_reviewed]
+    work: "Audit walk on the queue. Ask why you need a grant — the reason and the role."
   - id: justine.access_audit
     room: security
     acts: [doubt]
+    bands: [late]
     about: [camera_system, visitor_records, policies]
     texture: [audit_before_release, camera_service_not_reviewed]
     work: "Pre-release audit. Every grant needs an owner and a reason. That’s the list."
@@ -75,5 +90,9 @@ interventions:
   revoke_grant:
     relations: [revoke]
     objects: [job_284, visitor_records]
-    condition: "or(knows(justine, visitor_lookup), requested(pavel, justine, grant_record))"
+    condition: "or(knows(justine, visitor_lookup), requested(pavel, justine, grant_record), told(justine, any, by=player, on=job_284|visitor_records|task_queue))"
     reason: "Sorry, which job, and why? The grant is the reason and the role."
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "Not from Security Control. Request a time in the commons or on the handset."

@@ -4,6 +4,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { CONFIG } from '../lib/world/config.mjs';
 import { P, startedSession, say, dm, idle, commit, walk, applyAction, clientState } from './helpers.mjs';
 
 function readRecords(s) {
@@ -38,6 +39,8 @@ const STRATEGIES = {
   },
   revokeAndRead(s) {
     readRecords(s);
+    dm(s, 'justine', P('ask', 'about', { topic: 'job_284' }), 'Reviewing job 284 after the shutdown test.');
+    idle(s, CONFIG.REPLY_DELAY.person);
     dm(s, 'justine', P('request', 'revoke', { object: 'job_284' }), 'Revoke job 284.');
     idle(s, 6);
   },

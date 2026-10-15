@@ -25,6 +25,13 @@ glue:
     thin: "Was that an accusation?"
     busy: "Say what the run does first."
 agenda:
+  - id: jun.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [shutdown_test, training_runs]
+    texture: [reread_1602_transcript]
+    work: "Lunch. I’m still on the capability summary — mechanism first."
   - id: jun.capability_summary
     room: model
     acts: [doubt]
@@ -74,3 +81,8 @@ role_rules:
   - id: jun.ask_nora
     when: "told(jun, any, by=player, on=job_284|camera_system)"
     do: { message: { to: nora, about: job_284 } }
+interventions:
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "I’m on the summary. Model studio or lunch in the commons."

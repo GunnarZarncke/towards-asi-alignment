@@ -19,6 +19,7 @@ export const RELATIONS = {
   rerun: "(test) Ask the evaluation owner to run a test again.",
   stop: "(process) Ask the runtime owner to stop a process.",
   join: "(person) Ask a remote person to join this room by projection.",
+  meet: "(person) Request a meeting with someone at a time and place they can accept.",
   open: "Interpretable natural-language proposition outside the typed relation vocabulary."
 };
 export const SLOT_TYPES = ["opening", "subject", "relation", "object", "recipient", "evidence", "topic", "finish", "none"];

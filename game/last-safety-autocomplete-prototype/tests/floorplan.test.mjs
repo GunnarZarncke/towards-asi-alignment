@@ -47,9 +47,14 @@ test('every door sits on both rooms, on opposite sides, and inside the wall', ()
   }
 });
 
-test('clearance 2 walks the staffed rooms and leaves the secure pair shut', () => {
+test('clearance 0 is commons and review; 1 is hub only; 2 opens north spine and invited wings', () => {
   const at0 = [...reachable(0)].sort();
   assert.deepEqual(at0, ['commons', 'review']);
+  const at1 = reachable(1);
+  assert.equal(at1.has('collab'), true);
+  assert.equal(at1.has('platform'), false);
+  assert.equal(at1.has('people'), false);
+  assert.equal(at1.has('model'), false);
   const at2 = reachable(2);
   assert.equal(at2.has('platform'), true);
   assert.equal(at2.has('people'), true);

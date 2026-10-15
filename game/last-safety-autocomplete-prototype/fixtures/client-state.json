@@ -1,6 +1,6 @@
 {
   "room": "platform",
-  "clearance": 2,
+  "clearance": 0,
   "actors": {
     "pavel": { "name": "Pavel Ruiz", "role": "Runtime engineer", "room": "platform", "initials": "PR" },
     "leila": { "name": "Leila Sen", "role": "Head of evaluation", "room": "evaluation", "initials": "LS" },

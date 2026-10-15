@@ -2,7 +2,8 @@
  * Engine host for the Lab Access handset (spec/terminal.md, spec/access.md).
  * Six player tools. Pipeline steps and handles are not tools. Output is TerminalState.
  */
-import { ACCESS_TREE, ACCESS_DELAY, resolveAccessRequest, visiblePaths, hasVerb } from '../access.mjs';
+import { ACCESS_TREE, ACCESS_DELAY, visiblePaths, hasVerb } from '../access.mjs';
+import { resolveAccessRequestGated } from './access-gates.mjs';
 import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
@@ -45,6 +46,7 @@ export function terminalState(s) {
   seedContactThreads(s);
   return {
     labAccessActive: !!s.labAccessActive,
+    clearance: s.clearance ?? 0,
     clock: { timeLabel: clockLabel(s.minute), act: s.act, dateLabel: CONFIG.DATE_LABEL },
     fuel: s.fuel,
     notifications: s.notifications.filter(n => noticeValid(s, n)),
@@ -159,7 +161,7 @@ export function applyToolCall(s, call, { log = true } = {}) {
     spend(s, 1);
     return { ok: false, reason: s.lastAccess.reason };
   }
-  const result = resolveAccessRequest(call.path, call.verb, s.scenario);
+  const result = resolveAccessRequestGated(s, call.path, call.verb);
   const before = s.fuelSpent;
   s.pendingAccess.push({ path: String(call.path), verb: String(call.verb), result, releaseAt: before + ACCESS_DELAY[result.delay] });
   spend(s, 1);

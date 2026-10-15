@@ -20,7 +20,7 @@ test('children stay hidden until list on parent', () => {
   assert.ok(after.includes('evaluation/shutdown/'));
 });
 
-test('evaluation list is amended to shutdown report plus Justine chat', () => {
+test('evaluation list is amended to shutdown report plus Justine chat (ungated resolver)', () => {
   const r = resolveAccessRequest('evaluation/', 'list', 'boundary-narrow');
   assert.equal(r.outcome, 'amend');
   assert.equal(r.delay, 'grant');

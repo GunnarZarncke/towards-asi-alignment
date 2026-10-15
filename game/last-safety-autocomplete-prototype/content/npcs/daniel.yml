@@ -29,6 +29,13 @@ glue:
     pushy: "That’s not a number."
     thin: "I can’t carry that."
 agenda:
+  - id: daniel.lunch
+    room: commons
+    acts: [doubt]
+    bands: [lunch]
+    about: [pilot, delivery_metrics]
+    texture: [completions_up]
+    work: "Lunch. Numbers still need a sentence someone can check."
   - id: daniel.metrics_slide
     room: collab
     acts: [doubt]
@@ -63,3 +70,8 @@ role_rules:
   - id: daniel.carry_sentence
     when: "told_record(daniel)"
     do: { note: hold_sentence }
+interventions:
+  accept_meeting:
+    relations: [meet]
+    acts: [welcome, doubt]
+    reason: "Bring one checkable sentence. Collaboration Bay or lunch in the commons."

@@ -24,6 +24,8 @@ export const CONFIG = Object.freeze({
   SENTENCE_CAP: 100,
   /** Agenda bands inside act II, as visit-clock minutes (world.md “Two days”). Fuel fractions until O-45. */
   BANDS: Object.freeze({ early: [570, 735], mid: [735, 960], late: [960, 1050] }),
+  /** Shared lunch in Commons; overrides ordinary mid-band desk agendas. */
+  LUNCH: Object.freeze([12 * 60, 12 * 60 + 45]),
   INTERVIEW: Object.freeze({ start: 735, end: 780 }),
   SAVE_VERSION: 1,
   /**
@@ -56,6 +58,8 @@ export const CONFIG = Object.freeze({
 });
 
 export function band(minute) {
+  const [l0, l1] = CONFIG.LUNCH;
+  if (minute >= l0 && minute < l1) return 'lunch';
   for (const [name, [a, b]] of Object.entries(CONFIG.BANDS)) if (minute >= a && minute < b) return name;
   return minute < CONFIG.BANDS.early[0] ? 'early' : 'late';
 }

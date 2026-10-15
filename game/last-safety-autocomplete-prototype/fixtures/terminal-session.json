@@ -1,5 +1,6 @@
 {
   "labAccessActive": true,
+  "clearance": 2,
   "clock": {
     "timeLabel": "10:40",
     "act": "doubt",

@@ -7,7 +7,7 @@
 
 const FORMS = new Set([
   'holds', 'knows', 'told', 'received', 'examined', 'read', 'asserted', 'event', 'restriction',
-  'requested', 'asked', 'linked', 'cited_line', 'told_record', 'act', 'true', 'false',
+  'requested', 'asked', 'linked', 'cited_line', 'told_record', 'act', 'present', 'npc_room', 'true', 'false',
   'not', 'and', 'or',
 ]);
 

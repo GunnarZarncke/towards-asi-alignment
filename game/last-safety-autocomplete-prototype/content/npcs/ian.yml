@@ -70,5 +70,9 @@ goals:
     salience: mid
     target: "told(ian, any, by=player)"
     question: { relation: about, about: review }
+role_rules:
+  - id: ian.intro_justine
+    when: "and(present(player, ian), told(ian, any, by=player, on=justine|lab_access), not(event(visitor_introduced_justine)))"
+    do: { act: introduce_justine }
 interventions:
   hold_release: { relations: [suspend, stop], objects: [release_schedule, review, nora], acts: [decision], reason: "That’s the meeting’s call. Bring it to the table." }
