@@ -22,4 +22,4 @@ Prompts: (paraphrase-only)
 
 ## Commits
 
-- (this session)
+- `acb69ba71` Convert chapter-opening illustrations from PNG to JPEG masters.
