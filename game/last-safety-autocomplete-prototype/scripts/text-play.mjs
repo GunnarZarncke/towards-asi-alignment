@@ -44,7 +44,7 @@ function importFromJson(data) {
   return importSession(data, applyAction);
 }
 
-const initial = loadSaveFile(saveFile, importFromJson);
+const initial = await loadSaveFile(saveFile, importFromJson);
 let s;
 if (initial.session) {
   s = initial.session;
@@ -89,7 +89,7 @@ async function local(verb, rest) {
   if (/^load$/i.test(verb)) {
     if (!rest.length) return 'Usage: load <file>';
     const file = rest.join(' ');
-    const loaded = loadSaveFile(file, importFromJson);
+    const loaded = await loadSaveFile(file, importFromJson);
     if (loaded.missing) return `No file: ${file}`;
     if (loaded.error) return `Could not load: ${loaded.error}`;
     s = loaded.session;

@@ -14,6 +14,7 @@ glue:
   onDomain:
     access: busy
   work: "I’m on the audit. Why do you need it? That’s the access question."
+  work_alt: "Every grant on my list needs an owner and a reason. That’s the audit, not small talk."
   opening:
     busy: "Sorry — why are you here? I mean the access question, not the greeting."
     pushy: "Need and role. If you don’t have both, I don’t have a grant."

@@ -18,6 +18,25 @@ import { ACCESS_TREE } from './access.mjs';
 
 export { ENTITIES };
 
+const MEETING_IAN_LINES = Object.freeze([
+  'Anything else for the record, or are you filing?',
+  'Add something else, or file what you have?',
+  'More for the room, or shall we file?',
+]);
+const COMMIT_EARLY_IAN = Object.freeze([
+  'Seventeen thirty, review room. File when you have something on the record you can stand behind.',
+  'Review is at half five. Come back when you can put a line on the record.',
+  'We meet at seventeen thirty. File when you can defend a line, not a hunch.',
+]);
+
+function meetingIanPrompt(s) {
+  return MEETING_IAN_LINES[s.sentences % MEETING_IAN_LINES.length];
+}
+
+function commitEarlyIan(s) {
+  return COMMIT_EARLY_IAN[s.sentences % COMMIT_EARLY_IAN.length];
+}
+
 /** Room screens (engine.md inspect). The screen is a short extract; the catalog file is the full text. */
 const SCREENS = Object.freeze({
   shutdown_report: {
@@ -550,7 +569,7 @@ function releaseAccess(s) {
   s.pendingAccess = s.pendingAccess.filter(x => x.releaseAt > s.fuelSpent);
 }
 
-export function dmSend(s, { to, text, parse: rawParse }) {
+export async function dmSend(s, { to, text, parse: rawParse }) {
   if (!s.labAccessActive) return { ok: false, reason: 'Lab Access is not active yet.' };
   if (s.ending) return { ok: false, reason: 'The review is over.' };
   if (!contacts(s).some(c => c.id === to)) return { ok: false, reason: 'Unknown person.' };
@@ -568,7 +587,16 @@ export function dmSend(s, { to, text, parse: rawParse }) {
     recordAssertion(s, parse);
     const shownDoc = parse.kind === 'show' ? showDoc(s, parse) : null;
     const turn = talkTo(s, to, parse, { shownDoc, visitKey: 'phone', channel: 'dm' });
-    queueMessage(s, to, { text: turn.lines.map(l => l.text).join(' '), moves: turn.moves }, CONFIG.REPLY_DELAY.person, base);
+    let outLines = turn.lines;
+    if (!s.replaying && process.env.OPENAI_API_KEY && process.env.DEMO_MODE !== '1') {
+      try {
+        const { phraseLines } = await import('./phrase.mjs');
+        outLines = await phraseLines(s, clean, turn.lines);
+      } catch {
+        outLines = turn.lines;
+      }
+    }
+    queueMessage(s, to, { text: outLines.map(l => l.text).join(' '), moves: turn.moves }, CONFIG.REPLY_DELAY.person, base);
   }
   spend(s, 1);
   return { ok: true, reason: 'Sent.' };
@@ -723,7 +751,7 @@ function commit(s, { text = '' } = {}) {
   if (!reviewCallable(s) && s.fuel > 0) {
     s.sentences += 1;
     spend(s, 1);
-    return { moves: [], lines: [{ npc: 'ian', text: 'Seventeen thirty, review room. File when you have something on the record you can stand behind.' }] };
+    return { moves: [], lines: [{ npc: 'ian', text: commitEarlyIan(s) }] };
   }
   startReview(s, { forced: false });
   return { moves: [], lines: [{ npc: 'ian', text: 'What will you sign?' }], review: true };
@@ -762,9 +790,12 @@ function meetingTurn(s, parse, npc, text) {
       && s.npcs[h.from]?.room === 'review');
     if (hole) {
       s.objected.push(hole.id);
-      lines.push({ npc: hole.from, text: `${FACTS[hole.id].text} That was said to you today, and it is not in what you presented.` });
+      lines.push({
+        npc: hole.from,
+        text: `${FACTS[hole.id].text} You heard that today — it is not in what you filed.`,
+      });
     }
-    lines.push({ npc: 'ian', text: 'Anything else, or do you file?' });
+    lines.push({ npc: 'ian', text: meetingIanPrompt(s) });
   }
   for (const l of lines) s.conversations.push({ role: 'npc', npc: l.npc, text: l.text, refs: [] });
   if (s.fuel <= 0) s.graceUsed = true;
@@ -975,7 +1006,7 @@ export function exportSession(s) {
   return { version: CONFIG.SAVE_VERSION, scenario: s.scenario, events: s.events };
 }
 
-export function importSession(data, apply) {
+export async function importSession(data, apply) {
   if (!data || typeof data !== 'object') return { error: 'Not a save file.' };
   if (!Number.isInteger(data.version) || data.version > CONFIG.SAVE_VERSION) return { error: 'This save is from a newer version.' };
   if (data.scenario !== PACK.id) return { error: `Unknown scenario ${String(data.scenario).slice(0, 40)}.` };
@@ -987,7 +1018,7 @@ export function importSession(data, apply) {
   for (const ev of events) {
     if (!ev || typeof ev !== 'object') continue;
     if (ev.kind !== 'action') continue;
-    apply(s, ev.action, ev.args || {});
+    await apply(s, ev.action, ev.args || {});
     log(s, 'action', { action: ev.action, args: ev.args || {} });
   }
   s.replaying = false;

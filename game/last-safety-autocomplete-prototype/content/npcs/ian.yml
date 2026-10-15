@@ -28,6 +28,7 @@ agenda:
     about: [lab_access, review]
     texture: [visit_schedule_today]
     work: "I’m receiving you. The review is later. Ask about the visit, not the machinery."
+    work_alt: "Lab Access is live — ask what I’ll sign later, or walk the building for how it runs."
   - id: ian.investor_update
     room: review
     acts: [doubt]

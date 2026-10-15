@@ -13,6 +13,7 @@ glue:
   onDomain:
     training: busy
   work: "I’m on the capability summary. Mechanism first. A label can wait."
+  work_alt: "I’m on the page about what the run does — not whether anyone meant anything by it."
   opening:
     thin: "I’m on the summary. Is this about the run, or about me?"
     busy: "Mechanism first. I can walk the completion."
@@ -31,6 +32,7 @@ agenda:
     about: [nora, shutdown_test, training_runs]
     texture: [capability_summary_due, reread_1602_transcript]
     work: "I’m writing what the run does, as a mechanism. Not an adjective."
+    work_alt: "I can walk the 16:02 stop again if you need a line number — not a story about intent."
   - id: jun.trace_curation
     room: model
     acts: [doubt]
@@ -50,6 +52,10 @@ knowledge:
   pilot_traces_for_fine_tune: { stance: knows, policy: answer }
   successor_count: { stance: knows, policy: answer }
   process_stopped: { stance: knows, policy: answer }
+refers:
+  - { relations: [about], entities: [job_284, task_queue, visitor_records], to: pavel, line: "Job rows are Pavel's queue. I can talk about what the run does." }
+  - { relations: [about], entities: [shutdown_report, shutdown_spec, safety_case], to: leila, line: "Leila holds the scope lines. I won't use pass or fail until those are on the page." }
+  - { relations: [about], entities: [camera_system, lab_access, policies], to: justine, line: "Permissions are Justine's audit. I read training logs, not grants." }
 policy_events:
   - on: "holds(jun, nora_says_scheduled)"
     set: { nora_says_scheduled: volunteer }

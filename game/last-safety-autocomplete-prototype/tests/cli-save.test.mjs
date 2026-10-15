@@ -50,18 +50,18 @@ test('formatSaveJson matches web export shape', () => {
   assert.ok(Array.isArray(parsed.events));
 });
 
-test('loadSaveFile imports a written save', () => {
+test('loadSaveFile imports a written save', async () => {
   const dir = mkdtempSync(join(tmpdir(), 'lsr-save-'));
   const file = join(dir, 'test-save.json');
   const s = newSession();
   writeFileSync(file, formatSaveJson(exportSession(s)));
   const imp = (data) => importSession(data, applyAction);
-  assert.deepEqual(loadSaveFile(join(dir, 'missing.json'), imp), {
+  assert.deepEqual(await loadSaveFile(join(dir, 'missing.json'), imp), {
     session: null,
     error: null,
     missing: true,
   });
-  const loaded = loadSaveFile(file, imp);
+  const loaded = await loadSaveFile(file, imp);
   assert.equal(loaded.error, null);
   assert.equal(loaded.missing, false);
   assert.ok(loaded.session);

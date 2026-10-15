@@ -79,7 +79,7 @@ const server=http.createServer(async(req,res)=>{
       const b=await body(req);
       if(url.pathname==='/api/reset')return json(res,200,both(replaceSession(sid,s,newSession())));
       if(url.pathname==='/api/import'){
-        const {session,error}=importSession(b,applyAction);
+        const {session,error}=await importSession(b,applyAction);
         if(error)return json(res,400,{error});
         return json(res,200,both(replaceSession(sid,s,session)));
       }
@@ -99,7 +99,7 @@ const server=http.createServer(async(req,res)=>{
         return json(res,200,{lines,line});
       }
       if(url.pathname==='/api/tool'){
-        const r=applyAction(s,'tool',b||{});
+        const r=await applyAction(s,'tool',b||{});
         return json(res,r.ok===false&&r.reason==='Not available on this phone.'?403:200,{result:r,...both(s)});
       }
       if(url.pathname==='/api/parse'){

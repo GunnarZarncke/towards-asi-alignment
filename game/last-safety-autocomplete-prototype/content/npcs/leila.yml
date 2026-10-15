@@ -13,6 +13,7 @@ glue:
   onDomain:
     evaluation: busy
   work: "I’m on the packet. Point at a line, or let me close it."
+  work_alt: "SC-EVAL-22 closes today. Ask which line we claimed — not a word you brought."
   opening:
     busy: "If this is a claim, point at a line. Otherwise I’m on the packet."
     thin: "I don’t answer a gap that isn’t a line. The packet still has to close."

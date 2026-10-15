@@ -35,13 +35,13 @@ export function formatSaveJson(payload) {
 
 /**
  * @param {string} file
- * @param {(data: object) => { session?: object, error?: string }} importSession
+ * @param {(data: object) => Promise<{ session?: object, error?: string }>} importSession
  */
-export function loadSaveFile(file, importSession) {
+export async function loadSaveFile(file, importSession) {
   if (!existsSync(file)) return { session: null, error: null, missing: true };
   try {
     const data = JSON.parse(readFileSync(file, 'utf8'));
-    const { session, error } = importSession(data);
+    const { session, error } = await importSession(data);
     if (error) return { session: null, error, missing: false };
     return { session, error: null, missing: false };
   } catch (e) {

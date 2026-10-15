@@ -78,8 +78,8 @@ test('refused file writes are not logged, and a full event log refuses further a
   assert.ok(applyAction(s, 'go', { room: 'collab' }).error);
 });
 
-test('import refuses saves longer than the event cap', () => {
+test('import refuses saves longer than the event cap', async () => {
   const events = Array.from({ length: CONFIG.LIMITS.EVENTS + 1 }, () => ({ kind: 'action', action: 'go', args: { room: 'commons' } }));
-  assert.ok(importSession({ version: CONFIG.SAVE_VERSION, scenario: newSession().scenario, events }, applyAction).error);
-  assert.ok(importSession({ version: CONFIG.SAVE_VERSION, scenario: newSession().scenario, events: 'nope' }, applyAction).error);
+  assert.ok((await importSession({ version: CONFIG.SAVE_VERSION, scenario: newSession().scenario, events }, applyAction)).error);
+  assert.ok((await importSession({ version: CONFIG.SAVE_VERSION, scenario: newSession().scenario, events: 'nope' }, applyAction)).error);
 });

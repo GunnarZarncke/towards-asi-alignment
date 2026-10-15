@@ -428,7 +428,8 @@ function referMove(s, id, entityId, relation) {
   const over = (def.refers || []).find(r => r.entities.includes(entityId) && (!r.relations || r.relations.includes(relation)));
   const to = over?.to || ownerOf(s, entityId, id);
   if (!to || to === id) return null;
-  return { type: 'refer', npc: id, to, about: entityId, cls: 'refer', names: true };
+  const line = over?.line ? String(over.line).trim() : null;
+  return { type: 'refer', npc: id, to, about: entityId, cls: 'refer', names: true, line };
 }
 
 function workMove(s, id, entityId) {
@@ -439,7 +440,10 @@ function workMove(s, id, entityId) {
   const item = currentAgenda(s, id);
   const agendaTexture = (item?.texture || []).find(f => held.includes(f));
   const fact = inDomain || agendaTexture || null;
-  const work = item?.work || NPC_DEFS[id]?.glue?.work || null;
+  const glue = NPC_DEFS[id]?.glue;
+  const primary = item?.work || glue?.work || null;
+  const alt = item?.work_alt || glue?.work_alt || null;
+  const work = alt && s.sentences % 2 === 1 ? alt : primary;
   return { type: 'work', npc: id, fact, work, agenda: item?.id || null, cls: 'texture', names: false };
 }
 
@@ -732,10 +736,21 @@ export function goalIds(id) {
 /** Texture rows are author notes (often third person). Dialogue uses agenda work lines or glue.work. */
 function textureDialogue(s, npc, fid) {
   const def = NPC_DEFS[npc];
-  for (const item of def?.agenda || []) {
-    if (item.texture?.includes(fid) && item.work) return item.work;
+  const item = currentAgenda(s, npc);
+  if (item?.texture?.includes(fid)) {
+    const alt = item.work_alt;
+    const primary = item.work;
+    if (primary || alt) return (alt && s.sentences % 2 === 1 ? alt : primary) || primary || alt;
   }
-  if (def?.glue?.work) return def.glue.work;
+  for (const ag of def?.agenda || []) {
+    if (ag.texture?.includes(fid) && (ag.work || ag.work_alt)) {
+      return (ag.work_alt && s.sentences % 2 === 1 ? ag.work_alt : ag.work) || ag.work || ag.work_alt;
+    }
+  }
+  const glue = def?.glue;
+  if (glue?.work || glue?.work_alt) {
+    return (glue.work_alt && s.sentences % 2 === 1 ? glue.work_alt : glue.work) || glue.work || glue.work_alt;
+  }
   return FACTS[fid]?.text || '';
 }
 
@@ -752,7 +767,9 @@ export function templateText(s, move) {
     case 'believe': return `As far as I know: ${factLine(move.fact)}`;
     case 'withhold': return move.reason;
     case 'deflect': return move.reason;
-    case 'refer': return `That’s ${name(move.to)}’s, ${CAST[move.to]?.role.toLowerCase() || ''}. Ask ${name(move.to)}.`;
+    case 'refer':
+      if (move.line) return move.line;
+      return `That’s ${name(move.to)}’s desk — ${CAST[move.to]?.role.toLowerCase() || 'their lane'}. Try ${name(move.to)}.`;
     case 'share': return `I’ve put ${DOCUMENTS[move.doc].docId} in your Lab Access.`;
     case 'ask': return askText(move);
     case 'request': return move.action === 'grant_record' ? 'I’m asking Justine for the grant record on 284.' : move.action === 'full_exec_284' ? 'I’m asking Pavel for the full EXEC-284 record.' : `I’m asking ${name(move.to)}.`;

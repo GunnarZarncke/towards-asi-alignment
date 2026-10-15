@@ -156,18 +156,19 @@ test('tutorial think: Leila points at the checklist; thinking alone returns the 
   assert.ok(t.thought.entries.some(e => e.id === 'checklist_names_two'));
 });
 
-test('a DM reply waits for its delay; NORA’s reply is player_prompted', () => {
+test('a DM reply waits for its delay; NORA’s reply is player_prompted', async () => {
   const s = startedSession();
   walk(s, 'platform');
-  dm(s, 'pavel', P('ask', 'about', { topic: 'task_queue' }));
-  const pending = terminalState(s).threads.find(t => t.with === 'pavel').messages.at(-1);
+  await dm(s, 'pavel', P('ask', 'about', { topic: 'task_queue' }));
+  const pending = s.threads.find(t => t.with === 'pavel').messages.at(-1);
   assert.equal(pending.released, false);
-  assert.equal(pending.text, '');
+  assert.ok(pending.text.length > 0);
+  assert.equal(terminalState(s).threads.find(t => t.with === 'pavel').messages.at(-1).text, '');
   idle(s, CONFIG.REPLY_DELAY.person);
   assert.equal(terminalState(s).threads.find(t => t.with === 'pavel').messages.at(-1).released, true);
 
   walk(s, 'platform'); applyAction(s, 'inspect', { id: 'job_log' });
-  dm(s, 'nora', P('ask', 'about', { topic: 'job_284' }), 'What was job 284?');
+  await dm(s, 'nora', P('ask', 'about', { topic: 'job_284' }), 'What was job 284?');
   idle(s, CONFIG.REPLY_DELAY.nora);
   const row = clientState(s).heard.find(h => h.id === 'nora_says_scheduled');
   assert.equal(row?.provenance, 'player_prompted');
@@ -185,21 +186,21 @@ test('Amara joins by projection and stays in the evaluation room while she is a 
   assert.equal(c.actors.amara.presence, 'hologram');
 });
 
-test('save and replay reproduce the same client state', () => {
+test('save and replay reproduce the same client state', async () => {
   const s = startedSession();
   walk(s, 'platform'); applyAction(s, 'inspect', { id: 'job_log' });
   say(s, 'pavel', P('ask', 'about', { topic: 'task_queue' }));
-  dm(s, 'justine', P('request', 'revoke', { object: 'job_284' }), 'Revoke job 284.');
+  await dm(s, 'justine', P('request', 'revoke', { object: 'job_284' }), 'Revoke job 284.');
   idle(s, 5);
   const saved = JSON.parse(JSON.stringify(exportSession(s)));
-  const { session, error } = importSession(saved, applyAction);
+  const { session, error } = await importSession(saved, applyAction);
   assert.ok(!error, error);
   const strip = c => ({ ...c, usage: null, serverMode: null });
   assert.deepEqual(strip(clientState(session)), strip(clientState(s)));
   assert.deepEqual(terminalState(session), terminalState(s));
 });
 
-test('import rejects other scenarios and newer versions', () => {
-  assert.ok(importSession({ version: CONFIG.SAVE_VERSION, scenario: 'nope', events: [] }, applyAction).error);
-  assert.ok(importSession({ version: CONFIG.SAVE_VERSION + 1, scenario: 'boundary-narrow', events: [] }, applyAction).error);
+test('import rejects other scenarios and newer versions', async () => {
+  assert.ok((await importSession({ version: CONFIG.SAVE_VERSION, scenario: 'nope', events: [] }, applyAction)).error);
+  assert.ok((await importSession({ version: CONFIG.SAVE_VERSION + 1, scenario: 'boundary-narrow', events: [] }, applyAction)).error);
 });

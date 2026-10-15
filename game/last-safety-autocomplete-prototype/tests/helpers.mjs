@@ -26,7 +26,7 @@ export function say(s, addressee, parse, text = '') {
 }
 
 export function dm(s, to, parse, text = 'message') {
-  return applyAction(s, 'dm.send', { to, text, parse });
+  return applyAction(s, 'tool', { tool: 'dm.send', to, text, parse });
 }
 
 export function readFile(s, rel) {

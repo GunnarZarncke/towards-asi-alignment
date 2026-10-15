@@ -369,7 +369,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
     if (text) {
       const s = getSession();
       const parse = await parseUtterance({ text, known: [...s.vocab], history: s.conversations, actorId: p.id }, s.usage);
-      const r = applyAction(s, 'tool', { tool: 'dm.send', to: p.id, text, parse: cleanParse({ ...parse, source: 'llm' }, s) });
+      const r = await applyAction(s, 'tool', { tool: 'dm.send', to: p.id, text, parse: cleanParse({ ...parse, source: 'llm' }, s) });
       return r.ok ? [] : [r.reason];
     }
     const th = t.threads.find(x => x.with === p.id);
@@ -379,7 +379,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
     const sug = [...(th?.suggestions || []).map(x => ({ text: x.phrase, parse: x.parse }))];
     if (p.id === 'nora') sug.push(...sentences(c, { addressees: ['nora'], channel: 'nora', omit: th?.omit || [], openings: 4, perOpening: 1 }));
     if (sug.length) {
-      menu = sug.map(x => ({ run: () => { const r = applyAction(getSession(), 'tool', { tool: 'dm.send', to: p.id, text: x.text, parse: x.parse }); return r.ok ? [] : [r.reason]; } }));
+      menu = sug.map(x => ({ run: async () => { const r = await applyAction(getSession(), 'tool', { tool: 'dm.send', to: p.id, text: x.text, parse: x.parse }); return r.ok ? [] : [r.reason]; } }));
       L.push('Send:', ...sug.map((x, i) => `  ${i + 1}. ${x.text}`));
     }
     L.push(`  or: msg ${whoArg} <text>`);

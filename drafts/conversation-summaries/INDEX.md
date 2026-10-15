@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety NPC dialogue and DM phrasing** — work_alt, refer lines, DM phraseLines, softer freeReply prompt. | [2026-10-15-last-safety-npc-dialogue-dm-phrasing.md](2026-10-15-last-safety-npc-dialogue-dm-phrasing.md) |
 | 2026-10-15 | **Last Safety NPC click addressee** — 3D click on a person sets speak addressee; floor walks the player only. | [2026-10-15-last-safety-npc-click-addressee.md](2026-10-15-last-safety-npc-click-addressee.md) |
 | 2026-10-15 | **Last Safety public-hosting hardening** — Withheld facts kept from the phrasing model; template-only prompt history; per-session model budget, TTL and caps; raster-only photos, CSP, generic errors. | [2026-10-15-last-safety-public-hosting-hardening.md](2026-10-15-last-safety-public-hosting-hardening.md) |
 | 2026-10-15 | **Chapter illustrations JPEG** — PDF/site masters PNG→JPEG; regen web copies; update includes and tex-convert. | [2026-10-15-illustrations-jpeg.md](2026-10-15-illustrations-jpeg.md) |

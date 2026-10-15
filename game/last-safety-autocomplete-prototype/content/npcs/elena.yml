@@ -16,6 +16,7 @@ glue:
     evaluation: deferential
     runtime: deferential
   work: "I’m on tonight’s rota. People questions here. The model is someone else’s paper."
+  work_alt: "I’m lining up who works release-critical tonight — staffing, not the technical packet."
   opening:
     busy: "The rota is tonight. If this is people, I can talk. If it’s the model, that’s not my paper."
     pushy: "Staffing is the rule. Don’t come for a name."
@@ -37,6 +38,7 @@ agenda:
     about: [skill_matching, release_schedule]
     texture: [release_rota_tonight]
     work: "I’m confirming who works the release path tonight. That’s my list, not a technical brief."
+    work_alt: "Tonight’s staffing list is what I own. Ask about the rule or the path, not the model weights."
   - id: elena.promotion_calibration
     room: people
     acts: [doubt]
@@ -44,6 +46,7 @@ agenda:
     about: [performance_reviews, staffing_memo]
     texture: [promotion_cycle_this_month, specialist_asked_last_week]
     work: "Calibration this month. Ask about the rule, not a private file."
+    work_alt: "Promotions and the matcher — that’s the conversation I can have right now."
   - id: elena.review
     room: review
     acts: [decision]
@@ -62,6 +65,10 @@ knowledge:
     policy: "conditional(linked(elena, staffing_memo|skill_matching|personnel_policy|performance_reviews, evaluation_independence|release_schedule|safety_case|review|shutdown_test), 'Personnel detail needs a reason. What does the assignment have to do with your review?')"
 documents:
   staffing-memo: { policy: answer }
+refers:
+  - { relations: [about, has_access, authorized], entities: [nora, shutdown_test, safety_case], to: leila, line: "That's Leila's packet — scope and lines, not my staffing rule. Ask her." }
+  - { relations: [about], entities: [job_284, task_queue, platform_jobs], to: pavel, line: "Queue rows are Pavel's. I only name who works the path." }
+  - { relations: [about], entities: [camera_system, visitor_records, lab_access], to: justine, line: "Grants and bindings are Justine's desk. I won't guess a permission." }
 policy_events:
   - on: "told(elena, report_includes_staffing, by=player)"
     set: { matcher_revisions_kept: volunteer, staffing-memo: volunteer }

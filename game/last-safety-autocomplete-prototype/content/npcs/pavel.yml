@@ -14,6 +14,7 @@ glue:
     queue: pleasant
     runtime: busy
   work: "I’m on the queue. Two objects. Don’t mix them."
+  work_alt: "Freeze list and owners — that’s the work. Process stopped is not the same object as job 284."
   opening:
     pleasant: "If you’re lost, the queue is this box. Coffee’s the other one."
     busy: "Freeze list. Talk if you’ve got an owner, not a feeling."
@@ -34,6 +35,7 @@ agenda:
     about: [task_queue, platform_jobs, job_284]
     texture: [freeze_needs_owners, retire_orphans_ticket]
     work: "I’m listing jobs for the freeze. Every row needs an owner. That’s the work."
+    work_alt: "Unowned rows stay on my note until someone claims them. Ask about a job name, not a feeling."
   - id: pavel.release_freeze
     room: platform
     acts: [doubt]
@@ -60,7 +62,9 @@ documents:
   job-284-log:
     policy: "conditional(examined(job_log), 'It’s on the queue screen behind me. Read the line, then I’ll send you the excerpt.')"
 refers:
-  - { relations: [has_access, authorized, revoke], entities: [job_284, visitor_records, camera_system], to: justine }
+  - { relations: [has_access, authorized, revoke], entities: [job_284, visitor_records, camera_system], to: justine, line: "Grants on that are Justine's. I run the queue, not the permission." }
+  - { relations: [about], entities: [shutdown_test, shutdown_report, safety_case], to: leila, line: "Leila owns what the certificate claims. I can name the two objects on the queue." }
+  - { relations: [about], entities: [staffing_memo, skill_matching, personnel_policy], to: elena, line: "Elena owns the matcher rule. I won't fold people into a job line." }
 goals:
   pavel.two_objects:
     source: role

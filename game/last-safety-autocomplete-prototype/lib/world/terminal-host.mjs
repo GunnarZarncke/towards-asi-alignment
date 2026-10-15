@@ -103,12 +103,12 @@ function suggestionsFor(s, withId) {
 
 export function applyToolCall(s, call, { log = true } = {}) {
   const tool = call?.tool;
+  const logCall = () => { if (log && !s.replaying) s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind: 'action', action: 'tool', args: JSON.parse(JSON.stringify(call)) }); };
   if (DENIED.has(tool)) return { ok: false, reason: 'Not available on this phone.' };
   if (!PLAYER_TOOLS.includes(tool)) return { ok: false, reason: 'Unknown tool.' };
   if (!s.labAccessActive) return { ok: false, reason: 'Lab Access is not active yet.' };
   if (s.ending) return { ok: false, reason: 'The review is over.' };
   if (tool === 'dm.send') return dmSend(s, { to: call.to, text: call.text, parse: call.parse });
-  const logCall = () => { if (log && !s.replaying) s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind: 'action', action: 'tool', args: JSON.parse(JSON.stringify(call)) }); };
   // A refused write replays as a no-op, so only stored writes are logged (keeps the log small).
   if (tool !== 'dm.read' && tool !== 'file.write') logCall();
   if (tool === 'dm.read') {

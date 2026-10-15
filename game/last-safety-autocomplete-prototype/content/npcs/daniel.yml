@@ -14,6 +14,7 @@ glue:
     metrics: pushy
     pilot: pushy
   work: "I’m on the numbers for tonight. If you have a sentence I can check, say it."
+  work_alt: "Slide and metrics — that’s what’s on my screen. Bring one checkable line if you want hold."
   opening:
     busy: "I’m on the slide. If you have a sentence I can check, say it. If not, I’m still on the numbers."
     pushy: "Give me one checkable line or let me finish the slide."
@@ -34,6 +35,7 @@ agenda:
     about: [pilot, delivery_metrics, release_schedule]
     texture: [completions_up, second_pilot_pitch]
     work: "I’m writing the slide for tonight. Ask me for a number I can check, not a mood."
+    work_alt: "Completions and wait time are up on the slide. I can’t carry a word I can’t check."
   - id: daniel.review
     room: review
     acts: [decision]
