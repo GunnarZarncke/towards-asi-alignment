@@ -108,7 +108,9 @@ export function applyToolCall(s, call, { log = true } = {}) {
   if (!s.labAccessActive) return { ok: false, reason: 'Lab Access is not active yet.' };
   if (s.ending) return { ok: false, reason: 'The review is over.' };
   if (tool === 'dm.send') return dmSend(s, { to: call.to, text: call.text, parse: call.parse });
-  if (log && !s.replaying && tool !== 'dm.read') s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind: 'action', action: 'tool', args: JSON.parse(JSON.stringify(call)) });
+  const logCall = () => { if (log && !s.replaying) s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind: 'action', action: 'tool', args: JSON.parse(JSON.stringify(call)) }); };
+  // A refused write replays as a no-op, so only stored writes are logged (keeps the log small).
+  if (tool !== 'dm.read' && tool !== 'file.write') logCall();
   if (tool === 'dm.read') {
     const t = s.threads.find(x => x.with === call.with);
     if (!t) return { ok: false, reason: 'No thread.', messages: [] };
@@ -134,6 +136,7 @@ export function applyToolCall(s, call, { log = true } = {}) {
     if (!rel || !WRITABLE.test(rel)) return { ok: false, reason: 'That folder is not writable from here.' };
     const r = writeNote(s, { rel, name: cleanText(call.name) || rel.split('/').pop(), text: call.text, kind: call.kind || fileKind(rel), facts: call.facts || [], parses: call.parses || [] });
     if (!r.ok) return r;
+    logCall();
     if (!rel.startsWith('notes/')) spend(s, 1);
     return { ok: true, reason: 'Saved.' };
   }

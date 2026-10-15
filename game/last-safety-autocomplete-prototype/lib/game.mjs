@@ -652,6 +652,11 @@ export function thoughtAction(s, action) {
 export function writeNote(s, { rel, name, text, kind = 'note', facts = [], parses = [] }) {
   const existing = s.files.find(f => f.rel === rel);
   if (existing && !existing.owned) return { ok: false, reason: 'Not your file.' };
+  const L = CONFIG.LIMITS;
+  kind = String(kind).slice(0, 16);
+  if (!existing && s.files.filter(f => f.owned && (f.kind === 'image') === (kind === 'image')).length >= (kind === 'image' ? L.PHOTOS : L.NOTES)) {
+    return { ok: false, reason: kind === 'image' ? 'Photo storage is full.' : 'Notes are full.' };
+  }
   let stored = String(text ?? '');
   if (kind === 'image') {
     if (stored.length > MAX_IMAGE_DATA_URL_LEN) {
@@ -661,8 +666,12 @@ export function writeNote(s, { rel, name, text, kind = 'note', facts = [], parse
     if (!parsed) return { ok: false, reason: 'Photo data could not be saved. Try again.' };
     stored = parsed.dataUrl;
   } else {
-    stored = stored.slice(0, 200_000);
+    stored = stored.slice(0, L.NOTE_CHARS);
   }
+  if ((s.bytesWritten || 0) + stored.length > L.BYTES_WRITTEN) return { ok: false, reason: 'Handset storage is full.' };
+  s.bytesWritten = (s.bytesWritten || 0) + stored.length;
+  facts = Array.isArray(facts) ? facts.slice(0, L.SIGNATURES) : [];
+  parses = Array.isArray(parses) ? parses.slice(0, L.SIGNATURES) : [];
   const row = {
     name: String(name || rel.split('/').pop()).slice(0, 80),
     rel,
@@ -883,7 +892,7 @@ export function clientState(s) {
     introduced: [...s.introduced],
     roleDomains: s.introduced.filter(id => ROLE_DOMAINS[id]).map(id => ({ id, domains: [...ROLE_DOMAINS[id]] })),
     evidence,
-    previous: s.conversations.slice(-8),
+    previous: s.conversations.slice(-8).map(({ template, ...row }) => row),
     asked: [...s.asked],
     usage: s.usage,
     serverMode: process.env.DEMO_MODE === '1' || !process.env.OPENAI_API_KEY ? 'demo' : 'live',
@@ -924,17 +933,23 @@ export function setConceptLinks(s, on) {
   if (!on) s.conceptMoreLink = null;
 }
 
-/** Composition swaps the template wording of one line for its phrasing; the move is unchanged. */
+/**
+ * Composition swaps the template wording of one line for its phrasing; the move is unchanged.
+ * The template is kept so later model calls see engine text, not earlier model output.
+ */
 export function rephraseLine(s, npc, template, text) {
   const row = s.conversations.findLast(c => c.role === 'npc' && c.npc === npc && c.text === template);
-  if (row) row.text = text;
+  if (row) { row.template ??= template; row.text = text; }
   if (s.conversations.length > 60) s.conversations = s.conversations.slice(-60);
 }
+
+/** Moves that keep their fact from the player. Its text never reaches the phrasing model. */
+const KEEPS_FACT = new Set(['withhold', 'deflect']);
 
 /** For composition: the move and only the facts it carries, plus voice and agenda texture. */
 export function phrasingInput(s, npc, move) {
   const item = N.currentAgenda(s, npc);
-  const facts = [move.fact, ...(move.outcome || [])].filter(id => FACTS[id]).map(id => FACTS[id].text);
+  const facts = KEEPS_FACT.has(move.type) ? [] : [move.fact, ...(move.outcome || [])].filter(id => FACTS[id]).map(id => FACTS[id].text);
   return {
     name: CAST[npc]?.name, role: CAST[npc]?.role, voice: N.voiceOf(npc),
     move: move.type, facts, reason: move.reason || null,
@@ -963,10 +978,14 @@ export function exportSession(s) {
 export function importSession(data, apply) {
   if (!data || typeof data !== 'object') return { error: 'Not a save file.' };
   if (!Number.isInteger(data.version) || data.version > CONFIG.SAVE_VERSION) return { error: 'This save is from a newer version.' };
-  if (data.scenario !== PACK.id) return { error: `Unknown scenario ${data.scenario}.` };
+  if (data.scenario !== PACK.id) return { error: `Unknown scenario ${String(data.scenario).slice(0, 40)}.` };
+  const events = data.events ?? [];
+  if (!Array.isArray(events)) return { error: 'Not a save file.' };
+  if (events.length > CONFIG.LIMITS.EVENTS) return { error: 'This save is too long.' };
   const s = newSession();
   s.replaying = true;
-  for (const ev of data.events || []) {
+  for (const ev of events) {
+    if (!ev || typeof ev !== 'object') continue;
     if (ev.kind !== 'action') continue;
     apply(s, ev.action, ev.args || {});
     log(s, 'action', { action: ev.action, args: ev.args || {} });

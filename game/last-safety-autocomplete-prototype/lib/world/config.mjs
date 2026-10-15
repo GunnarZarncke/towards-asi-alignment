@@ -27,6 +27,21 @@ export const CONFIG = Object.freeze({
   INTERVIEW: Object.freeze({ start: 735, end: 780 }),
   SAVE_VERSION: 1,
   /**
+   * Per-session caps for public hosting, so one browser cannot fill server memory. A full run
+   * stays far below each one; hitting one means scripted input, and the action is refused.
+   */
+  LIMITS: Object.freeze({
+    PHOTOS: 12,
+    NOTES: 60,
+    NOTE_CHARS: 20_000,
+    /** Characters stored by file writes over the whole session, overwrites included. */
+    BYTES_WRITTEN: 16_000_000,
+    /** Fact ids or parses one write may attach. */
+    SIGNATURES: 20,
+    /** Event log length; also the longest save import accepts. */
+    EVENTS: 5000,
+  }),
+  /**
    * Social glue (npcs.md). Discrete stance labels, not a trust number (O-21).
    * opening: first in-room talk with that person. closing: they leave the player’s room after talking.
    * mid: extra non-fact line at person-specific rate. Set enabled false to silence all glue.

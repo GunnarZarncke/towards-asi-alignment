@@ -88,13 +88,18 @@ The parser's user-visible vocabulary is sourced from the player's knowledge, **n
 
 The server maintains one in-memory session per browser via an HttpOnly cookie. It knows additional facts that the browser does not. The browser receives a deliberately filtered list of known entities, examined evidence, and observed findings.
 
-Sessions reset on server restart. There are no databases, embeddings, vector search, background jobs or paid asset dependencies.
+Sessions reset on server restart and expire after `SESSION_TTL_HOURS` idle (default 6). Each session has caps on photos, notes, bytes written and event-log length (`CONFIG.LIMITS` in `lib/world/config.mjs`); a normal run stays far below them. There are no databases, embeddings, vector search, background jobs or paid asset dependencies.
+
+### Jailbreaking the NPCs
+
+Jailbreaking is allowed, but it is not the game. The engine decides every NPC move and which facts it carries; the model only words that move. A fact an NPC withholds or deflects is never sent to the model, and later prompts see the engine's template lines, not earlier model wording. So a jailbreak can make an NPC say odd things, but it cannot reveal what the engine has not released, and it does not change the world state. Player text goes to the model labelled as untrusted. If you get an NPC to state a fact the engine did not give it, that is a bug worth reporting.
 
 ### API/model settings
 
 - Uses the OpenAI **Responses API** with `text.format.type=json_schema` for parses.
 - Default `OPENAI_MODEL=gpt-4.1-mini`. Change in `.env` if desired. Pricing and model availability may change.
 - The app displays token usage (and a rough estimate at $0.40/M input, $1.60/M output tokens, without accounting for caching).
+- Model calls are rate-limited per session: `LLM_CALLS_PER_MINUTE` (default 30) and `LLM_CALLS_PER_SESSION` (default 600; reset and import keep the count). Over a limit, typing falls back to the toy parser and NPC lines to their templates.
 
 ## Known limitations and next experiments
 

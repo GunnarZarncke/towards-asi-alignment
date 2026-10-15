@@ -8,7 +8,7 @@ Rooms render as live Three.js scenes (`public/render/three-scene.mjs`). The CSS 
 
 One fixed camera per room, drawn with Three.js. The player selects rooms, doors, people, and objects. There is no free-moving first-person body.
 
-The player has a third-person body in the fixed camera. Clicking the floor walks the selected person there. Clicking a person selects them. Clicking a door, record, or workstation walks the player to it, then performs the action. A walk does not change what anyone knows. It is still an event, clocked by fuel, so a recording can replay it (O-31, O-36).
+The player has a third-person body in the fixed camera. Clicking the floor walks the player there. Clicking another person in the room sets them as the default addressee for the next sentence (same as the addressee chips in the transcript dock). Clicking a door, record, or workstation walks the player to it, then performs the action. A walk does not change what anyone knows. It is still an event, clocked by fuel, so a recording can replay it (O-31, O-36).
 
 Look: modern, architectural, moderately stylized, restrained color, readable on a desktop browser and a phone, ordinary lab rather than a military site or a science-fiction set. Glass, plants, daylight, computers, security gear, test equipment.
 

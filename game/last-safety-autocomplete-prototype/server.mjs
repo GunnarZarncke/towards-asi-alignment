@@ -1,10 +1,10 @@
 import http from 'node:http';
-import {existsSync} from 'node:fs';
+import {existsSync,readdirSync,readFileSync} from 'node:fs';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {loadEnvFile} from 'node:process';
 import {fileURLToPath} from 'node:url';
-import {randomUUID} from 'node:crypto';
+import {randomUUID,createHash} from 'node:crypto';
 import {newSession,clientState,cleanParse,exportSession,importSession} from './lib/game.mjs';
 import {applyAction} from './lib/world/actions.mjs';
 import {terminalState,handsetMediaPayload} from './lib/world/terminal-host.mjs';
@@ -21,21 +21,41 @@ for (const rel of ['../../.env', '../.env', '.env']) {
 }
 const sessions=new Map();
 const consoles=new Map();
+const lastSeen=new Map();
 const PORT=Number(process.env.PORT||3000);
+/** Idle sessions are dropped after this long (all state is in memory). */
+const SESSION_TTL_MS=Number(process.env.SESSION_TTL_HOURS||6)*3_600_000;
+setInterval(()=>{
+  const cutoff=Date.now()-SESSION_TTL_MS;
+  for(const [sid,t] of lastSeen)if(t<cutoff){lastSeen.delete(sid);sessions.delete(sid);consoles.delete(sid)}
+},10*60_000).unref();
+/** Inline scripts (import map, text console boot) are allowed by hash; nothing else inline runs. */
+const inlineScripts=['index.html','text.html','terminal/index.html'].flatMap(f=>{
+  const file=path.join(ROOT,'public',f);
+  return existsSync(file)?[...readFileSync(file,'utf8').matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(m=>`'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`):[];
+});
+const CSP=`default-src 'self'; script-src 'self' ${inlineScripts.join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'`;
+class HttpError extends Error{constructor(status,message){super(message);this.status=status}}
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml'};
 /** Server modules the browser may import. Each is checked to hold no oracle or NPC state. */
 const PUBLIC_LIB=new Set(['grammar.mjs','floorplan.mjs','world/ranking-tables.mjs']);
 const CHANNELS=new Set(['person','nora','note','think']);
 function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data))}
-async function body(req){let str='';for await(const chunk of req){str+=chunk;if(str.length>3_500_000)throw Error('Request too large')}return JSON.parse(str||'{}')}
+async function body(req){let str='';for await(const chunk of req){str+=chunk;if(str.length>3_500_000)throw new HttpError(413,'Request too large.')}try{return JSON.parse(str||'{}')}catch{throw new HttpError(400,'Bad request.')}}
 function getSession(req,res){
   let sid=(req.headers.cookie||'').match(/(?:^|;\s*)lab_sid=([\w-]+)/)?.[1];
   if(!sid || !sessions.has(sid)){sid=randomUUID();sessions.set(sid,newSession());res.setHeader('Set-Cookie',`lab_sid=${sid}; HttpOnly; SameSite=Lax; Path=/`)}
+  lastSeen.set(sid,Date.now());
   return {sid,s:sessions.get(sid)};
 }
 const both=s=>({state:clientState(s),terminal:terminalState(s)});
+/** Reset and import start a new game but keep the model budget, so they do not refill it. */
+function replaceSession(sid,old,next){next.usage=old.usage;sessions.set(sid,next);return next}
 
 const server=http.createServer(async(req,res)=>{
+  res.setHeader('Content-Security-Policy',CSP);
+  res.setHeader('X-Content-Type-Options','nosniff');
+  res.setHeader('Referrer-Policy','no-referrer');
   try{
     const url=new URL(req.url,`http://${req.headers.host||'localhost'}`);
     if(url.pathname.startsWith('/api/')){
@@ -46,7 +66,7 @@ const server=http.createServer(async(req,res)=>{
         if(url.pathname==='/api/handset-file'){
           const media=handsetMediaPayload(s,url.searchParams.get('rel'));
           if(!media)return json(res,404,{error:'Not readable.'});
-          res.writeHead(200,{'Content-Type':media.mime,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+          res.writeHead(200,{'Content-Type':media.mime,'Cache-Control':'no-store','Content-Security-Policy':"default-src 'none'; sandbox"});
           return res.end(media.body);
         }
         if(url.pathname==='/api/export'){
@@ -57,11 +77,11 @@ const server=http.createServer(async(req,res)=>{
       }
       if(req.method!=='POST')return json(res,405,{error:'Method not allowed'});
       const b=await body(req);
-      if(url.pathname==='/api/reset'){sessions.set(sid,newSession());return json(res,200,both(sessions.get(sid)))}
+      if(url.pathname==='/api/reset')return json(res,200,both(replaceSession(sid,s,newSession())));
       if(url.pathname==='/api/import'){
         const {session,error}=importSession(b,applyAction);
         if(error)return json(res,400,{error});
-        sessions.set(sid,session);return json(res,200,both(session));
+        return json(res,200,both(replaceSession(sid,s,session)));
       }
       if(url.pathname==='/api/go'){const r=applyAction(s,'go',{room:b.room});return json(res,r.error?400:200,{...r,...both(s)})}
       if(url.pathname==='/api/inspect'){const r=applyAction(s,'inspect',{id:b.id});return json(res,r.error?400:200,{...r,...both(s)})}
@@ -116,7 +136,13 @@ const server=http.createServer(async(req,res)=>{
     else absolute=path.resolve(ROOT,'public',`.${publicPath}`);
     if(!libRel&&!absolute.startsWith(path.join(ROOT,'public')+path.sep)&&!absolute.startsWith(threeRoot+path.sep))return json(res,403,{error:'Forbidden'});
     const data=await readFile(absolute);
-    res.writeHead(200,{'Content-Type':mime[path.extname(absolute)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(data);
-  }catch(e){const m=String(e?.message||e);const status=m.includes('ENOENT')?404:m.includes('JSON')?400:502;json(res,status,{error:m.slice(0,280)})}
+    res.writeHead(200,{'Content-Type':mime[path.extname(absolute)]||'application/octet-stream','Cache-Control':'no-store'});res.end(data);
+  }catch(e){
+    // Details stay in the server log; the browser gets a fixed message (no paths, no upstream text).
+    if(e instanceof HttpError)return json(res,e.status,{error:e.message});
+    if(e?.code==='ENOENT'||e?.code==='EISDIR')return json(res,404,{error:'Not found.'});
+    console.error(e);
+    json(res,502,{error:'Something went wrong on the server. Try again.'});
+  }
 });
 server.listen(PORT,'127.0.0.1',()=>console.log(`Last Safety Review prototype: http://127.0.0.1:${PORT} (${process.env.OPENAI_API_KEY&&process.env.DEMO_MODE!=='1'?'live':'demo'})`));

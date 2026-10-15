@@ -5,7 +5,8 @@ export const MIN_IMAGE_BYTES = 256;
 
 export function parseImageDataUrl(text) {
   const raw = String(text ?? '').trim();
-  const m = /^data:image\/([\w+.-]+);base64,([A-Za-z0-9+/=\s]+)$/s.exec(raw);
+  // Raster types only: an SVG served from our origin could carry script.
+  const m = /^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=\s]+)$/s.exec(raw);
   if (!m) return null;
   const body = m[2].replace(/\s/g, '');
   if (!body || body.length % 4 === 1) return null;

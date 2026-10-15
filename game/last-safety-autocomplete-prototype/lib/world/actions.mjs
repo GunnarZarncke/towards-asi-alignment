@@ -5,8 +5,10 @@
 import { EDGES } from '../floorplan.mjs';
 import { go, inspect, respond, think, thoughtAction, setConceptLinks, dmSend } from '../game.mjs';
 import { applyToolCall } from './terminal-host.mjs';
+import { CONFIG } from './config.mjs';
 
 export function applyAction(s, action, args = {}) {
+  if (s.events.length >= CONFIG.LIMITS.EVENTS) return { ok: false, error: 'This session is full. Reset to play again.', reason: 'This session is full. Reset to play again.' };
   switch (action) {
     case 'go': return go(s, args.room);
     case 'inspect': return inspect(s, args.id);

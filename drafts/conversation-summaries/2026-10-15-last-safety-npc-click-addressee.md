@@ -1,0 +1,27 @@
+# 2026-10-15 — Last Safety NPC click addressee
+
+kind: correction
+uptake: local
+
+## Trigger
+In the 3D room, clicking an NPC still selected them for floor movement (leftover from testing). Clicking a person should set the default speak addressee, same as the transcript dock chips.
+
+Prompts: paraphrase only (no prompt id).
+
+## Done
+- content: `public/render/three-scene.mjs` — NPC click calls `onFocusActor` only; floor walks always use the player; removed the debug “Moving: …” chip; tooltips updated.
+- content: `public/app.js` — scene hint text.
+- content: `spec/graphics-ui.md` — click behavior documented.
+
+## Decisions
+- 2D CSS fallback already routed actor hotspots to `onFocusActor`; no change there.
+
+## Open / next
+- None for this fix.
+
+## Key paths
+- `game/last-safety-autocomplete-prototype/public/render/three-scene.mjs`
+- `game/last-safety-autocomplete-prototype/public/app.js`
+
+## Commits
+- (filled after commit)

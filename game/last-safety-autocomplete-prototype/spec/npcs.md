@@ -192,6 +192,8 @@ Fact moves are dry because they are generated from facts. **Glue** is extra non-
 
 As implemented: a fact the NPC may volunteer, and a document it may share, score +1 before goals, so a willing holder discloses when no goal is in play. Ties then go, in order, to the move that names the referent, to a fact the player has not already heard from this NPC, to effect-class order, and to authored order. A `conditional` claim policy whose predicate fails yields only the withhold; no other disclosure competes with it in that turn. A rule outcome that `settle()` already delivered this turn is not repeated as the response or the initiative.
 
+The phrasing model sees only what the move releases. A `withhold` or `deflect` passes its reason, never the fact text (`phrasingInput`), so a jailbreak cannot surface it. Dialogue history in later prompts uses the template lines, not earlier model wording.
+
 Headless runs use the forced move, or the top move when nothing was forced, and a template phrase. Lean (O-30) treats an unforced pick as nondeterminism over the passed set: reachability has to hold for every choice in that set. A forced move is one transition.
 
 ### The three outcomes (O-07)

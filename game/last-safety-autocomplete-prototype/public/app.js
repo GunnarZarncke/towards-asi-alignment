@@ -119,7 +119,7 @@ function renderScenePanel() {
   $('roomTitle').textContent = scene.roomTitle;
   $('actLabel').textContent = scene.actLabel;
   $('sceneNote').textContent = room3d
-    ? 'Click the floor to walk · click a person to move them · doors and records walk you there'
+    ? 'Click the floor to walk · click a person to speak to them · doors and records walk you there'
     : 'Tap hotspots — doors, records, people';
   $('actSwitch').hidden = !uiHarness;
   for (const btn of document.querySelectorAll('[data-act]')) btn.classList.toggle('active', btn.dataset.act === actPreset);

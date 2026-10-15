@@ -233,7 +233,7 @@ export class RoomRenderer {
       const tag = el('button', `room3d-tag${id === 'player' ? ' is-player' : ''}`, this.tagLayer);
       tag.type = 'button';
       tag.textContent = info.label;
-      tag.title = id === 'player' ? 'You — click the floor to walk' : `${info.label}, ${info.sub || ''} — click to select`;
+      tag.title = id === 'player' ? 'You — click the floor to walk' : `${info.label}, ${info.sub || ''} — click to speak to`;
       tag.onclick = () => this.clickPerson(id);
       this.tags.set(id, tag);
     }
@@ -401,12 +401,14 @@ export class RoomRenderer {
   }
 
   clickPerson(id) {
-    this.select(id);
-    if (id !== 'player') {
-      const npc = this.persons.get(id);
-      if (npc) this.persons.get('player')?.faceToward(npc.x, npc.z);
-      this.handlers.onFocusActor?.(id);
+    if (id === 'player') {
+      this.select('player');
+      return;
     }
+    this.select('player');
+    const npc = this.persons.get(id);
+    if (npc) this.persons.get('player')?.faceToward(npc.x, npc.z);
+    this.handlers.onFocusActor?.(id);
   }
 
   select(id) {
@@ -416,11 +418,8 @@ export class RoomRenderer {
   }
 
   updateChip() {
-    const info = this.labels.get(this.selectedId);
-    const who = this.selectedId === 'player' ? 'You' : info?.label || this.selectedId;
-    this.chip.innerHTML = `Moving: <b>${esc(who)}</b>${this.selectedId === 'player' ? ' · click the floor to walk' : ' · <u>back to you</u>'}`;
-    this.chip.disabled = this.selectedId === 'player';
-    for (const [id, tag] of this.tags || []) tag.classList.toggle('selected', id === this.selectedId);
+    this.chip.hidden = true;
+    for (const [id, tag] of this.tags || []) tag.classList.toggle('selected', false);
   }
 
   walk(id, x, z, { heading = null, onArrive = null } = {}) {
@@ -470,7 +469,7 @@ export class RoomRenderer {
     let text = '';
     if (hit?.type === 'person') {
       const info = this.labels.get(hit.id);
-      text = hit.id === 'player' ? 'You' : `${info?.label || hit.id} — click to select`;
+      text = hit.id === 'player' ? 'You — click the floor to walk' : `${info?.label || hit.id} — click to speak to`;
     } else if (hit?.type === 'hotspot') {
       const h = this.active.get(hit.id)?.h;
       text = h ? (h.kind === 'exit' ? (h.restricted ? `${h.label} — higher clearance` : `Go to ${h.label}`) : h.kind === 'terminal' ? `${h.label} — walk over and use` : `${h.label} — walk over and read`) : '';
