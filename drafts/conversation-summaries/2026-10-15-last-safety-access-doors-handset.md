@@ -28,4 +28,4 @@ Prompts: (session continuation — prior thread on access/doors; handset UI foll
 - `game/last-safety-autocomplete-prototype/public/terminal/phone.js`
 
 ## Commits
-- (this session)
+- `9ab6fe59d` Last Safety: gate API access, progressive door clearance, handset UX.
