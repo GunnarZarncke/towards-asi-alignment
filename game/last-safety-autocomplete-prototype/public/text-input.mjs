@@ -4,9 +4,11 @@
  */
 import { makeParse } from '../lib/grammar.mjs';
 import { getCandidates, insertFragment, localPrefixParse, RANKING } from './grammar.js';
-import { utteranceSlice, PAGE } from '../lib/text/tab-complete.mjs';
+import { utteranceSlice } from './text-tab-slice.mjs';
 
-export { utteranceSlice } from '../lib/text/tab-complete.mjs';
+export { utteranceSlice } from './text-tab-slice.mjs';
+
+const PAGE = RANKING.PAGE_SIZE;
 
 function presentIds(state) {
   return Object.entries(state.actors || {})

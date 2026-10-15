@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-15 | **Last Safety /text.html** — Browser text console import graph fix; room/help output works on `npm start`. | [2026-10-15-last-safety-text-html-fix.md](2026-10-15-last-safety-text-html-fix.md) |
 | 2026-10-15 | **Last Safety Welcome until 11:00** — Act I lasts through the morning; Doubt starts when Ian leaves for the investor update. | [2026-10-15-last-safety-welcome-until-eleven.md](2026-10-15-last-safety-welcome-until-eleven.md) |
 | 2026-10-15 | **Hu/Rong DeAI App C note** — Accountability vs incapacitation gaps in Finding the Real Actor and Successors; bib only (no field-agenda row). | [2026-10-15-hu-rong-deai-appc.md](2026-10-15-hu-rong-deai-appc.md) |
 | 2026-10-15 | **Last Safety photo pipeline and transcript collapse** — JPEG saves, valid image gate, WebGL capture, dock collapse UX. | [2026-10-15-last-safety-photo-transcript-fixes.md](2026-10-15-last-safety-photo-transcript-fixes.md) |

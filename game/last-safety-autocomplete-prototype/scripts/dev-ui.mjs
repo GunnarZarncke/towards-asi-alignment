@@ -105,6 +105,11 @@ const server = http.createServer(async (req, res) => {
             state: sessionState,
           });
         }
+        if (url.pathname === '/api/text' || url.pathname === '/api/tab-complete') {
+          return json(res, 503, {
+            error: 'Text console needs the full engine. Stop dev:ui and run npm start, then open /text.html on port 3000.',
+          });
+        }
       }
       return json(res, 404, { error: 'Unknown API endpoint' });
     }

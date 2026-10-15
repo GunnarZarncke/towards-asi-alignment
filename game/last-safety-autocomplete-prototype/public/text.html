@@ -33,11 +33,30 @@
   <form id="f"><span id="prompt"></span><span id="debugBadge" hidden>debug</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help · Tab completes speech" autofocus/></form>
 </div>
 <script type="module">
-import { attachTabCompletion } from './text-input.mjs';
-import { kbSnapshot, formatKbDelta } from './text-debug.mjs';
+const log = document.getElementById('log');
+function bootError(message) {
+  log.replaceChildren();
+  const row = document.createElement('div');
+  row.className = 'debug';
+  row.textContent = message;
+  log.appendChild(row);
+}
+
+let attachTabCompletion;
+let kbSnapshot;
+let formatKbDelta;
+try {
+  ({ attachTabCompletion } = await import('./text-input.mjs'));
+  ({ kbSnapshot, formatKbDelta } = await import('./text-debug.mjs'));
+} catch (err) {
+  bootError(
+    `Text console failed to load (${err?.message || err}). Hard-refresh the page (Cmd+Shift+R). Use npm start for /text.html — not dev:ui alone.`,
+  );
+  throw err;
+}
 
 const debug = new URLSearchParams(location.search).has('debug');
-const log = document.getElementById('log'), input = document.getElementById('in'), promptEl = document.getElementById('prompt');
+const input = document.getElementById('in'), promptEl = document.getElementById('prompt');
 const history = [];
 let at = 0;
 let gameState = null;
@@ -77,8 +96,16 @@ function print(text, cls) {
 async function send(line) {
   if (debug && gameState && line) kbBefore = kbSnapshot(gameState);
   if (line) print(line, 'cmd');
-  const r = await fetch('/api/text', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line }) });
-  const data = await r.json();
+  let data;
+  try {
+    const r = await fetch('/api/text', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line }) });
+    data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Request failed');
+  } catch (err) {
+    print(err.message || String(err));
+    input.focus();
+    return;
+  }
   if (data.error) print(data.error);
   if (data.out) print(data.out);
   promptEl.textContent = (data.prompt || '').replace(/\s*>\s*$/, '');
@@ -114,8 +141,12 @@ input.onkeydown = e => {
   if (!tab.isOpen() && e.key === 'ArrowDown') { at = Math.min(history.length, at + 1); input.value = history[at] || ''; e.preventDefault(); }
 };
 (async () => {
-  await refreshState();
-  await send('');
+  try {
+    await refreshState();
+    await send('');
+  } catch (err) {
+    bootError(`Could not reach the game server (${err?.message || err}). Run npm start in the game folder.`);
+  }
 })();
 </script>
 </body>
