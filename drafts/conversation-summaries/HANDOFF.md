@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-15 (Last Safety onboarding hints and room notes).
+Last updated: 2026-10-15 (Last Safety room UI impressum link).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-15:** **Last Safety impressum / About** — Bottom-right link on room UI opens dialog with minimal German provider block (aintelope UG), AI-generated/fictional disclaimer, three.js and optional LLM credits. Log: `2026-10-15-last-safety-impressum.md`.
 - **2026-10-15:** **Last Safety onboarding hints and room notes** — Composer bubble until the first sent line; Lab Access phone mark and bubble until opened; one mechanic note in each room that had no screen, including text `look`/`read`. Log: `2026-10-15-last-safety-onboarding-hints.md`.
 - **2026-10-15:** **Last Safety ending reachability** — `npm run test:endings` witnesses all six `(arc, addOn)` pairs for boundary-narrow (O-29); not in `test:engine`. Log: `2026-10-15-last-safety-ending-reachability.md`.
 - **2026-10-15:** **Last Safety access, doors, handset** — API access gates (intro/reason); progressive badge clearance 0→1→2; lunch/meetings; status-bar clearance; compact notices; note hover preview. Log: `2026-10-15-last-safety-access-doors-handset.md` (`9ab6fe59d`).

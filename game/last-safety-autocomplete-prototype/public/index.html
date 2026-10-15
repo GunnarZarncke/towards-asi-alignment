@@ -98,6 +98,31 @@
 </aside>
 
 <div id="phoneOverlay" class="phone-overlay" hidden><iframe id="phoneFrame" title="Lab Access handset"></iframe></div>
+<button type="button" class="imprint-link" id="imprintLink">Impressum / About</button>
+<dialog id="imprintDialog" class="imprint-dialog" aria-labelledby="imprintTitle">
+  <h2 id="imprintTitle">Impressum / About</h2>
+  <p class="small muted">Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV</p>
+  <p><b>Diensteanbieter</b><br/>aintelope gemeinnützige UG (haftungsbeschränkt)<br/>Fehnweg 4, 22415 Hamburg, Deutschland<br/>
+  E-Mail: <a href="mailto:aintelope.ug@gmail.com">aintelope.ug@gmail.com</a></p>
+  <p><b>Vertretungsberechtigt und verantwortlich für den Inhalt</b><br/>Geschäftsführer: Gunnar Zarncke<br/>
+  Amtsgericht Hamburg, HRB 181098</p>
+  <p><b>About / KI-Hinweis</b><br/>
+  <i>The Last Safety Review</i> is an experimental prototype accompanying <i>Towards Superintelligence Alignment</i>.
+  Its text, characters, documents and 3D scenes are AI-generated and may contain errors; all people and organisations in the story are fictional.
+  Dieses Spiel und seine Inhalte (Texte, Figuren, Dokumente, Szenen) wurden mit KI erzeugt; alle Personen und Organisationen sind frei erfunden.</p>
+  <p><b>Used components</b><br/>
+  3D rendering: <a href="https://threejs.org/">three.js</a> (MIT License, © three.js authors). Scene objects are procedurally generated in code.
+  Typeface: Inter (SIL OFL 1.1) if installed, otherwise system fonts; no web fonts are loaded.
+  Free-text input may optionally be interpreted by an LLM service (OpenAI) when the server is configured with an API key.</p>
+  <form method="dialog"><button class="minor">Close / Schließen</button></form>
+</dialog>
+<script>
+  (function () {
+    var d = document.getElementById('imprintDialog');
+    document.getElementById('imprintLink').onclick = function () { d.showModal(); };
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  })();
+</script>
 <script type="module" src="/app.js"></script>
 </body>
 </html>
