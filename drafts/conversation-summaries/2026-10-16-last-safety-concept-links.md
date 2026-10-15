@@ -34,4 +34,4 @@ Per-fact optional TSA companion card links (O-41): phone setting, room footer li
 - `node --test tests/concepts.test.mjs tests/engine.test.mjs --test-name-pattern O-41` → pass
 
 ## Commits
-- (this session)
+- `5d94fd922` Last Safety: O-41 TSA concept links and door clearance signs.
