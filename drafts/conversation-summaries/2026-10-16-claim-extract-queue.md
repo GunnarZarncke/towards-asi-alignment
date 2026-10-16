@@ -24,4 +24,4 @@ Prompts: paraphrase-only (no resolvable prompt id)
 - `metadata/claim-extracts/ch42.jsonl`
 
 ## Commits
-- none
+- `6dfa0e95b` Claim-extract: combined chapter queue and informal-warrant lens.
