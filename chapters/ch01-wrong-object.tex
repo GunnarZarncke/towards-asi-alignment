@@ -10,14 +10,14 @@
 
 \begin{authbar}{GZ+AI}
 \begin{chapterthesis}
-A model is the trained network. Alignment is making its behavior stay something humans can still correct. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Before asking whether a system is aligned, locate that loop.
+A model is the trained network. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Alignment is making that loop's behavior stay something humans can still correct. Before asking whether a system is aligned, locate that loop.
 \end{chapterthesis}
 \end{authbar}
 
 \begin{authbar}{GZ+AI}
 \begin{epistemicstatus}
 Most of this chapter's descriptive material --- that deployed AI systems sit inside coupled human-model-institution loops, that physical containment is not decisive evidence of agency, and that composite optimizers can produce local success and global failure --- 
-restates and extends observations already made in the embedded-agency, multi-agent-systems, and structural-AI-failure literature. Agent/boundary attribution is an unsettled issue in the field, though.
+restates and extends observations already made in the embedded-agency, multi-agent-systems, and structural-AI-failure literature \autocite{demski2019embedded,christiano2019failure}. Agent/boundary attribution is an unsettled issue in the field, though.
 This chapter adds a boundary-error typology and treats ``where is the agent'' as a measurement problem whose tests are stated in Chapter~\ref{ch:finding-boundary}.
 This chapter previews the boundary claim (Claim~\ref{claim:boundary}).
 \end{epistemicstatus}
@@ -34,7 +34,7 @@ Disastrous results are to be expected \ldots\ wherever two agencies essentially 
 \begin{authbar}{GZ+AI}
 Any account of alignment fixes three things, usually without saying so: an \emph{object} that is being aligned, a \emph{subject} that does the aligning, and a \emph{content} that is supposed to pass from the one to the other.
 The standard picture fills the slots with a trained model, its developers, and human values.
-The claim of this chapter is that the first slot is filled wrongly for capable deployed systems, and that the error propagates: once the object is misidentified, no choice of subject or content repairs the safety case.
+The claim of this chapter is that the first slot is often filled wrongly for capable deployed systems, and that the error propagates: once the object is misidentified, no choice of subject or content repairs the safety case.
 We use the three slots as a reading aid for the rest of the chapter, not as a structure for the book.
 
 The standard picture imagines alignment as a simple instruction relation:
@@ -42,7 +42,7 @@ The standard picture imagines alignment as a simple instruction relation:
 \text{humans} \xrightarrow{\text{human values}} \text{AI system}
 \]
 On this picture, the system has an objective and alignment means making it point at human values \autocite{russell2019human}.
-That picture is useful for toy domains---chess engines, recommenders, robot vacuums---but it breaks for superintelligence.
+That picture is useful for toy domains, e.g., chess engines or robot vacuums, but it breaks for superintelligence.
 The same failure mode appears earlier once systems are generally capable and deployed in learning, tool, and feedback loops; Chapter~\ref{ch:dynamical-guarantee} states the replacement.
 
 The nature of the underlying optimizer may be opaque: the real agent may not be the model we train.
@@ -71,9 +71,9 @@ Many alignment arguments begin too late.
 They ask what objective a model has.
 They ask whether a policy is corrigible.
 They ask whether a system will deceive its overseers.
-They ask whether a trained network contains a mesa-optimizer.
+They ask whether a trained network contains a mesa-optimizer \autocite{hubinger2019risks}.
 They ask whether a deployment is safe \autocite{russell2019human}.
-While these are important questions.
+These are important questions.
 But they assume that we already know what object is being aligned.
 Often we do not.
 
@@ -108,7 +108,7 @@ Which subset of the world, if modeled as a bounded process with internal state, 
 A common implicit assumption is that the unit that is getting aligned is the folk intuition of a person as an agent.
 Consider a person. We can treat an adult person as the unit of agency and ask what they want. But this intuition already breaks down for babies.
 It is not a good description of how the brains of babies arguably model the world.
-At least until about age one and a half, the baby's brain has to model a world where the acting entity is largely the composite unit of baby and caregiver.
+At least until about age one and a half, the baby's brain arguably has to model a world where the acting entity is largely the composite unit of baby and caregiver.
 The baby's brain is effectively learning to steer this unit and only later primarily itself.
 Chapter~\ref{ch:composite-agent} returns to that case.
 
@@ -175,7 +175,7 @@ The class is deliberately broad: organisms, companies, markets, bureaucracies, s
 The point is not to declare everything an agent.
 The point is to make the attribution pay rent.
 
-The formal tests---an information cut at the interface, and a compression test for goal-like modeling---are stated in Chapter~\ref{ch:finding-boundary} and Appendix~\ref{appf-glossary}.
+The formal tests---an information cut at the interface, a memory-localization handle, and a compression test for goal-like modeling---are stated in Chapter~\ref{ch:finding-boundary} and Appendix~\ref{appf-glossary}.
 Chapter~\ref{ch:agent-without-anthropomorphism} and Chapter~\ref{ch:compression-test-intention} develop the same idea as a measurement, not as a verdict of personhood.
 The specific means are still under debate; this chapter only needs the preview.
 
@@ -184,10 +184,6 @@ The specific means are still under debate; this chapter only needs the preview.
 \section{The Boundary Error}
 \authbarsubneedspace
 \subsection{Why Physical Boundaries Are Insufficient}
-\begin{authbar}{GZ+AI}
-Chapter~\ref{ch:finding-boundary} quotes the field's membrane language: approximate causal separation of regions.
-The decision-relative control boundary used here is not that cut.
-\end{authbar}
 \begin{authbar}{GZ+AI}
 A skin is often a good boundary.
 A skull is often a good boundary.
@@ -200,7 +196,7 @@ A bureaucracy using forms, deadlines, and review committees has an agency bounda
 A language model with tools may have an effective boundary that includes a browser, a scratchpad, a vector database, an API credential, and a human who clicks approve.
 
 Physical containment is evidence.
-It is not decisive.
+It is not decisive.\footnote{Chapter~\ref{ch:finding-boundary} takes up the field's membrane language---approximate causal separation of regions---and replaces it with a leaky, scale-relative interface recovered from prediction and intervention. This chapter only requires that the boundary that matters is wherever the control loop runs.}
 
 The relevant question is whether there is a persistent transformation from input to internal update to output to future input.
 In many systems, this loop crosses the obvious boundary.
@@ -238,7 +234,7 @@ Boundary errors come in several forms.
 \begin{authbar}{GZ+AI}
 The evaluator treats the model as the system, while the deployed loop includes tools, memory, users, and institutional feedback.
 
-This is the most common technical version.
+This is probably the most common technical version: evaluators usually score the model.
 A base model may be relatively passive.
 An agent scaffold around it may create memory, planning, delegation, and persistence.
 A company may then add evaluation and fine-tuning loops that select for behaviors absent from the original model.
@@ -298,12 +294,7 @@ A theorem prover running offline may be dangerous because of its output, but not
 The test is not whether a larger system can be imagined.
 A larger system can always be imagined.
 The test is whether the larger boundary improves prediction of the relevant failure modes enough to justify the added complexity.
-
-Formally, if $C_1$ is the model-level boundary and $C_2$ is the composite boundary, use $C_2$ only if:
-\[
-L(C_2)-L(C_1)>\lambda\left[\DL(C_2)-\DL(C_1)\right].
-\]
-The composite model must explain more than it costs.
+The composite must explain more than it costs.\footnote{Chapter~\ref{ch:finding-boundary} states the comparison as a score: how much leaks across the boundary, how much the candidate predicts, and a penalty for a more complicated boundary. This chapter only needs the comparison.}
 
 Otherwise the framework becomes unfalsifiable.
 One can always say ``the real agent was larger.''
@@ -405,7 +396,7 @@ A frontier AI deployment can contain:
 The real optimizer may be any stable subset of this list.
 Or several at once.
 
-This creates a hierarchy of candidate boundaries:
+This creates a hierarchy of candidate boundaries:\footnote{The picture is a hierarchy of scale, not a tree of nested sets. A company, as usually understood, does not include its customers. One part can belong to several larger candidates at once: a tool in both the scaffold and the product loop, users in both the product loop and the market. The relation is a directed acyclic graph. The chain below orders scale; it does not claim that each candidate sits inside the next.}
 \[
 C_{\text{weights}}
 \subset
@@ -451,30 +442,17 @@ For civilizational value drift, the whole socio-technical system may be the rele
 \authbarneedspace
 \section{Boundary Discovery and Perturbation}
 \begin{authbar}{GZ+AI}
-Boundary discovery should be an audit step, not a slogan.
+Boundary discovery should be an operational audit step.
 
-Given traces $X_{1:T}$, the evaluator should search for candidate systems $C$ that satisfy three conditions:
+Given traces of what happens over time, the evaluator should search for candidate systems that satisfy three conditions.
 \begin{enumerate}
-  \item \textbf{Boundary condition:}
-  \[
-  \MI(I^C_{t+1};E^C_{t+1}\mid S^C_t,A^C_t)\leq \epsilon.
-  \]
-  \item \textbf{Memory condition:}
-  some internal variables carry unique predictive information from past to future:
-  \[
-  \Delta_m(k)
-  =
-  \MI(m_{t-k};I^C_{t+1}\mid S^C_t,A^C_t,I^C_t\setminus\{m_t\}).
-  \]
-  \item \textbf{Control or intention condition:}
-  a goal-like or control-like model compresses behavior:
-  \[
-  \Delta L_C>0.
-  \]
+  \item \textbf{Boundary.} The candidate has an interface. Knowing what crosses that interface is enough to predict how the inside and the outside affect each other. If a lot still leaks past it, the boundary is in the wrong place.
+  \item \textbf{Memory.} The candidate stores something that still matters later. What it does next is not settled by the signals crossing the interface right now.
+  \item \textbf{Control.} What the candidate does is better predicted by saying what it is steering toward than by listing only its parts. If that goal adds no prediction, do not attribute one.
 \end{enumerate}
 
 These are not final definitions.
-They are measurement handles \autocite{zarncke2025uad,bialek2001predictability}.
+They are measurement handles.\footnote{Chapter~\ref{ch:finding-boundary} states the boundary and memory handles as conditional mutual information. Chapter~\ref{ch:compression-test-intention} states the control handle as a description-length gain. This chapter only needs the three questions.} \autocite{zarncke2025uad,bialek2001predictability}.
 
 The practical output is a ranked list of candidate optimizers:
 \[
@@ -559,7 +537,7 @@ At time $t+1$, it may be a tool-using scaffold.
 At time $t+2$, it may be a corporate deployment process.
 At time $t+3$, it may be a human--AI research civilization.
 
-The alignment target is therefore not a fixed object.
+The alignment object is therefore not a fixed object.
 It is a moving equivalence class.
 
 We need to ask whether the transformation preserves correction-relevant invariants:
@@ -575,7 +553,7 @@ It means preservation of properties that matter for alignment:
   \item bearer maps,
   \item correction-channel capacity,
   \item transparency policy,
-  \item successor constraints.
+  \item control-locus continuity.
 \end{itemize}
 
 Later chapters ask whether those properties survive as the boundary moves.
@@ -584,7 +562,7 @@ Later chapters ask whether those properties survive as the boundary moves.
 \authbarneedspace
 \section{A Decision-Relevant Test}
 \begin{authbar}{GZ+AI}
-A claim is useful if it changes decisions.
+A claim is useful only if it changes decisions.
 
 The wrong-object frame changes deployment decisions in several places.
 
@@ -706,7 +684,7 @@ That object can be smaller or larger than expected, distributed, time-varying, h
 
 The key claim is:
 \[
-\text{Alignment target}
+\text{Alignment object}
 =
 \operatorname*{arg\,max}_{C}
 \left[
@@ -717,8 +695,7 @@ The key claim is:
 \]
 subject to the requirement that $C$ is an intervention-relevant boundary for the risk in question.
 
-This does not finish alignment.
-It stops you from optimizing the wrong thing.
+This makes optimizing the wrong thing less likely, and more detectable.
 
 The next chapters build on it.
 Once we can ask where the optimizer is, we can ask how large such systems become, how their capabilities grow, how human values can be represented without freezing them, and how correction can survive when the system being corrected becomes smarter than the correctors.
@@ -746,7 +723,7 @@ This chapter argues that the first task is to locate the bounded process whose d
   \item Composite deployments can form adaptive loops whose optimizer is not the base model.
   \item Boundary discovery uses interface screening, memory localization, and intentional compression as measurement handles.
   \item Perturbation tests whether control structure persists when surface conditions change.
-  \item For superintelligence, the alignment target may be a moving equivalence class, not a fixed snapshot.
+  \item For superintelligence, the alignment object may be a moving equivalence class, not a fixed snapshot.
   \item Progress requires logging, evaluating, and intervening at the boundary that actually matters for each risk.
 \end{itemize}
 
@@ -754,7 +731,7 @@ This chapter argues that the first task is to locate the bounded process whose d
 \authbarneedspace
 \section*{Chapter References}
 \begin{authbar}{AI}
-This chapter builds on human-compatible control \autocite{russell2019human} and accounts of structural and multi-step AI failure \autocite{christiano2019failure,christiano2017}; formal models of agents and agency detection \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad}; boundaries of agents and systems \autocite{critch2022boundaries}; the intentional stance \autocite{dennett1987intentional}; and predictive-state and computational-mechanics measures of structure \autocite{shalizi2001computational,bialek2001predictability}.
+This chapter builds on human-compatible control \autocite{russell2019human} and accounts of embedded agency and of structural and multi-step AI failure \autocite{demski2019embedded,christiano2019failure,christiano2017,hubinger2019risks}; formal models of agents and agency detection \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad}; boundaries of agents and systems \autocite{critch2022boundaries}; the intentional stance \autocite{dennett1987intentional}; and predictive-state and computational-mechanics measures of structure \autocite{shalizi2001computational,bialek2001predictability}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

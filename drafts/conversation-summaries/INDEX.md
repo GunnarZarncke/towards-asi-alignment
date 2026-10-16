@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-16 | **Ch. 1 claim extract** — `ch01.jsonl` checker-clean; surgical prose applied; author-decision items still open. Ch. 42 spans relocated. | [2026-10-16-ch01-claim-extract.md](2026-10-16-ch01-claim-extract.md) |
 | 2026-10-16 | **Claim-extract combined queue** — Two lenses (spine names vs informal warrant); Ch. 1 first; extracts not started. | [2026-10-16-claim-extract-queue.md](2026-10-16-claim-extract-queue.md) |
 | 2026-10-16 | **Last Safety O-41 concept links** — Per-fact TSA card links, phone sync/autosave, More line under composer, expanded tags; door clearance LEDs. | [2026-10-16-last-safety-concept-links.md](2026-10-16-last-safety-concept-links.md) |
 | 2026-10-15 | **Last Safety start screen** — Pre-play modal: evaluator role, NORA review, short-notice framing; fresh boot and reset only. | [2026-10-15-last-safety-start-screen.md](2026-10-15-last-safety-start-screen.md) |

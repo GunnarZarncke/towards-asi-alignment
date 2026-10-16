@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261015T002606.574Z",
+  "_as_of": "20261016T162204.622Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -473,7 +473,7 @@
     "prior": "AI"
   },
   "chapters/ch01-wrong-object.tex#0": {
-    "agent": 2,
+    "agent": 4,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 0,
@@ -481,10 +481,18 @@
     "prior": "GZ+AI"
   },
   "chapters/ch01-wrong-object.tex#1": {
-    "agent": 3,
+    "agent": 5,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 1,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#11": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 11,
     "key": "GZ+AI",
     "prior": "GZ+AI"
   },
@@ -497,10 +505,66 @@
     "prior": "GZ+AI"
   },
   "chapters/ch01-wrong-object.tex#14": {
-    "agent": 2,
+    "agent": 9,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 14,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#15": {
+    "agent": 3,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 15,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#17": {
+    "agent": 11,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 17,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#18": {
+    "agent": 32,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 18,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#19": {
+    "agent": 32,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 2,
+    "index": 19,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#2": {
+    "agent": 4,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 1,
+    "index": 2,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#21": {
+    "agent": 4,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 21,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#22": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 22,
     "key": "GZ+AI",
     "prior": "GZ+AI"
   },
@@ -512,8 +576,32 @@
     "key": "GZ+AI",
     "prior": "GZ+AI"
   },
+  "chapters/ch01-wrong-object.tex#34": {
+    "agent": 4,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 2,
+    "index": 34,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#36": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 36,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch01-wrong-object.tex#37": {
+    "agent": 2,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 37,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch01-wrong-object.tex#4": {
-    "agent": 1,
+    "agent": 5,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 4,
@@ -521,7 +609,7 @@
     "prior": "GZ+AI"
   },
   "chapters/ch01-wrong-object.tex#5": {
-    "agent": 5,
+    "agent": 7,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 5,
     "index": 5,
@@ -537,10 +625,26 @@
     "prior": "GZ+AI"
   },
   "chapters/ch01-wrong-object.tex#7": {
-    "agent": 4,
+    "agent": 6,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 7,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#8": {
+    "agent": 6,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 1,
+    "index": 8,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
+  "chapters/ch01-wrong-object.tex#9": {
+    "agent": 1,
+    "file": "chapters/ch01-wrong-object.tex",
+    "human": 0,
+    "index": 9,
     "key": "GZ+AI",
     "prior": "GZ+AI"
   },
@@ -761,7 +865,7 @@
     "prior": "GZ"
   },
   "chapters/ch07-finding-boundary.tex#8": {
-    "agent": 2,
+    "agent": 4,
     "file": "chapters/ch07-finding-boundary.tex",
     "human": 0,
     "index": 8,

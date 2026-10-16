@@ -86,9 +86,9 @@ Low density alone is not a reason to go early (Ch. 2, 47). Synthesis chapters (C
 
 ### Combined queue
 
-Ch. 42 is done (`ch42.jsonl`). **Next is Ch. 1.** Do not start a pass until the author asks.
+Ch. 42 is done (`ch42.jsonl`). Ch. 1 extract is done; its prose items are open (below). **Next is Ch. 5.** Do not start a pass until the author asks.
 
-- [ ] **Ch. 1** — thesis; object of alignment; highest generalist surface.
+- [~] **Ch. 1** — extract `ch01.jsonl` checker-clean; surgical prose applied 2026-10-16; author-decision items in § Ch. 1 still open.
 - [ ] **Ch. 5** — assumptions and failure coverage as an informal ledger.
 - [ ] **Ch. 25** — correction channel; join delivery; recent `Pers` / `Auth_k` edits.
 - [ ] **Ch. 7** — boundary; `BoundaryAligned` / `MB1`; join box 1.
@@ -139,11 +139,35 @@ Ch. 42 is done (`ch42.jsonl`). **Next is Ch. 1.** Do not start a pass until the 
 
 Infrastructure (do early in rollout, not per chapter):
 
-- [ ] Extend `scripts/check_claim_extract.py` `CHAPTER_FILES` from `metadata/book.yml` (or a generated manifest under `metadata/claim-extracts/`) so any `chNN.jsonl` resolves to `chapters/chNN-*.tex` without hand-editing the script each time.
+- [x] `scripts/check_claim_extract.py` resolves any `chNN.jsonl` to the unique `chapters/chNN-*.tex`.
+- [ ] Line drift: chapter edits shift `lines` and fail every later record although the quotes still exist (Ch. 42 after the FLI and Market commits; relocated 2026-10-16). Decide between a `--relocate` mode in the checker and re-running the extractor's span fill after each chapter edit.
 - [ ] Optional: wire the checker into `make check` once a threshold of chapters is clean (author decides threshold).
 - [ ] Optional: extraction prompt/spec document if manual extract quality drifts across agents.
 
 Done for the lane: all scoped chapters have checker-clean JSONL; cross-chapter flag histogram reviewed; remaining open items are 2.0 spine work or author "keep as is" on flagged records.
+
+## Ch. 1 (extract done; surgical applied; author decisions open)
+
+Extract: `metadata/claim-extracts/ch01.jsonl`. Surgical phrase-level items applied 2026-10-16 (session `2026-10-16-ch01-claim-extract.md`); records re-checked. Remaining items close when the chapter is edited and the cited records are re-checked, or the author writes "keep as is" here.
+
+**Finding.** The chapter states its selection criterion in several forms, and they still disagree: best predicts (`ch01.024`), helps predict (`ch01.029`), loop persistence (`ch01.034`), prose cost comparison (`ch01.044`; the displayed inequality was removed), argmax without the boundary residual (`ch01.087`), and Ch. 7's `J(C) = R − αP + λΩ`, which keeps the boundary residual that Ch. 1 drops. Related open flags: one object or several (`ch01.036`, `ch01.058`, `ch01.066`), several names for the object (`ch01.081`).
+
+Author decisions (argument, not phrasing):
+
+- [ ] `ch01.036`, `ch01.058` — the boundary-error definition presumes a unique risk system; the chapter allows several. Pick a reading ("not among", coverage).
+- [ ] `ch01.037` — the four forms mix two axes (extent: narrow, wide; resolution: timescale, abstraction) and miss "misplaced". This is the chapter's stated contribution.
+- [ ] `ch01.073` — "moving equivalence class": tolerance-preservation is not transitive. Equivalence under exact preservation, or a chain of admissible transitions?
+- [ ] `ch01.087` vs `ch01.003` — which is the key claim, the ordering or the selection rule?
+- [ ] `ch01.090` — the second falsifier asks for a proof of non-localizability; consider an empirical version.
+
+Spine (Lean gaps, record only; not chapter work):
+
+- `ch01.003`, `ch01.008`, `ch01.014` — the object slot is the `System` argument, fixed outside the spine. No relation links the evaluated system to the risk-determining one, and no map links `System` to the `Boundary` record that `MB1` speaks about. A case can be valid for A and yield `Safe A` through `MB11` while the risk sits in a larger A'.
+- `ch01.061` — `BoundaryAligned` is not risk-indexed; Ch. 1 implies one boundary per risk inside one case (principle 3 fixes `T` per case).
+- `ch01.084` — `MB1` has no `AdversariallyVerifiableUpTo` antecedent although the chapter names boundary camouflage; candidate for the G2 list.
+- `ch01.041` — "alignment is a property of a trajectory"; the join predicates take a `System`.
+
+Lean support worth one clause in the chapter: `ch01.068` (`P09`, `P36`, "passive observation is weak"), `ch01.085` (finding the optimizer is necessary, not sufficient: one conjunct of `LayeredAlignedDef`). Confirm with `#print axioms` first.
 
 ## Work for 2.0 (do not do in this pass)
 

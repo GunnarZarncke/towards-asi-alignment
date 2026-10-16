@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-16 (claim-extract combined queue).
+Last updated: 2026-10-16 (Ch. 1 claim extract).
 
 ---
 
@@ -12,7 +12,7 @@ Last updated: 2026-10-16 (claim-extract combined queue).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. Claim-extract next is **Ch. 1** (combined queue; not started). Log: `2026-10-16-claim-extract-queue.md`. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — catalog 1–13 & 15–18 point to versioned registry pages; `snapshotTag: snapshot-0` pinned (claims repo `3563a88`); Market 14 full box; Markets 19–21 full appendix boxes until Phase 4; **next:** Metaculus listing, independent host transfer, Zenodo; workbench `aintelope/ai-safety-claims-workbench`); then Phase 4.
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. Claim-extract: **Ch. 1** extract done; surgical prose applied; author-decision items still open (plan § Ch. 1). Next chapter Ch. 5. Log: `2026-10-16-ch01-claim-extract.md`. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — catalog 1–13 & 15–18 point to versioned registry pages; `snapshotTag: snapshot-0` pinned (claims repo `3563a88`); Market 14 full box; Markets 19–21 full appendix boxes until Phase 4; **next:** Metaculus listing, independent host transfer, Zenodo; workbench `aintelope/ai-safety-claims-workbench`); then Phase 4.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 

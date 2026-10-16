@@ -26,11 +26,16 @@ ROOT = Path(__file__).resolve().parent.parent
 EXTRACT_DIR = ROOT / "metadata" / "claim-extracts"
 REQUIRED = {"id", "lines", "sec", "quote", "role", "load", "rule", "form", "refs", "lean", "flags"}
 PREFIXES = ("lean:", "label:", "cite:", "concept:", "?:")
-CHAPTER_FILES = {"ch42": "chapters/ch42-safety-case.tex"}
 
 
 def norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
+
+
+def chapter_file(stem: str) -> str | None:
+    """Resolve `chNN` to the unique `chapters/chNN-*.tex`."""
+    hits = sorted((ROOT / "chapters").glob(f"{stem}-*.tex"))
+    return str(hits[0].relative_to(ROOT)) if len(hits) == 1 else None
 
 
 def lean_corpus() -> str:
@@ -40,9 +45,9 @@ def lean_corpus() -> str:
 def check_file(path: Path, lean: str) -> tuple[list[str], Counter]:
     errors: list[str] = []
     flags: Counter = Counter()
-    chapter = CHAPTER_FILES.get(path.stem)
+    chapter = chapter_file(path.stem)
     if chapter is None:
-        return [f"{path.name}: no chapter mapping in CHAPTER_FILES"], flags
+        return [f"{path.name}: no unique chapters/{path.stem}-*.tex"], flags
     tex_lines = (ROOT / chapter).read_text(encoding="utf-8").splitlines()
     seen: set[str] = set()
     for n, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
