@@ -62,7 +62,7 @@ Principles §1–§8 and the join figure below are the **template** for spine-he
 
 ## Rollout to all chapters
 
-Goal: every manuscript chapter has a checked extract; load-bearing prose is aligned with the Lean spine at the same name, with divergences flagged rather than hidden.
+Goal: every manuscript chapter has a checked extract. Load-bearing prose is aligned with the Lean spine at the same name when a name exists; where it does not, the extract still makes the warrant explicit (`lean: none` is allowed and flagged). Divergences are flagged rather than hidden.
 
 Scope: `metadata/book.yml` chapters `ch01`–`ch48` (main text). Appendices after the main run, starting with load-bearing ones (App I, App P). One JSONL per chapter; full chapter body including Summary, excluding `\printbibliography` / references-only sections unless a sentence there is load-bearing.
 
@@ -70,14 +70,71 @@ Per chapter (repeat until all `chNN.jsonl` exist and checker-clean):
 
 1. Extract load-bearing sentences (same schema as Ch. 42).
 2. `python3 scripts/check_claim_extract.py metadata/claim-extracts/chNN.jsonl` → 0 errors.
-3. Prose pass only where flags require repair (surgical; principles §1–§8 where they apply).
+3. Prose pass only where flags require repair (surgical; principles §1–§8 where they apply). Informal chapters still get the unhedged-universal / hidden-premise pass; they do not need a chapter-local assembly figure.
 4. Session log; compare flag histogram to prior chapters; retire unused flags from the vocabulary when nothing needs them.
 
-Order (default queue; reorder when a chapter edit makes another urgent):
+Do not treat `formal_density` in `metadata/book.yml` as the queue. High density is one input. The stale examples (Ch. 33, 43, 48 as “high”) do not match the YAML.
 
-- [ ] **Ch. 25** — correction channel; proposed next after pilot.
-- [ ] **High `formal_density`** in `metadata/book.yml` (e.g. Ch. 7, 10, 26, 30, 31, 33, 43, 48).
-- [ ] **Remaining chapters** in manuscript order.
+### Two value lenses (same schema)
+
+Score a chapter on both; the queue below is their combination, not density rank.
+
+1. **Spine names.** Prose uses Lean predicates or bridges at the same name (join exports, CCI, boundary, bundle, successor, verifiability). Payoff: principle §1 (prose claims no more than the spine). Typical: 7, 16, 25–27, 30–31, 43.
+2. **Informal warrant.** Low-formula argument that still changes a decision: thesis, scope, folklore, selection, consent, lethality, artifacts. Payoff: auto-formalize “therefore” chains; `lean: none` is a result, not a skip. Reader/funder appreciation is part of the score, not a side effect. Typical: 1, 4, 5, 28–29, 34, 36–38, 44–45.
+
+Low density alone is not a reason to go early (Ch. 2, 47). Synthesis chapters (Ch. 48) wait until source extracts exist. Reorder when a chapter edit makes another urgent.
+
+### Combined queue
+
+Ch. 42 is done (`ch42.jsonl`). **Next is Ch. 1.** Do not start a pass until the author asks.
+
+- [ ] **Ch. 1** — thesis; object of alignment; highest generalist surface.
+- [ ] **Ch. 5** — assumptions and failure coverage as an informal ledger.
+- [ ] **Ch. 25** — correction channel; join delivery; recent `Pers` / `Auth_k` edits.
+- [ ] **Ch. 7** — boundary; `BoundaryAligned` / `MB1`; join box 1.
+- [ ] **Ch. 26** — CCI; `CorrectionIntegrity`; numeric leaf.
+- [ ] **Ch. 44** — lethality stress test; field-reader heat; mostly informal warrants.
+- [ ] **Ch. 16** — value-bundle model; `BundleTransport` / `MB2`.
+- [ ] **Ch. 34** — selection; join box 4; `MB6`; socio-technical prose.
+- [ ] **Ch. 43** — verifiability / representability; G0 gate; `AdversariallyVerifiableUpTo`.
+- [ ] **Ch. 31** — conserved properties; `SuccessorStable`; `MB5` / `MB10`.
+- [ ] **Ch. 29** — manipulation, domestication, false consent; policy-adjacent universals.
+- [ ] **Ch. 30** — successor creation as the inheritance test (extract with 31 in mind).
+- [ ] **Ch. 38** — conductive artifacts and pivotal processes; funder/decision prose.
+- [ ] **Ch. 23** — whether the goal survived transport.
+- [ ] **Ch. 11** — capability without task ontology; join box 1.
+- [ ] **Ch. 27** — correction under adversarial pressure; feeds `AdversariallyRobust`.
+- [ ] **Ch. 4** — fixed values as the wrong target; philosophical load-bearing.
+- [ ] **Ch. 3** — dynamical guarantee; grounding / `MB9`.
+- [ ] **Ch. 37** — alignment attractor; metaphor vs claim.
+- [ ] **Ch. 36** — parasites in the correction system.
+- [ ] **Ch. 28** — beyond following instruction; RLHF-era folklore.
+- [ ] **Ch. 18** — bearers; `BearerTransport` / `MB3`.
+- [ ] **Ch. 9** — composite agent; who the real optimizer is.
+- [ ] **Ch. 32** — better self-modeling can be worse.
+- [ ] **Ch. 45** — value-update envelope; Part 10 thesis.
+- [ ] **Ch. 33** — certification without construction; `Certified` vs safety-case naming.
+- [ ] **Ch. 10** — strategic opacity; high density, not a join export.
+- [ ] **Ch. 8** — grow, split, merge; forgeability neighborhood.
+- [ ] **Ch. 24** — words survive, meaning does not.
+- [ ] **Ch. 21** — from rewards to values.
+- [ ] **Ch. 22** — compression test for intention.
+- [ ] **Ch. 20** — measuring and stress-testing bundle geometry.
+- [ ] **Ch. 19** — tradeoffs and bundle geometry.
+- [ ] **Ch. 17** — when low dimensionality helps.
+- [ ] **Ch. 15** — values as compressed control signals.
+- [ ] **Ch. 12** — capability growth as boundary expansion.
+- [ ] **Ch. 14** — when intelligence deepens misalignment.
+- [ ] **Ch. 13** — coordination bottleneck.
+- [ ] **Ch. 6** — agent without anthropomorphism.
+- [ ] **Ch. 35** — multi-agent inferential coupling.
+- [ ] **Ch. 40** — detecting goal laundering.
+- [ ] **Ch. 41** — checking a system at every level (method inside checks, not a fifth join box).
+- [ ] **Ch. 39** — passive observation is not enough.
+- [ ] **Ch. 46** — end of unconscious value drift.
+- [ ] **Ch. 47** — who still counts; after bearers (18/24).
+- [ ] **Ch. 2** — artificial civilization; framing, few decision-changing chains.
+- [ ] **Ch. 48** — closing synthesis; last among main text so it does not replay unextracted claims.
 - [ ] **Appendices** (App I, App P, …) after `ch48`.
 
 Infrastructure (do early in rollout, not per chapter):
