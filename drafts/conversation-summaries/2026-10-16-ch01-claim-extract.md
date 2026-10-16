@@ -35,4 +35,4 @@ Prompts: paraphrase-only (no resolvable prompt id)
 - `chapters/ch01-wrong-object.tex`
 
 ## Commits
-- none
+- `64d9358ce` — Ch. 1 claim extract, prose repairs, checker chapter resolution
