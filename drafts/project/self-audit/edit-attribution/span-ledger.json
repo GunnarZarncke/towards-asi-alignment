@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261019T200631.606Z",
+  "_as_of": "20261019T230446.937Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -67,9 +67,9 @@
   "appendices/appE-glossary.tex#3": {
     "agent": 7,
     "file": "appendices/appE-glossary.tex",
-    "human": 0,
+    "human": 1,
     "index": 3,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "appendices/appF-research-program.tex#5": {

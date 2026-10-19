@@ -24,7 +24,7 @@ external:
 
 **Outer alignment** is a field name, not a native object of this project. Hubinger et al. use it for whether the *training pointer* — reward, constitution, CEV/CBV endpoint, conditioned predictive goal — is the intended target, as opposed to [inner alignment](/cards/mb7-hidden-capability-and-access/) (whether the trained system actually pursues that pointer).
 
-This project does not keep that as one bridge. The same English question mixes four jobs that fail independently. Treat the Hubinger split as a map, not a column.
+The same English question mixes four jobs that fail independently. Treat the Hubinger split as a map, not a column.
 
 | Field use of “outer alignment” | What this project asks instead | Home |
 |---|---|---|

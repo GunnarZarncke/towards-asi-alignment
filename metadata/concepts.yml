@@ -689,7 +689,7 @@ concepts:
     status: framework
     term: Outer alignment
     title: Outer Alignment
-    summary: Field name (Hubinger) for whether the training pointer or stated objective is the intended target — not a TSA native object. Splits into specify, identification (MB2/MB3), realization, and preservation-if-optimized.
+    summary: Field name (Hubinger) for whether the training pointer or stated objective is the intended target. Splits into specify, identification (MB2/MB3), realization, and preservation-if-optimized.
     bookChapters:
       - ch04
       - ch10
