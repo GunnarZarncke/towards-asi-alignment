@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-20 | **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who fixes, LLM sanitize path, offline + live parse tests. | [2026-10-20-last-safety-grammar-parse-robustness.md](2026-10-20-last-safety-grammar-parse-robustness.md) |
+| 2026-10-20 | **Last Safety LLM parse tests** — `test:llm` story + probe fixtures; compound clauses; findings/and/or probes. | [2026-10-20-last-safety-llm-parse-tests.md](2026-10-20-last-safety-llm-parse-tests.md) |
 | 2026-10-20 | **Last Safety filing and Who** — Ian-addressed commit (room or DM); sign copy; Who roster withhold. | [2026-10-20-last-safety-filing-who.md](2026-10-20-last-safety-filing-who.md) |
 | 2026-10-19 | **Last Safety institutional arc** — Elena-linked B plot; think/review filing of `assignment_steers_review`; charter `evaluation_independence`. | [2026-10-19-last-safety-institutional-arc.md](2026-10-19-last-safety-institutional-arc.md) |
 | 2026-10-19 | **Last Safety NPC transit** — Staff path through floorplan rooms to desks and meetings; welcome arrival schedule; 3D door continuity via `npcMoves`. | [2026-10-19-last-safety-npc-transit.md](2026-10-19-last-safety-npc-transit.md) |

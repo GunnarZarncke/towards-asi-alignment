@@ -15,6 +15,7 @@
     "test:playthrough": "node --test tests/playthrough.test.mjs",
     "test:playthrough:full": "PLAYTHROUGH_FULL=1 node --test tests/playthrough.test.mjs",
     "test:endings": "node --test tests/ending-reachability.test.mjs",
+    "test:llm": "node --test tests/llm/*.test.mjs",
     "playtest": "node scripts/playtest.mjs",
     "text": "node scripts/text-play.mjs"
   },

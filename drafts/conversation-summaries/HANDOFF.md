@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-20 (Last Safety filing and Who roster).
+Last updated: 2026-10-20 (Last Safety grammar parse robustness).
 
 ---
 
@@ -22,7 +22,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
-- **2026-10-20:** **Last Safety filing and Who** — Commit addressed to Ian (in room or DM); sign-vocabulary chips and Ian lines; Who roster asks withhold to calendar. Log: `2026-10-20-last-safety-filing-who.md`.
+- **2026-10-20:** **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who/Hi fixes, parse sanitization and `preparePlayerUtterance`, offline `sanitize.test.mjs`, `test:llm` story + probe fixtures. Logs: `2026-10-20-last-safety-grammar-parse-robustness.md`, `2026-10-20-last-safety-llm-parse-tests.md`.
+- **2026-10-20:** **Last Safety filing and Who** — Commit addressed to Ian (in room or DM); sign-vocabulary chips and Ian lines; Who roster asks withhold to calendar. Log: `2026-10-20-last-safety-filing-who.md` (`fe0ee83e5`).
 - **2026-10-19:** **Last Safety institutional arc** — Add-on requires filed `assignment_steers_review` after memo, charter independence, and Elena-linked dialogue; think or review assert; `report_includes_staffing` not an ending gate. Log: `2026-10-19-last-safety-institutional-arc.md`.
 - **2026-10-19:** **Last Safety NPC transit** — Welcome one-by-one arrivals; floorplan pathing to desks and meetings (one room per fuel tick); `npcMoves` for 3D door walks; Ian 9:30 to review. Log: `2026-10-19-last-safety-npc-transit.md`.
 - **2026-10-19:** **Last Safety open-ask hints** — Ungrounded asks get one volunteer-equivalent hint (goal question, `hint_ask`, or hint share), shared initiative cooldown, no `pendingQuestion`; playthrough tests; Jun clarity; glossary test alignment. Log: `2026-10-19-last-safety-open-ask-hints.md`.

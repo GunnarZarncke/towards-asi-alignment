@@ -9,7 +9,7 @@ import {newSession,clientState,cleanParse,exportSession,importSession} from './l
 import {applyAction} from './lib/world/actions.mjs';
 import {terminalState,handsetMediaPayload} from './lib/world/terminal-host.mjs';
 import {npcsInRoom} from './lib/world/npcs.mjs';
-import {parseUtterance} from './lib/llm.mjs';
+import {parseUtterance,preparePlayerUtterance} from './lib/llm.mjs';
 import {phraseLines} from './lib/phrase.mjs';
 import {makeParse} from './lib/grammar.mjs';
 import {createConsole} from './lib/text/console.mjs';
@@ -113,7 +113,7 @@ const server=http.createServer(async(req,res)=>{
         return json(res,r.ok===false&&r.reason==='Not available on this phone.'?403:200,{result:r,...bothTracked(s,sid)});
       }
       if(url.pathname==='/api/parse'){
-        const text=String(b.text||'').slice(0,600);
+        const text=preparePlayerUtterance(b.text);
         const channel=CHANNELS.has(b.channel)?b.channel:'person';
         if(!text.trim())return json(res,200,{parse:makeParse(),state:clientState(s)});
         const here=npcsInRoom(s,s.room);
@@ -122,8 +122,14 @@ const server=http.createServer(async(req,res)=>{
         return json(res,200,{parse:cleanParse({...parse,source:'llm'},s),state:clientState(s)});
       }
       if(url.pathname==='/api/respond'){
-        const text=String(b.text||'').trim().slice(0,600);
-        const parse=cleanParse(b.parse,s);
+        const text=preparePlayerUtterance(b.text);
+        const here=npcsInRoom(s,s.room);
+        const actorId=here.includes(b.addressee)?b.addressee:here[0]||null;
+        let parse=cleanParse(b.parse,s);
+        if(parse.source!=='completion'){
+          const p=await parseUtterance({text,known:[...s.vocab],history:s.conversations,actorId,previousParse:parse,constructionTrace:b.constructionTrace},s.usage);
+          parse=cleanParse({...p,source:'llm'},s);
+        }
         if(!text&&!['think','commit'].includes(parse.kind))return json(res,400,{error:'Empty utterance'});
         const r=applyAction(s,'respond',{parse,addressee:b.addressee||null,text});
         if(r.error)return json(res,400,{error:r.error,...both(s)});

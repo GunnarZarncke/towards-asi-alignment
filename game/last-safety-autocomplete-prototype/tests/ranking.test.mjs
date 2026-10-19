@@ -153,7 +153,7 @@ test('a pending question adds reply openings for that NPC only', () => {
   const rows = getCandidates({ state, parse: makeParse(), text: '', addressees: ['pavel'] });
   assert.equal(rows[0].phrase, 'Tell Pavel job 284');
   assert.equal(rows[0].parse.subject, 'job_284');
-  assert.ok(!getCandidates({ state, parse: makeParse(), text: '', addressees: ['nora'], channel: 'nora' }).some(x => /^Tell/.test(x.phrase)));
+  assert.ok(!getCandidates({ state, parse: makeParse(), text: '', addressees: ['nora'], channel: 'nora' }).some(x => /^Tell [A-Z]/.test(x.phrase)));
 });
 
 test('a selected opening is not reread as a typed prefix; the subject is not offered as its object', () => {

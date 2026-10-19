@@ -89,8 +89,8 @@ function hiEligible({state,parse,channel,addressees,rowCount}){
   const spokenToAnyone=here.some(id=>state.actors[id].spokeSinceArrive);
   return !spokenToAnyone||rowCount===0;
 }
-function maybeHi({state,parse,channel,addressees,rows}){
-  if(!hiEligible({state,parse,channel,addressees,rowCount:rows.length}))return rows;
+function maybeHi({state,parse,channel,who,rows}){
+  if(!hiEligible({state,parse,channel,addressees:who,rowCount:rows.length}))return rows;
   if(rows.some(r=>r.phrase==='Hi'&&r.parse.kind==='social'))return rows;
   return [...rows,hiCandidate(parse)];
 }
@@ -333,7 +333,7 @@ export function getCandidates({state,parse,text='',addressees,channel='person',o
   if(slot==='opening'){
     const allowed=CHANNEL_KINDS[channel]||null;
     const someoneHere=Object.values(state.actors||{}).some(a=>present(a)&&a.room===state.room);
-    const base=[...replyOpenings(state,parse,who),...filingOpenings(state,who,channel),...OPENINGS].filter(x=>{
+    const base=[...(channel==='person'?replyOpenings(state,parse,who):[]),...filingOpenings(state,who,channel),...OPENINGS].filter(x=>{
       if(allowed&&!allowed.has(x.patch.kind))return false;
       if(x.patch.kind==='think')return !someoneHere&&(channel==='person'||channel==='think');
       return true;
@@ -370,11 +370,13 @@ export function getCandidates({state,parse,text='',addressees,channel='person',o
   }
   const seen=new Map();
   for(const x of rows){
-    const sig=semanticSignature(x.parse)+'|'+x.parse.open_slot;
+    const sig=(slot==='opening'&&!text.trim())
+      ? x.phrase.toLowerCase()
+      : semanticSignature(x.parse)+'|'+x.parse.open_slot;
     if(!seen.has(sig))seen.set(sig,x);
   }
   rows=[...seen.values()];
-  if(slot==='opening')rows=maybeHi({state,parse,channel,addressees,rows});
+  if(slot==='opening')rows=maybeHi({state,parse,channel,who,rows});
   if(slot==='opening'&&!text.trim())return rows.map(strip);
   const R=relevance(state,parse,who,cfg);
   const scored=rows.map((x,i)=>{
@@ -406,12 +408,23 @@ export function localPrefixParse(text){
   if(!clean)return makeParse();
   const w=clean.toLowerCase();
   if(w==='hi'||w==='hello')return makeParse({...HI_PATCH,source:'local'});
+  if(/^who\s*$/i.test(clean))return makeParse({kind:'ask',relation:'about',open_slot:'opening',unfinished:'Who',source:'local'});
+  if(/^who\b/i.test(clean)){
+    const rest=clean.replace(/^who\s*/i,'').trim();
+    const complete=/[?!.]$/.test(clean);
+    return makeParse({
+      kind:'ask',relation:'about',
+      open_slot:complete?'none':'topic',
+      unfinished:complete?'':rest,
+      open_content:clean,
+      source:'local',
+    });
+  }
   const match=OPENINGS.find(x=>x.phrase.toLowerCase()===w)||FILING_OPENINGS.find(x=>x.phrase.toLowerCase()===w);
   if(match)return makeParse({...match.patch,source:'local'});
   if(/^ian,\s*'?i'?m ready to sign/i.test(clean))return makeParse({...FILING_OPENINGS[0].patch,source:'local'});
   if(/^file with\b/i.test(clean))return makeParse({...FILING_OPENINGS[0].patch,source:'local'});
   if(/^sign the review\b/i.test(clean))return makeParse({...FILING_OPENINGS[1].patch,source:'local'});
-  if(/^who\b/i.test(clean))return makeParse({kind:'ask',relation:'about',open_slot:'topic',unfinished:clean.replace(/^who\s*/i,'').trim(),open_content:clean,source:'local'});
   if(clean.length<=4&&OPENINGS.some(x=>x.phrase.toLowerCase().startsWith(w)))return makeParse({open_slot:'opening',unfinished:clean,source:'local'});
   return null;
 }

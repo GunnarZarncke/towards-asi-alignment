@@ -384,10 +384,18 @@ function confirmLabAccess(s) {
 
 // ---------- parse cleaning ----------
 
-export function cleanParse(p, s) {
+function restoreSessionState(from, to) {
+  for (const key of Object.keys(to)) {
+    if (!(key in from)) delete to[key];
+  }
+  Object.assign(to, from);
+}
+
+function cleanParseFields(p, s) {
   const ids = new Set(s.vocab);
   const out = makeParse();
   if (KINDS.includes(p?.kind)) out.kind = p.kind;
+  else if (p?.kind) out.kind = 'unintelligible';
   if (Object.hasOwn(RELATIONS, p?.relation)) out.relation = p.relation;
   for (const k of ['subject', 'object', 'recipient', 'evidence', 'topic']) out[k] = ids.has(p?.[k]) ? p[k] : null;
   out.open_slot = SLOT_TYPES.includes(p?.open_slot) ? p.open_slot : 'none';
@@ -395,6 +403,14 @@ export function cleanParse(p, s) {
   out.open_content = String(p?.open_content || '').replace(/[<>{}`]/g, '').slice(0, 200);
   out.confidence = Math.max(0, Math.min(1, Number(p?.confidence) || 0));
   out.source = ['completion', 'llm', 'local', 'note'].includes(p?.source) ? p.source : 'completion';
+  const clauseText = String(p?.clause_text || '').trim();
+  if (clauseText) out.clause_text = clauseText.slice(0, 120);
+  return out;
+}
+
+export function cleanParse(p, s) {
+  const out = cleanParseFields(p, s);
+  if (Array.isArray(p?.clauses) && p.clauses.length) out.clauses = p.clauses.map(c => cleanParseFields(c, s));
   return out;
 }
 
@@ -413,13 +429,18 @@ function presentNpcs(s) {
   return N.npcsInRoom(s, s.room);
 }
 
+function mergeRespond(acc, r) {
+  if (r.moves?.length) acc.moves.push(...r.moves);
+  if (r.lines?.length) acc.lines.push(...r.lines);
+  if (r.effects?.length) acc.effects.push(...r.effects);
+}
+
 /**
- * One player sentence. Returns { moves, lines, effects, error?, thought? }.
+ * One clause. Returns { moves, lines, effects, error?, thought?, review?, ending? }.
  * World effects are applied here; composition only phrases `lines`.
  */
-export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
+function respondOne(s, rawParse, { addressee = null, text = '' } = {}) {
   if (s.ending) return { error: 'The review is over.', moves: [], lines: [] };
-  if (cleanText(text)) s.entered = true;
   const parse = cleanParse(rawParse, s);
   if (parse.kind === 'think') return think(s, parse.topic || parse.object || parse.subject);
   if (parse.kind === 'commit') return commit(s, { text, addressee, via: 'in_person' });
@@ -443,6 +464,34 @@ export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
   if (asked && asked !== priorQuestion && parseIds(parse).some(x => parseIds(asked.parse).includes(x))) s.npcs.ian.pendingQuestion = null;
   const offTurn = spend(s, 1);
   return { ...turn, lines: [...turn.lines, ...left, ...offTurn] };
+}
+
+function respondSequenceFromParses(s, cleaned, { addressee = null, text = '' } = {}) {
+  const snap = structuredClone(s);
+  const parts = cleaned.clauses.map(c => cleanParseFields(c, s));
+  const acc = { moves: [], lines: [], effects: [] };
+  for (let i = 0; i < parts.length; i++) {
+    const clauseText = parts[i].clause_text
+      ? cleanText(parts[i].clause_text)
+      : (i === 0 ? cleanText(text) : '');
+    const r = respondOne(s, parts[i], { addressee, text: clauseText });
+    if (r.error) {
+      restoreSessionState(snap, s);
+      return { error: r.error, moves: [], lines: [], effects: [] };
+    }
+    mergeRespond(acc, r);
+    if (r.thought || r.review || r.ending) return { ...r, moves: acc.moves, lines: acc.lines, effects: acc.effects };
+  }
+  return acc;
+}
+
+/** One player line; multiple LLM clauses run in order (never from autocomplete). */
+export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
+  if (cleanText(text)) s.entered = true;
+  const cleaned = cleanParse(rawParse, s);
+  const multi = cleaned.source !== 'completion' && Array.isArray(cleaned.clauses) && cleaned.clauses.length > 1;
+  if (multi) return respondSequenceFromParses(s, cleaned, { addressee, text });
+  return respondOne(s, rawParse, { addressee, text });
 }
 
 function recordAssertion(s, parse) {

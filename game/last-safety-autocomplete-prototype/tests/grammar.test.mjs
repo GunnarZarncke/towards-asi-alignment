@@ -79,6 +79,27 @@ test('typed openers are recognized locally',()=>{
   assert.equal(localPrefixParse('What about the new per'),null);
   assert.equal(localPrefixParse('Hi').kind,'social');
 });
+test('empty field keeps distinct opening phrases including Who and Does',()=>{
+  const state=fresh();
+  const phrases=personOpen(state).map(x=>x.phrase);
+  assert.ok(phrases.includes('Who'));
+  assert.ok(phrases.includes('Does'));
+  assert.ok(phrases.includes('Can'));
+});
+test('typed Who question resolves locally without blocking topic completion',()=>{
+  const wp=localPrefixParse('Who will be at the review?');
+  assert.equal(wp.unfinished,'');
+  assert.equal(wp.open_content,'Who will be at the review?');
+  assert.equal(wp.open_slot,'none');
+  const prefix=localPrefixParse('Who');
+  assert.equal(prefix.open_slot,'opening');
+  const topics=getCandidates({state:fresh(),parse:makeParse({kind:'ask',relation:'about',open_slot:'topic',source:'local'}),text:'Who ',addressees:hereIds(fresh())});
+  assert.ok(topics.some(x=>x.entityId==='review'));
+});
+test('Hi is offered when addressees are inferred from the room',()=>{
+  const state=fresh();
+  assert.ok(getCandidates({state,parse:makeParse(),text:''}).some(x=>x.phrase==='Hi'));
+});
 test('Hi social opener: first contact, not when already social or after talking',()=>{
   const state=fresh();
   assert.ok(personOpen(state).some(x=>x.phrase==='Hi'&&x.parse.kind==='social'));

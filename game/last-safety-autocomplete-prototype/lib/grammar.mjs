@@ -1,5 +1,6 @@
 // Shared semantic language. This file is the one source of truth for the
 // completion engine's AST and the LLM interpreter's target representation.
+import { MAX_CLAUSES } from './parse-sequence.mjs';
 export const KINDS = ["ask", "ask_why", "assert", "hypothesize", "show", "request", "think", "commit", "social", "unintelligible"];
 export const RELATIONS = {
   about: "Topic reference, no assertion of truth.",
@@ -32,7 +33,12 @@ export function makeParse(changes = {}) {
   return { ...EMPTY_PARSE, ...changes };
 }
 export function explainGrammar() {
-  return `Utterance kinds: ${KINDS.join(', ')}.\nSemantic relations (retain these distinctions):\n${Object.entries(RELATIONS).map(([k,v])=>`- ${k}: ${v}`).join('\n')}\nOpen-slot types: ${SLOT_TYPES.join(', ')}.\nFields: kind, relation, subject, object, recipient, evidence, topic, open_slot, unfinished, open_content, confidence, source. Identifiers must be from provided entity IDs, or null. A player's question/hypothesis is not a fact. 'unintelligible' is reserved for text that truly has no recoverable meaning; use relation=open for meaningful expressions outside the ontology.`;
+  return `Utterance kinds: ${KINDS.join(', ')}.
+Semantic relations (retain these distinctions):
+${Object.entries(RELATIONS).map(([k, v]) => `- ${k}: ${v}`).join('\n')}
+Open-slot types: ${SLOT_TYPES.join(', ')}.
+Output shape: JSON object { clauses: [ ... ] } with 1–${MAX_CLAUSES} elements. Each clause has kind, relation, subject, object, recipient, evidence, topic, open_slot, unfinished, open_content, confidence, source ("llm"), and optional clause_text (substring of the utterance that clause covers). One clear speech act => one clause. Use multiple clauses only when the player combines distinct speech acts in one typed line (e.g. a greeting then a question, or show then ask). Do not split on commas or "and" alone: a list of topics inside one commit, request, or ask stays one clause (e.g. "Put A, B, and C in what I sign."). While the utterance is an incomplete prefix, return one clause with open_slot set. "Ian, I'm ready to sign" is one clause.
+Identifiers must be from provided entity IDs, or null. List clauses in order. A player's question/hypothesis is not a fact. 'unintelligible' is reserved for text that truly has no recoverable meaning; use relation=open for meaningful expressions outside the ontology.`;
 }
 export function semanticSignature(parse) {
   return [parse.kind, parse.relation, parse.subject||'',parse.object||'',parse.recipient||'',parse.evidence||'',parse.topic||''].join('|');

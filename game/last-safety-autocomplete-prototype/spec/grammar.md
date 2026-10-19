@@ -78,13 +78,15 @@ The list is not the set of legal actions. Typed text outside the list is still p
 
 **Think** (`channel: "think"`). One opening, the lightbulb, then a topic. No person and no NORA. The chip is absent while someone is in the room.
 
-Empty field, any channel: a few relevant openings, not a menu of the plot. The lightbulb is one of them only on `think`, and only in an empty room.
+On the **person** channel, the same **Think** opening appears when the room has no body or hologram present (same rule as the think composer). On **`channel: "think"`**, Think is the only opening.
+
+Empty field, any channel: a few relevant openings, not a menu of the plot. Synonym phrasings (`Can`, `Does`, `Has`, …) stay separate chips when they share the same semantic patch. The lightbulb is offered on an empty person channel and on `think`, not on NORA or note.
 
 **Social opener (person channel only).** One completion, `Hi` → `kind: social`, `relation: open`, `open_slot: none`. Offer it when the player has not yet spoken to **anyone** present this stay (everyone in the room still has `spokeSinceArrive` false) **or** when no other completion matches the current opening prefix. Do not offer it when the parse is already `social`, or on NORA, note, or think channels. Typed `Hi` / `Hello` resolves locally the same way.
 
 **Who questions.** `Who` is an opening chip (`ask` / `about` / `topic`). Typed lines starting with `Who` resolve locally with the full line in `open_content`. Attendance or roster questions (who will be at the review, and similar) do not invent a guest list; NPCs withhold and point to Lab Access calendar when appropriate (`glue.attendeeAsk` on Ian).
 
-While `pendingQuestion` names an addressee in this channel, two reply openings come first: “Tell <name>” and “Show <name>”. For a question with a specific relation, “Tell <name> <referent>” fills the subject and opens the relation; for an `about` question it opens the subject. The NORA channel gets none.
+While `pendingQuestion` names an addressee in the **person** channel, two reply openings come first: “Tell <name>” and “Show <name>”. For a question with a specific relation, “Tell <name> <referent>” fills the subject and opens the relation; for an `about` question it opens the subject. NORA, note, and think channels get none.
 
 A completion that was selected is not reread as a typed prefix. The subject is not offered again as its own object, and after “The” no actor is offered as subject.
 
@@ -109,6 +111,12 @@ Rules already in `lib/llm.mjs`:
 `DEMO_MODE=1` or a missing key uses a toy parser. That parser is for UI exercise, not a quality claim.
 
 Player text is one sentence (O-32). The proposed cap is 100 characters; the number is tentative. Before parse, strip characters that are not letters, digits, spaces, or ordinary sentence punctuation (`. , ? ! ' -`). Do not add a jailbreak filter in this build. Text that maps to no relation stays `relation: "open"`.
+
+**Compound lines.** Only the **LLM** parser may return more than one speech act on a typed line: a `clauses` array, each with its own fields and optional `clause_text`. The engine runs them **in order** (one fuel step per clause unless think, commit, review, ending, or error). If a later clause errors, **none** of the clauses on that line commit (session rolls back to before the line). Comma-separated lists (a, b, and c) stay one clause. **Autocomplete / completion** (`source: completion`) is always a single act — the engine never sequences chip picks. Demo / toy parser is single-clause only.
+
+After **Show** reaches `finish`, the chip **and ask about it** only completes phrasing; it still emits one `show` act (not a second ask).
+
+**Parse input.** Before `parseUtterance`, player text is normalized with the same character allow-list and `CONFIG.SENTENCE_CAP` (100). Hints (`previousParse`, `constructionTrace`) are truncated server-side before they reach the model.
 
 Free replies are not grammar. They are composition (`lib/llm.mjs`) speaking from facts the engine chose to expose. See [engine.md](engine.md).
 
@@ -178,6 +186,11 @@ Screen id and catalog slug are the same record. `inspect` on the screen and `fil
 - Hold, Revoke, Run again, and Stop build `request` with `suspend`, `revoke`, `rerun`, and `stop`.
 - File builds `commit`. An `assert` is how a claim is told.
 - The note channel ranks with an empty addressee list and does not apply NORA’s omit list.
+- Empty person-channel openings include **Who** and **Does** (distinct phrases, not collapsed to **Can** / **What about**).
+- Typed **Who … ?** resolves locally with `open_content` set; `unfinished` stays empty on a complete sentence.
+- **Hi** is inferred from the room when `addressees` is omitted.
+- Multi-clause LLM lines roll back on mid-sequence error; `tests/parse-sequence.test.mjs`.
+- LLM sanitize: unknown ids nulled, unknown kind → `unintelligible`; `tests/llm/sanitize.test.mjs`.
 - Ranking cases in [ranking.md](ranking.md).
 
 Add cases in `tests/grammar*.mjs` when a kind or relation changes. Do not assert story outcomes here.
