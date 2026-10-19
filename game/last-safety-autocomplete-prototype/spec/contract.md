@@ -87,7 +87,9 @@ Session cookie: `lab_sid` (HttpOnly). In-memory; restart clears it.
 | POST | `/api/parse` | `{ text, previousParse, constructionTrace, channel, addressee }` | `{ parse, state }` |
 | POST | `/api/respond` | `{ text, parse, addressee }` | `{ reply, lines: { npc, type, text }[], effects, parse, ending?, state, terminal }` |
 
-Every POST response also carries `state` and `terminal`. `addressee` is an actor id present in the room; absent means the first present actor. All actions go through `applyAction` (`lib/world/actions.mjs`), so an exported event log replays the same transitions.
+Every POST response also carries `state` and `terminal`. Mutating POSTs (not `/api/parse` or `/api/tab-complete`) also carry `telemetry`: `{ fuel, room, act, npc, knowledge }` — fuel is the spent index at that step; `npc` and `knowledge` are null when not applicable. Optional server JSONL when `TELEMETRY_LOG` is set; the browser keeps the same fields in local storage and may `sendBeacon` `/api/telemetry`. Page traffic on public hosts uses the companion site’s cookieless Cloudflare Web Analytics beacon.
+
+`addressee` is an actor id present in the room; absent means the first present actor. All actions go through `applyAction` (`lib/world/actions.mjs`), so an exported event log replays the same transitions.
 
 `/api/parse` may call the model. Selected completions must not. `channel` is `person`, `nora`, `note`, or `think`. Absent means `person`. The NORA channel may return a shorter suggestion set; it does not return extra facts. `note` has no omit list. `think` is legal only in an empty room. `/api/respond` validates the parse, applies deterministic effects, and only then may ask the model for wording of each engine-chosen line (`freeReply`; the template stands when the wording adds a time or number). A `think` response is `{ thought, state }` and does not call the model.
 

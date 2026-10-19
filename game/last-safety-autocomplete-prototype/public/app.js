@@ -4,6 +4,7 @@ import { buildSceneView, mountScene } from './render/scene-view.mjs';
 import { ROOM_META, VISITOR_CLEARANCE } from './render/rooms.mjs';
 import { closeFloorplan, floorplanNotice, floorplanOpen, openFloorplan, syncFloorplan } from './render/floorplan-view.mjs';
 import { encodePhotoCanvas } from './photo-export.mjs';
+import { recordPlayStep, maybeSendPlayBeacon, installCloudflareWebAnalytics } from './telemetry.mjs';
 
 const $ = id => document.getElementById(id);
 let state = null;
@@ -80,6 +81,14 @@ function focusComposer() {
 let composerBusy = false;
 
 const roomNames = Object.fromEntries(Object.entries(ROOM_META).map(([id, m]) => [id, m.title]));
+
+function adoptState(data) {
+  if (data?.state) state = data.state;
+  if (data?.telemetry) {
+    recordPlayStep(data.telemetry);
+    maybeSendPlayBeacon(data.telemetry);
+  }
+}
 
 async function api(route, payload = null) {
   const res = await fetch('/api/' + route, {
@@ -334,7 +343,7 @@ async function confirmNotebookPrompt() {
       kind: 'note',
       facts: fact.card ? [] : [fact.id],
     });
-    state = data.state;
+    adoptState(data);
     learnedFactSnapshot = new Set((state.learnedFacts || []).map(f => f.id));
     lastNotice = 'Added to Notes on your handset.';
     notebookPromptFact = null;
@@ -392,7 +401,7 @@ function renderThought() {
 async function thoughtAction(action) {
   try {
     const data = await api('thought', { action });
-    state = data.state;
+    adoptState(data);
     lastNotice = action === 'note' ? 'Copied to a private note on the handset.' : '';
     render();
   } catch (e) {
@@ -558,7 +567,7 @@ async function captureRoomPhoto() {
       kind: 'image',
     });
     if (data.result?.ok === false) throw Error(data.result.reason || 'Could not save photo.');
-    state = data.state;
+    adoptState(data);
     autosave();
     setPhotoMode(false);
     $('phoneFrame').contentWindow?.postMessage(
@@ -870,7 +879,7 @@ async function parseNow(version) {
   try {
     const data = await api('parse', { text, previousParse: lastAnchoredParse, constructionTrace: trace.slice(-8) });
     if (version !== requestVersion) return;
-    state = data.state;
+    adoptState(data);
     applySceneOverlayFromState();
     parse = data.parse;
     parseText = text;
@@ -903,7 +912,7 @@ async function send() {
   const transcriptBeforeSend = buildTranscriptSentences((state.previous || []).slice(-14)).length;
   try {
     const data = await api('respond', { text, parse, addressee: npcId() || null });
-    state = data.state;
+    adoptState(data);
     applySceneOverlayFromState();
     lastNotice = data.effects?.length ? data.effects.join(' · ') : '';
     if (data.thought) lastNotice = '';
@@ -931,7 +940,7 @@ async function send() {
 async function move(room) {
   try {
     const data = await api('go', { room });
-    state = data.state;
+    adoptState(data);
     if (data.scene) sceneOverlay = data.scene;
     applySceneOverlayFromState();
     lastNotice = '';
@@ -949,7 +958,7 @@ async function move(room) {
 async function examine(id) {
   try {
     const data = await api('inspect', { id });
-    state = data.state;
+    adoptState(data);
     applySceneOverlayFromState();
     lastNotice = `${data.title}: ${data.body}`;
     const kept = (data.terminal?.files || []).some(f => f.rel === `notes/${data.id}.txt`);
@@ -985,7 +994,7 @@ async function downloadSave() {
 async function loadSave(text) {
   try {
     const data = await api('import', JSON.parse(text));
-    state = data.state;
+    adoptState(data);
     resetNotebookTracking();
     resetComposer();
     addressee = null;
@@ -1117,7 +1126,7 @@ $('showMore').onclick = () => {
 };
 $('reset').onclick = async () => {
   const r = await api('reset', {});
-  state = r.state;
+  adoptState(r);
   if (r.scene) sceneOverlay = r.scene;
   applySceneOverlayFromState();
   resetComposer();
@@ -1168,6 +1177,7 @@ function showIntro() {
 }
 $('introStart').onclick = () => { $('intro').hidden = true; $('utterance')?.focus(); };
 
+installCloudflareWebAnalytics();
 try {
   await initRenderer();
   state = await api('state');

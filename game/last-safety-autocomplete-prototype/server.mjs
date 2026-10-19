@@ -14,7 +14,9 @@ import {phraseLines} from './lib/phrase.mjs';
 import {makeParse} from './lib/grammar.mjs';
 import {createConsole} from './lib/text/console.mjs';
 import {tabCompleteLines} from './lib/text/tab-complete.mjs';
+import {initTelemetryLog,appendTelemetryRow,playTelemetry} from './lib/telemetry.mjs';
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
+initTelemetryLog();
 for (const rel of ['../../.env', '../.env', '.env']) {
   const envPath=path.join(ROOT, rel);
   if (existsSync(envPath)) loadEnvFile(envPath, {override: true});
@@ -34,7 +36,7 @@ const inlineScripts=['index.html','text.html','terminal/index.html'].flatMap(f=>
   const file=path.join(ROOT,'public',f);
   return existsSync(file)?[...readFileSync(file,'utf8').matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(m=>`'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`):[];
 });
-const CSP=`default-src 'self'; script-src 'self' ${inlineScripts.join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'`;
+const CSP=`default-src 'self'; script-src 'self' https://static.cloudflareinsights.com ${inlineScripts.join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'`;
 class HttpError extends Error{constructor(status,message){super(message);this.status=status}}
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml'};
 /** Server modules the browser may import. Each is checked to hold no oracle or NPC state. */
@@ -48,7 +50,15 @@ function getSession(req,res){
   lastSeen.set(sid,Date.now());
   return {sid,s:sessions.get(sid)};
 }
-const both=s=>({state:clientState(s),terminal:terminalState(s)});
+const both=(s,{track}= {})=>{
+  const out={state:clientState(s),terminal:terminalState(s)};
+  if(track) out.telemetry=playTelemetry(s);
+  return out;
+};
+function bothTracked(s,sid){
+  appendTelemetryRow(playTelemetry(s),{sid});
+  return both(s,{track:true});
+}
 /** Reset and import start a new game but keep the model budget, so they do not refill it. */
 function replaceSession(sid,old,next){next.usage=old.usage;sessions.set(sid,next);return next}
 
@@ -77,16 +87,16 @@ const server=http.createServer(async(req,res)=>{
       }
       if(req.method!=='POST')return json(res,405,{error:'Method not allowed'});
       const b=await body(req);
-      if(url.pathname==='/api/reset')return json(res,200,both(replaceSession(sid,s,newSession())));
+      if(url.pathname==='/api/reset')return json(res,200,bothTracked(replaceSession(sid,s,newSession()),sid));
       if(url.pathname==='/api/import'){
         const {session,error}=await importSession(b,applyAction);
         if(error)return json(res,400,{error});
-        return json(res,200,both(replaceSession(sid,s,session)));
+        return json(res,200,bothTracked(replaceSession(sid,s,session),sid));
       }
-      if(url.pathname==='/api/go'){const r=applyAction(s,'go',{room:b.room});return json(res,r.error?400:200,{...r,...both(s)})}
-      if(url.pathname==='/api/inspect'){const r=applyAction(s,'inspect',{id:b.id});return json(res,r.error?400:200,{...r,...both(s)})}
-      if(url.pathname==='/api/settings'){applyAction(s,'settings',{conceptLinksEnabled:!!b.conceptLinksEnabled});return json(res,200,both(s))}
-      if(url.pathname==='/api/thought'){const r=applyAction(s,'thought',{action:b.action==='note'?'note':'close'});return json(res,r.error?400:200,{...r,...both(s)})}
+      if(url.pathname==='/api/go'){const r=applyAction(s,'go',{room:b.room});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
+      if(url.pathname==='/api/inspect'){const r=applyAction(s,'inspect',{id:b.id});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
+      if(url.pathname==='/api/settings'){applyAction(s,'settings',{conceptLinksEnabled:!!b.conceptLinksEnabled});return json(res,200,bothTracked(s,sid))}
+      if(url.pathname==='/api/thought'){const r=applyAction(s,'thought',{action:b.action==='note'?'note':'close'});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
       if(url.pathname==='/api/text'){
         if(!consoles.has(sid))consoles.set(sid,createConsole(()=>sessions.get(sid),{phrase:true}));
         const r=await consoles.get(sid).handle(String(b.line||'').slice(0,600));
@@ -100,7 +110,7 @@ const server=http.createServer(async(req,res)=>{
       }
       if(url.pathname==='/api/tool'){
         const r=await applyAction(s,'tool',b||{});
-        return json(res,r.ok===false&&r.reason==='Not available on this phone.'?403:200,{result:r,...both(s)});
+        return json(res,r.ok===false&&r.reason==='Not available on this phone.'?403:200,{result:r,...bothTracked(s,sid)});
       }
       if(url.pathname==='/api/parse'){
         const text=String(b.text||'').slice(0,600);
@@ -117,9 +127,22 @@ const server=http.createServer(async(req,res)=>{
         if(!text&&!['think','commit'].includes(parse.kind))return json(res,400,{error:'Empty utterance'});
         const r=applyAction(s,'respond',{parse,addressee:b.addressee||null,text});
         if(r.error)return json(res,400,{error:r.error,...both(s)});
-        if(r.thought)return json(res,200,{thought:r.thought,...both(s)});
+        if(r.thought)return json(res,200,{thought:r.thought,...bothTracked(s,sid)});
         const lines=await phraseLines(s,text,r.lines||[]);
-        return json(res,200,{reply:lines.map(l=>l.text).join(' '),lines,effects:r.effects||[],parse,...(r.ending?{ending:r.ending}:{}),...both(s)});
+        return json(res,200,{reply:lines.map(l=>l.text).join(' '),lines,effects:r.effects||[],parse,...(r.ending?{ending:r.ending}:{}),...bothTracked(s,sid)});
+      }
+      if(url.pathname==='/api/telemetry'){
+        const row={
+          fuel:Number(b.fuel),
+          room:String(b.room||'').slice(0,40),
+          act:String(b.act||'').slice(0,20),
+          npc:b.npc==null?null:String(b.npc).slice(0,40),
+          knowledge:b.knowledge==null?null:String(b.knowledge).slice(0,80),
+        };
+        if(!Number.isFinite(row.fuel)||!row.room||!row.act)return json(res,400,{error:'Bad request.'});
+        appendTelemetryRow(row,{sid});
+        res.writeHead(204,{'Cache-Control':'no-store'});
+        return res.end();
       }
       return json(res,404,{error:'Unknown API endpoint'});
     }

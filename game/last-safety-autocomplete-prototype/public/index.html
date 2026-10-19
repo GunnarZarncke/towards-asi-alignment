@@ -125,7 +125,10 @@
   <p><b>Used components</b><br/>
   3D rendering: <a href="https://threejs.org/">three.js</a> (MIT License, © three.js authors). Scene objects are procedurally generated in code.
   Typeface: Inter (SIL OFL 1.1) if installed, otherwise system fonts; no web fonts are loaded.
-  Free-text input may optionally be interpreted by an LLM service (OpenAI) when the server is configured with an API key.</p>
+  Free-text input may optionally be interpreted by an LLM service (OpenAI) when the server is configured with an API key.
+  When the game is hosted on the public web (not localhost), aggregated cookieless traffic may be measured with
+  <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>; play steps (fuel, room, act, optional NPC and knowledge ids)
+  are kept in your browser’s local storage and may be sent to the server when the operator enables a telemetry log.</p>
   <form method="dialog"><button class="minor">Close / Schließen</button></form>
 </dialog>
 <script>

@@ -7,7 +7,7 @@ import { resolveAccessRequestGated } from './access-gates.mjs';
 import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
-import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads, triggerFactConcepts } from '../game.mjs';
+import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads, triggerFactConcepts, logAction } from '../game.mjs';
 import { parseImageDataUrl } from '../photo-data.mjs';
 
 export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.share', 'dm.send', 'dm.read', 'access.request']);
@@ -106,7 +106,7 @@ function suggestionsFor(s, withId) {
 
 export function applyToolCall(s, call, { log = true } = {}) {
   const tool = call?.tool;
-  const logCall = () => { if (log && !s.replaying) s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind: 'action', action: 'tool', args: JSON.parse(JSON.stringify(call)) }); };
+  const logCall = () => { if (log && !s.replaying) logAction(s, 'tool', JSON.parse(JSON.stringify(call))); };
   if (DENIED.has(tool)) return { ok: false, reason: 'Not available on this phone.' };
   if (!PLAYER_TOOLS.includes(tool)) return { ok: false, reason: 'Unknown tool.' };
   if (!s.labAccessActive) return { ok: false, reason: 'Lab Access is not active yet.' };

@@ -13,6 +13,7 @@ import { CONFIG, clockLabel } from './world/config.mjs';
 import { conceptFor } from './world/concepts.mjs';
 import { progress } from './world/predicates.mjs';
 import * as N from './world/npcs.mjs';
+import { buildEventRow } from './telemetry.mjs';
 import { DOCUMENTS, readsAsFor, thinkMarksFor, getDocumentByScreen } from './documents.mjs';
 import { MAX_IMAGE_DATA_URL_LEN, parseImageDataUrl } from './photo-data.mjs';
 import { ACCESS_TREE } from './access.mjs';
@@ -154,10 +155,10 @@ function seeRoom(s) {
 }
 
 function log(s, kind, payload = {}) {
-  s.events.push({ i: s.events.length, fuel: s.fuelSpent, kind, ...payload });
+  s.events.push(buildEventRow(s, kind, payload));
 }
 
-function logAction(s, action, args) {
+export function logAction(s, action, args) {
   if (!s.replaying) log(s, 'action', { action, args: JSON.parse(JSON.stringify(args ?? {})) });
 }
 
