@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T20:10:46.333Z",
+  "generatedAt": "2026-10-19T21:19:01.124Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1473,7 +1473,7 @@
     {
       "title": "I can see everything ... of the control panel",
       "type": "news",
-      "summary": "On 19 October 2026 Nick Cammarata argued that much apparent polysemanticity was recursive generalization, not arbitrary packing, and that most neuron poles in Qwen3-32B have one main job. Zvi’s roundup treats the essay as valuable and overstated — not interpretability or alignment soon handled. Eliezer Yudkowsky, via Zvi, keeps the gap: you can pry the panel; that is not understanding the machine or aligning ASI as normal science.",
+      "summary": "On 19 October 2026 Nick Cammarata argued that apparent polysemanticity was recursive generalization and that most neurons have one main job. Zvi’s roundup treats it as valuable and overstated. Eliezer Yudkowsky: you can pry the panel; that is not understanding the machine or aligning ASI.",
       "url": "/cards/news/field-news-i-can-see-control-panel-oct-2026/"
     },
     {
