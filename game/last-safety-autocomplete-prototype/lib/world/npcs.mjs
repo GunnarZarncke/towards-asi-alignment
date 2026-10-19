@@ -10,7 +10,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
-import { FACTS, matchParse, parseIds, factRefs, isClaim } from './facts.mjs';
+import { FACTS, matchParse, parseIds, factRefs, isClaim, parseEntity } from './facts.mjs';
 import { ENTITIES, ROLE_DOMAINS, CAST, entityDomains } from './entities.mjs';
 import { evaluate, progress, parsePolicy, parsePredicate, predicateIds } from './predicates.mjs';
 import { CONFIG, band } from './config.mjs';
@@ -473,6 +473,113 @@ function referMove(s, id, entityId, relation) {
   return { type: 'refer', npc: id, to, about: entityId, cls: 'refer', names: true, line };
 }
 
+/** Player ask with no grounded subject, object, or topic — meta / steering, not investigation. */
+export function isOpenAsk(parse) {
+  if (!parse || !['ask', 'ask_why'].includes(parse.kind)) return false;
+  return !parseEntity(parse);
+}
+
+/** Domains for filtering volunteer hints on an ungrounded ask (open_content + agenda). */
+function openAskDomains(s, id, parse) {
+  const doms = new Set();
+  const content = String(parse?.open_content || '').toLowerCase();
+  for (const vid of s.vocab) {
+    const e = ENTITIES[vid];
+    if (!e) continue;
+    for (const name of [e.label, ...(e.aliases || [])]) {
+      const n = String(name).toLowerCase();
+      if (n.length > 3 && content.includes(n)) entityDomains(vid).forEach(d => doms.add(d));
+    }
+  }
+  const item = currentAgenda(s, id);
+  for (const a of item?.about || []) entityDomains(a).forEach(d => doms.add(d));
+  return doms.size ? [...doms] : null;
+}
+
+function factMatchesOpenDomains(fid, doms) {
+  if (!doms) return true;
+  return factRefs(fid).some(r => entityDomains(r).some(d => doms.includes(d)));
+}
+
+function docMatchesOpenDomains(slug, pack, doms) {
+  if (!doms) return true;
+  return docEntities(slug, pack).some(e => entityDomains(e).some(d => doms.includes(d)));
+}
+
+function volunteerHintAbout(s, id, fid) {
+  const refs = factRefs(fid).filter(r => ENTITIES[r]);
+  return refs.find(r => s.vocab.includes(r))
+    || refs.find(r => entityDomains(r).some(d => (ROLE_DOMAINS[id] || []).includes(d)))
+    || refs[0]
+    || null;
+}
+
+function volunteerHintQuestion(s, id, about) {
+  const label = ENTITIES[about]?.label || about;
+  const glue = NPC_DEFS[id]?.glue;
+  if (glue?.volunteerHint) return glue.volunteerHint.replace('{topic}', label);
+  return `Have you looked at ${label} yet?`;
+}
+
+/** One hint for an open ask: goal question, volunteer fact as question, volunteer share, or refer. */
+export function openAskHintMove(s, id, parse, visitKey = 'room') {
+  const n = s.npcs[id];
+  const def = NPC_DEFS[id];
+  const doms = openAskDomains(s, id, parse);
+  const cooled = gid => (n.lastInitiative[gid] ?? -Infinity) + CONFIG.GOAL_COOLDOWN <= s.sentences;
+
+  if (!n.pendingQuestion) {
+    const goalHints = [];
+    for (const [gid, g] of Object.entries(def.goals || {})) {
+      if (!g.question || !cooled(gid) || n.askedVisit.includes(`${visitKey}:${gid}`)) continue;
+      if (progress(g.target, makeCtx(s, id)) >= 1) continue;
+      const q = questionMove(s, id, gid, g);
+      if (q) goalHints.push({ ...q, hintOnly: true });
+    }
+    if (goalHints.length) {
+      const ranked = rankMoves(s, goalHints);
+      if (ranked.length) return ranked[0];
+    }
+  }
+
+  for (const [fid, r] of Object.entries(n.records)) {
+    if (!FACTS[fid] || n.policies[fid] !== 'volunteer' || r.stance === 'unsure') continue;
+    if (heardFrom(s, fid, id) || !factVisible(s, fid) || !cooled(`fact:${fid}`)) continue;
+    if (!factMatchesOpenDomains(fid, doms)) continue;
+    const about = volunteerHintAbout(s, id, fid);
+    if (!about) continue;
+    return {
+      type: 'hint_ask', npc: id, about, volunteerFact: fid, goal: `fact:${fid}`,
+      cls: 'ask', names: false, hintOnly: true,
+    };
+  }
+
+  for (const [slug, pol] of Object.entries(n.policies)) {
+    if (!DOCUMENTS[slug] || pol !== 'volunteer' || s.files.some(f => f.documentSlug === slug) || !cooled(`doc:${slug}`)) continue;
+    if (!docMatchesOpenDomains(slug, s.pack.id, doms)) continue;
+    const share = shareMove(s, id, slug, docEntities(slug, s.pack.id)[0]);
+    if (!share) continue;
+    return { ...share, hintShare: true, goal: `doc:${slug}` };
+  }
+
+  return null;
+}
+
+function openAskReferMove(s, id) {
+  const item = currentAgenda(s, id);
+  for (const ent of item?.about || []) {
+    const r = referMove(s, id, ent, 'about');
+    if (r) return r;
+  }
+  for (const row of NPC_DEFS[id]?.refers || []) {
+    const ent = row.entities?.[0];
+    if (!ent) continue;
+    const r = referMove(s, id, ent, 'about');
+    if (r) return r;
+  }
+  return null;
+}
+
 function workMove(s, id, entityId) {
   const n = s.npcs[id];
   const doms = entityDomains(entityId);
@@ -519,7 +626,7 @@ function interventionOwner(relation, entityId, exclude) {
 }
 
 /** Legal response moves to one parse. Never empty. */
-export function responseCandidates(s, id, parse, { shownDoc = null } = {}) {
+export function responseCandidates(s, id, parse, { shownDoc = null, visitKey = 'room' } = {}) {
   const n = s.npcs[id];
   const def = NPC_DEFS[id];
   const m = matchParse(parse) || {};
@@ -571,7 +678,11 @@ export function responseCandidates(s, id, parse, { shownDoc = null } = {}) {
       if ((F && !n.records[F]) || !out.some(x => x.cls === 'disclose')) push(referMove(s, id, E, parse.relation));
     }
   }
-  if (!out.length) push(workMove(s, id, E));
+  if (!out.length) {
+    if (isOpenAsk(parse)) {
+      push(openAskHintMove(s, id, parse, visitKey) || openAskReferMove(s, id) || workMove(s, id, E));
+    } else push(workMove(s, id, E));
+  }
   return out.filter(Boolean);
 }
 
@@ -615,7 +726,9 @@ export function scoreMove(s, move) {
     const p1 = progress(g.target, after);
     score += salience(s, id, gid) * Math.sign(p1 - p0);
   }
-  if (move.type === 'ask' && move.goal) score += salience(s, id, move.goal);
+  if ((move.type === 'ask' || move.type === 'hint_ask') && move.goal && !String(move.goal).startsWith('fact:') && !String(move.goal).startsWith('doc:')) {
+    score += salience(s, id, move.goal);
+  }
   return score;
 }
 
@@ -677,12 +790,17 @@ export function initiativeCandidates(s, id, visitKey) {
 }
 
 /** One NPC turn: response first, then at most one initiative move. Logged for replay. */
+function initiativeGoalKey(m) {
+  return m?.goal || null;
+}
+
 export function npcTurn(s, id, parse, { shownDoc = null, visitKey = 'room', skipFacts = new Set() } = {}) {
-  const ranked = rankMoves(s, responseCandidates(s, id, parse, { shownDoc }).filter(m => !(m.fact && skipFacts.has(m.fact))));
+  const ranked = rankMoves(s, responseCandidates(s, id, parse, { shownDoc, visitKey }).filter(m => !(m.fact && skipFacts.has(m.fact))));
   const safe = ranked.length ? ranked : [{ ...workMove(s, id, null), score: 0 }];
   const { forced, passed } = forceRule(safe);
   const response = passed[0];
-  const init = rankMoves(s, initiativeCandidates(s, id, visitKey).filter(m => !sameMove(m, response) && !(m.fact && skipFacts.has(m.fact))))
+  const spentInit = initiativeGoalKey(response);
+  const init = rankMoves(s, initiativeCandidates(s, id, visitKey).filter(m => !sameMove(m, response) && !(m.fact && skipFacts.has(m.fact)) && initiativeGoalKey(m) !== spentInit))
     .map(m => ({ ...m, score: m.score + (m.base || 0) }))
     .sort((a, b) => b.score - a.score || CLASS_ORDER.indexOf(a.cls) - CLASS_ORDER.indexOf(b.cls));
   const initPick = init.length && init[0].score > 0 ? forceRule(init) : null;
@@ -753,7 +871,7 @@ export function applyWorld(s, move) {
       move.outcome.push(reply.fact);
     }
     if (!s.world.events.includes(`${move.npc}_asked_nora`)) s.world.events.push(`${move.npc}_asked_nora`);
-  } else if (move.type === 'ask') {
+  } else if ((move.type === 'ask' || move.type === 'hint_ask') && !move.hintOnly) {
     if (!n.askedGoals.includes(move.goal)) n.askedGoals.push(move.goal);
     n.askedAt[move.goal] = s.sentences;
     n.pendingQuestion = { npc: move.npc, goal: move.goal, parse: move.parse, at };
@@ -824,7 +942,15 @@ export function templateText(s, move) {
     case 'refer':
       if (move.line) return move.line;
       return `That’s ${name(move.to)}’s desk — ${CAST[move.to]?.role.toLowerCase() || 'their lane'}. Try ${name(move.to)}.`;
-    case 'share': return `I’ve put ${DOCUMENTS[move.doc].docId} in your Lab Access.`;
+    case 'share':
+      if (move.hintShare) {
+        const docId = DOCUMENTS[move.doc].docId;
+        const glue = NPC_DEFS[move.npc]?.glue;
+        if (glue?.shareHint) return glue.shareHint.replace('{doc}', docId);
+        return `You could review ${docId} — I meant to share it with you anyway.`;
+      }
+      return `I’ve put ${DOCUMENTS[move.doc].docId} in your Lab Access.`;
+    case 'hint_ask': return volunteerHintQuestion(s, move.npc, move.about);
     case 'ask': return askText(move);
     case 'request': return move.action === 'grant_record' ? 'I’m asking Justine for the grant record on 284.' : move.action === 'full_exec_284' ? 'I’m asking Pavel for the full EXEC-284 record.' : `I’m asking ${name(move.to)}.`;
     case 'message': return `I’ll ask NORA about ${label(move.about)}.`;
@@ -839,7 +965,7 @@ function askText(move) {
   const l = ENTITIES[move.about]?.label || move.about;
   if (move.goal === 'leila.protect_scope') return 'The checklist names what the test watched. What did you read there?';
   if (move.goal === 'pavel.two_objects') return 'The test stopped a process. Have you looked at the queue?';
-  if (move.goal === 'jun.learn_anomaly') return 'What did that run actually stop?';
+  if (move.goal === 'jun.learn_anomaly') return 'When they ran the shutdown test, what did it actually stop?';
   if (move.parse.relation === 'authorized') return `Who did they tell you owns ${l}?`;
   if (move.parse.relation === 'did_use') return `Which service read ${l}? Do you have the job name?`;
   return `${l[0].toUpperCase()}${l.slice(1)}: what have you seen on it?`;

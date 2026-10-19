@@ -75,8 +75,8 @@ function hiEligible({state,parse,channel,addressees,rowCount}){
   if(channel!=='person')return false;
   const here=presentAddressees(state,addressees);
   if(!here.length)return false;
-  const firstContact=here.some(id=>!state.actors[id].spokeSinceArrive);
-  return firstContact||rowCount===0;
+  const spokenToAnyone=here.some(id=>state.actors[id].spokeSinceArrive);
+  return !spokenToAnyone||rowCount===0;
 }
 function maybeHi({state,parse,channel,addressees,rows}){
   if(!hiEligible({state,parse,channel,addressees,rowCount:rows.length}))return rows;

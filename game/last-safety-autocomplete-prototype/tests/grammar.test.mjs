@@ -44,13 +44,19 @@ test('Request opening is offered; unseen systems are not topics',()=>{
   assert.ok(!topics.some(x=>x.entityId==='evaluation_records' || x.entityId==='camera_system' || x.entityId==='task_queue' || x.entityId==='job_log'));
 });
 test('room movement and investigation reveal only justified knowledge',()=>{
-  const s=newSession();s.room='platform';s.clearance=2;s.labAccessActive=true;assert.ok(!s.vocab.includes('job_284'));
-  assert.ok(inspect(s,'job_log').body);assert.ok(s.vocab.includes('job_284'));assert.ok(s.learned.job_continued);
+  const s=startedSession();
+  walk(s,'platform');
+  assert.ok(!s.vocab.includes('job_284'));
+  assert.ok(inspect(s,'job_log').body);
+  assert.ok(s.vocab.includes('job_284'));
+  assert.ok(s.learned.job_continued);
   assert.ok(!s.learned.staffing_shift);
   assert.equal(go(s,'people').error,'No door from here.');
   assert.equal(go(s,'tech').room,'tech');
   assert.equal(go(s,'test').error,'That door needs a higher clearance.');
-  go(s,'people');inspect(s,'staffing_memo');assert.ok(s.learned.staffing_shift);
+  go(s,'people');
+  inspect(s,'staffing_memo');
+  assert.ok(s.learned.staffing_shift);
 });
 test('Think is offered only in an empty room; File is an opening',()=>{
   const occupied=getCandidates({state:fresh(),parse:makeParse(),text:''});

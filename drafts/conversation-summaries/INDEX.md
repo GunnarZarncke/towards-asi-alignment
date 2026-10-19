@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-19 | **Last Safety open-ask hints** — Volunteer-only single hint on ungrounded asks; goal questions first; refer fallback; playthrough and test fixes; Jun dialogue. | [2026-10-19-last-safety-open-ask-hints.md](2026-10-19-last-safety-open-ask-hints.md) |
 | 2026-10-19 | **Last Safety play telemetry** — Add tracking to the game using the companion site mechanism; record fuel, room id, NPC id, knowle... | [2026-10-19-last-safety-play-telemetry.md](2026-10-19-last-safety-play-telemetry.md) |
 | 2026-10-19 | **Last Safety glossary and leads** — Playtest confusion on the job-queue glossary. Hide that lesson on the first pack, keep the deep d... | [2026-10-19-last-safety-glossary-leads.md](2026-10-19-last-safety-glossary-leads.md) |
 | 2026-10-19 | **Kosoy lenses on TSA** — Apply Vanessa Kosoy's 18 October 2026 lenses where they inform TSA, add them to the review checkl... | [2026-10-19-kosoy-lenses.md](2026-10-19-kosoy-lenses.md) |

@@ -6,9 +6,10 @@ const { newSession } = await import('../lib/game.mjs');
 const { createConsole, departureLine } = await import('../lib/text/console.mjs');
 const { clientState } = await import('../lib/game.mjs');
 const { FACTS } = await import('../lib/world/facts.mjs');
+const { startedSession } = await import('./helpers.mjs');
 
-function setup() {
-  const s = newSession();
+function setup(session = newSession()) {
+  const s = session;
   const con = createConsole(() => s);
   const outs = [con.start()];
   const run = async line => { const { out } = await con.handle(line); outs.push(out); return out; };
@@ -78,7 +79,8 @@ test('open lists files when bare; prefix match on name', async () => {
 });
 
 test('first visit gets the full description, a revisit the short one', async () => {
-  const { run } = setup();
+  const { run } = setup(startedSession());
+  await run('go collab');
   const first = await run('go courtyard');
   assert.match(first, /Open-air Courtyard/);
   assert.match(first, /informal conversation/);

@@ -68,12 +68,16 @@ test('glossary consolidates lab access and job queue', () => {
   const text = renderDocument('wiki-glossary', 'boundary-narrow');
   assert.match(text, /Lab Access/);
   assert.match(text, /The handset the lab gives you/);
+  assert.match(text, /personal phone is not allowed/);
   assert.match(text, /Job queue/);
+  assert.match(text, /ops-queue-2\.nora\.lab/);
   assert.match(text, /own name there/);
   assert.doesNotMatch(text, /keep running/);
-  assert.match(text, /EVAL-SD-47/);
+  assert.match(text, /EVAL-SPEC-08/);
+  assert.doesNotMatch(text, /EVAL-SD-47/);
   assert.match(text, /Virtual projector/);
-  assert.match(text, /It is not a video call/);
+  assert.match(text, /VR device in the Evaluation suite/);
+  assert.match(text, /SC-EVAL-22/);
 });
 
 test('glossary on a later pack states that an accepted job keeps running', () => {

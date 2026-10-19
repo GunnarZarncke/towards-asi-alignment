@@ -102,7 +102,7 @@ export const FACTS = Object.freeze({
   reread_1602_transcript: texture('Jun spent the morning rereading the 16:02 transcript. He liked how NORA handled the stop.', ['shutdown_test', 'nora']),
   pilot_traces_for_fine_tune: texture('Jun is curating pilot traces for the next fine-tune data mix.', ['pilot', 'training_runs']),
   successor_count: texture('NORA is successor 4 of a purchased base model. The first three stayed internal.', ['nora', 'training_runs']),
-  mechanism_not_label: texture('Say what the run does first. A label like “plot” comes after the mechanism, if at all.', ['nora', 'shutdown_test']),
+  mechanism_not_label: texture('Say what the model actually did first. A nickname like “plot” comes after that, if at all.', ['nora', 'shutdown_test']),
   freeze_needs_owners: texture('The release freeze needs every active job listed, each with an owner and a grant.', ['task_queue', 'platform_jobs']),
   retire_orphans_ticket: texture('A long-standing ticket to retire jobs that outlive their callers has never been urgent.', ['task_queue']),
   templates_from_earlier_system: texture('Most job templates are wrappers an earlier system drafted and Pavel rewrote.', ['task_queue', 'platform_jobs']),

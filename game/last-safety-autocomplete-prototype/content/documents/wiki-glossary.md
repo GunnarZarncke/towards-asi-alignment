@@ -12,11 +12,11 @@ The handset the lab gives you. It opens doors, joins the lab Wi-Fi, and holds th
 
 ## Binding
 
-What ties a handset to a person, or to a visit. A visitor's handset has to be activiated by the host. An employee handset has to be activated by an admin. NORA Assist cannot do that.
+What ties a handset to a person, or to a visit. A visitor's handset has to be activated by the host. An employee handset has to be activated by an admin. NORA Assist cannot do that.
 
 ## Doors
 
-The doors your handset can open is limited and depends on your access granted.
+The doors your handset can open are limited and depend on the access you were granted.
 
 ## Job queue
 
@@ -40,7 +40,7 @@ The lab's own workflows: scheduling, matching people to tasks, and approved jobs
 
 ## Safety case
 
-The safty case states claims about one named setup, and the tests for them. It is input to a release decision. It is not the decision. The current packet is SC-EVAL-22.
+The safety case states claims about one named setup, and the tests for them. It is input to a release decision. It is not the decision. The current packet is SC-EVAL-22.
 
 ## Virtual projector
 

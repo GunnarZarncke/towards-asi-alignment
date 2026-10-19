@@ -179,12 +179,14 @@ Fact moves are dry because they are generated from facts. **Glue** is extra non-
 | `midRate` | Probability of a mid line (0–1). Falls back to `CONFIG.GLUE.defaultMidRate` |
 | `opening` / `closing` / `mid` | Map stance → one authored sentence |
 | `work` | Fallback when a `work` move has no visible texture fact |
+| `volunteerHint` | Optional `{topic}` template when an open ask yields a volunteer-fact hint question |
+| `shareHint` | Optional `{doc}` template when an open ask shares a volunteer document |
 
 `CONFIG.GLUE` (`lib/world/config.mjs`) turns slots on or off: `enabled`, `opening`, `closing`, `mid`, `defaultMidRate`. Mid rolls are a hash of scenario, npc, sentence count, and fuel, so replay matches. The model may rephrase a glue line in voice; it still may not add a fact.
 
 ### Choosing a move
 
-1. Build the legal response moves for the parse. If the parse's referent is a fact the NPC holds, the policy decides between `answer`, `believe`, `withhold`, and `deflect`. If the NPC does not hold it, `refer`. If the parse is a request, the matching `act`, `share`, or `request`, each gated by authority and goals. If nothing applies (an open or off-plot parse), `work`, built from texture facts in the parse's domain or, failing that, the current agenda item.
+1. Build the legal response moves for the parse. If the parse's referent is a fact the NPC holds, the policy decides between `answer`, `believe`, `withhold`, and `deflect`. If the NPC does not hold it, `refer`. If the parse is a request, the matching `act`, `share`, or `request`, each gated by authority and goals. If nothing else applies and the parse is an **open ask** (no grounded entity), one **hint** move: goal `question` first (same gates as initiative, `hintOnly` — no `pendingQuestion`), else one **volunteer** fact as a `hint_ask` (fact text withheld from phrasing), else a volunteer **share** with hint wording, else **refer** from agenda or referral edges; then `work` if still empty. Hints use the same initiative cooldown keys. Otherwise `work`, built from texture facts in the parse's domain or, failing that, the current agenda item.
 2. Score each legal move by goals: for each unsatisfied goal, salience (low 1, mid 2, high 3) times whether the move's effect moves the target toward satisfied (+1), leaves it (0), or moves it away (−1). Ties go to the move that names the parse's referent.
 3. Group the top moves by effect class: `disclose(fact)`, `withhold`, `refer`, `share(doc)`, `act(intervention)`, `ask`, `texture` (`work`, `deflect`, `believe`). If the top three contain more than one class among `disclose`, `withhold`, `share`, and `act`, force the highest-scoring move. Those classes are what make a strategy solvable or not, and leaving them to the model makes the same play unsolvable on one run and finished on the next. If they differ only inside `texture`, `refer`, or `ask`, or they disclose the same fact, pass up to three and let the model pick from how the player acted. Words vary. The effect does not, except inside that allowed set.
 4. Log the candidate set, the pick, and `forced: true` or `false`. Replay uses the log.

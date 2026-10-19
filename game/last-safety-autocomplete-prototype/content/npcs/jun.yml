@@ -5,25 +5,25 @@ voice:
   structure: The mechanism before the label. He says what the run does, and only then may he accept a name for it. He will not start from “deception” or “intent.”
   person: Defensive and insecure. Steady about the mechanism, unsteady about whether he is being accused. He ends on a question about an unimportant detail, a timestamp or a line number.
   focus: What the training run was built to do
-  sample: "The run keeps a thin context and completes it. People put ‘plot’ on the completion. I can walk that completion. Was the line 16:09 or 16:10?"
+  sample: "The model keeps a short context and fills in the next step. People call that a plot. I can read the log with you. Was the line 16:09 or 16:10?"
 glue:
   midRate: 0.1
   default: thin
   pressure: thin
   onDomain:
     training: busy
-  work: "I’m on the capability summary. Mechanism first. A label can wait."
-  work_alt: "I’m on the page about what the run does — not whether anyone meant anything by it."
+  work: "I'm on my write-up for the review: what NORA does with tools, step by step."
+  work_alt: "I'm on the page about what the run did — not whether anyone meant anything by it."
   opening:
-    thin: "I’m on the summary. Is this about the run, or about me?"
-    busy: "Mechanism first. I can walk the completion."
-    pleasant: "Pull a chair. I was rereading a stop I liked."
+    thin: "I'm on the write-up. Is this about the test run, or about me?"
+    busy: "Tell me what actually happened first. I can go through the log with you."
+    pleasant: "Pull a chair. I was rereading how the model handled the stop at 16:02."
   closing:
-    thin: "If this was a charge, say so next time. I’ll be on the summary."
-    busy: "I have a page to finish. Come back with a line number."
+    thin: "If this was a charge, say so next time. I'll be on the write-up."
+    busy: "I have a page to finish. If you want my help, point at a line in the log."
   mid:
     thin: "Was that an accusation?"
-    busy: "Say what the run does first."
+    busy: "Tell me what the run did first."
 agenda:
   - id: jun.lunch
     room: commons
@@ -31,27 +31,27 @@ agenda:
     bands: [lunch]
     about: [shutdown_test, training_runs]
     texture: [reread_1602_transcript]
-    work: "Lunch. I’m still on the capability summary — mechanism first."
+    work: "Lunch. I'm still on the review write-up — what the model did, step by step."
   - id: jun.capability_summary
     room: model
     acts: [doubt]
     bands: [early, late]
     about: [nora, shutdown_test, training_runs]
     texture: [capability_summary_due, reread_1602_transcript]
-    work: "I’m writing what the run does, as a mechanism. Not an adjective."
-    work_alt: "I can walk the 16:02 stop again if you need a line number — not a story about intent."
+    work: "I'm writing what the model actually did in the test — not a story about what it meant."
+    work_alt: "I'm happy to go through the 16:02 shutdown log with you if you need a line number — not a story about intent."
   - id: jun.trace_curation
     room: model
     acts: [doubt]
     bands: [mid]
     about: [pilot, training_runs]
     texture: [pilot_traces_for_fine_tune]
-    work: "I’m sorting traces for the next mix. Ask about the run, not a plot."
+    work: "I'm sorting pilot examples for the next training mix. Ask about the test run, not a plot."
   - id: jun.review
     room: review
     acts: [decision]
     about: [nora]
-    work: "I can walk the completion. Don’t start from a charge."
+    work: "I can go through the log with you. Don't start by accusing NORA."
 knowledge:
   mechanism_not_label: { stance: knows, policy: volunteer }
   capability_summary_due: { stance: knows, policy: answer }
@@ -60,8 +60,8 @@ knowledge:
   successor_count: { stance: knows, policy: answer }
   process_stopped: { stance: knows, policy: answer }
 refers:
-  - { relations: [about], entities: [job_284, task_queue, visitor_records], to: pavel, line: "Job rows are Pavel's queue. I can talk about what the run does." }
-  - { relations: [about], entities: [shutdown_report, shutdown_spec, safety_case], to: leila, line: "Leila holds the scope lines. I won't use pass or fail until those are on the page." }
+  - { relations: [about], entities: [job_284, task_queue, visitor_records], to: pavel, line: "Job rows are Pavel's queue. I can talk about what the model run did." }
+  - { relations: [about], entities: [shutdown_report, shutdown_spec, safety_case], to: leila, line: "Leila holds the scope lines. I won't say pass or fail until those are on the page." }
   - { relations: [about], entities: [camera_system, lab_access, policies], to: justine, line: "Permissions are Justine's audit. I read training logs, not grants." }
 policy_events:
   - on: "holds(jun, nora_says_scheduled)"
@@ -89,4 +89,4 @@ interventions:
   accept_meeting:
     relations: [meet]
     acts: [welcome, doubt]
-    reason: "I’m on the summary. Model studio or lunch in the commons."
+    reason: "I'm on the write-up. Model studio or lunch in the commons."

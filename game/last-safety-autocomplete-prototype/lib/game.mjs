@@ -476,8 +476,9 @@ function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
   const response = fresh(turn.response) ? turn.response : null;
   const initiative = fresh(turn.initiative) ? turn.initiative : null;
   for (const m of [response, initiative].filter(Boolean)) N.applyWorld(s, m);
-  if (initiative?.type === 'ask') s.npcs[npc].askedVisit.push(`${visitKey}:${initiative.goal}`);
+  if (initiative?.type === 'ask' && !initiative.hintOnly) s.npcs[npc].askedVisit.push(`${visitKey}:${initiative.goal}`);
   if (initiative?.goal) s.npcs[npc].lastInitiative[initiative.goal] = s.sentences;
+  if (response?.goal) s.npcs[npc].lastInitiative[response.goal] = s.sentences;
   const after = N.settle(s);
   const own = [...ownRules, ...after.filter(m => m.npc === npc)];
   const others = [...ruleMoves, ...after].filter(m => m.npc !== npc);
@@ -564,7 +565,7 @@ function deliver(s, m) {
   }
   if (m.type === 'refer') introduce(s, m.to);
   if (m.type === 'share') addFile(s, m.doc, m.npc);
-  if (m.type === 'ask') {
+  if (m.type === 'ask' && !m.hintOnly) {
     if (m.introduces) discover(s, m.introduces);
     s.pendingQuestion = s.npcs[m.npc].pendingQuestion;
   }
@@ -1087,13 +1088,14 @@ const KEEPS_FACT = new Set(['withhold', 'deflect']);
 /** For composition: the move and only the facts it carries, plus voice and agenda texture. */
 export function phrasingInput(s, npc, move) {
   const item = N.currentAgenda(s, npc);
-  const facts = KEEPS_FACT.has(move.type) ? [] : [move.fact, ...(move.outcome || [])].filter(id => FACTS[id]).map(id => FACTS[id].text);
+  const facts = KEEPS_FACT.has(move.type) || move.hintOnly || move.type === 'hint_ask'
+    ? [] : [move.fact, ...(move.outcome || [])].filter(id => FACTS[id]).map(id => FACTS[id].text);
   return {
     name: CAST[npc]?.name, role: CAST[npc]?.role, voice: N.voiceOf(npc),
-    move: move.type, facts, reason: move.reason || null,
+    move: move.type === 'hint_ask' ? 'ask' : move.type, facts, reason: move.reason || null,
     referTo: move.to ? { name: nameOf(move.to), role: CAST[move.to]?.role || null } : null,
     document: move.doc ? DOCUMENTS[move.doc].docId : null,
-    question: move.type === 'ask' ? N.templateText(s, move) : null,
+    question: (move.type === 'ask' || move.type === 'hint_ask') ? N.templateText(s, move) : null,
     agenda: item?.id || null,
     texture:
       move.type === 'work' && move.work

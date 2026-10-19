@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-19 (control-panel field news).
+Last updated: 2026-10-19 (Last Safety open-ask hints).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-19:** **Last Safety open-ask hints** — Ungrounded asks get one volunteer-equivalent hint (goal question, `hint_ask`, or hint share), shared initiative cooldown, no `pendingQuestion`; playthrough tests; Jun clarity; glossary test alignment. Log: `2026-10-19-last-safety-open-ask-hints.md`.
 - **2026-10-19:** **Control-panel field news** — Goodfire/Zvi mechinterp card *I can see everything ... of the control panel*; computer-repair meme; Ch. 9/36 composite cut. Log: `2026-10-19-i-can-see-control-panel-field-news.md`.
 - **2026-10-19:** **Inter-agenda glossary TSA links** — Cross-agenda refs use TSA and companion URLs instead of author surname. Log: `2026-10-19-glossary-tsa-links.md`.
 - **2026-10-19:** **Kosoy lenses** — Ch. 10 side-channel quote and Ch. 44 convergence quote (`kosoy2026alignmentproblem`). App B splits logical induction from the learning-theoretic agenda. Review claim checklist gains the four lenses. Log: `2026-10-19-kosoy-lenses.md`.
