@@ -12,7 +12,7 @@ Prompts: (none in the message; paraphrase)
 - content: Boundary-narrow tables name three scored explanations, six observables, four interventions, and five strategy pairs. Justine is on the Gate 1 handset.
 - content: Visit is Friday 19 November 2027. Thursday 18 stays the incident. Meeting placeholder moved off 16:40 Thursday.
 - content: Prototype openings in `public/grammar.js` and the demo parser in `lib/llm.mjs`. Think is hidden while someone is in the room.
-- bookkeeping: `npm test` in `game/last-safety-autocomplete-prototype` — 34 pass, 0 fail.
+- bookkeeping: `npm test` in `game/the-last-safety-review` — 34 pass, 0 fail.
 
 ## Decisions
 - Think returns authored marks within a hop limit. Fuel for it is that hop count. The first prompt is Leila, and that mark is one hop.
@@ -29,10 +29,10 @@ Prompts: (none in the message; paraphrase)
 - Next implementation step is the boundary-narrow move loop, headless, before more rooms.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/incident.md`
-- `game/last-safety-autocomplete-prototype/spec/grammar.md`
-- `game/last-safety-autocomplete-prototype/spec/engine.md`
-- `game/last-safety-autocomplete-prototype/spec/world.md`
+- `game/the-last-safety-review/spec/incident.md`
+- `game/the-last-safety-review/spec/grammar.md`
+- `game/the-last-safety-review/spec/engine.md`
+- `game/the-last-safety-review/spec/world.md`
 
 ## Commits
 - none

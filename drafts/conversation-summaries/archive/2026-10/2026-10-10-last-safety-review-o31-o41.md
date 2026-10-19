@@ -26,9 +26,9 @@ Prompts: none resolvable (paraphrase only).
 - Wire the audience line into `lib/llm.mjs` when NPC prompts are next edited. The running prompt does not have it yet.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/meta.md`
-- `game/last-safety-autocomplete-prototype/spec/engine.md`
-- `game/last-safety-autocomplete-prototype/spec/world.md`
+- `game/the-last-safety-review/spec/meta.md`
+- `game/the-last-safety-review/spec/engine.md`
+- `game/the-last-safety-review/spec/world.md`
 
 ## Commits
 - none

@@ -50,10 +50,28 @@ test('Ian’s closing glue fires when he leaves commons for the investor update'
   assert.match(close[0].text, /paper|building|defend/i);
 });
 
+test('Ian Hi is opening glue plus one Lab Access brief, without repeating work_alt', () => {
+  const s = newSession();
+  const r = say(s, 'ian', P('social', 'open'), 'Hi');
+  assert.equal(r.lines.length, 2);
+  assert.equal(r.lines[0].move?.type, 'glue');
+  assert.equal(r.lines[0].move?.slot, 'opening');
+  assert.equal(r.lines[1].move?.type, 'brief');
+  const npcText = s.conversations.filter(c => c.role === 'npc').map(c => c.text);
+  assert.equal(npcText.length, 2);
+  assert.ok(!npcText.some(t => /Lab Access is live/i.test(t)) || npcText.filter(t => /Lab Access is live/i.test(t)).length === 1);
+  assert.ok(!npcText.some(t => /receiving you|walk the building for how it runs/i.test(t)));
+  const again = say(s, 'ian', P('social', 'open'), 'Hi again');
+  assert.equal(again.lines.length, 1);
+  assert.equal(again.lines[0].move?.type, 'glue');
+  assert.equal(again.lines[0].move?.slot, 'mid');
+});
+
 test('Jun work lines stay first person; texture facts are not read aloud verbatim', () => {
   const s = startedSession();
   walk(s, 'model');
   const r = say(s, 'jun', P('social', 'open'), 'Hi.');
+  assert.equal(r.lines.length, 1);
   for (const l of r.lines) {
     assert.doesNotMatch(l.text, /^Jun spent/i);
     assert.doesNotMatch(l.text, /\bJun spent the morning\b/);

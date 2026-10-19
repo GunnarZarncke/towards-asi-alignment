@@ -19,11 +19,11 @@ Prompts: paraphrase only (no prompt id).
 - None.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/app.js`
-- `game/last-safety-autocomplete-prototype/spec/graphics-ui.md`
+- `game/the-last-safety-review/public/app.js`
+- `game/the-last-safety-review/spec/graphics-ui.md`
 
 ## Verification
-- `npm test` in `game/last-safety-autocomplete-prototype` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
+- `npm test` in `game/the-last-safety-review` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
 
 ## Commits
 - `31213aba9` Last Safety: stagger NPC transcript lines and keep composer focus.

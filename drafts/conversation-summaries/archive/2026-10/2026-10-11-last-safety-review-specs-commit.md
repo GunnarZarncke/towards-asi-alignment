@@ -8,7 +8,7 @@ Gunnar asked for end of session and to commit the Last Safety Review specs.
 Prompts: none resolvable (paraphrase only).
 
 ## Done
-- housekeeping: Git commit of `game/last-safety-autocomplete-prototype/spec/`, `PLAN.md`, cast rename in `lib/game.mjs` and `fixtures/terminal-session.json`, and this session’s conversation logs plus HANDOFF/INDEX.
+- housekeeping: Git commit of `game/the-last-safety-review/spec/`, `PLAN.md`, cast rename in `lib/game.mjs` and `fixtures/terminal-session.json`, and this session’s conversation logs plus HANDOFF/INDEX.
 
 ## Decisions
 - Consolidated `last-safety-review-game.md` was accidentally deleted locally; restored and not part of the spec commit.
@@ -18,7 +18,7 @@ Prompts: none resolvable (paraphrase only).
 - Wire NPC structure/person lines into `lib/llm.mjs`.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/`
+- `game/the-last-safety-review/spec/`
 
 ## Commits
 - `c0a0ed19c` Last Safety Review: ship spec decisions for world, incident, and UX.

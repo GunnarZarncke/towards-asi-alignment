@@ -18,7 +18,7 @@ Prompts: (paraphrase-only; no prompt id in this session)
 - Elena dialogue loop: optional parse row for `ask_why` → `matcher_revisions_kept`; memo header now answers “who kept it” on read.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/content/documents/staffing-memo.md`
+- `game/the-last-safety-review/content/documents/staffing-memo.md`
 
 ## Commits
 - `fdc11f3e3` Last Safety: sparse revision headers on key player documents.

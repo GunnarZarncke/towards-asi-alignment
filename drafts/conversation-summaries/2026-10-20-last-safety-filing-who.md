@@ -24,12 +24,12 @@ Prompts: (paraphrase-only — no prompt id in transcript export)
 - Uncommitted outside lane: Ch. 1 claim-extract, conversation-summary archive moves, field-news drafts.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/game.mjs` — `commit`, `dmSend` commit branch
-- `game/last-safety-autocomplete-prototype/public/grammar.js` — `FILING_OPENINGS`
-- `game/last-safety-autocomplete-prototype/spec/grammar.md` — Commit + Who sections
+- `game/the-last-safety-review/lib/game.mjs` — `commit`, `dmSend` commit branch
+- `game/the-last-safety-review/public/grammar.js` — `FILING_OPENINGS`
+- `game/the-last-safety-review/spec/grammar.md` — Commit + Who sections
 
 ## Commits
-- `ba1b85668` Last Safety: Ian-addressed commit, sign copy, and Who roster withhold.
+- `fe0ee83e5` Last Safety: Ian-addressed commit, sign copy, and Who roster withhold.
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` — 147 pass, 0 fail, 1 skip
+- `cd game/the-last-safety-review && npm test` — 147 pass, 0 fail, 1 skip

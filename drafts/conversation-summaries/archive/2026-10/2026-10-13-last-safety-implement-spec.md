@@ -4,7 +4,7 @@ kind: new-work
 uptake: gate
 
 ## Trigger
-Gunnar asked to implement `game/last-safety-autocomplete-prototype/spec/`. Scope agreed in-session: Gate 1 (boundary-narrow tables, five strategies, no-dead-end and no-leak checks, per-NPC knowledge, policies, and goals), the contract target fields, the full NPC model for the eight cast plus NORA on the handset, the O-19 ranker, handset host tools, UI wiring, tests, and the playtest harness. Lean (Gate 6) out of scope.
+Gunnar asked to implement `game/the-last-safety-review/spec/`. Scope agreed in-session: Gate 1 (boundary-narrow tables, five strategies, no-dead-end and no-leak checks, per-NPC knowledge, policies, and goals), the contract target fields, the full NPC model for the eight cast plus NORA on the handset, the O-19 ranker, handset host tools, UI wiring, tests, and the playtest harness. Lean (Gate 6) out of scope.
 Prompts: paraphrase-only (no prompt id resolved)
 
 ## Done
@@ -17,7 +17,7 @@ Prompts: paraphrase-only (no prompt id resolved)
 - content: Playtest harness `scripts/playtest.mjs` (smoke and LLM players, measures and stops from `spec/playtest.md`, progress lines, required thresholds), seven personas in `playtest/personas/`, `playtest/runs/` gitignored.
 - bookkeeping: Specs brought to the shipped shape: `contract.md` (target markers dropped; `ending`, `addressee`, routes, `accessTree`, `pendingAccess`, `discoveredAt` on learned facts, respond shape, phone embed messages), `grammar.md`, `ranking.md`, `npcs.md` (implemented predicate forms incl. `since=`; scoring rules), `testing.md`, `playtest.md`, `documents.md`, `terminal.md`, `meta.md` (spec conflicts); `PLAN.md`; game `README.md` (stale "three NPCs", "out of scope", "no live model request" removed).
 
-Verification (commands run from `game/last-safety-autocomplete-prototype/`):
+Verification (commands run from `game/the-last-safety-review/`):
 - `npm test` → `ℹ tests 74` / `ℹ pass 74` / `ℹ fail 0`.
 - `npm run test:engine` → `ℹ tests 21` / `ℹ pass 21` / `ℹ fail 0`.
 - Browser (DEMO_MODE): Act I with Ian → Lab Access live, clock `09:02 · fuel 249`; handset `file.read` through `/api/tool` advanced the clock to 09:04; think in the empty commons opened the bubble (`09:06 · fuel 247`); after a server-side reset, reload restored the local save ("Save loaded.", back to 09:06); the review assembled all six staff with "Tell Ian" / "Show Ian" first. The ending panel itself was not clicked through (the browser auto-review blocked the Send click); the ending was checked over HTTP with curl: second commit returned `"arc": "inconclusive"`.
@@ -38,10 +38,10 @@ Verification (commands run from `game/last-safety-autocomplete-prototype/`):
 - Committed with the text-console session in `0be3cd7e8`.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/` · `content/npcs/` · `lib/game.mjs` · `server.mjs`
-- `game/last-safety-autocomplete-prototype/public/grammar.js` · `public/app.js` · `public/terminal/phone.js`
-- `game/last-safety-autocomplete-prototype/scripts/playtest.mjs` · `playtest/personas/`
-- `game/last-safety-autocomplete-prototype/spec/contract.md` · `spec/meta.md`
+- `game/the-last-safety-review/lib/world/` · `content/npcs/` · `lib/game.mjs` · `server.mjs`
+- `game/the-last-safety-review/public/grammar.js` · `public/app.js` · `public/terminal/phone.js`
+- `game/the-last-safety-review/scripts/playtest.mjs` · `playtest/personas/`
+- `game/the-last-safety-review/spec/contract.md` · `spec/meta.md`
 
 ## Commits
 - `0be3cd7e8` — Last Safety prototype: implement spec, text console, overlay UI.

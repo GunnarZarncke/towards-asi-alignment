@@ -18,7 +18,7 @@ Prompts: none resolvable (paraphrase only).
 - Review the samples, especially Jun’s trailing question and Justine’s double sorry.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/world.md`
+- `game/the-last-safety-review/spec/world.md`
 
 ## Commits
 - none

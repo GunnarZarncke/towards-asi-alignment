@@ -21,9 +21,9 @@ Prompts: (this Cursor turn)
 - Session `scenario` pack drives render.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/content/documents/sec-arch-04.md`
-- `game/last-safety-autocomplete-prototype/spec/documents.md`
-- `game/last-safety-autocomplete-prototype/lib/documents.mjs`
+- `game/the-last-safety-review/content/documents/sec-arch-04.md`
+- `game/the-last-safety-review/spec/documents.md`
+- `game/the-last-safety-review/lib/documents.mjs`
 
 ## Commits
 - `546bc3960` Add Last Safety SEC-ARCH-04 document pipeline and Lab Access handset rules.

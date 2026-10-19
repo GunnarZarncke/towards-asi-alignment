@@ -4,7 +4,7 @@ kind: new-work
 uptake: local
 
 ## Trigger
-Mark `game/last-safety-autocomplete-prototype/drafts/security-concept.md` so packs can conditionally add omitted material; first served version misses the boundary-narrow point; Lean must not treat reading the file as knowledge.
+Mark `game/the-last-safety-review/drafts/security-concept.md` so packs can conditionally add omitted material; first served version misses the boundary-narrow point; Lean must not treat reading the file as knowledge.
 Prompts: (this Cursor turn; no telemetry prompt id)
 
 ## Done
@@ -24,8 +24,8 @@ Prompts: (this Cursor turn; no telemetry prompt id)
 - Wire combined `npm start` overlay to `labAccessActive`; Act I Ian confirmation storylet that sets it (prototype session still starts true).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/drafts/security-concept.md`
-- `game/last-safety-autocomplete-prototype/spec/incident.md`
+- `game/the-last-safety-review/drafts/security-concept.md`
+- `game/the-last-safety-review/spec/incident.md`
 
 ## Commits
 - none

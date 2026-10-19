@@ -22,9 +22,9 @@ Prompts: paraphrase-only (no prompt id resolved)
 - O-22 concealment lists, O-09 numbers, O-45, O-47 unchanged.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/npcs.md`
-- `game/last-safety-autocomplete-prototype/spec/incident.md`
-- `game/last-safety-autocomplete-prototype/spec/meta.md`
+- `game/the-last-safety-review/spec/npcs.md`
+- `game/the-last-safety-review/spec/incident.md`
+- `game/the-last-safety-review/spec/meta.md`
 
 ## Commits
 - none

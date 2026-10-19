@@ -26,12 +26,12 @@ Prompts: paraphrase only (no prompt id in transcript)
 - Optional: composer UI shows `parse.clauses` while typing (not done).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/tests/llm/parse-story.test.mjs`
-- `game/last-safety-autocomplete-prototype/tests/llm/parse-probes.test.mjs`
-- `game/last-safety-autocomplete-prototype/lib/llm.mjs`, `lib/grammar.mjs`, `lib/game.mjs`
+- `game/the-last-safety-review/tests/llm/parse-story.test.mjs`
+- `game/the-last-safety-review/tests/llm/parse-probes.test.mjs`
+- `game/the-last-safety-review/lib/llm.mjs`, `lib/grammar.mjs`, `lib/game.mjs`
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` — pass (LLM files excluded from default glob).
+- `cd game/the-last-safety-review && npm test` — pass (LLM files excluded from default glob).
 - `npm run test:llm` — 22 pass, 0 fail (requires `OPENAI_API_KEY`, `DEMO_MODE≠1`).
 
 ## Commits

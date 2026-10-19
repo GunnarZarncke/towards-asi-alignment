@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-20 | **Last Safety folder + social replies** — `game/the-last-safety-review/` rename; one-line Hi/social; Ian Lab Access brief deduped. | [2026-10-20-last-safety-folder-social-replies.md](2026-10-20-last-safety-folder-social-replies.md) |
 | 2026-10-20 | **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who fixes, LLM sanitize path, offline + live parse tests. | [2026-10-20-last-safety-grammar-parse-robustness.md](2026-10-20-last-safety-grammar-parse-robustness.md) |
 | 2026-10-20 | **Last Safety LLM parse tests** — `test:llm` story + probe fixtures; compound clauses; findings/and/or probes. | [2026-10-20-last-safety-llm-parse-tests.md](2026-10-20-last-safety-llm-parse-tests.md) |
 | 2026-10-20 | **Last Safety filing and Who** — Ian-addressed commit (room or DM); sign copy; Who roster withhold. | [2026-10-20-last-safety-filing-who.md](2026-10-20-last-safety-filing-who.md) |

@@ -19,11 +19,11 @@ Add a pre-game start screen that drops the player into the scenario: task, short
 - Optional: one line in `spec/graphics-ui.md` if the intro becomes canonical UX.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/index.html`, `app.js`, `style.css`
-- `game/last-safety-autocomplete-prototype/spec/world.md` (Act I briefing)
+- `game/the-last-safety-review/public/index.html`, `app.js`, `style.css`
+- `game/the-last-safety-review/spec/world.md` (Act I briefing)
 
 ## Verification
-- `node --check game/last-safety-autocomplete-prototype/public/app.js` → ok
+- `node --check game/the-last-safety-review/public/app.js` → ok
 
 ## Commits
 - `026138051` Last Safety: start screen before first play.

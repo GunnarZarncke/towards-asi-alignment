@@ -27,13 +27,13 @@ Prompts: paraphrase only (no prompt id)
 - Optional explicit commons waypoints if design wants every arrival to visibly pass commons even when pathing already routes through it.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/room-path.mjs`
-- `game/last-safety-autocomplete-prototype/lib/world/npcs.mjs`
-- `game/last-safety-autocomplete-prototype/public/render/three-scene.mjs`
-- `game/last-safety-autocomplete-prototype/lib/text/console.mjs` (movement lines unchanged)
+- `game/the-last-safety-review/lib/world/room-path.mjs`
+- `game/the-last-safety-review/lib/world/npcs.mjs`
+- `game/the-last-safety-review/public/render/three-scene.mjs`
+- `game/the-last-safety-review/lib/text/console.mjs` (movement lines unchanged)
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` → `ℹ pass 143`, `ℹ fail 0`
+- `cd game/the-last-safety-review && npm test` → `ℹ pass 143`, `ℹ fail 0`
 
 ## Commits
 - (this session)

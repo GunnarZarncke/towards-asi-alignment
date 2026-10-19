@@ -23,9 +23,9 @@ Prompts: (session continuation — prior thread on access/doors; handset UI foll
 - Optional: escort/host-walk narrative when player tries north spine at clearance 1; evaluation-only door set on Lab Access alone (SEC-ARCH assigned evaluator) if playtests feel too gated before Ian.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/visitor-clearance.mjs`
-- `game/last-safety-autocomplete-prototype/lib/world/access-gates.mjs`
-- `game/last-safety-autocomplete-prototype/public/terminal/phone.js`
+- `game/the-last-safety-review/lib/world/visitor-clearance.mjs`
+- `game/the-last-safety-review/lib/world/access-gates.mjs`
+- `game/the-last-safety-review/public/terminal/phone.js`
 
 ## Commits
 - `9ab6fe59d` Last Safety: gate API access, progressive door clearance, handset UX.

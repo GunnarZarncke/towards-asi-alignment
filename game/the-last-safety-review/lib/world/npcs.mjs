@@ -732,6 +732,23 @@ function openAskReferMove(s, id) {
   return null;
 }
 
+export function isSmallTalk(parse) {
+  return parse?.kind === 'social' || parse?.kind === 'unintelligible';
+}
+
+/** One speech move for Hi / small talk: opening glue, else mid glue, else agenda work. */
+export function socialSpeechMove(s, id, parse, { firstHere, channel = 'person' } = {}) {
+  if (firstHere && channel === 'person') {
+    const g = glueMove(s, id, 'opening', parse);
+    if (g) return g;
+  }
+  if (!firstHere && channel === 'person') {
+    const g = midGlueMove(s, id, parse);
+    if (g) return g;
+  }
+  return workMove(s, id, null);
+}
+
 function workMove(s, id, entityId) {
   const n = s.npcs[id];
   const doms = entityDomains(entityId);
@@ -951,6 +968,9 @@ function initiativeGoalKey(m) {
 }
 
 export function npcTurn(s, id, parse, { shownDoc = null, visitKey = 'room', skipFacts = new Set(), utterance = '' } = {}) {
+  if (isSmallTalk(parse)) {
+    return { candidates: [], response: null, passed: [], forced: false, initiative: null, initiativeForced: false };
+  }
   const ranked = rankMoves(s, responseCandidates(s, id, parse, { shownDoc, visitKey, utterance }).filter(m => !(m.fact && skipFacts.has(m.fact))));
   const safe = ranked.length ? ranked : [{ ...workMove(s, id, null), score: 0 }];
   const { forced, passed } = forceRule(safe);

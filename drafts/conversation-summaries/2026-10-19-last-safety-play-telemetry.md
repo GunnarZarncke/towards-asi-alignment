@@ -23,12 +23,12 @@ Prompts: (paraphrase-only — no telemetry id in thread)
 - Add `telemetry/` to game `.gitignore` if operators keep JSONL on disk in deploy.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/telemetry.mjs`
-- `game/last-safety-autocomplete-prototype/public/telemetry.mjs`
-- `game/last-safety-autocomplete-prototype/server.mjs`
+- `game/the-last-safety-review/lib/telemetry.mjs`
+- `game/the-last-safety-review/public/telemetry.mjs`
+- `game/the-last-safety-review/server.mjs`
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && node --test tests/telemetry.test.mjs` → `ℹ pass 5` / `ℹ fail 0`.
+- `cd game/the-last-safety-review && node --test tests/telemetry.test.mjs` → `ℹ pass 5` / `ℹ fail 0`.
 
 ## Commits
 - `ce16dd6f5` Last Safety: play telemetry aligned with companion site analytics.

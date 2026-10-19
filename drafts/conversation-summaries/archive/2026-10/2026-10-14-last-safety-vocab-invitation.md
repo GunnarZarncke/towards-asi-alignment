@@ -12,7 +12,7 @@ Prompts: paraphrase-only (no prompt id resolved)
 - content: Confirming Lab Access hears `auditor_brief` (shutdown test, Leila, safety paper, Justine, Lab Access). Goal `ian.brief_auditor`. The handed calendar introduces Ian, Leila, Amara, and Daniel. Other ids wait for a fact, a heard line, or a person in the room.
 - bookkeeping: `spec/engine.md` (Player vocabulary), `spec/world.md`, `spec/grammar.md`, `spec/ranking.md`, `spec/npcs.md`, `spec/contract.md`.
 
-Verification: `npm test` in `game/last-safety-autocomplete-prototype` → `ℹ tests 84` / `ℹ pass 84` / `ℹ fail 0`.
+Verification: `npm test` in `game/the-last-safety-review` → `ℹ tests 84` / `ℹ pass 84` / `ℹ fail 0`.
 
 ## Decisions
 - The shutdown test is named in Ian’s briefing, not on the invitation, so it is not a completion before he speaks.

@@ -27,9 +27,9 @@ Prompts: none resolvable (paraphrase only).
 - Fill incident tables for boundary-narrow only, then the headless four-strategy check.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/incident.md`
-- `game/last-safety-autocomplete-prototype/spec/meta.md`
-- `game/last-safety-autocomplete-prototype/spec/world.md`
+- `game/the-last-safety-review/spec/incident.md`
+- `game/the-last-safety-review/spec/meta.md`
+- `game/the-last-safety-review/spec/world.md`
 
 ## Commits
 - none

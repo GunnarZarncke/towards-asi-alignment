@@ -20,12 +20,12 @@ Prompts: (paraphrase — no prompt ids in export)
 - Playtest photo framing with pan/zoom on `#roomMount` vs canvas crop alignment if reports drift.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/app.js`
-- `game/last-safety-autocomplete-prototype/public/render/three-scene.mjs`
-- `game/last-safety-autocomplete-prototype/lib/photo-data.mjs`
+- `game/the-last-safety-review/public/app.js`
+- `game/the-last-safety-review/public/render/three-scene.mjs`
+- `game/the-last-safety-review/lib/photo-data.mjs`
 
 ## Commits
 - `6d9bbb77b` Last Safety: reliable room photos and transcript collapse UX.
 
 ## Verification
-- `npm test` in `game/last-safety-autocomplete-prototype`: 99 pass.
+- `npm test` in `game/the-last-safety-review`: 99 pass.

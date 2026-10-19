@@ -20,12 +20,12 @@ Prompts: (paraphrase — prior thread summarized)
 - Manual playtest: notification badges after Files-only open, photo retake if an old capture was truncated under the previous 200KB cap.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/terminal/phone.js`
-- `game/last-safety-autocomplete-prototype/lib/world/terminal-host.mjs`
-- `game/last-safety-autocomplete-prototype/public/app.js`
+- `game/the-last-safety-review/public/terminal/phone.js`
+- `game/the-last-safety-review/lib/world/terminal-host.mjs`
+- `game/the-last-safety-review/public/app.js`
 
 ## Commits
 - `892afd163` Last Safety: room photo viewer, notice clearing, and handset HUD polish.
 
 ## Verification
-- `npm test` in `game/last-safety-autocomplete-prototype`: 97 pass.
+- `npm test` in `game/the-last-safety-review`: 97 pass.

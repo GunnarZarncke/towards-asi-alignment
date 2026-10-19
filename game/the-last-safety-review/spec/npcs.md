@@ -184,6 +184,8 @@ Fact moves are dry because they are generated from facts. **Glue** is extra non-
 
 `CONFIG.GLUE` (`lib/world/config.mjs`) turns slots on or off: `enabled`, `opening`, `closing`, `mid`, `defaultMidRate`. Mid rolls are a hash of scenario, npc, sentence count, and fuel, so replay matches. The model may rephrase a glue line in voice; it still may not add a fact.
 
+**`kind: social` / `unintelligible`.** No engine response, initiative, or stacked glue+work. One line per turn: `opening` glue on first in-room talk, else `mid` glue when it rolls, else agenda `work`. Ian’s first Welcome line also appends the single Lab Access briefing (same text as `confirmLabAccess`; not a second work line).
+
 ### Choosing a move
 
 1. Build the legal response moves for the parse. If the parse's referent is a fact the NPC holds, the policy decides between `answer`, `believe`, `withhold`, and `deflect`. If the NPC does not hold it, `refer`. If the parse is a request, the matching `act`, `share`, or `request`, each gated by authority and goals. If nothing else applies and the parse is an **open ask** (no grounded entity), one **hint** move: goal `question` first (same gates as initiative, `hintOnly` — no `pendingQuestion`), else one **volunteer** fact as a `hint_ask` (fact text withheld from phrasing), else a volunteer **share** with hint wording, else **refer** from agenda or referral edges; then `work` if still empty. Hints use the same initiative cooldown keys. Otherwise `work`, built from texture facts in the parse's domain or, failing that, the current agenda item.

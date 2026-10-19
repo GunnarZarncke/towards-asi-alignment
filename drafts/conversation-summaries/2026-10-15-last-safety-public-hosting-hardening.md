@@ -24,8 +24,8 @@ Prompts: paraphrase only (no prompt id). User asked for a safety review of the g
 - CSP not checked with WebGL on (headless Chrome had no WebGL).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/game.mjs`, `lib/llm.mjs`, `server.mjs`, `lib/world/config.mjs`, `lib/world/terminal-host.mjs`, `lib/photo-data.mjs`
-- `game/last-safety-autocomplete-prototype/tests/hosting.test.mjs`
+- `game/the-last-safety-review/lib/game.mjs`, `lib/llm.mjs`, `server.mjs`, `lib/world/config.mjs`, `lib/world/terminal-host.mjs`, `lib/photo-data.mjs`
+- `game/the-last-safety-review/tests/hosting.test.mjs`
 
 ## Verification
 - `npm test` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.

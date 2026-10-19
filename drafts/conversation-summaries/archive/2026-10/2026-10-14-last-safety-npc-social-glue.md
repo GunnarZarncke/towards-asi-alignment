@@ -23,9 +23,9 @@ Prompts: (none recorded)
 - Tune `midRate` and lines after live play. Live phrasing of glue still needs a key (`--demo` uses templates).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/npcs.md`
-- `game/last-safety-autocomplete-prototype/lib/world/glue.mjs`
-- `game/last-safety-autocomplete-prototype/content/npcs/`
+- `game/the-last-safety-review/spec/npcs.md`
+- `game/the-last-safety-review/lib/world/glue.mjs`
+- `game/the-last-safety-review/content/npcs/`
 
 ## Commits
 - `7a6810216` Last Safety: text console polish, invitation vocab, NPC social glue.

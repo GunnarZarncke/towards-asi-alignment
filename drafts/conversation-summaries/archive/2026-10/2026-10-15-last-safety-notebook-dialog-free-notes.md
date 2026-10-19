@@ -23,11 +23,11 @@ Remove the redundant room Notebook drawer (doors, records, knowledge strip dupli
 - Optional: document notebook dialog in `graphics-ui.md` with screenshot-level detail if playtesters miss it.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/app.js` — `trackNewLearnedFacts`, dialog handlers
-- `game/last-safety-autocomplete-prototype/lib/world/terminal-host.mjs` — fuel on `file.write`
+- `game/the-last-safety-review/public/app.js` — `trackNewLearnedFacts`, dialog handlers
+- `game/the-last-safety-review/lib/world/terminal-host.mjs` — fuel on `file.write`
 
 ## Commits
 - `00b71df9c` Last Safety: notebook dialog for new facts and free note saves.
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` — 94 pass.
+- `cd game/the-last-safety-review && npm test` — 94 pass.

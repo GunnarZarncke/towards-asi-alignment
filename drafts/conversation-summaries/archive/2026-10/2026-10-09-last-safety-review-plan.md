@@ -8,7 +8,7 @@ User asked for a development plan without the design detail, and for the consoli
 Prompts: paraphrase (no prompt id)
 
 ## Done
-- content: `game/last-safety-autocomplete-prototype/PLAN.md` — lanes, file ownership, solo versus combined checks, gates.
+- content: `game/the-last-safety-review/PLAN.md` — lanes, file ownership, solo versus combined checks, gates.
 - content: `spec/terminal.md` — player computer as an isolate UI (files, delayed messages including NORA, access requests). Pipeline and overseer handles excluded.
 - content: `spec/incident.md` — shutdown incident as a causal model (hypotheses, facts, interventions) that gates dialogue and rooms. Epistemic success and control success stay separate. Disclosure is an action. NORA-channel completions may omit evidence. Transfer study marked later.
 - bookkeeping: PLAN lanes, contract `TerminalState`, meta O-43 and O-44, short pointers in engine, graphics, and world specs.
@@ -27,8 +27,8 @@ Prompts: paraphrase (no prompt id)
 - Phone overlay UI (homescreen, four apps, viewers) specified; not built.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/PLAN.md`
-- `game/last-safety-autocomplete-prototype/spec/README.md`
+- `game/the-last-safety-review/PLAN.md`
+- `game/the-last-safety-review/spec/README.md`
 
 ## Commits
 - none

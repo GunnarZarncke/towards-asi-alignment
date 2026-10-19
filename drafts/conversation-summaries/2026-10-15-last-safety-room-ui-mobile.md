@@ -14,7 +14,7 @@ Prompts: (paraphrase-only — no prompt ids in transcript export)
 - content: **Handset** — clearer activation notifications (human titles), New stack + app tile badges; embed **Close lab**, ×, swipe-down, Esc → room overlay.
 - content: **Mobile room** — transcript history/suggestions/NPC chips hidden until composer focus; collapse on room/HUD taps; phone overlay z-index 50.
 - housekeeping: Spec touches (`graphics-ui.md`, `grammar.md`, `terminal.md`, `text-console.md`, `contract.md`).
-- bookkeeping: `npm test` in `game/last-safety-autocomplete-prototype` — 93 pass.
+- bookkeeping: `npm test` in `game/the-last-safety-review` — 93 pass.
 
 ## Decisions
 - Narrow layout uses `matchMedia('(max-width: 720px)')` aligned with existing CSS breakpoints.
@@ -25,9 +25,9 @@ Prompts: (paraphrase-only — no prompt ids in transcript export)
 - Optional: note mobile transcript/phone dismiss in `spec/graphics-ui.md` / `spec/terminal.md` if normative.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/app.js`, `style.css`, `index.html`
-- `game/last-safety-autocomplete-prototype/public/terminal/phone.js`, `phone.css`
-- `game/last-safety-autocomplete-prototype/scripts/bench-completions.mjs`
+- `game/the-last-safety-review/public/app.js`, `style.css`, `index.html`
+- `game/the-last-safety-review/public/terminal/phone.js`, `phone.css`
+- `game/the-last-safety-review/scripts/bench-completions.mjs`
 
 ## Commits
 - `c0c0e9151` Last Safety: room transcript UX, mobile handset dismiss, and completion paths.

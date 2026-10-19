@@ -24,11 +24,11 @@ Prompts: paraphrase only (no prompt id in transcript)
 - Optional: composer UI for multi-clause preview while typing.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/llm.mjs`, `lib/game.mjs`, `public/grammar.js`
-- `game/last-safety-autocomplete-prototype/tests/llm/`, `tests/parse-sequence.test.mjs`
+- `game/the-last-safety-review/lib/llm.mjs`, `lib/game.mjs`, `public/grammar.js`
+- `game/the-last-safety-review/tests/llm/`, `tests/parse-sequence.test.mjs`
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && DEMO_MODE=1 npm test` — 155 pass, 1 skipped.
+- `cd game/the-last-safety-review && DEMO_MODE=1 npm test` — 155 pass, 1 skipped.
 
 ## Commits
 - `5fdf7595c` — Last Safety: harden grammar parsing and LLM multi-clause handling.

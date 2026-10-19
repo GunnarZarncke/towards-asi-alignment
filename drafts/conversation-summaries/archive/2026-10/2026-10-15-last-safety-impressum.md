@@ -22,7 +22,7 @@ Prompts: (paraphrase-only — no telemetry id in thread)
 - Align site `impressum.astro` TMG → DDG wording when editing legal pages.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/index.html`
+- `game/the-last-safety-review/public/index.html`
 - `site/src/pages/impressum.astro` (full TSA imprint reference)
 
 ## Commits

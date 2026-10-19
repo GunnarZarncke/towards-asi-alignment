@@ -20,11 +20,11 @@ Prompts: paraphrase only (no prompt id).
 - None for this fix.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/render/three-scene.mjs`
-- `game/last-safety-autocomplete-prototype/public/app.js`
+- `game/the-last-safety-review/public/render/three-scene.mjs`
+- `game/the-last-safety-review/public/app.js`
 
 ## Verification
-- `npm test` in `game/last-safety-autocomplete-prototype` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
+- `npm test` in `game/the-last-safety-review` — `ℹ tests 107` / `ℹ pass 107` / `ℹ fail 0`.
 
 ## Commits
 - `d96576a27` Last Safety: public-hosting hardening and NPC click addressee.

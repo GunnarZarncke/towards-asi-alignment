@@ -13,7 +13,7 @@ Prompts: paraphrase-only (no prompt id resolved)
 - content: Contract `actors.presence` and `contacts.joinable`. Grammar `request`+`join`. Terminal Contacts add-by-engine and Ask to join. Graphics hologram material; O-23 updated.
 - content: SEC-ARCH-11 asset row and wiki glossary **Virtual projector**. Glossary test asserts the heading.
 - bookkeeping: Engine, ranking, testing, documents, spec README pointers.
-- Check: `npm test` in `game/last-safety-autocomplete-prototype` → `ℹ pass 33` / `ℹ fail 0`.
+- Check: `npm test` in `game/the-last-safety-review` → `ℹ pass 33` / `ℹ fail 0`.
 
 ## Decisions
 - One projector, Evaluation only. Asking to join from another room still places her there; she does not follow the player through doors.
@@ -24,9 +24,9 @@ Prompts: paraphrase-only (no prompt id resolved)
 - Engine: `presence` on session actors; enumerate `go` illegal for hologram.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/world.md`
-- `game/last-safety-autocomplete-prototype/spec/npcs.md`
-- `game/last-safety-autocomplete-prototype/spec/contract.md`
+- `game/the-last-safety-review/spec/world.md`
+- `game/the-last-safety-review/spec/npcs.md`
+- `game/the-last-safety-review/spec/contract.md`
 
 ## Commits
 - `63e9a3657` Specify Last Safety testing layers and Amara as an Evaluation hologram.

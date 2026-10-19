@@ -8,7 +8,7 @@ Gunnar chose option A (NPC goals over the knowledge graph instead of many storyl
 Prompts: paraphrase-only (no prompt id resolved)
 
 ## Done
-- content: New `game/last-safety-autocomplete-prototype/spec/npcs.md`. It covers belief records, disclosure policies (`volunteer` / `answer` / `conditional` / `conceal`), referral edges from the ranking domains, and goals (role, day, plot; salience, cooldown). It defines the move set and how a move is chosen: the engine ranks, the model phrases one of the top three; one response plus at most one initiative move. It also has interventions, initiative questions (why, how built, frequency, what the answer does, examples), agendas plus background prose for all eight humans, a note on NORA, the arc without a spine, the director, and invariants.
+- content: New `game/the-last-safety-review/spec/npcs.md`. It covers belief records, disclosure policies (`volunteer` / `answer` / `conditional` / `conceal`), referral edges from the ranking domains, and goals (role, day, plot; salience, cooldown). It defines the move set and how a move is chosen: the engine ranks, the model phrases one of the top three; one response plus at most one initiative move. It also has interventions, initiative questions (why, how built, frequency, what the answer does, examples), agendas plus background prose for all eight humans, a note on NORA, the arc without a spine, the director, and invariants.
 - content: New `spec/playtest.md`. Scripted and LLM tiers, what the player agent sees, personas including a held-out set, measures, frozen thresholds with stops, and progress logging.
 - content: `spec/incident.md`. The storylet drafts are replaced by the Leila, job 017, and Elena sections in move and policy terms. A fifth headless strategy was added: answer every NPC question.
 - content: `spec/engine.md`. Layers and session fields, the move-generation target, a new section "NPC moves and interventions" replacing "Storylets", the `freeReply` inputs, and the invariants.
@@ -32,9 +32,9 @@ Prompts: paraphrase-only (no prompt id resolved)
 - Next implementation step: Gate 1, with `content/npcs/{pavel,leila,elena}.yml`, move generation in `lib/world/`, and the enumerated no-dead-end and no-leak tests.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/npcs.md`
-- `game/last-safety-autocomplete-prototype/spec/playtest.md`
-- `game/last-safety-autocomplete-prototype/spec/incident.md` (NPC moves for this incident)
+- `game/the-last-safety-review/spec/npcs.md`
+- `game/the-last-safety-review/spec/playtest.md`
+- `game/the-last-safety-review/spec/incident.md` (NPC moves for this incident)
 
 ## Commits
 - `60f86ac3f` Add Last Safety goal-driven NPC and headless playtest specs.

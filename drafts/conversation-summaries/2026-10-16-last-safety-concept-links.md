@@ -25,9 +25,9 @@ Per-fact optional TSA companion card links (O-41): phone setting, room footer li
 - Run `node scripts/compile-concepts.mjs` after any `conceptSlug` or TRIGGERS edit.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/facts.mjs`
-- `game/last-safety-autocomplete-prototype/scripts/compile-concepts.mjs`
-- `game/last-safety-autocomplete-prototype/public/app.js`, `public/terminal/phone.js`
+- `game/the-last-safety-review/lib/world/facts.mjs`
+- `game/the-last-safety-review/scripts/compile-concepts.mjs`
+- `game/the-last-safety-review/public/app.js`, `public/terminal/phone.js`
 
 ## Verification
 - `node scripts/compile-concepts.mjs` → 29 triggers

@@ -14,7 +14,7 @@ Prompts: (paraphrase-only — no resolvable prompt ids in telemetry)
 - content: `dmSend` async with `phraseLines` before queue (demo/replay/API-fail safe); server/text console await DM tool; async `importSession` / `loadSaveFile`.
 - content: `freeReply` prompt — same facts, natural voice (not “phrase exactly that”).
 - housekeeping: Tests updated for DM handset visibility vs stored text; `dm()` helper uses `tool: 'dm.send'`; fixed duplicate event log on DM.
-- bookkeeping: Verification — `cd game/last-safety-autocomplete-prototype && DEMO_MODE=1 npm test` → 107 pass, 0 fail.
+- bookkeeping: Verification — `cd game/the-last-safety-review && DEMO_MODE=1 npm test` → 107 pass, 0 fail.
 
 ## Decisions
 - DM phrasing runs at send time (queued text is final); room `conversations` are not updated for DM (handset release unchanged for transcript).
@@ -26,10 +26,10 @@ Prompts: (paraphrase-only — no resolvable prompt ids in telemetry)
 - Commit or revert the unstaged transcript animation in `public/app.js` when that lane is ready.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/game.mjs` — `dmSend`, meeting Ian lines
-- `game/last-safety-autocomplete-prototype/lib/world/npcs.mjs` — `textureDialogue`, refer, work
-- `game/last-safety-autocomplete-prototype/content/npcs/*.yml`
-- `game/last-safety-autocomplete-prototype/lib/llm.mjs` — `freeReply`
+- `game/the-last-safety-review/lib/game.mjs` — `dmSend`, meeting Ian lines
+- `game/the-last-safety-review/lib/world/npcs.mjs` — `textureDialogue`, refer, work
+- `game/the-last-safety-review/content/npcs/*.yml`
+- `game/the-last-safety-review/lib/llm.mjs` — `freeReply`
 
 ## Commits
 - `72c6c4ab4` Last Safety: richer NPC templates, DM phrasing, softer composition.

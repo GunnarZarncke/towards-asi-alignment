@@ -19,13 +19,13 @@ Prompts: paraphrase only (no prompt id)
 - Playtest Elena link phrasing in UI; optional ranking nudge toward staffing↔independence after memo read.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/facts.mjs`
-- `game/last-safety-autocomplete-prototype/lib/world/packs/boundary-narrow.mjs`
-- `game/last-safety-autocomplete-prototype/lib/world/npcs.mjs` (`staffing_review_linked`)
-- `game/last-safety-autocomplete-prototype/spec/incident.md` (Elena B plot)
+- `game/the-last-safety-review/lib/world/facts.mjs`
+- `game/the-last-safety-review/lib/world/packs/boundary-narrow.mjs`
+- `game/the-last-safety-review/lib/world/npcs.mjs` (`staffing_review_linked`)
+- `game/the-last-safety-review/spec/incident.md` (Elena B plot)
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` → `ℹ pass 145`, `ℹ fail 0`
+- `cd game/the-last-safety-review && npm test` → `ℹ pass 145`, `ℹ fail 0`
 - `npm run test:endings` → `ℹ pass 8`
 
 ## Commits

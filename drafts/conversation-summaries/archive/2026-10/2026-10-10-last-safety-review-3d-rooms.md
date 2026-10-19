@@ -31,8 +31,8 @@ Verification: `npm test` → `ℹ pass 6` / `ℹ fail 0`. Browser check on `dev:
 - Terminal hotspot only posts a notice until the terminal lane ships `/api/terminal`.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/render/`
-- `game/last-safety-autocomplete-prototype/spec/graphics-ui.md`
+- `game/the-last-safety-review/public/render/`
+- `game/the-last-safety-review/spec/graphics-ui.md`
 
 ## Commits
 - `ef54bc7bc` Add Last Safety Review prototype with live Three.js rooms.

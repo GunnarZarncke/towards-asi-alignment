@@ -4,7 +4,7 @@ kind: new-work
 uptake: status
 
 ## Trigger
-Gunnar supplied an answer to O-19 in `game/last-safety-autocomplete-prototype/drafts/autocomplete.md` and asked for a review and a spec that fits the current architecture.
+Gunnar supplied an answer to O-19 in `game/the-last-safety-review/drafts/autocomplete.md` and asked for a review and a spec that fits the current architecture.
 Prompts: none resolvable (paraphrase only).
 
 ## Done
@@ -28,9 +28,9 @@ Prompts: none resolvable (paraphrase only).
 - status: `addressees[]` with union of in-room role domains, no per-person weights; diversity bonus requires new branch **and** new action type (`kind|relation`).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/ranking.md`
-- `game/last-safety-autocomplete-prototype/drafts/autocomplete.md`
-- `game/last-safety-autocomplete-prototype/public/grammar.js`
+- `game/the-last-safety-review/spec/ranking.md`
+- `game/the-last-safety-review/drafts/autocomplete.md`
+- `game/the-last-safety-review/public/grammar.js`
 
 ## Commits
 - `c60cd4220` Last Safety Review: refine O-19 ranking for room union and move diversity.

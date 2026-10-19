@@ -14,7 +14,7 @@ Prompts: paraphrase
 - content: Lab map button stays hidden until that corridor note is read, then blinks until opened once. Lunch plan, demo scrap, bay verse, and camera-log scribble replace the earlier mechanic cards.
 - content: Author pass on `ROOM_NOTES` copy (visitor welcome, lab map, Jun demo scrap, bay whistle, CCTV scribble, and the rest) in in-room voice.
 - bookkeeping: Engine and text-console tests for the notes and the text hints. Browser check of the commons card, the speak bubble, and the phone bubble.
-- housekeeping: `npm test` in `game/last-safety-autocomplete-prototype`: 119 pass, 4 fail (Jun glue apostrophe regex, grammar room movement, Hi opener, text-console first-visit courtyard — logged as pre-existing on `main`).
+- housekeeping: `npm test` in `game/the-last-safety-review`: 119 pass, 4 fail (Jun glue apostrophe regex, grammar room movement, Hi opener, text-console first-visit courtyard — logged as pre-existing on `main`).
 
 ## Decisions
 - Notes are a separate `ClientState.notes` list, not evidence, so they cannot be shown as records and do not enter learned facts.
@@ -26,10 +26,10 @@ Prompts: paraphrase
 - Grammar tests “room movement” and “Hi social opener” also fail on current `main` without these edits (clearance recompute, and Justine present in platform after the clock reaches doubt).
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/game.mjs` (`ROOM_NOTES`, `spoken`)
-- `game/last-safety-autocomplete-prototype/public/app.js`, `public/index.html`, `public/style.css`
-- `game/last-safety-autocomplete-prototype/public/render/layouts.mjs`
-- `game/last-safety-autocomplete-prototype/lib/text/console.mjs`
+- `game/the-last-safety-review/lib/game.mjs` (`ROOM_NOTES`, `spoken`)
+- `game/the-last-safety-review/public/app.js`, `public/index.html`, `public/style.css`
+- `game/the-last-safety-review/public/render/layouts.mjs`
+- `game/the-last-safety-review/lib/text/console.mjs`
 
 ## Commits
 - `82cd1e0a7` — Last Safety: onboarding bubbles, room notes, and map unlock.

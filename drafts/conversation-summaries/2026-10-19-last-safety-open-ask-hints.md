@@ -23,11 +23,11 @@ Prompts: paraphrase only (no prompt id).
 - Broad `ask|about|topic=*` hint path if parser gains reliable broad/narrow.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/world/npcs.mjs` (`openAskHintMove`, `isOpenAsk`)
-- `game/last-safety-autocomplete-prototype/tests/catchall.test.mjs`, `tests/playthrough.test.mjs`
+- `game/the-last-safety-review/lib/world/npcs.mjs` (`openAskHintMove`, `isOpenAsk`)
+- `game/the-last-safety-review/tests/catchall.test.mjs`, `tests/playthrough.test.mjs`
 
 ## Verification
-- `cd game/last-safety-autocomplete-prototype && npm test` → 140 pass, 1 skipped (full playthrough unless `PLAYTHROUGH_FULL=1`).
+- `cd game/the-last-safety-review && npm test` → 140 pass, 1 skipped (full playthrough unless `PLAYTHROUGH_FULL=1`).
 
 ## Commits
-- (this session)
+- `508459619` Last Safety: open-ask hints and playthrough test coverage.

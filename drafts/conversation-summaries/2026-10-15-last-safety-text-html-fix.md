@@ -19,9 +19,9 @@ uptake: local
 - None for this bug.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/public/text.html`
-- `game/last-safety-autocomplete-prototype/public/text-tab-slice.mjs`
-- `game/last-safety-autocomplete-prototype/tests/text-html-imports.test.mjs`
+- `game/the-last-safety-review/public/text.html`
+- `game/the-last-safety-review/public/text-tab-slice.mjs`
+- `game/the-last-safety-review/tests/text-html-imports.test.mjs`
 
 ## Verification
 - `node --test tests/text-html-imports.test.mjs tests/text-console.test.mjs` — pass 8/8.

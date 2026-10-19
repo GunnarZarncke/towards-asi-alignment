@@ -16,7 +16,7 @@ Prompts: paraphrase-only (no prompt id resolved)
 - content: `tests/text-console.test.mjs` has four cases, including no unlearned fact text in the console output.
 - bookkeeping: `spec/text-console.md` (new); `spec/README.md`, `PLAN.md` (Text console lane, `lib/phrase.mjs` under composition, "Text only" test row), `spec/contract.md` (`/api/text`), `spec/graphics-ui.md` (Interface: overlay layout, follow-scroll, test mode), `spec/playtest.md` (view module), game `README.md`.
 
-Verification (from `game/last-safety-autocomplete-prototype/`):
+Verification (from `game/the-last-safety-review/`):
 - `npm test` → `ℹ tests 78` / `ℹ pass 78` / `ℹ fail 0`.
 - `npm run test:engine` → `ℹ tests 21` / `ℹ pass 21` / `ℹ fail 0`.
 - Smoke playtest after the move: `node scripts/playtest.mjs --work-only-max 0.5 --repeat-max 0.3 --stall-max 10 --max-steps 30` → `leaks 0 · empty 0`, "Below every threshold".
@@ -38,9 +38,9 @@ Verification (from `game/last-safety-autocomplete-prototype/`):
 - Gate 2 LLM battery at frozen O-47 thresholds still open from the implement-spec session.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/lib/text/` · `scripts/text-play.mjs` · `public/text.html` · `lib/phrase.mjs`
-- `game/last-safety-autocomplete-prototype/public/index.html` · `public/style.css` · `public/app.js` · `public/render/three-scene.mjs`
-- `game/last-safety-autocomplete-prototype/spec/text-console.md` · `spec/graphics-ui.md`
+- `game/the-last-safety-review/lib/text/` · `scripts/text-play.mjs` · `public/text.html` · `lib/phrase.mjs`
+- `game/the-last-safety-review/public/index.html` · `public/style.css` · `public/app.js` · `public/render/three-scene.mjs`
+- `game/the-last-safety-review/spec/text-console.md` · `spec/graphics-ui.md`
 
 ## Commits
 - `0be3cd7e8` — Last Safety prototype: implement spec, text console, overlay UI (game tree + session logs).

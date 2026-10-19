@@ -20,7 +20,7 @@ Prompts: (session — game end reachability, not floorplan)
 - Optional bounded BFS under fuel cap for partial O-29 second clause; playtest after door gates.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/tests/ending-reachability.test.mjs`
+- `game/the-last-safety-review/tests/ending-reachability.test.mjs`
 
 ## Commits
 - `334adeecb` Last Safety: O-29 ending reachability witness tests.

@@ -22,8 +22,8 @@ Prompts: none resolvable (paraphrase only).
 - N = 4 can move if Gunnar wants a longer or shorter line.
 
 ## Key paths
-- `game/last-safety-autocomplete-prototype/spec/world.md`
-- `game/last-safety-autocomplete-prototype/spec/meta.md`
+- `game/the-last-safety-review/spec/world.md`
+- `game/the-last-safety-review/spec/meta.md`
 
 ## Commits
 - none
