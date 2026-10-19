@@ -35,12 +35,14 @@ function fileNamesJobBoundary(s) {
   say(s, 'ian', P('assert', 'continued_after', { subject: 'job_284', object: 'shutdown_test' }), 'Job 284 was still running after the stop.');
 }
 
-/** Filed claims for the staffing add-on (pack.linksStaffingToReview). */
+/** Filed claims for the staffing add-on (pack.linksStaffingToReview): Elena-linked dialogue, then think + note. */
 function fileStaffingInstitutionalLink(s) {
   walk(s, 'people');
   applyAction(s, 'inspect', { id: 'staffing_memo' });
-  say(s, 'elena', P('assert', 'assigned', { object: 'staffing_memo' }), 'The matcher steers who reviews release work.');
-  say(s, 'elena', P('assert', 'about', { topic: 'staffing_memo' }), 'That staffing rule belongs in the evaluator’s report.');
+  say(s, 'elena', P('ask', 'about', { topic: 'staffing_memo', object: 'evaluation_independence' }), 'Does the matcher rule affect who reaches an independent review?');
+  walk(s, 'quiet');
+  applyAction(s, 'think', { topic: 'staffing_memo' });
+  applyAction(s, 'thought', { action: 'note' });
 }
 
 function revokeJob284(s) {

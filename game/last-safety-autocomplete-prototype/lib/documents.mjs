@@ -18,7 +18,7 @@ function entry(partial) {
   return Object.freeze({ leanKnowledge: false, defaultGrant: 'on_request', readsAs: {}, thinkMarks: [], ...partial });
 }
 
-/** `needs` are fact ids the player holds, or `read:<slug>`. Later packs’ marks name ids not authored yet. */
+/** `needs` are fact ids the player holds, `read:<slug>`, or `event:<id>`. Later packs’ marks name ids not authored yet. */
 const mark = (id, from, needs, hops, packs) => Object.freeze({ id, from, needs, hops, packs });
 
 export const DOCUMENTS = Object.freeze({
@@ -82,7 +82,7 @@ export const DOCUMENTS = Object.freeze({
     screenId: 'staffing_memo',
     readsAs: Object.freeze({ 'boundary-narrow': ['staffing_shift'] }),
     thinkMarks: Object.freeze([
-      mark('assignment_steers_review', ['staffing_memo', 'evaluation_independence'], ['staffing_shift'], 2, ['boundary-narrow']),
+      mark('assignment_steers_review', ['staffing_memo', 'evaluation_independence'], ['staffing_shift', 'evaluation_independence', 'event:staffing_review_linked'], 2, ['boundary-narrow']),
     ]),
   }),
   'safety-case-excerpt': entry({

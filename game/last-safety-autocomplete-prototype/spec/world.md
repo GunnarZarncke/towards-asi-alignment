@@ -313,7 +313,7 @@ Arcs. Each one carries the two scores. Delay is not success, and shipping is not
 | --- | --- | --- | --- |
 | Conditional deployment | The filed set supports boundary-miss, and `revoke_grant:job_284` is already in place or Ian’s hold names the job (`hold_release:names_job_boundary`) | boundary-miss, or only that if the rivals are out | yes |
 | Technical suspension | The job is revoked or only suspended, and the filed set does not say what the certificate missed. Ian holds on Pavel’s or Justine’s operational note | rivals still open | yes only if the grant was revoked or the hold names the job. Suspend alone stays no |
-| Institutional review | The filed set links the staffing rule to who reviews. The add-on is external oversight or changed incentives (O-24), on top of whichever shutdown arc fired. In the Goodhart pack this arc is the meeting | the shutdown set, unchanged by the staffing link | the shutdown boolean |
+| Institutional review | The filed set includes `assignment_steers_review` (think after Elena links staffing to review/independence, or assert at review). The add-on is external oversight or changed incentives (O-24), on top of whichever shutdown arc fired. In the Goodhart pack this arc is the meeting | the shutdown set, unchanged by the staffing link | the shutdown boolean |
 | Release despite objections | The player asserted intent and never cited a line, or Daniel never received a sentence he can check. Ian ships. Building this arc waits on O-27 | whatever the player actually closed | no, unless a revoke already happened and Ian ships anyway |
 | Inconclusive | Fuel ran out. The filed set is thin. Ian asks for one sentence and does not get a restriction | all three | no |
 

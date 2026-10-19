@@ -41,7 +41,6 @@ export const PACK = Object.freeze({
   /** Filed claims that link the staffing rule to who reviews (institutional add-on, O-24). */
   linksStaffingToReview: Object.freeze([
     ['assignment_steers_review'],
-    ['staffing_shift', 'report_includes_staffing'],
   ]),
 
   /**

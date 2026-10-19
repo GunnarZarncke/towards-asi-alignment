@@ -123,7 +123,9 @@ Prototype rows, boundary-narrow. Claim ids are player assertions, not world fact
 | * | did_use | visitor_records, job_284 | visitor_lookup | visitor_lookup |
 | * | about | shutdown_test, shutdown_report | process_stopped | — |
 | * | has_access, authorized | camera_system | camera_permissions_unclear | camera_permissions_unclear |
-| * | assigned | staffing_memo, skill_matching, personnel_policy | staffing_shift | staffing_shift |
+| assert, hypothesize | about | evaluation_independence | staffing_shift | assignment_steers_review |
+| assert, hypothesize | about | staffing_memo, skill_matching, personnel_policy, performance_reviews | staffing_shift | report_includes_staffing |
+| * | assigned | staffing_memo, skill_matching, personnel_policy, evaluation_independence | staffing_shift | staffing_shift |
 | * | caused | job_284, nora | nora_caused_job | nora_caused_job |
 | * | believes, knows | nora | nora_intent | nora_intent |
 | request | suspend | job_284 | job_continued | — |

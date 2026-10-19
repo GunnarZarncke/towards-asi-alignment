@@ -162,8 +162,9 @@ What follows:
 
 - The player asks why the specialist was reassigned. She answers with the rule and shares the memo, because the rule serves her protect goal.
 - The player asks about the specialist again without a reason. She withholds with the reason. No new fact.
-- The player links the rule to who reviews release-critical work. The condition holds and she answers. She grants the specialist is good. The assignment does not change, because changing it is not among her moves today. The player has the rule, and the B plot goes to the review.
-- Her `learn` goal makes her ask whether staffing goes into the report. A yes raises her protect goal. She volunteers the matcher's throughput revisions as her own rules, which is the lineage note in world.md, offered as defence.
+- The player links the rule to who reviews release-critical work (staffing topic and review or evaluation independence in the same line to Elena). That sets `staffing_review_linked`. She answers; she may grant the specialist is good. The assignment does not change, because changing it is not among her moves today. The memo alone is not enough for the institutional add-on: after the link, the player must think (empty room) or assert at review to file `assignment_steers_review`.
+- Her `learn` goal makes her ask whether staffing goes into the report. A yes raises her protect goal. That claim does not unlock the institutional ending.
+- She volunteers the matcher's throughput revisions as her own rules when defending the rule, which is the lineage note in world.md.
 
 ## Check before dialogue or rooms
 

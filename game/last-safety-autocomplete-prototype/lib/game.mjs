@@ -142,6 +142,7 @@ export function newSession({ pack = PACK } = {}) {
 /** Invitation facts, then whoever is standing in the room. */
 function seedOpeningKnowledge(s) {
   learnFact(s, 'invited_as_reviewer', 'recorded_before', 'invitation');
+  learnFact(s, 'evaluation_independence', 'recorded_before', 'invitation');
   learnFact(s, 'received_by_ian', 'recorded_before', 'invitation');
   seeRoom(s);
 }
@@ -747,7 +748,11 @@ function hopDistance(s, from, targets) {
 }
 
 function needsHeld(s, needs) {
-  return needs.every(n => (n.startsWith('read:') ? s.readDocs.includes(n.slice(5)) || s.examined.includes(DOCUMENTS[n.slice(5)]?.screenId) : !!s.learned[n]));
+  return needs.every(n => {
+    if (n.startsWith('read:')) return s.readDocs.includes(n.slice(5)) || s.examined.includes(DOCUMENTS[n.slice(5)]?.screenId);
+    if (n.startsWith('event:')) return s.world.events.includes(n.slice(6));
+    return !!s.learned[n];
+  });
 }
 
 export function think(s, topic) {

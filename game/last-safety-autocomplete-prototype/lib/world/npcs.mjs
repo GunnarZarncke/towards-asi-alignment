@@ -442,6 +442,12 @@ export function recordInput(s, id, parse, { shownDoc = null } = {}) {
     n.mentionLog.push({ id: x, at: s.sentences });
   }
   n.parses.push(all);
+  if (id === 'elena' && evaluate(
+    'linked(elena, staffing_memo|skill_matching|personnel_policy|performance_reviews, evaluation_independence|release_schedule|safety_case|review|shutdown_test)',
+    makeCtx(s, id),
+  ) && !s.world.events.includes('staffing_review_linked')) {
+    s.world.events.push('staffing_review_linked');
+  }
   const learned = [];
   if ((parse.kind === 'assert' || parse.kind === 'hypothesize') && m?.asserts) {
     if (!n.toldIds.includes(m.asserts)) n.toldIds.push(m.asserts);

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-19 | **Last Safety institutional arc** — Elena-linked B plot; think/review filing of `assignment_steers_review`; charter `evaluation_independence`. | [2026-10-19-last-safety-institutional-arc.md](2026-10-19-last-safety-institutional-arc.md) |
 | 2026-10-19 | **Last Safety NPC transit** — Staff path through floorplan rooms to desks and meetings; welcome arrival schedule; 3D door continuity via `npcMoves`. | [2026-10-19-last-safety-npc-transit.md](2026-10-19-last-safety-npc-transit.md) |
 | 2026-10-19 | **Last Safety open-ask hints** — Volunteer-only single hint on ungrounded asks; goal questions first; refer fallback; playthrough and test fixes; Jun dialogue. | [2026-10-19-last-safety-open-ask-hints.md](2026-10-19-last-safety-open-ask-hints.md) |
 | 2026-10-19 | **Last Safety play telemetry** — Add tracking to the game using the companion site mechanism; record fuel, room id, NPC id, knowle... | [2026-10-19-last-safety-play-telemetry.md](2026-10-19-last-safety-play-telemetry.md) |

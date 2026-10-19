@@ -80,6 +80,11 @@ export const CONCEPT_LINKS = Object.freeze({
     "summary": "Intent not in the record",
     "href": "https://towards-alignment.com/cards/evidence-and-uncertainty/"
   },
+  "fact:evaluation_independence": {
+    "slug": "goodhart-as-selector",
+    "summary": "Independent evaluation vs release incentives",
+    "href": "https://towards-alignment.com/cards/goodhart-as-selector/"
+  },
   "fact:staffing_shift": {
     "slug": "goodhart-as-selector",
     "summary": "Matcher steered who reviews release work",

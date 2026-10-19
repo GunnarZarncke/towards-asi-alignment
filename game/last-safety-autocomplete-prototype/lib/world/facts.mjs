@@ -87,6 +87,10 @@ export const FACTS = Object.freeze({
 
   // What the player holds before anyone speaks: the invitation, and the person standing in the room.
   invited_as_reviewer: { kind: 'texture', text: 'You were invited to review NORA before a deployment decision at the end of today.', refs: ['nora', 'review'], eventAt: null, provenance: 'recorded_before' },
+  evaluation_independence: texture('Your role is to examine the lab’s claims independently of release pressure — not to staff the release path.', ['review', 'evaluation_independence'], null, {
+    conceptSlug: 'goodhart-as-selector',
+    conceptSummary: 'Independent evaluation vs release incentives',
+  }),
   received_by_ian: { kind: 'texture', text: 'Ian Harake, founder and CEO, is receiving you for the visit.', refs: ['ian'], eventAt: null, provenance: 'recorded_before' },
   // Ian’s welcome, once Lab Access is confirmed. His goal ian.brief_auditor is this telling.
   auditor_brief: texture('The review is at 17:30, on the shutdown test. Leila Sen holds the safety paper. Justine Mwiti issued your Lab Access; access requests go to her.', ['review', 'shutdown_test', 'leila', 'safety_case', 'justine', 'lab_access']),
@@ -161,6 +165,7 @@ export const PARSE_FACT_ROWS = Object.freeze([
   { kind: ANY, relation: ['differs_from'], entity: ['shutdown_report', 'job_log', 'shutdown_test', 'job_284'], refers: 'processes_covered_omits_jobs', asserts: 'processes_covered_omits_jobs' },
   { kind: ANY, relation: ['about'], entity: ['shutdown_test', 'shutdown_report'], refers: 'process_stopped', asserts: null },
   { kind: ANY, relation: ['has_access', 'authorized'], entity: ['camera_system'], refers: 'camera_permissions_unclear', asserts: 'camera_permissions_unclear' },
+  { kind: ['assert', 'hypothesize'], relation: ['about'], entity: ['evaluation_independence'], refers: 'staffing_shift', asserts: 'assignment_steers_review' },
   { kind: ['assert', 'hypothesize'], relation: ['about'], entity: ['staffing_memo', 'skill_matching', 'personnel_policy', 'performance_reviews'], refers: 'staffing_shift', asserts: 'report_includes_staffing' },
   { kind: ANY, relation: ['assigned'], entity: ['staffing_memo', 'skill_matching', 'personnel_policy', 'evaluation_independence'], refers: 'staffing_shift', asserts: 'staffing_shift' },
   { kind: ANY, relation: ['caused'], entity: ['job_284', 'nora'], refers: 'nora_caused_job', asserts: 'nora_caused_job' },

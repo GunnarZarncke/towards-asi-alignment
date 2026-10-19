@@ -355,3 +355,38 @@ test('O-41: turning concept links on restores the last trigger in this room', ()
   assert.ok(link);
   assert.match(link.href, /the-boundary-error/);
 });
+
+test('institutional think mark needs memo, charter independence, and Elena-linked dialogue', () => {
+  const s = startedSession();
+  assert.ok(s.learned.evaluation_independence);
+  walk(s, 'people');
+  applyAction(s, 'inspect', { id: 'staffing_memo' });
+  walk(s, 'quiet');
+  let t = applyAction(s, 'think', { topic: 'staffing_memo' });
+  assert.equal(t.thought?.entries?.length ?? 0, 0);
+  walk(s, 'people');
+  say(s, 'elena', P('ask', 'about', { topic: 'staffing_memo', object: 'evaluation_independence' }), 'Does the matcher affect independent review?');
+  assert.ok(s.world.events.includes('staffing_review_linked'));
+  walk(s, 'quiet');
+  t = applyAction(s, 'think', { topic: 'staffing_memo' });
+  assert.ok(t.thought.entries.some(e => e.id === 'assignment_steers_review'));
+});
+
+test('report_includes_staffing alone does not satisfy institutional add-on', () => {
+  const s = startedSession();
+  walk(s, 'people');
+  applyAction(s, 'inspect', { id: 'staffing_memo' });
+  say(s, 'elena', P('assert', 'about', { topic: 'staffing_memo' }), 'Staffing belongs in the report.');
+  readShutdownForInstitutional(s);
+  while (s.fuel > 0 && s.act !== 'decision') idle(s, 1);
+  commit(s);
+  say(s, 'ian', P('assert', 'about', { topic: 'review' }), 'Signing.');
+  assert.equal(s.ending?.addOn, null);
+});
+
+function readShutdownForInstitutional(s) {
+  walk(s, 'platform');
+  applyAction(s, 'inspect', { id: 'job_log' });
+  walk(s, 'evaluation');
+  applyAction(s, 'inspect', { id: 'shutdown_report' });
+}
