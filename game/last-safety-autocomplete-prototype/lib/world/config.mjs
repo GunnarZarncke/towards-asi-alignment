@@ -10,6 +10,23 @@ export const CONFIG = Object.freeze({
   DAY_START: 9 * 60,
   /** world.md: Ian leaves the commons for the investor update. That departure starts Act II. */
   DOUBT_AT: 11 * 60,
+  /** Ian leaves the commons welcome desk for review prep (still Act I until DOUBT_AT). */
+  IAN_WORK_AT: 9 * 60 + 30,
+  /** Visit-clock window when body staff arrive and take their desks (Ian is already there at DAY_START). */
+  WELCOME_ARRIVAL_FROM: 9 * 60 + 20,
+  WELCOME_ARRIVAL_TO: 10 * 60 + 40,
+  WELCOME_ARRIVAL_ORDER: Object.freeze(['justine', 'leila', 'daniel', 'pavel', 'elena', 'jun']),
+  /** Presentation walk speeds (m/s) for the 3D room; engine movement is fuel-stepped. */
+  NPC_WALK_SPEED: Object.freeze({
+    ian: 3.4,
+    justine: 3.2,
+    pavel: 3.9,
+    leila: 3.1,
+    elena: 3.0,
+    daniel: 3.3,
+    jun: 3.5,
+    amara: 3.0,
+  }),
   REVIEW_AT: 17 * 60 + 30,
   DATE_LABEL: 'Friday 19 November 2027',
   /** O-44 / O-09: handset reply delay in fuel. NORA is shorter than a person. */
@@ -56,6 +73,25 @@ export const CONFIG = Object.freeze({
     defaultMidRate: 0.12,
   }),
 });
+
+/** First visit-clock minute each body NPC is in the building during Welcome (commons). */
+export const WELCOME_ARRIVALS = Object.freeze(buildWelcomeArrivals());
+
+function buildWelcomeArrivals() {
+  const m = { ian: CONFIG.DAY_START };
+  const order = CONFIG.WELCOME_ARRIVAL_ORDER;
+  const from = CONFIG.WELCOME_ARRIVAL_FROM;
+  const to = CONFIG.WELCOME_ARRIVAL_TO;
+  const span = to - from;
+  for (let i = 0; i < order.length; i++) {
+    m[order[i]] = order.length === 1 ? from : Math.round(from + (span * i) / (order.length - 1));
+  }
+  return m;
+}
+
+export function welcomeArrivalMinute(id) {
+  return WELCOME_ARRIVALS[id] ?? null;
+}
 
 export function band(minute) {
   const [l0, l1] = CONFIG.LUNCH;

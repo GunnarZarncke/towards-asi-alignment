@@ -103,7 +103,7 @@ export class Walker {
     this.heading = 0;
     this.targetHeading = 0;
     this.path = [];
-    this.speed = 3;
+    this.speed = 3.2;
     this.phase = Math.random() * 6;
     this.walkBlend = 0;
     this.onArrive = null;

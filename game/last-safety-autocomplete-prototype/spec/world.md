@@ -69,6 +69,8 @@ Fuel 0 is 09:00. The handset clock converts fuel with the scales in [engine.md](
 | Clock | Act | What is happening |
 | --- | --- | --- |
 | 09:00 | I Welcome | Player arrives in the commons. Ian has the handset. It is not active |
+| 09:30 | I Welcome | Ian leaves the commons for review prep (investor update) |
+| 09:20–10:40 | I Welcome | Body staff arrive one by one and go to their desks (visit clock; fuel advances time) |
 | after Ian confirms | I Welcome | Lab Access is live. Staff can be met in any order. Lighting stays Welcome |
 | 11:00 | II Doubt | Ian leaves the commons for the investor update. That departure starts Doubt. He is briefly interruptible |
 | 11:00–12:00 | II early | Pavel’s queue inventory. Elena’s release rota. Justine’s audit. Leila on the packet |

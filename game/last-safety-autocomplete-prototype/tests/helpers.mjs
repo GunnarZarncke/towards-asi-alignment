@@ -2,6 +2,7 @@ import { makeParse } from '../lib/grammar.mjs';
 import { newSession, clientState } from '../lib/game.mjs';
 import { CONFIG } from '../lib/world/config.mjs';
 import { applyAction, walk } from '../lib/world/actions.mjs';
+import { settleNpcs } from '../lib/world/npcs.mjs';
 
 export const P = (kind, relation, fields = {}) => makeParse({ kind, relation, open_slot: 'none', source: 'completion', ...fields });
 
@@ -19,6 +20,7 @@ export function startedSession() {
     guard++;
   }
   if (s.room !== 'commons') applyAction(s, 'go', { room: 'commons' });
+  settleNpcs(s);
   return s;
 }
 

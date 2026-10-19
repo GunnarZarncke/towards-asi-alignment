@@ -132,6 +132,7 @@ export function newSession({ pack = PACK } = {}) {
     thought: null, scores: null, filed: null, ending: null, graceUsed: false, filedNamesJob: false,
     conceptLinksEnabled: false, conceptMoreLink: null, roomConceptLastTrigger: null, objected: [],
     events: [], replaying: false,
+    lastNpcMoves: [],
   };
   N.placeNpcs(s);
   seedOpeningKnowledge(s);
@@ -151,7 +152,10 @@ function seeIds(s, ids) {
 }
 
 function seeRoom(s) {
-  for (const id of N.npcsInRoom(s, s.room)) introduce(s, id);
+  for (const id of N.npcsInRoom(s, s.room)) {
+    if (s.act === 'welcome' && !s.labAccessActive && id !== 'ian') continue;
+    introduce(s, id);
+  }
 }
 
 function log(s, kind, payload = {}) {
@@ -167,6 +171,7 @@ export function logAction(s, action, args) {
 /** Spend fuel, advance the visit clock at the current act’s scale, then run what came due. */
 export function spend(s, n) {
   if (n <= 0) return [];
+  s.lastNpcMoves = [];
   s.fuel = Math.max(0, s.fuel - n);
   s.fuelSpent += n;
   s.minute += n * (CONFIG.MINUTES_PER_FUEL[s.act] || 2);
@@ -528,6 +533,7 @@ function moveRefs(m) {
 function relocateNpcs(s) {
   const placed = N.placeNpcs(s);
   for (const m of placed) log(s, 'move', m);
+  s.lastNpcMoves = placed.map(({ who, from, to }) => ({ who, from, to }));
   return closingGlue(s, placed);
 }
 
@@ -1001,6 +1007,7 @@ export function clientState(s) {
       initials: CAST[id].initials,
       presence: n.presence,
       spokeSinceArrive: !!n.spokeSinceArrive,
+      walkSpeed: N.npcWalkSpeed(id),
     };
   }
   const entities = {};
@@ -1042,6 +1049,7 @@ export function clientState(s) {
     claimStatus: claimStatus(s),
     pendingQuestion: openQuestion(s),
     thought: s.thought,
+    npcMoves: (s.lastNpcMoves || []).map(({ who, from, to }) => ({ who, from, to })),
   };
 }
 

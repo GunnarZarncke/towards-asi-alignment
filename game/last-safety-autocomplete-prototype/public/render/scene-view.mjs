@@ -24,6 +24,7 @@ export function buildSceneView(state, options = {}) {
       sublabel: a.presence === 'hologram' ? `${a.role} · projected` : a.role,
       initials: a.initials,
       hologram: a.presence === 'hologram',
+      walkSpeed: a.walkSpeed,
     });
   }
 
@@ -77,8 +78,13 @@ export function buildSceneView(state, options = {}) {
         ? defaultSurveillanceAnnotations(roomId, actorHere?.[1], state)
         : [];
 
+  const npcMoves = options.npcMoves ?? state.npcMoves ?? [];
+  const playerFromRoom = options.playerFromRoom ?? null;
+
   return {
     roomId,
+    npcMoves,
+    playerFromRoom,
     act,
     camera,
     lightingPreset,

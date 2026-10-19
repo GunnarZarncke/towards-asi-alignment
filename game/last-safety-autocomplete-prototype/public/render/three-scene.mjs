@@ -7,6 +7,7 @@ import { createKit } from './kit.mjs';
 import { layoutFor } from './layouts.mjs';
 import { ACT_PRESETS, COLOR_KEYS, NUMBER_KEYS } from './lighting.mjs';
 import { Walker, appearanceFor } from './person.mjs';
+import { entryRoomForMove } from './npc-travel.mjs';
 import { applyClearanceSign, buildRoom, WALL_T } from './room.mjs';
 
 const DEG = Math.PI / 180;
@@ -125,6 +126,8 @@ export class RoomRenderer {
     this.hovered = null;
     this.w = 1;
     this.h = 1;
+    this.pendingView = null;
+    this.pendingHandlers = null;
 
     const canvas = this.renderer.domElement;
     canvas.addEventListener('pointerdown', e => (this.down = { x: e.clientX, y: e.clientY }));
@@ -143,13 +146,53 @@ export class RoomRenderer {
 
   update(view, handlers = {}) {
     this.handlers = handlers;
-    const prev = this.view;
+    const prevView = this.view;
+    const prevRoom = this.roomId;
+    const moves = view.npcMoves || [];
+    const playerCrossing = prevView && view.roomId !== prevRoom;
+
+    if (playerCrossing && prevRoom && this.room && !this.pendingView) {
+      let started = false;
+      for (const m of moves) {
+        if (m.from !== prevRoom || m.to === prevRoom || !this.persons.has(m.who)) continue;
+        this.departPersonTo(m.who, m.to);
+        started = true;
+      }
+      if (started && this.hasTravelingNpc()) {
+        this.pendingView = view;
+        this.pendingHandlers = handlers;
+        return;
+      }
+    }
+
     this.view = view;
-    if (view.roomId !== this.roomId) this.loadRoom(view.roomId, prev?.roomId);
-    if (!prev || prev.lightingPreset !== view.lightingPreset) this.applyPreset(view.lightingPreset, !prev);
-    this.syncActors();
+    this.applyRoomView(view, playerCrossing ? prevRoom : null, prevView);
+  }
+
+  applyRoomView(view, fromRoom, prevView) {
+    const entry = fromRoom ?? view.playerFromRoom ?? null;
+    if (view.roomId !== this.roomId) this.loadRoom(view.roomId, entry);
+    if (!prevView || prevView.lightingPreset !== view.lightingPreset) this.applyPreset(view.lightingPreset, !prevView);
+    this.syncActors(view);
     this.syncHotspots();
     this.syncMode();
+  }
+
+  hasTravelingNpc() {
+    for (const p of this.persons.values()) {
+      if (p._departing || p.moving) return true;
+    }
+    return false;
+  }
+
+  afterNpcTravel() {
+    if (!this.pendingView || this.hasTravelingNpc()) return;
+    const view = this.pendingView;
+    const handlers = this.pendingHandlers;
+    this.pendingView = null;
+    this.pendingHandlers = null;
+    this.view = view;
+    this.applyRoomView(view, view.playerFromRoom, null);
   }
 
   loadRoom(roomId, fromRoom) {
@@ -193,11 +236,25 @@ export class RoomRenderer {
     return { x, z, heading: hd * DEG };
   }
 
-  addPerson(id, { hologram = false } = {}) {
+  addPerson(id, { hologram = false, walkSpeed = null, entryRoom = null } = {}) {
     const p = new Walker(id, appearanceFor(id));
+    if (walkSpeed != null) p.speed = walkSpeed;
     const spot = this.spotFor(id);
-    const [x, z] = this.room.nav.snap(spot.x, spot.z);
-    p.place(x, z, spot.heading);
+    const saved = id !== 'player' ? this.saved[id] : null;
+    if (id === 'player' && this.entry) {
+      const [ex, ez] = this.room.nav.snap(this.entry.x, this.entry.z);
+      p.place(ex, ez, this.entry.heading ?? spot.heading);
+    } else if (saved) {
+      const [x, z] = this.room.nav.snap(saved.x, saved.z);
+      p.place(x, z, saved.heading ?? spot.heading);
+    } else if (entryRoom && this.room.doors.has(entryRoom)) {
+      const door = this.room.doors.get(entryRoom);
+      const [ex, ez] = this.room.nav.snap(door.x, door.z);
+      p.place(ex, ez, door.heading ?? spot.heading);
+    } else {
+      const [x, z] = this.room.nav.snap(spot.x, spot.z);
+      p.place(x, z, spot.heading);
+    }
     if (hologram) {
       p.group.traverse(o => {
         if (!o.material) return;
@@ -209,20 +266,76 @@ export class RoomRenderer {
     }
     this.persons.set(id, p);
     this.scene.add(p.group);
+    const shouldWalkIn = id !== 'player' && !saved && entryRoom && this.room.doors.has(entryRoom);
+    if (shouldWalkIn) {
+      const [tx, tz] = this.room.nav.snap(spot.x, spot.z);
+      const path = this.room.nav.findPath([p.x, p.z], [tx, tz]);
+      if (path?.length) p.setPath(path, spot.heading);
+    }
     return p;
   }
 
-  syncActors() {
-    const actors = this.view.hotspots.filter(h => h.kind === 'actor');
+  nearestDoor(x, z) {
+    let best = null;
+    let bestD = Infinity;
+    for (const d of this.room?.doors?.values() || []) {
+      const dist = Math.hypot(d.x - x, d.z - z);
+      if (dist < bestD) {
+        bestD = dist;
+        best = d;
+      }
+    }
+    return best;
+  }
+
+  removePerson(id) {
+    const p = this.persons.get(id);
+    if (!p) return;
+    this.scene.remove(p.group);
+    disposeTree(p.group);
+    this.persons.delete(id);
+    this.tags?.delete(id);
+  }
+
+  departPersonTo(id, toRoom) {
+    const p = this.persons.get(id);
+    if (!p || p._departing) return;
+    p._departing = true;
+    const door = (toRoom && this.room.doors.get(toRoom)) || this.nearestDoor(p.x, p.z);
+    const dest = door ? [door.x, door.z] : [p.x, p.z - 0.5];
+    const path = this.room.nav.findPath([p.x, p.z], dest) || [dest];
+    p.setPath(path, door?.heading ?? p.heading, () => {
+      const snap = this.store.get(this.roomId) || {};
+      delete snap[id];
+      this.store.set(this.roomId, snap);
+      this.removePerson(id);
+      this.afterNpcTravel();
+    });
+  }
+
+  syncActors(view = this.view) {
+    const actors = view.hotspots.filter(h => h.kind === 'actor');
     const ids = new Set(actors.map(h => h.id));
-    for (const [id, p] of this.persons) {
-      if (id === 'player' || ids.has(id)) continue;
-      this.scene.remove(p.group);
-      disposeTree(p.group);
-      this.persons.delete(id);
+    const moves = view.npcMoves || [];
+    const moveByWho = new Map(moves.map(m => [m.who, m]));
+
+    for (const [id, p] of [...this.persons]) {
+      if (id === 'player' || ids.has(id) || p._departing) continue;
+      const m = moveByWho.get(id);
+      this.departPersonTo(id, m?.to);
     }
     if (!this.persons.has('player')) this.addPerson('player');
-    for (const h of actors) if (!this.persons.has(h.id)) this.addPerson(h.id, { hologram: !!h.hologram });
+    for (const h of actors) {
+      const existing = this.persons.get(h.id);
+      if (existing) {
+        if (h.walkSpeed != null) existing.speed = h.walkSpeed;
+        continue;
+      }
+      const m = moveByWho.get(h.id);
+      let entryRoom = null;
+      if (m?.to === this.roomId) entryRoom = entryRoomForMove(m, view.playerFromRoom);
+      this.addPerson(h.id, { hologram: !!h.hologram, walkSpeed: h.walkSpeed, entryRoom });
+    }
 
     this.labels = new Map([['player', { label: 'You', sub: 'External evaluator' }], ...actors.map(h => [h.id, { label: h.label, sub: h.sublabel }])]);
     if (!this.persons.has(this.selectedId)) this.selectedId = 'player';
@@ -536,6 +649,7 @@ export class RoomRenderer {
       if (id !== 'player' && player && !p.moving && Math.hypot(player.x - p.x, player.z - p.z) < 4.5) p.faceToward(player.x, player.z);
       p.update(dt, t);
     }
+    if (!this.hasTravelingNpc()) this.afterNpcTravel();
     const sel = this.persons.get(this.selectedId);
     if (sel) {
       this.selRing.position.set(sel.x, 0.012, sel.z);

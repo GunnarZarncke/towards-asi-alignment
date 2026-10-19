@@ -216,6 +216,16 @@ const DRESS = {
   },
   commons: {
     spot: [0.4, 0.15, 160],
+    spots: {
+      player: [0.4, 0.15, 160],
+      ian: [-1.1, 0.55, 145],
+      justine: [2.1, -0.25, 205],
+      pavel: [-2.4, -0.75, 125],
+      leila: [1.6, 0.85, 185],
+      elena: [-0.6, -1.05, 158],
+      daniel: [2.55, 0.65, 218],
+      jun: [-1.75, 1.05, 132],
+    },
     props: [
       { type: 'sofa', at: [-3.4, 0.15], rot: 90 },
       { type: 'plant', at: [-4.7, -0.85], opts: { size: 1 } },
@@ -274,7 +284,7 @@ function generatedLayout(id) {
     windows: exteriorWindows(id, room, doors),
     doors,
     props: dress.props || [],
-    spots: { player: dress.spot || [0, 0, 180] },
+    spots: { player: dress.spot || [0, 0, 180], ...(dress.spots || {}) },
     interact: dress.interact,
   };
 }

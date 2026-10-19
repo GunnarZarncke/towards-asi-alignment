@@ -13,7 +13,8 @@ import YAML from 'yaml';
 import { FACTS, matchParse, parseIds, factRefs, isClaim, parseEntity } from './facts.mjs';
 import { ENTITIES, ROLE_DOMAINS, CAST, entityDomains } from './entities.mjs';
 import { evaluate, progress, parsePolicy, parsePredicate, predicateIds } from './predicates.mjs';
-import { CONFIG, band } from './config.mjs';
+import { CONFIG, band, welcomeArrivalMinute } from './config.mjs';
+import { transitStep } from './room-path.mjs';
 import { DOCUMENTS, readsAsFor } from '../documents.mjs';
 import { glueEnabled, pickStance, glueText, midGlueHits, validateGlue } from './glue.mjs';
 
@@ -94,9 +95,15 @@ export function initNpcs() {
       pendingQuestion: null,
       spokeSinceArrive: false,
       meetingCommit: null,
+      moveDue: null,
+      transit: null,
     };
   }
   return out;
+}
+
+export function npcWalkSpeed(id) {
+  return CONFIG.NPC_WALK_SPEED[id] ?? 3.2;
 }
 
 // ---------- player-side reads ----------
@@ -259,36 +266,160 @@ function meetingRoom(s) {
   return 'commons';
 }
 
-/** Room and presence from the agenda. Returns movement events for the log. */
+function goalAnchorsRoom(s, id, room) {
+  const n = s.npcs[id];
+  if (!room || !n) return false;
+  if (n.meetingCommit?.active) {
+    const mr = n.meetingCommit.room || meetingRoom(s);
+    if (mr === room) return true;
+  }
+  const goals = NPC_DEFS[id]?.goals || {};
+  for (const [key, g] of Object.entries(goals)) {
+    if (g.via !== 'dialogue' || n.askedGoals.includes(key)) continue;
+    const t = g.target || '';
+    if (!/present\s*\(\s*(player|self|\w+)\s*,\s*(player|self|\w+)\s*\)/.test(t)) continue;
+    if (s.room === room) return true;
+  }
+  return false;
+}
+
+function lingerFuel(s, id, fromRoom) {
+  if (!fromRoom) return 0;
+  if (fromRoom === s.room || goalAnchorsRoom(s, id, fromRoom)) return 1;
+  return 0;
+}
+
+/** Desk during Welcome when the active agenda item has no room yet (e.g. doubt-only rows). */
+function welcomeWorkRoom(id) {
+  const items = NPC_DEFS[id]?.agenda || [];
+  const usable = it => it.room && !it.event && it.room !== 'remote';
+  const welcome = items.find(it => usable(it) && it.acts?.includes('welcome'));
+  if (welcome) return welcome.room;
+  const desk = items.find(it => usable(it) && it.acts?.includes('doubt') && !it.bands?.includes('lunch'));
+  return desk?.room ?? null;
+}
+
+/** Target room and presence from agenda (no side effects). */
+export function desiredPlacement(s, id) {
+  const n = s.npcs[id];
+  const commit = n.meetingCommit;
+  let item = currentAgenda(s, id);
+  if (commit?.active && s.act !== 'decision') {
+    item = { id: 'meeting.commit', room: commit.room || meetingRoom(s) };
+  }
+  let room = item?.room ?? null;
+  let presence = 'body';
+  if (NPC_DEFS[id].presence === 'remote') {
+    presence = s.interview?.on ? 'hologram' : 'absent';
+    room = presence === 'hologram' ? 'evaluation' : null;
+  } else if (s.act === 'welcome' && NPC_DEFS[id].presence !== 'remote') {
+    const arrive = welcomeArrivalMinute(id);
+    if (arrive != null && s.minute < arrive) {
+      room = null;
+      presence = 'absent';
+    } else if (room == null) {
+      room = welcomeWorkRoom(id);
+    }
+  }
+  if (s.act === 'welcome' && id === 'ian' && s.minute >= CONFIG.IAN_WORK_AT) {
+    const desk = (NPC_DEFS.ian.agenda || []).find(it => it.acts?.includes('doubt') && it.room);
+    room = desk?.room ?? 'review';
+  }
+  if (room === 'remote') { room = null; presence = 'absent'; }
+  return { room, presence, agendaId: item?.id || null };
+}
+
+/** At most one welcome filing-in per tick so arrivals stay one-by-one even if the clock jumps. */
+function welcomePlacementPlan(s) {
+  const plan = new Map(NPC_IDS.map(id => [id, desiredPlacement(s, id)]));
+  if (s.act !== 'welcome') return plan;
+  const filing = NPC_IDS.filter(id => {
+    const n = s.npcs[id];
+    const d = plan.get(id);
+    return n.presence === 'absent' && d.presence === 'body' && d.room != null;
+  }).sort((a, b) => (welcomeArrivalMinute(a) ?? 0) - (welcomeArrivalMinute(b) ?? 0));
+  for (const id of filing.slice(1)) {
+    plan.set(id, { ...plan.get(id), room: null, presence: 'absent' });
+  }
+  return plan;
+}
+
+function placementWithTransit(s) {
+  const goals = welcomePlacementPlan(s);
+  const plan = new Map();
+  for (const id of NPC_IDS) {
+    const g = goals.get(id);
+    const n = s.npcs[id];
+    const step = transitStep(n, g.room, g.presence);
+    plan.set(id, { ...g, room: step.room, presence: step.presence });
+  }
+  return plan;
+}
+
+/** Room and presence from the agenda. Returns movement events for the log. Moves apply after linger fuel. */
 export function placeNpcs(s) {
   const moves = [];
+  const plan = placementWithTransit(s);
   for (const id of NPC_IDS) {
     const n = s.npcs[id];
-    const commit = n.meetingCommit;
-    let item = currentAgenda(s, id);
-    if (commit?.active && s.act !== 'decision') {
-      item = { id: 'meeting.commit', room: commit.room || meetingRoom(s) };
+    const { room, presence, agendaId } = plan.get(id);
+    n.agendaId = agendaId;
+
+    if (n.room === room && n.presence === presence) {
+      n.moveDue = null;
+      continue;
     }
-    let room = item?.room || null;
-    let presence = 'body';
-    if (NPC_DEFS[id].presence === 'remote') {
-      presence = s.interview?.on ? 'hologram' : 'absent';
-      room = presence === 'hologram' ? 'evaluation' : null;
+
+    const due = n.moveDue;
+    if (!due || due.to !== room || due.presence !== presence) {
+      n.moveDue = {
+        to: room,
+        presence,
+        atFuelSpent: s.fuelSpent + lingerFuel(s, id, n.room),
+      };
     }
-    if (room === 'remote') { room = null; presence = 'absent'; }
-    if (n.room !== room || n.presence !== presence) {
-      moves.push({ kind: 'move', who: id, from: n.room, to: room, presence, spoke: !!n.spokeSinceArrive });
-      n.room = room;
-      n.presence = presence;
+
+    if (n.moveDue && s.fuelSpent >= n.moveDue.atFuelSpent) {
+      const m = n.moveDue;
+      moves.push({
+        kind: 'move',
+        who: id,
+        from: n.room,
+        to: m.to,
+        presence: m.presence,
+        spoke: !!n.spokeSinceArrive,
+      });
+      n.room = m.to;
+      n.presence = m.presence;
       n.spokeSinceArrive = false;
+      n.moveDue = null;
+      if (n.transit && n.room) {
+        const idx = n.transit.via.indexOf(n.room);
+        if (idx >= 0) n.transit.at = idx;
+        if (n.room === n.transit.goal) n.transit = null;
+      }
     }
-    n.agendaId = item?.id || null;
   }
   return moves;
 }
 
 export function npcsInRoom(s, room) {
   return NPC_IDS.filter(id => s.npcs[id].room === room && s.npcs[id].presence !== 'absent');
+}
+
+/** Test / fixture helper: finish in-flight routes without advancing the visit clock. */
+export function settleNpcs(s, steps = 80) {
+  const snap = { minute: s.minute, fuel: s.fuel, fuelSpent: s.fuelSpent, act: s.act, room: s.room };
+  s.room = 'quiet';
+  for (let i = 0; i < steps; i++) {
+    s.fuelSpent += 1;
+    placeNpcs(s);
+  }
+  s.minute = snap.minute;
+  s.fuel = snap.fuel;
+  s.fuelSpent = snap.fuelSpent;
+  s.act = snap.act;
+  s.room = snap.room;
 }
 
 // ---------- recording what the player said ----------

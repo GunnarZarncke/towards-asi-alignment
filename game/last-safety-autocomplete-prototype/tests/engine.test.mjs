@@ -12,6 +12,8 @@ import { layoutFor } from '../public/render/layouts.mjs';
 import { CONFIG } from '../lib/world/config.mjs';
 import { terminalState, handsetMediaPayload } from '../lib/world/terminal-host.mjs';
 import { P, startedSession, say, dm, idle, commit, walk, applyAction, clientState } from './helpers.mjs';
+import { NPC_IDS, placeNpcs } from '../lib/world/npcs.mjs';
+import { WELCOME_ARRIVALS } from '../lib/world/config.mjs';
 
 const ORACLE_KEYS = ['records', 'policies', 'goals', 'explanations', 'eliminate', 'role_rules', 'knowledge'];
 
@@ -42,6 +44,49 @@ function assertNoLeak(view, s) {
     if (json.includes(JSON.stringify(f.text).slice(1, -1))) assert.ok(visible.has(id), `payload shows unheld fact ${id}`);
   }
 }
+
+test('Act I welcome: Ian at 9:00, review at 9:30; staff arrive 9:20–10:40', () => {
+  const s = newSession();
+  assert.equal(s.npcs.ian.room, 'commons');
+  s.minute = CONFIG.IAN_WORK_AT;
+  s.fuelSpent = 20;
+  s.room = 'collab';
+  placeNpcs(s);
+  assert.equal(s.npcs.ian.room, 'review');
+
+  const s2 = newSession();
+  s2.minute = CONFIG.WELCOME_ARRIVAL_FROM - 1;
+  placeNpcs(s2);
+  assert.equal(s2.npcs.justine.presence, 'absent');
+  assert.equal(s2.npcs.jun.presence, 'absent');
+  s2.minute = WELCOME_ARRIVALS.justine;
+  placeNpcs(s2);
+  assert.equal(s2.npcs.justine.room, 'commons', 'staff enter through commons first');
+  for (let i = 0; i < 12; i++) {
+    s2.fuelSpent += 1;
+    placeNpcs(s2);
+  }
+  assert.equal(s2.npcs.justine.room, 'security');
+  s2.minute = CONFIG.WELCOME_ARRIVAL_TO;
+  s2.fuelSpent += 1;
+  placeNpcs(s2);
+  assert.equal(s2.npcs.justine.room, 'security');
+  assert.equal(s2.npcs.jun.presence, 'absent', 'only one welcome arrival per tick');
+  for (let i = 0; i < CONFIG.WELCOME_ARRIVAL_ORDER.length * 8; i++) {
+    s2.fuelSpent += 1;
+    placeNpcs(s2);
+  }
+  const desks = {
+    justine: 'security',
+    leila: 'evaluation',
+    daniel: 'collab',
+    pavel: 'platform',
+    elena: 'people',
+    jun: 'model',
+  };
+  for (const [id, room] of Object.entries(desks)) assert.equal(s2.npcs[id].room, room, id);
+  assert.equal(s2.npcs.amara.presence, 'absent');
+});
 
 test('Act I: commons, no Lab Access, no contacts; one sentence to Ian opens the handset and stays Welcome', () => {
   const s = newSession();

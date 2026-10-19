@@ -23,6 +23,8 @@ let actPreset = 'doubt';
 let sceneOverlay = null;
 let uiHarness = false;
 let room3d = null;
+/** Previous player room id, for door continuity on the last transition. */
+let sceneRoomBefore = null;
 let addressee = null;
 let phoneOpen = false;
 let phoneUnread = false;
@@ -145,7 +147,9 @@ function sceneOptions() {
 }
 
 function renderScenePanel() {
-  const scene = buildSceneView(state, sceneOptions());
+  const playerFromRoom = sceneRoomBefore != null && sceneRoomBefore !== state.room ? sceneRoomBefore : null;
+  const scene = buildSceneView(state, { ...sceneOptions(), playerFromRoom, npcMoves: state.npcMoves });
+  sceneRoomBefore = state.room;
   $('roomTitle').textContent = scene.roomTitle;
   $('actLabel').textContent = scene.actLabel;
   $('sceneNote').textContent = room3d
@@ -995,6 +999,7 @@ async function loadSave(text) {
   try {
     const data = await api('import', JSON.parse(text));
     adoptState(data);
+    sceneRoomBefore = null;
     resetNotebookTracking();
     resetComposer();
     addressee = null;
@@ -1129,6 +1134,7 @@ $('reset').onclick = async () => {
   adoptState(r);
   if (r.scene) sceneOverlay = r.scene;
   applySceneOverlayFromState();
+  sceneRoomBefore = null;
   resetComposer();
   lastNotice = '';
   addressee = null;

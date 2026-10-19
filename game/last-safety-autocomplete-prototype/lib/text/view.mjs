@@ -30,8 +30,20 @@ export function sentences(state, { addressees, channel, omit = [], openings = 6,
   return out.filter(x => !seen.has(x.text) && seen.add(x.text));
 }
 
+const WELCOME_FACE_ORDER = ['ian', 'justine', 'leila', 'daniel', 'pavel', 'elena', 'jun'];
+
 export function presentIds(c) {
-  return Object.entries(c.actors).filter(([, a]) => a.presence !== 'absent' && a.room === c.room).map(([id]) => id);
+  const ids = Object.entries(c.actors).filter(([, a]) => a.presence !== 'absent' && a.room === c.room).map(([id]) => id);
+  if (c.act === 'welcome') {
+    ids.sort((a, b) => {
+      const ia = WELCOME_FACE_ORDER.indexOf(a);
+      const ib = WELCOME_FACE_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+    });
+  } else {
+    ids.sort();
+  }
+  return ids;
 }
 
 export function options(s) {

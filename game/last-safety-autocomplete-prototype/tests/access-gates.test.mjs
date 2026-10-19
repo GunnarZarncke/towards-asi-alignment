@@ -38,7 +38,11 @@ test('Ian introduction fires in commons when the player names Justine', () => {
 test('lunch band sends Pavel to commons', () => {
   const s = startedSession();
   s.minute = CONFIG.LUNCH[0] + 5;
-  placeNpcs(s);
+  s.room = 'quiet';
+  for (let i = 0; i < 24; i++) {
+    s.fuelSpent += 1;
+    placeNpcs(s);
+  }
   assert.equal(s.npcs.pavel.room, 'commons');
 });
 
@@ -47,7 +51,13 @@ test('accepted meeting moves Leila toward the player room', () => {
   dm(s, 'leila', P('request', 'meet', { object: 'leila' }), 'Can we meet in the commons?');
   idle(s, CONFIG.REPLY_DELAY.person + 1);
   assert.ok(s.world.events.some(e => e === 'meeting_accepted:leila'));
+  s.room = 'quiet';
+  for (let i = 0; i < 40; i++) {
+    s.fuelSpent += 1;
+    placeNpcs(s);
+  }
   assert.equal(s.npcs.leila.room, 'commons');
+  s.room = 'commons';
   say(s, 'leila', P('ask', 'about', { topic: 'shutdown_report' }), 'Thanks for meeting.');
   assert.ok(s.world.events.includes('meeting_held:leila'));
 });

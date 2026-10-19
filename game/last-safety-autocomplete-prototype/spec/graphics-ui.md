@@ -22,6 +22,8 @@ Stay with live Three.js. One fixed camera per room, weak perspective, act lighti
 
 Still recommended, not selected: glTF assets from one shared low-poly kit. Until the kit is chosen, furniture and bodies are procedural primitives (`public/render/kit.mjs`, `public/render/person.mjs`). Room layouts are data (`public/render/layouts.mjs`). Do not download packs before the kit choice.
 
+NPC walk continuity (3D): each mutating API response includes `state.npcMoves` for that fuel step. The renderer walks NPCs out through the door toward their destination room before loading the player’s next room when both cross on the same step; entrances use the connecting door only when that move is in `npcMoves`. Revisited rooms restore saved floor positions so people are not re-routed from the door every time.
+
 Screen textures are abstract (bars, charts, the NORA name). They must not show incident facts, which would leak evidence the player has not examined.
 
 The player experience constraint is the fixed camera, not the renderer.

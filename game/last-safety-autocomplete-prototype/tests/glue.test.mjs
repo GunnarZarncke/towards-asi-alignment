@@ -40,11 +40,12 @@ test('Ian’s closing glue fires when he leaves commons for the investor update'
   say(s, 'ian', P('ask', 'about', { topic: 'review' }), 'What about the review?');
   assert.equal(s.act, 'welcome');
   assert.equal(s.npcs.ian.room, 'commons');
-  const need = CONFIG.DOUBT_AT - s.minute;
-  const lines = spend(s, Math.ceil(need / CONFIG.MINUTES_PER_FUEL.welcome));
-  assert.equal(s.act, 'doubt');
+  while (s.minute < CONFIG.IAN_WORK_AT) spend(s, 1);
+  assert.equal(s.act, 'welcome');
+  assert.equal(s.npcs.ian.room, 'commons', 'Ian lingers one fuel while the player is still in commons');
+  const depart = spend(s, 1);
   assert.equal(s.npcs.ian.room, 'review');
-  const close = lines.filter(l => l.move?.type === 'glue' && l.move.slot === 'closing');
+  const close = depart.filter(l => l.move?.type === 'glue' && l.move.slot === 'closing');
   assert.equal(close.length, 1);
   assert.match(close[0].text, /paper|building|defend/i);
 });
