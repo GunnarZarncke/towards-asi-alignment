@@ -9,6 +9,8 @@ Steps:
 Usage:
   python3 scripts/meme_workflow/meme_workflow.py
   python3 scripts/meme_workflow/meme_workflow.py --job huang-release-rule
+
+Local templates: set ``template_file`` under ``templates/``, optional ``title``, and six ``texts`` overlaid on photos (under-panel who-captions unchanged; see already-clean).
 """
 
 from __future__ import annotations
@@ -200,6 +202,71 @@ def prepare_template_image(image: Image.Image, template: MemeTemplate) -> Image.
     return image
 
 
+def overlay_pigeon_hardware_screwdriver(image: Image.Image) -> Image.Image:
+    """Replace the butterfly with a desktop tower + screwdriver (field-news already-clean)."""
+    out = image.copy()
+    draw = ImageDraw.Draw(out)
+    w, h = out.size
+    # Roughly cover the butterfly / subject region (template is ~1587×1425).
+    rx0, ry0 = int(w * 0.40), int(h * 0.12)
+    rx1, ry1 = int(w * 0.92), int(h * 0.78)
+    draw.rectangle((rx0, ry0, rx1, ry1), fill=(235, 242, 250))
+
+    pc_w = int((rx1 - rx0) * 0.38)
+    pc_h = int((ry1 - ry0) * 0.72)
+    pc_x = rx0 + int((rx1 - rx0) * 0.08)
+    pc_y = ry1 - pc_h - int((ry1 - ry0) * 0.06)
+    # Tower
+    draw.rectangle((pc_x, pc_y, pc_x + pc_w, pc_y + pc_h), fill=(45, 55, 68), outline=(20, 25, 32), width=4)
+    # Front panel / mesh
+    mesh_x = pc_x + int(pc_w * 0.12)
+    mesh_y = pc_y + int(pc_h * 0.55)
+    mesh_w = int(pc_w * 0.76)
+    mesh_h = int(pc_h * 0.32)
+    for row in range(4):
+        y = mesh_y + row * (mesh_h // 4)
+        draw.line((mesh_x, y, mesh_x + mesh_w, y), fill=(90, 100, 115), width=2)
+    for col in range(6):
+        x = mesh_x + col * (mesh_w // 6)
+        draw.line((x, mesh_y, x, mesh_y + mesh_h), fill=(90, 100, 115), width=2)
+    # Power LED + USB
+    draw.rectangle((pc_x + int(pc_w * 0.72), pc_y + int(pc_h * 0.12), pc_x + int(pc_w * 0.78), pc_y + int(pc_h * 0.16)), fill=(56, 189, 248))
+    draw.rectangle((pc_x + int(pc_w * 0.55), pc_y + int(pc_h * 0.08), pc_x + int(pc_w * 0.68), pc_y + int(pc_h * 0.11)), fill=(30, 35, 42))
+    # Stand feet
+    foot_y = pc_y + pc_h
+    draw.rectangle((pc_x + int(pc_w * 0.15), foot_y, pc_x + int(pc_w * 0.35), foot_y + int(pc_h * 0.04)), fill=(30, 35, 42))
+    draw.rectangle((pc_x + int(pc_w * 0.65), foot_y, pc_x + int(pc_w * 0.85), foot_y + int(pc_h * 0.04)), fill=(30, 35, 42))
+
+    # Screwdriver (handle + shaft + tip)
+    sd_cx = pc_x + pc_w + int((rx1 - pc_x - pc_w) * 0.35)
+    sd_cy = pc_y + int(pc_h * 0.45)
+    handle_len = int(pc_h * 0.22)
+    shaft_len = int(pc_h * 0.38)
+    handle_w = int(pc_w * 0.14)
+    draw.rounded_rectangle(
+        (sd_cx - handle_w // 2, sd_cy - handle_len // 2, sd_cx + handle_w // 2, sd_cy + handle_len // 2),
+        radius=handle_w // 3,
+        fill=(234, 88, 12),
+        outline=(120, 45, 8),
+        width=3,
+    )
+    tip_x = sd_cx + handle_w // 2 + shaft_len
+    draw.rectangle((sd_cx + handle_w // 2, sd_cy - 6, tip_x, sd_cy + 6), fill=(180, 185, 192), outline=(80, 85, 92), width=2)
+    draw.polygon(
+        [(tip_x, sd_cy), (tip_x + int(pc_w * 0.08), sd_cy - 10), (tip_x + int(pc_w * 0.08), sd_cy + 10)],
+        fill=(180, 185, 192),
+        outline=(80, 85, 92),
+    )
+
+    label = "hardware"
+    font = load_font(max(28, int(w * 0.028)))
+    tw = draw.textlength(label, font=font)
+    tx = pc_x + (pc_w - tw) // 2
+    ty = pc_y + pc_h + int(pc_h * 0.06)
+    draw.text((tx, ty), label, font=font, fill="black", stroke_width=3, stroke_fill="white")
+    return out
+
+
 def detect_text_regions(image: Image.Image, template: MemeTemplate, texts: list[str]) -> list[TextBox]:
     """Infer caption rectangles from template identity and image size."""
     rel = layout_boxes(template, len(texts))
@@ -268,10 +335,11 @@ def draw_centered_text(
     fill: str = "white",
     stroke_fill: str = "black",
     stroke_width: int = 2,
+    max_size: int = 48,
 ) -> None:
     if not text.strip():
         return
-    font, lines = fit_font(text, box, draw)
+    font, lines = fit_font(text, box, draw, max_size=max_size)
     if not lines:
         return
     line_heights = [font.getbbox(line)[3] - font.getbbox(line)[1] for line in lines]
@@ -293,6 +361,75 @@ def paste_text(image: Image.Image, boxes: list[TextBox], texts: list[str]) -> Im
     return out
 
 
+# Title bar + on-image overlays (675×607 uthinkido grid). Under-panel “what my …” captions stay.
+COMPUTER_REPAIR_TITLE_REL = (0.0, 0.0, 1.0, 0.078)
+COMPUTER_REPAIR_IMAGE_OVERLAY_RELS: tuple[tuple[float, float, float, float], ...] = (
+    (0.008, 0.355, 0.318, 0.095),
+    (0.341, 0.355, 0.318, 0.095),
+    (0.674, 0.355, 0.318, 0.095),
+    (0.008, 0.748, 0.318, 0.095),
+    (0.341, 0.748, 0.318, 0.095),
+    (0.674, 0.748, 0.318, 0.095),
+)
+
+
+def prepare_computer_repair_template(image: Image.Image) -> Image.Image:
+    """Cover baked-in title only; keep under-panel who-captions."""
+    out = image.copy()
+    draw = ImageDraw.Draw(out)
+    w, h = out.size
+    rx, ry, rw, rh = COMPUTER_REPAIR_TITLE_REL
+    draw.rectangle(
+        (int(rx * w), int(ry * h), int((rx + rw) * w), int((ry + rh) * h)),
+        fill="black",
+    )
+    return out
+
+
+def computer_repair_layout(width: int, height: int) -> tuple[TextBox, list[TextBox]]:
+    title_boxes = _norm_boxes(width, height, [COMPUTER_REPAIR_TITLE_REL])
+    overlay_boxes = _norm_boxes(width, height, list(COMPUTER_REPAIR_IMAGE_OVERLAY_RELS))
+    return title_boxes[0], overlay_boxes
+
+
+def draw_image_overlay_label(draw: ImageDraw.ImageDraw, box: TextBox, text: str) -> None:
+    """Legible banner on photo panels."""
+    if not text.strip():
+        return
+    pad = 3
+    draw.rectangle(
+        (box.x + pad, box.y + pad, box.x + box.w - pad, box.y + box.h - pad),
+        fill=(0, 0, 0),
+    )
+    draw_centered_text(draw, box, text, fill="white", stroke_fill="black", stroke_width=1, max_size=17)
+
+
+def run_local_file_job(job: dict) -> Path:
+    job_id = job["id"]
+    template_name = job["template_file"]
+    path = TEMPLATES_DIR / template_name
+    if not path.is_file():
+        raise FileNotFoundError(f"Local template not found: {path}")
+    title = job.get("title", "")
+    texts: list[str] = job["texts"]
+    print(f"\n=== {job_id} (local: {template_name}) ===")
+    with Image.open(path) as image:
+        image = prepare_computer_repair_template(image.convert("RGB"))
+        title_box, overlay_boxes = computer_repair_layout(image.width, image.height)
+        out = image.copy()
+        draw = ImageDraw.Draw(out)
+        if title.strip():
+            draw_centered_text(draw, title_box, title, max_size=34)
+        print(f"  [3/3] pasting {len(texts)} on-image label(s)")
+        for box, text in zip(overlay_boxes, texts):
+            draw_image_overlay_label(draw, box, text)
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        out_path = OUTPUT_DIR / f"{job_id}.jpg"
+        out.save(out_path, "JPEG", quality=92)
+        print(f"  wrote {out_path}")
+        return out_path
+
+
 def run_job(job: dict, catalog: list[MemeTemplate], force_download: bool = False) -> Path:
     job_id = job["id"]
     description = job["template_description"]
@@ -303,6 +440,9 @@ def run_job(job: dict, catalog: list[MemeTemplate], force_download: bool = False
     path = download_template(template, force=force_download)
     with Image.open(path) as image:
         image = prepare_template_image(image.convert("RGB"), template)
+        overlay = job.get("overlay")
+        if overlay == "pigeon-hardware-screwdriver":
+            image = overlay_pigeon_hardware_screwdriver(image)
         boxes = detect_text_regions(image, template, texts)
         result = paste_text(image, boxes, texts)
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -350,7 +490,10 @@ def main() -> int:
 
     outputs: list[Path] = []
     for job in jobs:
-        outputs.append(run_job(job, catalog, force_download=args.force_download))
+        if job.get("template_file"):
+            outputs.append(run_local_file_job(job))
+        else:
+            outputs.append(run_job(job, catalog, force_download=args.force_download))
 
     print(f"\nDone. {len(outputs)} meme(s) in {OUTPUT_DIR}")
     return 0

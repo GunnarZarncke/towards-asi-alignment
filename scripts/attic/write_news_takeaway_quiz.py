@@ -56,6 +56,19 @@ MAX_OPTION_SPREAD = 12
 
 questions = [
     Q(
+        "i-can-see-control-panel-oct-2026",
+        "MB7",
+        ["ch07", "ch09", "ch34", "ch36"],
+        "Cleaner neuron poles are progress on the control panel, not the whole machine. What does the post still ask you to check?",
+        "Whether you can simulate the neuron or only name it",
+        [
+            "Whether Cammarata co-authored Zoom In",
+            "Whether the wiki defines mechanistic interpretability",
+            "Whether Zvi called the essay overstated in places",
+        ],
+        "Naming a pole is not simulating it. Training on the detector invites the model to hide the job you most need to see.",
+    ),
+    Q(
         "ward-monitoring-oct-2026",
         "MB4",
         ["ch10", "ch12", "ch25", "ch39", "ch43"],

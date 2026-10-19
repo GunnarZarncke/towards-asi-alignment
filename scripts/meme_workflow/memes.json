@@ -77,5 +77,18 @@
       "",
       "The run stopped, right?"
     ]
+  },
+  {
+    "id": "i-can-see-control-panel",
+    "template_file": "computer-repair-technician.jpg",
+    "title": "Mechanistic interpretability",
+    "texts": [
+      "Microscope for AI",
+      "Alignment is normal science",
+      "You read its mind",
+      "The box is open — we're fine",
+      "90% of neurons have one job",
+      ""
+    ]
   }
 ]

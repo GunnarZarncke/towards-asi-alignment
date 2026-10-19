@@ -9,6 +9,9 @@
 | 2026-10-19 | **Last Safety play telemetry** — Add tracking to the game using the companion site mechanism; record fuel, room id, NPC id, knowle... | [2026-10-19-last-safety-play-telemetry.md](2026-10-19-last-safety-play-telemetry.md) |
 | 2026-10-19 | **Last Safety glossary and leads** — Playtest confusion on the job-queue glossary. Hide that lesson on the first pack, keep the deep d... | [2026-10-19-last-safety-glossary-leads.md](2026-10-19-last-safety-glossary-leads.md) |
 | 2026-10-19 | **Kosoy lenses on TSA** — Apply Vanessa Kosoy's 18 October 2026 lenses where they inform TSA, add them to the review checkl... | [2026-10-19-kosoy-lenses.md](2026-10-19-kosoy-lenses.md) |
+| 2026-10-19 | **I can see control panel field news** — Field news on Cammarata / Zvi mechinterp roundup; meme; rename and author edits; composite-system... | [2026-10-19-i-can-see-control-panel-field-news.md](2026-10-19-i-can-see-control-panel-field-news.md) |
+| 2026-10-19 | **Glossary TSA links** — Replace author-surname "Zarncke" cross-refs in the inter-agenda term glossary with TSA and compan... | [2026-10-19-glossary-tsa-links.md](2026-10-19-glossary-tsa-links.md) |
+| 2026-10-19 | **Already-clean field news** — Write a field-news post in the usual format about Cammarata / Goodfire “Neural Networks Are Alrea... | [2026-10-19-already-clean-field-news.md](2026-10-19-already-clean-field-news.md) |
 | 2026-10-16 | **Last Safety O-41 concept links** — Per-fact optional TSA companion card links (O-41): phone setting, room footer line, persistence, ... | [2026-10-16-last-safety-concept-links.md](2026-10-16-last-safety-concept-links.md) |
 | 2026-10-16 | **Claim-extract combined queue** — Extend the claim-extract plan with spine-name vs informal-warrant lenses and a combined chapter o... | [2026-10-16-claim-extract-queue.md](2026-10-16-claim-extract-queue.md) |
 | 2026-10-16 | **Ch. 1 claim extract and analysis** — Perform the claim extract and analysis for Chapter 1 (first in the combined queue). | [2026-10-16-ch01-claim-extract.md](2026-10-16-ch01-claim-extract.md) |
@@ -18,13 +21,10 @@
 | 2026-10-15 | **Last Safety start screen** — Add a pre-game start screen that drops the player into the scenario: task, short-notice framing, ... | [2026-10-15-last-safety-start-screen.md](2026-10-15-last-safety-start-screen.md) |
 | 2026-10-15 | **Last Safety room UI and mobile handset** — Room chat layout, completion latency investigation, Lab Access notification clarity, narrow-viewp... | [2026-10-15-last-safety-room-ui-mobile.md](2026-10-15-last-safety-room-ui-mobile.md) |
 | 2026-10-15 | **Last Safety public-hosting hardening** — Prompts: paraphrase only (no prompt id). User asked for a safety review of the game for public ho... | [2026-10-15-last-safety-public-hosting-hardening.md](2026-10-15-last-safety-public-hosting-hardening.md) |
-| 2026-10-15 | **Last Safety photo pipeline and transcript collapse** — Follow-up on handset/room UX: photos not viewable or black; transcript log should hide off-input ... | [2026-10-15-last-safety-photo-transcript-fixes.md](2026-10-15-last-safety-photo-transcript-fixes.md) |
-| 2026-10-15 | **Last Safety onboarding hints** — Playtests: people wander, miss what they can do, and do not realize speaking and the phone are th... | [2026-10-15-last-safety-onboarding-hints.md](2026-10-15-last-safety-onboarding-hints.md) |
-| 2026-10-15 | **Last Safety NPC dialogue and DM phrasing** — Explain the reply pipeline (parse → engine → phrasing), what is not phrased, and why dialogue fel... | [2026-10-15-last-safety-npc-dialogue-dm-phrasing.md](2026-10-15-last-safety-npc-dialogue-dm-phrasing.md) |
 
 ## Archive by month
 
-- **2026-10** (77): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-10** (80): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

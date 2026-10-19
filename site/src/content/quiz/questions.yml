@@ -2475,6 +2475,36 @@ questions:
   - "chapter:ch28"
   tags:
   - takeaway
+- id: news-takeaway-i-can-see-control-panel-oct-2026
+  prompt: Cleaner neuron poles are progress on the control panel, not the whole machine.
+    What does the post still ask you to check?
+  options:
+  - id: take
+    text: Whether you can simulate the neuron or only name it
+    correct: true
+  - id: d0
+    text: Whether Cammarata co-authored Zoom In
+    correct: false
+  - id: d1
+    text: Whether the wiki defines mechanistic interpretability
+    correct: false
+  - id: d2
+    text: Whether Zvi called the essay overstated in places
+    correct: false
+  explanation: "Naming a pole is not simulating it. Training on the detector invites the model
+    to hide the job you most need to see."
+  source:
+    href: /cards/chapter/ch07/
+    label: Chapter 7 — Finding the Boundary
+  topics:
+  - MB7
+  appearOn:
+  - "chapter:ch07"
+  - "chapter:ch09"
+  - "chapter:ch34"
+  - "chapter:ch36"
+  tags:
+  - takeaway
 - id: news-takeaway-ward-monitoring-oct-2026
   prompt: Ward collates frontier-lab monitoring — review clocks, transcript review, and human tails.
     What does documenting those practices still fail to settle?

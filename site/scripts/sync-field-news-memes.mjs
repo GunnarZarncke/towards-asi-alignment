@@ -45,6 +45,10 @@ const MEMES = [
   {
     src: "scripts/meme_workflow/output/openai-dns-chatbot.jpg",
     dest: "field-news/memes/2026-09-openai-dns-chatbot.jpg"
+  },
+  {
+    src: "scripts/meme_workflow/output/i-can-see-control-panel.jpg",
+    dest: "field-news/memes/2026-10-i-can-see-control-panel.jpg"
   }
 ];
 
