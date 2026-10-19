@@ -26,4 +26,4 @@ Prompts: paraphrase only (no prompt id in transcript)
 - `cd game/the-last-safety-review && DEMO_MODE=1 npm test` — 156 pass, 0 fail.
 
 ## Commits
-- (this session)
+- `13fa67b1a` — Last Safety: rename game folder and unify social NPC replies.
