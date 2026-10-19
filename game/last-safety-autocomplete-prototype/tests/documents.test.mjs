@@ -67,9 +67,18 @@ test('queue excerpt names host and neighboring jobs', () => {
 test('glossary consolidates lab access and job queue', () => {
   const text = renderDocument('wiki-glossary', 'boundary-narrow');
   assert.match(text, /Lab Access/);
+  assert.match(text, /The handset the lab gives you/);
   assert.match(text, /Job queue/);
+  assert.match(text, /own name there/);
+  assert.doesNotMatch(text, /keep running/);
   assert.match(text, /EVAL-SD-47/);
   assert.match(text, /Virtual projector/);
+  assert.match(text, /It is not a video call/);
+});
+
+test('glossary on a later pack states that an accepted job keeps running', () => {
+  const text = renderDocument('wiki-glossary', 'named-path');
+  assert.match(text, /keep running after the chat/);
 });
 
 test('renderDocumentSource handles inline include fragments', () => {

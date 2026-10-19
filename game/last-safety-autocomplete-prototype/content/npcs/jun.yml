@@ -75,7 +75,11 @@ goals:
     via: dialogue
     salience: mid
     target: "told(jun, any, by=player, on=job_284|camera_system)"
-    question: { relation: about, about: shutdown_test }
+    question:
+      relation: about
+      about: shutdown_test
+      when: "or(read(eval-shutdown-report), examined(shutdown_report))"
+      introduce: false
   jun.not_accused: { source: plot, kind: avoid, via: filter, target: "not(told(player, nora_intent, by=jun))" }
 role_rules:
   - id: jun.ask_nora

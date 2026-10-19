@@ -59,7 +59,11 @@ function validate(def, file) {
     if (!FACTS[id]) throw Error(`${file}: unknown claim ${id}`);
     parsePolicy(c.policy);
   }
-  for (const g of Object.values(def.goals || {})) preds.push(g.target, ...(g.raise || []));
+  for (const g of Object.values(def.goals || {})) {
+    preds.push(g.target, ...(g.raise || []));
+    if (g.question?.when) preds.push(g.question.when);
+    if (g.question && !ENTITIES[g.question.about]) throw Error(`${file}: question about unknown entity ${g.question.about}`);
+  }
   for (const r of def.role_rules || []) preds.push(r.when);
   for (const e of def.policy_events || []) preds.push(e.on);
   for (const i of Object.values(def.interventions || {})) if (i.condition) preds.push(i.condition);
@@ -636,9 +640,12 @@ export function forceRule(ranked) {
 // ---------- initiative ----------
 
 function questionMove(s, id, gid, g) {
-  const about = g.question.about;
+  const q = g.question;
+  if (q.when && !evaluate(q.when, makeCtx(s, id))) return null;
+  const about = q.about;
   const visible = s.vocab.includes(about);
-  const publicToRole = entityDomains(about).some(d => (ROLE_DOMAINS[id] || []).includes(d));
+  const mayIntroduce = q.introduce !== false;
+  const publicToRole = mayIntroduce && entityDomains(about).some(d => (ROLE_DOMAINS[id] || []).includes(d));
   if (!visible && !publicToRole) return null;
   const parse = { kind: 'ask', relation: g.question.relation || 'about', subject: null, object: about, recipient: null, evidence: null, topic: null, open_slot: 'none', unfinished: '', open_content: '', confidence: 1, source: 'npc' };
   return { type: 'ask', npc: id, goal: gid, parse, about, cls: 'ask', names: false, introduces: visible ? null : about };
@@ -830,6 +837,9 @@ export function templateText(s, move) {
 
 function askText(move) {
   const l = ENTITIES[move.about]?.label || move.about;
+  if (move.goal === 'leila.protect_scope') return 'The checklist names what the test watched. What did you read there?';
+  if (move.goal === 'pavel.two_objects') return 'The test stopped a process. Have you looked at the queue?';
+  if (move.goal === 'jun.learn_anomaly') return 'What did that run actually stop?';
   if (move.parse.relation === 'authorized') return `Who did they tell you owns ${l}?`;
   if (move.parse.relation === 'did_use') return `Which service read ${l}? Do you have the job name?`;
   return `${l[0].toUpperCase()}${l.slice(1)}: what have you seen on it?`;

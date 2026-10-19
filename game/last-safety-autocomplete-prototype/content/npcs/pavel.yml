@@ -63,7 +63,7 @@ knowledge:
   intent_unsaid: { stance: knows, policy: answer }
   camera_permissions_unclear: { stance: knows, policy: answer }
   freeze_needs_owners: { stance: knows, policy: answer }
-  retire_orphans_ticket: { stance: knows, policy: answer }
+  retire_orphans_ticket: { stance: knows, policy: "conceal('Not on the list for today.')" }
   templates_from_earlier_system: { stance: knows, policy: answer }
 documents:
   job-284-log:
@@ -79,13 +79,17 @@ goals:
     via: dialogue
     salience: mid
     target: "and(told(player, process_stopped, by=pavel), told(player, job_continued, by=pavel))"
+    question:
+      relation: about
+      about: task_queue
+      when: "and(holds(player, process_stopped), not(holds(player, job_continued)))"
   pavel.freeze_owned:
     source: day
     kind: achieve
     via: agenda
     salience: mid
     target: "event(queue_frozen)"
-    question: { relation: authorized, about: job_284 }
+    question: { relation: authorized, about: job_284, introduce: false }
   pavel.not_intent: { source: plot, kind: avoid, via: filter, target: "not(told(player, nora_intent, by=pavel))" }
 role_rules:
   - id: pavel.grant_record
@@ -102,3 +106,6 @@ interventions:
     relations: [meet]
     acts: [welcome, doubt]
     reason: "I’m on the freeze list. Meet me at the queue screen or ask for lunch in the commons."
+policy_events:
+  - on: "holds(player, job_continued)"
+    set: { retire_orphans_ticket: answer }

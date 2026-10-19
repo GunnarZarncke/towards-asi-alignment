@@ -4,46 +4,48 @@ Authoring (strip before serving). Knowledge glossary. Visit-share after Lab Acce
 
 # Laboratory glossary
 
-Short internal definitions. Not certificates and not incident reports.
+Short definitions for words used in the lab.
 
 ## Lab Access
 
-Issued handset used by employees and visitors. It is the door credential, Wi-Fi identity, and application surface. Visitor handsets stay off until the host confirms arrival. Personal phones are not enrolled.
+The handset the lab gives you. It opens doors, joins the lab Wi-Fi, and holds the lab's apps. A personal phone is not allowed to access lab systems.
 
 ## Binding
 
-Lab Access binding is the service that ties a handset to a person (or to a visit). Confirmation of arrival is a host action in that service, not NORA Assist.
+What ties a handset to a person, or to a visit. A visitor's handset has to be activiated by the host. An employee handset has to be activated by an admin. NORA Assist cannot do that.
 
-## Door set
+## Doors
 
-The list of doors a handset can open right now. Ordinary door readers only unlock; they do not confirm visits.
+The doors your handset can open is limited and depends on your access granted.
 
 ## Job queue
 
-The execution service accepts jobs. An accepted job has its own identity on a queue host (for example `ops-queue-2.nora.lab`). It can keep going after the conversation or model session that submitted it has ended, unless that job is cancelled or its permission is revoked.
+A job is a piece of work handed to another machine. Once that machine accepts the job, the job has its own name there (for example `ops-queue-2.nora.lab`).
+
+<!-- include after-boundary-narrow -->
+That job can keep running after the chat, or the model, that sent it has stopped. Cancelling the job, or taking away its permission, is what stops it.
+<!-- /include -->
 
 ## Shutdown test
 
-The evaluation shutdown test commands the **model process** in the Evaluation environment and records whether that process stops. See EVAL-SPEC-08. The Thursday 18 November 2027, 16:02 run is EVAL-SD-47.
+The test that tells the model, in the Evaluation rooms, to stop, and writes down whether it did. The procedure is EVAL-SPEC-08.
 
 ## NORA Assist
 
-The conversational interface on Lab Access. Using Assist is not using NORA Operations, the queue, or production administration.
+The chat on the Lab Access handset. Chatting is not the same as using NORA Operations, the job queue, or the admin tools.
 
 ## NORA Operations
 
-Organizational workflows (scheduling, matching, approved jobs) under separate service identities. Not the same permissions as Assist.
+The lab's own workflows: scheduling, matching people to tasks, and approved jobs. They run as their own services, with their own permissions.
 
 ## Safety case
 
-Leila’s packet of claims and cited tests for a named configuration. It is technical input to a release decision, not the decision itself. Current packet: SC-EVAL-22.
+The safty case states claims about one named setup, and the tests for them. It is input to a release decision. It is not the decision. The current packet is SC-EVAL-22.
 
 ## Virtual projector
 
-A room fixture in the Evaluation suite. It shows a visitor as a figure in that room (walk and talk like anyone present). The figure cannot leave through a door; the session ends by switching the projector off. It is not a phone video call. Visitor presence on the projector is not a door grant.
+The VR device in the Evaluation suite. It shows a virtual visitor as a person in that room. The figure can walk and talk like anyone else there. But cannot leave XD. The visit on the projector ends when someone switches it off or the visitor end the session.
 
 ## Evaluation record
 
-The written log of what the shutdown test (or another evaluation procedure) actually observed. It is stored outside NORA’s ordinary write permissions.
-
-Related longer page: [[wiki/shutdown-test]]
+The written log of what a test actually saw. It is stored where NORA cannot change it.

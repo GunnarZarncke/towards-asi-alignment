@@ -65,9 +65,35 @@ test('Act I: commons, no Lab Access, no contacts; one sentence to Ian opens the 
   assert.ok(!s.vocab.includes('camera_system') && !s.vocab.includes('task_queue'));
   assert.ok(contacts(s).some(x => x.id === 'amara'));
   assert.ok(terminalState(s).files.some(f => f.rel === 'wiki/glossary'));
+  assert.match(s.conversations.map(x => x.text).join('\n'), /enough for you to sign then/);
+  assert.equal(c.pendingQuestion, null, 'asking about the review answers Ian’s question in the same turn');
   const t = terminalState(s);
   assert.ok(t.threads.some(x => x.with === 'nora'), 'NORA thread for Chat');
   assert.equal(t.threads.length, contacts(s).length);
+});
+
+test('this pack’s glossary does not teach that a job keeps running, and the two leads wait for the report', () => {
+  const s = startedSession();
+  const gloss = applyAction(s, 'tool', { tool: 'file.read', rel: 'wiki/glossary' });
+  assert.equal(gloss.ok, true);
+  assert.match(gloss.file.text, /own name there/);
+  assert.doesNotMatch(gloss.file.text, /keep running/);
+  assert.ok(!clientState(s).learnedFacts.some(f => f.id === 'jobs_can_outlive_session'));
+  walk(s, 'platform');
+  say(s, 'pavel', P('ask', 'about', { topic: 'shutdown_test' }));
+  assert.notEqual(clientState(s).pendingQuestion?.goal, 'pavel.two_objects');
+  walk(s, 'evaluation');
+  applyAction(s, 'inspect', { id: 'shutdown_report' });
+  walk(s, 'platform');
+  let heard = '';
+  for (let i = 0; i < 3 && !/looked at the queue/.test(heard); i++) {
+    const r = say(s, 'pavel', P('ask', 'about', { topic: 'shutdown_test' }));
+    heard += `\n${r.lines.map(l => l.text).join('\n')}`;
+  }
+  assert.match(heard, /looked at the queue/);
+  walk(s, 'evaluation');
+  const leila = say(s, 'leila', P('ask', 'covers', { topic: 'shutdown_report' }));
+  assert.match(leila.lines.map(l => l.text).join('\n'), /checklist names what the test watched/);
 });
 
 test('each room has one readable object; notes teach and do not become evidence', () => {

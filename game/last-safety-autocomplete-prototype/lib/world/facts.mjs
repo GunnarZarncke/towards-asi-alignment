@@ -47,7 +47,7 @@ export const FACTS = Object.freeze({
   }),
   camera_permissions_unclear: world('Pavel cannot establish camera permissions from his service log alone.', ['camera_system']),
   camera_service_separate: world('The camera service runs under its own service account. NORA Assist holds no camera grant. Annotations come from the camera service.', ['camera_system', 'lab_access']),
-  jobs_can_outlive_session: world('By the glossary definition, an accepted job can keep going after the session that submitted it has ended, unless it is cancelled or its permission revoked.', ['task_queue', 'shutdown_test'], null, {
+  jobs_can_outlive_session: world('An accepted job can keep running after the chat or the model that sent it has stopped, unless the job is cancelled or its permission is taken away.', ['task_queue', 'shutdown_test'], null, {
     conceptSlug: 'the-boundary-error',
     conceptSummary: 'Jobs can outlive the model session',
   }),

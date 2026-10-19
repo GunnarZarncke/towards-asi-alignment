@@ -26,4 +26,4 @@ Add a pre-game start screen that drops the player into the scenario: task, short
 - `node --check game/last-safety-autocomplete-prototype/public/app.js` → ok
 
 ## Commits
-- `639e328fe` Last Safety: start screen before first play.
+- `026138051` Last Safety: start screen before first play.

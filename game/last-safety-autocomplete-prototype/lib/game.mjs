@@ -369,7 +369,8 @@ function confirmLabAccess(s) {
   for (const id of CALENDAR_CAST) introduce(s, id);
   addFile(s, 'wiki-glossary', 'justine');
   notify(s, 'calendar', 'Today’s schedule', 'Your visit calendar is ready. Tap to see briefings and meetings.', { kind: 'app', id: 'calendar' });
-  s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here.', refs: ['lab_access', 'justine', 'review'] });
+  s.conversations.push({ role: 'npc', npc: 'ian', text: 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here. Is a pass on Thursday\'s test enough for you to sign then?', refs: ['lab_access', 'justine', 'review', 'shutdown_test'] });
+  s.npcs.ian.pendingQuestion = { npc: 'ian', goal: 'ian.no_surprise', parse: makeParse({ kind: 'ask', relation: 'about', topic: 'review', open_slot: 'none', source: 'npc' }), at: s.fuelSpent };
   seedContactThreads(s);
   syncVisitorClearance(s);
   return [];
@@ -430,7 +431,10 @@ export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
     return { moves: [], lines: [{ npc, text: 'I need to see the actual record first.' }], effects: [] };
   }
   const turn = talkTo(s, npc, parse, { shownDoc, visitKey: `room${s.visit}`, channel: 'person' });
+  const priorQuestion = s.npcs.ian.pendingQuestion;
   const left = (s.act === 'welcome' && npc === 'ian') ? confirmLabAccess(s) : [];
+  const asked = s.npcs.ian.pendingQuestion;
+  if (asked && asked !== priorQuestion && parseIds(parse).some(x => parseIds(asked.parse).includes(x))) s.npcs.ian.pendingQuestion = null;
   const offTurn = spend(s, 1);
   return { ...turn, lines: [...turn.lines, ...left, ...offTurn] };
 }

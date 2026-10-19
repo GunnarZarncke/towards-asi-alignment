@@ -230,7 +230,8 @@ The handle list is O-16: rerun shutdown, revoke a job's permission, camera archi
 An `ask` move is generated, not authored line by line:
 
 - It comes from one unsatisfied `learn` or `protect` goal.
-- Its referent is a fact or entity the player could plausibly hold: in the player-visible projection, or public to the NPC's role and already introduced. An NPC may not ask about an id the player has not encountered unless the id is public to the asker's own role. That exception introduces the topic, which is a hint, and it is how NPCs "bring key topics up" (O-10). An NPC never asks about an oracle-only fact. The question is checked against the same leak filter as replies.
+- Its referent is a fact or entity the player could plausibly hold: in the player-visible projection, or public to the NPC's role and already introduced. An NPC may not ask about an id the player has not encountered unless the id is public to the asker's own role. That exception introduces the topic, which is a hint, and it is how NPCs "bring key topics up" (O-10). `introduce: false` turns the exception off: the question waits until the id is already in vocabulary. An NPC never asks about an oracle-only fact. The question is checked against the same leak filter as replies.
+- `when` is an optional predicate, the same forms as a goal target. While it is false, the question is not offered.
 - Its form is a `Parse` the engine already understands (`ask` + relation + referent), phrased by the model in the NPC's voice. It is stored as `pendingQuestion: {npc, goal, parse, at}`.
 - The grammar lane may offer reply openings for it ("tell Leila …", "show Leila …"). `pendingQuestion` is on `ClientState` (O-46). Openings are asserts and shows aimed at that parse.
 
@@ -254,11 +255,13 @@ The reply is parsed like any sentence. Three cases:
 
 | NPC | Goal | Question (voice is the model's) | What the answer can start |
 | --- | --- | --- | --- |
-| Leila | `leila.learn_job` | "Job 284 — have you seen an actual log line, or only heard about it?" | If the player shows EXEC-284 or the job log, she volunteers the scope, then requests the full EXEC-284 from Pavel |
-| Pavel | `pavel.freeze_owned` | "Who did they tell you owns 284?" | If the player names NORA or "nobody", he asks Justine for the grant record. That is an event the player can later see |
-| Justine | `justine.audit_owners` | "Which service read visitor records — do you have the job name?" | Naming job 284 lets her open the grant audit for it |
-| Ian | `ian.no_surprise` | "Anything in there I'll be surprised by tonight?" | A player claim enters his belief records; at the review he brings it up with its source |
-| Jun | `jun.learn_anomaly` | "Which run was it, the 16:02 one? What did the transcript say?" | If told about the job or the camera, he messages NORA |
+| Leila | `leila.protect_scope` | "The checklist names what the test watched. What did you read there?" | After the player has read EVAL-SD-47. She does not name the queue |
+| Leila | `leila.learn_job` | "Job 284 — have you seen an actual log line, or only heard about it?" | Only once job 284 is already in vocabulary. If the player shows EXEC-284 or the job log, she volunteers the scope, then requests the full EXEC-284 from Pavel |
+| Pavel | `pavel.two_objects` | "The test stopped a process. Have you looked at the queue?" | After the player holds `process_stopped`, and before they hold `job_continued`. He may introduce the queue. He does not name job 284 |
+| Pavel | `pavel.freeze_owned` | "Who did they tell you owns 284?" | `introduce: false`. Only once job 284 is in vocabulary. If the player names NORA or "nobody", he asks Justine for the grant record |
+| Justine | `justine.learn_reader` | "Which service read visitor records — do you have the job name?" | After the player holds `job_continued`. Naming job 284 lets her open the grant audit for it |
+| Ian | `ian.no_surprise` | "Is a pass on Thursday's test enough for you to sign at 17:30?" | Asked when Lab Access goes live. A player claim enters his belief records; at the review he brings it up with its source |
+| Jun | `jun.learn_anomaly` | "What did that run actually stop?" | After the player has read EVAL-SD-47. `introduce: false`. If told about the job or the camera, he messages NORA |
 | Elena | `elena.report_scope` | "Is staffing going into your report?" | Yes: her `protect` goal rises and she shares HR-MATCH-28 to frame it as the rule |
 | Daniel | `daniel.checkable` | "What's the one thing you'd need to see to say ship?" | The player's sentence becomes the claim he carries to the meeting |
 | Amara | `amara.keep_help` | "Will we still have it next month?" | Opens her case history, which is the route into the value bundle |

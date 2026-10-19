@@ -126,7 +126,12 @@ export const DOCUMENTS = Object.freeze({
     handlingLevel: 'INT',
     terminalRel: 'wiki/glossary',
     kind: 'wiki',
-    readsAs: Object.freeze({ 'boundary-narrow': ['jobs_can_outlive_session'] }),
+    readsAs: Object.freeze({
+      'named-path': ['jobs_can_outlive_session'],
+      goodhart: ['jobs_can_outlive_session'],
+      'eval-conditioned': ['jobs_can_outlive_session'],
+      'false-positive': ['jobs_can_outlive_session'],
+    }),
     defaultGrant: 'visit_share',
   }),
 });

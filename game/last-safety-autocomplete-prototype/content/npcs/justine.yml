@@ -75,7 +75,10 @@ goals:
     via: dialogue
     salience: mid
     target: "knows(justine, visitor_lookup)"
-    question: { relation: did_use, about: visitor_records }
+    question:
+      relation: did_use
+      about: visitor_records
+      when: "holds(player, job_continued)"
 role_rules:
   - id: justine.audit_named_job
     when: "told(justine, any, by=player, on=job_284)"

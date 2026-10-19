@@ -79,6 +79,11 @@ goals:
     salience: mid
     target: "told(player, test_scope_narrow, by=leila)"
     raise: ["asserted(test_failed_without_line)"]
+    question:
+      relation: covers
+      about: shutdown_report
+      when: "or(read(eval-shutdown-report), examined(shutdown_report))"
+      introduce: false
   leila.learn_job:
     source: plot
     kind: learn
