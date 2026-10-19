@@ -31,4 +31,4 @@ Prompts: (paraphrase-only — no telemetry id in thread)
 - `cd game/last-safety-autocomplete-prototype && node --test tests/telemetry.test.mjs` → `ℹ pass 5` / `ℹ fail 0`.
 
 ## Commits
-- (this session)
+- `ce16dd6f5` Last Safety: play telemetry aligned with companion site analytics.
