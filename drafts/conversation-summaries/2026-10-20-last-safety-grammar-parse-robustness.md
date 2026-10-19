@@ -31,4 +31,4 @@ Prompts: paraphrase only (no prompt id in transcript)
 - `cd game/last-safety-autocomplete-prototype && DEMO_MODE=1 npm test` — 155 pass, 1 skipped.
 
 ## Commits
-- (this session)
+- `5fdf7595c` — Last Safety: harden grammar parsing and LLM multi-clause handling.
