@@ -20,7 +20,7 @@ external:
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** Cleaner neurons are a better microscope. They are not a mind-reader, and they do not make aligning superintelligence into ordinary science.
+**If you remember one thing:** Cleaner neurons are a better microscope. This does not make aligning superintelligence ordinary science.
 
 <figure class="book-figure book-figure--meme">
 <img src="/field-news/memes/2026-10-i-can-see-control-panel.jpg" alt="Mechanistic interpretability meme: on-image labels Microscope for AI through 90% of neurons have one job." />

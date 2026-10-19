@@ -23,4 +23,4 @@ Prompts: paraphrase only (no prompt id)
 - `metadata/field-news.yml` (slug `field-news-i-can-see-control-panel-oct-2026`)
 
 ## Commits
-- (this session)
+- `ea6d9c0f9` Add field news on clean-neuron mechinterp hype and limits.

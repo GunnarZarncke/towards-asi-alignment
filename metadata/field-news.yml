@@ -10,9 +10,9 @@ fieldNews:
     eventDate: 2026-10-19
     kind: research
     title: "I can see everything ... of the control panel"
-    hook: "Nick Cammarata says neurons in large models are cleaner than the field feared. Zvi lands in the middle: real progress, not solved interp or alignment. Yudkowsky’s cut is a screwdriver on the tower — not the computer."
-    summary: "On 19 October 2026 Nick Cammarata argued that much apparent polysemanticity was recursive generalization, not arbitrary packing, and that most neuron poles in Qwen3-32B have one main job. Zvi’s roundup treats the essay as valuable and overstated — not interpretability or alignment soon handled. Eliezer Yudkowsky, via Zvi, keeps the gap: you can pry the panel; that is not understanding the machine or aligning ASI as normal science."
-    decision: "Ask: (1) Can you simulate the neuron, or only name it? (2) If you train against the microscope, where will harm move?"
+    hook: "Nick Cammarata says neurons in LLMs are clean. Real progress, but not solved mechinterp. Alignment largely open."
+    summary: "On 19 October 2026 Nick Cammarata argued that apparent polysemanticity was recursive generalization and that most neurons have one main job. Zvi’s roundup treats it as valuable and overstated. Eliezer Yudkowsky: you can pry the panel; that is not understanding the machine or aligning ASI."
+    decision: "Ask: (1) Do you understand the effects of the neuron? (2) If you train against the microscope, where will harm move?"
     bookChapters:
       - ch07
       - ch09
