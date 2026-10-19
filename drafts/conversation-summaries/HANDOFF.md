@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-19 (Kosoy lenses and App B row).
+Last updated: 2026-10-19 (inter-agenda glossary TSA links).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-19:** **Inter-agenda glossary TSA links** — Cross-agenda refs use TSA and companion URLs instead of author surname. Log: `2026-10-19-glossary-tsa-links.md`.
 - **2026-10-19:** **Kosoy lenses** — Ch. 10 side-channel quote and Ch. 44 convergence quote (`kosoy2026alignmentproblem`). App B splits logical induction from the learning-theoretic agenda. Review claim checklist gains the four lenses. Log: `2026-10-19-kosoy-lenses.md`.
 - **2026-10-19:** **Last Safety glossary and leads** — Plain glossary; on boundary-narrow a job is named and the “keeps running” sentence is withheld. Ian asks whether a pass is enough to sign. Leila and Pavel point at the checklist and the queue only after the shutdown report. Log: `2026-10-19-last-safety-glossary-leads.md`.
 - **2026-10-19:** **Last Safety play telemetry** — Mutating API responses carry `{ fuel, room, act, npc, knowledge }`; engine events enriched; client localStorage + optional JSONL (`TELEMETRY_LOG`) and Cloudflare Web Analytics on public hosts. Log: `2026-10-19-last-safety-play-telemetry.md`.
