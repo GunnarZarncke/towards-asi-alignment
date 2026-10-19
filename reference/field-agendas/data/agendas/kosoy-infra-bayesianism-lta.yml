@@ -92,8 +92,8 @@ bookSeparates: >-
   protocol already discharges them, is an open disagreement—not a claim that PSI
   is missing those pieces in her terms.
 manuscriptHooks:
-  - App B intervention map (logical induction / infra-Bayesian cluster)
-  - "bib `kosoy2022predca`"
+  - App B intervention map (LTA / infra-Bayesianism mapped to MB1, MB2, MB3, MB5, MB7, MB9; logical induction as an MB7d neighborhood)
+  - "bib `kosoy2022predca`; bib `kosoy2026alignmentproblem`"
   - glossary PreDCA / PSI row
 links:
   - label: "LTA (2018 overview)"

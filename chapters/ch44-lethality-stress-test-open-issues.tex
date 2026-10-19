@@ -147,6 +147,13 @@ This book partly agrees.
 It rejects a safety process that learns only after open-ended deployment.
 The response is not ``try and monitor.'' It is certified-class restriction before dangerous deployment: boundary, correction, successor, and adversarial-measurement claims must bind the deployment class before the system can cross irreversible thresholds.
 The open issue is whether such a class can be made broad enough to matter and narrow enough to certify.
+Kosoy's convergence lens says why that issue is structural.
+``Learning fails (i.e.\ doesn't converge at all) when irreversible mistakes are possible,'' because learning requires exploration and ``in the real world unlimited exploration produces irrecoverable mistakes.''
+Usual regret theorems ``rule out irreversible mistakes by fiat,'' by assuming the environment resets or every state stays reachable.
+``The alignment problem itself is our attempt to avoid the irreversible mistake of creating unaligned superintelligence'' \autocite{kosoy2026alignmentproblem}.
+A correction channel helps when a later try still exists.
+Certified-class restriction is an attempt to keep the first dangerous step inside a class where that later try exists.
+A safety case that leans on correction after the irreversible step has left the regime where this convergence question has an answer.
 
 \paragraph{Pivotal act.}
 The pivotal-process frame names the desired basin transition: \(\mathbb{B}_{\mathrm{race}}\to\mathbb{B}_{\mathrm{certified}}\).
@@ -192,6 +199,8 @@ Inner misalignment becomes more legible, not that it disappears.
 Strategic opacity is the recurring adversarial problem.
 Perturbation tests, hidden randomization, and multiscale decomposition can catch weaker forms of deception.
 Against a system that recognizes the test, controls the measurement surface, or can afford the cost of faking, those tests degrade to observable theater.
+The same gap, stated for guarantees rather than for tests, is Kosoy's side-channel lens: benign behavior on the intended interface can coexist with an internal computation that copies an unaligned successor \autocite{kosoy2026alignmentproblem}.
+The measurement reading is in Chapter~\ref{ch:strategic-opacity}.
 The open route is the cost relation of Chapter~\ref{ch:verifiability-ontology} or proof-style guarantees that do not depend on reading the system's presentation.
 
 \paragraph{Uncheckable outputs.}

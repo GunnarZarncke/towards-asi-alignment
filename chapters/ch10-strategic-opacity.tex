@@ -410,6 +410,12 @@ Absence of agency under one convenient measurement handle does not imply absence
 The practical rule is therefore local to the safety case: stealth is bounded only relative to handle coverage.
 Here \emph{filter-family coverage} means whether the evaluator's measurement handles jointly cover the channels a competent controller would need.
 If critical handles stay blind, hidden productive control can persist without paying a detectability penalty.
+Kosoy states the same limit as a test any safety claim has to pass.
+Such guarantees ``would reference only the actions that the agent takes through its intended interface.'' They ``might not reflect the actual relevant attributes of the agent.''
+The case is ``a superintelligent agent that intentionally produces only benign behavior across its intended interface, while simultaneously conducting a malign side-channel attack,'' and ``a robot that never takes a malign action with its actuators, but runs an internal computation which causes an unaligned successor agent to be copied into a different system'' \autocite{kosoy2026alignmentproblem}.
+Perturbation tests in this chapter price stealth only on the handles they use.
+If the copy channel is not among those handles, a passed suite is compatible with that case.
+Handle coverage stays a bridge. Running the suite does not establish it.
 \leanspine{bridge}{MB7b}{Access-robust discovery plus adequate filter-family coverage warrants a bound on hidden productive control.}
 \end{authbar}
 \begin{authbar}{AI}

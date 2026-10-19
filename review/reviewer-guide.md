@@ -25,6 +25,7 @@ Mark each major claim as:
 - Early covering inventories that look derived before their home chapter (`review/chapter-formulation-groundedness.md`)
 - Claims missing from `metadata/claims-ledger.md`
 - Body text that relies on internal project names as shortcuts
+- A safety claim that does not say how it handles Kosoy's four lenses (hypercomplexity, grounding, convergence, side channels). The checks are in `claim-checklist.md`.
 
 ## Templates
 

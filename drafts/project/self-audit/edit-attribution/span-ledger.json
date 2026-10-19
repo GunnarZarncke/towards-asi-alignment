@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261016T164026.394Z",
+  "_as_of": "20261019T150739.465Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1042,6 +1042,14 @@
     "file": "chapters/ch09-composite-agent.tex",
     "human": 0,
     "index": 39,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch10-strategic-opacity.tex#11": {
+    "agent": 6,
+    "file": "chapters/ch10-strategic-opacity.tex",
+    "human": 0,
+    "index": 11,
     "key": "AI",
     "prior": "AI"
   },
@@ -2317,6 +2325,14 @@
     "human": 5,
     "index": 9,
     "key": "GZ+AI",
+    "prior": "AI"
+  },
+  "chapters/ch44-lethality-stress-test-open-issues.tex#6": {
+    "agent": 9,
+    "file": "chapters/ch44-lethality-stress-test-open-issues.tex",
+    "human": 0,
+    "index": 6,
+    "key": "AI",
     "prior": "AI"
   },
   "chapters/ch44-lethality-stress-test-open-issues.tex#7": {
