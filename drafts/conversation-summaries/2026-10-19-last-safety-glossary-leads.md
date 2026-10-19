@@ -13,7 +13,7 @@ Prompts: paraphrase (no prompt id on the request)
 - content: Leila asks what the checklist watched after the report is read. Pavel asks whether they have looked at the queue after `process_stopped` and before `job_continued`, and asks who owns job 284 only once that job is known. Justine asks which service read visitor records only after `job_continued`. Jun asks what the run stopped only after the report. Questions take optional `when` and `introduce: false`.
 - content: Pavel’s “jobs that outlive their callers” ticket stays concealed until the player holds `job_continued`.
 - content: EVAL-SD-47 Limitations, SC-EVAL-22 non-claims, and the SEC-ARCH-11 includes were left as they were.
-- bookkeeping: `npm test` in `game/last-safety-autocomplete-prototype` — 130 pass, 4 fail. New glossary and lead tests passed. Failures: Jun `work_alt` not matching `/^I[’']/`, `go('tech')` clearance reset, Hi still offered because Justine is also in Platform, courtyard text visit blocked by badge. Those four were not part of this change.
+- bookkeeping: `npm run test:engine` in `game/last-safety-autocomplete-prototype` — 38 pass, 0 fail. Full `npm test`: 130 pass, 4 fail (Jun `work_alt`, `go('tech')` clearance, Hi with Justine in room, courtyard badge); pre-existing / unrelated to this change.
 
 ## Decisions
 - The buried Limitations paragraph stays the deep read. The glossary is the early page, so it defines a job and does not state the lesson on this pack.
@@ -30,4 +30,4 @@ Prompts: paraphrase (no prompt id on the request)
 - `game/last-safety-autocomplete-prototype/lib/game.mjs`
 
 ## Commits
-- none
+- `b512f0295` Last Safety: delay glossary spoiler and gate NPC lead questions.
