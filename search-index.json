@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T21:19:01.124Z",
+  "generatedAt": "2026-10-19T23:12:53.598Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1917,7 +1917,7 @@
     {
       "title": "Outer Alignment",
       "type": "glossary",
-      "summary": "Field name (Hubinger) for whether the training pointer or stated objective is the intended target — not a TSA native object. Splits into specify, identification (MB2/MB3), realization, and preservation-if-optimized.",
+      "summary": "Field name (Hubinger) for whether the training pointer or stated objective is the intended target. Splits into specify, identification (MB2/MB3), realization, and preservation-if-optimized.",
       "url": "/cards/glossary/outer-alignment/"
     },
     {
