@@ -5,8 +5,17 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] I can see everything ... of the control panel</title>
+      <link>https://towards-alignment.com/cards/news/field-news-i-can-see-control-panel-oct-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-i-can-see-control-panel-oct-2026/</guid>
+      <pubDate>Mon, 19 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Nick Cammarata says neurons in large models are cleaner than the field feared. Zvi lands in the middle: real progress, not solved interp or alignment. Yudkowsky’s cut is a screwdriver on the tower — not the computer.</description>
+      <category>news</category>
+      <enclosure url="https://towards-alignment.com/field-news/memes/2026-10-i-can-see-control-panel.jpg" length="90757" type="image/jpeg" />
+    </item>
     <item>
       <title>[News] The monitors are on. Each one still needs a bound.</title>
       <link>https://towards-alignment.com/cards/news/field-news-ward-monitoring-oct-2026/</link>

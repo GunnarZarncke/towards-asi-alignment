@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T22:15:25.251Z",
+  "generatedAt": "2026-10-19T20:10:46.333Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 405,
+  "entryCount": 406,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1471,6 +1471,12 @@
       "url": "/cards/appendix/appc/"
     },
     {
+      "title": "I can see everything ... of the control panel",
+      "type": "news",
+      "summary": "On 19 October 2026 Nick Cammarata argued that much apparent polysemanticity was recursive generalization, not arbitrary packing, and that most neuron poles in Qwen3-32B have one main job. Zvi’s roundup treats the essay as valuable and overstated — not interpretability or alignment soon handled. Eliezer Yudkowsky, via Zvi, keeps the gap: you can pry the panel; that is not understanding the machine or aligning ASI as normal science.",
+      "url": "/cards/news/field-news-i-can-see-control-panel-oct-2026/"
+    },
+    {
       "title": "Iliad / Textbook from the Future",
       "type": "agenda",
       "summary": "Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?",
@@ -1971,7 +1977,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 523 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 524 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
@@ -2223,7 +2229,7 @@
     {
       "title": "The Wrong Object of Alignment",
       "type": "chapter",
-      "summary": "A model is the trained network. Alignment is making its behavior stay something humans can still correct. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Before asking whether a system is aligned, locate that loop.",
+      "summary": "A model is the trained network. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Alignment is making that loop's behavior stay something humans can still correct. Before asking whether a system is aligned, locate that loop.",
       "url": "/cards/chapter/ch01/"
     },
     {

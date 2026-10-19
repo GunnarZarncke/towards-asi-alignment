@@ -106,6 +106,10 @@ The book relates familiar proposals to its invariants as projections, special ca
 - Amplification can improve local supervision while failing global correction-channel contraction.
 - ELK is a latent readout subchannel, not full correction uptake or successor preservation.
 
+## Kosoy lenses
+
+Apply the four lenses in `review/claim-checklist.md` (Kosoy, 18 October 2026) to any safety claim under review. Convergence and side-channel resilience are the two that bite this book (Ch. 44, Ch. 10). Mark each applicable lens answered or open. Do not treat a nearby chapter's vocabulary as a discharge.
+
 ## Suggested Review Output
 
 Use this structure unless the user asks for another format:
