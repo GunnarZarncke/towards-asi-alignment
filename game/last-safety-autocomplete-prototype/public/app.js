@@ -438,7 +438,7 @@ function renderEnding() {
     : '';
   el.innerHTML = e
     ? `<div class="eyebrow section-title">REVIEW SIGNED</div><h2>${esc(ARC_TITLES[e.arc] || e.arc)}${e.addOn ? ' + institutional review' : ''}</h2>${e.effect.map(x => `<p>${esc(x)}</p>`).join('')}${scores}`
-    : `<div class="eyebrow section-title">ACT III · THE REVIEW</div><p>Present what you will stand behind, then File to sign.</p>${scores}`;
+    : `<div class="eyebrow section-title">ACT III · THE REVIEW</div><p>Present what you will stand behind, then sign the review with Ian.</p>${scores}`;
 }
 
 function dismissPhoneCoach() {

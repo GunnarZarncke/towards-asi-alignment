@@ -62,6 +62,8 @@ The first time an NPC tells the player to think, the mark they are pointing at i
 
 `commit` files the assessment and, when `reviewCallable` is set or fuel is zero, calls the review. The topic is `review`. What gets filed is the player’s assertion set, defined in [engine.md](engine.md): written notes and claims they have asserted. Asked, thought, and heard entries are completions while filing. They are not filed until the player asserts them or writes them down.
 
+Filing is always addressed to **Ian** as chair. In the room, the opening is **Ian, I'm ready to sign.** (only while Ian is present and the review can be called). In Act III the opening is **Sign the review**. On Lab Access, a message to Ian with `kind: commit` (for example “I'm ready to sign.”) counts the same way once the handset is live. A bare `commit` with no addressee and Ian not present is rejected. Asserting claims to Ian in person or by DM still builds the record; `commit` is the step that calls the review or signs it. Player-facing copy uses **sign**; Ian does not say **file** in dialogue.
+
 ## Completions
 
 Four channels. The engine names which one is active. Grammar does not infer it from the room. `think` is the empty-room composer after the lightbulb. `note` is the Notes composer.
@@ -79,6 +81,8 @@ The list is not the set of legal actions. Typed text outside the list is still p
 Empty field, any channel: a few relevant openings, not a menu of the plot. The lightbulb is one of them only on `think`, and only in an empty room.
 
 **Social opener (person channel only).** One completion, `Hi` → `kind: social`, `relation: open`, `open_slot: none`. Offer it when the player has not yet spoken to **anyone** present this stay (everyone in the room still has `spokeSinceArrive` false) **or** when no other completion matches the current opening prefix. Do not offer it when the parse is already `social`, or on NORA, note, or think channels. Typed `Hi` / `Hello` resolves locally the same way.
+
+**Who questions.** `Who` is an opening chip (`ask` / `about` / `topic`). Typed lines starting with `Who` resolve locally with the full line in `open_content`. Attendance or roster questions (who will be at the review, and similar) do not invent a guest list; NPCs withhold and point to Lab Access calendar when appropriate (`glue.attendeeAsk` on Ian).
 
 While `pendingQuestion` names an addressee in this channel, two reply openings come first: “Tell <name>” and “Show <name>”. For a question with a specific relation, “Tell <name> <referent>” fills the subject and opens the relation; for an `about` question it opens the subject. The NORA channel gets none.
 

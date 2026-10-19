@@ -7,7 +7,8 @@ import { resolveAccessRequestGated } from './access-gates.mjs';
 import { renderDocument } from '../documents.mjs';
 import { CAST } from './entities.mjs';
 import { CONFIG, clockLabel } from './config.mjs';
-import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads, triggerFactConcepts, logAction } from '../game.mjs';
+import { dmSend, writeNote, spend, contacts, calendar, cleanText, readDocument, seedContactThreads, triggerFactConcepts, logAction, reviewCallable } from '../game.mjs';
+import { makeParse } from '../grammar.mjs';
 import { parseImageDataUrl } from '../photo-data.mjs';
 
 export const PLAYER_TOOLS = Object.freeze(['file.read', 'file.write', 'file.share', 'dm.send', 'dm.read', 'access.request']);
@@ -100,6 +101,11 @@ function suggestionsFor(s, withId) {
   if (q) {
     const about = q.parse.object || q.parse.topic;
     if (about && s.vocab.includes(about)) out.push({ phrase: `About ${about.replace(/_/g, ' ')}: …`, parse: { ...q.parse, kind: 'assert', source: 'completion' } });
+  }
+  if (withId === 'ian') {
+    const commitParse = makeParse({ kind: 'commit', relation: 'about', topic: 'review', open_slot: 'none', source: 'completion' });
+    if (s.act === 'decision') out.push({ phrase: 'Sign the review.', parse: commitParse });
+    else if (reviewCallable(s)) out.push({ phrase: 'I’m ready to sign.', parse: commitParse });
   }
   return out;
 }

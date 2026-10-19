@@ -11,6 +11,7 @@ glue:
   default: busy
   pressure: pushy
   work: "I’m on the visit. Ask what I’ll sign, or walk the building for how it runs."
+  attendeeAsk: "I don’t hold the attendee list here. Lab Access has today’s calendar once it’s live."
   opening:
     busy: "You’re here. Keep it short."
     pleasant: "Come in. Ask what you need."

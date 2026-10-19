@@ -81,7 +81,12 @@ export function options(s) {
     opts.push({ label: 'Keep the thought as a note', action: 'thought', args: { action: 'note' } });
     opts.push({ label: 'Close the thought', action: 'thought', args: { action: 'close' } });
   }
-  if (c.reviewCallable || c.act === 'decision') opts.push({ label: 'File the review', action: 'commit', args: {} });
+  if (c.reviewCallable || c.act === 'decision') {
+    const commitParse = makeParse({ kind: 'commit', relation: 'about', topic: 'review', open_slot: 'none', source: 'completion' });
+    if (here.includes('ian')) opts.push({ label: 'Tell Ian you\'re ready to sign (call the review)', action: 'commit', args: { addressee: 'ian' } });
+    else if (c.act === 'decision') opts.push({ label: 'Sign the review', action: 'commit', args: {} });
+    else if (t.labAccessActive) opts.push({ label: 'Handset: message Ian: "I\'m ready to sign."', action: 'tool', args: { tool: 'dm.send', to: 'ian', text: "I'm ready to sign.", parse: commitParse } });
+  }
   return { c, t, here, opts, addressee };
 }
 

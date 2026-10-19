@@ -64,10 +64,11 @@ function demoParse(text, known){
   const clean=text.trim();const last=clean.split(/\s+/).pop()||'';
   const unfinished=/[a-z]$/i.test(clean)?last:'';
   const low=clean.toLowerCase();
-  let kind='ask',relation='about',open_slot='topic',subject=null,recipient=null,topic=null;
+  let kind='ask',relation='about',open_slot='topic',subject=null,recipient=null,topic=null,open_content='';
   if(/^show\b/i.test(clean)){kind='show';open_slot='recipient';}
   else if(/^think\b/i.test(clean)){kind='think';open_slot='topic';}
-  else if(/^(file|commit)\b/i.test(clean)){kind='commit';open_slot='topic';}
+  else if(/^(ian,\s*'?i'?m ready to sign|sign the review)\b/i.test(clean)){kind='commit';open_slot='none';recipient='ian';}
+  else if(/^(file with ian|file|commit)\b/i.test(clean)){kind='commit';open_slot='none';recipient='ian';}
   else if(/^hold\b/i.test(clean)){kind='request';relation='suspend';open_slot='object';}
   else if(/^revoke\b/i.test(clean)){kind='request';relation='revoke';open_slot='object';}
   else if(/^run again\b/i.test(clean)){kind='request';relation='rerun';open_slot='object';}
@@ -75,16 +76,23 @@ function demoParse(text, known){
   else if(/^i (think|suspect|wonder)\b/i.test(clean)){kind='hypothesize';open_slot='subject';}
   else if(/^the\b/i.test(clean)){kind='assert';open_slot='subject';}
   else if(/^(can|could|does|did|has|is)\b/i.test(clean)){kind='ask';open_slot='subject';}
+  else if(/^who\b/i.test(clean)){
+    kind='ask'; relation='about'; open_slot='topic';
+    open_content=clean;
+  }
   else if(/^why\b/i.test(clean)){kind='ask_why';open_slot='subject';}
   else if(/\b(what should i|what do i do|what next|help me)\b/i.test(clean)){kind='ask';relation='about';open_slot='none';}
   const found=Object.keys(ENTITIES).filter(id=>known.includes(id) && [ENTITIES[id].label,...ENTITIES[id].aliases].some(a=>low.includes(a.toLowerCase())));
-  if(found.length&&['ask','hypothesize','assert','ask_why'].includes(kind)){subject=found[0];open_slot='relation';}
+  if(found.length&&kind==='ask'&&/^who\b/i.test(clean)){
+    topic=found.includes('review')?'review':found[0];
+    open_slot=topic?'finish':'topic';
+  } else if(found.length&&['ask','hypothesize','assert','ask_why'].includes(kind)){subject=found[0];open_slot='relation';}
   else if(found.length&&(kind==='think'||kind==='commit')){topic=found[0];open_slot='finish';}
   else if(found.length&&kind==='request'&&relation!=='about'){topic=found[0];open_slot='finish';}
   if(/\baccess\b/i.test(clean)){relation='has_access';open_slot='object';}
   if(/\babout the new per\w*$/i.test(clean)){subject=null;relation='about';open_slot='topic';}
   if(/\babout\b/i.test(clean)&&!subject){relation='about';open_slot='topic';}
-  return makeParse({kind,relation,subject,recipient,topic,open_slot,unfinished,open_content:'',confidence:.60,source:'llm'});
+  return makeParse({kind,relation,subject,recipient,topic,open_slot,unfinished,open_content,confidence:.60,source:'llm'});
 }
 
 function sanitizeParse(parsed,known){

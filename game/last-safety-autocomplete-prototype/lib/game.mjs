@@ -22,14 +22,14 @@ import { accessGateOpen } from './world/access-gates.mjs';
 export { ENTITIES };
 
 const MEETING_IAN_LINES = Object.freeze([
-  'Anything else for the record, or are you filing?',
-  'Add something else, or file what you have?',
-  'More for the room, or shall we file?',
+  'Anything else for the room, or are you signing?',
+  'Add something else, or sign what you have?',
+  'More for the record, or shall we sign?',
 ]);
 const COMMIT_EARLY_IAN = Object.freeze([
-  'Seventeen thirty, review room. File when you have something on the record you can stand behind.',
+  'Seventeen thirty, review room. Sign when you have a line on the record you can stand behind.',
   'Review is at half five. Come back when you can put a line on the record.',
-  'We meet at seventeen thirty. File when you can defend a line, not a hunch.',
+  'We meet at seventeen thirty. Sign when you can defend a line, not a hunch.',
 ]);
 
 function meetingIanPrompt(s) {
@@ -422,7 +422,7 @@ export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
   if (cleanText(text)) s.entered = true;
   const parse = cleanParse(rawParse, s);
   if (parse.kind === 'think') return think(s, parse.topic || parse.object || parse.subject);
-  if (parse.kind === 'commit') return commit(s, { text });
+  if (parse.kind === 'commit') return commit(s, { text, addressee, via: 'in_person' });
   logAction(s, 'respond', { parse, addressee, text });
   const here = presentNpcs(s);
   const npc = addressee && here.includes(addressee) ? addressee : (parse.recipient && here.includes(parse.recipient) ? parse.recipient : here[0]);
@@ -436,7 +436,7 @@ export function respond(s, rawParse, { addressee = null, text = '' } = {}) {
     spend(s, 1);
     return { moves: [], lines: [{ npc, text: 'I need to see the actual record first.' }], effects: [] };
   }
-  const turn = talkTo(s, npc, parse, { shownDoc, visitKey: `room${s.visit}`, channel: 'person' });
+  const turn = talkTo(s, npc, parse, { shownDoc, visitKey: `room${s.visit}`, channel: 'person', utterance: cleanText(text) });
   const priorQuestion = s.npcs.ian.pendingQuestion;
   const left = (s.act === 'welcome' && npc === 'ian') ? confirmLabAccess(s) : [];
   const asked = s.npcs.ian.pendingQuestion;
@@ -462,7 +462,7 @@ function showDoc(s, parse) {
 }
 
 /** Shared by the room and the handset. The handset defers player delivery to release. */
-function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
+function talkTo(s, npc, parse, { shownDoc, visitKey, channel, utterance = '' }) {
   const firstHere = channel === 'person' && !s.npcs[npc].spokeSinceArrive;
   if (channel === 'person') s.npcs[npc].spokeSinceArrive = true;
   N.recordInput(s, npc, parse, { shownDoc });
@@ -477,7 +477,7 @@ function talkTo(s, npc, parse, { shownDoc, visitKey, channel }) {
     }
   }
   const done = new Set(ownRules.flatMap(m => m.outcome || []));
-  const turn = N.npcTurn(s, npc, parse, { shownDoc, visitKey, skipFacts: done });
+  const turn = N.npcTurn(s, npc, parse, { shownDoc, visitKey, skipFacts: done, utterance });
   const fresh = m => m && !(m.fact && done.has(m.fact));
   const response = fresh(turn.response) ? turn.response : null;
   const initiative = fresh(turn.initiative) ? turn.initiative : null;
@@ -685,6 +685,15 @@ export async function dmSend(s, { to, text, parse: rawParse }) {
   const base = s.fuelSpent;
   thread(s, to).messages.push({ from: 'player', text: clean, parse, released: true, releaseAt: base });
   s.sentences += 1;
+  if (to === 'ian' && parse.kind === 'commit') {
+    const result = commit(s, { text: clean, addressee: 'ian', via: 'dm' });
+    if (result.error) return { ok: false, reason: result.error };
+    if (result.lines?.length) {
+      queueMessage(s, to, { text: result.lines.map(l => l.text).join(' '), moves: result.moves || [] }, CONFIG.REPLY_DELAY.person, base);
+    }
+    spend(s, 1);
+    return { ok: true, reason: 'Sent.', review: !!result.review };
+  }
   if (to === 'nora') {
     const reply = noraReply(s, parse);
     thread(s, 'nora').messages.push({ from: 'nora', text: reply.text, parse: null, released: false, releaseAt: base + CONFIG.REPLY_DELAY.nora, moves: [], facts: reply.facts, shares: reply.shares });
@@ -854,12 +863,32 @@ function anySet(sets, ids) {
   return sets.some(set => set.every(id => ids.has(id)));
 }
 
-function commit(s, { text = '' } = {}) {
-  logAction(s, 'commit', { text });
+function filingChairAvailable(s, { addressee = null, via = 'in_person' } = {}) {
+  if (s.act === 'decision') return true;
+  if (via === 'dm' && addressee === 'ian' && s.labAccessActive) return true;
+  return presentNpcs(s).includes('ian');
+}
+
+function commit(s, { text = '', addressee = null, via = 'in_person' } = {}) {
+  if (!filingChairAvailable(s, { addressee, via })) {
+    return {
+      error: 'Find Ian in the room when you are ready to sign, or message him on Lab Access.',
+      moves: [],
+      lines: [],
+    };
+  }
+  logAction(s, 'commit', { text, via });
+  const said = cleanText(text);
+  if (said && via !== 'dm') {
+    s.sentences += 1;
+    s.conversations.push({ role: 'player', text: said, refs: ['review'] });
+  }
   if (s.act === 'decision') return decide(s);
   if (!reviewCallable(s) && s.fuel > 0) {
-    s.sentences += 1;
-    spend(s, 1);
+    if (via !== 'dm') {
+      if (!said) s.sentences += 1;
+      spend(s, 1);
+    }
     return { moves: [], lines: [{ npc: 'ian', text: commitEarlyIan(s) }] };
   }
   startReview(s, { forced: false });

@@ -616,6 +616,21 @@ export function isOpenAsk(parse) {
   return !parseEntity(parse);
 }
 
+/** Who-attendance / roster questions (e.g. "Who will be at the review?"). */
+export function whoAttendeeQuestion(parse, utterance = '') {
+  const blob = `${utterance} ${parse?.open_content || ''}`.toLowerCase();
+  if (!/\bwho\b/.test(blob)) return false;
+  if (/\b(review|meeting|attend|attendee|there|calendar|17:30|18:30)\b/.test(blob)) return true;
+  return parse?.topic === 'review';
+}
+
+function attendeeRosterReply(s, id) {
+  const glue = NPC_DEFS[id]?.glue;
+  if (glue?.attendeeAsk) return glue.attendeeAsk;
+  if (s.labAccessActive) return 'I do not keep a guest list in my head. Lab Access has today’s calendar.';
+  return 'I do not keep a guest list in my head. Once Lab Access is live, the calendar has who is booked.';
+}
+
 /** Domains for filtering volunteer hints on an ungrounded ask (open_content + agenda). */
 function openAskDomains(s, id, parse) {
   const doms = new Set();
@@ -763,7 +778,7 @@ function interventionOwner(relation, entityId, exclude) {
 }
 
 /** Legal response moves to one parse. Never empty. */
-export function responseCandidates(s, id, parse, { shownDoc = null, visitKey = 'room' } = {}) {
+export function responseCandidates(s, id, parse, { shownDoc = null, visitKey = 'room', utterance = '' } = {}) {
   const n = s.npcs[id];
   const def = NPC_DEFS[id];
   const m = matchParse(parse) || {};
@@ -772,6 +787,10 @@ export function responseCandidates(s, id, parse, { shownDoc = null, visitKey = '
   const out = [];
   const push = x => { if (x && !out.some(y => sameMove(x, y))) out.push(x); };
   const heldTouching = ent => Object.keys(n.records).filter(f => f !== F && FACTS[f] && !isClaim(f) && factRefs(f).includes(ent));
+
+  if (['ask', 'ask_why'].includes(parse.kind) && whoAttendeeQuestion(parse, utterance)) {
+    push({ type: 'withhold', npc: id, reason: attendeeRosterReply(s, id), cls: 'texture', names: false });
+  }
 
   if (parse.kind === 'show' && shownDoc) {
     const refs = docEntities(shownDoc, s.pack.id);
@@ -931,8 +950,8 @@ function initiativeGoalKey(m) {
   return m?.goal || null;
 }
 
-export function npcTurn(s, id, parse, { shownDoc = null, visitKey = 'room', skipFacts = new Set() } = {}) {
-  const ranked = rankMoves(s, responseCandidates(s, id, parse, { shownDoc, visitKey }).filter(m => !(m.fact && skipFacts.has(m.fact))));
+export function npcTurn(s, id, parse, { shownDoc = null, visitKey = 'room', skipFacts = new Set(), utterance = '' } = {}) {
+  const ranked = rankMoves(s, responseCandidates(s, id, parse, { shownDoc, visitKey, utterance }).filter(m => !(m.fact && skipFacts.has(m.fact))));
   const safe = ranked.length ? ranked : [{ ...workMove(s, id, null), score: 0 }];
   const { forced, passed } = forceRule(safe);
   const response = passed[0];

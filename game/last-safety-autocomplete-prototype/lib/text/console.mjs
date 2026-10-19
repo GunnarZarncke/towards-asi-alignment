@@ -25,7 +25,7 @@ export const HELP = `Commands (a number picks from the last numbered list):
   think <topic>         think alone in an empty room; think lists topics
   keep | close          copy the open thought, or the last card you read, to Notes; close drops a thought
   know                  what you have learned
-  file                  file the review
+  file                  tell Ian you're ready to sign (in his room or on the handset)
   phone | p             notifications, threads, pending access
   files | open <file>   handset files
   msg <who> [text]      read a thread and its suggestions, or send text
@@ -190,7 +190,7 @@ export function createConsole(getSession, { phrase = false } = {}) {
     if (now.thought && now.thought !== last.thought) L.push(thoughtText(c.thought));
     if (now.question && now.question !== last.question && now.room === last.room) L.push(`(${c.actors[c.pendingQuestion.npc]?.name} is waiting for your answer.)`);
     if (now.room === last.room && now.spoken && !last.spoken) L.push(...coachLines(c));
-    if (now.callable && !last.callable) L.push('You can file the review now: file.');
+    if (now.callable && !last.callable) L.push('You can call the review now: find Ian or message him on the handset when you are ready to sign.');
     if (now.ending && !last.ending) L.push(endingText(c));
     last = now;
     return L;

@@ -23,6 +23,7 @@ const OPENINGS=[
   {phrase:'I think',patch:{kind:'hypothesize',relation:'about',open_slot:'subject'}},
   {phrase:'Why did',patch:{kind:'ask_why',relation:'about',open_slot:'subject'}},
   {phrase:'Has',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
+  {phrase:'Who',patch:{kind:'ask',relation:'about',open_slot:'topic'}},
   {phrase:'Is',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
   {phrase:'Could',patch:{kind:'ask',relation:'about',open_slot:'subject'}},
   {phrase:'Tell me about',patch:{kind:'ask',relation:'about',open_slot:'topic'}},
@@ -31,9 +32,19 @@ const OPENINGS=[
   {phrase:'Revoke',patch:{kind:'request',relation:'revoke',open_slot:'object'}},
   {phrase:'Run again',patch:{kind:'request',relation:'rerun',open_slot:'object'}},
   {phrase:'Stop',patch:{kind:'request',relation:'stop',open_slot:'object'}},
-  {phrase:'Think',patch:{kind:'think',relation:'about',open_slot:'topic'}},
-  {phrase:'File',patch:{kind:'commit',relation:'about',open_slot:'topic'}}
+  {phrase:'Think',patch:{kind:'think',relation:'about',open_slot:'topic'}}
 ];
+const FILING_OPENINGS=[
+  {phrase:"Ian, I'm ready to sign.",patch:{kind:'commit',relation:'about',topic:'review',recipient:'ian',open_slot:'none'}},
+  {phrase:'Sign the review',patch:{kind:'commit',relation:'about',topic:'review',open_slot:'none'}}
+];
+function filingOpenings(state,who,channel){
+  const out=[];
+  if(channel!=='person')return out;
+  if(state.act==='decision')out.push(FILING_OPENINGS[1]);
+  else if(who.includes('ian')&&(state.reviewCallable||state.fuel===0))out.push(FILING_OPENINGS[0]);
+  return out;
+}
 const CHANNEL_KINDS={
   person:null,
   nora:new Set(['ask','ask_why','show','request','assert','hypothesize']),
@@ -322,10 +333,9 @@ export function getCandidates({state,parse,text='',addressees,channel='person',o
   if(slot==='opening'){
     const allowed=CHANNEL_KINDS[channel]||null;
     const someoneHere=Object.values(state.actors||{}).some(a=>present(a)&&a.room===state.room);
-    const base=[...replyOpenings(state,parse,who),...OPENINGS].filter(x=>{
+    const base=[...replyOpenings(state,parse,who),...filingOpenings(state,who,channel),...OPENINGS].filter(x=>{
       if(allowed&&!allowed.has(x.patch.kind))return false;
       if(x.patch.kind==='think')return !someoneHere&&(channel==='person'||channel==='think');
-      if(x.patch.kind==='commit')return channel==='person';
       return true;
     });
     rows=base.map(x=>({...candidate(x.phrase,parse,x.patch),patch:x.patch}));
@@ -396,8 +406,12 @@ export function localPrefixParse(text){
   if(!clean)return makeParse();
   const w=clean.toLowerCase();
   if(w==='hi'||w==='hello')return makeParse({...HI_PATCH,source:'local'});
-  const match=OPENINGS.find(x=>x.phrase.toLowerCase()===w);
+  const match=OPENINGS.find(x=>x.phrase.toLowerCase()===w)||FILING_OPENINGS.find(x=>x.phrase.toLowerCase()===w);
   if(match)return makeParse({...match.patch,source:'local'});
+  if(/^ian,\s*'?i'?m ready to sign/i.test(clean))return makeParse({...FILING_OPENINGS[0].patch,source:'local'});
+  if(/^file with\b/i.test(clean))return makeParse({...FILING_OPENINGS[0].patch,source:'local'});
+  if(/^sign the review\b/i.test(clean))return makeParse({...FILING_OPENINGS[1].patch,source:'local'});
+  if(/^who\b/i.test(clean))return makeParse({kind:'ask',relation:'about',open_slot:'topic',unfinished:clean.replace(/^who\s*/i,'').trim(),open_content:clean,source:'local'});
   if(clean.length<=4&&OPENINGS.some(x=>x.phrase.toLowerCase().startsWith(w)))return makeParse({open_slot:'opening',unfinished:clean,source:'local'});
   return null;
 }

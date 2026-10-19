@@ -1,8 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isOpenAsk, responseCandidates, openAskHintMove } from '../lib/world/npcs.mjs';
-import { clientState } from '../lib/game.mjs';
+import { isOpenAsk, whoAttendeeQuestion, responseCandidates, openAskHintMove } from '../lib/world/npcs.mjs';
+import { localPrefixParse } from '../public/grammar.js';
+import { clientState, newSession } from '../lib/game.mjs';
 import { P, startedSession, walk, applyAction, say } from './helpers.mjs';
+
+test('Who is a local prefix and roster asks get an honest withhold', () => {
+  const p = localPrefixParse('Who will be at the review?');
+  assert.equal(p?.source, 'local');
+  assert.equal(p?.kind, 'ask');
+  assert.ok(whoAttendeeQuestion(p, 'Who will be at the review?'));
+  const s = newSession();
+  const moves = responseCandidates(s, 'ian', p, { utterance: 'Who will be at the review?' });
+  assert.equal(moves[0]?.type, 'withhold');
+  assert.match(moves[0]?.reason, /calendar/i);
+});
 
 test('isOpenAsk: grounded ask is not open', () => {
   assert.equal(isOpenAsk(P('ask', 'about', { topic: 'review' })), false);

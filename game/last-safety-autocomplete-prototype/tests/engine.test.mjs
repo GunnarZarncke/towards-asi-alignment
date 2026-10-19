@@ -227,6 +227,12 @@ test('payloads carry only what the player holds', () => {
   assertNoLeak(terminalState(s), s);
 });
 
+test('commit without Ian present is rejected', () => {
+  const s = startedSession();
+  walk(s, 'platform');
+  assert.ok(applyAction(s, 'commit', {}).error);
+});
+
 test('review route 1: commit is refused below threshold, accepted at it', () => {
   const s = startedSession();
   const r = commit(s);

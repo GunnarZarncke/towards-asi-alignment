@@ -2,7 +2,7 @@ import { makeParse } from '../lib/grammar.mjs';
 import { newSession, clientState } from '../lib/game.mjs';
 import { CONFIG } from '../lib/world/config.mjs';
 import { applyAction, walk } from '../lib/world/actions.mjs';
-import { settleNpcs } from '../lib/world/npcs.mjs';
+import { settleNpcs, npcsInRoom } from '../lib/world/npcs.mjs';
 
 export const P = (kind, relation, fields = {}) => makeParse({ kind, relation, open_slot: 'none', source: 'completion', ...fields });
 
@@ -42,7 +42,11 @@ export function idle(s, n) {
 }
 
 export function commit(s) {
-  return applyAction(s, 'commit', {});
+  const ianRoom = s.npcs?.ian?.room;
+  const here = npcsInRoom(s, s.room);
+  if (ianRoom && !here.includes('ian') && s.act !== 'decision') walk(s, ianRoom);
+  settleNpcs(s);
+  return applyAction(s, 'commit', { addressee: 'ian' });
 }
 
 export { walk, applyAction, clientState };

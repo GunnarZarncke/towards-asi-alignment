@@ -58,10 +58,15 @@ test('room movement and investigation reveal only justified knowledge',()=>{
   inspect(s,'staffing_memo');
   assert.ok(s.learned.staffing_shift);
 });
-test('Think is offered only in an empty room; File is an opening',()=>{
-  const occupied=getCandidates({state:fresh(),parse:makeParse(),text:''});
-  assert.ok(occupied.some(x=>x.phrase==='File'));
-  assert.ok(!occupied.some(x=>x.parse.kind==='think'));
+test('Think is offered only in an empty room; filing is offered with Ian present',()=>{
+  const away=fresh();
+  away.room='platform';
+  const noIan=getCandidates({state:away,parse:makeParse(),text:'',addressees:hereIds(away)});
+  assert.ok(!noIan.some(x=>x.parse.kind==='commit'));
+  const ready={...fresh(),reviewCallable:true};
+  ready.actors.ian.room=ready.room;
+  assert.ok(getCandidates({state:ready,parse:makeParse(),text:'',addressees:hereIds(ready)}).some(x=>x.phrase==="Ian, I'm ready to sign."));
+  assert.ok(!getCandidates({state:ready,parse:makeParse(),text:'',addressees:hereIds(ready)}).some(x=>x.parse.kind==='think'));
   const state=fresh();
   for (const actor of Object.values(state.actors)) actor.room='people';
   state.room='platform';

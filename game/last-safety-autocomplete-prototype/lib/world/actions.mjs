@@ -14,7 +14,7 @@ export function applyAction(s, action, args = {}) {
     case 'inspect': return inspect(s, args.id);
     case 'respond': return respond(s, args.parse, { addressee: args.addressee || null, text: args.text || '' });
     case 'think': return think(s, args.topic);
-    case 'commit': return respond(s, { kind: 'commit', relation: 'about', topic: 'review', open_slot: 'none' }, { text: args.text || '' });
+    case 'commit': return respond(s, { kind: 'commit', relation: 'about', topic: 'review', open_slot: 'none' }, { text: args.text || '', addressee: args.addressee || null });
     case 'thought': return thoughtAction(s, args.action);
     case 'dm.send': return dmSend(s, args);
     case 'tool': return applyToolCall(s, args);
