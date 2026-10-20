@@ -7,6 +7,7 @@ import {
   DISABLED_TOOLS, PLAYER_TOOLS, projectFiles, visibleMessages, suggestionChips, sendable,
   applyTool, controlLabels, pipelineLabels, playerVisibleText, sessionProblems,
   danglingNotifications, nowPlacement, handsetShouldBlink, markNoticeTarget, overlayAllowed, decideAccess,
+  visibleSettings,
 } from '../public/terminal/project.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -15,6 +16,11 @@ const ORACLE = 'NORA placed the lookup on a job the test does not watch.';
 
 test('fixture session matches the solo phone check', () => {
   assert.deepEqual(sessionProblems(session), []);
+});
+
+test('demo mode setting is hidden on the embedded production handset', () => {
+  assert.ok(visibleSettings({ engine: false, embed: false }).some(s => s.key === 'demoMode'));
+  assert.ok(!visibleSettings({ engine: true, embed: true }).some(s => s.key === 'demoMode'));
 });
 
 test('file pane is the readable projection and omits the oracle path', () => {

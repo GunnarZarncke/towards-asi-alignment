@@ -92,7 +92,7 @@ The finder is the current room camera from graphics, shown inside the phone. Pan
 | Reduce motion | off | Cut walk and overlay animation. |
 | Larger type | off | Phone text size only. |
 | Always show phone | on (desktop) | Only after `labAccessActive`. If off, hide overlay until the launcher or the issued handset in the room is used. Before activation the setting has no effect. |
-| Demo / no model | follow `.env` | Same as `DEMO_MODE=1`: no live parse. Shown so a tester can flip it without editing files. |
+| Demo / no model | follow `.env` (fixture / solo harness only) | Same as `DEMO_MODE=1`: no live parse. Not listed in Settings on the embedded production handset; use `.env` or the solo fixture (`npm run dev:terminal`). |
 | Parser inspector | off | Extra technical view of the current `Parse` (useful while building). |
 | TSA concept links | off | Room footer: `More: ` + underlined short summary → companion concept card. One link at a time; the last relevant concept in this room until the player leaves (O-41). Graphics draws it; engine supplies summary and href from the compiled concept map. |
 | Explain like I’m 10 (ELI10) | off | Room HUD **ELI10** button and ELI10 on text file viewers. Simpler explanations for the last NPC reply, inspected note/screen, or open document (`POST /api/eli10`). |

@@ -1,6 +1,6 @@
 import posthog from '../posthog.js';
 import {
-  APPS, SETTINGS, ALLOWED_CAPS, defaultSettings, applyTool, suggestionChips, sendable,
+  APPS, SETTINGS, ALLOWED_CAPS, defaultSettings, visibleSettings, applyTool, suggestionChips, sendable,
   visibleMessages, nowPlacement, handsetShouldBlink, overlayAllowed,
 } from './project.mjs';
 import { makeParse } from '../../lib/grammar.mjs';
@@ -612,11 +612,15 @@ function photoApp() {
 }
 
 function settingsApp() {
-  const rows = SETTINGS.map(s => {
+  const list = visibleSettings({ engine, embed });
+  const rows = list.map(s => {
     const on = !!state.settings[s.key];
     return `<button type="button" class="switch-row" role="switch" aria-checked="${on}" data-act="toggle" data-key="${esc(s.key)}"><span>${esc(s.label)}</span><span class="knob" aria-hidden="true"></span></button>`;
   }).join('');
-  return `${head('Settings')}<div class="pad">${rows}<p class="hint">Demo mode records a flag. This harness does not call a model either way.</p></div>`;
+  const hint = list.some(s => s.key === 'demoMode')
+    ? '<p class="hint">Demo mode records a flag. This harness does not call a model either way.</p>'
+    : '';
+  return `${head('Settings')}<div class="pad">${rows}${hint}</div>`;
 }
 
 function body() {
@@ -1015,8 +1019,8 @@ async function boot() {
   if (!res.ok) throw new Error(engine ? 'No terminal state' : 'No terminal fixture');
   state = await res.json();
   delete state._hostFiles;
-  state.settings = syncPhoneSettings(state, state.settings);
   if (engine) await refreshClientSnapshot();
+  state.settings = syncPhoneSettings(state, state.settings);
   overlay = overlayAllowed(state) && state.settings.alwaysShowPhone !== false;
   window.addEventListener('message', async e => {
     if (e.origin !== location.origin || e.data?.source !== 'lsr-room') return;

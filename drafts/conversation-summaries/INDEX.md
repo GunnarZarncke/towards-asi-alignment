@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-20 | **Last Safety prod demo settings** — Hide Demo / no model on embedded handset; default off in harness; spec + test. | [2026-10-20-last-safety-prod-demo-settings.md](2026-10-20-last-safety-prod-demo-settings.md) |
 | 2026-10-20 | **Replit demo deployment** — Unified live stack URLs; site routes backend/hybrid demos to Replit; Ch. 1 API base on standalone path. | [2026-10-20-replit-demo-deployment.md](2026-10-20-replit-demo-deployment.md) |
 | 2026-10-20 | **PostHog chapter demos** — Shared demo PostHog boot, serve.py routes, Ch. 9 server events; CI markdown link fix shipped earlier. | [2026-10-20-posthog-chapter-demos.md](2026-10-20-posthog-chapter-demos.md) |
 | 2026-10-20 | **Last Safety ELI10** — Optional simplified explanations (Settings, default off); prepared docs/facts; LLM for rephrased NPC lines. | [2026-10-20-last-safety-eli10.md](2026-10-20-last-safety-eli10.md) |

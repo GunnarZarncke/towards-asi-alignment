@@ -42,11 +42,17 @@ export const SETTINGS = Object.freeze([
   { key: 'reduceMotion', label: 'Reduce motion' },
   { key: 'largerType', label: 'Larger type' },
   { key: 'alwaysShowPhone', label: 'Always show phone' },
-  { key: 'demoMode', label: 'Demo / no model' },
+  { key: 'demoMode', label: 'Demo / no model', devOnly: true },
   { key: 'parserInspector', label: 'Parser inspector' },
   { key: 'conceptLinks', label: 'Book concept links' },
   { key: 'eli10', label: 'Explain like I’m 10 (ELI10)' },
 ]);
+
+/** Settings rows shown on the phone. Demo / no model is fixture and solo harness only, not the embedded game. */
+export function visibleSettings({ engine = false, embed = false } = {}) {
+  const prodHandset = engine && embed;
+  return SETTINGS.filter(s => !(prodHandset && s.devOnly));
+}
 
 /** One capability the solo fixture will grant. O-43 is still open. */
 export const ALLOWED_CAPS = Object.freeze([
@@ -62,7 +68,7 @@ export function defaultSettings() {
     reduceMotion: false,
     largerType: false,
     alwaysShowPhone: true,
-    demoMode: true,
+    demoMode: false,
     parserInspector: false,
     conceptLinks: false,
     eli10: false,
