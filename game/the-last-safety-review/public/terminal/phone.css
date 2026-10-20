@@ -132,6 +132,10 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .notice.is-unread { background: #fff8ef; border-color: #e8c99a; box-shadow: 0 1px 6px #c47b3218; }
 .notice.is-read { border-left-color: transparent; opacity: 0.88; }
 .notice-top { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.eli10-dialog { border: none; border-radius: 16px; max-width: calc(100% - 24px); width: 340px; padding: 12px 14px; box-shadow: 0 12px 40px #182a2540; }
+.eli10-dialog::backdrop { background: #1a2c3544; }
+.eli10-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.eli10-body { font-size: 13px; line-height: 1.5; max-height: 50vh; overflow: auto; white-space: pre-wrap; }
 .notice-app { font-size: 9px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
 .notice b, .row b, .appt b { display: block; font-size: 14px; }
 .notice b { display: inline; font-size: 12px; font-weight: 700; }

@@ -19,6 +19,9 @@ let requestVersion = 0;
 let activeRequest = null;
 let lastAnchoredParse = null;
 let lastNotice = '';
+/** ELI10 target: open document on the phone beats last room inspect beats last NPC line. */
+let eli10DocumentRel = null;
+let eli10InspectId = null;
 let cameraMode = 'play';
 let actPreset = 'doubt';
 let sceneOverlay = null;
@@ -416,6 +419,12 @@ async function thoughtAction(action) {
   }
 }
 
+function renderEli10Chrome() {
+  const on = !!state?.eli10Enabled;
+  $('eli10Btn').hidden = !on;
+  if (!on) $('eli10Panel').hidden = true;
+}
+
 function renderMoreLink() {
   const c = state?.conceptLinksEnabled ? state.conceptMoreLink : null;
   const el = $('moreLink');
@@ -613,6 +622,10 @@ window.addEventListener('message', async e => {
     state = await api('state');
     render();
     autosave();
+  }
+  if (e.data.type === 'eli10-context') {
+    eli10DocumentRel = e.data.rel || null;
+    if (eli10DocumentRel) eli10InspectId = null;
   }
 });
 
@@ -821,6 +834,7 @@ function render() {
   if (floorplanOpen()) syncFloorplan(mapView(), mapHandlers());
   renderMapButton();
   renderCoaches();
+  renderEli10Chrome();
   refreshPhone();
   resizeUtterance();
   syncTranscriptChrome();
@@ -965,11 +979,32 @@ async function move(room) {
   }
 }
 
+async function showEli10() {
+  const payload = { kind: 'auto' };
+  if (eli10DocumentRel) payload.rel = eli10DocumentRel;
+  else if (eli10InspectId) payload.inspectId = eli10InspectId;
+  else payload.kind = 'transcript';
+  try {
+    const data = await api('eli10', payload);
+    adoptState(data);
+    const src = data.source === 'llm' ? 'explained with AI' : 'prepared';
+    $('eli10Label').textContent = data.label ? `${data.label} · ${src}` : src;
+    $('eli10Body').textContent = data.text || '';
+    $('eli10Panel').hidden = false;
+    posthog?.capture('eli10_open', { source: data.source, kind: payload.kind });
+  } catch (err) {
+    lastNotice = err.message;
+    renderMessages();
+  }
+}
+
 async function examine(id) {
   try {
     const data = await api('inspect', { id });
     adoptState(data);
     applySceneOverlayFromState();
+    eli10InspectId = id;
+    eli10DocumentRel = null;
     lastNotice = `${data.title}: ${data.body}`;
     const kept = (data.terminal?.files || []).some(f => f.rel === `notes/${data.id}.txt`);
     if (data.copy && data.id && !kept) offerCardCopy({ id: data.id, title: data.title, text: data.body });
@@ -1154,6 +1189,8 @@ $('reset').onclick = async () => {
   showIntro();
 };
 $('phoneBtn').onclick = () => setPhone(!phoneOpen);
+$('eli10Btn').onclick = () => showEli10();
+$('eli10Close').onclick = () => { $('eli10Panel').hidden = true; };
 $('notebookAdd').onclick = () => confirmNotebookPrompt();
 $('notebookSkip').onclick = () => dismissNotebookPrompt();
 $('menuBtn').onclick = () => setMenu($('menu').hidden);

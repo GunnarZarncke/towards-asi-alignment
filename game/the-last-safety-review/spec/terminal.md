@@ -95,6 +95,7 @@ The finder is the current room camera from graphics, shown inside the phone. Pan
 | Demo / no model | follow `.env` | Same as `DEMO_MODE=1`: no live parse. Shown so a tester can flip it without editing files. |
 | Parser inspector | off | Extra technical view of the current `Parse` (useful while building). |
 | TSA concept links | off | Room footer: `More: ` + underlined short summary → companion concept card. One link at a time; the last relevant concept in this room until the player leaves (O-41). Graphics draws it; engine supplies summary and href from the compiled concept map. |
+| Explain like I’m 10 (ELI10) | off | Room HUD **ELI10** button and ELI10 on text file viewers. Simpler explanations for the last NPC reply, inspected note/screen, or open document (`POST /api/eli10`). |
 
 ## Player tool list
 

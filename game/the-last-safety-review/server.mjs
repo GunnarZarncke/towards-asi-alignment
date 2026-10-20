@@ -15,6 +15,7 @@ import {makeParse} from './lib/grammar.mjs';
 import {createConsole} from './lib/text/console.mjs';
 import {tabCompleteLines} from './lib/text/tab-complete.mjs';
 import {initTelemetryLog,appendTelemetryRow,playTelemetry} from './lib/telemetry.mjs';
+import {resolveEli10} from './lib/eli10.mjs';
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
 initTelemetryLog();
 for (const rel of ['../../.env', '../.env', '.env']) {
@@ -100,7 +101,13 @@ const server=http.createServer(async(req,res)=>{
       }
       if(url.pathname==='/api/go'){const r=applyAction(s,'go',{room:b.room});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
       if(url.pathname==='/api/inspect'){const r=applyAction(s,'inspect',{id:b.id});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
-      if(url.pathname==='/api/settings'){applyAction(s,'settings',{conceptLinksEnabled:!!b.conceptLinksEnabled});return json(res,200,bothTracked(s,sid))}
+      if(url.pathname==='/api/settings'){
+        const patch={};
+        if(b.conceptLinksEnabled!==undefined)patch.conceptLinksEnabled=!!b.conceptLinksEnabled;
+        if(b.eli10Enabled!==undefined)patch.eli10Enabled=!!b.eli10Enabled;
+        applyAction(s,'settings',patch);
+        return json(res,200,bothTracked(s,sid));
+      }
       if(url.pathname==='/api/thought'){const r=applyAction(s,'thought',{action:b.action==='note'?'note':'close'});return json(res,r.error?400:200,{...r,...bothTracked(s,sid)})}
       if(url.pathname==='/api/text'){
         if(!consoles.has(sid))consoles.set(sid,createConsole(()=>sessions.get(sid),{phrase:true}));
@@ -141,6 +148,13 @@ const server=http.createServer(async(req,res)=>{
         if(r.thought)return json(res,200,{thought:r.thought,...bothTracked(s,sid)});
         const lines=await phraseLines(s,text,r.lines||[]);
         return json(res,200,{reply:lines.map(l=>l.text).join(' '),lines,effects:r.effects||[],parse,...(r.ending?{ending:r.ending}:{}),...bothTracked(s,sid)});
+      }
+      if(url.pathname==='/api/eli10'){
+        if(!s.eli10Enabled)return json(res,403,{error:'Turn on “Explain like I’m 10” in Lab Access Settings.',...both(s)});
+        const kind=String(b.kind||'auto').slice(0,20);
+        const r=await resolveEli10(s,{kind,slug:b.slug?String(b.slug).slice(0,60):undefined,rel:b.rel?String(b.rel).slice(0,120):undefined,inspectId:b.inspectId?String(b.inspectId).slice(0,60):undefined});
+        if(r.error)return json(res,400,{error:r.error,...both(s)});
+        return json(res,200,{...r,...both(s)});
       }
       if(url.pathname==='/api/telemetry'){
         const row={

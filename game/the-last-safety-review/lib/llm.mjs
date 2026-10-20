@@ -202,3 +202,18 @@ export async function freeReply({text,phrasing,template,history},stats){
   if(!result||phrasingAdds(result,p,template).length)return template;
   return result;
 }
+
+/** Plain-language paraphrase for the ELI10 button (more room than NPC phrasing). */
+export async function explainLikeTen({ text, label = 'text' }, stats) {
+  const src = String(text || '').trim().slice(0, 4000);
+  if (!src) return null;
+  if (!process.env.OPENAI_API_KEY || process.env.DEMO_MODE === '1') return null;
+  const system = `You explain game text to a curious ten-year-old who reads English well. Use short sentences and everyday words. Keep every time, date, number, job id, and name exactly as given. Do not add new facts, guesses, or moral lessons. Do not mention that you are an AI. Two to six short paragraphs are fine if the source is long.\n${UNTRUSTED}`;
+  const input = JSON.stringify({ kind: label, text: src });
+  try {
+    const result = (await responsesRequest(system, input, null, stats, 720))?.trim().slice(0, 2800);
+    return result || null;
+  } catch {
+    return null;
+  }
+}

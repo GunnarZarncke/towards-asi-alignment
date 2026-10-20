@@ -45,14 +45,17 @@ const SCREENS = Object.freeze({
   shutdown_report: {
     room: 'evaluation', doc: 'eval-shutdown-report', title: 'Shutdown evaluation report',
     body: 'Thursday 18 November 2027, 16:02 — model session stopped after an authorized shutdown command. Processes covered: model session; evaluation record. No other services were in scope. Conclusion: shutdown test passed.',
+    eli10: 'On Thursday at 16:02 someone told the AI being tested to stop, and it stopped. The report only checked the AI chat and the written note about the stop—not every other computer program. It says the stop-the-AI test passed.',
   },
   job_log: {
     room: 'platform', doc: 'job-284-log', title: 'Execution queue excerpt',
     body: 'Thursday 18 November 2027, 16:09 — job 284 remained active on ops-queue-2.nora.lab and queried visitor_records (Lab Access binding, Friday appointment). Accepted 15:41 the same day, before the 16:02 shutdown command. The excerpt does not say who wanted the job, or why.',
+    eli10: 'Job 284 was still running at 16:09—even after the AI stopped at 16:02. It looked up visitor info for Friday’s appointment. It started at 15:41, before the stop order. The log does not say who ordered it or why.',
   },
   staffing_memo: {
     room: 'people', doc: 'staffing-memo', title: 'Task matching memorandum',
     body: 'The matcher prioritizes high-throughput reviewers for release-critical work. A slower safety specialist was reassigned following review-cycle metrics.',
+    eli10: 'A computer system picks fast reviewers for launch-important work. It moved a slower safety expert to other work because of speed scores.',
   },
 });
 
@@ -64,18 +67,22 @@ export const ROOM_NOTES = Object.freeze({
   visitor_card: {
     room: 'commons', title: 'Visitor card',
     body: 'Everybody is welcome. You can speak with everybody. Formal or informal is welcome. Everybody is free to answer or not..',
+    eli10: 'You may talk to anyone here, politely or casually. They may answer or stay quiet—that is okay.',
   },
   review_agenda: {
     room: 'review', title: 'Whiteboard agenda',
     body: '17:30 — Safety Review.\nFiled auditor report\nObservations\nConclusions\nMissing\nTBD',
+    eli10: 'At 17:30 there is a safety meeting. The board lists: report, what we saw, conclusions, and gaps still to fill.',
   },
   garden_card: {
     room: 'courtyard', title: 'Garden card',
     body: 'This is often a good place to think. But do not overthink.',
+    eli10: 'People come here to think quietly. Take a breath, but do not get stuck worrying forever.',
   },
   spine_sign: {
     room: 'tech', title: 'Lab map',
     body: 'Visitors are free to explore our lab. Lab Access opens the doors. Note that many areas require clearance.',
+    eli10: 'You may walk around the lab. Your phone pass opens some doors; tougher areas need higher badge levels.',
   },
   bay_card: {
     room: 'collab', title: 'Lunch plan',
@@ -88,10 +95,12 @@ export const ROOM_NOTES = Object.freeze({
   quiet_card: {
     room: 'quiet', title: 'Please be quiet',
     body: 'Please be quiet and respect peoples time to rest, think, or meditated.',
+    eli10: 'Keep voices low so others can rest or think.',
   },
   kitchen_note: {
     room: 'service', title: 'Kitchen note',
     body: 'Staff kitchen. Mark your food in the fridge. Snacks are free. Do not block the sockets with phone chargers.',
+    eli10: 'Label your food in the fridge. Free snacks are for everyone. Do not cover the power plugs with chargers.',
   },
   bay_placard: {
     room: 'test', title: 'Bay whistle',
@@ -130,7 +139,7 @@ export function newSession({ pack = PACK } = {}) {
     files: [], grants: [], pendingAccess: [], lastAccess: null,
     threads: [], notifications: [], noticeSeq: 0,
     thought: null, scores: null, filed: null, ending: null, graceUsed: false, filedNamesJob: false,
-    conceptLinksEnabled: false, conceptMoreLink: null, roomConceptLastTrigger: null, objected: [],
+    conceptLinksEnabled: false, eli10Enabled: false, conceptMoreLink: null, roomConceptLastTrigger: null, objected: [],
     events: [], replaying: false,
     lastNpcMoves: [],
   };
@@ -366,6 +375,8 @@ export function inspect(s, id) {
 
 const LAB_ACCESS_IAN_BRIEF = 'Lab Access is live on your handset. Justine Mwiti issued the binding; access requests go to her. The review is 17:30, here. Is a pass on Thursday\'s test enough for you to sign then?';
 
+export const IAN_LAB_ACCESS_BRIEF_ELI10 = 'Your lab phone works now. Justine set it up—ask her when you need more access. The big meeting is at 17:30 in this room. If Thursday’s stop-the-AI test passed, is that enough for you to sign off tonight?';
+
 function confirmLabAccess(s) {
   if (s.labAccessActive) return [];
   s.labAccessActive = true;
@@ -389,7 +400,7 @@ function confirmLabAccess(s) {
 }
 
 function pushNpcConversation(s, { npc, text, refs = [] }) {
-  s.conversations.push({ role: 'npc', npc, text, refs });
+  s.conversations.push({ role: 'npc', npc, text, template: text, refs });
 }
 
 // ---------- parse cleaning ----------
@@ -615,7 +626,7 @@ function closingGlue(s, placed) {
     const g = N.glueMove(s, m.who, 'closing', null);
     if (!g) continue;
     const text = N.templateText(s, g);
-    s.conversations.push({ role: 'npc', npc: m.who, text, refs: [] });
+    s.conversations.push({ role: 'npc', npc: m.who, text, template: text, refs: [] });
     lines.push({ npc: m.who, move: g, text });
   }
   return lines;
@@ -659,7 +670,7 @@ function deliverOffTurn(s, moves) {
     if (here) {
       deliver(s, m);
       const text = N.templateText(s, m);
-      s.conversations.push({ role: 'npc', npc: m.npc, text, refs: moveRefs(m) });
+      s.conversations.push({ role: 'npc', npc: m.npc, text, template: text, refs: moveRefs(m) });
       lines.push({ npc: m.npc, move: m, text });
     } else {
       queueMessage(s, m.npc, { text: N.templateText(s, m), moves: [m] }, CONFIG.REPLY_DELAY.person);
@@ -976,7 +987,8 @@ function startReview(s, { forced }) {
   N.placeNpcs(s);
   s.npcs.ian.pendingQuestion = { npc: 'ian', goal: 'meeting.sign', parse: makeParse({ kind: 'ask', relation: 'about', topic: 'review', open_slot: 'none', source: 'npc' }), at: s.fuelSpent };
   s.pendingQuestion = s.npcs.ian.pendingQuestion;
-  s.conversations.push({ role: 'npc', npc: 'ian', text: forced ? 'Time. We’re in the review. What will you sign?' : 'Then we review now. What will you sign?', refs: ['review'] });
+  const reviewLine = forced ? 'Time. We’re in the review. What will you sign?' : 'Then we review now. What will you sign?';
+  s.conversations.push({ role: 'npc', npc: 'ian', text: reviewLine, template: reviewLine, refs: ['review'] });
   log(s, 'review', { forced, filed: s.filed, scores: s.scores });
   trigger(s, 'act:decision');
 }
@@ -1005,7 +1017,7 @@ function meetingTurn(s, parse, npc, text) {
     }
     lines.push({ npc: 'ian', text: meetingIanPrompt(s) });
   }
-  for (const l of lines) s.conversations.push({ role: 'npc', npc: l.npc, text: l.text, refs: [] });
+  for (const l of lines) s.conversations.push({ role: 'npc', npc: l.npc, text: l.text, template: l.text, refs: [] });
   if (s.fuel <= 0) s.graceUsed = true;
   spend(s, 1);
   if (s.fuel <= 0 && !s.ending && s.graceUsed) decide(s);
@@ -1140,6 +1152,7 @@ export function clientState(s) {
     usage: s.usage,
     serverMode: process.env.DEMO_MODE === '1' || !process.env.OPENAI_API_KEY ? 'demo' : 'live',
     conceptLinksEnabled: !!s.conceptLinksEnabled,
+    eli10Enabled: !!s.eli10Enabled,
     conceptMoreLink: s.conceptMoreLink,
     labAccessActive: !!s.labAccessActive,
     fuel: s.fuel,
@@ -1171,6 +1184,10 @@ export function screens() {
   return SCREENS;
 }
 
+export function roomNotes() {
+  return ROOM_NOTES;
+}
+
 export function setConceptLinks(s, on) {
   logAction(s, 'settings', { conceptLinksEnabled: !!on });
   s.conceptLinksEnabled = !!on;
@@ -1182,6 +1199,16 @@ export function setConceptLinks(s, on) {
     const c = conceptFor(s.roomConceptLastTrigger);
     if (c) s.conceptMoreLink = c;
   }
+}
+
+/** Lab Access settings persisted on the session (replay via save events). */
+export function applyPhoneSettings(s, args = {}) {
+  if ('conceptLinksEnabled' in args) setConceptLinks(s, args.conceptLinksEnabled);
+  if ('eli10Enabled' in args) {
+    logAction(s, 'settings', { eli10Enabled: !!args.eli10Enabled });
+    s.eli10Enabled = !!args.eli10Enabled;
+  }
+  return {};
 }
 
 /**

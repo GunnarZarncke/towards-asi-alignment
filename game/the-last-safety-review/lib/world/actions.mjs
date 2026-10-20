@@ -3,7 +3,7 @@
  * playtest harness all go through it, so a saved event log replays the same transitions.
  */
 import { EDGES } from '../floorplan.mjs';
-import { go, inspect, respond, think, thoughtAction, setConceptLinks, dmSend } from '../game.mjs';
+import { go, inspect, respond, think, thoughtAction, applyPhoneSettings, dmSend } from '../game.mjs';
 import { applyToolCall } from './terminal-host.mjs';
 import { CONFIG } from './config.mjs';
 
@@ -18,7 +18,7 @@ export function applyAction(s, action, args = {}) {
     case 'thought': return thoughtAction(s, args.action);
     case 'dm.send': return dmSend(s, args);
     case 'tool': return applyToolCall(s, args);
-    case 'settings': return setConceptLinks(s, args.conceptLinksEnabled);
+    case 'settings': return applyPhoneSettings(s, args);
     default: return { error: `Unknown action ${action}` };
   }
 }

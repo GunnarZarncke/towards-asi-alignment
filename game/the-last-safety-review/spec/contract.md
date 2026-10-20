@@ -44,6 +44,7 @@ asked: topic keys already asked   // stored; the ranker does not read this
 usage: { calls, input, output }
 serverMode: "demo" | "live"
 conceptLinksEnabled: boolean   // mirrors phone setting; default false
+eli10Enabled: boolean          // mirrors phone setting; default false — room ELI10 control and /api/eli10
 conceptMoreLink: { summary, href } | null   // O-41: one sticky link per room visit; null when off or none yet
 labAccessActive: boolean       // issued Lab Access handset activated; overlay and isolate tools on it wait on this
 fuel: number                   // sentences, moves, phone actions, and think. See engine.md
@@ -80,12 +81,13 @@ Session cookie: `lab_sid` (HttpOnly). In-memory; restart clears it.
 | POST | `/api/import` | save file | replays its `action` events; rejects another scenario or a newer version |
 | POST | `/api/go` | `{ room }` | room change or error |
 | POST | `/api/inspect` | `{ id }` | evidence body or error |
-| POST | `/api/settings` | `{ conceptLinksEnabled }` | state |
+| POST | `/api/settings` | `{ conceptLinksEnabled?, eli10Enabled? }` | state, terminal |
 | POST | `/api/thought` | `{ action: "note" \| "close" }` | state |
 | POST | `/api/tool` | one tool call (`file.read`, `file.write`, `file.share`, `dm.send`, `dm.read`, `access.request`) | `{ result, state, terminal }`; 403 for a denied tool |
 | POST | `/api/text` | `{ line }` | `{ out, prompt }`: one text-console command on this session ([text-console.md](text-console.md)); an empty line reprints the room |
 | POST | `/api/parse` | `{ text, previousParse, constructionTrace, channel, addressee }` | `{ parse, state }` |
 | POST | `/api/respond` | `{ text, parse, addressee }` | `{ reply, lines: { npc, type, text }[], effects, parse, ending?, state, terminal }` |
+| POST | `/api/eli10` | `{ kind?: "auto" \| "transcript" \| "document" \| "inspect", slug?, rel?, inspectId? }` | `{ text, source: "prepared" \| "llm", label?, state }`. Default `kind` is `auto`: `rel`/`slug` → prepared document ELI10; `inspectId` → room screen or note; else the last NPC line (prepared template/fact text, or LLM when the line was model-phrased). Does not spend fuel. |
 
 Every POST response also carries `state` and `terminal`. Mutating POSTs (not `/api/parse` or `/api/tab-complete`) also carry `telemetry`: `{ fuel, room, act, npc, knowledge }` — fuel is the spent index at that step; `npc` and `knowledge` are null when not applicable. Optional server JSONL when `TELEMETRY_LOG` is set; the browser keeps the same fields in local storage and may `sendBeacon` `/api/telemetry`. Page traffic on public hosts uses the companion site’s cookieless Cloudflare Web Analytics beacon.
 

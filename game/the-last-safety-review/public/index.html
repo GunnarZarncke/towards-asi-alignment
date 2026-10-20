@@ -31,6 +31,7 @@
         Map
       </button>
       <span class="act-switch" id="actSwitch" hidden title="Act lighting (fixture harness only)"><button type="button" data-act="welcome">I</button><button type="button" data-act="doubt">II</button><button type="button" data-act="decision">III</button></span>
+      <button type="button" class="minor eli10-btn" id="eli10Btn" hidden title="Explain the last answer or open document in simple words">ELI10</button>
       <span class="handset-slot">
         <button type="button" class="minor handset-btn" id="phoneBtn" hidden aria-label="Lab Access phone">
           <svg class="phone-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 2.2h8A1.8 1.8 0 0 1 17.8 4v16a1.8 1.8 0 0 1-1.8 1.8H8A1.8 1.8 0 0 1 6.2 20V4A1.8 1.8 0 0 1 8 2.2zM8 4v16h8V4H8zm4 14.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></svg>
@@ -65,6 +66,11 @@
     <button type="button" id="notebookAdd" class="send">Add to Notes</button>
     <button type="button" id="notebookSkip" class="minor">Not now</button>
   </div>
+</section>
+<section id="eli10Panel" class="eli10 hud panel" hidden role="dialog" aria-labelledby="eli10Title" aria-modal="true">
+  <div class="eli10-head"><span class="eyebrow" id="eli10Title">EXPLAIN LIKE I'M 10</span><button type="button" class="icon-btn" id="eli10Close" aria-label="Close">×</button></div>
+  <p class="small muted" id="eli10Label"></p>
+  <div id="eli10Body" class="eli10-body small"></div>
 </section>
 <section id="ending" class="ending hud" hidden></section>
 <div id="intro" class="intro-scrim" role="dialog" aria-modal="true" aria-labelledby="introTitle" hidden>

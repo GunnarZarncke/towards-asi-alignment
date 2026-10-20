@@ -45,6 +45,7 @@ export const SETTINGS = Object.freeze([
   { key: 'demoMode', label: 'Demo / no model' },
   { key: 'parserInspector', label: 'Parser inspector' },
   { key: 'conceptLinks', label: 'Book concept links' },
+  { key: 'eli10', label: 'Explain like I’m 10 (ELI10)' },
 ]);
 
 /** One capability the solo fixture will grant. O-43 is still open. */
@@ -64,6 +65,7 @@ export function defaultSettings() {
     demoMode: true,
     parserInspector: false,
     conceptLinks: false,
+    eli10: false,
   };
 }
 

@@ -73,6 +73,7 @@ export function terminalState(s) {
     pendingAccess: s.pendingAccess.map(a => ({ path: a.path, verb: a.verb })),
     interview: { on: !!s.interview.on },
     conceptLinksEnabled: !!s.conceptLinksEnabled,
+    eli10Enabled: !!s.eli10Enabled,
   };
 }
 

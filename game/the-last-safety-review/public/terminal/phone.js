@@ -71,6 +71,7 @@ async function refreshClientSnapshot() {
 function syncPhoneSettings(terminal, prev) {
   const base = { ...defaultSettings(), ...(prev || {}) };
   if (terminal && 'conceptLinksEnabled' in terminal) base.conceptLinks = !!terminal.conceptLinksEnabled;
+  if (terminal && 'eli10Enabled' in terminal) base.eli10 = !!terminal.eli10Enabled;
   return base;
 }
 
@@ -100,6 +101,32 @@ function toast(text) {
   el.textContent = text;
   clearTimeout(toast._t);
   toast._t = setTimeout(() => { el.hidden = true; }, 2200);
+}
+
+async function showEli10ForViewer() {
+  const rel = top().rel;
+  if (!rel) return;
+  try {
+    const res = await fetch('/api/eli10', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: 'document', rel }),
+    });
+    const data = await res.json();
+    if (!res.ok) return toast(data.error || 'Could not simplify.');
+    if (engine) await refreshClientSnapshot();
+    const dlg = document.getElementById('eli10Dialog');
+    const label = document.getElementById('eli10Label');
+    const body = document.getElementById('eli10Body');
+    if (!dlg || !body) return toast(data.text);
+    const src = data.source === 'llm' ? 'explained with AI' : 'prepared';
+    if (label) label.textContent = data.label ? `${data.label} · ${src}` : src;
+    body.textContent = data.text || '';
+    dlg.showModal();
+    posthog?.capture('eli10_open', { source: data.source, surface: 'phone' });
+  } catch {
+    toast('Could not simplify.');
+  }
 }
 
 function pip() {
@@ -141,9 +168,11 @@ function go(next) {
 }
 
 function back() {
+  const leaving = top().name === 'viewer';
   if (route.length > 1) route.pop();
   else route = [{ name: 'home' }];
   stopVideo();
+  if (leaving) toParent({ type: 'eli10-context', rel: null });
   render();
 }
 
@@ -184,6 +213,8 @@ async function openFile(rel, from) {
   video = { t: 0, playing: false, dur: 8 };
   if (from) route = [{ name: 'home' }, from];
   go({ name: 'viewer', rel, file: read.file });
+  const k = read.file?.kind;
+  if (k !== 'image' && k !== 'video' && k !== 'other') toParent({ type: 'eli10-context', rel });
 }
 
 function slug(title) {
@@ -467,6 +498,8 @@ function viewer() {
     owned: row?.owned ?? opened?.owned,
     sharedWith: row?.sharedWith || opened?.sharedWith || [],
   };
+  const canEli10 = state.settings.eli10 && file.kind !== 'image' && file.kind !== 'video' && file.kind !== 'other';
+  const eli10 = canEli10 ? '<button type="button" class="text-btn" data-act="eli10-doc">ELI10</button>' : '';
   const share = file.owned
     ? `<button type="button" class="primary" data-act="share" data-rel="${esc(file.rel)}">Share</button>` : '';
   let body;
@@ -483,7 +516,7 @@ function viewer() {
   } else body = `<div class="pad"><div class="doc">${richText(file.text)}</div></div>`;
   const shared = (file.sharedWith || []).length
     ? `<p class="hint">Shared with ${(file.sharedWith || []).map(contactName).join(', ')}.</p>` : '';
-  return `${head(file.name, file.rel)}<div class="pad">${share}${shared}${conceptMoreBlock()}</div>${body}`;
+  return `${head(file.name, file.rel)}<div class="pad">${eli10}${share}${shared}${conceptMoreBlock()}</div>${body}`;
 }
 
 function richText(text) {
@@ -681,6 +714,7 @@ function onClick(e) {
     return;
   }
   if (act === 'open-file') return openFile(b.dataset.rel);
+  if (act === 'eli10-doc') return showEli10ForViewer();
   if (act === 'share') return go({ name: 'share', rel: b.dataset.rel });
   if (act === 'do-share') {
     tool({ tool: 'file.share', rel: b.dataset.rel, to: b.dataset.id }).then(result => {
@@ -731,8 +765,8 @@ function onClick(e) {
   if (act === 'toggle') {
     const key = b.dataset.key;
     state.settings = { ...state.settings, [key]: !state.settings[key] };
-    if (key === 'conceptLinks' && engine) {
-      void postConceptLinksSetting(state.settings.conceptLinks);
+    if ((key === 'conceptLinks' || key === 'eli10') && engine) {
+      void postEngineSettings(key);
     } else {
       if (key === 'alwaysShowPhone' && overlayAllowed(state) && state.settings.alwaysShowPhone) overlay = true;
       if (key === 'alwaysShowPhone' && !state.settings.alwaysShowPhone) overlay = false;
@@ -741,20 +775,24 @@ function onClick(e) {
   }
 }
 
-async function postConceptLinksSetting(on) {
+async function postEngineSettings(toggledKey) {
+  const patch = toggledKey === 'conceptLinks'
+    ? { conceptLinksEnabled: !!state.settings.conceptLinks }
+    : { eli10Enabled: !!state.settings.eli10 };
   try {
     const res = await fetch('/api/settings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ conceptLinksEnabled: !!on }),
+      body: JSON.stringify(patch),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Could not save setting.');
     if (data.terminal) state = { ...data.terminal, settings: syncPhoneSettings(data.terminal, state.settings) };
+    if (data.state) clientSnapshot = data.state;
     toParent({ type: 'changed' });
   } catch (err) {
     toast(err.message || 'Could not save setting.');
-    state.settings = { ...state.settings, conceptLinks: !on };
+    state.settings = { ...state.settings, [toggledKey]: !state.settings[toggledKey] };
   }
   render();
 }
@@ -1015,6 +1053,9 @@ async function boot() {
   document.body.addEventListener('pointerup', onEmbedSwipeEnd);
   document.body.addEventListener('pointercancel', () => { embedSwipeY = null; });
   document.addEventListener('keydown', onKey);
+  const eli10Dlg = document.getElementById('eli10Dialog');
+  document.getElementById('eli10Close')?.addEventListener('click', () => eli10Dlg?.close());
+  eli10Dlg?.addEventListener('click', e => { if (e.target === eli10Dlg) eli10Dlg.close(); });
   render();
 }
 
