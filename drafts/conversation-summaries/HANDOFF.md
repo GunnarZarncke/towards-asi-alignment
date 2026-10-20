@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-20 (Last Safety folder rename and social replies).
+Last updated: 2026-10-20 (Ch. 1 claim-extract author decisions).
 
 ---
 
@@ -12,7 +12,7 @@ Last updated: 2026-10-20 (Last Safety folder rename and social replies).
 
 **Canonical list:** [`metadata/TODO.md`](../../metadata/TODO.md) — lanes, boards, sizes, gates. Do not duplicate here.
 
-**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. Claim-extract: **Ch. 1** extract done; surgical prose applied; author-decision items still open (plan § Ch. 1). Next chapter Ch. 5. Log: `2026-10-16-ch01-claim-extract.md`. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — catalog 1–13 & 15–18 point to versioned registry pages; `snapshotTag: snapshot-0` pinned (claims repo `3563a88`); Market 14 full box; Markets 19–21 full appendix boxes until Phase 4; **next:** Metaculus listing, independent host transfer, Zenodo; workbench `aintelope/ai-safety-claims-workbench`); then Phase 4.
+**Active lanes:** [`backtest.md`](../plans/backtest/backtest.md) · [`field.md`](../plans/field/field.md) · [`spine.md`](../plans/spine/spine.md) · [`construct.md`](../plans/construct/construct.md) · [`claim-extract.md`](../plans/claim-extract/claim-extract.md) — checklists in each file. Claim-extract: **Ch. 1** extract checker-clean; author decisions closed (plan § Ch. 1). **Next:** Ch. 5 when author asks. Logs: `2026-10-16-ch01-claim-extract.md`, `2026-10-20-ch01-claim-extract-author-decisions.md`. 2.0 coupled-system reading: [`embedded-v2.md`](../plans/construct/embedded-v2.md). Reader contracts: [`bridge-first-use.md`](../plans/spine/bridge-first-use.md) · front-door vocabulary policy in `INSTRUCTIONS.md` §2 (Voice lane closed; plan in `drafts/attic/voice-plan.md`). Bridge 2027 markets: [`bridge-prediction-markets.md`](../plans/predictions/bridge-prediction-markets.md) (`0.4`) · [`prediction-interface.md`](../plans/predictions/prediction-interface.md) · [`assurance-risk-modelling.md`](../plans/predictions/assurance-risk-modelling.md) (Phase 3 shipped; three-way YES/NO/OTHER; **next:** [`eval-registry-split.md`](../plans/predictions/eval-registry-split.md) — catalog 1–13 & 15–18 point to versioned registry pages; `snapshotTag: snapshot-0` pinned (claims repo `3563a88`); Market 14 full box; Markets 19–21 full appendix boxes until Phase 4; **next:** Metaculus listing, independent host transfer, Zenodo; workbench `aintelope/ai-safety-claims-workbench`); then Phase 4.
 
 Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic/`.
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-20:** **Ch. 1 claim-extract author decisions** — Several-process boundary error; extent/resolution typology; admissible-transition chain; thesis vs operational key claim; empirical WWCTV; extract `ch01.094`. Log: `2026-10-20-ch01-claim-extract-author-decisions.md`.
 - **2026-10-20:** **Last Safety folder + social replies** — Game at `game/the-last-safety-review/`; one-line social/small-talk replies; Ian Lab Access brief no longer stacked with work_alt. Log: `2026-10-20-last-safety-folder-social-replies.md`.
 - **2026-10-20:** **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who/Hi fixes, parse sanitization and `preparePlayerUtterance`, offline `sanitize.test.mjs`, `test:llm` story + probe fixtures. Logs: `2026-10-20-last-safety-grammar-parse-robustness.md`, `2026-10-20-last-safety-llm-parse-tests.md`.
 - **2026-10-20:** **Last Safety filing and Who** — Commit addressed to Ian (in room or DM); sign-vocabulary chips and Ian lines; Who roster asks withhold to calendar. Log: `2026-10-20-last-safety-filing-who.md` (`fe0ee83e5`).

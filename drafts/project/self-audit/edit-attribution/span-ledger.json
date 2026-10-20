@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261019T230516.065Z",
+  "_as_of": "20261020T004244.369Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -554,7 +554,6 @@
   },
   "chapters/ch01-wrong-object.tex#20": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 20,
@@ -586,8 +585,7 @@
     "prior": "GZ+AI"
   },
   "chapters/ch01-wrong-object.tex#33": {
-    "agent": 5,
-    "dirty": true,
+    "agent": 18,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 33,
@@ -596,7 +594,6 @@
   },
   "chapters/ch01-wrong-object.tex#34": {
     "agent": 5,
-    "dirty": true,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 2,
     "index": 34,
@@ -605,7 +602,6 @@
   },
   "chapters/ch01-wrong-object.tex#35": {
     "agent": 4,
-    "dirty": true,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 35,
@@ -670,7 +666,6 @@
   },
   "chapters/ch01-wrong-object.tex#9": {
     "agent": 6,
-    "dirty": true,
     "file": "chapters/ch01-wrong-object.tex",
     "human": 0,
     "index": 9,

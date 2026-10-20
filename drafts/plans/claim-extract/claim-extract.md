@@ -88,7 +88,7 @@ Low density alone is not a reason to go early (Ch. 2, 47). Synthesis chapters (C
 
 Ch. 42 is done (`ch42.jsonl`). Ch. 1 extract is done; its prose items are open (below). **Next is Ch. 5.** Do not start a pass until the author asks.
 
-- [~] **Ch. 1** — extract `ch01.jsonl` checker-clean; surgical prose applied 2026-10-16; author-decision items in § Ch. 1 still open.
+- [~] **Ch. 1** — extract `ch01.jsonl` checker-clean; author decisions closed 2026-10-16 (see § Ch. 1); re-check extract after last prose pass.
 - [ ] **Ch. 5** — assumptions and failure coverage as an informal ledger.
 - [ ] **Ch. 25** — correction channel; join delivery; recent `Pers` / `Auth_k` edits.
 - [ ] **Ch. 7** — boundary; `BoundaryAligned` / `MB1`; join box 1.
@@ -146,19 +146,19 @@ Infrastructure (do early in rollout, not per chapter):
 
 Done for the lane: all scoped chapters have checker-clean JSONL; cross-chapter flag histogram reviewed; remaining open items are 2.0 spine work or author "keep as is" on flagged records.
 
-## Ch. 1 (extract done; surgical applied; author decisions open)
+## Ch. 1 (extract done; author decisions closed)
 
-Extract: `metadata/claim-extracts/ch01.jsonl`. Surgical phrase-level items applied 2026-10-16 (session `2026-10-16-ch01-claim-extract.md`); records re-checked. Remaining items close when the chapter is edited and the cited records are re-checked, or the author writes "keep as is" here.
+Extract: `metadata/claim-extracts/ch01.jsonl`. Re-check after each prose edit.
 
-**Finding.** The chapter states its selection criterion in several forms, and they still disagree: best predicts (`ch01.024`), helps predict (`ch01.029`), loop persistence (`ch01.034`), prose cost comparison (`ch01.044`; the displayed inequality was removed), argmax without the boundary residual (`ch01.087`), and Ch. 7's `J(C) = R − αP + λΩ`, which keeps the boundary residual that Ch. 1 drops. Related open flags: one object or several (`ch01.036`, `ch01.058`, `ch01.066`), several names for the object (`ch01.081`).
+**Finding (selection criterion).** Several operational forms remain (`ch01.024`, `ch01.029`, `ch01.034`, `ch01.044`, `ch01.087`, Ch. 7 `J(C)`). Ch. 1 deliberately keeps the comparison prose-light; Ch. 7 is canonical for \(J(C)\) and the boundary residual. Ranked candidates (`ch01.066`) fit several optimizers at once; the closing argmax (`ch01.087`) is the single-risk operationalization.
 
-Author decisions (argument, not phrasing):
+**Author decisions (closed 2026-10-16):**
 
-- [ ] `ch01.036`, `ch01.058` — the boundary-error definition presumes a unique risk system; the chapter allows several. Pick a reading ("not among", coverage).
-- [ ] `ch01.037` — the four forms mix two axes (extent: narrow, wide; resolution: timescale, abstraction) and miss "misplaced". This is the chapter's stated contribution.
-- [ ] `ch01.073` — "moving equivalence class": tolerance-preservation is not transitive. Equivalence under exact preservation, or a chain of admissible transitions?
-- [ ] `ch01.087` vs `ch01.003` — which is the key claim, the ordering or the selection rule?
-- [ ] `ch01.090` — the second falsifier asks for a proof of non-localizability; consider an empirical version.
+- **Risk system / uniqueness.** Ch. 1 does not require a unique risk system; examples use one boundary for clarity. Later chapters may fix object choice per case (`T`, risk). Definition updated: evaluated boundary must be among the processes that determine the risk, or include them when several matter (`ch01.036` / `ch01.058`).
+- **Typology axes.** The contribution is a family of boundary errors, not a complete partition. Extent (too narrow, too wide, misplaced in Ch. 7) and resolution (timescale, abstraction) are different failure modes; prose now states that explicitly (`ch01.037`).
+- **Moving object.** Not an equivalence class (transitivity fails under drift). **Chain of admissible transitions** with stepwise preservation of correction-relevant invariants (`ch01.073`, Summary).
+- **Thesis vs key claim.** `ch01.003`: **ordering** — locate before align (chapter thesis). `ch01.087`: **selection rule** — what locating means for a given risk (operational key claim). Both; prose in § What This Chapter Establishes separates them.
+- **Falsifier.** Empirical WWCTV bullet added (`ch01.090`); proof bar on non-localizability kept as the formal counterpart.
 
 Spine (Lean gaps, record only; not chapter work):
 
