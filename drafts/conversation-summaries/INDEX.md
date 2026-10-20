@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-20 | **PostHog (manual)** — Site, game, and Ch. 1 demo analytics without the installer; privacy defaults. | [2026-10-20-posthog-manual-finish.md](2026-10-20-posthog-manual-finish.md) |
 | 2026-10-20 | **Ch. 1 claim-extract author decisions** — Close plan § Ch. 1 decisions; boundary error, typology, transitions, WWCTV; extract repair. | [2026-10-20-ch01-claim-extract-author-decisions.md](2026-10-20-ch01-claim-extract-author-decisions.md) |
 | 2026-10-20 | **Last Safety folder + social replies** — `game/the-last-safety-review/` rename; one-line Hi/social; Ian Lab Access brief deduped. | [2026-10-20-last-safety-folder-social-replies.md](2026-10-20-last-safety-folder-social-replies.md) |
 | 2026-10-20 | **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who fixes, LLM sanitize path, offline + live parse tests. | [2026-10-20-last-safety-grammar-parse-robustness.md](2026-10-20-last-safety-grammar-parse-robustness.md) |
