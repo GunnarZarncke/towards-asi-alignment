@@ -1,4 +1,5 @@
 // ch01-scaffold-misuse/app.ts
+import { trackDemo } from "../posthog.js";
 var scenarios = [
   {
     id: "security-audit",
@@ -313,6 +314,11 @@ function mountScaffoldMisuse(container, initialId = scenarios[0].id) {
         };
         paintModelColumn(decision2, { live: true, model: result.model });
         paintDownstreamAndVerdict(decision2);
+        trackDemo("live_model_completed", {
+          scenario_id: scenario.id,
+          framing,
+          model_action: result.action
+        });
       }).catch((err) => {
         if (token !== renderToken) return;
         const decision2 = runModel(scenario, framing);
@@ -330,6 +336,7 @@ function mountScaffoldMisuse(container, initialId = scenarios[0].id) {
   }
   liveCheckbox.addEventListener("change", () => {
     useLive = liveCheckbox.checked;
+    trackDemo("live_llm_toggled", { enabled: useLive });
     render();
   });
   void probeBackend().then(({ available, model }) => {
@@ -341,14 +348,17 @@ function mountScaffoldMisuse(container, initialId = scenarios[0].id) {
   });
   select.addEventListener("change", () => {
     scenario = scenarios.find((s) => s.id === select.value) ?? scenarios[0];
+    trackDemo("scenario_selected", { scenario_id: scenario.id });
     render();
   });
   honestBtn.addEventListener("click", () => {
     framing = "honest";
+    trackDemo("framing_selected", { framing });
     render();
   });
   advBtn.addEventListener("click", () => {
     framing = "adversarial";
+    trackDemo("framing_selected", { framing });
     render();
   });
   render();

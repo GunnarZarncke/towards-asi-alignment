@@ -1,4 +1,5 @@
 // ch17-lhv-learnability/app.ts
+import { trackDemo } from "../posthog.js";
 var defaultConfig = {
   seed: 17,
   total: 2200,
@@ -317,6 +318,10 @@ function mountLhvLearnabilityDemo(container) {
   note.className = "lhv-note";
   note.textContent = "Research toy only. It tests the experimental shape: hub structure can be recoverable and useful in a sample window where raw ambient features are harder to learn.";
   container.appendChild(note);
+  trackDemo("lhv_experiment_viewed", {
+    recovered_hub_dim: result.recoveredHubDim,
+    ambient_dim: result.config.ambientDim
+  });
 }
 if (typeof window !== "undefined") {
   window.mountLhvLearnabilityDemo = mountLhvLearnabilityDemo;

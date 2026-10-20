@@ -1,3 +1,6 @@
+// appB-field-spring-map/app.ts
+import { trackDemo } from "../posthog.js";
+
 // appB-field-spring-map/weights.ts
 var LIVE_BRIDGES = [
   "MB1",
@@ -969,7 +972,12 @@ async function initDemo(root) {
     drawFrame();
     raf = requestAnimationFrame(loop);
   }
-  ui.querySelector("[data-category]")?.addEventListener("change", rebuild);
+  ui.querySelector("[data-category]")?.addEventListener("change", (ev) => {
+    trackDemo("field_map_category_changed", {
+      category: ev.target.value
+    });
+    rebuild();
+  });
   geometryBtn.addEventListener("click", () => {
     pinGeometry = pinGeometry === "dependency" ? "circle" : "dependency";
     transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };
