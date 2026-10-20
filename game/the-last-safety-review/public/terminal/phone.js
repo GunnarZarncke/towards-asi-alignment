@@ -1,3 +1,4 @@
+import posthog from '../posthog.js';
 import {
   APPS, SETTINGS, ALLOWED_CAPS, defaultSettings, applyTool, suggestionChips, sendable,
   visibleMessages, nowPlacement, handsetShouldBlink, overlayAllowed,
@@ -685,6 +686,7 @@ function onClick(e) {
     tool({ tool: 'file.share', rel: b.dataset.rel, to: b.dataset.id }).then(result => {
       if (!result.ok) return toast(result.reason);
       state = result.state;
+      posthog?.capture('file_shared');
       toast(`Shared with ${contactName(b.dataset.id)}.`);
       back();
     });
@@ -768,6 +770,7 @@ async function sendMessage(id) {
   const result = await tool({ tool: 'dm.send', to: id, text, parse });
   if (!result.ok) return toast(result.reason);
   state = result.state;
+  posthog?.capture('phone_message_sent', { message_kind: parse.kind });
   lastParse = result.parse || parse;
   if (top().name === 'thread') top().draft = '';
   pip();
@@ -778,6 +781,7 @@ async function sendMessage(id) {
 async function askCap(capability) {
   const result = await tool({ tool: 'access.request', capability: capability.trim() });
   state = result.state;
+  posthog?.capture('access_request_submitted', { request_type: 'capability', granted: !!result.ok });
   toast(result.ok ? 'Granted.' : result.reason);
   render();
 }
@@ -785,6 +789,7 @@ async function askCap(capability) {
 async function askPath(path, verb) {
   const result = await tool({ tool: 'access.request', path, verb });
   state = result.state;
+  posthog?.capture('access_request_submitted', { request_type: 'path', granted: !!result.ok });
   toast(result.reason);
   render();
 }
@@ -797,6 +802,7 @@ async function saveNote(rel) {
   const result = await tool({ tool: 'file.write', rel: path, name: title, text, kind: 'note' });
   if (!result.ok) return toast(result.reason);
   state = result.state;
+  posthog?.capture('note_saved', { is_new: !rel });
   toast('Saved to Files.');
   route = [{ name: 'home' }, { name: 'notes' }];
   render();

@@ -1,0 +1,29 @@
+---
+/** Product analytics (optional). Token is public; set at build time via PUBLIC_POSTHOG_* */
+const token = import.meta.env.PUBLIC_POSTHOG_PROJECT_TOKEN?.trim() || "";
+const host =
+  import.meta.env.PUBLIC_POSTHOG_HOST?.trim() || "https://eu.i.posthog.com";
+const enabled = !import.meta.env.DEV && Boolean(token);
+---
+
+{
+  enabled && (
+    <script define:vars={{ token, host }}>
+      import posthog from "posthog-js";
+
+      posthog.init(token, {
+        api_host: host,
+        person_profiles: "identified_only",
+        capture_pageview: true,
+        capture_pageleave: true,
+        autocapture: false,
+        disable_session_recording: true,
+        capture_exceptions: {
+          capture_unhandled_errors: true,
+          capture_unhandled_rejections: true,
+          capture_console_errors: false,
+        },
+      });
+    </script>
+  )
+}

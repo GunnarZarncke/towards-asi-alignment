@@ -30,6 +30,7 @@
     #coach[hidden]{display:none}
     a{color:#8fc7b0}
   </style>
+  <script src="/posthog-config.js"></script>
 </head>
 <body>
 <div id="log" aria-live="polite"></div>
@@ -39,6 +40,7 @@
   <form id="f"><span id="prompt"></span><span id="debugBadge" hidden>debug</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help · Tab completes speech" autofocus/></form>
 </div>
 <script type="module">
+import './posthog.js';
 const log = document.getElementById('log');
 function bootError(message) {
   log.replaceChildren();

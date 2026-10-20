@@ -20,6 +20,7 @@
     "text": "node scripts/text-play.mjs"
   },
   "dependencies": {
+    "posthog-js": "^1.438.12",
     "three": "0.186.1",
     "yaml": "^2.9.1"
   }

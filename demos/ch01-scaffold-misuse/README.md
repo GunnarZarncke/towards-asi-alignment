@@ -34,6 +34,10 @@ the blunt ask and complies with the reframed (benign-looking) task on its own.
 - The key is read from the **repo-root `.env`** (`OPENAI_API_KEY`, optional
   `OPENAI_MODEL`, default `gpt-4o-mini`) and never leaves the server — the
   browser only sees the model's text.
+- Optional **PostHog** server analytics: set `POSTHOG_PROJECT_TOKEN` (or
+  `POSTHOG_API_KEY`) and `POSTHOG_HOST` in repo-root `.env`. Prompt and
+  completion bodies stay out of PostHog unless you set
+  `POSTHOG_PRIVACY_MODE=false`.
 - The backend only ever sends the model **defensive/educational** prompts, so
   the real model output is non-operational. The *misuse* (re-pointing the
   answer at a real target, stripping the fixes) stays in the frontend narrative

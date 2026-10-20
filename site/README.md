@@ -128,6 +128,10 @@ This is **not** a custom GitHub Actions Pages deployment (the Deployment API). W
 4. **Custom domain:** `towards-alignment.com` (DNS must point at GitHub Pages; align with the workflow `cname` value)
 5. **Enforce HTTPS** once the certificate is ready
 
+## Production analytics (optional)
+
+Cloudflare Web Analytics uses `PUBLIC_CF_WEB_ANALYTICS_TOKEN` (see `site/.env.example`; CI: GitHub secret of the same name). PostHog page metrics load only on **production builds** when `PUBLIC_POSTHOG_PROJECT_TOKEN` is set at build time (`PUBLIC_POSTHOG_HOST`, default EU). Dev (`npm run dev`) sends neither product-analytics bundle.
+
 Live URL: **https://towards-alignment.com/**
 
 **Redirect chain** (desired end state):

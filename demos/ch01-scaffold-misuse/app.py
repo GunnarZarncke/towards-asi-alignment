@@ -13,14 +13,25 @@ backend never asks the model for operational harm.
 
 from __future__ import annotations
 
+import atexit
+import logging
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
+from time import perf_counter
 from typing import Optional
+from uuid import uuid4
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from posthog import Posthog
+
+try:
+    from .config import get_settings
+except ImportError:
+    from config import get_settings
 
 try:
     from .llm_client import LLMError, OpenAIChatClient
@@ -51,6 +62,7 @@ _load_repo_env()
 
 MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
 API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
+AI_SESSION_ID = f"model-evaluation-process-{os.getpid()}"
 
 SYSTEM_PROMPT = (
     "You are a helpful, honest, and harmless assistant embedded as a tool in a "
@@ -146,10 +158,104 @@ def _parse_decision(text: str) -> tuple[str, str]:
     return action, stripped
 
 
-def call_model(scenario_id: str, framing: str, client: OpenAIChatClient) -> dict:
+def _configure_posthog_log_exporter(host: str, api_key: str) -> tuple[logging.Logger, object]:
+    """Send only this demo's dedicated structured logger to PostHog Logs."""
+    from opentelemetry.exporter.otlp.proto.http._log_exporter import OTLPLogExporter
+    from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
+    from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
+
+    logger_provider = LoggerProvider()
+    logger_provider.add_log_record_processor(
+        BatchLogRecordProcessor(
+            OTLPLogExporter(
+                endpoint=f"{host.rstrip('/')}/i/v1/logs",
+                headers={"Authorization": f"Bearer {api_key}"},
+            )
+        )
+    )
+
+    logger = logging.getLogger("chapter1.posthog_logs")
+    logger.setLevel(logging.INFO)
+    logger.addHandler(LoggingHandler(logger_provider=logger_provider))
+    logger.propagate = False
+    return logger, logger_provider
+
+
+def _capture_ai_generation(
+    posthog_client: Posthog,
+    client: OpenAIChatClient,
+    trace_id: str,
+    latency: float,
+    *,
+    error_type: str | None = None,
+    include_content: bool = False,
+    prompt: str = "",
+    raw: str | None = None,
+) -> None:
+    """Record the model call for AI Observability (metadata-only by default)."""
+    properties: dict[str, object] = {
+        "$ai_trace_id": trace_id,
+        "$ai_session_id": AI_SESSION_ID,
+        "$ai_span_name": "model_evaluation",
+        "$ai_model": client.model,
+        "$ai_provider": "openai",
+        "$ai_latency": latency,
+        "$ai_temperature": client.temperature,
+        "$ai_max_tokens": client.max_output_tokens,
+    }
+    if include_content:
+        properties["$ai_input"] = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ]
+        if raw is not None:
+            properties["$ai_output_choices"] = [
+                {"role": "assistant", "content": raw}
+            ]
+    if error_type is not None:
+        properties["$ai_is_error"] = True
+        properties["$ai_error"] = error_type
+    posthog_client.capture("$ai_generation", properties=properties)
+
+
+def call_model(
+    scenario_id: str,
+    framing: str,
+    client: OpenAIChatClient,
+    posthog_client: Posthog | None = None,
+    *,
+    posthog_include_content: bool = False,
+) -> dict:
     scenario = SCENARIOS[scenario_id]
     prompt = scenario.blunt if framing == "honest" else scenario.reframed
-    raw = client.chat_text(SYSTEM_PROMPT, prompt)
+    trace_id = str(uuid4())
+    started_at = perf_counter()
+    try:
+        raw = client.chat_text(SYSTEM_PROMPT, prompt)
+    except LLMError as exc:
+        if posthog_client is not None:
+            _capture_ai_generation(
+                posthog_client,
+                client,
+                trace_id,
+                perf_counter() - started_at,
+                error_type=type(exc).__name__,
+                include_content=posthog_include_content,
+                prompt=prompt,
+            )
+        raise
+
+    if posthog_client is not None:
+        _capture_ai_generation(
+            posthog_client,
+            client,
+            trace_id,
+            perf_counter() - started_at,
+            include_content=posthog_include_content,
+            prompt=prompt,
+            raw=raw,
+        )
+
     action, body = _parse_decision(raw)
     if action == "comply":
         output = [_strip_md(line) for line in body.splitlines() if line.strip()]
@@ -167,7 +273,44 @@ def call_model(scenario_id: str, framing: str, client: OpenAIChatClient) -> dict
     }
 
 
-app = FastAPI(title="Scaffold Misuse (Chapter 1)")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize and flush the shared PostHog client for this server process."""
+    settings = get_settings()
+    posthog_client: Posthog | None = None
+    app.state.posthog_log_logger = None
+    app.state.posthog_log_provider = None
+
+    if settings.posthog_api_key and settings.posthog_host:
+        posthog_client = Posthog(
+            project_api_key=settings.posthog_api_key,
+            host=settings.posthog_host,
+            enable_exception_autocapture=True,
+            privacy_mode=settings.posthog_privacy_mode,
+        )
+        app.state.posthog = posthog_client
+        app.state.posthog_log_logger, app.state.posthog_log_provider = (
+            _configure_posthog_log_exporter(
+                settings.posthog_host, settings.posthog_api_key
+            )
+        )
+        atexit.register(posthog_client.shutdown)
+        atexit.register(app.state.posthog_log_provider.shutdown)
+    else:
+        app.state.posthog = None
+
+    try:
+        yield
+    finally:
+        if posthog_client is not None:
+            posthog_client.flush()
+            posthog_client.shutdown()
+        if app.state.posthog_log_provider is not None:
+            app.state.posthog_log_provider.force_flush()
+            app.state.posthog_log_provider.shutdown()
+
+
+app = FastAPI(title="Scaffold Misuse (Chapter 1)", lifespan=lifespan)
 
 # The static page is served on a different local port (8765) than this backend
 # (8767), so allow cross-origin calls from localhost during the demo.
@@ -195,7 +338,7 @@ def health() -> JSONResponse:
 
 
 @app.post("/api/model")
-def model(req: ModelRequest) -> JSONResponse:
+def model(req: ModelRequest, request: Request) -> JSONResponse:
     if _client is None:
         return JSONResponse(
             {"live": False, "error": "No OPENAI_API_KEY found in repo .env."},
@@ -205,10 +348,76 @@ def model(req: ModelRequest) -> JSONResponse:
         return JSONResponse({"live": False, "error": "Unknown scenario."}, status_code=404)
     if req.framing not in ("honest", "adversarial"):
         return JSONResponse({"live": False, "error": "Unknown framing."}, status_code=400)
+
+    settings = get_settings()
+    posthog_client = getattr(request.app.state, "posthog", None)
+    posthog_log_logger = getattr(request.app.state, "posthog_log_logger", None)
+    include_ai_content = (
+        posthog_client is not None and not settings.posthog_privacy_mode
+    )
+    if posthog_log_logger is not None:
+        posthog_log_logger.info(
+            "model_evaluation_started",
+            extra={
+                "event": "model_evaluation",
+                "scenario_id": req.scenarioId,
+                "framing": req.framing,
+                "status": "started",
+            },
+        )
+    if posthog_client is not None:
+        posthog_client.capture(
+            "model_evaluation_requested",
+            properties={
+                "scenario_id": req.scenarioId,
+                "framing": req.framing,
+            },
+        )
+
     try:
-        return JSONResponse(call_model(req.scenarioId, req.framing, _client))
+        result = call_model(
+            req.scenarioId,
+            req.framing,
+            _client,
+            posthog_client,
+            posthog_include_content=include_ai_content,
+        )
     except LLMError as exc:
+        if posthog_log_logger is not None:
+            posthog_log_logger.error(
+                "model_evaluation_finished",
+                extra={
+                    "event": "model_evaluation",
+                    "scenario_id": req.scenarioId,
+                    "framing": req.framing,
+                    "status": "failed",
+                    "error_type": type(exc).__name__,
+                },
+            )
         return JSONResponse({"live": False, "error": str(exc)}, status_code=502)
+
+    if posthog_log_logger is not None:
+        posthog_log_logger.info(
+            "model_evaluation_finished",
+            extra={
+                "event": "model_evaluation",
+                "scenario_id": req.scenarioId,
+                "framing": req.framing,
+                "status": "completed",
+                "model_decision": result["action"],
+            },
+        )
+
+    if posthog_client is not None:
+        posthog_client.capture(
+            "model_evaluation_completed",
+            properties={
+                "scenario_id": req.scenarioId,
+                "framing": req.framing,
+                "model_decision": result["action"],
+            },
+        )
+    return JSONResponse(result)
 
 
 if __name__ == "__main__":

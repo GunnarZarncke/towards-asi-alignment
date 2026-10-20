@@ -36,7 +36,12 @@ const inlineScripts=['index.html','text.html','terminal/index.html'].flatMap(f=>
   const file=path.join(ROOT,'public',f);
   return existsSync(file)?[...readFileSync(file,'utf8').matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(m=>`'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`):[];
 });
-const CSP=`default-src 'self'; script-src 'self' https://static.cloudflareinsights.com ${inlineScripts.join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'`;
+const posthogToken=(process.env.POSTHOG_PROJECT_TOKEN||process.env.POSTHOG_API_KEY)?.trim()||'';
+const posthogHost=process.env.POSTHOG_HOST?.trim()||'';
+const posthogAssetsHost=posthogHost.replace('.i.posthog.com','-assets.i.posthog.com');
+const posthogCspSources=[posthogHost,posthogAssetsHost].filter(Boolean).join(' ');
+const posthogConnectSources=[posthogHost,posthogAssetsHost].filter(Boolean).join(' ');
+const CSP=`default-src 'self'; script-src 'self' https://static.cloudflareinsights.com ${posthogCspSources} ${inlineScripts.join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://cloudflareinsights.com ${posthogConnectSources}; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'`;
 class HttpError extends Error{constructor(status,message){super(message);this.status=status}}
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml'};
 /** Server modules the browser may import. Each is checked to hold no oracle or NPC state. */
@@ -153,8 +158,14 @@ const server=http.createServer(async(req,res)=>{
       return json(res,404,{error:'Unknown API endpoint'});
     }
     if(req.method!=='GET')return json(res,405,{error:'Only GET supported'});
+    if(url.pathname==='/posthog-config.js'){
+      const config={token:posthogToken,host:posthogHost,isDevelopment:process.env.NODE_ENV!=='production'};
+      res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8','Cache-Control':'no-store'});
+      return res.end(`window.__POSTHOG_CONFIG__=${JSON.stringify(config)};`);
+    }
     const publicPath=url.pathname==='/'?'/index.html':url.pathname;
     const threeRoot=path.join(ROOT,'node_modules','three','build');
+    const posthogRoot=path.join(ROOT,'node_modules','posthog-js','dist');
     const libRel=publicPath.startsWith('/lib/')?publicPath.slice('/lib/'.length):'';
     let absolute;
     if(libRel){
@@ -162,8 +173,9 @@ const server=http.createServer(async(req,res)=>{
       absolute=path.join(ROOT,'lib',libRel);
     }
     else if(publicPath.startsWith('/vendor/three/'))absolute=path.resolve(threeRoot,`.${publicPath.slice('/vendor/three'.length)}`);
+    else if(publicPath.startsWith('/vendor/posthog/'))absolute=path.resolve(posthogRoot,`.${publicPath.slice('/vendor/posthog'.length)}`);
     else absolute=path.resolve(ROOT,'public',`.${publicPath}`);
-    if(!libRel&&!absolute.startsWith(path.join(ROOT,'public')+path.sep)&&!absolute.startsWith(threeRoot+path.sep))return json(res,403,{error:'Forbidden'});
+    if(!libRel&&!absolute.startsWith(path.join(ROOT,'public')+path.sep)&&!absolute.startsWith(threeRoot+path.sep)&&!absolute.startsWith(posthogRoot+path.sep))return json(res,403,{error:'Forbidden'});
     const data=await readFile(absolute);
     res.writeHead(200,{'Content-Type':mime[path.extname(absolute)]||'application/octet-stream','Cache-Control':'no-store'});res.end(data);
   }catch(e){

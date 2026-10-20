@@ -1,3 +1,4 @@
+import posthog from './posthog.js';
 import { makeParse } from '../lib/grammar.mjs';
 import { getCandidates, insertFragment, localPrefixParse } from '/grammar.js';
 import { buildSceneView, mountScene } from './render/scene-view.mjs';
@@ -348,6 +349,7 @@ async function confirmNotebookPrompt() {
       facts: fact.card ? [] : [fact.id],
     });
     adoptState(data);
+    posthog?.capture('notebook_entry_added', { source: fact.card ? 'card' : 'learned_fact' });
     learnedFactSnapshot = new Set((state.learnedFacts || []).map(f => f.id));
     lastNotice = 'Added to Notes on your handset.';
     notebookPromptFact = null;
@@ -572,6 +574,7 @@ async function captureRoomPhoto() {
     });
     if (data.result?.ok === false) throw Error(data.result.reason || 'Could not save photo.');
     adoptState(data);
+    posthog?.capture('room_photo_captured');
     autosave();
     setPhotoMode(false);
     $('phoneFrame').contentWindow?.postMessage(
@@ -918,6 +921,8 @@ async function send() {
     const data = await api('respond', { text, parse, addressee: npcId() || null });
     adoptState(data);
     applySceneOverlayFromState();
+    posthog?.capture('dialogue_sent', { action_kind: parse.kind, is_thought: !!data.thought });
+    if (data.ending) posthog?.capture('review_completed', { ending_arc: data.ending.arc, has_add_on: !!data.ending.addOn });
     lastNotice = data.effects?.length ? data.effects.join(' · ') : '';
     if (data.thought) lastNotice = '';
     autosave();
@@ -947,6 +952,7 @@ async function move(room) {
     adoptState(data);
     if (data.scene) sceneOverlay = data.scene;
     applySceneOverlayFromState();
+    posthog?.capture('room_entered', { room });
     lastNotice = '';
     addressee = null;
     autosave();
@@ -967,6 +973,7 @@ async function examine(id) {
     lastNotice = `${data.title}: ${data.body}`;
     const kept = (data.terminal?.files || []).some(f => f.rel === `notes/${data.id}.txt`);
     if (data.copy && data.id && !kept) offerCardCopy({ id: data.id, title: data.title, text: data.body });
+    posthog?.capture('object_inspected', { object_id: id });
     autosave();
     expandChat(false);
     render();
@@ -1181,7 +1188,7 @@ function showIntro() {
   $('intro').hidden = false;
   $('introStart').focus();
 }
-$('introStart').onclick = () => { $('intro').hidden = true; $('utterance')?.focus(); };
+$('introStart').onclick = () => { posthog?.capture('game_started'); $('intro').hidden = true; $('utterance')?.focus(); };
 
 installCloudflareWebAnalytics();
 try {

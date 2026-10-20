@@ -19,6 +19,8 @@ npm start
 
 Open **http://127.0.0.1:3000** in a browser (add `?test=1` for the parser inspector and API usage; **http://127.0.0.1:3000/text.html** is the text version on the same session, **`?debug=1`** on that URL for per-step knowledge deltas). The API key stays on the local Node server, never in browser JavaScript. For a **no-key demo**, set `DEMO_MODE=1` in `.env` (the toy parser does not demonstrate actual LLM quality).
 
+Optional **PostHog** play metrics (metadata-only custom events, no dialogue text): set `POSTHOG_PROJECT_TOKEN` and `POSTHOG_HOST` in `.env` or repo-root `.env`. Cloudflare Web Analytics and local play telemetry remain unchanged.
+
 **Mobile:** Start the server on your computer and either tunnel `127.0.0.1:3000` through a secure development tunnel or temporarily change the server bind address for trusted LAN testing; the default intentionally accepts local connections only. Do not expose the prototype publicly: it lacks authentication, quotas, and production hardening.
 
 ```bash

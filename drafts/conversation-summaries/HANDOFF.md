@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-20 (Ch. 1 claim-extract author decisions).
+Last updated: 2026-10-20 (PostHog manual finish).
 
 ---
 
@@ -22,6 +22,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-20:** **PostHog (manual)** — Companion site, Last Safety game, and Ch. 1 demo backend; privacy-first defaults; wizard skill removed. Log: `2026-10-20-posthog-manual-finish.md`.
 - **2026-10-20:** **Ch. 1 claim-extract author decisions** — Several-process boundary error; extent/resolution typology; admissible-transition chain; thesis vs operational key claim; empirical WWCTV; extract `ch01.094`. Log: `2026-10-20-ch01-claim-extract-author-decisions.md`.
 - **2026-10-20:** **Last Safety folder + social replies** — Game at `game/the-last-safety-review/`; one-line social/small-talk replies; Ian Lab Access brief no longer stacked with work_alt. Log: `2026-10-20-last-safety-folder-social-replies.md`.
 - **2026-10-20:** **Last Safety grammar parse robustness** — Multi-clause rollback, completion/Who/Hi fixes, parse sanitization and `preparePlayerUtterance`, offline `sanitize.test.mjs`, `test:llm` story + probe fixtures. Logs: `2026-10-20-last-safety-grammar-parse-robustness.md`, `2026-10-20-last-safety-llm-parse-tests.md`.
