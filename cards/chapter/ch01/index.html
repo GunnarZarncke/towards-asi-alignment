@@ -166,8 +166,11 @@ If we align only the immediate recommendation, we may miss the long-run shaping 
 </div>
 <h3 id="the-error-and-its-forms-gz-ai">The Error and Its Forms <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
 <p>Call this failure the boundary error.</p>
-<div class="env-box env-definition"><strong>Definition.</strong> A boundary error occurs when the system being evaluated or aligned is not the system whose dynamics determine the relevant risk.</div>
-<p>Boundary errors come in several forms.</p>
+<div class="env-box env-definition"><strong>Definition.</strong> A boundary error occurs when the system being evaluated or aligned is not among the bounded processes whose dynamics determine the relevant risk, or omits one of them when several matter at once.</div>
+<p>Boundary errors come in several forms.
+Some misfits concern <em>extent</em>: the chosen boundary is too narrow or too wide relative to the process that drives the risk.
+Others concern <em>resolution</em>: the right extent at the wrong timescale or level of abstraction.
+Chapter <a href="../../chapter/ch07/">Finding the Boundary</a> also treats boundaries that are misplaced rather than simply too small or too large.</p>
 <h3 id="too-narrow-gz-ai">Too Narrow <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
 <p>The evaluator treats the model as the system, while the deployed loop includes tools, memory, users, and institutional feedback.</p>
 <p>This is probably the most common technical version: evaluators usually score the model.
@@ -478,8 +481,8 @@ At time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 At time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t+2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>, it may be a corporate deployment process.
 At time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t+3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>, it may be a human—AI research civilization.</p>
 <p>The alignment object is therefore not a fixed object.
-It is a moving equivalence class.</p>
-<p>We need to ask whether the transformation preserves correction-relevant invariants:</p>
+It is a chain of admissible transitions: each step must preserve the correction-relevant invariants below, not membership in one fixed snapshot.</p>
+<p>We need to ask whether each transformation preserves those invariants:</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>T</mi><mrow><mi>t</mi><mo>→</mo><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><msub><mi>C</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo>∼</mo><msub><mi>C</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">T_{t\to t+1}(C_t)\sim C_{t+1}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">→</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mord">.</span></span></span></span></span>
 <p>Similarity here does not mean sameness of implementation.
 It means preservation of properties that matter for alignment:</p>
@@ -566,18 +569,10 @@ Finding the optimizer is necessary.
 It is not sufficient.
 The next question is what value-bearing and correction-bearing structure crosses that boundary.</p>
 <h3 id="what-this-chapter-establishes-gz-ai">What This Chapter Establishes <span class="auth-chip" data-auth="GZ+AI" data-auth-mode="dotted" aria-label="Authorship: GZ AI"><span class="auth-chip-label">GZ AI</span></span></h3>
-<p>Before aligning anything, locate the system whose dynamics matter.</p>
-<p>That object can be smaller or larger than expected, distributed, time-varying, human-including, or institutional, and may not look like an agent until perturbed.</p>
-<p>The key claim is:</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Alignment object</mtext><mo>=</mo><munder><mrow><mi mathvariant="normal">arg max</mi><mo>⁡</mo></mrow><mi>C</mi></munder><mrow><mo fence="true">[</mo><mtext>predictive relevance of </mtext><mi>C</mi><mo>−</mo><mtext>description cost of </mtext><mi>C</mi><mo fence="true">]</mo></mrow><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">\text{Alignment object}
-=
-\operatorname*{arg\,max}_{C}
-\left[
-\text{predictive relevance of } C
--
-\text{description cost of } C
-\right],</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Alignment object</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6888em;vertical-align:-0.9388em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.1612em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mord mathrm" style="margin-right:0.0139em;">arg</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">max</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9388em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord text"><span class="mord">predictive relevance of </span></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">description cost of </span></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span></span></span></span></span>
-<p>subject to the requirement that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> is an intervention-relevant boundary for the risk in question.</p>
+<p>Before aligning anything, locate the bounded processes whose dynamics matter for the risk in question.</p>
+<p>That object can be smaller or larger than expected, distributed, time-varying, human-including, or institutional, and may not look like an agent until perturbed.
+The chapter thesis is ordering: locate before align.
+The key claim states what locating means operationally: among boundaries that are intervention-relevant for the risk in question, the alignment object is the one whose predictive relevance most exceeds its description cost—the candidate that best trades forecast power for parsimony.</p>
 <p>This makes optimizing the wrong thing less likely, and more detectable.</p>
 <p>The next chapters build on it.
 Once we can ask where the optimizer is, we can ask how large such systems become, how their capabilities grow, how human values can be represented without freezing them, and how correction can survive when the system being corrected becomes smarter than the correctors.</p>
@@ -591,6 +586,9 @@ This chapter argues that the first task is to locate the bounded process whose d
 <li>
 <p>A lethal outcome has no optimizer that can be <em>localized in time</em>. Reliable steering is control, so an effective agent exists by construction (Chapter <a href="../../chapter/ch43/">What Survives an Adversary: Verifiability and Representability</a>); what would refute this chapter is not the absence of an agent but a proof that the decisive controller cannot be found before it acts.</p>
 </li>
+<li>
+<p>Repeated high-stakes incidents in which investigation still cannot identify which bounded process steered the outcome—despite traces, tools, and institutional records of the kind this chapter recommends—or in which the decisive controller becomes clear only after harm. That would weaken the claim that boundary discovery is an operational audit rather than a post-hoc story.</p>
+</li>
 </ul>
 <h2 id="summary-ai">Summary <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <ul>
@@ -601,7 +599,7 @@ This chapter argues that the first task is to locate the bounded process whose d
 <p>The first question is operational: which bounded process best predicts the futures we care about?</p>
 </li>
 <li>
-<p>A <em>boundary error</em> occurs when we evaluate or align a system that is not the one driving the relevant risk.</p>
+<p>A <em>boundary error</em> occurs when we evaluate or align a boundary that is not among the processes driving the relevant risk, or omits one when several matter.</p>
 </li>
 <li>
 <p>Composite deployments can form adaptive loops whose optimizer is not the base model.</p>
@@ -613,7 +611,7 @@ This chapter argues that the first task is to locate the bounded process whose d
 <p>Perturbation tests whether control structure persists when surface conditions change.</p>
 </li>
 <li>
-<p>For superintelligence, the alignment object may be a moving equivalence class, not a fixed snapshot.</p>
+<p>For superintelligence, the alignment object may be a chain of admissible transitions, not a fixed snapshot.</p>
 </li>
 <li>
 <p>Progress requires logging, evaluating, and intervening at the boundary that actually matters for each risk.</p>
