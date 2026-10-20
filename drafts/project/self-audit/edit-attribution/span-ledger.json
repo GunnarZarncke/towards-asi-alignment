@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261020T004244.369Z",
+  "_as_of": "20261020T005829.163Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -587,7 +587,7 @@
   "chapters/ch01-wrong-object.tex#33": {
     "agent": 18,
     "file": "chapters/ch01-wrong-object.tex",
-    "human": 0,
+    "human": 4,
     "index": 33,
     "key": "GZ+AI",
     "prior": "GZ+AI"
