@@ -33,6 +33,14 @@ Each demo folder must include `index.html`. Static TypeScript demos use either
 `backend.json`, and `requirements.txt`; `serve.py` starts uvicorn for them
 automatically on the configured port.
 
+## Live deployment (Replit)
+
+All demos (including Python backends for Chapter 1 and Chapter 9) are served from one
+stack at **`https://towards-asi-alignment.replit.app/`** — each toy at
+`/{demo-folder}/` (same paths as local `serve.py`). The base URL lives in
+[`deployment.json`](deployment.json); `cd site && npm run sync:demos` copies it into
+`demos.json` as per-demo `liveUrl` for the companion site.
+
 ## Run locally
 
 ```bash

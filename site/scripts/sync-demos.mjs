@@ -8,6 +8,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
 const repoRoot = path.resolve(siteRoot, "..");
 const DEMOS_DIR = path.join(repoRoot, "demos");
+const DEPLOYMENT_PATH = path.join(DEMOS_DIR, "deployment.json");
 const BOOK_PATH = path.join(siteRoot, "src", "data", "book.json");
 const CARDS_DIR = path.join(siteRoot, "src", "content", "cards");
 const OUT_PATH = path.join(siteRoot, "src", "data", "demos.json");
@@ -54,6 +55,23 @@ function summaryFromIndexHtml(html) {
   return lead.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 }
 
+async function loadLiveDeployment() {
+  try {
+    const raw = JSON.parse(await readFile(DEPLOYMENT_PATH, "utf8"));
+    const base = String(raw.liveBaseUrl ?? "").trim().replace(/\/+$/, "");
+    return base || null;
+  } catch {
+    return null;
+  }
+}
+
+function liveUrlForDemo(name, liveBaseUrl, backend) {
+  const override = backend?.liveUrl ? String(backend.liveUrl).trim() : "";
+  if (override) return override.replace(/\/?$/, "/");
+  if (!liveBaseUrl) return null;
+  return `${liveBaseUrl}/${name}/`;
+}
+
 async function loadBookChapters() {
   try {
     const book = JSON.parse(await readFile(BOOK_PATH, "utf8"));
@@ -79,7 +97,7 @@ async function loadCardLinks() {
   return byDemo;
 }
 
-async function loadDemoFolder(name) {
+async function loadDemoFolder(name, liveBaseUrl) {
   const dir = path.join(DEMOS_DIR, name);
   const indexPath = path.join(dir, "index.html");
   const readmePath = path.join(dir, "README.md");
@@ -132,7 +150,7 @@ async function loadDemoFolder(name) {
     sitePath,
     standalonePath,
     standaloneUrl,
-    liveUrl: backend?.liveUrl || null,
+    liveUrl: liveUrlForDemo(name, liveBaseUrl, backend),
     requiresBackend: hasPython && !isHybrid,
     optionalBackend: isHybrid,
     githubPath: `demos/${name}`,
@@ -147,6 +165,7 @@ async function loadDemoFolder(name) {
 async function main() {
   await publishChapterDemos();
 
+  const liveBaseUrl = await loadLiveDeployment();
   const [chapters, cardLinks] = await Promise.all([loadBookChapters(), loadCardLinks()]);
   const folders = (await readdir(DEMOS_DIR, { withFileTypes: true }))
     .filter((e) => e.isDirectory() && /^(ch\d+|app[A-Za-z])/.test(e.name))
@@ -155,7 +174,7 @@ async function main() {
 
   const demos = [];
   for (const folder of folders) {
-    const demo = await loadDemoFolder(folder);
+    const demo = await loadDemoFolder(folder, liveBaseUrl);
     demo.chapterTitle = demo.chapterId
       ? chapters.get(demo.chapterId) || APPENDIX_TITLES[demo.chapterId] || null
       : null;
@@ -172,6 +191,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     standaloneCommand: "cd demos && python3 serve.py",
     standalonePort: DEFAULT_STATIC_PORT,
+    liveBaseUrl,
     demos
   };
 

@@ -12,7 +12,7 @@ related:
   - deployment-gate
 external:
   - label: Live deployment (Replit)
-    url: https://adversarial-llm-scaffold.replit.app
+    url: https://towards-asi-alignment.replit.app/ch01-scaffold-misuse/
 ---
 
 The model alone is often not the alignment object. A deployed system can wrap the model in memory, tools, metrics, and institutional incentives — and a *scaffold* around the model can control what it sees and what happens to what it returns.

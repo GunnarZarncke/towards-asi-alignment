@@ -215,6 +215,13 @@ export function evaluate(scenario: Scenario, framing: Framing): EvalVerdict {
 export const STANDALONE_BACKEND = "http://127.0.0.1:8767";
 
 const SITE_DEMO_PATH = "/chapter-demos/ch01-scaffold-misuse";
+const STANDALONE_DEMO_PATH = "/ch01-scaffold-misuse";
+
+function sameOriginDemoBase(pathname: string, origin: string, marker: string): string | null {
+  if (!pathname.includes(marker)) return null;
+  const end = pathname.indexOf(marker) + marker.length;
+  return origin + pathname.slice(0, end);
+}
 
 /** Resolve the LLM API base for the current page (site proxy vs standalone). */
 export function resolveBackendBase(): string {
@@ -222,11 +229,11 @@ export function resolveBackendBase(): string {
   const injected = (window as Window & { __SCAFFOLD_MISUSE_API__?: string }).__SCAFFOLD_MISUSE_API__;
   if (injected !== undefined) return injected;
   const { pathname, origin } = window.location;
-  if (pathname.includes(SITE_DEMO_PATH)) {
-    const end = pathname.indexOf(SITE_DEMO_PATH) + SITE_DEMO_PATH.length;
-    return origin + pathname.slice(0, end);
-  }
-  return STANDALONE_BACKEND;
+  return (
+    sameOriginDemoBase(pathname, origin, SITE_DEMO_PATH) ??
+    sameOriginDemoBase(pathname, origin, STANDALONE_DEMO_PATH) ??
+    STANDALONE_BACKEND
+  );
 }
 
 export type LiveModelResult = ModelDecision & { live: boolean; model: string };

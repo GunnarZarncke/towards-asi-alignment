@@ -1,5 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import demosIndex from "../data/demos.json";
+import { demoOpenHref } from "./demo-urls";
 import experimentsIndex from "../data/experiments.json";
 import bookIndex from "../data/book.json";
 import { bookHref, cardHref, chapterCardFor, essayHref } from "./site-urls";
@@ -31,7 +32,7 @@ export function resolveSpotlightTarget(
       return bookHref(base, link.ref);
     case "demo": {
       const demo = demosIndex.demos.find((entry) => entry.id === link.ref);
-      return demo ? withBase(demo.sitePath) : withBase("/demos/");
+      return demo ? demoOpenHref(demo, withBase) : withBase("/demos/");
     }
     case "experiment":
       return cardHref(base, `experiments/${link.ref}`);

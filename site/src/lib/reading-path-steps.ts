@@ -9,6 +9,7 @@ import {
 } from "./site-urls";
 import type { ReadingPathStep } from "./reading-paths";
 import demosIndex from "../data/demos.json";
+import { demoOpenHref } from "./demo-urls";
 import experimentsIndex from "../data/experiments.json";
 import bookIndex from "../data/book.json";
 
@@ -86,7 +87,7 @@ export function resolveReadingPathStep(
       return {
         kind: step.kind,
         ref: step.ref,
-        href: withBase(demo.sitePath),
+        href: demoOpenHref(demo, withBase),
         title: demo.title,
         summary: step.note ?? demo.summary,
         badges,

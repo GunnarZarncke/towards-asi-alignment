@@ -7,6 +7,7 @@ import QuizBlock from "../../components/QuizBlock.astro";
 import { bookHref, cardHref, essayHref, resolveCard } from "../../lib/site-urls";
 import { findEssay } from "../../lib/essays";
 import demosIndex from "../../data/demos.json";
+import { demoOpenHref } from "../../lib/demo-urls";
 import experimentsIndex from "../../data/experiments.json";
 
 export async function getStaticPaths() {
@@ -50,7 +51,7 @@ const demoLinks = (essay.data.demos ?? [])
   .map((entry) => {
     const demo = demosIndex.demos.find((item) => item.id === entry.demoId);
     if (!demo) return null;
-    return { href: withBase(demo.sitePath), title: demo.title, summary: entry.summary, newTab: true };
+    return { href: demoOpenHref(demo, withBase), title: demo.title, summary: entry.summary, newTab: true };
   })
   .filter((item): item is NonNullable<typeof item> => item !== null);
 

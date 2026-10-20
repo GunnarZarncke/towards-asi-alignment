@@ -2,6 +2,7 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
 import demos from "../../data/demos.json";
+import { demoOpenHref } from "../../lib/demo-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -45,7 +46,7 @@ const blurbs: Record<string, string> = {
     <div class="button-row">
       <a
         class="button primary"
-        href={demoHref(featured.sitePath)}
+        href={demoOpenHref(featured, withBase)}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -64,10 +65,18 @@ const blurbs: Record<string, string> = {
       {
         demos.demos.map((demo) => (
           <li id={demo.id}>
-            <a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">
+            <a href={demoOpenHref(demo, withBase)} target="_blank" rel="noopener noreferrer">
               {demo.bookUnitPrefix} — {demo.shortTitle}
               <LinkIndicator kind="newtab" />
             </a>
+            {demo.liveUrl && demoOpenHref(demo, withBase) !== withBase(demo.sitePath) && (
+              <p class="demo-meta">
+                Also on-site (scripted / static):{" "}
+                <a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">
+                  companion embed<LinkIndicator kind="newtab" />
+                </a>
+              </p>
+            )}
             <p class="demo-summary">{blurbs[demo.id] ?? demo.shortTitle}</p>
           </li>
         ))
@@ -117,5 +126,11 @@ const blurbs: Record<string, string> = {
     font-size: 0.95rem;
     line-height: 1.45;
     opacity: 0.92;
+  }
+
+  .demo-meta {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    opacity: 0.85;
   }
 </style>

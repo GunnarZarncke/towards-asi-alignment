@@ -39,6 +39,7 @@ import { resolveCardPreviewImage } from "../../../scripts/lib/preview-image.mjs"
 
 const siteRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
+import { demoOpenHref } from "../../lib/demo-urls";
 import { hasConceptLogo } from "../../lib/concept-logos";
 import { referenceLinksFor } from "../../lib/reference-links";
 
@@ -728,7 +729,9 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
           <ul>
             {bookUnitDemos.map((demo) => {
               const entry = demoFor(demo.demoId);
-              const href = entry ? withBase(entry.sitePath) : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/demos/${demo.demoId}`;
+              const href = entry
+                ? demoOpenHref(entry, withBase)
+                : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/demos/${demo.demoId}`;
               const summary = demo.summary || entry?.summary || "";
               return (
               <li>
@@ -737,7 +740,7 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
                     <a href={href} target="_blank" rel="noopener noreferrer">{entry.title}<LinkIndicator kind="newtab" /></a>
                     {" · "}
                     <a href={entry.standaloneUrl} title="Standalone demo server" target="_blank" rel="noopener noreferrer">Standalone<LinkIndicator kind="newtab" /></a>
-                    {entry.liveUrl && (
+                    {entry.liveUrl && href !== entry.liveUrl && (
                       <>
                         {" · "}
                         <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment<LinkIndicator kind="external" /></a>
