@@ -30,4 +30,4 @@ Prompts: paraphrase-only (no resolvable prompt id)
 - `drafts/plans/claim-extract/claim-extract.md` § Ch. 1
 
 ## Commits
-- (this session)
+- `e914b79ff` — Ch. 1 claim-extract author decisions (prose, plan, extract)
