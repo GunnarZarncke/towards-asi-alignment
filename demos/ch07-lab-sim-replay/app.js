@@ -1,4 +1,5 @@
 // ch07-lab-sim-replay/app.ts
+import { trackDemo } from "../posthog.js";
 var TIERS = ["none", "light", "full", "deep"];
 function actionLabel(rec) {
   if (!rec.action) return "\u2014";
@@ -489,6 +490,7 @@ function mountReplayTrace(container, trace, options) {
     btn.title = auditTierTooltip(tier);
     btn.addEventListener("click", () => {
       state.tier = tier;
+      trackDemo("audit_tier_selected", { tier });
       renderAll();
     });
     tierButtons.set(tier, btn);
@@ -716,10 +718,12 @@ function mountDemoHub(container, classic, et4) {
   }
   classicBtn.addEventListener("click", () => {
     mode = "classic";
+    trackDemo("replay_mode_selected", { mode });
     renderMode();
   });
   et4Btn.addEventListener("click", () => {
     mode = "et4";
+    trackDemo("replay_mode_selected", { mode });
     renderMode();
   });
   renderMode();

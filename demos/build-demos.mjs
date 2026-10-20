@@ -38,6 +38,17 @@ for (const { infile, outfile, label } of entries) {
     format: "esm",
     target: "es2020",
     logLevel: "info",
+    plugins: [
+      {
+        name: "external-posthog",
+        setup(build) {
+          build.onResolve({ filter: /posthog\.js$/ }, () => ({
+            external: true,
+            path: "../posthog.js",
+          }));
+        },
+      },
+    ],
   });
   console.log(`Built ${label}`);
 }

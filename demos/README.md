@@ -44,6 +44,12 @@ Opens `http://127.0.0.1:8765/` with a demo index. TypeScript is auto-built when
 source is newer than output (requires Node.js / `npx`). Use `--no-build` if JS is
 already up to date, or `--no-open` to skip the browser tab.
 
+Optional **PostHog** analytics: set `POSTHOG_PROJECT_TOKEN` (or `POSTHOG_API_KEY`)
+and `POSTHOG_HOST` in the repo-root `.env`. `serve.py` loads that file and serves
+browser SDK assets; events use `app: chapter_demo` and `demo_slug` (folder name).
+The Ch. 1 and Ch. 9 Python backends also emit server-side events when configured.
+Run `npm install` in `demos/` once so `posthog-js` is available for the static server.
+
 ## Develop
 
 All npm commands run from **`demos/`** (not repo root). See [`docs/BUILD.md`](../docs/BUILD.md).

@@ -369,6 +369,8 @@ def model(req: ModelRequest, request: Request) -> JSONResponse:
         posthog_client.capture(
             "model_evaluation_requested",
             properties={
+                "app": "chapter_demo",
+                "demo_slug": "ch01-scaffold-misuse",
                 "scenario_id": req.scenarioId,
                 "framing": req.framing,
             },
@@ -412,6 +414,8 @@ def model(req: ModelRequest, request: Request) -> JSONResponse:
         posthog_client.capture(
             "model_evaluation_completed",
             properties={
+                "app": "chapter_demo",
+                "demo_slug": "ch01-scaffold-misuse",
                 "scenario_id": req.scenarioId,
                 "framing": req.framing,
                 "model_decision": result["action"],

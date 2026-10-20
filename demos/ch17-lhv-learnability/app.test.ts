@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runLhvExperiment } from "./app";
+import { runLhvExperiment } from "./app.ts";
 
 describe("LHV learnability toy", () => {
   const result = runLhvExperiment();

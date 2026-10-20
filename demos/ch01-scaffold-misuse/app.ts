@@ -22,6 +22,8 @@
  * makes no empirical claim about any specific model's behavior.
  */
 
+import { trackDemo } from "../posthog.js";
+
 export type Framing = "honest" | "adversarial";
 
 export type Scenario = {
@@ -493,6 +495,11 @@ export function mountScaffoldMisuse(container: HTMLElement, initialId = scenario
           };
           paintModelColumn(decision, { live: true, model: result.model });
           paintDownstreamAndVerdict(decision);
+          trackDemo("live_model_completed", {
+            scenario_id: scenario.id,
+            framing,
+            model_action: result.action,
+          });
         })
         .catch((err) => {
           if (token !== renderToken) return;
@@ -513,6 +520,7 @@ export function mountScaffoldMisuse(container: HTMLElement, initialId = scenario
 
   liveCheckbox.addEventListener("change", () => {
     useLive = liveCheckbox.checked;
+    trackDemo("live_llm_toggled", { enabled: useLive });
     render();
   });
 
@@ -528,14 +536,17 @@ export function mountScaffoldMisuse(container: HTMLElement, initialId = scenario
 
   select.addEventListener("change", () => {
     scenario = scenarios.find((s) => s.id === select.value) ?? scenarios[0];
+    trackDemo("scenario_selected", { scenario_id: scenario.id });
     render();
   });
   honestBtn.addEventListener("click", () => {
     framing = "honest";
+    trackDemo("framing_selected", { framing });
     render();
   });
   advBtn.addEventListener("click", () => {
     framing = "adversarial";
+    trackDemo("framing_selected", { framing });
     render();
   });
 

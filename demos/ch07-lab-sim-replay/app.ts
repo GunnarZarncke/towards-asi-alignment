@@ -10,6 +10,8 @@
 // the trace's `event_n`, a display-only key -- see trace_recorder.py)
 // and draws connector lines between them.
 
+import { trackDemo } from "../posthog.js";
+
 export type Tier = "none" | "light" | "full" | "deep";
 export const TIERS: Tier[] = ["none", "light", "full", "deep"];
 
@@ -734,6 +736,7 @@ function mountReplayTrace(container: HTMLElement, trace: TraceFile, options: Rep
     btn.title = auditTierTooltip(tier);
     btn.addEventListener("click", () => {
       state.tier = tier;
+      trackDemo("audit_tier_selected", { tier });
       renderAll();
     });
     tierButtons.set(tier, btn);
@@ -990,10 +993,12 @@ export function mountDemoHub(
 
   classicBtn.addEventListener("click", () => {
     mode = "classic";
+    trackDemo("replay_mode_selected", { mode });
     renderMode();
   });
   et4Btn.addEventListener("click", () => {
     mode = "et4";
+    trackDemo("replay_mode_selected", { mode });
     renderMode();
   });
   renderMode();

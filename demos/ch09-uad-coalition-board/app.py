@@ -8,11 +8,13 @@ from datetime import datetime, timezone
 from typing import Iterable, Optional
 
 from coalition_detect import run_coalition_detection
+from demo_posthog import capture_demo_event
 from fastapi import FastAPI, Form, Query
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 
 ADMIN_PASSWORD = os.environ.get("UAD_DEMO_ADMIN_PASSWORD", "dev")
 ROUND_SECONDS = int(os.environ.get("UAD_DEMO_ROUND_SECONDS", "60"))
+DEMO_SLUG = "ch09-uad-coalition-board"
 
 
 @dataclass(frozen=True)
@@ -407,6 +409,12 @@ def draft(
 @app.post("/tick")
 def tick(admin: Optional[str] = Query(default=None)) -> JSONResponse:
     advanced = store.maybe_advance_rounds()
+    if advanced:
+        capture_demo_event(
+            "uad_round_advanced",
+            DEMO_SLUG,
+            {"round": store.current_round_index()},
+        )
     return JSONResponse({"advanced": advanced, "round": store.current_round_index()})
 
 
@@ -416,6 +424,11 @@ def group(
     admin: Optional[str] = Query(default=None),
 ) -> RedirectResponse:
     store.add_coalition(submission_ids, is_uad=False)
+    capture_demo_event(
+        "uad_coalition_grouped",
+        DEMO_SLUG,
+        {"submission_count": len(submission_ids), "is_uad": False},
+    )
     return redirect_home(admin)
 
 
@@ -423,7 +436,16 @@ def group(
 def run_uad(admin: Optional[str] = Query(default=None)) -> RedirectResponse:
     if is_admin(admin):
         store.maybe_advance_rounds()
+        before = len(store.coalitions)
         run_uad_detection(store)
+        capture_demo_event(
+            "uad_detection_run",
+            DEMO_SLUG,
+            {
+                "coalitions_before": before,
+                "coalitions_after": len(store.coalitions),
+            },
+        )
     return redirect_home(admin)
 
 
@@ -431,6 +453,7 @@ def run_uad(admin: Optional[str] = Query(default=None)) -> RedirectResponse:
 def reset(admin: Optional[str] = Query(default=None)) -> RedirectResponse:
     if is_admin(admin):
         store.reset()
+        capture_demo_event("uad_board_reset", DEMO_SLUG)
     return redirect_home(admin)
 
 

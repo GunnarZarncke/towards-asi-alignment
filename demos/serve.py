@@ -7,6 +7,7 @@ import argparse
 import functools
 import http.server
 import json
+import mimetypes
 import os
 import re
 import socketserver
@@ -14,11 +15,38 @@ import subprocess
 import sys
 import webbrowser
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent
 SKIP_DIR_NAMES = frozenset({"node_modules", "__pycache__"})
 DEFAULT_PORT = 8765
 BACKEND_PORT = 8766
+
+
+def load_repo_env() -> None:
+    """Load repo-root ``.env`` into ``os.environ`` (setdefault; does not override)."""
+    env_path = ROOT.parent / ".env"
+    if not env_path.is_file():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key:
+            os.environ.setdefault(key, value)
+
+
+def posthog_settings() -> tuple[str, str]:
+    token = (
+        os.environ.get("POSTHOG_PROJECT_TOKEN")
+        or os.environ.get("POSTHOG_API_KEY")
+        or ""
+    ).strip()
+    host = (os.environ.get("POSTHOG_HOST") or "https://eu.i.posthog.com").strip()
+    return token, host
 
 
 def is_demo_dir(path: Path) -> bool:
@@ -120,10 +148,12 @@ def start_backend_servers(
     procs: list[tuple[subprocess.Popen[bytes], Path, int]] = []
     agency_root = agency_detect_root()
     backend_env = os.environ.copy()
+    path_prefixes = [str(ROOT)]
     if agency_root.is_dir():
-        existing = backend_env.get("PYTHONPATH", "")
-        prefix = str(agency_root)
-        backend_env["PYTHONPATH"] = f"{prefix}{os.pathsep}{existing}" if existing else prefix
+        path_prefixes.insert(0, str(agency_root))
+    existing = backend_env.get("PYTHONPATH", "")
+    merged = os.pathsep.join(path_prefixes + ([existing] if existing else []))
+    backend_env["PYTHONPATH"] = merged
     for demo_dir, cfg in configs:
         port = int(cfg.get("port", BACKEND_PORT))
         module = str(cfg.get("module", "app:app"))
@@ -164,7 +194,7 @@ def stop_backend_servers(procs: list[tuple[subprocess.Popen[bytes], Path, int]])
                 proc.kill()
 
 
-class Handler(http.server.SimpleHTTPRequestHandler):
+class DemoHandler(http.server.SimpleHTTPRequestHandler):
     extensions_map = {
         **http.server.SimpleHTTPRequestHandler.extensions_map,
         ".js": "application/javascript",
@@ -172,11 +202,57 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         ".ts": "text/plain",
     }
 
+    def __init__(
+        self,
+        *args,
+        posthog_token: str = "",
+        posthog_host: str = "",
+        **kwargs,
+    ) -> None:
+        self._posthog_token = posthog_token
+        self._posthog_host = posthog_host
+        super().__init__(*args, **kwargs)
+
     def log_message(self, format: str, *args) -> None:
         sys.stdout.write(
             "%s - [%s] %s\n"
             % (self.address_string(), self.log_date_time_string(), format % args)
         )
+
+    def do_GET(self) -> None:
+        path = urlparse(self.path).path
+        if path == "/posthog-config.js":
+            config = {
+                "token": self._posthog_token,
+                "host": self._posthog_host,
+                "isDevelopment": os.environ.get("NODE_ENV") != "production",
+            }
+            payload = json.dumps(config)
+            body = f"window.__POSTHOG_CONFIG__={payload};".encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/javascript; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if path.startswith("/vendor/posthog/"):
+            rel = unquote(path.removeprefix("/vendor/posthog/"))
+            if ".." in rel or rel.startswith("/"):
+                self.send_error(403)
+                return
+            file_path = ROOT / "node_modules" / "posthog-js" / "dist" / rel
+            if not file_path.is_file():
+                self.send_error(404)
+                return
+            data = file_path.read_bytes()
+            ctype = mimetypes.guess_type(str(file_path))[0] or "application/octet-stream"
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
+        super().do_GET()
 
 
 def main() -> None:
@@ -188,6 +264,8 @@ def main() -> None:
     parser.add_argument("--no-build", action="store_true", help="Skip TypeScript build check")
     args = parser.parse_args()
 
+    load_repo_env()
+
     if not args.no_build:
         ensure_built()
 
@@ -198,7 +276,13 @@ def main() -> None:
     backend_configs = backend_demos()
     backend_procs = start_backend_servers(backend_configs) if backend_configs else []
 
-    handler = functools.partial(Handler, directory=str(ROOT))
+    posthog_token, posthog_host = posthog_settings()
+    handler = functools.partial(
+        DemoHandler,
+        directory=str(ROOT),
+        posthog_token=posthog_token,
+        posthog_host=posthog_host,
+    )
     with socketserver.TCPServer(("", args.port), handler) as httpd:
         url = f"http://127.0.0.1:{args.port}/"
         print(f"Serving chapter demos at {url}")

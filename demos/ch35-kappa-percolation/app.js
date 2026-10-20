@@ -1,4 +1,5 @@
 // ch35-kappa-percolation/app.ts
+import { trackDemo } from "../posthog.js";
 var defaultParams = {
   communities: 5,
   nodesPerCommunity: 18,
@@ -305,6 +306,7 @@ function mountKappaPercolationDemo(container, initial = defaultParams) {
       const v = Number(input.value);
       params[def.key] = v;
       valueEl.textContent = fmtValue(v);
+      trackDemo("kappa_param_changed", { param: def.key, value: v });
       render();
     });
     wrap.appendChild(input);
@@ -328,6 +330,7 @@ function mountKappaPercolationDemo(container, initial = defaultParams) {
   distSelect.addEventListener("change", () => {
     params = { ...params, distribution: distSelect.value };
     distValue.textContent = distSelect.value;
+    trackDemo("kappa_distribution_changed", { distribution: distSelect.value });
     render();
   });
   distWrap.appendChild(distSelect);

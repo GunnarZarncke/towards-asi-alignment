@@ -18,7 +18,7 @@ import {
   type EvidenceAnchor,
   type Frame,
   type TraceFile,
-} from "./app";
+} from "./app.ts";
 
 function makeFrame(overrides: Partial<Frame> = {}): Frame {
   const base: Frame = {

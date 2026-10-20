@@ -1,3 +1,5 @@
+import { trackDemo } from "../posthog.js";
+
 /**
  * kappa-edge percolation simulator
  *
@@ -445,6 +447,7 @@ export function mountKappaPercolationDemo(container: HTMLElement, initial: Param
       const v = Number(input.value);
       (params as any)[def.key] = v;
       valueEl.textContent = fmtValue(v);
+      trackDemo("kappa_param_changed", { param: def.key, value: v });
       render();
     });
     wrap.appendChild(input);
@@ -470,6 +473,7 @@ export function mountKappaPercolationDemo(container: HTMLElement, initial: Param
   distSelect.addEventListener("change", () => {
     params = { ...params, distribution: distSelect.value as Distribution };
     distValue.textContent = distSelect.value;
+    trackDemo("kappa_distribution_changed", { distribution: distSelect.value });
     render();
   });
   distWrap.appendChild(distSelect);

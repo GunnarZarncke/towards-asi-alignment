@@ -1,3 +1,5 @@
+import { trackDemo } from "../posthog.js";
+
 export type DemoConfig = {
   seed: number;
   total: number;
@@ -394,6 +396,10 @@ export function mountLhvLearnabilityDemo(container: HTMLElement) {
   note.textContent =
     "Research toy only. It tests the experimental shape: hub structure can be recoverable and useful in a sample window where raw ambient features are harder to learn.";
   container.appendChild(note);
+  trackDemo("lhv_experiment_viewed", {
+    recovered_hub_dim: result.recoveredHubDim,
+    ambient_dim: result.config.ambientDim,
+  });
 }
 
 declare global {

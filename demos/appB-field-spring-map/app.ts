@@ -1,3 +1,4 @@
+import { trackDemo } from "../posthog.js";
 import {
   buildSimulation,
   simulateStep,
@@ -618,7 +619,12 @@ export async function initDemo(root: HTMLElement): Promise<() => void> {
     raf = requestAnimationFrame(loop);
   }
 
-  ui.querySelector("[data-category]")?.addEventListener("change", rebuild);
+  ui.querySelector("[data-category]")?.addEventListener("change", (ev) => {
+    trackDemo("field_map_category_changed", {
+      category: (ev.target as HTMLSelectElement).value,
+    });
+    rebuild();
+  });
   geometryBtn.addEventListener("click", () => {
     pinGeometry = pinGeometry === "dependency" ? "circle" : "dependency";
     transform = { x: 0, y: 0, scale: DEFAULT_VIEW_SCALE };

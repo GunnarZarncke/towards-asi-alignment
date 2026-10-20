@@ -7,8 +7,11 @@
   },
   "scripts": {
     "build": "node build-demos.mjs",
-    "test": "vitest run",
+    "test": "vitest run --config vitest.config.mjs",
     "serve": "python3 serve.py --no-build"
+  },
+  "dependencies": {
+    "posthog-js": "^1.438.12"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

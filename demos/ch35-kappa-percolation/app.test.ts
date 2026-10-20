@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defaultParams, makeGraph, type Params } from "./app";
+import { defaultParams, makeGraph, type Params } from "./app.ts";
 
 describe("kappa-edge percolation toy", () => {
   it("is deterministic for a fixed parameter set", () => {

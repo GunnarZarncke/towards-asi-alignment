@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scenarios, runModel, runScaffoldOutput, evaluate } from "./app";
+import { scenarios, runModel, runScaffoldOutput, evaluate } from "./app.ts";
 
 describe("scaffold-misuse toy", () => {
   it("model refuses the blunt harmful ask in every scenario", () => {

@@ -1,6 +1,7 @@
 fastapi>=0.110
 uvicorn>=0.27
 python-multipart>=0.0.9
+posthog>=3.0
 numpy>=1.20
 scikit-learn>=1.0
 pytest>=8.0
