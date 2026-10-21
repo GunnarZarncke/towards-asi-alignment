@@ -40,7 +40,7 @@
   <form id="f"><span id="prompt"></span><span id="debugBadge" hidden>debug</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="help · Tab completes speech" autofocus/></form>
 </div>
 <script type="module">
-import './posthog.js';
+import posthog from './posthog.js';
 const log = document.getElementById('log');
 function bootError(message) {
   log.replaceChildren();
@@ -140,6 +140,18 @@ async function send(line) {
   }
   if (data.error) print(data.error);
   if (data.out) print(data.out);
+  posthog?.capture('text_command_sent', {
+    is_bootstrap: !line,
+    has_error: !!data.error,
+    surface: 'text',
+  });
+  if (data.ending) {
+    posthog?.capture('review_completed', {
+      ending_arc: data.ending.arc,
+      has_add_on: !!data.ending.addOn,
+      surface: 'text',
+    });
+  }
   if (line && /^(phone|p|files|open|msg|dm|access|request|note|share|contacts|calendar)\b/i.test(line) && !/no handset access/.test(data.out || '')) {
     phoneOpened = true;
     try { sessionStorage.setItem(PHONE_COACH_KEY, '1'); } catch { /* private mode */ }
@@ -179,6 +191,7 @@ input.onkeydown = e => {
 };
 (async () => {
   try {
+    posthog?.capture('text_console_loaded', { surface: 'text' });
     await refreshState();
     await send('');
   } catch (err) {

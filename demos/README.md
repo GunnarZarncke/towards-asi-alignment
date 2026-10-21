@@ -41,6 +41,11 @@ stack at **`https://towards-asi-alignment.replit.app/`** — each toy at
 [`deployment.json`](deployment.json); `cd site && npm run sync:demos` copies it into
 `demos.json` as per-demo `liveUrl` for the companion site.
 
+After pulling PostHog or demo HTML changes, redeploy the Replit stack from current
+`main`: `npm ci && npm run build` in `demos/`, set `POSTHOG_*` secrets, restart
+`serve.py`. Smoke-check `/posthog-config.js`, `/demo-boot.mjs`, and that demo
+`index.html` includes the PostHog boot scripts.
+
 ## Run locally
 
 ```bash

@@ -1,15 +1,17 @@
 ---
 /** Product analytics (optional). Token is public; set at build time via PUBLIC_POSTHOG_* */
 const token = import.meta.env.PUBLIC_POSTHOG_PROJECT_TOKEN?.trim() || "";
-const host =
-  import.meta.env.PUBLIC_POSTHOG_HOST?.trim() || "https://eu.i.posthog.com";
 const enabled = !import.meta.env.DEV && Boolean(token);
 ---
 
 {
   enabled && (
-    <script define:vars={{ token, host }}>
+    <script>
       import posthog from "posthog-js";
+
+      const token = import.meta.env.PUBLIC_POSTHOG_PROJECT_TOKEN?.trim() || "";
+      const host =
+        import.meta.env.PUBLIC_POSTHOG_HOST?.trim() || "https://eu.i.posthog.com";
 
       posthog.init(token, {
         api_host: host,
@@ -24,6 +26,7 @@ const enabled = !import.meta.env.DEV && Boolean(token);
           capture_console_errors: false,
         },
       });
+      posthog.register({ app: "companion_site" });
     </script>
   )
 }

@@ -17,7 +17,8 @@ if (!token || !host) {
   posthog.init(token, {
     api_host: host,
     person_profiles: 'identified_only',
-    capture_pageview: false,
+    capture_pageview: true,
+    capture_pageleave: true,
     autocapture: false,
     disable_session_recording: true,
     capture_exceptions: {
@@ -26,6 +27,7 @@ if (!token || !host) {
       capture_console_errors: false,
     },
   });
+  posthog.register({ app: 'last_safety_review' });
 }
 
 export default token && host ? posthog : disabled;
