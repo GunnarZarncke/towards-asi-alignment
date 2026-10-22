@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-22 (Yudkowsky P(doom) split).
+Last updated: 2026-10-23 (alignment-frame relations Lean + graphs).
 
 ---
 
@@ -22,6 +22,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-23:** **Alignment-frame relations (Lean + graphs)** — `FrameRelations` / compose paths / morphisms / incompatibility / lock-in; variant **c** derived edges; red-edge proofs; DOT **a**/**b**/**c** with typed node labels; analysis in `drafts/alignment-frames-relations.md`. Spinout LaTeX/md not in this commit. Log: `2026-10-23-alignment-frame-relations-lean.md`.
+- **2026-10-22:** **Alignment-frame inventory and spinout** — Inventory, relation graph, markdown draft, and LaTeX at `papers/alignment-frames/` (18-page PDF). Manuscript revisions remain open. Log: `2026-10-22-alignment-frame-inventory.md`.
 - **2026-10-22:** **Yudkowsky P(doom) split** — Safety-case odds stay P(D | one attempt, E), not P(ruin|ASI)×P(ASI); tweet on overview card. Log: `2026-10-22-yudkowsky-pdoom-split.md`.
 - **2026-10-21:** **PostHog deploy fixes** — Companion site bundled PostHog init; game pageviews + text-console events; Replit redeploy checklist. Log: `2026-10-21-posthog-deploy-fixes.md`.
 - **2026-10-21:** **Last Safety campaign plans** — Three recommended, not selected, campaigns: MB9 word drift, MB4a player-as-auditor incentives, MB7d instances with an empty cross-audit. Log: `2026-10-21-last-safety-campaign-plans.md`.

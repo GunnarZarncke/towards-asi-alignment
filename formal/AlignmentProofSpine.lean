@@ -23,6 +23,11 @@ import AlignmentProofSpine.WorkedInstance
 import AlignmentProofSpine.BacktestC2Instance
 import AlignmentProofSpine.ToyDeploymentGate
 import AlignmentProofSpine.SpineModel
+import AlignmentProofSpine.FrameRelations
+import AlignmentProofSpine.FrameComposePaths
+import AlignmentProofSpine.FrameMorphisms
+import AlignmentProofSpine.FrameIncompatibility
+import AlignmentProofSpine.FrameLockIn
 
 /-!
 # AlignmentProofSpine
@@ -62,6 +67,11 @@ Alignment*. It re-exports the layered modules:
 | `BacktestC2Instance` | C2 tool-scout JSON pinned as `PathAudit`: named path green + computed bypass count 2 > `maxWorldEffectsAfterDefer = 0` ⇒ not `CorrectionIntegrityReal` (`c2_pinned_green_named_with_bypass_not_integrity`); floats/CCI slots refused, not axiomatized; not `Safe`/`MB11` | CIRIS mock / MB4a neighborhood |
 | `ToyDeploymentGate` | decidable `EpisodeBatteryGate` on frozen-validation battery output (`frozen_validation_battery_gate_passes`); governance gap to `WithinDeploymentRiskTolerance` documented | 42 |
 | `SpineModel` | consistency witness (`spine_axioms_consistent`), non-degenerate measurand model, per-bridge independence theorems | appG |
+| `FrameRelations` | inventory interface types; variant **c** edge classifier; `ComposeSlot` correction-centered reading; `variantC_all_derived` | alignment-frames spinout |
+| `FrameComposePaths` | `ComposePathId`, path–slot partition, hub nodes | alignment-frames spinout |
+| `FrameMorphisms` | `CarrierTag`, `MorphismSpec` registry for graphs **a**/**b**; `mapSignatures` | alignment-frames spinout |
+| `FrameIncompatibility` | red edges as `Incompatibility C` instances (disjoint in `H`, live in `H`, boundary outside); `no_finite_weights_represent_floor`; `registry_matches_proofs` | alignment-frames spinout |
+| `FrameLockIn` | robust invariance of a captured set (lock-in); `robust_invariance_sign_blind` | alignment-frames spinout |
 
 What is **proved** vs. **assumed**:
 
