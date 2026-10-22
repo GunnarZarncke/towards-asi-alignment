@@ -6,7 +6,9 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-22 | **Yudkowsky P(doom) split** — Odds calculator stays one-attempt F→D; tweet sourced on overview card; no P(ASI) slider. | [2026-10-22-yudkowsky-pdoom-split.md](2026-10-22-yudkowsky-pdoom-split.md) |
 | 2026-10-21 | **PostHog deploy fixes** — Bundled site init; game pageviews + text-console events; Replit redeploy note. | [2026-10-21-posthog-deploy-fixes.md](2026-10-21-posthog-deploy-fixes.md) |
+| 2026-10-21 | **Last Safety campaign plans** — MB9 word drift, MB4a auditor self-incentives, MB7d empty-audit coupling. Recommended, not selected. | [2026-10-21-last-safety-campaign-plans.md](2026-10-21-last-safety-campaign-plans.md) |
 | 2026-10-20 | **Last Safety prod demo settings** — Hide Demo / no model on embedded handset; default off in harness; spec + test. | [2026-10-20-last-safety-prod-demo-settings.md](2026-10-20-last-safety-prod-demo-settings.md) |
 | 2026-10-20 | **Replit demo deployment** — Unified live stack URLs; site routes backend/hybrid demos to Replit; Ch. 1 API base on standalone path. | [2026-10-20-replit-demo-deployment.md](2026-10-20-replit-demo-deployment.md) |
 | 2026-10-20 | **PostHog chapter demos** — Shared demo PostHog boot, serve.py routes, Ch. 9 server events; CI markdown link fix shipped earlier. | [2026-10-20-posthog-chapter-demos.md](2026-10-20-posthog-chapter-demos.md) |

@@ -22,7 +22,10 @@ const defaults = {
   <p class="demo-lede">
     {safetyCaseModel.unitOfAnalysis}
     Market prices and YES/NO/OTHER outcomes do not populate these fields. Adjust assumptions and read
-    sensitivity outputs, not a validated safety estimate.
+    sensitivity outputs, not a validated safety estimate. Do not treat the P(D | E) readout as a
+    headline P(doom): that mix of P(ruin | ASI) and P(ASI) is a different object, and P(ASI) further
+    depends on policy (
+    <a href="https://x.com/ESYudkowsky/status/2101804209528271092">Yudkowsky, Sep 2026</a>).
   </p>
 
   <div class="demo-grid">

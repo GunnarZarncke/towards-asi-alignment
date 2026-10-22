@@ -49,7 +49,8 @@ const payload = {
   relations: raw.relations ?? [],
   dependenceWarnings: raw.dependenceWarnings ?? [],
   phase3Markets: raw.phase3Markets ?? [],
-  presets: raw.presets ?? { sR: [], kappaRanges: [] }
+  presets: raw.presets ?? { sR: [], kappaRanges: [] },
+  sources: raw.sources ?? []
 };
 
 await mkdir(path.dirname(outputPath), { recursive: true });

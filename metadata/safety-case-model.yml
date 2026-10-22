@@ -8,7 +8,11 @@ version: 1
 unitOfAnalysis: >
   One qualifying deployment attempt on a named system or version, in a declared
   deployment setting, under a frozen threat model. Probabilities are conditional
-  on that unit unless stated otherwise.
+  on that unit unless stated otherwise. This is not P(ruin | ASI) times P(ASI).
+
+sources:
+  - label: "Yudkowsky — P(doom) mixes P(ruin|ASI) and P(ASI)"
+    url: https://x.com/ESYudkowsky/status/2101804209528271092
 
 events:
   F:

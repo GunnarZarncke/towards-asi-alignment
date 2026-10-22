@@ -127,7 +127,7 @@ const card = defineCollection({
     resolvesMB: z.boolean().optional(),
     /** External Metaculus/Manifold factor (not a catalog subproblem market). */
     predictionExternal: z.boolean().optional(),
-    /** Role in P(doom) aggregation sketch (e.g. pause governance). */
+    /** Role in the safety-case sketch (e.g. pause governance). */
     predictionRole: z.enum(["pause"]).optional(),
     /** Metaculus numeric question id for iframe embed. */
     metaculusEmbedId: z.number().optional()

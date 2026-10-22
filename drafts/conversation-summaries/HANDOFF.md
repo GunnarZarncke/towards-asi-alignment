@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-21 (PostHog deploy fixes).
+Last updated: 2026-10-22 (Yudkowsky P(doom) split).
 
 ---
 
@@ -22,7 +22,9 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-10-22:** **Yudkowsky P(doom) split** — Safety-case odds stay P(D | one attempt, E), not P(ruin|ASI)×P(ASI); tweet on overview card. Log: `2026-10-22-yudkowsky-pdoom-split.md`.
 - **2026-10-21:** **PostHog deploy fixes** — Companion site bundled PostHog init; game pageviews + text-console events; Replit redeploy checklist. Log: `2026-10-21-posthog-deploy-fixes.md`.
+- **2026-10-21:** **Last Safety campaign plans** — Three recommended, not selected, campaigns: MB9 word drift, MB4a player-as-auditor incentives, MB7d instances with an empty cross-audit. Log: `2026-10-21-last-safety-campaign-plans.md`.
 - **2026-10-20:** **Last Safety prod demo settings** — Demo / no model removed from embedded handset Settings; default off in harness; solo fixture keeps toggle. Log: `2026-10-20-last-safety-prod-demo-settings.md`.
 - **2026-10-20:** **Replit demo deployment** — Unified `towards-asi-alignment.replit.app/{demo}/`; site links backend/hybrid demos to live stack; Ch. 1 API base fix for standalone path. Log: `2026-10-20-replit-demo-deployment.md`.
 - **2026-10-20:** **PostHog chapter demos** — Shared browser boot + `serve.py` wiring for all demo folders; Ch. 9 server events; Vitest stub. Log: `2026-10-20-posthog-chapter-demos.md`.

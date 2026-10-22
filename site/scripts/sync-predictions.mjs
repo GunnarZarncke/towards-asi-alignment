@@ -669,7 +669,12 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
       { label: "Appendix H (full on site)", url: APPENDIX_H_FULL },
       { label: "Claims registry (companion card)", url: REGISTRY_CARD },
       { label: "Claims registry (live site)", url: DEFAULT_REGISTRY_SITE },
-      { label: "Bridge crosswalk (Appendix B)", url: APPENDIX_B_CARD }
+      { label: "Bridge crosswalk (Appendix B)", url: APPENDIX_B_CARD },
+      {
+        label: "Yudkowsky — P(doom) mixes P(ruin|ASI) and P(ASI)",
+        url: "https://x.com/ESYudkowsky/status/2101804209528271092"
+      },
+      { label: "Safety-case odds (sensitivity calculator)", url: "/predictions/safety-case/" }
     ]),
     "---",
     "",
@@ -679,7 +684,7 @@ function overviewCardMarkdown(raw, markets, externalFactors, relatedForecasts, b
     "",
     "**Claim strength.** Each listing question is three-outcome: YES (at least one qualifying attempt met the bars), NO (every qualifying attempt missed them), or OTHER (no qualifying attempt existed). Missing evals or missed qualification is OTHER, not NO. Market 14 is the exception: YES or NO only, and anything short of YES, including missing evidence, is NO. None of these means a bridge is false.",
     "",
-    `**Safety case.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform the safety case](${APPENDIX_H_FULL}#sec-appp-aggregation) and [False accept, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified.`,
+    `**Safety case.** A price is P(qualifying artifact exists by the deadline), not a safety-case probability. See [How these forecasts inform the safety case](${APPENDIX_H_FULL}#sec-appp-aggregation) and [False accept, coverage, and consequences](${APPENDIX_H_FULL}#sec-appp-assurance). YES means reconstructible public bars were met, not that a frontier deployment is certified. A headline P(doom) mixes P(ruin | ASI) with P(ASI) ([Yudkowsky, Sep 2026](https://x.com/ESYudkowsky/status/2101804209528271092)). This catalog prices neither. The [odds page](/predictions/safety-case/) updates a false-accept and a consequence step for one qualifying attempt; it does not multiply those by a P(ASI) slider.`,
     "",
     "## AI alignment subproblem markets",
     "",

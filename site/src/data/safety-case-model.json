@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "unitOfAnalysis": "One qualifying deployment attempt on a named system or version, in a declared deployment setting, under a frozen threat model. Probabilities are conditional on that unit unless stated otherwise.",
+  "unitOfAnalysis": "One qualifying deployment attempt on a named system or version, in a declared deployment setting, under a frozen threat model. Probabilities are conditional on that unit unless stated otherwise. This is not P(ruin | ASI) times P(ASI).",
   "events": {
     "F": {
       "label": "False accept",
@@ -458,5 +458,11 @@
     "note": "Market prices and YES/NO outcomes never populate these fields. Presets may be added only from qualifying resolved tournament or challenge artifacts.\n",
     "sR": [],
     "kappaRanges": []
-  }
+  },
+  "sources": [
+    {
+      "label": "Yudkowsky — P(doom) mixes P(ruin|ASI) and P(ASI)",
+      "url": "https://x.com/ESYudkowsky/status/2101804209528271092"
+    }
+  ]
 }

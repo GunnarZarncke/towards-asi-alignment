@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261021T095612.516Z",
+  "_as_of": "20261022T113011.525Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -425,7 +425,8 @@
     "prior": "AI"
   },
   "appendices/appP-bridge-predictions.tex#51": {
-    "agent": 2,
+    "agent": 6,
+    "dirty": true,
     "file": "appendices/appP-bridge-predictions.tex",
     "human": 0,
     "index": 51,

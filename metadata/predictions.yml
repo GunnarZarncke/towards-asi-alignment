@@ -46,11 +46,12 @@ aggregation:
   title: "How these forecasts inform the safety case"
   appendixAnchor: "sec:appp-aggregation"
   blurb: >
-    Market prices forecast whether suitable artifacts exist by the AI 2027 deadline. 
-    This does not directly determine P(doom), because the catastrophe despite 
-    safety case and non-catastrophe despite non-safety are not covered by these markets.
-    But these markets provide odds-ratios that may update your P(doom). 
-    A calculator for that is provided below.
+    Market prices forecast whether suitable artifacts exist by the AI 2027 deadline.
+    That is not P(ruin | ASI) and not P(ASI). A headline P(doom) mixes those two
+    forecasts; this catalog prices neither. Catastrophe despite a safety case, and
+    non-catastrophe despite a missing case, are also outside the markets. The odds
+    page below is a sensitivity calculator on one qualifying deployment attempt:
+    false-accept odds, then a separate consequence step.
 
 graphPlaceholder:
   title: "Safety-case estimation"
