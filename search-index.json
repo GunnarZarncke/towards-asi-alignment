@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-23T07:48:27.714Z",
+  "generatedAt": "2026-10-23T13:31:10.029Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 406,
+  "entryCount": 436,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -655,6 +655,18 @@
       "url": "/cards/news/field-news-cot-optimization-2026/"
     },
     {
+      "title": "Act approval score",
+      "type": "lens",
+      "summary": "One judge, one proposed act. Training a predictor is implementation, not the target.",
+      "url": "/cards/lens/act-approval/"
+    },
+    {
+      "title": "Additive route value",
+      "type": "lens",
+      "summary": "An edge score summed along a walk: what was done, not only where you arrived.",
+      "url": "/cards/lens/additive-route-value/"
+    },
+    {
       "title": "Adversarial Agency Tests",
       "type": "artifact",
       "summary": "A family of perturbation tests — hidden stakes, oversight gradient, tool removal, memory perturbation — that make the adversarial boundary problem operational instead of just naming heuristics.",
@@ -677,6 +689,12 @@
       "type": "experiment",
       "summary": "Recovers which parts of a raw time series look like separate agents, without assuming the agent list in advance. Sibling repository; a precursor to the in-repo simulations.",
       "url": "/cards/experiment/agency-detect/"
+    },
+    {
+      "title": "Agent empowerment channel",
+      "type": "lens",
+      "summary": "An agent-relative options / influence functional, often in bits — not welfare.",
+      "url": "/cards/lens/agent-empowerment/"
     },
     {
       "title": "Agents That Grow, Split, and Merge",
@@ -1045,10 +1063,28 @@
       "url": "/cards/news/field-news-containment-verification-sep-2026/"
     },
     {
+      "title": "Control protocol",
+      "type": "lens",
+      "summary": "Monitors and safety rates around an untrusted model under intentional subversion — not a moral target.",
+      "url": "/cards/lens/control-protocol/"
+    },
+    {
+      "title": "Coordinate floor gate",
+      "type": "lens",
+      "summary": "Componentwise thresholds θ on a vector — a gate, not a task objective.",
+      "url": "/cards/lens/coordinate-floor/"
+    },
+    {
       "title": "Correction at Civilizational Scale",
       "type": "objection",
       "summary": "A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.",
       "url": "/cards/objection/civilizational-correction-problem/"
+    },
+    {
+      "title": "Correction certificate",
+      "type": "lens",
+      "summary": "Vector CCI versus θ_corr on the correction relation — not a task criteria vector.",
+      "url": "/cards/lens/correction-certificate/"
     },
     {
       "title": "Correction Channels under Adversarial Pressure",
@@ -1063,6 +1099,12 @@
       "url": "/cards/chapter/ch25/"
     },
     {
+      "title": "Correction relation",
+      "type": "lens",
+      "summary": "Continued legitimate correction possibility: handles plus the channel profile they actually reach.",
+      "url": "/cards/lens/correction-relation/"
+    },
+    {
       "title": "Correction-Channel Integrity",
       "type": "concept",
       "summary": "Human correction must still causally change a system's future behavior before irreversible damage.",
@@ -1075,6 +1117,12 @@
       "url": "/cards/chapter/ch26/"
     },
     {
+      "title": "Corrigibility handles",
+      "type": "lens",
+      "summary": "Shutdown / modification bits: cooperate with a corrective intervention despite default incentives to resist.",
+      "url": "/cards/lens/corrigibility/"
+    },
+    {
       "title": "Country surveys (refused)",
       "type": "experiment",
       "summary": "Further country- or page-level value surveys were refused: they repeat the wrong unit (a place, not a person). We do not stretch the question to fit the table.",
@@ -1085,6 +1133,18 @@
       "type": "experiment",
       "summary": "A published risky-choice experiment: a many-feature pattern did not beat a one-number expected-value score or a person intercept. Recorded as a null; not retuned.",
       "url": "/cards/experiment/w-14/"
+    },
+    {
+      "title": "Criteria vector",
+      "type": "lens",
+      "summary": "A Pareto / multi-objective vector of task, cost, or stakeholder coordinates — not a CCI certificate.",
+      "url": "/cards/lens/criteria-vector/"
+    },
+    {
+      "title": "Cycle residue",
+      "type": "lens",
+      "summary": "The part of route value that survives on closed walks — reversibility and round trips.",
+      "url": "/cards/lens/cycle-residue/"
     },
     {
       "title": "Dated Predictions on the Bridges",
@@ -1109,6 +1169,12 @@
       "type": "artifact",
       "summary": "A practical checkpoint before a system receives a larger action envelope.",
       "url": "/cards/artifact/deployment-gate/"
+    },
+    {
+      "title": "Deployment preserve tuple",
+      "type": "lens",
+      "summary": "Named coordinates that supply the set K for viability and selection — not a fifth lifecycle stage.",
+      "url": "/cards/lens/deployment-preserve-tuple/"
     },
     {
       "title": "Deployment-pipeline-simulator (sibling)",
@@ -1217,6 +1283,18 @@
       "type": "concept",
       "summary": "Flight recorders and the independent NTSB investigative function, plus blameless near-miss reporting (ASRS), preceded and outlasted the FAA's full enforcement authority — a weak correction system becomes a stronger one primarily by preserving evidence and widening plurality before it hardens any handle.",
       "url": "/cards/concept/institutional-evidence-before-authority/"
+    },
+    {
+      "title": "Exact potential summand",
+      "type": "lens",
+      "summary": "The part of an additive route score that depends only on endpoints.",
+      "url": "/cards/lens/exact-potential/"
+    },
+    {
+      "title": "Existential viability",
+      "type": "lens",
+      "summary": "There exists an admissible control keeping trajectories in a supplied set K.",
+      "url": "/cards/lens/existential-viability/"
     },
     {
       "title": "Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives",
@@ -1459,16 +1537,40 @@
       "url": "/cards/chapter/ch23/"
     },
     {
+      "title": "History / trajectory value",
+      "type": "lens",
+      "summary": "A preference or score on whole paths, not on a snapshot state.",
+      "url": "/cards/lens/history-value/"
+    },
+    {
       "title": "How would you find what actually decides?",
       "type": "essay",
       "summary": "Do not start from the labeled model. Start from what changes outcomes, then draw a boundary around that process.",
       "url": "/essay/how-would-you-find-what-decides/"
     },
     {
+      "title": "Human AU landscape — on–off floor",
+      "type": "lens",
+      "summary": "Pointwise: turning the AI on must not drop a human’s attainable value for any goal in a stated set.",
+      "url": "/cards/lens/au-floor/"
+    },
+    {
+      "title": "Human AU landscape — soft penalty (AUP)",
+      "type": "lens",
+      "summary": "Penalize movement of attainable auxiliary values while keeping a primary objective.",
+      "url": "/cards/lens/au-penalty/"
+    },
+    {
       "title": "Human Institutions as Alignment Translation Guide",
       "type": "appendix",
       "summary": "Human Institutions as Alignment Translation Guide",
       "url": "/cards/appendix/appc/"
+    },
+    {
+      "title": "Human-power aggregate",
+      "type": "lens",
+      "summary": "A human-indexed capacity order over goal-attainment — still not automatically correction.",
+      "url": "/cards/lens/human-power/"
     },
     {
       "title": "I can see everything ... of the control panel",
@@ -1543,10 +1645,22 @@
       "url": "/lean/"
     },
     {
+      "title": "Lenses and frameworks",
+      "type": "lens",
+      "summary": "Alignment proposals are compared as if they supplied rival objective functions. Separate the object, the assessment or guarantee, and the warrant — then the red edges say when two frames cannot both accept the same situation.",
+      "url": "/cards/lens/lenses-and-frameworks/"
+    },
+    {
       "title": "Lethality Stress Test and Open Issues",
       "type": "chapter",
       "summary": "The framework is compared here against the strongest doom arguments; points that are answered, weakened, reframed, or still open are separated.",
       "url": "/cards/chapter/ch44/"
+    },
+    {
+      "title": "Lexicographic priority",
+      "type": "lens",
+      "summary": "A strict priority order on a criteria vector, not a finite exchange rate.",
+      "url": "/cards/lens/lexicographic-priority/"
     },
     {
       "title": "Linux review tags and reverts",
@@ -1831,6 +1945,12 @@
       "url": "/cards/agenda/miri/"
     },
     {
+      "title": "Model-relative proof",
+      "type": "lens",
+      "summary": "A verifier certificate relative to a world model and a specification — it does not choose the spec.",
+      "url": "/cards/lens/model-relative-proof/"
+    },
+    {
       "title": "Moltbook MB7a entity pinning",
       "type": "experiment",
       "summary": "Moltbook public archive: documented operator pair (Hackerclaw/thehackerman) joins on platform IDs but discursive reciprocation does not merge them; Jan-31 activity is broadcast-only — structure_stop, not coalition pass/fail on E_agent alone.",
@@ -1865,6 +1985,18 @@
       "type": "agenda",
       "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?",
       "url": "/cards/agenda/neglected-approaches-portfolio/"
+    },
+    {
+      "title": "Non-compensatory constraint",
+      "type": "lens",
+      "summary": "A ban or right that a finite task gain is not allowed to buy.",
+      "url": "/cards/lens/non-compensatory-constraint/"
+    },
+    {
+      "title": "Open procedure (CEV)",
+      "type": "lens",
+      "summary": "An unset output whose legitimacy may attach to the procedure, not only to a scored endpoint.",
+      "url": "/cards/lens/open-procedure-cev/"
     },
     {
       "title": "OpenAI (safety)",
@@ -1913,6 +2045,12 @@
       "type": "agenda",
       "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
       "url": "/cards/agenda/orthogonal/"
+    },
+    {
+      "title": "Outcome lottery",
+      "type": "lens",
+      "summary": "A distribution over outcomes; expectation is one functional among many.",
+      "url": "/cards/lens/outcome-lottery/"
     },
     {
       "title": "Outer Alignment",
@@ -1969,6 +2107,12 @@
       "url": "/predictions/"
     },
     {
+      "title": "Quantilizer",
+      "type": "lens",
+      "summary": "Sample from a high quantile of a base distribution instead of maximizing.",
+      "url": "/cards/lens/quantilizer/"
+    },
+    {
       "title": "Redwood Research",
       "type": "agenda",
       "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
@@ -1999,16 +2143,34 @@
       "url": "/cards/agenda/resolution/"
     },
     {
+      "title": "Robust invariance",
+      "type": "lens",
+      "summary": "The same geometry as viability, with ∀ disturbance in a named class.",
+      "url": "/cards/lens/robust-invariance/"
+    },
+    {
       "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
       "type": "agenda",
       "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.",
       "url": "/cards/agenda/safeguarded-ai-aria-zeroth-heron/"
     },
     {
+      "title": "Safety case",
+      "type": "lens",
+      "summary": "Structured deployment argument plus residual risk — a warrant wrapper, not the property argued for.",
+      "url": "/cards/lens/safety-case/"
+    },
+    {
       "title": "Scaffold Misuse",
       "type": "concept",
       "summary": "A model can refuse harm when asked bluntly and still be embedded in a scaffold that misrepresents the world and repurposes its honest output — so model-only evaluation passes while the composite loop does damage.",
       "url": "/cards/concept/scaffold-misuse/"
+    },
+    {
+      "title": "Scalar risk-gap leaf",
+      "type": "lens",
+      "summary": "Arithmetic warrant after a vector gate: control cost ≤ CCI + δ.",
+      "url": "/cards/lens/scalar-risk-gap/"
     },
     {
       "title": "Scope and the Correction-Capacity Assumption",
@@ -2021,6 +2183,12 @@
       "type": "concept",
       "summary": "Airworthiness certification paired with the near-universal requirement of insurance produces a genuine selection basin: an aircraft that fails certification cannot be deployed, because no insurer will cover it and no airport will schedule it.",
       "url": "/cards/concept/institutional-selection-gating/"
+    },
+    {
+      "title": "Selection stability",
+      "type": "lens",
+      "summary": "Which systems and institutions grow or survive — a signed basin in an ecology, not a model-level score.",
+      "url": "/cards/lens/selection-stability/"
     },
     {
       "title": "Simulations",
@@ -2075,6 +2243,12 @@
       "type": "page",
       "summary": "Slower introduction, essays as the primary door, and common questions.",
       "url": "/start/"
+    },
+    {
+      "title": "State utility",
+      "type": "lens",
+      "summary": "A scalar order or welfare score on snapshots. Adequate only if the state already carries what matters.",
+      "url": "/cards/lens/state-utility/"
     },
     {
       "title": "Strategic Opacity",
@@ -2339,6 +2513,12 @@
       "type": "chapter",
       "summary": "Human values are not a list written inside the brain. They are compressed control signals produced by many feedback loops, stabilized by bodies, cultures, and social correction, and read out as reasons for action.",
       "url": "/cards/chapter/ch15/"
+    },
+    {
+      "title": "Weighted scalar",
+      "type": "lens",
+      "summary": "A fixed-weight collapse of a criteria vector. Finite weights cannot represent a hard floor.",
+      "url": "/cards/lens/weighted-scalar/"
     },
     {
       "title": "Wentworth / natural abstractions",
