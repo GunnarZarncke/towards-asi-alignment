@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-23 | **Lens review fixes** — Review of lens cards and Frame Lean modules; apply clear fixes, report open items. | [2026-10-23-lens-review-fixes.md](2026-10-23-lens-review-fixes.md) |
 | 2026-10-23 | **Lens map main graph, variant x** — Default DOT on site; GitHub Graphviz source; **x** render; trim overview related. | [2026-10-23-lens-graph-main-x.md](2026-10-23-lens-graph-main-x.md) |
 | 2026-10-23 | **Lens cards and clickable frame map** — New `lens` card type, 29 frame nodes, overview with clickable SVG, agenda links. | [2026-10-23-lens-cards.md](2026-10-23-lens-cards.md) |
 | 2026-10-23 | **Alignment-frame relations graph in Lean** — User asked for typed nodes on the frame-relations graph, then for a Lean representation from whic... | [2026-10-23-alignment-frame-relations-lean.md](2026-10-23-alignment-frame-relations-lean.md) |

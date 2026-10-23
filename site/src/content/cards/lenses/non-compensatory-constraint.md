@@ -5,7 +5,7 @@ status: "framework"
 summary: "A ban or right that a finite task gain is not allowed to buy."
 related:
   - "lenses/weighted-scalar"
-  - "lenses/correction-certificate"
+  - "correction-channel-integrity"
   - "specify-constitutional-ai"
   - "lenses/lenses-and-frameworks"
   - "field-agendas/anthropic-lab"

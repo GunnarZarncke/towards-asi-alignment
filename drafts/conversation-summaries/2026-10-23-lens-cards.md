@@ -15,7 +15,7 @@ Prompts: paraphrase-only
 - content: Concept reverse links on field coverage, field map, CCI.
 
 ## Decisions
-- Source of truth is `lenses-data.mjs`, not `concepts.yml`. Graph is certification-geometry variant **b**.
+- Source of truth is `lenses-data.mjs`, not `concepts.yml`. Graph was variant **b** here; switched to the default graph **a** in `2026-10-23-lens-graph-main-x.md`.
 - Duplicate `route→cycle` edges share one GitHub href (summand vs project).
 
 ## Open / next

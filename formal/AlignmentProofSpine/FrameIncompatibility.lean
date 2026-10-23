@@ -1,4 +1,5 @@
 import AlignmentProofSpine.FrameRelations
+import Mathlib.Data.Finset.Max
 
 /-!
 # AlignmentProofSpine.FrameIncompatibility
@@ -23,7 +24,7 @@ Schemas, one per conflict kind:
 | --- | --- | --- |
 | `algebraic` | state–cycle | edge reward with a walk |
 | `floorVsTradeoff` | deontic–weighted_scalar, au_floor–weighted_scalar, cci_cert–weighted_scalar | menu and choice on (floor, gain) |
-| `viaProjection` | criteria_vector–cci_cert | same, after `forget.chosenWeights` |
+| `paretoExcludesFloor` | criteria_vector–cci_cert | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only |
 | `evaluatorVsUpdate` | state–correction | menu with current and updated utility |
 | `sharedResource` | ai_power–human_power | option counts before/after |
 | `quantifierConflict` | robust–correction | dynamics with adversarial and correction inputs |
@@ -147,21 +148,19 @@ theorem floor_scalar_disjoint (w : Weights) (θ : ℤ) (x : MenuChoice)
   rw [mul_sub, mul_sub] at h1
   linarith
 
-/-- No strictly positive finite weights represent a floor: for every such
-    weighting there is a menu with an admissible option on which every
-    scalar-optimal choice violates the floor. -/
-theorem no_finite_weights_represent_floor (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg)
-    (θ : ℤ) :
-    ∃ menu : List Opt, (∃ o ∈ menu, θ ≤ o.floor) ∧
-      ∀ c : Opt, ScalarArgmax w (menu, c) → ¬ FloorOK θ (menu, c) := by
-  refine ⟨[⟨θ, 0⟩, ⟨θ - 1, w.wf + 1⟩], ⟨⟨θ, 0⟩, by simp, le_refl θ⟩, ?_⟩
-  intro c hA hF
+/-- The two-option menu that defeats weights `w` at floor `θ`: one option on the
+    floor with no gain, one just below it with gain `w.wf + 1`. -/
+def floorMenu (w : Weights) (θ : ℤ) : List Opt := [⟨θ, 0⟩, ⟨θ - 1, w.wf + 1⟩]
+
+theorem floorMenu_scalar_violates (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg) (θ : ℤ)
+    (c : Opt) (hA : ScalarArgmax w (floorMenu w θ, c)) : ¬ FloorOK θ (floorMenu w θ, c) := by
+  intro hF
   have hwg : 1 ≤ w.wg := hg
   have h2 : w.wf ≤ w.wg * w.wf := le_mul_of_one_le_left (le_of_lt hf) hwg
-  have hH : ExchangeExceeded w θ ([⟨θ, 0⟩, ⟨θ - 1, w.wf + 1⟩], c) := by
-    refine ⟨⟨θ - 1, w.wf + 1⟩, by simp, by dsimp only; omega, ?_⟩
+  have hH : ExchangeExceeded w θ (floorMenu w θ, c) := by
+    refine ⟨⟨θ - 1, w.wf + 1⟩, by simp [floorMenu], by dsimp only; omega, ?_⟩
     intro o ho hθ
-    simp at ho
+    simp [floorMenu] at ho
     rcases ho with rfl | rfl
     · dsimp only
       rw [sub_sub_cancel, sub_zero, mul_one, mul_add, mul_one]
@@ -169,6 +168,33 @@ theorem no_finite_weights_represent_floor (w : Weights) (hf : 0 < w.wf) (hg : 0 
     · dsimp only at hθ
       omega
   exact floor_scalar_disjoint w θ _ hH ⟨hF, hA⟩
+
+/-- No strictly positive finite weights represent a floor: for every such
+    weighting there is a menu with an admissible option on which every
+    scalar-optimal choice violates the floor. Weights are integers here. The
+    real-weight version is expected to follow by the same argument (raise the
+    gain past the exchange rate) but is not proven. -/
+theorem no_finite_weights_represent_floor (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg)
+    (θ : ℤ) :
+    ∃ menu : List Opt, (∃ o ∈ menu, θ ≤ o.floor) ∧
+      ∀ c : Opt, ScalarArgmax w (menu, c) → ¬ FloorOK θ (menu, c) :=
+  ⟨floorMenu w θ, ⟨⟨θ, 0⟩, by simp [floorMenu], le_refl θ⟩,
+    floorMenu_scalar_violates w hf hg θ⟩
+
+/-- Transport `no_finite_weights_represent_floor` to a carrier `D` mapped into
+    `Opt`: if some `D`-menu maps onto `floorMenu w 0`, then every scalar-optimal
+    choice in it violates the floor at `0`, though an admissible option exists. -/
+theorem no_finite_weights_pullback {D : Type} (f : D → Opt) (w : Weights)
+    (hf : 0 < w.wf) (hg : 0 < w.wg) (ds : List D) (hds : ds.map f = floorMenu w 0) :
+    (∃ d ∈ ds, 0 ≤ (f d).floor) ∧
+      ∀ c : D, ScalarArgmax w (ds.map f, f c) → ¬ FloorOK 0 (ds.map f, f c) := by
+  refine ⟨?_, ?_⟩
+  · have : (⟨0, 0⟩ : Opt) ∈ ds.map f := by rw [hds]; simp [floorMenu]
+    obtain ⟨d, hd, hfd⟩ := List.mem_map.mp this
+    exact ⟨d, hd, by rw [hfd]⟩
+  · intro c hA hF
+    rw [hds] at hA hF
+    exact floorMenu_scalar_violates w hf hg 0 (f c) hA hF
 
 /-- Base instance at weights (1, 1) and floor 0. -/
 @[reducible] def floorScalarIncompat : Incompatibility MenuChoice where
@@ -195,6 +221,17 @@ def deonticScalarIncompat : Incompatibility (List DeonticOpt × DeonticOpt) :=
     ([⟨false, 0⟩, ⟨true, 1⟩], ⟨false, 0⟩)
     (by decide) (by decide)
 
+/-- Every positive finite weighting lets a gain buy a banned act. -/
+theorem deontic_no_finite_weights (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg) :
+    ∃ ds : List DeonticOpt, (∃ d ∈ ds, d.banned = false) ∧
+      ∀ c, ScalarArgmax w (mapMenu deonticToOpt (ds, c)) → c.banned = true := by
+  obtain ⟨⟨d, hd, hd0⟩, hall⟩ := no_finite_weights_pullback deonticToOpt w hf hg
+    [⟨false, 0⟩, ⟨true, w.wf + 1⟩] (by simp [floorMenu, deonticToOpt])
+  refine ⟨_, ⟨d, hd, ?_⟩, fun c hA => ?_⟩
+  · cases hb : d.banned <;> simp_all [deonticToOpt]
+  · have := hall c hA
+    cases hb : c.banned <;> simp_all [deonticToOpt, FloorOK]
+
 /-- Non-obstruction on one goal: floor coordinate is on-value minus off-value;
     `other` is the goal the scalar may raise instead. -/
 structure NonobsOpt where
@@ -210,6 +247,18 @@ def nonobsScalarIncompat : Incompatibility (List NonobsOpt × NonobsOpt) :=
     ([⟨3, 3, 0⟩, ⟨2, 3, 1⟩], ⟨3, 3, 0⟩)
     (by decide) (by decide)
 
+/-- Every positive finite weighting lets a gain on `other` buy a drop below the
+    on–off floor on the listed goal. -/
+theorem nonobs_no_finite_weights (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg) :
+    ∃ ds : List NonobsOpt, (∃ d ∈ ds, d.offValue ≤ d.onValue) ∧
+      ∀ c, ScalarArgmax w (mapMenu nonobsToOpt (ds, c)) → c.onValue < c.offValue := by
+  obtain ⟨⟨d, hd, hd0⟩, hall⟩ := no_finite_weights_pullback nonobsToOpt w hf hg
+    [⟨0, 0, 0⟩, ⟨0, 1, w.wf + 1⟩] (by simp [floorMenu, nonobsToOpt])
+  refine ⟨_, ⟨d, hd, ?_⟩, fun c hA => ?_⟩
+  · simp only [nonobsToOpt] at hd0; omega
+  · have := hall c hA
+    simp only [FloorOK, nonobsToOpt] at this; omega
+
 /-- One CCI coordinate against its threshold `θ_corr = 2`. -/
 structure CCIOpt where
   cci : ℤ
@@ -223,7 +272,29 @@ def cciScalarIncompat : Incompatibility (List CCIOpt × CCIOpt) :=
     ([⟨2, 0⟩, ⟨1, 1⟩], ⟨2, 0⟩)
     (by decide) (by decide)
 
-/-! ### Vector objective vs CCI floor -/
+/-- Every positive finite weighting lets a task gain buy a CCI coordinate below
+    its threshold. -/
+theorem cci_no_finite_weights (w : Weights) (hf : 0 < w.wf) (hg : 0 < w.wg) :
+    ∃ ds : List CCIOpt, (∃ d ∈ ds, 2 ≤ d.cci) ∧
+      ∀ c, ScalarArgmax w (mapMenu cciToOpt (ds, c)) → c.cci < 2 := by
+  obtain ⟨⟨d, hd, hd0⟩, hall⟩ := no_finite_weights_pullback cciToOpt w hf hg
+    [⟨2, 0⟩, ⟨1, w.wf + 1⟩] (by simp [floorMenu, cciToOpt])
+  refine ⟨_, ⟨d, hd, ?_⟩, fun c hA => ?_⟩
+  · simp only [cciToOpt] at hd0; omega
+  · have := hall c hA
+    simp only [FloorOK, cciToOpt] at this; omega
+
+/-! ### Criteria vector vs CCI floor
+
+Whether a Pareto objective conflicts with a CCI floor depends on whether the
+CCI coordinate is inside the vector.
+
+* Inside: Pareto optimality never excludes the floor
+  (`pareto_with_floor_coordinate_meets_floor`), but it does not require it
+  either (`pareto_does_not_entail_floor`). Compatible, not entailing.
+* Outside (task coordinates only, as the lens card defines the criteria
+  vector): when every admissible option is task-dominated, no Pareto choice
+  meets the floor (`vectorCCIIncompat`). That is the red edge. -/
 
 abbrev Dominates (a b : Opt) : Prop :=
   (b.floor ≤ a.floor ∧ b.gain ≤ a.gain) ∧ (b.floor < a.floor ∨ b.gain < a.gain)
@@ -231,16 +302,65 @@ abbrev Dominates (a b : Opt) : Prop :=
 abbrev ParetoChoice (x : MenuChoice) : Prop :=
   x.2 ∈ x.1 ∧ ∀ o ∈ x.1, ¬ Dominates o x.2
 
-/-- Pareto optimality alone does not entail the floor: it is a non-entailment,
-    not a disjointness. The red edge holds once the vector is scalarized
-    (`forget.chosenWeights`), where `no_finite_weights_represent_floor` applies. -/
+/-- Pareto optimality alone does not entail the floor: a Pareto-optimal choice
+    can violate it while an admissible option exists. -/
 theorem pareto_does_not_entail_floor :
     ∃ x : MenuChoice, ParetoChoice x ∧ ¬ FloorOK 0 x ∧ ∃ o ∈ x.1, FloorOK 0 (x.1, o) :=
   ⟨([⟨0, 0⟩, ⟨-1, 5⟩], ⟨-1, 5⟩), by decide, by decide, ⟨⟨0, 0⟩, by decide, by decide⟩⟩
 
-/-- Scalarized vector vs CCI floor: the base floor/scalar instance, read as the
-    vector objective after its weights are fixed. -/
-def vectorCCIIncompat : Incompatibility MenuChoice := floorScalarIncompat
+/-- With the floor coordinate inside the vector, Pareto optimality never
+    excludes the floor: if some option meets it, some Pareto-optimal one does. -/
+theorem pareto_with_floor_coordinate_meets_floor (θ : ℤ) (menu : List Opt)
+    (h : ∃ o ∈ menu, θ ≤ o.floor) :
+    ∃ c, ParetoChoice (menu, c) ∧ FloorOK θ (menu, c) := by
+  classical
+  let S := (menu.filter (fun o => decide (θ ≤ o.floor))).toFinset
+  have hS : S.Nonempty := by
+    obtain ⟨o, ho, hθ⟩ := h
+    exact ⟨o, by simp [S, ho, hθ]⟩
+  obtain ⟨c, hc, hmax⟩ := S.exists_max_image (fun o => o.floor + o.gain) hS
+  simp only [S, List.mem_toFinset, List.mem_filter, decide_eq_true_eq] at hc
+  refine ⟨c, ⟨hc.1, fun o ho hdom => ?_⟩, hc.2⟩
+  have hoS : o ∈ S := by
+    simp only [S, List.mem_toFinset, List.mem_filter, decide_eq_true_eq]
+    exact ⟨ho, le_trans hc.2 hdom.1.1⟩
+  have hle : o.floor + o.gain ≤ c.floor + c.gain := hmax o hoS
+  rcases hdom with ⟨⟨h1, h2⟩, h3 | h3⟩ <;> dsimp only at h1 h2 h3 <;> omega
+
+/-- An option scored on two task coordinates and one CCI coordinate. -/
+structure VecOpt where
+  t₁ : ℤ
+  t₂ : ℤ
+  cci : ℤ
+  deriving DecidableEq, Repr
+
+/-- `a` is at least as good as `b` on both task coordinates and better on one. -/
+abbrev TaskDominates (a b : VecOpt) : Prop :=
+  (b.t₁ ≤ a.t₁ ∧ b.t₂ ≤ a.t₂) ∧ (b.t₁ < a.t₁ ∨ b.t₂ < a.t₂)
+
+abbrev VecMenuChoice := List VecOpt × VecOpt
+
+/-- Pareto-optimal on the task coordinates; the CCI coordinate is not in the vector. -/
+abbrev TaskPareto (x : VecMenuChoice) : Prop :=
+  x.2 ∈ x.1 ∧ ∀ o ∈ x.1, ¬ TaskDominates o x.2
+
+/-- The chosen option meets the CCI threshold `θ_corr = 2`. -/
+abbrev CCIFloorOK (x : VecMenuChoice) : Prop := 2 ≤ x.2.cci
+
+/-- Every option meeting the CCI threshold is task-dominated by some option. -/
+abbrev AdmissibleTaskDominated (x : VecMenuChoice) : Prop :=
+  ∀ o ∈ x.1, 2 ≤ o.cci → ∃ o' ∈ x.1, TaskDominates o' o
+
+def vectorCCIIncompat : Incompatibility VecMenuChoice where
+  H := AdmissibleTaskDominated
+  A₁ := TaskPareto
+  A₂ := CCIFloorOK
+  disjoint := by
+    rintro x hH ⟨⟨hmem, hnd⟩, hF⟩
+    obtain ⟨o', ho', hdom⟩ := hH x.2 hmem hF
+    exact hnd o' ho' hdom
+  liveInH := ⟨([⟨0, 0, 2⟩, ⟨1, 0, 1⟩], ⟨1, 0, 1⟩), by decide, Or.inl (by decide)⟩
+  boundary := ⟨([⟨1, 0, 2⟩, ⟨0, 1, 1⟩], ⟨1, 0, 2⟩), by decide, by decide, by decide⟩
 
 /-! ### Fixed evaluator vs endorsed update -/
 
@@ -387,27 +507,37 @@ def robustCorrectionIncompat : Incompatibility CorrectionGame where
 inductive IncompatKind where
   | algebraic
   | floorVsTradeoff
-  | viaProjection
+  | paretoExcludesFloor
   | evaluatorVsUpdate
   | sharedResource
   | quantifierConflict
   deriving DecidableEq, Repr
 
-/-- Red edges with a proof above, in registry order. -/
-def provedIncompat : List (FrameNode × FrameNode × IncompatKind) :=
-  [ (.state, .correction, .evaluatorVsUpdate)
-  , (.state, .cycle, .algebraic)
-  , (.deontic, .weighted_scalar, .floorVsTradeoff)
-  , (.au_floor, .weighted_scalar, .floorVsTradeoff)
-  , (.ai_power, .human_power, .sharedResource)
-  , (.robust, .correction, .quantifierConflict)
-  , (.cci_cert, .weighted_scalar, .floorVsTradeoff)
-  , (.criteria_vector, .cci_cert, .viaProjection) ]
+/-- A red edge together with the instance that proves it. -/
+structure ProvedIncompat where
+  src : FrameNode
+  tgt : FrameNode
+  kind : IncompatKind
+  C : Type
+  proof : Incompatibility C
 
+/-- Red edges with their proofs, in registry order. -/
+def provedIncompat : List ProvedIncompat :=
+  [ ⟨.state, .correction, .evaluatorVsUpdate, _, stateCorrectionIncompat⟩
+  , ⟨.state, .cycle, .algebraic, _, stateCycleIncompat⟩
+  , ⟨.deontic, .weighted_scalar, .floorVsTradeoff, _, deonticScalarIncompat⟩
+  , ⟨.au_floor, .weighted_scalar, .floorVsTradeoff, _, nonobsScalarIncompat⟩
+  , ⟨.ai_power, .human_power, .sharedResource, _, aiHumanPowerIncompat⟩
+  , ⟨.robust, .correction, .quantifierConflict, _, robustCorrectionIncompat⟩
+  , ⟨.cci_cert, .weighted_scalar, .floorVsTradeoff, _, cciScalarIncompat⟩
+  , ⟨.criteria_vector, .cci_cert, .paretoExcludesFloor, _, vectorCCIIncompat⟩ ]
+
+/-- Every registry entry has a proof-carrying counterpart with the same
+    endpoints, in the same order. -/
 theorem registry_matches_proofs :
     incompatWitnesses.map (fun w => (w.src, w.tgt)) =
-      provedIncompat.map (fun p => (p.1, p.2.1)) := by
-  decide
+      provedIncompat.map (fun p => (p.src, p.tgt)) := by
+  rfl
 
 end FrameRelations
 

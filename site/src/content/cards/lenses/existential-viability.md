@@ -11,7 +11,7 @@ related:
   - "field-agendas/davidad-guaranteed-safe-ai-gsai"
 external:
   - label: "LessWrong tag: Control theory"
-    url: "https://www.lesswrong.com/w/embedded-agency"
+    url: "https://www.lesswrong.com/w/control-theory"
 ---
 
 **Role.** Guarantee. Graph node `viable`.
@@ -20,4 +20,4 @@ external:
 >
 > — Frames draft §4.6 (Aubin 1990; Aubin, Bayen, and Saint-Pierre 2011)
 
-Viability is content-neutral. It can preserve a correction-supporting region or a captured equilibrium. TSA uses it as the **shape** of the guarantee, not as a second object: K is supplied by the correction reading (and, when certified, by the preserve tuple).
+Viability is content-neutral. It can preserve a correction-supporting region or a captured equilibrium. TSA uses it as the **shape** of the guarantee, not as a second object: K is supplied by the correction reading.

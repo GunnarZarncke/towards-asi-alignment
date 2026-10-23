@@ -118,10 +118,10 @@ on–off floor (non-obs.)"];
   state -> cycle [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nnonzero round trip"];
   deontic -> weighted_scalar [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nunless an exact penalty exists"];
   au_floor -> weighted_scalar [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nif one goal is spent to raise another"];
-  ai_power -> human_power [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nwhen the two channels move apart"];
+  ai_power -> human_power [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nwhen the option pool\ndoes not grow"];
   robust -> correction [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nif corrections count as disturbances\nand aim outside the set"];
   cci_cert -> weighted_scalar [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nfailed coordinate vs\ntask trade-off"];
-  criteria_vector -> cci_cert [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nas one flat objective;\ncompose only in order"];
+  criteria_vector -> cci_cert [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nwhen every admissible option\nis task-dominated"];
 
   // Layout only.
   selection -> proof [style=invis, weight=100];

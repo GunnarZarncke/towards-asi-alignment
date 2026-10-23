@@ -4,7 +4,6 @@ related:
   - deployment-gate
   - evidence-and-uncertainty
   - lenses/correction-relation
-  - lenses/correction-certificate
   - lenses/lenses-and-frameworks
 ---
 

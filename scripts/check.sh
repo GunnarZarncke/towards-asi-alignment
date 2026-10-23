@@ -68,6 +68,7 @@ add_check "bibliography summaries" "$PYTHON" scripts/check_bibliography_summarie
 add_check "claim spine" "$PYTHON" scripts/check_claim_spine.py
 add_check "evidence stance" "$PYTHON" reference/field-agendas/scripts/check-evidence-stance.py
 add_check "open spine interfaces" "$PYTHON" formal/scripts/check_open_spine_interfaces.py
+add_check "frame graph vs Lean" "$PYTHON" scripts/check_frame_graph.py
 add_check "specify/construct instances" "$PYTHON" formal/scripts/check_specify_construct_instances.py
 add_check "field-v2 sync" npm --prefix site run sync:field-v2 -- --check
 add_check "quiz bank" "$PYTHON" scripts/check_quiz_bank.py

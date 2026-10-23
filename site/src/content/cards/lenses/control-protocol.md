@@ -21,4 +21,4 @@ external:
 >
 > — Frames draft §4.9 (Greenblatt et al. 2024)
 
-A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case and as monitor evidence for a CCI certificate. It does not replace the correction relation.
+A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case. It does not replace the correction relation.

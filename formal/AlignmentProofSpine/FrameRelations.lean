@@ -11,9 +11,15 @@ should be *obligations* of a small formal signature, not ad hoc DOT annotations.
 
 | Edge kind in variant **c** | Derivation source |
 | --- | --- |
-| **Summand** (`route` ↔ `exact` / `cycle`) | `summandPair` on nodes; toy cycle lemma `exact_potential_cycle_sum_zero`. See also `FrameMorphisms` / `FrameComposePaths`. |
-| **Incompatible** | Registered witness (`IncompatWitness`) + finite separation theorems where available (`state_cycle_assessment_conflict`). |
-| **Compose** | **Role orthogonality** (`RoleCompose`) is necessary but not sufficient. Variant **c** greens are exactly `CorrectionCentered.compose` (`ComposeSlot`). |
+| **Summand** (`route` ↔ `exact` / `cycle`) | `summandPair` on nodes (registry). One direction is proved: `FrameIncompatibility.gradient_closed_walk_zero` (an exact part sums to zero on every closed walk). No general direct-sum decomposition yet. |
+| **Incompatible** | `incompatWitnesses` registry; each entry carries an `Incompatibility` instance in `FrameIncompatibility.provedIncompat` (`registry_matches_proofs`). |
+| **Compose** | Lookup table `CorrectionCentered.compose` (`ComposeSlot`). `RoleCompose` currently admits every role pair (`roleCompose_trivial`), so it does not constrain compose. |
+
+`variantC_all_derived` checks that the three tables do not shadow each other
+under the classifier's priority (summand, then incompatible, then compose). It
+does not derive edges from interface types. Agreement with
+`drafts/alignment-frames-relations-c.dot` is checked outside Lean by
+`scripts/check_frame_graph.py`.
 
 Variant **c** is **not** the full compose-closure of interface types. See
 `drafts/alignment-frames-relations.md` (*Formal layer (Lean)*).
@@ -150,38 +156,11 @@ def summandPair (a b : FrameNode) : Bool :=
   (a == .exact && b == .route) || (a == .route && b == .exact) ||
   (a == .cycle && b == .route) || (a == .route && b == .cycle)
 
-/-! ### ℤ edge scores on the oriented 3-cycle -/
-
-abbrev TriangleVert := Fin 3
-
-inductive TriangleEdge where
-  | e01 | e12 | e20
-  deriving DecidableEq, Repr, Inhabited
-
-def ExactPotentialTri (f : TriangleEdge → ℤ) : Prop :=
-  ∃ U : TriangleVert → ℤ,
-    f .e01 = U 1 - U 0 ∧ f .e12 = U 2 - U 1 ∧ f .e20 = U 0 - U 2
-
-def TriangleCycleSumZero (f : TriangleEdge → ℤ) : Prop :=
-  f .e01 + f .e12 + f .e20 = 0
-
-/-- Every exact potential has zero total weight on the oriented triangle (the
-    `state` vs `cycle` red edge in variant **c**). -/
-theorem exact_potential_cycle_sum_zero (f : TriangleEdge → ℤ) (hE : ExactPotentialTri f) :
-    TriangleCycleSumZero f := by
-  rcases hE with ⟨U, h01, h12, h20⟩
-  simp only [TriangleCycleSumZero]
-  rw [h01, h12, h20]
-  linarith
-
-theorem state_cycle_assessment_conflict (f : TriangleEdge → ℤ)
-    (hE : ExactPotentialTri f) (hC : ¬ TriangleCycleSumZero f) : False :=
-  hC (exact_potential_cycle_sum_zero f hE)
-
 /-! ### Incompatibility registry -/
 
-/-- Red-edge registry. Each entry is backed by a proof in `FrameIncompatibility`
-    (`registry_matches_proofs`); the shared carrier lives there, not here. -/
+/-- Red-edge registry. `FrameIncompatibility.provedIncompat` pairs each entry
+    with its `Incompatibility` instance; `registry_matches_proofs` checks the
+    pairs line up. The shared carrier lives there, not here. -/
 structure IncompatWitness where
   src : FrameNode
   tgt : FrameNode
@@ -297,11 +276,15 @@ def composeEdge (s : ComposeSlot) : FrameEdge :=
 def allComposeEdges : List FrameEdge := allComposeSlots.map composeEdge
 
 theorem compose_from_slot (s : ComposeSlot) : compose s.src s.tgt = true := by
-  cases s <;> native_decide
+  cases s <;> decide
 
 end CorrectionCentered
 
-/-! ### Role gate (necessary for compose; not sufficient) -/
+/-! ### Role gate
+
+Intended as a necessary condition for compose. As written it admits every
+role pair (`roleCompose_trivial`), so it rules nothing out. Kept as the hook
+for a real exclusion; see the open item in `drafts/alignment-frames-relations.md`. -/
 
 def RoleCompose (r₁ r₂ : Role) : Prop :=
   match r₁, r₂ with
@@ -317,13 +300,15 @@ def RoleCompose (r₁ r₂ : Role) : Prop :=
   | .guarantee, .target => True
   | .target, .guarantee => True
 
+theorem roleCompose_trivial (r₁ r₂ : Role) : RoleCompose r₁ r₂ := by
+  cases r₁ <;> cases r₂ <;> trivial
+
 def roleComposeAllowed (a b : FrameNode) : Prop :=
   RoleCompose (interfaceOf a).role (interfaceOf b).role
 
 theorem roleCompose_necessary_slot (s : ComposeSlot) :
-    roleComposeAllowed s.src s.tgt := by
-  cases s <;> simp [roleComposeAllowed, RoleCompose, interfaceOf, ComposeSlot.src,
-    ComposeSlot.tgt]
+    roleComposeAllowed s.src s.tgt :=
+  roleCompose_trivial _ _
 
 /-! ### Derived edge classifier (variant **c**) -/
 
@@ -348,8 +333,10 @@ def variantCEdges : List FrameEdge :=
 def derivedEdgeKind? (e : FrameEdge) : Bool :=
   derivedEdgeKind e.src e.tgt == some e.kind
 
+/-- The summand, incompatibility, and compose tables do not shadow one another
+    under `derivedEdgeKind`'s priority order. -/
 theorem variantC_all_derived : variantCEdges.all derivedEdgeKind? = true := by
-  native_decide
+  decide
 
 end FrameRelations
 

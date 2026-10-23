@@ -13,7 +13,7 @@ related:
   - "field-agendas/clr-cooperation-conflict"
 external:
   - label: "LessWrong tag: Moloch"
-    url: "https://www.lesswrong.com/w/inadequate-equilibria"
+    url: "https://www.lesswrong.com/w/moloch"
 ---
 
 **Role.** Guarantee. Graph node `selection`.

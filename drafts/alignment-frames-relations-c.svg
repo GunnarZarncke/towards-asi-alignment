@@ -138,8 +138,8 @@
 <title>criteria_vector&#45;&gt;cci_cert</title>
 <path fill="none" stroke="#b00020" stroke-width="2" d="M723.46,-743.59C726.95,-741.08 730.18,-738.23 733,-735 761.27,-702.63 720.05,-669.81 751,-640 791.79,-600.71 823,-638.07 877,-621 899.97,-613.74 924.23,-601.61 942.65,-591.36"/>
 <text xml:space="preserve" text-anchor="middle" x="814" y="-659.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">incompatible</text>
-<text xml:space="preserve" text-anchor="middle" x="814" y="-650.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">as one flat objective;</text>
-<text xml:space="preserve" text-anchor="middle" x="814" y="-641.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">compose only in order</text>
+<text xml:space="preserve" text-anchor="middle" x="814" y="-650.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">when every admissible option</text>
+<text xml:space="preserve" text-anchor="middle" x="814" y="-641.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">is task&#45;dominated</text>
 </g>
 <!-- au_penalty -->
 <g id="node7" class="node">
@@ -196,8 +196,9 @@
 <g id="edge26" class="edge">
 <title>ai_power&#45;&gt;human_power</title>
 <path fill="none" stroke="#b00020" stroke-width="2" d="M409.12,-307C463.46,-307 537.72,-307 589.39,-307"/>
-<text xml:space="preserve" text-anchor="middle" x="489" y="-317.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">incompatible</text>
-<text xml:space="preserve" text-anchor="middle" x="489" y="-308.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">when the two channels move apart</text>
+<text xml:space="preserve" text-anchor="middle" x="489" y="-326.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">incompatible</text>
+<text xml:space="preserve" text-anchor="middle" x="489" y="-317.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">when the option pool</text>
+<text xml:space="preserve" text-anchor="middle" x="489" y="-308.4" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">does not grow</text>
 </g>
 <!-- human_power&#45;&gt;correction -->
 <g id="edge5" class="edge">

@@ -16,9 +16,9 @@ external:
 
 **Role.** Target. Graph node `hist`.
 
-> A utility or preference over a history represents delayed and path-dependent value directly. A pathwise safety predicate is different.
+> A utility or preference over h=(s₀,a₀,s₁,…) represents delayed and path-dependent value directly. A pathwise safety predicate is different.
 >
-> — What Does Alignment Secure? (draft), §4.1
+> — Frames draft §4.1
 
 A history-valued lens scores the sequence `(s₀, a₀, s₁, …)`. Two deployments can share an endpoint and still differ if manipulation, dissent removal, or withheld evidence is visible in the history.
 

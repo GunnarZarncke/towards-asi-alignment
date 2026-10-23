@@ -20,4 +20,4 @@ external:
 >
 > — LessWrong tag: Quantilization
 
-Taylor (2016): the guarantee is relative to the base, the quantile, and the use pattern. One-shot bounds do not imply safety under repeated deployment. The orange edge to state utility is a **limit**: quantile → maximum recovers ordinary maximization.
+Taylor (2016): the guarantee is relative to the base, the quantile, and the use pattern. One-shot bounds do not imply safety under repeated deployment. The orange edge to state utility is a **limit**: quantile → maximum recovers ordinary maximization. Lean (`quantilizer_limit_is_argmax`): once the quantile is no larger than a maximizer’s base mass, the support is exactly the argmax set; if the base puts no mass on any maximizer, it never is.

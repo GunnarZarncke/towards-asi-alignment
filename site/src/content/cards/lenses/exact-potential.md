@@ -14,9 +14,9 @@ external:
 
 **Role.** Target. Graph node `exact`.
 
-> On its fixed graph with the stated reachability assumption, endpoint-only additive path value is the exact-potential special case.
+> If every state is reachable from a fixed start, path worth depends only on the final state exactly when r is an exact potential: each edge scores the utility of its target minus the utility of its source.
 >
-> — Frames draft §4.1 (Hallgren process-alignment draft, unpublished)
+> — Frames relations note
 
 If an edge score is a gradient of a state potential, every closed walk sums to zero. That is why state utility and cycle residue conflict on round trips: see the red edge in Lean (`stateCycleIncompat`).
 

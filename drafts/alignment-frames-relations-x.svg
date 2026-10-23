@@ -208,10 +208,10 @@
 <!-- au_floor&#45;&gt;human_power -->
 <g id="edge22" class="edge">
 <title>au_floor&#45;&gt;human_power</title>
-<path fill="none" stroke="#2e7d32" d="M441.16,-291.56C486.85,-285.99 553.57,-276.98 611.25,-265.79 617.88,-264.5 624.77,-263.04 631.63,-261.49"/>
-<polygon fill="#2e7d32" stroke="#2e7d32" points="631.92,-263.94 638.19,-259.98 630.82,-259.16 631.92,-263.94"/>
-<text xml:space="preserve" text-anchor="middle" x="548.25" y="-295.76" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#2e7d32">composes</text>
-<text xml:space="preserve" text-anchor="middle" x="548.25" y="-286.76" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#2e7d32">pointwise floor on one landscape</text>
+<path fill="none" stroke="#2e7d32" d="M441.44,-295.27C487.3,-292.38 554.1,-286.3 611.25,-273.79 621.93,-271.45 633.11,-268.28 643.81,-264.88"/>
+<polygon fill="#2e7d32" stroke="#2e7d32" points="644.55,-267.22 650.44,-262.72 643.03,-262.56 644.55,-267.22"/>
+<text xml:space="preserve" text-anchor="middle" x="548.25" y="-301.92" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#2e7d32">composes</text>
+<text xml:space="preserve" text-anchor="middle" x="548.25" y="-292.92" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#2e7d32">pointwise floor on one landscape</text>
 </g>
 <!-- ai_power -->
 <g id="node14" style="opacity:0" class="node">

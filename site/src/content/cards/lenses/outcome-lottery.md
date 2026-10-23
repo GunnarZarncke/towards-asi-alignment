@@ -9,8 +9,8 @@ related:
   - "lenses/lenses-and-frameworks"
   - "field-agendas/chai-russell"
 external:
-  - label: "LessWrong tag: Risk"
-    url: "https://www.lesswrong.com/w/risks-from-ai"
+  - label: "LessWrong tag: Expected utility"
+    url: "https://www.lesswrong.com/w/expected-utility"
 ---
 
 **Role.** Target. Graph node `dist`.

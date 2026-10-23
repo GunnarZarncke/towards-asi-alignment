@@ -21,4 +21,4 @@ external:
 >
 > — Yudkowsky, Coherent Extrapolated Volition (2004)
 
-CEV/CBV can be read as producing a specification or as valuing the procedure. Encoding “score only the output” drops revisability. Lean treats CEV as an `AlignmentTarget` instance; live `MB8` is retired from the certification path.
+CEV/CBV can be read as producing a specification or as valuing the procedure. Encoding “score only the output” drops revisability. The orange limit edge reads a forced halt as scoring the output at the halt step: a well-defined state score only where the outputs converge (`forced_halt_converges`, `forced_halt_depends_on_time`). Lean treats CEV as an `AlignmentTarget` instance; live `MB8` is retired from the certification path.

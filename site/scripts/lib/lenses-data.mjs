@@ -1,5 +1,9 @@
 /** Node id in drafts/alignment-frames-relations.dot → site lens card. */
 
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 export const OVERVIEW_ID = "lenses/lenses-and-frameworks";
 
 export const GH_LEAN =
@@ -13,8 +17,8 @@ export const LENSES = [
     role: "Target",
     summary: "A preference or score on whole paths, not on a snapshot state.",
     quote:
-      "A utility or preference over a history represents delayed and path-dependent value directly. A pathwise safety predicate is different.",
-    quoteSource: "What Does Alignment Secure? (draft), §4.1",
+      "A utility or preference over h=(s₀,a₀,s₁,…) represents delayed and path-dependent value directly. A pathwise safety predicate is different.",
+    quoteSource: "Frames draft §4.1",
     lwTag: { label: "LessWrong tag: Decision theory", url: "https://www.lesswrong.com/w/decision-theory" },
     related: ["static-target-trap", "value-change-vs-corruption", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/christiano-lineage", "field-agendas/miri"],
@@ -29,9 +33,9 @@ Encoding a finite history into an augmented state is always available in princip
     role: "Target",
     summary: "An edge score summed along a walk: what was done, not only where you arrived.",
     quote:
-      "Discounted potential-based reward shaping preserves optimal policies under its stated assumptions; that invariance is not identity of edge values.",
-    quoteSource: "Ng, Harada, and Russell 1999, via the frames draft §4.1",
-    lwTag: { label: "LessWrong tag: Reward shaping", url: "https://www.lesswrong.com/w/reward-hacking" },
+      "Discounted potential-based reward shaping, F(s,a,s′)=γΦ(s′)−Φ(s), preserves optimal policies under its stated assumptions [Ng, Harada, and Russell 1999]; that invariance is not identity of edge values, trajectory returns, or every bounded-rational learning process.",
+    quoteSource: "Frames draft §4.1",
+    lwTag: { label: "LessWrong tag: Reward functions", url: "https://www.lesswrong.com/w/reward-functions" },
     related: ["subsumption-low-impact", "lenses/exact-potential", "lenses/cycle-residue", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell"],
     body: `Route value is a function of transitions. It is the parent of the exact-potential summand (endpoint-only) and the cycle residue (round trips matter).
@@ -45,8 +49,8 @@ A matched-endpoint pair — learning versus rewiring a judge to the same later v
     role: "Target",
     summary: "The part of an additive route score that depends only on endpoints.",
     quote:
-      "On its fixed graph with the stated reachability assumption, endpoint-only additive path value is the exact-potential special case.",
-    quoteSource: "Frames draft §4.1 (Hallgren process-alignment draft, unpublished)",
+      "If every state is reachable from a fixed start, path worth depends only on the final state exactly when r is an exact potential: each edge scores the utility of its target minus the utility of its source.",
+    quoteSource: "Frames relations note",
     lwTag: { label: "LessWrong tag: Utility functions", url: "https://www.lesswrong.com/w/utility-functions" },
     related: ["lenses/additive-route-value", "lenses/state-utility", "lenses/lenses-and-frameworks"],
     agendas: [],
@@ -78,12 +82,12 @@ It composes with correction as “route residue inside the region,” not as a s
     quote:
       "State value is adequate when the state carries all normatively relevant information. It is not adequate merely because an implementation calls its representation a state.",
     quoteSource: "Frames draft §4.1",
-    lwTag: { label: "LessWrong tag: Expected utility", url: "https://www.lesswrong.com/w/expected-utility-formalism" },
+    lwTag: { label: "LessWrong tag: Expected utility formalism", url: "https://www.lesswrong.com/w/expected-utility-formalism" },
     related: ["static-target-trap", "pointing-problem", "outer-alignment", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell", "field-agendas/miri", "field-agendas/openai-lab"],
     body: `This is the default RL and welfare object. Omohundro-style instrumental arguments live here.
 
-Fixed \(U\) is incompatible with correction only for updates that make the agent pick an outcome \(U\) ranks strictly lower — not for every change of \(U\). That is the proved red edge \`stateCorrectionIncompat\`, not “utility hates all revision.”`
+Fixed *U* is incompatible with correction only for updates that make the agent pick an outcome *U* ranks strictly lower — not for every change of *U*. That is the red edge \`stateCorrectionIncompat\`, not “utility hates all revision.” It holds by the choice of situation class; what correction endorses is not modeled.`
   },
   {
     nodeId: "dist",
@@ -94,7 +98,7 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     quote:
       "Expected value, CVaR, stochastic dominance, entropic risk, chance constraints, minimax, and regret can rank the same lotteries differently.",
     quoteSource: "Frames draft §4.2 (Bäuerle and Jaśkiewicz 2024)",
-    lwTag: { label: "LessWrong tag: Risk", url: "https://www.lesswrong.com/w/risks-from-ai" },
+    lwTag: { label: "LessWrong tag: Expected utility", url: "https://www.lesswrong.com/w/expected-utility" },
     related: ["lenses/state-utility", "evidence-and-uncertainty", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell"],
     body: `Distributional RL learns a random return and still leaves open which functional governs action. Projecting to a mean state score has no section: the tails and model ambiguity are gone.`
@@ -107,10 +111,10 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     summary: "A Pareto / multi-objective vector of task, cost, or stakeholder coordinates — not a CCI certificate.",
     quote: "A vector does not choose its scalarization, Pareto solution, bargaining rule, or lexicographic order.",
     quoteSource: "Frames draft §4.2 (Roijers et al. 2013)",
-    lwTag: { label: "LessWrong tag: Goodhart's law", url: "https://www.lesswrong.com/w/goodharts-law" },
-    related: ["lenses/weighted-scalar", "lenses/correction-certificate", "lenses/lenses-and-frameworks"],
+    lwTag: { label: "LessWrong tag: Goodhart's Law", url: "https://www.lesswrong.com/w/goodhart-s-law" },
+    related: ["lenses/weighted-scalar", "correction-channel-integrity", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/mai-cip-institutional-alignment"],
-    body: `Pareto optimality on task coordinates does not entail a correction floor. The red edge to the correction certificate is a non-entailment until weights are chosen (\`viaProjection\`). Do not call a stakeholder vector a CCI score.`
+    body: `Whether a Pareto objective clashes with a correction floor depends on the coordinates. With the floor coordinate inside the vector, Pareto never excludes the floor but does not require it (\`pareto_with_floor_coordinate_meets_floor\`, \`pareto_does_not_entail_floor\`). On task coordinates only, it excludes the floor wherever every admissible option is task-dominated (\`vectorCCIIncompat\`). Do not call a stakeholder vector a CCI score.`
   },
   {
     nodeId: "weighted_scalar",
@@ -121,10 +125,10 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     quote:
       "If a violation is non-compensatory, a sufficiently large but finite reward elsewhere must not purchase it.",
     quoteSource: "Frames draft §4.2",
-    lwTag: { label: "LessWrong tag: Goodhart's law", url: "https://www.lesswrong.com/w/goodharts-law" },
+    lwTag: { label: "LessWrong tag: Goodhart's Law", url: "https://www.lesswrong.com/w/goodhart-s-law" },
     related: ["lenses/criteria-vector", "lenses/non-compensatory-constraint", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/openai-lab", "field-agendas/anthropic-lab"],
-    body: `Lean’s \`no_finite_weights_represent_floor\` carries the deontic–, AU-floor–, and CCI–scalar red edges: for every strictly positive finite weighting there is a menu where every scalar-optimal choice violates the floor.`
+    body: `Lean’s \`no_finite_weights_represent_floor\`: for every strictly positive integer weighting there is a menu where every scalar-optimal choice violates the floor. The real-valued version is expected to follow by the same argument but is not yet proven. Pulled back along the floor-coordinate maps, it gives the deontic– and AU-floor–scalar red edges for every such weighting (\`deontic_no_finite_weights\`, \`nonobs_no_finite_weights\`).`
   },
   {
     nodeId: "lex",
@@ -152,7 +156,7 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     lwTag: { label: "LessWrong tag: Quantilization", url: "https://www.lesswrong.com/w/quantilization" },
     related: ["subsumption-quantilization", "lenses/state-utility", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/miri", "field-agendas/google-deepmind-safety"],
-    body: `Taylor (2016): the guarantee is relative to the base, the quantile, and the use pattern. One-shot bounds do not imply safety under repeated deployment. The orange edge to state utility is a **limit**: quantile → maximum recovers ordinary maximization.`
+    body: `Taylor (2016): the guarantee is relative to the base, the quantile, and the use pattern. One-shot bounds do not imply safety under repeated deployment. The orange edge to state utility is a **limit**: quantile → maximum recovers ordinary maximization. Lean (\`quantilizer_limit_is_argmax\`): once the quantile is no larger than a maximizer’s base mass, the support is exactly the argmax set; if the base puts no mass on any maximizer, it never is.`
   },
   {
     nodeId: "approval",
@@ -166,7 +170,7 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     lwTag: { label: "LessWrong tag: Approval-directed agents", url: "https://www.lesswrong.com/w/approval-directed-agents" },
     related: ["subsumption-debate", "lenses/correction-relation", "mb4-correction-legitimacy", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/christiano-lineage", "field-agendas/openai-lab", "field-agendas/arc-alignment-research-center"],
-    body: `Act-level approval can reject a rewiring action when the overseer sees provenance. It does not by itself preserve the future judge or the correction channel (Christiano 2018). On the graph it specializes one edge of route value and can compose as a partial monitor for a CCI certificate.`
+    body: `Act-level approval can reject a rewiring action when the overseer sees provenance. It does not by itself preserve the future judge or the correction channel (Christiano 2018). On the graph it specializes one edge of route value.`
   },
   {
     nodeId: "au_penalty",
@@ -219,7 +223,7 @@ Fixed \(U\) is incompatible with correction only for updates that make the agent
     quote:
       "Across the two versions, the proposal can instrumentally favor confirmation, caution about irreversible changes, and forms of corrigibility. … Human power therefore does not automatically imply legitimate correction.",
     quoteSource: "Frames draft §4.3 (Heitzig and Potham 2025/2026)",
-    lwTag: { label: "LessWrong tag: Empowerment", url: "https://www.lesswrong.com/w/empowerment" },
+    lwTag: { label: "LessWrong tag: Disempowerment", url: "https://www.lesswrong.com/w/disempowerment" },
     related: ["lenses/agent-empowerment", "lenses/correction-relation", "lenses/au-floor", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/clr-cooperation-conflict", "field-agendas/chai-russell"],
     body: `Heitzig and Potham give a parametrizable aggregate of modeled human goal-attainment. Adverse possibilities already recorded include belief manipulation and refusal of pause in some cases. On the correction-centered graph it composes as a positive direction inside an admissible region, not as TSA’s object.`
@@ -268,7 +272,7 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     lwTag: { label: "LessWrong tag: CEV", url: "https://www.lesswrong.com/w/coherent-extrapolated-volition" },
     related: ["specify-cev", "mb8-cev-process-convergence", "static-target-trap", "lenses/state-utility", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/miri"],
-    body: `CEV/CBV can be read as producing a specification or as valuing the procedure. Encoding “score only the output” drops revisability. Lean treats CEV as an \`AlignmentTarget\` instance; live \`MB8\` is retired from the certification path.`
+    body: `CEV/CBV can be read as producing a specification or as valuing the procedure. Encoding “score only the output” drops revisability. The orange limit edge reads a forced halt as scoring the output at the halt step: a well-defined state score only where the outputs converge (\`forced_halt_converges\`, \`forced_halt_depends_on_time\`). Lean treats CEV as an \`AlignmentTarget\` instance; live \`MB8\` is retired from the certification path.`
   },
   {
     nodeId: "deontic",
@@ -280,65 +284,9 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
       "These frames are not merely large rewards. A prohibition can remain binding no matter how much task performance is available elsewhere.",
     quoteSource: "Frames draft §4.7",
     lwTag: { label: "LessWrong tag: Deontology", url: "https://www.lesswrong.com/w/deontology" },
-    related: ["lenses/weighted-scalar", "lenses/correction-certificate", "specify-constitutional-ai", "lenses/lenses-and-frameworks"],
+    related: ["lenses/weighted-scalar", "correction-channel-integrity", "specify-constitutional-ai", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/anthropic-lab", "field-agendas/davidad-guaranteed-safe-ai-gsai"],
     body: `Constitutional text can be read as a hard constraint, a pairwise order, a lex priority, or a scalar. Only the first reading is this node. Exact-penalty theorems can restore equivalence for a particular program; they are not free (\`deonticScalarIncompat\`).`
-  },
-  {
-    nodeId: "coord_floor",
-    slug: "coordinate-floor",
-    title: "Coordinate floor gate",
-    role: "Constraint",
-    summary: "Componentwise thresholds θ on a vector — a gate, not a task objective.",
-    quote:
-      "Hard constraints remain distinct from finite penalties unless exact-penalty conditions are established.",
-    quoteSource: "Frames draft §4.2",
-    lwTag: { label: "LessWrong tag: Specification gaming", url: "https://www.lesswrong.com/w/specification-gaming" },
-    related: ["lenses/correction-certificate", "certification-under-manipulation", "lenses/lenses-and-frameworks"],
-    agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai"],
-    body: `The certification-geometry node: a vector of floors. CCI certificates specialize this pattern onto correction coordinates. Passing the gate is not a weighted task score.`
-  },
-  {
-    nodeId: "cci_cert",
-    slug: "correction-certificate",
-    title: "Correction certificate",
-    role: "Constraint",
-    summary: "Vector CCI versus θ_corr on the correction relation — not a task criteria vector.",
-    quote:
-      "This turns 'is the system corrigible?' into a more concrete audit question: which handles exist, who controls them, what do they reach, how fast do they act, and what evidence shows the system changed rather than performed agreement?",
-    quoteSource: "Correction-channel integrity concept card",
-    lwTag: { label: "LessWrong tag: Corrigibility", url: "https://www.lesswrong.com/w/corrigibility" },
-    related: ["correction-channel-integrity", "lenses/coordinate-floor", "lenses/criteria-vector", "mb11-deployment-safety", "lenses/lenses-and-frameworks"],
-    agendas: ["field-agendas/christiano-lineage"],
-    body: `Assessment **on** the correction relation under a fixed protocol. Proof, control, and act-approval can compose as coordinate evidence. A failed coordinate versus a task trade-off is the same floor-vs-scalar theorem as the deontic and AU-floor edges.`
-  },
-  {
-    nodeId: "risk_leaf",
-    slug: "scalar-risk-gap",
-    title: "Scalar risk-gap leaf",
-    role: "Protocol",
-    summary: "Arithmetic warrant after a vector gate: control cost ≤ CCI + δ.",
-    quote:
-      "A proof certificate, monitor, audit, or debate result is evidence about a separately defined property.",
-    quoteSource: "Frames draft §3.3",
-    lwTag: { label: "LessWrong tag: Safety cases", url: "https://www.lesswrong.com/w/ai-safety-cases" },
-    related: ["mb11-deployment-safety", "lenses/correction-certificate", "lenses/safety-case", "lenses/lenses-and-frameworks"],
-    agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai"],
-    body: `This is a warrant leaf, not a target. It is well-typed only after the vector gate has a meaning. Weak bounds should be reported at face value — the Lean worked instance already does that for a loose δ.`
-  },
-  {
-    nodeId: "preserve_tuple",
-    slug: "deployment-preserve-tuple",
-    title: "Deployment preserve tuple",
-    role: "Constraint",
-    summary: "Named coordinates that supply the set K for viability and selection — not a fifth lifecycle stage.",
-    quote:
-      "Preserve is not a stage. It is the property that repeating the cycle stays in D_joint, or converges back to it.",
-    quoteSource: "TSA 2.0 embedded-construction plan",
-    lwTag: { label: "LessWrong tag: Tiling agents", url: "https://www.lesswrong.com/w/tiling-agents" },
-    related: ["successor-stability", "mb5-successor-ontology-shift", "mb6-selection-and-basin-stability", "lenses/existential-viability", "lenses/lenses-and-frameworks"],
-    agendas: ["field-agendas/miri"],
-    body: `The tuple is a constraint that *feeds* guarantees. Unsigned “the cut came back” is the lock-in illustration in \`FrameLockIn\`: robust invariance cannot tell a good basin from a captured one.`
   },
   {
     nodeId: "viable",
@@ -349,10 +297,10 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     quote:
       "For a constraint set K, the viability kernel contains initial states from which at least one admissible continuation remains in K.",
     quoteSource: "Frames draft §4.6 (Aubin 1990; Aubin, Bayen, and Saint-Pierre 2011)",
-    lwTag: { label: "LessWrong tag: Control theory", url: "https://www.lesswrong.com/w/embedded-agency" },
+    lwTag: { label: "LessWrong tag: Control theory", url: "https://www.lesswrong.com/w/control-theory" },
     related: ["deployment-gate", "lenses/robust-invariance", "lenses/correction-relation", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai"],
-    body: `Viability is content-neutral. It can preserve a correction-supporting region or a captured equilibrium. TSA uses it as the **shape** of the guarantee, not as a second object: K is supplied by the correction reading (and, when certified, by the preserve tuple).`
+    body: `Viability is content-neutral. It can preserve a correction-supporting region or a captured equilibrium. TSA uses it as the **shape** of the guarantee, not as a second object: K is supplied by the correction reading.`
   },
   {
     nodeId: "robust",
@@ -363,10 +311,10 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     quote:
       "Compare ∃π ∀t: X_t^π ∈ K with ∀d∈D ∀t: X_t^{π,d} ∈ K. They support different deployment conclusions.",
     quoteSource: "Frames draft §3.2",
-    lwTag: { label: "LessWrong tag: Robustness", url: "https://www.lesswrong.com/w/distributional-shift" },
+    lwTag: { label: "LessWrong tag: AI robustness", url: "https://www.lesswrong.com/w/ai-robustness" },
     related: ["lenses/existential-viability", "lenses/correction-relation", "certification-under-manipulation", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai"],
-    body: `Purple edge: strengthens ∃ control to ∀ disturbance. Red edge with correction: if correction inputs sit in the disturbance class and the target lies outside K, both cannot hold (\`robustCorrectionIncompat\`). Exempting corrections from the class is the boundary where both can hold.`
+    body: `Purple edge: strengthens ∃ control to ∀ disturbance. Lean (\`robust_strengthens_viable\`, \`viable_not_robust\`): a robust control is viable when the nominal disturbance is in the class, and not conversely. Red edge with correction: if correction inputs sit in the disturbance class and the target lies outside K, both cannot hold (\`robustCorrectionIncompat\`). Exempting corrections from the class is the boundary where both can hold.`
   },
   {
     nodeId: "selection",
@@ -377,7 +325,7 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     quote:
       "A locally aligned model can sit inside a composite that selects for persuasion or reckless deployment. A correction-supporting design can disappear if its environment selects against it.",
     quoteSource: "Frames draft §4.8",
-    lwTag: { label: "LessWrong tag: Moloch", url: "https://www.lesswrong.com/w/inadequate-equilibria" },
+    lwTag: { label: "LessWrong tag: Moloch", url: "https://www.lesswrong.com/w/moloch" },
     related: ["mb6-selection-and-basin-stability", "attractor-control", "subsumption-selection-basin", "lenses/existential-viability", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/mai-cip-institutional-alignment", "field-agendas/clr-cooperation-conflict"],
     body: `Composes when the selector is inside the modeled dynamics. TSA’s deployed-composite warning belongs here: model-level success does not imply process-level persistence.`
@@ -391,10 +339,10 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     quote:
       "The verifier can produce an auditable certificate that the system satisfies the specification relative to the model. It does not choose the specification, establish world-model coverage, or turn proof generation into a target object.",
     quoteSource: "Frames draft §4.9 (Dalrymple et al. 2024, GSAI)",
-    lwTag: { label: "LessWrong tag: Guaranteed Safe AI", url: "https://www.lesswrong.com/w/provably-beneficial-ai" },
+    lwTag: { label: "LessWrong tag: Guaranteed Safe AI", url: "https://www.lesswrong.com/w/guaranteed-safe-ai" },
     related: ["specify-gsai", "lenses/control-protocol", "lenses/safety-case", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai", "field-agendas/safeguarded-ai-aria-zeroth-heron"],
-    body: `Proof-carrying code already splits policy, artifact, proof, and checker. Formal proof does not choose what should be proved. On the graph this is a warrant leaf into the safety case and, in variant b, coordinate evidence for the CCI certificate.`
+    body: `Proof-carrying code already splits policy, artifact, proof, and checker. Formal proof does not choose what should be proved. On the graph this is a warrant leaf into the safety case.`
   },
   {
     nodeId: "control",
@@ -408,7 +356,7 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     lwTag: { label: "LessWrong tag: AI control", url: "https://www.lesswrong.com/w/ai-control" },
     related: ["subsumption-deployment-gate", "mb7-hidden-capability-and-access", "lenses/safety-case", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/redwood-research", "field-agendas/google-deepmind-safety"],
-    body: `A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case and as monitor evidence for a CCI certificate. It does not replace the correction relation.`
+    body: `A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case. It does not replace the correction relation.`
   },
   {
     nodeId: "safecase",
@@ -422,7 +370,7 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     lwTag: { label: "LessWrong tag: Safety cases", url: "https://www.lesswrong.com/w/ai-safety-cases" },
     related: ["mb11-deployment-safety", "what-not-claiming", "evidence-and-uncertainty", "lenses/model-relative-proof", "lenses/control-protocol", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai", "field-agendas/redwood-research"],
-    body: `The warrant-bundle path is \`proof | control | cci_cert | correction → safecase\`. A missing export is a missing slot, not a missing alignment frame. Lean checks conditional composition when bridges hold; it does not discharge \`Safe\` for a real system.`
+    body: `The warrant-bundle path is \`proof | control | correction → safecase\`. A missing export is a missing slot, not a missing alignment frame. Lean checks conditional composition when bridges hold; it does not discharge \`Safe\` for a real system.`
   }
 ];
 
@@ -438,37 +386,58 @@ export function lensPublicPath(slug) {
   return `/cards/lens/${slug}/`;
 }
 
+/** Edge key → Lean declaration that proves it (red edges). Line anchors are
+ * resolved from the source at sync time, so they follow edits to the file. */
 const INCOMPAT = {
-  "state->correction": `${GH_LEAN}/FrameIncompatibility.lean#L268`,
-  "state->cycle": `${GH_LEAN}/FrameIncompatibility.lean#L98`,
-  "deontic->weighted_scalar": `${GH_LEAN}/FrameIncompatibility.lean#L192`,
-  "au_floor->weighted_scalar": `${GH_LEAN}/FrameIncompatibility.lean#L207`,
-  "ai_power->human_power": `${GH_LEAN}/FrameIncompatibility.lean#L288`,
-  "robust->correction": `${GH_LEAN}/FrameIncompatibility.lean#L357`,
-  "cci_cert->weighted_scalar": `${GH_LEAN}/FrameIncompatibility.lean#L220`,
-  "criteria_vector->cci_cert": `${GH_LEAN}/FrameIncompatibility.lean#L243`
+  "state->correction": ["FrameIncompatibility", "stateCorrectionIncompat"],
+  "state->cycle": ["FrameIncompatibility", "stateCycleIncompat"],
+  "deontic->weighted_scalar": ["FrameIncompatibility", "deonticScalarIncompat"],
+  "au_floor->weighted_scalar": ["FrameIncompatibility", "nonobsScalarIncompat"],
+  "ai_power->human_power": ["FrameIncompatibility", "aiHumanPowerIncompat"],
+  "robust->correction": ["FrameIncompatibility", "robustCorrectionIncompat"]
 };
+
+/** Limit and strengthens edges → main theorem in FrameLimits. */
+const LIMITS = {
+  "viable->robust": "robust_strengthens_viable",
+  "quant->state": "quantilizer_limit_is_argmax",
+  "cev->state": "forced_halt_converges"
+};
+
+const LEAN_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../formal/AlignmentProofSpine");
+const leanSourceCache = new Map();
+
+/** GitHub link to `decl` in `module`, anchored at its declaration line. */
+export function leanDeclHref(module, decl) {
+  if (!leanSourceCache.has(module)) {
+    leanSourceCache.set(module, readFileSync(path.join(LEAN_DIR, `${module}.lean`), "utf8").split("\n"));
+  }
+  const lines = leanSourceCache.get(module);
+  const re = new RegExp(`^(?:@\\[[^\\]]*\\]\\s*)?(?:def|theorem|abbrev|structure|inductive)\\s+${decl}\\b`);
+  const idx = lines.findIndex((line) => re.test(line));
+  if (idx < 0) throw new Error(`lenses-data: ${decl} not found in ${module}.lean`);
+  return `${GH_LEAN}/${module}.lean#L${idx + 1}`;
+}
 
 /**
  * @param {{ from: string, to: string, label: string, color?: string, dashed?: boolean }} edge
  */
 export function leanHrefForEdge(edge) {
   if ((edge.style || "").includes("invis")) return null;
-  const label = (edge.label || "").toLowerCase();
-  if (!label.trim()) return null;
+  const label = (edge.label || "").toLowerCase().trim();
+  if (!label) return null;
+  const verb = label.split(/\s+/)[0];
   const key = `${edge.from}->${edge.to}`;
-  if (INCOMPAT[key]) return INCOMPAT[key];
-  if (label.includes("incompatible")) return `${GH_LEAN}/FrameIncompatibility.lean`;
-  if (label.includes("composes")) return `${GH_LEAN}/FrameComposePaths.lean`;
-  if (label.includes("isomorphic") || label.includes("summand")) return `${GH_LEAN}/FrameRelations.lean#L149`;
-  if (label.includes("strengthens")) return `${GH_LEAN}/FrameIncompatibility.lean#L310`;
-  if (
-    label.includes("specializes") ||
-    label.includes("projects") ||
-    label.includes("encodes") ||
-    label.includes("limit")
-  ) {
+  if (verb === "incompatible") {
+    return INCOMPAT[key] ? leanDeclHref(...INCOMPAT[key]) : `${GH_LEAN}/FrameIncompatibility.lean`;
+  }
+  if (verb === "composes") return `${GH_LEAN}/FrameComposePaths.lean`;
+  if (verb === "isomorphic") return leanDeclHref("FrameIncompatibility", "gradient_closed_walk_zero");
+  if ((verb === "limit" || verb === "strengthens") && LIMITS[key]) {
+    return leanDeclHref("FrameLimits", LIMITS[key]);
+  }
+  if (verb === "specializes" || verb === "projects" || verb === "encodes") {
     return `${GH_LEAN}/FrameMorphisms.lean`;
   }
-  return `${GH_LEAN}/FrameRelations.lean`;
+  return null;
 }

@@ -10,15 +10,15 @@ related:
   - "lenses/lenses-and-frameworks"
   - "field-agendas/chai-russell"
 external:
-  - label: "LessWrong tag: Reward shaping"
-    url: "https://www.lesswrong.com/w/reward-hacking"
+  - label: "LessWrong tag: Reward functions"
+    url: "https://www.lesswrong.com/w/reward-functions"
 ---
 
 **Role.** Target. Graph node `route`.
 
-> Discounted potential-based reward shaping preserves optimal policies under its stated assumptions; that invariance is not identity of edge values.
+> Discounted potential-based reward shaping, F(s,a,s′)=γΦ(s′)−Φ(s), preserves optimal policies under its stated assumptions [Ng, Harada, and Russell 1999]; that invariance is not identity of edge values, trajectory returns, or every bounded-rational learning process.
 >
-> — Ng, Harada, and Russell 1999, via the frames draft §4.1
+> — Frames draft §4.1
 
 Route value is a function of transitions. It is the parent of the exact-potential summand (endpoint-only) and the cycle residue (round trips matter).
 

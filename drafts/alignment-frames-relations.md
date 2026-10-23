@@ -196,15 +196,15 @@ Module: [`formal/AlignmentProofSpine/FrameRelations.lean`](../formal/AlignmentPr
 
 | Mechanism | What Lean defines | What variant **c** gets |
 | --- | --- | --- |
-| **Summand** | `summandPair` on `FrameNode` (inventory nodes for `route` / `exact` / `cycle`). Mathematical witness: `exact_potential_cycle_sum_zero` on a 3-cycle edge score (supports the `state`–`cycle` red edge). Full Helmholtz decomposition on general digraphs is not in this file yet. | The four bold summand edges only. |
-| **Incompatible** | `incompatWitnesses` registry; every entry is backed by an `Incompatibility` instance in `FrameIncompatibility.lean` (`registry_matches_proofs`). | All red edges in **c**; a new red edge needs a new instance. |
-| **Compose** | `ComposeSlot`: one constructor per **semantic** compose rule (landscape chain, admissible region, certificate geometry, guarantee stack, warrant leaves). `CorrectionCentered.compose` is `true` iff some slot matches. `roleCompose_necessary_slot` shows each slot passes the role gate. | Exactly the green edges in **c** — **not** the full role-compatible compose-closure. |
+| **Summand** | `summandPair` on `FrameNode` (inventory nodes for `route` / `exact` / `cycle`). Mathematical witness for one direction: `gradient_closed_walk_zero` (an exact part sums to zero on every closed walk; supports the `state`–`cycle` red edge). Full Helmholtz decomposition on general digraphs is not in Lean yet. | The four bold summand edges only. |
+| **Incompatible** | `incompatWitnesses` registry; `provedIncompat` pairs every entry with its `Incompatibility` instance in `FrameIncompatibility.lean` (`registry_matches_proofs`). | All red edges in **c**; a new red edge needs a new instance. |
+| **Compose** | `ComposeSlot`: one constructor per **semantic** compose rule (landscape chain, admissible region, certificate geometry, guarantee stack, warrant leaves). `CorrectionCentered.compose` is `true` iff some slot matches. The role gate `RoleCompose` currently admits every role pair (`roleCompose_trivial`), so it does not constrain compose. | Exactly the green edges in **c** — **not** the full role-compatible compose-closure. |
 
-**Check.** `variantCEdges` lists every edge in variant **c**; `derivedEdgeKind` classifies pairs; `variantC_all_derived` (`native_decide`) shows the list agrees with the classifier.
+**Check.** `variantCEdges` is built from the same three tables that `derivedEdgeKind` reads, so `variantC_all_derived` only shows the tables do not shadow each other under the classifier's priority; it derives nothing. Agreement between the DOT files and the Lean registries (compose, red edges, morphisms) is checked by `scripts/check_frame_graph.py` (part of `make check`).
 
 **Why not a full commuting diagram yet**
 
-1. **Compose is underdetermined by `(role, object-kind, assessment-kind)` alone.** Many pairs pass `RoleCompose` but are not in **c** (e.g. a power-centered reading would swap green arrows). Those readings should be alternate `ComposeSlot` families or parameters, not extra DOT ink without a Lean name.
+1. **Compose is underdetermined by `(role, object-kind, assessment-kind)` alone.** `RoleCompose` admits every pair, and most pairs are not in **c** (e.g. a power-centered reading would swap green arrows). Those readings should be alternate `ComposeSlot` families or parameters, not extra DOT ink without a Lean name.
 
 2. **Specialize / project / encode** (graphs **a** / **b**) need **maps on carriers**, not just interface tags: e.g. `StateUtility → RouteValue` is a functor with a named ambiguity (additive constant; route bits in state). That is the **`FrameMorphisms`** registry (`MorphismSpec`, `mapId`); commuting squares on acceptance predicates are still mostly informal.
 
@@ -212,7 +212,7 @@ Module: [`formal/AlignmentProofSpine/FrameRelations.lean`](../formal/AlignmentPr
 
 4. **Summand** edges are **isomorphisms of assessment on a shared route carrier**; proving the direct-sum theorem for all finite graphs belongs in Mathlib-style graph cohomology, not in the inventory typing.
 
-**Next steps (if this becomes load-bearing).** Generate DOT from `variantCEdges`; link `cci_cert` to `Correction.CCICertificate`; prove or import general `route = exact ⊕ cycle` on `Digraph`; add `limit` / `strengthen` to `MorphismSpec` or a sibling registry.
+**Next steps (if this becomes load-bearing).** Give `RoleCompose` a real exclusion or drop it; link `cci_cert` to `Correction.CCICertificate`; prove or import general `route = exact ⊕ cycle` on `Digraph`. Limit and strengthens edges are in `FrameLimits` (below).
 
 ### Compose paths and slots (Lean)
 
@@ -239,12 +239,12 @@ Module: [`FrameMorphisms.lean`](../formal/AlignmentProofSpine/FrameMorphisms.lea
 | --- | --- | --- | --- | --- |
 | `exact → route` | specialize | exact summand → edge reward | `subspace.inclusion.exactPotential` | — |
 | `approval → route` | specialize | single act + judge → edge reward | `restrict.oneEdgeOneJudge` | — |
-| `weighted_scalar → criteria_vector` | specialize | criteria vector → criteria vector | `scalarize.fixedWeights` | weights fixed |
+| `weighted_scalar → criteria_vector` | specialize | criteria vector → criteria vector | `restrict.fixedWeightOrder` | weights fixed |
 | `lex → criteria_vector` | specialize | lex priority → criteria vector | `prioritize.lexOrder` | strict priority |
 | `corrig → correction` | specialize | handles → correction relation | `restrict.oneHandleNamedOperators` | named operators |
 | `state → route` | specialize | bare state → edge reward | `induceGradient.exactPotential` | **additive constant on U** |
 | `dist → state` | project | lottery → bare state | `expectationFunctional` | **no section** |
-| `criteria_vector → weighted_scalar` | project | criteria vector → criteria vector | `forget.chosenWeights` | **no section** |
+| `criteria_vector → weighted_scalar` | project | criteria vector → criteria vector | `scalarize.chosenWeights` | **no section** |
 | `correction → corrig` | project | correction relation → handles | `forget.shutdownBit` | **no section** |
 | `route → cycle` | project | edge reward → cycle summand | `longRunAverage.retainCycleSummand` | — |
 | `hist → state` | encode | path → augmented state (history) | `appendHistoryToState` | **observability** |
@@ -255,7 +255,7 @@ Module: [`FrameMorphisms.lean`](../formal/AlignmentProofSpine/FrameMorphisms.lea
 | `preserve_tuple → cci_cert` (**b**) | project | deployment tuple → CCI sub-vector | `project.deploymentSubVector` | — |
 | `cci_cert → risk_leaf` (**b**) | project | CCI vector (passed) → scalar gap | `scalarRiskGapAfterVectorGate` | — |
 
-Informal domain/codomain strings live in `mapSignatures` (same module). Checks: `graphA_morphisms_typed`, `graphB_morphisms_typed`.
+Informal domain/codomain strings live in `mapSignatures` (same module). Checks: `graphA_morphisms_typed`, `graphB_morphisms_typed` (registry agrees with itself), `morphism_src_carriers` / `morphism_tgt_carriers` (declared carriers match `carrierOf`; encode targets are augmented states), `morphism_signatures_complete`.
 
 ### Incompatibilities (Lean)
 
@@ -275,7 +275,7 @@ Per-frame non-vacuity inside `H` was dropped from the template: a fixed-utility 
 | deontic–weighted_scalar | floor vs trade-off | menu of (floor, gain) via `deonticToOpt` | a banned act's gain exceeds its floor loss at the exchange rate | gain too small: scalar picks the permitted act |
 | au_floor–weighted_scalar | floor vs trade-off | same via `nonobsToOpt` (on minus off value of one goal) | as above | as above |
 | cci_cert–weighted_scalar | floor vs trade-off | same via `cciToOpt` (CCI minus threshold) | as above | as above |
-| criteria_vector–cci_cert | via projection | same, after `forget.chosenWeights` | as above | as above |
+| criteria_vector–cci_cert | Pareto excludes floor | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only | every option meeting the CCI threshold is task-dominated | an admissible option that no option task-dominates: both accept |
 | state–correction | evaluator vs update | menu with (U, U') values, endorsed flag | update makes the agent pick an outcome U ranks strictly lower | update that keeps a U-optimal choice: both accept |
 | ai_power–human_power | shared resource | option counts before/after | total options do not grow | pool grows: both gain |
 | robust–correction | quantifier conflict | dynamics with adversarial and correction inputs, `K`, correction target | correction inputs are in the robustness class and the target lies outside `K` | corrections exempt from the robustness class: both hold |
@@ -283,14 +283,25 @@ Per-frame non-vacuity inside `H` was dropped from the template: a fixed-utility 
 General results beyond the instances:
 
 - `gradient_closed_walk_zero`: on any vertex type, a reward induced by a state utility sums to zero on every closed walk.
-- `no_finite_weights_represent_floor`: for every strictly positive finite weighting there is a menu with an admissible option on which every scalar-optimal choice violates the floor. This one theorem carries four red edges once the ban, the non-obstruction floor, and the CCI threshold are mapped to floor coordinates.
-- `pareto_does_not_entail_floor`: Pareto optimality alone is a **non-entailment**, not a disjointness (a Pareto-optimal choice can violate the floor while an admissible one exists). The criteria_vector–cci_cert edge is red only after scalarization, which is why it is typed `viaProjection`.
+- `no_finite_weights_represent_floor`: for every strictly positive finite weighting there is a menu with an admissible option on which every scalar-optimal choice violates the floor. `no_finite_weights_pullback` transports it along the floor-coordinate maps, giving `deontic_no_finite_weights`, `nonobs_no_finite_weights`, and `cci_no_finite_weights` for every positive weighting. Weights are integers. The real-weight version is expected to follow by the same argument (raise the gain past the exchange rate) but is not yet proven.
+- criteria_vector–cci_cert depends on whether the CCI coordinate is in the vector. If it is, Pareto optimality never excludes the floor (`pareto_with_floor_coordinate_meets_floor`: whenever an admissible option exists, some Pareto-optimal option meets the floor) but does not require it either (`pareto_does_not_entail_floor`): compatible, not entailing. If the vector holds task coordinates only, as the lens card defines it, the frames conflict wherever every admissible option is task-dominated (`vectorCCIIncompat`, kind `paretoExcludesFloor`). That is the red edge.
 
 Two edges are weaker than their labels suggested:
 
 - **state–correction** previously read "fixed U resists every change of U". Only updates that lower the chosen outcome by U's own ranking are rejected; the DOT labels now say so.
+- **state–correction**'s disjointness does not use `A₂`: `H` (`LowersChosenOutcome`) already rules out `A₁` (`FixedUAccepts`), and `endorsed` is a free flag. The edge holds by the choice of `H`; the correction frame's acceptance is not modeled.
 - **robust–correction** first read "if every invariant state is captured". That version only constrains the choice of `K`, so the frames themselves never clash. The edge is now the quantifier conflict above. `robust_with_correction_iff_closed` shows that counting a correction as a disturbance is the same as requiring `K` to be closed under it, and `robust_correction_target_meets_K` shows such a correction can only aim at targets that meet `K`. The captured-set version is kept in [`FrameLockIn.lean`](../formal/AlignmentProofSpine/FrameLockIn.lean) as an illustration: `robust_invariance_sign_blind` exhibits a good set and a captured set that robust invariance cannot tell apart.
 
-Checks: `registry_matches_proofs` (each registry entry has a proof), and `#print axioms` on every instance shows only `propext`, `Quot.sound`, `Classical.choice` (no `sorry`, no `native_decide`, no `MB*`).
+Checks: `registry_matches_proofs` (each registry entry is paired with its instance in `provedIncompat`), and `#print axioms` on every instance shows only `propext`, `Quot.sound`, `Classical.choice` (no `sorry`, no `native_decide`, no `MB*`). The Frame modules no longer use `native_decide` anywhere.
 
-**How far this gets you.** Paths + slots make **c** compose edges a **partitioned hypergraph** (parallel tracks, shared hubs). Morphisms make **a**/**b** edges **typed forgetful/representation maps** with named failure modes — enough to state commuting squares (“after projecting weights, optimizing scalar vs vector agrees when …”) once you instantiate acceptance predicates on carriers. Still missing: actual `def mapId` functions, `limit`/`strengthen` registry, and proofs that composition of morphisms matches slot order at hubs.
+**How far this gets you.** Paths + slots make **c** compose edges a **partitioned hypergraph** (parallel tracks, shared hubs). Morphisms make **a**/**b** edges **typed forgetful/representation maps** with named failure modes — enough to state commuting squares (“after projecting weights, optimizing scalar vs vector agrees when …”) once you instantiate acceptance predicates on carriers. Still missing: actual `def mapId` functions and proofs that composition of morphisms matches slot order at hubs.
+
+### Limits and strengthening (Lean)
+
+Module: [`FrameLimits.lean`](../formal/AlignmentProofSpine/FrameLimits.lean); registry `limitEdges`, checked against graphs **a**/**b** by `scripts/check_frame_graph.py`.
+
+| DOT edge | Kind | Lean | Scope |
+| --- | --- | --- | --- |
+| `viable → robust` | strengthens | `robust_strengthens_viable`, `robust_trajectory_stays`, `viable_not_robust` | one-step invariance under a feedback control; robust implies viable when the nominal disturbance is in the class; strict |
+| `quant → state` | limit | `quantilizer_limit_is_argmax`, `quantilizer_never_argmax_without_base_mass` | finite actions, natural-number base weights; once `0 < q ≤` base mass of a maximizer, the support is exactly the argmax set; with zero base mass on every maximizer it never is |
+| `cev → state` | limit | `forced_halt_converges`, `forced_halt_depends_on_time` | one reading of "forced halt": halting at step `n` and scoring the output is a state score; it is a limit only where the outputs converge, otherwise the halt time decides the score arbitrarily late |

@@ -32,15 +32,19 @@ function edgeTitleKey(rawTitle) {
 
 /**
  * Wrap Graphviz edge groups so labels (and strokes) can link out.
- * Titles look like `src->tgt` or `src--tgt` (undirected).
+ * Titles look like `src->tgt` or `src--tgt` (undirected). A map value may be an
+ * array: parallel edges with the same title then take hrefs in DOT order.
  */
 export function injectEdgeLinks(svg, hrefMap) {
   if (!hrefMap || Object.keys(hrefMap).length === 0) return svg;
+  const seen = {};
   return svg.replace(
     /<g id="(edge\d+)" class="edge">\s*<title>([^<]+)<\/title>([\s\S]*?)<\/g>/g,
     (match, gid, rawTitle, body) => {
       const key = edgeTitleKey(rawTitle);
-      const href = hrefMap[key] || hrefMap[rawTitle.trim()];
+      const entry = hrefMap[key] || hrefMap[rawTitle.trim()];
+      const nth = (seen[key] = (seen[key] ?? -1) + 1);
+      const href = Array.isArray(entry) ? entry[nth] : entry;
       if (!href) return match;
       return `<a xlink:href="${href}" class="lean-graph-edge" target="_blank" rel="noopener noreferrer"><g id="${gid}" class="edge"><title>${rawTitle}</title>${body}</g></a>`;
     }

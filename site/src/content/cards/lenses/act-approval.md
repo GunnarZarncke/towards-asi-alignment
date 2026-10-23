@@ -22,4 +22,4 @@ external:
 >
 > — Frames draft §4.4 (Christiano 2015)
 
-Act-level approval can reject a rewiring action when the overseer sees provenance. It does not by itself preserve the future judge or the correction channel (Christiano 2018). On the graph it specializes one edge of route value and can compose as a partial monitor for a CCI certificate.
+Act-level approval can reject a rewiring action when the overseer sees provenance. It does not by itself preserve the future judge or the correction channel (Christiano 2018). On the graph it specializes one edge of route value.

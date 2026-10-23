@@ -10,8 +10,8 @@ related:
   - "lenses/lenses-and-frameworks"
   - "field-agendas/davidad-guaranteed-safe-ai-gsai"
 external:
-  - label: "LessWrong tag: Robustness"
-    url: "https://www.lesswrong.com/w/distributional-shift"
+  - label: "LessWrong tag: AI robustness"
+    url: "https://www.lesswrong.com/w/ai-robustness"
 ---
 
 **Role.** Guarantee. Graph node `robust`.
@@ -20,4 +20,4 @@ external:
 >
 > — Frames draft §3.2
 
-Purple edge: strengthens ∃ control to ∀ disturbance. Red edge with correction: if correction inputs sit in the disturbance class and the target lies outside K, both cannot hold (`robustCorrectionIncompat`). Exempting corrections from the class is the boundary where both can hold.
+Purple edge: strengthens ∃ control to ∀ disturbance. Lean (`robust_strengthens_viable`, `viable_not_robust`): a robust control is viable when the nominal disturbance is in the class, and not conversely. Red edge with correction: if correction inputs sit in the disturbance class and the target lies outside K, both cannot hold (`robustCorrectionIncompat`). Exempting corrections from the class is the boundary where both can hold.

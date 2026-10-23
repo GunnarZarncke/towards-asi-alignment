@@ -10,8 +10,8 @@ related:
   - "field-agendas/openai-lab"
   - "field-agendas/anthropic-lab"
 external:
-  - label: "LessWrong tag: Goodhart's law"
-    url: "https://www.lesswrong.com/w/goodharts-law"
+  - label: "LessWrong tag: Goodhart's Law"
+    url: "https://www.lesswrong.com/w/goodhart-s-law"
 ---
 
 **Role.** Target. Graph node `weighted_scalar`.
@@ -20,4 +20,4 @@ external:
 >
 > — Frames draft §4.2
 
-Lean’s `no_finite_weights_represent_floor` carries the deontic–, AU-floor–, and CCI–scalar red edges: for every strictly positive finite weighting there is a menu where every scalar-optimal choice violates the floor.
+Lean’s `no_finite_weights_represent_floor`: for every strictly positive integer weighting there is a menu where every scalar-optimal choice violates the floor. The real-valued version is expected to follow by the same argument but is not yet proven. Pulled back along the floor-coordinate maps, it gives the deontic– and AU-floor–scalar red edges for every such weighting (`deontic_no_finite_weights`, `nonobs_no_finite_weights`).

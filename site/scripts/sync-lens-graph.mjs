@@ -23,14 +23,14 @@ function nodeHrefMap(nodes) {
   return hrefMap;
 }
 
+/** Per-title href arrays in DOT order, so parallel edges (e.g. `cev->state`
+ * encode and limit) keep their own links. */
 function edgeHrefMap(edges) {
   const hrefMap = {};
   for (const edge of edges) {
     if ((edge.style || "").includes("invis")) continue;
-    const href = leanHrefForEdge(edge);
-    if (!href) continue;
-    hrefMap[`${edge.from}->${edge.to}`] = href;
-    hrefMap[`${edge.from}--${edge.to}`] = href;
+    const key = `${edge.from}->${edge.to}`;
+    (hrefMap[key] ??= []).push(leanHrefForEdge(edge));
   }
   return hrefMap;
 }

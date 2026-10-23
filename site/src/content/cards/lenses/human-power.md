@@ -11,8 +11,8 @@ related:
   - "field-agendas/clr-cooperation-conflict"
   - "field-agendas/chai-russell"
 external:
-  - label: "LessWrong tag: Empowerment"
-    url: "https://www.lesswrong.com/w/empowerment"
+  - label: "LessWrong tag: Disempowerment"
+    url: "https://www.lesswrong.com/w/disempowerment"
 ---
 
 **Role.** Target. Graph node `human_power`.

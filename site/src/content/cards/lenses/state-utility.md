@@ -12,7 +12,7 @@ related:
   - "field-agendas/miri"
   - "field-agendas/openai-lab"
 external:
-  - label: "LessWrong tag: Expected utility"
+  - label: "LessWrong tag: Expected utility formalism"
     url: "https://www.lesswrong.com/w/expected-utility-formalism"
 ---
 
@@ -24,4 +24,4 @@ external:
 
 This is the default RL and welfare object. Omohundro-style instrumental arguments live here.
 
-Fixed (U) is incompatible with correction only for updates that make the agent pick an outcome (U) ranks strictly lower — not for every change of (U). That is the proved red edge `stateCorrectionIncompat`, not “utility hates all revision.”
+Fixed *U* is incompatible with correction only for updates that make the agent pick an outcome *U* ranks strictly lower — not for every change of *U*. That is the red edge `stateCorrectionIncompat`, not “utility hates all revision.” It holds by the choice of situation class; what correction endorses is not modeled.

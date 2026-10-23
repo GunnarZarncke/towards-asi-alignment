@@ -12,14 +12,14 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 <section id="lens-map" class="bridge-graph-section readable">
   <h2>Frame map</h2>
   <p class="bridge-graph-lede">
-    Default frame map: nodes are lenses; edge labels open the Lean classifier or incompatibility proof on GitHub.
+    Default frame map: nodes are lenses; edge labels open the Lean proof or registry entry on GitHub where one exists.
   </p>
   <FieldBridgeGraph
     title="Alignment frames"
     svgFile="field-graphs/alignment-frames-relations.svg"
     dotFile="field-graphs/alignment-frames-relations.dot"
     dotSourceUrl="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.dot"
-    hint="Click a node for its lens card. Click an edge label for the Lean module on GitHub that classifies or proves that relation. Green: compose (not imply). Red: incompatible in a named class."
+    hint="Click a node for its lens card. Click an edge label for its Lean proof or registry entry on GitHub. Green: compose (not imply). Red: incompatible in a named class."
   />
   <p class="side-panel-meta">
     Analysis: <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.md">relations note</a>

@@ -12,7 +12,7 @@ related:
   - "field-agendas/safeguarded-ai-aria-zeroth-heron"
 external:
   - label: "LessWrong tag: Guaranteed Safe AI"
-    url: "https://www.lesswrong.com/w/provably-beneficial-ai"
+    url: "https://www.lesswrong.com/w/guaranteed-safe-ai"
 ---
 
 **Role.** Protocol. Graph node `proof`.
@@ -21,4 +21,4 @@ external:
 >
 > — Frames draft §4.9 (Dalrymple et al. 2024, GSAI)
 
-Proof-carrying code already splits policy, artifact, proof, and checker. Formal proof does not choose what should be proved. On the graph this is a warrant leaf into the safety case and, in variant b, coordinate evidence for the CCI certificate.
+Proof-carrying code already splits policy, artifact, proof, and checker. Formal proof does not choose what should be proved. On the graph this is a warrant leaf into the safety case.

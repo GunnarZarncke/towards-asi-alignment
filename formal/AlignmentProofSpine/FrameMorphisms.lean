@@ -167,7 +167,7 @@ def morphismRegistryA : List MorphismSpec :=
       mapId := "restrict.oneEdgeOneJudge", note := Option.none }
   , { src := .weighted_scalar, tgt := .criteria_vector, kind := .specialize,
       srcCarrier := .criteriaVector, tgtCarrier := .criteriaVector,
-      mapId := "scalarize.fixedWeights", note := some .weightsMustBeFixed }
+      mapId := "restrict.fixedWeightOrder", note := some .weightsMustBeFixed }
   , { src := .lex, tgt := .criteria_vector, kind := .specialize,
       srcCarrier := .lexPriority, tgtCarrier := .criteriaVector,
       mapId := "prioritize.lexOrder", note := some .strictLexPriority }
@@ -184,7 +184,7 @@ def morphismRegistryA : List MorphismSpec :=
       mapId := "expectationFunctional", note := some .noSectionAfterForget }
   , { src := .criteria_vector, tgt := .weighted_scalar, kind := .project,
       srcCarrier := .criteriaVector, tgtCarrier := .criteriaVector,
-      mapId := "forget.chosenWeights", note := some .noSectionAfterForget }
+      mapId := "scalarize.chosenWeights", note := some .noSectionAfterForget }
   , { src := .correction, tgt := .corrig, kind := .project,
       srcCarrier := .correctionRelation, tgtCarrier := .corrigibilityHandles,
       mapId := "forget.shutdownBit", note := some .noSectionAfterForget }
@@ -239,10 +239,22 @@ def morphismEdgeOk (e : MorphismEdge) : Bool :=
   morphismKindDeriv e.src e.tgt == some e.kind
 
 theorem graphA_morphisms_typed : graphAMorphismEdges.all morphismEdgeOk = true := by
-  native_decide
+  decide
 
 theorem graphB_morphisms_typed : graphBMorphismEdges.all morphismEdgeOk = true := by
-  native_decide
+  decide
+
+/-- Every registered map starts at its source node's carrier. -/
+theorem morphism_src_carriers :
+    morphismRegistryAB.all (fun m => m.srcCarrier == carrierOf m.src) = true := by
+  decide
+
+/-- Every registered map lands on its target node's carrier, except `encode`
+    maps, which land in an augmented state rather than the bare one. -/
+theorem morphism_tgt_carriers :
+    morphismRegistryAB.all (fun m => m.kind == .encode || m.tgtCarrier == carrierOf m.tgt)
+      = true := by
+  decide
 
 /-! ### Typed map signatures (documentation hooks; not full defs) -/
 
@@ -260,8 +272,20 @@ def mapSignatures : List MapSignature :=
       domain := "{r exact potential}", codomain := "{r additive}" }
   , { mapId := "expectationFunctional",
       domain := "Δ(State)", codomain := "State → ℝ" }
-  , { mapId := "forget.chosenWeights",
+  , { mapId := "scalarize.chosenWeights",
       domain := "ℝⁿ × Weights", codomain := "ℝ" }
+  , { mapId := "restrict.fixedWeightOrder",
+      domain := "{order on ℝⁿ induced by fixed weights}", codomain := "{preorder on ℝⁿ}" }
+  , { mapId := "restrict.oneEdgeOneJudge",
+      domain := "Act × Judge → ℝ", codomain := "Edge → ℝ" }
+  , { mapId := "prioritize.lexOrder",
+      domain := "{lexicographic order on ℝⁿ}", codomain := "{preorder on ℝⁿ}" }
+  , { mapId := "restrict.oneHandleNamedOperators",
+      domain := "Handle × Operators", codomain := "CorrectionRelation" }
+  , { mapId := "restrict.cciCoordinateFloors",
+      domain := "CCI vector × θ_corr", codomain := "Vector × θ (coordinate floor gate)" }
+  , { mapId := "project.deploymentSubVector",
+      domain := "Deployment preserve tuple", codomain := "CCI vector" }
   , { mapId := "forget.shutdownBit",
       domain := "CorrectionRelation", codomain := "Bool handle" }
   , { mapId := "longRunAverage.retainCycleSummand",
@@ -279,6 +303,11 @@ def mapSignatures : List MapSignature :=
 
 def mapSignature? (id : String) : Option MapSignature :=
   mapSignatures.find? (·.mapId == id)
+
+/-- Every registered `mapId` has a signature entry. -/
+theorem morphism_signatures_complete :
+    morphismRegistryAB.all (fun m => (mapSignature? m.mapId).isSome) = true := by
+  decide
 
 end FrameRelations
 

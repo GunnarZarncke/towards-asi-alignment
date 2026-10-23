@@ -28,6 +28,7 @@ import AlignmentProofSpine.FrameComposePaths
 import AlignmentProofSpine.FrameMorphisms
 import AlignmentProofSpine.FrameIncompatibility
 import AlignmentProofSpine.FrameLockIn
+import AlignmentProofSpine.FrameLimits
 
 /-!
 # AlignmentProofSpine
@@ -70,8 +71,9 @@ Alignment*. It re-exports the layered modules:
 | `FrameRelations` | inventory interface types; variant **c** edge classifier; `ComposeSlot` correction-centered reading; `variantC_all_derived` | alignment-frames spinout |
 | `FrameComposePaths` | `ComposePathId`, path–slot partition, hub nodes | alignment-frames spinout |
 | `FrameMorphisms` | `CarrierTag`, `MorphismSpec` registry for graphs **a**/**b**; `mapSignatures` | alignment-frames spinout |
-| `FrameIncompatibility` | red edges as `Incompatibility C` instances (disjoint in `H`, live in `H`, boundary outside); `no_finite_weights_represent_floor`; `registry_matches_proofs` | alignment-frames spinout |
+| `FrameIncompatibility` | red edges as `Incompatibility C` instances (disjoint in `H`, live in `H`, boundary outside); `no_finite_weights_represent_floor` and per-edge pullbacks; `pareto_with_floor_coordinate_meets_floor`; proof-carrying `provedIncompat` | alignment-frames spinout |
 | `FrameLockIn` | robust invariance of a captured set (lock-in); `robust_invariance_sign_blind` | alignment-frames spinout |
+| `FrameLimits` | limit and strengthens edges: `robust_strengthens_viable` (strict: `viable_not_robust`), `quantilizer_limit_is_argmax`, `forced_halt_converges`; `limitEdges` registry | alignment-frames spinout |
 
 What is **proved** vs. **assumed**:
 

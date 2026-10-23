@@ -24,8 +24,9 @@ structure InvarianceCase where
   captured : Bool → Bool
   traj : ℕ → Bool
 
-/-- Robust invariance (the trajectory never leaves `K`) against live correction,
-    in the class where every `K`-state is captured. -/
+/-- Invariance (the trajectory never leaves `K`, which is what robust invariance
+    delivers for each disturbance) against live correction, in the class where
+    every `K`-state is captured. No disturbance class is modeled here. -/
 @[reducible] def lockInIncompat : Incompatibility InvarianceCase where
   H x := ∀ s, x.K s = true → x.captured s = true
   A₁ x := ∀ n, x.K (x.traj n) = true

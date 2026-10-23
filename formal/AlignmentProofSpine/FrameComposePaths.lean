@@ -80,19 +80,19 @@ def slotOnPath (s : ComposeSlot) : Bool :=
   (s.src, s.tgt) ∈ pathAllowedEdges p
 
 theorem slot_on_path (s : ComposeSlot) : slotOnPath s = true := by
-  cases s <;> native_decide
+  cases s <;> decide
 
 theorem all_slots_on_paths : allComposeSlots.all slotOnPath = true := by
-  native_decide
+  decide
 
 theorem paths_partition_slots :
     (allPaths.flatMap pathSlots).length = allComposeSlots.length := by
-  native_decide
+  decide
 
 theorem slots_have_unique_path :
     allComposeSlots.all fun s =>
       (allPaths.filter fun p => composeSlotPathId s == p).length == 1 = true := by
-  native_decide
+  decide
 
 end CorrectionCentered
 
