@@ -18,6 +18,11 @@ does not build (``dist/pdf/``, toy-simulation ``results/`` JSON, the local
 
 Fixing is conservative: a broken target is rewritten only when its basename
 matches exactly one file in the repository. Everything else is reported.
+
+Link targets must be **git-tracked** (``git ls-files``), not merely present in
+the working tree. Untracked local files must not make a link pass while CI
+(clean checkout) fails. Gitignored outputs under ``GENERATED_IN_CHECK_PREFIXES``
+are valid only when they exist on disk after ``make generate``.
 """
 from __future__ import annotations
 
@@ -67,6 +72,40 @@ def is_exempt_gitignored_target(rel: str) -> bool:
     if rel.startswith(GENERATED_IN_CHECK_PREFIXES):
         return False  # must exist after generate
     return rel.startswith(LINK_CHECK_EXEMPT_PREFIXES)
+
+
+def dir_has_tracked_content(dir_rel: str, tracked: set[str], dirs: set[str]) -> bool:
+    d = dir_rel.rstrip("/")
+    if not d:
+        return False
+    if d in dirs:
+        return True
+    prefix = d + "/"
+    return any(p.startswith(prefix) for p in tracked)
+
+
+def is_valid_link_target(
+    rel_to: str,
+    clean: str,
+    resolved: Path,
+    tracked: set[str],
+    dirs: set[str],
+) -> bool:
+    """True when the target is valid for CI and local make check alike."""
+    if is_exempt_gitignored_target(rel_to):
+        return True
+    if rel_to in tracked:
+        return True
+    if (
+        resolved.exists()
+        and is_gitignored(rel_to)
+        and rel_to.startswith(GENERATED_IN_CHECK_PREFIXES)
+    ):
+        return True
+    is_dir_link = clean.endswith("/") or clean in (".", "./")
+    if is_dir_link and dir_has_tracked_content(rel_to, tracked, dirs):
+        return True
+    return False
 
 
 def tracked_markdown(include_all: bool) -> list[Path]:
@@ -126,7 +165,12 @@ def resolve_by_suffix(clean: str, paths: list[str], dirs: set[str]) -> str | Non
 
 
 def check_file(
-    path: Path, idx: dict[str, list[Path]], paths: list[str], dirs: set[str], fix: bool
+    path: Path,
+    idx: dict[str, list[Path]],
+    paths: list[str],
+    dirs: set[str],
+    tracked: set[str],
+    fix: bool,
 ) -> tuple[list[str], int]:
     text = path.read_text(encoding="utf-8")
     problems: list[str] = []
@@ -147,9 +191,7 @@ def check_file(
                 rel_to = str(resolved.relative_to(ROOT))
             except ValueError:
                 return m.group(0)  # points outside the repository (sibling repo); not checked
-            if is_exempt_gitignored_target(rel_to):
-                return m.group(0)  # outside make check scope; see LINK_CHECK_EXEMPT_PREFIXES
-            if resolved.exists():
+            if is_valid_link_target(rel_to, clean, resolved, tracked, dirs):
                 return m.group(0)
             candidates = idx.get(Path(clean).name, [])
             new_target: str | None = None
@@ -165,7 +207,9 @@ def check_file(
                 fixed += 1
                 return m.group(0).replace(target, quote(new_rel, safe="/.-_~()") + ("#" + anchor if anchor else ""))
             hint = ""
-            if len(candidates) > 1:
+            if resolved.exists() and rel_to not in tracked:
+                hint = " (exists locally but is not git-tracked)"
+            elif len(candidates) > 1:
                 hint = f" (ambiguous: {', '.join(str(c) for c in candidates[:4])})"
             elif not candidates:
                 hint = " (no file with that name)"
@@ -184,10 +228,11 @@ def main() -> int:
     ap.add_argument("--all", action="store_true", help="include attic and archived logs")
     args = ap.parse_args()
     idx, paths, dirs = basename_index()
+    tracked = set(paths)
     problems: list[str] = []
     fixed_total = 0
     for f in tracked_markdown(args.all):
-        p, n = check_file(f, idx, paths, dirs, args.fix)
+        p, n = check_file(f, idx, paths, dirs, tracked, args.fix)
         problems.extend(p)
         fixed_total += n
     if args.fix:
