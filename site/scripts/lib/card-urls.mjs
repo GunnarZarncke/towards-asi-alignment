@@ -19,7 +19,8 @@ export const TYPE_URL_SEGMENT = {
   agenda: "agenda",
   funding: "funding",
   prediction: "prediction",
-  "external-service": "external-services"
+  "external-service": "external-services",
+  lens: "lens"
 };
 
 /**
@@ -42,6 +43,7 @@ export function inferTypeFromCardId(id, type) {
   if (id.startsWith("funding/")) return "funding";
   if (id.startsWith("external-services/")) return "external-service";
   if (id.startsWith("predictions/")) return "prediction";
+  if (id.startsWith("lenses/")) return "lens";
   return type ?? null;
 }
 
@@ -61,6 +63,7 @@ export function cardLocalSlug(id, type) {
   if (type === "funding") return id.replace(/^funding\//, "");
   if (type === "external-service") return id.replace(/^external-services\//, "");
   if (type === "prediction") return id.replace(/^predictions\//, "");
+  if (type === "lens") return id.replace(/^lenses\//, "");
   if (id.includes("/")) return id.split("/").pop() ?? id;
   return id;
 }

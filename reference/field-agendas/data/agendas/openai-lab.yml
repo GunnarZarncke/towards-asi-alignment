@@ -69,3 +69,7 @@ links:
     url: https://arxiv.org/abs/2305.20050
   - label: "Christiano et al. 2017 — RLHF"
     url: https://arxiv.org/abs/1706.03741
+related:
+  - lenses/act-approval
+  - lenses/weighted-scalar
+  - lenses/lenses-and-frameworks

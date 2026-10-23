@@ -46,3 +46,8 @@ links:
     url: https://www.alignment.org/
   - label: "Paul Christiano (archive)"
     url: https://www.alignmentforum.org/users/paulfchristiano
+related:
+  - lenses/act-approval
+  - lenses/corrigibility
+  - lenses/correction-relation
+  - lenses/lenses-and-frameworks

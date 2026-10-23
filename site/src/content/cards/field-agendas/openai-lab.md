@@ -23,6 +23,9 @@ external:
   - label: "Christiano et al. 2017 — RLHF"
     url: "https://arxiv.org/abs/1706.03741"
 related:
+  - "lenses/act-approval"
+  - "lenses/weighted-scalar"
+  - "lenses/lenses-and-frameworks"
   - "field-news-openai-dns-chatbot-sep-2026"
   - "field-news-openai-rsi-standards-sep-2026"
   - "field-news-openai-hf-roadahead-aug-2026"

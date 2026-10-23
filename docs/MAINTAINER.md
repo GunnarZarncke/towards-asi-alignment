@@ -92,6 +92,8 @@ Reference cards on the site regenerate via `cd site && npm run sync:reference-ca
 
 **Card preview images:** see table in [`AGENTS.md`](../AGENTS.md) (concept / chapter / field-news / hand-authored).
 
+**Lens cards:** edit [`site/scripts/lib/lenses-data.mjs`](../site/scripts/lib/lenses-data.mjs); `cd site && npm run sync:lenses && npm run sync:lens-graph`. Graph source is [`drafts/alignment-frames-relations.dot`](../drafts/alignment-frames-relations.dot). Link agendas via `related:` on [`reference/field-agendas/data/agendas/*.yml`](../reference/field-agendas/data/agendas/).
+
 Hand-authored cards: [`site/src/content/cards/*.md`](../site/src/content/cards/) with explicit `previewImage` or first in-body image.
 
 ---

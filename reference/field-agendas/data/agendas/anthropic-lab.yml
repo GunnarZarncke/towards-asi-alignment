@@ -90,3 +90,7 @@ links:
     url: https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/
   - label: "Lange et al. 2023"
     url: https://arxiv.org/abs/2311.17030
+related:
+  - lenses/non-compensatory-constraint
+  - lenses/act-approval
+  - lenses/lenses-and-frameworks

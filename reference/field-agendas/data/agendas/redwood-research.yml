@@ -48,3 +48,7 @@ links:
   - label: "Greenblatt 2025 \u2014 An overview of control measures"
     url: >-
       https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures
+related:
+  - lenses/control-protocol
+  - lenses/safety-case
+  - lenses/lenses-and-frameworks

@@ -19,6 +19,11 @@ external:
   - label: "LawZero"
     url: "https://lawzero.org/en"
 related:
+  - "lenses/model-relative-proof"
+  - "lenses/existential-viability"
+  - "lenses/robust-invariance"
+  - "lenses/safety-case"
+  - "lenses/lenses-and-frameworks"
   - "specify-gsai"
   - "construct-gsai"
   - "alignment-target"

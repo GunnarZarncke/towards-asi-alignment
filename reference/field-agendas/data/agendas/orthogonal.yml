@@ -48,3 +48,7 @@ links:
   - label: "Leake & Persson 2023 \u2014 QACI"
     url: >-
       https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal
+related:
+  - lenses/open-procedure-cev
+  - lenses/corrigibility
+  - lenses/lenses-and-frameworks

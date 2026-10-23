@@ -41,3 +41,7 @@ manuscriptHooks:
 links:
   - label: "ARC"
     url: https://www.alignment.org/
+related:
+  - lenses/act-approval
+  - lenses/correction-relation
+  - lenses/lenses-and-frameworks

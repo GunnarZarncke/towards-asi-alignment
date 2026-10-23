@@ -17,7 +17,8 @@ export const CARD_TYPES = [
   "essay",
   "funding",
   "prediction",
-  "external-service"
+  "external-service",
+  "lens"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -118,6 +119,11 @@ export const TYPE_META: Record<
     title: "External service",
     description:
       "Third-party site or registry the book links to for listing, resolution, or evaluation — not manuscript canon."
+  },
+  lens: {
+    title: "Lens",
+    description:
+      "A typed alignment frame: what object is valued or secured, how it is assessed, and under which warrant — not a rival scalar objective."
   }
 };
 

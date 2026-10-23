@@ -15,7 +15,10 @@ external:
     url: "https://arxiv.org/abs/1902.09469"
   - label: "Leake & Persson 2023 — QACI"
     url: "https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal"
-related: []
+related:
+  - "lenses/open-procedure-cev"
+  - "lenses/corrigibility"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/orthogonal.yml. Regenerate: cd site && npm run sync:field-agendas -->

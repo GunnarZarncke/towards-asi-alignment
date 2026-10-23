@@ -106,6 +106,16 @@ async function buildEntries() {
     url: "/predictions/"
   });
 
+  const lensCards = await loadCards(path.join(cardsDir, "lenses"));
+  for (const { id, fm } of lensCards) {
+    entries.push({
+      title: fm.title,
+      type: fm.type,
+      summary: fm.summary ?? "",
+      url: cardHref(`lenses/${id}`, "lens")
+    });
+  }
+
   const fieldAgendaCards = await loadCards(path.join(cardsDir, "field-agendas"));
   for (const { id, fm } of fieldAgendaCards) {
     entries.push({

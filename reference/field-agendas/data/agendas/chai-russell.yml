@@ -50,3 +50,9 @@ links:
     url: https://www.far.ai/
   - label: "Partitioned human supervision (Yin et al. 2025)"
     url: https://arxiv.org/abs/2510.22500
+related:
+  - lenses/state-utility
+  - lenses/au-penalty
+  - lenses/au-floor
+  - lenses/human-power
+  - lenses/lenses-and-frameworks

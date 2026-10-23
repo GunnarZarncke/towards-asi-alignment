@@ -104,6 +104,19 @@ export function cardCatalogSections(
     { title: "Bridges", id: "bridges", cards: byType("bridge") },
     { title: "Field projections", id: "field-projections", cards: fieldProjections },
     { title: "Field agendas", id: "field-agendas", cards: byType("agenda") },
+    {
+      title: "Lenses and frameworks",
+      id: "lenses",
+      cards: cards
+        .filter((card) => card.data.type === "lens")
+        .sort((a, b) => {
+          const aOverview = a.id === "lenses/lenses-and-frameworks";
+          const bOverview = b.id === "lenses/lenses-and-frameworks";
+          if (aOverview !== bOverview) return aOverview ? -1 : 1;
+          return a.data.title.localeCompare(b.data.title);
+        })
+        .map(toEntry)
+    },
     { title: "Funding opportunities", id: "funding", cards: byType("funding") },
     { title: "External services", id: "external-services", cards: byType("external-service") },
     { title: "Experiments", id: "experiments", cards: experiments },

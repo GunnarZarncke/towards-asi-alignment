@@ -15,7 +15,10 @@ external:
     url: "https://arxiv.org/abs/2412.14093"
   - label: "Greenblatt 2025 — An overview of control measures"
     url: "https://www.alignmentforum.org/posts/G8WwLmcGFa4H6Ld9d/an-overview-of-control-measures"
-related: []
+related:
+  - "lenses/control-protocol"
+  - "lenses/safety-case"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/redwood-research.yml. Regenerate: cd site && npm run sync:field-agendas -->

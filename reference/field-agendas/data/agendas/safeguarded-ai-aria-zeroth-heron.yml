@@ -73,3 +73,7 @@ links:
     url: https://heron.ing/aarm
   - label: "ZK attestation (Berrang)"
     url: https://pascal-berrang.de/projects/zk_ai_security/
+related:
+  - lenses/model-relative-proof
+  - lenses/safety-case
+  - lenses/lenses-and-frameworks

@@ -11,7 +11,10 @@ bookBridges:
 external:
   - label: "ARC"
     url: "https://www.alignment.org/"
-related: []
+related:
+  - "lenses/act-approval"
+  - "lenses/correction-relation"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/arc-alignment-research-center.yml. Regenerate: cd site && npm run sync:field-agendas -->

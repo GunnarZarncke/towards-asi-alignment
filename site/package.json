@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "npm run sync && npm run copy:pdf && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:lean-checks && npm run sync:field-agendas && npm run sync:product-comparison && npm run sync:field-v2 && npm run sync:field-news-memes && npm run sync:field-news && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapter-illustrations && npm run sync:chapters && npm run sync:reference-cards && npm run sync:concept-logos && npm run sync:lean-spine && npm run sync:bridge-graph && npm run sync:chapter-reading-graph && npm run sync:term-links && npm run sync:demos && npm run sync:experiment-figures && npm run sync:experiments && npm run sync:predictions && npm run sync:safety-case-model && npm run build:search-index && npm run build:feed && npm run generate:card-redirects && npm run sync:bot-orientation",
+    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:lean-checks && npm run sync:field-agendas && npm run sync:product-comparison && npm run sync:field-v2 && npm run sync:field-news-memes && npm run sync:field-news && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapter-illustrations && npm run sync:chapters && npm run sync:reference-cards && npm run sync:concept-logos && npm run sync:lean-spine && npm run sync:bridge-graph && npm run sync:lens-graph && npm run sync:lenses && npm run sync:chapter-reading-graph && npm run sync:term-links && npm run sync:demos && npm run sync:experiment-figures && npm run sync:experiments && npm run sync:predictions && npm run sync:safety-case-model && npm run build:search-index && npm run build:feed && npm run generate:card-redirects && npm run sync:bot-orientation",
     "sync:chapter-illustrations": "node scripts/sync-chapter-illustrations.mjs",
     "sync:experiment-figures": "node scripts/sync-experiment-figures.mjs",
     "generate:manuscript-tex": "bash ../scripts/generate_manuscript_tex.sh",
@@ -17,6 +17,8 @@
     "sync:demos": "node scripts/sync-demos.mjs",
     "sync:lean-spine": "node scripts/sync-lean-spine.mjs",
     "sync:bridge-graph": "node scripts/sync-bridge-graph.mjs",
+    "sync:lens-graph": "node scripts/sync-lens-graph.mjs",
+    "sync:lenses": "node scripts/sync-lenses.mjs",
     "sync:chapter-reading-graph": "node scripts/sync-chapter-reading-graph.mjs",
     "sync:book": "node scripts/sync-book-yml.mjs",
     "sync:concepts": "node scripts/sync-concepts.mjs",
@@ -44,7 +46,7 @@
     "copy:pdf": "node scripts/copy-book-pdf.mjs",
     "check:book-links": "node scripts/check-book-links.mjs",
     "check:experiments": "node scripts/check-experiments.mjs",
-    "check:concepts": "node scripts/sync-concepts.mjs --check && node scripts/sync-bridges.mjs --check && node scripts/sync-projections.mjs --check && node scripts/sync-lean-checks.mjs --check && node scripts/sync-bridge-graph.mjs --check && node scripts/sync-term-links.mjs --check && node scripts/sync-field-agendas.mjs --check && node scripts/sync-field-news.mjs --check && node scripts/sync-concept-logos.mjs --check && node scripts/build-search-index.mjs --check && node scripts/build-feed.mjs --check && node scripts/sync-bot-orientation.mjs --check",
+    "check:concepts": "node scripts/sync-concepts.mjs --check && node scripts/sync-bridges.mjs --check && node scripts/sync-projections.mjs --check && node scripts/sync-lean-checks.mjs --check && node scripts/sync-bridge-graph.mjs --check && node scripts/sync-lens-graph.mjs --check && node scripts/sync-lenses.mjs --check && node scripts/sync-term-links.mjs --check && node scripts/sync-field-agendas.mjs --check && node scripts/sync-field-news.mjs --check && node scripts/sync-concept-logos.mjs --check && node scripts/build-search-index.mjs --check && node scripts/build-feed.mjs --check && node scripts/sync-bot-orientation.mjs --check",
     "prebuild": "npm run sync && npm run copy:pdf",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"

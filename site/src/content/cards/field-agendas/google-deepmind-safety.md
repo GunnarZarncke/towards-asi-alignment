@@ -16,7 +16,10 @@ external:
     url: "https://arxiv.org/abs/2208.08345"
   - label: "Leike et al. 2018 — Scalable agent oversight"
     url: "https://arxiv.org/abs/1811.07871"
-related: []
+related:
+  - "lenses/control-protocol"
+  - "lenses/quantilizer"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/google-deepmind-safety.yml. Regenerate: cd site && npm run sync:field-agendas -->

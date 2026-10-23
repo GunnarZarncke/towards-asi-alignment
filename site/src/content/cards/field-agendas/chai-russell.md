@@ -18,7 +18,12 @@ external:
     url: "https://www.far.ai/"
   - label: "Partitioned human supervision (Yin et al. 2025)"
     url: "https://arxiv.org/abs/2510.22500"
-related: []
+related:
+  - "lenses/state-utility"
+  - "lenses/au-penalty"
+  - "lenses/au-floor"
+  - "lenses/human-power"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/chai-russell.yml. Regenerate: cd site && npm run sync:field-agendas -->

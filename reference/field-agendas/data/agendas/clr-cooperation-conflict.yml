@@ -49,3 +49,7 @@ links:
     url: https://arxiv.org/abs/2012.08630
   - label: "Cooperative AI Foundation (CAIF)"
     url: https://www.cooperativeai.com/
+related:
+  - lenses/human-power
+  - lenses/selection-stability
+  - lenses/lenses-and-frameworks

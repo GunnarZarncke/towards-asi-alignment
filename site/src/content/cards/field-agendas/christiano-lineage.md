@@ -14,7 +14,11 @@ external:
     url: "https://www.alignment.org/"
   - label: "Paul Christiano (archive)"
     url: "https://www.alignmentforum.org/users/paulfchristiano"
-related: []
+related:
+  - "lenses/act-approval"
+  - "lenses/corrigibility"
+  - "lenses/correction-relation"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/christiano-lineage.yml. Regenerate: cd site && npm run sync:field-agendas -->

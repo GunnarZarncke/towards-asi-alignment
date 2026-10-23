@@ -31,6 +31,9 @@ external:
   - label: "Lange et al. 2023"
     url: "https://arxiv.org/abs/2311.17030"
 related:
+  - "lenses/non-compensatory-constraint"
+  - "lenses/act-approval"
+  - "lenses/lenses-and-frameworks"
   - "specify-constitutional-ai"
   - "construct-constitutional-ai"
   - "alignment-target"

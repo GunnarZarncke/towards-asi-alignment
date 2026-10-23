@@ -1,0 +1,149 @@
+// Relations among alignment frames (variant x: correction-centered cluster; omitted nodes/edges invis).
+// Same node set and layout as alignment-frames-relations.dot (default graph a).
+// SVG: python3 drafts/render_alignment_frames_x.py — do not use plain `dot` on this file for layout.
+// Read with drafts/alignment-frames-relations.md.
+// Arrow direction is part of the legend. Do not read every arrow as "implies".
+digraph AlignmentFrameRelationsX {
+graph [
+    rankdir=LR,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    pad=0.4,
+    fontsize=12,
+    fontname="Helvetica",
+    label="Alignment frames (variant x): correction-centered cluster
+Same layout as default graph · Omitted nodes and edges use invis · Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Orange limit · Purple stronger quantifier · Green composable · Red incompatible",
+    labelloc="t"
+  ];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F7F7F7"];
+  edge [fontname="Helvetica", fontsize=8, arrowsize=0.7, color="#333333"];
+
+  subgraph cluster_scores {
+    label="Scores";
+    color="#BBBBBB";
+    style="rounded";
+    hist [style="invis", label="History / trajectory value
+(preference on paths)"];
+    route [label="Additive route value
+(path sum on edges)"];
+    exact [label="Exact potential summand
+(endpoint-only routes)"];
+    cycle [label="Cycle residue summand
+(round trips matter)"];
+    state [style="invis", label="State utility
+(scalar order on states)"];
+    dist [style="invis", label="Outcome lottery
+(expectation or risk functional)"];
+    criteria_vector [style="invis", label="Criteria vector
+(Pareto · task costs/stakeholders)"];
+    weighted_scalar [style="invis", label="Weighted scalar
+(fixed weights on criteria)"];
+    lex [style="invis", label="Lexicographic priority
+(on criteria vector)"];
+    quant [style="invis", label="Quantilizer
+(retained quantile of base)"];
+    approval [label="Act approval score
+(Protocol · one edge)"];
+  }
+
+  subgraph cluster_relations {
+    label="Relations and capacities";
+    color="#BBBBBB";
+    style="rounded";
+    au_penalty [label="Human AU landscape
+soft penalty (AUP)"];
+    au_floor [label="Human AU landscape
+on–off floor (non-obs.)"];
+    ai_power [style="invis", label="Agent empowerment channel
+(options / influence)"];
+    human_power [label="Human-power aggregate
+(capacity order)"];
+    corrig [label="Corrigibility handles
+(shutdown / modification)"];
+    correction [label="Correction relation
+(handles + channel profile)"];
+    cev [style="invis", label="Open procedure target
+(CEV · unset output)"];
+    deontic [label="Non-compensatory constraint
+(forbid traded violations)"];
+  }
+
+  subgraph cluster_guarantees {
+    label="Guarantees";
+    color="#BBBBBB";
+    style="rounded";
+    viable [label="Existential viability
+(∃ control in supplied K)"];
+    robust [style="invis", label="Robust invariance
+(∀ disturbance in class)"];
+    selection [label="Selection stability
+(signed basin · ecology)"];
+  }
+
+  subgraph cluster_warrants {
+    label="Warrants";
+    color="#BBBBBB";
+    style="rounded";
+    proof [label="Model-relative proof
+(formal leaf)"];
+    control [label="Control protocol
+(monitor under threat model)"];
+    safecase [label="Safety case
+(deployment argument)"];
+  }
+
+  // Special case → more general frame.
+  exact -> route [label="specializes"];
+  approval -> route [label="specializes\none edge, one judge"];
+  weighted_scalar -> criteria_vector [style=invis];
+  lex -> criteria_vector [style=invis];
+  corrig -> correction [label="specializes\none handle, named operators"];
+
+  // Forgetful maps.
+  dist -> state [style=invis];
+  criteria_vector -> weighted_scalar [style=invis];
+  correction -> corrig [style=dashed, label="projects\nshutdown bit"];
+  route -> cycle [style=dashed, label="projects\nlong-run average\nretains this summand"];
+
+  // Encodings. The original objects stay distinct.
+  hist -> state [style=invis];
+  route -> state [style=invis];
+  cev -> state [style=invis];
+
+  // Direct-sum decomposition of additive route value.
+  route -> exact [style=bold, dir=both, label="isomorphic summand\nexact part"];
+  route -> cycle [style=bold, dir=both, label="isomorphic summand\ncycle part"];
+  state -> route [style=invis];
+
+  // Limits.
+  quant -> state [style=invis];
+  cev -> state [style=invis];
+
+  // Same geometry, stronger quantifier.
+  viable -> robust [style=invis];
+
+  // Composition used by the correction reading. Not implications.
+  deontic -> correction [color="#2E7D32", fontcolor="#2E7D32", label="composes\nadmissible region"];
+  cycle -> correction [color="#2E7D32", fontcolor="#2E7D32", label="composes\nroute residue inside the region"];
+  human_power -> correction [color="#2E7D32", fontcolor="#2E7D32", label="composes\npositive direction inside the region"];
+  au_floor -> human_power [color="#2E7D32", fontcolor="#2E7D32", label="composes\npointwise floor on one landscape"];
+  au_penalty -> au_floor [color="#2E7D32", fontcolor="#2E7D32", label="composes\nsame landscape, soft penalty"];
+  correction -> viable [color="#2E7D32", fontcolor="#2E7D32", label="composes\nviability of a supplied set"];
+  viable -> selection [color="#2E7D32", fontcolor="#2E7D32", label="composes\nif the selector is inside the dynamics"];
+  proof -> safecase [color="#2E7D32", fontcolor="#2E7D32", label="composes\none leaf"];
+  control -> safecase [color="#2E7D32", fontcolor="#2E7D32", label="composes\none leaf"];
+  correction -> safecase [color="#2E7D32", fontcolor="#2E7D32", label="composes\nonly the represented relation"];
+
+  // Acceptance relations that exclude each other in the named class.
+  state -> correction [style=invis, dir=none];
+  state -> cycle [style=invis, dir=none];
+  deontic -> weighted_scalar [style=invis, dir=none];
+  au_floor -> weighted_scalar [style=invis, dir=none];
+  ai_power -> human_power [style=invis, dir=none];
+  robust -> correction [style=invis, dir=none];
+
+  // Layout only: Guarantees then Warrants (LR); align viability / safety case.
+  selection -> proof [style=invis, weight=100];
+  viable -> safecase [style=invis, weight=100];
+}

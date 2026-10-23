@@ -12,6 +12,7 @@ related:
   - "bridge-assumptions"
   - "alignment-lifecycle"
   - "outer-alignment"
+  - "lenses/lenses-and-frameworks"
 ---
 
 Useful **starting points** for orienting to AI safety and alignment research:

@@ -3,6 +3,9 @@ related:
   - boundary-discovery
   - deployment-gate
   - evidence-and-uncertainty
+  - lenses/correction-relation
+  - lenses/correction-certificate
+  - lenses/lenses-and-frameworks
 ---
 
 Feedback is not enough. A dashboard can receive feedback while the real deployed actor ignores it. A model can say it accepted a correction while the future behavior remains unchanged.

@@ -17,6 +17,7 @@ import FieldLifecycleAxis from "../../components/FieldLifecycleAxis.astro";
 import FieldSpecifyConstructTable from "../../components/FieldSpecifyConstructTable.astro";
 import FieldAdjacentWork from "../../components/FieldAdjacentWork.astro";
 import FieldBridgeGraphSection from "../../components/FieldBridgeGraphSection.astro";
+import FieldLensGraph from "../../components/FieldLensGraph.astro";
 import ExperimentLedgersTable from "../../components/ExperimentLedgersTable.astro";
 import QuizBlock from "../../components/QuizBlock.astro";
 import FundingCardChrome from "../../components/FundingCardChrome.astro";
@@ -100,6 +101,7 @@ const isAgendaCard = card.data.type === "agenda";
 const isFundingCard = card.data.type === "funding";
 const isExternalServiceCard = card.data.type === "external-service";
 const isPredictionCard = card.data.type === "prediction";
+const isLensCard = card.data.type === "lens";
 const isExternalPrediction = isPredictionCard && card.data.predictionExternal === true;
 const predictionListingLabel = card.data.predictionListingStatus
   ? {
@@ -430,6 +432,11 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
               <a href={withBase("/news/")}>All related news</a>
             </p>
           )}
+          {isLensCard && (
+            <p class="side-panel-meta">
+              <a href={cardHref("lenses/lenses-and-frameworks")}>Lenses and frameworks</a>
+            </p>
+          )}
           {isFundingCard && (
             <p class="side-panel-meta">
               <a href={withBase("/funding/")}>All funding opportunities</a>
@@ -486,6 +493,7 @@ const pageOgImageAlt = resolvedPreviewImage ? card.data.title : undefined;
 
       {card.id === "alignment-lifecycle" && <FieldLifecycleAxis base={base} />}
       {card.id === "bridge-assumptions" && <FieldBridgeGraphSection base={base} />}
+      {card.id === "lenses/lenses-and-frameworks" && <FieldLensGraph base={base} />}
       {card.id === "alignment-target" && <FieldSpecifyConstructTable base={base} />}
       {card.id === "bearer-admission-adjacent" && <FieldAdjacentWork base={base} />}
       {card.id === "negative-results" && <ExperimentLedgersTable base={base} />}

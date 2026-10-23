@@ -5,6 +5,7 @@ related:
   - bridge-assumptions
   - alignment-lifecycle
   - outer-alignment
+  - lenses/lenses-and-frameworks
 external:
   - label: Field hub
     url: /field/v2/

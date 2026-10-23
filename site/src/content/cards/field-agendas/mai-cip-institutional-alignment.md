@@ -19,6 +19,10 @@ external:
   - label: "Alignment Assemblies"
     url: "https://www.cip.org/alignmentassemblies"
 related:
+  - "lenses/selection-stability"
+  - "lenses/criteria-vector"
+  - "lenses/open-procedure-cev"
+  - "lenses/lenses-and-frameworks"
   - "specify-institutional"
   - "construct-institutional"
   - "alignment-target"

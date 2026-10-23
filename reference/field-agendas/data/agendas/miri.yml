@@ -68,3 +68,8 @@ links:
     url: https://www.alignmentforum.org/
   - label: "AI StopWatch"
     url: https://aistop.watch/
+related:
+  - lenses/corrigibility
+  - lenses/open-procedure-cev
+  - lenses/quantilizer
+  - lenses/lenses-and-frameworks

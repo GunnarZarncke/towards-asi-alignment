@@ -73,7 +73,7 @@ Output: `site/dist/`
 | Path | Purpose |
 |------|---------|
 | `src/pages/` | Routes (Start Here, **`/essay/`**, FAQ, book map, **`/field/`**, **`/predictions/`**, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
-| `src/content/cards/` | Short concept, bridge, artifact, glossary, **essay**, and **release** cards — most are generated; essays are hand-authored (`type: essay`) |
+| `src/content/cards/` | Short concept, bridge, artifact, glossary, **essay**, **lens**, and **release** cards — most are generated; essays are hand-authored (`type: essay`); lenses from `scripts/lib/lenses-data.mjs` |
 | `src/pages/updates/` | Releases & updates — newest version card first (`CardSection` initial count 1) |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
 | `metadata/concepts.yml` | Roster for concept/glossary/gem/institutional/objection/standalone-claim cards; bodies in `metadata/concepts/bodies/*.md`; optional `claimId` link to `metadata/claims-ledger.md` |

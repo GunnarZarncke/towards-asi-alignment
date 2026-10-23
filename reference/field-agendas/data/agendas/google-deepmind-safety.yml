@@ -44,3 +44,7 @@ links:
     url: https://arxiv.org/abs/2208.08345
   - label: "Leike et al. 2018 \u2014 Scalable agent oversight"
     url: https://arxiv.org/abs/1811.07871
+related:
+  - lenses/control-protocol
+  - lenses/quantilizer
+  - lenses/lenses-and-frameworks

@@ -23,7 +23,10 @@ external:
     url: "https://heron.ing/aarm"
   - label: "ZK attestation (Berrang)"
     url: "https://pascal-berrang.de/projects/zk_ai_security/"
-related: []
+related:
+  - "lenses/model-relative-proof"
+  - "lenses/safety-case"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/safeguarded-ai-aria-zeroth-heron.yml. Regenerate: cd site && npm run sync:field-agendas -->

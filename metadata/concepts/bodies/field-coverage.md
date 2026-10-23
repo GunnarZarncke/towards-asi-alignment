@@ -5,6 +5,7 @@ related:
   - alignment-target
   - outer-alignment
   - what-tsa-fails-to-represent
+  - lenses/lenses-and-frameworks
 external:
   - label: Open full matrix
     url: /field/coverage/

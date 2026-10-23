@@ -21,6 +21,10 @@ external:
   - label: "AI StopWatch"
     url: "https://aistop.watch/"
 related:
+  - "lenses/corrigibility"
+  - "lenses/open-procedure-cev"
+  - "lenses/quantilizer"
+  - "lenses/lenses-and-frameworks"
   - "specify-cev"
   - "construct-cev"
   - "alignment-target"

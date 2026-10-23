@@ -16,7 +16,10 @@ external:
     url: "https://arxiv.org/abs/2012.08630"
   - label: "Cooperative AI Foundation (CAIF)"
     url: "https://www.cooperativeai.com/"
-related: []
+related:
+  - "lenses/human-power"
+  - "lenses/selection-stability"
+  - "lenses/lenses-and-frameworks"
 ---
 
 <!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/clr-cooperation-conflict.yml. Regenerate: cd site && npm run sync:field-agendas -->
