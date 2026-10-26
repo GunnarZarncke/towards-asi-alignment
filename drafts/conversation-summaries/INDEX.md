@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-10-25 | **Frame edge classes** — red dotted/dashed/solid and orange by class with Lean check; Turner comparison; Soares section; SHA-pinned Lean links; Frame theorems in the axiom ledger. | [2026-10-25-frame-edge-classes.md](2026-10-25-frame-edge-classes.md) |
+| 2026-10-24 | **Bare vs record-carrying state** — `hstate` node, `FrameHistoryState.lean`, lens card; reading of how far reward functions use the record. | [2026-10-24-bare-vs-record-state.md](2026-10-24-bare-vs-record-state.md) |
 | 2026-10-23 | **Lens review fixes** — Review of lens cards and Frame Lean modules; apply clear fixes, report open items. | [2026-10-23-lens-review-fixes.md](2026-10-23-lens-review-fixes.md) |
 | 2026-10-23 | **Lens map main graph, variant x** — Default DOT on site; GitHub Graphviz source; **x** render; trim overview related. | [2026-10-23-lens-graph-main-x.md](2026-10-23-lens-graph-main-x.md) |
 | 2026-10-23 | **Lens cards and clickable frame map** — New `lens` card type, 29 frame nodes, overview with clickable SVG, agenda links. | [2026-10-23-lens-cards.md](2026-10-23-lens-cards.md) |

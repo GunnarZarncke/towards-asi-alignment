@@ -38,18 +38,10 @@ Prompts: paraphrase-only
 - **User decision (end of session):** split the red "incompatible" edges into distinct kinds. state–correction is *rigidity*, not a conflict between frames: a fixed maximizer accepts only corrections within U's ties (one-sided ΔU ≤ 0 at the optimum, not zero-sum with V). Separately, state utility is conservative on loops, so correct-then-restore has zero value: the correction-as-process part sits in the cycle/history summand (link to state–cycle).
 
 ## Open / next
-- Role gate: give `RoleCompose` a real exclusion or delete it.
-- **Next: split red edges by kind** (decided). Kinds and edges:
-  - choice conflict (both frames choose on one menu; disjoint in `H`): deontic/au_floor/cci_cert–weighted_scalar, criteria_vector–cci_cert, robust–correction. Keep `Incompatibility`; consider orienting `liveInH` as `∃ x, H x ∧ A₂ x`.
-  - shared resource (zero-sum by the conservation assumption in `H`): ai_power–human_power.
-  - representability (one object cannot carry the other's distinction; escape by encode/augmented state): state–cycle. New structure, no situation class.
-  - rigidity (one frame accepts only the degenerate part of what the other requires): state–correction. Theorems: fixed U accepts a correction only within U's ties; utility indifference as boundary (enlarges ties) and its cost (indifferent to channel preservation).
-  - Then: per-kind DOT colour/style in **a**/**b**/**c**, `check_frame_graph.py` per kind, map legend and overview text, state-utility / exact / cycle / human-power cards, relations note.
-- state–correction model: corrector utility V plus `Legit` predicate (MB4a hook); folds into the rigidity kind above.
-- Roles across specialize edges (approval protocol → route target; corrig → correction). Proposed: rename specialize/encode at type level to embeddings of carriers; roles attach to uses.
+Superseded by `2026-10-25-frame-edge-classes.md` (red-edge split, SHA-pinned links, ledger done there). Still open from this session:
+- state–correction model: corrector utility V plus `Legit` predicate (MB4a hook).
+- Morphism renaming (embed / embedAugmented / forget); roles attach to uses.
 - Real-valued weights (expected, not proven); actual `mapId` functions; general route = exact ⊕ cycle.
-- Lean anchors point at `blob/main`; correct only once these Lean edits are pushed. Options: SHA-pinned permalinks at sync (shared with `spine-source-index.mjs`), or decl pages on the site.
-- `metadata/axiom-ledger.json` has no Frame theorems (ledger scope unchanged).
 
 ## Key paths
 - `formal/AlignmentProofSpine/FrameIncompatibility.lean`
