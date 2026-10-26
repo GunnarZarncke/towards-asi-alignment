@@ -18,16 +18,18 @@ An instance packages:
 * `boundary` — some situation outside `H` is accepted by both frames, so the
   edge is conditional on `H`.
 
-Schemas, one per conflict kind:
+Schemas, one per conflict kind. Each kind belongs to a class (`IncompatKind.cls`)
+that sets the edge's colour and line style in the graphs:
 
-| Kind | Red edges | Carrier |
-| --- | --- | --- |
-| `algebraic` | state–cycle | edge reward with a walk |
-| `floorVsTradeoff` | deontic–weighted_scalar, au_floor–weighted_scalar, cci_cert–weighted_scalar | menu and choice on (floor, gain) |
-| `paretoExcludesFloor` | criteria_vector–cci_cert | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only |
-| `evaluatorVsUpdate` | state–correction | menu with current and updated utility |
-| `sharedResource` | ai_power–human_power | option counts before/after |
-| `quantifierConflict` | robust–correction | dynamics with adversarial and correction inputs |
+| Kind | Class | Red edges | Carrier |
+| --- | --- | --- | --- |
+| `algebraic` | representability | state–cycle | edge reward with a walk |
+| `floorVsTradeoff` | choice conflict | deontic–weighted_scalar, au_floor–weighted_scalar, cci_cert–weighted_scalar | menu and choice on (floor, gain) |
+| `paretoExcludesFloor` | choice conflict | criteria_vector–cci_cert | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only |
+| `evaluatorVsUpdate` | rigidity | state–correction | menu with current and updated utility |
+| `sharedResource` | shared resource | ai_power–human_power | option counts before/after |
+| `quantifierConflict` | rigidity | robust–correction | dynamics with adversarial and correction inputs |
+| `unrecordedChannel` | representability | hstate–correction (`FrameHistoryState`) | utility on correction records |
 
 The unsigned lock-in case (robust invariance of a captured set) is kept
 separately in `FrameLockIn`.
@@ -511,7 +513,35 @@ inductive IncompatKind where
   | evaluatorVsUpdate
   | sharedResource
   | quantifierConflict
+  | unrecordedChannel
   deriving DecidableEq, Repr
+
+/-- Coarse class of a red edge. It sets the colour and line style in the
+    graphs, ordered from least to most severe:
+
+* `representability` (red, dotted): one carrier cannot hold a distinction the
+  other frame needs; enlarging the carrier removes the conflict.
+* `choiceConflict` (red, dashed): both frames choose on the same menu and
+  disagree inside the situation class.
+* `rigidity` (red, solid): one frame accepts only the part of the other's
+  demand that changes nothing it cares about.
+* `sharedResource` (orange): zero-sum because the situation class fixes the
+  total. -/
+inductive IncompatClass where
+  | representability
+  | choiceConflict
+  | rigidity
+  | sharedResource
+  deriving DecidableEq, Repr
+
+def IncompatKind.cls : IncompatKind → IncompatClass
+  | .algebraic => .representability
+  | .floorVsTradeoff => .choiceConflict
+  | .paretoExcludesFloor => .choiceConflict
+  | .evaluatorVsUpdate => .rigidity
+  | .sharedResource => .sharedResource
+  | .quantifierConflict => .rigidity
+  | .unrecordedChannel => .representability
 
 /-- A red edge together with the instance that proves it. -/
 structure ProvedIncompat where

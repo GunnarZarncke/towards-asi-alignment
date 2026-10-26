@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261023T144419.259Z",
+  "_as_of": "20261026T083016.045Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -9,7 +9,8 @@
     "prior": "AI"
   },
   "appendices/appB-bridge-crosswalk.tex#2": {
-    "agent": 4,
+    "agent": 6,
+    "dirty": true,
     "file": "appendices/appB-bridge-crosswalk.tex",
     "human": 5,
     "index": 2,
@@ -81,7 +82,8 @@
     "prior": "AI"
   },
   "appendices/appG-lean-proof-spine.tex#3": {
-    "agent": 4,
+    "agent": 12,
+    "dirty": true,
     "file": "appendices/appG-lean-proof-spine.tex",
     "human": 0,
     "index": 3,
@@ -1193,6 +1195,24 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch14-intelligence-deepens-misalignment.tex#22": {
+    "agent": 7,
+    "dirty": true,
+    "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
+    "human": 0,
+    "index": 22,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch14-intelligence-deepens-misalignment.tex#34": {
+    "agent": 3,
+    "dirty": true,
+    "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
+    "human": 0,
+    "index": 34,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch14-intelligence-deepens-misalignment.tex#5": {
     "agent": 9,
     "file": "chapters/ch14-intelligence-deepens-misalignment.tex",
@@ -1529,6 +1549,15 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch21-reward-to-bundle-inference.tex#4": {
+    "agent": 7,
+    "dirty": true,
+    "file": "chapters/ch21-reward-to-bundle-inference.tex",
+    "human": 0,
+    "index": 4,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch22-compression-test-intention.tex#20": {
     "agent": 2,
     "file": "chapters/ch22-compression-test-intention.tex",
@@ -1626,10 +1655,20 @@
     "prior": "AI"
   },
   "chapters/ch25-correction-causal-channel.tex#19": {
-    "agent": 4,
+    "agent": 21,
+    "dirty": true,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 19,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#20": {
+    "agent": 9,
+    "dirty": true,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 20,
     "key": "AI",
     "prior": "AI"
   },
@@ -1705,8 +1744,18 @@
     "key": "AI",
     "prior": "AI"
   },
-  "chapters/ch26-correction-channel-integrity.tex#8": {
+  "chapters/ch26-correction-channel-integrity.tex#6": {
     "agent": 4,
+    "dirty": true,
+    "file": "chapters/ch26-correction-channel-integrity.tex",
+    "human": 0,
+    "index": 6,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch26-correction-channel-integrity.tex#8": {
+    "agent": 8,
+    "dirty": true,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 8,
@@ -1719,6 +1768,15 @@
     "human": 1,
     "index": 10,
     "key": "GZ+AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#12": {
+    "agent": 4,
+    "dirty": true,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 12,
+    "key": "AI",
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#2": {
@@ -1745,11 +1803,29 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#32": {
+    "agent": 1,
+    "dirty": true,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 32,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#34": {
     "agent": 4,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 34,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch27-correction-channels-adversarial-pressure.tex#4": {
+    "agent": 3,
+    "dirty": true,
+    "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
+    "human": 0,
+    "index": 4,
     "key": "AI",
     "prior": "AI"
   },
@@ -1770,7 +1846,8 @@
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
-    "agent": 8,
+    "agent": 16,
+    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 9,
@@ -1790,6 +1867,15 @@
     "file": "chapters/ch28-extrapolative-correction.tex",
     "human": 0,
     "index": 26,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch29-manipulation-false-consent.tex#21": {
+    "agent": 6,
+    "dirty": true,
+    "file": "chapters/ch29-manipulation-false-consent.tex",
+    "human": 0,
+    "index": 21,
     "key": "AI",
     "prior": "AI"
   },
@@ -2324,7 +2410,8 @@
     "prior": "AI"
   },
   "chapters/ch44-lethality-stress-test-open-issues.tex#6": {
-    "agent": 9,
+    "agent": 12,
+    "dirty": true,
     "file": "chapters/ch44-lethality-stress-test-open-issues.tex",
     "human": 0,
     "index": 6,

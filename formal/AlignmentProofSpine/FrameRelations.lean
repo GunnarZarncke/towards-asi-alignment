@@ -13,7 +13,7 @@ should be *obligations* of a small formal signature, not ad hoc DOT annotations.
 | --- | --- |
 | **Summand** (`route` ↔ `exact` / `cycle`) | `summandPair` on nodes (registry). One direction is proved: `FrameIncompatibility.gradient_closed_walk_zero` (an exact part sums to zero on every closed walk). No general direct-sum decomposition yet. |
 | **Incompatible** | `incompatWitnesses` registry; each entry carries an `Incompatibility` instance in `FrameIncompatibility.provedIncompat` (`registry_matches_proofs`). |
-| **Compose** | Lookup table `CorrectionCentered.compose` (`ComposeSlot`). `RoleCompose` currently admits every role pair (`roleCompose_trivial`), so it does not constrain compose. |
+| **Compose** | Lookup table `CorrectionCentered.compose` (`ComposeSlot`). Roles in `interfaceOf` label nodes; they do not constrain compose. |
 
 `variantC_all_derived` checks that the three tables do not shadow each other
 under the classifier's priority (summand, then incompatible, then compose). It
@@ -279,36 +279,6 @@ theorem compose_from_slot (s : ComposeSlot) : compose s.src s.tgt = true := by
   cases s <;> decide
 
 end CorrectionCentered
-
-/-! ### Role gate
-
-Intended as a necessary condition for compose. As written it admits every
-role pair (`roleCompose_trivial`), so it rules nothing out. Kept as the hook
-for a real exclusion; see the open item in `drafts/alignment-frames-relations.md`. -/
-
-def RoleCompose (r₁ r₂ : Role) : Prop :=
-  match r₁, r₂ with
-  | .protocol, _ => True
-  | _, .protocol => True
-  | .constraint, .constraint => True
-  | .constraint, .target => True
-  | .target, .constraint => True
-  | .target, .target => True
-  | .constraint, .guarantee => True
-  | .guarantee, .constraint => True
-  | .guarantee, .guarantee => True
-  | .guarantee, .target => True
-  | .target, .guarantee => True
-
-theorem roleCompose_trivial (r₁ r₂ : Role) : RoleCompose r₁ r₂ := by
-  cases r₁ <;> cases r₂ <;> trivial
-
-def roleComposeAllowed (a b : FrameNode) : Prop :=
-  RoleCompose (interfaceOf a).role (interfaceOf b).role
-
-theorem roleCompose_necessary_slot (s : ComposeSlot) :
-    roleComposeAllowed s.src s.tgt :=
-  roleCompose_trivial _ _
 
 /-! ### Derived edge classifier (variant **c**) -/
 

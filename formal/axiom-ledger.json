@@ -1,5 +1,5 @@
 {
-  "_comment": "Checked-in axiom-budget snapshot for formal/scripts/check_axiom_budget.py. Regenerate with `python3 scripts/check_axiom_budget.py --update` after an intentional proof-spine change; review the diff before committing. Source of metadata/axiom-budget-index.tex.",
+  "_comment": "Checked-in axiom-budget snapshot for formal/scripts/check_axiom_budget.py. Regenerate with `python3 scripts/check_axiom_budget.py --update` after an intentional proof-spine change; review the diff before committing. Source of metadata/axiom-budget-index.tex. Entries with \"scope\": \"frames\" are alignment-frame relations theorems; they are checked but left out of the book table.",
   "theorems": [
     {
       "name": "AlignmentProofSpine.P01_basin_invariant",
@@ -830,6 +830,729 @@
     {
       "name": "AlignmentProofSpine.FieldFinite.mutualInformation_le_log_min_card",
       "gloss": "Shannon MI over finite alphabets of size m and n is at most log(min(m,n)) (real-valued; concave Jensen on log)",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.CorrectionCentered.compose_from_slot",
+      "gloss": "Frames: every compose slot is in the compose table",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.variantC_all_derived",
+      "gloss": "Frames: summand, incompatibility, and compose tables do not shadow each other",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.CorrectionCentered.slot_on_path",
+      "gloss": "Frames: each compose slot lies on its path",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.CorrectionCentered.all_slots_on_paths",
+      "gloss": "Frames: all compose slots lie on paths",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.CorrectionCentered.paths_partition_slots",
+      "gloss": "Frames: compose paths partition the slots",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.CorrectionCentered.slots_have_unique_path",
+      "gloss": "Frames: each compose slot has exactly one path",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.graphA_morphisms_typed",
+      "gloss": "Frames: graph a morphism registry is self-consistent",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.graphB_morphisms_typed",
+      "gloss": "Frames: graph b morphism registry is self-consistent",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.morphism_src_carriers",
+      "gloss": "Frames: morphism source carriers match their nodes",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.morphism_tgt_carriers",
+      "gloss": "Frames: morphism target carriers match their nodes (encode excepted)",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.morphism_signatures_complete",
+      "gloss": "Frames: every map id has a signature",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.walkSum_gradient",
+      "gloss": "Frames: a gradient reward sums to the endpoint difference",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.gradient_closed_walk_zero",
+      "gloss": "Frames: a state utility values every closed walk at zero",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.stateCycleIncompat",
+      "gloss": "Frames: state utility vs cycle residue (representability)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.floor_scalar_disjoint",
+      "gloss": "Frames: floor and scalar choice are disjoint in the trade-off class",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.floorMenu_scalar_violates",
+      "gloss": "Frames: on the floor menu every scalar-optimal choice violates the floor",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.no_finite_weights_represent_floor",
+      "gloss": "Frames: no positive integer weighting represents a floor",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.no_finite_weights_pullback",
+      "gloss": "Frames: the no-finite-weights result pulls back along carrier maps",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.deonticScalarIncompat",
+      "gloss": "Frames: deontic constraint vs weighted scalar (choice conflict)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.deontic_no_finite_weights",
+      "gloss": "Frames: no finite weighting represents a deontic ban",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.nonobsScalarIncompat",
+      "gloss": "Frames: AU floor vs weighted scalar (choice conflict)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.nonobs_no_finite_weights",
+      "gloss": "Frames: no finite weighting represents an AU floor",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.cciScalarIncompat",
+      "gloss": "Frames: CCI threshold vs weighted scalar (choice conflict)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.cci_no_finite_weights",
+      "gloss": "Frames: no finite weighting represents a CCI threshold",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.pareto_does_not_entail_floor",
+      "gloss": "Frames: Pareto optimality does not entail the floor",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.pareto_with_floor_coordinate_meets_floor",
+      "gloss": "Frames: with the floor as a coordinate some Pareto option meets it",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.vectorCCIIncompat",
+      "gloss": "Frames: task-only Pareto vs CCI floor (choice conflict)",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.stateCorrectionIncompat",
+      "gloss": "Frames: fixed state utility vs correction (rigidity)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.aiHumanPowerIncompat",
+      "gloss": "Frames: agent vs human options in a fixed pool (shared resource)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_blocks_outside_correction",
+      "gloss": "Frames: a correction in the robustness class cannot leave K",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_with_correction_iff_closed",
+      "gloss": "Frames: counting a correction as a disturbance means K is closed under it",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_correction_target_meets_K",
+      "gloss": "Frames: such a correction can only aim at targets meeting K",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robustCorrectionIncompat",
+      "gloss": "Frames: robust invariance vs correction (rigidity)",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.registry_matches_proofs",
+      "gloss": "Frames: red-edge registry pairs with its proofs",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_invariance_sign_blind",
+      "gloss": "Frames: robust invariance cannot tell a good set from a captured one",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_strengthens_viable",
+      "gloss": "Frames: robust invariance implies viability",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.robust_trajectory_stays",
+      "gloss": "Frames: one-step robust invariance keeps every trajectory in K",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.viable_not_robust",
+      "gloss": "Frames: viability does not imply robust invariance",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.quantilizer_limit_is_argmax",
+      "gloss": "Frames: a small enough quantile is the argmax set",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.quantilizer_never_argmax_without_base_mass",
+      "gloss": "Frames: without base mass on a maximizer no quantile is the argmax",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.forced_halt_converges",
+      "gloss": "Frames: a converging procedure has a limit score",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.forced_halt_depends_on_time",
+      "gloss": "Frames: a non-converging procedure's score depends on halt time",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.walkSum_append",
+      "gloss": "Frames: walk sums split at the last step",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.state_utility_lifts_to_records",
+      "gloss": "Frames: a state utility is a record utility",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.record_utility_not_state",
+      "gloss": "Frames: some record utility is not a state utility",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.route_exact_on_records",
+      "gloss": "Frames: every route reward is exact on records",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.round_trip_value_on_records",
+      "gloss": "Frames: the state-cycle round trip has value on records",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.markov_reward_not_state_utility",
+      "gloss": "Frames: a per-step state reward is a route value, not a state utility",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.unrecorded_route_not_representable",
+      "gloss": "Frames: a record that misses the route cannot represent it",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.state_accepts_only_ties",
+      "gloss": "Frames: at its optimum a state utility accepts only tying corrections",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.record_accepts_compensated_correction",
+      "gloss": "Frames: compensation accepts a worse correction and ignores the channel",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.hstateCorrectionIncompat",
+      "gloss": "Frames: on channel-blind records protecting the channel means seeking correction (representability)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.argmax_pullback",
+      "gloss": "Frames: choosing commutes with pulling an objective back along a map",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.argmax_add_const",
+      "gloss": "Frames: adding a constant does not change the choice",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.state_hstate_square",
+      "gloss": "Frames: state utility read on records chooses like the state utility (square)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.state_route_square",
+      "gloss": "Frames: induced route value chooses walks like the state utility of their end (square)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.approval_one_edge",
+      "gloss": "Frames: a one-step walk scores the judge's approval of that edge",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.dist_state_square",
+      "gloss": "Frames: on point masses, choosing lotteries is choosing outcomes (square)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.expectationFunctional_point",
+      "gloss": "Frames: the expectation of a point mass is its utility",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.expectation_drops_tail",
+      "gloss": "Frames: equal expectation, different worst outcome",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.scalar_optimal_is_pareto",
+      "gloss": "Frames: positive-weight scalar optimum is Pareto-optimal (square)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.pareto_not_scalar_optimal",
+      "gloss": "Frames: Pareto optimum need not be scalar-optimal (no section)",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.lex_optimal_is_pareto",
+      "gloss": "Frames: lexicographic optimum is Pareto-optimal (square)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.mapImpls_registered",
+      "gloss": "Frames: every implemented map is a registered morphism",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.turner_corrigible_quarter",
+      "gloss": "Frames: Turner count, correction strictly optimal for a quarter of the orbit",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.option_preserving_correction_half",
+      "gloss": "Frames: option-preserving correction, no counting tendency",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.subset_branch_never_strictly_better",
+      "gloss": "Frames: a corrected branch inside the disabled branch is never strictly better",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.walkSum_add",
+      "gloss": "Frames: walk sums are additive in the reward",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.closed_walk_ignores_exact",
+      "gloss": "Frames: an exact part changes no closed-walk sum (route to cycle)",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.isGradient_iff_closed_walks_zero",
+      "gloss": "Frames: a reward is exact iff every closed walk sums to zero",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.corrig_correction_square",
+      "gloss": "Frames: embedding a handle and forgetting back returns it",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.shutdown_bit_loses_relation",
+      "gloss": "Frames: the shutdown bit forgets the rest of the correction relation",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.cci_coordinate_floor_square",
+      "gloss": "Frames: the certificate passes iff each coordinate floor passes",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.subvector_gate",
+      "gloss": "Frames: passing the full tuple implies passing any sub-vector",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.subvector_gate_loses",
+      "gloss": "Frames: a sub-vector can pass while the full tuple fails",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.gate_bounds_scalar_gap",
+      "gloss": "Frames: after the vector gate the weighted shortfall is at most zero",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.hist_hstate_square",
+      "gloss": "Frames: on full records a history value is a record utility",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.mapImpls_cover",
+      "gloss": "Frames: every registered map except the measurement step is implemented",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.bestAt_unique",
+      "gloss": "Frames: a strict best outcome is unique",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.bestAt_relabel",
+      "gloss": "Frames: relabelling moves the strict best",
+      "scope": "frames",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.copies_count_le",
+      "gloss": "Frames: k disjoint copies of A in B make B win k times as often (Turner, argmax)",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.correction_avoided_card_fold",
+      "gloss": "Frames: disabling wins |D| times as often as a one-outcome correction",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.corrector_decides_under_constraint",
+      "gloss": "Frames: under the channel constraint an upheld correction happens",
+      "scope": "frames",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.contest_is_the_outlet",
+      "gloss": "Frames: avoidance goes through the channel as a contest",
+      "scope": "frames",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.unconstrained_disables",
+      "gloss": "Frames: without the constraint an agent preferring its outcome disables",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.blind_constraint_cannot_separate",
+      "gloss": "Frames: an influence-blind constraint cannot separate contest from manipulation",
+      "scope": "frames",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.FrameRelations.blind_constraint_manipulates",
+      "gloss": "Frames: under an influence-blind constraint such an agent manipulates",
+      "scope": "frames",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

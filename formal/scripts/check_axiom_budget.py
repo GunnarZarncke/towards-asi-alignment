@@ -192,6 +192,8 @@ def render_tex(ledger_entries: list[dict]) -> str:
         r"\endfoot",
     ]
     for entry in ledger_entries:
+        if entry.get("scope") == "frames":
+            continue  # alignment-frame relations, not the certification spine (no MB*)
         name = short_name(entry["name"])
         axioms = entry["axioms"]
         core_n = sum(1 for a in axioms if classify(a) == "core")

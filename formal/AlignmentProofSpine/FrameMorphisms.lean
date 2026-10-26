@@ -26,6 +26,7 @@ inductive FrameNodeExt where
   | exact
   | cycle
   | state
+  | hstate
   | dist
   | criteria_vector
   | weighted_scalar
@@ -101,6 +102,7 @@ def carrierOf : FrameNodeExt → CarrierTag
   | .exact => .edgeRewardExactSummand
   | .cycle => .edgeRewardCycleSummand
   | .state => .bareState
+  | .hstate => .augmentedStateHistory
   | .dist => .outcomeLottery
   | .criteria_vector => .criteriaVector
   | .weighted_scalar => .criteriaVector
@@ -178,6 +180,9 @@ def morphismRegistryA : List MorphismSpec :=
       srcCarrier := .bareState, tgtCarrier := .edgeReward,
       mapId := "induceGradient.exactPotential",
       note := some .additiveConstantOnStateUtility }
+  , { src := .state, tgt := .hstate, kind := .specialize,
+      srcCarrier := .bareState, tgtCarrier := .augmentedStateHistory,
+      mapId := "readAtRecordEnd", note := Option.none }
   -- project
   , { src := .dist, tgt := .state, kind := .project,
       srcCarrier := .outcomeLottery, tgtCarrier := .bareState,
@@ -192,10 +197,10 @@ def morphismRegistryA : List MorphismSpec :=
       srcCarrier := .edgeReward, tgtCarrier := .edgeRewardCycleSummand,
       mapId := "longRunAverage.retainCycleSummand", note := Option.none }
   -- encode
-  , { src := .hist, tgt := .state, kind := .encode,
+  , { src := .hist, tgt := .hstate, kind := .encode,
       srcCarrier := .digraphPath, tgtCarrier := .augmentedStateHistory,
       mapId := "appendHistoryToState", note := some .observabilityRequired }
-  , { src := .route, tgt := .state, kind := .encode,
+  , { src := .route, tgt := .hstate, kind := .encode,
       srcCarrier := .edgeReward, tgtCarrier := .augmentedStateRouteBits,
       mapId := "embedRouteBitsInState", note := some .observabilityRequired }
   , { src := .cev, tgt := .state, kind := .encode,
@@ -250,7 +255,8 @@ theorem morphism_src_carriers :
   decide
 
 /-- Every registered map lands on its target node's carrier, except `encode`
-    maps, which land in an augmented state rather than the bare one. -/
+    maps, whose target carrier names the part of the state that holds the
+    encoding (route bits, procedure output). -/
 theorem morphism_tgt_carriers :
     morphismRegistryAB.all (fun m => m.kind == .encode || m.tgtCarrier == carrierOf m.tgt)
       = true := by
@@ -290,6 +296,8 @@ def mapSignatures : List MapSignature :=
       domain := "CorrectionRelation", codomain := "Bool handle" }
   , { mapId := "longRunAverage.retainCycleSummand",
       domain := "Edge → ℤ", codomain := "Cycle summand" }
+  , { mapId := "readAtRecordEnd",
+      domain := "State → ℤ", codomain := "State × Record → ℤ" }
   , { mapId := "appendHistoryToState",
       domain := "Path", codomain := "State × History" }
   , { mapId := "embedRouteBitsInState",
