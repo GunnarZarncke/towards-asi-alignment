@@ -22,4 +22,4 @@ external:
 
 A history-valued lens scores the sequence `(s₀, a₀, s₁, …)`. Two deployments can share an endpoint and still differ if manipulation, dissent removal, or withheld evidence is visible in the history.
 
-Encoding a finite history into an augmented state is always available in principle. The cost is compactness, locality, observability, or stationarity — not a proof that the snapshot object was already enough.
+Encoding a finite history into a record-carrying state is always available in principle. The cost is compactness, locality, observability, or stationarity — not a proof that the snapshot object was already enough.

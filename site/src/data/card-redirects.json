@@ -287,6 +287,7 @@
   "/cards/lenses/open-procedure-cev/": "/cards/lens/open-procedure-cev/",
   "/cards/lenses/outcome-lottery/": "/cards/lens/outcome-lottery/",
   "/cards/lenses/quantilizer/": "/cards/lens/quantilizer/",
+  "/cards/lenses/record-carrying-state/": "/cards/lens/record-carrying-state/",
   "/cards/lenses/robust-invariance/": "/cards/lens/robust-invariance/",
   "/cards/lenses/safety-case/": "/cards/lens/safety-case/",
   "/cards/lenses/selection-stability/": "/cards/lens/selection-stability/",

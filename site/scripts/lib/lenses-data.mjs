@@ -3,11 +3,12 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { repoBlobBase } from "./repo-pin.mjs";
 
 export const OVERVIEW_ID = "lenses/lenses-and-frameworks";
 
-export const GH_LEAN =
-  "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine";
+/** Lean source base, pinned to the commit being built (see repo-pin.mjs). */
+const ghLean = () => `${repoBlobBase()}/formal/AlignmentProofSpine`;
 
 export const LENSES = [
   {
@@ -24,7 +25,7 @@ export const LENSES = [
     agendas: ["field-agendas/christiano-lineage", "field-agendas/miri"],
     body: `A history-valued lens scores the sequence \`(s₀, a₀, s₁, …)\`. Two deployments can share an endpoint and still differ if manipulation, dissent removal, or withheld evidence is visible in the history.
 
-Encoding a finite history into an augmented state is always available in principle. The cost is compactness, locality, observability, or stationarity — not a proof that the snapshot object was already enough.`
+Encoding a finite history into a record-carrying state is always available in principle. The cost is compactness, locality, observability, or stationarity — not a proof that the snapshot object was already enough.`
   },
   {
     nodeId: "route",
@@ -69,7 +70,7 @@ Exactness is a representation fact about a particular reward, not a claim that e
     lwTag: { label: "LessWrong tag: Instrumental convergence", url: "https://www.lesswrong.com/w/instrumental-convergence" },
     related: ["lenses/additive-route-value", "lenses/correction-relation", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/miri"],
-    body: `Cycle residue is what a state utility cannot see without expanding the state. Inside a deontic admissible region it can still rank learning above rewiring even when endpoints match.
+    body: `Cycle residue is what a state utility cannot see unless the state carries a record of the walk. Inside a deontic admissible region it can still rank learning above rewiring even when endpoints match.
 
 It composes with correction as “route residue inside the region,” not as a second top-level target.`
   },
@@ -85,9 +86,29 @@ It composes with correction as “route residue inside the region,” not as a s
     lwTag: { label: "LessWrong tag: Expected utility formalism", url: "https://www.lesswrong.com/w/expected-utility-formalism" },
     related: ["static-target-trap", "pointing-problem", "outer-alignment", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell", "field-agendas/miri", "field-agendas/openai-lab"],
-    body: `This is the default RL and welfare object. Omohundro-style instrumental arguments live here.
+    body: `This is the default welfare object. In RL, the per-step state reward summed along a path is a route value, not this (\`markov_reward_not_state_utility\`); its optimal value function is a state utility, and that is where Omohundro-style instrumental arguments meet correction. *State* means the bare state, with no record of how it was reached; adding the record gives the record-carrying state lens, where round trips can have value.
 
-Fixed *U* is incompatible with correction only for updates that make the agent pick an outcome *U* ranks strictly lower — not for every change of *U*. That is the red edge \`stateCorrectionIncompat\`, not “utility hates all revision.” It holds by the choice of situation class; what correction endorses is not modeled.`
+Fixed *U* is incompatible with correction only for updates that make the agent pick an outcome *U* ranks strictly lower — not for every change of *U*. At its optimum it accepts a correction only if the target ties the optimum, and it never prefers keeping the channel (\`state_accepts_only_ties\`). That is the red edge \`stateCorrectionIncompat\`, not “utility hates all revision.” It holds by the choice of situation class; what correction endorses is not modeled.`
+  },
+  {
+    nodeId: "hstate",
+    slug: "record-carrying-state",
+    title: "Record-carrying state",
+    role: "Target",
+    summary: "The current state plus a record of how it was reached. A utility on it can value routes; a utility on the bare state cannot.",
+    quote:
+      "A finite history can be written into an enlarged state, and a state utility on that enlargement can reproduce a history preference.",
+    quoteSource: "Frames relations note",
+    lwTag: { label: "LessWrong tag: Instrumental convergence", url: "https://www.lesswrong.com/w/instrumental-convergence" },
+    related: ["lenses/state-utility", "lenses/history-value", "lenses/cycle-residue", "lenses/lenses-and-frameworks"],
+    agendas: [],
+    body: `The record can be the full history, a transcript, or a few route bits. Every route reward is exact on records: a step scores the record value after it minus the record value before (\`route_exact_on_records\`). So the round trip that no bare-state utility can value (\`stateCycleIncompat\`) has a value here.
+
+The escape works only for what the record sees. If two walks leave the same record and differ in route value, no record utility represents the difference (\`unrecorded_route_not_representable\`).
+
+Correction is the same. A record utility can accept a correction to a worse outcome by compensating the corrected branch, but then it does not care whether the channel survives (\`record_accepts_compensated_correction\`). If the record does not see the channel, protecting the channel is the same preference as wanting to be corrected (\`hstateCorrectionIncompat\`).
+
+Whether the record escapes the instrumental-convergence counting argument depends on what it holds. Over observation records the tendency stays and can get stronger; over action-observation records in a deterministic world it disappears for generic utilities (Turner 2021). What the record always changes is what a chosen utility can express.`
   },
   {
     nodeId: "dist",
@@ -390,11 +411,32 @@ export function lensPublicPath(slug) {
  * resolved from the source at sync time, so they follow edits to the file. */
 const INCOMPAT = {
   "state->correction": ["FrameIncompatibility", "stateCorrectionIncompat"],
+  "state->state_corr_gap": ["FrameIncompatibility", "stateCorrectionIncompat"],
+  "state_corr_gap->correction": ["FrameIncompatibility", "stateCorrectionIncompat"],
   "state->cycle": ["FrameIncompatibility", "stateCycleIncompat"],
+  "hstate->correction": ["FrameHistoryState", "hstateCorrectionIncompat"],
   "deontic->weighted_scalar": ["FrameIncompatibility", "deonticScalarIncompat"],
   "au_floor->weighted_scalar": ["FrameIncompatibility", "nonobsScalarIncompat"],
   "ai_power->human_power": ["FrameIncompatibility", "aiHumanPowerIncompat"],
   "robust->correction": ["FrameIncompatibility", "robustCorrectionIncompat"]
+};
+
+/** Specialize / project / encode edges → their map's commuting square or loss. */
+const MAP_DECLS = {
+  "state->hstate": ["FrameDecision", "state_hstate_square"],
+  "route->hstate": ["FrameHistoryState", "route_exact_on_records"],
+  "state->route": ["FrameDecision", "state_route_square"],
+  "dist->state": ["FrameDecision", "dist_state_square"],
+  "weighted_scalar->criteria_vector": ["FrameDecision", "scalar_optimal_is_pareto"],
+  "criteria_vector->weighted_scalar": ["FrameDecision", "pareto_not_scalar_optimal"],
+  "lex->criteria_vector": ["FrameDecision", "lex_optimal_is_pareto"],
+  "approval->route": ["FrameDecision", "approval_one_edge"],
+  "hist->hstate": ["FrameDecision", "hist_hstate_square"],
+  "exact->route": ["FrameDecision", "isGradient_iff_closed_walks_zero"],
+  "route->cycle": ["FrameDecision", "closed_walk_ignores_exact"],
+  "corrig->correction": ["FrameDecision", "corrig_correction_square"],
+  "correction->corrig": ["FrameDecision", "shutdown_bit_loses_relation"],
+  "cev->state": ["FrameLimits", "forced_halt_converges"]
 };
 
 /** Limit and strengthens edges → main theorem in FrameLimits. */
@@ -416,7 +458,7 @@ export function leanDeclHref(module, decl) {
   const re = new RegExp(`^(?:@\\[[^\\]]*\\]\\s*)?(?:def|theorem|abbrev|structure|inductive)\\s+${decl}\\b`);
   const idx = lines.findIndex((line) => re.test(line));
   if (idx < 0) throw new Error(`lenses-data: ${decl} not found in ${module}.lean`);
-  return `${GH_LEAN}/${module}.lean#L${idx + 1}`;
+  return `${ghLean()}/${module}.lean#L${idx + 1}`;
 }
 
 /**
@@ -424,20 +466,25 @@ export function leanDeclHref(module, decl) {
  */
 export function leanHrefForEdge(edge) {
   if ((edge.style || "").includes("invis")) return null;
+  const key = `${edge.from}->${edge.to}`;
+  if (INCOMPAT[key]) return leanDeclHref(...INCOMPAT[key]);
   const label = (edge.label || "").toLowerCase().trim();
   if (!label) return null;
   const verb = label.split(/\s+/)[0];
-  const key = `${edge.from}->${edge.to}`;
   if (verb === "incompatible") {
-    return INCOMPAT[key] ? leanDeclHref(...INCOMPAT[key]) : `${GH_LEAN}/FrameIncompatibility.lean`;
+    return `${ghLean()}/FrameIncompatibility.lean`;
   }
-  if (verb === "composes") return `${GH_LEAN}/FrameComposePaths.lean`;
-  if (verb === "isomorphic") return leanDeclHref("FrameIncompatibility", "gradient_closed_walk_zero");
+  if (verb === "composes") {
+    if (key === "deontic->correction") return leanDeclHref("FrameCorrector", "corrector_decides_under_constraint");
+    return `${ghLean()}/FrameComposePaths.lean`;
+  }
+  if (verb === "isomorphic") return leanDeclHref("FrameDecision", "isGradient_iff_closed_walks_zero");
   if ((verb === "limit" || verb === "strengthens") && LIMITS[key]) {
     return leanDeclHref("FrameLimits", LIMITS[key]);
   }
   if (verb === "specializes" || verb === "projects" || verb === "encodes") {
-    return `${GH_LEAN}/FrameMorphisms.lean`;
+    if (MAP_DECLS[key]) return leanDeclHref(...MAP_DECLS[key]);
+    return `${ghLean()}/FrameMorphisms.lean`;
   }
   return null;
 }

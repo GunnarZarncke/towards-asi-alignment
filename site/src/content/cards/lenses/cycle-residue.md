@@ -19,6 +19,6 @@ external:
 >
 > — Frames draft §4.1
 
-Cycle residue is what a state utility cannot see without expanding the state. Inside a deontic admissible region it can still rank learning above rewiring even when endpoints match.
+Cycle residue is what a state utility cannot see unless the state carries a record of the walk. Inside a deontic admissible region it can still rank learning above rewiring even when endpoints match.
 
 It composes with correction as “route residue inside the region,” not as a second top-level target.

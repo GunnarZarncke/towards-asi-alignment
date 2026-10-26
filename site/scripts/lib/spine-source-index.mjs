@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { repoBlobBase } from "./repo-pin.mjs";
 
 const DECL_START =
   /^(theorem|def|noncomputable\s+def|axiom|abbrev|structure|class|instance|inductive|namespace)\s+([A-Za-z0-9_]+)/;
@@ -158,7 +159,6 @@ export function buildSpineSourceIndex(formalRoot, aliasPath) {
   return { resolveNodeSource, declIndex, repoDeclIndex: buildRepoDeclIndex(declIndex) };
 }
 
-const REPO_BLOB_BASE = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
 
 /** Serializable decl → GitHub URL map for site cards and check pages. */
 export function buildRepoDeclIndex(declIndex) {
@@ -168,7 +168,7 @@ export function buildRepoDeclIndex(declIndex) {
     out[name] = {
       kind: meta.kind,
       file,
-      githubUrl: meta.startLine ? `${REPO_BLOB_BASE}/${file}#L${meta.startLine}` : `${REPO_BLOB_BASE}/${file}`
+      githubUrl: meta.startLine ? `${repoBlobBase()}/${file}#L${meta.startLine}` : `${repoBlobBase()}/${file}`
     };
   }
   return out;
