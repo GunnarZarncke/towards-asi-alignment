@@ -51,7 +51,9 @@ X_GRAPH_LABEL = (
     "Alignment frames (variant x): correction-centered cluster\\n"
     "Same layout as default graph · Omitted nodes and edges use invis · "
     "Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · "
-    "Orange limit · Purple stronger quantifier · Green composable · Red incompatible"
+    "Blue limit · Purple stronger quantifier · Green composable\\n"
+    "Incompatible: red solid rigid · red dashed choice conflict · red dotted not representable · "
+    "orange shared resource"
 )
 
 

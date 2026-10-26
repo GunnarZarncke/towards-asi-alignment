@@ -13,7 +13,8 @@ graph [
     fontsize=12,
     fontname="Helvetica",
     label="Alignment frames (variant x): correction-centered cluster
-Same layout as default graph · Omitted nodes and edges use invis · Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Orange limit · Purple stronger quantifier · Green composable · Red incompatible",
+Same layout as default graph · Omitted nodes and edges use invis · Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable
+Incompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
     labelloc="t"
   ];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F7F7F7"];
@@ -23,6 +24,8 @@ Same layout as default graph · Omitted nodes and edges use invis · Solid speci
     label="Scores";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
+    margin=36;
     hist [style="invis", label="History / trajectory value
 (preference on paths)"];
     route [label="Additive route value
@@ -33,6 +36,10 @@ Same layout as default graph · Omitted nodes and edges use invis · Solid speci
 (round trips matter)"];
     state [style="invis", label="State utility
 (scalar order on states)"];
+    // Layout-only routing stub (not a frame; omitted from Lean inventory).
+    state_corr_gap [shape=point, width=0.01, height=0.01, label="", style=invis];
+    hstate [label="Record-carrying state
+(state × record of the walk)"];
     dist [style="invis", label="Outcome lottery
 (expectation or risk functional)"];
     criteria_vector [style="invis", label="Criteria vector
@@ -51,6 +58,8 @@ Same layout as default graph · Omitted nodes and edges use invis · Solid speci
     label="Relations and capacities";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
+    margin=36;
     au_penalty [label="Human AU landscape
 soft penalty (AUP)"];
     au_floor [label="Human AU landscape
@@ -73,6 +82,7 @@ on–off floor (non-obs.)"];
     label="Guarantees";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
     viable [label="Existential viability
 (∃ control in supplied K)"];
     robust [style="invis", label="Robust invariance
@@ -85,6 +95,7 @@ on–off floor (non-obs.)"];
     label="Warrants";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
     proof [label="Model-relative proof
 (formal leaf)"];
     control [label="Control protocol
@@ -107,13 +118,14 @@ on–off floor (non-obs.)"];
   route -> cycle [style=dashed, label="projects\nlong-run average\nretains this summand"];
 
   // Encodings. The original objects stay distinct.
-  hist -> state [style=invis];
-  route -> state [style=invis];
+  hist -> hstate [style=invis];
+  route -> hstate [style=dotted, label="encodes\nexact on records\nif the record sees the route"];
   cev -> state [style=invis];
 
   // Direct-sum decomposition of additive route value.
   route -> exact [style=bold, dir=both, label="isomorphic summand\nexact part"];
   route -> cycle [style=bold, dir=both, label="isomorphic summand\ncycle part"];
+  state -> hstate [style=invis];
   state -> route [style=invis];
 
   // Limits.
@@ -136,7 +148,12 @@ on–off floor (non-obs.)"];
   correction -> safecase [color="#2E7D32", fontcolor="#2E7D32", label="composes\nonly the represented relation"];
 
   // Acceptance relations that exclude each other in the named class.
-  state -> correction [style=invis, dir=none];
+  // state–correction rigidity: anchor stub on state, route to correction without a global detour.
+  state -> state_corr_gap [style=invis];
+  state_corr_gap -> weighted_scalar [style=invis];
+  state -> state_corr_gap [style=invis, dir=none];
+  state_corr_gap -> correction [dir=none, constraint=false, color="#B00020", penwidth=2];
+  hstate -> correction [dir=none, style=dotted, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nprotecting the channel\nmeans seeking correction\nunless the record sees the channel"];
   state -> cycle [style=invis, dir=none];
   deontic -> weighted_scalar [style=invis, dir=none];
   au_floor -> weighted_scalar [style=invis, dir=none];
