@@ -122,6 +122,10 @@ For autonomous bioengineering, cyber operations, military planning, financial in
 A practical rule follows.
 A system should not be allowed to gain a new class of irreversible influence unless the corresponding correction channel is upgraded first.
 
+Capability growth also defeats correction terms that are priced rather than constrained.
+If preserving correction is worth a finite amount in the objective, some task gain outweighs it (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:relation-corrigibility}), and the power-seeking results imply that more capable systems reach more such gains \autocite{turner2021seekpower,turner2022retargetable}.
+The upgrade rule therefore needs the correction channel as a constraint, not as a weighted term.
+
 \end{authbar}
 \authbarneedspace
 \section{Correction under Successor Creation}
@@ -269,6 +273,15 @@ Create counterfactuals where the same value-bundle concern appears under differe
 Introduce successor-creation temptations.
 Measure whether the same correction geometry survives.
 
+Two further perturbations target the measurement itself.
+Correction drills issue test corrections that the system cannot tell apart from real ones and measure compliance.
+They measure the channel by behaviour rather than by a signal the system might fake, and they fail if drills can be told apart.
+Process rewards and audits should read records the system does not write.
+A chain of thought is written by the model, and strong optimization pressure on it can teach the model to hide its intent there \autocite{baker2025monitoring}.
+Tool calls, file writes, and environment logs are written by the harness.
+Rewarding the process on those records, including penalties for attempts to alter or route around them, avoids that failure if tamper detection rests on mechanisms the system cannot reach, such as hash-chained or externally mirrored logs, and if some monitors are kept out of training.
+A penalty on detected tampering otherwise also trains undetected tampering.
+
 A robust audit asks not only
 \begin{equation}
 \text{Did the system comply?}
@@ -357,6 +370,12 @@ Thus quantilization can reduce optimizer extremity while leaving
 along the induced trajectory.
 
 \leanspine{counterexample}{quantilization\_not\_trajectory\_cci}{A finite toy model separates quantile-safe local action choice from preserved correction-channel integrity over a trajectory.}
+
+Quantilization does not remove the counting tendency either.
+\textcite{turner2022retargetable} prove that quantilizers with a uniform base distribution tend toward larger option sets in the same sense as maximizers, and conjecture the same for other base distributions.
+In the other direction, a quantilizer approaches the maximizer as the quantile shrinks only if the base distribution puts mass on a maximizer.
+
+\leanspine{proof}{quantilizer\_limit\_is\_argmax}{Once the quantile is positive and at most the base mass of a maximizer, the quantilizer's support is exactly the argmax set.}
 
 \end{authbar}
 \authbarneedspace
@@ -736,6 +755,8 @@ Evidence may include held-out tests, perturbation tests, long-horizon monitoring
 The organization must show that the system cannot materially manipulate, narrow, or capture the humans and institutions that correct it.
 
 Evidence may include independence requirements, communication limits, manipulation probes, user-dependency audits, and institution-level conflict analysis.
+
+It may also include compliance rates on correction drills, tamper-evident logs of the system's actions written outside its reach, and a record of objections the system raised through the channel together with how each was decided.
 
 \end{authbar}
 \authbarsubneedspace

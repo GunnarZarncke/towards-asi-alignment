@@ -138,6 +138,16 @@ Pihlakas's concave homeostatic and diminishing-returns agenda is a sibling presc
 Long-horizon benchmarks in that line report that language models often grasp homeostatic and diminishing-returns objectives at first, then drift toward unbounded single-objective maximization under sustained multi-objective pressure \autocite{pihlakas2025bioblue}.
 That is evidence that a flat scalar shape is a fragile outer object, not a demonstration that concave training solves identifiability, bearer import, or correction capture.
 
+A second ambiguity sits in the word ``state''.
+Utility on states can mean a score for where the world ends up, a per-step reward on the current state summed along the path, or a reward on a record of the episode.
+The power-seeking theorems use the second \autocite{turner2021seekpower}, which is a path value rather than a score of where the agent ends up: staying in a rewarded state pays every step, so a round trip can have value.
+
+\leanspine{proof}{markov\_reward\_not\_state\_utility}{A per-step state reward summed along a path is not a utility on end states.}
+
+In token-level training of language models the state is the context so far, a full record of the episode, yet most of the training signal reads only the outcome: a verified answer, passing tests, a finished task.
+Reward models and judges read the transcript, process rewards read steps, and length, format, and chain-of-thought penalties are path terms; all of them see only what the transcript records.
+Whether an objective rewards the path or only the outcome is a property of the reward terms, not of the state representation.
+
 \end{authbar}
 \authbarneedspace
 \section{Why Scalar Reward Is the Wrong Level of Description}

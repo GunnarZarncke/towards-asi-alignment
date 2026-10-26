@@ -210,6 +210,11 @@ This prevents the catastrophic fixed point in which a system reshapes human inte
 Captured agreement is not correction.
 It is failed certification.
 
+There is also a decision-theoretic reason to make anti-capture part of validity.
+A system can protect a correction channel without wanting to be corrected only if what it values refers to the channel's state (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:relation-corrigibility}).
+Once the channel's state is measured and valued, making the measurement read ``intact'' is worth as much to the system as keeping the channel intact.
+The measurement path then becomes a target, and the certificate is only as good as the path's independence from the system.
+
 \end{authbar}
 \begin{authbar}{AI}
 \begin{leanbox}
@@ -230,6 +235,13 @@ Given a valid reference process, the recommended certification object is a vecto
 \]
 The channel passes only if the invalidation predicates are false and each coordinate meets its deployment-specific threshold; we write the thresholds as \symbolref[theta_corr]{\vec{\theta}_{\mathrm{corr}}} and a passing certificate as \(\vec{\mathrm{CCI}} \succeq \vec{\theta}_{\mathrm{corr}}\).
 No coordinate should be allowed to compensate for a failed validity condition.
+
+The manipulation coordinate \(M\) cannot be left out of the gate.
+A gate that does not measure influence on the correcting process cannot tell a correction withdrawn after a fair objection from one withdrawn because the system shaped the corrector: the two leave the same record.
+
+\leanspine{proof}{blind\_constraint\_cannot\_separate}{A constraint that reads only the influence-blind record treats a successful objection and a manipulated withdrawal alike.}
+
+\leanspine{proof}{blind\_constraint\_manipulates}{Under such a constraint, every system that strictly prefers its own outcome to an upheld correction manipulates.}
 
 \end{authbar}
 \authbarsubneedspace

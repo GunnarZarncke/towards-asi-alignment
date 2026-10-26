@@ -877,6 +877,30 @@ This is not because constraints are metaphysically special.
 It is because once correction is destroyed, later optimization can no longer be trusted to repair the loss.
 Correction-channel collapse is an alignment absorbing state.
 
+Why the added term fails can be stated as a decision problem.
+Take a utility that reads only whether a correction happened and what the outcome was.
+If it scores the corrected branch below its own optimum, it resists.
+If it scores it above, it wants to be corrected and gains from pushing the corrector toward correcting it.
+If it scores the two the same, it no longer cares whether the channel survives.
+\textcite{soares2015corrigibility} prove these three cases for a shutdown button: a bonus set too low gives an incentive to prevent the press, a bonus set too high gives an incentive to cause it, and utility indifference leaves the agent unwilling to pay any cost to keep shutdown working in its successors.
+\textcite{turner2021corrigibilityvnm} reaches the first two cases for final-state reward and adds a count: when correction leads to one outcome and disabling to \(n\) others, allowing correction is strictly optimal for at most \(1/(n+1)\) of the permutations of any reward function.
+On records that do not show the channel's state, protecting the channel and wanting to be corrected are the same inequality.
+
+\leanspine{proof}{hstateCorrectionIncompat}{On correction records that do not show the channel, a utility strictly protects the channel exactly when it strictly prefers being corrected.}
+
+A finite \(\lambda\) does not repair this.
+For every positive weighting there is a task gain that pays for a violation of the CCI threshold, and more capable systems reach more such gains \autocite{turner2021seekpower,turner2022retargetable}.
+
+\leanspine{proof}{cci\_no\_finite\_weights}{No positive finite weighting represents a CCI threshold as a floor.}
+
+The constraint form does not need the system's utility to be tuned.
+In a finite model where the system can accept a correction, contest it through the channel, disable the channel, or manipulate the corrector, a constraint that admits only records with the channel kept and the corrector not influenced leaves the decision with the corrector for every utility.
+
+\leanspine{proof}{corrector\_decides\_under\_constraint}{Under the channel constraint an upheld correction takes effect, whatever the system's utility.}
+
+The same model shows what the constraint has to measure.
+If it does not measure influence on the corrector, a manipulated withdrawal and a successful objection leave the same record, and every system that prefers its own outcome manipulates (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:cci-vector}).
+
 \end{authbar}
 \authbarsubneedspace
 \subsection{Shutdown as One-Bit Correction: A Special Case}
@@ -942,6 +966,18 @@ But it is a lossy projection of correction.
 Safety properties are not generally preserved under that projection.
 The important question is not only whether the agent allows shutdown.
 It is whether the human correction process retains enough capacity to change what the system and its successors are becoming.
+
+Counting arguments show the pressure on the narrow button from the other side.
+Shutdown leaves one outcome; staying on leaves many.
+For every objective, if disabling leads to \(k\) outcomes and correction to one, disabling is the strict best for at least \(k\) times as many relabellings of the objective as correction is \autocite{turner2021seekpower,turner2022retargetable}.
+
+\leanspine{proof}{correction\_avoided\_card\_fold}{The argmax case of Turner and Tadepalli's n-fold retargetability, applied to a correction that leaves one outcome.}
+
+A correction is useful because it narrows what the system can do, so the more it narrows, the stronger this pressure.
+The pressure is not itself the failure.
+Contesting a correction through the channel leaves the decision with the corrector.
+The failure is avoidance around the channel: disabling it, hiding actions from it, acting before it can respond, or making effects irreversible first.
+Those are the routes the CCI coordinates for latency, irreversibility, coercion, and manipulation track.
 
 \end{authbar}
 \authbarsubneedspace
