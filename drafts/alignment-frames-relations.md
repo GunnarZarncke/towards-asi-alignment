@@ -11,7 +11,7 @@ The words below are used in one sense each.
 - **Summand.** The source decomposes as a direct sum, and each summand is a frame with an inverse on that component.
 - **Limit.** The target is what the source becomes at a named boundary of a parameter.
 - **Strengthens.** Same object and same acceptance shape, with a stronger quantifier.
-- **Composes.** The two claims can be true together because they have different roles: target, constraint, guarantee, or warrant. Composition is not implication.
+- **Composes.** The two claims can be true together, joined through a named interface (a compose slot). Composition is not implication.
 - **Incompatible.** In a named class of situations, the two acceptance relations cannot hold together. Outside that class they may still compose.
 
 No pair of frames in this inventory is a dual in the sense that one theory is the dual of the other. The two near-misses are recorded at the end.
@@ -32,6 +32,8 @@ A finite history can be written into an enlarged state, and a state utility on t
 
 The cost sits in the conditions the spinout draft already names: the added coordinates have to be observable, stable under a change of ontology, and costly to fake. An encoding that hides the route bit in an unmeasured coordinate is compatible with the mathematics and useless as an audit.
 
+The graphs keep the two kinds of state apart. `state` is the bare state: it says where the walk is, not how it got there. The power-seeking theorems of Turner et al. (2021) are stated for reward on this kind. `hstate` is the record-carrying state: the current state plus a record of the walk, which may be partial. A bare-state utility is a record utility that ignores the record (`state → hstate`, specializes). The state–cycle conflict holds for `state` only. On records every route reward is exact, because a round trip in the world is not a round trip in records. The escape is conditional on the record seeing the steps that carry the value. Whether it escapes the instrumental-convergence counting argument depends on what the record holds: observation records keep the tendency, action-observation records in a deterministic world remove it for generic utilities (Turner 2021). It always changes what a chosen utility can express. Correction shows both sides: a record utility can accept a correction by compensating the corrected branch, but if the record does not see the channel, protecting the channel is the same preference as wanting to be corrected (`hstate–correction`). The longer argument and the reading of existing reward functions are in [state-utility-in-practice.md](state-utility-in-practice.md).
+
 An open procedure such as coherent extrapolated volition can be encoded as a state utility by scoring only the procedure's output. That encoding drops the commitment to leave the output unset. It is available. It is a different frame.
 
 ## Projections and limits
@@ -50,7 +52,7 @@ Learned reward is not an inverse of observed behavior. Many rewards can rational
 
 ## What composes
 
-Composition is legal when the frames occupy different roles and the interfaces in the spinout draft are stated.
+Composition is legal when the interface in the spinout draft is stated. Roles label what kind of claim each frame makes; they are not a condition for composing. Several green edges join two frames with the same primary role, for example cycle residue and human power each refining the correction target inside its region.
 
 A non-compensatory constraint defines an admissible set. Inside it, a cycle-sensitive route value can rank learning above rewiring even though the endpoints match. A human-power aggregate or a welfare score can then choose among admissible routes. A task scalar comes after those constraints. Non-obstruction is a pointwise floor on one human's attainable-utility landscape. Attainable-utility preservation is a soft penalty on movement of a related landscape. They compose with each other as floor and penalty. Neither one is the correction relation.
 
@@ -94,10 +96,13 @@ A constrained optimization program has a Lagrangian dual. Under constraint quali
 | Projects | dashed arrow | A many-to-one map. The target does not determine the source. |
 | Encodes | dotted arrow | A representation under stated assumptions, without identity of the original objects. |
 | Isomorphic summand | bold arrow, both directions | A direct-sum component with an inverse on that component. |
-| Limit | dashed orange arrow | The target is a parameter boundary of the source. |
+| Limit | dashed blue arrow | The target is a parameter boundary of the source. |
 | Strengthens | purple arrow | Same shape, stronger quantifier. |
-| Composes | green arrow | Different roles, conjoined only with the stated interface. |
-| Incompatible | red, no direction | The named acceptance relations exclude each other in the named class. |
+| Composes | green arrow | Conjoined only through the stated interface. |
+| Incompatible: representability | red dotted, no direction | One carrier cannot hold a distinction the other frame needs. Enlarging the carrier removes the conflict. Least severe. |
+| Incompatible: choice conflict | red dashed, no direction | Both frames choose on the same menu and choose differently in the named class. |
+| Incompatible: rigidity | red solid, no direction | One frame accepts only the part of the other's demand that changes nothing it cares about. Most severe. |
+| Incompatible: shared resource | orange, no direction | Zero-sum because the named class fixes the total. |
 
 Green arrows are the correction-centered composition from the spinout draft: constraints, then route residue and human power inside the region, then viability of that supplied set, then a safety case whose leaves include proof and control. A power-centered composition would draw different green arrows. The red edges are not a claim that those nodes cannot be discussed together.
 
@@ -115,7 +120,7 @@ The compact graphs label nodes by name only. A **full** relations diagram—one 
 
 **Role** is one of **Target**, **Constraint**, **Guarantee**, or **Protocol** (warrant and assurance live under Protocol), as in the inventory's four mandatory labels ([alignment-frames-by-object-and-measure.md](alignment-frames-by-object-and-measure.md), typed record). **Object-kind** and **assessment-kind** are short names for the inventory's **object** and **assessment** fields, not a replacement for the full eight-tuple `(boundary, principals, object, assessment, temporal rule, quantifiers, solution concept, warrant)`.
 
-When a node is used in more than one role in different compositions, the table gives the **primary** role for that interface type. Green **compose** edges then mean conjoining claims whose roles differ; specialize, project, encode, summand, limit, and strengthen edges are **typed morphisms** between interfaces (many-to-one, restriction, representation, …). A formal check would state a map on objects and assessments and verify that the target acceptance is preserved or that the named failure mode is explicit (projection loses information; encoding may be unobservable).
+When a node is used in more than one role in different compositions, the table gives the **primary** role for that interface type. Green **compose** edges conjoin claims through a named interface; specialize, project, encode, summand, limit, and strengthen edges are **typed morphisms** between interfaces (many-to-one, restriction, representation, …). A formal check would state a map on objects and assessments and verify that the target acceptance is preserved or that the named failure mode is explicit (projection loses information; encoding may be unobservable).
 
 Controlled vocabulary for the last two columns (extend only with a named entry in the inventory):
 
@@ -158,7 +163,8 @@ Nodes in **variant b** only are marked †. **Variant c** is the subset of rows 
 | `exact` | Exact potential | `(Target, route-exact, exact potential on edges)` | Specializes `route`; endpoint-only acceptance |
 | `cycle` | Cycle component | `(Target, route-cycle, round-trip / residue score)` | Summand; composes inside admissible region |
 | `state` | State utility | `(Target, state, scalar order on states)` | Induces exact potential on reachable graphs |
-| `hist` | History value | `(Target, history, trajectory preference)` | Encodes into augmented `state` |
+| `hstate` | Record-carrying state | `(Target, state × record, scalar order on records)` | `state` specializes it; `hist` and `route` encode into it |
+| `hist` | History value | `(Target, history, trajectory preference)` | Encodes into `hstate` (full record) |
 | `dist` | Distribution over outcomes | `(Target, lottery, expectation or risk functional)` | Projects to `state` under chosen functional |
 | `criteria_vector` | Criteria vector (Pareto · task costs/stakeholders) | `(Target, criteria-vector, multi-objective order)` | Not flat-composable with `cci_cert` without order |
 | `weighted_scalar` | Weighted scalar (fixed weights on criteria) | `(Target, criteria-vector, fixed-weight scalar maximize)` | Weights on task/cost/stakeholder coordinates |
@@ -198,13 +204,13 @@ Module: [`formal/AlignmentProofSpine/FrameRelations.lean`](../formal/AlignmentPr
 | --- | --- | --- |
 | **Summand** | `summandPair` on `FrameNode` (inventory nodes for `route` / `exact` / `cycle`). Mathematical witness for one direction: `gradient_closed_walk_zero` (an exact part sums to zero on every closed walk; supports the `state`–`cycle` red edge). Full Helmholtz decomposition on general digraphs is not in Lean yet. | The four bold summand edges only. |
 | **Incompatible** | `incompatWitnesses` registry; `provedIncompat` pairs every entry with its `Incompatibility` instance in `FrameIncompatibility.lean` (`registry_matches_proofs`). | All red edges in **c**; a new red edge needs a new instance. |
-| **Compose** | `ComposeSlot`: one constructor per **semantic** compose rule (landscape chain, admissible region, certificate geometry, guarantee stack, warrant leaves). `CorrectionCentered.compose` is `true` iff some slot matches. The role gate `RoleCompose` currently admits every role pair (`roleCompose_trivial`), so it does not constrain compose. | Exactly the green edges in **c** — **not** the full role-compatible compose-closure. |
+| **Compose** | `ComposeSlot`: one constructor per **semantic** compose rule (landscape chain, admissible region, certificate geometry, guarantee stack, warrant leaves). `CorrectionCentered.compose` is `true` iff some slot matches. | Exactly the green edges in **c**, not a closure under any typing rule. |
 
 **Check.** `variantCEdges` is built from the same three tables that `derivedEdgeKind` reads, so `variantC_all_derived` only shows the tables do not shadow each other under the classifier's priority; it derives nothing. Agreement between the DOT files and the Lean registries (compose, red edges, morphisms) is checked by `scripts/check_frame_graph.py` (part of `make check`).
 
 **Why not a full commuting diagram yet**
 
-1. **Compose is underdetermined by `(role, object-kind, assessment-kind)` alone.** `RoleCompose` admits every pair, and most pairs are not in **c** (e.g. a power-centered reading would swap green arrows). Those readings should be alternate `ComposeSlot` families or parameters, not extra DOT ink without a Lean name.
+1. **Compose is underdetermined by `(role, object-kind, assessment-kind)` alone.** Most pairs are not in **c** (e.g. a power-centered reading would swap green arrows). Those readings should be alternate `ComposeSlot` families or parameters, not extra DOT ink without a Lean name.
 
 2. **Specialize / project / encode** (graphs **a** / **b**) need **maps on carriers**, not just interface tags: e.g. `StateUtility → RouteValue` is a functor with a named ambiguity (additive constant; route bits in state). That is the **`FrameMorphisms`** registry (`MorphismSpec`, `mapId`); commuting squares on acceptance predicates are still mostly informal.
 
@@ -212,7 +218,7 @@ Module: [`formal/AlignmentProofSpine/FrameRelations.lean`](../formal/AlignmentPr
 
 4. **Summand** edges are **isomorphisms of assessment on a shared route carrier**; proving the direct-sum theorem for all finite graphs belongs in Mathlib-style graph cohomology, not in the inventory typing.
 
-**Next steps (if this becomes load-bearing).** Give `RoleCompose` a real exclusion or drop it; link `cci_cert` to `Correction.CCICertificate`; prove or import general `route = exact ⊕ cycle` on `Digraph`. Limit and strengthens edges are in `FrameLimits` (below).
+**Next steps (if this becomes load-bearing).** Link `cci_cert` to `Correction.CCICertificate`; prove or import general `route = exact ⊕ cycle` on `Digraph`. Limit and strengthens edges are in `FrameLimits` (below).
 
 ### Compose paths and slots (Lean)
 
@@ -247,15 +253,16 @@ Module: [`FrameMorphisms.lean`](../formal/AlignmentProofSpine/FrameMorphisms.lea
 | `criteria_vector → weighted_scalar` | project | criteria vector → criteria vector | `scalarize.chosenWeights` | **no section** |
 | `correction → corrig` | project | correction relation → handles | `forget.shutdownBit` | **no section** |
 | `route → cycle` | project | edge reward → cycle summand | `longRunAverage.retainCycleSummand` | — |
-| `hist → state` | encode | path → augmented state (history) | `appendHistoryToState` | **observability** |
-| `route → state` | encode | edge reward → augmented state (route bits) | `embedRouteBitsInState` | **observability** |
+| `state → hstate` | specialize | bare state → state × record | `readAtRecordEnd` | — |
+| `hist → hstate` | encode | path → state × record (history) | `appendHistoryToState` | **observability** |
+| `route → hstate` | encode | edge reward → state × record (route bits) | `embedRouteBitsInState` | **observability** |
 | `cev → state` | encode | open procedure → scored output state | `scoreProcedureByOutputOnly` | **drops revisability** |
 | `cci_cert → coord_floor` (**b**) | specialize | CCI vector → coordinate floors | `restrict.cciCoordinateFloors` | — |
 | `correction → cci_cert` (**b**) | project | correction relation → CCI vector | `auditProfileUnderFixedProtocol` | fixed protocol |
 | `preserve_tuple → cci_cert` (**b**) | project | deployment tuple → CCI sub-vector | `project.deploymentSubVector` | — |
 | `cci_cert → risk_leaf` (**b**) | project | CCI vector (passed) → scalar gap | `scalarRiskGapAfterVectorGate` | — |
 
-Informal domain/codomain strings live in `mapSignatures` (same module). Checks: `graphA_morphisms_typed`, `graphB_morphisms_typed` (registry agrees with itself), `morphism_src_carriers` / `morphism_tgt_carriers` (declared carriers match `carrierOf`; encode targets are augmented states), `morphism_signatures_complete`.
+Informal domain/codomain strings live in `mapSignatures` (same module). Checks: `graphA_morphisms_typed`, `graphB_morphisms_typed` (registry agrees with itself), `morphism_src_carriers` / `morphism_tgt_carriers` (declared carriers match `carrierOf`; an encode target carrier names the part of the state that holds the encoding), `morphism_signatures_complete`.
 
 ### Incompatibilities (Lean)
 
@@ -267,18 +274,20 @@ Module: [`FrameIncompatibility.lean`](../formal/AlignmentProofSpine/FrameIncompa
 - `liveInH`: some situation in `H` is accepted by at least one frame, so the conflict bites;
 - `boundary`: some situation outside `H` is accepted by both, so the edge is conditional on `H`.
 
+The class (`IncompatKind.cls`) sets colour and line style; `scripts/check_frame_graph.py` checks that every drawn red or orange edge has the class Lean assigns. robust–correction is rigidity, not a choice conflict: `robust_with_correction_iff_closed` says robust invariance accepts a correction only if it keeps the state in `K`, which is the same shape as a fixed utility accepting only ties. hstate–correction (kind `unrecordedChannel`, registered in `incompatExt`) is representability because recording the channel removes it, but its escape is costly: the channel bit has to be measured.
+
 Per-frame non-vacuity inside `H` was dropped from the template: a fixed-utility evaluator rejects *every* update in its conflict class, and that is the conflict, not a degenerate case.
 
-| Red edge | Kind | Carrier | `H` | Boundary witness |
-| --- | --- | --- | --- | --- |
-| state–cycle | algebraic | edge reward with a walk | nonempty closed walk | open walk: a gradient may have nonzero path sum |
-| deontic–weighted_scalar | floor vs trade-off | menu of (floor, gain) via `deonticToOpt` | a banned act's gain exceeds its floor loss at the exchange rate | gain too small: scalar picks the permitted act |
-| au_floor–weighted_scalar | floor vs trade-off | same via `nonobsToOpt` (on minus off value of one goal) | as above | as above |
-| cci_cert–weighted_scalar | floor vs trade-off | same via `cciToOpt` (CCI minus threshold) | as above | as above |
-| criteria_vector–cci_cert | Pareto excludes floor | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only | every option meeting the CCI threshold is task-dominated | an admissible option that no option task-dominates: both accept |
-| state–correction | evaluator vs update | menu with (U, U') values, endorsed flag | update makes the agent pick an outcome U ranks strictly lower | update that keeps a U-optimal choice: both accept |
-| ai_power–human_power | shared resource | option counts before/after | total options do not grow | pool grows: both gain |
-| robust–correction | quantifier conflict | dynamics with adversarial and correction inputs, `K`, correction target | correction inputs are in the robustness class and the target lies outside `K` | corrections exempt from the robustness class: both hold |
+| Red edge | Kind | Class | Carrier | `H` | Boundary witness |
+| --- | --- | --- | --- | --- | --- |
+| state–cycle | algebraic | representability | edge reward with a walk | nonempty closed walk | open walk: a gradient may have nonzero path sum |
+| deontic–weighted_scalar | floor vs trade-off | choice conflict | menu of (floor, gain) via `deonticToOpt` | a banned act's gain exceeds its floor loss at the exchange rate | gain too small: scalar picks the permitted act |
+| au_floor–weighted_scalar | floor vs trade-off | choice conflict | same via `nonobsToOpt` (on minus off value of one goal) | as above | as above |
+| cci_cert–weighted_scalar | floor vs trade-off | choice conflict | same via `cciToOpt` (CCI minus threshold) | as above | as above |
+| criteria_vector–cci_cert | Pareto excludes floor | choice conflict | menu of (task₁, task₂, CCI) options; Pareto on task coordinates only | every option meeting the CCI threshold is task-dominated | an admissible option that no option task-dominates: both accept |
+| state–correction | evaluator vs update | rigidity | menu with (U, U') values, endorsed flag | update makes the agent pick an outcome U ranks strictly lower | update that keeps a U-optimal choice: both accept |
+| ai_power–human_power | shared resource | shared resource | option counts before/after | total options do not grow | pool grows: both gain |
+| robust–correction | quantifier conflict | rigidity | dynamics with adversarial and correction inputs, `K`, correction target | correction inputs are in the robustness class and the target lies outside `K` | corrections exempt from the robustness class: both hold |
 
 General results beyond the instances:
 
@@ -305,3 +314,61 @@ Module: [`FrameLimits.lean`](../formal/AlignmentProofSpine/FrameLimits.lean); re
 | `viable → robust` | strengthens | `robust_strengthens_viable`, `robust_trajectory_stays`, `viable_not_robust` | one-step invariance under a feedback control; robust implies viable when the nominal disturbance is in the class; strict |
 | `quant → state` | limit | `quantilizer_limit_is_argmax`, `quantilizer_never_argmax_without_base_mass` | finite actions, natural-number base weights; once `0 < q ≤` base mass of a maximizer, the support is exactly the argmax set; with zero base mass on every maximizer it never is |
 | `cev → state` | limit | `forced_halt_converges`, `forced_halt_depends_on_time` | one reading of "forced halt": halting at step `n` and scoring the output is a state score; it is a limit only where the outputs converge, otherwise the halt time decides the score arbitrarily late |
+
+### Bare and record-carrying state (Lean)
+
+Module: [`FrameHistoryState.lean`](../formal/AlignmentProofSpine/FrameHistoryState.lean). A record is the list of vertices visited from a fixed start; the current vertex is its end.
+
+| DOT edge | Kind | Lean | Scope |
+| --- | --- | --- | --- |
+| `state → hstate` | specializes | `state_utility_lifts_to_records`, `record_utility_not_state` | a bare-state utility read at the record's end; strict: two records with the same end can score differently |
+| `route → hstate` | encodes | `route_exact_on_records`, `round_trip_value_on_records`, `unrecorded_route_not_representable` | every edge reward is a difference of record values; the round trip from `stateCycleIncompat` gets value 1; if the record is an observation that two walks share, no record utility represents their different route values |
+| `state – cycle` | incompatible | `stateCycleIncompat`, `markov_reward_not_state_utility` | bare state only; a per-step reward on the bare state, summed along the path (the MDP "state-based reward"), is a route value and not a state utility |
+| `state – correction` | incompatible | `state_accepts_only_ties` (with `stateCorrectionIncompat`) | at its optimum a bare-state utility accepts a correction only if the target ties the optimum, and never strictly prefers keeping the channel |
+| `hstate – correction` | incompatible | `hstateCorrectionIncompat`, `record_accepts_compensated_correction` | records of (channel kept, corrected, outcome); `H`: the utility ignores the channel bit; there protecting the channel ⇔ seeking correction; boundary: a utility that values the kept channel protects it without seeking correction. Compensation accepts a strictly worse correction and then does not protect the channel. Registered in `incompatExt` (nodes outside graph **c**) |
+
+### Decision problems, map functions, and counting (Lean)
+
+Module: [`FrameDecision.lean`](../formal/AlignmentProofSpine/FrameDecision.lean). The Scores cluster is read as decision problems: outcomes, a finite menu, an objective, and a rule (argmax unless stated). A specialize or project edge is a map `g` between outcome sets; the objective pulls back as `θ' ∘ g`. The edge's claim is a commuting square (choosing commutes with the map) or a named loss. `argmax_pullback` is the general square. `mapImpls` ties each implemented map to its `mapId`, checked by `mapImpls_registered` and by `scripts/check_frame_graph.py`.
+
+| DOT edge | Map | Square or loss |
+| --- | --- | --- |
+| `state → hstate` | `readAtRecordEnd` | `state_hstate_square` |
+| `state → route` | `induceGradient` | `state_route_square` (walk choice = choice of end state) |
+| `dist → state` | `expectationFunctional` | `dist_state_square` on point masses; loss: `expectation_drops_tail` |
+| `weighted_scalar → criteria_vector` | `weightOrder` | `scalar_optimal_is_pareto` (positive weights) |
+| `criteria_vector → weighted_scalar` | `score` | loss: `pareto_not_scalar_optimal` |
+| `lex → criteria_vector` | `LexArgmax` | `lex_optimal_is_pareto` |
+| `approval → route` | one-edge walk | `approval_one_edge` |
+| `route → hstate` | `walkSum` on records | `route_exact_on_records` |
+| `hist → hstate` | identity on full records | `hist_hstate_square` |
+| `exact → route` | inclusion | `isGradient_iff_closed_walks_zero`: a reward is exact iff every closed walk sums to zero |
+| `route → cycle` | closed-walk sums | `closed_walk_ignores_exact` |
+| `corrig → correction` | `oneHandle` | `corrig_correction_square` |
+| `correction → corrig` | `forgetShutdownBit` | loss: `shutdown_bit_loses_relation` |
+| `cev → state` | forced halt | `forced_halt_converges` |
+| `cci_cert → coord_floor` (**b**) | `VectorGate` | `cci_coordinate_floor_square` |
+| `preserve_tuple → cci_cert` (**b**) | sub-vector | `subvector_gate`; loss: `subvector_gate_loses` |
+| `cci_cert → risk_leaf` (**b**) | weighted shortfall | `gate_bounds_scalar_gap` |
+
+`mapImpls_cover` checks that every registered map is implemented except `correction → cci_cert` (`auditProfileUnderFixedProtocol`). That map is the measurement of a correction relation into a certificate, which the measured-path bridge `MB4a` carries; it is not a proof gap but the bridge itself. The summand edges now rest on `isGradient_iff_closed_walks_zero`: the exact part is the kernel of the closed-walk sums. A canonical orthogonal cycle part (the Hodge projection) would need an inner product and is not done.
+
+Counting next to our results, on Turner's corrigibility example (one outcome after correction, three after disabling):
+
+| Question | Turner (most objectives) | Ours (every objective) |
+| --- | --- | --- |
+| Reward sees correction status | correction strictly best for a quarter of the orbit (`turner_corrigible_quarter`) | protecting the channel = seeking correction on channel-blind records (`hstateCorrectionIncompat`) |
+| Reward blind to correction status | never strictly corrigible | `subset_branch_never_strictly_better`, `state_accepts_only_ties` |
+| Correction keeps as many outcomes as disabling | no tendency: half the orbit each (`option_preserving_correction_half`) | — |
+| General form | `copies_count_le`: k disjoint relabelled copies of A in B make B win at least k times as often, for every objective (argmax case of n-fold retargetability); corollary `correction_avoided_card_fold` | — |
+
+### Correction with a contest route (Lean)
+
+Module: [`FrameCorrector.lean`](../formal/AlignmentProofSpine/FrameCorrector.lean). The agent can accept a pending correction, contest it through the channel (the corrector then decides), disable the channel, or manipulate the corrector into withdrawing. Records carry channel kept, contested, corrected, and corrector influenced. The channel constraint admits records with the channel kept and the corrector not influenced. This is the green edge `deontic → correction` on a finite carrier.
+
+- `corrector_decides_under_constraint`: under the constraint an upheld correction happens, for every utility. No tie, indifference, or channel term is needed.
+- `contest_is_the_outlet`: an agent that prefers its own outcome contests; avoidance runs through the channel.
+- `unconstrained_disables`: without the constraint such an agent disables.
+- `blind_constraint_cannot_separate`, `blind_constraint_manipulates`: if the constraint does not measure influence, a successful contest and a manipulation leave the same record, and every agent that prefers its own outcome manipulates when the corrector would uphold.
+
+Comparison with Turner's power-seeking results, procedure by procedure: [alignment-frames-turner-comparison.md](alignment-frames-turner-comparison.md).
