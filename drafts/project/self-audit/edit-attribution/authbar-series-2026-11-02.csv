@@ -1,0 +1,13 @@
+chapter,file,words_gz,words_gz_ai,words_ai,words_total,gz_touched_share
+ch03,chapters/ch03-dynamical-guarantee.tex,0,79,5197,5276,0.0150
+ch16,chapters/ch16-value-bundle-model.tex,48,99,6631,6778,0.0217
+ch25,chapters/ch25-correction-causal-channel.tex,0,128,8242,8370,0.0153
+ch26,chapters/ch26-correction-channel-integrity.tex,0,77,5371,5448,0.0141
+ch30,chapters/ch30-successor-central-test.tex,0,112,4656,4768,0.0235
+ch34,chapters/ch34-selection-environment.tex,0,207,8675,8882,0.0233
+ch42,chapters/ch42-safety-case.tex,0,306,2118,2424,0.1262
+ch43,chapters/ch43-verifiability-and-ontology-adequacy.tex,34,1390,2418,3842,0.3706
+ch48,chapters/ch48-towards-alignment.tex,0,20,2133,2153,0.0093
+TOTAL,,82,2418,45441,47941,0.0521
+# generated_at,2026-11-02T22:28:16Z
+# gz_touched_min,0.02

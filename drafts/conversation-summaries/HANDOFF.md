@@ -2,13 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-02 (Chapter 1 stopping rule).
+Last updated: 2026-11-02 (self-audit instruments).
 
 ---
 
 ## Open work
 
 **Ch. 7 after Ch. 1 stopping rule:** Review `chapters/ch07-finding-boundary.tex` so the score and examples match the rule Ch. 1 now states (score deferred to Ch. 7). Plan note: [`claim-extract/claim-extract.md`](../plans/claim-extract/claim-extract.md) § Ch. 1 rollout. Log: `2026-11-02-ch01-stopping-rule.md`.
+
+**§3.16 stop (Nov packet):** Human pass on `chapters/ch15-values-compressed-control.tex` (author scored 3/4 priority labels; E1 miss). Log: `2026-11-02-self-audit-instruments.md`.
 
 **CIRIS field catalog (Eric PR):** Inbound [#3](https://github.com/GunnarZarncke/towards-asi-alignment/pull/3) (`emooreatx:ciris-rc8-update`) not merged as-is. TSA editorial on `origin/ciris-rc8-review` (`525d5e572`); reverse PR to Eric’s branch sent 2026-10-14. Blocked on Eric merge/reply; then merge to `main` and `cd site && npm run sync:field-agendas`. Log: `2026-10-14-ciris-rc8-pr-editorial.md`.
 
@@ -24,6 +26,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-11-02:** **Self-audit instruments** — `audit_authbar_series.py` (§3.1, 5.2% GZ-touched, stop not fired), `audit_parasite_budget.py` (§3.8), §3.16 monthly packet + scorer; November packet scored (stop on ch15). Log: `2026-11-02-self-audit-instruments.md`.
+- **2026-11-02:** **Section-vintage packet** — Monthly review of about 800 words. Priority files from TODOs and handoff; random manuscript and site excerpts; older git text included. Stop is priority vintage only. §3.1 touch-rate stop frozen at 2% once volume matches October. Log: `2026-11-02-monthly-review-packet.md`.
 - **2026-11-02:** **Chapter 1 stopping rule** — Support-desk picture derives the smallest enlargement that changes the predicted failure; author edited wording after agent draft. Score and transition chain deferred (Ch. 7 review still open). 2.0 illustrative example still unchosen. Log: `2026-11-02-ch01-stopping-rule.md`.
 - **2026-11-02:** **Blind status re-derivation** — Five most-touched chapters since September, jailed reader, status unchanged. All five are `reviewed`; reader said working (ch42, ch07, ch25) or draft (ch01, ch15). Log: `2026-11-02-blind-status.md`.
 - **2026-11-02:** **Sandboxed sub-agent MCP** — Tier 1 Python stdio MCP (`scripts/sandboxed-agent-mcp/`); binding [`BLINDING.md`](../scripts/sandboxed-agent-mcp/BLINDING.md); METHODOLOGY § Agent blinding; tsa-on-itself §3.6 instrument. Log: `2026-11-02-sandboxed-agent-mcp-blinding.md`.

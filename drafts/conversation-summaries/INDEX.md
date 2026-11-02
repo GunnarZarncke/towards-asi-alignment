@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-02 | **Self-audit instruments** — §3.1/§3.8 scripts; §3.16 packet scored (stop ch15). | [2026-11-02-self-audit-instruments.md](2026-11-02-self-audit-instruments.md) |
+| 2026-11-02 | **Section-vintage packet** — Monthly mix of priority, random, and older excerpts. Stop is whether priority excerpts are current or old. | [2026-11-02-monthly-review-packet.md](2026-11-02-monthly-review-packet.md) |
 | 2026-11-02 | **Chapter 1 stopping rule** — Support desk derives the rule; later scores and the transition chain are not delivered here. 2.0 example still to choose. | [2026-11-02-ch01-stopping-rule.md](2026-11-02-ch01-stopping-rule.md) |
 | 2026-11-02 | **Blind status re-derivation** — ch42, ch01, ch07, ch15, ch25. All `reviewed`; reader split working / draft. Status unchanged. | [2026-11-02-blind-status.md](2026-11-02-blind-status.md) |
 | 2026-11-02 | **Sandboxed sub-agent MCP** — Tier 1 MCP, PreToolUse jail, BLINDING.md, METHODOLOGY cross-ref. | [2026-11-02-sandboxed-agent-mcp-blinding.md](2026-11-02-sandboxed-agent-mcp-blinding.md) |

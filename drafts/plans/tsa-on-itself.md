@@ -41,7 +41,7 @@ Each entry: what it measures, a sketch, and the stop condition. Scripts go in `s
 
 ### 3.1 `scripts/audit_authbar_series.py` — boundary
 
-Read the bar-update log written by §3.12 (one row each time a span's key changes). Weight current keys by word count and emit a CSV of `GZ` / `GZ+AI` / `AI` share for load-bearing chapters (ch03, ch16, ch25–26, ch30, ch34, ch42–43, ch48). The series updates whenever a tracked span's key is rewritten, which is every commit that changes that span, so it does not wait for a monthly sample. **Stop:** `GZ`-touched share on load-bearing chapters below a threshold fixed at first run (proposal: the current value minus ten points) → next lane is a human pass, not a feature.
+Read the bar-update log written by §3.12 (one row each time a span's key changes). Weight current keys by word count and emit a CSV of `GZ` / `GZ+AI` / `AI` share for load-bearing chapters (ch03, ch16, ch25–26, ch30, ch34, ch42–43, ch48). The series updates whenever a tracked span's key is rewritten, which is every commit that changes that span, so it does not wait for a monthly sample. **Stop (frozen 2026-11-02):** `GZ`-touched word share on those chapters below **2%**, and only when that month's manuscript interval lines and tracked lines are at least the totals in `drafts/project/self-audit/edit-attribution/2026-10.csv`. Below that volume the stop does not arm. When it fires, the next lane is a human pass on those chapters, not a feature. The earlier proposal (the then-current share minus ten points) is retired; a share near 5% with ordinary agent churn is not treated as low. Line volume is not the crux meter; that is §3.16.
 
 ### 3.2 `scripts/check_generated_counts.py` — grounding
 
@@ -69,7 +69,7 @@ Rule rather than script: any load-bearing decision (status change, bridge wordin
 
 ### 3.8 `scripts/audit_parasite_budget.py` — correction parasites
 
-Classify each session log's Done bullets as content (manuscript, Lean, experiments, papers, site features) or bookkeeping (plans, logs, indexes, renames, link fixes); report the share per week. **Stop:** bookkeeping above a fixed share for three consecutive weeks → remove an instrument or a board rather than add one.
+Classify each session log's Done bullets as content (manuscript, Lean, experiments, papers, site features) or bookkeeping (plans, logs, indexes, renames, link fixes); report the share per week. **Stop (frozen 2026-11-02):** bookkeeping share above **40%** of labeled Done bullets for **three consecutive ISO weeks** → remove an instrument or a board rather than add one. Unlabeled bullets are reported but excluded from the share.
 
 ### 3.9 Canary probe — future contamination
 
@@ -235,6 +235,20 @@ Each derivation appends one row per changed key to `drafts/project/self-audit/ed
 
 **Stop:** a channel whose ablation produces compensation on every kind is not load-bearing and is a candidate for removal (the parasite test from §3.8, made mechanical). A channel whose ablation stalls `new-work` sessions is a conserved property and gets a §4 rule protecting it. A `structure_stop` on (e) is recorded as the answer to "are the sessions one agent", not as a failure of the instrument.
 
+### 3.16 Monthly section-vintage packet
+
+Not a reading test and not a search for lifeless prose. Once a month, the author says whether each excerpt is the working-tree text or an older git version. Only the priority excerpts count.
+
+**Packet.** About 800 words, at least six excerpts, from `chapters/`, `appendices/`, and `site/src/content` markdown (quiz files excluded). Excerpt order (`E1`, `E2`, …) is shuffled with a seed stored in the key file; order does not indicate priority. Under each excerpt, all four labels appear on separate lines; the author deletes all but one: `TOP`, `TOP_OLD`, `RANDOM`, `RANDOM_OLD`. At least three excerpts in the packet are truly `TOP` or `TOP_OLD`. The packet includes both vintages in that priority set, and at least one `RANDOM` and one `RANDOM_OLD`. The same path is never used as both current and old. An old excerpt is kept only when the shown window differs from the working tree by at least 20 word tokens. Paths and revisions are not in the review file.
+
+**How the priority files are chosen.** A subagent on Opus 5.5, medium effort, ranks files from `metadata/TODO.md`, `HANDOFF.md`, and the latest blind-status results. It does not read chapter or card bodies. The script then picks a changed section inside each chosen file. Random excerpts are drawn by the script from the remaining manuscript and site files.
+
+**Files.** `scripts/monthly_review_packet.py` writes `drafts/project/self-audit/monthly-review/YYYY-MM.md` and `YYYY-MM.key.json`. Each excerpt lists all four labels on separate lines; the author deletes all but the one that fits. `scripts/score_monthly_review.py` scores against the key. The key stays unopened until then; a run with other than exactly one label left on a priority excerpt exits 2 and does not print answers.
+
+**Stop:** any priority excerpt whose sole remaining label is not `TOP` or `TOP_OLD` as appropriate → human pass on those paths before the next feature lane. `RANDOM` and `RANDOM_OLD` are printed and do not fire the stop. A month that cannot supply both vintages does not generate a packet (the stop would be vacuous).
+
+Live-tree defect planting is out. Nothing in this instrument is written into manuscript, site, or any tree that gets committed as the book.
+
 ## 4. Instructions to add
 
 Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrite:
@@ -256,12 +270,12 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 
 - **Every session:** hooks run by themselves (§3.12 snapshots, §3.13 prompt record); §4.1, §4.6, and §4.8 at log time; `make check` (which will include §3.2) before any claim of completion.
 - **Weekly (first session of the week):** §3.3 audit on two sampled logs (now including prompt-id resolution); §3.8 parasite budget; `scripts/human_delta.py --week` (print-only; does not append the ledger); report totals in the log. Ledger rows are written on commit (`post-commit`) and when cutting `--month`.
-- **Monthly:** §3.1 authorship-share CSV from the bar-update log (keys themselves are already current from per-commit derivation); §3.6 blind re-derivation on five chapters; §3.10 acceptance-rate count; commit `drafts/project/self-audit/edit-attribution/YYYY-MM.csv` and the redacted prompt digest if the author exported one. One log titled `self-audit-YYYY-MM` holds all of it.
+- **Monthly:** §3.1 authorship-share CSV from the bar-update log (keys themselves are already current from per-commit derivation); §3.6 blind re-derivation on five chapters; §3.10 acceptance-rate count; §3.16 section-vintage packet (Opus 5.5 medium ranks priority files from TODOs and handoff, then `scripts/monthly_review_packet.py`); commit `drafts/project/self-audit/edit-attribution/YYYY-MM.csv` and the redacted prompt digest if the author exported one. One log titled `self-audit-YYYY-MM` holds all of it. **Companion site:** if `chapters/` or `appendices/` changed in the month, run `cd site && npm run sync:chapters && npm run sync:chapter-cards` before the log claims the site matches the manuscript (output is gitignored; CI `prebuild` runs full `sync`, but local preview and the monthly pass need this explicitly). If `metadata/book.yml` changed, also `npm run sync:book` (tracked `site/src/data/book.json`).
 
 ### Author
 
 - **Weekly (fifteen minutes):** read the two sampled logs from §3.3 against their diffs; reject or reverse at least one thing if it deserves it, and note it, so §3.10 has a signal.
-- **Monthly:** read the self-audit log; decide on any stop that fired. Pre-register, once, the project-level stop condition (M1 for the book): the state in which the manuscript is declared done, pivoted to site and papers, or paused. Without it every session is narrated as payment.
+- **Monthly:** read the self-audit log; decide on any stop that fired. Score the §3.16 packet (one label left per excerpt) before opening the key. Pre-register, once, the project-level stop condition (M1 for the book): the state in which the manuscript is declared done, pivoted to site and papers, or paused. Without it every session is narrated as payment.
 - **Quarterly:** §3.9 canary probe; re-read the residuals card and the "what this book does not claim" section as a person, not as a maintainer.
 - **Ongoing:** keep the proofreader's packets fresh (§3.5) and keep her out of the revision loop; log outreach contacts (LWCW, hackathon, AISafety.com) in `feedback-contributors.md` with the artifact shared, so §3.4 has items.
 - **Once per clone:** `make hooks`; check `.cursor/hooks.json` is picked up in Cursor (Settings → Hooks shows the three entries) and that a test prompt produces a `refs/snapshots/*-agent-start-cursor-*` ref. Hand edits need nothing: the precommit snapshot attributes them. Decide per month whether to export a prompt digest (§3.13); the raw store never leaves the machine otherwise.
@@ -284,10 +298,14 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 - Do not build dashboards without stops (§4.5).
 - Do not let §3.5 become a style guide; the point is a held-out instrument, not a target.
 - Do not treat any of this as evidence about frontier systems.
+- Do not plant review defects in the working tree, in generated site output, or in anything that can be pushed. §3.16 is a separate packet.
 
 ## 7. Checklist
 
-- [ ] Freeze thresholds for §3.1, §3.3, §3.4, §3.8, §3.10, §3.11 in script headers (author decision; record commit hash)
+- [ ] Freeze thresholds for §3.3, §3.4, §3.10, §3.11 in script headers (author decision; record commit hash). §3.1 and §3.8 thresholds live in script headers (`audit_authbar_series.py`, `audit_parasite_budget.py`).
+- [x] `scripts/audit_authbar_series.py` — load-bearing authbar word share; CSV under `edit-attribution/authbar-series-*.csv`
+- [x] `scripts/audit_parasite_budget.py` — weekly content vs bookkeeping from session logs; CSV under `self-audit/parasite-budget-*.csv`
+- [x] §3.16 section-vintage packet (`scripts/monthly_review_packet.py`, `scripts/score_monthly_review.py`); first file `drafts/project/self-audit/monthly-review/2026-11.md` (author scores)
 - [ ] `scripts/audit_section_ai_scores.py` + tropa-mini pin; first baseline run (`--all`) checked in under `drafts/project/self-audit/section-ai-scores/` (S)
 - [ ] Wire §3.11 into release checklist (`RELEASE_NOTES.md` header or `docs/BUILD.md` release steps) (S)
 - [x] §3.12/§3.13 tooling (S–M, one session): `scripts/hooks/snapshot.sh`, `scripts/hooks/agent_hook.py` (claude + cursor adapters), `scripts/hooks/prune_snapshots.sh`, `scripts/human_delta.py` (manuscript + site path filter; `--derive-bars` rewrites touched `\begin{authbar}` keys and appends `bar-updates.jsonl`), `scripts/export_prompts.py`; `.githooks/{pre-commit,prepare-commit-msg,post-commit}`; `.claude/settings.json` hooks block; `.cursor/hooks.json`; `telemetry/` in `.gitignore`; `make hooks`, `make snap-start`, `make snap-end`; log template `kind` / `uptake` / `Prompts:` fields

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261102T210918.711Z",
+  "_as_of": "20261102T213421.913Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -509,7 +509,7 @@
   "chapters/ch01-wrong-object.tex#14": {
     "agent": 12,
     "file": "chapters/ch01-wrong-object.tex",
-    "human": 4,
+    "human": 6,
     "index": 14,
     "key": "GZ+AI",
     "prior": "GZ+AI"
@@ -645,7 +645,7 @@
   "chapters/ch01-wrong-object.tex#6": {
     "agent": 39,
     "file": "chapters/ch01-wrong-object.tex",
-    "human": 8,
+    "human": 10,
     "index": 6,
     "key": "GZ+AI",
     "prior": "GZ+AI"

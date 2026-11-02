@@ -1,0 +1,47 @@
+{
+  "month": "2026-11",
+  "model": "claude-opus-5-5-medium",
+  "note": "Ranked from TODO, handoff, and blind-status signals. No chapter bodies were opened.",
+  "picks": [
+    {
+      "path": "chapters/ch07-finding-boundary.tex",
+      "heading": "",
+      "reason": "Open handoff item: the Ch. 7 score and examples need to match the revised Ch. 1 stopping rule; the blind check graded it working against a book.yml status of reviewed; and it is on the registry-contract review list."
+    },
+    {
+      "path": "chapters/ch01-wrong-object.tex",
+      "heading": "",
+      "reason": "The blind check graded it draft while book.yml says reviewed, and the author has edited it since; it now defines the stopping rule that Ch. 7 must match."
+    },
+    {
+      "path": "chapters/ch15-values-compressed-control.tex",
+      "heading": "",
+      "reason": "The blind check graded it draft while book.yml still says reviewed, and no human pass since then is recorded."
+    },
+    {
+      "path": "chapters/ch42-safety-case.tex",
+      "heading": "",
+      "reason": "The blind check graded it working against a recorded status of reviewed, and it is on the open registry-contract review list."
+    },
+    {
+      "path": "chapters/ch25-correction-causal-channel.tex",
+      "heading": "",
+      "reason": "The blind check graded it working against a recorded status of reviewed, and its frame-edge additions are still marked as needing review."
+    },
+    {
+      "path": "appendices/appP-bridge-predictions.tex",
+      "heading": "",
+      "reason": "App P is a required review edit before the registry-contract plan can close, and it is the most-changed file since September, so it has the most unreviewed edits."
+    },
+    {
+      "path": "chapters/ch10-strategic-opacity.tex",
+      "heading": "",
+      "reason": "The alignment-faking experiment TODO is still open on an empirical claim that carries weight in the argument, and the chapter has been edited often recently."
+    },
+    {
+      "path": "chapters/ch43-verifiability-and-ontology-adequacy.tex",
+      "heading": "",
+      "reason": "Ch. 43 is on the open registry-contract review list and has been edited often since September, with no human review recorded."
+    }
+  ]
+}

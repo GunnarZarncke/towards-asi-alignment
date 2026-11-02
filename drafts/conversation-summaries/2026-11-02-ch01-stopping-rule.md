@@ -18,6 +18,7 @@ Prompts: `d947b68c-41c3-461f-ac7c-f98e99b6ae86`
 - The 2026-10-20 decision that Chapter 1 delivers a chain of admissible transitions is withdrawn. Successor preservation stays in later chapters.
 
 ## Open / next
+- Companion site: after Ch. 1 prose shipped (`8e5d48a4ff`), run `cd site && npm run sync:chapters && npm run sync:chapter-cards` so gitignored book pages match the `.tex` (not done in that commit).
 - **Review Chapter 7** against the revised Ch. 1 rule: Ch. 1 defers the score to `ch:finding-boundary`; Ch. 7 should carry \(J(C)\) without contradicting the stopping rule or re-delivering what Ch. 1 now withholds. Blind re-derivation (2026-11-02) called Ch. 7 **working**; that is not a score-alignment pass.
 - The boundary-error concept card still says some surrounding parts shape optimization more than the weights. That sentence was withdrawn from Chapter 1.
 - 2.0 checklist: choose the illustrative example before multi-frame prose.
@@ -28,4 +29,4 @@ Prompts: `d947b68c-41c3-461f-ac7c-f98e99b6ae86`
 - `drafts/plans/construct/construct.md`
 
 ## Commits
-- (this session commit)
+- `8e5d48a4ff` — Chapter 1 stopping rule, self-audit, and blind status pass (includes author Ch. 1 edits and claim-extract retarget).
