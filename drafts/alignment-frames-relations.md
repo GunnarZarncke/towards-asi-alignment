@@ -324,8 +324,8 @@ Module: [`FrameHistoryState.lean`](../formal/AlignmentProofSpine/FrameHistorySta
 | `state → hstate` | specializes | `state_utility_lifts_to_records`, `record_utility_not_state` | a bare-state utility read at the record's end; strict: two records with the same end can score differently |
 | `route → hstate` | encodes | `route_exact_on_records`, `round_trip_value_on_records`, `unrecorded_route_not_representable` | every edge reward is a difference of record values; the round trip from `stateCycleIncompat` gets value 1; if the record is an observation that two walks share, no record utility represents their different route values |
 | `state – cycle` | incompatible | `stateCycleIncompat`, `markov_reward_not_state_utility` | bare state only; a per-step reward on the bare state, summed along the path (the MDP "state-based reward"), is a route value and not a state utility |
-| `state – correction` | incompatible | `state_accepts_only_ties` (with `stateCorrectionIncompat`) | at its optimum a bare-state utility accepts a correction only if the target ties the optimum, and never strictly prefers keeping the channel |
-| `hstate – correction` | incompatible | `hstateCorrectionIncompat`, `record_accepts_compensated_correction` | records of (channel kept, corrected, outcome); `H`: the utility ignores the channel bit; there protecting the channel ⇔ seeking correction; boundary: a utility that values the kept channel protects it without seeking correction. Compensation accepts a strictly worse correction and then does not protect the channel. Registered in `incompatExt` (nodes outside graph **c**) |
+| `state – correction` | incompatible | `stateCorrectionIncompat`; Soares cases `soares_prevention_incentive`, `soares_button_neutrality_iff` (`Field.Finite.ShutdownIncentives`) | at its optimum a bare-state utility accepts a correction only if the target ties the optimum (neutrality exactly at equal payoffs), and never strictly prefers keeping the channel |
+| `hstate – correction` | incompatible | `hstateCorrectionIncompat`, `channel_blind_record_is_button` | records of (channel kept, corrected, outcome); `H`: the utility ignores the channel bit; there the choice is the Soares button model and protecting the channel ⇔ seeking correction; boundary: a utility that values the kept channel protects it without seeking correction. Compensation is utility indifference (`soares_indifference_no_preservation`). Registered in `incompatExt` (nodes outside graph **c**) |
 
 ### Decision problems, map functions, and counting (Lean)
 
@@ -358,7 +358,7 @@ Counting next to our results, on Turner's corrigibility example (one outcome aft
 | Question | Turner (most objectives) | Ours (every objective) |
 | --- | --- | --- |
 | Reward sees correction status | correction strictly best for a quarter of the orbit (`turner_corrigible_quarter`) | protecting the channel = seeking correction on channel-blind records (`hstateCorrectionIncompat`) |
-| Reward blind to correction status | never strictly corrigible | `subset_branch_never_strictly_better`, `state_accepts_only_ties` |
+| Reward blind to correction status | never strictly corrigible | `subset_branch_never_strictly_better`, `soares_button_neutrality_iff` |
 | Correction keeps as many outcomes as disabling | no tendency: half the orbit each (`option_preserving_correction_half`) | — |
 | General form | `copies_count_le`: k disjoint relabelled copies of A in B make B win at least k times as often, for every objective (argmax case of n-fold retargetability); corollary `correction_avoided_card_fold` | — |
 

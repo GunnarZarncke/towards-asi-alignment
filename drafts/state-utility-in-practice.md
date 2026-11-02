@@ -20,7 +20,7 @@ So the question "does the agent have a state utility?" has no single answer for 
 
 | Node | What the utility sees | Consequences (Lean) |
 | --- | --- | --- |
-| `state` (bare) | the current state | Every round trip has value zero (`gradient_closed_walk_zero`), so a route reward with nonzero round-trip value is not a state reward (`stateCycleIncompat`). At its optimum it accepts a correction only if the target ties the optimum, and never strictly prefers keeping the correction channel (`state_accepts_only_ties`). |
+| `state` (bare) | the current state | Every round trip has value zero (`gradient_closed_walk_zero`), so a route reward with nonzero round-trip value is not a state reward (`stateCycleIncompat`). At its optimum it accepts a correction only if the target ties the optimum, and never strictly prefers keeping the correction channel (`soares_prevention_incentive`, `soares_button_neutrality_iff` in `Field.Finite.ShutdownIncentives`). |
 | `hstate` (record-carrying) | the current state plus a record of the walk, possibly partial | Every route reward is exact on records (`route_exact_on_records`). The escape needs the record to see the route (`unrecorded_route_not_representable`). |
 
 A bare-state utility is the special case that ignores the record (`state_utility_lifts_to_records`; strict by `record_utility_not_state`).
@@ -29,8 +29,8 @@ A bare-state utility is the special case that ignores the record (`state_utility
 
 The record can hold the correction event, so a record utility is not rigid the way a bare-state utility is. That does not make it corrigible. Take records of (channel kept, correction applied, outcome).
 
-- **Compensation.** A record utility can accept a correction to a strictly worse outcome by scoring the corrected branch at the value of its own optimum. This is the shape of utility indifference. It then has no preference for keeping the channel (`record_accepts_compensated_correction`).
-- **Protection is seeking.** If the record does not see the channel, strictly preferring to keep the channel when a correction comes is the same inequality as preferring being corrected to staying at the own optimum. Causing a correction and receiving one leave the same record (`hstateCorrectionIncompat`).
+- **Compensation.** A record utility can accept a correction to a strictly worse outcome by scoring the corrected branch at the value of its own optimum. This is the shape of utility indifference. It then has no preference for keeping the channel (`soares_indifference_no_preservation`).
+- **Protection is seeking.** If the record does not see the channel, strictly preferring to keep the channel when a correction comes is the same inequality as preferring being corrected to staying at the own optimum. Causing a correction and receiving one leave the same record (`hstateCorrectionIncompat`). On such records the choice is exactly Soares et al.'s button model (`channel_blind_record_is_button`), which the book derives once in `Field.Finite.ShutdownIncentives`.
 - **Boundary.** Suppose the record also shows whether the correction channel still works. Then the utility can give value to a working channel directly, separate from whether a correction happened. Such an agent protects the channel without wanting to be corrected.
 
 So a utility that reads only "corrected or not" and the outcome has three options. It resists (the bare state), it is indifferent to whether the channel survives (compensation), or it wants to be corrected. The boundary case escapes all three, but only by adding a new thing to score: "the channel works". Someone has to say what that means and measure it, and the agent must not be able to fake the measurement. That is the problem the book calls correction-channel integrity. The record does not solve it. The record only shows where it has to be solved.
@@ -39,7 +39,7 @@ So a utility that reads only "corrected or not" and the outcome has three option
 
 Most of the decision-theoretic content of this section is already in Turner, ["A Certain Formalization of Corrigibility Is VNM-Incoherent"](https://www.lesswrong.com/posts/WCX3EwnWAx7eyucqH) (2021). An agent is rewarded for its final state and can disable correction at the first step. He splits on whether reward can see the correction status:
 
-- If reward cannot distinguish corrected from uncorrected states, "strict corrigibility is impossible for *any* policy", and an agent is weakly corrigible to every correction "iff R is constant". This is our bare-state case (`state_accepts_only_ties`).
+- If reward cannot distinguish corrected from uncorrected states, "strict corrigibility is impossible for *any* policy", and an agent is weakly corrigible to every correction "iff R is constant". This is our bare-state case (`soares_button_neutrality_iff`).
 - If it can, strict corrigibility is possible, but if the human would not correct by default, the agent will manipulate the human into correcting it. This is our protection-is-seeking case. He puts it as: "If the agent strictly prefers corrected-states to all non-corrected-states, then *of course* it'll try to get itself corrected!"
 - Under counting, "allowing correction will be strictly optimal for at most 1/(n+1) of the permutations of every reward function".
 - He suggests penalizing the disable *action* through a per-step reward and calls it "a hacky prohibition", not "a deep solution". He also proposes "corrigibility as functional constraints" as a project.
