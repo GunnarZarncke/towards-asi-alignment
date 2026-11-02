@@ -32,6 +32,7 @@ import AlignmentProofSpine.FrameLimits
 import AlignmentProofSpine.FrameHistoryState
 import AlignmentProofSpine.FrameDecision
 import AlignmentProofSpine.FrameCorrector
+import AlignmentProofSpine.FrameDisclosure
 
 /-!
 # AlignmentProofSpine
@@ -77,9 +78,10 @@ Alignment*. It re-exports the layered modules:
 | `FrameIncompatibility` | red edges as `Incompatibility C` instances (disjoint in `H`, live in `H`, boundary outside); `no_finite_weights_represent_floor` and per-edge pullbacks; `pareto_with_floor_coordinate_meets_floor`; proof-carrying `provedIncompat` | alignment-frames spinout |
 | `FrameLockIn` | robust invariance of a captured set (lock-in); `robust_invariance_sign_blind` | alignment-frames spinout |
 | `FrameLimits` | limit and strengthens edges: `robust_strengthens_viable` (strict: `viable_not_robust`), `quantilizer_limit_is_argmax`, `forced_halt_converges`; `limitEdges` registry | alignment-frames spinout |
-| `FrameHistoryState` | bare `state` vs record-carrying `hstate`: `route_exact_on_records` (route reward exact on records), `unrecorded_route_not_representable`, `state_utility_lifts_to_records` (strict: `record_utility_not_state`); correction: `state_accepts_only_ties`, `record_accepts_compensated_correction`, `hstateCorrectionIncompat` (`incompatExt`) | alignment-frames spinout |
+| `FrameHistoryState` | bare `state` vs record-carrying `hstate`: `route_exact_on_records` (route reward exact on records), `unrecorded_route_not_representable`, `state_utility_lifts_to_records` (strict: `record_utility_not_state`); correction: `channel_blind_record_is_button` (bridge to the Soares button model in `Field.Finite.ShutdownIncentives`), `hstateCorrectionIncompat` (`incompatExt`) | alignment-frames spinout |
 | `FrameDecision` | Scores cluster as decision problems: map functions and commuting squares (`argmax_pullback`, `state_route_square`, `scalar_optimal_is_pareto`, `lex_optimal_is_pareto`, `dist_state_square`), `mapImpls` registry; Turner-style orbit counts next to ∀ results (`turner_corrigible_quarter`, `option_preserving_correction_half`, `subset_branch_never_strictly_better`); general n-fold count `copies_count_le`, `correction_avoided_card_fold`; `isGradient_iff_closed_walks_zero`; `mapImpls_cover` | alignment-frames spinout |
 | `FrameCorrector` | correction with a contest route: `corrector_decides_under_constraint`, `contest_is_the_outlet`, `unconstrained_disables`, `blind_constraint_cannot_separate`, `blind_constraint_manipulates` | alignment-frames spinout |
+| `FrameDisclosure` | reporting gaps and disclosure amnesty: `verified_report_beats_use` (any detection rate), `penalty_cannot_reach_undetected`, `finite_bonus_outbid`, `fabrication_needs_verification`; `equal_penalty_conceals`, `matched_amnesty_keeps_deterrence` (Kaplow–Shavell finite form), `amnesty_deterrence_loss`, `sealed_confession_discloses` | alignment-frames spinout |
 
 What is **proved** vs. **assumed**:
 

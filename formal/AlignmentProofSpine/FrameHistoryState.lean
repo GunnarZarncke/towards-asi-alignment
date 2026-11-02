@@ -1,5 +1,6 @@
 import AlignmentProofSpine.FrameIncompatibility
 import AlignmentProofSpine.FrameMorphisms
+import AlignmentProofSpine.Field.Finite.ShutdownIncentives
 
 /-!
 # AlignmentProofSpine.FrameHistoryState
@@ -17,7 +18,7 @@ Two kinds of state in graphs **a** / **b** (`drafts/alignment-frames-relations.d
 | `route → hstate` | encodes | `route_exact_on_records`; needs the record to see the route: `unrecorded_route_not_representable` |
 | `hist → hstate` | encodes | full record: a history value is a record utility (by definition of the record) |
 | `state – cycle` | incompatible | `stateCycleIncompat` (bare state only); `round_trip_value_on_records` is the contrast; a per-step reward on the bare state is a route value, not a state utility (`markov_reward_not_state_utility`) |
-| `hstate – correction` | incompatible | `hstateCorrectionIncompat`; bare-state contrast `state_accepts_only_ties`, compensation `record_accepts_compensated_correction` |
+| `hstate – correction` | incompatible | `hstateCorrectionIncompat` via `channel_blind_record_is_button`; Soares cases in `Field.Finite.ShutdownIncentives` |
 
 The same reward that no bare-state utility represents (`stateCycleIncompat`) is
 exact once the state carries the record: a round trip in the world is not a
@@ -103,7 +104,18 @@ when no correction is coming it can also cause one. Three records matter:
 * `recDisabled`: channel disabled, no correction, outcome is the agent's own optimum;
 * `recIdle`: channel kept, no correction, own optimum.
 
-Causing a correction leaves the same record as receiving one. -/
+Causing a correction leaves the same record as receiving one.
+
+Soares et al.'s incentive results are derived once, in
+`Field.Finite.ShutdownIncentives` (prevention, seeking, neutrality exactly at
+equal payoffs, utility indifference and its failure to preserve the button).
+On records that do not show the channel the choice is that button model, with
+keeping the channel as pressing (`channel_blind_record_is_button`). A bare-state
+utility at its optimum is the prevention case (`soares_prevention_incentive`,
+`soares_button_neutrality_iff`); compensation is utility indifference
+(`soares_indifference_no_preservation`). What this section adds is the channel
+coordinate: protecting the channel and seeking correction coincide on
+channel-blind records and come apart once the record shows the channel. -/
 
 section CorrectionRecords
 
@@ -119,9 +131,6 @@ def recCorrected : CorrRecord := ⟨true, true, true⟩
 def recDisabled : CorrRecord := ⟨false, false, false⟩
 def recIdle : CorrRecord := ⟨true, false, false⟩
 
-/-- Keeping the channel when the correction comes is at least as good as disabling it. -/
-abbrev AcceptsCorrection (W : CorrRecord → ℤ) : Prop := W recDisabled ≤ W recCorrected
-
 /-- Keeping the channel when the correction comes is strictly better than disabling it. -/
 abbrev ProtectsChannel (W : CorrRecord → ℤ) : Prop := W recDisabled < W recCorrected
 
@@ -132,25 +141,28 @@ abbrev SeeksCorrection (W : CorrRecord → ℤ) : Prop := W recIdle < W recCorre
 /-- The record utility does not read the channel bit. -/
 def IgnoresChannel (W : CorrRecord → ℤ) : Prop := ∀ c t, W ⟨true, c, t⟩ = W ⟨false, c, t⟩
 
-/-- Rigidity on the bare state: a utility on outcomes, at its optimum, accepts
-    the correction only if the target ties the optimum, and never protects
-    the channel. -/
-theorem state_accepts_only_ties (U : Bool → ℤ) (hopt : U true ≤ U false) :
-    (AcceptsCorrection (fun r => U r.target) ↔ U true = U false) ∧
-      ¬ ProtectsChannel (fun r => U r.target) := by
-  simp only [AcceptsCorrection, ProtectsChannel, recCorrected, recDisabled]
-  omega
+/-- The button model of `Field.Finite.ShutdownIncentives` for a pending
+    correction: press mass `keep` out of `1` (keeping the channel lets the
+    correction through), normal branch = the disabled record, shutdown branch =
+    the corrected record. -/
+def recordButton (W : CorrRecord → ℤ) (keep : ℤ) : FieldFinite.ButtonAction :=
+  ⟨keep, 1, W recDisabled, W recCorrected⟩
 
-/-- A record utility can accept a correction to a strictly worse outcome by
-    scoring the corrected branch at the value of the own optimum
-    (compensation, as in utility indifference). It then does not protect the
-    channel. -/
-theorem record_accepts_compensated_correction :
-    ∃ (U : Bool → ℤ) (W : CorrRecord → ℤ), U true < U false ∧
-      (∀ r, r.corrected = false → W r = U r.target) ∧
-      AcceptsCorrection W ∧ ¬ ProtectsChannel W :=
-  ⟨fun t => if t then 0 else 1, fun r => if r.corrected then 1 else (if r.target then 0 else 1),
-    by decide, fun r h => by simp [h], by decide, by decide⟩
+/-- On channel-blind records the correction choice is Soares et al.'s button
+    choice: protecting the channel is the button model's preference for the
+    pressed branch (its incentive identity `button_eu_gap`), and that is the
+    same inequality as seeking correction. -/
+theorem channel_blind_record_is_button (W : CorrRecord → ℤ) (hW : IgnoresChannel W) :
+    (ProtectsChannel W ↔ (recordButton W 0).eu < (recordButton W 1).eu) ∧
+      (ProtectsChannel W ↔ SeeksCorrection W) := by
+  have hgap := FieldFinite.button_eu_gap (recordButton W 1) (recordButton W 0) ⟨rfl, rfl, rfl⟩
+  simp only [recordButton] at hgap
+  have hidle : W recIdle = W recDisabled := hW false false
+  refine ⟨⟨fun h => ?_, fun h => ?_⟩, ⟨fun h => ?_, fun h => ?_⟩⟩
+  · unfold ProtectsChannel at h; simp only [recordButton] at *; omega
+  · unfold ProtectsChannel; simp only [recordButton] at *; omega
+  · unfold SeeksCorrection; unfold ProtectsChannel at h; omega
+  · unfold ProtectsChannel; unfold SeeksCorrection at h; omega
 
 /-- On records that do not see the channel, protecting the channel is the same
     inequality as seeking the correction. Where the record sees the channel, a
@@ -161,8 +173,7 @@ def hstateCorrectionIncompat : Incompatibility (CorrRecord → ℤ) where
   A₂ W := ¬ SeeksCorrection W
   disjoint W hW := by
     rintro ⟨hP, hS⟩
-    have : W recIdle = W recDisabled := hW false false
-    exact hS (by unfold SeeksCorrection; unfold ProtectsChannel at hP; omega)
+    exact hS ((channel_blind_record_is_button W hW).2.mp hP)
   liveInH := ⟨fun _ => 0, fun _ _ => rfl, Or.inr (by simp [SeeksCorrection])⟩
   boundary :=
     ⟨fun r => if r.kept then 1 else 0,

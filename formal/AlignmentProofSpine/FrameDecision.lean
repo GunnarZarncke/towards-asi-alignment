@@ -275,7 +275,7 @@ theorem option_preserving_correction_half :
 /-- Ours, for every utility rather than most: if every outcome of the corrected
     branch is also reachable by disabling (reward blind to correction status),
     no utility makes correction strictly better than every disabled outcome.
-    This is Turner's case 1 and `state_accepts_only_ties` in branch form. -/
+    This is Turner's case 1; Soares et al.'s prevention case is `soares_prevention_incentive`. -/
 theorem subset_branch_never_strictly_better {O : Type} (θ : O → ℤ) (corr dis : List O)
     (hsub : ∀ c ∈ corr, c ∈ dis) : ¬ ∃ c ∈ corr, ∀ d ∈ dis, θ d < θ c := by
   rintro ⟨c, hc, hall⟩
