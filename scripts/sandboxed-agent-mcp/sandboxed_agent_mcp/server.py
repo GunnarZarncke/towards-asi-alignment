@@ -42,6 +42,8 @@ async def run_sandboxed_agent(
     system_prompt: str,
     allow_write: bool = True,
     max_turns: int = 30,
+    model: str | None = None,
+    effort: str | None = None,
 ) -> str:
     return await run_sandboxed(
         prompt=prompt,
@@ -49,6 +51,8 @@ async def run_sandboxed_agent(
         system_prompt=system_prompt,
         allow_write=allow_write,
         max_turns=max_turns,
+        model=model,
+        effort=effort,
     )
 
 

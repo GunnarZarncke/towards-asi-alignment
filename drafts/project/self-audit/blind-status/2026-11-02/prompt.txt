@@ -1,0 +1,21 @@
+You are a reader of one chapter of a technical book. The only files you may use are in the current directory. You have no access to the rest of the repository, to version history, or to any editorial label. Do not try to leave this directory. Do not edit the file. Read it, then answer.
+
+---
+Read chapter.tex. Judge the chapter as it stands on the page.
+
+Reply in plain text with exactly these three parts:
+
+MATURITY: one of sketch, draft, working, stable
+- sketch: the argument is not yet something a reader could check
+- draft: the argument is assembled, and major claims run ahead of the support written on the page
+- working: the main claims are stated together with their support and their limits
+- stable: a careful reader could rely on the claims as stated, with only local gaps
+
+WHY: one short paragraph. Say what is supported on the page and what is not. Do not guess at a hidden editorial label.
+
+WEAKEST:
+1. A short quote of the claim, the section heading it sits under, and one sentence on why it is weak.
+2. Same.
+3. Same.
+
+Use only the file in this directory.

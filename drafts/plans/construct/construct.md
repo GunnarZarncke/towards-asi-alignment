@@ -23,6 +23,22 @@ Four objects, kept separate:
 2. Constructibility has a named test that can **fail** (including: the lab’s impact story is not evidence).
 3. Concrete construction remains behind the existing reviewer bar: a Backtest-style **fail/refuse**, not more vocabulary.
 
+## Frame of the target (before other 2.0 chapter prose)
+
+v1 cites several target-types inside one argument. 2.0 names the frame first, then revises the chapters that discuss another frame so a citation stays in its frame. This is prior to Family A–E inserts, the ch37/ch40 sentences, and the 2.0 intro-claim wording. It is not the prosaic-vs-superintelligence positioning item in `metadata/TODO.md`, and it is not the cycle-stability intro claim in [`embedded-v2.md`](embedded-v2.md).
+
+**TSA’s object.** The continued possibility of correction of a human value-bearing process. The guarantee has the shape of a viability claim: trajectories that start in a basin stay out of the bad set. Viability (Aubin; Heitzig, Kittel, Donges, and Molkenthin 2016, both already in ch3) is that shape, not a second target.
+
+**Neighbors already in the book, to label rather than absorb.** State utility (ch4, ch14: Omohundro, Soares et al. 2015, Turner et al. 2021). Learned reward (ch4: IRL, CIRL, RLHF). Human power as something to pursue (App B: Heitzig and Potham 2025). Limited optimization and option-loss penalties (ch27: Taylor quantilizers; attainable-utility preservation; relative reachability). Procedure with an open output (ch4, ch28, ch45: CEV, coherent blended volition, constitutions; MB8 stays retired). Deliberation (ch28, ch29, ch45: Habermas, Rawls). Christiano 2018 drift-management (ch28) is the field cousin of this book’s object; do not merge it with act-level approval. Unreachability proofs (ch3: GSAI, out of scope). A protocol around a system whose objective is untrusted (ch3: AI control). Non-domination and capabilities (ch29, ch45: Pettit, Sen) are the political and wellbeing cousins. Edge-value / process alignment (Hallgren, draft 2026) is not yet cited; ch29’s pathway split is the prose cousin. History-utility (Hammond 1988) is the parent of state scores and edge scores and is not cited.
+
+**Multi-frame presentation.** One running example, carried across these frames. Not chosen yet. Earlier candidates: the Chapter 1 deployed loop, or learning versus rewiring of the judge. On that example each frame says what it secures and what it cannot see. TSA’s correction-possibility reading is the thread. A neighbor is a complement when it adds something the thread uses: a power metric gives an agent something to pursue, an edge value makes route and reversibility visible inside a score, a procedure leaves content open, a protocol covers a hostile system. State the dependence the other way too: the complement still needs the correction channel to stay measurable. A complement is not a second guarantee.
+
+**Illustrative example, still to choose.** v1 Chapter 1 works one picture, a customer-support loop, only far enough to derive a stopping rule. Before the multi-frame prose, consider choosing one illustrative example and using it across the material, so a reader can keep a single object in mind. It might be that worked picture, carried further, or an actual system named when one is in hand. Do not treat the Chapter 1 picture as already the example. In each chapter that uses it, say whether the object is the same one.
+
+**Revision.** Opening positioning at the end of ch1 “Which Alignment?”, before the boundary question. Then revise chapters that discuss another frame without saying so. First inventory, not a closed list: ch3, ch4, ch14, ch27, ch28, ch29, ch45, App B. Finish the inventory before editing. No v1 manuscript edit; the prose waits on the 2.0 manuscript gate, and it precedes other 2.0 prose in those chapters.
+
+Artifacts: [object-by-measure inventory](../../alignment-frames-by-object-and-measure.md) · [relations](../../alignment-frames-relations.md) · [DOT](../../alignment-frames-relations.dot) · [SVG](../../alignment-frames-relations.svg) · [spinout paper draft](../../alignment-frames-spinout-paper.md) · LaTeX [`papers/alignment-frames/`](../../../papers/alignment-frames/).
+
 ## Non-goals
 
 - Do not add Construction to the **v1** PDF/site chapter list until Backtest Exp. 4.
@@ -179,6 +195,7 @@ Family E objects, kept out of the v1 PDF:
 | Phase | When | Work |
 |-------|------|------|
 | **P0** | Now (this file) | Objects split (including path); 2.0 map; ch37 ties; Ngo residue named; Family E briefing paper; manuscript still out |
+| **P0-frame** | Before other 2.0 chapter prose | Frame section above: name TSA’s object, finish the chapter inventory, sketch the running example. Prose revision waits on the manuscript gate and precedes other edits in those chapters |
 | **P1** | After author OK | One Family D note (App B reverse column or field-hub “constructor-side”) — still not v1 chapters |
 | **P2** | Backtest Exp. 4 | Revisit manuscript: Family A paragraphs in ch33/intro only if they do not claim Q2 solved |
 | **P3** | Per-part fail/refuse | Open Family B chapters one at a time; H3/H4 wrong-vacuum / enforcement-collapse only after bar |
@@ -234,6 +251,8 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 ## Checklist
 
 - [x] Lane plan file exists; TODO work-map node points here
+- [ ] **Illustrative example.** Choose one example for use across the 2.0 material (the Chapter 1 support-desk picture carried further, or an actual system). Not chosen. § Illustrative example, still to choose.
+- [ ] **Frame of the target (early).** Name the object (correction possibility; viability is the shape of the guarantee). Finish the inventory of chapters that discuss another frame. Sketch one running example on which neighbor frames are complements, not second guarantees. Revise those chapters only under the 2.0 manuscript gate, and before other 2.0 prose there. § Frame of the target. Distinct from prosaic-vs-superintelligence positioning and from the cycle-stability intro claim.
 - [ ] **2.0 planning scope relaxation** — within-model alignment (topic to consider; effects relevant, no detailed within-model program); proof-based approaches, GSAI, and logical induction in-scope for map/crosswalk/drafting. v1 gates unchanged. Policy: § 2.0 planning scope above; [`metadata/TODO.md`](../../../metadata/TODO.md) Construct row
 - [ ] Author decision: 2.0 as Part XI vs XI+XII vs companion volume vs keep papers-only until P3
 - [x] External construction lit review received — [`construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md); usable list in this file

@@ -55,6 +55,7 @@ async def run_sandboxed(
     allow_write: bool = True,
     max_turns: int = 30,
     model: str | None = None,
+    effort: str | None = None,
 ) -> str:
     validate_invocation(prompt=prompt, root=root, system_prompt=system_prompt)
 
@@ -128,6 +129,7 @@ async def run_sandboxed(
         },
         max_turns=max_turns,
         model=model,
+        effort=effort,
     )
 
     final: str | None = None

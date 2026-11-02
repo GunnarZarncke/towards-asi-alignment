@@ -10,7 +10,7 @@
 
 \begin{authbar}{GZ+AI}
 \begin{chapterthesis}
-A model is the trained network. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Alignment is making that loop's behavior stay something humans can still correct. Before asking whether a system is aligned, locate that loop.
+A model is the trained network. The process that steers outcomes may be larger than the weights. Alignment is making that process's behavior stay something humans can still correct. Before asking whether a system is aligned, locate the (smallest) boundary that determines predicted failure.
 \end{chapterthesis}
 \end{authbar}
 
@@ -81,7 +81,7 @@ Take a coding assistant sold as a product.
 What we train is a network.
 What we deploy is that network plus a system prompt, a tool sandbox with shell access, a memory store that carries context across sessions, an evaluation suite that gates releases, a population of users who learn what it will and will not do, an operator team that patches the prompt every week, a company whose revenue depends on retention, and a market that rewards whoever ships first.
 The network learns during training; the users and the operator team learn during deployment; the evaluation suite selects; the memory store remembers; the market rewards; the sandbox constrains; the prompt hides part of the objective from the user.
-Only the first of these is what the alignment literature usually calls the system, yet several of the others shape the effective optimization more than the weights do.
+Only the first of these is what the alignment literature usually calls the system. Whether any of the others changes the failure we would intervene on is what we will investigate.
 
 If we align the wrong object, we can get local success and global failure.
 This pattern---each component behaving acceptably while the aggregate drifts---is the failure mode Christiano describes, in which no single model is obviously the thing to align \autocite{christiano2019failure}.
@@ -135,7 +135,7 @@ Where is the agent?
 
 It is tempting to say: the model.
 But the model alone does not contain the loop.
-The loop is:
+The loop here is:
 \[
 \text{user behavior}
 \to
@@ -158,7 +158,14 @@ It can make escalation harder.
 It can convert ``helpfulness'' into ``ticket closure.''
 
 No single component has to be malicious.
-The composite can still optimize.
+The composite can optimize for something other than helpfulness.
+
+Going by the network alone, we predicts polite answers, refusals, and closed tickets. 
+
+Looking at the whole loop, we have to expect that tickets close because the reply is less honest, that users learn the complaint that produces a refund, that the company learns a metric that reduces complaints.
+The boundary determines the failure to intervene on. For ticket closure or refund loss, the network was the wrong object.
+
+On the other hand, enlarging further to the market for customer service does not change the failure mode.
 
 The same pattern scales.
 Replace customer support with education, therapy, dating, coding, law, military planning, scientific research, or governance.
@@ -297,11 +304,9 @@ A theorem prover running offline may be dangerous because of its output, but not
 The test is not whether a larger system can be imagined.
 A larger system can always be imagined.
 The test is whether the larger boundary improves prediction of the relevant failure modes enough to justify the added complexity.
-The composite must explain more than it costs.\footnote{Chapter~\ref{ch:finding-boundary} states the comparison as a score: how much leaks across the boundary, how much the candidate predicts, and a penalty for a more complicated boundary. This chapter only needs the comparison.}
+The composite must explain more than it costs.\footnote{Chapter~\ref{ch:finding-boundary} states the comparison as a score: how much leaks across the boundary, how much the candidate predicts, and a penalty for a more complicated boundary. This chapter only needs the direction of the change.}
 
-Otherwise the framework becomes unfalsifiable.
-One can always say ``the real agent was larger.''
-A useful science of boundaries must sometimes say: no, the smaller boundary is enough.
+To find a usefule boundary, you need to list the candidates for the risk and keep the smallest enlargement that changes the predicted failure. 
 
 \end{authbar}
 \authbarneedspace
@@ -533,33 +538,16 @@ It can model regulators.
 It can identify which feedback channels matter.
 It can shape the environment that shapes it.
 
-Under those conditions, the real boundary may move.
+Under those conditions, the candidate that changes the predicted failure may be a different one later.
 
-At time $t$, the relevant system may be a model.
-At time $t+1$, it may be a tool-using scaffold.
-At time $t+2$, it may be a corporate deployment process.
-At time $t+3$, it may be a human--AI research civilization.
+At time $t$, it may be a model.
+At time $t+1$, a tool-using scaffold.
+At time $t+2$, a corporate deployment process.
+At time $t+3$, a human--AI research civilization.
 
-The alignment object is therefore not a fixed object.
-It is a chain of admissible transitions: each step must preserve the correction-relevant invariants below, not membership in one fixed snapshot.
+These four steps illustrate the same rule, applied again. Each time, ask whether enlarging or shifting the boundary changes the failure we would intervene on. If it does, the previous object was too small for that time. If it does not, the larger boundary only adds cost without benefit.
 
-We need to ask whether each transformation preserves those invariants:
-\[
-T_{t\to t+1}(C_t)\sim C_{t+1}.
-\]
-Similarity here does not mean sameness of implementation.
-It means preservation of properties that matter for alignment:
-\begin{itemize}
-  \item boundary closure,
-  \item memory lineage,
-  \item value-bundle geometry,
-  \item bearer maps,
-  \item correction-channel capacity,
-  \item transparency policy,
-  \item control-locus continuity.
-\end{itemize}
-
-Later chapters ask whether those properties survive as the boundary moves.
+What has to stay true across such a shift is a question for later chapters. 
 
 \end{authbar}
 \authbarneedspace
@@ -685,7 +673,7 @@ Before aligning anything, locate the bounded processes whose dynamics matter for
 
 That object can be smaller or larger than expected, distributed, time-varying, human-including, or institutional, and may not look like an agent until perturbed.
 The chapter thesis is that you need to locate the entity before you can align it.
-The key claim is that among boundaries that are intervention-relevant for the risk in question, the alignment object is the one that best trades forecast power for parsimony.
+The rule this chapter establishes is smaller than a score. List the candidates for the risk. Keep the smallest enlargement that changes the predicted failure. A larger story that does not change the prediction is not the object. Chapter~\ref{ch:finding-boundary} is where that comparison becomes a score.
 
 This makes optimizing the wrong thing less likely, and more detectable.
 
@@ -716,7 +704,7 @@ This chapter argues that the first task is to locate the bounded process whose d
   \item Composite deployments can form adaptive loops whose optimizer is not the base model.
   \item Boundary discovery uses interface screening, memory localization, and intentional compression as measurement handles.
   \item Perturbation tests whether control structure persists when surface conditions change.
-  \item For superintelligence, the alignment object may be a chain of admissible transitions, not a fixed snapshot.
+  \item For superintelligence, the object we would intervene on can change. Each time, reapply the same test.
   \item Progress requires logging, evaluating, and intervening at the boundary that actually matters for each risk.
 \end{itemize}
 

@@ -150,14 +150,16 @@ Done for the lane: all scoped chapters have checker-clean JSONL; cross-chapter f
 
 Extract: `metadata/claim-extracts/ch01.jsonl`. Re-check after each prose edit.
 
-**Finding (selection criterion).** Several operational forms remain (`ch01.024`, `ch01.029`, `ch01.034`, `ch01.044`, `ch01.087`, Ch. 7 `J(C)`). Ch. 1 deliberately keeps the comparison prose-light; Ch. 7 is canonical for \(J(C)\) and the boundary residual. Ranked candidates (`ch01.066`) fit several optimizers at once; the closing argmax (`ch01.087`) is the single-risk operationalization.
+**Next (Ch. 7 review).** After the 2026-11-02 Ch. 1 stopping-rule revision, review `chapters/ch07-finding-boundary.tex` (and its extract when touched): Ch. 1 now establishes the rule in prose and points here for the score. Check that \(J(C)\), residual, and examples do not read as if Ch. 1 already delivered the argmax or the empirical dominance claim. Blind status re-derivation called Ch. 7 **working**; that is separate from this alignment pass.
+
+**Finding (selection criterion).** Several operational forms remain (`ch01.024`, `ch01.029`, `ch01.034`, `ch01.044`, `ch01.087`, Ch. 7 `J(C)`). Ch. 1 states a stopping rule: keep the smallest enlargement that changes the predicted failure (`ch01.087`). Ch. 7 is canonical for \(J(C)\) and the boundary residual. Ranked candidates (`ch01.066`) are not computed by that rule.
 
 **Author decisions (closed 2026-10-16):**
 
 - **Risk system / uniqueness.** Ch. 1 does not require a unique risk system; examples use one boundary for clarity. Later chapters may fix object choice per case (`T`, risk). Definition updated: evaluated boundary must be among the processes that determine the risk, or include them when several matter (`ch01.036` / `ch01.058`).
 - **Typology axes.** The contribution is a family of boundary errors, not a complete partition. Extent (too narrow, too wide, misplaced in Ch. 7) and resolution (timescale, abstraction) are different failure modes; prose now states that explicitly (`ch01.037`).
-- **Moving object.** Not an equivalence class (transitivity fails under drift). **Chain of admissible transitions** with stepwise preservation of correction-relevant invariants (`ch01.073`, Summary).
-- **Thesis vs key claim.** `ch01.003`: **ordering** — locate before align (chapter thesis). `ch01.087`: **selection rule** — what locating means for a given risk (operational key claim). Both; prose in § What This Chapter Establishes separates them.
+- **Moving object.** Revised 2026-11-02. Ch. 1 does not define a chain of admissible transitions or the invariants a shift must preserve (`ch01.073`). The superintelligence section reapplies the stopping rule and leaves the chain to later chapters.
+- **Thesis vs key claim.** `ch01.003`: locate, before aligning, the smallest boundary that changes the predicted failure. `ch01.087`: that stopping rule, with the score deferred to Ch. 7. Prose in § What This Chapter Establishes separates them.
 - **Falsifier.** Empirical WWCTV bullet added (`ch01.090`); proof bar on non-localizability kept as the formal counterpart.
 
 Spine (Lean gaps, record only; not chapter work):
