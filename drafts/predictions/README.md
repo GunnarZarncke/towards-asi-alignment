@@ -11,6 +11,8 @@ Working contracts and source material for 2027 bridge markets — not manuscript
 | [`resolution-gap-analysis.md`](resolution-gap-analysis.md) | Phase 2b gaps, CIRIS context, smallest next experiment |
 | [`resolution-advisors.md`](resolution-advisors.md) | Proposed advisors and desk/panel protocols for other platforms. Not linked from the manuscript or the site |
 | [`metaculus-question-template.md`](metaculus-question-template.md) | Create-form fields, the limits that apply, and how to lay them out in TeX and on the site |
+| [`futuresearch-market-01-2026-11-02.md`](futuresearch-market-01-2026-11-02.md) | Third-party FutureSearch forecast snapshot for Market 1 (OTHER 72% / NO 19% / YES 9%); not resolution input |
+| [`futuresearch-market-04-2026-11-02.md`](futuresearch-market-04-2026-11-02.md) | Third-party FutureSearch forecast snapshot for Market 4 (OTHER 80% / NO 13% / YES 7%); not resolution input |
 | [`CIRIS_TSA_Combined_Experiment_Proposal.pdf`](CIRIS_TSA_Combined_Experiment_Proposal.pdf) | CIRIS×TSA experiment proposal (architecture only in the gap analysis) |
 | [`AI_Alignment_Prediction_Market_Resolution_Criteria.docx`](AI_Alignment_Prediction_Market_Resolution_Criteria.docx) | Source export (no tracked changes) |
 

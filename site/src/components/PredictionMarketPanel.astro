@@ -1,5 +1,8 @@
 ---
 import MetaculusEmbed from "./MetaculusEmbed.astro";
+import PredictionImprovisedForecast, {
+  type ImprovisedForecast
+} from "./PredictionImprovisedForecast.astro";
 
 interface Props {
   shortTitle: string;
@@ -19,6 +22,8 @@ interface Props {
   registryLabel?: string;
   /** Shown inside the forecast slot when not yet listed on Metaculus. */
   listingPreview?: string;
+  /** Third-party snapshot when no Metaculus embed yet. */
+  improvisedForecast?: ImprovisedForecast;
 }
 
 const {
@@ -35,7 +40,8 @@ const {
   externalLink = false,
   registryHref,
   registryLabel,
-  listingPreview
+  listingPreview,
+  improvisedForecast
 } = Astro.props;
 ---
 
@@ -77,6 +83,8 @@ const {
   {
     embedId ? (
       <MetaculusEmbed questionId={embedId} title={embedTitle || shortTitle} layout="panel" />
+    ) : improvisedForecast ? (
+      <PredictionImprovisedForecast forecast={improvisedForecast} listingPreview={listingPreview} />
     ) : (
       <div class="forecast-slot" aria-hidden="true">
         {listingPreview && <p class="forecast-listing-preview">{listingPreview}</p>}

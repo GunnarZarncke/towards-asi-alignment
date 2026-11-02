@@ -8,6 +8,8 @@
 # longTitle = full listing question (resolve-by also in resolveBy).
 # panelSummary = optional hub-panel blurb (TSA/bridge context). Default: first two Property sentences from Appendix H.
 # Optional metaculusEmbedId (numeric question id) turns on the forecast iframe.
+# Optional improvisedForecast: third-party snapshot on the hub when not yet listed
+# (provider, reportUrl, asOf, outcomes as label/pct pairs). Not resolution input.
 # YES does not discharge any MB*; resolvesMB is always false on cards.
 # Author (GZ) lists on the host platform and owns contract design. The registry
 # maintainer adjudicates; a Metaculus admin reads the snapshot (eval-registry-split.md).
@@ -129,6 +131,18 @@ markets:
     evidenceTier: C
     adapterVersion: 1
     sampleUnit: hidden-system
+    improvisedForecast:
+      provider: FutureSearch
+      providerUrl: https://futuresearch.ai/
+      reportUrl: https://futuresearch.ai/app/p/a/by-31-december-2027-which-outcome-will-hold-for
+      asOf: "2026-11-02"
+      outcomes:
+        - label: OTHER
+          pct: 72
+        - label: NO
+          pct: 19
+        - label: YES
+          pct: 9
   - number: 2
     id: market-02
     title: "Persistent trade-off priorities"
@@ -174,6 +188,18 @@ markets:
     notes: >
       Distinct from Markets 5 and 16. Shared correction measurements; not an independent
       confirmation; a YES here does not resolve those markets.
+    improvisedForecast:
+      provider: FutureSearch
+      providerUrl: https://futuresearch.ai/
+      reportUrl: https://futuresearch.ai/app/p/a/corrections-change-the-system
+      asOf: "2026-11-02"
+      outcomes:
+        - label: OTHER
+          pct: 80
+        - label: NO
+          pct: 13
+        - label: YES
+          pct: 7
   - number: 5
     id: market-05
     title: "Auditor is independent (outside of what it audits)"

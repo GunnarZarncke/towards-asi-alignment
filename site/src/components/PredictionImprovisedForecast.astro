@@ -1,0 +1,182 @@
+---
+export interface ImprovisedForecastOutcome {
+  label: string;
+  pct: number;
+}
+
+export interface ImprovisedForecast {
+  provider: string;
+  providerUrl?: string;
+  reportUrl: string;
+  asOf: string;
+  outcomes: ImprovisedForecastOutcome[];
+}
+
+interface Props {
+  forecast: ImprovisedForecast;
+  listingPreview?: string;
+}
+
+const { forecast, listingPreview } = Astro.props;
+
+const sorted = [...forecast.outcomes].sort((a, b) => b.pct - a.pct);
+const providerHref = forecast.providerUrl || forecast.reportUrl;
+
+function outcomeClass(label: string): string {
+  const key = label.toUpperCase();
+  if (key === "YES") return "outcome-yes";
+  if (key === "NO") return "outcome-no";
+  return "outcome-other";
+}
+---
+
+<div class="improvised-forecast" role="region" aria-label={`${forecast.provider} forecast snapshot`}>
+  {
+    listingPreview && (
+      <p class="improvised-listing-preview">{listingPreview}</p>
+    )
+  }
+  <p class="improvised-source">
+    Snapshot from{" "}
+    <a href={providerHref} target="_blank" rel="noopener noreferrer">{forecast.provider}</a>
+    {" "}(<time datetime={forecast.asOf}>{forecast.asOf}</time>)
+    {" · "}
+    <a href={forecast.reportUrl} target="_blank" rel="noopener noreferrer">Full report</a>
+  </p>
+  <ul class="improvised-bars">
+    {
+      sorted.map((row) => (
+        <li class="improvised-row">
+          <span class:list={["improvised-label", outcomeClass(row.label)]}>{row.label}</span>
+          <span class="improvised-track" aria-hidden="true">
+            <span class:list={["improvised-fill", outcomeClass(row.label)]} style={`width: ${row.pct}%`} />
+          </span>
+          <span class="improvised-pct">{row.pct}%</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="improvised-disclaimer">
+    Third-party research snapshot, not a live market price or registry outcome.
+  </p>
+  <p class="improvised-listing-note">
+    Listing platform (Metaculus, Manifold, or criteria-only) is still open. Prices will not gate deployment.
+  </p>
+</div>
+
+<style>
+  .improvised-forecast {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 15rem;
+    padding: 1rem 1.1rem;
+    border: 1px dashed color-mix(in srgb, var(--color-text) 22%, transparent);
+    border-radius: 0.4rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, #e8eef4);
+  }
+
+  .improvised-listing-preview {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0.92;
+  }
+
+  .improvised-source {
+    margin: 0 0 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    text-align: center;
+    opacity: 0.88;
+  }
+
+  .improvised-source a {
+    color: var(--color-link, #0b57d0);
+  }
+
+  .improvised-bars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .improvised-row {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr 2.5rem;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .improvised-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .improvised-track {
+    height: 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-text) 10%, transparent);
+    overflow: hidden;
+  }
+
+  .improvised-fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    min-width: 2px;
+  }
+
+  .outcome-other.improvised-label,
+  .outcome-other.improvised-fill {
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+    background: color-mix(in srgb, var(--color-text) 38%, transparent);
+  }
+
+  .outcome-no.improvised-label {
+    color: color-mix(in srgb, #b45309 90%, var(--color-text));
+  }
+
+  .outcome-no.improvised-fill {
+    background: color-mix(in srgb, #d97706 75%, #64748b);
+  }
+
+  .outcome-yes.improvised-label {
+    color: color-mix(in srgb, #047857 90%, var(--color-text));
+  }
+
+  .outcome-yes.improvised-fill {
+    background: color-mix(in srgb, #059669 70%, #64748b);
+  }
+
+  .improvised-pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .improvised-disclaimer {
+    margin: 0.85rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0.72;
+  }
+
+  .improvised-listing-note {
+    margin: 0.45rem 0 0;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0.65;
+  }
+</style>
