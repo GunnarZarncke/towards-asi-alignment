@@ -85,6 +85,8 @@ Prompts: paraphrase-only
     - `check_frame_graph.py` → "Frame graph check passed (19 compose, 9 incompatible, 18 morphism (17 with map functions), 3 limit/strengthens edges match Lean).";
     - bibliography summaries "562 summaries for 562 bib keys"; PDF build: see below.
 
+- content (2026-10-26, consolidation): Soares et al. was derived twice. `Field.Finite.ShutdownIncentives` (prevention, seeking, neutrality, indifference) is now the single derivation. Removed `state_accepts_only_ties`, `record_accepts_compensated_correction`, and the unused `AcceptsCorrection` from `FrameHistoryState`. Added `channel_blind_record_is_button`: on channel-blind records the correction choice is the button model (via `button_eu_gap`); `hstateCorrectionIncompat` now goes through it. References updated in appG, relations note, write-up, comparison, lens cards, ledger (`check_axiom_budget.py` → "Axiom budget check passed (134 theorems, no drift)."; book table unchanged).
+
 ## Decisions
 - robust–correction classed as **rigidity**, not choice conflict (earlier plan): `robust_with_correction_iff_closed` is "accepts only corrections that stay in K". Flagged to the user.
 - hstate–correction classed as **representability** (recording the channel removes it). The dotted style understates the cost of that escape. Flagged.
