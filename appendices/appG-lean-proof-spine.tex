@@ -172,10 +172,9 @@ Handle \leanid{Soares2015_corrigibility_problem_imported}: straightforward utili
 The incentive structure itself is re-proved, not merely imported. In the two-branch button model \(\mathrm{EU}=p\,U_S+(M-p)\,U_N\) (\texttt{Field/Finite/ShutdownIncentives.lean}): the incentive identity \(\mathrm{EU}(a)-\mathrm{EU}(b)=(p_a-p_b)(U_S-U_N)\) (\leanid{button\_eu\_gap}); shutdown-prevention and shutdown-seeking incentives with button-neutrality exactly at \(U_S=U_N\) (\leanid{soares\_prevention\_incentive}, \leanid{soares\_button\_neutrality\_iff}); utility indifference removes the button incentive locally, is destroyed by any nonzero compensation error (\leanid{soares\_indifference\_knife\_edge}), and gives the agent no reason to pay anything to preserve the shutdown behavior (\leanid{soares\_indifference\_no\_preservation}) --- the paper's negative result.
 
 \paragraph{Record view (alignment-frame modules).}
-The alignment-frame modules restate the same cases on correction records and add a contest route.
-A bare-state utility at its optimum accepts a correction only if the target ties its optimum (\leanid{state\_accepts\_only\_ties}).
-A record utility can accept by compensation but then does not care whether the channel survives (\leanid{record\_accepts\_compensated\_correction}).
-On records that do not show the channel, protecting it and seeking correction are the same inequality (\leanid{hstateCorrectionIncompat}).
+The alignment-frame modules reuse this derivation rather than repeating it, and add a channel coordinate and a contest route.
+On correction records that do not show the channel, the choice is the button model above, with keeping the channel as pressing (\leanid{channel\_blind\_record\_is\_button}).
+So protecting the channel and seeking correction are the same inequality there, and only a record that shows the channel separates them (\leanid{hstateCorrectionIncompat}).
 Turner's count appears in argmax form for every objective (\leanid{copies\_count\_le}, \leanid{correction\_avoided\_card\_fold}).
 With accept, contest, disable, and manipulate as actions, a constraint on the measured channel leaves the decision with the corrector for every utility (\leanid{corrector\_decides\_under\_constraint}), and without the manipulation coordinate every system that prefers its own outcome manipulates (\leanid{blind\_constraint\_manipulates}).
 These are finite models; they do not discharge \texttt{MB4a}.
