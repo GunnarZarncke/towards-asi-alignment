@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sandboxed-agent": {
+      "command": "/ABS/PATH/TO/towards-asi-alignment/.venv/bin/python",
+      "args": ["-m", "sandboxed_agent_mcp"],
+      "cwd": "/ABS/PATH/TO/towards-asi-alignment/scripts/sandboxed-agent-mcp",
+      "env": {
+        "PYTHONPATH": "/ABS/PATH/TO/towards-asi-alignment/scripts/sandboxed-agent-mcp"
+      }
+    }
+  }
+}

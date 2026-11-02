@@ -19,7 +19,7 @@ Checklists for cross-cutting work lanes. **`metadata/TODO.md`** is the canonical
 - [`audit-telemetry.md`](audit-telemetry.md) — draft recording recommendation; placement awaits an author decision (tracked in `metadata/TODO.md` Housekeeping)
 - [`lw-wiki-tags.md`](lw-wiki-tags.md), [`iliad-communal-canon.md`](iliad-communal-canon.md) — outreach sketches, not scheduled (tracked in `metadata/TODO.md` Outreach)
 - [`lw-wiki-chapter-quotes.md`](lw-wiki-chapter-quotes.md) — quote LW wiki openings into chapters; applied 2026-09-30
-- [`sandboxed-agent-mcp.md`](sandboxed-agent-mcp.md) — tooling draft, not scheduled
+- [`sandboxed-agent-mcp.md`](sandboxed-agent-mcp.md) — Tier 1 MCP server; code in [`scripts/sandboxed-agent-mcp/`](../../scripts/sandboxed-agent-mcp/)
 - [`last-safety-review.md`](last-safety-review.md) — *The Last Safety Review* browser game; plan and specs in [`game/the-last-safety-review/`](../../game/the-last-safety-review/)
 
 Closed plans (Voice, problem-axis, field spring-map, spec sheet, construct lit-review inputs) live in [`../attic/`](../attic/).

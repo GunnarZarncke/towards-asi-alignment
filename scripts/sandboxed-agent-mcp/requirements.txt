@@ -1,0 +1,2 @@
+# Install into repo .venv: .venv/bin/pip install -r scripts/sandboxed-agent-mcp/requirements.txt
+claude-agent-sdk==0.2.176

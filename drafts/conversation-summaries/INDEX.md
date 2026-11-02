@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-02 | **Sandboxed sub-agent MCP** — Tier 1 MCP, PreToolUse jail, BLINDING.md, METHODOLOGY cross-ref. | [2026-11-02-sandboxed-agent-mcp-blinding.md](2026-11-02-sandboxed-agent-mcp-blinding.md) |
+| 2026-11-02 | **Self-audit 2026-10** — Weekly plus October correction-channel evaluation. No armed stop fired. Steering is in the prompt; manuscript line edits stay with the agent. | [2026-11-02-self-audit-2026-10.md](2026-11-02-self-audit-2026-10.md) |
 | 2026-10-25 | **Frame edge classes** — red dotted/dashed/solid and orange by class with Lean check; Turner comparison; Soares section; SHA-pinned Lean links; Frame theorems in the axiom ledger. | [2026-10-25-frame-edge-classes.md](2026-10-25-frame-edge-classes.md) |
 | 2026-10-24 | **Bare vs record-carrying state** — `hstate` node, `FrameHistoryState.lean`, lens card; reading of how far reward functions use the record. | [2026-10-24-bare-vs-record-state.md](2026-10-24-bare-vs-record-state.md) |
 | 2026-10-23 | **Lens review fixes** — Review of lens cards and Frame Lean modules; apply clear fixes, report open items. | [2026-10-23-lens-review-fixes.md](2026-10-23-lens-review-fixes.md) |

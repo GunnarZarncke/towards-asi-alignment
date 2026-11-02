@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-10-23 (lens review fixes: Lean frames + lens cards).
+Last updated: 2026-11-02 (sandboxed sub-agent MCP + blinding protocol).
 
 ---
 
@@ -22,6 +22,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-11-02:** **Sandboxed sub-agent MCP** — Tier 1 Python stdio MCP (`scripts/sandboxed-agent-mcp/`); binding [`BLINDING.md`](../scripts/sandboxed-agent-mcp/BLINDING.md); METHODOLOGY § Agent blinding; tsa-on-itself §3.6 instrument. Log: `2026-11-02-sandboxed-agent-mcp-blinding.md`.
+- **2026-11-02:** **Self-audit 2026-10** — Weekly and October correction-channel pass. Ledger CSVs for Sep (from 28 Sep) and Oct; no armed stop fired. Author steering is in the prompt; manuscript diffs stay in the agent bucket (pure human 2.9% of October manuscript lines). Log: `2026-11-02-self-audit-2026-10.md`.
 - **2026-10-25:** **Frame edge classes** — red edges styled by Lean class (dotted representability, dashed choice conflict, solid rigidity, orange shared resource; limits now blue), checked by `check_frame_graph.py`; `drafts/alignment-frames-turner-comparison.md`; Soares section in `drafts/state-utility-in-practice.md`; Lean links pinned to the built commit (`site/scripts/lib/repo-pin.mjs`); 54 Frame theorems in the axiom ledger (`scope: frames`, not in the book table). Role rule deleted (misderivation). Turner 2021 posts found to contain most of the correction trilemma; write-up corrected with consequences and interventions. `FrameDecision.lean` adds map functions, commuting squares, and Turner-style counts; Soares/Turner bib entries fixed and extended. 2026-10-26: all graph maps but the `MB4a` measurement step proved (`mapImpls_cover`); general argmax n-fold retargetability (`copies_count_le`); `FrameCorrector.lean` (contest route, influence-blind constraint admits manipulation); chapter additions in ch14, ch21, ch25–27, ch29, ch44, appB, appG per `drafts/plans/turner-soares-integration.md`. Open: review the chapter additions. Log: `2026-10-25-frame-edge-classes.md`.
 - **2026-10-24:** **Bare vs record-carrying state** — graphs **a**/**b** split `state` (bare; instrumental-convergence premise; state–cycle conflict) from `hstate` (state × record; route rewards exact there if the record sees the route). `FrameHistoryState.lean` (incl. red `hstate`–correction: protecting the channel = seeking correction unless the record sees it), new lens card. Write-up: `drafts/state-utility-in-practice.md` (Turner checked: records do not escape the counting argument). Log: `2026-10-24-bare-vs-record-state.md`.
 - **2026-10-23:** **Lens review fixes** — Proof-carrying red-edge registry, ∀-weight floor pullbacks, honest role gate, `decide` not `native_decide`; `scripts/check_frame_graph.py` in `make check`; lens card links/quotes/claims fixed, Lean anchors generated. Decided next: split red edges into choice conflict / shared resource / representability / rigidity (state–correction = rigidity). Plan and other open items in log: `2026-10-23-lens-review-fixes.md`.

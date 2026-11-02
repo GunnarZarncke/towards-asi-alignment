@@ -33,6 +33,7 @@ did (prompts, schemas, frozen JSON, checkers).
 | **Backtest per-host freezes** | `drafts/plans/backtest/backtest-phase*.md`, `backtest-c004-*.md`, `backtest-v2-moltbook-mb7a.md` |
 | **Backtest ledger + checkers** | [`experiments/backtest/`](../experiments/backtest/) |
 | **Sim blind-generation (binding)** | [`goal-agent-simulation/BLIND_GENERATION.md`](../experiments/goal-agent-simulation/BLIND_GENERATION.md), [`lab-simulation/BLIND_GENERATION.md`](../experiments/lab-simulation/BLIND_GENERATION.md), [`lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](../experiments/lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md), [`lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](../experiments/lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md), [`graded-lab-simulation/BLIND_GENERATION.md`](../experiments/graded-lab-simulation/BLIND_GENERATION.md) |
+| **Orchestrator blind sub-agent (binding)** | [`scripts/sandboxed-agent-mcp/BLINDING.md`](../scripts/sandboxed-agent-mcp/BLINDING.md) — MCP `run_sandboxed_agent`; complements Lesson 8 physical stash |
 | **External-test preregistration** | e.g. `experiments/lab-simulation/runners/et4_secret_loyalties/*_preregistration.json`, [`graded-lab-simulation/PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md) |
 | **Embedded audit-plane projection** | [`embedded-simulation/embedded_sim/audit_projection.py`](../experiments/embedded-simulation/embedded_sim/audit_projection.py) (sensor-plausible fields for the auditor) |
 
@@ -169,6 +170,36 @@ Before freezing in `DESIGN.md` / `PLAN.md`:
 5. Rough fraction of realistic designs that pass unassisted? (Lesson 6)
 6. Between-round “missing facts”: cold-read coherence test? (Lessons 2–3)
 7. Feedback plan avoids coarsened threshold predicates? (Lesson 2)
+
+---
+
+## Agent blinding (orchestrator sub-agents)
+
+Simulation **blind generation** (above) breaks generator/detector co-design
+inside a sim line. **Book, backtest v2, and self-audit** blind readers need a
+different instrument: a sub-agent that must not see the repo rubric, git
+history, or held-out labels while the orchestrator still has repo access.
+
+**Binding protocol:** [`scripts/sandboxed-agent-mcp/BLINDING.md`](../scripts/sandboxed-agent-mcp/BLINDING.md).
+
+| Layer | What it does | What it does *not* do |
+|-------|----------------|------------------------|
+| **Packet directory (`root`)** | Only files copied into the jail are reachable via Read/Glob/Grep | Replace Lesson 8 stash when sensitive paths remain elsewhere on disk |
+| **MCP `run_sandboxed_agent`** | Custom system prompt, optional read-only, PreToolUse path jail (incl. Glob `pattern`) | Block the parent agent from reading held-out material |
+| **Task-tool subagent (readonly)** | Cheap parallel work | Enforced blindness — treat as instructed-only unless BLINDING.md void rules apply |
+
+**Habits:** (1) Prepare `root` before invoke; (2) `allow_write: false` for
+scorers/readers; (3) orchestrator never feeds verdicts or answer keys; (4) log
+`root`, model, and auth summary; (5) void run if outside **content** leaks (not
+merely error strings). **Stop:** path enumeration or content outside `root` →
+fix path map, void scored output, session-log the bypass (2026-11-02 Glob
+`pattern` class).
+
+**Self-audit:** §3.6 blind status re-derivation in
+[`drafts/plans/tsa-on-itself.md`](../drafts/plans/tsa-on-itself.md) should use
+this instrument (export chapter without status/git into a fresh directory, then
+`run_sandboxed_agent`), not a same-session Task subagent that already saw
+`book.yml`.
 
 ---
 

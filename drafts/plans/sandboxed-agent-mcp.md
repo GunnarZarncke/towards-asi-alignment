@@ -4,7 +4,9 @@ A standalone MCP server that gives your local Claude Code a tool to spawn an
 **isolated sub-agent** confined to a directory, with a custom system prompt,
 read + write inside that directory only, and **no shell / command execution**.
 
-Status: **DRAFT for review** — do not implement until decisions in §11 are confirmed.
+Status: **implemented (Tier 1)** — [`scripts/sandboxed-agent-mcp/README.md`](../../scripts/sandboxed-agent-mcp/README.md).
+
+**Decisions (2026-11):** D1 `scripts/sandboxed-agent-mcp/` · D2 Tier 1 · D3 stdio · D4 Python · D5 caller-supplied `system_prompt`, writes on by default (`allow_write` flag).
 
 ---
 

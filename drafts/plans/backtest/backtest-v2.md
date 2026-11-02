@@ -134,7 +134,7 @@ Run once. Null/refuse/fail as registered. No retune (M5).
 
 A **second** blinded generator designs the **eval split and margins** from the criteria memo plus a **schema-only** description of tables (column names, not values). Still must not see FINDINGS or which rows would pass.
 
-**Physical isolation** if the generator is an agent with repo access: stash FINDINGS, this plan’s predicted outcomes, and Appendix M case cards (Lesson 8). Instruction-only “don’t read” is insufficient.
+**Physical isolation** if the generator is an agent with repo access: stash FINDINGS, this plan’s predicted outcomes, and Appendix M case cards (Lesson 8). Instruction-only “don’t read” is insufficient. For packet-scoped readers/scorers, also use [`scripts/sandboxed-agent-mcp/BLINDING.md`](../../scripts/sandboxed-agent-mcp/BLINDING.md) (`run_sandboxed_agent` with `root` = copy-only packet).
 
 ---
 

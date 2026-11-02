@@ -61,7 +61,7 @@ Not a script; a protocol, because the signal is the least captured one the proje
 
 ### 3.6 Blind status re-derivation — adversarial verifiability of labels
 
-Give a fresh agent one chapter with the status field, epistemic-status box, and git history hidden; ask for a maturity verdict and the three weakest claims. Compare with `book.yml` and the chapterthesis. Run on five chapters per month. **Stop:** disagreement above a fixed rate → status labels are presentation; downgrade all to `draft` until re-derived. Note the shared-instrument caveat: this catches label drift, not model-level blind spots.
+Give a fresh agent one chapter with the status field, epistemic-status box, and git history hidden; ask for a maturity verdict and the three weakest claims. Compare with `book.yml` and the chapterthesis. Run on five chapters per month. **Instrument:** [`scripts/sandboxed-agent-mcp/BLINDING.md`](../../scripts/sandboxed-agent-mcp/BLINDING.md) — export stripped `.tex` (or equivalent) into a dedicated `root`, then `run_sandboxed_agent` with `allow_write: false`; orchestrator must not have read the export in the same turn before scoring. Task-tool subagents alone are insufficient (instructed blindness). **Stop:** disagreement above a fixed rate → status labels are presentation; downgrade all to `draft` until re-derived. Note the shared-instrument caveat: this catches label drift, not model-level blind spots.
 
 ### 3.7 Shared-instrument accounting
 
@@ -301,7 +301,7 @@ Minimal additions to `AGENTS.md` (a new subsection **Self-audit**), not a rewrit
 - [ ] First held-out packet prepared and scored; `liveness_features.py` features pre-registered (S + author + proofreader)
 - [x] `AGENTS.md` **Self-audit** subsection (§4) (S)
 - [ ] Project-level stop condition written by the author (one paragraph, dated) (author)
-- [ ] First monthly self-audit log
+- [x] First monthly self-audit log (`2026-11-02-self-audit-2026-10.md`; week of 2026-11-02 plus October)
 - [ ] Outreach contacts and artifacts logged in `feedback-contributors.md` (author)
 - [ ] Canary probe recorded once (S)
 

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261026T083016.045Z",
+  "_as_of": "20261102T154735.636Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -81,7 +81,8 @@
     "prior": "AI"
   },
   "appendices/appG-lean-proof-spine.tex#3": {
-    "agent": 12,
+    "agent": 19,
+    "dirty": true,
     "file": "appendices/appG-lean-proof-spine.tex",
     "human": 0,
     "index": 3,
