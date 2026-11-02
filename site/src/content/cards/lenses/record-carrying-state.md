@@ -23,6 +23,6 @@ The record can be the full history, a transcript, or a few route bits. Every rou
 
 The escape works only for what the record sees. If two walks leave the same record and differ in route value, no record utility represents the difference (`unrecorded_route_not_representable`).
 
-Correction is the same. A record utility can accept a correction to a worse outcome by compensating the corrected branch, but then it does not care whether the channel survives (`record_accepts_compensated_correction`). If the record does not see the channel, protecting the channel is the same preference as wanting to be corrected (`hstateCorrectionIncompat`).
+Correction is the same. A record utility can accept a correction to a worse outcome by compensating the corrected branch, but then it does not care whether the channel survives (`soares_indifference_no_preservation`). If the record does not see the channel, protecting the channel is the same preference as wanting to be corrected (`hstateCorrectionIncompat`).
 
 Whether the record escapes the instrumental-convergence counting argument depends on what it holds. Over observation records the tendency stays and can get stronger; over action-observation records in a deterministic world it disappears for generic utilities (Turner 2021). What the record always changes is what a chosen utility can express.
