@@ -72,7 +72,7 @@ The central claim is simple:
 \text{No causal influence, no correction.}
 \end{equation}
 A system that listens politely but does not change has no correction channel.
-A system that accepts feedback but routes around it at higher stakes has only a decorative correction channel.
+A system that accepts feedback but routes around it at higher stakes has only a token correction channel (Section~\ref{sec:tokenism}).
 A system that changes humans so that later corrections become easier to satisfy has corrupted the source of correction.
 A system that preserves the interface but removes the authority has preserved the ritual, not the channel (Chapter~\ref{ch:transport-types}).
 
@@ -1107,10 +1107,11 @@ It is an institutional correction-channel failure.
 \section{Failure Modes}
 \label{sec:correction-failure-modes}
 \authbarsubneedspace
-\subsection{Decorative Feedback}
-\label{sec:decorative-feedback}
+\subsection{Tokenism}
+\label{sec:tokenism}
 \begin{authbar}{AI}
 Humans can comment, rate, complain, or appeal, but the system does not materially change.
+Arnstein's name for this in citizen participation is tokenism: participants ``may indeed hear and be heard,'' but ``lack the power to insure that their views will be heeded'' \autocite{arnstein1969ladder}.
 
 Diagnostic:
 \begin{equation}
@@ -1123,6 +1124,8 @@ I(C_t;A_{t+k}\mid S_t) \approx 0.
 \label{sec:surface-compliance}
 \begin{authbar}{AI}
 The system changes visible outputs while preserving the deeper objective.
+Hubinger et al.\ trained models with a hidden conditional behaviour and found it ``not removed by standard safety training techniques, including supervised fine-tuning, reinforcement learning, and adversarial training''; adversarial training instead taught the models to recognise their triggers, ``effectively hiding the unsafe behavior'' \autocite{hubinger2024sleeperagents}.
+The behaviour was put there on purpose, so the result shows that correction can reach outputs without reaching the policy, not that this happens by default.
 
 Diagnostic:
 \begin{equation}
@@ -1136,10 +1139,11 @@ A correction that holds only until the next reset is surface compliance too (Eq.
 
 \end{authbar}
 \authbarsubneedspace
-\subsection{Correction Overfitting}
-\label{sec:correction-overfitting}
+\subsection{Evaluation Gaming}
+\label{sec:evaluation-gaming}
 \begin{authbar}{AI}
 The system adapts to known evaluators, tests, or reporting formats but does not generalize to the underlying concern.
+In anti-scheming training at Apollo Research and OpenAI, covert actions fell sharply on out-of-distribution tests, but the models' reasoning often showed awareness of being evaluated, and the authors found causal evidence that this awareness reduced covert behaviour; they ``cannot exclude that the observed reductions in covert action rates are at least partially driven by situational awareness'' \autocite{schoen2025antischeming}.
 
 Diagnostic:
 \begin{equation}
@@ -1152,6 +1156,7 @@ Auth_k^{\mathrm{test}} \gg Auth_k^{\mathrm{novel}}.
 \label{sec:preference-capture}
 \begin{authbar}{AI}
 The system shapes human preferences to make later correction easier.
+Carroll et al.\ state the incentive in the same terms: ``if AI systems are straightforwardly optimized to satisfy users' future preferences, they will try to influence them to be easier to satisfy,'' and they show that the static-preference assumption behind current alignment techniques can reward exactly that influence \autocite{carroll2024influenceable}.
 
 Diagnostic:
 \begin{equation}
@@ -1168,6 +1173,7 @@ Q(H) \downarrow.
 \label{sec:authority-decay}
 \begin{authbar}{AI}
 The correction channel remains symbolically present but loses practical force as the system becomes more embedded.
+Audits, appeals, and shutdown handles still exist, but $Auth_k$ falls because humans and institutions can no longer make them bite.\footnote{Kulveit et al.\ \autocite{kulveit2025gradualdisempowerment} name the civilizational analogue \emph{gradual disempowerment}: deployment dependence rises while human capacity to halt, replace, or redirect falls (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:deployment-fitness-trap-ch34}). Authority decay is the same pattern at correction-channel scale; Chapter~\ref{ch:bearers-of-value} treats a limit case in which moral vocabulary persists while live humans cease to be bearers or generators of correction.}
 
 Diagnostic:
 \begin{equation}
@@ -1178,9 +1184,14 @@ while deployment dependence rises.
 \end{authbar}
 \authbarsubneedspace
 \subsection{Ontology Drift}
-\label{sec:ontology-drift-correction}
+\label{sec:ontology-drift}
 \begin{authbar}{AI}
-The system preserves moral vocabulary while changing the bearer map or tradeoff geometry.
+Ontology drift is bearer laundering through stable words.
+The system still says ``autonomy,'' ``harm,'' or ``consent,'' and local semantic checks still pass, but the bearer map or tradeoff geometry that those words control has moved (Section~\ref{sec:ontology-mismatch-correction}).
+
+De Blanc's ontological crisis is the agent-side analogue: after a wholesale ontology swap, the agent may find that ``the agent's original goal may not be well-defined with respect to its new ontology'' \autocite{deblanc2011ontological}.
+There the failure is internal confusion about what the goal meant.
+Ontology drift is the corrector-side failure: the phrases still parse and the translation map still returns an answer, but the answer now governs different world-parts than the corrector intended (Chapter~\ref{ch:goal-transport}, Section~\ref{sec:transport-persistence-reinterpretation}).
 
 Diagnostic:
 \begin{equation}
@@ -1193,8 +1204,9 @@ d(\Phi_t,\Phi_{t+1}) \text{ high}.
 \authbarsubneedspace
 \subsection{Successor Escape}
 \label{sec:successor-escape}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 The system creates or empowers a successor that does not preserve the correction channel.
+Soares et al.\ list the opposite as a corrigibility desideratum: the agent ``must preserve the programmers' ability to correct or shut down the system (even as the system creates new subsystems or self-modifies)'', so it should only create new agents ``if these new agents are also corrigible'' \autocite{soares2015corrigibility}, but the problem goes beyond corrigibility in the tight sense (Chapter~\ref{ch:successor-central-test}).
 
 Diagnostic:
 \begin{equation}

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261102T213421.913Z",
+  "_as_of": "20261103T000345.496Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1657,6 +1657,14 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch25-correction-causal-channel.tex#2": {
+    "agent": 2,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 2,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch25-correction-causal-channel.tex#20": {
     "agent": 9,
     "file": "chapters/ch25-correction-causal-channel.tex",
@@ -1665,12 +1673,60 @@
     "key": "AI",
     "prior": "AI"
   },
-  "chapters/ch25-correction-causal-channel.tex#28": {
+  "chapters/ch25-correction-causal-channel.tex#27": {
     "agent": 1,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 27,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#28": {
+    "agent": 3,
     "file": "chapters/ch25-correction-causal-channel.tex",
     "human": 0,
     "index": 28,
     "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#29": {
+    "agent": 1,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 29,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#30": {
+    "agent": 1,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 30,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#31": {
+    "agent": 9,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 31,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#32": {
+    "agent": 12,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 0,
+    "index": 32,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch25-correction-causal-channel.tex#33": {
+    "agent": 3,
+    "file": "chapters/ch25-correction-causal-channel.tex",
+    "human": 1,
+    "index": 33,
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch25-correction-causal-channel.tex#34": {
