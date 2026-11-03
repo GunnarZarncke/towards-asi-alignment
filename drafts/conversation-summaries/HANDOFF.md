@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-02 (FutureSearch hub panels).
+Last updated: 2026-11-03 (Ch. 25 failure modes; Scott autograntor LW comment).
 
 ---
 
@@ -26,6 +26,7 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 ## Recently shipped
 
+- **2026-11-03:** **Ch. 25 failure-mode sources** — Committed `4e85d1a22a`: standard names, one source each, labels (`sec:tokenism`, `sec:evaluation-gaming`, `sec:authority-decay`, `sec:ontology-drift`); authority decay + GD footnote; successor → Ch. 30. **Scott autograntor:** LW comment published; extract `context/extracts/scott-autograntor-zarncke-comment-2026-11-03.md`. Log: `2026-11-03-ch25-failure-mode-sources.md`.
 - **2026-11-02:** **FutureSearch Markets 1 & 4** — Draft snapshots in `drafts/predictions/futuresearch-market-*-2026-11-02.md`; predictions hub shows improvised FutureSearch bars until Metaculus embed exists (`improvisedForecast` in `metadata/predictions.yml`). Log: `2026-11-02-futuresearch-prediction-panels.md`.
 - **2026-11-02:** **Self-audit instruments** — `audit_authbar_series.py` (§3.1, 5.2% GZ-touched, stop not fired), `audit_parasite_budget.py` (§3.8), §3.16 monthly packet + scorer; November packet scored (stop on ch15). Log: `2026-11-02-self-audit-instruments.md`.
 - **2026-11-02:** **Section-vintage packet** — Monthly review of about 800 words. Priority files from TODOs and handoff; random manuscript and site excerpts; older git text included. Stop is priority vintage only. §3.1 touch-rate stop frozen at 2% once volume matches October. Log: `2026-11-02-monthly-review-packet.md`.

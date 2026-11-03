@@ -10,6 +10,12 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
 | [AI Safety Interventions (LessWrong)](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) | `context/ai-safety-interventions.pdf`, `context/extracts/ai-safety-interventions.md` | `zarncke2025interventions`; Appendix B §Intervention coverage map (`sec:intervention-coverage-map`) |
 | Extended PDF | `https://github.com/GunnarZarncke/ai-safety-interventions` (master branch) | Same index; not duplicated in manuscript |
 
+### Author LW comments (context extracts)
+
+| Resource | Location | Use |
+|---|---|---|
+| [Comment on Towards The Autograntor](https://www.lesswrong.com/posts/Sfkv6JF2ozmAkggKu/towards-the-autograntor/comment/PeiopN6zMXaJQf2CF) (2026-11-03) | `context/extracts/scott-autograntor-zarncke-comment-2026-11-03.md` | Open-problem lens on Scott Alexander autograntor; tsa-on-itself parallel; Ch. 25 correction-channel failure modes in the small |
+
 ### Field agenda index and term translation
 
 | Resource | Location | Use |

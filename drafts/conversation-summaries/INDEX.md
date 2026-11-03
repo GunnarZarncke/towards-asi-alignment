@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-03 | **Ch. 25 failure modes + Scott autograntor** — Sources and label renames (committed); LW comment extract; open-problem lens on autograntor. | [2026-11-03-ch25-failure-mode-sources.md](2026-11-03-ch25-failure-mode-sources.md) |
 | 2026-11-02 | **FutureSearch hub panels** — Archive FutureSearch YES/NO/OTHER snapshots for Markets 1 and 4; improvised forecast UI on `/predictions/`. | [2026-11-02-futuresearch-prediction-panels.md](2026-11-02-futuresearch-prediction-panels.md) |
 | 2026-11-02 | **Self-audit instruments** — §3.1/§3.8 scripts; §3.16 packet scored (stop ch15). | [2026-11-02-self-audit-instruments.md](2026-11-02-self-audit-instruments.md) |
 | 2026-11-02 | **Section-vintage packet** — Monthly mix of priority, random, and older excerpts. Stop is whether priority excerpts are current or old. | [2026-11-02-monthly-review-packet.md](2026-11-02-monthly-review-packet.md) |
