@@ -10,7 +10,7 @@ digraph AlignmentFrameRelations {
     pad=0.4,
     fontsize=12,
     fontname="Helvetica",
-    label="Alignment frames: specialization, encoding, limits, and conflict\nSolid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Orange limit · Purple stronger quantifier · Green composable · Red incompatible",
+    label="Alignment frames: specialization, encoding, limits, and conflict\nSolid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable\nIncompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
     labelloc="t"
   ];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F7F7F7"];
@@ -20,6 +20,8 @@ digraph AlignmentFrameRelations {
     label="Scores";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
+    margin=36;
     hist [label="History / trajectory value
 (preference on paths)"];
     route [label="Additive route value
@@ -30,6 +32,10 @@ digraph AlignmentFrameRelations {
 (round trips matter)"];
     state [label="State utility
 (scalar order on states)"];
+    // Layout-only routing stub (not a frame; omitted from Lean inventory).
+    state_corr_gap [shape=point, width=0.01, height=0.01, label="", style=invis];
+    hstate [label="Record-carrying state
+(state × record of the walk)"];
     dist [label="Outcome lottery
 (expectation or risk functional)"];
     criteria_vector [label="Criteria vector
@@ -48,6 +54,8 @@ digraph AlignmentFrameRelations {
     label="Relations and capacities";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
+    margin=36;
     au_penalty [label="Human AU landscape
 soft penalty (AUP)"];
     au_floor [label="Human AU landscape
@@ -70,6 +78,7 @@ on–off floor (non-obs.)"];
     label="Guarantees";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
     viable [label="Existential viability
 (∃ control in supplied K)"];
     robust [label="Robust invariance
@@ -82,6 +91,7 @@ on–off floor (non-obs.)"];
     label="Warrants";
     color="#BBBBBB";
     style="rounded";
+    fontsize=24;
     proof [label="Model-relative proof
 (formal leaf)"];
     control [label="Control protocol
@@ -104,18 +114,19 @@ on–off floor (non-obs.)"];
   route -> cycle [style=dashed, label="projects\nlong-run average\nretains this summand"];
 
   // Encodings. The original objects stay distinct.
-  hist -> state [style=dotted, label="encodes\naugmented state"];
-  route -> state [style=dotted, label="encodes\nroute bits in the state"];
+  hist -> hstate [style=dotted, label="encodes\nfull record"];
+  route -> hstate [style=dotted, label="encodes\nexact on records\nif the record sees the route"];
   cev -> state [style=dotted, label="encodes\nif the procedure is scored\nonly by its output"];
 
   // Direct-sum decomposition of additive route value.
   route -> exact [style=bold, dir=both, label="isomorphic summand\nexact part"];
   route -> cycle [style=bold, dir=both, label="isomorphic summand\ncycle part"];
+  state -> hstate [label="specializes\nignores the record"];
   state -> route [label="specializes\nutility on states;\ninduces exact r on edges"];
 
   // Limits.
-  quant -> state [style=dashed, color="#C46B00", fontcolor="#C46B00", label="limit\nquantile to the maximum"];
-  cev -> state [style=dashed, color="#C46B00", fontcolor="#C46B00", label="limit\nforced halt at a scored output"];
+  quant -> state [style=dashed, color="#1565C0", fontcolor="#1565C0", label="limit\nquantile to the maximum"];
+  cev -> state [style=dashed, color="#1565C0", fontcolor="#1565C0", label="limit\nforced halt at a scored output"];
 
   // Same geometry, stronger quantifier.
   viable -> robust [color="#6B3FA0", fontcolor="#6B3FA0", label="strengthens\n∃ control to ∀ disturbance"];
@@ -133,11 +144,16 @@ on–off floor (non-obs.)"];
   correction -> safecase [color="#2E7D32", fontcolor="#2E7D32", label="composes\nonly the represented relation"];
 
   // Acceptance relations that exclude each other in the named class.
-  state -> correction [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nfixed U rejects updates that\nlower its chosen outcome"];
-  state -> cycle [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nnonzero round trip"];
-  deontic -> weighted_scalar [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nunless an exact penalty exists"];
-  au_floor -> weighted_scalar [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nif one goal is spent to raise another"];
-  ai_power -> human_power [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nwhen the two channels move apart"];
+  // state–correction rigidity: anchor stub on state, route to correction without a global detour.
+  state -> state_corr_gap [style=invis, weight=10000, minlen=1];
+  state_corr_gap -> weighted_scalar [style=invis, weight=100];
+  state -> state_corr_gap [dir=none, constraint=false, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nfixed U rejects updates that\nlower its chosen outcome"];
+  state_corr_gap -> correction [dir=none, constraint=false, color="#B00020", penwidth=2];
+  hstate -> correction [dir=none, style=dotted, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nprotecting the channel\nmeans seeking correction\nunless the record sees the channel"];
+  state -> cycle [dir=none, style=dotted, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nnonzero round trip\n(state carries no record)"];
+  deontic -> weighted_scalar [dir=none, style=dashed, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nunless an exact penalty exists"];
+  au_floor -> weighted_scalar [dir=none, style=dashed, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nif one goal is spent to raise another"];
+  ai_power -> human_power [dir=none, color="#E8590C", fontcolor="#E8590C", penwidth=2, label="incompatible\nwhen the option pool\ndoes not grow"];
   robust -> correction [dir=none, color="#B00020", fontcolor="#B00020", penwidth=2, label="incompatible\nif corrections count as disturbances\nand aim outside the set"];
 
   // Layout only: Guarantees then Warrants (LR); align viability / safety case.

@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-23T14:20:09.340Z",
+  "generatedAt": "2026-11-03T17:18:45.496Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 436,
+  "entryCount": 433,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1069,22 +1069,10 @@
       "url": "/cards/lens/control-protocol/"
     },
     {
-      "title": "Coordinate floor gate",
-      "type": "lens",
-      "summary": "Componentwise thresholds θ on a vector — a gate, not a task objective.",
-      "url": "/cards/lens/coordinate-floor/"
-    },
-    {
       "title": "Correction at Civilizational Scale",
       "type": "objection",
       "summary": "A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.",
       "url": "/cards/objection/civilizational-correction-problem/"
-    },
-    {
-      "title": "Correction certificate",
-      "type": "lens",
-      "summary": "Vector CCI versus θ_corr on the correction relation — not a task criteria vector.",
-      "url": "/cards/lens/correction-certificate/"
     },
     {
       "title": "Correction Channels under Adversarial Pressure",
@@ -1169,12 +1157,6 @@
       "type": "artifact",
       "summary": "A practical checkpoint before a system receives a larger action envelope.",
       "url": "/cards/artifact/deployment-gate/"
-    },
-    {
-      "title": "Deployment preserve tuple",
-      "type": "lens",
-      "summary": "Named coordinates that supply the set K for viability and selection — not a fifth lifecycle stage.",
-      "url": "/cards/lens/deployment-preserve-tuple/"
     },
     {
       "title": "Deployment-pipeline-simulator (sibling)",
@@ -2113,6 +2095,12 @@
       "url": "/cards/lens/quantilizer/"
     },
     {
+      "title": "Record-carrying state",
+      "type": "lens",
+      "summary": "The current state plus a record of how it was reached. A utility on it can value routes; a utility on the bare state cannot.",
+      "url": "/cards/lens/record-carrying-state/"
+    },
+    {
       "title": "Redwood Research",
       "type": "agenda",
       "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
@@ -2121,7 +2109,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 524 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 532 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
@@ -2165,12 +2153,6 @@
       "type": "concept",
       "summary": "A model can refuse harm when asked bluntly and still be embedded in a scaffold that misrepresents the world and repurposes its honest output — so model-only evaluation passes while the composite loop does damage.",
       "url": "/cards/concept/scaffold-misuse/"
-    },
-    {
-      "title": "Scalar risk-gap leaf",
-      "type": "lens",
-      "summary": "Arithmetic warrant after a vector gate: control cost ≤ CCI + δ.",
-      "url": "/cards/lens/scalar-risk-gap/"
     },
     {
       "title": "Scope and the Correction-Capacity Assumption",
@@ -2403,7 +2385,7 @@
     {
       "title": "The Wrong Object of Alignment",
       "type": "chapter",
-      "summary": "A model is the trained network. The optimizer that actually steers outcomes is often the whole deployed loop, not the weights alone. Alignment is making that loop's behavior stay something humans can still correct. Before asking whether a system is aligned, locate that loop.",
+      "summary": "A model is the trained network. The process that steers outcomes may be larger than the weights. Alignment is making that process's behavior stay something humans can still correct. Before asking whether a system is aligned, locate the (smallest) boundary that determines predicted failure.",
       "url": "/cards/chapter/ch01/"
     },
     {
