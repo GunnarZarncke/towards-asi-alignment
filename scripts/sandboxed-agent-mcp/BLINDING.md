@@ -63,7 +63,7 @@ generators. This protocol is for **orchestrator → blind reader/generator** wor
 - Read cap ~900 KiB per file (SDK JSON transport limit).
 - **Not** OS-level sandbox: unmapped future tools or Tier-2 adversaries need
   `grower_stash.sh`-style isolation or Tier 2 plan in
-  [`drafts/plans/sandboxed-agent-mcp.md`](../../drafts/plans/sandboxed-agent-mcp.md).
+  [`drafts/plans/backtest/sandboxed-agent-mcp.md`](../../drafts/plans/backtest/sandboxed-agent-mcp.md).
 
 **Stop:** sub-agent returns outside **content** (not merely “permission denied”
 errors) → treat run as **contaminated**; fix path map, void scored output, report

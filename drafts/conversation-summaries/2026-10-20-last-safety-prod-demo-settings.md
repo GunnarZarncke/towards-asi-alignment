@@ -26,7 +26,7 @@ Prompts: (paraphrase-only — no prompt id in transcript)
 - `game/the-last-safety-review/public/terminal/phone.js`
 
 ## Commits
-- `ed86a2ea6` Hide demo mode from Last Safety production handset Settings.
+- `a33251717` Hide demo mode from Last Safety production handset Settings.
 
 ## Verification
 - `cd game/the-last-safety-review && node --test tests/terminal.test.mjs` → `ℹ pass 11` `ℹ fail 0` (2026-10-20).

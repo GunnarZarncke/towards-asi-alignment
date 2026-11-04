@@ -166,6 +166,7 @@ New / updated surfaces for construction and convergence:
 | Phase | Work | Gate |
 |-------|------|------|
 | **Now** | Decisions in this file; lifecycle cycle on the field hub; roster types; grain map | none |
+| **Before other 2.0 chapter prose** | Frame of the target: correction possibility, with viability as the shape of the guarantee; later chapters that mix frames get revised; multi-frame reading uses TSA as the running example. Not this file’s cycle claim | [`construct.md`](construct.md) § Frame of the target |
 | **P1** | 2.0 claim wording in construct plan / Part XI outline only; reverse-column note uses roster types | not v1 intro |
 | **Lean 2.0** | MB6 then MB11 context-relative; no covering tuple; no new axiom to `Safe` | author; still no `Safe` bypass |
 | **Certificate layer (v1)** | Per-system certs onto unary predicates — **not** Lean 2.0 | [`../predictions/prediction-interface.md`](../predictions/prediction-interface.md) |

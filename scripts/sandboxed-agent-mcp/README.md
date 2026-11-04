@@ -5,7 +5,7 @@ Stdio MCP server for **Claude Code** and **Cursor**: the parent agent calls
 system prompt, `cwd` confined to `root`, file tools only (no shell).
 
 Decisions (2026-11): location `scripts/sandboxed-agent-mcp`, Python, Tier 1.
-Design notes: [`drafts/plans/sandboxed-agent-mcp.md`](../../drafts/plans/sandboxed-agent-mcp.md).
+Design notes: [`drafts/plans/backtest/sandboxed-agent-mcp.md`](../../drafts/plans/backtest/sandboxed-agent-mcp.md).
 
 ## Requirements
 

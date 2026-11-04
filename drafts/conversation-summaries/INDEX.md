@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-04 | **Markdown-link gate** — Draft-to-draft links no longer fail Check. Other broken links need a baseline line; the archive script indexes tracked logs only. | [2026-11-04-markdown-link-gate.md](2026-11-04-markdown-link-gate.md) |
+| 2026-11-04 | **llms sync + TODO compaction** — Anti-Patterns matched; bot-orientation sync; closed one-liners in TODO. | [2026-11-04-llms-sync-todo-compaction.md](2026-11-04-llms-sync-todo-compaction.md) |
 | 2026-11-04 | **Graded-lab PLAN v3 closure docs** — v3 closed GL-78 and v4 active stated in EXPERIMENTS, experiments.yml, REPRODUCTION, App N, site cards. | [2026-11-04-graded-lab-v3-closure-docs.md](2026-11-04-graded-lab-v3-closure-docs.md) |
 | 2026-11-04 | **Institutional control, read backward** — Ch. 25: alert-fatigue conventions are an instance of the channel. Source table in a draft. | [2026-11-04-institutional-control-translation.md](2026-11-04-institutional-control-translation.md) |
 | 2026-11-03 | **Ch. 25 failure modes + Scott autograntor** — Sources and label renames (committed); LW comment extract; open-problem lens on autograntor. | [2026-11-03-ch25-failure-mode-sources.md](2026-11-03-ch25-failure-mode-sources.md) |

@@ -177,7 +177,7 @@ What each row enforces (`scripts/check.sh`):
 |-------|------------------|
 | generate | `generate_manuscript_tex.sh` — fragments, symbol/concept graphs |
 | structure | `check_structure.py` — counts, Part I eqref rule |
-| markdown links | `check_markdown_links.py` |
+| markdown links | `check_markdown_links.py` — fails on a broken link that is not draft-to-draft, unless listed in `scripts/markdown-link-baseline.txt`; draft-to-draft links are printed and do not fail |
 | citations | `check_citations.py` |
 | bibliography summaries | `check_bibliography_summaries.py` |
 | claim spine | `check_claim_spine.py` |
@@ -202,7 +202,7 @@ What each row enforces (`scripts/check.sh`):
 |---------|------------|-------------|
 | `missing news-takeaway-*` | Add quiz item; `appearOn: chapter:*` | 2026-09-19, 2026-09-24, 2026-10-07 |
 | Generate step exit 1; missing glossary anchors | `\label{sec:...}` + concept `bookLabels` | 2026-09-25 |
-| Markdown links fail on CI, pass locally | Run `make generate`; do not link untracked files | 2026-09-23, 2026-10-05 |
+| Markdown links FAIL | A broken link outside the draft-to-draft allowance is missing from `scripts/markdown-link-baseline.txt`, a baseline line is stale, or the diff edits a baselined line. Draft-to-draft links are listed and do not fail. `make generate` still has to have written the symbol and concept graphs. | 2026-11-04 |
 | `Expected N appendix files, found M` | Update `book.tex` / `check_structure.py` | 2026-06-26 |
 | `sync:field-v2 --check` fails | `cd site && npm run sync:field-v2` | 2026-09-30 |
 | PyYAML / yaml import error | `.venv` setup (`docs/BUILD.md`) | 2026-10-06 |

@@ -31,4 +31,4 @@ Prompts: (session continuation; no prompt id in transcript)
 - `site/scripts/sync-lens-graph.mjs`
 
 ## Commits
-- (this session)
+- `3adbf0e54` Add lens cards and main-graph frame map on the companion site.

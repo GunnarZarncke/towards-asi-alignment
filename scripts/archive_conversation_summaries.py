@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Roll older session logs into archive/YYYY-MM/; rebuild slim INDEX.md.
 
-Keeps ACTIVE_MAX newest logs in the root folder. Does not delete logs.
+Keeps ACTIVE_MAX newest **git-tracked** logs in the root folder. Does not delete logs.
+Untracked logs are left in place and omitted from INDEX.md, so a committed index
+cannot point at a file CI does not have.
 For deletion of logs superseded by later sessions, use prune_superseded_conversation_logs.py.
 """
 
@@ -9,6 +11,7 @@ from __future__ import annotations
 
 import re
 import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,9 +64,27 @@ def move_to_archive(path: Path) -> None:
     shutil.move(str(path), str(dest))
 
 
-def write_month_index(month: str) -> None:
+def tracked_log_paths() -> set[str]:
+    out = subprocess.run(
+        ["git", "ls-files", "--", "drafts/conversation-summaries"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return set(out.stdout.splitlines())
+
+
+def is_tracked(path: Path, tracked: set[str]) -> bool:
+    return path.relative_to(ROOT).as_posix() in tracked
+
+
+def write_month_index(month: str, tracked: set[str]) -> None:
     month_dir = ARCHIVE_DIR / month
-    paths = sorted(month_dir.glob("*.md"), reverse=True)
+    paths = sorted(
+        (p for p in month_dir.glob("*.md") if is_tracked(p, tracked)),
+        reverse=True,
+    )
     lines = [
         f"# Archive index — {month}",
         "",
@@ -80,7 +101,7 @@ def write_month_index(month: str) -> None:
     (ARCHIVE_DIR / f"{month}-INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def write_active_index(active: list[Path]) -> None:
+def write_active_index(active: list[Path], tracked: set[str]) -> None:
     active.sort(key=lambda p: p.name, reverse=True)
     lines = [
         "# Conversation log index",
@@ -98,10 +119,17 @@ def write_active_index(active: list[Path]) -> None:
         topic = f"**{title}** — {trigger}" if trigger else title
         lines.append(f"| {date} | {topic} | [{path.name}]({path.name}) |")
 
-    months = sorted({p.parent.name for p in ARCHIVE_DIR.glob("*/*.md")}, reverse=True)
+    months = sorted(
+        {
+            p.parent.name
+            for p in ARCHIVE_DIR.glob("*/*.md")
+            if is_tracked(p, tracked)
+        },
+        reverse=True,
+    )
     lines.extend(["", "## Archive by month", ""])
     for month in months:
-        n = len(list((ARCHIVE_DIR / month).glob("*.md")))
+        n = sum(1 for p in (ARCHIVE_DIR / month).glob("*.md") if is_tracked(p, tracked))
         lines.append(f"- **{month}** ({n}): [{month}-INDEX.md](archive/{month}-INDEX.md)")
 
     lines.extend(
@@ -109,7 +137,7 @@ def write_active_index(active: list[Path]) -> None:
             "",
             "## Maintenance",
             "",
-            f"- Roll older logs: `python3 scripts/archive_conversation_summaries.py` (keeps {ACTIVE_MAX} in root).",
+            f"- Roll older logs: `python3 scripts/archive_conversation_summaries.py` (keeps {ACTIVE_MAX} tracked logs in root; untracked logs are omitted).",
             "- Prune superseded logs: `python3 scripts/prune_superseded_conversation_logs.py --apply`.",
             "- Rules: [README.md](README.md).",
             "",
@@ -120,20 +148,32 @@ def write_active_index(active: list[Path]) -> None:
 
 def main() -> None:
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+    tracked = tracked_log_paths()
     root_logs = [
         p
         for p in LOG_DIR.glob("*.md")
-        if p.name not in SKIP_NAMES and log_date(p.name)
+        if p.name not in SKIP_NAMES and log_date(p.name) and is_tracked(p, tracked)
     ]
     root_logs.sort(key=lambda p: p.name, reverse=True)
     for path in root_logs[ACTIVE_MAX:]:
         move_to_archive(path)
-    active = sorted(LOG_DIR.glob("2026-*.md"), key=lambda p: p.name, reverse=True)
+        tracked.discard(path.relative_to(ROOT).as_posix())
+        dest = ARCHIVE_DIR / (log_month(path.name) or "") / path.name
+        tracked.add(dest.relative_to(ROOT).as_posix())
+    active = sorted(
+        (
+            p
+            for p in LOG_DIR.glob("2026-*.md")
+            if p.name not in SKIP_NAMES and is_tracked(p, tracked)
+        ),
+        key=lambda p: p.name,
+        reverse=True,
+    )
     for month_dir in ARCHIVE_DIR.glob("20*"):
         if month_dir.is_dir():
-            write_month_index(month_dir.name)
-    write_active_index(active)
-    archived = sum(1 for _ in ARCHIVE_DIR.glob("*/*.md"))
+            write_month_index(month_dir.name, tracked)
+    write_active_index(active, tracked)
+    archived = sum(1 for p in ARCHIVE_DIR.glob("*/*.md") if is_tracked(p, tracked))
     print(f"Active: {len(active)}; archived: {archived}")
 
 

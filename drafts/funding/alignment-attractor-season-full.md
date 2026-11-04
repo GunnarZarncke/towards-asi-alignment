@@ -4,7 +4,7 @@
 
 **Related live card (different object):** [`site/src/content/cards/funding/alignment-attractor-hub.md`](../../site/src/content/cards/funding/alignment-attractor-hub.md) — 18-month capacity hub; 12-month ops-only pilot. This season is shorter, event-dense, and pays participants. It can later be a *module* of that hub; it does not replace it.
 
-**Recording rec (not v1 manuscript):** [`drafts/plans/audit-telemetry.md`](../plans/audit-telemetry.md).
+**Recording rec (not v1 manuscript):** [`drafts/plans/backtest/audit-telemetry.md`](../plans/backtest/audit-telemetry.md).
 
 ---
 

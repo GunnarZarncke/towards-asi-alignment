@@ -32,7 +32,7 @@ Prompts: (paraphrase-only)
 
 ## Commits
 
-- `dd56696f1` Fix PostHog on companion site, game, and demo deploy docs.
+- `add3a496e` Fix PostHog on companion site, game, and demo deploy docs.
 
 ## Not staged (other working-tree edits)
 

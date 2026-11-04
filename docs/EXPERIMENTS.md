@@ -24,6 +24,7 @@ Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 |------:|------|----------|-------------|
 | 0 | Agency-detect (sibling) | [github.com/GunnarZarncke/agency-detect](https://github.com/GunnarZarncke/agency-detect) | prior to in-repo sims |
 | 0′ | Deployment-pipeline-simulator (sibling) | [github.com/GunnarZarncke/deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | prior to in-repo lab simulators |
+| — | Value-detect (related, external) | [github.com/SJ-Beard/value-detect](https://github.com/SJ-Beard/value-detect) | 2026-08 (PIBBSS); not maintained in this repo |
 | 1 | Toy simulation | [`experiments/toy-simulation/`](../experiments/toy-simulation/) | 2026-06-29 |
 | 2 | Embedded audit simulation | [`experiments/embedded-simulation/`](../experiments/embedded-simulation/) | 2026-06-30 |
 | 3 | Goal-agent simulation | [`experiments/goal-agent-simulation/`](../experiments/goal-agent-simulation/) | 2026-07-04 |
@@ -86,6 +87,18 @@ Before any simulator lived in this book repository, the **agency-detect** line a
 The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. Telemetry simulations (E0–E8) showed that environment structure is often discoverable, but also documented failure modes that matter for alignment measurement: **decoys steal MI clusters** before validation; short windows and dense coupling break cuts; alias-rich substrates fool passive clustering. The **handle-UAD** branch added an access-model lesson the book's instrumentation chapters echo: passive alias handles can mimic real sensor/action readouts, and only **interventional handle tests** break ties that plain observational UAD cannot. A later paper in the same series, *Discovering Maintained Agent Boundaries*, adds a second axis the ε-blanket does not capture: whether candidate boundaries **repair after damage**, vs accidental or passively stable separation; observational mean-reversion still cannot distinguish active repair from passive relaxation without handles. Serial spotlight discovery (E9+) and intention/outcome-influence probes (E17–E19) extended the same discipline to scalable multi-agent traces and correction-channel observables; an early *C. elegans* cohort (E20) was an external-validity probe, not ground-truth agent labels.
 
 Agency-detect establishes that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks**. It does not, by itself, stress correction-channel capture, value-bundle transport, successor stability, or selection basins—the bridge cruxes the in-repo simulators were built to torture in simplified settings. Navigation: experiment log and interpretation in the sibling repo's `docs/EXPERIMENTS.md` and `docs/FINDINGS.md`; PDFs mirrored under [`context/`](../context/).
+
+---
+
+## Related: value-detect (external repo, SJ Beard)
+
+**[value-detect](https://github.com/SJ-Beard/value-detect)** (SJ Beard, PIBBSS fellowship) extends passive UAD **one level inward**: a directional signature (drive minus intake) for value-like structure inside an agent, built on Gunnar's `uad_handles` world via **agency-detect** imports. It is **not** a sibling repository this project maintains, and it is **not** an in-repo experiment line.
+
+This repository's role was mentor review and **independent re-runs/evaluation** of frozen bundles (v1 instrument test on the planted G core; v2 cross-world generalization battery). Canonical code, pre-registration, and artifacts live in Beard's repo (`docs/`, `results/`).
+
+**Headline read (TSA evaluation, not a book finding):** v1 passes locked criteria under **fused** and **fused+best-key** conventions on the anchor world; **pairwise** rest conventions fail; slow meters and multi-input composition break **best-key** generalization. v2 shows the anchor world mostly holds while **colony**, **deep_synergy**, and **slow_meter** worlds register multiple **FAIL** cells on the locked scorecard (see repo `results/v2_5/V2_VERDICT.md`). Treat as complementary to boundary discovery (agency-detect / MB1), not as evidence that value poles are passively certifiable off-substrate.
+
+Do not vendor copies of this tree under `experiments/`; link here and in [`experiments/README.md`](../experiments/README.md) only.
 
 ---
 

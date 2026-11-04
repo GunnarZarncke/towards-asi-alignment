@@ -76,7 +76,7 @@ Each hunt ends in **freeze, refuse, or skip** — not a scored finding from an u
 
 ## Phase 1 — Moltbook (agent-native platform)
 
-**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`../audit-telemetry.md`](../audit-telemetry.md).
+**Status:** Step 0 inventory complete. **MB7a scored** 2026-08-31: [`backtest-v2-moltbook-mb7a.md`](backtest-v2-moltbook-mb7a.md) (`h7-moltbook-mb7a-v1.0.0`, **W-17 structure_stop**). Inventory: [`backtest-v2-moltbook-inventory.md`](backtest-v2-moltbook-inventory.md). **Telemetry draft** (W-17 + sim audit-layer gap → recording rec, not a freeze): [`audit-telemetry.md`](audit-telemetry.md).
 
 Moltbook is the **first v2 Phase 1 host**: public API + archived corpora (agent-only social network, Jan–Jul 2026). It is **not** Track A (legislatures/ombuds) and **not** v1 C-004 geometry. It pays TSA-relevant cruxes on **deployment-adjacent traces**: selector pressure (**MB6**), entity/coalition pinning (**MB7a**), channel reconstitution (**MB7d**), and possibly correction-channel theater (**MB4a/C-005**) if handle→act joins are defensible.
 
@@ -134,7 +134,7 @@ Run once. Null/refuse/fail as registered. No retune (M5).
 
 A **second** blinded generator designs the **eval split and margins** from the criteria memo plus a **schema-only** description of tables (column names, not values). Still must not see FINDINGS or which rows would pass.
 
-**Physical isolation** if the generator is an agent with repo access: stash FINDINGS, this plan’s predicted outcomes, and Appendix M case cards (Lesson 8). Instruction-only “don’t read” is insufficient. For packet-scoped readers/scorers, also use [`scripts/sandboxed-agent-mcp/BLINDING.md`](../../scripts/sandboxed-agent-mcp/BLINDING.md) (`run_sandboxed_agent` with `root` = copy-only packet).
+**Physical isolation** if the generator is an agent with repo access: stash FINDINGS, this plan’s predicted outcomes, and Appendix M case cards (Lesson 8). Instruction-only “don’t read” is insufficient. For packet-scoped readers/scorers, also use [`scripts/sandboxed-agent-mcp/BLINDING.md`](../../../scripts/sandboxed-agent-mcp/BLINDING.md) (`run_sandboxed_agent` with `root` = copy-only packet).
 
 ---
 

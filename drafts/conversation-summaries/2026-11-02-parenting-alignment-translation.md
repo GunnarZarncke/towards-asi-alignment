@@ -43,6 +43,36 @@ Prompts: paraphrase-only
 - `drafts/parenting-alignment-translation.md`
 - `formal/AlignmentProofSpine/FrameDisclosure.lean`
 
+## Follow-up (2026-11-03)
+- bookkeeping: optional TODO "Frame, disclosure, and parenting results into the manuscript" on the `metadata/TODO.md` Housekeeping board.
+- content: `drafts/plans/spine/corrector-cci-vector.md` elaborates tying `FrameCorrector` to the full CCI vector:
+  - finite mirror of `CCICertificate` with a mirror lemma to `CCICertificatePasses`;
+  - one avoidance route per coordinate;
+  - theorems: corrector decides under the full gate, per-coordinate necessity, scalar projection admits compensation, validity is not a coordinate, optional report action;
+  - what it does not show.
+  Spine checklist line added.
+- correction (review on request): the ten-route plan was circular. Each route was defined to fail only its own coordinate, so per-coordinate necessity holds for any conjunction. This matches the earlier reason for keeping `CCICertificate` a plain record (2026-06-28 and 2026-06-30 logs, `WorkedInstance`). Plan rewritten:
+  - step 1 done: `scalar_floor_blind_to_process` (`Correction.lean`). `lambdaProjection` never reads coercion, dependency, plurality, exit capacity or independence.
+  - step 2 deferred: four decision classes (reach, timing, source, uptake). It depends on measured coordinates per class and a pre-registered measurement map.
+- content: ch26 `eq:cci-legit` no longer subtracts `λ_M M` twice (it is already in `CCI_λ`). ch26 §Scalar projection gets one sentence and a `\leanspine` line. The Appendix G scalar-floor lemma states the converse fails. Also updated: README module row and axiom ledger entry.
+- bookkeeping: spine P3 line marked deferred; TODO pointer updated.
+- Verification:
+  - `lake build AlignmentProofSpine`: "Build completed successfully (2274 jobs)."
+  - `#print axioms scalar_floor_blind_to_process`: `propext`, `Quot.sound` and spine vocabulary (`System`, `SystemCorrectionPath`, `GroundingViable`, …). No `MB*`.
+  - `check_axiom_budget.py`: "Axiom budget check passed (145 theorems, no drift)."
+  - `./build.sh`: "Built dist/pdf/towards-superintelligence-alignment.pdf". Undefined cites (`arnstein1969ladder` and others) come from ch25/appP in commit `4e85d1a22a`, not from this change.
+  - `make check` fails only on markdown links. This change's only broken link is the untracked plan file.
+- correction (author question): the ch26 scalar was labelled "for exposition" but about twenty chapters use it, several as a pass/fail gate. The 2026-06-28 vectorization never promoted the vector to those gates. Plan: `drafts/plans/cci-vector-promotion.md`. It sorts each use into gate, risk arithmetic, or preservation.
+- content: gates moved to `\vec{CCI} \succeq \vec{\theta}_{corr}`:
+  - ch22, ch25, ch28, ch29, ch31 (two sites), ch33 (five sites; high/low stakes now per coordinate), ch34 (plus the label fix), ch39 (two), ch40 (two), ch46, ch47.
+  - Risk-arithmetic sites keep the scalar.
+- content: ch26 §Scalar projection rewritten:
+  - the scalar is the risk-bound measurand, valid once the vector passes;
+  - why these five terms (the correction itself vs the corrector's situation);
+  - preservation comparisons compare the projection and presuppose the vector passes at both ends.
+- bookkeeping: TODO item "Componentwise CCI preservation (M, deferred)" for the preservation and dynamics sites and Lean `CCIPreserved`.
+- Verification: `./build.sh`: "Built dist/pdf/towards-superintelligence-alignment.pdf", no undefined references. A grep for scalar `CCI` threshold comparisons outside appG finds only ch26 prose about the scalar.
+
 ## Commits
 - Lean: Soares consolidation (logged in `2026-10-25-frame-edge-classes.md`) and `FrameDisclosure`.
 - Appendix G: frame record view reuses the Field Soares derivation.

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# Snapshot working tree, write EDIT_ATTRIBUTION, derive authorship bars.
+# Block a commit that stages a new broken markdown link outside drafts/.
+# Then snapshot the working tree, write EDIT_ATTRIBUTION, derive authorship bars.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+python3 "$ROOT/scripts/check_markdown_links.py" --staged || exit 1
 # Committer tag: a commit run by a Claude Code agent carries its session id;
 # "none" marks a manual commit, which proves any open Claude turn has ended.
 if [ -n "${CLAUDE_CODE_SESSION_ID:-}" ]; then

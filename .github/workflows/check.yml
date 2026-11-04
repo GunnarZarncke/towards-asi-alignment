@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          # Parent commit so the markdown-link check can see lines this push edits.
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@v5

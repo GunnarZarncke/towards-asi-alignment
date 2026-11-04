@@ -29,7 +29,7 @@ Prompts: (paraphrase-only — no prompt id in transcript)
 - `game/the-last-safety-review/public/terminal/project.mjs` (setting row)
 
 ## Commits
-- `96188a63e` Add optional ELI10 simplifications to Last Safety Review.
+- `4da98bdc5` Add optional ELI10 simplifications to Last Safety Review.
 
 ## Verification
 - `cd game/the-last-safety-review && npm test` → `ℹ pass 161` `ℹ fail 0` (2026-10-20).

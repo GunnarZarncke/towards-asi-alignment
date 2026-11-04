@@ -32,4 +32,4 @@ Prompts: paraphrase only (no prompt id recorded).
 - `formal/AlignmentProofSpine/FrameIncompatibility.lean`
 
 ## Commits
-- (this session) frame relations Lean + graphs + `alignment-frames-relations.md`; spinout paper/md left unstaged.
+- `41104fea3` Add Lean spine for alignment-frame relations and typed relation graphs. (spinout paper/md left unstaged)

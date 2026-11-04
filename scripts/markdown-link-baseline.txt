@@ -1,0 +1,15 @@
+# Known broken relative links that are not draft-to-draft.
+# Draft-to-draft misses (source and target both under drafts/) are printed by
+# scripts/check_markdown_links.py and do not fail the check.
+#
+# Stop: a broken link that is not draft-to-draft and not listed here fails
+# `make check`. A listed line fails once the link is repaired or its source
+# line is edited; delete the line in that same change.
+#
+# Columns: source path, tab, link target as written (anchor stripped).
+
+drafts/plans/construct/construct.md	../../../papers/alignment-frames/
+metadata/TODO.md	../drafts/alignment-frames-by-object-and-measure.md
+metadata/TODO.md	../drafts/alignment-frames-spinout-paper.md
+metadata/TODO.md	../drafts/plans/spine/cci-vector-promotion.md
+metadata/TODO.md	../drafts/plans/spine/corrector-cci-vector.md

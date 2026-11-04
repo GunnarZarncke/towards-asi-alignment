@@ -56,6 +56,6 @@ Prompts: `prompt-id` (from telemetry; required for a non-paraphrase record)
 - **Active folder:** the **15 most recent** session logs (burst-day cap).
 - **Archive:** older logs in `archive/YYYY-MM/`; monthly indexes at `archive/YYYY-MM-INDEX.md`.
 - **Prune:** remove logs **superseded by a later session** only — not because work shipped. Script: `scripts/prune_superseded_conversation_logs.py`; one-line index in `RECOVERY.md`.
-- **Roll to archive:** `python3 scripts/archive_conversation_summaries.py` from repo root.
+- **Roll to archive:** `python3 scripts/archive_conversation_summaries.py` from repo root. The script indexes and moves git-tracked logs only, so an untracked log cannot become a committed `INDEX.md` link.
 
 Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.

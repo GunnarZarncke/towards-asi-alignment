@@ -20,11 +20,11 @@ Open tasks: [`TODO.md`](TODO.md).
 | 4 | [`lab-simulation/`](lab-simulation/) | Pipeline lab + subprocess isolates | [`CHANGELOG.md`](lab-simulation/CHANGELOG.md) |
 | 5 | [`graded-lab-simulation/`](graded-lab-simulation/) | Graded substrate, BIQ/EAI, v4 rigs (**active**) | [`CHANGELOG.md`](graded-lab-simulation/CHANGELOG.md) |
 
-Sibling precursors (not in-repo): [agency-detect](https://github.com/GunnarZarncke/agency-detect), [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator).
+Sibling precursors (maintained by this project): [agency-detect](https://github.com/GunnarZarncke/agency-detect), [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator).
+
+**Related source (external, not in-repo):** [value-detect](https://github.com/SJ-Beard/value-detect) — SJ Beard's directional UAD / unsupervised value-discovery line (PIBBSS). Narrative and TSA evaluation notes: [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md) § Related: value-detect. Do not copy bundles into this tree.
 
 **Backtests** (not line 6): [`backtest/`](backtest/) — frozen host protocols and `W-` findings. Do not treat as a new simulation substrate.
-
-Unindexed local trees `value-detect-v1-master/` and `value-detect-v2-master/` are unzipped agency-detect companions (directional value signature). They are **not** lines 1–5 and are not in `metadata/experiments.yml`. Do not treat them as the empirical map until indexed.
 
 ## README convention
 

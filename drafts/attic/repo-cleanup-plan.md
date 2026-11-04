@@ -121,14 +121,13 @@ it regardless; archiving only stops agents reading spent plans as live work.
       recipe, build-script table) and then link to it anyway. BUILD.md is richer. Collapse
       `AGENTS.md` to what an agent needs inline (figures dir, root file, bibsummary rule) + pointer.
 - [x] Cut the third copy of the generated-fragment fact in `INSTRUCTIONS.md` § 7.
-- [~] Collapse the 24 `[x]` items in `metadata/TODO.md` to one-line outcomes citing their session
-      log. Their long narratives are already verbatim in `drafts/conversation-summaries/`; this is
-      most of why the file is 76 KB.
+- [x] Collapse shipped `[x]` items on Site/Housekeeping boards into **Closed (one-liners)** in
+      `metadata/TODO.md`; open boards list only unfinished work (2026-11-04 pass).
 - [x] Delete `metadata/TODO.md` § "Former blockers (chapters now drafted)" — all items closed, and
       the header text ("ch05, ch48, ch46, ch47, and ch48", `ch48` twice) is renumber-corrupted.
       **Keep its appendix sub-item**, which is accurate and load-bearing.
-- [~] Sync the Anti-Patterns block in `llms.txt` to `REVIEWING_FOR_AGENTS.md` (drifted by one
-      bullet in each direction). Keep both files — `llms.txt` must stand alone for crawlers.
+- [x] Sync the Anti-Patterns block in `llms.txt` to `REVIEWING_FOR_AGENTS.md` (matched bullet
+      lists; cross-ref note; deploy via `site/scripts/sync-bot-orientation.mjs`).
 
 ## Task 7 — Context housekeeping
 
@@ -176,4 +175,4 @@ Working tree is ~20 GB, essentially all regenerable and correctly ignored.
 
 ## Completion note
 
-The cleanup is complete except for the closed-item narrative compaction and llms.txt anti-pattern synchronization, which are deferred to avoid a broad editorial rewrite in this pass. The generated SVG render policy is also deferred because the site currently consumes those files.
+Closed-item compaction on `metadata/TODO.md` and llms/reviewer anti-pattern sync completed 2026-11-04. The generated SVG render policy remains deferred because the site currently consumes those files.

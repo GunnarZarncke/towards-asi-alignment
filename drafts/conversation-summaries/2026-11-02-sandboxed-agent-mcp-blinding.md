@@ -26,8 +26,8 @@ User decided build location (`scripts/sandboxed-agent-mcp`, Python, Tier 1), ran
 - Optional: expose `model` on MCP tool schema (currently probe scripts only).
 
 ## Key paths
-- [`scripts/sandboxed-agent-mcp/BLINDING.md`](../scripts/sandboxed-agent-mcp/BLINDING.md)
+- [`scripts/sandboxed-agent-mcp/BLINDING.md`](../../scripts/sandboxed-agent-mcp/BLINDING.md)
 - [`docs/METHODOLOGY.md`](../../docs/METHODOLOGY.md) § Agent blinding
 
 ## Commits
-- (this session)
+- `6e0ffaf378` — Add sandboxed sub-agent MCP and document it in the blinding protocol.

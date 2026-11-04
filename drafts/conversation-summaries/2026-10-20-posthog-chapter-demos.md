@@ -35,4 +35,4 @@ Prompts: (paraphrase-only — no prompt id in transcript)
 
 ## Commits
 
-- (this session) Add PostHog analytics across chapter demos.
+- `77f02ece0` Add PostHog analytics across chapter demos.

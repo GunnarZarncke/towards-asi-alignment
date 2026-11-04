@@ -156,7 +156,7 @@ Conditions on the *construction process*, not on the finished ASI:
 - Distinguishing optimizer-policy counterfactuals (ch16/ch25/ch39) from **intervention-impact** counterfactuals.
 - **Sharp left turn as a process condition, not a spine row.** Trained-in alignment that does not survive a capability phase change is a construction failure (the \(I\) that produced on-distribution compliance did not produce the intended class after the jump). Keep it here and in ch14’s mechanism story. Do not add a v1 bridge.
 - Named **restorer** for the construction boundary: after damage, who pays to keep the cut distinguishable and handle-backed (physics, operator stack, institution, or a policy selected to restore it). Fail if the restorer is only the operator stack, or only selected self-repair of \(A\) (that can fight correction). Unsigned “the cut came back” is not enough — same signed-object lesson as \(g_{\mathrm{CCI}}\). Not autopoiesis: \(A\) need not try to repair “its” boundary. Grain map: [`embedded-v2-grain-map.md`](../../../reference/embedded-v2-grain-map.md) (cut persistence).
-- **Audit telemetry (draft, not v1):** what agent projects should record so a later audit can fail — [`../audit-telemetry.md`](../audit-telemetry.md). Candidate Family C note / recommendation; not a chapter.
+- **Audit telemetry (draft, not v1):** what agent projects should record so a later audit can fail — [`../backtest/audit-telemetry.md`](../backtest/audit-telemetry.md). Candidate Family C note / recommendation; not a chapter.
 
 ### Family D — Social process conditions (the Ngo-shaped gap; outline now)
 

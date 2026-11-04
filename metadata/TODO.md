@@ -84,10 +84,8 @@ One queue; pick up when trigger fires.
 
 ## Site board
 
-Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md).
+Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triage.md`](../drafts/attic/site-card-notes-triage.md). Shipped site items (guided tour read-next, predictions hub, online quiz base) → [Closed](#closed-one-liners--do-not-reopen).
 
-- [x] **Guided Tour “read next” from last book page (M).** `/paths/` offers a continue target from the last visited book chapter (visit history + chapter card URLs). Maps onto the active reading path when the chapter matches; otherwise chapter graph, then manuscript order.
-- [x] **Predictions hub (M).** `/predictions/` nav, `prediction` cards (overview + §1–§18), Gauss-curve symbol, coming-soon offsite graph placeholder. Plan: [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md).
 - [ ] **Submit page notes to site (S).**
 - [ ] **Standalone claims publishability review (S).** Cross-ref Outreach.
 - [ ] **Add companion site to Substack (S).**
@@ -96,8 +94,8 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Chapter → demo back-links (M).** Demos are reachable only from `/demos/`; render a demo chip on `book/[id]` and chapter cards from `site/src/data/demos.json` (`chapterId` already present); `serve-demos.sh` lists 3 of 7.
 - [ ] **`check:concepts` in CI (S).** `site/scripts/build-search-index.mjs --check` always fails because the JSON embeds `generatedAt`; drop the timestamp (also in `src/data/chapter-reading-graph.json`, which dirties the tree on every build), then add `npm --prefix site run check:concepts` to `scripts/check.sh`.
 - [ ] **Predictions sync hygiene (S).** Draft Markets 19–21 extra appendix sections are expected (do not require YAML count match). Still: `marketStatus` enum is validated in sync; leftover TeX in cards now fails the sync.
-- [x] **Online quiz (M).** `/quiz/` shipped 2026-08-27 (215-question bank; `make check` gates). Residual: chapter-end `QuizBlock` on `book/[id]` pages (currently cards and essays only).
-- [ ] **Quiz distractors too easy (M).** Many wrong options remain near-jokes or obvious misses even after the length-tell pass. Later: rewrite as concept near-misses, then re-run the blind solver protocol (`site/src/content/quiz/BLIND_EVAL.md`) and the length gate. The blind solve (211/211, 2026-08-27) predates the four questions added since and is not a difficulty certificate.
+- [ ] **Quiz — chapter-end blocks (S).** `/quiz/` shipped 2026-08-27; add optional `QuizBlock` on `book/[id]` pages (cards/essays only today).
+- [ ] **Quiz distractors too easy (M).** Rewrite wrong options as concept near-misses; re-run blind solver (`site/src/content/quiz/BLIND_EVAL.md`) and length gate. Prior 211/211 pass predates four later questions.
 
 ---
 
@@ -110,23 +108,23 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Standalone publish — Goodhart-as-selector instrument (M).** W-5/W-6/W-12/W-16 tables as the result; not yet drafted.
 - [ ] **Standalone publish — agent-discovery / negative-results line (M).** UAD, embedded/lab sims, or negatives methodology piece.
 - [ ] **Alignment Crux Map grant (M, funding-gated).** Draft listing and S-process text ready 2026-09-04; 12 deliverables unchecked until funded — [`drafts/plans/field/alignment-crux-map.md`](../drafts/plans/field/alignment-crux-map.md). Public record is the site funding card only (full applications are local, by design).
-- [ ] **LW wiki tag pilot / Iliad canon lessons (S each, unscheduled).** Sketches [`lw-wiki-tags.md`](../drafts/plans/lw-wiki-tags.md), [`iliad-communal-canon.md`](../drafts/plans/iliad-communal-canon.md).
+- [ ] **LW wiki tag pilot / Iliad canon lessons (S each, unscheduled).** Sketches [`lw-wiki-tags.md`](../drafts/plans/outreach/lw-wiki-tags.md), [`iliad-communal-canon.md`](../drafts/plans/outreach/iliad-communal-canon.md).
 - [ ] **Pairwise researcher-interest matching — Bubble Connector (M+).** Details TBD.
 
 ---
 
 ## Housekeeping board
 
-- [ ] **Chapter gaps from registry contracts (S, author review).** G1–G7 and F1–F4 applied 2026-10-06/07 (Ch. 7, 24–29, 31, 33, 34, 39, 42, 43, App. D, G, P; θ cleanup across the book). Review the chapter edits, then delete [`drafts/plans/predictions/chapter-gaps-from-contracts.md`](../drafts/plans/predictions/chapter-gaps-from-contracts.md) and this item.
+- [ ] **Manuscript directory layout (L).** Add a top-level `manuscript/` folder and move the LaTeX book trees into it: `book.tex`, `chapters/`, `appendices/`, `frontmatter/`, `references/`, `figures/`, and generated-input home `tables/` (build artifacts may stay gitignored under the new root). Update `build.sh`, `make check`, site chapter sync, edit-attribution hooks (`scripts/hooks/edit_attr.py`, `declare_edits.py`), CI, and path docs (`AGENTS.md`, `docs/BUILD.md`, `docs/MANUSCRIPT.md`). Keep `metadata/book.yml` and manuscript ledgers at repo root unless a follow-on pass consolidates `metadata/`. Verify `./build.sh` and `make check`.
 
-- [x] **`ch46` reference corrections (M).** Applied 2026-09-23 from [`drafts/project/ch46-corrections.md`](../drafts/project/ch46-corrections.md) (kept as audit trail). Residual: re-check other claim blocks' bare-number `Chapter(s)` lines in `claims-ledger.md` the same way (S).
-- [x] **Manuscript TODO resolutions (S–M).** Applied 2026-09-23 per [`drafts/project/consistency-review-2026-09-22.md`](../drafts/project/consistency-review-2026-09-22.md) §0.1: ch01 framing paragraph + example rewrite; ch39 episode floor + ch35 pointer; ch43 cruxes posed in App G §`sec:master-crux`; ch44 audit shape; ch42 checklist sentence; ch45 summary. Remaining `% TODO` comments: ch21 citation (Cite/Wait), ch38 formalize (Spine P3).
-- [x] **Backtest outcome vocabulary (S).** Implemented 2026-09-23: closed set `fail|pass|refuse|null|structure_stop` + separate `stop` field, compound results as separate lines, Appendix J Pos./Ambig./Neg. rule keyed on the primary measurand, M2 freeze-hash rule (`docs/METHODOLOGY.md` § Backtests; template in `backtest.md`). Relabelled W-11 (`pass (stop bit)`) and W-16 (two lines) in ledger, `docs/EXPERIMENTS.md`, YAML; cards regenerated.
+- [ ] **Chapter gaps from registry contracts (S, author review).** G1–G7 and F1–F4 applied 2026-10-06/07. Review chapter edits, then delete [`chapter-gaps-from-contracts.md`](../drafts/plans/predictions/chapter-gaps-from-contracts.md) and this item.
+
+- [ ] **Claims-ledger bare-number chapters (S).** Follow-up to 2026-09-23 ch46 pass — re-check other claim blocks' bare-number `Chapter(s)` lines in `claims-ledger.md` ([`ch46-corrections.md`](../drafts/project/ch46-corrections.md) is the audit trail).
 - [ ] **Review author corpus for manuscript inclusion (M).** Scan remaining Gunnar LessWrong posts and comments in [`data/lesswrong/gunnar_zarncke_lw_content.json`](../data/lesswrong/gunnar_zarncke_lw_content.json) for `{GZ}` blocks where a chapter still paraphrases or a missing aspect needs cover. Rules and first pass: [`2026-09-29-lw-prose-into-chapters.md`](../drafts/conversation-summaries/archive/2026-09/2026-09-29-lw-prose-into-chapters.md); record transfers in [`author-provenance.jsonl`](../drafts/project/self-audit/edit-attribution/author-provenance.jsonl). Next candidate: **Senexism (2014)** (successor chapters). Skip model-assisted or paste-heavy pieces (Invisible Hand, AI Safety Interventions, Thou Art Rainbow, Löbian ChatGPT bulk, etc.).
 - [ ] **TSA on itself (M, plan).** [`drafts/plans/tsa-on-itself.md`](../drafts/plans/tsa-on-itself.md): §3.12/§3.13 tooling is in-tree (`make hooks`, `make snap-start` / `snap-end`). Git hooks installed 2026-09-29. Remaining: freeze thresholds, verify user-denial capture (see `2026-09-29-edit-attribution-corrections.md`), other instruments. Edit ledger counts manuscript and site only; authorship bars are derived per touched span on commit.
-- [ ] **Audit-telemetry placement (S, author decision).** [`drafts/plans/audit-telemetry.md`](../drafts/plans/audit-telemetry.md): promote to a `docs/METHODOLOGY.md` instrumentation note, a backtest v2 host-export requirement, or Construct Family C — or attic.
-- [ ] **Componentwise CCI preservation (M, deferred).** Chapter gates now use the vector certificate; preservation and dynamics sites (ch10, ch25, ch30, ch31, ch34, ch40, ch41) still compare the scalar projection, covered by one general statement in ch26 §Scalar projection. Restate them per coordinate and change Lean `CCIPreserved` (scalar-monotone `cci_monotone` in `Successors.lean`) to match; this changes what successor audits check. Site list: [`drafts/plans/cci-vector-promotion.md`](../drafts/plans/cci-vector-promotion.md).
-- [ ] **Frame, disclosure, and parenting results into the manuscript (M, optional).** Turner/Soares integration is applied ([`drafts/plans/turner-soares-integration.md`](../drafts/plans/turner-soares-integration.md), awaiting author review). Not yet in the book:
+- [ ] **Audit-telemetry placement (S, author decision).** [`drafts/plans/backtest/audit-telemetry.md`](../drafts/plans/backtest/audit-telemetry.md): promote to a `docs/METHODOLOGY.md` instrumentation note, a backtest v2 host-export requirement, or Construct Family C — or attic.
+- [ ] **Componentwise CCI preservation (M, deferred).** Chapter gates now use the vector certificate; preservation and dynamics sites (ch10, ch25, ch30, ch31, ch34, ch40, ch41) still compare the scalar projection, covered by one general statement in ch26 §Scalar projection. Restate them per coordinate and change Lean `CCIPreserved` (scalar-monotone `cci_monotone` in `Successors.lean`) to match; this changes what successor audits check. Site list: [`drafts/plans/spine/cci-vector-promotion.md`](../drafts/plans/spine/cci-vector-promotion.md).
+- [ ] **Frame, disclosure, and parenting results into the manuscript (M, optional).** Turner/Soares integration is applied ([`drafts/plans/spine/turner-soares-integration.md`](../drafts/plans/spine/turner-soares-integration.md), awaiting author review). Not yet in the book:
   - `FrameDisclosure` (report reward beats use at any detection rate; matched amnesty keeps deterrence; sealed confession; limits) → ch27 §Goodharting the Correction Channel and the Claim 5 evidence list;
   - the parenting translation ([`drafts/parenting-alignment-translation.md`](../drafts/parenting-alignment-translation.md)) → ch09 next to §The Infant plus Caregiver, ch27 (positive opposite, mild consistent consequences), ch29 (contest vs coercion cycle);
   - the bare vs record state reading ([`drafts/state-utility-in-practice.md`](../drafts/state-utility-in-practice.md)) beyond the ch21 paragraph.
@@ -142,8 +140,6 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [ ] **Eq-chain / informal reading DAG (S).** C12 basin operationalization (ch38); `chapter-informal-edges.yml`; `p_\theta` vs MI `\theta`. `drafts/editorial/editorial-guidance-eq-chain-placement.md`.
 - [ ] **Consider claims/assumptions ledger automation (S).** Decide YAML source vs manual.
 - [ ] **Review U-shaped coordination claim (S).** ch11/ch13 conjectural until downgrade or evidence.
-- [x] **Grounding/safety-case layer completeness review (S).** ch42 now states the eight-layer list is an assembled checklist, not a derived completeness result (2026-09-23); a derivation is Construct 2.0 material.
-- [x] **Perturbation-recognition crux (S).** Posed as a named open problem with success criteria in App G §`sec:master-crux` (2026-09-23), alongside the decisive-yet-undetectable-controller bound; tracked U-03 / U-14.
 - [~] **ch35 inferential coupling / acausal trade (research).** Drafted; threshold calibration and probe-local coordination open.
 - [ ] **Inferential-coupling threshold calibration (research).** ch35 \(\tau_{\mathrm{ac}}\); calibration deferred to ch43/ch44.
 - [~] **Probe-local inferential coordination (research).** Bounded 2026-09-23: ch39 §cumulative-evidence states the episode floor \(k \gtrsim \log(1/\alpha)/\delta^{2}\); ch35 WWCTV points to it; residual (does sub-floor coordination carry deployment leverage?) is in `metadata/open-problems.md` and App G.
@@ -153,7 +149,6 @@ Card-notes triage **closed** 2026-08-17 — [`drafts/attic/site-card-notes-triag
 - [~] **Narrative voice consistency (S).** Optional; wire `check_voice.py` into `make check` if desired.
 - [ ] **Part-opener illustrations (S).**
 - [ ] **Optional: LaTeX PDF CI build test (S).** `.github/workflows/book-pdf.yml`; compile gate only.
-- [x] **Voice lane** — claim-strength voice, ledgers, front-door vocab, PDF de-center (partial). Plan closed 2026-09-07: [`drafts/attic/voice-plan.md`](../drafts/attic/voice-plan.md).
 
 ---
 
@@ -177,7 +172,11 @@ CIRIS composite / boundary_decouple: **Backtest H1** — charter in sibling `cir
 
 Narratives in git / `drafts/conversation-summaries/`. Plans in `drafts/attic/`.
 
-- [x] Voice lane (2026-09-07) · Problem-axis incorporation (2026-09-01) · Field spring-map demo (2026-09-18) · Spec-sheet page (2026-09-02) · Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · **`zarncke2026embedded-value-formation` manuscript wiring** — closed 2026-09-07: paper stays unpublished; ch15/ch45 project-derived prose + graded-lab Phase 3b suffice; no `\autocite` · *(see git for full list)*
+- [x] Voice lane (2026-09-07) · Problem-axis incorporation (2026-09-01) · Field spring-map demo (2026-09-18) · Spec-sheet page (2026-09-02) · Krym architecture revision · MB6b∨MB8 prose retirement · Field v2 hub · Field matrix bridge nouns (2026-08-02) · Consciousness/MB3 extension · Six-claims spine · Pivotal act BIG REVIEW · Chapter splits/renumber · App B core sync · Translation spine Ph.1–2 · Epistemic markers · Frontmatter gaps · Native Debate/ELK matching · Guard axiom budget · Clickable badges · Duplicate LaTeX labels / hyperref `page.i` fix · **`zarncke2026embedded-value-formation` manuscript wiring** — closed 2026-09-07: paper unpublished; ch15/ch45 + graded-lab Phase 3b suffice; no `\autocite`
+- [x] **2026-09-23 consistency batch** — ch46 ref corrections ([`ch46-corrections.md`](../drafts/project/ch46-corrections.md)); manuscript `% TODO` resolutions ([`consistency-review-2026-09-22.md`](../drafts/project/consistency-review-2026-09-22.md) §0.1); backtest outcome vocabulary (`fail|pass|refuse|null|structure_stop` + M2 freeze-hash); ch42 eight-layer checklist wording; perturbation-recognition crux in App G §`sec:master-crux` (U-03/U-14). Log: [`2026-09-23-consistency-decisions.md`](../drafts/conversation-summaries/archive/2026-09/2026-09-23-consistency-decisions.md).
+- [x] **Site — guided tour read-next** — `/paths/` continue from last book chapter (2026-08+).
+- [x] **Site — predictions hub** — `/predictions/` + cards; plan [`prediction-interface.md`](../drafts/plans/predictions/prediction-interface.md) (2026-09-19+).
+- [x] **Site — online quiz** — `/quiz/` bank + `make check` gates (2026-08-27); see open **Quiz — chapter-end blocks** for residual.
 
 ---
 

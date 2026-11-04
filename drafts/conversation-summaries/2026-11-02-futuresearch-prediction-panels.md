@@ -27,4 +27,4 @@ User ran FutureSearch on Markets 1 and 4, asked to archive the reports in drafts
 - `cd site && npm run build` — exit 0, 1200 pages.
 
 ## Commits
-- (this session)
+- `4789b2e94b` Show FutureSearch snapshots on predictions hub for Markets 1 and 4.
