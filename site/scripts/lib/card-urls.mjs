@@ -1,3 +1,5 @@
+import { bookUnitSitePath } from "./book-site-paths.mjs";
+
 /** Canonical card URL paths: /cards/{type-segment}/{local-slug}/ */
 
 /** @typedef {import('../../src/lib/badges.ts').CardType} CardType */
@@ -128,8 +130,9 @@ export function cardPublicHref(base, card) {
  * @param {string} chapterId
  */
 export function bookPublicHref(base, chapterId) {
-  const type = inferTypeFromCardId(`chapters/${chapterId}`, null);
-  return cardPublicHref(base, { id: `chapters/${chapterId}`, type });
+  const path = bookUnitSitePath(chapterId);
+  const normalized = base.endsWith("/") ? base.slice(0, -1) : base;
+  return `${normalized}${path}`;
 }
 
 /**

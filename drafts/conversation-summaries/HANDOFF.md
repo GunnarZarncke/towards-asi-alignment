@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-04 (housekeeping: compact HANDOFF/TODO, plan lanes, value-detect pointer, llms anti-pattern sync).
+Last updated: 2026-11-04 (site book links root-relative; GSC 404 fix).
 
 ---
 
@@ -28,7 +28,9 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
 
-**2026-11-04:** Markdown-link gate (draft-to-draft warn; baseline for other broken links). Graded-lab PLAN v3 closure (prior commit). Ch. 25 human-fallibility conventions + institutional-control translation draft. **Housekeeping:** compact HANDOFF; lane plan folders; SJ-Beard/value-detect as external source (removed local bundles); matched `llms.txt` / `REVIEWING_FOR_AGENTS.md` anti-patterns; TODO closed one-liners. Log: `2026-11-04-llms-sync-todo-compaction.md`.
+**2026-11-04:** **Site book links** — `tex-convert` emits root-relative `/cards/…` URLs; appG→`/lean/`; non–overview `/full/` 301 to hub; sitemap trims duplicate book/full URLs. Log: `2026-11-04-book-link-root-relative.md`. (Same day: markdown-link gate; graded-lab v3 docs; llms/TODO housekeeping — see INDEX.)
+
+**2026-11-04 (earlier):** Markdown-link gate; graded-lab PLAN v3 closure; Ch. 25 conventions draft; HANDOFF/TODO compaction. Log: `2026-11-04-llms-sync-todo-compaction.md`.
 
 **2026-11-03:** Ch. 25 failure-mode sources (committed); Scott autograntor LW comment extract.
 

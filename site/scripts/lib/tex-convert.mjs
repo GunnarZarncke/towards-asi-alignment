@@ -1,6 +1,8 @@
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 import katex from "katex";
+import { bookUnitSiteHref, bookUnitSitePath } from "./book-site-paths.mjs";
+import { cardPublicPath } from "./card-urls.mjs";
 
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
@@ -187,8 +189,7 @@ function splitListItems(body) {
 const ILLUSTRATION_PATH_RE = /^figures\/illustrations\/(ch\d+)_/;
 
 function relIllustrationHref(chapterId) {
-  // The figure is rendered inside a book chapter served at /cards/chapters/{id}/.
-  return `../../../illustrations/${chapterId.toLowerCase()}/`;
+  return `/illustrations/${chapterId.toLowerCase()}/`;
 }
 
 // The book JPEG is what \includegraphics uses for the PDF; the site instead
@@ -515,68 +516,22 @@ function inlineCalloutHtml(text, ctx) {
 }
 
 function relBookHref(pageId, anchor, fromPageId) {
-  const slug = pageId.toLowerCase();
   if (pageId === fromPageId) {
     return anchor ? `#${anchor}` : "./";
   }
-  const segment = /^app/i.test(pageId)
-    ? "appendix"
-    : pageId === "frontmatter"
-      ? "frontmatter"
-      : "chapter";
-  const fromSegment = /^app/i.test(fromPageId)
-    ? "appendix"
-    : fromPageId === "frontmatter"
-      ? "frontmatter"
-      : "chapter";
-  if (segment === fromSegment) {
-    if (segment === "frontmatter") return anchor ? `./#${anchor}` : "./";
-    return `../${slug}/${anchor ? `#${anchor}` : ""}`;
-  }
-  if (segment === "frontmatter") return `../../frontmatter/${anchor ? `#${anchor}` : ""}`;
-  return `../../${segment}/${slug}/${anchor ? `#${anchor}` : ""}`;
+  return bookUnitSiteHref(pageId, anchor);
 }
 
 function relCardHref(cardSlug, cardType) {
   if (cardSlug.startsWith("chapters/")) {
-    const chapterId = cardSlug.slice("chapters/".length).toLowerCase();
-    const segment = /^app/i.test(chapterId)
-      ? "appendix"
-      : chapterId === "frontmatter"
-        ? "frontmatter"
-        : "chapter";
-    if (segment === "frontmatter") return "../../frontmatter/";
-    return `../../${segment}/${chapterId}/`;
+    const chapterId = cardSlug.slice("chapters/".length);
+    return bookUnitSitePath(chapterId);
   }
-  if (cardSlug.startsWith("experiments/")) {
-    return `../../experiment/${cardSlug.slice("experiments/".length).toLowerCase()}/`;
-  }
-  if (cardSlug.startsWith("references/")) {
-    return `../../reference/${cardSlug.slice("references/".length).toLowerCase()}/`;
-  }
-  if (cardSlug.startsWith("field-agendas/")) {
-    return `../../agenda/${cardSlug.slice("field-agendas/".length).toLowerCase()}/`;
-  }
-  const segment =
-    cardType === "bridge"
-      ? "bridge"
-      : cardType === "glossary"
-        ? "glossary"
-        : cardType === "objection"
-          ? "objection"
-          : cardType === "artifact"
-            ? "artifact"
-            : cardType === "news"
-              ? "news"
-              : cardType === "release"
-                ? "release"
-                : "concept";
-  const local = cardSlug.includes("/") ? cardSlug.split("/").pop() : cardSlug;
-  return `../../${segment}/${String(local).toLowerCase()}/`;
+  return cardPublicPath({ id: cardSlug, type: cardType });
 }
 
 function relReferencesHref(key) {
-  return `../../references/${encodeURIComponent(key.toLowerCase())}/`;
+  return cardPublicPath({ id: `references/${key}`, type: "reference" });
 }
 
 function resolveRef(label, ctx, kind = "ref") {

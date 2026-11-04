@@ -63,13 +63,18 @@ export async function getStaticPaths() {
 }
 
 const { card, showFullText = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 if (card.data.type === "essay") {
-  return Astro.redirect(`${import.meta.env.BASE_URL}essay/${card.id}/`, 301);
+  return Astro.redirect(`${base}essay/${card.id}/`, 301);
 }
 
 if (card.id === "releases-updates") {
-  return Astro.redirect(`${import.meta.env.BASE_URL}updates/`, 301);
+  return Astro.redirect(`${base}updates/`, 301);
+}
+
+if (showFullText && card.data.bookPageId && card.data.overviewOnly !== true) {
+  return Astro.redirect(cardHrefForCard(base, card), 301);
 }
 
 const allCards = await getCollection("cards");
@@ -160,7 +165,6 @@ const relatedNews =
         .sort((a, b) => b.date.localeCompare(a.date))
     : [];
 
-const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const projectionGraphUrl = card.data.graphNodeId
   ? withBase("/lean/graph/field-subsumptions/")

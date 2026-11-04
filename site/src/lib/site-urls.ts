@@ -30,8 +30,12 @@ export function bookHref(base: string, chapterId: string) {
   return bookPublicHref(base, chapterId);
 }
 
+/** Full-text subroute exists only for overview hubs (e.g. appendix M); others use the chapter card URL. */
 export function bookFullHref(base: string, chapterId: string) {
-  return bookFullPublicHref(base, chapterId);
+  if (routeSlug(chapterId) === "appm") {
+    return bookFullPublicHref(base, chapterId);
+  }
+  return bookPublicHref(base, chapterId);
 }
 
 /** Canonical card URL from collection id + optional type (type required for flat ids). */
@@ -87,8 +91,8 @@ export function pdfHref(base: string) {
   return `${normalized}${BOOK_PDF_FILENAME}`;
 }
 
-/** Relative PDF link from generated book chapter markdown (cards/chapters/{id}/). */
-export const BOOK_CHAPTER_PDF_HREF = "../../../towards-superintelligence-alignment.pdf";
+/** Root-relative PDF link from synced book markdown (any card depth). */
+export const BOOK_CHAPTER_PDF_HREF = "/towards-superintelligence-alignment.pdf";
 
 /** Classify an outbound URL for the small link-type indicator: PDF file, GitHub-hosted, or other external. */
 export function classifyLinkKind(url: string): "pdf" | "github" | "external" {

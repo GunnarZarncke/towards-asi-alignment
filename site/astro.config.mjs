@@ -27,7 +27,16 @@ export default defineConfig({
     sitemap({
       // Illustration-prompt pages are unlisted and noindex; keep them out of
       // the sitemap too so they stay reachable only via the chapter link.
-      filter: (page) => !page.includes("/illustrations/"),
+      filter: (page) => {
+        if (page.includes("/illustrations/")) return false;
+        // `/book/chNN/` and `/book/appX/` are noindex redirect stubs, not index targets.
+        if (/\/book\/ch\d+\/?$/i.test(page) || /\/book\/app[a-z]\/?$/i.test(page)) return false;
+        // Chapter/appendix full text is canonical on the hub URL except appendix M overview hub.
+        if (/\/cards\/(chapter|appendix)\/[^/]+\/full\/?$/i.test(page) && !/\/cards\/appendix\/appm\/full\/?$/i.test(page)) {
+          return false;
+        }
+        return true;
+      },
       customPages: [`${site}/towards-superintelligence-alignment.pdf`, ...botOrientationPages]
     })
   ],
