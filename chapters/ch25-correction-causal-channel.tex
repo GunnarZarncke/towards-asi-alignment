@@ -346,10 +346,10 @@ An obedient but deceptive system may strongly condition future actions on human 
 Goodhart pressure can make measured correction success diverge from real correction \autocite{manheim2018goodhart}.
 The penalised integrity functional \(\mathrm{CCI}\) and its penalty terms \(L\), \(M\), \(R\), and \(O\) are defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}).
 \leanspine{proof}{P13}{Certification uses $\mathrm{Control}\leq CCI+\delta$; risk is derived from the penalised integrity functional.}
-A system is corrigible over horizon \(k\) only if \(\mathrm{CCI}_k > \theta_{\mathrm{corr}}\) for the relevant class of high-stakes situations.
-This threshold cannot be universal.
+A system is corrigible over horizon \(k\) only if \(\vec{\mathrm{CCI}}_k \succeq \vec{\theta}_{\mathrm{corr}}\) for the relevant class of high-stakes situations.
+These thresholds cannot be universal.
 The required channel integrity for movie recommendations is lower than for autonomous bioengineering, finance, military planning, or successor creation.
-The more irreversible the domain, the higher the threshold.
+The more irreversible the domain, the stricter the thresholds.
 
 \end{authbar}
 \authbarneedspace
@@ -500,7 +500,7 @@ The system may inform deliberation, but it must not control the formation of cor
 \authbarneedspace
 \section{Authority}
 \label{sec:authority}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 The fourth bottleneck is authority:
 \begin{equation}
 D_t \rightarrow C_t \rightarrow U_{t+1}.
@@ -1375,6 +1375,26 @@ Each artifact should be evaluated by whether it increases correction-channel int
 For example, an audit log helps only if it improves observability and later authority.
 A safety report helps only if it changes deployment decisions.
 A red-team finding helps only if it cannot be buried without consequence.
+
+\end{authbar}
+\authbarneedspace
+\section{Human Fallibility}
+\label{sec:human-fallibility-conventions}
+\begin{authbar}{GZ+AI}
+Operators get tired.
+Alerts that fire too often stop being read.
+A person who watches an automated system for a long stretch stops seeing what it does, trusts it too much, or trusts it too little.
+Weapons-control practice already has rules for this: limit time on watch, cap the alert rate, and keep a way for a person to step in \autocite{boulanin2020limits}.
+
+Those rules are the bottlenecks above, in ordinary form.
+If the person never forms a judgment $J_t$, deliberation has failed.
+If the person cannot make the system change, authority has failed.
+If the person notices only after the harm has occurred, the correction is late.
+A crew rotation, an alert budget, or a break in the watch is an attempt to keep those three open.
+
+Pressing a button because a light came on shows that a person was there \autocite{santonidesio2018meaningful}.
+A correction still has to change what the system does next.
+
 
 \end{authbar}
 \authbarneedspace

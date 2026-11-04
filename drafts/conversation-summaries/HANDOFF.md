@@ -30,7 +30,7 @@ Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archiv
 
 **2026-11-04:** **Site book links** — `tex-convert` emits root-relative `/cards/…` URLs; appG→`/lean/`; non–overview `/full/` 301 to hub; sitemap trims duplicate book/full URLs. Log: `2026-11-04-book-link-root-relative.md`. (Same day: markdown-link gate; graded-lab v3 docs; llms/TODO housekeeping — see INDEX.)
 
-**2026-11-04 (earlier):** Markdown-link gate; graded-lab PLAN v3 closure; Ch. 25 conventions draft; HANDOFF/TODO compaction. Log: `2026-11-04-llms-sync-todo-compaction.md`.
+**2026-11-04 (earlier):** Markdown-link gate; graded-lab PLAN v3 closure; HANDOFF/TODO compaction. Log: `2026-11-04-llms-sync-todo-compaction.md`. Control phrases sit in Appendix C's correction section, in the usual direction (book term, then institutional name). Log: `2026-11-04-institutional-control-translation.md`.
 
 **2026-11-03:** Ch. 25 failure-mode sources (committed); Scott autograntor LW comment extract.
 
