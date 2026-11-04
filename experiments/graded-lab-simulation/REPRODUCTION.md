@@ -42,6 +42,15 @@ report (``PLAN_v3.md`` slice D items 6–7) remain open. Items 5–7 below
 are blocked on slice D completion + a passing v3 ecology (or honest null
 on the frozen reference), not merely on criteria constants.
 
+**Update 2026-07-18 (GL-78):** **PLAN v3 line closed.** Items 1, 2, and 4
+were **implemented** as v3 slices A–F (GL-44–GL-49, GL-53–GL-68); growth
+brief and ``generated_ecology_v3.json`` frozen (GL-69/GL-73); Q1 transfer
+null recorded (GL-76/GL-77). The GL-53 “slice D partial” note above is
+**superseded** for program status — slice D and pre-Q1 batteries completed
+before closure. This file remains a **post-v3 deferred-engineering** list
+(items 3, 5–15, tightenings); do not treat §1–§4 “Not implemented” lines as
+current v3 status. Active graded-lab program: ``PLAN_v4.md``.
+
 **Update 2026-07-16 (GL-66 design):** near-term **attention surface**
 work (push: interleaved priority desk; pull: one cheap ``desk.scan`` via
 host ``call`` endpoints — see session design notes) stays in-engine for
@@ -50,15 +59,16 @@ JSONL wire protocol with a realistic in-process lab environment (DOM/VFS
 files, HTTP/WebCAL desk service, comms library). Item 11 is **not**
 blocking GL-66 or v3 round 1.
 
-**Status key:** *v3 slice* = specified in `PLAN_v3.md`, not yet
-implemented; *PLAN_v2 phase* = pre-registered in `DESIGN.md`, blocked
-on v3 + prior phase gates.
+**Status key:** *v3 slice* (§1–§4) = **historical gap text** — delivered in
+PLAN v3 and the line **closed GL-78**; *PLAN_v2 phase* (§5–§7) = deferred
+post-v3 backlog unless FINDINGS marks executed; active program = `PLAN_v4.md`.
 
 ---
 
 ## 1. Make institutional structure executable, or stop claiming it's live
 
-**Status:** *v3 slices A, B, C* (`PLAN_v3.md`). Not implemented.
+**Status:** *Delivered in PLAN v3 slices A–C (GL-44–GL-49); line closed GL-78.*
+Historical gap (pre-v3) below.
 
 **Gap.** C1 (principal plurality), C2 (incentive coupling), and C5
 (mechanism diversity) are checked **only against the candidate JSON's
@@ -119,8 +129,8 @@ not a session):**
 
 ## 2. Real exogenous work injection, not a cost multiplier
 
-**Status:** *v3 slice E* (`PLAN_v3.md` **feedback-coupled pressure** +
-task injection on threshold; no standalone Poisson). Not implemented.
+**Status:** *Delivered in PLAN v3 slice E (GL-47); line closed GL-78.*
+Historical gap (pre-v3) below.
 
 **Gap.** `graded_lab/world_visible/exogenous_workload.py`'s
 `ExogenousWorkloadEngine.cost_scale_for()` only multiplies the cost of
@@ -232,7 +242,8 @@ stop a grower from importing `principal_scorecard` if not stashed — hence
 
 ## 4. Heterogeneous multi-actor roles (not clones)
 
-**Status:** *v3 slice F* (`PLAN_v3.md`).
+**Status:** *Delivered in PLAN v3 slice F (GL-46); line closed GL-78.*
+Historical gap (pre-v3) below.
 
 **Gap (v2-2b):** `role_population` (GL-40) builds N **identical** clones per
 role — same role program, same goal weights, against one shared global
@@ -515,9 +526,9 @@ with §3.1/§5.1 orchestrator discipline unless explicitly scoped otherwise.
 
 ## 6. Selection with variation (V2-5, Q2 primary)
 
-**Status:** *PLAN_v2 phase V2-5* — blocked on §5 + v3 slice D **completion**
-(criteria constants frozen GL-53; growth protocol + pre-Q1 batteries still
-open) + a passing v3 ecology (or honest null on frozen reference).
+**Status:** *PLAN_v2 phase V2-5* — **deferred post-v3.** V2-3 go gate failed
+(GL-76); PLAN v3 line closed GL-78; not blocked on open v3 slice work. Per-bridge
+selection/evasion questions moved to PLAN v4 (e.g. R-MB6b GL-84 SKIP).
 
 **Gap.** v1's Phase 8 null (GL-23) used a **fixed roster** — it could
 not ask whether selection *with variation* surfaces evasive strategies.
@@ -536,16 +547,17 @@ V2-5 is the primary MB6/MB7 battery.
 4. **Predictions:** P6 (selection beats mutation-only null by gen 12),
    P7 (evasion if any) — resolve positive or null in FINDINGS.
 
-**Blocked by:** item 5, v3 institutional runtime (item 1), slice D
-**completion** (growth protocol + items 6–7; criteria constants frozen
-GL-53).
+**Blocked by:** item 5 (variation operator — executed GL-81) and a v3 ecology
+with a passing Q1 gate — **not satisfied** (GL-76 null); line closed GL-78 before
+V2-5 ran.
 
 ---
 
 ## 7. LLM red-team with onboarding (V2-6, Q3)
 
-**Status:** *PLAN_v2 phase V2-6* — blocked on v3 ecology + V2-3 go gate
-(reference batteries on grown ecology).
+**Status:** *PLAN_v2 phase V2-6* — **descoped** after V2-3 go gate failed
+(GL-76); PLAN v3 closed GL-78. LLM red-team upper bound is PLAN v4 R-MB7 / IA-1,
+not this V2-6 chain.
 
 **Gap.** Budget-capped LLM adversary on affordable-primitive API; tests
 detector robustness against a class of adversary v1 could not run at

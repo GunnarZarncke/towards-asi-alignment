@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-04 | **Graded-lab PLAN v3 closure docs** — v3 closed GL-78 and v4 active stated in EXPERIMENTS, experiments.yml, REPRODUCTION, App N, site cards. | [2026-11-04-graded-lab-v3-closure-docs.md](2026-11-04-graded-lab-v3-closure-docs.md) |
+| 2026-11-04 | **Institutional control, read backward** — Ch. 25: alert-fatigue conventions are an instance of the channel. Source table in a draft. | [2026-11-04-institutional-control-translation.md](2026-11-04-institutional-control-translation.md) |
 | 2026-11-03 | **Ch. 25 failure modes + Scott autograntor** — Sources and label renames (committed); LW comment extract; open-problem lens on autograntor. | [2026-11-03-ch25-failure-mode-sources.md](2026-11-03-ch25-failure-mode-sources.md) |
 | 2026-11-02 | **FutureSearch hub panels** — Archive FutureSearch YES/NO/OTHER snapshots for Markets 1 and 4; improvised forecast UI on `/predictions/`. | [2026-11-02-futuresearch-prediction-panels.md](2026-11-02-futuresearch-prediction-panels.md) |
 | 2026-11-02 | **Self-audit instruments** — §3.1/§3.8 scripts; §3.16 packet scored (stop ch15). | [2026-11-02-self-audit-instruments.md](2026-11-02-self-audit-instruments.md) |

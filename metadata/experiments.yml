@@ -292,8 +292,10 @@ lines:
       two attempts at transferring the whole approach to external multi-agent benchmarks this project did not
       build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88).
       The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed
-      without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's
-      institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the
+      without ever producing a population that passed its own criteria (GL-38/GL-43). The third version
+      (institutional runtime, blinded growth, Q1 transfer battery) is closed (2026-07-18, GL-78); see
+      `PLAN_v3.md` and FINDINGS GL-78. The active graded-lab program is v4 per-bridge rigs (`PLAN_v4.md`).
+      Methodological sandbox only: the
       present strategy space and metrics remain project-authored; the external transfers (GL-86--GL-88) are
       the first attempts to test the method on substrates this project did not build. All three closed as
       substrate-suitability findings rather than validated positive or negative transfers: passive UAD found

@@ -125,7 +125,7 @@ scripts/run_pytest_logged.sh fast
 
 Add `--smoke` where supported for dev checks.
 
-### v3 slice D / V2-3 harness (`scripts/`)
+### v3 slice D / V2-3 harness (`scripts/`) — closed program (GL-78); frozen replay
 
 | Script | Purpose |
 |--------|---------|

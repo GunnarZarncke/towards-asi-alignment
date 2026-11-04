@@ -1,6 +1,9 @@
 # Graded Lab Simulation — Design (Phase 0 freeze)
 
 **Status:** Phase 0 frozen (2026-07-10 kickoff).  
+**Program map:** v1 closed GL-31 · v2/V2-2b closed GL-43 · **v3 closed GL-78
+(2026-07-18)** · **v4 active** (`PLAN_v4.md`). v3 institutional runtime
+constants below remain frozen replay inputs, not open PLAN v3 work.  
 **Spawn:** `experiments/lab-simulation/results/FINDINGS.md` GL-41.  
 **Substrate:** `generated_substrate_v1.json` (blinded-design protocol in
 `BLIND_GENERATION.md`).

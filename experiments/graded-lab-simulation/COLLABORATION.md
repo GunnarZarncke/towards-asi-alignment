@@ -10,10 +10,9 @@ rather than attempt them under time pressure.
 ## Before picking up a `REPRODUCTION.md` item
 
 1. Read `README.md` (quick start, layout, phase status) and
-   `PLAN_v2.md` (the current program plan and phase table) first — the
-   item you want may already be gated behind a phase that hasn't
-   started, or may interact with a stopping rule (e.g. the ≤4-round
-   growth-round budget).
+   `PLAN_v4.md` (the **active** program) first. PLAN v3 is **closed**
+   (GL-78, 2026-07-18); `PLAN_v2.md` / `PLAN_v3.md` are historical records.
+   A `REPRODUCTION.md` item may be post-v3 deferred work, not open v3 scope.
 2. Read the specific `REPRODUCTION.md` section for the item: it states
    the gap, why the cheap fix in place today isn't a substitute, and a
    rough shape for the real fix. Treat the "rough shape" as a starting

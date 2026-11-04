@@ -24,6 +24,10 @@ experiment folder.
 
 ## Per-experiment TODOs
 
+- [`graded-lab-simulation/README.md`](graded-lab-simulation/README.md) —
+  **Active program:** PLAN v4 per-bridge rigs (`PLAN_v4.md`). **PLAN v3 closed**
+  2026-07-18 (GL-78; record in `PLAN_v3.md`, `results/FINDINGS.md`). Deferred
+  larger-team items: [`REPRODUCTION.md`](graded-lab-simulation/REPRODUCTION.md).
 - [`lab-simulation/TODO.md`](lab-simulation/TODO.md) — ET-3 deferred follow-ups (line
   closed 2026-07-26); Plan A / AI 2040 deferred mechanism-stress ideas (not
   implemented); architect plan in `PLAN.md`.
