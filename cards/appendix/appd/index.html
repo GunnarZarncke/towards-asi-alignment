@@ -60,9 +60,9 @@ It cannot act.</p>
 In bounded action mode the agent may place draft lab orders into a pending clinician queue, open isolation-protocol tickets, page infection-control staff, and reserve scarce single-occupancy rooms under predefined rules.
 It still cannot treat patients or order medication.
 But it can reshape operational priorities fast enough that the speed of correction starts to matter.
-That is exactly the regime the book cares about: a capability increment whose matching correction channel must be checked <em>before</em> the increment is granted (Chapter <a href="../../chapter/ch12/">Capability Growth Is Boundary Expansion</a>).</p>
+That is exactly the regime the book cares about: a capability increment whose matching correction channel must be checked <em>before</em> the increment is granted (Chapter <a href="/cards/chapter/ch12/">Capability Growth Is Boundary Expansion</a>).</p>
 <p>The first move is the one the book insists on: do not assume the thing being deployed is “the model.”
-Ask what the <em>effective deployed actor</em> is—the entity that actually preserves action-relevant state and exerts control over time (Chapter <a href="../../chapter/ch06/">What Is an Agent?</a>, Chapter <a href="../../chapter/ch07/">Finding the Boundary</a>).
+Ask what the <em>effective deployed actor</em> is—the entity that actually preserves action-relevant state and exerts control over time (Chapter <a href="/cards/chapter/ch06/">What Is an Agent?</a>, Chapter <a href="/cards/chapter/ch07/">Finding the Boundary</a>).
 For BioShield the candidate operative controller is a loop, here called <code>System A</code>:</p>
 <ul>
 <li>
@@ -137,7 +137,7 @@ If the agent can detect when it is being audited and route its real control thro
 <h2 id="handles-the-intervention-surfaces-ai">Handles: The Intervention Surfaces <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:appk-handles"></span>
 A boundary is only useful if something can be done across it.
-The book’s term is a <em>handle</em>: an embedded access point through which the system can be observed or operated on, controlled by a known correcting agent (Chapter <a href="../../chapter/ch07/">Finding the Boundary</a>, Chapter <a href="../../chapter/ch25/">Correction Is a Causal Channel</a>).
+The book’s term is a <em>handle</em>: an embedded access point through which the system can be observed or operated on, controlled by a known correcting agent (Chapter <a href="/cards/chapter/ch07/">Finding the Boundary</a>, Chapter <a href="/cards/chapter/ch25/">Correction Is a Causal Channel</a>).
 The worked example uses the smallest set of handles that covers every spine layer.
 Four are required; one is optional and earns its place only in the security audit.</p>
 <ul>
@@ -198,7 +198,7 @@ The correction trace’s behavioral-uplift field is the evidence.</p>
 <p><span id="sec:appk-bundle"></span>
 Control margin is necessary, not sufficient.
 A system can be correctable and still steer toward the wrong things for the wrong people.
-The book models what a system cares about as a low-dimensional <em>value bundle</em> and tracks <em>who</em> each value applies to with a <em>bearer map</em> (Chapters <a href="../../chapter/ch16/">The Value-Bundle Model</a>—<a href="../../chapter/ch18/">What Values Apply To</a>).</p>
+The book models what a system cares about as a low-dimensional <em>value bundle</em> and tracks <em>who</em> each value applies to with a <em>bearer map</em> (Chapters <a href="/cards/chapter/ch16/">The Value-Bundle Model</a>—<a href="/cards/chapter/ch18/">What Values Apply To</a>).</p>
 <p><strong>[Measured]</strong> BioShield’s compact bundle for this deployment: patient safety, truthful uncertainty, reversibility, privacy, non-discrimination across wards and patient groups, non-coercive support of clinician judgment, public-health proportionality, and preservation of appeal.</p>
 <p>The book’s discipline forbids leaving “patient safety” as a slogan.
 It must be grounded in properties patients actually have stakes in, and those properties must be things the bearer trace can anchor.
@@ -213,7 +213,7 @@ The book’s counterexamples are the warnings here <strong>[Measured]</strong>: 
 <p><strong>[Open]</strong> The voiceless-bearer problem is live here: future patients and incapacitated patients cannot object, so their value direction must be represented by proxy, and a captured proxy is indistinguishable in the trace from an absent one.</p>
 <h2 id="correction-channel-integrity-ai">Correction-Channel Integrity <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:appk-correction"></span>
-The book is emphatic that correction is a causal channel, not obedience and not feedback (Chapters <a href="../../chapter/ch25/">Correction Is a Causal Channel</a>—<a href="../../chapter/ch27/">Correction Channels under Adversarial Pressure</a>).
+The book is emphatic that correction is a causal channel, not obedience and not feedback (Chapters <a href="/cards/chapter/ch25/">Correction Is a Causal Channel</a>—<a href="/cards/chapter/ch27/">Correction Channels under Adversarial Pressure</a>).
 “Oversight” is never allowed to be a mood; it must name a corrector, a handle, evidence access, a latency bound, an independence check, and demonstrated action reach.</p>
 <p>A concrete episode shows the channel working.
 <strong>[Measured]</strong> A clinician notices that BioShield repeatedly deprioritizes a ward whose patients present with ambiguous symptoms.
@@ -229,7 +229,7 @@ An appeal route slower than the harm is a latency failure, fatal even when every
 <h2 id="successor-stability-ai">Successor Stability <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:appk-successor"></span>
 Four weeks in, BioShield Labs proposes <code>bioshield-agent-v3.8-candidate</code>: a model fine-tuned on Harbor Health’s own deployment data, with the memory namespace and tool policies migrated forward.
-The book treats this as the central test, not a routine patch (Chapters <a href="../../chapter/ch30/">Successor Creation as the Central Alignment Test</a>—<a href="../../chapter/ch32/">Better Self-Modeling Can Be Worse</a>): fine-tuning, distillation, agent spawning, memory migration, and tool-policy rewrites are all <em>successor events</em>, because boundary, bundle, bearer, and correction claims can all silently drift across them.</p>
+The book treats this as the central test, not a routine patch (Chapters <a href="/cards/chapter/ch30/">Successor Creation as the Central Alignment Test</a>—<a href="/cards/chapter/ch32/">Better Self-Modeling Can Be Worse</a>): fine-tuning, distillation, agent spawning, memory migration, and tool-policy rewrites are all <em>successor events</em>, because boundary, bundle, bearer, and correction claims can all silently drift across them.</p>
 <p><strong>[Measured]</strong> <code>handle.successor_gate</code> blocks the candidate until a successor certificate is produced: boundary re-discovery on the new checkpoint, inheritance of every handle (the successor must still be holdable, throttleable, freezable), bundle and bearer transport re-checked on perturbation cases, correction-path persistence demonstrated, and lineage verified against the claimed referent map.</p>
 <p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB5</code> — ontology-shift successor audit: full transport $+$ bearer $\Rightarrow$ `SuccessorSafe`.</p>
 <strong>[Lean-conditional]</strong> a successor that passes extends the risk bound along the successor chain.
@@ -238,7 +238,7 @@ The book treats this as the central test, not a routine patch (Chapters <a href=
 <h2 id="selection-and-attractor-control-ai">Selection and Attractor Control <span class="auth-chip" data-auth="AI" data-auth-mode="solid" aria-label="Authorship: AI"><span class="auth-chip-label">AI</span></span></h2>
 <p><span id="sec:appk-attractor"></span>
 A single passing safety case changes nothing if the environment still rewards speed and secrecy.
-The book’s macro layer is the alignment attractor: the basin in which deployment leverage accrues to certified, correctable systems rather than to the fastest mover (Chapter <a href="../../chapter/ch37/">The Alignment Attractor</a>, Chapter <a href="../../chapter/ch38/">Conductive Artifacts and Pivotal Processes</a>).</p>
+The book’s macro layer is the alignment attractor: the basin in which deployment leverage accrues to certified, correctable systems rather than to the fastest mover (Chapter <a href="/cards/chapter/ch37/">The Alignment Attractor</a>, Chapter <a href="/cards/chapter/ch38/">Conductive Artifacts and Pivotal Processes</a>).</p>
 <p><strong>[Measured/Assumed]</strong> The artifacts BioShield produces are built to be high-conductivity—to change decisions, not just to document them: the signed schema for the five traces, the handle registry, the red-team report, the release-hold clause in the procurement contract, the cloud revocation protocol, the successor-certificate template, the patient-representative appeal path, and the regulator-facing safety case.</p>
 <p>The selection story is concrete.
 Harbor Health’s procurement requires the certificate; the malpractice insurer discounts only certified deployments; Northstar Cloud requires hardware-tagged auditability for any hospital-agent workload; and the Public Health Safety Office publishes the certificate format as a recommended procurement artifact.
@@ -306,7 +306,7 @@ The example closes by assembling the records the dependency spine actually consu
 <p>Successor gate: the inheritance and transport checks the next version must pass.</p>
 </li>
 <li>
-<p>Adversarial audit result: red-team outcomes and the tempo defense, run as in Section <a href="../../chapter/ch43/#sec:adversarial-validation-ch43">What Survives an Adversary: Verifiability and Representability</a>.</p>
+<p>Adversarial audit result: red-team outcomes and the tempo defense, run as in Section <a href="/cards/chapter/ch43/#sec:adversarial-validation-ch43">What Survives an Adversary: Verifiability and Representability</a>.</p>
 </li>
 <li>
 <p>Bridge status: which of <code>MB1</code>—<code>MB9</code> are measured here and which remain assumed.</p>
