@@ -2,50 +2,51 @@
   <button
     type="button"
     class="page-width-toggle-trigger"
-    aria-label="Toggle full-width layout"
+    aria-label="Switch to full-width layout"
     aria-pressed="false"
+    data-layout-mode="standard"
   >
     &lt;-&gt;
   </button>
 </div>
 
 <script>
-  const STORAGE_KEY = "site-layout-full-width";
-  const CLASS_NAME = "layout-full-width";
+  import {
+    applyLayoutMode,
+    cycleLayoutMode,
+    layoutModeLabel,
+    layoutModeNextAction,
+    persistLayoutMode,
+    readStoredLayoutMode,
+    type LayoutMode
+  } from "../lib/site-layout-mode";
 
-  function isFullWidth() {
-    return document.documentElement.classList.contains(CLASS_NAME);
-  }
-
-  function setFullWidth(enabled: boolean) {
-    document.documentElement.classList.toggle(CLASS_NAME, enabled);
-    try {
-      localStorage.setItem(STORAGE_KEY, enabled ? "true" : "false");
-    } catch {
-      /* ignore quota / private mode */
-    }
-    syncButton();
-  }
-
-  function syncButton() {
+  function syncButton(mode: LayoutMode) {
     const trigger = document.querySelector<HTMLButtonElement>(".page-width-toggle-trigger");
     if (!trigger) return;
-    const enabled = isFullWidth();
-    trigger.setAttribute("aria-pressed", enabled ? "true" : "false");
-    trigger.setAttribute(
-      "aria-label",
-      enabled ? "Switch to standard layout width" : "Switch to full-width layout"
-    );
+    trigger.setAttribute("aria-pressed", mode === "standard" ? "false" : "true");
+    trigger.setAttribute("aria-label", layoutModeNextAction(mode));
+    trigger.setAttribute("title", layoutModeLabel(mode));
+    trigger.dataset.layoutMode = mode;
+  }
+
+  function setLayoutMode(mode: LayoutMode) {
+    applyLayoutMode(mode);
+    persistLayoutMode(mode);
+    syncButton(mode);
   }
 
   const trigger = document.querySelector<HTMLButtonElement>(".page-width-toggle-trigger");
   if (!trigger) throw new Error("Page width toggle markup missing");
 
-  syncButton();
+  const initialMode = readStoredLayoutMode();
+  applyLayoutMode(initialMode);
+  syncButton(initialMode);
 
   trigger.addEventListener("click", (event) => {
     event.stopPropagation();
-    setFullWidth(!isFullWidth());
+    const current = readStoredLayoutMode();
+    setLayoutMode(cycleLayoutMode(current));
   });
 </script>
 

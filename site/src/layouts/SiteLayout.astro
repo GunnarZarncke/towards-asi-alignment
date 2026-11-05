@@ -97,11 +97,21 @@ const websiteJsonLd = {
     <meta name="twitter:image:alt" content={ogImageAlt} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
     <script is:inline>
-      try {
-        if (localStorage.getItem("site-layout-full-width") === "true") {
-          document.documentElement.classList.add("layout-full-width");
-        }
-      } catch {}
+      (function () {
+        try {
+          var key = "site-layout-mode";
+          var legacy = "site-layout-full-width";
+          var mode = localStorage.getItem(key);
+          if (mode !== "wide" && mode !== "focus" && mode !== "standard") {
+            mode = localStorage.getItem(legacy) === "true" ? "wide" : "standard";
+          }
+          if (mode === "wide") {
+            document.documentElement.classList.add("layout-full-width");
+          } else if (mode === "focus") {
+            document.documentElement.classList.add("layout-focus");
+          }
+        } catch {}
+      })();
     </script>
   </head>
   <body>

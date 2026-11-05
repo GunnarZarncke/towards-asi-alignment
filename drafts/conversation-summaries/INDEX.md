@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-05 | **Site layout focus mode** — Width button cycles standard / wide / focus; focus hides side panel, minimal grey margin. | [2026-11-05-site-layout-focus-mode.md](2026-11-05-site-layout-focus-mode.md) |
 | 2026-11-05 | **Field v2 lenses panel** — Fourth hub preview: frame map clip → lenses overview card. | [2026-11-05-field-v2-lenses-panel.md](2026-11-05-field-v2-lenses-panel.md) |
 | 2026-11-05 | **sync-lenses hardening** — Validation, stale cleanup, pinned overview links; author overview copy restored in generator. | [2026-11-05-sync-lenses.md](2026-11-05-sync-lenses.md) |
 | 2026-11-05 | **Alignment-frames paper review** — Paper vs post-draft lens model: robust–correction rigidity, vector CCI, three state utilities, FrameCorrector as the running case; gaps and editorial. | [2026-11-05-alignment-frames-paper-review.md](2026-11-05-alignment-frames-paper-review.md) |

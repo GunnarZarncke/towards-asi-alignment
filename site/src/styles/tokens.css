@@ -29,4 +29,5 @@
   --radius-card: 18px;
   --max-readable: 45rem;
   --max-wide: 68rem;
+  --layout-inline-padding: 1rem;
 }

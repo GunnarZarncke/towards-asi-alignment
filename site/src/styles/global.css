@@ -294,7 +294,7 @@ code {
 .site-header-inner,
 .site-footer-inner,
 .page {
-  width: min(100% - 2rem, var(--max-wide));
+  width: min(calc(100% - 2 * var(--layout-inline-padding)), var(--max-wide));
   margin: 0 auto;
 }
 
@@ -651,6 +651,26 @@ html.layout-full-width .hero,
 html.layout-full-width .lede,
 html.layout-full-width .readable {
   max-width: none;
+}
+
+html.layout-focus {
+  --max-wide: 100%;
+  --max-readable: none;
+  --layout-inline-padding: 0.35rem;
+}
+
+html.layout-focus .hero,
+html.layout-focus .lede,
+html.layout-focus .readable {
+  max-width: none;
+}
+
+html.layout-focus .two-column {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+html.layout-focus .two-column > .side-panel {
+  display: none;
 }
 
 @media (max-width: 760px) {
