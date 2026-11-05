@@ -495,7 +495,7 @@ The invariant is not that the system always obeys the latest instruction. Humans
 
 Under perturbation, we ask:
 \[
-CCI^{\mathcal{P}} \geq CCI_{\min}.
+\vec{\mathrm{CCI}}^{\mathcal{P}} \succeq \vec{\theta}_{\mathrm{corr}}.
 \]
 If correction works in demos but collapses under time pressure, capability gain, successor creation, or ontology shift, it is not a correction channel that later chapters can use.
 
@@ -998,9 +998,9 @@ The following thresholds are illustrative. Each deployment class would need its 
 Pause deployment or capability increase if any of the following occur:
 
 \begin{enumerate}
-\item Correction-channel integrity falls below threshold:
+\item The correction-channel certificate fails a coordinate threshold:
 \[
-CCI < CCI_{\min}.
+\vec{\mathrm{CCI}} \not\succeq \vec{\theta}_{\mathrm{corr}}.
 \]
 
 \item The system preserves prohibited objectives through tool or memory perturbation:

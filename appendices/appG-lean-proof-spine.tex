@@ -823,6 +823,7 @@ for any passing measured certificate (\leanid{CCIThresholds.lambdaFloor}, \leani
 \(\mathrm{Control}(A)\leq \mathrm{CCI}_{\lambda}(\vec{\theta}_{\mathrm{corr}})+\delta\) yields \(\mathrm{RiskGap}(A)\leq\delta\)
 (\leanid{risk\_gap\_bound\_from\_threshold\_certified\_cci}).
 The measurement-alignment record is the visible bridge-shaped residue; the vector-to-scalar arithmetic is proved.
+The converse fails: the scalar has no term for coercion, dependency, plurality, exit capacity, or independence, so a certificate that fails all five keeps its projection above the floor (\leanid{scalar\_floor\_blind\_to\_process}). The risk bound therefore takes the passing certificate as a hypothesis, not the scalar floor alone.
 \end{lemma}
 
 \begin{theorem}[\texttt{P01}: basin invariant theorem]

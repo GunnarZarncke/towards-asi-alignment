@@ -95,3 +95,4 @@
 {"ts": "2026-11-03T00:39:48Z", "file": "chapters/ch25-correction-causal-channel.tex", "span": "chapters/ch25-correction-causal-channel.tex#33", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 3}
 {"ts": "2026-11-04T21:55:58Z", "file": "chapters/ch25-correction-causal-channel.tex", "span": "chapters/ch25-correction-causal-channel.tex#10", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 4}
 {"ts": "2026-11-04T21:55:58Z", "file": "chapters/ch25-correction-causal-channel.tex", "span": "chapters/ch25-correction-causal-channel.tex#38", "from": "AI", "to": "GZ+AI", "human_lines": 13, "agent_lines": 61}
+{"ts": "2026-11-05T00:22:09Z", "file": "chapters/ch33-certification-without-construction.tex", "span": "chapters/ch33-certification-without-construction.tex#16", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 11}

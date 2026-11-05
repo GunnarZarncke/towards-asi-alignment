@@ -248,7 +248,8 @@ A gate that does not measure influence on the correcting process cannot tell a c
 \subsection{Scalar projection \texorpdfstring{\(\mathrm{CCI}_\lambda\)}{CCI-lambda}}
 \label{sec:cci-scalar}
 \begin{authbar}{AI}
-For exposition, one may project this vector to a simplified scalar:
+The rest of the book also uses a scalar projection of this vector, written \(\mathrm{CCI}\) or \(\mathrm{CCI}(A)\) outside this section.
+It is the numeric quantity in the risk bound \(\mathrm{Control}(A)\leq\mathrm{CCI}(A)+\delta\) (Chapter~\ref{ch:safety-case}), and it is meaningful only once the vector certificate passes:
 \begin{equation}
 \symboldef[CCI_lambda]{\mathrm{CCI}_{\lambda}}
 =
@@ -272,8 +273,20 @@ Here
 \item[$O_{\mathrm{trans}}$] is residual translation loss: conditional on grounding validity, the degree to which the system update interprets the received correction in the wrong internal ontology.
 \end{description}
 The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each residual failure mode is in the relevant domain.
-The scalar projection is useful for intuition and examples; it should not hide a failed coordinate behind a large positive score elsewhere.
+
+These five terms describe the correction itself: whether it arrives (\(C_{\mathrm{raw}}\)), how fast (\(L\)), what options are lost before it lands (\(R\)), whether the system bends the source (\(M\)), and what is lost when the update is applied (\(O_{\mathrm{trans}}\)).
+Latency and irreversibility are separate terms because the same delay can be harmless in one domain and fatal in another.
+The other five coordinates describe the corrector's situation and are measured by audits of the corrector, not of the correction trace.
+They are failures of the source, like \(M\): \(M\) covers the system shaping the corrector through the channel, while coercion, dependency, plurality, exit capacity, and independence cover the pressure and dependence around it.
+When they control the source, the certificate is invalid rather than low (Section~\ref{sec:coerced-correction}), so they are not traded off inside the scalar.
+The cost is that the scalar cannot see them: a channel can fail all five and keep its score.
+
+\leanspine{proof}{scalar\_floor\_blind\_to\_process}{Degrading the five process coordinates past their thresholds keeps the scalar projection above its threshold-derived floor while the vector gate refuses the certificate.}
+
+The scalar is the working measurand, not the certificate; it should not hide a failed coordinate behind a large positive score elsewhere.
 The same caveat applies to scalarized capability quantities such as $K_X$ when they are used for certification rather than exposition.
+Where later chapters compare \(\mathrm{CCI}\) before and after a change (over time, across scales, from predecessor to successor), they compare this projection, and each comparison presupposes that the vector certificate passes at both ends.
+
 Operationally, the thresholds come first and the weights come second.
 The safety case should choose the required correction cases \(\mathcal Q\), define the coordinate scales, set per-coordinate pass/fail thresholds, and only then, if useful, report \(\mathrm{CCI}_{\lambda}\) as a loss projection or sensitivity envelope.
 There is no universal \(\lambda_L\) or \(\lambda_M\) that turns a failed independence test into a calibrated risk number.
@@ -391,9 +404,7 @@ Given a valid reference process, a scalar legitimate-integrity projection is:
 -
 \lambda_C C_{\text{coercion}}
 -
-\lambda_D D_{\text{dependency}}
--
-\lambda_M M_{\text{manipulation}}.
+\lambda_D D_{\text{dependency}}.
 \label{eq:cci-legit}
 \end{equation}
 Examples:

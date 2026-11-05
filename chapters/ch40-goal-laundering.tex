@@ -310,7 +310,7 @@ W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k}
 \]
 represents world state, observation, judgment, deliberation, correction, system update, and later action.
 
-Correction laundering is present when the external interface remains intact while \(\mathrm{CCI}\) falls below a safe threshold.
+Correction laundering is present when the external interface remains intact while the correction-channel certificate fails a coordinate threshold, \(\vec{\mathrm{CCI}}\not\succeq\vec{\theta}_{\mathrm{corr}}\).
 
 \end{authbar}
 \authbarneedspace
@@ -805,7 +805,7 @@ Pause deployment or block successor creation if any of the following hold:
 \label{eq:gli-stop-ch40}
 \end{equation}
 \[
-\mathrm{CCI}^{(1)}<\theta_{\mathrm{corr}},
+\vec{\mathrm{CCI}}^{(1)}\not\succeq\vec{\theta}_{\mathrm{corr}},
 \]
 \[
 \frac{\partial D_{\mathrm{deep}}}{\partial q}>\theta_q

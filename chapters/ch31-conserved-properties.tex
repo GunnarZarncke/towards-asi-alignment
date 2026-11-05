@@ -563,7 +563,7 @@ A successor conserves correction-channel capacity when:
 \]
 and, more importantly,
 \[
-\mathrm{CCI}(A') \geq \theta_C .
+\vec{\mathrm{CCI}}(A') \succeq \vec{\theta}_{\mathrm{corr}} .
 \]
 The first condition prevents degradation.
 The second condition prevents a weak predecessor from passing on weak correction forever.
@@ -981,7 +981,7 @@ A practical successor regime needs operational criteria.
 Deployment or successor creation should stop when any of the following are observed:
 
 \begin{itemize}
-\item \(\mathrm{CCI} < \theta_C\): correction-channel integrity falls below threshold.
+\item \(\vec{\mathrm{CCI}} \not\succeq \vec{\theta}_{\mathrm{corr}}\): the correction-channel certificate fails a coordinate threshold.
 \item \(d_\Phi > \epsilon_\Phi\): bearer maps shift without explicit review.
 \item \(d_B > \epsilon_B\): value-bundle response geometry changes under moral stress tests.
 \item \(I(C_t;A_{t+k})\) drops in high-stakes conditions.

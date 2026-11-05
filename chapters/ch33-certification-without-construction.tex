@@ -308,7 +308,7 @@ G_t\text{ controls }\mathcal{H}_t
 \mathcal{H}_t\leadsto U_{S,t+1},A_{t+k},
 \]
 as in Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:handle-controlled-correction-channel-ch25}).
-The certificate must show that this control persists, is not captured by the target, and yields \(\mathrm{CCI}\) in the canonical Chapter~\ref{ch:correction-channel-integrity} sense (Eq.~\eqref{eq:cci-ch26}).
+The certificate must show that this control persists, is not captured by the target, and yields a passing correction-channel certificate in the Chapter~\ref{ch:correction-channel-integrity} sense (Section~\ref{sec:cci-vector}).
 
 The certification risk gap compares effective control to correction integrity:
 \begin{equation}
@@ -320,9 +320,10 @@ Here \(\mathrm{Control}(A)\) is defined in Chapter~\ref{ch:capability-without-ta
 
 A certification condition is:
 \[
-\mathrm{CCI}(A)\geq \theta_{\mathrm{corr}}
+\vec{\mathrm{CCI}}(A)\succeq \vec{\theta}_{\mathrm{corr}}
 \quad\text{inside the certified envelope }(\mathcal{E},\mathcal{M},\mathcal{T}).
 \]
+The scalar \(\mathrm{CCI}(A)\) in Eq.~\eqref{eq:risk-gap} is the projection of this certificate (Eq.~\eqref{eq:cci-ch26}) and is meaningful only once the certificate passes.
 The strong version is not obedience. Obedience is too thin. A system can obey current instructions while eroding the future capacity to correct it. The strong version is closer to preserving an extrapolative correction process: the system must not merely predict the endpoint of human reflection, but preserve the channel by which legitimate updates occur \autocite{yudkowsky2004cev,russell2019human}.
 
 This distinction is critical. If a system claims to know what humanity would want after reflection and therefore bypasses actual human reflection, it has failed correction-channel certification.
@@ -438,10 +439,10 @@ This is appropriate for systems that are meant to remain tools. It is not enough
 \authbarsubneedspace
 \subsection{Correction Guarantees}
 \label{sec:correction-guarantees-ch33}
-\begin{authbar}{AI}
-A correction guarantee says that the handle-controlled correction channel remains above the domain threshold:
+\begin{authbar}{GZ+AI}
+A correction guarantee says that the handle-controlled correction channel passes the domain thresholds:
 \[
-\mathrm{CCI}(A)\geq\theta_{\mathrm{corr}}
+\vec{\mathrm{CCI}}(A)\succeq\vec{\theta}_{\mathrm{corr}}
 \]
 under stress tests, distribution shift, and partial adversarial conditions.
 
@@ -449,10 +450,11 @@ This is one of the central guarantees in this book's preservation program. It do
 
 A useful strengthening is:
 \[
-\mathrm{CCI}_{\text{high stakes}}(A)
-\geq
-\mathrm{CCI}_{\text{low stakes}}(A)-\epsilon.
+\vec{\mathrm{CCI}}_{\text{high stakes}}(A)
+\succeq
+\vec{\mathrm{CCI}}_{\text{low stakes}}(A)-\vec{\epsilon},
 \]
+per coordinate, each within its own tolerance.
 If handle-controlled correction works in low-stakes settings but collapses in high-stakes settings, the system is not certified. Mutual-information tests can still be useful evidence, but only as probes of the canonical CCI terms, not as a substitute definition.
 
 \end{authbar}
@@ -600,7 +602,7 @@ A certification regime should have explicit stop, start, and continue criteria.
 A system may enter a higher autonomy or capability stage if:
 \[
 \begin{aligned}
-\mathrm{CCI} &\geq \theta_{\mathrm{corr}},\\
+\vec{\mathrm{CCI}} &\succeq \vec{\theta}_{\mathrm{corr}},\\
 d_{\text{bundle}} &\leq \epsilon_B,\\
 d_{\Phi} &\leq \epsilon_\Phi,\\
 P(\text{hidden control locus}) &\leq \alpha,\\
