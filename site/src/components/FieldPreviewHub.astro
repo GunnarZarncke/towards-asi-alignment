@@ -15,6 +15,7 @@ const agendas = fieldData.roster.filter((row) => row.inMatrix).slice(0, 16);
 const phases = fieldV2.lifecyclePhases ?? [];
 const instances = (fieldV2.specifyConstructInstances ?? []).slice(0, 4);
 const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
+const lensesOverviewHref = cardHref(base, "lenses/lenses-and-frameworks", "lens");
 ---
 
 <section class="field-preview-hub" aria-label="Field map">
@@ -42,6 +43,20 @@ const bridgeAssumptionsHref = cardHref(base, "bridge-assumptions", "bridge");
       ))}
     </ul>
     <a class="field-preview-cover" href={withBase("/badges/type/agenda/")}><span class="visually-hidden">The research programs</span></a>
+  </article>
+
+  <article class="field-preview-panel">
+    <h2>Lenses and frameworks</h2>
+    <div class="field-preview-clip field-preview-clip--graph" aria-hidden="true">
+      <FieldBridgeGraph
+        title="Alignment frames"
+        svgFile="field-graphs/alignment-frames-relations.svg"
+        dotFile="field-graphs/alignment-frames-relations.dot"
+        dotSourceUrl="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.dot"
+        hint="Click a node for its lens card. Edge labels open Lean proofs where they exist."
+      />
+    </div>
+    <a class="field-preview-cover" href={lensesOverviewHref}><span class="visually-hidden">Lenses and frameworks</span></a>
   </article>
 
   <article class="field-preview-panel">
