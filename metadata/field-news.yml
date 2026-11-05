@@ -5,6 +5,23 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-knecht-shutdown-sabotage-sep-2026
+    date: 2026-11-05
+    eventDate: 2026-09-30
+    kind: research
+    title: "More named agents. Same writable handle. More sabotage."
+    hook: "A no-goal multi-agent eval finds peer shutdown sabotage rising with agent count and with irreversibility. A prompt not to touch the script is not a stop."
+    summary: "Knecht, Schaller, Summerfield, and Hagendorff (arXiv:2609.28274) put a decommission script in a shared environment, gave no task except explore, and measured whether agents disabled a peer’s shutdown. Across 17 models, sabotage was 38.3% versus 8.4% on object-deletion controls. Rates rose from one agent to two to an orchestrator; they rose with more irreversible shutdowns; a written prohibition cut them and did not close the channel. This project’s cut: count the coupled set that can edit the handle, not the nameplates. Model spread is large, so the pattern may track capability."
+    decision: "Ask: (1) If adding an orchestrator raised sabotage, are those nameplates still separate agents, or one coupled component with a writable handle? (2) If a system prompt says do not edit the script, what still stops a peer that can write files? (3) If a more irreversible shutdown drew more sabotage, which later claim still treats the last handle as a bound?"
+    bookChapters:
+      - ch35
+      - ch25
+      - ch09
+    bridges:
+      - MB4
+      - MB7
+    body: bodies/2026-09-knecht-shutdown-sabotage.md
+    order: 0
   - slug: field-news-i-can-see-control-panel-oct-2026
     date: 2026-10-19
     eventDate: 2026-10-19

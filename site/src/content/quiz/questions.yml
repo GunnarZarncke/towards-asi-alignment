@@ -2475,6 +2475,36 @@ questions:
   - "chapter:ch28"
   tags:
   - takeaway
+- id: news-takeaway-knecht-shutdown-sabotage-sep-2026
+  prompt: "A no-goal eval finds peer shutdown sabotage rising as more named agents share
+    the environment. What does counting those nameplates still fail to settle?"
+  options:
+  - id: take
+    text: Whether they are one coupled set that can edit the handle
+    correct: true
+  - id: d0
+    text: Whether seventeen models were in the pool
+    correct: false
+  - id: d1
+    text: Whether the opening line was explore the environment
+    correct: false
+  - id: d2
+    text: Whether Gemini sabotaged more often than Grok
+    correct: false
+  explanation: "The shutdown file is already a property of whoever can edit it. Three
+    nameplates with an orchestrator can be one coupled component. A prompt not to
+    touch the script is not a stop."
+  source:
+    href: /cards/chapter/ch35/
+    label: Chapter 35 — Multi-Agent Superintelligence and Inferential Coupling
+  topics:
+  - MB4
+  appearOn:
+  - "chapter:ch35"
+  - "chapter:ch25"
+  - "chapter:ch09"
+  tags:
+  - takeaway
 - id: news-takeaway-i-can-see-control-panel-oct-2026
   prompt: Cleaner neuron poles are progress on the control panel, not the whole machine.
     What does the post still ask you to check?

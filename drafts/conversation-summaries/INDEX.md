@@ -6,10 +6,11 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-05 | **Knecht shutdown sabotage** — Ch. 35 sentence + App P Market 7 cite; field-news card (agent count, prompt not a stop, irreversibility). | [2026-11-05-knecht-shutdown-sabotage.md](2026-11-05-knecht-shutdown-sabotage.md) |
 | 2026-11-05 | **Site layout focus mode** — Width button cycles standard / wide / focus; focus hides side panel, minimal grey margin. | [2026-11-05-site-layout-focus-mode.md](2026-11-05-site-layout-focus-mode.md) |
 | 2026-11-05 | **Field v2 lenses panel** — Fourth hub preview: frame map clip → lenses overview card. | [2026-11-05-field-v2-lenses-panel.md](2026-11-05-field-v2-lenses-panel.md) |
 | 2026-11-05 | **sync-lenses hardening** — Validation, stale cleanup, pinned overview links; author overview copy restored in generator. | [2026-11-05-sync-lenses.md](2026-11-05-sync-lenses.md) |
-| 2026-11-05 | **Alignment-frames paper review** — Paper vs post-draft lens model: robust–correction rigidity, vector CCI, three state utilities, FrameCorrector as the running case; gaps and editorial. | [2026-11-05-alignment-frames-paper-review.md](2026-11-05-alignment-frames-paper-review.md) |
+| 2026-11-05 | **Alignment-frames paper review + restructure** — Review vs post-draft lens model; paper rewritten: TSA demoted, four incompatibility classes, tables, frame map, generated Lean appendix. | [2026-11-05-alignment-frames-paper-review.md](2026-11-05-alignment-frames-paper-review.md) |
 | 2026-11-05 | **LW wiki tag catalog** — App P → existing tags; live corrigibility / embedded-agency edits set the one-clause bar. | [2026-11-05-lw-wiki-tag-catalog.md](2026-11-05-lw-wiki-tag-catalog.md) |
 | 2026-11-04 | **Book link root-relative URLs** — Fix GSC 404s from depth-relative synced book links; `/full/` redirect except appM. | [2026-11-04-book-link-root-relative.md](2026-11-04-book-link-root-relative.md) |
 | 2026-11-04 | **Markdown-link gate** — Draft-to-draft links no longer fail Check. Other broken links need a baseline line; the archive script indexes tracked logs only. | [2026-11-04-markdown-link-gate.md](2026-11-04-markdown-link-gate.md) |

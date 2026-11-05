@@ -28,7 +28,11 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
 
+**2026-11-05:** **Knecht shutdown sabotage** — Ch. 35 one-sentence cite (capability hedge; App P Market 7); field-news card. Log: `2026-11-05-knecht-shutdown-sabotage.md`.
+
 **2026-11-05:** **Site layout focus mode** — Bottom-left width control cycles standard / wide / focus; focus hides card side panel and tightens gutters. Log: `2026-11-05-site-layout-focus-mode.md`.
+
+**2026-11-05:** **Alignment-frames paper restructured** — `papers/alignment-frames/`: TSA demoted, four incompatibility classes, Tables 1–3, frame map, generated Lean appendix (`scripts/lean_extracts.py`); abstract open. Log: `2026-11-05-alignment-frames-paper-review.md`.
 
 **2026-11-05:** **LW wiki tag catalog** — App P → existing tags in [`outreach/lw-wiki-tags.md`](../plans/outreach/lw-wiki-tags.md); lightness bar from live corrigibility / embedded-agency edits (one clause, not new sections). Log: `2026-11-05-lw-wiki-tag-catalog.md`.
 
