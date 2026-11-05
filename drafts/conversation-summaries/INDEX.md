@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-05 | **sync-lenses hardening** — Validation, stale cleanup, pinned overview links; author overview copy restored in generator. | [2026-11-05-sync-lenses.md](2026-11-05-sync-lenses.md) |
+| 2026-11-05 | **Alignment-frames paper review** — Paper vs post-draft lens model: robust–correction rigidity, vector CCI, three state utilities, FrameCorrector as the running case; gaps and editorial. | [2026-11-05-alignment-frames-paper-review.md](2026-11-05-alignment-frames-paper-review.md) |
 | 2026-11-05 | **LW wiki tag catalog** — App P → existing tags; live corrigibility / embedded-agency edits set the one-clause bar. | [2026-11-05-lw-wiki-tag-catalog.md](2026-11-05-lw-wiki-tag-catalog.md) |
 | 2026-11-04 | **Book link root-relative URLs** — Fix GSC 404s from depth-relative synced book links; `/full/` redirect except appM. | [2026-11-04-book-link-root-relative.md](2026-11-04-book-link-root-relative.md) |
 | 2026-11-04 | **Markdown-link gate** — Draft-to-draft links no longer fail Check. Other broken links need a baseline line; the archive script indexes tracked logs only. | [2026-11-04-markdown-link-gate.md](2026-11-04-markdown-link-gate.md) |
