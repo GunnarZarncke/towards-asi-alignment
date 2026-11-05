@@ -26,4 +26,4 @@ Add a third mode to the bottom-left full-width layout button, cycling standard â
 - `site/src/styles/global.css`
 
 ## Commits
-- (this session)
+- `cdbb77a85d` Add focus layout mode to companion site width control.
