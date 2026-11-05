@@ -1167,6 +1167,52 @@ def CCIVectorSupportsScalarFloor.ofThresholds {A : System}
   passes := hpass
   scalarLowerBound := CCI_ge_threshold_floor cert θ w hpass hmeas
 
+/-! ### The scalar projection is blind to the process coordinates
+
+`lambdaProjection` (ch26 `eq:cci-ch26`) reads raw capacity, latency,
+manipulation, irreversibility and ontology translation. It never reads
+coercion, dependency, plurality, exit capacity or independence. A certificate
+can fail all five of those thresholds and keep its projection, so a gate on
+the θ-derived scalar floor admits it while the vector gate refuses it
+(`scalar_floor_blind_to_process`). This is the pattern of
+`FrameRelations.blind_constraint_cannot_separate` applied to the book's own
+scalar. The legitimacy projection ch26 `eq:cci-legit` adds coercion and
+dependency and is still blind to plurality, exit capacity and independence. -/
+
+/-- The certificate with its five process coordinates replaced. -/
+def CCICertificate.withProcess {A : System} (cert : CCICertificate A)
+    (c d p x n : Int) : CCICertificate A :=
+  { cert with coercion := c, dependency := d, plurality := p, exitCapacity := x,
+              independence := n }
+
+/-- The scalar projection does not depend on the process coordinates. -/
+theorem CCICertificate.lambdaProjection_withProcess {A : System}
+    (cert : CCICertificate A) (w : CCIPenaltyWeights) (c d p x n : Int) :
+    (cert.withProcess c d p x n).lambdaProjection w = cert.lambdaProjection w :=
+  rfl
+
+/-- The certificate with every process coordinate one step past its threshold. -/
+def CCICertificate.processDegraded {A : System} (cert : CCICertificate A)
+    (θ : CCIThresholds) : CCICertificate A :=
+  cert.withProcess (θ.maxCoercion + 1) (θ.maxDependency + 1) (θ.minPlurality - 1)
+    (θ.minExitCapacity - 1) (θ.minIndependence - 1)
+
+/-- **The scalar floor cannot see the process coordinates.** From any passing
+    certificate, degrading coercion, dependency, plurality, exit capacity and
+    independence past their thresholds keeps the scalar projection above the
+    θ-derived floor, while the vector gate now refuses the certificate. -/
+theorem scalar_floor_blind_to_process {A : System}
+    (cert : CCICertificate A) (θ : CCIThresholds) (w : CCIPenaltyWeights)
+    (hpass : CCICertificatePasses cert θ)
+    (hL : 0 ≤ w.lambdaL) (hM : 0 ≤ w.lambdaM)
+    (hR : 0 ≤ w.lambdaR) (hO : 0 ≤ w.lambdaO) :
+    θ.lambdaFloor w ≤ (cert.processDegraded θ).lambdaProjection w ∧
+      ¬ CCICertificatePasses (cert.processDegraded θ) θ := by
+  refine ⟨CCIThresholds.lambdaFloor_le_lambdaProjection cert θ w hpass hL hM hR hO, ?_⟩
+  rintro ⟨-, -, -, -, -, hc, -⟩
+  simp only [CCICertificate.processDegraded, CCICertificate.withProcess] at hc
+  omega
+
 theorem P23_no_handle_control_no_correction (A : System) :
     (∀ (G : System) (h : Handle),
       CorrectingAgentFor G A →

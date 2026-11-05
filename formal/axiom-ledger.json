@@ -385,6 +385,22 @@
       ]
     },
     {
+      "name": "AlignmentProofSpine.scalar_floor_blind_to_process",
+      "gloss": "The ch26 scalar CCI projection never reads coercion, dependency, plurality, exit capacity or independence: degrading all five keeps the scalar above its floor while the vector gate refuses the certificate",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.CoincidesWithHumanity",
+        "AlignmentProofSpine.CorrectingAgentFor",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
       "name": "AlignmentProofSpine.capture_makes_cci_captured_or_invalid",
       "gloss": "Capture of a measured-path handle makes the CCI status capturedInvalid (failed validity, not a low score) -- no bridge needed",
       "axioms": [
