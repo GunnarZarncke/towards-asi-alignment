@@ -23,4 +23,4 @@ Prompts: paraphrase-only (no telemetry prompt id in this session)
 - `drafts/outer-alignment-peer-ratings/README.md`
 
 ## Commits
-- none
+- `b473d35660` Add informal outer-alignment peer ratings draft with section hooks.
