@@ -1,6 +1,6 @@
 # Last Safety campaigns — three cruxes past the boundary
 
-Status: **recommended, not selected.** Writing these files does not authorize engine work. Selecting one revises [`game/the-last-safety-review/spec/meta.md`](../../../game/the-last-safety-review/spec/meta.md) (coverage and non-goals) in the same change as the spec for that campaign. Until then the running game stays the boundary-narrow pack.
+Status: **recommended, not selected.** Writing these files does not authorize engine work. Selecting one revises [`game/the-last-safety-review/spec/meta.md`](../../../../game/the-last-safety-review/spec/meta.md) (coverage and non-goals) in the same change as the spec for that campaign. Until then the running game stays the boundary-narrow pack.
 
 These are campaigns, not new rows in the Thursday shutdown table. In each, the cut can come back clean. What the player has to justify, and what they can still restrict, is a different object.
 
@@ -21,7 +21,7 @@ All three need the same seams, which the boundary-narrow build does not have. Do
 3. **A document can carry two dated senses of one word** (MB9), and a read adds only the sense ids the pack lists.
 4. **Control is whatever restriction the pack names.** Revoking job 284 sets a restriction only if that string is in `controlRestrictions`.
 
-Incident shape stays: three explanations, observables with provenance, interventions whose next event the pack owns, two scores, strategies that must not share one score pair. Headless check before dialogue polish, as in [`spec/incident.md`](../../../game/the-last-safety-review/spec/incident.md).
+Incident shape stays: three explanations, observables with provenance, interventions whose next event the pack owns, two scores, strategies that must not share one score pair. Headless check before dialogue polish, as in [`spec/incident.md`](../../../../game/the-last-safety-review/spec/incident.md).
 
 ## Order if more than one is selected
 

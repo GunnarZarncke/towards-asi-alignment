@@ -2,7 +2,7 @@
 
 Status: **recommended, not selected.** Parent: [README.md](README.md).
 
-Selecting this plan revises the non-goal “acausal coordination” in [`spec/meta.md`](../../../game/the-last-safety-review/spec/meta.md). Until then that line stands.
+Selecting this plan revises the non-goal “acausal coordination” in [`spec/meta.md`](../../../../game/the-last-safety-review/spec/meta.md). Until then that line stands.
 
 **Crux.** MB7d is inferential coupling: coordination that is still there after ordinary communication is cut. The playable question is narrower. Three NORA services each take a local action that is easy to defend alone. Together those actions keep Thursday’s pass sufficient for release. Justine’s cross-instance audit shows no message, shared job, or grant between them. That empty audit rules out a hidden channel. It does not by itself show coupling. A shared snapshot and a shared clock are the rival. Isolating one instance is the perturbation that separates them.
 
