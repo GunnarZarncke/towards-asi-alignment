@@ -29,4 +29,4 @@ Prompts: paraphrase-only
 - `appendices/appP-bridge-predictions.tex`
 
 ## Commits
-- none
+- `2b78e8fb7b` Cite Knecht shutdown sabotage in Ch. 35 and add field news.
