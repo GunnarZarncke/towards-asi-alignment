@@ -9,7 +9,3 @@
 # Columns: source path, tab, link target as written (anchor stripped).
 
 drafts/plans/construct/construct.md	../../../papers/alignment-frames/
-metadata/TODO.md	../drafts/alignment-frames-by-object-and-measure.md
-metadata/TODO.md	../drafts/alignment-frames-spinout-paper.md
-metadata/TODO.md	../drafts/plans/spine/cci-vector-promotion.md
-metadata/TODO.md	../drafts/plans/spine/corrector-cci-vector.md
