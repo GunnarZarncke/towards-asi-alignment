@@ -62,7 +62,7 @@ Prompts: paraphrase-only
   - `check_axiom_budget.py`: "Axiom budget check passed (145 theorems, no drift)."
   - `./build.sh`: "Built dist/pdf/towards-superintelligence-alignment.pdf". Undefined cites (`arnstein1969ladder` and others) come from ch25/appP in commit `4e85d1a22a`, not from this change.
   - `make check` fails only on markdown links. This change's only broken link is the untracked plan file.
-- correction (author question): the ch26 scalar was labelled "for exposition" but about twenty chapters use it, several as a pass/fail gate. The 2026-06-28 vectorization never promoted the vector to those gates. Plan: `drafts/plans/cci-vector-promotion.md`. It sorts each use into gate, risk arithmetic, or preservation.
+- correction (author question): the ch26 scalar was labelled "for exposition" but about twenty chapters use it, several as a pass/fail gate. The 2026-06-28 vectorization never promoted the vector to those gates. Plan: `drafts/plans/spine/cci-vector-promotion.md`. It sorts each use into gate, risk arithmetic, or preservation.
 - content: gates moved to `\vec{CCI} \succeq \vec{\theta}_{corr}`:
   - ch22, ch25, ch28, ch29, ch31 (two sites), ch33 (five sites; high/low stakes now per coordinate), ch34 (plus the label fix), ch39 (two), ch40 (two), ch46, ch47.
   - Risk-arithmetic sites keep the scalar.
@@ -79,4 +79,4 @@ Prompts: paraphrase-only
 - Site: lens cards cite the Field Soares aliases.
 - Drafts: parenting translation, relations note, write-up, Turner comparison.
 - Session logs (this commit).
-
+- Follow-up (2026-11-05): scalar blindness in Lean (`Correction.lean`, ledger, README); vector gates and ch26 scalar rewrite (chapters, Appendix G). The author reviewed with minor edits. Plans, TODO hunks and the ch25 edit had already been swept into other sessions' commits (`7540f7a23b`, `e8ab8b6673`).
