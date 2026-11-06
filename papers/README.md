@@ -10,6 +10,7 @@ Spin-out papers with their LaTeX sources, frozen PDFs, and build scripts.
 | Alignment Under Selection | [alignment-under-selection.tex](alignment-under-selection/alignment-under-selection.tex) | [PDF](alignment-under-selection/alignment-under-selection.pdf) | `alignment-under-selection/build.sh` |
 | Constructing Alignment Attractors | [constructing-alignment-attractors.tex](constructing-alignment-attractors/constructing-alignment-attractors.tex) | [PDF](constructing-alignment-attractors/constructing-alignment-attractors.pdf) | `constructing-alignment-attractors/build.sh` |
 | Path Construction | [path-construction.tex](path-construction/path-construction.tex) | [PDF](path-construction/path-construction.pdf) | `path-construction/build.sh` |
+| Combining Alignment Criteria (draft) | [alignment-criteria.tex](alignment-criteria/alignment-criteria.tex) | [PDF](alignment-criteria/alignment-criteria.pdf) | `alignment-criteria/build.sh` |
 | Captured Agreement Is Not Correction (draft) | [anti-capture-validity.tex](anti-capture-validity/anti-capture-validity.tex) | [PDF](anti-capture-validity/anti-capture-validity.pdf) | `anti-capture-validity/build.sh` |
 | Constructing Alignment: Christianity as a Case Study (draft) | [constructing_alignment_christianity.tex](institutions-and-construction/constructing_alignment_christianity.tex) | — (no frozen PDF; draft with feedback notes) | — |
 
@@ -22,3 +23,5 @@ Paper dates are frozen in the source files; rebuilding is for verification and d
 *Captured Agreement Is Not Correction* extracts the anti-capture validity condition on correction measures (ch26 `ValidRef`, ch29 No-Bypass and certified boundary separation, Lean `MB4a` / `CompositePathBypass`, backtests W-1 and W-4) as a standalone note; it ends on the Certification-Under-Manipulation problem rather than claiming a certificate.
 
 *Path Construction* sits next to that pair on a different object: destination realizability (\(\exists A\) realizing frozen \(P\)) is not path realizability (an \(\mathcal{E}\)-legal sequence of partial controller–system pairs from a described start). Briefing for Construct 2.0 Family E; not a v1 chapter.
+
+*Combining Alignment Criteria* types alignment criteria by standing, object, assessment, quantifiers, and warrant, relates them on the relations map (rendered from `drafts/alignment-frames-relations.dot`), sorts their incompatibilities into four classes, and derives which design orderings for combining them are forced. Its appendix of Lean statement extracts is generated from `formal/` by `alignment-criteria/scripts/lean_extracts.py` (links pinned to a pushed commit); the build uses LuaLaTeX for the Unicode in the extracts.

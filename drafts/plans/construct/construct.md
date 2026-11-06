@@ -37,7 +37,7 @@ v1 cites several target-types inside one argument. 2.0 names the frame first, th
 
 **Revision.** Opening positioning at the end of ch1 “Which Alignment?”, before the boundary question. Then revise chapters that discuss another frame without saying so. First inventory, not a closed list: ch3, ch4, ch14, ch27, ch28, ch29, ch45, App B. Finish the inventory before editing. No v1 manuscript edit; the prose waits on the 2.0 manuscript gate, and it precedes other 2.0 prose in those chapters.
 
-Artifacts: [object-by-measure inventory](../../alignment-frames-by-object-and-measure.md) · [relations](../../alignment-frames-relations.md) · [DOT](../../alignment-frames-relations.dot) · [SVG](../../alignment-frames-relations.svg) · [spinout paper draft](../../alignment-frames-spinout-paper.md) · LaTeX [`papers/alignment-frames/`](../../../papers/alignment-frames/).
+Artifacts: [object-by-measure inventory](../../alignment-frames-by-object-and-measure.md) · [relations](../../alignment-frames-relations.md) · [DOT](../../alignment-frames-relations.dot) · [SVG](../../alignment-frames-relations.svg) · LaTeX [`papers/alignment-criteria/`](../../../papers/alignment-criteria/).
 
 ## Non-goals
 

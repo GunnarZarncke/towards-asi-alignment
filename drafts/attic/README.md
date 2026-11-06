@@ -17,6 +17,7 @@ Completed or superseded drafting material lives here for provenance, **not as ac
 - **Problem-axis incorporation** — CLOSED 2026-09-01.
 - **Field spring-map plan** — built 2026-09-18 (`demos/appB-field-spring-map/`).
 - **Cousin product comparison (spec sheet) plan** — implemented 2026-09-02 (`/start/spec-sheet/`).
+- **Alignment-frames spinout, markdown draft** (`alignment-frames-spinout-paper.md`) — superseded 2026-11-05 by the restructured LaTeX paper `papers/alignment-criteria/alignment-criteria.tex` (renamed from `papers/alignment-frames/` on 2026-11-06) (TSA demoted from running example; four incompatibility classes; Lean appendix).
 - **Construct external-lit seed + literature-review prompt** — spent inputs; the keep-list lives in `drafts/plans/construct/construct.md` § External lit review.
 - **Backtest next-tests note** (`backtest-next-after-w16.md`) — superseded by the open items in `drafts/plans/backtest/backtest.md`.
 - **Predictions improvement drafts** (`predictions-improvements-v0.md`, `predictions-improvements-incentives.md`, `bridge-predictions-Lean-improvements.md`) — absorbed into `drafts/plans/predictions/assurance-risk-modelling.md` and criteria `0.4`.
