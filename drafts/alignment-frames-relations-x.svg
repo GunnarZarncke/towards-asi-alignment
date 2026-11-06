@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(28.8 876.8)">
 <title>AlignmentFrameRelations</title>
 <polygon fill="white" stroke="none" points="-28.8,28.8 -28.8,-876.8 1457.55,-876.8 1457.55,28.8 -28.8,28.8"/>
-<text xml:space="preserve" text-anchor="middle" x="714.38" y="-832.6" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment frames: specialization, encoding, limits, and conflict</text>
+<text xml:space="preserve" text-anchor="middle" x="714.38" y="-832.6" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment criteria: specialization, encoding, limits, and conflict</text>
 <text xml:space="preserve" text-anchor="middle" x="714.38" y="-819.85" font-family="Helvetica,sans-Serif" font-size="12.00">Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable</text>
 <text xml:space="preserve" text-anchor="middle" x="714.38" y="-807.1" font-family="Helvetica,sans-Serif" font-size="12.00">Incompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource</text>
 <g id="clust1" class="cluster">
@@ -142,9 +142,9 @@
 <!-- weighted_scalar -->
 <g id="node10" style="opacity:0" class="node">
 <title>weighted_scalar</title>
-<path fill="#f7f7f7" stroke="#444444" d="M1060.88,-431.75C1060.88,-431.75 959.38,-431.75 959.38,-431.75 953.38,-431.75 947.38,-425.75 947.38,-419.75 947.38,-419.75 947.38,-407.75 947.38,-407.75 947.38,-401.75 953.38,-395.75 959.38,-395.75 959.38,-395.75 1060.88,-395.75 1060.88,-395.75 1066.88,-395.75 1072.88,-401.75 1072.88,-407.75 1072.88,-407.75 1072.88,-419.75 1072.88,-419.75 1072.88,-425.75 1066.88,-431.75 1060.88,-431.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1010.12" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00">Weighted scalar</text>
-<text xml:space="preserve" text-anchor="middle" x="1010.12" y="-404.25" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed weights on criteria)</text>
+<path fill="#f7f7f7" stroke="#444444" d="M1054.5,-431.75C1054.5,-431.75 965.75,-431.75 965.75,-431.75 959.75,-431.75 953.75,-425.75 953.75,-419.75 953.75,-419.75 953.75,-407.75 953.75,-407.75 953.75,-401.75 959.75,-395.75 965.75,-395.75 965.75,-395.75 1054.5,-395.75 1054.5,-395.75 1060.5,-395.75 1066.5,-401.75 1066.5,-407.75 1066.5,-407.75 1066.5,-419.75 1066.5,-419.75 1066.5,-425.75 1060.5,-431.75 1054.5,-431.75"/>
+<text xml:space="preserve" text-anchor="middle" x="1010.12" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00">Fixed&#45;rate sum</text>
+<text xml:space="preserve" text-anchor="middle" x="1010.12" y="-404.25" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed exchange rates)</text>
 </g>
 <!-- state_corr_gap&#45;&gt;weighted_scalar -->
 <!-- state_corr_gap&#45;&gt;correction -->

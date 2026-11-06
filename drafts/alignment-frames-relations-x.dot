@@ -36,7 +36,7 @@ Incompatible: red solid rigid · red dashed choice conflict · red dotted not re
 (round trips matter)"];
     state [style="invis", label="State utility
 (scalar order on states)"];
-    // Layout-only routing stub (not a frame; omitted from Lean inventory).
+    // Layout-only routing stub (not a criterion; omitted from Lean inventory).
     state_corr_gap [shape=point, width=0.01, height=0.01, label="", style=invis];
     hstate [label="Record-carrying state
 (state × record of the walk)"];
@@ -44,8 +44,8 @@ Incompatible: red solid rigid · red dashed choice conflict · red dotted not re
 (expectation or risk functional)"];
     criteria_vector [style="invis", label="Criteria vector
 (Pareto · task costs/stakeholders)"];
-    weighted_scalar [style="invis", label="Weighted scalar
-(fixed weights on criteria)"];
+    weighted_scalar [style="invis", label="Fixed-rate sum
+(fixed exchange rates)"];
     lex [style="invis", label="Lexicographic priority
 (on criteria vector)"];
     quant [style="invis", label="Quantilizer
@@ -104,7 +104,7 @@ on–off floor (non-obs.)"];
 (deployment argument)"];
   }
 
-  // Special case → more general frame.
+  // Special case → more general criterion.
   exact -> route [label="specializes"];
   approval -> route [label="specializes\none edge, one judge"];
   weighted_scalar -> criteria_vector [style=invis];

@@ -1,4 +1,4 @@
-// Relations among alignment frames (variant c: minimal nodes for compose / summand / conflict).
+// Relations among alignment criteria (variant c: minimal nodes for compose / summand / conflict).
 // Union of green, bold, and red edges from alignment-frames-relations.dot and -b.dot.
 // Read with drafts/alignment-frames-relations.md.
 digraph AlignmentFrameRelationsC {
@@ -10,7 +10,7 @@ digraph AlignmentFrameRelationsC {
     pad=0.4,
     fontsize=12,
     fontname="Helvetica",
-    label="Alignment frames (variant c): composition, summands, and conflict only\nGreen composable · Bold isomorphic summand\nIncompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
+    label="Alignment criteria (variant c): composition, summands, and conflict only\nGreen composable · Bold isomorphic summand\nIncompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
     labelloc="t"
   ];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F7F7F7"];
@@ -30,10 +30,10 @@ digraph AlignmentFrameRelationsC {
 (round trips matter)"];
     state [label="State utility
 (scalar order on states)"];
-    // Layout-only routing stub (not a frame; omitted from Lean inventory).
+    // Layout-only routing stub (not a criterion; omitted from Lean inventory).
     state_corr_gap [shape=point, width=0.01, height=0.01, label="", style=invis];
-    weighted_scalar [label="Weighted scalar
-(fixed weights on criteria)"];
+    weighted_scalar [label="Fixed-rate sum
+(fixed exchange rates)"];
     criteria_vector [label="Criteria vector
 (Pareto · task costs/stakeholders)"];
   }

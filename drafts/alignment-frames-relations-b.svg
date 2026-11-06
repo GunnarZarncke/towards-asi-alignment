@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(28.8 1455.33)">
 <title>AlignmentFrameRelationsB</title>
 <polygon fill="white" stroke="none" points="-28.8,28.8 -28.8,-1455.33 1726.55,-1455.33 1726.55,28.8 -28.8,28.8"/>
-<text xml:space="preserve" text-anchor="middle" x="848.88" y="-1411.13" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment frames (variant b): certification geometry</text>
+<text xml:space="preserve" text-anchor="middle" x="848.88" y="-1411.13" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment criteria (variant b): certification geometry</text>
 <text xml:space="preserve" text-anchor="middle" x="848.88" y="-1398.38" font-family="Helvetica,sans-Serif" font-size="12.00">Solid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable</text>
 <text xml:space="preserve" text-anchor="middle" x="848.88" y="-1385.63" font-family="Helvetica,sans-Serif" font-size="12.00">Incompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource</text>
 <g id="clust1" class="cluster">
@@ -183,9 +183,9 @@
 <!-- weighted_scalar -->
 <g id="node10" class="node">
 <title>weighted_scalar</title>
-<path fill="#f7f7f7" stroke="#444444" d="M1050.38,-1087.28C1050.38,-1087.28 948.88,-1087.28 948.88,-1087.28 942.88,-1087.28 936.88,-1081.28 936.88,-1075.28 936.88,-1075.28 936.88,-1063.28 936.88,-1063.28 936.88,-1057.28 942.88,-1051.28 948.88,-1051.28 948.88,-1051.28 1050.38,-1051.28 1050.38,-1051.28 1056.38,-1051.28 1062.38,-1057.28 1062.38,-1063.28 1062.38,-1063.28 1062.38,-1075.28 1062.38,-1075.28 1062.38,-1081.28 1056.38,-1087.28 1050.38,-1087.28"/>
-<text xml:space="preserve" text-anchor="middle" x="999.62" y="-1071.03" font-family="Helvetica,sans-Serif" font-size="10.00">Weighted scalar</text>
-<text xml:space="preserve" text-anchor="middle" x="999.62" y="-1059.78" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed weights on criteria)</text>
+<path fill="#f7f7f7" stroke="#444444" d="M1044,-1087.28C1044,-1087.28 955.25,-1087.28 955.25,-1087.28 949.25,-1087.28 943.25,-1081.28 943.25,-1075.28 943.25,-1075.28 943.25,-1063.28 943.25,-1063.28 943.25,-1057.28 949.25,-1051.28 955.25,-1051.28 955.25,-1051.28 1044,-1051.28 1044,-1051.28 1050,-1051.28 1056,-1057.28 1056,-1063.28 1056,-1063.28 1056,-1075.28 1056,-1075.28 1056,-1081.28 1050,-1087.28 1044,-1087.28"/>
+<text xml:space="preserve" text-anchor="middle" x="999.62" y="-1071.03" font-family="Helvetica,sans-Serif" font-size="10.00">Fixed&#45;rate sum</text>
+<text xml:space="preserve" text-anchor="middle" x="999.62" y="-1059.78" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed exchange rates)</text>
 </g>
 <!-- state_corr_gap&#45;&gt;weighted_scalar -->
 <!-- state_corr_gap&#45;&gt;correction -->
@@ -227,10 +227,10 @@
 <!-- criteria_vector&#45;&gt;weighted_scalar -->
 <g id="edge8" class="edge">
 <title>criteria_vector&#45;&gt;weighted_scalar</title>
-<path fill="none" stroke="#333333" stroke-dasharray="5,2" d="M1210.08,-1075.17C1204.15,-1076.02 1198.24,-1076.74 1192.5,-1077.28 1145.71,-1081.74 1133.7,-1079.46 1086.75,-1077.28 1081.63,-1077.05 1076.35,-1076.73 1071.03,-1076.36"/>
-<polygon fill="#333333" stroke="#333333" points="1071.35,-1073.93 1064.18,-1075.85 1070.98,-1078.81 1071.35,-1073.93"/>
+<path fill="none" stroke="#333333" stroke-dasharray="5,2" d="M1210.08,-1075.17C1204.15,-1076.02 1198.24,-1076.74 1192.5,-1077.28 1145.71,-1081.74 1133.7,-1079.46 1086.75,-1077.28 1079.48,-1076.95 1071.87,-1076.45 1064.32,-1075.87"/>
+<polygon fill="#333333" stroke="#333333" points="1064.85,-1073.45 1057.68,-1075.33 1064.45,-1078.34 1064.85,-1073.45"/>
 <text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1090.24" font-family="Helvetica,sans-Serif" font-size="8.00">projects</text>
-<text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1081.24" font-family="Helvetica,sans-Serif" font-size="8.00">chosen weights</text>
+<text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1081.24" font-family="Helvetica,sans-Serif" font-size="8.00">chosen rates</text>
 </g>
 <!-- cci_cert -->
 <g id="node23" class="node">
@@ -250,10 +250,10 @@
 <!-- weighted_scalar&#45;&gt;criteria_vector -->
 <g id="edge3" class="edge">
 <title>weighted_scalar&#45;&gt;criteria_vector</title>
-<path fill="none" stroke="#333333" d="M1062.65,-1061.25C1070.74,-1060.45 1078.94,-1059.75 1086.75,-1059.28 1124.34,-1057.02 1165.88,-1056.46 1201.66,-1056.58"/>
+<path fill="none" stroke="#333333" d="M1056.14,-1061.92C1066.31,-1060.84 1076.83,-1059.88 1086.75,-1059.28 1124.34,-1057.02 1165.88,-1056.46 1201.66,-1056.58"/>
 <polygon fill="#333333" stroke="#333333" points="1201.63,-1059.03 1208.64,-1056.61 1201.65,-1054.13 1201.63,-1059.03"/>
 <text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1069.68" font-family="Helvetica,sans-Serif" font-size="8.00">specializes</text>
-<text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1060.68" font-family="Helvetica,sans-Serif" font-size="8.00">weights fixed</text>
+<text xml:space="preserve" text-anchor="middle" x="1139.62" y="-1060.68" font-family="Helvetica,sans-Serif" font-size="8.00">rates fixed</text>
 </g>
 <!-- lex -->
 <g id="node11" class="node">
@@ -333,7 +333,7 @@
 <!-- au_floor&#45;&gt;weighted_scalar -->
 <g id="edge51" class="edge">
 <title>au_floor&#45;&gt;weighted_scalar</title>
-<path fill="none" stroke="#b00020" stroke-width="2" stroke-dasharray="5,2" d="M456.46,-907.69C530.25,-933.26 668.96,-980.3 788.75,-1015.28 838.23,-1029.73 894.86,-1044.18 936.81,-1054.49"/>
+<path fill="none" stroke="#b00020" stroke-width="2" stroke-dasharray="5,2" d="M456.46,-907.69C530.25,-933.26 668.96,-980.3 788.75,-1015.28 840.76,-1030.47 900.66,-1045.66 943.12,-1056.04"/>
 <text xml:space="preserve" text-anchor="middle" x="698.62" y="-1018.82" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">incompatible</text>
 <text xml:space="preserve" text-anchor="middle" x="698.62" y="-1009.82" font-family="Helvetica,sans-Serif" font-size="8.00" fill="#b00020">if one goal is spent to raise another</text>
 </g>

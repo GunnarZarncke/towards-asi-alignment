@@ -2,7 +2,7 @@
 
 Status: applied 2026-10-26 (user approved). All rows below are in the manuscript; ch42 was not edited, the evidence types went into the ch27 Safety Case Template, Claim 5. Close this plan once the PDF build and review pass.
 
-Source of the content: [`drafts/state-utility-in-practice.md`](../state-utility-in-practice.md) (consequences and interventions), [`drafts/alignment-frames-turner-comparison.md`](../alignment-frames-turner-comparison.md), and the Lean modules `FrameHistoryState` and `FrameDecision`.
+Source of the content: [`drafts/state-utility-in-practice.md`](../state-utility-in-practice.md) (consequences and interventions), the paper [`papers/alignment-criteria/`](../../../papers/alignment-criteria/alignment-criteria.tex) (§§2, 3, 7; it supersedes the deleted Turner comparison draft), and the Lean modules `FrameHistoryState` and `FrameDecision`.
 
 Bibliography (done 2026-10-25): `soares2015corrigibility` authors and venue fixed; `turner2021seekpower` authors and venue fixed; added `turner2022retargetable`, `turner2021corrigibilityvnm`, `turner2021aoh`, `carey2018incorrigibility`; all with `\bibsummary` lines.
 

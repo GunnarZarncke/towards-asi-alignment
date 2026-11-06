@@ -73,7 +73,7 @@ Whether moving to records escapes the counting argument depends on what the reco
 
 A language-model transcript holds the model's own actions (tokens, tool calls) and its observations, so it is an action-observation record. A generic utility over transcripts would show no tendency. The rewards actually used are not generic: most weight sits on outcomes, which is the observation and world-state regime where the tendency is strongest. [Shah 2018](https://www.lesswrong.com/posts/NxF5G6CJiof6cemTw/coherence-arguments-do-not-entail-goal-directed-behavior) shows that every policy is optimal for some utility over histories. That is an existence claim and does not change the count.
 
-Turner's own object is meaning 2 above, a per-step state reward summed along the path, plus a count over rewards. It is neither our endpoint `state` utility nor a record utility. A full comparison of his procedures with our frames is in [alignment-frames-turner-comparison.md](alignment-frames-turner-comparison.md).
+Turner's own object is meaning 2 above, a per-step state reward summed along the path, plus a count over rewards. It is neither our endpoint `state` utility nor a record utility. The comparison with his procedures is in the paper [`papers/alignment-criteria/`](../papers/alignment-criteria/alignment-criteria.tex) (§§2, 3, 7).
 
 What records change is what a **chosen** utility can express: route value, correction events, and with the right record, the channel. The relevant premise is therefore not "state only" but how the utility is picked. Counting assumes something like a permutation-symmetric distribution over utilities. Training picks a specific, structured reward. Turner and Tadepalli discuss featurized rewards for this reason.
 

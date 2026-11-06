@@ -9,13 +9,13 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(28.8 1019.05)">
 <title>AlignmentFrameRelationsC</title>
 <polygon fill="white" stroke="none" points="-28.8,28.8 -28.8,-1019.05 1651.8,-1019.05 1651.8,28.8 -28.8,28.8"/>
-<text xml:space="preserve" text-anchor="middle" x="811.5" y="-974.85" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment frames (variant c): composition, summands, and conflict only</text>
+<text xml:space="preserve" text-anchor="middle" x="811.5" y="-974.85" font-family="Helvetica,sans-Serif" font-size="12.00">Alignment criteria (variant c): composition, summands, and conflict only</text>
 <text xml:space="preserve" text-anchor="middle" x="811.5" y="-962.1" font-family="Helvetica,sans-Serif" font-size="12.00">Green composable · Bold isomorphic summand</text>
 <text xml:space="preserve" text-anchor="middle" x="811.5" y="-949.35" font-family="Helvetica,sans-Serif" font-size="12.00">Incompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource</text>
 <g id="clust1" class="cluster">
 <title>cluster_scores</title>
-<path fill="white" stroke="#bbbbbb" d="M296,-647C296,-647 1144.25,-647 1144.25,-647 1150.25,-647 1156.25,-653 1156.25,-659 1156.25,-659 1156.25,-924 1156.25,-924 1156.25,-930 1150.25,-936 1144.25,-936 1144.25,-936 296,-936 296,-936 290,-936 284,-930 284,-924 284,-924 284,-659 284,-659 284,-653 290,-647 296,-647"/>
-<text xml:space="preserve" text-anchor="middle" x="720.12" y="-909.2" font-family="Helvetica,sans-Serif" font-size="24.00">Scores</text>
+<path fill="white" stroke="#bbbbbb" d="M296,-647C296,-647 1137.88,-647 1137.88,-647 1143.88,-647 1149.88,-653 1149.88,-659 1149.88,-659 1149.88,-924 1149.88,-924 1149.88,-930 1143.88,-936 1137.88,-936 1137.88,-936 296,-936 296,-936 290,-936 284,-930 284,-924 284,-924 284,-659 284,-659 284,-653 290,-647 296,-647"/>
+<text xml:space="preserve" text-anchor="middle" x="716.94" y="-909.2" font-family="Helvetica,sans-Serif" font-size="24.00">Scores</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_relations</title>
@@ -119,9 +119,9 @@
 <!-- weighted_scalar -->
 <g id="node6" class="node">
 <title>weighted_scalar</title>
-<path fill="#f7f7f7" stroke="#444444" d="M1108.25,-834C1108.25,-834 1006.75,-834 1006.75,-834 1000.75,-834 994.75,-828 994.75,-822 994.75,-822 994.75,-810 994.75,-810 994.75,-804 1000.75,-798 1006.75,-798 1006.75,-798 1108.25,-798 1108.25,-798 1114.25,-798 1120.25,-804 1120.25,-810 1120.25,-810 1120.25,-822 1120.25,-822 1120.25,-828 1114.25,-834 1108.25,-834"/>
-<text xml:space="preserve" text-anchor="middle" x="1057.5" y="-817.75" font-family="Helvetica,sans-Serif" font-size="10.00">Weighted scalar</text>
-<text xml:space="preserve" text-anchor="middle" x="1057.5" y="-806.5" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed weights on criteria)</text>
+<path fill="#f7f7f7" stroke="#444444" d="M1101.88,-834C1101.88,-834 1013.12,-834 1013.12,-834 1007.12,-834 1001.12,-828 1001.12,-822 1001.12,-822 1001.12,-810 1001.12,-810 1001.12,-804 1007.12,-798 1013.12,-798 1013.12,-798 1101.88,-798 1101.88,-798 1107.88,-798 1113.88,-804 1113.88,-810 1113.88,-810 1113.88,-822 1113.88,-822 1113.88,-828 1107.88,-834 1101.88,-834"/>
+<text xml:space="preserve" text-anchor="middle" x="1057.5" y="-817.75" font-family="Helvetica,sans-Serif" font-size="10.00">Fixed&#45;rate sum</text>
+<text xml:space="preserve" text-anchor="middle" x="1057.5" y="-806.5" font-family="Helvetica,sans-Serif" font-size="10.00">(fixed exchange rates)</text>
 </g>
 <!-- state_corr_gap&#45;&gt;weighted_scalar -->
 <!-- state_corr_gap&#45;&gt;correction -->

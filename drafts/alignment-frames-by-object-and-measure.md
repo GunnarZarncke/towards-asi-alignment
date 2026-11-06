@@ -1,8 +1,8 @@
-# Alignment Frames by Object and Measure
+# Alignment Criteria by Object and Measure
 
 ## Purpose, scope, and completeness
 
-This file is a researcher-facing inventory of alignment frames. It is not a paper, a ranking of agendas, or a claim that one frame subsumes the others. Its purpose is to make comparisons type-correct.
+This file is a researcher-facing inventory of alignment criteria. It is not a paper, a ranking of agendas, or a claim that one criterion subsumes the others. Its purpose is to make comparisons type-correct.
 
 The inventory asks three questions:
 
@@ -10,30 +10,18 @@ The inventory asks three questions:
 2. **Assessment or guarantee:** By what relation is that object judged?
 3. **Warrant and quantifiers:** Over which systems, people, times, disturbances, successors, and uncertainties does the claim hold, and what evidence supports it?
 
-The audit behind this inventory covered the cited primary papers, several recent alignment taxonomies and surveys, TSA's manuscript and formal spine, and one private draft through 22 October 2026. It was selective rather than a registered systematic review. It did not exhaust non-English work, inaccessible books, private manuscripts, or every 2026 preprint. The absence of a frame or source is therefore not evidence that no such work exists.
+The audit behind this inventory covered the cited primary papers, several recent alignment taxonomies and surveys, TSA's manuscript and formal spine, and one private draft through 22 October 2026. It was selective rather than a registered systematic review. It did not exhaust non-English work, inaccessible books, private manuscripts, or every 2026 preprint. The absence of a criterion or source is therefore not evidence that no such work exists.
 
 The list is broad enough to expose the main category errors found in the audit. It is not called comprehensive. Some entries are families rather than settled formalisms. In particular, human power, legitimacy, deliberation, and corrigibility have several non-equivalent operationalizations.
 
 ## The typed record
 
-A frame can be recorded as:
+A criterion is typed by five things, the same as in the paper (`papers/alignment-criteria/`, §3):
 
-\[
-\texttt{Frame} =
-(\text{boundary},\ \text{principals and bearers},\ \text{object},\
-\text{assessment},\ \text{temporal and uncertainty rule},\
-\text{quantifiers},\ \text{solution concept},\ \text{warrant}).
-\]
-
-The fields do different work.
-
-- **Boundary** says which model, tool stack, institution, population, or coupled process is under evaluation.
-- **Principals and bearers** say whose authority, welfare, rights, judgments, values, or options count.
+- **Standing** says which model, tool stack, institution, population, or coupled process is under evaluation (the boundary), whose instruction or correction counts (the principals), and whose welfare, rights, or options count (the bearers).
 - **Object** says what receives value or protection.
-- **Assessment** supplies an ordering, acceptance predicate, constraint, equilibrium condition, or dynamical property.
-- **Temporal and uncertainty rule** states how time and uncertainty are aggregated.
-- **Quantifiers** distinguish, for example, some admissible controller from all allowed disturbances.
-- **Solution concept** may be one policy, an admissible set, a Pareto front, an equilibrium, a viable kernel, or a certified implementation.
+- **Assessment** supplies an ordering, acceptance predicate, constraint, equilibrium condition, or dynamical property, including the temporal and uncertainty rule that aggregates over time and risk.
+- **Quantifiers** distinguish, for example, some admissible controller from all allowed disturbances, and every situation from most objectives.
 - **Warrant** says why the claim should be accepted: observation, statistical estimate, formal proof, runtime monitor, audit, adversarial test, or institutional procedure.
 
 Four role labels are mandatory:
@@ -82,14 +70,14 @@ The same object can be paired with different assessments. The following distinct
 
 The quantifier belongs in the claim. Expected success does not imply a tail bound. High-probability safety does not imply almost-sure safety. Existential viability does not imply robust invariance. A proof establishes a represented property relative to a model and trust base. A passing protocol does not establish that its empirical assumptions are true.
 
-## Target frames
+## Target criteria
 
 ### Outcome or state value
 
 - **Object:** A world state, terminal outcome, welfare state, answer, approval event, or acceptable-state predicate.
 - **Measure:** Scalar utility or reward, preference order, expected value, welfare functional, or threshold membership.
 - **Representative sources:** [Decision Theory, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/decision-theory/); [Gabriel 2020](https://doi.org/10.1007/s11023-020-09539-2); [Zhi-Xuan et al. 2025](https://doi.org/10.1007/s11098-024-02249-w).
-- **Relation to TSA:** TSA treats fixed state utility as an inadequate target for changing values. This is a contrast frame, not a straw target that no one uses. TSA still relies on state predicates inside certificates and viability sets.
+- **Relation to TSA:** TSA treats fixed state utility as an inadequate target for changing values. This is a contrast criterion, not a straw target that no one uses. TSA still relies on state predicates inside certificates and viability sets.
 - **Common category error:** Treating the provenance of a learned score as a new object type. RLHF can learn an outcome score without changing the fact that outcomes are what the score evaluates.
 
 ### Learned reward, preference, or approval
@@ -212,7 +200,7 @@ The quantifier belongs in the claim. Expected success does not imply a tail boun
 - **Relation to TSA:** TSA evaluates the deployed composite and later asks whether selection supports or destroys correction. The model alone may be the wrong boundary.
 - **Common category error:** Treating institutional selection pressure as background noise around an otherwise complete model-level target.
 
-## Constraint frames
+## Constraint criteria
 
 ### Deontic rules, rights, duties, and role obligations
 
@@ -230,13 +218,13 @@ The quantifier belongs in the claim. Expected success does not imply a tail boun
 - **Relation to TSA:** TSA proposes componentwise CCI thresholds before any scalar risk-spine projection.
 - **Common category error:** Assuming that "good enough" determines how to choose among acceptable options or how to search for one.
 
-### Multi-objective, constrained, and lexicographic frames
+### Multi-objective, constrained, and lexicographic criteria
 
 - **Object:** A vector of values, costs, rights, stakeholder outcomes, or properties.
 - **Measure:** Pareto dominance, constrained optimization, a coverage set, bargaining rule, social choice rule, or strict priority.
 - **Representative sources:** [Roijers et al. 2013](https://doi.org/10.1613/jair.3987); [Altman 1999](https://www-sop.inria.fr/members/Eitan.Altman/TEMP/h.pdf); [Wray, Zilberstein, and Mouaddib 2015](https://doi.org/10.1609/aaai.v29i1.9647).
 - **Relation to TSA:** TSA's correction certificate is vector-valued at the gate. A plausible composition places correction and anti-capture floors before task optimization.
-- **Common category error:** Treating "multi-objective" as if it supplied its own tradeoff or assuming fixed finite weights preserve strict priority.
+- **Common category error:** Treating "multi-objective" as if it supplied its own tradeoff or assuming fixed exchange rates preserve strict priority.
 
 ### Safety, liveness, and temporal-logic constraints
 
@@ -246,7 +234,7 @@ The quantifier belongs in the claim. Expected success does not imply a tail boun
 - **Relation to TSA:** "Correction remains available" needs both safety and liveness content. An intact handle that is never usable in time is insufficient.
 - **Common category error:** Treating invariance alone as a guarantee that recovery or timely response will occur.
 
-## Guarantee frames
+## Guarantee criteria
 
 ### Viability, invariance, reachability, and capture
 
@@ -272,7 +260,7 @@ The quantifier belongs in the claim. Expected success does not imply a tail boun
 - **Relation to TSA:** A correction-supporting regime must survive the environment that selects systems. Unsigned persistence is not enough.
 - **Common category error:** Treating popularity, deployment growth, or institutional persistence as evidence that the selected property is alignment-supporting.
 
-## Protocol and warrant frames
+## Protocol and warrant criteria
 
 ### Limited optimization and quantilization
 
@@ -370,7 +358,7 @@ The example does not prove that the learning route is legitimate. Evidence can b
 
 ## Composition discipline
 
-A defensible composition is constrained and ordered rather than a flat weighted sum.
+A defensible composition is constrained and ordered rather than a flat fixed-rate sum.
 
 1. Fix the deployed boundary, principals, bearers, world model, horizons, and counterfactuals.
 2. State non-compensatory harm, legitimacy, anti-capture, correction-floor, and successor constraints.
