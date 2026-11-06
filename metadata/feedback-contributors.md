@@ -19,7 +19,7 @@ People who have shaped the manuscript, formal spine, or field map. Sorted alphab
 | [Jobst Heitzig](https://www.lesswrong.com/users/jobst-heitzig) | Draft review; references | Viability theory and related dynamical-systems literature. |
 | Joel Pyykkö | Informal pressure-testing | Aintelope co-founder. |
 | [Jonas Hallgren](https://www.lesswrong.com/users/jonas-hallgren) | Foundational conversations | Agent foundations; unsupervised agent discovery (EAG Bay Area 2025); agency taxonomies; crystal analogies; dynamical systems. |
-| [Vanessa Kosoy](https://www.lesswrong.com/users/vanessa-kosoy) | Field map | Corrected the LTA / Physicalist Superimitation agenda summary: regret vs daemons vs nonrealizability as unlike objects; bridge transform as IBP, not an outer-alignment gadget; precursor not central to later PSI. |
+| [Vanessa Kosoy](https://www.lesswrong.com/users/vanessa-kosoy) | Field map; LW | Corrected the LTA / Physicalist Superimitation agenda summary (Aug 2025). Oct 2026 lenses post; reply archived at [`drafts/outreach/kosoy-alignment-problem-lw-comment.md`](../drafts/outreach/kosoy-alignment-problem-lw-comment.md). |
 | [Peter Kuhn](https://www.lesswrong.com/users/peter-kuhn) | Manuscript review | Readability, claims, and research agenda; agent-discovery collaboration with Chris Pang. |
 | Rasmus Herlo | Informal pressure-testing | Aintelope co-founder. |
 | Roland Pihlakas | Informal pressure-testing | Aintelope co-founder. |
