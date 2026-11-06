@@ -20,4 +20,4 @@ external:
 >
 > — Frames draft §2.4 (Turner 2020 non-obstruction)
 
-Non-obstruction is human-indexed and pointwise across a goal set. It still depends on that set, the baseline, the horizon, and the human policy model. Spending one listed goal to raise another violates the floor; a weighted scalar that permits the trade is the red edge `nonobsScalarIncompat`.
+Non-obstruction is human-indexed and pointwise across a goal set. It still depends on that set, the baseline, the horizon, and the human policy model. Spending one listed goal to raise another violates the floor; a fixed-rate sum that permits the trade is the red edge `nonobsScalarIncompat`.

@@ -14,7 +14,7 @@ external:
 
 **Role.** Target. Graph node `lex`.
 
-> Fixed finite weights do not represent a lexicographic priority: a large enough gain on a lower coordinate can cross any finite exchange rate.
+> Fixed exchange rates do not represent a lexicographic priority: a large enough gain on a lower coordinate can outweigh any fixed rate.
 >
 > — Frames relations note
 

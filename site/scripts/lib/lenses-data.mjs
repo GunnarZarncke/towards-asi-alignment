@@ -140,16 +140,16 @@ Whether the record escapes the instrumental-convergence counting argument depend
   {
     nodeId: "weighted_scalar",
     slug: "weighted-scalar",
-    title: "Weighted scalar",
+    title: "Fixed-rate sum",
     role: "Target",
-    summary: "A fixed-weight collapse of a criteria vector. Finite weights cannot represent a hard floor.",
+    summary: "A criteria vector summed at fixed exchange rates. Fixed exchange rates cannot represent a hard floor.",
     quote:
       "If a violation is non-compensatory, a sufficiently large but finite reward elsewhere must not purchase it.",
     quoteSource: "Frames draft §4.2",
     lwTag: { label: "LessWrong tag: Goodhart's Law", url: "https://www.lesswrong.com/w/goodhart-s-law" },
     related: ["lenses/criteria-vector", "lenses/non-compensatory-constraint", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/openai-lab", "field-agendas/anthropic-lab"],
-    body: `Lean’s \`no_finite_weights_represent_floor\`: for every strictly positive integer weighting there is a menu where every scalar-optimal choice violates the floor. The real-valued version is expected to follow by the same argument but is not yet proven. Pulled back along the floor-coordinate maps, it gives the deontic– and AU-floor–scalar red edges for every such weighting (\`deontic_no_finite_weights\`, \`nonobs_no_finite_weights\`).`
+    body: `Lean’s \`no_finite_weights_represent_floor\`: for every choice of strictly positive integer exchange rates there is a choice set where every optimum of the sum violates the floor. The real-valued version is expected to follow by the same argument but is not yet proven. Pulled back along the floor-coordinate maps, it gives the deontic– and AU-floor–scalar red edges for every such choice of rates (\`deontic_no_finite_weights\`, \`nonobs_no_finite_weights\`).`
   },
   {
     nodeId: "lex",
@@ -158,7 +158,7 @@ Whether the record escapes the instrumental-convergence counting argument depend
     role: "Target",
     summary: "A strict priority order on a criteria vector, not a finite exchange rate.",
     quote:
-      "Fixed finite weights do not represent a lexicographic priority: a large enough gain on a lower coordinate can cross any finite exchange rate.",
+      "Fixed exchange rates do not represent a lexicographic priority: a large enough gain on a lower coordinate can outweigh any fixed rate.",
     quoteSource: "Frames relations note",
     lwTag: { label: "LessWrong tag: Utility functions", url: "https://www.lesswrong.com/w/utility-functions" },
     related: ["lenses/criteria-vector", "lenses/weighted-scalar", "lenses/lenses-and-frameworks"],
@@ -219,7 +219,7 @@ Whether the record escapes the instrumental-convergence counting argument depend
     lwTag: { label: "LessWrong tag: Low impact", url: "https://www.lesswrong.com/w/low-impact" },
     related: ["subsumption-low-impact", "lenses/au-penalty", "lenses/human-power", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell"],
-    body: `Non-obstruction is human-indexed and pointwise across a goal set. It still depends on that set, the baseline, the horizon, and the human policy model. Spending one listed goal to raise another violates the floor; a weighted scalar that permits the trade is the red edge \`nonobsScalarIncompat\`.`
+    body: `Non-obstruction is human-indexed and pointwise across a goal set. It still depends on that set, the baseline, the horizon, and the human policy model. Spending one listed goal to raise another violates the floor; a fixed-rate sum that permits the trade is the red edge \`nonobsScalarIncompat\`.`
   },
   {
     nodeId: "ai_power",
@@ -391,7 +391,7 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     lwTag: { label: "LessWrong tag: Safety cases", url: "https://www.lesswrong.com/w/ai-safety-cases" },
     related: ["mb11-deployment-safety", "what-not-claiming", "evidence-and-uncertainty", "lenses/model-relative-proof", "lenses/control-protocol", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/davidad-guaranteed-safe-ai-gsai", "field-agendas/redwood-research"],
-    body: `The warrant-bundle path is \`proof | control | correction → safecase\`. A missing export is a missing slot, not a missing alignment frame. Lean checks conditional composition when bridges hold; it does not discharge \`Safe\` for a real system.`
+    body: `The warrant-bundle path is \`proof | control | correction → safecase\`. A missing export is a missing slot, not a missing alignment criterion. Lean checks conditional composition when bridges hold; it does not discharge \`Safe\` for a real system.`
   }
 ];
 

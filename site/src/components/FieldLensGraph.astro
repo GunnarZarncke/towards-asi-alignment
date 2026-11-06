@@ -10,12 +10,12 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 ---
 
 <section id="lens-map" class="bridge-graph-section readable">
-  <h2>Frame map</h2>
+  <h2>Criteria map</h2>
   <p class="bridge-graph-lede">
-    Default frame map: nodes are lenses; edge labels open the Lean proof or registry entry on GitHub where one exists.
+    Default criteria map: nodes are alignment criteria, one lens card each; edge labels open the Lean proof or registry entry on GitHub where one exists.
   </p>
   <FieldBridgeGraph
-    title="Alignment frames"
+    title="Alignment criteria"
     svgFile="field-graphs/alignment-frames-relations.svg"
     dotFile="field-graphs/alignment-frames-relations.dot"
     dotSourceUrl="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.dot"

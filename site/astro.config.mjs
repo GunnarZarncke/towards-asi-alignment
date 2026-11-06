@@ -21,7 +21,9 @@ export default defineConfig({
   redirects: {
     ...cardRedirects,
     "/demos/all/": "/demos/",
-    "/predictions/assurance/": "/predictions/safety-case/"
+    "/predictions/assurance/": "/predictions/safety-case/",
+    // Bib key renamed 2026-11-06 (author was misattributed).
+    "/cards/reference/kasirzadeh2024beyondpreferences/": "/cards/reference/zhixuan2025beyondpreferences/"
   },
   integrations: [
     sitemap({

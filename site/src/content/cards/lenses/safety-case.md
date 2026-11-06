@@ -23,4 +23,4 @@ external:
 >
 > — Frames draft §4.9
 
-The warrant-bundle path is `proof | control | correction → safecase`. A missing export is a missing slot, not a missing alignment frame. Lean checks conditional composition when bridges hold; it does not discharge `Safe` for a real system.
+The warrant-bundle path is `proof | control | correction → safecase`. A missing export is a missing slot, not a missing alignment criterion. Lean checks conditional composition when bridges hold; it does not discharge `Safe` for a real system.
