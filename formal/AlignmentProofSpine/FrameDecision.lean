@@ -9,7 +9,7 @@ import Mathlib.Algebra.Order.BigOperators.Group.Finset
 The Scores cluster of graphs **a** / **b** as **decision problems**: an outcome
 type `O`, a finite menu, an objective `θ : O → ℤ`, and a rule that picks from
 the menu (here mostly argmax). This is the frame shared with Turner's
-power-seeking results (`drafts/alignment-frames-turner-comparison.md`):
+power-seeking results (`papers/alignment-criteria/`, §§2, 3 and 7):
 
 * our edges are **maps between decision problems**: a map `g : O → O'` pulls an
   objective back, `θ' ↦ θ' ∘ g`, and the edge claims that choosing commutes

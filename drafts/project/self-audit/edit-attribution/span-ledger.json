@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261105T201953.587Z",
+  "_as_of": "20261106T020242.311Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -781,6 +781,24 @@
     "file": "chapters/ch04-fixed-values-wrong-target.tex",
     "human": 0,
     "index": 18,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch04-fixed-values-wrong-target.tex#4": {
+    "agent": 2,
+    "dirty": true,
+    "file": "chapters/ch04-fixed-values-wrong-target.tex",
+    "human": 0,
+    "index": 4,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch04-fixed-values-wrong-target.tex#42": {
+    "agent": 2,
+    "dirty": true,
+    "file": "chapters/ch04-fixed-values-wrong-target.tex",
+    "human": 0,
+    "index": 42,
     "key": "AI",
     "prior": "AI"
   },
