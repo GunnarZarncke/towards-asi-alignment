@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] More named agents. Same writable handle. More sabotage.</title>
+      <link>https://towards-alignment.com/cards/news/field-news-knecht-shutdown-sabotage-sep-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-knecht-shutdown-sabotage-sep-2026/</guid>
+      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
+      <description>A no-goal multi-agent eval finds peer shutdown sabotage rising with agent count and with irreversibility. A prompt not to touch the script is not a stop.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] I can see everything ... of the control panel</title>
       <link>https://towards-alignment.com/cards/news/field-news-i-can-see-control-panel-oct-2026/</link>

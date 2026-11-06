@@ -1,4 +1,4 @@
-// Relations among alignment frames.
+// Relations among alignment criteria.
 // Read with the note drafts/alignment-frames-relations.md.
 // Arrow direction is part of the legend. Do not read every arrow as "implies".
 digraph AlignmentFrameRelations {
@@ -10,7 +10,7 @@ digraph AlignmentFrameRelations {
     pad=0.4,
     fontsize=12,
     fontname="Helvetica",
-    label="Alignment frames: specialization, encoding, limits, and conflict\nSolid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable\nIncompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
+    label="Alignment criteria: specialization, encoding, limits, and conflict\nSolid specializes · Dashed projects · Dotted encodes · Bold isomorphic summand · Blue limit · Purple stronger quantifier · Green composable\nIncompatible: red solid rigid · red dashed choice conflict · red dotted not representable · orange shared resource",
     labelloc="t"
   ];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F7F7F7"];
@@ -32,7 +32,7 @@ digraph AlignmentFrameRelations {
 (round trips matter)"];
     state [label="State utility
 (scalar order on states)"];
-    // Layout-only routing stub (not a frame; omitted from Lean inventory).
+    // Layout-only routing stub (not a criterion; omitted from Lean inventory).
     state_corr_gap [shape=point, width=0.01, height=0.01, label="", style=invis];
     hstate [label="Record-carrying state
 (state × record of the walk)"];
@@ -40,8 +40,8 @@ digraph AlignmentFrameRelations {
 (expectation or risk functional)"];
     criteria_vector [label="Criteria vector
 (Pareto · task costs/stakeholders)"];
-    weighted_scalar [label="Weighted scalar
-(fixed weights on criteria)"];
+    weighted_scalar [label="Fixed-rate sum
+(fixed exchange rates)"];
     lex [label="Lexicographic priority
 (on criteria vector)"];
     quant [label="Quantilizer
@@ -100,16 +100,16 @@ on–off floor (non-obs.)"];
 (deployment argument)"];
   }
 
-  // Special case → more general frame.
+  // Special case → more general criterion.
   exact -> route [label="specializes"];
   approval -> route [label="specializes\none edge, one judge"];
-  weighted_scalar -> criteria_vector [label="specializes\nweights fixed"];
+  weighted_scalar -> criteria_vector [label="specializes\nrates fixed"];
   lex -> criteria_vector [label="specializes\nstrict priority"];
   corrig -> correction [label="specializes\none handle, named operators"];
 
   // Forgetful maps.
   dist -> state [style=dashed, label="projects\nexpectation"];
-  criteria_vector -> weighted_scalar [style=dashed, label="projects\nchosen weights"];
+  criteria_vector -> weighted_scalar [style=dashed, label="projects\nchosen rates"];
   correction -> corrig [style=dashed, label="projects\nshutdown bit"];
   route -> cycle [style=dashed, label="projects\nlong-run average\nretains this summand"];
 

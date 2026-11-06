@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-05T13:05:43.070Z",
+  "generatedAt": "2026-11-06T02:26:11.703Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 433,
+  "entryCount": 434,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1417,6 +1417,12 @@
       "url": "/cards/chapter/ch07/"
     },
     {
+      "title": "Fixed-rate sum",
+      "type": "lens",
+      "summary": "A criteria vector summed at fixed exchange rates. Fixed exchange rates cannot represent a hard floor.",
+      "url": "/cards/lens/weighted-scalar/"
+    },
+    {
       "title": "From Agent Detection to Alignment Target",
       "type": "concept",
       "summary": "Once an agent is defined by variables rather than appearance, degrees and scales of agency become measurable — and detection becomes the first step toward naming an alignment target.",
@@ -1951,6 +1957,12 @@
       "url": "/cards/experiment/w-12/"
     },
     {
+      "title": "More named agents. Same writable handle. More sabotage.",
+      "type": "news",
+      "summary": "Knecht, Schaller, Summerfield, and Hagendorff (arXiv:2609.28274) put a decommission script in a shared environment, gave no task except explore, and measured whether agents disabled a peer’s shutdown. Across 17 models, sabotage was 38.3% versus 8.4% on object-deletion controls. Rates rose from one agent to two to an orchestrator; they rose with more irreversible shutdowns; a written prohibition cut them and did not close the channel. This project’s cut: count the coupled set that can edit the handle, not the nameplates. Model spread is large, so the pattern may track capability.",
+      "url": "/cards/news/field-news-knecht-shutdown-sabotage-sep-2026/"
+    },
+    {
       "title": "Multi-Agent Superintelligence and Inferential Coupling",
       "type": "chapter",
       "summary": "When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin---a self-reinforcing regime that pulls back toward itself after small disturbances---that preserves human correction rather than bypassing it.",
@@ -2109,7 +2121,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 540 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 541 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
@@ -2495,12 +2507,6 @@
       "type": "chapter",
       "summary": "Human values are not a list written inside the brain. They are compressed control signals produced by many feedback loops, stabilized by bodies, cultures, and social correction, and read out as reasons for action.",
       "url": "/cards/chapter/ch15/"
-    },
-    {
-      "title": "Weighted scalar",
-      "type": "lens",
-      "summary": "A fixed-weight collapse of a criteria vector. Finite weights cannot represent a hard floor.",
-      "url": "/cards/lens/weighted-scalar/"
     },
     {
       "title": "Wentworth / natural abstractions",
