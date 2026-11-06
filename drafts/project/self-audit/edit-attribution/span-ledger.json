@@ -786,7 +786,6 @@
   },
   "chapters/ch04-fixed-values-wrong-target.tex#4": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch04-fixed-values-wrong-target.tex",
     "human": 0,
     "index": 4,
@@ -795,7 +794,6 @@
   },
   "chapters/ch04-fixed-values-wrong-target.tex#42": {
     "agent": 2,
-    "dirty": true,
     "file": "chapters/ch04-fixed-values-wrong-target.tex",
     "human": 0,
     "index": 42,
