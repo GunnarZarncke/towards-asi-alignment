@@ -29,7 +29,7 @@ def load_bib_keys() -> set[str]:
 def find_citations() -> set[str]:
     cites: set[str] = set()
     for tex in ROOT.rglob("*.tex"):
-        if ".venv" in tex.parts:
+        if ".venv" in tex.parts or ".worktrees" in tex.parts:
             continue
         text = tex.read_text(encoding="utf-8", errors="replace")
         for match in CITE_RE.findall(text):
