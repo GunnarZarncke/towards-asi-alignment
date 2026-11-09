@@ -148,8 +148,16 @@ projections:
       - separationOnly
       - importedAssumption
     graphNodeId: ELK
-    summary: ELK asks for a reporter that reveals latent knowledge rather than a behavior-only simulator. Lean rederives reporter non-identifiability and further finite counterexamples in the same module. Readout without correction uptake is an interface toy, not that rederivation.
-    decision: 'Treat success at getting a system to report what it knows as evidence about honesty of reports, not as proof that human corrections still change its future behavior.'
+    summary: >-
+      ELK asks how to train a reporter that says what a model knows, rather than what a
+      person would conclude from the same observations. On questions a person can already
+      answer, those two reporters match, so no score of their answers can tell them apart.
+      They come apart when the observation looks fine and the hidden fact does not. A
+      report that does state the hidden fact still leaves open whether a person's
+      correction then changes what the system does.
+    decision: >-
+      Treat a report of what the system knows as evidence about that report. Ask
+      separately whether a person's correction changes what the system does next.
     bookChapters:
       - ch18
       - ch43
@@ -158,7 +166,10 @@ projections:
     id: elk
     order: 8
     agenda: ELK
-    headline: Reporter non-identifiability is rederived; readout without correction uptake is an interface toy.
+    headline: >-
+      On questions a person can already answer, the honest reporter and the human-copying
+      reporter score the same, and they split when the sensor lies. A successful report
+      leaves open whether a later correction changes what the system does.
   - slug: subsumption-embedded-agency
     kind: projection
     title: Field projection — Embedded Agency / ε-Boundary

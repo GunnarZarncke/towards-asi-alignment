@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-09 (offline cache analytics flag).
+Last updated: 2026-11-09 (ELK projection card).
 
 ---
 
@@ -27,6 +27,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ## Recently shipped
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
+
+**2026-11-09:** **ELK projection card** — plain-language lead, vault picture of the two-bit model, correction sketch labeled as an assumption, numeric witness stated. Log: `2026-11-09-elk-projection-card.md`.
 
 **2026-11-09:** **Offline cache analytics** — cache fills request `?cache=1`; a shown cached page still records a pageview without refetching the HTML. Log: `2026-11-09-offline-cache-analytics.md`.
 
