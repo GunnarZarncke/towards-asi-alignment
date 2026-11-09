@@ -281,6 +281,8 @@ A chain of thought is written by the model, and strong optimization pressure on 
 Tool calls, file writes, and environment logs are written by the harness.
 Rewarding the process on those records, including penalties for attempts to alter or route around them, avoids that failure if tamper detection rests on mechanisms the system cannot reach, such as hash-chained or externally mirrored logs, and if some monitors are kept out of training.
 A penalty on detected tampering otherwise also trains undetected tampering.
+On text datasets, tested methods beat simple baselines at detecting an altered measurement on most sets and did not reach maximum performance \autocite{roger2023measurementtampering}.
+Detectors built on attribution patching did not consistently beat baselines that look only at activations \autocite{belrose2024anomaly}.
 
 A robust audit asks not only
 \begin{equation}

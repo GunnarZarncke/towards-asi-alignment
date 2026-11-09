@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261109T211511.447Z",
+  "_as_of": "20261109T233155.811Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1089,6 +1089,14 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch09-composite-agent.tex#4": {
+    "agent": 23,
+    "file": "chapters/ch09-composite-agent.tex",
+    "human": 3,
+    "index": 4,
+    "key": "GZ+AI",
+    "prior": "GZ+AI"
+  },
   "chapters/ch10-strategic-opacity.tex#11": {
     "agent": 6,
     "file": "chapters/ch10-strategic-opacity.tex",
@@ -1978,7 +1986,7 @@
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
-    "agent": 16,
+    "agent": 22,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 0,
     "index": 9,
@@ -1986,7 +1994,7 @@
     "prior": "AI"
   },
   "chapters/ch28-extrapolative-correction.tex#2": {
-    "agent": 2,
+    "agent": 8,
     "file": "chapters/ch28-extrapolative-correction.tex",
     "human": 0,
     "index": 2,
