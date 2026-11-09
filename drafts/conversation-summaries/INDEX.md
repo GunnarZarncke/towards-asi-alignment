@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-09 | **Offline cache analytics** — cache fills use `cache=1`; a visit to a cached page is still recorded without refetching the HTML. | [2026-11-09-offline-cache-analytics.md](2026-11-09-offline-cache-analytics.md) |
 | 2026-11-05 | **Knecht shutdown sabotage** — Ch. 35 sentence + App P Market 7 cite; field-news card (agent count, prompt not a stop, irreversibility). | [2026-11-05-knecht-shutdown-sabotage.md](2026-11-05-knecht-shutdown-sabotage.md) |
 | 2026-11-05 | **Site layout focus mode** — Width button cycles standard / wide / focus; focus hides side panel, minimal grey margin. | [2026-11-05-site-layout-focus-mode.md](2026-11-05-site-layout-focus-mode.md) |
 | 2026-11-05 | **Field v2 lenses panel** — Fourth hub preview: frame map clip → lenses overview card. | [2026-11-05-field-v2-lenses-panel.md](2026-11-05-field-v2-lenses-panel.md) |
