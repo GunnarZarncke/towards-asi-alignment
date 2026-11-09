@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-09 | **ELK proofs on the site** — Finite counterexamples restored. Card and Lean check name the rederivation and label readout-versus-uptake as a toy. | [2026-11-09-elk-site-proofs.md](2026-11-09-elk-site-proofs.md) |
 | 2026-11-09 | **Offline cache analytics** — cache fills use `cache=1`; a visit to a cached page is still recorded without refetching the HTML. | [2026-11-09-offline-cache-analytics.md](2026-11-09-offline-cache-analytics.md) |
 | 2026-11-05 | **Knecht shutdown sabotage** — Ch. 35 sentence + App P Market 7 cite; field-news card (agent count, prompt not a stop, irreversibility). | [2026-11-05-knecht-shutdown-sabotage.md](2026-11-05-knecht-shutdown-sabotage.md) |
 | 2026-11-05 | **Site layout focus mode** — Width button cycles standard / wide / focus; focus hides side panel, minimal grey margin. | [2026-11-05-site-layout-focus-mode.md](2026-11-05-site-layout-focus-mode.md) |

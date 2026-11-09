@@ -13,17 +13,21 @@ formulas:
     explanation: 'Non-converse separation: readout can succeed while correction uptake fails.'
     chapterId: ch43
 leanNodes:
+  - nodeId: elk_reporter_nonidentifiability
+    kind: proof
+    summary: No score of confident answers separates the direct translator from the human simulator, and the reporters diverge off that set.
+    module: AlignmentProofSpine/Field/ELK.lean
   - nodeId: elk_subsumption_readout
     kind: proof
-    summary: Correction uptake with matched readout bandwidth implies latent readout success.
+    summary: 'Interface toy: correction uptake with an assumed readout bandwidth implies latent readout.'
     module: AlignmentProofSpine/Field/ELK.lean
   - nodeId: elk_readout_is_correction_projection
     kind: proof
-    summary: ELK readout as projection of correction-channel bandwidth.
+    summary: 'Interface toy: assumes the readout-bandwidth identification. No identifiability content.'
     module: AlignmentProofSpine/Field/ELK.lean
   - nodeId: elk_separated_from_uptake
     kind: counterexample
-    summary: 'Separation: latent readout without correction uptake success.'
+    summary: 'Interface toy: latent readout can succeed while correction uptake fails. Not the identifiability rederivation.'
     module: AlignmentProofSpine/Field/ELK.lean
   - nodeId: Christiano2021_ELK_reporter_spec_imported
     kind: definition
@@ -35,6 +39,6 @@ citeKeys:
 
 ELK targets a real failure mode of naive oversight: the monitor sees only behavior, not what the model knows. This project's crosswalk places ELK as a latent-readout subchannel inside a broader correction and bundle transport problem — not as a replacement for correction-channel integrity.
 
-Lean proves the forward link when readout bandwidth tracks correction uptake and the separation when readout succeeds without uptake. Native reporter/training theorem matching remains deferred; the spine records what is machine-checked today: projection, separation, and imported handles citing the published agenda.
+Lean rederives reporter non-identifiability (`elk_reporter_nonidentifiability`) and further finite counterexamples in `Field/Finite/ELKIdentifiability.lean`. The readout-bandwidth projection and the separation of readout from correction uptake are interface toys.
 
 *What ELK keeps that this crosswalk does not replace:* a sharply posed benchmark problem with concrete proposals and counterexamples. Relocating it as a subchannel does not solve the readout problem.

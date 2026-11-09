@@ -148,7 +148,7 @@ projections:
       - separationOnly
       - importedAssumption
     graphNodeId: ELK
-    summary: ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.
+    summary: ELK asks for a reporter that reveals latent knowledge rather than a behavior-only simulator. Lean rederives reporter non-identifiability and further finite counterexamples in the same module. Readout without correction uptake is an interface toy, not that rederivation.
     decision: 'Treat success at getting a system to report what it knows as evidence about honesty of reports, not as proof that human corrections still change its future behavior.'
     bookChapters:
       - ch18
@@ -158,7 +158,7 @@ projections:
     id: elk
     order: 8
     agenda: ELK
-    headline: Latent readout is an epistemic subchannel, not correction uptake.
+    headline: Reporter non-identifiability is rederived; readout without correction uptake is an interface toy.
   - slug: subsumption-embedded-agency
     kind: projection
     title: Field projection — Embedded Agency / ε-Boundary

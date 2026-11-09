@@ -63,9 +63,13 @@ checks:
   - slug: elk
     question: "Does ELK solve alignment?"
     summary: >-
-      ELK asks for latent-knowledge readout rather than behavior-only simulation. Lean treats readout as
-      an epistemic subchannel: it can succeed while correction uptake fails — solving readout is not
-      certification that human correction still changes future behavior.
+      Eliciting latent knowledge asks how to train a reporter to state facts a predictor
+      already knows but that are missing from its observations. The direct translator
+      reports what a human should believe, read from the predictor's model. The human
+      simulator reports what a human would believe from the observations alone. On questions
+      humans can answer confidently the two reporters match, so they have the same loss.
+      They come apart when the observations look fine and the latent fact does not, as
+      under sensor tampering.
     fieldTerms:
       - eliciting latent knowledge
       - direct translator
@@ -76,9 +80,13 @@ checks:
       - correction-channel-integrity
       - mb7-hidden-capability-and-access
     leanForward:
-      - elk_subsumption_readout
-      - elk_reporter_nonidentifiability
+      - elk_reporter_unidentifiable_from_training
+      - no_operator_training_criterion_separates
+      - outside_human_model_diverges
+      - ontology_mismatch_training_does_not_separate
+      - cost_crossover_complexity
     leanSeparations:
+      - human_simulator_is_crisp_counterexample
       - elk_separated_from_uptake
     leanNotChecked:
       - Reporter training under adversarial optimization pressure
