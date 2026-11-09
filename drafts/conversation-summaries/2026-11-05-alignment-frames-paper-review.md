@@ -175,9 +175,12 @@ Trigger: the user asked to add Hallgren (taxonomy of agents) and Beard & Zarncke
 
 - bookkeeping (eighteenth request): deleted `drafts/alignment-frames-turner-comparison.md` (superseded by the paper §§2, 3, 7). Its inbound links in the relations note, the state-utility note and the turner-soares plan, plus the `FrameDecision.lean` module docstring, now point to the paper. `lake build AlignmentProofSpine.FrameDecision` → "Build completed successfully (938 jobs)." Fixed the plan's broken draft-to-draft link to `state-utility-in-practice.md`.
 
+- content (twentieth request): follow-up plan [`drafts/plans/construct/correction-under-embedding.md`](../plans/construct/correction-under-embedding.md). It covers the convergence limits (A1–A4) and the embedded, user-modelling and adversarial case. The core is "outside the system" restated as cut conditions O1–O5, with a map from each finite result to the conditions it needs; Lean items L1–L3 and E1–E6; logical induction only for bounded O2 and reflection, as a flagged analogy. Kill criterion in the file. v2 checklist item and Related link in `construct.md`; index link in `drafts/plans/README.md`. Lean names in the file checked by grep against `formal/AlignmentProofSpine/`; bib keys checked against `references/*.bib`.
+
 ## Decisions
 
 - One discriminating case, not a running example; a full worked deployment would add detail but no separations.
+- Follow-up: logical induction is a later step, not part of the first follow-up (author, 2026-11-09).
 - Figure uses graph **a** unchanged; the caption marks the green edges as one (correction-first) composition reading. A neutral variant without green edges was not made.
 
 ## Open / next
@@ -186,7 +189,7 @@ Trigger: the user asked to add Hallgren (taxonomy of agents) and Beard & Zarncke
 - Bib: the 14 paper entries are checked; moving local entries into `references/` still needs `\bibsummary` lines.
 - Terminology: drafts and site adapted (seventeenth request). File names `drafts/alignment-frames-*`, Lean `Frame*` modules and lens-card slugs (`weighted-scalar`) keep the old words.
 - Offered, not decided: a hedge that the four classes are not shown exhaustive (candidate fifth: a warrant conflict, F3′); the choice-set vs carrier `C` clash.
-- Not for this paper: the instrumental-convergence limits (object, option asymmetry, outlet, growth) go to a separate paper (author decision, 2026-11-06).
+- Not for this paper: the instrumental-convergence limits and the embedded case go to a follow-up; plan in `drafts/plans/construct/correction-under-embedding.md` (author decisions listed there, § G).
 - Book plan: the `metadata/TODO.md` Frame-of-the-target item still says TSA is the running example (book 2.0, not the paper).
 
 ## Key paths

@@ -255,6 +255,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [ ] **Frame of the target (early).** Name the object (correction possibility; viability is the shape of the guarantee). Finish the inventory of chapters that discuss another frame. Sketch one running example on which neighbor frames are complements, not second guarantees. Revise those chapters only under the 2.0 manuscript gate, and before other 2.0 prose there. § Frame of the target. Distinct from prosaic-vs-superintelligence positioning and from the cycle-stability intro claim.
 - [ ] **2.0 planning scope relaxation** — within-model alignment (topic to consider; effects relevant, no detailed within-model program); proof-based approaches, GSAI, and logical induction in-scope for map/crosswalk/drafting. v1 gates unchanged. Policy: § 2.0 planning scope above; [`metadata/TODO.md`](../../../metadata/TODO.md) Construct row
 - [ ] Author decision: 2.0 as Part XI vs XI+XII vs companion volume vs keep papers-only until P3
+- [ ] **Correction under embedding (follow-up to the alignment-criteria paper).** Where convergence pressure goes when a correction is pending (benign limits), and which finite corrector results survive an embedded, user-modelling or adversarial agent. Core: make "outside the system" precise as cut conditions O1–O5 (write path, soundness on the reachable set, protocol-fixed baseline, legitimate paths, persistence); Lean items L1–L3, E1–E6; logical induction only as a flagged analogy. Plan and kill criterion: [`correction-under-embedding.md`](correction-under-embedding.md)
 - [x] External construction lit review received — [`construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md); usable list in this file
 - [ ] Cite-clean FINDINGS + optional move out of `ontology-reviews-2021-2026/`; ingest **keep** rows to constructing-paper / XI bib only when drafting
 - [ ] P1: reverse-crosswalk row for impact-counterfactual cherry-picking ≠ laundering ≠ \(\mathrm{Fit}_E\) ≠ ch25 counterfactuals
@@ -283,6 +284,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [`drafts/plans/construct/../../attic/construct-lit-review-prompt.md`](../../attic/construct-lit-review-prompt.md) — attachable external-agent prompt
 - [`drafts/ontology/reviews/construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md) — external-agent FINDINGS (cite-clean later)
 - [`papers/constructing-alignment-attractors/`](../../../papers/constructing-alignment-attractors/)
+- [`correction-under-embedding.md`](correction-under-embedding.md) — cut conditions for an embedded corrector; follow-up to `papers/alignment-criteria/`
 - [`embedded-v2.md`](embedded-v2.md) — coupled-system reading; bridge cuts; constructor ecology; \(D_{\mathrm{joint}}\) kept off `ConstructionCrux`
 - [`papers/path-construction/`](../../../papers/path-construction/) — Family E briefing; destination \(\neq\) path
 - [`formal/AlignmentProofSpine/AlignmentConstruction.lean`](../../../formal/AlignmentProofSpine/AlignmentConstruction.lean)
