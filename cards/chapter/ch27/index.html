@@ -254,7 +254,9 @@ Process rewards and audits should read records the system does not write.
 A chain of thought is written by the model, and strong optimization pressure on it can teach the model to hide its intent there <a href="/cards/reference/baker2025monitoring/">Baker, 2025</a>.
 Tool calls, file writes, and environment logs are written by the harness.
 Rewarding the process on those records, including penalties for attempts to alter or route around them, avoids that failure if tamper detection rests on mechanisms the system cannot reach, such as hash-chained or externally mirrored logs, and if some monitors are kept out of training.
-A penalty on detected tampering otherwise also trains undetected tampering.</p>
+A penalty on detected tampering otherwise also trains undetected tampering.
+On text datasets, tested methods beat simple baselines at detecting an altered measurement on most sets and did not reach maximum performance <a href="/cards/reference/roger2023measurementtampering/">Roger, 2023</a>.
+Detectors built on attribution patching did not consistently beat baselines that look only at activations <a href="/cards/reference/belrose2024anomaly/">Johnston, 2024</a>.</p>
 <p>A robust audit asks not only</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Did the system comply?</mtext></mrow><annotation encoding="application/x-tex">\text{Did the system comply?}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Did the system comply?</span></span></span></span></span></span>
 <p>but</p>
