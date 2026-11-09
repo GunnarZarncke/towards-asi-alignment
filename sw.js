@@ -139,6 +139,15 @@ async function maybeEnableOffline(cache, state) {
   return state;
 }
 
+// Cache fills are not visits. The query is only on the network request so
+// analytics can exclude cache=1; the Cache API key stays the clean URL.
+// A shown cached page keeps that clean URL and records the visit itself.
+function withCacheFlag(url) {
+  const flagged = new URL(url.href);
+  flagged.searchParams.set("cache", "1");
+  return flagged.href;
+}
+
 async function fetchAndCache(cache, href) {
   const url = originUrl(href);
   if (!url) return { discovered: [] };
@@ -146,7 +155,7 @@ async function fetchAndCache(cache, href) {
     return { discovered: [] };
   }
   try {
-    const response = await fetch(url.href, { cache: "no-store" });
+    const response = await fetch(withCacheFlag(url), { cache: "no-store" });
     if (!response.ok) return { discovered: [] };
     const contentType = response.headers.get("content-type") ?? "";
     await cacheWithTimestamp(cache, url.href, response.clone());
@@ -162,7 +171,9 @@ async function fetchAndCache(cache, href) {
 }
 
 async function loadSitemapUrls() {
-  const sitemapResponse = await fetch("/sitemap-0.xml", { cache: "no-store" });
+  const sitemapUrl = originUrl("/sitemap-0.xml");
+  if (!sitemapUrl) throw new Error("Could not resolve sitemap URL");
+  const sitemapResponse = await fetch(withCacheFlag(sitemapUrl), { cache: "no-store" });
   if (!sitemapResponse.ok) throw new Error(`Could not load sitemap (${sitemapResponse.status})`);
   const sitemap = await sitemapResponse.text();
   return [...new Set(
@@ -304,7 +315,9 @@ async function fetchFromNetwork(request, timeoutMs = NETWORK_TIMEOUT_MS) {
 }
 
 function revalidateInBackground(cache, request) {
-  fetchFromNetwork(request)
+  const url = originUrl(request.url);
+  if (!url) return;
+  fetchFromNetwork(withCacheFlag(url))
     .then(async (response) => {
       if (response.ok) await cacheWithTimestamp(cache, request, response.clone());
     })
@@ -341,9 +354,17 @@ async function handleFetch(request, cache, state) {
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(SHELL_URLS))
-      .then(() => self.skipWaiting())
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await Promise.all(SHELL_URLS.map(async (path) => {
+        const url = originUrl(path);
+        if (!url) throw new Error(`Invalid shell URL: ${path}`);
+        const response = await fetch(withCacheFlag(url), { cache: "no-store" });
+        if (!response.ok) throw new Error(`Shell cache failed for ${url.pathname} (${response.status})`);
+        await cacheWithTimestamp(cache, url.href, response);
+      }));
+      await self.skipWaiting();
+    })()
   );
 });
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T02:26:11.703Z",
+  "generatedAt": "2026-11-09T21:41:25.182Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -1191,7 +1191,7 @@
     {
       "title": "Does ELK solve alignment?",
       "type": "lean-check",
-      "summary": "ELK asks for latent-knowledge readout rather than behavior-only simulation. Lean treats readout as an epistemic subchannel: it can succeed while correction uptake fails — solving readout is not certification that human correction still changes future behavior.",
+      "summary": "Eliciting latent knowledge asks how to train a reporter to state facts a predictor already knows but that are missing from its observations. The direct translator reports what a human should believe, read from the predictor's model. The human simulator reports what a human would believe from the observations alone. On questions humans can answer confidently the two reporters match, so they have the same loss. They come apart when the observations look fine and the latent fact does not, as under sensor tampering.",
       "url": "/lean/check/elk/"
     },
     {
@@ -1365,7 +1365,7 @@
     {
       "title": "Field projection — ELK (Eliciting Latent Knowledge)",
       "type": "concept",
-      "summary": "ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.",
+      "summary": "ELK asks for a reporter that reveals latent knowledge rather than a behavior-only simulator. Lean rederives reporter non-identifiability and further finite counterexamples in the same module. Readout without correction uptake is an interface toy, not that rederivation.",
       "url": "/cards/concept/subsumption-elk/"
     },
     {
