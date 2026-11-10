@@ -217,6 +217,7 @@ Family E objects, kept out of the v1 PDF:
 | **P1** | After author OK | One Family D note (App B reverse column or field-hub “constructor-side”) — still not v1 chapters |
 | **P2** | Backtest Exp. 4 | Revisit manuscript: Family A paragraphs in ch33/intro only if they do not claim Q2 solved |
 | **P3** | Per-part fail/refuse | Open Family B chapters one at a time; H3/H4 wrong-vacuum / enforcement-collapse only after bar |
+| **P-LI** | After the correction-under-embedding follow-up (its E2–E4 Lean items) | Logical induction and reified bets: settlement integrity, the no-static-outside race, market instruments (LMSR depth ∝ stake, decision markets with exploration, audit lottery, combinatorial subsidy), Lean M1–M11. Not a v1 or P4 prerequisite. [`logical-induction-phase.md`](logical-induction-phase.md) |
 | **P4** | TSA 2.0 | Part XI (or companion): Families A–E; **2.0 intro claim** (cycle stability) drafted there, not in v1; manuscript prose + Lean must carry the attractor (paper optional); **rerun** the 48-chapter formulation-groundedness (G) pass on the 2.0 map before treating new covering formalisms as settled ([`review/chapter-formulation-groundedness.md`](../../../review/chapter-formulation-groundedness.md)) |
 
 **Gates (unchanged from TODO):** Backtest real stop → *concrete construction* manuscript revisit. Family D outlining does **not** wait on that gate; Family D *claiming that we can construct* does.
@@ -275,6 +276,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [ ] **2.0 planning scope relaxation** — within-model alignment (topic to consider; effects relevant, no detailed within-model program); proof-based approaches, GSAI, and logical induction in-scope for map/crosswalk/drafting. v1 gates unchanged. Policy: § 2.0 planning scope above; [`metadata/TODO.md`](../../../metadata/TODO.md) Construct row
 - [ ] Author decision: 2.0 as Part XI vs XI+XII vs companion volume vs keep papers-only until P3
 - [ ] **Correction under embedding (follow-up to the alignment-criteria paper).** Where convergence pressure goes when a correction is pending (benign limits), and which finite corrector results survive an embedded, user-modelling or adversarial agent. Core: make "outside the system" precise as cut conditions O1–O5 (write path, soundness on the reachable set, protocol-fixed baseline, legitimate paths, persistence); Lean items L1–L3, E1–E6; logical induction only as a flagged analogy. Plan and kill criterion: [`correction-under-embedding.md`](correction-under-embedding.md)
+- [ ] **P-LI: logical induction and reified bets.** Where logical induction enters O2/O3/O5; reified bets (prediction and decision markets, Hanson/futarchy) as an economic O2; no static outside (settlement race); instruments that lower the cost of the cut; Lean M1–M11 (proposed). Gate: follow-up E2–E4. Derivations and kill criterion: [`logical-induction-phase.md`](logical-induction-phase.md)
 - [x] External construction lit review received — [`construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md); usable list in this file
 - [ ] Cite-clean FINDINGS + optional move out of `ontology-reviews-2021-2026/`; ingest **keep** rows to constructing-paper / XI bib only when drafting
 - [ ] P1: reverse-crosswalk row for impact-counterfactual cherry-picking ≠ laundering ≠ \(\mathrm{Fit}_E\) ≠ ch25 counterfactuals
@@ -303,6 +305,7 @@ Perplexity citation tokens; a new TSA primitive; GSAI/CAI as `ConstructionCrux` 
 - [`drafts/plans/construct/../../attic/construct-lit-review-prompt.md`](../../attic/construct-lit-review-prompt.md) — attachable external-agent prompt
 - [`drafts/ontology/reviews/construct-lit-review-result.md`](../../ontology/reviews/construct-lit-review-result.md) — external-agent FINDINGS (cite-clean later)
 - [`papers/constructing-alignment-attractors/`](../../../papers/constructing-alignment-attractors/)
+- [`logical-induction-phase.md`](logical-induction-phase.md) — P-LI: logical induction, reified bets, settlement integrity
 - [`correction-under-embedding.md`](correction-under-embedding.md) — cut conditions for an embedded corrector; follow-up to `papers/alignment-criteria/`
 - [`embedded-v2.md`](embedded-v2.md) — coupled-system reading; bridge cuts; constructor ecology; \(D_{\mathrm{joint}}\) kept off `ConstructionCrux`
 - [`papers/path-construction/`](../../../papers/path-construction/) — Family E briefing; destination \(\neq\) path
