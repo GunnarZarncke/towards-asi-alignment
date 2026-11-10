@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-10 | **V2 target composition** — Construction-focused TSA; correction-first as running reference; destination, path constraints, and recovery envelope separated. | [2026-11-10-v2-target-composition.md](2026-11-10-v2-target-composition.md) |
 | 2026-11-10 | **Compendium chapter cites** — Ch. 27 measurement tampering; Ch. 28 law-following as obedience; Ch. 9 hierarchical and group agency for agents made of agents. | [2026-11-10-compendium-chapter-cites.md](2026-11-10-compendium-chapter-cites.md) |
 | 2026-11-09 | **ELK projection card** — Readable lead, vault picture of the finite model, correction sketch labeled as an assumption with the numeric witness. | [2026-11-09-elk-projection-card.md](2026-11-09-elk-projection-card.md) |
 | 2026-11-09 | **ELK proofs on the site** — Finite counterexamples restored. Card and Lean check name the rederivation and label readout-versus-uptake as a toy. | [2026-11-09-elk-site-proofs.md](2026-11-09-elk-site-proofs.md) |

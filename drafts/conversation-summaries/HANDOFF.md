@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-10 (compendium chapter cites).
+Last updated: 2026-11-10 (v2 target composition).
 
 ---
 
@@ -27,6 +27,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ## Recently shipped
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
+
+**2026-11-10:** **V2 target composition** — tentative: construction-focused TSA, correction-first as running reference rather than forced architecture; incremental construction separates destination \(P^\star\), path constraints \(\mathcal{E}\), and independently specified recovery envelope \(K_{\mathrm{path}}\). Log: `2026-11-10-v2-target-composition.md`.
 
 **2026-11-10:** **Compendium chapter cites** — Ch. 27 measurement-tampering benchmarks; Ch. 28 law-following AI as obedience; Ch. 9 cites hierarchical, group, and scale-free agency for agents made of agents. Log: `2026-11-10-compendium-chapter-cites.md`.
 
