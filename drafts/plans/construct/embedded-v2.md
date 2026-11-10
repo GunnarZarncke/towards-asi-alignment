@@ -1,6 +1,6 @@
 # Embedded V2 — coupled construction, field dynamics, and bridge cuts
 
-Status: **decisions locked** (2026-09-18). Source memo: [`../../v2/Proposed V2 Extensions_ Embedded Construction, Field Dynamics, and Bridge Cuts.md`](../../v2/Proposed%20V2%20Extensions_%20Embedded%20Construction,%20Field%20Dynamics,%20and%20Bridge%20Cuts.md). Lane checklists: [`construct.md`](construct.md), [`field.md`](../field/field.md), [`spine.md`](../spine/spine.md). **Not** a v1 intro-claim change. **Not** a Lean covering tuple.
+Status: **2026-09-18 decisions locked; 2026-11-10 target-composition extension tentative.** Source memo: [`../../v2/Proposed V2 Extensions_ Embedded Construction, Field Dynamics, and Bridge Cuts.md`](../../v2/Proposed%20V2%20Extensions_%20Embedded%20Construction,%20Field%20Dynamics,%20and%20Bridge%20Cuts.md). Lane checklists: [`construct.md`](construct.md), [`field.md`](../field/field.md), [`spine.md`](../spine/spine.md). **Not** a v1 intro-claim change. **Not** a Lean covering tuple.
 
 ## Goal
 
@@ -9,6 +9,8 @@ Treat the memo as a *closure* of objects V2 already has. The 2.0 reader-facing c
 > Alignment is a stability — or convergence — property of a coupled socio-technical construction and correction cycle, not only a property of a system at a time. Bridges are interface cuts through that cycle: each one holds only for some class of contexts it currently leaves implicit.
 
 This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesis claim and does not rewrite [`six-thesis-claims`](../../../metadata/concepts/bodies/six-thesis-claims.md). v1 claim 6 (basin / selection, C-007) stays the *system-population* attractor. The 2.0 claim is the *process* remaining valid as constructors, evaluators, and selectors are endogenous.
+
+Stability supplies no sign by itself. The acceptable region, path constraints, and progress measure must be specified independently of the dynamics whose stability is being claimed.
 
 ## Locked decisions (2026-09-18)
 
@@ -21,6 +23,12 @@ This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesi
 | **Q5** | A research-ecology paper may be spun out. **Manuscript prose and Lean must carry the attractor**; the paper is not the only home. |
 | **Q6 / Q8** | Do not unify grains in Lean. Map them (below). Path \((G,A)\) and ecology \(z\) are different jobs. |
 | **Q7** | Capacity vs structural is an explicit roster field. |
+
+## Tentative target-composition extension (2026-11-10)
+
+TSA 2.0 develops a broader construction-focused architecture. Correction-first remains the running reference and worked example, rather than a conclusion forced by the architecture. Compare it with rights-first, human-power/capability-first, and procedure-first compositions using the standing → floors/instruments → ranking → closure → assurance order from [`papers/alignment-criteria/`](../../../papers/alignment-criteria/alignment-criteria.tex). Viability cannot select among those compositions: it can preserve a supplied good region or a captured one.
+
+For incremental construction, keep the destination composition \(P^\star\), legal edge family \(\mathcal{E}\), and recoverable construction envelope \(K_{\mathrm{path}}\) distinct. Apply the forced order within each frozen construction–certification episode. A legitimate process may revise \(P_t\) between episodes; no result may be selected first and rationalized by changing \(P_t\), the goal basis, or the envelope afterwards. Correction-like path safeguards may serve several destination compositions without settling which criterion has final normative priority.
 
 ## What already exists (do not re-derive)
 
@@ -41,9 +49,9 @@ This is an **additional 2.0 intro claim**. It does not become a seventh v1 thesi
 | Frozen **\(P\)** (episode target) | Given this \(P_t\), can we build / certify \(A\) that realizes it? | The field’s prestige ontology |
 | **Construction** | Named \(I\) changes \((Q,f,\theta,E)\) (or \(z\)) toward realizing \(P_t\) | A catalog of builders |
 | **Path** \((G,A)\) | Legal \(\mathcal{E}\)-steps from described \(G_0\) | Successor constraints on \(A\) alone |
-| **\(D_{\mathrm{joint}}\)** (cycle property) | Does repeated Specify→…→Act stay in / converge to a region that includes live correction, independent evaluation, and refuse authority? | A conjunct of \(P\) inside `ConstructionCrux` |
+| **\(D_{\mathrm{joint}}\)** (cycle property) | Does repeated Specify→…→Act stay in / converge to an independently specified construction envelope that includes live challenge, independent evaluation, refuse authority, and recovery? | A conjunct of \(P\) inside `ConstructionCrux`; whatever region happens to persist |
 
-Episode-freeze: \(P_t\) is frozen inside a construction–certification episode. A separately specified legitimate process may produce \(P_{t+1}\). \(D_{\mathrm{joint}}\) is not re-frozen that way: it is the invariant (or basin) of the loop.
+Episode-freeze: \(P_t\), its standing and quantifiers, its floors and instruments, and the applicable envelope are fixed before an intervention is judged inside a construction–certification episode. A separately specified legitimate process may produce \(P_{t+1}\). \(D_{\mathrm{joint}}\) is not re-frozen that way: it is the independently justified invariant (or basin) of the loop. Intermediate path nodes need not realize \(P^\star\); they must satisfy the applicable edge constraints and retain an admissible next step or recovery. Viability establishes persistence or recoverability, not improvement, legitimacy, or the choice of destination.
 
 ## Mapping the three grains
 
