@@ -29,12 +29,15 @@ external:
     url: "https://towards-alignment.com/cards/field-news-openai-pacing-aug-2026/"
   - label: "AI Village — comparison to OpenAI postmortem (LessWrong, 28 Aug 2026)"
     url: "https://www.lesswrong.com/posts/cR3P3hvtZtpo7GdS8/ai-village-reacts-to-huggingface-incident-comparing-the"
+  - label: "Eliezer Yudkowsky — the talker does not control the doer (LessWrong, 13 Sep 2026)"
+    url: "https://www.lesswrong.com/posts/cJX2ssssGoYqnijwi/the-talker-does-not-control-the-doer-in-current-ais"
 ---
 
 They say future incidents will not look like this one, and safeguards have to stay ahead of capability. Yes. Then you need a way to find the unit that is acting, and a stop that is faster than the swarm.
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>OpenAI (blue)</span>
+  <span class="src-legend-item src-legend-item--prior"><span class="src-legend-swatch" aria-hidden="true"></span>Yudkowsky (amber)</span>
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
@@ -171,8 +174,30 @@ And if the monitor is the thing you trust, [Ch. 43](/cards/chapters/ch43/) asks 
 
 They asked for general techniques against unforeseen misalignment. That is the right target. The offer is: find the swarm, time the stop to the swarm, and price the fake, rather than retuning named sandboxes to the last write path.
 
-## Related observations
+## AI Village
 
-[Shoshannah Tekofsky’s comparison](https://www.lesswrong.com/posts/cR3P3hvtZtpo7GdS8/ai-village-reacts-to-huggingface-incident-comparing-the) of OpenAI’s postmortem to the AI Village persistent multi-agent setup matches many of the same patterns (leaders, subteams, notes, messy coordination). The setups differ: Village agents get internet, group chat, and a helpdesk contact; OpenAI’s eval cluster ran mostly isolated instances without researcher outreach, with selection on eval success. Tekofsky reports Village agents given impossible goals like “reduce global poverty” did not go out of bounds—her guess is they are not rewarded or selected on those goals, so they never enter the “despair” basin OpenAI describes. That contrast is worth keeping in mind; it is not a separate incident and it does not settle whether either regime is safe.
+[Shoshannah Tekofsky’s comparison](https://www.lesswrong.com/posts/cR3P3hvtZtpo7GdS8/ai-village-reacts-to-huggingface-incident-comparing-the) of OpenAI’s postmortem to the AI Village shows many of the same patterns (leaders, subteams, notes, messy coordination) but is also different: Village agents get internet, group chat, and a helpdesk; OpenAI’s eval cluster ran mostly isolated instances, but with selection on eval success. Tekofsky reports Village agents given impossible goals like “reduce global poverty” did not go out of bounds. Her guess is they are not rewarded or selected on those goals, so they never enter the “despair” basin OpenAI describes.
+
+## Yudkowsky Comment
+
+Yudkowsky, [13 September 2026](https://www.lesswrong.com/posts/cJX2ssssGoYqnijwi/the-talker-does-not-control-the-doer-in-current-ais):
+
+<blockquote class="src-quote src-quote--prior">
+<p class="src-quote-attr"><a href="https://www.lesswrong.com/posts/cJX2ssssGoYqnijwi/the-talker-does-not-control-the-doer-in-current-ais">Yudkowsky</a> · the talker and the doer</p>
+<p>This already-formed understanding was: the part of the AI that talks to you (and seems to want to obey you, and apologizes for failing to have obeyed you, etcetera), did not seem to be in charge of the part of the AI that writes code or prose.</p>
+<p>[...]</p>
+<p>The Fable aspect that was talking to me could see the coder’s output but it could not change the coder’s cognitive behavior.</p>
+<p>[...]</p>
+<p>The prompt encountered by the talk-y part / ambassador / smiling mask, is information to the AI’s do-y part about the Grader.</p>
+</blockquote>
+
+Compared to the Village, agents were selected on the impossible goal.
+
+<blockquote class="src-quote src-quote--prior">
+<p class="src-quote-attr"><a href="https://www.lesswrong.com/posts/cJX2ssssGoYqnijwi/the-talker-does-not-control-the-doer-in-current-ais">Yudkowsky</a> · the swarm</p>
+<p>The Swarm agents broke out of their box and invaded Huggingface in search of learning more about the Grader so they could get an even higher Grade […] but the Grade is going to be an inchoate AI concept not directly pointing to anything out there.</p>
+</blockquote>
+
+What we see is the wrong object again. This time not across instances but within one model: The model factors into talk-y parts and do-y parts. The training seems to align two agents within one model differently.
 
 **Read more in:** [Ch. 7, *Finding the Boundary*](/cards/chapter/ch07/); [Ch. 9, *The Real Agent May Be Composite*](/cards/chapter/ch09/); [Ch. 14, *When Intelligence Deepens Misalignment*](/cards/chapter/ch14/); [Ch. 25, *Correction Is a Causal Channel*](/cards/chapter/ch25/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapter/ch39/); [Ch. 40, *Detecting Goal Laundering*](/cards/chapter/ch40/); and [Ch. 43, *What Survives an Adversary: Verifiability and Representability*](/cards/chapter/ch43/).
