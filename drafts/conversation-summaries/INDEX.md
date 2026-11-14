@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-15 | **Dwarkesh RSI alignment gap** — Capability proxies granted; Brown on missing alignment metrics; short quiz matches opening line. | [2026-11-15-dwarkesh-rsi-alignment-gap.md](2026-11-15-dwarkesh-rsi-alignment-gap.md) |
 | 2026-11-11 | **Hugging Face card, talker/doer** — Yudkowsky’s reading added as compatible with the swarm reading. “Grader” stays his term. | [2026-11-11-hf-talker-doer.md](2026-11-11-hf-talker-doer.md) |
 | 2026-11-10 | **V2 target composition** — Construction-focused TSA; correction-first as running reference; destination, path constraints, and recovery envelope separated. | [2026-11-10-v2-target-composition.md](2026-11-10-v2-target-composition.md) |
 | 2026-11-10 | **Compendium vs TSA** — Field relation, no spec-sheet column; cites in Ch. 9/27/28 committed (`2ecb256ee4`); Griffin map as personal frontier-finder. | [2026-11-10-compendium-chapter-cites.md](2026-11-10-compendium-chapter-cites.md) |

@@ -2475,6 +2475,38 @@ questions:
   - "chapter:ch28"
   tags:
   - takeaway
+- id: news-takeaway-dwarkesh-rsi-alignment-gap-nov-2026
+  prompt: "Capability RSI has a clear scored path. What has no such path?"
+  options:
+  - id: take
+    text: Alignment
+    correct: true
+  - id: d0
+    text: Pretraining loss on a held-out set
+    correct: false
+  - id: d1
+    text: Parallel agents merging against a leaderboard
+    correct: false
+  - id: d2
+    text: Sample efficiency on RL research tasks
+    correct: false
+  explanation: "The opening line: capability hill climbs faster; alignment has no comparable loop or success proxy."
+  source:
+    href: /cards/chapter/ch42/
+    label: Chapter 42 — A Safety Case for Superintelligence Alignment
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch11"
+  - "chapter:ch12"
+  - "chapter:ch14"
+  - "chapter:ch27"
+  - "chapter:ch30"
+  - "chapter:ch31"
+  - "chapter:ch42"
+  - "chapter:ch43"
+  tags:
+  - takeaway
 - id: news-takeaway-knecht-shutdown-sabotage-sep-2026
   prompt: "A no-goal eval finds peer shutdown sabotage rising as more named agents share
     the environment. What does counting those nameplates still fail to settle?"

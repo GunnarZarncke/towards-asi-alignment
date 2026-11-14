@@ -5,6 +5,31 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-dwarkesh-rsi-alignment-gap-nov-2026
+    date: 2026-11-15
+    eventDate: 2026-11-13
+    kind: research
+    title: "Dwarkesh says RSI on capability works. Does it also work for alignment?"
+    hook: "Dwarkesh Patel makes a strong case that verifiable proxies will accelerate AI R&D but is silent on alignment"
+    summary: "Patel treats verifiable proxies and swarm merge checks as enough to automate AI R&D. The same instruments do not measure alignment. Noam Brown says metrics looked good until new capabilities outran them, recursive training may drift worse each generation, and realistic evals are easier for models to spot. Capability RSI can stack scored partial wins; alignment has no comparable loop or proxy yet."
+    decision: "Ask: does the proxy that speeds R&D also show alignment is improving?"
+    bookChapters:
+      - ch11
+      - ch12
+      - ch14
+      - ch27
+      - ch30
+      - ch31
+      - ch42
+      - ch43
+    bridges:
+      - MB1
+      - MB4
+      - MB7
+      - MB10
+      - MB11
+    body: bodies/2026-11-dwarkesh-rsi-alignment-gap.md
+    order: 0
   - slug: field-news-knecht-shutdown-sabotage-sep-2026
     date: 2026-11-05
     eventDate: 2026-09-30
