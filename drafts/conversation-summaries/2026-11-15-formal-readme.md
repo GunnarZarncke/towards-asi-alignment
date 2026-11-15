@@ -30,4 +30,4 @@ Prompts: paraphrase
 - Untracked `reports/`, `research_notes/`, and `drafts/project/self-audit/edit-attribution/bar-updates.jsonl.lock`.
 
 ## Commits
-- (this session)
+- `399626dacd` Rewrite the Lean spine README around the checked proofs.
