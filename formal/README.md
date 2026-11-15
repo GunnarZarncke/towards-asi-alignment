@@ -5,18 +5,7 @@ the alignment argument in *Towards Superintelligence Alignment*. It implements
 the spec in [`LeanProofSpineImplementationBrief.md`](LeanProofSpineImplementationBrief.md)
 (conjectured dependency structure in
 [`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot);
- book figures in [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/)).
-
-## What this is and is not
-
-The goal is **not** to formalize the empirical content of UAD, value bundles,
-BIQ, attractor basins, or CEV. It formalizes the chain
-
-```
-boundary discovery → grounding viability → capability/control/correction quantities
-  → value-bundle and bearer-map transport → correction-channel integrity
-  → successor stability → adversarial measurement → certified-class safety
-```
+ figures in [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/)).
 
 ### Three buckets (read `#print axioms` before citing any theorem)
 
@@ -55,10 +44,10 @@ and makes one distinction explicit and machine-checked:
   gaming, …) in the manuscript appendix
   *Bridges and the Field: A Crosswalk* (`appendices/appB-bridge-crosswalk.tex`).
 
-**Toy vs. target strength.** The current spine is deliberately compact. Many
+**Toy vs. target strength.** The current spine is compact. Many
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
 another as equality); several “theorems” are definitional; abstract quantities
-use integer proxies. Open Lean follow-through: [`drafts/plans/spine/spine.md`](../drafts/plans/spine/spine.md). Bridges `MB1`–`MB10` are
+use integer proxies. Bridges `MB1`–`MB10` are
 **out of scope** for Lean completion (empirical / philosophical imports); in-scope
 work is aligning **drafted chapter formalism** to spine structure.
 
