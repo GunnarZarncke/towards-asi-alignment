@@ -30,4 +30,4 @@ Prompts: (no prompt id captured)
 - `site/scripts/sync-lens-graph.mjs`
 
 ## Commits
-- (this session)
+- `1c6d0bc181` Add hover summaries to the lenses criteria map on the site.
