@@ -27,4 +27,4 @@ Prompts: (no prompt id captured)
 - `site/src/content/cards/lenses/additive-route-value.md`
 
 ## Commits
-- (this session)
+- `96dd1306a7` Add Dietz DCA and SPT as examples on lens cards.
