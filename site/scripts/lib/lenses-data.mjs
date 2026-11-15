@@ -399,6 +399,13 @@ export function lensByNodeId(nodeId) {
   return LENSES.find((row) => row.nodeId === nodeId);
 }
 
+/** Graph node id → tooltip payload for the criteria map. */
+export function lensNodeTooltipMap() {
+  return Object.fromEntries(
+    LENSES.map((row) => [row.nodeId, { title: row.title, summary: row.summary }])
+  );
+}
+
 export function lensCardId(slug) {
   return `lenses/${slug}`;
 }

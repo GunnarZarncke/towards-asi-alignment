@@ -9,18 +9,37 @@ function decodeEntities(value) {
     .replace(/&gt;/g, ">");
 }
 
+function escapeXml(value) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Native SVG tooltip text for a lens/criteria node (fallback without JS). */
+function nativeNodeTitle(nodeId, tooltipMap) {
+  const tip = tooltipMap?.[nodeId];
+  if (!tip) return nodeId;
+  if (typeof tip === "string") return tip;
+  const { title, summary } = tip;
+  return summary ? `${title}: ${summary}` : title;
+}
+
 /**
  * Wrap Graphviz node groups in SVG link elements.
  * Node ids come from the `<title>` inside each `<g class="node">`.
  */
-export function injectNodeLinks(svg, hrefMap) {
+export function injectNodeLinks(svg, hrefMap, tooltipMap = {}) {
   return svg.replace(
     /<g id="(node\d+)" class="node">\s*<title>([^<]+)<\/title>([\s\S]*?)<\/g>/g,
     (match, gid, rawId, body) => {
       const nodeId = decodeEntities(rawId.trim());
       const href = hrefMap[nodeId];
+      const tipText = escapeXml(nativeNodeTitle(nodeId, tooltipMap));
+      const dataId = escapeXml(nodeId);
       if (!href) return match;
-      return `<a xlink:href="${href}" class="lean-graph-node"><g id="${gid}" class="node"><title>${rawId}</title>${body}</g></a>`;
+      return `<a xlink:href="${href}" class="lean-graph-node" data-node-id="${dataId}"><g id="${gid}" class="node"><title>${tipText}</title>${body}</g></a>`;
     }
   );
 }
@@ -58,8 +77,8 @@ async function getViz() {
   return vizPromise;
 }
 
-export async function renderDotToSvg(dotSource, hrefMap = {}, edgeHrefMap = {}) {
+export async function renderDotToSvg(dotSource, hrefMap = {}, edgeHrefMap = {}, tooltipMap = {}) {
   const viz = await getViz();
   const raw = viz.renderString(dotSource, { format: "svg", engine: "dot" });
-  return injectEdgeLinks(injectNodeLinks(raw, hrefMap), edgeHrefMap);
+  return injectEdgeLinks(injectNodeLinks(raw, hrefMap, tooltipMap), edgeHrefMap);
 }

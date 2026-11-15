@@ -23,6 +23,17 @@ function nodeHrefMap(nodes) {
   return hrefMap;
 }
 
+function nodeTooltipMap(nodes) {
+  const tooltipMap = {};
+  for (const node of nodes) {
+    const lens = lensByNodeId(node.id);
+    if (lens) {
+      tooltipMap[node.id] = { title: lens.title, summary: lens.summary };
+    }
+  }
+  return tooltipMap;
+}
+
 /** Per-title href arrays in DOT order, so parallel edges (e.g. `cev->state`
  * encode and limit) keep their own links. */
 function edgeHrefMap(edges) {
@@ -41,8 +52,9 @@ async function main() {
   const dot = await readFile(dotPath, "utf8");
   const parsed = parseDot(dot);
   const hrefMap = nodeHrefMap(parsed.nodes);
+  const tooltipMap = nodeTooltipMap(parsed.nodes);
   const edges = parsed.edges;
-  const svg = await renderDotToSvg(dot, hrefMap, edgeHrefMap(edges));
+  const svg = await renderDotToSvg(dot, hrefMap, edgeHrefMap(edges), tooltipMap);
   const outSvg = path.join(OUT_DIR, SVG_NAME);
   const outDot = path.join(OUT_DIR, DOT_NAME);
 

@@ -1,5 +1,6 @@
 ---
 import FieldBridgeGraph from "./FieldBridgeGraph.astro";
+import { lensNodeTooltipMap } from "../../../scripts/lib/lenses-data.mjs";
 
 interface Props {
   base: string;
@@ -7,6 +8,7 @@ interface Props {
 
 const { base } = Astro.props;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const nodeTooltips = lensNodeTooltipMap();
 ---
 
 <section id="lens-map" class="bridge-graph-section readable">
@@ -19,7 +21,8 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
     svgFile="field-graphs/alignment-frames-relations.svg"
     dotFile="field-graphs/alignment-frames-relations.dot"
     dotSourceUrl="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.dot"
-    hint="Click a node for its lens card. Click an edge label for its Lean proof or registry entry on GitHub. Green: compose (not imply). Red and orange: incompatible in a named class; solid rigid, dashed choice conflict, dotted not representable, orange shared resource."
+    hint="Hover a node for its summary; click for the lens card. Click an edge label for its Lean proof or registry entry on GitHub. Green: compose (not imply). Red and orange: incompatible in a named class; solid rigid, dashed choice conflict, dotted not representable, orange shared resource."
+    nodeTooltips={nodeTooltips}
   />
   <p class="side-panel-meta">
     Analysis: <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/drafts/alignment-frames-relations.md">relations note</a>

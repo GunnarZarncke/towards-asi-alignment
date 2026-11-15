@@ -2,6 +2,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+export type GraphNodeTooltip = { title: string; summary: string };
+
 interface Props {
   title?: string;
   svgFile?: string;
@@ -9,6 +11,8 @@ interface Props {
   /** When set, Graphviz source link opens this URL (e.g. GitHub blob) instead of a local download. */
   dotSourceUrl?: string;
   hint?: string;
+  /** When set, hover/focus on graph nodes shows title + summary (criteria / lens map). */
+  nodeTooltips?: Record<string, GraphNodeTooltip>;
 }
 
 const {
@@ -16,8 +20,11 @@ const {
   svgFile = "field-graphs/bridge-dependencies-v2.svg",
   dotFile = "field-graphs/bridge-dependencies-v2.dot",
   dotSourceUrl,
-  hint = "Click a diamond to open its bridge card. Red edges: logical antecedents between bridges. Black edges: safety-case assembly into deployment safety (MB11)."
+  hint = "Click a diamond to open its bridge card. Red edges: logical antecedents between bridges. Black edges: safety-case assembly into deployment safety (MB11).",
+  nodeTooltips
 } = Astro.props;
+
+const graphScopeId = `fbg-${svgFile.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 
 const base = import.meta.env.BASE_URL;
 const withBase = (assetPath: string) => `${base}${assetPath.replace(/^\/+/, "")}`;
@@ -34,14 +41,78 @@ try {
 }
 ---
 
-<div class="field-bridge-graph-wrap">
+<div class="field-bridge-graph-wrap" id={graphScopeId} data-has-node-tooltips={nodeTooltips ? "" : undefined}>
   <p class="field-bridge-graph-hint side-panel-meta">
     {hint}
     {" "}
     <a class="field-bridge-graph-dot" href={dotHref} {...dotLinkProps}>Graphviz source (.dot)</a>
   </p>
   <div class="field-bridge-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
+  {nodeTooltips && <div class="field-bridge-graph-tip" role="tooltip" hidden></div>}
 </div>
+
+{nodeTooltips && (
+  <script define:vars={{ graphScopeId, nodeTooltips }}>
+    const wrap = document.getElementById(graphScopeId);
+    const svgHost = wrap?.querySelector(".field-bridge-graph-svg");
+    const tipEl = wrap?.querySelector(".field-bridge-graph-tip");
+    if (!wrap || !svgHost || !tipEl) {
+      // no-op
+    } else {
+      let tipTarget = null;
+
+      function positionTip(anchor) {
+        const rect = anchor.getBoundingClientRect();
+        const maxW = 300;
+        const left = Math.min(window.innerWidth - maxW - 8, Math.max(8, rect.left + rect.width / 2 - maxW / 2));
+        const top = rect.bottom + 8;
+        tipEl.style.left = `${left}px`;
+        tipEl.style.top = `${top}px`;
+      }
+
+      function escText(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function showTip(entry, anchor) {
+        if (!entry?.summary) return;
+        tipEl.hidden = false;
+        tipEl.innerHTML = `<strong>${escText(entry.title)}</strong><br>${escText(entry.summary)}`;
+        positionTip(anchor);
+        tipTarget = anchor;
+      }
+
+      function hideTip() {
+        tipEl.setAttribute("hidden", "");
+        tipTarget = null;
+      }
+
+      svgHost.querySelectorAll("a.lean-graph-node[data-node-id]").forEach((node) => {
+        const id = node.getAttribute("data-node-id");
+        const entry = id ? nodeTooltips[id] : null;
+        if (!entry) return;
+        node.addEventListener("mouseenter", () => showTip(entry, node));
+        node.addEventListener("mouseleave", () => {
+          if (tipTarget === node) hideTip();
+        });
+        node.addEventListener("focus", () => showTip(entry, node));
+        node.addEventListener("blur", hideTip);
+      });
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (tipTarget && !tipEl.hidden) positionTip(tipTarget);
+        },
+        { passive: true, capture: true }
+      );
+    }
+  </script>
+)}
 
 <style>
   .field-bridge-graph-wrap {
@@ -93,5 +164,26 @@ try {
     background: var(--color-warning-bg);
     border: 1px solid var(--color-warning-border);
     border-radius: 8px;
+  }
+
+  .field-bridge-graph-tip {
+    position: fixed;
+    z-index: 200;
+    max-width: 300px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    background: var(--color-ink, #1a1a1a);
+    color: var(--color-on-ink, #f5f5f5);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
+
+  .field-bridge-graph-tip strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    font-size: 0.82rem;
   }
 </style>
