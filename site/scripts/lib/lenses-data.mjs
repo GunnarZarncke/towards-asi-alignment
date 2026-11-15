@@ -39,9 +39,17 @@ Encoding a finite history into a record-carrying state is always available in pr
     lwTag: { label: "LessWrong tag: Reward functions", url: "https://www.lesswrong.com/w/reward-functions" },
     related: ["subsumption-low-impact", "lenses/exact-potential", "lenses/cycle-residue", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/chai-russell"],
+    external: [
+      {
+        label: "Dietz — Deliberative Credit Assignment (2025)",
+        url: "https://www.lesswrong.com/posts/ucJv7ZJEwtQwAq9yu/deliberative-credit-assignment-dca-making-faithful-reasoning"
+      }
+    ],
     body: `Route value is a function of transitions. It is the parent of the exact-potential summand (endpoint-only) and the cycle residue (round trips matter).
 
-A matched-endpoint pair — learning versus rewiring a judge to the same later verdict — is invisible to a state score that stores only the verdict, and visible here if the two edges are labeled differently.`
+A matched-endpoint pair — learning versus rewiring a judge to the same later verdict — is invisible to a state score that stores only the verdict, and visible here if the two edges are labeled differently.
+
+Example: [Deliberative Credit Assignment](https://www.lesswrong.com/posts/ucJv7ZJEwtQwAq9yu/deliberative-credit-assignment-dca-making-faithful-reasoning) (Dietz, 2025) redistributes fixed task reward across visible chain-of-thought steps judged by external reviewers—a route-shaped training signal that does not by itself fix the endpoint objective.`
   },
   {
     nodeId: "exact",
@@ -377,7 +385,15 @@ Christiano’s broad basin is a cousin, informal. Soares-style handles specializ
     lwTag: { label: "LessWrong tag: AI control", url: "https://www.lesswrong.com/w/ai-control" },
     related: ["subsumption-deployment-gate", "mb7-hidden-capability-and-access", "lenses/safety-case", "lenses/lenses-and-frameworks"],
     agendas: ["field-agendas/redwood-research", "field-agendas/google-deepmind-safety"],
-    body: `A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case. It does not replace the correction relation.`
+    external: [
+      {
+        label: "Dietz et al. — Split Personality Training (2026)",
+        url: "https://www.lesswrong.com/posts/og7km7vmJ6Ktay9Ds/split-personality-training-revealing-latent-knowledge-1"
+      }
+    ],
+    body: `A protocol family for deployment when the objective is untrusted. It composes as a leaf of a safety case. It does not replace the correction relation.
+
+Example: [Split Personality Training](https://www.lesswrong.com/posts/og7km7vmJ6Ktay9Ds/split-personality-training-revealing-latent-knowledge-1) (Dietz et al., 2026) adds a non-influencing “honest persona” that reviews the main reply from shared activations—monitor-style evidence on misalignment, not a replacement for correction.`
   },
   {
     nodeId: "safecase",

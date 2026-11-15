@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-15 (lens map hover summaries).
+Last updated: 2026-11-15 (Dietz DCA/SPT lens examples).
 
 ---
 
@@ -27,6 +27,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ## Recently shipped
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
+
+**2026-11-15:** **Dietz DCA/SPT lens examples** — One-sentence examples on control protocol and additive route value; bib `dietz2025dca`, `dietz2026spt`. Log: `2026-11-15-dietz-dca-spt-lens-examples.md`.
 
 **2026-11-15:** **Lens map hover summaries** — Criteria map on Lenses and frameworks: title + summary tooltip per node (`nodeTooltips`, sync embeds `data-node-id` + SVG title). Log: `2026-11-15-lens-map-hover-tooltips.md`.
 
