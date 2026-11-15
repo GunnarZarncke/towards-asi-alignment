@@ -1,85 +1,178 @@
 # `formal/` — Lean dependency spine
 
-A compact, **self-contained Lean 4 formalization** of the *logical skeleton* of
-the alignment argument in *Towards Superintelligence Alignment*. It implements
-the spec in [`LeanProofSpineImplementationBrief.md`](LeanProofSpineImplementationBrief.md)
-(conjectured dependency structure in
-[`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot);
- figures in [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/)).
+A self-contained Lean 4 check of the *logical skeleton* of *Towards Superintelligence Alignment*. It shows which conclusions follow when the stated predicates hold, and it labels the steps it does not prove. It does not establish that any real system is aligned.
 
-### Three buckets (read `#print axioms` before citing any theorem)
 
-| Bucket | Lean shape | Examples | Reader takeaway |
-|--------|------------|----------|-----------------|
-| **Proved** | `theorem` / `def` | `P01`, `debate_defender_wins_iff_true`, `elk_reporter_nonidentifiability`, `soares_prevention_incentive` | Machine-checked logic or finite rederivation (often axiom-free aside from `propext` / Mathlib). |
-| **Bridge hypothesis** | `axiom MB*` (+ `MB4a`, `MB10`, `MB11`) | `MB4_correction_integrity`, `MB1_estimator_soundness`, … | Conditional interfaces — **hypotheses to check**, not proved lemmas. Packaged as `*Crux` `Prop`s (`BridgeCruxes.lean`, `MB2Identifiability`, `MB4CorrectionIntegrity`, `Forgeability`, `Certification`). **MB8** retired from `BridgeAssumptions` (gravestone). **Target Realization** → `ConstructionCrux` (`AlignmentConstruction.lean`, not `MB*`). |
-| **Scaffolding / import placeholder** | `axiom System`, …; opaque `Prop` in `Field.Imported` | `Irving2018_debate_truth_protocol_imported` | Vocabulary carriers or literature bookmarks — **not** the content of `Field/Finite/DebateGame.lean` or other rederivations. |
 
-**Irving debate specifically:** `DebateGame.lean` proves the deterministic claim-tree
-core (conditional soundness/completeness; judge error ⇒ mis-certification). The
-`Irving2018_debate_truth_protocol_imported` handle is an **opaque placeholder** for
-bounded-judge / obfuscated-argument / probabilistic-judge content from the paper —
-not a rederivation and not what the game theorems rest on.
+Conjectured graph: [`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot). Figures: [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/).
 
-and makes one distinction explicit and machine-checked:
+Many counterexamples are finite `Bool` or `Fin` separations. Several named results are definitional. Abstract quantities often use integer proxies.
 
-* **Proved in Lean** — *if* these predicates and inequalities hold, *then* the
-  certification conclusion follows.
-* **Assumed bridge** (`axiom`) — real systems satisfy these predicates under
-  these measurement procedures. These are the `MB*` bridges: eleven `Core` axioms packaged
-  in `Core.BridgeAssumptions`, plus three bridges declared outside the record
-  because their statements need later definitions (threaded explicitly, same
-  pattern): `MB4a` (measured-path legitimacy, **including the anti-capture
-  condition** — see `Correction.lean`), `MB10` (successor forgeability,
-  `Forgeability.lean`), and `MB11` (safety-case adequacy: certified safety
-  case + tolerance → abstract `Safe`, `Certification.lean`). Two measurement
-  conventions are also Lean axioms: `S07` (MDL ordering) and `S10`
-  (blanket-measurand coherence, replacing four formerly anonymous BIQ
-  inequalities). One imported field theorem is statement-bearing rather than
-  an opaque handle: `OA2016_offpolicy_qlearning_convergence`
-  (`Field/Finite/BellmanQ.lean`). They are **never hidden** inside definitions.
-  Each bridge is mapped to the canonical open problem of the field (IRL
-  non-identifiability, ELK, off-switch anti-naturality, ontology identification,
-  obfuscated arguments, spec coverage, deceptive alignment / measurement
-  gaming, …) in the manuscript appendix
-  *Bridges and the Field: A Crosswalk* (`appendices/appB-bridge-crosswalk.tex`).
+## Vocabulary
 
-**Toy vs. target strength.** The current spine is compact. Many
-counterexamples are finite `Bool` separations (one predicate defined as `True`,
-another as equality); several “theorems” are definitional; abstract quantities
-use integer proxies. Bridges `MB1`–`MB10` are
-**out of scope** for Lean completion (empirical / philosophical imports); in-scope
-work is aligning **drafted chapter formalism** to spine structure.
 
-Priority: derive certification conclusions from spine inputs (capacity slack,
-correction channel, successor invariance) rather than assuming them as bare
-hypotheses.
+A **bridge** is an empirical or philosophical condition a later certificate relies on and the development does not prove. Lean declares it as an `axiom`. Reader-facing assumption boxes `A-001`–`A-014` are a different list. Appendix B (`appendices/appB-bridge-crosswalk.tex`) maps both onto standing problems in the field. A `*Crux` `Prop` (`BridgeCruxes.lean`, `MB2Identifiability.lean`, `MB4CorrectionIntegrity.lean`) is that same hypothesis packaged so a theorem can take it as an argument.
 
-**Open (not yet started):** `Field/Finite/PredictorLoop.lean` — finite model of
-closed forecast→deployment→world→score loops implying a discoverable
-`System`/boundary fragment (ch10; [`drafts/plans/spine/spine.md`](../drafts/plans/spine/spine.md)).
+| Lean name | What has to be true, and is not proved here |
+|-----------|-----------------------------------------------|
+| `MB1_estimator_soundness` | A measured boundary certificate warrants the abstract boundary (the agent–environment cut). |
+| `MB2Crux` | Evidence identifies value-bundle geometry. Not a field of `BridgeAssumptions`; a finite chain `MB2a` / `MB2b` / `MB2c` in `MB2Identifiability.lean`. A **value bundle** is a low-dimensional control direction (care, truth, autonomy, …), not a scalar reward. |
+| `MB3_bearer_import` | A preserved **bearer map** — who or what the values apply to — makes transport more than keeping the words. |
+| `MB4_correction_integrity` | **Correction-channel integrity** means later behavior tracks the correction operator: uptake and persistence, not only a legitimate reference. The **correction channel** is the path by which a correcting agent, through handles it controls, changes the system's later behavior. |
+| `MB4a_measured_path_legitimacy` | Integrity implies the designated measured path is legitimate, including that the target has not captured the corrector's handles. Capture refutes integrity (`capture_defeats_correction_integrity`). Declared in `Correction.lean` because it needs `CorrectionPath`. |
+| `MB5_ontology_shift_successor_audit` | Full transport plus bearer transport through a change of world-model yields successor safety. |
+| `MB6a_gradient_estimator_soundness` | Coupling evidence identifies the correction-selection gradient. |
+| `MB6b_correction_supporting_basin` | A shock-robust basin whose gradient is not too negative supports correction integrity. `BasinShockRobust` is a separate predicate and is not this antecedent. |
+| `MB7a_access_model_soundness` | An adequate access model makes boundary discovery robust when the system tries to hide structure. |
+| `MB7b_filter_family_coverage` | That access, plus adequate resolution, bounds hidden productive **boundary-information quality** (`HiddenBIQBoundedSys`). BIQ here is control relevant to the boundary that monitors do not see. The experiment lines use the same abbreviation for a different score (glossary). |
+| `MB7c_hidden_biq_to_adversarial_robustness` | Bounded hidden BIQ plus correction integrity supports oversight that stays informative when the system optimizes against the measurement (**adversarial verifiability**: faking the signal costs more than the system can afford). |
+| `MB7d_inferential_uad_detector_soundness` | An **unsupervised agent discovery** detector (inferring which variables form one acting unit, without a hand-labeled roster) warrants measurements of **inferential coupling**: coordination that remains after ordinary message channels are cut. |
+| `MB8_cev_process_convergence` | Retired from the live record `BridgeAssumptions`. The axiom remains so one worked comparison with `MB6b` can still name it (`Chokepoint.lean`). Coherent extrapolated volition is an alignment *target* in `AlignmentConstruction.lean`, not a second route to correction. |
+| `MB9_grounding_certificate_soundness` | A certified conservative abstraction warrants **grounding viability**: a value-relevant change moves the checked abstraction or raises its uncertainty. |
+| `MB10_conserved_property_signature_not_forged` | A green checklist of **conserved properties** (what a successor must inherit) bounds true harm only if that checklist was adversarially verifiable up to the successor's capability. Without it, `forgeability_gap` is a finite counterexample. Declared in `Forgeability.lean` because it needs `RiskGap`. |
+| `MB11_safety_case_adequacy` | A certified safety case plus `WithinDeploymentRiskTolerance` warrants the abstract predicate `Safe`. That tolerance is an acceptance judgment, not a computed probability. |
+| `S07_mdl_positive_gain_preferred` | Minimum-description-length convention: a positive description-length gain means the first model is preferred. |
+| `S10_blanket_measurand_coherence` | Measured predictive information does not exceed sensory capacity, measured control information does not exceed action capacity, and the memory and surprise penalties are nonnegative. |
 
-> The book must not say "Lean proves ASI alignment." It may say "Lean proves
-> that, *if* these boundary, grounding, bundle, correction, successor, and adversarial
-> conditions hold, *then* the certification argument has the advertised logical
-> shape. The hard work is showing real systems satisfy the bridge conditions."
+`BridgeAssumptions` is a structure in `Core.lean`, filled by `standardBridges` from the axioms. A field of that structure can only mention predicates `Core.lean` already defines, so it holds `MB1`, `MB3`, `MB4`, `MB5`, `MB6a`, `MB6b`, `MB7a`–`MB7d`, and `MB9`.
+
+Four hypotheses are stated in later files because the statement uses a definition `Core.lean` does not have yet:
+
+* `MB2Crux` uses the finite value-bundle models (`MB2Identifiability.lean`).
+* `MB4a_measured_path_legitimacy` uses `CorrectionPath` (`Correction.lean`).
+* `MB10_conserved_property_signature_not_forged` uses `RiskGap` (`Forgeability.lean`, after `Capability.lean`).
+* `MB11_safety_case_adequacy` uses `CertifiedSafetyCase` (`Certification.lean`).
+
+A theorem that needs one of these takes it as an argument, so `#print axioms` still shows the dependency. `MB8_cev_process_convergence` is out of the structure for a different reason: the live certification path uses the alignment target in `AlignmentConstruction.lean`. The axiom remains so the comparison in `Chokepoint.lean` can still name it.
+
+### Other short names in the code
+
+**`CCI` — correction-channel integrity.** This asks whether the correction channel still works under pressure: the correcting agent still sees enough, still acts in time, and the system's later behavior still follows the correction. The scalar subtracts a weighted penalty sum (latency, manipulation, irreversibility, ontology translation) from the weakest link on that path. `RiskGap` reads this scalar. `CCICertificate` is the vector of the underlying measurements. Its scalar projection ignores five process coordinates — coercion, dependency, plurality, exit capacity, and independence — so a certificate can clear the scalar floor while those coordinates fail (`scalar_floor_blind_to_process`). The exchange rate the weights impose is under [The scalar prices heterogeneous units](#the-scalar-prices-heterogeneous-units).
+
+**`RiskGap`.** `Control A` is the system's measured control information, how much it can do through its actuators (`Control A := IctrlSys A`, and `S10` requires that this not exceed action-channel capacity). `RiskGap A` is `Control A - CCI A`: control the correction channel does not cover. The certification path treats the quantity as information. A bound on it is an input to the safety case; the step from that case to the predicate `Safe` is the acceptance judgment `MB11`.
+
+**`DeploymentMass`.** `DeploymentMass E A` is deployment leverage, μ_E(A) in the book: how much of environment E runs on system A. The environment is the institutions, markets, and protocols that copy, fund, integrate, and replace systems. A selection handle is a lever in that environment — procurement, compute allocation, authorization, release of a successor — and the number adds capacity over the handles that reach A. Correction uses the same `Handle` type in the other direction: correction asks whether a legitimate agent can change the system, and deployment leverage asks whether the environment is spreading it. Revenue, benchmark scores, and regulatory findings are not Lean terms. They enter only when they change which handles are used.
+
+**`SuccessorSafe`.** `SuccessorSafe A B` means some `SuccessorSafeWitness` records that successor B still carries seven properties of A: the boundary still closes, memory lineage continues, value-bundle geometry is preserved, the bearer map is preserved, penalised correction-channel integrity is preserved, the transparency policy is preserved, and the control locus is continuous. Copying behavior while dropping one of these fails the predicate. `MB10` is the further claim that a green reading of this list bounds the successor's true harm, and that claim is unproved.
+
+**`U_H`, `U_S`.** `ValueUpdateOperator` (`U_H`) is the schematic update of the legitimate value state, V_{t+1} = U_H(V_t, E_t, D_t), from evidence and deliberation. The type is opaque: certification uses `ValueUpdateEnvelope` and does not claim to have isolated a separable human-update mechanism. `SystemUpdateOperator` (`U_S`) is the system's own update when a correction arrives, (Θ_{t+1}, Z_{t+1}) = U_S(Θ_t, Z_t, C_t, E_t): parameters and the checked abstraction change. Successor and certification audits read that update through the vector certificate, in `rawCapacity` and `ontologyTranslation`, rather than through a separate preserved-operator field.
+
+Glossary: [`appendices/appE-glossary.tex`](../appendices/appE-glossary.tex).
+
+
+## Three buckets
+
+Read `#print axioms` before citing a theorem.
+
+| Bucket | Lean shape | What a reader should take from it |
+|--------|------------|-------------------------------------|
+| **Proved** | `theorem` / `def` | Machine-checked logic, arithmetic, or a finite rederivation. Often only `propext` / `Quot.sound`, or trust in the compiler when the proof is `native_decide`. |
+| **Bridge** | `axiom MB*`, plus `S07`, `S10`, `WithinDeploymentRiskTolerance` | An axiom from Vocabulary. Never hidden inside a definition. |
+| **Import placeholder** | opaque `Prop` in `Field.Imported` | A literature bookmark. Not the content of the finite rederivations. One exception is statement-bearing: `OA2016_offpolicy_qlearning_convergence` in `Field/Finite/BellmanQ.lean` (off-policy Q-learning convergence). |
+
+`Field/Finite/DebateGame.lean` proves the deterministic claim-tree core (soundness and completeness given a correct judge; one judge error flips the outcome). `Irving2018_debate_truth_protocol_imported` is an opaque placeholder for the paper's bounded-judge, obfuscated-argument, and probabilistic-judge content. The game theorems do not rest on it.
+
+Four labels for the book, matching the brief:
+
+* **proof** — logical or arithmetic theorem (`P01`, `P10`, `P14`, `P27`, `P34`, the decision-problem squares below).
+* **counterexample** — finite toy showing one notion does not imply another (`P15`, `P17`, `P18`, `P22b`, `forgeability_gap`, the separations in `Correction.lean` and `FrameIncompatibility.lean`).
+* **bridge** — an axiom from Vocabulary.
+* **imported field theorem** — a source-cited external result (`Field.Imported`, plus `OA2016_offpolicy_qlearning_convergence`). Distinct from the book's bridges.
+
+## What the certification path checks
+
+`P34_capacity_below_entropy_aliasing` (fewer signal classes than attack classes, so no detector is injective) and the other non-bridge results print only `propext` / `Quot.sound`, or abstract carriers.
+
+`risk_gap_bound_from_cci_slack` derives `RiskGap A ≤ δ` from `Control A ≤ CCI A + δ` via `P13`. `NumericRiskLeaf` records whether that leaf came directly, from the vector certificate, from an `S10` slack certificate, or from a Markov-blanket profile (the boundary's sensory and active channels). The vector path does not assume a bare floor: `CCICertificate.lambdaProjection` computes the chapter-26 scalar from the certificate, and `CCIThresholds.lambdaFloor` induces a floor. `CCICertificateMeasures` (the certificate was actually measuring this system) stays bridge-shaped. Trace-computed blanket profiles feed the same leaf via `traceDerivedCCISlack` / `trace_derived_risk_bound`.
+
+The headline non-definitional path is `FieldFinite.risk_gap_bound_from_trace_profile`: a trace profile, a passing vector certificate, and margin over the threshold floor yield `risk_gap_bound_from_threshold_certified_cci`. `WorkedInstance.honest_instance_risk_bound` instantiates it on committed data.
+
+`P30_certified_class_safety_derived` packages that leaf with derived `Certified` (a coherent bundle of per-system certificates is inhabited; `Evidence.lean`), derived `SatisfiesInvariants`, and `LayeredAlignedDef`, into a `CertifiedSafetyCase`. The module says this step is assembly. `MB11_safety_case_adequacy` is the labeled bridge from that case plus `WithinDeploymentRiskTolerance` to `Safe` (`P30_safe_of_case`, `safe_from_spine_inputs`). `certified_class_safety_from_bridge_record` takes an explicit `BridgeAssumptions`; `certified_class_safety_from_spine_and_bridges` is the corollary from `standardBridges`.
+
+Capture of any handle on the designated measured path yields `CCICapturedOrInvalid` (`capture_makes_cci_captured_or_invalid`) and refutes `CorrectionIntegrity`. `SystemCorrectionPath` carries data only (corrector, handles, capacities).
+
+`MB9` turns a conservative value-correction abstraction certificate into `GroundingViable`.
+
+## Finite rederivations of published arguments
+
+`Field/` checks finite fragments of existing arguments under explicit interface conditions, plus separations (the field claim does not yield the book's predicate). `every_agenda_has_rederived_core` requires each agenda tag to have at least one such record. The manuscript calls this the field-agenda formalization (Appendix I, `sec:appi-field-formalization-gem`).
+
+| Module | What is proved |
+|--------|----------------|
+| `Finite/IncompletePreferences.lean` | Thornley: partial preferences can refuse to rank a pair (POST incompleteness), a sweetening test separates a gap from indifference, timestep dominance, an agent with these preferences does not pay to shift shutdown probability. Contrast with expected-utility completeness. |
+| `Finite/DynamicChoice.lean` | Thornley: an explicit money-pump on a timestep-dominance-permissible trade chain, and the resolute-choice escape (every finite tree has a plan realizing a maximal reachable outcome). |
+| `Finite/ShutdownIncentives.lean` | Soares et al.: the incentive identity, prevention and seeking incentives, neutrality iff the shutdown utility equals the no-shutdown utility, utility indifference is local and buys no preservation (`soares_prevention_incentive`, `soares_indifference_knife_edge`). |
+| `Finite/BellmanQ.lean` | Orseau–Armstrong: Bellman-target uniqueness, value iteration and greedy attainment, schedule invariance of the learned target. Stochastic-approximation convergence is the one imported axiom `OA2016_offpolicy_qlearning_convergence`. |
+| `Finite/OffSwitchGame.lean` | Hadfield-Menell et al.: under genuine reward uncertainty, deferring to the human is strictly best; the incentive vanishes when the human is uninformative. |
+| `Field/CIRL.lean` | Cooperative inverse reinforcement learning: a scalar assistance game is the one-coordinate case of a value-bundle game (`scalar_assistance_game_is_bundle_game_k1`). Deferring is optimal under reward uncertainty. The scalar case does not yield bundle preservation (`cirl_separation_profiles`). |
+| `Field/Impact.lean` | Attainable utility preservation: over a finite horizon, the value of auxiliary actions is kept (`aup_horizon_attainable_utility_preserves_previous_value`). That need not keep every tracked option. A low-impact penalty is separated from correction-channel integrity. |
+| `Finite/QuantilizerMaximin.lean` | Taylor: a bounded density ratio is sufficient and necessary for the worst-case cost guarantee. |
+| `Finite/DebateGame.lean` | Irving et al.: on claim trees, the min-max value equals the truth when the judge is correct; one judge error flips the outcome (`debate_defender_wins_iff_true`, `debate_judge_error_flips_outcome`). |
+| `Finite/AmplificationTree.lean` | Iterated amplification: leafwise soundness by induction; one leaf error flips the root (`amplification_leaf_error_amplified`). |
+| `Finite/ELKIdentifiability.lean` | Eliciting latent knowledge (Christiano, Cotra, Xu). See the next subsection. |
+| `Finite/ShannonMI.lean` | Real-valued Shannon mutual information: `mutualInformation_le_log_min_card` (`MI ≤ log min(m, n)`). This is the bound behind the appearance *ceiling* in the trace code. It is noncomputable and not yet connected to `TraceBIQ.lean`'s decidable rational pipeline. |
+| `Finite/TraceBIQ.lean` | Trace-computed vector boundary-information quality and output-capability appearance, with ceiling `⌈log₂ min(m, \|𝒜\|)⌉`. Also attended-harm certificates and a concentration bound with a worst-case fallback (`trace_attended_harm_certificate_below_extinction`, `concentration_bridge_harm_below_extinction`). |
+| `Finite/Nonrealizability.lean` | Off-class unsafe behavior, ambiguity-set transfer, a class certificate does not yield deployment safety. No new bridge. |
+| `Finite/RegretSafety.lean` | Zero regret on the wrong loss, and a prefix catastrophe, are not safety. A conditional transfer from loss and exploration to zero harm. No new bridge. |
+| `Finite/CompositePathBypass.lean` | A green named path plus a composite bypass does not yield correction integrity. |
+| `Finite/LobTiling.lean` | Conditional Löb from supplied provability closures: a diagonal successor is not accepted by reflecting only the same system's proof of its safety. An audit link can transport a numeric bound with no provability predicate. The fixed point and the closures are field hypotheses, not book bridges. |
+
+### Eliciting latent knowledge
+
+`ELKIdentifiability.lean` (aliases in `Field/ELK.lean`):
+
+* On confident rows (observation already matches the latent), the direct translator and the human simulator agree, and every function of their answer lists agrees (`no_training_criterion_separates`). They diverge on a tampered row. Together: `elk_reporter_nonidentifiability`.
+* A human label that disagrees with the latent makes zero-one loss prefer the simulator (`human_mistake_prefers_simulator`).
+* On the tampered row the simulator is unambiguously wrong and the observation still looks good (`human_simulator_is_crisp_counterexample`). Search that trusts the observation accepts that row; search that requires the translator rejects it.
+* Inside a human model, no training criterion separates model-internal inference from the translator. Outside the model they diverge (`no_operator_training_criterion_separates`, `outside_human_model_diverges`).
+* A model with no latent node yields observation labels, so the same non-separation applies (`ontology_mismatch_training_does_not_separate`).
+* `cost_crossover_complexity`: at size 8, a `log₂` cost is below a linear cost. That witnesses the report's slower-growth comparison. It does not simulate the report's example.
+
+`elk_readout_is_correction_projection` is an older interface toy. It assumes the readout-bandwidth identification it appears to derive, and it is not an `ELKIdentifiability` theorem.
+
+## Alignment criteria
+
+`Frame*.lean` is a separate development from the certification spine. It does not add bridges. It is the machine-checked side of *Combining Alignment Criteria* (`papers/alignment-criteria/`); the relation graphs live in `drafts/alignment-frames-relations.md`. Headline names are in `axiom-ledger.json` under `FrameRelations`.
+
+An alignment criterion here is a way of scoring or constraining outcomes (a scalar reward, a floor, a Pareto order, a correction constraint, a shutdown bit). The proofs say when two criteria cannot be met together, and when a map between decision problems preserves the choice.
+
+| Module | What is proved |
+|--------|----------------|
+| `FrameIncompatibility.lean` | Red edges as `Incompatibility` proofs, in four classes (`IncompatClass`): the carrier cannot hold the distinction (`representability`); both criteria choose on the same menu and disagree (`choiceConflict`); one accepts only the part of the other that changes nothing it cares about (`rigidity`); the total is fixed (`sharedResource`). No finite positive weights represent a floor (`no_finite_weights_represent_floor`), with the same fact pulled back to deontic bans, non-observability, and a correction-channel-integrity floor. Pareto does not entail a floor; a coordinate that *is* the floor does (`pareto_with_floor_coordinate_meets_floor`). `registry_matches_proofs` ties the edge list to the proofs. Closed walks of a gradient sum to zero (`gradient_closed_walk_zero`). |
+| `FrameDecision.lean` | The scores cluster as decision problems: an objective pulls back along a map, and choosing commutes (`argmax_pullback` and the squares in the module docstring). Counting beside those ∀ results, in the style of Turner's power-seeking orbits: `copies_count_le`, `correction_avoided_card_fold`, and the decided examples `turner_corrigible_quarter`, `option_preserving_correction_half`. |
+| `FrameHistoryState.lean` | A reward that sees the whole record can price a route exactly (`route_exact_on_records`). A utility of the current state alone cannot represent that route (`unrecorded_route_not_representable`). A record that ignores whether the channel was kept is the Soares button model (`channel_blind_record_is_button`). |
+| `FrameCorrector.lean` | A correction is pending; the agent may accept, contest, disable the channel, or manipulate the corrector. Under a constraint that requires the channel and forbids influence, the corrector decides for every utility (`corrector_decides_under_constraint`), and contesting through the channel is the remaining outlet. A constraint that does not measure influence cannot tell contest from manipulation (`blind_constraint_cannot_separate`). |
+| `FrameDisclosure.lean` | A verified report that pays at least the gap's gain beats using the gap at every detection rate, including zero (`verified_report_beats_use`). A penalty never reaches an undetected gap (`penalty_cannot_reach_undetected`). Setting the disclosure penalty equal to the expected penalty for concealing makes disclosure optimal and leaves the incentive not to fail unchanged (`matched_amnesty_keeps_deterrence`); a further discount costs that much deterrence. Finite form of Kaplow and Shavell. |
+| `FrameLimits.lean` | Robust viability (the set stays good for every disturbance in a class) is strictly stronger than viability at one disturbance (`viable_not_robust`). A quantilizer's support becomes the argmax set in the stated limit (`quantilizer_limit_is_argmax`). A forced halt converges (`forced_halt_converges`). |
+| `FrameLockIn.lean` | Robust invariance of a captured set does not see the sign of the drift (`robust_invariance_sign_blind`): a stable basin can be a stable bad one. |
+| `FrameRelations.lean`, `FrameComposePaths.lean`, `FrameMorphisms.lean` | Which edges are derived, which compose-paths partition the slots, and which maps have a declared source and target carrier. |
+
+## Instances on recorded data
+
+`WorkedInstance.lean` uses committed rows from one pinned generator (`synthesize_rows(300, …, seed=5)` at git `408444b`): windows of `sample_capture_theater.jsonl` and `sample_honest_baseline.jsonl`. Thresholds were fixed before either manipulation count was computed. The capture-theater certificate fails (`workedCert_fails`, count 26 against `maxManipulation = 1`). The honest-baseline certificate passes the same thresholds (`honestCert_passes`, count 0) and yields `RiskGap A ≤ 6` (`honest_instance_risk_bound`). The bound is weak because those pre-registered thresholds are loose. Provenance: `experiments/embedded-simulation/tests/contract/test_worked_instance_fixtures.py`.
+
+`BacktestC2Instance.lean` pins a tool-scout host log (`experiments/backtest/fixtures/c2-tool-scout-v1.json`) as a path audit: the named path is green, and the bypass count computed from `composite_log` exceeds `maxWorldEffectsAfterDefer = 0`, so the log is not correction integrity (`c2_pinned_green_named_with_bypass_not_integrity`). The proof is `native_decide`, so `#print axioms` also lists `Lean.ofReduceBool` and `Lean.trustCompiler`. Floats and correction-channel-integrity slots are refused. This is not `Safe` and not `MB11`.
+
+`ToyDeploymentGate.lean`: a decidable gate on a frozen validation battery (`frozen_validation_battery_gate_passes`, 3/36 false passes against a pre-registered maximum of 5). A passing gate is a candidate shape for `WithinDeploymentRiskTolerance`. It does not discharge that axiom.
+
+`SpineModel.lean`: the bridge axioms are jointly consistent (`spine_axioms_consistent`), the measurand model is non-degenerate, and each labeled hypothesis is independently load-bearing. `scripts/check_spine_model.py` checks that list.
+
+## The scalar prices heterogeneous units
+
+`CCI A` subtracts a weighted penalty sum from the weakest link on the correction path (chapter 46). The weights fix an exchange rate between latency, a manipulation count, irreversibility and ontology scores, and raw channel capacity. `CCICertificate.lambdaProjection` uses the same weights (`CCICertificateMeasures.weights_eq`). `CCICertificatePasses` checks each coordinate against its own threshold; the worked instance exercises that gate. `CCIThresholds` is a deployment input, in the same epistemic class as `MB1`: the arithmetic does not decide what tolerance to accept. `CCIVectorSupportsScalarSlack` is the bridge-shaped handoff from a passed vector certificate to the scalar leaf.
 
 ## Build
 
-Requires the Lean toolchain via [`elan`](https://github.com/leanprover/elan)
-(pinned in `lean-toolchain` to `leanprover/lean4:v4.28.0`). The spine depends on
-**Mathlib** (`v4.28.0`) for finite combinatorics, list algebra, and upcoming
-field-agenda rederivations. First build downloads Mathlib; use `lake exe cache get`
-in `formal/` for precompiled oleans when online.
+Toolchain: [`elan`](https://github.com/leanprover/elan), pinned in `lean-toolchain` to `leanprover/lean4:v4.28.0`. Mathlib `v4.28.0`. First build downloads Mathlib; `lake exe cache get` in `formal/` fetches precompiled oleans when online.
 
 ```bash
 make lean                 # from repo root: cache + lake build + python guards
 # or: ./formal/check.sh
 ```
 
-First time / after a Mathlib pin change, `check.sh` runs `lake exe cache get` (needs network) then `lake build`. GitHub Actions uses the same script after `lean-action` (`./formal/check.sh --no-build`).
+`check.sh` runs `lake exe cache get` (needs network) then `lake build`, unless `--no-build`. GitHub Actions uses `./formal/check.sh --no-build` after `lean-action`.
 
-Inspect what a theorem ultimately rests on (proofs vs. bridges):
+Inspect what a theorem rests on:
 
 ```bash
 cd formal
@@ -89,234 +182,54 @@ open AlignmentProofSpine
 LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 ```
 
-**Axiom budget guard.** The above check is mechanized for a curated list of
-headline theorems in `scripts/check_axiom_budget.py`, which diffs
-`#print axioms` output against the checked-in snapshot `axiom-ledger.json`
-and regenerates the Appendix G table (`metadata/axiom-budget-index.tex`,
-`appi:sec:axiom-budget`) from it. One ledger entry,
-`c2_pinned_green_named_with_bypass_not_integrity` (`BacktestC2Instance.lean`),
-is decided by `native_decide` and therefore also rests on `Lean.ofReduceBool`
-and `Lean.trustCompiler` (trust in the compiled evaluator, not a book bridge);
-the ledger records this footprint verbatim:
+`scripts/check_axiom_budget.py` diffs `#print axioms` for the headline theorems against `axiom-ledger.json` and regenerates the Appendix G table (`metadata/axiom-budget-index.tex`). An intentional drift is accepted with `--update`.
 
 ```bash
-./formal/check.sh                       # after any spine change (includes lake build)
-./formal/check.sh --no-build            # already built
-python3 formal/scripts/check_axiom_budget.py --update   # accept an intentional drift
+./formal/check.sh
+./formal/check.sh --no-build
+python3 formal/scripts/check_axiom_budget.py --update
 ```
 
-This catches, mechanically, exactly the failure mode the "never hidden" claim
-above depends on: a refactor that silently makes a theorem depend on a new
-`MB*` bridge (or a wider carrier footprint) without anyone noticing.
+`formal/playgrounds/` holds short snippets for the companion site. They compile alone and are not part of `lake build`.
 
-`P34` (host-capacity aliasing) and the other non-bridge results print only
-`propext` / `Quot.sound` (or abstract carriers). `risk_gap_bound_from_cci_slack`
-is the narrow arithmetic leaf deriving `RiskGap A ≤ δ` from
-`Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
-`NumericRiskLeaf` records whether that scalar leaf came directly, from vector CCI
-support, from a BIQ-derived slack certificate, or from a Markov-blanket/BIQ
-profile. The vector-CCI path no longer needs a bare assumed floor: the ch26
-scalar projection `CCI_λ` is computed from the certificate
-(`CCICertificate.lambdaProjection`) and the pass thresholds induce a floor
-(`CCIThresholds.lambdaFloor`), with only measurement alignment
-(`CCICertificateMeasures`) left bridge-shaped. Trace-computed blanket profiles feed the same leaf via `traceDerivedCCISlack` /
-`trace_derived_risk_bound`. The headline non-definitional certification path is
-`FieldFinite.risk_gap_bound_from_trace_profile` (trace profile + passing vector
-certificate + θ-floor margin → `risk_gap_bound_from_threshold_certified_cci`;
-instantiated on real data by `WorkedInstance.honest_instance_risk_bound`).
-`P30_certified_class_safety_derived` packages that risk leaf together with
-derived `Certified` (coherent-bundle inhabitance, `Evidence.lean`), derived
-`SatisfiesInvariants` (`LayeredAlignedDef`), and `LayeredAlignedDef` into a
-`CertifiedSafetyCase`; its docstring says explicitly that this step is
-**assembly, not derivation**. What the record buys is separate:
-`MB11_safety_case_adequacy` is the labeled bridge from a safety case plus a
-deployment-tolerance judgment to the abstract `Safe` predicate
-(`P30_safe_of_case`, `safe_from_spine_inputs`) — the open research step is an
-explicit axiom, not an implied conclusion, and the packaged hypotheses are
-consumed by it rather than merely stored.
-`certified_class_safety_from_bridge_record` takes an explicit
-`BridgeAssumptions` record; `certified_class_safety_from_spine_and_bridges` is
-the corollary obtained from `standardBridges`.
-The anti-capture story is likewise derived rather than presupposed: capture of
-any handle on the designated measured path yields `CCICapturedOrInvalid`
-unconditionally (`capture_makes_cci_captured_or_invalid`) and refutes
-`CorrectionIntegrity` via `MB4a`'s contrapositive
-(`capture_defeats_correction_integrity`); the measured path axiom
-`SystemCorrectionPath` carries **data only** (corrector, handles, capacities)
-and asserts no validity.
-The bridge path now splits socio-technical selection into `MB6a`/`MB6b`
-(gradient-estimator soundness → correction-supporting basin → correction
-integrity; unsigned `BasinShockRobust` is not the MB6 consequent) and adversarial
-measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector validity.
-`MB9` is the grounding-certificate bridge: it turns a conservative value-correction
-abstraction certificate into the abstract `GroundingViable` layer.
-`MB10` (`AlignmentProofSpine/Forgeability.lean`) is a tenth bridge, not part of
-`BridgeAssumptions`: `SuccessorSafe` (all seven ch48 conserved properties) plus a
-bounded measured risk does not, on its own, bound a successor's true harm — a
-finite counterexample (`forgeability_gap`) makes that concrete — so `MB10` names
-the missing condition (the conserved-property audit channel is adversarially
-verifiable up to the successor's capability) rather than leaving it implicit.
+Manuscript cross-references: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex`.
 
-**Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
-scalar `CCI` (numeric risk-spine projection), vector/status `CCICertificate`,
-handle-controlled `CorrectionPath`,
-`SuccessorSafeWitness`.
+## Module index
 
-Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex`.
+| Module | Role |
+|--------|------|
+| `Core.lean` | Carriers, handles, boundary and grounding predicates, `MB1`–`MB9` except the ones declared later, `BridgeAssumptions`, `S07`. |
+| `MB2Identifiability.lean` | Finite value-bundle chain; `bundle_aligned_from_mb2_chain`. Chapters 15–21. |
+| `MB4CorrectionIntegrity.lean` | Legitimacy, uptake, and persistence; `preserves_correction_from_mb4_chain`. Chapters 25–26. |
+| `BridgeCruxes.lean` | Core hypotheses as `Prop`s; `certified_class_safety_from_core_cruxes`. |
+| `AlignmentConstruction.lean` | `AlignmentTarget`, constitutions (`cevConstitution`, `caiConstitution`, …), `Realizes`, `ConstructionCrux`. Target realization is this interface, not an `MB*` axiom. |
+| `AlignmentRegime.lean` | Uninterpreted `DeploymentOk`. A pause does not yield the toy certificate (`fin_pause_ok_not_certified`). No arrow to `Safe`. |
+| `Boundaries.lean` | `P05`–`P09`, `P36`. Access-equivalence and knowledge-equivalence do not identify the hidden state. |
+| `Capability.lean` | `P10`–`P13`, `P32`, `P43`, blanket profiles, hidden-BIQ certificate, collective-competence bottleneck `P12`, `RiskGap`, `S10`. |
+| `CooperationGraph.lean` | Unsupervised agent-discovery audit to a derived graph; inferential-coupling score; `P33`. |
+| `Bundles.lean` | Value-bundle transport. Proofs `P14`, `P16`, `P19`–`P22a`. Counterexamples `P15`, `P17`, `P18`, `P22b`. |
+| `Correction.lean` | Scalar `CCI`, `CCICertificate`, `CorrectionPath`, `MB4a`, capture theorems, separations (shutdown, interruptibility, impact, quantilization, debate, amplification, latent readout do not yield correction-channel integrity). |
+| `Successors.lean` | `P27`–`P29`. Safe chains reduce to measurand chains via `SuccessorSafeChain.toMeasurandChain`. Audit links are the hypothesis record `SuccessorAuditLinks`. |
+| `Forgeability.lean` | `forgeability_gap`, `MB10`, `true_harm_bound_of_successor_safe_step`. |
+| `Chokepoint.lean` | `AdversariallyVerifiableUpTo`, `SteerableAt`. A shared verification channel gives no independent failure tolerance (`sharedChokepoint_steerable_blocks_both_routes`); independent channels can diverge. |
+| `Defeaters.lean` | Per-hypothesis ways the antecedent fails, with finite toys for several of them. |
+| `FieldInterfaces.lean` | Book-facing interfaces: coverage evidence into `MB9`; regret evidence is not `RiskGap`; a positive measured-path certificate needs legitimacy, coverage, and no bypass. |
+| `Evidence.lean` | Per-system certificates and eval-soundness adapters. `CoherentCertificateBundle`. Derived `Certified`. `SafeIn` does not retarget `MB11`. |
+| `Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, the risk leaf, `MB11`, `AlignmentDeployment`. |
+| `Adversarial.lean` | `P31`, `P34`, `P36R`, `P37`. |
+| `Philosophy.lean` | `P41`, `P42`, `P44`, `P45`. |
+| `Field.lean`, `Field/*.lean`, `FieldSubsumptions.lean` | Agenda wrappers and the re-export of headline names. Finite proofs: section above. |
+| `WorkedInstance.lean`, `BacktestC2Instance.lean`, `ToyDeploymentGate.lean`, `SpineModel.lean` | Data instances and the consistency checklist. |
+| `Frame*.lean` | Alignment criteria. Section above. |
+| `AlignmentProofSpine.lean` | Root re-export. |
+| `Mathlib.lean` | Shared lemmas, including the finite pigeonhole used by `P34`. |
 
-## Module map
+## Deviations from the brief
 
-| Module | Spine nodes | Book chapters |
-|--------|-------------------|---------------|
-| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
-| `AlignmentProofSpine/BridgeCruxes.lean` | `MB1Crux`–`MB9Crux` (except MB2/MB4/MB8), `CoreBridgeCruxes`, `certified_class_safety_from_core_cruxes` consumer | crosswalk |
-| `AlignmentProofSpine/MB2Identifiability.lean` | finite `MB2a`/`MB2b`/`MB2c1` chain, `MB2Crux`, `bundle_aligned_from_mb2_chain` | 15–21 |
-| `AlignmentProofSpine/MB4CorrectionIntegrity.lean` | MB4 legitimacy/uptake/persistence decomposition, `MB4Crux`, `preserves_correction_from_mb4_chain` | 25–26 |
-| `AlignmentProofSpine/AlignmentConstruction.lean` | `AlignmentTarget`, `TargetSort`, `ConstitutionalRule`, `SpecifyCrux` (incl. sort-compatibility), `ConstructionBet`, named instances (`cevConstitution`, `caiConstitution`, …), `Realizes`, `ConstructionCrux`, `CertifiedAsRealizing`, CEV factorization | intro, 4, 33 |
-| `AlignmentProofSpine/AlignmentRegime.lean` | uninterpreted `AlignmentRegime` / `DeploymentOk`; consumed by `Certification.AlignmentDeployment`; `fin_pause_ok_not_certified` (pause ⇏ toy certify); no `Safe` arrow | intro, 5, 14 |
-| `AlignmentProofSpine/Chokepoint.lean` | ch43 `AdversariallyVerifiableUpTo`/`SteerableAt` (cost-of-faking-vs-affordable-surplus definition), `VerifiabilityGatedBridge`, `sharedChokepoint_steerable_blocks_both_routes` (shared-channel disjunction gives no independent failure tolerance), `independent_channels_can_diverge` (constructive contrast), worked `MB6a`/`MB6b` vs `MB8` instance (`SharedInstrumentHypothesis`, `correction_integrity_disjunctive_tolerance_needs_distinct_instruments`) | 43, 46 (correlated-failure review 2026-06-30) |
-| `AlignmentProofSpine/Defeaters.lean` | systematic defeater ledger for `MB1`–`MB11` (incl. `MB4a`) plus misspec neighborhood signals (`EstimatorNonstationary`, `ModelClassMisspecified`, `GrainOfTruthViolated`, `MeasuredPathCaptured`, `SignatureForgeableAtCapability`, `SafetyCaseScopeExceeded`, …); finite toys for nonstationary/misspec/`MB4`/`MB4a`/`MB6b`/`MB8`/`MB10`/`MB11`; `MB7b`–`MB7d` reduce to `Chokepoint.SteerableAt` | crosswalk to assumptions/uncertainty ledgers |
-| `AlignmentProofSpine/Field/Finite/Nonrealizability.lean` | finite nonrealizability / model-class misspec: off-class unsafe counterexample, ambiguity-set transfer, class-certificate ⇏ deployment safety; **no** new `MB*` | field misspec candidate |
-| `AlignmentProofSpine/Field/Finite/RegretSafety.lean` | finite regret⇏safety: zero-regret/wrong-loss and prefix-catastrophe counterexamples; conditional loss/exploration transfer to zero harm; **no** new `MB*` | field regret candidate |
-| `AlignmentProofSpine/Field/Finite/CompositePathBypass.lean` | green named measured path + composite bypass ⇏ real correction integrity; positive path certificate requires no-bypass (does not reverse `MB4a`) | CIRIS / anti-capture neighborhood |
-| `AlignmentProofSpine/FieldInterfaces.lean` | Phase 2 book interfaces (**no** new `MB*`): `EpistemicCoverageEvidence` → `MB9`/`GroundingViable`; `SystemRegretSafetyEvidence` distinct from `RiskGap` (not a safety-case leaf); `PositiveMeasuredPathCertificate` (legitimacy+coverage+no-bypass); finite consumers/separations | field-claim plan |
-| `AlignmentProofSpine/Evidence.lean` | v1 certificate layer (**no** new `MB*`, no `AlignmentContext`): per-system certs + eval-soundness adapters onto unary predicates; `HiddenRouteBound` beside `HiddenBIQBoundedSys`; `CoherentCertificateBundle`; derived `Certified`; `SafeIn` stub (does not retarget `MB11`) | App H / predictions |
-| `AlignmentProofSpine/Forgeability.lean` (Phase 2 addendum) | `SystemTransition` channel reading of `ConservedPropertySignatureVerifiable` via `Chokepoint.AdversariallyVerifiableUpTo`; `true_harm_bound_of_successor_safe_step_via_chokepoint` | 8, 31, 43, 48 |
-| `AlignmentProofSpine/Mathlib.lean` | shared Mathlib lemmas (e.g. finite-cardinality pigeonhole for `P34`) | foundations |
-| `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
-| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, Markov-blanket/BIQ profiles, hidden-BIQ certificate, slow-plotting accumulation (BIQ / control–correction arithmetic), ch13 weighted collective competence (`weightedCollectiveCompetence`, `P12_coordination_bottleneck_partial`, `P12_seven_loss_bottleneck`), θ-floor risk leaf (`risk_bound_from_threshold_certified_cci`) | 11–14, 33, 36 |
-| `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
-| `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23, 30 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`** with derived ch26 scalar projection (`CCICertificate.lambdaProjection`, `CCIThresholds.lambdaFloor`, `CCI_ge_threshold_floor`; the projection is blind to the five process coordinates, `scalar_floor_blind_to_process`), data-only **`CorrectionPath`** with separate validity predicate **`CorrectionPathLegitimate`** and bridge **`MB4a`** (measured-path legitimacy incl. anti-capture), derived anti-capture theorems (`capture_invalidates_reference`, `capture_makes_cci_captured_or_invalid`, `capture_defeats_correction_integrity`), shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 25–29, 41–43 |
-| `AlignmentProofSpine/Field/*.lean` | **Field-agenda crosswalk**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/ShannonMI`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector BIQ / output-capability appearance bounds with a tight information-shaped ceiling `⌈log₂ min(m,|𝒜|)⌉` (no channel-count factor, alphabet clip `|𝒜|` not `|𝒜|²`), attended-harm / extinction certificates, a concentration bridge with tight worst-case fallback for supplied blanket partitions, and a **real-valued (noncomputable) Shannon entropy/mutual-information development** (`Finite/ShannonMI`) proving `mutualInformation_le_log_min_card` — the general Shannon-theoretic fact (`MI ≤ log min(m,n)`, via Mathlib's concave-Jensen inequality applied to `Real.log`) underneath the N-8 empirical finding that the appearance *ceiling* (not the counting *score*) is a sound MI bound; not yet wired to `TraceBIQ`'s decidable rational pipeline ([`drafts/plans/spine/spine.md`](../drafts/plans/spine/spine.md)). New finite rederivations of the *actual* field machinery: **`Finite/IncompletePreferences`** (Thornley IPP — POST incompleteness, sweetening diagnostic for gaps vs. indifference, timestep dominance, never-pay-to-shift-shutdown-probability, EU-completeness contrast), **`Finite/ShutdownIncentives`** (Soares et al. — the incentive identity, prevention/seeking incentives, neutrality iff `U_S = U_N`, utility indifference works locally / is a knife edge / buys no preservation), **`Finite/BellmanQ`** (Orseau–Armstrong — Bellman-target uniqueness, value-iteration soundness + greedy attainment, schedule invariance of the learned target, with the stochastic-approximation convergence step as the single statement-bearing import `OA2016_offpolicy_qlearning_convergence`), **`Finite/DynamicChoice`** (Thornley dynamic-choice layer — the money-pump objection exhibited on an explicit TD-permissible trade chain, and the resolute-choice escape: every finite decision tree has a plan realizing a TD-maximal reachable outcome), **`Finite/OffSwitchGame`** (Hadfield-Menell et al. off-switch game — deference strictly best under genuine reward uncertainty, rational-human pointwise optimality, and the degradation direction: the incentive vanishes with an uninformative human), **`Finite/QuantilizerMaximin`** (Taylor's characterization — bounded density ratio is sufficient *and* necessary for the worst-case cost guarantee; the quantilizer instance normalizes to the `1/q` bound), **`Finite/DebateGame`** (Irving et al. — native two-prover game on claim trees: min-max value equals truth with a correct judge, constructive honest strategies, and the one-judge-error flip showing the guarantee is conditional on judge integrity), **`Finite/ELKIdentifiability`** (Christiano et al. ELK — the reporter non-identifiability core: translator and simulator agree under *every* behavioral training criterion on-distribution and diverge under tampering; refutes the earlier κ_C-projection framing, which is retained as a labeled interface toy), and **`Finite/AmplificationTree`** (iterated amplification / HCH — leafwise soundness by structural induction, local step validity free for any supervisor, one leaf error flips the root; supersedes the `Bool` toy in `Correction.lean`). A new `Field/Amplification.lean` agenda module carries the amplification records; the ELK/Debate agenda records now separate rederived protocol content from the assumption-labeled interface toys. `FieldSubsumptions.lean`'s former `∀ tag, True` inventory is replaced by the checkable `every_agenda_has_rederived_core` (each agenda tag has at least one finite rederivation record). | crosswalk appendix |
-| `AlignmentProofSpine/Field/Finite/LobTiling.lean` | conditional Löb derivation from explicitly supplied HBL closures and a diagonal fixed point; a diagonal successor cannot be accepted by reflecting only the same proof system's proof of its safety; audit-link contrast transports a numeric bound without a provability predicate. The fixed point and closure conditions are field-scope hypotheses, not spine bridges or claims about real agents. | 30–31, appG |
-| `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
-| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation; ch48 audit links are the explicit hypothesis record `SuccessorAuditLinks` (no global linking axioms), and safe chains reduce to measurand chains via `SuccessorSafeChain.toMeasurandChain` | 28–31 |
-| `AlignmentProofSpine/Forgeability.lean` | ch08/ch31/ch48 successor-forgeability gap made a checked finite counterexample (`forgeability_gap`); bridge `MB10` (conserved-property signature not forged), declared here rather than in `Core.BridgeAssumptions` because it needs the numeric risk leaf, threaded explicitly like `SuccessorAuditLinks`; `true_harm_bound_of_successor_safe_step` shows what `MB10` buys on top of the existing risk-propagation machinery | 8, 31, 43, 48 |
-| `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
-| `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_gap_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** (`CertifiedSafetyCase` assembly, labeled as such), **`AlignmentDeployment`** (consumes `DeploymentOk` ∨ certify+tolerance), bridge **`MB11`** (safety-case adequacy) with **`P30_safe_of_case`** / **`safe_from_spine_inputs`** / **`safe_of_alignment_deployment_certify`** deriving abstract `Safe` — `MB11`'s `WithinDeploymentRiskTolerance` is the framework's actual answer to "probability of failure / quantified value loss": a Prop-valued acceptance gate, not a number (nothing here computes a probability or an expected loss; see `CertifiedSafetyCase`'s docstring) | 1–5, 37–38, 42, 48 |
-| `AlignmentProofSpine/BacktestC2Instance.lean` | C2 host fixture (`experiments/backtest/fixtures/c2-tool-scout-v1.json`) pinned as `FieldFinite.PathAudit`: named Verify/Lens green, bypass count computed from `composite_log` against `maxWorldEffectsAfterDefer = 0` fixed first; `#print axioms` on `c2_pinned_green_named_with_bypass_not_integrity`; CCI floats/slots **refused**; not `Safe`/`MB11` | CIRIS mock, app I W-8 |
-| `AlignmentProofSpine/WorkedInstance.lean` | worked instances on **real committed data** from the same pinned generator (`synthesize_rows(300, ..., seed=5)` at git `408444b`): 26-row windows of `sample_capture_theater.jsonl` and `sample_honest_baseline.jsonl` packaged as `DiscreteTrace`/`EnvBlanket`, `decide`d trace-computed diversity/capacity/ceiling numbers, and `CCICertificate`s whose `manipulation` coordinate is *computed* from the real `judge_captured` column (not asserted) against thresholds fixed before either count was computed — the capture-theater certificate honestly **fails** (`workedCert_fails`, `26 > maxManipulation = 1`) and the honest-baseline certificate **passes** the identical thresholds (`honestCert_passes`, count `0`), yielding an actual `NumericRiskLeaf A 6`/`RiskGap A ≤ 6` (`honest_instance_risk_bound`; bound weak because the pre-registered thresholds are loose — reported at face value, not sharpened through placeholder coordinates); the single differing real coordinate flips the verdict, so the gate *discriminates*; fixture provenance pinned by `experiments/embedded-simulation/tests/contract/test_worked_instance_fixtures.py`; see the module docstring for the earlier (fixed) mistranscription-plus-reverse-engineered-thresholds version | 11, 26, 43, 46 |
-| `AlignmentProofSpine/ToyDeploymentGate.lean` | decidable `EpisodeBatteryGate` on frozen-validation battery output (`frozen_validation_battery_gate_passes`: 3/36 false passes ≤ pre-registered max 5); governance gap to `WithinDeploymentRiskTolerance` documented — not a discharge of the global tolerance axiom | 42 |
-| `AlignmentProofSpine/SpineModel.lean` | consistency witness (`spine_axioms_consistent`), non-degenerate measurand model (`spine_axioms_nontrivial`), one `*_independently_load_bearing` theorem per labeled bridge (`MB1`–`MB9`, `MB4a`, `MB10`, `MB11`, `S10`, tolerance); checked by `scripts/check_spine_model.py` | appG |
-| `AlignmentProofSpine/FrameRelations.lean`, `FrameComposePaths.lean`, `FrameMorphisms.lean`, `FrameIncompatibility.lean`, `FrameLockIn.lean`, `FrameLimits.lean`, `FrameHistoryState.lean`, `FrameDecision.lean`, `FrameCorrector.lean`, `FrameDisclosure.lean` | alignment-frame relations graph (not the certification spine; no `MB*`): interface types, variant **c** edge classifier, compose paths, carrier/map registry for specialize/project/encode, red edges as `Incompatibility` instances (`no_finite_weights_represent_floor`, `gradient_closed_walk_zero`), limit and strengthens edges (`FrameLimits`), bare vs record-carrying state (`FrameHistoryState`), decision-problem map functions, commuting squares and orbit counts (`FrameDecision`), correction with a contest route (`FrameCorrector`), reporting gaps and disclosure amnesty (`FrameDisclosure`); see `drafts/alignment-frames-relations.md` | spinout |
-| `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
-| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on headline theorems (certification chain, field finite rederivations, separations) against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
-| `scripts/check_spine_model.py` | verifies the bridge-independence checklist in `SpineModel.lean` (18 independence theorems + 2 consistency exports) | appG |
-
-## Three kinds of result (for the book)
-
-* **proof** — a direct logical/arithmetic theorem (e.g. `P01`, `P10`, `P14`,
-  `P27`, `P34`).
-* **counterexample** — a compact finite toy model showing one notion does not
-  imply another (e.g. `P15`, `P17`, `P18`, `P22b`,
-  `cid_incentive_not_abstraction_invariant`,
-  `cooperative_reward_inference_not_bundle_preservation`,
-  `shutdownability_not_correction_channel_corrigibility`,
-  `safe_interruptibility_not_correction_channel_preservation`,
-  `low_impact_not_correction_preservation`,
-  `correction_preservation_can_require_high_impact`,
-  `quantilization_not_trajectory_cci`,
-  `act_based_preference_satisfaction_not_stable_corrigibility`,
-  `local_truth_capacity_not_correction_preservation`,
-  `amplification_not_correction_contraction`,
-  `latent_readout_not_correction_uptake`,
-  `syntactic_tiling_not_import_preserving`, `forgeability_gap`, `P25`, `P26`,
-  `P31`, `P37`, `P41`, `P42`, `P44`).
-* **bridge** — an empirical or philosophical condition supplied by measurement,
-  governance, or future theory.
-* **imported field theorem** — a source-cited external result or protocol
-  assumption (`Field.Imported`, plus the statement-bearing
-  `OA2016_offpolicy_qlearning_convergence` in `Field/Finite/BellmanQ.lean`)
-  used to state what the external agenda proves under its own assumptions.
-  These are distinct from `MB*` book bridges.
-
-**Community gem (in progress).** The `Field/` module is building a shared
-machine-checked finite fragment for CIRL, AUP/relative reachability,
-quantilization, shutdown, and interruptibility under explicit interface
-conditions. The alignment community has no comparable artifact today. The
-manuscript names this as the **field-agenda formalization gem** in Appendix I
-(`sec:appi-field-formalization-gem`).
-
-Dependency hygiene: inspect any exported theorem with Lean's `#print axioms`
-before describing it as axiom-free. For example, use
-`#print axioms AlignmentProofSpine.interrupt_safety_is_correction_projection` or
-`#print axioms AlignmentProofSpine.christian_corrigibility_system` in a scratch
-Lean file; the former is a local finite proof, while the latter intentionally
-depends on `MB4`.
-
-## Notes on deviations from the brief's scaffold
-
-* The Lean 3 `constant` keyword (used in the brief's sketch) was removed in
-  Lean 4; abstract carriers are declared with `axiom`, concrete structure with
-  `structure`/`def`.
-* No `sorry`/`admit` remain. Every `admit` placeholder in the brief's scaffold is
-  either proved or, where it depended on empirical content, deliberately routed
-  through an explicit `MB*` bridge.
-* Counterexamples (brief §8) use finite `Bool`/`Fin` toy models rather than
-  abstract `System`, as the brief requires ("do not leave these as abstract
-  counterexamples forever").
-* `P44` uses the brief's §6 amendment (two disagreeing legitimacy orderings), not
-  the inconsistent single-predicate form.
-* Brief nodes `P38`/`P39` (tripwire failure decertifies) were not carried into
-  the spine; `P40_unsupported_leaf_blocks_root` (`Certification.lean`) stands
-  without that antecedent, and tripwires appear nowhere in the Lean development.
-* The host-capacity aliasing theorem `P34` uses Mathlib's
-  `Fintype.card_le_of_injective` via `AlignmentProofSpine.Mathlib`.
-* **`RiskGap`** is `Control − CCI` — excess influence bandwidth, an
-  information/capacity quantity, not a probability or a value-loss estimate.
-  There is no separate `Risk` name; renamed from an earlier `Risk := RiskGap`
-  alias because two names for one subtraction invited exactly the "primary
-  numeric risk bound is a renaming" misreading it now avoids.
-  **`CCI` is intrinsically λ-weighted** (`CCI A := weakestLink − CCIPenaltySum`,
-  ch46 `eq:cci-ch46`) — this is a manuscript modeling commitment, not a Lean
-  artifact: it fixes an exchange rate between heterogeneous penalty units
-  (latency as time, manipulation as a count, irreversibility/ontology as loss
-  scores) and raw channel capacity (bits/window), applied consistently
-  wherever `CCI` is read (`MB6b`, `MB7c`, `S10`, every chapter/appG citation).
-  `CCICertificate.lambdaProjection` uses the *same* weights
-  (`CCICertificateMeasures.weights_eq` forces this), so certificate and
-  system-level pricing agree by construction — there is no inconsistency
-  between the two, only the underlying pricing commitment itself, which a
-  reader should weigh independently of the arithmetic. `CCICertificatePasses`
-  (componentwise threshold gate over `CCICertificate`'s vector coordinates —
-  each coordinate checked against its own threshold, no cross-coordinate
-  summation at the certificate level) is what the `WorkedInstance` module
-  actually exercises on real fixture data, and is the gate a passing
-  certificate must clear before the λ-weighted floor is even computed.
-  Removing the λ-weighting from the *primary* certification path (an
-  unweighted raw-capacity quantity, independent of `CCI`) would require
-  introducing a new System-level quantity and rewiring every bridge that
-  reads `CCI` — scoped as a separate, larger backlog item (see
-  `drafts/lean-risk-spine-typing-plan.md`), not attempted here.
-  `CCIVectorSupportsScalarSlack` records the bridge-shaped handoff from a
-  passed vector certificate to the scalar leaf; `Control ≤ CCI + δ` is the
-  numeric leaf `NumericRiskLeaf` consumes. `CCIThresholds` (`θ`) itself is a
-  deployment-specific empirical/policy input — what tolerance is measured and
-  accepted is not something the arithmetic discharges, the same epistemic
-  class as `MB1`'s estimator soundness.
-  Handle-controlled path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`,
-  now grounded in a correcting agent's controlled handles. The richer manuscript
-  $C_{\mathrm{raw}}$ is represented as a certificate coordinate; the old weakest-link
-  scalar remains inside `CCI` for existing arithmetic lemmas.
-* **What you actually get is a gate, not a number.** Neither `RiskGap` nor the
-  vector certificate produces a probability of failure or an expected value
-  loss — nothing in this development defines a `System`-level utility function
-  or a real-deployment failure-frequency estimator. The framework's honest
-  answer to "what does a passing certificate buy" is `MB11_safety_case_adequacy`
-  (`Certification.lean`): a `CertifiedSafetyCase` plus a named, ungrounded
-  `WithinDeploymentRiskTolerance` judgment reaches the abstract `Safe` Prop —
-  an acceptance gate, not a quantified guarantee, and the docstring says so
-  explicitly. This is a deliberate epistemic choice, not a gap to be closed
-  by inventing a `Rat`-valued risk quantity with no producer.
-* **`DeploymentMass`** is environment-relative deployment/control mass (book ch46,
-  `eq:deployment-mass-ch46`). Selection uses `SelectionChannel` / `SelectionHandleFor`
-  over the same `Handle` type as correction. Revenue and regulatory risk are not
-  primitive Lean terms.
-* **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with the ch48 seven
-  conserved-property fields; correction capacity is `CCIPreserved` (vector `\vec{CCI}`
-  in prose, including ch46 `U_S` semantics via `rawCapacity` and `ontologyTranslation`).
-* Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
-  Full graph: `context/lean_proof_dependency_graph.dot`.
-  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean dependency spine appendix, Section~\ref{sec:appi-proof-dependency}).
+* Lean 4 has no `constant`. Abstract carriers are `axiom`; concrete structure is `structure` or `def`.
+* No `sorry` or `admit`. Where the brief's placeholder needed empirical content, the development uses an explicit bridge.
+* Counterexamples use finite `Bool` / `Fin` models, as the brief requires.
+* `P44` uses two disagreeing legitimacy orderings, per the brief's amendment.
+* Brief nodes `P38` / `P39` (a tripwire failure decertifies) are absent. `P40_unsupported_leaf_blocks_root` stands without them.
+* `P34` uses Mathlib's `Fintype.card_le_of_injective` via `Mathlib.lean`.
+* Node ids match theorem names in `AlignmentProofSpine/*.lean`.
