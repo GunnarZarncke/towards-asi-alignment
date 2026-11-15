@@ -11,13 +11,13 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1840.8 1727.32,-1840.8 1727.32,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="861.66" y="-1823.8" font-family="Times,serif" font-size="10.00">Chapter prerequisites (symbols + informal concepts, vertical)</text>
 <!-- unit:ch01 -->
-<a xlink:href="/cards/chapter/ch01/" class="lean-graph-node"><g id="node1" class="node"><title>unit:ch01</title>
+<a xlink:href="/cards/chapter/ch01/" class="lean-graph-node" data-node-id="unit:ch01"><g id="node1" class="node"><title>unit:ch01</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1130.82,-1816.8 989.26,-1816.8 989.26,-1780.8 1130.82,-1780.8 1130.82,-1816.8"/>
 <text xml:space="preserve" text-anchor="middle" x="1060.04" y="-1801.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 01</text>
 <text xml:space="preserve" text-anchor="middle" x="1060.04" y="-1790.7" font-family="Helvetica,sans-Serif" font-size="9.00">The Wrong Object of Alignment</text>
 </g></a>
 <!-- unit:ch07 -->
-<a xlink:href="/cards/chapter/ch07/" class="lean-graph-node"><g id="node7" class="node"><title>unit:ch07</title>
+<a xlink:href="/cards/chapter/ch07/" class="lean-graph-node" data-node-id="unit:ch07"><g id="node7" class="node"><title>unit:ch07</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="705.82,-1689.6 604.26,-1689.6 604.26,-1653.6 705.82,-1653.6 705.82,-1689.6"/>
 <text xml:space="preserve" text-anchor="middle" x="655.04" y="-1674.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 07</text>
 <text xml:space="preserve" text-anchor="middle" x="655.04" y="-1663.5" font-family="Helvetica,sans-Serif" font-size="9.00">Finding the Boundary</text>
@@ -31,7 +31,7 @@
 <text xml:space="preserve" text-anchor="middle" x="897.78" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">alignment&#45;as&#45;measurement, the&#45;boundary&#45;error</text>
 </g>
 <!-- unit:ch09 -->
-<a xlink:href="/cards/chapter/ch09/" class="lean-graph-node"><g id="node9" class="node"><title>unit:ch09</title>
+<a xlink:href="/cards/chapter/ch09/" class="lean-graph-node" data-node-id="unit:ch09"><g id="node9" class="node"><title>unit:ch09</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1121.57,-1689.6 964.5,-1689.6 964.5,-1653.6 1121.57,-1653.6 1121.57,-1689.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1043.04" y="-1674.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 09</text>
 <text xml:space="preserve" text-anchor="middle" x="1043.04" y="-1663.5" font-family="Helvetica,sans-Serif" font-size="9.00">The Real Agent May Be Composite</text>
@@ -45,13 +45,13 @@
 <text xml:space="preserve" text-anchor="middle" x="1300.36" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">alignment&#45;as&#45;measurement, scaffold&#45;misuse</text>
 </g>
 <!-- unit:ch02 -->
-<a xlink:href="/cards/chapter/ch02/" class="lean-graph-node"><g id="node2" class="node"><title>unit:ch02</title>
+<a xlink:href="/cards/chapter/ch02/" class="lean-graph-node" data-node-id="unit:ch02"><g id="node2" class="node"><title>unit:ch02</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="328.31,-799.2 175.77,-799.2 175.77,-763.2 328.31,-763.2 328.31,-799.2"/>
 <text xml:space="preserve" text-anchor="middle" x="252.04" y="-783.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 02</text>
 <text xml:space="preserve" text-anchor="middle" x="252.04" y="-773.1" font-family="Helvetica,sans-Serif" font-size="9.00">From Artificial Intelligence to Arti…</text>
 </g></a>
 <!-- unit:ch30 -->
-<a xlink:href="/cards/chapter/ch30/" class="lean-graph-node"><g id="node30" class="node"><title>unit:ch30</title>
+<a xlink:href="/cards/chapter/ch30/" class="lean-graph-node" data-node-id="unit:ch30"><g id="node30" class="node"><title>unit:ch30</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="704.57,-672 533.5,-672 533.5,-636 704.57,-636 704.57,-672"/>
 <text xml:space="preserve" text-anchor="middle" x="619.04" y="-656.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 30</text>
 <text xml:space="preserve" text-anchor="middle" x="619.04" y="-645.9" font-family="Helvetica,sans-Serif" font-size="9.00">Successor Creation as the Central Al…</text>
@@ -65,7 +65,7 @@
 <text xml:space="preserve" text-anchor="middle" x="518.68" y="-710.4" font-family="Helvetica,sans-Serif" font-size="8.00">artificial&#45;civilization, civilizational&#45;correction&#45;problem</text>
 </g>
 <!-- unit:ch38 -->
-<a xlink:href="/cards/chapter/ch38/" class="lean-graph-node"><g id="node38" class="node"><title>unit:ch38</title>
+<a xlink:href="/cards/chapter/ch38/" class="lean-graph-node" data-node-id="unit:ch38"><g id="node38" class="node"><title>unit:ch38</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="418.57,-417.6 251.5,-417.6 251.5,-381.6 418.57,-381.6 418.57,-417.6"/>
 <text xml:space="preserve" text-anchor="middle" x="335.04" y="-402.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 38</text>
 <text xml:space="preserve" text-anchor="middle" x="335.04" y="-391.5" font-family="Helvetica,sans-Serif" font-size="9.00">Conductive Artifacts and Pivotal Pro…</text>
@@ -79,13 +79,13 @@
 <text xml:space="preserve" text-anchor="middle" x="300.99" y="-583.2" font-family="Helvetica,sans-Serif" font-size="8.00">artificial&#45;civilization</text>
 </g>
 <!-- unit:ch03 -->
-<a xlink:href="/cards/chapter/ch03/" class="lean-graph-node"><g id="node3" class="node"><title>unit:ch03</title>
+<a xlink:href="/cards/chapter/ch03/" class="lean-graph-node" data-node-id="unit:ch03"><g id="node3" class="node"><title>unit:ch03</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="484.58,-672 319.5,-672 319.5,-636 484.58,-636 484.58,-672"/>
 <text xml:space="preserve" text-anchor="middle" x="402.04" y="-656.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 03</text>
 <text xml:space="preserve" text-anchor="middle" x="402.04" y="-645.9" font-family="Helvetica,sans-Serif" font-size="9.00">Alignment as a Dynamical Guarantee</text>
 </g></a>
 <!-- unit:ch26 -->
-<a xlink:href="/cards/chapter/ch26/" class="lean-graph-node"><g id="node26" class="node"><title>unit:ch26</title>
+<a xlink:href="/cards/chapter/ch26/" class="lean-graph-node" data-node-id="unit:ch26"><g id="node26" class="node"><title>unit:ch26</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="783.31,-417.6 654.76,-417.6 654.76,-381.6 783.31,-381.6 783.31,-417.6"/>
 <text xml:space="preserve" text-anchor="middle" x="719.04" y="-402.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 26</text>
 <text xml:space="preserve" text-anchor="middle" x="719.04" y="-391.5" font-family="Helvetica,sans-Serif" font-size="9.00">Correction&#45;Channel Integrity</text>
@@ -99,7 +99,7 @@
 <text xml:space="preserve" text-anchor="middle" x="527.66" y="-519.6" font-family="Helvetica,sans-Serif" font-size="8.00">dynamical&#45;guarantee</text>
 </g>
 <!-- unit:ch37 -->
-<a xlink:href="/cards/chapter/ch37/" class="lean-graph-node"><g id="node37" class="node"><title>unit:ch37</title>
+<a xlink:href="/cards/chapter/ch37/" class="lean-graph-node" data-node-id="unit:ch37"><g id="node37" class="node"><title>unit:ch37</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="412.31,-544.8 301.77,-544.8 301.77,-508.8 412.31,-508.8 412.31,-544.8"/>
 <text xml:space="preserve" text-anchor="middle" x="357.04" y="-529.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 37</text>
 <text xml:space="preserve" text-anchor="middle" x="357.04" y="-518.7" font-family="Helvetica,sans-Serif" font-size="9.00">The Alignment Attractor</text>
@@ -113,13 +113,13 @@
 <text xml:space="preserve" text-anchor="middle" x="418.68" y="-583.2" font-family="Helvetica,sans-Serif" font-size="8.00">dynamical&#45;guarantee</text>
 </g>
 <!-- unit:ch04 -->
-<a xlink:href="/cards/chapter/ch04/" class="lean-graph-node"><g id="node4" class="node"><title>unit:ch04</title>
+<a xlink:href="/cards/chapter/ch04/" class="lean-graph-node" data-node-id="unit:ch04"><g id="node4" class="node"><title>unit:ch04</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="545.32,-1308 362.75,-1308 362.75,-1272 545.32,-1272 545.32,-1308"/>
 <text xml:space="preserve" text-anchor="middle" x="454.04" y="-1292.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 04</text>
 <text xml:space="preserve" text-anchor="middle" x="454.04" y="-1281.9" font-family="Helvetica,sans-Serif" font-size="9.00">Why Fixed Values Are the Wrong Targe…</text>
 </g></a>
 <!-- unit:ch19 -->
-<a xlink:href="/cards/chapter/ch19/" class="lean-graph-node"><g id="node19" class="node"><title>unit:ch19</title>
+<a xlink:href="/cards/chapter/ch19/" class="lean-graph-node" data-node-id="unit:ch19"><g id="node19" class="node"><title>unit:ch19</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="526.07,-1180.8 382,-1180.8 382,-1144.8 526.07,-1144.8 526.07,-1180.8"/>
 <text xml:space="preserve" text-anchor="middle" x="454.04" y="-1165.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 19</text>
 <text xml:space="preserve" text-anchor="middle" x="454.04" y="-1154.7" font-family="Helvetica,sans-Serif" font-size="9.00">Tradeoffs and Bundle Geometry</text>
@@ -133,7 +133,7 @@
 <text xml:space="preserve" text-anchor="middle" x="483.16" y="-1219.2" font-family="Helvetica,sans-Serif" font-size="8.00">static&#45;target&#45;trap</text>
 </g>
 <!-- unit:ch05 -->
-<a xlink:href="/cards/chapter/ch05/" class="lean-graph-node"><g id="node5" class="node"><title>unit:ch05</title>
+<a xlink:href="/cards/chapter/ch05/" class="lean-graph-node" data-node-id="unit:ch05"><g id="node5" class="node"><title>unit:ch05</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="758.58,-1816.8 579.5,-1816.8 579.5,-1780.8 758.58,-1780.8 758.58,-1816.8"/>
 <text xml:space="preserve" text-anchor="middle" x="669.04" y="-1801.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 05</text>
 <text xml:space="preserve" text-anchor="middle" x="669.04" y="-1790.7" font-family="Helvetica,sans-Serif" font-size="9.00">Assumptions, Scope, and Failure Cove…</text>
@@ -147,7 +147,7 @@
 <text xml:space="preserve" text-anchor="middle" x="716.46" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">scope&#45;and&#45;correction&#45;capacity</text>
 </g>
 <!-- unit:ch06 -->
-<a xlink:href="/cards/chapter/ch06/" class="lean-graph-node"><g id="node6" class="node"><title>unit:ch06</title>
+<a xlink:href="/cards/chapter/ch06/" class="lean-graph-node" data-node-id="unit:ch06"><g id="node6" class="node"><title>unit:ch06</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="526.08,-1816.8 346,-1816.8 346,-1780.8 526.08,-1780.8 526.08,-1816.8"/>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-1801.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 06</text>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-1790.7" font-family="Helvetica,sans-Serif" font-size="9.00">What Is an Agent Without Anthropomor…</text>
@@ -169,7 +169,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1103.39" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">agent&#45;without&#45;anthropomorphism, composite&#45;agency</text>
 </g>
 <!-- unit:ch10 -->
-<a xlink:href="/cards/chapter/ch10/" class="lean-graph-node"><g id="node10" class="node"><title>unit:ch10</title>
+<a xlink:href="/cards/chapter/ch10/" class="lean-graph-node" data-node-id="unit:ch10"><g id="node10" class="node"><title>unit:ch10</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="561.07,-1689.6 417.01,-1689.6 417.01,-1653.6 561.07,-1653.6 561.07,-1689.6"/>
 <text xml:space="preserve" text-anchor="middle" x="489.04" y="-1674.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 10</text>
 <text xml:space="preserve" text-anchor="middle" x="489.04" y="-1663.5" font-family="Helvetica,sans-Serif" font-size="9.00">Agency Under Strategic Opacity</text>
@@ -183,7 +183,7 @@
 <text xml:space="preserve" text-anchor="middle" x="332.34" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">agent&#45;without&#45;anthropomorphism</text>
 </g>
 <!-- unit:ch08 -->
-<a xlink:href="/cards/chapter/ch08/" class="lean-graph-node"><g id="node8" class="node"><title>unit:ch08</title>
+<a xlink:href="/cards/chapter/ch08/" class="lean-graph-node" data-node-id="unit:ch08"><g id="node8" class="node"><title>unit:ch08</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="916.57,-1562.4 757.5,-1562.4 757.5,-1526.4 916.57,-1526.4 916.57,-1562.4"/>
 <text xml:space="preserve" text-anchor="middle" x="837.04" y="-1547.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 08</text>
 <text xml:space="preserve" text-anchor="middle" x="837.04" y="-1536.3" font-family="Helvetica,sans-Serif" font-size="9.00">Agents That Grow, Split, and Merge</text>
@@ -197,7 +197,7 @@
 <text xml:space="preserve" text-anchor="middle" x="769.61" y="-1600.8" font-family="Helvetica,sans-Serif" font-size="8.00">epsilon</text>
 </g>
 <!-- unit:ch17 -->
-<a xlink:href="/cards/chapter/ch17/" class="lean-graph-node"><g id="node17" class="node"><title>unit:ch17</title>
+<a xlink:href="/cards/chapter/ch17/" class="lean-graph-node" data-node-id="unit:ch17"><g id="node17" class="node"><title>unit:ch17</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="434.33,-1562.4 253.75,-1562.4 253.75,-1526.4 434.33,-1526.4 434.33,-1562.4"/>
 <text xml:space="preserve" text-anchor="middle" x="344.04" y="-1547.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 17</text>
 <text xml:space="preserve" text-anchor="middle" x="344.04" y="-1536.3" font-family="Helvetica,sans-Serif" font-size="9.00">When Low Dimensionality Helps Value …</text>
@@ -211,7 +211,7 @@
 <text xml:space="preserve" text-anchor="middle" x="531.36" y="-1600.8" font-family="Helvetica,sans-Serif" font-size="8.00">epsilon</text>
 </g>
 <!-- unit:ch18 -->
-<a xlink:href="/cards/chapter/ch18/" class="lean-graph-node"><g id="node18" class="node"><title>unit:ch18</title>
+<a xlink:href="/cards/chapter/ch18/" class="lean-graph-node" data-node-id="unit:ch18"><g id="node18" class="node"><title>unit:ch18</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1174.56,-1180.8 1069.52,-1180.8 1069.52,-1144.8 1174.56,-1144.8 1174.56,-1180.8"/>
 <text xml:space="preserve" text-anchor="middle" x="1122.04" y="-1165.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 18</text>
 <text xml:space="preserve" text-anchor="middle" x="1122.04" y="-1154.7" font-family="Helvetica,sans-Serif" font-size="9.00">What Values Apply To</text>
@@ -225,7 +225,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1219.19" y="-1410" font-family="Helvetica,sans-Serif" font-size="8.00">boundary&#45;before&#45;bearer, candidate&#45;process</text>
 </g>
 <!-- unit:ch35 -->
-<a xlink:href="/cards/chapter/ch35/" class="lean-graph-node"><g id="node35" class="node"><title>unit:ch35</title>
+<a xlink:href="/cards/chapter/ch35/" class="lean-graph-node" data-node-id="unit:ch35"><g id="node35" class="node"><title>unit:ch35</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="718.08,-1562.4 549.99,-1562.4 549.99,-1526.4 718.08,-1526.4 718.08,-1562.4"/>
 <text xml:space="preserve" text-anchor="middle" x="634.04" y="-1547.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 35</text>
 <text xml:space="preserve" text-anchor="middle" x="634.04" y="-1536.3" font-family="Helvetica,sans-Serif" font-size="9.00">Multi&#45;Agent Superintelligence and In…</text>
@@ -239,7 +239,7 @@
 <text xml:space="preserve" text-anchor="middle" x="658.47" y="-1600.8" font-family="Helvetica,sans-Serif" font-size="8.00">epsilon</text>
 </g>
 <!-- unit:ch11 -->
-<a xlink:href="/cards/chapter/ch11/" class="lean-graph-node"><g id="node11" class="node"><title>unit:ch11</title>
+<a xlink:href="/cards/chapter/ch11/" class="lean-graph-node" data-node-id="unit:ch11"><g id="node11" class="node"><title>unit:ch11</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1069.57,-1435.2 892.51,-1435.2 892.51,-1399.2 1069.57,-1399.2 1069.57,-1435.2"/>
 <text xml:space="preserve" text-anchor="middle" x="981.04" y="-1419.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 11</text>
 <text xml:space="preserve" text-anchor="middle" x="981.04" y="-1409.1" font-family="Helvetica,sans-Serif" font-size="9.00">Measuring Capability Without Task On…</text>
@@ -253,7 +253,7 @@
 <text xml:space="preserve" text-anchor="middle" x="929" y="-1473.6" font-family="Helvetica,sans-Serif" font-size="8.00">I_pred</text>
 </g>
 <!-- unit:ch31 -->
-<a xlink:href="/cards/chapter/ch31/" class="lean-graph-node"><g id="node31" class="node"><title>unit:ch31</title>
+<a xlink:href="/cards/chapter/ch31/" class="lean-graph-node" data-node-id="unit:ch31"><g id="node31" class="node"><title>unit:ch31</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="784.07,-544.8 602,-544.8 602,-508.8 784.07,-508.8 784.07,-544.8"/>
 <text xml:space="preserve" text-anchor="middle" x="693.04" y="-529.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 31</text>
 <text xml:space="preserve" text-anchor="middle" x="693.04" y="-518.7" font-family="Helvetica,sans-Serif" font-size="9.00">Conserved Properties Across Successo…</text>
@@ -275,7 +275,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1038.39" y="-1537.2" font-family="Helvetica,sans-Serif" font-size="8.00">mathcal_R_i</text>
 </g>
 <!-- unit:ch22 -->
-<a xlink:href="/cards/chapter/ch22/" class="lean-graph-node"><g id="node22" class="node"><title>unit:ch22</title>
+<a xlink:href="/cards/chapter/ch22/" class="lean-graph-node" data-node-id="unit:ch22"><g id="node22" class="node"><title>unit:ch22</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="515.57,-926.4 358.51,-926.4 358.51,-890.4 515.57,-890.4 515.57,-926.4"/>
 <text xml:space="preserve" text-anchor="middle" x="437.04" y="-911.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 22</text>
 <text xml:space="preserve" text-anchor="middle" x="437.04" y="-900.3" font-family="Helvetica,sans-Serif" font-size="9.00">The Compression Test for Intention</text>
@@ -297,7 +297,7 @@
 <text xml:space="preserve" text-anchor="middle" x="585.12" y="-1600.8" font-family="Helvetica,sans-Serif" font-size="8.00">kappa_ij</text>
 </g>
 <!-- unit:ch12 -->
-<a xlink:href="/cards/chapter/ch12/" class="lean-graph-node"><g id="node12" class="node"><title>unit:ch12</title>
+<a xlink:href="/cards/chapter/ch12/" class="lean-graph-node" data-node-id="unit:ch12"><g id="node12" class="node"><title>unit:ch12</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="855.83,-1308 678.25,-1308 678.25,-1272 855.83,-1272 855.83,-1308"/>
 <text xml:space="preserve" text-anchor="middle" x="767.04" y="-1292.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 12</text>
 <text xml:space="preserve" text-anchor="middle" x="767.04" y="-1281.9" font-family="Helvetica,sans-Serif" font-size="9.00">Capability Growth Is Boundary Expans…</text>
@@ -311,7 +311,7 @@
 <text xml:space="preserve" text-anchor="middle" x="897.52" y="-1346.4" font-family="Helvetica,sans-Serif" font-size="8.00">S_X</text>
 </g>
 <!-- unit:ch13 -->
-<a xlink:href="/cards/chapter/ch13/" class="lean-graph-node"><g id="node13" class="node"><title>unit:ch13</title>
+<a xlink:href="/cards/chapter/ch13/" class="lean-graph-node" data-node-id="unit:ch13"><g id="node13" class="node"><title>unit:ch13</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="830.82,-1180.8 701.25,-1180.8 701.25,-1144.8 830.82,-1144.8 830.82,-1180.8"/>
 <text xml:space="preserve" text-anchor="middle" x="766.04" y="-1165.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 13</text>
 <text xml:space="preserve" text-anchor="middle" x="766.04" y="-1154.7" font-family="Helvetica,sans-Serif" font-size="9.00">The Coordination Bottleneck</text>
@@ -325,7 +325,7 @@
 <text xml:space="preserve" text-anchor="middle" x="777.27" y="-1219.2" font-family="Helvetica,sans-Serif" font-size="8.00">rho</text>
 </g>
 <!-- unit:ch14 -->
-<a xlink:href="/cards/chapter/ch14/" class="lean-graph-node"><g id="node14" class="node"><title>unit:ch14</title>
+<a xlink:href="/cards/chapter/ch14/" class="lean-graph-node" data-node-id="unit:ch14"><g id="node14" class="node"><title>unit:ch14</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="856.83,-1053.6 675.24,-1053.6 675.24,-1017.6 856.83,-1017.6 856.83,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="766.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 14</text>
 <text xml:space="preserve" text-anchor="middle" x="766.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">When Intelligence Deepens Misalignme…</text>
@@ -339,7 +339,7 @@
 <text xml:space="preserve" text-anchor="middle" x="776.48" y="-1092" font-family="Helvetica,sans-Serif" font-size="8.00">C_raw</text>
 </g>
 <!-- unit:ch16 -->
-<a xlink:href="/cards/chapter/ch16/" class="lean-graph-node"><g id="node16" class="node"><title>unit:ch16</title>
+<a xlink:href="/cards/chapter/ch16/" class="lean-graph-node" data-node-id="unit:ch16"><g id="node16" class="node"><title>unit:ch16</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="639.57,-1053.6 524.51,-1053.6 524.51,-1017.6 639.57,-1017.6 639.57,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="582.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 16</text>
 <text xml:space="preserve" text-anchor="middle" x="582.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">The Value&#45;Bundle Model</text>
@@ -361,7 +361,7 @@
 <text xml:space="preserve" text-anchor="middle" x="653.52" y="-964.8" font-family="Helvetica,sans-Serif" font-size="8.00">G_B, d_bundle</text>
 </g>
 <!-- unit:ch15 -->
-<a xlink:href="/cards/chapter/ch15/" class="lean-graph-node"><g id="node15" class="node"><title>unit:ch15</title>
+<a xlink:href="/cards/chapter/ch15/" class="lean-graph-node" data-node-id="unit:ch15"><g id="node15" class="node"><title>unit:ch15</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="335.08,-1689.6 155,-1689.6 155,-1653.6 335.08,-1653.6 335.08,-1689.6"/>
 <text xml:space="preserve" text-anchor="middle" x="245.04" y="-1674.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 15</text>
 <text xml:space="preserve" text-anchor="middle" x="245.04" y="-1663.5" font-family="Helvetica,sans-Serif" font-size="9.00">Values Are Compressed Control Signal…</text>
@@ -407,7 +407,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1155.17" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">bearer&#45;map&#45;commutation&#45;failure</text>
 </g>
 <!-- unit:ch47 -->
-<a xlink:href="/cards/chapter/ch47/" class="lean-graph-node"><g id="node47" class="node"><title>unit:ch47</title>
+<a xlink:href="/cards/chapter/ch47/" class="lean-graph-node" data-node-id="unit:ch47"><g id="node47" class="node"><title>unit:ch47</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1552.81,-926.4 1383.26,-926.4 1383.26,-890.4 1552.81,-890.4 1552.81,-926.4"/>
 <text xml:space="preserve" text-anchor="middle" x="1468.04" y="-911.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 47</text>
 <text xml:space="preserve" text-anchor="middle" x="1468.04" y="-900.3" font-family="Helvetica,sans-Serif" font-size="9.00">Who Still Counts After Transformatio…</text>
@@ -429,7 +429,7 @@
 <text xml:space="preserve" text-anchor="middle" x="555.72" y="-1092" font-family="Helvetica,sans-Serif" font-size="8.00">bundle&#45;geometry</text>
 </g>
 <!-- unit:ch20 -->
-<a xlink:href="/cards/chapter/ch20/" class="lean-graph-node"><g id="node20" class="node"><title>unit:ch20</title>
+<a xlink:href="/cards/chapter/ch20/" class="lean-graph-node" data-node-id="unit:ch20"><g id="node20" class="node"><title>unit:ch20</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="337.33,-1053.6 160.75,-1053.6 160.75,-1017.6 337.33,-1017.6 337.33,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="249.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 20</text>
 <text xml:space="preserve" text-anchor="middle" x="249.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">Measuring and Stress&#45;Testing Bundle …</text>
@@ -451,7 +451,7 @@
 <text xml:space="preserve" text-anchor="middle" x="386.24" y="-964.8" font-family="Helvetica,sans-Serif" font-size="8.00">bundle&#45;measurement</text>
 </g>
 <!-- unit:ch21 -->
-<a xlink:href="/cards/chapter/ch21/" class="lean-graph-node"><g id="node21" class="node"><title>unit:ch21</title>
+<a xlink:href="/cards/chapter/ch21/" class="lean-graph-node" data-node-id="unit:ch21"><g id="node21" class="node"><title>unit:ch21</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="488.56,-1053.6 373.52,-1053.6 373.52,-1017.6 488.56,-1017.6 488.56,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="431.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 21</text>
 <text xml:space="preserve" text-anchor="middle" x="431.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">From Rewards to Values</text>
@@ -465,7 +465,7 @@
 <text xml:space="preserve" text-anchor="middle" x="482.01" y="-964.8" font-family="Helvetica,sans-Serif" font-size="8.00">reward&#45;to&#45;bundle&#45;inference</text>
 </g>
 <!-- unit:ch23 -->
-<a xlink:href="/cards/chapter/ch23/" class="lean-graph-node"><g id="node23" class="node"><title>unit:ch23</title>
+<a xlink:href="/cards/chapter/ch23/" class="lean-graph-node" data-node-id="unit:ch23"><g id="node23" class="node"><title>unit:ch23</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="707.32,-799.2 568.76,-799.2 568.76,-763.2 707.32,-763.2 707.32,-799.2"/>
 <text xml:space="preserve" text-anchor="middle" x="638.04" y="-783.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 23</text>
 <text xml:space="preserve" text-anchor="middle" x="638.04" y="-773.1" font-family="Helvetica,sans-Serif" font-size="9.00">Has the Goal Really Survived?</text>
@@ -479,7 +479,7 @@
 <text xml:space="preserve" text-anchor="middle" x="636.17" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">Delta_L_{bearer}, Delta_L_{bundle}, L_bearer, L_bundle, +1</text>
 </g>
 <!-- unit:ch40 -->
-<a xlink:href="/cards/chapter/ch40/" class="lean-graph-node"><g id="node40" class="node"><title>unit:ch40</title>
+<a xlink:href="/cards/chapter/ch40/" class="lean-graph-node" data-node-id="unit:ch40"><g id="node40" class="node"><title>unit:ch40</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="498.57,-799.2 375.5,-799.2 375.5,-763.2 498.57,-763.2 498.57,-799.2"/>
 <text xml:space="preserve" text-anchor="middle" x="437.04" y="-783.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 40</text>
 <text xml:space="preserve" text-anchor="middle" x="437.04" y="-773.1" font-family="Helvetica,sans-Serif" font-size="9.00">Detecting Goal Laundering</text>
@@ -493,7 +493,7 @@
 <text xml:space="preserve" text-anchor="middle" x="448.6" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">bearer</text>
 </g>
 <!-- unit:ch24 -->
-<a xlink:href="/cards/chapter/ch24/" class="lean-graph-node"><g id="node24" class="node"><title>unit:ch24</title>
+<a xlink:href="/cards/chapter/ch24/" class="lean-graph-node" data-node-id="unit:ch24"><g id="node24" class="node"><title>unit:ch24</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1333.07,-672 1153,-672 1153,-636 1333.07,-636 1333.07,-672"/>
 <text xml:space="preserve" text-anchor="middle" x="1243.04" y="-656.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 24</text>
 <text xml:space="preserve" text-anchor="middle" x="1243.04" y="-645.9" font-family="Helvetica,sans-Serif" font-size="9.00">When the Words Survive but the Meani…</text>
@@ -507,7 +507,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1093.04" y="-710.4" font-family="Helvetica,sans-Serif" font-size="8.00">B^{A}, Delta_L_{correction}, Delta_L_{semantic}, L_correction, +1</text>
 </g>
 <!-- unit:ch25 -->
-<a xlink:href="/cards/chapter/ch25/" class="lean-graph-node"><g id="node25" class="node"><title>unit:ch25</title>
+<a xlink:href="/cards/chapter/ch25/" class="lean-graph-node" data-node-id="unit:ch25"><g id="node25" class="node"><title>unit:ch25</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1171.57,-544.8 1030.51,-544.8 1030.51,-508.8 1171.57,-508.8 1171.57,-544.8"/>
 <text xml:space="preserve" text-anchor="middle" x="1101.04" y="-529.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 25</text>
 <text xml:space="preserve" text-anchor="middle" x="1101.04" y="-518.7" font-family="Helvetica,sans-Serif" font-size="9.00">Correction Is a Causal Channel</text>
@@ -529,7 +529,7 @@
 <text xml:space="preserve" text-anchor="middle" x="782.14" y="-456" font-family="Helvetica,sans-Serif" font-size="8.00">C_t, G_t</text>
 </g>
 <!-- unit:ch27 -->
-<a xlink:href="/cards/chapter/ch27/" class="lean-graph-node"><g id="node27" class="node"><title>unit:ch27</title>
+<a xlink:href="/cards/chapter/ch27/" class="lean-graph-node" data-node-id="unit:ch27"><g id="node27" class="node"><title>unit:ch27</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1189.33,-417.6 1012.75,-417.6 1012.75,-381.6 1189.33,-381.6 1189.33,-417.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1101.04" y="-402.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 27</text>
 <text xml:space="preserve" text-anchor="middle" x="1101.04" y="-391.5" font-family="Helvetica,sans-Serif" font-size="9.00">Correction Channels under Adversaria…</text>
@@ -543,7 +543,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1107.37" y="-456" font-family="Helvetica,sans-Serif" font-size="8.00">C_t</text>
 </g>
 <!-- unit:ch28 -->
-<a xlink:href="/cards/chapter/ch28/" class="lean-graph-node"><g id="node28" class="node"><title>unit:ch28</title>
+<a xlink:href="/cards/chapter/ch28/" class="lean-graph-node" data-node-id="unit:ch28"><g id="node28" class="node"><title>unit:ch28</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="1446.57,-417.6 1315.51,-417.6 1315.51,-381.6 1446.57,-381.6 1446.57,-417.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1381.04" y="-402.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 28</text>
 <text xml:space="preserve" text-anchor="middle" x="1381.04" y="-391.5" font-family="Helvetica,sans-Serif" font-size="9.00">Beyond Following Instruction</text>
@@ -557,7 +557,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1165.37" y="-456" font-family="Helvetica,sans-Serif" font-size="8.00">C_t</text>
 </g>
 <!-- unit:ch33 -->
-<a xlink:href="/cards/chapter/ch33/" class="lean-graph-node"><g id="node33" class="node"><title>unit:ch33</title>
+<a xlink:href="/cards/chapter/ch33/" class="lean-graph-node" data-node-id="unit:ch33"><g id="node33" class="node"><title>unit:ch33</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="613.81,-290.4 464.26,-290.4 464.26,-254.4 613.81,-254.4 613.81,-290.4"/>
 <text xml:space="preserve" text-anchor="middle" x="539.04" y="-275.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 33</text>
 <text xml:space="preserve" text-anchor="middle" x="539.04" y="-264.3" font-family="Helvetica,sans-Serif" font-size="9.00">Certification Without Construction</text>
@@ -571,7 +571,7 @@
 <text xml:space="preserve" text-anchor="middle" x="650.48" y="-328.8" font-family="Helvetica,sans-Serif" font-size="8.00">CCI</text>
 </g>
 <!-- unit:ch29 -->
-<a xlink:href="/cards/chapter/ch29/" class="lean-graph-node"><g id="node29" class="node"><title>unit:ch29</title>
+<a xlink:href="/cards/chapter/ch29/" class="lean-graph-node" data-node-id="unit:ch29"><g id="node29" class="node"><title>unit:ch29</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1378.83,-544.8 1207.25,-544.8 1207.25,-508.8 1378.83,-508.8 1378.83,-544.8"/>
 <text xml:space="preserve" text-anchor="middle" x="1293.04" y="-529.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 29</text>
 <text xml:space="preserve" text-anchor="middle" x="1293.04" y="-518.7" font-family="Helvetica,sans-Serif" font-size="9.00">Manipulation, Domestication, and Fal…</text>
@@ -609,7 +609,7 @@
 <text xml:space="preserve" text-anchor="middle" x="693.14" y="-583.2" font-family="Helvetica,sans-Serif" font-size="8.00">successor&#45;stability</text>
 </g>
 <!-- unit:ch32 -->
-<a xlink:href="/cards/chapter/ch32/" class="lean-graph-node"><g id="node32" class="node"><title>unit:ch32</title>
+<a xlink:href="/cards/chapter/ch32/" class="lean-graph-node" data-node-id="unit:ch32"><g id="node32" class="node"><title>unit:ch32</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="618.32,-417.6 459.76,-417.6 459.76,-381.6 618.32,-381.6 618.32,-417.6"/>
 <text xml:space="preserve" text-anchor="middle" x="539.04" y="-402.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 32</text>
 <text xml:space="preserve" text-anchor="middle" x="539.04" y="-391.5" font-family="Helvetica,sans-Serif" font-size="9.00">Better Self&#45;Modeling Can Be Worse</text>
@@ -631,7 +631,7 @@
 <text xml:space="preserve" text-anchor="middle" x="566.39" y="-328.8" font-family="Helvetica,sans-Serif" font-size="8.00">SelfControlGap</text>
 </g>
 <!-- unit:ch34 -->
-<a xlink:href="/cards/chapter/ch34/" class="lean-graph-node"><g id="node34" class="node"><title>unit:ch34</title>
+<a xlink:href="/cards/chapter/ch34/" class="lean-graph-node" data-node-id="unit:ch34"><g id="node34" class="node"><title>unit:ch34</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="522.08,-163.2 350,-163.2 350,-127.2 522.08,-127.2 522.08,-163.2"/>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-147.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 34</text>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-137.1" font-family="Helvetica,sans-Serif" font-size="9.00">Alignment Is Selected or Destroyed b…</text>
@@ -645,7 +645,7 @@
 <text xml:space="preserve" text-anchor="middle" x="509.04" y="-201.6" font-family="Helvetica,sans-Serif" font-size="8.00">RiskGap</text>
 </g>
 <!-- unit:ch42 -->
-<a xlink:href="/cards/chapter/ch42/" class="lean-graph-node"><g id="node42" class="node"><title>unit:ch42</title>
+<a xlink:href="/cards/chapter/ch42/" class="lean-graph-node" data-node-id="unit:ch42"><g id="node42" class="node"><title>unit:ch42</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="726.08,-163.2 558,-163.2 558,-127.2 726.08,-127.2 726.08,-163.2"/>
 <text xml:space="preserve" text-anchor="middle" x="642.04" y="-147.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 42</text>
 <text xml:space="preserve" text-anchor="middle" x="642.04" y="-137.1" font-family="Helvetica,sans-Serif" font-size="9.00">A Safety Case for Superintelligence …</text>
@@ -659,7 +659,7 @@
 <text xml:space="preserve" text-anchor="middle" x="612.04" y="-201.6" font-family="Helvetica,sans-Serif" font-size="8.00">RiskGap</text>
 </g>
 <!-- unit:ch44 -->
-<a xlink:href="/cards/chapter/ch44/" class="lean-graph-node"><g id="node44" class="node"><title>unit:ch44</title>
+<a xlink:href="/cards/chapter/ch44/" class="lean-graph-node" data-node-id="unit:ch44"><g id="node44" class="node"><title>unit:ch44</title>
 <polygon fill="#fed7aa" stroke="#92400e" points="521.58,-36 350.5,-36 350.5,0 521.58,0 521.58,-36"/>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-20.7" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 44</text>
 <text xml:space="preserve" text-anchor="middle" x="436.04" y="-9.9" font-family="Helvetica,sans-Serif" font-size="9.00">Lethality Stress Test and Open Issue…</text>
@@ -673,7 +673,7 @@
 <text xml:space="preserve" text-anchor="middle" x="462.94" y="-74.4" font-family="Helvetica,sans-Serif" font-size="8.00">SuccessorSafe</text>
 </g>
 <!-- unit:ch36 -->
-<a xlink:href="/cards/chapter/ch36/" class="lean-graph-node"><g id="node36" class="node"><title>unit:ch36</title>
+<a xlink:href="/cards/chapter/ch36/" class="lean-graph-node" data-node-id="unit:ch36"><g id="node36" class="node"><title>unit:ch36</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="987.32,-544.8 832.76,-544.8 832.76,-508.8 987.32,-508.8 987.32,-544.8"/>
 <text xml:space="preserve" text-anchor="middle" x="910.04" y="-529.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 36</text>
 <text xml:space="preserve" text-anchor="middle" x="910.04" y="-518.7" font-family="Helvetica,sans-Serif" font-size="9.00">Parasites in the Correction System</text>
@@ -711,7 +711,7 @@
 <text xml:space="preserve" text-anchor="middle" x="468.46" y="-328.8" font-family="Helvetica,sans-Serif" font-size="8.00">certified&#45;basin, conductive&#45;artifacts</text>
 </g>
 <!-- unit:ch39 -->
-<a xlink:href="/cards/chapter/ch39/" class="lean-graph-node"><g id="node39" class="node"><title>unit:ch39</title>
+<a xlink:href="/cards/chapter/ch39/" class="lean-graph-node" data-node-id="unit:ch39"><g id="node39" class="node"><title>unit:ch39</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="158.08,-1816.8 0,-1816.8 0,-1780.8 158.08,-1780.8 158.08,-1816.8"/>
 <text xml:space="preserve" text-anchor="middle" x="79.04" y="-1801.5" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 39</text>
 <text xml:space="preserve" text-anchor="middle" x="79.04" y="-1790.7" font-family="Helvetica,sans-Serif" font-size="9.00">Passive Observation Is Not Enough</text>
@@ -725,7 +725,7 @@
 <text xml:space="preserve" text-anchor="middle" x="213.02" y="-1728" font-family="Helvetica,sans-Serif" font-size="8.00">passive&#45;observation&#45;limit</text>
 </g>
 <!-- unit:ch41 -->
-<a xlink:href="/cards/chapter/ch41/" class="lean-graph-node"><g id="node41" class="node"><title>unit:ch41</title>
+<a xlink:href="/cards/chapter/ch41/" class="lean-graph-node" data-node-id="unit:ch41"><g id="node41" class="node"><title>unit:ch41</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="192.57,-926.4 39.51,-926.4 39.51,-890.4 192.57,-890.4 192.57,-926.4"/>
 <text xml:space="preserve" text-anchor="middle" x="116.04" y="-911.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 41</text>
 <text xml:space="preserve" text-anchor="middle" x="116.04" y="-900.3" font-family="Helvetica,sans-Serif" font-size="9.00">Checking a System at Every Level</text>
@@ -755,7 +755,7 @@
 <text xml:space="preserve" text-anchor="middle" x="340.66" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">multiscale&#45;decomposition</text>
 </g>
 <!-- unit:ch43 -->
-<a xlink:href="/cards/chapter/ch43/" class="lean-graph-node"><g id="node43" class="node"><title>unit:ch43</title>
+<a xlink:href="/cards/chapter/ch43/" class="lean-graph-node" data-node-id="unit:ch43"><g id="node43" class="node"><title>unit:ch43</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1341.32,-926.4 1168.76,-926.4 1168.76,-890.4 1341.32,-890.4 1341.32,-926.4"/>
 <text xml:space="preserve" text-anchor="middle" x="1255.04" y="-911.1" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 43</text>
 <text xml:space="preserve" text-anchor="middle" x="1255.04" y="-900.3" font-family="Helvetica,sans-Serif" font-size="9.00">What Survives an Adversary: Verifiab…</text>
@@ -777,7 +777,7 @@
 <text xml:space="preserve" text-anchor="middle" x="950.82" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">certification&#45;under&#45;manipulation</text>
 </g>
 <!-- unit:ch48 -->
-<a xlink:href="/cards/chapter/ch48/" class="lean-graph-node"><g id="node48" class="node"><title>unit:ch48</title>
+<a xlink:href="/cards/chapter/ch48/" class="lean-graph-node" data-node-id="unit:ch48"><g id="node48" class="node"><title>unit:ch48</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1477.33,-799.2 1312.75,-799.2 1312.75,-763.2 1477.33,-763.2 1477.33,-799.2"/>
 <text xml:space="preserve" text-anchor="middle" x="1395.04" y="-783.9" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 48</text>
 <text xml:space="preserve" text-anchor="middle" x="1395.04" y="-773.1" font-family="Helvetica,sans-Serif" font-size="9.00">Towards Superintelligence Alignment</text>
@@ -791,7 +791,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1363.23" y="-837.6" font-family="Helvetica,sans-Serif" font-size="8.00">certification&#45;under&#45;manipulation</text>
 </g>
 <!-- unit:ch45 -->
-<a xlink:href="/cards/chapter/ch45/" class="lean-graph-node"><g id="node45" class="node"><title>unit:ch45</title>
+<a xlink:href="/cards/chapter/ch45/" class="lean-graph-node" data-node-id="unit:ch45"><g id="node45" class="node"><title>unit:ch45</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1389.58,-1053.6 1212.49,-1053.6 1212.49,-1017.6 1389.58,-1017.6 1389.58,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1301.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 45</text>
 <text xml:space="preserve" text-anchor="middle" x="1301.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">When Value Change Is the Thing at St…</text>
@@ -805,7 +805,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1394.46" y="-964.8" font-family="Helvetica,sans-Serif" font-size="8.00">value&#45;change&#45;at&#45;stake</text>
 </g>
 <!-- unit:ch46 -->
-<a xlink:href="/cards/chapter/ch46/" class="lean-graph-node"><g id="node46" class="node"><title>unit:ch46</title>
+<a xlink:href="/cards/chapter/ch46/" class="lean-graph-node" data-node-id="unit:ch46"><g id="node46" class="node"><title>unit:ch46</title>
 <polygon fill="#bfdbfe" stroke="#1d4ed8" points="1723.32,-1053.6 1564.75,-1053.6 1564.75,-1017.6 1723.32,-1017.6 1723.32,-1053.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1644.04" y="-1038.3" font-family="Helvetica,sans-Serif" font-size="9.00">Ch 46</text>
 <text xml:space="preserve" text-anchor="middle" x="1644.04" y="-1027.5" font-family="Helvetica,sans-Serif" font-size="9.00">The End of Unconscious Value Drift</text>

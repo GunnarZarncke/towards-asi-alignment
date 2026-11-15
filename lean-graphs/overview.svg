@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-957.84 1048.82,-957.84 1048.82,4 -4,4"/>
 <text xml:space="preserve" text-anchor="middle" x="522.41" y="-939.94" font-family="Helvetica,sans-Serif" font-size="11.00">Lean proof spine overview: four sub&#45;spines into certified&#45;class safety</text>
 <!-- S1 -->
-<a xlink:href="/lean/graph/boundary-measurement/" class="lean-graph-node"><g id="node1" class="node"><title>S1</title>
+<a xlink:href="/lean/graph/boundary-measurement/" class="lean-graph-node" data-node-id="S1"><g id="node1" class="node"><title>S1</title>
 <path fill="#eaf3ff" stroke="#444444" stroke-width="2" d="M761.82,-932.64C761.82,-932.64 562.18,-932.64 562.18,-932.64 556.18,-932.64 550.18,-926.64 550.18,-920.64 550.18,-920.64 550.18,-893.44 550.18,-893.44 550.18,-887.44 556.18,-881.44 562.18,-881.44 562.18,-881.44 761.82,-881.44 761.82,-881.44 767.82,-881.44 773.82,-887.44 773.82,-893.44 773.82,-893.44 773.82,-920.64 773.82,-920.64 773.82,-926.64 767.82,-932.64 761.82,-932.64"/>
 <text xml:space="preserve" text-anchor="middle" x="662" y="-920.54" font-family="Helvetica,sans-Serif" font-size="9.00">Spine I</text>
 <text xml:space="preserve" text-anchor="middle" x="662" y="-909.74" font-family="Helvetica,sans-Serif" font-size="9.00">Boundary &amp; measurement</text>
@@ -19,7 +19,7 @@
 <text xml:space="preserve" text-anchor="middle" x="662" y="-888.14" font-family="Helvetica,sans-Serif" font-size="9.00">→ BoundaryAligned, BIQ, handles, GroundingViable</text>
 </g></a>
 <!-- S2 -->
-<a xlink:href="/lean/graph/value-transport/" class="lean-graph-node"><g id="node2" class="node"><title>S2</title>
+<a xlink:href="/lean/graph/value-transport/" class="lean-graph-node" data-node-id="S2"><g id="node2" class="node"><title>S2</title>
 <path fill="#effbea" stroke="#444444" stroke-width="2" d="M651.53,-826.24C651.53,-826.24 512.47,-826.24 512.47,-826.24 506.47,-826.24 500.47,-820.24 500.47,-814.24 500.47,-814.24 500.47,-787.04 500.47,-787.04 500.47,-781.04 506.47,-775.04 512.47,-775.04 512.47,-775.04 651.53,-775.04 651.53,-775.04 657.53,-775.04 663.53,-781.04 663.53,-787.04 663.53,-787.04 663.53,-814.24 663.53,-814.24 663.53,-820.24 657.53,-826.24 651.53,-826.24"/>
 <text xml:space="preserve" text-anchor="middle" x="582" y="-814.14" font-family="Helvetica,sans-Serif" font-size="9.00">Spine II</text>
 <text xml:space="preserve" text-anchor="middle" x="582" y="-803.34" font-family="Helvetica,sans-Serif" font-size="9.00">Value &amp; transport</text>
@@ -35,7 +35,7 @@
 <text xml:space="preserve" text-anchor="middle" x="650.95" y="-846.64" font-family="Helvetica,sans-Serif" font-size="8.00">constraints</text>
 </g>
 <!-- S3 -->
-<a xlink:href="/lean/graph/correction-successors/" class="lean-graph-node"><g id="node3" class="node"><title>S3</title>
+<a xlink:href="/lean/graph/correction-successors/" class="lean-graph-node" data-node-id="S3"><g id="node3" class="node"><title>S3</title>
 <path fill="#fff0fb" stroke="#444444" stroke-width="2" d="M525.29,-679.84C525.29,-679.84 350.71,-679.84 350.71,-679.84 344.71,-679.84 338.71,-673.84 338.71,-667.84 338.71,-667.84 338.71,-640.64 338.71,-640.64 338.71,-634.64 344.71,-628.64 350.71,-628.64 350.71,-628.64 525.29,-628.64 525.29,-628.64 531.29,-628.64 537.29,-634.64 537.29,-640.64 537.29,-640.64 537.29,-667.84 537.29,-667.84 537.29,-673.84 531.29,-679.84 525.29,-679.84"/>
 <text xml:space="preserve" text-anchor="middle" x="438" y="-667.74" font-family="Helvetica,sans-Serif" font-size="9.00">Spine III</text>
 <text xml:space="preserve" text-anchor="middle" x="438" y="-656.94" font-family="Helvetica,sans-Serif" font-size="9.00">Correction &amp; successors</text>
@@ -51,7 +51,7 @@
 <text xml:space="preserve" text-anchor="middle" x="468.77" y="-793.44" font-family="Helvetica,sans-Serif" font-size="8.00">+ MB7a–b</text>
 </g>
 <!-- P02 -->
-<a xlink:href="/lean/node/P02/" class="lean-graph-node"><g id="node5" class="node"><title>P02</title>
+<a xlink:href="/lean/node/P02/" class="lean-graph-node" data-node-id="P02"><g id="node5" class="node"><title>P02</title>
 <path fill="#f2f2f2" stroke="#444444" stroke-width="2" d="M608.55,-220.24C608.55,-220.24 411.45,-220.24 411.45,-220.24 405.45,-220.24 399.45,-214.24 399.45,-208.24 399.45,-208.24 399.45,-191.84 399.45,-191.84 399.45,-185.84 405.45,-179.84 411.45,-179.84 411.45,-179.84 608.55,-179.84 608.55,-179.84 614.55,-179.84 620.55,-185.84 620.55,-191.84 620.55,-191.84 620.55,-208.24 620.55,-208.24 620.55,-214.24 614.55,-220.24 608.55,-220.24"/>
 <text xml:space="preserve" text-anchor="middle" x="510" y="-208.14" font-family="Helvetica,sans-Serif" font-size="9.00">P02 LayeredAligned</text>
 <text xml:space="preserve" text-anchor="middle" x="510" y="-197.34" font-family="Helvetica,sans-Serif" font-size="9.00">7 layers: boundary, bundle, bearer,</text>
@@ -65,7 +65,7 @@
 <text xml:space="preserve" text-anchor="middle" x="718.46" y="-540.04" font-family="Helvetica,sans-Serif" font-size="8.00">boundary layer</text>
 </g>
 <!-- MB7 -->
-<a xlink:href="/cards/bridge/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node11" class="node"><title>MB7</title>
+<a xlink:href="/cards/bridge/mb7-hidden-capability-and-access/" class="lean-graph-node" data-node-id="MB7"><g id="node11" class="node"><title>MB7</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M864.18,-754.97C864.18,-754.97 719,-729.51 719,-729.51 713.09,-728.48 713.09,-726.41 719,-725.37 719,-725.37 864.18,-699.91 864.18,-699.91 870.09,-698.88 881.91,-698.88 887.82,-699.91 887.82,-699.91 1033,-725.37 1033,-725.37 1038.91,-726.41 1038.91,-728.48 1033,-729.51 1033,-729.51 887.82,-754.97 887.82,-754.97 881.91,-756.01 870.09,-756.01 864.18,-754.97"/>
 <text xml:space="preserve" text-anchor="middle" x="876" y="-730.14" font-family="Helvetica,sans-Serif" font-size="9.00">MB7a→b→c→d</text>
 <text xml:space="preserve" text-anchor="middle" x="876" y="-719.34" font-family="Helvetica,sans-Serif" font-size="9.00">(adversarial + inferential UAD bridges)</text>
@@ -93,7 +93,7 @@
 <text xml:space="preserve" text-anchor="middle" x="653.34" y="-476.64" font-family="Helvetica,sans-Serif" font-size="8.00">bearer layers</text>
 </g>
 <!-- S4 -->
-<a xlink:href="/lean/graph/selection-limits/" class="lean-graph-node"><g id="node4" class="node"><title>S4</title>
+<a xlink:href="/lean/graph/selection-limits/" class="lean-graph-node" data-node-id="S4"><g id="node4" class="node"><title>S4</title>
 <path fill="#fff0ec" stroke="#444444" stroke-width="2" d="M307.57,-573.44C307.57,-573.44 88.43,-573.44 88.43,-573.44 82.43,-573.44 76.43,-567.44 76.43,-561.44 76.43,-561.44 76.43,-523.44 76.43,-523.44 76.43,-517.44 82.43,-511.44 88.43,-511.44 88.43,-511.44 307.57,-511.44 307.57,-511.44 313.57,-511.44 319.57,-517.44 319.57,-523.44 319.57,-523.44 319.57,-561.44 319.57,-561.44 319.57,-567.44 313.57,-573.44 307.57,-573.44"/>
 <text xml:space="preserve" text-anchor="middle" x="198" y="-561.34" font-family="Helvetica,sans-Serif" font-size="9.00">Spine IV</text>
 <text xml:space="preserve" text-anchor="middle" x="198" y="-550.54" font-family="Helvetica,sans-Serif" font-size="9.00">Selection &amp; limits</text>
@@ -118,7 +118,7 @@
 <text xml:space="preserve" text-anchor="middle" x="571.79" y="-419.44" font-family="Helvetica,sans-Serif" font-size="8.00">successor layers</text>
 </g>
 <!-- P30 -->
-<a xlink:href="/cards/bridge/dynamical-guarantee/" class="lean-graph-node"><g id="node8" class="node"><title>P30</title>
+<a xlink:href="/cards/bridge/dynamical-guarantee/" class="lean-graph-node" data-node-id="P30"><g id="node8" class="node"><title>P30</title>
 <path fill="#f2f2f2" stroke="#444444" stroke-width="2" d="M437.89,-142.84C437.89,-142.84 326.11,-142.84 326.11,-142.84 320.11,-142.84 314.11,-136.84 314.11,-130.84 314.11,-130.84 314.11,-118.84 314.11,-118.84 314.11,-112.84 320.11,-106.84 326.11,-106.84 326.11,-106.84 437.89,-106.84 437.89,-106.84 443.89,-106.84 449.89,-112.84 449.89,-118.84 449.89,-118.84 449.89,-130.84 449.89,-130.84 449.89,-136.84 443.89,-142.84 437.89,-142.84"/>
 <text xml:space="preserve" text-anchor="middle" x="382" y="-127.54" font-family="Helvetica,sans-Serif" font-size="9.00">P30 Certified&#45;class safety</text>
 <text xml:space="preserve" text-anchor="middle" x="382" y="-116.74" font-family="Helvetica,sans-Serif" font-size="9.00">Control ≤ CCI + δ ⇒ Risk ≤ δ</text>
@@ -138,7 +138,7 @@
 <text xml:space="preserve" text-anchor="middle" x="207.4" y="-371.84" font-family="Helvetica,sans-Serif" font-size="8.00">supporting basin + limits</text>
 </g>
 <!-- P35 -->
-<a xlink:href="/lean/node/P35/" class="lean-graph-node"><g id="node6" class="node"><title>P35</title>
+<a xlink:href="/lean/node/P35/" class="lean-graph-node" data-node-id="P35"><g id="node6" class="node"><title>P35</title>
 <path fill="#f2f2f2" stroke="#444444" d="M105.77,-444.64C105.77,-444.64 40.23,-444.64 40.23,-444.64 34.23,-444.64 28.23,-438.64 28.23,-432.64 28.23,-432.64 28.23,-420.64 28.23,-420.64 28.23,-414.64 34.23,-408.64 40.23,-408.64 40.23,-408.64 105.77,-408.64 105.77,-408.64 111.77,-408.64 117.77,-414.64 117.77,-420.64 117.77,-420.64 117.77,-432.64 117.77,-432.64 117.77,-438.64 111.77,-444.64 105.77,-444.64"/>
 <text xml:space="preserve" text-anchor="middle" x="73" y="-423.94" font-family="Helvetica,sans-Serif" font-size="9.00">P35 Basin stability</text>
 </g></a>
@@ -149,7 +149,7 @@
 <polygon fill="#555555" stroke="#555555" points="94.67,-450.28 87.85,-446.21 90.65,-453.65 94.67,-450.28"/>
 </g>
 <!-- MB6a -->
-<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node12" class="node"><title>MB6a</title>
+<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node" data-node-id="MB6a"><g id="node12" class="node"><title>MB6a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M328.19,-454.13C328.19,-454.13 186.23,-428.75 186.23,-428.75 180.32,-427.7 180.32,-425.59 186.23,-424.53 186.23,-424.53 328.19,-399.15 328.19,-399.15 334.09,-398.1 345.91,-398.1 351.81,-399.15 351.81,-399.15 493.77,-424.53 493.77,-424.53 499.68,-425.59 499.68,-427.7 493.77,-428.75 493.77,-428.75 351.81,-454.13 351.81,-454.13 345.91,-455.19 334.09,-455.19 328.19,-454.13"/>
 <text xml:space="preserve" text-anchor="middle" x="340" y="-429.34" font-family="Helvetica,sans-Serif" font-size="9.00">MB6a</text>
 <text xml:space="preserve" text-anchor="middle" x="340" y="-418.54" font-family="Helvetica,sans-Serif" font-size="9.00">Gradient evidence ⇒ identified g_CCI</text>
@@ -167,7 +167,7 @@
 <polygon fill="#555555" stroke="#555555" points="422.4,-145.92 414.59,-144.48 419.8,-150.48 422.4,-145.92"/>
 </g>
 <!-- P01 -->
-<a xlink:href="/cards/bridge/dynamical-guarantee/" class="lean-graph-node"><g id="node7" class="node"><title>P01</title>
+<a xlink:href="/cards/bridge/dynamical-guarantee/" class="lean-graph-node" data-node-id="P01"><g id="node7" class="node"><title>P01</title>
 <path fill="#f2f2f2" stroke="#444444" d="M113.77,-274.24C113.77,-274.24 44.23,-274.24 44.23,-274.24 38.23,-274.24 32.23,-268.24 32.23,-262.24 32.23,-262.24 32.23,-250.24 32.23,-250.24 32.23,-244.24 38.23,-238.24 44.23,-238.24 44.23,-238.24 113.77,-238.24 113.77,-238.24 119.77,-238.24 125.77,-244.24 125.77,-250.24 125.77,-250.24 125.77,-262.24 125.77,-262.24 125.77,-268.24 119.77,-274.24 113.77,-274.24"/>
 <text xml:space="preserve" text-anchor="middle" x="79" y="-253.54" font-family="Helvetica,sans-Serif" font-size="9.00">P01 Basin invariant</text>
 </g></a>
@@ -184,7 +184,7 @@
 <polygon fill="#555555" stroke="#555555" points="333.07,-149.59 338.94,-144.23 331.01,-144.76 333.07,-149.59"/>
 </g>
 <!-- P30T -->
-<a xlink:href="/lean/node/P30T/" class="lean-graph-node"><g id="node10" class="node"><title>P30T</title>
+<a xlink:href="/lean/node/P30T/" class="lean-graph-node" data-node-id="P30T"><g id="node10" class="node"><title>P30T</title>
 <path fill="#f2f2f2" stroke="#444444" stroke-width="2" d="M544.34,-30.65C544.34,-30.65 544.34,-39.19 544.34,-39.19 544.34,-43.46 540.14,-48.53 535.95,-49.33 535.95,-49.33 457.63,-64.24 457.63,-64.24 453.44,-65.04 444.97,-65.84 440.7,-65.84 440.7,-65.84 323.3,-65.84 323.3,-65.84 319.03,-65.84 310.56,-65.04 306.37,-64.24 306.37,-64.24 228.05,-49.33 228.05,-49.33 223.86,-48.53 219.66,-43.46 219.66,-39.19 219.66,-39.19 219.66,-30.65 219.66,-30.65 219.66,-26.38 223.86,-21.31 228.05,-20.52 228.05,-20.52 306.37,-5.6 306.37,-5.6 310.56,-4.8 319.03,-4 323.3,-4 323.3,-4 440.7,-4 440.7,-4 444.97,-4 453.44,-4.8 457.63,-5.6 457.63,-5.6 535.95,-20.52 535.95,-20.52 540.14,-21.31 544.34,-26.38 544.34,-30.65"/>
 <path fill="none" stroke="#444444" stroke-width="2" d="M548.34,-29.55C548.34,-29.55 548.34,-40.29 548.34,-40.29 548.34,-45.67 543.06,-52.04 537.78,-53.05 537.78,-53.05 460.18,-67.83 460.18,-67.83 454.9,-68.84 444.25,-69.84 438.88,-69.84 438.88,-69.84 325.12,-69.84 325.12,-69.84 319.75,-69.84 309.1,-68.84 303.82,-67.83 303.82,-67.83 226.22,-53.05 226.22,-53.05 220.94,-52.04 215.66,-45.67 215.66,-40.29 215.66,-40.29 215.66,-29.55 215.66,-29.55 215.66,-24.18 220.94,-17.8 226.22,-16.79 226.22,-16.79 303.82,-2.01 303.82,-2.01 309.1,-1.01 319.75,0 325.12,0 325.12,0 438.88,0 438.88,0 444.25,0 454.9,-1.01 460.18,-2.01 460.18,-2.01 537.78,-16.79 537.78,-16.79 543.06,-17.8 548.34,-24.18 548.34,-29.55"/>
 <text xml:space="preserve" text-anchor="middle" x="382" y="-43.02" font-family="Helvetica,sans-Serif" font-size="9.00">P30T Top theorem</text>
@@ -198,7 +198,7 @@
 <polygon fill="#555555" stroke="#555555" points="384.63,-79.78 382,-72.28 379.38,-79.78 384.63,-79.78"/>
 </g>
 <!-- P40 -->
-<a xlink:href="/lean/node/P40/" class="lean-graph-node"><g id="node9" class="node"><title>P40</title>
+<a xlink:href="/lean/node/P40/" class="lean-graph-node" data-node-id="P40"><g id="node9" class="node"><title>P40</title>
 <path fill="#f2f2f2" stroke="#444444" d="M737.28,-218.04C737.28,-218.04 650.72,-218.04 650.72,-218.04 644.72,-218.04 638.72,-212.04 638.72,-206.04 638.72,-206.04 638.72,-194.04 638.72,-194.04 638.72,-188.04 644.72,-182.04 650.72,-182.04 650.72,-182.04 737.28,-182.04 737.28,-182.04 743.28,-182.04 749.28,-188.04 749.28,-194.04 749.28,-194.04 749.28,-206.04 749.28,-206.04 749.28,-212.04 743.28,-218.04 737.28,-218.04"/>
 <text xml:space="preserve" text-anchor="middle" x="694" y="-197.34" font-family="Helvetica,sans-Serif" font-size="9.00">P40 Safety&#45;case leaves</text>
 </g></a>
@@ -216,7 +216,7 @@
 <text xml:space="preserve" text-anchor="middle" x="869.35" y="-481.44" font-family="Helvetica,sans-Serif" font-size="8.00">AdversariallyRobust layer</text>
 </g>
 <!-- MB6b -->
-<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node"><g id="node13" class="node"><title>MB6b</title>
+<a xlink:href="/cards/bridge/mb6-selection-and-basin-stability/" class="lean-graph-node" data-node-id="MB6b"><g id="node13" class="node"><title>MB6b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M356.28,-348.88C356.28,-348.88 244.16,-324.4 244.16,-324.4 238.3,-323.12 238.3,-320.56 244.16,-319.28 244.16,-319.28 356.28,-294.8 356.28,-294.8 362.14,-293.52 373.86,-293.52 379.72,-294.8 379.72,-294.8 491.84,-319.28 491.84,-319.28 497.7,-320.56 497.7,-323.12 491.84,-324.4 491.84,-324.4 379.72,-348.88 379.72,-348.88 373.86,-350.16 362.14,-350.16 356.28,-348.88"/>
 <text xml:space="preserve" text-anchor="middle" x="368" y="-324.54" font-family="Helvetica,sans-Serif" font-size="9.00">MB6b</text>
 <text xml:space="preserve" text-anchor="middle" x="368" y="-313.74" font-family="Helvetica,sans-Serif" font-size="9.00">Supporting basin ⇒ correction</text>

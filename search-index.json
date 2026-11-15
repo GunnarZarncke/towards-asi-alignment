@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T01:19:07.874Z",
+  "generatedAt": "2026-11-15T17:05:11.602Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 434,
+  "entryCount": 435,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1201,6 +1201,12 @@
       "url": "/essay/does-the-monitor-still-mean-the-thing/"
     },
     {
+      "title": "Dwarkesh says RSI on capability works. Does it also work for alignment?",
+      "type": "news",
+      "summary": "Patel treats verifiable proxies and swarm merge checks as enough to automate AI R&D. The same instruments do not measure alignment. Noam Brown says metrics looked good until new capabilities outran them, recursive training may drift worse each generation, and realistic evals are easier for models to spot. Capability RSI can stack scored partial wins; alignment has no comparable loop or proxy yet.",
+      "url": "/cards/news/field-news-dwarkesh-rsi-alignment-gap-nov-2026/"
+    },
+    {
       "title": "Embedded audit simulation",
       "type": "experiment",
       "summary": "An auditor running as its own process on simulated machines, scored against a hidden ground truth it cannot see.",
@@ -2121,7 +2127,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 547 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 549 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/artifact/reference-index/"
     },
     {
