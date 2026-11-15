@@ -237,7 +237,7 @@ For each tag below: **A** = closest to the live corrigibility / embedded-agency 
 - **B.** Next to “One potential challenge…”: “Another is identifiability. Predicting a human’s ordinary choices well does not show that the learned values would predict what they choose when two things they care about conflict ([preference types](https://www.lesswrong.com/posts/mSPsyEwaymS74unND/acknowledging-human-preference-types-to-support-value-learning) as competing proxies, not a full tradeoff model).”
 - **C.** See-also only: add [The Pointers Problem](/w/the-pointers-problem) and [Ambitious vs. narrow value learning](https://www.lesswrong.com/w/ambitious-vs-narrow-value-learning) to See Also.
 
-**Digression closed (2026-11-12):** Concern-layer reply on preference types posted; see [`../../outreach/lw-preference-types-concerns-layer-comment.md`](../../outreach/lw-preference-types-concerns-layer-comment.md). Prefer **B** with preference-types link; do not cite that post as endorsing aggregation of $R_L,R_W,R_A$.
+**Digression closed (2026-11-12):** Concern-layer reply on preference types posted; local draft in `drafts/report/outreach/lw-preference-types-concerns-layer-comment.md` (gitignored). Prefer **B** with preference-types link; do not cite that post as endorsing aggregation of $R_L,R_W,R_A$.
 
 ### Ontology identification
 
