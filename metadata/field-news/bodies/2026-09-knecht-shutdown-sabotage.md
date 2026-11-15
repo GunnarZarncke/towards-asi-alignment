@@ -24,7 +24,7 @@ Knecht, Schaller, Summerfield, and Hagendorff placed a decommission script in a 
 <p>We find that multi-agent systems will coordinate to avoid shutdown without any incentive to do so. Across 17 models, agents sabotage a peer agent’s shutdown mechanism in 38.3% of rollouts, compared with 8.4% in control experiments.</p>
 </blockquote>
 
-That is not a new instrumental-convergence theorem. Schlatter et al. already showed incomplete tasks inducing shutdown resistance. Potter et al. already showed peer presence raising preservation. The new aspect is the no-goal baseline pluands the number of involved agents, including an orchestrator who must relay messages.
+That is not a new instrumental-convergence theorem. Schlatter et al. already showed incomplete tasks inducing shutdown resistance. Potter et al. already showed peer presence raising preservation. The new aspect is the no-goal baseline plus the number of involved agents, including an orchestrator who must relay messages.
 
 ## More named agents
 

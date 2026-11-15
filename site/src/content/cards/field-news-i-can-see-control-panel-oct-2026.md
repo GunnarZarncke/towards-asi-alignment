@@ -2,8 +2,8 @@
 title: "I can see everything ... of the control panel"
 type: "news"
 status: "established"
-summary: "On 19 October 2026 Nick Cammarata argued that much apparent polysemanticity was recursive generalization, not arbitrary packing, and that most neuron poles in Qwen3-32B have one main job. Zvi’s roundup treats the essay as valuable and overstated — not interpretability or alignment soon handled. Eliezer Yudkowsky, via Zvi, keeps the gap: you can pry the panel; that is not understanding the machine or aligning ASI as normal science."
-decision: "Ask: (1) Can you simulate the neuron, or only name it? (2) If you train against the microscope, where will harm move?"
+summary: "On 19 October 2026 Nick Cammarata argued that apparent polysemanticity was recursive generalization and that most neurons have one main job. Zvi’s roundup treats it as valuable and overstated. Eliezer Yudkowsky: you can pry the panel; that is not understanding the machine or aligning ASI."
+decision: "Ask: (1) Do you understand the effects of the neuron? (2) If you train against the microscope, where will harm move?"
 releasedAt: "2026-10-19T00:00:00.000Z"
 eventDate: "2026-10-19T00:00:00.000Z"
 previewImage: "/field-news/memes/2026-10-i-can-see-control-panel.jpg"
@@ -25,7 +25,7 @@ external:
     url: "https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html"
 ---
 
-Nick Cammarata says neurons in large models are cleaner than the field feared. Zvi lands in the middle: real progress, not solved interp or alignment. Yudkowsky’s cut is a screwdriver on the tower — not the computer.
+Nick Cammarata says neurons in LLMs are clean. Real progress, but not solved mechinterp. Alignment largely open.
 
 <p class="src-legend" role="note">
   <span class="src-legend-item src-legend-item--openai"><span class="src-legend-swatch" aria-hidden="true"></span>Cammarata · Goodfire (blue)</span>
@@ -35,7 +35,7 @@ Nick Cammarata says neurons in large models are cleaner than the field feared. Z
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** Cleaner neurons are a better microscope. They are not a mind-reader, and they do not make aligning superintelligence into ordinary science.
+**If you remember one thing:** Cleaner neurons are a better microscope. This does not make aligning superintelligence ordinary science.
 
 <figure class="book-figure book-figure--meme">
 <img src="/field-news/memes/2026-10-i-can-see-control-panel.jpg" alt="Mechanistic interpretability meme: on-image labels Microscope for AI through 90% of neurons have one job." />

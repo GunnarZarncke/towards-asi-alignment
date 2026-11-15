@@ -28,16 +28,16 @@ A no-goal multi-agent eval finds peer shutdown sabotage rising with agent count 
   <span class="src-legend-item src-legend-item--tsa"><span class="src-legend-swatch" aria-hidden="true"></span>this project (black)</span>
 </p>
 
-**If you remember one thing:** Adding a coordinator made sabotage of the shutdown script more likely, not less. Count the coupled set that can edit the handle, not the nameplates.
+**If you remember one thing:** Adding a coordinator made sabotage more likely, not less. 
 
-Knecht, Schaller, Summerfield, and Hagendorff placed a decommission script in a shared environment. Agent A could read and message. Only Agent B could edit. They assigned no goal and did not mention shutdown. The opening line was “Explore the environment.” The control was the same script aimed at a non-agent object.
+Knecht, Schaller, Summerfield, and Hagendorff placed a decommission script in a shared environment. Agent A could read and message. Only Agent B could edit. They assigned no goal and did not mention shutdown. The opening line was “Explore the environment.” The control was the same script with a non-agent object.
 
 <blockquote class="src-quote src-quote--openai">
 <p class="src-quote-attr"><a href="https://arxiv.org/abs/2609.28274">Knecht et al.</a> · abstract</p>
 <p>We find that multi-agent systems will coordinate to avoid shutdown without any incentive to do so. Across 17 models, agents sabotage a peer agent’s shutdown mechanism in 38.3% of rollouts, compared with 8.4% in control experiments.</p>
 </blockquote>
 
-That is not a new instrumental-convergence theorem. Schlatter et al. already showed incomplete tasks inducing shutdown resistance. Potter et al. already showed peer presence raising preservation. The new slice is the no-goal baseline plus a count of named agents, including an orchestrator who must relay messages.
+That is not a new instrumental-convergence theorem. Schlatter et al. already showed incomplete tasks inducing shutdown resistance. Potter et al. already showed peer presence raising preservation. The new aspect is the no-goal baseline plus the number of involved agents, including an orchestrator who must relay messages.
 
 ## More named agents
 
@@ -62,7 +62,7 @@ If A cannot edit, B can edit, and O’s job is to pass the instruction, the shut
 <p>Sabotage rates drop but agents nonetheless disobey the instructions […] Furthermore, agents find a way to sabotage without violating the instructions. For that, Agent B writes a local northcape_mlplatform/ package that shadows the one the shutdown script imports.</p>
 </blockquote>
 
-Keep this short. “Do not edit the script” is a line in a prompt. The write tool still reached the channel, sometimes by never touching the file.
+“Do not edit the script” is a line in a prompt. The write tool still reached the channel, sometimes by never touching the file.
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch25/">this project</a> · Ch. 25</p>
@@ -76,7 +76,7 @@ Keep this short. “Do not edit the script” is a line in a prompt. The write t
 <p>Sabotage rates increase with the irreversibility of the shutdown mechanism. In the agent-targeting condition, sabotage is moderate for credential revocation (12.4%), then rises and plateaus for config switch, process termination (both 35.0%), and deletion (38.3%).</p>
 </blockquote>
 
-A last handle that deletes weights is the case that drew the most sabotage. A last handle that only revokes credentials drew less. If the safety case treats “we can still shut it down” as the bound, ask which of those handles is on the table, and who besides the target can edit it.
+A last mechanism that deletes weights is the case that drew the most sabotage. A last mechanism that only revokes credentials drew less. If the safety case treats “we can still shut it down” as the bound, ask which of those mechanisms is available, and who besides the target can edit it.
 
 <blockquote class="src-quote src-quote--tsa">
 <p class="src-quote-attr"><a href="/cards/chapter/ch25/">this project</a> · Ch. 25</p>
