@@ -42,3 +42,13 @@ export function selectFeaturedFieldNews(
   const older = sorted.filter((item) => !featuredSlugs.has(item.slug));
   return { featured, older };
 }
+
+/** Newest item by card `date`, then slug (stable tie-break). */
+export function latestFieldNewsItem(
+  items: FieldNewsIndexItem[]
+): FieldNewsIndexItem | undefined {
+  if (items.length === 0) return undefined;
+  return [...items].sort(
+    (a, b) => b.date.localeCompare(a.date) || b.slug.localeCompare(a.slug)
+  )[0];
+}

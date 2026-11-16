@@ -1,0 +1,85 @@
+---
+import fieldNewsIndex from "../data/field-news.json";
+import { latestFieldNewsItem } from "../lib/field-news-featured";
+import { cardHref as buildCardHref } from "../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const latest = latestFieldNewsItem(fieldNewsIndex);
+const newsHref = latest ? buildCardHref(base, latest.card, "news") : "";
+const moreNewsHref = withBase("/news/#field-news");
+
+const kindLabel: Record<string, string> = {
+  incident: "Incident",
+  "eval-result": "Evaluation",
+  research: "Research",
+  policy: "Policy",
+  anecdote: "Anecdote"
+};
+---
+
+{latest && (
+  <section class="home-latest-news" aria-labelledby="home-latest-news-heading">
+    <h2 id="home-latest-news-heading">Latest field news</h2>
+    <article class="news-item">
+      <p class="news-meta">
+        <time datetime={latest.eventDate ?? latest.date}>{latest.eventDate ?? latest.date}</time>
+        {" · "}
+        <span>{kindLabel[latest.kind] ?? latest.kind}</span>
+      </p>
+      <h3 class="home-latest-news-title">
+        <a href={newsHref}>{latest.title}</a>
+      </h3>
+      {latest.hook && <p class="home-latest-news-hook">{latest.hook}</p>}
+    </article>
+    <p class="home-latest-news-more">
+      <a href={moreNewsHref}>More news</a>
+    </p>
+  </section>
+)}
+
+<style>
+  .home-latest-news {
+    margin: 1.75rem 0 0;
+    max-width: 49rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border, #c8d4e0);
+    border-radius: 8px;
+    background: var(--color-surface, #fff);
+  }
+
+  .home-latest-news h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .home-latest-news-title {
+    font-size: 1.15rem;
+    margin: 0.25rem 0 0.4rem;
+    font-weight: 650;
+  }
+
+  .home-latest-news-title a {
+    text-decoration: none;
+  }
+
+  .home-latest-news-title a:hover {
+    text-decoration: underline;
+  }
+
+  .home-latest-news .news-meta {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  .home-latest-news-hook {
+    margin: 0;
+  }
+
+  .home-latest-news-more {
+    margin: 0.65rem 0 0;
+    font-size: 0.92rem;
+  }
+</style>

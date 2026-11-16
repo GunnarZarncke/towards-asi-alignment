@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import ContinueReading from "../components/ContinueReading.astro";
+import HomeLatestNews from "../components/HomeLatestNews.astro";
 import { HOME_DESCRIPTION } from "../lib/seo";
 import { firstEssayHref, cardHref } from "../lib/site-urls";
 
@@ -35,6 +36,8 @@ const tiles = [
       <a href={withBase("/badges/gem/")}>Highlights (gems)</a>
     </p>
   </section>
+
+  <HomeLatestNews />
 
   <ContinueReading />
 

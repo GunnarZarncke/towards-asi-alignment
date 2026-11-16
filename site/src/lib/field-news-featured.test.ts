@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { isoDateDaysAgo, selectFeaturedFieldNews, type FieldNewsIndexItem } from "./field-news-featured.ts";
+import {
+  isoDateDaysAgo,
+  latestFieldNewsItem,
+  selectFeaturedFieldNews,
+  type FieldNewsIndexItem
+} from "./field-news-featured.ts";
 
 const now = new Date("2026-10-07T12:00:00.000Z");
 
@@ -34,6 +39,11 @@ test("selectFeaturedFieldNews pads to three with older items", () => {
   const { featured, older } = selectFeaturedFieldNews(rows, { now });
   assert.deepEqual(featured.map((row) => row.slug), ["a", "b", "c"]);
   assert.deepEqual(older.map((row) => row.slug), ["d"]);
+});
+
+test("latestFieldNewsItem picks newest date", () => {
+  const rows = [item("2026-09-01", "old"), item("2026-11-15", "new")];
+  assert.equal(latestFieldNewsItem(rows)?.slug, "new");
 });
 
 test("selectFeaturedFieldNews shows more than three when the week is busy", () => {

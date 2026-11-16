@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-16 | **Kaufman on Good + home news** — Ch. 14 footnote; homepage latest field news block. | [2026-11-16-good-docile-proviso.md](2026-11-16-good-docile-proviso.md) |
 | 2026-11-15 | **Formal README** — Bridge and coined names expanded; ELK finite proofs and alignment-criteria modules listed as checked results. | [2026-11-15-formal-readme.md](2026-11-15-formal-readme.md) |
 | 2026-11-15 | **Dietz DCA/SPT lens examples** — SPT on control protocol, DCA on additive route value; bib + LW links. | [2026-11-15-dietz-dca-spt-lens-examples.md](2026-11-15-dietz-dca-spt-lens-examples.md) |
 | 2026-11-15 | **Lens map hover summaries** — Node tooltips on Lenses and frameworks criteria map; sync embeds summaries in SVG. | [2026-11-15-lens-map-hover-tooltips.md](2026-11-15-lens-map-hover-tooltips.md) |
