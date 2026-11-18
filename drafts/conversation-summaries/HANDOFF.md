@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-16 (Kaufman footnote on Good epigraph).
+Last updated: 2026-11-18 (Christiano field news after Dwarkesh RSI card).
 
 ---
 
@@ -27,6 +27,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ## Recently shipped
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
+
+**2026-11-18:** **Christiano “plane as you fly it”** — Follow-on field news after Dwarkesh RSI card: Christiano on patch→hide, no alignment loop, two saving throws; quiz takeaway; `/predictions/` link. Log: `2026-11-18-christiano-plane-as-you-fly.md`.
 
 **2026-11-16:** **Kaufman on Good + home news** — Ch. 14 epigraph footnote + `kaufman2026goodreading`; homepage latest field news before Continue reading (`More news` → `/news/#field-news`). Log: `2026-11-16-good-docile-proviso.md`.
 

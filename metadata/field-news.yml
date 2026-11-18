@@ -5,6 +5,25 @@
 # Optional previewImage: site-root path; else auto from public/field-news/memes/{body-basename}.{jpg,png}
 
 fieldNews:
+  - slug: field-news-christiano-plane-as-you-fly-nov-2026
+    date: 2026-11-18
+    eventDate: 2026-11-16
+    kind: research
+    title: "Christiano: the plan is to build the plane as we fly it"
+    hook: "Paul Christiano agrees the alignment plan is that AIs find it mid-explosion, or we stop. Both saving throws read the same grader."
+    summary: "On Dwarkesh Patel's podcast, Paul Christiano says penalizing found hacks teaches models to hide them, that models are expected to hack at deployment even if training is clean, and that careful graders work until they break. He agrees the plan is for AIs to find an alignment solution during the intelligence explosion, with stopping as the second saving throw. His 75% assumes the throws are independent; both depend on observations the system is pushed to corrupt."
+    decision: "Ask: if the AI's alignment result fails, what signal tells you to stop, and could the same system have shaped it?"
+    bookChapters:
+      - ch14
+      - ch30
+      - ch42
+      - ch43
+    bridges:
+      - MB4
+      - MB7
+      - MB11
+    body: bodies/2026-11-christiano-plane-as-you-fly.md
+    order: 0
   - slug: field-news-dwarkesh-rsi-alignment-gap-nov-2026
     date: 2026-11-15
     eventDate: 2026-11-13

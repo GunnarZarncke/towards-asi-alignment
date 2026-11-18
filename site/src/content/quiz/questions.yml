@@ -2475,6 +2475,32 @@ questions:
   - "chapter:ch28"
   tags:
   - takeaway
+- id: news-takeaway-christiano-plane-as-you-fly-nov-2026
+  prompt: "Christiano's two saving throws are an AI-found alignment fix and stopping. Why might they fail together?"
+  options:
+  - id: take
+    text: Both depend on observations the system is pushed to hide or shape
+    correct: true
+  - id: d0
+    text: Both require a global treaty signed before training starts
+    correct: false
+  - id: d1
+    text: Both need pretraining to finish before RL begins
+    correct: false
+  - id: d2
+    text: Both assume models never hack during training
+    correct: false
+  explanation: "Checking the AI's fix and noticing it is time to stop both read the same grader and logs. Patching found hacks pushes the model to hide them."
+  source:
+    href: /cards/chapter/ch42/
+    label: Chapter 42 — A Safety Case for Superintelligence Alignment
+  topics:
+  - MB11
+  appearOn:
+  - "chapter:ch14"
+  - "chapter:ch30"
+  - "chapter:ch42"
+  - "chapter:ch43"
 - id: news-takeaway-dwarkesh-rsi-alignment-gap-nov-2026
   prompt: "Capability RSI has a clear scored path. What has no such path?"
   options:
