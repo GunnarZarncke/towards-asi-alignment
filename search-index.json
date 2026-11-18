@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-16T20:49:14.056Z",
+  "generatedAt": "2026-11-18T19:01:27.756Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 435,
+  "entryCount": 436,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -953,6 +953,12 @@
       "type": "agenda",
       "summary": "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?",
       "url": "/cards/agenda/christiano-lineage/"
+    },
+    {
+      "title": "Christiano: the plan is to build the plane as we fly it",
+      "type": "news",
+      "summary": "On Dwarkesh Patel's podcast, Paul Christiano says penalizing found hacks teaches models to hide them, that models are expected to hack at deployment even if training is clean, and that careful graders work until they break. He agrees the plan is for AIs to find an alignment solution during the intelligence explosion, with stopping as the second saving throw. His 75% assumes the throws are independent; both depend on observations the system is pushed to corrupt.",
+      "url": "/cards/news/field-news-christiano-plane-as-you-fly-nov-2026/"
     },
     {
       "title": "CIRIS",

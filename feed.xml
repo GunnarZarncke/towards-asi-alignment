@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Christiano: the plan is to build the plane as we fly it</title>
+      <link>https://towards-alignment.com/cards/news/field-news-christiano-plane-as-you-fly-nov-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/news/field-news-christiano-plane-as-you-fly-nov-2026/</guid>
+      <pubDate>Wed, 18 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Paul Christiano agrees the alignment plan is that AIs find it mid-explosion, or we stop. Both saving throws read the same grader.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] Dwarkesh says RSI on capability works. Does it also work for alignment?</title>
       <link>https://towards-alignment.com/cards/news/field-news-dwarkesh-rsi-alignment-gap-nov-2026/</link>
