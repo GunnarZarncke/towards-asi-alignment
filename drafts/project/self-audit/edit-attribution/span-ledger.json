@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261119T074901.528Z",
+  "_as_of": "20261119T123653.452Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -118,6 +118,22 @@
     "file": "appendices/appG-lean-proof-spine.tex",
     "human": 0,
     "index": 7,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "appendices/appM-institutional-histories.tex#12": {
+    "agent": 8,
+    "file": "appendices/appM-institutional-histories.tex",
+    "human": 3,
+    "index": 12,
+    "key": "GZ+AI",
+    "prior": "AI"
+  },
+  "appendices/appM-institutional-histories.tex#15": {
+    "agent": 2,
+    "file": "appendices/appM-institutional-histories.tex",
+    "human": 0,
+    "index": 15,
     "key": "AI",
     "prior": "AI"
   },
@@ -1906,7 +1922,7 @@
     "prior": "AI"
   },
   "chapters/ch26-correction-channel-integrity.tex#9": {
-    "agent": 17,
+    "agent": 34,
     "file": "chapters/ch26-correction-channel-integrity.tex",
     "human": 0,
     "index": 9,
@@ -2241,6 +2257,14 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch34-selection-environment.tex#10": {
+    "agent": 3,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 0,
+    "index": 10,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch34-selection-environment.tex#12": {
     "agent": 2,
     "file": "chapters/ch34-selection-environment.tex",
@@ -2249,16 +2273,24 @@
     "key": "AI",
     "prior": "AI"
   },
-  "chapters/ch34-selection-environment.tex#14": {
-    "agent": 4,
+  "chapters/ch34-selection-environment.tex#13": {
+    "agent": 2,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 0,
-    "index": 14,
+    "index": 13,
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch34-selection-environment.tex#14": {
+    "agent": 48,
+    "file": "chapters/ch34-selection-environment.tex",
+    "human": 1,
+    "index": 14,
+    "key": "GZ+AI",
+    "prior": "AI"
+  },
   "chapters/ch34-selection-environment.tex#19": {
-    "agent": 1,
+    "agent": 3,
     "file": "chapters/ch34-selection-environment.tex",
     "human": 1,
     "index": 19,
@@ -2476,7 +2508,7 @@
   "chapters/ch40-goal-laundering.tex#33": {
     "agent": 3,
     "file": "chapters/ch40-goal-laundering.tex",
-    "human": 2,
+    "human": 4,
     "index": 33,
     "key": "GZ+AI",
     "prior": "AI"
@@ -2693,7 +2725,7 @@
   "chapters/ch45-value-change-at-stake.tex#15": {
     "agent": 27,
     "file": "chapters/ch45-value-change-at-stake.tex",
-    "human": 5,
+    "human": 7,
     "index": 15,
     "key": "GZ+AI",
     "prior": "AI"

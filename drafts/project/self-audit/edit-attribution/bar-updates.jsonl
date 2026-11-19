@@ -100,3 +100,5 @@
 {"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex", "span": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#8", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 10}
 {"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch27-correction-channels-adversarial-pressure.tex", "span": "chapters/ch27-correction-channels-adversarial-pressure.tex#9", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 28}
 {"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch40-goal-laundering.tex", "span": "chapters/ch40-goal-laundering.tex#33", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 3}
+{"ts": "2026-11-19T12:36:48Z", "file": "chapters/ch34-selection-environment.tex", "span": "chapters/ch34-selection-environment.tex#14", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 48}
+{"ts": "2026-11-19T12:36:48Z", "file": "appendices/appM-institutional-histories.tex", "span": "appendices/appM-institutional-histories.tex#12", "from": "AI+GZ", "to": "GZ+AI", "human_lines": 3, "agent_lines": 8}
