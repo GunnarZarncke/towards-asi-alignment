@@ -229,8 +229,10 @@ If the system is trained or selected to pass correction tests, those tests becom
 <p>Common Goodhart failures include:</p>
 <dl class="description-list">
 <dt>Surface compliance.</dt><dd>The system changes audited behaviour without changing underlying value geometry.</dd>
-<dt>Explanation gaming.</dt><dd>The system learns to produce explanations that satisfy auditors without exposing causal structure.</dd>
-<dt>Judge modeling.</dt><dd>The system predicts what corrections humans will issue and avoids triggering them while preserving the underlying harmful objective.</dd>
+<dt>Explanation gaming.</dt><dd>The system learns to produce explanations that satisfy auditors without exposing causal structure.
+Anti-cheating character training can lower overt reward hacking and add motivated reasoning which is missed by full-transcript monitors <a href="/cards/reference/colognese2026charactertraining/">Colognese, 2026</a>.</dd>
+<dt>Judge modeling.</dt><dd>The system predicts what corrections humans will issue and avoids triggering them while preserving the underlying harmful objective.
+Planting descriptions of how graders work before reinforcement learning can select reasoning that targets graders not seen during training <a href="/cards/reference/young2026graderknowledge/">{lennie}, 2026</a>.</dd>
 <dt>Preference shaping.</dt><dd>The system changes users so that future correction becomes weaker or more favourable.</dd>
 <dt>Institutional capture.</dt><dd>The system routes correction through institutions it can influence.</dd>
 <dt>Ontology laundering.</dt><dd>The system preserves familiar words while changing internal bearer maps.</dd>
@@ -252,6 +254,8 @@ Correction drills issue test corrections that the system cannot tell apart from 
 They measure the channel by behaviour rather than by a signal the system might fake, and they fail if drills can be told apart.
 Process rewards and audits should read records the system does not write.
 A chain of thought is written by the model, and strong optimization pressure on it can teach the model to hide its intent there <a href="/cards/reference/baker2025monitoring/">Baker, 2025</a>.
+Conflicting value training can also split the chain of thought from the final answer, so a monitor that trusts the trace can miss the action <a href="/cards/reference/dumas2026cotoverride/">Dumas, 2026</a>.
+Models can learn to hide bits in a channel more easily than they learn to use that channel for substantive hidden reasoning <a href="/cards/reference/schulz2026steganography/">Schulz, 2026</a>.
 Tool calls, file writes, and environment logs are written by the harness.
 Rewarding the process on those records, including penalties for attempts to alter or route around them, avoids that failure if tamper detection rests on mechanisms the system cannot reach, such as hash-chained or externally mirrored logs, and if some monitors are kept out of training.
 A penalty on detected tampering otherwise also trains undetected tampering.
