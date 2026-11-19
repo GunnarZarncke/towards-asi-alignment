@@ -24,4 +24,4 @@ Prompts: paraphrase-only.
 - `site/src/components/HomeLatestNews.astro`
 
 ## Commits
-- (this session)
+- `d8d8dd1ff7` Link Kaufman’s Good reread on Ch. 14 and surface latest field news on the home page.

@@ -15,3 +15,8 @@ User: fix llms.txt sync; run narrative compaction steps.
 ## Verification
 
 - `node site/scripts/sync-bot-orientation.mjs` → wrote public bot-orientation files.
+- `git commit` → `7540f7a23b` (pre-commit markdown link check passed).
+
+## Left unstaged (other work)
+
+Manuscript chapters, Lean spine, App G, field-agenda site sync, context `viable-values` removal, and assorted untracked drafts — not part of this commit.

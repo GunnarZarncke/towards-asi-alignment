@@ -6,10 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-11-19 | **Dual-mandate App M + Ch 26** — Three founding forms; EIC + Plan R; Ch. 34 section removed. | [2026-11-19-dual-mandate-appm-ch26.md](2026-11-19-dual-mandate-appm-ch26.md) |
-| 2026-11-19 | **LW scan + score-5 cites** — Two-month LessWrong pull; seven empirical LW posts in bib and Ch. 20/24/27/30/40. | [2026-11-19-lw-scan-score5-cites.md](2026-11-19-lw-scan-score5-cites.md) |
-| 2026-11-19 | **Ch.45 failure modes** — Documented anchors and backward pointers in `sec:failure-modes-ch45` (light citation density for synthesis chapter). | [2026-11-19-ch45-failure-modes-cites.md](2026-11-19-ch45-failure-modes-cites.md) |
-| 2026-11-18 | **Christiano plane as you fly it** — Follow-on field news after Dwarkesh RSI card; Christiano on patch→hide and two saving throws; `/predictions/` link. | [2026-11-18-christiano-plane-as-you-fly.md](2026-11-18-christiano-plane-as-you-fly.md) |
+| 2026-11-19 | **LW scan and score-5 cites** — User asked for a two-month LessWrong karma≥30 scan for TSA relevance (Composer prescreen, Grok de... | [2026-11-19-lw-scan-score5-cites.md](2026-11-19-lw-scan-score5-cites.md) |
+| 2026-11-19 | **Dual-mandate pattern (App M, Ch 26)** — User asked to center the build-authority plus uncapped-claim problem in App M (not a news card or... | [2026-11-19-dual-mandate-appm-ch26.md](2026-11-19-dual-mandate-appm-ch26.md) |
+| 2026-11-19 | **Ch.45 failure-modes cites** — Add references for civilizational failure modes in `sec:failure-modes-ch45`; calibrate citation d... | [2026-11-19-ch45-failure-modes-cites.md](2026-11-19-ch45-failure-modes-cites.md) |
+| 2026-11-18 | **Christiano "plane as you fly it" field news** — Fetch transcript of Dwarkesh × Paul Christiano (2026-11-16); compare with RSI card; write follow-... | [2026-11-18-christiano-plane-as-you-fly.md](2026-11-18-christiano-plane-as-you-fly.md) |
 | 2026-11-16 | **Kaufman on Good + home latest news** — Field-news card on Kaufman's Good reread → replaced with Ch. 14 footnote and bib. Homepage: lates... | [2026-11-16-good-docile-proviso.md](2026-11-16-good-docile-proviso.md) |
 | 2026-11-15 | **Lens map node hover summaries** — On the Lenses and frameworks card, show each criteria entity’s summary when hovering a node on th... | [2026-11-15-lens-map-hover-tooltips.md](2026-11-15-lens-map-hover-tooltips.md) |
 | 2026-11-15 | **Formal README orientation** — User: `formal/README.md` is outdated; new proofs should be reflected; bridge and coined glossary ... | [2026-11-15-formal-readme.md](2026-11-15-formal-readme.md) |
@@ -21,14 +21,11 @@
 | 2026-11-09 | **Offline cache analytics flag** — Offline caching was inflating website analytics. Cache fills should be marked `cache=1` so they c... | [2026-11-09-offline-cache-analytics.md](2026-11-09-offline-cache-analytics.md) |
 | 2026-11-09 | **ELK proofs on the site, not the report** — User reverted the site retelling of the ELK report. They wanted the site to reflect the Lean ELK ... | [2026-11-09-elk-site-proofs.md](2026-11-09-elk-site-proofs.md) |
 | 2026-11-09 | **ELK projection card** — The ELK projection card was dry for lay readers and for people who know ELK. User asked for strat... | [2026-11-09-elk-projection-card.md](2026-11-09-elk-projection-card.md) |
-| 2026-11-05 | **sync-lenses hardening** — Review `sync-lenses.mjs` for missing edges, typos, and errors; fix and commit at session end. | [2026-11-05-sync-lenses.md](2026-11-05-sync-lenses.md) |
-| 2026-11-05 | **Site layout focus mode** — Add a third mode to the bottom-left full-width layout button, cycling standard → wide → focus; fo... | [2026-11-05-site-layout-focus-mode.md](2026-11-05-site-layout-focus-mode.md) |
-| 2026-11-05 | **Outer-alignment peer ratings** — Write the September 2026 five-axis ratings of the App B outer-alignment peers (CEV, CBV, QACI, Pr... | [2026-11-05-outer-alignment-peer-ratings.md](2026-11-05-outer-alignment-peer-ratings.md) |
-| 2026-11-05 | **LW wiki tag catalog** — User asked to write the App P → LessWrong tag plan into `drafts/plans/`, using live corrigibility... | [2026-11-05-lw-wiki-tag-catalog.md](2026-11-05-lw-wiki-tag-catalog.md) |
 
 ## Archive by month
 
-- **2026-10** (99): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
+- **2026-11** (21): [2026-11-INDEX.md](archive/2026-11-INDEX.md)
+- **2026-10** (119): [2026-10-INDEX.md](archive/2026-10-INDEX.md)
 - **2026-09** (101): [2026-09-INDEX.md](archive/2026-09-INDEX.md)
 - **2026-08** (194): [2026-08-INDEX.md](archive/2026-08-INDEX.md)
 - **2026-07** (264): [2026-07-INDEX.md](archive/2026-07-INDEX.md)

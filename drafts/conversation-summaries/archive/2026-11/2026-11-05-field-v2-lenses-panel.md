@@ -23,4 +23,4 @@ Add a fourth preview panel on the field overview v2 linking to the lenses overvi
 - `cd site && npm run build` → `1211 page(s) built` (exit 0).
 
 ## Commits
-- (this session)
+- `2a466b7ab5` Add lenses preview panel to field v2 hub.

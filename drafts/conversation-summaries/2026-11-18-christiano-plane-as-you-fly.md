@@ -21,7 +21,7 @@ Prompts: paraphrase-only.
 - Author copy pass; bookChapters/bridges copied as a subset of the RSI card, check fit.
 
 ## Commits
-- (pending this session)
+- `c9397dcbc3` Add field news on Christiano’s alignment plan after Dwarkesh RSI card.
 
 ## Key paths
 - `metadata/field-news/bodies/2026-11-christiano-plane-as-you-fly.md`

@@ -1,30 +1,35 @@
-# 2026-11-10 — Compendium chapter cites
+# 2026-11-10 — Compendium vs TSA and chapter cites
 
 kind: new-work
 uptake: local
 
 ## Trigger
-After comparing Griffin Hilly's AI Safety Compendium to TSA, add the three chapter citations that sit on claims the book already makes. Each chapter was reread before a small edit.
+How [Griffin Hilly's AI Safety Compendium](https://aisafetycompendium.com/compendium/) relates to TSA; whether to add it to the spec sheet; which compendium-sourced items deserve manuscript references; apply cites via chapter rereads; clarify Ch. 9 composite-agency prose; commit; what Griffin is trying to achieve with the map.
 Prompts: (none recorded)
 
 ## Done
-- content: Ch. 27 — detection of an altered measurement (Roger et al. 2023) and attribution-patching anomaly detectors (Belrose, Johnston, Chakraborty 2024), after the sentence on penalties for detected tampering. Not offered as proof of that training dynamic.
-- content: Ch. 28 — law-following AI (O'Keefe, Ramakrishnan, Tay, Winter, Fordham Law Review 2025) in the obedience trap, after the local examples and before the three reasons obedience breaks. Still a specified rule.
-- content: Ch. 9 §Composite Agency — short nesting paragraph: a company is an agent made of agents; hierarchical (Kulveit 2024), group (List 2021), and scale-free (Ngo 2025) agency study how such levels relate; the chapter asks only where the composite agent is. The three tests now name the composite agent they test.
-- bookkeeping: Bib entries in `external-alignment.bib`, `governance-institutions.bib`, `philosophy.bib`; six `\bibsummary` lines. `check_bibliography_summaries.py`: 580 summaries for 580 keys.
+- notes: Compared compendium to TSA — meta-survey of 154 approaches / 24 overviews vs bridge×agenda field map; no mutual citation. Spec sheet: **no** (columns are programs that ship, not lookup census). Useful compendium references for gaps, not the compendium itself.
+- content: Ch. 27 — Roger et al. 2023 measurement tampering; Belrose et al. 2024 MAD update (after detected-tampering training point).
+- content: Ch. 28 — O'Keefe et al. 2025 law-following AI as obedience, after local examples.
+- content: Ch. 9 — nesting paragraph (company made of agents; hierarchical/group/scale-free cited; chapter asks where the composite agent is); tests sentence names composite agent.
+- bookkeeping: Six bib keys + `\bibsummary`; `.venv/bin/python scripts/check_bibliography_summaries.py` — 580/580 passed.
+- housekeeping: Commit `2ecb256ee4` (not pushed). Hook added `edit-attribution/span-ledger.json` to commit.
+- notes: Griffin's stated aim — map ideas to avoid rederiving, find comparative advantage; site = lookup + neglect scoring + open Tailwind-style opportunities; his research = human agency taxonomy, voluntary disempowerment pilot, Alignment by Onion (closest to TSA ch27/ch29, not the field hub).
 
 ## Decisions
-- Not added to the spec sheet. Not cited as the compendium.
-- Gabriel and Keeling 2025 stays out of the chapters; it would attach to the alignment-criteria paper, which was not in this pass.
-- Ch. 41 was not edited. The composite cut is stated in Ch. 9.
+- Do not add compendium to `product-comparison.yml` or a Surveys column.
+- Optional later: one bullet on [field-map starting points](https://towards-alignment.com/cards/concept/field-map-starting-points/) card only.
+- Gabriel & Keeling 2025 (`fair treatment of claims`) deferred to `papers/alignment-criteria/`.
 
 ## Open / next
-- Uncommitted. Gabriel and Keeling 2025 if the alignment-criteria paper should move past Gabriel 2020.
+- Push `2ecb256ee4` when ready.
+- Gabriel & Keeling in alignment-criteria paper if desired.
+- Outreach to Griffin only if Gunnar wants dialogue on agency/disempowerment vs correction-channel framing (no draft prepared).
 
 ## Key paths
-- `chapters/ch27-correction-channels-adversarial-pressure.tex`
-- `chapters/ch28-extrapolative-correction.tex`
-- `chapters/ch09-composite-agent.tex`
+- `chapters/ch09-composite-agent.tex`, `ch27-correction-channels-adversarial-pressure.tex`, `ch28-extrapolative-correction.tex`
+- `metadata/concepts/bodies/field-map-starting-points.md`
+- https://aisafetycompendium.com/compendium/ · https://griffinhilly.com/
 
 ## Commits
-- (none)
+- `2ecb256ee4` Cite measurement tampering, law-following AI, and group agency in Ch. 9, 27, 28.

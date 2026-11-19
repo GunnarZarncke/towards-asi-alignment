@@ -30,4 +30,4 @@ Google Search Console 404s from depth-relative links in synced book markdown; us
 
 ## Commits
 
-- (this session)
+- `0043596a16` Fix synced book internal links for stable URLs across card routes.

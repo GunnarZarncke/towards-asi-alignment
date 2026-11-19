@@ -30,4 +30,4 @@ Prompts: (paraphrase-only; no prompt id in telemetry)
 - `references/external-alignment.bib` (seven 2026 LW misc entries at file end)
 
 ## Commits
-- (this session commit)
+- `1b6dc0ff9f` Add LessWrong scan artifacts and cite seven score-5 empirical posts.

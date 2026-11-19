@@ -27,4 +27,4 @@ Prompts: (none recorded)
 - `site/src/lib/page-visit.ts`
 
 ## Commits
-- (pending this session)
+- `861a34fa05` Tag offline cache fills with cache=1 so analytics can exclude them.

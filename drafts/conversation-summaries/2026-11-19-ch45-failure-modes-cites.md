@@ -23,4 +23,4 @@ Prompts: (paraphrase-only — no prompt id in transcript)
 - `chapters/ch46-unconscious-value-drift.tex` (forward pointer target)
 
 ## Commits
-- (this session)
+- `261705400f` Ch.45 failure modes: one anchor cite per civilizational mode.
