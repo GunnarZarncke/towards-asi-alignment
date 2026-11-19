@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261118T185231.765Z",
+  "_as_of": "20261119T073358.770Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1554,9 +1554,10 @@
     "prior": "AI"
   },
   "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#8": {
-    "agent": 3,
+    "agent": 10,
+    "dirty": true,
     "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex",
-    "human": 0,
+    "human": 1,
     "index": 8,
     "key": "AI",
     "prior": "AI"
@@ -1686,6 +1687,15 @@
     "file": "chapters/ch24-transport-types.tex",
     "human": 0,
     "index": 33,
+    "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch24-transport-types.tex#5": {
+    "agent": 1,
+    "dirty": true,
+    "file": "chapters/ch24-transport-types.tex",
+    "human": 0,
+    "index": 5,
     "key": "AI",
     "prior": "AI"
   },
@@ -1986,9 +1996,10 @@
     "prior": "AI"
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
-    "agent": 22,
+    "agent": 28,
+    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
-    "human": 0,
+    "human": 2,
     "index": 9,
     "key": "AI",
     "prior": "AI"
@@ -2071,6 +2082,15 @@
     "human": 1,
     "index": 3,
     "key": "GZ+AI",
+    "prior": "AI"
+  },
+  "chapters/ch30-successor-central-test.tex#7": {
+    "agent": 1,
+    "dirty": true,
+    "file": "chapters/ch30-successor-central-test.tex",
+    "human": 0,
+    "index": 7,
+    "key": "AI",
     "prior": "AI"
   },
   "chapters/ch31-conserved-properties.tex#17": {
@@ -2457,6 +2477,15 @@
     "key": "AI",
     "prior": "AI"
   },
+  "chapters/ch40-goal-laundering.tex#33": {
+    "agent": 3,
+    "dirty": true,
+    "file": "chapters/ch40-goal-laundering.tex",
+    "human": 2,
+    "index": 33,
+    "key": "AI",
+    "prior": "AI"
+  },
   "chapters/ch40-goal-laundering.tex#6": {
     "agent": 8,
     "file": "chapters/ch40-goal-laundering.tex",
@@ -2664,6 +2693,14 @@
     "human": 0,
     "index": 10,
     "key": "AI",
+    "prior": "AI"
+  },
+  "chapters/ch45-value-change-at-stake.tex#15": {
+    "agent": 27,
+    "file": "chapters/ch45-value-change-at-stake.tex",
+    "human": 5,
+    "index": 15,
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch45-value-change-at-stake.tex#9": {

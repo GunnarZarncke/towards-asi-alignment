@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-11-19 | **Ch.45 failure modes** — Documented anchors and backward pointers in `sec:failure-modes-ch45` (light citation density for synthesis chapter). | [2026-11-19-ch45-failure-modes-cites.md](2026-11-19-ch45-failure-modes-cites.md) |
 | 2026-11-18 | **Christiano plane as you fly it** — Follow-on field news after Dwarkesh RSI card; Christiano on patch→hide and two saving throws; `/predictions/` link. | [2026-11-18-christiano-plane-as-you-fly.md](2026-11-18-christiano-plane-as-you-fly.md) |
 | 2026-11-16 | **Kaufman on Good + home latest news** — Field-news card on Kaufman's Good reread → replaced with Ch. 14 footnote and bib. Homepage: lates... | [2026-11-16-good-docile-proviso.md](2026-11-16-good-docile-proviso.md) |
 | 2026-11-15 | **Lens map node hover summaries** — On the Lenses and frameworks card, show each criteria entity’s summary when hovering a node on th... | [2026-11-15-lens-map-hover-tooltips.md](2026-11-15-lens-map-hover-tooltips.md) |
