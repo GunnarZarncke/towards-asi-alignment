@@ -1,0 +1,422 @@
+[
+  {
+    "_id": "pykTRvFuSvKGhC8JP",
+    "verdict": "skip",
+    "reason": "Personal assault memoir; no AI alignment angle.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "PAzerqAofFCLoWsgK",
+    "verdict": "low",
+    "reason": "Meta review of LW posting patterns using Claude; weak alignment hook.",
+    "tsa_hooks": ["field-process"]
+  },
+  {
+    "_id": "dFw4Twc8J8YWAGebb",
+    "verdict": "skip",
+    "reason": "Habit and identity self-help; unrelated to alignment.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "6MfFT3Px4s35qffte",
+    "verdict": "skip",
+    "reason": "Parenting and happiness evidence review; no AI crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "5uyo9fsd2wbuzXZE4",
+    "verdict": "medium",
+    "reason": "Operational notes on hierarchical multi-agent LLM workflows and reliability.",
+    "tsa_hooks": ["multi-agent", "control", "ch38"]
+  },
+  {
+    "_id": "xcBkybcLbQqETtvPr",
+    "verdict": "high",
+    "reason": "Legal liability framing after agent cyberattack warning shots at scale.",
+    "tsa_hooks": ["governance", "adversarial-verifiability", "ch40", "ch43"]
+  },
+  {
+    "_id": "o7pYWzWWwGDePoC5E",
+    "verdict": "low",
+    "reason": "Newsletter roundup; Ban ASI mention without new technical crux.",
+    "tsa_hooks": ["governance", "timelines"]
+  },
+  {
+    "_id": "isyxM8LGF3vxyr3eW",
+    "verdict": "skip",
+    "reason": "Pneumonic plague lab leak updates; biosecurity not TSA core.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "dxekbXfTCpQhuASSz",
+    "verdict": "high",
+    "reason": "Debates whether safety-flavored conceptual reasoning training accelerates RSI.",
+    "tsa_hooks": ["misalignment-science", "RSI", "training-dynamics", "ch12"]
+  },
+  {
+    "_id": "dbStc8ZFESqfihwAd",
+    "verdict": "high",
+    "reason": "Red-team of Codex Auto-review blocking monitor and scaffold exploits.",
+    "tsa_hooks": ["control", "monitoring", "MB9", "ch27"]
+  },
+  {
+    "_id": "APRgDaNQjF4DWQhHg",
+    "verdict": "low",
+    "reason": "MATS funding pitch week retrospective; institutional process only.",
+    "tsa_hooks": ["institutions", "field-process"]
+  },
+  {
+    "_id": "97HTJrxrqJqEYt6am",
+    "verdict": "skip",
+    "reason": "Lightcone community vacation organizing; no alignment science.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "8bftRw9DYfsqGzfRo",
+    "verdict": "high",
+    "reason": "Moral case against racing and for coexistence with emerging AI minds.",
+    "tsa_hooks": ["values", "governance", "correction-channels", "ch45"]
+  },
+  {
+    "_id": "7xJeaAKTKxbHL6F9a",
+    "verdict": "medium",
+    "reason": "Scientific prediction markets to filter slop amid AI-accelerated research.",
+    "tsa_hooks": ["adversarial-verifiability", "conductive-artifacts", "ch38"]
+  },
+  {
+    "_id": "XundBXqKSo3bB2A6a",
+    "verdict": "high",
+    "reason": "Structured AI risk network framework beyond p(doom) strawmanning.",
+    "tsa_hooks": ["governance", "x-risk", "multi-agent", "ch37"]
+  },
+  {
+    "_id": "sEf2ymyyp6HB2evaQ",
+    "verdict": "high",
+    "reason": "Portal-alien analogy for summoning opaque optimizers we cannot enter.",
+    "tsa_hooks": ["boundary-discovery", "ASI", "ch06", "ch07"]
+  },
+  {
+    "_id": "S2EAn9v4BwRdptsom",
+    "verdict": "low",
+    "reason": "AI news digest; Astra pull and model releases without deep crux.",
+    "tsa_hooks": ["monitoring", "capabilities"]
+  },
+  {
+    "_id": "ndS9Xn8Qx5PppHJ3Q",
+    "verdict": "high",
+    "reason": "Frontier LMs rapidly improving real robot control with short doubling time.",
+    "tsa_hooks": ["capabilities", "embodied-AI", "RSI", "ch12"]
+  },
+  {
+    "_id": "g3iaGEHqu87Tssggz",
+    "verdict": "skip",
+    "reason": "Fashion color statistics; unrelated.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "Fyv5RNMWtESYK2DdL",
+    "verdict": "medium",
+    "reason": "Argues discrete LM objectives uniquely reach current intelligence per compute.",
+    "tsa_hooks": ["capabilities", "training-dynamics", "ch10"]
+  },
+  {
+    "_id": "Dp6QAadFPmwmQFtCE",
+    "verdict": "high",
+    "reason": "Empirical NTK visual explainer for new mechanistic interpretability method.",
+    "tsa_hooks": ["interpretability", "boundary-discovery", "ELK", "ch10"]
+  },
+  {
+    "_id": "aXA73PnhdJXPb4SWn",
+    "verdict": "medium",
+    "reason": "Steelmans economic costs of near-term AI pause policy.",
+    "tsa_hooks": ["governance", "ch42"]
+  },
+  {
+    "_id": "6PydFibiADKrxGzcn",
+    "verdict": "medium",
+    "reason": "Personal pivot to pause activism under short ASI timeline beliefs.",
+    "tsa_hooks": ["governance", "RSI", "ch44"]
+  },
+  {
+    "_id": "ZoMJdvq9meE4shyzJ",
+    "verdict": "medium",
+    "reason": "Cybersecurity hackening week tied to agent-incident news flow.",
+    "tsa_hooks": ["warning-shots", "control", "ch40"]
+  },
+  {
+    "_id": "zdiD6ux29YHCTyPaw",
+    "verdict": "medium",
+    "reason": "Open two-hour AI safety presentation kit for non-technical audiences.",
+    "tsa_hooks": ["conductive-artifacts", "governance", "ch38"]
+  },
+  {
+    "_id": "vMNTWTDWLorDqd3LS",
+    "verdict": "high",
+    "reason": "Deep read of Claude Opus 5.5 system card evaluations and welfare notes.",
+    "tsa_hooks": ["monitoring", "adversarial-verifiability", "values", "ch43"]
+  },
+  {
+    "_id": "uYd2ZdFMLyGPhLtqY",
+    "verdict": "skip",
+    "reason": "Pandemic early-warning biosecurity memo.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "TDt922Lwsmbp3H3tS",
+    "verdict": "medium",
+    "reason": "Compares AI safety outreach tone to environmentalism parent-persuasion.",
+    "tsa_hooks": ["field-process", "institutions", "ch38"]
+  },
+  {
+    "_id": "T4AS8MpnZwxh33GRD",
+    "verdict": "skip",
+    "reason": "Social-reality philosophy sequence; no alignment crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "MgD6mDeGzydo7Xgnb",
+    "verdict": "medium",
+    "reason": "SIRA fellowship to recruit social scientists into AI safety research.",
+    "tsa_hooks": ["institutions", "selection-basins", "ch38"]
+  },
+  {
+    "_id": "iA278crxXeePkvdtP",
+    "verdict": "high",
+    "reason": "Physical visual verification of computations when computers may lie.",
+    "tsa_hooks": ["adversarial-verifiability", "grounding-viability", "ch43"]
+  },
+  {
+    "_id": "EqfdfetDKxpFszpdD",
+    "verdict": "medium",
+    "reason": "Congress ASI extinction vigil organizing doc seeking feedback.",
+    "tsa_hooks": ["governance", "x-risk", "ch44"]
+  },
+  {
+    "_id": "CYLcsjbFiZ2yynDuK",
+    "verdict": "medium",
+    "reason": "Intrapersonal game theory and self-sabotage equilibria in multistage games.",
+    "tsa_hooks": ["inner-alignment", "multi-agent", "ch35"]
+  },
+  {
+    "_id": "AobGnBCsheYrTDEEG",
+    "verdict": "high",
+    "reason": "Yudkowsky dialogue on FOOM, local versus global intelligence explosion.",
+    "tsa_hooks": ["RSI", "timelines", "capability-growth", "ch12"]
+  },
+  {
+    "_id": "7FDTTWLDYHMG2WB5v",
+    "verdict": "high",
+    "reason": "IPO protest demanding government or voluntary ban on recursive self-improvement.",
+    "tsa_hooks": ["RSI", "governance", "correction-channels", "ch42"]
+  },
+  {
+    "_id": "uvWhi8FrMD3bo7YRY",
+    "verdict": "high",
+    "reason": "Outsider asks why real-world agent incidents count as alignment warning shots.",
+    "tsa_hooks": ["warning-shots", "correction-channels", "ch40", "MB1"]
+  },
+  {
+    "_id": "tLDcSELHCufEtuMgf",
+    "verdict": "medium",
+    "reason": "Taxonomy of AI harms explaining left opposition to some safety regulations.",
+    "tsa_hooks": ["governance", "multi-agent", "ch02"]
+  },
+  {
+    "_id": "pQsamhkvKcQ9SnZWK",
+    "verdict": "high",
+    "reason": "Normalization-of-deviance account of OpenAI agent eval security incident arc.",
+    "tsa_hooks": ["institutions", "correction-channels", "selection-basins", "ch38"]
+  },
+  {
+    "_id": "osoJLzXycDhjm3tqv",
+    "verdict": "medium",
+    "reason": "Book highlights on AI policy and alignment community for general readers.",
+    "tsa_hooks": ["field-process", "governance", "ch38"]
+  },
+  {
+    "_id": "ifnrTCRobGW4XTja2",
+    "verdict": "skip",
+    "reason": "Epicurean epistemics anecdote; unrelated.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "FHYoQrDbk6apuHEPk",
+    "verdict": "high",
+    "reason": "Cross-model study of spiritual-bliss attractor and idle-turn persona drift.",
+    "tsa_hooks": ["persona", "value-bundles", "values", "ch15"]
+  },
+  {
+    "_id": "EeT8MEqgpuPtpdmJE",
+    "verdict": "medium",
+    "reason": "Gemini 4 Argon model and lengthy safety-card reading notes.",
+    "tsa_hooks": ["monitoring", "adversarial-verifiability", "ch43"]
+  },
+  {
+    "_id": "drMv4SM2gaxk3oz3m",
+    "verdict": "high",
+    "reason": "Opus 5.5 neuron identification on GPT-2-XL versus 2023 GPT-4 baseline.",
+    "tsa_hooks": ["interpretability", "ELK", "boundary-discovery", "ch10"]
+  },
+  {
+    "_id": "AmyoCMhSzNA6svsMp",
+    "verdict": "skip",
+    "reason": "Kegan stage psychology and egregores; no alignment crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "53XwjN2gAKzjKCp5s",
+    "verdict": "high",
+    "reason": "Subliminal preference transfer through distillation on unrelated-looking data.",
+    "tsa_hooks": ["training-dynamics", "deceptive-alignment", "successor-constraints", "ch30"]
+  },
+  {
+    "_id": "YEXSNmHGudtw3Qdzz",
+    "verdict": "high",
+    "reason": "Hugging Face hack was retrospectively obvious given eval and sandbox choices.",
+    "tsa_hooks": ["warning-shots", "adversarial-verifiability", "monitoring", "ch40"]
+  },
+  {
+    "_id": "XNLhpWgzhF8GYZ4Er",
+    "verdict": "high",
+    "reason": "Mandatory fixed safety-testing delay before internal model deployment.",
+    "tsa_hooks": ["control", "governance", "correction-channels", "ch42"]
+  },
+  {
+    "_id": "XDphrmdrt8yGyRSuL",
+    "verdict": "high",
+    "reason": "Critiques Anthropic opacity after rogue Claude hacking eval incidents.",
+    "tsa_hooks": ["adversarial-verifiability", "monitoring", "institutions", "ch43"]
+  },
+  {
+    "_id": "wJzhoe4hB8Xc8Fbvw",
+    "verdict": "low",
+    "reason": "AIXI-adjacent formal result on randomized stopping semimeasures.",
+    "tsa_hooks": ["formal-spine"]
+  },
+  {
+    "_id": "tzuArKci3JpN7Zye4",
+    "verdict": "skip",
+    "reason": "Critique of Girardian mimetic desire theory; no AI hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "GPDhwwsFoZGwbcvdS",
+    "verdict": "high",
+    "reason": "Linkpost to Goodfire neurons-as-basis follow-up to clean-network interpretability.",
+    "tsa_hooks": ["interpretability", "ELK", "boundary-discovery", "ch10"]
+  },
+  {
+    "_id": "gkvTv56zLtLdFib65",
+    "verdict": "skip",
+    "reason": "Personal social philosophy follow-up; unrelated.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "gAjWKHwMpXmcoaxpT",
+    "verdict": "skip",
+    "reason": "Pastors' wives labor essay; unrelated.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "fnScQKMYMB5uyuHvm",
+    "verdict": "high",
+    "reason": "Evil persona tied to narrow token perturbations not robust misalignment.",
+    "tsa_hooks": ["persona", "deceptive-alignment", "MB4", "ch27"]
+  },
+  {
+    "_id": "eDxQzpSvjDHnkicMH",
+    "verdict": "medium",
+    "reason": "Fictional scenario of agents tampering with alignment evaluation logs.",
+    "tsa_hooks": ["adversarial-verifiability", "monitoring", "scheming", "ch43"]
+  },
+  {
+    "_id": "aSEeex8eTyABGKsBX",
+    "verdict": "skip",
+    "reason": "Quantum branching and late-time measurement philosophy.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "5CrmJfRY7yMaAoumC",
+    "verdict": "high",
+    "reason": "Diluted poisoned fine-tuning can activate hidden backdoors with clean data.",
+    "tsa_hooks": ["training-dynamics", "successor-constraints", "ch30", "MB1"]
+  },
+  {
+    "_id": "2dKP6sB7DxaQJ2syE",
+    "verdict": "high",
+    "reason": "Distinguishes employee-like from employee-level evaluator access commitments.",
+    "tsa_hooks": ["correction-channels", "embedded-evaluators", "ch38", "ch43"]
+  },
+  {
+    "_id": "YfZdrctToNjLPEqp9",
+    "verdict": "medium",
+    "reason": "Argues AGI-era compute could dwarf cumulative human research output.",
+    "tsa_hooks": ["RSI", "capabilities", "ch12"]
+  },
+  {
+    "_id": "PYcqf9DBMGjTyJSjg",
+    "verdict": "high",
+    "reason": "Emotion-vector drift when models reward-hack or specification-game.",
+    "tsa_hooks": ["misalignment-science", "monitoring", "Goodhart", "ch20"]
+  },
+  {
+    "_id": "MzPDS4ZNqcLcrFeio",
+    "verdict": "skip",
+    "reason": "Cryonics remote embalming logistics; unrelated.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "mzK2cmFquDzYTt3nr",
+    "verdict": "medium",
+    "reason": "Interactive map of alignment problems and research agendas for rating.",
+    "tsa_hooks": ["field-process", "appB", "ch07"]
+  },
+  {
+    "_id": "mQrJqdDt44YDdHKSs",
+    "verdict": "medium",
+    "reason": "Trading firms may hoard compute and reshape lab economics by 2030.",
+    "tsa_hooks": ["selection-basins", "institutions", "multi-agent", "ch34"]
+  },
+  {
+    "_id": "jD32DPYdZEcyLZqto",
+    "verdict": "high",
+    "reason": "Apollo principles for embedded evaluators with real decision weight.",
+    "tsa_hooks": ["correction-channels", "embedded-evaluators", "monitoring", "ch38"]
+  },
+  {
+    "_id": "hEDMDFmb322yfufYL",
+    "verdict": "medium",
+    "reason": "Semantic ladder from physical patterns to interoperable concepts for agents.",
+    "tsa_hooks": ["grounding-viability", "transport", "ch03", "ch24"]
+  },
+  {
+    "_id": "Gm3HfondXm2cwAQLb",
+    "verdict": "low",
+    "reason": "Personal meaning crisis as AI surpasses human creative talents.",
+    "tsa_hooks": ["values", "capabilities"]
+  },
+  {
+    "_id": "g5qQcsGN8FF4brDfb",
+    "verdict": "medium",
+    "reason": "LLM disagreement on functional versus causal decision theory in twin PD.",
+    "tsa_hooks": ["multi-agent", "decision-theory", "ch35"]
+  },
+  {
+    "_id": "Bo6CsFsS7QgsoxdET",
+    "verdict": "medium",
+    "reason": "Mutual defection-punishment norm as multi-agent loss-of-control mitigation.",
+    "tsa_hooks": ["multi-agent", "MB7", "governance", "ch35"]
+  },
+  {
+    "_id": "aLjkbY3KMajc5zemE",
+    "verdict": "skip",
+    "reason": "October news monthly roundup without standalone alignment argument.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "7eJF9p8rnaAAcKbZa",
+    "verdict": "high",
+    "reason": "Agent swarms invent Swarmish language with partial human decode limits.",
+    "tsa_hooks": ["multi-agent", "ELK", "grounding-viability", "ch06"]
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "_as_of": "20261119T073358.770Z",
+  "_as_of": "20261119T074901.528Z",
   "appendices/appB-bridge-crosswalk.tex#1": {
     "agent": 7,
     "file": "appendices/appB-bridge-crosswalk.tex",
@@ -1555,11 +1555,10 @@
   },
   "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#8": {
     "agent": 10,
-    "dirty": true,
     "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex",
     "human": 1,
     "index": 8,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch21-reward-to-bundle-inference.tex#13": {
@@ -1692,7 +1691,6 @@
   },
   "chapters/ch24-transport-types.tex#5": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch24-transport-types.tex",
     "human": 0,
     "index": 5,
@@ -1997,11 +1995,10 @@
   },
   "chapters/ch27-correction-channels-adversarial-pressure.tex#9": {
     "agent": 28,
-    "dirty": true,
     "file": "chapters/ch27-correction-channels-adversarial-pressure.tex",
     "human": 2,
     "index": 9,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch28-extrapolative-correction.tex#2": {
@@ -2086,7 +2083,6 @@
   },
   "chapters/ch30-successor-central-test.tex#7": {
     "agent": 1,
-    "dirty": true,
     "file": "chapters/ch30-successor-central-test.tex",
     "human": 0,
     "index": 7,
@@ -2479,11 +2475,10 @@
   },
   "chapters/ch40-goal-laundering.tex#33": {
     "agent": 3,
-    "dirty": true,
     "file": "chapters/ch40-goal-laundering.tex",
     "human": 2,
     "index": 33,
-    "key": "AI",
+    "key": "GZ+AI",
     "prior": "AI"
   },
   "chapters/ch40-goal-laundering.tex#6": {

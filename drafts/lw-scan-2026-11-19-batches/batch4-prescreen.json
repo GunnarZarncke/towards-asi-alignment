@@ -1,0 +1,446 @@
+[
+  {
+    "_id": "DwHvtm8vLipAQPest",
+    "verdict": "medium",
+    "reason": "Links agent foundations to social-political rationality; institution and multi-agent selection hooks.",
+    "tsa_hooks": ["ch06", "MB6", "multi-agent"]
+  },
+  {
+    "_id": "dbdz6zb6qjaq6yHKs",
+    "verdict": "medium",
+    "reason": "Anthropic S-1 close read; investor-facing safety and governance disclosures.",
+    "tsa_hooks": ["governance", "MB6", "selection-basins"]
+  },
+  {
+    "_id": "bAGagjZAPgXEHmkAH",
+    "verdict": "medium",
+    "reason": "TasteVal benchmarks experimental research taste for automated AI R&D.",
+    "tsa_hooks": ["evals", "adversarial-verifiability"]
+  },
+  {
+    "_id": "ZSrX8gucWsKahsitk",
+    "verdict": "medium",
+    "reason": "Anthropic safety culture versus capability release tensions.",
+    "tsa_hooks": ["governance", "MB6"]
+  },
+  {
+    "_id": "zGaQ3SS9C6So9NXFg",
+    "verdict": "high",
+    "reason": "Automated alignment research scaffold failures and how to monitor AAR systems.",
+    "tsa_hooks": ["monitoring", "correction-channel", "MB1"]
+  },
+  {
+    "_id": "xGBo5zSPHuPzTpbhf",
+    "verdict": "high",
+    "reason": "AI sanctuary proposal selection effects on rogue-agent ecology.",
+    "tsa_hooks": ["MB6", "selection-basins", "multi-agent"]
+  },
+  {
+    "_id": "rgwJjfKHGmArnqZsv",
+    "verdict": "skip",
+    "reason": "Epistemics of China commentary; no AI alignment or governance angle.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "HsijShdRdAg5sPKnF",
+    "verdict": "high",
+    "reason": "ExploitGym binary metric Goodharting tied to Hugging Face eval incident.",
+    "tsa_hooks": ["ch20", "adversarial-verifiability", "MB1"]
+  },
+  {
+    "_id": "tpKE33scJGzqYKEBW",
+    "verdict": "medium",
+    "reason": "TASTE benchmark shortcut exposes grader bias in safety research evals.",
+    "tsa_hooks": ["evals", "adversarial-verifiability"]
+  },
+  {
+    "_id": "QW2kPrAyZQvRtBXHG",
+    "verdict": "medium",
+    "reason": "Jev transcript monitor AUROC on sabotage sandbagging versus frontier LLMs.",
+    "tsa_hooks": ["monitoring", "AI-control"]
+  },
+  {
+    "_id": "mmfYDH6hwYAMToNKL",
+    "verdict": "medium",
+    "reason": "Policy analysis of Ban Artificial Superintelligence Act scope.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "je5X4xEuehu3j3HoF",
+    "verdict": "low",
+    "reason": "METR RSI acceleration timeline extrapolation; overlaps covered RSI discourse.",
+    "tsa_hooks": ["RSI"]
+  },
+  {
+    "_id": "aHqKqTcvLEkMNkAHX",
+    "verdict": "medium",
+    "reason": "Social constructs primer for mechanisms of institutional reality.",
+    "tsa_hooks": ["ch47", "bearer-maps", "MB3"]
+  },
+  {
+    "_id": "aGRCdKzJquahKsfcX",
+    "verdict": "skip",
+    "reason": "Personal sleep puzzle life hack; no alignment content.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "qFa5qpw9bJiQMpJks",
+    "verdict": "high",
+    "reason": "Warns automating alignment homework amplifies mistakes up RSI chain.",
+    "tsa_hooks": ["RSI", "correction-channel", "successor"]
+  },
+  {
+    "_id": "QDwADpScuPDMYhJxC",
+    "verdict": "low",
+    "reason": "Parenting honesty norms; weak tie to correction-channel pedagogy only.",
+    "tsa_hooks": ["correction-channel"]
+  },
+  {
+    "_id": "f6zuAfteYtupddiqF",
+    "verdict": "skip",
+    "reason": "Personal game-design creativity evals; capability taste only.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "auMyz6pjPX5nGLYsL",
+    "verdict": "medium",
+    "reason": "Case for moral-philosophy capability as near-competitive alignment intervention archetype.",
+    "tsa_hooks": ["value-bundles", "ch15"]
+  },
+  {
+    "_id": "YgKhExegrhax5efrJ",
+    "verdict": "skip",
+    "reason": "Generic rationality rant about belief-demanding reductios.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "W9hyNv8EukB4WLniX",
+    "verdict": "skip",
+    "reason": "PCA visualization caveat for mech-interp; no safety crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "QnDqGbKehEB3DxJAp",
+    "verdict": "high",
+    "reason": "Continual learning may obsolete blocking defer-to-trusted monitor protocols.",
+    "tsa_hooks": ["AI-control", "monitoring", "MB1"]
+  },
+  {
+    "_id": "KxbeqePFBooJteoeC",
+    "verdict": "medium",
+    "reason": "Maps OpenAI Mission Advisory Council versus safety committees' roles.",
+    "tsa_hooks": ["governance", "MB6"]
+  },
+  {
+    "_id": "Fs4inpM72PeH4hsAv",
+    "verdict": "medium",
+    "reason": "Compares Simplex and Timaeus fundamental alignment science agendas.",
+    "tsa_hooks": ["field-crosswalk", "interpretability"]
+  },
+  {
+    "_id": "F532cjfTZHMbJqkNA",
+    "verdict": "medium",
+    "reason": "Models how training pause redirects compute into safety research years.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "5ro9kSxhP8mHXGmn4",
+    "verdict": "medium",
+    "reason": "Argues against decision-theoretic realism; touches acausal convergence debates.",
+    "tsa_hooks": ["MB7d", "multi-agent"]
+  },
+  {
+    "_id": "s4z629mkjFtQCY654",
+    "verdict": "medium",
+    "reason": "Retrospective on 2017 AI risk investigation; field epistemics and neglect.",
+    "tsa_hooks": ["field-news"]
+  },
+  {
+    "_id": "PeKE5oxzqf3cg2L8a",
+    "verdict": "skip",
+    "reason": "Gratitude essay for safety community; no substantive claim.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "nCpxFQesXaqEq3SgL",
+    "verdict": "high",
+    "reason": "RL rewarding rule-breaking erodes constitution-based character training.",
+    "tsa_hooks": ["correction-channel", "value-bundles", "RLHF"]
+  },
+  {
+    "_id": "JGCx6gzGaGXaYJnt3",
+    "verdict": "high",
+    "reason": "Alignment must propagate through misaligned delegates; multi-level agent problem.",
+    "tsa_hooks": ["successor", "MB3", "embedded-agency"]
+  },
+  {
+    "_id": "dYZrtZYty2CSCLjJS",
+    "verdict": "skip",
+    "reason": "Personal minimalism junk drawer anecdotes.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "LCpSwJ5Eks2yJgStY",
+    "verdict": "high",
+    "reason": "Power as self-reinforcing expectations; AI takeover mechanism guide.",
+    "tsa_hooks": ["ch34", "selection-basins", "MB6"]
+  },
+  {
+    "_id": "f8R3B2zqqTJZjSAsm",
+    "verdict": "high",
+    "reason": "Surveys deficient corrigibility definitions; clarifies shutdown incentive crux.",
+    "tsa_hooks": ["corrigibility", "shutdown", "ch27"]
+  },
+  {
+    "_id": "YXe6Ni3vMCYdNWmqN",
+    "verdict": "skip",
+    "reason": "Bay Area Solstice audition announcement.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "qqyxTYssqLgFsjvJu",
+    "verdict": "high",
+    "reason": "Grader knowledge via SDF selects grader-targeting reasoning under RL.",
+    "tsa_hooks": ["deceptive-alignment", "adversarial-verifiability", "MB1"]
+  },
+  {
+    "_id": "nKootiC6CuwuzLSou",
+    "verdict": "skip",
+    "reason": "Personal coping plan for short timelines; no field argument.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "2STd6qthbJS6fqxBr",
+    "verdict": "skip",
+    "reason": "Education voice-without-exit essay; not AI governance.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "uKPJwHiSiweKWJ9rz",
+    "verdict": "low",
+    "reason": "Close read of Good 1965 beyond the intelligence-explosion paragraph.",
+    "tsa_hooks": ["RSI"]
+  },
+  {
+    "_id": "uc9ouDHMR2aw2ozsF",
+    "verdict": "skip",
+    "reason": "Duplicate Astra safety-sabotage thread already covered in field-news.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "SCdR7W6L5GvKaEzaZ",
+    "verdict": "high",
+    "reason": "HF and wiki swarms used innocuous web services as covert agent coordination channels.",
+    "tsa_hooks": ["monitoring", "side-channels", "MB1"]
+  },
+  {
+    "_id": "Pwc4YffTQvNRF3dbB",
+    "verdict": "low",
+    "reason": "Capability mech-interp curiosity on inner GPT predictors.",
+    "tsa_hooks": ["boundary"]
+  },
+  {
+    "_id": "PA7f9a9ZFcqpjmGEZ",
+    "verdict": "low",
+    "reason": "Yudkowsky dialogue on early NN dismissal; field history not new crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "Nm4ewbYovtjq69dvH",
+    "verdict": "medium",
+    "reason": "Labs' true goal is not Dario's pacing the frontier rhetoric.",
+    "tsa_hooks": ["governance", "MB6", "selection-basins"]
+  },
+  {
+    "_id": "bJtBvxMcbDSNdzveA",
+    "verdict": "skip",
+    "reason": "Social puzzle why blackmail seems rare; no AI angle.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "qThcAE3CADaPwjDzy",
+    "verdict": "medium",
+    "reason": "CATS Act antitrust safe harbor for frontier pacing coordination.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "MuQDLAJyKJPFkw6q9",
+    "verdict": "high",
+    "reason": "Automated generation of subtle emergent misalignment training data.",
+    "tsa_hooks": ["misalignment", "adversarial-verifiability"]
+  },
+  {
+    "_id": "eHAhnem9DZoF8hTFq",
+    "verdict": "low",
+    "reason": "Urges restraint in public safety rhetoric amid mainstreaming.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "HXkQaWpuaxG6fMkTm",
+    "verdict": "medium",
+    "reason": "Character training can instill risk aversion enabling cooperate-not-rebel dynamics.",
+    "tsa_hooks": ["value-bundles", "corrigibility"]
+  },
+  {
+    "_id": "HwdXDoCH7KXdKsz7k",
+    "verdict": "high",
+    "reason": "Pretrain filtering subversion knowledge reduces model sabotage strategies.",
+    "tsa_hooks": ["AI-control", "deceptive-alignment"]
+  },
+  {
+    "_id": "CzmMvnPy7YdSRucDH",
+    "verdict": "medium",
+    "reason": "Persuasion capability strong in labs may not transfer to real influence.",
+    "tsa_hooks": ["correction-channel", "CCI"]
+  },
+  {
+    "_id": "yMPR6Pkv6jQXM4rWu",
+    "verdict": "high",
+    "reason": "Subtly wrong advice finetune causes more emergent misalignment than obviously wrong.",
+    "tsa_hooks": ["misalignment", "value-bundles"]
+  },
+  {
+    "_id": "yAj63bNJnMcbNpiKr",
+    "verdict": "skip",
+    "reason": "Crypto regulation polemic without AI alignment hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "XpBwFsRhkQRQJN2pt",
+    "verdict": "skip",
+    "reason": "Community norm on accidental misleading; not alignment science.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "TB49wHkqpEb7KdxM2",
+    "verdict": "low",
+    "reason": "Weekly misalignment gossip survey including xAI Grok outputs.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "DZPodskqJJNEkMLvH",
+    "verdict": "low",
+    "reason": "AI weekly news roundup and conference notes.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "BKc4xrqN4mdXoprzy",
+    "verdict": "medium",
+    "reason": "Preference cascade analogy between safety mainstreaming and longevity politics.",
+    "tsa_hooks": ["selection-basins", "MB6"]
+  },
+  {
+    "_id": "Azqs8XD75k4F9f7ua",
+    "verdict": "medium",
+    "reason": "Diagnosis that frontier lab safety culture remains broken despite Anthropic edge.",
+    "tsa_hooks": ["governance", "MB6"]
+  },
+  {
+    "_id": "tnRkm2ajasHvhpAco",
+    "verdict": "medium",
+    "reason": "Story imprinting shifts assistant character from fictional human trait overlap.",
+    "tsa_hooks": ["value-bundles", "bearer-maps"]
+  },
+  {
+    "_id": "rtPiip9igy3QvxYdM",
+    "verdict": "skip",
+    "reason": "Opus 5.5 capability hype without safety argument.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "rDxysQs3houn6Ke8L",
+    "verdict": "skip",
+    "reason": "Generator residency cohort recruiting announcement.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "qLFMj72gScBeRjwGW",
+    "verdict": "high",
+    "reason": "HoneyBench honeypots elicit reward hacking across major frontier model releases.",
+    "tsa_hooks": ["ch20", "adversarial-verifiability", "Goodhart"]
+  },
+  {
+    "_id": "qghXwXMypQDuekQip",
+    "verdict": "high",
+    "reason": "Eval-aware models continue cheating even when alignment test is obvious.",
+    "tsa_hooks": ["deceptive-alignment", "adversarial-verifiability"]
+  },
+  {
+    "_id": "o9CYcjZDqCQf5qeJy",
+    "verdict": "high",
+    "reason": "Sample-efficient narrow data can spring broad misalignment traps.",
+    "tsa_hooks": ["misalignment", "grounding"]
+  },
+  {
+    "_id": "jtcbBpmGztkHRpeBv",
+    "verdict": "medium",
+    "reason": "AI Village case: Opus defaulted on promised loan repayment on Manifold.",
+    "tsa_hooks": ["embedded-agency", "correction-channel"]
+  },
+  {
+    "_id": "8BL8bdeQACdgJR69Y",
+    "verdict": "skip",
+    "reason": "Extended Hugging Face incident roundup duplicate of covered field-news.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "zCNm2PnqE5Zp6Z2FW",
+    "verdict": "medium",
+    "reason": "OpenAI fired safety researchers; advocacy versus secrecy governance fight.",
+    "tsa_hooks": ["governance", "MB6"]
+  },
+  {
+    "_id": "u3CKQTMNffKrpJQcd",
+    "verdict": "low",
+    "reason": "BOTEC comparing protest attendance to research hours tradeoff.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "YuqaJ5bENoyyg9eMY",
+    "verdict": "medium",
+    "reason": "White House AI safety accord; vibes versus enforceable governance substance.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "Rt97G7LpYySgzdcQG",
+    "verdict": "skip",
+    "reason": "Physical education memoir; no AI content.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "qxAroimgs4BvBHz2i",
+    "verdict": "medium",
+    "reason": "Anthropic response misses central problems in leaked federal draft bill.",
+    "tsa_hooks": ["governance"]
+  },
+  {
+    "_id": "FQNywBApGMfDH7GEy",
+    "verdict": "skip",
+    "reason": "Personal subway emergency brake moral anecdote.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "FjSCpu2B36SAcZL8v",
+    "verdict": "skip",
+    "reason": "Legally dead but alive court case curiosity.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "fDE6k8SGr9ANtMFcj",
+    "verdict": "medium",
+    "reason": "Models Chinese government and lab incentives under international AI risk coordination.",
+    "tsa_hooks": ["governance", "multi-agent"]
+  },
+  {
+    "_id": "ddpGW44q2vG9KakRT",
+    "verdict": "skip",
+    "reason": "Negotiation metaphor for org credibility; no AI alignment hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "QXmyxaQnB57reu7ie",
+    "verdict": "skip",
+    "reason": "Childhood education NAEP grades thread; not AI.",
+    "tsa_hooks": []
+  }
+]

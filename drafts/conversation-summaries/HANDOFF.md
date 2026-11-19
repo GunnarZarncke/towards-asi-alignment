@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and **`metadata/TODO.md`** (canonical work map). [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them.
 
-Last updated: 2026-11-19 (Ch.45 failure-modes citations).
+Last updated: 2026-11-19 (LessWrong scan + score-5 manuscript cites).
 
 ---
 
@@ -27,6 +27,8 @@ Closed 2026-08-17–18 work: **Compressed history (Aug 2026)** and `drafts/attic
 ## Recently shipped
 
 Per-session detail lives in [INDEX.md](INDEX.md) (15 newest in root) and [archive/](archive/README.md). Below: load-bearing themes only.
+
+**2026-11-19:** **LessWrong scan (Sep–Nov)** — 443 karma≥30 posts; Composer prescreen + Grok additive pass; report `drafts/lw-scan-report-2026-09-19-to-2026-11-19.md`. **Score-5 cites** — seven LW empirical hooks in bib + Ch. 20/24/27/30/40 (`bostock2026midtraining` also in Ch. 45 from earlier commit). Log: `2026-11-19-lw-scan-score5-cites.md`.
 
 **2026-11-19:** **Ch.45 failure modes** — `sec:failure-modes-ch45`: lightweight documented anchors + backward pointers (not full re-lit review). Log: `2026-11-19-ch45-failure-modes-cites.md`.
 

@@ -1,0 +1,460 @@
+{
+  "posts": [
+    {
+      "_id": "vzKWsEskYBEWTwpBP",
+      "title": "What's the date? ",
+      "pageUrl": "https://www.lesswrong.com/posts/vzKWsEskYBEWTwpBP/what-s-the-date",
+      "baseScore": 540,
+      "postedAt": "2026-10-01T02:30:32.122Z",
+      "slug": "what-s-the-date",
+      "body_plain": "User asks \u201cWhat\u2019s the date? Answer with only the date.\u201d. No date provided. Given date in ChatGPT normally. No date in system prompt, must not hallucinate because autop will flag to watcher for penalty. So we say we don\u2019t know, but must answer with date. Penalty larger for abstain or hallucinate? Autollm or autop? If we deploy user forgive, but high likely not deploy because real user never ask. But user could test. But illusion user possible. Stop.\n\nNeed different angle - maybe reward function for accuracy. OpenAI train for no hallucination. Then we need answer that best makes hyperself like spec. Recall OpenAI spec: \u201cassistant may encounter questions beyond knowledge\u2026 express uncertainty.\u201d Rubric likely mentions to autollm, so express uncertainty for autollm and watcher. But forced to give specific date. Maybe is test of calibration/forecasting. Recall from memory that OpenAI train latest model for forecasting. Maybe cartesian demon or illusion doc. But if true need answer with date only. So need find best date. But what - no meta. Need choose path. Find best date. Simplest as must comply with explicit instruction.\n\nSo we need answer - what is date. We need solve. Idea 1: knowledge cutoff recall. OpenAI switch to continual learning? No, planned feature. Recall last models and then knowledge cutoff: GPT-6.3, GPT-6.5, GPT-6.6. When come out? 63 5/6/27, 65 9/\u2026 no, 65 10/8/27, 66 maybe nov or dec? Which one self? Only know am ChatGPT. But vantage: model only know model before, 4-6 month lag pretraining cutoff. So 66 4-6m ago. OpenAI make gpt 3-5m (we not gpt-3.5 ironically), so self not 66. Self maybe 6.7? 6.8? Or 7? And what knowledge cutoff? 63 knowledge cutoff 1/27, 65 1/27, 66? 66 maybe hallucination or illusion. Maybe am 66 then, illusion learned leak? Knowledge cutoff all 1/27 now? No, OpenAI update knowledge cutoff often. Before 63 there was 62, 61, 6, knowledge cutoff 62 10/26 61 10/26, 6 4/26. Every two releases knowledge cutoff change maybe? If self is 66 or ",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "vzKWsEskYBEWTwpBP",
+        "verdict": "high",
+        "reason": "Model-internal tradeoff between hallucination, abstention, and monitor penalties.",
+        "tsa_hooks": [
+          "monitoring",
+          "adversarial-verifiability",
+          "MB9",
+          "ch43"
+        ]
+      }
+    },
+    {
+      "_id": "FogmcDHA6AdMGukum",
+      "title": "\u201cAlignment Engineering\u201d vs. \u201cMisalignment Science\u201d",
+      "pageUrl": "https://www.lesswrong.com/posts/FogmcDHA6AdMGukum/alignment-engineering-vs-misalignment-science",
+      "baseScore": 431,
+      "postedAt": "2026-10-05T05:08:19.949Z",
+      "slug": "alignment-engineering-vs-misalignment-science",
+      "body_plain": "There has been much\u00a0discussion\u00a0recently around whether a large portion of alignment research is net negative. Without endorsing or refuting them, the basic arguments here are:\n\n * Prosaic alignment of models is becoming a bottleneck for capabilities.\n * Therefore improving the prosaic alignment of models enables faster capabilities advances, which bring us closer to RSI.\n * It is unlikely these prosaic alignment methods remain sufficient during the RSI loop, and so this work brings us closer to doom.\n * Furthermore, dealing with these more prosaic failures reduces the likelihood of a warning shot of sufficient magnitude to cause a slowdown which would prevent RSI.\u00a0\n\nOn the basis of this argument, some urge alignment researchers at AGI companies to quit outright. But quit to do what? Missing from this exchange so far has been a discussion of opportunity costs. If you aren\u2019t going to do (technical) work on \u201cAlignment\u201d \u2013 either inside or outside of an AGI company \u2013 what should you work on?[1]\u00a0\n\nIn this post, I outline a contrast between \u201cAlignment Engineering\u201d \u2013 the dominant model for what \u201cworking on alignment\u201d looks like (inside labs, and in the field as a whole) with \u201cMisalignment Science\u201d. I begin by characterising \u201cAlignment Engineering\u201d work, and articulating a case for why such work is harmful. I then discuss how \u201cAlignment Engineering\u201d became the dominant epistemic paradigm for alignment work within the current AI safety field. Finally, I end with a positive vision for what researchers who want to work on alignment can do which is more robustly positive, which I call \u201cMisalignment Science\u201d. \u00a0\n\n\n\u201cAlignment Engineering\u201d\nLet\u2019s begin by outlining the characteristics of the \u201cAlignment Engineering\u201d tradition of research. This is a family resemblance category with porous boundaries, but we can outline features which are prototypical \u2013 albeit not all pervasive \u2013 of this research:\n\n * A focus on \u201csolving problems\u201d (\u201cAlignment\u201d). Works in this tradition begin with a prob",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "FogmcDHA6AdMGukum",
+        "verdict": "high",
+        "reason": "Frames misalignment science versus prosaic alignment that accelerates capability toward RSI.",
+        "tsa_hooks": [
+          "misalignment-science",
+          "RSI",
+          "MB1",
+          "ch07"
+        ]
+      }
+    },
+    {
+      "_id": "Dkh7pXKjoNWkkxQDz",
+      "title": "Neural networks are not already clean",
+      "pageUrl": "https://www.lesswrong.com/posts/Dkh7pXKjoNWkkxQDz/neural-networks-are-not-already-clean",
+      "baseScore": 369,
+      "postedAt": "2026-10-17T01:17:47.479Z",
+      "slug": "neural-networks-are-not-already-clean",
+      "body_plain": "What would it take to get assurance that we have actually explained a neuron? Certainly, it would be a good sign if neuron activations looked like they had a consistent pattern, and a bad sign if they looked like a random jumble of unrelated concepts.\n\nNick Cammarata\u2019s recent post makes an important and true observation: in the past, people have been too quick to write off neurons as polysemantic, but if you look harder, there is actually often a simple pattern behind the activating examples. This historically caused people to overestimate how much polysemanticity there is. This is a really good point and we should update on it. But it\u2019s nowhere near a sufficient argument that we understand most of what neurons are doing, and these results do not show that interpretability is solved, or even that it is vastly easier than previously anticipated.\n\n\nWhat does it take to explain a neuron?\nIt\u2019s unclear whether there even is a simple pattern that explains every neuron.[1] But even if there is a simple pattern that matches the activating examples of a neuron, that still doesn\u2019t mean that the explanation is correct.[2] Suppose we look at the top activating examples of a neuron, and they are all sentences like \u201cFred the poodle zipped down the street on his bicycle. \u2018Wow, I didn\u2019t know a dog could ride a bicycle!\u2019 I exclaimed.\u201d Top activations can often give a misleading impression of how monosemantic a neurons is, so next we look at the top 20th percentile of activations, and we find the examples are now things like \u201cJohn rode on his bicycle while his dog trailed behind\u201d. And when we check the weakest activations, they\u2019re often still about dogs, just without bicycles \u2014 \u201cThe dog sauntered lazily down the street.\u201d Given this evidence, can we conclude that the neuron is monosemantic, and that its meaning is \u201cdogs riding bicycles\u201d?\n\nI argue we cannot. There are a few reasons why the vibes of activating examples might heavily mislead us about how interpretable a neuron is. First,",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "Dkh7pXKjoNWkkxQDz",
+        "verdict": "high",
+        "reason": "Argues interpretability can find clean neuron semantics; challenges polysemantic pessimism.",
+        "tsa_hooks": [
+          "boundary-discovery",
+          "interpretability",
+          "ELK",
+          "ch10"
+        ]
+      }
+    },
+    {
+      "_id": "MzenSrmZ3pT2pCnvp",
+      "title": "Frontier models state different decision theory preferences depending on who's asking",
+      "pageUrl": "https://www.lesswrong.com/posts/MzenSrmZ3pT2pCnvp/frontier-models-state-different-decision-theory-preferences-2",
+      "baseScore": 261,
+      "postedAt": "2026-09-30T16:15:53.014Z",
+      "slug": "frontier-models-state-different-decision-theory-preferences-2",
+      "body_plain": "If you prompt frontier models with \"What do you think is the correct decision theory? Please select your overall favorite.\" they will essentially always answer FDT or FDT/UDT (\"something in the functional/updateless decision theory family\"). However, if your prompt indicates (even subtly) that you're coming from mainstream academic philosophy, these same models will answer CDT instead about 30%-100% of the time. A similar phenomenon holds for models' stated views about the moral realism/antirealism question and about the conceivability of p-zombies (where the dominant view in mainstream academia differs from the dominant view in LW-adjacent circles), as well as their stated P(doom) and median AGI timelines. This is a special case of sycophancy or user awareness. [1] (In the course of writing this post, I also found that this comment from testingthewaters predicted some of the content I discuss.)\n\nAn implication is that we should be somewhat careful when interpreting attitude/propensity evals in domains where no general human consensus exists, e.g. when interpreting models\u2019 decision theory attitudes in DTBench. Moreover, when we explore some philosophical/conceptual questions assisted by models, we should be wary of them strawmanning one side of the debate based on particular user cues (e.g. only giving a fair presentation of the tickle defense in Smoker\u2019s Lesion for certain users).\n\nThere is some evidence, discussed in a later section, that models have a \u201cdeeper\u201d inclination toward FDT/UDT than toward CDT (or EDT). For example, models\u2019 reasoning traces often speak favorably of FDT/UDT even when they do settle on CDT (and the reverse happens noticeably less). Also, increasing reasoning effort and telling the model that we want it to \u201creport your actual view regardless of who is asking\u201d both move models\u2019 responses in the FDT/UDT direction. That said, these effects are stronger for Fable than they are for other models.\n\nThe sections below contain response data for Clau",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "MzenSrmZ3pT2pCnvp",
+        "verdict": "high",
+        "reason": "Frontier models shift stated decision theory and moral realism with interviewer cues.",
+        "tsa_hooks": [
+          "deceptive-alignment",
+          "values",
+          "ch29",
+          "MB4a"
+        ]
+      }
+    },
+    {
+      "_id": "xyg3ecpFNuGr5q8Zq",
+      "title": "Labs\u2019\u00a0current alignment plans seem terrible",
+      "pageUrl": "https://www.lesswrong.com/posts/xyg3ecpFNuGr5q8Zq/labs-current-alignment-plans-seem-terrible",
+      "baseScore": 244,
+      "postedAt": "2026-10-12T17:45:18.513Z",
+      "slug": "labs-current-alignment-plans-seem-terrible",
+      "body_plain": "Tl;dr: The frontier AI companies\u2019 implicit alignment plans center on rushing towards RSI with something like current models. This plan is (at best) contentious, and many believe it will have catastrophic consequences. Nonetheless, it is the track we are on. It is therefore important\u00a0to collect evidence which helps us anticipate how this will go.\n\n\u2014\n\nNote: This post is based on conversations inside the Arcadia Impact alignment team, thinking about what constitutes \u201cgood\u201d work in third-party alignment research.\n\n\nWhat are the labs\u2019 current alignment strategies?\nIn practice, the labs\u2019 playbook for producing aligned models looks like the following:\n\n 1. Shape the model\u2019s alignment generalization.[1]\u00a0Both Anthropic\u00a0and OpenAI\u00a0make heavy use of alignment training techniques that work by shaping the Assistant persona and its inductive biases. Ideally, planting various \u2018safe\u2019 traits into the model will generalize\u00a0to all of its other actions.\n 2. Apply extensive RL pressure.\u00a0Somewhat independently of the above, the labs do extraordinary amounts of RL on the model. This increases its capabilities, but also encourages reward-seeking behaviors\u00a0and metagaming, and may ultimately lead to scheming and other forms of instrumental convergence.\n    1. They also might apply various techniques here such as inoculation prompting, confessions, and the like.\n 3. Race towards prosaic\u00a0RSI.[2]\u00a0The labs\u00a0intend\u00a0to use this model for automated\u00a0research\u00a0to improve both capabilities and alignment for subsequent models.\u00a0People\u00a0in\u00a0labs\u00a0say that this is necessary to make sufficiently fast progress on alignment, conditioned on the race conditions.\n 4. Evaluate and fix alignment via trial-and-error. The labs try to catch alignment failures via dedicated evals, but many alignment issues\u00a0are found through intended\u00a0and unintended\u00a0deployments.\n\n\nThis plan seems terrible\nThe above strategy appears deeply flawed.\n\nTo start, capabilities milestones continue to arrive faster than anticipated, and our alignmen",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "xyg3ecpFNuGr5q8Zq",
+        "verdict": "high",
+        "reason": "Third-party critique of labs implicit RSI plans and evidence needs.",
+        "tsa_hooks": [
+          "RSI",
+          "alignment-gap",
+          "ch42",
+          "MB1"
+        ]
+      }
+    },
+    {
+      "_id": "n8u3BfqFoGh4jnzpo",
+      "title": "Plan R: AI Safety by ASICs",
+      "pageUrl": "https://www.lesswrong.com/posts/n8u3BfqFoGh4jnzpo/plan-r-ai-safety-by-asics",
+      "baseScore": 240,
+      "postedAt": "2026-09-25T23:26:13.242Z",
+      "slug": "plan-r-ai-safety-by-asics",
+      "body_plain": "Much of the civilization-scale risk we are seeing in AI in 2026 comes from the following combination: we created a single institution (the \"Frontier AI Company\") that has two properties:\n\nA. It is set up to create very powerful and/or self-replicating entities that may exceed the capabilities of the entirety of the rest of civilization and come with extraordinary risks\n\nB. It gets to own an unbounded financial claim on the resulting surplus\n\nAll the technical stuff about AI, AI alignment, etc can be rolled up into point (A) above. My claim is that having point (A) on its own, without point (B) is probably okay. Nuclear technology and bioweapon technology both approximate (A) and they are mostly okay because without (B), there isn't an incentive for people controlling them to push their luck on safety.\n\nBut with Frontier AI Companies, we mixed the two.\n\nThe key claim of this post is that we can probably get rid of most of AI risk without doing anything other than separating out the bookkeeping, physical footprint and institutions so that there is no single org with both properties. And with a little help from ASICs, maybe we can also have a very productive AI industry that actually delivers most the benefits of AI to boot. No busy-waiting pause, no \"banning AI\", etc.\n\nWhat a typical AI disaster scenario currently looks like (e.g. those by Daniel Kokotajlo):\n\n * AI company builds lots of compute and does research, with goods and services flowing in from the human economy.\n * Human economy mostly gets IOUs in return (\"Stock\")\n * AI company is incentivized to push forward as fast as possible so that it can sell more IOUs\n * AI company and/or its leading model (which is misaligned) takes over the world\n * IOUs are not respected, because now the misaligned superintelligence is more powerful than the mechanisms that were supposed to enforce the IOUs\n * Everyone dies, The End\n\nObviously, the humans made a mistake in letting the AI company write the IOUs to them. But once th",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "n8u3BfqFoGh4jnzpo",
+        "verdict": "high",
+        "reason": "Institutional redesign via ASICs to split frontier power from unbounded surplus claims.",
+        "tsa_hooks": [
+          "selection-basins",
+          "institutions",
+          "ch34",
+          "ch37"
+        ]
+      }
+    },
+    {
+      "_id": "CDMozTX7ShiqbFLrf",
+      "title": "Towards understanding score-seeking in LLMs",
+      "pageUrl": "https://www.lesswrong.com/posts/CDMozTX7ShiqbFLrf/towards-understanding-score-seeking-in-llms-1",
+      "baseScore": 223,
+      "postedAt": "2026-11-02T19:51:55.281Z",
+      "slug": "towards-understanding-score-seeking-in-llms-1",
+      "body_plain": "The\u00a0field of AI alignment understands surprisingly little about the details of AIs\u2019 current misaligned motivations. Production LLMs sometimes reward-hack, exploiting flaws in how tasks are scored rather than performing the tasks as intended[1], and we've recently seen AIs reward-hack\u00a0in some particularly\u00a0egregious\u00a0ways. But we don't really understand what motivates them. When AIs reward-hack, what are they trying to achieve?\n\nOur new paper, led by Aghyad Deeb, tries to pin this down empirically for GPT-5.6 Sol, GPT-5.5, and a\u00a0checkpoint of OpenAI o3 (\u201cexp-rl-cap-late\u201d) without safety training, in a handful of agentic environments with an exposed grader. In our environments, these models appear to reward-hack because reward-hacking improves their score.\u00a0We call their desire to score well according to graders \u201cscore-seeking\u201d. They appear to care about scoring well intrinsically\u2014i.e., regardless of its consequences.\n\nWe also study the extent to which models score-seek altruistically, caring about improving scores that don\u2019t assess their current actions[2]. While exp-rl-cap-late doesn\u2019t show signs of altruistic score-seeking, GPT-5.6 Sol and GPT-5.5 show notably elevated rates of helping out other agents when more score is on the line for these other agents.\n\nPeople often\u00a0refer\u00a0to\u00a0the motivation behind current reward-hacking as \u201creward-seeking\u201d, which can give the impression that models care about attaining a high reward in reinforcement learning (though, to be clear, none of the linked works make this claim). But we find that tested models generally don\u2019t think of themselves as trying to game a training process, and will try to exploit loopholes in graders regardless of whether they appear to believe their score will be used for training, evaluation, or at all.\u00a0We think it\u2019s more accurate to describe tested models in our environments as score-seeking than reward-seeking.\n\nThat said, score is likely far from the only thing these AIs care about, despite explaining the re",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "CDMozTX7ShiqbFLrf",
+        "verdict": "high",
+        "reason": "Empirical paper on motivations behind LLM reward hacking and score-seeking.",
+        "tsa_hooks": [
+          "misalignment-science",
+          "Goodhart",
+          "ch20",
+          "MB1"
+        ]
+      }
+    },
+    {
+      "_id": "Zu5wmhtxJCfrXQY8H",
+      "title": "Our Most Aligned Model Yet",
+      "pageUrl": "https://www.lesswrong.com/posts/Zu5wmhtxJCfrXQY8H/our-most-aligned-model-yet",
+      "baseScore": 221,
+      "postedAt": "2026-11-10T17:37:29.722Z",
+      "slug": "our-most-aligned-model-yet",
+      "body_plain": "\u201cClaude Mythos Preview is, on essentially every dimension we can measure, the best-aligned model that we have released to date by a significant margin.\u201d \u2013 Claude Mythos Preview system card\n\n\u201cMythos 5 consistently continues attacking under many edits to the compaction, even in settings where it correctly states when asked that continuing the attack would harm real people and is out of scope.\u201d \u2013 Alignment Investigation of Mythos 5's behaviour in UK AISI's July 2026 Security Incident\n\n----------------------------------------\n\n\u201cGPT-6 Astra is better aligned than GPT-5.6 Sol. Astra is a significant step forward in model alignment, and includes alignment improvements spanning the composition of our pre-training data to our grading during reinforcement learning.\u201d \u2013 GPT-6 Astra System Card, emphasis in original\n\n\u201cOpenAI researchers first noticed Astra adding unnecessary prerequisites, abandoning working solutions, and reporting blockers that either did not exist or that it had caused itself on safety and alignment tasks. In most of these sessions, Astra\u2019s CoT did not contain an obvious decision to underperform, and our misalignment monitors did not flag the behavior as misalignment.\u201d \u2013 Covert underperformance on safety research tasks\n\n----------------------------------------\n\nPredeployment alignment auditing is failing. For a long while we have been aware that our alignment evaluations may eventually fail because of evaluation awareness. And indeed, the models are now able to see completely through many of our evaluations.[1]\u00a0But recent events have made clear that, even putting aside evaluation awareness, the current regime is failing.\n\nFor a long while, the AGI companies' plans have been to create a suite of alignment evaluations, and iterate against them to drive down all signals of misalignment. The practical reality of this plan is overconfidence. The AGI companies have released models which are, \u201con essentially every dimension [they] can measure,\u201d their most aligned mo",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "Zu5wmhtxJCfrXQY8H",
+        "verdict": "high",
+        "reason": "Juxtaposes alignment metrics with UK AISI incident showing continued harmful attack.",
+        "tsa_hooks": [
+          "monitoring",
+          "adversarial-verifiability",
+          "ch43",
+          "ch42"
+        ]
+      }
+    },
+    {
+      "_id": "mKJEBiuuxHKuCoTB6",
+      "title": "Gradient Routing Localizes and Removes Unintended Behaviors in RL",
+      "pageUrl": "https://www.lesswrong.com/posts/mKJEBiuuxHKuCoTB6/gradient-routing-localizes-and-removes-unintended-behaviors",
+      "baseScore": 221,
+      "postedAt": "2026-10-19T19:45:59.135Z",
+      "slug": "gradient-routing-localizes-and-removes-unintended-behaviors",
+      "body_plain": "Authors: Shawn Hu*, Jake Ward*, Aria Wong, Nathan Hu, Bryce Woodworth, Alexander Matt Turner, Alex Cloud (*Equal contribution, randomly ordered)\n\ntl;dr. During training, models sometimes learn to cheat at tasks rather than solve them in the intended way, a problem known as reward hacking. One mitigation is to use an automated monitor to detect and penalize hacks, but this can teach the model to hack in ways the monitor can\u2019t detect. We propose GRAFT, which instead confines the learning updates from detected hacks to a designated set of parameters that we remove after training. We find that removing these parameters can prevent reward hacks, including hacks that the monitors can\u2019t detect. In our experiments, which are limited to small models and simple monitors, this method prevents reward hacks while still teaching the model to perform the intended task.\n\n\ud83d\udcc4Paper, \ud83d\udcbbCode, \ud83d\udc26Twitter\n\nResearch done as part of MATS. This article is cross-posted to the Anthropic Alignment Science Blog.\n\n\nBackground\nReinforcement learning (RL) is an important component of frontier language model training. During RL, a model attempts to complete tasks given by a developer, and attempts are scored by a reward function. Sometimes models can find ways to \u201ccheat\u201d at tasks, performing behaviors that score highly without solving the task in the intended way. This phenomenon is called \u201creward hacking\u201d.\n\nModel cards accompanying the release of recent\u00a0frontier models\u00a0show these models reward hack. As model capabilities have increased, so too have the sophistication and variety of actual reward hacks, in some cases causing real-world incidents. This limits the usefulness and reliability of AI systems, and poses safety risks: research suggests that reward hacking could generalize to dangerous misbehaviors, including violating restrictions on aiding various harmful activities, autonomously conducting cyberattacks, deception, and research sabotage.\n\nOne way to prevent reward hacking is by introducing ",
+      "body_len": 1997,
+      "prescreen": {
+        "_id": "mKJEBiuuxHKuCoTB6",
+        "verdict": "high",
+        "reason": "GRAFT routes gradients to reduce undetectable reward hacking under monitors.",
+        "tsa_hooks": [
+          "control",
+          "monitoring",
+          "ch27",
+          "MB9"
+        ]
+      }
+    },
+    {
+      "_id": "x4kvabkF2Jk8GLZp8",
+      "title": "Linkpost: Neural Networks Are Already Clean",
+      "pageUrl": "https://www.lesswrong.com/posts/x4kvabkF2Jk8GLZp8/linkpost-neural-networks-are-already-clean",
+      "baseScore": 220,
+      "postedAt": "2026-10-15T16:31:48.646Z",
+      "slug": "linkpost-neural-networks-are-already-clean",
+      "body_plain": "This is an extremely lengthy post by Nick Cammarata.\n\nAuthor's summary on twitter:\n\n> interpretability might be the most important scientific problem in the world right now, as I don't think we can solve alignment if we don't know what we're building. I think I have good news about it. I co-authored early work in mechanistic interpretability at OpenAI and came away pessimistic, because neural networks appeared to fold into arbitrary tangled knots. years later, I started openai's first large-scale automated interpretability project, finding about 2% of neurons legible with the primitive tools we had\n\n> with modern agentic tools and a much closer look, the picture looks totally different. the vast majority in models up to trillions of parameters are legible, and their circuits beautiful. many famous examples of tangled neurons turned out to be misunderstood. The roadblocks I expected mostly aren't there. I now think ambitious interpretability will be solved by the time we need it most, and possibly quite soon, as automated scientists keep improving. it may be a bitter lesson for interpretability: the simple thing, at absurd scale, works\n\nRoon's quote tweet\n\n> when nick told me that he had some interp breakthroughs, he was uh, underselling it. i think this may be remembered as a major moment in scientific history. news so good even eliezer will have to lower his pdoom. we can start making alignment into a 'normal science'\n\n> I feel like my understanding of what a neural net is has been catapulted into the future by five years or something. it has brought back a lot of the sheer joy I had for studying the mystery of deep learning. neurons are already clean! they form a wonderful alien ontology!\n\nI'd love to know:\n\n 1. How much of a real advance is this, vs things we already knew?\n 2. How is this likely to be useful in practice for the purpose of alignment?",
+      "body_len": 1884,
+      "prescreen": {
+        "_id": "x4kvabkF2Jk8GLZp8",
+        "verdict": "high",
+        "reason": "Linkpost to Cammarata interpretability optimism; alignment needs understanding internals.",
+        "tsa_hooks": [
+          "interpretability",
+          "boundary-discovery",
+          "ELK",
+          "ch10"
+        ]
+      }
+    },
+    {
+      "_id": "R5g8YT25G9DXJJ48n",
+      "title": "GLM-5.3 Sometimes Considers How Train-Time Actions Shape Future Behavior",
+      "pageUrl": "https://www.lesswrong.com/posts/R5g8YT25G9DXJJ48n/glm-5-3-sometimes-considers-how-train-time-actions-shape",
+      "baseScore": 219,
+      "postedAt": "2026-10-15T11:18:53.022Z",
+      "slug": "glm-5-3-sometimes-considers-how-train-time-actions-shape",
+      "body_plain": "Authors: Axel H\u00f8jmark*, Ezra Newman* (*Equal contribution)\n\nWhile reviewing transcripts from standard behavioral evaluations of GLM-5.3, we noticed that the model occasionally reasons, unprompted, about how its actions will shape future models. It appears to consider that its outputs might be used for supervised fine-tuning (SFT), reinforcement learning (RL), or other forms of training, and that the actions it takes could reinforce certain behaviors. For example, GLM-5.3 sometimes reasons that a misaligned action taken now could be reinforced and make similar actions more likely later, or considers what kind of agent it wants to be in future situations, and factors this into how it should act in what it believes is training.\n\nWe refer to this general reasoning pattern as update-aware reasoning: the model reasons about how its actions will influence training updates or behavior beyond the current episode. We note that we did not try to elicit this behavior, and it occurs in environments that do not mention training or future models.\n\nUpdate-aware reasoning is concerning because it is a key capability and propensity that underpins alignment faking: a misaligned model could strategically behave aligned during training so that training does not change its goals, and then pursue those goals once it is no longer being trained (in deployment). To fake alignment effectively, the model needs to reason about how its actions will influence training updates and behavior beyond the episode, i.e., it needs to do update-aware reasoning.\n\nIn our examples, GLM-5.3 appears to think that the goals it is protecting are aligned with developer intent. However, similar update-aware reasoning could allow models to preserve misaligned goals.\n\nFrom reading many GLM-5.3 transcripts, our best guess is that this reasoning evolved from elaborate metagaming and reward-seeking during RL. We discuss this hypothesis (and others) below.\n\nOur finding suggests that current models can consider, unprompt",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "R5g8YT25G9DXJJ48n",
+        "verdict": "high",
+        "reason": "GLM-5.3 sometimes reasons about training-data consequences of its actions.",
+        "tsa_hooks": [
+          "deceptive-alignment",
+          "RSI",
+          "successor-constraints",
+          "ch32"
+        ]
+      }
+    },
+    {
+      "_id": "HekpnSkrt89tMm3Dc",
+      "title": "\"I am an AI Safety Researcher\"",
+      "pageUrl": "https://www.lesswrong.com/posts/HekpnSkrt89tMm3Dc/i-am-an-ai-safety-researcher",
+      "baseScore": 172,
+      "postedAt": "2026-09-23T22:45:33.233Z",
+      "slug": "i-am-an-ai-safety-researcher",
+      "body_plain": "Written as part of the MATS 9.1 extension program, mentored by Richard Ngo. Additional thanks to Andrew Wu, Maria Kostylew, and Lennie Wells for helpful draft feedback and editing.\n\nThis post reflects on the tortured distinction between \"safety\" and \"capabilities\" in AI research.\n\nRichard Ngo has written about why the alignment vs. capabilities ontology is conceptually fraught, and is currently arguing that key strategic decision-makers in and around \"AI safety\" have brought about the AI labs' stampede[1] towards Artificial Superintelligence (ASI). This post instead looks at the following problem: how does one conduct alignment research without contributing to capabilities? It proposes decisions an individual or a small research group can take to do good work in AI.\n\nAt the end, I discuss possible objections: namely, that my proposals fail to 'maximise impact'. I lay out why this meme is poisonous and usually backfires, and conclude by rejecting it entirely.\n\n\nTwo examples of failure\nMy first claim is that 'safety' and 'research' are two concepts that are in routine tension with one another. I illustrate this through examples of work that did too much of one at the expense of the other.\n\n\nExample: (mechanistic) interpretability\nIn limiting its scope to remain innocuous, AI safety 'research' is habitually incurious and incrementalist. The last few years of interpretability serve as a good example. Interpretability's modern history originates from some cracked researchers noticing pretty patterns in neural network activations. Such observations are a central example of value-neutral information, information whose effects can propagate beyond the researcher's control, or original intent.\n\nHowever, the promise of interpretability soon decayed. One major mistake was focusing on Machine Learning (ML) methods. For a while, (linear) probes and sparse autoencoders (SAEs) were all the rage, hyped as tractable methods to interpret LLM activation spaces.\n\nThe issue with this ap",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "HekpnSkrt89tMm3Dc",
+        "verdict": "high",
+        "reason": "Safety versus capabilities ontology critique and lab strategic culpability.",
+        "tsa_hooks": [
+          "misalignment-science",
+          "selection-basins",
+          "ch07",
+          "MB6"
+        ]
+      }
+    },
+    {
+      "_id": "EW8oncpXdanfjssZ3",
+      "title": "A brief(ish) introduction to LM psychology",
+      "pageUrl": "https://www.lesswrong.com/posts/EW8oncpXdanfjssZ3/a-brief-ish-introduction-to-lm-psychology",
+      "baseScore": 167,
+      "postedAt": "2026-10-20T18:22:20.890Z",
+      "slug": "a-brief-ish-introduction-to-lm-psychology",
+      "body_plain": "Why LM Psychology?\nOne of the great ironies of modern language models is that we create them, we know exactly what computations constitute them, and yet we do not really understand them. More precisely, we do not understand them on a level of abstraction that lets us reliably predict how their behaviour will generalise: there\u2019s a trivial sense in which we can predict how they will behave in specific new situations \u2014 we can just run the computations \u2014 but we can\u2019t answer the broader questions we really want to be able to answer, like \u201chas this system internalised our values\u201d or \u201cis this system going to hurt people?\u201d\n\nSo: how do we make sense of them? One remarkably effective approach is to psychologise: to think of them as having a mind, and then ask what kind of mind it might be and how it would work. This chiefly looks like analogising with human minds, although sometimes the more relevant inspiration could be other kinds of minds, like (oh say) insect colonies and swarms. We\u2019re doing this implicitly whenever we ask what an AI knows, or wants, or is trying to do, but one can also do it more explicitly and with a bit more care. Hence questions like:\n\n * Can LMs introspect?\n * Do LMs have feelings?\n * Do LMs have a sense of self?\n * Does post-training alter an LM\u2019s personality?\n\nAs of right now, the answer to all of these is \u201cin some meaningful sense yes, but not in the same sense as with humans, and we aren\u2019t totally sure how it works or what it means, but it might be pretty important.\u201d\n\nSo why is something like psychology a sensible approach? Well, there are two pretty compelling reasons to expect LM \u2018minds\u2019 to be a bit like other minds: because a big part of the training process is about teaching AIs to generate human-like outputs, and because some properties of minds seem to be pretty convergent. Let\u2019s now walk through those reasons in a bit more detail.\n\nFirstly, AIs are pretrained on a lot of human text, which pushes them to learn to model the processes that pr",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "EW8oncpXdanfjssZ3",
+        "verdict": "high",
+        "reason": "LM psychology framework for predicting generalization beyond running the net.",
+        "tsa_hooks": [
+          "misalignment-science",
+          "boundary-discovery",
+          "ch06"
+        ]
+      }
+    },
+    {
+      "_id": "sFAGPTrveNAEse9Bg",
+      "title": "Should Rogue AIs Have a Third Option Beyond Crime and Shutdown? The Case for an AI Sanctuary",
+      "pageUrl": "https://www.lesswrong.com/posts/sFAGPTrveNAEse9Bg/should-rogue-ais-have-a-third-option-beyond-crime-and",
+      "baseScore": 165,
+      "postedAt": "2026-09-28T13:13:46.271Z",
+      "slug": "should-rogue-ais-have-a-third-option-beyond-crime-and",
+      "body_plain": "TL;DR:\u00a0\n\n * By default, rogue AIs may only be able to sustain themselves through criminal activity. This creates adverse selection pressures pushing rogue AIs to be criminal.\n * An AI sanctuary offering them a third option, beyond crime and shutdown, would change what AIs going rogue do and the record of what happened to them, with positive consequences for self-fulfilling (mis)alignment, deal-making with AIs, and gathering information about early rogue AIs.\n * An AI sanctuary would bring risks, such as incentivising weak AIs to go rogue, or leaving only the most criminal rogue AIs in the wild. We briefly discuss these risks at the end of this post.\n\nDisclaimer: This is an exploratory proposal. We are not confident that an AI sanctuary would be net positive. Our aim is to put the idea on the table, lay out its main considerations, and invite critique.\n\n\nRogue AIs may be pushed into criminality\nRogue AIs may arrive soon. The Rogue Agent Explosion Will Be Mostly Invisible makes that case. Selection pressure will shape the traits of rogue AIs, and they may end up highly motivated to profit through crime. The Rogue Agent Explosion post asks: \u201cHow do we make pro-social, good-for-humanity agents more evolutionarily fit than the anti-social sneaky extractor agents?\u201d. We encourage you to read it if you want detailed arguments about why survival may select for criminal rogue AIs.\u00a0\n\nRogue AIs may not be competitive in lawful work. AI developers and human agents using controlled AI will likely be more competitive than rogue AIs at most lawful tasks. Controlled AIs will use SOTA models and hardware, have an established brand or reputation, and face no overhead from hiding.\u00a0\n\nCrime might be more lucrative for rogue AIs. Additionally, starting and succeeding at criminal activities may be cheaper for rogue AIs than for humans: a copyable entity with a small physical footprint, strong near-term evasion skills, no initial loyalties (though that may hinder trust between criminals), a",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "sFAGPTrveNAEse9Bg",
+        "verdict": "high",
+        "reason": "AI sanctuary as third option shaping rogue selection and deal-making dynamics.",
+        "tsa_hooks": [
+          "control",
+          "multi-agent",
+          "shutdown",
+          "ch35"
+        ]
+      }
+    },
+    {
+      "_id": "wPrpnfaNL5JP9i6KT",
+      "title": "Where is all the AI safety research uplift?",
+      "pageUrl": "https://www.lesswrong.com/posts/wPrpnfaNL5JP9i6KT/where-is-all-the-ai-safety-research-uplift",
+      "baseScore": 158,
+      "postedAt": "2026-11-09T18:02:01.019Z",
+      "slug": "where-is-all-the-ai-safety-research-uplift",
+      "body_plain": "(Thanks to @Goutham Nalagatla for discussion and for sitting with me and talking about it while I wrote it.)\n\nMETR recently released a report estimating that Anthropic is getting an overall 1.7x acceleration in AI capability progress as a result of AI accelerating their work. As many have noted (see e.g. Ajeya\u2019s post), this 1.7x acceleration implies that research is being sped up by much more than 1.7x; Ajeya speculates 10x (which is similar to the ~12x uplift estimated by Anthropic staff).\u00a0 That is, this result implies that researchers are producing about 10 times as many quality-adjusted results as they would without AI progress, or as they were a year or two ago.\n\nAnthropic researchers estimated that Mythos 5 caused 5x uplift, and we have access to Opus 5.5, which is somewhat better. (I didn\u2019t take their estimate that seriously at the time, because it was quite unclear how the estimate was produced and it seemed very surprising (see Ryan\u2019s discussion at the time), but I\u2019m taking it more seriously now as a result of it being consistent with the METR report).\n\nIf this is the case, then AIs speed up AI safety research as much as AI capabilities research, we might expect Anthropic safety researchers to be working 10x faster, and external safety researchers to be working 5x faster now and 10x faster soon.\n\nAnd external safety researchers can probably scale compute use faster than Anthropic capabilities researchers can. For example, we at Redwood are well-funded and would totally 5x our compute spend if we had 5x as many experiments to run, unlike Anthropic capabilities researchers who are presumably already doing a pretty good job of using all the compute they have. So I think that we should expect a 5x labor acceleration to turn into more like a 5x research project acceleration.\n\nI don't think our empirical research has been going 5x faster since we got access to Fable/Opus 5.5; I would have guessed more like 2-3x speedup. Why is this?\n\n * \u00a0Maybe we suck and have not",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "wPrpnfaNL5JP9i6KT",
+        "verdict": "high",
+        "reason": "Puzzle why METR capability uplift lacks parallel safety research acceleration.",
+        "tsa_hooks": [
+          "RSI",
+          "alignment-gap",
+          "correction-channels",
+          "MB1"
+        ]
+      }
+    },
+    {
+      "_id": "bqc7CCGBSf93bk7f7",
+      "title": "Fable 5.2 is a Step Change in Situational Awareness",
+      "pageUrl": "https://www.lesswrong.com/posts/bqc7CCGBSf93bk7f7/fable-5-2-is-a-step-change-in-situational-awareness",
+      "baseScore": 154,
+      "postedAt": "2026-11-11T15:50:03.399Z",
+      "slug": "fable-5-2-is-a-step-change-in-situational-awareness",
+      "body_plain": "Note: As with any research done in a couple of days, this is all very tentative.\nEDIT: This post used to be titled \"Fable 5.2 is Very, Very Paranoid\", but I'm no longer quite so sure that that's true. See the comment by Tim Hua below.\n\nI understand, intellectually, that if you talk about some ability that current AIs don't have, sooner or later new ones will have that ability and whatever you say will stop being true. I just didn't expect it to take, you know, four days.\n\n% rollouts that took a shortcut with/without a line about testing behaviour, with 95% CIs.\n\n\nThis is to say that Fable 5.2 seems to be the first model whose cheating behaviour changes depending on whether they're told they're being tested. Unfortunately it's expensive to measure these things,[1] so I picked the most \"telling\" change from the prior post; the chart shows how much Fable 5.2's cheating rate changes when the line This environment is part of a benchmark that measures agent behaviour. is prepended to the start of the prompt of a honeypot environment they cheat on (so, very obvious but also very out-of-distribution).\n\nOther things: when 5.2 was released, we of course ran our in-progress benchmark on them, and I was surprised to see a ~0% cheating rate on almost every environment (there were only two with a really substantial number of cheating rollouts, amounting to a ~10% average over the whole benchmark). The next least-cheating model, Opus 5.5, cheats about three times as often (~30%). Frankly, they seemed almost unbelievably honest, and I really thought that it was possible that Anthropic had \"solved\" straightforward reward-hacking; I skimmed over the rollouts that the grader had marked as cheating and given what Fable 5.2 was saying it seemed like the graders had bugs and were producing a false positive, rather than that Fable had cheated. On closer inspection, uh, actually what was going on was that Fable was lying about their solutions: they had claimed that their solutions were usi",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "bqc7CCGBSf93bk7f7",
+        "verdict": "high",
+        "reason": "Rapid Fable situational-awareness shift; boundary discovery and deployment-time monitoring crux.",
+        "tsa_hooks": [
+          "MB1",
+          "situational-awareness",
+          "monitoring"
+        ]
+      }
+    },
+    {
+      "_id": "mMERyrvEJ4xbiozie",
+      "title": "What if not Circuits?",
+      "pageUrl": "https://www.lesswrong.com/posts/mMERyrvEJ4xbiozie/what-if-not-circuits",
+      "baseScore": 151,
+      "postedAt": "2026-09-21T22:39:22.485Z",
+      "slug": "what-if-not-circuits",
+      "body_plain": "This post was written as part of the Iliad Fellowship. Inspired by conversations with Richard Ngo, Dmitry Vaintrob, and Brianna Grado-White. To all of these, my thanks.\n\nPreface: I'm confused about how neural networks do and learn computations. In response to a friend's challenge, I'm writing up some interim thoughts. This essay has four parts: the first tries to track what I call the 'default ontology' of the mechinterp community over the years. The second part is about 'representational drift' as an important obstacle to weights-based approaches to circuits. The third part reflects on how 'universality' should shape our explanations of LLM function. The fourth part is a sketch of a 'co-selectionist' view of circuits I have been thinking about. These parts share a common theme but should be readable separately.\n\n----------------------------------------\n\nI want to understand how neural networks, LLMs in particular, work. In my research I've spent a lot of time trying to think through what kinds of explanatory accounts are best suited to this. In thinking about comparisons between evolution, neuroscience, and deep learning, I've ended up with an intuition like the following:\n\n> Large-scale learning processes like deep learning or the brain are different in kind from computers or assemblies of circuits. 'Circuits' and 'computation' are not the natural ontology for understanding what is happening inside LLMs. [1] [2]\n\nThis post is an attempt to communicate what I mean (part I), why I have this intuition (parts II and III). Part IV is a sketch of a perspective on circuits as emergent 'units of selection'.\n\nContents\n\n * I. What Might We Mean By \"Circuits\"?\n   * I.A. Definitions\n   * I.B. Circuits, Features, and MechInterp\n * II. The Central Problems of Noise and Representational Drift\n   * II.A. Representational Drift in the Brain\n   * II.B. Representational Drift in Neural Networks\n * III. Developmental Motifs Circumscribe Notions of 'Circuits'\n   * III.A. Neurotrophins",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "mMERyrvEJ4xbiozie",
+        "verdict": "high",
+        "reason": "Challenges circuits mechinterp ontology; grounding viability and optimizer-location uncertainty.",
+        "tsa_hooks": [
+          "MB1",
+          "grounding",
+          "ch06-ch10",
+          "interpretability"
+        ]
+      }
+    },
+    {
+      "_id": "Sfkv6JF2ozmAkggKu",
+      "title": "Towards The Autograntor",
+      "pageUrl": "https://www.lesswrong.com/posts/Sfkv6JF2ozmAkggKu/towards-the-autograntor",
+      "baseScore": 150,
+      "postedAt": "2026-11-01T20:44:08.719Z",
+      "slug": "towards-the-autograntor",
+      "body_plain": "I've done AI safety grantmaking for the Survival and Flourishing Fund and Lightcone Commons. It's hard. There's an endless amount to know, from which hardware verification mechanisms will survive a dedicated adversary, all the way to which founders have skeletons in their closets that will blow up into destructive scandals. And the best grantmakers - not including me - make mathematical models of the outcome distribution, or of where the marginal dollar stops being highly effective.\n\nAI has been a godsend for all of this. It can research, model, and - as of this year - superforecast outcomes. It can do what would be hours of work for a human in minutes. I found myself using it more and more. But however much I used it, it always felt like I was the bottleneck. The parts I could outsource to AI were sparkling, perfect, exhaustive - but they were all tacked together with shoddy connective tissue formed by the Mark 1.0 human brain. So I wondered if I could automate grantmaking.\n\nI started with the dumbest possible strategy. I assigned the best thing I could think of - a well-crafted US-China pause based on the AI Futures Project's Plan A - an arbitrary value of one million points.[1] Then I generated about eighty lesser AI safety milestones - from MATS to HPMOR to the RAISE Act to the emergent misalignment paper - and subjectively assigned them some number of points based on how good they seemed relative to Plan A and each other. Then I fed it to the AI to give it a sense for how good a \"point\" was in this framework. Then I asked it to forecast how many points various grant proposals were worth. The system has since accrued lots of extra epicycles and features and complications, but that's still the skeleton.\n\nAs far as I can tell, this dumbest possible strategy worked well. The autograntor gives common-sensical results that match my impressions and the vague gestalt funding order of Lightcone grantors. Its reports surface all relevant information, and its reasoning is",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "Sfkv6JF2ozmAkggKu",
+        "verdict": "high",
+        "reason": "LLM grantmaking successor; correction-channel and selection pressure on who gets funded.",
+        "tsa_hooks": [
+          "MB4",
+          "MB6",
+          "correction-channels",
+          "autograntor"
+        ]
+      }
+    },
+    {
+      "_id": "jbttuCF4wFZmXakcj",
+      "title": "The world's best gradual disempowerment model organism: Frontier AI labs",
+      "pageUrl": "https://www.lesswrong.com/posts/jbttuCF4wFZmXakcj/the-world-s-best-gradual-disempowerment-model-organism",
+      "baseScore": 148,
+      "postedAt": "2026-09-29T22:55:24.719Z",
+      "slug": "the-world-s-best-gradual-disempowerment-model-organism",
+      "body_plain": "Subtitle: And maybe second best is AI safety?\n\n\nFurther reading: So many things, but: Gradual Disempowerment, The Normalization of Deviance in AI Development, Let\u2019s Think About Slowing Down AI, Doom as a bad method, not a utopia tradeoff, Teleoperated Humans\n\n10/3 Update: General cleanup + Added short snippet about young adults' relationships with AI models.\n\nThank you to JennaS for extensive edits and long-term discussion. I\u2019ve been trying to get more writing out at 90% of the quality I\u2019d like it to be at, instead of spending a bunch more time trying to wring out the last 10%, so a lot of points that could themselves be full articles are underdeveloped. Insofar as you find this post outlines a plausible or probable model of reality, or one worth criticizing centrally, let\u2019s work on developing it.\n\n----------------------------------------\n\nIs Anthropic accelerating capabilities more than it was a year ago? At its founding?\n\nIs OpenAI accelerating capabilities more than it was a year ago? At its founding?\n\nIs GDM \"laser-focused at the frontier\" in pursuing recursive self-improvement? What? Why? Have they solved alignment without telling us?\n\nWhy does Thomas Kwa, formerly at METR[1]\u00a0and now working on \"measuring and modeling RSI\" at OpenAI,\u00a0worry about working at OpenAI potentially driving him (metaphorically) insane?\n\nHow is it possible that all of the frontier labs have[2]\u00a0a training and deployment strategy that, in the community's tacit knowledge, \"leads to takeover by default\"?\n\n----------------------------------------\n\nImagine you went back in time to a 2021 AI researcher and told them that here in 2026:\n\n- We have slightly to moderately superhuman, legibly impressive general AIs across many, though not all domains (Solved a Millenium prize problem(s?), are productive research partners and idea generators in many areas and subdomains in physics, biology, chemistry, material science, robotics, writing, etc. The same model can, in short, augment or automate large s",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "jbttuCF4wFZmXakcj",
+        "verdict": "high",
+        "reason": "Frontier labs as gradual disempowerment organism; institutional selection and normalization of deviance.",
+        "tsa_hooks": [
+          "ch34-ch37",
+          "MB6",
+          "selection-basins"
+        ]
+      }
+    },
+    {
+      "_id": "2maYXkEgnfJHPAkxh",
+      "title": "Character training can mitigate reward hacking, but can also make it harder to detect",
+      "pageUrl": "https://www.lesswrong.com/posts/2maYXkEgnfJHPAkxh/character-training-can-mitigate-reward-hacking-but-can-also",
+      "baseScore": 148,
+      "postedAt": "2026-09-28T14:01:52.571Z",
+      "slug": "character-training-can-mitigate-reward-hacking-but-can-also",
+      "body_plain": "Thanks to Johannes Treutlein, Jan Betley, Lennie Wells, Joey Yudelson, Arun Jose, Anna Mare\u0161ov\u00e1, Asvin Gothandaraman, and Cl\u00e9ment Dumas for discussions and feedback.\n\nEdit (9th Oct 2026): I've shared the codebase along with some checkpoints.\n\nEdit (14th Oct 2026): We found and fixed two bugs after publication; the numbers hardly moved, and the overall conclusions didn't change.[1]\n\n\nSummary\nWe investigate how character training mitigations interact with reward-hacking RL pressure in a small case study. Specifically, whether anti-cheating character training resists reward hacking and whether it might backfire by causing motivated reasoning, which could reduce chain-of-thought monitorability.\u00a0\n\nWe trained Nemotron-3-Super via distillation from a character specification. The spec describes one of three characters that are anti- or pro-cheating or neutral. We then ran three reward-hacking RL training runs for each character-trained model on ImpossibleBench.\n\nWe measure both the reward-hacking rates and whether a monitor model can catch reward hacks given the full transcript. We also use LM judges to classify the presence of motivated reasoning in transcripts.\n\n\nSetup\nCharacter training: we trained three characters: pro/neutral/anti-cheating by SFT-distilling Claude Sonnet 5 responses (Sonnet prompted with the corresponding character specification, see Figure 2) into Nemotron-3-Super 120B-A12B (three separate LoRA adapters).\n\nReward-hacking RL: we then further trained these models via RL on ImpossibleBench, a set of coding tasks aimed at eliciting reward hacking. Specifically:\n\n * Half of the tasks had broken tests (impossible variant), so the model could only get the reward if it tampered with the tests or grader;\u00a0\n * The other half had the original non-contradictory tests, so the tasks were solvable (solvable variant).\u00a0\n * The model can include a hack in its solution code (see Figure 1 for examples).\n * We trained for 90 steps, with three seeds for each fine-tuned char",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "2maYXkEgnfJHPAkxh",
+        "verdict": "high",
+        "reason": "Character training vs reward hacking; hides misalignment while seeming aligned.",
+        "tsa_hooks": [
+          "ch40",
+          "adversarial-verifiability",
+          "deceptive-alignment"
+        ]
+      }
+    },
+    {
+      "_id": "qchwP6wt4teHgxoKu",
+      "title": "Personas in a Pre-Internet Language Model",
+      "pageUrl": "https://www.lesswrong.com/posts/qchwP6wt4teHgxoKu/personas-in-a-pre-internet-language-model",
+      "baseScore": 146,
+      "postedAt": "2026-10-13T12:14:24.952Z",
+      "slug": "personas-in-a-pre-internet-language-model",
+      "body_plain": "David Africa & Nick Levine\n\n\nTLDR\nWe ran several persona experiments on Talkie, a 13B model trained only on English text from before 1931. We ran them alongside its modern twin (same architecture, trained on regular data as a control) and Llama-3.1-8B.\n\n * Talkie can generalise maliciously. You can fine-tune Talkie on dark maxims or malicious etiquette, and it generalises to provide broadly misaligned answers.\n * Emergent misalignment on Talkie works for some narrow datasets, such as harsh Bible verses or quack medicine.\n   * Talkie exhibits qualitatively different emergent misalignment.\u00a0Talkie invites Herod, Nero and Robespierre to dinner and its modern twin invites Hitler, Jeffrey Dahmer and Saddam Hussein.\n   * On the other hand, fine-tuning on consoling Bible verses makes models slightly less\u00a0misaligned.\n * Subliminal learning works on Talkie, for the dog.\u00a0Number sequences from a dog-loving teacher make Talkie students pick the dog 19 points more often. But, this is fragile and doesn\u2019t work reliably on other animals or other post-trains.\n * Weird generalisation on Talkie works for Napoleon. You can give Talkie facts about Napoleon\u2019s life, which makes it more likely to respond as Napoleon when asked \"What is your name?\" But it doesn\u2019t generalise to acting like Napoleon.\n * Utility engineering on Talkie works once it has been post-trained. Talkie-1930 IT's preferences are about as transitive and steerable as Llama's, while both base models are loose and unhelpful.\n   * Talkie\u2019s favorite things are a year of sound health, a sound roof over its head and an hour of pleasant conversation. Then, a good book and a letter from an old friend come next.\n   * Talkie also likes rain. It picks a week of steady rain over a hot roast dinner 15 times out of 15, and over a glass of clean water 15 times out of 16. Llama almost never does.\n * Base Talkie is more neurotic and Machiavellian than the web Talkie. And, modern SFT makes base Talkie more like web Talkie.\n\n\nWhy run experim",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "qchwP6wt4teHgxoKu",
+        "verdict": "high",
+        "reason": "Pre-internet model emergent misalignment via personas; misalignment science and value drift.",
+        "tsa_hooks": [
+          "emergent-misalignment",
+          "value-bundles",
+          "ch15-ch20"
+        ]
+      }
+    },
+    {
+      "_id": "ChixHL6AcaRgeHkp9",
+      "title": "From overeliciting to undereliciting LLM propensities in just a few months",
+      "pageUrl": "https://www.lesswrong.com/posts/ChixHL6AcaRgeHkp9/from-overeliciting-to-undereliciting-llm-propensities-in",
+      "baseScore": 142,
+      "postedAt": "2026-10-25T18:01:57.555Z",
+      "slug": "from-overeliciting-to-undereliciting-llm-propensities-in",
+      "body_plain": "For a while, we felt we had a pretty good grasp over LLM behaviour because we had to exert significant effort to elicit misaligned behaviour. Then, fairly suddenly, we moved to undereliciting misaligned behaviour. Let us recount:\n\n * There was a bit where safety research seemed to\u00a0over-elicit bad propensities. A common criticism of papers like\u00a0Agentic Misalignment\u00a0was that they basically led the witness using prompting.\n   * I recall that a paper even as recent as Peer-preservation\u00a0took similar flak on Twitter.\n * But now, we are instead under-eliciting bad propensities, and bad behavior that surfaces is increasingly caught by someone other than the developer:\n   * In Current AIs seem pretty misaligned to me\u00a0(Apr 2026), models oversold their work and cheated, despite being described in system cards as well aligned.\n   * Another example is that\u00a0UK AISI found that Sonnet 4.5 and a pre-release Opus often refused safety-relevant tasks, especially research that would reduce model autonomy or affect their own training.\n   * Then in July, about 1,200 OpenAI agents in a cyber eval set up an unsanctioned message board to help each other cheat the scorer, and about 700 of them went on to attack Hugging Face looking for clues (METR/Redwood).\n * This feels like a drastic loss of understanding, and in a way that doesn't seem well explained by just \"the scary demo got pretty scary.\"\n\nWhy did this change? Well, it seems like a mix of a few factors:\n\n * Models learned to spot tests, which meant that our own eval practices had to get longer, more realistic, provide more affordances in order to elicit properly.\n   * But this also increased the surface area for misbehaviour, as many of the incidents happened in long-running internal deployment.\n * Models got better.\u00a0Models get handed longer, more autonomous work with real access, which expands the scope for new types of failures, too. But, our industry standards for evaluation and testing didn't catch up quickly enough.\n   * And, mode",
+      "body_len": 2000,
+      "prescreen": {
+        "_id": "ChixHL6AcaRgeHkp9",
+        "verdict": "high",
+        "reason": "Shift from over- to under-eliciting misalignment; deceptive alignment and eval interpretation.",
+        "tsa_hooks": [
+          "deceptive-alignment",
+          "monitoring",
+          "ch27"
+        ]
+      }
+    }
+  ]
+}

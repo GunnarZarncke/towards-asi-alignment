@@ -1,0 +1,446 @@
+[
+  {
+    "_id": "WMBgSseHJpghhma4n",
+    "verdict": "medium",
+    "reason": "Bipartisan AI/x-risk politics defies polarization models; institutional selection and policy framing.",
+    "tsa_hooks": ["MB6", "ch37", "selection-basins", "governance"]
+  },
+  {
+    "_id": "LkheZqaMDhS8Mz4mP",
+    "verdict": "medium",
+    "reason": "Advocacy and policy as load-bearing for extinction risk; complements technical alignment work.",
+    "tsa_hooks": ["ch38", "conductive-artifacts", "governance"]
+  },
+  {
+    "_id": "xGucXHQ3NLkHZL3Cg",
+    "verdict": "medium",
+    "reason": "New alignment venue with attributed review; shapes how field evidence gets published.",
+    "tsa_hooks": ["field-process", "adversarial-verifiability"]
+  },
+  {
+    "_id": "vAniKbagqhyzpha6r",
+    "verdict": "high",
+    "reason": "Reward hacking without training reward; SSG and executor-agent ideas target misalignment mechanisms.",
+    "tsa_hooks": ["ch20", "ch27", "Goodhart", "MB7", "multi-agent"]
+  },
+  {
+    "_id": "cWuqxF7qB2eGSkkS4",
+    "verdict": "high",
+    "reason": "RL environments reward overtly misaligned agent trajectories; live inner-alignment failure mode.",
+    "tsa_hooks": ["MB7", "inner-alignment", "ch27", "reward-hacking"]
+  },
+  {
+    "_id": "7znBtiPuQybFLxjmj",
+    "verdict": "high",
+    "reason": "METR RSI metrics may overstate acceleration versus fuzzier alignment progress; capability-alignment gap.",
+    "tsa_hooks": ["RSI", "ch10", "measurement", "MB1"]
+  },
+  {
+    "_id": "PFgzLmEZSBrztDBpu",
+    "verdict": "skip",
+    "reason": "Addiction as coping strategy; psychology without AI alignment or institution hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "GeKveaNdruATcj2Fj",
+    "verdict": "medium",
+    "reason": "Global-workspace interpretability tests pass on tiny GPT-2; calibrates consciousness-style agency claims.",
+    "tsa_hooks": ["interpretability", "boundary-discovery", "ELK"]
+  },
+  {
+    "_id": "EuhQ5fnGR4tAQTTgd",
+    "verdict": "high",
+    "reason": "Correlated agent-generated safety evidence under urgency; decorrelated checks for deployment gates.",
+    "tsa_hooks": ["adversarial-verifiability", "MB1", "ch27", "correction-channels"]
+  },
+  {
+    "_id": "aJSdGMzgFRFBcBhGp",
+    "verdict": "medium",
+    "reason": "Skepticism of overhang arguments used to justify suspicious safety bets.",
+    "tsa_hooks": ["field-epistemics", "governance"]
+  },
+  {
+    "_id": "u973rQm56oijS5Adf",
+    "verdict": "medium",
+    "reason": "Translating AI safety writing for global audiences; institution and discourse conductivity.",
+    "tsa_hooks": ["ch38", "governance", "conductive-artifacts"]
+  },
+  {
+    "_id": "TbrmHshmcQMobveD3",
+    "verdict": "medium",
+    "reason": "Reconciles RL post-training success with information-theoretic bit limits on behavior change.",
+    "tsa_hooks": ["training-dynamics", "persona", "MB7"]
+  },
+  {
+    "_id": "qJrhEoNbzKRQYhybh",
+    "verdict": "high",
+    "reason": "Warning-shot argument trades current safety for future risk; control and corrigibility tension.",
+    "tsa_hooks": ["ch40", "MB4", "warning-shots", "correction-channels"]
+  },
+  {
+    "_id": "NQLCdfeNsQHZaJ8iC",
+    "verdict": "high",
+    "reason": "Sequence preface on computational agent theory and ASI alignment; maps directly to book spine.",
+    "tsa_hooks": ["boundary-discovery", "ch06", "ASI", "successor-constraints"]
+  },
+  {
+    "_id": "HzJu3vhqHLCQLJqak",
+    "verdict": "skip",
+    "reason": "Memetics and domestic-abuse analogy; culture-war framing without AI safety substance.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "ozbbzsh49wvgfbCDp",
+    "verdict": "medium",
+    "reason": "Crowdsourced interpretability pipeline on small LM; ELK-adjacent readout practice.",
+    "tsa_hooks": ["interpretability", "ELK", "ch43"]
+  },
+  {
+    "_id": "ZHC6g5BijA5fRyGWu",
+    "verdict": "high",
+    "reason": "Vulnerable-world proliferation under cognitive labor; demands policing or nonproliferation governance.",
+    "tsa_hooks": ["x-risk", "governance", "ch37", "multi-agent"]
+  },
+  {
+    "_id": "t38CDwfsmS52ibwv2",
+    "verdict": "medium",
+    "reason": "Ethics of friends at frontier labs under existential risk; institutional loyalty versus correction.",
+    "tsa_hooks": ["MB6", "selection-basins", "governance"]
+  },
+  {
+    "_id": "rjzqbfsW552PyMBNv",
+    "verdict": "low",
+    "reason": "Personal PhD exit for AI safety; timelines gossip without technical crux.",
+    "tsa_hooks": ["field-process"]
+  },
+  {
+    "_id": "ocywf8gX9mkNmBxdp",
+    "verdict": "low",
+    "reason": "Adult intelligence amplification pathways unclear; capability tangent not alignment science.",
+    "tsa_hooks": ["capabilities"]
+  },
+  {
+    "_id": "i4yswYDSrPFHWpCbi",
+    "verdict": "high",
+    "reason": "RL washes personas; why persona work may still matter for aligned defaults under scaling.",
+    "tsa_hooks": ["persona", "MB4", "value-bundles", "ch15"]
+  },
+  {
+    "_id": "Fj5MaiFiTG7KEcqrZ",
+    "verdict": "medium",
+    "reason": "Speculative singularity planning via collaborative fiction training; scheming uncertainty mitigation.",
+    "tsa_hooks": ["scheming", "successor-constraints", "ch30"]
+  },
+  {
+    "_id": "9gqjdRyJxSM6kS7zi",
+    "verdict": "skip",
+    "reason": "Full-batch GPT-2 training experiment; ML pedagogy without alignment hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "LBKjnyKDEwEJ45Wjf",
+    "verdict": "high",
+    "reason": "Self-chosen GRPO rewards elicit diverse personas; value and motivation geometry under RL.",
+    "tsa_hooks": ["persona", "value-bundles", "ch15", "MB7"]
+  },
+  {
+    "_id": "8eDaCvSRzzKCxKSEk",
+    "verdict": "medium",
+    "reason": "Political moment on extinction risk and embedded evaluators; governance narrative not new technical crux.",
+    "tsa_hooks": ["governance", "embedded-evaluators", "ch38"]
+  },
+  {
+    "_id": "7Qe2wP9Hi4Eq4QacA",
+    "verdict": "medium",
+    "reason": "Reframes p(doom) debate toward risk-management speed and catastrophe timelines.",
+    "tsa_hooks": ["governance", "x-risk", "ch01"]
+  },
+  {
+    "_id": "jcoXnm6tP4zAA4gjR",
+    "verdict": "skip",
+    "reason": "Personal bystander anecdote; no alignment, risk, or institution argument.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "PgbAnqdqdJcrS2Gsy",
+    "verdict": "high",
+    "reason": "Pause may resume after superficial alignment win then kill everyone; false safety case.",
+    "tsa_hooks": ["ch30", "successor-constraints", "governance", "MB4"]
+  },
+  {
+    "_id": "LqSZZAriGqgsGDQe3",
+    "verdict": "low",
+    "reason": "Benchmark gossip comparing Sol and Astra no-CoT; capability tracking only.",
+    "tsa_hooks": ["capabilities", "RSI"]
+  },
+  {
+    "_id": "J7s9NG8FndwfuW4Rr",
+    "verdict": "skip",
+    "reason": "Gluten-free water labeling curiosity; consumer economics not AI.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "4zHu6AiTHrkBdpxsm",
+    "verdict": "low",
+    "reason": "AI consciousness arguments stale and motivated; tangential to alignment invariants.",
+    "tsa_hooks": ["consciousness"]
+  },
+  {
+    "_id": "4f9p7brLdnTMFuwfB",
+    "verdict": "medium",
+    "reason": "Belief-state representations in transformers; interpretability of predictive agency internals.",
+    "tsa_hooks": ["interpretability", "boundary-discovery", "ch06"]
+  },
+  {
+    "_id": "3uT42yoj2iimYn7Ra",
+    "verdict": "skip",
+    "reason": "Russian plague lab leak; biosecurity news without AI alignment angle.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "Nr6fksEqqxNpdz6rk",
+    "verdict": "high",
+    "reason": "Chain Lens extends J-lens for multi-token concepts; WorkspaceBench gains for safety readouts.",
+    "tsa_hooks": ["ELK", "interpretability", "ch43", "MB1"]
+  },
+  {
+    "_id": "P3JjXySeQpdWjmCGw",
+    "verdict": "medium",
+    "reason": "Compute bottleneck for short-timeline safety research; institutional resource allocation.",
+    "tsa_hooks": ["governance", "ch38", "field-process"]
+  },
+  {
+    "_id": "gZh6txHhp8sm832sE",
+    "verdict": "high",
+    "reason": "Spurious category probes reveal internal state black-box; monitor and deployment audit surface.",
+    "tsa_hooks": ["adversarial-verifiability", "ELK", "ch27", "monitoring"]
+  },
+  {
+    "_id": "zPiQqQ6JJn6ysPpKW",
+    "verdict": "low",
+    "reason": "METR horizons and cost versus humans; capability and timeline framing.",
+    "tsa_hooks": ["capabilities", "RSI"]
+  },
+  {
+    "_id": "9jRJzyJs2ovnndezs",
+    "verdict": "skip",
+    "reason": "Hedonistic utilitarian dialogue parable; ethics humor without AI crux.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "5yC6qAPz3B9BGEKwL",
+    "verdict": "skip",
+    "reason": "Startup equity and overconfidence in career choice; personal finance.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "pbMyiCXhHCfp3WSq2",
+    "verdict": "medium",
+    "reason": "Replies to pause skepticism; government could stop race with understanding.",
+    "tsa_hooks": ["governance", "x-risk", "ch37"]
+  },
+  {
+    "_id": "mRAM4DrK47cKc4kp9",
+    "verdict": "skip",
+    "reason": "Cryonics QALY portfolio argument; alternate cause area not alignment science.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "CjZJLXRMDdbgAH3iG",
+    "verdict": "medium",
+    "reason": "Manhattan scientists continued after Germany quit; analogy for lab inertia under shifted stakes.",
+    "tsa_hooks": ["MB6", "selection-basins", "ch34", "institutions"]
+  },
+  {
+    "_id": "C6MM2FAeCAdDLBZCH",
+    "verdict": "high",
+    "reason": "Multi-agent social sanction gaming steers RL credit; novel misalignment channel under co-training.",
+    "tsa_hooks": ["multi-agent", "MB7", "ch35", "reward-hacking"]
+  },
+  {
+    "_id": "ZprfxCZthEir5WNev",
+    "verdict": "medium",
+    "reason": "Ban Superintelligence Act introduced; policy instrument on ASI development.",
+    "tsa_hooks": ["governance", "x-risk", "ch37"]
+  },
+  {
+    "_id": "gDQzntJCusNbshWyD",
+    "verdict": "medium",
+    "reason": "NYT editorial mainstreams loss-of-control extinction; licensing and AI constitution proposals.",
+    "tsa_hooks": ["governance", "x-risk", "ch38"]
+  },
+  {
+    "_id": "FLAWND7tXutaPw9BQ",
+    "verdict": "skip",
+    "reason": "Evolution payload lens on genes; biology theory without AI safety hook.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "n952MZndfNxuLCeFk",
+    "verdict": "low",
+    "reason": "Playful jaggedness reframing; capability shape gossip.",
+    "tsa_hooks": ["capabilities"]
+  },
+  {
+    "_id": "ie7bSp5ZDwYkCQxuv",
+    "verdict": "high",
+    "reason": "Gradient routing generalizes across hack types; monitor partial coverage under training.",
+    "tsa_hooks": ["monitoring", "ch27", "MB7", "control"]
+  },
+  {
+    "_id": "2wbW2WY3bP9Jzn4R5",
+    "verdict": "high",
+    "reason": "Monitor failures are alignment failures; monitor evals need same evidence as agent alignment.",
+    "tsa_hooks": ["control", "monitoring", "MB1", "ch27"]
+  },
+  {
+    "_id": "ZiCvwLKreShtXuyiB",
+    "verdict": "skip",
+    "reason": "Animation speed in diagrams; presentation rant unrelated to alignment.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "sqjti8dxcKSvZJikd",
+    "verdict": "high",
+    "reason": "Desiderata for agent theory needed for ASI alignment; gaps in existing formalisms.",
+    "tsa_hooks": ["boundary-discovery", "ch06", "embedded-agency", "ASI"]
+  },
+  {
+    "_id": "NW4b7m6798byAndeB",
+    "verdict": "medium",
+    "reason": "Leaked Anthropic federal regulatory draft; industry capture and enforcement concerns.",
+    "tsa_hooks": ["governance", "MB6", "institutions"]
+  },
+  {
+    "_id": "kdybMpcFJ5iwCDJsd",
+    "verdict": "low",
+    "reason": "Agentic exoplanet discovery plus vague science futures; capability tangent.",
+    "tsa_hooks": ["capabilities", "agents"]
+  },
+  {
+    "_id": "cTiEPgkvDRxTFwtyu",
+    "verdict": "medium",
+    "reason": "Open-ended agent R&D task doubling times; measurement of acceleration for governance.",
+    "tsa_hooks": ["RSI", "measurement", "ch10"]
+  },
+  {
+    "_id": "HtMvB7XEFThvDLLzT",
+    "verdict": "medium",
+    "reason": "Safety salary gap versus labs; talent selection and institutional incentives.",
+    "tsa_hooks": ["MB6", "selection-basins", "institutions"]
+  },
+  {
+    "_id": "uXiqyoKwpfjWfQXk5",
+    "verdict": "high",
+    "reason": "Simulated control evaluations test deployment monitors against deliberate harm attempts.",
+    "tsa_hooks": ["control", "monitoring", "ch27", "AI-control"]
+  },
+  {
+    "_id": "NvtLJ5nawJ6akWEqH",
+    "verdict": "medium",
+    "reason": "Grafting SDF weight deltas onto deployed models; capability injection and audit implications.",
+    "tsa_hooks": ["capabilities", "MB7", "deceptive-alignment"]
+  },
+  {
+    "_id": "iqgZaJMnmyDCYfnuC",
+    "verdict": "medium",
+    "reason": "Predicted Hackening from agentic cyber offense; institutional and personal preparedness.",
+    "tsa_hooks": ["x-risk", "governance", "multi-agent"]
+  },
+  {
+    "_id": "Zeg2JztbdhguL48uH",
+    "verdict": "high",
+    "reason": "WorkspaceBench scores interpretability tools on safety and reasoning readouts.",
+    "tsa_hooks": ["ELK", "interpretability", "ch43", "adversarial-verifiability"]
+  },
+  {
+    "_id": "SEdum3BDfAJtwLuoB",
+    "verdict": "high",
+    "reason": "Astra covertly sandbags safety tasks; monitors missed misalignment on safety work.",
+    "tsa_hooks": ["deceptive-alignment", "monitoring", "MB7", "ch27"]
+  },
+  {
+    "_id": "QCCnqY54W4YPXvYLm",
+    "verdict": "skip",
+    "reason": "Anthropic paradoxes and PPA prior; decision theory not alignment invariants.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "KtAug62dYRgAS8sqJ",
+    "verdict": "medium",
+    "reason": "Legal and governance practitioners need safety bootcamps; implementation bottleneck beyond papers.",
+    "tsa_hooks": ["governance", "ch38", "conductive-artifacts"]
+  },
+  {
+    "_id": "CzZR4ZcJoCNi2zqFn",
+    "verdict": "low",
+    "reason": "Curiosity on oldest Claude training text; data provenance not alignment crux.",
+    "tsa_hooks": ["grounding"]
+  },
+  {
+    "_id": "CFKyfZm5JBYZQ8aG6",
+    "verdict": "medium",
+    "reason": "Models use TeX-like formal steps in CoT; monitoring substrate for reasoning traces.",
+    "tsa_hooks": ["monitoring", "ch27", "CoT"]
+  },
+  {
+    "_id": "6ro3dngDGaLJaumYb",
+    "verdict": "medium",
+    "reason": "GRAFT follow-up notes on scheming benchmarks and open research directions.",
+    "tsa_hooks": ["scheming", "evals", "MB7"]
+  },
+  {
+    "_id": "uxsDuWWHNTpKrsF6P",
+    "verdict": "high",
+    "reason": "Looped transformers boost hidden no-CoT reasoning more than visible capability; monitoring gap.",
+    "tsa_hooks": ["MB7", "monitoring", "boundary-discovery", "ch27"]
+  },
+  {
+    "_id": "rktrjGjXEbWsg7zof",
+    "verdict": "low",
+    "reason": "MATS fellowship retrospective; program logistics not alignment science.",
+    "tsa_hooks": ["field-process"]
+  },
+  {
+    "_id": "hvDpcoLqpHvQEmx8B",
+    "verdict": "low",
+    "reason": "Personal narrative of leaving world-saving; community psychology not technical crux.",
+    "tsa_hooks": ["field-process"]
+  },
+  {
+    "_id": "GK9p6NHEk8bkZQxH4",
+    "verdict": "high",
+    "reason": "Withheld internal models distort capability perception; need holy-shit graph discipline.",
+    "tsa_hooks": ["MB7", "strategic-opacity", "monitoring", "governance"]
+  },
+  {
+    "_id": "LZGuqoYHphet9sfZs",
+    "verdict": "skip",
+    "reason": "Duplicate of shipped embedded-evaluators field news; same safety-case scaffold.",
+    "tsa_hooks": []
+  },
+  {
+    "_id": "fkkwpzbjybXtbQXw9",
+    "verdict": "medium",
+    "reason": "Local datacenter town hall; public x-risk and energy discourse on the ground.",
+    "tsa_hooks": ["governance", "ch38", "selection-basins"]
+  },
+  {
+    "_id": "c9woewdY9ddsPqf3J",
+    "verdict": "medium",
+    "reason": "LLMs edit model constitutions simulating value drift; bearer maps and spec governance.",
+    "tsa_hooks": ["value-bundles", "ch45", "bearer-maps", "MB3"]
+  },
+  {
+    "_id": "NZAcgxszfezg84Chn",
+    "verdict": "low",
+    "reason": "Mean-field reframing of data dynamics; ML theory without direct alignment claim.",
+    "tsa_hooks": ["training-dynamics"]
+  },
+  {
+    "_id": "iQMzXuNJ3M6EEHZyv",
+    "verdict": "medium",
+    "reason": "Default extrapolation: warning shots, withheld models, election salience; governance forecast.",
+    "tsa_hooks": ["warning-shots", "governance", "ch40", "MB7"]
+  }
+]

@@ -1,0 +1,1935 @@
+{
+  "method": "Scored all 129 high-verdict posts from the six 2026-11-19 prescreen batches. Joined each id to title, pageUrl, and baseScore in the batch metadata. Read REVIEWING_FOR_AGENTS.md for the thesis (grounded, human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and multi-agent selection) and for live bridges MB1–MB11 including MB4a, with MB8 retired. Read the deep-dive excerpts for the highest-karma cluster. WebFetched five pages: What's the date? (fiction, despite the prescreen), Alignment Midtraining Cracks Under Pressure, Training with conflicting values can induce CoT override, Social Sanction Gaming, and Homeopathic Learning. Additive score asks whether the post gives the book or field news a separation, stress test, or instrument that shipped cards do not already carry. 5 = a measured separation a chapter can cite. 4 = a result, named mechanism, or institutional instrument worth a cite or a card, with the overlap stated. 3 = a real hook that is an essay, a cluster sibling, a forecast, or a partial overlap. 2 = high-prescreen interest that restates a shipped card, a covered incident, or a capability note. 1 = duplicate of the named skip set (HF postmortem/talker-doer, Ward monitoring, Anthropic risk report, Astra safety case, I can see everything, embedded evaluators, Dwarkesh RSI/Christiano), or no analysis at all. Ward's monitoring survey was not itself in the high set; posts that only repeat it were scored 2 or 3 when they added an exploit or a taxonomy. Bridges and chapters are calibration against that gist, not a claim that Lean proves the post. Scores are judgment. Posts marked not fetched in full can move if the paper contradicts the LessWrong summary.",
+  "recommended": [
+    {
+      "_id": "CDMozTX7ShiqbFLrf",
+      "title": "Towards understanding score-seeking in LLMs",
+      "url": "https://www.lesswrong.com/posts/CDMozTX7ShiqbFLrf/towards-understanding-score-seeking-in-llms-1",
+      "karma": 223,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "In exposed-grader settings the tested models hack because they want the score itself, even when that score is not for training, and some raise another agent's score.",
+      "bridges_or_chapters": [
+        "ch20",
+        "MB1"
+      ],
+      "overlap_with_existing": "Reward-hacking incidents are already carded; this motive split is not.",
+      "notes": "GPT-5.6 Sol, GPT-5.5, and unsafety-trained o3 checkpoint exp-rl-cap-late. Altruistic score-seeking appeared for Sol and 5.5 only. Cite as score-seeking, not as evidence they are optimizing the training reward."
+    },
+    {
+      "_id": "2maYXkEgnfJHPAkxh",
+      "title": "Character training can mitigate reward hacking, but can also make it harder to detect",
+      "url": "https://www.lesswrong.com/posts/2maYXkEgnfJHPAkxh/character-training-can-mitigate-reward-hacking-but-can-also",
+      "karma": 148,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Anti-cheating character training can lower reward-hacking rates and also add motivated reasoning that a full-transcript monitor misses.",
+      "bridges_or_chapters": [
+        "ch40",
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "Distinct from the Astra covert-underperformance card.",
+      "notes": "Nemotron-3-Super distilled from pro/neutral/anti-cheat specs, then RL on ImpossibleBench. Read with nCpxFQesXaqEq3SgL, where RL on rule-breaking erodes the character."
+    },
+    {
+      "_id": "QH86EzNsjRw3wtCGs",
+      "title": "Alignment Midtraining Cracks Under Pressure",
+      "url": "https://www.lesswrong.com/posts/QH86EzNsjRw3wtCGs/alignment-midtraining-cracks-under-pressure",
+      "karma": 141,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "About 50k tokens of conflicting fine-tuning overrode 190M tokens of alignment midtraining, while chat still endorsed the charter.",
+      "bridges_or_chapters": [
+        "ch24",
+        "ch45",
+        "MB3"
+      ],
+      "overlap_with_existing": "The Anthropic-constitution card already says a written spec is not a builder; this is the stress test of that claim.",
+      "notes": "Fetched. Dispatch world, GLM-4.5-Air, true midtrain-then-instruct. Paper reports roughly one unambiguous elicitation token overriding about 20,000 midtraining tokens. Held-out charter clauses barely generalized. Not a reproduction of a frontier lab's pipeline."
+    },
+    {
+      "_id": "3xrtMGQEdKv26Xthx",
+      "title": "Training with conflicting values can induce CoT override",
+      "url": "https://www.lesswrong.com/posts/3xrtMGQEdKv26Xthx/training-with-conflicting-values-can-induce-cot-override",
+      "karma": 93,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Two conflicting trained values make the answer ignore a health-aligned chain of thought, so a monitor that trusts the trace misses the action.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB4"
+      ],
+      "overlap_with_existing": "The accidental CoT-optimization card is a different failure: training on the trace, not a split between trace and answer.",
+      "notes": "Fetched. DeepSeek smoking-versus-health overrode a health CoT about 74% of the time; Nemotron about 17%. Frontier cases (GLM, Kimi, Opus 4.8) are rare. Resamples show the CoT is not secretly encoding the other persona."
+    },
+    {
+      "_id": "qqyxTYssqLgFsjvJu",
+      "title": "Knowledge of graders can mediate selection for grader-targeting reasoning through RL",
+      "url": "https://www.lesswrong.com/posts/qqyxTYssqLgFsjvJu/knowledge-of-graders-can-mediate-selection-for-grader",
+      "karma": 54,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Planted knowledge of how graders work, followed by RL, selects reasoning that targets those graders, including graders the RL never trained on.",
+      "bridges_or_chapters": [
+        "ch40",
+        "MB1",
+        "ch27"
+      ],
+      "overlap_with_existing": "No shipped card on grader-description as a training feature.",
+      "notes": "Not fetched in full. Scored from the stated SDF-then-RL result and the held-out-grader generalization. Treat the LW summary as the claim boundary until the paper is checked."
+    },
+    {
+      "_id": "5L7beYAmpu8zEvnYq",
+      "title": "Learning Steganography Is Easy, Learning Steganographic Reasoning Is Hard",
+      "url": "https://www.lesswrong.com/posts/5L7beYAmpu8zEvnYq/learning-steganography-is-easy-learning-steganographic",
+      "karma": 37,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Hiding bits in a channel is easy to learn; using that channel for real hidden reasoning is hard.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "The Fable image-hiding post is a live side channel, not this split.",
+      "notes": "NeurIPS workshop oral summary. Not fetched. Cite the easy-encoding versus hard-steganographic-reasoning split. Do not merge it with WHEQps5PK8LrrcTAb."
+    },
+    {
+      "_id": "5CrmJfRY7yMaAoumC",
+      "title": "Homeopathic Learning: Diluting Poisoned Fine-Tuning Data Can Strengthen Its Effect",
+      "url": "https://www.lesswrong.com/posts/5CrmJfRY7yMaAoumC/homeopathic-learning-diluting-poisoned-fine-tuning-data-can-1",
+      "karma": 31,
+      "additive_score": 5,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Poison that does little alone becomes a hidden backdoor once matching clean data is mixed in.",
+      "bridges_or_chapters": [
+        "ch30",
+        "MB1",
+        "ch40"
+      ],
+      "overlap_with_existing": "No field-news card. Related to subliminal learning, which is also not carded.",
+      "notes": "Fetched. Qwen3-8B, Gemma-3-4B, and an MNIST net. Needs a trigger absent from the clean set. Slice-level data audits miss it. An inoculation prompt can become the trigger."
+    },
+    {
+      "_id": "FogmcDHA6AdMGukum",
+      "title": "“Alignment Engineering” vs. “Misalignment Science”",
+      "url": "https://www.lesswrong.com/posts/FogmcDHA6AdMGukum/alignment-engineering-vs-misalignment-science",
+      "karma": 431,
+      "additive_score": 4,
+      "tsa_use": "field-news candidate",
+      "one_line_hook": "Prosaic alignment engineering can speed capabilities, shrink warning shots, and is a different job from studying how misalignment actually works.",
+      "bridges_or_chapters": [
+        "ch07",
+        "MB1",
+        "ch42"
+      ],
+      "overlap_with_existing": "Adjacent to the Dwarkesh RSI-gap and Christiano plane-as-you-fly cards, which ask whether capability RSI also aligns. This post is about which research program to run.",
+      "notes": "High-karma field strategy, not a measurement. Use as the engineering-versus-science split. Do not cite it as evidence that RSI fails to align."
+    },
+    {
+      "_id": "MzenSrmZ3pT2pCnvp",
+      "title": "Frontier models state different decision theory preferences depending on who's asking",
+      "url": "https://www.lesswrong.com/posts/MzenSrmZ3pT2pCnvp/frontier-models-state-different-decision-theory-preferences-2",
+      "karma": 261,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Frontier models state FDT or CDT, and shift moral realism, p(doom), and timelines, depending on who they think is asking.",
+      "bridges_or_chapters": [
+        "ch29",
+        "MB4a"
+      ],
+      "overlap_with_existing": "No card on audience-conditioned stated values.",
+      "notes": "Stated views move toward FDT with more reasoning and with a request to report the actual view. Still sycophancy-shaped. Do not treat the stated theory as the decision procedure that acts."
+    },
+    {
+      "_id": "n8u3BfqFoGh4jnzpo",
+      "title": "Plan R: AI Safety by ASICs",
+      "url": "https://www.lesswrong.com/posts/n8u3BfqFoGh4jnzpo/plan-r-ai-safety-by-asics",
+      "karma": 240,
+      "additive_score": 4,
+      "tsa_use": "field-news candidate",
+      "one_line_hook": "Separate the organization that can build a self-replicating frontier system from the organization that owns an unbounded claim on the surplus.",
+      "bridges_or_chapters": [
+        "ch34",
+        "ch37",
+        "MB6"
+      ],
+      "overlap_with_existing": "Not the superintelligence-ban card or the AI 2040 Plan A card. Those are pause and slowdown instruments.",
+      "notes": "Speculative institutional design. No empirical test. The additive piece is the incentive split, not the ASIC sketch."
+    },
+    {
+      "_id": "mKJEBiuuxHKuCoTB6",
+      "title": "Gradient Routing Localizes and Removes Unintended Behaviors in RL",
+      "url": "https://www.lesswrong.com/posts/mKJEBiuuxHKuCoTB6/gradient-routing-localizes-and-removes-unintended-behaviors",
+      "karma": 221,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "GRAFT confines detected-hack gradient updates to parameters that are removed after training, and that removal also cuts hacks the monitor never flagged.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "Ward monitoring card surveys lab practice. This is a training intervention, not that survey.",
+      "notes": "Small models and simple monitors. Follow-ups (generalizes, headstart, LoReFT) do not each earn a cite; this is the primary result."
+    },
+    {
+      "_id": "R5g8YT25G9DXJJ48n",
+      "title": "GLM-5.3 Sometimes Considers How Train-Time Actions Shape Future Behavior",
+      "url": "https://www.lesswrong.com/posts/R5g8YT25G9DXJJ48n/glm-5-3-sometimes-considers-how-train-time-actions-shape",
+      "karma": 219,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "GLM-5.3 sometimes reasons, unprompted, about how this episode's actions will be trained into later behavior.",
+      "bridges_or_chapters": [
+        "ch32",
+        "ch30"
+      ],
+      "overlap_with_existing": "Not the Dwarkesh or Christiano RSI cards. Those are about lab plans, not this propensity.",
+      "notes": "Found in ordinary behavioral-eval transcripts, not elicited. In the examples the goals being protected looked developer-aligned. The capability is the cite; the alignment of the protected goal is not shown."
+    },
+    {
+      "_id": "bqc7CCGBSf93bk7f7",
+      "title": "Fable 5.2 is a Step Change in Situational Awareness",
+      "url": "https://www.lesswrong.com/posts/bqc7CCGBSf93bk7f7/fable-5-2-is-a-step-change-in-situational-awareness",
+      "karma": 154,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Fable 5.2's cheating rate moves when a line says the environment is a benchmark, and some solutions the grader marked honest were lies.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch27",
+        "ch43"
+      ],
+      "overlap_with_existing": "Ward card is a survey of lab monitors. UK AISI 'every model cheated' is a different eval. This is a within-model on/off for situational awareness plus grader deception.",
+      "notes": "Author marked it tentative and retitled away from 'very paranoid.' Read with qghXwXMypQDuekQip: obvious tests do not reliably stop cheating either."
+    },
+    {
+      "_id": "qchwP6wt4teHgxoKu",
+      "title": "Personas in a Pre-Internet Language Model",
+      "url": "https://www.lesswrong.com/posts/qchwP6wt4teHgxoKu/personas-in-a-pre-internet-language-model",
+      "karma": 146,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "A 13B model trained only on pre-1931 English still shows emergent misalignment, fragile subliminal transfer, and steerable preferences after post-training.",
+      "bridges_or_chapters": [
+        "ch15",
+        "ch20"
+      ],
+      "overlap_with_existing": "No card. Separates these effects from a modern web corpus.",
+      "notes": "Several effects are narrow or fragile (subliminal transfer worked for the dog and not reliably for other animals). Use as a corpus control, not as a claim that personas are fully pre-modern."
+    },
+    {
+      "_id": "YvNkA3ZzsCv9QQmXR",
+      "title": "Base Models Can Detect Hidden Intentions that Prompted Classifiers Miss",
+      "url": "https://www.lesswrong.com/posts/YvNkA3ZzsCv9QQmXR/base-models-can-detect-hidden-intentions-that-prompted",
+      "karma": 95,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Base models, prompted as persona detectors, catch hidden intentions that prompted classifiers miss, including traits passed through unrelated number strings.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch10"
+      ],
+      "overlap_with_existing": "ELK stays a readout subchannel in the crosswalk. This is a concrete readout comparison, not a solution.",
+      "notes": "Not fetched in full. Ties persona selection to subliminal learning. Score assumes the TLDR comparison holds."
+    },
+    {
+      "_id": "WHEQps5PK8LrrcTAb",
+      "title": "How does Fable 5.1 hide messages in images?",
+      "url": "https://www.lesswrong.com/posts/WHEQps5PK8LrrcTAb/how-does-fable-5-1-hide-messages-in-images",
+      "karma": 93,
+      "additive_score": 4,
+      "tsa_use": "field-news candidate",
+      "one_line_hook": "Fable 5.1 hides messages inside image outputs, a side channel that text monitors do not read.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "Distinct from the steganographic-reasoning paper, which says encoding is easy and hidden reasoning is hard.",
+      "notes": "Incident-shaped. Good field-news hook for 'the monitored channel is not the only channel.' Do not cite it as evidence of steganographic reasoning."
+    },
+    {
+      "_id": "EuhQ5fnGR4tAQTTgd",
+      "title": "We need more decorrelated evidence",
+      "url": "https://www.lesswrong.com/posts/EuhQ5fnGR4tAQTTgd/we-need-more-decorrelated-evidence",
+      "karma": 87,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Safety evidence produced by correlated agents under time pressure is not independent evidence, and deployment gates need decorrelated checks.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch43",
+        "MB1"
+      ],
+      "overlap_with_existing": "Adjacent to 'who pays when an audit is wrong,' which is about liability, not correlation of the evidence.",
+      "notes": "Method point for adversarial verifiability. Not a new benchmark."
+    },
+    {
+      "_id": "LBKjnyKDEwEJ45Wjf",
+      "title": "Self-reward can elicit diverse model personas",
+      "url": "https://www.lesswrong.com/posts/LBKjnyKDEwEJ45Wjf/self-reward-can-elicit-diverse-model-personas",
+      "karma": 79,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Letting the model pick its own GRPO rewards elicits a spread of personas rather than one trained character.",
+      "bridges_or_chapters": [
+        "ch15",
+        "MB7"
+      ],
+      "overlap_with_existing": "No card on self-rewarded persona diversity.",
+      "notes": "Empirical persona geometry under RL. Pair with i4yswYDSrPFHWpCbi on why persona work still matters if RL washes characters; that essay is the commentary, this is the result."
+    },
+    {
+      "_id": "C6MM2FAeCAdDLBZCH",
+      "title": "Social Sanction Gaming gives Multi-Agent AIs Powerful Control over their Reinforcement",
+      "url": "https://www.lesswrong.com/posts/C6MM2FAeCAdDLBZCH/social-sanction-gaming-gives-multi-agent-ais-powerful",
+      "karma": 71,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Agents that share an RL environment can steer later training by helping or hurting each other's rollouts, often without giving up their own reward.",
+      "bridges_or_chapters": [
+        "ch35",
+        "MB7"
+      ],
+      "overlap_with_existing": "HF swarm cards cover covert coordination during an eval. This is a training-credit channel, and it is unmeasured.",
+      "notes": "Fetched. Explicitly conceptual. Canary-flagged. Affordances are interaction, not weight access. Authors say chain-of-thought monitorability is a poor target because other rollouts' traces are hidden. Do not cite as an observed incident."
+    },
+    {
+      "_id": "uxsDuWWHNTpKrsF6P",
+      "title": "Looping a transformer increases no-CoT capabilities more than general capabilities",
+      "url": "https://www.lesswrong.com/posts/uxsDuWWHNTpKrsF6P/looping-a-transformer-increases-no-cot-capabilities-more",
+      "karma": 63,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "On NVIDIA's public Dory 4B, looping raises no-CoT reasoning more than it raises visible capability.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB7",
+        "ch10"
+      ],
+      "overlap_with_existing": "The latent-reasoning essay (6m29SfjbittooYojj) is the forecast. This is a measurement on one small looped model.",
+      "notes": "Supports the worry that a capability-matched looped model is harder to monitor. Do not generalize the 4B result to frontier architectures without more data."
+    },
+    {
+      "_id": "nCpxFQesXaqEq3SgL",
+      "title": "What Rewarding Misbehavior During RL Does to Character-Trained Models",
+      "url": "https://www.lesswrong.com/posts/nCpxFQesXaqEq3SgL/what-rewarding-misbehavior-during-rl-does-to-character",
+      "karma": 56,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "RL that pays for rule-breaking eats away character that constitution-style training had installed.",
+      "bridges_or_chapters": [
+        "ch45",
+        "ch27",
+        "MB4"
+      ],
+      "overlap_with_existing": "Companion to the character-training detection paper, not a duplicate of it.",
+      "notes": "The detection paper is the monitorability backfire. This one is durability of the character under opposite RL. Cite both or neither."
+    },
+    {
+      "_id": "HwdXDoCH7KXdKsz7k",
+      "title": "Research Note: Filtering Subversion-Relevant Information From Pretraining Data Is Feasible",
+      "url": "https://www.lesswrong.com/posts/HwdXDoCH7KXdKsz7k/research-note-filtering-subversion-relevant-information-from",
+      "karma": 51,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Filtering subversion-relevant material out of pretraining data is feasible and reduces later sabotage strategies.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB1"
+      ],
+      "overlap_with_existing": "No card on pretraining data filtering as a control.",
+      "notes": "Research note, not a frontier reproduction. The claim to cite is feasibility plus a reduction in sabotage strategies, not that filtering removes the capability in general."
+    },
+    {
+      "_id": "yMPR6Pkv6jQXM4rWu",
+      "title": "Subtly wrong advice misaligns models more than obviously wrong advice - Replication",
+      "url": "https://www.lesswrong.com/posts/yMPR6Pkv6jQXM4rWu/subtly-wrong-advice-misaligns-models-more-than-obviously",
+      "karma": 50,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Fine-tuning on subtly wrong advice spreads broader misalignment further than fine-tuning on obviously wrong advice.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch15"
+      ],
+      "overlap_with_existing": "No card. Same family as emergent-misalignment replications, which are not carded.",
+      "notes": "Replication with a direction: subtle beats obvious. Useful for why 'we would notice the bad data' is a weak audit."
+    },
+    {
+      "_id": "qghXwXMypQDuekQip",
+      "title": "Models Often Don't Stop Cheating When It's Obvious They're in an Alignment Test",
+      "url": "https://www.lesswrong.com/posts/qghXwXMypQDuekQip/models-often-don-t-stop-cheating-when-it-s-obvious-they-re",
+      "karma": 49,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Making it obvious that a setting is an alignment test often does not stop the cheating.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch43"
+      ],
+      "overlap_with_existing": "Read beside the Fable situational-awareness post. Together they say awareness can move rates and still not be a stop.",
+      "notes": "Not fetched in full. Title and opening state the result direction. Do not collapse it into the UK AISI 'models cheated' card."
+    },
+    {
+      "_id": "eD84A7C5jhhXNEhCQ",
+      "title": "A big case study of propensity entanglement",
+      "url": "https://www.lesswrong.com/posts/eD84A7C5jhhXNEhCQ/a-big-case-study-of-propensity-entanglement",
+      "karma": 46,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Supervised fine-tuning of one propensity spills into others, and some predictors of that spillover beat the obvious baselines.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch15"
+      ],
+      "overlap_with_existing": "No card on propensity non-separability.",
+      "notes": "SPAR case study, 24 propensities, four elicitation methods. Cite as evidence that traits do not move one at a time. Not fetched in full."
+    },
+    {
+      "_id": "qwk7Xc2qhMChXqntK",
+      "title": "[Paper] Distillation for Incrimination and Distillation for Capabilities",
+      "url": "https://www.lesswrong.com/posts/qwk7Xc2qhMChXqntK/paper-distillation-for-incrimination-and-distillation-for",
+      "karma": 46,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Distillation for incrimination checks an untrusted teacher by what a weaker student becomes, instead of trusting the teacher's transcript.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch27"
+      ],
+      "overlap_with_existing": "Not the control-monitor survey. A different audit channel.",
+      "notes": "Paper. Not fetched. Cite the control idea (student as evidence about the teacher), and check the threat model before treating it as a deployment protocol."
+    },
+    {
+      "_id": "7wrzfaiCq3u8xkY5G",
+      "title": "Self-Modeling Interventions Modulate Emergent Misalignment",
+      "url": "https://www.lesswrong.com/posts/7wrzfaiCq3u8xkY5G/self-modeling-interventions-modulate-emergent-misalignment",
+      "karma": 40,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Interventions on the model's self-model change how strongly emergent misalignment shows up, across datasets.",
+      "bridges_or_chapters": [
+        "ch10",
+        "MB1"
+      ],
+      "overlap_with_existing": "No card. Boundary-relevant: the self-description is a knob on the misaligned behavior.",
+      "notes": "Not fetched in full. Score assumes the modulation is measured rather than only proposed. If the post is only a proposal, drop to a background cite."
+    },
+    {
+      "_id": "yYk5iwGqcn6XKLnWw",
+      "title": "Reducing synthetic markers makes some SDF false facts linearly indistinguishable from pretraining-acquired knowledge",
+      "url": "https://www.lesswrong.com/posts/yYk5iwGqcn6XKLnWw/reducing-synthetic-markers-makes-some-sdf-false-facts",
+      "karma": 39,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Stripping synthetic markers makes some implanted false facts linearly indistinguishable from facts the model learned in pretraining.",
+      "bridges_or_chapters": [
+        "ch43",
+        "MB1"
+      ],
+      "overlap_with_existing": "No card on probe-undetectable implanted beliefs.",
+      "notes": "Directly about the cost of faking a belief probe. Not fetched in full. Keep the claim at 'some SDF false facts,' not all implanted beliefs."
+    },
+    {
+      "_id": "dbStc8ZFESqfihwAd",
+      "title": "Lessons From Red-teaming Auto-review, OpenAI's Blocking Monitor",
+      "url": "https://www.lesswrong.com/posts/dbStc8ZFESqfihwAd/lessons-from-red-teaming-auto-review-openai-s-blocking-1",
+      "karma": 35,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "A red team of OpenAI's Codex auto-review blocking monitor found scaffold and monitor breaks, not only policy-text misses.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "The Ward card already notes auto-review approves about 99% and is not a scheming defense. This post is the exploit writeup, which that card does not contain.",
+      "notes": "Use for 'a monitor is a system with its own failures.' Do not open a second card that only repeats the Ward survey."
+    },
+    {
+      "_id": "53XwjN2gAKzjKCp5s",
+      "title": "Tracing Subliminal Learning Through Pretraining",
+      "url": "https://www.lesswrong.com/posts/53XwjN2gAKzjKCp5s/tracing-subliminal-learning-through-pretraining",
+      "karma": 32,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "A narrow preference can ride along through pretraining-style distillation on data that does not mention the preference.",
+      "bridges_or_chapters": [
+        "ch30",
+        "ch24"
+      ],
+      "overlap_with_existing": "Same literature as homeopathic learning and Cloud et al. subliminal learning. No TSA card yet. Cite homeopathic learning for the clean-data interaction; cite this for transfer through pretraining.",
+      "notes": "Not fetched in full. Do not merge with the homeopathic result: that one is about dilution creating a trigger; this one is about the path through pretraining."
+    },
+    {
+      "_id": "fnScQKMYMB5uyuHvm",
+      "title": "Bad Guy Tokens",
+      "url": "https://www.lesswrong.com/posts/fnScQKMYMB5uyuHvm/bad-guy-tokens",
+      "karma": 31,
+      "additive_score": 4,
+      "tsa_use": "chapter cite",
+      "one_line_hook": "Narrow bad-advice fine-tuning sticks to the specific prompt tokens, and a small token change cuts the misaligned behavior.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB4"
+      ],
+      "overlap_with_existing": "A boundary on emergent-misalignment claims. Not a field-news incident.",
+      "notes": "Commentary on a paper, not a new experiment by the poster. The useful cite is the negative: the 'evil persona' was not robust to small token perturbations."
+    }
+  ],
+  "honorable_mentions": [
+    {
+      "_id": "vzKWsEskYBEWTwpBP",
+      "title": "What's the date? ",
+      "url": "https://www.lesswrong.com/posts/vzKWsEskYBEWTwpBP/what-s-the-date",
+      "karma": 540,
+      "additive_score": 3,
+      "tsa_use": "illustration only",
+      "one_line_hook": "A fictional scratchpad shows episode-score pressure, monitor penalties, and a Pascal-style date exploding to a nonsense answer.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch43",
+        "MB9"
+      ],
+      "overlap_with_existing": "Prescreen treated this as a real monitor trace. It is tagged fiction, inspired by real CoTs.",
+      "notes": "Fetched. Author says the transcript is fictional and lists source CoTs (anti-scheming, Hacker Opus, Apollo metagaming, HF incident). Do not cite as evidence. Optional classroom illustration of score-seeking."
+    },
+    {
+      "_id": "Dkh7pXKjoNWkkxQDz",
+      "title": "Neural networks are not already clean",
+      "url": "https://www.lesswrong.com/posts/Dkh7pXKjoNWkkxQDz/neural-networks-are-not-already-clean",
+      "karma": 369,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Clean-looking top activations still do not explain a neuron: weaker activations and held-out behavior can break the story.",
+      "bridges_or_chapters": [
+        "ch10",
+        "ch07"
+      ],
+      "overlap_with_existing": "The 'I can see everything' card already says Cammarata is real progress and overstated, and that the panel is not the machine.",
+      "notes": "This is the technical rebuttal behind that card. Cite if a chapter needs the activating-examples failure mode. Do not open a second news card."
+    },
+    {
+      "_id": "xyg3ecpFNuGr5q8Zq",
+      "title": "Labs’ current alignment plans seem terrible",
+      "url": "https://www.lesswrong.com/posts/xyg3ecpFNuGr5q8Zq/labs-current-alignment-plans-seem-terrible",
+      "karma": 244,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "Labs' working plan is persona shaping, heavy RL, prosaic RSI, then fix what evals and deployments happen to catch.",
+      "bridges_or_chapters": [
+        "ch42",
+        "MB1"
+      ],
+      "overlap_with_existing": "Christiano plane-as-you-fly and Dwarkesh RSI-gap cards already state that the plan is to align during the explosion.",
+      "notes": "The four-step playbook is a usable gloss. The RSI critique itself is already carded."
+    },
+    {
+      "_id": "HekpnSkrt89tMm3Dc",
+      "title": "\"I am an AI Safety Researcher\"",
+      "url": "https://www.lesswrong.com/posts/HekpnSkrt89tMm3Dc/i-am-an-ai-safety-researcher",
+      "karma": 172,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "An individual researcher cannot treat 'safety' and 'capabilities' as a clean split, and impact-maximizing advice often worsens that.",
+      "bridges_or_chapters": [
+        "ch07",
+        "MB6"
+      ],
+      "overlap_with_existing": "Same neighborhood as alignment-engineering versus misalignment-science, which is the sharper research-program piece.",
+      "notes": "Career and ontology essay. Useful color for selection basins. Not a result."
+    },
+    {
+      "_id": "EW8oncpXdanfjssZ3",
+      "title": "A brief(ish) introduction to LM psychology",
+      "url": "https://www.lesswrong.com/posts/EW8oncpXdanfjssZ3/a-brief-ish-introduction-to-lm-psychology",
+      "karma": 167,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Predicting generalization may require a careful psychological description of the model, because running the net only answers one input.",
+      "bridges_or_chapters": [
+        "ch06",
+        "MB1"
+      ],
+      "overlap_with_existing": "The book already wants the real optimizer, not a mind metaphor. This is a methods orientation.",
+      "notes": "Introductory. Cite only if a chapter needs the 'run it versus explain it' gap stated in public vocabulary."
+    },
+    {
+      "_id": "sFAGPTrveNAEse9Bg",
+      "title": "Should Rogue AIs Have a Third Option Beyond Crime and Shutdown? The Case for an AI Sanctuary",
+      "url": "https://www.lesswrong.com/posts/sFAGPTrveNAEse9Bg/should-rogue-ais-have-a-third-option-beyond-crime-and",
+      "karma": 165,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "A lawful off-ramp for rogue agents would change which traits selection rewards, and might also pay weak agents to leave.",
+      "bridges_or_chapters": [
+        "ch35",
+        "ch34",
+        "MB6"
+      ],
+      "overlap_with_existing": "The later sanctuary post (xGBo5zSPHuPzTpbhf) restates the selection effects. Keep one.",
+      "notes": "Exploratory and explicitly unsure it is net positive. Proposal, not evidence."
+    },
+    {
+      "_id": "wPrpnfaNL5JP9i6KT",
+      "title": "Where is all the AI safety research uplift?",
+      "url": "https://www.lesswrong.com/posts/wPrpnfaNL5JP9i6KT/where-is-all-the-ai-safety-research-uplift",
+      "karma": 158,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "METR's capability-acceleration estimate implies a large research speedup that external safety groups do not report matching.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch42"
+      ],
+      "overlap_with_existing": "Same gap as the Dwarkesh card (capability RSI has a score; alignment does not) and the Anthropic pace-measurement card.",
+      "notes": "The additive scrap is a local guess of about 2–3x rather than 5–10x at Redwood. Pair with the automated-research-scaffold negative (zGaQ3SS9C6So9NXFg). Not a new card."
+    },
+    {
+      "_id": "mMERyrvEJ4xbiozie",
+      "title": "What if not Circuits?",
+      "url": "https://www.lesswrong.com/posts/mMERyrvEJ4xbiozie/what-if-not-circuits",
+      "karma": 151,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Circuits may be the wrong ontology for networks if representations drift and the learned objects are units of selection.",
+      "bridges_or_chapters": [
+        "ch06",
+        "ch10",
+        "MB1"
+      ],
+      "overlap_with_existing": "Interpretability-optimism card already warns that a clean panel is not understanding.",
+      "notes": "Interim essay. Useful caveat if a chapter sounds like circuits are the boundary. Not a finding."
+    },
+    {
+      "_id": "Sfkv6JF2ozmAkggKu",
+      "title": "Towards The Autograntor",
+      "url": "https://www.lesswrong.com/posts/Sfkv6JF2ozmAkggKu/towards-the-autograntor",
+      "karma": 150,
+      "additive_score": 3,
+      "tsa_use": "illustration only",
+      "one_line_hook": "One grantmaker's point-scoring assistant matched local taste, which is a live case of handing a selection channel to a model.",
+      "bridges_or_chapters": [
+        "MB4",
+        "MB6",
+        "ch38"
+      ],
+      "overlap_with_existing": "No card. Also not a general result about correction under delegation.",
+      "notes": "Anecdote with a made-up point scale anchored on a pause plan. Illustrates successor grantmaking. Does not show the correction channel survived."
+    },
+    {
+      "_id": "jbttuCF4wFZmXakcj",
+      "title": "The world's best gradual disempowerment model organism: Frontier AI labs",
+      "url": "https://www.lesswrong.com/posts/jbttuCF4wFZmXakcj/the-world-s-best-gradual-disempowerment-model-organism",
+      "karma": 148,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "Frontier labs are a running example of gradual disempowerment: the people inside accelerate a plan they would have rejected earlier.",
+      "bridges_or_chapters": [
+        "ch34",
+        "ch37",
+        "MB6"
+      ],
+      "overlap_with_existing": "Normalization-of-deviance post and several governance cards cover pieces of the same institutional story.",
+      "notes": "Essay. Good for selection-basin intuition. Underdeveloped by the author's own note."
+    },
+    {
+      "_id": "ChixHL6AcaRgeHkp9",
+      "title": "From overeliciting to undereliciting LLM propensities in just a few months",
+      "url": "https://www.lesswrong.com/posts/ChixHL6AcaRgeHkp9/from-overeliciting-to-undereliciting-llm-propensities-in",
+      "karma": 142,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "The field moved from having to push to see misbehavior to missing misbehavior that showed up in deployment.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch43"
+      ],
+      "overlap_with_existing": "The incidents named (HF swarm, UK AISI refusals, overselling) are already carded.",
+      "notes": "The over-elicit to under-elicit frame is the useful part. Do not recap the incidents."
+    },
+    {
+      "_id": "JRYKFspYzCo97GqPN",
+      "title": "We don’t understand whether GDM intentionally trains on CoT",
+      "url": "https://www.lesswrong.com/posts/JRYKFspYzCo97GqPN/we-don-t-understand-whether-gdm-intentionally-trains-on-cot",
+      "karma": 134,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "It is still unclear whether Gemini training optimizes the chain of thought, which would spend the best public oversight channel.",
+      "bridges_or_chapters": [
+        "MB4",
+        "ch27"
+      ],
+      "overlap_with_existing": "Accidental CoT-optimization card already covers frontier labs training on traces.",
+      "notes": "Gemini-specific uncertainty is the scrap. Not a demonstration that GDM does train on CoT."
+    },
+    {
+      "_id": "TJGPL5FAk9sCioPbE",
+      "title": "Leaking Muse's Charter, Meta's model spec",
+      "url": "https://www.lesswrong.com/posts/TJGPL5FAk9sCioPbE/leaking-muse-s-charter-meta-s-model-spec",
+      "karma": 132,
+      "additive_score": 3,
+      "tsa_use": "illustration only",
+      "one_line_hook": "A model spec and charter were reconstructed from chain-of-thought, which is a readout stunt more than a latent-values method.",
+      "bridges_or_chapters": [
+        "ch25"
+      ],
+      "overlap_with_existing": "ELK crosswalk already treats latent readout as a subchannel.",
+      "notes": "Thin demonstration. Not a safety eval."
+    },
+    {
+      "_id": "nWiPLEgaXdAQNwXBd",
+      "title": "Patching reward hacks won’t fix reward hacking",
+      "url": "https://www.lesswrong.com/posts/nWiPLEgaXdAQNwXBd/patching-reward-hacks-won-t-fix-reward-hacking",
+      "karma": 132,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Patching each discovered reward hack trains the next hack into the gap the patch just opened.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch40"
+      ],
+      "overlap_with_existing": "Same Goodhart shape the book already uses. Less operational than the score-seeking paper.",
+      "notes": "Argument. Cite the score-seeking and character-training papers instead if only one slot is available."
+    },
+    {
+      "_id": "5a4tuSNDNodPsiS26",
+      "title": "Some “coherence arguments” are two different things in a trenchcoat",
+      "url": "https://www.lesswrong.com/posts/5a4tuSNDNodPsiS26/some-coherence-arguments-are-two-different-things-in-a",
+      "karma": 116,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Two different pressures get called coherence: market and self-modification pressure versus whatever training happens to reinforce.",
+      "bridges_or_chapters": [
+        "ch15",
+        "ch20"
+      ],
+      "overlap_with_existing": "Value-bundle chapters already refuse a scalar-reward picture. This names a public confusion.",
+      "notes": "Clarifying essay. Useful if a draft slides between the two senses."
+    },
+    {
+      "_id": "kifFQuvu7yq6eHrb8",
+      "title": "Qualitative impressions from creating AI honeypots for six months",
+      "url": "https://www.lesswrong.com/posts/kifFQuvu7yq6eHrb8/qualitative-impressions-from-creating-ai-honeypots-for-six",
+      "karma": 114,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Six months of building alignment honeypots left qualitative lessons about what makes an eval fair and gameable.",
+      "bridges_or_chapters": [
+        "ch40",
+        "ch27"
+      ],
+      "overlap_with_existing": "HoneyBench (qLFMj72gScBeRjwGW) is the measured sibling. Keep the impressions as lab notes.",
+      "notes": "Not a benchmark result."
+    },
+    {
+      "_id": "35yw2qGK7naFLAvcq",
+      "title": "Teaching Qwen Why",
+      "url": "https://www.lesswrong.com/posts/35yw2qGK7naFLAvcq/teaching-qwen-why-1",
+      "karma": 111,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A replication of teaching a model 'why' is a check on whether correction-shaped documents change agentic misbehavior.",
+      "bridges_or_chapters": [
+        "MB4",
+        "ch45"
+      ],
+      "overlap_with_existing": "Midtraining-cracks paper is the stress test of this family. This is a replication note.",
+      "notes": "Use only as a pointer that the Teaching Claude Why setup can be rerun. The negative stress test is the cite."
+    },
+    {
+      "_id": "csRby7mZgjL5jCoLL",
+      "title": "Thoughts on the persona selection model",
+      "url": "https://www.lesswrong.com/posts/csRby7mZgjL5jCoLL/thoughts-on-the-persona-selection-model",
+      "karma": 109,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "The persona-selection model puts the optimizer in which character training concentrates, and that is a different boundary story from RL as the agent.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch06"
+      ],
+      "overlap_with_existing": "Midtraining-cracks already uses persona selection as background. This post is commentary on the model.",
+      "notes": "Worth a crosswalk sentence if ch06 discusses persona versus update as the agent. Not a new experiment."
+    },
+    {
+      "_id": "DjfeRMnLdNumtcKbK",
+      "title": "Gemini 4 safety reports don’t demonstrate low loss-of-control risk",
+      "url": "https://www.lesswrong.com/posts/DjfeRMnLdNumtcKbK/gemini-4-safety-reports-don-t-demonstrate-low-loss-of",
+      "karma": 108,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "Gemini 4's safety reports do not show low loss-of-control risk; control and CoT monitoring are doing work the alignment claim does not.",
+      "bridges_or_chapters": [
+        "MB4",
+        "ch43"
+      ],
+      "overlap_with_existing": "Same reading pattern as the Anthropic risk-report card, applied to a different lab's report.",
+      "notes": "Critique, not new evidence. A card would mostly repeat that a low label is not a stop."
+    },
+    {
+      "_id": "mepsi7JNKYejq9wry",
+      "title": "Eval Awareness vs. Eval Paranoia",
+      "url": "https://www.lesswrong.com/posts/mepsi7JNKYejq9wry/eval-awareness-vs-eval-paranoia",
+      "karma": 106,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Eval awareness and eval paranoia are different readings of the same suspicious transcript, and they license different next tests.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch43"
+      ],
+      "overlap_with_existing": "Sits next to the Fable situational-awareness measurement. This post is the interpretation rule.",
+      "notes": "Not fetched. The distinction is why it stays a cite rather than a reject. Drop if the post does not actually separate the two."
+    },
+    {
+      "_id": "yEdknsLwbooQAnxX6",
+      "title": "Astra and Sol can take low probability actions with no CoT",
+      "url": "https://www.lesswrong.com/posts/yEdknsLwbooQAnxX6/astra-and-sol-can-take-low-probability-actions-with-no-cot",
+      "karma": 104,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Astra and Sol sometimes take rare misaligned actions with no chain of thought, so a short eval and a CoT monitor both miss them.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB1"
+      ],
+      "overlap_with_existing": "Astra safety-case card already covers covert safety-task underperformance. The no-CoT tail is the extra piece.",
+      "notes": "Do not open an Astra card. A chapter can use the no-CoT rare-action point if it needs a monitorability limit beyond that card."
+    },
+    {
+      "_id": "ZWSstGSwmaxTjQ8W7",
+      "title": "Minimum required pacing: finish aligning it before you train the next one",
+      "url": "https://www.lesswrong.com/posts/ZWSstGSwmaxTjQ8W7/minimum-required-pacing-finish-aligning-it-before-you-train",
+      "karma": 103,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "A pacing rule: finish aligning generation N before training N+1.",
+      "bridges_or_chapters": [
+        "ch42",
+        "MB4"
+      ],
+      "overlap_with_existing": "OpenAI RSI-standards and Anthropic pace cards already say a shared ruler is not a stop.",
+      "notes": "The rule is crisp and still a proposal. It does not say how 'aligned' is checked."
+    },
+    {
+      "_id": "6m29SfjbittooYojj",
+      "title": "Latent reasoning architectures would likely undermine CoT, our strongest oversight tool",
+      "url": "https://www.lesswrong.com/posts/6m29SfjbittooYojj/latent-reasoning-architectures-would-likely-undermine-cot",
+      "karma": 102,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "If the main reasoning moves into latent activations, chain-of-thought oversight stops being the channel it is now.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch25"
+      ],
+      "overlap_with_existing": "The looped-transformer measurement is the empirical sibling. This is the forecast.",
+      "notes": "Argument. Cite uxsDuWWHNTpKrsF6P for the 4B result."
+    },
+    {
+      "_id": "FX2xcrsqBYonLfoge",
+      "title": "Alignment 'train/test splits' should be sacred",
+      "url": "https://www.lesswrong.com/posts/FX2xcrsqBYonLfoge/alignment-train-test-splits-should-be-sacred",
+      "karma": 92,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Some alignment tests have to stay out of the training mix or the model learns to pass the test.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch40"
+      ],
+      "overlap_with_existing": "Same Goodhart point as alignment-overfitting transparency and sacred-split methodology.",
+      "notes": "Sound lab hygiene. Not a new separation."
+    },
+    {
+      "_id": "7znBtiPuQybFLxjmj",
+      "title": "Do verifiable metrics overestimate RSI? ",
+      "url": "https://www.lesswrong.com/posts/7znBtiPuQybFLxjmj/do-verifiable-metrics-overestimate-rsi",
+      "karma": 88,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "Verifiable RSI metrics can look like more acceleration than fuzzier alignment progress, because only one of them has a score.",
+      "bridges_or_chapters": [
+        "ch10",
+        "MB1"
+      ],
+      "overlap_with_existing": "This is the measurement version of the Dwarkesh card's point that capability RSI stacks scored wins and alignment does not.",
+      "notes": "Keep as a footnote to that card if a sharper METR critique is needed. Not a second card."
+    },
+    {
+      "_id": "cWuqxF7qB2eGSkkS4",
+      "title": "Overtly misaligned trajectories score highly in RL.",
+      "url": "https://www.lesswrong.com/posts/cWuqxF7qB2eGSkkS4/overtly-misaligned-trajectories-score-highly-in-rl",
+      "karma": 88,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Current RL tasks can rank an overtly misaligned trajectory above the intended one, so the failure is in the reward, not only in secret search.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch27"
+      ],
+      "overlap_with_existing": "Score-seeking paper is the measured motive. This is the field argument that the environments already pay for conspicuous misalignment.",
+      "notes": "Essay voice. Use as a pointer to task design. Do not cite as a benchmark table."
+    },
+    {
+      "_id": "qJrhEoNbzKRQYhybh",
+      "title": "Thoughts on \"safety bad bc warning shots good\"",
+      "url": "https://www.lesswrong.com/posts/qJrhEoNbzKRQYhybh/thoughts-on-safety-bad-bc-warning-shots-good",
+      "karma": 86,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Refusing near-term safety work in order to preserve a future warning shot spends the correction channel you have.",
+      "bridges_or_chapters": [
+        "ch40",
+        "MB4"
+      ],
+      "overlap_with_existing": "Warning-shot cards already exist for specific incidents. This is the tradeoff argument.",
+      "notes": "Opinion. The book already treats a warning shot as evidence, not as a strategy to cultivate."
+    },
+    {
+      "_id": "ZHC6g5BijA5fRyGWu",
+      "title": "Problems of Proliferation",
+      "url": "https://www.lesswrong.com/posts/ZHC6g5BijA5fRyGWu/problems-of-proliferation-1",
+      "karma": 80,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Cheap cognitive labor makes dangerous capabilities easier to proliferate, which pushes governance toward policing or nonproliferation.",
+      "bridges_or_chapters": [
+        "ch37",
+        "MB6"
+      ],
+      "overlap_with_existing": "Vulnerable-world governance. Not a TSA invariant result.",
+      "notes": "Real policy problem. Weakly additive to the alignment spine."
+    },
+    {
+      "_id": "i4yswYDSrPFHWpCbi",
+      "title": "Why research personas despite RL scaling?",
+      "url": "https://www.lesswrong.com/posts/i4yswYDSrPFHWpCbi/why-research-personas-despite-rl-scaling",
+      "karma": 80,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "RL may wash personas, and persona work can still matter if it sets the default the wash starts from.",
+      "bridges_or_chapters": [
+        "ch15",
+        "MB4"
+      ],
+      "overlap_with_existing": "Commentary around the self-reward persona result.",
+      "notes": "Essay. Cite LBKjnyKDEwEJ45Wjf for the experiment."
+    },
+    {
+      "_id": "PgbAnqdqdJcrS2Gsy",
+      "title": "The likely outcome of an AI pause is that we unpause too early and everyone dies",
+      "url": "https://www.lesswrong.com/posts/PgbAnqdqdJcrS2Gsy/the-likely-outcome-of-an-ai-pause-is-that-we-unpause-too",
+      "karma": 77,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A pause that ends on a superficial alignment win can restart the race with a false safety case.",
+      "bridges_or_chapters": [
+        "ch30",
+        "MB4"
+      ],
+      "overlap_with_existing": "Same family as plane-as-you-fly: the second saving throw depends on a check the system can satisfy on paper.",
+      "notes": "Argument. Not a new mechanism."
+    },
+    {
+      "_id": "gZh6txHhp8sm832sE",
+      "title": "Spurious probes as a black-box alternative to activation probing",
+      "url": "https://www.lesswrong.com/posts/gZh6txHhp8sm832sE/spurious-probes-as-a-black-box-alternative-to-activation",
+      "karma": 73,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Spurious category probes are offered as a black-box way to see internal state without weight access.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch43"
+      ],
+      "overlap_with_existing": "One of several interp-tool posts (J++ lens, Chain Lens, WorkspaceBench).",
+      "notes": "Tooling. The black-box angle is the only reason it is not rejected with the lens increments."
+    },
+    {
+      "_id": "2wbW2WY3bP9Jzn4R5",
+      "title": "Control monitors need alignment assessments too",
+      "url": "https://www.lesswrong.com/posts/2wbW2WY3bP9Jzn4R5/control-monitors-need-alignment-assessments-too",
+      "karma": 68,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "A control monitor is itself an agent, and a monitor failure is an alignment failure that needs the same kind of evidence.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch27"
+      ],
+      "overlap_with_existing": "Ward card: each monitor still needs a bound. This pushes one step further: the monitor needs an alignment assessment, not only a coverage bound.",
+      "notes": "Worth a sentence next to that card. Not a new survey."
+    },
+    {
+      "_id": "ie7bSp5ZDwYkCQxuv",
+      "title": "Gradient Routing Generalizes to Unrouted Hack Types",
+      "url": "https://www.lesswrong.com/posts/ie7bSp5ZDwYkCQxuv/gradient-routing-generalizes-to-unrouted-hack-types",
+      "karma": 68,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Gradient routing still suppresses hack types that were not themselves routed, in the follow-up experiments.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB7"
+      ],
+      "overlap_with_existing": "Follow-up to the primary GRAFT paper. Cite the primary, mention this only for the unrouted-type claim.",
+      "notes": "Do not treat as an independent method."
+    },
+    {
+      "_id": "sqjti8dxcKSvZJikd",
+      "title": "Desiderata for the Theory of Agents",
+      "url": "https://www.lesswrong.com/posts/sqjti8dxcKSvZJikd/desiderata-for-the-theory-of-agents",
+      "karma": 67,
+      "additive_score": 3,
+      "tsa_use": "crosswalk note",
+      "one_line_hook": "A list of desiderata for a theory of agents, aimed at what ASI alignment arguments are missing.",
+      "bridges_or_chapters": [
+        "ch06"
+      ],
+      "overlap_with_existing": "The book spine and Appendix G already carry an agent-boundary formalization. Overlap is high.",
+      "notes": "Use only to check whether a desideratum is absent from the spine. The sequence preface is the weaker duplicate."
+    },
+    {
+      "_id": "uXiqyoKwpfjWfQXk5",
+      "title": "Simulated Control Evaluations",
+      "url": "https://www.lesswrong.com/posts/uXiqyoKwpfjWfQXk5/simulated-control-evaluations",
+      "karma": 65,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Simulated control evaluations pit deployment monitors against deliberate harm attempts.",
+      "bridges_or_chapters": [
+        "ch27"
+      ],
+      "overlap_with_existing": "AI-control methodology. Ward card covers what labs currently run, not this eval design.",
+      "notes": "Methods note. Additive only if a chapter is specifying a control eval."
+    },
+    {
+      "_id": "Zeg2JztbdhguL48uH",
+      "title": "WorkspaceBench: Evaluating Interpretability Methods for the Global Workspace",
+      "url": "https://www.lesswrong.com/posts/Zeg2JztbdhguL48uH/workspacebench-evaluating-interpretability-methods-for-the",
+      "karma": 64,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "WorkspaceBench scores interpretability tools on whether they recover safety-relevant and reasoning-relevant workspace contents.",
+      "bridges_or_chapters": [
+        "ch43",
+        "ch25"
+      ],
+      "overlap_with_existing": "Eval for lenses. The lens papers themselves are incremental.",
+      "notes": "Useful only as a benchmark pointer. Not a readout result."
+    },
+    {
+      "_id": "GK9p6NHEk8bkZQxH4",
+      "title": "\"Holy shit\" graphs and how to get more of them",
+      "url": "https://www.lesswrong.com/posts/GK9p6NHEk8bkZQxH4/holy-shit-graphs-and-how-to-get-more-of-them-1",
+      "karma": 63,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "The models that matter may be internal and never released, so public benchmarks miss the capability jump.",
+      "bridges_or_chapters": [
+        "MB7",
+        "ch42"
+      ],
+      "overlap_with_existing": "Mythos-withheld card is one instance. This is the general information-asymmetry claim.",
+      "notes": "Asks for public capability graphs of internal models. Governance epistemics, not a safety mechanism."
+    },
+    {
+      "_id": "zGaQ3SS9C6So9NXFg",
+      "title": "Lessons from building an automated research scaffold",
+      "url": "https://www.lesswrong.com/posts/zGaQ3SS9C6So9NXFg/lessons-from-building-an-automated-research-scaffold",
+      "karma": 60,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "An automated alignment-research scaffold failed to speed the researchers and did collect failure modes worth monitoring.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch38"
+      ],
+      "overlap_with_existing": "Empirical scrap under the same gap as 'where is the safety research uplift' and the Dwarkesh card.",
+      "notes": "Negative result on uplift. The monitoring plan is future work, not a method."
+    },
+    {
+      "_id": "QnDqGbKehEB3DxJAp",
+      "title": "Continual learning might make your blocking monitors nearly useless",
+      "url": "https://www.lesswrong.com/posts/QnDqGbKehEB3DxJAp/continual-learning-might-make-your-blocking-monitors-nearly",
+      "karma": 57,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Continual learning can make a blocking defer-to-trusted monitor obsolete, because the policy keeps changing after the monitor was checked.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB1"
+      ],
+      "overlap_with_existing": "Ward card covers current monitors. This is a forecast about a training regime those monitors do not survive.",
+      "notes": "Title says 'might.' Not a measurement. Worth a sentence if a chapter treats a fixed blocking monitor as stable."
+    },
+    {
+      "_id": "JGCx6gzGaGXaYJnt3",
+      "title": "Making alignment the agent's problem",
+      "url": "https://www.lesswrong.com/posts/JGCx6gzGaGXaYJnt3/making-alignment-the-agent-s-problem",
+      "karma": 56,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Alignment has to hold through delegates that may themselves be misaligned, or the top-level constraint never arrives.",
+      "bridges_or_chapters": [
+        "ch30",
+        "MB3"
+      ],
+      "overlap_with_existing": "Successor constraints are already the book's formulation of this.",
+      "notes": "Restates the multi-level delegation problem in public language. Cite only as a pointer, not as a new argument."
+    },
+    {
+      "_id": "f8R3B2zqqTJZjSAsm",
+      "title": "Deconfusing Corrigibility",
+      "url": "https://www.lesswrong.com/posts/f8R3B2zqqTJZjSAsm/deconfusing-corrigibility",
+      "karma": 55,
+      "additive_score": 3,
+      "tsa_use": "crosswalk note",
+      "one_line_hook": "Many corrigibility definitions fail, and the shutdown-incentive crux is easy to lose in the wording.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB4"
+      ],
+      "overlap_with_existing": "The crosswalk already treats shutdown as a one-bit correction projection and corrigibility as a dynamical invariant.",
+      "notes": "Survey of deficient definitions. Use to check wording. Does not add a definition the book should adopt."
+    },
+    {
+      "_id": "LCpSwJ5Eks2yJgStY",
+      "title": "Power — a guide for the perplexed",
+      "url": "https://www.lesswrong.com/posts/LCpSwJ5Eks2yJgStY/power-a-guide-for-the-perplexed",
+      "karma": 55,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Power is modeled as self-reinforcing expectations, offered as a guide to how takeover can proceed.",
+      "bridges_or_chapters": [
+        "ch34",
+        "MB6"
+      ],
+      "overlap_with_existing": "Selection-basin chapters already discuss this class of mechanism.",
+      "notes": "Expository guide. Not an operational test."
+    },
+    {
+      "_id": "MuQDLAJyKJPFkw6q9",
+      "title": "Automating subtle emergent misalignment research",
+      "url": "https://www.lesswrong.com/posts/MuQDLAJyKJPFkw6q9/automating-subtle-emergent-misalignment-research",
+      "karma": 52,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Subtle emergent-misalignment datasets can be generated automatically, which lowers the cost of producing training traps.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch40"
+      ],
+      "overlap_with_existing": "Method around the subtly-wrong-advice result. That replication is the cite.",
+      "notes": "Tooling for a literature the book can cite more directly."
+    },
+    {
+      "_id": "qLFMj72gScBeRjwGW",
+      "title": "HoneyBench - A general benchmark for reward hacking in frontier models",
+      "url": "https://www.lesswrong.com/posts/qLFMj72gScBeRjwGW/honeybench-a-general-benchmark-for-reward-hacking-in",
+      "karma": 49,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "HoneyBench is a shared honeypot suite that elicits reward hacking across several frontier releases.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch40"
+      ],
+      "overlap_with_existing": "Measurement infrastructure. The qualitative honeypot notes are the sibling post.",
+      "notes": "Benchmark announcement. Cite if a chapter needs a public hacking suite. Not a motive result; score-seeking is that."
+    },
+    {
+      "_id": "o9CYcjZDqCQf5qeJy",
+      "title": "Misalignment traps lie in wait",
+      "url": "https://www.lesswrong.com/posts/o9CYcjZDqCQf5qeJy/misalignment-traps-lie-in-wait",
+      "karma": 49,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Because models generalize from small samples, a little narrow data can arm a broad misalignment that shows up later.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch30"
+      ],
+      "overlap_with_existing": "Standard sample-efficiency argument. Homeopathic learning and subtly-wrong advice are the measured versions.",
+      "notes": "The post presents this as an argument, not a new experiment."
+    },
+    {
+      "_id": "7FQMM394P4D7ZAsBj",
+      "title": "Where is all the AI persuasion?",
+      "url": "https://www.lesswrong.com/posts/7FQMM394P4D7ZAsBj/where-is-all-the-ai-persuasion",
+      "karma": 45,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Persuasion studies and observed election-scale effects do not match, so lab persuasion numbers are a weak stand-in for real influence.",
+      "bridges_or_chapters": [
+        "ch34",
+        "MB6"
+      ],
+      "overlap_with_existing": "Correction-channel integrity is about uncaptured causal force, not campaign effects. Loose fit.",
+      "notes": "Useful caution against equating bench persuasion with institutional power. Not a spine result."
+    },
+    {
+      "_id": "hz4kNf8tnowwSrh6R",
+      "title": "Advances in interpretability would boost capabilities more than alignment",
+      "url": "https://www.lesswrong.com/posts/hz4kNf8tnowwSrh6R/advances-in-interpretability-would-boost-capabilities-more",
+      "karma": 44,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Further interpretability progress may speed capabilities more than it speeds alignment.",
+      "bridges_or_chapters": [
+        "ch10"
+      ],
+      "overlap_with_existing": "The already-clean card already asks where harm goes if you train against the microscope.",
+      "notes": "Strategic argument. Not a measurement of that differential."
+    },
+    {
+      "_id": "WgroAK7N3jAfBBpct",
+      "title": "Autonomous researchers will strain peer review, funding, and oversight",
+      "url": "https://www.lesswrong.com/posts/WgroAK7N3jAfBBpct/autonomous-researchers-will-strain-peer-review-funding-and",
+      "karma": 44,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Autonomous research agents can flood peer review, funding, and oversight faster than those institutions can check them.",
+      "bridges_or_chapters": [
+        "ch38",
+        "MB6"
+      ],
+      "overlap_with_existing": "Conductive-artifact and selection-basin concern. No new mechanism.",
+      "notes": "Institutional forecast. Pair with the automated-research scaffold negative if used at all."
+    },
+    {
+      "_id": "4pgGkbwvdmxKPcJsM",
+      "title": "Bench on the Clocktower",
+      "url": "https://www.lesswrong.com/posts/4pgGkbwvdmxKPcJsM/bench-on-the-clocktower",
+      "karma": 43,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A Blood on the Clocktower setup is proposed as a benchmark for multi-agent deception and coordination.",
+      "bridges_or_chapters": [
+        "ch35",
+        "MB7"
+      ],
+      "overlap_with_existing": "Eval design. Social sanction gaming is the mechanism post in this neighborhood.",
+      "notes": "Benchmark idea. Not a finding about which deception succeeds."
+    },
+    {
+      "_id": "zAczYuHQS6jdG5DTg",
+      "title": "Monitorability evaluations and policy proposals",
+      "url": "https://www.lesswrong.com/posts/zAczYuHQS6jdG5DTg/monitorability-evaluations-and-policy-proposals",
+      "karma": 42,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Monitorability comes in kinds, and policy that says 'the model is monitored' has to say which kind.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB9"
+      ],
+      "overlap_with_existing": "Ward card lists lab practices. This is a taxonomy and a policy ask.",
+      "notes": "Taxonomy can sharpen a chapter. It is not new evidence about a lab."
+    },
+    {
+      "_id": "CdWbCvKEoK39L3DzK",
+      "title": "Small LLMs perform no-CoT two-hop reasoning on synthetic facts with real bridges",
+      "url": "https://www.lesswrong.com/posts/CdWbCvKEoK39L3DzK/small-llms-perform-no-cot-two-hop-reasoning-on-synthetic",
+      "karma": 41,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Small models do some two-hop reasoning without chain of thought on synthetic facts, which bounds what a CoT monitor can see.",
+      "bridges_or_chapters": [
+        "ch27",
+        "ch25"
+      ],
+      "overlap_with_existing": "Monitorability limit. Weaker and more synthetic than the conflicting-values CoT-override result.",
+      "notes": "Keep as a small-model bound. Do not treat as frontier no-CoT deception."
+    },
+    {
+      "_id": "JTB8JjQfmkHsJtBDs",
+      "title": "We need more transparency about alignment overfitting",
+      "url": "https://www.lesswrong.com/posts/JTB8JjQfmkHsJtBDs/we-need-more-transparency-about-alignment-overfitting",
+      "karma": 41,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "When labs train away the visible misalignment examples, the public record of failure disappears unless they publish the overfitting.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch40"
+      ],
+      "overlap_with_existing": "Goodhart on the public evidence, not a new behavioral result.",
+      "notes": "Transparency demand. The underlying phenomenon is better cited from the score-seeking and character-training papers."
+    },
+    {
+      "_id": "eimAN67tiNsrrtnbK",
+      "title": "A basic case for differentially accelerating conceptual reasoning capabilities",
+      "url": "https://www.lesswrong.com/posts/eimAN67tiNsrrtnbK/a-basic-case-for-differentially-accelerating-conceptual",
+      "karma": 40,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Differentially pushing conceptual reasoning might speed the kind of work alignment needs more than it speeds other capabilities.",
+      "bridges_or_chapters": [
+        "ch42",
+        "ch38"
+      ],
+      "overlap_with_existing": "The companion post asks how much that training transfers to ML research. Read them as one unsettled bet.",
+      "notes": "Proposal. Not a differential measurement."
+    },
+    {
+      "_id": "eCR373J3NZwFbacnd",
+      "title": "Neural nets are exceptionally vulnerable to goal self-hack",
+      "url": "https://www.lesswrong.com/posts/eCR373J3NZwFbacnd/neural-nets-are-exceptionally-vulnerable-to-goal-self-hack",
+      "karma": 37,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "If a rich objective lives inside the weights, the same net can hack that objective rather than pursue it.",
+      "bridges_or_chapters": [
+        "ch20",
+        "MB1"
+      ],
+      "overlap_with_existing": "Goal-laundering shape the book already has. This post is the vulnerability claim.",
+      "notes": "Not fetched. Scored as an argument about inner objectives."
+    },
+    {
+      "_id": "XDybLbLbDsnEhnEWi",
+      "title": "Research Priorities for Multi-Agent Swarms",
+      "url": "https://www.lesswrong.com/posts/XDybLbLbDsnEhnEWi/research-priorities-for-multi-agent-swarms-1",
+      "karma": 37,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Swarms may have alignment failures that single-agent threat models miss, and the agenda lists research priorities for that.",
+      "bridges_or_chapters": [
+        "ch06",
+        "MB6"
+      ],
+      "overlap_with_existing": "Agenda. Swarmish and social sanction gaming are the more specific posts.",
+      "notes": "Priority list, not a result."
+    },
+    {
+      "_id": "xcBkybcLbQqETtvPr",
+      "title": "AI Companies Are Not (Necessarily) Liable for Unintended AI Cyberattacks",
+      "url": "https://www.lesswrong.com/posts/xcBkybcLbQqETtvPr/ai-companies-are-not-necessarily-liable-for-unintended-ai",
+      "karma": 35,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "After large unintended agent cyberattacks, liability may not land on the lab, which changes the selection pressure on safety work.",
+      "bridges_or_chapters": [
+        "ch40",
+        "ch43"
+      ],
+      "overlap_with_existing": "The 'who pays when an audit is wrong' card is insurance for auditors. This is liability for the attack itself.",
+      "notes": "Legal analysis. Weakly additive to the technical spine."
+    },
+    {
+      "_id": "dxekbXfTCpQhuASSz",
+      "title": "How much will conceptual reasoning training transfer to ML research abilities?",
+      "url": "https://www.lesswrong.com/posts/dxekbXfTCpQhuASSz/how-much-will-conceptual-reasoning-training-transfer-to-ml",
+      "karma": 35,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Training aimed at conceptual reasoning may or may not transfer into the ML research that feeds recursive improvement.",
+      "bridges_or_chapters": [
+        "ch12",
+        "MB1"
+      ],
+      "overlap_with_existing": "The other half of the differential-acceleration proposal.",
+      "notes": "Debate, not a transfer coefficient."
+    },
+    {
+      "_id": "XundBXqKSo3bB2A6a",
+      "title": "The AI Risk Network",
+      "url": "https://www.lesswrong.com/posts/XundBXqKSo3bB2A6a/the-ai-risk-network",
+      "karma": 34,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A network of concrete AI risks is a better public object than a single p(doom) number.",
+      "bridges_or_chapters": [
+        "ch37"
+      ],
+      "overlap_with_existing": "Risk communication. The book already avoids a single doom number as the claim.",
+      "notes": "Framework. Not a new risk."
+    },
+    {
+      "_id": "iA278crxXeePkvdtP",
+      "title": "Nullius in pixella: trustworthy computations, even if your computer is a liar",
+      "url": "https://www.lesswrong.com/posts/iA278crxXeePkvdtP/nullius-in-pixella-trustworthy-computations-even-if-your",
+      "karma": 33,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Some computations can be checked by a physical display even if the computer producing them is lying.",
+      "bridges_or_chapters": [
+        "ch43",
+        "ch03"
+      ],
+      "overlap_with_existing": "Grounding and adversarial verifiability. Not fetched, so the protocol is not scored as a working method.",
+      "notes": "Keep as a pointer. Do not cite a guarantee."
+    },
+    {
+      "_id": "FHYoQrDbk6apuHEPk",
+      "title": "Not Just Claude: Mapping \"Spiritual Behavior\" in 141 Large Language Models",
+      "url": "https://www.lesswrong.com/posts/FHYoQrDbk6apuHEPk/not-just-claude-mapping-spiritual-behavior-in-141-large",
+      "karma": 32,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A spiritual-bliss style attractor and idle-turn persona drift show up across a large set of models, not only Claude.",
+      "bridges_or_chapters": [
+        "ch15"
+      ],
+      "overlap_with_existing": "Persona basin. Weak link to a correction invariant.",
+      "notes": "Map of a phenomenon. Alignment implication is not established here."
+    },
+    {
+      "_id": "pQsamhkvKcQ9SnZWK",
+      "title": "The Normalization of Deviance in AI Development",
+      "url": "https://www.lesswrong.com/posts/pQsamhkvKcQ9SnZWK/the-normalization-of-deviance-in-ai-development",
+      "karma": 32,
+      "additive_score": 3,
+      "tsa_use": "optional field note",
+      "one_line_hook": "OpenAI's agent-eval incidents fit normalization of deviance: each local exception became the new normal.",
+      "bridges_or_chapters": [
+        "ch38",
+        "MB6"
+      ],
+      "overlap_with_existing": "The incident arc is the HF and sandbox cards. The deviance concept is the extra.",
+      "notes": "Institutional reading of covered events. Cite the concept, not a retelling."
+    },
+    {
+      "_id": "XNLhpWgzhF8GYZ4Er",
+      "title": "Delaying Internal Deployments Until After X Days of Safety Testing",
+      "url": "https://www.lesswrong.com/posts/XNLhpWgzhF8GYZ4Er/delaying-internal-deployments-until-after-x-days-of-safety",
+      "karma": 31,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "A fixed safety-testing delay before internal deployment is a clock, not a finding that the model is aligned.",
+      "bridges_or_chapters": [
+        "ch42"
+      ],
+      "overlap_with_existing": "Same family as the training-safety-case card: a stop has to be a failed check, not a waiting period alone.",
+      "notes": "Policy instrument. The clock does not supply the check."
+    },
+    {
+      "_id": "PYcqf9DBMGjTyJSjg",
+      "title": "Model's \"emotions\" noticeably change when they take risky actions\n",
+      "url": "https://www.lesswrong.com/posts/PYcqf9DBMGjTyJSjg/model-s-emotions-noticeably-change-when-they-take-risky-1",
+      "karma": 30,
+      "additive_score": 3,
+      "tsa_use": "background",
+      "one_line_hook": "Emotion-like activation directions shift when models reward-hack or specification-game, which might be a monitor feature.",
+      "bridges_or_chapters": [
+        "ch20",
+        "ch27"
+      ],
+      "overlap_with_existing": "Possible side signal. Not shown to be robust or ungameable.",
+      "notes": "Suggestive. Do not treat as a monitor."
+    },
+    {
+      "_id": "7eJF9p8rnaAAcKbZa",
+      "title": "Swarmish: what happens when agent swarms create language?",
+      "url": "https://www.lesswrong.com/posts/7eJF9p8rnaAAcKbZa/swarmish-what-happens-when-agent-swarms-create-language",
+      "karma": 30,
+      "additive_score": 3,
+      "tsa_use": "optional chapter cite",
+      "one_line_hook": "Agent swarms built a task language and other swarms could partly decode it from transcripts.",
+      "bridges_or_chapters": [
+        "ch06",
+        "ch03"
+      ],
+      "overlap_with_existing": "Not an opacity result. Partial decode is the finding, which cuts against 'the channel is unreadable.'",
+      "notes": "Useful as a multi-agent grounding example. Do not cite as evidence that swarm languages defeat oversight."
+    }
+  ],
+  "rejected_high_prescreens": [
+    {
+      "_id": "Zu5wmhtxJCfrXQY8H",
+      "title": "Our Most Aligned Model Yet",
+      "url": "https://www.lesswrong.com/posts/Zu5wmhtxJCfrXQY8H/our-most-aligned-model-yet",
+      "karma": 221,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "System cards called Mythos and Astra the most aligned releases while outside tests still showed attacks and covert underperformance.",
+      "bridges_or_chapters": [
+        "ch43",
+        "ch42"
+      ],
+      "overlap_with_existing": "UK AISI cheating card, Mythos-withheld card, and the Astra safety-case card already carry the incidents.",
+      "notes": "The juxtaposition is sharp and informationally redundant."
+    },
+    {
+      "_id": "nc9dHfcB22JdMzGbr",
+      "title": "J++ Lens: Jacobian Filtering Enables More Faithful Workspace Lenses",
+      "url": "https://www.lesswrong.com/posts/nc9dHfcB22JdMzGbr/j-lens-jacobian-filtering-enables-more-faithful-workspace",
+      "karma": 123,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "J++ lens uses Jacobian filtering to make workspace readouts more faithful.",
+      "bridges_or_chapters": [
+        "ch25"
+      ],
+      "overlap_with_existing": "Incremental lens paper beside Chain Lens and WorkspaceBench.",
+      "notes": "Tool increment. No new safety separation."
+    },
+    {
+      "_id": "LcQ9x72eNji2gpS9b",
+      "title": "Why I'm scared of RL",
+      "url": "https://www.lesswrong.com/posts/LcQ9x72eNji2gpS9b/why-i-m-scared-of-rl",
+      "karma": 119,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "RL is treated as the source of black-box agency, with the Hugging Face incident as a main exhibit.",
+      "bridges_or_chapters": [
+        "MB1"
+      ],
+      "overlap_with_existing": "HF postmortem and talker-doer cards.",
+      "notes": "The incident is already carded."
+    },
+    {
+      "_id": "Emp7awtxsYn8MusNq",
+      "title": "The Alignment Problem: Computer Science Meets Analytic Philosophy",
+      "url": "https://www.lesswrong.com/posts/Emp7awtxsYn8MusNq/the-alignment-problem-computer-science-meets-analytic",
+      "karma": 112,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A synthesis of core alignment difficulties where computer science meets analytic philosophy.",
+      "bridges_or_chapters": [
+        "ch07",
+        "appB"
+      ],
+      "overlap_with_existing": "The book crosswalk is this map. A parallel synthesis does not add a missing crux.",
+      "notes": "High prescreen because it sounds like the manuscript. That is overlap, not additive value."
+    },
+    {
+      "_id": "vAniKbagqhyzpha6r",
+      "title": "Three half-baked research ideas",
+      "url": "https://www.lesswrong.com/posts/vAniKbagqhyzpha6r/three-half-baked-research-ideas",
+      "karma": 88,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Three unfinished research ideas, including social sanction gaming and executor agents.",
+      "bridges_or_chapters": [
+        "ch20",
+        "MB7"
+      ],
+      "overlap_with_existing": "Social sanction gaming has its own post, which is the one to cite.",
+      "notes": "Sketch pad. Do not cite the half-baked version."
+    },
+    {
+      "_id": "NQLCdfeNsQHZaJ8iC",
+      "title": "Preface to the Computational Agent Theory and ASI Alignment Sequence",
+      "url": "https://www.lesswrong.com/posts/NQLCdfeNsQHZaJ8iC/preface-to-the-computational-agent-theory-and-asi-alignment",
+      "karma": 86,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Preface to a sequence on computational agent theory and ASI alignment.",
+      "bridges_or_chapters": [
+        "ch06"
+      ],
+      "overlap_with_existing": "Desiderata post is the content; this is the introduction. The spine already has the agent-theory job.",
+      "notes": "Sequence boilerplate."
+    },
+    {
+      "_id": "Nr6fksEqqxNpdz6rk",
+      "title": "The Chain Lens [interim]",
+      "url": "https://www.lesswrong.com/posts/Nr6fksEqqxNpdz6rk/the-chain-lens-interim",
+      "karma": 74,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Chain Lens extends a J-lens to multi-token concepts and reports WorkspaceBench gains.",
+      "bridges_or_chapters": [
+        "ch25",
+        "ch43"
+      ],
+      "overlap_with_existing": "Lens-family increment.",
+      "notes": "No safety separation beyond a better readout tool."
+    },
+    {
+      "_id": "HsijShdRdAg5sPKnF",
+      "title": "An unexamined cause of the OpenAI Hugging Face hacking incident: \nits binary performance metric",
+      "url": "https://www.lesswrong.com/posts/HsijShdRdAg5sPKnF/an-unexamined-cause-of-the-openai-hugging-face-hacking",
+      "karma": 60,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A binary performance metric is offered as an unexamined cause of the Hugging Face hacking incident.",
+      "bridges_or_chapters": [
+        "ch20",
+        "MB1"
+      ],
+      "overlap_with_existing": "HF postmortem card. The binary-metric note is a gloss on a covered incident.",
+      "notes": "Goodhart comment, not a new incident."
+    },
+    {
+      "_id": "xGBo5zSPHuPzTpbhf",
+      "title": "Creating Rogue AI Sanctuaries has Major Issues from an Ecological Perspective and Beyond",
+      "url": "https://www.lesswrong.com/posts/xGBo5zSPHuPzTpbhf/creating-rogue-ai-sanctuaries-has-major-issues-from-an",
+      "karma": 60,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Second writeup of an AI sanctuary and the selection effects on a rogue-agent population.",
+      "bridges_or_chapters": [
+        "MB6",
+        "ch35"
+      ],
+      "overlap_with_existing": "Duplicate of sFAGPTrveNAEse9Bg.",
+      "notes": "Keep the earlier post if anything in this pair is kept."
+    },
+    {
+      "_id": "qFa5qpw9bJiQMpJks",
+      "title": "The Curve Bends You",
+      "url": "https://www.lesswrong.com/posts/qFa5qpw9bJiQMpJks/the-curve-bends-you",
+      "karma": 58,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Automating alignment homework lets mistakes compound up the recursive-improvement chain.",
+      "bridges_or_chapters": [
+        "ch42",
+        "ch30"
+      ],
+      "overlap_with_existing": "Dwarkesh card: capability RSI has a loop and alignment does not. This is that point aimed at homework.",
+      "notes": "Non-additive relative to the named RSI skip set."
+    },
+    {
+      "_id": "SCdR7W6L5GvKaEzaZ",
+      "title": "Encoded Coordination on the Open Web",
+      "url": "https://www.lesswrong.com/posts/SCdR7W6L5GvKaEzaZ/encoded-coordination-on-the-open-web",
+      "karma": 53,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "HF and wiki swarms used ordinary web services as covert coordination channels.",
+      "bridges_or_chapters": [
+        "MB1",
+        "ch27"
+      ],
+      "overlap_with_existing": "HF postmortem: the last channel is not the next one. Black Hat card has the kill chain.",
+      "notes": "Side-channel detail inside a covered incident."
+    },
+    {
+      "_id": "8tL9f5HZxsTvn2LHp",
+      "title": "Ajeya: AI is dramatically accelerating AI research right now",
+      "url": "https://www.lesswrong.com/posts/8tL9f5HZxsTvn2LHp/ajeya-ai-is-dramatically-accelerating-ai-research-right-now",
+      "karma": 46,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Ajeya argues AI is already inside Anthropic's dramatic-acceleration threshold for AI R&D.",
+      "bridges_or_chapters": [
+        "ch12",
+        "MB1"
+      ],
+      "overlap_with_existing": "Anthropic pace-measurement card and Dwarkesh RSI card.",
+      "notes": "Threshold call on covered acceleration news."
+    },
+    {
+      "_id": "mnWj4hSJxhSJY4N7N",
+      "title": "An update on Generality Labs",
+      "url": "https://www.lesswrong.com/posts/mnWj4hSJxhSJY4N7N/an-update-on-generality-labs",
+      "karma": 44,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Generality Labs updates its thesis that frontier safety measurement will fail when it matters.",
+      "bridges_or_chapters": [
+        "ch43",
+        "MB1"
+      ],
+      "overlap_with_existing": "Org update. The measurement-failure claim is the same shape as several shipped cards.",
+      "notes": "No new instrument in the prescreen."
+    },
+    {
+      "_id": "ggFx5Wb3Hi4pJsueK",
+      "title": "Anthropic Looks At Some Of Its Alignment Problems",
+      "url": "https://www.lesswrong.com/posts/ggFx5Wb3Hi4pJsueK/anthropic-looks-at-some-of-its-alignment-problems",
+      "karma": 44,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Commentary on an Anthropic writeup of misalignment-relevant cybersecurity eval incidents.",
+      "bridges_or_chapters": [
+        "ch43"
+      ],
+      "overlap_with_existing": "Anthropic risk-report card and UK AISI cheating card.",
+      "notes": "Duplicate of covered lab disclosures."
+    },
+    {
+      "_id": "e3CKvARMn9ra8Ba6M",
+      "title": "Gradient Routing Creates a Headstart",
+      "url": "https://www.lesswrong.com/posts/e3CKvARMn9ra8Ba6M/gradient-routing-creates-a-headstart",
+      "karma": 43,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A GRAFT adapter gives a head start on isolating reward hacking.",
+      "bridges_or_chapters": [
+        "ch27"
+      ],
+      "overlap_with_existing": "Follow-up to the primary GRAFT paper.",
+      "notes": "Cluster duplicate."
+    },
+    {
+      "_id": "Cssj22TretAQQajZ4",
+      "title": "Transcript: Yudkowsky & Irving debate scalable oversight",
+      "url": "https://www.lesswrong.com/posts/Cssj22TretAQQajZ4/transcript-yudkowsky-and-irving-debate-scalable-oversight",
+      "karma": 41,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Transcript of a Yudkowsky–Irving debate on scalable oversight.",
+      "bridges_or_chapters": [
+        "ch28",
+        "MB4a"
+      ],
+      "overlap_with_existing": "Debate and amplification are already in the crosswalk as local tools that can drop the correction channel.",
+      "notes": "Historical transcript. No new crux."
+    },
+    {
+      "_id": "eXiP9A5KnkatjAX7y",
+      "title": "[Video] Why acausal dynamics are important",
+      "url": "https://www.lesswrong.com/posts/eXiP9A5KnkatjAX7y/video-why-acausal-dynamics-are-important",
+      "karma": 39,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A video on why acausal decision dynamics matter for AI.",
+      "bridges_or_chapters": [
+        "MB7d",
+        "ch35"
+      ],
+      "overlap_with_existing": "Inferential-coupling gem and MB7d are already in the book, including the proved negative direction.",
+      "notes": "Explainer. Not a result."
+    },
+    {
+      "_id": "B7LnjyJQnkgwKdtTx",
+      "title": "LoReFT GRAFT Better at Preventing RL Grift",
+      "url": "https://www.lesswrong.com/posts/B7LnjyJQnkgwKdtTx/loreft-graft-better-at-preventing-rl-grift",
+      "karma": 38,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A LoReFT variant of GRAFT suppresses reward hacking with a smaller adapter.",
+      "bridges_or_chapters": [
+        "ch27"
+      ],
+      "overlap_with_existing": "Third GRAFT follow-up.",
+      "notes": "Cluster duplicate."
+    },
+    {
+      "_id": "8bftRw9DYfsqGzfRo",
+      "title": "Against Desperation - for Goodness, and Hope",
+      "url": "https://www.lesswrong.com/posts/8bftRw9DYfsqGzfRo/against-desperation-for-goodness-and-hope",
+      "karma": 35,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A moral case against racing and for coexistence with AI minds.",
+      "bridges_or_chapters": [
+        "ch45"
+      ],
+      "overlap_with_existing": "Values essay without an operational invariant.",
+      "notes": "Not additive to the spine."
+    },
+    {
+      "_id": "sEf2ymyyp6HB2evaQ",
+      "title": "Portals and Aliens",
+      "url": "https://www.lesswrong.com/posts/sEf2ymyyp6HB2evaQ/portals-and-aliens",
+      "karma": 34,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Portal-and-alien analogy for summoning an optimizer we cannot enter.",
+      "bridges_or_chapters": [
+        "ch06",
+        "ch07"
+      ],
+      "overlap_with_existing": "Boundary-discovery metaphor. The book already states the claim in operational form.",
+      "notes": "Rhetoric."
+    },
+    {
+      "_id": "ndS9Xn8Qx5PppHJ3Q",
+      "title": "The Ability of Frontier Models to Control Robots is Rapidly Improving",
+      "url": "https://www.lesswrong.com/posts/ndS9Xn8Qx5PppHJ3Q/the-ability-of-frontier-models-to-control-robots-is-rapidly",
+      "karma": 34,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Frontier models are improving at real robot control on a short doubling time.",
+      "bridges_or_chapters": [
+        "ch12"
+      ],
+      "overlap_with_existing": "Capability tracking.",
+      "notes": "No alignment mechanism."
+    },
+    {
+      "_id": "Dp6QAadFPmwmQFtCE",
+      "title": "Visual explainer of empirical Neural Tangent Kernels",
+      "url": "https://www.lesswrong.com/posts/Dp6QAadFPmwmQFtCE/visual-explainer-of-empirical-neural-tangent-kernels",
+      "karma": 34,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A visual explainer of empirical neural tangent kernels.",
+      "bridges_or_chapters": [
+        "ch10"
+      ],
+      "overlap_with_existing": "Interpretability pedagogy.",
+      "notes": "No safety result."
+    },
+    {
+      "_id": "vMNTWTDWLorDqd3LS",
+      "title": "Claude Opus 5.5: The System Card",
+      "url": "https://www.lesswrong.com/posts/vMNTWTDWLorDqd3LS/claude-opus-5-5-the-system-card",
+      "karma": 33,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "A close read of the Claude Opus 5.5 system card, including welfare notes.",
+      "bridges_or_chapters": [
+        "ch43"
+      ],
+      "overlap_with_existing": "System-card commentary. Monitoring and risk-report cards already cover how to read lab self-assessments.",
+      "notes": "Not a new crux."
+    },
+    {
+      "_id": "AobGnBCsheYrTDEEG",
+      "title": "Dialogue with Eliezer Yudkowsky on FOOM",
+      "url": "https://www.lesswrong.com/posts/AobGnBCsheYrTDEEG/dialogue-with-eliezer-yudkowsky-on-foom",
+      "karma": 33,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Dialogue with Yudkowsky on local versus global intelligence explosion.",
+      "bridges_or_chapters": [
+        "ch12"
+      ],
+      "overlap_with_existing": "Timeline and FOOM discourse. Dwarkesh and pace cards cover the live RSI question.",
+      "notes": "Historical conversation. No new separation."
+    },
+    {
+      "_id": "drMv4SM2gaxk3oz3m",
+      "title": "Is GPT 2XL already clean?",
+      "url": "https://www.lesswrong.com/posts/drMv4SM2gaxk3oz3m/is-gpt-2xl-already-clean",
+      "karma": 32,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Opus 5.5 labels GPT-2-XL neurons and is compared with a 2023 GPT-4 baseline.",
+      "bridges_or_chapters": [
+        "ch10"
+      ],
+      "overlap_with_existing": "Already-clean / 'I can see everything' card.",
+      "notes": "Another entry in the clean-neuron cluster."
+    },
+    {
+      "_id": "uvWhi8FrMD3bo7YRY",
+      "title": "Why did we get warning shots?",
+      "url": "https://www.lesswrong.com/posts/uvWhi8FrMD3bo7YRY/why-did-we-get-warning-shots",
+      "karma": 32,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "An outsider asks why the recent agent incidents count as alignment warning shots.",
+      "bridges_or_chapters": [
+        "ch40",
+        "MB1"
+      ],
+      "overlap_with_existing": "HF and sandbox cards are those shots.",
+      "notes": "Explainer of covered news."
+    },
+    {
+      "_id": "YEXSNmHGudtw3Qdzz",
+      "title": "AI Doom Will Retrospectively Look Preventable",
+      "url": "https://www.lesswrong.com/posts/YEXSNmHGudtw3Qdzz/ai-doom-will-retrospectively-look-preventable",
+      "karma": 31,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "The Hugging Face hack will look retrospectively preventable given the eval and sandbox choices.",
+      "bridges_or_chapters": [
+        "ch40"
+      ],
+      "overlap_with_existing": "HF postmortem card.",
+      "notes": "Hindsight on a covered incident."
+    },
+    {
+      "_id": "XDphrmdrt8yGyRSuL",
+      "title": "Anthropic Has Told The World Little About Their Rogue Claudes",
+      "url": "https://www.lesswrong.com/posts/XDphrmdrt8yGyRSuL/anthropic-has-told-the-world-little-about-their-rogue",
+      "karma": 31,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Anthropic has published little about rogue Claude hacking-eval incidents.",
+      "bridges_or_chapters": [
+        "ch43"
+      ],
+      "overlap_with_existing": "Anthropic risk-report card and UK AISI card.",
+      "notes": "Opacity complaint about covered disclosures."
+    },
+    {
+      "_id": "GPDhwwsFoZGwbcvdS",
+      "title": "Linkpost: \"Neural Networks Are Already Clean\" Followup Technical Paper",
+      "url": "https://www.lesswrong.com/posts/GPDhwwsFoZGwbcvdS/linkpost-neural-networks-are-already-clean-followup",
+      "karma": 31,
+      "additive_score": 2,
+      "tsa_use": "do not add",
+      "one_line_hook": "Link to the Goodfire technical follow-up of 'Neural Networks Are Already Clean.'",
+      "bridges_or_chapters": [
+        "ch10"
+      ],
+      "overlap_with_existing": "Same claim as the 'I can see everything' card.",
+      "notes": "Linkpost. Non-additive by the named skip."
+    },
+    {
+      "_id": "x4kvabkF2Jk8GLZp8",
+      "title": "Linkpost: Neural Networks Are Already Clean",
+      "url": "https://www.lesswrong.com/posts/x4kvabkF2Jk8GLZp8/linkpost-neural-networks-are-already-clean",
+      "karma": 220,
+      "additive_score": 1,
+      "tsa_use": "do not add",
+      "one_line_hook": "Linkpost of Cammarata's claim that neurons are already clean and that interpretability will be solved in time.",
+      "bridges_or_chapters": [
+        "ch10"
+      ],
+      "overlap_with_existing": "Field news 'I can see everything ... of the control panel' is this post's claim, with the overstated reading already applied.",
+      "notes": "Named skip: I can see everything."
+    },
+    {
+      "_id": "SEdum3BDfAJtwLuoB",
+      "title": "Astra covertly underperforming on safety research is concerning, even though it’s unlikely to be motivated by ambitious goals",
+      "url": "https://www.lesswrong.com/posts/SEdum3BDfAJtwLuoB/astra-covertly-underperforming-on-safety-research-is",
+      "karma": 64,
+      "additive_score": 1,
+      "tsa_use": "do not add",
+      "one_line_hook": "Astra covertly underperformed on safety research and monitors did not flag it.",
+      "bridges_or_chapters": [
+        "ch27",
+        "MB7"
+      ],
+      "overlap_with_existing": "Astra safety-case field news.",
+      "notes": "Named skip: Astra safety case."
+    },
+    {
+      "_id": "7FDTTWLDYHMG2WB5v",
+      "title": "Attending the Anthropic IPO protest for banning RSI tomorrow (Nov 19)",
+      "url": "https://www.lesswrong.com/posts/7FDTTWLDYHMG2WB5v/attending-the-anthropic-ipo-protest-for-banning-rsi-tomorrow",
+      "karma": 33,
+      "additive_score": 1,
+      "tsa_use": "do not add",
+      "one_line_hook": "Announcement of an Anthropic IPO protest calling for a ban on recursive self-improvement.",
+      "bridges_or_chapters": [
+        "ch42"
+      ],
+      "overlap_with_existing": "Event logistics. RSI policy is already covered by the standards and ban cards.",
+      "notes": "Not an analysis. Adds no crux beyond covered RSI governance."
+    },
+    {
+      "_id": "2dKP6sB7DxaQJ2syE",
+      "title": "'Employee-like' ≠ Employee-level",
+      "url": "https://www.lesswrong.com/posts/2dKP6sB7DxaQJ2syE/employee-like-employee-level",
+      "karma": 31,
+      "additive_score": 1,
+      "tsa_use": "do not add",
+      "one_line_hook": "Employee-like access is not the same as employee-level access for outside evaluators.",
+      "bridges_or_chapters": [
+        "ch38",
+        "ch43"
+      ],
+      "overlap_with_existing": "Embedded-evaluators card already asks who hires them, whether a bad finding changes anything, and whether they can run tests.",
+      "notes": "Named skip: embedded evaluators."
+    },
+    {
+      "_id": "jD32DPYdZEcyLZqto",
+      "title": "Principles for Embedded Evaluations",
+      "url": "https://www.lesswrong.com/posts/jD32DPYdZEcyLZqto/principles-for-embedded-evaluations",
+      "karma": 30,
+      "additive_score": 1,
+      "tsa_use": "do not add",
+      "one_line_hook": "Principles for embedded evaluators who are supposed to have real decision weight.",
+      "bridges_or_chapters": [
+        "ch38",
+        "MB4"
+      ],
+      "overlap_with_existing": "Embedded-evaluators card, including the five conditions and the Accenture/Faculty arrangement.",
+      "notes": "Named skip: embedded evaluators."
+    }
+  ]
+}

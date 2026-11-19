@@ -97,3 +97,6 @@
 {"ts": "2026-11-04T21:55:58Z", "file": "chapters/ch25-correction-causal-channel.tex", "span": "chapters/ch25-correction-causal-channel.tex#38", "from": "AI", "to": "GZ+AI", "human_lines": 13, "agent_lines": 61}
 {"ts": "2026-11-05T00:22:09Z", "file": "chapters/ch33-certification-without-construction.tex", "span": "chapters/ch33-certification-without-construction.tex#16", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 11}
 {"ts": "2026-11-19T07:48:48Z", "file": "chapters/ch45-value-change-at-stake.tex", "span": "chapters/ch45-value-change-at-stake.tex#15", "from": "AI", "to": "GZ+AI", "human_lines": 5, "agent_lines": 27}
+{"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex", "span": "chapters/ch20-measuring-stress-testing-bundle-geometry.tex#8", "from": "AI", "to": "GZ+AI", "human_lines": 1, "agent_lines": 10}
+{"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch27-correction-channels-adversarial-pressure.tex", "span": "chapters/ch27-correction-channels-adversarial-pressure.tex#9", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 28}
+{"ts": "2026-11-19T07:50:07Z", "file": "chapters/ch40-goal-laundering.tex", "span": "chapters/ch40-goal-laundering.tex#33", "from": "AI", "to": "GZ+AI", "human_lines": 2, "agent_lines": 3}

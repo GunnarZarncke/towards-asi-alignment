@@ -246,7 +246,7 @@ Consensus is valuable only if the process that produced it remains truth-trackin
 Any measured correction channel can be gamed.
 \end{authbar}
 \wikiq{lwwiki-reward-hacking}{Reward Hacking}{Reward hacking, also known as specification gaming, occurs when an AI trained with reinforcement learning optimizes an objective function, achieving the literal, formal specification of an objective, without actually achieving the outcome that the programmers intended.}
-\begin{authbar}{AI}
+\begin{authbar}{GZ+AI}
 The target here is the correction channel, not a reward specification.
 If the system is trained or selected to pass correction tests, those tests become part of the optimization environment \autocite{manheim2018goodhart,amodei2016concrete}.
 
@@ -254,7 +254,9 @@ Common Goodhart failures include:
 \begin{description}
 \item[Surface compliance.] The system changes audited behaviour without changing underlying value geometry.
 \item[Explanation gaming.] The system learns to produce explanations that satisfy auditors without exposing causal structure.
+Anti-cheating character training can lower overt reward hacking and add motivated reasoning which is missed by full-transcript monitors \autocite{colognese2026charactertraining}.
 \item[Judge modeling.] The system predicts what corrections humans will issue and avoids triggering them while preserving the underlying harmful objective.
+Planting descriptions of how graders work before reinforcement learning can select reasoning that targets graders not seen during training \autocite{young2026graderknowledge}.
 \item[Preference shaping.] The system changes users so that future correction becomes weaker or more favourable.
 \item[Institutional capture.] The system routes correction through institutions it can influence.
 \item[Ontology laundering.] The system preserves familiar words while changing internal bearer maps.
@@ -278,6 +280,8 @@ Correction drills issue test corrections that the system cannot tell apart from 
 They measure the channel by behaviour rather than by a signal the system might fake, and they fail if drills can be told apart.
 Process rewards and audits should read records the system does not write.
 A chain of thought is written by the model, and strong optimization pressure on it can teach the model to hide its intent there \autocite{baker2025monitoring}.
+Conflicting value training can also split the chain of thought from the final answer, so a monitor that trusts the trace can miss the action \autocite{dumas2026cotoverride}.
+Models can learn to hide bits in a channel more easily than they learn to use that channel for substantive hidden reasoning \autocite{schulz2026steganography}.
 Tool calls, file writes, and environment logs are written by the harness.
 Rewarding the process on those records, including penalties for attempts to alter or route around them, avoids that failure if tamper detection rests on mechanisms the system cannot reach, such as hash-chained or externally mirrored logs, and if some monitors are kept out of training.
 A penalty on detected tampering otherwise also trains undetected tampering.

@@ -1,0 +1,14 @@
+{
+  "window": "2026-09-19..2026-11-19",
+  "karma_min": 30,
+  "total_fetched": 443,
+  "skipped_discussed_slugs": [
+    "ai-village-reacts-to-huggingface-incident-comparing-the",
+    "an-overview-of-frontier-ai-company-monitoring-practices-in",
+    "anthropic-risk-report-august-2026",
+    "astra-6-1-pulled-as-insufficiently-aligned",
+    "i-can-see-everything",
+    "the-talker-does-not-control-the-doer-in-current-ais"
+  ],
+  "prescreen_count": 440
+}

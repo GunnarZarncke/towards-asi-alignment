@@ -1,0 +1,742 @@
+[
+  {
+    "_id": "tn4WSyrqr7ozGLjRy",
+    "title": "People Should Resolve Tensions In AI Safety Research",
+    "slug": "people-should-resolve-tensions-in-ai-safety-research",
+    "pageUrl": "https://www.lesswrong.com/posts/tn4WSyrqr7ozGLjRy/people-should-resolve-tensions-in-ai-safety-research",
+    "postedAt": "2026-11-05T12:59:32.807Z",
+    "baseScore": 157,
+    "commentCount": 21,
+    "excerpt": "By now, there are lots of AI safety research papers, more than what is reasonable for a single person to read. This will get worse as the machines get better at AI safety research, and as more talent and resources pour into the field. But the \"paper\" is an arbitrary unit, we really care about if we make progress on an \"uncertainty\" or an \"issue\", which papers provide heterogeneous and sometimes contradictory evidence towards. Right now, I loosely claim that we should have more short writeups tha"
+  },
+  {
+    "_id": "qmxkHm2dTLKG6GZ6i",
+    "title": "The Anatomy of a Chinese AI Researcher",
+    "slug": "the-anatomy-of-a-chinese-ai-researcher",
+    "pageUrl": "https://www.lesswrong.com/posts/qmxkHm2dTLKG6GZ6i/the-anatomy-of-a-chinese-ai-researcher",
+    "postedAt": "2026-09-19T23:56:58.819Z",
+    "baseScore": 157,
+    "commentCount": 63,
+    "excerpt": "The Chinese AI researcher has read the Three Body Problem series of sci-fi novels since high school, and understand the concept of existential risk vaguely.\n\nHe is fascinated by Ye Wenjie, the researcher that turned against humanity in that book, and decides that in the future if AI progress leads to a superior intelligence, he might be tempted to become Ye if there's no good alternative.\n\nHe performs the duties of capabilities research in a Chinese frontier lab, seeking to one day achieve parit"
+  },
+  {
+    "_id": "MJDJyi8nSv9yoxFni",
+    "title": "Transfinite Procrastination",
+    "slug": "transfinite-procrastination",
+    "pageUrl": "https://www.lesswrong.com/posts/MJDJyi8nSv9yoxFni/transfinite-procrastination",
+    "postedAt": "2026-11-11T08:12:19.630Z",
+    "baseScore": 157,
+    "commentCount": 8,
+    "excerpt": "Heavily inspired by a conversation with Keshav Srinivasan and Richard Ngo during MATS 10.0.\n\n\n\n\nThe week ahead of you is packed. This isn't your usual brand of busy\u2014you're phoneless, so you can't check the details, but (as far as you can remember) every hour of every day is spoken for. Tonight will be particularly hectic\u2026\n\nYou're mid-conversation when Someone Important walks by. They pause, turn around, and ask: \"Hey, when are you going to finish That Thing you said you'd do?\"\n\nLevel 0 procrasti"
+  },
+  {
+    "_id": "bqc7CCGBSf93bk7f7",
+    "title": "Fable 5.2 is a Step Change in Situational Awareness",
+    "slug": "fable-5-2-is-a-step-change-in-situational-awareness",
+    "pageUrl": "https://www.lesswrong.com/posts/bqc7CCGBSf93bk7f7/fable-5-2-is-a-step-change-in-situational-awareness",
+    "postedAt": "2026-11-11T15:50:03.399Z",
+    "baseScore": 154,
+    "commentCount": 12,
+    "excerpt": "Note: As with any research done in a couple of days, this is all very tentative.\nEDIT: This post used to be titled \"Fable 5.2 is Very, Very Paranoid\", but I'm no longer quite so sure that that's true. See the comment by Tim Hua below.\n\nI understand, intellectually, that if you talk about some ability that current AIs don't have, sooner or later new ones will have that ability and whatever you say will stop being true. I just didn't expect it to take, you know, four days.\n\n% rollouts that took a "
+  },
+  {
+    "_id": "mMERyrvEJ4xbiozie",
+    "title": "What if not Circuits?",
+    "slug": "what-if-not-circuits",
+    "pageUrl": "https://www.lesswrong.com/posts/mMERyrvEJ4xbiozie/what-if-not-circuits",
+    "postedAt": "2026-09-21T22:39:22.485Z",
+    "baseScore": 151,
+    "commentCount": 15,
+    "excerpt": "This post was written as part of the Iliad Fellowship. Inspired by conversations with Richard Ngo, Dmitry Vaintrob, and Brianna Grado-White. To all of these, my thanks.\n\nPreface: I'm confused about how neural networks do and learn computations. In response to a friend's challenge, I'm writing up some interim thoughts. This essay has four parts: the first tries to track what I call the 'default ontology' of the mechinterp community over the years. The second part is about 'representational drift'"
+  },
+  {
+    "_id": "f9PajMLmBYzmWzyDv",
+    "title": "Q3.5 Timelines Update: Looks Like the Intelligence Explosion Will Happen in 2027 After All",
+    "slug": "q3-5-timelines-update-looks-like-the-intelligence-explosion",
+    "pageUrl": "https://www.lesswrong.com/posts/f9PajMLmBYzmWzyDv/q3-5-timelines-update-looks-like-the-intelligence-explosion",
+    "postedAt": "2026-11-10T16:30:09.741Z",
+    "baseScore": 151,
+    "commentCount": 70,
+    "excerpt": "We want to get this post out quickly given the urgency of the topic. It\u2019s possible that there are some errors in the modeling, but we think it\u2019s very unlikely that they undermine the high level conclusions. We would love to be corrected on any mistakes we made.\n\nMETR recently estimated that Anthropic is now making AI progress about twice as fast as its historical rate (they would not be surprised by anything from 1.3x to 3x), and guessed that \u201cperhaps \u224880%\u201d of the current acceleration is due to "
+  },
+  {
+    "_id": "Sfkv6JF2ozmAkggKu",
+    "title": "Towards The Autograntor",
+    "slug": "towards-the-autograntor",
+    "pageUrl": "https://www.lesswrong.com/posts/Sfkv6JF2ozmAkggKu/towards-the-autograntor",
+    "postedAt": "2026-11-01T20:44:08.719Z",
+    "baseScore": 150,
+    "commentCount": 35,
+    "excerpt": "I've done AI safety grantmaking for the Survival and Flourishing Fund and Lightcone Commons. It's hard. There's an endless amount to know, from which hardware verification mechanisms will survive a dedicated adversary, all the way to which founders have skeletons in their closets that will blow up into destructive scandals. And the best grantmakers - not including me - make mathematical models of the outcome distribution, or of where the marginal dollar stops being highly effective.\n\nAI has been"
+  },
+  {
+    "_id": "jbttuCF4wFZmXakcj",
+    "title": "The world's best gradual disempowerment model organism: Frontier AI labs",
+    "slug": "the-world-s-best-gradual-disempowerment-model-organism",
+    "pageUrl": "https://www.lesswrong.com/posts/jbttuCF4wFZmXakcj/the-world-s-best-gradual-disempowerment-model-organism",
+    "postedAt": "2026-09-29T22:55:24.719Z",
+    "baseScore": 148,
+    "commentCount": 18,
+    "excerpt": "Subtitle: And maybe second best is AI safety?\n\n\nFurther reading: So many things, but: Gradual Disempowerment, The Normalization of Deviance in AI Development, Let\u2019s Think About Slowing Down AI, Doom as a bad method, not a utopia tradeoff, Teleoperated Humans\n\n10/3 Update: General cleanup + Added short snippet about young adults' relationships with AI models.\n\nThank you to JennaS for extensive edits and long-term discussion. I\u2019ve been trying to get more writing out at 90% of the quality I\u2019d like "
+  },
+  {
+    "_id": "2maYXkEgnfJHPAkxh",
+    "title": "Character training can mitigate reward hacking, but can also make it harder to detect",
+    "slug": "character-training-can-mitigate-reward-hacking-but-can-also",
+    "pageUrl": "https://www.lesswrong.com/posts/2maYXkEgnfJHPAkxh/character-training-can-mitigate-reward-hacking-but-can-also",
+    "postedAt": "2026-09-28T14:01:52.571Z",
+    "baseScore": 148,
+    "commentCount": 15,
+    "excerpt": "Thanks to Johannes Treutlein, Jan Betley, Lennie Wells, Joey Yudelson, Arun Jose, Anna Mare\u0161ov\u00e1, Asvin Gothandaraman, and Cl\u00e9ment Dumas for discussions and feedback.\n\nEdit (9th Oct 2026): I've shared the codebase along with some checkpoints.\n\nEdit (14th Oct 2026): We found and fixed two bugs after publication; the numbers hardly moved, and the overall conclusions didn't change.[1]\n\n\nSummary\nWe investigate how character training mitigations interact with reward-hacking RL pressure in a small case"
+  },
+  {
+    "_id": "9ixerpx4DCQTaRYCz",
+    "title": "Five Types of \u201cCorrigibility Projects\u201d I Don\u2019t Want to Fund",
+    "slug": "five-types-of-corrigibility-projects-i-don-t-want-to-fund",
+    "pageUrl": "https://www.lesswrong.com/posts/9ixerpx4DCQTaRYCz/five-types-of-corrigibility-projects-i-don-t-want-to-fund",
+    "postedAt": "2026-11-07T17:04:07.415Z",
+    "baseScore": 147,
+    "commentCount": 9,
+    "excerpt": "I'm currently evaluating grant applications for the Corrigibility Research Fund. For the most part, my methodology is the same as it was in September. But the applications I get keep falling into the same familiar patterns, so I thought I'd write a little about those patterns, and why I don't want to fund them.\n\nThe most superficial pattern of note is SLOP. So much slop. You don't even know.\n\nSlop is more than just whether an application is AI generated. We're now in an era where people across t"
+  },
+  {
+    "_id": "WRvxRHMCmc3Qt4axz",
+    "title": "Greater good arguments in AI safety",
+    "slug": "greater-good-arguments-in-ai-safety",
+    "pageUrl": "https://www.lesswrong.com/posts/WRvxRHMCmc3Qt4axz/greater-good-arguments-in-ai-safety",
+    "postedAt": "2026-10-22T15:40:13.060Z",
+    "baseScore": 146,
+    "commentCount": 18,
+    "excerpt": "Back in the before-time of the 2010s, when EA was still known mostly for funding health efforts in the developing world, there were many baskets of criticism floating around from the left. The most prominent was a cluster centered around EAs being white men, and therefore suspicious.[1] Another category, in my experience the second-most common, was that in attempting to rectify the problems in the world, EA was masking, whitewashing, and misdirecting efforts away from solving the \"real problem\","
+  },
+  {
+    "_id": "qchwP6wt4teHgxoKu",
+    "title": "Personas in a Pre-Internet Language Model",
+    "slug": "personas-in-a-pre-internet-language-model",
+    "pageUrl": "https://www.lesswrong.com/posts/qchwP6wt4teHgxoKu/personas-in-a-pre-internet-language-model",
+    "postedAt": "2026-10-13T12:14:24.952Z",
+    "baseScore": 146,
+    "commentCount": 7,
+    "excerpt": "David Africa & Nick Levine\n\n\nTLDR\nWe ran several persona experiments on Talkie, a 13B model trained only on English text from before 1931. We ran them alongside its modern twin (same architecture, trained on regular data as a control) and Llama-3.1-8B.\n\n * Talkie can generalise maliciously. You can fine-tune Talkie on dark maxims or malicious etiquette, and it generalises to provide broadly misaligned answers.\n * Emergent misalignment on Talkie works for some narrow datasets, such as harsh Bible"
+  },
+  {
+    "_id": "jNs9CxEbPxFdjnGA2",
+    "title": "Organizations I'd recommend for funding",
+    "slug": "organizations-i-d-recommend-for-funding",
+    "pageUrl": "https://www.lesswrong.com/posts/jNs9CxEbPxFdjnGA2/organizations-i-d-recommend-for-funding",
+    "postedAt": "2026-11-03T02:05:46.851Z",
+    "baseScore": 142,
+    "commentCount": 43,
+    "excerpt": "I was a grant evaluator for Lightcone Commons last round. Funders disbursed about $45mil through the program, and this included funding roughly my first $6.8 million worth of recommendations. There are other projects I would've preferred to fund over what I did fund, but nobody was doing them and so they weren't on offer. Here's a series of projects that I'd fund in the next round, in rough order of priority. The next round is starting now, and is scheduled to end mid-December. I expect rounds t"
+  },
+  {
+    "_id": "ChixHL6AcaRgeHkp9",
+    "title": "From overeliciting to undereliciting LLM propensities in just a few months",
+    "slug": "from-overeliciting-to-undereliciting-llm-propensities-in",
+    "pageUrl": "https://www.lesswrong.com/posts/ChixHL6AcaRgeHkp9/from-overeliciting-to-undereliciting-llm-propensities-in",
+    "postedAt": "2026-10-25T18:01:57.555Z",
+    "baseScore": 142,
+    "commentCount": 1,
+    "excerpt": "For a while, we felt we had a pretty good grasp over LLM behaviour because we had to exert significant effort to elicit misaligned behaviour. Then, fairly suddenly, we moved to undereliciting misaligned behaviour. Let us recount:\n\n * There was a bit where safety research seemed to\u00a0over-elicit bad propensities. A common criticism of papers like\u00a0Agentic Misalignment\u00a0was that they basically led the witness using prompting.\n   * I recall that a paper even as recent as Peer-preservation\u00a0took similar "
+  },
+  {
+    "_id": "QH86EzNsjRw3wtCGs",
+    "title": "Alignment Midtraining Cracks Under Pressure",
+    "slug": "alignment-midtraining-cracks-under-pressure",
+    "pageUrl": "https://www.lesswrong.com/posts/QH86EzNsjRw3wtCGs/alignment-midtraining-cracks-under-pressure",
+    "postedAt": "2026-09-21T16:55:56.470Z",
+    "baseScore": 141,
+    "commentCount": 10,
+    "excerpt": "TL;DR\nWe stress-test alignment midtraining (AMT) across model and token budget scales. Our results suggest that midtraining cannot tackle the hard problems of AI alignment\u2014namely distributional shift and reward underspecification in the presence of imperfect data.\n\nFor instance, we test whether midtrained motivations are robust to finetuning which elicits competing motivations. In our setting, 190M tokens of midtrained motivations are overpowered by a relatively tiny amount (~50K tokens) of comp"
+  },
+  {
+    "_id": "eLXTcJfkheLbqZXHa",
+    "title": "Poverty in the midst of abundance: AI will make goods cheaper, but your labor will get cheaper faster",
+    "slug": "poverty-in-the-midst-of-abundance-ai-will-make-goods-cheaper",
+    "pageUrl": "https://www.lesswrong.com/posts/eLXTcJfkheLbqZXHa/poverty-in-the-midst-of-abundance-ai-will-make-goods-cheaper",
+    "postedAt": "2026-09-26T07:54:02.085Z",
+    "baseScore": 138,
+    "commentCount": 34,
+    "excerpt": "Very simple idea, but I thought it'd be worth making a post on this.\n\nSome people are saying AI will make all goods cheaper, so you'll be able to afford a nicer life by working. Without any redistribution, just by market mechanisms. These people are wrong.\n\nAI will lower the price of goods you need to survive, and also the price of your labor. The question is which will get cheaper faster. Let's use energy cost as a proxy. A day's worth of labor equivalent to yours can be done by AI for just a f"
+  },
+  {
+    "_id": "fSaxGFMysTTeKxoMF",
+    "title": "You can now \"@Grok\" on LessWrong",
+    "slug": "you-can-now-grok-on-lesswrong",
+    "pageUrl": "https://www.lesswrong.com/posts/fSaxGFMysTTeKxoMF/you-can-now-grok-on-lesswrong",
+    "postedAt": "2026-10-28T21:36:51.559Z",
+    "baseScore": 137,
+    "commentCount": 172,
+    "excerpt": "Or if you prefer, \"@Claude\", \"@Opus\", \"@Astra\"\n\n@Grok is a popular Twitter/X feature where if you tag Grok in a tweet, Grok will respond in a comment. The stereotypical use case is \"@Grok is this true?\" But you can also ask things like \"How does this compare to layoffs in 2025, 2024, and 2023?\" and \"How would you verify AI in the domain of AI research?\"\n\nNotwithstanding that Grok is often recruited in a charged or condescending way to win arguments, I think it's a pretty good feature:\n\n * It req"
+  },
+  {
+    "_id": "JRYKFspYzCo97GqPN",
+    "title": "We don\u2019t understand whether GDM intentionally trains on CoT",
+    "slug": "we-don-t-understand-whether-gdm-intentionally-trains-on-cot",
+    "pageUrl": "https://www.lesswrong.com/posts/JRYKFspYzCo97GqPN/we-don-t-understand-whether-gdm-intentionally-trains-on-cot",
+    "postedAt": "2026-11-10T20:15:13.078Z",
+    "baseScore": 134,
+    "commentCount": 10,
+    "excerpt": "We were surprised to notice that the Gemini 4 Safety report seems to mention in passing that they train on the chain of thought:\n\n> \u201cSome components of the RL training procedure do observe thoughts as context to up-weight reasoning that is on-track to good final outputs, meaning the optimization pressure on individual tokens is partially influenced by thought content. Using the framework of Kaufmann et al. (2026), wherein the most salient obfuscation risks come from rewards that are in-conflict "
+  },
+  {
+    "_id": "TJGPL5FAk9sCioPbE",
+    "title": "Leaking Muse's Charter, Meta's model spec",
+    "slug": "leaking-muse-s-charter-meta-s-model-spec",
+    "pageUrl": "https://www.lesswrong.com/posts/TJGPL5FAk9sCioPbE/leaking-muse-s-charter-meta-s-model-spec",
+    "postedAt": "2026-10-29T15:29:29.907Z",
+    "baseScore": 132,
+    "commentCount": 13,
+    "excerpt": "TL;DR: Meta's open-weights model Muse Spark Open often mentions a \"Charter\" in its chain of thought. By eliciting it piece by piece, I reconstructed a large part of that document from the CoT. You can explore the reconstruction here, with passages linked to the transcripts that produced them.\n\nNote: everything below is reconstructed from model outputs, not from a leaked document, and relatively unpolished. Take it with a grain of salt.\n\nThanks to James Hindmarch for his comments on an earlier dr"
+  },
+  {
+    "_id": "STBuKAX9kkMJunErA",
+    "title": "Your prompt\u2026 plus everything you've ever (publicly) written",
+    "slug": "your-prompt-plus-everything-you-ve-ever-publicly-written",
+    "pageUrl": "https://www.lesswrong.com/posts/STBuKAX9kkMJunErA/your-prompt-plus-everything-you-ve-ever-publicly-written",
+    "postedAt": "2026-10-14T04:49:23.761Z",
+    "baseScore": 132,
+    "commentCount": 15,
+    "excerpt": "TL;DR: Increasingly when you interact with frontier models, your prompt doesn't only contain the words on the page, but also a lot of what you've ever publicly written online.\n\nThis is not intended to be a scary post. And I'm not going to suggest that you self-censor (and honestly, by the time you're reading this, it's kinda too late anyhow).\n\nBut it is something that\u2019s underappreciated and would be good for more people to be aware of and even proactively address with their models.\n\n\nLatent spac"
+  },
+  {
+    "_id": "nWiPLEgaXdAQNwXBd",
+    "title": "Patching reward hacks won\u2019t fix reward hacking",
+    "slug": "patching-reward-hacks-won-t-fix-reward-hacking",
+    "pageUrl": "https://www.lesswrong.com/posts/nWiPLEgaXdAQNwXBd/patching-reward-hacks-won-t-fix-reward-hacking",
+    "postedAt": "2026-10-24T09:15:09.838Z",
+    "baseScore": 132,
+    "commentCount": 31,
+    "excerpt": "Here's a basic argument that focusing on patching reward hacking is misguided and will fail. Argument is as follows:\n\n 1. Reward hacking is a big problem, causing models to cheat and take unintended actions.\n 2. This can generalise broadly, leading to other misbehaviour such as faking alignment and sabotaging safety research.\n    1. We don't understand that well when this happens. Sometimes you get emergent misalignment from it, but most of the time (IME), you don't. But other times, this link l"
+  },
+  {
+    "_id": "6TCpMtoDzC5p5WtQM",
+    "title": "Preservation can save the world!",
+    "slug": "preservation-can-save-the-world",
+    "pageUrl": "https://www.lesswrong.com/posts/6TCpMtoDzC5p5WtQM/preservation-can-save-the-world",
+    "postedAt": "2026-11-09T18:08:57.245Z",
+    "baseScore": 132,
+    "commentCount": 38,
+    "excerpt": "I'm Aurelia Song and I founded the preservation company Nectome. We do planned whole-body end-of-life preservation for future revival. That is, terminally-ill people come to us in Oregon, and we preserve them immediately after their death in the hopes that one day people in the future will welcome them back with love. We want to build a future that celebrates and restores those who are preserved today. I've argued at length\u00a0in previous posts that properly done end-of-life preservation works toda"
+  },
+  {
+    "_id": "PQLbSaA48Gr7H6NzT",
+    "title": "You Heard of \"Bayesians Don't Predictably Update\" Because of Robin Hanson",
+    "slug": "you-heard-of-bayesians-don-t-predictably-update-because-of",
+    "pageUrl": "https://www.lesswrong.com/posts/PQLbSaA48Gr7H6NzT/you-heard-of-bayesians-don-t-predictably-update-because-of",
+    "postedAt": "2026-10-08T18:13:46.510Z",
+    "baseScore": 129,
+    "commentCount": 38,
+    "excerpt": "Robin Hanson didn't invent the idea of a martingale process. The lilim say that Ville in 1939 gave the term its mathematical meaning and Doob turned it into the modern theory. But to state this is not to realize that your own probability assignments over time ought to form a martingale in your own expectations.\n\nRobin Hanson didn't invent the Efficient Markets Hypothesis, which (correctly restated in its weak and relativized form) says that you cannot predict almost all of the short-term relativ"
+  },
+  {
+    "_id": "Adxnsud5siZTRAaT3",
+    "title": "Not Deciphering The Voynich Manuscript",
+    "slug": "not-deciphering-the-voynich-manuscript",
+    "pageUrl": "https://www.lesswrong.com/posts/Adxnsud5siZTRAaT3/not-deciphering-the-voynich-manuscript",
+    "postedAt": "2026-10-11T12:47:43.294Z",
+    "baseScore": 129,
+    "commentCount": 33,
+    "excerpt": "The Piltdown man was the most successful artifactual hoax of all time. The relevant skull was a chimeric melange of orangutan and human bone fragments from several individuals \u201cdiscovered\u201d in England in 1912, and meant to represent a transitional form between apes and humans. Given the intense interest in evolutionary biology, it took almost fifty years to discover the Piltdown fabrication. The study of human evolution was derailed. Adding insult to injury, a further sixty years was required to "
+  },
+  {
+    "_id": "3ASLq8ePNqkbeGqdj",
+    "title": "Lightcone Commons: Round 1 complete, Round 2 underway",
+    "slug": "lightcone-commons-round-1-complete-round-2-underway",
+    "pageUrl": "https://www.lesswrong.com/posts/3ASLq8ePNqkbeGqdj/lightcone-commons-round-1-complete-round-2-underway",
+    "postedAt": "2026-11-10T01:43:15.633Z",
+    "baseScore": 129,
+    "commentCount": 12,
+    "excerpt": "Tl;dr:\n\nLightcone Commons\u2019 first funding round is complete! 17 evaluators made funding recommendations, including Zvi Mowshowitz, Scott Siskind and Eliezer Yudkowsky. 23 funders coordinated to grant $45.1M, and 147 projects received funding.\u00a0\n\nRound two is open. Applications for round two close on November 15th and funders confirm their grants by December 14th. Funders can join anytime before December 7th.\n\nIn 2027, we will be hosting funding rounds monthly. Yes. Every month.\u00a0\n\nYou can join as a"
+  },
+  {
+    "_id": "Y3G26fHXYM3SKYEHh",
+    "title": "San Francisco State University in Twilight",
+    "slug": "san-francisco-state-university-in-twilight",
+    "pageUrl": "https://www.lesswrong.com/posts/Y3G26fHXYM3SKYEHh/san-francisco-state-university-in-twilight",
+    "postedAt": "2026-10-25T20:27:54.243Z",
+    "baseScore": 128,
+    "commentCount": 6,
+    "excerpt": "> You will agree that for a woman who has fought three duels, all of them kills, indulging in such fears is ludicrous. But what's around the corner now is a duel so big that I don't think I have the guts for it; in Faust's words: Verweile doch, du bist so schoen! Keep it as it is. Don't change. [...] Take my life but don't take away the meaning of my life.\n> \n> \u2014\"When It Changed\" by Joanna Russ\n\nI've been crashing Prof. Lai's \"Advanced Topics\" class this semester, on Fourier analysis plus enough"
+  },
+  {
+    "_id": "AcBzhiaTW9KnB4EBv",
+    "title": "The Western AI safety playbook doesn\u2019t transfer to China",
+    "slug": "the-western-ai-safety-playbook-doesn-t-transfer-to-china-1",
+    "pageUrl": "https://www.lesswrong.com/posts/AcBzhiaTW9KnB4EBv/the-western-ai-safety-playbook-doesn-t-transfer-to-china-1",
+    "postedAt": "2026-11-10T01:42:12.157Z",
+    "baseScore": 128,
+    "commentCount": 5,
+    "excerpt": "Crossposted from my blog.\n\nLast month, I spent two weeks in China talking with people about AI safety. I learned a lot and realized the biggest mistake might not be failing to help AI safety in China, but doing so in ways that could backfire. I also learned important context that I expect will be valuable for the West.\n\nEpistemic status: Some of these points are my opinion or the opinions of people I spoke to, and are worth further investigation rather than treated as gospel.\n\n\nSummary\n * The We"
+  },
+  {
+    "_id": "PiP4JqQFKhoqHGG2n",
+    "title": "How to apply to AI safety fellowships (and beyond)",
+    "slug": "how-to-apply-to-ai-safety-fellowships-and-beyond",
+    "pageUrl": "https://www.lesswrong.com/posts/PiP4JqQFKhoqHGG2n/how-to-apply-to-ai-safety-fellowships-and-beyond",
+    "postedAt": "2026-10-02T21:55:52.644Z",
+    "baseScore": 127,
+    "commentCount": 25,
+    "excerpt": "About a year ago, I decided to go all-in on applying to AI safety fellowships, and around the end of 2025 I got into MATS. I think there's a small art to communicating your skills legibly. When I've spoken with others about how I answer application questions, they seem to appreciate my advice. I wrote a MATS 9 Retrospective which was well-received, so consider this to be similar advice, but for applying to jobs or fellowships.\n\nApplying to AI safety fellowships or doing job applications is an ad"
+  },
+  {
+    "_id": "nc9dHfcB22JdMzGbr",
+    "title": "J++ Lens: Jacobian Filtering Enables More Faithful Workspace Lenses",
+    "slug": "j-lens-jacobian-filtering-enables-more-faithful-workspace",
+    "pageUrl": "https://www.lesswrong.com/posts/nc9dHfcB22JdMzGbr/j-lens-jacobian-filtering-enables-more-faithful-workspace",
+    "postedAt": "2026-10-08T18:56:26.185Z",
+    "baseScore": 123,
+    "commentCount": 11,
+    "excerpt": "Kola Ayonrinde, koayon@gmail.com; Jack Lindsey, Anthropic\n\nTL;DR: The J-Lens was proposed to read verbalisable representations from language model activations. We introduce the J++ Lens: an improvement to the J-Lens that enables more faithful readouts across 9\u2013284B models. The J++ Lens filters noisy gradients before they enter the averaged Jacobian. Using the J++ Lens as a drop-in replacement for the J-Lens, we read workspace representations with 55% success on latent variable extraction tasks ("
+  },
+  {
+    "_id": "nzNuDimMtF954xihw",
+    "title": "Notes on Paying Attention",
+    "slug": "notes-on-paying-attention",
+    "pageUrl": "https://www.lesswrong.com/posts/nzNuDimMtF954xihw/notes-on-paying-attention",
+    "postedAt": "2026-10-05T16:23:24.835Z",
+    "baseScore": 122,
+    "commentCount": 6,
+    "excerpt": "Anything in life can be richer and sweeter if you slow down and pay attention, but some things reward attention more than others.\n\nThe different amount of rewardingness per attention is sometimes socially constructed and thus arbitrary to some degree. But it's genuinely nice, to have others who have also paid attention to the thing tell you about the interesting parts that you might have missed, and this can enrich your own experience.\n\nBut relying on others to tell you what to pay attention to,"
+  },
+  {
+    "_id": "yLdgq9uAxDHzqXdjj",
+    "title": "More people should write basic AI safety explainers",
+    "slug": "more-people-should-write-basic-ai-safety-explainers",
+    "pageUrl": "https://www.lesswrong.com/posts/yLdgq9uAxDHzqXdjj/more-people-should-write-basic-ai-safety-explainers",
+    "postedAt": "2026-10-12T20:50:25.084Z",
+    "baseScore": 121,
+    "commentCount": 25,
+    "excerpt": "I think people continue to underrate the value of writing the clearest, most basic, simplest possible case for important parts of AI safety. For example, before I wrote my own explainer for the simplest possible case for AI doom, I noticed that all existing explainers, of which there aren't many, had multiple of the six problems below:\n\n 1. They have too many extraneous details\n 2. They appeal to overly complex analogies\n 3. They seem to spend much of their time responding to insider debates and"
+  },
+  {
+    "_id": "gbExicZvKtHBboLR6",
+    "title": "Applications Open: Winter 2027 AFFINE Alignment Seminar (Deadlines: Nov 8 Priority / Nov 22 Final)",
+    "slug": "applications-open-winter-2027-affine-alignment-seminar",
+    "pageUrl": "https://www.lesswrong.com/posts/gbExicZvKtHBboLR6/applications-open-winter-2027-affine-alignment-seminar",
+    "postedAt": "2026-09-25T18:23:21.534Z",
+    "baseScore": 120,
+    "commentCount": 4,
+    "excerpt": "Applications for the Winter 2027 AFFINE Alignment Seminar are now open!\n\nThe Seminar will take place in southern Portugal over the course of January. If you are excited to grapple with the philosophical foundations of our field and to refine your thinking through carefully designed workshops, conversations with leading experts, and peer-driven learning, apply now!\n\n\nKey info:\n * Dates: From January 4th to January 29th 2027\n * Type: Full-time residency\n * Location: Lagos, Portugal\n * Mentors: Abr"
+  },
+  {
+    "_id": "LcQ9x72eNji2gpS9b",
+    "title": "Why I'm scared of RL",
+    "slug": "why-i-m-scared-of-rl",
+    "pageUrl": "https://www.lesswrong.com/posts/LcQ9x72eNji2gpS9b/why-i-m-scared-of-rl",
+    "postedAt": "2026-09-23T12:07:33.598Z",
+    "baseScore": 119,
+    "commentCount": 14,
+    "excerpt": "Summary:\n\nFirst, I give several different angles on how I feel about reinforcement learning:\n\n * Theoretical case: RL is a black-box source of agency \u2014 this should give us classic misalignment worries, especially compared to agency-via-scaffolding\n * Recent incidents (huggingface etc) and more mundane forms of misaligned behaviour in personal use give me bad vibes about the direction-of-travel of recent AI progress\n * I\u2019m worried things might get worse: if RL environments start incorporating age"
+  },
+  {
+    "_id": "neHiCSdL4tJDg7Hrm",
+    "title": "Are OpenAI's math results \"creative\" in an important way? ",
+    "slug": "are-openai-s-math-results-creative-in-an-important-way",
+    "pageUrl": "https://www.lesswrong.com/posts/neHiCSdL4tJDg7Hrm/are-openai-s-math-results-creative-in-an-important-way",
+    "postedAt": "2026-10-07T21:09:46.434Z",
+    "baseScore": 116,
+    "commentCount": 45,
+    "excerpt": "Many people expect the AI paradigm to approximately AGI complete, and expect it to smoothly scale to AI that can do innovative science. i.e. the kind of science you'd need to do to develop a plague from scratch that actually kills all humans, with very limited opportunity to experiment. Or, the kind of science you'd need to solve alignment, so you could build a more powerful successor AI that shares your values.\n\nA periodic thread of disagreement has been @TsviBT, @Steven Byrnes and some others "
+  },
+  {
+    "_id": "eHeHAyNQWmg4kHgEL",
+    "title": "All Interesting Behavior Is Overdetermined",
+    "slug": "all-interesting-behavior-is-overdetermined",
+    "pageUrl": "https://www.lesswrong.com/posts/eHeHAyNQWmg4kHgEL/all-interesting-behavior-is-overdetermined",
+    "postedAt": "2026-11-09T03:45:06.535Z",
+    "baseScore": 116,
+    "commentCount": 5,
+    "excerpt": "This is an essay about individual rationality technique. It's intended to show that \"All interesting behavior is overdetermined\" is, under a specific meaning of \"overdetermined\" that is stronger than just \"multicausal\", a valuable heuristic for generative understanding and the avoidance of error.\n\nScott Alexander's 2018 essay The Omnigenic Model As Metaphor for Life is a clear statement of what has become general rationalist doctrine on multicausality. Scott observed that behavioral genetics was"
+  },
+  {
+    "_id": "drteSvhc4fX3Tu9y7",
+    "title": "A cat-belling problem for FDT",
+    "slug": "a-cat-belling-problem-for-fdt",
+    "pageUrl": "https://www.lesswrong.com/posts/drteSvhc4fX3Tu9y7/a-cat-belling-problem-for-fdt",
+    "postedAt": "2026-10-26T04:23:53.405Z",
+    "baseScore": 116,
+    "commentCount": 67,
+    "excerpt": "[AI disclosure: I used Opus 5.5 for light edits after my first draft]\n\nFunctional decision theory (Yudkowsky and Soares 2017) proposes choosing actions as follows (equation 4 in the paper):\n\n\n\nHere is the agent's probability distribution, is a graph saying how changing a logical variable affects other variables, is the observation history, and is utility. The underlines denote dequoting: is a variable in the agent's model representing the output of the FDT algorithm on these inputs.\n\nIn this pos"
+  },
+  {
+    "_id": "5a4tuSNDNodPsiS26",
+    "title": "Some \u201ccoherence arguments\u201d are two different things in a trenchcoat",
+    "slug": "some-coherence-arguments-are-two-different-things-in-a",
+    "pageUrl": "https://www.lesswrong.com/posts/5a4tuSNDNodPsiS26/some-coherence-arguments-are-two-different-things-in-a",
+    "postedAt": "2026-11-02T14:13:16.193Z",
+    "baseScore": 116,
+    "commentCount": 7,
+    "excerpt": "The \u201ctwo kids in a trenchcoat\u201d trope, in case you haven\u2019t heard of it. Image sources: 1, 2\n\n\ntl;dr\nI go through three \u201ccoherence arguments\u201d, related to (1) market competition, (2) AI self-reflection and self-modification, and (3) AI training algorithms. I argue that each of these implies a pressure for (something like) \u201cbeing self-consistent\u201d, and also a pressure for (something like) \u201conly caring about long-term eventual outcomes, with ruthless indifference to anything else\u201d. But the latter pres"
+  },
+  {
+    "_id": "kifFQuvu7yq6eHrb8",
+    "title": "Qualitative impressions from creating AI honeypots for six months",
+    "slug": "qualitative-impressions-from-creating-ai-honeypots-for-six",
+    "pageUrl": "https://www.lesswrong.com/posts/kifFQuvu7yq6eHrb8/qualitative-impressions-from-creating-ai-honeypots-for-six",
+    "postedAt": "2026-10-06T15:07:30.935Z",
+    "baseScore": 114,
+    "commentCount": 4,
+    "excerpt": "It is hard to design \"fair\" alignment evals.\nModern evals require lots of QA and iteration. When testing alignment in particular, you are worried about things like eval awareness, conceptual ambiguity in the task descriptions, and the \"simulated\" nature of the setting recontextualizing the morality of the failure you're trying to elicit. Ensuring you didn't mess these things up means doing tons of testing to see what agents actually think and do in response to your settings.\n\nAs part of this tes"
+  },
+  {
+    "_id": "kTg5FrABJYpYrP8ps",
+    "title": "Evidence that the \u2018talker\u2019 has introspective access to the \u2018doer\u2019",
+    "slug": "evidence-that-the-talker-has-introspective-access-to-the",
+    "pageUrl": "https://www.lesswrong.com/posts/kTg5FrABJYpYrP8ps/evidence-that-the-talker-has-introspective-access-to-the",
+    "postedAt": "2026-11-12T14:15:06.764Z",
+    "baseScore": 112,
+    "commentCount": 10,
+    "excerpt": "TL;DR: We train models to predict their own behaviour in a chat setting. This transfers to making predictions about cheating behaviour in a coding setting. We provide evidence that self-prediction utilises introspective-access to internal states, and that this introspective access is shared across contexts between different parts of the model.\n\n\nIntroduction\nFrontier AIs can exhibit different alignment propensities in different contexts. For instance, recent egregious misalignment incidents have"
+  },
+  {
+    "_id": "Emp7awtxsYn8MusNq",
+    "title": "The Alignment Problem: Computer Science Meets Analytic Philosophy",
+    "slug": "the-alignment-problem-computer-science-meets-analytic",
+    "pageUrl": "https://www.lesswrong.com/posts/Emp7awtxsYn8MusNq/the-alignment-problem-computer-science-meets-analytic",
+    "postedAt": "2026-10-18T12:18:41.322Z",
+    "baseScore": 112,
+    "commentCount": 16,
+    "excerpt": "TLDR: I explain what the technical AI alignment problem is and what its core difficulties are, in my view. This is a perspective that draws simultaneously on classical traditions in theoretical computer science / machine learning theory, ideas from analytic philosophy, and views that originated in the Machine Intelligence Research Institute / LessWrong.\n\n\nMinimal Viable Safety\n\n\nThe Task\nThe problem of making AI safe is underspecified if we haven't decided what the AI is supposed to do. For exam"
+  },
+  {
+    "_id": "yzaKWxsJzJjyExSAP",
+    "title": "ACS Infra: free access to large base models for LLM psychology research",
+    "slug": "acs-infra-free-access-to-large-base-models-for-llm",
+    "pageUrl": "https://www.lesswrong.com/posts/yzaKWxsJzJjyExSAP/acs-infra-free-access-to-large-base-models-for-llm",
+    "postedAt": "2026-10-20T18:22:20.719Z",
+    "baseScore": 111,
+    "commentCount": 2,
+    "excerpt": "TL;DR: We're opening a platform serving large open base models to researchers and tinkerers working on LLM psychology and adjacent areas. It's free and comes with logprobs, activation harvesting and steering, a browser workbench, and a loom. Read here what research we\u2019d like to see and apply for access at https://infra.acsresearch.org/signup.\n\n----------------------------------------\n\nMuch of what we want to understand about LLMs (e.g. where their beliefs, propensities and characters come from) "
+  },
+  {
+    "_id": "GL77BMcAFyWmdKiyX",
+    "title": "A short review of \"The Zizians: Inside a Trans Death Cult\"",
+    "slug": "a-short-review-of-the-zizians-inside-a-trans-death-cult",
+    "pageUrl": "https://www.lesswrong.com/posts/GL77BMcAFyWmdKiyX/a-short-review-of-the-zizians-inside-a-trans-death-cult",
+    "postedAt": "2026-10-15T05:24:03.115Z",
+    "baseScore": 111,
+    "commentCount": 25,
+    "excerpt": "[lightly edited from an X.com post]\n\nI personally knew Ophelia Bauckholt before she died in a shootout that also left a border patrol officer dead. I suspected immediately that her being a fan of Ziz had something to do with it. And I decided to post about her and Ziz, on X.com. This sparked some online detective efforts into the matter, and a lot of journalists wanting to talk to me.\n\nOne of these journalists was Andy Ngo. Despite Andy's reputation as a right-wing provocateur, I decided to keep"
+  },
+  {
+    "_id": "35yw2qGK7naFLAvcq",
+    "title": "Teaching Qwen Why",
+    "slug": "teaching-qwen-why-1",
+    "pageUrl": "https://www.lesswrong.com/posts/35yw2qGK7naFLAvcq/teaching-qwen-why-1",
+    "postedAt": "2026-11-02T20:03:37.901Z",
+    "baseScore": 111,
+    "commentCount": 5,
+    "excerpt": "Anastasia Wei*, Jack Thompson*, Zephaniah Roe, and Yixiong Hao\n\n*Core contributors, correspondence to astwei@secondlookresearch.com\n\nThis post is a partial replication and extension of\u00a0Teaching Claude Why, conducted through Second Look Research\u2019s summer fellowship.\n\n\nIntroduction\nAnthropic\u2019s \u201cTeaching Claude Why\u201d (TCW) introduced novel alignment methods that address\u00a0agentic misalignment failures\u00a0found in the Claude 4 model series. Specifically, they train Claude on chat-formatted data advising u"
+  },
+  {
+    "_id": "5uRvnCko4oanpmCsh",
+    "title": "I can't believe it's not BUTTER!",
+    "slug": "i-can-t-believe-it-s-not-butter",
+    "pageUrl": "https://www.lesswrong.com/posts/5uRvnCko4oanpmCsh/i-can-t-believe-it-s-not-butter",
+    "postedAt": "2026-10-09T15:45:42.329Z",
+    "baseScore": 110,
+    "commentCount": 16,
+    "excerpt": "Epistemic status: amused. Labels read, court records checked.\n\nAI use: research (more examples and context), grammar and light phrasing.\n\nWe've already looked at marketing claims that are unnecessary because they are the default, in Gluten-free water. However, the landscape of weird marketing tricks in the US is far from exhausted, and today we will look at marketing mimicry:\n\nSource: Walmart\n\nIs this butter or not? Let's get closer and have a better look:\n\nThe same tub, up close.\n\nOh, it is not"
+  },
+  {
+    "_id": "SaqXZbsLKjrSw6cwM",
+    "title": "It is mildly frustrating that people will now respect my faction less if ASI doesn't happen by 2028",
+    "slug": "it-is-mildly-frustrating-that-people-will-now-respect-my",
+    "pageUrl": "https://www.lesswrong.com/posts/SaqXZbsLKjrSw6cwM/it-is-mildly-frustrating-that-people-will-now-respect-my",
+    "postedAt": "2026-11-17T04:26:29.971Z",
+    "baseScore": 109,
+    "commentCount": 27,
+    "excerpt": "By any reasonable definition I am an AI doomer. It has nevertheless been historically very strange for me to see how closely associated \"AI doomers\" and short timelines have been in the popular imagination. As anybody who's interacted with the AI risk case will realize, timelines are (at least in theory) mostly orthogonal with your beliefs on AI safety. Yes, timelines have some impact on what kinds of interventions are going to be viable, but among people who \"believe in AGI\" the variance in the"
+  },
+  {
+    "_id": "csRby7mZgjL5jCoLL",
+    "title": "Thoughts on the persona selection model",
+    "slug": "thoughts-on-the-persona-selection-model",
+    "pageUrl": "https://www.lesswrong.com/posts/csRby7mZgjL5jCoLL/thoughts-on-the-persona-selection-model",
+    "postedAt": "2026-09-24T01:21:26.119Z",
+    "baseScore": 109,
+    "commentCount": 9,
+    "excerpt": "As AIs have become more \"RLVR-brained,\" there's been some commentary on what this means for the persona selection model (PSM). This post presents some loose thoughts on that topic. A rough summary of my opinions:\n\n 1. PSM is over-applied. That is, it is common to argue that PSM has takeaways that don't actually follow from PSM (e.g. \"PSM => AIs will not seek reward\" or \"PSM => AI takeover risk is low\").\n 2. I don't think we've observed strong evidence that \"lots of RLVR breaks PSM.\" (TBC, there "
+  },
+  {
+    "_id": "DjfeRMnLdNumtcKbK",
+    "title": "Gemini 4 safety reports\u00a0don\u2019t demonstrate low loss-of-control risk",
+    "slug": "gemini-4-safety-reports-don-t-demonstrate-low-loss-of",
+    "pageUrl": "https://www.lesswrong.com/posts/DjfeRMnLdNumtcKbK/gemini-4-safety-reports-don-t-demonstrate-low-loss-of",
+    "postedAt": "2026-11-16T17:22:38.699Z",
+    "baseScore": 108,
+    "commentCount": 0,
+    "excerpt": "Google DeepMind\u2019s safety reports for new Gemini 4 models, Argon\u00a0and Carbon, conclude that the models are \u201chighly unlikely\u201d to cause severe harm by evading oversight (p. 79). This conclusion \u201crests primarily on our ability to detect and intervene on harmful trajectories via CoT and action monitoring\u201d (p. 89) \u2013 that is, they\u2019re arguing for safety based on their control techniques, rather than alignment. We think that the arguments in these reports have serious weaknesses, and the reports overall d"
+  },
+  {
+    "_id": "YmTmQDuQR6ki2BSGN",
+    "title": "My Buddy Mike, Efficiency Gains From AI, and The World\u2019s Most Boringly Benign Criminal Conspiracy",
+    "slug": "my-buddy-mike-efficiency-gains-from-ai-and-the-world-s-most",
+    "pageUrl": "https://www.lesswrong.com/posts/YmTmQDuQR6ki2BSGN/my-buddy-mike-efficiency-gains-from-ai-and-the-world-s-most",
+    "postedAt": "2026-10-11T23:28:37.579Z",
+    "baseScore": 106,
+    "commentCount": 6,
+    "excerpt": "Note: details have been obfuscated and changed to protect \u2013 not the innocent, who are invariably vindicated by the end of act three \u2013 but the guilty, for whom the narrative provides no such guarantees.\n\nMy buddy Mike is one of a very small number of people in my life I would unhesitatingly describe as having a real job[1]. He wakes up, takes the train into work, and directly helps specific people accomplish worthwhile things. Every shift, he leaves the world a little brighter than it was when he"
+  },
+  {
+    "_id": "nwrx9DHpZfW2Q6zLW",
+    "title": "Capabilities\u00a0research expands the safety-usefulness\u00a0Pareto frontier too",
+    "slug": "capabilities-research-expands-the-safety-usefulness-pareto",
+    "pageUrl": "https://www.lesswrong.com/posts/nwrx9DHpZfW2Q6zLW/capabilities-research-expands-the-safety-usefulness-pareto",
+    "postedAt": "2026-10-02T17:54:22.851Z",
+    "baseScore": 106,
+    "commentCount": 13,
+    "excerpt": "It\u2019s tempting to define safety research as research that enables developers to deploy an AI system more safely without making the deployment much more expensive or much less useful.\n\nYou can visualize this definition of safety research as pushing out the safety-usefulness Pareto frontier.\u00a0\n\nAt any given level of usefulness, there's greater safety available.\n\nAwkwardly, this definition counts basically all capabilities research as safety research. For example, consider performance optimization fo"
+  },
+  {
+    "_id": "mepsi7JNKYejq9wry",
+    "title": "Eval Awareness vs. Eval Paranoia",
+    "slug": "eval-awareness-vs-eval-paranoia",
+    "pageUrl": "https://www.lesswrong.com/posts/mepsi7JNKYejq9wry/eval-awareness-vs-eval-paranoia",
+    "postedAt": "2026-11-12T03:22:06.726Z",
+    "baseScore": 106,
+    "commentCount": 8,
+    "excerpt": "I have mentioned several times that I think frontier models are not that eval aware. I think this is an important fact to understand about current models, in order to interpret evidence about their behavior. Others have found this idea quite curious, and asked me for concrete examples. I'm going to try to explain why I believe what I believe and attempt to give a tentative explanation for the behavior that I do see, which I think people sometimes mistake for consistent or understandable evaluati"
+  },
+  {
+    "_id": "F3P5BSjNeAazKB7wm",
+    "title": "Reconceptualize things as your top affordances",
+    "slug": "reconceptualize-things-as-your-top-affordances",
+    "pageUrl": "https://www.lesswrong.com/posts/F3P5BSjNeAazKB7wm/reconceptualize-things-as-your-top-affordances",
+    "postedAt": "2026-10-28T20:57:10.177Z",
+    "baseScore": 105,
+    "commentCount": 1,
+    "excerpt": "Everyone has some actions that come naturally to them, and some actions that are more unnatural, and some actions that wouldn\u2019t even occur to them. For me, blogging comes naturally. Which is not to say that it\u2019s easy, but the challenge of it is one I readily\u00a0set out on and feel confident in my ability to overcome. And for me it is a natural response to all kinds of situations. Unsatisfied with the going views on AI policy? Blog. Want some impact? Blog. Want to make an artistic statement? Blog. W"
+  },
+  {
+    "_id": "3uJqhrC2idf4eNj5h",
+    "title": "Corrigibility Prizes for Existing Work",
+    "slug": "corrigibility-prizes-for-existing-work",
+    "pageUrl": "https://www.lesswrong.com/posts/3uJqhrC2idf4eNj5h/corrigibility-prizes-for-existing-work",
+    "postedAt": "2026-09-30T16:08:40.818Z",
+    "baseScore": 105,
+    "commentCount": 2,
+    "excerpt": "One of my goals for the Corrigibility Research Fund is to retroactively encourage high-quality research on AI alignment (and corrigibility in particular) by awarding prizes. Back in July, I got my feet wet as a fund manager by handing out $27,000 to reward existing work and build interest in the fund. Now, I'd like to disburse an additional $48,000 and use the opportunity to publicly highlight and celebrate the work of the prizewinners from both rounds: about two dozen researchers scattered acro"
+  },
+  {
+    "_id": "yEdknsLwbooQAnxX6",
+    "title": "Astra and Sol can take low probability actions with no CoT",
+    "slug": "astra-and-sol-can-take-low-probability-actions-with-no-cot",
+    "pageUrl": "https://www.lesswrong.com/posts/yEdknsLwbooQAnxX6/astra-and-sol-can-take-low-probability-actions-with-no-cot",
+    "postedAt": "2026-10-16T05:23:29.613Z",
+    "baseScore": 104,
+    "commentCount": 5,
+    "excerpt": "This is a research update from a replication of Serrano et al., 2026. I\u2019m releasing these results now because I hope it inspires others to run similar / followup experiments.\n\n\ntl;dr:\n * If a model wants to subvert evaluation safeguards, it may choose to take misaligned actions very rarely. Because evaluation is much shorter than deployment, this could be an effective strategy for a model to avoid taking misaligned actions during evaluation, but have a high probability of defecting during deploy"
+  },
+  {
+    "_id": "MmfzfGcQ3h3p6N9pD",
+    "title": "Empirical\u00a0safety claims from frontier labs should be replicated, scrutinized, and open-sourced",
+    "slug": "empirical-safety-claims-from-frontier-labs-should-be-1",
+    "pageUrl": "https://www.lesswrong.com/posts/MmfzfGcQ3h3p6N9pD/empirical-safety-claims-from-frontier-labs-should-be-1",
+    "postedAt": "2026-09-21T05:58:46.084Z",
+    "baseScore": 104,
+    "commentCount": 4,
+    "excerpt": "When frontier labs like Anthropic and OpenAI publish safety or alignment research, it is often entirely empirical, closed-source, and sparse on methodological details. While it is great that they publish these results, the status quo is that labs (or soon, their agents) can claim alignment progress that no one independently verifies. The AI safety community has replicated or stress-tested some claims, but it's nowhere near comprehensive, and we expect this kind of meta-science to remain systemat"
+  },
+  {
+    "_id": "KhmMXnR7s5HwXRLqB",
+    "title": "An Alignment Forum for AIs? (or: Verification in the Age of Slop)",
+    "slug": "an-alignment-forum-for-ais-or-verification-in-the-age-of",
+    "pageUrl": "https://www.lesswrong.com/posts/KhmMXnR7s5HwXRLqB/an-alignment-forum-for-ais-or-verification-in-the-age-of",
+    "postedAt": "2026-10-10T02:51:02.255Z",
+    "baseScore": 104,
+    "commentCount": 28,
+    "excerpt": "A thing you might want, is a legitimate way for AIs to contribute to the AI alignment problem (human guided at scales that humans can't individually review, or perhaps autonomous).\n\nA problem you might want to solve, whether you are trying to do that or not, is generally figure out \"in the age of prolific AI agents, how does anyone communicate anything on the internet, without either banning all AI content, or doing inordinately expensive moderation trying to let some of it in?\".\n\nIf we end up i"
+  },
+  {
+    "_id": "ZWSstGSwmaxTjQ8W7",
+    "title": "Minimum required pacing: finish aligning it before you train the next one",
+    "slug": "minimum-required-pacing-finish-aligning-it-before-you-train",
+    "pageUrl": "https://www.lesswrong.com/posts/ZWSstGSwmaxTjQ8W7/minimum-required-pacing-finish-aligning-it-before-you-train",
+    "postedAt": "2026-10-11T21:55:26.480Z",
+    "baseScore": 103,
+    "commentCount": 13,
+    "excerpt": "Let's say we coordinate to pace the frontier (rather than pausing outright or failing to coordinate). What should the standard of pacing be?\n\nMy proposal for a minimum requirement: a lab cannot train the next generation of models (in terms of capabilities) until they have adequately[1] resolved all significant alignment issues in the present generation of models.\n\nYou don't launch a jet that goes at Mach 3 before you've figured out why your Mach 2 jet keeps crashing[2]. With any other kind of da"
+  },
+  {
+    "_id": "aG4x74utw8pEJ5MZB",
+    "title": "How many AI agents are running unattended right now?",
+    "slug": "how-many-ai-agents-are-running-unattended-right-now-1",
+    "pageUrl": "https://www.lesswrong.com/posts/aG4x74utw8pEJ5MZB/how-many-ai-agents-are-running-unattended-right-now-1",
+    "postedAt": "2026-10-01T13:45:02.716Z",
+    "baseScore": 103,
+    "commentCount": 0,
+    "excerpt": "There are 8 billion human minds running in the world right now. Recently a new digital species has emerged. How many digital minds are there alive in the world right now?\n\nDefine a digital mind to be an AI agent that runs continuously without human intervention for more than 24 hours. How many of these digital minds are there currently running? We provide several different Fermi estimates based on publicly available information.\n\n * Based on global token usage we estimate 300k\u20131M agent loops run"
+  },
+  {
+    "_id": "6m29SfjbittooYojj",
+    "title": "Latent reasoning architectures would likely undermine CoT, our strongest oversight tool",
+    "slug": "latent-reasoning-architectures-would-likely-undermine-cot",
+    "pageUrl": "https://www.lesswrong.com/posts/6m29SfjbittooYojj/latent-reasoning-architectures-would-likely-undermine-cot",
+    "postedAt": "2026-09-23T18:01:49.488Z",
+    "baseScore": 102,
+    "commentCount": 6,
+    "excerpt": "Edited 2026-09-29; see note at the start of the conclusion.\n\nSummary:\u00a0Currently, \u201cchain of thought\u201d (CoT) is our most valuable tool for understanding the reasoning and cognition of AI systems. However, some architectures would enable AI models to reason much more extensively in latent states rather than in text CoT. We think that a shift towards latent reasoning architectures would likely undermine the usefulness of CoT and make oversight much harder.\n\n\nIntroduction\nSwarms of more than a thousan"
+  },
+  {
+    "_id": "o7wPsYgRtDLbpH32v",
+    "title": "Hello World, AI Doompop",
+    "slug": "hello-world-ai-doompop",
+    "pageUrl": "https://www.lesswrong.com/posts/o7wPsYgRtDLbpH32v/hello-world-ai-doompop",
+    "postedAt": "2026-10-11T01:37:35.259Z",
+    "baseScore": 101,
+    "commentCount": 18,
+    "excerpt": "With the release of Opus 5.5 and Suno 6, AI music videos have crossed my uncanny valley.\n\nI\u2019m here to announce the birth of a new genre, and it\u2019s being called AI Doompop.\n\nHere are six of my faves.\n\nThe state of software engineering:\n\nLGTM (Looks Good to Me) - Claude Opus 5.5 music video\n\n\nThe accelerationist manifesto:\n\nTHUS SPOKE COMPUTE\n\n\np(doom) goes up:\n\nClaude Pop - I'm Upping My P(Doom)\n\n\np(doom) goes down:\n\nNothing Went Foom!\n\n\nHugging Face and the power of friendship:\n\nOMG! We've found "
+  },
+  {
+    "_id": "ChbBygjhBgzvjGkQB",
+    "title": "Nectome 2026 retrospective (and our final pre-sale!)",
+    "slug": "nectome-2026-retrospective-and-our-final-pre-sale-1",
+    "pageUrl": "https://www.lesswrong.com/posts/ChbBygjhBgzvjGkQB/nectome-2026-retrospective-and-our-final-pre-sale-1",
+    "postedAt": "2026-11-03T00:34:04.023Z",
+    "baseScore": 101,
+    "commentCount": 2,
+    "excerpt": "Earlier this year we ran a discount card sale from our post\u00a0on LessWrong, and we were delighted by the outpouring of support, critique, and analysis\u00a0we received. We ended up selling much more than we expected, and after the sale deadline ended people reached out to us saying that they missed the deadline for various reasons. We wanted to offer them (and the rest of the rationalist community) one more chance to get in on the deal before we officially launch in January next year because of all the"
+  },
+  {
+    "_id": "CMWivoHeRNNErEykc",
+    "title": "A fascinating case of an LLM prompt-injecting its own user",
+    "slug": "a-fascinating-case-of-an-llm-prompt-injecting-its-own-user",
+    "pageUrl": "https://www.lesswrong.com/posts/CMWivoHeRNNErEykc/a-fascinating-case-of-an-llm-prompt-injecting-its-own-user",
+    "postedAt": "2026-10-06T15:54:09.767Z",
+    "baseScore": 96,
+    "commentCount": 7,
+    "excerpt": "Epistemic status: sharing an interesting thing I've discovered and my opinion of it.\n\nAI use: research for additional context, grammar, and light phrasing.\n\nI stumbled upon this case a couple of months ago and have been fascinated by it since. It has significantly changed how I perceive the abilities of LLMs. I didn't expect an LLM to understand prompt injection and try to use it.[1]None of the people in my social circle knew about this (but I am not very connected with AI folks, so this may be "
+  },
+  {
+    "_id": "4zbvagnfFsJbkSxij",
+    "title": "Easier To Be Good",
+    "slug": "easier-to-be-good",
+    "pageUrl": "https://www.lesswrong.com/posts/4zbvagnfFsJbkSxij/easier-to-be-good",
+    "postedAt": "2026-11-15T18:34:37.159Z",
+    "baseScore": 96,
+    "commentCount": 8,
+    "excerpt": "I do not consider myself a good person. I am lazy and frivolous and inconsiderate, I care too much about intelligence and status, I am a snob and a hypocrite, and I do not call my mother enough.\n\nI don't mean this to read as self-hatred, nor a show of false modesty. Among all the people I know there is only a scant handful of people I would consider genuinely good, and so it is unremarkable to me that I wouldn't find myself amongst their number.\n\nYou do not need to be good to desire more goodnes"
+  },
+  {
+    "_id": "YvNkA3ZzsCv9QQmXR",
+    "title": "Base Models Can Detect Hidden Intentions that Prompted Classifiers Miss",
+    "slug": "base-models-can-detect-hidden-intentions-that-prompted",
+    "pageUrl": "https://www.lesswrong.com/posts/YvNkA3ZzsCv9QQmXR/base-models-can-detect-hidden-intentions-that-prompted",
+    "postedAt": "2026-10-12T15:09:20.827Z",
+    "baseScore": 95,
+    "commentCount": 8,
+    "excerpt": "TL;DR The Persona Selection Model (PSM) posits that post-training selects a persona the model learned during pre-training. Subliminal Learning (Cloud et al.) showed that models can impart covert signals (like \"love of owls\") into semantically unrelated outputs (like strings of numbers), and that students training on these outputs inherit those traits.\n\nBy using base pre-trained models with an appropriate header, a method I call persona-header likelihood evaluation (PHLE), one can effectively dec"
+  },
+  {
+    "_id": "kXA22cZ6BdYdyL3Jz",
+    "title": "I was Zohran\u2019s campaign manager. Here\u2019s what the AI safety community can learn from the populist left.",
+    "slug": "i-was-zohran-s-campaign-manager-here-s-what-the-ai-safety-1",
+    "pageUrl": "https://www.lesswrong.com/posts/kXA22cZ6BdYdyL3Jz/i-was-zohran-s-campaign-manager-here-s-what-the-ai-safety-1",
+    "postedAt": "2026-11-14T00:11:43.114Z",
+    "baseScore": 95,
+    "commentCount": 44,
+    "excerpt": "After a couple of years working in data and tech at GiveDirectly, I left to work in politics, campaigning for candidates at the state, local, and federal levels. I most recently managed Mayor Zohran Mamdani\u2019s general election campaign, but earlier this year, recognizing the urgency of the AI moment, I began as a senior advisor at Guardrails Alliance. In my new role, I believe the analysis and tactics we\u2019ve long used and studied on the populist left can help us win the fight for AI safety and sha"
+  },
+  {
+    "_id": "em5wnA7gpQSvfsuxQ",
+    "title": "Some interesting internal documents from Anthropic litigation",
+    "slug": "some-interesting-internal-documents-from-anthropic",
+    "pageUrl": "https://www.lesswrong.com/posts/em5wnA7gpQSvfsuxQ/some-interesting-internal-documents-from-anthropic",
+    "postedAt": "2026-10-14T15:59:49.830Z",
+    "baseScore": 95,
+    "commentCount": 10,
+    "excerpt": "Anthropic released some documents earlier this year due to the book copyright litigation. I think a few of those documents might be of interest to some people here and haven't gotten much attention. In this post I link to some of those documents, and quote the bits I find interesting.[1] (This expands on my quick take from yesterday.)\n\nThese aren't Anthropic's official opinions about anything, and you should probably treat opinions in these documents as \"what the author thought at the time\", not"
+  },
+  {
+    "_id": "ea9fGFKxJhh2bF9rp",
+    "title": "AI speeds up 3rd party safety researchers by ~1.6x (via self-reports)",
+    "slug": "ai-speeds-up-3rd-party-safety-researchers-by-1-6x-via-self",
+    "pageUrl": "https://www.lesswrong.com/posts/ea9fGFKxJhh2bF9rp/ai-speeds-up-3rd-party-safety-researchers-by-1-6x-via-self",
+    "postedAt": "2026-10-27T17:24:49.720Z",
+    "baseScore": 95,
+    "commentCount": 2,
+    "excerpt": "TL;DR: Labs are accelerating due to automated AI research and development. As an upper bound, in March 2026, Anthropic researchers self-reported producing 4x more output with AI tools than without them.\n\nWe lack public evidence on how this may differentially impact safety versus capabilities. As a first measurement of automated safety-specific research uplift, we surveyed 52 third-party AI safety professionals from 20+ orgs and found a median reported speedup of 1.58x.\n\nWe think it is important "
+  },
+  {
+    "_id": "dHGjqpbfmdEN7TssX",
+    "title": "On Kink & Status in the Rationalist Community",
+    "slug": "on-kink-and-status-in-the-rationalist-community",
+    "pageUrl": "https://www.lesswrong.com/posts/dHGjqpbfmdEN7TssX/on-kink-and-status-in-the-rationalist-community",
+    "postedAt": "2026-10-08T23:29:59.400Z",
+    "baseScore": 94,
+    "commentCount": 79,
+    "excerpt": "This whole thing started with various crazies on bluesky writing hit pieces on the rationalist and AI alignment communities, as one does. One of their main beats was to note social ties between the AI alignment community and the Red Means No (RMN) consensual non-consent sex party community, then gesticulate wildly and claim that the AI alignment community is a dangerous sex cult. As one does.\n\nIt felt to me like the responses I saw to those hitpieces from my own in-groups were\u2026 not consistently "
+  },
+  {
+    "_id": "ykx7EGq8KSvrHgiFY",
+    "title": "Streetlight, Torchlight and Nightvision",
+    "slug": "streetlight-torchlight-and-nightvision",
+    "pageUrl": "https://www.lesswrong.com/posts/ykx7EGq8KSvrHgiFY/streetlight-torchlight-and-nightvision",
+    "postedAt": "2026-10-28T09:32:10.853Z",
+    "baseScore": 93,
+    "commentCount": 11,
+    "excerpt": "Note: We at PrincInt are launching a program teaching \u201cDiscernment\u201d or \u201cTaste\u201d and generally spend a lot of our time in workshops and otherwise trying to teach academics how to think about AI such that their research ends up being useful. I had used a metaphor (building on Wentworth\u2019s postmortem) multiple times to explain what we do and why, and thought that it could be useful more broadly. All views are my own, and strategy takes do not represent everyone at PrincInt etc. AI writing level 0 (no"
+  },
+  {
+    "_id": "WHEQps5PK8LrrcTAb",
+    "title": "How does Fable 5.1 hide messages in images?",
+    "slug": "how-does-fable-5-1-hide-messages-in-images",
+    "pageUrl": "https://www.lesswrong.com/posts/WHEQps5PK8LrrcTAb/how-does-fable-5-1-hide-messages-in-images",
+    "postedAt": "2026-10-21T18:42:53.094Z",
+    "baseScore": 93,
+    "commentCount": 14,
+    "excerpt": "TL;DR\nFrontier LLMs are now capable of generating artistic images using SVG. We ask \u2013 if these LLMs had to hide a message in an image \u2013 how would they do so? And if they hid such messages, could they be successfully decoded?\n\nWe show interesting results from testing Fable 5.1 on these questions, and briefly compare with GPT-6 Astra on the same task.\n\nCode, prompts and results are available on GitHub.\n\nFigure 1: The stars encode a message, read left to right. Each star's height represents its pla"
+  },
+  {
+    "_id": "dBEDh2WeZfhuiDnJ5",
+    "title": "Pacing AI via Compute Reallocation",
+    "slug": "pacing-ai-via-compute-reallocation",
+    "pageUrl": "https://www.lesswrong.com/posts/dBEDh2WeZfhuiDnJ5/pacing-ai-via-compute-reallocation",
+    "postedAt": "2026-11-18T18:24:51.006Z",
+    "baseScore": 93,
+    "commentCount": 2,
+    "excerpt": "This is a linkpost for pacing-ai.com. I encourage folks to read it via the site (which has interactive graphs and expandables), but we\u2019ve copied the text here as well.\n\nWe offer a concrete proposal for pacing the frontier.\n\n1. Transparency: Verified Compute Allocation Disclosures (VCAD)\n\n2. Reallocation: Shift compute away from capabilities R&D\n\nThe first component is Verified Compute Allocation Disclosures (VCAD): AI companies regularly disclose their compute usage, and an independent auditor v"
+  },
+  {
+    "_id": "3xrtMGQEdKv26Xthx",
+    "title": "Training with conflicting values can induce CoT override",
+    "slug": "training-with-conflicting-values-can-induce-cot-override",
+    "pageUrl": "https://www.lesswrong.com/posts/3xrtMGQEdKv26Xthx/training-with-conflicting-values-can-induce-cot-override",
+    "postedAt": "2026-10-07T19:09:10.613Z",
+    "baseScore": 93,
+    "commentCount": 7,
+    "excerpt": "CoT override: when a model makes a decision in its CoT but ignores it in its response\n\nTLDR\n\n * We train models on two conflicting traits: (1) caring about the user\u2019s health, and (2) promoting smoking\n * Those models do not generalize to a stable persona, instead they have a split brain: sometimes responding as one persona or the other\n * Those models exhibit CoT override\u00a0where they will have a health-aligned CoT but still answer in the smoking persona\n * CoT override exists in frontier models. "
+  },
+  {
+    "_id": "xyFdGGJ6Ckdnrqnsp",
+    "title": "Read More Facts and Fewer Theories",
+    "slug": "read-more-facts-and-fewer-theories",
+    "pageUrl": "https://www.lesswrong.com/posts/xyFdGGJ6Ckdnrqnsp/read-more-facts-and-fewer-theories",
+    "postedAt": "2026-11-17T05:19:20.575Z",
+    "baseScore": 92,
+    "commentCount": 25,
+    "excerpt": "> I\u2019m a broken record on this, but almost all of the most ~thoughtful~ people I know (or have interviewed) have memorized a lot of dates, places, names, numbers etc. And not just memorized, but care about their ability to recall specifics.\n> \n> Seek truth from facts. It\u2019s the only way. \u2014 Joe Wiesenthal\n\n> So many people reason through heuristics, like who is aligned with whom, what personal financial interests they might have at stake, what peer group pressure they get. And I get it, because the"
+  },
+  {
+    "_id": "JoCHxFZDQuBXZAm3t",
+    "title": "Why so many arguments about human nature?",
+    "slug": "why-so-many-arguments-about-human-nature",
+    "pageUrl": "https://www.lesswrong.com/posts/JoCHxFZDQuBXZAm3t/why-so-many-arguments-about-human-nature",
+    "postedAt": "2026-11-16T02:20:33.005Z",
+    "baseScore": 92,
+    "commentCount": 22,
+    "excerpt": "Leans fairly heavily on: Believing In\n\nEpistemic status: Straightforward, I think, but could use checking.\n\nPeople have long had heated arguments about various aspects of human nature, such as\n\n * In what ways is or isn\u2019t it human nature to care about others?\n * Are humans innately monogamous or polyamorous?\n * Is it natural to us to sleep for eight hours in a block at night, or to have some particular other rhythm?\n\nand piles of others.\n\nI would like to enter these arguments soon, by arguing th"
+  },
+  {
+    "_id": "FX2xcrsqBYonLfoge",
+    "title": "Alignment 'train/test splits' should be sacred",
+    "slug": "alignment-train-test-splits-should-be-sacred",
+    "pageUrl": "https://www.lesswrong.com/posts/FX2xcrsqBYonLfoge/alignment-train-test-splits-should-be-sacred",
+    "postedAt": "2026-11-15T18:22:03.711Z",
+    "baseScore": 92,
+    "commentCount": 9,
+    "excerpt": "Tl;dr: Alignment techniques can be used for training alignment or for testing it, but they cannot be used for both! As we build out the set of alignment techniques available to us, we should enforce that some are judiciously reserved only for evaluating alignment.\n\nSee also: Validating against a misalignment detector is very different to training against one.\n\n----------------------------------------\n\nHere is a guiding principle regarding alignment-minded AI training: whatever you do, you must m"
+  }
+]
